@@ -27,9 +27,12 @@ class MainPageK : public FileBrowserListener {
   void selectionChanged();
   void fileClicked(const File& file, const MouseEvent& e) {}
   void fileDoubleClicked(const File& file) {}
+
   DirectoryContentsList* directoryList() { return &directoryList_; }
 
  private:
+  static const int READAHEAD_SIZE = 32768;
+
   typedef rec::audio::source::Stretchable Stretchable;
 
   void loadFileIntoTransport(const File& audioFile);
@@ -41,9 +44,9 @@ class MainPageK : public FileBrowserListener {
   AudioTransportSource transportSource_;
   DirectoryContentsList directoryList_;
 
-  scoped_ptr<AudioFormatReaderSource> audioSource_;
+  scoped_ptr<AudioFormatReaderSource> source_;
   scoped_ptr<Stretchable> stretchable_;
-  AudioSourcePlayer audioSourcePlayer_;
+  AudioSourcePlayer player_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

@@ -4,8 +4,6 @@
 
 namespace tinyjson {
 
-using node::Node;
-
 namespace {
 
 
@@ -39,7 +37,7 @@ class ParserTest : public testing::Test {
   }
 
  protected:
-  node::Tree tree_;
+  Node::Tree tree_;
   Parser parser_;
 };
 
@@ -51,7 +49,7 @@ TEST_F(ParserTest, Empty) {
 
 TEST_F(ParserTest, Number) {
   const char source[] = "123";
-  Node expected[] = {{node::NUMBER, source, 3}};
+  Node expected[] = {{Node::NUMBER, source, 3}};
 
   ExpectParse(expected, expected + 1, source);
 
@@ -61,25 +59,25 @@ TEST_F(ParserTest, Number) {
 
 TEST_F(ParserTest, String) {
   const char source[] = "\"123\"";
-  Node expected[] = {{node::STRING, source, 5}};
+  Node expected[] = {{Node::STRING, source, 5}};
   ExpectParse(expected, expected + 1, source);
 }
 
 TEST_F(ParserTest, True) {
   const char source[] = "true";
-  Node expected[] = {{node::LITERAL, source, 4}};
+  Node expected[] = {{Node::LITERAL, source, 4}};
   ExpectParse(expected, expected + 1, source);
 }
 
 TEST_F(ParserTest, False) {
   const char source[] = "false";
-  Node expected[] = {{node::LITERAL, source, 5}};
+  Node expected[] = {{Node::LITERAL, source, 5}};
   ExpectParse(expected, expected + 1, source);
 }
 
 TEST_F(ParserTest, Null) {
   const char source[] = "null";
-  Node expected[] = {{node::LITERAL, source, 4}};
+  Node expected[] = {{Node::LITERAL, source, 4}};
   ExpectParse(expected, expected + 1, source);
 }
 
@@ -90,15 +88,15 @@ TEST_F(ParserTest, BadLiteral) {
 
 TEST_F(ParserTest, EmptyArray) {
   const char source[] = "[]";
-  Node expected[] = {{node::ARRAY, source, 0}};
+  Node expected[] = {{Node::ARRAY, source, 0}};
   ExpectParse(expected, expected + 1, source);
 }
 
 TEST_F(ParserTest, ArrayWithOneNumber) {
   static const char source[] = "[1]";
   Node expected[] = {
-    {node::ARRAY, source, 1},
-    {node::NUMBER, source + 1, 1},
+    {Node::ARRAY, source, 1},
+    {Node::NUMBER, source + 1, 1},
   };
 
   ExpectParse(expected, expected + 2, source);
@@ -107,8 +105,8 @@ TEST_F(ParserTest, ArrayWithOneNumber) {
 TEST_F(ParserTest, ArrayWithOneNumberAndComma) {
   static const char source[] = "[1,]";
   Node expected[] = {
-    {node::ARRAY, source, 1},
-    {node::NUMBER, source + 1, 1},
+    {Node::ARRAY, source, 1},
+    {Node::NUMBER, source + 1, 1},
   };
 
   ExpectParse(expected, expected + 2, source);
@@ -117,8 +115,8 @@ TEST_F(ParserTest, ArrayWithOneNumberAndComma) {
 TEST_F(ParserTest, ArrayWithSpaces) {
   static const char source[] = " [ 1 , ] ";
   Node expected[] = {
-    {node::ARRAY, source + 1,  1},
-    {node::NUMBER, source + 3, 2},
+    {Node::ARRAY, source + 1,  1},
+    {Node::NUMBER, source + 3, 2},
   };
 
   ExpectParse(expected, expected + arraysize(expected), source);
@@ -127,9 +125,9 @@ TEST_F(ParserTest, ArrayWithSpaces) {
 TEST_F(ParserTest, ArrayWithTwoElements) {
   static const char source[] = " [ 1 , 2] ";
   Node expected[] = {
-    {node::ARRAY, source + 1,  2},
-    {node::NUMBER, source + 3, 2},
-    {node::NUMBER, source + 7, 1},
+    {Node::ARRAY, source + 1,  2},
+    {Node::NUMBER, source + 3, 2},
+    {Node::NUMBER, source + 7, 1},
   };
 
   ExpectParse(expected, expected + arraysize(expected), source);
@@ -138,7 +136,7 @@ TEST_F(ParserTest, ArrayWithTwoElements) {
 TEST_F(ParserTest, EmptyObject) {
   static const char source[] = "{}";
   Node expected[] = {
-    {node::OBJECT, source,  0},
+    {Node::OBJECT, source,  0},
   };
 
   ExpectParse(expected, expected + arraysize(expected), source);
@@ -147,9 +145,9 @@ TEST_F(ParserTest, EmptyObject) {
 TEST_F(ParserTest, ObjectWithOneElement) {
   static const char source[] = "{\"a\": 1}";
   Node expected[] = {
-    {node::OBJECT, source,  2},
-    {node::STRING, source + 1,  3},
-    {node::NUMBER, source + 6,  1},
+    {Node::OBJECT, source,  2},
+    {Node::STRING, source + 1,  3},
+    {Node::NUMBER, source + 6,  1},
   };
 
   ExpectParse(expected, expected + arraysize(expected), source);
@@ -158,15 +156,15 @@ TEST_F(ParserTest, ObjectWithOneElement) {
 TEST_F(ParserTest, ComplexObject) {
   static const char source[] = "[{\"a\": 1, \"bee\": true}, null, [{}]]";
   Node expected[] = {
-    {node::ARRAY, source,  8},
-    {node::OBJECT, source + 1,  4},
-    {node::STRING, source + 2,  3},
-    {node::NUMBER, source + 7,  1},
-    {node::STRING, source + 10,  5},
-    {node::LITERAL, source + 17,  4},
-    {node::LITERAL, source + 24,  4},
-    {node::ARRAY, source + 30,  1},
-    {node::OBJECT, source + 31,  0},
+    {Node::ARRAY, source,  8},
+    {Node::OBJECT, source + 1,  4},
+    {Node::STRING, source + 2,  3},
+    {Node::NUMBER, source + 7,  1},
+    {Node::STRING, source + 10,  5},
+    {Node::LITERAL, source + 17,  4},
+    {Node::LITERAL, source + 24,  4},
+    {Node::ARRAY, source + 30,  1},
+    {Node::OBJECT, source + 31,  0},
   };
 
   ExpectParse(expected, expected + arraysize(expected), source);

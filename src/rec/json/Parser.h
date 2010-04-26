@@ -13,7 +13,7 @@ typedef rec::util::StringRange StringRange;
 
 class Parser : public StringRange {
  public:
-  Parser(node::Tree* tree) : tree_(tree) {}
+  Parser(Node::Tree* tree) : tree_(tree) {}
 
   typedef const char* Error;
 
@@ -30,8 +30,8 @@ class Parser : public StringRange {
   Error number();
   Error literal();
 
-  node::Tree* tree_;
-  node::Node& at(int index) { return (*tree_)[index]; }
+  Node::Tree* tree_;
+  Node& at(int index) { return (*tree_)[index]; }
 
   DISALLOW_COPY_AND_ASSIGN(Parser);
 };

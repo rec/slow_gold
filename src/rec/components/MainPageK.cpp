@@ -18,16 +18,16 @@ void MainPageK::construct(MainPageJ* peer) {
                                  Colours::white);
   peer_->fileTreeComp->addListener(this);
 
-  deviceManager_->addAudioCallback(&audioSourcePlayer_);
+  deviceManager_->addAudioCallback(&player_);
 }
 
 void MainPageK::destruct() {
   // TODO: why does this have to be called so early in the destructor sequence?
   // Can we get rid of all of this entirely?
   transportSource_.setSource(NULL);
-  audioSourcePlayer_.setSource(NULL);
+  player_.setSource(NULL);
 
-  deviceManager_->removeAudioCallback(&audioSourcePlayer_);
+  deviceManager_->removeAudioCallback(&player_);
   peer_->fileTreeComp->removeListener(this);
 }
 
@@ -41,7 +41,7 @@ void MainPageK::startStopButtonClicked() {
 }
 
 void MainPageK::loopingButtonClicked() {
-  audioSource_->setLooping(peer_->loopingButton->getToggleState());
+  source_->setLooping(peer_->loopingButton->getToggleState());
 }
 
 void MainPageK::zoomSliderChanged(double value) {
@@ -56,25 +56,22 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
 
   transportSource_.setSource(NULL);
   stretchable_.reset();
-  audioSource_.reset();
+  source_.reset();
 
-  // get a format manager and set it up with the basic types (wav and aiff).
   AudioFormatManager formatManager;
   formatManager.registerBasicFormats();
 
   if (AudioFormatReader* reader = formatManager.createReaderFor(audioFile)) {
-    audioSource_.reset(new AudioFormatReaderSource(reader, true));
-    audioSource_->setLooping(true);
-
-    // ..and plug it into our transport source
-    transportSource_.setSource(audioSource_.get(),
-                              32768, // tells it to buffer this many samples ahead
-                              reader->sampleRate);
+    source_.reset(new AudioFormatReaderSource(reader, true));
+    source_->setLooping(true);
+    transportSource_.setSource(source_.get(), READAHEAD_SIZE, reader->sampleRate);
 
     stretchable_.reset(new Stretchable(BufferDescription::DEFAULT));
-
     stretchable_->setSource(&transportSource_);
-    audioSourcePlayer_.setSource(stretchable_.get());
+    player_.setSource(stretchable_.get());
+  } else {
+    std::cerr << "Didn't understand file type for filename " << audioFile
+              << std::endl;
   }
 }
 

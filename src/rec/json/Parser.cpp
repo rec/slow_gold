@@ -2,8 +2,6 @@
 
 namespace tinyjson {
 
-using node::Node;
-
 const Parser::Error Parser::NO_ERROR = NULL;
 
 Parser::Error Parser::parse(const StringRange& range) {
@@ -23,7 +21,7 @@ Parser::Error Parser::item() {
   if (empty())
     return NO_ERROR;
 
-  node::Type type = node::getType(top());
+  Node::Type type = Node::getType(top());
   if (!type)
     return "Unexpected character";
 
@@ -64,7 +62,7 @@ Parser::Error Parser::collection() {
     if (isObject) {
       if (Parser::Error err = item())
         return err;
-      else if (tree_->back().type_ != node::STRING) 
+      else if (tree_->back().type_ != Node::STRING)
         return "object: labels must be strings";
       else if (top() != ':')
         return "object: Missing colon separator";
