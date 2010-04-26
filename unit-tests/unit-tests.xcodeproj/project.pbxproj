@@ -1,0 +1,715 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E22A408C118614A6007293B2 /* libammf-2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22A40871186147F007293B2 /* libammf-2.a */; };
+		E22A40AE118614AA007293B2 /* libammf-2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22A40871186147F007293B2 /* libammf-2.a */; };
+		E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EA116A594C00FCB21D /* gtest.framework */; };
+		E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EE116A594C00FCB21D /* libgtest_main.a */; };
+		E25FC810116BA3A400FCB21D /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC80B116BA38500FCB21D /* libjucedebug.a */; };
+		E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
+		E25FCB16116BAE2E00FCB21D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0B116BAE2E00FCB21D /* Carbon.framework */; };
+		E25FCB17116BAE2E00FCB21D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0C116BAE2E00FCB21D /* IOKit.framework */; };
+		E25FCB18116BAE2E00FCB21D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0D116BAE2E00FCB21D /* CoreAudio.framework */; };
+		E25FCB19116BAE2E00FCB21D /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0E116BAE2E00FCB21D /* CoreMIDI.framework */; };
+		E25FCB1A116BAE2E00FCB21D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0F116BAE2E00FCB21D /* WebKit.framework */; };
+		E25FCB1B116BAE2E00FCB21D /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB10116BAE2E00FCB21D /* DiscRecording.framework */; };
+		E25FCB1C116BAE2E00FCB21D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB11116BAE2E00FCB21D /* OpenGL.framework */; };
+		E25FCB1D116BAE2E00FCB21D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB12116BAE2E00FCB21D /* QuartzCore.framework */; };
+		E25FCB1E116BAE2E00FCB21D /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB13116BAE2E00FCB21D /* QTKit.framework */; };
+		E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB14116BAE2E00FCB21D /* QuickTime.framework */; };
+		E25FCEB3116BB6FC00FCB21D /* FillQueueTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */; };
+		E25FCEB5116BB6FC00FCB21D /* math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCEAB116BB6FC00FCB21D /* math_test.cpp */; };
+		E29594CA117D60870078881F /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C7117D60870078881F /* Parser.cpp */; };
+		E29594CB117D60870078881F /* Parser_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C9117D60870078881F /* Parser_test.cpp */; };
+		E29594CC117D60870078881F /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C7117D60870078881F /* Parser.cpp */; };
+		E29594CD117D60870078881F /* Parser_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C9117D60870078881F /* Parser_test.cpp */; };
+		E2A8562F11836B9500667631 /* Buffered_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562B11836B9500667631 /* Buffered_test.cpp */; };
+		E2A8563011836B9500667631 /* Buffered.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562C11836B9500667631 /* Buffered.cpp */; };
+		E2A8563111836B9500667631 /* Buffered_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562B11836B9500667631 /* Buffered_test.cpp */; };
+		E2A8563211836B9500667631 /* Buffered.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562C11836B9500667631 /* Buffered.cpp */; };
+		E2A8563911836C4F00667631 /* Stretchable_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8563711836C4F00667631 /* Stretchable_test.cpp */; };
+		E2A8563A11836C4F00667631 /* Stretchable_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8563711836C4F00667631 /* Stretchable_test.cpp */; };
+		E2B2F7FB1171941C00D0C002 /* StretchMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B2F7FA1171941C00D0C002 /* StretchMain.cpp */; };
+		E2B2FABF1171944400D0C002 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC80B116BA38500FCB21D /* libjucedebug.a */; };
+		E2B2FAC31171944400D0C002 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
+		E2B2FAC41171944400D0C002 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0B116BAE2E00FCB21D /* Carbon.framework */; };
+		E2B2FAC51171944400D0C002 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0C116BAE2E00FCB21D /* IOKit.framework */; };
+		E2B2FAC61171944400D0C002 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0D116BAE2E00FCB21D /* CoreAudio.framework */; };
+		E2B2FAC71171944400D0C002 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0E116BAE2E00FCB21D /* CoreMIDI.framework */; };
+		E2B2FAC81171944400D0C002 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0F116BAE2E00FCB21D /* WebKit.framework */; };
+		E2B2FAC91171944400D0C002 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB10116BAE2E00FCB21D /* DiscRecording.framework */; };
+		E2B2FACA1171944400D0C002 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB11116BAE2E00FCB21D /* OpenGL.framework */; };
+		E2B2FACB1171944400D0C002 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB12116BAE2E00FCB21D /* QuartzCore.framework */; };
+		E2B2FACC1171944400D0C002 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB13116BAE2E00FCB21D /* QTKit.framework */; };
+		E2B2FACD1171944400D0C002 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB14116BAE2E00FCB21D /* QuickTime.framework */; };
+		E2D0D0D71183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */; };
+		E2D0D0D81183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E22A40861186147F007293B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E22A40821186147F007293B2 /* ammf.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC046055464E500DB518D /* libammf-2.a */;
+			remoteInfo = ammf;
+		};
+		E25FC6E9116A594C00FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4539C8FF0EC27F6400A70F4C;
+			remoteInfo = "gtest-framework";
+		};
+		E25FC6EB116A594C00FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C848FA101A209C0083642A;
+			remoteInfo = "gtest-static";
+		};
+		E25FC6ED116A594C00FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C8490B101A217E0083642A;
+			remoteInfo = "gtest_main-static";
+		};
+		E25FC6EF116A594C00FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40899F430FFA7184000B29AE;
+			remoteInfo = "gtest_unittest-framework";
+		};
+		E25FC6F1116A594C00FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C84987101A36850083642A;
+			remoteInfo = "gtest_unittest-static";
+		};
+		E25FC6F3116A594C00FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4089A0130FFACEFC000B29AE;
+			remoteInfo = "sample1_unittest-framework";
+		};
+		E25FC6F5116A594C00FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C84997101A36A60083642A;
+			remoteInfo = "sample1_unittest-static";
+		};
+		E25FC80A116BA38500FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC805116BA38500FCB21D /* Juce.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC046055464E500DB518D;
+			remoteInfo = Juce;
+		};
+		E25FC80C116BA38500FCB21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E25FC805116BA38500FCB21D /* Juce.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84816E3510809B4F008FEC33;
+			remoteInfo = "Juce (iPhone)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C6859E8B029090EE04C91782 /* unit-tests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "unit-tests.1"; sourceTree = "<group>"; };
+		E22A40821186147F007293B2 /* ammf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ammf.xcodeproj; path = ../ammf/ammf.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E25FC6C7116A407700FCB21D /* unit-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "unit-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = ../../gtest/xcode/gtest.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E25FC805116BA38500FCB21D /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../juce/build/macosx/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		E25FCB0B116BAE2E00FCB21D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		E25FCB0C116BAE2E00FCB21D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		E25FCB0D116BAE2E00FCB21D /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		E25FCB0E116BAE2E00FCB21D /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
+		E25FCB0F116BAE2E00FCB21D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		E25FCB10116BAE2E00FCB21D /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = /System/Library/Frameworks/DiscRecording.framework; sourceTree = "<absolute>"; };
+		E25FCB11116BAE2E00FCB21D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E25FCB12116BAE2E00FCB21D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		E25FCB13116BAE2E00FCB21D /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E25FCB14116BAE2E00FCB21D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		E25FCE99116BB6FC00FCB21D /* FillQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillQueue.h; sourceTree = "<group>"; };
+		E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FillQueueTest.cpp; sourceTree = "<group>"; };
+		E25FCE9F116BB6FC00FCB21D /* basictypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basictypes.h; sourceTree = "<group>"; };
+		E25FCEA0116BB6FC00FCB21D /* build_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_config.h; sourceTree = "<group>"; };
+		E25FCEA1116BB6FC00FCB21D /* port.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = port.h; sourceTree = "<group>"; };
+		E25FCEA2116BB6FC00FCB21D /* scoped_ptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scoped_ptr.h; sourceTree = "<group>"; };
+		E25FCEA3116BB6FC00FCB21D /* string_piece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_piece.h; sourceTree = "<group>"; };
+		E25FCEA5116BB6FC00FCB21D /* Callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callback.h; sourceTree = "<group>"; };
+		E25FCEA6116BB6FC00FCB21D /* CircularEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularEnum.h; sourceTree = "<group>"; };
+		E25FCEA7116BB6FC00FCB21D /* CriticalSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CriticalSection.h; sourceTree = "<group>"; };
+		E25FCEA8116BB6FC00FCB21D /* DoubleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleBuffer.h; sourceTree = "<group>"; };
+		E25FCEA9116BB6FC00FCB21D /* locker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = locker.h; sourceTree = "<group>"; };
+		E25FCEAA116BB6FC00FCB21D /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
+		E25FCEAB116BB6FC00FCB21D /* math_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_test.cpp; sourceTree = "<group>"; };
+		E25FCEAC116BB6FC00FCB21D /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		E25FCEAD116BB6FC00FCB21D /* WaitLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitLoopThread.h; sourceTree = "<group>"; };
+		E25FCEAE116BB6FC00FCB21D /* Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wrapper.h; sourceTree = "<group>"; };
+		E29594C6117D60870078881F /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		E29594C7117D60870078881F /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
+		E29594C8117D60870078881F /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		E29594C9117D60870078881F /* Parser_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser_test.cpp; sourceTree = "<group>"; };
+		E2A85621118368D800667631 /* TestHarness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHarness.h; sourceTree = "<group>"; };
+		E2A8562811836A7600667631 /* Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mock.h; sourceTree = "<group>"; };
+		E2A8562B11836B9500667631 /* Buffered_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffered_test.cpp; sourceTree = "<group>"; };
+		E2A8562C11836B9500667631 /* Buffered.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffered.cpp; sourceTree = "<group>"; };
+		E2A8562D11836B9500667631 /* Buffered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffered.h; sourceTree = "<group>"; };
+		E2A8562E11836B9500667631 /* BufferedWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferedWrapper.h; sourceTree = "<group>"; };
+		E2A8563711836C4F00667631 /* Stretchable_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stretchable_test.cpp; sourceTree = "<group>"; };
+		E2A8563811836C4F00667631 /* Stretchable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stretchable.h; sourceTree = "<group>"; };
+		E2B2F6111171255400D0C002 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
+		E2B2F7EA117193C700D0C002 /* pitch-shift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "pitch-shift"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2B2F7FA1171941C00D0C002 /* StretchMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StretchMain.cpp; sourceTree = "<group>"; };
+		E2CF9FD11173AC7100449411 /* results.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = results.txt; sourceTree = "<group>"; };
+		E2CFA04F1173E09300449411 /* TimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScaler.h; sourceTree = "<group>"; };
+		E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTimeScaler_test.cpp; path = ../src/rec/audio/AudioTimeScaler_test.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E25FC6C5116A407700FCB21D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E25FC810116BA3A400FCB21D /* libjucedebug.a in Frameworks */,
+				E22A40AE118614AA007293B2 /* libammf-2.a in Frameworks */,
+				E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */,
+				E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */,
+				E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */,
+				E25FCB16116BAE2E00FCB21D /* Carbon.framework in Frameworks */,
+				E25FCB17116BAE2E00FCB21D /* IOKit.framework in Frameworks */,
+				E25FCB18116BAE2E00FCB21D /* CoreAudio.framework in Frameworks */,
+				E25FCB19116BAE2E00FCB21D /* CoreMIDI.framework in Frameworks */,
+				E25FCB1A116BAE2E00FCB21D /* WebKit.framework in Frameworks */,
+				E25FCB1B116BAE2E00FCB21D /* DiscRecording.framework in Frameworks */,
+				E25FCB1C116BAE2E00FCB21D /* OpenGL.framework in Frameworks */,
+				E25FCB1D116BAE2E00FCB21D /* QuartzCore.framework in Frameworks */,
+				E25FCB1E116BAE2E00FCB21D /* QTKit.framework in Frameworks */,
+				E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2B2F7E8117193C700D0C002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2B2FABF1171944400D0C002 /* libjucedebug.a in Frameworks */,
+				E22A408C118614A6007293B2 /* libammf-2.a in Frameworks */,
+				E2B2FAC31171944400D0C002 /* Cocoa.framework in Frameworks */,
+				E2B2FAC41171944400D0C002 /* Carbon.framework in Frameworks */,
+				E2B2FAC51171944400D0C002 /* IOKit.framework in Frameworks */,
+				E2B2FAC61171944400D0C002 /* CoreAudio.framework in Frameworks */,
+				E2B2FAC71171944400D0C002 /* CoreMIDI.framework in Frameworks */,
+				E2B2FAC81171944400D0C002 /* WebKit.framework in Frameworks */,
+				E2B2FAC91171944400D0C002 /* DiscRecording.framework in Frameworks */,
+				E2B2FACA1171944400D0C002 /* OpenGL.framework in Frameworks */,
+				E2B2FACB1171944400D0C002 /* QuartzCore.framework in Frameworks */,
+				E2B2FACC1171944400D0C002 /* QTKit.framework in Frameworks */,
+				E2B2FACD1171944400D0C002 /* QuickTime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* unit-tests */ = {
+			isa = PBXGroup;
+			children = (
+				E22A40821186147F007293B2 /* ammf.xcodeproj */,
+				E2CF9FD11173AC7100449411 /* results.txt */,
+				E25FCB09116BAE2E00FCB21D /* Frameworks */,
+				E25FC805116BA38500FCB21D /* Juce.xcodeproj */,
+				E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = "unit-tests";
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E29594C5117D60870078881F /* json */,
+				E25FCE94116BB6FC00FCB21D /* audio */,
+				E25FCE9E116BB6FC00FCB21D /* base */,
+				E25FCEA4116BB6FC00FCB21D /* util */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E25FC6C7116A407700FCB21D /* unit-tests */,
+				E2B2F7EA117193C700D0C002 /* pitch-shift */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859E8B029090EE04C91782 /* unit-tests.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		E22A40831186147F007293B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E22A40871186147F007293B2 /* libammf-2.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E25FC6DE116A594C00FCB21D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E25FC6EA116A594C00FCB21D /* gtest.framework */,
+				E25FC6EC116A594C00FCB21D /* libgtest.a */,
+				E25FC6EE116A594C00FCB21D /* libgtest_main.a */,
+				E25FC6F0116A594C00FCB21D /* gtest_unittest-framework */,
+				E25FC6F2116A594C00FCB21D /* gtest_unittest */,
+				E25FC6F4116A594C00FCB21D /* sample1_unittest-framework */,
+				E25FC6F6116A594C00FCB21D /* sample1_unittest-static */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E25FC806116BA38500FCB21D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E25FC80B116BA38500FCB21D /* libjucedebug.a */,
+				E25FC80D116BA38500FCB21D /* libjucedebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E25FCB09116BAE2E00FCB21D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */,
+				E25FCB0B116BAE2E00FCB21D /* Carbon.framework */,
+				E25FCB0C116BAE2E00FCB21D /* IOKit.framework */,
+				E25FCB0D116BAE2E00FCB21D /* CoreAudio.framework */,
+				E25FCB0E116BAE2E00FCB21D /* CoreMIDI.framework */,
+				E25FCB0F116BAE2E00FCB21D /* WebKit.framework */,
+				E25FCB10116BAE2E00FCB21D /* DiscRecording.framework */,
+				E25FCB11116BAE2E00FCB21D /* OpenGL.framework */,
+				E25FCB12116BAE2E00FCB21D /* QuartzCore.framework */,
+				E25FCB13116BAE2E00FCB21D /* QTKit.framework */,
+				E25FCB14116BAE2E00FCB21D /* QuickTime.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E25FCE94116BB6FC00FCB21D /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				E2A855A911835D3B00667631 /* source */,
+				E2B2F6111171255400D0C002 /* Math.h */,
+				E2B2F7FA1171941C00D0C002 /* StretchMain.cpp */,
+				E25FCE99116BB6FC00FCB21D /* FillQueue.h */,
+				E2CFA04F1173E09300449411 /* TimeScaler.h */,
+				E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */,
+			);
+			name = audio;
+			path = ../src/rec/audio;
+			sourceTree = SOURCE_ROOT;
+		};
+		E25FCE9E116BB6FC00FCB21D /* base */ = {
+			isa = PBXGroup;
+			children = (
+				E25FCE9F116BB6FC00FCB21D /* basictypes.h */,
+				E25FCEA0116BB6FC00FCB21D /* build_config.h */,
+				E25FCEA1116BB6FC00FCB21D /* port.h */,
+				E25FCEA2116BB6FC00FCB21D /* scoped_ptr.h */,
+				E25FCEA3116BB6FC00FCB21D /* string_piece.h */,
+			);
+			name = base;
+			path = ../src/rec/base;
+			sourceTree = SOURCE_ROOT;
+		};
+		E25FCEA4116BB6FC00FCB21D /* util */ = {
+			isa = PBXGroup;
+			children = (
+				E25FCEA5116BB6FC00FCB21D /* Callback.h */,
+				E25FCEA6116BB6FC00FCB21D /* CircularEnum.h */,
+				E25FCEA7116BB6FC00FCB21D /* CriticalSection.h */,
+				E25FCEA8116BB6FC00FCB21D /* DoubleBuffer.h */,
+				E25FCEA9116BB6FC00FCB21D /* locker.h */,
+				E25FCEAA116BB6FC00FCB21D /* math.h */,
+				E25FCEAB116BB6FC00FCB21D /* math_test.cpp */,
+				E25FCEAC116BB6FC00FCB21D /* State.h */,
+				E25FCEAD116BB6FC00FCB21D /* WaitLoopThread.h */,
+				E25FCEAE116BB6FC00FCB21D /* Wrapper.h */,
+			);
+			name = util;
+			path = ../src/rec/util;
+			sourceTree = SOURCE_ROOT;
+		};
+		E29594C5117D60870078881F /* json */ = {
+			isa = PBXGroup;
+			children = (
+				E29594C6117D60870078881F /* Node.h */,
+				E29594C7117D60870078881F /* Parser.cpp */,
+				E29594C8117D60870078881F /* Parser.h */,
+				E29594C9117D60870078881F /* Parser_test.cpp */,
+			);
+			name = json;
+			path = ../src/rec/json;
+			sourceTree = SOURCE_ROOT;
+		};
+		E2A855A911835D3B00667631 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				E2A8562B11836B9500667631 /* Buffered_test.cpp */,
+				E2A8562C11836B9500667631 /* Buffered.cpp */,
+				E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */,
+				E2A8563711836C4F00667631 /* Stretchable_test.cpp */,
+				E2A8563811836C4F00667631 /* Stretchable.h */,
+				E2A8562D11836B9500667631 /* Buffered.h */,
+				E2A8562E11836B9500667631 /* BufferedWrapper.h */,
+				E2A85621118368D800667631 /* TestHarness.h */,
+				E2A8562811836A7600667631 /* Mock.h */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E25FC6C6116A407700FCB21D /* unit-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E25FC6CB116A408900FCB21D /* Build configuration list for PBXNativeTarget "unit-tests" */;
+			buildPhases = (
+				E25FC6C4116A407700FCB21D /* Sources */,
+				E25FC6C5116A407700FCB21D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "unit-tests";
+			productName = "unit-tests";
+			productReference = E25FC6C7116A407700FCB21D /* unit-tests */;
+			productType = "com.apple.product-type.tool";
+		};
+		E2B2F7E9117193C700D0C002 /* pitch-shift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2B2F7F9117193F700D0C002 /* Build configuration list for PBXNativeTarget "pitch-shift" */;
+			buildPhases = (
+				E2B2F7E7117193C700D0C002 /* Sources */,
+				E2B2F7E8117193C700D0C002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "pitch-shift";
+			productName = "pitch-shift";
+			productReference = E2B2F7EA117193C700D0C002 /* pitch-shift */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "unit-tests" */;
+			compatibilityVersion = "Xcode 3.0";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* unit-tests */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E22A40831186147F007293B2 /* Products */;
+					ProjectRef = E22A40821186147F007293B2 /* ammf.xcodeproj */;
+				},
+				{
+					ProductGroup = E25FC6DE116A594C00FCB21D /* Products */;
+					ProjectRef = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
+				},
+				{
+					ProductGroup = E25FC806116BA38500FCB21D /* Products */;
+					ProjectRef = E25FC805116BA38500FCB21D /* Juce.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E2B2F7E9117193C700D0C002 /* pitch-shift */,
+				E25FC6C6116A407700FCB21D /* unit-tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E22A40871186147F007293B2 /* libammf-2.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libammf-2.a";
+			remoteRef = E22A40861186147F007293B2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC6EA116A594C00FCB21D /* gtest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = gtest.framework;
+			remoteRef = E25FC6E9116A594C00FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC6EC116A594C00FCB21D /* libgtest.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libgtest.a;
+			remoteRef = E25FC6EB116A594C00FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC6EE116A594C00FCB21D /* libgtest_main.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libgtest_main.a;
+			remoteRef = E25FC6ED116A594C00FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC6F0116A594C00FCB21D /* gtest_unittest-framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "gtest_unittest-framework";
+			remoteRef = E25FC6EF116A594C00FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC6F2116A594C00FCB21D /* gtest_unittest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = gtest_unittest;
+			remoteRef = E25FC6F1116A594C00FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC6F4116A594C00FCB21D /* sample1_unittest-framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "sample1_unittest-framework";
+			remoteRef = E25FC6F3116A594C00FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC6F6116A594C00FCB21D /* sample1_unittest-static */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "sample1_unittest-static";
+			remoteRef = E25FC6F5116A594C00FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC80B116BA38500FCB21D /* libjucedebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjucedebug.a;
+			remoteRef = E25FC80A116BA38500FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E25FC80D116BA38500FCB21D /* libjucedebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjucedebug.a;
+			remoteRef = E25FC80C116BA38500FCB21D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E25FC6C4116A407700FCB21D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E25FCEB3116BB6FC00FCB21D /* FillQueueTest.cpp in Sources */,
+				E25FCEB5116BB6FC00FCB21D /* math_test.cpp in Sources */,
+				E29594CA117D60870078881F /* Parser.cpp in Sources */,
+				E29594CB117D60870078881F /* Parser_test.cpp in Sources */,
+				E2A8562F11836B9500667631 /* Buffered_test.cpp in Sources */,
+				E2A8563011836B9500667631 /* Buffered.cpp in Sources */,
+				E2A8563911836C4F00667631 /* Stretchable_test.cpp in Sources */,
+				E2D0D0D71183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2B2F7E7117193C700D0C002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2B2F7FB1171941C00D0C002 /* StretchMain.cpp in Sources */,
+				E29594CC117D60870078881F /* Parser.cpp in Sources */,
+				E29594CD117D60870078881F /* Parser_test.cpp in Sources */,
+				E2A8563111836B9500667631 /* Buffered_test.cpp in Sources */,
+				E2A8563211836B9500667631 /* Buffered.cpp in Sources */,
+				E2A8563A11836C4F00667631 /* Stretchable_test.cpp in Sources */,
+				E2D0D0D81183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = NOT_TESTING;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/Users/tom/Documents/development/rec,
+					/Users/tom/Documents/development/juce/src,
+					/Users/tom/Documents/development/juce,
+					/Users/tom/Documents/development/rec/src,
+					/Users/tom/Documents/development/gtest/include,
+				);
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = NOT_TESTING;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/Users/tom/Documents/development/rec,
+					/Users/tom/Documents/development/juce/src,
+					/Users/tom/Documents/development/juce,
+					/Users/tom/Documents/development/rec/src,
+					/Users/tom/Documents/development/gtest/include,
+				);
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Release;
+		};
+		E25FC6C9116A407700FCB21D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ammf/build/Debug\"",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "unit-tests";
+			};
+			name = Debug;
+		};
+		E25FC6CA116A407700FCB21D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ammf/build/Debug\"",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "unit-tests";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E2B2F7EC117193C700D0C002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ammf/build/Debug\"",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "pitch-shift";
+			};
+			name = Debug;
+		};
+		E2B2F7ED117193C700D0C002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ammf/build/Debug\"",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "pitch-shift";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "unit-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E25FC6CB116A408900FCB21D /* Build configuration list for PBXNativeTarget "unit-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E25FC6C9116A407700FCB21D /* Debug */,
+				E25FC6CA116A407700FCB21D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2B2F7F9117193F700D0C002 /* Build configuration list for PBXNativeTarget "pitch-shift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2B2F7EC117193C700D0C002 /* Debug */,
+				E2B2F7ED117193C700D0C002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

@@ -1,0 +1,78 @@
+
+#if 0
+
+template <typename BufferIn, typename BufferOut>
+class MultiClientOut : public InOutInterface {
+};
+
+template <typename BufferIn, typename BufferOut>
+Size copy(Size size,
+          BufferIn *in,
+          std::pair<Multi*, BufferOut*> out) {
+  Multi *mcb = out.first;
+  BufferOut *bufferOut = out.second;
+  LockInterface *lock = mcb->lock_;
+  ProducerQueue *producerQueue = &mcb->producerQueue_;
+  ClientManager *clientManager = &mcb->clientManager_;
+
+  BlockList blocks;
+  Size copied = 0;
+
+  {
+    Locker l(lock);
+    producerQueue->allocate(size, &blocks);
+  }
+
+  for (BlockList::iterator i = blocks.begin(); i != blocks.end(); ++i) {
+    copy(getSize(*i), in, make_pair(bufferOut, i->first));
+    {
+      Locker l(lock);
+      clientManager->addBlocks(producerQueue->produce(partial));
+    }
+    copied += i->size();
+  }
+  return copied;
+}
+
+// Copy to a Multi.
+template <typename BufferIn, typename BufferOut>
+Size copy(Size size,
+          std::pair<Multi::Client*, BufferIn*> in,
+          BufferOut* out) {
+  Multi::Client *multiClient = in.first;
+  Multi *mcb = multiClient->first;
+  ClientManager::Client client = multiClient->second;
+
+  BufferIn *bufferIn = in.second;
+  LockInterface *lock = mcb->lock_;
+  ProducerQueue *producerQueue = &mcb->producerQueue_;
+  ClientManager *clientManager = &mcb->clientManager_;
+
+  BlockList blocks;
+  Size copied = 0;
+
+  {
+    Locker l(lock);
+    copied = clientManager->getBlocks(client, block.size(), &blocks);
+  }
+
+  for (BlockList::iterator i = blocks.begin(); i != blocks.end(); ++i) {
+    copy(getSize(*i), make_pair(out, i->first), bufferIn);
+    {
+      Locker l(lock);
+      producerQueue->remove(clientManager->erase(client, i->first));
+    }
+  }
+
+  return copied;
+}
+
+ private:
+  scoped_ptr<Buffer> buffer_;
+  scoped_ptr<LockInterface> lock;
+
+  ProducerQueue mcb->producerQueue_;
+  ClientManager mcb->clientManager_;
+
+  DISALLOW_COPY_AND_ASSIGN(Multi);
+};

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="sDthDiayr" name="Slow" projectType="guiapp" version="0.0.1"
+              juceLinkage="amalg_multi" buildVST="1" buildRTAS="0" buildAU="1"
+              pluginName="Juce Project" pluginDesc="Juce Project" pluginManufacturer="yourcompany"
+              pluginManufacturerCode="abcd" pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}"
+              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
+              pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="JuceProjectAU" pluginAUViewClass="JuceProjectAU_V1"
+              pluginRTASCategory="" bundleIdentifier="ax.to.rec" jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+               juceFolder="../../../juce"/>
+    <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+                  juceFolder="../juce"/>
+    <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
+           juceFolder="../juce"/>
+    <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../juce"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../juce"/>
+  </EXPORTFORMATS>
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="/Users/tom/Documents/development/rec;/Users/tom/Documents/development/rec/src;/Users/tom/Documents/development/juce/src;/Users/tom/Documents/development/juce"
+                   defines=""/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="SlowBurn"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="/Users/tom/Documents/development/rec;/Users/tom/Documents/development/rec/src;/Users/tom/Documents/development/juce/src;/Users/tom/Documents/development/juce"
+                   defines=""/>
+  </CONFIGURATIONS>
+  <MAINGROUP id="xOv2eBhZg" name="Slow">
+    <GROUP id="8x67ovHD" name="Source">
+      <GROUP id="cuSqxl2WN" name="audio">
+        <FILE id="aQjUBNhlq" name="BufferedAudioSource.cpp" compile="1" resource="0"
+              file="src/rec/audio/BufferedAudioSource.cpp"/>
+        <FILE id="JC7VsT23a" name="BufferedAudioSource.h" compile="0" resource="0"
+              file="src/rec/audio/BufferedAudioSource.h"/>
+        <FILE id="w1AMO2eOW" name="BufferQueue.h" compile="0" resource="0"
+              file="src/rec/audio/BufferQueue.h"/>
+        <FILE id="57vd16P0p" name="FillQueue.h" compile="0" resource="0" file="src/rec/audio/FillQueue.h"/>
+        <FILE id="BBTmM6noh" name="Math.h" compile="0" resource="0" file="src/rec/audio/Math.h"/>
+        <FILE id="gHihLgeYK" name="MockAudioSource.h" compile="0" resource="0"
+              file="src/rec/audio/MockAudioSource.h"/>
+        <FILE id="JHgNcRv2I" name="MutableScaler.h" compile="0" resource="0"
+              file="src/rec/audio/MutableScaler.h"/>
+        <FILE id="MbrOEEPXD" name="StretchableAudioSource.cpp" compile="1"
+              resource="0" file="src/rec/audio/StretchableAudioSource.cpp"/>
+        <FILE id="iG6J21cFY" name="StretchableAudioSource.h" compile="0" resource="0"
+              file="src/rec/audio/StretchableAudioSource.h"/>
+      </GROUP>
+      <GROUP id="rcZBCV2Hx" name="ammf_scaler">
+        <FILE id="ounxHJP2i" name="AudioResampler.cpp" compile="1" resource="0"
+              file="src/rec/ammf_scaler/AudioResampler.cpp"/>
+        <FILE id="VnLapxsuW" name="AudioResampler.h" compile="0" resource="0"
+              file="src/rec/ammf_scaler/AudioResampler.h"/>
+        <FILE id="3PCiFGMX7" name="AudioTimeScaler.cpp" compile="1" resource="0"
+              file="src/rec/ammf_scaler/AudioTimeScaler.cpp"/>
+        <FILE id="AtZ2QFA1I" name="AudioTimeScaler.h" compile="0" resource="0"
+              file="src/rec/ammf_scaler/AudioTimeScaler.h"/>
+        <FILE id="rVmtELBiN" name="datatype.h" compile="0" resource="0" file="src/rec/ammf_scaler/datatype.h"/>
+        <FILE id="ZOoea2uk4" name="fraction.h" compile="0" resource="0" file="src/rec/ammf_scaler/fraction.h"/>
+        <FILE id="HSwp4SHZ" name="hfft.c" compile="1" resource="0" file="src/rec/ammf_scaler/hfft.c"/>
+        <FILE id="3xLdLkMk8" name="hfft.h" compile="0" resource="0" file="src/rec/ammf_scaler/hfft.h"/>
+        <FILE id="Z4Yu8A5PA" name="Makefile" compile="0" resource="1" file="src/rec/ammf_scaler/Makefile"/>
+        <FILE id="6asClyd1a" name="mfAlloc.c" compile="1" resource="0" file="src/rec/ammf_scaler/mfAlloc.c"/>
+        <FILE id="356AvrecH" name="mfAlloc.h" compile="0" resource="0" file="src/rec/ammf_scaler/mfAlloc.h"/>
+        <FILE id="wBwRZdnO2" name="mferrors.h" compile="0" resource="0" file="src/rec/ammf_scaler/mferrors.h"/>
+        <FILE id="AkuTQZPrn" name="mfGlobals.h" compile="0" resource="0" file="src/rec/ammf_scaler/mfGlobals.h"/>
+        <FILE id="IrhdC0F2U" name="mfMacros.h" compile="0" resource="0" file="src/rec/ammf_scaler/mfMacros.h"/>
+        <FILE id="H01jB3Ahg" name="mfMath.h" compile="0" resource="0" file="src/rec/ammf_scaler/mfMath.h"/>
+      </GROUP>
+      <GROUP id="ydGZTjwRP" name="app">
+        <FILE id="Pez5qt4HX" name="RecApplication.cpp" compile="1" resource="0"
+              file="src/rec/app/RecApplication.cpp"/>
+        <FILE id="mDKEm2SJa" name="RecContainer.h" compile="0" resource="0"
+              file="src/rec/app/RecContainer.h"/>
+        <FILE id="dM50iJdcA" name="RecWindow.cpp" compile="1" resource="0"
+              file="src/rec/app/RecWindow.cpp"/>
+        <FILE id="bJRmlMvNg" name="RecWindow.h" compile="0" resource="0" file="src/rec/app/RecWindow.h"/>
+      </GROUP>
+      <GROUP id="PySbE3jl" name="base">
+        <FILE id="mN9OU9xdZ" name="basictypes.h" compile="0" resource="0" file="src/rec/base/basictypes.h"/>
+        <FILE id="57G0218af" name="build_config.h" compile="0" resource="0"
+              file="src/rec/base/build_config.h"/>
+        <FILE id="dFUv6NIzO" name="port.h" compile="0" resource="0" file="src/rec/base/port.h"/>
+        <FILE id="MTdXBstR" name="scoped_ptr.h" compile="0" resource="0" file="src/rec/base/scoped_ptr.h"/>
+        <FILE id="J534Mf8d" name="string_piece.h" compile="0" resource="0"
+              file="src/rec/base/string_piece.h"/>
+      </GROUP>
+      <GROUP id="hA2tQmm3w" name="components">
+        <FILE id="enb2SCcZ" name="AudioDemoPlaybackPage.cpp" compile="1" resource="0"
+              file="src/rec/components/AudioDemoPlaybackPage.cpp"/>
+        <FILE id="Xptyk6bid" name="AudioDemoPlaybackPage.h" compile="0" resource="0"
+              file="src/rec/components/AudioDemoPlaybackPage.h"/>
+        <FILE id="xjSFhlHMp" name="AudioDemoSetupPage.cpp" compile="1" resource="0"
+              file="src/rec/components/AudioDemoSetupPage.cpp"/>
+        <FILE id="3OJgvr5BK" name="AudioDemoSetupPage.h" compile="0" resource="0"
+              file="src/rec/components/AudioDemoSetupPage.h"/>
+        <FILE id="ZjscnGPkX" name="AudioDemoTabComponent.cpp" compile="1" resource="0"
+              file="src/rec/components/AudioDemoTabComponent.cpp"/>
+        <FILE id="cvOg4huQ8" name="AudioDemoTabComponent.h" compile="0" resource="0"
+              file="src/rec/components/AudioDemoTabComponent.h"/>
+      </GROUP>
+      <GROUP id="lTFfEBKXD" name="util">
+        <FILE id="249H4m9l7" name="Wrapper.h" compile="0" resource="0" file="src/rec/util/Wrapper.h"/>
+        <FILE id="X1JBVtXjE" name="locker.h" compile="0" resource="0" file="src/rec/util/locker.h"/>
+        <FILE id="xuCBFMtDw" name="math.h" compile="0" resource="0" file="src/rec/util/math.h"/>
+      </GROUP>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"
+               JUCE_WASAPI="default" JUCE_DIRECTSOUND="default" JUCE_ALSA="default"
+               JUCE_QUICKTIME="default" JUCE_OPENGL="default" JUCE_USE_FLAC="default"
+               JUCE_USE_OGGVORBIS="default" JUCE_USE_CDBURNER="default" JUCE_USE_CDREADER="default"
+               JUCE_USE_CAMERA="default" JUCE_ENABLE_REPAINT_DEBUGGING="default"
+               JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
+               JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default"
+               JUCE_WEB_BROWSER="default" JUCE_SUPPORT_CARBON="default" JUCE_CHECK_MEMORY_LEAKS="default"
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"/>
+</JUCERPROJECT>
