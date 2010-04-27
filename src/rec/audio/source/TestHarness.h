@@ -41,6 +41,8 @@ class TestHarness {
     return true;
   }
 
+  void setSource(AudioSource* source) { wrapper_.reset(source); }
+
   template <typename Wrapper, typename Source>
   void setWrapper() {
     source_.reset(new Source);

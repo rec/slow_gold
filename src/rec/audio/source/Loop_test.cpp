@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "rec/audio/source/Stretchable.h"
+#include "rec/audio/source/Loop.h"
 #include "rec/audio/source/Mock.h"
 #include "rec/audio/source/TestHarness.h"
 #include "rec/audio/Math.h"
@@ -28,17 +28,26 @@ class MockRamp : public Mock {
 
 struct RampTester {
   bool operator()(TestHarness* test, float sample) {
-    float expected = rampWave(test->totalSampleNumber(), 100);
-    EXPECT_NEAR(sample, expected, 0.082) << *test;
-    return fabs(sample - expected) < 0.082;
+    float expected = rampWave(test->totalSampleNumber(), 64);
+    EXPECT_EQ(sample, expected);
+    return sample == expected;
   };
 };
 
 }  // namespace
 
-TEST(RecAudio, Stretchable) {
-  TestHarness tester(4, 512, 512);
-  tester.test<Stretchable, MockRamp, RampTester>();
+TEST(RecAudio, Loop) {
+  int size = 128;
+  AudioSampleBuffer buffer(2, size);
+  for (int i = 0; i < size; ++i) {
+    for (int c = 0; c < 2; ++c)
+      *buffer.getSampleData(c, i) = rampWave(i, 64);
+  }
+  TestHarness tester(4, 16, 16);
+  Loop loop(buffer);
+  tester.setSource(&loop);
+
+  tester.testAudioSource(RampTester());
 }
 
 }  // namespace source

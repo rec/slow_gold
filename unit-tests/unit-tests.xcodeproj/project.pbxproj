@@ -27,6 +27,8 @@
 		E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB14116BAE2E00FCB21D /* QuickTime.framework */; };
 		E25FCEB3116BB6FC00FCB21D /* FillQueueTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */; };
 		E25FCEB5116BB6FC00FCB21D /* math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCEAB116BB6FC00FCB21D /* math_test.cpp */; };
+		E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
+		E2940A1A1186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
 		E29594CA117D60870078881F /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C7117D60870078881F /* Parser.cpp */; };
 		E29594CB117D60870078881F /* Parser_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C9117D60870078881F /* Parser_test.cpp */; };
 		E29594CC117D60870078881F /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C7117D60870078881F /* Parser.cpp */; };
@@ -162,6 +164,8 @@
 		E25FCEAC116BB6FC00FCB21D /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		E25FCEAD116BB6FC00FCB21D /* WaitLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitLoopThread.h; sourceTree = "<group>"; };
 		E25FCEAE116BB6FC00FCB21D /* Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wrapper.h; sourceTree = "<group>"; };
+		E2940A171186BF22002E32D6 /* Loop_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loop_test.cpp; sourceTree = "<group>"; };
+		E2940A181186BF22002E32D6 /* Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loop.h; sourceTree = "<group>"; };
 		E29594C6117D60870078881F /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		E29594C7117D60870078881F /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
 		E29594C8117D60870078881F /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 			isa = PBXGroup;
 			children = (
 				E2A8562B11836B9500667631 /* Buffered_test.cpp */,
+				E2940A171186BF22002E32D6 /* Loop_test.cpp */,
+				E2940A181186BF22002E32D6 /* Loop.h */,
 				E2A8562C11836B9500667631 /* Buffered.cpp */,
 				E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */,
 				E2A8563711836C4F00667631 /* Stretchable_test.cpp */,
@@ -548,6 +554,7 @@
 				E2A8563911836C4F00667631 /* Stretchable_test.cpp in Sources */,
 				E2D0D0D71183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */,
 				E22A40E5118625AF007293B2 /* Node.cpp in Sources */,
+				E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +570,7 @@
 				E2A8563A11836C4F00667631 /* Stretchable_test.cpp in Sources */,
 				E2D0D0D81183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */,
 				E22A40E6118625AF007293B2 /* Node.cpp in Sources */,
+				E2940A1A1186BF22002E32D6 /* Loop_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

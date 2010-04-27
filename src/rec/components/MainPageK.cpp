@@ -49,7 +49,6 @@ void MainPageK::zoomSliderChanged(double value) {
 }
 
 void MainPageK::loadFileIntoTransport(const File& audioFile) {
-  // unload the previous file source and delete it..
   transportSource_.stop();
   if (stretchable_)
     stretchable_->shutdown();
@@ -70,7 +69,7 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
     stretchable_->setSource(&transportSource_);
     player_.setSource(stretchable_.get());
   } else {
-    std::cerr << "Didn't understand file type for filename " 
+    std::cerr << "Didn't understand file type for filename "
               << audioFile.getFileName()
               << std::endl;
   }
