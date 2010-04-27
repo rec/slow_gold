@@ -41,8 +41,6 @@ struct Node {
 
 bool operator==(const Node& x, const Node& y);
 
-
-
 }  // namespace tinyjson
 
 #endif  // __TINYJASON_NODE

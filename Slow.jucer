@@ -31,22 +31,20 @@
   <MAINGROUP id="xOv2eBhZg" name="Slow">
     <GROUP id="8x67ovHD" name="Source">
       <GROUP id="cuSqxl2WN" name="audio">
-        <FILE id="aQjUBNhlq" name="BufferedAudioSource.cpp" compile="1" resource="0"
-              file="src/rec/audio/BufferedAudioSource.cpp"/>
-        <FILE id="JC7VsT23a" name="BufferedAudioSource.h" compile="0" resource="0"
-              file="src/rec/audio/BufferedAudioSource.h"/>
-        <FILE id="w1AMO2eOW" name="BufferQueue.h" compile="0" resource="0"
-              file="src/rec/audio/BufferQueue.h"/>
+        <GROUP id="eLc5mRpmd" name="source">
+          <FILE id="K1KFgcryz" name="Buffered.cpp" compile="1" resource="0" file="src/rec/audio/source/Buffered.cpp"/>
+          <FILE id="VACAGtFSO" name="Buffered.h" compile="0" resource="0" file="src/rec/audio/source/Buffered.h"/>
+          <FILE id="gjaQFjJ8b" name="BufferedWrapper.h" compile="0" resource="0"
+                file="src/rec/audio/source/BufferedWrapper.h"/>
+          <FILE id="jQ8x3Xamq" name="Identity.h" compile="0" resource="0" file="src/rec/audio/source/Identity.h"/>
+          <FILE id="TmHwgo77Z" name="Mock.h" compile="0" resource="0" file="src/rec/audio/source/Mock.h"/>
+          <FILE id="U3rbP1R2D" name="Stretchable.h" compile="0" resource="0"
+                file="src/rec/audio/source/Stretchable.h"/>
+          <FILE id="NPchpgYNS" name="Wrapper.h" compile="0" resource="0" file="src/rec/audio/source/Wrapper.h"/>
+        </GROUP>
+        <FILE id="uFExG3gXu" name="TimeScaler.h" compile="0" resource="0" file="src/rec/audio/TimeScaler.h"/>
         <FILE id="57vd16P0p" name="FillQueue.h" compile="0" resource="0" file="src/rec/audio/FillQueue.h"/>
         <FILE id="BBTmM6noh" name="Math.h" compile="0" resource="0" file="src/rec/audio/Math.h"/>
-        <FILE id="gHihLgeYK" name="MockAudioSource.h" compile="0" resource="0"
-              file="src/rec/audio/MockAudioSource.h"/>
-        <FILE id="JHgNcRv2I" name="MutableScaler.h" compile="0" resource="0"
-              file="src/rec/audio/MutableScaler.h"/>
-        <FILE id="MbrOEEPXD" name="StretchableAudioSource.cpp" compile="1"
-              resource="0" file="src/rec/audio/StretchableAudioSource.cpp"/>
-        <FILE id="iG6J21cFY" name="StretchableAudioSource.h" compile="0" resource="0"
-              file="src/rec/audio/StretchableAudioSource.h"/>
       </GROUP>
       <GROUP id="rcZBCV2Hx" name="ammf_scaler">
         <FILE id="ounxHJP2i" name="AudioResampler.cpp" compile="1" resource="0"
@@ -57,8 +55,6 @@
               file="src/rec/ammf_scaler/AudioTimeScaler.cpp"/>
         <FILE id="AtZ2QFA1I" name="AudioTimeScaler.h" compile="0" resource="0"
               file="src/rec/ammf_scaler/AudioTimeScaler.h"/>
-        <FILE id="rVmtELBiN" name="datatype.h" compile="0" resource="0" file="src/rec/ammf_scaler/datatype.h"/>
-        <FILE id="ZOoea2uk4" name="fraction.h" compile="0" resource="0" file="src/rec/ammf_scaler/fraction.h"/>
         <FILE id="HSwp4SHZ" name="hfft.c" compile="1" resource="0" file="src/rec/ammf_scaler/hfft.c"/>
         <FILE id="3xLdLkMk8" name="hfft.h" compile="0" resource="0" file="src/rec/ammf_scaler/hfft.h"/>
         <FILE id="Z4Yu8A5PA" name="Makefile" compile="0" resource="1" file="src/rec/ammf_scaler/Makefile"/>
@@ -88,10 +84,11 @@
               file="src/rec/base/string_piece.h"/>
       </GROUP>
       <GROUP id="hA2tQmm3w" name="components">
-        <FILE id="enb2SCcZ" name="AudioDemoPlaybackPage.cpp" compile="1" resource="0"
-              file="src/rec/components/AudioDemoPlaybackPage.cpp"/>
-        <FILE id="Xptyk6bid" name="AudioDemoPlaybackPage.h" compile="0" resource="0"
-              file="src/rec/components/AudioDemoPlaybackPage.h"/>
+        <FILE id="toUtWS6K" name="MainPageK.cpp" compile="1" resource="0" file="src/rec/components/MainPageK.cpp"/>
+        <FILE id="x1FSWXW7M" name="MainPageK.h" compile="0" resource="0" file="src/rec/components/MainPageK.h"/>
+        <FILE id="0RH7T3P3w" name="MainPageJ.cpp" compile="1" resource="0"
+              file="src/rec/components/MainPageJ.cpp"/>
+        <FILE id="2KK9Fo1Sj" name="MainPageJ.h" compile="0" resource="0" file="src/rec/components/MainPageJ.h"/>
         <FILE id="xjSFhlHMp" name="AudioDemoSetupPage.cpp" compile="1" resource="0"
               file="src/rec/components/AudioDemoSetupPage.cpp"/>
         <FILE id="3OJgvr5BK" name="AudioDemoSetupPage.h" compile="0" resource="0"
@@ -116,5 +113,5 @@
                JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
                JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default"
                JUCE_WEB_BROWSER="default" JUCE_SUPPORT_CARBON="default" JUCE_CHECK_MEMORY_LEAKS="default"
-               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"/>
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_USE_XCURSOR="default"/>
 </JUCERPROJECT>

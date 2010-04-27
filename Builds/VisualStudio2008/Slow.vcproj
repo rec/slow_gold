@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VisualStudioProject ProjectType="Visual C++"
+                     Version="9.00"
+                     Name="Slow"
+                     ProjectGUID="{8E854B94-D8C7-D5A5-D1AD-ACAA8C176444}"
+                     TargetFrameworkVersion="131072">
+  <Platforms>
+    <Platform Name="Win32"/>
+  </Platforms>
+  <ToolFiles/>
+  <Configurations>
+    <Configuration Name="Debug&#124;Win32"
+                   OutputDirectory=".\Debug"
+                   IntermediateDirectory=".\Debug"
+                   ConfigurationType="1"
+                   UseOfMFC="0"
+                   ATLMinimizesCRunTimeLibraryUsage="false"
+                   CharacterSet="2">
+      <Tool Name="VCPreBuildEventTool"/>
+      <Tool Name="VCCustomBuildTool"/>
+      <Tool Name="VCXMLDataGeneratorTool"/>
+      <Tool Name="VCWebServiceProxyGeneratorTool"/>
+      <Tool Name="VCMIDLTool"
+            PreprocessorDefinitions="_DEBUG"
+            MkTypLibCompatible="true"
+            SuppressStartupBanner="true"
+            TargetEnvironment="1"
+            TypeLibraryName=".\Debug\SlowBurn.tlb"
+            HeaderFileName=""/>
+      <Tool Name="VCCLCompilerTool"
+            Optimization="0"
+            BufferSecurityCheck=""
+            DebugInformationFormat="4"
+            AdditionalIncludeDirectories="/Users/tom/Documents/development/rec;/Users/tom/Documents/development/rec/src;/Users/tom/Documents/development/juce/src;/Users/tom/Documents/development/juce"
+            PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
+            RuntimeLibrary="1"
+            RuntimeTypeInfo="true"
+            UsePrecompiledHeader="0"
+            PrecompiledHeaderFile=".\Debug\SlowBurn.pch"
+            AssemblerListingLocation=".\Debug\"
+            ObjectFile=".\Debug\"
+            ProgramDataBaseFileName=".\Debug\"
+            WarningLevel="3"
+            SuppressStartupBanner="true"/>
+      <Tool Name="VCManagedResourceCompilerTool"/>
+      <Tool Name="VCResourceCompilerTool"
+            PreprocessorDefinitions="_DEBUG"/>
+      <Tool Name="VCPreLinkEventTool"/>
+      <Tool Name="VCLinkerTool"
+            OutputFile=".\Debug\SlowBurn.exe"
+            SuppressStartupBanner="true"
+            IgnoreDefaultLibraryNames="libcmt.lib, msvcrt.lib"
+            GenerateDebugInformation="true"
+            ProgramDatabaseFile=".\Debug\SlowBurn.pdb"
+            SubSystem="2"
+            RandomizedBaseAddress="1"
+            DataExecutionPrevention="0"
+            TargetMachine="1"/>
+      <Tool Name="VCALinkTool"/>
+      <Tool Name="VCManifestTool"/>
+      <Tool Name="VCXDCMakeTool"/>
+      <Tool Name="VCBscMakeTool"
+            SuppressStartupBanner="true"
+            OutputFile=".\Debug\SlowBurn.bsc"/>
+      <Tool Name="VCFxCopTool"/>
+      <Tool Name="VCAppVerifierTool"/>
+      <Tool Name="VCPostBuildEventTool"/>
+    </Configuration>
+    <Configuration Name="Release&#124;Win32"
+                   OutputDirectory=".\Release"
+                   IntermediateDirectory=".\Release"
+                   ConfigurationType="1"
+                   UseOfMFC="0"
+                   ATLMinimizesCRunTimeLibraryUsage="false"
+                   CharacterSet="2"
+                   WholeProgramOptimization="1">
+      <Tool Name="VCPreBuildEventTool"/>
+      <Tool Name="VCCustomBuildTool"/>
+      <Tool Name="VCXMLDataGeneratorTool"/>
+      <Tool Name="VCWebServiceProxyGeneratorTool"/>
+      <Tool Name="VCMIDLTool"
+            PreprocessorDefinitions="NDEBUG"
+            MkTypLibCompatible="true"
+            SuppressStartupBanner="true"
+            TargetEnvironment="1"
+            TypeLibraryName=".\Release\SlowBurn.tlb"
+            HeaderFileName=""/>
+      <Tool Name="VCCLCompilerTool"
+            Optimization="2"
+            InlineFunctionExpansion="1"
+            StringPooling="true"
+            AdditionalIncludeDirectories="/Users/tom/Documents/development/rec;/Users/tom/Documents/development/rec/src;/Users/tom/Documents/development/juce/src;/Users/tom/Documents/development/juce"
+            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG"
+            RuntimeLibrary="0"
+            RuntimeTypeInfo="true"
+            UsePrecompiledHeader="0"
+            PrecompiledHeaderFile=".\Release\SlowBurn.pch"
+            AssemblerListingLocation=".\Release\"
+            ObjectFile=".\Release\"
+            ProgramDataBaseFileName=".\Release\"
+            WarningLevel="3"
+            SuppressStartupBanner="true"/>
+      <Tool Name="VCManagedResourceCompilerTool"/>
+      <Tool Name="VCResourceCompilerTool"
+            PreprocessorDefinitions="NDEBUG"/>
+      <Tool Name="VCPreLinkEventTool"/>
+      <Tool Name="VCLinkerTool"
+            OutputFile=".\Release\SlowBurn.exe"
+            SuppressStartupBanner="true"
+            IgnoreDefaultLibraryNames=""
+            GenerateDebugInformation="false"
+            ProgramDatabaseFile=".\Release\SlowBurn.pdb"
+            SubSystem="2"
+            GenerateManifest="false"
+            OptimizeReferences="2"
+            EnableCOMDATFolding="2"
+            RandomizedBaseAddress="1"
+            DataExecutionPrevention="0"
+            TargetMachine="1"/>
+      <Tool Name="VCALinkTool"/>
+      <Tool Name="VCManifestTool"/>
+      <Tool Name="VCXDCMakeTool"/>
+      <Tool Name="VCBscMakeTool"
+            SuppressStartupBanner="true"
+            OutputFile=".\Release\SlowBurn.bsc"/>
+      <Tool Name="VCFxCopTool"/>
+      <Tool Name="VCAppVerifierTool"/>
+      <Tool Name="VCPostBuildEventTool"/>
+    </Configuration>
+  </Configurations>
+  <References/>
+  <Files>
+    <Filter Name="Slow">
+      <Filter Name="Source">
+        <Filter Name="audio">
+          <Filter Name="source">
+            <File RelativePath="..\..\src\rec\audio\source\Buffered.cpp"/>
+            <File RelativePath="..\..\src\rec\audio\source\Buffered.h"/>
+            <File RelativePath="..\..\src\rec\audio\source\BufferedWrapper.h"/>
+            <File RelativePath="..\..\src\rec\audio\source\Identity.h"/>
+            <File RelativePath="..\..\src\rec\audio\source\Mock.h"/>
+            <File RelativePath="..\..\src\rec\audio\source\Stretchable.h"/>
+            <File RelativePath="..\..\src\rec\audio\source\Wrapper.h"/>
+          </Filter>
+          <File RelativePath="..\..\src\rec\audio\TimeScaler.h"/>
+          <File RelativePath="..\..\src\rec\audio\FillQueue.h"/>
+          <File RelativePath="..\..\src\rec\audio\Math.h"/>
+        </Filter>
+        <Filter Name="ammf_scaler">
+          <File RelativePath="..\..\src\rec\ammf_scaler\AudioResampler.cpp"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\AudioResampler.h"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\AudioTimeScaler.cpp"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\AudioTimeScaler.h"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\hfft.c"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\hfft.h"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\Makefile">
+            <FileConfiguration Name="Debug&#124;Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release&#124;Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\src\rec\ammf_scaler\mfAlloc.c"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\mfAlloc.h"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\mferrors.h"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\mfGlobals.h"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\mfMacros.h"/>
+          <File RelativePath="..\..\src\rec\ammf_scaler\mfMath.h"/>
+        </Filter>
+        <Filter Name="app">
+          <File RelativePath="..\..\src\rec\app\RecApplication.cpp"/>
+          <File RelativePath="..\..\src\rec\app\RecContainer.h"/>
+          <File RelativePath="..\..\src\rec\app\RecWindow.cpp"/>
+          <File RelativePath="..\..\src\rec\app\RecWindow.h"/>
+        </Filter>
+        <Filter Name="base">
+          <File RelativePath="..\..\src\rec\base\basictypes.h"/>
+          <File RelativePath="..\..\src\rec\base\build_config.h"/>
+          <File RelativePath="..\..\src\rec\base\port.h"/>
+          <File RelativePath="..\..\src\rec\base\scoped_ptr.h"/>
+          <File RelativePath="..\..\src\rec\base\string_piece.h"/>
+        </Filter>
+        <Filter Name="components">
+          <File RelativePath="..\..\src\rec\components\MainPageK.cpp"/>
+          <File RelativePath="..\..\src\rec\components\MainPageK.h"/>
+          <File RelativePath="..\..\src\rec\components\MainPageJ.cpp"/>
+          <File RelativePath="..\..\src\rec\components\MainPageJ.h"/>
+          <File RelativePath="..\..\src\rec\components\AudioDemoSetupPage.cpp"/>
+          <File RelativePath="..\..\src\rec\components\AudioDemoSetupPage.h"/>
+          <File RelativePath="..\..\src\rec\components\AudioDemoTabComponent.cpp"/>
+          <File RelativePath="..\..\src\rec\components\AudioDemoTabComponent.h"/>
+        </Filter>
+        <Filter Name="util">
+          <File RelativePath="..\..\src\rec\util\Wrapper.h"/>
+          <File RelativePath="..\..\src\rec\util\locker.h"/>
+          <File RelativePath="..\..\src\rec\util\math.h"/>
+        </Filter>
+      </Filter>
+    </Filter>
+    <Filter Name="Juce Library Code">
+      <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"/>
+    </Filter>
+  </Files>
+  <Globals/>
+</VisualStudioProject>

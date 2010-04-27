@@ -70,7 +70,8 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
     stretchable_->setSource(&transportSource_);
     player_.setSource(stretchable_.get());
   } else {
-    std::cerr << "Didn't understand file type for filename " << audioFile
+    std::cerr << "Didn't understand file type for filename " 
+              << audioFile.getFileName()
               << std::endl;
   }
 }
