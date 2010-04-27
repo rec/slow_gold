@@ -13,7 +13,8 @@ class MainPageK : public FileBrowserListener {
   MainPageK(AudioDeviceManager* d)
     : deviceManager_(d),
       thread_("Timeslice"),
-      directoryList_(NULL, thread_) {
+      directoryList_(NULL, thread_), 
+      loopBuffer_(2, 65536) {
   }
   ~MainPageK() {}
 
@@ -47,6 +48,8 @@ class MainPageK : public FileBrowserListener {
   scoped_ptr<AudioFormatReaderSource> source_;
   scoped_ptr<Stretchable> stretchable_;
   AudioSourcePlayer player_;
+
+  AudioSampleBuffer loopBuffer_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

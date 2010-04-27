@@ -68,11 +68,25 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
     stretchable_.reset(new Stretchable(BufferDescription::DEFAULT));
     stretchable_->setSource(&transportSource_);
     player_.setSource(stretchable_.get());
+
   } else {
     std::cerr << "Didn't understand file type for filename "
               << audioFile.getFileName()
               << std::endl;
   }
+
+  // new code!
+  if (AudioFormatReader* r = formatManager.createReaderFor(audioFile)) {
+    loopBuffer_.setSize(r->numChannels, r->lengthInSamples);
+    loopBuffer_.readFromAudioReader(r, 0, r->lengthInSamples, 0, true, true);
+
+  } else {
+    std::cerr << "Didn't understand file type for filename "
+              << audioFile.getFileName()
+              << std::endl;
+  }
+
+
 }
 
 void MainPageK::selectionChanged() {
