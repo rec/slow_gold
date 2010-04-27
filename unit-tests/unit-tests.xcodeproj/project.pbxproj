@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E22A408C118614A6007293B2 /* libammf-2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22A40871186147F007293B2 /* libammf-2.a */; };
-		E22A40AE118614AA007293B2 /* libammf-2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22A40871186147F007293B2 /* libammf-2.a */; };
+		E22A408C118614A6007293B2 /* libammf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22A40871186147F007293B2 /* libammf.a */; };
+		E22A40AE118614AA007293B2 /* libammf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22A40871186147F007293B2 /* libammf.a */; };
 		E22A40E5118625AF007293B2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
 		E22A40E6118625AF007293B2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
 		E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EA116A594C00FCB21D /* gtest.framework */; };
@@ -59,7 +59,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = E22A40821186147F007293B2 /* ammf.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC046055464E500DB518D /* libammf-2.a */;
+			remoteGlobalIDString = D2AAC046055464E500DB518D;
 			remoteInfo = ammf;
 		};
 		E25FC6E9116A594C00FCB21D /* PBXContainerItemProxy */ = {
@@ -188,7 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E25FC810116BA3A400FCB21D /* libjucedebug.a in Frameworks */,
-				E22A40AE118614AA007293B2 /* libammf-2.a in Frameworks */,
+				E22A40AE118614AA007293B2 /* libammf.a in Frameworks */,
 				E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */,
 				E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */,
 				E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */,
@@ -210,7 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2B2FABF1171944400D0C002 /* libjucedebug.a in Frameworks */,
-				E22A408C118614A6007293B2 /* libammf-2.a in Frameworks */,
+				E22A408C118614A6007293B2 /* libammf.a in Frameworks */,
 				E2B2FAC31171944400D0C002 /* Cocoa.framework in Frameworks */,
 				E2B2FAC41171944400D0C002 /* Carbon.framework in Frameworks */,
 				E2B2FAC51171944400D0C002 /* IOKit.framework in Frameworks */,
@@ -274,7 +274,7 @@
 		E22A40831186147F007293B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E22A40871186147F007293B2 /* libammf-2.a */,
+				E22A40871186147F007293B2 /* libammf.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -462,10 +462,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E22A40871186147F007293B2 /* libammf-2.a */ = {
+		E22A40871186147F007293B2 /* libammf.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libammf-2.a";
+			path = libammf.a;
 			remoteRef = E22A40861186147F007293B2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
