@@ -28,8 +28,8 @@ class MockRamp : public Mock {
 
 struct RampTester {
   bool operator()(TestHarness* test, float sample) {
-    float expected = rampWave(test->totalSampleNumber(), 64);
-    EXPECT_EQ(sample, expected);
+    float expected = rampWave(test->totalSampleNumber(), 63);
+    EXPECT_EQ(sample, expected) << test->totalSampleNumber();
     return sample == expected;
   };
 };
@@ -37,15 +37,14 @@ struct RampTester {
 }  // namespace
 
 TEST(RecAudio, Loop) {
-  int size = 128;
+  int size = 127;
   AudioSampleBuffer buffer(2, size);
   for (int i = 0; i < size; ++i) {
     for (int c = 0; c < 2; ++c)
-      *buffer.getSampleData(c, i) = rampWave(i, 64);
+      *buffer.getSampleData(c, i) = rampWave(i, 63);
   }
-  TestHarness tester(4, 16, 16);
-  Loop loop(buffer);
-  tester.setSource(&loop);
+  TestHarness tester(40, 15, 15);
+  tester.setSource(new Loop(buffer));
 
   tester.testAudioSource(RampTester());
 }

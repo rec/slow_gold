@@ -60,6 +60,17 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
   AudioFormatManager formatManager;
   formatManager.registerBasicFormats();
 
+  // new code!
+  if (AudioFormatReader* r = formatManager.createReaderFor(audioFile)) {
+    loopBuffer_.setSize(r->numChannels, r->lengthInSamples);
+    loopBuffer_.readFromAudioReader(r, 0, r->lengthInSamples, 0, true, true);
+
+  } else {
+    std::cerr << "Didn't understand file type for filename "
+              << audioFile.getFileName()
+              << std::endl;
+  }
+
   if (AudioFormatReader* reader = formatManager.createReaderFor(audioFile)) {
     source_.reset(new AudioFormatReaderSource(reader, true));
     source_->setLooping(true);
@@ -74,19 +85,6 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
               << audioFile.getFileName()
               << std::endl;
   }
-
-  // new code!
-  if (AudioFormatReader* r = formatManager.createReaderFor(audioFile)) {
-    loopBuffer_.setSize(r->numChannels, r->lengthInSamples);
-    loopBuffer_.readFromAudioReader(r, 0, r->lengthInSamples, 0, true, true);
-
-  } else {
-    std::cerr << "Didn't understand file type for filename "
-              << audioFile.getFileName()
-              << std::endl;
-  }
-
-
 }
 
 void MainPageK::selectionChanged() {
