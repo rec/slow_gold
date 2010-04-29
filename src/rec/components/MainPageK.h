@@ -5,17 +5,13 @@
 #include "DemoThumbnailComp.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/audio/source/Stretchable.h"
+#include "rec/audio/source/Loop.h"
 
 class MainPageJ;
 
 class MainPageK : public FileBrowserListener {
  public:
-  MainPageK(AudioDeviceManager* d)
-    : deviceManager_(d),
-      thread_("Timeslice"),
-      directoryList_(NULL, thread_), 
-      loopBuffer_(2, 65536) {
-  }
+  MainPageK(AudioDeviceManager* d);
   ~MainPageK() {}
 
   void construct(MainPageJ* peer);
@@ -33,23 +29,39 @@ class MainPageK : public FileBrowserListener {
 
  private:
   static const int READAHEAD_SIZE = 32768;
-
-  typedef rec::audio::source::Stretchable Stretchable;
+  static const int LOOP_BUFFER_SIZE = 65536;
+  static const int LOOP_BUFFER_CHANNELS = 2;
+  static const int THREAD_PRIORITY = 3;
+  static const TreeView::ColourIds BACKGROUND;
+  static const Colour FOREGROUND;
+  static const File::SpecialLocationType START_DIR;
+  static const char* PREVIEW_THREAD_NAME;
 
   void loadFileIntoTransport(const File& audioFile);
 
   MainPageJ* peer_;
 
-  AudioDeviceManager* deviceManager_;
-  TimeSliceThread thread_;
-  AudioTransportSource transportSource_;
+  // The directory list also handles the thumbnail updates.
+  TimeSliceThread directoryListThread_;
   DirectoryContentsList directoryList_;
 
-  scoped_ptr<AudioFormatReaderSource> source_;
-  scoped_ptr<Stretchable> stretchable_;
+  // Contains the entire sample in memory.
+  AudioSampleBuffer loopBuffer_;
+
+  // Sends audio to the Stretchable source.
+  rec::audio::source::Loop loop_;
+
+  // Sends audio to the transport source.
+  scoped_ptr<rec::audio::source::Stretchable> stretchable_;
+
+  // Sends audio to the AudioSourcePlayer.
+  AudioTransportSource transportSource_;
+
+  // Streams audio to an AudioIODevice.
   AudioSourcePlayer player_;
 
-  AudioSampleBuffer loopBuffer_;
+  // Receives the final audio!
+  AudioDeviceManager* deviceManager_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

@@ -7,18 +7,31 @@
 
 using rec::audio::source::BufferDescription;
 
+const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
+const Colour MainPageK::FOREGROUND = Colours::white;
+const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
+const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
+
+
+MainPageK::MainPageK(AudioDeviceManager* d)
+  : deviceManager_(d),
+    directoryListThread_(PREVIEW_THREAD_NAME),
+    directoryList_(NULL, directoryListThread_),
+    loopBuffer_(LOOP_BUFFER_CHANNELS, LOOP_BUFFER_SIZE),
+    loop_(loopBuffer_) {
+}
+
 void MainPageK::construct(MainPageJ* peer) {
   peer_ = peer;
 
-  File file = File::getSpecialLocation(File::userHomeDirectory);
-  directoryList_.setDirectory(file, true, true);
-  thread_.startThread(3);
+  directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
+  directoryListThread_.startThread(THREAD_PRIORITY);
 
-  peer_->fileTreeComp->setColour(FileTreeComponent::backgroundColourId,
-                                 Colours::white);
+  peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
   deviceManager_->addAudioCallback(&player_);
+  player_.setSource(&transportSource_);
 }
 
 void MainPageK::destruct() {
@@ -41,7 +54,7 @@ void MainPageK::startStopButtonClicked() {
 }
 
 void MainPageK::loopingButtonClicked() {
-  source_->setLooping(peer_->loopingButton->getToggleState());
+  // how do deal with this?
 }
 
 void MainPageK::zoomSliderChanged(double value) {
@@ -55,29 +68,17 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
 
   transportSource_.setSource(NULL);
   stretchable_.reset();
-  source_.reset();
 
   AudioFormatManager formatManager;
   formatManager.registerBasicFormats();
 
-  // new code!
   if (AudioFormatReader* r = formatManager.createReaderFor(audioFile)) {
     loopBuffer_.setSize(r->numChannels, r->lengthInSamples);
     loopBuffer_.readFromAudioReader(r, 0, r->lengthInSamples, 0, true, true);
+    loop_.setNextReadPosition(0);
 
-  } else {
-    std::cerr << "Didn't understand file type for filename "
-              << audioFile.getFileName()
-              << std::endl;
-  }
-
-  if (AudioFormatReader* reader = formatManager.createReaderFor(audioFile)) {
-    source_.reset(new AudioFormatReaderSource(reader, true));
-    source_->setLooping(true);
-    transportSource_.setSource(source_.get(), READAHEAD_SIZE, reader->sampleRate);
-
-    stretchable_.reset(new Stretchable(BufferDescription::DEFAULT));
-    stretchable_->setSource(&transportSource_);
+    stretchable_.reset(new rec::audio::source::Stretchable(BufferDescription::DEFAULT));
+    stretchable_->setSource(&loop_);
     player_.setSource(stretchable_.get());
 
   } else {
