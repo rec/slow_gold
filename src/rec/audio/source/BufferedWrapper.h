@@ -2,8 +2,7 @@
 #define __REC_SCALABLE_AUDIO_SOURCE
 
 #include "rec/audio/source/Buffered.h"
-#include "rec/ammf_scaler/AudioTimeScaler.h"
-#include "rec/audio/TimeScaler.h"
+#include "rec/audio/stretch/TimeScaler.h"
 
 namespace rec {
 namespace audio {

@@ -27,6 +27,10 @@
 		E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB14116BAE2E00FCB21D /* QuickTime.framework */; };
 		E25FCEB3116BB6FC00FCB21D /* FillQueueTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */; };
 		E25FCEB5116BB6FC00FCB21D /* math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCEAB116BB6FC00FCB21D /* math_test.cpp */; };
+		E27D994A118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */; };
+		E27D994B118B890000B5D7D7 /* StretchInBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9946118B890000B5D7D7 /* StretchInBackground.cpp */; };
+		E27D994D118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */; };
+		E27D994E118B890000B5D7D7 /* StretchInBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9946118B890000B5D7D7 /* StretchInBackground.cpp */; };
 		E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
 		E2940A1A1186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
 		E29594CA117D60870078881F /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C7117D60870078881F /* Parser.cpp */; };
@@ -39,7 +43,6 @@
 		E2A8563211836B9500667631 /* Buffered.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562C11836B9500667631 /* Buffered.cpp */; };
 		E2A8563911836C4F00667631 /* Stretchable_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8563711836C4F00667631 /* Stretchable_test.cpp */; };
 		E2A8563A11836C4F00667631 /* Stretchable_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8563711836C4F00667631 /* Stretchable_test.cpp */; };
-		E2B2F7FB1171941C00D0C002 /* StretchMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B2F7FA1171941C00D0C002 /* StretchMain.cpp */; };
 		E2B2FABF1171944400D0C002 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC80B116BA38500FCB21D /* libjucedebug.a */; };
 		E2B2FAC31171944400D0C002 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
 		E2B2FAC41171944400D0C002 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0B116BAE2E00FCB21D /* Carbon.framework */; };
@@ -52,8 +55,6 @@
 		E2B2FACB1171944400D0C002 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB12116BAE2E00FCB21D /* QuartzCore.framework */; };
 		E2B2FACC1171944400D0C002 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB13116BAE2E00FCB21D /* QTKit.framework */; };
 		E2B2FACD1171944400D0C002 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB14116BAE2E00FCB21D /* QuickTime.framework */; };
-		E2D0D0D71183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */; };
-		E2D0D0D81183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,10 @@
 		E25FCEAC116BB6FC00FCB21D /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		E25FCEAD116BB6FC00FCB21D /* WaitLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitLoopThread.h; sourceTree = "<group>"; };
 		E25FCEAE116BB6FC00FCB21D /* Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wrapper.h; sourceTree = "<group>"; };
+		E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTimeScaler_test.cpp; sourceTree = "<group>"; };
+		E27D9946118B890000B5D7D7 /* StretchInBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StretchInBackground.cpp; sourceTree = "<group>"; };
+		E27D9947118B890000B5D7D7 /* StretchInBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchInBackground.h; sourceTree = "<group>"; };
+		E27D9949118B890000B5D7D7 /* TimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScaler.h; sourceTree = "<group>"; };
 		E2940A171186BF22002E32D6 /* Loop_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loop_test.cpp; sourceTree = "<group>"; };
 		E2940A181186BF22002E32D6 /* Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loop.h; sourceTree = "<group>"; };
 		E29594C6117D60870078881F /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
@@ -180,10 +185,7 @@
 		E2A8563811836C4F00667631 /* Stretchable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stretchable.h; sourceTree = "<group>"; };
 		E2B2F6111171255400D0C002 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		E2B2F7EA117193C700D0C002 /* pitch-shift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "pitch-shift"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2B2F7FA1171941C00D0C002 /* StretchMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StretchMain.cpp; sourceTree = "<group>"; };
 		E2CF9FD11173AC7100449411 /* results.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = results.txt; sourceTree = "<group>"; };
-		E2CFA04F1173E09300449411 /* TimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScaler.h; sourceTree = "<group>"; };
-		E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTimeScaler_test.cpp; path = ../src/rec/audio/AudioTimeScaler_test.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,11 +329,10 @@
 		E25FCE94116BB6FC00FCB21D /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				E27D9944118B890000B5D7D7 /* stretch */,
 				E2A855A911835D3B00667631 /* source */,
 				E2B2F6111171255400D0C002 /* Math.h */,
-				E2B2F7FA1171941C00D0C002 /* StretchMain.cpp */,
 				E25FCE99116BB6FC00FCB21D /* FillQueue.h */,
-				E2CFA04F1173E09300449411 /* TimeScaler.h */,
 				E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */,
 			);
 			name = audio;
@@ -369,6 +370,17 @@
 			path = ../src/rec/util;
 			sourceTree = SOURCE_ROOT;
 		};
+		E27D9944118B890000B5D7D7 /* stretch */ = {
+			isa = PBXGroup;
+			children = (
+				E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */,
+				E27D9946118B890000B5D7D7 /* StretchInBackground.cpp */,
+				E27D9947118B890000B5D7D7 /* StretchInBackground.h */,
+				E27D9949118B890000B5D7D7 /* TimeScaler.h */,
+			);
+			path = stretch;
+			sourceTree = "<group>";
+		};
 		E29594C5117D60870078881F /* json */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,7 +401,6 @@
 				E2940A171186BF22002E32D6 /* Loop_test.cpp */,
 				E2940A181186BF22002E32D6 /* Loop.h */,
 				E2A8562C11836B9500667631 /* Buffered.cpp */,
-				E2D0D0D61183905F0007BD4C /* AudioTimeScaler_test.cpp */,
 				E2A8563711836C4F00667631 /* Stretchable_test.cpp */,
 				E2A8563811836C4F00667631 /* Stretchable.h */,
 				E2A8562D11836B9500667631 /* Buffered.h */,
@@ -552,9 +563,10 @@
 				E2A8562F11836B9500667631 /* Buffered_test.cpp in Sources */,
 				E2A8563011836B9500667631 /* Buffered.cpp in Sources */,
 				E2A8563911836C4F00667631 /* Stretchable_test.cpp in Sources */,
-				E2D0D0D71183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */,
 				E22A40E5118625AF007293B2 /* Node.cpp in Sources */,
 				E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */,
+				E27D994A118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */,
+				E27D994B118B890000B5D7D7 /* StretchInBackground.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,15 +574,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2B2F7FB1171941C00D0C002 /* StretchMain.cpp in Sources */,
 				E29594CC117D60870078881F /* Parser.cpp in Sources */,
 				E29594CD117D60870078881F /* Parser_test.cpp in Sources */,
 				E2A8563111836B9500667631 /* Buffered_test.cpp in Sources */,
 				E2A8563211836B9500667631 /* Buffered.cpp in Sources */,
 				E2A8563A11836C4F00667631 /* Stretchable_test.cpp in Sources */,
-				E2D0D0D81183905F0007BD4C /* AudioTimeScaler_test.cpp in Sources */,
 				E22A40E6118625AF007293B2 /* Node.cpp in Sources */,
 				E2940A1A1186BF22002E32D6 /* Loop_test.cpp in Sources */,
+				E27D994D118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */,
+				E27D994E118B890000B5D7D7 /* StretchInBackground.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

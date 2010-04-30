@@ -3,7 +3,7 @@
 
 #include "rec/audio/Math.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
-#include "rec/audio/TimeScaler.h"
+#include "rec/audio/stretch/TimeScaler.h"
 #include "rec/audio/source/TestHarness.h"
 
 using rec::audio::math::rampWave;

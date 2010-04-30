@@ -12,7 +12,6 @@ const Colour MainPageK::FOREGROUND = Colours::white;
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 
-
 MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
@@ -79,8 +78,7 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
 
     stretchable_.reset(new rec::audio::source::Stretchable(BufferDescription::DEFAULT));
     stretchable_->setSource(&loop_);
-    player_.setSource(stretchable_.get());
-
+    transportSource_.setSource(*stretchable_.get());
   } else {
     std::cerr << "Didn't understand file type for filename "
               << audioFile.getFileName()

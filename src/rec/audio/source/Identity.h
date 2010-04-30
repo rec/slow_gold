@@ -2,7 +2,6 @@
 #define __REC_IDENTITY_AUDIO_SOURCE
 
 #include "rec/audio/source/BufferedWrapper.h"
-#include "rec/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {
 namespace audio {

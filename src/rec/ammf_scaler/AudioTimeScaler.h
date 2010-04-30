@@ -136,6 +136,7 @@ class AudioTimeScaler
   unsigned int GetOutputBufferSize(unsigned int inBufferSizeIn);
   unsigned int GetInputBufferSize(unsigned int inBufferSizeOut);
 
+  // Returns the number of samples WRITTEN.
   virtual long Process(float** inBuf,
                        float** outBuf,
                        unsigned int inNumSamplesIn,

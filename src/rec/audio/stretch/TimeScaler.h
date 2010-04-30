@@ -2,8 +2,7 @@
 #define __REC_TIME_SCALER
 
 #include "rec/base/basictypes.h"
-
-class AudioTimeScaler;
+#include "rec/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {
 namespace audio {

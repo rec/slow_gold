@@ -5,8 +5,7 @@
 #include <string>
 
 #include "juce_amalgamated.h"
-#include "rec/ammf_scaler/AudioTimeScaler.h"
-#include "rec/audio/TimeScaler.h"
+#include "rec/audio/stretch/TimeScaler.h"
 #include "rec/base/scoped_ptr.h"
 
 using std::string;

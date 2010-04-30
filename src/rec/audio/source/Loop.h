@@ -34,10 +34,10 @@ class Loop : public PositionableAudioSource {
       int samplesToCopy = std::min(getTotalLength() - position_, info.numSamples - copied);
       for (int c = 0; c < channels; ++c) {
         info.buffer->copyFrom(c, info.startSample + copied,
-                              source_, c, position_, samplesToCopy);
+                              source_, c, position_ % getTotalLength(), samplesToCopy);
       }
       copied += samplesToCopy;
-      position_ = (position_ + samplesToCopy) % getTotalLength();
+      position_ += samplesToCopy;
     }
   }
 
