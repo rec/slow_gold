@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "rec/audio/source/Loop.h"
+
+#include "rec/audio/source/Stretchable.h"
 #include "rec/audio/source/Mock.h"
 #include "rec/audio/source/TestHarness.h"
 #include "rec/audio/Math.h"
@@ -8,7 +9,7 @@ using rec::audio::math::rampWave;
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 namespace {
 
@@ -28,29 +29,19 @@ class MockRamp : public Mock {
 
 struct RampTester {
   bool operator()(TestHarness* test, float sample) {
-    float expected = rampWave(test->totalSampleNumber(), 63);
-    EXPECT_EQ(sample, expected) << test->totalSampleNumber();
-    return sample == expected;
+    float expected = rampWave(test->totalSampleNumber(), 100);
+    EXPECT_NEAR(sample, expected, 0.082) << *test;
+    return fabs(sample - expected) < 0.082;
   };
 };
 
 }  // namespace
 
-TEST(RecAudio, Loop) {
-  /// FIX FIX FIX FIX!
-  if (true) return;
-  int size = 127;
-  AudioSampleBuffer buffer(2, size);
-  for (int i = 0; i < size; ++i) {
-    for (int c = 0; c < 2; ++c)
-      *buffer.getSampleData(c, i) = rampWave(i, 63);
-  }
-  TestHarness tester(40, 15, 15);
-  tester.setSource(new Loop(buffer));
-
-  tester.testAudioSource(RampTester());
+TEST(RecAudio, Stretchable) {
+  TestHarness tester(4, 512, 512);
+  tester.test<Stretchable, MockRamp, RampTester>();
 }
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec

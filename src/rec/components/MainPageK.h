@@ -30,8 +30,11 @@ class MainPageK : public FileBrowserListener {
  private:
   static const int READAHEAD_SIZE = 32768;
   static const int LOOP_BUFFER_SIZE = 65536;
+  static const int LOOP_BUFFER_WRAPAROUND = 32736;
   static const int LOOP_BUFFER_CHANNELS = 2;
   static const int THREAD_PRIORITY = 3;
+
+
   static const TreeView::ColourIds BACKGROUND;
   static const Colour FOREGROUND;
   static const File::SpecialLocationType START_DIR;

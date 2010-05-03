@@ -4,21 +4,18 @@
 namespace rec {
 namespace util {
 
-struct wtf {
-};
-
+template <typename Value>
 class Notifier {
  public:
-  Notifier() {}
-  virtual void operator()() const = 0;
+  virtual void operator()(Value value) const = 0;
   virtual ~Notifier() {}
 };
 
-template <typename Op>
-class NotifierTemplate : public Notifier {
+template <typename Value, typename Op>
+class NotifierTemplate : public Notifier<Value> {
  public:
   NotifierTemplate(Op op) : op_(op) {}
-  virtual void operator()() const { op_(); }
+  virtual void operator()(Value value) const { op_(value); }
 
  private:
   Op op_;

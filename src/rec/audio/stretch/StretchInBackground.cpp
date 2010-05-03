@@ -7,13 +7,11 @@ namespace audio {
 namespace stretch {
 
 using rec::audio::timescaler::Description;
-using rec::util::Notifier;
 
 const char* StretchInBackground::THREAD_NAME = "Stretch thread";
 const int StretchInBackground::THREAD_PRIORITY = 3;
 const int StretchInBackground::INITIAL_SAMPLES = 1024;
 const int StretchInBackground::CHUNK_SIZE = 256;
-
 
 class StretchThread : public Thread {
  public:
@@ -28,7 +26,7 @@ class StretchThread : public Thread {
     const Description& desc = base_->description_;
 
     int channels = source.getNumChannels();
-    int sourceSize = source.getNumSamples();
+    int sourceSize = base_->sourceSize_;
     int sourceOffset = base_->sourcePosition_;
     double scale = desc.timeScale;
 
@@ -46,13 +44,12 @@ class StretchThread : public Thread {
     AudioTimeScaler scaler;
     desc.Init(&scaler);
 
-    Notifier *notifier = base_->notifier_.get();
+    StretchInBackground::Notifier *notifier = base_->notifier_.get();
 
     for (int written = 0; written < targetSize && !threadShouldExit(); ) {
-      int sourceChunk = std::min(StretchInBackground::CHUNK_SIZE,
-                                 sourceSize - sourceOffset);
-      int64 targetChunk = scaler.GetOutputBufferSize(sourceChunk) / 2;
-      // Wish I had an example, could be * 2 instead of / 2.
+      int targetChunk = std::min(StretchInBackground::CHUNK_SIZE,
+                                 targetSize - targetOffset);
+      int64 sourceChunk = scaler.GetInputBufferSize(targetChunk) / 2;
 
       for (int c = 0; c < channels; ++c) {
         sourceSamples[c] = source.getSampleData(c) + sourceOffset;
@@ -61,9 +58,12 @@ class StretchThread : public Thread {
       written += scaler.Process(sourceSamples, targetSamples,
                                 sourceChunk, targetChunk);
       if (notifier && written > StretchInBackground::INITIAL_SAMPLES) {
-        (*notifier)();
+        (*notifier)(targetOffset);
         notifier = NULL;
       }
+
+      sourceOffset = (sourceOffset + sourceSize) % sourceSize;
+      targetOffset = (targetOffset + targetSize) % targetSize;
     }
     ScopedLock l(base_->lock_);
     base_->thread_.reset();  // Delete ourselves!
@@ -74,6 +74,21 @@ class StretchThread : public Thread {
 
   DISALLOW_COPY_AND_ASSIGN(StretchThread);
 };
+
+
+StretchInBackground::StretchInBackground(const Description& description,
+                                         const AudioSampleBuffer& source,
+                                         int sourceSize,
+                                         int sourcePosition,
+                                         AudioSampleBuffer* target,
+                                         Notifier* notifier = NULL)
+  : description_(description),
+    source_(source),
+    sourceSize_(sourceSize),
+    sourcePosition_(sourcePosition),
+    target_(target),
+    notifier_(notifier) {
+}
 
 void StretchInBackground::start() {
   thread_.reset(new StretchThread(this));

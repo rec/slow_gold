@@ -13,17 +13,14 @@ class StretchThread;
 class StretchInBackground {
  public:
   typedef rec::audio::timescaler::Description Description;
+  typedef rec::util::Notifier<int> Notifier;
+
   StretchInBackground(const Description& description,
                       const AudioSampleBuffer& source,
+                      int sourceSize,
                       int sourcePosition,
                       AudioSampleBuffer* target,
-                      rec::util::Notifier* notifier = NULL)
-      : description_(description),
-        source_(source),
-        sourcePosition_(sourcePosition),
-        target_(target),
-        notifier_(notifier) {
-  }
+                      Notifier* notifier);
 
   void start();
   void stop();
@@ -38,11 +35,12 @@ class StretchInBackground {
 
   const Description description_;
   const AudioSampleBuffer& source_;
+  int sourceSize_;
   int sourcePosition_;
   AudioSampleBuffer* target_;
 
   scoped_ptr<Thread> thread_;
-  scoped_ptr<rec::util::Notifier> notifier_;
+  scoped_ptr<Notifier> notifier_;
   CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchInBackground);

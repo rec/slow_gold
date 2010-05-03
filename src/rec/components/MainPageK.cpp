@@ -60,7 +60,7 @@ void MainPageK::zoomSliderChanged(double value) {
   peer_->thumbnail->setZoomFactor(value);
 }
 
-void MainPageK::loadFileIntoTransport(const File& audioFile) {
+void MainPageK::loadFileIntoTransport(const File& file) {
   transportSource_.stop();
   if (stretchable_)
     stretchable_->shutdown();
@@ -71,9 +71,19 @@ void MainPageK::loadFileIntoTransport(const File& audioFile) {
   AudioFormatManager formatManager;
   formatManager.registerBasicFormats();
 
-  if (AudioFormatReader* r = formatManager.createReaderFor(audioFile)) {
-    loopBuffer_.setSize(r->numChannels, r->lengthInSamples);
-    loopBuffer_.readFromAudioReader(r, 0, r->lengthInSamples, 0, true, true);
+  scoped_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
+  if (reader) {
+    int length = readFromAudioReader->lengthInSamples;
+    loopBuffer_.setSize(reader->numChannels, length + LOOP_BUFFER_WRAPAROUND);
+    loopBuffer_.readFromAudioReader(r, 0, length, 0, true, true);
+
+    // Now make the buffer wrap around a little for ease in shifting...
+    int wraparoundSize = LOOP_BUFFER_WRAPAROUND * sizeof(float);
+    for (int c = 0; c < loopBuffer_->numChannels; ++c) {
+      float* start = loopBuffer_.getSampleData(c);
+      memcpy(start + length, start, wraparoundSize);
+    }
+
     loop_.setNextReadPosition(0);
 
     stretchable_.reset(new rec::audio::source::Stretchable(BufferDescription::DEFAULT));
