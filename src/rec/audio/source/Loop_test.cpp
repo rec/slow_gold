@@ -37,7 +37,6 @@ struct RampTester {
 }  // namespace
 
 TEST(RecAudio, Loop) {
-  /// FIX FIX FIX FIX!
   int size = 127;
   AudioSampleBuffer buffer(2, size);
   for (int i = 0; i < size; ++i) {

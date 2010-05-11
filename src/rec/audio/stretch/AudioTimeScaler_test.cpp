@@ -16,7 +16,7 @@ namespace {
 
 void Init(AudioTimeScaler* scaler) {
   Description desc = Description::Default();
-  desc.channels = 2;
+  desc.channels_ = 2;
   desc.Init(scaler);
 }
 

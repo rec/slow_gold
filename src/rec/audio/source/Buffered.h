@@ -6,7 +6,7 @@
 #include "juce_amalgamated.h"
 
 #include "rec/audio/FillQueue.h"
-#include "rec/util/math.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace audio {

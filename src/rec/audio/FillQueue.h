@@ -17,7 +17,7 @@ class FillQueue {
 
   void Clear() {
     // Inline this when we finish cleaning
-    bzero(ranges_, sizeof(ranges_));
+    memset(ranges_, 0, sizeof(ranges_));
     ranges_[EMPTY].second = size_;
   }
 

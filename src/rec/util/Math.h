@@ -1,0 +1,46 @@
+#ifndef __REC_UTIL_MATH
+#define __REC_UTIL_MATH
+
+namespace rec {
+namespace util {
+
+template <typename Number> Number abs(Number x) { return (x < 0) ? -x : x; }
+
+// A arithmetic modulus function that's always non-negative.
+// See http://en.wikipedia.org/wiki/Modulo_operation#cite_note-0
+template <typename Number>
+inline Number mod(Number dividend, Number divisor) {
+  Number modulo = dividend % divisor;
+  return (modulo < 0) ? (modulo + abs(divisor)) : modulo;
+}
+
+template <typename Items>
+struct Range {
+  Items begin_;
+  Items end_;
+
+  int length() { return end_ - begin_; }
+};
+
+struct Circular {
+  int size_;
+  int position_;
+
+  void increment(int delta) {
+    position_ = mod(position_ + delta, size_);
+  }
+
+  void scale(float scale) {
+    size_ = int(scale * size_);
+    position_ = int(scale * position_);
+  }
+
+  // The number of positions remaining in the circular buffer.
+  // This is always between 1 and size_, inclusive.
+  int remaining() const { return size_ - position_; }
+};
+
+}  // namespace util
+}  // namespace rec
+
+#endif  // __REC_UTIL_MATH

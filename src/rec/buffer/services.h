@@ -2,7 +2,7 @@
 #define __REC_BUFFER_SERVICES
 
 #include "rec/util/locker.h"
-#include "rec/uti/math.h"
+#include "rec/uti/Math.h"
 #include "rec/buffer/blocks.h"
 
 namespace rec {

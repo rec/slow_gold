@@ -9,20 +9,20 @@ namespace audio {
 namespace timescaler {
 
 struct Description {
-  double timeScale;
-  double sampleRate;
-  int channels;
-  double pitchScale;
-  int bands;
-  int filterOverlap;
+  double timeScale_;
+  double sampleRate_;
+  int channels_;
+  double pitchScale_;
+  int bands_;
+  int filterOverlap_;
 
   const char* Init(AudioTimeScaler* s) const {
-    return s->Init(timeScale,
-                   sampleRate,
-                   channels,
-                   pitchScale,
-                   bands,
-                   filterOverlap) ? "error" : NULL;
+    return s->Init(timeScale_,
+                   sampleRate_,
+                   channels_,
+                   pitchScale_,
+                   bands_,
+                   filterOverlap_) ? "error" : NULL;
   }
 
   static const Description& Default() {

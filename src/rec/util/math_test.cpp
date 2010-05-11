@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "rec/util/math.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace util {

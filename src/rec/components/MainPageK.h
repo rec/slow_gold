@@ -41,6 +41,7 @@ class MainPageK : public FileBrowserListener {
   static const char* PREVIEW_THREAD_NAME;
 
   void loadFileIntoTransport(const File& audioFile);
+  void readyToPlay();
 
   MainPageJ* peer_;
 
@@ -48,8 +49,11 @@ class MainPageK : public FileBrowserListener {
   TimeSliceThread directoryListThread_;
   DirectoryContentsList directoryList_;
 
-  // Contains the entire sample in memory.
-  AudioSampleBuffer loopBuffer_;
+  // Contains the entire sample in memory, plus a wraparound.
+  scoped_ptr<AudioSampleBuffer> loopBuffer_;
+
+  // Contains the time-shifted sample in memory.
+  scoped_ptr<AudioSampleBuffer> shiftedBuffer_;
 
   // Sends audio to the Stretchable source.
   rec::audio::source::Loop loop_;

@@ -3,6 +3,7 @@
 #include "rec/base/scoped_ptr.h"
 
 using rec::juce::GenericApplication;
+
 namespace rec {
 
 class Application

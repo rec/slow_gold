@@ -16,7 +16,6 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    loopBuffer_(LOOP_BUFFER_CHANNELS, LOOP_BUFFER_SIZE),
     loop_(loopBuffer_) {
 }
 
@@ -74,21 +73,19 @@ void MainPageK::loadFileIntoTransport(const File& file) {
   scoped_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
   if (reader) {
     int length = readFromAudioReader->lengthInSamples;
-    loopBuffer_.setSize(reader->numChannels, length + LOOP_BUFFER_WRAPAROUND);
-    loopBuffer_.readFromAudioReader(r, 0, length, 0, true, true);
+    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels,
+                                            length + LOOP_BUFFER_WRAPAROUND));
+    loopBuffer_->readFromAudioReader(r, 0, length, 0, true, true);
 
-    // Now make the buffer wrap around a little for ease in shifting...
-    int wraparoundSize = LOOP_BUFFER_WRAPAROUND * sizeof(float);
-    for (int c = 0; c < loopBuffer_->numChannels; ++c) {
-      float* start = loopBuffer_.getSampleData(c);
-      memcpy(start + length, start, wraparoundSize);
-    }
+    rec::audio::math::wraparound(length, LOOP_BUFFER_WRAPAROUND, loopBuffer_.get());
+    thread_
 
     loop_.setNextReadPosition(0);
 
     stretchable_.reset(new rec::audio::source::Stretchable(BufferDescription::DEFAULT));
     stretchable_->setSource(&loop_);
     transportSource_.setSource(*stretchable_.get());
+
   } else {
     std::cerr << "Didn't understand file type for filename "
               << audioFile.getFileName()
