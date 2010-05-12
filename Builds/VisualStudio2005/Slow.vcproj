@@ -54,8 +54,6 @@
             GenerateDebugInformation="true"
             ProgramDatabaseFile=".\Debug\SlowBurn.pdb"
             SubSystem="2"
-            RandomizedBaseAddress="1"
-            DataExecutionPrevention="0"
             TargetMachine="1"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
@@ -115,8 +113,6 @@
             GenerateManifest="false"
             OptimizeReferences="2"
             EnableCOMDATFolding="2"
-            RandomizedBaseAddress="1"
-            DataExecutionPrevention="0"
             TargetMachine="1"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
@@ -143,7 +139,6 @@
             <File RelativePath="..\..\src\rec\audio\source\Stretchable.h"/>
             <File RelativePath="..\..\src\rec\audio\source\Wrapper.h"/>
           </Filter>
-          <File RelativePath="..\..\src\rec\audio\TimeScaler.h"/>
           <File RelativePath="..\..\src\rec\audio\FillQueue.h"/>
           <File RelativePath="..\..\src\rec\audio\Math.h"/>
         </Filter>
@@ -166,7 +161,6 @@
           </File>
           <File RelativePath="..\..\src\rec\ammf_scaler\mfAlloc.c"/>
           <File RelativePath="..\..\src\rec\ammf_scaler\mfAlloc.h"/>
-          <File RelativePath="..\..\src\rec\ammf_scaler\mferrors.h"/>
           <File RelativePath="..\..\src\rec\ammf_scaler\mfGlobals.h"/>
           <File RelativePath="..\..\src\rec\ammf_scaler\mfMacros.h"/>
           <File RelativePath="..\..\src\rec\ammf_scaler\mfMath.h"/>

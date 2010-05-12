@@ -10,6 +10,8 @@
 		110F95CF00F30AACCA785C22 = { isa = PBXBuildFile; fileRef = 76133E91A9EBDFDD480E31C2; };
 		5F55A320819881FC27C0F9B5 = { isa = PBXBuildFile; fileRef = F3545966FC8BEB9ADF21C44A; };
 		1CDBBFBA4D56D7B6F0782F1C = { isa = PBXBuildFile; fileRef = 519A4155F8DE5207C0885CAA; };
+		D8D7D8AC472502272591DFBA = { isa = PBXBuildFile; fileRef = 20C384DB8BB8461D6D4F1247; };
+		0CAC2BC3F67BD204C890F9A2 = { isa = PBXBuildFile; fileRef = 9D5052C9D8F9D38B4532243D; };
 		887377709E74E95165E7427D = { isa = PBXBuildFile; fileRef = 988326CFBABAE5B8BF0BEF65; };
 		51183BF7F82628DABC2169F8 = { isa = PBXBuildFile; fileRef = 1835B50C644DD360B7C255C8; };
 		E05E97FBF27AF66E323E4799 = { isa = PBXBuildFile; fileRef = A86170DF54654A3932DEE280; };
@@ -30,6 +32,8 @@
 		76133E91A9EBDFDD480E31C2 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3545966FC8BEB9ADF21C44A = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		519A4155F8DE5207C0885CAA = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		20C384DB8BB8461D6D4F1247 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9D5052C9D8F9D38B4532243D = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1FE68B302B37CDCFCBC0AC0A = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlowBurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CAE9326C5E07CF9B6E5088 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		988326CFBABAE5B8BF0BEF65 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Buffered.cpp; path = ../../src/rec/audio/source/Buffered.cpp; sourceTree = SOURCE_ROOT; };
@@ -39,7 +43,6 @@
 		49F8D2461430AB5EB24CD9A9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mock.h; path = ../../src/rec/audio/source/Mock.h; sourceTree = SOURCE_ROOT; };
 		763FC12D7D1414E5E6AF3B55 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchable.h; path = ../../src/rec/audio/source/Stretchable.h; sourceTree = SOURCE_ROOT; };
 		70A6AEDC2A480A78C36ADF26 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrapper.h; path = ../../src/rec/audio/source/Wrapper.h; sourceTree = SOURCE_ROOT; };
-		D968AD960EB25F116895358E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeScaler.h; path = ../../src/rec/audio/TimeScaler.h; sourceTree = SOURCE_ROOT; };
 		7CAE6F503899478D260A71D4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FillQueue.h; path = ../../src/rec/audio/FillQueue.h; sourceTree = SOURCE_ROOT; };
 		74198B558A664D5D1ECEC607 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Math.h; path = ../../src/rec/audio/Math.h; sourceTree = SOURCE_ROOT; };
 		1835B50C644DD360B7C255C8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioResampler.cpp; path = ../../src/rec/ammf_scaler/AudioResampler.cpp; sourceTree = SOURCE_ROOT; };
@@ -51,7 +54,6 @@
 		E918F9E25B2BDBB0D9CCC847 = { isa = PBXFileReference; lastKnownFileType = file; name = Makefile; path = ../../src/rec/ammf_scaler/Makefile; sourceTree = SOURCE_ROOT; };
 		65923ED405C00EAE931C4C1D = { isa = PBXFileReference; lastKnownFileType = file.c; name = mfAlloc.c; path = ../../src/rec/ammf_scaler/mfAlloc.c; sourceTree = SOURCE_ROOT; };
 		9C13F8A4293E4D84AC54799E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfAlloc.h; path = ../../src/rec/ammf_scaler/mfAlloc.h; sourceTree = SOURCE_ROOT; };
-		4B11C4DEA550EA53A8936D85 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mferrors.h; path = ../../src/rec/ammf_scaler/mferrors.h; sourceTree = SOURCE_ROOT; };
 		E3929BEE3A3E05F611D0D1C7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = ../../src/rec/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
 		D74A8171CF8174D277DD892A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfMacros.h; path = ../../src/rec/ammf_scaler/mfMacros.h; sourceTree = SOURCE_ROOT; };
 		F495B8B1C8C9C1D090488831 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfMath.h; path = ../../src/rec/ammf_scaler/mfMath.h; sourceTree = SOURCE_ROOT; };
@@ -93,7 +95,6 @@
 				70A6AEDC2A480A78C36ADF26 ); name = source; sourceTree = "<group>"; };
 		430D61BBC240F2F1646B86EB = { isa = PBXGroup; children = (
 				7BD782CE5CE7EC6A7B058890,
-				D968AD960EB25F116895358E,
 				7CAE6F503899478D260A71D4,
 				74198B558A664D5D1ECEC607 ); name = audio; sourceTree = "<group>"; };
 		6F4669EACBF15EA1D7275E0F = { isa = PBXGroup; children = (
@@ -106,7 +107,6 @@
 				E918F9E25B2BDBB0D9CCC847,
 				65923ED405C00EAE931C4C1D,
 				9C13F8A4293E4D84AC54799E,
-				4B11C4DEA550EA53A8936D85,
 				E3929BEE3A3E05F611D0D1C7,
 				D74A8171CF8174D277DD892A,
 				F495B8B1C8C9C1D090488831 ); name = ammf_scaler; sourceTree = "<group>"; };
@@ -156,7 +156,9 @@
 				A45743B451F8ABE5E29F4791,
 				76133E91A9EBDFDD480E31C2,
 				F3545966FC8BEB9ADF21C44A,
-				519A4155F8DE5207C0885CAA ); name = Frameworks; sourceTree = "<group>"; };
+				519A4155F8DE5207C0885CAA,
+				20C384DB8BB8461D6D4F1247,
+				9D5052C9D8F9D38B4532243D ); name = Frameworks; sourceTree = "<group>"; };
 		157D6743AC444E80E191B8C8 = { isa = PBXGroup; children = (
 				1FE68B302B37CDCFCBC0AC0A ); name = Products; sourceTree = "<group>"; };
 		4E892B6E3B2A1A023BA4FC5A = { isa = PBXGroup; children = (
@@ -249,7 +251,9 @@
 				F31E7E3B027B216DED61AAFF,
 				110F95CF00F30AACCA785C22,
 				5F55A320819881FC27C0F9B5,
-				1CDBBFBA4D56D7B6F0782F1C ); runOnlyForDeploymentPostprocessing = 0; };
+				1CDBBFBA4D56D7B6F0782F1C,
+				D8D7D8AC472502272591DFBA,
+				0CAC2BC3F67BD204C890F9A2 ); runOnlyForDeploymentPostprocessing = 0; };
 		E89875AE128A2F8FADAC50EE = { isa = PBXNativeTarget; buildConfigurationList = A991FDFA5CD7924B1BED5CBE; buildPhases = (
 				84C00EE3C41EC6FC893EB173,
 				60670B42941AC059E240F52F,
