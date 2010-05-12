@@ -6,12 +6,12 @@
 #include <sys/stat.h>
 #include "mfglobals.h"
 
-char*	StrFileIn = "/User/tom/aaa.wav";  // 0;
-char*	StrFileOut = "/User/tom/aaa.out.wav";  //0;
-double	TimeScaleFactor	= 2.0;
-double	PitchShiftFactor= 1.0;
-short	ScaleChannelNum	= 0;
-float	SampleRateIn	= (float) 44100.0;
+char*  StrFileIn = "/User/tom/aaa.wav";  // 0;
+char*  StrFileOut = "/User/tom/aaa.out.wav";  //0;
+double  TimeScaleFactor  = 2.0;
+double  PitchShiftFactor= 1.0;
+short  ScaleChannelNum  = 0;
+float  SampleRateIn  = (float) 44100.0;
 
 void Arguments (int argc, char* argv[]);
 int TestTimeScaler(FILE* fIn, FILE* fOut);
@@ -20,7 +20,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut);
 #define BOOL int
 #endif
 
-const static int SAMPLES_PER_CHUNK = 128;	    /* must be multiple of 128 */
+const static int SAMPLES_PER_CHUNK = 128;      /* must be multiple of 128 */
 
 int main(int argc, char* argv[]) {
   FILE* fIn = NULL;
@@ -66,34 +66,34 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
 
   unsigned int err = 0;
 
-  long	lTotalNumSamples = 0;
-  long	lChunks = 0;
-  long	nSamplesRead = 0;
-  long	nSamplesToRead = 0;
-  long	nSamplesToProcess = 0;
-  long	numSamplesOut = 0;
+  long  lTotalNumSamples = 0;
+  long  lChunks = 0;
+  long  nSamplesRead = 0;
+  long  nSamplesToRead = 0;
+  long  nSamplesToProcess = 0;
+  long  numSamplesOut = 0;
   unsigned int numSamplesWritten = 0;
-  long	nTotalSamplesRead = 0;
-  long	nTotalSamplesWritten = 0;
+  long  nTotalSamplesRead = 0;
+  long  nTotalSamplesWritten = 0;
 
-  char	str[_MAX_PATH];
-  // BOOL	boolTrace = 0 /* set to 1 for MessageBox */
+  char  str[_MAX_PATH];
+  // BOOL  boolTrace = 0 /* set to 1 for MessageBox */
 
-  float*	afSamplesIn;
-  float*	afSamplesOut;
+  float*  afSamplesIn;
+  float*  afSamplesOut;
 
   struct _stat statBuf;
-  int		fno;
-  static long	nOldSamplesOut = 0;
-  long	samplesToRead = 0;
-  long	numChannels = 1;
+  int    fno;
+  static long  nOldSamplesOut = 0;
+  long  samplesToRead = 0;
+  long  numChannels = 1;
 
-  short*	asSamplesIn = 0;
-  short*	asSamplesOut = 0;
-  short	leftChan = 0;
-  short	rightChan = 0;
-  int		i = 0;
-  int		j = 0;
+  short*  asSamplesIn = 0;
+  short*  asSamplesOut = 0;
+  short  leftChan = 0;
+  short  rightChan = 0;
+  int    i = 0;
+  int    j = 0;
 
   /* create time scaler "object" */
   pATS = new AudioTimeScaler;
@@ -111,9 +111,9 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
 
   // initialize the AudioTimeScaler (see AudioTimeScaler.h for interface)
   //MFAudioTimeScalerInit(pATS, TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
-	AudioTimeScaler* p = (AudioTimeScaler*)pATS;
+  AudioTimeScaler* p = (AudioTimeScaler*)pATS;
   p->Init(TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
-  err = 0;	/* SUCCESS */
+  err = 0;  /* SUCCESS */
   while(1)
     {
       // clear output buffer TODO: make this more efficient with a memory block initialization
@@ -151,9 +151,9 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
       //
       // ScaleChannelNum definition:
       // 0: All channels of the input file are averaged together
-      //	and the result is scaled, creating mono output
+      //  and the result is scaled, creating mono output
       // 1 or 2: Scale only this channel of the input file and
-      //	create mono output.
+      //  create mono output.
       j = 0;
       for (i=0; i<nSamplesRead; i+=2)
         {
@@ -184,7 +184,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
         free(asSamplesOut);
       asSamplesOut = (short*) calloc(numSamplesOut, sizeof(short));
       if (!asSamplesOut)
-        return -1;	// out of memory
+        return -1;  // out of memory
       for (i=0; i<numSamplesOut; i++)
         asSamplesOut[i] = ((long) (afSamplesOut[i] * ((float) (0x7fff))));
 
@@ -242,7 +242,7 @@ void Arguments(int argc, char* argv[])
   void BadArgument();
   int  i;
   int  j;
-  int	 err;
+  int   err;
   i = 1;
   while (i < argc)
     {
@@ -279,6 +279,3 @@ void Arguments(int argc, char* argv[])
       i++;
     }
 }
-
-
-

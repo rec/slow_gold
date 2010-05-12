@@ -25,7 +25,7 @@
 static const int MAX_OVERRUN_BUFFER_SIZE = 4096;
 
 static const int MINIMUM_STARTING_SAMPLES_TIME_STRETCH	= 8192;
-static const int MINIMUM_STARTING_SAMPLES_TIME_COMPRESS	= 24576;
+static const int MINIMUM_STARTING_SAMPLES_TIME_COMPRESS  = 24576;
 
 AudioTimeScaler::AudioTimeScaler() {
   for (int i=0; i<MAX_CHANNELS; i++)
@@ -39,11 +39,11 @@ AudioTimeScaler::~AudioTimeScaler() {
 }
 
 MFError AudioTimeScaler::Init(double dTimeScale,
-                           double dSampleRate,
-                           int numChannels,
-                           double dPitchScale,
-                           int nBands,
-                           int filterOverlap) {
+                              double dSampleRate,
+                              int numChannels,
+                              double dPitchScale,
+                              int nBands,
+                              int filterOverlap) {
   for (int i=0; i<MAX_CHANNELS; i++) {
     memset((void*)&m_PTS[i], 0, sizeof(PitchTimeState));
 
@@ -57,22 +57,22 @@ MFError AudioTimeScaler::Init(double dTimeScale,
     m_PTS[i].sampleWidthInBytes = 4;    // no longer used - accepts floats only
 
     // now init variables for first time through
-    m_PTS[i].pDInputBuf = 0;	/* pointer to start of input buffer */
-    m_PTS[i].pDOutputBuf = 0;	/* pointer to start of output buffer */
-    m_PTS[i].pDAnal = 0;	/* pointer to start of analysis buffer */
-    m_PTS[i].pDSyn = 0;	/* pointer to start of synthesis buffer */
+    m_PTS[i].pDInputBuf = 0;  /* pointer to start of input buffer */
+    m_PTS[i].pDOutputBuf = 0;  /* pointer to start of output buffer */
+    m_PTS[i].pDAnal = 0;  /* pointer to start of analysis buffer */
+    m_PTS[i].pDSyn = 0;  /* pointer to start of synthesis buffer */
     m_PTS[i].pDAnalWindowAlloc = 0;
     m_PTS[i].pDSynWindowAlloc = 0;
-    m_PTS[i].pDAnalWindow = 0;	/* pointer to center of analysis window */
-    m_PTS[i].pDSynWindow = 0;	/* pointer to center of synthesis window */
-    m_PTS[i].pDOldInPhase = 0;	/* pointer to start of input phase buffer */
+    m_PTS[i].pDAnalWindow = 0;  /* pointer to center of analysis window */
+    m_PTS[i].pDSynWindow = 0;  /* pointer to center of synthesis window */
+    m_PTS[i].pDOldInPhase = 0;  /* pointer to start of input phase buffer */
     m_PTS[i].pDOldOutPhase = 0;/* pointer to start of output phase buffer */
-    m_PTS[i].pFftInfoAnal = 0;	/* FFT_INFO structure for analysis */
+    m_PTS[i].pFftInfoAnal = 0;  /* FFT_INFO structure for analysis */
     m_PTS[i].pFftInfoSynth = 0;/* FFT_INFO structure for synthesis */
 
-    m_PTS[i].analWinLen = 0;	/* length of pDAnalWindow impulse response */
-    m_PTS[i].synWinLen = 0;	/* length of pDSynWindow impulse response */
-    m_PTS[i].samplesTotal = 0;	/* total number of samples in the input */
+    m_PTS[i].analWinLen = 0;  /* length of pDAnalWindow impulse response */
+    m_PTS[i].synWinLen = 0;  /* length of pDSynWindow impulse response */
+    m_PTS[i].samplesTotal = 0;  /* total number of samples in the input */
 
     m_PTS[i].inputPrevSumSq = 0.02;
     m_PTS[i].outputPrevSumSq = 0.02;
@@ -152,8 +152,8 @@ MFError AudioTimeScaler::Init(double dTimeScale,
     m_PTS[i].samplesTotal = MAX_SAMPLES;
 
     if (MFError err = AdjustParameters(&m_PTS[i].analHop, &m_PTS[i].synthHop, &m_PTS[i].nBands,
-                         &m_PTS[i].analWinLen, &m_PTS[i].synWinLen, m_PTS[i].filterOverlap, &m_PTS[i].dPitchScale,
-                         &m_PTS[i].dTimeScale))
+                                       &m_PTS[i].analWinLen, &m_PTS[i].synWinLen, m_PTS[i].filterOverlap, &m_PTS[i].dPitchScale,
+                                       &m_PTS[i].dTimeScale))
       {
         return err;
       }
@@ -229,7 +229,7 @@ unsigned int AudioTimeScaler::GetInputBufferSize(unsigned int inBufferSizeOut)
           if (this->m_PTS[0].dTimeScale > 1.0)
             size = MINIMUM_STARTING_SAMPLES_TIME_STRETCH + normalizedSize;
           else
-            size = MINIMUM_STARTING_SAMPLES_TIME_COMPRESS + normalizedSize;	// should handle down to scale factor of 0.1
+            size = MINIMUM_STARTING_SAMPLES_TIME_COMPRESS + normalizedSize;  // should handle down to scale factor of 0.1
           m_boolFirstTime = 0;
           return size;
         }
@@ -237,11 +237,11 @@ unsigned int AudioTimeScaler::GetInputBufferSize(unsigned int inBufferSizeOut)
 
       if (overruns >= (long)inBufferSizeOut)
         {
-          size = 0;	// already have enough
+          size = 0;  // already have enough
         }
       else
         {
-    	    size = normalizedSize;
+          size = normalizedSize;
         }
     }
   return size;
@@ -271,8 +271,8 @@ long AudioTimeScaler::ProcessChannel(int channel,
                                      unsigned int inNumSamplesIn,
                                      unsigned int inNumSamplesOut)
 {
-  int		    i,j,k;
-  float*	    pOutBuf;
+  int        i,j,k;
+  float*      pOutBuf;
   unsigned int    numSamplesRead = 0;
   unsigned int    numSamplesWritten = 0;
 
@@ -304,7 +304,7 @@ long AudioTimeScaler::ProcessChannel(int channel,
 
   while (1)
     {
-      //	if (pAOin->bStopOp)
+      //  if (pAOin->bStopOp)
       //            goto finish;
 
       /*
@@ -334,9 +334,9 @@ long AudioTimeScaler::ProcessChannel(int channel,
           pPTS->lInCount++;
 
 
-          //	    /* check to see if done */
-          //	    if ((pPTS->lInCount == pPTS->samplesTotal) || (err == MF_END_OF_FILE))
-          //		pPTS->samplesToRead = i;
+          //      /* check to see if done */
+          //      if ((pPTS->lInCount == pPTS->samplesTotal) || (err == MF_END_OF_FILE))
+          //    pPTS->samplesToRead = i;
 
           if (pPTS->nextIn >= pPTS->lInBufLen)
             pPTS->nextIn -= pPTS->lInBufLen;
@@ -344,7 +344,7 @@ long AudioTimeScaler::ProcessChannel(int channel,
       pPTS->inputSampleCounter = 0;   // reset counter for next input batch
 
       //if (samplesToRead)
-	    //inputMagnitude = sqrt(inputMagnitude/samplesToRead);
+      //inputMagnitude = sqrt(inputMagnitude/samplesToRead);
 
       if (pPTS->lCurrAnalSample > 0)
         {
@@ -505,11 +505,11 @@ long AudioTimeScaler::ProcessChannel(int channel,
           double index     = increment;
           for (i=1; i<pPTS->nBandsScaled; i++)
             {
-              long   lIndex 	= (long) index;
-              double frac	= index - (double) lIndex;
-              double base	= pPTS->pDSyn[lIndex];
-              pPTS->pDSyn[i] 	= base + frac*(pPTS->pDSyn[lIndex+1]-base);
-              index 	       += increment;
+              long   lIndex   = (long) index;
+              double frac  = index - (double) lIndex;
+              double base  = pPTS->pDSyn[lIndex];
+              pPTS->pDSyn[i]   = base + frac*(pPTS->pDSyn[lIndex+1]-base);
+              index          += increment;
             }
         }
 
@@ -592,7 +592,7 @@ long AudioTimeScaler::ProcessChannel(int channel,
         }
 
       //if (samplesToWriteScaled)
-	    //outputMagnitude = sqrt(outputMagnitude/samplesToWriteScaled);
+      //outputMagnitude = sqrt(outputMagnitude/samplesToWriteScaled);
 
       if (!pPTS->eofFlag)
         {
@@ -797,10 +797,10 @@ void AudioTimeScaler::EmptyOverrunBuffer(int channel, int count, float* pFOutBuf
  */
 void AudioTimeScaler::runningMean(double previousData, double newData, double count, double* mean)
 {
-	if (count < 2)
-		count = 2;
+  if (count < 2)
+    count = 2;
 
-	*mean = ((count-1)/count)*previousData + (1/count)*newData;
+  *mean = ((count-1)/count)*previousData + (1/count)*newData;
 }
 
 /* correctSample: given the current estimates of the variances of the input and output buffers,
@@ -811,20 +811,20 @@ void AudioTimeScaler::runningMean(double previousData, double newData, double co
  */
 void AudioTimeScaler::correctSample(double inputVariance, double outputVariance, double* sample, double* scaleFactor)
 {
-	double scaleFactorOld = *scaleFactor;
+  double scaleFactorOld = *scaleFactor;
 
-	if (inputVariance <= 0 || inputVariance <= 0)
+  if (inputVariance <= 0 || inputVariance <= 0)
     return;
 
-	*scaleFactor = sqrt(inputVariance / outputVariance);
+  *scaleFactor = sqrt(inputVariance / outputVariance);
 
   if (*scaleFactor > 5.0 || *scaleFactor < 0.2)
     return;
 
-	/* Two Point Running Average of the scaleFactor to prevent big jumps */
-	runningMean(scaleFactorOld, *scaleFactor, 2, scaleFactor);
+  /* Two Point Running Average of the scaleFactor to prevent big jumps */
+  runningMean(scaleFactorOld, *scaleFactor, 2, scaleFactor);
 
-	*sample *= *scaleFactor;
+  *sample *= *scaleFactor;
 }
 
 
@@ -847,24 +847,24 @@ void AudioTimeScaler::runningVariance(double* prevSquareSum, double* previousMea
                                       double sample, double* count, double* newVariance,
                                       double historySamples)
 {
-	double count_ = *count-1;
-	double sample2 = sample*sample;
-	double newMean;
-	double newSquareSum;
+  double count_ = *count-1;
+  double sample2 = sample*sample;
+  double newMean;
+  double newSquareSum;
 
-	if (*count < 2)
-		*count = 2;
+  if (*count < 2)
+    *count = 2;
 
-	if ((*count)>historySamples)
-		*count = (historySamples);
+  if ((*count)>historySamples)
+    *count = (historySamples);
 
-	runningMean(*previousMean, sample, *count, &newMean);
+  runningMean(*previousMean, sample, *count, &newMean);
 
-	newSquareSum = (count_ / *count)*(*prevSquareSum) + (1/(*count))*sample2;
-	*newVariance = (*prevSquareSum) + (1/count_)*sample2 - 2*newMean*((*previousMean)+(1/count_)*sample) +
-		(*count/count_)*newMean*newMean;
-	*previousMean = newMean;
-	*prevSquareSum = newSquareSum;
+  newSquareSum = (count_ / *count)*(*prevSquareSum) + (1/(*count))*sample2;
+  *newVariance = (*prevSquareSum) + (1/count_)*sample2 - 2*newMean*((*previousMean)+(1/count_)*sample) +
+    (*count/count_)*newMean*newMean;
+  *previousMean = newMean;
+  *prevSquareSum = newSquareSum;
 }
 
 
@@ -882,9 +882,9 @@ void AudioTimeScaler::Hann(double* pDWin, int winLen)
 }
 
 MFError AudioTimeScaler::AdjustParameters(
-    int* pAnalHop, int* pSynthHop,
-    int* pNBands, int* pAnalWinLen, int* pSynWinLen, int filterOverlap,
-    double* pDPitchScale, double* pDTimeScale) {
+                                          int* pAnalHop, int* pSynthHop,
+                                          int* pNBands, int* pAnalWinLen, int* pSynWinLen, int filterOverlap,
+                                          double* pDPitchScale, double* pDTimeScale) {
   // filterOverlap must be between 0 and 3.
   // pDTimeScale *= *pDPitchScale are positive.
 
@@ -971,8 +971,8 @@ void AudioTimeScaler::AllocateAndClear(double** pPDArray, long lSize) {
  *    window duration is lInBufLen/2.
  */
 void AudioTimeScaler::InitAnalWindow(
-    double** pPDAnalWindow, double** pPDAnalWindowAlloc,
-    int analWinLen, int nBands, double* pDSum, int* pAnalWinHalfLen) {
+                                     double** pPDAnalWindow, double** pPDAnalWindowAlloc,
+                                     int analWinLen, int nBands, double* pDSum, int* pAnalWinHalfLen) {
   int     i;
   AllocateAndClear(pPDAnalWindow, analWinLen);
   *pPDAnalWindowAlloc = *pPDAnalWindow;
@@ -993,7 +993,7 @@ void AudioTimeScaler::InitAnalWindow(
   for (i = 1; i <= *pAnalWinHalfLen; i++)
     *pDSum += (*pPDAnalWindow)[-i] + (*pPDAnalWindow)[i];
 
-  *pDSum = 2.f / *pDSum;	/*factor of 2 comes in later in trig identity*/
+  *pDSum = 2.f / *pDSum;  /*factor of 2 comes in later in trig identity*/
 
   (*pPDAnalWindow)[0] *= *pDSum;
   for (i = 1; i <= *pAnalWinHalfLen; i++)
@@ -1010,8 +1010,8 @@ void AudioTimeScaler::InitAnalWindow(
  * analysis window above.
  */
 void AudioTimeScaler::InitSynWindow(
-    double** pPDSynWindow, double** pPDSynWindowAlloc,
- int synWinLen, int synthHopScaled, double dSum, int* pSynWinHalfLen) {
+                                    double** pPDSynWindow, double** pPDSynWindowAlloc,
+                                    int synWinLen, int synthHopScaled, double dSum, int* pSynWinHalfLen) {
   int     i;
 
   AllocateAndClear(pPDSynWindow, synWinLen);
@@ -1035,7 +1035,7 @@ void AudioTimeScaler::InitSynWindow(
 }
 
 void AudioTimeScaler::InitIOBuffers(double** pPDInputBuf, long lInBufLen,
-                                       double** pPDOutputBuf, long lOutBufLen)
+                                    double** pPDOutputBuf, long lOutBufLen)
 {
   /*
    * set up input buffer:  nextIn is always the index of the next empty
@@ -1057,7 +1057,7 @@ void AudioTimeScaler::InitIOBuffers(double** pPDInputBuf, long lInBufLen,
 }
 
 void AudioTimeScaler::InitBuffers(double** pPD, double** pPDPhase,
-                                     FFT_INFO** pPFftInfo, int nBands)
+                                  FFT_INFO** pPFftInfo, int nBands)
 {
   AllocateAndClear(pPD, nBands+2);
   AllocateAndClear(pPDPhase, nBands/2+1);

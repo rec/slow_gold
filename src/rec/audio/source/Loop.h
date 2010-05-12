@@ -18,15 +18,15 @@ class Loop : public PositionableAudioSource {
   }
   ~Loop() {}
 
-	virtual void setNextReadPosition(int p) { position_ = p; }
-	virtual int getNextReadPosition() const { return position_; }
-	virtual int getTotalLength() const { return source_.getNumSamples(); }
-	virtual bool isLooping() const { return true; }
+  virtual void setNextReadPosition(int p) { position_ = p; }
+  virtual int getNextReadPosition() const { return position_; }
+  virtual int getTotalLength() const { return source_.getNumSamples(); }
+  virtual bool isLooping() const { return true; }
 
-	virtual void prepareToPlay(int samplesPerBlockExpected, double sampleRate) {}
-	virtual void releaseResources() {}
+  virtual void prepareToPlay(int samplesPerBlockExpected, double sampleRate) {}
+  virtual void releaseResources() {}
 
-	virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
     int copied = 0;
     int length = getTotalLength();
     int channels = std::min(source_.getNumChannels(),

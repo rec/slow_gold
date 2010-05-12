@@ -9,8 +9,8 @@
  * this work.
  *
  * This program is the confidential and proprietary information of Muscle
- * Fish.  Neither the binaries nor the source code may be redistributed 
- * without prior written permission from Muscle Fish. 
+ * Fish.  Neither the binaries nor the source code may be redistributed
+ * without prior written permission from Muscle Fish.
  *----------------------------------------------------------------------------
  *
  * File: mfGlobals.h
@@ -33,12 +33,12 @@
 #endif
 
 #ifdef unix
-typedef int	Boolean;
+typedef int  Boolean;
 #endif
 #if defined(WIN32) || defined(_WIN32_WCE)
-typedef int	Boolean;
+typedef int  Boolean;
 #endif
-typedef char*	MFString;
+typedef char*  MFString;
 
 #ifdef STDCALL
 #define MF_CALLCONV __stdcall
