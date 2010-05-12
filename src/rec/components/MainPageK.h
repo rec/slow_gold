@@ -34,7 +34,6 @@ class MainPageK : public FileBrowserListener {
   static const int LOOP_BUFFER_CHANNELS = 2;
   static const int THREAD_PRIORITY = 3;
 
-
   static const TreeView::ColourIds BACKGROUND;
   static const Colour FOREGROUND;
   static const File::SpecialLocationType START_DIR;
@@ -56,7 +55,7 @@ class MainPageK : public FileBrowserListener {
   scoped_ptr<AudioSampleBuffer> shiftedBuffer_;
 
   // Sends audio to the Stretchable source.
-  rec::audio::source::Loop loop_;
+  scoped_ptr<rec::audio::source::Loop> loop_;
 
   // Sends audio to the transport source.
   scoped_ptr<rec::audio::source::Stretchable> stretchable_;

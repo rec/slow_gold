@@ -3,9 +3,11 @@
 
 #include "DemoThumbnailComp.h"
 #include "rec/audio/source/Stretchable.h"
+#include "rec/audio/Math.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 using rec::audio::source::BufferDescription;
+using rec::audio::source::Loop;
 
 const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
 const Colour MainPageK::FOREGROUND = Colours::white;
@@ -15,8 +17,7 @@ const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
-    directoryList_(NULL, directoryListThread_),
-    loop_(loopBuffer_) {
+    directoryList_(NULL, directoryListThread_) {
 }
 
 void MainPageK::construct(MainPageJ* peer) {
@@ -72,23 +73,21 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 
   scoped_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
   if (reader) {
-    int length = readFromAudioReader->lengthInSamples;
+    int length = reader->lengthInSamples;
     loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels,
                                             length + LOOP_BUFFER_WRAPAROUND));
-    loopBuffer_->readFromAudioReader(r, 0, length, 0, true, true);
+    loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
 
     rec::audio::math::wraparound(length, LOOP_BUFFER_WRAPAROUND, loopBuffer_.get());
-    thread_
+    loop_.reset(new Loop(*loopBuffer_));
 
-    loop_.setNextReadPosition(0);
+    loop_->setNextReadPosition(0);
 
-    stretchable_.reset(new rec::audio::source::Stretchable(BufferDescription::DEFAULT));
-    stretchable_->setSource(&loop_);
-    transportSource_.setSource(*stretchable_.get());
+    // transportSource_.setSource(*stretchable_.get());
 
   } else {
     std::cerr << "Didn't understand file type for filename "
-              << audioFile.getFileName()
+              << file.getFileName()
               << std::endl;
   }
 }
