@@ -7,17 +7,37 @@
 #include "JuceLibraryCode/JuceHeader.h"
 
 using rec::audio::source::BufferDescription;
+using rec::audio::timescaler::Description;
 using rec::audio::source::Loop;
 
+// TODO: why can't this be defined in the .h with other primitives?!
+const int MainPageK::CHUNK_SIZE = 512;
+
 const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
+
 const Colour MainPageK::FOREGROUND = Colours::white;
+
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
+
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 
 MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
-    directoryList_(NULL, directoryListThread_) {
+    directoryList_(NULL, directoryListThread_),
+    scaleDescription_(Description::Default()){
+}
+
+void MainPageK::sliderValueChanged(Slider* slider) {
+  if (slider == peer_->zoomSlider)
+    peer_->thumbnail->setZoomFactor(slider->getValue());
+}
+
+void MainPageK::sliderDragEnded(Slider* slider) {
+  if (slider == peer_->timeScaleSlider) {
+    scaleDescription_.timeScale_ = slider->getValue();
+    scaleTime();
+  }
 }
 
 void MainPageK::construct(MainPageJ* peer) {
@@ -30,7 +50,8 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->addListener(this);
 
   deviceManager_->addAudioCallback(&player_);
-  player_.setSource(&transportSource_);
+  // player_.setSource(&transportSource_);
+  peer_->timeScaleSlider->setValue(scaleDescription_.timeScale_);
 }
 
 void MainPageK::destruct() {
@@ -56,17 +77,46 @@ void MainPageK::loopingButtonClicked() {
   // how do deal with this?
 }
 
-void MainPageK::zoomSliderChanged(double value) {
-  peer_->thumbnail->setZoomFactor(value);
+void MainPageK::scaleTime() {
+  if (!loopBuffer_)
+    return;
+
+  double timeScale = scaleDescription_.timeScale_;
+  int channels = scaleDescription_.channels_;
+  int samples = loopBuffer_->getNumSamples();
+  int scaledSamples = loopBuffer_->getNumSamples() * timeScale;
+
+  scaledBuffer_.reset(new AudioSampleBuffer(channels, scaledSamples));
+
+  AudioTimeScaler scaler;
+  scaleDescription_.Init(&scaler);
+
+  std::vector<float*> inSamples(channels), outSamples(channels);
+
+  for (int written = 0, read = 0; written < scaledSamples && read < samples; ) {
+    int outChunk = std::min(CHUNK_SIZE, scaledSamples - written);
+    int64 inChunk = std::min(scaler.GetInputBufferSize(outChunk) / 2,
+                             (unsigned) (samples - read));
+
+    for (int c = 0; c < channels; ++c) {
+      inSamples[c] = loopBuffer_->getSampleData(c % loopBuffer_->getNumChannels()) + read;
+      outSamples[c] = scaledBuffer_->getSampleData(c) + written;
+    }
+
+    written += scaler.Process(&inSamples[0], &outSamples[0], inChunk, outChunk);
+    read += inChunk;
+  }
+
+  loop_.reset(new Loop(*scaledBuffer_.get()));
+  loop_->setNextReadPosition(0);
+
+  transportSource_.setSource(loop_.get());
 }
 
 void MainPageK::loadFileIntoTransport(const File& file) {
   transportSource_.stop();
-  if (stretchable_)
-    stretchable_->shutdown();
 
   transportSource_.setSource(NULL);
-  stretchable_.reset();
 
   AudioFormatManager formatManager;
   formatManager.registerBasicFormats();
@@ -74,16 +124,9 @@ void MainPageK::loadFileIntoTransport(const File& file) {
   scoped_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
   if (reader) {
     int length = reader->lengthInSamples;
-    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels,
-                                            length + LOOP_BUFFER_WRAPAROUND));
+    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels, length));
     loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
-
-    rec::audio::math::wraparound(length, LOOP_BUFFER_WRAPAROUND, loopBuffer_.get());
-    loop_.reset(new Loop(*loopBuffer_));
-
-    loop_->setNextReadPosition(0);
-
-    // transportSource_.setSource(*stretchable_.get());
+    scaleTime();
 
   } else {
     std::cerr << "Didn't understand file type for filename "

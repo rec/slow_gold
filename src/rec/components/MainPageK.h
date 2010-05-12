@@ -4,12 +4,12 @@
 #include "JuceLibraryCode/JuceHeader.h"
 #include "DemoThumbnailComp.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/audio/source/Stretchable.h"
+#include "rec/audio/stretch/TimeScaler.h"
 #include "rec/audio/source/Loop.h"
 
 class MainPageJ;
 
-class MainPageK : public FileBrowserListener {
+class MainPageK : public FileBrowserListener, public SliderListener {
  public:
   MainPageK(AudioDeviceManager* d);
   ~MainPageK() {}
@@ -19,7 +19,9 @@ class MainPageK : public FileBrowserListener {
 
   void startStopButtonClicked();
   void loopingButtonClicked();
-  void zoomSliderChanged(double value);
+
+  virtual void sliderValueChanged (Slider* slider);
+  virtual void sliderDragEnded (Slider* slider);
 
   void selectionChanged();
   void fileClicked(const File& file, const MouseEvent& e) {}
@@ -33,6 +35,7 @@ class MainPageK : public FileBrowserListener {
   static const int LOOP_BUFFER_WRAPAROUND = 32736;
   static const int LOOP_BUFFER_CHANNELS = 2;
   static const int THREAD_PRIORITY = 3;
+  static const int CHUNK_SIZE;
 
   static const TreeView::ColourIds BACKGROUND;
   static const Colour FOREGROUND;
@@ -41,6 +44,7 @@ class MainPageK : public FileBrowserListener {
 
   void loadFileIntoTransport(const File& audioFile);
   void readyToPlay();
+  void scaleTime();
 
   MainPageJ* peer_;
 
@@ -51,14 +55,11 @@ class MainPageK : public FileBrowserListener {
   // Contains the entire sample in memory, plus a wraparound.
   scoped_ptr<AudioSampleBuffer> loopBuffer_;
 
-  // Contains the time-shifted sample in memory.
-  scoped_ptr<AudioSampleBuffer> shiftedBuffer_;
+  // Contains the time-scaled sample in memory.
+  scoped_ptr<AudioSampleBuffer> scaledBuffer_;
 
   // Sends audio to the Stretchable source.
   scoped_ptr<rec::audio::source::Loop> loop_;
-
-  // Sends audio to the transport source.
-  scoped_ptr<rec::audio::source::Stretchable> stretchable_;
 
   // Sends audio to the AudioSourcePlayer.
   AudioTransportSource transportSource_;
@@ -68,6 +69,9 @@ class MainPageK : public FileBrowserListener {
 
   // Receives the final audio!
   AudioDeviceManager* deviceManager_;
+
+  // Describes how to stretch.
+  rec::audio::timescaler::Description scaleDescription_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

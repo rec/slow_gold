@@ -38,7 +38,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /Od /D WIN32 /D _WINDOWS /D _DEBUG /YX /FD /c /Gm /ZI /GZ /Zm1024
-# ADD CPP /nologo /MTd /W3 /GR /GX /Od /I ../../src /I ../../../juce/src /I ../../../juce /D WIN32 /D _WINDOWS /D _DEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024 /Gm /ZI /GZ 
+# ADD CPP /nologo /MTd /W3 /GR /GX /Od /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /D WIN32 /D _WINDOWS /D _DEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024 /Gm /ZI /GZ 
 # ADD BASE MTL /nologo /D WIN32 /D _WINDOWS /D _DEBUG /mktyplib203 /win32
 # ADD MTL /nologo /D WIN32 /D _WINDOWS /D _DEBUG /mktyplib203 /win32
 # ADD BASE RSC /l 0x40c /d WIN32 /D _WINDOWS /D _DEBUG
@@ -62,7 +62,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D WIN32 /D _WINDOWS /D NDEBUG /YX /FD /c  /Zm1024
-# ADD CPP /nologo /MT /W3 /GR /GX /O2 /I ../../src /I ../../../juce/src /I ../../../juce /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
+# ADD CPP /nologo /MT /W3 /GR /GX /O2 /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
 # SUBTRACT CPP /YX
 # ADD BASE MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
 # ADD MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
