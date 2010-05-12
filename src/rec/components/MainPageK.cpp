@@ -37,6 +37,9 @@ void MainPageK::sliderDragEnded(Slider* slider) {
   if (slider == peer_->timeScaleSlider) {
     scaleDescription_.timeScale_ = slider->getValue();
     scaleTime();
+  } else if (slider == peer_->pitchScaleSlider) {
+    scaleDescription_.pitchScale_ = slider->getValue();
+    scaleTime();
   }
 }
 
@@ -52,9 +55,11 @@ void MainPageK::construct(MainPageJ* peer) {
   deviceManager_->addAudioCallback(&player_);
 
   peer_->timeScaleSlider->setValue(scaleDescription_.timeScale_);
+  peer_->pitchScaleSlider->setValue(scaleDescription_.pitchScale_);
   player_.setSource(&transportSource_);
 
   peer_->timeScaleSlider->addListener(this);
+  peer_->pitchScaleSlider->addListener(this);
   peer_->zoomSlider->addListener(this);
 }
 

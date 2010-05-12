@@ -70,6 +70,7 @@ private:
     Label* explanation;
     Slider* zoomSlider;
     Slider* timeScaleSlider;
+    Slider* pitchScaleSlider;
     ToggleButton* loopingButton;
 
     //==============================================================================

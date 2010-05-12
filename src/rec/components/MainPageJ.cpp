@@ -78,11 +78,18 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     loopingButton->setToggleState (true, false);
 
     addAndMakeVisible (timeScaleSlider = new Slider (T("Time Scale")));
-    timeScaleSlider->setTooltip (T("Drag this to set the timescale."));
+    timeScaleSlider->setTooltip (T("Drag this to set the slowdown."));
     timeScaleSlider->setRange (0.1, 10, 0);
     timeScaleSlider->setSliderStyle (Slider::LinearHorizontal);
     timeScaleSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     timeScaleSlider->addListener (this);
+
+    addAndMakeVisible (pitchScaleSlider = new Slider (T("Pitch Scale")));
+    pitchScaleSlider->setTooltip (T("Drag this to set the pitchscale."));
+    pitchScaleSlider->setRange (0.5, 2, 0);
+    pitchScaleSlider->setSliderStyle (Slider::LinearHorizontal);
+    pitchScaleSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    pitchScaleSlider->addListener (this);
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -108,6 +115,7 @@ MainPageJ::~MainPageJ()
     deleteAndZero (zoomSlider);
     deleteAndZero (loopingButton);
     deleteAndZero (timeScaleSlider);
+    deleteAndZero (pitchScaleSlider);
 
     //[Destructor]. You can add your own custom destruction code here..
     //[/Destructor]
@@ -135,6 +143,7 @@ void MainPageJ::resized()
     zoomSlider->setBounds (72, getHeight() - 90, 200, 24);
     loopingButton->setBounds (192, getHeight() - 40, 150, 24);
     timeScaleSlider->setBounds (300, getHeight() - 90, 200, 24);
+    pitchScaleSlider->setBounds (300, getHeight() - 130, 200, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -175,6 +184,11 @@ void MainPageJ::sliderValueChanged (Slider* sliderThatWasMoved)
     {
         //[UserSliderCode_timeScaleSlider] -- add your slider handling code here..
         //[/UserSliderCode_timeScaleSlider]
+    }
+    else if (sliderThatWasMoved == pitchScaleSlider)
+    {
+        //[UserSliderCode_pitchScaleSlider] -- add your slider handling code here..
+        //[/UserSliderCode_pitchScaleSlider]
     }
 
 
