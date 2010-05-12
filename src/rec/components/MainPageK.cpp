@@ -50,8 +50,12 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->addListener(this);
 
   deviceManager_->addAudioCallback(&player_);
-  // player_.setSource(&transportSource_);
+
   peer_->timeScaleSlider->setValue(scaleDescription_.timeScale_);
+  player_.setSource(&transportSource_);
+
+  peer_->timeScaleSlider->addListener(this);
+  peer_->zoomSlider->addListener(this);
 }
 
 void MainPageK::destruct() {
@@ -82,25 +86,26 @@ void MainPageK::scaleTime() {
     return;
 
   double timeScale = scaleDescription_.timeScale_;
-  int channels = scaleDescription_.channels_;
+  int outChannels = scaleDescription_.channels_;
+  int inChannels = loopBuffer_->getNumChannels();
   int samples = loopBuffer_->getNumSamples();
   int scaledSamples = loopBuffer_->getNumSamples() * timeScale;
 
-  scaledBuffer_.reset(new AudioSampleBuffer(channels, scaledSamples));
+  scaledBuffer_.reset(new AudioSampleBuffer(outChannels, scaledSamples));
 
   AudioTimeScaler scaler;
   scaleDescription_.Init(&scaler);
 
-  std::vector<float*> inSamples(channels), outSamples(channels);
+  std::vector<float*> inSamples(inChannels), outSamples(outChannels);
 
   for (int written = 0, read = 0; written < scaledSamples && read < samples; ) {
     int outChunk = std::min(CHUNK_SIZE, scaledSamples - written);
     int64 inChunk = std::min(scaler.GetInputBufferSize(outChunk) / 2,
                              (unsigned) (samples - read));
 
-    for (int c = 0; c < channels; ++c) {
-      inSamples[c] = loopBuffer_->getSampleData(c % loopBuffer_->getNumChannels()) + read;
-      outSamples[c] = scaledBuffer_->getSampleData(c) + written;
+    for (int c = 0; c < std::max(inChannels, outChannels); ++c) {
+      inSamples[c] = loopBuffer_->getSampleData(c % inChannels) + read;
+      outSamples[c] = scaledBuffer_->getSampleData(c % outChannels) + written;
     }
 
     written += scaler.Process(&inSamples[0], &outSamples[0], inChunk, outChunk);
