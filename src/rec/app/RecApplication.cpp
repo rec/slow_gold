@@ -1,6 +1,7 @@
+#include "rec/base/scoped_ptr.h"
+
 #include "rec/app/GenericApplication.h"
 #include "rec/app/RecWindow.h"
-#include "rec/base/scoped_ptr.h"
 
 using rec::juce::GenericApplication;
 

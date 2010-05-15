@@ -1,7 +1,7 @@
 #ifndef __REC_COMPONENT_CONTAINER
 #define __REC_COMPONENT_CONTAINER
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "juce_amalgamated.h"
 
 namespace rec {
 

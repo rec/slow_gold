@@ -7,7 +7,6 @@
 		activeTarget = E25FC6C6116A407700FCB21D /* unit-tests */;
 		addToTargets = (
 			E25FC6C6116A407700FCB21D /* unit-tests */,
-			E2B2F7E9117193C700D0C002 /* pitch-shift */,
 		);
 		breakpoints = (
 			E2A854971180F2AB00667631 /* Parser_test.cpp:170 */,
@@ -16,7 +15,6 @@
 		codeSenseManager = E25FC5FF116A364600FCB21D /* Code sense */;
 		executables = (
 			E25FC6C8116A407700FCB21D /* unit-tests */,
-			E2B2F7EB117193C700D0C002 /* pitch-shift */,
 		);
 		expressions = (
 			tree_,
@@ -53,7 +51,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					22,
 					300,
-					457,
+					504,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXExecutablesDataSource_ActiveFlagID,
@@ -128,7 +126,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					386,
+					576,
 					60,
 					20,
 					48,
@@ -169,6 +167,7 @@
 			E26F7B3C119E384C00F5D4CF /* PBXTextBookmark */ = E26F7B3C119E384C00F5D4CF /* PBXTextBookmark */;
 			E26F7B3D119E384C00F5D4CF /* PBXTextBookmark */ = E26F7B3D119E384C00F5D4CF /* PBXTextBookmark */;
 			E26F7B3E119E384C00F5D4CF /* PBXTextBookmark */ = E26F7B3E119E384C00F5D4CF /* PBXTextBookmark */;
+			E26F7B6D119E3BCF00F5D4CF /* PBXTextBookmark */ = E26F7B6D119E3BCF00F5D4CF /* PBXTextBookmark */;
 			E27D998B118B8FF300B5D7D7 = E27D998B118B8FF300B5D7D7 /* PBXTextBookmark */;
 			E27D99E5118BAF7600B5D7D7 = E27D99E5118BAF7600B5D7D7 /* PBXTextBookmark */;
 			E27D9A12118F505900B5D7D7 = E27D9A12118F505900B5D7D7 /* PBXTextBookmark */;
@@ -570,6 +569,16 @@
 		vrLen = 873;
 		vrLoc = 0;
 	};
+	E26F7B6D119E3BCF00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2CF9FD11173AC7100449411 /* results.txt */;
+		name = "results.txt: 12";
+		rLen = 0;
+		rLoc = 588;
+		rType = 0;
+		vrLen = 873;
+		vrLoc = 0;
+	};
 	E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1339, 1313}}";
@@ -797,7 +806,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 295581751.403254;
+		modificationTime = 295582645.014583;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -919,7 +928,7 @@
 		ignoreCount = 0;
 		lineNumber = 170;
 		location = "unit-tests";
-		modificationTime = 295581750.179418;
+		modificationTime = 295582643.068947;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -999,44 +1008,6 @@
 			sepNavVisRange = "{0, 840}";
 		};
 	};
-	E2B2F7E9117193C700D0C002 /* pitch-shift */ = {
-		activeExec = 0;
-		executables = (
-			E2B2F7EB117193C700D0C002 /* pitch-shift */,
-		);
-	};
-	E2B2F7EB117193C700D0C002 /* pitch-shift */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		dataTipCustomDataFormattersEnabled = 1;
-		dataTipShowTypeColumn = 1;
-		dataTipSortType = 0;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = "pitch-shift";
-		savedGlobals = {
-		};
-		showTypeColumn = 0;
-		sourceDirectories = (
-		);
-		variableFormatDictionary = {
-		};
-	};
 	E2BE692F116C28C000A43B0C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E25FC75F116A974500FCB21D /* gtest.cc */;
@@ -1050,7 +1021,7 @@
 	E2CF9FD11173AC7100449411 /* results.txt */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 507}}";
-			sepNavSelRange = "{873, 0}";
+			sepNavSelRange = "{588, 0}";
 			sepNavVisRange = "{0, 873}";
 		};
 	};

@@ -1,8 +1,8 @@
 #ifndef __REC_WINDOW
 #define __REC_WINDOW
 
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/scoped_ptr.h"
+#include "juce_amalgamated.h"
 
 class Component;
 
