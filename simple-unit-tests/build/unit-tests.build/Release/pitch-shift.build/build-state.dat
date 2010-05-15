@@ -1,0 +1,457 @@
+Tpitch-shift
+v7
+r0
+t292717448.493011
+cCheck dependencies
+cCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/BufferedAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp normal ppc c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchableAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp normal ppc c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchMain.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp normal ppc c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/BufferedAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchableAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchMain.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cLd /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift normal i386
+
+N/Developer/SDKs/MacOSX10.5.sdk
+c000000004AA41B6200000000000000EE
+t1252268898
+s238
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
+c00000000486499690000000000000942
+t1214552425
+s2370
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/getopt.h
+c0000000047BA99300000000000000CBC
+t1203411248
+s3260
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/inttypes.h
+c0000000047BA993000000000000027D1
+t1203411248
+s10193
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/libkern/OSAtomic.h
+c0000000047BA993000000000000024B9
+t1203411248
+s9401
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/signal.h
+c0000000047BA993100000000000014F0
+t1203411249
+s5360
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/stdlib.h
+c0000000047BA99310000000000002A79
+t1203411249
+s10873
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/string.h
+c0000000047BA99320000000000001731
+t1203411250
+s5937
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/strings.h
+c0000000047BA99300000000000000DA4
+t1203411248
+s3492
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h
+c000000004A11EAF10000000000000C7E
+t1242688241
+s3198
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdarg.h
+c000000004A11EAF100000000000010DD
+t1242688241
+s4317
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stddef.h
+c000000004A11EAF10000000000003197
+t1242688241
+s12695
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h
+c000000004A11EAF1000000000000190C
+t1242688241
+s6412
+
+N/System/Library/Frameworks/Carbon.framework/Carbon
+c000000004A7680C1000000000000A5F0
+t1249280193
+s42480
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/System/Library/Frameworks/CoreAudio.framework/CoreAudio
+c000000004A73D8640000000000217030
+t1249106020
+s2191408
+
+N/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
+c000000004A4C40E7000000000015FAD0
+t1246511335
+s1440464
+
+N/System/Library/Frameworks/DiscRecording.framework/DiscRecording
+c000000004AF07CEF00000000003953E0
+t1257274607
+s3757024
+
+N/System/Library/Frameworks/IOKit.framework/IOKit
+c000000004A4D5233000000000016E510
+t1246581299
+s1500432
+
+N/System/Library/Frameworks/OpenGL.framework/OpenGL
+c000000004A73D93D0000000000040130
+t1249106237
+s262448
+
+N/System/Library/Frameworks/QTKit.framework/QTKit
+c000000004A67D60D00000000006613B0
+t1248318989
+s6689712
+
+N/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004A67D2580000000000CF0BE0
+t1248318040
+s13568992
+
+N/System/Library/Frameworks/QuickTime.framework/QuickTime
+c000000004A67D46100000000007836D0
+t1248318561
+s7878352
+
+N/System/Library/Frameworks/WebKit.framework/WebKit
+c000000004AEF73D700000000004E22C0
+t1257206743
+s5120704
+
+N/Users/tom/Documents/development/juce/bin/libjuce.a
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/tom/Documents/development/juce/juce_amalgamated.h
+c000000004BA2C31500000000000B988B
+t1268957973
+s759947
+i<CoreFoundation/CoreFoundation.h>
+i<cstdlib>
+i<cstdarg>
+i<climits>
+i<limits>
+i<cmath>
+i<cwchar>
+i<stdexcept>
+i<typeinfo>
+i<cstring>
+i<cstdio>
+i<iostream>
+i<intrin.h>
+i<libkern/OSAtomic.h>
+i<signal.h>
+i<crtdbg.h>
+i<malloc.h>
+
+N/Users/tom/Documents/development/rec/ammf-2/build/Release/libammf-2.a
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.h
+c000000004BBE72BD0000000000001D52
+t1270772413
+s7506
+i"datatype.h"
+i"hfft.h"
+i"mferrors.h"
+
+N/Users/tom/Documents/development/rec/src/rec/ammf_scaler/datatype.h
+c000000004BA5B1030000000000000A7B
+t1269149955
+s2683
+i"fraction.h"
+
+N/Users/tom/Documents/development/rec/src/rec/ammf_scaler/fraction.h
+c000000004BA5B1030000000000000F62
+t1269149955
+s3938
+i<values.h>
+
+N/Users/tom/Documents/development/rec/src/rec/ammf_scaler/hfft.h
+c000000004BA5B103000000000000040F
+t1269149955
+s1039
+i"datatype.h"
+
+N/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mferrors.h
+c000000004BA5B1030000000000000599
+t1269149955
+s1433
+
+N/Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h
+c000000004BBB92070000000000000470
+t1270583815
+s1136
+i"juce_amalgamated.h"
+i"rec/base/scoped_ptr.h"
+
+N/Users/tom/Documents/development/rec/src/rec/audio/FillQueue.h
+c000000004BBBE6AE0000000000000543
+t1270605486
+s1347
+i<strings.h>
+i"rec/base/basictypes.h"
+
+N/Users/tom/Documents/development/rec/src/rec/audio/MutableScaler.h
+c000000004BC247E00000000000000620
+t1271023584
+s1568
+i"rec/base/basictypes.h"
+i"rec/ammf_scaler/AudioTimeScaler.h"
+
+N/Users/tom/Documents/development/rec/src/rec/audio/StretchableAudioSource.h
+c000000004BC11D6100000000000005E5
+t1270947169
+s1509
+i"rec/audio/BufferedAudioSource.h"
+i"rec/audio/MutableScaler.h"
+
+N/Users/tom/Documents/development/rec/src/rec/base/basictypes.h
+c000000004BA7E4BD00000000000035BE
+t1269294269
+s13758
+i<limits.h>
+i<stddef.h>
+i<string.h>
+i"rec/base/port.h"
+i<stdint.h>
+
+N/Users/tom/Documents/development/rec/src/rec/base/build_config.h
+c000000004B832CCE0000000000000E62
+t1266887886
+s3682
+
+N/Users/tom/Documents/development/rec/src/rec/base/port.h
+c000000004B832CD5000000000000070E
+t1266887893
+s1806
+i<stdarg.h>
+i"rec/base/build_config.h"
+
+N/Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h
+c000000004BBB7FCF00000000000006A5
+t1270579151
+s1701
+i<stddef.h>
+i"rec/base/basictypes.h"
+
+N/Users/tom/Documents/development/rec/src/rec/util/math.h
+c000000004BBBACDE000000000000020F
+t1270590686
+s527
+
+N/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp
+c000000004BC24148000000000000108F
+t1271021896
+s4239
+i<vector>
+i"juce_amalgamated.h"
+i"rec/audio/BufferedAudioSource.h"
+i"rec/audio/FillQueue.h"
+i"rec/util/math.h"
+
+N/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp
+c000000004BC24BEE0000000000001493
+t1271024622
+s5267
+i<getopt.h>
+i<inttypes.h>
+i<stdlib.h>
+i<string>
+i"juce_amalgamated.h"
+i"rec/audio/MutableScaler.h"
+i"rec/base/scoped_ptr.h"
+
+N/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp
+c000000004BC1124100000000000007C6
+t1270944321
+s1990
+i"rec/audio/StretchableAudioSource.h"
+
+N/Users/tom/Documents/development/rec/unit-tests/build/Release/pitch-shift
+t2
+s0
+
+N/Users/tom/Documents/development/rec/unit-tests/build/Release/pitch-shift.dSYM
+t2
+s0
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/BufferedAudioSource.o
+t1271024648
+s748448
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchMain.o
+t1271024648
+s740340
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchableAudioSource.o
+t1271024648
+s730972
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift
+t2
+s0
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift.LinkFileList
+c000000004BC24C04000000000000019C
+t1271024644
+s412
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/BufferedAudioSource.o
+t2
+s0
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchMain.o
+t2
+s0
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchableAudioSource.o
+t2
+s0
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/pitch-shift
+t2
+s0
+
+N/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/pitch-shift.LinkFileList
+c000000004BC24C040000000000000199
+t1271024644
+s409
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies292717444#292717444#0(0"0(0#1#0"4300934600#0"0#
+
+CCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/BufferedAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s292717444.744461
+e292717448.372082
+r1
+xCompileC
+xbuild/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/BufferedAudioSource.o
+x/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@96"Compile /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp292717444#292717448#0(0"0(0#0#88"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp4300934600#1761"    cd /Users/tom/Documents/development/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -fvisibility=hidden -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-generated-files.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-own-target-headers.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-all-target-headers.hmap -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-project-headers.hmap -F/Users/tom/Documents/development/rec/unit-tests/build/Release -I/Users/tom/Documents/development/rec/unit-tests/build/Release/include -I/Users/tom/Documents/development/rec -I/Users/tom/Documents/development/juce/src -I/Users/tom/Documents/development/juce -I/Users/tom/Documents/development/rec/src -I/Users/tom/Documents/development/gtest/include -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources/i386 -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources -c /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp -o /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/BufferedAudioSource.o0#
+
+CCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchMain.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s292717444.746331
+e292717448.362580
+r1
+xCompileC
+xbuild/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchMain.o
+x/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@88"Compile /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp292717444#292717448#0(0"0(0#0#80"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp4300934600#1745"    cd /Users/tom/Documents/development/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -fvisibility=hidden -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-generated-files.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-own-target-headers.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-all-target-headers.hmap -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-project-headers.hmap -F/Users/tom/Documents/development/rec/unit-tests/build/Release -I/Users/tom/Documents/development/rec/unit-tests/build/Release/include -I/Users/tom/Documents/development/rec -I/Users/tom/Documents/development/juce/src -I/Users/tom/Documents/development/juce -I/Users/tom/Documents/development/rec/src -I/Users/tom/Documents/development/gtest/include -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources/i386 -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources -c /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp -o /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchMain.o0#
+
+CCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchableAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s292717444.745366
+e292717448.359883
+r1
+xCompileC
+xbuild/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchableAudioSource.o
+x/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@99"Compile /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp292717444#292717448#0(0"0(0#0#91"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp4300934600#1767"    cd /Users/tom/Documents/development/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -fvisibility=hidden -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-generated-files.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-own-target-headers.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-all-target-headers.hmap -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-project-headers.hmap -F/Users/tom/Documents/development/rec/unit-tests/build/Release -I/Users/tom/Documents/development/rec/unit-tests/build/Release/include -I/Users/tom/Documents/development/rec -I/Users/tom/Documents/development/juce/src -I/Users/tom/Documents/development/juce -I/Users/tom/Documents/development/rec/src -I/Users/tom/Documents/development/gtest/include -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources/i386 -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources -c /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp -o /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/StretchableAudioSource.o0#
+
+CCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/BufferedAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp normal ppc c++ com.apple.compilers.gcc.4_2
+s292717444.672389
+e292717448.429842
+r0
+xCompileC
+xbuild/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/BufferedAudioSource.o
+x/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp
+xnormal
+xppc
+xc++
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Users/tom/Documents/development/rec/src/rec/base/port.h:9,
+o                 from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h:12,
+o                 from /Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h:5,
+o                 from /Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h:5,
+o                 from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp:6:
+o/Users/tom/Documents/development/rec/src/rec/base/build_config.h:95:2: error: #error Please add support for your architecture in build/build_config.h
+lSLF07#2@96"Compile /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp292717444#292717448#0(621"In file included from /Users/tom/Documents/development/rec/src/rec/base/port.h:9,                 from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h:12,                 from /Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h:5,                 from /Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h:5,                 from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp:6:/Users/tom/Documents/development/rec/src/rec/base/build_config.h:95:2: error: #error Please add support for your architecture in build/build_config.h1(4@71"#error Please add support for your architecture in build/build_config.h292717446#471#150#6(7@110"In file included from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp292717446#18446744073709551615#0#0(6@88"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp292714696#6#0#6#0#0"0(7@94"In file included from /Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h292717446#18446744073709551615#0#0(6@72"/Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h292276615#5#0#5#0#0"0(7@84"In file included from /Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h292717446#18446744073709551615#0#0(6@62"/Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h292271951#5#0#5#0#0"0(7@84"In file included from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h292717446#18446744073709551615#0#0(6@62"/Users/tom/Documents/development/rec/src/rec/base/basictypes.h290987069#12#0#12#0#0"0(7@78"In file included from /Users/tom/Documents/development/rec/src/rec/base/port.h292717446#18446744073709551615#0#0(6@56"/Users/tom/Documents/development/rec/src/rec/base/port.h288580693#9#0#9#0#0"0(13@139"#error Please add support for your architecture in build/build_config.h in /Users/tom/Documents/development/rec/src/rec/base/build_config.h292717446#18446744073709551615#0#0(6@64"/Users/tom/Documents/development/rec/src/rec/base/build_config.h288580686#95#0#95#0#0"0(6@64"/Users/tom/Documents/development/rec/src/rec/base/build_config.h288580686#95#0#95#0#8"#error *0(0#0#88"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp4300934600#1755"    cd /Users/tom/Documents/development/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mtune=G5 -fvisibility=hidden -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-generated-files.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-own-target-headers.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-all-target-headers.hmap -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-project-headers.hmap -F/Users/tom/Documents/development/rec/unit-tests/build/Release -I/Users/tom/Documents/development/rec/unit-tests/build/Release/include -I/Users/tom/Documents/development/rec -I/Users/tom/Documents/development/juce/src -I/Users/tom/Documents/development/juce -I/Users/tom/Documents/development/rec/src -I/Users/tom/Documents/development/gtest/include -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources/ppc -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources -c /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/BufferedAudioSource.cpp -o /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/BufferedAudioSource.o1#
+
+CCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchMain.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp normal ppc c++ com.apple.compilers.gcc.4_2
+s292717444.743567
+e292717448.430186
+r0
+xCompileC
+xbuild/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchMain.o
+x/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp
+xnormal
+xppc
+xc++
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Users/tom/Documents/development/rec/src/rec/base/port.h:9,
+o                 from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h:12,
+o                 from /Users/tom/Documents/development/rec/src/rec/audio/MutableScaler.h:4,
+o                 from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp:8:
+o/Users/tom/Documents/development/rec/src/rec/base/build_config.h:95:2: error: #error Please add support for your architecture in build/build_config.h
+lSLF07#2@88"Compile /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp292717444#292717448#0(519"In file included from /Users/tom/Documents/development/rec/src/rec/base/port.h:9,                 from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h:12,                 from /Users/tom/Documents/development/rec/src/rec/audio/MutableScaler.h:4,                 from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp:8:/Users/tom/Documents/development/rec/src/rec/base/build_config.h:95:2: error: #error Please add support for your architecture in build/build_config.h1(4@71"#error Please add support for your architecture in build/build_config.h292717446#369#150#5(7@102"In file included from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp292717446#18446744073709551615#0#0(6@80"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp292717422#8#0#8#0#0"0(7@88"In file included from /Users/tom/Documents/development/rec/src/rec/audio/MutableScaler.h292717446#18446744073709551615#0#0(6@66"/Users/tom/Documents/development/rec/src/rec/audio/MutableScaler.h292716384#4#0#4#0#0"0(7@84"In file included from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h292717446#18446744073709551615#0#0(6@62"/Users/tom/Documents/development/rec/src/rec/base/basictypes.h290987069#12#0#12#0#0"0(7@78"In file included from /Users/tom/Documents/development/rec/src/rec/base/port.h292717446#18446744073709551615#0#0(6@56"/Users/tom/Documents/development/rec/src/rec/base/port.h288580693#9#0#9#0#0"0(13@139"#error Please add support for your architecture in build/build_config.h in /Users/tom/Documents/development/rec/src/rec/base/build_config.h292717446#18446744073709551615#0#0(6@64"/Users/tom/Documents/development/rec/src/rec/base/build_config.h288580686#95#0#95#0#0"0(6@64"/Users/tom/Documents/development/rec/src/rec/base/build_config.h288580686#95#0#95#0#8"#error *0(0#0#80"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp4300934600#1739"    cd /Users/tom/Documents/development/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mtune=G5 -fvisibility=hidden -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-generated-files.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-own-target-headers.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-all-target-headers.hmap -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-project-headers.hmap -F/Users/tom/Documents/development/rec/unit-tests/build/Release -I/Users/tom/Documents/development/rec/unit-tests/build/Release/include -I/Users/tom/Documents/development/rec -I/Users/tom/Documents/development/juce/src -I/Users/tom/Documents/development/juce -I/Users/tom/Documents/development/rec/src -I/Users/tom/Documents/development/gtest/include -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources/ppc -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources -c /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchMain.cpp -o /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchMain.o1#
+
+CCompileC build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchableAudioSource.o /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp normal ppc c++ com.apple.compilers.gcc.4_2
+s292717444.742363
+e292717448.357957
+r0
+xCompileC
+xbuild/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchableAudioSource.o
+x/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp
+xnormal
+xppc
+xc++
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Users/tom/Documents/development/rec/src/rec/base/port.h:9,
+o                 from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h:12,
+o                 from /Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h:5,
+o                 from /Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h:5,
+o                 from /Users/tom/Documents/development/rec/src/rec/audio/StretchableAudioSource.h:4,
+o                 from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp:1:
+o/Users/tom/Documents/development/rec/src/rec/base/build_config.h:95:2: error: #error Please add support for your architecture in build/build_config.h
+lSLF07#2@99"Compile /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp292717444#292717448#0(725"In file included from /Users/tom/Documents/development/rec/src/rec/base/port.h:9,                 from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h:12,                 from /Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h:5,                 from /Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h:5,                 from /Users/tom/Documents/development/rec/src/rec/audio/StretchableAudioSource.h:4,                 from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp:1:/Users/tom/Documents/development/rec/src/rec/base/build_config.h:95:2: error: #error Please add support for your architecture in build/build_config.h1(4@71"#error Please add support for your architecture in build/build_config.h292717446#575#150#7(7@113"In file included from /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp292717446#18446744073709551615#0#0(6@91"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp292637121#1#0#1#0#0"0(7@97"In file included from /Users/tom/Documents/development/rec/src/rec/audio/StretchableAudioSource.h292717446#18446744073709551615#0#0(6@75"/Users/tom/Documents/development/rec/src/rec/audio/StretchableAudioSource.h292639969#4#0#4#0#0"0(7@94"In file included from /Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h292717446#18446744073709551615#0#0(6@72"/Users/tom/Documents/development/rec/src/rec/audio/BufferedAudioSource.h292276615#5#0#5#0#0"0(7@84"In file included from /Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h292717446#18446744073709551615#0#0(6@62"/Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h292271951#5#0#5#0#0"0(7@84"In file included from /Users/tom/Documents/development/rec/src/rec/base/basictypes.h292717446#18446744073709551615#0#0(6@62"/Users/tom/Documents/development/rec/src/rec/base/basictypes.h290987069#12#0#12#0#0"0(7@78"In file included from /Users/tom/Documents/development/rec/src/rec/base/port.h292717446#18446744073709551615#0#0(6@56"/Users/tom/Documents/development/rec/src/rec/base/port.h288580693#9#0#9#0#0"0(13@139"#error Please add support for your architecture in build/build_config.h in /Users/tom/Documents/development/rec/src/rec/base/build_config.h292717446#18446744073709551615#0#0(6@64"/Users/tom/Documents/development/rec/src/rec/base/build_config.h288580686#95#0#95#0#0"0(6@64"/Users/tom/Documents/development/rec/src/rec/base/build_config.h288580686#95#0#95#0#8"#error *0(0#0#91"/Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp4300934600#1761"    cd /Users/tom/Documents/development/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mtune=G5 -fvisibility=hidden -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-generated-files.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-own-target-headers.hmap -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-all-target-headers.hmap -iquote /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/pitch-shift-project-headers.hmap -F/Users/tom/Documents/development/rec/unit-tests/build/Release -I/Users/tom/Documents/development/rec/unit-tests/build/Release/include -I/Users/tom/Documents/development/rec -I/Users/tom/Documents/development/juce/src -I/Users/tom/Documents/development/juce -I/Users/tom/Documents/development/rec/src -I/Users/tom/Documents/development/gtest/include -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources/ppc -I/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/DerivedSources -c /Users/tom/Documents/development/rec/unit-tests/../src/rec/audio/StretchableAudioSource.cpp -o /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/StretchableAudioSource.o1#
+
+CCreateUniversalBinary /Users/tom/Documents/development/rec/unit-tests/build/Release/pitch-shift normal "ppc i386"
+r0
+
+CGenerateDSYMFile /Users/tom/Documents/development/rec/unit-tests/build/Release/pitch-shift.dSYM /Users/tom/Documents/development/rec/unit-tests/build/Release/pitch-shift
+r0
+
+CLd /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift normal i386
+s292717448.372207
+e292717448.492918
+r0
+xLd
+x/Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift
+xnormal
+xi386
+oi686-apple-darwin10-g++-4.2.1: /Users/tom/Documents/development/juce/bin/libjuce.a: No such file or directory
+oi686-apple-darwin10-g++-4.2.1: /Users/tom/Documents/development/rec/ammf-2/build/Release/libammf-2.a: No such file or directory
+lSLF07#2@133"Link /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift292717448#292717448#0(297"i686-apple-darwin10-g++-4.2.1: /Users/tom/Documents/development/juce/bin/libjuce.a: No such file or directoryi686-apple-darwin10-g++-4.2.1: /Users/tom/Documents/development/rec/ammf-2/build/Release/libammf-2.a: No such file or directoryCommand /Developer/usr/bin/g++-4.2 failed with exit code 11(4@58"Command /Developer/usr/bin/g++-4.2 failed with exit code 1292717448#18446744073709551615#0#0(1@0"0(0#0#0"4300934600#953"    cd /Users/tom/Documents/development/rec/unit-tests    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/g++-4.2 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/tom/Documents/development/rec/unit-tests/build/Release -F/Users/tom/Documents/development/rec/unit-tests/build/Release -filelist /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift.LinkFileList -mmacosx-version-min=10.5 /Users/tom/Documents/development/juce/bin/libjuce.a /Users/tom/Documents/development/rec/ammf-2/build/Release/libammf-2.a -framework Cocoa -framework Carbon -framework IOKit -framework CoreAudio -framework CoreMIDI -framework WebKit -framework DiscRecording -framework OpenGL -framework QuartzCore -framework QTKit -framework QuickTime -o /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/i386/pitch-shift1#
+
+CLd /Users/tom/Documents/development/rec/unit-tests/build/unit-tests.build/Release/pitch-shift.build/Objects-normal/ppc/pitch-shift normal ppc
+r0
+

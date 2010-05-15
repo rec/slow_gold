@@ -7,7 +7,6 @@
 		activeTarget = E25FC6C6116A407700FCB21D /* unit-tests */;
 		addToTargets = (
 			E25FC6C6116A407700FCB21D /* unit-tests */,
-			E2B2F7E9117193C700D0C002 /* pitch-shift */,
 		);
 		breakpoints = (
 			E2A854971180F2AB00667631 /* Parser_test.cpp:170 */,
@@ -16,7 +15,6 @@
 		codeSenseManager = E25FC5FF116A364600FCB21D /* Code sense */;
 		executables = (
 			E25FC6C8116A407700FCB21D /* unit-tests */,
-			E2B2F7EB117193C700D0C002 /* pitch-shift */,
 		);
 		expressions = (
 			tree_,
@@ -53,7 +51,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					22,
 					300,
-					457,
+					504,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXExecutablesDataSource_ActiveFlagID,
@@ -128,7 +126,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					386,
+					576,
 					60,
 					20,
 					48,
@@ -145,8 +143,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 295547312;
-			PBXWorkspaceStateSaveDate = 295547312;
+			PBXPerProjectTemplateStateSaveDate = 295578828;
+			PBXWorkspaceStateSaveDate = 295578828;
 		};
 		perUserProjectItems = {
 			E22A40D311862532007293B2 = E22A40D311862532007293B2 /* PBXTextBookmark */;
@@ -156,7 +154,7 @@
 			E267741D11719EF000A44B58 = E267741D11719EF000A44B58 /* PBXTextBookmark */;
 			E267743E1171A14000A44B58 = E267743E1171A14000A44B58 /* PBXTextBookmark */;
 			E26774B3117271AB00A44B58 = E26774B3117271AB00A44B58 /* PBXTextBookmark */;
-			E26F7A6D119DB1C800F5D4CF /* PBXTextBookmark */ = E26F7A6D119DB1C800F5D4CF /* PBXTextBookmark */;
+			E26F7A6D119DB1C800F5D4CF = E26F7A6D119DB1C800F5D4CF /* PBXTextBookmark */;
 			E27D998B118B8FF300B5D7D7 = E27D998B118B8FF300B5D7D7 /* PBXTextBookmark */;
 			E27D99E5118BAF7600B5D7D7 = E27D99E5118BAF7600B5D7D7 /* PBXTextBookmark */;
 			E27D9A12118F505900B5D7D7 = E27D9A12118F505900B5D7D7 /* PBXTextBookmark */;
@@ -208,6 +206,12 @@
 		vrLoc = 826;
 	};
 	E22A40E4118625AF007293B2 /* Node.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = Node.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/json/Node.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {604, 767}}";
 			sepNavSelRange = "{1200, 0}";
@@ -289,6 +293,11 @@
 		name = math_test.cpp;
 		path = /Users/tom/Documents/development/rec/src/rec/util/math_test.cpp;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {794, 498}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 293}";
+		};
 	};
 	E25FC75C116A974500FCB21D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -314,55 +323,32 @@
 		path = /Users/tom/Documents/development/gtest/include/gtest/gtest.h;
 		sourceTree = "<absolute>";
 	};
-	E25FCE99116BB6FC00FCB21D /* FillQueue.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 832}}";
-			sepNavSelRange = "{1219, 0}";
-			sepNavVisRange = "{133, 1040}";
-		};
-	};
 	E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = FillQueueTest.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/FillQueueTest.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {639, 637}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 1746}";
 		};
 	};
-	E25FCE9F116BB6FC00FCB21D /* basictypes.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1016, 4680}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 2393}";
-			sepNavWindowFrame = "{{38, 134}, {1075, 1018}}";
-		};
-	};
-	E25FCEA0116BB6FC00FCB21D /* build_config.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1240, 1534}}";
-			sepNavSelRange = "{2814, 72}";
-			sepNavVisRange = "{2258, 1391}";
-		};
-	};
-	E25FCEA2116BB6FC00FCB21D /* scoped_ptr.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 1144}}";
-			sepNavSelRange = "{401, 0}";
-			sepNavVisRange = "{0, 866}";
-		};
-	};
 	E25FCEAA116BB6FC00FCB21D /* math.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 511}}";
+			sepNavIntBoundsRect = "{{0, 0}, {794, 611}}";
 			sepNavSelRange = "{24, 24}";
-			sepNavVisRange = "{0, 527}";
+			sepNavVisRange = "{160, 901}";
 		};
 	};
-	E25FCEAD116BB6FC00FCB21D /* WaitLoopThread.h */ = {
+	E25FCEAB116BB6FC00FCB21D /* math_test.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {931, 494}}";
-			sepNavSelRange = "{466, 0}";
-			sepNavVisRange = "{0, 522}";
-			sepNavWindowFrame = "{{199, 154}, {1044, 851}}";
+			sepNavIntBoundsRect = "{{0, 0}, {794, 498}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 293}";
+			sepNavWindowFrame = "{{15, 261}, {1194, 912}}";
 		};
 	};
 	E25FCF39116BC38800FCB21D /* stl_iterator.h */ = {
@@ -441,6 +427,12 @@
 		vrLoc = 0;
 	};
 	E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = AudioTimeScaler_test.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/stretch/AudioTimeScaler_test.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1339, 1313}}";
 			sepNavSelRange = "{406, 0}";
@@ -448,6 +440,12 @@
 		};
 	};
 	E27D9947118B890000B5D7D7 /* StretchInBackground.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = StretchInBackground.h;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/stretch/StretchInBackground.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 689}}";
 			sepNavSelRange = "{449, 0}";
@@ -455,6 +453,12 @@
 		};
 	};
 	E27D9949118B890000B5D7D7 /* TimeScaler.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = TimeScaler.h;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/stretch/TimeScaler.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 598}}";
 			sepNavSelRange = "{190, 0}";
@@ -489,6 +493,12 @@
 		vrLoc = 0;
 	};
 	E27D9A09118F503D00B5D7D7 /* Math_test.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = Math_test.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/Math_test.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 525}}";
 			sepNavSelRange = "{256, 3}";
@@ -608,6 +618,11 @@
 		name = Property.h;
 		path = /Users/tom/Downloads/Property.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {794, 923}}";
+			sepNavSelRange = "{334, 0}";
+			sepNavVisRange = "{0, 1246}";
+		};
 	};
 	E27D9CDF119BD36800B5D7D7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -625,13 +640,14 @@
 		name = Property.h;
 		path = /Users/tom/Downloads/Property.h;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 936}}";
-			sepNavSelRange = "{334, 0}";
-			sepNavVisRange = "{0, 1246}";
-		};
 	};
 	E2940A171186BF22002E32D6 /* Loop_test.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = Loop_test.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/source/Loop_test.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 715}}";
 			sepNavSelRange = "{1151, 0}";
@@ -640,6 +656,12 @@
 		};
 	};
 	E2940A181186BF22002E32D6 /* Loop.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = Loop.h;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/source/Loop.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 728}}";
 			sepNavSelRange = "{1196, 0}";
@@ -667,7 +689,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 295578984.597448;
+		modificationTime = 295578984.611289;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -683,6 +705,12 @@
 		vrLoc = 21;
 	};
 	E29594C6117D60870078881F /* Node.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = Node.h;
+		path = /Users/tom/Documents/development/rec/src/rec/json/Node.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {604, 598}}";
 			sepNavSelRange = "{790, 0}";
@@ -691,6 +719,12 @@
 		};
 	};
 	E29594C7117D60870078881F /* Parser.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = Parser.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/json/Parser.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {604, 2015}}";
 			sepNavSelRange = "{1382, 0}";
@@ -699,6 +733,12 @@
 		};
 	};
 	E29594C8117D60870078881F /* Parser.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = Parser.h;
+		path = /Users/tom/Documents/development/rec/src/rec/json/Parser.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 546}}";
 			sepNavSelRange = "{746, 0}";
@@ -707,6 +747,12 @@
 		};
 	};
 	E29594C9117D60870078881F /* Parser_test.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = Parser_test.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/json/Parser_test.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {604, 2366}}";
 			sepNavSelRange = "{4303, 0}";
@@ -789,7 +835,7 @@
 		ignoreCount = 0;
 		lineNumber = 170;
 		location = "unit-tests";
-		modificationTime = 295578983.807377;
+		modificationTime = 295578983.809061;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -804,52 +850,42 @@
 		vrLoc = 0;
 	};
 	E2A85621118368D800667631 /* TestHarness.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = TestHarness.h;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/source/TestHarness.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 1430}}";
 			sepNavSelRange = "{842, 0}";
 			sepNavVisRange = "{441, 1146}";
 		};
 	};
-	E2A8562811836A7600667631 /* Mock.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 511}}";
-			sepNavSelRange = "{32, 32}";
-			sepNavVisRange = "{0, 905}";
-		};
-	};
 	E2A8562B11836B9500667631 /* Buffered_test.cpp */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = Buffered_test.cpp;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/source/Buffered_test.cpp;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {794, 559}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 822}";
 		};
 	};
-	E2A8562C11836B9500667631 /* Buffered.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {604, 1807}}";
-			sepNavSelRange = "{1245, 0}";
-			sepNavVisRange = "{2218, 1088}";
-		};
-	};
 	E2A8562D11836B9500667631 /* Buffered.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = Buffered.h;
+		path = /Users/tom/Documents/development/rec/src/rec/audio/source/Buffered.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1021, 897}}";
 			sepNavSelRange = "{1040, 0}";
 			sepNavVisRange = "{300, 947}";
-		};
-	};
-	E2A8562E11836B9500667631 /* BufferedWrapper.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 611}}";
-			sepNavSelRange = "{610, 0}";
-			sepNavVisRange = "{0, 902}";
-		};
-	};
-	E2A8563811836C4F00667631 /* Stretchable.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {604, 832}}";
-			sepNavSelRange = "{971, 0}";
-			sepNavVisRange = "{556, 1112}";
 		};
 	};
 	E2A8564F1183707400667631 /* PBXTextBookmark */ = {
@@ -862,51 +898,6 @@
 		vrLen = 947;
 		vrLoc = 300;
 	};
-	E2B2F6111171255400D0C002 /* Math.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 525}}";
-			sepNavSelRange = "{470, 0}";
-			sepNavVisRange = "{0, 840}";
-		};
-	};
-	E2B2F7E9117193C700D0C002 /* pitch-shift */ = {
-		activeExec = 0;
-		executables = (
-			E2B2F7EB117193C700D0C002 /* pitch-shift */,
-		);
-	};
-	E2B2F7EB117193C700D0C002 /* pitch-shift */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		dataTipCustomDataFormattersEnabled = 1;
-		dataTipShowTypeColumn = 1;
-		dataTipSortType = 0;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = "pitch-shift";
-		savedGlobals = {
-		};
-		showTypeColumn = 0;
-		sourceDirectories = (
-		);
-		variableFormatDictionary = {
-		};
-	};
 	E2BE692F116C28C000A43B0C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E25FC75F116A974500FCB21D /* gtest.cc */;
@@ -918,6 +909,12 @@
 		vrLoc = 75221;
 	};
 	E2CF9FD11173AC7100449411 /* results.txt */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = text;
+		name = results.txt;
+		path = "/Users/tom/Documents/development/rec/simple-unit-tests/results.txt";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {747, 751}}";
 			sepNavSelRange = "{873, 0}";
