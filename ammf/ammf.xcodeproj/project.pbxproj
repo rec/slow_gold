@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D2AAC046055464E500DB518D /* libammf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libammf.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC046055464E500DB518D /* libammf-2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libammf-2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25FCE37116BAFF000FCB21D /* AudioResampler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioResampler.cpp; sourceTree = "<group>"; };
 		E25FCE38116BAFF000FCB21D /* AudioResampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioResampler.h; sourceTree = "<group>"; };
 		E25FCE39116BAFF000FCB21D /* AudioTimeScaler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTimeScaler.cpp; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2AAC046055464E500DB518D /* libammf.a */,
+				D2AAC046055464E500DB518D /* libammf-2.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,7 +134,7 @@
 			);
 			name = ammf;
 			productName = "ammf-2";
-			productReference = D2AAC046055464E500DB518D /* libammf.a */;
+			productReference = D2AAC046055464E500DB518D /* libammf-2.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */

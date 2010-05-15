@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	08FB7793FE84155DC02AAC07 /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = E25FC6C8116A407700FCB21D /* unit-tests */;
 		activeSDKPreference = macosx10.5;
 		activeTarget = E25FC6C6116A407700FCB21D /* unit-tests */;
@@ -157,6 +157,18 @@
 			E267743E1171A14000A44B58 = E267743E1171A14000A44B58 /* PBXTextBookmark */;
 			E26774B3117271AB00A44B58 = E26774B3117271AB00A44B58 /* PBXTextBookmark */;
 			E26F7A6D119DB1C800F5D4CF /* PBXTextBookmark */ = E26F7A6D119DB1C800F5D4CF /* PBXTextBookmark */;
+			E26F7AD1119E323F00F5D4CF /* XCBuildMessageTextBookmark */ = E26F7AD1119E323F00F5D4CF /* XCBuildMessageTextBookmark */;
+			E26F7AD2119E323F00F5D4CF /* PBXTextBookmark */ = E26F7AD2119E323F00F5D4CF /* PBXTextBookmark */;
+			E26F7AFC119E336E00F5D4CF /* XCBuildMessageTextBookmark */ = E26F7AFC119E336E00F5D4CF /* XCBuildMessageTextBookmark */;
+			E26F7AFD119E336E00F5D4CF /* PBXTextBookmark */ = E26F7AFD119E336E00F5D4CF /* PBXTextBookmark */;
+			E26F7B18119E35FE00F5D4CF /* XCBuildMessageTextBookmark */ = E26F7B18119E35FE00F5D4CF /* XCBuildMessageTextBookmark */;
+			E26F7B19119E35FE00F5D4CF /* PBXTextBookmark */ = E26F7B19119E35FE00F5D4CF /* PBXTextBookmark */;
+			E26F7B21119E367500F5D4CF /* PBXTextBookmark */ = E26F7B21119E367500F5D4CF /* PBXTextBookmark */;
+			E26F7B3A119E384A00F5D4CF /* PBXTextBookmark */ = E26F7B3A119E384A00F5D4CF /* PBXTextBookmark */;
+			E26F7B3B119E384C00F5D4CF /* PBXTextBookmark */ = E26F7B3B119E384C00F5D4CF /* PBXTextBookmark */;
+			E26F7B3C119E384C00F5D4CF /* PBXTextBookmark */ = E26F7B3C119E384C00F5D4CF /* PBXTextBookmark */;
+			E26F7B3D119E384C00F5D4CF /* PBXTextBookmark */ = E26F7B3D119E384C00F5D4CF /* PBXTextBookmark */;
+			E26F7B3E119E384C00F5D4CF /* PBXTextBookmark */ = E26F7B3E119E384C00F5D4CF /* PBXTextBookmark */;
 			E27D998B118B8FF300B5D7D7 = E27D998B118B8FF300B5D7D7 /* PBXTextBookmark */;
 			E27D99E5118BAF7600B5D7D7 = E27D99E5118BAF7600B5D7D7 /* PBXTextBookmark */;
 			E27D9A12118F505900B5D7D7 = E27D9A12118F505900B5D7D7 /* PBXTextBookmark */;
@@ -338,9 +350,10 @@
 	};
 	E25FCEA0116BB6FC00FCB21D /* build_config.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1240, 1534}}";
-			sepNavSelRange = "{2814, 72}";
-			sepNavVisRange = "{2258, 1391}";
+			sepNavIntBoundsRect = "{{0, 0}, {1369, 2015}}";
+			sepNavSelRange = "{2577, 0}";
+			sepNavVisRange = "{2201, 953}";
+			sepNavWindowFrame = "{{451, 217}, {1194, 912}}";
 		};
 	};
 	E25FCEA2116BB6FC00FCB21D /* scoped_ptr.h */ = {
@@ -438,6 +451,123 @@
 		rLoc = 334;
 		rType = 0;
 		vrLen = 1246;
+		vrLoc = 0;
+	};
+	E26F7AD1119E323F00F5D4CF /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "#error Please add support for your architecture in build/build_config.h in /Users/tom/Documents/development/rec/src/rec/base/build_config.h";
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 131;
+		rType = 1;
+	};
+	E26F7AD2119E323F00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		name = "build_config.h: 22";
+		rLen = 0;
+		rLoc = 765;
+		rType = 0;
+		vrLen = 1172;
+		vrLoc = 0;
+	};
+	E26F7AFC119E336E00F5D4CF /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "#error HERE!";
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 19;
+		rType = 1;
+	};
+	E26F7AFD119E336E00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		name = "build_config.h: 20";
+		rLen = 0;
+		rLoc = 652;
+		rType = 0;
+		vrLen = 1093;
+		vrLoc = 0;
+	};
+	E26F7B18119E35FE00F5D4CF /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "#error yes";
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 116;
+		rType = 1;
+	};
+	E26F7B19119E35FE00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		name = "build_config.h: 116";
+		rLen = 7;
+		rLoc = 2592;
+		rType = 0;
+		vrLen = 953;
+		vrLoc = 2201;
+	};
+	E26F7B21119E367500F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		name = "build_config.h: 116";
+		rLen = 7;
+		rLoc = 2592;
+		rType = 0;
+		vrLen = 953;
+		vrLoc = 2201;
+	};
+	E26F7B3A119E384A00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		name = "build_config.h: 115";
+		rLen = 0;
+		rLoc = 2577;
+		rType = 0;
+		vrLen = 953;
+		vrLoc = 2201;
+	};
+	E26F7B3B119E384C00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E27D9CE0119BD36800B5D7D7 /* Property.h */;
+		name = "Property.h: 8";
+		rLen = 0;
+		rLoc = 334;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 0;
+	};
+	E26F7B3C119E384C00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25FCEA0116BB6FC00FCB21D /* build_config.h */;
+		name = "build_config.h: 138";
+		rLen = 0;
+		rLoc = 2850;
+		rType = 0;
+		vrLen = 786;
+		vrLoc = 2405;
+	};
+	E26F7B3D119E384C00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2CF9FD11173AC7100449411 /* results.txt */;
+		name = "results.txt: 21";
+		rLen = 0;
+		rLoc = 873;
+		rType = 0;
+		vrLen = 873;
+		vrLoc = 0;
+	};
+	E26F7B3E119E384C00F5D4CF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2CF9FD11173AC7100449411 /* results.txt */;
+		name = "results.txt: 21";
+		rLen = 0;
+		rLoc = 873;
+		rType = 0;
+		vrLen = 873;
 		vrLoc = 0;
 	};
 	E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {
@@ -667,7 +797,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 295578984.597448;
+		modificationTime = 295581751.403254;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -789,7 +919,7 @@
 		ignoreCount = 0;
 		lineNumber = 170;
 		location = "unit-tests";
-		modificationTime = 295578983.807377;
+		modificationTime = 295581750.179418;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -919,7 +1049,7 @@
 	};
 	E2CF9FD11173AC7100449411 /* results.txt */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {747, 751}}";
+			sepNavIntBoundsRect = "{{0, 0}, {794, 507}}";
 			sepNavSelRange = "{873, 0}";
 			sepNavVisRange = "{0, 873}";
 		};
