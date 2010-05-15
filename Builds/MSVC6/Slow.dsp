@@ -84,30 +84,6 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Group "audio"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
-# Begin Group "source"
-# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
-# Begin Source File
-SOURCE="..\..\src\rec\audio\source\Buffered.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\audio\source\Buffered.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\audio\source\BufferedWrapper.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\audio\source\Identity.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\audio\source\Mock.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\audio\source\Stretchable.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\audio\source\Wrapper.h"
-# End Source File
-# End Group
 # Begin Source File
 SOURCE="..\..\src\rec\audio\FillQueue.h"
 # End Source File

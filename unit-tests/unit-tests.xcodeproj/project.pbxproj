@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E22A40AE118614AA007293B2 /* libammf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E22A40871186147F007293B2 /* libammf.a */; };
 		E22A40E5118625AF007293B2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
 		E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EA116A594C00FCB21D /* gtest.framework */; };
 		E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EE116A594C00FCB21D /* libgtest_main.a */; };
@@ -25,6 +24,10 @@
 		E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB14116BAE2E00FCB21D /* QuickTime.framework */; };
 		E25FCEB3116BB6FC00FCB21D /* FillQueueTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */; };
 		E25FCEB5116BB6FC00FCB21D /* math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCEAB116BB6FC00FCB21D /* math_test.cpp */; };
+		E26F7BDA119F18FF00F5D4CF /* AudioResampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BCF119F18FF00F5D4CF /* AudioResampler.cpp */; };
+		E26F7BDB119F18FF00F5D4CF /* AudioTimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */; };
+		E26F7BDC119F18FF00F5D4CF /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD3119F18FF00F5D4CF /* hfft.c */; };
+		E26F7BDD119F18FF00F5D4CF /* mfAlloc.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */; };
 		E27D994A118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */; };
 		E27D9A0A118F503D00B5D7D7 /* Math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9A09118F503D00B5D7D7 /* Math_test.cpp */; };
 		E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
@@ -36,13 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E22A40861186147F007293B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E22A40821186147F007293B2 /* ammf.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC046055464E500DB518D;
-			remoteInfo = ammf;
-		};
 		E25FC6E9116A594C00FCB21D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
@@ -110,7 +106,6 @@
 
 /* Begin PBXFileReference section */
 		C6859E8B029090EE04C91782 /* unit-tests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "unit-tests.1"; sourceTree = "<group>"; };
-		E22A40821186147F007293B2 /* ammf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ammf.xcodeproj; path = ../ammf/ammf.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E22A40E4118625AF007293B2 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		E25FC6C7116A407700FCB21D /* unit-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "unit-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = ../../gtest/xcode/gtest.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -143,6 +138,17 @@
 		E25FCEAC116BB6FC00FCB21D /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		E25FCEAD116BB6FC00FCB21D /* WaitLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitLoopThread.h; sourceTree = "<group>"; };
 		E25FCEAE116BB6FC00FCB21D /* Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wrapper.h; sourceTree = "<group>"; };
+		E26F7BCF119F18FF00F5D4CF /* AudioResampler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioResampler.cpp; path = ../src/rec/ammf_scaler/AudioResampler.cpp; sourceTree = SOURCE_ROOT; };
+		E26F7BD0119F18FF00F5D4CF /* AudioResampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioResampler.h; path = ../src/rec/ammf_scaler/AudioResampler.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTimeScaler.cpp; path = ../src/rec/ammf_scaler/AudioTimeScaler.cpp; sourceTree = SOURCE_ROOT; };
+		E26F7BD2119F18FF00F5D4CF /* AudioTimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioTimeScaler.h; path = ../src/rec/ammf_scaler/AudioTimeScaler.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD3119F18FF00F5D4CF /* hfft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hfft.c; path = ../src/rec/ammf_scaler/hfft.c; sourceTree = SOURCE_ROOT; };
+		E26F7BD4119F18FF00F5D4CF /* hfft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hfft.h; path = ../src/rec/ammf_scaler/hfft.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mfAlloc.c; path = ../src/rec/ammf_scaler/mfAlloc.c; sourceTree = SOURCE_ROOT; };
+		E26F7BD6119F18FF00F5D4CF /* mfAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfAlloc.h; path = ../src/rec/ammf_scaler/mfAlloc.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD7119F18FF00F5D4CF /* mfGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = ../src/rec/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD8119F18FF00F5D4CF /* mfMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMacros.h; path = ../src/rec/ammf_scaler/mfMacros.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD9119F18FF00F5D4CF /* mfMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMath.h; path = ../src/rec/ammf_scaler/mfMath.h; sourceTree = SOURCE_ROOT; };
 		E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTimeScaler_test.cpp; sourceTree = "<group>"; };
 		E27D9947118B890000B5D7D7 /* StretchInBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchInBackground.h; sourceTree = "<group>"; };
 		E27D9949118B890000B5D7D7 /* TimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScaler.h; sourceTree = "<group>"; };
@@ -171,7 +177,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E25FC810116BA3A400FCB21D /* libjucedebug.a in Frameworks */,
-				E22A40AE118614AA007293B2 /* libammf.a in Frameworks */,
 				E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */,
 				E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */,
 				E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */,
@@ -194,7 +199,6 @@
 		08FB7794FE84155DC02AAC07 /* unit-tests */ = {
 			isa = PBXGroup;
 			children = (
-				E22A40821186147F007293B2 /* ammf.xcodeproj */,
 				E2CF9FD11173AC7100449411 /* results.txt */,
 				E25FCB09116BAE2E00FCB21D /* Frameworks */,
 				E25FC805116BA38500FCB21D /* Juce.xcodeproj */,
@@ -209,6 +213,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				E26F7BCE119F18FF00F5D4CF /* ammf_scaler */,
 				E29594C5117D60870078881F /* json */,
 				E25FCE94116BB6FC00FCB21D /* audio */,
 				E25FCE9E116BB6FC00FCB21D /* base */,
@@ -231,14 +236,6 @@
 				C6859E8B029090EE04C91782 /* unit-tests.1 */,
 			);
 			name = Documentation;
-			sourceTree = "<group>";
-		};
-		E22A40831186147F007293B2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E22A40871186147F007293B2 /* libammf.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		E25FC6DE116A594C00FCB21D /* Products */ = {
@@ -326,6 +323,24 @@
 			path = ../src/rec/util;
 			sourceTree = SOURCE_ROOT;
 		};
+		E26F7BCE119F18FF00F5D4CF /* ammf_scaler */ = {
+			isa = PBXGroup;
+			children = (
+				E26F7BCF119F18FF00F5D4CF /* AudioResampler.cpp */,
+				E26F7BD0119F18FF00F5D4CF /* AudioResampler.h */,
+				E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */,
+				E26F7BD2119F18FF00F5D4CF /* AudioTimeScaler.h */,
+				E26F7BD3119F18FF00F5D4CF /* hfft.c */,
+				E26F7BD4119F18FF00F5D4CF /* hfft.h */,
+				E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */,
+				E26F7BD6119F18FF00F5D4CF /* mfAlloc.h */,
+				E26F7BD7119F18FF00F5D4CF /* mfGlobals.h */,
+				E26F7BD8119F18FF00F5D4CF /* mfMacros.h */,
+				E26F7BD9119F18FF00F5D4CF /* mfMath.h */,
+			);
+			name = ammf_scaler;
+			sourceTree = "<group>";
+		};
 		E27D9944118B890000B5D7D7 /* stretch */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,10 +413,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = E22A40831186147F007293B2 /* Products */;
-					ProjectRef = E22A40821186147F007293B2 /* ammf.xcodeproj */;
-				},
-				{
 					ProductGroup = E25FC6DE116A594C00FCB21D /* Products */;
 					ProjectRef = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
 				},
@@ -418,13 +429,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E22A40871186147F007293B2 /* libammf.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libammf.a;
-			remoteRef = E22A40861186147F007293B2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		E25FC6EA116A594C00FCB21D /* gtest.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -506,6 +510,10 @@
 				E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */,
 				E27D994A118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */,
 				E27D9A0A118F503D00B5D7D7 /* Math_test.cpp in Sources */,
+				E26F7BDA119F18FF00F5D4CF /* AudioResampler.cpp in Sources */,
+				E26F7BDB119F18FF00F5D4CF /* AudioTimeScaler.cpp in Sources */,
+				E26F7BDC119F18FF00F5D4CF /* hfft.c in Sources */,
+				E26F7BDD119F18FF00F5D4CF /* mfAlloc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

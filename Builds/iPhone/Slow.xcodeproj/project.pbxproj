@@ -12,7 +12,6 @@
 		1CDBBFBA4D56D7B6F0782F1C = { isa = PBXBuildFile; fileRef = 519A4155F8DE5207C0885CAA; };
 		D8D7D8AC472502272591DFBA = { isa = PBXBuildFile; fileRef = 20C384DB8BB8461D6D4F1247; };
 		0CAC2BC3F67BD204C890F9A2 = { isa = PBXBuildFile; fileRef = 9D5052C9D8F9D38B4532243D; };
-		887377709E74E95165E7427D = { isa = PBXBuildFile; fileRef = 988326CFBABAE5B8BF0BEF65; };
 		51183BF7F82628DABC2169F8 = { isa = PBXBuildFile; fileRef = 1835B50C644DD360B7C255C8; };
 		E05E97FBF27AF66E323E4799 = { isa = PBXBuildFile; fileRef = A86170DF54654A3932DEE280; };
 		8BBC633BDF6D616ED7E0805E = { isa = PBXBuildFile; fileRef = 056A825D3BB469E9EB2CB2E6; };
@@ -36,13 +35,6 @@
 		9D5052C9D8F9D38B4532243D = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1FE68B302B37CDCFCBC0AC0A = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlowBurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CAE9326C5E07CF9B6E5088 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = SOURCE_ROOT; };
-		988326CFBABAE5B8BF0BEF65 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Buffered.cpp; path = ../../src/rec/audio/source/Buffered.cpp; sourceTree = SOURCE_ROOT; };
-		BB11B55070F39B98C60B57B8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Buffered.h; path = ../../src/rec/audio/source/Buffered.h; sourceTree = SOURCE_ROOT; };
-		5DB9B618935E07D7A9187A9C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BufferedWrapper.h; path = ../../src/rec/audio/source/BufferedWrapper.h; sourceTree = SOURCE_ROOT; };
-		F036AD9AF3D88D94A9D46DC7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Identity.h; path = ../../src/rec/audio/source/Identity.h; sourceTree = SOURCE_ROOT; };
-		49F8D2461430AB5EB24CD9A9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mock.h; path = ../../src/rec/audio/source/Mock.h; sourceTree = SOURCE_ROOT; };
-		763FC12D7D1414E5E6AF3B55 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchable.h; path = ../../src/rec/audio/source/Stretchable.h; sourceTree = SOURCE_ROOT; };
-		70A6AEDC2A480A78C36ADF26 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrapper.h; path = ../../src/rec/audio/source/Wrapper.h; sourceTree = SOURCE_ROOT; };
 		7CAE6F503899478D260A71D4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FillQueue.h; path = ../../src/rec/audio/FillQueue.h; sourceTree = SOURCE_ROOT; };
 		74198B558A664D5D1ECEC607 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Math.h; path = ../../src/rec/audio/Math.h; sourceTree = SOURCE_ROOT; };
 		1835B50C644DD360B7C255C8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioResampler.cpp; path = ../../src/rec/ammf_scaler/AudioResampler.cpp; sourceTree = SOURCE_ROOT; };
@@ -85,16 +77,7 @@
 		DA599007B5FF5E7A447596C4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode2.mm; path = ../../JuceLibraryCode/JuceLibraryCode2.mm; sourceTree = SOURCE_ROOT; };
 		237F6902C1DAD19D28691A04 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode3.mm; path = ../../JuceLibraryCode/JuceLibraryCode3.mm; sourceTree = SOURCE_ROOT; };
 		6CA6320EEEC544C00C4C9D53 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode4.mm; path = ../../JuceLibraryCode/JuceLibraryCode4.mm; sourceTree = SOURCE_ROOT; };
-		7BD782CE5CE7EC6A7B058890 = { isa = PBXGroup; children = (
-				988326CFBABAE5B8BF0BEF65,
-				BB11B55070F39B98C60B57B8,
-				5DB9B618935E07D7A9187A9C,
-				F036AD9AF3D88D94A9D46DC7,
-				49F8D2461430AB5EB24CD9A9,
-				763FC12D7D1414E5E6AF3B55,
-				70A6AEDC2A480A78C36ADF26 ); name = source; sourceTree = "<group>"; };
 		430D61BBC240F2F1646B86EB = { isa = PBXGroup; children = (
-				7BD782CE5CE7EC6A7B058890,
 				7CAE6F503899478D260A71D4,
 				74198B558A664D5D1ECEC607 ); name = audio; sourceTree = "<group>"; };
 		6F4669EACBF15EA1D7275E0F = { isa = PBXGroup; children = (
@@ -231,7 +214,6 @@
 				6424C6CF4B1E4308F1EFC520 ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
 		84C00EE3C41EC6FC893EB173 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (  ); runOnlyForDeploymentPostprocessing = 0; };
 		60670B42941AC059E240F52F = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
-				887377709E74E95165E7427D,
 				51183BF7F82628DABC2169F8,
 				E05E97FBF27AF66E323E4799,
 				8BBC633BDF6D616ED7E0805E,

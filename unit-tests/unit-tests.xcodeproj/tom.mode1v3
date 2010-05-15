@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -275,7 +277,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>23</integer>
+									<integer>3</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -298,7 +301,7 @@
 							<real>267</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>305 175 1144 993 0 0 1920 1178 </string>
+						<string>537 185 1144 993 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -309,8 +312,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -328,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E26F7B6D119E3BCF00F5D4CF</string>
+										<string>E26F7BE0119F192600F5D4CF</string>
 										<key>history</key>
 										<array>
 											<string>E2BE692F116C28C000A43B0C</string>
@@ -360,7 +361,6 @@
 											<string>E27D9AA4119A036D00B5D7D7</string>
 											<string>E27D9AE6119A53D600B5D7D7</string>
 											<string>E26F7B3B119E384C00F5D4CF</string>
-											<string>E26F7B3C119E384C00F5D4CF</string>
 											<string>E26F7B3D119E384C00F5D4CF</string>
 										</array>
 									</dict>
@@ -375,7 +375,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {855, 524}}</string>
 								<key>RubberWindowFrame</key>
-								<string>305 175 1144 993 0 0 1920 1178 </string>
+								<string>537 185 1144 993 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -395,7 +395,7 @@
 								<key>Frame</key>
 								<string>{{0, 529}, {855, 423}}</string>
 								<key>RubberWindowFrame</key>
-								<string>305 175 1144 993 0 0 1920 1178 </string>
+								<string>537 185 1144 993 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -567,7 +567,7 @@
 		<string>/Users/tom/Documents/development/rec/unit-tests/unit-tests.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>305 175 1144 993 0 0 1920 1178 </string>
+	<string>537 185 1144 993 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -583,30 +583,30 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>build_config.h</string>
+								<string>&lt;No Editor&gt;</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1430, 519}}</string>
+								<string>{{0, 0}, {1430, 0}}</string>
 								<key>RubberWindowFrame</key>
 								<string>281 60 1430 1118 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>519pt</string>
+							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -621,14 +621,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 524}, {1430, 553}}</string>
+								<string>{{0, 5}, {1430, 1072}}</string>
 								<key>RubberWindowFrame</key>
 								<string>281 60 1430 1118 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>553pt</string>
+							<string>1072pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>

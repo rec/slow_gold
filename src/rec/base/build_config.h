@@ -102,7 +102,6 @@
 #endif
 
 
-
 // Processor architecture detection.  For more info on what's defined, see:
 //   http://msdn.microsoft.com/en-us/library/b0084kay.aspx
 //   http://www.agner.org/optimize/calling_conventions.pdf
@@ -128,7 +127,13 @@
 
 #else
 
-#error Please add support for your architecture in build/build_config.h
+// #error Please add support for your architecture in build/build_config.h
+
+// HACK: why is this different between debug and release?!
+
+#define ARCH_CPU_X86_FAMILY 1
+#define ARCH_CPU_X86_64 1
+#define ARCH_CPU_64_BITS 1
 
 #endif
 
