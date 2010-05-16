@@ -20,10 +20,10 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "MainPageK.h"
 //[/Headers]
 
 #include "MainPageJ.h"
-#include "MainPageK.h"
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
@@ -190,7 +190,6 @@ void MainPageJ::sliderValueChanged (Slider* sliderThatWasMoved)
         //[UserSliderCode_pitchScaleSlider] -- add your slider handling code here..
         //[/UserSliderCode_pitchScaleSlider]
     }
-
 
     //[UsersliderValueChanged_Post]
     //[/UsersliderValueChanged_Post]

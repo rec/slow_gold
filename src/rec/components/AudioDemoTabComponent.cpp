@@ -23,11 +23,7 @@
 //[/Headers]
 
 #include "AudioDemoTabComponent.h"
-#if 1
 #include "MainPageJ.h"
-#else
-#include "AudioDemoPlaybackPage.h"
-#endif
 #include "AudioDemoSetupPage.h"
 
 

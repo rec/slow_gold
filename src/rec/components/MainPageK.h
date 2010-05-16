@@ -73,6 +73,10 @@ class MainPageK : public FileBrowserListener, public SliderListener {
   // Describes how to stretch.
   rec::audio::timescaler::Description scaleDescription_;
 
+  CriticalSection lock_;
+  bool duringScaleOperation_;
+  bool scaleNeeded_;
+
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };
 

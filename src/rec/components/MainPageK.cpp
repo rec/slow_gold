@@ -25,22 +25,9 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    scaleDescription_(Description::Default()){
-}
-
-void MainPageK::sliderValueChanged(Slider* slider) {
-  if (slider == peer_->zoomSlider)
-    peer_->thumbnail->setZoomFactor(slider->getValue());
-}
-
-void MainPageK::sliderDragEnded(Slider* slider) {
-  if (slider == peer_->timeScaleSlider) {
-    scaleDescription_.timeScale_ = slider->getValue();
-    scaleTime();
-  } else if (slider == peer_->pitchScaleSlider) {
-    scaleDescription_.pitchScale_ = slider->getValue();
-    scaleTime();
-  }
+    scaleDescription_(Description::Default()),
+    duringScaleOperation_(false),
+    scaleNeeded_(false) {
 }
 
 void MainPageK::construct(MainPageJ* peer) {
@@ -73,6 +60,26 @@ void MainPageK::destruct() {
   peer_->fileTreeComp->removeListener(this);
 }
 
+void MainPageK::sliderValueChanged(Slider* slider) {
+  if (slider == peer_->zoomSlider)
+    peer_->thumbnail->setZoomFactor(slider->getValue());
+}
+
+void MainPageK::sliderDragEnded(Slider* slider) {
+  if (slider == peer_->timeScaleSlider)
+    scaleDescription_.timeScale_ = slider->getValue();
+  else if (slider == peer_->pitchScaleSlider)
+    scaleDescription_.pitchScale_ = slider->getValue();
+  else
+    return;
+
+  {
+    ScopedLock l(lock_);
+    scaleNeeded_ = true;
+  }
+  scaleTime();
+}
+
 void MainPageK::startStopButtonClicked() {
   if (transportSource_.isPlaying()) {
     transportSource_.stop();
@@ -86,65 +93,6 @@ void MainPageK::loopingButtonClicked() {
   // how do deal with this?
 }
 
-void MainPageK::scaleTime() {
-  if (!loopBuffer_)
-    return;
-
-  double timeScale = scaleDescription_.timeScale_;
-  int outChannels = scaleDescription_.channels_;
-  int inChannels = loopBuffer_->getNumChannels();
-  int samples = loopBuffer_->getNumSamples();
-  int scaledSamples = loopBuffer_->getNumSamples() * timeScale;
-
-  scaledBuffer_.reset(new AudioSampleBuffer(outChannels, scaledSamples));
-
-  AudioTimeScaler scaler;
-  scaleDescription_.Init(&scaler);
-
-  std::vector<float*> inSamples(inChannels), outSamples(outChannels);
-
-  for (int written = 0, read = 0; written < scaledSamples && read < samples; ) {
-    int outChunk = std::min(CHUNK_SIZE, scaledSamples - written);
-    int64 inChunk = std::min(scaler.GetInputBufferSize(outChunk) / 2,
-                             (unsigned) (samples - read));
-
-    for (int c = 0; c < std::max(inChannels, outChannels); ++c) {
-      inSamples[c] = loopBuffer_->getSampleData(c % inChannels) + read;
-      outSamples[c] = scaledBuffer_->getSampleData(c % outChannels) + written;
-    }
-
-    written += scaler.Process(&inSamples[0], &outSamples[0], inChunk, outChunk);
-    read += inChunk;
-  }
-
-  loop_.reset(new Loop(*scaledBuffer_.get()));
-  loop_->setNextReadPosition(0);
-
-  transportSource_.setSource(loop_.get());
-}
-
-void MainPageK::loadFileIntoTransport(const File& file) {
-  transportSource_.stop();
-
-  transportSource_.setSource(NULL);
-
-  AudioFormatManager formatManager;
-  formatManager.registerBasicFormats();
-
-  scoped_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
-  if (reader) {
-    int length = reader->lengthInSamples;
-    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels, length));
-    loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
-    scaleTime();
-
-  } else {
-    std::cerr << "Didn't understand file type for filename "
-              << file.getFileName()
-              << std::endl;
-  }
-}
-
 void MainPageK::selectionChanged() {
   peer_->zoomSlider->setValue(0, false, false);
 
@@ -153,3 +101,81 @@ void MainPageK::selectionChanged() {
   loadFileIntoTransport(file);
 }
 
+void MainPageK::loadFileIntoTransport(const File& file) {
+  AudioFormatManager formatManager;
+  formatManager.registerBasicFormats();
+
+  scoped_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
+  if (reader) {
+    transportSource_.stop();
+    transportSource_.setSource(NULL);
+
+    int length = reader->lengthInSamples;
+    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels, length));
+    loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
+
+    scaleNeeded_ = true;
+    scaleTime();
+  } else {
+    std::cerr << "Didn't understand file type for filename "
+    << file.getFileName()
+    << std::endl;
+  }
+}
+
+void MainPageK::scaleTime() {
+  {
+    ScopedLock l(lock_);
+    if (duringScaleOperation_ || !loopBuffer_)
+      return;
+    else
+      duringScaleOperation_ = true;
+  }
+  
+  transportSource_.stop();
+  while (true) {
+    {
+      ScopedLock l(lock_);
+      if (!scaleNeeded_) {
+        duringScaleOperation_ = false;
+        return;
+      } else {
+        scaleNeeded_ = false;
+      }
+    }
+
+    double timeScale = scaleDescription_.timeScale_;
+    int outChannels = scaleDescription_.channels_;
+    int inChannels = loopBuffer_->getNumChannels();
+    int samples = loopBuffer_->getNumSamples();
+
+    // TODO: this is truncating.
+    int scaledSamples = int(loopBuffer_->getNumSamples() * timeScale);
+
+    scaledBuffer_.reset(new AudioSampleBuffer(outChannels, scaledSamples));
+
+    AudioTimeScaler scaler;
+    scaleDescription_.Init(&scaler);
+
+    std::vector<float*> inSamples(inChannels), outSamples(outChannels);
+
+    for (int written = 0, read = 0; written < scaledSamples && read < samples; ) {
+      int outChunk = std::min(CHUNK_SIZE, scaledSamples - written);
+      int64 inChunk = std::min(scaler.GetInputBufferSize(outChunk) / 2,
+                               (unsigned) (samples - read));
+
+      for (int c = 0; c < std::max(inChannels, outChannels); ++c) {
+        inSamples[c] = loopBuffer_->getSampleData(c % inChannels) + read;
+        outSamples[c] = scaledBuffer_->getSampleData(c % outChannels) + written;
+      }
+
+      written += scaler.Process(&inSamples[0], &outSamples[0], inChunk, outChunk);
+      read += inChunk;
+    }
+
+    loop_.reset(new Loop(*scaledBuffer_.get()));
+    loop_->setNextReadPosition(0);
+
+    transportSource_.setSource(loop_.get());
+  }
+}

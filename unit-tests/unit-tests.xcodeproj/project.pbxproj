@@ -10,7 +10,7 @@
 		E22A40E5118625AF007293B2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
 		E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EA116A594C00FCB21D /* gtest.framework */; };
 		E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EE116A594C00FCB21D /* libgtest_main.a */; };
-		E25FC810116BA3A400FCB21D /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC80B116BA38500FCB21D /* libjucedebug.a */; };
+		E25FC810116BA3A400FCB21D /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC80B116BA38500FCB21D /* libjuce.a */; };
 		E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
 		E25FCB16116BAE2E00FCB21D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0B116BAE2E00FCB21D /* Carbon.framework */; };
 		E25FCB17116BAE2E00FCB21D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0C116BAE2E00FCB21D /* IOKit.framework */; };
@@ -176,7 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E25FC810116BA3A400FCB21D /* libjucedebug.a in Frameworks */,
+				E25FC810116BA3A400FCB21D /* libjuce.a in Frameworks */,
 				E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */,
 				E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */,
 				E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */,
@@ -255,8 +255,8 @@
 		E25FC806116BA38500FCB21D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E25FC80B116BA38500FCB21D /* libjucedebug.a */,
-				E25FC80D116BA38500FCB21D /* libjucedebug.a */,
+				E25FC80B116BA38500FCB21D /* libjuce.a */,
+				E25FC80D116BA38500FCB21D /* libjuce.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -478,17 +478,17 @@
 			remoteRef = E25FC6F5116A594C00FCB21D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E25FC80B116BA38500FCB21D /* libjucedebug.a */ = {
+		E25FC80B116BA38500FCB21D /* libjuce.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjucedebug.a;
+			path = libjuce.a;
 			remoteRef = E25FC80A116BA38500FCB21D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E25FC80D116BA38500FCB21D /* libjucedebug.a */ = {
+		E25FC80D116BA38500FCB21D /* libjuce.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjucedebug.a;
+			path = libjuce.a;
 			remoteRef = E25FC80C116BA38500FCB21D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
