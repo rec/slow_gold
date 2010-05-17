@@ -4,8 +4,6 @@
 #include "rec/base/scoped_ptr.h"
 #include "juce_amalgamated.h"
 
-class Component;
-
 namespace rec {
 
 class RecWindow  : public DocumentWindow {
@@ -19,7 +17,7 @@ class RecWindow  : public DocumentWindow {
   // the command manager object used to dispatch command events
   scoped_ptr<ApplicationCommandManager> commandManager;
 
-  ::Component* taskbarIcon;
+  Component* taskbarIcon;
 };
 
 }  // namespace rec

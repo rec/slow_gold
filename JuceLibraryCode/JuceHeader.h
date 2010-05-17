@@ -15,13 +15,10 @@
 
 #include "AppConfig.h"
 #if (defined (_WIN32) || defined (_WIN64))
- #include "../../juce/juce_amalgamated.h"
-#elif (defined(__APPLE_CPP__) || defined(__APPLE_CC__))
- #include "../../juce/juce_amalgamated.h"
-#elif (defined(__APPLE_CPP__) || defined(__APPLE_CC__))
  #include "../../../../juce/juce_amalgamated.h"
+#elif (defined(__APPLE_CPP__) || defined(__APPLE_CC__))
+ #include "../../juce/juce_amalgamated.h"
 #endif
-#include "BinaryData.h"
 
 namespace ProjectInfo
 {

@@ -3,15 +3,13 @@
 #include "rec/app/GenericApplication.h"
 #include "rec/app/RecWindow.h"
 
-using rec::juce::GenericApplication;
-
 namespace rec {
 
 class Application
-  : public GenericApplication<RecWindow> {
+  : public rec::GenericApplication<RecWindow> {
 
  public:
-  Application() : GenericApplication<RecWindow>(T("Rec"), T("1.0")) {}
+   Application() : rec::GenericApplication<RecWindow>(T("Rec"), T("1.0")) {}
 };
 
 }  // namespace rec

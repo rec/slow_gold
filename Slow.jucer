@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="sDthDiayr" name="Slow" projectType="guiapp" version="0.0.1"
-              juceLinkage="amalg_multi" buildVST="1" buildRTAS="0" buildAU="1"
+              juceLinkage="amalg_big" buildVST="1" buildRTAS="0" buildAU="1"
               pluginName="Juce Project" pluginDesc="Juce Project" pluginManufacturer="yourcompany"
               pluginManufacturerCode="abcd" pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}"
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
@@ -10,13 +10,13 @@
               pluginRTASCategory="" bundleIdentifier="ax.to.rec" jucerVersion="3.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../../../juce"/>
+               juceFolder="../juce"/>
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-                  juceFolder="../juce"/>
+                  juceFolder="../../../juce"/>
     <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
-           juceFolder="../juce"/>
+           juceFolder="../../../juce"/>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
-            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../juce"/>
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce"/>
     <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
             rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../juce"/>
   </EXPORTFORMATS>
@@ -24,7 +24,7 @@
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
                    osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../.."
                    defines=""/>
-    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="SlowBurn"
+    <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SlowBurn"
                    osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../.."
                    defines=""/>
   </CONFIGURATIONS>
@@ -45,7 +45,6 @@
               file="src/rec/ammf_scaler/AudioTimeScaler.h"/>
         <FILE id="HSwp4SHZ" name="hfft.c" compile="1" resource="0" file="src/rec/ammf_scaler/hfft.c"/>
         <FILE id="3xLdLkMk8" name="hfft.h" compile="0" resource="0" file="src/rec/ammf_scaler/hfft.h"/>
-        <FILE id="Z4Yu8A5PA" name="Makefile" compile="0" resource="1" file="src/rec/ammf_scaler/Makefile"/>
         <FILE id="6asClyd1a" name="mfAlloc.c" compile="1" resource="0" file="src/rec/ammf_scaler/mfAlloc.c"/>
         <FILE id="356AvrecH" name="mfAlloc.h" compile="0" resource="0" file="src/rec/ammf_scaler/mfAlloc.h"/>
         <FILE id="AkuTQZPrn" name="mfGlobals.h" compile="0" resource="0" file="src/rec/ammf_scaler/mfGlobals.h"/>

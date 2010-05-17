@@ -5,7 +5,6 @@
 #include "rec/base/scoped_ptr.h"
 
 namespace rec {
-namespace juce {
 
 template <typename Window>
 class GenericApplication : public JUCEApplication {
@@ -37,7 +36,6 @@ class GenericApplication : public JUCEApplication {
   }
 };
 
-}  // namespace juce
 }  // namespace rec
 
 #endif  // __REC_JUCE_GENERIC_APPLICATION

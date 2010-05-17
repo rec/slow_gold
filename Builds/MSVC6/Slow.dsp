@@ -61,8 +61,8 @@ LINK32=link.exe
 # PROP Intermediate_Dir ".\Release"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /W3 /GX /O2 /D WIN32 /D _WINDOWS /D NDEBUG /YX /FD /c  /Zm1024
-# ADD CPP /nologo /MT /W3 /GR /GX /O2 /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
+# ADD BASE CPP /nologo /W3 /GX /O3 /D WIN32 /D _WINDOWS /D NDEBUG /YX /FD /c  /Zm1024
+# ADD CPP /nologo /MT /W3 /GR /GX /O3 /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
 # SUBTRACT CPP /YX
 # ADD BASE MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
 # ADD MTL /nologo /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
@@ -110,10 +110,6 @@ SOURCE="..\..\src\rec\ammf_scaler\hfft.c"
 # End Source File
 # Begin Source File
 SOURCE="..\..\src\rec\ammf_scaler\hfft.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\ammf_scaler\Makefile"
-# PROP Exclude_From_Build 1
 # End Source File
 # Begin Source File
 SOURCE="..\..\src\rec\ammf_scaler\mfAlloc.c"
@@ -213,22 +209,7 @@ SOURCE="..\..\JuceLibraryCode\AppConfig.h"
 SOURCE="..\..\JuceLibraryCode\JuceHeader.h"
 # End Source File
 # Begin Source File
-SOURCE="..\..\JuceLibraryCode\BinaryData.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\JuceLibraryCode\BinaryData.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"
+SOURCE="..\..\JuceLibraryCode\JuceLibraryCode.cpp"
 # End Source File
 # End Group
 # End Target
