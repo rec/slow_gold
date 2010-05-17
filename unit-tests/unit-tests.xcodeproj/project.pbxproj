@@ -10,7 +10,6 @@
 		E22A40E5118625AF007293B2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
 		E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EA116A594C00FCB21D /* gtest.framework */; };
 		E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EE116A594C00FCB21D /* libgtest_main.a */; };
-		E25FC810116BA3A400FCB21D /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC80B116BA38500FCB21D /* libjuce.a */; };
 		E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
 		E25FCB16116BAE2E00FCB21D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0B116BAE2E00FCB21D /* Carbon.framework */; };
 		E25FCB17116BAE2E00FCB21D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0C116BAE2E00FCB21D /* IOKit.framework */; };
@@ -28,6 +27,7 @@
 		E26F7BDB119F18FF00F5D4CF /* AudioTimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */; };
 		E26F7BDC119F18FF00F5D4CF /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD3119F18FF00F5D4CF /* hfft.c */; };
 		E26F7BDD119F18FF00F5D4CF /* mfAlloc.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */; };
+		E270C26B11A1CD9D006F3C08 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E270C22B11A1CD80006F3C08 /* libjuce.a */; };
 		E27D994A118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */; };
 		E27D9A0A118F503D00B5D7D7 /* Math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9A09118F503D00B5D7D7 /* Math_test.cpp */; };
 		E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
@@ -88,19 +88,12 @@
 			remoteGlobalIDString = 40C84997101A36A60083642A;
 			remoteInfo = "sample1_unittest-static";
 		};
-		E25FC80A116BA38500FCB21D /* PBXContainerItemProxy */ = {
+		E270C22A11A1CD80006F3C08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E25FC805116BA38500FCB21D /* Juce.xcodeproj */;
+			containerPortal = E270C22611A1CD80006F3C08 /* Juce.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC046055464E500DB518D;
+			remoteGlobalIDString = 389351359BA78C682E1931A6 /* libjuce.a */;
 			remoteInfo = Juce;
-		};
-		E25FC80C116BA38500FCB21D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E25FC805116BA38500FCB21D /* Juce.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84816E3510809B4F008FEC33;
-			remoteInfo = "Juce (iPhone)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -109,7 +102,6 @@
 		E22A40E4118625AF007293B2 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		E25FC6C7116A407700FCB21D /* unit-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "unit-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = ../../gtest/xcode/gtest.xcodeproj; sourceTree = SOURCE_ROOT; };
-		E25FC805116BA38500FCB21D /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../juce/build/macosx/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E25FCB0B116BAE2E00FCB21D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		E25FCB0C116BAE2E00FCB21D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
@@ -149,6 +141,7 @@
 		E26F7BD7119F18FF00F5D4CF /* mfGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = ../src/rec/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
 		E26F7BD8119F18FF00F5D4CF /* mfMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMacros.h; path = ../src/rec/ammf_scaler/mfMacros.h; sourceTree = SOURCE_ROOT; };
 		E26F7BD9119F18FF00F5D4CF /* mfMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMath.h; path = ../src/rec/ammf_scaler/mfMath.h; sourceTree = SOURCE_ROOT; };
+		E270C22611A1CD80006F3C08 /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../juce/Builds/MacOSX/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTimeScaler_test.cpp; sourceTree = "<group>"; };
 		E27D9947118B890000B5D7D7 /* StretchInBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchInBackground.h; sourceTree = "<group>"; };
 		E27D9949118B890000B5D7D7 /* TimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScaler.h; sourceTree = "<group>"; };
@@ -175,7 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E25FC810116BA3A400FCB21D /* libjuce.a in Frameworks */,
+				E270C26B11A1CD9D006F3C08 /* libjuce.a in Frameworks */,
 				E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */,
 				E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */,
 				E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */,
@@ -198,8 +191,8 @@
 		08FB7794FE84155DC02AAC07 /* unit-tests */ = {
 			isa = PBXGroup;
 			children = (
+				E270C22611A1CD80006F3C08 /* Juce.xcodeproj */,
 				E25FCB09116BAE2E00FCB21D /* Frameworks */,
-				E25FC805116BA38500FCB21D /* Juce.xcodeproj */,
 				E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
@@ -246,15 +239,6 @@
 				E25FC6F2116A594C00FCB21D /* gtest_unittest */,
 				E25FC6F4116A594C00FCB21D /* sample1_unittest-framework */,
 				E25FC6F6116A594C00FCB21D /* sample1_unittest-static */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E25FC806116BA38500FCB21D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E25FC80B116BA38500FCB21D /* libjuce.a */,
-				E25FC80D116BA38500FCB21D /* libjuce.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,6 +323,14 @@
 			name = ammf_scaler;
 			sourceTree = "<group>";
 		};
+		E270C22711A1CD80006F3C08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E270C22B11A1CD80006F3C08 /* libjuce.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E27D9944118B890000B5D7D7 /* stretch */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,8 +407,8 @@
 					ProjectRef = E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */;
 				},
 				{
-					ProductGroup = E25FC806116BA38500FCB21D /* Products */;
-					ProjectRef = E25FC805116BA38500FCB21D /* Juce.xcodeproj */;
+					ProductGroup = E270C22711A1CD80006F3C08 /* Products */;
+					ProjectRef = E270C22611A1CD80006F3C08 /* Juce.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -476,18 +468,11 @@
 			remoteRef = E25FC6F5116A594C00FCB21D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E25FC80B116BA38500FCB21D /* libjuce.a */ = {
+		E270C22B11A1CD80006F3C08 /* libjuce.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libjuce.a;
-			remoteRef = E25FC80A116BA38500FCB21D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E25FC80D116BA38500FCB21D /* libjuce.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjuce.a;
-			remoteRef = E25FC80C116BA38500FCB21D /* PBXContainerItemProxy */;
+			remoteRef = E270C22A11A1CD80006F3C08 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

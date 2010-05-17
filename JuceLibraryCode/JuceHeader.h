@@ -14,9 +14,15 @@
 #define __APPHEADERFILE_93600CA5__
 
 #include "AppConfig.h"
-#if (defined (_WIN32) || defined (_WIN64))
+#if defined (JUCER_VS2008_78A5006)
+ #include "../../juce/juce_amalgamated.h"
+#elif defined (JUCER_VS2005_78A5003)
  #include "../../../../juce/juce_amalgamated.h"
-#elif (defined(__APPLE_CPP__) || defined(__APPLE_CC__))
+#elif defined (JUCER_MSVC6_734A9119)
+ #include "../../../../juce/juce_amalgamated.h"
+#elif defined (JUCER_XCODE_IPHONE_25ADD7EF)
+ #include "../../../../juce/juce_amalgamated.h"
+#elif defined (JUCER_XCODE_MAC_F6D2F4CF)
  #include "../../juce/juce_amalgamated.h"
 #endif
 

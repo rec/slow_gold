@@ -158,6 +158,8 @@
 			E26F7C3F119F25C600F5D4CF = E26F7C3F119F25C600F5D4CF /* PBXBookmark */;
 			E26F7C9011A1A8A500F5D4CF = E26F7C9011A1A8A500F5D4CF /* PBXTextBookmark */;
 			E26F7C9111A1A8A500F5D4CF = E26F7C9111A1A8A500F5D4CF /* PBXTextBookmark */;
+			E270C1D411A1C76A006F3C08 /* PBXTextBookmark */ = E270C1D411A1C76A006F3C08 /* PBXTextBookmark */;
+			E270C1D511A1C76A006F3C08 /* PBXTextBookmark */ = E270C1D511A1C76A006F3C08 /* PBXTextBookmark */;
 			E27D998B118B8FF300B5D7D7 = E27D998B118B8FF300B5D7D7 /* PBXTextBookmark */;
 			E27D99E5118BAF7600B5D7D7 = E27D99E5118BAF7600B5D7D7 /* PBXTextBookmark */;
 			E27D9A12118F505900B5D7D7 = E27D9A12118F505900B5D7D7 /* PBXTextBookmark */;
@@ -250,7 +252,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -455,6 +457,26 @@
 		vrLen = 898;
 		vrLoc = 0;
 	};
+	E270C1D411A1C76A006F3C08 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29594C9117D60870078881F /* Parser_test.cpp */;
+		name = "Parser_test.cpp: 47";
+		rLen = 0;
+		rLoc = 1069;
+		rType = 0;
+		vrLen = 935;
+		vrLoc = 734;
+	};
+	E270C1D511A1C76A006F3C08 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29594C9117D60870078881F /* Parser_test.cpp */;
+		name = "Parser_test.cpp: 47";
+		rLen = 0;
+		rLoc = 1069;
+		rType = 0;
+		vrLen = 935;
+		vrLoc = 734;
+	};
 	E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1339, 1313}}";
@@ -651,7 +673,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 295808875.945882;
+		modificationTime = 295816617.537063;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -692,7 +714,7 @@
 	};
 	E29594C9117D60870078881F /* Parser_test.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {794, 2314}}";
+			sepNavIntBoundsRect = "{{0, 0}, {794, 2366}}";
 			sepNavSelRange = "{1069, 0}";
 			sepNavVisRange = "{734, 935}";
 			sepNavWindowFrame = "{{112, 150}, {890, 979}}";
@@ -773,7 +795,7 @@
 		ignoreCount = 0;
 		lineNumber = 170;
 		location = "unit-tests";
-		modificationTime = 295808874.280707;
+		modificationTime = 295816615.281947;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
