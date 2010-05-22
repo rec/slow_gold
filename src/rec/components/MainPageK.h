@@ -4,7 +4,7 @@
 #include "JuceLibraryCode/JuceHeader.h"
 #include "DemoThumbnailComp.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/audio/stretch/TimeScaler.h"
+#include "rec/audio/stretch/SimpleStretcher.h"
 #include "rec/audio/source/Loop.h"
 
 class MainPageJ;
@@ -44,7 +44,7 @@ class MainPageK : public FileBrowserListener, public SliderListener {
 
   void loadFileIntoTransport(const File& audioFile);
   void readyToPlay();
-  void scaleTime();
+  bool scaleTime();
 
   MainPageJ* peer_;
 
@@ -72,10 +72,7 @@ class MainPageK : public FileBrowserListener, public SliderListener {
 
   // Describes how to stretch.
   rec::audio::timescaler::Description scaleDescription_;
-
-  CriticalSection lock_;
-  bool duringScaleOperation_;
-  bool scaleNeeded_;
+  rec::audio::timescaler::Simple stretch_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

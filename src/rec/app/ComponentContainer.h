@@ -53,12 +53,14 @@ class ComponentContainer
   // ApplicationCommandTarget virtual methods.
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
   virtual void getAllCommands(Array <CommandID>& commands) {}
-  virtual void getCommandInfo(const CommandID commandID, ApplicationCommandInfo& result) {}
+  virtual void getCommandInfo(CommandID commandID, ApplicationCommandInfo& result) {}
   virtual bool perform(const InvocationInfo& info) { return false; }
 
   virtual ApplicationCommandTarget* getNextCommandTarget() {
     return findFirstTargetParentComponent();
   }
+
+  juce_UseDebuggingNewOperator
 };
 
 }  // namespace rec

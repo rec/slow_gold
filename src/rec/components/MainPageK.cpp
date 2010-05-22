@@ -11,7 +11,6 @@ using rec::audio::timescaler::Description;
 using rec::audio::source::Loop;
 
 // TODO: why can't this be defined in the .h with other primitives?!
-const int MainPageK::CHUNK_SIZE = 512;
 
 const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
 
@@ -25,9 +24,7 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    scaleDescription_(Description::Default()),
-    duringScaleOperation_(false),
-    scaleNeeded_(false) {
+    scaleDescription_(Description::Default()) {
 }
 
 void MainPageK::construct(MainPageJ* peer) {
@@ -72,11 +69,6 @@ void MainPageK::sliderDragEnded(Slider* slider) {
     scaleDescription_.pitchScale_ = slider->getValue();
   else
     return;
-
-  {
-    ScopedLock l(lock_);
-    scaleNeeded_ = true;
-  }
   scaleTime();
 }
 
@@ -114,7 +106,6 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels, length));
     loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
 
-    scaleNeeded_ = true;
     scaleTime();
   } else {
     std::cerr << "Didn't understand file type for filename "
@@ -123,59 +114,14 @@ void MainPageK::loadFileIntoTransport(const File& file) {
   }
 }
 
-void MainPageK::scaleTime() {
-  {
-    ScopedLock l(lock_);
-    if (duringScaleOperation_ || !loopBuffer_)
-      return;
-    else
-      duringScaleOperation_ = true;
-  }
-  
+bool MainPageK::scaleTime() {
   transportSource_.stop();
-  while (true) {
-    {
-      ScopedLock l(lock_);
-      if (!scaleNeeded_) {
-        duringScaleOperation_ = false;
-        return;
-      } else {
-        scaleNeeded_ = false;
-      }
-    }
+  if (!stretch_.requestRescale(scaleDescription_, *loopBuffer_, &scaledBuffer_))
+    return false;
 
-    double timeScale = scaleDescription_.timeScale_;
-    int outChannels = scaleDescription_.channels_;
-    int inChannels = loopBuffer_->getNumChannels();
-    int samples = loopBuffer_->getNumSamples();
+  loop_.reset(new Loop(*scaledBuffer_));
+  loop_->setNextReadPosition(0);
 
-    // TODO: this is truncating.
-    int scaledSamples = int(loopBuffer_->getNumSamples() * timeScale);
-
-    scaledBuffer_.reset(new AudioSampleBuffer(outChannels, scaledSamples));
-
-    AudioTimeScaler scaler;
-    scaleDescription_.Init(&scaler);
-
-    std::vector<float*> inSamples(inChannels), outSamples(outChannels);
-
-    for (int written = 0, read = 0; written < scaledSamples && read < samples; ) {
-      int outChunk = std::min(CHUNK_SIZE, scaledSamples - written);
-      int64 inChunk = std::min(scaler.GetInputBufferSize(outChunk) / 2,
-                               (unsigned) (samples - read));
-
-      for (int c = 0; c < std::max(inChannels, outChannels); ++c) {
-        inSamples[c] = loopBuffer_->getSampleData(c % inChannels) + read;
-        outSamples[c] = scaledBuffer_->getSampleData(c % outChannels) + written;
-      }
-
-      written += scaler.Process(&inSamples[0], &outSamples[0], inChunk, outChunk);
-      read += inChunk;
-    }
-
-    loop_.reset(new Loop(*scaledBuffer_.get()));
-    loop_->setNextReadPosition(0);
-
-    transportSource_.setSource(loop_.get());
-  }
+  transportSource_.setSource(loop_.get());
+  return true;
 }

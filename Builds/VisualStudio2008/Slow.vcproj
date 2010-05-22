@@ -130,8 +130,8 @@
     <Filter Name="Slow">
       <Filter Name="Source">
         <Filter Name="audio">
-          <File RelativePath="..\..\src\rec\audio\FillQueue.h"/>
-          <File RelativePath="..\..\src\rec\audio\Math.h"/>
+          <File RelativePath="..\..\src\rec\audio\stretch\SimpleStretcher.cpp"/>
+          <File RelativePath="..\..\src\rec\audio\stretch\SimpleStretcher.h"/>
         </Filter>
         <Filter Name="ammf_scaler">
           <File RelativePath="..\..\src\rec\ammf_scaler\AudioResampler.cpp"/>

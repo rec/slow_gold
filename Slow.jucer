@@ -14,11 +14,11 @@
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                   juceFolder="../../../juce"/>
     <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
-           juceFolder="../../../juce"/>
+           juceFolder="../../../juce" libraryType="1"/>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
-            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce"/>
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../juce" libraryType="1"/>
     <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
-            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../juce"/>
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../juce" libraryType="1"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
@@ -31,8 +31,10 @@
   <MAINGROUP id="xOv2eBhZg" name="Slow">
     <GROUP id="8x67ovHD" name="Source">
       <GROUP id="cuSqxl2WN" name="audio">
-        <FILE id="57vd16P0p" name="FillQueue.h" compile="0" resource="0" file="src/rec/audio/FillQueue.h"/>
-        <FILE id="BBTmM6noh" name="Math.h" compile="0" resource="0" file="src/rec/audio/Math.h"/>
+        <FILE id="JXiZHgGwb" name="SimpleStretcher.cpp" compile="1" resource="0"
+              file="src/rec/audio/stretch/SimpleStretcher.cpp"/>
+        <FILE id="CP7RMD85v" name="SimpleStretcher.h" compile="0" resource="0"
+              file="src/rec/audio/stretch/SimpleStretcher.h"/>
       </GROUP>
       <GROUP id="rcZBCV2Hx" name="ammf_scaler">
         <FILE id="ounxHJP2i" name="AudioResampler.cpp" compile="1" resource="0"

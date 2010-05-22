@@ -34,6 +34,8 @@ class GenericApplication : public JUCEApplication {
 
   void anotherInstanceStarted (const String& commandLine) {
   }
+
+  juce_UseDebuggingNewOperator
 };
 
 }  // namespace rec

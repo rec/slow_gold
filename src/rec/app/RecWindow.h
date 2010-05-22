@@ -13,6 +13,8 @@ class RecWindow  : public DocumentWindow {
 
   void closeButtonPressed();
 
+  juce_UseDebuggingNewOperator
+
  private:
   // the command manager object used to dispatch command events
   scoped_ptr<ApplicationCommandManager> commandManager;

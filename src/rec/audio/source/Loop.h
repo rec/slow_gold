@@ -12,10 +12,12 @@ namespace source {
 
 class Loop : public PositionableAudioSource {
  public:
-  Loop(const AudioSampleBuffer& source)
+  Loop(const AudioSampleBuffer& source, int position = 0)
       : source_(source),
-        position_(0) {
+        position_(position) {
+    jassert(source.getNumSamples() > position);
   }
+
   ~Loop() {}
 
   virtual void setNextReadPosition(int p) { position_ = p; }

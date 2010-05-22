@@ -11,6 +11,8 @@ class RecContainer : public ComponentContainer<RecWindow> {
   RecContainer(RecWindow* window) : ComponentContainer<RecWindow>(window) {
     show(new AudioDemoTabComponent);
   }
+
+  juce_UseDebuggingNewOperator
 };
 
 }

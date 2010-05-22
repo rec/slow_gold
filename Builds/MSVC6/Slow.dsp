@@ -85,10 +85,10 @@ LINK32=link.exe
 # Begin Group "audio"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
-SOURCE="..\..\src\rec\audio\FillQueue.h"
+SOURCE="..\..\src\rec\audio\stretch\SimpleStretcher.cpp"
 # End Source File
 # Begin Source File
-SOURCE="..\..\src\rec\audio\Math.h"
+SOURCE="..\..\src\rec\audio\stretch\SimpleStretcher.h"
 # End Source File
 # End Group
 # Begin Group "ammf_scaler"

@@ -7,9 +7,9 @@ namespace rec {
 
 class Application
   : public rec::GenericApplication<RecWindow> {
-
  public:
    Application() : rec::GenericApplication<RecWindow>(T("Rec"), T("1.0")) {}
+  juce_UseDebuggingNewOperator
 };
 
 }  // namespace rec
