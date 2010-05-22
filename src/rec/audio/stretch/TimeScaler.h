@@ -15,6 +15,7 @@ struct Description {
   double pitchScale_;
   int bands_;
   int filterOverlap_;
+  int chunkSize_;
 
   const char* Init(AudioTimeScaler* s) const {
     return s->Init(timeScale_,
@@ -32,7 +33,8 @@ struct Description {
       2,
       1.0,
       MF_PITCHTIME_NBANDS,
-      DEFAULT_FILTER_OVERLAP
+      DEFAULT_FILTER_OVERLAP,
+      512
     };
     return dflt;
   }

@@ -85,6 +85,12 @@ LINK32=link.exe
 # Begin Group "audio"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
+SOURCE="..\..\src\rec\audio\stretch\StretchOnce.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\stretch\StretchOnce.h"
+# End Source File
+# Begin Source File
 SOURCE="..\..\src\rec\audio\stretch\SimpleStretcher.cpp"
 # End Source File
 # Begin Source File

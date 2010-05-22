@@ -130,6 +130,8 @@
     <Filter Name="Slow">
       <Filter Name="Source">
         <Filter Name="audio">
+          <File RelativePath="..\..\src\rec\audio\stretch\StretchOnce.cpp"/>
+          <File RelativePath="..\..\src\rec\audio\stretch\StretchOnce.h"/>
           <File RelativePath="..\..\src\rec\audio\stretch\SimpleStretcher.cpp"/>
           <File RelativePath="..\..\src\rec\audio\stretch\SimpleStretcher.h"/>
         </Filter>
