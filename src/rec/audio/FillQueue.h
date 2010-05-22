@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_FILLQUEUE
 #define __REC_AUDIO_FILLQUEUE
 
-#include <strings.h>
+#include <string.h>
 
 #include "rec/base/basictypes.h"
 
