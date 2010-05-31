@@ -36,6 +36,11 @@
 		E2A8562F11836B9500667631 /* Buffered_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562B11836B9500667631 /* Buffered_test.cpp */; };
 		E2A8563011836B9500667631 /* Buffered.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562C11836B9500667631 /* Buffered.cpp */; };
 		E2A8563911836C4F00667631 /* Stretchable_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8563711836C4F00667631 /* Stretchable_test.cpp */; };
+		E2B195D811A9EF33009C4C13 /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B195D711A9EF33009C4C13 /* libmpg123.a */; };
+		E2B1965011B21B8E009C4C13 /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1963C11B21B8E009C4C13 /* Copier.cpp */; };
+		E2B1965111B21B8E009C4C13 /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */; };
+		E2B1965211B21B8E009C4C13 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964111B21B8E009C4C13 /* NewHandle.cpp */; };
+		E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964311B21B8E009C4C13 /* Reader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +165,17 @@
 		E2A8562E11836B9500667631 /* BufferedWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferedWrapper.h; sourceTree = "<group>"; };
 		E2A8563711836C4F00667631 /* Stretchable_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stretchable_test.cpp; sourceTree = "<group>"; };
 		E2A8563811836C4F00667631 /* Stretchable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stretchable.h; sourceTree = "<group>"; };
+		E2B195D711A9EF33009C4C13 /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../../mpg123-1.12.1/src/libmpg123/.libs/libmpg123.a"; sourceTree = SOURCE_ROOT; };
+		E2B1963C11B21B8E009C4C13 /* Copier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Copier.cpp; sourceTree = "<group>"; };
+		E2B1963D11B21B8E009C4C13 /* Copier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Copier.h; sourceTree = "<group>"; };
+		E2B1963E11B21B8E009C4C13 /* Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Format.h; sourceTree = "<group>"; };
+		E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mpg123.cpp; sourceTree = "<group>"; };
+		E2B1964011B21B8E009C4C13 /* Mpg123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mpg123.h; sourceTree = "<group>"; };
+		E2B1964111B21B8E009C4C13 /* NewHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewHandle.cpp; sourceTree = "<group>"; };
+		E2B1964211B21B8E009C4C13 /* NewHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHandle.h; sourceTree = "<group>"; };
+		E2B1964311B21B8E009C4C13 /* Reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader.cpp; sourceTree = "<group>"; };
+		E2B1964411B21B8E009C4C13 /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reader.h; sourceTree = "<group>"; };
+		E2B1964511B21B8E009C4C13 /* Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Writer.h; sourceTree = "<group>"; };
 		E2B2F6111171255400D0C002 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +198,7 @@
 				E25FCB1D116BAE2E00FCB21D /* QuartzCore.framework in Frameworks */,
 				E25FCB1E116BAE2E00FCB21D /* QTKit.framework in Frameworks */,
 				E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */,
+				E2B195D811A9EF33009C4C13 /* libmpg123.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +208,7 @@
 		08FB7794FE84155DC02AAC07 /* unit-tests */ = {
 			isa = PBXGroup;
 			children = (
+				E2B195D711A9EF33009C4C13 /* libmpg123.a */,
 				E270C22611A1CD80006F3C08 /* Juce.xcodeproj */,
 				E25FCB09116BAE2E00FCB21D /* Frameworks */,
 				E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */,
@@ -264,6 +282,7 @@
 		E25FCE94116BB6FC00FCB21D /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				E2B1963B11B21B8E009C4C13 /* mpg123 */,
 				E27D9944118B890000B5D7D7 /* stretch */,
 				E2A855A911835D3B00667631 /* source */,
 				E2B2F6111171255400D0C002 /* Math.h */,
@@ -370,6 +389,24 @@
 				E2A8562811836A7600667631 /* Mock.h */,
 			);
 			path = source;
+			sourceTree = "<group>";
+		};
+		E2B1963B11B21B8E009C4C13 /* mpg123 */ = {
+			isa = PBXGroup;
+			children = (
+				E2B1963C11B21B8E009C4C13 /* Copier.cpp */,
+				E2B1963D11B21B8E009C4C13 /* Copier.h */,
+				E2B1963E11B21B8E009C4C13 /* Format.h */,
+				E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */,
+				E2B1964011B21B8E009C4C13 /* Mpg123.h */,
+				E2B1964111B21B8E009C4C13 /* NewHandle.cpp */,
+				E2B1964211B21B8E009C4C13 /* NewHandle.h */,
+				E2B1964311B21B8E009C4C13 /* Reader.cpp */,
+				E2B1964411B21B8E009C4C13 /* Reader.h */,
+				E2B1964511B21B8E009C4C13 /* Writer.h */,
+			);
+			name = mpg123;
+			path = format/mpg123;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -497,6 +534,10 @@
 				E26F7BDB119F18FF00F5D4CF /* AudioTimeScaler.cpp in Sources */,
 				E26F7BDC119F18FF00F5D4CF /* hfft.c in Sources */,
 				E26F7BDD119F18FF00F5D4CF /* mfAlloc.c in Sources */,
+				E2B1965011B21B8E009C4C13 /* Copier.cpp in Sources */,
+				E2B1965111B21B8E009C4C13 /* Mpg123.cpp in Sources */,
+				E2B1965211B21B8E009C4C13 /* NewHandle.cpp in Sources */,
+				E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,10 +547,11 @@
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = __CPLUSPLUS__;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					/Users/tom/Documents/development/mpg123/src,
 					/Users/tom/Documents/development/rec,
 					/Users/tom/Documents/development/juce/src,
 					/Users/tom/Documents/development/juce,
@@ -534,6 +576,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../ammf/build/Debug\"",
+					"\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";
@@ -552,12 +595,13 @@
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = __CPLUSPLUS__;
 				GCC_STRICT_ALIASING = YES;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					/Users/tom/Documents/development/mpg123/src,
 					/Users/tom/Documents/development/rec,
 					/Users/tom/Documents/development/juce/src,
 					/Users/tom/Documents/development/juce,
@@ -582,6 +626,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../ammf/build/Debug\"",
+					"\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";

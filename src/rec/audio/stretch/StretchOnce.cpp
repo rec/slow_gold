@@ -1,6 +1,8 @@
 #include <vector>
 
+#include "rec/audio/stretch/Stretcher.h"
 #include "rec/audio/stretch/SimpleStretcher.h"
+#include "rec/audio/Buffer.h"
 #include "rec/audio/stretch/TimeScaler.h"
 
 namespace rec {
@@ -9,6 +11,7 @@ namespace timescaler {
 
 AudioSampleBuffer* stretchOnce(const Description& description,
                                const AudioSampleBuffer& inbuf) {
+#if 0
   double timeScale = description.timeScale_;
   int outChannels = description.channels_;
   int chunkSize = description.chunkSize_;
@@ -38,6 +41,11 @@ AudioSampleBuffer* stretchOnce(const Description& description,
     read += inChunk;
   }
   return buf;
+#else
+  Stretcher stretcher_(description, inbuf);
+  while (stretcher_.readNextChunk(description.chunkSize_));
+  return stretcher_.getBuffer();
+#endif
 }
 
 }  // namespace timescaler
