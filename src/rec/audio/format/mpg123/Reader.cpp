@@ -52,7 +52,7 @@ Error Reader::create(InputStream* in, const String& name, Reader** r) {
   (*r)->copier_ = copier;
   (*r)->sampleRate = int(sampleRate);
   (*r)->bitsPerSample = bitsPerSample;
-  (*r)->bytesPerSample_ = bitsPerSample / 8;
+1  (*r)->bytesPerSample_ = bitsPerSample / 8;
   (*r)->numChannels = numChannels;
   (*r)->lengthInSamples = mpg123_length(mh);
   (*r)->usesFloatingPointData = (encoding & MPG123_ENC_FLOAT);
