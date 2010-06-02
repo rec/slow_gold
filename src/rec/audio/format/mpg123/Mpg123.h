@@ -25,7 +25,7 @@ Error initializeOnce();
 void exitOnce();
 
 // The list of mp3 file extensions we recognize by default.
-StringArray getFileExtensions();
+StringArray getMp3FileExtensions();
 
 // The list of preferred samples rates - however, the decoder can apparently
 // emit any sample rate you like.
@@ -43,6 +43,9 @@ Error getMp3Tags(mpg123_handle* mh, StringPairArray* metadata);
 // Number of bits per sample for this output encoding.
 // encoding should be from mpg123_enc_enum.
 int getBitsPerSample(int encoding);
+
+// Get the name, translated into the currernt language.
+String getTranslatedName();
 
 }  // namespace mpg123
 }  // namespace format

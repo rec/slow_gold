@@ -52,9 +52,9 @@ void exitOnce() {
   Initializer::instance().exit();
 }
 
-StringArray getFileExtensions() {
-  const tchar* const extensions[] = {
-    JUCE_T(".mp3"), JUCE_T(".mp2"), JUCE_T(".mp1"), 0
+StringArray getMp3FileExtensions() {
+  static const tchar* const extensions[] = {
+    JUCE_T(".mp3"), JUCE_T(".mp2"), JUCE_T(".mp1"), NULL
   };
   return StringArray(extensions);
 }
@@ -85,7 +85,7 @@ int getBitsPerSample(int encoding) {
 }
 
 inline String toString(const mpg123_string* s) {
-  return String(s->p, s->fill);
+  return s ? String(s->p, s->fill) : String();
 }
 
 Error getMp3Tags(mpg123_handle* mh, StringPairArray* metadata) {
@@ -119,6 +119,10 @@ Error getMp3Tags(mpg123_handle* mh, StringPairArray* metadata) {
   }
 
   return MPG123_ERR;
+}
+
+String getTranslatedName() {
+  return TRANS("MP3 Audio file");
 }
 
 }  // namespace mpg123

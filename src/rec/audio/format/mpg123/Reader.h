@@ -19,7 +19,8 @@ namespace mpg123 {
 
 class Reader : public AudioFormatReader {
  public:
-  static Error create(InputStream* const in, const String& name, Reader** r);
+  static Error create(InputStream* in, mpg123_handle* mh, const String& name, 
+                      Reader** reader);
 
 	~Reader();
 	virtual bool readSamples(int** destSamples, int numDestChannels,

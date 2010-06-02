@@ -5,6 +5,7 @@
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/audio/format/mpg123/Reader.h"
 #include "rec/audio/format/mpg123/Writer.h"
+#include "rec/audio/format/mpg123/NewHandle.h"
 
 namespace rec {
 namespace audio {
@@ -13,21 +14,30 @@ namespace mpg123 {
 
 class Format : public AudioFormat {
  public:
-	Format() : AudioFormat(TRANS("MP3 Audio file"), getFileExtensions()) {}
+	Format() : AudioFormat(getTranslatedName(), getMp3FileExtensions()) {}
 
 	~Format() {}
 
   virtual AudioFormatReader* createReaderFor(InputStream* sourceStream,
                                              bool deleteStreamIfOpeningFails) {
+    Error e;
     Reader* r = NULL;
-    if (Reader::create(sourceStream, getFormatName(), &r)) {
-      // TODO: error handling
+    mpg123_handle *mh = NULL;
+    if ((e == newHandle(sourceStream, &mh)) ||
+        (e == processHandle(mh)) ||
+        (e == Reader::create(sourceStream, mh, getFormatName(), &r))) {
+      mpg123_delete(mh);
+
       if (deleteStreamIfOpeningFails)
         delete sourceStream;
+      // TODO: report errors.
     }
 
     return r;
   }
+
+  // Restrict this format to several files.
+  virtual Error processHandle(mpg123_handle* handle) { return MPG123_OK; }
 
 	virtual AudioFormatWriter* createWriterFor(OutputStream* streamToWriteTo,
                                              double sampleRateToUse,
@@ -55,6 +65,22 @@ class Format : public AudioFormat {
 
  private:
   DISALLOW_COPY_AND_ASSIGN(Format);
+};
+
+class IntFormat : public Format {
+ public:
+  IntFormat() {}
+
+  virtual Error processHandle(mpg123_handle* mh) {
+    if (Error e = mpg123_format_none(mh))
+      return e;
+    if (Error e = mpg123_format(mh, 44100, MPG123_STEREO, MPG123_ENC_SIGNED_32))
+      return e;
+    return MPG123_OK;
+  }
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(IntFormat);
 };
 
 }  // namespace mpg123

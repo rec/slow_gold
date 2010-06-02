@@ -26,26 +26,26 @@ Reader::~Reader()	{
   free(buffer_);
 }
 
-Error Reader::create(InputStream* in, const String& name, Reader** reader) {
+Error Reader::create(InputStream* in,
+                     mpg123_handle* mh, const String& name, Reader** reader) {
   Error e;
-  mpg123_handle* mh = NULL;
-  Reader* r = NULL;
 
   long sampleRate;
   int numChannels, encoding;
+  int bitsPerSample;
+  Copier copier;
 
-  if ((e = newHandle(in, &mh)) ||
-      (r = new Reader(in, name, mh)) ||
+  if ((e = mpg123_scan(mh)) ||
       (e = mpg123_getformat(mh, &sampleRate, &numChannels, &encoding)) ||
-      !(r->bitsPerSample = getBitsPerSample(encoding)) ||
-      !(r->copier_ = getCopier(encoding)) ||
+      !(bitsPerSample = getBitsPerSample(encoding)) ||
+      !(copier = getCopier(encoding)) ||
       numChannels > MPG123_STEREO) {
-    mpg123_delete(mh);
-    delete r;
-
     return e ? e : MPG123_ERR;
   }
 
+  Reader* r = new Reader(in, name, mh);
+  r->copier_ = copier;
+  r->bitsPerSample = bitsPerSample;
   r->sampleRate = int(sampleRate);
   r->lengthInSamples = mpg123_length(mh);
   r->usesFloatingPointData = (encoding & MPG123_ENC_FLOAT);

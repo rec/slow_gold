@@ -36,12 +36,13 @@
 		E2A8562F11836B9500667631 /* Buffered_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562B11836B9500667631 /* Buffered_test.cpp */; };
 		E2A8563011836B9500667631 /* Buffered.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562C11836B9500667631 /* Buffered.cpp */; };
 		E2A8563911836C4F00667631 /* Stretchable_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8563711836C4F00667631 /* Stretchable_test.cpp */; };
-		E2B195D811A9EF33009C4C13 /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B195D711A9EF33009C4C13 /* libmpg123.a */; };
 		E2B1965011B21B8E009C4C13 /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1963C11B21B8E009C4C13 /* Copier.cpp */; };
 		E2B1965111B21B8E009C4C13 /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */; };
 		E2B1965211B21B8E009C4C13 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964111B21B8E009C4C13 /* NewHandle.cpp */; };
 		E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964311B21B8E009C4C13 /* Reader.cpp */; };
 		E2CFC63511B45D6000CC265E /* Copier_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2CFC63411B45D6000CC265E /* Copier_test.cpp */; };
+		E2CFC6F911B4FA2100CC265E /* Format_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2CFC6F811B4FA2100CC265E /* Format_test.cpp */; };
+		E2F0DDE111B6133A0025C1B3 /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F0DDE011B6133A0025C1B3 /* libmpg123.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,7 +167,6 @@
 		E2A8562E11836B9500667631 /* BufferedWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferedWrapper.h; sourceTree = "<group>"; };
 		E2A8563711836C4F00667631 /* Stretchable_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stretchable_test.cpp; sourceTree = "<group>"; };
 		E2A8563811836C4F00667631 /* Stretchable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stretchable.h; sourceTree = "<group>"; };
-		E2B195D711A9EF33009C4C13 /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../../mpg123-1.12.1/src/libmpg123/.libs/libmpg123.a"; sourceTree = SOURCE_ROOT; };
 		E2B1963C11B21B8E009C4C13 /* Copier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Copier.cpp; sourceTree = "<group>"; };
 		E2B1963D11B21B8E009C4C13 /* Copier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Copier.h; sourceTree = "<group>"; };
 		E2B1963E11B21B8E009C4C13 /* Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Format.h; sourceTree = "<group>"; };
@@ -179,6 +179,8 @@
 		E2B1964511B21B8E009C4C13 /* Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Writer.h; sourceTree = "<group>"; };
 		E2B2F6111171255400D0C002 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		E2CFC63411B45D6000CC265E /* Copier_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Copier_test.cpp; sourceTree = "<group>"; };
+		E2CFC6F811B4FA2100CC265E /* Format_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Format_test.cpp; sourceTree = "<group>"; };
+		E2F0DDE011B6133A0025C1B3 /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../../mpg123-1.12.1/src/libmpg123/.libs/libmpg123.a"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +202,7 @@
 				E25FCB1D116BAE2E00FCB21D /* QuartzCore.framework in Frameworks */,
 				E25FCB1E116BAE2E00FCB21D /* QTKit.framework in Frameworks */,
 				E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */,
-				E2B195D811A9EF33009C4C13 /* libmpg123.a in Frameworks */,
+				E2F0DDE111B6133A0025C1B3 /* libmpg123.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +212,7 @@
 		08FB7794FE84155DC02AAC07 /* unit-tests */ = {
 			isa = PBXGroup;
 			children = (
-				E2B195D711A9EF33009C4C13 /* libmpg123.a */,
+				E2F0DDE011B6133A0025C1B3 /* libmpg123.a */,
 				E270C22611A1CD80006F3C08 /* Juce.xcodeproj */,
 				E25FCB09116BAE2E00FCB21D /* Frameworks */,
 				E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */,
@@ -399,6 +401,7 @@
 				E2B1963C11B21B8E009C4C13 /* Copier.cpp */,
 				E2B1963D11B21B8E009C4C13 /* Copier.h */,
 				E2CFC63411B45D6000CC265E /* Copier_test.cpp */,
+				E2CFC6F811B4FA2100CC265E /* Format_test.cpp */,
 				E2B1963E11B21B8E009C4C13 /* Format.h */,
 				E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */,
 				E2B1964011B21B8E009C4C13 /* Mpg123.h */,
@@ -542,6 +545,7 @@
 				E2B1965211B21B8E009C4C13 /* NewHandle.cpp in Sources */,
 				E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */,
 				E2CFC63511B45D6000CC265E /* Copier_test.cpp in Sources */,
+				E2CFC6F911B4FA2100CC265E /* Format_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +585,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../ammf/build/Debug\"",
 					"\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../mpg123/Debug\"",
+					"\"$(SRCROOT)/../mpg123/Release\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";
@@ -631,6 +638,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../ammf/build/Debug\"",
 					"\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../mpg123/Debug\"",
+					"\"$(SRCROOT)/../mpg123/Release\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";
