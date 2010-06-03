@@ -84,43 +84,6 @@ int getBitsPerSample(int encoding) {
     0;
 }
 
-inline String toString(const mpg123_string* s) {
-  return s ? String(s->p, s->fill) : String();
-}
-
-Error getMp3Tags(mpg123_handle* mh, StringPairArray* metadata) {
-  if (!mpg123_meta_check(mh))
-    return MPG123_ERR;
-
-  mpg123_id3v1 *v1;
-  mpg123_id3v2 *v2;
-
-  if (Error e = mpg123_id3(mh, &v1, &v2))
-    return e;
-
-  if (v2) {
-    metadata->set("title", toString(v2->title));
-    metadata->set("artist", toString(v2->artist));
-    metadata->set("album", toString(v2->album));
-    metadata->set("year", toString(v2->year));
-    metadata->set("genre", toString(v2->genre));
-    metadata->set("comment", toString(v2->comment));
-    return MPG123_OK;
-  }
-
-  if (v1) {
-    metadata->set("title", String(v1->title, 30));
-    metadata->set("artist", String(v1->artist, 30));
-    metadata->set("album", String(v1->album, 30));
-    metadata->set("year", String(v1->year, 4));
-    metadata->set("comment", String(v1->comment, 30));
-    metadata->set("genre", String((const char*) &v1->genre, 1));
-    return MPG123_OK;
-  }
-
-  return MPG123_ERR;
-}
-
 String getTranslatedName() {
   return TRANS("MP3 Audio file");
 }

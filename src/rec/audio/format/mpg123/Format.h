@@ -2,10 +2,11 @@
 #define __REC_AUDIO_FORMAT_MPG123_FORMAT__
 
 #include "audio/audio_file_formats/juce_AudioFormat.h"
+
 #include "rec/audio/format/mpg123/Mpg123.h"
-#include "rec/audio/format/mpg123/Reader.h"
-#include "rec/audio/format/mpg123/Writer.h"
+#include "rec/audio/format/mpg123/CreateReader.h"
 #include "rec/audio/format/mpg123/NewHandle.h"
+#include "rec/base/basictypes.h"
 
 namespace rec {
 namespace audio {
@@ -20,24 +21,15 @@ class Format : public AudioFormat {
 
   virtual AudioFormatReader* createReaderFor(InputStream* sourceStream,
                                              bool deleteStreamIfOpeningFails) {
-    Error e;
-    Reader* r = NULL;
-    mpg123_handle *mh = NULL;
-    if ((e == newHandle(sourceStream, &mh)) ||
-        (e == processHandle(mh)) ||
-        (e == Reader::create(sourceStream, mh, getFormatName(), &r))) {
-      mpg123_delete(mh);
-
+    AudioFormatReader* reader = NULL;
+    if (Error e = createReader(sourceStream, &reader)) {
+      std::cerr << "mpg123 create error:" << mpg123_plain_strerror(e) << "\n";
       if (deleteStreamIfOpeningFails)
         delete sourceStream;
-      // TODO: report errors.
     }
 
-    return r;
+    return reader;
   }
-
-  // Restrict this format to several files.
-  virtual Error processHandle(mpg123_handle* handle) { return MPG123_OK; }
 
 	virtual AudioFormatWriter* createWriterFor(OutputStream* streamToWriteTo,
                                              double sampleRateToUse,
@@ -45,13 +37,7 @@ class Format : public AudioFormat {
                                              int bitsPerSample,
                                              const StringPairArray& metadata,
                                              int qualityOptionIndex) {
-    Writer* w = NULL;
-    if (getPossibleBitDepths().contains(bitsPerSample)) {
-      Writer::create(streamToWriteTo, getFormatName(), sampleRateToUse, numberOfChannels,
-                     bitsPerSample, metadata, qualityOptionIndex, &w);
-      // TODO: error handling
-    }
-    return w;
+    return NULL;
   }
 
 	virtual const Array<int> getPossibleSampleRates() { return getSampleRates(); }
@@ -65,22 +51,6 @@ class Format : public AudioFormat {
 
  private:
   DISALLOW_COPY_AND_ASSIGN(Format);
-};
-
-class IntFormat : public Format {
- public:
-  IntFormat() {}
-
-  virtual Error processHandle(mpg123_handle* mh) {
-    if (Error e = mpg123_format_none(mh))
-      return e;
-    if (Error e = mpg123_format(mh, 44100, MPG123_STEREO, MPG123_ENC_SIGNED_32))
-      return e;
-    return MPG123_OK;
-  }
-
- private:
-  DISALLOW_COPY_AND_ASSIGN(IntFormat);
 };
 
 }  // namespace mpg123

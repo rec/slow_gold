@@ -1,5 +1,4 @@
 #include <vector>
-
 #include <gtest/gtest.h>
 #include "rec/audio/format/mpg123/Copier.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
@@ -8,7 +7,7 @@ namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
-
+  
 typedef unsigned char uchar;
 
 template <typename In, typename Out>

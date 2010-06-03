@@ -12,49 +12,20 @@ namespace mpg123 {
 
 #include "libmpg123/mpg123.h"
 
-Reader::Reader(InputStream* in, const String& formatName, mpg123_handle* mh)
+Reader::Reader(InputStream* in, const String& formatName, mpg123_handle* mh,
+               Copier copier)
   : AudioFormatReader(in, formatName),
     mh_(mh),
     buffer_(NULL),
     size_(0),
-    allocated_(0) {
+    allocated_(0),
+    copier_(copier) {
 }
 
 Reader::~Reader()	{
   mpg123_close(mh_);
   mpg123_delete(mh_);
   free(buffer_);
-}
-
-Error Reader::create(InputStream* in,
-                     mpg123_handle* mh, const String& name, Reader** reader) {
-  Error e;
-
-  long sampleRate;
-  int numChannels, encoding;
-  int bitsPerSample;
-  Copier copier;
-
-  if ((e = mpg123_scan(mh)) ||
-      (e = mpg123_getformat(mh, &sampleRate, &numChannels, &encoding)) ||
-      !(bitsPerSample = getBitsPerSample(encoding)) ||
-      !(copier = getCopier(encoding)) ||
-      numChannels > MPG123_STEREO) {
-    return e ? e : MPG123_ERR;
-  }
-
-  Reader* r = new Reader(in, name, mh);
-  r->copier_ = copier;
-  r->bitsPerSample = bitsPerSample;
-  r->sampleRate = int(sampleRate);
-  r->lengthInSamples = mpg123_length(mh);
-  r->usesFloatingPointData = (encoding & MPG123_ENC_FLOAT);
-  r->numChannels = numChannels;
-
-  getMp3Tags(mh, &r->metadataValues);  // TODO: check errors and...?
-
-  *reader = r;
-  return MPG123_OK;
 }
 
 bool Reader::readSamples(int** dest, int destChannels, int destOffset,

@@ -1,6 +1,8 @@
 #ifndef __REC_AUDIO_FORMAT_MPG123_MPG123__
 #define __REC_AUDIO_FORMAT_MPG123_MPG123__
 
+// Constants and static functions for the mpg123 library.
+
 #include "juce_amalgamated.h"
 
 namespace rec {
@@ -37,14 +39,11 @@ Array<int> getSampleRates();
 // in the wild...
 Array<int> getBitDepths();
 
-// Read mp3 tags into a StringPairArray.
-Error getMp3Tags(mpg123_handle* mh, StringPairArray* metadata);
-
 // Number of bits per sample for this output encoding.
 // encoding should be from mpg123_enc_enum.
 int getBitsPerSample(int encoding);
 
-// Get the name, translated into the currernt language.
+// Get the name, translated into the current language.
 String getTranslatedName();
 
 }  // namespace mpg123
