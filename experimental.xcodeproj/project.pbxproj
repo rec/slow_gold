@@ -8,44 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E22A40E5118625AF007293B2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
-		E249391311B9713200C5B2DC /* FillQueueTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */; };
-		E249391411B9713200C5B2DC /* math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E25FCEAB116BB6FC00FCB21D /* math_test.cpp */; };
-		E249391511B9713200C5B2DC /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C7117D60870078881F /* Parser.cpp */; };
-		E249391611B9713200C5B2DC /* Parser_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E29594C9117D60870078881F /* Parser_test.cpp */; };
-		E249391711B9713200C5B2DC /* Buffered_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562B11836B9500667631 /* Buffered_test.cpp */; };
-		E249391811B9713200C5B2DC /* Buffered.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8562C11836B9500667631 /* Buffered.cpp */; };
-		E249391911B9713200C5B2DC /* Stretchable_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2A8563711836C4F00667631 /* Stretchable_test.cpp */; };
-		E249391A11B9713200C5B2DC /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
-		E249391B11B9713200C5B2DC /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
-		E249391C11B9713200C5B2DC /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */; };
-		E249391D11B9713200C5B2DC /* Math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9A09118F503D00B5D7D7 /* Math_test.cpp */; };
-		E249391E11B9713200C5B2DC /* AudioResampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BCF119F18FF00F5D4CF /* AudioResampler.cpp */; };
-		E249391F11B9713200C5B2DC /* AudioTimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */; };
-		E249392011B9713200C5B2DC /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD3119F18FF00F5D4CF /* hfft.c */; };
-		E249392111B9713200C5B2DC /* mfAlloc.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */; };
-		E249392211B9713200C5B2DC /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1963C11B21B8E009C4C13 /* Copier.cpp */; };
-		E249392311B9713200C5B2DC /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */; };
-		E249392411B9713200C5B2DC /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964111B21B8E009C4C13 /* NewHandle.cpp */; };
-		E249392511B9713200C5B2DC /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964311B21B8E009C4C13 /* Reader.cpp */; };
-		E249392611B9713200C5B2DC /* Copier_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2CFC63411B45D6000CC265E /* Copier_test.cpp */; };
-		E249392711B9713200C5B2DC /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */; };
-		E249392811B9713200C5B2DC /* CreateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */; };
-		E249392911B9713200C5B2DC /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE4A11B829A80025C1B3 /* Tags.cpp */; };
-		E249392B11B9713200C5B2DC /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E270C22B11A1CD80006F3C08 /* libjuce.a */; };
-		E249392C11B9713200C5B2DC /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EE116A594C00FCB21D /* libgtest_main.a */; };
-		E249392D11B9713200C5B2DC /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EA116A594C00FCB21D /* gtest.framework */; };
-		E249392E11B9713200C5B2DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
-		E249392F11B9713200C5B2DC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0B116BAE2E00FCB21D /* Carbon.framework */; };
-		E249393011B9713200C5B2DC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0C116BAE2E00FCB21D /* IOKit.framework */; };
-		E249393111B9713200C5B2DC /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0D116BAE2E00FCB21D /* CoreAudio.framework */; };
-		E249393211B9713200C5B2DC /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0E116BAE2E00FCB21D /* CoreMIDI.framework */; };
-		E249393311B9713200C5B2DC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0F116BAE2E00FCB21D /* WebKit.framework */; };
-		E249393411B9713200C5B2DC /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB10116BAE2E00FCB21D /* DiscRecording.framework */; };
-		E249393511B9713200C5B2DC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB11116BAE2E00FCB21D /* OpenGL.framework */; };
-		E249393611B9713200C5B2DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB12116BAE2E00FCB21D /* QuartzCore.framework */; };
-		E249393711B9713200C5B2DC /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB13116BAE2E00FCB21D /* QTKit.framework */; };
-		E249393811B9713200C5B2DC /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB14116BAE2E00FCB21D /* QuickTime.framework */; };
-		E249393911B9713200C5B2DC /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F0DDE011B6133A0025C1B3 /* libmpg123.a */; };
+		E2493A6011B97D6B00C5B2DC /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493A5F11B97D6B00C5B2DC /* libmpg123.a */; };
 		E25FC721116A5B6700FCB21D /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EA116A594C00FCB21D /* gtest.framework */; };
 		E25FC724116A5B7E00FCB21D /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FC6EE116A594C00FCB21D /* libgtest_main.a */; };
 		E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
@@ -79,7 +42,6 @@
 		E2B1965211B21B8E009C4C13 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964111B21B8E009C4C13 /* NewHandle.cpp */; };
 		E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964311B21B8E009C4C13 /* Reader.cpp */; };
 		E2CFC63511B45D6000CC265E /* Copier_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2CFC63411B45D6000CC265E /* Copier_test.cpp */; };
-		E2F0DDE111B6133A0025C1B3 /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F0DDE011B6133A0025C1B3 /* libmpg123.a */; };
 		E2F0DE2911B81DA40025C1B3 /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */; };
 		E2F0DE2A11B81DA40025C1B3 /* CreateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */; };
 		E2F0DE4B11B829A80025C1B3 /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE4A11B829A80025C1B3 /* Tags.cpp */; };
@@ -148,9 +110,9 @@
 		C6859E8B029090EE04C91782 /* unit-tests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "unit-tests.1"; sourceTree = "<group>"; };
 		E22A40E4118625AF007293B2 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		E231FBCE11B8C4C0001152B6 /* Reader_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader_main.cpp; sourceTree = "<group>"; };
-		E249393D11B9713200C5B2DC /* unit-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "unit-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2493A5F11B97D6B00C5B2DC /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = libraries/mpg123/mac/Release/mpg123/libmpg123.a; sourceTree = "<group>"; };
 		E25FC6C7116A407700FCB21D /* unit-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "unit-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = ../../gtest/xcode/gtest.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = ../gtest/xcode/gtest.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E25FCB0B116BAE2E00FCB21D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		E25FCB0C116BAE2E00FCB21D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
@@ -179,22 +141,22 @@
 		E25FCEAC116BB6FC00FCB21D /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		E25FCEAD116BB6FC00FCB21D /* WaitLoopThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitLoopThread.h; sourceTree = "<group>"; };
 		E25FCEAE116BB6FC00FCB21D /* Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wrapper.h; sourceTree = "<group>"; };
-		E26F7BCF119F18FF00F5D4CF /* AudioResampler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioResampler.cpp; path = ../src/rec/ammf_scaler/AudioResampler.cpp; sourceTree = SOURCE_ROOT; };
-		E26F7BD0119F18FF00F5D4CF /* AudioResampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioResampler.h; path = ../src/rec/ammf_scaler/AudioResampler.h; sourceTree = SOURCE_ROOT; };
-		E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTimeScaler.cpp; path = ../src/rec/ammf_scaler/AudioTimeScaler.cpp; sourceTree = SOURCE_ROOT; };
-		E26F7BD2119F18FF00F5D4CF /* AudioTimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioTimeScaler.h; path = ../src/rec/ammf_scaler/AudioTimeScaler.h; sourceTree = SOURCE_ROOT; };
-		E26F7BD3119F18FF00F5D4CF /* hfft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hfft.c; path = ../src/rec/ammf_scaler/hfft.c; sourceTree = SOURCE_ROOT; };
-		E26F7BD4119F18FF00F5D4CF /* hfft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hfft.h; path = ../src/rec/ammf_scaler/hfft.h; sourceTree = SOURCE_ROOT; };
-		E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mfAlloc.c; path = ../src/rec/ammf_scaler/mfAlloc.c; sourceTree = SOURCE_ROOT; };
-		E26F7BD6119F18FF00F5D4CF /* mfAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfAlloc.h; path = ../src/rec/ammf_scaler/mfAlloc.h; sourceTree = SOURCE_ROOT; };
-		E26F7BD7119F18FF00F5D4CF /* mfGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = ../src/rec/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
-		E26F7BD8119F18FF00F5D4CF /* mfMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMacros.h; path = ../src/rec/ammf_scaler/mfMacros.h; sourceTree = SOURCE_ROOT; };
-		E26F7BD9119F18FF00F5D4CF /* mfMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMath.h; path = ../src/rec/ammf_scaler/mfMath.h; sourceTree = SOURCE_ROOT; };
-		E270C22611A1CD80006F3C08 /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../juce/Builds/MacOSX/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E26F7BCF119F18FF00F5D4CF /* AudioResampler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioResampler.cpp; path = src/rec/ammf_scaler/AudioResampler.cpp; sourceTree = SOURCE_ROOT; };
+		E26F7BD0119F18FF00F5D4CF /* AudioResampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioResampler.h; path = src/rec/ammf_scaler/AudioResampler.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTimeScaler.cpp; path = src/rec/ammf_scaler/AudioTimeScaler.cpp; sourceTree = SOURCE_ROOT; };
+		E26F7BD2119F18FF00F5D4CF /* AudioTimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioTimeScaler.h; path = src/rec/ammf_scaler/AudioTimeScaler.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD3119F18FF00F5D4CF /* hfft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hfft.c; path = src/rec/ammf_scaler/hfft.c; sourceTree = SOURCE_ROOT; };
+		E26F7BD4119F18FF00F5D4CF /* hfft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hfft.h; path = src/rec/ammf_scaler/hfft.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mfAlloc.c; path = src/rec/ammf_scaler/mfAlloc.c; sourceTree = SOURCE_ROOT; };
+		E26F7BD6119F18FF00F5D4CF /* mfAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfAlloc.h; path = src/rec/ammf_scaler/mfAlloc.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD7119F18FF00F5D4CF /* mfGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = src/rec/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD8119F18FF00F5D4CF /* mfMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMacros.h; path = src/rec/ammf_scaler/mfMacros.h; sourceTree = SOURCE_ROOT; };
+		E26F7BD9119F18FF00F5D4CF /* mfMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMath.h; path = src/rec/ammf_scaler/mfMath.h; sourceTree = SOURCE_ROOT; };
+		E270C22611A1CD80006F3C08 /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../juce/Builds/MacOSX/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTimeScaler_test.cpp; sourceTree = "<group>"; };
 		E27D9947118B890000B5D7D7 /* StretchInBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchInBackground.h; sourceTree = "<group>"; };
 		E27D9949118B890000B5D7D7 /* TimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScaler.h; sourceTree = "<group>"; };
-		E27D9A09118F503D00B5D7D7 /* Math_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Math_test.cpp; path = ../src/rec/audio/Math_test.cpp; sourceTree = SOURCE_ROOT; };
+		E27D9A09118F503D00B5D7D7 /* Math_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Math_test.cpp; path = src/rec/audio/Math_test.cpp; sourceTree = SOURCE_ROOT; };
 		E2940A171186BF22002E32D6 /* Loop_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loop_test.cpp; sourceTree = "<group>"; };
 		E2940A181186BF22002E32D6 /* Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loop.h; sourceTree = "<group>"; };
 		E29594C6117D60870078881F /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
@@ -220,7 +182,6 @@
 		E2B1964411B21B8E009C4C13 /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reader.h; sourceTree = "<group>"; };
 		E2B2F6111171255400D0C002 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		E2CFC63411B45D6000CC265E /* Copier_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Copier_test.cpp; sourceTree = "<group>"; };
-		E2F0DDE011B6133A0025C1B3 /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../../mpg123-1.12.1/src/libmpg123/.libs/libmpg123.a"; sourceTree = SOURCE_ROOT; };
 		E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader_test.cpp; sourceTree = "<group>"; };
 		E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader.cpp; sourceTree = "<group>"; };
 		E2F0DE2811B81DA40025C1B3 /* CreateReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReader.h; sourceTree = "<group>"; };
@@ -230,28 +191,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E249392A11B9713200C5B2DC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E249392B11B9713200C5B2DC /* libjuce.a in Frameworks */,
-				E249392C11B9713200C5B2DC /* libgtest_main.a in Frameworks */,
-				E249392D11B9713200C5B2DC /* gtest.framework in Frameworks */,
-				E249392E11B9713200C5B2DC /* Cocoa.framework in Frameworks */,
-				E249392F11B9713200C5B2DC /* Carbon.framework in Frameworks */,
-				E249393011B9713200C5B2DC /* IOKit.framework in Frameworks */,
-				E249393111B9713200C5B2DC /* CoreAudio.framework in Frameworks */,
-				E249393211B9713200C5B2DC /* CoreMIDI.framework in Frameworks */,
-				E249393311B9713200C5B2DC /* WebKit.framework in Frameworks */,
-				E249393411B9713200C5B2DC /* DiscRecording.framework in Frameworks */,
-				E249393511B9713200C5B2DC /* OpenGL.framework in Frameworks */,
-				E249393611B9713200C5B2DC /* QuartzCore.framework in Frameworks */,
-				E249393711B9713200C5B2DC /* QTKit.framework in Frameworks */,
-				E249393811B9713200C5B2DC /* QuickTime.framework in Frameworks */,
-				E249393911B9713200C5B2DC /* libmpg123.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E25FC6C5116A407700FCB21D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,7 +209,7 @@
 				E25FCB1D116BAE2E00FCB21D /* QuartzCore.framework in Frameworks */,
 				E25FCB1E116BAE2E00FCB21D /* QTKit.framework in Frameworks */,
 				E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */,
-				E2F0DDE111B6133A0025C1B3 /* libmpg123.a in Frameworks */,
+				E2493A6011B97D6B00C5B2DC /* libmpg123.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +219,7 @@
 		08FB7794FE84155DC02AAC07 /* unit-tests */ = {
 			isa = PBXGroup;
 			children = (
-				E2F0DDE011B6133A0025C1B3 /* libmpg123.a */,
+				E2493A5F11B97D6B00C5B2DC /* libmpg123.a */,
 				E270C22611A1CD80006F3C08 /* Juce.xcodeproj */,
 				E25FCB09116BAE2E00FCB21D /* Frameworks */,
 				E25FC6DD116A594C00FCB21D /* gtest.xcodeproj */,
@@ -307,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				E25FC6C7116A407700FCB21D /* unit-tests */,
-				E249393D11B9713200C5B2DC /* unit-tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -363,7 +301,7 @@
 				E25FCE9A116BB6FC00FCB21D /* FillQueueTest.cpp */,
 			);
 			name = audio;
-			path = ../src/rec/audio;
+			path = src/rec/audio;
 			sourceTree = SOURCE_ROOT;
 		};
 		E25FCE9E116BB6FC00FCB21D /* base */ = {
@@ -376,7 +314,7 @@
 				E25FCEA3116BB6FC00FCB21D /* string_piece.h */,
 			);
 			name = base;
-			path = ../src/rec/base;
+			path = src/rec/base;
 			sourceTree = SOURCE_ROOT;
 		};
 		E25FCEA4116BB6FC00FCB21D /* util */ = {
@@ -394,7 +332,7 @@
 				E25FCEAE116BB6FC00FCB21D /* Wrapper.h */,
 			);
 			name = util;
-			path = ../src/rec/util;
+			path = src/rec/util;
 			sourceTree = SOURCE_ROOT;
 		};
 		E26F7BCE119F18FF00F5D4CF /* ammf_scaler */ = {
@@ -444,7 +382,7 @@
 				E29594C9117D60870078881F /* Parser_test.cpp */,
 			);
 			name = json;
-			path = ../src/rec/json;
+			path = src/rec/json;
 			sourceTree = SOURCE_ROOT;
 		};
 		E2A855A911835D3B00667631 /* source */ = {
@@ -492,22 +430,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E249391111B9713200C5B2DC /* unit-tests copy */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E249393A11B9713200C5B2DC /* Build configuration list for PBXNativeTarget "unit-tests copy" */;
-			buildPhases = (
-				E249391211B9713200C5B2DC /* Sources */,
-				E249392A11B9713200C5B2DC /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "unit-tests copy";
-			productName = "unit-tests";
-			productReference = E249393D11B9713200C5B2DC /* unit-tests */;
-			productType = "com.apple.product-type.tool";
-		};
 		E25FC6C6116A407700FCB21D /* unit-tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E25FC6CB116A408900FCB21D /* Build configuration list for PBXNativeTarget "unit-tests" */;
@@ -529,7 +451,7 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "unit-tests" */;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "experimental" */;
 			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
 			mainGroup = 08FB7794FE84155DC02AAC07 /* unit-tests */;
@@ -547,7 +469,6 @@
 			projectRoot = "";
 			targets = (
 				E25FC6C6116A407700FCB21D /* unit-tests */,
-				E249391111B9713200C5B2DC /* unit-tests copy */,
 			);
 		};
 /* End PBXProject section */
@@ -612,36 +533,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E249391211B9713200C5B2DC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E249391311B9713200C5B2DC /* FillQueueTest.cpp in Sources */,
-				E249391411B9713200C5B2DC /* math_test.cpp in Sources */,
-				E249391511B9713200C5B2DC /* Parser.cpp in Sources */,
-				E249391611B9713200C5B2DC /* Parser_test.cpp in Sources */,
-				E249391711B9713200C5B2DC /* Buffered_test.cpp in Sources */,
-				E249391811B9713200C5B2DC /* Buffered.cpp in Sources */,
-				E249391911B9713200C5B2DC /* Stretchable_test.cpp in Sources */,
-				E249391A11B9713200C5B2DC /* Node.cpp in Sources */,
-				E249391B11B9713200C5B2DC /* Loop_test.cpp in Sources */,
-				E249391C11B9713200C5B2DC /* AudioTimeScaler_test.cpp in Sources */,
-				E249391D11B9713200C5B2DC /* Math_test.cpp in Sources */,
-				E249391E11B9713200C5B2DC /* AudioResampler.cpp in Sources */,
-				E249391F11B9713200C5B2DC /* AudioTimeScaler.cpp in Sources */,
-				E249392011B9713200C5B2DC /* hfft.c in Sources */,
-				E249392111B9713200C5B2DC /* mfAlloc.c in Sources */,
-				E249392211B9713200C5B2DC /* Copier.cpp in Sources */,
-				E249392311B9713200C5B2DC /* Mpg123.cpp in Sources */,
-				E249392411B9713200C5B2DC /* NewHandle.cpp in Sources */,
-				E249392511B9713200C5B2DC /* Reader.cpp in Sources */,
-				E249392611B9713200C5B2DC /* Copier_test.cpp in Sources */,
-				E249392711B9713200C5B2DC /* CreateReader_test.cpp in Sources */,
-				E249392811B9713200C5B2DC /* CreateReader.cpp in Sources */,
-				E249392911B9713200C5B2DC /* Tags.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E25FC6C4116A407700FCB21D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -694,52 +585,6 @@
 			};
 			name = Debug;
 		};
-		E249393B11B9713200C5B2DC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/../ammf/build/Debug\\\"",
-					"\\\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\\\"",
-					"\\\"$(SRCROOT)\\\"",
-					"\\\"$(SRCROOT)/../mpg123/Debug\\\"",
-					"\\\"$(SRCROOT)/../mpg123/Release\\\"",
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "unit-tests";
-			};
-			name = Debug;
-		};
-		E249393C11B9713200C5B2DC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/../ammf/build/Debug\\\"",
-					"\\\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\\\"",
-					"\\\"$(SRCROOT)\\\"",
-					"\\\"$(SRCROOT)/../mpg123/Debug\\\"",
-					"\\\"$(SRCROOT)/../mpg123/Release\\\"",
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "unit-tests";
-			};
-			name = Release;
-		};
 		E25FC6C9116A407700FCB21D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -752,11 +597,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../ammf/build/Debug\"",
-					"\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../mpg123/Debug\"",
-					"\"$(SRCROOT)/../mpg123/Release\"",
+					"\"$(SRCROOT)/libraries/mpg123/mac/Release/mpg123\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";
@@ -805,11 +646,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../ammf/build/Debug\"",
-					"\"$(SRCROOT)/../../mpg123-1.12.1/src/libmpg123/.libs\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../mpg123/Debug\"",
-					"\"$(SRCROOT)/../mpg123/Release\"",
+					"\"$(SRCROOT)/libraries/mpg123/mac/Release/mpg123\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";
@@ -819,20 +656,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "unit-tests" */ = {
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "experimental" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB923608733DC60010E9CD /* Debug */,
 				E26F7B1A119E361A00F5D4CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		E249393A11B9713200C5B2DC /* Build configuration list for PBXNativeTarget "unit-tests copy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E249393B11B9713200C5B2DC /* Debug */,
-				E249393C11B9713200C5B2DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

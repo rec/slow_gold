@@ -11,7 +11,7 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-static const char* FILENAME = "../../../data/sin-stereo-64-tags-324-mono.mp3";
+static const char* FILENAME = "../../data/sin-stereo-64-tags-324-mono.mp3";
 
 TEST(CreateReader, Create) {
   File file(FILENAME);
