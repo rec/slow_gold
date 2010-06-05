@@ -153,6 +153,7 @@
 			E2493A9111B985C700C5B2DC = E2493A9111B985C700C5B2DC /* PBXTextBookmark */;
 			E2493A9C11B9886900C5B2DC = E2493A9C11B9886900C5B2DC /* PBXTextBookmark */;
 			E2493BA211BAD69E00C5B2DC = E2493BA211BAD69E00C5B2DC /* PBXTextBookmark */;
+			E2493BBF11BADD9F00C5B2DC /* PBXTextBookmark */ = E2493BBF11BADD9F00C5B2DC /* PBXTextBookmark */;
 			E267743E1171A14000A44B58 = E267743E1171A14000A44B58 /* PBXTextBookmark */;
 			E26774B3117271AB00A44B58 = E26774B3117271AB00A44B58 /* PBXTextBookmark */;
 			E26F7B3B119E384C00F5D4CF = E26F7B3B119E384C00F5D4CF /* PBXTextBookmark */;
@@ -243,6 +244,16 @@
 		rLoc = 29054;
 		rType = 0;
 		vrLen = 817;
+		vrLoc = 28601;
+	};
+	E2493BBF11BADD9F00C5B2DC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2F0DE2211B81D8E0025C1B3 /* readers.c */;
+		name = "readers.c: 1074";
+		rLen = 0;
+		rLoc = 29054;
+		rType = 0;
+		vrLen = 813;
 		vrLoc = 28601;
 	};
 	E25FC5FE116A364600FCB21D /* Source Control */ = {
@@ -951,6 +962,11 @@
 		name = readers.c;
 		path = "/Users/tom/Documents/development/mpg123-1.12.1/src/libmpg123/readers.c";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {686, 14339}}";
+			sepNavSelRange = "{29054, 0}";
+			sepNavVisRange = "{28601, 813}";
+		};
 	};
 	E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */ = {
 		uiCtxt = {

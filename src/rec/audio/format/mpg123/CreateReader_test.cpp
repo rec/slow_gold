@@ -32,7 +32,6 @@ TEST(CreateReader, Create) {
   EXPECT_EQ(data["TCON"], "Space punk");
   EXPECT_EQ(data["COMM"], "This is a comment.");
 
-  std::cout << reader->metadataValues.getDescription() << "\n";
   delete reader;
 }
 
