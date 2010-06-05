@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E22A40E5118625AF007293B2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E22A40E4118625AF007293B2 /* Node.cpp */; };
-		E2493A6011B97D6B00C5B2DC /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493A5F11B97D6B00C5B2DC /* libmpg123.a */; };
+		E2493AE611B99C6300C5B2DC /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493AD911B99C4C00C5B2DC /* gtest.framework */; };
+		E2493AE711B99C6300C5B2DC /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493ADB11B99C4C00C5B2DC /* libgtest.a */; };
+		E2493AE811B99C6300C5B2DC /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493ADD11B99C4C00C5B2DC /* libgtest_main.a */; };
+		E2493AEC11B99CBF00C5B2DC /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493AEB11B99CBF00C5B2DC /* libmpg123.a */; };
 		E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */; };
 		E25FCB16116BAE2E00FCB21D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0B116BAE2E00FCB21D /* Carbon.framework */; };
 		E25FCB17116BAE2E00FCB21D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FCB0C116BAE2E00FCB21D /* IOKit.framework */; };
@@ -46,6 +49,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E2493AD811B99C4C00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4539C8FF0EC27F6400A70F4C /* gtest.framework */;
+			remoteInfo = "gtest-framework";
+		};
+		E2493ADA11B99C4C00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C848FA101A209C0083642A /* libgtest.a */;
+			remoteInfo = "gtest-static";
+		};
+		E2493ADC11B99C4C00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C8490B101A217E0083642A /* libgtest_main.a */;
+			remoteInfo = "gtest_main-static";
+		};
+		E2493ADE11B99C4C00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40899F430FFA7184000B29AE /* gtest_unittest-framework */;
+			remoteInfo = "gtest_unittest-framework";
+		};
+		E2493AE011B99C4C00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C84987101A36850083642A /* gtest_unittest */;
+			remoteInfo = "gtest_unittest-static";
+		};
+		E2493AE211B99C4C00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4089A0130FFACEFC000B29AE /* sample1_unittest-framework */;
+			remoteInfo = "sample1_unittest-framework";
+		};
+		E2493AE411B99C4C00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 40C84997101A36A60083642A /* sample1_unittest-static */;
+			remoteInfo = "sample1_unittest-static";
+		};
 		E270C22A11A1CD80006F3C08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E270C22611A1CD80006F3C08 /* Juce.xcodeproj */;
@@ -59,9 +111,8 @@
 		C6859E8B029090EE04C91782 /* unit-tests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "unit-tests.1"; sourceTree = "<group>"; };
 		E22A40E4118625AF007293B2 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		E231FBCE11B8C4C0001152B6 /* Reader_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader_main.cpp; sourceTree = "<group>"; };
-		E2493A5F11B97D6B00C5B2DC /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = libraries/mpg123/mac/Release/mpg123/libmpg123.a; sourceTree = "<group>"; };
-		E2493A9411B9869800C5B2DC /* libgtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest.a; path = libraries/gtest/mac/Debug/libgtest.a; sourceTree = "<group>"; };
-		E2493A9811B9871D00C5B2DC /* libgtest_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest_main.a; path = libraries/gtest/mac/Debug/libgtest_main.a; sourceTree = "<group>"; };
+		E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = "../gtest-1.5.0/xcode/gtest.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		E2493AEB11B99CBF00C5B2DC /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../mpg123-1.12.1/lib/mac/Release/lib/libmpg123.a"; sourceTree = SOURCE_ROOT; };
 		E25FC6C7116A407700FCB21D /* unit-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "unit-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E25FCB0B116BAE2E00FCB21D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
@@ -145,6 +196,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2493AE611B99C6300C5B2DC /* gtest.framework in Frameworks */,
+				E2493AE711B99C6300C5B2DC /* libgtest.a in Frameworks */,
+				E2493AE811B99C6300C5B2DC /* libgtest_main.a in Frameworks */,
 				E270C26B11A1CD9D006F3C08 /* libjuce.a in Frameworks */,
 				E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */,
 				E25FCB16116BAE2E00FCB21D /* Carbon.framework in Frameworks */,
@@ -157,7 +211,7 @@
 				E25FCB1D116BAE2E00FCB21D /* QuartzCore.framework in Frameworks */,
 				E25FCB1E116BAE2E00FCB21D /* QTKit.framework in Frameworks */,
 				E25FCB1F116BAE2E00FCB21D /* QuickTime.framework in Frameworks */,
-				E2493A6011B97D6B00C5B2DC /* libmpg123.a in Frameworks */,
+				E2493AEC11B99CBF00C5B2DC /* libmpg123.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +221,8 @@
 		08FB7794FE84155DC02AAC07 /* unit-tests */ = {
 			isa = PBXGroup;
 			children = (
-				E2493A5F11B97D6B00C5B2DC /* libmpg123.a */,
+				E2493AEB11B99CBF00C5B2DC /* libmpg123.a */,
+				E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */,
 				E270C22611A1CD80006F3C08 /* Juce.xcodeproj */,
 				E25FCB09116BAE2E00FCB21D /* Frameworks */,
 				08FB7795FE84155DC02AAC07 /* Source */,
@@ -180,7 +235,6 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E2493A9811B9871D00C5B2DC /* libgtest_main.a */,
 				E26F7BCE119F18FF00F5D4CF /* ammf_scaler */,
 				E29594C5117D60870078881F /* json */,
 				E25FCE94116BB6FC00FCB21D /* audio */,
@@ -206,10 +260,23 @@
 			name = Documentation;
 			sourceTree = "<group>";
 		};
+		E2493ACA11B99C4C00C5B2DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2493AD911B99C4C00C5B2DC /* gtest.framework */,
+				E2493ADB11B99C4C00C5B2DC /* libgtest.a */,
+				E2493ADD11B99C4C00C5B2DC /* libgtest_main.a */,
+				E2493ADF11B99C4C00C5B2DC /* gtest_unittest-framework */,
+				E2493AE111B99C4C00C5B2DC /* gtest_unittest */,
+				E2493AE311B99C4C00C5B2DC /* sample1_unittest-framework */,
+				E2493AE511B99C4C00C5B2DC /* sample1_unittest-static */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E25FCB09116BAE2E00FCB21D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E2493A9411B9869800C5B2DC /* libgtest.a */,
 				E25FCB0A116BAE2E00FCB21D /* Cocoa.framework */,
 				E25FCB0B116BAE2E00FCB21D /* Carbon.framework */,
 				E25FCB0C116BAE2E00FCB21D /* IOKit.framework */,
@@ -393,6 +460,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = E2493ACA11B99C4C00C5B2DC /* Products */;
+					ProjectRef = E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */;
+				},
+				{
 					ProductGroup = E270C22711A1CD80006F3C08 /* Products */;
 					ProjectRef = E270C22611A1CD80006F3C08 /* Juce.xcodeproj */;
 				},
@@ -405,6 +476,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		E2493AD911B99C4C00C5B2DC /* gtest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = gtest.framework;
+			remoteRef = E2493AD811B99C4C00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2493ADB11B99C4C00C5B2DC /* libgtest.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libgtest.a;
+			remoteRef = E2493ADA11B99C4C00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2493ADD11B99C4C00C5B2DC /* libgtest_main.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libgtest_main.a;
+			remoteRef = E2493ADC11B99C4C00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2493ADF11B99C4C00C5B2DC /* gtest_unittest-framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "gtest_unittest-framework";
+			remoteRef = E2493ADE11B99C4C00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2493AE111B99C4C00C5B2DC /* gtest_unittest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = gtest_unittest;
+			remoteRef = E2493AE011B99C4C00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2493AE311B99C4C00C5B2DC /* sample1_unittest-framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "sample1_unittest-framework";
+			remoteRef = E2493AE211B99C4C00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E2493AE511B99C4C00C5B2DC /* sample1_unittest-static */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "sample1_unittest-static";
+			remoteRef = E2493AE411B99C4C00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E270C22B11A1CD80006F3C08 /* libjuce.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -481,6 +601,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/libraries/mpg123/mac/Release/mpg123\"",
 					"\"$(SRCROOT)/libraries/gtest/mac/Debug\"",
+					"\"$(SRCROOT)/../mpg123-1.12.1/lib/mac/Release/lib\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";
@@ -531,6 +652,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/libraries/mpg123/mac/Release/mpg123\"",
 					"\"$(SRCROOT)/libraries/gtest/mac/Debug\"",
+					"\"$(SRCROOT)/../mpg123-1.12.1/lib/mac/Release/lib\"",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "unit-tests";
