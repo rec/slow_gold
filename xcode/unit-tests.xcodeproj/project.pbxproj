@@ -110,7 +110,6 @@
 /* Begin PBXFileReference section */
 		C6859E8B029090EE04C91782 /* unit-tests.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "unit-tests.1"; sourceTree = "<group>"; };
 		E22A40E4118625AF007293B2 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
-		E231FBCE11B8C4C0001152B6 /* Reader_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader_main.cpp; sourceTree = "<group>"; };
 		E2493AC911B99C4C00C5B2DC /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = "../../gtest-1.5.0/xcode/gtest.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		E2493AEB11B99CBF00C5B2DC /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../../mpg123-1.12.1/lib/mac/Release/lib/libmpg123.a"; sourceTree = SOURCE_ROOT; };
 		E25FC6C7116A407700FCB21D /* unit-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "unit-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,7 +408,6 @@
 			children = (
 				E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */,
 				E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */,
-				E231FBCE11B8C4C0001152B6 /* Reader_main.cpp */,
 				E2F0DE2811B81DA40025C1B3 /* CreateReader.h */,
 				E2F0DE4911B829A80025C1B3 /* Tags.h */,
 				E2F0DE4A11B829A80025C1B3 /* Tags.cpp */,

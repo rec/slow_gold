@@ -11,7 +11,7 @@
 
 using rec::audio::format::mpg123::Format;
 
-int main(int argc, char *argv[]) {
+int readerMain(int argc, char * const argv[]) {
   if (argc != 3) {
     std::cerr << argv[0] << " Usage: Reader filein fileout\n";
     return -1;
