@@ -11,61 +11,65 @@
 
 using rec::audio::format::mpg123::Format;
 
-int readerMain(int argc, char * const argv[]) {
-  if (argc != 3) {
+int main(int argc, char * const argv[]) {
+  if (argc > 3) {
     std::cerr << argv[0] << " Usage: Reader filein fileout\n";
     return -1;
   }
 
-  File infile(argv[1]);
+  const char* inName = (argc > 1) ? argv[1] : "../../../data/test1.mp3";
+
+  File infile(inName);
   if (!infile.exists()) {
-    std::cerr << "File " << argv[1] << " doesn't exist\n";
+    std::cerr << "File " << inName << " doesn't exist\n";
     return -1;
   }
 
   InputStream* in = infile.createInputStream();
   if (!in) {
-    std::cerr << "Couldn't open input stream for " << argv[1] << "\n";
+    std::cerr << "Couldn't open input stream for " << inName << "\n";
     return -1;
   }
 
   scoped_ptr<AudioFormatReader> reader(Format().createReaderFor(in, true));
   if (!reader) {
-    std::cerr << "File " << argv[1] << " doesn't seem to be an mp3 file\n";
+    std::cerr << "File " << inName << " doesn't seem to be an mp3 file\n";
     return -1;
   }
 
-  File outfile(argv[2]);
+  const char* outName = (argc > 2) ? argv[2] : "../../../data/test1.wav";
+  
+  File outfile(outName);
   if (outfile.exists()) {
     if (!outfile.deleteFile())
-      std::cerr << "File " << argv[2] << " couldn't be deleted.\n";
+      std::cerr << "File " << outName << " couldn't be deleted.\n";
     return -1;
   }
 
   OutputStream* outStream = outfile.createOutputStream();
   if (!outStream) {
-    std::cerr << "Couldn't open output stream for " << argv[2] << "\n";
+    std::cerr << "Couldn't open output stream for " << outName << "\n";
     return -1;
   }
 
   scoped_ptr<AudioFormatWriter> writer(
       WavAudioFormat().createWriterFor(outStream,
-                                       reader->numChannels,
                                        reader->sampleRate,
+                                       reader->numChannels,
                                        reader->bitsPerSample,
                                        reader->metadataValues,
                                        0));
 
   if (!writer) {
-    std::cerr << "Couldn't open writer for " << argv[2] << "\n";
+    std::cerr << "Couldn't open writer for " << outName << "\n";
     return -1;
   }
 
   if (!writer->writeFromAudioReader(*reader, 0, reader->lengthInSamples)) {
-    std::cerr << "Couldn't write for " << argv[2] << "\n";
+    std::cerr << "Couldn't write for " << outName << "\n";
     return -1;
   }
 
-  std::cout << "Wrote " << argv[1] << " to " << argv[2] << "\n";
+  std::cout << "Wrote " << argv[1] << " to " << outName << "\n";
   return 0;
 }

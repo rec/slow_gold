@@ -2,23 +2,15 @@
 
 #include <gtest/gtest.h>
 
-#include "juce_amalgamated.h"
-#include "rec/audio/format/mpg123/CreateReader.h"
-#include "rec/audio/format/mpg123/Mpg123.h"
+#include "rec/audio/format/mpg123/TestReader.h"
 
 namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
 
-static const char* FILENAME = "../../../data/sin-stereo-64-tags-324-mono.mp3";
-
 TEST(CreateReader, Create) {
-  File file(FILENAME);
-  ASSERT_TRUE(file.exists());
-  InputStream* in = FileInputSource(file).createInputStream();
-  AudioFormatReader* reader = NULL;
-  ASSERT_TRUE(!createReader(in, &reader));
+  AudioFormatReader *reader = createTestReader();
   ASSERT_FALSE(!reader);
   StringPairArray& data = reader->metadataValues;
 

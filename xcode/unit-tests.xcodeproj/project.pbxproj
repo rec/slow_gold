@@ -187,7 +187,6 @@
 		E2F0DE2811B81DA40025C1B3 /* CreateReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReader.h; sourceTree = "<group>"; };
 		E2F0DE4911B829A80025C1B3 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
 		E2F0DE4A11B829A80025C1B3 /* Tags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tags.cpp; sourceTree = "<group>"; };
-		E2F0DE9D11B8424B0025C1B3 /* Reader_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader_main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,7 +417,6 @@
 				E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */,
 				E2B1964011B21B8E009C4C13 /* Mpg123.h */,
 				E2B1964111B21B8E009C4C13 /* NewHandle.cpp */,
-				E2F0DE9D11B8424B0025C1B3 /* Reader_main.cpp */,
 				E2B1964211B21B8E009C4C13 /* NewHandle.h */,
 				E2B1964311B21B8E009C4C13 /* Reader.cpp */,
 				E2B1964411B21B8E009C4C13 /* Reader.h */,
@@ -573,12 +571,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/Users/tom/Documents/development/mpg123/src,
-					/Users/tom/Documents/development/rec,
-					/Users/tom/Documents/development/juce/src,
-					/Users/tom/Documents/development/juce,
-					/Users/tom/Documents/development/rec/src,
-					/Users/tom/Documents/development/gtest/include,
+					../../mpg123/src,
+					../../rec,
+					../../juce/src,
+					../../juce,
+					../../rec/src,
+					../../gtest/include,
 				);
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
@@ -622,12 +620,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/Users/tom/Documents/development/mpg123/src,
-					/Users/tom/Documents/development/rec,
-					/Users/tom/Documents/development/juce/src,
-					/Users/tom/Documents/development/juce,
-					/Users/tom/Documents/development/rec/src,
-					/Users/tom/Documents/development/gtest/include,
+					../../mpg123/src,
+					../../rec,
+					../../juce/src,
+					../../juce,
+					../../rec/src,
+					../../gtest/include,
 				);
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
