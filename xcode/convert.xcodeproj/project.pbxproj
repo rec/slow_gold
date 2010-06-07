@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E2493D7211BD662800C5B2DC /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2493D6411BD662800C5B2DC /* Tags.cpp */; };
+		E2493D7311BD662800C5B2DC /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2493D6611BD662800C5B2DC /* Reader.cpp */; };
+		E2493D7411BD662800C5B2DC /* Reader_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2493D6711BD662800C5B2DC /* Reader_main.cpp */; };
+		E2493D7511BD662800C5B2DC /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2493D6911BD662800C5B2DC /* NewHandle.cpp */; };
+		E2493D7611BD662800C5B2DC /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2493D6B11BD662800C5B2DC /* Mpg123.cpp */; };
+		E2493D7711BD662800C5B2DC /* CreateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2493D6E11BD662800C5B2DC /* CreateReader.cpp */; };
+		E2493D7811BD662800C5B2DC /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2493D7011BD662800C5B2DC /* Copier.cpp */; };
+		E2493DAD11BD669D00C5B2DC /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493DAC11BD669D00C5B2DC /* libmpg123.a */; };
+		E2493DEA11BD68A900C5B2DC /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493DB311BD66AC00C5B2DC /* libjuce.a */; };
+		E2493DF511BD690F00C5B2DC /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2493DF411BD690F00C5B2DC /* CoreMIDI.framework */; };
+		E24940BB11BD697000C5B2DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B111BD697000C5B2DC /* Cocoa.framework */; };
+		E24940BC11BD697000C5B2DC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B211BD697000C5B2DC /* Carbon.framework */; };
+		E24940BD11BD697000C5B2DC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B311BD697000C5B2DC /* IOKit.framework */; };
+		E24940BE11BD697000C5B2DC /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B411BD697000C5B2DC /* CoreAudio.framework */; };
+		E24940BF11BD697000C5B2DC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B511BD697000C5B2DC /* WebKit.framework */; };
+		E24940C011BD697000C5B2DC /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B611BD697000C5B2DC /* DiscRecording.framework */; };
+		E24940C111BD697000C5B2DC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B711BD697000C5B2DC /* OpenGL.framework */; };
+		E24940C211BD697000C5B2DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B811BD697000C5B2DC /* QuartzCore.framework */; };
+		E24940C311BD697000C5B2DC /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940B911BD697000C5B2DC /* QTKit.framework */; };
+		E24940C411BD697000C5B2DC /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24940BA11BD697000C5B2DC /* QuickTime.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E2493DB211BD66AC00C5B2DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2493DAE11BD66AC00C5B2DC /* Juce.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 389351359BA78C682E1931A6;
+			remoteInfo = Juce;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8DD76F6C0486A84900D96B5E /* convert */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = convert; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2493D6311BD662800C5B2DC /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
+		E2493D6411BD662800C5B2DC /* Tags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tags.cpp; path = ../src/rec/audio/format/mpg123/Tags.cpp; sourceTree = SOURCE_ROOT; };
+		E2493D6511BD662800C5B2DC /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reader.h; path = ../src/rec/audio/format/mpg123/Reader.h; sourceTree = SOURCE_ROOT; };
+		E2493D6611BD662800C5B2DC /* Reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Reader.cpp; path = ../src/rec/audio/format/mpg123/Reader.cpp; sourceTree = SOURCE_ROOT; };
+		E2493D6711BD662800C5B2DC /* Reader_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Reader_main.cpp; path = ../src/rec/audio/format/mpg123/Reader_main.cpp; sourceTree = SOURCE_ROOT; };
+		E2493D6811BD662800C5B2DC /* NewHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewHandle.h; path = ../src/rec/audio/format/mpg123/NewHandle.h; sourceTree = SOURCE_ROOT; };
+		E2493D6911BD662800C5B2DC /* NewHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NewHandle.cpp; path = ../src/rec/audio/format/mpg123/NewHandle.cpp; sourceTree = SOURCE_ROOT; };
+		E2493D6A11BD662800C5B2DC /* Mpg123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mpg123.h; path = ../src/rec/audio/format/mpg123/Mpg123.h; sourceTree = SOURCE_ROOT; };
+		E2493D6B11BD662800C5B2DC /* Mpg123.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mpg123.cpp; path = ../src/rec/audio/format/mpg123/Mpg123.cpp; sourceTree = SOURCE_ROOT; };
+		E2493D6C11BD662800C5B2DC /* Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Format.h; path = ../src/rec/audio/format/mpg123/Format.h; sourceTree = SOURCE_ROOT; };
+		E2493D6D11BD662800C5B2DC /* CreateReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateReader.h; path = ../src/rec/audio/format/mpg123/CreateReader.h; sourceTree = SOURCE_ROOT; };
+		E2493D6E11BD662800C5B2DC /* CreateReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CreateReader.cpp; path = ../src/rec/audio/format/mpg123/CreateReader.cpp; sourceTree = SOURCE_ROOT; };
+		E2493D6F11BD662800C5B2DC /* Copier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Copier.h; path = ../src/rec/audio/format/mpg123/Copier.h; sourceTree = SOURCE_ROOT; };
+		E2493D7011BD662800C5B2DC /* Copier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Copier.cpp; path = ../src/rec/audio/format/mpg123/Copier.cpp; sourceTree = SOURCE_ROOT; };
+		E2493DAC11BD669D00C5B2DC /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../../mpg123-1.12.1/lib/mac/Release/lib/libmpg123.a"; sourceTree = SOURCE_ROOT; };
+		E2493DAE11BD66AC00C5B2DC /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../juce/Builds/MacOSX/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E2493DF411BD690F00C5B2DC /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
+		E24940B111BD697000C5B2DC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		E24940B211BD697000C5B2DC /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		E24940B311BD697000C5B2DC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		E24940B411BD697000C5B2DC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		E24940B511BD697000C5B2DC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		E24940B611BD697000C5B2DC /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = /System/Library/Frameworks/DiscRecording.framework; sourceTree = "<absolute>"; };
+		E24940B711BD697000C5B2DC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E24940B811BD697000C5B2DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		E24940B911BD697000C5B2DC /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E24940BA11BD697000C5B2DC /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2493DEA11BD68A900C5B2DC /* libjuce.a in Frameworks */,
+				E2493DAD11BD669D00C5B2DC /* libmpg123.a in Frameworks */,
+				E2493DF511BD690F00C5B2DC /* CoreMIDI.framework in Frameworks */,
+				E24940BB11BD697000C5B2DC /* Cocoa.framework in Frameworks */,
+				E24940BC11BD697000C5B2DC /* Carbon.framework in Frameworks */,
+				E24940BD11BD697000C5B2DC /* IOKit.framework in Frameworks */,
+				E24940BE11BD697000C5B2DC /* CoreAudio.framework in Frameworks */,
+				E24940BF11BD697000C5B2DC /* WebKit.framework in Frameworks */,
+				E24940C011BD697000C5B2DC /* DiscRecording.framework in Frameworks */,
+				E24940C111BD697000C5B2DC /* OpenGL.framework in Frameworks */,
+				E24940C211BD697000C5B2DC /* QuartzCore.framework in Frameworks */,
+				E24940C311BD697000C5B2DC /* QTKit.framework in Frameworks */,
+				E24940C411BD697000C5B2DC /* QuickTime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* convert */ = {
+			isa = PBXGroup;
+			children = (
+				E2493DAC11BD669D00C5B2DC /* libmpg123.a */,
+				E2493DAE11BD66AC00C5B2DC /* Juce.xcodeproj */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = convert;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E2493DF411BD690F00C5B2DC /* CoreMIDI.framework */,
+				E2493D6311BD662800C5B2DC /* Tags.h */,
+				E2493D6411BD662800C5B2DC /* Tags.cpp */,
+				E2493D6511BD662800C5B2DC /* Reader.h */,
+				E2493D6611BD662800C5B2DC /* Reader.cpp */,
+				E2493D6711BD662800C5B2DC /* Reader_main.cpp */,
+				E2493D6811BD662800C5B2DC /* NewHandle.h */,
+				E2493D6911BD662800C5B2DC /* NewHandle.cpp */,
+				E2493D6A11BD662800C5B2DC /* Mpg123.h */,
+				E2493D6B11BD662800C5B2DC /* Mpg123.cpp */,
+				E2493D6C11BD662800C5B2DC /* Format.h */,
+				E24940B111BD697000C5B2DC /* Cocoa.framework */,
+				E24940B211BD697000C5B2DC /* Carbon.framework */,
+				E24940B311BD697000C5B2DC /* IOKit.framework */,
+				E24940B411BD697000C5B2DC /* CoreAudio.framework */,
+				E24940B511BD697000C5B2DC /* WebKit.framework */,
+				E24940B611BD697000C5B2DC /* DiscRecording.framework */,
+				E24940B711BD697000C5B2DC /* OpenGL.framework */,
+				E24940B811BD697000C5B2DC /* QuartzCore.framework */,
+				E24940B911BD697000C5B2DC /* QTKit.framework */,
+				E24940BA11BD697000C5B2DC /* QuickTime.framework */,
+				E2493D6D11BD662800C5B2DC /* CreateReader.h */,
+				E2493D6E11BD662800C5B2DC /* CreateReader.cpp */,
+				E2493D6F11BD662800C5B2DC /* Copier.h */,
+				E2493D7011BD662800C5B2DC /* Copier.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* convert */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		E2493DAF11BD66AC00C5B2DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2493DB311BD66AC00C5B2DC /* libjuce.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* convert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "convert" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = convert;
+			productInstallPath = "$(HOME)/bin";
+			productName = convert;
+			productReference = 8DD76F6C0486A84900D96B5E /* convert */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "convert" */;
+			compatibilityVersion = "Xcode 3.0";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* convert */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E2493DAF11BD66AC00C5B2DC /* Products */;
+					ProjectRef = E2493DAE11BD66AC00C5B2DC /* Juce.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* convert */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E2493DB311BD66AC00C5B2DC /* libjuce.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjuce.a;
+			remoteRef = E2493DB211BD66AC00C5B2DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2493D7211BD662800C5B2DC /* Tags.cpp in Sources */,
+				E2493D7311BD662800C5B2DC /* Reader.cpp in Sources */,
+				E2493D7411BD662800C5B2DC /* Reader_main.cpp in Sources */,
+				E2493D7511BD662800C5B2DC /* NewHandle.cpp in Sources */,
+				E2493D7611BD662800C5B2DC /* Mpg123.cpp in Sources */,
+				E2493D7711BD662800C5B2DC /* CreateReader.cpp in Sources */,
+				E2493D7811BD662800C5B2DC /* Copier.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../mpg123-1.12.1/lib/mac/Debug/lib\"",
+				);
+				PRODUCT_NAME = convert;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../mpg123-1.12.1/lib/mac/Release/lib\"",
+				);
+				PRODUCT_NAME = convert;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../../mpg123/src,
+					../../rec,
+					../../juce/src,
+					../../juce,
+					../../rec/src,
+					../../gtest/include,
+				);
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "convert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "convert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
