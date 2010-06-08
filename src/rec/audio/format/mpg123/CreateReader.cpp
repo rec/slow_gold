@@ -9,10 +9,29 @@ namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
+namespace {
+
+Error setFormat(mpg123_handle* mh,
+                OutputFormat* begin,
+                OutputFormat* end) {
+  if (begin != end) {
+    if (Error e = mpg123_format_none(mh))
+      return e;
+
+    for (OutputFormat* i = begin; i != end; ++i) {
+      if (Error e = mpg123_format(mh, i->rate_, i->channels_, i->encoding_))
+        return e;
+    }
+  }
+  return MPG123_OK;
+}
+
+}  // namespace
 
 Error createReader(InputStream* in,
                    AudioFormatReader** reader,
-                   Prescan prescan) {
+                   OutputFormat* begin,
+                   OutputFormat* end) {
   mpg123_handle *mh = NULL;
 
   long sampleRate;
@@ -22,12 +41,12 @@ Error createReader(InputStream* in,
 
   Error e;
   if ((e = newHandle(in, &mh)) ||
-      (e = prescan(mh)) ||
+      (e = setFormat(mh, begin, end)) ||
       (e = mpg123_scan(mh)) ||
       (e = mpg123_getformat(mh, &sampleRate, &numChannels, &encoding)) ||
       !(bitsPerSample = getBitsPerSample(encoding)) ||
       !(copier = getCopier(encoding)) ||
-      numChannels > MPG123_STEREO) {
+      numChannels > MPG123_STEREO) {  // Failure.
     mpg123_delete(mh);
 
   } else {
@@ -44,15 +63,6 @@ Error createReader(InputStream* in,
 
   return e;
 }
-
-Error int_32_44100_prescan(mpg123_handle* mh) {
-  Error e;
-  (e = mpg123_format_none(mh)) ||
-    (e = mpg123_format(mh, 44100, MPG123_STEREO, MPG123_ENC_SIGNED_32));
-  return e;
-}
-
-Error empty_prescan(mpg123_handle* mh) { return MPG123_OK; }
 
 }  // namespace mpg123
 }  // namespace format

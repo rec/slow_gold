@@ -12,18 +12,20 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-// A prescan function is called after the mpg123_handle is created but before
-// it scans the file.  Use this opportunity to do things like setting which
-// format we accept.
-typedef Error (*Prescan)(mpg123_handle* mh);
+// Represents a specific rate/channel/encoding we accept.
+struct OutputFormat {
+  long rate_;
+  int channels_;
+  mpg123_enc_enum encoding_;
+};
 
-Error empty_prescan(mpg123_handle* mh);
-Error int_32_44100_prescan(mpg123_handle* mh);
-
-// Create a reader from an InputStream, or return an error.
+// Create a reader from an InputStream, or return an error.  begin/end form a
+// list of OutputFormats that we want to accept - if they're NULL, or the same,
+// we accept all formats.
 Error createReader(InputStream* sourceStream,
                    AudioFormatReader** reader,
-                   Prescan prescan = int_32_44100_prescan);
+                   OutputFormat* begin = NULL,
+                   OutputFormat* end = NULL);
 
 }  // namespace mpg123
 }  // namespace format

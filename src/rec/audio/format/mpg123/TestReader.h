@@ -5,24 +5,26 @@
 #include "io/streams/juce_InputStream.h"
 #include "audio/audio_file_formats/juce_AudioFormat.h"
 #include "rec/audio/format/mpg123/CreateReader.h"
+#include "rec/audio/format/mpg123/Format.h"
+#include "rec/base/scoped_ptr.h"
 
 namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
 
-inline AudioFormatReader* createTestReader() {
-  static const char* FILENAME = "../../../data/test1.mp3";
-  AudioFormatReader* reader = NULL;
-  File file(FILENAME);
+static const char* FILENAME = "../../../data/test1.";
+
+inline AudioFormatReader* createTestReader(const String& suffix) {
+  File file(FILENAME + suffix);
   if (file.exists()) {
-    InputStream* in = FileInputSource(file).createInputStream();
-    if (createReader(in, &reader)) {
-      jassert(!reader);
-    }
+    AudioFormatManager formatManager;
+    formatManager.registerBasicFormats();
+    formatManager.registerFormat(new Format(), false);
+    return formatManager.createReaderFor(file);
   }
 
-  return reader;
+  return NULL;
 }
 
 }  // namespace mpg123

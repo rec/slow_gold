@@ -29,7 +29,7 @@ class Reader : public AudioFormatReader {
  private:
   Reader(InputStream* in, const String& name, mpg123_handle* mh, Copier copier);
 
-  friend Error createReader(InputStream*, AudioFormatReader**, Prescan);
+  friend Error createReader(InputStream*, AudioFormatReader**, OutputFormat*, OutputFormat*);
 
 	mpg123_handle* mh_;
   void* buffer_;

@@ -10,7 +10,7 @@ namespace format {
 namespace mpg123 {
 
 TEST(CreateReader, Create) {
-  AudioFormatReader *reader = createTestReader();
+  AudioFormatReader *reader = createTestReader("mp3");
   ASSERT_FALSE(!reader);
   StringPairArray& data = reader->metadataValues;
 
