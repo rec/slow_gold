@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_MATH
 #define __REC_UTIL_MATH
 
-#include "rec/base/basictypes.h"
+#include "rec/base/types.h"
 
 namespace rec {
 namespace util {

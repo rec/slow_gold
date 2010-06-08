@@ -1,7 +1,7 @@
 #ifndef __REC_TIME_SCALER
 #define __REC_TIME_SCALER
 
-#include "rec/base/basictypes.h"
+#include "rec/base/disallow.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {

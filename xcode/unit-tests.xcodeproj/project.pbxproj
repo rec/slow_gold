@@ -42,6 +42,7 @@
 		E2B1965111B21B8E009C4C13 /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1963F11B21B8E009C4C13 /* Mpg123.cpp */; };
 		E2B1965211B21B8E009C4C13 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964111B21B8E009C4C13 /* NewHandle.cpp */; };
 		E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964311B21B8E009C4C13 /* Reader.cpp */; };
+		E2BF115A11BECD6400400126 /* Reader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF115911BECD6400400126 /* Reader_test.cpp */; };
 		E2CFC63511B45D6000CC265E /* Copier_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2CFC63411B45D6000CC265E /* Copier_test.cpp */; };
 		E2F0DE2911B81DA40025C1B3 /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */; };
 		E2F0DE2A11B81DA40025C1B3 /* CreateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */; };
@@ -181,6 +182,7 @@
 		E2B1964311B21B8E009C4C13 /* Reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader.cpp; sourceTree = "<group>"; };
 		E2B1964411B21B8E009C4C13 /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reader.h; sourceTree = "<group>"; };
 		E2B2F6111171255400D0C002 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
+		E2BF115911BECD6400400126 /* Reader_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader_test.cpp; sourceTree = "<group>"; };
 		E2CFC63411B45D6000CC265E /* Copier_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Copier_test.cpp; sourceTree = "<group>"; };
 		E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader_test.cpp; sourceTree = "<group>"; };
 		E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader.cpp; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */,
 				E2F0DE2811B81DA40025C1B3 /* CreateReader.h */,
 				E2F0DE4911B829A80025C1B3 /* Tags.h */,
+				E2BF115911BECD6400400126 /* Reader_test.cpp */,
 				E2F0DE4A11B829A80025C1B3 /* Tags.cpp */,
 				E2B1963C11B21B8E009C4C13 /* Copier.cpp */,
 				E2B1963D11B21B8E009C4C13 /* Copier.h */,
@@ -558,6 +561,7 @@
 				E2F0DE2911B81DA40025C1B3 /* CreateReader_test.cpp in Sources */,
 				E2F0DE2A11B81DA40025C1B3 /* CreateReader.cpp in Sources */,
 				E2F0DE4B11B829A80025C1B3 /* Tags.cpp in Sources */,
+				E2BF115A11BECD6400400126 /* Reader_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

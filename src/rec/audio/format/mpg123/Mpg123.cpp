@@ -1,5 +1,6 @@
 #include "juce_amalgamated.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
+#include "rec/audio/format/mpg123/Format.h"
 
 namespace rec {
 namespace audio {
@@ -86,6 +87,20 @@ int getBitsPerSample(int encoding) {
 
 String getTranslatedName() {
   return TRANS("MP3 Audio file");
+}
+
+static AudioFormatManager* getAFMInitialized() {
+  AudioFormatManager* afm = AudioFormatManager::getInstance();
+  afm->registerBasicFormats();
+  afm->registerFormat(new Format(), false);
+
+  return afm;
+}
+
+// Get the default audio format manager and make sure it knows about mp3s.
+AudioFormatManager* getAudioFormatManager() {
+  static AudioFormatManager* afm = getAFMInitialized();
+  return afm;
 }
 
 }  // namespace mpg123

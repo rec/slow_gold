@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 
 #include "rec/json/Parser.h"
+#include "rec/base/ArraySize.h"
+#include "rec/base/types.h"
 
 namespace tinyjson {
 

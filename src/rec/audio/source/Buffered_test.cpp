@@ -2,6 +2,7 @@
 #include "rec/audio/source/Identity.h"
 #include "rec/audio/source/Mock.h"
 #include "rec/audio/source/TestHarness.h"
+#include "rec/base/ArraySize.h"
 
 namespace rec {
 namespace audio {

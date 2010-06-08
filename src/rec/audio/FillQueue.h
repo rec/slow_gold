@@ -3,7 +3,7 @@
 
 #include <string.h>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/disallow.h"
 
 namespace rec {
 namespace audio {

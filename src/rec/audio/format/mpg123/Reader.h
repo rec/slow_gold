@@ -9,7 +9,7 @@
 #include "rec/audio/format/mpg123/Copier.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/audio/format/mpg123/CreateReader.h"
-#include "rec/base/basictypes.h"
+#include "rec/base/disallow.h"
 
 namespace rec {
 namespace audio {

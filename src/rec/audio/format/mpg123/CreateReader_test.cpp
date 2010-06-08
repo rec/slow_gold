@@ -2,15 +2,17 @@
 
 #include <gtest/gtest.h>
 
-#include "rec/audio/format/mpg123/TestReader.h"
+#include "rec/audio/format/mpg123/Mpg123.h"
 
 namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
 
+static const char* FILENAME = "../../../data/test1";
+
 TEST(CreateReader, Create) {
-  AudioFormatReader *reader = createTestReader("mp3");
+  AudioFormatReader *reader = getFileReader(String(FILENAME) + ".mp3");
   ASSERT_FALSE(!reader);
   StringPairArray& data = reader->metadataValues;
 
