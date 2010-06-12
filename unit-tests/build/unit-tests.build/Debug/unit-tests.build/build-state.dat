@@ -1,0 +1,1155 @@
+Tunit-tests
+v7
+r0
+t295410684.683044
+cCheck dependencies
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/FillQueueTest.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/FillQueueTest.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/math_test-B956A95CE730F1C2.o /Users/warren/Repositories/rec/unit-tests/../src/rec/util/math_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser.o /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Stretchable_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Stretchable_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Node.o /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Node.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Loop_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Loop_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/AudioTimeScaler_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/stretch/AudioTimeScaler_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Math_test-E5BF3BDCA2CCEF76.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cLd /Users/warren/Repositories/rec/unit-tests/build/Debug/unit-tests normal i386
+
+N/Developer/SDKs/MacOSX10.5.sdk
+c000000004A49A9E400000000000000EE
+t1246341604
+s238
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
+c00000000486499690000000000000942
+t1214552425
+s2370
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/assert.h
+c0000000047BA99300000000000000DCB
+t1203411248
+s3531
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/ctype.h
+c0000000047BA99310000000000002C3A
+t1203411249
+s11322
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/libkern/OSAtomic.h
+c0000000047BA993000000000000024B9
+t1203411248
+s9401
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/pthread.h
+c0000000047BA9932000000000000380F
+t1203411250
+s14351
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/regex.h
+c0000000047BA9931000000000000154F
+t1203411249
+s5455
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/signal.h
+c0000000047BA993100000000000014F0
+t1203411249
+s5360
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/stdio.h
+c0000000047BA99310000000000003D1D
+t1203411249
+s15645
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/stdlib.h
+c0000000047BA99310000000000002A79
+t1203411249
+s10873
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/string.h
+c0000000047BA99320000000000001731
+t1203411250
+s5937
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/strings.h
+c0000000047BA99300000000000000DA4
+t1203411248
+s3492
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/stat.h
+c0000000047E883D100000000000047CE
+t1206420433
+s18382
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/types.h
+c0000000047E883D2000000000000290F
+t1206420434
+s10511
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/wait.h
+c0000000047E883D3000000000000273C
+t1206420435
+s10044
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/time.h
+c0000000047BA9932000000000000178E
+t1203411250
+s6030
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/unistd.h
+c0000000047BA993200000000000053FF
+t1203411250
+s21503
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h
+c000000004A11EAF10000000000000C7E
+t1242688241
+s3198
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdarg.h
+c000000004A11EAF100000000000010DD
+t1242688241
+s4317
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stddef.h
+c000000004A11EAF10000000000003197
+t1242688241
+s12695
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h
+c000000004A11EAF1000000000000190C
+t1242688241
+s6412
+
+N/System/Library/Frameworks/Carbon.framework/Carbon
+c000000004A7680C1000000000000A5F0
+t1249280193
+s42480
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/System/Library/Frameworks/CoreAudio.framework/CoreAudio
+c000000004AF07A270000000000217030
+t1257273895
+s2191408
+
+N/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
+c000000004A4C40E7000000000015FAD0
+t1246511335
+s1440464
+
+N/System/Library/Frameworks/DiscRecording.framework/DiscRecording
+c000000004AF07CEF00000000003953E0
+t1257274607
+s3757024
+
+N/System/Library/Frameworks/IOKit.framework/IOKit
+c000000004B4FAD1F0000000000172A20
+t1263512863
+s1518112
+
+N/System/Library/Frameworks/OpenGL.framework/OpenGL
+c000000004B6DDF500000000000043300
+t1265491792
+s275200
+
+N/System/Library/Frameworks/QTKit.framework/QTKit
+c000000004B692143000000000066F480
+t1265180995
+s6747264
+
+N/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004B6A77D00000000000CF0BF0
+t1265268688
+s13569008
+
+N/System/Library/Frameworks/QuickTime.framework/QuickTime
+c000000004B69203400000000007838C0
+t1265180724
+s7878848
+
+N/System/Library/Frameworks/WebKit.framework/WebKit
+c000000004B79956C00000000004E46D0
+t1266259308
+s5129936
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest-death-test.h
+c000000004BC762AA0000000000002B48
+t1271358122
+s11080
+i<gtest/internal/gtest-death-test-internal.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest-message.h
+c000000004BC762AA00000000000020AA
+t1271358122
+s8362
+i<limits>
+i<gtest/internal/gtest-string.h>
+i<gtest/internal/gtest-internal.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest-param-test.h
+c000000004BC762AA00000000000123FC
+t1271358122
+s74748
+i<gtest/internal/gtest-port.h>
+i<utility>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-param-util.h>
+i<gtest/internal/gtest-param-util-generated.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest-test-part.h
+c000000004BC762AA0000000000001945
+t1271358122
+s6469
+i<iosfwd>
+i<vector>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-string.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest-typed-test.h
+c000000004BC762AC00000000000027B0
+t1271358124
+s10160
+i<gtest/internal/gtest-port.h>
+i<gtest/internal/gtest-type-util.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest.h
+c000000004BC762AC0000000000013014
+t1271358124
+s77844
+i<limits>
+i<vector>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-string.h>
+i<gtest/gtest-death-test.h>
+i<gtest/gtest-message.h>
+i<gtest/gtest-param-test.h>
+i<gtest/gtest_prod.h>
+i<gtest/gtest-test-part.h>
+i<gtest/gtest-typed-test.h>
+i<gtest/gtest_pred_impl.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest_pred_impl.h
+c000000004BC762AC000000000000390C
+t1271358124
+s14604
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/gtest_prod.h
+c000000004BC762AC0000000000000914
+t1271358124
+s2324
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-death-test-internal.h
+c000000004BC762AA0000000000002E1E
+t1271358122
+s11806
+i<gtest/internal/gtest-internal.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-filepath.h
+c000000004BC762AA00000000000025E1
+t1271358122
+s9697
+i<gtest/internal/gtest-string.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-internal.h
+c000000004BC762AA0000000000008ACC
+t1271358122
+s35532
+i<gtest/internal/gtest-port.h>
+i<stdlib.h>
+i<sys/types.h>
+i<sys/wait.h>
+i<unistd.h>
+i<ctype.h>
+i<string.h>
+i<iomanip>
+i<limits>
+i<set>
+i<gtest/internal/gtest-string.h>
+i<gtest/internal/gtest-filepath.h>
+i<gtest/internal/gtest-type-util.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-linked_ptr.h
+c000000004BC762AA0000000000002072
+t1271358122
+s8306
+i<stdlib.h>
+i<assert.h>
+i<gtest/internal/gtest-port.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-param-util-generated.h
+c000000004BC762AA00000000000294D2
+t1271358122
+s169170
+i<gtest/internal/gtest-param-util.h>
+i<gtest/internal/gtest-port.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-param-util.h
+c000000004BC762AA0000000000005F25
+t1271358122
+s24357
+i<iterator>
+i<utility>
+i<vector>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-linked_ptr.h>
+i<gtest/internal/gtest-port.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-port.h
+c000000004BC762AA000000000000CAA4
+t1271358122
+s51876
+i<stddef.h>
+i<stdlib.h>
+i<stdio.h>
+i<string.h>
+i<sys/stat.h>
+i<iostream>
+i<sstream>
+i<string>
+i<regex.h>
+i<strings.h>
+i<sys/types.h>
+i<time.h>
+i<unistd.h>
+i<direct.h>
+i<io.h>
+i<typeinfo>
+i<gtest/internal/gtest-tuple.h>
+i<tuple>
+i<tr1/tuple>
+i<tr1/tuple>
+i<tuple>
+i<vector>
+i<pthread.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-string.h
+c000000004BC762AA0000000000003509
+t1271358122
+s13577
+i<mem.h>
+i<string.h>
+i<gtest/internal/gtest-port.h>
+i<string>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-tuple.h
+c000000004BC762AA0000000000006DD9
+t1271358122
+s28121
+i<utility>
+
+N/Users/warren/Repositories/gtest-1.5.0/include/gtest/internal/gtest-type-util.h
+c000000004BC762AA000000000002D414
+t1271358122
+s185364
+i<gtest/internal/gtest-port.h>
+i<gtest/internal/gtest-string.h>
+i<cxxabi.h>
+
+N/Users/warren/Repositories/gtest-1.5.0/xcode/build/Debug/gtest.framework/gtest
+c000000004BEB533300000000002B1C90
+t1273713459
+s2825360
+
+N/Users/warren/Repositories/gtest-1.5.0/xcode/build/Debug/libgtest_main.a
+c000000004BEB53240000000000019310
+t1273713444
+s103184
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest-death-test.h
+c000000004BBA01EE0000000000002B48
+t1270481390
+s11080
+i<gtest/internal/gtest-death-test-internal.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest-message.h
+c000000004BBA01EE00000000000020AA
+t1270481390
+s8362
+i<limits>
+i<gtest/internal/gtest-string.h>
+i<gtest/internal/gtest-internal.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest-param-test.h
+c000000004BBA01EE00000000000123FC
+t1270481390
+s74748
+i<gtest/internal/gtest-port.h>
+i<utility>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-param-util.h>
+i<gtest/internal/gtest-param-util-generated.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest-test-part.h
+c000000004BBA01EE0000000000001945
+t1270481390
+s6469
+i<iosfwd>
+i<vector>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-string.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest-typed-test.h
+c000000004BBA01EE00000000000027B0
+t1270481390
+s10160
+i<gtest/internal/gtest-port.h>
+i<gtest/internal/gtest-type-util.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest.h
+c000000004BBA01EE0000000000012D8B
+t1270481390
+s77195
+i<limits>
+i<vector>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-string.h>
+i<gtest/gtest-death-test.h>
+i<gtest/gtest-message.h>
+i<gtest/gtest-param-test.h>
+i<gtest/gtest_prod.h>
+i<gtest/gtest-test-part.h>
+i<gtest/gtest-typed-test.h>
+i<gtest/gtest_pred_impl.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest_pred_impl.h
+c000000004BBA01EE000000000000390C
+t1270481390
+s14604
+
+N/Users/warren/Repositories/gtest/include/gtest/gtest_prod.h
+c000000004BBA01EE0000000000000914
+t1270481390
+s2324
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-death-test-internal.h
+c000000004BBA01EE0000000000002E1E
+t1270481390
+s11806
+i<gtest/internal/gtest-internal.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-filepath.h
+c000000004BBA01EE00000000000025E1
+t1270481390
+s9697
+i<gtest/internal/gtest-string.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-internal.h
+c000000004BBA01EE0000000000008ACC
+t1270481390
+s35532
+i<gtest/internal/gtest-port.h>
+i<stdlib.h>
+i<sys/types.h>
+i<sys/wait.h>
+i<unistd.h>
+i<ctype.h>
+i<string.h>
+i<iomanip>
+i<limits>
+i<set>
+i<gtest/internal/gtest-string.h>
+i<gtest/internal/gtest-filepath.h>
+i<gtest/internal/gtest-type-util.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-linked_ptr.h
+c000000004BBA01EE0000000000002072
+t1270481390
+s8306
+i<stdlib.h>
+i<assert.h>
+i<gtest/internal/gtest-port.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-param-util-generated.h
+c000000004BBA01EE00000000000294D2
+t1270481390
+s169170
+i<gtest/internal/gtest-param-util.h>
+i<gtest/internal/gtest-port.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-param-util.h
+c000000004BBA01EE0000000000005F25
+t1270481390
+s24357
+i<iterator>
+i<utility>
+i<vector>
+i<gtest/internal/gtest-internal.h>
+i<gtest/internal/gtest-linked_ptr.h>
+i<gtest/internal/gtest-port.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-port.h
+c000000004BBA01EE000000000000CAA4
+t1270481390
+s51876
+i<stddef.h>
+i<stdlib.h>
+i<stdio.h>
+i<string.h>
+i<sys/stat.h>
+i<iostream>
+i<sstream>
+i<string>
+i<regex.h>
+i<strings.h>
+i<sys/types.h>
+i<time.h>
+i<unistd.h>
+i<direct.h>
+i<io.h>
+i<typeinfo>
+i<gtest/internal/gtest-tuple.h>
+i<tuple>
+i<tr1/tuple>
+i<tr1/tuple>
+i<tuple>
+i<vector>
+i<pthread.h>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-string.h
+c000000004BBA01EE000000000000349C
+t1270481390
+s13468
+i<string.h>
+i<gtest/internal/gtest-port.h>
+i<string>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-tuple.h
+c000000004BBA01EE0000000000006DD9
+t1270481390
+s28121
+i<utility>
+
+N/Users/warren/Repositories/gtest/include/gtest/internal/gtest-type-util.h
+c000000004BBA01EE000000000002D414
+t1270481390
+s185364
+i<gtest/internal/gtest-port.h>
+i<gtest/internal/gtest-string.h>
+i<cxxabi.h>
+
+N/Users/warren/Repositories/gtest/xcode/build/Debug/gtest.framework/gtest
+c000000004BEB540700000000002B1C90
+t1273713671
+s2825360
+
+N/Users/warren/Repositories/gtest/xcode/build/Debug/libgtest_main.a
+c000000004BEB54020000000000019310
+t1273713666
+s103184
+
+N/Users/warren/Repositories/juce/bin/libjucedebug.a
+c000000004BEB59E10000000004E72E00
+t1273715169
+s82259456
+
+N/Users/warren/Repositories/juce/juce_amalgamated.h
+c000000004BE76CC800000000001DB1D4
+t1273457864
+s1946068
+i<CoreFoundation/CoreFoundation.h>
+i<cstdlib>
+i<cstdarg>
+i<climits>
+i<limits>
+i<cmath>
+i<cwchar>
+i<stdexcept>
+i<typeinfo>
+i<cstring>
+i<cstdio>
+i<iostream>
+i<intrin.h>
+i<libkern/OSAtomic.h>
+i<signal.h>
+i<ia64intrin.h>
+i<ia32intrin.h>
+i<crtdbg.h>
+i<malloc.h>
+
+N/Users/warren/Repositories/rec/ammf/build/Debug/libammf.a
+c000000004BEB4D360000000000014750
+t1273711926
+s83792
+
+N/Users/warren/Repositories/rec/src/rec/ammf_scaler/AudioTimeScaler.h
+c000000004BEB484E0000000000001DEE
+t1273710670
+s7662
+i"hfft.h"
+
+N/Users/warren/Repositories/rec/src/rec/ammf_scaler/hfft.h
+c000000004BEB484E00000000000003EF
+t1273710670
+s1007
+
+N/Users/warren/Repositories/rec/src/rec/audio/FillQueue.h
+c000000004BEB484E000000000000059D
+t1273710670
+s1437
+i<strings.h>
+i"rec/base/basictypes.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/Math.h
+c000000004BEB484E00000000000003F9
+t1273710670
+s1017
+i"juce_amalgamated.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/source/Buffered.h
+c000000004BEB484E0000000000000548
+t1273710670
+s1352
+i<vector>
+i"juce_amalgamated.h"
+i"rec/audio/FillQueue.h"
+i"rec/util/Math.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/source/BufferedWrapper.h
+c000000004BEB484E00000000000003EF
+t1273710670
+s1007
+i"rec/audio/source/Buffered.h"
+i"rec/audio/stretch/TimeScaler.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/source/Identity.h
+c000000004BEB484E00000000000002B4
+t1273710670
+s692
+i"rec/audio/source/BufferedWrapper.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/source/Loop.h
+c000000004BEB484E0000000000000640
+t1273710670
+s1600
+i"juce_amalgamated.h"
+i"rec/audio/FillQueue.h"
+i"rec/util/Math.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/source/Mock.h
+c000000004BEB484E0000000000000389
+t1273710670
+s905
+i"juce_amalgamated.h"
+i"rec/audio/Math.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/source/Stretchable.h
+c000000004BEB484E00000000000006AE
+t1273710670
+s1710
+i"rec/audio/source/BufferedWrapper.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/source/TestHarness.h
+c000000004BEB484E0000000000000BA4
+t1273710670
+s2980
+i"juce_amalgamated.h"
+i"rec/base/scoped_ptr.h"
+i"rec/audio/source/Buffered.h"
+
+N/Users/warren/Repositories/rec/src/rec/audio/stretch/TimeScaler.h
+c000000004BEB484E0000000000000382
+t1273710670
+s898
+i"rec/base/basictypes.h"
+i"rec/ammf_scaler/AudioTimeScaler.h"
+
+N/Users/warren/Repositories/rec/src/rec/base/StringRange.h
+c000000004BEB484E00000000000003DF
+t1273710670
+s991
+i<string.h>
+
+N/Users/warren/Repositories/rec/src/rec/base/basictypes.h
+c000000004BEB484E00000000000035BE
+t1273710670
+s13758
+i<limits.h>
+i<stddef.h>
+i<string.h>
+i"rec/base/port.h"
+i<stdint.h>
+
+N/Users/warren/Repositories/rec/src/rec/base/build_config.h
+c000000004BEB484E0000000000000E62
+t1273710670
+s3682
+
+N/Users/warren/Repositories/rec/src/rec/base/port.h
+c000000004BEB484E000000000000070E
+t1273710670
+s1806
+i<stdarg.h>
+i"rec/base/build_config.h"
+
+N/Users/warren/Repositories/rec/src/rec/base/scoped_ptr.h
+c000000004BEB484E00000000000006A5
+t1273710670
+s1701
+i<stddef.h>
+i"rec/base/basictypes.h"
+
+N/Users/warren/Repositories/rec/src/rec/json/Node.h
+c000000004BEB484E00000000000003B5
+t1273710670
+s949
+i<ctype.h>
+i<string>
+i<vector>
+i"rec/base/StringRange.h"
+
+N/Users/warren/Repositories/rec/src/rec/json/Parser.h
+c000000004BEB484E00000000000002EA
+t1273710670
+s746
+i<ctype.h>
+i<vector>
+i"rec/base/StringRange.h"
+i"rec/base/basictypes.h"
+i"rec/json/Node.h"
+
+N/Users/warren/Repositories/rec/src/rec/util/Math.h
+c000000004BEB484E0000000000000425
+t1273710670
+s1061
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/FillQueueTest.cpp
+c000000004BEB484E00000000000006D2
+t1273710670
+s1746
+i<gtest/gtest.h>
+i"rec/audio/FillQueue.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math.h
+c000000004BEB484E00000000000003F9
+t1273710670
+s1017
+i"juce_amalgamated.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math_test.cpp
+c000000004BEB484E000000000000029A
+t1273710670
+s666
+i<gtest/gtest.h>
+i"rec/audio/Math.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered.cpp
+c000000004BEB484E0000000000000CEA
+t1273710670
+s3306
+i"rec/audio/source/Buffered.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered_test.cpp
+c000000004BEB484E000000000000034A
+t1273710670
+s842
+i<gtest/gtest.h>
+i"rec/audio/source/Identity.h"
+i"rec/audio/source/Mock.h"
+i"rec/audio/source/TestHarness.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Loop_test.cpp
+c000000004BEB484E000000000000047F
+t1273710670
+s1151
+i<gtest/gtest.h>
+i"rec/audio/source/Loop.h"
+i"rec/audio/source/Mock.h"
+i"rec/audio/source/TestHarness.h"
+i"rec/audio/Math.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Stretchable_test.cpp
+c000000004BEB484E00000000000003C3
+t1273710670
+s963
+i<gtest/gtest.h>
+i"rec/audio/source/Stretchable.h"
+i"rec/audio/source/Mock.h"
+i"rec/audio/source/TestHarness.h"
+i"rec/audio/Math.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/stretch/AudioTimeScaler_test.cpp
+c000000004BEB484E0000000000000A54
+t1273710670
+s2644
+i<math.h>
+i<gtest/gtest.h>
+i"rec/audio/Math.h"
+i"rec/ammf_scaler/AudioTimeScaler.h"
+i"rec/audio/stretch/TimeScaler.h"
+i"rec/audio/source/TestHarness.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Node.cpp
+c000000004BEB484E00000000000004B0
+t1273710670
+s1200
+i"rec/json/Node.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser.cpp
+c000000004BEB484E0000000000000CB5
+t1273710670
+s3253
+i"rec/json/Parser.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser_test.cpp
+c000000004BEB484E00000000000010CF
+t1273710670
+s4303
+i<gtest/gtest.h>
+i"rec/json/Parser.h"
+
+N/Users/warren/Repositories/rec/unit-tests/../src/rec/util/math_test.cpp
+c000000004BEB484E0000000000000125
+t1273710670
+s293
+i<gtest/gtest.h>
+i"rec/util/Math.h"
+
+N/Users/warren/Repositories/rec/unit-tests/build/Debug/libjucedebug.a
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/warren/Repositories/rec/unit-tests/build/Debug/unit-tests
+t1273717388
+s4491652
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/AudioTimeScaler_test.o
+t1273712076
+s883036
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered.o
+t1273712066
+s833592
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered_test.o
+t1273712065
+s894552
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/FillQueueTest.o
+t1273712058
+s175244
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Loop_test.o
+t1273712072
+s875280
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Math_test-E5BF3BDCA2CCEF76.o
+t1273712077
+s874340
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Node.o
+t1273712066
+s22236
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser.o
+t1273712059
+s98596
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+t1273712062
+s303476
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Stretchable_test.o
+t1273712071
+s899636
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/math_test-B956A95CE730F1C2.o
+t1273712058
+s147820
+
+N/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/unit-tests.LinkFileList
+c000000004BEB4DB7000000000000055D
+t1273712055
+s1373
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies295410684#295410684#0(0"0(0#1#0"7947009927035180032#0"0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/AudioTimeScaler_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/stretch/AudioTimeScaler_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404871.154917
+e295404876.504957
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/AudioTimeScaler_test.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/stretch/AudioTimeScaler_test.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@99"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/stretch/AudioTimeScaler_test.cpp295404871#295404876#0(0"0(0#0#91"/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/stretch/AudioTimeScaler_test.cpp4300911832#1523"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/stretch/AudioTimeScaler_test.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/AudioTimeScaler_test.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404862.755074
+e295404866.329585
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@86"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered.cpp295404862#295404866#0(0"0(0#0#78"/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered.cpp4300911832#1498"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404859.453884
+e295404865.286959
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered_test.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered_test.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@91"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered_test.cpp295404859#295404865#0(0"0(0#0#83"/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered_test.cpp4300911832#1508"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Buffered_test.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Buffered_test.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/FillQueueTest.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/FillQueueTest.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404855.245276
+e295404859.011980
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/FillQueueTest.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/FillQueueTest.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@84"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/FillQueueTest.cpp295404855#295404859#0(0"0(0#0#76"/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/FillQueueTest.cpp4300911832#1501"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/FillQueueTest.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/FillQueueTest.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Loop_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Loop_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404866.776160
+e295404872.431771
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Loop_test.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Loop_test.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@87"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Loop_test.cpp295404866#295404872#0(0"0(0#0#79"/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Loop_test.cpp4300911832#1500"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Loop_test.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Loop_test.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Math_test-E5BF3BDCA2CCEF76.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404872.431900
+e295404877.428743
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Math_test-E5BF3BDCA2CCEF76.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math_test.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@80"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math_test.cpp295404872#295404877#0(0"0(0#0#72"/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math_test.cpp4300911832#1510"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/Math_test.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Math_test-E5BF3BDCA2CCEF76.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Node.o /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Node.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404866.329713
+e295404866.776019
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Node.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Node.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Node.cpp295404866#295404866#0(0"0(0#0#66"/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Node.cpp4300911832#1482"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Node.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Node.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser.o /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404858.765656
+e295404859.453766
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@76"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser.cpp295404858#295404859#0(0"0(0#0#68"/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser.cpp4300911832#1486"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404859.012107
+e295404862.754514
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser_test.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@81"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser_test.cpp295404859#295404862#0(0"0(0#0#73"/Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser_test.cpp4300911832#1496"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/json/Parser_test.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Stretchable_test.o /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Stretchable_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404865.287184
+e295404871.154642
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Stretchable_test.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Stretchable_test.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@94"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Stretchable_test.cpp295404865#295404871#0(0"0(0#0#86"/Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Stretchable_test.cpp4300911832#1514"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/audio/source/Stretchable_test.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Stretchable_test.o0#
+
+CCompileC build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/math_test-B956A95CE730F1C2.o /Users/warren/Repositories/rec/unit-tests/../src/rec/util/math_test.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s295404855.247509
+e295404858.765409
+r1
+xCompileC
+xbuild/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/math_test-B956A95CE730F1C2.o
+x/Users/warren/Repositories/rec/unit-tests/../src/rec/util/math_test.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@79"Compile /Users/warren/Repositories/rec/unit-tests/../src/rec/util/math_test.cpp295404855#295404858#0(0"0(0#0#71"/Users/warren/Repositories/rec/unit-tests/../src/rec/util/math_test.cpp4300911832#1509"    cd /Users/warren/Repositories/rec/unit-tests    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DNOT_TESTING -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -fvisibility-inlines-hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-generated-files.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-own-target-headers.hmap -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-all-target-headers.hmap -iquote /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/unit-tests-project-headers.hmap -F/Users/warren/Repositories/rec/unit-tests/build/Debug -I/Users/warren/Repositories/rec/unit-tests/build/Debug/include -I../../rec -I../../juce/src -I../../juce -I../../rec/src -I../../gtest/include -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources/i386 -I/Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/DerivedSources -c /Users/warren/Repositories/rec/unit-tests/../src/rec/util/math_test.cpp -o /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/math_test-B956A95CE730F1C2.o0#
+
+CLd /Users/warren/Repositories/rec/unit-tests/build/Debug/unit-tests normal i386
+s295410187.022292
+e295410188.096794
+r1
+xLd
+x/Users/warren/Repositories/rec/unit-tests/build/Debug/unit-tests
+xnormal
+xi386
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_String.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Thread.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioSampleBuffer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_mac_NativeCode.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PopupMenu.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ColourGradient.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioIODevice.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Time.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Image.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Component.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StringArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_CharacterFunctions.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MessageManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_File.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BitArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiOutput.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Path.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BorderSize.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AffineTransform.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_SystemStats.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Timer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentPeer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RectangleList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ModifierKeys.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseInputSource.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_OpenGLComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseCursor.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Font.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Colour.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DeletedAtShutdown.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiMessage.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyPressMappingSet.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioFormat.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioIODeviceType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Typeface.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Application.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Logger.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Random.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BufferedInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FillType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Desktop.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryBlock.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MenuBarModel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LowLevelGraphicsSoftwareRenderer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Graphics.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentMovementWatcher.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PNGLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandTarget.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Message.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GZIPDecompressorInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_InputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ActionListenerList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_NamedValueSet.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_EdgeTable.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PathIterator.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_OutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_XmlElement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyPress.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LookAndFeel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Justification.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GlyphArrangement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyboardFocusTraverser.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Variant.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiBuffer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AsyncUpdater.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PathStrokeType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandInfo.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Colours.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseEvent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RectanglePlacement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MessageListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GZIPCompressorOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TopLevelWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ChangeBroadcaster.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TemporaryFile.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DragAndDropContainer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StringPairArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LocalisedStrings.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Button.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ChangeListenerList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Label.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentDragger.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageCache.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableBorderComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TableHeaderComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AlertWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RelativeTime.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextButton.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextLayout.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawablePath.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableCornerComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableComposite.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentBoundsConstrainer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextEditor.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DropShadower.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Value.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableButton.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryContentsDisplayComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Slider.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComboBox.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Drawable.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ValueTree.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_UndoManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageConvolutionKernel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Viewport.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageFileFormat.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BubbleComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_XmlDocument.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StretchableObjectResizer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ProgressBar.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryContentsList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableImage.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ScrollBar.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TimeSliceThread.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_SVGParser.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryIterator.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DropShadowEffect.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GIFLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableText.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_JPEGLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileInputSource.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o
+lSLF07#2@69"Link /Users/warren/Repositories/rec/unit-tests/build/Debug/unit-tests295410187#295410188#0(45527"ld: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_String.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Thread.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioSampleBuffer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_mac_NativeCode.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PopupMenu.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ColourGradient.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioIODevice.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Time.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Image.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Component.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StringArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_CharacterFunctions.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MessageManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_File.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BitArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiOutput.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Path.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BorderSize.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AffineTransform.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_SystemStats.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Timer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentPeer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RectangleList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ModifierKeys.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseInputSource.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_OpenGLComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseCursor.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Font.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Colour.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DeletedAtShutdown.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiMessage.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyPressMappingSet.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioFormat.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioIODeviceType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Typeface.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Application.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Logger.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Random.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BufferedInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FillType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Desktop.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryBlock.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MenuBarModel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LowLevelGraphicsSoftwareRenderer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Graphics.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentMovementWatcher.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PNGLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandTarget.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Message.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GZIPDecompressorInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_InputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ActionListenerList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_NamedValueSet.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_EdgeTable.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PathIterator.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_OutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_XmlElement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyPress.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LookAndFeel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Justification.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GlyphArrangement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyboardFocusTraverser.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Variant.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiBuffer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AsyncUpdater.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PathStrokeType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandInfo.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Colours.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseEvent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RectanglePlacement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MessageListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GZIPCompressorOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TopLevelWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ChangeBroadcaster.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TemporaryFile.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DragAndDropContainer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StringPairArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LocalisedStrings.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Button.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ChangeListenerList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Label.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentDragger.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageCache.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableBorderComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TableHeaderComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AlertWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RelativeTime.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextButton.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextLayout.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawablePath.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableCornerComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableComposite.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentBoundsConstrainer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextEditor.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DropShadower.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Value.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableButton.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryContentsDisplayComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Slider.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComboBox.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Drawable.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ValueTree.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_UndoManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageConvolutionKernel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Viewport.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageFileFormat.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BubbleComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_XmlDocument.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StretchableObjectResizer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ProgressBar.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryContentsList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableImage.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ScrollBar.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TimeSliceThread.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_SVGParser.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryIterator.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DropShadowEffect.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GIFLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableText.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_JPEGLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.old: warning: unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileInputSource.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o130(22@329"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_String.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#0#343#0(6@0"295410188#0#0#0#0#0"0(22@329"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Thread.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#343#343#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioSampleBuffer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#686#354#0(6@0"295410188#0#0#0#0#0"0(22@337"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_mac_NativeCode.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#1040#351#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PopupMenu.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#1391#346#0(6@0"295410188#0#0#0#0#0"0(22@337"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ColourGradient.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#1737#351#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioIODevice.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#2088#350#0(6@0"295410188#0#0#0#0#0"0(22@327"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Time.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#2438#341#0(6@0"295410188#0#0#0#0#0"0(22@328"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Image.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#2779#342#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Component.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#3121#346#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StringArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#3467#348#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#3815#354#0(6@0"295410188#0#0#0#0#0"0(22@341"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_CharacterFunctions.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#4169#355#0(6@0"295410188#0#0#0#0#0"0(22@337"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MessageManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#4524#351#0(6@0"295410188#0#0#0#0#0"0(22@327"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_File.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#4875#341#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BitArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#5216#345#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiOutput.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#5561#347#0(6@0"295410188#0#0#0#0#0"0(22@327"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Path.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#5908#341#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BorderSize.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#6249#347#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AffineTransform.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#6596#352#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_SystemStats.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#6948#348#0(6@0"295410188#0#0#0#0#0"0(22@328"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Timer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#7296#342#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentPeer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#7638#350#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RectangleList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#7988#350#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ModifierKeys.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#8338#349#0(6@0"295410188#0#0#0#0#0"0(22@339"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseInputSource.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#8687#353#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_OpenGLComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#9040#352#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseCursor.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#9392#348#0(6@0"295410188#0#0#0#0#0"0(22@327"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Font.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#9740#341#0(6@0"295410188#0#0#0#0#0"0(22@329"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Colour.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#10081#343#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DeletedAtShutdown.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#10424#354#0(6@0"295410188#0#0#0#0#0"0(22@348"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#10778#362#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiMessage.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#11140#348#0(6@0"295410188#0#0#0#0#0"0(22@341"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyPressMappingSet.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#11488#355#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioFormat.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#11843#348#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AudioIODeviceType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#12191#354#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Typeface.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#12545#345#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Application.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#12890#348#0(6@0"295410188#0#0#0#0#0"0(22@329"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Logger.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#13238#343#0(6@0"295410188#0#0#0#0#0"0(22@329"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Random.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#13581#343#0(6@0"295410188#0#0#0#0#0"0(22@342"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BufferedInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#13924#356#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FillType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#14280#345#0(6@0"295410188#0#0#0#0#0"0(22@330"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Desktop.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#14625#344#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryBlock.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#14969#348#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MenuBarModel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#15317#349#0(6@0"295410188#0#0#0#0#0"0(22@355"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LowLevelGraphicsSoftwareRenderer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#15666#369#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Graphics.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#16035#345#0(6@0"295410188#0#0#0#0#0"0(22@347"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentMovementWatcher.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#16380#361#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PNGLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#16741#346#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#17087#352#0(6@0"295410188#0#0#0#0#0"0(22@347"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandTarget.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#17439#361#0(6@0"295410188#0#0#0#0#0"0(22@330"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Message.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#17800#344#0(6@0"295410188#0#0#0#0#0"0(22@350"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GZIPDecompressorInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#18144#364#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_InputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#18508#348#0(6@0"295410188#0#0#0#0#0"0(22@341"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ActionListenerList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#18856#355#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_NamedValueSet.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#19211#350#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_EdgeTable.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#19561#346#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PathIterator.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#19907#349#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_OutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#20256#349#0(6@0"295410188#0#0#0#0#0"0(22@341"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#20605#355#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_XmlElement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#20960#347#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyPress.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#21307#345#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LookAndFeel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#21652#348#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Justification.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#22000#350#0(6@0"295410188#0#0#0#0#0"0(22@339"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GlyphArrangement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#22350#353#0(6@0"295410188#0#0#0#0#0"0(22@345"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyboardFocusTraverser.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#22703#359#0(6@0"295410188#0#0#0#0#0"0(22@330"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Variant.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#23062#344#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MidiBuffer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#23406#347#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AsyncUpdater.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#23753#349#0(6@0"295410188#0#0#0#0#0"0(22@337"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_PathStrokeType.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#24102#351#0(6@0"295410188#0#0#0#0#0"0(22@345"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ApplicationCommandInfo.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#24453#359#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MemoryInputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#24812#354#0(6@0"295410188#0#0#0#0#0"0(22@330"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Colours.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#25166#344#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseEvent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#25510#347#0(6@0"295410188#0#0#0#0#0"0(22@341"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RectanglePlacement.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#25857#355#0(6@0"295410188#0#0#0#0#0"0(22@339"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#26212#353#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MessageListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#26565#352#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_KeyListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#26917#348#0(6@0"295410188#0#0#0#0#0"0(22@349"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GZIPCompressorOutputStream.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#27265#363#0(6@0"295410188#0#0#0#0#0"0(22@337"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TopLevelWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#27628#351#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ChangeBroadcaster.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#27979#354#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TemporaryFile.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#28333#350#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#28683#352#0(6@0"295410188#0#0#0#0#0"0(22@343"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DragAndDropContainer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#29035#357#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StringPairArray.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#29392#352#0(6@0"295410188#0#0#0#0#0"0(22@339"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_LocalisedStrings.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#29744#353#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_MouseListener.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#30097#350#0(6@0"295410188#0#0#0#0#0"0(22@329"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Button.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#30447#343#0(6@0"295410188#0#0#0#0#0"0(22@341"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ChangeListenerList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#30790#355#0(6@0"295410188#0#0#0#0#0"0(22@328"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Label.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#31145#342#0(6@0"295410188#0#0#0#0#0"0(22@339"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentDragger.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#31487#353#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageCache.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#31840#347#0(6@0"295410188#0#0#0#0#0"0(22@347"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableBorderComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#32187#361#0(6@0"295410188#0#0#0#0#0"0(22@343"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TableHeaderComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#32548#357#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_AlertWindow.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#32905#348#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_RelativeTime.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#33253#349#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextButton.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#33602#347#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextLayout.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#33949#347#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawablePath.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#34296#349#0(6@0"295410188#0#0#0#0#0"0(22@347"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ResizableCornerComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#34645#361#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableComposite.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#35006#354#0(6@0"295410188#0#0#0#0#0"0(22@349"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComponentBoundsConstrainer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#35360#363#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TextEditor.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#35723#347#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DropShadower.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#36070#349#0(6@0"295410188#0#0#0#0#0"0(22@328"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Value.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#36419#342#0(6@0"295410188#0#0#0#0#0"0(22@337"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableButton.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#36761#351#0(6@0"295410188#0#0#0#0#0"0(22@356"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryContentsDisplayComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#37112#370#0(6@0"295410188#0#0#0#0#0"0(22@329"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Slider.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#37482#343#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ComboBox.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#37825#345#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Drawable.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#38170#345#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ValueTree.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#38515#346#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_UndoManager.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#38861#348#0(6@0"295410188#0#0#0#0#0"0(22@345"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageConvolutionKernel.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#39209#359#0(6@0"295410188#0#0#0#0#0"0(22@331"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_Viewport.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#39568#345#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ImageFileFormat.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#39913#352#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_BubbleComponent.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#40265#352#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_XmlDocument.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#40617#348#0(6@0"295410188#0#0#0#0#0"0(22@347"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_StretchableObjectResizer.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#40965#361#0(6@0"295410188#0#0#0#0#0"0(22@334"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ProgressBar.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#41326#348#0(6@0"295410188#0#0#0#0#0"0(22@344"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryContentsList.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#41674#358#0(6@0"295410188#0#0#0#0#0"0(22@336"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableImage.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#42032#350#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_ScrollBar.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#42382#346#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_TimeSliceThread.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#42728#352#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_SVGParser.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#43080#346#0(6@0"295410188#0#0#0#0#0"0(22@340"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DirectoryIterator.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#43426#354#0(6@0"295410188#0#0#0#0#0"0(22@339"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DropShadowEffect.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#43780#353#0(6@0"295410188#0#0#0#0#0"0(22@332"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_GIFLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#44133#346#0(6@0"295410188#0#0#0#0#0"0(22@335"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_DrawableText.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#44479#349#0(6@0"295410188#0#0#0#0#0"0(22@333"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_JPEGLoader.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#44828#347#0(6@0"295410188#0#0#0#0#0"0(22@338"Unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)has different visibility (hidden) in /Users/warren/Repositories/juce/bin/libjucedebug.a(juce_FileInputSource.o) and (default) in /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/Parser_test.o295410188#45175#352#0(6@0"295410188#0#0#0#0#0"0(0#0#0"4300911832#1048"    cd /Users/warren/Repositories/rec/unit-tests    setenv MACOSX_DEPLOYMENT_TARGET 10.5    /Developer/usr/bin/g++-4.2 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/warren/Repositories/rec/unit-tests/build/Debug -L/Users/warren/Repositories/rec/unit-tests/../ammf/build/Debug -F/Users/warren/Repositories/rec/unit-tests/build/Debug -filelist /Users/warren/Repositories/rec/unit-tests/build/unit-tests.build/Debug/unit-tests.build/Objects-normal/i386/unit-tests.LinkFileList -mmacosx-version-min=10.5 /Users/warren/Repositories/gtest/xcode/build/Debug/libgtest_main.a /Users/warren/Repositories/gtest/xcode/build/Debug/gtest.framework/gtest /Users/warren/Repositories/rec/ammf/build/Debug/libammf.a -framework Cocoa -framework Carbon -framework IOKit -framework CoreAudio -framework CoreMIDI -framework WebKit -framework DiscRecording -framework OpenGL -framework QuartzCore -framework QTKit -framework QuickTime /Users/warren/Repositories/juce/bin/libjucedebug.a -o /Users/warren/Repositories/rec/unit-tests/build/Debug/unit-tests0#
+
