@@ -10,7 +10,7 @@
 template <typename Type>
 class scoped_ptr {
  public:
-  explicit scoped_ptr(Type* p = NULL) : p_(p) { }
+  explicit scoped_ptr(Type* p = 0) : p_(p) { }
 
   ~scoped_ptr() { delete p_; }
 
