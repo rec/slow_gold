@@ -1,6 +1,8 @@
 #ifndef __REC_STRETCHABLE_AUDIO_SOURCE
 #define __REC_STRETCHABLE_AUDIO_SOURCE
 
+#include <vector>
+
 #include "rec/audio/source/BufferedWrapper.h"
 
 namespace rec {
@@ -23,7 +25,7 @@ class Stretchable : public BufferedWrapper {
 
   virtual void fillOneBuffer(AudioSampleBuffer *toFill) {
     int64 samplesProcessed = 0;
-    float* outOffset[desc_.channels];
+    std::vector<float*> outOffset(desc_.channels);
 
     for (int i = 0; samplesProcessed < desc_.samples && i < 5; ++i) {
       int64 requested = desc_.samples - samplesProcessed;
@@ -42,7 +44,8 @@ class Stretchable : public BufferedWrapper {
         outOffset[c] = toFill->getSampleData(c) + samplesProcessed;
 
       samplesProcessed += scaler_.Process(buffer_.getArrayOfChannels(),
-                                          outOffset, inSamples, requested);
+                                          &outOffset.front(), inSamples,
+                                          requested);
     }
     jassert(samplesProcessed == desc_.samples);
   }
