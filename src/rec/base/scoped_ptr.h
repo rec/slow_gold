@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_SCOPED_PTR
 #define __REC_UTIL_SCOPED_PTR
 
-#include "rec/base/disallow.h"
+#include "rec/base/base.h"
 
 // scoped_ptr mimics a built-in pointer except that it guarantees deletion
 // of the object pointed to, either on destruction of the scoped_ptr or via

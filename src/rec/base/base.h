@@ -1,5 +1,7 @@
-#ifndef __REC_BASE_DISALLOW__
-#define __REC_BASE_DISALLOW__
+#ifndef __REC_BASE_BASE__
+#define __REC_BASE_BASE__
+
+#include <stddef.h>
 
 // Macros to disallow various class methods that C++ unfortunately creates
 // automatically.  Place either one of these in the private: section of your
@@ -16,4 +18,4 @@
   TypeName();                                    \
   DISALLOW_COPY_AND_ASSIGN(TypeName)
 
-#endif  // __REC_BASE_DISALLOW__
+#endif  // __REC_BASE_BASE__

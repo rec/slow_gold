@@ -3,8 +3,8 @@
 
 #include <ctype.h>
 #include <vector>
+#include "rec/base/base.h"
 #include "rec/base/StringRange.h"
-#include "rec/base/disallow.h"
 #include "rec/json/Node.h"
 
 namespace tinyjson {
