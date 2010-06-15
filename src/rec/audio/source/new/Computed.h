@@ -24,6 +24,7 @@ class Computed {
 
   void request(const Block& request, Callback* callback) {
     ScopedLock l(lock_);
+
     nextBlock_ = request;
     callback_ = callback;
   }
