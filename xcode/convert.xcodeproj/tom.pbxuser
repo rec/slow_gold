@@ -91,18 +91,11 @@
 			PBXWorkspaceStateSaveDate = 297719768;
 		};
 		perUserProjectItems = {
-			E2BF0D8E11BD8E7100400126 = E2BF0D8E11BD8E7100400126 /* PBXTextBookmark */;
-			E2BF0DA411BD97BA00400126 = E2BF0DA411BD97BA00400126 /* PBXTextBookmark */;
-			E2BF0DA511BD97BA00400126 = E2BF0DA511BD97BA00400126 /* PBXTextBookmark */;
-			E2BF0DC611BD992B00400126 = E2BF0DC611BD992B00400126 /* PBXTextBookmark */;
-			E2BF0DE711BD9B7800400126 = E2BF0DE711BD9B7800400126 /* PBXTextBookmark */;
-			E2BF112411BE31EE00400126 = E2BF112411BE31EE00400126 /* PBXTextBookmark */;
-			E2BF112511BE31EE00400126 = E2BF112511BE31EE00400126 /* PBXTextBookmark */;
-			E2BF112611BE31EE00400126 = E2BF112611BE31EE00400126 /* PBXTextBookmark */;
-			E2BF112711BE31EE00400126 = E2BF112711BE31EE00400126 /* PBXTextBookmark */;
+			E2BF0DA411BD97BA00400126 /* PBXTextBookmark */ = E2BF0DA411BD97BA00400126 /* PBXTextBookmark */;
+			E2BF0DE711BD9B7800400126 /* PBXTextBookmark */ = E2BF0DE711BD9B7800400126 /* PBXTextBookmark */;
+			E2BF112411BE31EE00400126 /* PBXTextBookmark */ = E2BF112411BE31EE00400126 /* PBXTextBookmark */;
 			E2BF119311BED7D800400126 /* PBXTextBookmark */ = E2BF119311BED7D800400126 /* PBXTextBookmark */;
-			E2BF11AA11BED80800400126 /* PBXTextBookmark */ = E2BF11AA11BED80800400126 /* PBXTextBookmark */;
-			E2BF11AB11BED80800400126 /* PBXTextBookmark */ = E2BF11AB11BED80800400126 /* PBXTextBookmark */;
+			E2BF12FA11C5A15400400126 /* PBXTextBookmark */ = E2BF12FA11C5A15400400126 /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2493D5911BD65D200C5B2DC /* Source Control */;
 		userBuildSettings = {
@@ -113,13 +106,6 @@
 		executables = (
 			E2493D5011BD65CF00C5B2DC /* convert */,
 		);
-	};
-	E20A80D211BD795A0074E284 /* scoped_ptr.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = scoped_ptr.h;
-		path = /Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h;
-		sourceTree = "<absolute>";
 	};
 	E2493D5011BD65CF00C5B2DC /* convert */ = {
 		isa = PBXExecutable;
@@ -184,7 +170,7 @@
 	E2493D6711BD662800C5B2DC /* Reader_main.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {689, 988}}";
-			sepNavSelRange = "{334, 18}";
+			sepNavSelRange = "{630, 0}";
 			sepNavVisRange = "{0, 1770}";
 			sepNavWindowFrame = "{{61, 44}, {810, 1087}}";
 		};
@@ -203,37 +189,6 @@
 		path = "/usr/include/c++/4.2.1/iostream";
 		sourceTree = "<absolute>";
 	};
-	E2BF0D4C11BD85C400400126 /* juce_MathsFunctions.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = juce_MathsFunctions.h;
-		path = /Users/tom/Documents/development/juce/src/core/juce_MathsFunctions.h;
-		sourceTree = "<absolute>";
-	};
-	E2BF0D8E11BD8E7100400126 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E2BF0D8F11BD8E7100400126 /* juce_WavAudioFormat.cpp */;
-		name = "juce_WavAudioFormat.cpp: 683";
-		rLen = 0;
-		rLoc = 28317;
-		rType = 0;
-		vrLen = 2050;
-		vrLoc = 27159;
-	};
-	E2BF0D8F11BD8E7100400126 /* juce_WavAudioFormat.cpp */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
-		name = juce_WavAudioFormat.cpp;
-		path = /Users/tom/Documents/development/juce/src/audio/audio_file_formats/juce_WavAudioFormat.cpp;
-		sourceTree = "<absolute>";
-	};
-	E2BF0D9611BD8E7100400126 /* juce_AudioFormat.cpp */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
-		name = juce_AudioFormat.cpp;
-		path = /Users/tom/Documents/development/juce/src/audio/audio_file_formats/juce_AudioFormat.cpp;
-		sourceTree = "<absolute>";
-	};
 	E2BF0DA411BD97BA00400126 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E2BF0D4811BD85C400400126 /* iostream */;
@@ -243,26 +198,6 @@
 		rType = 0;
 		vrLen = 2090;
 		vrLoc = 900;
-	};
-	E2BF0DA511BD97BA00400126 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E20A80D211BD795A0074E284 /* scoped_ptr.h */;
-		name = "scoped_ptr.h: 26";
-		rLen = 0;
-		rLoc = 567;
-		rType = 0;
-		vrLen = 1201;
-		vrLoc = 0;
-	};
-	E2BF0DC611BD992B00400126 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E2BF0D4C11BD85C400400126 /* juce_MathsFunctions.h */;
-		name = "juce_MathsFunctions.h: 115";
-		rLen = 0;
-		rLoc = 5289;
-		rType = 0;
-		vrLen = 2640;
-		vrLoc = 4024;
 	};
 	E2BF0DC811BD992B00400126 /* libmpg123.c */ = {
 		isa = PBXFileReference;
@@ -291,45 +226,6 @@
 		vrLen = 1527;
 		vrLoc = 0;
 	};
-	E2BF112511BE31EE00400126 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E2493D6711BD662800C5B2DC /* Reader_main.cpp */;
-		name = "Reader_main.cpp: 15";
-		rLen = 0;
-		rLoc = 334;
-		rType = 0;
-		vrLen = 1692;
-		vrLoc = 415;
-	};
-	E2BF112611BE31EE00400126 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E2BF0D9611BD8E7100400126 /* juce_AudioFormat.cpp */;
-		rLen = 0;
-		rLoc = 388;
-		rType = 1;
-	};
-	E2BF112711BE31EE00400126 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E2BF112811BE31EE00400126 /* juce_AudioFormat.cpp */;
-		name = "juce_AudioFormat.cpp: 389";
-		rLen = 0;
-		rLoc = 12687;
-		rType = 0;
-		vrLen = 2035;
-		vrLoc = 11780;
-	};
-	E2BF112811BE31EE00400126 /* juce_AudioFormat.cpp */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
-		name = juce_AudioFormat.cpp;
-		path = /Users/tom/Documents/development/juce/src/audio/audio_file_formats/juce_AudioFormat.cpp;
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {689, 7215}}";
-			sepNavSelRange = "{12687, 0}";
-			sepNavVisRange = "{11780, 1896}";
-		};
-	};
 	E2BF119311BED7D800400126 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E2493D6711BD662800C5B2DC /* Reader_main.cpp */;
@@ -337,24 +233,14 @@
 		rLoc = 14;
 		rType = 1;
 	};
-	E2BF11AA11BED80800400126 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E2BF112811BE31EE00400126 /* juce_AudioFormat.cpp */;
-		name = "juce_AudioFormat.cpp: 389";
-		rLen = 0;
-		rLoc = 12687;
-		rType = 0;
-		vrLen = 1896;
-		vrLoc = 11780;
-	};
-	E2BF11AB11BED80800400126 /* PBXTextBookmark */ = {
+	E2BF12FA11C5A15400400126 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E2493D6711BD662800C5B2DC /* Reader_main.cpp */;
-		name = "Reader_main.cpp: 15";
-		rLen = 18;
-		rLoc = 334;
+		name = "Reader_main.cpp: 25";
+		rLen = 0;
+		rLoc = 630;
 		rType = 0;
-		vrLen = 1663;
+		vrLen = 1770;
 		vrLoc = 0;
 	};
 }

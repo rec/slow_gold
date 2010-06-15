@@ -29,7 +29,7 @@
 		E26F7BDB119F18FF00F5D4CF /* AudioTimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD1119F18FF00F5D4CF /* AudioTimeScaler.cpp */; };
 		E26F7BDC119F18FF00F5D4CF /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD3119F18FF00F5D4CF /* hfft.c */; };
 		E26F7BDD119F18FF00F5D4CF /* mfAlloc.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */; };
-		E270C26B11A1CD9D006F3C08 /* libjuce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E270C22B11A1CD80006F3C08 /* libjuce.a */; };
+		E270C26B11A1CD9D006F3C08 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E270C22B11A1CD80006F3C08 /* libjucedebug.a */; };
 		E27D994A118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */; };
 		E27D9A0A118F503D00B5D7D7 /* Math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9A09118F503D00B5D7D7 /* Math_test.cpp */; };
 		E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
@@ -44,6 +44,8 @@
 		E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964311B21B8E009C4C13 /* Reader.cpp */; };
 		E2BF115A11BECD6400400126 /* Reader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF115911BECD6400400126 /* Reader_test.cpp */; };
 		E2CFC63511B45D6000CC265E /* Copier_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2CFC63411B45D6000CC265E /* Copier_test.cpp */; };
+		E2DE780611C72CED0088F22E /* MergeBlockList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE780211C72CED0088F22E /* MergeBlockList.cpp */; };
+		E2DE780711C72CED0088F22E /* MergeBlockList_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE780411C72CED0088F22E /* MergeBlockList_test.cpp */; };
 		E2F0DE2911B81DA40025C1B3 /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */; };
 		E2F0DE2A11B81DA40025C1B3 /* CreateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */; };
 		E2F0DE4B11B829A80025C1B3 /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE4A11B829A80025C1B3 /* Tags.cpp */; };
@@ -184,6 +186,13 @@
 		E2B2F6111171255400D0C002 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		E2BF115911BECD6400400126 /* Reader_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader_test.cpp; sourceTree = "<group>"; };
 		E2CFC63411B45D6000CC265E /* Copier_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Copier_test.cpp; sourceTree = "<group>"; };
+		E2DE77FF11C72CED0088F22E /* Buffered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buffered.h; path = new/Buffered.h; sourceTree = "<group>"; };
+		E2DE780011C72CED0088F22E /* Computed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Computed.h; path = new/Computed.h; sourceTree = "<group>"; };
+		E2DE780111C72CED0088F22E /* Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Copy.h; path = new/Copy.h; sourceTree = "<group>"; };
+		E2DE780211C72CED0088F22E /* MergeBlockList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockList.cpp; path = new/MergeBlockList.cpp; sourceTree = "<group>"; };
+		E2DE780311C72CED0088F22E /* MergeBlockList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MergeBlockList.h; path = new/MergeBlockList.h; sourceTree = "<group>"; };
+		E2DE780411C72CED0088F22E /* MergeBlockList_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockList_test.cpp; path = new/MergeBlockList_test.cpp; sourceTree = "<group>"; };
+		E2DE780511C72CED0088F22E /* Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wrapper.h; path = new/Wrapper.h; sourceTree = "<group>"; };
 		E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader_test.cpp; sourceTree = "<group>"; };
 		E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader.cpp; sourceTree = "<group>"; };
 		E2F0DE2811B81DA40025C1B3 /* CreateReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReader.h; sourceTree = "<group>"; };
@@ -199,7 +208,7 @@
 				E2493AE611B99C6300C5B2DC /* gtest.framework in Frameworks */,
 				E2493AE711B99C6300C5B2DC /* libgtest.a in Frameworks */,
 				E2493AE811B99C6300C5B2DC /* libgtest_main.a in Frameworks */,
-				E270C26B11A1CD9D006F3C08 /* libjuce.a in Frameworks */,
+				E270C26B11A1CD9D006F3C08 /* libjucedebug.a in Frameworks */,
 				E25FCB15116BAE2E00FCB21D /* Cocoa.framework in Frameworks */,
 				E25FCB16116BAE2E00FCB21D /* Carbon.framework in Frameworks */,
 				E25FCB17116BAE2E00FCB21D /* IOKit.framework in Frameworks */,
@@ -358,7 +367,7 @@
 		E270C22711A1CD80006F3C08 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E270C22B11A1CD80006F3C08 /* libjuce.a */,
+				E270C22B11A1CD80006F3C08 /* libjucedebug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -390,6 +399,13 @@
 		E2A855A911835D3B00667631 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				E2DE77FF11C72CED0088F22E /* Buffered.h */,
+				E2DE780011C72CED0088F22E /* Computed.h */,
+				E2DE780111C72CED0088F22E /* Copy.h */,
+				E2DE780211C72CED0088F22E /* MergeBlockList.cpp */,
+				E2DE780311C72CED0088F22E /* MergeBlockList.h */,
+				E2DE780411C72CED0088F22E /* MergeBlockList_test.cpp */,
+				E2DE780511C72CED0088F22E /* Wrapper.h */,
 				E2A8562B11836B9500667631 /* Buffered_test.cpp */,
 				E2940A171186BF22002E32D6 /* Loop_test.cpp */,
 				E2940A181186BF22002E32D6 /* Loop.h */,
@@ -524,10 +540,10 @@
 			remoteRef = E2493AE411B99C4C00C5B2DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E270C22B11A1CD80006F3C08 /* libjuce.a */ = {
+		E270C22B11A1CD80006F3C08 /* libjucedebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libjuce.a;
+			path = libjucedebug.a;
 			remoteRef = E270C22A11A1CD80006F3C08 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -562,6 +578,8 @@
 				E2F0DE2A11B81DA40025C1B3 /* CreateReader.cpp in Sources */,
 				E2F0DE4B11B829A80025C1B3 /* Tags.cpp in Sources */,
 				E2BF115A11BECD6400400126 /* Reader_test.cpp in Sources */,
+				E2DE780611C72CED0088F22E /* MergeBlockList.cpp in Sources */,
+				E2DE780711C72CED0088F22E /* MergeBlockList_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

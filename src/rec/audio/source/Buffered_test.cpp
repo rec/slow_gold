@@ -37,7 +37,6 @@ TEST(RecAudio, Buffered) {
       sizes, sizes + arraysize(sizes));
 }
 
-
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
