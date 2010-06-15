@@ -3,12 +3,13 @@
 
 #include "juce_amalgamated.h"
 #include "rec/audio/source/new/source/Buffered.h"
+#include "rec/audio/source/new/source/MergeBlockSet.h"
+#include "rec/audio/source/new/source/GetNextBlock.h"
 #include "rec/buffer/blocks.h"
 
 namespace rec {
 namespace audio {
 namespace buffer {
-
 
 template <typename Command>
 class Computed {

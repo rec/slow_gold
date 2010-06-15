@@ -5,22 +5,24 @@ namespace rec {
 namespace buffer {
 
 void merge(const Block& block, BlockSet* set) {
-  BlockSet::const_iterator i = set->begin();
-  for (; i != set->end() && i->second < block.first; ++i);
+  // Find the first block that isn't entirely below the new block.
+  BlockSet::const_iterator begin = set->begin();
+  for (; begin != set->end() && begin->second < block.first; ++begin);
 
-  BlockSet::const_iterator begin = i;
-  for (; i != set->end() && i->first <= block.second; ++i);
+  BlockSet::const_iterator last, end = begin;
 
-  if (i == begin) {
-    set->insert(i, block);
+  // Find the first block that's entirely above the new block.
+  for (; end != set->end() && end->first <= block.second; last = end, ++end);
+
+  if (begin == end) {
+    // We don't intersect or touch any existing blocks, so insert this block.
+    set->insert(end, block);
 
   } else {
-    BlockSet::const_iterator end = i;
-    end--;
-
+    // This block intersects or touches every block between begin and end.
     Size first = jmin(block.first, begin->first);
-    Size second = jmax(block.second, end->second);
-    set->erase(begin, i);
+    Size second = jmax(block.second, last->second);
+    set->erase(begin, end);
     set->insert(Block(first, second));
   }
 }
