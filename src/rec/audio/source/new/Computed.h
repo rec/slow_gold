@@ -9,22 +9,6 @@ namespace rec {
 namespace audio {
 namespace buffer {
 
-inline void mergeInto(const Block& block, BlockList* list) {
-  BlockSet::iterator i = list.begin();
-  for (; i != list.end() && i->second >= block.first; ++i);
-
-  if (i == list.end()) {
-    list.insert(end, block);
-
-  } else {
-    BlockSet::iterator begin = i;
-    for (++i; i != list.end() && i->first <= block.second; ++i);
-
-    begin->first = jmin(block.first, begin->first);
-    begin->second = jmax((i - 1)->second, block.second);
-    list.erase(begin + 1, i);
-  }
-}
 
 template <typename Command>
 class Computed {
