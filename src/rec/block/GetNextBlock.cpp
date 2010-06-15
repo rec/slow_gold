@@ -1,7 +1,7 @@
 #include "juce_amalgamated.h"
 #include "rec/base/basictypes.h"
-#include "rec/buffer/blocks.h"
-#include "rec/audio/source/new/GetNextBlock.h"
+#include "rec/block/blocks.h"
+#include "rec/block/GetNextBlock.h"
 
 namespace rec {
 namespace buffer {

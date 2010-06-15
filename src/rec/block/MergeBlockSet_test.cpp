@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "rec/base/ArraySize.h"
-#include "rec/audio/source/new/MergeBlockSet.h"
+#include "rec/block/MergeBlockSet.h"
 
 namespace rec {
 namespace buffer {

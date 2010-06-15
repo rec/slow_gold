@@ -1,17 +1,17 @@
 #include "juce_amalgamated.h"
-#include "rec/audio/source/new/MergeBlockSet.h"
+#include "rec/block/MergeBlockSet.h"
 
 namespace rec {
 namespace buffer {
 
 void merge(const Block& block, BlockSet* set) {
-  // Find the first block that isn't entirely below the new block.
+  // "begin" is the first block that isn't entirely below the new block.
   BlockSet::const_iterator begin = set->begin();
   for (; begin != set->end() && begin->second < block.first; ++begin);
 
+  // "end" is the first block that's entirely above the new block.
+  // "last" is one before "end"
   BlockSet::const_iterator last, end = begin;
-
-  // Find the first block that's entirely above the new block.
   for (; end != set->end() && end->first <= block.second; last = end, ++end);
 
   if (begin == end) {
@@ -19,7 +19,7 @@ void merge(const Block& block, BlockSet* set) {
     set->insert(end, block);
 
   } else {
-    // This block intersects or touches every block between begin and end.
+    // This block intersects or touches every block in [begin, end).
     Size first = jmin(block.first, begin->first);
     Size second = jmax(block.second, last->second);
     set->erase(begin, end);

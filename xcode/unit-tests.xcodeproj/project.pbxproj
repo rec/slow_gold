@@ -44,10 +44,10 @@
 		E2B1965311B21B8E009C4C13 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B1964311B21B8E009C4C13 /* Reader.cpp */; };
 		E2BF115A11BECD6400400126 /* Reader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF115911BECD6400400126 /* Reader_test.cpp */; };
 		E2CFC63511B45D6000CC265E /* Copier_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2CFC63411B45D6000CC265E /* Copier_test.cpp */; };
-		E2DE788211C7424B0088F22E /* MergeBlockSet_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE787F11C7424B0088F22E /* MergeBlockSet_test.cpp */; };
-		E2DE788311C7424B0088F22E /* MergeBlockSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE788011C7424B0088F22E /* MergeBlockSet.cpp */; };
-		E2DE788911C7542C0088F22E /* GetNextBlock_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE788611C7542C0088F22E /* GetNextBlock_test.cpp */; };
-		E2DE788A11C7542C0088F22E /* GetNextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE788711C7542C0088F22E /* GetNextBlock.cpp */; };
+		E2DE78D111C81B010088F22E /* GetNextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE78CB11C81B010088F22E /* GetNextBlock.cpp */; };
+		E2DE78D211C81B010088F22E /* GetNextBlock_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE78CD11C81B010088F22E /* GetNextBlock_test.cpp */; };
+		E2DE78D311C81B010088F22E /* MergeBlockSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE78CE11C81B010088F22E /* MergeBlockSet.cpp */; };
+		E2DE78D411C81B010088F22E /* MergeBlockSet_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2DE78D011C81B010088F22E /* MergeBlockSet_test.cpp */; };
 		E2F0DE2911B81DA40025C1B3 /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */; };
 		E2F0DE2A11B81DA40025C1B3 /* CreateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */; };
 		E2F0DE4B11B829A80025C1B3 /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2F0DE4A11B829A80025C1B3 /* Tags.cpp */; };
@@ -192,12 +192,13 @@
 		E2DE780011C72CED0088F22E /* Computed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Computed.h; path = new/Computed.h; sourceTree = "<group>"; };
 		E2DE780111C72CED0088F22E /* Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Copy.h; path = new/Copy.h; sourceTree = "<group>"; };
 		E2DE780511C72CED0088F22E /* Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wrapper.h; path = new/Wrapper.h; sourceTree = "<group>"; };
-		E2DE787F11C7424B0088F22E /* MergeBlockSet_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet_test.cpp; path = new/MergeBlockSet_test.cpp; sourceTree = "<group>"; };
-		E2DE788011C7424B0088F22E /* MergeBlockSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet.cpp; path = new/MergeBlockSet.cpp; sourceTree = "<group>"; };
-		E2DE788111C7424B0088F22E /* MergeBlockSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MergeBlockSet.h; path = new/MergeBlockSet.h; sourceTree = "<group>"; };
-		E2DE788611C7542C0088F22E /* GetNextBlock_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GetNextBlock_test.cpp; path = new/GetNextBlock_test.cpp; sourceTree = "<group>"; };
-		E2DE788711C7542C0088F22E /* GetNextBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GetNextBlock.cpp; path = new/GetNextBlock.cpp; sourceTree = "<group>"; };
-		E2DE788811C7542C0088F22E /* GetNextBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetNextBlock.h; path = new/GetNextBlock.h; sourceTree = "<group>"; };
+		E2DE78CA11C81B010088F22E /* blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blocks.h; sourceTree = "<group>"; };
+		E2DE78CB11C81B010088F22E /* GetNextBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetNextBlock.cpp; sourceTree = "<group>"; };
+		E2DE78CC11C81B010088F22E /* GetNextBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNextBlock.h; sourceTree = "<group>"; };
+		E2DE78CD11C81B010088F22E /* GetNextBlock_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GetNextBlock_test.cpp; sourceTree = "<group>"; };
+		E2DE78CE11C81B010088F22E /* MergeBlockSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MergeBlockSet.cpp; sourceTree = "<group>"; };
+		E2DE78CF11C81B010088F22E /* MergeBlockSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeBlockSet.h; sourceTree = "<group>"; };
+		E2DE78D011C81B010088F22E /* MergeBlockSet_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MergeBlockSet_test.cpp; sourceTree = "<group>"; };
 		E2F0DE2611B81DA40025C1B3 /* CreateReader_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader_test.cpp; sourceTree = "<group>"; };
 		E2F0DE2711B81DA40025C1B3 /* CreateReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader.cpp; sourceTree = "<group>"; };
 		E2F0DE2811B81DA40025C1B3 /* CreateReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReader.h; sourceTree = "<group>"; };
@@ -249,6 +250,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				E2DE78C911C81B010088F22E /* block */,
 				E26F7BCE119F18FF00F5D4CF /* ammf_scaler */,
 				E29594C5117D60870078881F /* json */,
 				E25FCE94116BB6FC00FCB21D /* audio */,
@@ -405,12 +407,6 @@
 			isa = PBXGroup;
 			children = (
 				E2DE77FF11C72CED0088F22E /* Buffered.h */,
-				E2DE787F11C7424B0088F22E /* MergeBlockSet_test.cpp */,
-				E2DE788611C7542C0088F22E /* GetNextBlock_test.cpp */,
-				E2DE788711C7542C0088F22E /* GetNextBlock.cpp */,
-				E2DE788811C7542C0088F22E /* GetNextBlock.h */,
-				E2DE788011C7424B0088F22E /* MergeBlockSet.cpp */,
-				E2DE788111C7424B0088F22E /* MergeBlockSet.h */,
 				E2DE780011C72CED0088F22E /* Computed.h */,
 				E2DE780111C72CED0088F22E /* Copy.h */,
 				E2DE780511C72CED0088F22E /* Wrapper.h */,
@@ -451,6 +447,21 @@
 			name = mpg123;
 			path = format/mpg123;
 			sourceTree = "<group>";
+		};
+		E2DE78C911C81B010088F22E /* block */ = {
+			isa = PBXGroup;
+			children = (
+				E2DE78CA11C81B010088F22E /* blocks.h */,
+				E2DE78CB11C81B010088F22E /* GetNextBlock.cpp */,
+				E2DE78CC11C81B010088F22E /* GetNextBlock.h */,
+				E2DE78CD11C81B010088F22E /* GetNextBlock_test.cpp */,
+				E2DE78CE11C81B010088F22E /* MergeBlockSet.cpp */,
+				E2DE78CF11C81B010088F22E /* MergeBlockSet.h */,
+				E2DE78D011C81B010088F22E /* MergeBlockSet_test.cpp */,
+			);
+			name = block;
+			path = ../src/rec/block;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -586,10 +597,10 @@
 				E2F0DE2A11B81DA40025C1B3 /* CreateReader.cpp in Sources */,
 				E2F0DE4B11B829A80025C1B3 /* Tags.cpp in Sources */,
 				E2BF115A11BECD6400400126 /* Reader_test.cpp in Sources */,
-				E2DE788211C7424B0088F22E /* MergeBlockSet_test.cpp in Sources */,
-				E2DE788311C7424B0088F22E /* MergeBlockSet.cpp in Sources */,
-				E2DE788911C7542C0088F22E /* GetNextBlock_test.cpp in Sources */,
-				E2DE788A11C7542C0088F22E /* GetNextBlock.cpp in Sources */,
+				E2DE78D111C81B010088F22E /* GetNextBlock.cpp in Sources */,
+				E2DE78D211C81B010088F22E /* GetNextBlock_test.cpp in Sources */,
+				E2DE78D311C81B010088F22E /* MergeBlockSet.cpp in Sources */,
+				E2DE78D411C81B010088F22E /* MergeBlockSet_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

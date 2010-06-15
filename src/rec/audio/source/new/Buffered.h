@@ -11,7 +11,7 @@ namespace source {
 class Buffered : public PositionableAudioSource {
  public:
   Buffered(const AudioSampleBuffer& buffer)
-      : buffer_(buffer), position_(0), looping_(true) {
+      : buffer_(buffer), position_(buffer_.getNumSamples()), looping_(true) {
   }
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& destInfo) {
@@ -22,9 +22,9 @@ class Buffered : public PositionableAudioSource {
     int numSamples = destInfo.numSamples;
 
     for (int copied = 0; copied < numSamples; ) {
-      int blockSize = jmin(numSamples - copied, length - position_);
-      copy(blockSize, position_, buffer_, destStart + copied, dest);
-      position_ = (position_ + blockSize) % length;
+      int blockSize = jmin(numSamples - copied, position_.remaining());
+      copy(blockSize, position_.position_, buffer_, destStart + copied, dest);
+      position_.increment(blockSize);
     }
   }
 
@@ -35,12 +35,11 @@ class Buffered : public PositionableAudioSource {
   virtual void prepareToPlay(int samples, double rate) {}
   virtual void releaseResources() {}
   virtual bool isLooping() const { return looping_; }
+  virtual void setLooping(bool looping) { looping_ = looping; }
 
  protected:
   const AudioSampleBuffer& buffer_;
-
-  // Next position to deliver samples from.
-  int position_;
+  Circular position_;
 
   // Are we looping?
   bool looping_;
