@@ -3,18 +3,10 @@
 
 #include "juce_amalgamated.h"
 #include "rec/audio/source/new/source/Buffered.h"
-#include "rec/block/MergeBlockSet.h"
-#include "rec/block/GetNextBlock.h"
-#include "rec/block/blocks.h"
+#include "rec/block/Block.h"
 
 namespace rec {
 namespace buffer {
-
-// A generic callback!
-class Callback {
- public:
-  void operator()() = 0;
-};
 
 class Computed {
  public:

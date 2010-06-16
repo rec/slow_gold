@@ -3,7 +3,7 @@
 
 #include "rec/util/locker.h"
 #include "rec/uti/Math.h"
-#include "rec/buffer/blocks.h"
+#include "rec/block/Block.h"
 
 namespace rec {
 namespace buffer {

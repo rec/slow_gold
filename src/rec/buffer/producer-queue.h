@@ -1,7 +1,7 @@
 #ifndef __REC_BUFFER_PRODUCER_QUEUE
 #define __REC_BUFFER_PRODUCER_QUEUE
 
-#include "rec/buffer/blocks.h"
+#include "rec/block/Block.h"
 
 namespace rec {
 namespace buffer {

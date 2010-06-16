@@ -4,8 +4,15 @@
 namespace rec {
 namespace util {
 
-template <typename Class, typename Method, typename Value>
+// A simple callback interface.
 class Callback {
+ public:
+  virtual void operator()() = 0;
+};
+
+// A templated class that calls a method on an object.
+template <typename Class, typename Method, typename Value>
+class MethodCallback {
  public:
   Callback(Class *c, Method m, Value v) : class_(cl), method_(m), value_(v) {}
 

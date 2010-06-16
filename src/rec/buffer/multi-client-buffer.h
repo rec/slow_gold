@@ -8,7 +8,7 @@
 
 #include "rec/base/scoped_ptr.h"
 #include "rec/util/locker.h"
-#include "rec/buffer/blocks.h"
+#include "rec/block/Block.h"
 #include "rec/buffer/client-manager.h"
 #include "rec/buffer/producer-queue.h"
 

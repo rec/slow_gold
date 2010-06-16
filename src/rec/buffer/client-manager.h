@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "rec/base/scoped_ptr.h"
-#include "rec/buffer/blocks.h"
+#include "rec/block/Block.h"
 
 namespace rec {
 namespace buffer {

@@ -69,6 +69,7 @@ void MainPageK::sliderDragEnded(Slider* slider) {
     scaleDescription_.pitchScale_ = slider->getValue();
   else
     return;
+
   scaleTime();
 }
 

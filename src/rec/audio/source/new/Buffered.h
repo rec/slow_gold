@@ -10,8 +10,8 @@ namespace source {
 
 class Buffered : public PositionableAudioSource {
  public:
-  Buffered(const AudioSampleBuffer& buffer)
-      : buffer_(buffer), position_(buffer_.getNumSamples()), looping_(true) {
+  Buffered(int numChannels, int numSamples)
+      : buffer_(numChannels, numSamples), looping_(true) {
   }
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& destInfo) {
@@ -37,8 +37,10 @@ class Buffered : public PositionableAudioSource {
   virtual bool isLooping() const { return looping_; }
   virtual void setLooping(bool looping) { looping_ = looping; }
 
- protected:
-  const AudioSampleBuffer& buffer_;
+  AudioSampleBuffer* buffer() { return buffer_; }
+
+ private:
+  AudioSampleBuffer buffer_;
   Circular position_;
 
   // Are we looping?

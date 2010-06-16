@@ -35,7 +35,6 @@ class Reader : public AudioFormatReader {
   size_t size_, allocated_;
   Copier copier_;
 
-
   DISALLOW_COPY_AND_ASSIGN(Reader);
 };
 

@@ -27,6 +27,7 @@ class OrphanableThread : public Thread {
       ScopedLock l(lock_);
       if (isThreadRunning()) {
         orphaned_ = true;
+        signalThreadShouldExit();
         return;
       }
     }
