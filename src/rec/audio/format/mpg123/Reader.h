@@ -9,7 +9,6 @@
 #include "rec/audio/format/mpg123/Copier.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/audio/format/mpg123/CreateReader.h"
-#include "rec/base/basictypes.h"
 
 namespace rec {
 namespace audio {
@@ -29,7 +28,7 @@ class Reader : public AudioFormatReader {
  private:
   Reader(InputStream* in, const String& name, mpg123_handle* mh, Copier copier);
 
-  friend Error createReader(InputStream*, AudioFormatReader**, Prescan);
+  friend Error createReader(InputStream*, AudioFormatReader**, OutputFormat*, OutputFormat*);
 
 	mpg123_handle* mh_;
   void* buffer_;

@@ -2,7 +2,7 @@
 #define __REC_LOOP_AUDIO_SOURCE
 
 #include "juce_amalgamated.h"
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/util/Math.h"
 
 namespace rec {

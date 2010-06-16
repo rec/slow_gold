@@ -30,7 +30,7 @@ Reader::~Reader()	{
 
 bool Reader::readSamples(int** dest, int destChannels, int destOffset,
                          int64 startSampleInFile, int numSamples) {
-  if (mpg123_seek(mh_, startSampleInFile, SEEK_SET))
+  if (mpg123_seek(mh_, startSampleInFile, SEEK_SET) < 0)
     return false;
 
   int64 bytesPerSample = this->bitsPerSample / 8;
@@ -49,7 +49,7 @@ bool Reader::readSamples(int** dest, int destChannels, int destOffset,
   if (e != MPG123_DONE && e != MPG123_OK)
     return false;
 
-  int64 sourceSize = bytesCopied / (bytesPerSample);
+  int64 sourceSize = bytesCopied / (bytesPerSample * numChannels);
   copier_(dest, destChannels, destOffset, buffer_, numChannels, sourceSize);
   return (bytesCopied == size_);
 }

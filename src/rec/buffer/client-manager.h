@@ -4,7 +4,6 @@
 #include <map>
 #include <vector>
 
-#include "rec/base/basictypes.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/buffer/blocks.h"
 

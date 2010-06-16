@@ -2,13 +2,13 @@
 #include "MainPageK.h"
 
 #include "DemoThumbnailComp.h"
-#include "rec/audio/source/Stretchable.h"
 #include "rec/audio/Math.h"
 #include "JuceLibraryCode/JuceHeader.h"
+#include "rec/audio/format/mpg123/Mpg123.h"
 
-using rec::audio::source::BufferDescription;
 using rec::audio::timescaler::Description;
 using rec::audio::source::Loop;
+using rec::audio::format::mpg123::getFileReader;
 
 // TODO: why can't this be defined in the .h with other primitives?!
 
@@ -94,10 +94,7 @@ void MainPageK::selectionChanged() {
 }
 
 void MainPageK::loadFileIntoTransport(const File& file) {
-  AudioFormatManager formatManager;
-  formatManager.registerBasicFormats();
-
-  scoped_ptr<AudioFormatReader> reader(formatManager.createReaderFor(file));
+  scoped_ptr<AudioFormatReader> reader(getFileReader(file));
   if (reader) {
     transportSource_.stop();
     transportSource_.setSource(NULL);

@@ -3,7 +3,7 @@
 
 #include <string.h>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace audio {

@@ -17,6 +17,7 @@ typedef std::pair<Size, Size> Block;
 typedef std::vector<Block> BlockList;
 typedef std::set<Block> BlockSet;
 
+inline Block makeBlock(Size a, Size b) { return std::make_pair(a, b); }
 inline Size getSize(const Block& b) { return b.second - b.first; }
 
 }  // namespace buffer

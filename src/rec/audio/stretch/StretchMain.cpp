@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include <string>
+#include <vector>
 
 #include "juce_amalgamated.h"
 #include "rec/audio/stretch/TimeScaler.h"
@@ -96,7 +97,7 @@ class PitchTimeShifter {
       for (int c = 0; c < numChannels; ++c)
         *inBuffer.getSampleData(c, i + lengthInSamples) = 0.0;
 
-    int samplesRead[numChannels];
+    std::vetor<int> samplesRead(numChannels);
     for (int c = 0; c < numChannels; ++c)
       samplesRead[c] = 0;
 
