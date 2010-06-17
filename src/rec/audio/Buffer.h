@@ -6,7 +6,7 @@
 #include "juce_amalgamated.h"
 #include "rec/audio/stretch/TimeScaler.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/util/Math.h"
+#include "rec/util/Circular.h"
 
 namespace rec {
 namespace audio {
