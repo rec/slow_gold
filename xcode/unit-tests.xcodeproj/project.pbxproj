@@ -30,6 +30,7 @@
 		E26F7BDC119F18FF00F5D4CF /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD3119F18FF00F5D4CF /* hfft.c */; };
 		E26F7BDD119F18FF00F5D4CF /* mfAlloc.c in Sources */ = {isa = PBXBuildFile; fileRef = E26F7BD5119F18FF00F5D4CF /* mfAlloc.c */; };
 		E270C26B11A1CD9D006F3C08 /* libjucedebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E270C22B11A1CD80006F3C08 /* libjucedebug.a */; };
+		E273DBDE11EBC19C0095F337 /* juce_AudioCDReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E273DBDD11EBC19C0095F337 /* juce_AudioCDReader_test.cpp */; };
 		E27D994A118B890000B5D7D7 /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */; };
 		E27D9A0A118F503D00B5D7D7 /* Math_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E27D9A09118F503D00B5D7D7 /* Math_test.cpp */; };
 		E2940A191186BF22002E32D6 /* Loop_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2940A171186BF22002E32D6 /* Loop_test.cpp */; };
@@ -158,6 +159,7 @@
 		E26F7BD8119F18FF00F5D4CF /* mfMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMacros.h; path = ../src/rec/ammf_scaler/mfMacros.h; sourceTree = SOURCE_ROOT; };
 		E26F7BD9119F18FF00F5D4CF /* mfMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfMath.h; path = ../src/rec/ammf_scaler/mfMath.h; sourceTree = SOURCE_ROOT; };
 		E270C22611A1CD80006F3C08 /* Juce.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Juce.xcodeproj; path = ../../juce/Builds/MacOSX/Juce.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E273DBDD11EBC19C0095F337 /* juce_AudioCDReader_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = juce_AudioCDReader_test.cpp; sourceTree = "<group>"; };
 		E27D9945118B890000B5D7D7 /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTimeScaler_test.cpp; sourceTree = "<group>"; };
 		E27D9947118B890000B5D7D7 /* StretchInBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchInBackground.h; sourceTree = "<group>"; };
 		E27D9949118B890000B5D7D7 /* TimeScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScaler.h; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		E25FCE94116BB6FC00FCB21D /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				E273DBDC11EBC19C0095F337 /* cd */,
 				E2B1963B11B21B8E009C4C13 /* mpg123 */,
 				E27D9944118B890000B5D7D7 /* stretch */,
 				E2A855A911835D3B00667631 /* source */,
@@ -377,6 +380,14 @@
 				E270C22B11A1CD80006F3C08 /* libjucedebug.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E273DBDC11EBC19C0095F337 /* cd */ = {
+			isa = PBXGroup;
+			children = (
+				E273DBDD11EBC19C0095F337 /* juce_AudioCDReader_test.cpp */,
+			);
+			path = cd;
 			sourceTree = "<group>";
 		};
 		E27D9944118B890000B5D7D7 /* stretch */ = {
@@ -601,6 +612,7 @@
 				E2DE78D211C81B010088F22E /* GetNextBlock_test.cpp in Sources */,
 				E2DE78D311C81B010088F22E /* MergeBlockSet.cpp in Sources */,
 				E2DE78D411C81B010088F22E /* MergeBlockSet_test.cpp in Sources */,
+				E273DBDE11EBC19C0095F337 /* juce_AudioCDReader_test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
