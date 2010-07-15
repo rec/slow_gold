@@ -197,48 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>E273DC5C11ECFA010095F337</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>juce_mac_AudioCDReader_helpers.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>E273DC5D11ECFA010095F337</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>juce_mac_AudioCDReader_helpers.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>E273DCA211ED09830095F337</string>
-						<key>history</key>
-						<array>
-							<string>E273DC5211ECF9300095F337</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {810, 990}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>84 79 810 1031 0 0 1920 1178 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -270,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -360,12 +317,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>stdlib.h</string>
+								<string>juce_AudioCDReader_test.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -373,11 +332,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>stdlib.h</string>
+										<string>juce_AudioCDReader_test.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E273DCA111ED09830095F337</string>
+										<string>E273DD7311EE63AD0095F337</string>
 										<key>history</key>
 										<array>
 											<string>E267743E1171A14000A44B58</string>
@@ -409,7 +368,8 @@
 											<string>E2DE78AD11C759B40088F22E</string>
 											<string>E273DBD311EBC1800095F337</string>
 											<string>E273DBE311EBC1CB0095F337</string>
-											<string>E273DBE411EBC1CB0095F337</string>
+											<string>E273DD4811EE4AFF0095F337</string>
+											<string>E273DD4911EE4AFF0095F337</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -421,14 +381,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {748, 551}}</string>
+								<string>{{0, 0}, {748, 541}}</string>
 								<key>RubberWindowFrame</key>
 								<string>791 88 1037 1090 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>551pt</string>
+							<string>541pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -441,14 +401,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 556}, {748, 493}}</string>
+								<string>{{0, 546}, {748, 503}}</string>
 								<key>RubberWindowFrame</key>
 								<string>791 88 1037 1090 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>493pt</string>
+							<string>503pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -467,9 +427,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E273DB7D11E8E2680095F337</string>
+				<string>E273DD4B11EE4AFF0095F337</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E273DB7E11E8E2680095F337</string>
+				<string>E273DD4C11EE4AFF0095F337</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -607,13 +567,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E273DBD611EBC1800095F337</string>
-		<string>E273DBD711EBC1800095F337</string>
+		<string>E273DD5B11EE4BED0095F337</string>
+		<string>E273DD5C11EE4BED0095F337</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/tom/Documents/development/rec/xcode/unit-tests.xcodeproj</string>
-		<string>E273DC5C11ECFA010095F337</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>E25FC5FC116A364600FCB21D</string>
+		<string>/Users/tom/Documents/development/rec/xcode/unit-tests.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>791 88 1037 1090 0 0 1920 1178 </string>
@@ -632,14 +591,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>juce_AudioCDReader_test.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -695,7 +652,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E25FC5FC116A364600FCB21D</string>
-				<string>E273DB8011E8E2680095F337</string>
+				<string>E273DD4E11EE4AFF0095F337</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -708,7 +665,7 @@
 			<key>WindowToolGUID</key>
 			<string>E25FC5FC116A364600FCB21D</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -817,13 +774,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E273DBA311E8E6F50095F337</string>
+				<string>E273DD5311EE4BED0095F337</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E273DBA411E8E6F50095F337</string>
-				<string>E273DBA511E8E6F50095F337</string>
-				<string>E273DBA611E8E6F50095F337</string>
-				<string>E273DBA711E8E6F50095F337</string>
-				<string>E273DBA811E8E6F50095F337</string>
+				<string>E273DD5411EE4BED0095F337</string>
+				<string>E273DD5511EE4BED0095F337</string>
+				<string>E273DD5611EE4BED0095F337</string>
+				<string>E273DD5711EE4BED0095F337</string>
+				<string>E273DD5811EE4BED0095F337</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -956,7 +913,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1211, 783}}</string>
 								<key>RubberWindowFrame</key>
-								<string>853 354 1211 824 0 0 1920 1178 </string>
+								<string>378 293 1211 824 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -979,13 +936,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E273DBA911E8E6F50095F337</string>
+				<string>E273DD5911EE4BED0095F337</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>853 354 1211 824 0 0 1920 1178 </string>
+			<string>378 293 1211 824 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
