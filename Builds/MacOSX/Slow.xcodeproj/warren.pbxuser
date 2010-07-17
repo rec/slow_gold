@@ -16,6 +16,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -23,6 +24,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = Slow;
+		savedGlobals = {
+		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
@@ -58,7 +61,7 @@
 					20,
 					341,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -73,8 +76,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 298049996;
-			PBXWorkspaceStateSaveDate = 298049996;
+			PBXPerProjectTemplateStateSaveDate = 301081345;
+			PBXWorkspaceStateSaveDate = 301081345;
 		};
 		sourceControlManager = 80D0283A11BAEECD003FB654 /* Source Control */;
 		userBuildSettings = {
