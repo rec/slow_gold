@@ -143,7 +143,7 @@
 		DA883E5D20A6BE2EEB934759 = { isa = XCBuildConfiguration; buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				PREBINDING = NO;
-				HEADER_SEARCH_PATHS = "../../src ../../../juce/src ../../../juce ../.. $(inherited)";
+				HEADER_SEARCH_PATHS = "../../src ../../../juce/src ../../../juce ../.. ../../../mpg123/src $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -159,7 +159,7 @@
 		6424C6CF4B1E4308F1EFC520 = { isa = XCBuildConfiguration; buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				PREBINDING = NO;
-				HEADER_SEARCH_PATHS = "../../src ../../../juce/src ../../../juce ../.. $(inherited)";
+				HEADER_SEARCH_PATHS = "../../src ../../../juce/src ../../../juce ../.. ../../mpg123/src $(inherited)";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";

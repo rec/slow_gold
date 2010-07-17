@@ -28,13 +28,6 @@
 		D8D7D8AC472502272591DFBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C384DB8BB8461D6D4F1247 /* QuartzCore.framework */; };
 		E05E97FBF27AF66E323E4799 /* AudioTimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A86170DF54654A3932DEE280 /* AudioTimeScaler.cpp */; };
 		E22B600D5BDFDECAD9D36254 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710677822355F18A118253E1 /* WebKit.framework */; };
-		E2BF125E11C5386800400126 /* CreateReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF124E11C5386800400126 /* CreateReader.cpp */; };
-		E2BF126011C5386800400126 /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF125211C5386800400126 /* Tags.cpp */; };
-		E2BF126111C5386800400126 /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF125311C5386800400126 /* Copier.cpp */; };
-		E2BF126311C5386800400126 /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF125711C5386800400126 /* Mpg123.cpp */; };
-		E2BF126411C5386800400126 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF125911C5386800400126 /* NewHandle.cpp */; };
-		E2BF126511C5386800400126 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2BF125B11C5386800400126 /* Reader.cpp */; };
-		E2BF127011C53A2100400126 /* libmpg123.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BF126F11C53A2100400126 /* libmpg123.a */; };
 		EF7F0E1777C0DC3AA6F472EE /* AudioDemoTabComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6898695EB11A43B24CA7192 /* AudioDemoTabComponent.cpp */; };
 		F56EE1D486324292B7C4E276 /* SimpleStretcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25819A2307EED667B10D550D /* SimpleStretcher.cpp */; };
 		F751B81C2F9DB620DA7B9E97 /* MainPageK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1DF189E46F0A92D672689E2 /* MainPageK.cpp */; };
@@ -85,20 +78,6 @@
 		D7EB9DBD67E2323D6CFA1983 /* string_piece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = string_piece.h; path = ../../src/rec/base/string_piece.h; sourceTree = SOURCE_ROOT; };
 		DE57FBDDF88FAC392A239587 /* scoped_ptr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scoped_ptr.h; path = ../../src/rec/base/scoped_ptr.h; sourceTree = SOURCE_ROOT; };
 		E20C121C0244B82DA2E3D954 /* AudioTimeScaler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioTimeScaler.h; path = ../../src/rec/ammf_scaler/AudioTimeScaler.h; sourceTree = SOURCE_ROOT; };
-		E2BF124E11C5386800400126 /* CreateReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreateReader.cpp; sourceTree = "<group>"; };
-		E2BF124F11C5386800400126 /* CreateReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReader.h; sourceTree = "<group>"; };
-		E2BF125011C5386800400126 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
-		E2BF125211C5386800400126 /* Tags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tags.cpp; sourceTree = "<group>"; };
-		E2BF125311C5386800400126 /* Copier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Copier.cpp; sourceTree = "<group>"; };
-		E2BF125411C5386800400126 /* Copier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Copier.h; sourceTree = "<group>"; };
-		E2BF125611C5386800400126 /* Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Format.h; sourceTree = "<group>"; };
-		E2BF125711C5386800400126 /* Mpg123.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mpg123.cpp; sourceTree = "<group>"; };
-		E2BF125811C5386800400126 /* Mpg123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mpg123.h; sourceTree = "<group>"; };
-		E2BF125911C5386800400126 /* NewHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewHandle.cpp; sourceTree = "<group>"; };
-		E2BF125A11C5386800400126 /* NewHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHandle.h; sourceTree = "<group>"; };
-		E2BF125B11C5386800400126 /* Reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Reader.cpp; sourceTree = "<group>"; };
-		E2BF125C11C5386800400126 /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reader.h; sourceTree = "<group>"; };
-		E2BF126F11C53A2100400126 /* libmpg123.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpg123.a; path = "../../../mpg123-1.12.1/lib/mac/Release/lib/libmpg123.a"; sourceTree = SOURCE_ROOT; };
 		E3929BEE3A3E05F611D0D1C7 /* mfGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = ../../src/rec/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
 		EE55BF4C06B8858A9EBD1486 /* Wrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrapper.h; path = ../../src/rec/util/Wrapper.h; sourceTree = SOURCE_ROOT; };
 		F0CAE9326C5E07CF9B6E5088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -124,7 +103,6 @@
 				D8D7D8AC472502272591DFBA /* QuartzCore.framework in Frameworks */,
 				9FCE1E1A2C76196453BDF805 /* QTKit.framework in Frameworks */,
 				3B5D518B315B518CA60D355E /* QuickTime.framework in Frameworks */,
-				E2BF127011C53A2100400126 /* libmpg123.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +171,6 @@
 		430D61BBC240F2F1646B86EB /* audio */ = {
 			isa = PBXGroup;
 			children = (
-				E2BF124C11C5386800400126 /* mpg123 */,
 				42E2B3091858AFE0236B15A0 /* StretchOnce.cpp */,
 				5764BDC5DEA76020D0BC2F30 /* StretchOnce.h */,
 				25819A2307EED667B10D550D /* SimpleStretcher.cpp */,
@@ -205,7 +182,6 @@
 		4E892B6E3B2A1A023BA4FC5A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E2BF126F11C53A2100400126 /* libmpg123.a */,
 				760E7F0B6FA41F1EFC3C551C /* Source */,
 				225B631E022E0C13B63AB4E9 /* Juce Library Code */,
 				E7C9D3F3679A3151864FB90A /* Resources */,
@@ -270,27 +246,6 @@
 			);
 			name = util;
 			sourceTree = "<group>";
-		};
-		E2BF124C11C5386800400126 /* mpg123 */ = {
-			isa = PBXGroup;
-			children = (
-				E2BF124E11C5386800400126 /* CreateReader.cpp */,
-				E2BF124F11C5386800400126 /* CreateReader.h */,
-				E2BF125011C5386800400126 /* Tags.h */,
-				E2BF125211C5386800400126 /* Tags.cpp */,
-				E2BF125311C5386800400126 /* Copier.cpp */,
-				E2BF125411C5386800400126 /* Copier.h */,
-				E2BF125611C5386800400126 /* Format.h */,
-				E2BF125711C5386800400126 /* Mpg123.cpp */,
-				E2BF125811C5386800400126 /* Mpg123.h */,
-				E2BF125911C5386800400126 /* NewHandle.cpp */,
-				E2BF125A11C5386800400126 /* NewHandle.h */,
-				E2BF125B11C5386800400126 /* Reader.cpp */,
-				E2BF125C11C5386800400126 /* Reader.h */,
-			);
-			name = mpg123;
-			path = ../../src/rec/audio/format/mpg123;
-			sourceTree = SOURCE_ROOT;
 		};
 		E7C9D3F3679A3151864FB90A /* Resources */ = {
 			isa = PBXGroup;
@@ -366,12 +321,6 @@
 				95EB0997810AC520BB5AF8A2 /* AudioDemoSetupPage.cpp in Sources */,
 				EF7F0E1777C0DC3AA6F472EE /* AudioDemoTabComponent.cpp in Sources */,
 				6454281CCDB36081A751E2C0 /* JuceLibraryCode.mm in Sources */,
-				E2BF125E11C5386800400126 /* CreateReader.cpp in Sources */,
-				E2BF126011C5386800400126 /* Tags.cpp in Sources */,
-				E2BF126111C5386800400126 /* Copier.cpp in Sources */,
-				E2BF126311C5386800400126 /* Mpg123.cpp in Sources */,
-				E2BF126411C5386800400126 /* NewHandle.cpp in Sources */,
-				E2BF126511C5386800400126 /* Reader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +341,6 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../../../mpg123/src;
 				PRODUCT_NAME = SlowBurn;
 				ZERO_LINK = NO;
 			};
@@ -416,14 +364,11 @@
 					../../../juce/src,
 					../../../juce,
 					../..,
+					../../mpg123/src,
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../mpg123-1.12.1/lib/mac/Release/lib\"",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				PREBINDING = NO;
@@ -445,7 +390,6 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../../../mpg123/src;
 				PRODUCT_NAME = SlowBurn;
 				ZERO_LINK = NO;
 			};
@@ -469,14 +413,11 @@
 					../../../juce/src,
 					../../../juce,
 					../..,
+					../../../mpg123/src,
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../mpg123-1.12.1/lib/mac/Release/lib\"",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
