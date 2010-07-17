@@ -88,7 +88,7 @@
             Optimization="3"
             InlineFunctionExpansion="1"
             StringPooling="true"
-            AdditionalIncludeDirectories="../../src;../../../juce/src;../../../juce;../..;../../mpg123/src"
+            AdditionalIncludeDirectories="../../src;../../../juce/src;../../../juce;../../../mpg123/src"
             PreprocessorDefinitions="JUCER_VS2005_78A5003;WIN32;_WINDOWS;NDEBUG"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
@@ -130,6 +130,24 @@
     <Filter Name="Slow">
       <Filter Name="Source">
         <Filter Name="audio">
+          <Filter Name="format">
+            <Filter Name="mpg123">
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Copier.h"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\CreateReader.h"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Format.h"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Manager.h"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Mpg123.cpp"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Mpg123.h"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\NewHandle.cpp"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\NewHandle.h"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Reader.cpp"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Reader.h"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
+              <File RelativePath="..\..\src\rec\audio\format\mpg123\Tags.h"/>
+            </Filter>
+          </Filter>
           <File RelativePath="..\..\src\rec\audio\stretch\StretchOnce.cpp"/>
           <File RelativePath="..\..\src\rec\audio\stretch\StretchOnce.h"/>
           <File RelativePath="..\..\src\rec\audio\stretch\SimpleStretcher.cpp"/>

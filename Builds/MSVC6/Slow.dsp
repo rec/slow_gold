@@ -62,7 +62,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O3 /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /YX /FD /c  /Zm1024
-# ADD CPP /nologo /MT /W3 /GR /GX /O3 /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /I ../../mpg123/src /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
+# ADD CPP /nologo /MT /W3 /GR /GX /O3 /I ../../src /I ../../../juce/src /I ../../../juce /I ../../../mpg123/src /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
 # SUBTRACT CPP /YX
 # ADD BASE MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
 # ADD MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
@@ -84,6 +84,54 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Group "audio"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Group "format"
+# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Group "mpg123"
+# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Copier.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Copier.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\CreateReader.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\CreateReader.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Format.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Manager.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Mpg123.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Mpg123.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\NewHandle.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\NewHandle.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Reader.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Reader.h"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Tags.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\audio\format\mpg123\Tags.h"
+# End Source File
+# End Group
+# End Group
 # Begin Source File
 SOURCE="..\..\src\rec\audio\stretch\StretchOnce.cpp"
 # End Source File
