@@ -27,7 +27,6 @@
 		2EA0C40FFF80B2DDB0CB2D78 = { isa = PBXBuildFile; fileRef = A90B34A4FAC2783FCC9CD77D; };
 		760CCF72273E30547649D3D9 = { isa = PBXBuildFile; fileRef = F6E29673DBA9D375D561560D; };
 		5C77980B83368100D4303E5E = { isa = PBXBuildFile; fileRef = 59B92B32483924BEBD85EF8C; };
-		613A26A9921128067F29C5DC = { isa = PBXBuildFile; fileRef = 96B90CB11D654D9C3D445F54; };
 		AEF823EB81D7CE123E4DD301 = { isa = PBXBuildFile; fileRef = 6A2405017D2984B05B3181B2; };
 		F751B81C2F9DB620DA7B9E97 = { isa = PBXBuildFile; fileRef = A1DF189E46F0A92D672689E2; };
 		1D0A78CE5EDA62E2D8231C3F = { isa = PBXBuildFile; fileRef = 3A908E8B64D70B84D631AEDA; };
@@ -80,8 +79,6 @@
 		D7EB9DBD67E2323D6CFA1983 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = string_piece.h; path = ../../src/rec/base/string_piece.h; sourceTree = SOURCE_ROOT; };
 		59B92B32483924BEBD85EF8C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioSetupPage.cpp; path = ../../src/rec/components/AudioSetupPage.cpp; sourceTree = SOURCE_ROOT; };
 		C6594824B854D79B978445B3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioSetupPage.h; path = ../../src/rec/components/AudioSetupPage.h; sourceTree = SOURCE_ROOT; };
-		96B90CB11D654D9C3D445F54 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FileBrowserPage.cpp; path = ../../src/rec/components/FileBrowserPage.cpp; sourceTree = SOURCE_ROOT; };
-		53E3791064D4704106B395C1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileBrowserPage.h; path = ../../src/rec/components/FileBrowserPage.h; sourceTree = SOURCE_ROOT; };
 		6A2405017D2984B05B3181B2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainPageComponent.cpp; path = ../../src/rec/components/MainPageComponent.cpp; sourceTree = SOURCE_ROOT; };
 		6D89E7A4B37C2434250B0564 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPageComponent.h; path = ../../src/rec/components/MainPageComponent.h; sourceTree = SOURCE_ROOT; };
 		A1DF189E46F0A92D672689E2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainPageK.cpp; path = ../../src/rec/components/MainPageK.cpp; sourceTree = SOURCE_ROOT; };
@@ -143,8 +140,6 @@
 		5523AC4E5FE040F694CA4ECC = { isa = PBXGroup; children = (
 				59B92B32483924BEBD85EF8C,
 				C6594824B854D79B978445B3,
-				96B90CB11D654D9C3D445F54,
-				53E3791064D4704106B395C1,
 				6A2405017D2984B05B3181B2,
 				6D89E7A4B37C2434250B0564,
 				A1DF189E46F0A92D672689E2,
@@ -264,7 +259,6 @@
 				2EA0C40FFF80B2DDB0CB2D78,
 				760CCF72273E30547649D3D9,
 				5C77980B83368100D4303E5E,
-				613A26A9921128067F29C5DC,
 				AEF823EB81D7CE123E4DD301,
 				F751B81C2F9DB620DA7B9E97,
 				1D0A78CE5EDA62E2D8231C3F,

@@ -223,12 +223,6 @@ SOURCE="..\..\src\rec\components\AudioSetupPage.cpp"
 SOURCE="..\..\src\rec\components\AudioSetupPage.h"
 # End Source File
 # Begin Source File
-SOURCE="..\..\src\rec\components\FileBrowserPage.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\components\FileBrowserPage.h"
-# End Source File
-# Begin Source File
 SOURCE="..\..\src\rec\components\MainPageComponent.cpp"
 # End Source File
 # Begin Source File

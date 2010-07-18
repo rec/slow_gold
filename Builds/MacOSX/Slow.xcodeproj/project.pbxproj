@@ -19,7 +19,6 @@
 		5AF70CB4283DFC19FBFDC8F6 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D302123972F44C6FA8116ED /* Reader.cpp */; };
 		5C77980B83368100D4303E5E /* AudioSetupPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59B92B32483924BEBD85EF8C /* AudioSetupPage.cpp */; };
 		5EA8FAE8BCA61F0C32D7E0A9 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0605F20B3DE54F62AFB070B /* CoreAudio.framework */; };
-		613A26A9921128067F29C5DC /* FileBrowserPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96B90CB11D654D9C3D445F54 /* FileBrowserPage.cpp */; };
 		6454281CCDB36081A751E2C0 /* JuceLibraryCode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AD1ACF84EC3907635359A66 /* JuceLibraryCode.mm */; };
 		760CCF72273E30547649D3D9 /* RecWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E29673DBA9D375D561560D /* RecWindow.cpp */; };
 		78D4140796E169612E300C81 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0154BC9F317CD6BAC047E4A6 /* Cocoa.framework */; };
@@ -63,7 +62,6 @@
 		441442BB4D1DEEF26B398FFF /* Reader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reader.h; path = ../../src/rec/audio/format/mpg123/Reader.h; sourceTree = SOURCE_ROOT; };
 		4A7C6FEE150C3F59C79812E3 /* AudioResampler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioResampler.h; path = ../../src/rec/ammf_scaler/AudioResampler.h; sourceTree = SOURCE_ROOT; };
 		5065011A8BA3343CF2C77019 /* MainPageJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPageJ.h; path = ../../src/rec/components/MainPageJ.h; sourceTree = SOURCE_ROOT; };
-		53E3791064D4704106B395C1 /* FileBrowserPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileBrowserPage.h; path = ../../src/rec/components/FileBrowserPage.h; sourceTree = SOURCE_ROOT; };
 		5764BDC5DEA76020D0BC2F30 /* StretchOnce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StretchOnce.h; path = ../../src/rec/audio/stretch/StretchOnce.h; sourceTree = SOURCE_ROOT; };
 		59B92B32483924BEBD85EF8C /* AudioSetupPage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioSetupPage.cpp; path = ../../src/rec/components/AudioSetupPage.cpp; sourceTree = SOURCE_ROOT; };
 		6046DD8656157E6AF488E675 /* port.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = port.h; path = ../../src/rec/base/port.h; sourceTree = SOURCE_ROOT; };
@@ -78,7 +76,6 @@
 		873F503C75E4D86EB0878028 /* NewHandle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NewHandle.cpp; path = ../../src/rec/audio/format/mpg123/NewHandle.cpp; sourceTree = SOURCE_ROOT; };
 		8CD076695CE7083810C2C328 /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		8FCFD0D27E75524CC28F9614 /* RecWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecWindow.h; path = ../../src/rec/app/RecWindow.h; sourceTree = SOURCE_ROOT; };
-		96B90CB11D654D9C3D445F54 /* FileBrowserPage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FileBrowserPage.cpp; path = ../../src/rec/components/FileBrowserPage.cpp; sourceTree = SOURCE_ROOT; };
 		9C13F8A4293E4D84AC54799E /* mfAlloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfAlloc.h; path = ../../src/rec/ammf_scaler/mfAlloc.h; sourceTree = SOURCE_ROOT; };
 		9C345EB19E84245F201AA5E3 /* SimpleStretcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SimpleStretcher.h; path = ../../src/rec/audio/stretch/SimpleStretcher.h; sourceTree = SOURCE_ROOT; };
 		A1DF189E46F0A92D672689E2 /* MainPageK.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainPageK.cpp; path = ../../src/rec/components/MainPageK.cpp; sourceTree = SOURCE_ROOT; };
@@ -241,8 +238,6 @@
 			children = (
 				59B92B32483924BEBD85EF8C /* AudioSetupPage.cpp */,
 				C6594824B854D79B978445B3 /* AudioSetupPage.h */,
-				96B90CB11D654D9C3D445F54 /* FileBrowserPage.cpp */,
-				53E3791064D4704106B395C1 /* FileBrowserPage.h */,
 				6A2405017D2984B05B3181B2 /* MainPageComponent.cpp */,
 				6D89E7A4B37C2434250B0564 /* MainPageComponent.h */,
 				A1DF189E46F0A92D672689E2 /* MainPageK.cpp */,
@@ -378,7 +373,6 @@
 				2EA0C40FFF80B2DDB0CB2D78 /* RecApplication.cpp in Sources */,
 				760CCF72273E30547649D3D9 /* RecWindow.cpp in Sources */,
 				5C77980B83368100D4303E5E /* AudioSetupPage.cpp in Sources */,
-				613A26A9921128067F29C5DC /* FileBrowserPage.cpp in Sources */,
 				AEF823EB81D7CE123E4DD301 /* MainPageComponent.cpp in Sources */,
 				F751B81C2F9DB620DA7B9E97 /* MainPageK.cpp in Sources */,
 				1D0A78CE5EDA62E2D8231C3F /* MainPageJ.cpp in Sources */,
