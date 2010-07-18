@@ -32,12 +32,12 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 301079044;
-			PBXWorkspaceStateSaveDate = 301079044;
+			PBXPerProjectTemplateStateSaveDate = 301163381;
+			PBXWorkspaceStateSaveDate = 301163381;
 		};
 		perUserProjectItems = {
 			800CA54511F224B10046164F /* PBXTextBookmark */ = 800CA54511F224B10046164F /* PBXTextBookmark */;
-			80A33D8311F2181E00EBE730 /* PBXTextBookmark */ = 80A33D8311F2181E00EBE730 /* PBXTextBookmark */;
+			80F9BC5011F363B20014C8E2 /* PBXTextBookmark */ = 80F9BC5011F363B20014C8E2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 80D027A411BAE877003FB654 /* Source Control */;
 		userBuildSettings = {
@@ -52,16 +52,6 @@
 		rType = 0;
 		vrLen = 572;
 		vrLoc = 480;
-	};
-	80A33D8311F2181E00EBE730 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = E2BF115911BECD6400400126 /* Reader_test.cpp */;
-		name = "Reader_test.cpp: 29";
-		rLen = 0;
-		rLoc = 833;
-		rType = 0;
-		vrLen = 537;
-		vrLoc = 580;
 	};
 	80D0278311BAE86B003FB654 /* unit-tests */ = {
 		isa = PBXExecutable;
@@ -107,6 +97,16 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	80F9BC5011F363B20014C8E2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2BF115911BECD6400400126 /* Reader_test.cpp */;
+		name = "Reader_test.cpp: 29";
+		rLen = 0;
+		rLoc = 833;
+		rType = 0;
+		vrLen = 571;
+		vrLoc = 480;
+	};
 	E25FC6C6116A407700FCB21D /* unit-tests */ = {
 		activeExec = 0;
 		executables = (
@@ -120,11 +120,18 @@
 			sepNavVisRange = "{0, 415}";
 		};
 	};
+	E273DBDD11EBC19C0095F337 /* juce_AudioCDReader_test.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {721, 1092}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 410}";
+		};
+	};
 	E2BF115911BECD6400400126 /* Reader_test.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {558, 650}}";
+			sepNavIntBoundsRect = "{{0, 0}, {558, 689}}";
 			sepNavSelRange = "{833, 0}";
-			sepNavVisRange = "{480, 572}";
+			sepNavVisRange = "{480, 571}";
 		};
 	};
 }
