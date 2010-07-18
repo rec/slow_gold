@@ -10,7 +10,7 @@
               pluginRTASCategory="" bundleIdentifier="ax.to.rec" jucerVersion="3.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../juce" extraLinkerFlags="-L/Users/tom/Documents/development/mpg123/lib/mac/Release/lib -lmpg123"/>
+               juceFolder="../juce" extraLinkerFlags="-L../../../mpg123/lib/mac/Release/lib -lmpg123"/>
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                   juceFolder="../../../juce"/>
     <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
