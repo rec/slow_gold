@@ -83,6 +83,7 @@ class MainPageK : public FileBrowserListener,
   rec::audio::timescaler::Description scaleDescription_;
   rec::audio::timescaler::Simple stretch_;
   std::vector<AudioCDBurner*> burners_;
+  StringArray cdNames_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

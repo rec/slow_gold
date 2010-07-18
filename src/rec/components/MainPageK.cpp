@@ -24,7 +24,8 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    scaleDescription_(Description::Default()) {
+    scaleDescription_(Description::Default()),
+    cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
 void MainPageK::construct(MainPageJ* peer) {
@@ -46,12 +47,11 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->pitchScaleSlider->addListener(this);
   peer_->zoomSlider->addListener(this);
 
-  StringArray cds = AudioCDBurner::findAvailableDevices();
-  burners_.resize(cds.size());
+  burners_.resize(cdNames_.size());
   for (int i = 0; i < burners_.size(); ++i) {
     burners_[i] = AudioCDBurner::openDevice(i);
     burners_[i]->addChangeListener(this);
-    std::cerr << "Adding burner " << i << ", " << cds[i] << "\n";
+    changeListenerCallback(burners_[i]);
   }
 }
 
@@ -75,14 +75,28 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 void MainPageK::sliderDragEnded(Slider* slider) {
   if (slider == peer_->timeScaleSlider)
     scaleDescription_.timeScale_ = slider->getValue();
+
   else if (slider == peer_->pitchScaleSlider)
     scaleDescription_.pitchScale_ = slider->getValue();
+
   else
     return;
+
   scaleTime();
 }
 
+static const char* const CD_STATE_NAMES[] = {
+  "unknown",                /**< An error condition, if the device isn't responding. */
+  "trayOpen",               /**< The drive is currently open. Note that a slot-loading drive
+                                     may seem to be permanently open. */
+  "noDisc",                 /**< The drive has no disk in it. */
+  "writableDiskPresent",    /**< The drive contains a writeable disk. */
+  "readOnlyDiskPresent"     /**< The drive contains a read-only disk. */
+};
+
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
+  AudioCDBurner* cd = (AudioCDBurner*) objectThatHasChanged;
+  std::cerr << CD_STATE_NAMES[cd->getDiskState()] << "\n";
 }
 
 void MainPageK::startStopButtonClicked() {
