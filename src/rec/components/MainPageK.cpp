@@ -45,6 +45,14 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->timeScaleSlider->addListener(this);
   peer_->pitchScaleSlider->addListener(this);
   peer_->zoomSlider->addListener(this);
+
+  StringArray cds = AudioCDBurner::findAvailableDevices();
+  burners_.resize(cds.size());
+  for (int i = 0; i < burners_.size(); ++i) {
+    burners_[i] = AudioCDBurner::openDevice(i);
+    burners_[i]->addChangeListener(this);
+    std::cerr << "Adding burner " << i << ", " << cds[i] << "\n";
+  }
 }
 
 void MainPageK::destruct() {
@@ -55,6 +63,8 @@ void MainPageK::destruct() {
 
   deviceManager_->removeAudioCallback(&player_);
   peer_->fileTreeComp->removeListener(this);
+  for (int i = 0; i < burners_.size(); ++i)
+    delete burners_[i];
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
@@ -70,6 +80,9 @@ void MainPageK::sliderDragEnded(Slider* slider) {
   else
     return;
   scaleTime();
+}
+
+void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
 }
 
 void MainPageK::startStopButtonClicked() {

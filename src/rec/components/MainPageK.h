@@ -1,6 +1,8 @@
 #ifndef __REC_COMPONENT_MAIN_PAGE_K_H__
 #define __REC_COMPONENT_MAIN_PAGE_K_H__
 
+#include <vector>
+
 #include "JuceLibraryCode/JuceHeader.h"
 #include "AudioThumbnailComponent.h"
 #include "rec/base/scoped_ptr.h"
@@ -9,7 +11,9 @@
 
 class MainPageJ;
 
-class MainPageK : public FileBrowserListener, public SliderListener {
+class MainPageK : public FileBrowserListener,
+                  public SliderListener,
+                  public ChangeListener {
  public:
   MainPageK(AudioDeviceManager* d);
   ~MainPageK() {}
@@ -20,12 +24,17 @@ class MainPageK : public FileBrowserListener, public SliderListener {
   void startStopButtonClicked();
   void loopingButtonClicked();
 
+  // SliderListener.
   virtual void sliderValueChanged (Slider* slider);
   virtual void sliderDragEnded (Slider* slider);
 
-  void selectionChanged();
-  void fileClicked(const File& file, const MouseEvent& e) {}
-  void fileDoubleClicked(const File& file) {}
+  // ChangeListener - for when CDs are inserted.
+  virtual void changeListenerCallback (void* objectThatHasChanged);
+
+  // FileBrowserListener
+  virtual void selectionChanged();
+  virtual void fileClicked(const File& file, const MouseEvent& e) {}
+  virtual void fileDoubleClicked(const File& file) {}
 
   DirectoryContentsList* directoryList() { return &directoryList_; }
 
@@ -73,6 +82,7 @@ class MainPageK : public FileBrowserListener, public SliderListener {
   // Describes how to stretch.
   rec::audio::timescaler::Description scaleDescription_;
   rec::audio::timescaler::Simple stretch_;
+  std::vector<AudioCDBurner*> burners_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };
