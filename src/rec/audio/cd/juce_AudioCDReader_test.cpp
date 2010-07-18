@@ -6,7 +6,7 @@
 #include "juce_amalgamated.h"
 
 #include "rec/base/scoped_ptr.h"
-#include "native/mac/juce_mac_AudioCDReader_helpers.h"
+// #include "native/mac/juce_mac_AudioCDReader_helpers.h"
 
 #ifdef __JUCE_MAC_AUDIOCDREADER_HELPERS_JUCEHEADER__
 
