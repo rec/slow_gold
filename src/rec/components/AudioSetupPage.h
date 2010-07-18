@@ -3,7 +3,7 @@
 
   This is an automatically generated file created by the Jucer!
 
-  Creation date:  25 Apr 2010 10:55:59pm
+  Creation date:  18 Sep 2009 11:26:45 am
 
   Be careful when adding custom code to these files, as only the code within
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
@@ -19,15 +19,11 @@
   ==============================================================================
 */
 
-#ifndef __JUCER_HEADER_AUDIODEMOPLAYBACKPAGE_AUDIODEMOPLAYBACKPAGE_FD83EAC0__
-#define __JUCER_HEADER_AUDIODEMOPLAYBACKPAGE_AUDIODEMOPLAYBACKPAGE_FD83EAC0__
+#ifndef __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
+#define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceLibraryCode/JuceHeader.h"
-#include "MainPageK.h"
-#include "DemoThumbnailComp.h"
-#include "rec/base/scoped_ptr.h"
-#include "rec/audio/source/Stretchable.h"
 //[/Headers]
 
 
@@ -40,29 +36,19 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class AudioDemoPlaybackPage  : public Component,
-                               public FileBrowserListener,
-                               public ButtonListener,
-                               public SliderListener
+class AudioSetupPage  : public Component
 {
 public:
     //==============================================================================
-    AudioDemoPlaybackPage (AudioDeviceManager& deviceManager_);
-    ~AudioDemoPlaybackPage();
+    AudioSetupPage (AudioDeviceManager& deviceManager_);
+    ~AudioSetupPage();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-
-    // These methods are our FileBrowserListener implementation:
-    void selectionChanged();
-  void fileClicked (const File& file, const MouseEvent& e) {}
-  void fileDoubleClicked (const File& file) {}
     //[/UserMethods]
 
     void paint (Graphics& g);
     void resized();
-    void buttonClicked (Button* buttonThatWasClicked);
-    void sliderValueChanged (Slider* sliderThatWasMoved);
 
 
     //==============================================================================
@@ -70,36 +56,17 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    friend class MainPageK;
-    MainPageK peer_;
-
     AudioDeviceManager& deviceManager;
-    TimeSliceThread thread;
-    DirectoryContentsList directoryList;
-
-    AudioTransportSource transportSource;
-
-    AudioFormatReaderSource* currentAudioFileSource;
-    scoped_ptr<rec::audio::source::Stretchable> transportSourceWrapper;
-    AudioSourcePlayer audioSourcePlayer;
-    void loadFileIntoTransport (const File& audioFile);
-
     //[/UserVariables]
 
     //==============================================================================
-    Label* zoomLabel;
-    rec::DemoThumbnailComp* thumbnail;
-    TextButton* startStopButton;
-    FileTreeComponent* fileTreeComp;
-    Label* explanation;
-    Slider* zoomSlider;
-    ToggleButton* loopingButton;
+    AudioDeviceSelectorComponent* deviceSelector;
 
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)
-    AudioDemoPlaybackPage (const AudioDemoPlaybackPage&);
-    const AudioDemoPlaybackPage& operator= (const AudioDemoPlaybackPage&);
+    AudioSetupPage (const AudioSetupPage&);
+    AudioSetupPage& operator= (const AudioSetupPage&);
 };
 
 
-#endif   // __JUCER_HEADER_AUDIODEMOPLAYBACKPAGE_AUDIODEMOPLAYBACKPAGE_FD83EAC0__
+#endif   // __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__

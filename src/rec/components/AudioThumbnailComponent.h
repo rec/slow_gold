@@ -5,9 +5,9 @@
 
 namespace rec {
 
-class DemoThumbnailComp  : public Component, public ChangeListener {
+class AudioThumbnailComponent  : public Component, public ChangeListener {
  public:
-  DemoThumbnailComp()
+  AudioThumbnailComponent()
       : thumbnailCache (5),
         thumbnail(512, formatManager, thumbnailCache) {
     startTime = endTime = 0;
@@ -15,7 +15,7 @@ class DemoThumbnailComp  : public Component, public ChangeListener {
     thumbnail.addChangeListener(this);
   }
 
-  ~DemoThumbnailComp() {
+  ~AudioThumbnailComponent() {
     thumbnail.removeChangeListener(this);
   }
 

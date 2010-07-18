@@ -242,16 +242,16 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 301108744;
-			PBXWorkspaceStateSaveDate = 301108744;
+			PBXPerProjectTemplateStateSaveDate = 301110457;
+			PBXWorkspaceStateSaveDate = 301110457;
 		};
 		perUserProjectItems = {
-			E2040D4411F292B400CE6A2A /* XCBuildMessageTextBookmark */ = E2040D4411F292B400CE6A2A /* XCBuildMessageTextBookmark */;
-			E2040D4A11F292C900CE6A2A /* XCBuildMessageTextBookmark */ = E2040D4A11F292C900CE6A2A /* XCBuildMessageTextBookmark */;
-			E2040D5111F2930A00CE6A2A /* XCBuildMessageTextBookmark */ = E2040D5111F2930A00CE6A2A /* XCBuildMessageTextBookmark */;
-			E2040D5211F2930A00CE6A2A /* PBXTextBookmark */ = E2040D5211F2930A00CE6A2A /* PBXTextBookmark */;
-			E2040D5511F2930A00CE6A2A /* PBXTextBookmark */ = E2040D5511F2930A00CE6A2A /* PBXTextBookmark */;
-			E2040D5811F2930A00CE6A2A /* PBXTextBookmark */ = E2040D5811F2930A00CE6A2A /* PBXTextBookmark */;
+			E2040D4411F292B400CE6A2A = E2040D4411F292B400CE6A2A /* PBXTextBookmark */;
+			E2040D4A11F292C900CE6A2A = E2040D4A11F292C900CE6A2A /* PBXTextBookmark */;
+			E2040D5111F2930A00CE6A2A = E2040D5111F2930A00CE6A2A /* PBXTextBookmark */;
+			E2040D5211F2930A00CE6A2A = E2040D5211F2930A00CE6A2A /* PBXTextBookmark */;
+			E2040D5511F2930A00CE6A2A = E2040D5511F2930A00CE6A2A /* PBXTextBookmark */;
+			E2040D5811F2930A00CE6A2A = E2040D5811F2930A00CE6A2A /* PBXTextBookmark */;
 			E20BD2DF115C3AB100199C08 = E20BD2DF115C3AB100199C08 /* PBXTextBookmark */;
 			E22A411F118632F7007293B2 = E22A411F118632F7007293B2 /* PBXTextBookmark */;
 			E22A413F118677E7007293B2 = E22A413F118677E7007293B2 /* PBXTextBookmark */;
@@ -318,35 +318,27 @@
 		name = juce_amalgamated.h;
 		path = ../../../juce/juce_amalgamated.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {751, 787241}}";
-			sepNavSelRange = "{9117, 30}";
-			sepNavVisRange = "{7612, 2499}";
-		};
 	};
-	E2040D4411F292B400CE6A2A /* XCBuildMessageTextBookmark */ = {
+	E2040D4411F292B400CE6A2A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "This is the location of the previous definition";
 		fRef = E2040D4311F292B400CE6A2A /* juce_amalgamated.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 339;
 		rType = 1;
 	};
-	E2040D4A11F292C900CE6A2A /* XCBuildMessageTextBookmark */ = {
+	E2040D4A11F292C900CE6A2A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Base operand of '->' has non-pointer type 'juce::ApplicationCommandManager'";
 		fRef = F6E29673DBA9D375D561560D /* RecWindow.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 15;
 		rType = 1;
 	};
-	E2040D5111F2930A00CE6A2A /* XCBuildMessageTextBookmark */ = {
+	E2040D5111F2930A00CE6A2A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected `{' before ')' token";
 		fRef = F6E29673DBA9D375D561560D /* RecWindow.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 9;
 		rType = 1;
@@ -582,7 +574,6 @@
 	};
 	E27D9C35119B4F6A00B5D7D7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = FD2C498C4AEC38E998FF66A1 /* AudioDemoSetupPage.cpp */;
 		name = "AudioDemoSetupPage.cpp: 1";
 		rLen = 0;
 		rLoc = 0;
@@ -1052,13 +1043,6 @@
 			sepNavSelRange = "{697, 0}";
 			sepNavVisRange = "{83, 2105}";
 			sepNavWindowFrame = "{{563, 102}, {1194, 912}}";
-		};
-	};
-	FD2C498C4AEC38E998FF66A1 /* AudioDemoSetupPage.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {795, 1443}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{402, 1185}";
 		};
 	};
 }

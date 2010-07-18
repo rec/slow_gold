@@ -24,7 +24,7 @@
 
 #include "MainPageComponent.h"
 #include "MainPageJ.h"
-#include "AudioDemoSetupPage.h"
+#include "AudioSetupPage.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
@@ -114,7 +114,7 @@ MainPageComponent::MainPageComponent ()
     addAndMakeVisible (tabbedComponent = new TabbedComponent (TabbedButtonBar::TabsAtTop));
     tabbedComponent->setTabBarDepth (30);
     tabbedComponent->addTab (T("File Playback"), Colours::lightgrey, new MainPageJ (deviceManager), true);
-    tabbedComponent->addTab (T("Audio Device Setup"), Colours::lightgrey, new AudioDemoSetupPage (deviceManager), true);
+    tabbedComponent->addTab (T("Audio Device Setup"), Colours::lightgrey, new AudioSetupPage (deviceManager), true);
     tabbedComponent->setCurrentTabIndex (0);
 
 
@@ -189,7 +189,7 @@ BEGIN_JUCER_METADATA
     <TAB name="File Playback" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
          constructorParams="deviceManager" jucerComponentFile="MainPageJ.cpp"/>
     <TAB name="Audio Device Setup" colour="ffd3d3d3" useJucerComp="1"
-         contentClassName="" constructorParams="deviceManager" jucerComponentFile="AudioDemoSetupPage.cpp"/>
+         contentClassName="" constructorParams="deviceManager" jucerComponentFile="AudioSetupPage.cpp"/>
   </TABBEDCOMPONENT>
 </JUCER_COMPONENT>
 

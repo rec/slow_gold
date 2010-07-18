@@ -22,14 +22,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "AudioDemoPlaybackPage.h"
+#include "FileBrowserPage.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-AudioDemoPlaybackPage::AudioDemoPlaybackPage (AudioDeviceManager& deviceManager_)
+FileBrowserPage::FileBrowserPage (AudioDeviceManager& deviceManager_)
     : deviceManager (deviceManager_),
       thread ("audio file preview"),
       directoryList (0, thread),
@@ -50,7 +50,7 @@ AudioDemoPlaybackPage::AudioDemoPlaybackPage (AudioDeviceManager& deviceManager_
     zoomLabel->setColour (TextEditor::textColourId, Colours::black);
     zoomLabel->setColour (TextEditor::backgroundColourId, Colour (0x0));
 
-    addAndMakeVisible (thumbnail = new rec::DemoThumbnailComp());
+    addAndMakeVisible (thumbnail = new rec::AudioThumbnailComponent());
 
     addAndMakeVisible (startStopButton = new TextButton (String::empty));
     startStopButton->setButtonText (T("Play/Stop"));
@@ -90,7 +90,7 @@ AudioDemoPlaybackPage::AudioDemoPlaybackPage (AudioDeviceManager& deviceManager_
     //[/Constructor]
 }
 
-AudioDemoPlaybackPage::~AudioDemoPlaybackPage()
+FileBrowserPage::~FileBrowserPage()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
   peer_.destruct();
@@ -109,7 +109,7 @@ AudioDemoPlaybackPage::~AudioDemoPlaybackPage()
 }
 
 //==============================================================================
-void AudioDemoPlaybackPage::paint (Graphics& g)
+void FileBrowserPage::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -120,7 +120,7 @@ void AudioDemoPlaybackPage::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void AudioDemoPlaybackPage::resized()
+void FileBrowserPage::resized()
 {
     zoomLabel->setBounds (16, getHeight() - 90, 55, 24);
     thumbnail->setBounds (16, getHeight() - 221, getWidth() - 32, 123);
@@ -133,7 +133,7 @@ void AudioDemoPlaybackPage::resized()
     //[/UserResized]
 }
 
-void AudioDemoPlaybackPage::buttonClicked (Button* buttonThatWasClicked)
+void FileBrowserPage::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -156,7 +156,7 @@ void AudioDemoPlaybackPage::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-void AudioDemoPlaybackPage::sliderValueChanged (Slider* sliderThatWasMoved)
+void FileBrowserPage::sliderValueChanged (Slider* sliderThatWasMoved)
 {
     //[UsersliderValueChanged_Pre]
     //[/UsersliderValueChanged_Pre]
@@ -186,7 +186,7 @@ void AudioDemoPlaybackPage::sliderValueChanged (Slider* sliderThatWasMoved)
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="AudioDemoPlaybackPage" componentName=""
+<JUCER_COMPONENT documentType="Component" className="FileBrowserPage" componentName=""
                  parentClasses="public Component, public FileBrowserListener"
                  constructorParams="AudioDeviceManager&amp; deviceManager_" variableInitialisers="deviceManager (deviceManager_),&#10;thread (&quot;audio file preview&quot;),&#10;directoryList (0, thread),&#10;peer_(&deviceManager_),"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330000013"
@@ -198,7 +198,7 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15"
          bold="0" italic="0" justification="34"/>
   <GENERICCOMPONENT name="" id="beef657b0e007936" memberName="thumbnail" virtualName=""
-                    explicitFocusOrder="0" pos="16 221R 32M 123" class="rec::DemoThumbnailComp"
+                    explicitFocusOrder="0" pos="16 221R 32M 123" class="rec::AudioThumbnailComponent"
                     params=""/>
   <TEXTBUTTON name="" id="abe446e2f3f09420" memberName="startStopButton" virtualName=""
               explicitFocusOrder="0" pos="16 46R 150 32" bgColOff="ff79ed7f"

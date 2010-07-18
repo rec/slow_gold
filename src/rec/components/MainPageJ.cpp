@@ -48,7 +48,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     zoomLabel->setColour (TextEditor::textColourId, Colours::black);
     zoomLabel->setColour (TextEditor::backgroundColourId, Colour (0x0));
 
-    addAndMakeVisible (thumbnail = new rec::DemoThumbnailComp());
+    addAndMakeVisible (thumbnail = new rec::AudioThumbnailComponent());
 
     addAndMakeVisible (startStopButton = new TextButton (String::empty));
     startStopButton->setButtonText (T("Play/Stop"));
@@ -225,7 +225,7 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15"
          bold="0" italic="0" justification="34"/>
   <GENERICCOMPONENT name="" id="beef657b0e007936" memberName="thumbnail" virtualName=""
-                    explicitFocusOrder="0" pos="16 221R 32M 123" class="rec::DemoThumbnailComp"
+                    explicitFocusOrder="0" pos="16 221R 32M 123" class="rec::AudioThumbnailComponent"
                     params=""/>
   <TEXTBUTTON name="" id="abe446e2f3f09420" memberName="startStopButton" virtualName=""
               explicitFocusOrder="0" pos="16 46R 150 32" bgColOff="ff79ed7f"

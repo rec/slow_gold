@@ -2,7 +2,7 @@
 #define __REC_COMPONENT_MAIN_PAGE_K_H__
 
 #include "JuceLibraryCode/JuceHeader.h"
-#include "DemoThumbnailComp.h"
+#include "AudioThumbnailComponent.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/audio/stretch/SimpleStretcher.h"
 #include "rec/audio/source/Loop.h"

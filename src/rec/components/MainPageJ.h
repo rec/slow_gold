@@ -64,7 +64,7 @@ private:
 
     //==============================================================================
     Label* zoomLabel;
-    rec::DemoThumbnailComp* thumbnail;
+    rec::AudioThumbnailComponent* thumbnail;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
     Label* explanation;

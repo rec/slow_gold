@@ -1,7 +1,7 @@
 #include "MainPageJ.h"
 #include "MainPageK.h"
 
-#include "DemoThumbnailComp.h"
+#include "AudioThumbnailComponent.h"
 #include "rec/audio/Math.h"
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/format/mpg123/Mpg123.h"

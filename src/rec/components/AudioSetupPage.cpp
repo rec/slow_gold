@@ -22,14 +22,14 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "AudioDemoSetupPage.h"
+#include "AudioSetupPage.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 //[/MiscUserDefs]
 
 //==============================================================================
-AudioDemoSetupPage::AudioDemoSetupPage (AudioDeviceManager& deviceManager_)
+AudioSetupPage::AudioSetupPage (AudioDeviceManager& deviceManager_)
     : deviceManager (deviceManager_),
       deviceSelector (0)
 {
@@ -45,7 +45,7 @@ AudioDemoSetupPage::AudioDemoSetupPage (AudioDeviceManager& deviceManager_)
     //[/Constructor]
 }
 
-AudioDemoSetupPage::~AudioDemoSetupPage()
+AudioSetupPage::~AudioSetupPage()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -57,7 +57,7 @@ AudioDemoSetupPage::~AudioDemoSetupPage()
 }
 
 //==============================================================================
-void AudioDemoSetupPage::paint (Graphics& g)
+void AudioSetupPage::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -68,7 +68,7 @@ void AudioDemoSetupPage::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void AudioDemoSetupPage::resized()
+void AudioSetupPage::resized()
 {
     deviceSelector->setBounds (8, 8, getWidth() - 16, getHeight() - 16);
     //[UserResized] Add your own custom resize handling here..
@@ -89,7 +89,7 @@ void AudioDemoSetupPage::resized()
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="AudioDemoSetupPage" componentName=""
+<JUCER_COMPONENT documentType="Component" className="AudioSetupPage" componentName=""
                  parentClasses="public Component" constructorParams="AudioDeviceManager&amp; deviceManager_"
                  variableInitialisers="deviceManager (deviceManager_)" snapPixels="8"
                  snapActive="1" snapShown="1" overlayOpacity="0.330000013" fixedSize="0"
