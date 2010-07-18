@@ -22,7 +22,7 @@
 //[Headers] You can add your own extra header files here...
 //[/Headers]
 
-#include "AudioDemoTabComponent.h"
+#include "MainPageComponent.h"
 #include "MainPageJ.h"
 #include "AudioDemoSetupPage.h"
 
@@ -108,7 +108,7 @@ void LiveAudioInputDisplayComp::audioDeviceIOCallback (const float** inputChanne
 //[/MiscUserDefs]
 
 //==============================================================================
-AudioDemoTabComponent::AudioDemoTabComponent ()
+MainPageComponent::MainPageComponent ()
     : tabbedComponent (0)
 {
     addAndMakeVisible (tabbedComponent = new TabbedComponent (TabbedButtonBar::TabsAtTop));
@@ -128,7 +128,7 @@ AudioDemoTabComponent::AudioDemoTabComponent ()
     //[/Constructor]
 }
 
-AudioDemoTabComponent::~AudioDemoTabComponent()
+MainPageComponent::~MainPageComponent()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -140,7 +140,7 @@ AudioDemoTabComponent::~AudioDemoTabComponent()
 }
 
 //==============================================================================
-void AudioDemoTabComponent::paint (Graphics& g)
+void MainPageComponent::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -151,7 +151,7 @@ void AudioDemoTabComponent::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void AudioDemoTabComponent::resized()
+void MainPageComponent::resized()
 {
     tabbedComponent->setBounds (0, 0, getWidth() - 0, getHeight() - 0);
     //[UserResized] Add your own custom resize handling here..
@@ -164,7 +164,7 @@ void AudioDemoTabComponent::resized()
 //==============================================================================
 Component* createAudioDemo()
 {
-    return new AudioDemoTabComponent();
+    return new MainPageComponent();
 }
 
 //[/MiscUserCode]
@@ -178,7 +178,7 @@ Component* createAudioDemo()
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="AudioDemoTabComponent" componentName=""
+<JUCER_COMPONENT documentType="Component" className="MainPageComponent" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330000013"
                  fixedSize="0" initialWidth="600" initialHeight="400">

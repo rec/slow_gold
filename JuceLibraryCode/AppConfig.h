@@ -21,8 +21,8 @@
 //#define  JUCE_OPENGL
 //#define  JUCE_USE_FLAC
 //#define  JUCE_USE_OGGVORBIS
-//#define  JUCE_USE_CDBURNER
-//#define  JUCE_USE_CDREADER
+#define    JUCE_USE_CDBURNER 1
+#define    JUCE_USE_CDREADER 1
 //#define  JUCE_USE_CAMERA
 //#define  JUCE_ENABLE_REPAINT_DEBUGGING
 //#define  JUCE_USE_XINERAMA

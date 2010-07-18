@@ -26,6 +26,7 @@
 		9FCE1E1A2C76196453BDF805 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235BFCE848FAB266938E2508 /* QTKit.framework */; };
 		A7707B19DA97BC828E057900 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B156F8F40599D9F5D6FC8A0 /* OpenGL.framework */; };
 		A8F28D58A66630FAFD734813 /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E1EAB8FD479A53793B481C /* Mpg123.cpp */; };
+		AEF823EB81D7CE123E4DD301 /* MainPageComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A2405017D2984B05B3181B2 /* MainPageComponent.cpp */; };
 		B205EC1997DD0CD824677DD9 /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC58582E36E82357FBB12AFA /* Tags.cpp */; };
 		B41CFC2091FF99A05C778A77 /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 758CC38B6453CA22C3A8BE42 /* Copier.cpp */; };
 		B4F8EF6A2A3BC48137BABDFF /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40AA3C95D7BE17459176AF3A /* Carbon.framework */; };
@@ -34,7 +35,6 @@
 		DAFD7275788F29D2058FF229 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 873F503C75E4D86EB0878028 /* NewHandle.cpp */; };
 		E05E97FBF27AF66E323E4799 /* AudioTimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A86170DF54654A3932DEE280 /* AudioTimeScaler.cpp */; };
 		E22B600D5BDFDECAD9D36254 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710677822355F18A118253E1 /* WebKit.framework */; };
-		EF7F0E1777C0DC3AA6F472EE /* AudioDemoTabComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6898695EB11A43B24CA7192 /* AudioDemoTabComponent.cpp */; };
 		F56EE1D486324292B7C4E276 /* SimpleStretcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25819A2307EED667B10D550D /* SimpleStretcher.cpp */; };
 		F751B81C2F9DB620DA7B9E97 /* MainPageK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1DF189E46F0A92D672689E2 /* MainPageK.cpp */; };
 /* End PBXBuildFile section */
@@ -64,9 +64,10 @@
 		5065011A8BA3343CF2C77019 /* MainPageJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPageJ.h; path = ../../src/rec/components/MainPageJ.h; sourceTree = SOURCE_ROOT; };
 		5764BDC5DEA76020D0BC2F30 /* StretchOnce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StretchOnce.h; path = ../../src/rec/audio/stretch/StretchOnce.h; sourceTree = SOURCE_ROOT; };
 		6046DD8656157E6AF488E675 /* port.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = port.h; path = ../../src/rec/base/port.h; sourceTree = SOURCE_ROOT; };
-		64C7368328E145FA8BD4F1C7 /* AudioDemoTabComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioDemoTabComponent.h; path = ../../src/rec/components/AudioDemoTabComponent.h; sourceTree = SOURCE_ROOT; };
 		65923ED405C00EAE931C4C1D /* mfAlloc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = mfAlloc.c; path = ../../src/rec/ammf_scaler/mfAlloc.c; sourceTree = SOURCE_ROOT; };
+		6A2405017D2984B05B3181B2 /* MainPageComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainPageComponent.cpp; path = ../../src/rec/components/MainPageComponent.cpp; sourceTree = SOURCE_ROOT; };
 		6B156F8F40599D9F5D6FC8A0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		6D89E7A4B37C2434250B0564 /* MainPageComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPageComponent.h; path = ../../src/rec/components/MainPageComponent.h; sourceTree = SOURCE_ROOT; };
 		6E3EDC1F63C22A8E7513360A /* AudioDemoSetupPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioDemoSetupPage.h; path = ../../src/rec/components/AudioDemoSetupPage.h; sourceTree = SOURCE_ROOT; };
 		710677822355F18A118253E1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		758CC38B6453CA22C3A8BE42 /* Copier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copier.cpp; path = ../../src/rec/audio/format/mpg123/Copier.cpp; sourceTree = SOURCE_ROOT; };
@@ -88,7 +89,6 @@
 		B97CEB19F06FFF2C05FC34BB /* Format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Format.h; path = ../../src/rec/audio/format/mpg123/Format.h; sourceTree = SOURCE_ROOT; };
 		C2ADCFD726CFFADFD37EC145 /* CreateReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateReader.h; path = ../../src/rec/audio/format/mpg123/CreateReader.h; sourceTree = SOURCE_ROOT; };
 		C554AFBC4A2DE3D8ACB65FC8 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
-		C6898695EB11A43B24CA7192 /* AudioDemoTabComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioDemoTabComponent.cpp; path = ../../src/rec/components/AudioDemoTabComponent.cpp; sourceTree = SOURCE_ROOT; };
 		D2E2A6B9B7F9C313D365DEEF /* Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manager.h; path = ../../src/rec/audio/format/mpg123/Manager.h; sourceTree = SOURCE_ROOT; };
 		D5BDB0420D65D050C6FC9B8E /* CreateReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CreateReader.cpp; path = ../../src/rec/audio/format/mpg123/CreateReader.cpp; sourceTree = SOURCE_ROOT; };
 		D6E0346B2A7150BCC120CD73 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
@@ -236,14 +236,14 @@
 		5523AC4E5FE040F694CA4ECC /* components */ = {
 			isa = PBXGroup;
 			children = (
+				6A2405017D2984B05B3181B2 /* MainPageComponent.cpp */,
+				6D89E7A4B37C2434250B0564 /* MainPageComponent.h */,
 				A1DF189E46F0A92D672689E2 /* MainPageK.cpp */,
 				04AE772BC6400D6645F1BACE /* MainPageK.h */,
 				3A908E8B64D70B84D631AEDA /* MainPageJ.cpp */,
 				5065011A8BA3343CF2C77019 /* MainPageJ.h */,
 				FD2C498C4AEC38E998FF66A1 /* AudioDemoSetupPage.cpp */,
 				6E3EDC1F63C22A8E7513360A /* AudioDemoSetupPage.h */,
-				C6898695EB11A43B24CA7192 /* AudioDemoTabComponent.cpp */,
-				64C7368328E145FA8BD4F1C7 /* AudioDemoTabComponent.h */,
 			);
 			name = components;
 			sourceTree = "<group>";
@@ -372,10 +372,10 @@
 				2E884AC6F482468FFB4605D6 /* mfAlloc.c in Sources */,
 				2EA0C40FFF80B2DDB0CB2D78 /* RecApplication.cpp in Sources */,
 				760CCF72273E30547649D3D9 /* RecWindow.cpp in Sources */,
+				AEF823EB81D7CE123E4DD301 /* MainPageComponent.cpp in Sources */,
 				F751B81C2F9DB620DA7B9E97 /* MainPageK.cpp in Sources */,
 				1D0A78CE5EDA62E2D8231C3F /* MainPageJ.cpp in Sources */,
 				95EB0997810AC520BB5AF8A2 /* AudioDemoSetupPage.cpp in Sources */,
-				EF7F0E1777C0DC3AA6F472EE /* AudioDemoTabComponent.cpp in Sources */,
 				6454281CCDB36081A751E2C0 /* JuceLibraryCode.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

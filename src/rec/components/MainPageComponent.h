@@ -66,12 +66,12 @@ private:
     audio demo pages..
                                                                     //[/Comments]
 */
-class AudioDemoTabComponent  : public Component
+class MainPageComponent  : public Component
 {
 public:
     //==============================================================================
-    AudioDemoTabComponent ();
-    ~AudioDemoTabComponent();
+    MainPageComponent ();
+    ~MainPageComponent();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -94,8 +94,8 @@ private:
 
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)
-    AudioDemoTabComponent (const AudioDemoTabComponent&);
-    const AudioDemoTabComponent& operator= (const AudioDemoTabComponent&);
+    MainPageComponent (const MainPageComponent&);
+    const MainPageComponent& operator= (const MainPageComponent&);
 };
 
 

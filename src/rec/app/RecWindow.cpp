@@ -7,19 +7,18 @@ RecWindow::RecWindow()
   : DocumentWindow(T("Rec"),
                    Colours::azure,
                    DocumentWindow::allButtons,
-                   true),
-    commandManager(new ApplicationCommandManager()) {
+                   true) {
   setResizable (true, false); // resizability is a property of ResizableWindow
   setResizeLimits (400, 300, 8192, 8192);
 
   RecContainer* recContainer = new RecContainer(this);
 
-  commandManager->registerAllCommandsForTarget(recContainer);
-  commandManager->registerAllCommandsForTarget(JUCEApplication::getInstance());
+  commandManager.registerAllCommandsForTarget(recContainer);
+  commandManager.registerAllCommandsForTarget(JUCEApplication::getInstance());
 
   // this lets the command manager use keypresses that arrive in our window to send
   // out commands
-  addKeyListener(commandManager->getKeyMappings());
+  addKeyListener(commandManager.getKeyMappings());
 
   // sets the main content component for the window to be this tabbed
   // panel. This will be deleted when the window is deleted.
@@ -31,7 +30,7 @@ RecWindow::RecWindow()
 
   // tells our menu bar model that it should watch this command manager for
   // changes, and send change messages accordingly.
-  recContainer->setApplicationCommandManagerToWatch(commandManager.get());
+  recContainer->setApplicationCommandManagerToWatch(&commandManager);
 
   setVisible (true);
   centreWithSize (700, 600);

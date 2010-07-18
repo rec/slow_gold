@@ -96,6 +96,10 @@
               file="src/rec/base/string_piece.h"/>
       </GROUP>
       <GROUP id="hA2tQmm3w" name="components">
+        <FILE id="hPFdB0Xmm" name="MainPageComponent.cpp" compile="1" resource="0"
+              file="src/rec/components/MainPageComponent.cpp"/>
+        <FILE id="z3hG8XzEN" name="MainPageComponent.h" compile="0" resource="0"
+              file="src/rec/components/MainPageComponent.h"/>
         <FILE id="toUtWS6K" name="MainPageK.cpp" compile="1" resource="0" file="src/rec/components/MainPageK.cpp"/>
         <FILE id="x1FSWXW7M" name="MainPageK.h" compile="0" resource="0" file="src/rec/components/MainPageK.h"/>
         <FILE id="0RH7T3P3w" name="MainPageJ.cpp" compile="1" resource="0"
@@ -105,10 +109,6 @@
               file="src/rec/components/AudioDemoSetupPage.cpp"/>
         <FILE id="3OJgvr5BK" name="AudioDemoSetupPage.h" compile="0" resource="0"
               file="src/rec/components/AudioDemoSetupPage.h"/>
-        <FILE id="ZjscnGPkX" name="AudioDemoTabComponent.cpp" compile="1" resource="0"
-              file="src/rec/components/AudioDemoTabComponent.cpp"/>
-        <FILE id="cvOg4huQ8" name="AudioDemoTabComponent.h" compile="0" resource="0"
-              file="src/rec/components/AudioDemoTabComponent.h"/>
       </GROUP>
       <GROUP id="lTFfEBKXD" name="util">
         <FILE id="249H4m9l7" name="Wrapper.h" compile="0" resource="0" file="src/rec/util/Wrapper.h"/>
@@ -120,7 +120,7 @@
   <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"
                JUCE_WASAPI="default" JUCE_DIRECTSOUND="default" JUCE_ALSA="default"
                JUCE_QUICKTIME="default" JUCE_OPENGL="default" JUCE_USE_FLAC="default"
-               JUCE_USE_OGGVORBIS="default" JUCE_USE_CDBURNER="default" JUCE_USE_CDREADER="default"
+               JUCE_USE_OGGVORBIS="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled"
                JUCE_USE_CAMERA="default" JUCE_ENABLE_REPAINT_DEBUGGING="default"
                JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
                JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default"

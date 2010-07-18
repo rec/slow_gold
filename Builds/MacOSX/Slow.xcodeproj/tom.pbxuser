@@ -138,14 +138,6 @@
 			sepNavVisRange = "{0, 1134}";
 		};
 	};
-	C6898695EB11A43B24CA7192 /* AudioDemoTabComponent.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1135, 2769}}";
-			sepNavSelRange = "{3365, 0}";
-			sepNavVisRange = "{2374, 2091}";
-			sepNavWindowFrame = "{{148, 250}, {1194, 912}}";
-		};
-	};
 	D33217F702904D7008A28536 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = E2B1425F11554E7200999031 /* Slow */;
@@ -250,10 +242,16 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 301083961;
-			PBXWorkspaceStateSaveDate = 301083961;
+			PBXPerProjectTemplateStateSaveDate = 301108744;
+			PBXWorkspaceStateSaveDate = 301108744;
 		};
 		perUserProjectItems = {
+			E2040D4411F292B400CE6A2A /* XCBuildMessageTextBookmark */ = E2040D4411F292B400CE6A2A /* XCBuildMessageTextBookmark */;
+			E2040D4A11F292C900CE6A2A /* XCBuildMessageTextBookmark */ = E2040D4A11F292C900CE6A2A /* XCBuildMessageTextBookmark */;
+			E2040D5111F2930A00CE6A2A /* XCBuildMessageTextBookmark */ = E2040D5111F2930A00CE6A2A /* XCBuildMessageTextBookmark */;
+			E2040D5211F2930A00CE6A2A /* PBXTextBookmark */ = E2040D5211F2930A00CE6A2A /* PBXTextBookmark */;
+			E2040D5511F2930A00CE6A2A /* PBXTextBookmark */ = E2040D5511F2930A00CE6A2A /* PBXTextBookmark */;
+			E2040D5811F2930A00CE6A2A /* PBXTextBookmark */ = E2040D5811F2930A00CE6A2A /* PBXTextBookmark */;
 			E20BD2DF115C3AB100199C08 = E20BD2DF115C3AB100199C08 /* PBXTextBookmark */;
 			E22A411F118632F7007293B2 = E22A411F118632F7007293B2 /* PBXTextBookmark */;
 			E22A413F118677E7007293B2 = E22A413F118677E7007293B2 /* PBXTextBookmark */;
@@ -313,6 +311,75 @@
 			sepNavSelRange = "{525, 0}";
 			sepNavVisRange = "{191, 716}";
 		};
+	};
+	E2040D4311F292B400CE6A2A /* juce_amalgamated.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = juce_amalgamated.h;
+		path = ../../../juce/juce_amalgamated.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {751, 787241}}";
+			sepNavSelRange = "{9117, 30}";
+			sepNavVisRange = "{7612, 2499}";
+		};
+	};
+	E2040D4411F292B400CE6A2A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "This is the location of the previous definition";
+		fRef = E2040D4311F292B400CE6A2A /* juce_amalgamated.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 339;
+		rType = 1;
+	};
+	E2040D4A11F292C900CE6A2A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Base operand of '->' has non-pointer type 'juce::ApplicationCommandManager'";
+		fRef = F6E29673DBA9D375D561560D /* RecWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 15;
+		rType = 1;
+	};
+	E2040D5111F2930A00CE6A2A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected `{' before ')' token";
+		fRef = F6E29673DBA9D375D561560D /* RecWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 9;
+		rType = 1;
+	};
+	E2040D5211F2930A00CE6A2A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F6E29673DBA9D375D561560D /* RecWindow.cpp */;
+		name = "RecWindow.cpp: 10";
+		rLen = 0;
+		rLoc = 241;
+		rType = 0;
+		vrLen = 1277;
+		vrLoc = 0;
+	};
+	E2040D5511F2930A00CE6A2A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F6E29673DBA9D375D561560D /* RecWindow.cpp */;
+		name = "RecWindow.cpp: 21";
+		rLen = 0;
+		rLoc = 697;
+		rType = 0;
+		vrLen = 2105;
+		vrLoc = 83;
+	};
+	E2040D5811F2930A00CE6A2A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2040D4311F292B400CE6A2A /* juce_amalgamated.h */;
+		name = "juce_amalgamated.h: 340";
+		rLen = 30;
+		rLoc = 9117;
+		rType = 0;
+		vrLen = 2499;
+		vrLoc = 7612;
 	};
 	E20BD2DF115C3AB100199C08 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -461,7 +528,6 @@
 	};
 	E26F7C51119F551200F5D4CF /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = C6898695EB11A43B24CA7192 /* AudioDemoTabComponent.cpp */;
 		name = "AudioDemoTabComponent.cpp: 26";
 		rLen = 0;
 		rLoc = 816;
@@ -982,9 +1048,9 @@
 	};
 	F6E29673DBA9D375D561560D /* RecWindow.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {990, 871}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{537, 1277}";
+			sepNavIntBoundsRect = "{{0, 0}, {1135, 845}}";
+			sepNavSelRange = "{697, 0}";
+			sepNavVisRange = "{83, 2105}";
 			sepNavWindowFrame = "{{563, 102}, {1194, 912}}";
 		};
 	};

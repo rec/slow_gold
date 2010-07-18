@@ -5,10 +5,9 @@
 
 namespace rec {
 
-class Application
-  : public rec::GenericApplication<RecWindow> {
+class Application : public rec::GenericApplication<RecWindow> {
  public:
-   Application() : rec::GenericApplication<RecWindow>(T("Rec"), T("1.0")) {}
+  Application() : rec::GenericApplication<RecWindow>(T("SlowGold"), T("1.0")) {}
   juce_UseDebuggingNewOperator
 };
 

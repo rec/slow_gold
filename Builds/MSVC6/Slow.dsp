@@ -217,6 +217,12 @@ SOURCE="..\..\src\rec\base\string_piece.h"
 # Begin Group "components"
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
+SOURCE="..\..\src\rec\components\MainPageComponent.cpp"
+# End Source File
+# Begin Source File
+SOURCE="..\..\src\rec\components\MainPageComponent.h"
+# End Source File
+# Begin Source File
 SOURCE="..\..\src\rec\components\MainPageK.cpp"
 # End Source File
 # Begin Source File
@@ -233,12 +239,6 @@ SOURCE="..\..\src\rec\components\AudioDemoSetupPage.cpp"
 # End Source File
 # Begin Source File
 SOURCE="..\..\src\rec\components\AudioDemoSetupPage.h"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\components\AudioDemoTabComponent.cpp"
-# End Source File
-# Begin Source File
-SOURCE="..\..\src\rec\components\AudioDemoTabComponent.h"
 # End Source File
 # End Group
 # Begin Group "util"
