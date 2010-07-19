@@ -96,7 +96,8 @@ static const char* const CD_STATE_NAMES[] = {
 
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
   AudioCDBurner* cd = (AudioCDBurner*) objectThatHasChanged;
-  std::cerr << CD_STATE_NAMES[cd->getDiskState()] << "\n";
+  std::cerr << CD_STATE_NAMES[cd->getDiskState()]
+            << "\n";
 }
 
 void MainPageK::startStopButtonClicked() {
