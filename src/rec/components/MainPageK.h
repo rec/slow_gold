@@ -25,11 +25,11 @@ class MainPageK : public FileBrowserListener,
   void loopingButtonClicked();
 
   // SliderListener.
-  virtual void sliderValueChanged (Slider* slider);
-  virtual void sliderDragEnded (Slider* slider);
+  virtual void sliderValueChanged(Slider* slider);
+  virtual void sliderDragEnded(Slider* slider);
 
   // ChangeListener - for when CDs are inserted.
-  virtual void changeListenerCallback (void* objectThatHasChanged);
+  virtual void changeListenerCallback(void* objectThatHasChanged);
 
   // FileBrowserListener
   virtual void selectionChanged();
@@ -39,12 +39,7 @@ class MainPageK : public FileBrowserListener,
   DirectoryContentsList* directoryList() { return &directoryList_; }
 
  private:
-  static const int READAHEAD_SIZE = 32768;
-  static const int LOOP_BUFFER_SIZE = 65536;
-  static const int LOOP_BUFFER_WRAPAROUND = 32736;
-  static const int LOOP_BUFFER_CHANNELS = 2;
   static const int THREAD_PRIORITY = 3;
-  static const int CHUNK_SIZE;
 
   static const TreeView::ColourIds BACKGROUND;
   static const Colour FOREGROUND;

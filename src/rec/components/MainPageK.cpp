@@ -13,11 +13,8 @@ using rec::audio::format::mpg123::getFileReader;
 // TODO: why can't this be defined in the .h with other primitives?!
 
 const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
-
 const Colour MainPageK::FOREGROUND = Colours::white;
-
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
-
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 
 MainPageK::MainPageK(AudioDeviceManager* d)
@@ -63,8 +60,11 @@ void MainPageK::destruct() {
 
   deviceManager_->removeAudioCallback(&player_);
   peer_->fileTreeComp->removeListener(this);
+
   for (int i = 0; i < burners_.size(); ++i)
     delete burners_[i];
+
+  burners_.clear();
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
