@@ -427,7 +427,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = (
-					"-L../../../mpg123/lib/mac/Release/lib",
+					"-L/Users/tom/Documents/development/mpg123/lib/mac/Release/lib",
 					"-lmpg123",
 				);
 				PREBINDING = NO;
@@ -481,7 +481,7 @@
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				OTHER_LDFLAGS = (
-					"-L../../../mpg123/lib/mac/Release/lib",
+					"-L/Users/tom/Documents/development/mpg123/lib/mac/Release/lib",
 					"-lmpg123",
 				);
 				PREBINDING = NO;

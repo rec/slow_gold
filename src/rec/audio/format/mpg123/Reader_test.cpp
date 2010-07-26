@@ -12,11 +12,12 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-static const char* FILENAME = "../../../data/test1";
-
 TEST(Reader, All) {
-  scoped_ptr<AudioFormatReader> wav(getFileReader(String(FILENAME) + ".wav"));
-  scoped_ptr<AudioFormatReader> mp3(getFileReader(String(FILENAME) + ".mp3"));
+  scoped_ptr<AudioFormatReader> wav(getFileReader(testDataPath("test1.wav")));
+  scoped_ptr<AudioFormatReader> mp3(getFileReader(testDataPath("test1.mp3")));
+
+  ASSERT_TRUE(!!wav);
+  ASSERT_TRUE(!!mp3);
 
   EXPECT_EQ(wav->sampleRate, mp3->sampleRate);
   EXPECT_EQ(wav->bitsPerSample, mp3->bitsPerSample);

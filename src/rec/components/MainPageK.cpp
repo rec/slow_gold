@@ -27,7 +27,7 @@ MainPageK::MainPageK(AudioDeviceManager* d)
 
 void MainPageK::construct(MainPageJ* peer) {
   peer_ = peer;
-
+  
   directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
   directoryListThread_.startThread(THREAD_PRIORITY);
 
@@ -88,16 +88,28 @@ void MainPageK::sliderDragEnded(Slider* slider) {
 static const char* const CD_STATE_NAMES[] = {
   "unknown",                /**< An error condition, if the device isn't responding. */
   "trayOpen",               /**< The drive is currently open. Note that a slot-loading drive
-                                     may seem to be permanently open. */
+                               may seem to be permanently open. */
   "noDisc",                 /**< The drive has no disk in it. */
-  "writableDiskPresent",    /**< The drive contains a writeable disk. */
+  "Writablediskpresent",    /**< The drive contains a writeable disk. */
   "readOnlyDiskPresent"     /**< The drive contains a read-only disk. */
 };
 
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
   AudioCDBurner* cd = (AudioCDBurner*) objectThatHasChanged;
-  std::cerr << CD_STATE_NAMES[cd->getDiskState()]
-            << "\n";
+  AudioCDBurner::DiskState state = cd->getDiskState();
+  std::cerr << CD_STATE_NAMES[state] << "\n";
+
+  if (state != AudioCDBurner::readOnlyDiskPresent)
+    return;
+
+  int i = 0;
+  for (; i < burners_.size() && burners_[i] != cd; ++i);
+  if (i == burners_.size())
+    return;
+
+  scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
+  int cddbId = reader->getCDDBId();
+
 }
 
 void MainPageK::startStopButtonClicked() {

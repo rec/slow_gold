@@ -54,6 +54,9 @@ inline AudioFormatReader* getFileReader(const File& file) {
   return file.exists() ? getAudioFormatManager()->createReaderFor(file) : NULL;
 }
 
+// Get a path to a test data file.
+String testDataPath(const char* filename);
+
 }  // namespace mpg123
 }  // namespace format
 }  // namespace audio

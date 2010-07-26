@@ -103,6 +103,10 @@ AudioFormatManager* getAudioFormatManager() {
   return afm;
 }
 
+String testDataPath(const char* filename) {
+  return String("../../../../../data/") + filename;
+}
+
 }  // namespace mpg123
 }  // namespace format
 }  // namespace audio

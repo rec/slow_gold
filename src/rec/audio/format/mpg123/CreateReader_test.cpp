@@ -9,10 +9,8 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-static const char* FILENAME = "../../../data/test1";
-
 TEST(CreateReader, Create) {
-  AudioFormatReader *reader = getFileReader(String(FILENAME) + ".mp3");
+  AudioFormatReader *reader = getFileReader(testDataPath("test1.mp3"));
   ASSERT_FALSE(!reader);
   StringPairArray& data = reader->metadataValues;
 
