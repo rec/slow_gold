@@ -22,10 +22,10 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../..;../../../mpg123/src"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../../../mpg123/src;../../../libcddb/include"
                    defines=""/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../../../mpg123/src"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../../../mpg123/src;../../../libcddb/include"
                    defines=""/>
   </CONFIGURATIONS>
   <MAINGROUP id="xOv2eBhZg" name="Slow">
