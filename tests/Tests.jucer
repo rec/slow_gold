@@ -10,7 +10,7 @@
               pluginAUViewClass="AmalgamatorAU_V1" pluginRTASCategory="" bundleIdentifier="to.ax.tests">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../../juce" extraLinkerFlags="-L../../../../mpg123/lib/mac/Release/lib -L../../../../gtest/xcode/build/Debug -lmpg123 -lgtest -lgtest_main"/>
+               juceFolder="../../juce" extraLinkerFlags="-L../../../../mpg123/lib/mac/Release/lib -lmpg123 -L../../../../gtest/xcode/build/Debug -lgtest -lgtest_main -L../../../../libcddb/lib/mac/Release/lib -lcddb -liconv"/>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
             rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../../juce"
             libraryType="1"/>
@@ -21,11 +21,17 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce/src;../../../../juce;../..;../../../../mpg123/src;../../../../gtest/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce/src;../../../../juce;../..;../../../../mpg123/src;../../../../gtest/include;../../../../libcddb/include"/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce/src;../../../../juce;../..;../../../../mpg123/src;../../../../gtest/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce/src;../../../../juce;../..;../../../../mpg123/src;../../../../gtest/include;../../../../libcddb/include"/>
   </CONFIGURATIONS>
   <MAINGROUP id="JiHYwfc1Q" name="tests">
+    <GROUP id="MC1M02Oe7" name="cd">
+      <FILE id="flp8CM41x" name="GetAlbumsFromCDDB.cpp" compile="1" resource="0"
+            file="../src/rec/cd/GetAlbumsFromCDDB.cpp"/>
+      <FILE id="mH6cUkYmn" name="GetAlbumsFromCDDB.h" compile="0" resource="0"
+            file="../src/rec/cd/GetAlbumsFromCDDB.h"/>
+    </GROUP>
     <GROUP id="d6gHgTF" name="ammf_scaler">
       <FILE id="3cDUuOHm" name="AudioResampler.cpp" compile="1" resource="0"
             file="../src/rec/ammf_scaler/AudioResampler.cpp"/>
@@ -168,6 +174,8 @@
             file="../src/rec/util/CircularEnum.h"/>
       <FILE id="d9zviqF5q" name="CriticalSection.h" compile="0" resource="0"
             file="../src/rec/util/CriticalSection.h"/>
+      <FILE id="DpeVgU5sj" name="Substitute_test.cpp" compile="1" resource="0"
+            file="../src/rec/util/Substitute_test.cpp"/>
       <FILE id="GD0O8IbQn" name="DoubleBuffer.h" compile="0" resource="0"
             file="../src/rec/util/DoubleBuffer.h"/>
       <FILE id="i3PZ3K8k5" name="locker.h" compile="0" resource="0" file="../src/rec/util/locker.h"/>

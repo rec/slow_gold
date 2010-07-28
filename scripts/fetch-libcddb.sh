@@ -1,23 +1,24 @@
 VERSION=1.3.2
 
-wget http://prdownloads.sourceforge.net/libcddb/libcddb-$VERSION.tar.bz2
-tar xzf libcddb-$VERSION.tar.bz2
-rm libcddb-$VERSION.tar.bz2
+# wget http://prdownloads.sourceforge.net/libcddb/libcddb-$VERSION.tar.bz2
+# tar xzf libcddb-$VERSION.tar.bz2
+# rm libcddb-$VERSION.tar.bz2
 
-ln -s libcddb-$VERSION libcddb
+# ln -s libcddb-$VERSION libcddb
 cd libcddb
 
 case "`uname`" in
   "Darwin" )
   OS=mac
+  export CC="gcc -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5"
   ;;
 
   * )
   OS=windows
+  export CC="gcc -arch i386"
   ;;
 esac
 
-export CC="gcc -arch i386"
 INSTALL_PATH="`pwd`/lib/$OS"
 
 ./configure\

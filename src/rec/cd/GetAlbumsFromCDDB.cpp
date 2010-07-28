@@ -8,21 +8,21 @@ namespace cd {
 
 namespace {
 
-const SAMPLES_PER_SECOND = AudioCDReader::samplesPerFrame *
+static const int SAMPLES_PER_SECOND = AudioCDReader::samplesPerFrame *
   AudioCDReader::framesPerSecond;
 
-Track fillTrack(const cddb_track_t* track) {
-  Track track;
-  track.length_ = cddb_track_get_length(track);
-  track.frameOffset_ = cddb_track_get_frame_offset(track);
-  track.title_ = cddb_track_get_title(track);
-  track.artist_ = cddb_track_get_artist(track);
-  track.extdata_ = cddb_track_get_extdata(track);
+Track fillTrack(cddb_track_t* track) {
+  Track t;
+  t.length_ = cddb_track_get_length(track);
+  t.frameOffset_ = cddb_track_get_frame_offset(track);
+  t.title_ = cddb_track_get_title(track);
+  t.artist_ = cddb_track_get_artist(track);
+  t.extdata_ = cddb_track_get_ext_data(track);
 
-  return track;
+  return t;
 }
 
-Album fillAlbum(const cddb_disc_t* disc) {
+Album fillAlbum(cddb_disc_t* disc) {
   Album album;
 
   album.discid_ = cddb_disc_get_discid(disc);
@@ -34,9 +34,9 @@ Album fillAlbum(const cddb_disc_t* disc) {
   album.revision_ = cddb_disc_get_revision(disc);
   album.title_ = cddb_disc_get_title(disc);
   album.artist_ = cddb_disc_get_artist(disc);
-  album.extdata_ = cddb_disc_get_extdata(disc);
+  album.extdata_ = cddb_disc_get_ext_data(disc);
 
-  int trackCount = cddb_disc_get_track_count();
+  int trackCount = cddb_disc_get_track_count(disc);
   for (int i = 0; i < trackCount; ++i)
     album.tracks_.add(fillTrack(cddb_disc_get_track(disc, i)));
 
@@ -51,7 +51,6 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
   cddb_disc_t *disc = cddb_disc_new();
 
   int trackCount = offsets.size() - 1;
-  int id = reader.getCDDBId();
 
   int length = (offsets[trackCount] - offsets[0]) / SAMPLES_PER_SECOND;
   cddb_disc_set_length(disc, length);
@@ -59,22 +58,24 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
   for (int i = 0; i < trackCount; ++i) {
     cddb_track_t *track = cddb_track_new();
     cddb_disc_add_track(disc, track);
-    cddb_track_set_frame_offset(offsets[i] / AudioCDReader::samplesPerFrame);
+    cddb_track_set_frame_offset(track, offsets[i] / AudioCDReader::samplesPerFrame);
   }
 
   int matches = cddb_query(conn, disc);
   if (matches <= 0) {
-    if (int errno = cddb_errno(conn))
-      error = cddb_error_str(errno);
-    else
-      error = "No matches for this disc";
+#if 0
+    cddb_error_t errno = cddb_errno(conn);
+    error = (errno == CDDB_ERR_OK) ? cddb_error_str(errno) : "No matches for this disc";
+#else
+    error = "error";
+#endif
   } else {
     for (; matches; --matches && cddb_query_next(conn, disc))
       albums->add(fillAlbum(disc));
   }
 
   cddb_disc_destroy(disc);
-  cddb_conn_destroy(conn);
+  cddb_destroy(conn);
   return error;
 }
 
