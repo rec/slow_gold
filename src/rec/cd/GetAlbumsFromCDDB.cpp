@@ -63,12 +63,11 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
 
   int matches = cddb_query(conn, disc);
   if (matches <= 0) {
-#if 0
-    cddb_error_t errno = cddb_errno(conn);
-    error = (errno == CDDB_ERR_OK) ? cddb_error_str(errno) : "No matches for this disc";
-#else
-    error = "error";
-#endif
+    if (cddb_error_t e = cddb_errno(conn))
+      error = cddb_error_str(e);
+    else
+      error = "No matches for this disc";
+
   } else {
     for (; matches; --matches && cddb_query_next(conn, disc))
       albums->add(fillAlbum(disc));
