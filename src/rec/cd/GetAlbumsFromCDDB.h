@@ -9,6 +9,7 @@ namespace cd {
 struct Track {
   int length_;
   int frameOffset_;
+
   String title_;
   String artist_;
   String extdata_;

@@ -11,6 +11,38 @@ namespace {
 static const int SAMPLES_PER_SECOND = AudioCDReader::samplesPerFrame *
   AudioCDReader::framesPerSecond;
 
+String normalize(const String& s) {
+  static const char* const delimiters = "[(";
+  int length = s.length();
+  for (const char* i = delimiters; *i; ++i)
+    length = jmin(length, s.indexOfChar(*i));
+
+  return s.substring(0, length).trim().toLowerCase();
+}
+
+bool similar(const String& x, const String& y) {
+  return normalize(x) == normalize(y);
+}
+
+bool similar(const Track& x, const Track& y) {
+  return similar(x.title_, y.title_);
+}
+
+bool similar(const Album& x, const Album& y) {
+  int size = x.tracks_.size();
+  if (!(similar(x.artist_, y.artist_) &&
+        similar(x.title_, y.title_) &&
+        size == y.tracks_.size()))
+    return false;
+
+  for (int i = 0; i < size; ++i) {
+    if (!similar(x.tracks_[i], y.tracks_[i]))
+      return false;
+  }
+
+  return true;
+}
+
 Track fillTrack(cddb_track_t* track) {
   Track t;
   t.length_ = cddb_track_get_length(track);
@@ -43,6 +75,14 @@ Album fillAlbum(cddb_disc_t* disc) {
   return album;
 }
 
+void addIfNotSimilar(Array<Album>* albums, const Album& album) {
+  for (int i = 0; i < albums->size(); ++i) {
+    if (similar(album, (*albums)[i]))
+      return;
+  }
+  albums->add(album);
+}
+
 }  // namespace
 
 String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
@@ -69,8 +109,12 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
       error = "No matches for this disc";
 
   } else {
-    for (; matches; --matches && cddb_query_next(conn, disc))
-      albums->add(fillAlbum(disc));
+    for (; matches; --matches && cddb_query_next(conn, disc)) {
+      if (!cddb_read(conn, disc))
+        error = cddb_error_str(cddb_errno(conn));
+      else
+        addIfNotSimilar(albums, fillAlbum(disc));
+    }
   }
 
   cddb_disc_destroy(disc);
