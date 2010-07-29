@@ -1,10 +1,10 @@
 VERSION=1.3.2
 
-# wget http://prdownloads.sourceforge.net/libcddb/libcddb-$VERSION.tar.bz2
-# tar xzf libcddb-$VERSION.tar.bz2
-# rm libcddb-$VERSION.tar.bz2
+wget http://prdownloads.sourceforge.net/libcddb/libcddb-$VERSION.tar.bz2
+tar xzf libcddb-$VERSION.tar.bz2
+rm libcddb-$VERSION.tar.bz2
 
-# ln -s libcddb-$VERSION libcddb
+ln -s libcddb-$VERSION libcddb
 cd libcddb
 
 case "`uname`" in
