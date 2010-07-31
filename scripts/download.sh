@@ -2,13 +2,14 @@
 
 PACKAGE=$1
 
-source scripts/platform.sh
+source rec/scripts/platform.sh
+source rec/scripts/externals/variables.sh
+source rec/scripts/platforms/$PLATFORM/variables.sh
+source rec/scripts/externals/$PACKAGE/variables.sh
 
-source externals/variables.sh
-source platforms/$PLATFORM/variables.sh
-source externals/$PACKAGE/variables.sh
+ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
 
-$GET $URL_PATH/$ARCHIVE
-$EXTRACT $ARCHIVE
-$RM $ARCHIVE
-$LN $NAME-$VERSION $NAME
+$GET $URL_PATH/$ARCHIVE &&\
+ $EXTRACT $ARCHIVE &&\
+ $RM $ARCHIVE &&\
+ $LN $PACKAGE-$VERSION $PACKAGE

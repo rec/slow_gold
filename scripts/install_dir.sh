@@ -1,0 +1,2 @@
+INSTALL_DIR=`pwd`/build/$PLATFORM/$CONFIG/$PACKAGE
+mkdir -p $INSTALL_DIR
