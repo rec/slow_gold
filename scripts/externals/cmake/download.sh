@@ -9,10 +9,9 @@ NAME=cmake
 VERSION=2.8.2
 
 ARCHIVE=$NAME-$VERSION.$SUFFIX
-$GET http://www.cmake.org/files/v2.8/$ARCHIVE
+URL_PATH=http://www.cmake.org/files/v2.8
 
+$GET $URL_PATH/$ARCHIVE
 $EXTRACT $ARCHIVE
-
 $RM $ARCHIVE
-
-$LN -s $NAME-$VERSION $NAME
+$LN $NAME-$VERSION $NAME

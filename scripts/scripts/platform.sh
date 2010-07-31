@@ -3,11 +3,13 @@
 PLATFORM=other
 
 case "`uname`" in
+
   "Darwin" )
   PLATFORM=mac
   ;;
 
-  * )
+  * )  # Need better than "everything else!
   PLATFORM=windows
   ;;
+
 esac
