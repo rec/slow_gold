@@ -1,14 +1,14 @@
-NAME=cmake
-VERSION=2.8.2
-
 TMP=/tmp
-EXTRACT=tar xzf
 RM=rm
 LN=ln -s
 GET=wget
-SUFFIX=.tar.gz
+SUFFIX=tar.gz
+EXTRACT=tar xzf
 
-ARCHIVE=$NAME-$VERSION.tar.gz
+NAME=cmake
+VERSION=2.8.2
+
+ARCHIVE=$NAME-$VERSION.$SUFFIX
 $GET http://www.cmake.org/files/v2.8/$ARCHIVE
 
 $EXTRACT $ARCHIVE
