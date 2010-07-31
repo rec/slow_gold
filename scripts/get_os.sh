@@ -1,9 +1,13 @@
+# Get our name for the current
+
+PLATFORM=other
+
 case "`uname`" in
   "Darwin" )
-  OS=mac
+  PLATFORM=mac
   ;;
 
   * )
-  OS=windows
+  PLATFORM=windows
   ;;
 esac
