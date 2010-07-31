@@ -2,10 +2,7 @@
 
 PACKAGE=$1
 
-source rec/scripts/platform.sh
-source rec/scripts/externals/variables.sh
-source rec/scripts/platforms/$PLATFORM/variables.sh
-source rec/scripts/externals/$PACKAGE/variables.sh
+source variables.sh
 
 ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
 
