@@ -1,4 +1,5 @@
 #!/bin/bash
+
 VERSION=1.5.0
 
 wget http://googletest.googlecode.com/files/gtest-$VERSION.tar.bz2
