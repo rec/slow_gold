@@ -1,1 +1,0 @@
-source rec/scripts/install.sh

@@ -13,3 +13,5 @@ case "`uname`" in
   ;;
 
 esac
+
+source rec/scripts/platform/$PLATFORM.sh

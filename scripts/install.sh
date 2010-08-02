@@ -9,7 +9,7 @@ SCRIPT_DIR=`pwd`/rec/scripts
 mkdir -p $INSTALL_DIR
 pushd $PACKAGE
 
-source $SCRIPT_DIR/packages/$PACKAGE/install.sh
+$INSTALL
 
 popd
 
