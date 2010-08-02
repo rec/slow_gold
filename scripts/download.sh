@@ -2,7 +2,7 @@
 
 PACKAGE=$1
 
-source variables.sh
+source rec/scripts/variables.sh
 
 ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
 

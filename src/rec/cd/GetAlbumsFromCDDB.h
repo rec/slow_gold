@@ -34,6 +34,10 @@ struct Album {
 // string if there was no error.
 String getAlbumsFromCDDB(const Array<int>& trackOffsets, Array<Album>* albums);
 
+
+// Remove any albums that are similar to another album in the list.
+void dedupeAlbums(Array<Album>* albums);
+
 }  // namespace cd
 }  // namespace rec
 

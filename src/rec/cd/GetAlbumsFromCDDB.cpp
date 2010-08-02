@@ -113,13 +113,26 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
       if (!cddb_read(conn, disc))
         error = cddb_error_str(cddb_errno(conn));
       else
-        addIfNotSimilar(albums, fillAlbum(disc));
+        albums->add(fillAlbum(disc));
     }
   }
 
   cddb_disc_destroy(disc);
   cddb_destroy(conn);
   return error;
+}
+
+void dedupeAlbums(Array<Album>* albums) {
+  // This process is quadratic in the number of albums, but we only ever get a
+  // handful.
+  for (int i = albums->size() - 1; i > 0; --i) {
+    for (int j = i - 1; j >= 0; --j) {
+      if (similar((*albums)[i], (*albums)[j])) {
+        albums->remove(i);
+        break;
+      }
+    }
+  }
 }
 
 }  // namespace cd

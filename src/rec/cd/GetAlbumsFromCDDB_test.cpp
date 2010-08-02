@@ -44,20 +44,24 @@ TEST(CD, GetAlbumsFromCDDB) {
   Array<Album> albums;
   EXPECT_STREQ(getAlbumsFromCDDB(offsets, &albums).toCString(), "");
 
-  EXPECT_EQ(albums.size(), 1);
+  EXPECT_EQ(albums.size(), 3);
 
   for (int i = 0; i < albums.size(); ++i) {
     const Album& album = albums[i];
     EXPECT_TRUE(album.title_.startsWith("Never For Ever"));
-    EXPECT_STREQ(album.title_.toCString(), "Never For Ever");
+    // EXPECT_STREQ(album.title_.toCString(), "Never For Ever");
     EXPECT_EQ(album.year_, 1980);
     EXPECT_EQ(album.artist_, "Kate Bush");
     EXPECT_EQ(album.tracks_.size(), trackCount);
+    std::cerr << "discid" << std::hex << album.discid_ << std::dec << "\n";
 
     for (int j = 0; j < trackCount; ++j) {
       EXPECT_STREQ(trackNames[j], album.tracks_[j].title_.toCString());
     }
   }
+
+  dedupeAlbums(&albums);
+  EXPECT_EQ(albums.size(), 1);
 }
 
 }  // namespace rec
