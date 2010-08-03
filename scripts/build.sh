@@ -19,7 +19,7 @@ while (( "$#" )); do
   $CONFIGURE\
      $CONFIGURE_FLAGS\
      $EXTRA_CONFIGURE_FLAGS\
-     $PREFIX_FLAG=$INSTALL_DIR\
+     $PREFIX_FLAG=$INSTALL_DIR &&\
    $MAKE_CLEAN &&\
    $MAKE_ALL &&\
    $MAKE_INSTALL
