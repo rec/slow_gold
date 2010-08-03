@@ -7,8 +7,10 @@ EXTRACT="tar xzf"
 CONFIGURE="./configure"
 CONFIGURE_FLAGS="--with-cpu=x86 --enable-static --enable-shared=no"
 PREFIX_FLAG="--prefix"
-MAKE_INSTALL="make clean && make && make install"
-CC_BASE="gcc -arch i136"
+MAKE_CLEAN="make clean"
+MAKE_ALL="make"
+MAKE_INSTALL="make install"
+ARCHIVE_END=""
+CFLAGS="-arch i386"
 
 source rec/scripts/platform/platform.sh
-source rec/scripts/package/$PACKAGE.sh

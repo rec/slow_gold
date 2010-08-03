@@ -6,8 +6,6 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-#include "libmpg123/mpg123.h"
-
 namespace {
 
 template <typename Number>

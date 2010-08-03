@@ -1,18 +1,30 @@
-PACKAGE=$1
-CONFIG=$2
+CONFIG=$1
 
-source rec/scripts/variables.sh
+shift
 
-INSTALL_DIR="`pwd`/build/$PLATFORM/$CONFIG/$PACKAGE"
-SCRIPT_DIR="`pwd`/rec/scripts"
+while (( "$#" )); do
+  PACKAGE=$1
 
-mkdir -p "$INSTALL_DIR"
-pushd $PACKAGE
+  source rec/scripts/variables.sh
+  source rec/scripts/config/$CONFIG.sh
+  source rec/scripts/package/$PACKAGE.sh
 
-export CC="$CC_BASE $EXTRA_CC_FLAGS"
+  INSTALL_DIR="`pwd`/build/$PLATFORM/$CONFIG/$PACKAGE"
+  SCRIPT_DIR="`pwd`/rec/scripts"
 
-$CONFIGURE $CONFIGURE_FLAGS $PREFIX_FLAG=$INSTALL_DIR &&\
- $MAKE_INSTALL
+  mkdir -p "$INSTALL_DIR"
+  pushd $PACKAGE
+  export CFLAGS=$CFLAGS
 
-popd
+  $CONFIGURE\
+     $CONFIGURE_FLAGS\
+     $EXTRA_CONFIGURE_FLAGS\
+     $PREFIX_FLAG=$INSTALL_DIR\
+   $MAKE_CLEAN &&\
+   $MAKE_ALL &&\
+   $MAKE_INSTALL
+
+  popd
+  shift
+done
 

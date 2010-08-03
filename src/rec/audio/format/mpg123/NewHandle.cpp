@@ -14,8 +14,6 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-#include "libmpg123/mpg123.h"
-
 namespace {
 
 ssize_t read(void *inputStream, void *buf, size_t nbytes) {

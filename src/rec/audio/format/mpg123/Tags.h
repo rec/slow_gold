@@ -9,8 +9,6 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-#include "libmpg123/mpg123.h"
-
 // Read mp3 tags into a StringPairArray.
 Error getMp3Tags(mpg123_handle* mh, StringPairArray* metadata);
 
