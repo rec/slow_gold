@@ -1,6 +1,8 @@
 #include "MainPageJ.h"
 #include "MainPageK.h"
 
+#include "glog/logging.h"
+
 #include "AudioThumbnailComponent.h"
 #include "rec/audio/Math.h"
 #include "JuceLibraryCode/JuceHeader.h"
@@ -27,7 +29,7 @@ MainPageK::MainPageK(AudioDeviceManager* d)
 
 void MainPageK::construct(MainPageJ* peer) {
   peer_ = peer;
-  
+
   directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
   directoryListThread_.startThread(THREAD_PRIORITY);
 
@@ -97,7 +99,7 @@ static const char* const CD_STATE_NAMES[] = {
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
   AudioCDBurner* cd = (AudioCDBurner*) objectThatHasChanged;
   AudioCDBurner::DiskState state = cd->getDiskState();
-  std::cerr << CD_STATE_NAMES[state] << "\n";
+  LOG(INFO) << CD_STATE_NAMES[state];
 
   if (state != AudioCDBurner::readOnlyDiskPresent)
     return;

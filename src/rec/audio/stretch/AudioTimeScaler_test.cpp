@@ -1,5 +1,6 @@
 #include <math.h>
 #include <gtest/gtest.h>
+#include <glog/logging.h>
 
 #include "rec/audio/Math.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
@@ -83,7 +84,7 @@ TEST(RecAudio, AudioTimeScaler) {
     samplesOut += samplesToProcess;
   }
   if (false)
-    std::cerr << "maxdiff " << maxDiff << std::endl;
+    LOG(INFO) << "maxdiff " << maxDiff << std::endl;
 }
 
 }  // namespace buffer

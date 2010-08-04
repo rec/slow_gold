@@ -16,7 +16,7 @@ while (( "$#" )); do
 
   pushd $PACKAGE
 
-  source $SCRIPTS/configure.sh &&\
+  source $SCRIPTS/configure/$CONFIGURE_SCRIPT.sh &&\
    source $SCRIPTS/make.sh
 
   popd
