@@ -1,0 +1,3 @@
+$MAKE_CLEAN &&\
+ $MAKE_ALL &&\
+ $MAKE_INSTALL
