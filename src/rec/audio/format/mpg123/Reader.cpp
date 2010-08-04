@@ -10,8 +10,6 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-#include "libmpg123/mpg123.h"
-
 Reader::Reader(InputStream* in, const String& formatName, mpg123_handle* mh,
                Copier copier)
   : AudioFormatReader(in, formatName),

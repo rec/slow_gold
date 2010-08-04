@@ -1,12 +1,16 @@
 # Our generic download program!
 
-PACKAGE=$1
+while (( "$#" )); do
+  PACKAGE=$1
 
-source rec/scripts/variables.sh
+  source rec/scripts/variables.sh
 
-ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
+  ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
 
-$GET $URL_PATH/$ARCHIVE$ARCHIVE_END &&\
- $EXTRACT $ARCHIVE &&\
- $RM $ARCHIVE &&\
- $LN $PACKAGE-$VERSION $PACKAGE
+  $GET $URL_PATH/$ARCHIVE$ARCHIVE_END &&\
+   $EXTRACT $ARCHIVE &&\
+   $RM $ARCHIVE &&\
+   $LN $PACKAGE-$VERSION $PACKAGE
+
+  shift
+done

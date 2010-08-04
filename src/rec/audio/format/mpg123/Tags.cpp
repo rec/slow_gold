@@ -5,8 +5,6 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-#include "libmpg123/mpg123.h"
-
 static void set(mpg123_text* text, int size, StringPairArray* data) {
   for (mpg123_text* t = text; t != text + size; ++t) {
     String name(t->id, 4);
