@@ -1,0 +1,19 @@
+echo "$CONFIGURE_SCRIPT configure with CPPFLAGS=$CPPFLAGS"
+
+if [[ "$CONFIGURE_SCRIPT" = "standard" ]] ; then
+
+  CPPFLAGS="$CPPFLAGS" CFLAGS="$CPPFLAGS"\
+   $CONFIGURE\
+   $CONFIGURE_DEBUG_FLAG\
+   $CONFIGURE_CPU_FLAG\
+   --prefix="$INSTALL_DIR"
+
+else
+
+  $CONFIGURE\
+   $CONFIGURE_DEBUG_FLAG\
+   $CONFIGURE_CPU_FLAG\
+   CXXFLAGS="$CPPFLAGS"\
+   --prefix="$INSTALL_DIR"
+
+fi

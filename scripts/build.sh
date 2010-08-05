@@ -8,8 +8,6 @@ while (( "$#" )); do
   PACKAGE=$1
   shift
 
-  echo "Building package $PACKAGE, config=$CONFIG"
-
   cd $ROOT
   source $SCRIPTS/variables.sh
   source $SCRIPTS/config/$CONFIG.sh
@@ -21,10 +19,14 @@ while (( "$#" )); do
     rm -Rf "$INSTALL_DIR"
   fi
 
+  echo "Creating $INSTALL_DIR"
   mkdir -p "$INSTALL_DIR"
-  cd $ROOT/$PACKAGE
 
-  source $SCRIPTS/configure/$CONFIGURE_SCRIPT.sh &&\
-   source $SCRIPTS/make.sh
+  echo "Building package $PACKAGE, config=$CONFIG into $INSTALL_DIR"
+  cd $ROOT/$PACKAGE
+  source $SCRIPTS/configure.sh &&
+   make clean &&\
+   make &&\
+   make install
 
 done
