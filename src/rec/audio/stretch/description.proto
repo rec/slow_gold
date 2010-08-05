@@ -1,0 +1,11 @@
+package rec.audio.timescaler;
+
+message Description {
+  optional double time_scale = 1      [default = 1.0];
+  optional double sample_rate = 2     [default = 44100.0];
+  optional uint32 channels = 3        [default = 2];
+  optional double pitch_scale = 4     [default = 1.0];
+  optional uint32 bands = 5           [default = 2048];
+  optional uint32 filter_overlap = 6  [default = 1];
+  optional uint32 chunk_size = 7      [default = 512];
+};

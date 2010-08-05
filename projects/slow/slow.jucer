@@ -10,7 +10,7 @@
               pluginRTASCategory="" bundleIdentifier="ax.to.rec" jucerVersion="3.0.0">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../juce" extraLinkerFlags="-liconv -L../../../../../build/mac/debug/mpg123/lib -lmpg123 -L../../../../../build/mac/debug/libcddb/lib -lcddb -L../../../../../build/mac/debug/glog/lib -lglog"/>
+               juceFolder="../juce" extraLinkerFlags="-liconv -L../../../../../build/mac/debug/mpg123/lib -lmpg123 -L../../../../../build/mac/debug/libcddb/lib -lcddb -L../../../../../build/mac/debug/glog/lib -lglog -L../../../../../build/mac/debug/protobuf/lib -lprotobuf"/>
     <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                   juceFolder="../../../../../juce"/>
     <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
@@ -23,10 +23,10 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include"
                    defines=""/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../build/mac/release/glog/include"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../build/mac/release/glog/include;../../../../../build/mac/release/protobuf/include"
                    defines=""/>
   </CONFIGURATIONS>
   <MAINGROUP id="xOv2eBhZg" name="Slow">
