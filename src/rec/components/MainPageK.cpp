@@ -1,7 +1,7 @@
+#include <glog/logging.h>
+
 #include "MainPageJ.h"
 #include "MainPageK.h"
-
-#include "glog/logging.h"
 
 #include "AudioThumbnailComponent.h"
 #include "rec/audio/Math.h"

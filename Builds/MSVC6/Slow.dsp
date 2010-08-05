@@ -38,7 +38,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /Od /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /YX /FD /c /Gm /ZI /GZ /Zm1024
-# ADD CPP /nologo /MTd /W3 /GR /GX /Od /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /I ../../../mpg123/src /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024 /Gm /ZI /GZ 
+# ADD CPP /nologo /MTd /W3 /GR /GX /Od /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /I ../../../build/mac/debug/mpg123 /I ../../../build/mac/debug/gtest/include /I ../../../build/mac/debug/libcddb/include /I ../../../build/mac/debug/glog/include /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024 /Gm /ZI /GZ 
 # ADD BASE MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /mktyplib203 /win32
 # ADD MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG /mktyplib203 /win32
 # ADD BASE RSC /l 0x40c /d JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D _DEBUG
@@ -62,7 +62,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O3 /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /YX /FD /c  /Zm1024
-# ADD CPP /nologo /MT /W3 /GR /GX /O3 /I ../../src /I ../../../juce/src /I ../../../juce /I ../../../mpg123/src /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
+# ADD CPP /nologo /MT /W3 /GR /GX /O3 /I ../../src /I ../../../juce/src /I ../../../juce /I ../.. /I ../../../build/mac/release/mpg123 /I ../../../build/mac/release/gtest/include /I ../../../build/mac/release/libcddb/include /I ../../../build/mac/release/glog/include /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /D "_UNICODE" /D "UNICODE" /FD /c /Zm1024  
 # SUBTRACT CPP /YX
 # ADD BASE MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32
 # ADD MTL /nologo /D JUCER_MSVC6_734A9119 /D WIN32 /D _WINDOWS /D NDEBUG /mktyplib203 /win32

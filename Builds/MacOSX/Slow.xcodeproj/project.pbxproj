@@ -419,7 +419,11 @@
 					../../src,
 					../../../juce/src,
 					../../../juce,
-					../../../mpg123/src,
+					../..,
+					../../../build/mac/release/mpg123,
+					../../../build/mac/release/gtest/include,
+					../../../build/mac/release/libcddb/include,
+					../../../build/mac/release/glog/include,
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info.plist;
@@ -427,8 +431,13 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = (
-					"-L../../../mpg123/lib/mac/Release/lib",
+					"-liconv",
+					"-L../../../build/mac/debug/mpg123/lib",
 					"-lmpg123",
+					"-L../../../build/mac/debug/libcddb/lib",
+					"-lcddb",
+					"-L../../../build/mac/debug/glog/lib",
+					"-lglog",
 				);
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
@@ -472,7 +481,10 @@
 					../../../juce/src,
 					../../../juce,
 					../..,
-					../../../mpg123/src,
+					../../../build/mac/debug/mpg123,
+					../../../build/mac/debug/gtest/include,
+					../../../build/mac/debug/libcddb/include,
+					../../../build/mac/debug/glog/include,
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Info.plist;
@@ -481,8 +493,13 @@
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				OTHER_LDFLAGS = (
-					"-L../../../mpg123/lib/mac/Release/lib",
+					"-liconv",
+					"-L../../../build/mac/debug/mpg123/lib",
 					"-lmpg123",
+					"-L../../../build/mac/debug/libcddb/lib",
+					"-lcddb",
+					"-L../../../build/mac/debug/glog/lib",
+					"-lglog",
 				);
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
