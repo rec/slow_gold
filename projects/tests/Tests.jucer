@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="TVOT1ObQ" name="tests" projectType="consoleapp" juceLinkage="amalg_big"
+<JUCERPROJECT id="TVOT2ObQ" name="tests" projectType="consoleapp" juceLinkage="amalg_big"
               juceFolder="../../../../juce" jucerVersion="3.0.0" version="1.0.0"
-              buildVST="1" buildRTAS="0" buildAU="1" pluginName="Amalgamator"
-              pluginDesc="Amalgamator" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
+              buildVST="1" buildRTAS="0" buildAU="1" pluginName="Tests"
+              pluginDesc="Tests" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
               pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}" pluginIsSynth="0"
               pluginWantsMidiIn="0" pluginProducesMidiOut="0" pluginSilenceInIsSilenceOut="0"
-              pluginTailLength="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="AmalgamatorAU"
-              pluginAUViewClass="AmalgamatorAU_V1" pluginRTASCategory="" bundleIdentifier="to.ax.tests">
+              pluginTailLength="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="TestsAU"
+              pluginAUViewClass="TestsAU_V1" pluginRTASCategory="" bundleIdentifier="to.ax.tests">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                juceFolder="../../juce" extraLinkerFlags="-liconv -L../../../../../build/mac/debug/mpg123/lib -lmpg123 -L../../../../../build/mac/debug/libcddb/lib -lcddb -L../../../../../build/mac/debug/gtest/lib -lgtest -lgtest_main  -L../../../../../build/mac/debug/glog/lib -lglog"/>

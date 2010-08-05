@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="sDthDibyr" name="Slow" projectType="guiapp" version="0.0.1"
+              juceLinkage="amalg_big" buildVST="1" buildRTAS="0" buildAU="1"
+              pluginName="Juce Project" pluginDesc="Juce Project" pluginManufacturer="yourcompany"
+              pluginManufacturerCode="abcd" pluginCode="Abcd" pluginChannelConfigs="{1, 1}, {2, 2}"
+              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
+              pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="JuceProjectAU" pluginAUViewClass="JuceProjectAU_V1"
+              pluginRTASCategory="" bundleIdentifier="ax.to.rec" jucerVersion="3.0.0">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+               juceFolder="../juce" extraLinkerFlags="-liconv -L../../../../../build/mac/debug/mpg123/lib -lmpg123 -L../../../../../build/mac/debug/libcddb/lib -lcddb -L../../../../../build/mac/debug/glog/lib -lglog"/>
+    <XCODE_IPHONE targetFolder="Builds/iPhone" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+                  juceFolder="../../../../../juce"/>
+    <MSVC6 targetFolder="Builds/MSVC6" vstFolder="c:\SDKs\vstsdk2.4" rtasFolder="c:\SDKs\PT_80_SDK"
+           juceFolder="../../../../../juce" libraryType="1"/>
+    <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../../../juce"
+            libraryType="1"/>
+    <VS2008 targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
+            rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../juce" libraryType="1"/>
+  </EXPORTFORMATS>
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include"
+                   defines=""/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SlowBurn"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../build/mac/release/glog/include"
+                   defines=""/>
+  </CONFIGURATIONS>
+  <MAINGROUP id="xOv2eBhZg" name="Slow">
+    <GROUP id="8x67ovHD" name="Source">
+      <GROUP id="cuSqxl2WN" name="audio">
+        <GROUP id="JTBR1MRS" name="format">
+          <GROUP id="wL7sxGszl" name="mpg123">
+            <FILE id="graH3rqgR" name="Copier.cpp" compile="1" resource="0" file="../../src/rec/audio/format/mpg123/Copier.cpp"/>
+            <FILE id="ai8it7hT" name="Copier.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/Copier.h"/>
+            <FILE id="eKyxH8a6m" name="CreateReader.cpp" compile="1" resource="0"
+                  file="../../src/rec/audio/format/mpg123/CreateReader.cpp"/>
+            <FILE id="TQAjSd52z" name="CreateReader.h" compile="0" resource="0"
+                  file="../../src/rec/audio/format/mpg123/CreateReader.h"/>
+            <FILE id="ce8hgNh4l" name="Format.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/Format.h"/>
+            <FILE id="13JET9TAZ" name="Manager.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/Manager.h"/>
+            <FILE id="SmmghU2Sx" name="Mpg123.cpp" compile="1" resource="0" file="../../src/rec/audio/format/mpg123/Mpg123.cpp"/>
+            <FILE id="hPo9rk1vc" name="Mpg123.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/Mpg123.h"/>
+            <FILE id="PSUOC0qxj" name="NewHandle.cpp" compile="1" resource="0"
+                  file="../../src/rec/audio/format/mpg123/NewHandle.cpp"/>
+            <FILE id="MYnmV3rgx" name="NewHandle.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/NewHandle.h"/>
+            <FILE id="bj1eUdA8y" name="Reader.cpp" compile="1" resource="0" file="../../src/rec/audio/format/mpg123/Reader.cpp"/>
+            <FILE id="AWD5kUw4p" name="Reader.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/Reader.h"/>
+            <FILE id="Lj7iSIyvT" name="Tags.cpp" compile="1" resource="0" file="../../src/rec/audio/format/mpg123/Tags.cpp"/>
+            <FILE id="ZSbsFGaD5" name="Tags.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/Tags.h"/>
+          </GROUP>
+        </GROUP>
+        <FILE id="4uDLDvBWn" name="StretchOnce.cpp" compile="1" resource="0"
+              file="../../src/rec/audio/stretch/StretchOnce.cpp"/>
+        <FILE id="PEiANR5R" name="StretchOnce.h" compile="0" resource="0" file="../../src/rec/audio/stretch/StretchOnce.h"/>
+        <FILE id="JXiZHgGwb" name="SimpleStretcher.cpp" compile="1" resource="0"
+              file="../../src/rec/audio/stretch/SimpleStretcher.cpp"/>
+        <FILE id="CP7RMD85v" name="SimpleStretcher.h" compile="0" resource="0"
+              file="../../src/rec/audio/stretch/SimpleStretcher.h"/>
+      </GROUP>
+      <GROUP id="rcZBCV2Hx" name="ammf_scaler">
+        <FILE id="ounxHJP2i" name="AudioResampler.cpp" compile="1" resource="0"
+              file="../../src/rec/ammf_scaler/AudioResampler.cpp"/>
+        <FILE id="VnLapxsuW" name="AudioResampler.h" compile="0" resource="0"
+              file="../../src/rec/ammf_scaler/AudioResampler.h"/>
+        <FILE id="3PCiFGMX7" name="AudioTimeScaler.cpp" compile="1" resource="0"
+              file="../../src/rec/ammf_scaler/AudioTimeScaler.cpp"/>
+        <FILE id="AtZ2QFA1I" name="AudioTimeScaler.h" compile="0" resource="0"
+              file="../../src/rec/ammf_scaler/AudioTimeScaler.h"/>
+        <FILE id="HSwp4SHZ" name="hfft.c" compile="1" resource="0" file="../../src/rec/ammf_scaler/hfft.c"/>
+        <FILE id="3xLdLkMk8" name="hfft.h" compile="0" resource="0" file="../../src/rec/ammf_scaler/hfft.h"/>
+        <FILE id="6asClyd1a" name="mfAlloc.c" compile="1" resource="0" file="../../src/rec/ammf_scaler/mfAlloc.c"/>
+        <FILE id="356AvrecH" name="mfAlloc.h" compile="0" resource="0" file="../../src/rec/ammf_scaler/mfAlloc.h"/>
+        <FILE id="AkuTQZPrn" name="mfGlobals.h" compile="0" resource="0" file="../../src/rec/ammf_scaler/mfGlobals.h"/>
+        <FILE id="IrhdC0F2U" name="mfMacros.h" compile="0" resource="0" file="../../src/rec/ammf_scaler/mfMacros.h"/>
+        <FILE id="H01jB3Ahg" name="mfMath.h" compile="0" resource="0" file="../../src/rec/ammf_scaler/mfMath.h"/>
+      </GROUP>
+      <GROUP id="ydGZTjwRP" name="app">
+        <FILE id="Pez5qt4HX" name="RecApplication.cpp" compile="1" resource="0"
+              file="../../src/rec/app/RecApplication.cpp"/>
+        <FILE id="mDKEm2SJa" name="RecContainer.h" compile="0" resource="0"
+              file="../../src/rec/app/RecContainer.h"/>
+        <FILE id="dM50iJdcA" name="RecWindow.cpp" compile="1" resource="0"
+              file="../../src/rec/app/RecWindow.cpp"/>
+        <FILE id="bJRmlMvNg" name="RecWindow.h" compile="0" resource="0" file="../../src/rec/app/RecWindow.h"/>
+      </GROUP>
+      <GROUP id="PySbE3jl" name="base">
+        <FILE id="mN9OU9xdZ" name="basictypes.h" compile="0" resource="0" file="../../src/rec/base/basictypes.h"/>
+        <FILE id="57G0218af" name="build_config.h" compile="0" resource="0"
+              file="../../src/rec/base/build_config.h"/>
+        <FILE id="dFUv6NIzO" name="port.h" compile="0" resource="0" file="../../src/rec/base/port.h"/>
+        <FILE id="MTdXBstR" name="scoped_ptr.h" compile="0" resource="0" file="../../src/rec/base/scoped_ptr.h"/>
+        <FILE id="J534Mf8d" name="string_piece.h" compile="0" resource="0"
+              file="../../src/rec/base/string_piece.h"/>
+      </GROUP>
+      <GROUP id="hA2tQmm3w" name="components">
+        <FILE id="ITTSnsUYI" name="AudioSetupPage.cpp" compile="1" resource="0"
+              file="../../src/rec/components/AudioSetupPage.cpp"/>
+        <FILE id="NynjBNZlE" name="AudioSetupPage.h" compile="0" resource="0"
+              file="../../src/rec/components/AudioSetupPage.h"/>
+        <FILE id="hPFdB0Xmm" name="MainPageComponent.cpp" compile="1" resource="0"
+              file="../../src/rec/components/MainPageComponent.cpp"/>
+        <FILE id="z3hG8XzEN" name="MainPageComponent.h" compile="0" resource="0"
+              file="../../src/rec/components/MainPageComponent.h"/>
+        <FILE id="toUtWS6K" name="MainPageK.cpp" compile="1" resource="0" file="../../src/rec/components/MainPageK.cpp"/>
+        <FILE id="x1FSWXW7M" name="MainPageK.h" compile="0" resource="0" file="../../src/rec/components/MainPageK.h"/>
+        <FILE id="0RH7T3P3w" name="MainPageJ.cpp" compile="1" resource="0"
+              file="../../src/rec/components/MainPageJ.cpp"/>
+        <FILE id="2KK9Fo1Sj" name="MainPageJ.h" compile="0" resource="0" file="../../src/rec/components/MainPageJ.h"/>
+      </GROUP>
+      <GROUP id="lTFfEBKXD" name="util">
+        <FILE id="249H4m9l7" name="Wrapper.h" compile="0" resource="0" file="../../src/rec/util/Wrapper.h"/>
+        <FILE id="X1JBVtXjE" name="locker.h" compile="0" resource="0" file="../../src/rec/util/locker.h"/>
+        <FILE id="xuCBFMtDw" name="math.h" compile="0" resource="0" file="../../src/rec/util/math.h"/>
+      </GROUP>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"
+               JUCE_WASAPI="default" JUCE_DIRECTSOUND="default" JUCE_ALSA="default"
+               JUCE_QUICKTIME="default" JUCE_OPENGL="default" JUCE_USE_FLAC="default"
+               JUCE_USE_OGGVORBIS="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled"
+               JUCE_USE_CAMERA="default" JUCE_ENABLE_REPAINT_DEBUGGING="default"
+               JUCE_USE_XINERAMA="default" JUCE_USE_XSHM="default" JUCE_USE_XRENDER="default"
+               JUCE_PLUGINHOST_VST="default" JUCE_PLUGINHOST_AU="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default"
+               JUCE_WEB_BROWSER="default" JUCE_SUPPORT_CARBON="default" JUCE_CHECK_MEMORY_LEAKS="default"
+               JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_USE_XCURSOR="default"/>
+</JUCERPROJECT>
