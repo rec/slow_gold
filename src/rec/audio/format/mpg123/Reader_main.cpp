@@ -17,7 +17,7 @@ int main(int argc, char * const argv[]) {
     return -1;
   }
 
-  const char* inName = (argc > 1) ? argv[1] : "../../../data/test1.mp3";
+  const char* inName = (argc > 1) ? argv[1] : "../../../../../data/test1.mp3";
 
   File infile(inName);
   if (!infile.exists()) {
@@ -37,8 +37,8 @@ int main(int argc, char * const argv[]) {
     return -1;
   }
 
-  const char* outName = (argc > 2) ? argv[2] : "../../../data/test1.wav";
-  
+  const char* outName = (argc > 2) ? argv[2] : "../../../../data/test1.wav";
+
   File outfile(outName);
   if (outfile.exists()) {
     if (!outfile.deleteFile())
