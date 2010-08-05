@@ -141,7 +141,7 @@
 	D33217F702904D7008A28536 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = E2B1425F11554E7200999031 /* Slow */;
-		activeSDKPreference = macosx10.6;
+		activeSDKPreference = macosx10.5;
 		activeTarget = E89875AE128A2F8FADAC50EE /* Slow */;
 		addToTargets = (
 			E89875AE128A2F8FADAC50EE /* Slow */,
@@ -242,21 +242,18 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 302658642;
-			PBXWorkspaceStateSaveDate = 302658642;
+			PBXPerProjectTemplateStateSaveDate = 302660000;
+			PBXWorkspaceStateSaveDate = 302660000;
 		};
 		perUserProjectItems = {
 			E2040D5111F2930A00CE6A2A = E2040D5111F2930A00CE6A2A /* PBXTextBookmark */;
 			E20BD2DF115C3AB100199C08 = E20BD2DF115C3AB100199C08 /* PBXTextBookmark */;
 			E22A411F118632F7007293B2 = E22A411F118632F7007293B2 /* PBXTextBookmark */;
 			E22A413F118677E7007293B2 = E22A413F118677E7007293B2 /* PBXTextBookmark */;
-			E23CB061120A34CC00E56867 /* XCBuildMessageTextBookmark */ = E23CB061120A34CC00E56867 /* XCBuildMessageTextBookmark */;
-			E23CB064120A34DF00E56867 /* PBXTextBookmark */ = E23CB064120A34DF00E56867 /* PBXTextBookmark */;
-			E23CB069120A34DF00E56867 /* PBXTextBookmark */ = E23CB069120A34DF00E56867 /* PBXTextBookmark */;
+			E23CB093120A395100E56867 = E23CB093120A395100E56867 /* PBXTextBookmark */;
+			E23CB0A0120A396600E56867 = E23CB0A0120A396600E56867 /* PBXTextBookmark */;
 			E249A5B21186126A00004B08 = E249A5B21186126A00004B08 /* PBXTextBookmark */;
 			E249A5B41186126A00004B08 = E249A5B41186126A00004B08 /* PBXTextBookmark */;
-			E25C91BA1201121A004EB1F8 = E25C91BA1201121A004EB1F8 /* PBXTextBookmark */;
-			E25C920F12014A94004EB1F8 = E25C920F12014A94004EB1F8 /* PBXTextBookmark */;
 			E26613F011592B3E0022DC56 = E26613F011592B3E0022DC56 /* PBXTextBookmark */;
 			E26613F111592B3E0022DC56 = E26613F111592B3E0022DC56 /* PBXTextBookmark */;
 			E26614821159CAAC0022DC56 = E26614821159CAAC0022DC56 /* PBXTextBookmark */;
@@ -343,28 +340,7 @@
 		vrLen = 1444;
 		vrLoc = 1097;
 	};
-	E23CB060120A34CC00E56867 /* AppConfig.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = AppConfig.h;
-		path = ../../JuceLibraryCode/AppConfig.h;
-		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {751, 974}}";
-			sepNavSelRange = "{279, 0}";
-			sepNavVisRange = "{0, 1167}";
-		};
-	};
-	E23CB061120A34CC00E56867 /* XCBuildMessageTextBookmark */ = {
-		isa = PBXTextBookmark;
-		comments = "\"JUCE_USE_CDBURNER\" redefined";
-		fRef = E23CB060120A34CC00E56867 /* AppConfig.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 23;
-		rType = 1;
-	};
-	E23CB064120A34DF00E56867 /* PBXTextBookmark */ = {
+	E23CB093120A395100E56867 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = A1DF189E46F0A92D672689E2 /* MainPageK.cpp */;
 		name = "MainPageK.cpp: 52";
@@ -374,15 +350,15 @@
 		vrLen = 1098;
 		vrLoc = 660;
 	};
-	E23CB069120A34DF00E56867 /* PBXTextBookmark */ = {
+	E23CB0A0120A396600E56867 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = E23CB060120A34CC00E56867 /* AppConfig.h */;
-		name = "AppConfig.h: 7";
+		fRef = A1DF189E46F0A92D672689E2 /* MainPageK.cpp */;
+		name = "MainPageK.cpp: 52";
 		rLen = 0;
-		rLoc = 279;
+		rLoc = 1816;
 		rType = 0;
-		vrLen = 1167;
-		vrLoc = 0;
+		vrLen = 1098;
+		vrLoc = 660;
 	};
 	E249A5B21186126A00004B08 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -402,26 +378,6 @@
 		rType = 0;
 		vrLen = 1510;
 		vrLoc = 3211;
-	};
-	E25C91BA1201121A004EB1F8 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = A1DF189E46F0A92D672689E2 /* MainPageK.cpp */;
-		name = "MainPageK.cpp: 45";
-		rLen = 0;
-		rLoc = 1608;
-		rType = 0;
-		vrLen = 1062;
-		vrLoc = 970;
-	};
-	E25C920F12014A94004EB1F8 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = A1DF189E46F0A92D672689E2 /* MainPageK.cpp */;
-		name = "MainPageK.cpp: 50";
-		rLen = 0;
-		rLoc = 1816;
-		rType = 0;
-		vrLen = 1235;
-		vrLoc = 496;
 	};
 	E26613EC11592B220022DC56 /* juce_Rectangle.h */ = {
 		isa = PBXFileReference;

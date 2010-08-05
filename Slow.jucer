@@ -22,10 +22,10 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../..;../../../build/mac/debug/mpg123;../../../build/mac/debug/gtest/include;../../../build/mac/debug/libcddb/include;../../../build/mac/debug/glog/include"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce;../..;../../../build/mac/debug/mpg123;../../../build/mac/debug/gtest/include;../../../build/mac/debug/libcddb/include;../../../build/mac/debug/glog/include"
                    defines=""/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce/src;../../../juce;../..;../../../build/mac/release/mpg123;../../../build/mac/release/gtest/include;../../../build/mac/release/libcddb/include;../../../build/mac/release/glog/include"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../src;../../../juce;../..;../../../build/mac/release/mpg123;../../../build/mac/release/gtest/include;../../../build/mac/release/libcddb/include;../../../build/mac/release/glog/include"
                    defines=""/>
   </CONFIGURATIONS>
   <MAINGROUP id="xOv2eBhZg" name="Slow">

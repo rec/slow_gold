@@ -21,9 +21,9 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce/src;../../../../juce;../..;../../../../build/mac/debug/mpg123;../../../../build/mac/debug/gtest/include;../../../../build/mac/debug/libcddb/include;../../../../build/mac/debug/glog/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce;../..;../../../../build/mac/debug/mpg123;../../../../build/mac/debug/gtest/include;../../../../build/mac/debug/libcddb/include;../../../../build/mac/debug/glog/include"/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce/src;../../../../juce;../..;../../../../build/mac/release/mpg123;../../../../build/mac/release/gtest/include;../../../../build/mac/release/libcddb/include;../../../../release/mac/debug/glog/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../src;../../../../juce;../..;../../../../build/mac/release/mpg123;../../../../build/mac/release/gtest/include;../../../../build/mac/release/libcddb/include;../../../../release/mac/debug/glog/include"/>
   </CONFIGURATIONS>
   <MAINGROUP id="JiHYwfc1Q" name="tests">
     <GROUP id="MC1M02Oe7" name="cd">

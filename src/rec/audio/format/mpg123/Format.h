@@ -1,8 +1,6 @@
 #ifndef __REC_AUDIO_FORMAT_MPG123_FORMAT__
 #define __REC_AUDIO_FORMAT_MPG123_FORMAT__
 
-#include "audio/audio_file_formats/juce_AudioFormat.h"
-
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/audio/format/mpg123/CreateReader.h"
 #include "rec/audio/format/mpg123/NewHandle.h"

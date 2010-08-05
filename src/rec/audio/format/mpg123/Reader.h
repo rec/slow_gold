@@ -5,7 +5,6 @@
 #include <sys/types.h>
 
 #include "juce_amalgamated.h"
-#include "audio/audio_file_formats/juce_AudioFormatReader.h"
 #include "rec/audio/format/mpg123/Copier.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/audio/format/mpg123/CreateReader.h"

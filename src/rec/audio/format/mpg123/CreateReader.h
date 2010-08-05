@@ -2,8 +2,6 @@
 #define __REC_AUDIO_FORMAT_MPG123_CREATE_READER__
 
 #include "juce_amalgamated.h"
-#include "io/streams/juce_InputStream.h"
-#include "audio/audio_file_formats/juce_AudioFormat.h"
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 
