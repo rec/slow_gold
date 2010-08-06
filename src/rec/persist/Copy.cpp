@@ -15,7 +15,7 @@ template <>
 bool copy(const File &file, string *s) {
   scoped_ptr<FileInputStream> in(file.createInputStream());
   if (!in) {
-    LOG(ERROR) << "Couldn't read file " << file.getFileName();
+    LOG(ERROR) << "Couldn't read file " << file.getFullPathName();
     return false;
   }
   int64 length = in->getTotalLength();
@@ -28,10 +28,20 @@ bool copy(const File &file, string *s) {
 }
 
 template <>
-bool copy(const string &from, const File* to) {
+bool copy(const string &from, File const *to) {
+  if (!to->getParentDirectory().createDirectory()) {
+    LOG(ERROR) << "Couldn't create directory for " << to->getFullPathName();
+    return false;
+  }
+
+  if (!to->deleteFile()) {
+    LOG(ERROR) << "Couldn't delete file " << to->getFullPathName();
+    return false;
+  }
+
   scoped_ptr<FileOutputStream> out(to->createOutputStream());
   if (!out) {
-    LOG(ERROR) << "Couldn't write file " << to->getFileName();
+    LOG(ERROR) << "Couldn't write file " << to->getFullPathName();
     return false;
   }
 
@@ -54,10 +64,9 @@ bool copy(const File &from, google::protobuf::Message *to) {
 }
 
 template <>
-bool copy(const google::protobuf::Message &from, const File *to) {
+bool copy(const google::protobuf::Message &from, File const *to) {
   return copy(from, string(), to);
 }
-
 
 template <>
 bool copy(const string &from, String *to) {
@@ -71,8 +80,13 @@ bool copy(const String &from, string *to) {
   return true;
 }
 
-template <> bool copy(const string &from, string *to);
-template <> bool copy(const String &from, String *to);
+template <> bool copy(const string &from, string *to) {
+  *to = from; return true;
+}
+
+template <> bool copy(const String &from, String *to) {
+  *to = from; return true;
+}
 
 }  // namespace persist
 }  // namespace rec

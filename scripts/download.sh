@@ -1,5 +1,7 @@
 # Download the packages given as arguments
 
+CONFIG=debug
+
 while (( "$#" )); do
 
   PACKAGE=$1

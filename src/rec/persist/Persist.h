@@ -2,18 +2,25 @@
 #define __REC_PERSIST_PERSIST__
 
 #include "rec/base/base.h"
+#include "rec/base/Cast.h"
 #include "rec/persist/Copy.h"
+#include "google/protobuf/message.h"
 
 #include "juce_amalgamated.h"
 
 namespace rec {
 namespace persist {
 
-template <typename Data, typename Storage>
+inline File getAppDataFile(const String& name) {
+  File app = File::getSpecialLocation(File::userApplicationDataDirectory);
+  return app.getChildFile("recs/" + name + ".data");
+}
+
+template <typename Data, typename Parent>
 class Persistent {
  public:
-  Persistent(Storage storage) : storage_(storage) {
-    read();
+  Persistent(const File& file) : file_(file) {
+    copy(file_, (Parent*) &data_);
   }
 
   friend class Accessor;
@@ -34,14 +41,13 @@ class Persistent {
   };
 
  private:
-  void read()        { copy(*storage_, &data_); }
-  void write() const { copy(data_, storage_); }
+  void write() const { copy((const Parent&) data_, &file_); }
 
-  Storage storage_;
+  File file_;
   Data data_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Persistent);
+//  DISALLOW_COPY_ASSIGN_AND_EMPTY(Persistent);
 };
 
 }  // namespace persist

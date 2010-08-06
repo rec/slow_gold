@@ -148,7 +148,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     scaleTime();
   } else {
     std::cerr << "Didn't understand file type for filename "
-    << file.getFileName()
+    << file.getFullPathName()
     << std::endl;
   }
 }

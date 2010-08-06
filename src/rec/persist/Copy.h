@@ -5,10 +5,7 @@ namespace rec {
 namespace persist {
 
 template <typename From, typename To>
-bool copy(const From& from, To* to) {
-  *to = from;
-  return true;
-}
+bool copy(const From& from, To* to);
 
 template <typename From, typename Through, typename To>
 bool copy(const From& from, Through through, To* to) {
