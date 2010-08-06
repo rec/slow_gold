@@ -15,11 +15,11 @@ namespace timescaler {
 class Stretcher {
  public:
   Stretcher(const Description& d, const AudioSampleBuffer& inBuf)
-      : channels_(std::max(d.channels_, inBuf.getNumChannels())),
+      : channels_(std::max(d.channels(), (uint32) inBuf.getNumChannels())),
         in_(inBuf, channels_),
-        outBuf_(new AudioSampleBuffer(d.channels_, in_.size_ * d.timeScale_)),
+        outBuf_(new AudioSampleBuffer(d.channels(), in_.size_ * d.time_scale())),
         out_(*outBuf_, channels_) {
-    d.Init(&scaler_);
+    Init(d, &scaler_);
   }
 
   bool readNextChunk(int64 outChunk) {
@@ -35,7 +35,7 @@ class Stretcher {
 
     return in_.remaining() && out_.remaining();
   }
-  
+
   AudioSampleBuffer* getBuffer() const { return outBuf_; }
 
  private:

@@ -2,12 +2,14 @@
 #define __REC_TIME_SCALER
 
 #include "rec/base/base.h"
+#include "rec/audio/stretch/description.pb.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {
 namespace audio {
 namespace timescaler {
 
+#if 0
 struct Description {
   double timeScale_;
   double sampleRate_;
@@ -39,6 +41,22 @@ struct Description {
     return dflt;
   }
 };
+#else
+
+inline const char* Init(const Description &desc, AudioTimeScaler* s) {
+  return s->Init(desc.time_scale(),
+                 desc.sample_rate(),
+                 desc.channels(),
+                 desc.pitch_scale(),
+                 desc.bands(),
+                 desc.filter_overlap()) ? "error" : NULL;
+}
+
+
+
+
+#endif
+
 
 }  // namespace timescaler
 }  // namespace audio

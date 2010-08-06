@@ -23,6 +23,9 @@ class Persistent {
     copy(file_, (Parent*) &data_);
   }
 
+  const Data& operator*()  const { return data_; }
+  const Data* operator->() const { return &data_; }
+
   friend class Accessor;
 
   class Accessor : public ScopedLock {

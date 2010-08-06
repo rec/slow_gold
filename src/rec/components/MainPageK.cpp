@@ -23,7 +23,7 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    scaleDescription_(Description::Default()),
+    scaleDescription_(rec::persist::getAppDataFile("slow")),
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
@@ -38,8 +38,8 @@ void MainPageK::construct(MainPageJ* peer) {
 
   deviceManager_->addAudioCallback(&player_);
 
-  peer_->timeScaleSlider->setValue(scaleDescription_.timeScale_);
-  peer_->pitchScaleSlider->setValue(scaleDescription_.pitchScale_);
+  peer_->timeScaleSlider->setValue(scaleDescription_->time_scale());
+  peer_->pitchScaleSlider->setValue(scaleDescription_->pitch_scale());
   player_.setSource(&transportSource_);
 
   peer_->timeScaleSlider->addListener(this);
@@ -75,11 +75,12 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 }
 
 void MainPageK::sliderDragEnded(Slider* slider) {
+  ScaleDescription::Accessor access(&scaleDescription_);
   if (slider == peer_->timeScaleSlider)
-    scaleDescription_.timeScale_ = slider->getValue();
+    access->set_time_scale(slider->getValue());
 
   else if (slider == peer_->pitchScaleSlider)
-    scaleDescription_.pitchScale_ = slider->getValue();
+    access->set_pitch_scale(slider->getValue());
 
   else
     return;
@@ -155,7 +156,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 
 bool MainPageK::scaleTime() {
   transportSource_.stop();
-  if (!stretch_.requestRescale(scaleDescription_, *loopBuffer_, &scaledBuffer_))
+  if (!stretch_.requestRescale(*scaleDescription_, *loopBuffer_, &scaledBuffer_))
     return false;
 
   loop_.reset(new Loop(*scaledBuffer_));

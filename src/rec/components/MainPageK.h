@@ -8,6 +8,7 @@
 #include "rec/base/scoped_ptr.h"
 #include "rec/audio/stretch/SimpleStretcher.h"
 #include "rec/audio/source/Loop.h"
+#include "rec/persist/Persist.h"
 
 class MainPageJ;
 
@@ -74,8 +75,13 @@ class MainPageK : public FileBrowserListener,
   // Receives the final audio!
   AudioDeviceManager* deviceManager_;
 
+  typedef rec::audio::timescaler::Description Description;
+  typedef rec::persist::Persistent<Description, google::protobuf::Message>
+    ScaleDescription;
+
   // Describes how to stretch.
-  rec::audio::timescaler::Description scaleDescription_;
+  ScaleDescription scaleDescription_;
+
   rec::audio::timescaler::Simple stretch_;
   std::vector<AudioCDBurner*> burners_;
   StringArray cdNames_;

@@ -31,6 +31,11 @@
   </CONFIGURATIONS>
   <MAINGROUP id="xOv2eBhZg" name="Slow">
     <GROUP id="8x67ovHD" name="Source">
+      <GROUP id="WE1tPVE" name="persist">
+        <FILE id="bsHdmMm" name="Copy.cpp" compile="1" resource="0" file="../../src/rec/persist/Copy.cpp"/>
+        <FILE id="jSYIEB7" name="Copy.h" compile="0" resource="0" file="../../src/rec/persist/Copy.h"/>
+        <FILE id="oKcaufk" name="Persist.h" compile="0" resource="0" file="../../src/rec/persist/Persist.h"/>
+      </GROUP>
       <GROUP id="cuSqxl2WN" name="audio">
         <GROUP id="JTBR1MRS" name="format">
           <GROUP id="wL7sxGszl" name="mpg123">
@@ -56,6 +61,8 @@
         <FILE id="4uDLDvBWn" name="StretchOnce.cpp" compile="1" resource="0"
               file="../../src/rec/audio/stretch/StretchOnce.cpp"/>
         <FILE id="PEiANR5R" name="StretchOnce.h" compile="0" resource="0" file="../../src/rec/audio/stretch/StretchOnce.h"/>
+        <FILE id="n4q1oIS" name="description.pb.cc" compile="1" resource="0"
+              file="../../src/rec/audio/stretch/description.pb.cc"/>
         <FILE id="JXiZHgGwb" name="SimpleStretcher.cpp" compile="1" resource="0"
               file="../../src/rec/audio/stretch/SimpleStretcher.cpp"/>
         <FILE id="CP7RMD85v" name="SimpleStretcher.h" compile="0" resource="0"

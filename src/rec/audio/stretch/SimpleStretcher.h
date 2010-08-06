@@ -2,6 +2,7 @@
 #define __REC_SIMPLE_STRETCHER
 
 #include "juce_amalgamated.h"
+#include "rec/audio/stretch/description.pb.h"
 #include "rec/audio/stretch/TimeScaler.h"
 #include "rec/base/scoped_ptr.h"
 

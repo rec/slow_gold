@@ -43,7 +43,7 @@ AudioSampleBuffer* stretchOnce(const Description& description,
   return buf;
 #else
   Stretcher stretcher_(description, inbuf);
-  while (stretcher_.readNextChunk(description.chunkSize_));
+  while (stretcher_.readNextChunk(description.chunk_size()));
   return stretcher_.getBuffer();
 #endif
 }

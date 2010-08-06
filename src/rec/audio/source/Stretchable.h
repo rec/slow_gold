@@ -19,7 +19,7 @@ class Stretchable : public BufferedWrapper {
   }
 
   virtual void init() {
-    rec::audio::timescaler::Description::Default().Init(&scaler_);
+    Init(rec::audio::timescaler::Description(), &scaler_);
     BufferedWrapper::init();
   }
 
