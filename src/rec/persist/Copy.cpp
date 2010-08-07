@@ -28,7 +28,7 @@ bool copy(const File &file, string *s) {
 }
 
 template <>
-bool copy(const string &from, File const *to) {
+bool copy(const string &from, File *to) {
   if (!to->getParentDirectory().createDirectory()) {
     LOG(ERROR) << "Couldn't create directory for " << to->getFullPathName();
     return false;
@@ -64,7 +64,7 @@ bool copy(const File &from, google::protobuf::Message *to) {
 }
 
 template <>
-bool copy(const google::protobuf::Message &from, File const *to) {
+bool copy(const google::protobuf::Message &from, File *to) {
   return copy(from, string(), to);
 }
 

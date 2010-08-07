@@ -67,8 +67,15 @@
             file="../../src/rec/block/MergeBlockSet_test.cpp"/>
     </GROUP>
     <GROUP id="xYGFL4OH3" name="persist">
-      <FILE id="iHrx37qo0" name="Persist_test.cpp" compile="1" resource="0"
-            file="../../src/rec/persist/Persist_test.cpp"/>
+      <FILE id="fpGfZ72gv" name="Accessor.h" compile="0" resource="0" file="../../src/rec/persist/Accessor.h"/>
+      <FILE id="zFC7nTINr" name="App_test.cpp" compile="1" resource="0" file="../../src/rec/persist/App_test.cpp"/>
+      <FILE id="x58xjofYp" name="App.h" compile="0" resource="0" file="../../src/rec/persist/App.h"/>
+      <FILE id="NpyWQsRbg" name="AutosaveApp.h" compile="0" resource="0"
+            file="../../src/rec/persist/AutosaveApp.h"/>
+      <FILE id="4OWOqxYxg" name="Data.h" compile="0" resource="0" file="../../src/rec/persist/Data.h"/>
+      <FILE id="yzDfGdChq" name="testdata.pb.h" compile="0" resource="0"
+            file="../../src/rec/persist/testdata.pb.h"/>
+      <FILE id="zznPSIYxo" name="Writeable.h" compile="0" resource="0" file="../../src/rec/persist/Writeable.h"/>
       <FILE id="G1yPcTE" name="testdata.pb.cc" compile="1" resource="0" file="../../src/rec/persist/testdata.pb.cc"/>
       <FILE id="dDuT3qG4" name="Copy.cpp" compile="1" resource="0" file="../../src/rec/persist/Copy.cpp"/>
       <FILE id="zlWzCFL1B" name="Copy.h" compile="0" resource="0" file="../../src/rec/persist/Copy.h"/>
