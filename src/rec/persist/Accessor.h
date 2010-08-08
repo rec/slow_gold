@@ -9,6 +9,7 @@ namespace rec {
 namespace persist {
 
 template <typename Proto>
+
 class Accessor {
  public:
   Accessor(Data<Proto>* data) : data_(data), locker_(data->lock_) {}

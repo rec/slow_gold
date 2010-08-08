@@ -7,6 +7,7 @@
 #include "rec/audio/Math.h"
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
+#include "rec/persist/AppData.h"
 
 using rec::audio::timescaler::Description;
 using rec::audio::source::Loop;
@@ -23,7 +24,7 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    scaleDescription_(rec::persist::getAppDataFile("slow")),
+    scaleDescription_(rec::persist::getAppData<Description>("shift")),
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
@@ -39,7 +40,7 @@ void MainPageK::construct(MainPageJ* peer) {
   deviceManager_->addAudioCallback(&player_);
 
   {
-    ScaleDescription::Accessor access(&scaleDescription_);
+    ScaleDescription::Accessor access(scaleDescription_);
 
     peer_->timeScaleSlider->setValue(access->time_scale());
     peer_->pitchScaleSlider->setValue(access->pitch_scale());
@@ -80,7 +81,7 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 
 void MainPageK::sliderDragEnded(Slider* slider) {
   {
-    ScaleDescription::Accessor access(&scaleDescription_);
+    ScaleDescription::Accessor access(scaleDescription_);
     if (slider == peer_->timeScaleSlider)
       access->set_time_scale(slider->getValue());
 
@@ -165,7 +166,7 @@ bool MainPageK::scaleTime() {
   Description description;
 
   {
-    ScaleDescription::Accessor access(&scaleDescription_);
+    ScaleDescription::Accessor access(scaleDescription_);
     description.CopyFrom(*access);
   }
 

@@ -2,8 +2,9 @@
 #define __REC_PERSIST_DATA__
 
 #include "rec/base/base.h"
+#include "rec/base/Cast.h"
+#include "rec/persist/Writeable.h"
 #include "rec/persist/Copy.h"
-#include "rec/persist/App.h"
 
 #include "google/protobuf/message.h"
 
@@ -12,32 +13,45 @@
 namespace rec {
 namespace persist {
 
-
 template <typename Proto> class Accessor;
 
 template <typename Proto>
 class Data : public Writeable {
  public:
-  Data(const String& name, App* app)
-      : app_(app),
-        file_(app->getDataFile(name)) {
-    app_->addData(this);
-    copy(file_, (google::protobuf::Message*) &proto_);
-  }
-
-  virtual ~Data() {
-    write();
-    app_->removeData(this);
+  Data(const File& file) : file_(file) {
+    copy(file_, implicit_cast<google::protobuf::Message*>(&proto_));
   }
 
   virtual void doWrite() {
-    copy((const google::protobuf::Message&) proto_, &file_);
+    copy(implicit_cast<const google::protobuf::Message&>(proto_), &file_);
   }
 
   friend class Accessor<Proto>;
 
+  class Accessor {
+   public:
+    Accessor(Data<Proto>* data) : data_(data), locker_(data->lock_) {}
+
+    const Proto& operator*()  const { return data_->proto_; }
+    const Proto* operator->() const { return &data_->proto_; }
+
+    Proto& operator*() {
+      data_->changed_ = true;
+      return data_->proto_;
+    }
+
+    Proto* operator->() {
+      data_->changed_ = true;
+      return &data_->proto_;
+    }
+
+   private:
+    Data<Proto>* data_;
+    ScopedLock locker_;
+    DISALLOW_COPY_ASSIGN_AND_EMPTY(Accessor);
+  };
+
  private:
-  App* app_;
   File file_;
   Proto proto_;
 

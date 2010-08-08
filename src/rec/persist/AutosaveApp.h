@@ -13,12 +13,11 @@ namespace persist {
 class AutosaveApp : public App {
  public:
   AutosaveApp(const String& name, int frequency, int priority)
-      : thread_("WriteThread " + name, this),
+      : App(name),
+        thread_("WriteThread " + name, this),
         frequency_(frequency) {
     thread_.startThread(priority);
   }
-
-  const int frequency_;
 
  private:
   class WriteThread : public Thread {
@@ -38,8 +37,10 @@ class AutosaveApp : public App {
     AutosaveApp* app_;
     DISALLOW_COPY_ASSIGN_AND_EMPTY(WriteThread);
   };
+  friend class WriteThread;
 
   WriteThread thread_;
+  const int frequency_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AutosaveApp);
 };

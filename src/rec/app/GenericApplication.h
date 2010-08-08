@@ -2,22 +2,19 @@
 #define __REC_JUCE_GENERIC_APPLICATION
 
 #include "juce_amalgamated.h"
+#include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
+#include "rec/persist/AutosaveApp.h"
 
 namespace rec {
 
 template <typename Window>
 class GenericApplication : public JUCEApplication {
- private:
-  scoped_ptr<Window> window_;
-  const String name_;
-  const String version_;
-
-
  public:
   GenericApplication(const String& name, const String& version)
       : name_(name), version_(version) {
   }
+
   ~GenericApplication() {}
 
   void initialise(const String& commandLine) {
@@ -35,7 +32,12 @@ class GenericApplication : public JUCEApplication {
   void anotherInstanceStarted (const String& commandLine) {
   }
 
-  juce_UseDebuggingNewOperator
+ private:
+  scoped_ptr<Window> window_;
+  const String name_;
+  const String version_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
 };
 
 }  // namespace rec

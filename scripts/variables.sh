@@ -4,6 +4,7 @@ CONFIGURE_CPU_FLAG="--with-cpu=x86"
 PREFIX_FLAG="--prefix"
 CPPFLAGS="-arch i386"
 CONFIGURE_SCRIPT="standard"
+ROOT="`pwd`"
 SCRIPTS="$ROOT/rec/scripts"
 
 source "$SCRIPTS/platform/platform.sh" &&\
