@@ -29,14 +29,7 @@ class Loop : public PositionableAudioSource {
   virtual void releaseResources() {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
-    int copied = 0;
-    int length = getTotalLength();
-    while (copied < info.numSamples) {
-      int samplesToCopy = std::min(length - position_, info.numSamples - copied);
-      copySamples(samplesToCopy, position_, source_, info.startSample + copied, info.buffer);
-      copied += samplesToCopy;
-      position_ = (position_ + samplesToCopy) % length;
-    }
+    position_ = copyCircularSamples(source_, position_, info);
   }
 
  private:
