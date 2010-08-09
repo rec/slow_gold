@@ -1,7 +1,7 @@
 #include <vector>
 
 #include "rec/audio/stretch/Simple.h"
-#include "rec/audio/stretch/StretchOnce.h"
+#include "rec/audio/stretch/Stretcher.h"
 #include "rec/audio/stretch/TimeScaler.h"
 
 namespace rec {
@@ -35,7 +35,7 @@ bool Simple::requestRescale(const Description& desc,
       description_ = nextDescription_;
       scaleNeeded_ = false;
     }
-    buffer.reset(stretchOnce(description_, inbuf));
+    buffer.reset(Stretcher::stretchOnce(description_, inbuf));
   }
 }
 
