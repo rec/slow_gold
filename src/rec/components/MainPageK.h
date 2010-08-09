@@ -6,7 +6,7 @@
 #include "JuceLibraryCode/JuceHeader.h"
 #include "AudioThumbnailComponent.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/audio/stretch/SimpleStretcher.h"
+#include "rec/audio/stretch/Simple.h"
 #include "rec/audio/source/Loop.h"
 #include "rec/persist/AutosaveApp.h"
 

@@ -37,15 +37,12 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  deviceManager_->addAudioCallback(&player_);
-
   {
     ScaleDescription::Accessor access(scaleDescription_);
 
     peer_->timeScaleSlider->setValue(access->time_scale());
     peer_->pitchScaleSlider->setValue(access->pitch_scale());
   }
-  player_.setSource(&transportSource_);
 
   peer_->timeScaleSlider->addListener(this);
   peer_->pitchScaleSlider->addListener(this);
@@ -57,6 +54,9 @@ void MainPageK::construct(MainPageJ* peer) {
     burners_[i]->addChangeListener(this);
     changeListenerCallback(burners_[i]);
   }
+
+  deviceManager_->addAudioCallback(&player_);
+  player_.setSource(&transportSource_);
 }
 
 void MainPageK::destruct() {

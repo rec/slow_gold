@@ -24,37 +24,6 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceLibraryCode/JuceHeader.h"
-
-
-//==============================================================================
-/* This component scrolls a continuous waveform showing the audio that's currently
-   coming into the audio input.
-*/
-class LiveAudioInputDisplayComp  : public Component,
-                                   public AudioIODeviceCallback,
-                                   public Timer
-{
-public:
-    //==============================================================================
-    LiveAudioInputDisplayComp();
-    ~LiveAudioInputDisplayComp();
-
-    void paint (Graphics& g);
-    void timerCallback();
-
-    void audioDeviceAboutToStart (AudioIODevice* device);
-    void audioDeviceStopped();
-    void audioDeviceIOCallback (const float** inputChannelData, int numInputChannels,
-                                float** outputChannelData, int numOutputChannels, int numSamples);
-private:
-    float samples [1024];
-    int nextSample, subSample;
-    float accumulator;
-
-    LiveAudioInputDisplayComp (const LiveAudioInputDisplayComp&);
-    LiveAudioInputDisplayComp& operator= (const LiveAudioInputDisplayComp&);
-};
-
 //[/Headers]
 
 

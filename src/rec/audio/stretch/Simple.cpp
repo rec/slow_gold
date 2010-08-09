@@ -1,6 +1,6 @@
 #include <vector>
 
-#include "rec/audio/stretch/SimpleStretcher.h"
+#include "rec/audio/stretch/Simple.h"
 #include "rec/audio/stretch/StretchOnce.h"
 #include "rec/audio/stretch/TimeScaler.h"
 

@@ -23,8 +23,6 @@ void Init(AudioTimeScaler* scaler) {
 
 }  // namespace
 
-
-
 TEST(RecAudio, AudioTimeScalerInitialize) {
   {
     AudioTimeScaler scaler;
