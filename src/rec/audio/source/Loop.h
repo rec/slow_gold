@@ -4,6 +4,7 @@
 #include "juce_amalgamated.h"
 #include "rec/base/base.h"
 #include "rec/util/Math.h"
+#include "rec/audio/CopySamples.h"
 
 namespace rec {
 namespace audio {
@@ -30,15 +31,10 @@ class Loop : public PositionableAudioSource {
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
     int copied = 0;
     int length = getTotalLength();
-    int channels = std::min(source_.getNumChannels(),
-                            info.buffer->getNumChannels());
     while (copied < info.numSamples) {
       int samplesToCopy = std::min(length - position_, info.numSamples - copied);
-      for (int c = 0; c < channels; ++c) {
-        info.buffer->copyFrom(c, info.startSample + copied,
-                              source_, c, position_, samplesToCopy);
-      }
-      copied = (copied + samplesToCopy) % length;
+      copySamples(samplesToCopy, position_, source_, info.startSample + copied, info.buffer);
+      copied += samplesToCopy;
       position_ = (position_ + samplesToCopy) % length;
     }
   }
