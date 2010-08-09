@@ -26,7 +26,7 @@ struct Buffer : public rec::util::Circular {
       *i = audioBuffer.getSampleData((i - samples_.begin()) % channels);
   }
 
-  void advance(int64 delta) {
+  void increment(int64 delta) {
     position_ += delta;
     for (Samples::iterator i = samples_.begin(); i != samples_.end(); ++i)
       *i += delta;

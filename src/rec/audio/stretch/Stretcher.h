@@ -5,47 +5,57 @@
 
 #include "juce_amalgamated.h"
 #include "rec/audio/stretch/TimeScaler.h"
-#include "rec/audio/Buffer.h"
+#include "rec/util/Circular.h"
 #include "rec/base/scoped_ptr.h"
 
 namespace rec {
 namespace audio {
 namespace timescaler {
 
-class Stretcher {
+class CircularBuffer {
  public:
-  Stretcher(const Description& d, const AudioSampleBuffer& inBuf)
-      : channels_(std::max(d.channels(), (uint32) inBuf.getNumChannels())),
-        in_(inBuf, channels_),
-        outBuf_(new AudioSampleBuffer(d.channels(), in_.size_ * d.time_scale())),
-        out_(*outBuf_, channels_) {
-    Init(d, &scaler_);
+  CircularBuffer(const AudioSampleBuffer& buffer, int64 begin)
+      : buffer_(buffer),
+        done_(begin, buffer.getNumSamples()),
+        samplePositions_(buffer.getNumChannels()) {
+    getSamplePositions();
   }
 
-  bool readNextChunk(int64 outChunk) {
-    outChunk = std::min(outChunk, out_.remaining());
+  bool readFrom(int64 chunk, CircularBuffer* in, AudioTimeScaler* scaler) {
+    int64 outChunk = std::min(chunk, done_.remaining());
+    int64 inChunk = std::min((int64) scaler->GetInputBufferSize(outChunk) / 2,
+                             in->done_.remaining());
+    float** outSamples = &samplePositions_.front();
+    float** inSamples = &in->samplePositions_.front();
 
-    int64 inChunk = scaler_.GetInputBufferSize(outChunk) / 2;
-    inChunk = std::min(inChunk, in_.remaining());
+    int64 outRead = scaler->Process(inSamples, outSamples, inChunk, outChunk);
 
-    int64 outRead = scaler_.Process(in_.top(), out_.top(), inChunk, outChunk);
     jassert(outRead <= outChunk);
-    in_.advance(inChunk);
-    out_.advance(outRead);
+    bool moreOut = increment(outRead);
+    bool moreIn = in->increment(inChunk);
 
-    return in_.remaining() && out_.remaining();
+    return moreOut && moreIn;
   }
 
-  AudioSampleBuffer* getBuffer() const { return outBuf_; }
+  const rec::util::Circular& done() const { return done_; }
 
  private:
-  const int channels_;
-  rec::audio::Buffer in_;
-  AudioSampleBuffer* const outBuf_;
-  rec::audio::Buffer out_;
-  AudioTimeScaler scaler_;
+  bool increment(int64 delta) {
+    bool result = done_.increment(delta);
+    getSamplePositions();
+    return result;
+  }
 
-  DISALLOW_COPY_AND_ASSIGN(Stretcher);
+  void getSamplePositions() {
+    for (int i = 0; i < buffer_.getNumChannels(); ++i)
+      samplePositions_[i] = buffer_.getSampleData(i) + done_.end_;
+  }
+
+  const AudioSampleBuffer& buffer_;
+  rec::util::Circular done_;
+  std::vector<float*> samplePositions_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(CircularBuffer);
 };
 
 }  // namespace timescaler

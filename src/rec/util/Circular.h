@@ -7,25 +7,43 @@
 namespace rec {
 namespace util {
 
+// A region within a circular buffer of a fixed size.  Note that begin_ might be
+// greater than end_, which means that the region wraps around.  An empty
+// region has begin_ == end_;  by convention, a region representing the entire
+// block always has begin_ = 0, end_ = size_.
 struct Circular {
+  int64 begin_;
+  int64 end_;
   int64 size_;
-  int64 position_;
 
   Circular() {}
-  Circular(int64 size, int64 position = 0) : size_(size), position_(position) {}
-
-  void increment(int64 delta) {
-    position_ = mod(position_ + delta, size_);
+  Circular(int64 begin, int64 size)
+      : begin_(begin), end_(begin), size_(size) {
   }
 
+  bool increment(int64 delta) {
+    if (delta >= remaining()) {
+      begin_ = 0;
+      end_ = size_;
+      return false;
+    } else {
+      end_ = mod(end_ + delta, size_);
+      return true;
+    }
+  }
+
+/*
   void scale(double scale) {
     size_ = int64(scale * size_);
     position_ = int64(scale * position_);
+  }*/
+
+  // The number of elements used in this buffer.
+  int64 diameter() const {
+    return (end_ >= begin_) ? (end_ - begin_) : (end_ - begin_ + size_);
   }
 
-  // The number of positions remaining in the circular buffer.
-  // This is always between 1 and size_, inclusive.
-  int64 remaining() const { return size_ - position_; }
+  int64 remaining() const { return size_ - diameter(); }
 };
 
 }  // namespace util
