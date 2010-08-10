@@ -19,19 +19,24 @@ class Stretcher {
   Stretcher();
   ~Stretcher();
 
-  AudioSampleBuffer* startStretch(const Description& description,
-                                  const AudioSampleBuffer& inbuf, int inStart);
+  void startStretch(const Description& description,
+                    const AudioSampleBuffer& inbuf, int inStart);
 
   bool readNextChunk();
 
   const rec::util::Circular& in() const;
   const rec::util::Circular& out() const;
 
+  AudioSampleBuffer* getBuffer() { return buffer_.get(); }
+  AudioSampleBuffer* transferBuffer() { return buffer_.transfer(); }
+
+
   static AudioSampleBuffer* stretchOnce(const Description& description,
                                         const AudioSampleBuffer& inbuf);
 
  private:
   int64 chunkSize_;
+  scoped_ptr<AudioSampleBuffer> buffer_;
   scoped_ptr<CircularBuffer> in_, out_;
   scoped_ptr<AudioTimeScaler> scaler_;
 };

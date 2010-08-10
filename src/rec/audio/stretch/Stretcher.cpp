@@ -23,6 +23,9 @@ class CircularBuffer {
   }
 
   bool readFrom(int64 chunk, CircularBuffer* in, AudioTimeScaler* scaler) {
+    if (!(done_.remaining() && in->done_.remaining()))
+      return false;
+
     int64 outChunk = std::min(chunk, done_.remaining());
     int64 inChunk = std::min((int64) scaler->GetInputBufferSize(outChunk) / 2,
                              in->done_.remaining());
@@ -62,9 +65,9 @@ class CircularBuffer {
 Stretcher::Stretcher() : scaler_(new AudioTimeScaler) {}
 Stretcher::~Stretcher() {}
 
-AudioSampleBuffer* Stretcher::startStretch(const Description& description,
-                                           const AudioSampleBuffer& inbuf,
-                                           int inStart) {
+void Stretcher::startStretch(const Description& description,
+                             const AudioSampleBuffer& inbuf,
+                             int inStart) {
   Description d(description);
   uint32 channels = std::min(d.channels(), (uint32) inbuf.getNumChannels());
   d.set_channels(channels);
@@ -73,10 +76,9 @@ AudioSampleBuffer* Stretcher::startStretch(const Description& description,
   chunkSize_ = description.chunk_size();
 
   int outSamples = inbuf.getNumSamples() * d.time_scale();
-  juce::AudioSampleBuffer* outbuf = new AudioSampleBuffer(channels, outSamples);
+  buffer_.reset(new AudioSampleBuffer(channels, outSamples));
   in_.reset(new CircularBuffer(inbuf, inStart));
-  out_.reset(new CircularBuffer(*outbuf, inStart * d.time_scale()));
-  return outbuf;
+  out_.reset(new CircularBuffer(*buffer_, inStart * d.time_scale()));
 }
 
 bool Stretcher::readNextChunk() {
@@ -89,10 +91,10 @@ const Circular& Stretcher::out() const { return out_->done(); }
 AudioSampleBuffer* Stretcher::stretchOnce(const Description& description,
                                           const AudioSampleBuffer& inbuf) {
   Stretcher stretcher;
-  AudioSampleBuffer* outbuf = stretcher.startStretch(description, inbuf, 0);
+  stretcher.startStretch(description, inbuf, 0);
 
-  while (stretcher.readNextChunk());
-  return outbuf;
+  while (stretcher.readNextChunk()) {}
+  return stretcher.transferBuffer();
 }
 
 }  // namespace timescaler

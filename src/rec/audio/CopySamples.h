@@ -43,11 +43,12 @@ inline void copySamples(const AudioSampleBuffer& source,
 }
 
 inline int copyCircularSamples(const AudioSampleBuffer& source,
-                                int sourceStart,
-                                const AudioSourceChannelInfo& dest) {
+                               int sourceStart,
+                               const AudioSourceChannelInfo& dest) {
   AudioSourceChannelInfo block = dest;
   int copied = 0;
   int length = source.getNumSamples();
+  sourceStart %= length;
   while (copied < dest.numSamples) {
     block.numSamples = std::min(length - sourceStart, dest.numSamples - copied);
     copySamples(source, sourceStart, block);

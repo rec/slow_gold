@@ -8,10 +8,8 @@ namespace rec {
 namespace audio {
 namespace source {
 
-template <typename Base>
-class Wrapper : public Base {
+class Wrapper : public PositionableAudioSource {
  public:
-  template <typename String, typename Description>
   Wrapper(const String& name, const Description& desc)
       : Base(name, desc),
         source_(NULL) {
@@ -36,6 +34,11 @@ class Wrapper : public Base {
 
   DISALLOW_COPY_AND_ASSIGN(Wrapper);
 };
+
+
+template <typename Base>
+class LoopWrapper : public Wrapper<Base> {
+
 
 }  // namespace source
 }  // namespace audio
