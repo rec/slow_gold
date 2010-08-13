@@ -1,4 +1,4 @@
-PACKAGES="glog gtest libcddb mpg123 protobuf"
+PACKAGES="gflags glog gtest libcddb mpg123 protobuf"
 CONFIG=debug
 
 source rec/scripts/download.sh $PACKAGES &&\
