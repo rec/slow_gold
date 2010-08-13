@@ -11,10 +11,7 @@ namespace util {
 // greater than end_, which means that the region wraps around.  An empty
 // region has begin_ == end__.
 struct Circular {
-  int64 begin_;
-  int64 size_;  // Of this region within the buffer.
-  int64 length_;  // Of the whole buffer.
-
+ public:
   Circular() {}
   Circular(int64 begin, int64 length)
       : begin_(begin), size_(0), length_(length) {
@@ -29,6 +26,8 @@ struct Circular {
   bool wrapsAround()     const { return (begin_ + size_) > length_; }
   int64 remaining()      const { return length_ - size_; }
   int64 remainingBlock() const { return length_ - std::max(size_,  begin_); }
+
+  int64 begin()          const { return begin_; }
   int64 end()            const { return mod(begin_ + size_, length_); }
 
   bool contains(int begin, int size) const {
@@ -37,6 +36,13 @@ struct Circular {
 
     return (begin + size) <= (begin_ + size_);
   }
+
+ private:
+  int64 begin_;
+  int64 size_;  // Of this region within the buffer.
+  int64 length_;  // Of the whole buffer.
+
+  // This class is copiable and assignable.
 };
 
 }  // namespace util

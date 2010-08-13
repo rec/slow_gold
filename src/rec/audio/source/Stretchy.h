@@ -54,11 +54,14 @@ class Stretchy : public PositionableAudioSource {
     CHECK_EQ(info.buffer->getNumChannels(), channels_);
 
     for (AudioSourceChannelInfo i = info; i.numSamples; ) {
-      int processed = processOneChunk(i);
-      CHECK(processed);
-      i.numSamples -= processed;
-      i.startSample += processed;
-      position_ += processed;
+      if (int processed = processOneChunk(i)) {
+        i.numSamples -= processed;
+        i.startSample += processed;
+        position_ += processed;
+      } else {
+        LOG_FIRST_N(DFATAL, 20) << "0 samples in Stretchy::getNextAudioBlock()";
+        return;
+      }
     }
   }
 

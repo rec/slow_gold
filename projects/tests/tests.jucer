@@ -10,7 +10,7 @@
               pluginAUViewClass="TestsAU_V1" pluginRTASCategory="" bundleIdentifier="to.ax.tests">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               juceFolder="../../juce" extraLinkerFlags="-liconv -L../../../../../build/mac/debug/mpg123/lib -lmpg123 -L../../../../../build/mac/debug/libcddb/lib -lcddb -L../../../../../build/mac/debug/gtest/lib -lgtest -lgtest_main  -L../../../../../build/mac/debug/glog/lib -lglog  -L../../../../../build/mac/debug/protobuf/lib -lprotobuf"/>
+               juceFolder="../../juce" extraLinkerFlags="-liconv -L../../../../../build/mac/debug/mpg123/lib -lmpg123 -L../../../../../build/mac/debug/libcddb/lib -lcddb -L../../../../../build/mac/debug/gtest/lib -lgtest -lgtest_main  -L../../../../../build/mac/debug/glog/lib -lglog  -L../../../../../build/mac/debug/protobuf/lib -lprotobuf -L../../../../../build/mac/debug/gflags/lib -lgflags"/>
     <VS2005 targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"
             rtasFolder="c:\SDKs\PT_80_SDK" juceFolder="../../../../../juce"
             libraryType="1"/>
@@ -21,9 +21,9 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include;../../../../../build/mac/debug/gflags/include"/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../release/mac/debug/glog/include;;../../../../../build/mac/release/protobuf/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../release/mac/debug/glog/include;../../../../../build/mac/release/protobuf/include;../../../../../build/mac/release/gflags/include"/>
   </CONFIGURATIONS>
   <MAINGROUP id="JiHYwfc1Q" name="tests">
     <GROUP id="MC1M02Oe7" name="cd">

@@ -4,7 +4,7 @@
 #include <vector>
 #include <glog/logging.h>
 
-#include "rec/audio/stretch/description.pb.h"
+#include "rec/util/Circular.h"
 
 namespace rec {
 namespace audio {
@@ -34,7 +34,7 @@ class BufferedPositionable {
   // thread, but thread-safe.
   bool fillNext(int chunkSize) {
     sourceInfo_.numSamples = std::min(chunkSize, filled_.remainingBlock());
-    sourceInfo_.startSample = filled.begin_;
+    sourceInfo_.startSample = filled.begin();
     source->getNextAudioBlock(sourceInfo_);
 
     ScopedLock l(lock_);
