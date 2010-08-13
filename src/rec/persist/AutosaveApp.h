@@ -16,6 +16,7 @@ class AutosaveApp : public App {
       : App(name),
         thread_("WriteThread " + name, this),
         frequency_(frequency) {
+    CHECK(name.length() > 0);
     thread_.startThread(priority);
   }
 

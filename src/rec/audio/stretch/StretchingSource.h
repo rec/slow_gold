@@ -100,6 +100,12 @@ class StretchingSource : public PositionableAudioSource, public Thread {
   virtual void setLooping(bool looping)   { looping_ = looping; }
   virtual int getNextReadPosition() const { return position_; }
   virtual void setNextReadPosition(int p) { position_ = p; }
+  virtual bool isLooping() const          { return isLooping_; }
+
+  virtual void setLooping(bool looping)   {
+    looping_ = looping;
+    source_->setLooping(looping);
+  }
 
  private:
   scoped_ptr<AudioSampleBuffer> primaryBuffer_;

@@ -13,7 +13,7 @@
 namespace rec {
 namespace persist {
 
-template <typename Proto> class Accessor;
+template <typename Proto> class Access;
 
 template <typename Proto>
 class Data : public Writeable {
@@ -26,11 +26,11 @@ class Data : public Writeable {
     copy(implicit_cast<const google::protobuf::Message&>(proto_), &file_);
   }
 
-  friend class Accessor<Proto>;
+  friend class Access<Proto>;
 
-  class Accessor {
+  class Access {
    public:
-    Accessor(Data<Proto>* data) : data_(data), locker_(data->lock_) {}
+    Access(Data<Proto>* data) : data_(data), locker_(data->lock_) {}
 
     const Proto& operator*()  const { return data_->proto_; }
     const Proto* operator->() const { return &data_->proto_; }
@@ -48,7 +48,7 @@ class Data : public Writeable {
    private:
     Data<Proto>* data_;
     ScopedLock locker_;
-    DISALLOW_COPY_ASSIGN_AND_EMPTY(Accessor);
+    DISALLOW_COPY_ASSIGN_AND_EMPTY(Access);
   };
 
  private:

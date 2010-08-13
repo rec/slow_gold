@@ -67,7 +67,6 @@
             file="../../src/rec/block/MergeBlockSet_test.cpp"/>
     </GROUP>
     <GROUP id="xYGFL4OH3" name="persist">
-      <FILE id="fpGfZ72gv" name="Accessor.h" compile="0" resource="0" file="../../src/rec/persist/Accessor.h"/>
       <FILE id="uQMTOveYN" name="AutosaveApp_test.cpp" compile="1" resource="0"
             file="../../src/rec/persist/AutosaveApp_test.cpp"/>
       <FILE id="x58xjofYp" name="App.h" compile="0" resource="0" file="../../src/rec/persist/App.h"/>
@@ -139,12 +138,6 @@
         <FILE id="RTromHWEm" name="Loop_test.cpp" compile="1" resource="0"
               file="../../src/rec/audio/source/Loop_test.cpp"/>
         <FILE id="Uxa6Gz0CA" name="Mock.h" compile="0" resource="0" file="../../src/rec/audio/source/Mock.h"/>
-        <GROUP id="rEkPFmTWi" name="new">
-          <FILE id="Eqc8BIzPV" name="Buffered.h" compile="0" resource="0" file="../../src/rec/audio/source/new/Buffered.h"/>
-          <FILE id="fhFjv8Zb" name="Computed.h" compile="0" resource="0" file="../../src/rec/audio/source/new/Computed.h"/>
-          <FILE id="AYQkDrRs" name="Copy.h" compile="0" resource="0" file="../../src/rec/audio/source/new/Copy.h"/>
-          <FILE id="402VGgfA" name="Wrapper.h" compile="0" resource="0" file="../../src/rec/audio/source/new/Wrapper.h"/>
-        </GROUP>
         <FILE id="CiTvFY3x8" name="Stretchable.h" compile="0" resource="0"
               file="../../src/rec/audio/source/Stretchable.h"/>
         <FILE id="mabuwOH0a" name="Stretchable_test.cpp" compile="1" resource="0"
@@ -202,6 +195,8 @@
       <FILE id="vA6Q1pBX4" name="OrphanableThread.h" compile="0" resource="0"
             file="../../src/rec/util/OrphanableThread.h"/>
       <FILE id="4IhEv1eGh" name="Range.h" compile="0" resource="0" file="../../src/rec/util/Range.h"/>
+      <FILE id="RDZAPa2sr" name="Circular_test.cpp" compile="1" resource="0"
+            file="../../src/rec/util/Circular_test.cpp"/>
       <FILE id="IkX0YSof7" name="State.h" compile="0" resource="0" file="../../src/rec/util/State.h"/>
       <FILE id="uEPiBGWzr" name="WaitLoopThread.h" compile="0" resource="0"
             file="../../src/rec/util/WaitLoopThread.h"/>

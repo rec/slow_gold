@@ -13,10 +13,10 @@ using std::string;
 typedef Data<TestData> PersistentData;
 
 static void testPersist(PersistentData* data, int foo, const char* bar) {
-  PersistentData::Accessor accessor(data);
+  PersistentData::Access access(data);
 
-  ASSERT_EQ(accessor->foo(), foo);
-  ASSERT_EQ(accessor->bar(), bar);
+  ASSERT_EQ(access->foo(), foo);
+  ASSERT_EQ(access->bar(), bar);
 }
 
 TEST(Persist, AutosaveApp) {
@@ -28,9 +28,9 @@ TEST(Persist, AutosaveApp) {
     testPersist(data, 2, "baz");  // The defaults.
 
     {
-      Data<TestData>::Accessor accessor(data);
-      accessor->set_foo(3);
-      accessor->set_bar("bang");
+      Data<TestData>::Access access(data);
+      access->set_foo(3);
+      access->set_bar("bang");
     }
   }
 

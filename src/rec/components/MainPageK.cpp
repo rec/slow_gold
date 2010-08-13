@@ -38,7 +38,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->addListener(this);
 
   {
-    ScaleDescription::Accessor access(scaleDescription_);
+    ScaleDescription::Access access(scaleDescription_);
 
     peer_->timeScaleSlider->setValue(access->time_scale());
     peer_->pitchScaleSlider->setValue(access->pitch_scale());
@@ -81,7 +81,7 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 
 void MainPageK::sliderDragEnded(Slider* slider) {
   {
-    ScaleDescription::Accessor access(scaleDescription_);
+    ScaleDescription::Access access(scaleDescription_);
     if (slider == peer_->timeScaleSlider)
       access->set_time_scale(slider->getValue());
 
@@ -166,7 +166,7 @@ bool MainPageK::scaleTime() {
   Description description;
 
   {
-    ScaleDescription::Accessor access(scaleDescription_);
+    ScaleDescription::Access access(scaleDescription_);
     description.CopyFrom(*access);
   }
 

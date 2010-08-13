@@ -9,41 +9,34 @@ namespace util {
 
 // A region within a circular buffer of a fixed size.  Note that begin_ might be
 // greater than end_, which means that the region wraps around.  An empty
-// region has begin_ == end_;  by convention, a region representing the entire
-// block always has begin_ = 0, end_ = size_.
+// region has begin_ == end__.
 struct Circular {
   int64 begin_;
-  int64 end_;
-  int64 size_;
+  int64 size_;  // Of this region within the buffer.
+  int64 length_;  // Of the whole buffer.
 
   Circular() {}
-  Circular(int64 begin, int64 size)
-      : begin_(begin), end_(begin), size_(size) {
+  Circular(int64 begin, int64 length)
+      : begin_(begin), size_(0), length_(length) {
   }
 
   bool increment(int64 delta) {
-    if (delta >= remaining()) {
-      begin_ = 0;
-      end_ = size_;
-      return false;
-    } else {
-      end_ = mod(end_ + delta, size_);
-      return true;
-    }
+    delta = std::min(delta, remaining());
+    size_ += delta;
+    return size_ < length_;
   }
 
-/*
-  void scale(double scale) {
-    size_ = int64(scale * size_);
-    position_ = int64(scale * position_);
-  }*/
+  bool wrapsAround()     const { return (begin_ + size_) > length_; }
+  int64 remaining()      const { return length_ - size_; }
+  int64 remainingBlock() const { return length_ - std::max(size_,  begin_); }
+  int64 end()            const { return mod(begin_ + size_, length_); }
 
-  // The number of elements used in this buffer.
-  int64 diameter() const {
-    return (end_ >= begin_) ? (end_ - begin_) : (end_ - begin_ + size_);
+  bool contains(int begin, int size) const {
+    if (begin <  begin_)
+      begin += length_;
+
+    return (begin + size) <= (begin_ + size_);
   }
-
-  int64 remaining() const { return size_ - diameter(); }
 };
 
 }  // namespace util

@@ -2,6 +2,7 @@
 #define __REC_STRETCHY_AUDIO_SOURCE
 
 #include <vector>
+#include <glog/logging.h>
 
 #include "rec/audio/stretch/description.pb.h"
 
@@ -9,18 +10,21 @@ namespace rec {
 namespace audio {
 namespace source {
 
+template <typename Source>
 class Stretchy : public PositionableAudioSource {
  public:
-  static const int SAMPLE_BUFFER_SIZE = 1000;
+  static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
 
-  Stretchable(const Description& description, PositionableAudioSource* source)
+  Stretchy(const Description& description, Source* source)
     : PositionableAudioSource("Stretchy"),
       description_(description),
       source_(source),
+      channels_(description.channels()),
       position_(0),
-      buffer_(description.channels(), SAMPLE_BUFFER_SIZE_),
-      inOffset_(description.channels()),
-      outOffset_(description.channels()) {
+      isLooping_(false),
+      buffer_(channels_, SAMPLE_BUFFER_INITIAL_SIZE),
+      inOffset_(channels_),
+      outOffset_(channels_) {
     Init(description_, &scaler_);
   }
 
@@ -46,40 +50,53 @@ class Stretchy : public PositionableAudioSource {
     source_->releaseResources();
   }
 
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
-    AudioSourceChannelInfo info = i;
-    while (info.numSamples) {
-      int64 inSamples = scaler_.GetInputBufferSize(info->numSamples) / 2;
-      buffer_.setSize(description_.channels(), inSamples, false, false, true);
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
+    CHECK_EQ(info.buffer->getNumChannels(), channels_);
 
-      {
-        AudioSourceChannelInfo sourceInfo;
-        sourceInfo.startSample = 0;
-        sourceInfo.numSamples = inSamples;
-        sourceInfo.buffer = &buffer_;
-        source_->getNextAudioBlock(sourceInfo);
-      }
-
-      for (int c = 0; c < desc_.channels; ++c)
-        outOffset_[c] = info->buffer->getSampleData(c) + info->startSample;
-
-      int processed = scaler_.Process(buffer_.getArrayOfChannels(),
-                                      &outOffset.front(),
-                                      inSamples,
-                                      requested);
-      info.numSamples -= processed;
-      info.startSample += processed;
+    for (AudioSourceChannelInfo i = info; i.numSamples; ) {
+      int processed = processOneChunk(i);
+      CHECK(processed);
+      i.numSamples -= processed;
+      i.startSample += processed;
       position_ += processed;
     }
   }
 
  private:
+  int processOneChunk(const AudioSourceChannelInfo& info) {
+    int64 inSampleCount = scaler_.GetInputBufferSize(info->numSamples) / 2;
+    getNextAudioBlockFromSource(inSampleCount);
+
+    for (int c = 0; c < channels_; ++c)
+      outOffset_[c] = info->buffer->getSampleData(c) + info->startSample;
+
+    float** inSamples = buffer_.getArrayOfChannels();
+    float** outSamples = &outOffset_.front();
+
+    return scaler_.Process(inSamples, outSamples,
+                           inSampleCount, info->numSamples);
+  }
+
+  void getNextAudioBlockFromSource(int numSamples) {
+    buffer_.setSize(channels_, numSamples, false, false, true);
+
+    AudioSourceChannelInfo i;
+    i.startSample = 0;
+    i.numSamples = numSamples;
+    i.buffer = &buffer_;
+    source_->getNextAudioBlock(i);
+  }
+
+  const Description description_;
+  Source* const source_;
+  const int channels_;
+  int position_;
+  bool isLooping_;
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;
-  int position_;
 
-  DISALLOW_COPY_AND_ASSIGN(Stretchable);
+  DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };
 
 }  // namespace source

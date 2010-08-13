@@ -53,7 +53,6 @@ TEST(CD, GetAlbumsFromCDDB) {
     EXPECT_EQ(album.year_, 1980);
     EXPECT_EQ(album.artist_, "Kate Bush");
     EXPECT_EQ(album.tracks_.size(), trackCount);
-    std::cerr << "discid" << std::hex << album.discid_ << std::dec << "\n";
 
     for (int j = 0; j < trackCount; ++j) {
       EXPECT_STREQ(trackNames[j], album.tracks_[j].title_.toCString());
