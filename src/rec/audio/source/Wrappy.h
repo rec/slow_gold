@@ -20,11 +20,11 @@ class Wrappy : public PositionableAudioSource {
 
   virtual int getTotalLength() const { return source_->getTotalLength(); }
 
-  virtual int getNextReadPosition() const { return position_; }
+  virtual int getNextReadPosition() const { return source->getNextReadPosition(); }
   virtual void setNextReadPosition(int p) { source_->setNextReadPosition(p); }
 
   virtual bool isLooping() const { return source_->isLooping(); }
-  virtual void setLooping(bool looping) { return source_->setLooping(looping); }
+  virtual void setLooping(bool looping) { source_->setLooping(looping); }
 
   virtual void prepareToPlay(int s, double r) { source_->prepareToPlay(s, r);  }
   virtual void releaseResources() { source_->releaseResources(); }
