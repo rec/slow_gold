@@ -21,9 +21,9 @@ static void testPersist(PersistentData* data, int foo, const char* bar) {
 
 TEST(Persist, AutosaveApp) {
   {
-    AutosaveApp app("autosave", 10, 7);
+    AutosaveApp app("testapp", 10, 7);
     File file = app.getDataFile("autosave");
-    EXPECT_TRUE(file.deleteFile());
+    ASSERT_TRUE(file.deleteFile());
     Data<TestData>* data = app.getData<TestData>(std::string("autosave"));
     testPersist(data, 2, "baz");  // The defaults.
 

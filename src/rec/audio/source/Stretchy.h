@@ -5,31 +5,25 @@
 #include <glog/logging.h>
 
 #include "rec/audio/stretch/description.pb.h"
+#include "rec/audio/source/Wrappy.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
 template <typename Source>
-class Stretchy : public PositionableAudioSource {
+class Stretchy : public PositionWrappy<Source> {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
 
   Stretchy(const Description& description, Source* source)
-    : PositionableAudioSource("Stretchy"),
+    : PositionWrappy<Source>("Stretchy", source),
       description_(description),
-      source_(source),
       channels_(description.channels()),
-      position_(0),
-      isLooping_(false),
       buffer_(channels_, SAMPLE_BUFFER_INITIAL_SIZE),
       inOffset_(channels_),
       outOffset_(channels_) {
     Init(description_, &scaler_);
-  }
-
-  virtual int getNextReadPosition() {
-    return position_;
   }
 
   virtual int getTotalLength() {
@@ -40,14 +34,6 @@ class Stretchy : public PositionableAudioSource {
     position_ = position;
     source_->setNextReadPosition(position * description.timeScale());
     Init(description_, &scaler_);
-  }
-
-  virtual void prepareToPlay(int samples, double rate) {
-    source_->prepareToPlay(samples, rate);
-  }
-
-  virtual void releaseResources() {
-    source_->releaseResources();
   }
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -93,7 +79,6 @@ class Stretchy : public PositionableAudioSource {
   const Description description_;
   Source* const source_;
   const int channels_;
-  int position_;
   bool isLooping_;
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;

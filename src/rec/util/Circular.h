@@ -25,16 +25,23 @@ struct Circular {
 
   bool wrapsAround()     const { return (begin_ + size_) > length_; }
   int64 remaining()      const { return length_ - size_; }
-  int64 remainingBlock() const { return length_ - std::max(size_,  begin_); }
+  int64 remainingBlock() const { return std::min(remaining(), length_ - end()); }
 
   int64 begin()          const { return begin_; }
   int64 end()            const { return mod(begin_ + size_, length_); }
 
-  bool contains(int begin, int size) const {
+  // How much would remain if we took out a block starting at begin?  Negative
+  // numbers mean that taking that block size out is impossible.
+  int64 remaining(int64 begin) const {
     if (begin <  begin_)
       begin += length_;
 
-    return (begin + size) <= (begin_ + size_);
+    return begin_ + size_ - begin;
+  }
+
+  void reset(int64 begin) {
+    begin_ = begin;
+    size_ = 0;
   }
 
  private:
