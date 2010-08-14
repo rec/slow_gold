@@ -13,8 +13,11 @@ namespace util {
 struct Circular {
  public:
   Circular() {}
-  Circular(int64 begin, int64 length)
-      : begin_(begin), size_(0), length_(length) {
+  Circular(int64 begin, int64 length) : length_(length) { reset(begin); }
+
+  void reset(int64 begin) {
+    begin_ = begin;
+    size_ = 0;
   }
 
   bool increment(int64 delta) {
@@ -23,25 +26,21 @@ struct Circular {
     return size_ < length_;
   }
 
-  bool wrapsAround()     const { return (begin_ + size_) > length_; }
   int64 remaining()      const { return length_ - size_; }
   int64 remainingBlock() const { return std::min(remaining(), length_ - end()); }
 
   int64 begin()          const { return begin_; }
   int64 end()            const { return mod(begin_ + size_, length_); }
 
-  // How much would remain if we took out a block starting at begin?  Negative
-  // numbers mean that taking that block size out is impossible.
-  int64 remaining(int64 begin) const {
+  // How many samples are available starting at begin?
+  int64 availableFrom(int64 begin) const {
+    if (size_ == length_)
+      return size_;
+
     if (begin <  begin_)
       begin += length_;
 
     return begin_ + size_ - begin;
-  }
-
-  void reset(int64 begin) {
-    begin_ = begin;
-    size_ = 0;
   }
 
  private:
