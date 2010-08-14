@@ -26,9 +26,10 @@ class BufferedPositionable : public PositionWrappy<Source> {
 
   // Returns true if there is more to be filled.  Only call this from one
   // thread please, it's likely the underlying source is not thread-safe.
-  bool fillNext(int chunkSize);
+  bool fillNext(int64 chunkSize);
 
  private:
+  int position_;
   Circular filled_;
   PositionableAudioSource* source_;
   AudioSampleBuffer buffer_;

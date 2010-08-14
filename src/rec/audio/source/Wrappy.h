@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <glog/logging.h>
+#include "juce_amalgamated.h"
+
+#include "rec/base/base.h"
 
 namespace rec {
 namespace audio {
@@ -11,16 +14,13 @@ namespace source {
 template <typename Source>
 class Wrappy : public PositionableAudioSource {
  public:
-  Wrappy(const String& name, Source* source)
-    : PositionableAudioSource(name),
-      source_(source) {
-  }
+  Wrappy(Source* source) : source_(source) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) = 0;
 
   virtual int getTotalLength() const { return source_->getTotalLength(); }
 
-  virtual int getNextReadPosition() const { return source->getNextReadPosition(); }
+  virtual int getNextReadPosition() const { return source_->getNextReadPosition(); }
   virtual void setNextReadPosition(int p) { source_->setNextReadPosition(p); }
 
   virtual bool isLooping() const { return source_->isLooping(); }
@@ -39,14 +39,11 @@ class Wrappy : public PositionableAudioSource {
 template <typename Source>
 class PositionWrappy : public Wrappy<Source> {
  public:
-  PositionWrappy(const String& name, Source* source)
-      : Wrappy<Source>(name, source),
-        position_(0) {
-  }
+  PositionWrappy(Source* source) : Wrappy<Source>(source), position_(0) { }
 
   virtual int getNextReadPosition() const { return position_; }
   virtual void setNextReadPosition(int p) {
-    Wrappy::setNextReadPosition(p);
+    Wrappy<Source>::setNextReadPosition(p);
     position_ = p;
   }
 

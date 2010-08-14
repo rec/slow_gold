@@ -1,9 +1,7 @@
-#ifndef __REC_AUDIO_SOURCE_BUFFEREDPOSITIONABLE__
-#define __REC_AUDIO_SOURCE_BUFFEREDPOSITIONABLE__
-
 #include <glog/logging.h>
 
 #include "rec/audio/source/BufferedPositionable.h"
+#include "rec/audio/CopySamples.h"
 
 namespace rec {
 namespace audio {
@@ -11,9 +9,11 @@ namespace source {
 
 template <typename Source>
 BufferedPositionable<Source>::BufferedPositionable(int channels, Source* source)
-    : PositionWrappy<Source>("BufferedPositionable", source),
-      filled_(position, getTotalLength()),
-      buffer_(channels, getTotalLength()) {
+    : PositionWrappy<Source>(source),
+      position_(0),
+      filled_(0, this->getTotalLength()),
+      buffer_(channels, this->getTotalLength()) {
+  CHECK_GT(channels, 0);
   sourceInfo_.buffer = &buffer_;
 }
 
@@ -21,7 +21,7 @@ template <typename Source>
 void BufferedPositionable<Source>::setNextReadPosition(int position) {
   ScopedLock l(lock_);
   PositionWrappy<Source>::setNextReadPosition(position);
-  if (filled_.remaining(position) < 0)
+  if (filled_.availableFrom(position) < 0)
     filled_.reset(position);
 }
 
@@ -37,11 +37,11 @@ void BufferedPositionable<Source>::getNextAudioBlock(const AudioSourceChannelInf
   int32 position;
   {
     ScopedLock l(lock_);
-    int32 available = remaining();
-    if (available < info.numSamples) {
+    int32 samples = available();
+    if (samples < info.numSamples) {
       LOG_FIRST_N(ERROR, 10) << "Didn't have enough samples: "
-                             << available << ", " << info.numSamples;
-      info.numSamples = available;
+                             << samples << ", " << info.numSamples;
+      info.numSamples = samples;
     }
 
     position = position_;
@@ -53,22 +53,23 @@ void BufferedPositionable<Source>::getNextAudioBlock(const AudioSourceChannelInf
     ScopedLock l(lock_);
     if (position_ == position)
       position_ = newPos;
-    else
+    else {
       LOG_FIRST_N(ERROR, 10) << "Another thread changed position_";
+    }
   }
 }
 
 // Returns true if there is more to be filled.  Only call this from one
 // thread please, it's likely the underlying source is not thread-safe.
 template <typename Source>
-bool BufferedPositionable<Source>::fillNext(int chunkSize) {
+bool BufferedPositionable<Source>::fillNext(int64 chunkSize) {
   {
     ScopedLock l(lock_);
     sourceInfo_.numSamples = std::min(chunkSize, filled_.remainingBlock());
-    sourceInfo_.startSample = filled.begin();
+    sourceInfo_.startSample = filled_.begin();
   }
 
-  source->getNextAudioBlock(sourceInfo_);
+  source_->getNextAudioBlock(sourceInfo_);
 
   {
     ScopedLock l(lock_);
@@ -82,4 +83,3 @@ bool BufferedPositionable<Source>::fillNext(int chunkSize) {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_BUFFEREDPOSITIONABLE__
