@@ -8,19 +8,21 @@ namespace rec {
 namespace audio {
 namespace source {
 
-
 TEST(RecAudioSource, Stretchy) {
   Testy testy;
   Stretchy<Testy> stretchy(rec::audio::timescaler::Description(), &testy);
 
-  AudioSampleBuffer buffer(2, stretchy.getTotalLength());
-
   AudioSourceChannelInfo info;
-  info.buffer = &buffer;
   info.numSamples = stretchy.getTotalLength();
   info.startSample = 0;
 
+  AudioSampleBuffer buffer(2, info.numSamples);
+  info.buffer = &buffer;
+
   stretchy.getNextAudioBlock(info);
+  float diff = 0;
+  for (int i = 0; i < info.numSamples; ++i)
+    EXPECT_NEAR(*buffer.getSampleData(0, i), Testy::getSample(i), 0.0086) << i;
 }
 
 }  // namespace source
