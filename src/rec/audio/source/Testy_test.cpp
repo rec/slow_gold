@@ -10,22 +10,16 @@ TEST(RecAudio, Testy) {
 
   AudioSourceChannelInfo info;
   info.buffer = &buffer;
-  static const int SAMPLES = 32;
-  static const int START = 64;
-  static const int POSITION = 16;
-
-  info.numSamples = SAMPLES;
-  info.startSample = START;
+  info.numSamples = 32;
+  info.startSample = 64;
 
   Testy testy;
-  testy.setNextReadPosition(POSITION);
+  testy.setNextReadPosition(16);
   testy.getNextAudioBlock(info);
 
   for (int c = 0; c < 2; ++c) {
-    for (int i = 0; i < SAMPLES; ++i) {
-      float sample = *info.buffer->getSampleData(c, START + i);
-      EXPECT_EQ(sample, Testy::getSample(POSITION + i));
-    }
+    for (int i = 0; i < 32; ++i)
+      EXPECT_EQ(*buffer.getSampleData(c, 64 + i), Testy::getSample(16 + i));
   }
 }
 

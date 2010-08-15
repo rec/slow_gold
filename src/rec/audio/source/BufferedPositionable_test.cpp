@@ -31,13 +31,18 @@ TEST(RecAudio, BufferedPositionable) {
 
   EXPECT_TRUE(bp.fillNext(12));
   EXPECT_EQ(bp.available(), 32);
- 
+
   AudioSampleBuffer buffer(2, 32);
   AudioSourceChannelInfo info;
   info.buffer = &buffer;
   info.numSamples = 24;
   info.startSample = 8;
   bp.getNextAudioBlock(info);
+
+  for (int c = 0; c < 2; ++c) {
+    for (int i = 0; i < info.numSamples; ++i)
+      EXPECT_EQ(*buffer.getSampleData(c, 8 + i), Testy::getSample(108 + i));
+  }
 }
 
 }  // namespace source

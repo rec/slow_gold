@@ -65,7 +65,7 @@ bool BufferedPositionable<Source>::fillNext(int64 chunkSize) {
   {
     ScopedLock l(lock_);
     sourceInfo_.numSamples = std::min(chunkSize, filled_.remainingBlock());
-    sourceInfo_.startSample = filled_.begin();
+    sourceInfo_.startSample = filled_.end();
   }
 
   this->source_->getNextAudioBlock(sourceInfo_);
@@ -73,7 +73,7 @@ bool BufferedPositionable<Source>::fillNext(int64 chunkSize) {
   {
     ScopedLock l(lock_);
     // If the next read position has changed, we just throw away all our work.
-    return (sourceInfo_.startSample != filled_.begin()) ||
+    return (sourceInfo_.startSample != filled_.end()) ||
       filled_.increment(sourceInfo_.numSamples);
   }
 }
