@@ -5,6 +5,8 @@
 
 #include "rec/audio/stretch/description.pb.h"
 #include "rec/audio/source/Wrappy.h"
+#include "rec/audio/stretch/TimeScaler.h"
+
 
 namespace rec {
 namespace audio {
@@ -14,6 +16,7 @@ template <typename Source>
 class Stretchy : public PositionWrappy<Source> {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
+  typedef rec::audio::timescaler::Description Description;
 
   Stretchy(const Description& description, Source* source);
 
@@ -26,9 +29,7 @@ class Stretchy : public PositionWrappy<Source> {
   void getNextAudioBlockFromSource(int numSamples);
 
   const Description description_;
-  Source* const source_;
   const int channels_;
-  bool isLooping_;
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;

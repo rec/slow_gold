@@ -1,3 +1,5 @@
+#include "JuceHeader.h"
+
 #include "rec/cd/GetAlbumsFromCDDB.h"
 
 #include "cddb/cddb.h"

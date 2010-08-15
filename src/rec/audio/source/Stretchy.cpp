@@ -8,24 +8,23 @@ namespace source {
 
 template <typename Source>
 Stretchy<Source>::Stretchy(const Description& description, Source* source)
-    : PositionWrappy<Source>("Stretchy", source),
+    : PositionWrappy<Source>(source),
       description_(description),
       channels_(description.channels()),
       buffer_(channels_, SAMPLE_BUFFER_INITIAL_SIZE),
-      inOffset_(channels_),
       outOffset_(channels_) {
   Init(description_, &scaler_);
 }
 
 template <typename Source>
 int Stretchy<Source>::getTotalLength() {
-  return source_->getTotalLength() / description.timeScale();
+  return this->source_->getTotalLength() / description_.time_scale();
 }
 
 template <typename Source>
 void Stretchy<Source>::setNextReadPosition(int position) {
-  position_ = position;
-  source_->setNextReadPosition(position * description.timeScale());
+  this->position_ = position;
+  this->source_->setNextReadPosition(position * description_.time_scale());
   Init(description_, &scaler_);
 }
 
@@ -37,7 +36,7 @@ void Stretchy<Source>::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     if (int processed = processOneChunk(i)) {
       i.numSamples -= processed;
       i.startSample += processed;
-      position_ += processed;
+      this->position_ += processed;
     } else {
       LOG_FIRST_N(DFATAL, 20) << "0 samples in Stretchy::getNextAudioBlock()";
       return;
@@ -47,17 +46,17 @@ void Stretchy<Source>::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
 template <typename Source>
 int Stretchy<Source>::processOneChunk(const AudioSourceChannelInfo& info) {
-  int64 inSampleCount = scaler_.GetInputBufferSize(info->numSamples) / 2;
+  int64 inSampleCount = scaler_.GetInputBufferSize(info.numSamples) / 2;
   getNextAudioBlockFromSource(inSampleCount);
 
   for (int c = 0; c < channels_; ++c)
-    outOffset_[c] = info->buffer->getSampleData(c) + info->startSample;
+    outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
 
   float** inSamples = buffer_.getArrayOfChannels();
   float** outSamples = &outOffset_.front();
 
   return scaler_.Process(inSamples, outSamples,
-                         inSampleCount, info->numSamples);
+                         inSampleCount, info.numSamples);
 }
 
 template <typename Source>
@@ -68,7 +67,7 @@ void Stretchy<Source>::getNextAudioBlockFromSource(int numSamples) {
   i.startSample = 0;
   i.numSamples = numSamples;
   i.buffer = &buffer_;
-  source_->getNextAudioBlock(i);
+  this->source_->getNextAudioBlock(i);
 }
 
 }  // namespace source

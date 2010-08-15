@@ -18,4 +18,7 @@
   TypeName();                                    \
   DISALLOW_COPY_AND_ASSIGN(TypeName)
 
+// Workaround for http://code.google.com/p/google-glog/issues/detail?id=59
+#define DFATAL DFATAL_LEVEL
+
 #endif  // __REC_BASE_BASE__

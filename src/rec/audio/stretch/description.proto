@@ -1,5 +1,7 @@
 package rec.audio.timescaler;
 
+// Describe how exactly to apply the timescaler to a sample.
+
 message Description {
   optional double time_scale = 1      [default = 1.0];
   optional double sample_rate = 2     [default = 44100.0];
