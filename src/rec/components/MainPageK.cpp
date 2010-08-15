@@ -73,6 +73,36 @@ void MainPageK::destruct() {
   burners_.clear();
 }
 
+void MainPageK::loadFileIntoTransport(const File& file) {
+  if (scoped_ptr<AudioFormatReader> reader(getFileReader(file))) {
+    transportSource_.stop();
+    transportSource_.setSource(NULL);
+
+    int length = reader->lengthInSamples;
+    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels, length));
+    loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
+
+    scaleTime();
+  } else {
+    std::cerr << "Didn't understand file type for filename "
+    << file.getFullPathName()
+    << std::endl;
+  }
+}
+
+bool MainPageK::scaleTime() {
+  transportSource_.stop();
+  Description description = description_.get();
+  if (!stretch_.requestRescale(description, *loopBuffer_, &scaledBuffer_))
+    return false;
+
+  loop_.reset(new Loop(*scaledBuffer_));
+  loop_->setNextReadPosition(0);
+
+  transportSource_.setSource(loop_.get());
+  return true;
+}
+
 void MainPageK::sliderValueChanged(Slider* slider) {
   if (slider == peer_->zoomSlider)
     peer_->thumbnail->setZoomFactor(slider->getValue());
@@ -80,7 +110,7 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 
 void MainPageK::sliderDragEnded(Slider* slider) {
   {
-    DescriptionAppData::Access access(description_);
+    Data<Description>::Access access(description_);
     if (slider == peer_->timeScaleSlider)
       access->set_time_scale(slider->getValue());
 
@@ -140,35 +170,4 @@ void MainPageK::selectionChanged() {
   File file = peer_->fileTreeComp->getSelectedFile();
   peer_->thumbnail->setFile(file);
   loadFileIntoTransport(file);
-}
-
-void MainPageK::loadFileIntoTransport(const File& file) {
-  scoped_ptr<AudioFormatReader> reader(getFileReader(file));
-  if (reader) {
-    transportSource_.stop();
-    transportSource_.setSource(NULL);
-
-    int length = reader->lengthInSamples;
-    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels, length));
-    loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
-
-    scaleTime();
-  } else {
-    std::cerr << "Didn't understand file type for filename "
-    << file.getFullPathName()
-    << std::endl;
-  }
-}
-
-bool MainPageK::scaleTime() {
-  transportSource_.stop();
-  Description description = description_.get();
-  if (!stretch_.requestRescale(description, *loopBuffer_, &scaledBuffer_))
-    return false;
-
-  loop_.reset(new Loop(*scaledBuffer_));
-  loop_->setNextReadPosition(0);
-
-  transportSource_.setSource(loop_.get());
-  return true;
 }

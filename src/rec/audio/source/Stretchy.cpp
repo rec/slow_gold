@@ -38,7 +38,7 @@ void Stretchy<Source>::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       i.startSample += processed;
       this->position_ += processed;
     } else {
-      LOG_FIRST_N(DFATAL, 20) << "0 samples in Stretchy::getNextAudioBlock()";
+      LOG_FIRST_N(ERROR, 20) << "0 samples in getNextAudioBlock()";
       return;
     }
   }
