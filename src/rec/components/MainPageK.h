@@ -4,16 +4,20 @@
 #include <vector>
 
 #include "JuceLibraryCode/JuceHeader.h"
-#include "AudioThumbnailComponent.h"
+
+#include "rec/audio/source/BufferedPositionable.h"
+#include "rec/audio/source/Stretchy.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/audio/stretch/Simple.h"
-#include "rec/audio/source/Loop.h"
+#include "rec/components/AudioThumbnailComponent.h"
 #include "rec/persist/AutosaveApp.h"
 
 class MainPageJ;
 
+// It's generally a bad idea to use "using" in a header file, but this header
+// has only limited use.
 using rec::audio::timescaler::Description;
 using rec::persist::Data;
+using rec::audio::source::Loop;
 
 class MainPageK : public FileBrowserListener,
                   public SliderListener,
@@ -61,15 +65,6 @@ class MainPageK : public FileBrowserListener,
   TimeSliceThread directoryListThread_;
   DirectoryContentsList directoryList_;
 
-  // Contains the entire sample in memory, plus a wraparound.
-  scoped_ptr<AudioSampleBuffer> loopBuffer_;
-
-  // Contains the time-scaled sample in memory.
-  scoped_ptr<AudioSampleBuffer> scaledBuffer_;
-
-  // Sends audio to the Stretchable source.
-  scoped_ptr<rec::audio::source::Loop> loop_;
-
   // Sends audio to the AudioSourcePlayer.
   AudioTransportSource transportSource_;
 
@@ -82,7 +77,6 @@ class MainPageK : public FileBrowserListener,
   // Describes how to stretch.
   Data<Description>* description_;
 
-  rec::audio::timescaler::Simple stretch_;
   std::vector<AudioCDBurner*> burners_;
   StringArray cdNames_;
 

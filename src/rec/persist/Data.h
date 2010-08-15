@@ -26,6 +26,11 @@ class Data : public Writeable {
     copy(implicit_cast<const google::protobuf::Message&>(proto_), &file_);
   }
 
+  const Proto get() const {
+    ScopedLock l(lock_);
+    return proto_;
+  }
+
   friend class Access<Proto>;
 
   class Access {
@@ -48,6 +53,7 @@ class Data : public Writeable {
    private:
     Data<Proto>* data_;
     ScopedLock locker_;
+
     DISALLOW_COPY_ASSIGN_AND_EMPTY(Access);
   };
 

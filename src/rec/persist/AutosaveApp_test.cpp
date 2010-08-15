@@ -10,13 +10,9 @@ namespace persist {
 
 using std::string;
 
-typedef Data<TestData> PersistentData;
-
-static void testPersist(PersistentData* data, int foo, const char* bar) {
-  PersistentData::Access access(data);
-
-  ASSERT_EQ(access->foo(), foo);
-  ASSERT_EQ(access->bar(), bar);
+static void testPersist(Data<TestData>* data, int foo, const char* bar) {
+  ASSERT_EQ(data->get().foo(), foo);
+  ASSERT_EQ(data->get().bar(), bar);
 }
 
 TEST(Persist, AutosaveApp) {

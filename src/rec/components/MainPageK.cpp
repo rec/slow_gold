@@ -38,12 +38,10 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  {
-    DescriptionAppData::Access access(description_);
+  Description d = description_.get();
 
-    peer_->timeScaleSlider->setValue(access->time_scale());
-    peer_->pitchScaleSlider->setValue(access->pitch_scale());
-  }
+  peer_->timeScaleSlider->setValue(d.time_scale());
+  peer_->pitchScaleSlider->setValue(d.pitch_scale());
 
   peer_->timeScaleSlider->addListener(this);
   peer_->pitchScaleSlider->addListener(this);
@@ -164,13 +162,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 
 bool MainPageK::scaleTime() {
   transportSource_.stop();
-  Description description;
-
-  {
-    DescriptionAppData::Access access(description_);
-    description.CopyFrom(*access);
-  }
-
+  Description description = description_.get();
   if (!stretch_.requestRescale(description, *loopBuffer_, &scaledBuffer_))
     return false;
 
