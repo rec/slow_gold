@@ -29,9 +29,7 @@ class BufferedPositionable : public PositionWrappy<Source> {
   bool fillNext(int64 chunkSize);
 
  private:
-  int position_;
   Circular filled_;
-  PositionableAudioSource* source_;
   AudioSampleBuffer buffer_;
   CriticalSection lock_;
   AudioSourceChannelInfo sourceInfo_;

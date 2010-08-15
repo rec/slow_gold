@@ -15,15 +15,15 @@ class Testy : public PositionableAudioSource {
   static const int SIZE = 128;
   Testy() : position_(0) {}
 
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
-    for (int c = 0; c < info.buffer->getNumChannels(); ++c) {
-      for (int i = 0; i < info.numSamples; ++i) {
-        float samp = (position_ + i % SIZE) / (1.0 * SIZE);
-        *info.buffer->getSampleData(c, i + info.startSample) = samp;
-      }
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
+    for (int c = 0; c < i.buffer->getNumChannels(); ++c) {
+      for (int s = 0; s < i.numSamples; ++s)
+        *i.buffer->getSampleData(c, s + i.startSample) = getSample(position_ + s);
     }
-    position_ += info.numSamples;
+    position_ += i.numSamples;
   }
+
+  static float getSample(int p) { return (p % SIZE) / (1.0 * SIZE); }
 
   virtual int getTotalLength() const { return SIZE; }
 

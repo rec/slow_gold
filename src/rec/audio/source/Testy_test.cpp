@@ -23,8 +23,8 @@ TEST(RecAudio, Testy) {
 
   for (int c = 0; c < 2; ++c) {
     for (int i = 0; i < SAMPLES; ++i) {
-      float samp = *info.buffer->getSampleData(c, START + i);
-      EXPECT_EQ(static_cast<int>(testy.getTotalLength() * samp), POSITION + i);
+      float sample = *info.buffer->getSampleData(c, START + i);
+      EXPECT_EQ(sample, Testy::getSample(POSITION + i));
     }
   }
 }

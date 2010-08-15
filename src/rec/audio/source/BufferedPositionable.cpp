@@ -10,7 +10,6 @@ namespace source {
 template <typename Source>
 BufferedPositionable<Source>::BufferedPositionable(int channels, Source* source)
     : PositionWrappy<Source>(source),
-      position_(0),
       filled_(0, this->getTotalLength()),
       buffer_(channels, this->getTotalLength()) {
   CHECK_GT(channels, 0);
@@ -28,7 +27,7 @@ void BufferedPositionable<Source>::setNextReadPosition(int position) {
 template <typename Source>
 int64 BufferedPositionable<Source>::available() const {
   ScopedLock l(lock_);
-  return filled_.availableFrom(position_);
+  return filled_.availableFrom(this->position_);
 }
 
 template <typename Source>
@@ -44,15 +43,15 @@ void BufferedPositionable<Source>::getNextAudioBlock(const AudioSourceChannelInf
       info.numSamples = samples;
     }
 
-    position = position_;
+    position = this->position_;
   }
 
   int32 newPos = rec::audio::copyCircularSamples(buffer_, position, info);
 
   {
     ScopedLock l(lock_);
-    if (position_ == position)
-      position_ = newPos;
+    if (this->position_ == position)
+      this->position_ = newPos;
     else {
       LOG_FIRST_N(ERROR, 10) << "Another thread changed position_";
     }
@@ -69,7 +68,7 @@ bool BufferedPositionable<Source>::fillNext(int64 chunkSize) {
     sourceInfo_.startSample = filled_.begin();
   }
 
-  source_->getNextAudioBlock(sourceInfo_);
+  this->source_->getNextAudioBlock(sourceInfo_);
 
   {
     ScopedLock l(lock_);
