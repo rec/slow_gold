@@ -20,7 +20,6 @@ TEST(RecAudioSource, Stretchy) {
   info.buffer = &buffer;
 
   stretchy.getNextAudioBlock(info);
-  float diff = 0;
   for (int i = 0; i < info.numSamples; ++i)
     EXPECT_NEAR(*buffer.getSampleData(0, i), Testy::getSample(i), 0.0086) << i;
 }

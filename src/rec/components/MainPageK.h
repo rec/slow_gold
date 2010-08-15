@@ -12,6 +12,9 @@
 
 class MainPageJ;
 
+using rec::audio::timescaler::Description;
+using rec::persist::Data;
+
 class MainPageK : public FileBrowserListener,
                   public SliderListener,
                   public ChangeListener {
@@ -46,6 +49,7 @@ class MainPageK : public FileBrowserListener,
   static const Colour FOREGROUND;
   static const File::SpecialLocationType START_DIR;
   static const char* PREVIEW_THREAD_NAME;
+  static const char* APP_DATA_FILE_NAME;
 
   void loadFileIntoTransport(const File& audioFile);
   void readyToPlay();
@@ -75,11 +79,8 @@ class MainPageK : public FileBrowserListener,
   // Receives the final audio!
   AudioDeviceManager* deviceManager_;
 
-  typedef rec::audio::timescaler::Description  Description;
-  typedef rec::persist::Data<Description> ScaleDescription;
-
   // Describes how to stretch.
-  ScaleDescription* scaleDescription_;
+  Data<Description>* description_;
 
   rec::audio::timescaler::Simple stretch_;
   std::vector<AudioCDBurner*> burners_;

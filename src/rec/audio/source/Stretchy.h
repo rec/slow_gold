@@ -1,12 +1,13 @@
 #ifndef __REC_STRETCHY_AUDIO_SOURCE
 #define __REC_STRETCHY_AUDIO_SOURCE
 
+// Wrap an incoming AudioSource, and time-stretch it.
+
 #include <vector>
 
 #include "rec/audio/stretch/description.pb.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/stretch/TimeScaler.h"
-
 
 namespace rec {
 namespace audio {

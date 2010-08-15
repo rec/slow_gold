@@ -19,12 +19,13 @@ const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundC
 const Colour MainPageK::FOREGROUND = Colours::white;
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
+const char* MainPageK::APP_DATA_FILE_NAME = "shift";
 
 MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    scaleDescription_(rec::persist::getAppData<Description>("shift")),
+    description_(rec::persist::getAppData<Description>(APP_DATA_FILE_NAME)),
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
@@ -38,7 +39,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->addListener(this);
 
   {
-    ScaleDescription::Access access(scaleDescription_);
+    DescriptionAppData::Access access(description_);
 
     peer_->timeScaleSlider->setValue(access->time_scale());
     peer_->pitchScaleSlider->setValue(access->pitch_scale());
@@ -81,7 +82,7 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 
 void MainPageK::sliderDragEnded(Slider* slider) {
   {
-    ScaleDescription::Access access(scaleDescription_);
+    DescriptionAppData::Access access(description_);
     if (slider == peer_->timeScaleSlider)
       access->set_time_scale(slider->getValue());
 
@@ -166,7 +167,7 @@ bool MainPageK::scaleTime() {
   Description description;
 
   {
-    ScaleDescription::Access access(scaleDescription_);
+    DescriptionAppData::Access access(description_);
     description.CopyFrom(*access);
   }
 
