@@ -17,6 +17,15 @@ TEST(RecAudio, BufferedPositionable) {
   EXPECT_TRUE(bp.fillNext(32));
   EXPECT_EQ(bp.available(), 32);
 
+  bp.setNextReadPosition(31);
+  EXPECT_EQ(bp.available(), 1);
+
+  bp.setNextReadPosition(32);
+  EXPECT_EQ(bp.available(), 0);
+
+  bp.setNextReadPosition(33);
+  EXPECT_EQ(bp.available(), 0);
+
 }
 
 }  // namespace source
