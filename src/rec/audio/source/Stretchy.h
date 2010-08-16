@@ -42,6 +42,6 @@ class Stretchy : public PositionWrappy<Source> {
 }  // namespace audio
 }  // namespace rec
 
-
+#include "rec/audio/source/Stretchy.cpp"
 
 #endif  // __REC_STRETCHY_AUDIO_SOURCE

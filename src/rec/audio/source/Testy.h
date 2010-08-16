@@ -3,7 +3,9 @@
 
 #include <vector>
 #include <glog/logging.h>
+#include <gtest/gtest.h>
 
+#include "rec/base/scoped_ptr.h"
 #include "juce_amalgamated.h"
 
 namespace rec {
@@ -36,6 +38,49 @@ class Testy : public PositionableAudioSource {
   virtual void releaseResources() {}
 
   int position_;
+
+  static float expectNear(PositionableAudioSource* s,
+                          float delta,
+                          int channels) {
+    Testy t;
+    return expectNear(s, &t, delta, channels);
+  }
+
+  static float expectNear(PositionableAudioSource* s0,
+                          PositionableAudioSource* s1,
+                          float delta,
+                          int channels) {
+    int length = std::min(s0->getTotalLength(), s1->getTotalLength());
+    EXPECT_EQ(s0->getTotalLength(), s1->getTotalLength());
+
+    float maxDelta = 0.0;
+
+    scoped_ptr<AudioSampleBuffer> buffer[2];
+
+    for (int i = 0; i < 2; ++i) {
+      buffer[i].reset(new AudioSampleBuffer(channels, length));
+
+      AudioSourceChannelInfo info;
+      info.numSamples = length;
+      info.startSample = 0;
+      info.buffer = buffer[i].get();
+
+      (i ? s1 : s0)->getNextAudioBlock(info);
+    }
+
+    for (int c = 0; c < channels; ++c) {
+      for (int i = 0; i < length; ++i) {
+        float samples[] = { *buffer[0]->getSampleData(c, i),
+          *buffer[1]->getSampleData(c, i) };
+        EXPECT_NEAR(samples[0], samples[1], delta)
+        << "At sample " << i << " channel " << c;
+        maxDelta = std::max(maxDelta, fabsf(samples[0] - samples[1]));
+      }
+    }
+
+    EXPECT_LT(maxDelta, delta);
+    return maxDelta;
+  }
 };
 
 }  // namespace source

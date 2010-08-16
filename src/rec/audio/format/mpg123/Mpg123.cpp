@@ -88,6 +88,7 @@ String getTranslatedName() {
 }
 
 static AudioFormatManager* getAFMInitialized() {
+  initializeOnce();
   AudioFormatManager* afm = AudioFormatManager::getInstance();
   afm->registerBasicFormats();
   afm->registerFormat(new Format(), false);
@@ -99,10 +100,6 @@ static AudioFormatManager* getAFMInitialized() {
 AudioFormatManager* getAudioFormatManager() {
   static AudioFormatManager* afm = getAFMInitialized();
   return afm;
-}
-
-String testDataPath(const char* filename) {
-  return String("../../../../../../data/") + filename;
 }
 
 }  // namespace mpg123

@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+#include "rec/util/TestData.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 
 namespace rec {
@@ -10,9 +11,9 @@ namespace format {
 namespace mpg123 {
 
 TEST(CreateReader, Create) {
-  AudioFormatReader *reader = getFileReader(testDataPath("test1.mp3"));
-  ASSERT_FALSE(!reader);
-  StringPairArray& data = reader->metadataValues;
+  AudioFormatReader *r = getFileReader(rec::util::testFile("test1.mp3"));
+  ASSERT_FALSE(!r);
+  StringPairArray& data = r->metadataValues;
 
   EXPECT_EQ(data["idversion"], "id3v2");
   EXPECT_EQ(data["TENC"], "Amadeus Pro");
@@ -24,7 +25,7 @@ TEST(CreateReader, Create) {
   EXPECT_EQ(data["TCON"], "Space punk");
   EXPECT_EQ(data["COMM"], "This is a comment.");
 
-  delete reader;
+  delete r;
 }
 
 }  // namespace mpg123

@@ -6,15 +6,18 @@
 #include "juce_amalgamated.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/base/scoped_ptr.h"
+#include "rec/util/TestData.h"
 
 namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
 
+using rec::util::testFile;
+
 TEST(Reader, All) {
-  scoped_ptr<AudioFormatReader> wav(getFileReader(testDataPath("test1.wav")));
-  scoped_ptr<AudioFormatReader> mp3(getFileReader(testDataPath("test1.mp3")));
+  scoped_ptr<AudioFormatReader> wav(getFileReader(testFile("test1.wav")));
+  scoped_ptr<AudioFormatReader> mp3(getFileReader(testFile("test1.mp3")));
 
   ASSERT_TRUE(!!wav);
   ASSERT_TRUE(!!mp3);

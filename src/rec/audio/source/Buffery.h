@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_SOURCE_BUFFEREDPOSITIONABLE__
-#define __REC_AUDIO_SOURCE_BUFFEREDPOSITIONABLE__
+#ifndef __REC_AUDIO_SOURCE_BUFFERY__
+#define __REC_AUDIO_SOURCE_BUFFERY__
 
 #include "rec/util/Circular.h"
 #include "rec/audio/source/Wrappy.h"
@@ -9,11 +9,11 @@ namespace audio {
 namespace source {
 
 template <typename Source>
-class BufferedPositionable : public PositionWrappy<Source> {
+class Buffery : public PositionWrappy<Source> {
  public:
   typedef rec::util::Circular Circular;
 
-  BufferedPositionable(int channels, Source* source);
+  Buffery(int channels, Source* source);
 
   virtual void setNextReadPosition(int position);
 
@@ -34,11 +34,13 @@ class BufferedPositionable : public PositionWrappy<Source> {
   CriticalSection lock_;
   AudioSourceChannelInfo sourceInfo_;
 
-  DISALLOW_COPY_AND_ASSIGN(BufferedPositionable);
+  DISALLOW_COPY_AND_ASSIGN(Buffery);
 };
 
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_BUFFEREDPOSITIONABLE__
+#include "Buffery.cpp"
+
+#endif  // __REC_AUDIO_SOURCE_BUFFERY__
