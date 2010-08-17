@@ -192,8 +192,8 @@ class DoubleStretchyThread : public DoubleStretchy<Source>, Thread {
   typedef rec::audio::timescaler::Description Description;
 
   DoubleStretchyThread(const Description& d, Source* s0, Source* s1)
-      : DoubleStretchy<Source>(d, s0, s1), 
-        Thread("DoubleStretchy"), 
+      : DoubleStretchy<Source>(d, s0, s1),
+        Thread("DoubleStretchy"),
         waitTime_(d.inactive_wait_time()) {
     setPriority(d.thread_priority());
     startThread();
@@ -205,12 +205,12 @@ class DoubleStretchyThread : public DoubleStretchy<Source>, Thread {
         wait(waitTime_);
     }
   }
+
   void stop() {
     signalThreadShouldExit();
     notify();
   }
-  
-  
+
  private:
   int waitTime_;
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchyThread);
@@ -219,7 +219,5 @@ class DoubleStretchyThread : public DoubleStretchy<Source>, Thread {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-
-
 
 #endif  // __REC_AUDIO_SOURCE_DOUBLESTRETCHY__

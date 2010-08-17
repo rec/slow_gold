@@ -10,7 +10,6 @@
 #include "rec/persist/AppData.h"
 
 using rec::audio::timescaler::Description;
-using rec::audio::source::Loop;
 
 // TODO: why can't this be defined in the .h with other primitives?!
 
@@ -37,7 +36,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  Description d = description_.get();
+  Description d = description_->get();
 
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
@@ -55,6 +54,7 @@ void MainPageK::construct(MainPageJ* peer) {
 
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(&transportSource_);
+  rec::audio::format::mpg123::initializeOnce();
 }
 
 void MainPageK::destruct() {
@@ -73,7 +73,7 @@ void MainPageK::destruct() {
 }
 
 void MainPageK::loadFileIntoTransport(const File& file) {
-  AudioFormatManager* afm = AudioFormatManager::getInstance()p;
+  AudioFormatManager* afm = AudioFormatManager::getInstance();
   if (AudioFormatReader* r0 = afm->createReaderFor(file)) {
     AudioFormatReader* r1 = afm->createReaderFor(file);
     DCHECK(r1);
@@ -81,7 +81,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     transportSource_.stop();
     transportSource_.setSource(NULL);
     if (stretchy_)
-      stretchy_.stop();
+      stretchy_->stop();
 
     Description d = description_->get();
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);

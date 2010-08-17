@@ -16,7 +16,6 @@ class MainPageJ;
 // has only limited use.
 using rec::audio::timescaler::Description;
 using rec::persist::Data;
-using rec::audio::source::Loop;
 
 class MainPageK : public FileBrowserListener,
                   public SliderListener,
@@ -75,7 +74,7 @@ class MainPageK : public FileBrowserListener,
   // Describes how to stretch.
   Data<Description>* description_;
 
-  typedef DoubleStretchyThread<AudioFormatReaderSource> Source;
+  typedef rec::audio::source::DoubleStretchyThread<AudioFormatReaderSource> Source;
   scoped_ptr<Source> stretchy_;
   scoped_ptr<Source> lastStretchy_;
 
