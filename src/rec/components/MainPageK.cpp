@@ -11,7 +11,6 @@
 
 using rec::audio::timescaler::Description;
 using rec::audio::source::Loop;
-using rec::audio::format::mpg123::getFileReader;
 
 // TODO: why can't this be defined in the .h with other primitives?!
 
@@ -74,33 +73,27 @@ void MainPageK::destruct() {
 }
 
 void MainPageK::loadFileIntoTransport(const File& file) {
-  if (scoped_ptr<AudioFormatReader> reader(getFileReader(file))) {
+  AudioFormatManager* afm = AudioFormatManager::getInstance()p;
+  if (AudioFormatReader* r0 = afm->createReaderFor(file)) {
+    AudioFormatReader* r1 = afm->createReaderFor(file);
+    DCHECK(r1);
+
     transportSource_.stop();
     transportSource_.setSource(NULL);
+    if (stretchy_)
+      stretchy_.stop();
 
-    int length = reader->lengthInSamples;
-    loopBuffer_.reset(new AudioSampleBuffer(reader->numChannels, length));
-    loopBuffer_->readFromAudioReader(reader.get(), 0, length, 0, true, true);
+    Description d = description_->get();
+    AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
+    AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
-    scaleTime();
+    lastStretchy_.reset(new Source(d, s0, s1));
+    lastStretchy_.swap(stretchy_);
+
   } else {
-    std::cerr << "Didn't understand file type for filename "
-    << file.getFullPathName()
-    << std::endl;
+    LOG(ERROR) << "Didn't understand file type for filename "
+               << file.getFullPathName();
   }
-}
-
-bool MainPageK::scaleTime() {
-  transportSource_.stop();
-  Description description = description_.get();
-  if (!stretch_.requestRescale(description, *loopBuffer_, &scaledBuffer_))
-    return false;
-
-  loop_.reset(new Loop(*scaledBuffer_));
-  loop_->setNextReadPosition(0);
-
-  transportSource_.setSource(loop_.get());
-  return true;
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
@@ -119,9 +112,10 @@ void MainPageK::sliderDragEnded(Slider* slider) {
 
     else
       return;
-  }
 
-  scaleTime();
+    if (stretchy_)
+      stretchy_->setDescription(*access);
+  }
 }
 
 static const char* const CD_STATE_NAMES[] = {

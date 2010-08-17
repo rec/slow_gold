@@ -18,6 +18,12 @@ class Initializer {
       initError_ = mpg123_init();
       running_ = true;
     }
+    if (!formatManagerInitialized_) {
+      formatManagerInitialized_ = true;
+      AudioFormatManager* afm = AudioFormatManager::getInstance();
+      afm->registerBasicFormats();
+      afm->registerFormat(new Format(), false);
+    }
     return initError_;
   }
 
@@ -31,6 +37,7 @@ class Initializer {
 
   Error initError_;
   bool running_;
+  static bool formatManagerInitialized_;
 
   static Initializer& instance() {
     // C guarantees thread-safe construction of this variable, so we're
@@ -40,6 +47,8 @@ class Initializer {
     return i;
   }
 };
+
+bool Initializer::formatManagerInitialized_ = false;
 
 }  // namespace
 
@@ -85,21 +94,6 @@ int getBitsPerSample(int encoding) {
 
 String getTranslatedName() {
   return TRANS("MP3 Audio file");
-}
-
-static AudioFormatManager* getAFMInitialized() {
-  initializeOnce();
-  AudioFormatManager* afm = AudioFormatManager::getInstance();
-  afm->registerBasicFormats();
-  afm->registerFormat(new Format(), false);
-
-  return afm;
-}
-
-// Get the default audio format manager and make sure it knows about mp3s.
-AudioFormatManager* getAudioFormatManager() {
-  static AudioFormatManager* afm = getAFMInitialized();
-  return afm;
 }
 
 }  // namespace mpg123

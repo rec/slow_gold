@@ -29,13 +29,13 @@ class DoubleStretchy : public PositionableAudioSource {
         descriptionChanged_(false),
         description_(description),
         gettingBlock_(false) {
-    readers_[0].source_ = s0;
-    readers_[1].source_ = s1;
+    readers_[0].source_.reset(s0);
+    readers_[1].source_.reset(s1);
 
     readers_[0].reset(description, 0);
   }
 
-  void changeDescription(const Description& description) {
+  void setDescription(const Description& description) {
     ScopedLock l(lock_);
     descriptionChanged_ = true;
     description_.CopyFrom(description);
@@ -116,7 +116,7 @@ class DoubleStretchy : public PositionableAudioSource {
         readers_[1 - currentReader_].reset(description_, offset);
       }
 
-      return result;
+      return result || next();
     }
   }
 
@@ -145,7 +145,7 @@ class DoubleStretchy : public PositionableAudioSource {
 
  private:
   struct SourceReader {
-    Source* source_;
+    scoped_ptr<Source> source_;
     Description description_;
     int offset_;
 
@@ -154,7 +154,7 @@ class DoubleStretchy : public PositionableAudioSource {
 
     void reset(const Description& description, int offset) {
       description_.CopyFrom(description);
-      reader_.reset(new Stretchy<Source>(description_, source_));
+      reader_.reset(new Stretchy<Source>(description_, source_.get()));
       buffered_.reset(new Buffered(description_.channels(), reader_.get()));
       offset_ = offset;
     }
@@ -183,6 +183,37 @@ class DoubleStretchy : public PositionableAudioSource {
   int gettingBlock_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchy);
+};
+
+
+template <typename Source>
+class DoubleStretchyThread : public DoubleStretchy<Source>, Thread {
+ public:
+  typedef rec::audio::timescaler::Description Description;
+
+  DoubleStretchyThread(const Description& d, Source* s0, Source* s1)
+      : DoubleStretchy<Source>(d, s0, s1), 
+        Thread("DoubleStretchy"), 
+        waitTime_(d.inactive_wait_time()) {
+    setPriority(d.thread_priority());
+    startThread();
+  }
+
+  void run() {
+    while (!threadShouldExit()) {
+      if (!(this->fillNext() || threadShouldExit()))
+        wait(waitTime_);
+    }
+  }
+  void stop() {
+    signalThreadShouldExit();
+    notify();
+  }
+  
+  
+ private:
+  int waitTime_;
+  DISALLOW_COPY_AND_ASSIGN(DoubleStretchyThread);
 };
 
 }  // namespace source

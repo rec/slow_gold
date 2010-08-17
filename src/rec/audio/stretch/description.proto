@@ -3,12 +3,23 @@ package rec.audio.timescaler;
 // Describe how exactly to apply the timescaler to a sample.
 
 message Description {
-  optional double time_scale = 1      [default = 1.0];
-  optional double sample_rate = 2     [default = 44100.0];
-  optional uint32 channels = 3        [default = 2];
-  optional double pitch_scale = 4     [default = 1.0];
-  optional uint32 bands = 5           [default = 2048];
-  optional uint32 filter_overlap = 6  [default = 1];
-  optional uint32 chunk_size = 7      [default = 512];
-  optional uint32 prefill_size = 8    [default = 4096];
+  optional double time_scale = 1        [default = 1.0];
+  optional double sample_rate = 2       [default = 44100.0];
+  optional uint32 channels = 3          [default = 2];
+  optional double pitch_scale = 4       [default = 1.0];
+  optional uint32 bands = 5             [default = 2048];
+  optional uint32 filter_overlap = 6    [default = 1];
+  optional uint32 chunk_size = 7        [default = 512];
+
+  // How many samples must we prefill before we consider a buffer ready to go?
+  optional uint32 prefill_size = 8      [default = 4096];
+
+  // How long does our thread wait when it believes it has nothing to do?  -1
+  // means "wait forever".  That *should* work but if our threading is a little
+  // wonky, might occasionally deadlock.  The only cost of setting this to a
+  // positive number is a tiny threading overhead - we'll do that for the
+  // release but right now set it to -1 to reveal any issues.
+  optional int32 inactive_wait_time = 9  [default = -1];
+
+  optional uint32 thread_priority = 10   [default = 4];
 };

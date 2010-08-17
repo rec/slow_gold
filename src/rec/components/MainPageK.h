@@ -5,8 +5,7 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
-#include "rec/audio/source/BufferedPositionable.h"
-#include "rec/audio/source/Stretchy.h"
+#include "rec/audio/source/DoubleStretchy.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/components/AudioThumbnailComponent.h"
 #include "rec/persist/AutosaveApp.h"
@@ -57,7 +56,6 @@ class MainPageK : public FileBrowserListener,
 
   void loadFileIntoTransport(const File& audioFile);
   void readyToPlay();
-  bool scaleTime();
 
   MainPageJ* peer_;
 
@@ -76,6 +74,10 @@ class MainPageK : public FileBrowserListener,
 
   // Describes how to stretch.
   Data<Description>* description_;
+
+  typedef DoubleStretchyThread<AudioFormatReaderSource> Source;
+  scoped_ptr<Source> stretchy_;
+  scoped_ptr<Source> lastStretchy_;
 
   std::vector<AudioCDBurner*> burners_;
   StringArray cdNames_;

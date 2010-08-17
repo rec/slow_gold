@@ -2,6 +2,7 @@
 
 #include "rec/audio/source/DoubleStretchy.h"
 #include "rec/audio/source/Testy.h"
+#include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/util/TestData.h"
 
 namespace rec {
@@ -18,19 +19,18 @@ static AudioFormatReaderSource* newSource() {
 }
 
 TEST(RecAudioSource, DoubleStretchyFile) {
-  scoped_ptr<AudioFormatReaderSource> s1(newSource());
-  scoped_ptr<AudioFormatReaderSource> s2(newSource());
-  scoped_ptr<AudioFormatReaderSource> s3(newSource());
-  DoubleStretchy<AudioFormatReaderSource> ds(Description(), s1.get(), s2.get());
+  rec::audio::format::mpg123::initializeOnce();
+  DoubleStretchy<AudioFormatReaderSource> ds(Description(), newSource(),
+                                             newSource());
   while (ds.fillNext());
   EXPECT_EQ(ds.available(), 44100);
-
-  // Testy::expectNear(&ds, s3.get(), 0.1, 2);
 }
 
 TEST(RecAudioSource, DoubleStretchy) {
+  rec::audio::format::mpg123::initializeOnce();
+  
   Testy t1, t2;
-  DoubleStretchy<Testy> ds(Description(), &t1, &t2);
+  DoubleStretchy<Testy> ds(Description(), new Testy, new Testy);
   while (ds.fillNext());
   EXPECT_EQ(ds.available(), 128);
 

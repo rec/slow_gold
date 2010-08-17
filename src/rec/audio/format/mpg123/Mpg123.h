@@ -47,13 +47,6 @@ int getBitsPerSample(int encoding);
 // Get the name, translated into the current language.
 String getTranslatedName();
 
-// Get the default audio format manager and make sure it knows about mp3s.
-AudioFormatManager* getAudioFormatManager();
-
-inline AudioFormatReader* getFileReader(const File& file) {
-  return file.exists() ? getAudioFormatManager()->createReaderFor(file) : NULL;
-}
-
 }  // namespace mpg123
 }  // namespace format
 }  // namespace audio

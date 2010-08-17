@@ -11,7 +11,10 @@ namespace format {
 namespace mpg123 {
 
 TEST(CreateReader, Create) {
-  AudioFormatReader *r = getFileReader(rec::util::testFile("test1.mp3"));
+  initializeOnce();
+  AudioFormatReader *r = AudioFormatManager::getInstance()->createReaderFor(
+      rec::util::testFile("test1.mp3"));
+
   ASSERT_FALSE(!r);
   StringPairArray& data = r->metadataValues;
 
