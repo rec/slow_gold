@@ -9,9 +9,8 @@ class AudioThumbnailComponent  : public Component, public ChangeListener {
  public:
   AudioThumbnailComponent()
       : thumbnailCache (5),
-        thumbnail(512, formatManager, thumbnailCache) {
+        thumbnail(512, *AudioFormatManager::getInstance(), thumbnailCache) {
     startTime = endTime = 0;
-    formatManager.registerBasicFormats();
     thumbnail.addChangeListener(this);
   }
 

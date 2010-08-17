@@ -118,6 +118,10 @@ class DoubleStretchy : public PositionableAudioSource {
         SourceReader& sr = readers_[currentReader_];
         float scale = description_.time_scale() / sr.description_.time_scale();
         int offset = (position_ + sr.offset_) * scale - position_;
+
+        LOG(INFO) << "position=" << position_ << " offset=" << offset
+                  << " sr.offset_=" << sr.offset_ << " scale=" << scale;
+
         readers_[1 - currentReader_].reset(description_, offset);
       }
 
