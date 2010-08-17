@@ -23,6 +23,8 @@ int Stretchy<Source>::getTotalLength() {
 
 template <typename Source>
 void Stretchy<Source>::setNextReadPosition(int position) {
+  ScopedLock l(lock_);
+
   this->position_ = position;
   this->source_->setNextReadPosition(position * description_.time_scale());
   Init(description_, &scaler_);
@@ -30,6 +32,7 @@ void Stretchy<Source>::setNextReadPosition(int position) {
 
 template <typename Source>
 void Stretchy<Source>::getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  ScopedLock l(lock_);
   CHECK_EQ(info.buffer->getNumChannels(), channels_);
 
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
@@ -46,6 +49,8 @@ void Stretchy<Source>::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
 template <typename Source>
 int Stretchy<Source>::processOneChunk(const AudioSourceChannelInfo& info) {
+  ScopedLock l(lock_);
+
   int64 inSampleCount = scaler_.GetInputBufferSize(info.numSamples) / 2;
   getNextAudioBlockFromSource(inSampleCount);
 
@@ -61,6 +66,7 @@ int Stretchy<Source>::processOneChunk(const AudioSourceChannelInfo& info) {
 
 template <typename Source>
 void Stretchy<Source>::getNextAudioBlockFromSource(int numSamples) {
+  ScopedLock l(lock_);
   buffer_.setSize(channels_, numSamples, false, false, true);
 
   AudioSourceChannelInfo i;

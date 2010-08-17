@@ -89,6 +89,8 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 
     lastStretchy_.reset(new Source(d, s0, s1));
     lastStretchy_.swap(stretchy_);
+
+    loopingButtonClicked();
     transportSource_.setSource(stretchy_.get());
 
   } else {
@@ -156,7 +158,8 @@ void MainPageK::startStopButtonClicked() {
 }
 
 void MainPageK::loopingButtonClicked() {
-  // how do deal with this?
+  if (stretchy_)
+    stretchy_->setLooping(peer_->loopingButton->getToggleState());
 }
 
 void MainPageK::selectionChanged() {

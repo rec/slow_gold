@@ -145,7 +145,8 @@ class DoubleStretchy : public PositionableAudioSource {
   virtual void setLooping(bool looping) {
     ScopedLock l(lock_);
     for (SourceReader* i = readers_; i != readers_ + SIZE; ++i)
-      i->buffered_->setLooping(looping);
+      if (i->buffered_)
+        i->buffered_->setLooping(looping);
   }
 
  private:

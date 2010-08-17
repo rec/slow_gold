@@ -34,6 +34,7 @@ class Stretchy : public PositionWrappy<Source> {
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };
