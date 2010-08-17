@@ -21,13 +21,24 @@ class DoubleStretchy : public PositionableAudioSource {
  public:
   typedef rec::audio::timescaler::Description Description;
   typedef Buffery< Stretchy<Source> > Buffered;
+  const static int MINIMUM_FILL_SIZE = 4096;
 
   DoubleStretchy(const Description& description, Source* s0, Source* s1)
-      : position_(0), currentReader_(0), chunkSize_(description.chunk_size()) {
+      : position_(0),
+        currentReader_(0),
+        descriptionChanged_(false),
+        description_(description),
+        gettingBlock_(false) {
     readers_[0].source_ = s0;
     readers_[1].source_ = s1;
 
     readers_[0].reset(description, 0);
+  }
+
+  void changeDescription(const Description& description) {
+    ScopedLock l(lock_);
+    descriptionChanged_ = true;
+    description_.CopyFrom(description);
   }
 
   virtual int getTotalLength() const {
@@ -45,8 +56,13 @@ class DoubleStretchy : public PositionableAudioSource {
     for (SourceReader* i = readers_; i != readers_ + SIZE; ++i) {
       if (position_ <= getTotalLength())
         i->offset_ = 0;
-      i->buffered_->setNextReadPosition(position - i->offset_);
+      i->buffered_->setNextReadPosition(position + i->offset_);
     }
+  }
+
+  virtual int available() const {
+    ScopedLock l(lock_);
+    return source()->available();
   }
 
   virtual void prepareToPlay(int s, double r) {
@@ -59,34 +75,61 @@ class DoubleStretchy : public PositionableAudioSource {
       i->buffered_->releaseResources();
   }
 
-  int available() const { return source()->available(); }
-
   virtual bool fillNext() {
-    Buffered* buffered;
+    // Make sure our memory management is done out of the lock.
+    scoped_ptr<Buffered> bufferDeleter;
+    scoped_ptr< Stretchy<Source> > stretchyDeleter;
+
     {
       ScopedLock l(lock_);
-      buffered = next();
-      if (!buffered)
-        buffered = source();
-    }
 
-    return buffered->fillNext(chunkSize_);
+      int prefillSize = description_.prefill_size();
+      bool isNext = next() && source()->ready(prefillSize);
+      Buffered* fill = isNext ? next() : source();
+      int chunkSize = description_.chunk_size();
+
+      bool result;
+      {
+        ScopedUnlock l(lock_);
+        result = fill->fillNext(chunkSize);
+      }
+
+      if (gettingBlock_)
+        return true;  // Don't rock the boat until that's done.
+
+      if (isNext) {
+        if (fill->ready(prefillSize)) {
+          // Your new file is ready!
+          SourceReader& current = readers_[currentReader_];
+          current.buffered_.swap(bufferDeleter);
+          current.reader_.swap(stretchyDeleter);
+          currentReader_ = 1 - currentReader_;
+          DCHECK(!next());
+        }
+
+      } else if (descriptionChanged_) {
+        descriptionChanged_ = false;
+
+        SourceReader& sr = readers_[currentReader_];
+        float scale = description_.time_scale() / sr.description_.time_scale();
+        int offset = (position_ + sr.offset_) * scale - position_;
+        readers_[1 - currentReader_].reset(description_, offset);
+      }
+
+      return result;
+    }
   }
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
+    ScopedLock l(lock_);
+    Buffered* buffered = source();
+
+    gettingBlock_ = true;
     {
-      ScopedLock l(lock_);
-
-      if (next() && next()->available() >= info.numSamples) {
-        // Your new file is ready!
-        SourceReader& current = readers_[currentReader_];
-        current.buffered_.reset();
-        current.reader_.reset();
-        currentReader_ = 1 - currentReader_;
-      }
+      ScopedUnlock l(lock_);
+      buffered->getNextAudioBlock(info);
     }
-
-    source()->getNextAudioBlock(info);
+    gettingBlock_ = false;
   }
 
   virtual bool isLooping() const {
@@ -116,18 +159,28 @@ class DoubleStretchy : public PositionableAudioSource {
       offset_ = offset;
     }
   };
-  Buffered* source() { return readers_[currentReader_].buffered_.get(); }
-  Buffered* next() { return readers_[1 - currentReader_].buffered_.get(); }
-  const Buffered* source() const { return readers_[currentReader_].buffered_.get(); }
-  const Buffered* next() const { return readers_[1 - currentReader_].buffered_.get(); }
+
+  Buffered* source() {
+    return readers_[currentReader_].buffered_.get();
+  }
+
+  const Buffered* source() const {
+    return readers_[currentReader_].buffered_.get();
+  }
+
+  Buffered* next() {
+    return readers_[1 - currentReader_].buffered_.get();
+  }
 
   static const int SIZE = 2;
   SourceReader readers_[SIZE];
   int currentReader_;
-  int chunkSize_;
+  bool descriptionChanged_;
+  Description description_;
 
   int position_;
   CriticalSection lock_;
+  int gettingBlock_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchy);
 };

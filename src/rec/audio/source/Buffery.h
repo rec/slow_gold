@@ -20,6 +20,13 @@ class Buffery : public PositionWrappy<Source> {
   // How many samples are available (already computed?)
   int64 available() const;
 
+  // Is this buffer completely full?
+  bool filled() const { return this->getTotalLength() <= available(); }
+
+  bool ready(int size) const {
+    return (available() >= std::min(this->getTotalLength(), size));
+  }
+
   AudioSampleBuffer* buffer() { return &buffer_; }
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i);

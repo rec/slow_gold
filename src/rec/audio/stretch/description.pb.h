@@ -141,6 +141,13 @@ class Description : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 chunk_size() const;
   inline void set_chunk_size(::google::protobuf::uint32 value);
   
+  // optional uint32 prefill_size = 8 [default = 4096];
+  inline bool has_prefill_size() const;
+  inline void clear_prefill_size();
+  static const int kPrefillSizeFieldNumber = 8;
+  inline ::google::protobuf::uint32 prefill_size() const;
+  inline void set_prefill_size(::google::protobuf::uint32 value);
+  
   // @@protoc_insertion_point(class_scope:rec.audio.timescaler.Description)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -153,11 +160,12 @@ class Description : public ::google::protobuf::Message {
   ::google::protobuf::uint32 bands_;
   ::google::protobuf::uint32 filter_overlap_;
   ::google::protobuf::uint32 chunk_size_;
+  ::google::protobuf::uint32 prefill_size_;
   friend void  protobuf_AddDesc_description_2eproto();
   friend void protobuf_AssignDesc_description_2eproto();
   friend void protobuf_ShutdownFile_description_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -290,6 +298,22 @@ inline ::google::protobuf::uint32 Description::chunk_size() const {
 inline void Description::set_chunk_size(::google::protobuf::uint32 value) {
   _set_bit(6);
   chunk_size_ = value;
+}
+
+// optional uint32 prefill_size = 8 [default = 4096];
+inline bool Description::has_prefill_size() const {
+  return _has_bit(7);
+}
+inline void Description::clear_prefill_size() {
+  prefill_size_ = 4096u;
+  _clear_bit(7);
+}
+inline ::google::protobuf::uint32 Description::prefill_size() const {
+  return prefill_size_;
+}
+inline void Description::set_prefill_size(::google::protobuf::uint32 value) {
+  _set_bit(7);
+  prefill_size_ = value;
 }
 
 

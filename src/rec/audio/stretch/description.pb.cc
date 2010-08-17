@@ -30,7 +30,7 @@ void protobuf_AssignDesc_description_2eproto() {
       "description.proto");
   GOOGLE_CHECK(file != NULL);
   Description_descriptor_ = file->message_type(0);
-  static const int Description_offsets_[7] = {
+  static const int Description_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, time_scale_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, sample_rate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, channels_),
@@ -38,6 +38,7 @@ void protobuf_AssignDesc_description_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, bands_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, filter_overlap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, chunk_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, prefill_size_),
   };
   Description_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -81,11 +82,12 @@ void protobuf_AddDesc_description_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\021description.proto\022\024rec.audio.timescale"
-    "r\"\266\001\n\013Description\022\025\n\ntime_scale\030\001 \001(\001:\0011"
+    "r\"\322\001\n\013Description\022\025\n\ntime_scale\030\001 \001(\001:\0011"
     "\022\032\n\013sample_rate\030\002 \001(\001:\00544100\022\023\n\010channels"
     "\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 \001(\001:\0011\022\023\n\005ban"
     "ds\030\005 \001(\r:\0042048\022\031\n\016filter_overlap\030\006 \001(\r:\001"
-    "1\022\027\n\nchunk_size\030\007 \001(\r:\003512", 226);
+    "1\022\027\n\nchunk_size\030\007 \001(\r:\003512\022\032\n\014prefill_si"
+    "ze\030\010 \001(\r:\0044096", 254);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "description.proto", &protobuf_RegisterTypes);
   Description::default_instance_ = new Description();
@@ -111,6 +113,7 @@ const int Description::kPitchScaleFieldNumber;
 const int Description::kBandsFieldNumber;
 const int Description::kFilterOverlapFieldNumber;
 const int Description::kChunkSizeFieldNumber;
+const int Description::kPrefillSizeFieldNumber;
 #endif  // !_MSC_VER
 
 Description::Description()
@@ -136,6 +139,7 @@ void Description::SharedCtor() {
   bands_ = 2048u;
   filter_overlap_ = 1u;
   chunk_size_ = 512u;
+  prefill_size_ = 4096u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -177,6 +181,7 @@ void Description::Clear() {
     bands_ = 2048u;
     filter_overlap_ = 1u;
     chunk_size_ = 512u;
+    prefill_size_ = 4096u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -295,6 +300,22 @@ bool Description::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(64)) goto parse_prefill_size;
+        break;
+      }
+      
+      // optional uint32 prefill_size = 8 [default = 4096];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_prefill_size:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &prefill_size_)));
+          _set_bit(7);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -352,6 +373,11 @@ void Description::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->chunk_size(), output);
   }
   
+  // optional uint32 prefill_size = 8 [default = 4096];
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->prefill_size(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -393,6 +419,11 @@ void Description::SerializeWithCachedSizes(
   // optional uint32 chunk_size = 7 [default = 512];
   if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->chunk_size(), target);
+  }
+  
+  // optional uint32 prefill_size = 8 [default = 4096];
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->prefill_size(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -449,6 +480,13 @@ int Description::ByteSize() const {
           this->chunk_size());
     }
     
+    // optional uint32 prefill_size = 8 [default = 4096];
+    if (has_prefill_size()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->prefill_size());
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -497,6 +535,9 @@ void Description::MergeFrom(const Description& from) {
     if (from._has_bit(6)) {
       set_chunk_size(from.chunk_size());
     }
+    if (from._has_bit(7)) {
+      set_prefill_size(from.prefill_size());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -527,6 +568,7 @@ void Description::Swap(Description* other) {
     std::swap(bands_, other->bands_);
     std::swap(filter_overlap_, other->filter_overlap_);
     std::swap(chunk_size_, other->chunk_size_);
+    std::swap(prefill_size_, other->prefill_size_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

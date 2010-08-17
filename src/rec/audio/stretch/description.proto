@@ -10,4 +10,5 @@ message Description {
   optional uint32 bands = 5           [default = 2048];
   optional uint32 filter_overlap = 6  [default = 1];
   optional uint32 chunk_size = 7      [default = 512];
+  optional uint32 prefill_size = 8    [default = 4096];
 };
