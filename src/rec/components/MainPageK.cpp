@@ -89,6 +89,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 
     lastStretchy_.reset(new Source(d, s0, s1));
     lastStretchy_.swap(stretchy_);
+    transportSource_.setSource(stretchy_.get());
 
   } else {
     LOG(ERROR) << "Didn't understand file type for filename "

@@ -56,7 +56,8 @@ class DoubleStretchy : public PositionableAudioSource {
     for (SourceReader* i = readers_; i != readers_ + SIZE; ++i) {
       if (position_ <= getTotalLength())
         i->offset_ = 0;
-      i->buffered_->setNextReadPosition(position + i->offset_);
+      if (i->buffered_)
+        i->buffered_->setNextReadPosition(position + i->offset_);
     }
   }
 
@@ -66,13 +67,17 @@ class DoubleStretchy : public PositionableAudioSource {
   }
 
   virtual void prepareToPlay(int s, double r) {
-    for (SourceReader* i = readers_; i != readers_ + SIZE; ++i)
-      i->buffered_->prepareToPlay(s, r);
+    for (SourceReader* i = readers_; i != readers_ + SIZE; ++i) {
+      if (i->buffered_)
+        i->buffered_->prepareToPlay(s, r);
+    }
   }
 
   virtual void releaseResources() {
-    for (SourceReader* i = readers_; i != readers_ + SIZE; ++i)
-      i->buffered_->releaseResources();
+    for (SourceReader* i = readers_; i != readers_ + SIZE; ++i) {
+      if (i->buffered_)
+        i->buffered_->releaseResources();
+    }
   }
 
   virtual bool fillNext() {
