@@ -1,0 +1,8 @@
+package rec.gui;
+
+message Color {
+  optional uint32 red    = 1 [default = 0];
+  optional uint32 green  = 2 [default = 0];
+  optional uint32 blue   = 3 [default = 0];
+  optional uint32 alpha  = 4 [default = 0xFF];
+};
