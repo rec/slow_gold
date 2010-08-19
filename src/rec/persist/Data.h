@@ -1,6 +1,8 @@
 #ifndef __REC_PERSIST_DATA__
 #define __REC_PERSIST_DATA__
 
+#include <string>
+
 #include "rec/base/base.h"
 #include "rec/base/Cast.h"
 #include "rec/persist/Writeable.h"
@@ -18,12 +20,19 @@ template <typename Proto> class Access;
 template <typename Proto>
 class Data : public Writeable {
  public:
-  Data(const File& file) : file_(file) {
-    copy(file_, implicit_cast<google::protobuf::Message*>(&proto_));
+  typedef google::protobuf::Message Message;
+
+  Data(const File& file, const char* initial = "") : file_(file) {
+    Message* message = implicit_cast<Message*>(&proto_);
+    if (!(copy(file_, message) || copy(std::string(initial), message))) {
+      LOG_FIRST_N(ERROR, 10) << "Couldn't read file "
+                             << file.getFullPathName().toCString()
+                             << " or initial " << initial;
+    }
   }
 
   virtual void doWrite() {
-    copy(implicit_cast<const google::protobuf::Message&>(proto_), &file_);
+    copy(implicit_cast<const Message&>(proto_), &file_);
   }
 
   const Proto get() const {
