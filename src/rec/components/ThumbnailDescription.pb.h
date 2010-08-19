@@ -23,7 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "Color.pb.h"
+#include "rec/components/Color.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {

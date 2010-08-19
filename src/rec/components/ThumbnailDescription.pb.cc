@@ -78,16 +78,16 @@ void protobuf_AddDesc_ThumbnailDescription_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::gui::protobuf_AddDesc_Color_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fcomponents_2fColor_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032ThumbnailDescription.proto\022\007rec.gui\032\013C"
-    "olor.proto\"\374\001\n\024ThumbnailDescription\022\"\n\nb"
-    "ackground\030\001 \002(\0132\016.rec.gui.Color\022\"\n\nforeg"
-    "round\030\002 \002(\0132\016.rec.gui.Color\022\036\n\006cursor\030\003 "
-    "\002(\0132\016.rec.gui.Color\022\033\n\020cursor_thickness\030"
-    "\004 \001(\r:\0011\022\021\n\006margin\030\005 \001(\r:\0012\0220\n#source_sa"
-    "mples_per_thumbnail_sample\030\006 \001(\r:\003512\022\032\n"
-    "\017thumbnail_cache\030\007 \001(\r:\0015", 305);
+    "\n\032ThumbnailDescription.proto\022\007rec.gui\032\032r"
+    "ec/components/Color.proto\"\374\001\n\024ThumbnailD"
+    "escription\022\"\n\nbackground\030\001 \002(\0132\016.rec.gui"
+    ".Color\022\"\n\nforeground\030\002 \002(\0132\016.rec.gui.Col"
+    "or\022\036\n\006cursor\030\003 \002(\0132\016.rec.gui.Color\022\033\n\020cu"
+    "rsor_thickness\030\004 \001(\r:\0011\022\021\n\006margin\030\005 \001(\r:"
+    "\0012\0220\n#source_samples_per_thumbnail_sampl"
+    "e\030\006 \001(\r:\003512\022\032\n\017thumbnail_cache\030\007 \001(\r:\0015", 320);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ThumbnailDescription.proto", &protobuf_RegisterTypes);
   ThumbnailDescription::default_instance_ = new ThumbnailDescription();

@@ -4,7 +4,6 @@
 #include "juce_amalgamated.h"
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/persist/AutosaveApp.h"
 
 namespace rec {
 
