@@ -11,10 +11,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-template <typename Source>
 class Wrappy : public PositionableAudioSource {
  public:
-  Wrappy(Source* source) : source_(source) {}
+  Wrappy(PositionableAudioSource* source) : source_(source) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) = 0;
 
@@ -30,20 +29,19 @@ class Wrappy : public PositionableAudioSource {
   virtual void releaseResources() { source_->releaseResources(); }
 
  protected:
-  Source* source_;
+  PositionableAudioSource* source_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);
 };
 
-template <typename Source>
-class PositionWrappy : public Wrappy<Source> {
+class PositionWrappy : public Wrappy {
  public:
-  PositionWrappy(Source* source) : Wrappy<Source>(source), position_(0) { }
+  PositionWrappy(PositionableAudioSource* source) : Wrappy(source), position_(0) { }
 
   virtual int getNextReadPosition() const { return position_; }
   virtual void setNextReadPosition(int p) {
-    Wrappy<Source>::setNextReadPosition(p);
+    Wrappy::setNextReadPosition(p);
     position_ = p;
   }
 

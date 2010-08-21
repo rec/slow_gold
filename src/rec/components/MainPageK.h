@@ -51,7 +51,6 @@ class MainPageK : public FileBrowserListener,
   static const Colour FOREGROUND;
   static const File::SpecialLocationType START_DIR;
   static const char* PREVIEW_THREAD_NAME;
-  static const char* APP_DATA_FILE_NAME;
 
   void loadFileIntoTransport(const File& audioFile);
   void readyToPlay();
@@ -70,9 +69,6 @@ class MainPageK : public FileBrowserListener,
 
   // Receives the final audio!
   AudioDeviceManager* deviceManager_;
-
-  // Describes how to stretch.
-  Data<Description>* description_;
 
   typedef rec::audio::source::DoubleStretchyThread<AudioFormatReaderSource> Source;
   scoped_ptr<Source> stretchy_;

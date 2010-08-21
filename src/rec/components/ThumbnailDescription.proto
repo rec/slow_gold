@@ -3,13 +3,12 @@ import "rec/components/Color.proto";
 package rec.gui;
 
 message ThumbnailDescription {
-  required Color background = 1;
-  required Color foreground = 2;
-  required Color cursor = 3;
+  optional rec.gui.Color background = 1;
+  optional rec.gui.Color foreground = 2;
+  optional rec.gui.Color cursor = 3;
 
-  optional uint32 cursor_thickness = 4 [default = 1];
-  optional uint32 margin = 5 [default = 2];
+  optional uint32 cursor_thickness = 4                    [default = 1];
+  optional uint32 margin = 5                              [default = 2];
   optional uint32 source_samples_per_thumbnail_sample = 6 [default = 512];
-
-  optional uint32 thumbnail_cache = 7 [default = 5];
+  optional uint32 thumbnail_cache = 7                     [default = 5];
 };

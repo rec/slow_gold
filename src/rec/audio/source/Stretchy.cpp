@@ -6,9 +6,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-template <typename Source>
-Stretchy<Source>::Stretchy(const Description& description, Source* source)
-    : PositionWrappy<Source>(source),
+Stretchy::Stretchy(const Description& description,
+                   PositionableAudioSource* source)
+    : PositionWrappy(source),
       description_(description),
       channels_(description.channels()),
       buffer_(channels_, SAMPLE_BUFFER_INITIAL_SIZE),
@@ -16,22 +16,19 @@ Stretchy<Source>::Stretchy(const Description& description, Source* source)
   Init(description_, &scaler_);
 }
 
-template <typename Source>
-int Stretchy<Source>::getTotalLength() {
-  return this->source_->getTotalLength() / description_.time_scale();
+int Stretchy::getTotalLength() {
+  return source_->getTotalLength() / description_.time_scale();
 }
 
-template <typename Source>
-void Stretchy<Source>::setNextReadPosition(int position) {
+void Stretchy::setNextReadPosition(int position) {
   ScopedLock l(lock_);
 
-  this->position_ = position;
-  this->source_->setNextReadPosition(position * description_.time_scale());
+  position_ = position;
+  source_->setNextReadPosition(position * description_.time_scale());
   Init(description_, &scaler_);
 }
 
-template <typename Source>
-void Stretchy<Source>::getNextAudioBlock(const AudioSourceChannelInfo& info) {
+void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   ScopedLock l(lock_);
   CHECK_EQ(info.buffer->getNumChannels(), channels_);
 
@@ -39,16 +36,16 @@ void Stretchy<Source>::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     if (int processed = processOneChunk(i)) {
       i.numSamples -= processed;
       i.startSample += processed;
-      this->position_ += processed;
+      position_ += processed;
     } else {
-      LOG_FIRST_N(ERROR, 20) << "0 samples in getNextAudioBlock()";
+      LOG_FIRST_N(ERROR, 20) << "0 samples in getNextAudioBlock(), asked for "
+                             << i.numSamples << " from " << info.numSamples;
       return;
     }
   }
 }
 
-template <typename Source>
-int Stretchy<Source>::processOneChunk(const AudioSourceChannelInfo& info) {
+int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   ScopedLock l(lock_);
 
   int64 inSampleCount = scaler_.GetInputBufferSize(info.numSamples) / 2;
@@ -64,8 +61,7 @@ int Stretchy<Source>::processOneChunk(const AudioSourceChannelInfo& info) {
                          inSampleCount, info.numSamples);
 }
 
-template <typename Source>
-void Stretchy<Source>::getNextAudioBlockFromSource(int numSamples) {
+void Stretchy::getNextAudioBlockFromSource(int numSamples) {
   ScopedLock l(lock_);
   buffer_.setSize(channels_, numSamples, false, false, true);
 
@@ -73,7 +69,7 @@ void Stretchy<Source>::getNextAudioBlockFromSource(int numSamples) {
   i.startSample = 0;
   i.numSamples = numSamples;
   i.buffer = &buffer_;
-  this->source_->getNextAudioBlock(i);
+  source_->getNextAudioBlock(i);
 }
 
 }  // namespace source

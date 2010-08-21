@@ -1,6 +1,7 @@
 #ifndef __THUMBNAIL_COMP
 #define __THUMBNAIL_COMP
 
+#include "rec/slow/Preferences.h"
 #include "juce_amalgamated.h"
 #include "ThumbnailDescription.pb.h"
 
@@ -9,18 +10,27 @@ namespace gui {
 
 class AudioThumbnailComponent  : public Component, public ChangeListener {
  public:
-  AudioThumbnailComponent(const ThumbnailDescription& d)
-      : thumbnailCache_(d.thumbnail_cache()),
-        thumbnail_(d.source_samples_per_thumbnail_sample(),
-                   *AudioFormatManager::getInstance(), thumbnailCache_),
-        description_(d) {
+  AudioThumbnailComponent()
+      : description_(rec::slow::getPreferences()->get().thumbnail()),
+        thumbnailCache_(description_.thumbnail_cache()),
+        thumbnail_(description_.source_samples_per_thumbnail_sample(),
+                   *AudioFormatManager::getInstance(), thumbnailCache_) {
     startTime_ = endTime_ = cursor_ = 0;
     thumbnail_.addChangeListener(this);
   }
 
+  static uint32 makeARGB(const Color& c) {
+    if (c.has_argb())
+      return c.argb();
+    else if (c.has_rgb())
+      return (c.alpha() << 24) | c.rgb();
+    else
+      return (c.alpha() << 24) | (c.red() << 16) | (c.green() << 8) | c.blue();
+  }
+
   static Colour makeColor(const Color& color) {
-    return Colour((uint8) color.red(), (uint8) color.green(), 
-                  (uint8) color.blue(), (uint8) color.alpha());
+    uint32 c = makeARGB(color);
+    return Colour(c);
   }
 
   ~AudioThumbnailComponent() {
@@ -126,13 +136,13 @@ class AudioThumbnailComponent  : public Component, public ChangeListener {
     repaint();
   }
 
+  const ThumbnailDescription description_;
+
   AudioThumbnailCache thumbnailCache_;
   AudioThumbnail thumbnail_;
   double startTime_, endTime_, cursor_;
   int cursorX_;
   CriticalSection lock_;
-
-  const ThumbnailDescription description_;
 };
 
 }  // namespace gui

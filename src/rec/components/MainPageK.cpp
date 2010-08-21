@@ -7,9 +7,10 @@
 #include "rec/audio/Math.h"
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
-#include "rec/persist/AppData.h"
+#include "rec/slow/Preferences.h"
 
 using rec::audio::timescaler::Description;
+using rec::persist::Data;
 
 // TODO: why can't this be defined in the .h with other primitives?!
 
@@ -17,17 +18,21 @@ const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundC
 const Colour MainPageK::FOREGROUND = Colours::white;
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
-const char* MainPageK::APP_DATA_FILE_NAME = "shift";
 
 MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
-    description_(rec::persist::getAppData<Description>(APP_DATA_FILE_NAME)),
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
 void MainPageK::construct(MainPageJ* peer) {
+  {
+    Data<rec::slow::Preferences>::Access access(rec::slow::getPreferences());
+    access->mutable_thumbnail()->mutable_background()->set_rgb(0xFFFFFF);
+    access->mutable_thumbnail()->mutable_foreground()->set_rgb(0xADD8E6);
+  }
+
   peer_ = peer;
 
   directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
@@ -36,7 +41,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  Description d = description_->get();
+  Description d = rec::slow::getPreferences()->get().timescale();
 
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
@@ -83,7 +88,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     if (stretchy_)
       stretchy_->stop();
 
-    Description d = description_->get();
+    Description d = rec::slow::getPreferences()->get().timescale();
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
@@ -106,18 +111,18 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 
 void MainPageK::sliderDragEnded(Slider* slider) {
   {
-    Data<Description>::Access access(description_);
+    Data<rec::slow::Preferences>::Access access(rec::slow::getPreferences());
     if (slider == peer_->timeScaleSlider)
-      access->set_time_scale(slider->getValue());
+      access->mutable_timescale()->set_time_scale(slider->getValue());
 
     else if (slider == peer_->pitchScaleSlider)
-      access->set_pitch_scale(slider->getValue());
+      access->mutable_timescale()->set_pitch_scale(slider->getValue());
 
     else
       return;
 
     if (stretchy_)
-      stretchy_->setDescription(*access);
+      stretchy_->setDescription(access->timescale());
   }
 }
 
@@ -144,8 +149,6 @@ void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
     return;
 
   scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
-  int cddbId = reader->getCDDBId();
-
 }
 
 void MainPageK::startStopButtonClicked() {

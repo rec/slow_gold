@@ -13,13 +13,12 @@ namespace rec {
 namespace audio {
 namespace source {
 
-template <typename Source>
-class Stretchy : public PositionWrappy<Source> {
+class Stretchy : public PositionWrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
   typedef rec::audio::timescaler::Description Description;
 
-  Stretchy(const Description& description, Source* source);
+  Stretchy(const Description& description, PositionableAudioSource* source);
 
   virtual int getTotalLength();
   virtual void setNextReadPosition(int position);
@@ -42,7 +41,5 @@ class Stretchy : public PositionWrappy<Source> {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-
-#include "rec/audio/source/Stretchy.cpp"
 
 #endif  // __REC_STRETCHY_AUDIO_SOURCE

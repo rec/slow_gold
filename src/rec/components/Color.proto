@@ -1,8 +1,14 @@
 package rec.gui;
 
+// Represents one JUCE color.  If argb is set, this takes precedence over the
+// individual components.
 message Color {
-  optional uint32 red    = 1 [default = 0];
-  optional uint32 green  = 2 [default = 0];
-  optional uint32 blue   = 3 [default = 0];
-  optional uint32 alpha  = 4 [default = 0xFF];
+  optional uint32 rgb    = 1 [default = 0x0];
+
+  optional uint32 alpha  = 2 [default = 0xFF];
+  optional uint32 red    = 3 [default = 0];
+  optional uint32 green  = 4 [default = 0];
+  optional uint32 blue   = 5 [default = 0];
+
+  optional uint32 argb   = 6 [default = 0xFF000000];
 };

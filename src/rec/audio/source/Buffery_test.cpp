@@ -8,7 +8,7 @@ namespace source {
 
 TEST(RecAudio, Buffery) {
   Testy testy;
-  Buffery<Testy> bp(2, &testy);
+  Buffery bp(2, &testy);
 
   EXPECT_EQ(bp.available(), 0);
   EXPECT_EQ(bp.getNextReadPosition(), 0);

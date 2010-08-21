@@ -7,31 +7,27 @@ namespace rec {
 namespace audio {
 namespace source {
 
-template <typename Source>
-Buffery<Source>::Buffery(int channels, Source* source)
-    : PositionWrappy<Source>(source),
+Buffery::Buffery(int channels, PositionableAudioSource* source)
+    : PositionWrappy(source),
       filled_(0, this->getTotalLength()),
       buffer_(channels, this->getTotalLength()) {
   CHECK_GT(channels, 0);
   sourceInfo_.buffer = &buffer_;
 }
 
-template <typename Source>
-void Buffery<Source>::setNextReadPosition(int position) {
+void Buffery::setNextReadPosition(int position) {
   ScopedLock l(lock_);
-  PositionWrappy<Source>::setNextReadPosition(position);
+  PositionWrappy::setNextReadPosition(position);
   if (filled_.availableFrom(position) < 0)
     filled_.reset(position);
 }
 
-template <typename Source>
-int64 Buffery<Source>::available() const {
+int64 Buffery::available() const {
   ScopedLock l(lock_);
   return filled_.availableFrom(this->position_);
 }
 
-template <typename Source>
-void Buffery<Source>::getNextAudioBlock(const AudioSourceChannelInfo& i) {
+void Buffery::getNextAudioBlock(const AudioSourceChannelInfo& i) {
   AudioSourceChannelInfo info = i;
   int32 position;
   {
@@ -60,8 +56,7 @@ void Buffery<Source>::getNextAudioBlock(const AudioSourceChannelInfo& i) {
 
 // Returns true if there is more to be filled.  Only call this from one
 // thread please, it's likely the underlying source is not thread-safe.
-template <typename Source>
-bool Buffery<Source>::fillNext(int64 chunkSize) {
+bool Buffery::fillNext(int64 chunkSize) {
   {
     ScopedLock l(lock_);
     sourceInfo_.numSamples = std::min(chunkSize, filled_.remainingBlock());

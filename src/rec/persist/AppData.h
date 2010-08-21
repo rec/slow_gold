@@ -15,14 +15,14 @@ inline App* createInstance(const String& name, int frequency, int priority) {
 
 inline App* getInstance() {
   return createInstance(String(""), 0, 0);
-    
+
   // Parameters won't be seen assuming the full version of getInstance has
   // already been called!
-}  
-  
+}
+
 template <typename Proto>
-Data<Proto>* getAppData(const std::string& name) {
-  return getInstance()->getData<Proto>(name);
+Data<Proto>* getAppData(const char* name, const char* initial = "") {
+  return getInstance()->getData<Proto>(name, initial);
 }
 
 }  // namespace persist

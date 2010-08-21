@@ -8,12 +8,11 @@ namespace rec {
 namespace audio {
 namespace source {
 
-template <typename Source>
-class Buffery : public PositionWrappy<Source> {
+class Buffery : public PositionWrappy {
  public:
   typedef rec::util::Circular Circular;
 
-  Buffery(int channels, Source* source);
+  Buffery(int channels, PositionableAudioSource* source);
 
   virtual void setNextReadPosition(int position);
 
@@ -47,7 +46,5 @@ class Buffery : public PositionWrappy<Source> {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
-
-#include "Buffery.cpp"
 
 #endif  // __REC_AUDIO_SOURCE_BUFFERY__
