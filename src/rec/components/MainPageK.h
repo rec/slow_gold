@@ -70,9 +70,9 @@ class MainPageK : public FileBrowserListener,
   // Receives the final audio!
   AudioDeviceManager* deviceManager_;
 
-  typedef rec::audio::source::DoubleStretchyThread<AudioFormatReaderSource> Source;
-  scoped_ptr<Source> stretchy_;
-  scoped_ptr<Source> lastStretchy_;
+  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;
+  scoped_ptr<DoubleStretchyThread> stretchy_;
+  scoped_ptr<DoubleStretchyThread> lastStretchy_;
 
   std::vector<AudioCDBurner*> burners_;
   StringArray cdNames_;

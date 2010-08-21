@@ -92,7 +92,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
-    lastStretchy_.reset(new Source(d, s0, s1));
+    lastStretchy_.reset(new DoubleStretchyThread(d, s0, s1));
     lastStretchy_.swap(stretchy_);
 
     loopingButtonClicked();
