@@ -1,6 +1,7 @@
 // Wrap an incoming AudioSource, and time-stretch it.
 
 #include "rec/audio/source/DoubleStretchy.h"
+#include "rec/audio/source/MultiWrappy.h"
 
 namespace rec {
 namespace audio {
@@ -10,14 +11,14 @@ DoubleStretchy::DoubleStretchy(const Description& description,
                                PositionableAudioSource* s0,
                                PositionableAudioSource* s1)
     : position_(0),
-      currentReader_(0),
       descriptionChanged_(false),
       description_(description),
-      gettingBlock_(false) {
-  readers_[0].source_.reset(s0);
-  readers_[1].source_.reset(s1);
-
-  readers_[0].reset(description, 0);
+      gettingBlock_(false),
+      source_(new SourceReader),
+      nextSource_(new SourceReader) {
+  source_->source_.reset(s0);
+  nextSource_->source_.reset(s1);
+  source_->reset(description, 0);
 }
 
 void DoubleStretchy::setDescription(const Description& description) {
@@ -38,12 +39,18 @@ int DoubleStretchy::getNextReadPosition() const {
 
 void DoubleStretchy::setNextReadPosition(int position) {
   ScopedLock l(lock_);
-  for (SourceReader* i = readers_; i != readers_ + SIZE; ++i) {
-    if (position_ <= getTotalLength())
-      i->offset_ = 0;
-    if (i->buffered_)
-      i->buffered_->setNextReadPosition(position + i->offset_);
+  if (position_ <= getTotalLength()) {
+    source_->offset_ = 0;
+    nextSource_->offset_ = 0;
   }
+
+  if (source_->buffered_)
+    source_->buffered_->setNextReadPosition(position + source_->offset_);
+
+  if (nextSource_->buffered_)
+    nextSource_->buffered_->setNextReadPosition(position + nextSource_->offset_);
+
+  position_ = position;
 }
 
 int DoubleStretchy::available() const {
@@ -52,17 +59,19 @@ int DoubleStretchy::available() const {
 }
 
 void DoubleStretchy::prepareToPlay(int s, double r) {
-  for (SourceReader* i = readers_; i != readers_ + SIZE; ++i) {
-    if (i->buffered_)
-      i->buffered_->prepareToPlay(s, r);
-  }
+  if (source_->buffered_)
+    source_->buffered_->prepareToPlay(s, r);
+
+  if (nextSource_->buffered_)
+    nextSource_->buffered_->prepareToPlay(s, r);
 }
 
 void DoubleStretchy::releaseResources() {
-  for (SourceReader* i = readers_; i != readers_ + SIZE; ++i) {
-    if (i->buffered_)
-      i->buffered_->releaseResources();
-  }
+  if (source_->buffered_)
+    source_->buffered_->releaseResources();
+
+  if (nextSource_->buffered_)
+    nextSource_->buffered_->releaseResources();
 }
 
 bool DoubleStretchy::fillNext() {
@@ -90,24 +99,21 @@ bool DoubleStretchy::fillNext() {
     if (isNext) {
       if (fill->ready(prefillSize)) {
         // Your new file is ready!
-        SourceReader& current = readers_[currentReader_];
-        current.buffered_.swap(bufferDeleter);
-        current.reader_.swap(stretchyDeleter);
-        currentReader_ = 1 - currentReader_;
+        source_.swap(nextSource_);
         DCHECK(!next());
       }
 
     } else if (descriptionChanged_) {
       descriptionChanged_ = false;
 
-      SourceReader& sr = readers_[currentReader_];
-      float scale = description_.time_scale() / sr.description_.time_scale();
-      int offset = (position_ + sr.offset_) * scale - position_;
+      float scale = description_.time_scale() /
+        source_->description_.time_scale();
+      int offset = (position_ + source_->offset_) * scale - position_;
 
       LOG(INFO) << "position=" << position_ << " offset=" << offset
-                << " sr.offset_=" << sr.offset_ << " scale=" << scale;
+                << " source_->offset_=" << source_->offset_ << " scale=" << scale;
 
-      readers_[1 - currentReader_].reset(description_, offset);
+      nextSource_->reset(description_, offset);
     }
 
     return result || next();
@@ -133,9 +139,11 @@ bool DoubleStretchy::isLooping() const {
 
 void DoubleStretchy::setLooping(bool looping) {
   ScopedLock l(lock_);
-  for (SourceReader* i = readers_; i != readers_ + SIZE; ++i)
-    if (i->buffered_)
-      i->buffered_->setLooping(looping);
+  if (source_->buffered_)
+    source_->buffered_->setLooping(looping);
+
+  if (nextSource_->buffered_)
+    nextSource_->buffered_->setLooping(looping);
 }
 
 }  // namespace source

@@ -35,7 +35,6 @@ class DoubleStretchy : public PositionableAudioSource {
   virtual bool isLooping() const;
   virtual void setLooping(bool looping);
 
- private:
   struct SourceReader {
     scoped_ptr<PositionableAudioSource> source_;
     Description description_;
@@ -52,21 +51,19 @@ class DoubleStretchy : public PositionableAudioSource {
     }
   };
 
+ private:
   Buffery* source() {
-    return readers_[currentReader_].buffered_.get();
+    return source_->buffered_.get();
   }
 
   const Buffery* source() const {
-    return readers_[currentReader_].buffered_.get();
+    return source_->buffered_.get();
   }
 
   Buffery* next() {
-    return readers_[1 - currentReader_].buffered_.get();
+    return nextSource_->buffered_.get();
   }
 
-  static const int SIZE = 2;
-  SourceReader readers_[SIZE];
-  int currentReader_;
   bool descriptionChanged_;
   Description description_;
 
