@@ -74,38 +74,10 @@ class DoubleStretchy : public PositionableAudioSource {
   CriticalSection lock_;
   int gettingBlock_;
 
+  scoped_ptr<SourceReader> source_;
+  scoped_ptr<SourceReader> nextSource_;
+
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchy);
-};
-
-
-class DoubleStretchyThread : public DoubleStretchy, Thread {
- public:
-  typedef rec::audio::timescaler::Description Description;
-
-  DoubleStretchyThread(const Description& d,
-                       PositionableAudioSource* s0, PositionableAudioSource* s1)
-      : DoubleStretchy(d, s0, s1),
-        Thread("DoubleStretchy"),
-        waitTime_(d.inactive_wait_time()) {
-    setPriority(d.thread_priority());
-    startThread();
-  }
-
-  void run() {
-    while (!threadShouldExit()) {
-      if (!(this->fillNext() || threadShouldExit()))
-        wait(waitTime_);
-    }
-  }
-
-  void stop() {
-    signalThreadShouldExit();
-    notify();
-  }
-
- private:
-  int waitTime_;
-  DISALLOW_COPY_AND_ASSIGN(DoubleStretchyThread);
 };
 
 }  // namespace source

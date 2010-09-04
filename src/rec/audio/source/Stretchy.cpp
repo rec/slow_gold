@@ -32,15 +32,20 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   ScopedLock l(lock_);
   CHECK_EQ(info.buffer->getNumChannels(), channels_);
 
+  bool foundZero = false;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = processOneChunk(i)) {
       i.numSamples -= processed;
       i.startSample += processed;
       position_ += processed;
-    } else {
-      LOG_FIRST_N(ERROR, 20) << "0 samples in getNextAudioBlock(), asked for "
-                             << i.numSamples << " from " << info.numSamples;
+      foundZero = false;
+    } else if (foundZero) {
+      LOG(ERROR)  << "0 samples twice in a row from Process(),"
+                  << " asked for " << i.numSamples
+                  << " from " << info.numSamples;
       return;
+    } else {
+      foundZero = true;
     }
   }
 }
@@ -54,11 +59,11 @@ int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   for (int c = 0; c < channels_; ++c)
     outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
 
-  float** inSamples = buffer_.getArrayOfChannels();
-  float** outSamples = &outOffset_.front();
+  float** ins = buffer_.getArrayOfChannels();
+  float** outs = &outOffset_.front();
 
-  return scaler_.Process(inSamples, outSamples,
-                         inSampleCount, info.numSamples);
+  int samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);
+  return samples;
 }
 
 void Stretchy::getNextAudioBlockFromSource(int numSamples) {

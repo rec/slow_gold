@@ -5,7 +5,7 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
-#include "rec/audio/source/DoubleStretchy.h"
+#include "rec/audio/source/DoubleStretchyThread.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/components/AudioThumbnailComponent.h"
 #include "rec/persist/AutosaveApp.h"
@@ -72,7 +72,7 @@ class MainPageK : public FileBrowserListener,
 
   typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;
   scoped_ptr<DoubleStretchyThread> stretchy_;
-  scoped_ptr<DoubleStretchyThread> lastStretchy_;
+  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;
 
   std::vector<AudioCDBurner*> burners_;
   StringArray cdNames_;
