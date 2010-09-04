@@ -7,7 +7,6 @@ namespace rec {
 namespace audio {
 namespace source {
 
-
 class DoubleStretchyThread : public DoubleStretchy, Thread {
  public:
   typedef rec::audio::timescaler::Description Description;
