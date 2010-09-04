@@ -95,7 +95,7 @@ class AudioThumbnailComponent  : public Component, public ChangeListener {
 
   void paint(Graphics& g) {
     g.fillAll(makeColor(description_.background()));
-    g.setColour(makeColor(description_.background()));
+    g.setColour(makeColor(description_.foreground()));
     int margin = description_.margin();
 
     if (thumbnail_.getTotalLength() > 0) {
