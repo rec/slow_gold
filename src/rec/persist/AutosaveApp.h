@@ -5,7 +5,7 @@
 
 #include "rec/persist/App.h"
 #include "rec/persist/Writeable.h"
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {

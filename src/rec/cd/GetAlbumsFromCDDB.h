@@ -1,7 +1,7 @@
 #ifndef __REC_CD_GETALBUMSFROMCDDB__
 #define __REC_CD_GETALBUMSFROMCDDB__
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace cd {

@@ -5,7 +5,7 @@
 #include "glog/logging.h"
 #include "rec/base/scoped_ptr.h"
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {
@@ -61,7 +61,7 @@ bool copy(const string &from, File *to) {
     LOG(FATAL) << "Couldn't delete backup " << to->getFullPathName();
     return false;
   }
-  
+
   return true;
 }
 

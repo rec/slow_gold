@@ -1,7 +1,7 @@
 #ifndef __REC_JUCE_GENERIC_APPLICATION
 #define __REC_JUCE_GENERIC_APPLICATION
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
 

@@ -1,6 +1,6 @@
 #include <vector>
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/stretch/Description.h"
 #include "rec/util/Math.h"
 

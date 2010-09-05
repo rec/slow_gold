@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_SUBSTITUTE__
 #define __REC_UTIL_SUBSTITUTE__
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 inline String substituteVariables(const StringPairArray& variables, const String& format) {
     String result;

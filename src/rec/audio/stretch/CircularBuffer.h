@@ -5,7 +5,7 @@
 
 #include "rec/util/Circular.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

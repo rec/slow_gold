@@ -1,7 +1,7 @@
 #ifndef __REC_LOOP_AUDIO_SOURCE
 #define __REC_LOOP_AUDIO_SOURCE
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/base.h"
 #include "rec/util/Math.h"
 #include "rec/audio/CopySamples.h"

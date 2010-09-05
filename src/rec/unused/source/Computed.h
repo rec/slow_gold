@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_COMPUTED_H__
 #define __REC_AUDIO_SOURCE_COMPUTED_H__
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/source/new/source/Buffered.h"
 #include "rec/block/MergeBlockSet.h"
 #include "rec/block/GetNextBlock.h"

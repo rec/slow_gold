@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_MATH
 #define __REC_AUDIO_MATH
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

@@ -7,7 +7,7 @@
 #include "rec/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/TimeScaler.h"
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

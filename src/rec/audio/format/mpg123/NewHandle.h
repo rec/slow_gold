@@ -3,7 +3,7 @@
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

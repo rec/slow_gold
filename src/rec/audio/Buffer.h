@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/stretch/TimeScaler.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/util/Circular.h"

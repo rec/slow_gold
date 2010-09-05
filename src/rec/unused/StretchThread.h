@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_STRETCH_THREAD_H__
 #define __REC_AUDIO_STRETCH_THREAD_H__
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/base/scoped_ptr.h"
 #include "rec/util/Notifier.h"

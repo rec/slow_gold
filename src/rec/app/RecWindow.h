@@ -1,7 +1,7 @@
 #ifndef __REC_WINDOW
 #define __REC_WINDOW
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 

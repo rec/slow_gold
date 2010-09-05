@@ -1,7 +1,7 @@
 #ifndef __REC_MOCK_AUDIO_SOURCE
 #define __REC_MOCK_AUDIO_SOURCE
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/Math.h"
 
 namespace rec {

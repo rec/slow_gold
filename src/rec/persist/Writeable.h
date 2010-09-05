@@ -2,7 +2,7 @@
 #define __REC_PERSIST_WRITEABLE__
 
 #include "rec/base/base.h"
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {

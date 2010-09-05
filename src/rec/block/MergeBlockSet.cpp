@@ -1,4 +1,4 @@
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/block/MergeBlockSet.h"
 
 namespace rec {

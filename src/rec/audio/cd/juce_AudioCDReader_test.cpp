@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/base/scoped_ptr.h"
 

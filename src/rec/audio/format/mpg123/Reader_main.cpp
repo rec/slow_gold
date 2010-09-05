@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/audio/format/mpg123/CreateReader.h"
 #include "rec/audio/format/mpg123/Mpg123.h"

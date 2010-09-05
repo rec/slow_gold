@@ -3,7 +3,7 @@
 
 // Constants and static functions for the mpg123 library.
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/base.h"
 
 namespace rec {

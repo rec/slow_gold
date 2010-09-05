@@ -1,4 +1,4 @@
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/basictypes.h"
 #include "rec/block/blocks.h"
 #include "rec/block/GetNextBlock.h"

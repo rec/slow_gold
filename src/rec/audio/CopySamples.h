@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_COPY__
 #define __REC_AUDIO_SOURCE_COPY__
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

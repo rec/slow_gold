@@ -1,7 +1,7 @@
 #ifndef __REC_WAIT_LOOP_THREAD
 #define __REC_WAIT_LOOP_THREAD
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {

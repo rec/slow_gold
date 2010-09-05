@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_ORPHANABLE_THREAD__
 #define __REC_UTIL_ORPHANABLE_THREAD__
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {

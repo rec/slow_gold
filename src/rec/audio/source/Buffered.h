@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/audio/FillQueue.h"
 #include "rec/util/Math.h"

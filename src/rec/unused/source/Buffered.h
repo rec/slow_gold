@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERED_H__
 #define __REC_AUDIO_SOURCE_BUFFERED_H__
 
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/util/Circular.h"
 
 namespace rec {

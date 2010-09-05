@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <glog/logging.h>
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/base/base.h"
 
