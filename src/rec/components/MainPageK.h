@@ -43,6 +43,8 @@ class MainPageK : public FileBrowserListener,
   virtual void fileDoubleClicked(const File& file) {}
 
   DirectoryContentsList* directoryList() { return &directoryList_; }
+  void updateCursor();
+  void setPosition(double position);
 
  private:
   static const int THREAD_PRIORITY = 3;
@@ -74,7 +76,11 @@ class MainPageK : public FileBrowserListener,
   scoped_ptr<DoubleStretchyThread> stretchy_;
   scoped_ptr<DoubleStretchyThread> stretchyDeleter_;
 
+  scoped_ptr<Thread> cursorThread_;
+#if 0
   std::vector<AudioCDBurner*> burners_;
+#endif
+                    
   StringArray cdNames_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);

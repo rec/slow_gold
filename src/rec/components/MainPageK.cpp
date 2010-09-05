@@ -26,6 +26,34 @@ MainPageK::MainPageK(AudioDeviceManager* d)
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
+namespace {
+
+class CursorThread : public Thread {
+ public:
+  static const int INTERVAL = 5;
+  explicit CursorThread(MainPageK* main) : Thread("cursor"), main_(main) {
+    setPriority(6);
+  }
+
+  void run() {
+    while (!threadShouldExit()) {
+      {
+        MessageManagerLock lock(this);
+        if (!lock.lockWasGained())
+          return;
+        main_->updateCursor();
+      }
+      wait(INTERVAL);
+    }
+  }
+
+ private:
+  MainPageK* main_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(CursorThread);
+};
+
+}
+
 void MainPageK::construct(MainPageJ* peer) {
   {
     Data<rec::slow::Preferences>::Access access(rec::slow::getPreferences());
@@ -50,31 +78,49 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->pitchScaleSlider->addListener(this);
   peer_->zoomSlider->addListener(this);
 
+#ifdef USE_CDBURNERS
   burners_.resize(cdNames_.size());
   for (int i = 0; i < burners_.size(); ++i) {
     burners_[i] = AudioCDBurner::openDevice(i);
     burners_[i]->addChangeListener(this);
     changeListenerCallback(burners_[i]);
   }
+#endif
 
+  transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(&transportSource_);
   rec::audio::format::mpg123::initializeOnce();
+
+  cursorThread_.reset(new CursorThread(this));
+  cursorThread_->startThread();
 }
 
 void MainPageK::destruct() {
   // TODO: why does this have to be called so early in the destructor sequence?
   // Can we get rid of all of this entirely?
+  cursorThread_->signalThreadShouldExit();
   transportSource_.setSource(NULL);
   player_.setSource(NULL);
 
   deviceManager_->removeAudioCallback(&player_);
   peer_->fileTreeComp->removeListener(this);
 
+#if 0
   for (int i = 0; i < burners_.size(); ++i)
     delete burners_[i];
 
   burners_.clear();
+#endif
+}
+
+void MainPageK::updateCursor() {
+  double position = transportSource_.getCurrentPosition();
+  peer_->thumbnail->setCursor(position);
+}
+
+void MainPageK::setPosition(double position) {
+  transportSource_.setPosition(position);
 }
 
 void MainPageK::loadFileIntoTransport(const File& file) {
@@ -135,6 +181,7 @@ static const char* const CD_STATE_NAMES[] = {
   "readOnlyDiskPresent"     /**< The drive contains a read-only disk. */
 };
 
+#ifdef USE_CDBURNERS
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
   AudioCDBurner* cd = (AudioCDBurner*) objectThatHasChanged;
   AudioCDBurner::DiskState state = cd->getDiskState();
@@ -150,6 +197,16 @@ void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
 
   scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
 }
+
+#else
+
+void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
+  CHECK_EQ(objectThatHasChanged, &transportSource_);
+  double position = transportSource_.getCurrentPosition();
+  peer_->thumbnail->setCursor(position);
+}
+
+#endif
 
 void MainPageK::startStopButtonClicked() {
   if (transportSource_.isPlaying()) {

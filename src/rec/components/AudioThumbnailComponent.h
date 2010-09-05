@@ -5,137 +5,35 @@
 #include "juce_amalgamated.h"
 #include "ThumbnailDescription.pb.h"
 
+class MainPageK;
+
 namespace rec {
 namespace gui {
 
 class AudioThumbnailComponent  : public Component, public ChangeListener {
  public:
-  AudioThumbnailComponent()
-      : description_(rec::slow::getPreferences()->get().thumbnail()),
-        thumbnailCache_(description_.thumbnail_cache()),
-        thumbnail_(description_.source_samples_per_thumbnail_sample(),
-                   *AudioFormatManager::getInstance(), thumbnailCache_) {
-    startTime_ = endTime_ = cursor_ = 0;
-    thumbnail_.addChangeListener(this);
-  }
+  AudioThumbnailComponent(MainPageK* mainPage);
 
-  static uint32 makeARGB(const Color& c) {
-    if (c.has_argb())
-      return c.argb();
-    else if (c.has_rgb())
-      return (c.alpha() << 24) | c.rgb();
-    else
-      return (c.alpha() << 24) | (c.red() << 16) | (c.green() << 8) | c.blue();
-  }
+  ~AudioThumbnailComponent();
 
-  static Colour makeColor(const Color& color) {
-    uint32 c = makeARGB(color);
-    return Colour(c);
-  }
+  void setFile(const File& file);
+  void setZoomFactor(double amount);
+  void mouseWheelMove(const MouseEvent& e, float incX, float incY);
 
-  ~AudioThumbnailComponent() {
-    thumbnail_.removeChangeListener(this);
-  }
+  Rectangle<int> cursorRectangle() const;
 
-  void setFile(const File& file) {
-    ScopedLock l(lock_);
-    thumbnail_.setSource(new FileInputSource(file));
-    startTime_ = 0;
-    endTime_ = thumbnail_.getTotalLength();
-    cursor_ = (startTime_ + endTime_) / 2;
-  }
+  bool within(int x) const;
 
-  void setZoomFactor(double amount) {
-    if (thumbnail_.getTotalLength() > 0) {
-      double timeElapsed = thumbnail_.getTotalLength() - startTime_;
-      double timeDisplayed = timeElapsed * (1.0 - jlimit(0.0, 1.0, amount));
-      endTime_ = startTime_ + std::max(0.001, timeDisplayed);
-      repaint();
-    }
-  }
+  virtual void mouseUp(const MouseEvent& e);
 
-  void mouseWheelMove(const MouseEvent& e, float wheelIncrementX,
-                      float wheelIncrementY) {
-    if (thumbnail_.getTotalLength() > 0) {
-      double newStart = startTime_ + (wheelIncrementX + wheelIncrementY) * (endTime_ - startTime_) / 10.0;
-      newStart = jlimit(0.0, thumbnail_.getTotalLength() - (endTime_ - startTime_), newStart);
-      endTime_ = newStart + (endTime_ - startTime_);
-      startTime_ = newStart;
-      repaint();
-    }
-  }
-
-  Rectangle<int> cursorRectangle() const {
-    int margin = description_.margin();
-    int thickness = description_.cursor_thickness();
-
-    int position = jlimit(startTime_, endTime_, cursor_);
-    float ratio = (position - startTime_) / (endTime_ - startTime_);
-    int width = (getWidth() - 2 * margin);
-    int cursorX = (margin - thickness / 2) + width * ratio;
-
-    return Rectangle<int>(cursorX, margin, thickness, getHeight() - margin);
-  }
-
-  bool within(int x) const { return x >= startTime_ && x <= endTime_; }
-
-  void setCursor(float cursor) {
-    ScopedLock l(lock_);
-    Rectangle<int> before = cursorRectangle();
-    float oldCursor = cursor_;
-    cursor_ = cursor;
-
-    if (!within(oldCursor) && !within(cursor_))
-      return;
-
-    repaint(before);
-    repaint(cursorRectangle());
-  }
-
-
-  void paint(Graphics& g) {
-    g.fillAll(makeColor(description_.background()));
-    g.setColour(makeColor(description_.foreground()));
-    int margin = description_.margin();
-
-    if (thumbnail_.getTotalLength() > 0) {
-      int heightPerChannel = (getHeight() - 2 * margin) /
-        thumbnail_.getNumChannels();
-
-      for (int i = 0; i < thumbnail_.getNumChannels(); ++i) {
-        thumbnail_.drawChannel(g, margin, margin + heightPerChannel * i,
-                              getWidth() - 2 * margin, heightPerChannel,
-                              startTime_, endTime_,
-                              i, 1.0f);
-      }
-
-      g.drawRect(cursorRectangle());
-
-    } else {
-      g.setFont(14.0f);
-      g.drawFittedText("(No audio file selected)", 0, 0, getWidth(), getHeight(),
-                       Justification::centred, margin);
-    }
-  }
-
-  int getCursor() const {
-    ScopedLock l(lock_);
-    return cursor_;
-  }
-
-  void drawCursor() {
-    int cursor = getCursor();
-    if (cursor >= startTime_ && cursor <= endTime_) {
-
-    }
-  }
-
+  void setCursor(double cursor);
+  void paint(Graphics& g);
+  int getCursor() const;
 
   // this method is called by the thumbnail when it has changed, so we should repaint it..
-  void changeListenerCallback(void*) {
-    repaint();
-  }
+  void changeListenerCallback(void*);
 
+  MainPageK* mainPage_;
   const ThumbnailDescription description_;
 
   AudioThumbnailCache thumbnailCache_;
