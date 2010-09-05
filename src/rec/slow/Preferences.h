@@ -7,11 +7,13 @@
 namespace rec {
 namespace slow {
 
-inline rec::persist::Data<Preferences>* getPreferences() {
-  static rec::persist::Data<Preferences>* prefs = 
+inline rec::persist::Data<Preferences>* getMutablePreferences() {
+  static rec::persist::Data<Preferences>* prefs =
     rec::persist::getAppData<Preferences>("preferences", "");
   return prefs;
-};
+}
+
+inline const Preferences getPreferences() { return getMutablePreferences()->get(); }
 
 }  // namespace slow
 }  // namespace rec

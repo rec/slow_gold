@@ -25,6 +25,8 @@ MainPageK::MainPageK(AudioDeviceManager* d)
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
+using rec::slow::getPreferences;
+
 namespace {
 
 class CursorThread : public Thread {
@@ -55,7 +57,7 @@ class CursorThread : public Thread {
 
 void MainPageK::construct(MainPageJ* peer) {
   {
-    Data<rec::slow::Preferences>::Access access(rec::slow::getPreferences());
+    Data<rec::slow::Preferences>::Access access(rec::slow::getMutablePreferences());
     access->mutable_thumbnail()->mutable_background()->set_rgb(0xFFFFFF);
     access->mutable_thumbnail()->mutable_foreground()->set_rgb(0xADD8E6);
   }
@@ -68,7 +70,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  Description d = rec::slow::getPreferences()->get().timescale();
+  Description d = getPreferences().timescale();
 
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
@@ -133,7 +135,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     if (stretchy_)
       stretchy_->stop();
 
-    Description d = rec::slow::getPreferences()->get().timescale();
+    Description d = getPreferences().timescale();
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
@@ -156,7 +158,7 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 
 void MainPageK::sliderDragEnded(Slider* slider) {
   {
-    Data<rec::slow::Preferences>::Access access(rec::slow::getPreferences());
+    Data<rec::slow::Preferences>::Access access(rec::slow::getMutablePreferences());
     if (slider == peer_->timeScaleSlider)
       access->mutable_timescale()->set_time_scale(slider->getValue());
 

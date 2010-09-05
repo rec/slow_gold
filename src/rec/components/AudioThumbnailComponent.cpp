@@ -6,7 +6,7 @@ namespace gui {
 
 AudioThumbnailComponent::AudioThumbnailComponent(MainPageK* mainPage)
     : mainPage_(mainPage),
-      description_(rec::slow::getPreferences()->get().thumbnail()),
+      description_(rec::slow::getPreferences().thumbnail()),
       thumbnailCache_(description_.thumbnail_cache()),
       thumbnail_(description_.source_samples_per_thumbnail_sample(),
                  *AudioFormatManager::getInstance(), thumbnailCache_) {
