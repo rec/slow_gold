@@ -29,7 +29,7 @@ void protobuf_AssignDesc_rec_2fcomponents_2fThumbnailDescription_2eproto() {
       "rec/components/ThumbnailDescription.proto");
   GOOGLE_CHECK(file != NULL);
   ThumbnailDescription_descriptor_ = file->message_type(0);
-  static const int ThumbnailDescription_offsets_[7] = {
+  static const int ThumbnailDescription_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, background_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, foreground_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, cursor_),
@@ -37,6 +37,8 @@ void protobuf_AssignDesc_rec_2fcomponents_2fThumbnailDescription_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, margin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, source_samples_per_thumbnail_sample_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, thumbnail_cache_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, cursor_thread_update_period_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, cursor_thread_priority_),
   };
   ThumbnailDescription_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -82,13 +84,15 @@ void protobuf_AddDesc_rec_2fcomponents_2fThumbnailDescription_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n)rec/components/ThumbnailDescription.pr"
     "oto\022\007rec.gui\032\032rec/components/Color.proto"
-    "\"\374\001\n\024ThumbnailDescription\022\"\n\nbackground\030"
+    "\"\310\002\n\024ThumbnailDescription\022\"\n\nbackground\030"
     "\001 \001(\0132\016.rec.gui.Color\022\"\n\nforeground\030\002 \001("
     "\0132\016.rec.gui.Color\022\036\n\006cursor\030\003 \001(\0132\016.rec."
     "gui.Color\022\033\n\020cursor_thickness\030\004 \001(\r:\0011\022\021"
     "\n\006margin\030\005 \001(\r:\0012\0220\n#source_samples_per_"
     "thumbnail_sample\030\006 \001(\r:\003512\022\032\n\017thumbnail"
-    "_cache\030\007 \001(\r:\0015", 335);
+    "_cache\030\007 \001(\r:\0015\022\'\n\033cursor_thread_update_"
+    "period\030\010 \001(\r:\00240\022!\n\026cursor_thread_priori"
+    "ty\030\t \001(\r:\0014", 411);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/components/ThumbnailDescription.proto", &protobuf_RegisterTypes);
   ThumbnailDescription::default_instance_ = new ThumbnailDescription();
@@ -114,6 +118,8 @@ const int ThumbnailDescription::kCursorThicknessFieldNumber;
 const int ThumbnailDescription::kMarginFieldNumber;
 const int ThumbnailDescription::kSourceSamplesPerThumbnailSampleFieldNumber;
 const int ThumbnailDescription::kThumbnailCacheFieldNumber;
+const int ThumbnailDescription::kCursorThreadUpdatePeriodFieldNumber;
+const int ThumbnailDescription::kCursorThreadPriorityFieldNumber;
 #endif  // !_MSC_VER
 
 ThumbnailDescription::ThumbnailDescription()
@@ -142,6 +148,8 @@ void ThumbnailDescription::SharedCtor() {
   margin_ = 2u;
   source_samples_per_thumbnail_sample_ = 512u;
   thumbnail_cache_ = 5u;
+  cursor_thread_update_period_ = 40u;
+  cursor_thread_priority_ = 4u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -192,6 +200,10 @@ void ThumbnailDescription::Clear() {
     margin_ = 2u;
     source_samples_per_thumbnail_sample_ = 512u;
     thumbnail_cache_ = 5u;
+    cursor_thread_update_period_ = 40u;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    cursor_thread_priority_ = 4u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -304,6 +316,38 @@ bool ThumbnailDescription::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(64)) goto parse_cursor_thread_update_period;
+        break;
+      }
+      
+      // optional uint32 cursor_thread_update_period = 8 [default = 40];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_cursor_thread_update_period:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &cursor_thread_update_period_)));
+          _set_bit(7);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(72)) goto parse_cursor_thread_priority;
+        break;
+      }
+      
+      // optional uint32 cursor_thread_priority = 9 [default = 4];
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_cursor_thread_priority:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &cursor_thread_priority_)));
+          _set_bit(8);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -364,6 +408,16 @@ void ThumbnailDescription::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->thumbnail_cache(), output);
   }
   
+  // optional uint32 cursor_thread_update_period = 8 [default = 40];
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->cursor_thread_update_period(), output);
+  }
+  
+  // optional uint32 cursor_thread_priority = 9 [default = 4];
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->cursor_thread_priority(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -411,6 +465,16 @@ void ThumbnailDescription::SerializeWithCachedSizes(
   // optional uint32 thumbnail_cache = 7 [default = 5];
   if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->thumbnail_cache(), target);
+  }
+  
+  // optional uint32 cursor_thread_update_period = 8 [default = 40];
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->cursor_thread_update_period(), target);
+  }
+  
+  // optional uint32 cursor_thread_priority = 9 [default = 4];
+  if (_has_bit(8)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->cursor_thread_priority(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -473,6 +537,22 @@ int ThumbnailDescription::ByteSize() const {
           this->thumbnail_cache());
     }
     
+    // optional uint32 cursor_thread_update_period = 8 [default = 40];
+    if (has_cursor_thread_update_period()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->cursor_thread_update_period());
+    }
+    
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional uint32 cursor_thread_priority = 9 [default = 4];
+    if (has_cursor_thread_priority()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->cursor_thread_priority());
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -521,6 +601,14 @@ void ThumbnailDescription::MergeFrom(const ThumbnailDescription& from) {
     if (from._has_bit(6)) {
       set_thumbnail_cache(from.thumbnail_cache());
     }
+    if (from._has_bit(7)) {
+      set_cursor_thread_update_period(from.cursor_thread_update_period());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from._has_bit(8)) {
+      set_cursor_thread_priority(from.cursor_thread_priority());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -551,6 +639,8 @@ void ThumbnailDescription::Swap(ThumbnailDescription* other) {
     std::swap(margin_, other->margin_);
     std::swap(source_samples_per_thumbnail_sample_, other->source_samples_per_thumbnail_sample_);
     std::swap(thumbnail_cache_, other->thumbnail_cache_);
+    std::swap(cursor_thread_update_period_, other->cursor_thread_update_period_);
+    std::swap(cursor_thread_priority_, other->cursor_thread_priority_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -141,6 +141,20 @@ class ThumbnailDescription : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 thumbnail_cache() const;
   inline void set_thumbnail_cache(::google::protobuf::uint32 value);
   
+  // optional uint32 cursor_thread_update_period = 8 [default = 40];
+  inline bool has_cursor_thread_update_period() const;
+  inline void clear_cursor_thread_update_period();
+  static const int kCursorThreadUpdatePeriodFieldNumber = 8;
+  inline ::google::protobuf::uint32 cursor_thread_update_period() const;
+  inline void set_cursor_thread_update_period(::google::protobuf::uint32 value);
+  
+  // optional uint32 cursor_thread_priority = 9 [default = 4];
+  inline bool has_cursor_thread_priority() const;
+  inline void clear_cursor_thread_priority();
+  static const int kCursorThreadPriorityFieldNumber = 9;
+  inline ::google::protobuf::uint32 cursor_thread_priority() const;
+  inline void set_cursor_thread_priority(::google::protobuf::uint32 value);
+  
   // @@protoc_insertion_point(class_scope:rec.gui.ThumbnailDescription)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -153,11 +167,13 @@ class ThumbnailDescription : public ::google::protobuf::Message {
   ::google::protobuf::uint32 margin_;
   ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;
   ::google::protobuf::uint32 thumbnail_cache_;
+  ::google::protobuf::uint32 cursor_thread_update_period_;
+  ::google::protobuf::uint32 cursor_thread_priority_;
   friend void  protobuf_AddDesc_rec_2fcomponents_2fThumbnailDescription_2eproto();
   friend void protobuf_AssignDesc_rec_2fcomponents_2fThumbnailDescription_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcomponents_2fThumbnailDescription_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -293,6 +309,38 @@ inline ::google::protobuf::uint32 ThumbnailDescription::thumbnail_cache() const 
 inline void ThumbnailDescription::set_thumbnail_cache(::google::protobuf::uint32 value) {
   _set_bit(6);
   thumbnail_cache_ = value;
+}
+
+// optional uint32 cursor_thread_update_period = 8 [default = 40];
+inline bool ThumbnailDescription::has_cursor_thread_update_period() const {
+  return _has_bit(7);
+}
+inline void ThumbnailDescription::clear_cursor_thread_update_period() {
+  cursor_thread_update_period_ = 40u;
+  _clear_bit(7);
+}
+inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thread_update_period() const {
+  return cursor_thread_update_period_;
+}
+inline void ThumbnailDescription::set_cursor_thread_update_period(::google::protobuf::uint32 value) {
+  _set_bit(7);
+  cursor_thread_update_period_ = value;
+}
+
+// optional uint32 cursor_thread_priority = 9 [default = 4];
+inline bool ThumbnailDescription::has_cursor_thread_priority() const {
+  return _has_bit(8);
+}
+inline void ThumbnailDescription::clear_cursor_thread_priority() {
+  cursor_thread_priority_ = 4u;
+  _clear_bit(8);
+}
+inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thread_priority() const {
+  return cursor_thread_priority_;
+}
+inline void ThumbnailDescription::set_cursor_thread_priority(::google::protobuf::uint32 value) {
+  _set_bit(8);
+  cursor_thread_priority_ = value;
 }
 
 

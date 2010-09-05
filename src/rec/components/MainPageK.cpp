@@ -25,15 +25,21 @@ MainPageK::MainPageK(AudioDeviceManager* d)
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
-using rec::slow::getPreferences;
-
 namespace {
+
+// TODO: move MainPageK to rec::slow.
+using rec::slow::Preferences;
+using rec::gui::ThumbnailDescription;
+using rec::slow::getPreferences;
 
 class CursorThread : public Thread {
  public:
-  static const int INTERVAL = 5;
-  explicit CursorThread(MainPageK* main) : Thread("cursor"), main_(main) {
-    setPriority(6);
+  explicit CursorThread(MainPageK* main) :
+      Thread("cursor"),
+      main_(main),
+      prefs_(getPreferences().thumbnail()),
+      period_(prefs_.cursor_thread_update_period()) {
+    setPriority(prefs_.cursor_thread_priority());
   }
 
   void run() {
@@ -44,12 +50,15 @@ class CursorThread : public Thread {
           return;
         main_->updateCursor();
       }
-      wait(INTERVAL);
+      wait(period_);
     }
   }
 
  private:
-  MainPageK* main_;
+  MainPageK* const main_;
+  const ThumbnailDescription prefs_;
+  const int period_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CursorThread);
 };
 

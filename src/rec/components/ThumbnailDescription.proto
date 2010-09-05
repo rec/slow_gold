@@ -11,4 +11,6 @@ message ThumbnailDescription {
   optional uint32 margin = 5                              [default = 2];
   optional uint32 source_samples_per_thumbnail_sample = 6 [default = 512];
   optional uint32 thumbnail_cache = 7                     [default = 5];
+  optional uint32 cursor_thread_update_period = 8         [default = 40];
+  optional uint32 cursor_thread_priority = 9              [default = 4];
 };
