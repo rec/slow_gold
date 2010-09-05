@@ -115,9 +115,9 @@ void AudioThumbnailComponent::paint(Graphics& g) {
 
     for (int i = 0; i < thumbnail_.getNumChannels(); ++i) {
       thumbnail_.drawChannel(g, margin, margin + heightPerChannel * i,
-                            getWidth() - 2 * margin, heightPerChannel,
-                            startTime_, endTime_,
-                            i, 1.0f);
+                             getWidth() - 2 * margin, heightPerChannel,
+                             startTime_, endTime_,
+                             i, 1.0f);
     }
 
     setColor(description_.cursor(), &g);

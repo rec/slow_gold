@@ -5,7 +5,6 @@
 
 #include "AudioThumbnailComponent.h"
 #include "rec/audio/Math.h"
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/Preferences.h"
 
@@ -173,12 +172,12 @@ void MainPageK::sliderDragEnded(Slider* slider) {
 }
 
 static const char* const CD_STATE_NAMES[] = {
-  "unknown",                /**< An error condition, if the device isn't responding. */
-  "trayOpen",               /**< The drive is currently open. Note that a slot-loading drive
-                               may seem to be permanently open. */
-  "noDisc",                 /**< The drive has no disk in it. */
-  "Writablediskpresent",    /**< The drive contains a writeable disk. */
-  "readOnlyDiskPresent"     /**< The drive contains a read-only disk. */
+  "unknown",                /** An error condition, if the device isn't responding. */
+  "trayOpen",               /** The drive is currently open. Note that a slot-loading drive
+                                may seem to be permanently open. */
+  "noDisc",                 /** The drive has no disk in it. */
+  "Writablediskpresent",    /** The drive contains a writeable disk. */
+  "readOnlyDiskPresent"     /** The drive contains a read-only disk. */
 };
 
 #ifdef USE_CDBURNERS

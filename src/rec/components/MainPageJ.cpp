@@ -139,11 +139,11 @@ void MainPageJ::resized()
     thumbnail->setBounds (16, getHeight() - 221, getWidth() - 32, 123);
     startStopButton->setBounds (16, getHeight() - 46, 150, 32);
     fileTreeComp->setBounds (16, 8, getWidth() - 32, getHeight() - 245);
-    explanation->setBounds (224, getHeight() - 72, getWidth() - 248, 32);
+    explanation->setBounds (224, getHeight() - 42, getWidth() - 248, 32);
     zoomSlider->setBounds (72, getHeight() - 90, 200, 24);
     loopingButton->setBounds (192, getHeight() - 40, 150, 24);
     timeScaleSlider->setBounds (300, getHeight() - 90, 200, 24);
-    pitchScaleSlider->setBounds (300, getHeight() - 130, 200, 24);
+    pitchScaleSlider->setBounds (300, getHeight() - 60, 200, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }

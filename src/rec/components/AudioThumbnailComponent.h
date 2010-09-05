@@ -2,7 +2,7 @@
 #define __THUMBNAIL_COMP
 
 #include "rec/slow/Preferences.h"
-#include "juce_amalgamated.h"
+#include "JuceLibraryCode/JuceHeader.h"
 #include "ThumbnailDescription.pb.h"
 
 class MainPageK;
@@ -10,10 +10,9 @@ class MainPageK;
 namespace rec {
 namespace gui {
 
-class AudioThumbnailComponent  : public Component, public ChangeListener {
+class AudioThumbnailComponent : public Component, public ChangeListener {
  public:
   AudioThumbnailComponent(MainPageK* mainPage);
-
   ~AudioThumbnailComponent();
 
   void setFile(const File& file);
@@ -33,6 +32,7 @@ class AudioThumbnailComponent  : public Component, public ChangeListener {
   // this method is called by the thumbnail when it has changed, so we should repaint it..
   void changeListenerCallback(void*);
 
+ private:
   MainPageK* mainPage_;
   const ThumbnailDescription description_;
 
@@ -41,6 +41,8 @@ class AudioThumbnailComponent  : public Component, public ChangeListener {
   double startTime_, endTime_, cursor_;
   int cursorX_;
   CriticalSection lock_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioThumbnailComponent);
 };
 
 }  // namespace gui
