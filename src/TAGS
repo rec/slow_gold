@@ -288,36 +288,36 @@ void Arguments(240,7144
 
 rec/app/ComponentContainer.h,570
 #define __REC_COMPONENT_CONTAINER2,34
-class ComponentContainer9,148
-  WindowType* _window;15,271
-  Component* _component;16,294
-  ComponentContainer(19,329
-  void show(21,410
-  virtual ~ComponentContainer(34,656
-  virtual void resized(38,720
-  virtual const StringArray getMenuBarNames(44,867
-  virtual const PopupMenu getMenuForIndex(49,1008
-  virtual void menuItemSelected(54,1167
-  virtual void getAllCommands(55,1241
-  virtual void getCommandInfo(56,1303
-  virtual bool perform(57,1389
-  virtual ApplicationCommandTarget* getNextCommandTarget(59,1459
+class ComponentContainer9,158
+  WindowType* _window;15,281
+  Component* _component;16,304
+  ComponentContainer(19,339
+  void show(21,420
+  virtual ~ComponentContainer(34,666
+  virtual void resized(38,730
+  virtual const StringArray getMenuBarNames(44,877
+  virtual const PopupMenu getMenuForIndex(49,1018
+  virtual void menuItemSelected(54,1177
+  virtual void getAllCommands(55,1251
+  virtual void getCommandInfo(56,1313
+  virtual bool perform(57,1399
+  virtual ApplicationCommandTarget* getNextCommandTarget(59,1469
 
 rec/app/GenericApplication.h,492
 #define __REC_JUCE_GENERIC_APPLICATION2,39
-class GenericApplication 11,214
-  GenericApplication(13,275
-  ~GenericApplication(17,385
-  void initialise(19,413
-  void shutdown(23,498
-  const String getApplicationName(27,544
-  const String getApplicationVersion(28,601
-  bool moreThanOneInstanceAllowed(29,661
-  void anotherInstanceStarted 31,719
-  scoped_ptr<Window> window_;35,794
-  const String name_;36,824
-  const String version_;37,846
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(39,872
+class GenericApplication 11,224
+  GenericApplication(13,285
+  ~GenericApplication(17,395
+  void initialise(19,423
+  void shutdown(23,508
+  const String getApplicationName(27,554
+  const String getApplicationVersion(28,611
+  bool moreThanOneInstanceAllowed(29,671
+  void anotherInstanceStarted 31,729
+  scoped_ptr<Window> window_;35,804
+  const String name_;36,834
+  const String version_;37,856
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(39,882
 
 rec/app/RecApplication.cpp,115
 namespace rec 7,145
@@ -335,67 +335,30 @@ RecWindow::RecWindow(rec::RecWindow::RecWindow6,83
 RecWindow::~RecWindow(39,1309
 void RecWindow::closeButtonPressed(61,2092
 
-rec/app/RecWindow.h,207
+rec/app/RecWindow.h,208
 #define __REC_WINDOW2,22
-class RecWindow 8,98
-  RecWindow(10,152
-  ~RecWindow(11,168
-  void closeButtonPressed(13,187
-  ApplicationCommandManager commandManager;19,329
-  Component* taskbarIcon;21,376
-
-rec/audio/Buffer.h,356
-#define __REC_AUDIO_BUFFER2,27
-struct Buffer 14,246
-  typedef std::vector<float*> Samples;Buffer::Samples15,291
-  Samples samples_;Buffer::samples_17,331
-  const AudioSampleBuffer* buffer_;Buffer::buffer_18,351
-  Buffer(Buffer::Buffer20,388
-  Buffer(Buffer::Buffer21,402
-  void advance(Buffer::advance29,753
-  float** top(Buffer::top35,906
+class RecWindow 8,108
+  RecWindow(10,162
+  ~RecWindow(11,178
+  void closeButtonPressed(13,197
+  ApplicationCommandManager commandManager;19,339
+  Component* taskbarIcon;21,386
 
 rec/audio/cd/juce_AudioCDReader_test.cpp,212
-TEST(14,241
-TEST(22,559
-const int TRACK_COUNT ::TRACK_COUNT37,1101
-const int SPF ::SPF39,1130
-int TRACK_LENGTHS[::TRACK_LENGTHS42,1236
-const int CDDB_ID 57,1484
-TEST(61,1520
-TEST(72,1804
-TEST(79,2036
+TEST(14,251
+TEST(22,569
+const int TRACK_COUNT ::TRACK_COUNT37,1111
+const int SPF ::SPF39,1140
+int TRACK_LENGTHS[::TRACK_LENGTHS42,1246
+const int CDDB_ID 57,1494
+TEST(61,1530
+TEST(72,1814
+TEST(79,2046
 
 rec/audio/CopySamples.h,100
 #define __REC_AUDIO_SOURCE_COPY__2,34
-namespace rec 6,100
-inline int copyCircularSamples(45,1414
-
-rec/audio/FillQueue.h,655
-#define __REC_AUDIO_FILLQUEUE2,30
-enum FillState 12,164
-enum FillState { EMPTY,12,164
-enum FillState { EMPTY, FILLING,12,164
-enum FillState { EMPTY, FILLING, FULL,12,164
-enum FillState { EMPTY, FILLING, FULL, EMPTYING 12,164
-class FillQueue 14,216
-  FillQueue(16,243
-  void Clear(18,293
-  int Advance(24,434
-  void Output(40,827
-  typedef std::pair<int,FillQueue::int48,1056
-  typedef std::pair<int, int> QueueRange;FillQueue::QueueRange48,1056
-  inline static int& length(FillQueue::length49,1098
-  inline static int& begin(FillQueue::begin50,1170
-  QueueRange ranges_[FillQueue::ranges_52,1241
-  int size_;FillQueue::size_53,1277
-
-rec/audio/FillQueueTest.cpp,145
-namespace rec 4,59
-namespace audio rec::audio5,75
-namespace buffer rec::audio::buffer6,93
-TEST(rec::audio::buffer::TEST8,113
-TEST(28,898
+namespace rec 6,110
+inline int copyCircularSamples(45,1424
 
 rec/audio/format/mpg123/Copier.cpp,862
 namespace rec 4,89
@@ -442,10 +405,10 @@ Error createReader(31,773
 
 rec/audio/format/mpg123/CreateReader.h,164
 #define __REC_AUDIO_FORMAT_MPG123_CREATE_READER__2,51
-struct OutputFormat 14,321
-  long rate_;15,344
-  int channels_;16,359
-  mpg123_enc_enum encoding_;17,377
+struct OutputFormat 14,331
+  long rate_;15,354
+  int channels_;16,369
+  mpg123_enc_enum encoding_;17,387
 
 rec/audio/format/mpg123/CreateReader_test.cpp,197
 namespace rec 8,122
@@ -481,44 +444,44 @@ class Format 15,374
 	virtual bool isCompressed(Format::isCompressed47,1663
 
 rec/audio/format/mpg123/Mpg123.cpp,1072
-namespace rec 5,123
-namespace audio rec::audio6,140
-namespace format rec::audio::format7,159
-namespace mpg123 rec::audio::format::mpg1238,179
-class Initializer rec::audio::format::mpg123::Initializer12,216
-  Initializer(rec::audio::format::mpg123::Initializer::Initializer14,247
-  Error initialize(rec::audio::format::mpg123::Initializer::initialize16,284
-  void exit(rec::audio::format::mpg123::Initializer::exit30,667
-  Error initError_;rec::audio::format::mpg123::Initializer::initError_38,792
-  bool running_;rec::audio::format::mpg123::Initializer::running_39,813
-  static bool formatManagerInitialized_;rec::audio::format::mpg123::Initializer::formatManagerInitialized_40,831
-  static Initializer& instance(rec::audio::format::mpg123::Initializer::instance42,875
-bool Initializer::formatManagerInitialized_ 51,1155
-Error initializeOnce(55,1230
-void exitOnce(59,1307
-StringArray getMp3FileExtensions(63,1366
-Array<int> getSampleRates(70,1554
-Array<int> getBitDepths(81,1738
-int getBitsPerSample(86,1853
-String getTranslatedName(95,2074
+namespace rec 5,133
+namespace audio rec::audio6,150
+namespace format rec::audio::format7,169
+namespace mpg123 rec::audio::format::mpg1238,189
+class Initializer rec::audio::format::mpg123::Initializer12,226
+  Initializer(rec::audio::format::mpg123::Initializer::Initializer14,257
+  Error initialize(rec::audio::format::mpg123::Initializer::initialize16,294
+  void exit(rec::audio::format::mpg123::Initializer::exit30,677
+  Error initError_;rec::audio::format::mpg123::Initializer::initError_38,802
+  bool running_;rec::audio::format::mpg123::Initializer::running_39,823
+  static bool formatManagerInitialized_;rec::audio::format::mpg123::Initializer::formatManagerInitialized_40,841
+  static Initializer& instance(rec::audio::format::mpg123::Initializer::instance42,885
+bool Initializer::formatManagerInitialized_ 51,1165
+Error initializeOnce(55,1240
+void exitOnce(59,1317
+StringArray getMp3FileExtensions(63,1376
+Array<int> getSampleRates(70,1564
+Array<int> getBitDepths(81,1748
+int getBitsPerSample(86,1863
+String getTranslatedName(95,2084
 
 rec/audio/format/mpg123/Mpg123.h,187
 #define __REC_AUDIO_FORMAT_MPG123_MPG123__2,44
-typedef int Error;16,321
-typedef long long 17,341
-typedef unsigned char 18,367
-typedef unsigned short 19,397
-typedef int int32;20,429
+typedef int Error;16,331
+typedef long long 17,351
+typedef unsigned char 18,377
+typedef unsigned short 19,407
+typedef int int32;20,439
 
 rec/audio/format/mpg123/NewHandle.cpp,306
 #define __REC_AUDIO_FORMAT_MPG123_REPLACE_READER__2,52
-namespace rec 12,267
-namespace audio rec::audio13,284
-namespace format rec::audio::format14,303
-namespace mpg123 rec::audio::format::mpg12315,323
-ssize_t read(rec::audio::format::mpg123::read19,360
-off_t seek(23,500
-Error newHandle(40,903
+namespace rec 12,277
+namespace audio rec::audio13,294
+namespace format rec::audio::format14,313
+namespace mpg123 rec::audio::format::mpg12315,333
+ssize_t read(rec::audio::format::mpg123::read19,370
+off_t seek(23,510
+Error newHandle(40,913
 
 rec/audio/format/mpg123/NewHandle.h,52
 #define __REC_AUDIO_FORMAT_MPG123_NEW_HANDLE__2,48
@@ -534,30 +497,30 @@ bool Reader::readSamples(29,600
 
 rec/audio/format/mpg123/Reader.h,343
 #define __REC_AUDIO_FORMAT_MPG123_READER__2,44
-class Reader 17,389
-	~Reader(19,442
-	virtual bool readSamples(21,457
-  Reader(28,698
-  friend Error createReader(30,782
-	mpg123_handle* mh_;32,879
-  void* buffer_;33,901
-  size_t size_,34,919
-  size_t size_, allocated_;34,919
-  Copier copier_;35,948
-  DISALLOW_COPY_AND_ASSIGN(38,971
+class Reader 17,399
+	~Reader(19,452
+	virtual bool readSamples(21,467
+  Reader(28,708
+  friend Error createReader(30,792
+	mpg123_handle* mh_;32,889
+  void* buffer_;33,911
+  size_t size_,34,929
+  size_t size_, allocated_;34,929
+  Copier copier_;35,958
+  DISALLOW_COPY_AND_ASSIGN(38,981
 
 rec/audio/format/mpg123/Reader_main.cpp,66
-using rec::audio::format::mpg123::Format;12,249
-int main(14,292
+using rec::audio::format::mpg123::Format;12,259
+int main(14,302
 
 rec/audio/format/mpg123/Reader_test.cpp,345
-namespace rec 11,205
-namespace audio rec::audio12,221
-namespace format rec::audio::format13,239
-namespace mpg123 rec::audio::format::mpg12314,258
-using rec::util::testFile;rec::audio::format::mpg123::rec::util::testFile16,278
-TEST(rec::audio::format::mpg123::TEST18,306
-  typedef int Sample;rec::audio::format::mpg123::Sample36,982
+namespace rec 11,215
+namespace audio rec::audio12,231
+namespace format rec::audio::format13,249
+namespace mpg123 rec::audio::format::mpg12314,268
+using rec::util::testFile;rec::audio::format::mpg123::rec::util::testFile16,288
+TEST(rec::audio::format::mpg123::TEST18,316
+  typedef int Sample;rec::audio::format::mpg123::Sample36,992
 
 rec/audio/format/mpg123/Tags.cpp,226
 namespace rec 3,45
@@ -570,98 +533,27 @@ Error getMp3Tags(16,390
 rec/audio/format/mpg123/Tags.h,46
 #define __REC_AUDIO_FORMAT_MPG123_TAGS__2,42
 
-rec/audio/Math.h,143
-#define __REC_AUDIO_MATH2,25
-namespace rec 6,82
-inline void wraparound(15,277
-inline void wraparound(24,581
-inline void wraparound(30,741
-
-rec/audio/Math_test.cpp,139
-namespace rec 4,54
-namespace audio rec::audio5,70
-namespace math rec::audio::math6,88
-TEST(rec::audio::math::TEST8,106
-TEST(17,400
-
-rec/audio/source/Buffered.cpp,353
-namespace rec 3,40
-namespace audio rec::audio4,56
-namespace source rec::audio::source5,74
-Buffered::Buffered(rec::audio::source::Buffered::Buffered9,168
-void Buffered::run(20,526
-Buffered::~Buffered(27,624
-void Buffered::shutdown(33,756
-void Buffered::init(39,864
-void Buffered::fillBuffers(48,1024
-void Buffered::getNextAudioBlock(72,1612
-
-rec/audio/source/Buffered.h,956
-#define __REC_BUFFERED_AUDIO_SOURCE2,36
-struct BufferDescription 15,238
-  int channels;16,265
-  int bufferCount;17,281
-  int priority;18,300
-  int samples;19,316
-  int wait;20,331
-  int waitForShutdown;21,343
-  static BufferDescription DEFAULT;23,367
-class Buffered 26,407
-  virtual void releaseResources(Buffered::releaseResources39,757
-  virtual void prepareToPlay(Buffered::prepareToPlay41,795
-  const BufferDescription desc_;Buffered::desc_44,888
-  typedef std::vector<AudioSampleBuffer*> BufferList;Buffered::BufferList49,963
-  BufferList buffers_;Buffered::buffers_51,1018
-  rec::audio::buffer::FillQueue queue_;Buffered::queue_52,1041
-  Buffered* wrapper_;Buffered::wrapper_53,1081
-  int bufferBeingStreamed_;Buffered::bufferBeingStreamed_55,1104
-  int offset_;Buffered::offset_56,1132
-  CriticalSection lock_;Buffered::lock_57,1147
-  int minBuffers_;Buffered::minBuffers_58,1172
-  int wait_;Buffered::wait_59,1191
-
-rec/audio/source/Buffered_test.cpp,394
-namespace rec 7,174
-namespace audio rec::audio8,190
-namespace source rec::audio::source9,208
-class MockIdentity rec::audio::source::MockIdentity13,241
-  MockIdentity(rec::audio::source::MockIdentity::MockIdentity15,285
-  virtual float getSample(rec::audio::source::MockIdentity::getSample18,318
-struct RampTester 24,424
-  bool operator()(RampTester::operator()25,444
-TEST(34,651
-
-rec/audio/source/BufferedWrapper.h,249
-#define __REC_SCALABLE_AUDIO_SOURCE2,36
-class BufferedWrapper 11,209
-  BufferedWrapper(15,322
-  void prepareToPlay(20,450
-  void releaseResources(26,652
-  void setSource(31,737
-  AudioSource* source_;37,828
-  DISALLOW_COPY_AND_ASSIGN(39,853
-
 rec/audio/source/Buffery.cpp,307
 namespace rec 6,101
 namespace audio rec::audio7,117
 namespace source rec::audio::source8,135
 Buffery::Buffery(rec::audio::source::Buffery::Buffery10,155
-void Buffery::setNextReadPosition(18,402
-int64 Buffery::available(25,599
-void Buffery::getNextAudioBlock(30,709
-bool Buffery::fillNext(59,1546
+void Buffery::setNextReadPosition(18,387
+int64 Buffery::available(25,586
+void Buffery::getNextAudioBlock(30,696
+bool Buffery::fillNext(59,1533
 
-rec/audio/source/Buffery.h,469
+rec/audio/source/Buffery.h,468
 #define __REC_AUDIO_SOURCE_BUFFERY__2,37
 class Buffery 11,198
-  typedef rec::util::Circular Circular;Buffery::Circular13,247
-  bool filled(Buffery::filled23,519
-  bool ready(Buffery::ready25,592
-  AudioSampleBuffer* buffer(Buffery::buffer29,696
-  Circular filled_;Buffery::filled_38,1009
-  AudioSampleBuffer buffer_;Buffery::buffer_39,1029
-  CriticalSection lock_;Buffery::lock_40,1058
-  AudioSourceChannelInfo sourceInfo_;Buffery::sourceInfo_41,1083
+  typedef rec::util::Circular Circular;Buffery::Circular13,249
+  bool filled(Buffery::filled23,504
+  bool ready(Buffery::ready25,577
+  AudioSampleBuffer* buffer(Buffery::buffer29,681
+  Circular filled_;Buffery::filled_38,994
+  AudioSampleBuffer buffer_;Buffery::buffer_39,1014
+  CriticalSection lock_;Buffery::lock_40,1043
+  AudioSourceChannelInfo sourceInfo_;Buffery::sourceInfo_41,1068
 
 rec/audio/source/Buffery_test.cpp,135
 namespace rec 5,100
@@ -674,39 +566,39 @@ namespace rec 6,143
 namespace audio rec::audio7,159
 namespace source rec::audio::source8,177
 DoubleStretchy::DoubleStretchy(rec::audio::source::DoubleStretchy::DoubleStretchy10,197
-void DoubleStretchy::setDescription(24,667
-int DoubleStretchy::getTotalLength(30,831
-int DoubleStretchy::getNextReadPosition(35,939
-void DoubleStretchy::setNextReadPosition(40,1057
-int DoubleStretchy::available(56,1478
-void DoubleStretchy::prepareToPlay(61,1576
-void DoubleStretchy::releaseResources(69,1784
-bool DoubleStretchy::fillNext(77,1978
-void DoubleStretchy::getNextAudioBlock(123,3230
-bool DoubleStretchy::isLooping(135,3505
-void DoubleStretchy::setLooping(140,3604
+void DoubleStretchy::setDescription(24,633
+int DoubleStretchy::getTotalLength(30,797
+int DoubleStretchy::getNextReadPosition(35,905
+void DoubleStretchy::setNextReadPosition(40,1023
+int DoubleStretchy::available(56,1444
+void DoubleStretchy::prepareToPlay(61,1542
+void DoubleStretchy::releaseResources(69,1750
+bool DoubleStretchy::fillNext(77,1944
+void DoubleStretchy::getNextAudioBlock(123,3182
+bool DoubleStretchy::isLooping(135,3440
+void DoubleStretchy::setLooping(140,3539
 
-rec/audio/source/DoubleStretchy.h,1307
+rec/audio/source/DoubleStretchy.h,1273
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHY__2,44
 class DoubleStretchy 17,434
-  typedef rec::audio::timescaler::Description Description;DoubleStretchy::Description19,499
-  struct SourceReader DoubleStretchy::SourceReader38,1205
-    scoped_ptr<PositionableAudioSource> source_;DoubleStretchy::SourceReader::source_39,1229
-    Description description_;DoubleStretchy::SourceReader::description_40,1278
-    int offset_;DoubleStretchy::SourceReader::offset_41,1308
-    scoped_ptr<PositionableAudioSource> reader_;DoubleStretchy::SourceReader::reader_43,1326
-    scoped_ptr<Buffery> buffered_;DoubleStretchy::SourceReader::buffered_44,1375
-    void reset(DoubleStretchy::SourceReader::reset46,1411
-  Buffery* source(DoubleStretchy::source55,1700
-  const Buffery* source(DoubleStretchy::source59,1764
-  Buffery* next(DoubleStretchy::next63,1840
-  bool descriptionChanged_;DoubleStretchy::descriptionChanged_67,1906
-  Description description_;DoubleStretchy::description_68,1934
-  int position_;DoubleStretchy::position_70,1963
-  CriticalSection lock_;DoubleStretchy::lock_71,1980
-  int gettingBlock_;DoubleStretchy::gettingBlock_72,2005
-  scoped_ptr<SourceReader> source_;DoubleStretchy::source_74,2027
-  scoped_ptr<SourceReader> nextSource_;DoubleStretchy::nextSource_75,2063
+  typedef rec::audio::timescaler::Description Description;DoubleStretchy::Description19,482
+  struct SourceReader DoubleStretchy::SourceReader38,1162
+    scoped_ptr<Source> source_;DoubleStretchy::SourceReader::source_39,1186
+    Description description_;DoubleStretchy::SourceReader::description_40,1218
+    int offset_;DoubleStretchy::SourceReader::offset_41,1248
+    scoped_ptr<Source> reader_;DoubleStretchy::SourceReader::reader_43,1266
+    scoped_ptr<Buffery> buffered_;DoubleStretchy::SourceReader::buffered_44,1298
+    void reset(DoubleStretchy::SourceReader::reset46,1334
+  Buffery* source(DoubleStretchy::source55,1623
+  const Buffery* source(DoubleStretchy::source59,1687
+  Buffery* next(DoubleStretchy::next63,1763
+  bool descriptionChanged_;DoubleStretchy::descriptionChanged_67,1829
+  Description description_;DoubleStretchy::description_68,1857
+  int position_;DoubleStretchy::position_70,1886
+  CriticalSection lock_;DoubleStretchy::lock_71,1903
+  int gettingBlock_;DoubleStretchy::gettingBlock_72,1928
+  scoped_ptr<SourceReader> source_;DoubleStretchy::source_74,1950
+  scoped_ptr<SourceReader> nextSource_;DoubleStretchy::nextSource_75,1986
 
 rec/audio/source/DoubleStretchy_test.cpp,385
 namespace rec 8,183
@@ -718,128 +610,66 @@ static AudioFormatReaderSource* newSource(rec::audio::source::newSource15,308
 TEST(21,537
 TEST(28,754
 
-rec/audio/source/DoubleStretchyThread.h,412
+rec/audio/source/DoubleStretchyThread.h,496
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHYTHREAD__2,50
 class DoubleStretchyThread 10,201
   typedef rec::audio::timescaler::Description Description;DoubleStretchyThread::Description12,271
   DoubleStretchyThread(DoubleStretchyThread::DoubleStretchyThread14,331
-  void run(DoubleStretchyThread::run23,632
-  void stop(DoubleStretchyThread::stop30,770
-  int waitTime_;DoubleStretchyThread::waitTime_36,845
+  virtual void setDescription(DoubleStretchyThread::setDescription23,598
+  virtual void run(DoubleStretchyThread::run28,730
+  void stop(DoubleStretchyThread::stop37,959
+  int waitTime_;DoubleStretchyThread::waitTime_43,1034
 
-rec/audio/source/Identity.h,155
-#define __REC_IDENTITY_AUDIO_SOURCE2,36
-class Identity 10,174
-  Identity(12,225
-  virtual void fillOneBuffer(16,310
-  DISALLOW_COPY_AND_ASSIGN(25,543
-
-rec/audio/source/Loop.h,464
-#define __REC_LOOP_AUDIO_SOURCE2,32
-class Loop 13,239
-  Loop(15,294
-  ~Loop(21,460
-  virtual void setNextReadPosition(23,474
-  virtual int getNextReadPosition(24,535
-  virtual int getTotalLength(25,599
-  virtual bool isLooping(26,672
-  virtual void prepareToPlay(28,723
-  virtual void releaseResources(29,803
-  virtual void getNextAudioBlock(31,841
-  const AudioSampleBuffer& source_;36,990
-  int position_;37,1026
-  DISALLOW_COPY_AND_ASSIGN(39,1044
-
-rec/audio/source/Loop_test.cpp,476
-using rec::audio::math::rampWave;7,166
-namespace rec 9,201
-namespace audio rec::audio10,217
-namespace source rec::audio::source11,235
-class MockRamp rec::audio::source::MockRamp15,268
-  MockRamp(rec::audio::source::MockRamp::MockRamp17,308
-  virtual float getSample(rec::audio::source::MockRamp::getSample20,368
-  const int scale_;rec::audio::source::MockRamp::scale_25,452
-struct RampTester 29,514
-  bool operator()(RampTester::operator()30,534
-TEST(39,768
-
-rec/audio/source/Mock.h,212
-#define __REC_MOCK_AUDIO_SOURCE2,32
-class Mock 11,178
-  Mock(13,221
-  virtual void prepareToPlay 15,248
-  virtual void releaseResources(18,360
-  virtual void getNextAudioBlock(20,398
-  int counter_;28,749
-
-rec/audio/source/MultiWrappy.h,1075
+rec/audio/source/MultiWrappy.h,1056
 #define __REC_AUDIO_SOURCE_MULTIWRAPPY__2,41
-#define _MWFE(15,303
-#define MWFE(18,383
-#define MWFEC(21,444
-class MultiWrappy 25,535
-  typedef std::vector<PositionableAudioSource*> SourceVector;MultiWrappy::SourceVector27,597
-  MultiWrappy(MultiWrappy::MultiWrappy29,660
-  MultiWrappy* construct(MultiWrappy::construct34,796
-  MultiWrappy(MultiWrappy::MultiWrappy40,951
-  ~MultiWrappy(MultiWrappy::~MultiWrappy42,1020
-  void getNextAudioBlock(MultiWrappy::getNextAudioBlock44,1059
-  int getTotalLength(MultiWrappy::getTotalLength48,1168
-  int getNextReadPosition(MultiWrappy::getNextReadPosition49,1244
-  bool isLooping(MultiWrappy::isLooping50,1325
-  void setNextReadPosition(MultiWrappy::setNextReadPosition52,1401
-  void setLooping(MultiWrappy::setLooping53,1479
-  void prepareToPlay(MultiWrappy::prepareToPlay54,1554
-  void releaseResources(MultiWrappy::releaseResources55,1629
-#undef _MWFE57,1704
-#undef MWFE58,1717
-#undef MWFEC59,1729
-  SourceVector source_;MultiWrappy::source_62,1755
-  MultiWrappy(MultiWrappy::MultiWrappy65,1790
+#define _MWFE(15,313
+#define MWFE(18,393
+#define MWFEC(21,454
+class MultiWrappy 25,545
+  typedef std::vector<Source*> SourceVector;MultiWrappy::SourceVector27,590
+  MultiWrappy(MultiWrappy::MultiWrappy29,636
+  MultiWrappy* construct(MultiWrappy::construct34,738
+  MultiWrappy(MultiWrappy::MultiWrappy40,893
+  ~MultiWrappy(MultiWrappy::~MultiWrappy42,945
+  void getNextAudioBlock(MultiWrappy::getNextAudioBlock44,984
+  int getTotalLength(MultiWrappy::getTotalLength48,1093
+  int getNextReadPosition(MultiWrappy::getNextReadPosition49,1169
+  bool isLooping(MultiWrappy::isLooping50,1250
+  void setNextReadPosition(MultiWrappy::setNextReadPosition52,1326
+  void setLooping(MultiWrappy::setLooping53,1404
+  void prepareToPlay(MultiWrappy::prepareToPlay54,1479
+  void releaseResources(MultiWrappy::releaseResources55,1554
+#undef _MWFE57,1629
+#undef MWFE58,1642
+#undef MWFEC59,1654
+  SourceVector source_;MultiWrappy::source_62,1680
+  MultiWrappy(MultiWrappy::MultiWrappy65,1715
 
-rec/audio/source/Stretchable.h,298
-#define __REC_STRETCHABLE_AUDIO_SOURCE2,39
-class Stretchable 12,199
-  Stretchable(16,301
-  virtual void init(21,455
-  virtual void fillOneBuffer(Stretchable::fillOneBuffer26,572
-  AudioSampleBuffer buffer_;Stretchable::buffer_54,1573
-  AudioTimeScaler scaler_;Stretchable::scaler_55,1602
-
-rec/audio/source/Stretchable_test.cpp,476
-using rec::audio::math::rampWave;7,173
-namespace rec 9,208
-namespace audio rec::audio10,224
-namespace source rec::audio::source11,242
-class MockRamp rec::audio::source::MockRamp15,275
-  MockRamp(rec::audio::source::MockRamp::MockRamp17,315
-  virtual float getSample(rec::audio::source::MockRamp::getSample20,375
-  const int scale_;rec::audio::source::MockRamp::scale_25,459
-struct RampTester 29,521
-  bool operator()(RampTester::operator()30,541
-TEST(39,778
+rec/audio/source/Source.h,88
+#define __REC_AUDIO_SOURCE_SOURCE__2,36
+typedef PositionableAudioSource Source;10,168
 
 rec/audio/source/Stretchy.cpp,373
 namespace rec 5,67
 namespace audio rec::audio6,83
 namespace source rec::audio::source7,101
 Stretchy::Stretchy(rec::audio::source::Stretchy::Stretchy9,121
-int Stretchy::getTotalLength(19,447
-void Stretchy::setNextReadPosition(23,547
-void Stretchy::getNextAudioBlock(31,751
-int Stretchy::processOneChunk(53,1409
-void Stretchy::getNextAudioBlockFromSource(69,1912
+int Stretchy::getTotalLength(19,432
+void Stretchy::setNextReadPosition(23,532
+void Stretchy::getNextAudioBlock(31,736
+int Stretchy::processOneChunk(53,1394
+void Stretchy::getNextAudioBlockFromSource(69,1897
 
 rec/audio/source/Stretchy.h,482
 #define __REC_STRETCHY_AUDIO_SOURCE2,36
 class Stretchy 16,327
-  typedef rec::audio::timescaler::Description Description;Stretchy::Description19,431
-  const Description description_;Stretchy::description_31,844
-  const int channels_;Stretchy::channels_32,878
-  AudioSampleBuffer buffer_;Stretchy::buffer_33,901
-  AudioTimeScaler scaler_;Stretchy::scaler_34,930
-  std::vector<float*> outOffset_;Stretchy::outOffset_35,957
-  CriticalSection lock_;Stretchy::lock_36,991
+  typedef rec::audio::timescaler::Description Description;Stretchy::Description19,433
+  const Description description_;Stretchy::description_31,829
+  const int channels_;Stretchy::channels_32,863
+  AudioSampleBuffer buffer_;Stretchy::buffer_33,886
+  AudioTimeScaler scaler_;Stretchy::scaler_34,915
+  std::vector<float*> outOffset_;Stretchy::outOffset_35,942
+  CriticalSection lock_;Stretchy::lock_36,976
 
 rec/audio/source/Stretchy_test.cpp,136
 namespace rec 6,102
@@ -847,47 +677,55 @@ namespace audio rec::audio7,118
 namespace source rec::audio::source8,136
 TEST(rec::audio::source::TEST10,156
 
-rec/audio/source/TestHarness.h,1095
+rec/audio/source/TestHarness.h,1402
 #define __REC_AUDIO_SOURCE_TESTER2,34
-class TestHarness 12,226
-  TestHarness(14,255
-  int totalSampleNumber(20,446
-  bool testAudioSource(25,566
-  void setSource(TestHarness::setSource44,1212
-  template <typename Wrapper,TestHarness::Wrapper46,1279
-  void setWrapper(TestHarness::setWrapper47,1326
-  template <typename Wrapper,TestHarness::Wrapper58,1588
-  template <typename Wrapper, typename Source,TestHarness::Source58,1588
-  bool test(TestHarness::test59,1652
-  int outputCycles_;TestHarness::outputCycles_68,1872
-  int outputSamples_;TestHarness::outputSamples_69,1893
-  int bufferSamples_;TestHarness::bufferSamples_70,1915
-  int cycle_;TestHarness::cycle_71,1937
-  int channel_;TestHarness::channel_72,1951
-  int sampleNumber_;TestHarness::sampleNumber_73,1967
-  scoped_ptr<AudioSource> source_;TestHarness::source_74,1988
-  scoped_ptr<AudioSource> wrapper_;TestHarness::wrapper_75,2023
-inline std::ostream& operator<< 80,2105
-template <typename Wrapper,92,2561
-template <typename Wrapper, typename Source,92,2561
-static void testAudioSource(93,2623
+struct BufferDescription 11,197
+  int channels;12,224
+  int bufferCount;13,240
+  int priority;14,259
+  int samples;15,275
+  int wait;16,290
+  int waitForShutdown;17,302
+  static BufferDescription DEFAULT;19,326
+class TestHarness 22,366
+  TestHarness(TestHarness::TestHarness24,395
+  int totalSampleNumber(TestHarness::totalSampleNumber30,586
+  bool testAudioSource(TestHarness::testAudioSource35,706
+  void setSource(TestHarness::setSource54,1352
+  template <typename Wrapper,TestHarness::Wrapper56,1419
+  void setWrapper(TestHarness::setWrapper57,1466
+  template <typename Wrapper,TestHarness::Wrapper68,1728
+  template <typename Wrapper, typename Source,TestHarness::Source68,1728
+  bool test(TestHarness::test69,1792
+  int outputCycles_;TestHarness::outputCycles_78,2012
+  int outputSamples_;TestHarness::outputSamples_79,2033
+  int bufferSamples_;TestHarness::bufferSamples_80,2055
+  int cycle_;TestHarness::cycle_81,2077
+  int channel_;TestHarness::channel_82,2091
+  int sampleNumber_;TestHarness::sampleNumber_83,2107
+  scoped_ptr<AudioSource> source_;TestHarness::source_84,2128
+  scoped_ptr<AudioSource> wrapper_;TestHarness::wrapper_85,2163
+inline std::ostream& operator<< 90,2245
+template <typename Wrapper,102,2701
+template <typename Wrapper, typename Source,102,2701
+static void testAudioSource(103,2763
 
-rec/audio/source/Testy.h,513
+rec/audio/source/Testy.h,514
 #define __REC_AUDIO_SOURCE_TESTY__2,35
-class Testy 15,259
-  Testy(18,346
-  virtual void getNextAudioBlock(20,375
-  static float getSample(28,672
-  virtual int getTotalLength(30,743
-  virtual int getNextReadPosition(32,798
-  virtual void setNextReadPosition(33,862
-  virtual bool isLooping(35,924
-  virtual void setLooping(36,974
-  virtual void prepareToPlay(37,1017
-  virtual void releaseResources(38,1066
-  int position_;40,1104
-  static float expectNear(42,1122
-  static float expectNear(49,1322
+class Testy 16,306
+  Testy(19,376
+  virtual void getNextAudioBlock(21,405
+  static float getSample(29,702
+  virtual int getTotalLength(31,773
+  virtual int getNextReadPosition(33,828
+  virtual void setNextReadPosition(34,892
+  virtual bool isLooping(36,954
+  virtual void setLooping(37,1004
+  virtual void prepareToPlay(38,1047
+  virtual void releaseResources(39,1096
+  int position_;41,1134
+  static float expectNear(43,1152
+  static float expectNear(50,1335
 
 rec/audio/source/Testy_test.cpp,132
 namespace rec 4,62
@@ -895,46 +733,39 @@ namespace audio rec::audio5,78
 namespace source rec::audio::source6,96
 TEST(rec::audio::source::TEST8,116
 
-rec/audio/source/Wrappy.h,727
+rec/audio/source/Wrappy.h,992
 #define __REC_AUDIO_SOURCE_WRAPPY__2,36
-class Wrappy 14,230
-  Wrappy(16,287
-  virtual int getTotalLength(20,426
-  virtual int getNextReadPosition(22,502
-  virtual void setNextReadPosition(23,587
-  virtual bool isLooping(25,667
-  virtual void setLooping(26,733
-  virtual void prepareToPlay(28,808
-  virtual void releaseResources(29,889
-  PositionableAudioSource* source_;32,969
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(35,1016
-class PositionWrappy 38,1062
-  PositionWrappy(PositionWrappy::PositionWrappy40,1110
-  virtual int getNextReadPosition(PositionWrappy::getNextReadPosition42,1196
-  virtual void setNextReadPosition(PositionWrappy::setNextReadPosition43,1260
-  int position_;PositionWrappy::position_49,1376
+class Wrappy 16,304
+  Wrappy(18,344
+  virtual int getTotalLength(22,466
+  virtual int getNextReadPosition(24,542
+  virtual void setNextReadPosition(26,631
+  virtual bool isLooping(28,711
+  virtual void setLooping(29,777
+  virtual void prepareToPlay(31,852
+  virtual void releaseResources(32,933
+  Source* source_;38,1048
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(41,1078
+class Wrappy::Offset 45,1186
+  Offset(Wrappy::Offset::Offset47,1234
+  virtual int getNextReadPosition(Wrappy::Offset::getNextReadPosition49,1293
+  virtual void setNextReadPosition(Wrappy::Offset::setNextReadPosition54,1458
+  const int offset_;Wrappy::Offset::offset_59,1599
+class Wrappy::Position 65,1800
+  Position(Wrappy::Position::Position67,1850
+  virtual int getNextReadPosition(Wrappy::Position::getNextReadPosition69,1913
+  virtual void setNextReadPosition(Wrappy::Position::setNextReadPosition70,1977
+  int position_;Wrappy::Position::position_76,2093
 
-rec/audio/stretch/AudioTimeScaler_test.cpp,224
-using rec::audio::math::rampWave;10,228
-namespace rec 12,263
-namespace audio rec::audio13,279
-namespace timescaler rec::audio::timescaler14,297
-void Init(rec::audio::timescaler::Init18,334
-TEST(26,457
-TEST(47,1042
-
-rec/audio/stretch/CircularBuffer.h,624
-#define __REC_STRETCHER_CIRCULARBUFFER__2,41
-class CircularBuffer 14,267
-  typedef rec::util::Circular Circular;CircularBuffer::Circular16,299
-  CircularBuffer(CircularBuffer::CircularBuffer18,340
-  bool readFrom(CircularBuffer::readFrom25,557
-  const Circular& done(CircularBuffer::done44,1237
-  bool increment(CircularBuffer::increment47,1297
-  void getSamplePositions(CircularBuffer::getSamplePositions53,1421
-  const AudioSampleBuffer& buffer_;CircularBuffer::buffer_58,1579
-  Circular done_;CircularBuffer::done_59,1615
-  std::vector<float*> samplePositions_;CircularBuffer::samplePositions_60,1633
+rec/audio/stretch/AudioTimeScaler_test.cpp,222
+namespace rec 9,200
+namespace audio rec::audio10,216
+namespace timescaler rec::audio::timescaler11,234
+float rampWave(rec::audio::timescaler::rampWave15,271
+void Init(19,380
+TEST(27,503
+TEST(36,797
+TEST(57,1382
 
 rec/audio/stretch/description.pb.h,3951
 #define PROTOBUF_rec_2faudio_2fstretch_2fdescription_2eproto__INCLUDED5,179
@@ -1004,92 +835,6 @@ inline ::google::protobuf::uint32 Description::thread_priority(359,11377
 inline void Description::set_thread_priority(362,11479
 namespace google 375,11736
 namespace protobuf google::protobuf376,11755
-
-rec/audio/stretch/Simple.cpp,189
-namespace rec 7,141
-namespace audio rec::audio8,157
-namespace timescaler rec::audio::timescaler9,175
-bool Simple::requestRescale(rec::audio::timescaler::Simple::requestRescale13,236
-
-rec/audio/stretch/Simple.h,348
-#define __REC_SIMPLE_STRETCHER2,31
-class Simple 13,273
-  Simple(15,297
-  bool requestRescale(17,364
-  const static int CHUNK_SIZE;21,528
-  CriticalSection lock_;24,570
-  bool duringScaleOperation_;25,595
-  bool scaleNeeded_;26,625
-  Description description_;27,646
-  Description nextDescription_;28,674
-  DISALLOW_COPY_AND_ASSIGN(30,707
-
-rec/audio/stretch/Stretcher.cpp,591
-namespace rec 12,257
-namespace audio rec::audio13,273
-namespace timescaler rec::audio::timescaler14,291
-using rec::util::Circular;rec::audio::timescaler::rec::util::Circular16,315
-Stretcher::Stretcher(rec::audio::timescaler::Stretcher::Stretcher18,343
-Stretcher::~Stretcher(rec::audio::timescaler::Stretcher::~Stretcher19,400
-void Stretcher::startStretch(rec::audio::timescaler::Stretcher::startStretch21,428
-bool Stretcher::readNextChunk(37,1041
-const Circular& Stretcher::in(41,1141
-const Circular& Stretcher::out(42,1203
-AudioSampleBuffer* Stretcher::stretchOnce(44,1268
-
-rec/audio/stretch/Stretcher.h,806
-#define __REC_STRETCHER_STRETCHER__2,36
-namespace rec 10,192
-namespace audio rec::audio11,208
-namespace timescaler rec::audio::timescaler12,226
-class Stretcher rec::audio::timescaler::Stretcher17,292
-  AudioSampleBuffer* getBuffer(rec::audio::timescaler::Stretcher::getBuffer30,579
-  AudioSampleBuffer* transferBuffer(rec::audio::timescaler::Stretcher::transferBuffer31,638
-  int64 chunkSize_;rec::audio::timescaler::Stretcher::chunkSize_38,865
-  scoped_ptr<AudioSampleBuffer> buffer_;rec::audio::timescaler::Stretcher::buffer_39,885
-  scoped_ptr<CircularBuffer> in_,rec::audio::timescaler::Stretcher::in_40,926
-  scoped_ptr<CircularBuffer> in_, out_;rec::audio::timescaler::Stretcher::out_40,926
-  scoped_ptr<AudioTimeScaler> scaler_;rec::audio::timescaler::Stretcher::scaler_41,966
-
-rec/audio/stretch/StretchingSource.h,600
-#define __REC_AUDIO_SOURCE_DOUBLE_LOOP__2,41
-class StretchingSource 12,195
-  explicit StretchingSource(14,277
-  void rescale(26,582
-  scoped_ptr<AudioSampleBuffer> primaryBuffer_;111,2845
-  scoped_ptr<PositionableAudioSource> source_;112,2893
-  scoped_ptr<AudioSampleBuffer> buffer_;113,2940
-  scoped_ptr<Stretcher> stretcher_;114,2981
-  scoped_ptr<Stretcher> nextStretcher_;115,3017
-  int position_;117,3058
-  int offset_;118,3075
-  int length_;119,3090
-  bool looping_;120,3105
-  CriticalSection lock_;122,3123
-  Description nextDescription_;123,3148
-  bool rescaleNeeded_;124,3180
-
-rec/audio/stretch/StretchMain.cpp,1111
-using std::string;12,206
-using rec::audio::timescaler::Description;13,225
-class PitchTimeShifter 15,269
-  PitchTimeShifter(PitchTimeShifter::PitchTimeShifter17,303
-  static long longValue(PitchTimeShifter::longValue26,491
-  static float floatValue(PitchTimeShifter::floatValue30,570
-  bool getOpt(PitchTimeShifter::getOpt34,647
-  void usage(PitchTimeShifter::usage55,1307
-  int shiftPitchAndTime(PitchTimeShifter::shiftPitchAndTime61,1499
-  string in_;PitchTimeShifter::in_141,4546
-  string out_;PitchTimeShifter::out_142,4560
-  float sampleRate_;PitchTimeShifter::sampleRate_143,4575
-  float timeScale_;PitchTimeShifter::timeScale_144,4596
-  float pitchScale_;PitchTimeShifter::pitchScale_145,4616
-  int chunkSize_;PitchTimeShifter::chunkSize_146,4637
-  static const char shortOpts_[PitchTimeShifter::shortOpts_148,4656
-  static const struct option longOpts_[PitchTimeShifter::longOpts_149,4690
-const char PitchTimeShifter::shortOpts_[PitchTimeShifter::shortOpts_154,4783
-const struct option PitchTimeShifter::longOpts_[PitchTimeShifter::longOpts_156,4838
-int main(167,5293
 
 rec/audio/stretch/TimeScaler.h,52
 #define __REC_TIME_SCALER2,26
@@ -1303,191 +1048,6 @@ typedef unsigned short 22,578
 typedef unsigned int 23,609
 typedef unsigned long 24,638
 
-rec/block/blocks.h,184
-#define __REC_BLOCKS2,21
-typedef size_t Size;14,184
-typedef std::pair<Size, Size> Block;16,206
-typedef std::vector<Block> BlockList;17,243
-typedef std::set<Block> BlockSet;18,281
-
-rec/block/GetNextBlock.cpp,109
-namespace rec 6,130
-namespace buffer rec::buffer7,146
-Block getNextBlock(rec::buffer::getNextBlock9,166
-
-rec/block/GetNextBlock.h,51
-#define __REC_AUDIO_SOURCE_GET_NEXT_BLOCK_H__2,46
-
-rec/block/GetNextBlock_test.cpp,139
-namespace rec 5,94
-namespace buffer rec::buffer6,110
-void expectNextBlock(rec::buffer::expectNextBlock9,137
-TEST(16,387
-TEST(21,486
-
-rec/block/MergeBlockSet.cpp,92
-namespace rec 4,68
-namespace buffer rec::buffer5,84
-void merge(rec::buffer::merge7,104
-
-rec/block/MergeBlockSet.h,53
-#define __REC_AUDIO_SOURCE_MERGE_BLOCK_LIST_H__2,48
-
-rec/block/MergeBlockSet_test.cpp,134
-namespace rec 5,95
-namespace buffer rec::buffer6,111
-void expectBlockSetEqual(rec::buffer::expectBlockSetEqual9,138
-TEST(18,435
-
-rec/buffer/client-manager-test.cpp,163
-namespace rec 5,66
-namespace buffer rec::buffer6,82
-typedef ClientManager::Client Client;rec::buffer::Client8,102
-TEST(rec::buffer::TEST10,141
-TEST(36,625
-
-rec/buffer/client-manager.cpp,328
-namespace rec 5,62
-namespace buffer rec::buffer6,78
-ClientId ClientManager::newClient(rec::buffer::ClientManager::newClient8,98
-void ClientManager::freeClient(14,275
-void ClientManager::addBlocks(21,466
-BlockList ClientManager::erase(26,635
-BlockList ClientManager::clean(41,1088
-Size ClientManager::getBlocks(55,1489
-
-rec/buffer/client-manager.h,543
-#define __REC_BUFFER_CLIENT_MANAGER2,36
-typedef int ClientId;13,208
-class ClientManager 15,231
-  ClientManager(17,262
-  typedef std::map<ClientId,ClientManager::ClientId19,284
-  typedef std::map<ClientId, Size> Offsets;ClientManager::Offsets19,284
-  typedef std::vector<Offsets> OffsetsList;ClientManager::OffsetsList20,328
-  bool empty(ClientManager::empty41,1049
-  Offsets clients_;ClientManager::clients_44,1108
-  OffsetsList offsetsList_;ClientManager::offsetsList_47,1170
-  BlockList queue_;ClientManager::queue_48,1198
-
-rec/buffer/copy.h,31
-#define __REC_BUFFER_COPY2,26
-
-rec/buffer/multi-client-buffer-test.cpp,718
-using std::pair;5,71
-using std::make_pair;6,88
-using rec::util::LockInterface;7,110
-namespace rec 9,143
-namespace buffer rec::buffer10,159
-struct FakeBuffer rec::buffer::FakeBuffer12,179
-  typedef pair<Size,rec::buffer::FakeBuffer::Size13,199
-  typedef pair<Size, Block> Action;rec::buffer::FakeBuffer::Action13,199
-  vector<Action> fromList_;rec::buffer::FakeBuffer::fromList_15,236
-  vector<Action> toList_;rec::buffer::FakeBuffer::toList_16,264
-  Size copyFrom(rec::buffer::FakeBuffer::copyFrom18,291
-  Size copyTo(rec::buffer::FakeBuffer::copyTo22,421
-Size copy(28,551
-class FakeLock 31,623
-  virtual void enter(FakeLock::enter32,663
-  virtual void exit(FakeLock::exit33,689
-TEST(36,718
-
-rec/buffer/multi-client-buffer.cpp,1620
-using std::make_pair;3,45
-namespace rec 5,68
-namespace buffer rec::buffer6,84
-Multi<Buffer>::Multi(rec::buffer::Multi10,132
-Multi<Buffer>::Client Multi<Buffer>::newClient(newClient15,257
-void Multi<Buffer>::freeClient(freeClient20,392
-template <typename In,::In26,507
-class InOut ::InOut27,544
-  InOut(::InOut::InOut29,567
-  Size copyAll(::InOut::copyAll31,616
-  typedef InOut<In,::InOut::In50,974
-  typedef InOut<In, Multi<Out>* > Producer;::InOut::Producer50,974
-  typedef InOut<Multi<In>::Client*::InOut::Client51,1018
-  typedef InOut<Multi<In>::Client*, Out> Client;::InOut::Client51,1018
-  In in_;::InOut::in_54,1078
-  Out out_;::InOut::out_55,1088
-template <typename In,63,1262
-void InOut<In, Out>::Producer::allocateBlocks(Producer::allocateBlocks64,1299
-template <typename In,68,1427
-Size InOut<In, Out>::Producer::copyBlock(Producer::copyBlock69,1464
-template <typename In,73,1611
-LockInterface* InOut<In, Out>::Producer::getLock(Producer::getLock74,1648
-template <typename In,78,1732
-void InOut<In, Out>::Producer::freeBlock(Producer::freeBlock79,1769
-template <typename In,84,1901
-void InOut<In, Out>::Client::allocateBlocks(Client::allocateBlocks85,1938
-template <typename In,90,2106
-Size InOut<In, Out>::Client::copyBlock(Client::copyBlock91,2143
-template <typename In,96,2315
-LockInterface* InOut<In, Out>::Client::getLock(Client::getLock97,2352
-template <typename In,102,2460
-void InOut<In, Out>::Client::freeBlock(Client::freeBlock103,2497
-template <typename In,110,2686
-Size copy(111,2723
-template <typename BufferIn,115,2818
-Size copy(116,2867
-
-rec/buffer/multi-client-buffer.h,772
-#define __REC_BUFFER_MULTI_CLIENT_BUFFER2,41
-using std::map;17,355
-using std::set;18,371
-using std::pair;19,387
-using rec::util::LockInterface;21,405
-using rec::util::Locker;22,437
-namespace rec 24,463
-namespace buffer rec::buffer25,479
-class Multi<rec::buffer::Multi28,526
-  typedef std::pair<Multi*rec::buffer::Multi::Multi33,616
-  typedef std::pair<Multi*, ClientId> Client;rec::buffer::Multi::Client33,616
-  ProducerQueue producerQueue_;rec::buffer::Multi::producerQueue_39,737
-  ClientManager clientManager_;rec::buffer::Multi::clientManager_40,769
-  scoped_ptr<LockInterface> lock_;rec::buffer::Multi::lock_42,802
-  scoped_ptr<Buffer> buffer;rec::buffer::Multi::buffer43,837
-template <typename In,50,1007
-template <typename BufferIn,54,1132
-
-rec/buffer/producer-queue-test.cpp,85
-namespace rec 5,66
-namespace buffer rec::buffer6,82
-TEST(rec::buffer::TEST8,102
-
-rec/buffer/producer-queue.cpp,288
-using std::for_each;6,84
-using std::bind2nd;7,105
-using std::mem_fun;8,125
-namespace rec 10,146
-namespace buffer rec::buffer11,162
-void ProducerQueue::allocate(rec::buffer::ProducerQueue::allocate13,182
-BlockList ProducerQueue::produce(32,729
-void ProducerQueue::remove(45,1106
-
-rec/buffer/producer-queue.h,286
-#define __REC_BUFFER_PRODUCER_QUEUE2,36
-class ProducerQueue 9,141
-  ProducerQueue(11,172
-  void allocate(14,267
-  BlockList produce(17,382
-  void remove(24,687
-  BlockSet all_;27,738
-  BlockList production_;28,755
-  BlockSet produced_;29,780
-  DISALLOW_COPY_AND_ASSIGN(31,803
-
-rec/buffer/services.cpp,239
-namespace rec 3,34
-namespace buffer rec::buffer4,50
-typedef Services<AudioSampleBuffer*> JUCEServices;rec::buffer::JUCEServices6,70
-Size JUCEServices::setSize(rec::buffer::JUCEServices::setSize13,285
-Size JUCEServices::copy(19,452
-
-rec/buffer/services.h,115
-#define __REC_BUFFER_SERVICES2,30
-class Services 14,354
-  static Size setSize(18,490
-  static Size copy(23,698
-
 rec/cd/GetAlbumsFromCDDB.cpp,298
 namespace rec 8,115
 namespace cd rec::cd9,131
@@ -1503,23 +1063,23 @@ void dedupeAlbums(127,3251
 
 rec/cd/GetAlbumsFromCDDB.h,452
 #define __REC_CD_GETALBUMSFROMCDDB__2,37
-struct Track 9,138
-  int length_;10,153
-  int frameOffset_;11,168
-  String title_;13,189
-  String artist_;14,206
-  String extdata_;15,224
-struct Album 18,247
-  int discid_;19,262
-  int length_;20,277
-  int revision_;21,292
-  int year_;22,309
-  String category_;24,323
-  String genre_;25,343
-  String title_;26,360
-  String artist_;27,377
-  String extdata_;28,395
-  Array<Track> tracks_;30,415
+struct Track 9,148
+  int length_;10,163
+  int frameOffset_;11,178
+  String title_;13,199
+  String artist_;14,216
+  String extdata_;15,234
+struct Album 18,257
+  int discid_;19,272
+  int length_;20,287
+  int revision_;21,302
+  int year_;22,319
+  String category_;24,333
+  String genre_;25,353
+  String title_;26,370
+  String artist_;27,387
+  String extdata_;28,405
+  Array<Track> tracks_;30,425
 
 rec/cd/GetAlbumsFromCDDB_test.cpp,74
 namespace rec 6,97
@@ -1542,20 +1102,20 @@ rec/components/AudioThumbnailComponent.cpp,822
 namespace rec 4,61
 namespace gui rec::gui5,77
 AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent7,94
-uint32 makeARGB(::makeARGB19,548
-Colour makeColor(30,777
-void setColor(31,850
-AudioThumbnailComponent::~AudioThumbnailComponent(36,930
-void AudioThumbnailComponent::setFile(40,1028
-void AudioThumbnailComponent::setZoomFactor(48,1264
-void AudioThumbnailComponent::mouseWheelMove(57,1590
-Rectangle<int> AudioThumbnailComponent::cursorRectangle(71,2075
-bool AudioThumbnailComponent::within(83,2536
-void AudioThumbnailComponent::mouseUp(87,2634
-void AudioThumbnailComponent::setCursor(95,2926
-void AudioThumbnailComponent::paint(107,3201
-int AudioThumbnailComponent::getCursor(133,4069
-void AudioThumbnailComponent::changeListenerCallback(139,4251
+uint32 makeARGB(::makeARGB19,541
+Colour makeColor(30,770
+void setColor(31,843
+AudioThumbnailComponent::~AudioThumbnailComponent(36,923
+void AudioThumbnailComponent::setFile(40,1021
+void AudioThumbnailComponent::setZoomFactor(48,1257
+void AudioThumbnailComponent::mouseWheelMove(57,1583
+Rectangle<int> AudioThumbnailComponent::cursorRectangle(71,2068
+bool AudioThumbnailComponent::within(83,2529
+void AudioThumbnailComponent::mouseUp(87,2627
+void AudioThumbnailComponent::setCursor(95,2919
+void AudioThumbnailComponent::paint(107,3194
+int AudioThumbnailComponent::getCursor(133,4062
+void AudioThumbnailComponent::changeListenerCallback(139,4244
 
 rec/components/AudioThumbnailComponent.h,896
 #define __THUMBNAIL_COMP2,25
@@ -1655,7 +1215,7 @@ void MainPageJ::paint 125,4815
 void MainPageJ::resized(136,5067
 void MainPageJ::buttonClicked 151,5790
 void MainPageJ::sliderValueChanged 173,6372
-void MainPageJ::selectionChanged(198,7168
+void MainPageJ::selectionChanged(199,7219
 
 rec/components/MainPageJ.h,688
 #define __REC_COMPONENT_MAIN_PAGE_J_H__23,744
@@ -1671,31 +1231,34 @@ class MainPageJ 39,1215
     Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider73,2299
     ToggleButton* loopingButton;MainPageJ::loopingButton74,2330
 
-rec/components/MainPageK.cpp,1099
-using rec::audio::timescaler::Description;11,228
-using rec::persist::Data;12,272
-const TreeView::ColourIds MainPageK::BACKGROUND 16,373
-const Colour MainPageK::FOREGROUND 17,463
-const File::SpecialLocationType MainPageK::START_DIR 18,517
-const char* MainPageK::PREVIEW_THREAD_NAME 19,598
-MainPageK::MainPageK(21,668
-class CursorThread ::CursorThread30,909
-  explicit CursorThread(::CursorThread::CursorThread33,991
-  void run(::CursorThread::run37,1095
-  MainPageK* main_;::CursorThread::main_50,1339
-void MainPageK::construct(56,1420
-void MainPageK::destruct(98,2807
-void MainPageK::updateCursor(116,3286
-void MainPageK::setPosition(121,3427
-void MainPageK::loadFileIntoTransport(125,3523
-void MainPageK::sliderValueChanged(152,4435
-void MainPageK::sliderDragEnded(157,4588
-static const char* const CD_STATE_NAMES[CD_STATE_NAMES174,5076
-void MainPageK::changeListenerCallback(184,5612
-void MainPageK::changeListenerCallback(202,6112
-void MainPageK::startStopButtonClicked(210,6353
-void MainPageK::loopingButtonClicked(219,6557
-void MainPageK::selectionChanged(224,6690
+rec/components/MainPageK.cpp,1346
+using rec::audio::timescaler::Description;10,199
+using rec::persist::Data;11,243
+const TreeView::ColourIds MainPageK::BACKGROUND 15,344
+const Colour MainPageK::FOREGROUND 16,434
+const File::SpecialLocationType MainPageK::START_DIR 17,488
+const char* MainPageK::PREVIEW_THREAD_NAME 18,569
+MainPageK::MainPageK(20,639
+using rec::slow::Preferences;::rec::slow::Preferences30,919
+using rec::gui::ThumbnailDescription;::rec::gui::ThumbnailDescription31,950
+using rec::slow::getPreferences;::rec::slow::getPreferences32,989
+class CursorThread ::CursorThread34,1025
+  explicit CursorThread(::CursorThread::CursorThread36,1073
+  void run(::CursorThread::run44,1320
+  MainPageK* const main_;::CursorThread::main_57,1563
+  const ThumbnailDescription prefs_;::CursorThread::prefs_58,1590
+  const int period_;::CursorThread::period_59,1628
+void MainPageK::construct(66,1712
+void MainPageK::destruct(102,2922
+void MainPageK::updateCursor(118,3386
+void MainPageK::setPosition(123,3527
+void MainPageK::loadFileIntoTransport(127,3623
+void MainPageK::sliderValueChanged(154,4517
+static const char* const CD_STATE_NAMES[CD_STATE_NAMES176,5131
+void MainPageK::changeListenerCallback(185,5645
+void MainPageK::startStopButtonClicked(207,6314
+void MainPageK::loopingButtonClicked(214,6469
+void MainPageK::selectionChanged(219,6602
 
 rec/components/MainPageK.h,1642
 #define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
@@ -1703,28 +1266,28 @@ using rec::audio::timescaler::Description;17,436
 using rec::persist::Data;18,479
 class MainPageK 20,506
   ~MainPageK(MainPageK::~MainPageK25,680
-  virtual void fileClicked(MainPageK::fileClicked42,1117
-  virtual void fileDoubleClicked(MainPageK::fileDoubleClicked43,1186
-  DirectoryContentsList* directoryList(MainPageK::directoryList45,1241
-  static const int THREAD_PRIORITY MainPageK::THREAD_PRIORITY50,1381
-  static const TreeView::ColourIds BACKGROUND;MainPageK::BACKGROUND52,1422
-  static const Colour FOREGROUND;MainPageK::FOREGROUND53,1469
-  static const File::SpecialLocationType START_DIR;MainPageK::START_DIR54,1503
-  static const char* PREVIEW_THREAD_NAME;MainPageK::PREVIEW_THREAD_NAME55,1555
-  MainPageJ* peer_;MainPageK::peer_60,1674
-  TimeSliceThread directoryListThread_;MainPageK::directoryListThread_63,1755
-  DirectoryContentsList directoryList_;MainPageK::directoryList_64,1795
-  AudioTransportSource transportSource_;MainPageK::transportSource_67,1879
-  AudioSourcePlayer player_;MainPageK::player_70,1961
-  AudioDeviceManager* deviceManager_;MainPageK::deviceManager_73,2022
-  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;MainPageK::DoubleStretchyThread75,2061
-  scoped_ptr<DoubleStretchyThread> stretchy_;MainPageK::stretchy_76,2134
-  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;MainPageK::stretchyDeleter_77,2180
-  scoped_ptr<Thread> cursorThread_;MainPageK::cursorThread_79,2234
-  std::vector<AudioCDBurner*> burners_;MainPageK::burners_81,2276
-  StringArray cdNames_;MainPageK::cdNames_84,2344
+  virtual void fileClicked(MainPageK::fileClicked41,1069
+  virtual void fileDoubleClicked(MainPageK::fileDoubleClicked42,1138
+  DirectoryContentsList* directoryList(MainPageK::directoryList44,1193
+  static const int THREAD_PRIORITY MainPageK::THREAD_PRIORITY49,1333
+  static const TreeView::ColourIds BACKGROUND;MainPageK::BACKGROUND51,1374
+  static const Colour FOREGROUND;MainPageK::FOREGROUND52,1421
+  static const File::SpecialLocationType START_DIR;MainPageK::START_DIR53,1455
+  static const char* PREVIEW_THREAD_NAME;MainPageK::PREVIEW_THREAD_NAME54,1507
+  MainPageJ* peer_;MainPageK::peer_59,1626
+  TimeSliceThread directoryListThread_;MainPageK::directoryListThread_62,1707
+  DirectoryContentsList directoryList_;MainPageK::directoryList_63,1747
+  AudioTransportSource transportSource_;MainPageK::transportSource_66,1831
+  AudioSourcePlayer player_;MainPageK::player_69,1913
+  AudioDeviceManager* deviceManager_;MainPageK::deviceManager_72,1974
+  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;MainPageK::DoubleStretchyThread74,2013
+  scoped_ptr<DoubleStretchyThread> stretchy_;MainPageK::stretchy_75,2086
+  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;MainPageK::stretchyDeleter_76,2132
+  scoped_ptr<Thread> cursorThread_;MainPageK::cursorThread_78,2186
+  std::vector<AudioCDBurner*> burners_;MainPageK::burners_80,2223
+  StringArray cdNames_;MainPageK::cdNames_82,2264
 
-rec/components/ThumbnailDescription.pb.h,3737
+rec/components/ThumbnailDescription.pb.h,4608
 #define PROTOBUF_rec_2fcomponents_2fThumbnailDescription_2eproto__INCLUDED5,189
 class ThumbnailDescription 41,1474
   ThumbnailDescription(43,1549
@@ -1733,142 +1296,77 @@ class ThumbnailDescription 41,1474
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields(ThumbnailDescription::unknown_fields53,1796
   inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(ThumbnailDescription::mutable_unknown_fields57,1909
   int GetCachedSize(ThumbnailDescription::GetCachedSize82,2881
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;ThumbnailDescription::_unknown_fields_146,5473
-  mutable int _cached_size_;ThumbnailDescription::_cached_size_147,5529
-  ::rec::gui::Color* background_;ThumbnailDescription::background_149,5561
-  ::rec::gui::Color* foreground_;ThumbnailDescription::foreground_150,5595
-  ::rec::gui::Color* cursor_;ThumbnailDescription::cursor_151,5629
-  ::google::protobuf::uint32 cursor_thickness_;ThumbnailDescription::cursor_thickness_152,5659
-  ::google::protobuf::uint32 margin_;ThumbnailDescription::margin_153,5707
-  ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;ThumbnailDescription::source_samples_per_thumbnail_sample_154,5745
-  ::google::protobuf::uint32 thumbnail_cache_;ThumbnailDescription::thumbnail_cache_155,5812
-  ::google::protobuf::uint32 _has_bits_[ThumbnailDescription::_has_bits_160,6117
-  inline bool _has_bit(ThumbnailDescription::_has_bit163,6225
-  inline void _set_bit(ThumbnailDescription::_set_bit166,6336
-  inline void _clear_bit(ThumbnailDescription::_clear_bit169,6428
-  static ThumbnailDescription* default_instance_;ThumbnailDescription::default_instance_174,6558
-inline bool ThumbnailDescription::has_background(184,6824
-inline void ThumbnailDescription::clear_background(187,6907
-inline const ::rec::gui::Color& ThumbnailDescription::background(191,7049
-inline ::rec::gui::Color* ThumbnailDescription::mutable_background(194,7205
-inline bool ThumbnailDescription::has_foreground(201,7423
-inline void ThumbnailDescription::clear_foreground(204,7506
-inline const ::rec::gui::Color& ThumbnailDescription::foreground(208,7648
-inline ::rec::gui::Color* ThumbnailDescription::mutable_foreground(211,7804
-inline bool ThumbnailDescription::has_cursor(218,8018
-inline void ThumbnailDescription::clear_cursor(221,8097
-inline const ::rec::gui::Color& ThumbnailDescription::cursor(225,8227
-inline ::rec::gui::Color* ThumbnailDescription::mutable_cursor(228,8367
-inline bool ThumbnailDescription::has_cursor_thickness(235,8581
-inline void ThumbnailDescription::clear_cursor_thickness(238,8670
-inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thickness(242,8776
-inline void ThumbnailDescription::set_cursor_thickness(245,8889
-inline bool ThumbnailDescription::has_margin(251,9072
-inline void ThumbnailDescription::clear_margin(254,9151
-inline ::google::protobuf::uint32 ThumbnailDescription::margin(258,9237
-inline void ThumbnailDescription::set_margin(261,9330
-inline bool ThumbnailDescription::has_source_samples_per_thumbnail_sample(267,9524
-inline void ThumbnailDescription::clear_source_samples_per_thumbnail_sample(270,9632
-inline ::google::protobuf::uint32 ThumbnailDescription::source_samples_per_thumbnail_sample(274,9778
-inline void ThumbnailDescription::set_source_samples_per_thumbnail_sample(277,9929
-inline bool ThumbnailDescription::has_thumbnail_cache(283,10159
-inline void ThumbnailDescription::clear_thumbnail_cache(286,10247
-inline ::google::protobuf::uint32 ThumbnailDescription::thumbnail_cache(290,10351
-inline void ThumbnailDescription::set_thumbnail_cache(293,10462
-namespace google 305,10699
-namespace protobuf google::protobuf306,10718
-
-rec/json/Node.cpp,283
-using rec::util::StringRange;3,28
-namespace tinyjson 5,59
-Node::Type Node::getType(tinyjson::Node::getType7,81
-bool operator==(operator==26,352
-bool match(::match32,495
-bool match(36,569
-Node* getChildImpl(42,772
-Node* Node::getChild(54,1019
-Node* Node::getChild(55,1096
-
-rec/json/Node.h,360
-#define __TINYJASON_NODE2,25
-struct Node 12,164
-  enum Type 13,178
-    NONE,14,192
-    OBJECT,15,202
-    ARRAY,16,214
-    STRING,17,225
-    NUMBER,18,237
-    LITERAL,19,249
-  Type type_;22,268
-  const char* begin_;25,356
-  int length_;29,511
-  bool isParent(31,527
-  static Type getType(32,591
-  typedef std::vector<Node> Tree;Node::Tree34,623
-
-rec/json/Parser.cpp,417
-namespace tinyjson 3,30
-const Parser::Error Parser::NO_ERROR tinyjson::Parser::NO_ERROR5,52
-Parser::Error Parser::parse(tinyjson::Parser::parse7,98
-typedef Parser::Error (Parser::*ParserHandler)::ParserHandler14,220
-Parser::Error Parser::item(19,289
-Parser::Error Parser::collection(54,1019
-Parser::Error Parser::string(89,1871
-Parser::Error Parser::number(109,2305
-Parser::Error Parser::literal(142,2956
-
-rec/json/Parser.h,346
-#define __TINY_JASON2,21
-typedef rec::util::StringRange StringRange;12,191
-class Parser 14,236
-  Parser(Parser::Parser16,281
-  typedef const char* Error;Parser::Error18,326
-  static const Error NO_ERROR;Parser::NO_ERROR20,356
-  void popskip(Parser::popskip25,440
-  Node::Tree* tree_;Parser::tree_33,578
-  Node& at(Parser::at34,599
-
-rec/json/Parser_test.cpp,671
-namespace tinyjson 7,116
-class ParserTest tinyjson::ParserTest12,152
-  ParserTest(tinyjson::ParserTest::ParserTest14,203
-  virtual void SetUp(tinyjson::ParserTest::SetUp16,240
-  void ExpectTreeEqual(tinyjson::ParserTest::ExpectTreeEqual20,289
-  void ExpectParse(tinyjson::ParserTest::ExpectParse35,794
-  Node::Tree tree_;tinyjson::ParserTest::tree_42,1008
-  Parser parser_;tinyjson::ParserTest::parser_43,1028
-TEST_F(47,1051
-TEST_F(52,1145
-TEST_F(62,1408
-TEST_F(68,1571
-TEST_F(74,1730
-TEST_F(80,1891
-TEST_F(86,2050
-TEST_F(91,2166
-TEST_F(97,2327
-TEST_F(107,2549
-TEST_F(117,2780
-TEST_F(127,3028
-TEST_F(138,3317
-TEST_F(147,3516
-TEST_F(158,3804
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;ThumbnailDescription::_unknown_fields_160,6229
+  mutable int _cached_size_;ThumbnailDescription::_cached_size_161,6285
+  ::rec::gui::Color* background_;ThumbnailDescription::background_163,6317
+  ::rec::gui::Color* foreground_;ThumbnailDescription::foreground_164,6351
+  ::rec::gui::Color* cursor_;ThumbnailDescription::cursor_165,6385
+  ::google::protobuf::uint32 cursor_thickness_;ThumbnailDescription::cursor_thickness_166,6415
+  ::google::protobuf::uint32 margin_;ThumbnailDescription::margin_167,6463
+  ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;ThumbnailDescription::source_samples_per_thumbnail_sample_168,6501
+  ::google::protobuf::uint32 thumbnail_cache_;ThumbnailDescription::thumbnail_cache_169,6568
+  ::google::protobuf::uint32 cursor_thread_update_period_;ThumbnailDescription::cursor_thread_update_period_170,6615
+  ::google::protobuf::uint32 cursor_thread_priority_;ThumbnailDescription::cursor_thread_priority_171,6674
+  ::google::protobuf::uint32 _has_bits_[ThumbnailDescription::_has_bits_176,6986
+  inline bool _has_bit(ThumbnailDescription::_has_bit179,7094
+  inline void _set_bit(ThumbnailDescription::_set_bit182,7205
+  inline void _clear_bit(ThumbnailDescription::_clear_bit185,7297
+  static ThumbnailDescription* default_instance_;ThumbnailDescription::default_instance_190,7427
+inline bool ThumbnailDescription::has_background(200,7693
+inline void ThumbnailDescription::clear_background(203,7776
+inline const ::rec::gui::Color& ThumbnailDescription::background(207,7918
+inline ::rec::gui::Color* ThumbnailDescription::mutable_background(210,8074
+inline bool ThumbnailDescription::has_foreground(217,8292
+inline void ThumbnailDescription::clear_foreground(220,8375
+inline const ::rec::gui::Color& ThumbnailDescription::foreground(224,8517
+inline ::rec::gui::Color* ThumbnailDescription::mutable_foreground(227,8673
+inline bool ThumbnailDescription::has_cursor(234,8887
+inline void ThumbnailDescription::clear_cursor(237,8966
+inline const ::rec::gui::Color& ThumbnailDescription::cursor(241,9096
+inline ::rec::gui::Color* ThumbnailDescription::mutable_cursor(244,9236
+inline bool ThumbnailDescription::has_cursor_thickness(251,9450
+inline void ThumbnailDescription::clear_cursor_thickness(254,9539
+inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thickness(258,9645
+inline void ThumbnailDescription::set_cursor_thickness(261,9758
+inline bool ThumbnailDescription::has_margin(267,9941
+inline void ThumbnailDescription::clear_margin(270,10020
+inline ::google::protobuf::uint32 ThumbnailDescription::margin(274,10106
+inline void ThumbnailDescription::set_margin(277,10199
+inline bool ThumbnailDescription::has_source_samples_per_thumbnail_sample(283,10393
+inline void ThumbnailDescription::clear_source_samples_per_thumbnail_sample(286,10501
+inline ::google::protobuf::uint32 ThumbnailDescription::source_samples_per_thumbnail_sample(290,10647
+inline void ThumbnailDescription::set_source_samples_per_thumbnail_sample(293,10798
+inline bool ThumbnailDescription::has_thumbnail_cache(299,11028
+inline void ThumbnailDescription::clear_thumbnail_cache(302,11116
+inline ::google::protobuf::uint32 ThumbnailDescription::thumbnail_cache(306,11220
+inline void ThumbnailDescription::set_thumbnail_cache(309,11331
+inline bool ThumbnailDescription::has_cursor_thread_update_period(315,11534
+inline void ThumbnailDescription::clear_cursor_thread_update_period(318,11634
+inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thread_update_period(322,11763
+inline void ThumbnailDescription::set_cursor_thread_update_period(325,11898
+inline bool ThumbnailDescription::has_cursor_thread_priority(331,12119
+inline void ThumbnailDescription::clear_cursor_thread_priority(334,12214
+inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thread_priority(338,12332
+inline void ThumbnailDescription::set_cursor_thread_priority(341,12457
+namespace google 353,12708
+namespace protobuf google::protobuf354,12727
 
 rec/persist/App.h,653
 #define __REC_PERSIST_APP__2,28
-class App 15,250
-  App(17,271
-  ~App(App::~App24,505
-  File getDataFile(App::getDataFile30,633
-  Data<Proto>* getData(App::getData35,762
-  void write(App::write53,1349
-  const File appDir_;App::appDir_60,1507
-  CriticalSection lock_;App::lock_61,1529
-  struct DataClient App::DataClient63,1555
-    Writeable* data_;App::DataClient::data_64,1577
-    const google::protobuf::Descriptor* descriptor_;App::DataClient::descriptor_65,1599
-  typedef std::map<std::string,App::std::string68,1658
-  typedef std::map<std::string, DataClient> DataSet;App::DataSet68,1658
-  DataSet data_;App::data_69,1711
+class App 15,260
+  App(17,281
+  ~App(App::~App24,515
+  File getDataFile(App::getDataFile30,643
+  Data<Proto>* getData(App::getData35,772
+  void write(App::write53,1359
+  const File appDir_;App::appDir_60,1517
+  CriticalSection lock_;App::lock_61,1539
+  struct DataClient App::DataClient63,1565
+    Writeable* data_;App::DataClient::data_64,1587
+    const google::protobuf::Descriptor* descriptor_;App::DataClient::descriptor_65,1609
+  typedef std::map<std::string,App::std::string68,1668
+  typedef std::map<std::string, DataClient> DataSet;App::DataSet68,1668
+  DataSet data_;App::data_69,1721
 
 rec/persist/AppData.h,122
 #define __REC_PERSIST_APPDATA__2,32
@@ -1878,16 +1376,16 @@ Data<Proto>* getAppData(24,520
 
 rec/persist/AutosaveApp.h,345
 #define __REC_PERSIST_AUTOSAVEAPP__2,36
-class AutosaveApp 13,221
-  AutosaveApp(15,263
-  class WriteThread 24,503
-    WriteThread(26,552
-    virtual void run(30,666
-    AutosaveApp* app_;38,809
-    DISALLOW_COPY_ASSIGN_AND_EMPTY(39,832
-  WriteThread thread_;43,915
-  const int frequency_;44,938
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(46,963
+class AutosaveApp 13,231
+  AutosaveApp(15,273
+  class WriteThread 24,513
+    WriteThread(26,562
+    virtual void run(30,676
+    AutosaveApp* app_;38,819
+    DISALLOW_COPY_ASSIGN_AND_EMPTY(39,842
+  WriteThread thread_;43,925
+  const int frequency_;44,948
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(46,973
 
 rec/persist/AutosaveApp_test.cpp,182
 namespace rec 8,157
@@ -1897,40 +1395,40 @@ static void testPersist(rec::persist::testPersist13,214
 TEST(18,365
 
 rec/persist/Copy.cpp,346
-namespace rec 10,226
-namespace persist rec::persist11,242
-using std::string;rec::persist::std::string13,263
-bool copy(rec::persist::copy16,295
-bool copy(32,727
-bool copy(69,1711
-bool copy(74,1853
-bool copy(79,1997
-bool copy(84,2108
-bool copy(89,2219
-bool copy(95,2335
-template <> bool copy(100,2465
-template <> bool copy(104,2551
+namespace rec 10,236
+namespace persist rec::persist11,252
+using std::string;rec::persist::std::string13,273
+bool copy(rec::persist::copy16,305
+bool copy(32,737
+bool copy(69,1719
+bool copy(74,1861
+bool copy(79,2005
+bool copy(84,2116
+bool copy(89,2227
+bool copy(95,2343
+template <> bool copy(100,2473
+template <> bool copy(104,2559
 
 rec/persist/Copy.h,34
 #define __REC_PERSIST_COPY__2,29
 
 rec/persist/Data.h,713
 #define __REC_PERSIST_DATA__2,29
-class Data 21,371
-  typedef google::protobuf::Message Message;Data::Message23,412
-  Data(Data::Data25,458
-  virtual void doWrite(Data::doWrite34,847
-  const Proto get(Data::get38,936
-  class Access Data::Access45,1044
-    Access(Data::Access::Access47,1072
-    const Proto& operator*(Data::Access::operator*49,1142
-    const Proto* operator->(Data::Access::operator->50,1204
-    Proto& operator*(Data::Access::operator*52,1268
-    Proto* operator->(Data::Access::operator->57,1358
-    Data<Proto>* data_;Data::Access::data_63,1462
-    ScopedLock locker_;Data::Access::locker_64,1486
-  File file_;Data::file_70,1571
-  Proto proto_;Data::proto_71,1585
+class Data 21,381
+  typedef google::protobuf::Message Message;Data::Message23,422
+  Data(Data::Data25,468
+  virtual void doWrite(Data::doWrite34,857
+  const Proto get(Data::get38,946
+  class Access Data::Access45,1054
+    Access(Data::Access::Access47,1082
+    const Proto& operator*(Data::Access::operator*49,1152
+    const Proto* operator->(Data::Access::operator->50,1214
+    Proto& operator*(Data::Access::operator*52,1278
+    Proto* operator->(Data::Access::operator->57,1368
+    Data<Proto>* data_;Data::Access::data_63,1472
+    ScopedLock locker_;Data::Access::locker_64,1496
+  File file_;Data::file_70,1581
+  Proto proto_;Data::proto_71,1595
 
 rec/persist/testdata.pb.h,1626
 #define PROTOBUF_rec_2fpersist_2ftestdata_2eproto__INCLUDED5,159
@@ -1967,17 +1465,18 @@ namespace protobuf google::protobuf212,6171
 
 rec/persist/Writeable.h,224
 #define __REC_PERSIST_WRITEABLE__2,34
-class Writeable 10,164
-  Writeable(12,191
-  virtual ~Writeable(13,208
-  void write(15,235
-  CriticalSection lock_;26,392
-  bool changed_;27,417
-  DISALLOW_COPY_AND_ASSIGN(30,445
+class Writeable 10,174
+  Writeable(12,201
+  virtual ~Writeable(13,218
+  void write(15,245
+  CriticalSection lock_;26,402
+  bool changed_;27,427
+  DISALLOW_COPY_AND_ASSIGN(30,455
 
-rec/slow/Preferences.h,59
+rec/slow/Preferences.h,107
 #define __REC_SLOW_PREFERENCES__2,33
 namespace rec 7,138
+inline const Preferences getPreferences(16,369
 
 rec/slow/Preferences.pb.h,1703
 #define PROTOBUF_rec_2fslow_2fPreferences_2eproto__INCLUDED5,159
@@ -2007,135 +1506,6 @@ inline const ::rec::gui::ThumbnailDescription& Preferences::thumbnail(170,5814
 inline ::rec::gui::ThumbnailDescription* Preferences::mutable_thumbnail(173,5972
 namespace google 186,6266
 namespace protobuf google::protobuf187,6285
-
-rec/unused/Description.cpp,262
-namespace rec 8,121
-namespace audio rec::audio9,137
-namespace stretch rec::audio::stretch10,155
-Range<float**> makeRange(rec::audio::stretch::makeRange12,176
-Description<float*> makeDescriptionAndResize(19,338
-Description<float*> makeDescription(48,985
-
-rec/unused/Description.h,787
-#define __REC_AUDIO_STRETCH_IN_BACKGROUND_H__2,46
-namespace rec 8,162
-namespace audio rec::audio9,178
-namespace stretch rec::audio::stretch10,196
-typedef rec::audio::timescaler::Description TimeScalerDescription;rec::audio::stretch::TimeScalerDescription12,217
-struct CircularSamples rec::audio::stretch::CircularSamples16,392
-  Circular circular_;rec::audio::stretch::CircularSamples::circular_17,417
-  Range<Samples*> samples_;rec::audio::stretch::CircularSamples::samples_18,439
-  Samples getSamples(rec::audio::stretch::CircularSamples::getSamples20,468
-struct Description 27,682
-  TimeScalerDescription timescale_;Description::timescale_28,703
-  CircularSamples<Samples> in_,Description::in_29,739
-  CircularSamples<Samples> in_, out_;Description::out_29,739
-
-rec/unused/source/Buffered.h,534
-#define __REC_AUDIO_SOURCE_BUFFERED_H__2,40
-class Buffered 11,197
-  Buffered(13,256
-  virtual void getNextAudioBlock(17,383
-  virtual void setNextReadPosition(31,876
-  virtual int getNextReadPosition(32,937
-  virtual int getTotalLength(33,1001
-  virtual void prepareToPlay(35,1075
-  virtual void releaseResources(36,1133
-  virtual bool isLooping(37,1170
-  virtual void setLooping(38,1224
-  const AudioSampleBuffer& buffer_;41,1301
-  Circular position_;42,1337
-  bool looping_;45,1381
-  DISALLOW_COPY_AND_ASSIGN(47,1399
-
-rec/unused/source/Computed.h,451
-#define __REC_AUDIO_SOURCE_COMPUTED_H__2,40
-class Callback 14,324
-class Computed 19,379
-  Computed(Computed::Computed21,405
-  void request(Computed::request25,514
-  Block getNextBlock(Computed::getNextBlock32,656
-  const int length;Computed::length46,917
-  BlockSet list;Computed::list47,937
-  Block nextBlock_;Computed::nextBlock_48,954
-  CriticalSection lock_;Computed::lock_49,974
-  Callback* callback_;Computed::callback_50,999
-
-rec/unused/source/Wrapper.h,447
-#define __REC_AUDIO_SOURCE_WRAPPER_H__2,39
-class Wrapper 11,212
-  Wrapper(13,270
-  virtual void prepareToPlay(15,338
-  virtual void releaseResources(18,442
-  virtual void getNextAudioBlock 21,515
-  virtual void setNextReadPosition(24,639
-  virtual int getNextReadPosition(27,724
-  virtual int getTotalLength(30,815
-  virtual bool isLooping(33,896
-  scoped_ptr<PositionableAudioSource> source_;38,981
-  DISALLOW_COPY_AND_ASSIGN(40,1029
-
-rec/unused/source/Wrapper2.h,296
-#define __REC_AUDIO_SOURCE_WRAPPER_H__2,39
-class Wrapper 12,232
-  template <typename String,14,271
-  Wrapper(15,322
-  virtual void prepareToPlay(20,432
-  virtual void releaseResources(25,600
-  virtual void setSource(30,693
-  AudioSource* source_;35,780
-  DISALLOW_COPY_AND_ASSIGN(37,805
-
-rec/unused/StretchInBackground.h,795
-#define __REC_AUDIO_STRETCH_IN_BACKGROUND_H__2,46
-class StretchInBackground 17,346
-  StretchInBackground(21,468
-  bool readyToStretch(31,903
-  void changeStretch(36,990
-  void start(49,1400
-  void stop(50,1416
-  scoped_ptr<Thread> thread_,53,1442
-  scoped_ptr<Thread> thread_, nextThread_;53,1442
-  CriticalSection lock_;54,1485
-  const int channels_;55,1510
-  const int sourceLength_;56,1533
-  AudioSampleBuffer originalBuffer_;57,1560
-  scoped_ptr<AudioSampleBuffer> stretchedBuffer_,58,1597
-  scoped_ptr<AudioSampleBuffer> stretchedBuffer_, nextBuffer_;58,1597
-  const Description description_;63,1693
-  int sourceSize_;64,1727
-  int sourcePosition_;65,1746
-  AudioSampleBuffer* target_;66,1769
-  scoped_ptr<Notifier> notifier_;68,1800
-  DISALLOW_COPY_AND_ASSIGN(70,1835
-
-rec/unused/StretchInBackground_test.cpp,483
-using rec::audio::math::rampWave;8,174
-namespace rec 10,209
-namespace audio rec::audio11,225
-namespace stretch rec::audio::stretch12,243
-class MockRamp rec::audio::stretch::MockRamp16,277
-  MockRamp(rec::audio::stretch::MockRamp::MockRamp18,317
-  virtual float getSample(rec::audio::stretch::MockRamp::getSample21,377
-  const int scale_;rec::audio::stretch::MockRamp::scale_26,461
-struct RampTester 30,523
-  bool operator()(RampTester::operator()31,543
-TEST(40,780
-
-rec/unused/StretchThread.cpp,176
-namespace rec 5,65
-namespace audio rec::audio6,81
-namespace stretch rec::audio::stretch7,99
-virtual void StretchThread::run(rec::audio::stretch::StretchThread::run9,120
-
-rec/unused/StretchThread.h,292
-#define __REC_AUDIO_STRETCH_THREAD_H__2,39
-class StretchThread 14,273
-  static const char* NAME;20,434
-  StretchThread(22,462
-  void start(24,536
-  const Description<float**> getDescription(StretchThread::getDescription30,706
-  Description<float**>* desc_;StretchThread::desc_33,789
 
 rec/util/Callback.h,177
 #define __REC_UTIL_CALLBACK2,28
@@ -2240,13 +1610,13 @@ class NotifierTemplate 15,261
 
 rec/util/OrphanableThread.h,242
 #define __REC_UTIL_ORPHANABLE_THREAD__2,39
-class OrphanableThread 9,144
-  OrphanableThread(11,194
-  virtual void run(13,238
-  void orphan(25,407
-  CriticalSection lock_;39,607
-  bool orphaned_;42,643
-  DISALLOW_COPY_AND_ASSIGN(43,661
+class OrphanableThread 9,154
+  OrphanableThread(11,204
+  virtual void run(13,248
+  void orphan(25,417
+  CriticalSection lock_;39,617
+  bool orphaned_;42,653
+  DISALLOW_COPY_AND_ASSIGN(43,671
 
 rec/util/Range.h,118
 #define __REC_UTIL_RANGE__2,27
@@ -2264,26 +1634,26 @@ class CircularEnum 5,76
   struct Previous CircularEnum::Previous10,184
     operator()(CircularEnum::Previous::operator()11,204
 
-rec/util/Substitute.h,77
+rec/util/Substitute.h,78
 #define __REC_UTIL_SUBSTITUTE__2,32
-inline String substituteVariables(6,96
+inline String substituteVariables(6,106
 
 rec/util/Substitute_test.cpp,11
 TEST(5,60
 
-rec/util/TestData.h,84
+rec/util/TestData.h,85
 #define __REC_UTIL_TESTDATA__2,30
-namespace rec 6,92
-inline File testFile(13,229
+namespace rec 6,102
+inline File testFile(13,239
 
 rec/util/WaitLoopThread.h,199
 #define __REC_WAIT_LOOP_THREAD2,31
-class WaitLoopThread 10,157
-  WaitLoopThread(13,243
-  virtual void run(18,409
-  static Thread* New(25,522
-  Callback callback_;31,712
-  int waitTime_;32,734
+class WaitLoopThread 10,167
+  WaitLoopThread(13,253
+  virtual void run(18,419
+  static Thread* New(25,532
+  Callback callback_;31,722
+  int waitTime_;32,744
 
 rec/util/Wrapper.h,123
 #define __REC_UTIL_WRAPPER2,27
