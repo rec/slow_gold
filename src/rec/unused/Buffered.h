@@ -12,17 +12,6 @@ namespace rec {
 namespace audio {
 namespace source {
 
-struct BufferDescription {
-  int channels;
-  int bufferCount;
-  int priority;
-  int samples;
-  int wait;
-  int waitForShutdown;
-
-  static BufferDescription DEFAULT;
-};
-
 class Buffered : public AudioSource, public Thread {
  public:
   Buffered(const String& threadName, const BufferDescription& d);

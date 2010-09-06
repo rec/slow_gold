@@ -3,11 +3,21 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/audio/source/Buffered.h"
 
 namespace rec {
 namespace audio {
 namespace source {
+
+struct BufferDescription {
+  int channels;
+  int bufferCount;
+  int priority;
+  int samples;
+  int wait;
+  int waitForShutdown;
+
+  static BufferDescription DEFAULT;
+};
 
 class TestHarness {
  public:
