@@ -7,4 +7,5 @@ import "rec/components/ThumbnailDescription.proto";
 message Preferences {
   optional rec.audio.timescaler.Description timescale = 1;
   optional rec.gui.ThumbnailDescription thumbnail = 2;
+  repeated string recent_files = 3;
 };

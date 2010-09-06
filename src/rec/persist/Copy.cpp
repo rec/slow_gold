@@ -12,6 +12,27 @@ namespace persist {
 
 using std::string;
 
+template <typename Type>
+bool copy(const Type& to, Type* from) {
+  *from = to;
+  return true;
+}
+
+// Now, specific copies to and from std::string.
+template <> bool copy(const string &f, string *t);
+
+template <>
+bool copy(const string &from, String *to) {
+  *to = String(from.data(), from.size());
+  return true;
+}
+
+template <>
+bool copy(const String &from, string *to) {
+  *to = string(from.toCString(), from.toCString() + from.length());
+  return true;
+}
+
 template <>
 bool copy(const File &file, string *s) {
   scoped_ptr<FileInputStream> in(file.createInputStream());
@@ -65,44 +86,39 @@ bool copy(const string &from, File *to) {
   return true;
 }
 
+// Copy to and from a Google protocol buffer.
+using google::protobuf::Message;
+using google::protobuf::TextFormat;
+
 template <>
-bool copy(const google::protobuf::Message &from, string *to) {
-  return google::protobuf::TextFormat::PrintToString(from, to);
+bool copy(const string &from, Message *to) {
+  return TextFormat::ParseFromString(from, to);
 }
 
 template <>
-bool copy(const string &from, google::protobuf::Message *to) {
-  return google::protobuf::TextFormat::ParseFromString(from, to);
+bool copy(const Message &from, string *to) {
+  return TextFormat::PrintToString(from, to);
 }
 
-template <>
-bool copy(const File &from, google::protobuf::Message *to) {
-  return copy(from, string(), to);
+// Explicit template instantiations.
+
+template <> bool copy(const String &f, String *t);
+
+template <> bool copy(const String &f, File *t);
+template <> bool copy(const File &f, String *t);
+template <> bool copy(const File &f, Message *t);
+
+template <> bool copy(const String &f, Message *t);
+template <> bool copy(const Message &f, String *t);
+template <> bool copy(const Message &f, File *t);
+
+template <> bool copy(const File &f, File *t) {
+  return f.copyFileTo(*t);
 }
 
-template <>
-bool copy(const google::protobuf::Message &from, File *to) {
-  return copy(from, string(), to);
-}
-
-template <>
-bool copy(const string &from, String *to) {
-  *to = String(from.data(), from.size());
+template <> bool copy(const Message &f, Message *t) {
+  t->CopyFrom(f);
   return true;
-}
-
-template <>
-bool copy(const String &from, string *to) {
-  *to = string(from.toCString(), from.toCString() + from.length());
-  return true;
-}
-
-template <> bool copy(const string &from, string *to) {
-  *to = from; return true;
-}
-
-template <> bool copy(const String &from, String *to) {
-  *to = from; return true;
 }
 
 }  // namespace persist

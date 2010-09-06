@@ -34,6 +34,16 @@ RecWindow::RecWindow()
 
   setVisible (true);
   centreWithSize (700, 600);
+
+  setUsingNativeTitleBar(true);
+
+#if false && JUCE_MAC
+
+  // TODO: fix these casts that Juce seems to require.
+  MenuBarModel::setMacMainMenu((MenuBarModel*) getContentComponent());
+  setMenuBar(NULL);
+
+#endif
 }
 
 RecWindow::~RecWindow() {
@@ -43,10 +53,10 @@ RecWindow::~RecWindow() {
 
   // because we've set the content comp to be used as our menu bar model, we
   // have to switch this off before deleting the content comp..
-  setMenuBar (0);
+  setMenuBar(NULL);
 
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
-  MenuBarModel::setMacMainMenu (0);
+  MenuBarModel::setMacMainMenu(NULL);
 #endif
 
   // setting our content component to 0 will delete the current one, and

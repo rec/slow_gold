@@ -12,6 +12,11 @@ class RecContainer : public ComponentContainer<RecWindow> {
     show(new MainPageComponent);
   }
 
+  virtual const StringArray getMenuBarNames() {
+    static const char* const names[] = {"File", "Edit", NULL};
+    return StringArray(names);
+  }
+
   juce_UseDebuggingNewOperator
 };
 
