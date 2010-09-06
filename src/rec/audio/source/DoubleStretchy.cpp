@@ -8,8 +8,8 @@ namespace audio {
 namespace source {
 
 DoubleStretchy::DoubleStretchy(const Description& description,
-                               PositionableAudioSource* s0,
-                               PositionableAudioSource* s1)
+                               Source* s0,
+                               Source* s1)
     : position_(0),
       descriptionChanged_(false),
       description_(description),
@@ -77,7 +77,7 @@ void DoubleStretchy::releaseResources() {
 bool DoubleStretchy::fillNext() {
   // Make sure our memory management is done out of the lock.
   scoped_ptr<Buffery> bufferDeleter;
-  scoped_ptr<PositionableAudioSource> stretchyDeleter;
+  scoped_ptr<Source> stretchyDeleter;
 
   {
     ScopedLock l(lock_);
@@ -122,7 +122,7 @@ bool DoubleStretchy::fillNext() {
 
 void DoubleStretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   ScopedLock l(lock_);
-  PositionableAudioSource* buffered = source();
+  Source* buffered = source();
 
   gettingBlock_ = true;
   {

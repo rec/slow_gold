@@ -9,10 +9,10 @@ namespace stretch {
 
 class StretchHolder
 
-class StretchingSource : public PositionableAudioSource, public Thread {
+class StretchingSource : public Source, public Thread {
  public:
-  explicit StretchingSource(PositionableAudioSource* source)
-      : PositionableAudioSource("Stretching Source"),
+  explicit StretchingSource(Source* source)
+      : Source("Stretching Source"),
         source_(source),
         position_(0),
         offset_(0),
@@ -109,7 +109,7 @@ class StretchingSource : public PositionableAudioSource, public Thread {
 
  private:
   scoped_ptr<AudioSampleBuffer> primaryBuffer_;
-  scoped_ptr<PositionableAudioSource> source_;
+  scoped_ptr<Source> source_;
   scoped_ptr<AudioSampleBuffer> buffer_;
   scoped_ptr<Stretcher> stretcher_;
   scoped_ptr<Stretcher> nextStretcher_;

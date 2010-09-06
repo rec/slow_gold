@@ -14,13 +14,13 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleStretchy : public PositionableAudioSource {
+class DoubleStretchy : public Source {
  public:
   typedef rec::audio::timescaler::Description Description;
   const static int MINIMUM_FILL_SIZE = 4096;
 
   DoubleStretchy(const Description& description,
-                 PositionableAudioSource* s0, PositionableAudioSource* s1);
+                 Source* s0, Source* s1);
 
   virtual bool fillNext();
   virtual int available() const;
@@ -36,11 +36,11 @@ class DoubleStretchy : public PositionableAudioSource {
   virtual void setLooping(bool looping);
 
   struct SourceReader {
-    scoped_ptr<PositionableAudioSource> source_;
+    scoped_ptr<Source> source_;
     Description description_;
     int offset_;
 
-    scoped_ptr<PositionableAudioSource> reader_;
+    scoped_ptr<Source> reader_;
     scoped_ptr<Buffery> buffered_;
 
     void reset(const Description& description, int offset) {

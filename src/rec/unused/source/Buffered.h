@@ -8,7 +8,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Buffered : public PositionableAudioSource {
+class Buffered : public Source {
  public:
   Buffered(const AudioSampleBuffer& buffer)
       : buffer_(buffer), position_(buffer_.getNumSamples()), looping_(true) {

@@ -206,12 +206,10 @@ void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
 }
 
 void MainPageK::startStopButtonClicked() {
-  if (transportSource_.isPlaying()) {
+  if (transportSource_.isPlaying())
     transportSource_.stop();
-  } else {
-    transportSource_.setPosition(0);
+  else
     transportSource_.start();
-  }
 }
 
 void MainPageK::loopingButtonClicked() {

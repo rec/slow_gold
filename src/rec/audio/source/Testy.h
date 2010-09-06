@@ -7,12 +7,13 @@
 
 #include "rec/base/scoped_ptr.h"
 #include "JuceLibraryCode/JuceHeader.h"
+#include "rec/audio/source/Source.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class Testy : public PositionableAudioSource {
+class Testy : public Source {
  public:
   static const int SIZE = 128;
   Testy() : position_(0) {}
@@ -39,15 +40,15 @@ class Testy : public PositionableAudioSource {
 
   int position_;
 
-  static float expectNear(PositionableAudioSource* s,
+  static float expectNear(Source* s,
                           float delta,
                           int channels) {
     Testy t;
     return expectNear(s, &t, delta, channels);
   }
 
-  static float expectNear(PositionableAudioSource* s0,
-                          PositionableAudioSource* s1,
+  static float expectNear(Source* s0,
+                          Source* s1,
                           float delta,
                           int channels) {
     int length = std::min(s0->getTotalLength(), s1->getTotalLength());

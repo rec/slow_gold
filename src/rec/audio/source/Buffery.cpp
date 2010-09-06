@@ -7,8 +7,8 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Buffery::Buffery(int channels, PositionableAudioSource* source)
-    : PositionWrappy(source),
+Buffery::Buffery(int channels, Source* source)
+    : Wrappy::Position(source),
       filled_(0, this->getTotalLength()),
       buffer_(channels, this->getTotalLength()) {
   CHECK_GT(channels, 0);
@@ -17,7 +17,7 @@ Buffery::Buffery(int channels, PositionableAudioSource* source)
 
 void Buffery::setNextReadPosition(int position) {
   ScopedLock l(lock_);
-  PositionWrappy::setNextReadPosition(position);
+  Wrappy::Position::setNextReadPosition(position);
   if (filled_.availableFrom(position) < 0)
     filled_.reset(position);
 }

@@ -7,8 +7,8 @@ namespace audio {
 namespace source {
 
 Stretchy::Stretchy(const Description& description,
-                   PositionableAudioSource* source)
-    : PositionWrappy(source),
+                   Source* source)
+    : Wrappy::Position(source),
       description_(description),
       channels_(description.channels()),
       buffer_(channels_, SAMPLE_BUFFER_INITIAL_SIZE),

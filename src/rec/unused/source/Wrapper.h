@@ -2,15 +2,16 @@
 #define __REC_AUDIO_SOURCE_WRAPPER_H__
 
 #include "JuceLibraryCode/JuceHeader.h"
+#include "rec/audio/source/Source.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-// Delegate to another PositionableAudioSource.
-class Wrapper : public PositionableAudioSource {
+// Delegate to another Source.
+class Wrapper : public Source {
  public:
-  Wrapper(PositionableAudioSource* s) : source_(s) { jassert(s); }
+  Wrapper(Source* s) : source_(s) { jassert(s); }
 
   virtual void prepareToPlay(int samples, double rate) {
     source_->prepareToPlay(samples, rate);
@@ -35,7 +36,7 @@ class Wrapper : public PositionableAudioSource {
   }
 
  protected:
-  scoped_ptr<PositionableAudioSource> source_;
+  scoped_ptr<Source> source_;
 
   DISALLOW_COPY_AND_ASSIGN(Wrapper);
 };

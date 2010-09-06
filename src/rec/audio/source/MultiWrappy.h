@@ -22,11 +22,11 @@ namespace source {
  _MWFE(return E, SourceVector::const_iterator, source_);\
  return V;
 
-class MultiWrappy : public PositionableAudioSource {
+class MultiWrappy : public Source {
  public:
-  typedef std::vector<PositionableAudioSource*> SourceVector;
+  typedef std::vector<Source*> SourceVector;
 
-  MultiWrappy(PositionableAudioSource** s1, PositionableAudioSource** s2)
+  MultiWrappy(Source** s1, Source** s2)
       : source_(s1, s2) {
   }
 
@@ -37,7 +37,7 @@ class MultiWrappy : public PositionableAudioSource {
     return mw;
   }
 
-  MultiWrappy(PositionableAudioSource* s) { source_.push_back(s); }
+  MultiWrappy(Source* s) { source_.push_back(s); }
 
   ~MultiWrappy() { MWFE(delete *i); }
 

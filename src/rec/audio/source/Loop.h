@@ -5,12 +5,13 @@
 #include "rec/base/base.h"
 #include "rec/util/Math.h"
 #include "rec/audio/CopySamples.h"
+#include "rec/audio/source/Source.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class Loop : public PositionableAudioSource {
+class Loop : public Source {
  public:
   Loop(const AudioSampleBuffer& source, int position = 0)
       : source_(source),

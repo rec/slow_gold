@@ -12,7 +12,7 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
   typedef rec::audio::timescaler::Description Description;
 
   DoubleStretchyThread(const Description& d,
-                       PositionableAudioSource* s0, PositionableAudioSource* s1)
+                       Source* s0, Source* s1)
       : DoubleStretchy(d, s0, s1),
         Thread("DoubleStretchy"),
         waitTime_(d.inactive_wait_time()) {
