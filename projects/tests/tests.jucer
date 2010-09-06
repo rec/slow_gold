@@ -80,23 +80,11 @@
       <FILE id="dDuT3qG4" name="Copy.cpp" compile="1" resource="0" file="../../src/rec/persist/Copy.cpp"/>
       <FILE id="zlWzCFL1B" name="Copy.h" compile="0" resource="0" file="../../src/rec/persist/Copy.h"/>
     </GROUP>
-    <GROUP id="O7hRIAZWw" name="json">
-      <FILE id="aTaHmqk8q" name="Node.cpp" compile="1" resource="0" file="../../src/rec/json/Node.cpp"/>
-      <FILE id="8EvwkRxcG" name="Node.h" compile="0" resource="0" file="../../src/rec/json/Node.h"/>
-      <FILE id="aBheQXCWG" name="Parser.cpp" compile="1" resource="0" file="../../src/rec/json/Parser.cpp"/>
-      <FILE id="WPtb8a33R" name="Parser.h" compile="0" resource="0" file="../../src/rec/json/Parser.h"/>
-      <FILE id="Wd6pmJy3K" name="Parser_test.cpp" compile="1" resource="0"
-            file="../../src/rec/json/Parser_test.cpp"/>
-    </GROUP>
     <GROUP id="3YoKPngPd" name="audio">
-      <FILE id="saqq1wtk" name="Buffer.h" compile="0" resource="0" file="../../src/rec/audio/Buffer.h"/>
       <GROUP id="6qkBtoE4s" name="cd">
         <FILE id="WNqqTH8R" name="juce_AudioCDReader_test.cpp" compile="1"
               resource="0" file="../../src/rec/audio/cd/juce_AudioCDReader_test.cpp"/>
       </GROUP>
-      <FILE id="RIUX8xLg" name="FillQueue.h" compile="0" resource="0" file="../../src/rec/audio/FillQueue.h"/>
-      <FILE id="uUurZJA91" name="FillQueueTest.cpp" compile="1" resource="0"
-            file="../../src/rec/audio/FillQueueTest.cpp"/>
       <GROUP id="VJJMFKAUT" name="format">
         <GROUP id="cBxHjj8TQ" name="mpg123">
           <FILE id="TNOiRuDEm" name="Copier.cpp" compile="1" resource="0" file="../../src/rec/audio/format/mpg123/Copier.cpp"/>
@@ -123,9 +111,6 @@
           <FILE id="GwU5JGLsy" name="Tags.h" compile="0" resource="0" file="../../src/rec/audio/format/mpg123/Tags.h"/>
         </GROUP>
       </GROUP>
-      <FILE id="m345oFrGv" name="Math.h" compile="0" resource="0" file="../../src/rec/audio/Math.h"/>
-      <FILE id="mbRoTUTRH" name="Math_test.cpp" compile="1" resource="0"
-            file="../../src/rec/audio/Math_test.cpp"/>
       <GROUP id="fZRHg2f3w" name="source">
         <FILE id="3tpkO5Isu" name="Stretchy_test.cpp" compile="1" resource="0"
               file="../../src/rec/audio/source/Stretchy_test.cpp"/>
@@ -144,14 +129,8 @@
       <GROUP id="8mG3LgDUl" name="stretch">
         <FILE id="30bjL0Bs8" name="AudioTimeScaler_test.cpp" compile="1" resource="0"
               file="../../src/rec/audio/stretch/AudioTimeScaler_test.cpp"/>
-        <FILE id="Ut1qvpj9" name="Simple.cpp" compile="1" resource="0" file="../../src/rec/audio/stretch/Simple.cpp"/>
         <FILE id="ySixqO8" name="description.pb.cc" compile="1" resource="0"
               file="../../src/rec/audio/stretch/description.pb.cc"/>
-        <FILE id="a1E0H4xRL" name="Simple.h" compile="0" resource="0" file="../../src/rec/audio/stretch/Simple.h"/>
-        <FILE id="ACm2tjWOo" name="Stretcher.h" compile="0" resource="0" file="../../src/rec/audio/stretch/Stretcher.h"/>
-        <FILE id="dGNse5qWp" name="Stretcher.cpp" compile="1" resource="0"
-              file="../../src/rec/audio/stretch/Stretcher.cpp"/>
-        <FILE id="0RK2Ngq8c" name="Stretcher.h" compile="0" resource="0" file="../../src/rec/audio/stretch/Stretcher.h"/>
         <FILE id="QxgaJ33rv" name="TimeScaler.h" compile="0" resource="0" file="../../src/rec/audio/stretch/TimeScaler.h"/>
       </GROUP>
     </GROUP>

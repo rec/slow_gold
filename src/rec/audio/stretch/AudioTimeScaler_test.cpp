@@ -2,18 +2,19 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/audio/Math.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/TimeScaler.h"
 #include "rec/audio/source/TestHarness.h"
-
-using rec::audio::math::rampWave;
 
 namespace rec {
 namespace audio {
 namespace timescaler {
 
 namespace {
+
+float rampWave(int ramp, int scale) {
+  return ((ramp + scale) % (2 * scale + 1) - scale) / float(scale);
+}
 
 void Init(AudioTimeScaler* scaler) {
   Description desc;
@@ -22,6 +23,15 @@ void Init(AudioTimeScaler* scaler) {
 }
 
 }  // namespace
+
+TEST(RecAudio, RampWave) {
+  EXPECT_FLOAT_EQ(rampWave(0, 100), 0.0);
+  EXPECT_FLOAT_EQ(rampWave(1, 100), 0.01);
+  EXPECT_FLOAT_EQ(rampWave(100, 100), 1.0);
+  EXPECT_FLOAT_EQ(rampWave(101, 100), -1.0);
+  EXPECT_FLOAT_EQ(rampWave(102, 100), -0.99);
+  EXPECT_FLOAT_EQ(rampWave(201, 100), 0.0);
+}
 
 TEST(RecAudio, AudioTimeScalerInitialize) {
   {
