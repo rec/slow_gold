@@ -100,7 +100,7 @@ bool DoubleStretchy::fillNext() {
       if (fill->ready(prefillSize)) {
         // Your new file is ready!
         source_.swap(nextSource_);
-        DCHECK(!next());
+        // DCHECK(!next());
       }
 
     } else if (descriptionChanged_) {

@@ -24,7 +24,7 @@ class DoubleStretchy : public PositionableAudioSource {
 
   virtual bool fillNext();
   virtual int available() const;
-  void setDescription(const Description& description);
+  virtual void setDescription(const Description& description);
 
   virtual int getTotalLength() const;
   virtual int getNextReadPosition() const;

@@ -84,18 +84,12 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
 
-  peer_->timeScaleSlider->addListener(this);
-  peer_->pitchScaleSlider->addListener(this);
-  peer_->zoomSlider->addListener(this);
-
-#ifdef USE_CDBURNERS
   burners_.resize(cdNames_.size());
   for (int i = 0; i < burners_.size(); ++i) {
     burners_[i] = AudioCDBurner::openDevice(i);
     burners_[i]->addChangeListener(this);
     changeListenerCallback(burners_[i]);
   }
-#endif
 
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);
@@ -116,12 +110,10 @@ void MainPageK::destruct() {
   deviceManager_->removeAudioCallback(&player_);
   peer_->fileTreeComp->removeListener(this);
 
-#if 0
   for (int i = 0; i < burners_.size(); ++i)
     delete burners_[i];
 
   burners_.clear();
-#endif
 }
 
 void MainPageK::updateCursor() {
@@ -161,11 +153,11 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
-  if (slider == peer_->zoomSlider)
+  if (slider == peer_->zoomSlider) {
     peer_->thumbnail->setZoomFactor(slider->getValue());
-}
+    return;
+  }
 
-void MainPageK::sliderDragEnded(Slider* slider) {
   {
     Data<rec::slow::Preferences>::Access access(rec::slow::getMutablePreferences());
     if (slider == peer_->timeScaleSlider)
@@ -191,8 +183,13 @@ static const char* const CD_STATE_NAMES[] = {
   "readOnlyDiskPresent"     /** The drive contains a read-only disk. */
 };
 
-#ifdef USE_CDBURNERS
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
+  if (objectThatHasChanged == &transportSource_) {
+    double position = transportSource_.getCurrentPosition();
+    peer_->thumbnail->setCursor(position);
+    return;
+  }
+
   AudioCDBurner* cd = (AudioCDBurner*) objectThatHasChanged;
   AudioCDBurner::DiskState state = cd->getDiskState();
   LOG(INFO) << CD_STATE_NAMES[state];
@@ -207,16 +204,6 @@ void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
 
   scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
 }
-
-#else
-
-void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
-  CHECK_EQ(objectThatHasChanged, &transportSource_);
-  double position = transportSource_.getCurrentPosition();
-  peer_->thumbnail->setCursor(position);
-}
-
-#endif
 
 void MainPageK::startStopButtonClicked() {
   if (transportSource_.isPlaying()) {

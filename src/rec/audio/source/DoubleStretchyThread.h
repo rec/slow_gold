@@ -20,11 +20,18 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
     startThread();
   }
 
-  void run() {
+  virtual void setDescription(const Description& description) {
+    DoubleStretchy::setDescription(description);
+    notify();
+  }
+
+  virtual void run() {
     while (!threadShouldExit()) {
+      LOG_IF(ERROR, false) << "stretching";
       if (!(this->fillNext() || threadShouldExit()))
         wait(waitTime_);
     }
+    LOG_IF(ERROR, false) << "exiting";
   }
 
   void stop() {

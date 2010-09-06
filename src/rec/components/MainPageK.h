@@ -32,7 +32,6 @@ class MainPageK : public FileBrowserListener,
 
   // SliderListener.
   virtual void sliderValueChanged(Slider* slider);
-  virtual void sliderDragEnded(Slider* slider);
 
   // ChangeListener - for when CDs are inserted.
   virtual void changeListenerCallback(void* objectThatHasChanged);
@@ -77,10 +76,9 @@ class MainPageK : public FileBrowserListener,
   scoped_ptr<DoubleStretchyThread> stretchyDeleter_;
 
   scoped_ptr<Thread> cursorThread_;
-#if 0
+
   std::vector<AudioCDBurner*> burners_;
-#endif
-                    
+
   StringArray cdNames_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);

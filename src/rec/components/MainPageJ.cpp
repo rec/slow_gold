@@ -192,6 +192,7 @@ void MainPageJ::sliderValueChanged (Slider* sliderThatWasMoved)
     }
 
     //[UsersliderValueChanged_Post]
+    peer_.sliderValueChanged(sliderThatWasMoved);
     //[/UsersliderValueChanged_Post]
 }
 
