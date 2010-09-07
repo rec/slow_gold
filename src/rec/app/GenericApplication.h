@@ -14,13 +14,13 @@ class GenericApplication : public JUCEApplication {
       : name_(name), version_(version) {
   }
 
-  ~GenericApplication() {}
+  virtual ~GenericApplication() {}
 
-  void initialise(const String& commandLine) {
+  virtual void initialise(const String& commandLine) {
     window_.reset(new Window());
   }
 
-  void shutdown() {
+  virtual void shutdown() {
     window_.reset();
   }
 
@@ -31,11 +31,12 @@ class GenericApplication : public JUCEApplication {
   void anotherInstanceStarted (const String& commandLine) {
   }
 
- private:
+ protected:
   scoped_ptr<Window> window_;
   const String name_;
   const String version_;
 
+ private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
 };
 

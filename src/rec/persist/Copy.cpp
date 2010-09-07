@@ -1,3 +1,5 @@
+#include <google/protobuf/text_format.h>
+
 #include "rec/base/base.h"
 #include "rec/persist/Copy.h"
 #include "glog/logging.h"
@@ -101,7 +103,7 @@ bool copy(const File &f, Message *t) { return doCopy(f, t); }
 bool copy(const String &f, Message *t) { return doCopy(f, t); }
 bool copy(const Message &f, String *t) { return doCopy(f, t); }
 bool copy(const Message &f, File *t) { return doCopy(f, t); }
-bool copy(const string &f, string *t) { return doCopy(f, t); }  
+bool copy(const string &f, string *t) { return doCopy(f, t); }
 
 bool copy(const File &f, File *t) {
   return f.copyFileTo(*t);

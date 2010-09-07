@@ -3,7 +3,6 @@
 
 #include "rec/slow/Preferences.h"
 #include "JuceLibraryCode/JuceHeader.h"
-#include "ThumbnailDescription.pb.h"
 
 class MainPageK;
 

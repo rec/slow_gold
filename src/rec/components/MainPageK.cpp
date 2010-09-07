@@ -1,5 +1,7 @@
 #include <glog/logging.h>
 
+#include "rec/slow/Preferences.pb.h"
+
 #include "MainPageJ.h"
 #include "MainPageK.h"
 

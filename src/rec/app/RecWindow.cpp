@@ -1,3 +1,4 @@
+
 #include "rec/app/RecWindow.h"
 #include "rec/app/RecContainer.h"
 
@@ -36,14 +37,6 @@ RecWindow::RecWindow()
   centreWithSize (700, 600);
 
   setUsingNativeTitleBar(true);
-
-#if false && JUCE_MAC
-
-  // TODO: fix these casts that Juce seems to require.
-  MenuBarModel::setMacMainMenu((MenuBarModel*) getContentComponent());
-  setMenuBar(NULL);
-
-#endif
 }
 
 RecWindow::~RecWindow() {

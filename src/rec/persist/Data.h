@@ -3,9 +3,6 @@
 
 #include <string>
 
-#include "google/protobuf/message.h"
-#include "google/protobuf/text_format.h"
-
 #include "rec/base/base.h"
 #include "rec/base/Cast.h"
 #include "rec/persist/Writeable.h"
