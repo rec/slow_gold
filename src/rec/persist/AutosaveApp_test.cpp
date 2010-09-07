@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
+#include "rec/persist/testdata.pb.h"
 #include "rec/persist/AutosaveApp.h"
 #include "rec/persist/Data.h"
-#include "rec/persist/testdata.pb.h"
 
 namespace rec {
 namespace persist {

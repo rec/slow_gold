@@ -1,39 +1,48 @@
 #include "rec/base/base.h"
 #include "rec/persist/Copy.h"
-#include "google/protobuf/message.h"
-#include "google/protobuf/text_format.h"
 #include "glog/logging.h"
 #include "rec/base/scoped_ptr.h"
-
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {
 
-using std::string;
+using google::protobuf::TextFormat;
+
+namespace {
 
 template <typename Type>
-bool copy(const Type& to, Type* from) {
+bool doCopy(const Type& to, Type* from) {
   *from = to;
   return true;
 }
 
-// Now, specific copies to and from std::string.
-template <> bool copy(const string &f, string *t);
+template <typename From, typename To>
+bool doCopy(const From& from, To* to) {
+  std::string through;
+  return copy(from, &through) && copy(through, to);
+}
 
-template <>
+}  // namespace
+
+bool copy(const Message& from, string* to) {
+  return TextFormat::PrintToString(from, to);
+}
+
+bool copy(const string& from, Message* to) {
+  return TextFormat::ParseFromString(from, to);
+}
+
+// Now, specify copies to and from std::string.
 bool copy(const string &from, String *to) {
   *to = String(from.data(), from.size());
   return true;
 }
 
-template <>
 bool copy(const String &from, string *to) {
   *to = string(from.toCString(), from.toCString() + from.length());
   return true;
 }
 
-template <>
 bool copy(const File &file, string *s) {
   scoped_ptr<FileInputStream> in(file.createInputStream());
   if (!in) {
@@ -49,7 +58,6 @@ bool copy(const File &file, string *s) {
   return true;
 }
 
-template <>
 bool copy(const string &from, File *to) {
   if (!to->getParentDirectory().createDirectory()) {
     LOG(FATAL) << "Couldn't create directory for "
@@ -86,37 +94,20 @@ bool copy(const string &from, File *to) {
   return true;
 }
 
-// Copy to and from a Google protocol buffer.
-using google::protobuf::Message;
-using google::protobuf::TextFormat;
+bool copy(const String &f, String *t) { return doCopy(f, t); }
+bool copy(const String &f, File *t) { return doCopy(f, t); }
+bool copy(const File &f, String *t) { return doCopy(f, t); }
+bool copy(const File &f, Message *t) { return doCopy(f, t); }
+bool copy(const String &f, Message *t) { return doCopy(f, t); }
+bool copy(const Message &f, String *t) { return doCopy(f, t); }
+bool copy(const Message &f, File *t) { return doCopy(f, t); }
+bool copy(const string &f, string *t) { return doCopy(f, t); }  
 
-template <>
-bool copy(const string &from, Message *to) {
-  return TextFormat::ParseFromString(from, to);
-}
-
-template <>
-bool copy(const Message &from, string *to) {
-  return TextFormat::PrintToString(from, to);
-}
-
-// Explicit template instantiations.
-
-template <> bool copy(const String &f, String *t);
-
-template <> bool copy(const String &f, File *t);
-template <> bool copy(const File &f, String *t);
-template <> bool copy(const File &f, Message *t);
-
-template <> bool copy(const String &f, Message *t);
-template <> bool copy(const Message &f, String *t);
-template <> bool copy(const Message &f, File *t);
-
-template <> bool copy(const File &f, File *t) {
+bool copy(const File &f, File *t) {
   return f.copyFileTo(*t);
 }
 
-template <> bool copy(const Message &f, Message *t) {
+bool copy(const Message &f, Message *t) {
   t->CopyFrom(f);
   return true;
 }

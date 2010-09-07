@@ -3,12 +3,14 @@
 
 #include <string>
 
+#include "google/protobuf/message.h"
+#include "google/protobuf/text_format.h"
+
 #include "rec/base/base.h"
 #include "rec/base/Cast.h"
 #include "rec/persist/Writeable.h"
 #include "rec/persist/Copy.h"
 
-#include "google/protobuf/message.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -23,8 +25,7 @@ class Data : public Writeable {
   typedef google::protobuf::Message Message;
 
   Data(const File& file, const char* initial = "") : file_(file) {
-    Message* message = implicit_cast<Message*>(&proto_);
-    if (!(copy(file_, message) || copy(std::string(initial), message))) {
+    if (!(copy(file_, &proto_) || copy(std::string(initial), &proto_))) {
       LOG_FIRST_N(ERROR, 10) << "Couldn't read file "
                              << file.getFullPathName().toCString()
                              << " or initial " << initial;
@@ -32,7 +33,7 @@ class Data : public Writeable {
   }
 
   virtual void doWrite() {
-    copy(implicit_cast<const Message&>(proto_), &file_);
+    copy(proto_, &file_);
   }
 
   const Proto get() const {
