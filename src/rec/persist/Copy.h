@@ -7,10 +7,13 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
-// A generic function to copy "anything" to "anything else".
+// A set of overloaded functions to copy "anything" to "anything else".
+//
 // Example: read a protocol message from a file.
-//
-//
+//   MyProto proto;
+//   if (!rec::persist::copy(File(myFileName), &proto)) {
+//     // Handle error.
+//   }
 //
 // Specific implementations exist for all pairs of:
 //   std::string
@@ -20,22 +23,6 @@
 //
 // In the case of protobufs, we use human-readable form for the serialization
 // and deserialization.
-
-#if 0
-namespace std {
-class string;
-}
-
-namespace google {
-namespace protobuf {
-
-class Messsage;
-class TextFormat;
-
-}  // namespace protobuf
-}  // namespace google
-
-#endif
 
 namespace rec {
 namespace persist {
