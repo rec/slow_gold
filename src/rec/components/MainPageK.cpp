@@ -122,6 +122,10 @@ void MainPageK::destruct() {
   burners_.clear();
 }
 
+void MainPageK::loadRecentFile(int menuItemID) {
+  loadFileIntoTransport(copy(getPreferences().recent_files(menuItemID - 1)));
+}
+
 void MainPageK::updateCursor() {
   double position = transportSource_.getCurrentPosition();
   peer_->thumbnail->setCursor(position);

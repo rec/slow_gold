@@ -90,6 +90,11 @@ Component* createAudioDemo()
     return new MainPageComponent();
 }
 
+void MainPageComponent::loadRecentFile(int menuItemId) {
+  MainPageJ* main = (MainPageJ*) tabbedComponent->getTabContentComponent(0);
+  main->loadRecentFile(menuItemId);
+}
+
 //[/MiscUserCode]
 
 

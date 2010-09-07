@@ -55,10 +55,15 @@ public:
     //==============================================================================
     juce_UseDebuggingNewOperator
 
-private:
+  private:
   //[UserVariables]   -- You can add your own custom variables in this section.
   MainPageK peer_;
   friend class MainPageK;
+
+ public:
+  void loadRecentFile(int menuItemId) { peer_.loadRecentFile(menuItemId); }
+
+ private:
 
   //[/UserVariables]
 

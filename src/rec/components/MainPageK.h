@@ -39,6 +39,7 @@ class MainPageK : public FileBrowserListener,
   DirectoryContentsList* directoryList() { return &directoryList_; }
   void updateCursor();
   void setPosition(double position);
+  void loadRecentFile(int menuItemId);
 
  private:
   static const int THREAD_PRIORITY = 3;

@@ -9,8 +9,10 @@ namespace rec {
 
 class RecContainer : public ComponentContainer<RecWindow> {
  public:
-  RecContainer(RecWindow* window) : ComponentContainer<RecWindow>(window) {
-    show(new MainPageComponent);
+  RecContainer(RecWindow* window)
+      : ComponentContainer<RecWindow>(window),
+        mainPage_(new MainPageComponent) {
+    show(mainPage_);
   }
 
   virtual const StringArray getMenuBarNames() {
@@ -25,14 +27,20 @@ class RecContainer : public ComponentContainer<RecWindow> {
       PopupMenu submenu;
 
       int size = prefs.recent_files_size();
-      for (int i = 1; i <= size; ++i)
-        submenu.addItem(i, rec::persist::copy(prefs.recent_files(size - i)));
+      for (int i = size; i > 0; --i)
+        submenu.addItem(i, rec::persist::copy(prefs.recent_files(i - 1)));
+
       menu.addSubMenu("Open recent", submenu);
     }
     return menu;
   }
 
+  virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
+    mainPage_->loadRecentFile(menuItemID);
+  }
 
+ private:
+  MainPageComponent* mainPage_;
 
   juce_UseDebuggingNewOperator
 };
