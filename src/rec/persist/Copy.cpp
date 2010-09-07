@@ -36,12 +36,12 @@ bool copy(const string& from, Message* to) {
 
 // Now, specify copies to and from std::string.
 bool copy(const string &from, String *to) {
-  *to = String(from.data(), from.size());
+  *to = copy(from);
   return true;
 }
 
 bool copy(const String &from, string *to) {
-  *to = string(from.toCString(), from.toCString() + from.length());
+  *to = copy(from);
   return true;
 }
 

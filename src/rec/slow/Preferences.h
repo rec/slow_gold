@@ -7,13 +7,23 @@
 namespace rec {
 namespace slow {
 
-inline rec::persist::Data<Preferences>* getMutablePreferences() {
-  static rec::persist::Data<Preferences>* prefs =
+typedef rec::persist::Data<Preferences> Data;
+
+inline Data* getMutablePreferences() {
+  static Data* prefs =
     rec::persist::getAppData<Preferences>("preferences", "");
   return prefs;
 }
 
 inline const Preferences getPreferences() { return getMutablePreferences()->get(); }
+
+class LockedPreferences : public Data::Access {
+ public:
+  LockedPreferences() : Data::Access(getMutablePreferences()) {}
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(LockedPreferences);
+};
 
 }  // namespace slow
 }  // namespace rec

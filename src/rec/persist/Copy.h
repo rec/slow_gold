@@ -49,6 +49,10 @@ bool copy(const string& from, Message* to);
 bool copy(const string& from, String* to);
 bool copy(const string& from, string* to);
 
+// Useful copiers for string and String.
+inline String copy(const string& s) { return String(s.data(), s.size()); }
+inline string copy(const String& s) { return string(s.toCString(), s.length()); }
+
 }  // namespace persist
 }  // namespace rec
 

@@ -29,9 +29,12 @@ void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto() {
       "rec/slow/Preferences.proto");
   GOOGLE_CHECK(file != NULL);
   Preferences_descriptor_ = file->message_type(0);
-  static const int Preferences_offsets_[2] = {
+  static const int Preferences_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, timescale_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, thumbnail_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, recent_files_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, max_recent_files_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, reload_most_recent_file_),
   };
   Preferences_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -80,10 +83,12 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
     "\n\032rec/slow/Preferences.proto\022\010rec.slow\032#"
     "rec/audio/stretch/description.proto\032\032rec"
     "/components/Color.proto\032)rec/components/"
-    "ThumbnailDescription.proto\"u\n\013Preference"
-    "s\0224\n\ttimescale\030\001 \001(\0132!.rec.audio.timesca"
-    "ler.Description\0220\n\tthumbnail\030\002 \001(\0132\035.rec"
-    ".gui.ThumbnailDescription", 265);
+    "ThumbnailDescription.proto\"\320\001\n\013Preferenc"
+    "es\0224\n\ttimescale\030\001 \001(\0132!.rec.audio.timesc"
+    "aler.Description\0220\n\tthumbnail\030\002 \001(\0132\035.re"
+    "c.gui.ThumbnailDescription\022\024\n\014recent_fil"
+    "es\030\003 \003(\t\022\034\n\020max_recent_files\030\004 \001(\r:\00216\022%"
+    "\n\027reload_most_recent_file\030\005 \001(\010:\004true", 357);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -104,6 +109,9 @@ struct StaticDescriptorInitializer_rec_2fslow_2fPreferences_2eproto {
 #ifndef _MSC_VER
 const int Preferences::kTimescaleFieldNumber;
 const int Preferences::kThumbnailFieldNumber;
+const int Preferences::kRecentFilesFieldNumber;
+const int Preferences::kMaxRecentFilesFieldNumber;
+const int Preferences::kReloadMostRecentFileFieldNumber;
 #endif  // !_MSC_VER
 
 Preferences::Preferences()
@@ -126,6 +134,8 @@ void Preferences::SharedCtor() {
   _cached_size_ = 0;
   timescale_ = NULL;
   thumbnail_ = NULL;
+  max_recent_files_ = 16u;
+  reload_most_recent_file_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -168,7 +178,10 @@ void Preferences::Clear() {
     if (_has_bit(1)) {
       if (thumbnail_ != NULL) thumbnail_->::rec::gui::ThumbnailDescription::Clear();
     }
+    max_recent_files_ = 16u;
+    reload_most_recent_file_ = true;
   }
+  recent_files_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -199,6 +212,56 @@ bool Preferences::MergePartialFromCodedStream(
          parse_thumbnail:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_thumbnail()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_recent_files;
+        break;
+      }
+      
+      // repeated string recent_files = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_recent_files:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_recent_files()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->recent_files(0).data(), this->recent_files(0).length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_recent_files;
+        if (input->ExpectTag(32)) goto parse_max_recent_files;
+        break;
+      }
+      
+      // optional uint32 max_recent_files = 4 [default = 16];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_max_recent_files:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &max_recent_files_)));
+          _set_bit(3);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_reload_most_recent_file;
+        break;
+      }
+      
+      // optional bool reload_most_recent_file = 5 [default = true];
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_reload_most_recent_file:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &reload_most_recent_file_)));
+          _set_bit(4);
         } else {
           goto handle_uninterpreted;
         }
@@ -236,6 +299,25 @@ void Preferences::SerializeWithCachedSizes(
       2, this->thumbnail(), output);
   }
   
+  // repeated string recent_files = 3;
+  for (int i = 0; i < this->recent_files_size(); i++) {
+  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+    this->recent_files(i).data(), this->recent_files(i).length(),
+    ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->recent_files(i), output);
+  }
+  
+  // optional uint32 max_recent_files = 4 [default = 16];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->max_recent_files(), output);
+  }
+  
+  // optional bool reload_most_recent_file = 5 [default = true];
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->reload_most_recent_file(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -256,6 +338,25 @@ void Preferences::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->thumbnail(), target);
+  }
+  
+  // repeated string recent_files = 3;
+  for (int i = 0; i < this->recent_files_size(); i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->recent_files(i).data(), this->recent_files(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->recent_files(i), target);
+  }
+  
+  // optional uint32 max_recent_files = 4 [default = 16];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->max_recent_files(), target);
+  }
+  
+  // optional bool reload_most_recent_file = 5 [default = true];
+  if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->reload_most_recent_file(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -283,7 +384,26 @@ int Preferences::ByteSize() const {
           this->thumbnail());
     }
     
+    // optional uint32 max_recent_files = 4 [default = 16];
+    if (has_max_recent_files()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->max_recent_files());
+    }
+    
+    // optional bool reload_most_recent_file = 5 [default = true];
+    if (has_reload_most_recent_file()) {
+      total_size += 1 + 1;
+    }
+    
   }
+  // repeated string recent_files = 3;
+  total_size += 1 * this->recent_files_size();
+  for (int i = 0; i < this->recent_files_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->recent_files(i));
+  }
+  
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -309,12 +429,19 @@ void Preferences::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Preferences::MergeFrom(const Preferences& from) {
   GOOGLE_CHECK_NE(&from, this);
+  recent_files_.MergeFrom(from.recent_files_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
       mutable_timescale()->::rec::audio::timescaler::Description::MergeFrom(from.timescale());
     }
     if (from._has_bit(1)) {
       mutable_thumbnail()->::rec::gui::ThumbnailDescription::MergeFrom(from.thumbnail());
+    }
+    if (from._has_bit(3)) {
+      set_max_recent_files(from.max_recent_files());
+    }
+    if (from._has_bit(4)) {
+      set_reload_most_recent_file(from.reload_most_recent_file());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -341,6 +468,9 @@ void Preferences::Swap(Preferences* other) {
   if (other != this) {
     std::swap(timescale_, other->timescale_);
     std::swap(thumbnail_, other->thumbnail_);
+    recent_files_.Swap(&other->recent_files_);
+    std::swap(max_recent_files_, other->max_recent_files_);
+    std::swap(reload_most_recent_file_, other->reload_most_recent_file_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

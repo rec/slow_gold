@@ -1,3 +1,5 @@
+#include <set>
+
 #include <glog/logging.h>
 
 #include "rec/slow/Preferences.pb.h"
@@ -8,9 +10,19 @@
 #include "AudioThumbnailComponent.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/Preferences.h"
+#include "rec/persist/Copy.h"
+#include "rec/util/Proto.h"
+
 
 using rec::audio::timescaler::Description;
-using rec::persist::Data;
+using rec::gui::ThumbnailDescription;
+using rec::persist::copy;
+
+// TODO: move MainPageK to rec::slow.
+using rec::slow::LockedPreferences;
+using rec::slow::Preferences;
+using rec::slow::getPreferences;
+
 
 // TODO: why can't this be defined in the .h with other primitives?!
 
@@ -27,11 +39,6 @@ MainPageK::MainPageK(AudioDeviceManager* d)
 }
 
 namespace {
-
-// TODO: move MainPageK to rec::slow.
-using rec::slow::Preferences;
-using rec::gui::ThumbnailDescription;
-using rec::slow::getPreferences;
 
 class CursorThread : public Thread {
  public:
@@ -66,12 +73,6 @@ class CursorThread : public Thread {
 }
 
 void MainPageK::construct(MainPageJ* peer) {
-  {
-    Data<rec::slow::Preferences>::Access access(rec::slow::getMutablePreferences());
-    access->mutable_thumbnail()->mutable_background()->set_rgb(0xFFFFFF);
-    access->mutable_thumbnail()->mutable_foreground()->set_rgb(0xADD8E6);
-  }
-
   peer_ = peer;
 
   directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
@@ -99,6 +100,10 @@ void MainPageK::construct(MainPageJ* peer) {
 
   cursorThread_.reset(new CursorThread(this));
   cursorThread_->startThread();
+
+  Preferences prefs(getPreferences());
+  if (prefs.reload_most_recent_file() && prefs.recent_files_size() > 0)
+    loadFileIntoTransport(File(copy(prefs.recent_files().end()[-1])));
 }
 
 void MainPageK::destruct() {
@@ -147,6 +152,13 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     loopingButtonClicked();
     transportSource_.setSource(stretchy_.get());
 
+    LockedPreferences prefs;
+    rec::proto::addOrMoveToEnd(copy(file.getFullPathName()),
+                               prefs->mutable_recent_files());
+    rec::proto::truncateTo(prefs->max_recent_files(),
+                           prefs->mutable_recent_files(), std::string());
+
+    peer_->thumbnail->setFile(file);
   } else {
     LOG(ERROR) << "Didn't understand file type for filename "
                << file.getFullPathName();
@@ -160,18 +172,18 @@ void MainPageK::sliderValueChanged(Slider* slider) {
   }
 
   {
-    Data<rec::slow::Preferences>::Access access(rec::slow::getMutablePreferences());
+    LockedPreferences prefs;
     if (slider == peer_->timeScaleSlider)
-      access->mutable_timescale()->set_time_scale(slider->getValue());
+      prefs->mutable_timescale()->set_time_scale(slider->getValue());
 
     else if (slider == peer_->pitchScaleSlider)
-      access->mutable_timescale()->set_pitch_scale(slider->getValue());
+      prefs->mutable_timescale()->set_pitch_scale(slider->getValue());
 
     else
       return;
 
     if (stretchy_)
-      stretchy_->setDescription(access->timescale());
+      stretchy_->setDescription(prefs->timescale());
   }
 }
 
@@ -222,6 +234,5 @@ void MainPageK::selectionChanged() {
   peer_->zoomSlider->setValue(0, false, false);
 
   File file = peer_->fileTreeComp->getSelectedFile();
-  peer_->thumbnail->setFile(file);
   loadFileIntoTransport(file);
 }

@@ -12,11 +12,6 @@
 
 class MainPageJ;
 
-// It's generally a bad idea to use "using" in a header file, but this header
-// has only limited use.
-using rec::audio::timescaler::Description;
-using rec::persist::Data;
-
 class MainPageK : public FileBrowserListener,
                   public SliderListener,
                   public ChangeListener {
@@ -83,6 +78,5 @@ class MainPageK : public FileBrowserListener,
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };
-
 
 #endif  // __REC_COMPONENT_MAIN_PAGE_K_H__
