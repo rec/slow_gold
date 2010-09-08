@@ -76,11 +76,11 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::audio::timescaler::protobuf_AddDesc_rec_2faudio_2fstretch_2fdescription_2eproto();
+  ::rec::audio::timescaler::protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fcomponents_2fThumbnailDescription_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\010rec.slow\032#"
-    "rec/audio/stretch/description.proto\032)rec"
+    "rec/audio/stretch/TimeStretch.proto\032)rec"
     "/components/ThumbnailDescription.proto\"\320"
     "\001\n\013Preferences\0224\n\ttimescale\030\001 \001(\0132!.rec."
     "audio.timescaler.Description\0220\n\tthumbnai"

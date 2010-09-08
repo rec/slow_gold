@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "rec/audio/stretch/description.pb.h"
+#include "rec/audio/stretch/TimeStretch.pb.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/stretch/TimeScaler.h"
 

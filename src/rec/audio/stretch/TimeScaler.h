@@ -2,7 +2,7 @@
 #define __REC_TIME_SCALER
 
 #include "rec/base/base.h"
-#include "rec/audio/stretch/description.pb.h"
+#include "rec/audio/stretch/TimeStretch.pb.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {

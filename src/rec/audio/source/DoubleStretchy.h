@@ -3,7 +3,7 @@
 
 // Wrap an incoming AudioSource, and time-stretch it.
 
-#include "rec/audio/stretch/description.pb.h"
+#include "rec/audio/stretch/TimeStretch.pb.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/source/Buffery.h"
 #include "rec/audio/source/Stretchy.h"
