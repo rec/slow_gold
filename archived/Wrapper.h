@@ -7,7 +7,7 @@ namespace util {
 template <typename Wrapped>
 class Wrapper : public Wrapped {
  public:
-  Wrapper() : source_(NULL) {}
+  explicit Wrapper(Wrapped* source = NULL) : source_(source) {}
 
   void setSource(Wrapped* source) { source_ = source; }
 

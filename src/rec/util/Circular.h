@@ -7,9 +7,7 @@
 namespace rec {
 namespace util {
 
-// A region within a circular buffer of a fixed size.  Note that begin_ might be
-// greater than end_, which means that the region wraps around.  An empty
-// region has begin_ == end__.
+// A region within a circular buffer of a fixed size.
 struct Circular {
  public:
   Circular() {}
@@ -46,7 +44,7 @@ struct Circular {
  private:
   int64 begin_;
   int64 size_;  // Of this region within the buffer.
-  int64 length_;  // Of the whole buffer.
+  const int64 length_;  // Of the whole buffer.
 
   // This class is copiable and assignable.
 };
