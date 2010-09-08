@@ -18,13 +18,10 @@ using rec::audio::timescaler::Description;
 using rec::gui::ThumbnailDescription;
 using rec::persist::copy;
 
-// TODO: move MainPageK to rec::slow.
-using rec::slow::LockedPreferences;
-using rec::slow::Preferences;
-using rec::slow::getPreferences;
-
-
 // TODO: why can't this be defined in the .h with other primitives?!
+
+namespace rec {
+namespace slow {
 
 const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
 const Colour MainPageK::FOREGROUND = Colours::white;
@@ -240,3 +237,6 @@ void MainPageK::selectionChanged() {
   File file = peer_->fileTreeComp->getSelectedFile();
   loadFileIntoTransport(file);
 }
+
+}  // namespace slow
+}  // namespace rec

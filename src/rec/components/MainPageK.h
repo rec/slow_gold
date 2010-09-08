@@ -12,6 +12,9 @@
 
 class MainPageJ;
 
+namespace rec {
+namespace slow {
+
 class MainPageK : public FileBrowserListener,
                   public SliderListener,
                   public ChangeListener {
@@ -79,5 +82,8 @@ class MainPageK : public FileBrowserListener,
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };
+
+}  // namespace slow
+}  // namespace rec
 
 #endif  // __REC_COMPONENT_MAIN_PAGE_K_H__

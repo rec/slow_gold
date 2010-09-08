@@ -1,10 +1,11 @@
-#include "AudioThumbnailComponent.h"
-#include "MainPageK.h"
+#include "rec/components/AudioThumbnailComponent.h"
+#include "rec/components/MainPageK.h"
+#include "rec/util/Juce.h"
 
 namespace rec {
 namespace gui {
 
-AudioThumbnailComponent::AudioThumbnailComponent(MainPageK* mainPage)
+AudioThumbnailComponent::AudioThumbnailComponent(rec::slow::MainPageK* mainPage)
     : mainPage_(mainPage),
       description_(rec::slow::getPreferences().thumbnail()),
       thumbnailCache_(description_.thumbnail_cache()),
@@ -13,25 +14,6 @@ AudioThumbnailComponent::AudioThumbnailComponent(MainPageK* mainPage)
   startTime_ = endTime_ = cursor_ = 0;
   thumbnail_.addChangeListener(this);
 }
-
-namespace {
-
-uint32 makeARGB(const Color& c) {
-  if (c.has_argb())
-    return c.argb();
-
-  else if (c.has_rgb())
-    return (c.alpha() << 24) | c.rgb();
-
-  else
-    return (c.alpha() << 24) | (c.red() << 16) | (c.green() << 8) | c.blue();
-}
-
-Colour makeColor(const Color& color) { return Colour(makeARGB(color)); }
-void setColor(const Color& c, Graphics* g) { g->setColour(makeColor(c)); }
-
-}
-
 
 AudioThumbnailComponent::~AudioThumbnailComponent() {
   thumbnail_.removeChangeListener(this);
@@ -105,8 +87,8 @@ void AudioThumbnailComponent::setCursor(double cursor) {
 }
 
 void AudioThumbnailComponent::paint(Graphics& g) {
-  g.fillAll(makeColor(description_.background()));
-  setColor(description_.foreground(), &g);
+  g.fillAll(gui::makeColor(description_.background()));
+  gui::setColor(description_.foreground(), &g);
   int margin = description_.margin();
 
   if (thumbnail_.getTotalLength() > 0) {
@@ -120,7 +102,7 @@ void AudioThumbnailComponent::paint(Graphics& g) {
                              i, 1.0f);
     }
 
-    setColor(description_.cursor(), &g);
+    gui::setColor(description_.cursor(), &g);
     g.drawRect(cursorRectangle());
 
   } else {

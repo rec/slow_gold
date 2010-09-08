@@ -8,20 +8,20 @@ namespace rec {
 
 class Application : public GenericApplication<RecWindow> {
  public:
-  Application() : rec::GenericApplication<RecWindow>(T("SlowGold"), T("1.0")) {
+  Application() : GenericApplication<RecWindow>(T("SlowGold"), T("1.0")) {
     rec::persist::createInstance(getApplicationName(), 1000, 4);
   }
 
-#if false && JUCE_MAC
   virtual void initialise(const String& commandLine) {
     GenericApplication<RecWindow>::initialise(commandLine);
 
+#if false && JUCE_MAC
     // TODO: fix these casts that Juce seems to require.
     MenuBarModel* model = (MenuBarModel*) window_->getContentComponent();
     MenuBarModel::setMacMainMenu(model);
     window_->setMenuBar(NULL);
-  }
 #endif
+  }
 
   juce_UseDebuggingNewOperator
 

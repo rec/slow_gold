@@ -4,14 +4,20 @@
 #include "rec/slow/Preferences.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
+namespace rec {
+
+namespace slow {
+  
 class MainPageK;
 
-namespace rec {
+}  // namespace slow  
+
+  
 namespace gui {
 
 class AudioThumbnailComponent : public Component, public ChangeListener {
  public:
-  AudioThumbnailComponent(MainPageK* mainPage);
+  AudioThumbnailComponent(rec::slow::MainPageK* mainPage);
   ~AudioThumbnailComponent();
 
   void setFile(const File& file);
@@ -32,7 +38,7 @@ class AudioThumbnailComponent : public Component, public ChangeListener {
   void changeListenerCallback(void*);
 
  private:
-  MainPageK* mainPage_;
+  rec::slow::MainPageK* mainPage_;
   const ThumbnailDescription description_;
 
   AudioThumbnailCache thumbnailCache_;

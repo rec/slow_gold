@@ -77,18 +77,17 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::audio::timescaler::protobuf_AddDesc_rec_2faudio_2fstretch_2fdescription_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fcomponents_2fColor_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fcomponents_2fThumbnailDescription_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\010rec.slow\032#"
-    "rec/audio/stretch/description.proto\032\032rec"
-    "/components/Color.proto\032)rec/components/"
-    "ThumbnailDescription.proto\"\320\001\n\013Preferenc"
-    "es\0224\n\ttimescale\030\001 \001(\0132!.rec.audio.timesc"
-    "aler.Description\0220\n\tthumbnail\030\002 \001(\0132\035.re"
-    "c.gui.ThumbnailDescription\022\024\n\014recent_fil"
-    "es\030\003 \003(\t\022\034\n\020max_recent_files\030\004 \001(\r:\00216\022%"
-    "\n\027reload_most_recent_file\030\005 \001(\010:\004true", 357);
+    "rec/audio/stretch/description.proto\032)rec"
+    "/components/ThumbnailDescription.proto\"\320"
+    "\001\n\013Preferences\0224\n\ttimescale\030\001 \001(\0132!.rec."
+    "audio.timescaler.Description\0220\n\tthumbnai"
+    "l\030\002 \001(\0132\035.rec.gui.ThumbnailDescription\022\024"
+    "\n\014recent_files\030\003 \003(\t\022\034\n\020max_recent_files"
+    "\030\004 \001(\r:\00216\022%\n\027reload_most_recent_file\030\005 "
+    "\001(\010:\004true", 329);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();

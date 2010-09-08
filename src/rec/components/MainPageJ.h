@@ -24,7 +24,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 
-#include "MainPageK.h"
+#include "rec/components/MainPageK.h"
 
 //[/Headers]
 
@@ -57,8 +57,8 @@ public:
 
   private:
   //[UserVariables]   -- You can add your own custom variables in this section.
-  MainPageK peer_;
-  friend class MainPageK;
+  rec::slow::MainPageK peer_;
+  friend class rec::slow::MainPageK;
 
  public:
   void loadRecentFile(int menuItemId) { peer_.loadRecentFile(menuItemId); }

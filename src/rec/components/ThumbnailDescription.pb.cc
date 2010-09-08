@@ -80,19 +80,19 @@ void protobuf_AddDesc_rec_2fcomponents_2fThumbnailDescription_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::gui::protobuf_AddDesc_rec_2fcomponents_2fColor_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2futil_2fColor_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n)rec/components/ThumbnailDescription.pr"
-    "oto\022\007rec.gui\032\032rec/components/Color.proto"
-    "\"\310\002\n\024ThumbnailDescription\022\"\n\nbackground\030"
-    "\001 \001(\0132\016.rec.gui.Color\022\"\n\nforeground\030\002 \001("
-    "\0132\016.rec.gui.Color\022\036\n\006cursor\030\003 \001(\0132\016.rec."
-    "gui.Color\022\033\n\020cursor_thickness\030\004 \001(\r:\0011\022\021"
-    "\n\006margin\030\005 \001(\r:\0012\0220\n#source_samples_per_"
-    "thumbnail_sample\030\006 \001(\r:\003512\022\032\n\017thumbnail"
-    "_cache\030\007 \001(\r:\0015\022\'\n\033cursor_thread_update_"
-    "period\030\010 \001(\r:\00240\022!\n\026cursor_thread_priori"
-    "ty\030\t \001(\r:\0014", 411);
+    "oto\022\007rec.gui\032\024rec/util/Color.proto\"\310\002\n\024T"
+    "humbnailDescription\022\"\n\nbackground\030\001 \001(\0132"
+    "\016.rec.gui.Color\022\"\n\nforeground\030\002 \001(\0132\016.re"
+    "c.gui.Color\022\036\n\006cursor\030\003 \001(\0132\016.rec.gui.Co"
+    "lor\022\033\n\020cursor_thickness\030\004 \001(\r:\0011\022\021\n\006marg"
+    "in\030\005 \001(\r:\0012\0220\n#source_samples_per_thumbn"
+    "ail_sample\030\006 \001(\r:\003512\022\032\n\017thumbnail_cache"
+    "\030\007 \001(\r:\0015\022\'\n\033cursor_thread_update_period"
+    "\030\010 \001(\r:\00240\022!\n\026cursor_thread_priority\030\t \001"
+    "(\r:\0014", 405);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/components/ThumbnailDescription.proto", &protobuf_RegisterTypes);
   ThumbnailDescription::default_instance_ = new ThumbnailDescription();

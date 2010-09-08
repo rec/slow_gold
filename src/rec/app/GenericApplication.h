@@ -28,8 +28,7 @@ class GenericApplication : public JUCEApplication {
   const String getApplicationVersion() { return version_; }
   bool moreThanOneInstanceAllowed()    { return false; }
 
-  void anotherInstanceStarted (const String& commandLine) {
-  }
+  void anotherInstanceStarted (const String& commandLine) {}
 
  protected:
   scoped_ptr<Window> window_;
