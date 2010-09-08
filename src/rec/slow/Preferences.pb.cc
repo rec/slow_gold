@@ -30,7 +30,7 @@ void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto() {
   GOOGLE_CHECK(file != NULL);
   Preferences_descriptor_ = file->message_type(0);
   static const int Preferences_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, timescale_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, timestretch_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, thumbnail_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, recent_files_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, max_recent_files_),
@@ -81,13 +81,13 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\010rec.slow\032#"
     "rec/audio/stretch/TimeStretch.proto\032)rec"
-    "/components/ThumbnailDescription.proto\"\320"
-    "\001\n\013Preferences\0224\n\ttimescale\030\001 \001(\0132!.rec."
-    "audio.timescaler.Description\0220\n\tthumbnai"
-    "l\030\002 \001(\0132\035.rec.gui.ThumbnailDescription\022\024"
-    "\n\014recent_files\030\003 \003(\t\022\034\n\020max_recent_files"
-    "\030\004 \001(\r:\00216\022%\n\027reload_most_recent_file\030\005 "
-    "\001(\010:\004true", 329);
+    "/components/ThumbnailDescription.proto\"\322"
+    "\001\n\013Preferences\0226\n\013timestretch\030\001 \001(\0132!.re"
+    "c.audio.timescaler.TimeStretch\0220\n\tthumbn"
+    "ail\030\002 \001(\0132\035.rec.gui.ThumbnailDescription"
+    "\022\024\n\014recent_files\030\003 \003(\t\022\034\n\020max_recent_fil"
+    "es\030\004 \001(\r:\00216\022%\n\027reload_most_recent_file\030"
+    "\005 \001(\010:\004true", 331);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -106,7 +106,7 @@ struct StaticDescriptorInitializer_rec_2fslow_2fPreferences_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Preferences::kTimescaleFieldNumber;
+const int Preferences::kTimestretchFieldNumber;
 const int Preferences::kThumbnailFieldNumber;
 const int Preferences::kRecentFilesFieldNumber;
 const int Preferences::kMaxRecentFilesFieldNumber;
@@ -119,7 +119,7 @@ Preferences::Preferences()
 }
 
 void Preferences::InitAsDefaultInstance() {
-  timescale_ = const_cast< ::rec::audio::timescaler::Description*>(&::rec::audio::timescaler::Description::default_instance());
+  timestretch_ = const_cast< ::rec::audio::timescaler::TimeStretch*>(&::rec::audio::timescaler::TimeStretch::default_instance());
   thumbnail_ = const_cast< ::rec::gui::ThumbnailDescription*>(&::rec::gui::ThumbnailDescription::default_instance());
 }
 
@@ -131,7 +131,7 @@ Preferences::Preferences(const Preferences& from)
 
 void Preferences::SharedCtor() {
   _cached_size_ = 0;
-  timescale_ = NULL;
+  timestretch_ = NULL;
   thumbnail_ = NULL;
   max_recent_files_ = 16u;
   reload_most_recent_file_ = true;
@@ -144,7 +144,7 @@ Preferences::~Preferences() {
 
 void Preferences::SharedDtor() {
   if (this != default_instance_) {
-    delete timescale_;
+    delete timestretch_;
     delete thumbnail_;
   }
 }
@@ -172,7 +172,7 @@ Preferences* Preferences::New() const {
 void Preferences::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (timescale_ != NULL) timescale_->::rec::audio::timescaler::Description::Clear();
+      if (timestretch_ != NULL) timestretch_->::rec::audio::timescaler::TimeStretch::Clear();
     }
     if (_has_bit(1)) {
       if (thumbnail_ != NULL) thumbnail_->::rec::gui::ThumbnailDescription::Clear();
@@ -191,12 +191,12 @@ bool Preferences::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.audio.timescaler.Description timescale = 1;
+      // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_timescale()));
+               input, mutable_timestretch()));
         } else {
           goto handle_uninterpreted;
         }
@@ -286,10 +286,10 @@ bool Preferences::MergePartialFromCodedStream(
 
 void Preferences::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.audio.timescaler.Description timescale = 1;
+  // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->timescale(), output);
+      1, this->timestretch(), output);
   }
   
   // optional .rec.gui.ThumbnailDescription thumbnail = 2;
@@ -325,11 +325,11 @@ void Preferences::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Preferences::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.audio.timescaler.Description timescale = 1;
+  // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->timescale(), target);
+        1, this->timestretch(), target);
   }
   
   // optional .rec.gui.ThumbnailDescription thumbnail = 2;
@@ -369,11 +369,11 @@ int Preferences::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.audio.timescaler.Description timescale = 1;
-    if (has_timescale()) {
+    // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+    if (has_timestretch()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->timescale());
+          this->timestretch());
     }
     
     // optional .rec.gui.ThumbnailDescription thumbnail = 2;
@@ -431,7 +431,7 @@ void Preferences::MergeFrom(const Preferences& from) {
   recent_files_.MergeFrom(from.recent_files_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_timescale()->::rec::audio::timescaler::Description::MergeFrom(from.timescale());
+      mutable_timestretch()->::rec::audio::timescaler::TimeStretch::MergeFrom(from.timestretch());
     }
     if (from._has_bit(1)) {
       mutable_thumbnail()->::rec::gui::ThumbnailDescription::MergeFrom(from.thumbnail());
@@ -465,7 +465,7 @@ bool Preferences::IsInitialized() const {
 
 void Preferences::Swap(Preferences* other) {
   if (other != this) {
-    std::swap(timescale_, other->timescale_);
+    std::swap(timestretch_, other->timestretch_);
     std::swap(thumbnail_, other->thumbnail_);
     recent_files_.Swap(&other->recent_files_);
     std::swap(max_recent_files_, other->max_recent_files_);

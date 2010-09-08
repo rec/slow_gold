@@ -4,7 +4,7 @@ import "rec/audio/stretch/TimeStretch.proto";
 import "rec/components/ThumbnailDescription.proto";
 
 message Preferences {
-  optional rec.audio.timescaler.Description timescale = 1;
+  optional rec.audio.timescaler.TimeStretch timestretch = 1;
   optional rec.gui.ThumbnailDescription thumbnail = 2;
   repeated string recent_files = 3;
   optional uint32 max_recent_files = 4 [default = 16];

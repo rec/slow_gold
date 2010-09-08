@@ -9,7 +9,7 @@ namespace source {
 
 TEST(RecAudioSource, Stretchy) {
   Testy testy;
-  Stretchy stretchy(rec::audio::timescaler::Description(), &testy);
+  Stretchy stretchy(rec::audio::timescaler::TimeStretch(), &testy);
   Testy::expectNear(&stretchy, 0.0086, 2);
 }
 

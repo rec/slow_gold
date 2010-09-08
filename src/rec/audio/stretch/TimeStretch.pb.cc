@@ -16,9 +16,9 @@ namespace timescaler {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Description_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* TimeStretch_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Description_reflection_ = NULL;
+  TimeStretch_reflection_ = NULL;
 
 }  // namespace
 
@@ -29,30 +29,30 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/audio/stretch/TimeStretch.proto");
   GOOGLE_CHECK(file != NULL);
-  Description_descriptor_ = file->message_type(0);
-  static const int Description_offsets_[10] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, time_scale_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, sample_rate_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, channels_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, pitch_scale_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, bands_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, filter_overlap_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, chunk_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, prefill_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, inactive_wait_time_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, thread_priority_),
+  TimeStretch_descriptor_ = file->message_type(0);
+  static const int TimeStretch_offsets_[10] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, time_scale_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, sample_rate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, channels_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, pitch_scale_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, bands_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, filter_overlap_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, chunk_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, prefill_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, inactive_wait_time_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, thread_priority_),
   };
-  Description_reflection_ =
+  TimeStretch_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Description_descriptor_,
-      Description::default_instance_,
-      Description_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Description, _unknown_fields_),
+      TimeStretch_descriptor_,
+      TimeStretch::default_instance_,
+      TimeStretch_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Description));
+      sizeof(TimeStretch));
 }
 
 namespace {
@@ -66,14 +66,14 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Description_descriptor_, &Description::default_instance());
+    TimeStretch_descriptor_, &TimeStretch::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
-  delete Description::default_instance_;
-  delete Description_reflection_;
+  delete TimeStretch::default_instance_;
+  delete TimeStretch_reflection_;
 }
 
 void protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
@@ -84,7 +84,7 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#rec/audio/stretch/TimeStretch.proto\022\024r"
-    "ec.audio.timescaler\"\216\002\n\013Description\022\025\n\nt"
+    "ec.audio.timescaler\"\216\002\n\013TimeStretch\022\025\n\nt"
     "ime_scale\030\001 \001(\001:\0011\022\032\n\013sample_rate\030\002 \001(\001:"
     "\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_sca"
     "le\030\004 \001(\001:\0011\022\023\n\005bands\030\005 \001(\r:\0042048\022\031\n\016filt"
@@ -94,8 +94,8 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
     "ity\030\n \001(\r:\0014", 332);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/TimeStretch.proto", &protobuf_RegisterTypes);
-  Description::default_instance_ = new Description();
-  Description::default_instance_->InitAsDefaultInstance();
+  TimeStretch::default_instance_ = new TimeStretch();
+  TimeStretch::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2faudio_2fstretch_2fTimeStretch_2eproto);
 }
 
@@ -110,33 +110,33 @@ struct StaticDescriptorInitializer_rec_2faudio_2fstretch_2fTimeStretch_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Description::kTimeScaleFieldNumber;
-const int Description::kSampleRateFieldNumber;
-const int Description::kChannelsFieldNumber;
-const int Description::kPitchScaleFieldNumber;
-const int Description::kBandsFieldNumber;
-const int Description::kFilterOverlapFieldNumber;
-const int Description::kChunkSizeFieldNumber;
-const int Description::kPrefillSizeFieldNumber;
-const int Description::kInactiveWaitTimeFieldNumber;
-const int Description::kThreadPriorityFieldNumber;
+const int TimeStretch::kTimeScaleFieldNumber;
+const int TimeStretch::kSampleRateFieldNumber;
+const int TimeStretch::kChannelsFieldNumber;
+const int TimeStretch::kPitchScaleFieldNumber;
+const int TimeStretch::kBandsFieldNumber;
+const int TimeStretch::kFilterOverlapFieldNumber;
+const int TimeStretch::kChunkSizeFieldNumber;
+const int TimeStretch::kPrefillSizeFieldNumber;
+const int TimeStretch::kInactiveWaitTimeFieldNumber;
+const int TimeStretch::kThreadPriorityFieldNumber;
 #endif  // !_MSC_VER
 
-Description::Description()
+TimeStretch::TimeStretch()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Description::InitAsDefaultInstance() {
+void TimeStretch::InitAsDefaultInstance() {
 }
 
-Description::Description(const Description& from)
+TimeStretch::TimeStretch(const TimeStretch& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Description::SharedCtor() {
+void TimeStretch::SharedCtor() {
   _cached_size_ = 0;
   time_scale_ = 1;
   sample_rate_ = 44100;
@@ -151,36 +151,36 @@ void Description::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Description::~Description() {
+TimeStretch::~TimeStretch() {
   SharedDtor();
 }
 
-void Description::SharedDtor() {
+void TimeStretch::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Description::SetCachedSize(int size) const {
+void TimeStretch::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Description::descriptor() {
+const ::google::protobuf::Descriptor* TimeStretch::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Description_descriptor_;
+  return TimeStretch_descriptor_;
 }
 
-const Description& Description::default_instance() {
+const TimeStretch& TimeStretch::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto();  return *default_instance_;
 }
 
-Description* Description::default_instance_ = NULL;
+TimeStretch* TimeStretch::default_instance_ = NULL;
 
-Description* Description::New() const {
-  return new Description;
+TimeStretch* TimeStretch::New() const {
+  return new TimeStretch;
 }
 
-void Description::Clear() {
+void TimeStretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     time_scale_ = 1;
     sample_rate_ = 44100;
@@ -199,7 +199,7 @@ void Description::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool Description::MergePartialFromCodedStream(
+bool TimeStretch::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -380,7 +380,7 @@ bool Description::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Description::SerializeWithCachedSizes(
+void TimeStretch::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional double time_scale = 1 [default = 1];
   if (_has_bit(0)) {
@@ -438,7 +438,7 @@ void Description::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* Description::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* TimeStretch::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional double time_scale = 1 [default = 1];
   if (_has_bit(0)) {
@@ -497,7 +497,7 @@ void Description::SerializeWithCachedSizes(
   return target;
 }
 
-int Description::ByteSize() const {
+int TimeStretch::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -579,10 +579,10 @@ int Description::ByteSize() const {
   return total_size;
 }
 
-void Description::MergeFrom(const ::google::protobuf::Message& from) {
+void TimeStretch::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Description* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Description*>(
+  const TimeStretch* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TimeStretch*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -591,7 +591,7 @@ void Description::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Description::MergeFrom(const Description& from) {
+void TimeStretch::MergeFrom(const TimeStretch& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -630,24 +630,24 @@ void Description::MergeFrom(const Description& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Description::CopyFrom(const ::google::protobuf::Message& from) {
+void TimeStretch::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Description::CopyFrom(const Description& from) {
+void TimeStretch::CopyFrom(const TimeStretch& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Description::IsInitialized() const {
+bool TimeStretch::IsInitialized() const {
   
   return true;
 }
 
-void Description::Swap(Description* other) {
+void TimeStretch::Swap(TimeStretch* other) {
   if (other != this) {
     std::swap(time_scale_, other->time_scale_);
     std::swap(sample_rate_, other->sample_rate_);
@@ -665,11 +665,11 @@ void Description::Swap(Description* other) {
   }
 }
 
-::google::protobuf::Metadata Description::GetMetadata() const {
+::google::protobuf::Metadata TimeStretch::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Description_descriptor_;
-  metadata.reflection = Description_reflection_;
+  metadata.descriptor = TimeStretch_descriptor_;
+  metadata.reflection = TimeStretch_reflection_;
   return metadata;
 }
 

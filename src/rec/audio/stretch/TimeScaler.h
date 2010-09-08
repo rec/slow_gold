@@ -9,7 +9,7 @@ namespace rec {
 namespace audio {
 namespace timescaler {
 
-inline const char* Init(const Description &desc, AudioTimeScaler* s) {
+inline const char* Init(const TimeStretch &desc, AudioTimeScaler* s) {
   return s->Init(desc.time_scale(),
                  desc.sample_rate(),
                  desc.channels(),

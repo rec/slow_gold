@@ -6,7 +6,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Stretchy::Stretchy(const Description& description,
+Stretchy::Stretchy(const TimeStretch& description,
                    Source* source)
     : Wrappy::Position(source),
       description_(description),

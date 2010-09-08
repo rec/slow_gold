@@ -9,9 +9,9 @@ namespace source {
 
 class DoubleStretchyThread : public DoubleStretchy, Thread {
  public:
-  typedef rec::audio::timescaler::Description Description;
+  typedef rec::audio::timescaler::TimeStretch TimeStretch;
 
-  DoubleStretchyThread(const Description& d,
+  DoubleStretchyThread(const TimeStretch& d,
                        Source* s0, Source* s1)
       : DoubleStretchy(d, s0, s1),
         Thread("DoubleStretchy"),
@@ -20,7 +20,7 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
     startThread();
   }
 
-  virtual void setDescription(const Description& description) {
+  virtual void setDescription(const TimeStretch& description) {
     DoubleStretchy::setDescription(description);
     notify();
   }

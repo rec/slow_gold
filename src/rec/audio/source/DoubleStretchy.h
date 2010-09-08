@@ -16,15 +16,15 @@ namespace source {
 
 class DoubleStretchy : public Source {
  public:
-  typedef rec::audio::timescaler::Description Description;
+  typedef rec::audio::timescaler::TimeStretch TimeStretch;
   const static int MINIMUM_FILL_SIZE = 4096;
 
-  DoubleStretchy(const Description& description,
+  DoubleStretchy(const TimeStretch& description,
                  Source* s0, Source* s1);
 
   virtual bool fillNext();
   virtual int available() const;
-  virtual void setDescription(const Description& description);
+  virtual void setDescription(const TimeStretch& description);
 
   virtual int getTotalLength() const;
   virtual int getNextReadPosition() const;
@@ -37,13 +37,13 @@ class DoubleStretchy : public Source {
 
   struct SourceReader {
     scoped_ptr<Source> source_;
-    Description description_;
+    TimeStretch description_;
     int offset_;
 
     scoped_ptr<Source> reader_;
     scoped_ptr<Buffery> buffered_;
 
-    void reset(const Description& description, int offset) {
+    void reset(const TimeStretch& description, int offset) {
       description_.CopyFrom(description);
       reader_.reset(new Stretchy(description_, source_.get()));
       buffered_.reset(new Buffery(description_.channels(), reader_.get()));
@@ -65,7 +65,7 @@ class DoubleStretchy : public Source {
   }
 
   bool descriptionChanged_;
-  Description description_;
+  TimeStretch description_;
 
   int position_;
   CriticalSection lock_;

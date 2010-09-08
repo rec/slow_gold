@@ -10,7 +10,7 @@ namespace audio {
 namespace source {
 
 using rec::util::testFile;
-using rec::audio::timescaler::Description;
+using rec::audio::timescaler::TimeStretch;
 
 static AudioFormatReaderSource* newSource() {
   AudioFormatManager* afm = AudioFormatManager::getInstance();
@@ -20,16 +20,16 @@ static AudioFormatReaderSource* newSource() {
 
 TEST(RecAudioSource, DoubleStretchyFile) {
   rec::audio::format::mpg123::initializeOnce();
-  DoubleStretchy ds(Description(), newSource(), newSource());
+  DoubleStretchy ds(TimeStretch(), newSource(), newSource());
   while (ds.fillNext());
   EXPECT_EQ(ds.available(), 44100);
 }
 
 TEST(RecAudioSource, DoubleStretchy) {
   rec::audio::format::mpg123::initializeOnce();
-  
+
   Testy t1, t2;
-  DoubleStretchy ds(Description(), new Testy, new Testy);
+  DoubleStretchy ds(TimeStretch(), new Testy, new Testy);
   while (ds.fillNext());
   EXPECT_EQ(ds.available(), 128);
 

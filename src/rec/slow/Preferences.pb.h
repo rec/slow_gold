@@ -93,12 +93,12 @@ class Preferences : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.timescaler.Description timescale = 1;
-  inline bool has_timescale() const;
-  inline void clear_timescale();
-  static const int kTimescaleFieldNumber = 1;
-  inline const ::rec::audio::timescaler::Description& timescale() const;
-  inline ::rec::audio::timescaler::Description* mutable_timescale();
+  // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+  inline bool has_timestretch() const;
+  inline void clear_timestretch();
+  static const int kTimestretchFieldNumber = 1;
+  inline const ::rec::audio::timescaler::TimeStretch& timestretch() const;
+  inline ::rec::audio::timescaler::TimeStretch* mutable_timestretch();
   
   // optional .rec.gui.ThumbnailDescription thumbnail = 2;
   inline bool has_thumbnail() const;
@@ -142,7 +142,7 @@ class Preferences : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::audio::timescaler::Description* timescale_;
+  ::rec::audio::timescaler::TimeStretch* timestretch_;
   ::rec::gui::ThumbnailDescription* thumbnail_;
   ::google::protobuf::RepeatedPtrField< ::std::string> recent_files_;
   ::google::protobuf::uint32 max_recent_files_;
@@ -174,21 +174,21 @@ class Preferences : public ::google::protobuf::Message {
 
 // Preferences
 
-// optional .rec.audio.timescaler.Description timescale = 1;
-inline bool Preferences::has_timescale() const {
+// optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+inline bool Preferences::has_timestretch() const {
   return _has_bit(0);
 }
-inline void Preferences::clear_timescale() {
-  if (timescale_ != NULL) timescale_->::rec::audio::timescaler::Description::Clear();
+inline void Preferences::clear_timestretch() {
+  if (timestretch_ != NULL) timestretch_->::rec::audio::timescaler::TimeStretch::Clear();
   _clear_bit(0);
 }
-inline const ::rec::audio::timescaler::Description& Preferences::timescale() const {
-  return timescale_ != NULL ? *timescale_ : *default_instance_->timescale_;
+inline const ::rec::audio::timescaler::TimeStretch& Preferences::timestretch() const {
+  return timestretch_ != NULL ? *timestretch_ : *default_instance_->timestretch_;
 }
-inline ::rec::audio::timescaler::Description* Preferences::mutable_timescale() {
+inline ::rec::audio::timescaler::TimeStretch* Preferences::mutable_timestretch() {
   _set_bit(0);
-  if (timescale_ == NULL) timescale_ = new ::rec::audio::timescaler::Description;
-  return timescale_;
+  if (timestretch_ == NULL) timestretch_ = new ::rec::audio::timescaler::TimeStretch;
+  return timestretch_;
 }
 
 // optional .rec.gui.ThumbnailDescription thumbnail = 2;

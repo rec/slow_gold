@@ -14,7 +14,7 @@
 #include "rec/util/Proto.h"
 
 
-using rec::audio::timescaler::Description;
+using rec::audio::timescaler::TimeStretch;
 using rec::gui::ThumbnailDescription;
 using rec::persist::copy;
 
@@ -78,7 +78,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  Description d = getPreferences().timescale();
+  TimeStretch d = getPreferences().timestretch();
 
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
@@ -143,7 +143,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     if (stretchy_)
       stretchy_->stop();
 
-    Description d = getPreferences().timescale();
+    TimeStretch d = getPreferences().timestretch();
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
@@ -175,16 +175,16 @@ void MainPageK::sliderValueChanged(Slider* slider) {
   {
     LockedPreferences prefs;
     if (slider == peer_->timeScaleSlider)
-      prefs->mutable_timescale()->set_time_scale(slider->getValue());
+      prefs->mutable_timestretch()->set_time_scale(slider->getValue());
 
     else if (slider == peer_->pitchScaleSlider)
-      prefs->mutable_timescale()->set_pitch_scale(slider->getValue());
+      prefs->mutable_timestretch()->set_pitch_scale(slider->getValue());
 
     else
       return;
 
     if (stretchy_)
-      stretchy_->setDescription(prefs->timescale());
+      stretchy_->setDescription(prefs->timestretch());
   }
 }
 

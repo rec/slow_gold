@@ -16,9 +16,9 @@ namespace source {
 class Stretchy : public Wrappy::Position {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
-  typedef rec::audio::timescaler::Description Description;
+  typedef rec::audio::timescaler::TimeStretch TimeStretch;
 
-  Stretchy(const Description& description, Source* source);
+  Stretchy(const TimeStretch& description, Source* source);
 
   virtual int getTotalLength();
   virtual void setNextReadPosition(int position);
@@ -28,7 +28,7 @@ class Stretchy : public Wrappy::Position {
   int processOneChunk(const AudioSourceChannelInfo& info);
   void getNextAudioBlockFromSource(int numSamples);
 
-  const Description description_;
+  const TimeStretch description_;
   const int channels_;
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;

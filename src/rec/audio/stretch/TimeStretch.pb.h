@@ -34,18 +34,18 @@ void  protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto();
 void protobuf_AssignDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto();
 void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fTimeStretch_2eproto();
 
-class Description;
+class TimeStretch;
 
 // ===================================================================
 
-class Description : public ::google::protobuf::Message {
+class TimeStretch : public ::google::protobuf::Message {
  public:
-  Description();
-  virtual ~Description();
+  TimeStretch();
+  virtual ~TimeStretch();
   
-  Description(const Description& from);
+  TimeStretch(const TimeStretch& from);
   
-  inline Description& operator=(const Description& from) {
+  inline TimeStretch& operator=(const TimeStretch& from) {
     CopyFrom(from);
     return *this;
   }
@@ -59,17 +59,17 @@ class Description : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Description& default_instance();
+  static const TimeStretch& default_instance();
   
-  void Swap(Description* other);
+  void Swap(TimeStretch* other);
   
   // implements Message ----------------------------------------------
   
-  Description* New() const;
+  TimeStretch* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Description& from);
-  void MergeFrom(const Description& from);
+  void CopyFrom(const TimeStretch& from);
+  void MergeFrom(const TimeStretch& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -162,7 +162,7 @@ class Description : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 thread_priority() const;
   inline void set_thread_priority(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.audio.timescaler.Description)
+  // @@protoc_insertion_point(class_scope:rec.audio.timescaler.TimeStretch)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -195,171 +195,171 @@ class Description : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Description* default_instance_;
+  static TimeStretch* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
 
-// Description
+// TimeStretch
 
 // optional double time_scale = 1 [default = 1];
-inline bool Description::has_time_scale() const {
+inline bool TimeStretch::has_time_scale() const {
   return _has_bit(0);
 }
-inline void Description::clear_time_scale() {
+inline void TimeStretch::clear_time_scale() {
   time_scale_ = 1;
   _clear_bit(0);
 }
-inline double Description::time_scale() const {
+inline double TimeStretch::time_scale() const {
   return time_scale_;
 }
-inline void Description::set_time_scale(double value) {
+inline void TimeStretch::set_time_scale(double value) {
   _set_bit(0);
   time_scale_ = value;
 }
 
 // optional double sample_rate = 2 [default = 44100];
-inline bool Description::has_sample_rate() const {
+inline bool TimeStretch::has_sample_rate() const {
   return _has_bit(1);
 }
-inline void Description::clear_sample_rate() {
+inline void TimeStretch::clear_sample_rate() {
   sample_rate_ = 44100;
   _clear_bit(1);
 }
-inline double Description::sample_rate() const {
+inline double TimeStretch::sample_rate() const {
   return sample_rate_;
 }
-inline void Description::set_sample_rate(double value) {
+inline void TimeStretch::set_sample_rate(double value) {
   _set_bit(1);
   sample_rate_ = value;
 }
 
 // optional uint32 channels = 3 [default = 2];
-inline bool Description::has_channels() const {
+inline bool TimeStretch::has_channels() const {
   return _has_bit(2);
 }
-inline void Description::clear_channels() {
+inline void TimeStretch::clear_channels() {
   channels_ = 2u;
   _clear_bit(2);
 }
-inline ::google::protobuf::uint32 Description::channels() const {
+inline ::google::protobuf::uint32 TimeStretch::channels() const {
   return channels_;
 }
-inline void Description::set_channels(::google::protobuf::uint32 value) {
+inline void TimeStretch::set_channels(::google::protobuf::uint32 value) {
   _set_bit(2);
   channels_ = value;
 }
 
 // optional double pitch_scale = 4 [default = 1];
-inline bool Description::has_pitch_scale() const {
+inline bool TimeStretch::has_pitch_scale() const {
   return _has_bit(3);
 }
-inline void Description::clear_pitch_scale() {
+inline void TimeStretch::clear_pitch_scale() {
   pitch_scale_ = 1;
   _clear_bit(3);
 }
-inline double Description::pitch_scale() const {
+inline double TimeStretch::pitch_scale() const {
   return pitch_scale_;
 }
-inline void Description::set_pitch_scale(double value) {
+inline void TimeStretch::set_pitch_scale(double value) {
   _set_bit(3);
   pitch_scale_ = value;
 }
 
 // optional uint32 bands = 5 [default = 2048];
-inline bool Description::has_bands() const {
+inline bool TimeStretch::has_bands() const {
   return _has_bit(4);
 }
-inline void Description::clear_bands() {
+inline void TimeStretch::clear_bands() {
   bands_ = 2048u;
   _clear_bit(4);
 }
-inline ::google::protobuf::uint32 Description::bands() const {
+inline ::google::protobuf::uint32 TimeStretch::bands() const {
   return bands_;
 }
-inline void Description::set_bands(::google::protobuf::uint32 value) {
+inline void TimeStretch::set_bands(::google::protobuf::uint32 value) {
   _set_bit(4);
   bands_ = value;
 }
 
 // optional uint32 filter_overlap = 6 [default = 1];
-inline bool Description::has_filter_overlap() const {
+inline bool TimeStretch::has_filter_overlap() const {
   return _has_bit(5);
 }
-inline void Description::clear_filter_overlap() {
+inline void TimeStretch::clear_filter_overlap() {
   filter_overlap_ = 1u;
   _clear_bit(5);
 }
-inline ::google::protobuf::uint32 Description::filter_overlap() const {
+inline ::google::protobuf::uint32 TimeStretch::filter_overlap() const {
   return filter_overlap_;
 }
-inline void Description::set_filter_overlap(::google::protobuf::uint32 value) {
+inline void TimeStretch::set_filter_overlap(::google::protobuf::uint32 value) {
   _set_bit(5);
   filter_overlap_ = value;
 }
 
 // optional uint32 chunk_size = 7 [default = 512];
-inline bool Description::has_chunk_size() const {
+inline bool TimeStretch::has_chunk_size() const {
   return _has_bit(6);
 }
-inline void Description::clear_chunk_size() {
+inline void TimeStretch::clear_chunk_size() {
   chunk_size_ = 512u;
   _clear_bit(6);
 }
-inline ::google::protobuf::uint32 Description::chunk_size() const {
+inline ::google::protobuf::uint32 TimeStretch::chunk_size() const {
   return chunk_size_;
 }
-inline void Description::set_chunk_size(::google::protobuf::uint32 value) {
+inline void TimeStretch::set_chunk_size(::google::protobuf::uint32 value) {
   _set_bit(6);
   chunk_size_ = value;
 }
 
 // optional uint32 prefill_size = 8 [default = 4096];
-inline bool Description::has_prefill_size() const {
+inline bool TimeStretch::has_prefill_size() const {
   return _has_bit(7);
 }
-inline void Description::clear_prefill_size() {
+inline void TimeStretch::clear_prefill_size() {
   prefill_size_ = 4096u;
   _clear_bit(7);
 }
-inline ::google::protobuf::uint32 Description::prefill_size() const {
+inline ::google::protobuf::uint32 TimeStretch::prefill_size() const {
   return prefill_size_;
 }
-inline void Description::set_prefill_size(::google::protobuf::uint32 value) {
+inline void TimeStretch::set_prefill_size(::google::protobuf::uint32 value) {
   _set_bit(7);
   prefill_size_ = value;
 }
 
 // optional int32 inactive_wait_time = 9 [default = -1];
-inline bool Description::has_inactive_wait_time() const {
+inline bool TimeStretch::has_inactive_wait_time() const {
   return _has_bit(8);
 }
-inline void Description::clear_inactive_wait_time() {
+inline void TimeStretch::clear_inactive_wait_time() {
   inactive_wait_time_ = -1;
   _clear_bit(8);
 }
-inline ::google::protobuf::int32 Description::inactive_wait_time() const {
+inline ::google::protobuf::int32 TimeStretch::inactive_wait_time() const {
   return inactive_wait_time_;
 }
-inline void Description::set_inactive_wait_time(::google::protobuf::int32 value) {
+inline void TimeStretch::set_inactive_wait_time(::google::protobuf::int32 value) {
   _set_bit(8);
   inactive_wait_time_ = value;
 }
 
 // optional uint32 thread_priority = 10 [default = 4];
-inline bool Description::has_thread_priority() const {
+inline bool TimeStretch::has_thread_priority() const {
   return _has_bit(9);
 }
-inline void Description::clear_thread_priority() {
+inline void TimeStretch::clear_thread_priority() {
   thread_priority_ = 4u;
   _clear_bit(9);
 }
-inline ::google::protobuf::uint32 Description::thread_priority() const {
+inline ::google::protobuf::uint32 TimeStretch::thread_priority() const {
   return thread_priority_;
 }
-inline void Description::set_thread_priority(::google::protobuf::uint32 value) {
+inline void TimeStretch::set_thread_priority(::google::protobuf::uint32 value) {
   _set_bit(9);
   thread_priority_ = value;
 }

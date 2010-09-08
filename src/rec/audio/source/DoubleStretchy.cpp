@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-DoubleStretchy::DoubleStretchy(const Description& description,
+DoubleStretchy::DoubleStretchy(const TimeStretch& description,
                                Source* s0,
                                Source* s1)
     : position_(0),
@@ -21,7 +21,7 @@ DoubleStretchy::DoubleStretchy(const Description& description,
   source_->reset(description, 0);
 }
 
-void DoubleStretchy::setDescription(const Description& description) {
+void DoubleStretchy::setDescription(const TimeStretch& description) {
   ScopedLock l(lock_);
   descriptionChanged_ = true;
   description_.CopyFrom(description);
