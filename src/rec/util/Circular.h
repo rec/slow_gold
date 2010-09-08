@@ -44,7 +44,7 @@ struct Circular {
  private:
   int64 begin_;
   int64 size_;  // Of this region within the buffer.
-  const int64 length_;  // Of the whole buffer.
+  int64 length_;  // Of the whole buffer.
 
   // This class is copiable and assignable.
 };
