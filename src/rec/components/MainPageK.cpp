@@ -87,8 +87,13 @@ void MainPageK::construct(MainPageJ* peer) {
   cursorThread_->startThread();
 
   Preferences prefs(getPreferences());
-  if (prefs.reload_most_recent_file() && prefs.recent_files_size() > 0)
-    loadFileIntoTransport(File(copy(prefs.recent_files().end()[-1])));
+  if (prefs.has_recent_files()) {
+    const RecentFiles& recent = prefs.recent_files();
+    if (int size = recent.name_size()) {
+      if (recent.reload_most_recent())
+        loadFileIntoTransport(File(copy(recent.name(size - 1))));
+    }
+  }
 }
 
 void MainPageK::destruct() {
@@ -108,7 +113,8 @@ void MainPageK::destruct() {
 }
 
 void MainPageK::loadRecentFile(int menuItemID) {
-  loadFileIntoTransport(copy(getPreferences().recent_files(menuItemID - 1)));
+  RecentFiles recent = getPreferences().recent_files();
+  loadFileIntoTransport(copy(recent.name(menuItemID - 1)));
 }
 
 void MainPageK::updateCursor() {
@@ -142,10 +148,11 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     transportSource_.setSource(stretchy_.get());
 
     LockedPreferences prefs;
+    RecentFiles* recent = prefs->mutable_recent_files();
     rec::proto::addOrMoveToEnd(copy(file.getFullPathName()),
-                               prefs->mutable_recent_files());
-    rec::proto::truncateTo(prefs->max_recent_files(),
-                           prefs->mutable_recent_files(), std::string());
+                               recent->mutable_name());
+    rec::proto::truncateTo(recent->max_files(),
+                           recent->mutable_name(), std::string());
 
     peer_->thumbnail->setFile(file);
   } else {

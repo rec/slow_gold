@@ -26,6 +26,7 @@
 #include "rec/audio/stretch/TimeStretch.pb.h"
 #include "rec/components/ThumbnailDescription.pb.h"
 #include "rec/slow/LoopWindow.pb.h"
+#include "rec/slow/RecentFiles.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -113,35 +114,12 @@ class Preferences : public ::google::protobuf::Message {
   inline const ::rec::gui::ThumbnailDescription& thumbnail() const;
   inline ::rec::gui::ThumbnailDescription* mutable_thumbnail();
   
-  // repeated string recent_files = 3;
-  inline int recent_files_size() const;
+  // optional .rec.slow.RecentFiles recent_files = 3;
+  inline bool has_recent_files() const;
   inline void clear_recent_files();
   static const int kRecentFilesFieldNumber = 3;
-  inline const ::std::string& recent_files(int index) const;
-  inline ::std::string* mutable_recent_files(int index);
-  inline void set_recent_files(int index, const ::std::string& value);
-  inline void set_recent_files(int index, const char* value);
-  inline void set_recent_files(int index, const char* value, size_t size);
-  inline ::std::string* add_recent_files();
-  inline void add_recent_files(const ::std::string& value);
-  inline void add_recent_files(const char* value);
-  inline void add_recent_files(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& recent_files() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_recent_files();
-  
-  // optional uint32 max_recent_files = 4 [default = 16];
-  inline bool has_max_recent_files() const;
-  inline void clear_max_recent_files();
-  static const int kMaxRecentFilesFieldNumber = 4;
-  inline ::google::protobuf::uint32 max_recent_files() const;
-  inline void set_max_recent_files(::google::protobuf::uint32 value);
-  
-  // optional bool reload_most_recent_file = 5 [default = true];
-  inline bool has_reload_most_recent_file() const;
-  inline void clear_reload_most_recent_file();
-  static const int kReloadMostRecentFileFieldNumber = 5;
-  inline bool reload_most_recent_file() const;
-  inline void set_reload_most_recent_file(bool value);
+  inline const ::rec::slow::RecentFiles& recent_files() const;
+  inline ::rec::slow::RecentFiles* mutable_recent_files();
   
   // @@protoc_insertion_point(class_scope:rec.slow.Preferences)
  private:
@@ -150,14 +128,12 @@ class Preferences : public ::google::protobuf::Message {
   
   ::google::protobuf::RepeatedPtrField< ::rec::slow::proto::LoopWindow > loop_window_;
   ::rec::gui::ThumbnailDescription* thumbnail_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> recent_files_;
-  ::google::protobuf::uint32 max_recent_files_;
-  bool reload_most_recent_file_;
+  ::rec::slow::RecentFiles* recent_files_;
   friend void  protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fPreferences_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -222,80 +198,21 @@ inline ::rec::gui::ThumbnailDescription* Preferences::mutable_thumbnail() {
   return thumbnail_;
 }
 
-// repeated string recent_files = 3;
-inline int Preferences::recent_files_size() const {
-  return recent_files_.size();
+// optional .rec.slow.RecentFiles recent_files = 3;
+inline bool Preferences::has_recent_files() const {
+  return _has_bit(2);
 }
 inline void Preferences::clear_recent_files() {
-  recent_files_.Clear();
+  if (recent_files_ != NULL) recent_files_->::rec::slow::RecentFiles::Clear();
+  _clear_bit(2);
 }
-inline const ::std::string& Preferences::recent_files(int index) const {
-  return recent_files_.Get(index);
+inline const ::rec::slow::RecentFiles& Preferences::recent_files() const {
+  return recent_files_ != NULL ? *recent_files_ : *default_instance_->recent_files_;
 }
-inline ::std::string* Preferences::mutable_recent_files(int index) {
-  return recent_files_.Mutable(index);
-}
-inline void Preferences::set_recent_files(int index, const ::std::string& value) {
-  recent_files_.Mutable(index)->assign(value);
-}
-inline void Preferences::set_recent_files(int index, const char* value) {
-  recent_files_.Mutable(index)->assign(value);
-}
-inline void Preferences::set_recent_files(int index, const char* value, size_t size) {
-  recent_files_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Preferences::add_recent_files() {
-  return recent_files_.Add();
-}
-inline void Preferences::add_recent_files(const ::std::string& value) {
-  recent_files_.Add()->assign(value);
-}
-inline void Preferences::add_recent_files(const char* value) {
-  recent_files_.Add()->assign(value);
-}
-inline void Preferences::add_recent_files(const char* value, size_t size) {
-  recent_files_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-Preferences::recent_files() const {
+inline ::rec::slow::RecentFiles* Preferences::mutable_recent_files() {
+  _set_bit(2);
+  if (recent_files_ == NULL) recent_files_ = new ::rec::slow::RecentFiles;
   return recent_files_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-Preferences::mutable_recent_files() {
-  return &recent_files_;
-}
-
-// optional uint32 max_recent_files = 4 [default = 16];
-inline bool Preferences::has_max_recent_files() const {
-  return _has_bit(3);
-}
-inline void Preferences::clear_max_recent_files() {
-  max_recent_files_ = 16u;
-  _clear_bit(3);
-}
-inline ::google::protobuf::uint32 Preferences::max_recent_files() const {
-  return max_recent_files_;
-}
-inline void Preferences::set_max_recent_files(::google::protobuf::uint32 value) {
-  _set_bit(3);
-  max_recent_files_ = value;
-}
-
-// optional bool reload_most_recent_file = 5 [default = true];
-inline bool Preferences::has_reload_most_recent_file() const {
-  return _has_bit(4);
-}
-inline void Preferences::clear_reload_most_recent_file() {
-  reload_most_recent_file_ = true;
-  _clear_bit(4);
-}
-inline bool Preferences::reload_most_recent_file() const {
-  return reload_most_recent_file_;
-}
-inline void Preferences::set_reload_most_recent_file(bool value) {
-  _set_bit(4);
-  reload_most_recent_file_ = value;
 }
 
 

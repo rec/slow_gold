@@ -1,0 +1,7 @@
+package rec.slow;
+
+message RecentFiles {
+  repeated string name = 3;
+  optional uint32 max_files = 4 [default = 16];
+  optional bool reload_most_recent = 5 [default = true];
+};

@@ -24,13 +24,15 @@ class RecContainer : public ComponentContainer<RecWindow> {
     PopupMenu menu;
     if (menuName == "File") {
       rec::slow::Preferences prefs(rec::slow::getPreferences());
-      PopupMenu submenu;
+      if (prefs.has_recent_files()) {
+        const slow::RecentFiles& recent = prefs.recent_files();
+        PopupMenu submenu;
+        int size = recent.name_size();
+        for (int i = size; i > 0; --i)
+          submenu.addItem(i, rec::persist::copy(recent.name(i - 1)));
 
-      int size = prefs.recent_files_size();
-      for (int i = size; i > 0; --i)
-        submenu.addItem(i, rec::persist::copy(prefs.recent_files(i - 1)));
-
-      menu.addSubMenu("Open recent", submenu);
+        menu.addSubMenu("Open recent", submenu);
+      }
     }
     return menu;
   }

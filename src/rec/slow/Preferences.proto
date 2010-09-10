@@ -3,12 +3,10 @@ package rec.slow;
 import "rec/audio/stretch/TimeStretch.proto";
 import "rec/components/ThumbnailDescription.proto";
 import "rec/slow/LoopWindow.proto";
+import "rec/slow/RecentFiles.proto";
 
 message Preferences {
   repeated rec.slow.proto.LoopWindow loop_window = 1;
   optional rec.gui.ThumbnailDescription thumbnail = 2;
-
-  repeated string recent_files = 3;
-  optional uint32 max_recent_files = 4 [default = 16];
-  optional bool reload_most_recent_file = 5 [default = true];
+  optional RecentFiles recent_files = 3;
 };
