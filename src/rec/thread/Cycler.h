@@ -27,6 +27,11 @@ class Cycler : public Runnable {
       index_ = 0;
   }
 
+  virtual ~Cycler() {
+    for (Cycle::iterator i = cycle_.begin(); i != cycle_.end(); ++i)
+      delete *i;
+  }
+
  protected:
   typedef std::vector<Runnable*> Cycle;
   Cycle cycle_;

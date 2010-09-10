@@ -3,6 +3,8 @@
 
 #include "rec/thread/Runnable.h"
 
+#include "rec/base/scoped_ptr.h"
+
 namespace rec {
 namespace thread {
 
@@ -12,7 +14,7 @@ class Wrapper : public Runnable {
   virtual void run(Thread* thread) { runnable_->run(thread); }
 
  protected:
-  Runnable* runnable_;
+  scoped_ptr<Runnable> runnable_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrapper);
 };
 

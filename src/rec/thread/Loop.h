@@ -12,7 +12,7 @@ class Loop : public Wrapper {
 
   virtual void run(Thread* thread) {
     while (!thread->threadShouldExit())
-      runnable_->run();
+      runnable_->run(thread);
   }
 
  protected:
