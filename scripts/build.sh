@@ -1,8 +1,6 @@
 CONFIG=$1
 shift
 
-ROOT="`pwd`"
-
 while (( "$#" )); do
   PACKAGE=$1
   shift

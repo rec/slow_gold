@@ -21,9 +21,9 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include;../../../../../build/mac/debug/gflags/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../genfiles/proto;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include;../../../../../build/mac/debug/gflags/include"/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="unit-tests"
-                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../release/mac/debug/glog/include;../../../../../build/mac/release/protobuf/include;../../../../../build/mac/release/gflags/include"/>
+                   osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../genfiles/proto;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../release/mac/debug/glog/include;../../../../../build/mac/release/protobuf/include;../../../../../build/mac/release/gflags/include"/>
   </CONFIGURATIONS>
   <MAINGROUP id="JiHYwfc1Q" name="tests">
     <GROUP id="MC1M02Oe7" name="cd">
@@ -58,10 +58,8 @@
       <FILE id="NpyWQsRbg" name="AutosaveApp.h" compile="0" resource="0"
             file="../../src/rec/persist/AutosaveApp.h"/>
       <FILE id="4OWOqxYxg" name="Data.h" compile="0" resource="0" file="../../src/rec/persist/Data.h"/>
-      <FILE id="yzDfGdChq" name="testdata.pb.h" compile="0" resource="0"
-            file="../../src/rec/persist/testdata.pb.h"/>
       <FILE id="zznPSIYxo" name="Writeable.h" compile="0" resource="0" file="../../src/rec/persist/Writeable.h"/>
-      <FILE id="G1yPcTE" name="testdata.pb.cc" compile="1" resource="0" file="../../src/rec/persist/testdata.pb.cc"/>
+      <FILE id="G1yPcTE" name="testdata.pb.cc" compile="1" resource="0" file="../../genfiles/proto/rec/persist/testdata.pb.cc"/>
       <FILE id="dDuT3qG4" name="Copy.cpp" compile="1" resource="0" file="../../src/rec/persist/Copy.cpp"/>
       <FILE id="zlWzCFL1B" name="Copy.h" compile="0" resource="0" file="../../src/rec/persist/Copy.h"/>
     </GROUP>
@@ -115,7 +113,7 @@
         <FILE id="30bjL0Bs8" name="AudioTimeScaler_test.cpp" compile="1" resource="0"
               file="../../src/rec/audio/stretch/AudioTimeScaler_test.cpp"/>
         <FILE id="ySixqO8" name="TimeStretch.pb.cc" compile="1" resource="0"
-              file="../../src/rec/audio/stretch/TimeStretch.pb.cc"/>
+              file="../../genfiles/proto/rec/audio/stretch/TimeStretch.pb.cc"/>
         <FILE id="QxgaJ33rv" name="TimeScaler.h" compile="0" resource="0" file="../../src/rec/audio/stretch/TimeScaler.h"/>
       </GROUP>
     </GROUP>

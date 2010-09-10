@@ -14,4 +14,4 @@ case "`uname`" in
 
 esac
 
-source rec/scripts/platform/$PLATFORM.sh
+source "$ROOT/rec/scripts/platform/$PLATFORM.sh"

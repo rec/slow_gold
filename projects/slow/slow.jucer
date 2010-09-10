@@ -23,10 +23,10 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include;../../../../../build/mac/debug/gflags/include"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../genfiles/proto;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/gtest/include;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include;../../../../../build/mac/debug/gflags/include"
                    defines=""/>
     <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="SlowBurn"
-                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../build/mac/release/glog/include;../../../../../build/mac/release/protobuf/include;../../../../../build/mac/release/gflags/include"
+                   osxSDK="10.5 SDK" osxCompatibility="10.5 SDK" headerPath="../../../../src;../../../../genfiles/proto;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/gtest/include;../../../../../build/mac/release/libcddb/include;../../../../../build/mac/release/glog/include;../../../../../build/mac/release/protobuf/include;../../../../../build/mac/release/gflags/include"
                    defines=""/>
   </CONFIGURATIONS>
   <MAINGROUP id="xOv2eBhZg" name="Slow">
@@ -36,7 +36,7 @@
         <FILE id="qov5IAlU" name="AutosaveApp.h" compile="0" resource="0" file="../../src/rec/persist/AutosaveApp.h"/>
         <FILE id="WfladI8TI" name="Data.h" compile="0" resource="0" file="../../src/rec/persist/Data.h"/>
         <FILE id="z4yQRUZaV" name="testdata.pb.cc" compile="0" resource="1"
-              file="../../src/rec/persist/testdata.pb.cc"/>
+              file="../../genfiles/proto/rec/persist/testdata.pb.cc"/>
         <FILE id="eRnjpYFK8" name="Writeable.h" compile="0" resource="0" file="../../src/rec/persist/Writeable.h"/>
         <FILE id="bsHdmMm" name="Copy.cpp" compile="1" resource="0" file="../../src/rec/persist/Copy.cpp"/>
         <FILE id="jSYIEB7" name="Copy.h" compile="0" resource="0" file="../../src/rec/persist/Copy.h"/>
@@ -64,7 +64,7 @@
           </GROUP>
         </GROUP>
         <FILE id="n4q1oIS" name="TimeStretch.pb.cc" compile="1" resource="0"
-              file="../../src/rec/audio/stretch/TimeStretch.pb.cc"/>
+              file="../../genfiles/proto/rec/audio/stretch/TimeStretch.pb.cc"/>
         <FILE id="9ptkOI5su" name="Stretchy.cpp" compile="1" resource="0" file="../../src/rec/audio/source/Stretchy.cpp"/>
         <FILE id="pAtOkIs5u" name="DoubleStretchy.cpp" compile="1" resource="0"
               file="../../src/rec/audio/source/DoubleStretchy.cpp"/>
@@ -121,14 +121,14 @@
         <FILE id="0RH7T3P3w" name="MainPageJ.cpp" compile="1" resource="0"
               file="../../src/rec/components/MainPageJ.cpp"/>
         <FILE id="2RH7T3P5w" name="ThumbnailDescription.pb.cc" compile="1"
-              resource="0" file="../../src/rec/components/ThumbnailDescription.pb.cc"/>
-        <FILE id="2RH7T3P6w" name="Color.pb.cc" compile="1" resource="0" file="../../src/rec/util/Color.pb.cc"/>
+              resource="0" file="../../genfiles/proto/rec/components/ThumbnailDescription.pb.cc"/>
+        <FILE id="2RH7T3P6w" name="Color.pb.cc" compile="1" resource="0" file="../../genfiles/proto/rec/util/Color.pb.cc"/>
         <FILE id="1RH7T3P7w" name="Preferences.pb.cc" compile="1" resource="0"
-              file="../../src/rec/slow/Preferences.pb.cc"/>
+              file="../../genfiles/proto/rec/slow/Preferences.pb.cc"/>
         <FILE id="9RH7T3P3w" name="LoopWindow.pb.cc" compile="1" resource="0"
-              file="../../src/rec/slow/LoopWindow.pb.cc"/>
+              file="../../genfiles/proto/rec/slow/LoopWindow.pb.cc"/>
         <FILE id="0tH7T3P3w" name="RecentFiles.pb.cc" compile="1" resource="0"
-              file="../../src/rec/slow/RecentFiles.pb.cc"/>
+              file="../../genfiles/proto/rec/slow/RecentFiles.pb.cc"/>
         <FILE id="2KK9Fo1Sj" name="MainPageJ.h" compile="0" resource="0" file="../../src/rec/components/MainPageJ.h"/>
       </GROUP>
       <GROUP id="lTFfEBKXD" name="util">
