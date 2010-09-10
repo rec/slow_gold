@@ -40,6 +40,7 @@ MainPageK::MainPageK(AudioDeviceManager* d)
 }
 
 using rec::gui::ThreadDescription;
+using rec::gui::ThumbnailDescription;
 using rec::thread::Callback;
 using rec::thread::LockedMessage;
 using rec::thread::Runnable;
@@ -48,14 +49,13 @@ using rec::thread::WaitLoop;
 using rec::thread::makeCallback;
 
 static Thread* makeCursorThread(MainPageK* main) {
-  ThreadDescription desc = getPreferences().thumbnail().cursor_thread();
+  ThreadDescription thumbnail(slow::getThumbnail().cursor_thread());
   Runnable* callback = makeCallback(main, &MainPageK::updateCursor);
   Runnable* locked = new LockedMessage(callback);
-  Thread* t = new RunnableThread("cursor", new WaitLoop(desc.period(), locked));
-  t->setPriority(desc.priority());
+  Thread* t = new RunnableThread("cursor", new WaitLoop(thumbnail.period(), locked));
+  t->setPriority(thumbnail.priority());
   return t;
 }
-
 
 void MainPageK::construct(MainPageJ* peer) {
   peer_ = peer;
@@ -66,7 +66,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  TimeStretch d = getPreferences().timestretch();
+  TimeStretch d = getPreferences().loop_window(0).timestretch();
 
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
@@ -131,7 +131,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     if (stretchy_)
       stretchy_->stop();
 
-    TimeStretch d = getPreferences().timestretch();
+    TimeStretch d = getPreferences().loop_window(0).timestretch();
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
@@ -162,17 +162,18 @@ void MainPageK::sliderValueChanged(Slider* slider) {
 
   {
     LockedPreferences prefs;
+    TimeStretch* stretch = prefs->mutable_loop_window(0)->mutable_timestretch();
     if (slider == peer_->timeScaleSlider)
-      prefs->mutable_timestretch()->set_time_scale(slider->getValue());
+      stretch->set_time_scale(slider->getValue());
 
     else if (slider == peer_->pitchScaleSlider)
-      prefs->mutable_timestretch()->set_pitch_scale(slider->getValue());
+     stretch->set_pitch_scale(slider->getValue());
 
     else
       return;
 
     if (stretchy_)
-      stretchy_->setDescription(prefs->timestretch());
+      stretchy_->setDescription(*stretch);
   }
 }
 

@@ -25,6 +25,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/audio/stretch/TimeStretch.pb.h"
 #include "rec/components/ThumbnailDescription.pb.h"
+#include "rec/slow/LoopWindow.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -93,12 +94,17 @@ class Preferences : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
-  inline bool has_timestretch() const;
-  inline void clear_timestretch();
-  static const int kTimestretchFieldNumber = 1;
-  inline const ::rec::audio::timescaler::TimeStretch& timestretch() const;
-  inline ::rec::audio::timescaler::TimeStretch* mutable_timestretch();
+  // repeated .rec.slow.proto.LoopWindow loop_window = 1;
+  inline int loop_window_size() const;
+  inline void clear_loop_window();
+  static const int kLoopWindowFieldNumber = 1;
+  inline const ::rec::slow::proto::LoopWindow& loop_window(int index) const;
+  inline ::rec::slow::proto::LoopWindow* mutable_loop_window(int index);
+  inline ::rec::slow::proto::LoopWindow* add_loop_window();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::proto::LoopWindow >&
+      loop_window() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::slow::proto::LoopWindow >*
+      mutable_loop_window();
   
   // optional .rec.gui.ThumbnailDescription thumbnail = 2;
   inline bool has_thumbnail() const;
@@ -142,7 +148,7 @@ class Preferences : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::audio::timescaler::TimeStretch* timestretch_;
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::proto::LoopWindow > loop_window_;
   ::rec::gui::ThumbnailDescription* thumbnail_;
   ::google::protobuf::RepeatedPtrField< ::std::string> recent_files_;
   ::google::protobuf::uint32 max_recent_files_;
@@ -174,21 +180,29 @@ class Preferences : public ::google::protobuf::Message {
 
 // Preferences
 
-// optional .rec.audio.timescaler.TimeStretch timestretch = 1;
-inline bool Preferences::has_timestretch() const {
-  return _has_bit(0);
+// repeated .rec.slow.proto.LoopWindow loop_window = 1;
+inline int Preferences::loop_window_size() const {
+  return loop_window_.size();
 }
-inline void Preferences::clear_timestretch() {
-  if (timestretch_ != NULL) timestretch_->::rec::audio::timescaler::TimeStretch::Clear();
-  _clear_bit(0);
+inline void Preferences::clear_loop_window() {
+  loop_window_.Clear();
 }
-inline const ::rec::audio::timescaler::TimeStretch& Preferences::timestretch() const {
-  return timestretch_ != NULL ? *timestretch_ : *default_instance_->timestretch_;
+inline const ::rec::slow::proto::LoopWindow& Preferences::loop_window(int index) const {
+  return loop_window_.Get(index);
 }
-inline ::rec::audio::timescaler::TimeStretch* Preferences::mutable_timestretch() {
-  _set_bit(0);
-  if (timestretch_ == NULL) timestretch_ = new ::rec::audio::timescaler::TimeStretch;
-  return timestretch_;
+inline ::rec::slow::proto::LoopWindow* Preferences::mutable_loop_window(int index) {
+  return loop_window_.Mutable(index);
+}
+inline ::rec::slow::proto::LoopWindow* Preferences::add_loop_window() {
+  return loop_window_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::proto::LoopWindow >&
+Preferences::loop_window() const {
+  return loop_window_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::slow::proto::LoopWindow >*
+Preferences::mutable_loop_window() {
+  return &loop_window_;
 }
 
 // optional .rec.gui.ThumbnailDescription thumbnail = 2;

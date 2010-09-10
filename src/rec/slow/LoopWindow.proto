@@ -1,0 +1,7 @@
+package rec.slow.proto;
+
+import "rec/audio/stretch/TimeStretch.proto";
+
+message LoopWindow {
+  optional rec.audio.timescaler.TimeStretch timestretch = 1;
+};
