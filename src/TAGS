@@ -331,8 +331,8 @@ class RecContainer 10,195
   RecContainer(12,264
   virtual const StringArray getMenuBarNames(18,414
   virtual const PopupMenu getMenuForIndex(23,561
-  virtual void menuItemSelected(RecContainer::menuItemSelected38,1017
-  MainPageComponent* mainPage_;RecContainer::mainPage_43,1148
+  virtual void menuItemSelected(RecContainer::menuItemSelected40,1124
+  MainPageComponent* mainPage_;RecContainer::mainPage_45,1255
 
 rec/app/RecWindow.cpp,148
 namespace rec 5,67
@@ -586,10 +586,10 @@ void DoubleStretchy::setLooping(140,3539
 rec/audio/source/DoubleStretchy.h,1273
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHY__2,44
 class DoubleStretchy 17,434
-  typedef rec::audio::timescaler::Description Description;DoubleStretchy::Description19,482
+  typedef rec::audio::timescaler::TimeStretch TimeStretch;DoubleStretchy::TimeStretch19,482
   struct SourceReader DoubleStretchy::SourceReader38,1162
     scoped_ptr<Source> source_;DoubleStretchy::SourceReader::source_39,1186
-    Description description_;DoubleStretchy::SourceReader::description_40,1218
+    TimeStretch description_;DoubleStretchy::SourceReader::description_40,1218
     int offset_;DoubleStretchy::SourceReader::offset_41,1248
     scoped_ptr<Source> reader_;DoubleStretchy::SourceReader::reader_43,1266
     scoped_ptr<Buffery> buffered_;DoubleStretchy::SourceReader::buffered_44,1298
@@ -598,7 +598,7 @@ class DoubleStretchy 17,434
   const Buffery* source(DoubleStretchy::source59,1687
   Buffery* next(DoubleStretchy::next63,1763
   bool descriptionChanged_;DoubleStretchy::descriptionChanged_67,1829
-  Description description_;DoubleStretchy::description_68,1857
+  TimeStretch description_;DoubleStretchy::description_68,1857
   int position_;DoubleStretchy::position_70,1886
   CriticalSection lock_;DoubleStretchy::lock_71,1903
   int gettingBlock_;DoubleStretchy::gettingBlock_72,1928
@@ -610,7 +610,7 @@ namespace rec 8,183
 namespace audio rec::audio9,199
 namespace source rec::audio::source10,217
 using rec::util::testFile;rec::audio::source::rec::util::testFile12,237
-using rec::audio::timescaler::Description;rec::audio::source::rec::audio::timescaler::Description13,264
+using rec::audio::timescaler::TimeStretch;rec::audio::source::rec::audio::timescaler::TimeStretch13,264
 static AudioFormatReaderSource* newSource(rec::audio::source::newSource15,308
 TEST(21,537
 TEST(28,754
@@ -618,7 +618,7 @@ TEST(28,754
 rec/audio/source/DoubleStretchyThread.h,496
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHYTHREAD__2,50
 class DoubleStretchyThread 10,201
-  typedef rec::audio::timescaler::Description Description;DoubleStretchyThread::Description12,271
+  typedef rec::audio::timescaler::TimeStretch TimeStretch;DoubleStretchyThread::TimeStretch12,271
   DoubleStretchyThread(DoubleStretchyThread::DoubleStretchyThread14,331
   virtual void setDescription(DoubleStretchyThread::setDescription23,598
   virtual void run(DoubleStretchyThread::run28,730
@@ -668,8 +668,8 @@ void Stretchy::getNextAudioBlockFromSource(69,1897
 rec/audio/source/Stretchy.h,482
 #define __REC_STRETCHY_AUDIO_SOURCE2,36
 class Stretchy 16,327
-  typedef rec::audio::timescaler::Description Description;Stretchy::Description19,433
-  const Description description_;Stretchy::description_31,829
+  typedef rec::audio::timescaler::TimeStretch TimeStretch;Stretchy::TimeStretch19,433
+  const TimeStretch description_;Stretchy::description_31,829
   const int channels_;Stretchy::channels_32,863
   AudioSampleBuffer buffer_;Stretchy::buffer_33,886
   AudioTimeScaler scaler_;Stretchy::scaler_34,915
@@ -777,71 +777,71 @@ rec/audio/stretch/TimeScaler.h,52
 namespace rec 8,172
 
 rec/audio/stretch/TimeStretch.pb.h,3951
-#define PROTOBUF_rec_2faudio_2fstretch_2fdescription_2eproto__INCLUDED5,179
-class Description 41,1427
-  Description(43,1493
-  virtual ~Description(44,1510
-  Description(46,1539
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(Description::unknown_fields53,1686
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(Description::mutable_unknown_fields57,1799
-  int GetCachedSize(Description::GetCachedSize82,2726
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;Description::_unknown_fields_167,6070
-  mutable int _cached_size_;Description::_cached_size_168,6126
-  double time_scale_;Description::time_scale_170,6158
-  double sample_rate_;Description::sample_rate_171,6180
-  ::google::protobuf::uint32 channels_;Description::channels_172,6203
-  double pitch_scale_;Description::pitch_scale_173,6243
-  ::google::protobuf::uint32 bands_;Description::bands_174,6266
-  ::google::protobuf::uint32 filter_overlap_;Description::filter_overlap_175,6303
-  ::google::protobuf::uint32 chunk_size_;Description::chunk_size_176,6349
-  ::google::protobuf::uint32 prefill_size_;Description::prefill_size_177,6391
-  ::google::protobuf::int32 inactive_wait_time_;Description::inactive_wait_time_178,6435
-  ::google::protobuf::uint32 thread_priority_;Description::thread_priority_179,6484
-  ::google::protobuf::uint32 _has_bits_[Description::_has_bits_184,6777
-  inline bool _has_bit(Description::_has_bit187,6886
-  inline void _set_bit(Description::_set_bit190,6997
-  inline void _clear_bit(Description::_clear_bit193,7089
-  static Description* default_instance_;Description::default_instance_198,7219
-inline bool Description::has_time_scale(208,7473
-inline void Description::clear_time_scale(211,7547
-inline double Description::time_scale(215,7631
-inline void Description::set_time_scale(218,7703
-inline bool Description::has_sample_rate(224,7854
-inline void Description::clear_sample_rate(227,7929
-inline double Description::sample_rate(231,8019
-inline void Description::set_sample_rate(234,8093
-inline bool Description::has_channels(240,8239
-inline void Description::clear_channels(243,8311
-inline ::google::protobuf::uint32 Description::channels(247,8392
-inline void Description::set_channels(250,8480
-inline bool Description::has_pitch_scale(256,8643
-inline void Description::clear_pitch_scale(259,8718
-inline double Description::pitch_scale(263,8804
-inline void Description::set_pitch_scale(266,8878
-inline bool Description::has_bands(272,9024
-inline void Description::clear_bands(275,9093
-inline ::google::protobuf::uint32 Description::bands(279,9171
-inline void Description::set_bands(282,9253
-inline bool Description::has_filter_overlap(288,9413
-inline void Description::clear_filter_overlap(291,9491
-inline ::google::protobuf::uint32 Description::filter_overlap(295,9584
-inline void Description::set_filter_overlap(298,9684
-inline bool Description::has_chunk_size(304,9860
-inline void Description::clear_chunk_size(307,9934
-inline ::google::protobuf::uint32 Description::chunk_size(311,10021
-inline void Description::set_chunk_size(314,10113
-inline bool Description::has_prefill_size(320,10284
-inline void Description::clear_prefill_size(323,10360
-inline ::google::protobuf::uint32 Description::prefill_size(327,10452
-inline void Description::set_prefill_size(330,10548
-inline bool Description::has_inactive_wait_time(336,10726
-inline void Description::clear_inactive_wait_time(339,10808
-inline ::google::protobuf::int32 Description::inactive_wait_time(343,10909
-inline void Description::set_inactive_wait_time(346,11016
-inline bool Description::has_thread_priority(352,11203
-inline void Description::clear_thread_priority(355,11282
-inline ::google::protobuf::uint32 Description::thread_priority(359,11377
-inline void Description::set_thread_priority(362,11479
+#define PROTOBUF_rec_2faudio_2fstretch_2fTimeStretch_2eproto__INCLUDED5,179
+class TimeStretch 41,1427
+  TimeStretch(43,1493
+  virtual ~TimeStretch(44,1510
+  TimeStretch(46,1539
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(TimeStretch::unknown_fields53,1686
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(TimeStretch::mutable_unknown_fields57,1799
+  int GetCachedSize(TimeStretch::GetCachedSize82,2726
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;TimeStretch::_unknown_fields_167,6070
+  mutable int _cached_size_;TimeStretch::_cached_size_168,6126
+  double time_scale_;TimeStretch::time_scale_170,6158
+  double sample_rate_;TimeStretch::sample_rate_171,6180
+  ::google::protobuf::uint32 channels_;TimeStretch::channels_172,6203
+  double pitch_scale_;TimeStretch::pitch_scale_173,6243
+  ::google::protobuf::uint32 bands_;TimeStretch::bands_174,6266
+  ::google::protobuf::uint32 filter_overlap_;TimeStretch::filter_overlap_175,6303
+  ::google::protobuf::uint32 chunk_size_;TimeStretch::chunk_size_176,6349
+  ::google::protobuf::uint32 prefill_size_;TimeStretch::prefill_size_177,6391
+  ::google::protobuf::int32 inactive_wait_time_;TimeStretch::inactive_wait_time_178,6435
+  ::google::protobuf::uint32 thread_priority_;TimeStretch::thread_priority_179,6484
+  ::google::protobuf::uint32 _has_bits_[TimeStretch::_has_bits_184,6777
+  inline bool _has_bit(TimeStretch::_has_bit187,6886
+  inline void _set_bit(TimeStretch::_set_bit190,6997
+  inline void _clear_bit(TimeStretch::_clear_bit193,7089
+  static TimeStretch* default_instance_;TimeStretch::default_instance_198,7219
+inline bool TimeStretch::has_time_scale(208,7473
+inline void TimeStretch::clear_time_scale(211,7547
+inline double TimeStretch::time_scale(215,7631
+inline void TimeStretch::set_time_scale(218,7703
+inline bool TimeStretch::has_sample_rate(224,7854
+inline void TimeStretch::clear_sample_rate(227,7929
+inline double TimeStretch::sample_rate(231,8019
+inline void TimeStretch::set_sample_rate(234,8093
+inline bool TimeStretch::has_channels(240,8239
+inline void TimeStretch::clear_channels(243,8311
+inline ::google::protobuf::uint32 TimeStretch::channels(247,8392
+inline void TimeStretch::set_channels(250,8480
+inline bool TimeStretch::has_pitch_scale(256,8643
+inline void TimeStretch::clear_pitch_scale(259,8718
+inline double TimeStretch::pitch_scale(263,8804
+inline void TimeStretch::set_pitch_scale(266,8878
+inline bool TimeStretch::has_bands(272,9024
+inline void TimeStretch::clear_bands(275,9093
+inline ::google::protobuf::uint32 TimeStretch::bands(279,9171
+inline void TimeStretch::set_bands(282,9253
+inline bool TimeStretch::has_filter_overlap(288,9413
+inline void TimeStretch::clear_filter_overlap(291,9491
+inline ::google::protobuf::uint32 TimeStretch::filter_overlap(295,9584
+inline void TimeStretch::set_filter_overlap(298,9684
+inline bool TimeStretch::has_chunk_size(304,9860
+inline void TimeStretch::clear_chunk_size(307,9934
+inline ::google::protobuf::uint32 TimeStretch::chunk_size(311,10021
+inline void TimeStretch::set_chunk_size(314,10113
+inline bool TimeStretch::has_prefill_size(320,10284
+inline void TimeStretch::clear_prefill_size(323,10360
+inline ::google::protobuf::uint32 TimeStretch::prefill_size(327,10452
+inline void TimeStretch::set_prefill_size(330,10548
+inline bool TimeStretch::has_inactive_wait_time(336,10726
+inline void TimeStretch::clear_inactive_wait_time(339,10808
+inline ::google::protobuf::int32 TimeStretch::inactive_wait_time(343,10909
+inline void TimeStretch::set_inactive_wait_time(346,11016
+inline bool TimeStretch::has_thread_priority(352,11203
+inline void TimeStretch::clear_thread_priority(355,11282
+inline ::google::protobuf::uint32 TimeStretch::thread_priority(359,11377
+inline void TimeStretch::set_thread_priority(362,11479
 namespace google 375,11736
 namespace protobuf google::protobuf376,11755
 
@@ -1107,17 +1107,17 @@ rec/components/AudioThumbnailComponent.cpp,740
 namespace rec 5,118
 namespace gui rec::gui6,134
 AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,151
-AudioThumbnailComponent::~AudioThumbnailComponent(18,596
-void AudioThumbnailComponent::setFile(22,694
-void AudioThumbnailComponent::setZoomFactor(30,930
-void AudioThumbnailComponent::mouseWheelMove(39,1256
-Rectangle<int> AudioThumbnailComponent::cursorRectangle(53,1741
-bool AudioThumbnailComponent::within(65,2202
-void AudioThumbnailComponent::mouseUp(69,2300
-void AudioThumbnailComponent::setCursor(77,2592
-void AudioThumbnailComponent::paint(89,2867
-int AudioThumbnailComponent::getCursor(115,3750
-void AudioThumbnailComponent::changeListenerCallback(121,3932
+AudioThumbnailComponent::~AudioThumbnailComponent(18,582
+void AudioThumbnailComponent::setFile(22,680
+void AudioThumbnailComponent::setZoomFactor(30,916
+void AudioThumbnailComponent::mouseWheelMove(39,1242
+Rectangle<int> AudioThumbnailComponent::cursorRectangle(53,1727
+bool AudioThumbnailComponent::within(65,2188
+void AudioThumbnailComponent::mouseUp(69,2286
+void AudioThumbnailComponent::setCursor(77,2578
+void AudioThumbnailComponent::paint(89,2853
+int AudioThumbnailComponent::getCursor(115,3736
+void AudioThumbnailComponent::changeListenerCallback(121,3918
 
 rec/components/AudioThumbnailComponent.h,849
 #define __THUMBNAIL_COMP2,25
@@ -1189,31 +1189,34 @@ class MainPageJ 39,1230
     Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider78,2440
     ToggleButton* loopingButton;MainPageJ::loopingButton79,2471
 
-rec/components/MainPageK.cpp,1100
-using rec::audio::timescaler::Description;17,319
-using rec::gui::ThumbnailDescription;18,363
-using rec::persist::copy;19,402
-namespace rec 23,503
-namespace slow rec::slow24,520
-MainPageK::MainPageK(rec::slow::MainPageK::MainPageK31,835
-class CursorThread ::CursorThread40,1076
-  explicit CursorThread(::CursorThread::CursorThread42,1124
-  void run(::CursorThread::run50,1371
-  MainPageK* const main_;::CursorThread::main_63,1614
-  const ThumbnailDescription prefs_;::CursorThread::prefs_64,1641
-  const int period_;::CursorThread::period_65,1679
-void MainPageK::construct(72,1763
-void MainPageK::destruct(106,2912
-void MainPageK::loadRecentFile(122,3376
-void MainPageK::updateCursor(126,3510
-void MainPageK::setPosition(131,3651
-void MainPageK::loadFileIntoTransport(135,3747
-void MainPageK::sliderValueChanged(169,4967
-static const char* const CD_STATE_NAMES[CD_STATE_NAMES191,5522
-void MainPageK::changeListenerCallback(200,6036
-void MainPageK::startStopButtonClicked(222,6705
-void MainPageK::loopingButtonClicked(229,6860
-void MainPageK::selectionChanged(234,6993
+rec/components/MainPageK.cpp,1144
+using rec::audio::timescaler::TimeStretch;21,466
+using rec::gui::ThumbnailDescription;22,510
+using rec::persist::copy;23,549
+namespace rec 27,650
+namespace slow rec::slow28,667
+MainPageK::MainPageK(rec::slow::MainPageK::MainPageK35,982
+using rec::gui::ThreadDescription;42,1208
+using rec::gui::ThumbnailDescription;43,1244
+using rec::thread::Callback;44,1283
+using rec::thread::LockedMessage;45,1313
+using rec::thread::Runnable;46,1348
+using rec::thread::RunnableThread;47,1378
+using rec::thread::WaitLoop;48,1414
+using rec::thread::makeCallback;49,1444
+static Thread* makeCursorThread(51,1480
+void MainPageK::construct(60,1869
+void MainPageK::destruct(99,3141
+void MainPageK::loadRecentFile(115,3605
+void MainPageK::updateCursor(120,3778
+void MainPageK::setPosition(125,3919
+void MainPageK::loadFileIntoTransport(129,4015
+void MainPageK::sliderValueChanged(164,5290
+static const char* const CD_STATE_NAMES[CD_STATE_NAMES187,5878
+void MainPageK::changeListenerCallback(196,6392
+void MainPageK::startStopButtonClicked(218,7061
+void MainPageK::loopingButtonClicked(225,7216
+void MainPageK::selectionChanged(230,7349
 
 rec/components/MainPageK.h,1782
 #define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
@@ -1241,69 +1244,94 @@ class MainPageK rec::slow::MainPageK18,367
   std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_79,2123
   StringArray cdNames_;rec::slow::MainPageK::cdNames_81,2164
 
-rec/components/ThumbnailDescription.pb.h,4608
+rec/components/ThumbnailDescription.pb.h,6554
 #define PROTOBUF_rec_2fcomponents_2fThumbnailDescription_2eproto__INCLUDED5,189
-class ThumbnailDescription 41,1468
-  ThumbnailDescription(43,1543
-  virtual ~ThumbnailDescription(44,1569
-  ThumbnailDescription(46,1607
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(ThumbnailDescription::unknown_fields53,1790
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(ThumbnailDescription::mutable_unknown_fields57,1903
-  int GetCachedSize(ThumbnailDescription::GetCachedSize82,2875
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;ThumbnailDescription::_unknown_fields_160,6223
-  mutable int _cached_size_;ThumbnailDescription::_cached_size_161,6279
-  ::rec::gui::Color* background_;ThumbnailDescription::background_163,6311
-  ::rec::gui::Color* foreground_;ThumbnailDescription::foreground_164,6345
-  ::rec::gui::Color* cursor_;ThumbnailDescription::cursor_165,6379
-  ::google::protobuf::uint32 cursor_thickness_;ThumbnailDescription::cursor_thickness_166,6409
-  ::google::protobuf::uint32 margin_;ThumbnailDescription::margin_167,6457
-  ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;ThumbnailDescription::source_samples_per_thumbnail_sample_168,6495
-  ::google::protobuf::uint32 thumbnail_cache_;ThumbnailDescription::thumbnail_cache_169,6562
-  ::google::protobuf::uint32 cursor_thread_update_period_;ThumbnailDescription::cursor_thread_update_period_170,6609
-  ::google::protobuf::uint32 cursor_thread_priority_;ThumbnailDescription::cursor_thread_priority_171,6668
-  ::google::protobuf::uint32 _has_bits_[ThumbnailDescription::_has_bits_176,6980
-  inline bool _has_bit(ThumbnailDescription::_has_bit179,7088
-  inline void _set_bit(ThumbnailDescription::_set_bit182,7199
-  inline void _clear_bit(ThumbnailDescription::_clear_bit185,7291
-  static ThumbnailDescription* default_instance_;ThumbnailDescription::default_instance_190,7421
-inline bool ThumbnailDescription::has_background(200,7687
-inline void ThumbnailDescription::clear_background(203,7770
-inline const ::rec::gui::Color& ThumbnailDescription::background(207,7912
-inline ::rec::gui::Color* ThumbnailDescription::mutable_background(210,8068
-inline bool ThumbnailDescription::has_foreground(217,8286
-inline void ThumbnailDescription::clear_foreground(220,8369
-inline const ::rec::gui::Color& ThumbnailDescription::foreground(224,8511
-inline ::rec::gui::Color* ThumbnailDescription::mutable_foreground(227,8667
-inline bool ThumbnailDescription::has_cursor(234,8881
-inline void ThumbnailDescription::clear_cursor(237,8960
-inline const ::rec::gui::Color& ThumbnailDescription::cursor(241,9090
-inline ::rec::gui::Color* ThumbnailDescription::mutable_cursor(244,9230
-inline bool ThumbnailDescription::has_cursor_thickness(251,9444
-inline void ThumbnailDescription::clear_cursor_thickness(254,9533
-inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thickness(258,9639
-inline void ThumbnailDescription::set_cursor_thickness(261,9752
-inline bool ThumbnailDescription::has_margin(267,9935
-inline void ThumbnailDescription::clear_margin(270,10014
-inline ::google::protobuf::uint32 ThumbnailDescription::margin(274,10100
-inline void ThumbnailDescription::set_margin(277,10193
-inline bool ThumbnailDescription::has_source_samples_per_thumbnail_sample(283,10387
-inline void ThumbnailDescription::clear_source_samples_per_thumbnail_sample(286,10495
-inline ::google::protobuf::uint32 ThumbnailDescription::source_samples_per_thumbnail_sample(290,10641
-inline void ThumbnailDescription::set_source_samples_per_thumbnail_sample(293,10792
-inline bool ThumbnailDescription::has_thumbnail_cache(299,11022
-inline void ThumbnailDescription::clear_thumbnail_cache(302,11110
-inline ::google::protobuf::uint32 ThumbnailDescription::thumbnail_cache(306,11214
-inline void ThumbnailDescription::set_thumbnail_cache(309,11325
-inline bool ThumbnailDescription::has_cursor_thread_update_period(315,11528
-inline void ThumbnailDescription::clear_cursor_thread_update_period(318,11628
-inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thread_update_period(322,11757
-inline void ThumbnailDescription::set_cursor_thread_update_period(325,11892
-inline bool ThumbnailDescription::has_cursor_thread_priority(331,12113
-inline void ThumbnailDescription::clear_cursor_thread_priority(334,12208
-inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thread_priority(338,12326
-inline void ThumbnailDescription::set_cursor_thread_priority(341,12451
-namespace google 353,12702
-namespace protobuf google::protobuf354,12721
+class ThreadDescription 42,1493
+  ThreadDescription(44,1565
+  virtual ~ThreadDescription(45,1588
+  ThreadDescription(47,1623
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(ThreadDescription::unknown_fields54,1794
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(ThreadDescription::mutable_unknown_fields58,1907
+  int GetCachedSize(ThreadDescription::GetCachedSize83,2864
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;ThreadDescription::_unknown_fields_112,3855
+  mutable int _cached_size_;ThreadDescription::_cached_size_113,3911
+  ::google::protobuf::uint32 priority_;ThreadDescription::priority_115,3943
+  ::google::protobuf::uint32 period_;ThreadDescription::period_116,3983
+  ::google::protobuf::uint32 _has_bits_[ThreadDescription::_has_bits_121,4279
+  inline bool _has_bit(ThreadDescription::_has_bit124,4387
+  inline void _set_bit(ThreadDescription::_set_bit127,4498
+  inline void _clear_bit(ThreadDescription::_clear_bit130,4590
+  static ThreadDescription* default_instance_;ThreadDescription::default_instance_135,4720
+class ThumbnailDescription 139,4842
+  inline ThumbnailDescription& operator=(ThumbnailDescription::operator=146,5042
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(ThumbnailDescription::unknown_fields151,5164
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(ThumbnailDescription::mutable_unknown_fields155,5277
+  int GetCachedSize(ThumbnailDescription::GetCachedSize180,6249
+  static const int kBackgroundFieldNumber ThumbnailDescription::kBackgroundFieldNumber196,6727
+  static const int kForegroundFieldNumber ThumbnailDescription::kForegroundFieldNumber203,6998
+  static const int kCursorFieldNumber ThumbnailDescription::kCursorFieldNumber210,7257
+  static const int kCursorThicknessFieldNumber ThumbnailDescription::kCursorThicknessFieldNumber217,7540
+  static const int kMarginFieldNumber ThumbnailDescription::kMarginFieldNumber224,7838
+  static const int kSourceSamplesPerThumbnailSampleFieldNumber ThumbnailDescription::kSourceSamplesPerThumbnailSampleFieldNumber231,8196
+  static const int kThumbnailCacheFieldNumber ThumbnailDescription::kThumbnailCacheFieldNumber238,8575
+  static const int kCursorThreadFieldNumber ThumbnailDescription::kCursorThreadFieldNumber245,8897
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;ThumbnailDescription::_unknown_fields_251,9165
+  mutable int _cached_size_;ThumbnailDescription::_cached_size_252,9221
+  ::rec::gui::Color* background_;ThumbnailDescription::background_254,9253
+  ::rec::gui::Color* foreground_;ThumbnailDescription::foreground_255,9287
+  ::rec::gui::Color* cursor_;ThumbnailDescription::cursor_256,9321
+  ::google::protobuf::uint32 cursor_thickness_;ThumbnailDescription::cursor_thickness_257,9351
+  ::google::protobuf::uint32 margin_;ThumbnailDescription::margin_258,9399
+  ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;ThumbnailDescription::source_samples_per_thumbnail_sample_259,9437
+  ::google::protobuf::uint32 thumbnail_cache_;ThumbnailDescription::thumbnail_cache_260,9504
+  ::rec::gui::ThreadDescription* cursor_thread_;ThumbnailDescription::cursor_thread_261,9551
+  ::google::protobuf::uint32 _has_bits_[ThumbnailDescription::_has_bits_266,9858
+  inline bool _has_bit(ThumbnailDescription::_has_bit269,9966
+  inline void _set_bit(ThumbnailDescription::_set_bit272,10077
+  inline void _clear_bit(ThumbnailDescription::_clear_bit275,10169
+  static ThumbnailDescription* default_instance_;ThumbnailDescription::default_instance_280,10299
+inline bool ThreadDescription::has_priority(290,10566
+inline void ThreadDescription::clear_priority(293,10644
+inline ::google::protobuf::uint32 ThreadDescription::priority(297,10731
+inline void ThreadDescription::set_priority(300,10825
+inline bool ThreadDescription::has_period(306,10990
+inline void ThreadDescription::clear_period(309,11066
+inline ::google::protobuf::uint32 ThreadDescription::period(313,11150
+inline void ThreadDescription::set_period(316,11240
+inline bool ThumbnailDescription::has_background(326,11495
+inline void ThumbnailDescription::clear_background(329,11578
+inline const ::rec::gui::Color& ThumbnailDescription::background(333,11720
+inline ::rec::gui::Color* ThumbnailDescription::mutable_background(336,11876
+inline bool ThumbnailDescription::has_foreground(343,12094
+inline void ThumbnailDescription::clear_foreground(346,12177
+inline const ::rec::gui::Color& ThumbnailDescription::foreground(350,12319
+inline ::rec::gui::Color* ThumbnailDescription::mutable_foreground(353,12475
+inline bool ThumbnailDescription::has_cursor(360,12689
+inline void ThumbnailDescription::clear_cursor(363,12768
+inline const ::rec::gui::Color& ThumbnailDescription::cursor(367,12898
+inline ::rec::gui::Color* ThumbnailDescription::mutable_cursor(370,13038
+inline bool ThumbnailDescription::has_cursor_thickness(377,13252
+inline void ThumbnailDescription::clear_cursor_thickness(380,13341
+inline ::google::protobuf::uint32 ThumbnailDescription::cursor_thickness(384,13447
+inline void ThumbnailDescription::set_cursor_thickness(387,13560
+inline bool ThumbnailDescription::has_margin(393,13743
+inline void ThumbnailDescription::clear_margin(396,13822
+inline ::google::protobuf::uint32 ThumbnailDescription::margin(400,13908
+inline void ThumbnailDescription::set_margin(403,14001
+inline bool ThumbnailDescription::has_source_samples_per_thumbnail_sample(409,14195
+inline void ThumbnailDescription::clear_source_samples_per_thumbnail_sample(412,14303
+inline ::google::protobuf::uint32 ThumbnailDescription::source_samples_per_thumbnail_sample(416,14449
+inline void ThumbnailDescription::set_source_samples_per_thumbnail_sample(419,14600
+inline bool ThumbnailDescription::has_thumbnail_cache(425,14830
+inline void ThumbnailDescription::clear_thumbnail_cache(428,14918
+inline ::google::protobuf::uint32 ThumbnailDescription::thumbnail_cache(432,15022
+inline void ThumbnailDescription::set_thumbnail_cache(435,15133
+inline bool ThumbnailDescription::has_cursor_thread(441,15327
+inline void ThumbnailDescription::clear_cursor_thread(444,15413
+inline const ::rec::gui::ThreadDescription& ThumbnailDescription::cursor_thread(448,15576
+inline ::rec::gui::ThreadDescription* ThumbnailDescription::mutable_cursor_thread(451,15756
+namespace google 464,16068
+namespace protobuf google::protobuf465,16087
 
 rec/persist/App.h,653
 #define __REC_PERSIST_APP__2,28
@@ -1438,65 +1466,190 @@ class Writeable 10,174
   bool changed_;27,427
   DISALLOW_COPY_AND_ASSIGN(30,455
 
-rec/slow/Preferences.h,236
-#define __REC_SLOW_PREFERENCES__2,33
-typedef rec::persist::Data<Preferences> Data;10,172
-inline const Preferences getPreferences(18,362
-class LockedPreferences 20,448
-  LockedPreferences(LockedPreferences::LockedPreferences22,505
+rec/slow/LoopWindow.pb.h,1351
+#define PROTOBUF_rec_2fslow_2fLoopWindow_2eproto__INCLUDED5,157
+class LoopWindow 42,1396
+  LoopWindow(44,1461
+  virtual ~LoopWindow(45,1477
+  LoopWindow(47,1505
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(LoopWindow::unknown_fields54,1648
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(LoopWindow::mutable_unknown_fields58,1761
+  int GetCachedSize(LoopWindow::GetCachedSize83,2683
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;LoopWindow::_unknown_fields_105,3459
+  mutable int _cached_size_;LoopWindow::_cached_size_106,3515
+  ::rec::audio::timescaler::TimeStretch* timestretch_;LoopWindow::timestretch_108,3547
+  ::google::protobuf::uint32 _has_bits_[LoopWindow::_has_bits_113,3812
+  inline bool _has_bit(LoopWindow::_has_bit116,3920
+  inline void _set_bit(LoopWindow::_set_bit119,4031
+  inline void _clear_bit(LoopWindow::_clear_bit122,4123
+  static LoopWindow* default_instance_;LoopWindow::default_instance_127,4253
+inline bool LoopWindow::has_timestretch(137,4519
+inline void LoopWindow::clear_timestretch(140,4593
+inline const ::rec::audio::timescaler::TimeStretch& LoopWindow::timestretch(144,4748
+inline ::rec::audio::timescaler::TimeStretch* LoopWindow::mutable_timestretch(147,4918
+namespace google 161,5251
+namespace protobuf google::protobuf162,5270
 
-rec/slow/Preferences.pb.h,3165
+rec/slow/Preferences.h,290
+#define __REC_SLOW_PREFERENCES__2,33
+typedef rec::persist::Data<Preferences> Data;11,202
+inline const Preferences getPreferences(23,480
+class LockedPreferences 25,566
+  LockedPreferences(LockedPreferences::LockedPreferences27,623
+inline gui::ThumbnailDescription getThumbnail(33,750
+
+rec/slow/Preferences.pb.h,2226
 #define PROTOBUF_rec_2fslow_2fPreferences_2eproto__INCLUDED5,159
-class Preferences 42,1437
-  Preferences(44,1503
-  virtual ~Preferences(45,1520
-  Preferences(47,1549
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(Preferences::unknown_fields54,1696
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(Preferences::mutable_unknown_fields58,1809
-  int GetCachedSize(Preferences::GetCachedSize83,2736
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;Preferences::_unknown_fields_142,5347
-  mutable int _cached_size_;Preferences::_cached_size_143,5403
-  ::rec::audio::timescaler::Description* timescale_;Preferences::timescale_145,5435
-  ::rec::gui::ThumbnailDescription* thumbnail_;Preferences::thumbnail_146,5488
-  ::google::protobuf::RepeatedPtrField< ::std::string> recent_files_;Preferences::recent_files_147,5536
-  ::google::protobuf::uint32 max_recent_files_;Preferences::max_recent_files_148,5606
-  bool reload_most_recent_file_;Preferences::reload_most_recent_file_149,5654
-  ::google::protobuf::uint32 _has_bits_[Preferences::_has_bits_154,5900
-  inline bool _has_bit(Preferences::_has_bit157,6008
-  inline void _set_bit(Preferences::_set_bit160,6119
-  inline void _clear_bit(Preferences::_clear_bit163,6211
-  static Preferences* default_instance_;Preferences::default_instance_168,6341
-inline bool Preferences::has_timescale(178,6607
-inline void Preferences::clear_timescale(181,6680
-inline const ::rec::audio::timescaler::Description& Preferences::timescale(185,6830
-inline ::rec::audio::timescaler::Description* Preferences::mutable_timescale(188,6993
-inline bool Preferences::has_thumbnail(195,7252
-inline void Preferences::clear_thumbnail(198,7325
-inline const ::rec::gui::ThumbnailDescription& Preferences::thumbnail(202,7470
-inline ::rec::gui::ThumbnailDescription* Preferences::mutable_thumbnail(205,7628
-inline int Preferences::recent_files_size(212,7857
-inline void Preferences::clear_recent_files(215,7942
-inline const ::std::string& Preferences::recent_files(218,8017
-inline ::std::string* Preferences::mutable_recent_files(221,8127
-inline void Preferences::set_recent_files(224,8237
-inline void Preferences::set_recent_files(227,8369
-inline void Preferences::set_recent_files(230,8492
-inline ::std::string* Preferences::add_recent_files(234,8670
-inline void Preferences::add_recent_files(237,8758
-inline void Preferences::add_recent_files(240,8870
-inline void Preferences::add_recent_files(243,8973
-Preferences::recent_files(247,9193
-Preferences::mutable_recent_files(251,9316
-inline bool Preferences::has_max_recent_files(256,9438
-inline void Preferences::clear_max_recent_files(259,9518
-inline ::google::protobuf::uint32 Preferences::max_recent_files(263,9616
-inline void Preferences::set_max_recent_files(266,9720
-inline bool Preferences::has_reload_most_recent_file(272,9912
-inline void Preferences::clear_reload_most_recent_file(275,9999
-inline bool Preferences::reload_most_recent_file(279,10112
-inline void Preferences::set_reload_most_recent_file(282,10208
-namespace google 294,10431
-namespace protobuf google::protobuf295,10450
+class Preferences 44,1482
+  Preferences(46,1548
+  virtual ~Preferences(47,1565
+  Preferences(49,1594
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(Preferences::unknown_fields56,1741
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(Preferences::mutable_unknown_fields60,1854
+  int GetCachedSize(Preferences::GetCachedSize85,2781
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;Preferences::_unknown_fields_126,4451
+  mutable int _cached_size_;Preferences::_cached_size_127,4507
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::proto::LoopWindow > loop_window_;Preferences::loop_window_129,4539
+  ::rec::gui::ThumbnailDescription* thumbnail_;Preferences::thumbnail_130,4626
+  ::rec::slow::RecentFiles* recent_files_;Preferences::recent_files_131,4674
+  ::google::protobuf::uint32 _has_bits_[Preferences::_has_bits_136,4930
+  inline bool _has_bit(Preferences::_has_bit139,5038
+  inline void _set_bit(Preferences::_set_bit142,5149
+  inline void _clear_bit(Preferences::_clear_bit145,5241
+  static Preferences* default_instance_;Preferences::default_instance_150,5371
+inline int Preferences::loop_window_size(160,5632
+inline void Preferences::clear_loop_window(163,5715
+inline const ::rec::slow::proto::LoopWindow& Preferences::loop_window(166,5788
+inline ::rec::slow::proto::LoopWindow* Preferences::mutable_loop_window(169,5913
+inline ::rec::slow::proto::LoopWindow* Preferences::add_loop_window(172,6038
+Preferences::loop_window(176,6226
+Preferences::mutable_loop_window(180,6365
+inline bool Preferences::has_thumbnail(185,6486
+inline void Preferences::clear_thumbnail(188,6559
+inline const ::rec::gui::ThumbnailDescription& Preferences::thumbnail(192,6704
+inline ::rec::gui::ThumbnailDescription* Preferences::mutable_thumbnail(195,6862
+inline bool Preferences::has_recent_files(202,7106
+inline void Preferences::clear_recent_files(205,7182
+inline const ::rec::slow::RecentFiles& Preferences::recent_files(209,7328
+inline ::rec::slow::RecentFiles* Preferences::mutable_recent_files(212,7490
+namespace google 226,7802
+namespace protobuf google::protobuf227,7821
+
+rec/slow/RecentFiles.pb.h,2268
+#define PROTOBUF_rec_2fslow_2fRecentFiles_2eproto__INCLUDED5,159
+class RecentFiles 40,1339
+  RecentFiles(42,1405
+  virtual ~RecentFiles(43,1422
+  RecentFiles(45,1451
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields(RecentFiles::unknown_fields52,1598
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields(RecentFiles::mutable_unknown_fields56,1711
+  int GetCachedSize(RecentFiles::GetCachedSize81,2638
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;RecentFiles::_unknown_fields_126,4426
+  mutable int _cached_size_;RecentFiles::_cached_size_127,4482
+  ::google::protobuf::RepeatedPtrField< ::std::string> name_;RecentFiles::name_129,4514
+  ::google::protobuf::uint32 max_files_;RecentFiles::max_files_130,4576
+  bool reload_most_recent_;RecentFiles::reload_most_recent_131,4617
+  ::google::protobuf::uint32 _has_bits_[RecentFiles::_has_bits_136,4858
+  inline bool _has_bit(RecentFiles::_has_bit139,4966
+  inline void _set_bit(RecentFiles::_set_bit142,5077
+  inline void _clear_bit(RecentFiles::_clear_bit145,5169
+  static RecentFiles* default_instance_;RecentFiles::default_instance_150,5299
+inline int RecentFiles::name_size(160,5533
+inline void RecentFiles::clear_name(163,5602
+inline const ::std::string& RecentFiles::name(166,5661
+inline ::std::string* RecentFiles::mutable_name(169,5755
+inline void RecentFiles::set_name(172,5849
+inline void RecentFiles::set_name(175,5965
+inline void RecentFiles::set_name(178,6072
+inline ::std::string* RecentFiles::add_name(182,6234
+inline void RecentFiles::add_name(185,6306
+inline void RecentFiles::add_name(188,6402
+inline void RecentFiles::add_name(191,6489
+RecentFiles::name(195,6693
+RecentFiles::mutable_name(199,6800
+inline bool RecentFiles::has_max_files(204,6899
+inline void RecentFiles::clear_max_files(207,6972
+inline ::google::protobuf::uint32 RecentFiles::max_files(211,7056
+inline void RecentFiles::set_max_files(214,7146
+inline bool RecentFiles::has_reload_most_recent(220,7319
+inline void RecentFiles::clear_reload_most_recent(223,7401
+inline bool RecentFiles::reload_most_recent(227,7504
+inline void RecentFiles::set_reload_most_recent(230,7590
+namespace google 242,7803
+namespace protobuf google::protobuf243,7822
+
+rec/thread/Callback.h,304
+#define __REC_THREAD_CALLBACK__2,32
+class Callback 10,160
+  typedef void (Type::*Method)Method12,204
+  Callback(13,238
+  virtual void run(15,317
+  Type* object_;18,383
+  Method method_;19,400
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(21,419
+template <typename Type,24,467
+Runnable* makeCallback(25,509
+
+rec/thread/Cycler.h,303
+#define __REC_THREAD_CYCLER__2,30
+class Cycler 9,131
+  Cycler(11,173
+  explicit Cycler(13,200
+  Cycler(17,275
+  virtual void run(22,383
+  virtual ~Cycler(30,539
+  typedef std::vector<Runnable*> Cycle;Cycler::Cycle36,664
+  Cycle cycle_;Cycler::cycle_37,704
+  int index_;Cycler::index_38,720
+
+rec/thread/LockedMessage.h,161
+#define __REC_THREAD_LOCKEDMESSAGE__2,37
+class LockedMessage 9,144
+  LockedMessage(11,192
+  virtual void run(13,238
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(20,387
+
+rec/thread/Loop.h,134
+#define __REC_THREAD_LOOP__2,28
+class Loop 9,126
+  Loop(11,165
+  virtual void run(13,202
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,326
+
+rec/thread/Runnable.h,110
+#define __REC_THREAD_RUNNABLE2,30
+class Runnable 10,171
+  virtual ~Runnable(12,197
+  void operator(14,262
+
+rec/thread/RunnableThread.h,162
+#define __REC_THREAD_RUNNABLETHREAD2,36
+class RunnableThread 9,143
+  RunnableThread(11,207
+  virtual void run(12,281
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(15,339
+
+rec/thread/Waiter.h,166
+#define __REC_THREAD_WAITER__2,30
+class Waiter 9,131
+  Waiter(11,173
+  virtual void run(12,209
+  const int time_;18,325
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,344
+
+rec/thread/WaitLoop.h,120
+#define __REC_THREAD_WAITLOOP__2,32
+class WaitLoop 11,193
+  WaitLoop(13,233
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,321
+
+rec/thread/Wrapper.h,183
+#define __REC_THREAD_WRAPPER2,29
+class Wrapper 11,163
+  Wrapper(13,206
+  virtual void run(14,247
+  scoped_ptr<Runnable> runnable_;17,323
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(18,357
 
 rec/util/Callback.h,177
 #define __REC_UTIL_CALLBACK2,28
@@ -1509,19 +1662,19 @@ class Callback 8,150
 
 rec/util/Circular.h,494
 #define __REC_UTIL_CIRCULAR__2,30
-struct Circular 13,337
-  Circular(15,364
-  Circular(16,380
-  void reset(18,455
-  bool increment(23,523
-  int64 remaining(Circular::remaining29,650
-  int64 remainingBlock(Circular::remainingBlock30,709
-  int64 begin(Circular::begin32,792
-  int64 end(Circular::end33,842
-  int64 availableFrom(Circular::availableFrom36,970
-  int64 begin_;Circular::begin_47,1160
-  int64 size_;Circular::size_48,1176
-  int64 length_;Circular::length_49,1229
+struct Circular 11,205
+  Circular(13,232
+  Circular(14,248
+  void reset(16,323
+  bool increment(21,391
+  int64 remaining(Circular::remaining27,518
+  int64 remainingBlock(Circular::remainingBlock28,577
+  int64 begin(Circular::begin30,660
+  int64 end(Circular::end31,710
+  int64 availableFrom(Circular::availableFrom34,838
+  int64 begin_;Circular::begin_45,1028
+  int64 size_;Circular::size_46,1044
+  int64 length_;Circular::length_47,1097
 
 rec/util/Circular_test.cpp,163
 namespace rec 5,58
@@ -1529,15 +1682,6 @@ namespace util rec::util6,74
 typedef int64 Result[rec::util::Result10,105
 void testAvailable(rec::util::testAvailable12,131
 TEST(19,268
-
-rec/util/CircularEnum.h,288
-#define __REC_CIRCULAR_ENUM2,28
-template <typename Enum,4,57
-class CircularEnum 5,92
-  struct Next CircularEnum::Next6,113
-    operator()(CircularEnum::Next::operator()7,129
-  struct Previous CircularEnum::Previous10,200
-    operator()(CircularEnum::Previous::operator()11,220
 
 rec/util/Color.pb.h,2286
 #define PROTOBUF_rec_2futil_2fColor_2eproto__INCLUDED5,147
@@ -1588,81 +1732,19 @@ inline void Color::set_argb(265,7630
 namespace google 277,7830
 namespace protobuf google::protobuf278,7849
 
-rec/util/CriticalSection.h,142
-#define __REC_CRITICAL_SECTION2,31
-class CriticalSectionLock 9,127
-  CriticalSection lock_;11,188
-  void enter(14,223
-  void exit(15,257
-
-rec/util/DoubleBuffer.h,606
-#define __REC_DOUBLE_BUFFER2,28
-class MultiBuffer 12,247
-  enum State 14,276
-  enum State { EMPTY,14,276
-  enum State { EMPTY, FULL,14,276
-  enum State { EMPTY, FULL, BEING_EMPTIED 14,276
-  MultiBuffer(16,322
-  FillableBuffer* getEmpty(20,447
-  FillableBuffer* getFull(27,623
-  void setState(40,869
-  struct FillableBuffer 46,987
-    FillableBuffer(47,1013
-    State state;48,1052
-    Buffer buffer;49,1069
-  scoped_ptr<LockInterface> lock_;52,1094
-  Notifier notifier_;53,1129
-  FillableBuffer buffers_[buffers_55,1152
-  FillableBuffer* end_;56,1185
-  DISALLOW_COPY_AND_ASSIGN(58,1210
-
 rec/util/Juce.h,112
 #define __REC_UTIL_JUCE2,24
 namespace rec 10,173
 inline Colour makeColor(24,442
 inline void setColor(25,522
 
-rec/util/locker.h,438
-#define __REC_LOCKER2,21
-class LockInterface 11,155
-  virtual ~LockInterface(13,186
-class Locker 18,275
-  Locker(Locker::Locker20,299
-  Locker(Locker::Locker24,389
-  ~Locker(Locker::~Locker28,460
-  LockInterface* lock_;Locker::lock_33,508
-class CriticalSectionLock 37,542
-  CriticalSection lock_;CriticalSectionLock::lock_39,603
-  void enter(CriticalSectionLock::enter43,639
-  void exit(CriticalSectionLock::exit44,674
-
 rec/util/Math.h,29
 #define __REC_UTIL_MATH2,24
 
-rec/util/math_test.cpp,79
+rec/util/Math_test.cpp,79
 namespace rec 5,81
 namespace util rec::util6,97
 TEST(rec::util::TEST8,115
-
-rec/util/Notifier.h,315
-#define __REC_UTIL_NOTIFIER2,28
-class Notifier 8,117
-  virtual void operator(10,143
-template <typename Value,14,222
-class NotifierTemplate 15,261
-  NotifierTemplate(NotifierTemplate::NotifierTemplate17,320
-  virtual void operator()(NotifierTemplate::operator()18,359
-  Op op_;NotifierTemplate::op_21,431
-
-rec/util/OrphanableThread.h,242
-#define __REC_UTIL_ORPHANABLE_THREAD__2,39
-class OrphanableThread 9,154
-  OrphanableThread(11,204
-  virtual void run(13,248
-  void orphan(25,417
-  CriticalSection lock_;39,617
-  bool orphaned_;42,653
-  DISALLOW_COPY_AND_ASSIGN(43,671
 
 rec/util/Proto.h,156
 #define __REC_UTIL_PROTO2,25
@@ -1671,21 +1753,39 @@ void addOrMoveToEnd(21,473
 template <typename Container,30,795
 void truncateTo(31,840
 
-rec/util/Range.h,118
-#define __REC_UTIL_RANGE__2,27
-struct Range 8,115
-  Items begin_;9,130
-  Items end_;10,146
-  int64 length(12,161
-
-rec/util/State.h,279
-#define __REC_STATE2,20
-template <typename Enum,4,41
-class CircularEnum 5,76
-  struct Next CircularEnum::Next6,97
-    operator()(CircularEnum::Next::operator()7,113
-  struct Previous CircularEnum::Previous10,184
-    operator()(CircularEnum::Previous::operator()11,204
+rec/util/Runnable.h,1145
+#define __REC_UTIL_RUNNABLE2,28
+class Runnable 10,169
+  virtual ~Runnable(12,195
+  void operator(14,260
+class Wrapper 17,315
+  Wrapper(Wrapper::Wrapper19,358
+  virtual void run(Wrapper::run20,399
+  Runnable* runnable_;Wrapper::runnable_23,475
+class RunnableThread 27,545
+  RunnableThread(RunnableThread::RunnableThread29,609
+  virtual void run(RunnableThread::run30,683
+class Loop 36,787
+  Loop(Loop::Loop38,826
+  virtual void run(Loop::run40,863
+class Waiter 49,1025
+  Waiter(Waiter::Waiter51,1067
+  virtual void run(Waiter::run52,1103
+  const int time_;Waiter::time_58,1219
+class Waiter 62,1284
+  Waiter(Waiter::Waiter64,1326
+  virtual void run(Waiter::run65,1374
+  const int time_;Waiter::time_71,1490
+1class Cycler 75,1555
+  Cycler(Cycler::Cycler77,1598
+  Cycler(Cycler::Cycler78,1612
+  Cycler(Cycler::Cycler81,1665
+  typedef std::vector<Runnable*> Cycle;Cycler::Cycle87,1773
+  Cycle cycle_;Cycler::cycle_88,1813
+using rec::gui::ThreadDescription ThreadDescription;95,1887
+class eWrapper 99,1943
+  RunnableWrapper(eWrapper::RunnableWrapper101,1987
+  virtual void run(eWrapper::run102,2036
 
 rec/util/Substitute.h,78
 #define __REC_UTIL_SUBSTITUTE__2,32
@@ -1698,21 +1798,5 @@ rec/util/TestData.h,85
 #define __REC_UTIL_TESTDATA__2,30
 namespace rec 6,102
 inline File testFile(13,239
-
-rec/util/WaitLoopThread.h,199
-#define __REC_WAIT_LOOP_THREAD2,31
-class WaitLoopThread 10,167
-  WaitLoopThread(13,253
-  virtual void run(18,419
-  static Thread* New(25,532
-  Callback callback_;31,722
-  int waitTime_;32,744
-
-rec/util/Wrapper.h,123
-#define __REC_UTIL_WRAPPER2,27
-class Wrapper 8,117
-  Wrapper(10,159
-  void setSource(12,191
-  Wrapped* source_;15,260
 
 rec/ammf_scaler/mfMath.h,0

@@ -23,7 +23,7 @@ class RecContainer : public ComponentContainer<RecWindow> {
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& menuName) {
     PopupMenu menu;
     if (menuName == "File") {
-      rec::slow::Preferences prefs(rec::slow::getPreferences());
+      slow::proto::Preferences prefs(rec::slow::getPreferences());
       if (prefs.has_recent_files()) {
         const slow::RecentFiles& recent = prefs.recent_files();
         PopupMenu submenu;

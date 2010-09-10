@@ -12,6 +12,7 @@
 
 namespace rec {
 namespace slow {
+namespace proto {
 
 namespace {
 
@@ -74,20 +75,18 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::audio::timescaler::protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fcomponents_2fThumbnailDescription_2eproto();
   ::rec::slow::proto::protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto();
   ::rec::slow::protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/Preferences.proto\022\010rec.slow\032#"
-    "rec/audio/stretch/TimeStretch.proto\032)rec"
-    "/components/ThumbnailDescription.proto\032\031"
-    "rec/slow/LoopWindow.proto\032\032rec/slow/Rece"
-    "ntFiles.proto\"\235\001\n\013Preferences\022/\n\013loop_wi"
-    "ndow\030\001 \003(\0132\032.rec.slow.proto.LoopWindow\0220"
-    "\n\tthumbnail\030\002 \001(\0132\035.rec.gui.ThumbnailDes"
-    "cription\022+\n\014recent_files\030\003 \001(\0132\025.rec.slo"
-    "w.RecentFiles", 333);
+    "\n\032rec/slow/Preferences.proto\022\016rec.slow.p"
+    "roto\032)rec/components/ThumbnailDescriptio"
+    "n.proto\032\031rec/slow/LoopWindow.proto\032\032rec/"
+    "slow/RecentFiles.proto\"\235\001\n\013Preferences\022/"
+    "\n\013loop_window\030\001 \003(\0132\032.rec.slow.proto.Loo"
+    "pWindow\0220\n\tthumbnail\030\002 \001(\0132\035.rec.gui.Thu"
+    "mbnailDescription\022+\n\014recent_files\030\003 \001(\0132"
+    "\025.rec.slow.RecentFiles", 302);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -403,6 +402,7 @@ void Preferences::Swap(Preferences* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace proto
 }  // namespace slow
 }  // namespace rec
 

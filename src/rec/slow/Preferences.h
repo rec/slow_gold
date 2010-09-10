@@ -8,10 +8,10 @@
 namespace rec {
 namespace slow {
 
-typedef rec::persist::Data<Preferences> Data;
+typedef persist::Data<proto::Preferences> Data;
 
 inline Data* getMutablePreferences() {
-  static Data* data = rec::persist::getAppData<Preferences>("preferences", "");
+  static Data* data = persist::getAppData<proto::Preferences>("preferences", "");
   Data::Access prefs(data);
 
   if (!prefs->loop_window_size())
@@ -20,7 +20,9 @@ inline Data* getMutablePreferences() {
   return data;
 }
 
-inline const Preferences getPreferences() { return getMutablePreferences()->get(); }
+inline const proto::Preferences getPreferences() {
+  return getMutablePreferences()->get();
+}
 
 class LockedPreferences : public Data::Access {
  public:

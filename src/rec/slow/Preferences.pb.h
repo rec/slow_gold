@@ -23,7 +23,6 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "rec/audio/stretch/TimeStretch.pb.h"
 #include "rec/components/ThumbnailDescription.pb.h"
 #include "rec/slow/LoopWindow.pb.h"
 #include "rec/slow/RecentFiles.pb.h"
@@ -31,6 +30,7 @@
 
 namespace rec {
 namespace slow {
+namespace proto {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto();
@@ -121,7 +121,7 @@ class Preferences : public ::google::protobuf::Message {
   inline const ::rec::slow::RecentFiles& recent_files() const;
   inline ::rec::slow::RecentFiles* mutable_recent_files();
   
-  // @@protoc_insertion_point(class_scope:rec.slow.Preferences)
+  // @@protoc_insertion_point(class_scope:rec.slow.proto.Preferences)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -218,6 +218,7 @@ inline ::rec::slow::RecentFiles* Preferences::mutable_recent_files() {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace proto
 }  // namespace slow
 }  // namespace rec
 

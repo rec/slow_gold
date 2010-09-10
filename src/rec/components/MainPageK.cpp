@@ -2,8 +2,6 @@
 
 #include <glog/logging.h>
 
-#include "rec/slow/Preferences.pb.h"
-
 #include "MainPageJ.h"
 #include "MainPageK.h"
 
@@ -86,7 +84,7 @@ void MainPageK::construct(MainPageJ* peer) {
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
 
-  Preferences prefs(getPreferences());
+  proto::Preferences prefs(getPreferences());
   if (prefs.has_recent_files()) {
     const RecentFiles& recent = prefs.recent_files();
     if (int size = recent.name_size()) {
