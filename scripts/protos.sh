@@ -4,7 +4,7 @@ CONFIG=debug
 
 source "$ROOT/rec/scripts/variables.sh"
 
-cd $ROOT/rec/src
-"$INSTALL_DIR/bin/protoc" --cpp_out=$ROOT/rec/genfiles/proto rec/*/*.proto rec/*/*/*.proto
+cd "$ROOT/rec/src"
+"$INSTALL_DIR/bin/protoc" --cpp_out="$ROOT/rec/genfiles/proto" rec/*/*.proto rec/*/*/*.proto
 
 

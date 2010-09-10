@@ -12,9 +12,9 @@ while (( "$#" )); do
 
   ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
 
-  curl -O $URL_PATH/$ARCHIVE &&\
-   tar xzf $ARCHIVE &&\
-   rm $ARCHIVE &&\
-   ln -s $PACKAGE-$VERSION $PACKAGE
+  curl -O $URL_PATH/$ARCHIVE
+  tar xzf $ARCHIVE
+  rm $ARCHIVE
+  ln -s $PACKAGE-$VERSION $PACKAGE
 
 done

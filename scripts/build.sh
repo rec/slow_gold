@@ -2,10 +2,10 @@ CONFIG=$1
 shift
 
 while (( "$#" )); do
-  PACKAGE=$1
+  PACKAGE="$1"
   shift
 
-  cd $ROOT
+  cd "$ROOT"
   source "rec/scripts/variables.sh"
 
   if [ -d "$INSTALL_DIR" ] ; then
@@ -17,10 +17,10 @@ while (( "$#" )); do
   mkdir -p "$INSTALL_DIR"
 
   echo "Building package $PACKAGE, config=$CONFIG into $INSTALL_DIR"
-  cd $ROOT/$PACKAGE
-  source $SCRIPTS/configure.sh &&
-   make clean &&\
-   make &&\
-   make install
+  cd "$ROOT/$PACKAGE"
+  source "$SCRIPTS/configure.sh"
+  make clean
+  make
+  make install
 
 done

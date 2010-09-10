@@ -6,8 +6,8 @@ CPPFLAGS="-arch i386"
 CONFIGURE_SCRIPT="standard"
 SCRIPTS="$ROOT/rec/scripts"
 
-source "$SCRIPTS/platform/platform.sh" &&\
-  source "$SCRIPTS/config/$CONFIG.sh" &&\
+source "$SCRIPTS/platform/platform.sh"
+  source "$SCRIPTS/config/$CONFIG.sh"
   source "$SCRIPTS/package/$PACKAGE.sh"
 
 INSTALL_DIR="$ROOT/build/$PLATFORM/$CONFIG/$PACKAGE"
