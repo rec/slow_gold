@@ -37,32 +37,111 @@ MainPageK::MainPageK(AudioDeviceManager* d)
 
 namespace {
 
-class CursorThread : public Thread {
+class Runnable {
  public:
-  explicit CursorThread(MainPageK* main) :
-      Thread("cursor"),
-      main_(main),
-      prefs_(getPreferences().thumbnail()),
-      period_(prefs_.cursor_thread_update_period()) {
-    setPriority(prefs_.cursor_thread_priority());
+  virtual ~Runnable() {}
+  virtual void run() = 0;
+  void operator()() { run(); }
+};
+
+class RunnableWrapper : public Runnable {
+ public:
+  RunnableWrapper(Runnable* r) : runnable_(r) {}
+  virtual void run() { runnable->run(); }
+
+ protected:
+  Runnable* runnable_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnableWrapper);
+};
+
+class LoopRunnable : public RunnableWrapper {
+ public:
+  LoopRunnable(Runnable* r, Thread* t) : runnable_(r) {}
+
+};
+
+class RunnableThread : public Thread, public RunnableWrapper {
+ public:
+  RunnableThread(const String& n, Runnable* r) : Thread(n), RunnableWrapper(r) {}
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnableThread);
+};
+
+class RunThread : public RunnableThread {
+ public:
+  RunThread(const String& name, Runnable* runnable)
+      : RunnableThread(name),
+        runnable_(runnable) {
   }
 
-  void run() {
-    while (!threadShouldExit()) {
-      {
-        MessageManagerLock lock(this);
-        if (!lock.lockWasGained())
-          return;
-        main_->updateCursor();
-      }
-      wait(period_);
+  virtual void run() { runnable_->run(); }
+
+ private:
+  Runnable* runnable;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunThread);
+};
+
+class Loop : Rubl
+
+using rec::gui::ThreadDescription ThreadDescription;
+
+
+class LoopingThread : public Thread {
+ public:
+  LoopingThread(const String& name, const ThreadDescription& desc)
+      : Thread(name), period_(desc.period()) {
+    setPriority(desc.priority());
+  }
+
+  virtual void run() {
+    for (bool waiting = false; !threadShouldExit(); waiting = !waiting) {
+      if (waiting)
+        wait(period_);
+      else
+        runOnce();
     }
+  }
+
+  virtual void runOnce() = 0;
+
+ protected:
+  int period_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopingThread);
+};
+
+template <typename Type>
+class LoopingContainerThread : public LoopingThread {
+ public:
+  LoopingContainerThread(Type* contents,
+                         const String& name, const ThreadDescription& desc)
+      : LoopingThread(name, desc),
+        contents_(contents) {
+  }
+
+ protected:
+  Type* const contents_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopingThread);
+};
+
+class CursorThread : public LoopingThread {
+ public:
+  CursorThread(MainPageK* main)
+      : LoopingThread("cursor", getPreferences().thumbnail().cursor_thread()),
+        main_(main) {
+  }
+
+  virtual void runOnce() {
+    MessageManagerLock lock(this);
+    if (lock.lockWasGained())
+      main_->updateCursor();
   }
 
  private:
   MainPageK* const main_;
-  const ThumbnailDescription prefs_;
-  const int period_;
+  ThreadDescription description_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CursorThread);
 };

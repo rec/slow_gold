@@ -2,6 +2,11 @@ import "rec/util/Color.proto";
 
 package rec.gui;
 
+message ThreadDescription {
+  optional uint32 priority = 1 [default = 4];
+  optional uint32 period = 2   [default = 40];
+};
+
 message ThumbnailDescription {
   optional rec.gui.Color background = 1;
   optional rec.gui.Color foreground = 2;
@@ -11,6 +16,5 @@ message ThumbnailDescription {
   optional uint32 margin = 5                              [default = 2];
   optional uint32 source_samples_per_thumbnail_sample = 6 [default = 512];
   optional uint32 thumbnail_cache = 7                     [default = 5];
-  optional uint32 cursor_thread_update_period = 8         [default = 40];
-  optional uint32 cursor_thread_priority = 9              [default = 4];
+  optional ThreadDescription cursor_thread = 8;
 };
