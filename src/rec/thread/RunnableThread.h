@@ -12,7 +12,7 @@ class RunnableThread : public Thread, public Wrapper {
   virtual void run() { runnable_->run(this); }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Thread);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnableThread);
 };
 
 }  // namespace runnable

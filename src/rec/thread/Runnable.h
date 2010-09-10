@@ -11,7 +11,7 @@ class Runnable {
  public:
   virtual ~Runnable() {}
   virtual void run(Thread* thread) = 0;
-  void operator(Thread* thread)() { run(thread); }
+  void operator()(Thread* thread) { run(thread); }
 };
 
 }  // namespace runnable

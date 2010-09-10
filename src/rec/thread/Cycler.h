@@ -21,7 +21,7 @@ class Cycler : public Runnable {
 
   virtual void run(Thread* thread) {
     if (!cycle_.empty())
-      cycle_[index_].run(thread);
+      cycle_[index_]->run(thread);
 
     if (++index_ >= cycle_.size())
       index_ = 0;

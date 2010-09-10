@@ -13,6 +13,10 @@
 #include "rec/persist/Copy.h"
 #include "rec/util/Proto.h"
 
+#include "rec/thread/LockedMessage.h"
+#include "rec/thread/RunnableThread.h"
+#include "rec/thread/WaitLoop.h"
+#include "rec/thread/Callback.h"
 
 using rec::audio::timescaler::TimeStretch;
 using rec::gui::ThumbnailDescription;
@@ -35,118 +39,23 @@ MainPageK::MainPageK(AudioDeviceManager* d)
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
-namespace {
+using rec::gui::ThreadDescription;
+using rec::thread::Callback;
+using rec::thread::LockedMessage;
+using rec::thread::Runnable;
+using rec::thread::RunnableThread;
+using rec::thread::WaitLoop;
+using rec::thread::makeCallback;
 
-class Runnable {
- public:
-  virtual ~Runnable() {}
-  virtual void run() = 0;
-  void operator()() { run(); }
-};
-
-class RunnableWrapper : public Runnable {
- public:
-  RunnableWrapper(Runnable* r) : runnable_(r) {}
-  virtual void run() { runnable->run(); }
-
- protected:
-  Runnable* runnable_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnableWrapper);
-};
-
-class LoopRunnable : public RunnableWrapper {
- public:
-  LoopRunnable(Runnable* r, Thread* t) : runnable_(r) {}
-
-};
-
-class RunnableThread : public Thread, public RunnableWrapper {
- public:
-  RunnableThread(const String& n, Runnable* r) : Thread(n), RunnableWrapper(r) {}
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnableThread);
-};
-
-class RunThread : public RunnableThread {
- public:
-  RunThread(const String& name, Runnable* runnable)
-      : RunnableThread(name),
-        runnable_(runnable) {
-  }
-
-  virtual void run() { runnable_->run(); }
-
- private:
-  Runnable* runnable;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunThread);
-};
-
-class Loop : Rubl
-
-using rec::gui::ThreadDescription ThreadDescription;
-
-
-class LoopingThread : public Thread {
- public:
-  LoopingThread(const String& name, const ThreadDescription& desc)
-      : Thread(name), period_(desc.period()) {
-    setPriority(desc.priority());
-  }
-
-  virtual void run() {
-    for (bool waiting = false; !threadShouldExit(); waiting = !waiting) {
-      if (waiting)
-        wait(period_);
-      else
-        runOnce();
-    }
-  }
-
-  virtual void runOnce() = 0;
-
- protected:
-  int period_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopingThread);
-};
-
-template <typename Type>
-class LoopingContainerThread : public LoopingThread {
- public:
-  LoopingContainerThread(Type* contents,
-                         const String& name, const ThreadDescription& desc)
-      : LoopingThread(name, desc),
-        contents_(contents) {
-  }
-
- protected:
-  Type* const contents_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopingThread);
-};
-
-class CursorThread : public LoopingThread {
- public:
-  CursorThread(MainPageK* main)
-      : LoopingThread("cursor", getPreferences().thumbnail().cursor_thread()),
-        main_(main) {
-  }
-
-  virtual void runOnce() {
-    MessageManagerLock lock(this);
-    if (lock.lockWasGained())
-      main_->updateCursor();
-  }
-
- private:
-  MainPageK* const main_;
-  ThreadDescription description_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(CursorThread);
-};
-
+static Thread* makeCursorThread(MainPageK* main) {
+  ThreadDescription desc = getPreferences().thumbnail().cursor_thread();
+  Runnable* callback = makeCallback(main, &MainPageK::updateCursor);
+  Runnable* locked = new LockedMessage(callback);
+  Thread* t = new RunnableThread("cursor", new WaitLoop(desc.period(), locked));
+  t->setPriority(desc.priority());
+  return t;
 }
+
 
 void MainPageK::construct(MainPageJ* peer) {
   peer_ = peer;
@@ -174,7 +83,7 @@ void MainPageK::construct(MainPageJ* peer) {
   player_.setSource(&transportSource_);
   rec::audio::format::mpg123::initializeOnce();
 
-  cursorThread_.reset(new CursorThread(this));
+  cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
 
   Preferences prefs(getPreferences());
