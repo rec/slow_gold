@@ -9,7 +9,7 @@
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/Preferences.h"
 #include "rec/persist/Copy.h"
-#include "rec/util/Proto.h"
+#include "rec/proto/Proto.h"
 
 #include "rec/thread/LockedMessage.h"
 #include "rec/thread/RunnableThread.h"

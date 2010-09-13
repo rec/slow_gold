@@ -1,0 +1,36 @@
+package rec.event.proto;
+
+import "google/protobuf/descriptor.proto";
+
+message Source {
+  enum Type {
+    MENU = 0;
+    KEYBOARD = 1;
+    CONTROL = 2;
+    AUTOMATIC = 3;
+  };
+
+  // The actual source.  If this is a menu, these are the indices of menus,
+  // submenus and items in order; if this is a keystroke, this is a list of all
+  // the keys being held down; if this is a control, these are the indexes of
+  // the control.  This implies that all menus and items within menus and
+  // all buttons have a permanent index.
+
+  optional Type type = 1;
+  repeated uint32 index = 2;
+  optional uint32 modifier_keys = 3;
+};
+
+message ProtoAddress {
+  repeated uint32 tag = 1;
+};
+
+message Action {
+
+};
+
+message Event {
+  optional uint64 timestamp = 1;
+  optional Source source = 2;
+  optional Action action = 3;
+};

@@ -1,0 +1,142 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+		AFB536015C2016340D0938F6 = { isa = PBXBuildFile; fileRef = 60FDFB8ABC9E9FBC0337D598; };
+		CDA54D855B99FF73EB10EA29 = { isa = PBXBuildFile; fileRef = 31B9E756F481C4B45996C0C8; };
+		0BFC5BE5DC3E76C3386888BC = { isa = PBXBuildFile; fileRef = AFFA113B4620DF71E0C95330; };
+		C7717770A7FCCC8D0100BD12 = { isa = PBXBuildFile; fileRef = 0D30F92B437347DED120EBA1; };
+		837E917192DBF70E45396DA0 = { isa = PBXBuildFile; fileRef = DB6A3C91D55E3BF47ED7A13E; };
+		B742D3994021C7DBD9388898 = { isa = PBXBuildFile; fileRef = 49F71A9F229FC75256DAB334; };
+		B4C558D29C4D549F792FC996 = { isa = PBXBuildFile; fileRef = 4CD870D1F2B9C01E7139A17B; };
+		C06B687368182BA7A3040D91 = { isa = PBXBuildFile; fileRef = 85FF48DC1F954341551D25CB; };
+		CCF2780444D4F2BFDDE9419C = { isa = PBXBuildFile; fileRef = DE1611D82C80B56439F1A80A; };
+		D88888A5209FB8C7F7BE85A7 = { isa = PBXBuildFile; fileRef = 184DEAD4386B38971DE42C4A; };
+		60FDFB8ABC9E9FBC0337D598 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		31B9E756F481C4B45996C0C8 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AFFA113B4620DF71E0C95330 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0D30F92B437347DED120EBA1 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		DB6A3C91D55E3BF47ED7A13E = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		49F71A9F229FC75256DAB334 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CA8C33F575DDA296DC682BF0 = { isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = library.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC6091F7B604FCA6ACF6EE8E = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		70FB5781A5D3C8AFBD5DDECF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
+		37772E3EA79DFC0F216A511F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
+		4CD870D1F2B9C01E7139A17B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode1.mm; path = ../../JuceLibraryCode/JuceLibraryCode1.mm; sourceTree = SOURCE_ROOT; };
+		85FF48DC1F954341551D25CB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode2.mm; path = ../../JuceLibraryCode/JuceLibraryCode2.mm; sourceTree = SOURCE_ROOT; };
+		DE1611D82C80B56439F1A80A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode3.mm; path = ../../JuceLibraryCode/JuceLibraryCode3.mm; sourceTree = SOURCE_ROOT; };
+		184DEAD4386B38971DE42C4A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode4.mm; path = ../../JuceLibraryCode/JuceLibraryCode4.mm; sourceTree = SOURCE_ROOT; };
+		F59068728AAFA80D427E5EC6 = { isa = PBXGroup; children = (  ); name = Source; sourceTree = "<group>"; };
+		EEF11BD46DD4E1FAD6D243EF = { isa = PBXGroup; children = (
+				70FB5781A5D3C8AFBD5DDECF,
+				37772E3EA79DFC0F216A511F,
+				4CD870D1F2B9C01E7139A17B,
+				85FF48DC1F954341551D25CB,
+				DE1611D82C80B56439F1A80A,
+				184DEAD4386B38971DE42C4A ); name = "Juce Library Code"; sourceTree = "<group>"; };
+		92608BB8B140253897E64801 = { isa = PBXGroup; children = (
+				AC6091F7B604FCA6ACF6EE8E ); name = Resources; sourceTree = "<group>"; };
+		B50E418D98B9C8100734F362 = { isa = PBXGroup; children = (
+				60FDFB8ABC9E9FBC0337D598,
+				31B9E756F481C4B45996C0C8,
+				AFFA113B4620DF71E0C95330,
+				0D30F92B437347DED120EBA1,
+				DB6A3C91D55E3BF47ED7A13E,
+				49F71A9F229FC75256DAB334 ); name = Frameworks; sourceTree = "<group>"; };
+		C0141F19F7EA2357F13947BE = { isa = PBXGroup; children = (
+				CA8C33F575DDA296DC682BF0 ); name = Products; sourceTree = "<group>"; };
+		9E7A30693C8607C87EB9F6A5 = { isa = PBXGroup; children = (
+				F59068728AAFA80D427E5EC6,
+				EEF11BD46DD4E1FAD6D243EF,
+				92608BB8B140253897E64801,
+				B50E418D98B9C8100734F362,
+				C0141F19F7EA2357F13947BE ); name = Source; sourceTree = "<group>"; };
+		862EE6227B5C93F50B3BD550 = { isa = XCBuildConfiguration; buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				PREBINDING = NO;
+				HEADER_SEARCH_PATHS = " $(inherited)";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				SDKROOT = iphonesimulator3.0;
+				ONLY_ACTIVE_ARCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+				"JUCER_XCODE_IPHONE_25ADD7EF=1",
+				"_DEBUG=1",
+				"DEBUG=1 "); }; name = Debug; };
+		1FCA7E9595B438EF11875327 = { isa = XCBuildConfiguration; buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				PREBINDING = NO;
+				HEADER_SEARCH_PATHS = " $(inherited)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				SDKROOT = iphonesimulator3.0;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+				"JUCER_XCODE_IPHONE_25ADD7EF=1",
+				"_NDEBUG=1",
+				"NDEBUG=1 "); }; name = Release; };
+		117D3D5F5A4EA8EE1A26D8E4 = { isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				ZERO_LINK = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = "library"; }; name = Debug; };
+		F4F3E0CB3305BA643FF5EAF7 = { isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				ZERO_LINK = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = "library"; }; name = Release; };
+		CCF59975C619DECA8C85B6C1 = { isa = XCConfigurationList; buildConfigurations = (
+				117D3D5F5A4EA8EE1A26D8E4,
+				F4F3E0CB3305BA643FF5EAF7 ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+		6437B5B0B68D87113B85EAB5 = { isa = XCConfigurationList; buildConfigurations = (
+				862EE6227B5C93F50B3BD550,
+				1FCA7E9595B438EF11875327 ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+		3F67B6A82FC4AAC39AD64F79 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (  ); runOnlyForDeploymentPostprocessing = 0; };
+		1B0DB317EEB0B420F3E88326 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				B4C558D29C4D549F792FC996,
+				C06B687368182BA7A3040D91,
+				CCF2780444D4F2BFDDE9419C,
+				D88888A5209FB8C7F7BE85A7 ); runOnlyForDeploymentPostprocessing = 0; };
+		B012E350C7ACFF488DBA7217 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
+				AFB536015C2016340D0938F6,
+				CDA54D855B99FF73EB10EA29,
+				0BFC5BE5DC3E76C3386888BC,
+				C7717770A7FCCC8D0100BD12,
+				837E917192DBF70E45396DA0,
+				B742D3994021C7DBD9388898 ); runOnlyForDeploymentPostprocessing = 0; };
+		943E3D647C2F1456BD44EEE5 = { isa = PBXNativeTarget; buildConfigurationList = 6437B5B0B68D87113B85EAB5; buildPhases = (
+				3F67B6A82FC4AAC39AD64F79,
+				1B0DB317EEB0B420F3E88326,
+				B012E350C7ACFF488DBA7217 ); buildRules = ( ); dependencies = ( ); name = library; productName = library; productReference = CA8C33F575DDA296DC682BF0; productInstallPath = "$(HOME)/Applications"; productType = "com.apple.product-type.application"; };
+		8ED8CFBD6D453257193A143C = { isa = PBXProject; buildConfigurationList = CCF59975C619DECA8C85B6C1; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 9E7A30693C8607C87EB9F6A5; projectDirPath = ""; projectRoot = ""; targets = ( 943E3D647C2F1456BD44EEE5 ); };
+	};
+	rootObject = 8ED8CFBD6D453257193A143C;
+}

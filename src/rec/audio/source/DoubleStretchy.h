@@ -16,7 +16,7 @@ namespace source {
 
 class DoubleStretchy : public Source {
  public:
-  typedef rec::audio::timescaler::TimeStretch TimeStretch;
+  typedef timescaler::TimeStretch TimeStretch;
   const static int MINIMUM_FILL_SIZE = 4096;
 
   DoubleStretchy(const TimeStretch& description,

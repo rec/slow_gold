@@ -117,6 +117,17 @@
         <FILE id="QxgaJ33rv" name="TimeScaler.h" compile="0" resource="0" file="../../src/rec/audio/stretch/TimeScaler.h"/>
       </GROUP>
     </GROUP>
+    <GROUP id="SFE14HnL" name="slow">
+      <FILE id="1RH7T3P7w" name="Preferences.pb.cc" compile="1" resource="0"
+            file="../../genfiles/proto/rec/slow/Preferences.pb.cc"/>
+      <FILE id="2RH7T3P5w" name="ThumbnailDescription.pb.cc" compile="1"
+            resource="0" file="../../genfiles/proto/rec/components/ThumbnailDescription.pb.cc"/>
+      <FILE id="2RH7T3P6w" name="Color.pb.cc" compile="1" resource="0" file="../../genfiles/proto/rec/util/Color.pb.cc"/>
+      <FILE id="9RH7T3P3w" name="LoopWindow.pb.cc" compile="1" resource="0"
+            file="../../genfiles/proto/rec/slow/LoopWindow.pb.cc"/>
+      <FILE id="0tH7T3P3w" name="RecentFiles.pb.cc" compile="1" resource="0"
+            file="../../genfiles/proto/rec/slow/RecentFiles.pb.cc"/>
+    </GROUP>
     <GROUP id="lBohzaw" name="base">
       <FILE id="ujTPUShmp" name="ArraySize.h" compile="0" resource="0" file="../../src/rec/base/ArraySize.h"/>
       <FILE id="0mDBFZRpF" name="base.h" compile="0" resource="0" file="../../src/rec/base/base.h"/>
