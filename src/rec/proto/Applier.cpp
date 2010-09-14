@@ -224,5 +224,14 @@ Applier* Applier::create(const Operation& op, Message* msg) {
   return NULL;
 }
 
+#if 0
+std::ostream& operator<<(std::ostream& os, const Applier& a) {
+  return os << "applier("
+            << a.operation().command() << ", "
+            << a.operation().command() << ", "
+}
+
+#endif
+
 }  // namespace proto
 }  // namespace rec
