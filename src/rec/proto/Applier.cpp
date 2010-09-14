@@ -65,9 +65,9 @@ bool Applier::set() {
 #define PR_CASE(TYPE, TYPE_CAP, TYPE_UPPER) \
     case FieldDescriptor::TYPE_ ## TYPE_UPPER: \
      if (isIndexed_)\
-       r->Set ## TYPE_CAP(message_, field_, operation_.value().TYPE ## _f()); \
-     else\
        r->SetRepeated##TYPE_CAP(message_, field_, index_, operation_.value().TYPE ## _f());\
+     else\
+       r->Set ## TYPE_CAP(message_, field_, operation_.value().TYPE ## _f()); \
      return true;
 
     PR_CASE(double, Double, DOUBLE)
