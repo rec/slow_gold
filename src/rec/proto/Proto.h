@@ -5,8 +5,6 @@
 
 #include <algorithm>
 #include "rec/base/basictypes.h"
-#include "rec/base/scoped_ptr.h"
-#include "rec/proto/Applier.h"
 #include "rec/proto/Proto.pb.h"
 
 // useful functions to deal with protocol buffers.
@@ -43,25 +41,8 @@ void truncateTo(int size, Container* cont, Type t) {
   }
 }
 
-inline bool applyOperation(const Operation& operation,
-                           google::protobuf::Message* msg) {
-  scoped_ptr<Applier> applier(Applier::create(operation, msg));
-  return applier && applier->apply();
-}
-
-inline Operation* createOperation(Operation::Command command, ...) {
-  Operation *op = new Operation();
-  op->set_command(command);
-
-  va_list ap;
-  va_start(ap, command);
-
-  for (uint32 addr = va_arg(ap, uint32); addr; addr = va_arg(ap, uint32))
-    op->add_address(addr);
-
-  return op;
-}
-
+bool applyOperation(const Operation& operation, google::protobuf::Message* msg);
+Operation* createOperation(Operation::Command command, ...);
 
 }  // namespace proto
 }  // namespace rec
