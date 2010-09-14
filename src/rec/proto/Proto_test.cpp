@@ -22,6 +22,17 @@ TEST(Proto, CreateOperation) {
   operation->mutable_value()->set_double_f(2.0);
   EXPECT_TRUE(applyOperation(*operation, &test));
   EXPECT_EQ(test.test_double(), 2.0);
+
+  EXPECT_FALSE(test.has_test2());
+  operation.reset(createOperation(Operation::SET,
+                                  test::TestData3::kTest2FieldNumber,
+                                  test::TestData2::kTestUintFieldNumber,
+                                  NULL));
+  operation->mutable_value()->set_uint32_f(23);
+
+  EXPECT_TRUE(applyOperation(*operation, &test));
+  EXPECT_TRUE(test.has_test2());
+  EXPECT_EQ(test.test2().test_uint(), 23);
 }
 
 

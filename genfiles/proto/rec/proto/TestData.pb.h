@@ -212,12 +212,12 @@ class TestData2 : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::proto::test::TestData1 >*
       mutable_test1();
   
-  // optional sint32 test_sint = 6;
-  inline bool has_test_sint() const;
-  inline void clear_test_sint();
-  static const int kTestSintFieldNumber = 6;
-  inline ::google::protobuf::int32 test_sint() const;
-  inline void set_test_sint(::google::protobuf::int32 value);
+  // optional uint32 test_uint = 6;
+  inline bool has_test_uint() const;
+  inline void clear_test_uint();
+  static const int kTestUintFieldNumber = 6;
+  inline ::google::protobuf::uint32 test_uint() const;
+  inline void set_test_uint(::google::protobuf::uint32 value);
   
   // @@protoc_insertion_point(class_scope:rec.proto.test.TestData2)
  private:
@@ -225,7 +225,7 @@ class TestData2 : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::proto::test::TestData1 > test1_;
-  ::google::protobuf::int32 test_sint_;
+  ::google::protobuf::uint32 test_uint_;
   friend void  protobuf_AddDesc_rec_2fproto_2fTestData_2eproto();
   friend void protobuf_AssignDesc_rec_2fproto_2fTestData_2eproto();
   friend void protobuf_ShutdownFile_rec_2fproto_2fTestData_2eproto();
@@ -446,20 +446,20 @@ TestData2::mutable_test1() {
   return &test1_;
 }
 
-// optional sint32 test_sint = 6;
-inline bool TestData2::has_test_sint() const {
+// optional uint32 test_uint = 6;
+inline bool TestData2::has_test_uint() const {
   return _has_bit(1);
 }
-inline void TestData2::clear_test_sint() {
-  test_sint_ = 0;
+inline void TestData2::clear_test_uint() {
+  test_uint_ = 0u;
   _clear_bit(1);
 }
-inline ::google::protobuf::int32 TestData2::test_sint() const {
-  return test_sint_;
+inline ::google::protobuf::uint32 TestData2::test_uint() const {
+  return test_uint_;
 }
-inline void TestData2::set_test_sint(::google::protobuf::int32 value) {
+inline void TestData2::set_test_uint(::google::protobuf::uint32 value) {
   _set_bit(1);
-  test_sint_ = value;
+  test_uint_ = value;
 }
 
 // -------------------------------------------------------------------

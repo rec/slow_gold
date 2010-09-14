@@ -108,7 +108,8 @@ bool Applier::clear() {
 
 bool Applier::add() {
   if (field_->label() != FieldDescriptor::LABEL_REPEATED) {
-    LOG(ERROR) << "Can only add indexed values";
+    LOG(ERROR) << "Can only add indexed values "
+               << field_->label();
     return false;
   }
 
@@ -189,14 +190,15 @@ Applier* Applier::create(const Operation& op, Message* msg) {
     if (i == op.address_size() - 1)
       return new Applier(op, msg, field);
 
-    bool is_message = field->type() != FieldDescriptor::TYPE_MESSAGE;
+    bool is_message = field->type() == FieldDescriptor::TYPE_MESSAGE;
     bool is_repeated = field->label() == FieldDescriptor::LABEL_REPEATED;
 
     if (is_repeated && i == op.address_size() - 2)
       return new Applier(op.address(++i), op, msg, field);
 
     if (!is_message) {
-      LOG(ERROR) << "Non-terminal field had non-message type";
+      LOG(ERROR) << "Non-terminal field had non-message type "
+                 << field->type();
       return NULL;
     }
 

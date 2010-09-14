@@ -7,7 +7,7 @@ message TestData1 {
 
 message TestData2 {
   repeated TestData1 test1 = 5;
-  optional sint32 test_sint = 6;
+  optional uint32 test_uint = 6;
 };
 
 message TestData3 {

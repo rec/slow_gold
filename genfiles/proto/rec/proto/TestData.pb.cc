@@ -54,7 +54,7 @@ void protobuf_AssignDesc_rec_2fproto_2fTestData_2eproto() {
   TestData2_descriptor_ = file->message_type(1);
   static const int TestData2_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestData2, test1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestData2, test_sint_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestData2, test_uint_),
   };
   TestData2_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -124,8 +124,8 @@ void protobuf_AddDesc_rec_2fproto_2fTestData_2eproto() {
     "\n\030rec/proto/TestData.proto\022\016rec.proto.te"
     "st\".\n\tTestData1\022\014\n\004test\030\001 \003(\r\022\023\n\013test_st"
     "ring\030\002 \001(\t\"H\n\tTestData2\022(\n\005test1\030\005 \003(\0132\031"
-    ".rec.proto.test.TestData1\022\021\n\ttest_sint\030\006"
-    " \001(\021\"J\n\tTestData3\022\023\n\013test_double\030\007 \001(\001\022("
+    ".rec.proto.test.TestData1\022\021\n\ttest_uint\030\006"
+    " \001(\r\"J\n\tTestData3\022\023\n\013test_double\030\007 \001(\001\022("
     "\n\005test2\030\010 \001(\0132\031.rec.proto.test.TestData2", 240);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/proto/TestData.proto", &protobuf_RegisterTypes);
@@ -424,7 +424,7 @@ void TestData1::Swap(TestData1* other) {
 
 #ifndef _MSC_VER
 const int TestData2::kTest1FieldNumber;
-const int TestData2::kTestSintFieldNumber;
+const int TestData2::kTestUintFieldNumber;
 #endif  // !_MSC_VER
 
 TestData2::TestData2()
@@ -443,7 +443,7 @@ TestData2::TestData2(const TestData2& from)
 
 void TestData2::SharedCtor() {
   _cached_size_ = 0;
-  test_sint_ = 0;
+  test_uint_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -478,7 +478,7 @@ TestData2* TestData2::New() const {
 
 void TestData2::Clear() {
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    test_sint_ = 0;
+    test_uint_ = 0u;
   }
   test1_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -502,18 +502,18 @@ bool TestData2::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(42)) goto parse_test1;
-        if (input->ExpectTag(48)) goto parse_test_sint;
+        if (input->ExpectTag(48)) goto parse_test_uint;
         break;
       }
       
-      // optional sint32 test_sint = 6;
+      // optional uint32 test_uint = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_test_sint:
+         parse_test_uint:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &test_sint_)));
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &test_uint_)));
           _set_bit(1);
         } else {
           goto handle_uninterpreted;
@@ -546,9 +546,9 @@ void TestData2::SerializeWithCachedSizes(
       5, this->test1(i), output);
   }
   
-  // optional sint32 test_sint = 6;
+  // optional uint32 test_uint = 6;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(6, this->test_sint(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->test_uint(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -566,9 +566,9 @@ void TestData2::SerializeWithCachedSizes(
         5, this->test1(i), target);
   }
   
-  // optional sint32 test_sint = 6;
+  // optional uint32 test_uint = 6;
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(6, this->test_sint(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->test_uint(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -582,11 +582,11 @@ int TestData2::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional sint32 test_sint = 6;
-    if (has_test_sint()) {
+    // optional uint32 test_uint = 6;
+    if (has_test_uint()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->test_sint());
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->test_uint());
     }
     
   }
@@ -626,7 +626,7 @@ void TestData2::MergeFrom(const TestData2& from) {
   test1_.MergeFrom(from.test1_);
   if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     if (from._has_bit(1)) {
-      set_test_sint(from.test_sint());
+      set_test_uint(from.test_uint());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -652,7 +652,7 @@ bool TestData2::IsInitialized() const {
 void TestData2::Swap(TestData2* other) {
   if (other != this) {
     test1_.Swap(&other->test1_);
-    std::swap(test_sint_, other->test_sint_);
+    std::swap(test_uint_, other->test_uint_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
