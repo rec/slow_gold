@@ -22,9 +22,9 @@
     <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" juceFolder="../../../juce"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
-    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="unit-tests"
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="rec-library"
                    osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../genfiles/proto;../../../../../juce;../..;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/libcddb/include;../../../../../build/mac/debug/glog/include;../../../../../build/mac/debug/protobuf/include;../../../../../build/mac/debug/gflags/include"/>
-    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="unit-tests"
+    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="rec-library"
                    osxSDK="default" osxCompatibility="default" headerPath="../../../../src;../../../../genfiles/proto;../../../../../juce;../..;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/libcddb/include;../../../../../release/mac/debug/glog/include;../../../../../build/mac/release/protobuf/include;../../../../../build/mac/release/gflags/include"/>
   </CONFIGURATIONS>
   <MAINGROUP id="ZfU8JV0V7" name="library">

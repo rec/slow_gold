@@ -128,6 +128,14 @@
       <FILE id="0tH7T3P3w" name="RecentFiles.pb.cc" compile="1" resource="0"
             file="../../genfiles/proto/rec/slow/RecentFiles.pb.cc"/>
     </GROUP>
+    <GROUP id="se14hfnl" name="proto">
+      <FILE id="0R7TH47Pw" name="Applier.cpp" compile="1" resource="0" file="../../src/rec/proto/Applier.cpp"/>
+      <FILE id="9RT84H2Pw" name="Proto_test.cpp" compile="1" resource="0"
+            file="../../src/rec/proto/Proto_test.cpp"/>
+      <FILE id="1HR72TP6w" name="Proto.pb.cc" compile="1" resource="0" file="../../genfiles/proto/rec/proto/Proto.pb.cc"/>
+      <FILE id="HR081TP3w" name="TestData.pb.cc" compile="1" resource="0"
+            file="../../genfiles/proto/rec/proto/TestData.pb.cc"/>
+    </GROUP>
     <GROUP id="lBohzaw" name="base">
       <FILE id="ujTPUShmp" name="ArraySize.h" compile="0" resource="0" file="../../src/rec/base/ArraySize.h"/>
       <FILE id="0mDBFZRpF" name="base.h" compile="0" resource="0" file="../../src/rec/base/base.h"/>
@@ -148,28 +156,13 @@
     <GROUP id="DVDTLY5JP" name="util">
       <FILE id="IdSx8RESZ" name="Callback.h" compile="0" resource="0" file="../../src/rec/util/Callback.h"/>
       <FILE id="ThAhuOgmM" name="Circular.h" compile="0" resource="0" file="../../src/rec/util/Circular.h"/>
-      <FILE id="F8aej17Qc" name="CircularEnum.h" compile="0" resource="0"
-            file="../../src/rec/util/CircularEnum.h"/>
-      <FILE id="d9zviqF5q" name="CriticalSection.h" compile="0" resource="0"
-            file="../../src/rec/util/CriticalSection.h"/>
       <FILE id="DpeVgU5sj" name="Substitute_test.cpp" compile="1" resource="0"
             file="../../src/rec/util/Substitute_test.cpp"/>
-      <FILE id="GD0O8IbQn" name="DoubleBuffer.h" compile="0" resource="0"
-            file="../../src/rec/util/DoubleBuffer.h"/>
-      <FILE id="i3PZ3K8k5" name="locker.h" compile="0" resource="0" file="../../src/rec/util/locker.h"/>
       <FILE id="0OI2HSB9F" name="Math.h" compile="0" resource="0" file="../../src/rec/util/Math.h"/>
       <FILE id="4kqrRxwRL" name="math_test.cpp" compile="1" resource="0"
             file="../../src/rec/util/math_test.cpp"/>
-      <FILE id="QuJxXYA6" name="Notifier.h" compile="0" resource="0" file="../../src/rec/util/Notifier.h"/>
-      <FILE id="vA6Q1pBX4" name="OrphanableThread.h" compile="0" resource="0"
-            file="../../src/rec/util/OrphanableThread.h"/>
-      <FILE id="4IhEv1eGh" name="Range.h" compile="0" resource="0" file="../../src/rec/util/Range.h"/>
       <FILE id="RDZAPa2sr" name="Circular_test.cpp" compile="1" resource="0"
             file="../../src/rec/util/Circular_test.cpp"/>
-      <FILE id="IkX0YSof7" name="State.h" compile="0" resource="0" file="../../src/rec/util/State.h"/>
-      <FILE id="uEPiBGWzr" name="WaitLoopThread.h" compile="0" resource="0"
-            file="../../src/rec/util/WaitLoopThread.h"/>
-      <FILE id="pAc1sCCq5" name="Wrapper.h" compile="0" resource="0" file="../../src/rec/util/Wrapper.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ASIO="default"

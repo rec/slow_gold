@@ -22,10 +22,6 @@ message Value {
   optional sint64 sint64_f = 18;
 };
 
-message Address {
-  repeated uint32 index = 1;
-};
-
 message Operation {
   enum Command {
     CLEAR = 0;
@@ -35,11 +31,10 @@ message Operation {
     SWAP = 4;
   };
   optional Command command = 1;
-
-  // Used for SET and ADD commands only.
-  optional Value value = 2;
+  repeated uint32 address = 2;
+  optional Value value = 3;
 
   // Used as an index for SWAP commands only.
-  optional uint32 swap1 = 3;
-  optional uint32 swap2 = 4;
+  optional uint32 swap1 = 4;
+  optional uint32 swap2 = 5;
 };

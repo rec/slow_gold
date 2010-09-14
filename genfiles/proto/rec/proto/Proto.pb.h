@@ -34,7 +34,6 @@ void protobuf_AssignDesc_rec_2fproto_2fProto_2eproto();
 void protobuf_ShutdownFile_rec_2fproto_2fProto_2eproto();
 
 class Value;
-class Address;
 class Operation;
 
 enum Operation_Command {
@@ -302,100 +301,6 @@ class Value : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Address : public ::google::protobuf::Message {
- public:
-  Address();
-  virtual ~Address();
-  
-  Address(const Address& from);
-  
-  inline Address& operator=(const Address& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Address& default_instance();
-  
-  void Swap(Address* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Address* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Address& from);
-  void MergeFrom(const Address& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // repeated uint32 index = 1;
-  inline int index_size() const;
-  inline void clear_index();
-  static const int kIndexFieldNumber = 1;
-  inline ::google::protobuf::uint32 index(int index) const;
-  inline void set_index(int index, ::google::protobuf::uint32 value);
-  inline void add_index(::google::protobuf::uint32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-      index() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-      mutable_index();
-  
-  // @@protoc_insertion_point(class_scope:rec.proto.Address)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > index_;
-  friend void  protobuf_AddDesc_rec_2fproto_2fProto_2eproto();
-  friend void protobuf_AssignDesc_rec_2fproto_2fProto_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fproto_2fProto_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Address* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class Operation : public ::google::protobuf::Message {
  public:
   Operation();
@@ -484,24 +389,36 @@ class Operation : public ::google::protobuf::Message {
   inline ::rec::proto::Operation_Command command() const;
   inline void set_command(::rec::proto::Operation_Command value);
   
-  // optional .rec.proto.Value value = 2;
+  // repeated uint32 address = 2;
+  inline int address_size() const;
+  inline void clear_address();
+  static const int kAddressFieldNumber = 2;
+  inline ::google::protobuf::uint32 address(int index) const;
+  inline void set_address(int index, ::google::protobuf::uint32 value);
+  inline void add_address(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      address() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_address();
+  
+  // optional .rec.proto.Value value = 3;
   inline bool has_value() const;
   inline void clear_value();
-  static const int kValueFieldNumber = 2;
+  static const int kValueFieldNumber = 3;
   inline const ::rec::proto::Value& value() const;
   inline ::rec::proto::Value* mutable_value();
   
-  // optional uint32 swap1 = 3;
+  // optional uint32 swap1 = 4;
   inline bool has_swap1() const;
   inline void clear_swap1();
-  static const int kSwap1FieldNumber = 3;
+  static const int kSwap1FieldNumber = 4;
   inline ::google::protobuf::uint32 swap1() const;
   inline void set_swap1(::google::protobuf::uint32 value);
   
-  // optional uint32 swap2 = 4;
+  // optional uint32 swap2 = 5;
   inline bool has_swap2() const;
   inline void clear_swap2();
-  static const int kSwap2FieldNumber = 4;
+  static const int kSwap2FieldNumber = 5;
   inline ::google::protobuf::uint32 swap2() const;
   inline void set_swap2(::google::protobuf::uint32 value);
   
@@ -511,6 +428,7 @@ class Operation : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int command_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > address_;
   ::rec::proto::Value* value_;
   ::google::protobuf::uint32 swap1_;
   ::google::protobuf::uint32 swap2_;
@@ -518,7 +436,7 @@ class Operation : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fproto_2fProto_2eproto();
   friend void protobuf_ShutdownFile_rec_2fproto_2fProto_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -935,35 +853,6 @@ inline void Value::set_sint64_f(::google::protobuf::int64 value) {
 
 // -------------------------------------------------------------------
 
-// Address
-
-// repeated uint32 index = 1;
-inline int Address::index_size() const {
-  return index_.size();
-}
-inline void Address::clear_index() {
-  index_.Clear();
-}
-inline ::google::protobuf::uint32 Address::index(int index) const {
-  return index_.Get(index);
-}
-inline void Address::set_index(int index, ::google::protobuf::uint32 value) {
-  index_.Set(index, value);
-}
-inline void Address::add_index(::google::protobuf::uint32 value) {
-  index_.Add(value);
-}
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-Address::index() const {
-  return index_;
-}
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-Address::mutable_index() {
-  return &index_;
-}
-
-// -------------------------------------------------------------------
-
 // Operation
 
 // optional .rec.proto.Operation.Command command = 1;
@@ -983,52 +872,77 @@ inline void Operation::set_command(::rec::proto::Operation_Command value) {
   command_ = value;
 }
 
-// optional .rec.proto.Value value = 2;
+// repeated uint32 address = 2;
+inline int Operation::address_size() const {
+  return address_.size();
+}
+inline void Operation::clear_address() {
+  address_.Clear();
+}
+inline ::google::protobuf::uint32 Operation::address(int index) const {
+  return address_.Get(index);
+}
+inline void Operation::set_address(int index, ::google::protobuf::uint32 value) {
+  address_.Set(index, value);
+}
+inline void Operation::add_address(::google::protobuf::uint32 value) {
+  address_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+Operation::address() const {
+  return address_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+Operation::mutable_address() {
+  return &address_;
+}
+
+// optional .rec.proto.Value value = 3;
 inline bool Operation::has_value() const {
-  return _has_bit(1);
+  return _has_bit(2);
 }
 inline void Operation::clear_value() {
   if (value_ != NULL) value_->::rec::proto::Value::Clear();
-  _clear_bit(1);
+  _clear_bit(2);
 }
 inline const ::rec::proto::Value& Operation::value() const {
   return value_ != NULL ? *value_ : *default_instance_->value_;
 }
 inline ::rec::proto::Value* Operation::mutable_value() {
-  _set_bit(1);
+  _set_bit(2);
   if (value_ == NULL) value_ = new ::rec::proto::Value;
   return value_;
 }
 
-// optional uint32 swap1 = 3;
+// optional uint32 swap1 = 4;
 inline bool Operation::has_swap1() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void Operation::clear_swap1() {
   swap1_ = 0u;
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline ::google::protobuf::uint32 Operation::swap1() const {
   return swap1_;
 }
 inline void Operation::set_swap1(::google::protobuf::uint32 value) {
-  _set_bit(2);
+  _set_bit(3);
   swap1_ = value;
 }
 
-// optional uint32 swap2 = 4;
+// optional uint32 swap2 = 5;
 inline bool Operation::has_swap2() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Operation::clear_swap2() {
   swap2_ = 0u;
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline ::google::protobuf::uint32 Operation::swap2() const {
   return swap2_;
 }
 inline void Operation::set_swap2(::google::protobuf::uint32 value) {
-  _set_bit(3);
+  _set_bit(4);
   swap2_ = value;
 }
 

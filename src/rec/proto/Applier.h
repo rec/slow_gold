@@ -1,21 +1,22 @@
 #ifndef __REC_PROTO_APPLIER__
 #define __REC_PROTO_APPLIER__
 
+#include "rec/base/base.h"
 #include "rec/base/basictypes.h"
-#include "rec/proto/Proto.h"
+#include "rec/proto/Proto.pb.h"
 
 namespace rec {
 namespace proto {
 
 class Applier {
  public:
-  Applier(const Operation& operation, Message* msg, FieldDescriptor* field);
+  typedef google::protobuf::FieldDescriptor FieldDescriptor;
+  typedef google::protobuf::Message Message;
 
-  Applier(int index, const Operation& operation,
-          Message* msg, FieldDescriptor* field);
+  Applier(const Operation& op, Message* msg, const FieldDescriptor* f);
+  Applier(int index, const Operation& op, Message* m, const FieldDescriptor* f);
 
-  static Applier* newApplier(const Address& address, const Operation& op,
-                             Message* msg);
+  static Applier* create(const Operation& op, Message* msg);
 
   bool apply();
 
@@ -31,7 +32,8 @@ class Applier {
 
   const Operation& operation_;
   Message* const message_;
-  FieldDescriptor* const field_;
+  const FieldDescriptor* const field_;
+  const int index_;
   const bool isIndexed_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Applier);

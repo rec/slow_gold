@@ -1,14 +1,13 @@
 #ifndef __REC_PROTO_PROTO
 #define __REC_PROTO_PROTO
 
+#include <cstdarg>
+
 #include <algorithm>
 #include "rec/base/basictypes.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/proto/Proto.pb.h"
-
-#ifdef PROTOS_APPLY
 #include "rec/proto/Applier.h"
-#endif
+#include "rec/proto/Proto.pb.h"
 
 // useful functions to deal with protocol buffers.
 
@@ -44,16 +43,26 @@ void truncateTo(int size, Container* cont, Type t) {
   }
 }
 
-#ifdef PROTOS_APPLY
-
-inline bool applyOperation(const Address& address, const Operation& operation,
-                           google::protobuff::Message* msg) {
-  if (scoped_ptr<Applier> applier(Applier::newApplier(address, op, msg)))
-    return applier->apply();
-
-  return false;
+inline bool applyOperation(const Operation& operation,
+                           google::protobuf::Message* msg) {
+  scoped_ptr<Applier> applier(Applier::create(operation, msg));
+  return applier && applier->apply();
 }
-#endif
+
+inline Operation* createOperation(Operation::Command command, ...) {
+  Operation *op = new Operation();
+  op->set_command(command);
+
+  va_list ap;
+  va_start(ap, command);
+
+  for (uint32 addr = va_arg(ap, uint32); addr; addr = va_arg(ap, uint32))
+    op->add_address(addr);
+
+  return op;
+}
+
+
 }  // namespace proto
 }  // namespace rec
 

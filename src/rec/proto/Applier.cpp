@@ -1,18 +1,27 @@
+#include <glog/logging.h>
+
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/descriptor.pb.h"
 #include "rec/proto/Applier.h"
+
+using google::protobuf::Descriptor;
+using google::protobuf::FieldDescriptor;
+using google::protobuf::Reflection;
 
 namespace rec {
 namespace proto {
 
 Applier::Applier(const Operation& operation,
-                 Message* msg, FieldDescriptor* field)
+                 Message* message, const FieldDescriptor* field)
     : operation_(operation),
       message_(message),
       field_(field),
+      index_(-1),
       isIndexed_(false) {
 }
 
 Applier::Applier(int index, const Operation& operation,
-                 Message* msg, FieldDescriptor* field)
+                 Message* message, const FieldDescriptor* field)
     : operation_(operation),
       message_(message),
       field_(field),
@@ -21,7 +30,7 @@ Applier::Applier(int index, const Operation& operation,
 }
 
 bool Applier::apply() {
-  switch (command) {
+  switch (operation_.command()) {
    case Operation::CLEAR:        return clear();
    case Operation::SET:          return set();
    case Operation::ADD:          return add();
@@ -32,9 +41,8 @@ bool Applier::apply() {
 }
 
 bool Applier::hasValueField() {
-  const Value& v = operation_.value();
-  Descriptor* desc = v->GetDescriptor();
-  FieldDescriptor* value_field = desc->FindFieldByNumber(field_->type());
+  const Descriptor* desc = operation_.value().GetDescriptor();
+  const FieldDescriptor* value_field = desc->FindFieldByNumber(field_->type());
   if (!value_field)
     LOG(ERROR) << "Couldn't find value_field of type " << field_->type();
 
@@ -42,12 +50,7 @@ bool Applier::hasValueField() {
 }
 
 bool Applier::set() {
-  if (!operation_.has_value()) {
-    LOG(ERROR) << "Tried to SET with no value";
-    return false;
-  }
-
-  if (isIndexed_ != (field_->label() == FieldDescriptor::TYPE_REPEATED)) {
+  if (isIndexed_ != (field_->label() == FieldDescriptor::LABEL_REPEATED)) {
     LOG(ERROR) << "SET index mismatch " << isIndexed_ << ", "
                << field_->label();
     return false;
@@ -55,38 +58,39 @@ bool Applier::set() {
 
   if (!hasValueField())
     return false;
+
   const Reflection* r = message_->GetReflection();
 
   switch (field_->type()) {
 #define PR_CASE(TYPE, TYPE_CAP, TYPE_UPPER) \
-    case FieldDescriptorProto::TYPE_ ## TYPE_UPPER: \
-     if (isRepeated)\
-       r->Set#TYPE_CAP(message_, field, v.TYPE ## _v()); \
+    case FieldDescriptor::TYPE_ ## TYPE_UPPER: \
+     if (isIndexed_)\
+       r->Set ## TYPE_CAP(message_, field_, operation_.value().TYPE ## _f()); \
      else\
-       r->SetRepeated#TYPE_CAP(message_, field, v.TYPE ## _v(), index);  \
+       r->SetRepeated##TYPE_CAP(message_, field_, index_, operation_.value().TYPE ## _f());\
      return true;
 
     PR_CASE(double, Double, DOUBLE)
     PR_CASE(float, Float, FLOAT)
     PR_CASE(int64, Int64, INT64)
-    PR_CASE(uint64, Uint64, UINT64)
+    PR_CASE(uint64, UInt64, UINT64)
     PR_CASE(int32, Int32, INT32)
-    PR_CASE(fixed64, Fixed64, FIXED64)
-    PR_CASE(fixed32, Fixed32, FIXED32)
+    PR_CASE(fixed64, UInt64, FIXED64)
+    PR_CASE(fixed32, UInt32, FIXED32)
     PR_CASE(bool, Bool, BOOL)
     PR_CASE(string, String, STRING)
     // PR_CASE(message, Message, MESSAGE)  We'd need to serialize.
     // PR_CASE(group, Group, GROUP)
-    PR_CASE(bytes, Bytes, BYTES)
-    Pr_CASE(uint32, Uint32, UINT32)
+    PR_CASE(bytes, String, BYTES)
+    PR_CASE(uint32, UInt32, UINT32)
     // PR_CASE(enum, Enum, ENUM)
-    PR_CASE(sfixed32, Sfixed32, SFIXED32)
-    PR_CASE(sfixed64, Sfixed64, SFIXED64)
-    PR_CASE(sint32, Sint32, SINT32)
-    PR_CASE(sint64, Sint64, SINT64)
+    PR_CASE(sfixed32, UInt32, SFIXED32)
+    PR_CASE(sfixed64, UInt64, SFIXED64)
+    PR_CASE(sint32, Int32, SINT32)
+    PR_CASE(sint64, Int64, SINT64)
 
    default:
-    LOG(ERROR) << "Didn't understand type " << type;
+    LOG(ERROR) << "Didn't understand type " << field_->type();
     return false;
   }
 
@@ -99,17 +103,17 @@ bool Applier::clear() {
   else
     message_->GetReflection()->ClearField(message_, field_);
 
-  return !isIndexed;
+  return !isIndexed_;
 }
 
 bool Applier::add() {
-  if (field_->label() != FieldDescriptor::TYPE_REPEATED) {
+  if (field_->label() != FieldDescriptor::LABEL_REPEATED) {
     LOG(ERROR) << "Can only add indexed values";
     return false;
   }
 
   const Reflection* r = message_->GetReflection();
-  if (field_->type() == FieldDescriptorProto::TYPE_MESSSAGE) {
+  if (field_->type() == FieldDescriptor::TYPE_MESSAGE) {
     r->AddMessage(message_, field_);
     return true;
   }
@@ -118,68 +122,78 @@ bool Applier::add() {
     return false;
 
 #define PR_CASE(TYPE, TYPE_CAP, TYPE_UPPER) \
-    case TYPE_ ## TYPE_UPPER: \
-     r->Add#TYPE_CAP(message_, field, v.TYPE ## _v());  \
+  case FieldDescriptor::TYPE_ ## TYPE_UPPER:                     \
+     r->Add ## TYPE_CAP(message_, field_, operation_.value().TYPE ## _f());  \
      return true;
 
-  switch (type) {
+  switch (field_->type()) {
     PR_CASE(double, Double, DOUBLE)
     PR_CASE(float, Float, FLOAT)
     PR_CASE(int64, Int64, INT64)
-    PR_CASE(uint64, Uint64, UINT64)
+    PR_CASE(uint64, UInt64, UINT64)
     PR_CASE(int32, Int32, INT32)
-    PR_CASE(fixed64, Fixed64, FIXED64)
-    PR_CASE(fixed32, Fixed32, FIXED32)
+    PR_CASE(fixed64, UInt64, FIXED64)
+    PR_CASE(fixed32, UInt32, FIXED32)
     PR_CASE(bool, Bool, BOOL)
     PR_CASE(string, String, STRING)
     // PR_CASE(message, Message, MESSAGE)  already done
     // PR_CASE(group, Group, GROUP)
-    PR_CASE(bytes, Bytes, BYTES)
-    Pr_CASE(uint32, Uint32, UINT32)
+    PR_CASE(bytes, String, BYTES)
+    PR_CASE(uint32, UInt32, UINT32)
     // PR_CASE(enum, Enum, ENUM)
-    PR_CASE(sfixed32, Sfixed32, SFIXED32)
-    PR_CASE(sfixed64, Sfixed64, SFIXED64)
-    PR_CASE(sint32, Sint32, SINT32)
-    PR_CASE(sint64, Sint64, SINT64)
+    PR_CASE(sfixed32, UInt32, SFIXED32)
+    PR_CASE(sfixed64, UInt64, SFIXED64)
+    PR_CASE(sint32, Int32, SINT32)
+    PR_CASE(sint64, Int64, SINT64)
 
    default:
-    LOG(ERROR) << "Didn't understand type " << type;
+    LOG(ERROR) << "Didn't understand type " << field_->type();
     return false;
   }
 #undef PR_CASE
 }
 
-bool Applier:removeLast() {
-  if (field_->label() != FieldDescriptor::TYPE_REPEATED) {
+bool Applier::removeLast() {
+  if (field_->label() != FieldDescriptor::LABEL_REPEATED) {
     LOG(ERROR) << "Can only remove indexed values";
     return false;
   }
 
-  RemoveLast(message_, field_);
+  message_->GetReflection()->RemoveLast(message_, field_);
   return true;
 }
 
+bool Applier::swap() {
+  if (field_->label() != FieldDescriptor::LABEL_REPEATED) {
+    LOG(ERROR) << "Can only remove indexed values";
+    return false;
+  }
 
-Applier* Applier::newApplier(const Address& address, const Operation& op,
-                             Message* msg) {
-  for (int i = 0; i < address.index_size(); ++i) {
-    Descriptor* desc = msg->GetDescriptor();
-    uint32 index = address.index(i);
-    FieldDescriptor* field = desc->FindFieldByNumber(index);
+  message_->GetReflection()->SwapElements(message_, field_,
+                                          operation_.swap1(),
+                                          operation_.swap2());
+  return true;
+}
+
+Applier* Applier::create(const Operation& op, Message* msg) {
+  for (int i = 0; i < op.address_size(); ++i) {
+    const Descriptor* desc = msg->GetDescriptor();
+    uint32 index = op.address(i);
+    const FieldDescriptor* field = desc->FindFieldByNumber(index);
 
     if (!field) {
       LOG(ERROR) << "No submessage with i=" << i << ", index=" << index;
       return NULL;
     }
 
-    if (i == address.index_size() - 1)
+    if (i == op.address_size() - 1)
       return new Applier(op, msg, field);
 
     bool is_message = field->type() != FieldDescriptor::TYPE_MESSAGE;
-    bool is_repeated = field->label() == FieldDescriptor::TYPE_REPEATED;
+    bool is_repeated = field->label() == FieldDescriptor::LABEL_REPEATED;
 
-    if (is_repeated && i == address.index_size() - 2)
-      return new Applier(address.index(++i), op, msg, field);
+    if (is_repeated && i == op.address_size() - 2)
+      return new Applier(op.address(++i), op, msg, field);
 
     if (!is_message) {
       LOG(ERROR) << "Non-terminal field had non-message type";
@@ -188,9 +202,9 @@ Applier* Applier::newApplier(const Address& address, const Operation& op,
 
     const Reflection* reflection = msg->GetReflection();
     if (is_repeated)
-      msg = reflection->GetRepeatedMessage(*msg, field, address.index(++i));
+      msg = reflection->MutableRepeatedMessage(msg, field, op.address(++i));
     else
-      msg = reflection->MutableMessage(*msg, field);
+      msg = reflection->MutableMessage(msg, field);
   }
 
   LOG_FIRST_N(ERROR, 1) << "Empty address";

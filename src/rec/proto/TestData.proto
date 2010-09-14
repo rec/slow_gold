@@ -1,0 +1,16 @@
+package rec.proto.test;
+
+message TestData1 {
+  repeated uint32 test = 1;
+  optional string test_string = 2;
+};
+
+message TestData2 {
+  repeated TestData1 test1 = 5;
+  optional sint32 test_sint = 6;
+};
+
+message TestData3 {
+  optional double test_double = 7;
+  optional TestData2 test2 = 8;
+};
