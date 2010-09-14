@@ -29,25 +29,25 @@ namespace persist {
 typedef google::protobuf::Message Message;
 typedef std::string string;
 
-bool copy(const File& from, File* to);
-bool copy(const File& from, Message* to);
-bool copy(const File& from, String* to);
-bool copy(const File& from, string* to);
+bool copy(const File& from, File* to, bool readable = true);
+bool copy(const File& from, Message* to, bool readable = true);
+bool copy(const File& from, String* to, bool readable = true);
+bool copy(const File& from, string* to, bool readable = true);
 
-bool copy(const Message& from, File* to);
-bool copy(const Message& from, Message* to);
-bool copy(const Message& from, String* to);
-bool copy(const Message& from, string* to);
+bool copy(const Message& from, File* to, bool readable = true);
+bool copy(const Message& from, Message* to, bool readable = true);
+bool copy(const Message& from, String* to, bool readable = true);
+bool copy(const Message& from, string* to, bool readable = true);
 
-bool copy(const String& from, File* to);
-bool copy(const String& from, Message* to);
-bool copy(const String& from, String* to);
-bool copy(const String& from, string* to);
+bool copy(const String& from, File* to, bool readable = true);
+bool copy(const String& from, Message* to, bool readable = true);
+bool copy(const String& from, String* to, bool readable = true);
+bool copy(const String& from, string* to, bool readable = true);
 
-bool copy(const string& from, File* to);
-bool copy(const string& from, Message* to);
-bool copy(const string& from, String* to);
-bool copy(const string& from, string* to);
+bool copy(const string& from, File* to, bool readable = true);
+bool copy(const string& from, Message* to, bool readable = true);
+bool copy(const string& from, String* to, bool readable = true);
+bool copy(const string& from, string* to, bool readable = true);
 
 // Useful copiers for string and String.
 inline String copy(const string& s) { return String(s.data(), s.size()); }

@@ -1,6 +1,8 @@
 #ifndef __REC_PROTO_APPLIER__
 #define __REC_PROTO_APPLIER__
 
+#include <iostream.h>
+
 #include "rec/base/base.h"
 #include "rec/base/basictypes.h"
 #include "rec/proto/Proto.pb.h"
@@ -26,9 +28,9 @@ class Applier {
   bool add();
   bool removeLast();
   bool swap();
-
- private:
   bool hasValueField();
+
+  friend std::ostream& operator<<(std::ostream& os, const Applier& applier);
 
   const Operation& operation_;
   Message* const message_;
