@@ -107,14 +107,25 @@ bool Applier::clear() {
 }
 
 bool Applier::add() {
+  const Reflection* r = message_->GetReflection();
+  bool is_message = (field_->type() == FieldDescriptor::TYPE_MESSAGE);
+
   if (field_->label() != FieldDescriptor::LABEL_REPEATED) {
-    LOG(ERROR) << "Can only add indexed values "
-               << field_->label();
-    return false;
+    if (!is_message) {
+      LOG(ERROR) << "Can only add indexed or messages " << field_->label();
+      return false;
+    }
+
+    if (r->HasField(*message_, field_)) {
+      LOG(ERROR) << "Adding a message field that already exists";
+      return false;
+    }
+
+    r->MutableMessage(message_, field_);
+    return true;
   }
 
-  const Reflection* r = message_->GetReflection();
-  if (field_->type() == FieldDescriptor::TYPE_MESSAGE) {
+  if (is_message) {
     r->AddMessage(message_, field_);
     return true;
   }
