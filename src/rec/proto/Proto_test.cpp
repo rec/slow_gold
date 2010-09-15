@@ -25,7 +25,7 @@ TEST(Proto, CreateOperation) {
   EXPECT_EQ(test.test_double(), 2.0);
 
   EXPECT_FALSE(test.has_test2());
-  operation.reset(createOperation(Operation::ADD,
+  operation.reset(createOperation(Operation::CREATE,
                                   test::TestData3::kTest2FieldNumber,
                                   NULL));
   EXPECT_TRUE(applyOperation(*operation, &test));

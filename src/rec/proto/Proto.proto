@@ -24,11 +24,13 @@ message Value {
 
 message Operation {
   enum Command {
-    CLEAR = 0;
-    SET = 1;
-    ADD = 2;
-    REMOVE_LAST = 3;
-    SWAP = 4;
+    ADD = 1;
+    APPEND = 2;
+    CLEAR = 3;
+    CREATE = 4;
+    REMOVE_LAST = 5;
+    SET = 6;
+    SWAP = 7;
   };
   optional Command command = 1;
   repeated uint32 address = 2;

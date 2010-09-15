@@ -37,14 +37,16 @@ class Value;
 class Operation;
 
 enum Operation_Command {
-  Operation_Command_CLEAR = 0,
-  Operation_Command_SET = 1,
-  Operation_Command_ADD = 2,
-  Operation_Command_REMOVE_LAST = 3,
-  Operation_Command_SWAP = 4
+  Operation_Command_ADD = 1,
+  Operation_Command_APPEND = 2,
+  Operation_Command_CLEAR = 3,
+  Operation_Command_CREATE = 4,
+  Operation_Command_REMOVE_LAST = 5,
+  Operation_Command_SET = 6,
+  Operation_Command_SWAP = 7
 };
 bool Operation_Command_IsValid(int value);
-const Operation_Command Operation_Command_Command_MIN = Operation_Command_CLEAR;
+const Operation_Command Operation_Command_Command_MIN = Operation_Command_ADD;
 const Operation_Command Operation_Command_Command_MAX = Operation_Command_SWAP;
 const int Operation_Command_Command_ARRAYSIZE = Operation_Command_Command_MAX + 1;
 
@@ -354,10 +356,12 @@ class Operation : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
   
   typedef Operation_Command Command;
-  static const Command CLEAR = Operation_Command_CLEAR;
-  static const Command SET = Operation_Command_SET;
   static const Command ADD = Operation_Command_ADD;
+  static const Command APPEND = Operation_Command_APPEND;
+  static const Command CLEAR = Operation_Command_CLEAR;
+  static const Command CREATE = Operation_Command_CREATE;
   static const Command REMOVE_LAST = Operation_Command_REMOVE_LAST;
+  static const Command SET = Operation_Command_SET;
   static const Command SWAP = Operation_Command_SWAP;
   static inline bool Command_IsValid(int value) {
     return Operation_Command_IsValid(value);
@@ -860,7 +864,7 @@ inline bool Operation::has_command() const {
   return _has_bit(0);
 }
 inline void Operation::clear_command() {
-  command_ = 0;
+  command_ = 1;
   _clear_bit(0);
 }
 inline ::rec::proto::Operation_Command Operation::command() const {

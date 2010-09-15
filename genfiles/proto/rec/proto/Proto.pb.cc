@@ -127,12 +127,12 @@ void protobuf_AddDesc_rec_2fproto_2fProto_2eproto() {
     "\017\n\007bytes_f\030\014 \001(\014\022\020\n\010uint32_f\030\r \001(\r\022\016\n\006en"
     "um_f\030\016 \001(\005\022\022\n\nsfixed32_f\030\017 \001(\017\022\022\n\nsfixed"
     "64_f\030\020 \001(\020\022\020\n\010sint32_f\030\021 \001(\021\022\020\n\010sint64_f"
-    "\030\022 \001(\022\"\315\001\n\tOperation\022-\n\007command\030\001 \001(\0162\034."
+    "\030\022 \001(\022\"\345\001\n\tOperation\022-\n\007command\030\001 \001(\0162\034."
     "rec.proto.Operation.Command\022\017\n\007address\030\002"
     " \003(\r\022\037\n\005value\030\003 \001(\0132\020.rec.proto.Value\022\r\n"
-    "\005swap1\030\004 \001(\r\022\r\n\005swap2\030\005 \001(\r\"A\n\007Command\022\t"
-    "\n\005CLEAR\020\000\022\007\n\003SET\020\001\022\007\n\003ADD\020\002\022\017\n\013REMOVE_LA"
-    "ST\020\003\022\010\n\004SWAP\020\004", 574);
+    "\005swap1\030\004 \001(\r\022\r\n\005swap2\030\005 \001(\r\"Y\n\007Command\022\007"
+    "\n\003ADD\020\001\022\n\n\006APPEND\020\002\022\t\n\005CLEAR\020\003\022\n\n\006CREATE"
+    "\020\004\022\017\n\013REMOVE_LAST\020\005\022\007\n\003SET\020\006\022\010\n\004SWAP\020\007", 598);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/proto/Proto.proto", &protobuf_RegisterTypes);
   Value::default_instance_ = new Value();
@@ -1088,11 +1088,13 @@ const ::google::protobuf::EnumDescriptor* Operation_Command_descriptor() {
 }
 bool Operation_Command_IsValid(int value) {
   switch(value) {
-    case 0:
     case 1:
     case 2:
     case 3:
     case 4:
+    case 5:
+    case 6:
+    case 7:
       return true;
     default:
       return false;
@@ -1100,10 +1102,12 @@ bool Operation_Command_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const Operation_Command Operation::CLEAR;
-const Operation_Command Operation::SET;
 const Operation_Command Operation::ADD;
+const Operation_Command Operation::APPEND;
+const Operation_Command Operation::CLEAR;
+const Operation_Command Operation::CREATE;
 const Operation_Command Operation::REMOVE_LAST;
+const Operation_Command Operation::SET;
 const Operation_Command Operation::SWAP;
 const Operation_Command Operation::Command_MIN;
 const Operation_Command Operation::Command_MAX;
@@ -1134,7 +1138,7 @@ Operation::Operation(const Operation& from)
 
 void Operation::SharedCtor() {
   _cached_size_ = 0;
-  command_ = 0;
+  command_ = 1;
   value_ = NULL;
   swap1_ = 0u;
   swap2_ = 0u;
@@ -1173,7 +1177,7 @@ Operation* Operation::New() const {
 
 void Operation::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    command_ = 0;
+    command_ = 1;
     if (_has_bit(2)) {
       if (value_ != NULL) value_->::rec::proto::Value::Clear();
     }
