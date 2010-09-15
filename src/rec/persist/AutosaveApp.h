@@ -5,9 +5,7 @@
 
 #include "rec/persist/App.h"
 #include "rec/persist/Writeable.h"
-#include "rec/thread/Callback.h"
-#include "rec/thread/RunnableThread.h"
-#include "rec/thread/WaitLoop.h"
+#include "rec/thread/CallbackLoop.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
@@ -18,8 +16,7 @@ class AutosaveApp : public App {
   AutosaveApp(const String& name, int period, int priority)
       : App(name),
         thread_("WriteThread " + name,
-                new thread::WaitLoop(period, 
-                                     thread::makeCallback(this, &AutosaveApp::write))) {
+                thread::callbackLoop(period, this, &AutosaveApp::write)) {
     CHECK(name.length() > 0);
     thread_.startThread(priority);
   }
