@@ -21,8 +21,8 @@ inline App* getInstance() {
 }
 
 template <typename Proto>
-Data<Proto>* getAppData(const char* name, const char* initial = "") {
-  return getInstance()->getData<Proto>(name, initial);
+Data<Proto>* getAppData(const char* name) {
+  return getInstance()->getData<Proto>(name);
 }
 
 }  // namespace persist

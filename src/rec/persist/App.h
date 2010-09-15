@@ -32,7 +32,7 @@ class App {
   }
 
   template <typename Proto>
-  Data<Proto>* getData(const std::string& name, const char* initial = "") {
+  Data<Proto>* getData(const std::string& name) {
     ScopedLock l(lock_);
     DataSet::const_iterator i = data_.find(name);
 
@@ -43,7 +43,7 @@ class App {
 
     } else {
       DataClient& client = data_[name];
-      client.data_ = new Data<Proto>(getDataFile(name.c_str()), initial);
+      client.data_ = new Data<Proto>(getDataFile(name.c_str()));
       client.descriptor_ = Proto::descriptor();
       return static_cast<Data<Proto>*>(client.data_);
     }

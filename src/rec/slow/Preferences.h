@@ -11,7 +11,7 @@ namespace slow {
 typedef persist::Data<proto::Preferences> Data;
 
 inline Data* getMutablePreferences() {
-  static Data* data = persist::getAppData<proto::Preferences>("preferences", "");
+  static Data* data = persist::getAppData<proto::Preferences>("preferences");
   Data::Access prefs(data);
 
   if (!prefs->loop_window_size())
