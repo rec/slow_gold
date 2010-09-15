@@ -28,11 +28,11 @@ class App {
   }
 
   File getDataFile(const String& name) const {
-    return appDir_.getChildFile(name + ".data");
+    return appDir_.getChildFile(name);
   }
 
   template <typename Proto>
-  Data<Proto>* getData(const std::string& name) {
+  Data<Proto>* getData(const string& name) {
     ScopedLock l(lock_);
     DataSet::const_iterator i = data_.find(name);
 

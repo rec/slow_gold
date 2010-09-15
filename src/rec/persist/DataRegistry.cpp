@@ -9,36 +9,30 @@ using std::string;
 
 juce_ImplementSingleton(DataRegistry)
 
-namespace {
-
-}  // namespace
-
-google::protobuf::Message* DataRegistry::createData(const string& name) const {
-  DataRegistry::DataMap::const_iterator i = dataMap_.find(name);
+const google::protobuf::Message* DataRegistry::getData(const string& n) const {
+  DataRegistry::DataMap::const_iterator i = dataMap_.find(n);
   if (i == dataMap_.end()) {
-    LOG(ERROR) << "Don't understand dataytpe " << name;
+    LOG(ERROR) << "Don't understand datatype " << n;
     return NULL;
   }
 
-  const Message* message = i->second;
-  Message* result = message->New();
-  result->CopyFrom(*message);
-  return result;
+  return i->second;
 }
 
 bool DataRegistry::registerData(const Message* message) {
-  string name = lastSegment(message->GetTypeName());
-
+  string name = typeName(*message);
+  LOG(INFO) << "Registering type " << message->GetTypeName()
+            << " to name " << name;
   DataRegistry::DataMap::iterator i = dataMap_.find(name);
-  if (i != dataMap_.end()) {
+  bool result = (i != dataMap_.end());
+  if (result) {
     LOG(ERROR) << "Duplicate registration for " << name
                << " old:" << i->second->GetTypeName()
                << " new:" << message->GetTypeName();
-    return false;
   }
 
   dataMap_[name] = message;
-  return true;
+  return result;
 }
 
 }  // namespace persist

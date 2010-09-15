@@ -33,19 +33,14 @@ class LockedPreferences : public Data::Access {
 };
 
 inline gui::ThumbnailDescription getThumbnail() {
-  static const char DEFAULT_THUMBNAIL[] = "\
-  background {\
-    rgb: 0xFFFFFF\
-  }\
-  foreground {\
-    rgb: 0xADD8E6\
-  }";
+  return getPreferences().thumbnail();
+}
 
-  LockedPreferences prefs;
-  if (!prefs->has_thumbnail())
-    persist::copy(std::string(DEFAULT_THUMBNAIL), prefs->mutable_thumbnail());
-
-  return prefs->thumbnail();
+inline void registerPreferences() {
+  proto::Preferences* p = new proto::Preferences();
+  p->mutable_thumbnail()->mutable_background()->set_rgb(0xFFFFFF);
+  p->mutable_thumbnail()->mutable_foreground()->set_rgb(0xADD8E);
+  persist::registerData(p);
 }
 
 }  // namespace slow

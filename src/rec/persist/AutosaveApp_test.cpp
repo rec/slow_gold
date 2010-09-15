@@ -4,6 +4,7 @@
 #include "rec/persist/testdata.pb.h"
 #include "rec/persist/AutosaveApp.h"
 #include "rec/persist/Data.h"
+#include "rec/persist/DataRegistry.h"
 
 namespace rec {
 namespace persist {
@@ -16,6 +17,7 @@ static void testPersist(Data<TestData>* data, int foo, const char* bar) {
 }
 
 TEST(Persist, AutosaveApp) {
+  registerData(new TestData());
   {
     AutosaveApp app("testapp", 10, 7);
     File file = app.getDataFile("autosave");

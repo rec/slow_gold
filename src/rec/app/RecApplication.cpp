@@ -2,6 +2,7 @@
 
 #include "rec/app/RecWindow.h"
 #include "rec/app/GenericApplication.h"
+#include "rec/slow/Preferences.h"
 
 namespace rec {
 
@@ -10,6 +11,7 @@ class Application : public GenericApplication<RecWindow> {
   Application() : GenericApplication<RecWindow>(T("SlowGold"), T("1.0")) {}
 
   virtual void initialise(const String& commandLine) {
+    slow::registerPreferences();
     GenericApplication<RecWindow>::initialise(commandLine);
 
 #if false && JUCE_MAC

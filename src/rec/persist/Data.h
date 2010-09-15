@@ -7,7 +7,7 @@
 #include "rec/base/Cast.h"
 #include "rec/persist/Writeable.h"
 #include "rec/persist/Copy.h"
-
+#include "rec/persist/DataRegistry.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -21,11 +21,17 @@ class Data : public Writeable {
  public:
   typedef google::protobuf::Message Message;
 
-  Data(const File& file, const char* initial = "") : file_(file) {
-    if (!(copy(file_, &proto_) || copy(std::string(initial), &proto_))) {
-      LOG_FIRST_N(ERROR, 10) << "Couldn't read file "
-                             << file.getFullPathName().toCString()
-                             << " or initial " << initial;
+  File dataFileName(const File& file) {
+    return File(file.getFullPathName() + "." + copy(typeName_));
+  }
+
+  Data(const File& file) : typeName_(typeName(Proto::default_instance())),
+                           message_(getData(typeName_)),
+                           file_(dataFileName(file)) {
+    CHECK(message_) << "Didn't understand " << typeName_;
+    if (!copy(file_, &proto_)) {
+      LOG(ERROR) << "New file " << file.getFullPathName().toCString();
+      proto_.CopyFrom(*message_);
     }
   }
 
@@ -65,6 +71,8 @@ class Data : public Writeable {
   };
 
  private:
+  string typeName_;
+  const Message* message_;
   File file_;
   Proto proto_;
 
