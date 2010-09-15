@@ -1,16 +1,13 @@
 #include "rec/base/scoped_ptr.h"
 
 #include "rec/app/RecWindow.h"
-#include "rec/persist/AppData.h"
 #include "rec/app/GenericApplication.h"
 
 namespace rec {
 
 class Application : public GenericApplication<RecWindow> {
  public:
-  Application() : GenericApplication<RecWindow>(T("SlowGold"), T("1.0")) {
-    rec::persist::createInstance(getApplicationName(), 1000, 4);
-  }
+  Application() : GenericApplication<RecWindow>(T("SlowGold"), T("1.0")) {}
 
   virtual void initialise(const String& commandLine) {
     GenericApplication<RecWindow>::initialise(commandLine);

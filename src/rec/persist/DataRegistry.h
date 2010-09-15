@@ -19,6 +19,11 @@ class DataRegistry {
 
   DataRegistry() {}
 
+  static string lastSegment(string s) {
+    s.erase(0, s.rfind(".") + 1);
+    return s;
+  }
+
   ~DataRegistry() {
     for (DataMap::iterator i = dataMap_.begin(); i != dataMap_.end(); ++i)
       delete i->second;
@@ -27,7 +32,7 @@ class DataRegistry {
   }
 
   Message* createData(const string& name) const;
-  bool registerData(const Message* message, const string* name = NULL);
+  bool registerData(const Message* message);
 
   juce_DeclareSingleton(DataRegistry, false)
 
@@ -38,14 +43,13 @@ class DataRegistry {
   DISALLOW_COPY_AND_ASSIGN(DataRegistry);
 };
 
-inline google::protobuf::Message* createData(const std::string& name) {
-  return DataRegistry::getInstance()->createData(name);
-}
+// inline google::protobuf::Message* createData(const std::string& name) {
+//   return DataRegistry::getInstance()->createData(name);
+// }
 
-inline bool registerData(const google::protobuf::Message* message, 
-                         const std::string* name = NULL) {
-  return DataRegistry::getInstance()->registerData(message, name);
-}
+// inline bool registerData(const google::protobuf::Message* message) {
+//   return DataRegistry::getInstance()->registerData(message);
+// }
 
 
 }  // namespace persist

@@ -3,6 +3,15 @@
 import os
 import sys
 
+
+SUFFIXES = ['.h', '_test.cpp', '.cpp']
+
+def split_suffix(filename):
+  for s in SUFFIXES:
+    if filename.endswith(s):
+      return filename.split(s)[0], s
+
+
 def new_class(filename):
   if not filename.startswith('/'):
     filename = os.getcwd() + '/' + filename
@@ -11,12 +20,16 @@ def new_class(filename):
   file_root = path.pop()
 
   if '.' in file_root:
-    file_root, suffix = file_root.split('.')
+    file_root, suffix = split_suffix(file_root)
     suffixes = [suffix]
     method_body = ' {\n  }'
   else:
     method_body = ';'
-    suffixes = ['h', 'cpp']
+    suffixes = SUFFIXES
+  file_parts = filename.split('/')
+  file_parts[-1] = file_root
+  file_base = '/'.join(file_parts)
+
 
   context = dict(
     classname=file_root,
@@ -28,13 +41,12 @@ def new_class(filename):
     guard='__%s__' % '_'.join(s.upper() for s in path + [file_root]),
     )
 
-  file_base = filename.split('.')[0] + '.'
   for suffix in suffixes:
     open(file_base + suffix, 'w').write(TEMPLATES[suffix].format(**context))
-    print 'Written %s.%s' % (file_root, suffix)
+    print 'Written %s%s' % (file_base, suffix)
 
-TEMPLATES = dict(
-  h="""#ifndef {guard}
+TEMPLATES = {
+  '.h': """#ifndef {guard}
 #define {guard}
 
 #include "rec/base/basictypes.h"
@@ -55,7 +67,7 @@ class {classname} {{
 
 #endif  // {guard}
 """,
-  cpp= """#include "{header_file}"
+  '.cpp': """#include "{header_file}"
 
 {namespace}
 
@@ -63,7 +75,23 @@ void {classname}::{method}() {{
 }}
 
 {namespace_end}
-""")
+""",
+  '_test.cpp': """#include <gtest/gtest.h>
+#include <glog/logging.h>
+
+#include "{header_file}"
+
+{namespace}
+namespace {{
+
+TEST({classname}, {method}) {{
+}}
+
+}}  // namespace
+{namespace_end}
+"""
+
+  }
 
 if __name__ == "__main__":
   for f in sys.argv[1:]:

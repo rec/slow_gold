@@ -4,14 +4,18 @@
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
+#include "rec/persist/AppData.h"
 
 namespace rec {
 
 template <typename Window>
 class GenericApplication : public JUCEApplication {
  public:
+  static const int SAVE_PERIOD = 1000;
+  static const int PRIORITY = 4;
   GenericApplication(const String& name, const String& version)
       : name_(name), version_(version) {
+    rec::persist::createInstance(name, SAVE_PERIOD, PRIORITY);
   }
 
   virtual ~GenericApplication() {}

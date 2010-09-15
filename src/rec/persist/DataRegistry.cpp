@@ -11,11 +11,6 @@ juce_ImplementSingleton(DataRegistry)
 
 namespace {
 
-string lastSegment(string s) {
-  s.erase(0, s.rfind(".") + 1);
-  return s;
-}
-
 }  // namespace
 
 google::protobuf::Message* DataRegistry::createData(const string& name) const {
@@ -31,8 +26,8 @@ google::protobuf::Message* DataRegistry::createData(const string& name) const {
   return result;
 }
 
-bool DataRegistry::registerData(const Message* message, const string* n) {
-  string name(n ? *n : lastSegment(message->GetTypeName()));
+bool DataRegistry::registerData(const Message* message) {
+  string name = lastSegment(message->GetTypeName());
 
   DataRegistry::DataMap::iterator i = dataMap_.find(name);
   if (i != dataMap_.end()) {
