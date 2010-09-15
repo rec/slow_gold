@@ -1,14 +1,8 @@
-SUFFIX="tar.bz2"
-CONFIGURE="./configure --enable-static --enable-shared=no"
-CONFIGURE_CPU_FLAG="--with-cpu=x86"
-PREFIX_FLAG="--prefix"
-CPPFLAGS="-arch i386"
-CONFIGURE_SCRIPT="standard"
-SCRIPTS="$ROOT/rec/scripts"
 
-source "$SCRIPTS/platform/platform.sh"
-  source "$SCRIPTS/config/$CONFIG.sh"
-  source "$SCRIPTS/package/$PACKAGE.sh"
+source "$ROOT/rec/scripts/base.sh" &&\
+ source "$ROOT/rec/scripts/platform/platform.sh" &&\
+ source "$ROOT/rec/scripts/config/$CONFIG.sh" &&\
+ source "$ROOT/rec/scripts/package/$PACKAGE.sh"
 
 INSTALL_DIR="$ROOT/build/$PLATFORM/$CONFIG/$PACKAGE"
 

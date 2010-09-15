@@ -1,6 +1,14 @@
+echo "  ===== CONFIGURING ===== $PACKAGE, config $CONFIG, on $PLATFORM"
 echo "$CONFIGURE_SCRIPT configure with CPPFLAGS=$CPPFLAGS"
+echo ""
 
 if [[ "$CONFIGURE_SCRIPT" = "standard" ]] ; then
+
+  echo "\$ CPPFLAGS=\"$CPPFLAGS\" CFLAGS=\"$CPPFLAGS\"\
+   $CONFIGURE\
+   $CONFIGURE_DEBUG_FLAG\
+   $CONFIGURE_CPU_FLAG\
+   --prefix=\"$INSTALL_DIR\""
 
   CPPFLAGS="$CPPFLAGS" CFLAGS="$CPPFLAGS"\
    $CONFIGURE\
@@ -9,6 +17,12 @@ if [[ "$CONFIGURE_SCRIPT" = "standard" ]] ; then
    --prefix="$INSTALL_DIR"
 
 else
+
+  echo "\$ $CONFIGURE\
+   $CONFIGURE_DEBUG_FLAG\
+   $CONFIGURE_CPU_FLAG\
+   CXXFLAGS=\"$CPPFLAGS\"\
+   --prefix=\"$INSTALL_DIR\""
 
   $CONFIGURE\
    $CONFIGURE_DEBUG_FLAG\

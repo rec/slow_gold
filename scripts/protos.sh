@@ -1,6 +1,5 @@
 PACKAGE=protobuf
 CONFIG=debug
-# ROOT="`pwd`"
 
 source "$ROOT/rec/scripts/variables.sh"
 

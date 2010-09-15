@@ -1,20 +1,35 @@
 # Download the packages given as arguments
-
 CONFIG=debug
 
-while (( "$#" )); do
+source "$ROOT/rec/scripts/base.sh"
 
-  PACKAGE=$1
-  shift
+if [ ! "$@" ]
+then
 
-  source rec/scripts/variables.sh
-  source rec/scripts/package/$PACKAGE.sh
+  "$ROOT/rec/scripts/download.sh" $PACKAGES
 
-  ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
+else
 
-  curl -O $URL_PATH/$ARCHIVE
-  tar xzf $ARCHIVE
-  rm $ARCHIVE
-  ln -s $PACKAGE-$VERSION $PACKAGE
+  while (( "$#" )); do
 
-done
+    PACKAGE=$1
+    shift
+    echo
+    echo
+    echo "       *** Downloading $PACKAGE ***"
+    echo
+    echo
+
+    source "$ROOT/rec/scripts/variables.sh"
+    source "$ROOT/rec/scripts/package/$PACKAGE.sh"
+
+    ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
+
+    curl -O $URL_PATH/$ARCHIVE
+    tar xzf $ARCHIVE
+    rm $ARCHIVE
+    ln -s $PACKAGE-$VERSION $PACKAGE
+
+  done
+
+fi
