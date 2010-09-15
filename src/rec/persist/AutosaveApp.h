@@ -5,6 +5,9 @@
 
 #include "rec/persist/App.h"
 #include "rec/persist/Writeable.h"
+#include "rec/thread/Callback.h"
+#include "rec/thread/RunnableThread.h"
+#include "rec/thread/WaitLoop.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
@@ -12,36 +15,17 @@ namespace persist {
 
 class AutosaveApp : public App {
  public:
-  AutosaveApp(const String& name, int frequency, int priority)
+  AutosaveApp(const String& name, int period, int priority)
       : App(name),
-        thread_("WriteThread " + name, this),
-        frequency_(frequency) {
+        thread_("WriteThread " + name,
+                new thread::WaitLoop(period, 
+                                     thread::makeCallback(this, &AutosaveApp::write))) {
     CHECK(name.length() > 0);
     thread_.startThread(priority);
   }
 
  private:
-  class WriteThread : public Thread {
-   public:
-    WriteThread(const String& name, AutosaveApp* app)
-        : Thread("WriteThread " + name), app_(app) {
-    }
-
-    virtual void run() {
-      while (!threadShouldExit()) {
-        app_->write();
-        wait(app_->frequency_);
-      }
-    }
-
-   private:
-    AutosaveApp* app_;
-    DISALLOW_COPY_ASSIGN_AND_EMPTY(WriteThread);
-  };
-  friend class WriteThread;
-
-  WriteThread thread_;
-  const int frequency_;
+  thread::RunnableThread thread_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AutosaveApp);
 };

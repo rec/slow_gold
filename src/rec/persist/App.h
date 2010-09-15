@@ -49,7 +49,6 @@ class App {
     }
   }
 
- protected:
   void write() {
     ScopedLock l(lock_);
     for (DataSet::iterator i = data_.begin(); i != data_.end(); ++i)
