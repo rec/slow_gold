@@ -38,6 +38,16 @@ class DataRegistry {
   DISALLOW_COPY_AND_ASSIGN(DataRegistry);
 };
 
+inline google::protobuf::Message* createData(const std::string& name) {
+  return DataRegistry::getInstance()->createData(name);
+}
+
+inline bool registerData(const google::protobuf::Message* message, 
+                         const std::string* name = NULL) {
+  return DataRegistry::getInstance()->registerData(message, name);
+}
+
+
 }  // namespace persist
 }  // namespace rec
 
