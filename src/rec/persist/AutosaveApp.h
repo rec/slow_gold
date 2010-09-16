@@ -3,6 +3,7 @@
 
 #include <set>
 
+#include "rec/event/EventQueue.h"
 #include "rec/persist/App.h"
 #include "rec/persist/Writeable.h"
 #include "rec/thread/CallbackLoop.h"
@@ -16,13 +17,24 @@ class AutosaveApp : public App {
   AutosaveApp(const String& name, int period, int priority)
       : App(name),
         thread_("WriteThread " + name,
-                thread::callbackLoop(period, this, &AutosaveApp::write)) {
+                thread::callbackLoop(period, this, &AutosaveApp::write)),
+        events_(getDataFile("events.log.Event")) {
     CHECK(name.length() > 0);
     thread_.startThread(priority);
   }
 
+  void addEvent(event::Event* event) {
+    events_.add(event);
+  }
+
+  void write() {
+    App::write();
+    events_.write();
+  }
+
  private:
   thread::RunnableThread thread_;
+  event::EventQueue events_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AutosaveApp);
 };

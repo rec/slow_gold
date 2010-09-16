@@ -23,12 +23,11 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "google/protobuf/descriptor.pb.h"
+#include "rec/proto/Proto.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
 namespace event {
-namespace proto {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fevent_2fEvent_2eproto();
@@ -36,8 +35,6 @@ void protobuf_AssignDesc_rec_2fevent_2fEvent_2eproto();
 void protobuf_ShutdownFile_rec_2fevent_2fEvent_2eproto();
 
 class Source;
-class ProtoAddress;
-class Action;
 class Event;
 
 enum Source_Type {
@@ -143,12 +140,12 @@ class Source : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.event.proto.Source.Type type = 1;
+  // optional .rec.event.Source.Type type = 1;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
-  inline ::rec::event::proto::Source_Type type() const;
-  inline void set_type(::rec::event::proto::Source_Type value);
+  inline ::rec::event::Source_Type type() const;
+  inline void set_type(::rec::event::Source_Type value);
   
   // repeated uint32 index = 2;
   inline int index_size() const;
@@ -169,7 +166,7 @@ class Source : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 modifier_keys() const;
   inline void set_modifier_keys(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.event.proto.Source)
+  // @@protoc_insertion_point(class_scope:rec.event.Source)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -196,181 +193,6 @@ class Source : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static Source* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class ProtoAddress : public ::google::protobuf::Message {
- public:
-  ProtoAddress();
-  virtual ~ProtoAddress();
-  
-  ProtoAddress(const ProtoAddress& from);
-  
-  inline ProtoAddress& operator=(const ProtoAddress& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ProtoAddress& default_instance();
-  
-  void Swap(ProtoAddress* other);
-  
-  // implements Message ----------------------------------------------
-  
-  ProtoAddress* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ProtoAddress& from);
-  void MergeFrom(const ProtoAddress& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // repeated uint32 tag = 1;
-  inline int tag_size() const;
-  inline void clear_tag();
-  static const int kTagFieldNumber = 1;
-  inline ::google::protobuf::uint32 tag(int index) const;
-  inline void set_tag(int index, ::google::protobuf::uint32 value);
-  inline void add_tag(::google::protobuf::uint32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-      tag() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-      mutable_tag();
-  
-  // @@protoc_insertion_point(class_scope:rec.event.proto.ProtoAddress)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > tag_;
-  friend void  protobuf_AddDesc_rec_2fevent_2fEvent_2eproto();
-  friend void protobuf_AssignDesc_rec_2fevent_2fEvent_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fevent_2fEvent_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static ProtoAddress* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class Action : public ::google::protobuf::Message {
- public:
-  Action();
-  virtual ~Action();
-  
-  Action(const Action& from);
-  
-  inline Action& operator=(const Action& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Action& default_instance();
-  
-  void Swap(Action* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Action* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Action& from);
-  void MergeFrom(const Action& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // @@protoc_insertion_point(class_scope:rec.event.proto.Action)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  friend void  protobuf_AddDesc_rec_2fevent_2fEvent_2eproto();
-  friend void protobuf_AssignDesc_rec_2fevent_2fEvent_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fevent_2fEvent_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[1];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Action* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -435,28 +257,38 @@ class Event : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 timestamp() const;
   inline void set_timestamp(::google::protobuf::uint64 value);
   
-  // optional .rec.event.proto.Source source = 2;
-  inline bool has_source() const;
+  // repeated .rec.event.Source source = 2;
+  inline int source_size() const;
   inline void clear_source();
   static const int kSourceFieldNumber = 2;
-  inline const ::rec::event::proto::Source& source() const;
-  inline ::rec::event::proto::Source* mutable_source();
+  inline const ::rec::event::Source& source(int index) const;
+  inline ::rec::event::Source* mutable_source(int index);
+  inline ::rec::event::Source* add_source();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::event::Source >&
+      source() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::event::Source >*
+      mutable_source();
   
-  // optional .rec.event.proto.Action action = 3;
-  inline bool has_action() const;
-  inline void clear_action();
-  static const int kActionFieldNumber = 3;
-  inline const ::rec::event::proto::Action& action() const;
-  inline ::rec::event::proto::Action* mutable_action();
+  // repeated .rec.proto.Operation operation = 3;
+  inline int operation_size() const;
+  inline void clear_operation();
+  static const int kOperationFieldNumber = 3;
+  inline const ::rec::proto::Operation& operation(int index) const;
+  inline ::rec::proto::Operation* mutable_operation(int index);
+  inline ::rec::proto::Operation* add_operation();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >&
+      operation() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >*
+      mutable_operation();
   
-  // @@protoc_insertion_point(class_scope:rec.event.proto.Event)
+  // @@protoc_insertion_point(class_scope:rec.event.Event)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::uint64 timestamp_;
-  ::rec::event::proto::Source* source_;
-  ::rec::event::proto::Action* action_;
+  ::google::protobuf::RepeatedPtrField< ::rec::event::Source > source_;
+  ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation > operation_;
   friend void  protobuf_AddDesc_rec_2fevent_2fEvent_2eproto();
   friend void protobuf_AssignDesc_rec_2fevent_2fEvent_2eproto();
   friend void protobuf_ShutdownFile_rec_2fevent_2fEvent_2eproto();
@@ -484,7 +316,7 @@ class Event : public ::google::protobuf::Message {
 
 // Source
 
-// optional .rec.event.proto.Source.Type type = 1;
+// optional .rec.event.Source.Type type = 1;
 inline bool Source::has_type() const {
   return _has_bit(0);
 }
@@ -492,11 +324,11 @@ inline void Source::clear_type() {
   type_ = 0;
   _clear_bit(0);
 }
-inline ::rec::event::proto::Source_Type Source::type() const {
-  return static_cast< ::rec::event::proto::Source_Type >(type_);
+inline ::rec::event::Source_Type Source::type() const {
+  return static_cast< ::rec::event::Source_Type >(type_);
 }
-inline void Source::set_type(::rec::event::proto::Source_Type value) {
-  GOOGLE_DCHECK(::rec::event::proto::Source_Type_IsValid(value));
+inline void Source::set_type(::rec::event::Source_Type value) {
+  GOOGLE_DCHECK(::rec::event::Source_Type_IsValid(value));
   _set_bit(0);
   type_ = value;
 }
@@ -544,39 +376,6 @@ inline void Source::set_modifier_keys(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
-// ProtoAddress
-
-// repeated uint32 tag = 1;
-inline int ProtoAddress::tag_size() const {
-  return tag_.size();
-}
-inline void ProtoAddress::clear_tag() {
-  tag_.Clear();
-}
-inline ::google::protobuf::uint32 ProtoAddress::tag(int index) const {
-  return tag_.Get(index);
-}
-inline void ProtoAddress::set_tag(int index, ::google::protobuf::uint32 value) {
-  tag_.Set(index, value);
-}
-inline void ProtoAddress::add_tag(::google::protobuf::uint32 value) {
-  tag_.Add(value);
-}
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-ProtoAddress::tag() const {
-  return tag_;
-}
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-ProtoAddress::mutable_tag() {
-  return &tag_;
-}
-
-// -------------------------------------------------------------------
-
-// Action
-
-// -------------------------------------------------------------------
-
 // Event
 
 // optional uint64 timestamp = 1;
@@ -595,44 +394,59 @@ inline void Event::set_timestamp(::google::protobuf::uint64 value) {
   timestamp_ = value;
 }
 
-// optional .rec.event.proto.Source source = 2;
-inline bool Event::has_source() const {
-  return _has_bit(1);
+// repeated .rec.event.Source source = 2;
+inline int Event::source_size() const {
+  return source_.size();
 }
 inline void Event::clear_source() {
-  if (source_ != NULL) source_->::rec::event::proto::Source::Clear();
-  _clear_bit(1);
+  source_.Clear();
 }
-inline const ::rec::event::proto::Source& Event::source() const {
-  return source_ != NULL ? *source_ : *default_instance_->source_;
+inline const ::rec::event::Source& Event::source(int index) const {
+  return source_.Get(index);
 }
-inline ::rec::event::proto::Source* Event::mutable_source() {
-  _set_bit(1);
-  if (source_ == NULL) source_ = new ::rec::event::proto::Source;
+inline ::rec::event::Source* Event::mutable_source(int index) {
+  return source_.Mutable(index);
+}
+inline ::rec::event::Source* Event::add_source() {
+  return source_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::event::Source >&
+Event::source() const {
   return source_;
 }
+inline ::google::protobuf::RepeatedPtrField< ::rec::event::Source >*
+Event::mutable_source() {
+  return &source_;
+}
 
-// optional .rec.event.proto.Action action = 3;
-inline bool Event::has_action() const {
-  return _has_bit(2);
+// repeated .rec.proto.Operation operation = 3;
+inline int Event::operation_size() const {
+  return operation_.size();
 }
-inline void Event::clear_action() {
-  if (action_ != NULL) action_->::rec::event::proto::Action::Clear();
-  _clear_bit(2);
+inline void Event::clear_operation() {
+  operation_.Clear();
 }
-inline const ::rec::event::proto::Action& Event::action() const {
-  return action_ != NULL ? *action_ : *default_instance_->action_;
+inline const ::rec::proto::Operation& Event::operation(int index) const {
+  return operation_.Get(index);
 }
-inline ::rec::event::proto::Action* Event::mutable_action() {
-  _set_bit(2);
-  if (action_ == NULL) action_ = new ::rec::event::proto::Action;
-  return action_;
+inline ::rec::proto::Operation* Event::mutable_operation(int index) {
+  return operation_.Mutable(index);
+}
+inline ::rec::proto::Operation* Event::add_operation() {
+  return operation_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >&
+Event::operation() const {
+  return operation_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >*
+Event::mutable_operation() {
+  return &operation_;
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace proto
 }  // namespace event
 }  // namespace rec
 
@@ -641,8 +455,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::event::proto::Source_Type>() {
-  return ::rec::event::proto::Source_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::event::Source_Type>() {
+  return ::rec::event::Source_Type_descriptor();
 }
 
 }  // namespace google

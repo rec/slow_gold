@@ -11,19 +11,19 @@ namespace persist {
 
 using std::string;
 
-static void testPersist(Data<TestData>* data, int foo, const char* bar) {
-  ASSERT_EQ(data->get().foo(), foo);
-  ASSERT_EQ(data->get().bar(), bar);
-}
-
 TEST(Persist, AutosaveApp) {
+  File prefsFile = appDir("testapp/autosave.TestData");
+  ASSERT_TRUE(prefsFile.deleteFile());
+
   registerData(new TestData());
   {
     AutosaveApp app("testapp", 10, 7);
     File file = app.getDataFile("autosave");
-    ASSERT_TRUE(file.deleteFile());
+    prefsFile = file;
     Data<TestData>* data = app.getData<TestData>(std::string("autosave"));
-    testPersist(data, 2, "baz");  // The defaults.
+
+    ASSERT_EQ(2, data->get().foo());
+    ASSERT_EQ("baz", data->get().bar());
 
     {
       Data<TestData>::Access access(data);
@@ -32,8 +32,14 @@ TEST(Persist, AutosaveApp) {
     }
   }
 
-  AutosaveApp app("testapp", 10, 7);
-  testPersist(app.getData<TestData>(std::string("autosave")), 3, "bang");
+  {
+    AutosaveApp app("testapp", 10, 7);
+    Data<TestData>* data = app.getData<TestData>(std::string("autosave"));
+    ASSERT_EQ(data->get().foo(), 3);
+    ASSERT_EQ(data->get().bar(), "bang");
+  }
+
+  ASSERT_TRUE(prefsFile.deleteFile());
 }
 
 }  // namespace rec

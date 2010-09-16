@@ -12,11 +12,15 @@
 namespace rec {
 namespace persist {
 
+inline File appDir(const String& name) {
+  return File::getSpecialLocation(File::userApplicationDataDirectory).
+    getChildFile("recs").getChildFile(name);
+}
+
 class App {
  public:
   App(const String& appName)
-      : appDir_(File::getSpecialLocation(File::userApplicationDataDirectory).
-                getChildFile("recs").getChildFile(appName)) {
+      : appDir_(appDir(appName)) {
     CHECK(appName.length());
     appDir_.createDirectory();
   }

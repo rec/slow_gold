@@ -1,6 +1,6 @@
-package rec.event.proto;
+package rec.event;
 
-import "google/protobuf/descriptor.proto";
+import "rec/proto/Proto.proto";
 
 message Source {
   enum Type {
@@ -21,16 +21,8 @@ message Source {
   optional uint32 modifier_keys = 3;
 };
 
-message ProtoAddress {
-  repeated uint32 tag = 1;
-};
-
-message Action {
-
-};
-
 message Event {
   optional uint64 timestamp = 1;
-  optional Source source = 2;
-  optional Action action = 3;
+  repeated Source source = 2;
+  repeated rec.proto.Operation operation = 3;
 };
