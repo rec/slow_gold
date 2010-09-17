@@ -11,7 +11,7 @@ namespace rec {
 template <typename Window>
 class GenericApplication : public JUCEApplication {
  public:
-  static const int SAVE_PERIOD = 1000;
+  static const int SAVE_PERIOD = 25;
   static const int PRIORITY = 4;
   GenericApplication(const String& name, const String& version)
       : name_(name), version_(version) {

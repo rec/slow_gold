@@ -36,8 +36,10 @@ class AutosaveApp : public App {
 
   // Temporary, see https://github.com/rec/rec/issues/issue/40
   virtual void shutdown() {
+    thread_.stopThread(100);
+
     ScopedLock l(lock_);
-    thread_.signalThreadShouldExit();
+    write();
     events_.reset();
   }
 

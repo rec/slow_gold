@@ -2,12 +2,14 @@
 #define __REC_PERSIST_DATA__
 
 #include <string>
+#include <vector>
 
 #include "rec/base/base.h"
 #include "rec/base/Cast.h"
 #include "rec/persist/Writeable.h"
 #include "rec/persist/Copy.h"
 #include "rec/persist/DataRegistry.h"
+#include "rec/proto/Proto.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -35,8 +37,28 @@ class Data : public Writeable {
     }
   }
 
+  void apply(proto::Operation* op) {
+    ScopedLock l(lock_);
+    operations_.push_back(op);
+    // thread.notify();
+  }
+
+  void doApply() {
+    ScopedLock l(lock_);
+    OperationList::iterator i;
+    for (i = operations_.begin(); i != operations_.end(); ++i) {
+      if (proto::Operation* undo = applyOperation(**i, &proto_))
+        undos_.push_back(undo);
+      else
+        LOG(ERROR) << "Couldn't apply operation!";
+      delete **i;
+    }
+    operations_.clear();
+    changed_ = true;
+  }
+
   virtual void doWrite() {
-    copy(proto_, &file_);
+    copy(proto_, &file_);    
   }
 
   const Proto get() const {
@@ -71,6 +93,11 @@ class Data : public Writeable {
   };
 
  private:
+  typedef std::vector<proto::Operation*> OperationList;
+
+  OperationList operations_;
+  OperationList undos_;
+
   string typeName_;
   const Message* message_;
   File file_;

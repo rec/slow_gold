@@ -8,8 +8,8 @@
 namespace rec {
 namespace persist {
 
-inline App* createInstance(const String& name, int frequency, int priority) {
-  static App* app = new AutosaveApp(name, frequency, priority);
+inline App* createInstance(const String& name, int period, int priority) {
+  static App* app = new AutosaveApp(name, period, priority);
   return app;
 }
 
