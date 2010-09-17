@@ -18,23 +18,28 @@ class AutosaveApp : public App {
       : App(name),
         thread_("WriteThread " + name,
                 thread::callbackLoop(period, this, &AutosaveApp::write)),
-        events_(getDataFile("events.log.Event")) {
+    events_(new event::EventQueue(getDataFile("events.log.Event"))) {
     CHECK(name.length() > 0);
     thread_.startThread(priority);
   }
 
   void addEvent(event::Event* event) {
-    events_.add(event);
+    events_->add(event);
   }
 
   void write() {
     App::write();
-    events_.write();
+    events_->write();
+  }
+
+  // Temporary, see https://github.com/rec/rec/issues/issue/40
+  virtual void shutdown() {
+    events_.reset();
   }
 
  private:
   thread::RunnableThread thread_;
-  event::EventQueue events_;
+  scoped_ptr<event::EventQueue> events_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AutosaveApp);
 };

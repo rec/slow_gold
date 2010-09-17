@@ -18,7 +18,9 @@ class GenericApplication : public JUCEApplication {
     rec::persist::createInstance(name, SAVE_PERIOD, PRIORITY);
   }
 
-  virtual ~GenericApplication() {}
+  virtual ~GenericApplication() {
+    rec::persist::getInstance()->shutdown();
+  }
 
   virtual void initialise(const String& commandLine) {
     window_.reset(new Window());
