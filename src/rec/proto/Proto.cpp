@@ -13,54 +13,26 @@ using google::protobuf::Message;
 namespace rec {
 namespace proto {
 
-namespace op {
-
-struct Clear {
-  static Operation* single(const Field& f) {
-
-  }
-
-  static Operation* indexed(const Field& f) {
-    LOG(ERROR) << "Can't clear an indexed value";
-    return NULL;
-  }
-
-  static Operation* repeated(const Field& f) {
-  }
-};
-
-namespace clear {
-
-Operation* single(Message* m, const FieldDescriptor* f) {
+Operation* applyOperation(const Operation& operation,
+                          google::protobuf::Message* msg) {
+  return Field::apply(operation, msg);
 }
 
-Operation* indexed(int32 i, Message* m, const FieldDescriptor* f) {
+
+Operation* createOperation(Operation::Command command, ...) {
+  Operation *op = new Operation();
+  op->set_command(command);
+
+  va_list ap;
+  va_start(ap, command);
+
+  for (uint32 addr = va_arg(ap, uint32); addr; addr = va_arg(ap, uint32))
+    op->add_address(addr);
+
+  return op;
 }
 
-Operation* repeated(Message* m, const FieldDescriptor* f) {
-}
-
-}
-
-class Base {
- public:
-  virtual Operation* single(Message* m, const FieldDescriptor* f) = 0;
-  virtual Operation* indexed(int32 i, Message* m, const FieldDescriptor* f) = 0;
-  virtual Operation* repeated(Message* m, const FieldDescriptor* f) = 0;
-};
-
-class Add : public Base {
- public:
-  virtual Operation* single(Message* m, const FieldDescriptor* f) {
-  }
-  virtual Operation* indexed(int32 i, Message* m, const FieldDescriptor* f) {
-  }
-  virtual Operation* repeated(Message* m, const FieldDescriptor* f) {
-  }
-};
-
-}  // namespace op
-
+#if 0
 struct Field {
   const Operation* operation_;
   Message* message_;
@@ -428,19 +400,7 @@ bool applyOperation(const Operation& operation,
   scoped_ptr<Applier> applier(createApplier(operation, msg));
   return applier && applier->apply();
 }
-
-Operation* createOperation(Operation::Command command, ...) {
-  Operation *op = new Operation();
-  op->set_command(command);
-
-  va_list ap;
-  va_start(ap, command);
-
-  for (uint32 addr = va_arg(ap, uint32); addr; addr = va_arg(ap, uint32))
-    op->add_address(addr);
-
-  return op;
-}
+#endif
 
 }  // namespace proto
 }  // namespace rec

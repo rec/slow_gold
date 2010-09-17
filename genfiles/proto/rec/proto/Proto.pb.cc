@@ -128,12 +128,13 @@ void protobuf_AddDesc_rec_2fproto_2fProto_2eproto() {
     "\017\n\007bytes_f\030\014 \001(\014\022\020\n\010uint32_f\030\r \001(\r\022\016\n\006en"
     "um_f\030\016 \001(\005\022\022\n\nsfixed32_f\030\017 \001(\017\022\022\n\nsfixed"
     "64_f\030\020 \001(\020\022\020\n\010sint32_f\030\021 \001(\021\022\020\n\010sint64_f"
-    "\030\022 \001(\022\"\340\001\n\tOperation\022-\n\007command\030\001 \001(\0162\034."
+    "\030\022 \001(\022\"\361\001\n\tOperation\022-\n\007command\030\001 \001(\0162\034."
     "rec.proto.Operation.Command\022\017\n\007address\030\002"
-    " \003(\r\022\037\n\005value\030\003 \003(\0132\020.rec.proto.Value\022\016\n"
-    "\006remove\030\004 \001(\r\022\r\n\005swap1\030\005 \001(\r\022\r\n\005swap2\030\006 "
-    "\001(\r\"D\n\007Command\022\t\n\005CLEAR\020\001\022\007\n\003SET\020\002\022\n\n\006AP"
-    "PEND\020\003\022\017\n\013REMOVE_LAST\020\004\022\010\n\004SWAP\020\005", 593);
+    " \003(\005\022\037\n\005value\030\003 \003(\0132\020.rec.proto.Value\022\021\n"
+    "\006remove\030\004 \001(\r:\0011\022\r\n\005swap1\030\005 \001(\r\022\r\n\005swap2"
+    "\030\006 \001(\r\"R\n\007Command\022\n\n\006APPEND\020\000\022\t\n\005CLEAR\020\001"
+    "\022\n\n\006REMOVE\020\002\022\007\n\003SET\020\003\022\010\n\004SWAP\020\004\022\021\n\rCOMMA"
+    "ND_COUNT\020\005", 610);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/proto/Proto.proto", &protobuf_RegisterTypes);
   Value::default_instance_ = new Value();
@@ -1089,6 +1090,7 @@ const ::google::protobuf::EnumDescriptor* Operation_Command_descriptor() {
 }
 bool Operation_Command_IsValid(int value) {
   switch(value) {
+    case 0:
     case 1:
     case 2:
     case 3:
@@ -1101,11 +1103,12 @@ bool Operation_Command_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const Operation_Command Operation::CLEAR;
-const Operation_Command Operation::SET;
 const Operation_Command Operation::APPEND;
-const Operation_Command Operation::REMOVE_LAST;
+const Operation_Command Operation::CLEAR;
+const Operation_Command Operation::REMOVE;
+const Operation_Command Operation::SET;
 const Operation_Command Operation::SWAP;
+const Operation_Command Operation::COMMAND_COUNT;
 const Operation_Command Operation::Command_MIN;
 const Operation_Command Operation::Command_MAX;
 const int Operation::Command_ARRAYSIZE;
@@ -1135,8 +1138,8 @@ Operation::Operation(const Operation& from)
 
 void Operation::SharedCtor() {
   _cached_size_ = 0;
-  command_ = 1;
-  remove_ = 0u;
+  command_ = 0;
+  remove_ = 1u;
   swap1_ = 0u;
   swap2_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1173,8 +1176,8 @@ Operation* Operation::New() const {
 
 void Operation::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    command_ = 1;
-    remove_ = 0u;
+    command_ = 0;
+    remove_ = 1u;
     swap1_ = 0u;
     swap2_ = 0u;
   }
@@ -1210,19 +1213,19 @@ bool Operation::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated uint32 address = 2;
+      // repeated int32 address = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_address:
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  1, 16, input, this->mutable_address())));
         } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
                    == ::google::protobuf::internal::WireFormatLite::
                       WIRETYPE_LENGTH_DELIMITED) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, this->mutable_address())));
         } else {
           goto handle_uninterpreted;
@@ -1247,7 +1250,7 @@ bool Operation::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 remove = 4;
+      // optional uint32 remove = 4 [default = 1];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -1319,9 +1322,9 @@ void Operation::SerializeWithCachedSizes(
       1, this->command(), output);
   }
   
-  // repeated uint32 address = 2;
+  // repeated int32 address = 2;
   for (int i = 0; i < this->address_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
       2, this->address(i), output);
   }
   
@@ -1331,7 +1334,7 @@ void Operation::SerializeWithCachedSizes(
       3, this->value(i), output);
   }
   
-  // optional uint32 remove = 4;
+  // optional uint32 remove = 4 [default = 1];
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->remove(), output);
   }
@@ -1360,10 +1363,10 @@ void Operation::SerializeWithCachedSizes(
       1, this->command(), target);
   }
   
-  // repeated uint32 address = 2;
+  // repeated int32 address = 2;
   for (int i = 0; i < this->address_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt32ToArray(2, this->address(i), target);
+      WriteInt32ToArray(2, this->address(i), target);
   }
   
   // repeated .rec.proto.Value value = 3;
@@ -1373,7 +1376,7 @@ void Operation::SerializeWithCachedSizes(
         3, this->value(i), target);
   }
   
-  // optional uint32 remove = 4;
+  // optional uint32 remove = 4 [default = 1];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->remove(), target);
   }
@@ -1405,7 +1408,7 @@ int Operation::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->command());
     }
     
-    // optional uint32 remove = 4;
+    // optional uint32 remove = 4 [default = 1];
     if (has_remove()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -1427,12 +1430,12 @@ int Operation::ByteSize() const {
     }
     
   }
-  // repeated uint32 address = 2;
+  // repeated int32 address = 2;
   {
     int data_size = 0;
     for (int i = 0; i < this->address_size(); i++) {
       data_size += ::google::protobuf::internal::WireFormatLite::
-        UInt32Size(this->address(i));
+        Int32Size(this->address(i));
     }
     total_size += 1 * this->address_size() + data_size;
   }

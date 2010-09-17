@@ -37,15 +37,16 @@ class Value;
 class Operation;
 
 enum Operation_Command {
+  Operation_Command_APPEND = 0,
   Operation_Command_CLEAR = 1,
-  Operation_Command_SET = 2,
-  Operation_Command_APPEND = 3,
-  Operation_Command_REMOVE_LAST = 4,
-  Operation_Command_SWAP = 5
+  Operation_Command_REMOVE = 2,
+  Operation_Command_SET = 3,
+  Operation_Command_SWAP = 4,
+  Operation_Command_COMMAND_COUNT = 5
 };
 bool Operation_Command_IsValid(int value);
-const Operation_Command Operation_Command_Command_MIN = Operation_Command_CLEAR;
-const Operation_Command Operation_Command_Command_MAX = Operation_Command_SWAP;
+const Operation_Command Operation_Command_Command_MIN = Operation_Command_APPEND;
+const Operation_Command Operation_Command_Command_MAX = Operation_Command_COMMAND_COUNT;
 const int Operation_Command_Command_ARRAYSIZE = Operation_Command_Command_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Operation_Command_descriptor();
@@ -354,11 +355,12 @@ class Operation : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
   
   typedef Operation_Command Command;
-  static const Command CLEAR = Operation_Command_CLEAR;
-  static const Command SET = Operation_Command_SET;
   static const Command APPEND = Operation_Command_APPEND;
-  static const Command REMOVE_LAST = Operation_Command_REMOVE_LAST;
+  static const Command CLEAR = Operation_Command_CLEAR;
+  static const Command REMOVE = Operation_Command_REMOVE;
+  static const Command SET = Operation_Command_SET;
   static const Command SWAP = Operation_Command_SWAP;
+  static const Command COMMAND_COUNT = Operation_Command_COMMAND_COUNT;
   static inline bool Command_IsValid(int value) {
     return Operation_Command_IsValid(value);
   }
@@ -389,16 +391,16 @@ class Operation : public ::google::protobuf::Message {
   inline ::rec::proto::Operation_Command command() const;
   inline void set_command(::rec::proto::Operation_Command value);
   
-  // repeated uint32 address = 2;
+  // repeated int32 address = 2;
   inline int address_size() const;
   inline void clear_address();
   static const int kAddressFieldNumber = 2;
-  inline ::google::protobuf::uint32 address(int index) const;
-  inline void set_address(int index, ::google::protobuf::uint32 value);
-  inline void add_address(::google::protobuf::uint32 value);
-  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+  inline ::google::protobuf::int32 address(int index) const;
+  inline void set_address(int index, ::google::protobuf::int32 value);
+  inline void add_address(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
       address() const;
-  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_address();
   
   // repeated .rec.proto.Value value = 3;
@@ -413,7 +415,7 @@ class Operation : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Value >*
       mutable_value();
   
-  // optional uint32 remove = 4;
+  // optional uint32 remove = 4 [default = 1];
   inline bool has_remove() const;
   inline void clear_remove();
   static const int kRemoveFieldNumber = 4;
@@ -440,7 +442,7 @@ class Operation : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int command_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > address_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > address_;
   ::google::protobuf::RepeatedPtrField< ::rec::proto::Value > value_;
   ::google::protobuf::uint32 remove_;
   ::google::protobuf::uint32 swap1_;
@@ -873,7 +875,7 @@ inline bool Operation::has_command() const {
   return _has_bit(0);
 }
 inline void Operation::clear_command() {
-  command_ = 1;
+  command_ = 0;
   _clear_bit(0);
 }
 inline ::rec::proto::Operation_Command Operation::command() const {
@@ -885,27 +887,27 @@ inline void Operation::set_command(::rec::proto::Operation_Command value) {
   command_ = value;
 }
 
-// repeated uint32 address = 2;
+// repeated int32 address = 2;
 inline int Operation::address_size() const {
   return address_.size();
 }
 inline void Operation::clear_address() {
   address_.Clear();
 }
-inline ::google::protobuf::uint32 Operation::address(int index) const {
+inline ::google::protobuf::int32 Operation::address(int index) const {
   return address_.Get(index);
 }
-inline void Operation::set_address(int index, ::google::protobuf::uint32 value) {
+inline void Operation::set_address(int index, ::google::protobuf::int32 value) {
   address_.Set(index, value);
 }
-inline void Operation::add_address(::google::protobuf::uint32 value) {
+inline void Operation::add_address(::google::protobuf::int32 value) {
   address_.Add(value);
 }
-inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
 Operation::address() const {
   return address_;
 }
-inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 Operation::mutable_address() {
   return &address_;
 }
@@ -935,12 +937,12 @@ Operation::mutable_value() {
   return &value_;
 }
 
-// optional uint32 remove = 4;
+// optional uint32 remove = 4 [default = 1];
 inline bool Operation::has_remove() const {
   return _has_bit(3);
 }
 inline void Operation::clear_remove() {
-  remove_ = 0u;
+  remove_ = 1u;
   _clear_bit(3);
 }
 inline ::google::protobuf::uint32 Operation::remove() const {

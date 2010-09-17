@@ -24,7 +24,7 @@ TEST(LogFile, Empty) {
     EXPECT_FALSE(in.read(&op));
     EXPECT_FALSE(op.has_command());
     EXPECT_EQ(op.address_size(), 0);
-    EXPECT_FALSE(op.has_value());
+    EXPECT_EQ(op.value_size(), 0);
   }
 }
 
@@ -38,7 +38,7 @@ TEST(LogFile, OneRecord) {
     op.set_command(Operation::APPEND);
     op.add_address(3);
     op.add_address(4);
-    op.mutable_value()->set_uint32_f(5);
+    op.add_value()->set_uint32_f(5);
     out.write(op);
   }
 
@@ -50,7 +50,7 @@ TEST(LogFile, OneRecord) {
     EXPECT_EQ(op.command(), Operation::APPEND);
     EXPECT_EQ(op.address(0), 3);
     EXPECT_EQ(op.address(1), 4);
-    EXPECT_EQ(op.value().uint32_f(), 5);
+    EXPECT_EQ(op.value(0).uint32_f(), 5);
   }
 }
 
@@ -65,7 +65,7 @@ TEST(LogFile, TwoRecords) {
     op.set_command(Operation::APPEND);
     op.add_address(3);
     op.add_address(4);
-    op.mutable_value()->set_uint32_f(5);
+    op.add_value()->set_uint32_f(5);
     out.write(op);
 
     op.Clear();
@@ -86,14 +86,14 @@ TEST(LogFile, TwoRecords) {
     EXPECT_EQ(op.command(), Operation::APPEND);
     EXPECT_EQ(op.address(0), 3);
     EXPECT_EQ(op.address(1), 4);
-    EXPECT_EQ(op.value().uint32_f(), 5);
+    EXPECT_EQ(op.value(0).uint32_f(), 5);
 
     EXPECT_TRUE(in.read(&op));
 
     EXPECT_EQ(op.command(), Operation::SWAP);
     EXPECT_EQ(op.address_size(), 1);
     EXPECT_EQ(op.address(0), 1);
-    EXPECT_FALSE(op.has_value());
+    EXPECT_EQ(op.value_size(), 0);
     EXPECT_EQ(op.swap1(), 2);
     EXPECT_EQ(op.swap2(), 3);
   }

@@ -24,13 +24,14 @@ message Value {
 
 message Operation {
   enum Command {
+    APPEND = 0;
     CLEAR = 1;
-    SET = 2;
-
-    APPEND = 3;
-    REMOVE_LAST = 4;
-    SWAP = 5;
+    REMOVE = 2;
+    SET = 3;
+    SWAP = 4;
+    COMMAND_COUNT = 5;
   };
+
   optional Command command = 1;
   repeated int32 address = 2;
   repeated Value value = 3;

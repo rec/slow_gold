@@ -41,7 +41,7 @@ void truncateTo(int size, Container* cont, Type t) {
   }
 }
 
-bool applyOperation(const Operation& operation, google::protobuf::Message* msg);
+Operation* applyOperation(const Operation& operation, google::protobuf::Message* msg);
 
 Operation* createOperation(Operation::Command command, ...);
 
