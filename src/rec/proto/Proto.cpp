@@ -71,36 +71,6 @@ struct Field {
   const Descriptor& descriptor() const { return *(message_->GetDescriptor()); }
   const Reflection& reflection() const { return *(message_->GetReflection()); }
 
-  bool isRepeated() const {
-    return field_->label() == FieldDescriptor::LABEL_REPEATED;
-  }
-
-  bool dereference(int32 tag) {
-    if (field_) {
-      if (isIndexed_) {
-        if (field_->type() != FieldDescriptor::TYPE_MESSAGE) {
-          LOG(ERROR) << "Non-terminal field had type " << field_->type();
-          return false;
-        }
-        message_ = derefMessage();
-        isIndexed_ = false;
-      } else if (isRepeated()) {
-        isIndexed_ = true;
-        index_ = tag;
-        return true;
-      } else {
-        message_ = message_->MutableMessage(message_, index);
-      }
-    }
-    field_ = descriptor().FindFieldByNumber(tag);
-    if (!field_) {
-      LOG(ERROR) << "No submessage with i=" << i << ", index=" << index;
-      return false;
-    }
-
-    return true;
-  }
-
   Operation* apply(const Operation& op) {
     switch (op.command()) {
      case Operation::CLEAR:        return clear(op);
