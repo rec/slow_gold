@@ -24,19 +24,21 @@ message Value {
 
 message Operation {
   enum Command {
-    ADD = 1;
-    APPEND = 2;
-    CLEAR = 3;
-    CREATE = 4;
-    REMOVE_LAST = 5;
-    SET = 6;
-    SWAP = 7;
+    CLEAR = 1;
+    SET = 2;
+
+    APPEND = 3;
+    REMOVE_LAST = 4;
+    SWAP = 5;
   };
   optional Command command = 1;
-  repeated uint32 address = 2;
-  optional Value value = 3;
+  repeated int32 address = 2;
+  repeated Value value = 3;
+
+  // Number of entries to remove from the end.
+  optional uint32 remove = 4 [default = 1];
 
   // Used as an index for SWAP commands only.
-  optional uint32 swap1 = 4;
-  optional uint32 swap2 = 5;
+  optional uint32 swap1 = 5;
+  optional uint32 swap2 = 6;
 };

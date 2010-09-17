@@ -3,6 +3,7 @@
 #include "rec/base/scoped_ptr.h"
 #include "google/protobuf/descriptor.h"
 #include "rec/proto/Proto.h"
+#include "rec/proto/Field.h"
 
 using google::protobuf::Descriptor;
 using google::protobuf::FieldDescriptor;
@@ -12,7 +13,222 @@ using google::protobuf::Message;
 namespace rec {
 namespace proto {
 
-namespace {
+namespace op {
+
+struct Clear {
+  static Operation* single(const Field& f) {
+
+  }
+
+  static Operation* indexed(const Field& f) {
+    LOG(ERROR) << "Can't clear an indexed value";
+    return NULL;
+  }
+
+  static Operation* repeated(const Field& f) {
+  }
+};
+
+namespace clear {
+
+Operation* single(Message* m, const FieldDescriptor* f) {
+}
+
+Operation* indexed(int32 i, Message* m, const FieldDescriptor* f) {
+}
+
+Operation* repeated(Message* m, const FieldDescriptor* f) {
+}
+
+}
+
+class Base {
+ public:
+  virtual Operation* single(Message* m, const FieldDescriptor* f) = 0;
+  virtual Operation* indexed(int32 i, Message* m, const FieldDescriptor* f) = 0;
+  virtual Operation* repeated(Message* m, const FieldDescriptor* f) = 0;
+};
+
+class Add : public Base {
+ public:
+  virtual Operation* single(Message* m, const FieldDescriptor* f) {
+  }
+  virtual Operation* indexed(int32 i, Message* m, const FieldDescriptor* f) {
+  }
+  virtual Operation* repeated(Message* m, const FieldDescriptor* f) {
+  }
+};
+
+}  // namespace op
+
+struct Field {
+  const Operation* operation_;
+  Message* message_;
+  const FieldDescriptor* field_;
+  uint32 index_;
+  bool isIndexed_;
+
+  const Descriptor& descriptor() const { return *(message_->GetDescriptor()); }
+  const Reflection& reflection() const { return *(message_->GetReflection()); }
+
+  bool isRepeated() const {
+    return field_->label() == FieldDescriptor::LABEL_REPEATED;
+  }
+
+  bool dereference(int32 tag) {
+    if (field_) {
+      if (isIndexed_) {
+        if (field_->type() != FieldDescriptor::TYPE_MESSAGE) {
+          LOG(ERROR) << "Non-terminal field had type " << field_->type();
+          return false;
+        }
+        message_ = derefMessage();
+        isIndexed_ = false;
+      } else if (isRepeated()) {
+        isIndexed_ = true;
+        index_ = tag;
+        return true;
+      } else {
+        message_ = message_->MutableMessage(message_, index);
+      }
+    }
+    field_ = descriptor().FindFieldByNumber(tag);
+    if (!field_) {
+      LOG(ERROR) << "No submessage with i=" << i << ", index=" << index;
+      return false;
+    }
+
+    return true;
+  }
+
+  Operation* apply(const Operation& op) {
+    switch (op.command()) {
+     case Operation::CLEAR:        return clear(op);
+     case Operation::SET:          return set(op);
+     case Operation::APPEND:       return append(op);
+     case Operation::REMOVE_LAST:  return removeLast(op);
+     case Operation::SWAP:         return swap(op);
+     default: return NULL;
+    }
+  }
+
+  Operation* clear(const Operation& op) {
+    if (isIndexed_) {
+      LOG(ERROR) << "Can't clear an indexed value";
+      return NULL;
+    }
+
+    scoped_ptr<Operation> undo(new Operation());
+    undo->set_command(Operation::SET);
+
+    if (isRepeated()) {
+
+    }
+
+
+  Operation* apply(const Operation& op) {
+    const Reflection& f = reflection();
+    const bool repeated = isRepeated();
+
+    Operation::Command c = op.command();
+    if (c == Operation::SET) {
+      int inSize = op.value_size();
+      if (repeated) {
+        Operation* undo = new Operation();
+        undo->set_
+        int outSize = r->FieldSize(message_, field_);
+        for (int i = 0; i < outSize; ++i)
+          copyTo(i, undo->add_value(i), field_, message_);
+
+        r->ClearField(message_, field);
+        for (int i = 0; i < inSize; ++i)
+          copyFrom(undo->add_value(i)->CopyFrom(op.value(i)));
+
+        return undo.transfer();
+
+      } else if (inSize != 1) {
+        LOG(ERROR) << "Setting just a single value, " << inSize;
+
+      } else if (isIndexed_) {
+        if (copyTo(index_, undo->mutable_value(0), field_, message_) &&
+            copyFrom(index_, op.value(0), field_, message_))
+          return undo.transfer();
+
+      } else {
+        if (copyTo(undo->mutable_value(0), field_, message_) &&
+            copyFrom(op.value(0), field_, message_))
+          return undo.transfer();
+
+      }
+
+      for (int i = 0; i <
+        if (
+        int originalSize =
+        undo->clear_value();
+        for (int i = 0; i < originalSize; ++i) {
+          if (!copyTo(
+        }
+
+      } else if (inSize != 1) {
+        LOG(ERROR) << "Non-repeated elements can only have a single value";
+        return NULL;
+      }
+
+      for (int i = 0; i <
+
+    }
+    if (isIndexed_) {
+      if (c != Operation::SET)
+        LOG(ERROR) << "indexed elements can only be SET: " << c;
+
+      else if (undo->value_size() != 1)
+        LOG(ERROR) << "Indexed SET operations must have exactly 1 value " << c;
+
+      else if (!copyTo(undo->mutable_value(0)))
+        LOG(ERROR) << "Couldn't store undo value";
+
+      else if (!copyFrom(op.value()))
+        LOG(ERROR) << "Couldn't set value";
+
+      else
+        return undo.release();
+
+    } else if (isRepeated()) {
+      if (c == Operation::SET) {
+        undo->clear_value();
+        for (int i = 0; i < op.value_size(); ++i)
+
+      if (c == Operation::CLEAR) {
+        if (!copyTo(undo->mutable_value(0)))
+          LOG(ERROR) << "Couldn't store undo value";
+
+
+      } else if (c == Operation::CLEAR) {
+      } else {
+        LOG(ERROR) << "Single entries can only be set or cleared";
+      }
+
+    } else {
+      if (c == Operation::SET) {
+      } else if (c == Operation::CLEAR) {
+      } else {
+        LOG(ERROR) << "Single entries can only be set or cleared";
+      }
+    }
+    return NULL;
+  }
+
+  bool clear(Operation* operation) {
+    if (isIndexed_) {
+      LOG(ERROR) << "Can't clear indexed items";
+      return false;
+    }
+    return true;
+  }
+};
+
+
+
 
 class Applier {
  public:
@@ -32,12 +248,9 @@ class Applier {
       isIndexed_(true) {
   }
 
-  static Applier* create(const Operation& op, Message* msg);
-
   bool checkField() {
     Operation::Command c = operation_.command();
-
-    const Value& v = operation_.value();
+    bool hasValue = false;
     const Descriptor* desc = v.GetDescriptor();
     const FieldDescriptor *f = desc->FindFieldByNumber(field_->type());
 
@@ -51,7 +264,6 @@ class Applier {
 
     if (c != Operation::CLEAR) {
       bool needsRepeat =
-        c == Operation::ADD ||
         c == Operation::APPEND ||
         c == Operation::REMOVE_LAST ||
         c == Operation::SWAP;
@@ -65,7 +277,6 @@ class Applier {
       }
     }
 
-
     return true;
   }
 
@@ -74,23 +285,13 @@ class Applier {
       return false;
 
     switch (operation_.command()) {
-     case Operation::ADD:          return add();
      case Operation::APPEND:       return append();
      case Operation::CLEAR:        return clear();
-     case Operation::CREATE:       return create();
      case Operation::REMOVE_LAST:  return removeLast();
      case Operation::SET:          return set();
      case Operation::SWAP:         return swap();
      default:                      return false;
     }
-  }
-
-  bool add() {
-    if (field_->type() == FieldDescriptor::TYPE_MESSAGE)
-      return message_->GetReflection()->AddMessage(message_, field_);
-
-    LOG(ERROR) << "Can only add Messages";
-    return false;
   }
 
   bool append() {
@@ -110,7 +311,6 @@ class Applier {
       PR_CASE(fixed32, UInt32, FIXED32)
       PR_CASE(bool, Bool, BOOL)
       PR_CASE(string, String, STRING)
-      // PR_CASE(message, Message, MESSAGE)  already done
       // PR_CASE(group, Group, GROUP)
       PR_CASE(bytes, String, BYTES)
       PR_CASE(uint32, UInt32, UINT32)
@@ -120,7 +320,10 @@ class Applier {
       PR_CASE(sint32, Int32, SINT32)
       PR_CASE(sint64, Int64, SINT64)
 
-     default:
+    case FieldDescriptor::TYPE_MESSAGE:
+       return r->AddMessage(message_, field_)->ParseFromString(v.message_f());
+
+    default:
       LOG(ERROR) << "Didn't understand type " << field_->type();
       return false;
     }
@@ -136,12 +339,6 @@ class Applier {
     return !isIndexed_;
   }
 
-  bool create() {
-    const Reflection* r = message_->GetReflection();
-    return !r->HasField(*message_, field_) &&
-      r->MutableMessage(message_, field_);
-  }
-
   bool removeLast() {
     message_->GetReflection()->RemoveLast(message_, field_);
     return true;
@@ -149,14 +346,14 @@ class Applier {
 
   bool set() {
     const Reflection* r = message_->GetReflection();
-
+    const Value& v = operation_.value();
     switch (field_->type()) {
   #define PR_CASE(TYPE, TYPE_CAP, TYPE_UPPER) \
       case FieldDescriptor::TYPE_ ## TYPE_UPPER: \
        if (isIndexed_)\
-         r->SetRepeated##TYPE_CAP(message_, field_, index_, operation_.value().TYPE ## _f());\
+         r->SetRepeated##TYPE_CAP(message_, field_, index_, v.TYPE ## _f());\
        else\
-         r->Set ## TYPE_CAP(message_, field_, operation_.value().TYPE ## _f()); \
+         r->Set ## TYPE_CAP(message_, field_, v.TYPE ## _f()); \
        return true;
 
       PR_CASE(double, Double, DOUBLE)
@@ -177,6 +374,10 @@ class Applier {
       PR_CASE(sfixed64, UInt64, SFIXED64)
       PR_CASE(sint32, Int32, SINT32)
       PR_CASE(sint64, Int64, SINT64)
+
+    case FieldDescriptor::TYPE_MESSAGE:
+       return r->MutableMessage(message_, field_)->
+         ParseFromString(v.message_f());
 
      default:
       LOG(ERROR) << "Didn't understand type " << field_->type();
