@@ -2,6 +2,7 @@
 #define __REC_PROTO_FIELD__
 
 #include "rec/base/basictypes.h"
+#include "rec/base/scoped_ptr.h"
 #include "rec/proto/Proto.pb.h"
 
 namespace google {
@@ -21,7 +22,7 @@ class Field {
   typedef google::protobuf::Message Message;
   typedef google::protobuf::FieldDescriptor FieldDescriptor;
 
-  static Operation* apply(const Operation &op, 
+  static Operation* apply(const Operation &op,
                           Message* message);
 
  private:
@@ -41,25 +42,31 @@ class Field {
   };
 
   bool copyFrom(const Value& value);
+  bool addFrom(const Value& value);
   bool copyTo(Value* value) const;
 
-  Operation* addRepeated(const Operation& op);
-  Operation* removeRepeated(const Operation& op);
-  Operation* swapRepeated(const Operation& op);
+  bool addRepeated();
+  bool removeRepeated();
+  bool swapRepeated();
 
-  Operation* clearRepeated(const Operation& op);
-  Operation* clearSingle(const Operation& op);
+  bool clearRepeated();
+  bool clearSingle();
 
-  Operation* setIndexed(const Operation& op);
-  Operation* setRepeated(const Operation& op);
-  Operation* setSingle(const Operation& op);
+  bool setIndexed() { return setSingle(); }
+  bool setSingle();
 
-  Operation* error(const Operation& op);
+  bool error();
+
+  bool doRemove(int toRemove = -1);
 
   Message* message_;
   const FieldDescriptor* field_;
   uint32 index_;
   Type type_;
+  uint32 repeatCount_;
+
+  Operation* undo_;
+  const Operation* operation_;
 };
 
 

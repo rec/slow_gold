@@ -36,6 +36,10 @@ bool Field::dereference(int32 tag) {
       }
 
     } else if (type_ == REPEATED) {
+      if (tag >= repeatCount_) {
+        LOG(ERROR) << "Index " << tag << " out of bounds " << repeatCount_;
+        return false;
+      }
       type_ = INDEXED;
       index_ = tag;
       return true;
@@ -46,8 +50,13 @@ bool Field::dereference(int32 tag) {
   }
 
   field_ = message_->GetDescriptor()->FindFieldByNumber(tag);
-  type_ = (field_->label() == FieldDescriptor::LABEL_REPEATED) ? REPEATED :
-    SINGLE;
+  if (field_->label() == FieldDescriptor::LABEL_REPEATED) {
+    type_ = REPEATED;
+    repeatCount_ = message_->GetReflection()->FieldSize(*message_, field_);
+  } else {
+    type_ = SINGLE;
+    repeatCount_ = 1;
+  }
 
   if (!field_) {
     LOG(ERROR) << "No submessage with tag=" << tag << ", index=" << index;
@@ -102,6 +111,44 @@ bool Field::copyFrom(const Value& value) {
 #undef COPY_CASE
 }
 
+bool Field::addFrom(const Value& value) {
+  const Reflection& r = *(message_->GetReflection());
+
+#define COPY_CASE(TYPE, CAP, UPPER)                                       \
+   case FieldDescriptor::TYPE_ ## UPPER:                                  \
+      r.Add ## CAP(message_, field_, value.TYPE ## _f()); \
+    return true;
+
+  switch (field_->type()) {
+    COPY_CASE(double, Double, DOUBLE)
+    COPY_CASE(float, Float, FLOAT)
+    COPY_CASE(int64, Int64, INT64)
+    COPY_CASE(uint64, UInt64, UINT64)
+    COPY_CASE(int32, Int32, INT32)
+    COPY_CASE(fixed64, UInt64, FIXED64)
+    COPY_CASE(fixed32, UInt32, FIXED32)
+    COPY_CASE(bool, Bool, BOOL)
+    COPY_CASE(string, String, STRING)
+    // COPY_CASE(group, Group, GROUP)
+    COPY_CASE(bytes, String, BYTES)
+    COPY_CASE(uint32, UInt32, UINT32)
+    // COPY_CASE(enum, Enum, ENUM)
+    COPY_CASE(sfixed32, UInt32, SFIXED32)
+    COPY_CASE(sfixed64, UInt64, SFIXED64)
+    COPY_CASE(sint32, Int32, SINT32)
+    COPY_CASE(sint64, Int64, SINT64)
+
+    case FieldDescriptor::TYPE_MESSAGE:
+     return r.AddMessage(message_, field_)->ParseFromString(value.message_f());
+
+   default:
+    LOG(ERROR) << "Can't understand field type " << field_->type();
+    return false;
+  }
+
+#undef COPY_CASE
+}
+
 bool Field::copyTo(Value* v) const {
   const Reflection& r = *(message_->GetReflection());
 
@@ -145,7 +192,7 @@ bool Field::copyTo(Value* v) const {
 #undef COPY_CASE
 }
 
-typedef Operation* (Field::*Applier)(const Operation& op);
+typedef bool (Field::*Applier)();
 
 Operation* Field::apply(const Operation& op) {
   if (!field_) {
@@ -161,54 +208,91 @@ Operation* Field::apply(const Operation& op) {
       {&Field::error,       &Field::addRepeated,     &Field::error},
       {&Field::error,       &Field::clearRepeated,   &Field::clearSingle},
       {&Field::error,       &Field::removeRepeated,  &Field::error},
-      {&Field::setIndexed,  &Field::setRepeated,     &Field::setSingle},
+      {&Field::setIndexed,  &Field::error,           &Field::setSingle},
       {&Field::error,       &Field::swapRepeated,    &Field::error},
     };
     applier = appliers[command][type_];
   }
 
-  return (this->*applier)(op);
-}
+  operation_ = &op;
+  undo_ = new Operation(op);
+  undo_->clear_value();
+  if ((this->*applier)())
+    return undo_;
 
-Operation* Field::error(const Operation& op) {
-  LOG(ERROR) << "This operation was impossible";
+  delete undo_;
   return NULL;
 }
 
+bool Field::error() {
+  LOG(ERROR) << "This operation was impossible";
+  return false;
+}
 
-Operation* Field::addRepeated(const Operation& op) {
+bool Field::addRepeated() {
+  int size = operation_->value_size();
+  for (int i = 0; i < size; ++i) {
+    if (!addFrom(operation_->value(i)))
+      return false;
+  }
 
+  undo_->set_command(Operation::REMOVE);
+  undo_->set_remove(size);
+  return true;
+}
+
+bool Field::doRemove(int toRemove) {
+  undo_->set_command(Operation::APPEND);
+
+  Field f = *this;
+  f.dereference(0);
+  if (toRemove < 0)
+    toRemove = f.repeatCount_;
+
+  f.index_ = f.repeatCount_ - toRemove;
+  for (; f.index_ < f.repeatCount_; ++f.index_) {
+    if (!f.copyTo(undo_->add_value()))
+      return false;
+  }
+
+  return true;
+}
+
+bool Field::clearRepeated() {
+  return doRemove();
+}
+
+bool Field::clearSingle() {
+  undo_->set_command(Operation::SET);
+  undo_->clear_value();
+  return copyTo(undo_->add_value());
+}
+
+bool Field::removeRepeated() {
+  return doRemove(operation_->remove());
+}
+
+bool Field::setSingle() {
+  if (operation_->value_size() != 0) {
+    LOG(ERROR) << "Can only set one value at a time";
+    return false;
+  }
+
+  if (type_ == INDEXED || message_->GetReflection()->HasField(*message_, field_))
+    copyTo(undo_->add_value());
+  else
+    undo_->set_command(Operation::CLEAR);
+
+  return copyFrom(operation_->value(0));
 }
 
 
-Operation* Field::clearRepeated(const Operation& op) {
+bool Field::swapRepeated() {
+  message_->GetReflection()->SwapElements(message_, field_, 
+                                          operation_->swap1(),
+                                          operation_->swap2());
 
-}
-
-Operation* Field::clearSingle(const Operation& op) {
-
-}
-
-
-Operation* Field::removeRepeated(const Operation& op) {
-
-}
-
-Operation* Field::setIndexed(const Operation& op) {
-
-}
-
-Operation* Field::setRepeated(const Operation& op) {
-
-}
-
-Operation* Field::setSingle(const Operation& op) {
-
-}
-
-
-Operation* Field::swapRepeated(const Operation& op) {
-
+  return true;
 }
 
 }  // namespace proto
