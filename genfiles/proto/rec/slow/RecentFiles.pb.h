@@ -33,9 +33,111 @@ void  protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();
 void protobuf_AssignDesc_rec_2fslow_2fRecentFiles_2eproto();
 void protobuf_ShutdownFile_rec_2fslow_2fRecentFiles_2eproto();
 
+class RecentFile;
 class RecentFiles;
 
 // ===================================================================
+
+class RecentFile : public ::google::protobuf::Message {
+ public:
+  RecentFile();
+  virtual ~RecentFile();
+  
+  RecentFile(const RecentFile& from);
+  
+  inline RecentFile& operator=(const RecentFile& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RecentFile& default_instance();
+  
+  void Swap(RecentFile* other);
+  
+  // implements Message ----------------------------------------------
+  
+  RecentFile* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RecentFile& from);
+  void MergeFrom(const RecentFile& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional uint64 timestamp = 1;
+  inline bool has_timestamp() const;
+  inline void clear_timestamp();
+  static const int kTimestampFieldNumber = 1;
+  inline ::google::protobuf::uint64 timestamp() const;
+  inline void set_timestamp(::google::protobuf::uint64 value);
+  
+  // optional string name = 2;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 2;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  
+  // @@protoc_insertion_point(class_scope:rec.slow.RecentFile)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::google::protobuf::uint64 timestamp_;
+  ::std::string* name_;
+  static const ::std::string _default_name_;
+  friend void  protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();
+  friend void protobuf_AssignDesc_rec_2fslow_2fRecentFiles_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fslow_2fRecentFiles_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static RecentFile* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class RecentFiles : public ::google::protobuf::Message {
  public:
@@ -91,21 +193,17 @@ class RecentFiles : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // repeated string name = 3;
-  inline int name_size() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 3;
-  inline const ::std::string& name(int index) const;
-  inline ::std::string* mutable_name(int index);
-  inline void set_name(int index, const ::std::string& value);
-  inline void set_name(int index, const char* value);
-  inline void set_name(int index, const char* value, size_t size);
-  inline ::std::string* add_name();
-  inline void add_name(const ::std::string& value);
-  inline void add_name(const char* value);
-  inline void add_name(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& name() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_name();
+  // repeated .rec.slow.RecentFile file = 3;
+  inline int file_size() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 3;
+  inline const ::rec::slow::RecentFile& file(int index) const;
+  inline ::rec::slow::RecentFile* mutable_file(int index);
+  inline ::rec::slow::RecentFile* add_file();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::RecentFile >&
+      file() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::slow::RecentFile >*
+      mutable_file();
   
   // optional uint32 max_files = 4 [default = 16];
   inline bool has_max_files() const;
@@ -126,7 +224,7 @@ class RecentFiles : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::RepeatedPtrField< ::std::string> name_;
+  ::google::protobuf::RepeatedPtrField< ::rec::slow::RecentFile > file_;
   ::google::protobuf::uint32 max_files_;
   bool reload_most_recent_;
   friend void  protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();
@@ -154,50 +252,93 @@ class RecentFiles : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// RecentFiles
+// RecentFile
 
-// repeated string name = 3;
-inline int RecentFiles::name_size() const {
-  return name_.size();
+// optional uint64 timestamp = 1;
+inline bool RecentFile::has_timestamp() const {
+  return _has_bit(0);
 }
-inline void RecentFiles::clear_name() {
-  name_.Clear();
+inline void RecentFile::clear_timestamp() {
+  timestamp_ = GOOGLE_ULONGLONG(0);
+  _clear_bit(0);
 }
-inline const ::std::string& RecentFiles::name(int index) const {
-  return name_.Get(index);
+inline ::google::protobuf::uint64 RecentFile::timestamp() const {
+  return timestamp_;
 }
-inline ::std::string* RecentFiles::mutable_name(int index) {
-  return name_.Mutable(index);
+inline void RecentFile::set_timestamp(::google::protobuf::uint64 value) {
+  _set_bit(0);
+  timestamp_ = value;
 }
-inline void RecentFiles::set_name(int index, const ::std::string& value) {
-  name_.Mutable(index)->assign(value);
+
+// optional string name = 2;
+inline bool RecentFile::has_name() const {
+  return _has_bit(1);
 }
-inline void RecentFiles::set_name(int index, const char* value) {
-  name_.Mutable(index)->assign(value);
+inline void RecentFile::clear_name() {
+  if (name_ != &_default_name_) {
+    name_->clear();
+  }
+  _clear_bit(1);
 }
-inline void RecentFiles::set_name(int index, const char* value, size_t size) {
-  name_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
+inline const ::std::string& RecentFile::name() const {
+  return *name_;
 }
-inline ::std::string* RecentFiles::add_name() {
-  return name_.Add();
+inline void RecentFile::set_name(const ::std::string& value) {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
 }
-inline void RecentFiles::add_name(const ::std::string& value) {
-  name_.Add()->assign(value);
+inline void RecentFile::set_name(const char* value) {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
 }
-inline void RecentFiles::add_name(const char* value) {
-  name_.Add()->assign(value);
+inline void RecentFile::set_name(const char* value, size_t size) {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline void RecentFiles::add_name(const char* value, size_t size) {
-  name_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-RecentFiles::name() const {
+inline ::std::string* RecentFile::mutable_name() {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
   return name_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-RecentFiles::mutable_name() {
-  return &name_;
+
+// -------------------------------------------------------------------
+
+// RecentFiles
+
+// repeated .rec.slow.RecentFile file = 3;
+inline int RecentFiles::file_size() const {
+  return file_.size();
+}
+inline void RecentFiles::clear_file() {
+  file_.Clear();
+}
+inline const ::rec::slow::RecentFile& RecentFiles::file(int index) const {
+  return file_.Get(index);
+}
+inline ::rec::slow::RecentFile* RecentFiles::mutable_file(int index) {
+  return file_.Mutable(index);
+}
+inline ::rec::slow::RecentFile* RecentFiles::add_file() {
+  return file_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::slow::RecentFile >&
+RecentFiles::file() const {
+  return file_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::slow::RecentFile >*
+RecentFiles::mutable_file() {
+  return &file_;
 }
 
 // optional uint32 max_files = 4 [default = 16];

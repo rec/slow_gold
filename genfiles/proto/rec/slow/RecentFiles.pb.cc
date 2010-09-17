@@ -15,6 +15,9 @@ namespace slow {
 
 namespace {
 
+const ::google::protobuf::Descriptor* RecentFile_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  RecentFile_reflection_ = NULL;
 const ::google::protobuf::Descriptor* RecentFiles_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RecentFiles_reflection_ = NULL;
@@ -28,9 +31,25 @@ void protobuf_AssignDesc_rec_2fslow_2fRecentFiles_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/slow/RecentFiles.proto");
   GOOGLE_CHECK(file != NULL);
-  RecentFiles_descriptor_ = file->message_type(0);
+  RecentFile_descriptor_ = file->message_type(0);
+  static const int RecentFile_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, timestamp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, name_),
+  };
+  RecentFile_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      RecentFile_descriptor_,
+      RecentFile::default_instance_,
+      RecentFile_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(RecentFile));
+  RecentFiles_descriptor_ = file->message_type(1);
   static const int RecentFiles_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFiles, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFiles, file_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFiles, max_files_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFiles, reload_most_recent_),
   };
@@ -58,12 +77,16 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    RecentFile_descriptor_, &RecentFile::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RecentFiles_descriptor_, &RecentFiles::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fslow_2fRecentFiles_2eproto() {
+  delete RecentFile::default_instance_;
+  delete RecentFile_reflection_;
   delete RecentFiles::default_instance_;
   delete RecentFiles_reflection_;
 }
@@ -75,13 +98,16 @@ void protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/slow/RecentFiles.proto\022\010rec.slow\"T"
-    "\n\013RecentFiles\022\014\n\004name\030\003 \003(\t\022\025\n\tmax_files"
-    "\030\004 \001(\r:\00216\022 \n\022reload_most_recent\030\005 \001(\010:\004"
-    "true", 124);
+    "\n\032rec/slow/RecentFiles.proto\022\010rec.slow\"-"
+    "\n\nRecentFile\022\021\n\ttimestamp\030\001 \001(\004\022\014\n\004name\030"
+    "\002 \001(\t\"j\n\013RecentFiles\022\"\n\004file\030\003 \003(\0132\024.rec"
+    ".slow.RecentFile\022\025\n\tmax_files\030\004 \001(\r:\00216\022"
+    " \n\022reload_most_recent\030\005 \001(\010:\004true", 193);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/RecentFiles.proto", &protobuf_RegisterTypes);
+  RecentFile::default_instance_ = new RecentFile();
   RecentFiles::default_instance_ = new RecentFiles();
+  RecentFile::default_instance_->InitAsDefaultInstance();
   RecentFiles::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fslow_2fRecentFiles_2eproto);
 }
@@ -96,8 +122,273 @@ struct StaticDescriptorInitializer_rec_2fslow_2fRecentFiles_2eproto {
 
 // ===================================================================
 
+const ::std::string RecentFile::_default_name_;
 #ifndef _MSC_VER
-const int RecentFiles::kNameFieldNumber;
+const int RecentFile::kTimestampFieldNumber;
+const int RecentFile::kNameFieldNumber;
+#endif  // !_MSC_VER
+
+RecentFile::RecentFile()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void RecentFile::InitAsDefaultInstance() {
+}
+
+RecentFile::RecentFile(const RecentFile& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void RecentFile::SharedCtor() {
+  _cached_size_ = 0;
+  timestamp_ = GOOGLE_ULONGLONG(0);
+  name_ = const_cast< ::std::string*>(&_default_name_);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+RecentFile::~RecentFile() {
+  SharedDtor();
+}
+
+void RecentFile::SharedDtor() {
+  if (name_ != &_default_name_) {
+    delete name_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void RecentFile::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* RecentFile::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return RecentFile_descriptor_;
+}
+
+const RecentFile& RecentFile::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();  return *default_instance_;
+}
+
+RecentFile* RecentFile::default_instance_ = NULL;
+
+RecentFile* RecentFile::New() const {
+  return new RecentFile;
+}
+
+void RecentFile::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    timestamp_ = GOOGLE_ULONGLONG(0);
+    if (_has_bit(1)) {
+      if (name_ != &_default_name_) {
+        name_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool RecentFile::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint64 timestamp = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &timestamp_)));
+          _set_bit(0);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_name;
+        break;
+      }
+      
+      // optional string name = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void RecentFile::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint64 timestamp = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->timestamp(), output);
+  }
+  
+  // optional string name = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->name(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* RecentFile::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint64 timestamp = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->timestamp(), target);
+  }
+  
+  // optional string name = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->name(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int RecentFile::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint64 timestamp = 1;
+    if (has_timestamp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->timestamp());
+    }
+    
+    // optional string name = 2;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void RecentFile::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const RecentFile* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const RecentFile*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void RecentFile::MergeFrom(const RecentFile& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      set_timestamp(from.timestamp());
+    }
+    if (from._has_bit(1)) {
+      set_name(from.name());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void RecentFile::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RecentFile::CopyFrom(const RecentFile& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RecentFile::IsInitialized() const {
+  
+  return true;
+}
+
+void RecentFile::Swap(RecentFile* other) {
+  if (other != this) {
+    std::swap(timestamp_, other->timestamp_);
+    std::swap(name_, other->name_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata RecentFile::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = RecentFile_descriptor_;
+  metadata.reflection = RecentFile_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int RecentFiles::kFileFieldNumber;
 const int RecentFiles::kMaxFilesFieldNumber;
 const int RecentFiles::kReloadMostRecentFieldNumber;
 #endif  // !_MSC_VER
@@ -157,7 +448,7 @@ void RecentFiles::Clear() {
     max_files_ = 16u;
     reload_most_recent_ = true;
   }
-  name_.Clear();
+  file_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -168,20 +459,17 @@ bool RecentFiles::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated string name = 3;
+      // repeated .rec.slow.RecentFile file = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name(0).data(), this->name(0).length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
+         parse_file:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_file()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_name;
+        if (input->ExpectTag(26)) goto parse_file;
         if (input->ExpectTag(32)) goto parse_max_files;
         break;
       }
@@ -236,13 +524,10 @@ bool RecentFiles::MergePartialFromCodedStream(
 
 void RecentFiles::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated string name = 3;
-  for (int i = 0; i < this->name_size(); i++) {
-  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->name(i).data(), this->name(i).length(),
-    ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->name(i), output);
+  // repeated .rec.slow.RecentFile file = 3;
+  for (int i = 0; i < this->file_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->file(i), output);
   }
   
   // optional uint32 max_files = 4 [default = 16];
@@ -263,13 +548,11 @@ void RecentFiles::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* RecentFiles::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated string name = 3;
-  for (int i = 0; i < this->name_size(); i++) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name(i).data(), this->name(i).length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
+  // repeated .rec.slow.RecentFile file = 3;
+  for (int i = 0; i < this->file_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(3, this->name(i), target);
+      WriteMessageNoVirtualToArray(
+        3, this->file(i), target);
   }
   
   // optional uint32 max_files = 4 [default = 16];
@@ -306,11 +589,12 @@ int RecentFiles::ByteSize() const {
     }
     
   }
-  // repeated string name = 3;
-  total_size += 1 * this->name_size();
-  for (int i = 0; i < this->name_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->name(i));
+  // repeated .rec.slow.RecentFile file = 3;
+  total_size += 1 * this->file_size();
+  for (int i = 0; i < this->file_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->file(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -338,7 +622,7 @@ void RecentFiles::MergeFrom(const ::google::protobuf::Message& from) {
 
 void RecentFiles::MergeFrom(const RecentFiles& from) {
   GOOGLE_CHECK_NE(&from, this);
-  name_.MergeFrom(from.name_);
+  file_.MergeFrom(from.file_);
   if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
     if (from._has_bit(1)) {
       set_max_files(from.max_files());
@@ -369,7 +653,7 @@ bool RecentFiles::IsInitialized() const {
 
 void RecentFiles::Swap(RecentFiles* other) {
   if (other != this) {
-    name_.Swap(&other->name_);
+    file_.Swap(&other->file_);
     std::swap(max_files_, other->max_files_);
     std::swap(reload_most_recent_, other->reload_most_recent_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

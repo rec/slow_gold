@@ -23,6 +23,8 @@ class AutosaveApp : public App {
     thread_.startThread(priority);
   }
 
+  ~AutosaveApp() { shutdown(); }
+
   void addEvent(event::Event* event) {
     ScopedLock l(lock_);
     events_->add(event);
@@ -37,10 +39,7 @@ class AutosaveApp : public App {
   // Temporary, see https://github.com/rec/rec/issues/issue/40
   virtual void shutdown() {
     thread_.stopThread(100);
-
-    ScopedLock l(lock_);
     write();
-    events_.reset();
   }
 
  private:
