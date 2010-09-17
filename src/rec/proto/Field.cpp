@@ -273,7 +273,7 @@ bool Field::removeRepeated() {
 }
 
 bool Field::setSingle() {
-  if (operation_->value_size() != 0) {
+  if (operation_->value_size() != 1) {
     LOG(ERROR) << "Can only set one value at a time";
     return false;
   }

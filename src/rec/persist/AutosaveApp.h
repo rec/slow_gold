@@ -24,22 +24,27 @@ class AutosaveApp : public App {
   }
 
   void addEvent(event::Event* event) {
+    ScopedLock l(lock_);
     events_->add(event);
   }
 
   void write() {
+    ScopedLock l(lock_);
     App::write();
     events_->write();
   }
 
   // Temporary, see https://github.com/rec/rec/issues/issue/40
   virtual void shutdown() {
+    ScopedLock l(lock_);
+    thread_.signalThreadShouldExit();
     events_.reset();
   }
 
  private:
   thread::RunnableThread thread_;
   scoped_ptr<event::EventQueue> events_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AutosaveApp);
 };
