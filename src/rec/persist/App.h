@@ -25,7 +25,7 @@ class App {
     appDir_.createDirectory();
   }
 
-  ~App() {
+  virtual ~App() {
     write();
     for (DataSet::iterator i = data_.begin(); i != data_.end(); ++i)
       delete i->second.data_;
@@ -34,6 +34,9 @@ class App {
   File getDataFile(const String& name) const {
     return appDir_.getChildFile(name);
   }
+
+  // Temporary, see https://github.com/rec/rec/issues/issue/40
+  virtual void shutdown() {}
 
   template <typename Proto>
   Data<Proto>* getData(const string& name) {

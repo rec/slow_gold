@@ -46,11 +46,11 @@ class EventQueue {
 
  private:
   typedef std::vector<Event*> EventList;
+
   EventList events_;
   scoped_ptr<proto::logfile::Output> logfile_;
   File file_;
   CriticalSection lock_;
-
 
   DISALLOW_COPY_AND_ASSIGN(EventQueue);
 };
