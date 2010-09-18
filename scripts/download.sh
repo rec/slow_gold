@@ -23,12 +23,12 @@ else
     source "$ROOT/rec/scripts/variables.sh"
     source "$ROOT/rec/scripts/package/$PACKAGE.sh"
 
-    ARCHIVE=$PACKAGE-$VERSION.$SUFFIX
+    ARCHIVE="$PACKAGE-$VERSION.$SUFFIX"
 
-    curl -O $URL_PATH/$ARCHIVE
-    tar xjf $ARCHIVE
-    rm $ARCHIVE
-    ln -s $PACKAGE-$VERSION $PACKAGE
+    curl -O "$URL_PATH/$ARCHIVE"
+    tar "$TAR_ARGS" "$ARCHIVE"
+    rm "$ARCHIVE"
+    ln -s "$PACKAGE-$VERSION" "$PACKAGE"
 
   done
 
