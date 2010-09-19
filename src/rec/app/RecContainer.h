@@ -3,9 +3,9 @@
 
 #include <algorithm>
 
+#include "rec/slow/Preferences.h"
 #include "rec/app/ComponentContainer.h"
 #include "rec/components/MainPageComponent.h"
-#include "rec/slow/Preferences.h"
 
 namespace rec {
 

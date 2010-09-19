@@ -1,6 +1,7 @@
 #ifndef __REC_WINDOW
 #define __REC_WINDOW
 
+#include "rec/slow/Preferences.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {

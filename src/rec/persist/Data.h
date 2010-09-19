@@ -55,10 +55,11 @@ class Data : public Writeable {
     }
     operations_.clear();
     changed_ = true;
+    // thread.notify
   }
 
   virtual void doWrite() {
-    copy(proto_, &file_);    
+    copy(proto_, &file_);
   }
 
   const Proto get() const {

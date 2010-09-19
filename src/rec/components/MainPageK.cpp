@@ -155,25 +155,13 @@ void MainPageK::sliderDragEnded(Slider* slider) {
   if (!isTime && slider != peer_->pitchScaleSlider)
     return;
 
-  static
-
-    TimeStretch* stretch = prefs->mutable_loop_window(0)->mutable_timestretch();
-    scoped_ptr<Operation> operation = proto::createOperation(proto::Operation::SET,
-                                                             Preferences::kLoopWindowFieldNumber,
-                                                             0,
-                                                             LoopWindow::kTimestretchFieldNumber,
-                                                             NULL);
-    if
-      stretch->set_time_scale(slider->getValue());
-
-    else if ()
-     stretch->set_pitch_scale(slider->getValue());
-
-    else
-      return;
-
-    // if (stretchy_)
-    //   stretchy_->setDescription(*stretch);
+  rec::proto::Operation *op = rec::proto::set(rec::proto::Address(slow::proto::Preferences::kLoopWindowFieldNumber,
+                                          0,
+                                          slow::proto::LoopWindow::kTimestretchFieldNumber,
+                                          isTime ?  :  
+                                          audio::timescaler::TimeStretch::kPitchScaleFieldNumber));
+  rec::proto::addValue((double)slider->getValue(), op);
+  getMutablePreferences()->apply(op);
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
@@ -189,12 +177,12 @@ void MainPageK::sliderValueChanged(Slider* slider) {
       stretch.set_time_scale(slider->getValue());
 
     else if (slider == peer_->pitchScaleSlider)
-      stretch.>set_pitch_scale(slider->getValue());
+      stretch.set_pitch_scale(slider->getValue());
 
     else
       return;
 
-    stretchy_->setDescription(*stretch);
+    stretchy_->setDescription(stretch);
   }
 }
 

@@ -3,12 +3,13 @@
 
 #include <vector>
 
-#include "JuceLibraryCode/JuceHeader.h"
-
+#include "rec/slow/Preferences.h"
 #include "rec/audio/source/DoubleStretchyThread.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/components/AudioThumbnailComponent.h"
 #include "rec/persist/AutosaveApp.h"
+
+#include "JuceLibraryCode/JuceHeader.h"
 
 class MainPageJ;
 

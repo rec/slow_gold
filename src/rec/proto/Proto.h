@@ -7,37 +7,28 @@
 #include "rec/base/basictypes.h"
 #include "rec/proto/Proto.pb.h"
 #include "rec/proto/Types.h"
+#include "rec/proto/Address.h"
+#include "rec/proto/TypedTyper.h"
 
 // useful functions to deal with protocol buffers.
 
 namespace rec {
 namespace proto {
 
-Operation* applyOperation(const Operation& operation,
-                          Message* msg);
-
+Operation* applyOperation(const Operation& operation, Message* msg);
 Operation* createOperation(Operation::Command command, ...);
 
-#if 0
-Operation* make(Command c);
-Operation* make(Command c, uint32 t1);
-Operation* make(Command c, uint32 t1, uint32 t2);
-Operation* make(Command c, uint32 t1, uint32 t2, uint32 t3);
+Operation* append(const Address& address);
+Operation* clear(const Address& address);
+Operation* remove(const Address& address, int count);
+Operation* set(const Address& address);
+Operation* swap(const Address& address, Tag s1, Tag s2);
 
-template <typename Item>
-Operation* addValue(Operation* op, Item item, FieldType type = GetType::TYPE);
-
-
-template <typename Iter>
-Operation* add(Iter begin, Iter end, FieldType type, Operation* op) {
-  for (; begin != end; ++begin)
-    op = add(op, *begin);
-
+template <typename Type>
+Operation* addValue(Type t, Operation *op) {
+  typer::TypedTyper<Type>::copy(t, op->add_value());
   return op;
 }
-Operation* newOperation(Operation::Command command, const IntList& list);
-
-#endif
 
 }  // namespace proto
 }  // namespace rec

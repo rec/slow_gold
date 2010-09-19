@@ -20,6 +20,8 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "rec/slow/Preferences.h"
+
 //[/Headers]
 
 #include "MainPageComponent.h"

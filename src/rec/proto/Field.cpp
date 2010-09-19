@@ -3,7 +3,6 @@
 
 #include "rec/proto/Field.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/proto/Proto.h"
 #include "rec/proto/Typer.h"
 #include "rec/proto/Types.h"
 

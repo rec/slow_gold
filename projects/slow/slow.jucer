@@ -31,6 +31,15 @@
   </CONFIGURATIONS>
   <MAINGROUP id="xOv2eBhZg" name="Slow">
     <GROUP id="8x67ovHD" name="Source">
+      <GROUP id="se14hfnl" name="proto">
+        <FILE id="0R7TH47Pw" name="Proto.cpp" compile="1" resource="0" file="../../src/rec/proto/Proto.cpp"/>
+        <FILE id="1RTH2hQw3" name="Field.cpp" compile="1" resource="0" file="../../src/rec/proto/Field.cpp"/>
+        <FILE id="9sT2H4w3P" name="Typer.cpp" compile="1" resource="0" file="../../src/rec/proto/Typer.cpp"/>
+        <FILE id="sTA24wH6l" name="Address.cpp" compile="1" resource="0" file="../../src/rec/proto/Address.cpp"/>
+        <FILE id="3RgH24Pw2" name="TypedTyper.cpp" compile="1" resource="0"
+              file="../../src/rec/proto/TypedTyper.cpp"/>
+        <FILE id="1HR72TP6w" name="Proto.pb.cc" compile="1" resource="0" file="../../genfiles/proto/rec/proto/Proto.pb.cc"/>
+      </GROUP>
       <GROUP id="WE1tPVE" name="persist">
         <FILE id="vAj4595Mz" name="App.h" compile="0" resource="0" file="../../src/rec/persist/App.h"/>
         <FILE id="qov5IAlU" name="AutosaveApp.h" compile="0" resource="0" file="../../src/rec/persist/AutosaveApp.h"/>
@@ -130,6 +139,8 @@
               file="../../genfiles/proto/rec/slow/LoopWindow.pb.cc"/>
         <FILE id="0tH7T3P3w" name="RecentFiles.pb.cc" compile="1" resource="0"
               file="../../genfiles/proto/rec/slow/RecentFiles.pb.cc"/>
+        <FILE id="8tdZT8Pw9" name="RecentFiles.cpp" compile="1" resource="0"
+              file="../../src/rec/slow/RecentFiles.cpp"/>
         <FILE id="2KK9Fo1Sj" name="MainPageJ.h" compile="0" resource="0" file="../../src/rec/components/MainPageJ.h"/>
       </GROUP>
       <GROUP id="lTFfEBKXD" name="util">
