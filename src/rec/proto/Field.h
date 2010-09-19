@@ -4,28 +4,15 @@
 #include "rec/base/basictypes.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/proto/Proto.pb.h"
-
-namespace google {
-namespace protobuf {
-
-class Message;
-class FieldDescriptor;
-
-}  // namespace protobuf
-}  // namespace google
+#include "rec/proto/Types.h"
 
 namespace rec {
 namespace proto {
 
 class Field {
  public:
-  typedef google::protobuf::Message Message;
-  typedef google::protobuf::FieldDescriptor FieldDescriptor;
+  static Operation* apply(const Operation &op, Message* message);
 
-  static Operation* apply(const Operation &op,
-                          Message* message);
-
- private:
   explicit Field(Message* message)
       : message_(message),
         field_(NULL) {
@@ -34,16 +21,17 @@ class Field {
   bool dereference(int32 tag);
   Operation* apply(const Operation& op);
 
+  bool copyFrom(const Value& value);
+  bool addFrom(const Value& value);
+  bool copyTo(Value* value) const;
+
+ private:
   enum Type {
     INDEXED = 0,
     REPEATED = 1,
     SINGLE = 2,
     TYPE_COUNT = 3,
   };
-
-  bool copyFrom(const Value& value);
-  bool addFrom(const Value& value);
-  bool copyTo(Value* value) const;
 
   bool addRepeated();
   bool removeRepeated();

@@ -14,6 +14,9 @@ namespace rec {
 namespace proto {
 namespace zerocopy {
 
+typedef google::protobuf::io::ZeroCopyOutputStream ZeroCopyOutputStream;
+typedef google::protobuf::io::ZeroCopyInputStream ZeroCopyInputStream;
+
 template <typename JuceStream, typename Stream>
 class Base : public Stream {
  public:

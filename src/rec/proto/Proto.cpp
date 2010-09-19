@@ -5,11 +5,6 @@
 #include "rec/proto/Proto.h"
 #include "rec/proto/Field.h"
 
-using google::protobuf::Descriptor;
-using google::protobuf::FieldDescriptor;
-using google::protobuf::Reflection;
-using google::protobuf::Message;
-
 namespace rec {
 namespace proto {
 
@@ -32,7 +27,93 @@ Operation* createOperation(Operation::Command command, ...) {
   return op;
 }
 
+
 #if 0
+Operation* addTo(Operation* op, Tag tag) {
+  op->add_address(tag);
+  return op;}
+
+Operation* make(Command command) {
+  Operation* op = new Operation();
+  op->set_command(command);
+  return op;
+}
+
+Operation* make(Command c, uint32 t1) {
+  return addTo(make(c), t1);
+}
+
+Operation* make(Command c, uint32 t1, uint32 t2) {
+  return addTo(make(t1), t2);
+}
+
+Operation* make(Command c, uint32 t1, uint32 t2, uint32 t3) {
+  return addTo(make(t1, t2), t3);
+}
+
+template <typename Item>
+
+#define DEFINE_ADD(TYPE, UPPER)                             \
+  template <> Operation* add(Operation* op, TYPE t) {       \
+    return add(op, t, FieldDescriptor::TYPE_ ## UPPER);     \
+  }
+
+#define DEFINE_ADD_FIELD(TYPE)                                      \
+  template <> Operation* add(Operation* op, TYPE t, FieldDescriptor::Type f) {  \
+    return op; \
+    Value* value = op->add_value()
+  }
+
+#define DEFINE_TYPE(TYPE, UPPER)                             \
+  template <> FieldDescriptor::Type getFieldType<TYPE>() {               \
+    return FieldDescriptor:::TYPE_ ## UPPER);                \
+  }
+
+
+template <typename Item>
+void setValue(Value* v, FieldDescriptor* f, Item x);
+
+template <>
+void setValue(Value* v, FieldDescriptor* f, double x) {
+  v->GetReflection()->SetDouble(v, f, x);
+}
+
+}
+
+template <typename Item>
+Operation* addValue(Operation* op, Item x, FieldDescriptor::Type type = GetType::TYPE) {
+  FieldDescription* f = Value::GetDescriptor()->FindFieldByNumber(type);
+  setValue(op->add_value(), Value::GetDescriptor()->FindFieldByNumber(type), x);
+  return op;
+}
+
+template <>
+Operation* add(Operation* op, Item item)
+
+template <typename Item>
+Operation* add(Operation* op, Item item, FieldDescriptor::Type type)
+
+
+Operation* add(Operation* op, const Message& message) {
+  message.SerializeToString(op->add_value()->mutable_message_f());
+  return op;
+}
+
+
+
+Operation
+
+Operation* newOperation(Operation::Command command, const IntList& list) {
+  Operation *op = new Operation();
+  op->set_command(command);
+
+  for (IntList::const_iterator i = list.begin(); i != list.end(); ++i)
+    op->add_address(*i);
+
+  return op;
+
+}
+
 struct Field {
   const Operation* operation_;
   Message* message_;
@@ -384,16 +465,15 @@ Applier* createApplier(const Operation& op, Message* msg) {
   return NULL;
 }
 
-#if 0
 std::ostream& operator<<(std::ostream& os, const Applier& a) {
   return os << "applier("
             << a.operation().command() << ", "
             << a.operation().command() << ", "
 }
 
-#endif
 
 }  // namespace
+
 
 bool applyOperation(const Operation& operation,
                     google::protobuf::Message* msg) {

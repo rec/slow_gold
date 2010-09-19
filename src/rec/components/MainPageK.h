@@ -16,7 +16,7 @@ namespace rec {
 namespace slow {
 
 class MainPageK : public FileBrowserListener,
-                  public SliderListener,
+                  public Slider::Listener,
                   public ChangeListener {
  public:
   MainPageK(AudioDeviceManager* d);
@@ -30,6 +30,7 @@ class MainPageK : public FileBrowserListener,
 
   // SliderListener.
   virtual void sliderValueChanged(Slider* slider);
+  virtual void sliderDragEnded(Slider* slider);
 
   // ChangeListener - for when CDs are inserted.
   virtual void changeListenerCallback(void* objectThatHasChanged);

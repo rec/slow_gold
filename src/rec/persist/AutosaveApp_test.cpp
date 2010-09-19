@@ -1,10 +1,11 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
+#include <google/protobuf/descriptor.h>
 #include "rec/persist/testdata.pb.h"
-#include "rec/persist/AutosaveApp.h"
 #include "rec/persist/Data.h"
 #include "rec/persist/DataRegistry.h"
+#include "rec/persist/AutosaveApp.h"
 
 namespace rec {
 namespace persist {

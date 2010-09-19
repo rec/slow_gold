@@ -149,26 +149,52 @@ void MainPageK::loadFileIntoTransport(const File& file) {
   }
 }
 
+
+void MainPageK::sliderDragEnded(Slider* slider) {
+  bool isTime = (slider == peer_->timeScaleSlider);
+  if (!isTime && slider != peer_->pitchScaleSlider)
+    return;
+
+  static
+
+    TimeStretch* stretch = prefs->mutable_loop_window(0)->mutable_timestretch();
+    scoped_ptr<Operation> operation = proto::createOperation(proto::Operation::SET,
+                                                             Preferences::kLoopWindowFieldNumber,
+                                                             0,
+                                                             LoopWindow::kTimestretchFieldNumber,
+                                                             NULL);
+    if
+      stretch->set_time_scale(slider->getValue());
+
+    else if ()
+     stretch->set_pitch_scale(slider->getValue());
+
+    else
+      return;
+
+    // if (stretchy_)
+    //   stretchy_->setDescription(*stretch);
+}
+
 void MainPageK::sliderValueChanged(Slider* slider) {
   if (slider == peer_->zoomSlider) {
     peer_->thumbnail->setZoomFactor(slider->getValue());
     return;
   }
 
-  {
-    LockedPreferences prefs;
-    TimeStretch* stretch = prefs->mutable_loop_window(0)->mutable_timestretch();
+  if (stretchy_) {
+    TimeStretch stretch = getPreferences().loop_window(0).timestretch();
+
     if (slider == peer_->timeScaleSlider)
-      stretch->set_time_scale(slider->getValue());
+      stretch.set_time_scale(slider->getValue());
 
     else if (slider == peer_->pitchScaleSlider)
-     stretch->set_pitch_scale(slider->getValue());
+      stretch.>set_pitch_scale(slider->getValue());
 
     else
       return;
 
-    if (stretchy_)
-      stretchy_->setDescription(*stretch);
+    stretchy_->setDescription(*stretch);
   }
 }
 

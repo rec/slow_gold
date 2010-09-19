@@ -6,45 +6,38 @@
 #include <algorithm>
 #include "rec/base/basictypes.h"
 #include "rec/proto/Proto.pb.h"
+#include "rec/proto/Types.h"
 
 // useful functions to deal with protocol buffers.
 
 namespace rec {
 namespace proto {
 
-template <typename Container, typename Type>
-void moveToEnd(int index, int offset, Container* cont) {
-  if (offset) {
-    for (; index < cont->size() - offset; ++index)
-      cont->SwapElements(index, index + offset);
-  }
-}
-
-// Returns true if the element were added.
-template <typename Container, typename Type>
-void addOrMoveToEnd(const Type& value, Container* cont) {
-  typename Container::iterator found = std::find(cont->begin(),
-                                                 cont->end(), value);
-  if (found == cont->end())
-    *(cont->Add()) = value;
-  else
-    moveToEnd<Container, Type>(found - cont->begin(), 1, cont);
-}
-
-template <typename Container, typename Type>
-void truncateTo(int size, Container* cont, Type t) {
-  int offset = cont->size() - size;
-  if (offset > 0) {
-    moveToEnd<Container, Type>(0, offset, cont);
-    for (int i = 0; i != offset; ++i)
-      cont->RemoveLast();
-  }
-}
-
 Operation* applyOperation(const Operation& operation,
-                          google::protobuf::Message* msg);
+                          Message* msg);
 
 Operation* createOperation(Operation::Command command, ...);
+
+#if 0
+Operation* make(Command c);
+Operation* make(Command c, uint32 t1);
+Operation* make(Command c, uint32 t1, uint32 t2);
+Operation* make(Command c, uint32 t1, uint32 t2, uint32 t3);
+
+template <typename Item>
+Operation* addValue(Operation* op, Item item, FieldType type = GetType::TYPE);
+
+
+template <typename Iter>
+Operation* add(Iter begin, Iter end, FieldType type, Operation* op) {
+  for (; begin != end; ++begin)
+    op = add(op, *begin);
+
+  return op;
+}
+Operation* newOperation(Operation::Command command, const IntList& list);
+
+#endif
 
 }  // namespace proto
 }  // namespace rec
