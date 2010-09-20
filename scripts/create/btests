@@ -1,0 +1,1561 @@
+It is against the law for a monster to enter the corporate limits of
+Urbana, Illinois.
+18:48:32 [hofmann:~/Documents/development/rec/projects/tests]$ cd ../..
+20:20:12 [hofmann:~/Documents/development/rec]$ cd scripts/create/
+20:20:18 [hofmann:~/Documents/development/rec/scripts/create]$ ls
+find.py		jucer.py
+20:20:20 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+  File "./jucer.py", line 14
+    class Jucer:
+        ^
+IndentationError: expected an indented block
+20:20:23 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+  File "./jucer.py", line 14
+    class Jucer:
+        ^
+IndentationError: expected an indented block
+20:20:38 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+  File "./jucer.py", line 20
+    def print(self):
+            ^
+SyntaxError: invalid syntax
+20:21:07 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+  File "./jucer.py", line 34
+    root = '%s/rec/ % 'os.getenv('ROOT')
+                        ^
+SyntaxError: invalid syntax
+20:21:29 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+  File "./jucer.py", line 105
+    def element(self, *names):
+      ^
+SyntaxError: invalid syntax
+20:21:50 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 21, in toxml
+    xcode = self.element('EXPORTFORMATS', 'XCODE_MAC')
+  File "./jucer.py", line 108, in element
+    node = node.getElementsByTagName(n)
+AttributeError: 'NodeList' object has no attribute 'getElementsByTagName'
+20:22:03 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 22, in toxml
+    xcode.setAttribute('extraLinkerFlags', get_libraries())
+NameError: global name 'get_libraries' is not defined
+20:22:22 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 22, in toxml
+    xcode.setAttribute('extraLinkerFlags', get_libraries())
+NameError: global name 'get_libraries' is not defined
+20:22:34 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 22, in toxml
+    xcode.setAttribute('extraLinkerFlags', self.get_libraries())
+  File "./jucer.py", line 100, in get_libraries
+    for b in Jucer.LIBRARIES] +
+AttributeError: class Jucer has no attribute 'LIBRARIES'
+20:22:39 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 22, in toxml
+    xcode.setAttribute('extraLinkerFlags', self.get_libraries())
+  File "./jucer.py", line 102, in get_libraries
+    return ' '.join(filter(self.accept(libraries)))
+TypeError: filter expected 2 arguments, got 1
+20:23:14 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 27, in toxml
+    c.setAttribute(headerPath, self.get_headers(config))
+NameError: global name 'headerPath' is not defined
+20:23:29 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 27, in toxml
+    c.setAttribute('headerPath', self.get_headers(config))
+  File "./jucer.py", line 55, in get_headers
+    return ';'.join('%s/%s' % (Juce.JUCE_ROOT) for h in headers)
+  File "./jucer.py", line 55, in <genexpr>
+    return ';'.join('%s/%s' % (Juce.JUCE_ROOT) for h in headers)
+NameError: global name 'Juce' is not defined
+20:23:51 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 27, in toxml
+    c.setAttribute('headerPath', self.get_headers(config))
+  File "./jucer.py", line 55, in get_headers
+    return ';'.join('%s/%s' % (Jucer.JUCE_ROOT) for h in headers)
+  File "./jucer.py", line 55, in <genexpr>
+    return ';'.join('%s/%s' % (Jucer.JUCE_ROOT) for h in headers)
+TypeError: not enough arguments for format string
+20:24:06 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 30, in toxml
+    maingroup = self.create('MAINGROUP', name=old.getAttribute('name'))
+  File "./jucer.py", line 61, in create
+    id = ''.join(random.choice(Jucer.CHARS) for i in xrange(count))
+NameError: global name 'count' is not defined
+20:24:28 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 31, in toxml
+    maingroup = self.create('MAINGROUP', name=old.getAttribute('name'))
+  File "./jucer.py", line 65, in create
+    for k, v in attributes:
+ValueError: too many values to unpack
+20:24:57 [hofmann:~/Documents/development/rec/scripts/create]$ !!
+./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    maingroup.addChild(self.create_cpp_file_group(name, root, prefix))
+AttributeError: Element instance has no attribute 'addChild'
+20:25:28 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    maingroup.addChild(self.create_cpp_file_group(name, root, prefix))
+AttributeError: Element instance has no attribute 'addChild'
+20:53:02 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    maingroup.appendChild(self.create_cpp_file_group(name, root, prefix))
+TypeError: create_cpp_file_group() takes exactly 5 arguments (4 given)
+20:53:21 [hofmann:~/Documents/development/rec/scripts/create]$ !!
+./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 71, in create_cpp_file_group
+    tree = self.get_cpp_file_tree(root)
+  File "./jucer.py", line 121, in get_cpp_file_tree
+    if DEBUG: print 'directory:', file
+NameError: global name 'DEBUG' is not defined
+20:54:16 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 72, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 85, in create_file_group
+    for k, v in tree:
+ValueError: too many values to unpack
+20:54:37 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+! {'src': 'src', 'archived': 'archived', 'projects': 'projects', 'genfiles': 'genfiles'}
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 73, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 86, in create_file_group
+    for k, v in tree:
+ValueError: too many values to unpack
+20:55:44 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+error
+! None
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 73, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 86, in create_file_group
+    for k, v in tree:
+TypeError: 'NoneType' object is not iterable
+20:56:47 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+! {'src': 'src', 'archived': 'archived', 'projects': 'projects', 'genfiles': 'genfiles'}
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 73, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 86, in create_file_group
+    for k, v in tree:
+ValueError: too many values to unpack
+20:57:03 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+error
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 72, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 85, in create_file_group
+    for k, v in tree:
+TypeError: 'NoneType' object is not iterable
+21:00:26 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+os.error src/rec//Users/tom/Documents/development/rec
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 72, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 85, in create_file_group
+    for k, v in tree:
+TypeError: 'NoneType' object is not iterable
+21:00:51 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 72, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 85, in create_file_group
+    for k, v in tree:
+ValueError: too many values to unpack
+21:01:59 [hofmann:~/Documents/development/rec/scripts/create]$ pdb
+bash: pdb: command not found
+21:02:28 [hofmann:~/Documents/development/rec/scripts/create]$ which python
+/usr/local/bin/python
+21:02:32 [hofmann:~/Documents/development/rec/scripts/create]$ ls /usr/local/bin/
+2to3			gettext.sh		msggrep			rsync
+autopoint		gettextize		msginit			seewbmp
+b2m			grep-changelog		msgmerge		smtpd.py
+capinfos		gw-config		msgunfmt		smtpd2.6.py
+ccmake			hg			msguniq			svn
+cmake			hub			mtbatch			svnadmin
+cmakexbuild		idl2wrs			ngettext		svndumpfilter
+cpack			idle			paceit			svnlook
+ctags			idle2.6			pydoc			svnserve
+ctest			lame			pydoc2.6		svnsync
+dftest			mergecap		python			svnversion
+dumpcap			msgattrib		python-config		synergy
+ebrowse			msgcat			python2.6		synergy-1.3.1
+editcap			msgcmp			python2.6-config	text2pcap
+emacs			msgcomm			pythonw			tshark
+emacs-23.1		msgconv			pythonw2.6		wget
+emacsclient		msgen			randpkt			wireshark
+envsubst		msgexec			rawshark		wmlsc
+etags			msgfilter		rcs-checkin		wmlsdasm
+gettext			msgfmt			recode-sr-latin		xgettext
+21:02:39 [hofmann:~/Documents/development/rec/scripts/create]$ ls /usr/local/bin/p*
+/usr/local/bin/paceit		/usr/local/bin/python		/usr/local/bin/python2.6-config
+/usr/local/bin/pydoc		/usr/local/bin/python-config	/usr/local/bin/pythonw
+/usr/local/bin/pydoc2.6		/usr/local/bin/python2.6	/usr/local/bin/pythonw2.6
+21:02:47 [hofmann:~/Documents/development/rec/scripts/create]$ ls -l /usr/local/bin/py*
+lrwxr-xr-x  1 root  wheel  67 Apr  4 16:23 /usr/local/bin/pydoc -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/pydoc
+lrwxr-xr-x  1 root  wheel  70 Apr  4 16:23 /usr/local/bin/pydoc2.6 -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/pydoc2.6
+lrwxr-xr-x  1 root  wheel  68 Apr  4 16:23 /usr/local/bin/python -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/python
+lrwxr-xr-x  1 root  wheel  75 Apr  4 16:23 /usr/local/bin/python-config -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/python-config
+lrwxr-xr-x  1 root  wheel  71 Apr  4 16:23 /usr/local/bin/python2.6 -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/python2.6
+lrwxr-xr-x  1 root  wheel  78 Apr  4 16:23 /usr/local/bin/python2.6-config -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/python2.6-config
+lrwxr-xr-x  1 root  wheel  69 Apr  4 16:23 /usr/local/bin/pythonw -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/pythonw
+lrwxr-xr-x  1 root  wheel  72 Apr  4 16:23 /usr/local/bin/pythonw2.6 -> ../../../Library/Frameworks/Python.framework/Versions/2.6/bin/pythonw2.6
+21:02:55 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+!!!! <DOM Element: MAINGROUP at 0x6780a8> source /Users/tom/Documents/development/rec src/rec
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 73, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 86, in create_file_group
+    for k, v in tree:
+ValueError: too many values to unpack
+21:04:18 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+!!! {'ammf_scaler': 'ammf_scaler', 'slow': 'slow', 'thread': 'thread', 'proto': 'proto', 'app': 'app', 'cd': 'cd', 'util': 'util', 'base': 'base', 'components': 'components', 'persist': 'persist', 'audio': 'audio', 'event': 'event'}
+Traceback (most recent call last):
+  File "./jucer.py", line 136, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 72, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 86, in create_file_group
+    for k, v in tree:
+ValueError: too many values to unpack
+21:05:01 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 72, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 86, in create_file_group
+    group.apphild(self.create_file_group(k, v, prefix))
+AttributeError: Element instance has no attribute 'apphild'
+21:05:15 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+Traceback (most recent call last):
+  File "./jucer.py", line 135, in <module>
+    print j.toxml()
+  File "./jucer.py", line 39, in toxml
+    self.create_cpp_file_group(maingroup, name, root, prefix)
+  File "./jucer.py", line 72, in create_cpp_file_group
+    parent.appendChild(self.create_file_group(name, tree, prefix))
+  File "./jucer.py", line 86, in create_file_group
+    group.appendChild(self.create_file_group(k, v, prefix))
+  File "./jucer.py", line 80, in create_file_group
+    file='%s/%s' % tree,
+TypeError: not enough arguments for format string
+21:05:31 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+<?xml version="1.0" ?>
+<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests" id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_template" jucerVersion="3.0.0" name="tests" pluginAUExportPrefix="TestsAU" pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}" pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0" pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd" pluginName="Tests" pluginProducesMidiOut="0" pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0" projectType="consoleapp" version="1.0.0">
+
+
+	<EXPORTFORMATS>
+
+
+		<XCODE_MAC extraLinkerFlags="-L../../../../../build/maccddb/debug/lib -lcddb -L../../../../../build/macgflags/debug/lib -lgflags -L../../../../../build/macglog/debug/lib -lglog -L../../../../../build/macgtest/debug/lib -lgtest -L../../../../../build/macmpg123/debug/lib -lmpg123 -L../../../../../build/macprotobuf/debug/lib -lprotobuf -liconv -lgtest_main" juceFolder="../../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+		<VS2005 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<VS2008 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<LINUX_MAKE juceFolder="../../../../juce" targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+	</EXPORTFORMATS>
+
+
+	<CONFIGURATIONS>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/debug/cddb;../../../../../build/mac/debug/gflags;../../../../../build/mac/debug/glog;../../../../../build/mac/debug/gtest;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/protobuf" isDebug="1" name="Debug" optimisation="1" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/release/cddb;../../../../../build/mac/release/gflags;../../../../../build/mac/release/glog;../../../../../build/mac/release/gtest;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/protobuf" isDebug="0" name="Release" optimisation="3" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+	</CONFIGURATIONS>
+
+
+	<MAINGROUP id="cBHr9x5k8" name="tests">
+		<GROUP id="kp93VhTcf" name="source">
+			<FILE compile="1" file="ammf_scaler/ammf_scaler" id="3hEIs0CEm" name="ammf_scaler" resource="0"/>
+			<FILE compile="1" file="slow/slow" id="4z7xTuvyh" name="slow" resource="0"/>
+			<FILE compile="1" file="thread/thread" id="epsSihoAJ" name="thread" resource="0"/>
+			<FILE compile="1" file="proto/proto" id="n6SnMfd1c" name="proto" resource="0"/>
+			<FILE compile="1" file="app/app" id="baTzMiIwl" name="app" resource="0"/>
+			<FILE compile="1" file="cd/cd" id="4KwTVr1Uu" name="cd" resource="0"/>
+			<FILE compile="1" file="util/util" id="nRDoTJrX1" name="util" resource="0"/>
+			<FILE compile="1" file="base/base" id="JR6jazMg7" name="base" resource="0"/>
+			<FILE compile="1" file="components/components" id="9anh8eG4R" name="components" resource="0"/>
+			<FILE compile="1" file="persist/persist" id="EqlhnOriC" name="persist" resource="0"/>
+			<FILE compile="1" file="audio/audio" id="KJFxUDxnS" name="audio" resource="0"/>
+			<FILE compile="1" file="event/event" id="rSdi5ACOU" name="event" resource="0"/>
+		</GROUP>
+		<GROUP id="02Ajs6194" name="proto">
+			<FILE compile="1" file="rec/rec" id="1rvgeFYLf" name="rec" resource="0"/>
+		</GROUP>
+	</MAINGROUP>
+
+
+	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
+
+
+</JUCERPROJECT>
+
+21:05:59 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+!!!! {'rec': 'rec'}
+!!!! {'rec': 'rec'}
+<?xml version="1.0" ?>
+<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests" id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_template" jucerVersion="3.0.0" name="tests" pluginAUExportPrefix="TestsAU" pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}" pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0" pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd" pluginName="Tests" pluginProducesMidiOut="0" pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0" projectType="consoleapp" version="1.0.0">
+
+
+	<EXPORTFORMATS>
+
+
+		<XCODE_MAC extraLinkerFlags="-L../../../../../build/maccddb/debug/lib -lcddb -L../../../../../build/macgflags/debug/lib -lgflags -L../../../../../build/macglog/debug/lib -lglog -L../../../../../build/macgtest/debug/lib -lgtest -L../../../../../build/macmpg123/debug/lib -lmpg123 -L../../../../../build/macprotobuf/debug/lib -lprotobuf -liconv -lgtest_main" juceFolder="../../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+		<VS2005 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<VS2008 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<LINUX_MAKE juceFolder="../../../../juce" targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+	</EXPORTFORMATS>
+
+
+	<CONFIGURATIONS>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/debug/cddb;../../../../../build/mac/debug/gflags;../../../../../build/mac/debug/glog;../../../../../build/mac/debug/gtest;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/protobuf" isDebug="1" name="Debug" optimisation="1" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/release/cddb;../../../../../build/mac/release/gflags;../../../../../build/mac/release/glog;../../../../../build/mac/release/gtest;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/protobuf" isDebug="0" name="Release" optimisation="3" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+	</CONFIGURATIONS>
+
+
+	<MAINGROUP id="TZpy9LT2f" name="tests">
+		<GROUP id="KYNJRz58b" name="source">
+			<FILE compile="1" file="rec/rec" id="2WeJl6tI3" name="rec" resource="0"/>
+		</GROUP>
+		<GROUP id="nH8niIxC9" name="proto">
+			<FILE compile="1" file="rec/rec" id="93y1CJlEc" name="rec" resource="0"/>
+		</GROUP>
+	</MAINGROUP>
+
+
+	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
+
+
+</JUCERPROJECT>
+
+21:07:47 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+!!!! {'rec': 'rec'}
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+here!
+!!!! {'rec': 'rec'}
+<?xml version="1.0" ?>
+<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests" id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_template" jucerVersion="3.0.0" name="tests" pluginAUExportPrefix="TestsAU" pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}" pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0" pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd" pluginName="Tests" pluginProducesMidiOut="0" pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0" projectType="consoleapp" version="1.0.0">
+
+
+	<EXPORTFORMATS>
+
+
+		<XCODE_MAC extraLinkerFlags="-L../../../../../build/maccddb/debug/lib -lcddb -L../../../../../build/macgflags/debug/lib -lgflags -L../../../../../build/macglog/debug/lib -lglog -L../../../../../build/macgtest/debug/lib -lgtest -L../../../../../build/macmpg123/debug/lib -lmpg123 -L../../../../../build/macprotobuf/debug/lib -lprotobuf -liconv -lgtest_main" juceFolder="../../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+		<VS2005 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<VS2008 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<LINUX_MAKE juceFolder="../../../../juce" targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+	</EXPORTFORMATS>
+
+
+	<CONFIGURATIONS>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/debug/cddb;../../../../../build/mac/debug/gflags;../../../../../build/mac/debug/glog;../../../../../build/mac/debug/gtest;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/protobuf" isDebug="1" name="Debug" optimisation="1" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/release/cddb;../../../../../build/mac/release/gflags;../../../../../build/mac/release/glog;../../../../../build/mac/release/gtest;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/protobuf" isDebug="0" name="Release" optimisation="3" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+	</CONFIGURATIONS>
+
+
+	<MAINGROUP id="IgXpUJy0R" name="tests">
+		<GROUP id="qNw6FpTwO" name="source">
+			<FILE compile="1" file="rec/rec" id="wnIQ2f8mJ" name="rec" resource="0"/>
+		</GROUP>
+		<GROUP id="mzwItbN2j" name="proto">
+			<FILE compile="1" file="rec/rec" id="fDJ44tBDP" name="rec" resource="0"/>
+		</GROUP>
+	</MAINGROUP>
+
+
+	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
+
+
+</JUCERPROJECT>
+
+21:40:14 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+!!!! {'rec': {'ammf_scaler': {'AudioResampler.cpp': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.cpp', 'mfMath.h': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMath.h', 'mfAlloc.h': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfAlloc.h', 'hfft.h': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/hfft.h', 'mfGlobals.h': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfGlobals.h', 'mfMacros.h': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMacros.h', 'AudioTimeScaler.cpp': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.cpp', 'AudioResampler.h': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.h', 'new-testTS.cpp': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/new-testTS.cpp', 'testTS.cpp': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/testTS.cpp', 'AudioTimeScaler.h': '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.h'}, 'slow': {'RecentFiles.cpp': '/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.cpp', 'Preferences.h': '/Users/tom/Documents/development/rec/src/rec/slow/Preferences.h', 'RecentFiles.h': '/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.h'}, 'thread': {'WaitLoop.h': '/Users/tom/Documents/development/rec/src/rec/thread/WaitLoop.h', 'CallbackLoop.h': '/Users/tom/Documents/development/rec/src/rec/thread/CallbackLoop.h', 'LockedMessage.h': '/Users/tom/Documents/development/rec/src/rec/thread/LockedMessage.h', 'RunnableThread.h': '/Users/tom/Documents/development/rec/src/rec/thread/RunnableThread.h', 'Waiter.h': '/Users/tom/Documents/development/rec/src/rec/thread/Waiter.h', 'Callback.h': '/Users/tom/Documents/development/rec/src/rec/thread/Callback.h', 'Loop.h': '/Users/tom/Documents/development/rec/src/rec/thread/Loop.h', 'Runnable.h': '/Users/tom/Documents/development/rec/src/rec/thread/Runnable.h', 'Cycler.h': '/Users/tom/Documents/development/rec/src/rec/thread/Cycler.h', 'Wrapper.h': '/Users/tom/Documents/development/rec/src/rec/thread/Wrapper.h'}, 'proto': {'ZeroCopy.h': '/Users/tom/Documents/development/rec/src/rec/proto/ZeroCopy.h', 'Address.cpp': '/Users/tom/Documents/development/rec/src/rec/proto/Address.cpp', 'Types.h': '/Users/tom/Documents/development/rec/src/rec/proto/Types.h', 'Proto_test.cpp': '/Users/tom/Documents/development/rec/src/rec/proto/Proto_test.cpp', 'LogFile.h': '/Users/tom/Documents/development/rec/src/rec/proto/LogFile.h', 'Typer.cpp': '/Users/tom/Documents/development/rec/src/rec/proto/Typer.cpp', 'Field.cpp': '/Users/tom/Documents/development/rec/src/rec/proto/Field.cpp', 'LogFile_test.cpp': '/Users/tom/Documents/development/rec/src/rec/proto/LogFile_test.cpp', 'Proto.h': '/Users/tom/Documents/development/rec/src/rec/proto/Proto.h', 'TypedTyper.h': '/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.h', 'Field.h': '/Users/tom/Documents/development/rec/src/rec/proto/Field.h', 'Proto.cpp': '/Users/tom/Documents/development/rec/src/rec/proto/Proto.cpp', 'Address.h': '/Users/tom/Documents/development/rec/src/rec/proto/Address.h', 'TypedTyper.cpp': '/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.cpp', 'Typer.h': '/Users/tom/Documents/development/rec/src/rec/proto/Typer.h'}, 'app': {'ComponentContainer.h': '/Users/tom/Documents/development/rec/src/rec/app/ComponentContainer.h', 'RecWindow.cpp': '/Users/tom/Documents/development/rec/src/rec/app/RecWindow.cpp', 'GenericApplication.h': '/Users/tom/Documents/development/rec/src/rec/app/GenericApplication.h', 'RecApplication.cpp': '/Users/tom/Documents/development/rec/src/rec/app/RecApplication.cpp', 'RecWindow.h': '/Users/tom/Documents/development/rec/src/rec/app/RecWindow.h', 'RecContainer.h': '/Users/tom/Documents/development/rec/src/rec/app/RecContainer.h'}, 'cd': {'GetAlbumsFromCDDB.cpp': '/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.cpp', 'GetAlbumsFromCDDB_test.cpp': '/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB_test.cpp', 'GetAlbumsFromCDDB.h': '/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.h'}, 'util': {'Circular_test.cpp': '/Users/tom/Documents/development/rec/src/rec/util/Circular_test.cpp', 'Circular.h': '/Users/tom/Documents/development/rec/src/rec/util/Circular.h', 'math_test.cpp': '/Users/tom/Documents/development/rec/src/rec/util/math_test.cpp', 'Callback.h': '/Users/tom/Documents/development/rec/src/rec/util/Callback.h', 'Math.h': '/Users/tom/Documents/development/rec/src/rec/util/Math.h', 'Substitute.h': '/Users/tom/Documents/development/rec/src/rec/util/Substitute.h', 'TestData.h': '/Users/tom/Documents/development/rec/src/rec/util/TestData.h', 'Juce.h': '/Users/tom/Documents/development/rec/src/rec/util/Juce.h', 'Substitute_test.cpp': '/Users/tom/Documents/development/rec/src/rec/util/Substitute_test.cpp'}, 'base': {'string_piece.h': '/Users/tom/Documents/development/rec/src/rec/base/string_piece.h', 'port.h': '/Users/tom/Documents/development/rec/src/rec/base/port.h', 'ArraySize.h': '/Users/tom/Documents/development/rec/src/rec/base/ArraySize.h', 'base.h': '/Users/tom/Documents/development/rec/src/rec/base/base.h', 'StringRange.h': '/Users/tom/Documents/development/rec/src/rec/base/StringRange.h', 'types.h': '/Users/tom/Documents/development/rec/src/rec/base/types.h', 'build_config.h': '/Users/tom/Documents/development/rec/src/rec/base/build_config.h', 'basictypes.h': '/Users/tom/Documents/development/rec/src/rec/base/basictypes.h', 'CompileAssert.h': '/Users/tom/Documents/development/rec/src/rec/base/CompileAssert.h', 'scoped_ptr.h': '/Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h', 'Cast.h': '/Users/tom/Documents/development/rec/src/rec/base/Cast.h'}, 'components': {'MainPageJ.cpp': '/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.cpp', 'MainPageK.h': '/Users/tom/Documents/development/rec/src/rec/components/MainPageK.h', 'MainPageComponent.h': '/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.h', 'MainPageJ.h': '/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.h', 'AudioThumbnailComponent.cpp': '/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.cpp', 'MainPageK.cpp': '/Users/tom/Documents/development/rec/src/rec/components/MainPageK.cpp', 'LiveAudioInputDisplayComp.cpp': '/Users/tom/Documents/development/rec/src/rec/components/LiveAudioInputDisplayComp.cpp', 'AudioSetupPage.cpp': '/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.cpp', 'AudioThumbnailComponent.h': '/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.h', 'AudioSetupPage.h': '/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.h', 'MainPageComponent.cpp': '/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.cpp'}, 'persist': {'DataRegistry.cpp': '/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.cpp', 'Copy.cpp': '/Users/tom/Documents/development/rec/src/rec/persist/Copy.cpp', 'AppData.h': '/Users/tom/Documents/development/rec/src/rec/persist/AppData.h', 'AutosaveApp.h': '/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp.h', 'Writeable.h': '/Users/tom/Documents/development/rec/src/rec/persist/Writeable.h', 'App.h': '/Users/tom/Documents/development/rec/src/rec/persist/App.h', 'AutosaveApp_test.cpp': '/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp_test.cpp', 'DataRegistry.h': '/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.h', 'Copy.h': '/Users/tom/Documents/development/rec/src/rec/persist/Copy.h', 'Data.h': '/Users/tom/Documents/development/rec/src/rec/persist/Data.h'}, 'audio': {'stretch': {'AudioTimeScaler_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/stretch/AudioTimeScaler_test.cpp', 'TimeScaler.h': '/Users/tom/Documents/development/rec/src/rec/audio/stretch/TimeScaler.h'}, 'source': {'MultiWrappy.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/MultiWrappy.h', 'Buffery.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.h', 'Wrappy.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/Wrappy.h', 'Source.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/Source.h', 'TestHarness.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/TestHarness.h', 'DoubleStretchy.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.cpp', 'Buffery_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery_test.cpp', 'DoubleStretchy_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy_test.cpp', 'Stretchy.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.cpp', 'Testy_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/source/Testy_test.cpp', 'Stretchy.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.h', 'DoubleStretchy.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.h', 'Testy.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/Testy.h', 'DoubleStretchyThread.h': '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchyThread.h', 'Buffery.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.cpp', 'Stretchy_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy_test.cpp'}, 'format': {'mpg123': {'CreateReader_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader_test.cpp', 'Copier.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.cpp', 'Mpg123.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.h', 'CreateReader.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.cpp', 'Format.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Format.h', 'Reader_main.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_main.cpp', 'Reader.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.h', 'Reader_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_test.cpp', 'Copier.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.h', 'Manager.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Manager.h', 'CreateReader.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.h', 'Copier_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier_test.cpp', 'NewHandle.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.cpp', 'Tags.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.cpp', 'Tags.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.h', 'NewHandle.h': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.h', 'Reader.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.cpp', 'Mpg123.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.cpp'}}, 'CopySamples.h': '/Users/tom/Documents/development/rec/src/rec/audio/CopySamples.h', 'cd': {'juce_AudioCDReader_test.cpp': '/Users/tom/Documents/development/rec/src/rec/audio/cd/juce_AudioCDReader_test.cpp'}}, 'event': {'EventQueue.cpp': '/Users/tom/Documents/development/rec/src/rec/event/EventQueue.cpp', 'EventQueue.h': '/Users/tom/Documents/development/rec/src/rec/event/EventQueue.h'}}}
+!!!! {'rec': {'slow': {'RecentFiles.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.h', 'Preferences.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.cc', 'LoopWindow.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.h', 'RecentFiles.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.cc', 'Preferences.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.h', 'LoopWindow.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.cc'}, 'proto': {'Proto.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.cc', 'Proto.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.h', 'TestData.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.cc', 'TestData.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.h'}, 'util': {'Color.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.cc', 'Color.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.h'}, 'components': {'ThumbnailDescription.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.cc', 'ThumbnailDescription.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.h'}, 'persist': {'testdata.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.cc', 'testdata.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.h'}, 'audio': {'stretch': {'TimeStretch.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.h', 'TimeStretch.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.cc'}}, 'event': {'Event.pb.h': '/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.h', 'Event.pb.cc': '/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.cc'}}}
+<?xml version="1.0" ?>
+<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests" id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_template" jucerVersion="3.0.0" name="tests" pluginAUExportPrefix="TestsAU" pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}" pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0" pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd" pluginName="Tests" pluginProducesMidiOut="0" pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0" projectType="consoleapp" version="1.0.0">
+
+
+	<EXPORTFORMATS>
+
+
+		<XCODE_MAC extraLinkerFlags="-L../../../../../build/maccddb/debug/lib -lcddb -L../../../../../build/macgflags/debug/lib -lgflags -L../../../../../build/macglog/debug/lib -lglog -L../../../../../build/macgtest/debug/lib -lgtest -L../../../../../build/macmpg123/debug/lib -lmpg123 -L../../../../../build/macprotobuf/debug/lib -lprotobuf -liconv -lgtest_main" juceFolder="../../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+		<VS2005 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<VS2008 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<LINUX_MAKE juceFolder="../../../../juce" targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+	</EXPORTFORMATS>
+
+
+	<CONFIGURATIONS>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/debug/cddb;../../../../../build/mac/debug/gflags;../../../../../build/mac/debug/glog;../../../../../build/mac/debug/gtest;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/protobuf" isDebug="1" name="Debug" optimisation="1" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/release/cddb;../../../../../build/mac/release/gflags;../../../../../build/mac/release/glog;../../../../../build/mac/release/gtest;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/protobuf" isDebug="0" name="Release" optimisation="3" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+	</CONFIGURATIONS>
+
+
+	<MAINGROUP id="cS1LnqFg3" name="tests">
+		<GROUP id="uMZps58Sm" name="source">
+			<GROUP id="8Gqeijeh4" name="rec">
+				<GROUP id="eKfmLyuve" name="ammf_scaler">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.cpp/AudioResampler.cpp" id="VXWibZdlO" name="AudioResampler.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMath.h/mfMath.h" id="nAge2IHUy" name="mfMath.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfAlloc.h/mfAlloc.h" id="q8KxJMF6u" name="mfAlloc.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/hfft.h/hfft.h" id="65I5J2UZ1" name="hfft.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfGlobals.h/mfGlobals.h" id="pOcqxqBvq" name="mfGlobals.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMacros.h/mfMacros.h" id="Zu1xFcGl9" name="mfMacros.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.cpp/AudioTimeScaler.cpp" id="k8UxdYy6m" name="AudioTimeScaler.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.h/AudioResampler.h" id="IKif2UAKp" name="AudioResampler.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/new-testTS.cpp/new-testTS.cpp" id="DF2pkBmpn" name="new-testTS.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/testTS.cpp/testTS.cpp" id="JHqE0g2ND" name="testTS.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.h/AudioTimeScaler.h" id="hKB5bEJFf" name="AudioTimeScaler.h" resource="0"/>
+				</GROUP>
+				<GROUP id="roJBicNHn" name="slow">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.cpp/RecentFiles.cpp" id="08hG4y9sO" name="RecentFiles.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/slow/Preferences.h/Preferences.h" id="7Rb7jVHh7" name="Preferences.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.h/RecentFiles.h" id="eoRUHJHeY" name="RecentFiles.h" resource="0"/>
+				</GROUP>
+				<GROUP id="Yy16czOIN" name="thread">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/WaitLoop.h/WaitLoop.h" id="04qZga9Ih" name="WaitLoop.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/CallbackLoop.h/CallbackLoop.h" id="XZNez6Tdk" name="CallbackLoop.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/LockedMessage.h/LockedMessage.h" id="SmJr9z8g4" name="LockedMessage.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/RunnableThread.h/RunnableThread.h" id="ivOBS1Nol" name="RunnableThread.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Waiter.h/Waiter.h" id="0Ri9cY6nO" name="Waiter.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Callback.h/Callback.h" id="9TLOgzFO4" name="Callback.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Loop.h/Loop.h" id="0RZYMDg7d" name="Loop.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Runnable.h/Runnable.h" id="8jXg0ofge" name="Runnable.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Cycler.h/Cycler.h" id="QntrD8wEF" name="Cycler.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Wrapper.h/Wrapper.h" id="sSIcuYcFl" name="Wrapper.h" resource="0"/>
+				</GROUP>
+				<GROUP id="YDS73UOg8" name="proto">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/ZeroCopy.h/ZeroCopy.h" id="4jQTPkGHL" name="ZeroCopy.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Address.cpp/Address.cpp" id="YCmKd1e7T" name="Address.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Types.h/Types.h" id="mDSHqBkEK" name="Types.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Proto_test.cpp/Proto_test.cpp" id="KRuewNofN" name="Proto_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/LogFile.h/LogFile.h" id="tihqcPtI0" name="LogFile.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Typer.cpp/Typer.cpp" id="5Lzegnytn" name="Typer.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Field.cpp/Field.cpp" id="sKLwhkdgZ" name="Field.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/LogFile_test.cpp/LogFile_test.cpp" id="nQW4h23GP" name="LogFile_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Proto.h/Proto.h" id="Y7CBXS9LK" name="Proto.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.h/TypedTyper.h" id="siIv5iWVO" name="TypedTyper.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Field.h/Field.h" id="Yt2PryvAj" name="Field.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Proto.cpp/Proto.cpp" id="0wbMiEQ9v" name="Proto.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Address.h/Address.h" id="Ba9kRULUl" name="Address.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.cpp/TypedTyper.cpp" id="blLgDZZKm" name="TypedTyper.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Typer.h/Typer.h" id="WXd6OxxPt" name="Typer.h" resource="0"/>
+				</GROUP>
+				<GROUP id="9GjzjwsHI" name="app">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/ComponentContainer.h/ComponentContainer.h" id="G5YK6Nfh5" name="ComponentContainer.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/app/RecWindow.cpp/RecWindow.cpp" id="CACLX1b2n" name="RecWindow.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/GenericApplication.h/GenericApplication.h" id="zDThKjPQP" name="GenericApplication.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/app/RecApplication.cpp/RecApplication.cpp" id="ChRnDhaZE" name="RecApplication.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/RecWindow.h/RecWindow.h" id="QKCGXgUPP" name="RecWindow.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/RecContainer.h/RecContainer.h" id="gvgFASBNg" name="RecContainer.h" resource="0"/>
+				</GROUP>
+				<GROUP id="CfhKfYQMb" name="cd">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.cpp/GetAlbumsFromCDDB.cpp" id="GBwgN2SEI" name="GetAlbumsFromCDDB.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB_test.cpp/GetAlbumsFromCDDB_test.cpp" id="9JWbzfill" name="GetAlbumsFromCDDB_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.h/GetAlbumsFromCDDB.h" id="kPApKWpGh" name="GetAlbumsFromCDDB.h" resource="0"/>
+				</GROUP>
+				<GROUP id="cGRzbSfTI" name="util">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/util/Circular_test.cpp/Circular_test.cpp" id="uFnWbb9eY" name="Circular_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Circular.h/Circular.h" id="ala8jL30z" name="Circular.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/util/math_test.cpp/math_test.cpp" id="sF3Y7cWvm" name="math_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Callback.h/Callback.h" id="L22Otuzep" name="Callback.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Math.h/Math.h" id="sDKZNLg4b" name="Math.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Substitute.h/Substitute.h" id="slAjtx1gL" name="Substitute.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/TestData.h/TestData.h" id="y2Wpy1BeM" name="TestData.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Juce.h/Juce.h" id="21NCivSnj" name="Juce.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/util/Substitute_test.cpp/Substitute_test.cpp" id="k2CUqG4Oa" name="Substitute_test.cpp" resource="0"/>
+				</GROUP>
+				<GROUP id="qs7anotAH" name="base">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/string_piece.h/string_piece.h" id="M9NlUEuJY" name="string_piece.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/port.h/port.h" id="zdvge3txh" name="port.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/ArraySize.h/ArraySize.h" id="BRRkzXBoa" name="ArraySize.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/base.h/base.h" id="KBPK8WmS1" name="base.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/StringRange.h/StringRange.h" id="C132vPxwO" name="StringRange.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/types.h/types.h" id="EOMIjc9LI" name="types.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/build_config.h/build_config.h" id="8nZ6UiFmc" name="build_config.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/basictypes.h/basictypes.h" id="EUvxk1dJf" name="basictypes.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/CompileAssert.h/CompileAssert.h" id="gnZbByXlh" name="CompileAssert.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h/scoped_ptr.h" id="rzmAePwQO" name="scoped_ptr.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/Cast.h/Cast.h" id="ihPwTutBQ" name="Cast.h" resource="0"/>
+				</GROUP>
+				<GROUP id="6jNNw47Lq" name="components">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.cpp/MainPageJ.cpp" id="WzmkDWkWo" name="MainPageJ.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageK.h/MainPageK.h" id="6pbhBOhIR" name="MainPageK.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.h/MainPageComponent.h" id="yqgfWhpEl" name="MainPageComponent.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.h/MainPageJ.h" id="tmNwDtXfz" name="MainPageJ.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.cpp/AudioThumbnailComponent.cpp" id="6EXIWE8wO" name="AudioThumbnailComponent.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageK.cpp/MainPageK.cpp" id="w4cIiGwP1" name="MainPageK.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/LiveAudioInputDisplayComp.cpp/LiveAudioInputDisplayComp.cpp" id="Nn5Xu4xv9" name="LiveAudioInputDisplayComp.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.cpp/AudioSetupPage.cpp" id="2bpxIO4im" name="AudioSetupPage.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.h/AudioThumbnailComponent.h" id="urSq9S4uH" name="AudioThumbnailComponent.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.h/AudioSetupPage.h" id="DWGQI7Nhq" name="AudioSetupPage.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.cpp/MainPageComponent.cpp" id="GAIdGyxui" name="MainPageComponent.cpp" resource="0"/>
+				</GROUP>
+				<GROUP id="W5S6TV8wp" name="persist">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.cpp/DataRegistry.cpp" id="tcP0YbVtQ" name="DataRegistry.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/persist/Copy.cpp/Copy.cpp" id="2ntsPZrDO" name="Copy.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/AppData.h/AppData.h" id="wixRFxSLC" name="AppData.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp.h/AutosaveApp.h" id="rDMLgH3qv" name="AutosaveApp.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/Writeable.h/Writeable.h" id="p0UbhXBc6" name="Writeable.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/App.h/App.h" id="Fl1ABPTfT" name="App.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp_test.cpp/AutosaveApp_test.cpp" id="J7fnn8hsZ" name="AutosaveApp_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.h/DataRegistry.h" id="LvQ78rHV9" name="DataRegistry.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/Copy.h/Copy.h" id="vXxD2cZpu" name="Copy.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/Data.h/Data.h" id="WJST9N9zV" name="Data.h" resource="0"/>
+				</GROUP>
+				<GROUP id="MCEXlAdtP" name="audio">
+					<GROUP id="sELfMEz7X" name="stretch">
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/stretch/AudioTimeScaler_test.cpp/AudioTimeScaler_test.cpp" id="tfLx5BXim" name="AudioTimeScaler_test.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/stretch/TimeScaler.h/TimeScaler.h" id="2PKTpbGpC" name="TimeScaler.h" resource="0"/>
+					</GROUP>
+					<GROUP id="lkUWilN0I" name="source">
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/MultiWrappy.h/MultiWrappy.h" id="9bkkdvzlQ" name="MultiWrappy.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.h/Buffery.h" id="fFyo4kttQ" name="Buffery.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Wrappy.h/Wrappy.h" id="M2uqkeMap" name="Wrappy.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Source.h/Source.h" id="Nibp7KucJ" name="Source.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/TestHarness.h/TestHarness.h" id="sIQ6qDyEO" name="TestHarness.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.cpp/DoubleStretchy.cpp" id="wAn2yYaYF" name="DoubleStretchy.cpp" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery_test.cpp/Buffery_test.cpp" id="HCllA4f5H" name="Buffery_test.cpp" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy_test.cpp/DoubleStretchy_test.cpp" id="X7oc0Jb8k" name="DoubleStretchy_test.cpp" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.cpp/Stretchy.cpp" id="o0s7ugJBS" name="Stretchy.cpp" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Testy_test.cpp/Testy_test.cpp" id="sF3QX9SVw" name="Testy_test.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.h/Stretchy.h" id="J1B0IV587" name="Stretchy.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.h/DoubleStretchy.h" id="vcd14I1Bq" name="DoubleStretchy.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Testy.h/Testy.h" id="rzhXzVEh4" name="Testy.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchyThread.h/DoubleStretchyThread.h" id="H54JOfxPz" name="DoubleStretchyThread.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.cpp/Buffery.cpp" id="YWPX8RfPo" name="Buffery.cpp" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy_test.cpp/Stretchy_test.cpp" id="3zwBk67HE" name="Stretchy_test.cpp" resource="0"/>
+					</GROUP>
+					<GROUP id="ALkix52we" name="format">
+						<GROUP id="vaUfS5w87" name="mpg123">
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader_test.cpp/CreateReader_test.cpp" id="EY3jbjtAy" name="CreateReader_test.cpp" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.cpp/Copier.cpp" id="zLgF1rGbg" name="Copier.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.h/Mpg123.h" id="0lPcoyrVE" name="Mpg123.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.cpp/CreateReader.cpp" id="FmTBMdxLz" name="CreateReader.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Format.h/Format.h" id="ZgBIhd5JR" name="Format.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_main.cpp/Reader_main.cpp" id="TvJUaUJ5U" name="Reader_main.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.h/Reader.h" id="g3UtwORR3" name="Reader.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_test.cpp/Reader_test.cpp" id="Eziu5K7yj" name="Reader_test.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.h/Copier.h" id="3d0IydJbG" name="Copier.h" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Manager.h/Manager.h" id="kETzToKsO" name="Manager.h" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.h/CreateReader.h" id="oT69Dd43v" name="CreateReader.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier_test.cpp/Copier_test.cpp" id="PTHNlvXhj" name="Copier_test.cpp" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.cpp/NewHandle.cpp" id="bPzULz3dU" name="NewHandle.cpp" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.cpp/Tags.cpp" id="eFq9RAoIX" name="Tags.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.h/Tags.h" id="Fa0VMyBvE" name="Tags.h" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.h/NewHandle.h" id="wq2UIS4aL" name="NewHandle.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.cpp/Reader.cpp" id="TjxsNVWVL" name="Reader.cpp" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.cpp/Mpg123.cpp" id="tSbo52d3g" name="Mpg123.cpp" resource="0"/>
+						</GROUP>
+					</GROUP>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/CopySamples.h/CopySamples.h" id="Uc9m6Y2iK" name="CopySamples.h" resource="0"/>
+					<GROUP id="at8ZPznO5" name="cd">
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/cd/juce_AudioCDReader_test.cpp/juce_AudioCDReader_test.cpp" id="BNqqmdifn" name="juce_AudioCDReader_test.cpp" resource="0"/>
+					</GROUP>
+				</GROUP>
+				<GROUP id="NXENwCJOT" name="event">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/event/EventQueue.cpp/EventQueue.cpp" id="TFBFTWNmY" name="EventQueue.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/event/EventQueue.h/EventQueue.h" id="AtmjKUcjv" name="EventQueue.h" resource="0"/>
+				</GROUP>
+			</GROUP>
+		</GROUP>
+		<GROUP id="mzcebcAWa" name="proto">
+			<GROUP id="TinnSpCEy" name="rec">
+				<GROUP id="c2O1xjR7F" name="slow">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.h/RecentFiles.pb.h" id="kon5dCqbn" name="RecentFiles.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.cc/Preferences.pb.cc" id="hGMvwIrsX" name="Preferences.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.h/LoopWindow.pb.h" id="Izvcc2X3F" name="LoopWindow.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.cc/RecentFiles.pb.cc" id="HRYoJLo0y" name="RecentFiles.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.h/Preferences.pb.h" id="i2r3aahdc" name="Preferences.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.cc/LoopWindow.pb.cc" id="LFiH05JSp" name="LoopWindow.pb.cc" resource="0"/>
+				</GROUP>
+				<GROUP id="O4Y1ejnLK" name="proto">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.cc/Proto.pb.cc" id="pDS7iZ7gB" name="Proto.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.h/Proto.pb.h" id="XlhezlGHs" name="Proto.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.cc/TestData.pb.cc" id="7I0HmuZtn" name="TestData.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.h/TestData.pb.h" id="pb9cP4GRp" name="TestData.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="o7a448R4o" name="util">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.cc/Color.pb.cc" id="NP3z31rfh" name="Color.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.h/Color.pb.h" id="9XRAjLn6X" name="Color.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="5nUFqdxcK" name="components">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.cc/ThumbnailDescription.pb.cc" id="wQXSATJPq" name="ThumbnailDescription.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.h/ThumbnailDescription.pb.h" id="2TT9pEwBL" name="ThumbnailDescription.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="MVnkDFeqY" name="persist">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.cc/testdata.pb.cc" id="uTBHdjn58" name="testdata.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.h/testdata.pb.h" id="0L3PnUQk9" name="testdata.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="1KwsFotHI" name="audio">
+					<GROUP id="LfRyGEbul" name="stretch">
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.h/TimeStretch.pb.h" id="LGNNdSR5K" name="TimeStretch.pb.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.cc/TimeStretch.pb.cc" id="VgFmyYoq6" name="TimeStretch.pb.cc" resource="0"/>
+					</GROUP>
+				</GROUP>
+				<GROUP id="33JIsZMSz" name="event">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.h/Event.pb.h" id="sV9vTzmoV" name="Event.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.cc/Event.pb.cc" id="YNGaCfmkp" name="Event.pb.cc" resource="0"/>
+				</GROUP>
+			</GROUP>
+		</GROUP>
+	</MAINGROUP>
+
+
+	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
+
+
+</JUCERPROJECT>
+
+21:40:59 [hofmann:~/Documents/development/rec/scripts/create]$ python -v
+# installing zipimport hook
+import zipimport # builtin
+# installed zipimport hook
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site.py
+import site # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/os.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/os.py
+import os # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/os.pyc
+import errno # builtin
+import posix # builtin
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/posixpath.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/posixpath.py
+import posixpath # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/posixpath.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/stat.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/stat.py
+import stat # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/stat.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/genericpath.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/genericpath.py
+import genericpath # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/genericpath.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/warnings.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/warnings.py
+import warnings # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/warnings.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/linecache.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/linecache.py
+import linecache # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/linecache.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/types.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/types.py
+import types # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/types.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/UserDict.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/UserDict.py
+import UserDict # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/UserDict.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/_abcoll.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/_abcoll.py
+import _abcoll # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/_abcoll.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/abc.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/abc.py
+import abc # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/abc.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/copy_reg.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/copy_reg.py
+import copy_reg # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/copy_reg.pyc
+import encodings # directory /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/__init__.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/__init__.py
+import encodings # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/__init__.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/codecs.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/codecs.py
+import codecs # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/codecs.pyc
+import _codecs # builtin
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/aliases.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/aliases.py
+import encodings.aliases # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/aliases.pyc
+# /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/ascii.pyc matches /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/ascii.py
+import encodings.ascii # precompiled from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/encodings/ascii.pyc
+Python 2.6.1 (r261:67515, Dec  6 2008, 16:42:21)
+[GCC 4.0.1 (Apple Computer, Inc. build 5370)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+dlopen("/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-dynload/readline.so", 2);
+import readline # dynamically loaded from /Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/lib-dynload/readline.so
+>>>
+# clear __builtin__._
+# clear sys.path
+# clear sys.argv
+# clear sys.ps1
+# clear sys.ps2
+# clear sys.exitfunc
+# clear sys.exc_type
+# clear sys.exc_value
+# clear sys.exc_traceback
+# clear sys.last_type
+# clear sys.last_value
+# clear sys.last_traceback
+# clear sys.path_hooks
+# clear sys.path_importer_cache
+# clear sys.meta_path
+# clear sys.flags
+# clear sys.float_info
+# restore sys.stdin
+# restore sys.stdout
+# restore sys.stderr
+# cleanup __main__
+# cleanup[1] encodings
+# cleanup[1] site
+# cleanup[1] abc
+# cleanup[1] _codecs
+# cleanup[1] _warnings
+# cleanup[1] zipimport
+# cleanup[1] encodings.ascii
+# cleanup[1] codecs
+# cleanup[1] readline
+# cleanup[1] signal
+# cleanup[1] posix
+# cleanup[1] encodings.aliases
+# cleanup[1] exceptions
+# cleanup[2] copy_reg
+# cleanup[2] posixpath
+# cleanup[2] errno
+# cleanup[2] _abcoll
+# cleanup[2] types
+# cleanup[2] genericpath
+# cleanup[2] stat
+# cleanup[2] warnings
+# cleanup[2] UserDict
+# cleanup[2] os.path
+# cleanup[2] linecache
+# cleanup[2] os
+# cleanup sys
+# cleanup __builtin__
+# cleanup ints: 20 unfreed ints
+# cleanup floats
+22:22:23 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+<?xml version="1.0" ?>
+<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests" id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_template" jucerVersion="3.0.0" name="tests" pluginAUExportPrefix="TestsAU" pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}" pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0" pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd" pluginName="Tests" pluginProducesMidiOut="0" pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0" projectType="consoleapp" version="1.0.0">
+
+
+	<EXPORTFORMATS>
+
+
+		<XCODE_MAC extraLinkerFlags="-L../../../../../build/maccddb/debug/lib -lcddb -L../../../../../build/macgflags/debug/lib -lgflags -L../../../../../build/macglog/debug/lib -lglog -L../../../../../build/macgtest/debug/lib -lgtest -L../../../../../build/macmpg123/debug/lib -lmpg123 -L../../../../../build/macprotobuf/debug/lib -lprotobuf -liconv -lgtest_main" juceFolder="../../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+		<VS2005 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<VS2008 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<LINUX_MAKE juceFolder="../../../../juce" targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+	</EXPORTFORMATS>
+
+
+	<CONFIGURATIONS>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/debug/cddb;../../../../../build/mac/debug/gflags;../../../../../build/mac/debug/glog;../../../../../build/mac/debug/gtest;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/protobuf" isDebug="1" name="Debug" optimisation="1" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/release/cddb;../../../../../build/mac/release/gflags;../../../../../build/mac/release/glog;../../../../../build/mac/release/gtest;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/protobuf" isDebug="0" name="Release" optimisation="3" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+	</CONFIGURATIONS>
+
+
+	<MAINGROUP id="B7t0Vj5xd" name="tests">
+		<GROUP id="dCgPOhZgd" name="source">
+			<GROUP id="nnaoGiM9Q" name="rec">
+				<GROUP id="VSmnhPMnW" name="ammf_scaler">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.cpp/AudioResampler.cpp" id="2v08LnpLX" name="AudioResampler.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.h/AudioResampler.h" id="0LOnk8O1l" name="AudioResampler.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.cpp/AudioTimeScaler.cpp" id="6hCjs3iS1" name="AudioTimeScaler.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.h/AudioTimeScaler.h" id="yimdPgwv2" name="AudioTimeScaler.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/hfft.h/hfft.h" id="FL7Zi4azZ" name="hfft.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfAlloc.h/mfAlloc.h" id="7YdnDmRvv" name="mfAlloc.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfGlobals.h/mfGlobals.h" id="alypbKgkz" name="mfGlobals.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMacros.h/mfMacros.h" id="HHmW4cdK6" name="mfMacros.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMath.h/mfMath.h" id="neMAJg7QS" name="mfMath.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/new-testTS.cpp/new-testTS.cpp" id="kzB4KVuW4" name="new-testTS.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/ammf_scaler/testTS.cpp/testTS.cpp" id="2FAuX1bY1" name="testTS.cpp" resource="0"/>
+				</GROUP>
+				<GROUP id="bTsSQtfAD" name="app">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/ComponentContainer.h/ComponentContainer.h" id="IveO9lyU4" name="ComponentContainer.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/GenericApplication.h/GenericApplication.h" id="7ODC5G1CV" name="GenericApplication.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/app/RecApplication.cpp/RecApplication.cpp" id="bs0qnQY7T" name="RecApplication.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/RecContainer.h/RecContainer.h" id="D5eoi76hv" name="RecContainer.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/app/RecWindow.cpp/RecWindow.cpp" id="acYY8WWma" name="RecWindow.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/app/RecWindow.h/RecWindow.h" id="c1R6tloGf" name="RecWindow.h" resource="0"/>
+				</GROUP>
+				<GROUP id="lCWJFb1MY" name="audio">
+					<GROUP id="80iii68w5" name="cd">
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/cd/juce_AudioCDReader_test.cpp/juce_AudioCDReader_test.cpp" id="OjnR2XwmW" name="juce_AudioCDReader_test.cpp" resource="0"/>
+					</GROUP>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/CopySamples.h/CopySamples.h" id="LMqz8xsIR" name="CopySamples.h" resource="0"/>
+					<GROUP id="an96AOGS7" name="format">
+						<GROUP id="HHgDov88q" name="mpg123">
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.cpp/Copier.cpp" id="xoTpU1Y3P" name="Copier.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.h/Copier.h" id="8SmPqWiSf" name="Copier.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier_test.cpp/Copier_test.cpp" id="AzUkYuyVF" name="Copier_test.cpp" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.cpp/CreateReader.cpp" id="3pp5fRgf4" name="CreateReader.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.h/CreateReader.h" id="x2o9PF8DQ" name="CreateReader.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader_test.cpp/CreateReader_test.cpp" id="j94Zd40t8" name="CreateReader_test.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Format.h/Format.h" id="x2kmr2Vdq" name="Format.h" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Manager.h/Manager.h" id="ro4TX2mM4" name="Manager.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.cpp/Mpg123.cpp" id="hU0OEoBmY" name="Mpg123.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.h/Mpg123.h" id="ODzEJQABM" name="Mpg123.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.cpp/NewHandle.cpp" id="iAwB14U2x" name="NewHandle.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.h/NewHandle.h" id="fMGkoTtyD" name="NewHandle.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.cpp/Reader.cpp" id="GTMYr69Sc" name="Reader.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.h/Reader.h" id="TOohuzFwi" name="Reader.h" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_main.cpp/Reader_main.cpp" id="a6paRXbio" name="Reader_main.cpp" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_test.cpp/Reader_test.cpp" id="3K7Eiwg14" name="Reader_test.cpp" resource="0"/>
+							<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.cpp/Tags.cpp" id="YA1flOVuD" name="Tags.cpp" resource="0"/>
+							<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.h/Tags.h" id="nZLYUtg1I" name="Tags.h" resource="0"/>
+						</GROUP>
+					</GROUP>
+					<GROUP id="K2OzjPzdr" name="source">
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.cpp/Buffery.cpp" id="XNTOw9CdM" name="Buffery.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.h/Buffery.h" id="mXcOIjBMw" name="Buffery.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery_test.cpp/Buffery_test.cpp" id="VO2Vgf9tC" name="Buffery_test.cpp" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.cpp/DoubleStretchy.cpp" id="BI8bAIxnA" name="DoubleStretchy.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.h/DoubleStretchy.h" id="xGemorASA" name="DoubleStretchy.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy_test.cpp/DoubleStretchy_test.cpp" id="cUk97gxHO" name="DoubleStretchy_test.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchyThread.h/DoubleStretchyThread.h" id="QrXlR58iq" name="DoubleStretchyThread.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/MultiWrappy.h/MultiWrappy.h" id="1CkLkaWlX" name="MultiWrappy.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Source.h/Source.h" id="Ln54fWW35" name="Source.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.cpp/Stretchy.cpp" id="nhT6yvx3l" name="Stretchy.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.h/Stretchy.h" id="WQxwA6i4O" name="Stretchy.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy_test.cpp/Stretchy_test.cpp" id="gCcTxZnu3" name="Stretchy_test.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/TestHarness.h/TestHarness.h" id="noKi2xqQK" name="TestHarness.h" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Testy.h/Testy.h" id="dJzfxdUTO" name="Testy.h" resource="0"/>
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Testy_test.cpp/Testy_test.cpp" id="7c5ic6BZD" name="Testy_test.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/source/Wrappy.h/Wrappy.h" id="9vLZcM65z" name="Wrappy.h" resource="0"/>
+					</GROUP>
+					<GROUP id="GCWZcUemz" name="stretch">
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/audio/stretch/AudioTimeScaler_test.cpp/AudioTimeScaler_test.cpp" id="0iVvHiff4" name="AudioTimeScaler_test.cpp" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/audio/stretch/TimeScaler.h/TimeScaler.h" id="aKLLjzZQ1" name="TimeScaler.h" resource="0"/>
+					</GROUP>
+				</GROUP>
+				<GROUP id="mXnidAFoe" name="base">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/ArraySize.h/ArraySize.h" id="yMFjZAbNP" name="ArraySize.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/base.h/base.h" id="WCg0Pd9ds" name="base.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/basictypes.h/basictypes.h" id="FUJ9tYAoe" name="basictypes.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/build_config.h/build_config.h" id="6DYhBVJDD" name="build_config.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/Cast.h/Cast.h" id="jt8FrolVO" name="Cast.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/CompileAssert.h/CompileAssert.h" id="39gfqGNyv" name="CompileAssert.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/port.h/port.h" id="sOik8DowR" name="port.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h/scoped_ptr.h" id="d3lMK4AkM" name="scoped_ptr.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/string_piece.h/string_piece.h" id="tGP6U4zhF" name="string_piece.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/StringRange.h/StringRange.h" id="UfRGVZvbL" name="StringRange.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/base/types.h/types.h" id="rCBBOjEwS" name="types.h" resource="0"/>
+				</GROUP>
+				<GROUP id="55XNPMArk" name="cd">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.cpp/GetAlbumsFromCDDB.cpp" id="SjPVoaZm2" name="GetAlbumsFromCDDB.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.h/GetAlbumsFromCDDB.h" id="cYuygwi4t" name="GetAlbumsFromCDDB.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB_test.cpp/GetAlbumsFromCDDB_test.cpp" id="egdvvCU0v" name="GetAlbumsFromCDDB_test.cpp" resource="0"/>
+				</GROUP>
+				<GROUP id="MPQeVFTex" name="components">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.cpp/AudioSetupPage.cpp" id="nhJWPi6O4" name="AudioSetupPage.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.h/AudioSetupPage.h" id="dfCagchkl" name="AudioSetupPage.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.cpp/AudioThumbnailComponent.cpp" id="ckOSN0GRi" name="AudioThumbnailComponent.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.h/AudioThumbnailComponent.h" id="cxCZTLrqG" name="AudioThumbnailComponent.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/LiveAudioInputDisplayComp.cpp/LiveAudioInputDisplayComp.cpp" id="LSa8R0LNk" name="LiveAudioInputDisplayComp.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.cpp/MainPageComponent.cpp" id="ShlyiTL0U" name="MainPageComponent.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.h/MainPageComponent.h" id="aEp5GY88y" name="MainPageComponent.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.cpp/MainPageJ.cpp" id="FvVH9TMRT" name="MainPageJ.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.h/MainPageJ.h" id="A9XGjC5r0" name="MainPageJ.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageK.cpp/MainPageK.cpp" id="8AgqsgaXw" name="MainPageK.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/components/MainPageK.h/MainPageK.h" id="bKGjHVSwe" name="MainPageK.h" resource="0"/>
+				</GROUP>
+				<GROUP id="60c58NAMb" name="event">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/event/EventQueue.cpp/EventQueue.cpp" id="AOqZWOsj2" name="EventQueue.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/event/EventQueue.h/EventQueue.h" id="7GTVErjcN" name="EventQueue.h" resource="0"/>
+				</GROUP>
+				<GROUP id="8H0mUnTQG" name="persist">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/App.h/App.h" id="I9K0q0cCn" name="App.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/AppData.h/AppData.h" id="c8uboC47y" name="AppData.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp.h/AutosaveApp.h" id="gVnfqzzl1" name="AutosaveApp.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp_test.cpp/AutosaveApp_test.cpp" id="4mlIlKrIm" name="AutosaveApp_test.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/persist/Copy.cpp/Copy.cpp" id="rZNg92RdR" name="Copy.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/Copy.h/Copy.h" id="i1eRYz9vF" name="Copy.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/Data.h/Data.h" id="NrNGUukx9" name="Data.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.cpp/DataRegistry.cpp" id="6vdkgR2kM" name="DataRegistry.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.h/DataRegistry.h" id="Tn5tRvKP8" name="DataRegistry.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/persist/Writeable.h/Writeable.h" id="UBtU8iJPo" name="Writeable.h" resource="0"/>
+				</GROUP>
+				<GROUP id="YcEIvXUyR" name="proto">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Address.cpp/Address.cpp" id="Aa75KfdV4" name="Address.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Address.h/Address.h" id="ASKSjQPX1" name="Address.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Field.cpp/Field.cpp" id="9hN6WdVp7" name="Field.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Field.h/Field.h" id="ux8FAVi8S" name="Field.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/LogFile.h/LogFile.h" id="v2PKSTtRQ" name="LogFile.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/LogFile_test.cpp/LogFile_test.cpp" id="iaumUd2jC" name="LogFile_test.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Proto.cpp/Proto.cpp" id="mnovAphNt" name="Proto.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Proto.h/Proto.h" id="sahPqpmjv" name="Proto.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Proto_test.cpp/Proto_test.cpp" id="XtjZ3e2N1" name="Proto_test.cpp" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.cpp/TypedTyper.cpp" id="7rEGQUcL3" name="TypedTyper.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.h/TypedTyper.h" id="jjg7LjlR1" name="TypedTyper.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/proto/Typer.cpp/Typer.cpp" id="6LRTi3mKM" name="Typer.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Typer.h/Typer.h" id="dIDfiiaQV" name="Typer.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/Types.h/Types.h" id="nt4tq5KWL" name="Types.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/proto/ZeroCopy.h/ZeroCopy.h" id="25nLmMCLO" name="ZeroCopy.h" resource="0"/>
+				</GROUP>
+				<GROUP id="oLXKIUUBk" name="slow">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/slow/Preferences.h/Preferences.h" id="I6W2AJzTA" name="Preferences.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.cpp/RecentFiles.cpp" id="jA2Gdc7M2" name="RecentFiles.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.h/RecentFiles.h" id="86wz7WYh5" name="RecentFiles.h" resource="0"/>
+				</GROUP>
+				<GROUP id="Doo0Mitkm" name="thread">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Callback.h/Callback.h" id="wJOKEbyxr" name="Callback.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/CallbackLoop.h/CallbackLoop.h" id="kJIH4QkTQ" name="CallbackLoop.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Cycler.h/Cycler.h" id="CFXyTfS7X" name="Cycler.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/LockedMessage.h/LockedMessage.h" id="1cd21fLhp" name="LockedMessage.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Loop.h/Loop.h" id="B4BpnyYby" name="Loop.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Runnable.h/Runnable.h" id="4EXd7xDPn" name="Runnable.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/RunnableThread.h/RunnableThread.h" id="tuUvzGGWe" name="RunnableThread.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Waiter.h/Waiter.h" id="ySTQLQ8rd" name="Waiter.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/WaitLoop.h/WaitLoop.h" id="32RgO56WF" name="WaitLoop.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/thread/Wrapper.h/Wrapper.h" id="9vpM9KauY" name="Wrapper.h" resource="0"/>
+				</GROUP>
+				<GROUP id="KapROVJxB" name="util">
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Callback.h/Callback.h" id="ThUgVcIbY" name="Callback.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Circular.h/Circular.h" id="jcVW7O63F" name="Circular.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/util/Circular_test.cpp/Circular_test.cpp" id="Avv1994YP" name="Circular_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Juce.h/Juce.h" id="DX60s0xNh" name="Juce.h" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Math.h/Math.h" id="j7GgxqsN9" name="Math.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/util/math_test.cpp/math_test.cpp" id="XumuwCorf" name="math_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/Substitute.h/Substitute.h" id="IaWt2a8gw" name="Substitute.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/src/rec/util/Substitute_test.cpp/Substitute_test.cpp" id="DWpnwuXq2" name="Substitute_test.cpp" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/src/rec/util/TestData.h/TestData.h" id="gjCiZAK1z" name="TestData.h" resource="0"/>
+				</GROUP>
+			</GROUP>
+		</GROUP>
+		<GROUP id="lJnH3flC9" name="proto">
+			<GROUP id="K4xLZIoU0" name="rec">
+				<GROUP id="bbw3ZFhn0" name="audio">
+					<GROUP id="g3KpoFJ02" name="stretch">
+						<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.cc/TimeStretch.pb.cc" id="0EROLoSsq" name="TimeStretch.pb.cc" resource="0"/>
+						<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.h/TimeStretch.pb.h" id="cs3CXFk8n" name="TimeStretch.pb.h" resource="0"/>
+					</GROUP>
+				</GROUP>
+				<GROUP id="2Qunhp7bc" name="components">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.cc/ThumbnailDescription.pb.cc" id="u571mV5Y5" name="ThumbnailDescription.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.h/ThumbnailDescription.pb.h" id="aISHApijb" name="ThumbnailDescription.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="bwlsSeOkG" name="event">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.cc/Event.pb.cc" id="sHUbsJhBn" name="Event.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.h/Event.pb.h" id="KPLStNTnl" name="Event.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="FVQuHapAV" name="persist">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.cc/testdata.pb.cc" id="LFUkO6sk8" name="testdata.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.h/testdata.pb.h" id="tcOzAd7JD" name="testdata.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="na6om5j8R" name="proto">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.cc/Proto.pb.cc" id="xbtP3eGaW" name="Proto.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.h/Proto.pb.h" id="RBPZTQUiL" name="Proto.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.cc/TestData.pb.cc" id="feRcBmxxo" name="TestData.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.h/TestData.pb.h" id="bACDk8c1n" name="TestData.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="OxLVdUaPh" name="slow">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.cc/LoopWindow.pb.cc" id="grZNJPcIZ" name="LoopWindow.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.h/LoopWindow.pb.h" id="hWaRHQVyX" name="LoopWindow.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.cc/Preferences.pb.cc" id="pBe3jYcmB" name="Preferences.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.h/Preferences.pb.h" id="wIXkrg3z7" name="Preferences.pb.h" resource="0"/>
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.cc/RecentFiles.pb.cc" id="XMloaU192" name="RecentFiles.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.h/RecentFiles.pb.h" id="OLtAmMz6A" name="RecentFiles.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="jA8gWwh02" name="util">
+					<FILE compile="1" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.cc/Color.pb.cc" id="uWhy0Wsv2" name="Color.pb.cc" resource="0"/>
+					<FILE compile="0" file="/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.h/Color.pb.h" id="N0yakn2pE" name="Color.pb.h" resource="0"/>
+				</GROUP>
+			</GROUP>
+		</GROUP>
+	</MAINGROUP>
+
+
+	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
+
+
+</JUCERPROJECT>
+
+22:25:12 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+<?xml version="1.0" ?>
+<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests" id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_template" jucerVersion="3.0.0" name="tests" pluginAUExportPrefix="TestsAU" pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}" pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0" pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd" pluginName="Tests" pluginProducesMidiOut="0" pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0" projectType="consoleapp" version="1.0.0">
+
+
+	<EXPORTFORMATS>
+
+
+		<XCODE_MAC extraLinkerFlags="-L../../../../../build/maccddb/debug/lib -lcddb -L../../../../../build/macgflags/debug/lib -lgflags -L../../../../../build/macglog/debug/lib -lglog -L../../../../../build/macgtest/debug/lib -lgtest -L../../../../../build/macmpg123/debug/lib -lmpg123 -L../../../../../build/macprotobuf/debug/lib -lprotobuf -liconv -lgtest_main" juceFolder="../../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+		<VS2005 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2005" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<VS2008 juceFolder="../../../../../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
+
+
+		<LINUX_MAKE juceFolder="../../../../juce" targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4"/>
+
+
+	</EXPORTFORMATS>
+
+
+	<CONFIGURATIONS>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/debug/cddb;../../../../../build/mac/debug/gflags;../../../../../build/mac/debug/glog;../../../../../build/mac/debug/gtest;../../../../../build/mac/debug/mpg123;../../../../../build/mac/debug/protobuf" isDebug="1" name="Debug" optimisation="1" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+		<CONFIGURATION headerPath="../../../../../rec/src;../../../../../rec/genfiles;../../../../../juce;../../../../../build/mac/release/cddb;../../../../../build/mac/release/gflags;../../../../../build/mac/release/glog;../../../../../build/mac/release/gtest;../../../../../build/mac/release/mpg123;../../../../../build/mac/release/protobuf" isDebug="0" name="Release" optimisation="3" osxCompatibility="default" osxSDK="default" targetName="unit-tests"/>
+
+
+	</CONFIGURATIONS>
+
+
+	<MAINGROUP id="mC7dJAiCi" name="tests">
+		<GROUP id="UBTjR4OKG" name="source">
+			<GROUP id="2obgKVml3" name="rec">
+				<GROUP id="cz9UWIo7X" name="ammf_scaler">
+					<FILE compile="1" file="../../src/source/rec/ammf_scaler/AudioResampler.cpp" id="wkOHQAote" name="AudioResampler.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/ammf_scaler/AudioResampler.h" id="RvxMrYggn" name="AudioResampler.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/ammf_scaler/AudioTimeScaler.cpp" id="kQAMF5QD9" name="AudioTimeScaler.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/ammf_scaler/AudioTimeScaler.h" id="PGTuWWYja" name="AudioTimeScaler.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/ammf_scaler/hfft.h" id="9C0Y6Gb4J" name="hfft.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/ammf_scaler/mfAlloc.h" id="6AqBZDnKt" name="mfAlloc.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/ammf_scaler/mfGlobals.h" id="oxYxsKA5g" name="mfGlobals.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/ammf_scaler/mfMacros.h" id="B2EU3nx36" name="mfMacros.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/ammf_scaler/mfMath.h" id="J8aYy88Ty" name="mfMath.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/ammf_scaler/new-testTS.cpp" id="m9dHYbrhr" name="new-testTS.cpp" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/ammf_scaler/testTS.cpp" id="9kdECtQRP" name="testTS.cpp" resource="0"/>
+				</GROUP>
+				<GROUP id="8Jaf2R2aS" name="app">
+					<FILE compile="0" file="../../src/source/rec/app/ComponentContainer.h" id="F7FAup7AP" name="ComponentContainer.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/app/GenericApplication.h" id="8wNaVxSS8" name="GenericApplication.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/app/RecApplication.cpp" id="uJXLExhmH" name="RecApplication.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/app/RecContainer.h" id="Rz92vcLTT" name="RecContainer.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/app/RecWindow.cpp" id="KFMZVwS3v" name="RecWindow.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/app/RecWindow.h" id="CUj9KysNN" name="RecWindow.h" resource="0"/>
+				</GROUP>
+				<GROUP id="IBONhljau" name="audio">
+					<GROUP id="laomPpdue" name="cd">
+						<FILE compile="1" file="../../src/source/rec/audio/cd/juce_AudioCDReader_test.cpp" id="JrycbuWj7" name="juce_AudioCDReader_test.cpp" resource="0"/>
+					</GROUP>
+					<FILE compile="0" file="../../src/source/rec/audio/CopySamples.h" id="LmcG7F5aE" name="CopySamples.h" resource="0"/>
+					<GROUP id="iQjfTNHOT" name="format">
+						<GROUP id="S6hctvlgr" name="mpg123">
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/Copier.cpp" id="mGbnjXMeW" name="Copier.cpp" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/Copier.h" id="d2ptCgRMx" name="Copier.h" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/Copier_test.cpp" id="e6LwlrjO8" name="Copier_test.cpp" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/CreateReader.cpp" id="tLmFhkMHt" name="CreateReader.cpp" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/CreateReader.h" id="tadkcBM57" name="CreateReader.h" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/CreateReader_test.cpp" id="hOv6dlnun" name="CreateReader_test.cpp" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/Format.h" id="dADF4bYVp" name="Format.h" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/Manager.h" id="DvA1jPoPI" name="Manager.h" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/Mpg123.cpp" id="HyKfNyYlL" name="Mpg123.cpp" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/Mpg123.h" id="WLOu6Z9Kl" name="Mpg123.h" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/NewHandle.cpp" id="0PY5Nwr2g" name="NewHandle.cpp" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/NewHandle.h" id="tI42EzLM4" name="NewHandle.h" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/Reader.cpp" id="hsgSWajWS" name="Reader.cpp" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/Reader.h" id="DT1UNJiN3" name="Reader.h" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/Reader_main.cpp" id="h00oT2wCN" name="Reader_main.cpp" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/Reader_test.cpp" id="YdljfsD1k" name="Reader_test.cpp" resource="0"/>
+							<FILE compile="1" file="../../src/source/rec/audio/format/mpg123/Tags.cpp" id="bftyNypWG" name="Tags.cpp" resource="0"/>
+							<FILE compile="0" file="../../src/source/rec/audio/format/mpg123/Tags.h" id="eilaRQrl8" name="Tags.h" resource="0"/>
+						</GROUP>
+					</GROUP>
+					<GROUP id="cQJ3ZZ5P1" name="source">
+						<FILE compile="1" file="../../src/source/rec/audio/source/Buffery.cpp" id="52ctZnRNO" name="Buffery.cpp" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/Buffery.h" id="6cR1WDhmR" name="Buffery.h" resource="0"/>
+						<FILE compile="1" file="../../src/source/rec/audio/source/Buffery_test.cpp" id="enQk8CJRQ" name="Buffery_test.cpp" resource="0"/>
+						<FILE compile="1" file="../../src/source/rec/audio/source/DoubleStretchy.cpp" id="L4tYaWmQM" name="DoubleStretchy.cpp" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/DoubleStretchy.h" id="xPofdyRMK" name="DoubleStretchy.h" resource="0"/>
+						<FILE compile="1" file="../../src/source/rec/audio/source/DoubleStretchy_test.cpp" id="a8K82wg46" name="DoubleStretchy_test.cpp" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/DoubleStretchyThread.h" id="5Z40FW27f" name="DoubleStretchyThread.h" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/MultiWrappy.h" id="JBG5yEjdG" name="MultiWrappy.h" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/Source.h" id="G1M9YX8zH" name="Source.h" resource="0"/>
+						<FILE compile="1" file="../../src/source/rec/audio/source/Stretchy.cpp" id="YdQNgWZhM" name="Stretchy.cpp" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/Stretchy.h" id="oaPMtYbab" name="Stretchy.h" resource="0"/>
+						<FILE compile="1" file="../../src/source/rec/audio/source/Stretchy_test.cpp" id="z1iwsHLkO" name="Stretchy_test.cpp" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/TestHarness.h" id="7XhZerJ4L" name="TestHarness.h" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/Testy.h" id="T5iXL4CmE" name="Testy.h" resource="0"/>
+						<FILE compile="1" file="../../src/source/rec/audio/source/Testy_test.cpp" id="TVJdWDMuI" name="Testy_test.cpp" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/source/Wrappy.h" id="DpJW2COfK" name="Wrappy.h" resource="0"/>
+					</GROUP>
+					<GROUP id="HkWgY2qgw" name="stretch">
+						<FILE compile="1" file="../../src/source/rec/audio/stretch/AudioTimeScaler_test.cpp" id="9Jjy3P1lD" name="AudioTimeScaler_test.cpp" resource="0"/>
+						<FILE compile="0" file="../../src/source/rec/audio/stretch/TimeScaler.h" id="jKTMC6YyQ" name="TimeScaler.h" resource="0"/>
+					</GROUP>
+				</GROUP>
+				<GROUP id="RnY2FgHfW" name="base">
+					<FILE compile="0" file="../../src/source/rec/base/ArraySize.h" id="vZ0OgBn6b" name="ArraySize.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/base.h" id="hXvwAUDvO" name="base.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/basictypes.h" id="RAqvc13bg" name="basictypes.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/build_config.h" id="FsQGOL71Z" name="build_config.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/Cast.h" id="89bt6UV4Z" name="Cast.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/CompileAssert.h" id="VhlrxJkCx" name="CompileAssert.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/port.h" id="vcVunYhbB" name="port.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/scoped_ptr.h" id="22Q666P5W" name="scoped_ptr.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/string_piece.h" id="6KXiq1G4n" name="string_piece.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/StringRange.h" id="vuD1iJDTr" name="StringRange.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/base/types.h" id="U8MJVLwaR" name="types.h" resource="0"/>
+				</GROUP>
+				<GROUP id="xjc7ABZz1" name="cd">
+					<FILE compile="1" file="../../src/source/rec/cd/GetAlbumsFromCDDB.cpp" id="0kTbfnV57" name="GetAlbumsFromCDDB.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/cd/GetAlbumsFromCDDB.h" id="duvKbigqx" name="GetAlbumsFromCDDB.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/cd/GetAlbumsFromCDDB_test.cpp" id="5iRr69GTp" name="GetAlbumsFromCDDB_test.cpp" resource="0"/>
+				</GROUP>
+				<GROUP id="bNQ6Drk2R" name="components">
+					<FILE compile="1" file="../../src/source/rec/components/AudioSetupPage.cpp" id="PsLeOCQ49" name="AudioSetupPage.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/components/AudioSetupPage.h" id="zzUb5AvV6" name="AudioSetupPage.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/components/AudioThumbnailComponent.cpp" id="W90280fN5" name="AudioThumbnailComponent.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/components/AudioThumbnailComponent.h" id="gBMHu2v1K" name="AudioThumbnailComponent.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/components/LiveAudioInputDisplayComp.cpp" id="OQqvEJ0E2" name="LiveAudioInputDisplayComp.cpp" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/components/MainPageComponent.cpp" id="RGfpA0kSJ" name="MainPageComponent.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/components/MainPageComponent.h" id="aU1pqiomn" name="MainPageComponent.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/components/MainPageJ.cpp" id="6kTRVwkLs" name="MainPageJ.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/components/MainPageJ.h" id="sK3gyID58" name="MainPageJ.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/components/MainPageK.cpp" id="KZLNg9PG4" name="MainPageK.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/components/MainPageK.h" id="MmKB7rkEp" name="MainPageK.h" resource="0"/>
+				</GROUP>
+				<GROUP id="9q9EGbrXR" name="event">
+					<FILE compile="1" file="../../src/source/rec/event/EventQueue.cpp" id="MqzH5bpns" name="EventQueue.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/event/EventQueue.h" id="BkaKOdVuT" name="EventQueue.h" resource="0"/>
+				</GROUP>
+				<GROUP id="2IduxAfIT" name="persist">
+					<FILE compile="0" file="../../src/source/rec/persist/App.h" id="88cyh9A5B" name="App.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/persist/AppData.h" id="YOOqACrbo" name="AppData.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/persist/AutosaveApp.h" id="dj871P1PS" name="AutosaveApp.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/persist/AutosaveApp_test.cpp" id="3IPMLatis" name="AutosaveApp_test.cpp" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/persist/Copy.cpp" id="ne9fp7wE4" name="Copy.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/persist/Copy.h" id="l5ZebM75K" name="Copy.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/persist/Data.h" id="PZFJeWIg4" name="Data.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/persist/DataRegistry.cpp" id="l2jrMFijX" name="DataRegistry.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/persist/DataRegistry.h" id="7fwRbky1R" name="DataRegistry.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/persist/Writeable.h" id="yWMR4bYDZ" name="Writeable.h" resource="0"/>
+				</GROUP>
+				<GROUP id="D5myJGIv8" name="proto">
+					<FILE compile="1" file="../../src/source/rec/proto/Address.cpp" id="5SfwsbH8P" name="Address.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/Address.h" id="zfdWLG8Nm" name="Address.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/proto/Field.cpp" id="F4vju7YpN" name="Field.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/Field.h" id="w7da9RJ2I" name="Field.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/LogFile.h" id="aqCkBdoZd" name="LogFile.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/proto/LogFile_test.cpp" id="eyuFPJ7Ci" name="LogFile_test.cpp" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/proto/Proto.cpp" id="e7npHHIxN" name="Proto.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/Proto.h" id="VATZMLf4Y" name="Proto.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/proto/Proto_test.cpp" id="kwxhLrF2h" name="Proto_test.cpp" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/proto/TypedTyper.cpp" id="48VCVO7EZ" name="TypedTyper.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/TypedTyper.h" id="ZPPDmWuYX" name="TypedTyper.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/proto/Typer.cpp" id="bAdu3KrDO" name="Typer.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/Typer.h" id="xibzkUcwE" name="Typer.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/Types.h" id="rIAvtzmcn" name="Types.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/proto/ZeroCopy.h" id="74QhkkFug" name="ZeroCopy.h" resource="0"/>
+				</GROUP>
+				<GROUP id="N7N8Giptv" name="slow">
+					<FILE compile="0" file="../../src/source/rec/slow/Preferences.h" id="XzONE1VOr" name="Preferences.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/slow/RecentFiles.cpp" id="1eEBcWLu8" name="RecentFiles.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/slow/RecentFiles.h" id="4XwxO6aCz" name="RecentFiles.h" resource="0"/>
+				</GROUP>
+				<GROUP id="M16T1vEAR" name="thread">
+					<FILE compile="0" file="../../src/source/rec/thread/Callback.h" id="hfG3ZVmyr" name="Callback.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/CallbackLoop.h" id="H1YyWpxjJ" name="CallbackLoop.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/Cycler.h" id="ikWJ8gERf" name="Cycler.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/LockedMessage.h" id="XWw0ZZ1bH" name="LockedMessage.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/Loop.h" id="uG9kRzi2i" name="Loop.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/Runnable.h" id="x9TmhyBW1" name="Runnable.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/RunnableThread.h" id="1OOBu9sr9" name="RunnableThread.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/Waiter.h" id="lCB6WEVCB" name="Waiter.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/WaitLoop.h" id="VYWvbIM39" name="WaitLoop.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/thread/Wrapper.h" id="GGAV8bxWK" name="Wrapper.h" resource="0"/>
+				</GROUP>
+				<GROUP id="45uXf8nLU" name="util">
+					<FILE compile="0" file="../../src/source/rec/util/Callback.h" id="wxshmxEkn" name="Callback.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/util/Circular.h" id="ZLDzZ4fIp" name="Circular.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/util/Circular_test.cpp" id="IT5KKba82" name="Circular_test.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/util/Juce.h" id="iuWArCKPf" name="Juce.h" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/util/Math.h" id="y5kNhfzom" name="Math.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/util/math_test.cpp" id="h0LjBY37i" name="math_test.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/util/Substitute.h" id="dEytP1jJw" name="Substitute.h" resource="0"/>
+					<FILE compile="1" file="../../src/source/rec/util/Substitute_test.cpp" id="pT12aSBMt" name="Substitute_test.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/source/rec/util/TestData.h" id="0XuJi4G4h" name="TestData.h" resource="0"/>
+				</GROUP>
+			</GROUP>
+		</GROUP>
+		<GROUP id="LBHZIuax1" name="proto">
+			<GROUP id="7ax2vVtRV" name="rec">
+				<GROUP id="QRof2yDHj" name="audio">
+					<GROUP id="y9a7FfvJo" name="stretch">
+						<FILE compile="1" file="../../genfiles/proto/proto/rec/audio/stretch/TimeStretch.pb.cc" id="D7Zzkc61l" name="TimeStretch.pb.cc" resource="0"/>
+						<FILE compile="0" file="../../genfiles/proto/proto/rec/audio/stretch/TimeStretch.pb.h" id="VoBvTLkvB" name="TimeStretch.pb.h" resource="0"/>
+					</GROUP>
+				</GROUP>
+				<GROUP id="rauCoXIL3" name="components">
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/components/ThumbnailDescription.pb.cc" id="kk8pCrUJL" name="ThumbnailDescription.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/components/ThumbnailDescription.pb.h" id="atdYop3Cb" name="ThumbnailDescription.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="HitSct3wH" name="event">
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/event/Event.pb.cc" id="8PoQ3is2R" name="Event.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/event/Event.pb.h" id="08gAM404U" name="Event.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="4LSIDG3jK" name="persist">
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/persist/testdata.pb.cc" id="N9HowwWqs" name="testdata.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/persist/testdata.pb.h" id="hWRbNviRn" name="testdata.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="gDy4q94JX" name="proto">
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/proto/Proto.pb.cc" id="8IYF7VkGY" name="Proto.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/proto/Proto.pb.h" id="nS5Xs9IaP" name="Proto.pb.h" resource="0"/>
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/proto/TestData.pb.cc" id="CwIckU8hn" name="TestData.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/proto/TestData.pb.h" id="cGQPA0FgG" name="TestData.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="yWkG5MLwX" name="slow">
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/slow/LoopWindow.pb.cc" id="ri1lG4VpM" name="LoopWindow.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/slow/LoopWindow.pb.h" id="MsjvUnCMT" name="LoopWindow.pb.h" resource="0"/>
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/slow/Preferences.pb.cc" id="AiifR57Db" name="Preferences.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/slow/Preferences.pb.h" id="kzBogw0cO" name="Preferences.pb.h" resource="0"/>
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/slow/RecentFiles.pb.cc" id="hAU9xGZwe" name="RecentFiles.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/slow/RecentFiles.pb.h" id="t5dOtavlx" name="RecentFiles.pb.h" resource="0"/>
+				</GROUP>
+				<GROUP id="1X5ABdZ3G" name="util">
+					<FILE compile="1" file="../../genfiles/proto/proto/rec/util/Color.pb.cc" id="BM7RIXaMT" name="Color.pb.cc" resource="0"/>
+					<FILE compile="0" file="../../genfiles/proto/proto/rec/util/Color.pb.h" id="nEOjCzykY" name="Color.pb.h" resource="0"/>
+				</GROUP>
+			</GROUP>
+		</GROUP>
+	</MAINGROUP>
+
+
+	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
+
+
+</JUCERPROJECT>
+
+22:28:15 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+22:28:45 [hofmann:~/Documents/development/rec/scripts/create]$ open ../../projects/tests/test2.jucer
+22:28:54 [hofmann:~/Documents/development/rec/scripts/create]$ open ../../projects/tests/test2.jucer
+22:35:21 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+22:35:32 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+done
+22:42:41 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py
+!!! OrderedDict([('archived', OrderedDict([('block', OrderedDict([('blocks.h', '/Users/tom/Documents/development/rec/archived/block/blocks.h'), ('GetNextBlock.cpp', '/Users/tom/Documents/development/rec/archived/block/GetNextBlock.cpp'), ('GetNextBlock.h', '/Users/tom/Documents/development/rec/archived/block/GetNextBlock.h'), ('GetNextBlock_test.cpp', '/Users/tom/Documents/development/rec/archived/block/GetNextBlock_test.cpp'), ('MergeBlockSet.cpp', '/Users/tom/Documents/development/rec/archived/block/MergeBlockSet.cpp'), ('MergeBlockSet.h', '/Users/tom/Documents/development/rec/archived/block/MergeBlockSet.h'), ('MergeBlockSet_test.cpp', '/Users/tom/Documents/development/rec/archived/block/MergeBlockSet_test.cpp')])), ('buffer', OrderedDict([('client-manager-test.cpp', '/Users/tom/Documents/development/rec/archived/buffer/client-manager-test.cpp'), ('client-manager.cpp', '/Users/tom/Documents/development/rec/archived/buffer/client-manager.cpp'), ('client-manager.h', '/Users/tom/Documents/development/rec/archived/buffer/client-manager.h'), ('copy.h', '/Users/tom/Documents/development/rec/archived/buffer/copy.h'), ('multi-client-buffer-test.cpp', '/Users/tom/Documents/development/rec/archived/buffer/multi-client-buffer-test.cpp'), ('multi-client-buffer.cpp', '/Users/tom/Documents/development/rec/archived/buffer/multi-client-buffer.cpp'), ('multi-client-buffer.h', '/Users/tom/Documents/development/rec/archived/buffer/multi-client-buffer.h'), ('producer-queue-test.cpp', '/Users/tom/Documents/development/rec/archived/buffer/producer-queue-test.cpp'), ('producer-queue.cpp', '/Users/tom/Documents/development/rec/archived/buffer/producer-queue.cpp'), ('producer-queue.h', '/Users/tom/Documents/development/rec/archived/buffer/producer-queue.h'), ('services.cpp', '/Users/tom/Documents/development/rec/archived/buffer/services.cpp'), ('services.h', '/Users/tom/Documents/development/rec/archived/buffer/services.h')])), ('Buffer.h', '/Users/tom/Documents/development/rec/archived/Buffer.h'), ('Buffered.cpp', '/Users/tom/Documents/development/rec/archived/Buffered.cpp'), ('Buffered.h', '/Users/tom/Documents/development/rec/archived/Buffered.h'), ('Buffered_test.cpp', '/Users/tom/Documents/development/rec/archived/Buffered_test.cpp'), ('BufferedWrapper.h', '/Users/tom/Documents/development/rec/archived/BufferedWrapper.h'), ('CircularBuffer.h', '/Users/tom/Documents/development/rec/archived/CircularBuffer.h'), ('CircularEnum.h', '/Users/tom/Documents/development/rec/archived/CircularEnum.h'), ('CriticalSection.h', '/Users/tom/Documents/development/rec/archived/CriticalSection.h'), ('Description.cpp', '/Users/tom/Documents/development/rec/archived/Description.cpp'), ('Description.h', '/Users/tom/Documents/development/rec/archived/Description.h'), ('DoubleBuffer.h', '/Users/tom/Documents/development/rec/archived/DoubleBuffer.h'), ('FillQueue.h', '/Users/tom/Documents/development/rec/archived/FillQueue.h'), ('FillQueueTest.cpp', '/Users/tom/Documents/development/rec/archived/FillQueueTest.cpp'), ('Identity.h', '/Users/tom/Documents/development/rec/archived/Identity.h'), ('json', OrderedDict([('Node.cpp', '/Users/tom/Documents/development/rec/archived/json/Node.cpp'), ('Node.h', '/Users/tom/Documents/development/rec/archived/json/Node.h'), ('Parser.cpp', '/Users/tom/Documents/development/rec/archived/json/Parser.cpp'), ('Parser.h', '/Users/tom/Documents/development/rec/archived/json/Parser.h'), ('Parser_test.cpp', '/Users/tom/Documents/development/rec/archived/json/Parser_test.cpp')])), ('Loop.h', '/Users/tom/Documents/development/rec/archived/Loop.h'), ('Loop_test.cpp', '/Users/tom/Documents/development/rec/archived/Loop_test.cpp'), ('Math.h', '/Users/tom/Documents/development/rec/archived/Math.h'), ('Math_test.cpp', '/Users/tom/Documents/development/rec/archived/Math_test.cpp'), ('Mock.h', '/Users/tom/Documents/development/rec/archived/Mock.h'), ('Notifier.h', '/Users/tom/Documents/development/rec/archived/Notifier.h'), ('OrphanableThread.h', '/Users/tom/Documents/development/rec/archived/OrphanableThread.h'), ('Range.h', '/Users/tom/Documents/development/rec/archived/Range.h'), ('Simple.cpp', '/Users/tom/Documents/development/rec/archived/Simple.cpp'), ('Simple.h', '/Users/tom/Documents/development/rec/archived/Simple.h'), ('source', OrderedDict([('Buffered.h', '/Users/tom/Documents/development/rec/archived/source/Buffered.h'), ('Computed.h', '/Users/tom/Documents/development/rec/archived/source/Computed.h'), ('Wrapper.h', '/Users/tom/Documents/development/rec/archived/source/Wrapper.h'), ('Wrapper2.h', '/Users/tom/Documents/development/rec/archived/source/Wrapper2.h')])), ('Stretchable.h', '/Users/tom/Documents/development/rec/archived/Stretchable.h'), ('Stretchable_test.cpp', '/Users/tom/Documents/development/rec/archived/Stretchable_test.cpp'), ('Stretcher.cpp', '/Users/tom/Documents/development/rec/archived/Stretcher.cpp'), ('Stretcher.h', '/Users/tom/Documents/development/rec/archived/Stretcher.h'), ('StretchInBackground.h', '/Users/tom/Documents/development/rec/archived/StretchInBackground.h'), ('StretchInBackground_test.cpp', '/Users/tom/Documents/development/rec/archived/StretchInBackground_test.cpp'), ('StretchingSource.h', '/Users/tom/Documents/development/rec/archived/StretchingSource.h'), ('StretchMain.cpp', '/Users/tom/Documents/development/rec/archived/StretchMain.cpp'), ('StretchThread.cpp', '/Users/tom/Documents/development/rec/archived/StretchThread.cpp'), ('StretchThread.h', '/Users/tom/Documents/development/rec/archived/StretchThread.h'), ('WaitLoopThread.h', '/Users/tom/Documents/development/rec/archived/WaitLoopThread.h'), ('Wrapper.h', '/Users/tom/Documents/development/rec/archived/Wrapper.h')])), ('genfiles', OrderedDict([('proto', OrderedDict([('rec', OrderedDict([('audio', OrderedDict([('stretch', OrderedDict([('TimeStretch.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.cc'), ('TimeStretch.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.h')]))])), ('components', OrderedDict([('ThumbnailDescription.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.cc'), ('ThumbnailDescription.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.h')])), ('event', OrderedDict([('Event.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.cc'), ('Event.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.h')])), ('persist', OrderedDict([('testdata.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.cc'), ('testdata.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.h')])), ('proto', OrderedDict([('Proto.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.cc'), ('Proto.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.h'), ('TestData.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.cc'), ('TestData.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.h')])), ('slow', OrderedDict([('LoopWindow.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.cc'), ('LoopWindow.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.h'), ('Preferences.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.cc'), ('Preferences.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.h'), ('RecentFiles.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.cc'), ('RecentFiles.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.h')])), ('util', OrderedDict([('Color.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.cc'), ('Color.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.h')]))]))]))])), ('projects', OrderedDict([('JuceLibraryCode', OrderedDict([('AppConfig.h', '/Users/tom/Documents/development/rec/projects/JuceLibraryCode/AppConfig.h'), ('JuceHeader.h', '/Users/tom/Documents/development/rec/projects/JuceLibraryCode/JuceHeader.h'), ('JuceLibraryCode1.cpp', '/Users/tom/Documents/development/rec/projects/JuceLibraryCode/JuceLibraryCode1.cpp'), ('JuceLibraryCode2.cpp', '/Users/tom/Documents/development/rec/projects/JuceLibraryCode/JuceLibraryCode2.cpp'), ('JuceLibraryCode3.cpp', '/Users/tom/Documents/development/rec/projects/JuceLibraryCode/JuceLibraryCode3.cpp'), ('JuceLibraryCode4.cpp', '/Users/tom/Documents/development/rec/projects/JuceLibraryCode/JuceLibraryCode4.cpp')])), ('library', OrderedDict([('JuceLibraryCode', OrderedDict([('AppConfig.h', '/Users/tom/Documents/development/rec/projects/library/JuceLibraryCode/AppConfig.h'), ('JuceHeader.h', '/Users/tom/Documents/development/rec/projects/library/JuceLibraryCode/JuceHeader.h'), ('JuceLibraryCode1.cpp', '/Users/tom/Documents/development/rec/projects/library/JuceLibraryCode/JuceLibraryCode1.cpp'), ('JuceLibraryCode2.cpp', '/Users/tom/Documents/development/rec/projects/library/JuceLibraryCode/JuceLibraryCode2.cpp'), ('JuceLibraryCode3.cpp', '/Users/tom/Documents/development/rec/projects/library/JuceLibraryCode/JuceLibraryCode3.cpp'), ('JuceLibraryCode4.cpp', '/Users/tom/Documents/development/rec/projects/library/JuceLibraryCode/JuceLibraryCode4.cpp')]))])), ('slow', OrderedDict([('Builds', OrderedDict([('MacOSX', OrderedDict([('AudioThumbnailComponent.h', '/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/AudioThumbnailComponent.h')]))])), ('JuceLibraryCode', OrderedDict([('AppConfig.h', '/Users/tom/Documents/development/rec/projects/slow/JuceLibraryCode/AppConfig.h'), ('BinaryData.cpp', '/Users/tom/Documents/development/rec/projects/slow/JuceLibraryCode/BinaryData.cpp'), ('BinaryData.h', '/Users/tom/Documents/development/rec/projects/slow/JuceLibraryCode/BinaryData.h'), ('JuceHeader.h', '/Users/tom/Documents/development/rec/projects/slow/JuceLibraryCode/JuceHeader.h'), ('JuceLibraryCode.cpp', '/Users/tom/Documents/development/rec/projects/slow/JuceLibraryCode/JuceLibraryCode.cpp')]))])), ('tests', OrderedDict([('JuceLibraryCode', OrderedDict([('AppConfig.h', '/Users/tom/Documents/development/rec/projects/tests/JuceLibraryCode/AppConfig.h'), ('JuceHeader.h', '/Users/tom/Documents/development/rec/projects/tests/JuceLibraryCode/JuceHeader.h'), ('JuceHeader_temp37259997.h', '/Users/tom/Documents/development/rec/projects/tests/JuceLibraryCode/JuceHeader_temp37259997.h'), ('JuceLibraryCode.cpp', '/Users/tom/Documents/development/rec/projects/tests/JuceLibraryCode/JuceLibraryCode.cpp')]))]))])), ('src', OrderedDict([('rec', OrderedDict([('ammf_scaler', OrderedDict([('AudioResampler.cpp', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.cpp'), ('AudioResampler.h', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioResampler.h'), ('AudioTimeScaler.cpp', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.cpp'), ('AudioTimeScaler.h', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/AudioTimeScaler.h'), ('hfft.h', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/hfft.h'), ('mfAlloc.h', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfAlloc.h'), ('mfGlobals.h', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfGlobals.h'), ('mfMacros.h', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMacros.h'), ('mfMath.h', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/mfMath.h'), ('new-testTS.cpp', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/new-testTS.cpp'), ('testTS.cpp', '/Users/tom/Documents/development/rec/src/rec/ammf_scaler/testTS.cpp')])), ('app', OrderedDict([('ComponentContainer.h', '/Users/tom/Documents/development/rec/src/rec/app/ComponentContainer.h'), ('GenericApplication.h', '/Users/tom/Documents/development/rec/src/rec/app/GenericApplication.h'), ('RecApplication.cpp', '/Users/tom/Documents/development/rec/src/rec/app/RecApplication.cpp'), ('RecContainer.h', '/Users/tom/Documents/development/rec/src/rec/app/RecContainer.h'), ('RecWindow.cpp', '/Users/tom/Documents/development/rec/src/rec/app/RecWindow.cpp'), ('RecWindow.h', '/Users/tom/Documents/development/rec/src/rec/app/RecWindow.h')])), ('audio', OrderedDict([('cd', OrderedDict([('juce_AudioCDReader_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/cd/juce_AudioCDReader_test.cpp')])), ('CopySamples.h', '/Users/tom/Documents/development/rec/src/rec/audio/CopySamples.h'), ('format', OrderedDict([('mpg123', OrderedDict([('Copier.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.cpp'), ('Copier.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier.h'), ('Copier_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Copier_test.cpp'), ('CreateReader.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.cpp'), ('CreateReader.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader.h'), ('CreateReader_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/CreateReader_test.cpp'), ('Format.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Format.h'), ('Manager.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Manager.h'), ('Mpg123.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.cpp'), ('Mpg123.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Mpg123.h'), ('NewHandle.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.cpp'), ('NewHandle.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/NewHandle.h'), ('Reader.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.cpp'), ('Reader.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader.h'), ('Reader_main.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_main.cpp'), ('Reader_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Reader_test.cpp'), ('Tags.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.cpp'), ('Tags.h', '/Users/tom/Documents/development/rec/src/rec/audio/format/mpg123/Tags.h')]))])), ('source', OrderedDict([('Buffery.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.cpp'), ('Buffery.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery.h'), ('Buffery_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/source/Buffery_test.cpp'), ('DoubleStretchy.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.cpp'), ('DoubleStretchy.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy.h'), ('DoubleStretchy_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchy_test.cpp'), ('DoubleStretchyThread.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/DoubleStretchyThread.h'), ('MultiWrappy.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/MultiWrappy.h'), ('Source.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/Source.h'), ('Stretchy.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.cpp'), ('Stretchy.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy.h'), ('Stretchy_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/source/Stretchy_test.cpp'), ('TestHarness.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/TestHarness.h'), ('Testy.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/Testy.h'), ('Testy_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/source/Testy_test.cpp'), ('Wrappy.h', '/Users/tom/Documents/development/rec/src/rec/audio/source/Wrappy.h')])), ('stretch', OrderedDict([('AudioTimeScaler_test.cpp', '/Users/tom/Documents/development/rec/src/rec/audio/stretch/AudioTimeScaler_test.cpp'), ('TimeScaler.h', '/Users/tom/Documents/development/rec/src/rec/audio/stretch/TimeScaler.h')]))])), ('base', OrderedDict([('ArraySize.h', '/Users/tom/Documents/development/rec/src/rec/base/ArraySize.h'), ('base.h', '/Users/tom/Documents/development/rec/src/rec/base/base.h'), ('basictypes.h', '/Users/tom/Documents/development/rec/src/rec/base/basictypes.h'), ('build_config.h', '/Users/tom/Documents/development/rec/src/rec/base/build_config.h'), ('Cast.h', '/Users/tom/Documents/development/rec/src/rec/base/Cast.h'), ('CompileAssert.h', '/Users/tom/Documents/development/rec/src/rec/base/CompileAssert.h'), ('port.h', '/Users/tom/Documents/development/rec/src/rec/base/port.h'), ('scoped_ptr.h', '/Users/tom/Documents/development/rec/src/rec/base/scoped_ptr.h'), ('string_piece.h', '/Users/tom/Documents/development/rec/src/rec/base/string_piece.h'), ('StringRange.h', '/Users/tom/Documents/development/rec/src/rec/base/StringRange.h'), ('types.h', '/Users/tom/Documents/development/rec/src/rec/base/types.h')])), ('cd', OrderedDict([('GetAlbumsFromCDDB.cpp', '/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.cpp'), ('GetAlbumsFromCDDB.h', '/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB.h'), ('GetAlbumsFromCDDB_test.cpp', '/Users/tom/Documents/development/rec/src/rec/cd/GetAlbumsFromCDDB_test.cpp')])), ('components', OrderedDict([('AudioSetupPage.cpp', '/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.cpp'), ('AudioSetupPage.h', '/Users/tom/Documents/development/rec/src/rec/components/AudioSetupPage.h'), ('AudioThumbnailComponent.cpp', '/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.cpp'), ('AudioThumbnailComponent.h', '/Users/tom/Documents/development/rec/src/rec/components/AudioThumbnailComponent.h'), ('LiveAudioInputDisplayComp.cpp', '/Users/tom/Documents/development/rec/src/rec/components/LiveAudioInputDisplayComp.cpp'), ('MainPageComponent.cpp', '/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.cpp'), ('MainPageComponent.h', '/Users/tom/Documents/development/rec/src/rec/components/MainPageComponent.h'), ('MainPageJ.cpp', '/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.cpp'), ('MainPageJ.h', '/Users/tom/Documents/development/rec/src/rec/components/MainPageJ.h'), ('MainPageK.cpp', '/Users/tom/Documents/development/rec/src/rec/components/MainPageK.cpp'), ('MainPageK.h', '/Users/tom/Documents/development/rec/src/rec/components/MainPageK.h')])), ('event', OrderedDict([('EventQueue.cpp', '/Users/tom/Documents/development/rec/src/rec/event/EventQueue.cpp'), ('EventQueue.h', '/Users/tom/Documents/development/rec/src/rec/event/EventQueue.h')])), ('persist', OrderedDict([('App.h', '/Users/tom/Documents/development/rec/src/rec/persist/App.h'), ('AppData.h', '/Users/tom/Documents/development/rec/src/rec/persist/AppData.h'), ('AutosaveApp.h', '/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp.h'), ('AutosaveApp_test.cpp', '/Users/tom/Documents/development/rec/src/rec/persist/AutosaveApp_test.cpp'), ('Copy.cpp', '/Users/tom/Documents/development/rec/src/rec/persist/Copy.cpp'), ('Copy.h', '/Users/tom/Documents/development/rec/src/rec/persist/Copy.h'), ('Data.h', '/Users/tom/Documents/development/rec/src/rec/persist/Data.h'), ('DataRegistry.cpp', '/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.cpp'), ('DataRegistry.h', '/Users/tom/Documents/development/rec/src/rec/persist/DataRegistry.h'), ('Writeable.h', '/Users/tom/Documents/development/rec/src/rec/persist/Writeable.h')])), ('proto', OrderedDict([('Address.cpp', '/Users/tom/Documents/development/rec/src/rec/proto/Address.cpp'), ('Address.h', '/Users/tom/Documents/development/rec/src/rec/proto/Address.h'), ('Field.cpp', '/Users/tom/Documents/development/rec/src/rec/proto/Field.cpp'), ('Field.h', '/Users/tom/Documents/development/rec/src/rec/proto/Field.h'), ('LogFile.h', '/Users/tom/Documents/development/rec/src/rec/proto/LogFile.h'), ('LogFile_test.cpp', '/Users/tom/Documents/development/rec/src/rec/proto/LogFile_test.cpp'), ('Proto.cpp', '/Users/tom/Documents/development/rec/src/rec/proto/Proto.cpp'), ('Proto.h', '/Users/tom/Documents/development/rec/src/rec/proto/Proto.h'), ('Proto_test.cpp', '/Users/tom/Documents/development/rec/src/rec/proto/Proto_test.cpp'), ('TypedTyper.cpp', '/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.cpp'), ('TypedTyper.h', '/Users/tom/Documents/development/rec/src/rec/proto/TypedTyper.h'), ('Typer.cpp', '/Users/tom/Documents/development/rec/src/rec/proto/Typer.cpp'), ('Typer.h', '/Users/tom/Documents/development/rec/src/rec/proto/Typer.h'), ('Types.h', '/Users/tom/Documents/development/rec/src/rec/proto/Types.h'), ('ZeroCopy.h', '/Users/tom/Documents/development/rec/src/rec/proto/ZeroCopy.h')])), ('slow', OrderedDict([('Preferences.h', '/Users/tom/Documents/development/rec/src/rec/slow/Preferences.h'), ('RecentFiles.cpp', '/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.cpp'), ('RecentFiles.h', '/Users/tom/Documents/development/rec/src/rec/slow/RecentFiles.h')])), ('thread', OrderedDict([('Callback.h', '/Users/tom/Documents/development/rec/src/rec/thread/Callback.h'), ('CallbackLoop.h', '/Users/tom/Documents/development/rec/src/rec/thread/CallbackLoop.h'), ('Cycler.h', '/Users/tom/Documents/development/rec/src/rec/thread/Cycler.h'), ('LockedMessage.h', '/Users/tom/Documents/development/rec/src/rec/thread/LockedMessage.h'), ('Loop.h', '/Users/tom/Documents/development/rec/src/rec/thread/Loop.h'), ('Runnable.h', '/Users/tom/Documents/development/rec/src/rec/thread/Runnable.h'), ('RunnableThread.h', '/Users/tom/Documents/development/rec/src/rec/thread/RunnableThread.h'), ('Waiter.h', '/Users/tom/Documents/development/rec/src/rec/thread/Waiter.h'), ('WaitLoop.h', '/Users/tom/Documents/development/rec/src/rec/thread/WaitLoop.h'), ('Wrapper.h', '/Users/tom/Documents/development/rec/src/rec/thread/Wrapper.h')])), ('util', OrderedDict([('Callback.h', '/Users/tom/Documents/development/rec/src/rec/util/Callback.h'), ('Circular.h', '/Users/tom/Documents/development/rec/src/rec/util/Circular.h'), ('Circular_test.cpp', '/Users/tom/Documents/development/rec/src/rec/util/Circular_test.cpp'), ('Juce.h', '/Users/tom/Documents/development/rec/src/rec/util/Juce.h'), ('Math.h', '/Users/tom/Documents/development/rec/src/rec/util/Math.h'), ('math_test.cpp', '/Users/tom/Documents/development/rec/src/rec/util/math_test.cpp'), ('Substitute.h', '/Users/tom/Documents/development/rec/src/rec/util/Substitute.h'), ('Substitute_test.cpp', '/Users/tom/Documents/development/rec/src/rec/util/Substitute_test.cpp'), ('TestData.h', '/Users/tom/Documents/development/rec/src/rec/util/TestData.h')]))]))]))])
+!!! OrderedDict([('proto', OrderedDict([('rec', OrderedDict([('audio', OrderedDict([('stretch', OrderedDict([('TimeStretch.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.cc'), ('TimeStretch.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/audio/stretch/TimeStretch.pb.h')]))])), ('components', OrderedDict([('ThumbnailDescription.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.cc'), ('ThumbnailDescription.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/components/ThumbnailDescription.pb.h')])), ('event', OrderedDict([('Event.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.cc'), ('Event.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/event/Event.pb.h')])), ('persist', OrderedDict([('testdata.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.cc'), ('testdata.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/persist/testdata.pb.h')])), ('proto', OrderedDict([('Proto.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.cc'), ('Proto.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/Proto.pb.h'), ('TestData.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.cc'), ('TestData.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/proto/TestData.pb.h')])), ('slow', OrderedDict([('LoopWindow.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.cc'), ('LoopWindow.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/LoopWindow.pb.h'), ('Preferences.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.cc'), ('Preferences.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/Preferences.pb.h'), ('RecentFiles.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.cc'), ('RecentFiles.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/slow/RecentFiles.pb.h')])), ('util', OrderedDict([('Color.pb.cc', '/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.cc'), ('Color.pb.h', '/Users/tom/Documents/development/rec/genfiles/proto/rec/util/Color.pb.h')]))]))]))])
+done
+22:43:21 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+22:46:58 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+Traceback (most recent call last):
+  File "./jucer.py", line 141, in <module>
+    print j.toxml()
+  File "./jucer.py", line 42, in toxml
+    return self.dom.toprettyxml()
+  File "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/xml/dom/minidom.py", line 57, in toprettyxml
+    self.writexml(writer, "", indent, newl, encoding)
+  File "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/xml/dom/minidom.py", line 1749, in writexml
+    node.writexml(writer, indent, addindent, newl)
+  File "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/xml/dom/minidom.py", line 817, in writexml
+    node.writexml(writer,indent+addindent,addindent,newl)
+  File "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/xml/dom/minidom.py", line 817, in writexml
+    node.writexml(writer,indent+addindent,addindent,newl)
+  File "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/xml/dom/minidom.py", line 817, in writexml
+    node.writexml(writer,indent+addindent,addindent,newl)
+  File "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/xml/dom/minidom.py", line 812, in writexml
+    _write_data(writer, attrs[a_name].value)
+  File "/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/xml/dom/minidom.py", line 301, in _write_data
+    data = data.replace("&", "&amp;").replace("<", "&lt;")
+  File "/Users/tom/Documents/development/rec/scripts/create/odict.py", line 460, in __getattr__
+    raise AttributeError("OrderedDict has no '%s' attribute" % name)
+AttributeError: OrderedDict has no 'replace' attribute
+22:49:17 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+22:50:13 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+22:52:54 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+22:54:44 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+22:57:05 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+  File "./jucer.py", line 113
+    libraries = (self.library_component(b, config) for b in self.libraries()] +
+                                                                            ^
+SyntaxError: invalid syntax
+23:02:26 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+Traceback (most recent call last):
+  File "./jucer.py", line 148, in <module>
+    print j.toxml()
+  File "./jucer.py", line 24, in toxml
+    xcode.setAttribute('extraLinkerFlags', self.get_libraries())
+  File "./jucer.py", line 113, in get_libraries
+    libraries = ([self.library_component(b, config) for b in self.libraries()] +
+TypeError: library_component() takes exactly 2 arguments (3 given)
+23:02:43 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/test2.jucer
+23:02:55 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/slow/slow2.jucer
+23:06:35 [hofmann:~/Documents/development/rec/scripts/create]$ ./jucer.py > ../../projects/tests/tests2.jucer

@@ -8,7 +8,7 @@
 
 #include <vector>
 
-#include "base/scoped_ptr.h"
+#include "rec/base/scoped_ptr.h"
 #include "mfglobals.h"
 
 using std::vector;
