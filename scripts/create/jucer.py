@@ -38,6 +38,8 @@ LIBRARIES = (
   Library('protobuf'),
 )
 
+ROOT = os.getenv('ROOT')
+
 
 class Jucer:
   JUCE_ROOT = '../../../../..'
@@ -80,11 +82,9 @@ class Jucer:
     self.documentElement.replaceChild(maingroup, old)
 
     # Discard MAINGROUP and replace it with our directory trees.
-    root = '%s/rec' % os.getenv('ROOT')
-
     for prefix, name in (('', 'src'),
                          ('genfiles', 'proto')):
-      self.create_cpp_file_group(maingroup, prefix, name, root)
+      self.create_cpp_file_group(maingroup, prefix, name, '%s/rec' % ROOT)
 
     return self.dom.toprettyxml()
 
@@ -161,7 +161,13 @@ class Jucer:
       if self.accept_cpp(file):
         return file
 
-j = Jucer('/Users/tom/Documents/development/rec/projects/slow/slow.jucer',
-          False)
 
-print j.toxml()
+def overwrite(*names):
+  for name in names:
+    doc = '%s/rec/projects/%s/%s.jucer' % (ROOT, name, name)
+    results = Jucer(doc, 'test' in name).toxml()
+    open(doc, 'w').write(results)
+    print 'Written', doc
+
+
+overwrite('slow', 'tests')
