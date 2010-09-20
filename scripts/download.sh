@@ -1,6 +1,7 @@
 # Download the packages given as arguments
 CONFIG=debug
 
+cd "$ROOT"
 source "$ROOT/rec/scripts/base.sh"
 
 if [ ! "$@" ]

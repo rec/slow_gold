@@ -1,3 +1,5 @@
+cd $ROOT
+
 source "$ROOT/rec/scripts/base.sh"
 
 CONFIG=$1
