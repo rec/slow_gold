@@ -92,12 +92,12 @@ class RecentFile : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional uint64 timestamp = 1;
+  // optional int64 timestamp = 1;
   inline bool has_timestamp() const;
   inline void clear_timestamp();
   static const int kTimestampFieldNumber = 1;
-  inline ::google::protobuf::uint64 timestamp() const;
-  inline void set_timestamp(::google::protobuf::uint64 value);
+  inline ::google::protobuf::int64 timestamp() const;
+  inline void set_timestamp(::google::protobuf::int64 value);
   
   // optional string name = 2;
   inline bool has_name() const;
@@ -114,7 +114,7 @@ class RecentFile : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::uint64 timestamp_;
+  ::google::protobuf::int64 timestamp_;
   ::std::string* name_;
   static const ::std::string _default_name_;
   friend void  protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();
@@ -254,18 +254,18 @@ class RecentFiles : public ::google::protobuf::Message {
 
 // RecentFile
 
-// optional uint64 timestamp = 1;
+// optional int64 timestamp = 1;
 inline bool RecentFile::has_timestamp() const {
   return _has_bit(0);
 }
 inline void RecentFile::clear_timestamp() {
-  timestamp_ = GOOGLE_ULONGLONG(0);
+  timestamp_ = GOOGLE_LONGLONG(0);
   _clear_bit(0);
 }
-inline ::google::protobuf::uint64 RecentFile::timestamp() const {
+inline ::google::protobuf::int64 RecentFile::timestamp() const {
   return timestamp_;
 }
-inline void RecentFile::set_timestamp(::google::protobuf::uint64 value) {
+inline void RecentFile::set_timestamp(::google::protobuf::int64 value) {
   _set_bit(0);
   timestamp_ = value;
 }

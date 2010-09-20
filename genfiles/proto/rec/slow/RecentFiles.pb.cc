@@ -99,7 +99,7 @@ void protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/RecentFiles.proto\022\010rec.slow\"-"
-    "\n\nRecentFile\022\021\n\ttimestamp\030\001 \001(\004\022\014\n\004name\030"
+    "\n\nRecentFile\022\021\n\ttimestamp\030\001 \001(\003\022\014\n\004name\030"
     "\002 \001(\t\"j\n\013RecentFiles\022\"\n\004file\030\003 \003(\0132\024.rec"
     ".slow.RecentFile\022\025\n\tmax_files\030\004 \001(\r:\00216\022"
     " \n\022reload_most_recent\030\005 \001(\010:\004true", 193);
@@ -144,7 +144,7 @@ RecentFile::RecentFile(const RecentFile& from)
 
 void RecentFile::SharedCtor() {
   _cached_size_ = 0;
-  timestamp_ = GOOGLE_ULONGLONG(0);
+  timestamp_ = GOOGLE_LONGLONG(0);
   name_ = const_cast< ::std::string*>(&_default_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -183,7 +183,7 @@ RecentFile* RecentFile::New() const {
 
 void RecentFile::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    timestamp_ = GOOGLE_ULONGLONG(0);
+    timestamp_ = GOOGLE_LONGLONG(0);
     if (_has_bit(1)) {
       if (name_ != &_default_name_) {
         name_->clear();
@@ -200,12 +200,12 @@ bool RecentFile::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint64 timestamp = 1;
+      // optional int64 timestamp = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
                  input, &timestamp_)));
           _set_bit(0);
         } else {
@@ -250,9 +250,9 @@ bool RecentFile::MergePartialFromCodedStream(
 
 void RecentFile::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint64 timestamp = 1;
+  // optional int64 timestamp = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->timestamp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->timestamp(), output);
   }
   
   // optional string name = 2;
@@ -272,9 +272,9 @@ void RecentFile::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* RecentFile::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint64 timestamp = 1;
+  // optional int64 timestamp = 1;
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->timestamp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->timestamp(), target);
   }
   
   // optional string name = 2;
@@ -298,10 +298,10 @@ int RecentFile::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint64 timestamp = 1;
+    // optional int64 timestamp = 1;
     if (has_timestamp()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
           this->timestamp());
     }
     
