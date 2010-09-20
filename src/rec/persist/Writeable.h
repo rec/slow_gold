@@ -12,7 +12,7 @@ class Writeable {
   Writeable() {}
   virtual ~Writeable() {}
 
-  void write() {
+  virtual void write() {
     ScopedLock l(lock_);
     if (changed_) {
       doWrite();

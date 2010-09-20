@@ -109,10 +109,6 @@ bool DoubleStretchy::fillNext() {
       float scale = description_.time_scale() /
         source_->description_.time_scale();
       int offset = (position_ + source_->offset_) * scale - position_;
-
-      LOG(INFO) << "position=" << position_ << " offset=" << offset
-                << " source_->offset_=" << source_->offset_ << " scale=" << scale;
-
       nextSource_->reset(description_, offset);
     }
 

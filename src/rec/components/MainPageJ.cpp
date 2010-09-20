@@ -196,6 +196,11 @@ void MainPageJ::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
+void MainPageJ::sliderDragEnded (Slider* sliderThatWasMoved)
+{
+  peer_.sliderDragEnded(sliderThatWasMoved);
+}
+
 void MainPageJ::selectionChanged()
 {
   peer_.selectionChanged();

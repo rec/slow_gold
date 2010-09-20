@@ -60,6 +60,8 @@ public:
   rec::slow::MainPageK peer_;
   friend class rec::slow::MainPageK;
 
+  void sliderDragEnded(Slider* slider);
+
  public:
   void loadRecentFile(int menuItemId) { peer_.loadRecentFile(menuItemId); }
 

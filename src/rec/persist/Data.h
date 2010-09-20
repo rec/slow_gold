@@ -51,11 +51,16 @@ class Data : public Writeable {
         undos_.push_back(undo);
       else
         LOG(ERROR) << "Couldn't apply operation!";
-      delete **i;
+      delete *i;
     }
     operations_.clear();
     changed_ = true;
     // thread.notify
+  }
+
+  virtual void write() {
+    doApply();
+    Writeable::write();
   }
 
   virtual void doWrite() {
