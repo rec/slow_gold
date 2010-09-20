@@ -1,7 +1,7 @@
 package rec.slow;
 
 message RecentFile {
-  optional uint64 timestamp = 1;
+  optional int64 timestamp = 1;
   optional string name = 2;
 };
 

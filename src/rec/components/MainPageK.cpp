@@ -47,7 +47,7 @@ using rec::thread::WaitLoop;
 using rec::thread::makeCallback;
 
 static Thread* makeCursorThread(MainPageK* main) {
-  ThreadDescription thumbnail(slow::getThumbnail().cursor_thread());
+  ThreadDescription thumbnail(slow::getPreferences().thumbnail().cursor_thread());
   Runnable* callback = makeCallback(main, &MainPageK::updateCursor);
   Runnable* locked = new LockedMessage(callback);
   Thread* t = new RunnableThread("cursor", new WaitLoop(thumbnail.period(), locked));
@@ -149,19 +149,20 @@ void MainPageK::loadFileIntoTransport(const File& file) {
   }
 }
 
-
 void MainPageK::sliderDragEnded(Slider* slider) {
   bool isTime = (slider == peer_->timeScaleSlider);
   if (!isTime && slider != peer_->pitchScaleSlider)
     return;
 
-  rec::proto::Operation *op = rec::proto::set(rec::proto::Address(slow::proto::Preferences::kLoopWindowFieldNumber,
-                                          0,
-                                          slow::proto::LoopWindow::kTimestretchFieldNumber,
-                                          isTime ?  :  
-                                          audio::timescaler::TimeStretch::kPitchScaleFieldNumber));
+  // TODO: this needs to be much more compact.
+  rec::proto::Operation *op = rec::proto::set(
+      rec::proto::Address(slow::proto::Preferences::kLoopWindowFieldNumber,
+                          0,
+                          slow::proto::LoopWindow::kTimestretchFieldNumber,
+                          isTime ?  :
+                          audio::timescaler::TimeStretch::kPitchScaleFieldNumber));
   rec::proto::addValue((double)slider->getValue(), op);
-  getMutablePreferences()->apply(op);
+  applyOperation(op);
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {

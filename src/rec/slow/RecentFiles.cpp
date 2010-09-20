@@ -24,30 +24,41 @@ RecentFiles getSortedRecentFiles() {
 
 void addRecentFile(const std::string& filename) {
   int64 timestamp = Time::currentTimeMillis();
-  LockedPreferences prefs;
-  RecentFiles* recent = prefs->mutable_recent_files();
+  proto::Preferences prefs = getPreferences();
+  RecentFiles* recent = prefs.mutable_recent_files();
 
   int64 least = timestamp;
-  RecentFile* slot = NULL;
-  for (int i = 0; i < recent->file_size(); ++i) {
+  int slot = 0;
+  bool found = false;
+
+  for (int i = 0; !found && i < recent->file_size(); ++i) {
     RecentFile* file = recent->mutable_file(i);
     if (file->name() == filename) {
-      file->set_timestamp(Time::currentTimeMillis());
-      return;
+      found = true;
     } else if (file->timestamp() < least) {
       least = file->timestamp();
-      slot = file;
+      slot = i;
     }
   }
 
-  if (recent->file_size() < recent->max_files())
-    slot = recent->add_file();
+  rec::proto::Operation *op;
+  if (!found && recent->file_size() < recent->max_files()) {
+    op = rec::proto::append(
+      rec::proto::Address(slow::proto::Preferences::kRecentFilesFieldNumber,
+                          RecentFiles::kFileFieldNumber));
+  } else {
+    op = rec::proto::set(
+      rec::proto::Address(slow::proto::Preferences::kRecentFilesFieldNumber,
+                          RecentFiles::kFileFieldNumber,
+                          slot));
+  }
 
   RecentFile r;
   r.set_timestamp(timestamp);
   r.set_name(filename);
 
-  r.Swap(slot);
+  rec::proto::addValue(rec::proto::pmessage(r), op);
+  applyOperation(op);
 }
 
 }  // namespace slow
