@@ -1,0 +1,9 @@
+import "rec/util/Color.proto";
+
+package rec.gui;
+
+// Lists the colors used by an object, from back to from, so color(0) will be
+// the background and the last color() the foreground.
+message Colors {
+  repeated Color color = 1;
+};
