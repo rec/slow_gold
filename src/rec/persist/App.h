@@ -36,7 +36,7 @@ class App {
     if (i != data_.end())
       return static_cast<TypedData<Proto>*>(*i);
 
-    Client& client = data_[name];
+    Data* client = data_[name];
     File file(appDir.getChildFile(filename.c_str()));
 
                 //          return File(file.getFullPathName() + "." + copy(typeName_));
