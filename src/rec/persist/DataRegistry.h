@@ -6,51 +6,76 @@
 
 #include "rec/base/base.h"
 #include "google/protobuf/message.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {
-
-inline std::string typeName(const google::protobuf::Message& message) {
-  std::string s(message.GetTypeName());
-  s.erase(0, s.rfind(".") + 1);
-  return s;
-}
 
 class DataRegistry {
  public:
   typedef google::protobuf::Message Message;
   typedef std::string string;
-  typedef void (*Filler)(Message*);
+  typedef std::map map;
+
+  typedef void (*Filler)(const Message* example, Message* instance);
+
+  struct Maker {
+    const Message* example_;
+    Filler filler_;
+
+    Maker(const Message* example, Filler filler = &DataRegistry::defaultFille)
+        : example_(example),
+          filler_(filler) {
+    }
+
+    Maker() {}
+  };
 
   DataRegistry() {}
 
   ~DataRegistry() {
     for (DataMap::iterator i = dataMap_.begin(); i != dataMap_.end(); ++i)
       delete i->second;
-
-    clearSingletonInstance();
   }
 
-  juce_DeclareSingleton(DataRegistry, false)
+  Maker getData(const string& name) const {
+    DataMap::const_iterator i = dataMap_.find(n);
+    CHECK(i == dataMap_.end()) << "Don't understand datatype " << n;
+    return i->second;
+  }
 
-  const Message* getData(const string& name) const;
-  bool registerData(const Message* message);
+  bool registerData(const Message* example, Filler filler) {
+    return registerData(Maker(example, filler));
+  }
+
+  bool registerData(const Maker& maker) {
+    string name = typeName(*message);
+    LOG(INFO) << "Registering type " << message->GetTypeName()
+              << " to name " << name;
+    DataMap::iterator i = dataMap_.find(name);
+    bool result = (i != dataMap_.end());
+    if (result) {
+      LOG(ERROR) << "Duplicate registration for " << name
+                 << " old:" << i->second->GetTypeName()
+                 << " new:" << message->GetTypeName();
+    }
+
+    Maker& maker = dataMap_[name];
+    maker.example_ = message;
+    maker.filler_ = filler;
+
+    return result;
+  }
 
  private:
-  typedef std::map<std::string, const Message*> DataMap;
+  static void defaultFiller(const Message* example, Message* instance) {
+    instance->MergeFrom(*example);
+  }
+
+  typedef map<string, Maker> DataMap;
   DataMap dataMap_;
 
   DISALLOW_COPY_AND_ASSIGN(DataRegistry);
 };
-
-inline const google::protobuf::Message* getData(const std::string& name) {
-  return DataRegistry::getInstance()->getData(name);
-}
-
-inline bool registerData(const google::protobuf::Message* message) {
-  return DataRegistry::getInstance()->registerData(message);
-}
 
 }  // namespace persist
 }  // namespace rec

@@ -17,6 +17,7 @@ TEST(Persist, AutosaveApp) {
   ASSERT_TRUE(prefsFile.deleteFile());
 
   registerData(new TestData());
+#if 0
   {
     AutosaveApp app("testapp", 10, 7);
     File file = app.getDataFile("autosave");
@@ -39,6 +40,7 @@ TEST(Persist, AutosaveApp) {
     ASSERT_EQ(data->get().foo(), 3);
     ASSERT_EQ(data->get().bar(), "bang");
   }
+#endif
 
   ASSERT_TRUE(prefsFile.deleteFile());
 }

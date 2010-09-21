@@ -1,6 +1,6 @@
 #include "rec/components/AudioThumbnailComponent.h"
 #include "rec/components/MainPageK.h"
-#include "rec/util/Juce.h"
+#include "rec/gui/Colors.h"
 
 namespace rec {
 namespace gui {
@@ -87,8 +87,9 @@ void AudioThumbnailComponent::setCursor(double cursor) {
 }
 
 void AudioThumbnailComponent::paint(Graphics& g) {
-  g.fillAll(gui::makeColor(description_.background()));
-  gui::setColor(description_.foreground(), &g);
+  Colors& colors = description_.colors();
+  g.fillAll(color::get(colors, 0));
+  g.setColour(color::get(colors, 1));
   int margin = description_.margin();
 
   if (thumbnail_.getTotalLength() > 0) {
@@ -102,7 +103,7 @@ void AudioThumbnailComponent::paint(Graphics& g) {
                              i, 1.0f);
     }
 
-    gui::setColor(description_.cursor(), &g);
+    g.setColor(color::get(colors, 2));
     g.drawRect(cursorRectangle());
 
   } else {

@@ -12,11 +12,6 @@
 namespace rec {
 namespace persist {
 
-inline File appDir(const String& name) {
-  return File::getSpecialLocation(File::userApplicationDataDirectory).
-    getChildFile("recs").getChildFile(name);
-}
-
 class App {
  public:
   App(const String& appName)
@@ -25,18 +20,59 @@ class App {
     appDir_.createDirectory();
   }
 
+  static File appDir(const String& name) {
+    static const char COMPANY_ROOT_NAME[] = "recs";
+    return File::getSpecialLocation(File::userApplicationDataDirectory).
+      getChildFile(COMPANY_ROOT_NAME).getChildFile(name);
+  }
+
+  typedef std::map<std::string, Data*> DataSet;
+
+  template <typename Proto>
+  TypedData<Proto>* getData(const string& file) {
+    string filename = file + "." + Proto::descriptor()->name();
+    ScopedLock l(lock_);
+    DataSet::const_iterator i = data_.find(filename);
+    if (i != data_.end())
+      return static_cast<TypedData<Proto>*>(*i);
+
+    Client& client = data_[name];
+    File file(appDir.getChildFile(filename.c_str()));
+
+                //          return File(file.getFullPathName() + "." + copy(typeName_));
+      const Message* message =
+      client.data_ = new Data<Proto>();
+      client.descriptor_ = Proto::descriptor();
+      return static_cast<Data<Proto>*>(client.data_);
+    }
+  }
+
   virtual ~App() {
     write();
     for (DataSet::iterator i = data_.begin(); i != data_.end(); ++i)
       delete i->second.data_;
   }
 
-  File getDataFile(const String& name) const {
-    return appDir_.getChildFile(name);
+  File getDataFile(const String& name, const String& type) const {
+    return appDir_.getChildFile(name + "." + type);
+  }
+
+  const Message* getData(const string& name) const {
+    ScopedLock l(lock_);
+    return registry_.getData(name);
+  }
+
+  bool registerData(const Message* message) {
+    ScopedLock l(lock_);
+    return registry_.registerData(message);
   }
 
   // Temporary, see https://github.com/rec/rec/issues/issue/40
   virtual void shutdown() {}
+
+  File dataFileName(const File& file) {
+    return File(file.getFullPathName() + "." + copy(typeName_));
+  }
 
   template <typename Proto>
   Data<Proto>* getData(const string& name) {
@@ -44,13 +80,17 @@ class App {
     DataSet::const_iterator i = data_.find(name);
 
     if (i != data_.end()) {
-      const DataClient& client = i->second;
+      const Client& client = i->second;
       CHECK(client.descriptor_ == Proto::descriptor());
       return static_cast<Data<Proto>*>(client.data_);
 
     } else {
-      DataClient& client = data_[name];
-      client.data_ = new Data<Proto>(getDataFile(name.c_str()));
+      Client& client = data_[name];
+      File file(getDataFile(name.c_str());
+
+                return File(file.getFullPathName() + "." + copy(typeName_));
+      const Message* message =
+      client.data_ = new Data<Proto>();
       client.descriptor_ = Proto::descriptor();
       return static_cast<Data<Proto>*>(client.data_);
     }
@@ -65,13 +105,27 @@ class App {
  private:
   const File appDir_;
   CriticalSection lock_;
+  DataRegistry registry_;
 
-  struct DataClient {
+  struct Client {
     Writeable* data_;
     const google::protobuf::Descriptor* descriptor_;
   };
 
-  typedef std::map<std::string, DataClient> DataSet;
+  struct Maker {
+    const Message* example_;
+    Filler filler_;
+
+    Maker(const Message* example, Filler filler = &AppDataRegistry::defaultFill)
+        : example_(example),
+          filler_(filler) {
+    }
+
+    Maker() {}
+  };
+
+
+  typedef std::map<std::string, Client> DataSet;
   DataSet data_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(App);

@@ -19,7 +19,7 @@ class AutosaveApp : public App {
       : App(name),
         thread_("WriteThread " + name,
                 thread::callbackLoop(period, this, &AutosaveApp::write)),
-    events_(new event::EventQueue(getDataFile("events.log.Event"))) {
+        events_(new event::EventQueue(getDataFile("events.log", "Event"))) {
     CHECK(name.length() > 0);
     thread_.startThread(priority);
   }

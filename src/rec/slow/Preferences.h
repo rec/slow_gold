@@ -29,7 +29,7 @@ inline void registerPreferences() {
   p->mutable_thumbnail()->mutable_background()->set_rgb(0xFFFFFF);
   p->mutable_thumbnail()->mutable_foreground()->set_rgb(0xADD8E);
   p->add_loop_window();
-  persist::registerData(p);
+  persist::getInstance()->registerData(p);
 }
 
 

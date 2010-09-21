@@ -8,7 +8,7 @@ if [ ! "$CONFIG" ]; then
   CONFIG=debug
 fi
 
-if [ ! "$@" ]
+if [ ! "$1" ]
 then
 
   "$ROOT/rec/scripts/build.sh" $CONFIG $PACKAGES
