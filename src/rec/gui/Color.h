@@ -2,7 +2,7 @@
 #define __REC_GUI_COLORS__
 
 #include "rec/base/basictypes.h"
-#include "rec/gui/Colors.pb.h"
+#include "rec/gui/Color.pb.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {

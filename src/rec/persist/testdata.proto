@@ -1,6 +1,0 @@
-package rec.persist;
-
-message TestData {
-  optional int32 foo = 1        [default = 2];
-  optional string bar = 2       [default = "baz"];
-};

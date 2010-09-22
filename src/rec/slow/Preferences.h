@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_PREFERENCES__
 #define __REC_SLOW_PREFERENCES__
 
-#include "rec/persist/AppData.h"
+#include "rec/persist/AppBase.h"
 #include "rec/persist/Copy.h"
 #include "rec/slow/Preferences.pb.h"
 #include "rec/slow/RecentFiles.h"
@@ -12,26 +12,18 @@ namespace slow {
 
 typedef persist::Data<proto::Preferences> Data;
 
-inline Data* getMutablePreferences() {
-  return persist::getAppData<proto::Preferences>("preferences");
+inline Data* prefs() {
+  static Data* prefs = getApp()->getData<proto::Preferences>("preferences");
+  return prefs;
 }
 
 inline void applyOperation(rec::proto::Operation* op) {
-  getMutablePreferences()->apply(op);
+  prefs()->change(op);
 }
 
 inline const proto::Preferences getPreferences() {
-  return getMutablePreferences()->get();
+  return prefs()->get();
 }
-
-inline void registerPreferences() {
-  proto::Preferences* p = new proto::Preferences();
-  p->mutable_thumbnail()->mutable_background()->set_rgb(0xFFFFFF);
-  p->mutable_thumbnail()->mutable_foreground()->set_rgb(0xADD8E);
-  p->add_loop_window();
-  persist::getInstance()->registerData(p);
-}
-
 
 }  // namespace slow
 }  // namespace rec

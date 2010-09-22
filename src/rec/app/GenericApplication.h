@@ -4,7 +4,7 @@
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/persist/AppData.h"
+#include "rec/persist/App.h"
 
 namespace rec {
 
@@ -21,11 +21,12 @@ class GenericApplication : public JUCEApplication {
   virtual ~GenericApplication() {}
 
   virtual void initialise(const String& commandLine) {
+    persist::App::start(name_);
     window_.reset(new Window());
   }
 
   virtual void shutdown() {
-    rec::persist::getInstance()->shutdown();
+    persist::App::stop();
   }
 
   const String getApplicationName()    { return name_; }

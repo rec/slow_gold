@@ -1,6 +1,6 @@
 #include "rec/components/AudioThumbnailComponent.h"
 #include "rec/components/MainPageK.h"
-#include "rec/gui/Colors.h"
+#include "rec/gui/Color.h"
 
 namespace rec {
 namespace gui {
