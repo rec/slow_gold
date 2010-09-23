@@ -64,7 +64,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  TimeStretch d = getPreferences().loop_window(0).timestretch();
+  TimeStretch d = getPreferences().loop_window().timestretch();
 
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
@@ -130,7 +130,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     if (stretchy_)
       stretchy_->stop();
 
-    TimeStretch d = getPreferences().loop_window(0).timestretch();
+    TimeStretch d = getPreferences().loop_window().timestretch();
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
@@ -172,7 +172,7 @@ void MainPageK::sliderValueChanged(Slider* slider) {
   }
 
   if (stretchy_) {
-    TimeStretch stretch = getPreferences().loop_window(0).timestretch();
+    TimeStretch stretch = getPreferences().loop_window().timestretch();
 
     if (slider == peer_->timeScaleSlider)
       stretch.set_time_scale(slider->getValue());

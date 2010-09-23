@@ -1,6 +1,9 @@
+#include <glog/logging.h>
+
 #include "rec/persist/UntypedData.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/persist/Copy.h"
+#include "rec/persist/AppBase.h"
 #include "rec/proto/Proto.h"
 #include "rec/util/STL.h"
 
@@ -13,8 +16,11 @@ UntypedData::UntypedData(const File& file, Message* message, AppBase* app)
     : file_(file),
       message_(message),
       app_(app) {
-  if (!copy(file, message))
-    LOG(ERROR) << "New file " << file.getFullPathName().toCString();
+}
+
+void UntypedData::readFromFile() {
+  if (!copy(file_, message_))
+    LOG(ERROR) << "New file " << file_.getFullPathName().toCString();
 }
 
 UntypedData::~UntypedData() {
@@ -22,8 +28,7 @@ UntypedData::~UntypedData() {
   stl::deletePointers(&undo_);
 }
 
-template <typename Proto>
-void UntypedData::change(Operation* op) {
+void UntypedData::change(proto::Operation* op) {
   {
     ScopedLock l(lock_);
     queue_.push_back(op);
@@ -31,14 +36,14 @@ void UntypedData::change(Operation* op) {
   app_->needsUpdate(this);
 }
 
-void UntypedData::upate() {
+void UntypedData::update() {
   {
     ScopedLock l(lock_);
     if (queue_.empty())
       return;
 
     for (OperationList::iterator i = queue_.begin(); i != queue_.end(); ++i)
-      undo_.push_back(proto::applyOperation(**i), message_);
+      undo_.push_back(proto::applyOperation(**i, message_));
 
     stl::deletePointers(&queue_);
   }
@@ -46,19 +51,15 @@ void UntypedData::upate() {
   changeCallback();
 }
 
-void UntypedData::write() {
+void UntypedData::writeToFile() {
   scoped_ptr<Message> msg;
   {
     ScopedLock l(lock_);
-    if (!needsWrite_)
-      return;
-
     msg.reset(message_->New());
-    msg.reset(clone());
-    needsWrite_ = false;
+    msg->CopyFrom(*message_);
   }
 
-  copy(*msg, _file_);
+  copy(*msg, &file_);
 }
 
 }  // namespace persist

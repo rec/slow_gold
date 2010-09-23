@@ -87,7 +87,7 @@ void AudioThumbnailComponent::setCursor(double cursor) {
 }
 
 void AudioThumbnailComponent::paint(Graphics& g) {
-  Colors& colors = description_.colors();
+  const color::Colors& colors = description_.colors();
   g.fillAll(color::get(colors, 0));
   g.setColour(color::get(colors, 1));
   int margin = description_.margin();
@@ -103,7 +103,7 @@ void AudioThumbnailComponent::paint(Graphics& g) {
                              i, 1.0f);
     }
 
-    g.setColor(color::get(colors, 2));
+    g.setColour(color::get(colors, 2));
     g.drawRect(cursorRectangle());
 
   } else {

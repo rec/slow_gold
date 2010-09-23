@@ -3,23 +3,34 @@
 
 #include "rec/base/basictypes.h"
 #include "rec/util/STL.h"
-#include "rec/persist/TypedData.h"
+#include "rec/persist/Data.h"
+
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {
 
 AppBase* getApp();
+class UntypedData;
 
 class AppBase {
  public:
+  typedef std::string string;
+  typedef std::map<string, UntypedData*> DataMap;
+
   template <typename Proto>
-  static Data<Proto>* getData(const string& file) {
+  Data<Proto>* getData(const string& file) {
     string filename = file + "." + Proto::descriptor()->name();
     ScopedLock l(lock_);
     DataMap::const_iterator i = data_.find(filename);
-    return i == data_.end() ?
-      (data_[filename] = new Data<Proto>(File(filename), this)) :
-      static_cast<Data<Proto>*>(i->second);
+    if (i == data_.end()) {
+      Data<Proto>* data = new Data<Proto>(appDir().getChildFile(filename.c_str()), this);
+      data->readFromFile();
+      data_[filename] = data;
+      return data;
+    }
+
+    return static_cast<Data<Proto>*>(i->second);
   }
 
   const string& name() const { return name_; }
@@ -31,16 +42,15 @@ class AppBase {
   File appDir() const {
     static const char COMPANY_ROOT_NAME[] = "recs";
     return File::getSpecialLocation(File::userApplicationDataDirectory).
-      getChildFile(COMPANY_ROOT_NAME).getChildFile(name_);
+      getChildFile(COMPANY_ROOT_NAME).getChildFile(name_.c_str());
   }
 
  protected:
-  friend class Data;
+  friend class UntypedData;
   explicit AppBase(const string& name) : name_(name) {}
 
-  virtual void needsUpdate(Data* data) = 0;
+  virtual void needsUpdate(UntypedData* data) = 0;
 
-  typedef std::map<std::string, UntypedData*> DataMap;
   DataMap data_;
   CriticalSection lock_;
   const string name_;

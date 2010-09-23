@@ -39,11 +39,13 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       i.startSample += processed;
       position_ += processed;
       foundZero = false;
+
     } else if (foundZero) {
       LOG(ERROR)  << "0 samples twice in a row from Process(),"
                   << " asked for " << i.numSamples
                   << " from " << info.numSamples;
       return;
+
     } else {
       foundZero = true;
     }

@@ -1,16 +1,13 @@
-#include "rec/gui/Colors.h"
+#include <glog/logging.h>
+
+#include "rec/gui/Color.h"
+#include "rec/base/ArraySize.h"
 
 namespace rec {
 namespace gui {
 namespace color {
 
 namespace {
-
-Colour DEFAULT_COLORS[] = {
-  Colours::white,
-  Colours::lightblue,
-  Colours::black
-};
 
 uint32 makeARGB(const Color& c) {
   if (c.has_argb())
@@ -23,28 +20,30 @@ uint32 makeARGB(const Color& c) {
     return (c.alpha() << 24) | (c.red() << 16) | (c.green() << 8) | c.blue();
 }
 
-Colour makeColor(const Color& color) {
+Colour makeColour(const Color& color) {
   return Colour(makeARGB(color));
 }
 
 }  // namespace
 
+Colour get(unsigned int i) {
+  static Colour DEFAULT_COLORS[] = {
+    Colours::white,
+    Colours::lightblue,
+    Colours::black
+  };
 
-Colour get(const Colors& colors, unsigned int index) {
-  if (index < colors.color_size())
-    return makeColor(colors.color(index)));
+  static int SIZE = arraysize(DEFAULT_COLORS);
+  if (i < SIZE)
+    return DEFAULT_COLORS[i];
 
-  if (index < arraysize(DEFAULT_COLORS))
-    return DEFAULT_COLORS[index];
-
-  LOG(ERROR) << "Couldn't get color " << index;
+  LOG(ERROR) << "Couldn't get color " << i;
   return DEFAULT_COLORS[arraysize(DEFAULT_COLORS) - 1];
-}
+};
 
-void set(const Colors& colors, unsigned int index, Graphics* g) {
-  g->setColour(getColor(colors, index));
+Colour get(const Colors& colors, unsigned int i) {
+  return i < colors.color_size() ? makeColour(colors.color(i)) : get(i);
 }
-
 
 }  // namespace color
 }  // namespace gui

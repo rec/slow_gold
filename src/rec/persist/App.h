@@ -1,13 +1,15 @@
 #ifndef __REC_PERSIST_APP__
 #define __REC_PERSIST_APP__
 
-#include <map>
+#include <set>
 #include <string>
 #include <glog/logging.h>
 
+#include "rec/persist/AppBase.h"
 #include "rec/persist/Data.h"
-#include "rec/persist/Writeable.h"
 #include "rec/util/STL.h"
+#include "rec/thread/RunnableThread.h"
+
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
@@ -18,7 +20,7 @@ class UntypedData;
 class App : public AppBase {
  public:
   static const int UPDATE_PRIORITY = 5;
-  static const int UPDATE_THREAD_PERIOD = 100;
+  static const int UPDATE_PERIOD = 100;
 
   static const int WRITE_PRIORITY = 5;
   static const int WRITE_PERIOD = 100;
@@ -29,23 +31,26 @@ class App : public AppBase {
   void update();
   void write();
 
-  static void start(const String& name);
+  static void start(const string& name);
   static void stop();
-  static File appDir(const String& name);
+  static File appDir(const string& name);
 
- private:
-  explicit App(const String& appName);
-  virtual ~App() {}
+  static App* getInstance() { return instance_; }
+
+  typedef std::set<UntypedData*> DataSet;
+
+private:
+  explicit App(const string& appName);
+  virtual ~App();
 
   const File appDir_;
   CriticalSection lock_;
-  DataRegistry registry_;
 
-  DataList updateData_;
-  DataList writeData_;
+  DataSet updateData_;
+  DataSet writeData_;
 
-  RunnableThread updateThread_;
-  RunnableThread writeThread_;
+  thread::RunnableThread updateThread_;
+  thread::RunnableThread writeThread_;
 
   static App* instance_;
 

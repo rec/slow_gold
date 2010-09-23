@@ -1,18 +1,17 @@
 #include "rec/persist/App.h"
+#include "rec/thread/CallbackLoop.h"
 
 namespace rec {
 namespace persist {
 
-using rec::persist::AppBase::DataSet;
-
-App::App(const String& appName)
+App::App(const std::string& appName)
     : AppBase(appName),
       updateThread_("App::update",
-                    thread::callbackLoop(UPDATE_PERIOD, &App::update)),
+                    thread::callbackLoop(UPDATE_PERIOD, this, &App::update)),
       writeThread_("App::write",
-                   thread::callbackLoop(WRITE_PERIOD, &App::write)) {
+                   thread::callbackLoop(WRITE_PERIOD, this, &App::write)) {
   CHECK(appName.length());
-  appDir().createDirectory();
+  appDir_.createDirectory();
 
   updateThread_.setPriority(UPDATE_PRIORITY);
   writeThread_.setPriority(WRITE_PRIORITY);
@@ -22,46 +21,61 @@ App::App(const String& appName)
 }
 
 App::~App() {
-  updateThread_.stopThread();
-  writeThread_.stopThread();
-  stl::deleteMapPointers(&dataSet_);
+  updateThread_.stopThread(1000);
+  writeThread_.stopThread(1000);
 }
 
 // A piece of data got new information!
-void App::needsUpdate(Data* data) {
+void App::needsUpdate(UntypedData* data) {
   {
     ScopedLock l(lock_);
-    updateData_.push_back(data);
+    updateData_.insert(data);
   }
   updateThread_.notify();
 }
 
-// This method allows update() and write() to be efficiently thread-safe.
-static void swap(DataSet* l1, DataSet* l2, CriticalSection* lock) {
+template <typename Container>
+bool lockedEmpty(const Container &c, CriticalSection* lock) {
   ScopedLock l(*lock);
-  l1->swap(*l2);
+  return c.empty();
+}
+
+template <typename Container>
+void extendAndClear(Container *from, Container *to, CriticalSection* lock) {
+  ScopedLock l(*lock);
+  if (to->empty()) {
+    to->swap(*from);
+  } else {
+    to->insert(from->begin(), from->end());
+    to->clear();
+  }
 }
 
 void App::update() {
+  if (lockedEmpty(updateData_, &lock_))
+    return;
+
   DataSet updates;
-  swap(&updates, &updateData_, &lock_);
-
+  extendAndClear(&updateData_, &updates, &lock_);
   for (DataSet::iterator i = updates.begin(); i != updates.end(); ++i)
-    i->update();
+    (*i)->update();
 
-  swap(&updates, &writeData_, &lock_);
+  extendAndClear(&updates, &writeData_, &lock_);
   writeThread_.notify();
 }
 
 void App::write() {
-  DataSet writes;
-  swap(&writes, &writeData_, &lock_);
+  if (lockedEmpty(writeData_, &lock_))
+    return;
 
-  for (DataSet::iterator i = updates.begin(); i != updates.end(); ++i)
-    i->write();
+  DataSet writes;
+  extendAndClear(&writeData_, &writes, &lock_);
+
+  for (DataSet::iterator i = writes.begin(); i != writes.end(); ++i)
+    (*i)->writeToFile();
 }
 
-void App::start(const String& name) {
+void App::start(const string& name) {
   CHECK(!instance_);
   instance_ = new App(name);
 }
@@ -72,10 +86,10 @@ void App::stop() {
   instance_ = NULL;
 }
 
-AppBase* App::instance_ = NULL;
+App* App::instance_ = NULL;
 
 AppBase* getApp() {
-  return App::instance_;
+  return App::getInstance();
 }
 
 }  // namespace persist

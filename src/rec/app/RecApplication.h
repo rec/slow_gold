@@ -12,10 +12,9 @@ namespace app {
 
 class Application : public GenericApplication<RecWindow> {
  public:
-  Application() : GenericApplication<RecWindow>(T("SlowGold"), T("1.0")) {}
+  Application() : GenericApplication<RecWindow>("SlowGold", "1.0") {}
 
   virtual void initialise(const String& commandLine) {
-    slow::registerPreferences();
     GenericApplication<RecWindow>::initialise(commandLine);
 
 #if false && JUCE_MAC

@@ -13,7 +13,7 @@ namespace slow {
 typedef persist::Data<proto::Preferences> Data;
 
 inline Data* prefs() {
-  static Data* prefs = getApp()->getData<proto::Preferences>("preferences");
+  static Data* prefs = persist::getApp()->getData<proto::Preferences>("preferences");
   return prefs;
 }
 

@@ -9,8 +9,8 @@ namespace rec {
 namespace gui {
 namespace color {
 
+Colour get(unsigned int i);
 Colour get(const Colors& colors, unsigned int index);
-void set(const Colors& c, unsigned int index, Graphics* g);
 
 }  // namespace color
 }  // namespace gui

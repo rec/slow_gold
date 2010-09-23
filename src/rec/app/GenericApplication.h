@@ -1,21 +1,25 @@
 #ifndef __REC_JUCE_GENERIC_APPLICATION
 #define __REC_JUCE_GENERIC_APPLICATION
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include <string>
+
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/persist/App.h"
+
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 
 template <typename Window>
 class GenericApplication : public JUCEApplication {
  public:
+  typedef std::string string;
+  
   static const int SAVE_PERIOD = 25;
   static const int PRIORITY = 4;
-  GenericApplication(const String& name, const String& version)
+  GenericApplication(const string& name, const string& version)
       : name_(name), version_(version) {
-    rec::persist::createInstance(name, SAVE_PERIOD, PRIORITY);
   }
 
   virtual ~GenericApplication() {}
@@ -29,16 +33,16 @@ class GenericApplication : public JUCEApplication {
     persist::App::stop();
   }
 
-  const String getApplicationName()    { return name_; }
-  const String getApplicationVersion() { return version_; }
+  const String getApplicationName()    { return name_.c_str(); }
+  const String getApplicationVersion() { return version_.c_str(); }
   bool moreThanOneInstanceAllowed()    { return false; }
 
   void anotherInstanceStarted (const String& commandLine) {}
 
  protected:
   scoped_ptr<Window> window_;
-  const String name_;
-  const String version_;
+  const string name_;
+  const string version_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);

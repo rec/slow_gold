@@ -31,9 +31,9 @@ void deleteMapPointers(Container* c) {
 }
 
 template <typename Container>
-Container::value_type pop_front(Container *c) {
-  Container::iterator i = c->begin();
-  Container::value_type t = *i;
+typename Container::value_type pop_front(Container *c) {
+  typename Container::iterator i = c->begin();
+  typename Container::value_type t = *i;
   c->erase(i);
   return t;
 }
