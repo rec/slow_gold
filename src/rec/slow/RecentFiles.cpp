@@ -35,6 +35,7 @@ void addRecentFile(const std::string& filename) {
   for (int i = 0; !found && i < recent->file_size(); ++i) {
     RecentFile* file = recent->mutable_file(i);
     if (file->name() == filename) {
+      slot = i;
       found = true;
     } else if (file->timestamp() < least) {
       least = file->timestamp();
