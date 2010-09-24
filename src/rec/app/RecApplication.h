@@ -35,7 +35,7 @@ class Application : public GenericApplication {
   juce_UseDebuggingNewOperator
 
  private:
-  scoped_ptr<<RecWindow> window_;
+  scoped_ptr<RecWindow> window_;
   DISALLOW_COPY_AND_ASSIGN(Application);
 };
 
