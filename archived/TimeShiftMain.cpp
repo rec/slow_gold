@@ -41,11 +41,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
   // assume fIn is a raw (headerless) soundfile containing
   // stereo, 16-bit, 44.1 kHz samples.
 
-  long	lTotalNumSamples = 0;
-  long	lChunks = 0;
-  long	nSamplesRead = 0;
-  long	nSamplesToRead = 0;
-  long	nSamplesToProcess = 0;
   long	numSamplesOut = 0;
   unsigned int numSamplesWritten = 0;
   long	nTotalSamplesRead = 0;
@@ -88,7 +83,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
         afSamplesOut[i] = 0.0;
 
       // ask how many input samples are needed for SAMPLES_PER_CHUNK output samples
-      nSamplesToRead =  timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
+      long nSamplesToRead =  timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
       // assumes test input file contains raw CD-QUALITY samples
       // (i.e., interleaved stereo, 16-bit, 44.1 kHz)
 
@@ -102,13 +97,13 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
       // to it.
       //
       // [1] create a buffer of floats (32 bits) to hold the converted input
-      nSamplesToProcess = nSamplesToRead / 2; /* must pass in mono samples */
+      long nSamplesToProcess = nSamplesToRead / 2; /* must pass in mono samples */
       afSamplesIn = (float*)calloc(nSamplesToProcess, sizeof(float));
       if (afSamplesIn == NULL)
         break;
 
       // [2] read CD-FORMAT/QUALITY input samples from test file
-      nSamplesRead = fread(asSamplesIn, sizeof(short), nSamplesToRead, fIn);
+      long nSamplesRead = fread(asSamplesIn, sizeof(short), nSamplesToRead, fIn);
 
       if (nSamplesRead != nSamplesToRead)
         break;  // out of samples
@@ -142,7 +137,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
 
       nTotalSamplesRead += nSamplesRead;
       // [4] now send the samples into ats for processing
-      numSamplesOut = timeScaler.Process(&afSamplesIn, &afSamplesOut,
+      long numSamplesOut = timeScaler.Process(&afSamplesIn, &afSamplesOut,
                                           nSamplesToProcess, SAMPLES_PER_CHUNK);
 
       // [5] convert output samples to 16-bit
