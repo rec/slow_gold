@@ -47,4 +47,4 @@ class scoped_ptr {
   DISALLOW_COPY_AND_ASSIGN(scoped_ptr);
 };
 
-#endif // #ifndef __REC_UTIL_SCOPED_PTR
+#endif // __REC_UTIL_SCOPED_PTR
