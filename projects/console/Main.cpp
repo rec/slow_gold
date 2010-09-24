@@ -65,103 +65,103 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
   //MFAudioTimeScalerInit(pATS, TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
   timeScaler.Init(TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
   while (true) {
-      // clear output buffer TODO: make this more efficient with a memory block initialization
-      for (int i=0; i<SAMPLES_PER_CHUNK; i++)
-        afSamplesOut[i] = 0.0;
+    // clear output buffer TODO: make this more efficient with a memory block initialization
+    for (int i=0; i<SAMPLES_PER_CHUNK; i++)
+      afSamplesOut[i] = 0.0;
 
-      // ask how many input samples are needed for SAMPLES_PER_CHUNK output samples
-      long nSamplesToRead =  timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
-      // assumes test input file contains raw CD-QUALITY samples
-      // (i.e., interleaved stereo, 16-bit, 44.1 kHz)
+    // ask how many input samples are needed for SAMPLES_PER_CHUNK output samples
+    long nSamplesToRead =  timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
+    // assumes test input file contains raw CD-QUALITY samples
+    // (i.e., interleaved stereo, 16-bit, 44.1 kHz)
 
-      // create a buffer of shorts (16 bits)
-      short* asSamplesIn = (short*) calloc(nSamplesToRead, sizeof(short));
-      if (asSamplesIn == NULL)
-        break;
+    // create a buffer of shorts (16 bits)
+    short* asSamplesIn = (short*) calloc(nSamplesToRead, sizeof(short));
+    if (asSamplesIn == NULL)
+      break;
 
-      // Time scaler Process function requires mono, 32-bit! samples,
-      // so we have to do some conversion before passing input
-      // to it.
-      //
-      // [1] create a buffer of floats (32 bits) to hold the converted input
-      long nSamplesToProcess = nSamplesToRead / 2; /* must pass in mono samples */
-      float* afSamplesIn = (float*)calloc(nSamplesToProcess, sizeof(float));
-      if (afSamplesIn == NULL)
-        break;
+    // Time scaler Process function requires mono, 32-bit! samples,
+    // so we have to do some conversion before passing input
+    // to it.
+    //
+    // [1] create a buffer of floats (32 bits) to hold the converted input
+    long nSamplesToProcess = nSamplesToRead / 2; /* must pass in mono samples */
+    float* afSamplesIn = (float*)calloc(nSamplesToProcess, sizeof(float));
+    if (afSamplesIn == NULL)
+      break;
 
-      // [2] read CD-FORMAT/QUALITY input samples from test file
-      long nSamplesRead = fread(asSamplesIn, sizeof(short), nSamplesToRead, fIn);
+    // [2] read CD-FORMAT/QUALITY input samples from test file
+    long nSamplesRead = fread(asSamplesIn, sizeof(short), nSamplesToRead, fIn);
 
-      if (nSamplesRead != nSamplesToRead)
-        break;  // out of samples
+    if (nSamplesRead != nSamplesToRead)
+      break;  // out of samples
 
-      // [3] convert stereo shorts to mono 32-bit floats
-      // based on ScaleChannelNum input arg
-      //
-      // ScaleChannelNum definition:
-      // 0: All channels of the input file are averaged together
-      //	and the result is scaled, creating mono output
-      // 1 or 2: Scale only this channel of the input file and
-      //	create mono output.
-      int j = 0;
-      for (int i=0; i<nSamplesRead; i+=2)
-        {
-          short leftChan = asSamplesIn[i];
-          short rightChan = asSamplesIn[i+1];
+    // [3] convert stereo shorts to mono 32-bit floats
+    // based on ScaleChannelNum input arg
+    //
+    // ScaleChannelNum definition:
+    // 0: All channels of the input file are averaged together
+    //	and the result is scaled, creating mono output
+    // 1 or 2: Scale only this channel of the input file and
+    //	create mono output.
+    int j = 0;
+    for (int i=0; i<nSamplesRead; i+=2)
+      {
+        short leftChan = asSamplesIn[i];
+        short rightChan = asSamplesIn[i+1];
 
-          if (ScaleChannelNum == 0)
-            {
-              afSamplesIn[j++] = (((float) leftChan / ((long)(0x7fff)))
-                                  + ((float) rightChan / ((long)(0x7fff)))) / (float) 2.0;
-            }
-          else if (ScaleChannelNum == 1)
-            afSamplesIn[j++] = ((float) leftChan / ((long)(0x7fff)));
-          else if (ScaleChannelNum == 2)
-            afSamplesIn[j++] = ((float) rightChan / ((long)(0x7fff)));
-          else
-            return -1;  /* bogus ScaleChannelNum spec */
-        }
+        if (ScaleChannelNum == 0)
+          {
+            afSamplesIn[j++] = (((float) leftChan / ((long)(0x7fff)))
+                                + ((float) rightChan / ((long)(0x7fff)))) / (float) 2.0;
+          }
+        else if (ScaleChannelNum == 1)
+          afSamplesIn[j++] = ((float) leftChan / ((long)(0x7fff)));
+        else if (ScaleChannelNum == 2)
+          afSamplesIn[j++] = ((float) rightChan / ((long)(0x7fff)));
+        else
+          return -1;  /* bogus ScaleChannelNum spec */
+      }
 
-      nTotalSamplesRead += nSamplesRead;
-      // [4] now send the samples into ats for processing
-      float* sout[] = {&afSamplesOut.front()};
-      float* sin[] = {afSamplesIn};
-      long numSamplesOut = timeScaler.Process(sin, sout,
-                                          nSamplesToProcess, SAMPLES_PER_CHUNK);
+    nTotalSamplesRead += nSamplesRead;
+    // [4] now send the samples into ats for processing
+    float* sout[] = {&afSamplesOut.front()};
+    float* sin[] = {afSamplesIn};
+    long numSamplesOut = timeScaler.Process(sin, sout,
+                                            nSamplesToProcess, SAMPLES_PER_CHUNK);
 
-      // [5] convert output samples to 16-bit
-      if (asSamplesOut)
+    // [5] convert output samples to 16-bit
+    if (asSamplesOut)
+      free(asSamplesOut);
+    asSamplesOut = (short*) calloc(numSamplesOut, sizeof(short));
+    if (!asSamplesOut)
+      return -1;	// out of memory
+    for (int i=0; i<numSamplesOut; i++)
+      asSamplesOut[i] = ((long) (afSamplesOut[i] * ((float) (0x7fff))));
+
+    // [6] write processed samples to output file
+    //numSamplesWritten = fwrite(afSamplesOut, sizeof(float),
+    unsigned int numSamplesWritten = fwrite(asSamplesOut, sizeof(short),
+                                            numSamplesOut, fOut);
+
+    nTotalSamplesWritten += numSamplesWritten;
+
+    // [7] cleanup for next iteration
+    if (afSamplesIn)
+      {
+        free(afSamplesIn);
+        afSamplesIn = NULL;
+      }
+    if (asSamplesIn)
+      {
+        free(asSamplesIn);
+        asSamplesIn = NULL;
+      }
+    if (asSamplesOut)
+      {
         free(asSamplesOut);
-      asSamplesOut = (short*) calloc(numSamplesOut, sizeof(short));
-      if (!asSamplesOut)
-        return -1;	// out of memory
-      for (int i=0; i<numSamplesOut; i++)
-        asSamplesOut[i] = ((long) (afSamplesOut[i] * ((float) (0x7fff))));
-
-      // [6] write processed samples to output file
-      //numSamplesWritten = fwrite(afSamplesOut, sizeof(float),
-      unsigned int numSamplesWritten = fwrite(asSamplesOut, sizeof(short),
-                                 numSamplesOut, fOut);
-
-      nTotalSamplesWritten += numSamplesWritten;
-
-      // [7] cleanup for next iteration
-      if (afSamplesIn)
-        {
-          free(afSamplesIn);
-          afSamplesIn = NULL;
-        }
-      if (asSamplesIn)
-        {
-          free(asSamplesIn);
-          asSamplesIn = NULL;
-        }
-      if (asSamplesOut)
-        {
-          free(asSamplesOut);
-          asSamplesOut = NULL;
-        }
-    }
+        asSamplesOut = NULL;
+      }
+  }
   return true;
 }
 
@@ -221,7 +221,7 @@ void Arguments(int argc, char* argv[])
 int main(int argc, char* argv[])
 {
 
-const ScopedJuceInitialiser_NonGUI juceSystemInitialiser;
+  const ScopedJuceInitialiser_NonGUI juceSystemInitialiser;
   FILE* fIn = NULL;
   FILE* fOut = NULL;
 
