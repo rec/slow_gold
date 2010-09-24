@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include "rec/base/scoped_array.h"
+#include "rec/base/arraysize.h"
 
 #include "mfglobals.h"
 #include "JuceLibraryCode/JuceHeader.h"
@@ -81,9 +81,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
     //
     // [1] create a buffer of floats (32 bits) to hold the converted input
     long nSamplesToProcess = nSamplesToRead / 2; /* must pass in mono samples */
-    float* afSamplesIn = (float*)calloc(nSamplesToProcess, sizeof(float));
-    if (afSamplesIn == NULL)
-      break;
+    vector<float> afSamplesIn(nSamplesToProcess);
 
     // [2] read CD-FORMAT/QUALITY input samples from test file
     long nSamplesRead = fread(&asSamplesIn[0], sizeof(short), nSamplesToRead, fIn);
@@ -121,7 +119,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
     nTotalSamplesRead += nSamplesRead;
     // [4] now send the samples into ats for processing
     float* sout[] = {&afSamplesOut.front()};
-    float* sin[] = {afSamplesIn};
+    float* sin[] = {&afSamplesIn.front()};
     long numSamplesOut = timeScaler.Process(sin, sout,
                                             nSamplesToProcess, SAMPLES_PER_CHUNK);
 
@@ -141,12 +139,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
 
     nTotalSamplesWritten += numSamplesWritten;
 
-    // [7] cleanup for next iteration
-    if (afSamplesIn)
-      {
-        free(afSamplesIn);
-        afSamplesIn = NULL;
-      }
     if (asSamplesOut)
       {
         free(asSamplesOut);
@@ -216,7 +208,12 @@ int main(int argc, char* argv[])
   FILE* fIn = NULL;
   FILE* fOut = NULL;
 
-  Arguments(argc, argv);
+  static char* my_argv[] = {"./console", "-i", "/Users/tom/bbb.raw",
+                          "-o", "/Users/tom/bbb3.raw", "-t", "1.0"};
+  if (argc == 1)
+    Arguments(arraysize(my_argv), my_argv);
+  else
+    Arguments(argc, argv);
 
   // must enter something for input and output files
   if (!StrFileIn)

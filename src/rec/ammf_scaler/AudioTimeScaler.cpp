@@ -315,10 +315,10 @@ long AudioTimeScaler::ProcessChannel(int channel,
           // TLB: input buffer of float samples
           float fSample;
           double l_dInput;
+          if (numSamplesRead >= inNumSamplesIn)
+            return numSamplesWritten;
           fSample = *inBuf++;
           numSamplesRead++;
-          if (numSamplesRead > inNumSamplesIn)
-            return numSamplesWritten;
           pPTS->inputSampleCounter++; // keep track of input count
 
           l_dInput = fSample;
