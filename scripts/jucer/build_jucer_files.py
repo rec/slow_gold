@@ -28,57 +28,53 @@ class Jucer(dom_file.DomFile):
     return self.dom.toprettyxml()
 
 
-  def setLibraries(self):
+  def setLibraries(self, config='debug'):
     xcode = self.element('EXPORTFORMATS', 'XCODE_MAC')
-    xcode.setAttribute('extraLinkerFlags', self.get_libraries())
+    libs = self.join(libraries.LIBRARIES.getLinks(Jucer.LIBRARY_ROOT, config))
+    xcode.setAttribute('extraLinkerFlags', libs)
 
 
   def setHeaders(self):
     configurations = self.element('CONFIGURATIONS')
     for c in configurations.getElementsByTagName('CONFIGURATION'):
       config = c.getAttribute('name').lower()
-      c.setAttribute('headerPath', self.get_headers(config))
+      headerPath = self.join(libraries.LIBRARIES.getHeaders(
+          Jucer.JUCE_ROOT, 'build/mac/%s' % config), ';')
+      c.setAttribute('headerPath', headerPath)
+
 
   def setMaingroup(self):
     old = self.element('MAINGROUP')
     maingroup = self.create('MAINGROUP', name=old.getAttribute('name'))
     self.documentElement.replaceChild(maingroup, old)
 
-    # Discard MAINGROUP and replace it with our directory trees.
     for prefix, name in (('', 'src'),
                          ('genfiles', 'proto')):
-      self.create_cpp_file_group(maingroup, prefix, name, '%s/rec' % ROOT)
+      self.createCPPFileGroup(maingroup, prefix, name, '%s/rec' % ROOT)
+    maingroup.appendChild(self.createFile('Main.cpp', 'Main.cpp'))
 
 
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
 
 
-  def get_libraries(self, config='debug'):
-    return self.join(lib.link(Jucer.LIBRARY_ROOT, config)
-                     for lib in libraries.LIBRARIES)
+  def createCPPFileGroup(self, parent, prefix, name, root):
+    tree = filetree.filetree('%s/%s/%s' % (root, prefix, name), self.acceptCpp)
+    parent.appendChild(self.createFileOrGroup(prefix, name, tree))
 
 
-  def get_headers(self, config):
-    hdrs = ['rec/src', 'rec/genfiles/proto', 'juce'] + [
-      lib.header('build/mac', config) for lib in libraries.LIBRARIES]
-    hdrs = ['%s/%s' % (Jucer.JUCE_ROOT, h) for h in hdrs if h]
-    return self.join(hdrs + ['../..'], ';')
+  def createFile(self, name, file):
+    return self.create('FILE',
+                       name=name,
+                       resource='0',
+                       file=file,
+                       compile=str(int(not file.endswith('.h'))))
 
 
-  def create_cpp_file_group(self, parent, prefix, name, root):
-    tree = filetree.filetree('%s/%s/%s' % (root, prefix, name), self.accept_cpp)
-    parent.appendChild(self.create_file_group(prefix, name, tree))
-
-
-  def create_file_group(self, prefix, name, tree):
+  def createFileOrGroup(self, prefix, name, tree):
     if type(tree) is str:
-      # print "prefix", prefix, "name", name
-      return self.create('FILE',
-                         name=name,
-                         resource='0',
-                         file='../../%s/%s' % (prefix, name),
-                         compile=str(int(not tree.endswith('.h'))))
+      return self.createFile(name, '../../%s/%s' % (prefix, name))
+
     else:
       group = self.create('GROUP', name=name)
       if prefix:
@@ -87,12 +83,12 @@ class Jucer(dom_file.DomFile):
         prefix = name
 
       for k, v in tree.iteritems():
-        group.appendChild(self.create_file_group(prefix, k, v))
+        group.appendChild(self.createFileOrGroup(prefix, k, v))
 
       return group
 
 
-  def accept_cpp(self, s):
+  def acceptCpp(self, s):
     return (self.accept(s) and
             ('.' + s).split('.')[-1] in ['h', 'cpp', 'cc', 'c'] and
             not (self.is_test and 'Main.c' in s))
@@ -110,4 +106,4 @@ def overwrite(*names):
     print 'Written', doc
 
 
-overwrite('slow', 'tests')
+overwrite('console', 'slow', 'tests')

@@ -10,12 +10,14 @@
 namespace rec {
 namespace app {
 
-class Application : public GenericApplication<RecWindow> {
+class Application : public GenericApplication {
  public:
-  Application() : GenericApplication<RecWindow>("SlowGold", "1.0") {}
+  Application() : GenericApplication("SlowGold", "1.0") {}
 
   virtual void initialise(const String& commandLine) {
-    GenericApplication<RecWindow>::initialise(commandLine);
+    GenericApplication::initialise(commandLine);
+    persist::App::start(name_);
+    window_.reset(new RecWindow());
 
 #if false && JUCE_MAC
     // TODO: fix these casts that Juce seems to require.
@@ -25,9 +27,15 @@ class Application : public GenericApplication<RecWindow> {
 #endif
   }
 
+  virtual void shutdown() {
+    persist::App::stop();
+    GenericApplication::shutdown();
+  }
+
   juce_UseDebuggingNewOperator
 
  private:
+  scoped_ptr<<RecWindow> window_;
   DISALLOW_COPY_AND_ASSIGN(Application);
 };
 

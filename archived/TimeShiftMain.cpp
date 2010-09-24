@@ -1,4 +1,5 @@
 #include "AudioTimeScaler.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -30,7 +31,6 @@ const int _MAX_PATH = 1024;
 #define _fileno fileno
 
 #endif
-
 
 #define SAMPLES_PER_CHUNK   128	    /* must be multiple of 128 */
 
