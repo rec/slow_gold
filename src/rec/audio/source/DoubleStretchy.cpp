@@ -1,7 +1,6 @@
 // Wrap an incoming AudioSource, and time-stretch it.
 
 #include "rec/audio/source/DoubleStretchy.h"
-#include "rec/audio/source/MultiWrappy.h"
 
 namespace rec {
 namespace audio {

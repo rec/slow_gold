@@ -40,19 +40,37 @@ const int _MAX_PATH = 1024;
 
 #define SAMPLES_PER_CHUNK   128	    /* must be multiple of 128 */
 
+// assumes test input file contains raw CD-QUALITY samples
+// (i.e., interleaved stereo, 16-bit, 44.1 kHz)
+
+// assume fIn is a raw (headerless) soundfile containing
+// stereo, 16-bit, 44.1 kHz samples.
+
+// create fixed output buffer size, ask for this many output samples
+// for each loop
+
+// Time scaler Process function requires mono, 32-bit! samples,
+// so we have to do some conversion before passing input
+// to it.
+//
+
+// [1] create a buffer of floats (32 bits) to hold the converted input
+
+// [2] read CD-FORMAT/QUALITY input samples from test file
+
+// [3] convert stereo shorts to mono 32-bit floats
+// based on ScaleChannelNum input arg
+//
+// ScaleChannelNum definition:
+// 0: All channels of the input file are averaged together
+//	and the result is scaled, creating mono output
+// 1 or 2: Scale only this channel of the input file and
+//	create mono output.
+
 using std::vector;
 
 int TestTimeScaler(FILE* fIn, FILE* fOut, double timeScaleFactor) {
   AudioTimeScaler timeScaler;
-
-  // assume fIn is a raw (headerless) soundfile containing
-  // stereo, 16-bit, 44.1 kHz samples.
-
-  long	nTotalSamplesRead = 0;
-  long	nTotalSamplesWritten = 0;
-
-  // create fixed output buffer size, ask for this many output samples
-  // for each loop
 
   int fno = _fileno(fIn);
   struct _stat statBuf;
@@ -63,36 +81,17 @@ int TestTimeScaler(FILE* fIn, FILE* fOut, double timeScaleFactor) {
   while (true) {
     vector<float> afSamplesOut(SAMPLES_PER_CHUNK, 0);
 
-    // ask how many input samples are needed for SAMPLES_PER_CHUNK output samples
     long nSamplesToRead = timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
-    // assumes test input file contains raw CD-QUALITY samples
-    // (i.e., interleaved stereo, 16-bit, 44.1 kHz)
-
-    // create a buffer of shorts (16 bits)
     vector<short> asSamplesIn(nSamplesToRead);
 
-    // Time scaler Process function requires mono, 32-bit! samples,
-    // so we have to do some conversion before passing input
-    // to it.
-    //
-    // [1] create a buffer of floats (32 bits) to hold the converted input
     long nSamplesToProcess = nSamplesToRead / 2; /* must pass in mono samples */
     vector<float> afSamplesIn(nSamplesToProcess);
 
-    // [2] read CD-FORMAT/QUALITY input samples from test file
     long nSamplesRead = fread(&asSamplesIn[0], sizeof(short), nSamplesToRead, fIn);
 
     if (nSamplesRead != nSamplesToRead)
-      break;  // out of samples
+      break;  // out of samples - THIS IS WRONG.
 
-    // [3] convert stereo shorts to mono 32-bit floats
-    // based on ScaleChannelNum input arg
-    //
-    // ScaleChannelNum definition:
-    // 0: All channels of the input file are averaged together
-    //	and the result is scaled, creating mono output
-    // 1 or 2: Scale only this channel of the input file and
-    //	create mono output.
     int j = 0;
     for (int i=0; i<nSamplesRead; i+=2)
       {
@@ -112,7 +111,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut, double timeScaleFactor) {
           return -1;  /* bogus ScaleChannelNum spec */
       }
 
-    nTotalSamplesRead += nSamplesRead;
     // [4] now send the samples into ats for processing
     float* sout[] = {&afSamplesOut.front()};
     float* sin[] = {&afSamplesIn.front()};
@@ -128,10 +126,8 @@ int TestTimeScaler(FILE* fIn, FILE* fOut, double timeScaleFactor) {
 
     // [6] write processed samples to output file
     //numSamplesWritten = fwrite(afSamplesOut, sizeof(float),
-    unsigned int numSamplesWritten = fwrite(&asSamplesOut[0], sizeof(short),
-                                            numSamplesOut, fOut);
+    fwrite(&asSamplesOut[0], sizeof(short), numSamplesOut, fOut);
 
-    nTotalSamplesWritten += numSamplesWritten;
   }
   return true;
 }

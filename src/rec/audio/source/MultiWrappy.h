@@ -3,9 +3,11 @@
 
 #include <vector>
 #include <glog/logging.h>
-#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/base/base.h"
+#include "rec/audio/source/Source.h"
+
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {
@@ -26,18 +28,27 @@ class MultiWrappy : public Source {
  public:
   typedef std::vector<Source*> SourceVector;
 
+  MultiWrappy() {}
+
+  MultiWrappy(Source* s) {
+    source_.push_back(s);
+  }
+
+  MultiWrappy(Source* s1, Source* s2) {
+    source_.push_back(s1);
+    source_.push_back(s2);
+  }
+
   MultiWrappy(Source** s1, Source** s2)
       : source_(s1, s2) {
   }
 
   template <typename Iterator>
-  MultiWrappy* construct(Iterator begin, Iterator end) {
-    MultiWrappy* mw = new MultiWrappy;
-    mw->source_.insert(0, begin, end);
+  MultiWrappy construct(Iterator begin, Iterator end) {
+    MultiWrappy mw;
+    mw.source_.insert(0, begin, end);
     return mw;
   }
-
-  MultiWrappy(Source* s) { source_.push_back(s); }
 
   ~MultiWrappy() { MWFE(delete *i); }
 
@@ -60,11 +71,6 @@ class MultiWrappy : public Source {
 
  protected:
   SourceVector source_;
-
- private:
-  MultiWrappy() {}
-
-  DISALLOW_COPY_AND_ASSIGN(MultiWrappy);
 };
 
 
