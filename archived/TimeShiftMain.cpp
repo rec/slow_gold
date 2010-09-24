@@ -70,8 +70,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
   int		i = 0;
   int		j = 0;
 
-  SAMPLES_PER_CHUNK = SAMPLES_PER_CHUNK = SAMPLES_PER_CHUNK;
-
   // create fixed output buffer size, ask for this many output samples
   // for each loop
   afSamplesOut = (float*) calloc(SAMPLES_PER_CHUNK, sizeof(float));
