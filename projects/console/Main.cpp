@@ -42,7 +42,7 @@ const int _MAX_PATH = 1024;
 
 using std::vector;
 
-int TestTimeScaler(FILE* fIn, FILE* fOut) {
+int TestTimeScaler(FILE* fIn, FILE* fOut, double timeScaleFactor) {
   AudioTimeScaler timeScaler;
 
   // assume fIn is a raw (headerless) soundfile containing
@@ -50,8 +50,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
 
   long	nTotalSamplesRead = 0;
   long	nTotalSamplesWritten = 0;
-
-  short*	asSamplesOut = 0;
 
   // create fixed output buffer size, ask for this many output samples
   // for each loop
@@ -61,14 +59,12 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
   if (_fstat(fno, &statBuf) != 0)
     return -1;
 
-  // initialize the AudioTimeScaler (see AudioTimeScaler.h for interface)
-  //MFAudioTimeScalerInit(pATS, TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
-  timeScaler.Init(TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
+  timeScaler.Init(timeScaleFactor, 44100, 1, 1.0, 1024, 1);
   while (true) {
     vector<float> afSamplesOut(SAMPLES_PER_CHUNK, 0);
 
     // ask how many input samples are needed for SAMPLES_PER_CHUNK output samples
-    long nSamplesToRead =  timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
+    long nSamplesToRead = timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
     // assumes test input file contains raw CD-QUALITY samples
     // (i.e., interleaved stereo, 16-bit, 44.1 kHz)
 
@@ -229,6 +225,6 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-  return TestTimeScaler(fIn, fOut);
+  return TestTimeScaler(fIn, fOut, TimeScaleFactor);
 }
 
