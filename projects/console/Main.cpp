@@ -73,9 +73,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
     // (i.e., interleaved stereo, 16-bit, 44.1 kHz)
 
     // create a buffer of shorts (16 bits)
-    short* asSamplesIn = (short*) calloc(nSamplesToRead, sizeof(short));
-    if (asSamplesIn == NULL)
-      break;
+    vector<short> asSamplesIn(nSamplesToRead);
 
     // Time scaler Process function requires mono, 32-bit! samples,
     // so we have to do some conversion before passing input
@@ -88,7 +86,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
       break;
 
     // [2] read CD-FORMAT/QUALITY input samples from test file
-    long nSamplesRead = fread(asSamplesIn, sizeof(short), nSamplesToRead, fIn);
+    long nSamplesRead = fread(&asSamplesIn[0], sizeof(short), nSamplesToRead, fIn);
 
     if (nSamplesRead != nSamplesToRead)
       break;  // out of samples
@@ -148,11 +146,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
       {
         free(afSamplesIn);
         afSamplesIn = NULL;
-      }
-    if (asSamplesIn)
-      {
-        free(asSamplesIn);
-        asSamplesIn = NULL;
       }
     if (asSamplesOut)
       {
