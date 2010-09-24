@@ -40,8 +40,9 @@ const int _MAX_PATH = 1024;
 
 #define SAMPLES_PER_CHUNK   128	    /* must be multiple of 128 */
 
-int TestTimeScaler(FILE* fIn, FILE* fOut)
-{
+using std::vector;
+
+int TestTimeScaler(FILE* fIn, FILE* fOut) {
   AudioTimeScaler timeScaler;
 
   // assume fIn is a raw (headerless) soundfile containing
@@ -54,7 +55,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
 
   // create fixed output buffer size, ask for this many output samples
   // for each loop
-  std::vector<float> afSamplesOut(SAMPLES_PER_CHUNK);
 
   int fno = _fileno(fIn);
   struct _stat statBuf;
@@ -65,9 +65,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
   //MFAudioTimeScalerInit(pATS, TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
   timeScaler.Init(TimeScaleFactor, 44100, 1, 1.0, 1024, 1);
   while (true) {
-    // clear output buffer TODO: make this more efficient with a memory block initialization
-    for (int i=0; i<SAMPLES_PER_CHUNK; i++)
-      afSamplesOut[i] = 0.0;
+    vector<float> afSamplesOut(SAMPLES_PER_CHUNK, 0);
 
     // ask how many input samples are needed for SAMPLES_PER_CHUNK output samples
     long nSamplesToRead =  timeScaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
