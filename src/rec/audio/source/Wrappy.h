@@ -44,7 +44,7 @@ class Wrappy : public Source {
 // Wrap a Source with an offset, measured in integer samples.
 class Wrappy::Offset : public Wrappy {
  public:
-  Offset(Source* source, int offset) : offset_(offset) {}
+  Offset(Source* source, int offset) : Wrappy(source), offset_(offset) {}
 
   virtual int getNextReadPosition() const {
     int position = source_->getNextReadPosition() + offset_;

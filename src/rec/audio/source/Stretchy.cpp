@@ -41,9 +41,12 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       foundZero = false;
 
     } else if (foundZero) {
-      LOG(ERROR)  << "0 samples twice in a row from Process(),"
-                  << " asked for " << i.numSamples
-                  << " from " << info.numSamples;
+      LOG_FIRST_N(ERROR, 20)
+        << "0 samples twice in a row from Process(),"
+        << " asked for " << i.numSamples
+        << " from " << info.numSamples
+        << "next read " << getNextReadPosition()
+        << "next read source " << source_->getNextReadPosition();
       return;
 
     } else {
