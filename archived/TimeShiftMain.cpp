@@ -41,35 +41,19 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
   // assume fIn is a raw (headerless) soundfile containing
   // stereo, 16-bit, 44.1 kHz samples.
 
-  long	numSamplesOut = 0;
-  unsigned int numSamplesWritten = 0;
   long	nTotalSamplesRead = 0;
   long	nTotalSamplesWritten = 0;
 
   char	str[_MAX_PATH];
-  // BOOL	boolTrace = 0 /* set to 1 for MessageBox */
 
-  float*	afSamplesIn;
-  float*	afSamplesOut;
-
-  struct _stat statBuf;
-  int		fno;
-  static long	nOldSamplesOut = 0;
-  long	samplesToRead = 0;
-  long	numChannels = 1;
-
-  short*	asSamplesIn = 0;
   short*	asSamplesOut = 0;
-  short	leftChan = 0;
-  short	rightChan = 0;
-  int		i = 0;
-  int		j = 0;
 
   // create fixed output buffer size, ask for this many output samples
   // for each loop
-  afSamplesOut = (float*) calloc(SAMPLES_PER_CHUNK, sizeof(float));
+  float* afSamplesOut = (float*) calloc(SAMPLES_PER_CHUNK, sizeof(float));
 
-  fno = _fileno(fIn);
+  int fno = _fileno(fIn);
+  struct _stat statBuf;
   if (_fstat(fno, &statBuf) != 0)
     return -1;
 
@@ -88,7 +72,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
       // (i.e., interleaved stereo, 16-bit, 44.1 kHz)
 
       // create a buffer of shorts (16 bits)
-      asSamplesIn = (short*) calloc(nSamplesToRead, sizeof(short));
+      short* asSamplesIn = (short*) calloc(nSamplesToRead, sizeof(short));
       if (asSamplesIn == NULL)
         break;
 
@@ -98,7 +82,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
       //
       // [1] create a buffer of floats (32 bits) to hold the converted input
       long nSamplesToProcess = nSamplesToRead / 2; /* must pass in mono samples */
-      afSamplesIn = (float*)calloc(nSamplesToProcess, sizeof(float));
+      float* afSamplesIn = (float*)calloc(nSamplesToProcess, sizeof(float));
       if (afSamplesIn == NULL)
         break;
 
@@ -116,11 +100,11 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
       //	and the result is scaled, creating mono output
       // 1 or 2: Scale only this channel of the input file and
       //	create mono output.
-      j = 0;
+      int j = 0;
       for (int i=0; i<nSamplesRead; i+=2)
         {
-          leftChan = asSamplesIn[i];
-          rightChan = asSamplesIn[i+1];
+          short leftChan = asSamplesIn[i];
+          short rightChan = asSamplesIn[i+1];
 
           if (ScaleChannelNum == 0)
             {
@@ -151,7 +135,7 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
 
       // [6] write processed samples to output file
       //numSamplesWritten = fwrite(afSamplesOut, sizeof(float),
-      numSamplesWritten = fwrite(asSamplesOut, sizeof(short),
+      unsigned int numSamplesWritten = fwrite(asSamplesOut, sizeof(short),
                                  numSamplesOut, fOut);
 
       nTotalSamplesWritten += numSamplesWritten;
@@ -173,16 +157,6 @@ int TestTimeScaler(FILE* fIn, FILE* fOut)
           asSamplesOut = NULL;
         }
     }
-
-  if (afSamplesIn)
-    free(afSamplesIn);
-  if (afSamplesOut)
-    free(afSamplesOut);
-  if (asSamplesIn)
-    free(asSamplesIn);
-  if (asSamplesOut)
-    free(asSamplesOut);
-
 }
 
 
