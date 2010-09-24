@@ -124,26 +124,18 @@ int TestTimeScaler(FILE* fIn, FILE* fOut) {
                                             nSamplesToProcess, SAMPLES_PER_CHUNK);
 
     // [5] convert output samples to 16-bit
-    if (asSamplesOut)
-      free(asSamplesOut);
-    asSamplesOut = (short*) calloc(numSamplesOut, sizeof(short));
-    if (!asSamplesOut)
-      return -1;	// out of memory
-    for (int i=0; i<numSamplesOut; i++)
+
+    vector<short> asSamplesOut(numSamplesOut);
+
+    for (int i = 0; i<numSamplesOut; i++)
       asSamplesOut[i] = ((long) (afSamplesOut[i] * ((float) (0x7fff))));
 
     // [6] write processed samples to output file
     //numSamplesWritten = fwrite(afSamplesOut, sizeof(float),
-    unsigned int numSamplesWritten = fwrite(asSamplesOut, sizeof(short),
+    unsigned int numSamplesWritten = fwrite(&asSamplesOut[0], sizeof(short),
                                             numSamplesOut, fOut);
 
     nTotalSamplesWritten += numSamplesWritten;
-
-    if (asSamplesOut)
-      {
-        free(asSamplesOut);
-        asSamplesOut = NULL;
-      }
   }
   return true;
 }
