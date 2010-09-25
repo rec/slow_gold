@@ -38,9 +38,9 @@ class Data : public UntypedData {
   friend class AppBase;
   typedef std::set<Listener*> Listeners;
 
-  Data(const File& file, AppBase* app) : UntypedData(file, &message_, app) {}
+  Data(const File& file, AppBase* app) : UntypedData(file, &proto_, app) {}
 
-  Proto message_;
+  Proto proto_;
   Listeners listeners_;
   CriticalSection listenerLock_;
 
@@ -55,7 +55,8 @@ Proto Data<Proto>::get() const {
   ScopedLock l(lock_);
 
   Proto p;
-  p.CopyFrom(message_);
+  readFromFile();
+  p.CopyFrom(proto_);
   return p;
 }
 

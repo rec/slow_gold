@@ -11,6 +11,8 @@ namespace proto {
 
 Operation* Field::apply(const Operation &op, Message* message) {
   Field field(message);
+  LOG(ERROR) << "OPSIZE!" << op.address_size();
+  
   for (const int32* i = op.address().begin(); i != op.address().end(); ++i) {
     if (!field.dereference(*i))
       return NULL;
@@ -45,6 +47,11 @@ bool Field::dereference(int32 tag) {
   }
 
   field_ = message_->GetDescriptor()->FindFieldByNumber(tag);
+  if (!field_) {
+    LOG(ERROR) << "Could not find field numbered " << tag
+               << " in class named " << message_->GetTypeName();
+    return false;
+  }
   if (field_->label() == FieldDescriptor::LABEL_REPEATED) {
     type_ = REPEATED;
     repeatCount_ = message_->GetReflection()->FieldSize(*message_, field_);

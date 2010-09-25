@@ -24,8 +24,8 @@ class AppBase {
     ScopedLock l(lock_);
     DataMap::const_iterator i = data_.find(filename);
     if (i == data_.end()) {
-      Data<Proto>* data = new Data<Proto>(appDir().getChildFile(filename.c_str()), this);
-      data->readFromFile();
+      File file = appDir().getChildFile(filename.c_str());
+      Data<Proto>* data = new Data<Proto>(file, this);
       data_[filename] = data;
       return data;
     }

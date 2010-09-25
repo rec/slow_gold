@@ -157,7 +157,6 @@ void MainPageK::sliderDragEnded(Slider* slider) {
   // TODO: this needs to be much more compact.
   rec::proto::Operation *op = rec::proto::set(
       rec::proto::Address(slow::proto::Preferences::kLoopWindowFieldNumber,
-                          0,
                           slow::proto::LoopWindow::kTimestretchFieldNumber,
                           isTime ?  :
                           audio::timescaler::TimeStretch::kPitchScaleFieldNumber));

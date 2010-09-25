@@ -31,7 +31,8 @@ class Wrappy : public Source {
   virtual void prepareToPlay(int s, double r) { source_->prepareToPlay(s, r);  }
   virtual void releaseResources() { source_->releaseResources(); }
 
-  class Offset;
+  int mod(int x) const { return util::mod(x, getTotalLength()); }
+
   class Position;
 
  protected:
@@ -39,25 +40,6 @@ class Wrappy : public Source {
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);
-};
-
-// Wrap a Source with an offset, measured in integer samples.
-class Wrappy::Offset : public Wrappy {
- public:
-  Offset(Source* source, int offset) : Wrappy(source), offset_(offset) {}
-
-  virtual int getNextReadPosition() const {
-    int position = source_->getNextReadPosition() + offset_;
-    return rec::util::mod(position, getTotalLength());
-  }
-
-  virtual void setNextReadPosition(int position) {
-    source_->setNextReadPosition((position - offset_) % getTotalLength());
-  }
-
- private:
-  const int offset_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Offset);
 };
 
 // A Source with an embedded Position.  Probably we should be

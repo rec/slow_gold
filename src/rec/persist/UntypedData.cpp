@@ -15,12 +15,16 @@ using rec::proto::Operation;
 UntypedData::UntypedData(const File& file, Message* message, AppBase* app)
     : file_(file),
       message_(message),
-      app_(app) {
+      app_(app),
+      alreadyReadFromFile_(false) {
 }
 
-void UntypedData::readFromFile() {
-  if (!copy(file_, message_))
-    LOG(ERROR) << "New file " << file_.getFullPathName().toCString();
+void UntypedData::readFromFile() const {
+  if (!alreadyReadFromFile_) {
+    if (!copy(file_, message_))
+      LOG(ERROR) << "New file " << file_.getFullPathName().toCString();
+    alreadyReadFromFile_ = true;
+  }
 }
 
 UntypedData::~UntypedData() {
@@ -42,6 +46,7 @@ void UntypedData::update() {
     if (queue_.empty())
       return;
 
+    readFromFile();
     for (OperationList::iterator i = queue_.begin(); i != queue_.end(); ++i)
       undo_.push_back(proto::applyOperation(**i, message_));
 
@@ -51,15 +56,18 @@ void UntypedData::update() {
   changeCallback();
 }
 
-void UntypedData::writeToFile() {
+void UntypedData::writeToFile() const {
   scoped_ptr<Message> msg;
   {
     ScopedLock l(lock_);
+    if (!alreadyReadFromFile_)
+      return;
+
     msg.reset(message_->New());
     msg->CopyFrom(*message_);
   }
 
-  copy(*msg, &file_);
+  copy(*msg, const_cast<File*>(&file_));
 }
 
 }  // namespace persist

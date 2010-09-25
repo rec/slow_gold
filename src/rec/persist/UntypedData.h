@@ -26,10 +26,10 @@ class UntypedData {
   friend class App;
 
   UntypedData(const File& file, Message* message, AppBase* app);
+  void readFromFile() const;
 
   void update();
-  void readFromFile();
-  void writeToFile();
+  void writeToFile() const;
 
   virtual void changeCallback() = 0;
 
@@ -39,9 +39,10 @@ class UntypedData {
   OperationList undo_;
 
   File file_;
-  Message* message_;
+  mutable Message* message_;
   AppBase* app_;
   CriticalSection lock_;
+  mutable bool alreadyReadFromFile_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedData);
 };

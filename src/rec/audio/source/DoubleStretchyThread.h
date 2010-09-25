@@ -17,6 +17,7 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
         Thread("DoubleStretchy"),
         waitTime_(d.inactive_wait_time()) {
     setPriority(d.thread_priority());
+    LOG_IF(ERROR, true) << "starting DoubleStretchyThread!";
     startThread();
   }
 
@@ -31,7 +32,7 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
       if (!(this->fillNext() || threadShouldExit()))
         wait(waitTime_);
     }
-    LOG_IF(ERROR, false) << "exiting";
+    LOG_IF(ERROR, true) << "exiting DoubleStretchyThread!";
   }
 
   void stop() {
