@@ -38,7 +38,8 @@ class Data : public UntypedData {
   friend class AppBase;
   typedef std::set<Listener*> Listeners;
 
-  Data(const File& file, AppBase* app) : UntypedData(file, &proto_, app) {}
+  Data(const File& file, AppBase* app)
+      : UntypedData(file, &proto_, app) {}
 
   Proto proto_;
   Listeners listeners_;

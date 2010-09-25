@@ -100,16 +100,16 @@ void protobuf_AddDesc_rec_2fevent_2fEvent_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::proto::protobuf_AddDesc_rec_2fproto_2fProto_2eproto();
+  ::rec::proto::protobuf_AddDesc_rec_2fproto_2fOperation_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\025rec/event/Event.proto\022\trec.event\032\025rec/"
-    "proto/Proto.proto\"\220\001\n\006Source\022$\n\004type\030\001 \001"
-    "(\0162\026.rec.event.Source.Type\022\r\n\005index\030\002 \003("
-    "\r\022\025\n\rmodifier_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU"
-    "\020\000\022\014\n\010KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMAT"
-    "IC\020\003\"f\n\005Event\022\021\n\ttimestamp\030\001 \001(\004\022!\n\006sour"
-    "ce\030\002 \003(\0132\021.rec.event.Source\022\'\n\toperation"
-    "\030\003 \003(\0132\024.rec.proto.Operation", 308);
+    "\n\025rec/event/Event.proto\022\trec.event\032\031rec/"
+    "proto/Operation.proto\"\220\001\n\006Source\022$\n\004type"
+    "\030\001 \001(\0162\026.rec.event.Source.Type\022\r\n\005index\030"
+    "\002 \003(\r\022\025\n\rmodifier_keys\030\003 \001(\r\":\n\004Type\022\010\n\004"
+    "MENU\020\000\022\014\n\010KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUT"
+    "OMATIC\020\003\"f\n\005Event\022\021\n\ttimestamp\030\001 \001(\004\022!\n\006"
+    "source\030\002 \003(\0132\021.rec.event.Source\022\'\n\topera"
+    "tion\030\003 \003(\0132\024.rec.proto.Operation", 312);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/event/Event.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();

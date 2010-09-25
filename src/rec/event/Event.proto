@@ -1,6 +1,6 @@
 package rec.event;
 
-import "rec/proto/Proto.proto";
+import "rec/proto/Operation.proto";
 
 message Source {
   enum Type {

@@ -63,9 +63,10 @@ DEF_ALL(sfixed32, Int32, SFIXED32)
 DEF_ALL(sfixed64, Int64, SFIXED64)
 DEF_ALL(sint32, Int32, SINT32)
 DEF_ALL(sint64, Int64, SINT64)
-
-
 // DEF_ALL(pmessage, Message, MESSAGE)
+// DEF_ALL(penum, Enum, ENUM)
+
+
 DEF_TYPE(pmessage, MESSAGE)
 COPY(pmessage, message)
 
@@ -101,7 +102,6 @@ void TypedTyper<pmessage>::Add(pmessage t) {
 }
 
 
-// DEF_ALL(penum, Enum, ENUM)
 DEF_TYPE(penum, ENUM)
 COPY(penum, enum)
 

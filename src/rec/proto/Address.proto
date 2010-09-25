@@ -1,0 +1,9 @@
+package rec.proto;
+
+message Address {
+  message Part {
+    optional int32 index = 1;
+    optional string name = 2;
+  };
+  repeated Part part = 1;
+};

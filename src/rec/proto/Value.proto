@@ -21,25 +21,3 @@ message Value {
   optional sint32 sint32_f = 17;
   optional sint64 sint64_f = 18;
 };
-
-message Operation {
-  enum Command {
-    APPEND = 0;
-    CLEAR = 1;
-    REMOVE = 2;
-    SET = 3;
-    SWAP = 4;
-    COMMAND_COUNT = 5;
-  };
-
-  optional Command command = 1;
-  repeated int32 address = 2;
-  repeated Value value = 3;
-
-  // Number of entries to remove from the end.
-  optional uint32 remove = 4 [default = 1];
-
-  // Used as an index for SWAP commands only.
-  optional uint32 swap1 = 5;
-  optional uint32 swap2 = 6;
-};

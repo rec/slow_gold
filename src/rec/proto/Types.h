@@ -5,7 +5,7 @@
 
 #include <google/protobuf/descriptor.h>
 #include "rec/base/basictypes.h"
-#include "rec/proto/Proto.pb.h"
+#include "rec/proto/Operation.pb.h"
 
 namespace rec {
 namespace proto {

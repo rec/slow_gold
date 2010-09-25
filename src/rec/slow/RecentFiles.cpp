@@ -45,6 +45,7 @@ void addRecentFile(const std::string& filename) {
   }
 
   rec::proto::Operation *op;
+#if 0
   if (!found && recent->file_size() < recent->max_files()) {
     op = rec::proto::append(
       rec::proto::Address(slow::proto::Preferences::kRecentFilesFieldNumber,
@@ -55,13 +56,13 @@ void addRecentFile(const std::string& filename) {
                           RecentFiles::kFileFieldNumber,
                           slot));
   }
-
   RecentFile r;
   r.set_timestamp(timestamp);
   r.set_name(filename);
 
   rec::proto::addValue(rec::proto::pmessage(r), op);
   applyOperation(op);
+#endif
 }
 
 }  // namespace slow

@@ -5,7 +5,7 @@
 #include "rec/persist/Copy.h"
 #include "rec/slow/Preferences.pb.h"
 #include "rec/slow/RecentFiles.h"
-#include "rec/proto/Proto.pb.h"
+#include "rec/proto/Proto.h"
 
 namespace rec {
 namespace slow {

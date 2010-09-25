@@ -14,6 +14,7 @@ Operation* applyOperation(const Operation& operation,
   return Field::apply(operation, msg);
 }
 
+#if 0
 Operation* createOperation(Operation::Command command, ...) {
   Operation *op = new Operation();
   op->set_command(command);
@@ -57,26 +58,7 @@ Operation* swap(const Address& address, Tag s1, Tag s2) {
   op->set_swap2(s2);
   return op;
 }
-
-#if 0
-// TODO: consolidate this with TypedTyper and make it vanish...
-template <> Operation* addValue<double>(double t, Operation* op);
-template <> Operation* addValue<float>(float t, Operation* op);
-template <> Operation* addValue<int64>(int64 t, Operation* op);
-template <> Operation* addValue<uint64>(uint64 t, Operation* op);
-template <> Operation* addValue<int32>(int32 t, Operation* op);
-template <> Operation* addValue<uint32>(uint32 t, Operation* op);
-template <> Operation* addValue<bool>(bool t, Operation* op);
-template <> Operation* addValue<string>(string t, Operation* op);
-template <> Operation* addValue<bytes>(bytes t, Operation* op);
-template <> Operation* addValue<fixed32>(fixed32 t, Operation* op);
-template <> Operation* addValue<fixed64>(fixed64 t, Operation* op);
-template <> Operation* addValue<sfixed32>(sfixed32 t, Operation* op);
-template <> Operation* addValue<sfixed64>(sfixed64 t, Operation* op);
-template <> Operation* addValue<sint32>(sint32 t, Operation* op);
-template <> Operation* addValue<sint64>(sint64 t, Operation* op);
-template <> Operation* addValue<pmessage>(pmessage t, Operation* op);
-template <> Operation* addValue<penum>(penum t, Operation* op);
 #endif
+
 }  // namespace proto
 }  // namespace rec

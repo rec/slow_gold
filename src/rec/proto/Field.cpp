@@ -11,17 +11,15 @@ namespace proto {
 
 Operation* Field::apply(const Operation &op, Message* message) {
   Field field(message);
-  LOG(ERROR) << "OPSIZE!" << op.address_size();
-  
-  for (const int32* i = op.address().begin(); i != op.address().end(); ++i) {
-    if (!field.dereference(*i))
+  for (int i = 0; i < op.address().part_size(); ++i) {
+    if (!field.dereference(op.address().part(i)))
       return NULL;
   }
 
   return field.apply(op);
 }
 
-bool Field::dereference(int32 tag) {
+bool Field::dereference(const arg::Address::Part& part) {
   if (field_) {
     const Reflection& r = *message_->GetReflection();
     if (type_ == INDEXED) {
@@ -33,12 +31,18 @@ bool Field::dereference(int32 tag) {
       }
 
     } else if (type_ == REPEATED) {
-      if (tag >= repeatCount_) {
-        LOG(ERROR) << "Index " << tag << " out of bounds " << repeatCount_;
+      if (!part.has_index()) {
+        LOG(ERROR) << "Repeated has no index ";
         return false;
       }
+      int32 index = part.index();
+      if (index >= repeatCount_) {
+        LOG(ERROR) << "Index " << index << " out of bounds " << repeatCount_;
+        return false;
+      }
+
       type_ = INDEXED;
-      index_ = tag;
+      index_ = index;
       return true;
 
     } else {
@@ -46,9 +50,14 @@ bool Field::dereference(int32 tag) {
     }
   }
 
-  field_ = message_->GetDescriptor()->FindFieldByNumber(tag);
+  if (!part.has_name()) {
+    LOG(ERROR) << "Expected a name at this point";
+    return false;
+  }
+
+  field_ = message_->GetDescriptor()->FindFieldByName(part.name());
   if (!field_) {
-    LOG(ERROR) << "Could not find field numbered " << tag
+    LOG(ERROR) << "Could not find field named " << part.name()
                << " in class named " << message_->GetTypeName();
     return false;
   }
@@ -58,11 +67,6 @@ bool Field::dereference(int32 tag) {
   } else {
     type_ = SINGLE;
     repeatCount_ = 1;
-  }
-
-  if (!field_) {
-    LOG(ERROR) << "No submessage with tag=" << tag << ", index=" << index;
-    return false;
   }
 
   return true;

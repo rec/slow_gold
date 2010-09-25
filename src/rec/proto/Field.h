@@ -3,8 +3,10 @@
 
 #include "rec/base/basictypes.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/proto/Proto.pb.h"
+#include "rec/proto/Value.pb.h"
+#include "rec/proto/Operation.pb.h"
 #include "rec/proto/Types.h"
+#include "rec/proto/Address.h"
 
 namespace rec {
 namespace proto {
@@ -18,7 +20,7 @@ class Field {
         field_(NULL) {
   }
 
-  bool dereference(int32 tag);
+  bool dereference(const arg::Address::Part& part);
   Operation* apply(const Operation& op);
 
   bool copyFrom(const Value& value);
@@ -56,7 +58,6 @@ class Field {
   Operation* undo_;
   const Operation* operation_;
 };
-
 
 }  // namespace proto
 }  // namespace rec

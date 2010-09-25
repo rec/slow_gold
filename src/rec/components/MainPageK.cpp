@@ -154,6 +154,7 @@ void MainPageK::sliderDragEnded(Slider* slider) {
   if (!isTime && slider != peer_->pitchScaleSlider)
     return;
 
+#if 0  
   // TODO: this needs to be much more compact.
   rec::proto::Operation *op = rec::proto::set(
       rec::proto::Address(slow::proto::Preferences::kLoopWindowFieldNumber,
@@ -162,6 +163,7 @@ void MainPageK::sliderDragEnded(Slider* slider) {
                           audio::timescaler::TimeStretch::kPitchScaleFieldNumber));
   rec::proto::addValue((double)slider->getValue(), op);
   applyOperation(op);
+#endif
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
