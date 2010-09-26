@@ -29,7 +29,7 @@ class UntypedData : public Setter::Listener {
   Setter* setter() { return &setter_; }
   
  protected:
-  friend class App;
+  friend class AppInstance;
 
   UntypedData(const File& file, Message* message, AppBase* app);
   void readFromFile() const;

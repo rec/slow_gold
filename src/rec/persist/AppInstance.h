@@ -1,5 +1,5 @@
-#ifndef __REC_PERSIST_APP__
-#define __REC_PERSIST_APP__
+#ifndef __REC_PERSIST_APPINSTANCE__
+#define __REC_PERSIST_APPINSTANCE__
 
 #include <set>
 #include <string>
@@ -17,7 +17,7 @@ namespace persist {
 
 class UntypedData;
 
-class App : public AppBase {
+class AppInstance : public AppBase {
  public:
   static const int UPDATE_PRIORITY = 5;
   static const int UPDATE_PERIOD = 100;
@@ -35,13 +35,13 @@ class App : public AppBase {
   static void stop();
   static File appDir(const string& name);
 
-  static App* getInstance() { return instance_; }
+  static AppInstance* getInstance() { return instance_; }
 
   typedef std::set<UntypedData*> DataSet;
 
 private:
-  explicit App(const string& appName);
-  virtual ~App();
+  explicit AppInstance(const string& appName);
+  virtual ~AppInstance();
 
   const File appDir_;
   CriticalSection lock_;
@@ -52,12 +52,12 @@ private:
   thread::RunnableThread updateThread_;
   thread::RunnableThread writeThread_;
 
-  static App* instance_;
+  static AppInstance* instance_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(App);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(AppInstance);
 };
 
 }  // namespace persist
 }  // namespace rec
 
-#endif  // __REC_PERSIST_APP__
+#endif  // __REC_PERSIST_APPINSTANCE__

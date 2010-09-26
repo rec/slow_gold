@@ -1,15 +1,15 @@
-#include "rec/persist/App.h"
+#include "rec/persist/AppInstance.h"
 #include "rec/thread/CallbackLoop.h"
 
 namespace rec {
 namespace persist {
 
-App::App(const std::string& appName)
+AppInstance::AppInstance(const std::string& appName)
     : AppBase(appName),
       updateThread_("App::update",
-                    thread::callbackLoop(UPDATE_PERIOD, this, &App::update)),
+                    thread::callbackLoop(UPDATE_PERIOD, this, &AppInstance::update)),
       writeThread_("App::write",
-                   thread::callbackLoop(WRITE_PERIOD, this, &App::write)) {
+                   thread::callbackLoop(WRITE_PERIOD, this, &AppInstance::write)) {
   CHECK(appName.length());
   appDir_.createDirectory();
 
@@ -20,13 +20,13 @@ App::App(const std::string& appName)
   writeThread_.startThread();
 }
 
-App::~App() {
+AppInstance::~AppInstance() {
   updateThread_.stopThread(1000);
   writeThread_.stopThread(1000);
 }
 
 // A piece of data got new information!
-void App::needsUpdate(UntypedData* data) {
+void AppInstance::needsUpdate(UntypedData* data) {
   {
     ScopedLock l(lock_);
     updateData_.insert(data);
@@ -51,7 +51,7 @@ void extendAndClear(Container *from, Container *to, CriticalSection* lock) {
   }
 }
 
-void App::update() {
+void AppInstance::update() {
   if (lockedEmpty(updateData_, &lock_))
     return;
 
@@ -64,7 +64,7 @@ void App::update() {
   writeThread_.notify();
 }
 
-void App::write() {
+void AppInstance::write() {
   if (lockedEmpty(writeData_, &lock_))
     return;
 
@@ -75,21 +75,21 @@ void App::write() {
     (*i)->writeToFile();
 }
 
-void App::start(const string& name) {
+void AppInstance::start(const string& name) {
   CHECK(!instance_);
-  instance_ = new App(name);
+  instance_ = new AppInstance(name);
 }
 
-void App::stop() {
+void AppInstance::stop() {
   CHECK(instance_);
   delete instance_;
   instance_ = NULL;
 }
 
-App* App::instance_ = NULL;
+AppInstance* AppInstance::instance_ = NULL;
 
 AppBase* getApp() {
-  return App::getInstance();
+  return AppInstance::getInstance();
 }
 
 }  // namespace persist

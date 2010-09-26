@@ -6,7 +6,6 @@
 
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/persist/App.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
