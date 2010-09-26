@@ -10,10 +10,10 @@
 namespace rec {
 namespace persist {
 
-AppBase* getApp();
+App* getApp();
 class UntypedData;
 
-class AppBase {
+class App {
  public:
   typedef std::string string;
   typedef std::map<string, UntypedData*> DataMap;
@@ -35,7 +35,7 @@ class AppBase {
 
   const string& name() const { return name_; }
 
-  virtual ~AppBase() {
+  virtual ~App() {
     stl::deleteMapPointers(&data_);
   }
 
@@ -47,7 +47,7 @@ class AppBase {
 
  protected:
   friend class UntypedData;
-  explicit AppBase(const string& name) : name_(name) {}
+  explicit App(const string& name) : name_(name) {}
 
   virtual void needsUpdate(UntypedData* data) = 0;
 
@@ -55,7 +55,7 @@ class AppBase {
   CriticalSection lock_;
   const string name_;
 
-  DISALLOW_COPY_AND_ASSIGN(AppBase);
+  DISALLOW_COPY_AND_ASSIGN(App);
 };
 
 }  // namespace persist

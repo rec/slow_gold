@@ -10,7 +10,7 @@
 namespace rec {
 namespace persist {
 
-class AppBase;
+class App;
 
 template <typename Proto>
 class Data : public UntypedData {
@@ -34,10 +34,10 @@ class Data : public UntypedData {
   virtual void changeCallback();
 
  private:
-  friend class AppBase;
+  friend class App;
   typedef std::set<Listener*> Listeners;
 
-  Data(const File& file, AppBase* app) : UntypedData(file, &proto_, app) {}
+  Data(const File& file, App* app) : UntypedData(file, &proto_, app) {}
 
   Proto proto_;
   Listeners listeners_;

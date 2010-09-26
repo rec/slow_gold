@@ -13,8 +13,9 @@ namespace rec {
 namespace persist {
 
 typedef proto::arg::Setter Setter;
-class AppBase;
+
 class App;
+class AppInstance;
 
 class UntypedData : public Setter::Listener {
  public:
@@ -27,11 +28,11 @@ class UntypedData : public Setter::Listener {
   virtual void change(proto::Operation* op);
 
   Setter* setter() { return &setter_; }
-  
+
  protected:
   friend class AppInstance;
 
-  UntypedData(const File& file, Message* message, AppBase* app);
+  UntypedData(const File& file, Message* message, App* app);
   void readFromFile() const;
 
   void update();
@@ -48,7 +49,7 @@ class UntypedData : public Setter::Listener {
   mutable Message* message_;
   Setter setter_;
 
-  AppBase* app_;
+  App* app_;
   CriticalSection lock_;
   mutable bool alreadyReadFromFile_;
 

@@ -3,7 +3,7 @@
 #include "rec/persist/UntypedData.h"
 
 #include "rec/base/scoped_ptr.h"
-#include "rec/persist/AppBase.h"
+#include "rec/persist/App.h"
 #include "rec/persist/Copy.h"
 #include "rec/proto/Proto.h"
 #include "rec/util/STL.h"
@@ -13,7 +13,7 @@ namespace persist {
 
 using rec::proto::Operation;
 
-UntypedData::UntypedData(const File& file, Message* message, AppBase* app)
+UntypedData::UntypedData(const File& file, Message* message, App* app)
     : file_(file),
       message_(message),
       setter_(this),

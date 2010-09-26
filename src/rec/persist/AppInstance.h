@@ -5,7 +5,7 @@
 #include <string>
 #include <glog/logging.h>
 
-#include "rec/persist/AppBase.h"
+#include "rec/persist/App.h"
 #include "rec/persist/Data.h"
 #include "rec/util/STL.h"
 #include "rec/thread/RunnableThread.h"
@@ -17,7 +17,7 @@ namespace persist {
 
 class UntypedData;
 
-class AppInstance : public AppBase {
+class AppInstance : public App {
  public:
   static const int UPDATE_PRIORITY = 5;
   static const int UPDATE_PERIOD = 100;

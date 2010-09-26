@@ -35,10 +35,10 @@ class TypedData : public Data {
   virtual void changeCallback();
 
  private:
-  friend class AppBase;
+  friend class App;
   typedef std::set<Listener*> Listeners;
 
-  TypedData(const File& file, AppBase* app)
+  TypedData(const File& file, App* app)
       : Data(file, &message_),
         app_(static_cast<App*>(app)) {
   }
