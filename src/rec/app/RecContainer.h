@@ -9,11 +9,9 @@
 
 namespace rec {
 
-class RecContainer : public ComponentContainer<RecWindow> {
+class RecContainer : public ComponentContainer {
  public:
-  RecContainer(RecWindow* window)
-      : ComponentContainer<RecWindow>(window),
-        mainPage_(new MainPageComponent) {
+  RecContainer() : mainPage_(new MainPageComponent) {
     show(mainPage_);
   }
 

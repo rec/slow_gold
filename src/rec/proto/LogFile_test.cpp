@@ -50,6 +50,8 @@ TEST(LogFile, OneRecord) {
     EXPECT_EQ(op.address().field(0).index(), 3);
     EXPECT_EQ(op.address().field(1).name(), "fred");
     EXPECT_EQ(op.value(0).uint32_f(), 5);
+
+    EXPECT_EQ(file.getSize(), 21);
   }
 }
 
@@ -96,6 +98,7 @@ TEST(LogFile, TwoRecords) {
     EXPECT_EQ(op.value_size(), 0);
     EXPECT_EQ(op.swap1(), 2);
     EXPECT_EQ(op.swap2(), 3);
+    EXPECT_EQ(file.getSize(), 34);
   }
 }
 

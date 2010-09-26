@@ -5,18 +5,16 @@
 
 namespace rec {
 
-template <typename WindowType>
 class ComponentContainer
   : public Component,
     public MenuBarModel,
     public ApplicationCommandTarget {
 
  protected:
-  WindowType* _window;
   Component* _component;
 
  public:
-  ComponentContainer(WindowType* window) : _window(window), _component(NULL) {}
+  ComponentContainer() : _component(NULL) {}
 
   void show(Component* component) {
     if (_component) {

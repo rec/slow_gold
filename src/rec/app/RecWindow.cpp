@@ -12,7 +12,7 @@ RecWindow::RecWindow()
   setResizable (true, false); // resizability is a property of ResizableWindow
   setResizeLimits (400, 300, 8192, 8192);
 
-  RecContainer* recContainer = new RecContainer(this);
+  RecContainer* recContainer = new RecContainer();
 
   commandManager.registerAllCommandsForTarget(recContainer);
   commandManager.registerAllCommandsForTarget(JUCEApplication::getInstance());
