@@ -11,15 +11,15 @@ namespace proto {
 
 Operation* Field::apply(const Operation &op, Message* message) {
   Field field(message);
-  for (int i = 0; i < op.address().part_size(); ++i) {
-    if (!field.dereference(op.address().part(i)))
+  for (int i = 0; i < op.address().field_size(); ++i) {
+    if (!field.dereference(op.address().field(i)))
       return NULL;
   }
 
   return field.apply(op);
 }
 
-bool Field::dereference(const arg::Address::Part& part) {
+bool Field::dereference(const proto::AField& afield) {
   if (field_) {
     const Reflection& r = *message_->GetReflection();
     if (type_ == INDEXED) {
@@ -31,11 +31,11 @@ bool Field::dereference(const arg::Address::Part& part) {
       }
 
     } else if (type_ == REPEATED) {
-      if (!part.has_index()) {
+      if (!afield.has_index()) {
         LOG(ERROR) << "Repeated has no index ";
         return false;
       }
-      int32 index = part.index();
+      int32 index = afield.index();
       if (index >= repeatCount_) {
         LOG(ERROR) << "Index " << index << " out of bounds " << repeatCount_;
         return false;
@@ -50,14 +50,14 @@ bool Field::dereference(const arg::Address::Part& part) {
     }
   }
 
-  if (!part.has_name()) {
+  if (!afield.has_name()) {
     LOG(ERROR) << "Expected a name at this point";
     return false;
   }
 
-  field_ = message_->GetDescriptor()->FindFieldByName(part.name());
+  field_ = message_->GetDescriptor()->FindFieldByName(afield.name());
   if (!field_) {
-    LOG(ERROR) << "Could not find field named " << part.name()
+    LOG(ERROR) << "Could not find field named " << afield.name()
                << " in class named " << message_->GetTypeName();
     return false;
   }
@@ -139,7 +139,7 @@ bool Field::doRemove(int toRemove) {
   undo_->set_command(Operation::APPEND);
 
   Field f = *this;
-  f.dereference(0);
+  f.dereference(arg::AField(0));
   if (toRemove < 0)
     toRemove = f.repeatCount_;
 

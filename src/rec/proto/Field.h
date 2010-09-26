@@ -20,7 +20,7 @@ class Field {
         field_(NULL) {
   }
 
-  bool dereference(const arg::Address::Part& part);
+  bool dereference(const AField& part);
   Operation* apply(const Operation& op);
 
   bool copyFrom(const Value& value);

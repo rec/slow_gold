@@ -26,7 +26,6 @@ class Data : public UntypedData {
   // Add a listener so you get notified every time the data changes.
   bool addListener(Listener* ls);
   bool removeListener(Listener* ls);
-
   virtual void change(proto::Operation* op) { UntypedData::change(op); }
 
   virtual ~Data() {}
@@ -38,13 +37,11 @@ class Data : public UntypedData {
   friend class AppBase;
   typedef std::set<Listener*> Listeners;
 
-  Data(const File& file, AppBase* app)
-      : UntypedData(file, &proto_, app) {}
+  Data(const File& file, AppBase* app) : UntypedData(file, &proto_, app) {}
 
   Proto proto_;
   Listeners listeners_;
   CriticalSection listenerLock_;
-
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Data);
 };
 

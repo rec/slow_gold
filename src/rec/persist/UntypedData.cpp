@@ -1,9 +1,10 @@
 #include <glog/logging.h>
 
 #include "rec/persist/UntypedData.h"
+
 #include "rec/base/scoped_ptr.h"
-#include "rec/persist/Copy.h"
 #include "rec/persist/AppBase.h"
+#include "rec/persist/Copy.h"
 #include "rec/proto/Proto.h"
 #include "rec/util/STL.h"
 
@@ -15,6 +16,7 @@ using rec::proto::Operation;
 UntypedData::UntypedData(const File& file, Message* message, AppBase* app)
     : file_(file),
       message_(message),
+      setter_(this),
       app_(app),
       alreadyReadFromFile_(false) {
 }

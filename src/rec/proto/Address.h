@@ -8,16 +8,17 @@ namespace rec {
 namespace proto {
 namespace arg {
 
-struct Address : public proto::Address {
-  struct Part : public proto::Address::Part {
-    Part(const std::string& s) { set_name(s); }
-    Part(const char* s) { set_name(s); }
-    Part(int i) { set_index(i); }
-    Part(const proto::Address::Part& part) { CopyFrom(part); }
-  };
+struct AField : public proto::AField {
+  AField(const std::string& s) { set_name(s); }
+  AField(const char* s) { set_name(s); }
+  AField(int i) { set_index(i); }
+  AField(const proto::AField& afield) { CopyFrom(afield); }
+};
 
-  typedef const Part& P;
-  void p(P x) { add_part()->CopyFrom(x); }
+
+struct Address : public proto::Address {
+  typedef const AField& P;
+  void p(P x) { add_field()->CopyFrom(x); }
 
   Address() {}
   Address(P a) { p(a); }

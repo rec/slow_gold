@@ -1,6 +1,7 @@
 #include "rec/slow/RecentFiles.h"
 #include "rec/slow/Preferences.h"
 #include "rec/proto/Proto.h"
+#include "rec/proto/Types.h"
 
 namespace rec {
 namespace slow {
@@ -25,8 +26,8 @@ RecentFiles getSortedRecentFiles() {
 
 void addRecentFile(const std::string& filename) {
   int64 timestamp = Time::currentTimeMillis();
-  proto::Preferences prefs = getPreferences();
-  RecentFiles* recent = prefs.mutable_recent_files();
+  proto::Preferences pref = getPreferences();
+  RecentFiles* recent = pref.mutable_recent_files();
 
   int64 least = timestamp;
   int slot = 0;
@@ -37,32 +38,24 @@ void addRecentFile(const std::string& filename) {
     if (file->name() == filename) {
       slot = i;
       found = true;
-      
+
     } else if (file->timestamp() < least) {
       least = file->timestamp();
       slot = i;
     }
   }
 
-  rec::proto::Operation *op;
-#if 0
-  if (!found && recent->file_size() < recent->max_files()) {
-    op = rec::proto::append(
-      rec::proto::Address(slow::proto::Preferences::kRecentFilesFieldNumber,
-                          RecentFiles::kFileFieldNumber));
-  } else {
-    op = rec::proto::set(
-      rec::proto::Address(slow::proto::Preferences::kRecentFilesFieldNumber,
-                          RecentFiles::kFileFieldNumber,
-                          slot));
-  }
+
   RecentFile r;
   r.set_timestamp(timestamp);
   r.set_name(filename);
 
-  rec::proto::addValue(rec::proto::pmessage(r), op);
-  applyOperation(op);
-#endif
+  rec::proto::pmessage msg(r);
+
+  if (!found && recent->file_size() < recent->max_files()) 
+    prefs()->setter()->append("recent_files", "file", msg);
+  else 
+    prefs()->setter()->set("recent_files", "file", slot, msg);
 }
 
 }  // namespace slow

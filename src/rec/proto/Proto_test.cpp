@@ -9,7 +9,8 @@ namespace rec {
 namespace proto {
 
 TEST(Proto, CreateOperation) {
-#if 0
+
+#ifdef PROTO_SET
   test::TestData3 test;
   scoped_ptr<Operation> operation(createOperation(Operation::SET, NULL));
 

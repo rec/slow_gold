@@ -17,10 +17,6 @@ inline Data* prefs() {
   return prefs;
 }
 
-inline void applyOperation(rec::proto::Operation* op) {
-  prefs()->change(op);
-}
-
 inline const proto::Preferences getPreferences() {
   return prefs()->get();
 }

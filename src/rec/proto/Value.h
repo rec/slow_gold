@@ -27,11 +27,10 @@ class Value : public proto::Value {
   Value(sfixed64 x) { set_sfixed64_f(x); }
   Value(sint32 x) { set_sint32_f(x); }
   Value(sint64 x) { set_sint64_f(x); }
-  Value(pmessage x) { set_pmessage_f(x); }
-  Value(penum x) { set_penum_f(x); }
+  Value(pmessage x) { set_message_f(x); }
+  Value(penum x) { set_enum_f(x); }
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Value);
+  Value(const proto::Value v) : proto::Value(v) {}
 };
 
 }  // namespace arg

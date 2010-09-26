@@ -17,7 +17,7 @@ namespace proto {
 
 Operation* applyOperation(const Operation& operation, Message* msg);
 
-#if 0
+#ifdef PROTO_SET
 Operation* createOperation(Operation::Command command, ...);
 
 Operation* append(const Address& address);

@@ -17,14 +17,24 @@
 #include "rec/thread/Callback.h"
 
 using rec::audio::timescaler::TimeStretch;
+
+using rec::gui::ThreadDescription;
 using rec::gui::ThumbnailDescription;
+using rec::gui::ThumbnailDescription;
+
 using rec::persist::copy;
 
-// TODO: why can't this be defined in the .h with other primitives?!
+using rec::thread::Callback;
+using rec::thread::LockedMessage;
+using rec::thread::Runnable;
+using rec::thread::RunnableThread;
+using rec::thread::WaitLoop;
+using rec::thread::makeCallback;
 
 namespace rec {
 namespace slow {
 
+// TODO: why can't this be defined in the .h with other primitives?!
 const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
 const Colour MainPageK::FOREGROUND = Colours::white;
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
@@ -37,14 +47,6 @@ MainPageK::MainPageK(AudioDeviceManager* d)
     cdNames_(AudioCDBurner::findAvailableDevices()) {
 }
 
-using rec::gui::ThreadDescription;
-using rec::gui::ThumbnailDescription;
-using rec::thread::Callback;
-using rec::thread::LockedMessage;
-using rec::thread::Runnable;
-using rec::thread::RunnableThread;
-using rec::thread::WaitLoop;
-using rec::thread::makeCallback;
 
 static Thread* makeCursorThread(MainPageK* main) {
   ThreadDescription thumbnail(slow::getPreferences().thumbnail().cursor_thread());
@@ -150,20 +152,12 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 }
 
 void MainPageK::sliderDragEnded(Slider* slider) {
-  bool isTime = (slider == peer_->timeScaleSlider);
-  if (!isTime && slider != peer_->pitchScaleSlider)
-    return;
+  double v = slider->getValue();
+  if (slider == peer_->timeScaleSlider)
+    prefs()->setter()->set("loop_window", "timestretch", "time_scale", v);
 
-#if 0  
-  // TODO: this needs to be much more compact.
-  rec::proto::Operation *op = rec::proto::set(
-      rec::proto::Address(slow::proto::Preferences::kLoopWindowFieldNumber,
-                          slow::proto::LoopWindow::kTimestretchFieldNumber,
-                          isTime ?  :
-                          audio::timescaler::TimeStretch::kPitchScaleFieldNumber));
-  rec::proto::addValue((double)slider->getValue(), op);
-  applyOperation(op);
-#endif
+  else if (slider == peer_->pitchScaleSlider)
+    prefs()->setter()->set("loop_window", "timestretch", "pitch_scale", v);
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
