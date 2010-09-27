@@ -1,16 +1,34 @@
 // Wrap an incoming AudioSource, and time-stretch it.
 
 #include "rec/audio/source/DoubleStretchy.h"
+#include "rec/audio/source/Offset.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
+using rec::audio::timescaler::TimeStretch;
+
+struct SourceReader {
+  TimeStretch description_;
+
+  scoped_ptr<Source> source_;
+  scoped_ptr<Source> stretchy_;
+  scoped_ptr<Source> offset_;
+  scoped_ptr<Buffery> buffered_;
+
+  void reset(const TimeStretch& description, int offset) {
+    description_.CopyFrom(description);
+    stretchy_.reset(new Stretchy(description_, source_.get()));
+    offset_.reset(new Offset(stretchy_.get(), offset));
+    buffered_.reset(new Buffery(description_.channels(), stretchy_.get()));
+  }
+};
+
 DoubleStretchy::DoubleStretchy(const TimeStretch& description,
                                Source* s0,
                                Source* s1)
-    : position_(0),
-      descriptionChanged_(false),
+    : descriptionChanged_(false),
       description_(description),
       gettingBlock_(false),
       source_(new SourceReader),
@@ -19,6 +37,8 @@ DoubleStretchy::DoubleStretchy(const TimeStretch& description,
   nextSource_->source_.reset(s1);
   source_->reset(description, 0);
 }
+
+DoubleStretchy::~DoubleStretchy() {}
 
 void DoubleStretchy::setDescription(const TimeStretch& description) {
   ScopedLock l(lock_);
@@ -37,19 +57,9 @@ int DoubleStretchy::getNextReadPosition() const {
 }
 
 void DoubleStretchy::setNextReadPosition(int position) {
+  LOG(INFO) << "setNextReadPosition " << position;
   ScopedLock l(lock_);
-  if (position_ <= getTotalLength()) {
-    source_->offset_ = 0;
-    nextSource_->offset_ = 0;
-  }
-
-  if (source_->buffered_)
-    source_->buffered_->setNextReadPosition(position + source_->offset_);
-
-  if (nextSource_->buffered_)
-    nextSource_->buffered_->setNextReadPosition(position + nextSource_->offset_);
-
-  position_ = position;
+  source()->setNextReadPosition(position);
 }
 
 int DoubleStretchy::available() const {
@@ -107,8 +117,16 @@ bool DoubleStretchy::fillNext() {
 
       float scale = description_.time_scale() /
         source_->description_.time_scale();
-      int offset = (position_ + source_->offset_) * scale - position_;
+
+#if 0
+      int offset = (position_ + source_->offset_) * scale -
+        getNextReadPosition();
+#else
+      int offset = 0;
+#endif
       nextSource_->reset(description_, offset);
+      LOG(INFO) << "scale: " << scale << "pos: " << getNextReadPosition()
+                 << " offset: " << offset;
     }
 
     return result || next();
@@ -116,6 +134,7 @@ bool DoubleStretchy::fillNext() {
 }
 
 void DoubleStretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  LOG(INFO) << "getNextAudioBlock " << getNextReadPosition();
   ScopedLock l(lock_);
   Source* buffered = source();
 
@@ -140,6 +159,20 @@ void DoubleStretchy::setLooping(bool looping) {
   if (nextSource_->buffered_)
     nextSource_->buffered_->setLooping(looping);
 }
+
+
+Buffery* DoubleStretchy::source() {
+  return source_->buffered_.get();
+}
+
+const Buffery* DoubleStretchy::source() const {
+  return source_->buffered_.get();
+}
+
+Buffery* DoubleStretchy::next() {
+  return nextSource_->buffered_.get();
+}
+
 
 }  // namespace source
 }  // namespace audio

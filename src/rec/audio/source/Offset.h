@@ -13,16 +13,18 @@ class Offset : public Wrappy {
   Offset(Source* source, int offset) : Wrappy(source), offset_(offset) {}
 
   virtual int getNextReadPosition() const {
-    int position = source_->getNextReadPosition() + offset_;
-    return rec::util::mod(position, getTotalLength());
+    return mod(source_->getNextReadPosition() + offset_);
   }
 
   virtual void setNextReadPosition(int position) {
-    source_->setNextReadPosition((position - offset_) % getTotalLength());
+    source_->setNextReadPosition(mod(position - offset_));
   }
 
+  int offset() const { return offset_; }
+  void setOffset(int offset) { offset_ = offset; }
+
  private:
-  const int offset_;
+  int offset_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Offset);
 };
 

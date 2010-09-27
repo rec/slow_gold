@@ -33,6 +33,8 @@ class App {
     return static_cast<Data<Proto>*>(i->second);
   }
 
+  ApplicationCommandManager* getCommandManager() { return &commandManager_; }
+
   const string& name() const { return name_; }
 
   virtual ~App() {
@@ -54,6 +56,7 @@ class App {
   DataMap data_;
   CriticalSection lock_;
   const string name_;
+  ApplicationCommandManager commandManager_;
 
   DISALLOW_COPY_AND_ASSIGN(App);
 };

@@ -17,7 +17,9 @@ class Wrappy : public Source {
  public:
   Wrappy(Source* source) : source_(source) {}
 
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) = 0;
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
+    source_->getNextAudioBlock(info); 
+  }
 
   virtual int getTotalLength() const { return source_->getTotalLength(); }
 

@@ -13,34 +13,23 @@ namespace rec {
 namespace audio {
 namespace source {
 
-// Macros are a BAD idea.  Don't do this.  :-D  Craving C++0x.
-#define _MWFE(E, ITER, S)\
- for (ITER i = S.begin(); i != S.end(); ++i) { E; }
-
-#define MWFE(E)\
- _MWFE(E, SourceVector::iterator, source_)
-
-#define MWFEC(E, V)\
- _MWFE(return E, SourceVector::const_iterator, source_);\
- return V;
-
 class MultiWrappy : public Source {
  public:
   typedef std::vector<Source*> SourceVector;
 
-  MultiWrappy() {}
+  MultiWrappy() : i_(0) {}
 
-  MultiWrappy(Source* s) {
+  MultiWrappy(Source* s) : i_(0) {
     source_.push_back(s);
   }
 
-  MultiWrappy(Source* s1, Source* s2) {
+  MultiWrappy(Source* s1, Source* s2) : i_(0) {
     source_.push_back(s1);
     source_.push_back(s2);
   }
 
   MultiWrappy(Source** s1, Source** s2)
-      : source_(s1, s2) {
+      : source_(s1, s2), i_(0) {
   }
 
   template <typename Iterator>
@@ -52,18 +41,31 @@ class MultiWrappy : public Source {
 
   ~MultiWrappy() { MWFE(delete *i); }
 
+  int getTotalLength() const      { return source_[i_]->getTotalLength(); }
+  int getNextReadPosition() const { return source_[i_]->getNextReadPosition(); }
+  bool isLooping() const          { return source_[i_]->isLooping()); }
+
   void getNextAudioBlock(const AudioSourceChannelInfo& info) {
-    MWFE((*i)->getNextAudioBlock(info));
+    source_[i_]->getNextAudioBlock();
+    int position = getNextReadPosition();
+    for (int i = 0; i < source_.size(); ++i)
+      if (i != i_)
+        source[i]->setNextReadPosition(position);
+    }
   }
 
-  int getTotalLength() const          { MWFEC((*i)->getTotalLength(), 0); }
-  int getNextReadPosition() const     { MWFEC((*i)->getNextReadPosition(), 0); }
-  bool isLooping() const              { MWFEC((*i)->isLooping(), false); }
+// Macros are a BAD idea.  Don't do this.  :-D  Craving C++0x.
+#define MWFE(E)                                                     \
+  for (SourceVector::iterator i = source_.begin(); i != source.end(); ++i) { \
+    E;                                                                  \
+  }
 
   void setNextReadPosition(int p)     { MWFE((*i)->setNextReadPosition(p)); }
   void setLooping(bool looping)       { MWFE((*i)->setLooping(looping)); }
   void prepareToPlay(int s, double r) { MWFE((*i)->prepareToPlay(s, r)); }
   void releaseResources()             { MWFE((*i)->releaseResources()); }
+
+#undef MFWE
 
 #undef _MWFE
 #undef MWFE
@@ -71,6 +73,7 @@ class MultiWrappy : public Source {
 
  protected:
   SourceVector source_;
+  int i_;
 };
 
 

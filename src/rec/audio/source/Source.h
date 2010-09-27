@@ -9,6 +9,11 @@ namespace source {
 
 typedef PositionableAudioSource Source;
 
+class SourceMaker {
+  virtual Source* make() const;
+  ~SourceMaker() {}
+};
+
 }  // namespace source
 }  // namespace audio
 }  // namespace rec

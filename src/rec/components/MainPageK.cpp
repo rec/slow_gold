@@ -193,8 +193,7 @@ static const char* const CD_STATE_NAMES[] = {
 
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
   if (objectThatHasChanged == &transportSource_) {
-    double position = transportSource_.getCurrentPosition();
-    peer_->thumbnail->setCursor(position);
+    updateCursor();
     return;
   }
 
