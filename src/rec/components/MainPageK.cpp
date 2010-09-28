@@ -112,13 +112,17 @@ void MainPageK::loadRecentFile(int menuItemID) {
   loadFileIntoTransport(File(copy(recent.file(menuItemID - 1).name())));
 }
 
+// TODO: fix this magic constant
+static const int RATE = 44100;
+
 void MainPageK::updateCursor() {
-  double position = transportSource_.getCurrentPosition();
+  double position = RATE * transportSource_.getCurrentPosition() /
+      transportSource_.getTotalLength();
   peer_->thumbnail->setCursor(position);
 }
 
-void MainPageK::setPosition(double position) {
-  transportSource_.setPosition(position);
+void MainPageK::setPosition(double p) {
+  transportSource_.setPosition(p * transportSource_.getTotalLength() / RATE);
 }
 
 void MainPageK::loadFileIntoTransport(const File& file) {

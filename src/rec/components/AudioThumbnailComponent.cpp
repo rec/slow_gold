@@ -70,19 +70,24 @@ void AudioThumbnailComponent::mouseUp(const MouseEvent& e) {
   int margin = description_.margin();
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
-  double position = startTime_ + ratio * (endTime_ - startTime_);
-  mainPage_->setPosition(position);
+  setCursor(ratio);
+  mainPage_->setPosition(ratio);
 }
 
-void AudioThumbnailComponent::setCursor(double cursor) {
-  ScopedLock l(lock_);
-  Rectangle<int> before = cursorRectangle();
-  cursor_ = cursor;
-  Rectangle<int> after = cursorRectangle();
-
-  if (before != after) {
+void AudioThumbnailComponent::setCursor(double cursorRatio) {
+  double cursor = cursorRatio * thumbnail_.getTotalLength();
+  Rectangle<int> before, after;
+  {
+    ScopedLock l(lock_);
+    before = cursorRectangle();
+    cursor_ = cursor;
+    after = cursorRectangle();
+  }
+  
+  if (true || before != after) {
+    // TODO: fix cursor ghosting - expanding these rectangles doesn't do it!
     repaint(before);
-    repaint(cursorRectangle());
+    repaint(after);
   }
 }
 

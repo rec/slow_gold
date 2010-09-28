@@ -7,12 +7,12 @@
 namespace rec {
 
 namespace slow {
-  
+
 class MainPageK;
 
-}  // namespace slow  
+}  // namespace slow
 
-  
+
 namespace gui {
 
 class AudioThumbnailComponent : public Component, public ChangeListener {
@@ -30,7 +30,8 @@ class AudioThumbnailComponent : public Component, public ChangeListener {
 
   virtual void mouseUp(const MouseEvent& e);
 
-  void setCursor(double cursor);
+  // Ranges between 0 and 1.
+  void setCursor(double cursorRatio);
   void paint(Graphics& g);
   int getCursor() const;
 
