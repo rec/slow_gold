@@ -141,14 +141,14 @@ class TimeStretch : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 chunk_size() const;
   inline void set_chunk_size(::google::protobuf::uint32 value);
   
-  // optional uint32 prefill_size = 8 [default = 4096];
+  // optional uint32 prefill_size = 8 [default = 15000];
   inline bool has_prefill_size() const;
   inline void clear_prefill_size();
   static const int kPrefillSizeFieldNumber = 8;
   inline ::google::protobuf::uint32 prefill_size() const;
   inline void set_prefill_size(::google::protobuf::uint32 value);
   
-  // optional uint32 next_buffer_fill_size = 9 [default = 4096];
+  // optional uint32 next_buffer_fill_size = 9 [default = 15000];
   inline bool has_next_buffer_fill_size() const;
   inline void clear_next_buffer_fill_size();
   static const int kNextBufferFillSizeFieldNumber = 9;
@@ -324,12 +324,12 @@ inline void TimeStretch::set_chunk_size(::google::protobuf::uint32 value) {
   chunk_size_ = value;
 }
 
-// optional uint32 prefill_size = 8 [default = 4096];
+// optional uint32 prefill_size = 8 [default = 15000];
 inline bool TimeStretch::has_prefill_size() const {
   return _has_bit(7);
 }
 inline void TimeStretch::clear_prefill_size() {
-  prefill_size_ = 4096u;
+  prefill_size_ = 15000u;
   _clear_bit(7);
 }
 inline ::google::protobuf::uint32 TimeStretch::prefill_size() const {
@@ -340,12 +340,12 @@ inline void TimeStretch::set_prefill_size(::google::protobuf::uint32 value) {
   prefill_size_ = value;
 }
 
-// optional uint32 next_buffer_fill_size = 9 [default = 4096];
+// optional uint32 next_buffer_fill_size = 9 [default = 15000];
 inline bool TimeStretch::has_next_buffer_fill_size() const {
   return _has_bit(8);
 }
 inline void TimeStretch::clear_next_buffer_fill_size() {
-  next_buffer_fill_size_ = 4096u;
+  next_buffer_fill_size_ = 15000u;
   _clear_bit(8);
 }
 inline ::google::protobuf::uint32 TimeStretch::next_buffer_fill_size() const {

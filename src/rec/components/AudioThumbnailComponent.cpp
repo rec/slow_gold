@@ -83,8 +83,8 @@ void AudioThumbnailComponent::setCursor(double cursorRatio) {
     cursor_ = cursor;
     after = cursorRectangle();
   }
-  
-  if (true || before != after) {
+
+  if (before != after) {
     // TODO: fix cursor ghosting - expanding these rectangles doesn't do it!
     repaint(before);
     repaint(after);
@@ -93,8 +93,7 @@ void AudioThumbnailComponent::setCursor(double cursorRatio) {
 
 void AudioThumbnailComponent::paint(Graphics& g) {
   const color::Colors& colors = description_.colors();
-  g.fillAll(color::get(colors, 0));
-  g.setColour(color::get(colors, 1));
+  color::prepare(colors, &g);
   int margin = description_.margin();
 
   if (thumbnail_.getTotalLength() > 0) {

@@ -4,7 +4,7 @@ package rec.gui;
 
 message ThreadDescription {
   optional uint32 priority = 1 [default = 4];
-  optional uint32 period = 2   [default = 10];
+  optional uint32 period = 2   [default = 40];
 };
 
 message ThumbnailDescription {

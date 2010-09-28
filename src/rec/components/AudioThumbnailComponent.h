@@ -15,6 +15,9 @@ class MainPageK;
 
 namespace gui {
 
+
+// TODO:  This is too closely coupled to MainPageK!
+
 class AudioThumbnailComponent : public Component, public ChangeListener {
  public:
   AudioThumbnailComponent(rec::slow::MainPageK* mainPage);

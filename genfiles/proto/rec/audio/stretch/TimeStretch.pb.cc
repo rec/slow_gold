@@ -85,15 +85,15 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#rec/audio/stretch/TimeStretch.proto\022\024r"
-    "ec.audio.timescaler\"\263\002\n\013TimeStretch\022\025\n\nt"
+    "ec.audio.timescaler\"\265\002\n\013TimeStretch\022\025\n\nt"
     "ime_scale\030\001 \001(\001:\0011\022\032\n\013sample_rate\030\002 \001(\001:"
     "\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_sca"
     "le\030\004 \001(\001:\0011\022\023\n\005bands\030\005 \001(\r:\0042048\022\031\n\016filt"
     "er_overlap\030\006 \001(\r:\0011\022\027\n\nchunk_size\030\007 \001(\r:"
-    "\003512\022\032\n\014prefill_size\030\010 \001(\r:\0044096\022#\n\025next"
-    "_buffer_fill_size\030\t \001(\r:\0044096\022\036\n\022inactiv"
-    "e_wait_time\030\n \001(\005:\002-1\022\032\n\017thread_priority"
-    "\030\013 \001(\r:\0014", 369);
+    "\003512\022\033\n\014prefill_size\030\010 \001(\r:\00515000\022$\n\025nex"
+    "t_buffer_fill_size\030\t \001(\r:\00515000\022\036\n\022inact"
+    "ive_wait_time\030\n \001(\005:\002-1\022\032\n\017thread_priori"
+    "ty\030\013 \001(\r:\0014", 371);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/TimeStretch.proto", &protobuf_RegisterTypes);
   TimeStretch::default_instance_ = new TimeStretch();
@@ -148,8 +148,8 @@ void TimeStretch::SharedCtor() {
   bands_ = 2048u;
   filter_overlap_ = 1u;
   chunk_size_ = 512u;
-  prefill_size_ = 4096u;
-  next_buffer_fill_size_ = 4096u;
+  prefill_size_ = 15000u;
+  next_buffer_fill_size_ = 15000u;
   inactive_wait_time_ = -1;
   thread_priority_ = 4u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -193,10 +193,10 @@ void TimeStretch::Clear() {
     bands_ = 2048u;
     filter_overlap_ = 1u;
     chunk_size_ = 512u;
-    prefill_size_ = 4096u;
+    prefill_size_ = 15000u;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    next_buffer_fill_size_ = 4096u;
+    next_buffer_fill_size_ = 15000u;
     inactive_wait_time_ = -1;
     thread_priority_ = 4u;
   }
@@ -321,7 +321,7 @@ bool TimeStretch::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 prefill_size = 8 [default = 4096];
+      // optional uint32 prefill_size = 8 [default = 15000];
       case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -337,7 +337,7 @@ bool TimeStretch::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 next_buffer_fill_size = 9 [default = 4096];
+      // optional uint32 next_buffer_fill_size = 9 [default = 15000];
       case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -438,12 +438,12 @@ void TimeStretch::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->chunk_size(), output);
   }
   
-  // optional uint32 prefill_size = 8 [default = 4096];
+  // optional uint32 prefill_size = 8 [default = 15000];
   if (_has_bit(7)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->prefill_size(), output);
   }
   
-  // optional uint32 next_buffer_fill_size = 9 [default = 4096];
+  // optional uint32 next_buffer_fill_size = 9 [default = 15000];
   if (_has_bit(8)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->next_buffer_fill_size(), output);
   }
@@ -501,12 +501,12 @@ void TimeStretch::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->chunk_size(), target);
   }
   
-  // optional uint32 prefill_size = 8 [default = 4096];
+  // optional uint32 prefill_size = 8 [default = 15000];
   if (_has_bit(7)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->prefill_size(), target);
   }
   
-  // optional uint32 next_buffer_fill_size = 9 [default = 4096];
+  // optional uint32 next_buffer_fill_size = 9 [default = 15000];
   if (_has_bit(8)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->next_buffer_fill_size(), target);
   }
@@ -575,7 +575,7 @@ int TimeStretch::ByteSize() const {
           this->chunk_size());
     }
     
-    // optional uint32 prefill_size = 8 [default = 4096];
+    // optional uint32 prefill_size = 8 [default = 15000];
     if (has_prefill_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -584,7 +584,7 @@ int TimeStretch::ByteSize() const {
     
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional uint32 next_buffer_fill_size = 9 [default = 4096];
+    // optional uint32 next_buffer_fill_size = 9 [default = 15000];
     if (has_next_buffer_fill_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

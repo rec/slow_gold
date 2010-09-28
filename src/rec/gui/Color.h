@@ -11,6 +11,7 @@ namespace color {
 
 Colour get(unsigned int i);
 Colour get(const Colors& colors, unsigned int index);
+void prepare(const Colors& colors, Graphics* g);
 
 }  // namespace color
 }  // namespace gui

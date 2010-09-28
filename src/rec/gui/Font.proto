@@ -1,0 +1,13 @@
+package rec.gui;
+
+message FontDesc {
+  optional string name = 1;
+  optional float font_height = 2 [default = 15];
+
+  message Style {
+    optional bool bold = 1;
+    optional bool italic = 2;
+    optional bool underlined = 3;
+  };
+  optional Style style = 3;
+};

@@ -105,7 +105,7 @@ void protobuf_AddDesc_rec_2fgui_2fThumbnailDescription_2eproto() {
     "\n\"rec/gui/ThumbnailDescription.proto\022\007re"
     "c.gui\032\023rec/gui/Color.proto\"<\n\021ThreadDesc"
     "ription\022\023\n\010priority\030\001 \001(\r:\0014\022\022\n\006period\030\002"
-    " \001(\r:\00210\"\356\001\n\024ThumbnailDescription\022%\n\006col"
+    " \001(\r:\00240\"\356\001\n\024ThumbnailDescription\022%\n\006col"
     "ors\030\001 \001(\0132\025.rec.gui.color.Colors\022\033\n\020curs"
     "or_thickness\030\002 \001(\r:\0011\022\021\n\006margin\030\003 \001(\r:\0012"
     "\0220\n#source_samples_per_thumbnail_sample\030"
@@ -153,7 +153,7 @@ ThreadDescription::ThreadDescription(const ThreadDescription& from)
 void ThreadDescription::SharedCtor() {
   _cached_size_ = 0;
   priority_ = 4u;
-  period_ = 10u;
+  period_ = 40u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -189,7 +189,7 @@ ThreadDescription* ThreadDescription::New() const {
 void ThreadDescription::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     priority_ = 4u;
-    period_ = 10u;
+    period_ = 40u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -216,7 +216,7 @@ bool ThreadDescription::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 period = 2 [default = 10];
+      // optional uint32 period = 2 [default = 40];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -255,7 +255,7 @@ void ThreadDescription::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->priority(), output);
   }
   
-  // optional uint32 period = 2 [default = 10];
+  // optional uint32 period = 2 [default = 40];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->period(), output);
   }
@@ -273,7 +273,7 @@ void ThreadDescription::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->priority(), target);
   }
   
-  // optional uint32 period = 2 [default = 10];
+  // optional uint32 period = 2 [default = 40];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->period(), target);
   }
@@ -296,7 +296,7 @@ int ThreadDescription::ByteSize() const {
           this->priority());
     }
     
-    // optional uint32 period = 2 [default = 10];
+    // optional uint32 period = 2 [default = 40];
     if (has_period()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

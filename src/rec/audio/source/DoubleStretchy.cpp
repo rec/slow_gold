@@ -106,6 +106,8 @@ void DoubleStretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   {
     ScopedUnlock l(lock_);
     buffer_->getNextAudioBlock(info);
+    if (false && next_)
+      next_->advance(info.numSamples);
   }
   gettingBlock_ = false;
 }

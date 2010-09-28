@@ -12,11 +12,11 @@ message TimeStretch {
   optional uint32 chunk_size = 7        [default = 512];
 
   // How many samples must we prefill before we consider a buffer ready to go?
-  optional uint32 prefill_size = 8      [default = 4096];
+  optional uint32 prefill_size = 8      [default = 15000];
 
   // How many samples must we have before we're willing to switch to filling the
   // next buffer?
-  optional uint32 next_buffer_fill_size = 9 [default = 4096];
+  optional uint32 next_buffer_fill_size = 9 [default = 15000];
 
 
   // How long does our thread wait when it believes it has nothing to do?  -1

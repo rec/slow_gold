@@ -22,7 +22,7 @@ class Stretchy : public Wrappy::Position {
 
   void setDescription(const TimeStretch& d);
 
-  virtual int getTotalLength();
+  virtual int getTotalLength() const;
   virtual void setNextReadPosition(int position);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 

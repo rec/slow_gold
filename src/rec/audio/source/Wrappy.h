@@ -36,6 +36,9 @@ class Wrappy : public Source {
   virtual void releaseResources() { source_->releaseResources(); }
 
   int mod(int x) const { return util::mod(x, getTotalLength()); }
+  void advance(int x) {
+    setNextReadPosition(mod(x + getNextReadPosition()));
+  }
 
   class Position;
 

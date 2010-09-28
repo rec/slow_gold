@@ -116,9 +116,10 @@ void MainPageK::loadRecentFile(int menuItemID) {
 static const int RATE = 44100;
 
 void MainPageK::updateCursor() {
-  double position = RATE * transportSource_.getCurrentPosition() /
-      transportSource_.getTotalLength();
+  double samples = RATE * transportSource_.getCurrentPosition();
+  double position = samples / transportSource_.getTotalLength();
   peer_->thumbnail->setCursor(position);
+  peer_->timeDial->setTimeSamples(samples);
 }
 
 void MainPageK::setPosition(double p) {

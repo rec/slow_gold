@@ -1,0 +1,39 @@
+package rec.gui.time;
+
+import "rec/gui/Font.proto";
+import "rec/gui/Color.proto";
+
+// Represents a text time display.
+message Text {
+  optional FontDesc font = 1;
+
+  message Separator {
+    optional string separator = 1;
+    optional uint32 width = 2;
+    optional bool flash = 3 [default = true];
+  };
+  optional Separator separator = 2;
+
+  message Display {
+    optional bool hours = 1 [default = false];
+    optional bool minutes = 2 [default = true];
+    optional bool seconds = 3 [default = true];
+    optional bool milliseconds = 4 [default = true];
+    optional bool frames = 5 [default = false];
+  };
+
+  optional Display display = 3;
+  optional uint32 margin = 4 [default = 2];
+};
+
+message Dial {
+  enum Style {
+    DIAL = 1;
+    BAR = 2;
+  };
+  optional Style style = 1;
+  optional uint32 outline = 2;
+  optional bool display_lap_count = 4;
+  optional FontDesc font = 5;
+  optional uint32 margin = 6 [default = 2];
+};

@@ -45,6 +45,11 @@ Colour get(const Colors& colors, unsigned int i) {
   return i < colors.color_size() ? makeColour(colors.color(i)) : get(i);
 }
 
+void prepare(const Colors& colors, Graphics* g) {
+  g->fillAll(color::get(colors, 0));
+  g->setColour(color::get(colors, 1));
+}
+
 }  // namespace color
 }  // namespace gui
 }  // namespace rec

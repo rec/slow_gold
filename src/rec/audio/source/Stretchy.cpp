@@ -20,7 +20,7 @@ void Stretchy::setDescription(const TimeStretch& d) {
   setNextReadPosition(position_);
 }
 
-int Stretchy::getTotalLength() {
+int Stretchy::getTotalLength() const {
   return source_->getTotalLength() * description_.time_scale();
 }
 
@@ -32,7 +32,6 @@ void Stretchy::setNextReadPosition(int position) {
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   CHECK_EQ(info.buffer->getNumChannels(), channels_);
-
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = processOneChunk(i)) {
