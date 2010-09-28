@@ -21,12 +21,12 @@ void Stretchy::setDescription(const TimeStretch& d) {
 }
 
 int Stretchy::getTotalLength() {
-  return source_->getTotalLength() / description_.time_scale();
+  return source_->getTotalLength() * description_.time_scale();
 }
 
 void Stretchy::setNextReadPosition(int position) {
   position_ = position;
-  source_->setNextReadPosition(position * description_.time_scale());
+  source_->setNextReadPosition(position / description_.time_scale());
   Init(description_, &scaler_);
 }
 
@@ -36,7 +36,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = processOneChunk(i)) {
-      if (zeroCount) {
+      if (false && zeroCount) {
         LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
       }
       i.numSamples -= processed;
@@ -44,9 +44,9 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       position_ += processed;
       zeroCount = 0;
 
-    } else if (zeroCount > 3) {
+    } else if (zeroCount > 10) {
       LOG_FIRST_N(ERROR, 20)
-        << "0 samples four times in a row from Process(),"
+        << "0 samples " << zeroCount << " times in a row,"
         << " asked for " << i.numSamples
         << " from " << info.numSamples
         << "next read " << getNextReadPosition()
