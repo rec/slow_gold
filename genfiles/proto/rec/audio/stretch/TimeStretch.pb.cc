@@ -30,7 +30,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
       "rec/audio/stretch/TimeStretch.proto");
   GOOGLE_CHECK(file != NULL);
   TimeStretch_descriptor_ = file->message_type(0);
-  static const int TimeStretch_offsets_[10] = {
+  static const int TimeStretch_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, time_scale_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, sample_rate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, channels_),
@@ -39,6 +39,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, filter_overlap_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, chunk_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, prefill_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, next_buffer_fill_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, inactive_wait_time_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TimeStretch, thread_priority_),
   };
@@ -84,14 +85,15 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#rec/audio/stretch/TimeStretch.proto\022\024r"
-    "ec.audio.timescaler\"\216\002\n\013TimeStretch\022\025\n\nt"
+    "ec.audio.timescaler\"\263\002\n\013TimeStretch\022\025\n\nt"
     "ime_scale\030\001 \001(\001:\0011\022\032\n\013sample_rate\030\002 \001(\001:"
     "\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_sca"
     "le\030\004 \001(\001:\0011\022\023\n\005bands\030\005 \001(\r:\0042048\022\031\n\016filt"
     "er_overlap\030\006 \001(\r:\0011\022\027\n\nchunk_size\030\007 \001(\r:"
-    "\003512\022\032\n\014prefill_size\030\010 \001(\r:\0044096\022\036\n\022inac"
-    "tive_wait_time\030\t \001(\005:\002-1\022\032\n\017thread_prior"
-    "ity\030\n \001(\r:\0014", 332);
+    "\003512\022\032\n\014prefill_size\030\010 \001(\r:\0044096\022#\n\025next"
+    "_buffer_fill_size\030\t \001(\r:\0044096\022\036\n\022inactiv"
+    "e_wait_time\030\n \001(\005:\002-1\022\032\n\017thread_priority"
+    "\030\013 \001(\r:\0014", 369);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/TimeStretch.proto", &protobuf_RegisterTypes);
   TimeStretch::default_instance_ = new TimeStretch();
@@ -118,6 +120,7 @@ const int TimeStretch::kBandsFieldNumber;
 const int TimeStretch::kFilterOverlapFieldNumber;
 const int TimeStretch::kChunkSizeFieldNumber;
 const int TimeStretch::kPrefillSizeFieldNumber;
+const int TimeStretch::kNextBufferFillSizeFieldNumber;
 const int TimeStretch::kInactiveWaitTimeFieldNumber;
 const int TimeStretch::kThreadPriorityFieldNumber;
 #endif  // !_MSC_VER
@@ -146,6 +149,7 @@ void TimeStretch::SharedCtor() {
   filter_overlap_ = 1u;
   chunk_size_ = 512u;
   prefill_size_ = 4096u;
+  next_buffer_fill_size_ = 4096u;
   inactive_wait_time_ = -1;
   thread_priority_ = 4u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -192,6 +196,7 @@ void TimeStretch::Clear() {
     prefill_size_ = 4096u;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    next_buffer_fill_size_ = 4096u;
     inactive_wait_time_ = -1;
     thread_priority_ = 4u;
   }
@@ -328,35 +333,51 @@ bool TimeStretch::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(72)) goto parse_inactive_wait_time;
+        if (input->ExpectTag(72)) goto parse_next_buffer_fill_size;
         break;
       }
       
-      // optional int32 inactive_wait_time = 9 [default = -1];
+      // optional uint32 next_buffer_fill_size = 9 [default = 4096];
       case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_next_buffer_fill_size:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &next_buffer_fill_size_)));
+          _set_bit(8);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(80)) goto parse_inactive_wait_time;
+        break;
+      }
+      
+      // optional int32 inactive_wait_time = 10 [default = -1];
+      case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_inactive_wait_time:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &inactive_wait_time_)));
-          _set_bit(8);
+          _set_bit(9);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(80)) goto parse_thread_priority;
+        if (input->ExpectTag(88)) goto parse_thread_priority;
         break;
       }
       
-      // optional uint32 thread_priority = 10 [default = 4];
-      case 10: {
+      // optional uint32 thread_priority = 11 [default = 4];
+      case 11: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_thread_priority:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &thread_priority_)));
-          _set_bit(9);
+          _set_bit(10);
         } else {
           goto handle_uninterpreted;
         }
@@ -422,14 +443,19 @@ void TimeStretch::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->prefill_size(), output);
   }
   
-  // optional int32 inactive_wait_time = 9 [default = -1];
+  // optional uint32 next_buffer_fill_size = 9 [default = 4096];
   if (_has_bit(8)) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->inactive_wait_time(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->next_buffer_fill_size(), output);
   }
   
-  // optional uint32 thread_priority = 10 [default = 4];
+  // optional int32 inactive_wait_time = 10 [default = -1];
   if (_has_bit(9)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->thread_priority(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->inactive_wait_time(), output);
+  }
+  
+  // optional uint32 thread_priority = 11 [default = 4];
+  if (_has_bit(10)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->thread_priority(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -480,14 +506,19 @@ void TimeStretch::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->prefill_size(), target);
   }
   
-  // optional int32 inactive_wait_time = 9 [default = -1];
+  // optional uint32 next_buffer_fill_size = 9 [default = 4096];
   if (_has_bit(8)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->inactive_wait_time(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->next_buffer_fill_size(), target);
   }
   
-  // optional uint32 thread_priority = 10 [default = 4];
+  // optional int32 inactive_wait_time = 10 [default = -1];
   if (_has_bit(9)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->thread_priority(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->inactive_wait_time(), target);
+  }
+  
+  // optional uint32 thread_priority = 11 [default = 4];
+  if (_has_bit(10)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->thread_priority(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -553,14 +584,21 @@ int TimeStretch::ByteSize() const {
     
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional int32 inactive_wait_time = 9 [default = -1];
+    // optional uint32 next_buffer_fill_size = 9 [default = 4096];
+    if (has_next_buffer_fill_size()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->next_buffer_fill_size());
+    }
+    
+    // optional int32 inactive_wait_time = 10 [default = -1];
     if (has_inactive_wait_time()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->inactive_wait_time());
     }
     
-    // optional uint32 thread_priority = 10 [default = 4];
+    // optional uint32 thread_priority = 11 [default = 4];
     if (has_thread_priority()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -621,9 +659,12 @@ void TimeStretch::MergeFrom(const TimeStretch& from) {
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from._has_bit(8)) {
-      set_inactive_wait_time(from.inactive_wait_time());
+      set_next_buffer_fill_size(from.next_buffer_fill_size());
     }
     if (from._has_bit(9)) {
+      set_inactive_wait_time(from.inactive_wait_time());
+    }
+    if (from._has_bit(10)) {
       set_thread_priority(from.thread_priority());
     }
   }
@@ -657,6 +698,7 @@ void TimeStretch::Swap(TimeStretch* other) {
     std::swap(filter_overlap_, other->filter_overlap_);
     std::swap(chunk_size_, other->chunk_size_);
     std::swap(prefill_size_, other->prefill_size_);
+    std::swap(next_buffer_fill_size_, other->next_buffer_fill_size_);
     std::swap(inactive_wait_time_, other->inactive_wait_time_);
     std::swap(thread_priority_, other->thread_priority_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

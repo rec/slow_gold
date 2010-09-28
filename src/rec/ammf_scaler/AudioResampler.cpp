@@ -244,8 +244,8 @@ unsigned int AudioResampler::Init( double inRate, double outRate,
   m_boolInited = 1;
 
   // now create overrun buffers
-  this->DestroyOverrunBuffers();
-  this->CreateOverrunBuffers(MAX_OVERRUN_BUFFER_SIZE, m_numChannels);
+  DestroyOverrunBuffers();
+  CreateOverrunBuffers(MAX_OVERRUN_BUFFER_SIZE, m_numChannels);
 
   return 0;    // success
 }

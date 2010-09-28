@@ -7,24 +7,18 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Buffery::Buffery(int channels, Source* source)
-    : Wrappy::Position(source),
-      filled_(0, this->getTotalLength()),
-      buffer_(channels, this->getTotalLength()) {
-  CHECK_GT(channels, 0);
-  sourceInfo_.buffer = &buffer_;
-}
-
-void Buffery::setNextReadPosition(int position) {
+void Buffery::resetFrom(int channels, int position) {
   ScopedLock l(lock_);
-  Wrappy::Position::setNextReadPosition(position);
-  if (filled_.availableFrom(position) < 0)
-    filled_.reset(position);
-}
+  int len = getTotalLength();
+  if (buffer_) {
+    buffer_->setSize(channels, len, false, false, true);
+  } else {
+    buffer_.reset(new AudioSampleBuffer(channels, len));
+    sourceInfo_.buffer = buffer_.get();
+  }
 
-int64 Buffery::available() const {
-  ScopedLock l(lock_);
-  return filled_.availableFrom(this->position_);
+  filled_.reset(position, len);
+  setNextReadPosition(position);
 }
 
 void Buffery::getNextAudioBlock(const AudioSourceChannelInfo& i) {
@@ -39,19 +33,24 @@ void Buffery::getNextAudioBlock(const AudioSourceChannelInfo& i) {
       info.numSamples = samples;
     }
 
-    position = this->position_;
+    position = position_;
   }
 
-  int32 newPos = rec::audio::copyCircularSamples(buffer_, position, info);
+  int32 newPos = rec::audio::copyCircularSamples(*buffer_, position, info);
 
   {
     ScopedLock l(lock_);
-    if (this->position_ == position)
-      this->position_ = newPos;
+    if (position_ == position)
+      position_ = newPos;
     else {
       LOG_FIRST_N(ERROR, 10) << "Another thread changed position_";
     }
   }
+}
+
+int64 Buffery::available() const {
+  ScopedLock l(lock_);
+  return filled_.availableFrom(position_);
 }
 
 // Returns true if there is more to be filled.  Only call this from one
@@ -63,13 +62,13 @@ bool Buffery::fillNext(int64 chunkSize) {
     sourceInfo_.startSample = filled_.end();
   }
 
-  this->source_->getNextAudioBlock(sourceInfo_);
+  source_->getNextAudioBlock(sourceInfo_);
 
   {
     ScopedLock l(lock_);
     // If the next read position has changed, we just throw away all our work.
     return (sourceInfo_.startSample != filled_.end()) ||
-      filled_.increment(sourceInfo_.numSamples);
+      filled_.fill(sourceInfo_.numSamples);
   }
 }
 

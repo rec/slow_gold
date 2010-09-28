@@ -11,28 +11,25 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
  public:
   typedef rec::audio::timescaler::TimeStretch TimeStretch;
 
-  DoubleStretchyThread(const TimeStretch& d,
-                       Source* s0, Source* s1)
-      : DoubleStretchy(d, s0, s1),
-        Thread("DoubleStretchy"),
-        waitTime_(d.inactive_wait_time()) {
-    setPriority(d.thread_priority());
-    LOG_IF(ERROR, true) << "starting DoubleStretchyThread!";
-    startThread();
+  DoubleStretchyThread(Source* s0, Source* s1)
+    : DoubleStretchy(s0, s1), Thread("DoubleStretchy") {
   }
 
   virtual void setDescription(const TimeStretch& description) {
     DoubleStretchy::setDescription(description);
-    notify();
+    waitTime_ = description.inactive_wait_time();
+    setPriority(description.thread_priority());
+    if (isThreadRunning())
+      notify();
+    else
+      startThread();
   }
 
   virtual void run() {
     while (!threadShouldExit()) {
-      LOG_IF(ERROR, false) << "stretching";
-      if (!(this->fillNext() || threadShouldExit()))
+      if (!(fillNext() || threadShouldExit()))
         wait(waitTime_);
     }
-    LOG_IF(ERROR, true) << "exiting DoubleStretchyThread!";
   }
 
   void stop() {
@@ -42,6 +39,7 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
 
  private:
   int waitTime_;
+
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchyThread);
 };
 

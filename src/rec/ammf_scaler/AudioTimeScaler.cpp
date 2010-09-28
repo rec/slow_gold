@@ -163,8 +163,8 @@ MFError AudioTimeScaler::Init(double dTimeScale,
   m_boolInited = 1;
 
   // now create overrun buffers
-  this->DestroyOverrunBuffers();
-  this->CreateOverrunBuffers(MAX_OVERRUN_BUFFER_SIZE, m_numChannels);
+  DestroyOverrunBuffers();
+  CreateOverrunBuffers(MAX_OVERRUN_BUFFER_SIZE, m_numChannels);
   return NULL;
 }
 
@@ -188,7 +188,7 @@ unsigned int AudioTimeScaler::GetOutputBufferSize(unsigned int inBufferSizeIn)
       if (m_boolFirstTime)
         {
           // make sure we don't promise samples unless we have minimum size
-          if (this->m_PTS[0].dTimeScale > 1.0)
+          if (m_PTS[0].dTimeScale > 1.0)
             {
               if (inBufferSizeIn < MINIMUM_STARTING_SAMPLES_TIME_STRETCH)
                 size = 0;
@@ -226,7 +226,7 @@ unsigned int AudioTimeScaler::GetInputBufferSize(unsigned int inBufferSizeOut)
     {
       if (m_boolFirstTime)
         {
-          if (this->m_PTS[0].dTimeScale > 1.0)
+          if (m_PTS[0].dTimeScale > 1.0)
             size = MINIMUM_STARTING_SAMPLES_TIME_STRETCH + normalizedSize;
           else
             size = MINIMUM_STARTING_SAMPLES_TIME_COMPRESS + normalizedSize;  // should handle down to scale factor of 0.1

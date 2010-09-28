@@ -1,6 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERY__
 #define __REC_AUDIO_SOURCE_BUFFERY__
 
+#include "rec/base/scoped_ptr.h"
 #include "rec/util/Circular.h"
 #include "rec/audio/source/Wrappy.h"
 
@@ -12,21 +13,23 @@ class Buffery : public Wrappy::Position {
  public:
   typedef rec::util::Circular Circular;
 
-  Buffery(int channels, Source* source);
-
-  virtual void setNextReadPosition(int position);
+  Buffery(Source* source) : Wrappy::Position(source) {}
 
   // How many samples are available (already computed?)
   int64 available() const;
 
   // Is this buffer completely full?
-  bool filled() const { return this->getTotalLength() <= available(); }
+  bool filled() const { return getTotalLength() <= available(); }
 
   bool ready(int size) const {
-    return (available() >= std::min(this->getTotalLength(), size));
+    return available() >= std::min(getTotalLength(), size);
   }
 
-  AudioSampleBuffer* buffer() { return &buffer_; }
+  // A change in the underlying source has invalidated the buffer, start
+  // buffering again from this position.
+  void resetFrom(int channels, int position);
+
+  AudioSampleBuffer* buffer() { return buffer_.get(); }
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i);
 
@@ -36,9 +39,9 @@ class Buffery : public Wrappy::Position {
 
  private:
   Circular filled_;
-  AudioSampleBuffer buffer_;
-  CriticalSection lock_;
+  scoped_ptr<AudioSampleBuffer> buffer_;
   AudioSourceChannelInfo sourceInfo_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(Buffery);
 };

@@ -57,7 +57,6 @@ class Stereo : public Wrappy {
   }
 
  private:
-  CriticalSection lock_;
   Type type_;
   Side side_;
 

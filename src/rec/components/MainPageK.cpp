@@ -136,8 +136,9 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
-    stretchyDeleter_.reset(new DoubleStretchyThread(d, s0, s1));
+    stretchyDeleter_.reset(new DoubleStretchyThread(s0, s1));
     stretchyDeleter_.swap(stretchy_);
+    stretchy_->setDescription(d);
 
     loopingButtonClicked();
     transportSource_.setSource(stretchy_.get());

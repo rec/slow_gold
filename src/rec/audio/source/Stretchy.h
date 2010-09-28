@@ -18,22 +18,24 @@ class Stretchy : public Wrappy::Position {
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
   typedef rec::audio::timescaler::TimeStretch TimeStretch;
 
-  Stretchy(const TimeStretch& description, Source* source);
+  Stretchy(Source* s);
+
+  void setDescription(const TimeStretch& d);
 
   virtual int getTotalLength();
   virtual void setNextReadPosition(int position);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
+  const TimeStretch& getDescription() const { return description_; }
+
  private:
   int processOneChunk(const AudioSourceChannelInfo& info);
-  void getNextAudioBlockFromSource(int numSamples);
 
-  const TimeStretch description_;
-  const int channels_;
+  TimeStretch description_;
+  int channels_;
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;
-  CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };

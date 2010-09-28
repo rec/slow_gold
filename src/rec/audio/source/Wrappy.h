@@ -18,13 +18,15 @@ class Wrappy : public Source {
   Wrappy(Source* source) : source_(source) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
-    source_->getNextAudioBlock(info); 
+    source_->getNextAudioBlock(info);
   }
 
   virtual int getTotalLength() const { return source_->getTotalLength(); }
 
   virtual int getNextReadPosition() const {
-    return source_->getNextReadPosition(); }
+    return source_->getNextReadPosition();
+  }
+
   virtual void setNextReadPosition(int p) { source_->setNextReadPosition(p); }
 
   virtual bool isLooping() const { return source_->isLooping(); }
@@ -48,11 +50,13 @@ class Wrappy : public Source {
 // using this less and relying more on the contained class's position_.
 class Wrappy::Position : public Wrappy {
  public:
-  Position(Source* source) : Wrappy(source), position_(0) { }
+  Position(Source* source, int position = 0)
+      : Wrappy(source), position_(position) {
+  }
 
   virtual int getNextReadPosition() const { return position_; }
   virtual void setNextReadPosition(int p) {
-    Wrappy::setNextReadPosition(p);
+    source_->setNextReadPosition(p);
     position_ = p;
   }
 

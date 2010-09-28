@@ -8,7 +8,8 @@ namespace source {
 
 TEST(RecAudio, Buffery) {
   Testy testy;
-  Buffery bp(2, &testy);
+  Buffery bp(&testy);
+  bp.resetFrom(2, 0);
 
   EXPECT_EQ(bp.available(), 0);
   EXPECT_EQ(bp.getNextReadPosition(), 0);
@@ -21,7 +22,7 @@ TEST(RecAudio, Buffery) {
   bp.setNextReadPosition(32);
   EXPECT_EQ(bp.available(), 0);
 
-  bp.setNextReadPosition(108);
+  bp.resetFrom(2, 108);
   EXPECT_EQ(bp.available(), 0);
 
   EXPECT_TRUE(bp.fillNext(32));
@@ -39,7 +40,8 @@ TEST(RecAudio, Buffery) {
 
   for (int c = 0; c < 2; ++c) {
     for (int i = 0; i < info.numSamples; ++i)
-      EXPECT_EQ(*buffer.getSampleData(c, 8 + i), Testy::getSample(108 + i));
+      EXPECT_EQ(Testy::getSample(108 + i),
+                *buffer.getSampleData(c, 8 + i));
   }
 }
 

@@ -13,37 +13,40 @@ struct Circular {
   Circular() {}
   Circular(int64 begin, int64 length) : length_(length) { reset(begin); }
 
-  void reset(int64 begin) {
+  void reset(int64 begin) { reset(begin, length_); }
+
+  void reset(int64 begin, int64 length) {
     begin_ = begin;
-    size_ = 0;
+    filled_ = 0;
+    length_ = length;
   }
 
-  bool increment(int64 delta) {
+  bool fill(int64 delta) {
     delta = std::min(delta, remaining());
-    size_ += delta;
-    return size_ < length_;
+    filled_ += delta;
+    return filled_ < length_;
   }
 
-  int64 remaining()      const { return length_ - size_; }
+  int64 remaining()      const { return length_ - filled_; }
   int64 remainingBlock() const { return std::min(remaining(), length_ - end()); }
 
   int64 begin()          const { return begin_; }
-  int64 end()            const { return mod(begin_ + size_, length_); }
+  int64 end()            const { return mod(begin_ + filled_, length_); }
 
   // How many samples are available starting at begin?
   int64 availableFrom(int64 begin) const {
-    if (size_ == length_)
-      return size_;
+    if (filled_ == length_)
+      return filled_;
 
     if (begin <  begin_)
       begin += length_;
 
-    return begin_ + size_ - begin;
+    return begin_ + filled_ - begin;
   }
 
  private:
   int64 begin_;
-  int64 size_;  // Of this region within the buffer.
+  int64 filled_;  // Of this region within the buffer.
   int64 length_;  // Of the whole buffer.
 
   // This class is copiable and assignable.

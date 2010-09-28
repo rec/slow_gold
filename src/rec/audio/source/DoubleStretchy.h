@@ -14,15 +14,33 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class SourceReader;
+class BufferedStretchy : public Buffery {
+ public:
+  typedef timescaler::TimeStretch TimeStretch;
+  BufferedStretchy(Source* s) : Buffery(&stretchy_), stretchy_(s) {}
+
+  void setDescription(const TimeStretch& t, int position) {
+    stretchy_.setDescription(t);
+    resetFrom(t.channels(), position);
+    setNextReadPosition(position);
+  }
+
+  const TimeStretch& getDescription() const {
+    return stretchy_.getDescription();
+  }
+
+ private:
+  Stretchy stretchy_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferedStretchy);
+};
+
 
 class DoubleStretchy : public Source {
  public:
   typedef timescaler::TimeStretch TimeStretch;
   const static int MINIMUM_FILL_SIZE = 4096;
 
-  DoubleStretchy(const TimeStretch& description,
-                 Source* s0, Source* s1);
+  DoubleStretchy(Source* s0, Source* s1);
   ~DoubleStretchy();
 
   virtual bool fillNext();
@@ -39,19 +57,19 @@ class DoubleStretchy : public Source {
   virtual void setLooping(bool looping);
 
  private:
-  Buffery* source();
-  const Buffery* source() const;
-  Buffery* next();
-
   bool descriptionChanged_;
   TimeStretch description_;
 
   int position_;
-  CriticalSection lock_;
-  int gettingBlock_;
+  bool gettingBlock_;
 
-  scoped_ptr<SourceReader> source_;
-  scoped_ptr<SourceReader> nextSource_;
+  static const int BUFFER_COUNT = 2;
+  BufferedStretchy buffer0_;
+  BufferedStretchy buffer1_;
+
+  BufferedStretchy* buffer_;
+  BufferedStretchy* next_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchy);
 };

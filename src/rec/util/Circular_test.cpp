@@ -25,19 +25,19 @@ TEST(Util, Circular) {
   Result r1 = {-5, -6, -7, 0, -1, -2, -3, -4};
   testAvailable(c, r1);
 
-  c.increment(1);
+  c.fill(1);
   EXPECT_EQ(c.remaining(), 7);
   EXPECT_EQ(c.remainingBlock(), 4);
   Result r2 = {-4, -5, -6, 1, 0, -1, -2, -3};
   testAvailable(c, r2);
 
-  c.increment(6);
+  c.fill(6);
   EXPECT_EQ(c.remaining(), 1);
   EXPECT_EQ(c.remainingBlock(), 1);
   Result r3 = {2, 1, 0, 7, 6, 5, 4, 3};
   testAvailable(c, r3);
 
-  c.increment(6);
+  c.fill(6);
   EXPECT_EQ(c.remaining(), 0);
   EXPECT_EQ(c.remainingBlock(), 0);
   Result r4 = {8, 8, 8, 8, 8, 8, 8, 8};
