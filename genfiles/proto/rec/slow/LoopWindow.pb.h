@@ -23,7 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "rec/audio/stretch/TimeStretch.pb.h"
+#include "rec/audio/source/TimeStretch.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -93,19 +93,19 @@ class LoopWindow : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+  // optional .rec.audio.source.TimeStretch timestretch = 1;
   inline bool has_timestretch() const;
   inline void clear_timestretch();
   static const int kTimestretchFieldNumber = 1;
-  inline const ::rec::audio::timescaler::TimeStretch& timestretch() const;
-  inline ::rec::audio::timescaler::TimeStretch* mutable_timestretch();
+  inline const ::rec::audio::source::TimeStretch& timestretch() const;
+  inline ::rec::audio::source::TimeStretch* mutable_timestretch();
   
   // @@protoc_insertion_point(class_scope:rec.slow.proto.LoopWindow)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::audio::timescaler::TimeStretch* timestretch_;
+  ::rec::audio::source::TimeStretch* timestretch_;
   friend void  protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fLoopWindow_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fLoopWindow_2eproto();
@@ -133,20 +133,20 @@ class LoopWindow : public ::google::protobuf::Message {
 
 // LoopWindow
 
-// optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+// optional .rec.audio.source.TimeStretch timestretch = 1;
 inline bool LoopWindow::has_timestretch() const {
   return _has_bit(0);
 }
 inline void LoopWindow::clear_timestretch() {
-  if (timestretch_ != NULL) timestretch_->::rec::audio::timescaler::TimeStretch::Clear();
+  if (timestretch_ != NULL) timestretch_->::rec::audio::source::TimeStretch::Clear();
   _clear_bit(0);
 }
-inline const ::rec::audio::timescaler::TimeStretch& LoopWindow::timestretch() const {
+inline const ::rec::audio::source::TimeStretch& LoopWindow::timestretch() const {
   return timestretch_ != NULL ? *timestretch_ : *default_instance_->timestretch_;
 }
-inline ::rec::audio::timescaler::TimeStretch* LoopWindow::mutable_timestretch() {
+inline ::rec::audio::source::TimeStretch* LoopWindow::mutable_timestretch() {
   _set_bit(0);
-  if (timestretch_ == NULL) timestretch_ = new ::rec::audio::timescaler::TimeStretch;
+  if (timestretch_ == NULL) timestretch_ = new ::rec::audio::source::TimeStretch;
   return timestretch_;
 }
 

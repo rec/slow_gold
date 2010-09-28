@@ -5,9 +5,9 @@
 
 #include <vector>
 
-#include "rec/audio/stretch/TimeStretch.pb.h"
+#include "rec/audio/source/TimeStretch.pb.h"
 #include "rec/audio/source/Wrappy.h"
-#include "rec/audio/stretch/TimeScaler.h"
+#include "rec/audio/source/TimeScaler.h"
 
 namespace rec {
 namespace audio {
@@ -16,8 +16,6 @@ namespace source {
 class Stretchy : public Wrappy::Position {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
-  typedef rec::audio::timescaler::TimeStretch TimeStretch;
-
   Stretchy(Source* s);
 
   void setDescription(const TimeStretch& d);

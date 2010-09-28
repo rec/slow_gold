@@ -14,7 +14,7 @@ message Text {
   };
   optional Separator separator = 2;
 
-  message Display {
+  message Fields {
     optional bool hours = 1 [default = false];
     optional bool minutes = 2 [default = true];
     optional bool seconds = 3 [default = true];
@@ -22,10 +22,11 @@ message Text {
     optional bool frames = 5 [default = false];
   };
 
-  optional Display display = 3;
+  optional Fields fields = 3;
   optional uint32 margin = 4 [default = 2];
 };
 
+// Represents a dial-style time display.
 message Dial {
   enum Style {
     DIAL = 1;
@@ -36,4 +37,9 @@ message Dial {
   optional bool display_lap_count = 4;
   optional FontDesc font = 5;
   optional uint32 margin = 6 [default = 2];
+};
+
+message Time {
+  optional Text text = 1;
+  optional Dial dial = 2;
 };

@@ -10,7 +10,6 @@ namespace audio {
 namespace source {
 
 using rec::util::testFile;
-using rec::audio::timescaler::TimeStretch;
 
 static AudioFormatReaderSource* newSource() {
   AudioFormatManager* afm = AudioFormatManager::getInstance();

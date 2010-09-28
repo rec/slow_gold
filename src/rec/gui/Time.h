@@ -1,10 +1,10 @@
-#ifndef __REC_GUI_TIMEDIAL__
-#define __REC_GUI_TIMEDIAL__
+#ifndef __REC_GUI_TIME__
+#define __REC_GUI_TIME__
 
 #include <stdio.h>
 
 #include "rec/base/basictypes.h"
-#include "rec/gui/TimeDisplay.pb.h"
+#include "rec/gui/Time.pb.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
 
@@ -66,4 +66,4 @@ class TextComponent : public Component {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_TIMEDIAL__
+#endif  // __REC_GUI_TIME__

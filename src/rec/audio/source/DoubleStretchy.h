@@ -3,11 +3,11 @@
 
 // Wrap an incoming AudioSource, and time-stretch it.
 
-#include "rec/audio/stretch/TimeStretch.pb.h"
+#include "rec/audio/source/TimeStretch.pb.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/source/Buffery.h"
 #include "rec/audio/source/Stretchy.h"
-#include "rec/audio/stretch/TimeScaler.h"
+#include "rec/audio/source/TimeScaler.h"
 #include "rec/base/scoped_ptr.h"
 
 namespace rec {
@@ -16,7 +16,6 @@ namespace source {
 
 class BufferedStretchy : public Buffery {
  public:
-  typedef timescaler::TimeStretch TimeStretch;
   BufferedStretchy(Source* s) : Buffery(&stretchy_), stretchy_(s) {}
 
   void setDescription(const TimeStretch& t, int position) {
@@ -37,7 +36,6 @@ class BufferedStretchy : public Buffery {
 
 class DoubleStretchy : public Source {
  public:
-  typedef timescaler::TimeStretch TimeStretch;
   const static int MINIMUM_FILL_SIZE = 4096;
 
   DoubleStretchy(Source* s0, Source* s1);

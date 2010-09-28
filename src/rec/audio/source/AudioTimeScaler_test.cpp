@@ -3,12 +3,12 @@
 #include <glog/logging.h>
 
 #include "rec/ammf_scaler/AudioTimeScaler.h"
-#include "rec/audio/stretch/TimeScaler.h"
+#include "rec/audio/source/TimeScaler.h"
 #include "rec/audio/source/TestHarness.h"
 
 namespace rec {
 namespace audio {
-namespace timescaler {
+namespace source {
 
 namespace {
 
@@ -95,6 +95,6 @@ TEST(RecAudio, AudioTimeScaler) {
     LOG(INFO) << "maxdiff " << maxDiff << std::endl;
 }
 
-}  // namespace buffer
+}  // namespace source
 }  // namespace audio
 }  // namespace rec

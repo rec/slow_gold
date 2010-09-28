@@ -3,7 +3,6 @@
 
 #include "rec/base/scoped_ptr.h"
 
-#include "rec/persist/AppInstance.h"
 #include "rec/slow/Preferences.h"
 #include "rec/app/RecWindow.h"
 #include "rec/app/GenericApplication.h"
@@ -17,7 +16,6 @@ class Application : public GenericApplication {
 
   virtual void initialise(const String& commandLine) {
     GenericApplication::initialise(commandLine);
-    persist::AppInstance::start(name_);
     window_.reset(new RecWindow());
 
 #if false && JUCE_MAC
@@ -26,11 +24,6 @@ class Application : public GenericApplication {
     MenuBarModel::setMacMainMenu(model);
     window_->setMenuBar(NULL);
 #endif
-  }
-
-  virtual void shutdown() {
-    persist::AppInstance::stop();
-    GenericApplication::shutdown();
   }
 
   juce_UseDebuggingNewOperator

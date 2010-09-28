@@ -21,7 +21,6 @@
 
 //[Headers] You can add your own extra header files here...
 #include "MainPageK.h"
-#include "rec/gui/TimeDial.h"
 //[/Headers]
 
 #include "MainPageJ.h"
@@ -39,7 +38,8 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
       zoomSlider (0),
       timeScaleSlider (0),
       loopingButton (0),
-      timeDial (0),
+      songTime (0),
+      realTime (0),
       peer_(&deviceManager)
 {
     addAndMakeVisible (zoomLabel = new Label (String::empty,
@@ -93,7 +93,10 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     pitchScaleSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     pitchScaleSlider->addListener (this);
 
-    addAndMakeVisible (timeDial = new rec::gui::time::TextComponent("tc1", rec::gui::time::Text(),
+    addAndMakeVisible (songTime = new rec::gui::time::TextComponent("st", rec::gui::time::Text(),
+                                                                    rec::gui::color::Colors()));
+
+    addAndMakeVisible (realTime = new rec::gui::time::TextComponent("rt", rec::gui::time::Text(),
                                                                     rec::gui::color::Colors()));
 
     //[UserPreSize]
@@ -121,7 +124,8 @@ MainPageJ::~MainPageJ()
     deleteAndZero (loopingButton);
     deleteAndZero (timeScaleSlider);
     deleteAndZero (pitchScaleSlider);
-    deleteAndZero (timeDial);
+    deleteAndZero (songTime);
+    deleteAndZero (realTime);
 
     //[Destructor]. You can add your own custom destruction code here..
     //[/Destructor]
@@ -150,7 +154,8 @@ void MainPageJ::resized()
     loopingButton->setBounds (192, getHeight() - 40, 150, 24);
     timeScaleSlider->setBounds (300, getHeight() - 90, 200, 24);
     pitchScaleSlider->setBounds (300, getHeight() - 60, 200, 24);
-    timeDial->setBounds (550, getHeight() - 60, 100, 24);
+    songTime->setBounds (550, getHeight() - 90, 100, 24);
+    realTime->setBounds (550, getHeight() - 60, 100, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }

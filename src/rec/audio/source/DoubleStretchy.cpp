@@ -6,8 +6,6 @@ namespace rec {
 namespace audio {
 namespace source {
 
-using rec::audio::timescaler::TimeStretch;
-
 DoubleStretchy::DoubleStretchy(Source* s0, Source* s1)
     : descriptionChanged_(false),
       gettingBlock_(false),

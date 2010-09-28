@@ -16,7 +16,7 @@
 #include "rec/thread/WaitLoop.h"
 #include "rec/thread/Callback.h"
 
-using rec::audio::timescaler::TimeStretch;
+using rec::audio::source::TimeStretch;
 
 using rec::gui::ThreadDescription;
 using rec::gui::ThumbnailDescription;
@@ -119,7 +119,8 @@ void MainPageK::updateCursor() {
   double samples = RATE * transportSource_.getCurrentPosition();
   double position = samples / transportSource_.getTotalLength();
   peer_->thumbnail->setCursor(position);
-  peer_->timeDial->setTimeSamples(samples);
+  peer_->realTime->setTimeSamples(samples);
+  peer_->songTime->setTimeSamples(stretchy_->getNextReadPosition());
 }
 
 void MainPageK::setPosition(double p) {

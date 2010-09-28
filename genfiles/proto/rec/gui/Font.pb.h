@@ -209,7 +209,7 @@ class FontDesc : public ::google::protobuf::Message {
   inline void set_name(const char* value, size_t size);
   inline ::std::string* mutable_name();
   
-  // optional float font_height = 2 [default = 12];
+  // optional float font_height = 2 [default = 15];
   inline bool has_font_height() const;
   inline void clear_font_height();
   static const int kFontHeightFieldNumber = 2;
@@ -353,12 +353,12 @@ inline ::std::string* FontDesc::mutable_name() {
   return name_;
 }
 
-// optional float font_height = 2 [default = 12];
+// optional float font_height = 2 [default = 15];
 inline bool FontDesc::has_font_height() const {
   return _has_bit(1);
 }
 inline void FontDesc::clear_font_height() {
-  font_height_ = 12;
+  font_height_ = 15;
   _clear_bit(1);
 }
 inline float FontDesc::font_height() const {

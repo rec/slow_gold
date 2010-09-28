@@ -9,8 +9,6 @@ namespace source {
 
 class DoubleStretchyThread : public DoubleStretchy, Thread {
  public:
-  typedef rec::audio::timescaler::TimeStretch TimeStretch;
-
   DoubleStretchyThread(Source* s0, Source* s1)
     : DoubleStretchy(s0, s1), Thread("DoubleStretchy") {
   }

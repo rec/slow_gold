@@ -5,7 +5,7 @@ import "rec/slow/LoopWindow.proto";
 import "rec/slow/RecentFiles.proto";
 
 message Preferences {
-  optional rec.slow.proto.LoopWindow loop_window = 1;
-  optional rec.gui.ThumbnailDescription thumbnail = 2;
+  optional slow.proto.LoopWindow loop_window = 1;
+  optional gui.ThumbnailDescription thumbnail = 2;
   optional RecentFiles recent_files = 3;
 };

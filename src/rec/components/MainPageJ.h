@@ -25,7 +25,7 @@
 //[Headers]     -- You can add your own extra header files here --
 
 #include "rec/components/MainPageK.h"
-#include "rec/gui/TimeDial.h"
+#include "rec/gui/Time.h"
 
 //[/Headers]
 
@@ -80,7 +80,8 @@ public:
     Slider* timeScaleSlider;
     Slider* pitchScaleSlider;
     ToggleButton* loopingButton;
-    rec::gui::time::TextComponent* timeDial;
+    rec::gui::time::TextComponent* songTime;
+    rec::gui::time::TextComponent* realTime;
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)
     MainPageJ(const MainPageJ&);

@@ -6,6 +6,7 @@
 
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
+#include "rec/persist/AppInstance.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -27,9 +28,11 @@ class GenericApplication : public JUCEApplication {
   virtual void initialise(const String& commandLine) {
     LOG(INFO) << "Starting up " << getApplicationName()
               << ", version " << getApplicationVersion();
+    persist::AppInstance::start(name_);
   }
 
   virtual void shutdown() {
+    persist::AppInstance::stop();
     LOG(INFO) << "Shutting down " << getApplicationName();
   }
 

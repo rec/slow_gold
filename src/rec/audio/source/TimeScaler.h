@@ -2,12 +2,12 @@
 #define __REC_TIME_SCALER
 
 #include "rec/base/base.h"
-#include "rec/audio/stretch/TimeStretch.pb.h"
+#include "rec/audio/source/TimeStretch.pb.h"
 #include "rec/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {
 namespace audio {
-namespace timescaler {
+namespace source {
 
 inline const char* Init(const TimeStretch &desc, AudioTimeScaler* s) {
   return s->Init(desc.time_scale(),
@@ -18,7 +18,7 @@ inline const char* Init(const TimeStretch &desc, AudioTimeScaler* s) {
                  desc.filter_overlap()) ? "error" : NULL;
 }
 
-}  // namespace timescaler
+}  // namespace source
 }  // namespace audio
 }  // namespace rec
 

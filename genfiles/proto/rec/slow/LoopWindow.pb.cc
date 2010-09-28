@@ -73,12 +73,12 @@ void protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::audio::timescaler::protobuf_AddDesc_rec_2faudio_2fstretch_2fTimeStretch_2eproto();
+  ::rec::audio::source::protobuf_AddDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/slow/LoopWindow.proto\022\016rec.slow.pr"
-    "oto\032#rec/audio/stretch/TimeStretch.proto"
-    "\"D\n\nLoopWindow\0226\n\013timestretch\030\001 \001(\0132!.re"
-    "c.audio.timescaler.TimeStretch", 150);
+    "oto\032\"rec/audio/source/TimeStretch.proto\""
+    "@\n\nLoopWindow\0222\n\013timestretch\030\001 \001(\0132\035.rec"
+    ".audio.source.TimeStretch", 145);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/LoopWindow.proto", &protobuf_RegisterTypes);
   LoopWindow::default_instance_ = new LoopWindow();
@@ -106,7 +106,7 @@ LoopWindow::LoopWindow()
 }
 
 void LoopWindow::InitAsDefaultInstance() {
-  timestretch_ = const_cast< ::rec::audio::timescaler::TimeStretch*>(&::rec::audio::timescaler::TimeStretch::default_instance());
+  timestretch_ = const_cast< ::rec::audio::source::TimeStretch*>(&::rec::audio::source::TimeStretch::default_instance());
 }
 
 LoopWindow::LoopWindow(const LoopWindow& from)
@@ -154,7 +154,7 @@ LoopWindow* LoopWindow::New() const {
 void LoopWindow::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (timestretch_ != NULL) timestretch_->::rec::audio::timescaler::TimeStretch::Clear();
+      if (timestretch_ != NULL) timestretch_->::rec::audio::source::TimeStretch::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -167,7 +167,7 @@ bool LoopWindow::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+      // optional .rec.audio.source.TimeStretch timestretch = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -198,7 +198,7 @@ bool LoopWindow::MergePartialFromCodedStream(
 
 void LoopWindow::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+  // optional .rec.audio.source.TimeStretch timestretch = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->timestretch(), output);
@@ -212,7 +212,7 @@ void LoopWindow::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoopWindow::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+  // optional .rec.audio.source.TimeStretch timestretch = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -230,7 +230,7 @@ int LoopWindow::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.audio.timescaler.TimeStretch timestretch = 1;
+    // optional .rec.audio.source.TimeStretch timestretch = 1;
     if (has_timestretch()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -265,7 +265,7 @@ void LoopWindow::MergeFrom(const LoopWindow& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_timestretch()->::rec::audio::timescaler::TimeStretch::MergeFrom(from.timestretch());
+      mutable_timestretch()->::rec::audio::source::TimeStretch::MergeFrom(from.timestretch());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
