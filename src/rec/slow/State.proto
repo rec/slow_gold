@@ -1,0 +1,15 @@
+package rec.slow;
+
+// The state of the entire SlowGold application.
+
+import "rec/slow/RecentFiles.proto";
+import "rec/gui/Appearance.proto";
+import "rec/access/Access.proto";
+
+message State {
+  repeated string windows_open = 1;
+  optional gui.Appearance appearance = 2;
+  optional access.Access access = 3;
+  optional RecentFiles recent_files = 4;
+};
+

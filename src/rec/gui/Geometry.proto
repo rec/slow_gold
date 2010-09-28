@@ -1,0 +1,18 @@
+package rec.gui;
+
+message Point {
+  optional int32 x = 1;
+  optional int32 y = 2;
+};
+
+message Rectangle {
+  optional Point top_left = 1;
+  optional Point dimensions = 2;
+};
+
+message Window {
+  optional Rectangle bounds = 1;
+  optional int32 layer = 2;
+  // Layer 0 is the top layer, layer 1 below that...
+  // Perhaps layer -1 is the bottom layer?
+};
