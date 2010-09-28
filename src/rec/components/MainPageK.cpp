@@ -120,7 +120,8 @@ void MainPageK::updateCursor() {
   double position = samples / transportSource_.getTotalLength();
   peer_->thumbnail->setCursor(position);
   peer_->realTime->setTimeSamples(samples);
-  peer_->songTime->setTimeSamples(stretchy_->getNextReadPosition());
+  double scale = getPreferences().loop_window().timestretch().time_scale();
+  peer_->songTime->setTimeSamples(samples / scale);
 }
 
 void MainPageK::setPosition(double p) {

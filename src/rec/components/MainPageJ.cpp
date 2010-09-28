@@ -81,23 +81,24 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
 
     addAndMakeVisible (timeScaleSlider = new Slider (T("Time Scale")));
     timeScaleSlider->setTooltip (T("Drag this to set the slowdown."));
-    timeScaleSlider->setRange (0.1, 10, 0);
+    timeScaleSlider->setRange (0.5, 5, 0);
     timeScaleSlider->setSliderStyle (Slider::LinearHorizontal);
     timeScaleSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     timeScaleSlider->addListener (this);
 
     addAndMakeVisible (pitchScaleSlider = new Slider (T("Pitch Scale")));
     pitchScaleSlider->setTooltip (T("Drag this to set the pitchscale."));
-    pitchScaleSlider->setRange (0.5, 2, 0);
+    pitchScaleSlider->setRange (0.125, 4, 0);
     pitchScaleSlider->setSliderStyle (Slider::LinearHorizontal);
     pitchScaleSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     pitchScaleSlider->addListener (this);
 
-    addAndMakeVisible (songTime = new rec::gui::time::TextComponent("st", rec::gui::time::Text(),
-                                                                    rec::gui::color::Colors()));
+    using rec::gui::time::TextComponent;
+    addAndMakeVisible(songTime = new TextComponent("st", rec::gui::time::Text(),
+                                                   rec::gui::color::Colors()));
 
-    addAndMakeVisible (realTime = new rec::gui::time::TextComponent("rt", rec::gui::time::Text(),
-                                                                    rec::gui::color::Colors()));
+    addAndMakeVisible(realTime = new TextComponent("rt", rec::gui::time::Text(),
+                                                   rec::gui::color::Colors()));
 
     //[UserPreSize]
     //[/UserPreSize]
