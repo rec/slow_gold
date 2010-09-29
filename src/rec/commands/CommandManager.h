@@ -5,7 +5,7 @@
 #include "rec/util/PointerList.h"
 
 namespace rec {
-namespace persist {
+namespace commands {
 
 class MenuDelegate {
  public:
@@ -74,7 +74,7 @@ class MultiCommand : public ApplicationCommandTarget, public PointerList<Command
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MultiCommand);
 };
 
-}  // namespace persist
+}  // namespace commands
 }  // namespace rec
 
 #endif  // __REC_COMMANDS_COMMANDMANAGER__

@@ -4,11 +4,14 @@
 #include "rec/base/basictypes.h"
 #include "rec/persist/Data.h"
 #include "rec/util/STL.h"
-#include "rec/persist/CommandManager.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
+namespace command {
+class Manager;
+}  // namespace command
+
 namespace persist {
 
 App* getApp();
@@ -34,7 +37,7 @@ class App {
     return static_cast<Data<Proto>*>(i->second);
   }
 
-  CommandManager* commandManager() { return &commandManager_; }
+  command::Manager* commandManager() { return commandManager_; }
 
   const string& name() const { return name_; }
 
@@ -57,7 +60,7 @@ class App {
   DataMap data_;
   CriticalSection lock_;
   const string name_;
-  CommandManager commandManager_;
+  command::Manager* commandManager_;
 
   DISALLOW_COPY_AND_ASSIGN(App);
 };

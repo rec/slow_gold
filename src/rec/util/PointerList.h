@@ -1,8 +1,11 @@
 #ifndef __REC_UTIL_POINTERLIST__
 #define __REC_UTIL_POINTERLIST__
 
+#include "rec/base/base.h"
 #include "rec/base/basictypes.h"
 #include "rec/util/Method.h"
+
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {
@@ -13,8 +16,11 @@ class PointerList {
  public:
   PointerList() {}
 
+  typedef std::vector<Type*> List;
+  
   List* list() { return &list_; }
   const List& list() const { return list_; }
+
   CriticalSection* lock() { return &lock_; }
 
   template <typename Method>
@@ -33,14 +39,14 @@ class PointerList {
   }
 
   template <typename Method, typename A, typename B, typename C>
-  bool forEach(Method m, A a, B b, C C, bool forward) {
+  bool forEach(Method m, A a, B b, C c, bool forward) {
     return forEach(util::getMethod<Type>(m, a, b, c), forward);
   }
 
   template <typename Operation>
   bool forEach(Operation op, bool forward) {
     ScopedLock l(lock_);
-    for (Type** i = &*list_.begin(); i != &*list_.end() ++i) {
+    for (Type** i = &*list_.begin(); i != &*list_.end(); ++i) {
       if (op(*(forward ? i : end() - i + begin())))
         return true;
     }
@@ -48,7 +54,6 @@ class PointerList {
   }
 
  protected:
-  typedef std::vector<Type*> List;
   List list_;
   CriticalSection lock_;
 

@@ -100,8 +100,8 @@ void protobuf_AddDesc_rec_2fgui_2fFont_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\022rec/gui/Font.proto\022\007rec.gui\"\224\001\n\010FontDe"
-    "sc\022\014\n\004name\030\001 \001(\t\022\027\n\013font_height\030\002 \001(\002:\0021"
-    "5\022&\n\005style\030\003 \001(\0132\027.rec.gui.FontDesc.Styl"
+    "sc\022\014\n\004name\030\001 \001(\t\022\027\n\013font_height\030\002 \001(\002:\0022"
+    "4\022&\n\005style\030\003 \001(\0132\027.rec.gui.FontDesc.Styl"
     "e\0329\n\005Style\022\014\n\004bold\030\001 \001(\010\022\016\n\006italic\030\002 \001(\010"
     "\022\022\n\nunderlined\030\003 \001(\010", 180);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -429,7 +429,7 @@ FontDesc::FontDesc(const FontDesc& from)
 void FontDesc::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&_default_name_);
-  font_height_ = 15;
+  font_height_ = 24;
   style_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -474,7 +474,7 @@ void FontDesc::Clear() {
         name_->clear();
       }
     }
-    font_height_ = 15;
+    font_height_ = 24;
     if (_has_bit(2)) {
       if (style_ != NULL) style_->::rec::gui::FontDesc_Style::Clear();
     }
@@ -505,7 +505,7 @@ bool FontDesc::MergePartialFromCodedStream(
         break;
       }
       
-      // optional float font_height = 2 [default = 15];
+      // optional float font_height = 2 [default = 24];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
@@ -562,7 +562,7 @@ void FontDesc::SerializeWithCachedSizes(
       1, this->name(), output);
   }
   
-  // optional float font_height = 2 [default = 15];
+  // optional float font_height = 2 [default = 24];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->font_height(), output);
   }
@@ -591,7 +591,7 @@ void FontDesc::SerializeWithCachedSizes(
         1, this->name(), target);
   }
   
-  // optional float font_height = 2 [default = 15];
+  // optional float font_height = 2 [default = 24];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->font_height(), target);
   }
@@ -621,7 +621,7 @@ int FontDesc::ByteSize() const {
           this->name());
     }
     
-    // optional float font_height = 2 [default = 15];
+    // optional float font_height = 2 [default = 24];
     if (has_font_height()) {
       total_size += 1 + 4;
     }

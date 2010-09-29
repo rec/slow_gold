@@ -11,7 +11,7 @@ class Method0 {
  public:
   Method0(Method m) : method_(m) {}
 
-  bool operator()(Type* c) const { (c->*method_)(); }
+  bool operator()(Type* x) const { return (x->*method_)(); }
 
  private:
   Method method_;
@@ -22,7 +22,7 @@ class Method1 {
  public:
   Method1(Method m, A a) : method_(m), a_(a) {}
 
-  bool operator()(Type* cl) const { (c->*method_)(a_); }
+  bool operator()(Type* x) const { return (x->*method_)(a_); }
 
  private:
   Method method_;
@@ -34,7 +34,7 @@ class Method2 {
  public:
   Method2(Method m, A a, B b) : method_(m), a_(a), b_(b) {}
 
-  bool operator()(Type* cl) const { (c->*method_)(a, b); }
+  bool operator()(Type* x) const { return (x->*method_)(a_, b_); }
 
  private:
   Method method_;
@@ -47,7 +47,7 @@ class Method3 {
  public:
   Method3(Method m, A a, B b, C c) : method_(m), a_(a), b_(b), c_(c) {}
 
-  bool operator()(Type* cl) const { (c->*method_)(a, b, c); }
+  bool operator()(Type* x) const { return (x->*method_)(a_, b_, c_); }
 
  private:
   Method method_;
@@ -62,18 +62,18 @@ Method0<Type, Method> getMethod(Method m) {
 }
 
 template <typename Type, typename Method, typename A>
-Method1<Type, Method> getMethod(Method m, A a) {
-  return Method1<Type, Method>(m, a);
+Method1<Type, Method, A> getMethod(Method m, A a) {
+  return Method1<Type, Method, A>(m, a);
 }
 
 template <typename Type, typename Method, typename A, typename B>
-Method2<Type, Method> getMethod(Method m, A a, B b) {
-  return Method2<Type, Method>(m, a, b);
+Method2<Type, Method, A, B> getMethod(Method m, A a, B b) {
+  return Method2<Type, Method, A, B>(m, a, b);
 }
 
 template <typename Type, typename Method, typename A, typename B, typename C>
-Method3<Type, Method> getMethod(Method m, A a, B b, C c) {
-  return Method3<Type, Method>(m, a, b, c);
+Method3<Type, Method, A, B, C> getMethod(Method m, A a, B b, C c) {
+  return Method3<Type, Method, A, B, C>(m, a, b, c);
 }
 
 }  // namespace util

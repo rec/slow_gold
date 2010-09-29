@@ -1,5 +1,5 @@
-#ifndef __REC_BASE_BASE__
-#define __REC_BASE_BASE__
+#ifndef __REC_BASE_DISALLOW__
+#define __REC_BASE_DISALLOW__
 
 #include <stddef.h>
 
@@ -18,4 +18,4 @@
   TypeName();                                    \
   DISALLOW_COPY_AND_ASSIGN(TypeName)
 
-#endif  // __REC_BASE_BASE__
+#endif  // __REC_BASE_DISALLOW__
