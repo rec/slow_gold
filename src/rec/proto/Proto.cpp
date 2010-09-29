@@ -1,10 +1,6 @@
 #include <glog/logging.h>
 
-#include "rec/base/scoped_ptr.h"
-#include "google/protobuf/descriptor.h"
-#include "rec/proto/Proto.h"
 #include "rec/proto/Field.h"
-#include "rec/proto/TypedTyper.h"
 
 namespace rec {
 namespace proto {

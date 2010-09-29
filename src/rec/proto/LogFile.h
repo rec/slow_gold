@@ -2,10 +2,8 @@
 #define __REC_PROTO_LOGFILE__
 
 #include "google/protobuf/message.h"
-#include "google/protobuf/descriptor.h"
 #include "rec/base/base.h"
 #include "rec/proto/ZeroCopy.h"
-#include "rec/proto/Types.h"
 
 namespace rec {
 namespace proto {

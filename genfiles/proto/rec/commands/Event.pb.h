@@ -27,7 +27,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace event {
+namespace commands {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fcommands_2fEvent_2eproto();
@@ -140,12 +140,12 @@ class Source : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.event.Source.Type type = 1;
+  // optional .rec.commands.Source.Type type = 1;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
-  inline ::rec::event::Source_Type type() const;
-  inline void set_type(::rec::event::Source_Type value);
+  inline ::rec::commands::Source_Type type() const;
+  inline void set_type(::rec::commands::Source_Type value);
   
   // repeated uint32 index = 2;
   inline int index_size() const;
@@ -166,7 +166,7 @@ class Source : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 modifier_keys() const;
   inline void set_modifier_keys(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.event.Source)
+  // @@protoc_insertion_point(class_scope:rec.commands.Source)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -257,16 +257,16 @@ class Event : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 timestamp() const;
   inline void set_timestamp(::google::protobuf::uint64 value);
   
-  // repeated .rec.event.Source source = 2;
+  // repeated .rec.commands.Source source = 2;
   inline int source_size() const;
   inline void clear_source();
   static const int kSourceFieldNumber = 2;
-  inline const ::rec::event::Source& source(int index) const;
-  inline ::rec::event::Source* mutable_source(int index);
-  inline ::rec::event::Source* add_source();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::event::Source >&
+  inline const ::rec::commands::Source& source(int index) const;
+  inline ::rec::commands::Source* mutable_source(int index);
+  inline ::rec::commands::Source* add_source();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::commands::Source >&
       source() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::event::Source >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::commands::Source >*
       mutable_source();
   
   // repeated .rec.proto.Operation operation = 3;
@@ -281,13 +281,13 @@ class Event : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >*
       mutable_operation();
   
-  // @@protoc_insertion_point(class_scope:rec.event.Event)
+  // @@protoc_insertion_point(class_scope:rec.commands.Event)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::uint64 timestamp_;
-  ::google::protobuf::RepeatedPtrField< ::rec::event::Source > source_;
+  ::google::protobuf::RepeatedPtrField< ::rec::commands::Source > source_;
   ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation > operation_;
   friend void  protobuf_AddDesc_rec_2fcommands_2fEvent_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommands_2fEvent_2eproto();
@@ -316,7 +316,7 @@ class Event : public ::google::protobuf::Message {
 
 // Source
 
-// optional .rec.event.Source.Type type = 1;
+// optional .rec.commands.Source.Type type = 1;
 inline bool Source::has_type() const {
   return _has_bit(0);
 }
@@ -324,11 +324,11 @@ inline void Source::clear_type() {
   type_ = 0;
   _clear_bit(0);
 }
-inline ::rec::event::Source_Type Source::type() const {
-  return static_cast< ::rec::event::Source_Type >(type_);
+inline ::rec::commands::Source_Type Source::type() const {
+  return static_cast< ::rec::commands::Source_Type >(type_);
 }
-inline void Source::set_type(::rec::event::Source_Type value) {
-  GOOGLE_DCHECK(::rec::event::Source_Type_IsValid(value));
+inline void Source::set_type(::rec::commands::Source_Type value) {
+  GOOGLE_DCHECK(::rec::commands::Source_Type_IsValid(value));
   _set_bit(0);
   type_ = value;
 }
@@ -394,27 +394,27 @@ inline void Event::set_timestamp(::google::protobuf::uint64 value) {
   timestamp_ = value;
 }
 
-// repeated .rec.event.Source source = 2;
+// repeated .rec.commands.Source source = 2;
 inline int Event::source_size() const {
   return source_.size();
 }
 inline void Event::clear_source() {
   source_.Clear();
 }
-inline const ::rec::event::Source& Event::source(int index) const {
+inline const ::rec::commands::Source& Event::source(int index) const {
   return source_.Get(index);
 }
-inline ::rec::event::Source* Event::mutable_source(int index) {
+inline ::rec::commands::Source* Event::mutable_source(int index) {
   return source_.Mutable(index);
 }
-inline ::rec::event::Source* Event::add_source() {
+inline ::rec::commands::Source* Event::add_source() {
   return source_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::event::Source >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::commands::Source >&
 Event::source() const {
   return source_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::event::Source >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::commands::Source >*
 Event::mutable_source() {
   return &source_;
 }
@@ -447,7 +447,7 @@ Event::mutable_operation() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace event
+}  // namespace commands
 }  // namespace rec
 
 #ifndef SWIG
@@ -455,8 +455,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::event::Source_Type>() {
-  return ::rec::event::Source_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::commands::Source_Type>() {
+  return ::rec::commands::Source_Type_descriptor();
 }
 
 }  // namespace google

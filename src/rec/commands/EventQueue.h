@@ -5,44 +5,29 @@
 
 #include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
-#include "rec/event/Event.pb.h"
-#include "rec/proto/LogFile.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-namespace event {
+namespace proto {
+namespace logfile {
+class Output;
+}  // namespace proto
+}  // namespace logfile
+
+namespace commands {
+
+class Event;
 
 class EventQueue {
  public:
-  explicit EventQueue(const File& file)
-      : file_(file),
-        logfile_(new proto::logfile::Output(file)) {
-  }
+  explicit EventQueue(const File& file);
 
-  ~EventQueue() { write(); }
+  ~EventQueue();
 
-  void add(Event* event) {
-    ScopedLock l(lock_);
-    events_.push_back(event);
-  }
+  void add(Event* event);
 
-  void write() {
-    EventList events;
-    {
-      ScopedLock l(lock_);
-      if (events_.empty())
-        return;
-
-      events = events_;
-      events_.clear();
-    }
-
-    for (EventList::iterator i = events_.begin(); i != events_.end(); ++i) {
-      logfile_->write(**i);
-      delete *i;
-    }
-  }
+  void write();
 
  private:
   typedef std::vector<Event*> EventList;
@@ -55,7 +40,7 @@ class EventQueue {
   DISALLOW_COPY_AND_ASSIGN(EventQueue);
 };
 
-}  // namespace event
+}  // namespace commands
 }  // namespace rec
 
 #endif  // __REC_EVENT_EVENTQUEUE__

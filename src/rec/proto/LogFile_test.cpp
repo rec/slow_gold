@@ -2,6 +2,7 @@
 #include <glog/logging.h>
 
 #include "rec/proto/LogFile.h"
+#include "rec/proto/Operation.pb.h"
 
 namespace rec {
 namespace proto {

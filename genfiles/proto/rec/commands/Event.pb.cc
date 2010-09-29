@@ -11,7 +11,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace event {
+namespace commands {
 
 namespace {
 
@@ -102,14 +102,15 @@ void protobuf_AddDesc_rec_2fcommands_2fEvent_2eproto() {
 
   ::rec::proto::protobuf_AddDesc_rec_2fproto_2fOperation_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/commands/Event.proto\022\trec.event\032\031r"
-    "ec/proto/Operation.proto\"\220\001\n\006Source\022$\n\004t"
-    "ype\030\001 \001(\0162\026.rec.event.Source.Type\022\r\n\005ind"
-    "ex\030\002 \003(\r\022\025\n\rmodifier_keys\030\003 \001(\r\":\n\004Type\022"
-    "\010\n\004MENU\020\000\022\014\n\010KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\t"
-    "AUTOMATIC\020\003\"f\n\005Event\022\021\n\ttimestamp\030\001 \001(\004\022"
-    "!\n\006source\030\002 \003(\0132\021.rec.event.Source\022\'\n\top"
-    "eration\030\003 \003(\0132\024.rec.proto.Operation", 315);
+    "\n\030rec/commands/Event.proto\022\014rec.commands"
+    "\032\031rec/proto/Operation.proto\"\223\001\n\006Source\022\'"
+    "\n\004type\030\001 \001(\0162\031.rec.commands.Source.Type\022"
+    "\r\n\005index\030\002 \003(\r\022\025\n\rmodifier_keys\030\003 \001(\r\":\n"
+    "\004Type\022\010\n\004MENU\020\000\022\014\n\010KEYBOARD\020\001\022\013\n\007CONTROL"
+    "\020\002\022\r\n\tAUTOMATIC\020\003\"i\n\005Event\022\021\n\ttimestamp\030"
+    "\001 \001(\004\022$\n\006source\030\002 \003(\0132\024.rec.commands.Sou"
+    "rce\022\'\n\toperation\030\003 \003(\0132\024.rec.proto.Opera"
+    "tion", 324);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/commands/Event.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -226,7 +227,7 @@ bool Source::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.event.Source.Type type = 1;
+      // optional .rec.commands.Source.Type type = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -234,8 +235,8 @@ bool Source::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::event::Source_Type_IsValid(value)) {
-            set_type(static_cast< ::rec::event::Source_Type >(value));
+          if (::rec::commands::Source_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::commands::Source_Type >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -302,7 +303,7 @@ bool Source::MergePartialFromCodedStream(
 
 void Source::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.event.Source.Type type = 1;
+  // optional .rec.commands.Source.Type type = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
@@ -327,7 +328,7 @@ void Source::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Source::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.event.Source.Type type = 1;
+  // optional .rec.commands.Source.Type type = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
@@ -355,7 +356,7 @@ int Source::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.event.Source.Type type = 1;
+    // optional .rec.commands.Source.Type type = 1;
     if (has_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
@@ -541,7 +542,7 @@ bool Event::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated .rec.event.Source source = 2;
+      // repeated .rec.commands.Source source = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -594,7 +595,7 @@ void Event::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->timestamp(), output);
   }
   
-  // repeated .rec.event.Source source = 2;
+  // repeated .rec.commands.Source source = 2;
   for (int i = 0; i < this->source_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->source(i), output);
@@ -619,7 +620,7 @@ void Event::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->timestamp(), target);
   }
   
-  // repeated .rec.event.Source source = 2;
+  // repeated .rec.commands.Source source = 2;
   for (int i = 0; i < this->source_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -652,7 +653,7 @@ int Event::ByteSize() const {
     }
     
   }
-  // repeated .rec.event.Source source = 2;
+  // repeated .rec.commands.Source source = 2;
   total_size += 1 * this->source_size();
   for (int i = 0; i < this->source_size(); i++) {
     total_size +=
@@ -742,7 +743,7 @@ void Event::Swap(Event* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace event
+}  // namespace commands
 }  // namespace rec
 
 // @@protoc_insertion_point(global_scope)
