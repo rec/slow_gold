@@ -5,6 +5,7 @@
 #ifndef __REC_BASE_ARRAYSIZE_H_
 #define __REC_BASE_ARRAYSIZE_H_
 
+#include "rec/base/base.h"
 
 // The arraysize(arr) macro returns the # of elements in an array arr.
 // The expression is a compile-time constant, and therefore can be

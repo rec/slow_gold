@@ -1,10 +1,12 @@
 #include <math.h>
+
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
 #include "rec/ammf_scaler/AudioTimeScaler.h"
-#include "rec/audio/source/TimeScaler.h"
 #include "rec/audio/source/TestHarness.h"
+#include "rec/audio/source/TimeScaler.h"
+#include "rec/audio/source/TimeStretch.pb.h"
 
 namespace rec {
 namespace audio {

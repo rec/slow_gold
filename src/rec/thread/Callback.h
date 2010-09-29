@@ -1,7 +1,7 @@
 #ifndef __REC_THREAD_CALLBACK__
 #define __REC_THREAD_CALLBACK__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/thread/Runnable.h"
 
 namespace rec {

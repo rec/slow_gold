@@ -1,6 +1,8 @@
 #ifndef __REC_AUDIO_SOURCE_SOURCE__
 #define __REC_AUDIO_SOURCE_SOURCE__
 
+#include "rec/base/base.h"
+
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {

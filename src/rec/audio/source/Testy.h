@@ -6,7 +6,6 @@
 #include <gtest/gtest.h>
 
 #include "rec/base/scoped_ptr.h"
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/source/Source.h"
 
 namespace rec {

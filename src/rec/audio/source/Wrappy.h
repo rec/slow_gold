@@ -3,11 +3,9 @@
 
 #include <vector>
 #include <glog/logging.h>
-#include "JuceLibraryCode/JuceHeader.h"
 
-#include "rec/base/base.h"
-#include "rec/util/Math.h"
 #include "rec/audio/source/Source.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace audio {
@@ -36,6 +34,7 @@ class Wrappy : public Source {
   virtual void releaseResources() { source_->releaseResources(); }
 
   int mod(int x) const { return util::mod(x, getTotalLength()); }
+
   void advance(int x) {
     setNextReadPosition(mod(x + getNextReadPosition()));
   }

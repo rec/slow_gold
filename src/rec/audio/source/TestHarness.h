@@ -1,8 +1,9 @@
 #ifndef __REC_AUDIO_SOURCE_TESTER
 #define __REC_AUDIO_SOURCE_TESTER
 
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/scoped_ptr.h"
+
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

@@ -4,7 +4,7 @@
 #include <set>
 #include <glog/logging.h>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/persist/UntypedData.h"
 
 namespace rec {

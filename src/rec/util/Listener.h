@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_LISTENER__
 #define __REC_UTIL_LISTENER__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace util {

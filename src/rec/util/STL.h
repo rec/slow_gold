@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_STL__
 #define __REC_UTIL_STL__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace stl {

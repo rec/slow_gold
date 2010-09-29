@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_OFFSET__
 #define __REC_AUDIO_SOURCE_OFFSET__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace audio {

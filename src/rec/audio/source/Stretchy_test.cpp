@@ -2,6 +2,7 @@
 
 #include "rec/audio/source/Stretchy.h"
 #include "rec/audio/source/Testy.h"
+#include "rec/audio/source/TimeStretch.pb.h"
 
 namespace rec {
 namespace audio {

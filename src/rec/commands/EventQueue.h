@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/event/Event.pb.h"
 #include "rec/proto/LogFile.h"

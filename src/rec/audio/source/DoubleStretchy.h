@@ -3,36 +3,15 @@
 
 // Wrap an incoming AudioSource, and time-stretch it.
 
-#include "rec/audio/source/TimeStretch.pb.h"
-#include "rec/audio/source/Wrappy.h"
-#include "rec/audio/source/Buffery.h"
-#include "rec/audio/source/Stretchy.h"
-#include "rec/audio/source/TimeScaler.h"
 #include "rec/base/scoped_ptr.h"
+#include "rec/audio/source/Source.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class BufferedStretchy : public Buffery {
- public:
-  BufferedStretchy(Source* s) : Buffery(&stretchy_), stretchy_(s) {}
-
-  void setDescription(const TimeStretch& t, int position) {
-    stretchy_.setDescription(t);
-    resetFrom(t.channels(), position);
-    setNextReadPosition(position);
-  }
-
-  const TimeStretch& getDescription() const {
-    return stretchy_.getDescription();
-  }
-
- private:
-  Stretchy stretchy_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferedStretchy);
-};
-
+class BufferedStretchy;
+class TimeStretch;
 
 class DoubleStretchy : public Source {
  public:
@@ -56,14 +35,14 @@ class DoubleStretchy : public Source {
 
  private:
   bool descriptionChanged_;
-  TimeStretch description_;
+  scoped_ptr<TimeStretch> description_;
 
   int position_;
   bool gettingBlock_;
 
   static const int BUFFER_COUNT = 2;
-  BufferedStretchy buffer0_;
-  BufferedStretchy buffer1_;
+  scoped_ptr<BufferedStretchy> buffer0_;
+  scoped_ptr<BufferedStretchy> buffer1_;
 
   BufferedStretchy* buffer_;
   BufferedStretchy* next_;

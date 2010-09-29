@@ -1,9 +1,9 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERY__
 #define __REC_AUDIO_SOURCE_BUFFERY__
 
+#include "rec/audio/source/Wrappy.h"
 #include "rec/base/scoped_ptr.h"
 #include "rec/util/Circular.h"
-#include "rec/audio/source/Wrappy.h"
 
 namespace rec {
 namespace audio {

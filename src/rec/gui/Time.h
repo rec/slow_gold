@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/gui/Time.pb.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"

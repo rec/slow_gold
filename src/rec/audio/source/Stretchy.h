@@ -5,18 +5,22 @@
 
 #include <vector>
 
-#include "rec/audio/source/TimeStretch.pb.h"
+#include "rec/base/scoped_ptr.h"
 #include "rec/audio/source/Wrappy.h"
-#include "rec/audio/source/TimeScaler.h"
+
+class AudioTimeScaler;
 
 namespace rec {
 namespace audio {
 namespace source {
 
+class TimeStretch;
+
 class Stretchy : public Wrappy::Position {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
   Stretchy(Source* s);
+  ~Stretchy();
 
   void setDescription(const TimeStretch& d);
 
@@ -24,15 +28,15 @@ class Stretchy : public Wrappy::Position {
   virtual void setNextReadPosition(int position);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
-  const TimeStretch& getDescription() const { return description_; }
+  const TimeStretch& getDescription() const { return *description_; }
 
  private:
   int processOneChunk(const AudioSourceChannelInfo& info);
 
-  TimeStretch description_;
+  scoped_ptr<TimeStretch> description_;
   int channels_;
   AudioSampleBuffer buffer_;
-  AudioTimeScaler scaler_;
+  scoped_ptr<AudioTimeScaler> scaler_;
   std::vector<float*> outOffset_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);

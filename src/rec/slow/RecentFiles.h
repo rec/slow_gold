@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_RECENTFILES__
 #define __REC_SLOW_RECENTFILES__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/slow/RecentFiles.pb.h"
 
 namespace rec {

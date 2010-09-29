@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "rec/audio/source/Buffery.h"
 #include "rec/audio/source/Testy.h"
 

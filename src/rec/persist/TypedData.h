@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/persist/Data.h"
 
 namespace rec {

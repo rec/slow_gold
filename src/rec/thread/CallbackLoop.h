@@ -1,7 +1,7 @@
 #ifndef __REC_THREAD_CALLBACKLOOP__
 #define __REC_THREAD_CALLBACKLOOP__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/thread/Callback.h"
 #include "rec/thread/RunnableThread.h"
 #include "rec/thread/WaitLoop.h"

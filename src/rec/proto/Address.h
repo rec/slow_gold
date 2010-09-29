@@ -1,7 +1,7 @@
 #ifndef __REC_PROTO_ADDRESS__
 #define __REC_PROTO_ADDRESS__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/proto/Address.pb.h"
 
 namespace rec {

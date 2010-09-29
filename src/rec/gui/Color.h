@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_COLORS__
 #define __REC_GUI_COLORS__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/gui/Color.pb.h"
 #include "JuceLibraryCode/JuceHeader.h"
 

@@ -1,4 +1,3 @@
-
 #include "rec/app/RecWindow.h"
 #include "rec/app/RecContainer.h"
 

@@ -1,11 +1,10 @@
 #ifndef __REC_APP_RECAPPLICATION__
 #define __REC_APP_RECAPPLICATION__
 
-#include "rec/base/scoped_ptr.h"
-
-#include "rec/slow/Preferences.h"
-#include "rec/app/RecWindow.h"
 #include "rec/app/GenericApplication.h"
+#include "rec/app/RecWindow.h"
+#include "rec/base/scoped_ptr.h"
+#include "rec/slow/Preferences.h"
 
 namespace rec {
 namespace app {

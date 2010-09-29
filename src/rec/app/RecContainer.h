@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-#include "rec/slow/Preferences.h"
+#include "rec/slow/RecentFiles.h"
 #include "rec/app/ComponentContainer.h"
 #include "rec/components/MainPageComponent.h"
 

@@ -6,6 +6,7 @@
 #define BASE_PORT_H_
 
 #include <stdarg.h>
+
 #include "rec/base/build_config.h"
 
 #ifdef COMPILER_MSVC

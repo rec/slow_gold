@@ -1,7 +1,7 @@
 #ifndef __REC_PROTO_VALUE__
 #define __REC_PROTO_VALUE__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/proto/Value.pb.h"
 #include "rec/proto/Types.h"
 

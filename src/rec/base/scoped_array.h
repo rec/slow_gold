@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <glog/logging.h>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 
 // scoped_array<C> is like scoped_ptr<C>, except that the caller must allocate
 // with new [] and the destructor deletes objects with delete [].

@@ -5,6 +5,8 @@
 #ifndef __REC_BASE_CAST_H__
 #define __REC_BASE_CAST_H__
 
+#include "rec/base/base.h"
+
 // Use implicit_cast as a safe version of static_cast or const_cast
 // for upcasting in the type hierarchy (i.e. casting a pointer to Foo
 // to a pointer to SuperclassOfFoo or casting a pointer to Foo to

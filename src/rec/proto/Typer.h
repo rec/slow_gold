@@ -1,7 +1,7 @@
 #ifndef __REC_PROTO_TYPER__
 #define __REC_PROTO_TYPER__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/proto/Types.h"
 
 namespace rec {

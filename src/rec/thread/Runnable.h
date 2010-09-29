@@ -1,7 +1,7 @@
 #ifndef __REC_THREAD_RUNNABLE
 #define __REC_THREAD_RUNNABLE
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {

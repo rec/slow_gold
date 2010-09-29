@@ -1,7 +1,7 @@
 #ifndef __REC_PERSIST_APPBASE__
 #define __REC_PERSIST_APPBASE__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/persist/Data.h"
 #include "rec/util/STL.h"
 

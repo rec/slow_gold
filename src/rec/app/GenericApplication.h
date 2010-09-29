@@ -4,8 +4,6 @@
 #include <string>
 #include <glog/logging.h>
 
-#include "rec/base/base.h"
-#include "rec/base/scoped_ptr.h"
 #include "rec/persist/AppInstance.h"
 
 #include "JuceLibraryCode/JuceHeader.h"

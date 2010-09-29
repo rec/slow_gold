@@ -3,7 +3,7 @@
 
 #include "google/protobuf/message.h"
 #include "google/protobuf/descriptor.h"
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/proto/ZeroCopy.h"
 #include "rec/proto/Types.h"
 

@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 
 #include "rec/audio/source/DoubleStretchy.h"
+#include "rec/ammf_scaler/AudioTimeScaler.h"
+#include "rec/audio/source/TimeStretch.pb.h"
 #include "rec/audio/source/Testy.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/util/TestData.h"

@@ -4,7 +4,7 @@
 #include <cstdarg>
 
 #include <algorithm>
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/proto/Operation.pb.h"
 #include "rec/proto/Types.h"
 #include "rec/proto/Address.h"

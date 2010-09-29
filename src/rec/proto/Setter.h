@@ -2,7 +2,6 @@
 #define __REC_PROTO_SETTER__
 
 #include "rec/base/base.h"
-#include "rec/base/basictypes.h"
 #include "rec/proto/Address.h"
 #include "rec/proto/Value.h"
 

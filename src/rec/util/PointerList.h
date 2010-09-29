@@ -1,8 +1,9 @@
 #ifndef __REC_UTIL_POINTERLIST__
 #define __REC_UTIL_POINTERLIST__
 
+#include <vector>
+
 #include "rec/base/base.h"
-#include "rec/base/basictypes.h"
 #include "rec/util/Method.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -17,37 +18,42 @@ class PointerList {
   PointerList() {}
 
   typedef std::vector<Type*> List;
-  
+  typedef util::Method<Type> Method;
+
   List* list() { return &list_; }
   const List& list() const { return list_; }
 
   CriticalSection* lock() { return &lock_; }
 
-  template <typename Method>
-  bool forEach(Method m, bool forward) {
-    return forEach(util::getMethod<Type>(m), forward);
+  template <typename M>
+  bool forEach(M m, bool forward) {
+    return forEachOp(Method::get(m), forward);
   }
 
-  template <typename Method, typename A>
-  bool forEach(Method m, A a, bool forward) {
-    return forEach(util::getMethod<Type>(m, a), forward);
+  template <typename M, typename A>
+  bool forEach(M m, A a, bool forward) {
+    return forEachOp(Method::get(m, a), forward);
   }
 
-  template <typename Method, typename A, typename B>
-  bool forEach(Method m, A a, B b, bool forward) {
-    return forEach(util::getMethod<Type>(m, a, b), forward);
+  template <typename M, typename A, typename B>
+  bool forEach(M m, A a, B b, bool forward) {
+    return forEachOp(Method::get(m, a, b), forward);
   }
 
-  template <typename Method, typename A, typename B, typename C>
-  bool forEach(Method m, A a, B b, C c, bool forward) {
-    return forEach(util::getMethod<Type>(m, a, b, c), forward);
+  template <typename M, typename A, typename B, typename C>
+  bool forEach(M m, A a, B b, C c, bool forward) {
+    return forEachOp(Method::get(m, a, b, c), forward);
   }
 
   template <typename Operation>
-  bool forEach(Operation op, bool forward) {
+  bool forEachOp(Operation op, bool forward) {
     ScopedLock l(lock_);
-    for (Type** i = &*list_.begin(); i != &*list_.end(); ++i) {
-      if (op(*(forward ? i : end() - i + begin())))
+
+    Type** begin = &*list_.begin();
+    Type** end = &*list_.end();
+
+    for (Type** i = begin; i != end; ++i) {
+      if (op(*(forward ? i : end - 1 - i + begin)))
         return true;
     }
     return false;

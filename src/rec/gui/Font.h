@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_FONT__
 #define __REC_GUI_FONT__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/gui/Font.pb.h"
 
 namespace rec {

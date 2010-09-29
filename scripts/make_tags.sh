@@ -1,5 +1,5 @@
 
-cd rec/src
+cd "$ROOT/rec/src"
 find . \( -name \*.h -or -name \*.cpp \) | xargs etags
 exit -1
 

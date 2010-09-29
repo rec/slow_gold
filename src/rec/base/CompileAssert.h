@@ -5,6 +5,8 @@
 #ifndef __REC_BASE_COMPILE_ASSERT_H_
 #define __REC_BASE_COMPILE_ASSERT_H_
 
+#include "rec/base/base.h"
+
 // The COMPILE_ASSERT macro can be used to verify that a compile time
 // expression is true. For example, you could use it to verify the
 // size of a static array:

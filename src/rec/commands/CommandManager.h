@@ -1,11 +1,13 @@
 #ifndef __REC_COMMANDS_COMMANDMANAGER__
 #define __REC_COMMANDS_COMMANDMANAGER__
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 #include "rec/util/PointerList.h"
 
 namespace rec {
 namespace commands {
+
+typedef ApplicationCommandTarget::InvocationInfo InvocationInfo;
 
 class MenuDelegate {
  public:
@@ -20,13 +22,13 @@ class MultiMenu : public MenuBarModel, public util::PointerList<MenuDelegate> {
  public:
   virtual const StringArray getMenuBarNames() {
     StringArray result;
-    forEach(MultiMenu::getMenuBarNames, &result);
+    forEach(&MenuDelegate::getMenuBarNames, &result, true);
     return result;
   }
 
   virtual const PopupMenu getMenuForIndex(int index, const String& name) {
     PopupMenu result;
-    forEach(MultiMenu::getMenuForIndex, &result, index, name);
+    forEach(&MenuDelegate::getMenuForIndex, &result, index, name, true);
     return result;
   }
 
@@ -40,32 +42,30 @@ class CommandDelegate {
     return false;
   }
   virtual bool getAllCommands(Array <CommandID>* commands) { return false; }
-  virtual bool getCommandInfo(CommandID id, ApplicationCommandInfo& result) {
+  virtual bool getCommandInfo(CommandID id, ApplicationCommandInfo* result) {
     return false;
   }
   virtual bool perform(const InvocationInfo& info) { return false; }
+  virtual ~CommandDelegate() {}
 };
 
-class MultiCommand : public ApplicationCommandTarget, public PointerList<CommandDelegate> {
+class MultiCommand : public ApplicationCommandTarget,
+                     public util::PointerList<CommandDelegate> {
  public:
-  MultiMenu(CommandDelegate** begin, CommandDelegate** end)
-      : PointerList<CommandDelegate>(begin, end) {
-  }
-
   virtual void menuItemSelected(int itemID, int menuIndex) {
-    forEach(MultiMenu::menuItemSelected, itemId, menuIndex));
+    forEach(&CommandDelegate::menuItemSelected, itemID, menuIndex, true);
   }
 
   virtual void getCommandInfo(CommandID id, ApplicationCommandInfo& info) {
-    forEach(MultiMenu::getCommandInfo, id, info);
+    forEach(&CommandDelegate::getCommandInfo, id, &info, true);
   }
 
   virtual void getAllCommands(Array <CommandID>& commands) {
-    forEach(MultiMenu::getAllCommands, &commands);
+    forEach(&CommandDelegate::getAllCommands, &commands, true);
   }
 
   virtual bool perform(const InvocationInfo& info) {
-    return forEach(MultiMenu::perform, info);
+    return forEach(&CommandDelegate::perform, info, false);
   }
 
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }

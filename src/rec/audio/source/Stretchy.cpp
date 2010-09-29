@@ -2,17 +2,25 @@
 
 #include "rec/audio/source/Stretchy.h"
 
+#include "rec/ammf_scaler/AudioTimeScaler.h"
+#include "rec/audio/source/TimeScaler.h"
+#include "rec/audio/source/TimeStretch.pb.h"
+
 namespace rec {
 namespace audio {
 namespace source {
 
 Stretchy::Stretchy(Source* s)
     : Wrappy::Position(s),
+      description_(new TimeStretch),
+      scaler_(new AudioTimeScaler),
       buffer_(2, SAMPLE_BUFFER_INITIAL_SIZE) {
 }
 
+Stretchy::~Stretchy() {}
+
 void Stretchy::setDescription(const TimeStretch& d) {
-  description_.CopyFrom(d);
+  description_->CopyFrom(d);
   channels_ = d.channels();
   buffer_.setSize(channels_, SAMPLE_BUFFER_INITIAL_SIZE, false, false, true);
   outOffset_.resize(channels_);
@@ -21,13 +29,13 @@ void Stretchy::setDescription(const TimeStretch& d) {
 }
 
 int Stretchy::getTotalLength() const {
-  return source_->getTotalLength() * description_.time_scale();
+  return source_->getTotalLength() * description_->time_scale();
 }
 
 void Stretchy::setNextReadPosition(int position) {
   position_ = position;
-  source_->setNextReadPosition(position / description_.time_scale());
-  Init(description_, &scaler_);
+  source_->setNextReadPosition(position / description_->time_scale());
+  Init(*description_, scaler_.get());
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -59,7 +67,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 }
 
 int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
-  int64 inSampleCount = scaler_.GetInputBufferSize(info.numSamples) / 2;
+  int64 inSampleCount = scaler_->GetInputBufferSize(info.numSamples) / 2;
   buffer_.setSize(channels_, inSampleCount, false, false, true);
 
   AudioSourceChannelInfo i;
@@ -74,7 +82,7 @@ int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   float** ins = buffer_.getArrayOfChannels();
   float** outs = &outOffset_.front();
 
-  int samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);
+  int samples = scaler_->Process(ins, outs, inSampleCount, info.numSamples);
   return samples;
 }
 
