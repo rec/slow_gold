@@ -2,7 +2,7 @@ package rec.gui;
 
 message FontDesc {
   optional string name = 1;
-  optional float font_height = 2 [default = 24];
+  optional float font_height = 2 [default = 18];
 
   message Style {
     optional bool bold = 1;

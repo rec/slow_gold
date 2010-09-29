@@ -1,7 +1,8 @@
 #ifndef __REC_CD_GETALBUMSFROMCDDB__
 #define __REC_CD_GETALBUMSFROMCDDB__
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include <vector>
+#include "rec/base/base.h"
 
 namespace rec {
 namespace cd {
@@ -10,9 +11,9 @@ struct Track {
   int length_;
   int frameOffset_;
 
-  String title_;
-  String artist_;
-  String extdata_;
+  string title_;
+  string artist_;
+  string extdata_;
 };
 
 struct Album {
@@ -21,22 +22,23 @@ struct Album {
   int revision_;
   int year_;
 
-  String category_;
-  String genre_;
-  String title_;
-  String artist_;
-  String extdata_;
+  string category_;
+  string genre_;
+  string title_;
+  string artist_;
+  string extdata_;
 
-  Array<Track> tracks_;
+  std::vector<Track> tracks_;
 };
 
 // Fill a list of albums from the CDDB.  Return an error message or the empty
 // string if there was no error.
-String getAlbumsFromCDDB(const Array<int>& trackOffsets, Array<Album>* albums);
+string getAlbumsFromCDDB(const std::vector<int>& trackOffsets,
+                         std::vector<Album>* albums);
 
 
 // Remove any albums that are similar to another album in the list.
-void dedupeAlbums(Array<Album>* albums);
+void dedupeAlbums(std::vector<Album>* albums);
 
 }  // namespace cd
 }  // namespace rec

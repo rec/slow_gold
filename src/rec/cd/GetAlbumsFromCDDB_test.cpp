@@ -40,23 +40,23 @@ TEST(CD, GetAlbumsFromCDDB) {
 
   static int trackCount = arraysize(trackLengths) - 1;
 
-  Array<int> offsets(trackLengths, arraysize(trackLengths));
-  Array<Album> albums;
-  EXPECT_STREQ(getAlbumsFromCDDB(offsets, &albums).toCString(), "");
+  std::vector<int> offsets(trackLengths, 
+                           trackLengths + arraysize(trackLengths));
+  std::vector<Album> albums;
+  EXPECT_EQ(getAlbumsFromCDDB(offsets, &albums), "");
 
   EXPECT_EQ(albums.size(), 3);
 
   for (int i = 0; i < albums.size(); ++i) {
     const Album& album = albums[i];
-    EXPECT_TRUE(album.title_.startsWith("Never For Ever"));
+    EXPECT_NE(album.title_.find("Never For Ever"), -1);
     // EXPECT_STREQ(album.title_.toCString(), "Never For Ever");
     EXPECT_EQ(album.year_, 1980);
     EXPECT_EQ(album.artist_, "Kate Bush");
     EXPECT_EQ(album.tracks_.size(), trackCount);
 
-    for (int j = 0; j < trackCount; ++j) {
-      EXPECT_STREQ(trackNames[j], album.tracks_[j].title_.toCString());
-    }
+    for (int j = 0; j < trackCount; ++j)
+      EXPECT_EQ(trackNames[j], album.tracks_[j].title_);
   }
 
   dedupeAlbums(&albums);

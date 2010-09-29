@@ -1,28 +1,37 @@
+#include <string.h>
+
+#include <vector>
+
+#include <cddb/cddb.h>
+
 #include "rec/cd/GetAlbumsFromCDDB.h"
-
-#include "cddb/cddb.h"
-#include "rec/base/base.h"
-
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/base/ArraySize.h"
 
 namespace rec {
 namespace cd {
 
 namespace {
 
-static const int SAMPLES_PER_SECOND = AudioCDReader::samplesPerFrame *
-  AudioCDReader::framesPerSecond;
+// static const int SAMPLES_PER_SECOND = AudioCDReader::samplesPerFrame *
+//  AudioCDReader::framesPerSecond;
 
-String normalize(const String& s) {
-  static const char* const delimiters = "[(";
-  int length = s.length();
-  for (const char* i = delimiters; *i; ++i)
-    length = jmin(length, s.indexOfChar(*i));
+const int SAMPLES_PER_SECOND = 44100;
+// const int FRAMES_PER_SECOND = 75;
+const int SAMPLES_PER_FRAME = 44100 / FRAMES_PER_SECOND;
 
-  return s.substring(0, length).trim().toLowerCase();
+string normalize(const string& s) {
+  static const char delimiters[] = "[(";
+
+  int length = s.size();
+  for (const char* i = delimiters; *i; ++i) {
+    int loc = s.find(*i);
+    if (loc > 0 && loc < length)
+      length = loc;
+  }
+  return string(s, 0, length);
 }
 
-bool similar(const String& x, const String& y) {
+bool similar(const string& x, const string& y) {
   return normalize(x) == normalize(y);
 }
 
@@ -72,23 +81,23 @@ Album fillAlbum(cddb_disc_t* disc) {
 
   int trackCount = cddb_disc_get_track_count(disc);
   for (int i = 0; i < trackCount; ++i)
-    album.tracks_.add(fillTrack(cddb_disc_get_track(disc, i)));
+    album.tracks_.push_back(fillTrack(cddb_disc_get_track(disc, i)));
 
   return album;
 }
 
-void addIfNotSimilar(Array<Album>* albums, const Album& album) {
+void addIfNotSimilar(std::vector<Album>* albums, const Album& album) {
   for (int i = 0; i < albums->size(); ++i) {
     if (similar(album, (*albums)[i]))
       return;
   }
-  albums->add(album);
+  albums->push_back(album);
 }
 
 }  // namespace
 
-String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
-  String error;
+string getAlbumsFromCDDB(const std::vector<int>& offsets, std::vector<Album>* albums) {
+  string error;
   cddb_conn_t *conn = cddb_new();
   cddb_disc_t *disc = cddb_disc_new();
 
@@ -100,7 +109,7 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
   for (int i = 0; i < trackCount; ++i) {
     cddb_track_t *track = cddb_track_new();
     cddb_disc_add_track(disc, track);
-    cddb_track_set_frame_offset(track, offsets[i] / AudioCDReader::samplesPerFrame);
+    cddb_track_set_frame_offset(track, offsets[i] / SAMPLES_PER_FRAME);
   }
 
   int matches = cddb_query(conn, disc);
@@ -115,7 +124,7 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
       if (!cddb_read(conn, disc))
         error = cddb_error_str(cddb_errno(conn));
       else
-        albums->add(fillAlbum(disc));
+        albums->push_back(fillAlbum(disc));
     }
   }
 
@@ -124,13 +133,13 @@ String getAlbumsFromCDDB(const Array<int>& offsets, Array<Album>* albums) {
   return error;
 }
 
-void dedupeAlbums(Array<Album>* albums) {
+void dedupeAlbums(std::vector<Album>* albums) {
   // This process is quadratic in the number of albums, but we only ever get a
   // handful.
   for (int i = albums->size() - 1; i > 0; --i) {
     for (int j = i - 1; j >= 0; --j) {
       if (similar((*albums)[i], (*albums)[j])) {
-        albums->remove(i);
+        albums->erase(i + albums->begin());
         break;
       }
     }

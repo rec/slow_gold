@@ -155,8 +155,8 @@ void MainPageJ::resized()
     loopingButton->setBounds (192, getHeight() - 40, 150, 24);
     timeScaleSlider->setBounds (300, getHeight() - 90, 200, 24);
     pitchScaleSlider->setBounds (300, getHeight() - 60, 200, 24);
-    songTime->setBounds (550, getHeight() - 90, 100, 24);
-    realTime->setBounds (550, getHeight() - 60, 100, 24);
+    songTime->setBounds (520, getHeight() - 90, 120, 22);
+    realTime->setBounds (520, getHeight() - 60, 120, 22);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
