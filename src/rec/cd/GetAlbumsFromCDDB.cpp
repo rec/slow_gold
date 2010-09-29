@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <string.h>
 
 #include <vector>
@@ -14,9 +15,9 @@ namespace {
 
 // static const int SAMPLES_PER_SECOND = AudioCDReader::samplesPerFrame *
 //  AudioCDReader::framesPerSecond;
+// const int FRAMES_PER_SECOND = 75;
 
 const int SAMPLES_PER_SECOND = 44100;
-// const int FRAMES_PER_SECOND = 75;
 const int SAMPLES_PER_FRAME = 44100 / FRAMES_PER_SECOND;
 
 string normalize(const string& s) {
@@ -28,7 +29,16 @@ string normalize(const string& s) {
     if (loc > 0 && loc < length)
       length = loc;
   }
-  return string(s, 0, length);
+
+  int start = 0;
+  for (; start < length && isspace(s[start]); ++start);
+  for (; start < length && isspace(s[length - 1]); --length);
+
+  string result(s, start, length);
+  for (int i = 0; i < result.size(); ++i)
+    result[i] = tolower(result[i]);
+
+  return result;
 }
 
 bool similar(const string& x, const string& y) {
@@ -54,13 +64,17 @@ bool similar(const Album& x, const Album& y) {
   return true;
 }
 
+inline string unnull(const char* x) {
+  return string(x ? x : "");
+}
+
 Track fillTrack(cddb_track_t* track) {
   Track t;
   t.length_ = cddb_track_get_length(track);
   t.frameOffset_ = cddb_track_get_frame_offset(track);
-  t.title_ = cddb_track_get_title(track);
-  t.artist_ = cddb_track_get_artist(track);
-  t.extdata_ = cddb_track_get_ext_data(track);
+  t.title_ = unnull(cddb_track_get_title(track));
+  t.artist_ = unnull(cddb_track_get_artist(track));
+  t.extdata_ = unnull(cddb_track_get_ext_data(track));
 
   return t;
 }
@@ -69,15 +83,14 @@ Album fillAlbum(cddb_disc_t* disc) {
   Album album;
 
   album.discid_ = cddb_disc_get_discid(disc);
-  album.category_ = cddb_disc_get_category_str(disc);
-  album.genre_ = cddb_disc_get_genre(disc);
   album.length_ = cddb_disc_get_length(disc);
   album.revision_ = cddb_disc_get_revision(disc);
   album.year_ = cddb_disc_get_year(disc);
-  album.revision_ = cddb_disc_get_revision(disc);
-  album.title_ = cddb_disc_get_title(disc);
-  album.artist_ = cddb_disc_get_artist(disc);
-  album.extdata_ = cddb_disc_get_ext_data(disc);
+  album.category_ = unnull(cddb_disc_get_category_str(disc));
+  album.genre_ = unnull(cddb_disc_get_genre(disc));
+  album.title_ = unnull(cddb_disc_get_title(disc));
+  album.artist_ = unnull(cddb_disc_get_artist(disc));
+  album.extdata_ = unnull(cddb_disc_get_ext_data(disc));
 
   int trackCount = cddb_disc_get_track_count(disc);
   for (int i = 0; i < trackCount; ++i)
