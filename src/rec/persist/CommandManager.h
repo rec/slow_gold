@@ -90,6 +90,7 @@ class MultiCommand : public ApplicationCommandTarget {
   DelegateList delegates_;
 };
 
+#ifdef PROBABLY_DELETE_THIS
 
 class CommandManager : public ApplicationCommandTarget,
                        public MenuBarModel {
@@ -127,6 +128,8 @@ class CommandManager : public ApplicationCommandTarget,
   ApplicationCommandManager commandManager_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CommandManager);
 };
+
+#endif
 
 }  // namespace persist
 }  // namespace rec
