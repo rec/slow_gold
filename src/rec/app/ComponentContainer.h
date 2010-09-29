@@ -11,20 +11,20 @@ class ComponentContainer
     public ApplicationCommandTarget {
 
  protected:
-  Component* _component;
+  Component* component_;
 
  public:
-  ComponentContainer() : _component(NULL) {}
+  ComponentContainer() : component_(NULL) {}
 
   void show(Component* component) {
-    if (_component) {
-      removeChildComponent(_component);
-      delete _component;
+    if (component_) {
+      removeChildComponent(component_);
+      delete component_;
     }
 
-    _component = component;
-    if (_component) {
-      addAndMakeVisible(_component);
+    component_ = component;
+    if (component_) {
+      addAndMakeVisible(component_);
       resized();
     }
   };
@@ -34,8 +34,8 @@ class ComponentContainer
   }
 
   virtual void resized() {
-    if (_component)
-      _component->setBounds(0, 0, getWidth(), getHeight());
+    if (component_)
+      component_->setBounds(0, 0, getWidth(), getHeight());
   }
 
   // MenuBarModel virtual methods.
