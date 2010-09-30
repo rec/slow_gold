@@ -1,6 +1,5 @@
 #include "rec/slow/RecentFiles.h"
 #include "rec/slow/Preferences.h"
-#include "rec/proto/Proto.h"
 #include "rec/proto/Types.h"
 
 namespace rec {

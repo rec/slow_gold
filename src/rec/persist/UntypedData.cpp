@@ -4,7 +4,7 @@
 
 #include "rec/persist/App.h"
 #include "rec/persist/Copy.h"
-#include "rec/proto/Proto.h"
+#include "rec/proto/Field.h"
 #include "rec/util/STL.h"
 #include "rec/proto/Setter.h"
 
@@ -53,7 +53,7 @@ void UntypedData::update() {
 
     readFromFile();
     for (OperationList::iterator i = queue_.begin(); i != queue_.end(); ++i)
-      undo_.push_back(proto::applyOperation(**i, message_));
+      undo_.push_back(proto::Field::apply(**i, message_));
 
     stl::deletePointers(&queue_);
   }

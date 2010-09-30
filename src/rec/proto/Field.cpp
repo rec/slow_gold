@@ -2,8 +2,11 @@
 #include <google/protobuf/descriptor.h>
 
 #include "rec/proto/Field.h"
+#include "rec/proto/Address.h"
+#include "rec/proto/Operation.pb.h"
 #include "rec/proto/Typer.h"
 #include "rec/proto/Types.h"
+#include "rec/proto/Value.pb.h"
 
 namespace rec {
 namespace proto {

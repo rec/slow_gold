@@ -12,7 +12,6 @@ namespace proto {
 
 typedef Operation::Command Command;
 typedef google::protobuf::FieldDescriptor FieldDescriptor;
-typedef google::protobuf::Message Message;
 typedef google::protobuf::Reflection Reflection;
 typedef uint32 Tag;
 

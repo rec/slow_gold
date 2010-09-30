@@ -30,7 +30,7 @@ class Output : public OutputBase {
  public:
   Output(const File& file) : OutputBase(file) {}
 
-  void write(const google::protobuf::Message& message) {
+  void write(const Message& message) {
     string s;
     message.SerializeToString(&s);
     coded_.WriteVarint64(s.size());
@@ -44,7 +44,7 @@ class Input : public InputBase {
  public:
   Input(const File& file) : InputBase(file) {}
 
-  bool read(google::protobuf::Message* message) {
+  bool read(Message* message) {
     uint64 size;
     string s;
     return coded_.ReadVarint64(&size) &&

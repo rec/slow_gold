@@ -2,13 +2,22 @@
 #define __REC_PROTO_FIELD__
 
 #include "rec/base/base.h"
-#include "rec/proto/Value.pb.h"
-#include "rec/proto/Operation.pb.h"
-#include "rec/proto/Types.h"
-#include "rec/proto/Address.h"
+
+namespace google {
+namespace protobuf {
+
+class FieldDescriptor;
+
+}  // namespace protobuf
+}  // namespace google
 
 namespace rec {
 namespace proto {
+
+class Address;
+class Address_Field;
+class Operation;
+class Value;
 
 class Field {
  public:
@@ -19,7 +28,7 @@ class Field {
         field_(NULL) {
   }
 
-  bool dereference(const Address::Field& part);
+  bool dereference(const Address_Field& part);
   Operation* apply(const Operation& op);
 
   bool copyFrom(const Value& value);
@@ -49,7 +58,7 @@ class Field {
   bool doRemove(int toRemove = -1);
 
   Message* message_;
-  const FieldDescriptor* field_;
+  const google::protobuf::FieldDescriptor* field_;
   uint32 index_;
   Type type_;
   uint32 repeatCount_;
