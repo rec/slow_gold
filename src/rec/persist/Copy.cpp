@@ -4,6 +4,8 @@
 #include "rec/persist/Copy.h"
 #include "glog/logging.h"
 
+#include "JuceLibraryCode/JuceHeader.h"
+
 namespace rec {
 namespace persist {
 
@@ -19,9 +21,14 @@ bool assign(const Type& from, Type* to, bool readable) {
 }
 
 // Copy using the one-argument copy() function.
-template <typename From, typename To>
-bool copycopy(const From& from, To* to, bool readable) {
-  *to = copy(from);
+bool strcopy(const String& from, string* to, bool readable) {
+  *to = from.toCString();
+  return true;
+}
+
+// Copy using the one-argument copy() function.
+bool strcopy(const string& from, String* to, bool readable) {
+  *to = from.c_str();
   return true;
 }
 
@@ -116,11 +123,11 @@ bool copy(const Message &f, string *t,  bool r) { return proto(f, t, r); }
 bool copy(const String &f,  File *t,    bool r) { return through(f, t, r); }
 bool copy(const String &f,  Message *t, bool r) { return through(f, t, r); }
 bool copy(const String &f,  String *t,  bool r) { return assign(f, t, r); }
-bool copy(const String &f,  string *t,  bool r) { return copycopy(f, t, r); }
+bool copy(const String &f,  string *t,  bool r) { return strcopy(f, t, r); }
 
 bool copy(const string &f,  File *t,    bool r) { return file(f, t, r); }
 bool copy(const string &f,  Message *t, bool r) { return proto(f, t, r); }
-bool copy(const string &f,  String *t,  bool r) { return copycopy(f, t, r); }
+bool copy(const string &f,  String *t,  bool r) { return strcopy(f, t, r); }
 bool copy(const string &f,  string *t,  bool r) { return assign(f, t, r); }
 
 }  // namespace persist

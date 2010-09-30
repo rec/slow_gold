@@ -21,6 +21,7 @@ inline const Font getFont(const FontDesc& font) {
     if (s.has_underlined())
       style += Font::underlined;
   }
+
   if (font.has_name())
     return Font(font.name().c_str(), font.font_height(), style);
   else

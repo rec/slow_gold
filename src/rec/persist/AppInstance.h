@@ -2,12 +2,8 @@
 #define __REC_PERSIST_APPINSTANCE__
 
 #include <set>
-#include <string>
-#include <glog/logging.h>
 
 #include "rec/persist/App.h"
-#include "rec/persist/Data.h"
-#include "rec/util/STL.h"
 #include "rec/thread/RunnableThread.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -33,7 +29,6 @@ class AppInstance : public App {
 
   static void start(const string& name);
   static void stop();
-  static File appDir(const string& name);
 
   static AppInstance* getInstance() { return instance_; }
 
@@ -43,7 +38,6 @@ private:
   explicit AppInstance(const string& appName);
   virtual ~AppInstance();
 
-  const File appDir_;
   CriticalSection lock_;
 
   DataSet updateData_;

@@ -4,19 +4,23 @@
 #include <string>
 
 #include "rec/base/disallow.h"
-#include "rec/base/scoped_ptr.h"
 #include "rec/base/types.h"
-
-namespace rec {
-
-typedef std::string string;
-
-}
 
 namespace juce {
 
-class File;
 class CriticalSection;
+class File;
+class String;
+
+}
+
+namespace rec {
+
+typedef juce::CriticalSection CriticalSection;
+typedef juce::File File;
+typedef juce::String String;
+
+typedef std::string string;
 
 }
 

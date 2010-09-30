@@ -10,7 +10,9 @@
 namespace rec {
 namespace gui {
 namespace color {
+
 class Colors;
+
 } // namespace color
 
 namespace time {

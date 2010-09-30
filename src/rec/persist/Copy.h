@@ -2,9 +2,9 @@
 #define __REC_PERSIST_COPY__
 
 #include <string>
-#include "google/protobuf/message.h"
+#include <google/protobuf/message.h>
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/base/base.h"
 
 // A set of overloaded functions to copy "anything" to "anything else".
 //
@@ -47,10 +47,6 @@ bool copy(const string& from, File* to, bool readable = true);
 bool copy(const string& from, Message* to, bool readable = true);
 bool copy(const string& from, String* to, bool readable = true);
 bool copy(const string& from, string* to, bool readable = true);
-
-// Useful copiers for string and String.
-inline String copy(const string& s) { return String(s.data(), s.size()); }
-inline string copy(const String& s) { return string(s.toCString(), s.length()); }
 
 }  // namespace persist
 }  // namespace rec

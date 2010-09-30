@@ -26,7 +26,7 @@ class RecContainer : public ComponentContainer {
       slow::RecentFiles recent = slow::getSortedRecentFiles();
       PopupMenu submenu;
       for (int i = 0; i < recent.file_size(); ++i)
-        submenu.addItem(i + 1, persist::copy(recent.file(i).name()));
+        submenu.addItem(i + 1, recent.file(i).name().c_str());
 
       menu.addSubMenu("Open recent", submenu);
     }

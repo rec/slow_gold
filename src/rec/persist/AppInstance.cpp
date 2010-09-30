@@ -1,5 +1,9 @@
+#include <glog/logging.h>
+
 #include "rec/persist/AppInstance.h"
+#include "rec/persist/Data.h"
 #include "rec/thread/CallbackLoop.h"
+#include "rec/util/STL.h"
 
 namespace rec {
 namespace persist {
@@ -11,8 +15,6 @@ AppInstance::AppInstance(const string& appName)
       writeThread_("App::write",
                    thread::callbackLoop(WRITE_PERIOD, this, &AppInstance::write)) {
   CHECK(appName.length());
-  appDir_.createDirectory();
-
   updateThread_.setPriority(UPDATE_PRIORITY);
   writeThread_.setPriority(WRITE_PRIORITY);
 

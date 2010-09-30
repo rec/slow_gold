@@ -9,12 +9,17 @@
 
 namespace rec {
 namespace command {
-class Manager;
-}  // namespace command
 
+class Manager;
+
+}  // namespace command
+}  // namespace rec
+
+namespace rec {
 namespace persist {
 
 App* getApp();
+
 class UntypedData;
 
 class App {
@@ -52,7 +57,9 @@ class App {
 
  protected:
   friend class UntypedData;
-  explicit App(const string& name) : name_(name) {}
+  explicit App(const string& name) : name_(name) {
+    appDir().createDirectory();
+  }
 
   virtual void needsUpdate(UntypedData* data) = 0;
 

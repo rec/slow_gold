@@ -109,7 +109,7 @@ void MainPageK::destruct() {
 
 void MainPageK::loadRecentFile(int menuItemID) {
   RecentFiles recent = slow::getSortedRecentFiles();
-  loadFileIntoTransport(File(copy(recent.file(menuItemID - 1).name())));
+  loadFileIntoTransport(File(recent.file(menuItemID - 1).name().c_str()));
 }
 
 // TODO: fix this magic constant
@@ -150,7 +150,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     loopingButtonClicked();
     transportSource_.setSource(stretchy_.get());
 
-    slow::addRecentFile(copy(file.getFullPathName()));
+    slow::addRecentFile(file.getFullPathName().toCString());
 
     peer_->thumbnail->setFile(file);
   } else {
