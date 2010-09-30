@@ -82,6 +82,8 @@ public:
     ToggleButton* loopingButton;
     rec::gui::time::TextComponent* songTime;
     rec::gui::time::TextComponent* realTime;
+    rec::gui::time::DialComponent* songDial;
+    rec::gui::time::DialComponent* realDial;
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)
     MainPageJ(const MainPageJ&);

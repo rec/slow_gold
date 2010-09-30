@@ -25,10 +25,13 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* Text_Fields_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Text_Fields_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Bar_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Bar_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Dial_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Dial_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* Dial_Style_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* Dial_Direction_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* Time_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Time_reflection_ = NULL;
@@ -43,7 +46,8 @@ void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto() {
       "rec/gui/Time.proto");
   GOOGLE_CHECK(file != NULL);
   Text_descriptor_ = file->message_type(0);
-  static const int Text_offsets_[4] = {
+  static const int Text_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, font_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, separator_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text, fields_),
@@ -96,13 +100,30 @@ void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Text_Fields));
-  Dial_descriptor_ = file->message_type(1);
-  static const int Dial_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, style_),
+  Bar_descriptor_ = file->message_type(1);
+  static const int Bar_offsets_[1] = {
+  };
+  Bar_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Bar_descriptor_,
+      Bar::default_instance_,
+      Bar_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Bar, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Bar, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Bar));
+  Dial_descriptor_ = file->message_type(2);
+  static const int Dial_offsets_[8] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, outline_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, direction_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, display_lap_count_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, font_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, margin_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, zero_point_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, empty_on_zero_),
   };
   Dial_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -115,11 +136,12 @@ void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Dial));
-  Dial_Style_descriptor_ = Dial_descriptor_->enum_type(0);
-  Time_descriptor_ = file->message_type(2);
-  static const int Time_offsets_[2] = {
+  Dial_Direction_descriptor_ = Dial_descriptor_->enum_type(0);
+  Time_descriptor_ = file->message_type(3);
+  static const int Time_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, text_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, dial_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Time, bar_),
   };
   Time_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -151,6 +173,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Text_Fields_descriptor_, &Text_Fields::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Bar_descriptor_, &Bar::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Dial_descriptor_, &Dial::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Time_descriptor_, &Time::default_instance());
@@ -165,6 +189,8 @@ void protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto() {
   delete Text_Separator_reflection_;
   delete Text_Fields::default_instance_;
   delete Text_Fields_reflection_;
+  delete Bar::default_instance_;
+  delete Bar_reflection_;
   delete Dial::default_instance_;
   delete Dial_reflection_;
   delete Time::default_instance_;
@@ -181,32 +207,38 @@ void protobuf_AddDesc_rec_2fgui_2fTime_2eproto() {
   ::rec::gui::color::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\022rec/gui/Time.proto\022\014rec.gui.time\032\022rec/"
-    "gui/Font.proto\032\023rec/gui/Color.proto\"\333\002\n\004"
-    "Text\022\037\n\004font\030\001 \001(\0132\021.rec.gui.FontDesc\022/\n"
-    "\tseparator\030\002 \001(\0132\034.rec.gui.time.Text.Sep"
-    "arator\022)\n\006fields\030\003 \001(\0132\031.rec.gui.time.Te"
-    "xt.Fields\022\021\n\006margin\030\004 \001(\r:\0012\032B\n\tSeparato"
-    "r\022\021\n\tseparator\030\001 \001(\t\022\r\n\005width\030\002 \001(\r\022\023\n\005f"
-    "lash\030\003 \001(\010:\004true\032\177\n\006Fields\022\024\n\005hours\030\001 \001("
-    "\010:\005false\022\025\n\007minutes\030\002 \001(\010:\004true\022\025\n\007secon"
-    "ds\030\003 \001(\010:\004true\022\032\n\014milliseconds\030\004 \001(\010:\004tr"
-    "ue\022\025\n\006frames\030\005 \001(\010:\005false\"\253\001\n\004Dial\022\'\n\005st"
-    "yle\030\001 \001(\0162\030.rec.gui.time.Dial.Style\022\017\n\007o"
-    "utline\030\002 \001(\r\022\031\n\021display_lap_count\030\004 \001(\010\022"
-    "\037\n\004font\030\005 \001(\0132\021.rec.gui.FontDesc\022\021\n\006marg"
-    "in\030\006 \001(\r:\0012\"\032\n\005Style\022\010\n\004DIAL\020\001\022\007\n\003BAR\020\002\""
-    "J\n\004Time\022 \n\004text\030\001 \001(\0132\022.rec.gui.time.Tex"
-    "t\022 \n\004dial\030\002 \001(\0132\022.rec.gui.time.Dial", 675);
+    "gui/Font.proto\032\023rec/gui/Color.proto\"\351\002\n\004"
+    "Text\022\014\n\004name\030\005 \001(\t\022\037\n\004font\030\001 \001(\0132\021.rec.g"
+    "ui.FontDesc\022/\n\tseparator\030\002 \001(\0132\034.rec.gui"
+    ".time.Text.Separator\022)\n\006fields\030\003 \001(\0132\031.r"
+    "ec.gui.time.Text.Fields\022\021\n\006margin\030\004 \001(\r:"
+    "\0012\032B\n\tSeparator\022\021\n\tseparator\030\001 \001(\t\022\r\n\005wi"
+    "dth\030\002 \001(\r\022\023\n\005flash\030\003 \001(\010:\004true\032\177\n\006Fields"
+    "\022\024\n\005hours\030\001 \001(\010:\005false\022\025\n\007minutes\030\002 \001(\010:"
+    "\004true\022\025\n\007seconds\030\003 \001(\010:\004true\022\032\n\014millisec"
+    "onds\030\004 \001(\010:\004true\022\025\n\006frames\030\005 \001(\010:\005false\""
+    "\005\n\003Bar\"\224\002\n\004Dial\022\014\n\004name\030\001 \001(\t\022\017\n\007outline"
+    "\030\002 \001(\r\022:\n\tdirection\030\003 \001(\0162\034.rec.gui.time"
+    ".Dial.Direction:\tCLOCKWISE\022\031\n\021display_la"
+    "p_count\030\004 \001(\010\022\037\n\004font\030\005 \001(\0132\021.rec.gui.Fo"
+    "ntDesc\022\021\n\006margin\030\006 \001(\r:\0012\022\022\n\nzero_point\030"
+    "\007 \001(\002\022\033\n\rempty_on_zero\030\010 \001(\010:\004true\"1\n\tDi"
+    "rection\022\r\n\tCLOCKWISE\020\001\022\025\n\021COUNTER_CLOCKW"
+    "ISE\020\002\"j\n\004Time\022 \n\004text\030\001 \001(\0132\022.rec.gui.ti"
+    "me.Text\022 \n\004dial\030\002 \001(\0132\022.rec.gui.time.Dia"
+    "l\022\036\n\003bar\030\003 \001(\0132\021.rec.gui.time.Bar", 833);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Time.proto", &protobuf_RegisterTypes);
   Text::default_instance_ = new Text();
   Text_Separator::default_instance_ = new Text_Separator();
   Text_Fields::default_instance_ = new Text_Fields();
+  Bar::default_instance_ = new Bar();
   Dial::default_instance_ = new Dial();
   Time::default_instance_ = new Time();
   Text::default_instance_->InitAsDefaultInstance();
   Text_Separator::default_instance_->InitAsDefaultInstance();
   Text_Fields::default_instance_->InitAsDefaultInstance();
+  Bar::default_instance_->InitAsDefaultInstance();
   Dial::default_instance_->InitAsDefaultInstance();
   Time::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto);
@@ -882,7 +914,9 @@ void Text_Fields::Swap(Text_Fields* other) {
 
 // -------------------------------------------------------------------
 
+const ::std::string Text::_default_name_;
 #ifndef _MSC_VER
+const int Text::kNameFieldNumber;
 const int Text::kFontFieldNumber;
 const int Text::kSeparatorFieldNumber;
 const int Text::kFieldsFieldNumber;
@@ -908,6 +942,7 @@ Text::Text(const Text& from)
 
 void Text::SharedCtor() {
   _cached_size_ = 0;
+  name_ = const_cast< ::std::string*>(&_default_name_);
   font_ = NULL;
   separator_ = NULL;
   fields_ = NULL;
@@ -920,6 +955,9 @@ Text::~Text() {
 }
 
 void Text::SharedDtor() {
+  if (name_ != &_default_name_) {
+    delete name_;
+  }
   if (this != default_instance_) {
     delete font_;
     delete separator_;
@@ -950,12 +988,17 @@ Text* Text::New() const {
 void Text::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (font_ != NULL) font_->::rec::gui::FontDesc::Clear();
+      if (name_ != &_default_name_) {
+        name_->clear();
+      }
     }
     if (_has_bit(1)) {
-      if (separator_ != NULL) separator_->::rec::gui::time::Text_Separator::Clear();
+      if (font_ != NULL) font_->::rec::gui::FontDesc::Clear();
     }
     if (_has_bit(2)) {
+      if (separator_ != NULL) separator_->::rec::gui::time::Text_Separator::Clear();
+    }
+    if (_has_bit(3)) {
       if (fields_ != NULL) fields_->::rec::gui::time::Text_Fields::Clear();
     }
     margin_ = 2u;
@@ -1019,7 +1062,24 @@ bool Text::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &margin_)));
-          _set_bit(3);
+          _set_bit(4);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_name;
+        break;
+      }
+      
+      // optional string name = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -1046,26 +1106,35 @@ bool Text::MergePartialFromCodedStream(
 void Text::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional .rec.gui.FontDesc font = 1;
-  if (_has_bit(0)) {
+  if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->font(), output);
   }
   
   // optional .rec.gui.time.Text.Separator separator = 2;
-  if (_has_bit(1)) {
+  if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->separator(), output);
   }
   
   // optional .rec.gui.time.Text.Fields fields = 3;
-  if (_has_bit(2)) {
+  if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->fields(), output);
   }
   
   // optional uint32 margin = 4 [default = 2];
-  if (_has_bit(3)) {
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->margin(), output);
+  }
+  
+  // optional string name = 5;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->name(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1077,29 +1146,39 @@ void Text::SerializeWithCachedSizes(
 ::google::protobuf::uint8* Text::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional .rec.gui.FontDesc font = 1;
-  if (_has_bit(0)) {
+  if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->font(), target);
   }
   
   // optional .rec.gui.time.Text.Separator separator = 2;
-  if (_has_bit(1)) {
+  if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->separator(), target);
   }
   
   // optional .rec.gui.time.Text.Fields fields = 3;
-  if (_has_bit(2)) {
+  if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->fields(), target);
   }
   
   // optional uint32 margin = 4 [default = 2];
-  if (_has_bit(3)) {
+  if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->margin(), target);
+  }
+  
+  // optional string name = 5;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->name(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1113,6 +1192,13 @@ int Text::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string name = 5;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+    
     // optional .rec.gui.FontDesc font = 1;
     if (has_font()) {
       total_size += 1 +
@@ -1169,15 +1255,18 @@ void Text::MergeFrom(const Text& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_font()->::rec::gui::FontDesc::MergeFrom(from.font());
+      set_name(from.name());
     }
     if (from._has_bit(1)) {
-      mutable_separator()->::rec::gui::time::Text_Separator::MergeFrom(from.separator());
+      mutable_font()->::rec::gui::FontDesc::MergeFrom(from.font());
     }
     if (from._has_bit(2)) {
-      mutable_fields()->::rec::gui::time::Text_Fields::MergeFrom(from.fields());
+      mutable_separator()->::rec::gui::time::Text_Separator::MergeFrom(from.separator());
     }
     if (from._has_bit(3)) {
+      mutable_fields()->::rec::gui::time::Text_Fields::MergeFrom(from.fields());
+    }
+    if (from._has_bit(4)) {
       set_margin(from.margin());
     }
   }
@@ -1203,6 +1292,7 @@ bool Text::IsInitialized() const {
 
 void Text::Swap(Text* other) {
   if (other != this) {
+    std::swap(name_, other->name_);
     std::swap(font_, other->font_);
     std::swap(separator_, other->separator_);
     std::swap(fields_, other->fields_);
@@ -1224,11 +1314,166 @@ void Text::Swap(Text* other) {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* Dial_Style_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Dial_Style_descriptor_;
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+Bar::Bar()
+  : ::google::protobuf::Message() {
+  SharedCtor();
 }
-bool Dial_Style_IsValid(int value) {
+
+void Bar::InitAsDefaultInstance() {
+}
+
+Bar::Bar(const Bar& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Bar::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Bar::~Bar() {
+  SharedDtor();
+}
+
+void Bar::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void Bar::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Bar::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Bar_descriptor_;
+}
+
+const Bar& Bar::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fTime_2eproto();  return *default_instance_;
+}
+
+Bar* Bar::default_instance_ = NULL;
+
+Bar* Bar::New() const {
+  return new Bar;
+}
+
+void Bar::Clear() {
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Bar::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      return true;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+  return true;
+#undef DO_
+}
+
+void Bar::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* Bar::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int Bar::ByteSize() const {
+  int total_size = 0;
+  
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Bar::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Bar* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Bar*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Bar::MergeFrom(const Bar& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Bar::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Bar::CopyFrom(const Bar& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Bar::IsInitialized() const {
+  
+  return true;
+}
+
+void Bar::Swap(Bar* other) {
+  if (other != this) {
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Bar::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Bar_descriptor_;
+  metadata.reflection = Bar_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+const ::google::protobuf::EnumDescriptor* Dial_Direction_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Dial_Direction_descriptor_;
+}
+bool Dial_Direction_IsValid(int value) {
   switch(value) {
     case 1:
     case 2:
@@ -1239,18 +1484,22 @@ bool Dial_Style_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const Dial_Style Dial::DIAL;
-const Dial_Style Dial::BAR;
-const Dial_Style Dial::Style_MIN;
-const Dial_Style Dial::Style_MAX;
-const int Dial::Style_ARRAYSIZE;
+const Dial_Direction Dial::CLOCKWISE;
+const Dial_Direction Dial::COUNTER_CLOCKWISE;
+const Dial_Direction Dial::Direction_MIN;
+const Dial_Direction Dial::Direction_MAX;
+const int Dial::Direction_ARRAYSIZE;
 #endif  // _MSC_VER
+const ::std::string Dial::_default_name_;
 #ifndef _MSC_VER
-const int Dial::kStyleFieldNumber;
+const int Dial::kNameFieldNumber;
 const int Dial::kOutlineFieldNumber;
+const int Dial::kDirectionFieldNumber;
 const int Dial::kDisplayLapCountFieldNumber;
 const int Dial::kFontFieldNumber;
 const int Dial::kMarginFieldNumber;
+const int Dial::kZeroPointFieldNumber;
+const int Dial::kEmptyOnZeroFieldNumber;
 #endif  // !_MSC_VER
 
 Dial::Dial()
@@ -1270,11 +1519,14 @@ Dial::Dial(const Dial& from)
 
 void Dial::SharedCtor() {
   _cached_size_ = 0;
-  style_ = 1;
+  name_ = const_cast< ::std::string*>(&_default_name_);
   outline_ = 0u;
+  direction_ = 1;
   display_lap_count_ = false;
   font_ = NULL;
   margin_ = 2u;
+  zero_point_ = 0;
+  empty_on_zero_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1283,6 +1535,9 @@ Dial::~Dial() {
 }
 
 void Dial::SharedDtor() {
+  if (name_ != &_default_name_) {
+    delete name_;
+  }
   if (this != default_instance_) {
     delete font_;
   }
@@ -1310,13 +1565,20 @@ Dial* Dial::New() const {
 
 void Dial::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    style_ = 1;
+    if (_has_bit(0)) {
+      if (name_ != &_default_name_) {
+        name_->clear();
+      }
+    }
     outline_ = 0u;
+    direction_ = 1;
     display_lap_count_ = false;
-    if (_has_bit(3)) {
+    if (_has_bit(4)) {
       if (font_ != NULL) font_->::rec::gui::FontDesc::Clear();
     }
     margin_ = 2u;
+    zero_point_ = 0;
+    empty_on_zero_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1328,19 +1590,15 @@ bool Dial::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.time.Dial.Style style = 1;
+      // optional string name = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::rec::gui::time::Dial_Style_IsValid(value)) {
-            set_style(static_cast< ::rec::gui::time::Dial_Style >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(1, value);
-          }
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -1360,6 +1618,27 @@ bool Dial::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_direction;
+        break;
+      }
+      
+      // optional .rec.gui.time.Dial.Direction direction = 3 [default = CLOCKWISE];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_direction:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::gui::time::Dial_Direction_IsValid(value)) {
+            set_direction(static_cast< ::rec::gui::time::Dial_Direction >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(3, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectTag(32)) goto parse_display_lap_count;
         break;
       }
@@ -1372,7 +1651,7 @@ bool Dial::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &display_lap_count_)));
-          _set_bit(2);
+          _set_bit(3);
         } else {
           goto handle_uninterpreted;
         }
@@ -1402,7 +1681,39 @@ bool Dial::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &margin_)));
-          _set_bit(4);
+          _set_bit(5);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(61)) goto parse_zero_point;
+        break;
+      }
+      
+      // optional float zero_point = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_zero_point:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &zero_point_)));
+          _set_bit(6);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_empty_on_zero;
+        break;
+      }
+      
+      // optional bool empty_on_zero = 8 [default = true];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_empty_on_zero:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &empty_on_zero_)));
+          _set_bit(7);
         } else {
           goto handle_uninterpreted;
         }
@@ -1428,10 +1739,13 @@ bool Dial::MergePartialFromCodedStream(
 
 void Dial::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.time.Dial.Style style = 1;
+  // optional string name = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->style(), output);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      1, this->name(), output);
   }
   
   // optional uint32 outline = 2;
@@ -1439,20 +1753,36 @@ void Dial::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->outline(), output);
   }
   
-  // optional bool display_lap_count = 4;
+  // optional .rec.gui.time.Dial.Direction direction = 3 [default = CLOCKWISE];
   if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->direction(), output);
+  }
+  
+  // optional bool display_lap_count = 4;
+  if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->display_lap_count(), output);
   }
   
   // optional .rec.gui.FontDesc font = 5;
-  if (_has_bit(3)) {
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, this->font(), output);
   }
   
   // optional uint32 margin = 6 [default = 2];
-  if (_has_bit(4)) {
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->margin(), output);
+  }
+  
+  // optional float zero_point = 7;
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->zero_point(), output);
+  }
+  
+  // optional bool empty_on_zero = 8 [default = true];
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->empty_on_zero(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1463,10 +1793,14 @@ void Dial::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Dial::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.time.Dial.Style style = 1;
+  // optional string name = 1;
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->style(), target);
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
   }
   
   // optional uint32 outline = 2;
@@ -1474,21 +1808,37 @@ void Dial::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->outline(), target);
   }
   
-  // optional bool display_lap_count = 4;
+  // optional .rec.gui.time.Dial.Direction direction = 3 [default = CLOCKWISE];
   if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      3, this->direction(), target);
+  }
+  
+  // optional bool display_lap_count = 4;
+  if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->display_lap_count(), target);
   }
   
   // optional .rec.gui.FontDesc font = 5;
-  if (_has_bit(3)) {
+  if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         5, this->font(), target);
   }
   
   // optional uint32 margin = 6 [default = 2];
-  if (_has_bit(4)) {
+  if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->margin(), target);
+  }
+  
+  // optional float zero_point = 7;
+  if (_has_bit(6)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->zero_point(), target);
+  }
+  
+  // optional bool empty_on_zero = 8 [default = true];
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->empty_on_zero(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1502,10 +1852,11 @@ int Dial::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.time.Dial.Style style = 1;
-    if (has_style()) {
+    // optional string name = 1;
+    if (has_name()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->style());
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
     }
     
     // optional uint32 outline = 2;
@@ -1513,6 +1864,12 @@ int Dial::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->outline());
+    }
+    
+    // optional .rec.gui.time.Dial.Direction direction = 3 [default = CLOCKWISE];
+    if (has_direction()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->direction());
     }
     
     // optional bool display_lap_count = 4;
@@ -1532,6 +1889,16 @@ int Dial::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->margin());
+    }
+    
+    // optional float zero_point = 7;
+    if (has_zero_point()) {
+      total_size += 1 + 4;
+    }
+    
+    // optional bool empty_on_zero = 8 [default = true];
+    if (has_empty_on_zero()) {
+      total_size += 1 + 1;
     }
     
   }
@@ -1562,19 +1929,28 @@ void Dial::MergeFrom(const Dial& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      set_style(from.style());
+      set_name(from.name());
     }
     if (from._has_bit(1)) {
       set_outline(from.outline());
     }
     if (from._has_bit(2)) {
-      set_display_lap_count(from.display_lap_count());
+      set_direction(from.direction());
     }
     if (from._has_bit(3)) {
-      mutable_font()->::rec::gui::FontDesc::MergeFrom(from.font());
+      set_display_lap_count(from.display_lap_count());
     }
     if (from._has_bit(4)) {
+      mutable_font()->::rec::gui::FontDesc::MergeFrom(from.font());
+    }
+    if (from._has_bit(5)) {
       set_margin(from.margin());
+    }
+    if (from._has_bit(6)) {
+      set_zero_point(from.zero_point());
+    }
+    if (from._has_bit(7)) {
+      set_empty_on_zero(from.empty_on_zero());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1599,11 +1975,14 @@ bool Dial::IsInitialized() const {
 
 void Dial::Swap(Dial* other) {
   if (other != this) {
-    std::swap(style_, other->style_);
+    std::swap(name_, other->name_);
     std::swap(outline_, other->outline_);
+    std::swap(direction_, other->direction_);
     std::swap(display_lap_count_, other->display_lap_count_);
     std::swap(font_, other->font_);
     std::swap(margin_, other->margin_);
+    std::swap(zero_point_, other->zero_point_);
+    std::swap(empty_on_zero_, other->empty_on_zero_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1624,6 +2003,7 @@ void Dial::Swap(Dial* other) {
 #ifndef _MSC_VER
 const int Time::kTextFieldNumber;
 const int Time::kDialFieldNumber;
+const int Time::kBarFieldNumber;
 #endif  // !_MSC_VER
 
 Time::Time()
@@ -1634,6 +2014,7 @@ Time::Time()
 void Time::InitAsDefaultInstance() {
   text_ = const_cast< ::rec::gui::time::Text*>(&::rec::gui::time::Text::default_instance());
   dial_ = const_cast< ::rec::gui::time::Dial*>(&::rec::gui::time::Dial::default_instance());
+  bar_ = const_cast< ::rec::gui::time::Bar*>(&::rec::gui::time::Bar::default_instance());
 }
 
 Time::Time(const Time& from)
@@ -1646,6 +2027,7 @@ void Time::SharedCtor() {
   _cached_size_ = 0;
   text_ = NULL;
   dial_ = NULL;
+  bar_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1657,6 +2039,7 @@ void Time::SharedDtor() {
   if (this != default_instance_) {
     delete text_;
     delete dial_;
+    delete bar_;
   }
 }
 
@@ -1687,6 +2070,9 @@ void Time::Clear() {
     }
     if (_has_bit(1)) {
       if (dial_ != NULL) dial_->::rec::gui::time::Dial::Clear();
+    }
+    if (_has_bit(2)) {
+      if (bar_ != NULL) bar_->::rec::gui::time::Bar::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1719,6 +2105,20 @@ bool Time::MergePartialFromCodedStream(
          parse_dial:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_dial()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_bar;
+        break;
+      }
+      
+      // optional .rec.gui.time.Bar bar = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_bar:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_bar()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1756,6 +2156,12 @@ void Time::SerializeWithCachedSizes(
       2, this->dial(), output);
   }
   
+  // optional .rec.gui.time.Bar bar = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->bar(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1776,6 +2182,13 @@ void Time::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->dial(), target);
+  }
+  
+  // optional .rec.gui.time.Bar bar = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->bar(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1801,6 +2214,13 @@ int Time::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->dial());
+    }
+    
+    // optional .rec.gui.time.Bar bar = 3;
+    if (has_bar()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->bar());
     }
     
   }
@@ -1836,6 +2256,9 @@ void Time::MergeFrom(const Time& from) {
     if (from._has_bit(1)) {
       mutable_dial()->::rec::gui::time::Dial::MergeFrom(from.dial());
     }
+    if (from._has_bit(2)) {
+      mutable_bar()->::rec::gui::time::Bar::MergeFrom(from.bar());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1861,6 +2284,7 @@ void Time::Swap(Time* other) {
   if (other != this) {
     std::swap(text_, other->text_);
     std::swap(dial_, other->dial_);
+    std::swap(bar_, other->bar_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

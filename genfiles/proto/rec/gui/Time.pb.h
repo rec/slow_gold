@@ -39,27 +39,28 @@ void protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto();
 class Text;
 class Text_Separator;
 class Text_Fields;
+class Bar;
 class Dial;
 class Time;
 
-enum Dial_Style {
-  Dial_Style_DIAL = 1,
-  Dial_Style_BAR = 2
+enum Dial_Direction {
+  Dial_Direction_CLOCKWISE = 1,
+  Dial_Direction_COUNTER_CLOCKWISE = 2
 };
-bool Dial_Style_IsValid(int value);
-const Dial_Style Dial_Style_Style_MIN = Dial_Style_DIAL;
-const Dial_Style Dial_Style_Style_MAX = Dial_Style_BAR;
-const int Dial_Style_Style_ARRAYSIZE = Dial_Style_Style_MAX + 1;
+bool Dial_Direction_IsValid(int value);
+const Dial_Direction Dial_Direction_Direction_MIN = Dial_Direction_CLOCKWISE;
+const Dial_Direction Dial_Direction_Direction_MAX = Dial_Direction_COUNTER_CLOCKWISE;
+const int Dial_Direction_Direction_ARRAYSIZE = Dial_Direction_Direction_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Dial_Style_descriptor();
-inline const ::std::string& Dial_Style_Name(Dial_Style value) {
+const ::google::protobuf::EnumDescriptor* Dial_Direction_descriptor();
+inline const ::std::string& Dial_Direction_Name(Dial_Direction value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Dial_Style_descriptor(), value);
+    Dial_Direction_descriptor(), value);
 }
-inline bool Dial_Style_Parse(
-    const ::std::string& name, Dial_Style* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Dial_Style>(
-    Dial_Style_descriptor(), name, value);
+inline bool Dial_Direction_Parse(
+    const ::std::string& name, Dial_Direction* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Dial_Direction>(
+    Dial_Direction_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -350,6 +351,16 @@ class Text : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
+  // optional string name = 5;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 5;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  
   // optional .rec.gui.FontDesc font = 1;
   inline bool has_font() const;
   inline void clear_font();
@@ -383,6 +394,8 @@ class Text : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
+  ::std::string* name_;
+  static const ::std::string _default_name_;
   ::rec::gui::FontDesc* font_;
   ::rec::gui::time::Text_Separator* separator_;
   ::rec::gui::time::Text_Fields* fields_;
@@ -391,7 +404,7 @@ class Text : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -406,6 +419,87 @@ class Text : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static Text* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class Bar : public ::google::protobuf::Message {
+ public:
+  Bar();
+  virtual ~Bar();
+  
+  Bar(const Bar& from);
+  
+  inline Bar& operator=(const Bar& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Bar& default_instance();
+  
+  void Swap(Bar* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Bar* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Bar& from);
+  void MergeFrom(const Bar& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // @@protoc_insertion_point(class_scope:rec.gui.time.Bar)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  friend void  protobuf_AddDesc_rec_2fgui_2fTime_2eproto();
+  friend void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[1];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static Bar* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -461,38 +555,41 @@ class Dial : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef Dial_Style Style;
-  static const Style DIAL = Dial_Style_DIAL;
-  static const Style BAR = Dial_Style_BAR;
-  static inline bool Style_IsValid(int value) {
-    return Dial_Style_IsValid(value);
+  typedef Dial_Direction Direction;
+  static const Direction CLOCKWISE = Dial_Direction_CLOCKWISE;
+  static const Direction COUNTER_CLOCKWISE = Dial_Direction_COUNTER_CLOCKWISE;
+  static inline bool Direction_IsValid(int value) {
+    return Dial_Direction_IsValid(value);
   }
-  static const Style Style_MIN =
-    Dial_Style_Style_MIN;
-  static const Style Style_MAX =
-    Dial_Style_Style_MAX;
-  static const int Style_ARRAYSIZE =
-    Dial_Style_Style_ARRAYSIZE;
+  static const Direction Direction_MIN =
+    Dial_Direction_Direction_MIN;
+  static const Direction Direction_MAX =
+    Dial_Direction_Direction_MAX;
+  static const int Direction_ARRAYSIZE =
+    Dial_Direction_Direction_ARRAYSIZE;
   static inline const ::google::protobuf::EnumDescriptor*
-  Style_descriptor() {
-    return Dial_Style_descriptor();
+  Direction_descriptor() {
+    return Dial_Direction_descriptor();
   }
-  static inline const ::std::string& Style_Name(Style value) {
-    return Dial_Style_Name(value);
+  static inline const ::std::string& Direction_Name(Direction value) {
+    return Dial_Direction_Name(value);
   }
-  static inline bool Style_Parse(const ::std::string& name,
-      Style* value) {
-    return Dial_Style_Parse(name, value);
+  static inline bool Direction_Parse(const ::std::string& name,
+      Direction* value) {
+    return Dial_Direction_Parse(name, value);
   }
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.gui.time.Dial.Style style = 1;
-  inline bool has_style() const;
-  inline void clear_style();
-  static const int kStyleFieldNumber = 1;
-  inline ::rec::gui::time::Dial_Style style() const;
-  inline void set_style(::rec::gui::time::Dial_Style value);
+  // optional string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
   
   // optional uint32 outline = 2;
   inline bool has_outline() const;
@@ -500,6 +597,13 @@ class Dial : public ::google::protobuf::Message {
   static const int kOutlineFieldNumber = 2;
   inline ::google::protobuf::uint32 outline() const;
   inline void set_outline(::google::protobuf::uint32 value);
+  
+  // optional .rec.gui.time.Dial.Direction direction = 3 [default = CLOCKWISE];
+  inline bool has_direction() const;
+  inline void clear_direction();
+  static const int kDirectionFieldNumber = 3;
+  inline ::rec::gui::time::Dial_Direction direction() const;
+  inline void set_direction(::rec::gui::time::Dial_Direction value);
   
   // optional bool display_lap_count = 4;
   inline bool has_display_lap_count() const;
@@ -522,21 +626,39 @@ class Dial : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 margin() const;
   inline void set_margin(::google::protobuf::uint32 value);
   
+  // optional float zero_point = 7;
+  inline bool has_zero_point() const;
+  inline void clear_zero_point();
+  static const int kZeroPointFieldNumber = 7;
+  inline float zero_point() const;
+  inline void set_zero_point(float value);
+  
+  // optional bool empty_on_zero = 8 [default = true];
+  inline bool has_empty_on_zero() const;
+  inline void clear_empty_on_zero();
+  static const int kEmptyOnZeroFieldNumber = 8;
+  inline bool empty_on_zero() const;
+  inline void set_empty_on_zero(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.gui.time.Dial)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  int style_;
+  ::std::string* name_;
+  static const ::std::string _default_name_;
   ::google::protobuf::uint32 outline_;
+  int direction_;
   bool display_lap_count_;
   ::rec::gui::FontDesc* font_;
   ::google::protobuf::uint32 margin_;
+  float zero_point_;
+  bool empty_on_zero_;
   friend void  protobuf_AddDesc_rec_2fgui_2fTime_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -622,6 +744,13 @@ class Time : public ::google::protobuf::Message {
   inline const ::rec::gui::time::Dial& dial() const;
   inline ::rec::gui::time::Dial* mutable_dial();
   
+  // optional .rec.gui.time.Bar bar = 3;
+  inline bool has_bar() const;
+  inline void clear_bar();
+  static const int kBarFieldNumber = 3;
+  inline const ::rec::gui::time::Bar& bar() const;
+  inline ::rec::gui::time::Bar* mutable_bar();
+  
   // @@protoc_insertion_point(class_scope:rec.gui.time.Time)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -629,11 +758,12 @@ class Time : public ::google::protobuf::Message {
   
   ::rec::gui::time::Text* text_;
   ::rec::gui::time::Dial* dial_;
+  ::rec::gui::time::Bar* bar_;
   friend void  protobuf_AddDesc_rec_2fgui_2fTime_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -818,92 +948,163 @@ inline void Text_Fields::set_frames(bool value) {
 
 // Text
 
+// optional string name = 5;
+inline bool Text::has_name() const {
+  return _has_bit(0);
+}
+inline void Text::clear_name() {
+  if (name_ != &_default_name_) {
+    name_->clear();
+  }
+  _clear_bit(0);
+}
+inline const ::std::string& Text::name() const {
+  return *name_;
+}
+inline void Text::set_name(const ::std::string& value) {
+  _set_bit(0);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Text::set_name(const char* value) {
+  _set_bit(0);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Text::set_name(const char* value, size_t size) {
+  _set_bit(0);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Text::mutable_name() {
+  _set_bit(0);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+
 // optional .rec.gui.FontDesc font = 1;
 inline bool Text::has_font() const {
-  return _has_bit(0);
+  return _has_bit(1);
 }
 inline void Text::clear_font() {
   if (font_ != NULL) font_->::rec::gui::FontDesc::Clear();
-  _clear_bit(0);
+  _clear_bit(1);
 }
 inline const ::rec::gui::FontDesc& Text::font() const {
   return font_ != NULL ? *font_ : *default_instance_->font_;
 }
 inline ::rec::gui::FontDesc* Text::mutable_font() {
-  _set_bit(0);
+  _set_bit(1);
   if (font_ == NULL) font_ = new ::rec::gui::FontDesc;
   return font_;
 }
 
 // optional .rec.gui.time.Text.Separator separator = 2;
 inline bool Text::has_separator() const {
-  return _has_bit(1);
+  return _has_bit(2);
 }
 inline void Text::clear_separator() {
   if (separator_ != NULL) separator_->::rec::gui::time::Text_Separator::Clear();
-  _clear_bit(1);
+  _clear_bit(2);
 }
 inline const ::rec::gui::time::Text_Separator& Text::separator() const {
   return separator_ != NULL ? *separator_ : *default_instance_->separator_;
 }
 inline ::rec::gui::time::Text_Separator* Text::mutable_separator() {
-  _set_bit(1);
+  _set_bit(2);
   if (separator_ == NULL) separator_ = new ::rec::gui::time::Text_Separator;
   return separator_;
 }
 
 // optional .rec.gui.time.Text.Fields fields = 3;
 inline bool Text::has_fields() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void Text::clear_fields() {
   if (fields_ != NULL) fields_->::rec::gui::time::Text_Fields::Clear();
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline const ::rec::gui::time::Text_Fields& Text::fields() const {
   return fields_ != NULL ? *fields_ : *default_instance_->fields_;
 }
 inline ::rec::gui::time::Text_Fields* Text::mutable_fields() {
-  _set_bit(2);
+  _set_bit(3);
   if (fields_ == NULL) fields_ = new ::rec::gui::time::Text_Fields;
   return fields_;
 }
 
 // optional uint32 margin = 4 [default = 2];
 inline bool Text::has_margin() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Text::clear_margin() {
   margin_ = 2u;
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline ::google::protobuf::uint32 Text::margin() const {
   return margin_;
 }
 inline void Text::set_margin(::google::protobuf::uint32 value) {
-  _set_bit(3);
+  _set_bit(4);
   margin_ = value;
 }
 
 // -------------------------------------------------------------------
 
+// Bar
+
+// -------------------------------------------------------------------
+
 // Dial
 
-// optional .rec.gui.time.Dial.Style style = 1;
-inline bool Dial::has_style() const {
+// optional string name = 1;
+inline bool Dial::has_name() const {
   return _has_bit(0);
 }
-inline void Dial::clear_style() {
-  style_ = 1;
+inline void Dial::clear_name() {
+  if (name_ != &_default_name_) {
+    name_->clear();
+  }
   _clear_bit(0);
 }
-inline ::rec::gui::time::Dial_Style Dial::style() const {
-  return static_cast< ::rec::gui::time::Dial_Style >(style_);
+inline const ::std::string& Dial::name() const {
+  return *name_;
 }
-inline void Dial::set_style(::rec::gui::time::Dial_Style value) {
-  GOOGLE_DCHECK(::rec::gui::time::Dial_Style_IsValid(value));
+inline void Dial::set_name(const ::std::string& value) {
   _set_bit(0);
-  style_ = value;
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Dial::set_name(const char* value) {
+  _set_bit(0);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Dial::set_name(const char* value, size_t size) {
+  _set_bit(0);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Dial::mutable_name() {
+  _set_bit(0);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  return name_;
 }
 
 // optional uint32 outline = 2;
@@ -922,53 +1123,102 @@ inline void Dial::set_outline(::google::protobuf::uint32 value) {
   outline_ = value;
 }
 
+// optional .rec.gui.time.Dial.Direction direction = 3 [default = CLOCKWISE];
+inline bool Dial::has_direction() const {
+  return _has_bit(2);
+}
+inline void Dial::clear_direction() {
+  direction_ = 1;
+  _clear_bit(2);
+}
+inline ::rec::gui::time::Dial_Direction Dial::direction() const {
+  return static_cast< ::rec::gui::time::Dial_Direction >(direction_);
+}
+inline void Dial::set_direction(::rec::gui::time::Dial_Direction value) {
+  GOOGLE_DCHECK(::rec::gui::time::Dial_Direction_IsValid(value));
+  _set_bit(2);
+  direction_ = value;
+}
+
 // optional bool display_lap_count = 4;
 inline bool Dial::has_display_lap_count() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void Dial::clear_display_lap_count() {
   display_lap_count_ = false;
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline bool Dial::display_lap_count() const {
   return display_lap_count_;
 }
 inline void Dial::set_display_lap_count(bool value) {
-  _set_bit(2);
+  _set_bit(3);
   display_lap_count_ = value;
 }
 
 // optional .rec.gui.FontDesc font = 5;
 inline bool Dial::has_font() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Dial::clear_font() {
   if (font_ != NULL) font_->::rec::gui::FontDesc::Clear();
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline const ::rec::gui::FontDesc& Dial::font() const {
   return font_ != NULL ? *font_ : *default_instance_->font_;
 }
 inline ::rec::gui::FontDesc* Dial::mutable_font() {
-  _set_bit(3);
+  _set_bit(4);
   if (font_ == NULL) font_ = new ::rec::gui::FontDesc;
   return font_;
 }
 
 // optional uint32 margin = 6 [default = 2];
 inline bool Dial::has_margin() const {
-  return _has_bit(4);
+  return _has_bit(5);
 }
 inline void Dial::clear_margin() {
   margin_ = 2u;
-  _clear_bit(4);
+  _clear_bit(5);
 }
 inline ::google::protobuf::uint32 Dial::margin() const {
   return margin_;
 }
 inline void Dial::set_margin(::google::protobuf::uint32 value) {
-  _set_bit(4);
+  _set_bit(5);
   margin_ = value;
+}
+
+// optional float zero_point = 7;
+inline bool Dial::has_zero_point() const {
+  return _has_bit(6);
+}
+inline void Dial::clear_zero_point() {
+  zero_point_ = 0;
+  _clear_bit(6);
+}
+inline float Dial::zero_point() const {
+  return zero_point_;
+}
+inline void Dial::set_zero_point(float value) {
+  _set_bit(6);
+  zero_point_ = value;
+}
+
+// optional bool empty_on_zero = 8 [default = true];
+inline bool Dial::has_empty_on_zero() const {
+  return _has_bit(7);
+}
+inline void Dial::clear_empty_on_zero() {
+  empty_on_zero_ = true;
+  _clear_bit(7);
+}
+inline bool Dial::empty_on_zero() const {
+  return empty_on_zero_;
+}
+inline void Dial::set_empty_on_zero(bool value) {
+  _set_bit(7);
+  empty_on_zero_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -1009,6 +1259,23 @@ inline ::rec::gui::time::Dial* Time::mutable_dial() {
   return dial_;
 }
 
+// optional .rec.gui.time.Bar bar = 3;
+inline bool Time::has_bar() const {
+  return _has_bit(2);
+}
+inline void Time::clear_bar() {
+  if (bar_ != NULL) bar_->::rec::gui::time::Bar::Clear();
+  _clear_bit(2);
+}
+inline const ::rec::gui::time::Bar& Time::bar() const {
+  return bar_ != NULL ? *bar_ : *default_instance_->bar_;
+}
+inline ::rec::gui::time::Bar* Time::mutable_bar() {
+  _set_bit(2);
+  if (bar_ == NULL) bar_ = new ::rec::gui::time::Bar;
+  return bar_;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -1021,8 +1288,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::gui::time::Dial_Style>() {
-  return ::rec::gui::time::Dial_Style_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::gui::time::Dial_Direction>() {
+  return ::rec::gui::time::Dial_Direction_descriptor();
 }
 
 }  // namespace google

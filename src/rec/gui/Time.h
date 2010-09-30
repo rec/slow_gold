@@ -17,6 +17,7 @@ class Colors;
 
 namespace time {
 
+class Dial;
 class Text;
 
 class TextComponent : public Component {
@@ -36,6 +37,26 @@ class TextComponent : public Component {
   Font font_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
+};
+
+class DialComponent : public Component {
+ public:
+  DialComponent(const String& name, const Dial& desc, const color::Colors& colors);
+
+  // Value between 0 and 1.
+  void setTimeRatio(float time) {
+    time_ = time;
+    repaint();
+  }
+
+  void paint(Graphics& g);
+
+ private:
+  scoped_ptr<Dial> desc_;
+  scoped_ptr<color::Colors> colors_;
+  float time_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
 };
 
 }  // namespace time

@@ -41,6 +41,8 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
       loopingButton (0),
       songTime (0),
       realTime (0),
+      songDial (0),
+      realDial (0),
       peer_(&deviceManager)
 {
     addAndMakeVisible (zoomLabel = new Label (String::empty,
@@ -101,6 +103,13 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     addAndMakeVisible(realTime = new TextComponent("rt", rec::gui::time::Text(),
                                                    rec::gui::color::Colors()));
 
+    using rec::gui::time::DialComponent;
+    addAndMakeVisible(songDial = new DialComponent("sd", rec::gui::time::Dial(),
+                                                   rec::gui::color::Colors()));
+
+    addAndMakeVisible(realDial = new DialComponent("rd", rec::gui::time::Dial(),
+                                                   rec::gui::color::Colors()));
+
     //[UserPreSize]
     //[/UserPreSize]
 
@@ -128,6 +137,8 @@ MainPageJ::~MainPageJ()
     deleteAndZero (pitchScaleSlider);
     deleteAndZero (songTime);
     deleteAndZero (realTime);
+    deleteAndZero (songDial);
+    deleteAndZero (realDial);
 
     //[Destructor]. You can add your own custom destruction code here..
     //[/Destructor]
@@ -156,8 +167,10 @@ void MainPageJ::resized()
     loopingButton->setBounds (192, getHeight() - 40, 150, 24);
     timeScaleSlider->setBounds (300, getHeight() - 90, 200, 24);
     pitchScaleSlider->setBounds (300, getHeight() - 60, 200, 24);
-    songTime->setBounds (520, getHeight() - 90, 120, 22);
-    realTime->setBounds (520, getHeight() - 60, 120, 22);
+    songTime->setBounds (520, getHeight() - 90, 110, 22);
+    realTime->setBounds (520, getHeight() - 50, 110, 22);
+    songDial->setBounds (640, getHeight() - 90, 36, 36);
+    realDial->setBounds (740, getHeight() - 50, 36, 36);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }

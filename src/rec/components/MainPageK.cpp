@@ -119,6 +119,8 @@ void MainPageK::updateCursor() {
   double samples = RATE * transportSource_.getCurrentPosition();
   double position = samples / transportSource_.getTotalLength();
   peer_->thumbnail->setCursor(position);
+  peer_->realDial->setTimeRatio(position);
+  peer_->songDial->setTimeRatio(position);
   peer_->realTime->setTimeSamples(samples);
   double scale = getPreferences().loop_window().timestretch().time_scale();
   peer_->songTime->setTimeSamples(samples / scale);

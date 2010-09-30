@@ -5,6 +5,7 @@ import "rec/gui/Color.proto";
 
 // Represents a text time display.
 message Text {
+  optional string name = 5;
   optional FontDesc font = 1;
 
   message Separator {
@@ -26,20 +27,29 @@ message Text {
   optional uint32 margin = 4 [default = 2];
 };
 
+
+message Bar {
+};
+
 // Represents a dial-style time display.
 message Dial {
-  enum Style {
-    DIAL = 1;
-    BAR = 2;
+  enum Direction {
+    CLOCKWISE = 1;
+    COUNTER_CLOCKWISE = 2;
   };
-  optional Style style = 1;
+
+  optional string name = 1;
   optional uint32 outline = 2;
+  optional Direction direction = 3 [default = CLOCKWISE];
   optional bool display_lap_count = 4;
   optional FontDesc font = 5;
   optional uint32 margin = 6 [default = 2];
+  optional float zero_point = 7;
+  optional bool empty_on_zero = 8 [default = true];
 };
 
 message Time {
   optional Text text = 1;
   optional Dial dial = 2;
+  optional Bar bar = 3;
 };

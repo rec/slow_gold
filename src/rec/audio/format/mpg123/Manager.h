@@ -14,9 +14,9 @@ namespace mpg123 {
 
 class Format : public AudioFormat {
  public:
-	Format() : AudioFormat(getTranslatedName(), getMp3FileExtensions()) {}
+  Format() : AudioFormat(getTranslatedName(), getMp3FileExtensions()) {}
 
-	~Format() {}
+  ~Format() {}
 
   virtual AudioFormatReader* createReaderFor(InputStream* sourceStream,
                                              bool deleteStreamIfOpeningFails) {
@@ -30,7 +30,7 @@ class Format : public AudioFormat {
     return reader;
   }
 
-	virtual AudioFormatWriter* createWriterFor(OutputStream* streamToWriteTo,
+  virtual AudioFormatWriter* createWriterFor(OutputStream* streamToWriteTo,
                                              double sampleRateToUse,
                                              unsigned int numberOfChannels,
                                              int bitsPerSample,
@@ -39,14 +39,14 @@ class Format : public AudioFormat {
     return NULL;
   }
 
-	virtual const Array<int> getPossibleSampleRates() { return getSampleRates(); }
-	virtual const Array<int> getPossibleBitDepths() { return getBitDepths(); }
+  virtual const Array<int> getPossibleSampleRates() { return getSampleRates(); }
+  virtual const Array<int> getPossibleBitDepths() { return getBitDepths(); }
 
-	virtual bool canDoStereo() { return true; }
-	virtual bool canDoMono() { return true; }
-	virtual bool isCompressed() { return true; }
+  virtual bool canDoStereo() { return true; }
+  virtual bool canDoMono() { return true; }
+  virtual bool isCompressed() { return true; }
 
-	juce_UseDebuggingNewOperator
+  juce_UseDebuggingNewOperator
 
  private:
   DISALLOW_COPY_AND_ASSIGN(Format);
