@@ -2,7 +2,6 @@
 #define __REC_PROTO_TYPEDTYPER__
 
 #include "rec/base/base.h"
-#include "rec/proto/Typer.h"
 #include "rec/proto/Types.h"
 
 namespace rec {
@@ -11,31 +10,20 @@ namespace typer {
 
 class Typer {
  public:
-  Typer(Message* m, const FieldDescriptor* f);
-  virtual ~Typer() {}
-
-  virtual void copyTo(Value* v) const             { typer_->copyTo(v); }
-  virtual void copyTo(uint32 i, Value* v) const   { typer_->copyTo(i, v); }
-
-  virtual void copyFrom(const Value& v)           { typer_->copyFrom(v); }
-  virtual void copyFrom(uint32 i, const Value& v) { typer_->copyFrom(i, v); }
-
-  virtual void add(const Value& v)                { typer_->add(v); }
-
- protected:
-  Typer() {}
-  scoped_ptr<Typer> typer_;
-
-  DISALLOW_COPY_AND_ASSIGN(Typer);
-};
-
-class TypedTyperBase : public Typer {
- public:
-  TypedTyperBase(Message* m, const FieldDescriptor* f)
+  Typer(Message* m, const FieldDescriptor* f)
       : field_(f), msg_(m) {
   }
+  virtual ~Typer() {}
   virtual Typer* clone(google::protobuf::Message* f,
                        const FieldDescriptor* f) const = 0;
+
+  virtual void copyTo(Value* v) const = 0;
+  virtual void copyTo(uint32 i, Value* v) const = 0;
+
+  virtual void copyFrom(const Value& v) = 0;
+  virtual void copyFrom(uint32 i, const Value& v) = 0;
+
+  virtual void add(const Value& v) = 0;
 
  protected:
   const Reflection& reflection() const { return *msg_->GetReflection(); }
@@ -43,16 +31,14 @@ class TypedTyperBase : public Typer {
   Message* msg_;
   const FieldDescriptor* field_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedTyperBase);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Typer);
 };
 
 template <typename Type>
-class TypedTyper : public TypedTyperBase {
+class TypedTyper : public Typer {
  public:
   static const FieldDescriptor::Type TYPE_INDEX;
-  TypedTyper(Message* m, const FieldDescriptor* f)
-      : TypedTyperBase(m, f) {
-  }
+  TypedTyper(Message* m, const FieldDescriptor* f) : Typer(m, f) {}
 
   static Type copy(const Value& v);
   static void copy(Type t, Value* v);

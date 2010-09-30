@@ -10,7 +10,7 @@ namespace typer {
 
 namespace {
 
-const TypedTyperBase* const TYPE_LIST[FieldDescriptor::MAX_TYPE] = {
+const Typer* const TYPE_LIST[FieldDescriptor::MAX_TYPE] = {
   NULL,
   new TypedTyper<double>(NULL, NULL),
   new TypedTyper<float>(NULL, NULL),
