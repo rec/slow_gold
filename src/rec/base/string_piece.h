@@ -41,7 +41,7 @@ class StringPiece {
   StringPiece() : ptr_(NULL), length_(0) { }
   StringPiece(const char* str)
     : ptr_(str), length_((str == NULL) ? 0 : strlen(str)) { }
-  StringPiece(const std::string& str)
+  StringPiece(const string& str)
     : ptr_(str.data()), length_(str.size()) { }
   StringPiece(const char* offset, size_type len)
     : ptr_(offset), length_(len) { }
@@ -92,13 +92,13 @@ class StringPiece {
     return r;
   }
 
-  std::string as_string() const {
-    // std::string doesn't like to take a NULL pointer even with a 0 size.
-    return std::string(!empty() ? data() : "", size());
+  string as_string() const {
+    // string doesn't like to take a NULL pointer even with a 0 size.
+    return string(!empty() ? data() : "", size());
   }
 
-  void CopyToString(std::string* target) const;
-  void AppendToString(std::string* target) const;
+  void CopyToString(string* target) const;
+  void AppendToString(string* target) const;
 
   // Does "this" start with "x"
   bool starts_with(const StringPiece& x) const {

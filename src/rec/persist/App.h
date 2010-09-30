@@ -19,7 +19,6 @@ class UntypedData;
 
 class App {
  public:
-  typedef std::string string;
   typedef std::map<string, UntypedData*> DataMap;
 
   template <typename Proto>

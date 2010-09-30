@@ -15,7 +15,6 @@ typedef google::protobuf::FieldDescriptor FieldDescriptor;
 typedef google::protobuf::Message Message;
 typedef google::protobuf::Reflection Reflection;
 typedef uint32 Tag;
-typedef std::string string;
 
 #define PROTO_MAKE_TYPE(OUT, IN)                       \
   struct OUT {                                         \

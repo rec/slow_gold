@@ -4,7 +4,7 @@
 namespace rec {
 namespace persist {
 
-AppInstance::AppInstance(const std::string& appName)
+AppInstance::AppInstance(const string& appName)
     : App(appName),
       updateThread_("App::update",
                     thread::callbackLoop(UPDATE_PERIOD, this, &AppInstance::update)),

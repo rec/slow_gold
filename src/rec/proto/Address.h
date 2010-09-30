@@ -8,8 +8,9 @@ namespace rec {
 namespace proto {
 namespace arg {
 
+// TODO: fix this name one way or the other.
 struct AField : public proto::AField {
-  AField(const std::string& s) { set_name(s); }
+  AField(const string& s) { set_name(s); }
   AField(const char* s) { set_name(s); }
   AField(int i) { set_index(i); }
   AField(const proto::AField& afield) { CopyFrom(afield); }

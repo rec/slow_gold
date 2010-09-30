@@ -12,7 +12,6 @@ namespace rec {
 
 class GenericApplication : public JUCEApplication {
  public:
-  typedef std::string string;
 
   static const int SAVE_PERIOD = 25;
   static const int PRIORITY = 4;

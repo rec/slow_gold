@@ -24,7 +24,7 @@ RecentFiles getSortedRecentFiles() {
   return prefs.recent_files();
 }
 
-void addRecentFile(const std::string& filename) {
+void addRecentFile(const string& filename) {
   int64 timestamp = Time::currentTimeMillis();
   proto::Preferences pref = getPreferences();
   RecentFiles* recent = pref.mutable_recent_files();
@@ -52,9 +52,9 @@ void addRecentFile(const std::string& filename) {
 
   rec::proto::pmessage msg(r);
 
-  if (!found && recent->file_size() < recent->max_files()) 
+  if (!found && recent->file_size() < recent->max_files())
     prefs()->setter()->append("recent_files", "file", msg);
-  else 
+  else
     prefs()->setter()->set("recent_files", "file", slot, msg);
 }
 

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "rec/base/basictypes.h"
+#include "rec/base/types.h"
 #include "rec/base/disallow.h"
 
 namespace rec {

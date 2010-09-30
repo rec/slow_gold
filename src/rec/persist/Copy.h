@@ -27,7 +27,6 @@ namespace rec {
 namespace persist {
 
 typedef google::protobuf::Message Message;
-typedef std::string string;
 
 bool copy(const File& from, File* to, bool readable = true);
 bool copy(const File& from, Message* to, bool readable = true);

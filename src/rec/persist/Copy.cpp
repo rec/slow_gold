@@ -26,10 +26,10 @@ bool copycopy(const From& from, To* to, bool readable) {
   return true;
 }
 
-// Copy through an std::string.
+// Copy through an string.
 template <typename From, typename To>
 bool through(const From& from, To* to, bool readable) {
-  std::string thr;
+  string thr;
   return copy(from, &thr, readable) && copy(thr, to, readable);
 }
 
