@@ -6,6 +6,7 @@
 
 #include "rec/base/base.h"
 #include "rec/persist/UntypedData.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {
@@ -50,7 +51,7 @@ class Data : public UntypedData {
 
 template <typename Proto>
 Proto Data<Proto>::get() const {
-  ScopedLock l(lock_);
+  ScopedLock l(*lock_);
 
   Proto p;
   readFromFile();

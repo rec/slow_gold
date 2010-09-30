@@ -2,22 +2,19 @@
 #define __REC_PERSIST_UNTYPEDDATA__
 
 #include "rec/base/base.h"
-#include "rec/proto/Setter.h"
 #include "rec/proto/Types.h"
-
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/proto/Setter.h"
 
 namespace rec {
 namespace persist {
 
-typedef proto::arg::Setter Setter;
-
 class App;
 class AppInstance;
+  
+typedef proto::arg::Setter Setter;
 
 class UntypedData : public Setter::Listener {
  public:
-  typedef google::protobuf::Message Message;
   virtual ~UntypedData();
 
   // Change the data with an Operation.  op will eventually be deleted.  The
@@ -43,12 +40,12 @@ class UntypedData : public Setter::Listener {
   OperationList queue_;
   OperationList undo_;
 
-  File file_;
+  scoped_ptr<File> file_;
   mutable Message* message_;
   Setter setter_;
 
   App* app_;
-  CriticalSection lock_;
+  scoped_ptr<CriticalSection> lock_;
   mutable bool alreadyReadFromFile_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedData);
