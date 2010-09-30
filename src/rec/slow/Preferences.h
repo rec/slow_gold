@@ -2,9 +2,7 @@
 #define __REC_SLOW_PREFERENCES__
 
 #include "rec/persist/App.h"
-#include "rec/persist/Copy.h"
 #include "rec/slow/Preferences.pb.h"
-#include "rec/slow/RecentFiles.h"
 
 namespace rec {
 namespace slow {

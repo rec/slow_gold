@@ -8,6 +8,7 @@
 #include "AudioThumbnailComponent.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/Preferences.h"
+#include "rec/slow/RecentFiles.h"
 #include "rec/persist/Copy.h"
 
 #include "rec/thread/LockedMessage.h"
