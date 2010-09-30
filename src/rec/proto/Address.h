@@ -9,16 +9,16 @@ namespace proto {
 namespace arg {
 
 // TODO: fix this name one way or the other.
-struct AField : public proto::AField {
-  AField(const string& s) { set_name(s); }
-  AField(const char* s) { set_name(s); }
-  AField(int i) { set_index(i); }
-  AField(const proto::AField& afield) { CopyFrom(afield); }
-};
-
 
 struct Address : public proto::Address {
-  typedef const AField& P;
+  struct Field : public proto::Address::Field {
+    Field(const string& s) { set_name(s); }
+    Field(const char* s) { set_name(s); }
+    Field(int i) { set_index(i); }
+    Field(const proto::Address::Field& field) { CopyFrom(field); }
+  };
+
+  typedef const Field& P;
   void p(P x) { add_field()->CopyFrom(x); }
 
   Address() {}

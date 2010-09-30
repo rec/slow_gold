@@ -18,7 +18,7 @@ Operation* Field::apply(const Operation &op, Message* message) {
   return field.apply(op);
 }
 
-bool Field::dereference(const proto::AField& afield) {
+bool Field::dereference(const proto::Address::Field& afield) {
   if (field_) {
     const Reflection& r = *message_->GetReflection();
     if (type_ == INDEXED) {
@@ -138,7 +138,7 @@ bool Field::doRemove(int toRemove) {
   undo_->set_command(Operation::APPEND);
 
   Field f = *this;
-  f.dereference(arg::AField(0));
+  f.dereference(arg::Address::Field(0));
   if (toRemove < 0)
     toRemove = f.repeatCount_;
 

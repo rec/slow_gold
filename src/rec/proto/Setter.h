@@ -26,7 +26,7 @@ class Setter {
   void swap(const arg::Address& address, int s1, int s2);
 
   typedef arg::Address A;
-  typedef const AField& P;
+  typedef const A::Field& P;
   typedef const Value& V;
 
   void append(P a, V v) { return append(A(a), v); }
