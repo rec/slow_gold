@@ -640,6 +640,20 @@ class Dial : public ::google::protobuf::Message {
   inline bool empty_on_zero() const;
   inline void set_empty_on_zero(bool value);
   
+  // optional .rec.gui.color.Color from_color = 9;
+  inline bool has_from_color() const;
+  inline void clear_from_color();
+  static const int kFromColorFieldNumber = 9;
+  inline const ::rec::gui::color::Color& from_color() const;
+  inline ::rec::gui::color::Color* mutable_from_color();
+  
+  // optional .rec.gui.color.Color to_color = 10;
+  inline bool has_to_color() const;
+  inline void clear_to_color();
+  static const int kToColorFieldNumber = 10;
+  inline const ::rec::gui::color::Color& to_color() const;
+  inline ::rec::gui::color::Color* mutable_to_color();
+  
   // @@protoc_insertion_point(class_scope:rec.gui.time.Dial)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -654,11 +668,13 @@ class Dial : public ::google::protobuf::Message {
   ::google::protobuf::uint32 margin_;
   float zero_point_;
   bool empty_on_zero_;
+  ::rec::gui::color::Color* from_color_;
+  ::rec::gui::color::Color* to_color_;
   friend void  protobuf_AddDesc_rec_2fgui_2fTime_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fTime_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -1219,6 +1235,40 @@ inline bool Dial::empty_on_zero() const {
 inline void Dial::set_empty_on_zero(bool value) {
   _set_bit(7);
   empty_on_zero_ = value;
+}
+
+// optional .rec.gui.color.Color from_color = 9;
+inline bool Dial::has_from_color() const {
+  return _has_bit(8);
+}
+inline void Dial::clear_from_color() {
+  if (from_color_ != NULL) from_color_->::rec::gui::color::Color::Clear();
+  _clear_bit(8);
+}
+inline const ::rec::gui::color::Color& Dial::from_color() const {
+  return from_color_ != NULL ? *from_color_ : *default_instance_->from_color_;
+}
+inline ::rec::gui::color::Color* Dial::mutable_from_color() {
+  _set_bit(8);
+  if (from_color_ == NULL) from_color_ = new ::rec::gui::color::Color;
+  return from_color_;
+}
+
+// optional .rec.gui.color.Color to_color = 10;
+inline bool Dial::has_to_color() const {
+  return _has_bit(9);
+}
+inline void Dial::clear_to_color() {
+  if (to_color_ != NULL) to_color_->::rec::gui::color::Color::Clear();
+  _clear_bit(9);
+}
+inline const ::rec::gui::color::Color& Dial::to_color() const {
+  return to_color_ != NULL ? *to_color_ : *default_instance_->to_color_;
+}
+inline ::rec::gui::color::Color* Dial::mutable_to_color() {
+  _set_bit(9);
+  if (to_color_ == NULL) to_color_ = new ::rec::gui::color::Color;
+  return to_color_;
 }
 
 // -------------------------------------------------------------------

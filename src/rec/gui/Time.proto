@@ -46,6 +46,9 @@ message Dial {
   optional uint32 margin = 6 [default = 2];
   optional float zero_point = 7;
   optional bool empty_on_zero = 8 [default = true];
+
+  optional color.Color from_color = 9;
+  optional color.Color to_color = 10;
 };
 
 message Time {

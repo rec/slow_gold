@@ -97,18 +97,20 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     pitchScaleSlider->addListener (this);
 
     using rec::gui::time::TextComponent;
-    addAndMakeVisible(songTime = new TextComponent("st", rec::gui::time::Text(),
-                                                   rec::gui::color::Colors()));
+    using rec::gui::time::Text;
+    using rec::gui::color::Colors;
 
-    addAndMakeVisible(realTime = new TextComponent("rt", rec::gui::time::Text(),
-                                                   rec::gui::color::Colors()));
+    addAndMakeVisible(songTime = new TextComponent("st", Text(), Colors()));
+    addAndMakeVisible(realTime = new TextComponent("rt", Text(), Colors()));
 
     using rec::gui::time::DialComponent;
-    addAndMakeVisible(songDial = new DialComponent("sd", rec::gui::time::Dial(),
-                                                   rec::gui::color::Colors()));
+    using rec::gui::time::Dial;
+    addAndMakeVisible(songDial = new DialComponent("sd", Dial(), Colors()));
 
-    addAndMakeVisible(realDial = new DialComponent("rd", rec::gui::time::Dial(),
-                                                   rec::gui::color::Colors()));
+    Dial dial;
+    dial.mutable_from_color()->set_argb(Colours::green.getARGB());
+    dial.mutable_to_color()->set_argb(Colours::red.getARGB());
+    addAndMakeVisible(realDial = new DialComponent("rd", dial, Colors()));
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -170,7 +172,7 @@ void MainPageJ::resized()
     songTime->setBounds (520, getHeight() - 90, 110, 22);
     realTime->setBounds (520, getHeight() - 50, 110, 22);
     songDial->setBounds (640, getHeight() - 90, 36, 36);
-    realDial->setBounds (740, getHeight() - 50, 36, 36);
+    realDial->setBounds (640, getHeight() - 50, 36, 36);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }

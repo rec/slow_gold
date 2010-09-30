@@ -20,11 +20,12 @@ uint32 makeARGB(const Color& c) {
     return (c.alpha() << 24) | (c.red() << 16) | (c.green() << 8) | c.blue();
 }
 
+}  // namespace
+
+
 Colour makeColour(const Color& color) {
   return Colour(makeARGB(color));
 }
-
-}  // namespace
 
 Colour get(unsigned int i) {
   static Colour DEFAULT_COLORS[] = {

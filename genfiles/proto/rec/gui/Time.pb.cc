@@ -115,7 +115,7 @@ void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Bar));
   Dial_descriptor_ = file->message_type(2);
-  static const int Dial_offsets_[8] = {
+  static const int Dial_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, outline_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, direction_),
@@ -124,6 +124,8 @@ void protobuf_AssignDesc_rec_2fgui_2fTime_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, margin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, zero_point_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, empty_on_zero_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, from_color_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Dial, to_color_),
   };
   Dial_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -217,16 +219,18 @@ void protobuf_AddDesc_rec_2fgui_2fTime_2eproto() {
     "\022\024\n\005hours\030\001 \001(\010:\005false\022\025\n\007minutes\030\002 \001(\010:"
     "\004true\022\025\n\007seconds\030\003 \001(\010:\004true\022\032\n\014millisec"
     "onds\030\004 \001(\010:\004true\022\025\n\006frames\030\005 \001(\010:\005false\""
-    "\005\n\003Bar\"\224\002\n\004Dial\022\014\n\004name\030\001 \001(\t\022\017\n\007outline"
+    "\005\n\003Bar\"\346\002\n\004Dial\022\014\n\004name\030\001 \001(\t\022\017\n\007outline"
     "\030\002 \001(\r\022:\n\tdirection\030\003 \001(\0162\034.rec.gui.time"
     ".Dial.Direction:\tCLOCKWISE\022\031\n\021display_la"
     "p_count\030\004 \001(\010\022\037\n\004font\030\005 \001(\0132\021.rec.gui.Fo"
     "ntDesc\022\021\n\006margin\030\006 \001(\r:\0012\022\022\n\nzero_point\030"
-    "\007 \001(\002\022\033\n\rempty_on_zero\030\010 \001(\010:\004true\"1\n\tDi"
-    "rection\022\r\n\tCLOCKWISE\020\001\022\025\n\021COUNTER_CLOCKW"
-    "ISE\020\002\"j\n\004Time\022 \n\004text\030\001 \001(\0132\022.rec.gui.ti"
-    "me.Text\022 \n\004dial\030\002 \001(\0132\022.rec.gui.time.Dia"
-    "l\022\036\n\003bar\030\003 \001(\0132\021.rec.gui.time.Bar", 833);
+    "\007 \001(\002\022\033\n\rempty_on_zero\030\010 \001(\010:\004true\022(\n\nfr"
+    "om_color\030\t \001(\0132\024.rec.gui.color.Color\022&\n\010"
+    "to_color\030\n \001(\0132\024.rec.gui.color.Color\"1\n\t"
+    "Direction\022\r\n\tCLOCKWISE\020\001\022\025\n\021COUNTER_CLOC"
+    "KWISE\020\002\"j\n\004Time\022 \n\004text\030\001 \001(\0132\022.rec.gui."
+    "time.Text\022 \n\004dial\030\002 \001(\0132\022.rec.gui.time.D"
+    "ial\022\036\n\003bar\030\003 \001(\0132\021.rec.gui.time.Bar", 915);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Time.proto", &protobuf_RegisterTypes);
   Text::default_instance_ = new Text();
@@ -1500,6 +1504,8 @@ const int Dial::kFontFieldNumber;
 const int Dial::kMarginFieldNumber;
 const int Dial::kZeroPointFieldNumber;
 const int Dial::kEmptyOnZeroFieldNumber;
+const int Dial::kFromColorFieldNumber;
+const int Dial::kToColorFieldNumber;
 #endif  // !_MSC_VER
 
 Dial::Dial()
@@ -1509,6 +1515,8 @@ Dial::Dial()
 
 void Dial::InitAsDefaultInstance() {
   font_ = const_cast< ::rec::gui::FontDesc*>(&::rec::gui::FontDesc::default_instance());
+  from_color_ = const_cast< ::rec::gui::color::Color*>(&::rec::gui::color::Color::default_instance());
+  to_color_ = const_cast< ::rec::gui::color::Color*>(&::rec::gui::color::Color::default_instance());
 }
 
 Dial::Dial(const Dial& from)
@@ -1527,6 +1535,8 @@ void Dial::SharedCtor() {
   margin_ = 2u;
   zero_point_ = 0;
   empty_on_zero_ = true;
+  from_color_ = NULL;
+  to_color_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1540,6 +1550,8 @@ void Dial::SharedDtor() {
   }
   if (this != default_instance_) {
     delete font_;
+    delete from_color_;
+    delete to_color_;
   }
 }
 
@@ -1579,6 +1591,14 @@ void Dial::Clear() {
     margin_ = 2u;
     zero_point_ = 0;
     empty_on_zero_ = true;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (_has_bit(8)) {
+      if (from_color_ != NULL) from_color_->::rec::gui::color::Color::Clear();
+    }
+    if (_has_bit(9)) {
+      if (to_color_ != NULL) to_color_->::rec::gui::color::Color::Clear();
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1717,6 +1737,34 @@ bool Dial::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(74)) goto parse_from_color;
+        break;
+      }
+      
+      // optional .rec.gui.color.Color from_color = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_from_color:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_from_color()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(82)) goto parse_to_color;
+        break;
+      }
+      
+      // optional .rec.gui.color.Color to_color = 10;
+      case 10: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_to_color:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_to_color()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1785,6 +1833,18 @@ void Dial::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->empty_on_zero(), output);
   }
   
+  // optional .rec.gui.color.Color from_color = 9;
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->from_color(), output);
+  }
+  
+  // optional .rec.gui.color.Color to_color = 10;
+  if (_has_bit(9)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, this->to_color(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1839,6 +1899,20 @@ void Dial::SerializeWithCachedSizes(
   // optional bool empty_on_zero = 8 [default = true];
   if (_has_bit(7)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->empty_on_zero(), target);
+  }
+  
+  // optional .rec.gui.color.Color from_color = 9;
+  if (_has_bit(8)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->from_color(), target);
+  }
+  
+  // optional .rec.gui.color.Color to_color = 10;
+  if (_has_bit(9)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        10, this->to_color(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1902,6 +1976,22 @@ int Dial::ByteSize() const {
     }
     
   }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .rec.gui.color.Color from_color = 9;
+    if (has_from_color()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->from_color());
+    }
+    
+    // optional .rec.gui.color.Color to_color = 10;
+    if (has_to_color()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->to_color());
+    }
+    
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1953,6 +2043,14 @@ void Dial::MergeFrom(const Dial& from) {
       set_empty_on_zero(from.empty_on_zero());
     }
   }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from._has_bit(8)) {
+      mutable_from_color()->::rec::gui::color::Color::MergeFrom(from.from_color());
+    }
+    if (from._has_bit(9)) {
+      mutable_to_color()->::rec::gui::color::Color::MergeFrom(from.to_color());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1983,6 +2081,8 @@ void Dial::Swap(Dial* other) {
     std::swap(margin_, other->margin_);
     std::swap(zero_point_, other->zero_point_);
     std::swap(empty_on_zero_, other->empty_on_zero_);
+    std::swap(from_color_, other->from_color_);
+    std::swap(to_color_, other->to_color_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

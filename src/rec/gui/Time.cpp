@@ -90,6 +90,12 @@ void DialComponent::paint(Graphics& g) {
     return;
   }
 #endif
+  if (desc_->has_from_color() && desc_->has_to_color()) {
+    Colour from = color::makeColour(desc_->from_color());
+    Colour to = color::makeColour(desc_->to_color());
+    g.setColour(from.interpolatedWith(to, time_));
+  }
+
   Path path;
   path.addPieSegment(bounds.getX(), bounds.getY(),
                      bounds.getWidth(), bounds.getHeight(),

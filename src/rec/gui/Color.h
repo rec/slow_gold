@@ -13,6 +13,8 @@ Colour get(unsigned int i);
 Colour get(const Colors& colors, unsigned int index);
 void prepare(const Colors& colors, Graphics* g);
 
+Colour makeColour(const Color& color);
+
 }  // namespace color
 }  // namespace gui
 }  // namespace rec
