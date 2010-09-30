@@ -49,7 +49,7 @@ TEMPLATES = {
   '.h': """#ifndef {guard}
 #define {guard}
 
-#include "rec/base/basictypes.h"
+#include "rec/base/base.h"
 
 {namespace}
 

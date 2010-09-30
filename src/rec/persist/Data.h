@@ -19,10 +19,7 @@ class Data : public UntypedData {
   // Get a snapshot of the current data.
   Proto get() const;
 
-  struct Listener {
-    virtual void dataUpdate(const Proto& message) = 0;
-    virtual ~Listener() {}
-  };
+  typedef util::Listener<const Proto&> Listener;
 
   // Add a listener so you get notified every time the data changes.
   bool addListener(Listener* ls);
@@ -90,7 +87,7 @@ void Data<Proto>::changeCallback() {
   ScopedLock l(listenerLock_);
   typename Listeners::iterator i;
   for (i = listeners_.begin(); i != listeners_.end(); ++i)
-    (*i)->dataUpdate(proto);
+    (*i)->change(proto);
 }
 
 }  // namespace persist

@@ -4,6 +4,7 @@
 #include "rec/base/base.h"
 #include "rec/proto/Address.h"
 #include "rec/proto/Value.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace proto {
@@ -11,21 +12,17 @@ namespace arg {
 
 class Setter {
  public:
-  class Listener {
-   public:
-    virtual void change(Operation* op) = 0;
-    virtual ~Listener() {}
-  };
+  typedef util::Listener<Operation*> Listener;
 
   Setter(Listener* data) : data_(data) {}
 
-  void append(const arg::Address& address, const Value& value);
-  void clear(const arg::Address& address);
-  void remove(const arg::Address& address, int itemsToRemove);
-  void set(const arg::Address& address, const Value& value);
-  void swap(const arg::Address& address, int s1, int s2);
+  void append(const Address& address, const Value& value);
+  void clear(const Address& address);
+  void remove(const Address& address, int itemsToRemove);
+  void set(const Address& address, const Value& value);
+  void swap(const Address& address, int s1, int s2);
 
-  typedef arg::Address A;
+  typedef Address A;
   typedef const A::Field& P;
   typedef const Value& V;
 

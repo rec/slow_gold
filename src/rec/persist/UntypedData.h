@@ -4,16 +4,17 @@
 #include "rec/base/base.h"
 #include "rec/proto/Types.h"
 #include "rec/proto/Setter.h"
+#include "rec/util/Listener.h"
 
 namespace rec {
 namespace persist {
 
 class App;
 class AppInstance;
-  
+
 typedef proto::arg::Setter Setter;
 
-class UntypedData : public Setter::Listener {
+class UntypedData : public util::Listener<proto::Operation*> {
  public:
   virtual ~UntypedData();
 
