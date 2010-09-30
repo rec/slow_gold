@@ -4,24 +4,26 @@
 #include <vector>
 
 #include "rec/base/base.h"
-#include "rec/base/scoped_ptr.h"
-
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace proto {
 namespace logfile {
+
 class Output;
+
 }  // namespace proto
 }  // namespace logfile
+}  // namespace rec
 
+
+namespace rec {
 namespace commands {
 
 class Event;
 
 class EventQueue {
  public:
-  explicit EventQueue(const File& file);
+  explicit EventQueue(const juce::File& file);
 
   ~EventQueue();
 
@@ -34,8 +36,7 @@ class EventQueue {
 
   EventList events_;
   scoped_ptr<proto::logfile::Output> logfile_;
-  File file_;
-  CriticalSection lock_;
+  scoped_ptr<juce::CriticalSection> lock_;
 
   DISALLOW_COPY_AND_ASSIGN(EventQueue);
 };

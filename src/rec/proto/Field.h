@@ -2,7 +2,6 @@
 #define __REC_PROTO_FIELD__
 
 #include "rec/base/base.h"
-#include "rec/base/scoped_ptr.h"
 #include "rec/proto/Value.pb.h"
 #include "rec/proto/Operation.pb.h"
 #include "rec/proto/Types.h"

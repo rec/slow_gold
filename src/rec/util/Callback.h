@@ -1,6 +1,8 @@
 #ifndef __REC_UTIL_CALLBACK
 #define __REC_UTIL_CALLBACK
 
+#include "rec/base/base.h"
+
 namespace rec {
 namespace util {
 

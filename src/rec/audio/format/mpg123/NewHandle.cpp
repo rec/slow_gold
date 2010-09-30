@@ -6,7 +6,6 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
-#include "rec/base/scoped_ptr.h"
 #include "rec/audio/format/mpg123/mpg123.h"
 
 namespace rec {

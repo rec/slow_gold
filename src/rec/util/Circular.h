@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_CIRCULAR__
 #define __REC_UTIL_CIRCULAR__
 
-#include "rec/base/types.h"
+#include "rec/base/base.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -11,38 +11,20 @@ namespace util {
 struct Circular {
  public:
   Circular() {}
-  Circular(int64 begin, int64 length) : length_(length) { reset(begin); }
+  Circular(int64 begin, int64 length);
 
-  void reset(int64 begin) { reset(begin, length_); }
+  void reset(int64 begin);
+  void reset(int64 begin, int64 length);
+  bool fill(int64 delta);
 
-  void reset(int64 begin, int64 length) {
-    begin_ = begin;
-    filled_ = 0;
-    length_ = length;
-  }
+  int64 remaining()      const;
+  int64 remainingBlock() const;
 
-  bool fill(int64 delta) {
-    delta = std::min(delta, remaining());
-    filled_ += delta;
-    return filled_ < length_;
-  }
-
-  int64 remaining()      const { return length_ - filled_; }
-  int64 remainingBlock() const { return std::min(remaining(), length_ - end()); }
-
-  int64 begin()          const { return begin_; }
-  int64 end()            const { return mod(begin_ + filled_, length_); }
+  int64 begin()          const;
+  int64 end()            const;
 
   // How many samples are available starting at begin?
-  int64 availableFrom(int64 begin) const {
-    if (filled_ == length_)
-      return filled_;
-
-    if (begin <  begin_)
-      begin += length_;
-
-    return begin_ + filled_ - begin;
-  }
+  int64 availableFrom(int64 begin) const;
 
  private:
   int64 begin_;

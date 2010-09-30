@@ -3,25 +3,27 @@
 
 #include "rec/commands/Event.pb.h"
 
+#include "JuceLibraryCode/JuceHeader.h"
+
 namespace rec {
 namespace commands {
 
 EventQueue::EventQueue(const File& file)
-    : file_(file),
-      logfile_(new proto::logfile::Output(file)) {
+    : logfile_(new proto::logfile::Output(file)),
+      lock_(new CriticalSection) {
 }
 
 EventQueue::~EventQueue() { write(); }
 
 void EventQueue::add(Event* event) {
-  ScopedLock l(lock_);
+  ScopedLock l(*lock_);
   events_.push_back(event);
 }
 
 void EventQueue::write() {
   EventList events;
   {
-    ScopedLock l(lock_);
+    ScopedLock l(*lock_);
     if (events_.empty())
       return;
 

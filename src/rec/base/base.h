@@ -3,12 +3,20 @@
 
 #include <string>
 
-#include "rec/base/types.h"
 #include "rec/base/disallow.h"
+#include "rec/base/scoped_ptr.h"
+#include "rec/base/types.h"
 
 namespace rec {
 
 typedef std::string string;
+
+}
+
+namespace juce {
+
+class File;
+class CriticalSection;
 
 }
 

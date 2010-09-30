@@ -2,7 +2,6 @@
 #define __REC_PROTO_TYPEDTYPER__
 
 #include "rec/base/base.h"
-#include "rec/base/scoped_ptr.h"
 #include "rec/proto/Typer.h"
 #include "rec/proto/Types.h"
 

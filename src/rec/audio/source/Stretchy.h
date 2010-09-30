@@ -5,7 +5,6 @@
 
 #include <vector>
 
-#include "rec/base/scoped_ptr.h"
 #include "rec/audio/source/Wrappy.h"
 
 class AudioTimeScaler;

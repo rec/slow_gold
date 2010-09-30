@@ -2,7 +2,6 @@
 #define __REC_PERSIST_UNTYPEDDATA__
 
 #include "rec/base/base.h"
-#include "rec/base/scoped_ptr.h"
 #include "rec/proto/Setter.h"
 #include "rec/proto/Types.h"
 

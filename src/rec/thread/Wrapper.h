@@ -3,8 +3,6 @@
 
 #include "rec/thread/Runnable.h"
 
-#include "rec/base/scoped_ptr.h"
-
 namespace rec {
 namespace thread {
 

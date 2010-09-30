@@ -3,7 +3,6 @@
 
 // Wrap an incoming AudioSource, and time-stretch it.
 
-#include "rec/base/scoped_ptr.h"
 #include "rec/audio/source/Source.h"
 
 namespace rec {

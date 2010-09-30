@@ -2,7 +2,10 @@
 #define __REC_THREAD_RUNNABLE
 
 #include "rec/base/base.h"
-#include "JuceLibraryCode/JuceHeader.h"
+
+namespace juce {
+class Thread;
+}
 
 namespace rec {
 namespace thread {

@@ -5,7 +5,6 @@
 #include <glog/logging.h>
 #include <gtest/gtest.h>
 
-#include "rec/base/scoped_ptr.h"
 #include "rec/audio/source/Source.h"
 
 namespace rec {

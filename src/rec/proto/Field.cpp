@@ -2,7 +2,6 @@
 #include <google/protobuf/descriptor.h>
 
 #include "rec/proto/Field.h"
-#include "rec/base/scoped_ptr.h"
 #include "rec/proto/Typer.h"
 #include "rec/proto/Types.h"
 

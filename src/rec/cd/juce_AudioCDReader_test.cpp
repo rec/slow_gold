@@ -5,7 +5,7 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
-#include "rec/base/scoped_ptr.h"
+#include "rec/base/base.h"
 
 #ifdef __JUCE_MAC_AUDIOCDREADER_HELPERS_JUCEHEADER__
 

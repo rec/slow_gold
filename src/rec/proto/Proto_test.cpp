@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/base/scoped_ptr.h"
 #include "rec/proto/TestData.pb.h"
 #include "rec/proto/Proto.h"
 

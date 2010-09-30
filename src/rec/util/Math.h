@@ -1,6 +1,8 @@
 #ifndef __REC_UTIL_MATH
 #define __REC_UTIL_MATH
 
+#include "rec/base/base.h"
+
 namespace rec {
 namespace util {
 

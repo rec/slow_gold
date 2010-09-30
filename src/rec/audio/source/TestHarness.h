@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_TESTER
 #define __REC_AUDIO_SOURCE_TESTER
 
-#include "rec/base/scoped_ptr.h"
+#include "rec/base/base.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 

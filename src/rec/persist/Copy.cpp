@@ -3,7 +3,6 @@
 #include "rec/base/base.h"
 #include "rec/persist/Copy.h"
 #include "glog/logging.h"
-#include "rec/base/scoped_ptr.h"
 
 namespace rec {
 namespace persist {

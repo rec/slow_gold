@@ -2,7 +2,6 @@
 
 #include "rec/persist/UntypedData.h"
 
-#include "rec/base/scoped_ptr.h"
 #include "rec/persist/App.h"
 #include "rec/persist/Copy.h"
 #include "rec/proto/Proto.h"
