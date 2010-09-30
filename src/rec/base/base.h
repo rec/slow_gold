@@ -4,6 +4,7 @@
 #include <string>
 
 #include "rec/base/disallow.h"
+#include "rec/base/scoped_ptr.h"
 #include "rec/base/types.h"
 
 namespace juce {
