@@ -3,12 +3,8 @@
 namespace rec {
 namespace util {
 
-Circular::Circular(int64 begin, int64 length) : length_(length) {
-  reset(begin);
-}
-
-void Circular::reset(int64 begin) {
-  reset(begin, length_);
+Circular::Circular(int64 begin, int64 length) {
+  reset(begin, length);
 }
 
 void Circular::reset(int64 begin, int64 length) {
@@ -23,12 +19,14 @@ bool Circular::fill(int64 delta) {
   return filled_ < length_;
 }
 
-int64 Circular::remaining() const { return length_ - filled_; }
+int64 Circular::remaining() const {
+  return length_ - filled_;
+}
+
 int64 Circular::remainingBlock() const {
   return std::min(remaining(), length_ - end());
 }
 
-int64 Circular::begin()          const { return begin_; }
 int64 Circular::end() const { return mod(begin_ + filled_, length_); }
 
 // How many samples are available starting at begin?

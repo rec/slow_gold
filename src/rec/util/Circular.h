@@ -13,18 +13,15 @@ struct Circular {
   Circular() {}
   Circular(int64 begin, int64 length);
 
-  void reset(int64 begin);
   void reset(int64 begin, int64 length);
   bool fill(int64 delta);
 
-  int64 remaining()      const;
+  int64 remaining() const;
   int64 remainingBlock() const;
-
-  int64 begin()          const;
-  int64 end()            const;
 
   // How many samples are available starting at begin?
   int64 availableFrom(int64 begin) const;
+  int64 end() const;
 
  private:
   int64 begin_;
