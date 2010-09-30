@@ -2,10 +2,22 @@
 #define __REC_PROTO_TYPER__
 
 #include "rec/base/base.h"
-#include "rec/proto/Types.h"
+
+namespace google {
+namespace protobuf {
+
+class FieldDescriptor;
+
+}  // namespace protobuf
+}  // namespace google
 
 namespace rec {
 namespace proto {
+
+class Value;
+
+typedef google::protobuf::FieldDescriptor FieldDescriptor;
+
 namespace typer {
 
 bool copyTo(const Message& m, const FieldDescriptor* f, Value* v);
