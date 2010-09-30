@@ -1,56 +1,37 @@
 #ifndef __REC_PROTO_LOGFILE__
 #define __REC_PROTO_LOGFILE__
 
-#include "google/protobuf/message.h"
 #include "rec/base/base.h"
-#include "rec/proto/ZeroCopy.h"
 
 namespace rec {
 namespace proto {
 namespace logfile {
 
-typedef google::protobuf::io::CodedOutputStream CodedOutputStream;
-typedef google::protobuf::io::CodedInputStream CodedInputStream;
+class InputImpl;
+class OutputImpl;
 
-template <typename Zero, typename Coded>
-class Base {
+class Input {
  public:
-  Base(const File &file) : zero_(file), coded_(&zero_) {}
+  explicit Input(const File& file);
+  ~Input();
 
- protected:
-  Zero zero_;
-  Coded coded_;
+  bool read(Message* message);
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Base);
+ private:
+  scoped_ptr<InputImpl> impl_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Input);
 };
 
-typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;
-
-class Output : public OutputBase {
+class Output {
  public:
-  Output(const File& file) : OutputBase(file) {}
+  explicit Output(const File& file);
+  ~Output();
 
-  void write(const Message& message) {
-    string s;
-    message.SerializeToString(&s);
-    coded_.WriteVarint64(s.size());
-    coded_.WriteString(s);
-  }
-};
+  void write(const Message& message);
 
-typedef Base<zerocopy::Input, CodedInputStream> InputBase;
-
-class Input : public InputBase {
- public:
-  Input(const File& file) : InputBase(file) {}
-
-  bool read(Message* message) {
-    uint64 size;
-    string s;
-    return coded_.ReadVarint64(&size) &&
-      coded_.ReadString(&s, size) &&
-      message->ParseFromString(s);
-  }
+ private:
+  scoped_ptr<OutputImpl> impl_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Output);
 };
 
 }  // namespace logfile
