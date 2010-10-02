@@ -10,7 +10,7 @@ message Rectangle {
   optional Point dimensions = 2;
 };
 
-message Window {
+message Layer {
   optional Rectangle bounds = 1;
   optional int32 layer = 2;
   // Layer 0 is the top layer, layer 1 below that...

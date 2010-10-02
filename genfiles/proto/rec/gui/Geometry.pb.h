@@ -35,7 +35,7 @@ void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto();
 
 class Point;
 class Rectangle;
-class Window;
+class Layer;
 
 // ===================================================================
 
@@ -233,14 +233,14 @@ class Rectangle : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Window : public ::google::protobuf::Message {
+class Layer : public ::google::protobuf::Message {
  public:
-  Window();
-  virtual ~Window();
+  Layer();
+  virtual ~Layer();
   
-  Window(const Window& from);
+  Layer(const Layer& from);
   
-  inline Window& operator=(const Window& from) {
+  inline Layer& operator=(const Layer& from) {
     CopyFrom(from);
     return *this;
   }
@@ -254,17 +254,17 @@ class Window : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Window& default_instance();
+  static const Layer& default_instance();
   
-  void Swap(Window* other);
+  void Swap(Layer* other);
   
   // implements Message ----------------------------------------------
   
-  Window* New() const;
+  Layer* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Window& from);
-  void MergeFrom(const Window& from);
+  void CopyFrom(const Layer& from);
+  void MergeFrom(const Layer& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -301,7 +301,7 @@ class Window : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 layer() const;
   inline void set_layer(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.gui.Window)
+  // @@protoc_insertion_point(class_scope:rec.gui.Layer)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -326,7 +326,7 @@ class Window : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Window* default_instance_;
+  static Layer* default_instance_;
 };
 // ===================================================================
 
@@ -407,37 +407,37 @@ inline ::rec::gui::Point* Rectangle::mutable_dimensions() {
 
 // -------------------------------------------------------------------
 
-// Window
+// Layer
 
 // optional .rec.gui.Rectangle bounds = 1;
-inline bool Window::has_bounds() const {
+inline bool Layer::has_bounds() const {
   return _has_bit(0);
 }
-inline void Window::clear_bounds() {
+inline void Layer::clear_bounds() {
   if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
   _clear_bit(0);
 }
-inline const ::rec::gui::Rectangle& Window::bounds() const {
+inline const ::rec::gui::Rectangle& Layer::bounds() const {
   return bounds_ != NULL ? *bounds_ : *default_instance_->bounds_;
 }
-inline ::rec::gui::Rectangle* Window::mutable_bounds() {
+inline ::rec::gui::Rectangle* Layer::mutable_bounds() {
   _set_bit(0);
   if (bounds_ == NULL) bounds_ = new ::rec::gui::Rectangle;
   return bounds_;
 }
 
 // optional int32 layer = 2;
-inline bool Window::has_layer() const {
+inline bool Layer::has_layer() const {
   return _has_bit(1);
 }
-inline void Window::clear_layer() {
+inline void Layer::clear_layer() {
   layer_ = 0;
   _clear_bit(1);
 }
-inline ::google::protobuf::int32 Window::layer() const {
+inline ::google::protobuf::int32 Layer::layer() const {
   return layer_;
 }
-inline void Window::set_layer(::google::protobuf::int32 value) {
+inline void Layer::set_layer(::google::protobuf::int32 value) {
   _set_bit(1);
   layer_ = value;
 }

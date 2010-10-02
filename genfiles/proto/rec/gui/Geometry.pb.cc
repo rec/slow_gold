@@ -21,9 +21,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* Rectangle_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Rectangle_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Window_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Layer_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Window_reflection_ = NULL;
+  Layer_reflection_ = NULL;
 
 }  // namespace
 
@@ -66,22 +66,22 @@ void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Rectangle));
-  Window_descriptor_ = file->message_type(2);
-  static const int Window_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Window, bounds_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Window, layer_),
+  Layer_descriptor_ = file->message_type(2);
+  static const int Layer_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, bounds_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, layer_),
   };
-  Window_reflection_ =
+  Layer_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Window_descriptor_,
-      Window::default_instance_,
-      Window_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Window, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Window, _unknown_fields_),
+      Layer_descriptor_,
+      Layer::default_instance_,
+      Layer_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Window));
+      sizeof(Layer));
 }
 
 namespace {
@@ -99,7 +99,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Rectangle_descriptor_, &Rectangle::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Window_descriptor_, &Window::default_instance());
+    Layer_descriptor_, &Layer::default_instance());
 }
 
 }  // namespace
@@ -109,8 +109,8 @@ void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto() {
   delete Point_reflection_;
   delete Rectangle::default_instance_;
   delete Rectangle_reflection_;
-  delete Window::default_instance_;
-  delete Window_reflection_;
+  delete Layer::default_instance_;
+  delete Layer_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto() {
@@ -123,17 +123,17 @@ void protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto() {
     "\n\026rec/gui/Geometry.proto\022\007rec.gui\"\035\n\005Poi"
     "nt\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"Q\n\tRectangle\022 \n"
     "\010top_left\030\001 \001(\0132\016.rec.gui.Point\022\"\n\ndimen"
-    "sions\030\002 \001(\0132\016.rec.gui.Point\";\n\006Window\022\"\n"
-    "\006bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\r\n\005lay"
-    "er\030\002 \001(\005", 208);
+    "sions\030\002 \001(\0132\016.rec.gui.Point\":\n\005Layer\022\"\n\006"
+    "bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\r\n\005laye"
+    "r\030\002 \001(\005", 207);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Geometry.proto", &protobuf_RegisterTypes);
   Point::default_instance_ = new Point();
   Rectangle::default_instance_ = new Rectangle();
-  Window::default_instance_ = new Window();
+  Layer::default_instance_ = new Layer();
   Point::default_instance_->InitAsDefaultInstance();
   Rectangle::default_instance_->InitAsDefaultInstance();
-  Window::default_instance_->InitAsDefaultInstance();
+  Layer::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto);
 }
 
@@ -652,63 +652,63 @@ void Rectangle::Swap(Rectangle* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Window::kBoundsFieldNumber;
-const int Window::kLayerFieldNumber;
+const int Layer::kBoundsFieldNumber;
+const int Layer::kLayerFieldNumber;
 #endif  // !_MSC_VER
 
-Window::Window()
+Layer::Layer()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Window::InitAsDefaultInstance() {
+void Layer::InitAsDefaultInstance() {
   bounds_ = const_cast< ::rec::gui::Rectangle*>(&::rec::gui::Rectangle::default_instance());
 }
 
-Window::Window(const Window& from)
+Layer::Layer(const Layer& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Window::SharedCtor() {
+void Layer::SharedCtor() {
   _cached_size_ = 0;
   bounds_ = NULL;
   layer_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Window::~Window() {
+Layer::~Layer() {
   SharedDtor();
 }
 
-void Window::SharedDtor() {
+void Layer::SharedDtor() {
   if (this != default_instance_) {
     delete bounds_;
   }
 }
 
-void Window::SetCachedSize(int size) const {
+void Layer::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Window::descriptor() {
+const ::google::protobuf::Descriptor* Layer::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Window_descriptor_;
+  return Layer_descriptor_;
 }
 
-const Window& Window::default_instance() {
+const Layer& Layer::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();  return *default_instance_;
 }
 
-Window* Window::default_instance_ = NULL;
+Layer* Layer::default_instance_ = NULL;
 
-Window* Window::New() const {
-  return new Window;
+Layer* Layer::New() const {
+  return new Layer;
 }
 
-void Window::Clear() {
+void Layer::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
       if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
@@ -719,7 +719,7 @@ void Window::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool Window::MergePartialFromCodedStream(
+bool Layer::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -770,7 +770,7 @@ bool Window::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Window::SerializeWithCachedSizes(
+void Layer::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional .rec.gui.Rectangle bounds = 1;
   if (_has_bit(0)) {
@@ -789,7 +789,7 @@ void Window::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* Window::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Layer::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional .rec.gui.Rectangle bounds = 1;
   if (_has_bit(0)) {
@@ -810,7 +810,7 @@ void Window::SerializeWithCachedSizes(
   return target;
 }
 
-int Window::ByteSize() const {
+int Layer::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -840,10 +840,10 @@ int Window::ByteSize() const {
   return total_size;
 }
 
-void Window::MergeFrom(const ::google::protobuf::Message& from) {
+void Layer::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Window* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Window*>(
+  const Layer* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Layer*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -852,7 +852,7 @@ void Window::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Window::MergeFrom(const Window& from) {
+void Layer::MergeFrom(const Layer& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -865,24 +865,24 @@ void Window::MergeFrom(const Window& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Window::CopyFrom(const ::google::protobuf::Message& from) {
+void Layer::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Window::CopyFrom(const Window& from) {
+void Layer::CopyFrom(const Layer& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Window::IsInitialized() const {
+bool Layer::IsInitialized() const {
   
   return true;
 }
 
-void Window::Swap(Window* other) {
+void Layer::Swap(Layer* other) {
   if (other != this) {
     std::swap(bounds_, other->bounds_);
     std::swap(layer_, other->layer_);
@@ -892,11 +892,11 @@ void Window::Swap(Window* other) {
   }
 }
 
-::google::protobuf::Metadata Window::GetMetadata() const {
+::google::protobuf::Metadata Layer::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Window_descriptor_;
-  metadata.reflection = Window_reflection_;
+  metadata.descriptor = Layer_descriptor_;
+  metadata.reflection = Layer_reflection_;
   return metadata;
 }
 

@@ -1,0 +1,14 @@
+package rec.gui;
+
+import "rec/gui/Color.proto";
+import "rec/gui/Font.proto";
+import "rec/gui/Geometry.proto";
+
+// Information common to all components.
+message ComponentDesc {
+  optional color.Colors colors = 1;
+  optional FontDesc font = 2;
+  optional uint32 margin = 3 [default = 2];
+  optional bool transparent = 4;
+};
+
