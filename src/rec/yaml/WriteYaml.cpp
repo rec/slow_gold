@@ -1,18 +1,8 @@
 #include <vector>
-#include <glog/logging.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/message.h>
-
-#include "rec/yaml/Yaml.h"
-#include "rec/yaml/include/yaml.h"
+#include "rec/yaml/Internal.h"
 
 namespace rec {
 namespace yaml {
-
-using google::protobuf::EnumValueDescriptor;
-using google::protobuf::FieldDescriptor;
-using google::protobuf::Reflection;
-
 namespace {
 
 YAML::Emitter& operator<<(YAML::Emitter& out, const Message& m);
@@ -21,22 +11,6 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const EnumValueDescriptor* e) {
   return out << e->name();
 }
 
-struct MessageField {
-  MessageField(const Message* m, const FieldDescriptor* f)
-      : message_(m), field_(f) {
-  }
-  const Message* message_;
-  const FieldDescriptor* field_;
-};
-
-struct MessageFieldIndex : public MessageField {
-  MessageFieldIndex(const MessageField& mf, int i)
-      : MessageField(mf), index_(i) {
-  }
-  int index_;
-};
-
-typedef FieldDescriptor FD;
 
 YAML::Emitter& operator<<(YAML::Emitter& out, const MessageFieldIndex& mfi) {
   const Message& m = *mfi.message_;

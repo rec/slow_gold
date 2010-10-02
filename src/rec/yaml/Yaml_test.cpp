@@ -11,6 +11,19 @@ namespace {
 
 using proto::Operation;
 
+const static char RESULT[] =
+  "---\n"
+  "command: APPEND\n"
+  "address:\n"
+  "  field:\n"
+  "    -\n"
+  "      index: 3\n"
+  "    -\n"
+  "      name: fred\n"
+  "value:\n"
+  "  -\n"
+  "    uint32_f: 5";
+
 TEST(Yaml, Write) {
   Operation op;
   op.set_command(Operation::APPEND);
@@ -18,20 +31,19 @@ TEST(Yaml, Write) {
   op.mutable_address()->add_field()->set_name("fred");
   op.add_value()->set_uint32_f(5);
 
-  const static char RESULT[] =
-    "---\n"
-    "command: APPEND\n"
-    "address:\n"
-    "  field:\n"
-    "    -\n"
-    "      index: 3\n"
-    "    -\n"
-    "      name: fred\n"
-    "value:\n"
-    "  -\n"
-    "    uint32_f: 5";
   EXPECT_EQ(RESULT, write(op));
 }
+
+TEST(Yaml, Read) {
+  Operation op;
+  read(RESULT, &op);
+
+  EXPECT_EQ(op.command(), Operation::APPEND);
+  EXPECT_EQ(op.address().field(0).index(), 3);
+  EXPECT_EQ(op.address().field(1).name(), "fred");
+  EXPECT_EQ(op.value(0).uint32_f(), 5);
+}
+
 
 }  // namespace
 }  // namespace yaml
