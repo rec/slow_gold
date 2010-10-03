@@ -32,6 +32,7 @@ class ComponentDelegate {
   ComponentDelegate* next_;
 };
 
+
 }  // namespace gui
 }  // namespace rec
 
