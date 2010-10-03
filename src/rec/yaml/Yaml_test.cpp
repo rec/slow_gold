@@ -14,15 +14,9 @@ using proto::Operation;
 const static char RESULT[] =
   "---\n"
   "command: APPEND\n"
-  "address:\n"
-  "  field:\n"
-  "    -\n"
-  "      index: 3\n"
-  "    -\n"
-  "      name: fred\n"
+  "address: {field: [{index: 3}, {name: fred}]}\n"
   "value:\n"
-  "  -\n"
-  "    uint32_f: 5";
+  "  - {uint32_f: 5}";
 
 TEST(Yaml, Write) {
   Operation op;

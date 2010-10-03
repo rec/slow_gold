@@ -11,7 +11,6 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const EnumValueDescriptor* e) {
   return out << e->name();
 }
 
-
 YAML::Emitter& operator<<(YAML::Emitter& out, const MessageFieldIndex& mfi) {
   const Message& m = *mfi.message_;
   const FieldDescriptor* f = mfi.field_;
@@ -78,8 +77,49 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const MessageField& mf) {
 
 typedef std::vector<const FieldDescriptor*> FieldVector;
 
-YAML::Emitter& operator<<(YAML::Emitter& out, const Message& m) {
+static const int MAX_FIELD_COUNT = 5;
+static const int MAX_ARRAY_COUNT = 8;
+
+bool isSmall(const Message& m) {
+  FieldVector fields;
+  m.GetReflection()->ListFields(m, &fields);
+
+  if (fields.size() > MAX_FIELD_COUNT)
+    return false;
+
+  for (FieldVector::const_iterator i = fields.begin(); i != fields.end(); ++i) {
+    if ((*i)->label() == FieldDescriptor::LABEL_REPEATED ||
+        (*i)->type() == FieldDescriptor::TYPE_GROUP ||
+        (*i)->type() == FieldDescriptor::TYPE_MESSAGE)
+      return false;
+  }
+  return true;
+}
+
+YAML::Emitter& write(YAML::Emitter& out, const Message& m) {
+  FieldVector fields;
+  m.GetReflection()->ListFields(m, &fields);
+
   out << YAML::BeginMap;
+  for (FieldVector::const_iterator i = fields.begin(); i != fields.end(); ++i)
+    out << YAML::Key << (*i)->name() << YAML::Value << MessageField(&m, *i);
+
+  out << YAML::EndMap;
+  return out;
+}
+
+int shortLength(const Message &m) {
+  YAML::Emitter out;
+  out << YAML::Flow;
+  write(out, m);
+  return strlen(out.c_str());
+}
+
+const static int SHORT_LENGTH = 80;
+
+YAML::Emitter& operator<<(YAML::Emitter& out, const Message& m) {
+  bool small = (shortLength(m) < SHORT_LENGTH);
+  out << (small ? YAML::Flow : YAML::Block) << YAML::BeginMap;
 
   FieldVector fields;
   m.GetReflection()->ListFields(m, &fields);
@@ -87,13 +127,15 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const Message& m) {
   for (FieldVector::const_iterator i = fields.begin(); i != fields.end(); ++i)
     out << YAML::Key << (*i)->name() << YAML::Value << MessageField(&m, *i);
 
-  return out << YAML::EndMap;
+  out << YAML::EndMap << YAML::Block;
+
+  return out;
 }
 
 }  // namespace
 
 
-string write(const Message& from, bool compact) {
+string write(const Message& from) {
   YAML::Emitter out;
   out << from;
   return out.c_str();
