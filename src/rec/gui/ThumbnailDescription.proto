@@ -1,4 +1,5 @@
 import "rec/gui/Color.proto";
+import "rec/gui/Font.proto";
 
 package rec.gui;
 
@@ -14,4 +15,8 @@ message ThumbnailDescription {
   optional uint32 source_samples_per_thumbnail_sample = 4 [default = 512];
   optional uint32 thumbnail_cache = 5                     [default = 5];
   optional ThreadDescription cursor_thread = 6;
+  optional FontDesc font = 7;
+  optional uint32 tic_height = 8                          [default = 8];
+  optional uint32 subtic_height = 9                       [default = 3];
+  optional bool use_captions = 10                         [default = true];
 };

@@ -48,13 +48,17 @@ void protobuf_AssignDesc_rec_2fgui_2fThumbnailDescription_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ThreadDescription));
   ThumbnailDescription_descriptor_ = file->message_type(1);
-  static const int ThumbnailDescription_offsets_[6] = {
+  static const int ThumbnailDescription_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, colors_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, cursor_thickness_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, margin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, source_samples_per_thumbnail_sample_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, thumbnail_cache_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, cursor_thread_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, font_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, tic_height_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, subtic_height_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThumbnailDescription, use_captions_),
   };
   ThumbnailDescription_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -101,17 +105,21 @@ void protobuf_AddDesc_rec_2fgui_2fThumbnailDescription_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::gui::color::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fFont_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\"rec/gui/ThumbnailDescription.proto\022\007re"
-    "c.gui\032\023rec/gui/Color.proto\"<\n\021ThreadDesc"
-    "ription\022\023\n\010priority\030\001 \001(\r:\0014\022\022\n\006period\030\002"
-    " \001(\r:\00240\"\356\001\n\024ThumbnailDescription\022%\n\006col"
-    "ors\030\001 \001(\0132\025.rec.gui.color.Colors\022\033\n\020curs"
-    "or_thickness\030\002 \001(\r:\0011\022\021\n\006margin\030\003 \001(\r:\0012"
-    "\0220\n#source_samples_per_thumbnail_sample\030"
-    "\004 \001(\r:\003512\022\032\n\017thumbnail_cache\030\005 \001(\r:\0015\0221"
-    "\n\rcursor_thread\030\006 \001(\0132\032.rec.gui.ThreadDe"
-    "scription", 369);
+    "c.gui\032\023rec/gui/Color.proto\032\022rec/gui/Font"
+    ".proto\"<\n\021ThreadDescription\022\023\n\010priority\030"
+    "\001 \001(\r:\0014\022\022\n\006period\030\002 \001(\r:\00240\"\334\002\n\024Thumbna"
+    "ilDescription\022%\n\006colors\030\001 \001(\0132\025.rec.gui."
+    "color.Colors\022\033\n\020cursor_thickness\030\002 \001(\r:\001"
+    "1\022\021\n\006margin\030\003 \001(\r:\0012\0220\n#source_samples_p"
+    "er_thumbnail_sample\030\004 \001(\r:\003512\022\032\n\017thumbn"
+    "ail_cache\030\005 \001(\r:\0015\0221\n\rcursor_thread\030\006 \001("
+    "\0132\032.rec.gui.ThreadDescription\022\037\n\004font\030\007 "
+    "\001(\0132\021.rec.gui.FontDesc\022\025\n\ntic_height\030\010 \001"
+    "(\r:\0018\022\030\n\rsubtic_height\030\t \001(\r:\0013\022\032\n\014use_c"
+    "aptions\030\n \001(\010:\004true", 499);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/ThumbnailDescription.proto", &protobuf_RegisterTypes);
   ThreadDescription::default_instance_ = new ThreadDescription();
@@ -385,6 +393,10 @@ const int ThumbnailDescription::kMarginFieldNumber;
 const int ThumbnailDescription::kSourceSamplesPerThumbnailSampleFieldNumber;
 const int ThumbnailDescription::kThumbnailCacheFieldNumber;
 const int ThumbnailDescription::kCursorThreadFieldNumber;
+const int ThumbnailDescription::kFontFieldNumber;
+const int ThumbnailDescription::kTicHeightFieldNumber;
+const int ThumbnailDescription::kSubticHeightFieldNumber;
+const int ThumbnailDescription::kUseCaptionsFieldNumber;
 #endif  // !_MSC_VER
 
 ThumbnailDescription::ThumbnailDescription()
@@ -395,6 +407,7 @@ ThumbnailDescription::ThumbnailDescription()
 void ThumbnailDescription::InitAsDefaultInstance() {
   colors_ = const_cast< ::rec::gui::color::Colors*>(&::rec::gui::color::Colors::default_instance());
   cursor_thread_ = const_cast< ::rec::gui::ThreadDescription*>(&::rec::gui::ThreadDescription::default_instance());
+  font_ = const_cast< ::rec::gui::FontDesc*>(&::rec::gui::FontDesc::default_instance());
 }
 
 ThumbnailDescription::ThumbnailDescription(const ThumbnailDescription& from)
@@ -411,6 +424,10 @@ void ThumbnailDescription::SharedCtor() {
   source_samples_per_thumbnail_sample_ = 512u;
   thumbnail_cache_ = 5u;
   cursor_thread_ = NULL;
+  font_ = NULL;
+  tic_height_ = 8u;
+  subtic_height_ = 3u;
+  use_captions_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -422,6 +439,7 @@ void ThumbnailDescription::SharedDtor() {
   if (this != default_instance_) {
     delete colors_;
     delete cursor_thread_;
+    delete font_;
   }
 }
 
@@ -457,6 +475,14 @@ void ThumbnailDescription::Clear() {
     if (_has_bit(5)) {
       if (cursor_thread_ != NULL) cursor_thread_->::rec::gui::ThreadDescription::Clear();
     }
+    if (_has_bit(6)) {
+      if (font_ != NULL) font_->::rec::gui::FontDesc::Clear();
+    }
+    tic_height_ = 8u;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    subtic_height_ = 3u;
+    use_captions_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -555,6 +581,68 @@ bool ThumbnailDescription::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(58)) goto parse_font;
+        break;
+      }
+      
+      // optional .rec.gui.FontDesc font = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_font:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_font()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_tic_height;
+        break;
+      }
+      
+      // optional uint32 tic_height = 8 [default = 8];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_tic_height:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &tic_height_)));
+          _set_bit(7);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(72)) goto parse_subtic_height;
+        break;
+      }
+      
+      // optional uint32 subtic_height = 9 [default = 3];
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_subtic_height:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &subtic_height_)));
+          _set_bit(8);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(80)) goto parse_use_captions;
+        break;
+      }
+      
+      // optional bool use_captions = 10 [default = true];
+      case 10: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_use_captions:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &use_captions_)));
+          _set_bit(9);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -609,6 +697,27 @@ void ThumbnailDescription::SerializeWithCachedSizes(
       6, this->cursor_thread(), output);
   }
   
+  // optional .rec.gui.FontDesc font = 7;
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->font(), output);
+  }
+  
+  // optional uint32 tic_height = 8 [default = 8];
+  if (_has_bit(7)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->tic_height(), output);
+  }
+  
+  // optional uint32 subtic_height = 9 [default = 3];
+  if (_has_bit(8)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->subtic_height(), output);
+  }
+  
+  // optional bool use_captions = 10 [default = true];
+  if (_has_bit(9)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(10, this->use_captions(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -649,6 +758,28 @@ void ThumbnailDescription::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         6, this->cursor_thread(), target);
+  }
+  
+  // optional .rec.gui.FontDesc font = 7;
+  if (_has_bit(6)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->font(), target);
+  }
+  
+  // optional uint32 tic_height = 8 [default = 8];
+  if (_has_bit(7)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->tic_height(), target);
+  }
+  
+  // optional uint32 subtic_height = 9 [default = 3];
+  if (_has_bit(8)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->subtic_height(), target);
+  }
+  
+  // optional bool use_captions = 10 [default = true];
+  if (_has_bit(9)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(10, this->use_captions(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -704,6 +835,34 @@ int ThumbnailDescription::ByteSize() const {
           this->cursor_thread());
     }
     
+    // optional .rec.gui.FontDesc font = 7;
+    if (has_font()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->font());
+    }
+    
+    // optional uint32 tic_height = 8 [default = 8];
+    if (has_tic_height()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->tic_height());
+    }
+    
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional uint32 subtic_height = 9 [default = 3];
+    if (has_subtic_height()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->subtic_height());
+    }
+    
+    // optional bool use_captions = 10 [default = true];
+    if (has_use_captions()) {
+      total_size += 1 + 1;
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -749,6 +908,20 @@ void ThumbnailDescription::MergeFrom(const ThumbnailDescription& from) {
     if (from._has_bit(5)) {
       mutable_cursor_thread()->::rec::gui::ThreadDescription::MergeFrom(from.cursor_thread());
     }
+    if (from._has_bit(6)) {
+      mutable_font()->::rec::gui::FontDesc::MergeFrom(from.font());
+    }
+    if (from._has_bit(7)) {
+      set_tic_height(from.tic_height());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from._has_bit(8)) {
+      set_subtic_height(from.subtic_height());
+    }
+    if (from._has_bit(9)) {
+      set_use_captions(from.use_captions());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -778,6 +951,10 @@ void ThumbnailDescription::Swap(ThumbnailDescription* other) {
     std::swap(source_samples_per_thumbnail_sample_, other->source_samples_per_thumbnail_sample_);
     std::swap(thumbnail_cache_, other->thumbnail_cache_);
     std::swap(cursor_thread_, other->cursor_thread_);
+    std::swap(font_, other->font_);
+    std::swap(tic_height_, other->tic_height_);
+    std::swap(subtic_height_, other->subtic_height_);
+    std::swap(use_captions_, other->use_captions_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

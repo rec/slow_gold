@@ -24,6 +24,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/gui/Color.pb.h"
+#include "rec/gui/Font.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -232,6 +233,34 @@ class ThumbnailDescription : public ::google::protobuf::Message {
   inline const ::rec::gui::ThreadDescription& cursor_thread() const;
   inline ::rec::gui::ThreadDescription* mutable_cursor_thread();
   
+  // optional .rec.gui.FontDesc font = 7;
+  inline bool has_font() const;
+  inline void clear_font();
+  static const int kFontFieldNumber = 7;
+  inline const ::rec::gui::FontDesc& font() const;
+  inline ::rec::gui::FontDesc* mutable_font();
+  
+  // optional uint32 tic_height = 8 [default = 8];
+  inline bool has_tic_height() const;
+  inline void clear_tic_height();
+  static const int kTicHeightFieldNumber = 8;
+  inline ::google::protobuf::uint32 tic_height() const;
+  inline void set_tic_height(::google::protobuf::uint32 value);
+  
+  // optional uint32 subtic_height = 9 [default = 3];
+  inline bool has_subtic_height() const;
+  inline void clear_subtic_height();
+  static const int kSubticHeightFieldNumber = 9;
+  inline ::google::protobuf::uint32 subtic_height() const;
+  inline void set_subtic_height(::google::protobuf::uint32 value);
+  
+  // optional bool use_captions = 10 [default = true];
+  inline bool has_use_captions() const;
+  inline void clear_use_captions();
+  static const int kUseCaptionsFieldNumber = 10;
+  inline bool use_captions() const;
+  inline void set_use_captions(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.gui.ThumbnailDescription)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -243,11 +272,15 @@ class ThumbnailDescription : public ::google::protobuf::Message {
   ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;
   ::google::protobuf::uint32 thumbnail_cache_;
   ::rec::gui::ThreadDescription* cursor_thread_;
+  ::rec::gui::FontDesc* font_;
+  ::google::protobuf::uint32 tic_height_;
+  ::google::protobuf::uint32 subtic_height_;
+  bool use_captions_;
   friend void  protobuf_AddDesc_rec_2fgui_2fThumbnailDescription_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fThumbnailDescription_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fThumbnailDescription_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -402,6 +435,71 @@ inline ::rec::gui::ThreadDescription* ThumbnailDescription::mutable_cursor_threa
   _set_bit(5);
   if (cursor_thread_ == NULL) cursor_thread_ = new ::rec::gui::ThreadDescription;
   return cursor_thread_;
+}
+
+// optional .rec.gui.FontDesc font = 7;
+inline bool ThumbnailDescription::has_font() const {
+  return _has_bit(6);
+}
+inline void ThumbnailDescription::clear_font() {
+  if (font_ != NULL) font_->::rec::gui::FontDesc::Clear();
+  _clear_bit(6);
+}
+inline const ::rec::gui::FontDesc& ThumbnailDescription::font() const {
+  return font_ != NULL ? *font_ : *default_instance_->font_;
+}
+inline ::rec::gui::FontDesc* ThumbnailDescription::mutable_font() {
+  _set_bit(6);
+  if (font_ == NULL) font_ = new ::rec::gui::FontDesc;
+  return font_;
+}
+
+// optional uint32 tic_height = 8 [default = 8];
+inline bool ThumbnailDescription::has_tic_height() const {
+  return _has_bit(7);
+}
+inline void ThumbnailDescription::clear_tic_height() {
+  tic_height_ = 8u;
+  _clear_bit(7);
+}
+inline ::google::protobuf::uint32 ThumbnailDescription::tic_height() const {
+  return tic_height_;
+}
+inline void ThumbnailDescription::set_tic_height(::google::protobuf::uint32 value) {
+  _set_bit(7);
+  tic_height_ = value;
+}
+
+// optional uint32 subtic_height = 9 [default = 3];
+inline bool ThumbnailDescription::has_subtic_height() const {
+  return _has_bit(8);
+}
+inline void ThumbnailDescription::clear_subtic_height() {
+  subtic_height_ = 3u;
+  _clear_bit(8);
+}
+inline ::google::protobuf::uint32 ThumbnailDescription::subtic_height() const {
+  return subtic_height_;
+}
+inline void ThumbnailDescription::set_subtic_height(::google::protobuf::uint32 value) {
+  _set_bit(8);
+  subtic_height_ = value;
+}
+
+// optional bool use_captions = 10 [default = true];
+inline bool ThumbnailDescription::has_use_captions() const {
+  return _has_bit(9);
+}
+inline void ThumbnailDescription::clear_use_captions() {
+  use_captions_ = true;
+  _clear_bit(9);
+}
+inline bool ThumbnailDescription::use_captions() const {
+  return use_captions_;
+}
+inline void ThumbnailDescription::set_use_captions(bool value) {
+  _set_bit(9);
+  use_captions_ = value;
 }
 
 
