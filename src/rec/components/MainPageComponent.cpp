@@ -97,6 +97,16 @@ void MainPageComponent::loadRecentFile(int menuItemId) {
   main->loadRecentFile(menuItemId);
 }
 
+void MainPageComponent::cut() {
+  MainPageJ* main = (MainPageJ*) tabbedComponent->getTabContentComponent(0);
+  main->cut();
+}
+void MainPageComponent::paste() {
+  MainPageJ* main = (MainPageJ*) tabbedComponent->getTabContentComponent(0);
+  main->paste();
+
+}
+
 //[/MiscUserCode]
 
 

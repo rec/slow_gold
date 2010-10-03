@@ -29,12 +29,23 @@ class RecContainer : public ComponentContainer {
         submenu.addItem(i + 1, recent.file(i).name().c_str());
 
       menu.addSubMenu("Open recent", submenu);
+    } else if (menuName == "Edit") {
+      menu.addItem(1, "Cut");
+      menu.addItem(2, "Paste");
     }
+
     return menu;
   }
 
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
-    mainPage_->loadRecentFile(menuItemID);
+    if (topLevelMenuIndex == 0) {
+      mainPage_->loadRecentFile(menuItemID);
+    } else if (topLevelMenuIndex == 1) {
+      if (menuItemID == 1)
+        mainPage_->cut();
+      else if (menuItemID == 2)
+        mainPage_->paste();
+    }
   }
 
  private:

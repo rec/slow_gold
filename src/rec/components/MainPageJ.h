@@ -65,6 +65,8 @@ public:
 
  public:
   void loadRecentFile(int menuItemId) { peer_.loadRecentFile(menuItemId); }
+  void cut() { peer_.cut(); }
+  void paste() { peer_.paste(); }
 
  private:
 

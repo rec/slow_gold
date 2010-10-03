@@ -15,6 +15,7 @@
 #include "rec/thread/RunnableThread.h"
 #include "rec/thread/WaitLoop.h"
 #include "rec/thread/Callback.h"
+#include "rec/yaml/Yaml.h"
 
 using rec::audio::source::TimeStretch;
 
@@ -240,6 +241,21 @@ void MainPageK::selectionChanged() {
   File file = peer_->fileTreeComp->getSelectedFile();
   loadFileIntoTransport(file);
 }
+
+void MainPageK::cut() {
+  proto::Preferences prefs = slow::getPreferences();
+  string s = yaml::write(prefs);
+  SystemClipboard::copyTextToClipboard(s.c_str());
+  LOG(INFO) << s;
+}
+
+void MainPageK::paste() {
+  string s = SystemClipboard::getTextFromClipboard().toCString();
+  LOG(INFO) << s;
+  proto::Preferences prefs;
+  yaml::read(s, &prefs);
+}
+
 
 }  // namespace slow
 }  // namespace rec

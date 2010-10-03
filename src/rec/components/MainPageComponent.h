@@ -45,6 +45,8 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void loadRecentFile(int menuItemId);
+    void cut();
+    void paste();
 
     //[/UserMethods]
 

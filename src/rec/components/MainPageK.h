@@ -43,6 +43,8 @@ class MainPageK : public FileBrowserListener,
   void updateCursor();
   void setPosition(double position);
   void loadRecentFile(int menuItemId);
+  void cut();
+  void paste();
 
  private:
   static const int THREAD_PRIORITY = 3;
