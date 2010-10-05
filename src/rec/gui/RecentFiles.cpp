@@ -1,8 +1,8 @@
-#include "rec/slow/RecentFiles.h"
+#include "rec/gui/RecentFiles.h"
 #include "rec/slow/Preferences.h"
 
 namespace rec {
-namespace slow {
+namespace gui {
 
 struct CompareRecentFiles {
   bool operator()(const RecentFile& x, const RecentFile& y) {
@@ -12,7 +12,7 @@ struct CompareRecentFiles {
 };
 
 RecentFiles getSortedRecentFiles() {
-  proto::Preferences prefs = getPreferences();
+  slow::proto::Preferences prefs = slow::getPreferences();
   if (prefs.has_recent_files()) {
     google::protobuf::RepeatedPtrField<RecentFile>* recent =
       prefs.mutable_recent_files()->mutable_file();
@@ -24,7 +24,7 @@ RecentFiles getSortedRecentFiles() {
 
 void addRecentFile(const string& filename) {
   int64 timestamp = Time::currentTimeMillis();
-  proto::Preferences pref = getPreferences();
+  slow::proto::Preferences pref = slow::getPreferences();
   RecentFiles* recent = pref.mutable_recent_files();
 
   int64 least = timestamp;
@@ -51,10 +51,10 @@ void addRecentFile(const string& filename) {
   rec::proto::pmessage msg(r);
 
   if (!found && recent->file_size() < recent->max_files())
-    prefs()->setter()->append("recent_files", "file", msg);
+    slow::prefs()->setter()->append("recent_files", "file", msg);
   else
-    prefs()->setter()->set("recent_files", "file", slot, msg);
+    slow::prefs()->setter()->set("recent_files", "file", slot, msg);
 }
 
-}  // namespace slow
+}  // namespace gui
 }  // namespace rec

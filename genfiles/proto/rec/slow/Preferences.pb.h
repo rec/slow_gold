@@ -25,7 +25,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/gui/ThumbnailDescription.pb.h"
 #include "rec/slow/LoopWindow.pb.h"
-#include "rec/slow/RecentFiles.pb.h"
+#include "rec/gui/RecentFiles.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -109,12 +109,12 @@ class Preferences : public ::google::protobuf::Message {
   inline const ::rec::gui::ThumbnailDescription& thumbnail() const;
   inline ::rec::gui::ThumbnailDescription* mutable_thumbnail();
   
-  // optional .rec.slow.RecentFiles recent_files = 3;
+  // optional .rec.gui.RecentFiles recent_files = 3;
   inline bool has_recent_files() const;
   inline void clear_recent_files();
   static const int kRecentFilesFieldNumber = 3;
-  inline const ::rec::slow::RecentFiles& recent_files() const;
-  inline ::rec::slow::RecentFiles* mutable_recent_files();
+  inline const ::rec::gui::RecentFiles& recent_files() const;
+  inline ::rec::gui::RecentFiles* mutable_recent_files();
   
   // @@protoc_insertion_point(class_scope:rec.slow.proto.Preferences)
  private:
@@ -123,7 +123,7 @@ class Preferences : public ::google::protobuf::Message {
   
   ::rec::slow::proto::LoopWindow* loop_window_;
   ::rec::gui::ThumbnailDescription* thumbnail_;
-  ::rec::slow::RecentFiles* recent_files_;
+  ::rec::gui::RecentFiles* recent_files_;
   friend void  protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fPreferences_2eproto();
@@ -185,20 +185,20 @@ inline ::rec::gui::ThumbnailDescription* Preferences::mutable_thumbnail() {
   return thumbnail_;
 }
 
-// optional .rec.slow.RecentFiles recent_files = 3;
+// optional .rec.gui.RecentFiles recent_files = 3;
 inline bool Preferences::has_recent_files() const {
   return _has_bit(2);
 }
 inline void Preferences::clear_recent_files() {
-  if (recent_files_ != NULL) recent_files_->::rec::slow::RecentFiles::Clear();
+  if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
   _clear_bit(2);
 }
-inline const ::rec::slow::RecentFiles& Preferences::recent_files() const {
+inline const ::rec::gui::RecentFiles& Preferences::recent_files() const {
   return recent_files_ != NULL ? *recent_files_ : *default_instance_->recent_files_;
 }
-inline ::rec::slow::RecentFiles* Preferences::mutable_recent_files() {
+inline ::rec::gui::RecentFiles* Preferences::mutable_recent_files() {
   _set_bit(2);
-  if (recent_files_ == NULL) recent_files_ = new ::rec::slow::RecentFiles;
+  if (recent_files_ == NULL) recent_files_ = new ::rec::gui::RecentFiles;
   return recent_files_;
 }
 

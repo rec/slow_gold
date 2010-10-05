@@ -7,7 +7,7 @@
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/Preferences.h"
-#include "rec/slow/RecentFiles.h"
+#include "rec/gui/RecentFiles.h"
 #include "rec/persist/Copy.h"
 
 #include "rec/thread/LockedMessage.h"
@@ -86,7 +86,7 @@ void MainPageK::construct(MainPageJ* peer) {
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
 
-  RecentFiles recent = slow::getSortedRecentFiles();
+  gui::RecentFiles recent = gui::getSortedRecentFiles();
   if (recent.reload_most_recent() && recent.file_size())
     loadRecentFile(1);
 }
@@ -108,7 +108,7 @@ void MainPageK::destruct() {
 }
 
 void MainPageK::loadRecentFile(int menuItemID) {
-  RecentFiles recent = slow::getSortedRecentFiles();
+  gui::RecentFiles recent = gui::getSortedRecentFiles();
   loadFileIntoTransport(File(recent.file(menuItemID - 1).name().c_str()));
 }
 
@@ -152,7 +152,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     loopingButtonClicked();
     transportSource_.setSource(stretchy_.get());
 
-    slow::addRecentFile(file.getFullPathName().toCString());
+    gui::addRecentFile(file.getFullPathName().toCString());
 
     peer_->thumbnail->setFile(file);
   } else {

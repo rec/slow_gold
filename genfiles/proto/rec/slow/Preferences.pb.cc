@@ -77,16 +77,16 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
 
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fThumbnailDescription_2eproto();
   ::rec::slow::proto::protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto();
-  ::rec::slow::protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\016rec.slow.p"
     "roto\032\"rec/gui/ThumbnailDescription.proto"
-    "\032\031rec/slow/LoopWindow.proto\032\032rec/slow/Re"
-    "centFiles.proto\"\235\001\n\013Preferences\022/\n\013loop_"
-    "window\030\001 \001(\0132\032.rec.slow.proto.LoopWindow"
-    "\0220\n\tthumbnail\030\002 \001(\0132\035.rec.gui.ThumbnailD"
-    "escription\022+\n\014recent_files\030\003 \001(\0132\025.rec.s"
-    "low.RecentFiles", 295);
+    "\032\031rec/slow/LoopWindow.proto\032\031rec/gui/Rec"
+    "entFiles.proto\"\234\001\n\013Preferences\022/\n\013loop_w"
+    "indow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\022"
+    "0\n\tthumbnail\030\002 \001(\0132\035.rec.gui.ThumbnailDe"
+    "scription\022*\n\014recent_files\030\003 \001(\0132\024.rec.gu"
+    "i.RecentFiles", 293);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -118,7 +118,7 @@ Preferences::Preferences()
 void Preferences::InitAsDefaultInstance() {
   loop_window_ = const_cast< ::rec::slow::proto::LoopWindow*>(&::rec::slow::proto::LoopWindow::default_instance());
   thumbnail_ = const_cast< ::rec::gui::ThumbnailDescription*>(&::rec::gui::ThumbnailDescription::default_instance());
-  recent_files_ = const_cast< ::rec::slow::RecentFiles*>(&::rec::slow::RecentFiles::default_instance());
+  recent_files_ = const_cast< ::rec::gui::RecentFiles*>(&::rec::gui::RecentFiles::default_instance());
 }
 
 Preferences::Preferences(const Preferences& from)
@@ -176,7 +176,7 @@ void Preferences::Clear() {
       if (thumbnail_ != NULL) thumbnail_->::rec::gui::ThumbnailDescription::Clear();
     }
     if (_has_bit(2)) {
-      if (recent_files_ != NULL) recent_files_->::rec::slow::RecentFiles::Clear();
+      if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -216,7 +216,7 @@ bool Preferences::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.slow.RecentFiles recent_files = 3;
+      // optional .rec.gui.RecentFiles recent_files = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -260,7 +260,7 @@ void Preferences::SerializeWithCachedSizes(
       2, this->thumbnail(), output);
   }
   
-  // optional .rec.slow.RecentFiles recent_files = 3;
+  // optional .rec.gui.RecentFiles recent_files = 3;
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->recent_files(), output);
@@ -288,7 +288,7 @@ void Preferences::SerializeWithCachedSizes(
         2, this->thumbnail(), target);
   }
   
-  // optional .rec.slow.RecentFiles recent_files = 3;
+  // optional .rec.gui.RecentFiles recent_files = 3;
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -320,7 +320,7 @@ int Preferences::ByteSize() const {
           this->thumbnail());
     }
     
-    // optional .rec.slow.RecentFiles recent_files = 3;
+    // optional .rec.gui.RecentFiles recent_files = 3;
     if (has_recent_files()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -361,7 +361,7 @@ void Preferences::MergeFrom(const Preferences& from) {
       mutable_thumbnail()->::rec::gui::ThumbnailDescription::MergeFrom(from.thumbnail());
     }
     if (from._has_bit(2)) {
-      mutable_recent_files()->::rec::slow::RecentFiles::MergeFrom(from.recent_files());
+      mutable_recent_files()->::rec::gui::RecentFiles::MergeFrom(from.recent_files());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());

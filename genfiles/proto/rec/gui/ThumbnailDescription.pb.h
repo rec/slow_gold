@@ -261,6 +261,13 @@ class ThumbnailDescription : public ::google::protobuf::Message {
   inline bool use_captions() const;
   inline void set_use_captions(bool value);
   
+  // optional bool tics_at_bottom = 11 [default = true];
+  inline bool has_tics_at_bottom() const;
+  inline void clear_tics_at_bottom();
+  static const int kTicsAtBottomFieldNumber = 11;
+  inline bool tics_at_bottom() const;
+  inline void set_tics_at_bottom(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.gui.ThumbnailDescription)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -276,11 +283,12 @@ class ThumbnailDescription : public ::google::protobuf::Message {
   ::google::protobuf::uint32 tic_height_;
   ::google::protobuf::uint32 subtic_height_;
   bool use_captions_;
+  bool tics_at_bottom_;
   friend void  protobuf_AddDesc_rec_2fgui_2fThumbnailDescription_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fThumbnailDescription_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fThumbnailDescription_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -500,6 +508,22 @@ inline bool ThumbnailDescription::use_captions() const {
 inline void ThumbnailDescription::set_use_captions(bool value) {
   _set_bit(9);
   use_captions_ = value;
+}
+
+// optional bool tics_at_bottom = 11 [default = true];
+inline bool ThumbnailDescription::has_tics_at_bottom() const {
+  return _has_bit(10);
+}
+inline void ThumbnailDescription::clear_tics_at_bottom() {
+  tics_at_bottom_ = true;
+  _clear_bit(10);
+}
+inline bool ThumbnailDescription::tics_at_bottom() const {
+  return tics_at_bottom_;
+}
+inline void ThumbnailDescription::set_tics_at_bottom(bool value) {
+  _set_bit(10);
+  tics_at_bottom_ = value;
 }
 
 

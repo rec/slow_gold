@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-#include "rec/slow/RecentFiles.h"
+#include "rec/gui/RecentFiles.h"
 #include "rec/app/ComponentContainer.h"
 #include "rec/components/MainPageComponent.h"
 
@@ -23,7 +23,7 @@ class RecContainer : public ComponentContainer {
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& menuName) {
     PopupMenu menu;
     if (menuName == "File") {
-      slow::RecentFiles recent = slow::getSortedRecentFiles();
+      gui::RecentFiles recent = gui::getSortedRecentFiles();
       PopupMenu submenu;
       for (int i = 0; i < recent.file_size(); ++i)
         submenu.addItem(i + 1, recent.file(i).name().c_str());

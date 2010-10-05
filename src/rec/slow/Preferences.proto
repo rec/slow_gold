@@ -2,10 +2,10 @@ package rec.slow.proto;
 
 import "rec/gui/ThumbnailDescription.proto";
 import "rec/slow/LoopWindow.proto";
-import "rec/slow/RecentFiles.proto";
+import "rec/gui/RecentFiles.proto";
 
 message Preferences {
   optional slow.proto.LoopWindow loop_window = 1;
   optional gui.ThumbnailDescription thumbnail = 2;
-  optional RecentFiles recent_files = 3;
+  optional gui.RecentFiles recent_files = 3;
 };

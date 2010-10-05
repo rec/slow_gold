@@ -23,7 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "rec/slow/RecentFiles.pb.h"
+#include "rec/gui/RecentFiles.pb.h"
 #include "rec/gui/Appearance.pb.h"
 #include "rec/access/Access.pb.h"
 // @@protoc_insertion_point(includes)
@@ -124,12 +124,12 @@ class State : public ::google::protobuf::Message {
   inline const ::rec::access::Access& access() const;
   inline ::rec::access::Access* mutable_access();
   
-  // optional .rec.slow.RecentFiles recent_files = 4;
+  // optional .rec.gui.RecentFiles recent_files = 4;
   inline bool has_recent_files() const;
   inline void clear_recent_files();
   static const int kRecentFilesFieldNumber = 4;
-  inline const ::rec::slow::RecentFiles& recent_files() const;
-  inline ::rec::slow::RecentFiles* mutable_recent_files();
+  inline const ::rec::gui::RecentFiles& recent_files() const;
+  inline ::rec::gui::RecentFiles* mutable_recent_files();
   
   // @@protoc_insertion_point(class_scope:rec.slow.State)
  private:
@@ -139,7 +139,7 @@ class State : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::std::string> windows_open_;
   ::rec::gui::Appearance* appearance_;
   ::rec::access::Access* access_;
-  ::rec::slow::RecentFiles* recent_files_;
+  ::rec::gui::RecentFiles* recent_files_;
   friend void  protobuf_AddDesc_rec_2fslow_2fState_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fState_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fState_2eproto();
@@ -245,20 +245,20 @@ inline ::rec::access::Access* State::mutable_access() {
   return access_;
 }
 
-// optional .rec.slow.RecentFiles recent_files = 4;
+// optional .rec.gui.RecentFiles recent_files = 4;
 inline bool State::has_recent_files() const {
   return _has_bit(3);
 }
 inline void State::clear_recent_files() {
-  if (recent_files_ != NULL) recent_files_->::rec::slow::RecentFiles::Clear();
+  if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
   _clear_bit(3);
 }
-inline const ::rec::slow::RecentFiles& State::recent_files() const {
+inline const ::rec::gui::RecentFiles& State::recent_files() const {
   return recent_files_ != NULL ? *recent_files_ : *default_instance_->recent_files_;
 }
-inline ::rec::slow::RecentFiles* State::mutable_recent_files() {
+inline ::rec::gui::RecentFiles* State::mutable_recent_files() {
   _set_bit(3);
-  if (recent_files_ == NULL) recent_files_ = new ::rec::slow::RecentFiles;
+  if (recent_files_ == NULL) recent_files_ = new ::rec::gui::RecentFiles;
   return recent_files_;
 }
 

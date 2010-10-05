@@ -75,17 +75,17 @@ void protobuf_AddDesc_rec_2fslow_2fState_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::slow::protobuf_AddDesc_rec_2fslow_2fRecentFiles_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto();
   ::rec::access::protobuf_AddDesc_rec_2faccess_2fAccess_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\024rec/slow/State.proto\022\010rec.slow\032\032rec/sl"
-    "ow/RecentFiles.proto\032\030rec/gui/Appearance"
-    ".proto\032\027rec/access/Access.proto\"\227\001\n\005Stat"
-    "e\022\024\n\014windows_open\030\001 \003(\t\022\'\n\nappearance\030\002 "
-    "\001(\0132\023.rec.gui.Appearance\022\"\n\006access\030\003 \001(\013"
-    "2\022.rec.access.Access\022+\n\014recent_files\030\004 \001"
-    "(\0132\025.rec.slow.RecentFiles", 265);
+    "\n\024rec/slow/State.proto\022\010rec.slow\032\031rec/gu"
+    "i/RecentFiles.proto\032\030rec/gui/Appearance."
+    "proto\032\027rec/access/Access.proto\"\226\001\n\005State"
+    "\022\024\n\014windows_open\030\001 \003(\t\022\'\n\nappearance\030\002 \001"
+    "(\0132\023.rec.gui.Appearance\022\"\n\006access\030\003 \001(\0132"
+    "\022.rec.access.Access\022*\n\014recent_files\030\004 \001("
+    "\0132\024.rec.gui.RecentFiles", 263);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/State.proto", &protobuf_RegisterTypes);
   State::default_instance_ = new State();
@@ -118,7 +118,7 @@ State::State()
 void State::InitAsDefaultInstance() {
   appearance_ = const_cast< ::rec::gui::Appearance*>(&::rec::gui::Appearance::default_instance());
   access_ = const_cast< ::rec::access::Access*>(&::rec::access::Access::default_instance());
-  recent_files_ = const_cast< ::rec::slow::RecentFiles*>(&::rec::slow::RecentFiles::default_instance());
+  recent_files_ = const_cast< ::rec::gui::RecentFiles*>(&::rec::gui::RecentFiles::default_instance());
 }
 
 State::State(const State& from)
@@ -176,7 +176,7 @@ void State::Clear() {
       if (access_ != NULL) access_->::rec::access::Access::Clear();
     }
     if (_has_bit(3)) {
-      if (recent_files_ != NULL) recent_files_->::rec::slow::RecentFiles::Clear();
+      if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
     }
   }
   windows_open_.Clear();
@@ -236,7 +236,7 @@ bool State::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.slow.RecentFiles recent_files = 4;
+      // optional .rec.gui.RecentFiles recent_files = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -289,7 +289,7 @@ void State::SerializeWithCachedSizes(
       3, this->access(), output);
   }
   
-  // optional .rec.slow.RecentFiles recent_files = 4;
+  // optional .rec.gui.RecentFiles recent_files = 4;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->recent_files(), output);
@@ -326,7 +326,7 @@ void State::SerializeWithCachedSizes(
         3, this->access(), target);
   }
   
-  // optional .rec.slow.RecentFiles recent_files = 4;
+  // optional .rec.gui.RecentFiles recent_files = 4;
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -358,7 +358,7 @@ int State::ByteSize() const {
           this->access());
     }
     
-    // optional .rec.slow.RecentFiles recent_files = 4;
+    // optional .rec.gui.RecentFiles recent_files = 4;
     if (has_recent_files()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -407,7 +407,7 @@ void State::MergeFrom(const State& from) {
       mutable_access()->::rec::access::Access::MergeFrom(from.access());
     }
     if (from._has_bit(3)) {
-      mutable_recent_files()->::rec::slow::RecentFiles::MergeFrom(from.recent_files());
+      mutable_recent_files()->::rec::gui::RecentFiles::MergeFrom(from.recent_files());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
