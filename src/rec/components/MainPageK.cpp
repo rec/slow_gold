@@ -5,7 +5,6 @@
 #include "MainPageJ.h"
 #include "MainPageK.h"
 
-#include "AudioThumbnailComponent.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/Preferences.h"
 #include "rec/slow/RecentFiles.h"

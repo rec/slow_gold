@@ -1,4 +1,4 @@
-#include "rec/components/AudioThumbnailComponent.h"
+#include "rec/gui/AudioThumbnailComponent.h"
 #include "rec/components/MainPageK.h"
 #include "rec/gui/Color.h"
 
@@ -36,7 +36,8 @@ void AudioThumbnailComponent::setZoomFactor(double amount) {
   }
 }
 
-void AudioThumbnailComponent::mouseWheelMove(const MouseEvent& e, float incX, float incY) {
+void AudioThumbnailComponent::mouseWheelMove(const MouseEvent& e,
+                                             float incX, float incY) {
   return;
   // no idea what this does yet.  :-D
   if (thumbnail_.getTotalLength() > 0) {

@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/ammf_scaler/AudioTimeScaler.h"
+#include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/source/TestHarness.h"
 #include "rec/audio/source/TimeScaler.h"
 #include "rec/audio/source/TimeStretch.pb.h"

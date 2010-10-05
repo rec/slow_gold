@@ -1,7 +1,7 @@
 #include "rec/audio/source/TimeScaler.h"
 
 #include "rec/audio/source/TimeStretch.pb.h"
-#include "rec/ammf_scaler/AudioTimeScaler.h"
+#include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {
 namespace audio {

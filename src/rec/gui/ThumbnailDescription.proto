@@ -19,4 +19,5 @@ message ThumbnailDescription {
   optional uint32 tic_height = 8                          [default = 8];
   optional uint32 subtic_height = 9                       [default = 3];
   optional bool use_captions = 10                         [default = true];
+  optional bool tics_at_bottom = 11                       [default = true];
 };
