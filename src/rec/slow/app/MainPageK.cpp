@@ -126,10 +126,6 @@ void MainPageK::updateCursor() {
   peer_->songTime->setTimeSamples(samples / scale);
 }
 
-void MainPageK::setPosition(double p) {
-  transportSource_.setPosition(p * transportSource_.getTotalLength() / RATE);
-}
-
 void MainPageK::loadFileIntoTransport(const File& file) {
   AudioFormatManager* afm = AudioFormatManager::getInstance();
   if (AudioFormatReader* r0 = afm->createReaderFor(file)) {
@@ -202,8 +198,14 @@ static const char* const CD_STATE_NAMES[] = {
 };
 
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
-  if (objectThatHasChanged == &transportSource_) {
+  if (objectThatHasChanged == (void*)&transportSource_) {
     updateCursor();
+    return;
+  }
+
+  if (objectThatHasChanged == peer_->thumbnail) {
+    double p = peer_->thumbnail->ratio();
+    transportSource_.setPosition(p * transportSource_.getTotalLength() / RATE);
     return;
   }
 

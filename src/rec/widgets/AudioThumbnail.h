@@ -5,22 +5,11 @@
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-
-namespace slow {
-
-class MainPageK;
-
-}  // namespace slow
-
-
 namespace gui {
-
-
-// TODO:  This is too closely coupled to MainPageK!
 
 class AudioThumbnailComponent : public Component, public ChangeListener {
  public:
-  AudioThumbnailComponent(rec::slow::MainPageK* mainPage);
+  AudioThumbnailComponent(ChangeListener* listener);
   ~AudioThumbnailComponent();
 
   void setFile(const File& file);
@@ -37,17 +26,18 @@ class AudioThumbnailComponent : public Component, public ChangeListener {
   void setCursor(double cursorRatio);
   void paint(Graphics& g);
   int getCursor() const;
+  double ratio() const { return ratio_; }
 
   // this method is called by the thumbnail when it has changed, so we should repaint it..
   void changeListenerCallback(void*);
 
  private:
-  rec::slow::MainPageK* mainPage_;
+  ChangeListener* listener_;
   const ThumbnailDescription description_;
 
   AudioThumbnailCache thumbnailCache_;
   AudioThumbnail thumbnail_;
-  double startTime_, endTime_, cursor_;
+  double startTime_, endTime_, cursor_, ratio_;
   int cursorX_;
   CriticalSection lock_;
 

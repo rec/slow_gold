@@ -5,13 +5,13 @@
 namespace rec {
 namespace gui {
 
-AudioThumbnailComponent::AudioThumbnailComponent(rec::slow::MainPageK* mainPage)
-    : mainPage_(mainPage),
+AudioThumbnailComponent::AudioThumbnailComponent(ChangeListener* listener)
+    : listener_(listener),
       description_(rec::slow::getPreferences().thumbnail()),
       thumbnailCache_(description_.thumbnail_cache()),
       thumbnail_(description_.source_samples_per_thumbnail_sample(),
                  *AudioFormatManager::getInstance(), thumbnailCache_) {
-  startTime_ = endTime_ = cursor_ = 0;
+  startTime_ = endTime_ = cursor_ = ratio_ = 0;
   thumbnail_.addChangeListener(this);
 }
 
@@ -22,7 +22,7 @@ AudioThumbnailComponent::~AudioThumbnailComponent() {
 void AudioThumbnailComponent::setFile(const File& file) {
   ScopedLock l(lock_);
   thumbnail_.setSource(new FileInputSource(file));
-  startTime_ = 0;
+  startTime_ = ratio_ = 0;
   endTime_ = thumbnail_.getTotalLength();
   cursor_ = (startTime_ + endTime_) / 2;
 }
@@ -72,7 +72,7 @@ void AudioThumbnailComponent::mouseUp(const MouseEvent& e) {
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
   setCursor(ratio);
-  mainPage_->setPosition(ratio);
+  listener_->changeListenerCallback(this);
 }
 
 void AudioThumbnailComponent::setCursor(double cursorRatio) {
@@ -80,6 +80,7 @@ void AudioThumbnailComponent::setCursor(double cursorRatio) {
   Rectangle<int> before, after;
   {
     ScopedLock l(lock_);
+    ratio_ = cursorRatio;
     before = cursorRectangle();
     cursor_ = cursor;
     after = cursorRectangle();

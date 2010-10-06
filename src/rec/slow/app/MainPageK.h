@@ -41,7 +41,6 @@ class MainPageK : public FileBrowserListener,
 
   DirectoryContentsList* directoryList() { return &directoryList_; }
   void updateCursor();
-  void setPosition(double position);
   void loadRecentFile(int menuItemId);
   void cut();
   void paste();
