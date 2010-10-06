@@ -1,5 +1,66 @@
 
-rec/ammf_scaler/AudioResampler.cpp,893
+rec/app/ComponentContainer.h,540
+#define __REC_COMPONENT_CONTAINER2,34
+class ComponentContainer10,155
+  Component* component_;16,278
+  ComponentContainer(19,313
+  void show(21,359
+  virtual ~ComponentContainer(34,605
+  virtual void resized(38,669
+  virtual const StringArray getMenuBarNames(44,816
+  virtual const PopupMenu getMenuForIndex(49,957
+  virtual void menuItemSelected(54,1116
+  virtual void getAllCommands(55,1190
+  virtual void getCommandInfo(56,1252
+  virtual bool perform(57,1338
+  virtual ApplicationCommandTarget* getNextCommandTarget(59,1408
+
+rec/app/GenericApplication.h,696
+#define __REC_JUCE_GENERIC_APPLICATION2,39
+class GenericApplication 13,220
+  GenericApplication(19,353
+  virtual ~GenericApplication(23,463
+  virtual void initialise(25,499
+  virtual void shutdown(GenericApplication::shutdown31,713
+  const String getApplicationName(GenericApplication::getApplicationName36,839
+  const String getApplicationVersion(GenericApplication::getApplicationVersion37,904
+  bool moreThanOneInstanceAllowed(GenericApplication::moreThanOneInstanceAllowed38,972
+  void anotherInstanceStarted GenericApplication::anotherInstanceStarted40,1030
+  const string name_;GenericApplication::name_43,1104
+  const string version_;GenericApplication::version_44,1126
+
+rec/app/RecApplication.h,183
+#define __REC_APP_RECAPPLICATION__2,35
+class Application 11,210
+  Application(13,267
+  virtual void initialise(15,327
+  scoped_ptr<RecWindow> window_;Application::window_30,747
+
+rec/app/RecContainer.h,321
+#define __REC_REC_CONTAINER2,28
+class RecContainer 12,216
+  RecContainer(14,274
+  virtual const StringArray getMenuBarNames(18,354
+  virtual const PopupMenu getMenuForIndex(23,501
+  virtual void menuItemSelected(RecContainer::menuItemSelected40,1010
+  MainPageComponent* mainPage_;RecContainer::mainPage_52,1337
+
+rec/app/RecWindow.cpp,148
+namespace rec 4,66
+RecWindow::RecWindow(rec::RecWindow::RecWindow6,83
+RecWindow::~RecWindow(41,1338
+void RecWindow::closeButtonPressed(63,2125
+
+rec/app/RecWindow.h,208
+#define __REC_WINDOW2,22
+class RecWindow 9,143
+  RecWindow(11,197
+  ~RecWindow(12,213
+  void closeButtonPressed(14,232
+  ApplicationCommandManager commandManager;20,374
+  Component* taskbarIcon;22,421
+
+rec/audio/ammf_scaler/AudioResampler.cpp,893
 #define MAX_OVERRUN_BUFFER_SIZE 24,779
 AudioResampler::AudioResampler(26,819
 AudioResampler::~AudioResampler(39,1162
@@ -20,7 +81,7 @@ int AudioResampler::ReadSampleNonAO(640,18827
 float AudioResampler::ino(706,20625
 void AudioResampler::kaiser(741,21292
 
-rec/ammf_scaler/AudioResampler.h,2459
+rec/audio/ammf_scaler/AudioResampler.h,2459
 #define MF_AUDIORESAMPLER_H20,715
 #define MAX_UNSIGNED_LONG 25,795
 #define IBUF 26,833
@@ -96,7 +157,7 @@ class AudioResampler116,3779
   long    m_overrunPosition[AudioResampler::m_overrunPosition157,4930
   long    m_sizeOverrunBuffer;AudioResampler::m_sizeOverrunBuffer158,4974
 
-rec/ammf_scaler/AudioTimeScaler.cpp,1397
+rec/audio/ammf_scaler/AudioTimeScaler.cpp,1397
 static const int MAX_OVERRUN_BUFFER_SIZE 25,804
 static const int MINIMUM_STARTING_SAMPLES_TIME_STRETCH	27,856
 static const int MINIMUM_STARTING_SAMPLES_TIME_COMPRESS 28,920
@@ -126,7 +187,7 @@ void AudioTimeScaler::InitSynWindow(1012,34922
 void AudioTimeScaler::InitIOBuffers(1037,35716
 void AudioTimeScaler::InitBuffers(1059,36574
 
-rec/ammf_scaler/AudioTimeScaler.h,2885
+rec/audio/ammf_scaler/AudioTimeScaler.h,2885
 #define __AUDIO_TIME_SCALER_H__2,33
 static const int MF_PITCHTIME_NBANDS 23,818
 static const int DEFAULT_FILTER_OVERLAP 24,864
@@ -206,7 +267,7 @@ class AudioTimeScaler120,4626
   long    m_overrunPosition[AudioTimeScaler::m_overrunPosition158,5639
   long    m_sizeOverrunBuffer;AudioTimeScaler::m_sizeOverrunBuffer159,5683
 
-rec/ammf_scaler/hfft.h,169
+rec/audio/ammf_scaler/hfft.h,169
 #define HFFT_H2,16
 typedef struct _fft_info8,78
     long      *flip;flip10,107
@@ -214,10 +275,10 @@ typedef struct _fft_info8,78
     long      size;12,153
 } FFT_INFO;13,174
 
-rec/ammf_scaler/mfAlloc.h,25
+rec/audio/ammf_scaler/mfAlloc.h,25
 #define _MFMALLOC_H2,21
 
-rec/ammf_scaler/mfGlobals.h,218
+rec/audio/ammf_scaler/mfGlobals.h,218
 #define _mfGlobals_h20,689
 #define FALSE 28,800
 #define TRUE 32,841
@@ -227,7 +288,7 @@ typedef char*  MFString;41,986
 #define MF_CALLCONV 44,1030
 #define MF_CALLCONV46,1068
 
-rec/ammf_scaler/mfMacros.h,378
+rec/audio/ammf_scaler/mfMacros.h,378
 #define _MFMACROS_H 8,131
 #define YES_NO23,365
 #define YES	24,381
@@ -246,72 +307,10 @@ rec/ammf_scaler/mfMacros.h,378
 #define M_PI 56,1095
 #define M_TWOPI 59,1157
 
-rec/app/ComponentContainer.h,539
-#define __REC_COMPONENT_CONTAINER2,34
-class ComponentContainer8,127
-  Component* component_;14,250
-  ComponentContainer(17,285
-  void show(19,331
-  virtual ~ComponentContainer(32,577
-  virtual void resized(36,641
-  virtual const StringArray getMenuBarNames(42,788
-  virtual const PopupMenu getMenuForIndex(47,929
-  virtual void menuItemSelected(52,1088
-  virtual void getAllCommands(53,1162
-  virtual void getCommandInfo(54,1224
-  virtual bool perform(55,1310
-  virtual ApplicationCommandTarget* getNextCommandTarget(57,1380
-
-rec/app/GenericApplication.h,871
-#define __REC_JUCE_GENERIC_APPLICATION2,39
-class GenericApplication 15,280
-  typedef std::string string;GenericApplication::string17,341
-  GenericApplication(GenericApplication::GenericApplication22,443
-  virtual ~GenericApplication(GenericApplication::~GenericApplication26,553
-  virtual void initialise(GenericApplication::initialise28,589
-  virtual void shutdown(GenericApplication::shutdown34,803
-  const String getApplicationName(GenericApplication::getApplicationName39,929
-  const String getApplicationVersion(GenericApplication::getApplicationVersion40,994
-  bool moreThanOneInstanceAllowed(GenericApplication::moreThanOneInstanceAllowed41,1062
-  void anotherInstanceStarted GenericApplication::anotherInstanceStarted43,1120
-  const string name_;GenericApplication::name_46,1194
-  const string version_;GenericApplication::version_47,1216
-
-rec/app/RecApplication.h,183
-#define __REC_APP_RECAPPLICATION__2,35
-class Application 13,244
-  Application(15,301
-  virtual void initialise(17,361
-  scoped_ptr<RecWindow> window_;Application::window_32,781
-
-rec/app/RecContainer.h,320
-#define __REC_REC_CONTAINER2,28
-class RecContainer 12,217
-  RecContainer(14,275
-  virtual const StringArray getMenuBarNames(18,355
-  virtual const PopupMenu getMenuForIndex(23,502
-  virtual void menuItemSelected(RecContainer::menuItemSelected36,920
-  MainPageComponent* mainPage_;RecContainer::mainPage_41,1051
-
-rec/app/RecWindow.cpp,148
-namespace rec 5,67
-RecWindow::RecWindow(rec::RecWindow::RecWindow7,84
-RecWindow::~RecWindow(42,1339
-void RecWindow::closeButtonPressed(64,2126
-
-rec/app/RecWindow.h,208
-#define __REC_WINDOW2,22
-class RecWindow 9,143
-  RecWindow(11,197
-  ~RecWindow(12,213
-  void closeButtonPressed(14,232
-  ApplicationCommandManager commandManager;20,374
-  Component* taskbarIcon;22,421
-
 rec/audio/CopySamples.h,100
 #define __REC_AUDIO_SOURCE_COPY__2,34
-namespace rec 6,110
-inline int copyCircularSamples(45,1424
+namespace rec 7,137
+inline int copyCircularSamples(46,1451
 
 rec/audio/format/mpg123/Copier.cpp,862
 namespace rec 4,89
@@ -320,17 +319,17 @@ namespace format rec::audio::format6,123
 namespace mpg123 rec::audio::format::mpg1237,142
 Number average(rec::audio::format::mpg123::average12,202
 int average(rec::audio::format::mpg123::average15,274
-template <typename In,rec::audio::format::mpg123::In17,334
-struct Copy rec::audio::format::mpg123::Copy18,371
-  static Out get(rec::audio::format::mpg123::Copy::get19,385
-  static Out cast(rec::audio::format::mpg123::Copy::cast23,514
-  static void copy(rec::audio::format::mpg123::Copy::copy25,560
-template<> int Copy<char,   int>::cast(cast45,1185
-template<> int Copy<short,  int>::cast(cast46,1265
-template<> int Copy<uchar,  int>::cast(cast48,1344
-template<> int Copy<ushort, int>::cast(cast49,1437
-template<> int Copy<uint,   int>::cast(cast50,1526
-Copier getCopier(54,1633
+template <typename In,rec::audio::format::mpg123::In17,335
+struct Copy rec::audio::format::mpg123::Copy18,372
+  static Out get(rec::audio::format::mpg123::Copy::get19,386
+  static Out cast(rec::audio::format::mpg123::Copy::cast23,515
+  static void copy(rec::audio::format::mpg123::Copy::copy25,561
+template<> int Copy<char,   int>::cast(cast45,1186
+template<> int Copy<short,  int>::cast(cast46,1266
+template<> int Copy<uchar,  int>::cast(cast48,1345
+template<> int Copy<ushort, int>::cast(cast49,1438
+template<> int Copy<uint,   int>::cast(cast50,1527
+Copier getCopier(54,1634
 
 rec/audio/format/mpg123/Copier.h,85
 #define __REC_AUDIO_FORMAT_MPG123_COPIER__2,44
@@ -370,31 +369,31 @@ namespace format rec::audio::format10,156
 namespace mpg123 rec::audio::format::mpg12311,175
 TEST(rec::audio::format::mpg123::TEST13,195
 
-rec/audio/format/mpg123/Format.h,568
+rec/audio/format/mpg123/Format.h,576
 #define __REC_AUDIO_FORMAT_MPG123_FORMAT__2,44
 class Format 13,314
-	Format(15,361
-	~Format(17,436
-  virtual AudioFormatReader* createReaderFor(19,453
-	virtual AudioFormatWriter* createWriterFor(Format::createWriterFor31,889
-	virtual const Array<int> getPossibleSampleRates(Format::getPossibleSampleRates40,1353
-	virtual const Array<int> getPossibleBitDepths(Format::getPossibleBitDepths41,1434
-	virtual bool canDoStereo(Format::canDoStereo43,1513
-	virtual bool canDoMono(Format::canDoMono44,1559
-	virtual bool isCompressed(Format::isCompressed45,1603
+  Format(15,361
+  ~Format(17,437
+  virtual AudioFormatReader* createReaderFor(19,455
+  virtual AudioFormatWriter* createWriterFor(Format::createWriterFor31,891
+  virtual const Array<int> getPossibleSampleRates(Format::getPossibleSampleRates40,1356
+  virtual const Array<int> getPossibleBitDepths(Format::getPossibleBitDepths41,1438
+  virtual bool canDoStereo(Format::canDoStereo43,1518
+  virtual bool canDoMono(Format::canDoMono44,1565
+  virtual bool isCompressed(Format::isCompressed45,1610
 
-rec/audio/format/mpg123/Manager.h,569
+rec/audio/format/mpg123/Manager.h,577
 #define __REC_AUDIO_FORMAT_MPG123_MANAGER__2,45
 class Format 15,374
-	Format(17,421
-	~Format(19,496
-  virtual AudioFormatReader* createReaderFor(21,513
-	virtual AudioFormatWriter* createWriterFor(Format::createWriterFor33,949
-	virtual const Array<int> getPossibleSampleRates(Format::getPossibleSampleRates42,1413
-	virtual const Array<int> getPossibleBitDepths(Format::getPossibleBitDepths43,1494
-	virtual bool canDoStereo(Format::canDoStereo45,1573
-	virtual bool canDoMono(Format::canDoMono46,1619
-	virtual bool isCompressed(Format::isCompressed47,1663
+  Format(17,421
+  ~Format(19,497
+  virtual AudioFormatReader* createReaderFor(21,515
+  virtual AudioFormatWriter* createWriterFor(Format::createWriterFor33,951
+  virtual const Array<int> getPossibleSampleRates(Format::getPossibleSampleRates42,1416
+  virtual const Array<int> getPossibleBitDepths(Format::getPossibleBitDepths43,1498
+  virtual bool canDoStereo(Format::canDoStereo45,1578
+  virtual bool canDoMono(Format::canDoMono46,1625
+  virtual bool isCompressed(Format::isCompressed47,1670
 
 rec/audio/format/mpg123/Mpg123.cpp,1072
 namespace rec 5,133
@@ -428,13 +427,13 @@ typedef int int32;20,439
 
 rec/audio/format/mpg123/NewHandle.cpp,306
 #define __REC_AUDIO_FORMAT_MPG123_REPLACE_READER__2,52
-namespace rec 12,277
-namespace audio rec::audio13,294
-namespace format rec::audio::format14,313
-namespace mpg123 rec::audio::format::mpg12315,333
-ssize_t read(rec::audio::format::mpg123::read19,370
-off_t seek(23,510
-Error newHandle(40,913
+namespace rec 11,243
+namespace audio rec::audio12,260
+namespace format rec::audio::format13,279
+namespace mpg123 rec::audio::format::mpg12314,299
+ssize_t read(rec::audio::format::mpg123::read18,336
+off_t seek(22,476
+Error newHandle(39,879
 
 rec/audio/format/mpg123/NewHandle.h,52
 #define __REC_AUDIO_FORMAT_MPG123_NEW_HANDLE__2,48
@@ -448,28 +447,28 @@ Reader::Reader(rec::audio::format::mpg123::Reader::Reader13,265
 Reader::~Reader(23,511
 bool Reader::readSamples(29,600
 
-rec/audio/format/mpg123/Reader.h,343
+rec/audio/format/mpg123/Reader.h,346
 #define __REC_AUDIO_FORMAT_MPG123_READER__2,44
 class Reader 17,399
-	~Reader(19,452
-	virtual bool readSamples(21,467
-  Reader(28,708
-  friend Error createReader(30,792
-	mpg123_handle* mh_;32,889
-  void* buffer_;33,911
-  size_t size_,34,929
-  size_t size_, allocated_;34,929
-  Copier copier_;35,958
-  DISALLOW_COPY_AND_ASSIGN(38,981
+  ~Reader(19,452
+  virtual bool readSamples(21,468
+  Reader(28,710
+  friend Error createReader(30,794
+  mpg123_handle* mh_;32,891
+  void* buffer_;33,914
+  size_t size_,34,932
+  size_t size_, allocated_;34,932
+  Copier copier_;35,961
+  DISALLOW_COPY_AND_ASSIGN(38,984
 
 rec/audio/format/mpg123/Reader_test.cpp,345
-namespace rec 11,215
-namespace audio rec::audio12,231
-namespace format rec::audio::format13,249
-namespace mpg123 rec::audio::format::mpg12314,268
-using rec::util::testFile;rec::audio::format::mpg123::rec::util::testFile16,288
-TEST(rec::audio::format::mpg123::TEST18,316
-  typedef int Sample;rec::audio::format::mpg123::Sample36,992
+namespace rec 10,182
+namespace audio rec::audio11,198
+namespace format rec::audio::format12,216
+namespace mpg123 rec::audio::format::mpg12313,235
+using rec::util::testFile;rec::audio::format::mpg123::rec::util::testFile15,255
+TEST(rec::audio::format::mpg123::TEST17,283
+  typedef int Sample;rec::audio::format::mpg123::Sample35,959
 
 rec/audio/format/mpg123/Tags.cpp,226
 namespace rec 3,45
@@ -482,15 +481,15 @@ Error getMp3Tags(16,390
 rec/audio/format/mpg123/Tags.h,46
 #define __REC_AUDIO_FORMAT_MPG123_TAGS__2,42
 
-rec/audio/source/AudioTimeScaler_test.cpp,210
-namespace rec 9,199
-namespace audio rec::audio10,215
-namespace source rec::audio::source11,233
-float rampWave(rec::audio::source::rampWave15,266
-void Init(19,375
-TEST(27,498
-TEST(36,792
-TEST(57,1377
+rec/audio/source/AudioTimeScaler_test.cpp,211
+namespace rec 11,251
+namespace audio rec::audio12,267
+namespace source rec::audio::source13,285
+float rampWave(rec::audio::source::rampWave17,318
+void Init(21,427
+TEST(29,550
+TEST(38,844
+TEST(59,1429
 
 rec/audio/source/Buffery.cpp,275
 namespace rec 6,101
@@ -503,70 +502,62 @@ bool Buffery::fillNext(58,1441
 
 rec/audio/source/Buffery.h,516
 #define __REC_AUDIO_SOURCE_BUFFERY__2,37
-class Buffery 12,231
-  typedef rec::util::Circular Circular;Buffery::Circular14,282
-  Buffery(Buffery::Buffery16,323
-  bool filled(Buffery::filled22,501
-  bool ready(Buffery::ready24,568
-  AudioSampleBuffer* buffer(Buffery::buffer32,825
-  Circular filled_;Buffery::filled_41,1143
-  scoped_ptr<AudioSampleBuffer> buffer_;Buffery::buffer_42,1163
-  AudioSourceChannelInfo sourceInfo_;Buffery::sourceInfo_43,1204
-  CriticalSection lock_;Buffery::lock_44,1242
+class Buffery 11,198
+  typedef rec::util::Circular Circular;Buffery::Circular13,249
+  Buffery(Buffery::Buffery15,290
+  bool filled(Buffery::filled21,468
+  bool ready(Buffery::ready23,535
+  AudioSampleBuffer* buffer(Buffery::buffer31,792
+  Circular filled_;Buffery::filled_40,1110
+  scoped_ptr<AudioSampleBuffer> buffer_;Buffery::buffer_41,1130
+  AudioSourceChannelInfo sourceInfo_;Buffery::sourceInfo_42,1171
+  CriticalSection lock_;Buffery::lock_43,1209
 
-rec/audio/source/Buffery_test.cpp,135
-namespace rec 5,100
-namespace audio rec::audio6,116
-namespace source rec::audio::source7,134
-TEST(rec::audio::source::TEST9,154
+rec/audio/source/Buffery_test.cpp,136
+namespace rec 6,101
+namespace audio rec::audio7,117
+namespace source rec::audio::source8,135
+TEST(rec::audio::source::TEST10,155
 
-rec/audio/source/DoubleStretchy.cpp,712
-namespace rec 5,101
-namespace audio rec::audio6,117
-namespace source rec::audio::source7,135
-DoubleStretchy::DoubleStretchy(rec::audio::source::DoubleStretchy::DoubleStretchy9,155
-DoubleStretchy::~DoubleStretchy(18,356
-void DoubleStretchy::setDescription(20,394
-int DoubleStretchy::getTotalLength(31,672
-int DoubleStretchy::getNextReadPosition(36,779
-void DoubleStretchy::setNextReadPosition(41,896
-int DoubleStretchy::available(47,1032
-void DoubleStretchy::prepareToPlay(52,1129
-void DoubleStretchy::releaseResources(57,1250
-bool DoubleStretchy::fillNext(62,1357
-void DoubleStretchy::getNextAudioBlock(101,2277
-bool DoubleStretchy::isLooping(113,2565
-void DoubleStretchy::setLooping(118,2663
+rec/audio/source/DoubleStretchy.cpp,1076
+namespace rec 9,247
+namespace audio rec::audio10,263
+namespace source rec::audio::source11,281
+class BufferedStretchy rec::audio::source::BufferedStretchy13,301
+  BufferedStretchy(rec::audio::source::BufferedStretchy::BufferedStretchy15,352
+  void setDescription(rec::audio::source::BufferedStretchy::setDescription17,422
+  const TimeStretch& getDescription(rec::audio::source::BufferedStretchy::getDescription23,594
+  Stretchy stretchy_;rec::audio::source::BufferedStretchy::stretchy_28,694
+DoubleStretchy::DoubleStretchy(32,772
+DoubleStretchy::~DoubleStretchy(42,1054
+void DoubleStretchy::setDescription(44,1092
+int DoubleStretchy::getTotalLength(55,1377
+int DoubleStretchy::getNextReadPosition(60,1484
+void DoubleStretchy::setNextReadPosition(65,1601
+int DoubleStretchy::available(71,1737
+void DoubleStretchy::prepareToPlay(76,1834
+void DoubleStretchy::releaseResources(81,1957
+bool DoubleStretchy::fillNext(86,2066
+void DoubleStretchy::getNextAudioBlock(125,3006
+bool DoubleStretchy::isLooping(137,3294
+void DoubleStretchy::setLooping(142,3392
 
-rec/audio/source/DoubleStretchy.h,974
+rec/audio/source/DoubleStretchy.h,193
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHY__2,44
-class BufferedStretchy 17,432
-  BufferedStretchy(19,483
-  void setDescription(21,553
-  const TimeStretch& getDescription(27,725
-  Stretchy stretchy_;32,825
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(33,847
-class DoubleStretchy 37,904
-  const static int MINIMUM_FILL_SIZE DoubleStretchy::MINIMUM_FILL_SIZE39,952
-  bool descriptionChanged_;DoubleStretchy::descriptionChanged_58,1555
-  TimeStretch description_;DoubleStretchy::description_59,1583
-  int position_;DoubleStretchy::position_61,1612
-  bool gettingBlock_;DoubleStretchy::gettingBlock_62,1629
-  static const int BUFFER_COUNT DoubleStretchy::BUFFER_COUNT64,1652
-  BufferedStretchy buffer0_;DoubleStretchy::buffer0_65,1689
-  BufferedStretchy buffer1_;DoubleStretchy::buffer1_66,1718
-  BufferedStretchy* buffer_;DoubleStretchy::buffer_68,1748
-  BufferedStretchy* next_;DoubleStretchy::next_69,1777
-  CriticalSection lock_;DoubleStretchy::lock_70,1804
+class DoubleStretchy 15,280
+  DoubleStretchy(19,374
+  ~DoubleStretchy(20,416
+  virtual bool fillNext(22,438
+  virtual int available(23,465
 
-rec/audio/source/DoubleStretchy_test.cpp,279
-namespace rec 8,183
-namespace audio rec::audio9,199
-namespace source rec::audio::source10,217
-using rec::util::testFile;rec::audio::source::rec::util::testFile12,237
-static AudioFormatReaderSource* newSource(rec::audio::source::newSource14,265
-TEST(20,494
-TEST(28,732
+rec/audio/source/DoubleStretchy_test.cpp,281
+namespace rec 10,279
+namespace audio rec::audio11,295
+namespace source rec::audio::source12,313
+using rec::util::testFile;rec::audio::source::rec::util::testFile14,333
+static AudioFormatReaderSource* newSource(rec::audio::source::newSource16,361
+TEST(22,590
+TEST(30,828
 
 rec/audio/source/DoubleStretchyThread.h,315
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHYTHREAD__2,50
@@ -577,44 +568,21 @@ class DoubleStretchyThread 10,201
   void stop(DoubleStretchyThread::stop33,809
   int waitTime_;DoubleStretchyThread::waitTime_39,884
 
-rec/audio/source/MultiWrappy.h,784
-#define __REC_AUDIO_SOURCE_MULTIWRAPPY__2,41
-class MultiWrappy 16,288
-  typedef std::vector<Source*> SourceVector;MultiWrappy::SourceVector18,333
-  MultiWrappy(MultiWrappy::MultiWrappy20,379
-  MultiWrappy(MultiWrappy::MultiWrappy22,407
-  MultiWrappy(MultiWrappy::MultiWrappy26,473
-  MultiWrappy(MultiWrappy::MultiWrappy31,580
-  MultiWrappy construct(MultiWrappy::construct36,689
-  ~MultiWrappy(MultiWrappy::~MultiWrappy42,823
-  int getTotalLength(MultiWrappy::getTotalLength44,862
-  int getNextReadPosition(MultiWrappy::getNextReadPosition45,938
-  bool isLooping(MultiWrappy::isLooping46,1019
-  void getNextAudioBlock(MultiWrappy::getNextAudioBlock48,1092
-#define MWFE(58,1423
-#undef MFWE68,1954
-#undef _MWFE70,1967
-#undef MWFE71,1980
-#undef MWFEC72,1992
-
-rec/audio/source/Offset.h,273
-#define __REC_AUDIO_SOURCE_OFFSET__2,36
-class Offset 11,217
-  Offset(13,257
-  virtual int getNextReadPosition(15,332
-  virtual void setNextReadPosition(19,439
-  int offset(23,554
-  void setOffset(24,595
-  int offset_;27,657
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(28,672
-
 rec/audio/source/Source.h,145
 #define __REC_AUDIO_SOURCE_SOURCE__2,36
-typedef PositionableAudioSource Source;10,168
-class SourceMaker 12,209
-  virtual Source* make(13,229
+typedef PositionableAudioSource Source;12,196
+class SourceMaker 14,237
+  virtual Source* make(15,257
 
-rec/audio/source/Stereo.h,475
+rec/audio/source/Stereo.cpp,226
+namespace rec 3,38
+namespace audio rec::audio4,54
+namespace source rec::audio::source5,72
+void Stereo::setType(rec::audio::source::Stereo::setType7,92
+void Stereo::setSide(12,168
+void Stereo::getNextAudioBlock(17,244
+
+rec/audio/source/Stereo.h,504
 #define __REC_AUDIO_SOURCE_STEREO__2,36
 class Stereo 11,192
   enum Type 13,232
@@ -627,92 +595,94 @@ class Stereo 11,192
   enum Side { LEFT,21,345
   enum Side { LEFT, RIGHT 21,345
   Stereo(23,375
-  void setType(25,424
-  void setSide(30,500
-  virtual void getNextAudioBlock(35,576
-  Type type_;60,1282
-  Side side_;61,1296
-  DISALLOW_COPY_AND_ASSIGN(63,1311
+  void setType(25,454
+  void setSide(26,481
+  virtual void getNextAudioBlock(27,508
+  Type type_;30,589
+  Side side_;31,603
+  CriticalSection lock_;32,617
+  DISALLOW_COPY_AND_ASSIGN(34,643
 
-rec/audio/source/Stretchy.cpp,359
-namespace rec 5,67
-namespace audio rec::audio6,83
-namespace source rec::audio::source7,101
-Stretchy::Stretchy(rec::audio::source::Stretchy::Stretchy9,121
-void Stretchy::setDescription(14,228
-int Stretchy::getTotalLength(23,486
-void Stretchy::setNextReadPosition(27,592
-void Stretchy::getNextAudioBlock(33,772
-int Stretchy::processOneChunk(61,1628
+rec/audio/source/Stretchy.cpp,393
+namespace rec 9,205
+namespace audio rec::audio10,221
+namespace source rec::audio::source11,239
+Stretchy::Stretchy(rec::audio::source::Stretchy::Stretchy13,259
+Stretchy::~Stretchy(20,439
+void Stretchy::setDescription(22,465
+int Stretchy::getTotalLength(31,724
+void Stretchy::setNextReadPosition(35,831
+void Stretchy::getNextAudioBlock(41,1018
+int Stretchy::processOneChunk(69,1874
 
-rec/audio/source/Stretchy.h,371
+rec/audio/source/Stretchy.h,677
 #define __REC_STRETCHY_AUDIO_SOURCE2,36
-class Stretchy 16,325
-  Stretchy(19,431
-  void setDescription(21,455
-  virtual int getTotalLength(23,501
-  int processOneChunk(30,740
-  TimeStretch description_;32,800
-  int channels_;33,828
-  AudioSampleBuffer buffer_;34,845
-  AudioTimeScaler scaler_;35,874
-  std::vector<float*> outOffset_;Stretchy::outOffset_36,901
+namespace rec 12,209
+namespace audio rec::audio13,225
+namespace source rec::audio::source14,243
+class Stretchy rec::audio::source::Stretchy18,283
+  const TimeStretch& getDescription(rec::audio::source::Stretchy::getDescription30,633
+  scoped_ptr<TimeStretch> description_;rec::audio::source::Stretchy::description_35,774
+  int channels_;rec::audio::source::Stretchy::channels_36,814
+  AudioSampleBuffer buffer_;rec::audio::source::Stretchy::buffer_37,831
+  scoped_ptr<AudioTimeScaler> scaler_;rec::audio::source::Stretchy::scaler_38,860
+  std::vector<float*> outOffset_;rec::audio::source::Stretchy::outOffset_39,899
 
 rec/audio/source/Stretchy_test.cpp,136
-namespace rec 6,102
-namespace audio rec::audio7,118
-namespace source rec::audio::source8,136
-TEST(rec::audio::source::TEST10,156
+namespace rec 7,147
+namespace audio rec::audio8,163
+namespace source rec::audio::source9,181
+TEST(rec::audio::source::TEST11,201
 
 rec/audio/source/TestHarness.h,1402
 #define __REC_AUDIO_SOURCE_TESTER2,34
-struct BufferDescription 11,197
-  int channels;12,224
-  int bufferCount;13,240
-  int priority;14,259
-  int samples;15,275
-  int wait;16,290
-  int waitForShutdown;17,302
-  static BufferDescription DEFAULT;19,326
-class TestHarness 22,366
-  TestHarness(TestHarness::TestHarness24,395
-  int totalSampleNumber(TestHarness::totalSampleNumber30,586
-  bool testAudioSource(TestHarness::testAudioSource35,706
-  void setSource(TestHarness::setSource54,1352
-  template <typename Wrapper,TestHarness::Wrapper56,1419
-  void setWrapper(TestHarness::setWrapper57,1466
-  template <typename Wrapper,TestHarness::Wrapper68,1728
-  template <typename Wrapper, typename Source,TestHarness::Source68,1728
-  bool test(TestHarness::test69,1792
-  int outputCycles_;TestHarness::outputCycles_78,2012
-  int outputSamples_;TestHarness::outputSamples_79,2033
-  int bufferSamples_;TestHarness::bufferSamples_80,2055
-  int cycle_;TestHarness::cycle_81,2077
-  int channel_;TestHarness::channel_82,2091
-  int sampleNumber_;TestHarness::sampleNumber_83,2107
-  scoped_ptr<AudioSource> source_;TestHarness::source_84,2128
-  scoped_ptr<AudioSource> wrapper_;TestHarness::wrapper_85,2163
-inline std::ostream& operator<< 90,2245
-template <typename Wrapper,102,2701
-template <typename Wrapper, typename Source,102,2701
-static void testAudioSource(103,2763
+struct BufferDescription 12,192
+  int channels;13,219
+  int bufferCount;14,235
+  int priority;15,254
+  int samples;16,270
+  int wait;17,285
+  int waitForShutdown;18,297
+  static BufferDescription DEFAULT;20,321
+class TestHarness 23,361
+  TestHarness(TestHarness::TestHarness25,390
+  int totalSampleNumber(TestHarness::totalSampleNumber31,581
+  bool testAudioSource(TestHarness::testAudioSource36,701
+  void setSource(TestHarness::setSource55,1347
+  template <typename Wrapper,TestHarness::Wrapper57,1414
+  void setWrapper(TestHarness::setWrapper58,1461
+  template <typename Wrapper,TestHarness::Wrapper69,1723
+  template <typename Wrapper, typename Source,TestHarness::Source69,1723
+  bool test(TestHarness::test70,1787
+  int outputCycles_;TestHarness::outputCycles_79,2007
+  int outputSamples_;TestHarness::outputSamples_80,2028
+  int bufferSamples_;TestHarness::bufferSamples_81,2050
+  int cycle_;TestHarness::cycle_82,2072
+  int channel_;TestHarness::channel_83,2086
+  int sampleNumber_;TestHarness::sampleNumber_84,2102
+  scoped_ptr<AudioSource> source_;TestHarness::source_85,2123
+  scoped_ptr<AudioSource> wrapper_;TestHarness::wrapper_86,2158
+inline std::ostream& operator<< 91,2240
+template <typename Wrapper,103,2696
+template <typename Wrapper, typename Source,103,2696
+static void testAudioSource(104,2758
 
-rec/audio/source/Testy.h,514
+rec/audio/source/Testy.h,512
 #define __REC_AUDIO_SOURCE_TESTY__2,35
-class Testy 16,306
-  Testy(19,376
-  virtual void getNextAudioBlock(21,405
-  static float getSample(29,702
-  virtual int getTotalLength(31,773
-  virtual int getNextReadPosition(33,828
-  virtual void setNextReadPosition(34,892
-  virtual bool isLooping(36,954
-  virtual void setLooping(37,1004
-  virtual void prepareToPlay(38,1047
-  virtual void releaseResources(39,1096
-  int position_;41,1134
-  static float expectNear(43,1152
-  static float expectNear(50,1335
+class Testy 14,233
+  Testy(17,303
+  virtual void getNextAudioBlock(19,332
+  static float getSample(27,629
+  virtual int getTotalLength(29,700
+  virtual int getNextReadPosition(31,755
+  virtual void setNextReadPosition(32,819
+  virtual bool isLooping(34,881
+  virtual void setLooping(35,931
+  virtual void prepareToPlay(36,974
+  virtual void releaseResources(37,1023
+  int position_;39,1061
+  static float expectNear(41,1079
+  static float expectNear(48,1262
 
 rec/audio/source/Testy_test.cpp,132
 namespace rec 4,62
@@ -720,41 +690,53 @@ namespace audio rec::audio5,78
 namespace source rec::audio::source6,96
 TEST(rec::audio::source::TEST8,116
 
-rec/audio/source/TimeScaler.h,52
-#define __REC_TIME_SCALER2,26
-namespace rec 8,171
+rec/audio/source/TimeScaler.cpp,148
+namespace rec 6,139
+namespace audio rec::audio7,155
+namespace source rec::audio::source8,173
+const char* Init(rec::audio::source::Init10,193
 
-rec/audio/source/Wrappy.h,783
+rec/audio/source/TimeScaler.h,130
+#define __REC_TIME_SCALER2,26
+namespace rec 8,105
+namespace audio rec::audio9,121
+namespace source rec::audio::source10,139
+
+rec/audio/source/Wrappy.h,782
 #define __REC_AUDIO_SOURCE_WRAPPY__2,36
-class Wrappy 16,304
-  Wrappy(18,344
-  virtual void getNextAudioBlock(20,391
-  virtual int getTotalLength(24,505
-  virtual int getNextReadPosition(26,581
-  virtual void setNextReadPosition(30,673
-  virtual bool isLooping(32,753
-  virtual void setLooping(33,819
-  virtual void prepareToPlay(35,894
-  virtual void releaseResources(36,975
-  int mod(38,1043
-  void advance(Wrappy::advance39,1109
-  Source* source_;Wrappy::source_46,1226
-class Wrappy::Position 54,1436
-  Position(Wrappy::Position::Position56,1486
-  virtual int getNextReadPosition(Wrappy::Position::getNextReadPosition60,1582
-  virtual void setNextReadPosition(Wrappy::Position::setNextReadPosition61,1646
-  int position_;Wrappy::Position::position_67,1763
+class Wrappy 14,237
+  Wrappy(16,277
+  virtual void getNextAudioBlock(18,324
+  virtual int getTotalLength(22,438
+  virtual int getNextReadPosition(24,514
+  virtual void setNextReadPosition(28,606
+  virtual bool isLooping(30,686
+  virtual void setLooping(31,752
+  virtual void prepareToPlay(33,827
+  virtual void releaseResources(34,908
+  int mod(36,976
+  void advance(Wrappy::advance38,1043
+  Source* source_;Wrappy::source_45,1160
+class Wrappy::Position 53,1370
+  Position(Wrappy::Position::Position55,1420
+  virtual int getNextReadPosition(Wrappy::Position::getNextReadPosition59,1516
+  virtual void setNextReadPosition(Wrappy::Position::setNextReadPosition60,1580
+  int position_;Wrappy::Position::position_66,1697
 
 rec/base/ArraySize.h,173
 #define __REC_BASE_ARRAYSIZE_H_6,207
-template <typename TypeName,23,1006
-template <typename TypeName,30,1295
-#define arraysize(34,1398
-#define ARRAYSIZE_UNSAFE(73,3138
+template <typename TypeName,24,1033
+template <typename TypeName,31,1322
+#define arraysize(35,1425
+#define ARRAYSIZE_UNSAFE(74,3165
 
-rec/base/base.h,66
+rec/base/base.h,238
 #define __REC_BASE_BASE__2,26
-typedef std::string string;11,154
+typedef google::protobuf::Message Message;28,378
+typedef juce::CriticalSection CriticalSection;29,421
+typedef juce::File File;30,468
+typedef juce::String String;31,493
+typedef std::string string;33,523
 
 rec/base/basictypes.h,969
 #define BASE_BASICTYPES_H_6,202
@@ -825,20 +807,20 @@ rec/base/build_config.h,1134
 
 rec/base/Cast.h,171
 #define __REC_BASE_CAST_H__6,203
-template<typename To,25,1060
-inline To implicit_cast(26,1097
-inline Dest bit_cast(86,3446
-  typedef char VerifySizesAreEqual 89,3626
+template<typename To,27,1088
+inline To implicit_cast(28,1125
+inline Dest bit_cast(88,3474
+  typedef char VerifySizesAreEqual 91,3654
 
 rec/base/CompileAssert.h,273
 #define __REC_BASE_COMPILE_ASSERT_H_6,212
-struct CompileAssert 24,871
-#undef COMPILE_ASSERT27,898
-#define COMPILE_ASSERT(28,920
-inline Dest bit_cast(129,4786
-  typedef char VerifySizesAreEqual 132,4966
-template<typename To,156,5944
-inline To implicit_cast(157,5981
+struct CompileAssert 26,899
+#undef COMPILE_ASSERT29,926
+#define COMPILE_ASSERT(30,948
+inline Dest bit_cast(131,4814
+  typedef char VerifySizesAreEqual 134,4994
+template<typename To,158,5972
+inline To implicit_cast(159,6009
 
 rec/base/disallow.h,123
 #define __REC_BASE_DISALLOW__2,30
@@ -847,22 +829,22 @@ rec/base/disallow.h,123
 
 rec/base/port.h,467
 #define BASE_PORT_H_6,196
-#define GG_LONGLONG(12,295
-#define GG_ULONGLONG(13,325
-#define GG_LONGLONG(15,363
-#define GG_ULONGLONG(16,392
-#define GG_INT8_C(25,803
-#define GG_INT16_C(26,831
-#define GG_INT32_C(27,859
-#define GG_INT64_C(28,887
-#define GG_UINT8_C(30,927
-#define GG_UINT16_C(31,960
-#define GG_UINT32_C(32,993
-#define GG_UINT64_C(33,1026
-#define GG_VA_COPY(42,1529
-#define GG_VA_COPY(44,1599
-#define API_CALL 49,1724
-#define API_CALL51,1757
+#define GG_LONGLONG(13,296
+#define GG_ULONGLONG(14,326
+#define GG_LONGLONG(16,364
+#define GG_ULONGLONG(17,393
+#define GG_INT8_C(26,804
+#define GG_INT16_C(27,832
+#define GG_INT32_C(28,860
+#define GG_INT64_C(29,888
+#define GG_UINT8_C(31,928
+#define GG_UINT16_C(32,961
+#define GG_UINT32_C(33,994
+#define GG_UINT64_C(34,1027
+#define GG_VA_COPY(43,1530
+#define GG_VA_COPY(45,1600
+#define API_CALL 50,1725
+#define API_CALL52,1758
 
 rec/base/scoped_array.h,761
 #define __REC_BASE_SCOPED_ARRAY__2,34
@@ -896,7 +878,7 @@ class scoped_ptr 11,290
   bool operator!(scoped_ptr::operator!42,830
   Type* p_;scoped_ptr::p_45,882
 
-rec/base/string_piece.h,2158
+rec/base/string_piece.h,2153
 #define BASE_STRING_PIECE_H_19,852
 class StringPiece 29,986
   typedef size_t size_type;31,1015
@@ -905,61 +887,46 @@ class StringPiece 29,986
   StringPiece(41,1262
   StringPiece(42,1307
   StringPiece(44,1400
-  StringPiece(46,1486
-  const char* data(53,1815
-  size_type size(54,1859
-  size_type length(55,1904
-  bool empty(56,1951
-  void clear(58,1998
-  void set(62,2053
-  void set(66,2139
-  void set(70,2226
-  char operator[operator75,2344
-  void remove_prefix(77,2402
-  void remove_suffix(82,2476
-  int compare(86,2535
-  std::string as_string(StringPiece::as_string95,2773
-  bool starts_with(StringPiece::starts_with104,3074
-  bool ends_with(StringPiece::ends_with110,3253
-  typedef char value_type;StringPiece::value_type116,3462
-  typedef const char* pointer;StringPiece::pointer117,3489
-  typedef const char& reference;StringPiece::reference118,3520
-  typedef const char& const_reference;StringPiece::const_reference119,3553
-  typedef ptrdiff_t difference_type;StringPiece::difference_type120,3592
-  static const size_type npos;StringPiece::npos121,3629
-  typedef const char* const_iterator;StringPiece::const_iterator122,3660
-  typedef const char* iterator;StringPiece::iterator123,3698
-  typedef std::reverse_iterator<const_iterator> const_reverse_iterator;StringPiece::const_reverse_iterator124,3730
-  typedef std::reverse_iterator<iterator> reverse_iterator;StringPiece::reverse_iterator125,3802
-  iterator begin(StringPiece::begin126,3862
-  iterator end(StringPiece::end127,3904
-  const_reverse_iterator rbegin(StringPiece::rbegin128,3954
-  const_reverse_iterator rend(StringPiece::rend131,4051
-  size_type max_size(StringPiece::max_size135,4137
-  size_type capacity(StringPiece::capacity136,4186
-  size_type find_first_of(StringPiece::find_first_of146,4619
-  size_type find_last_of(StringPiece::find_last_of152,4927
-  static int wordmemcmp(StringPiece::wordmemcmp160,5231
-inline bool operator!=(operator!=167,5400
-inline bool operator<(171,5492
-inline bool operator>(177,5753
-inline bool operator<=(operator<=181,5840
-inline bool operator>=(operator>=185,5931
-
-rec/base/StringRange.h,307
-#define __BASE_STRING_RANGE_2,29
-class StringRange 9,114
-  StringRange(11,143
-  StringRange(12,223
-  StringRange(13,305
-  StringRange(14,378
-  bool empty(16,453
-  char pop(17,503
-  const char& top(18,554
-  int cmp(21,660
-  void skip(24,770
-  const char* begin_;29,871
-  const char* end_;30,893
+  StringPiece(46,1481
+  const char* data(53,1810
+  size_type size(54,1854
+  size_type length(55,1899
+  bool empty(56,1946
+  void clear(58,1993
+  void set(62,2048
+  void set(66,2134
+  void set(70,2221
+  char operator[operator75,2339
+  void remove_prefix(77,2397
+  void remove_suffix(82,2471
+  int compare(86,2530
+  string as_string(StringPiece::as_string95,2768
+  bool starts_with(StringPiece::starts_with104,3044
+  bool ends_with(StringPiece::ends_with110,3223
+  typedef char value_type;StringPiece::value_type116,3432
+  typedef const char* pointer;StringPiece::pointer117,3459
+  typedef const char& reference;StringPiece::reference118,3490
+  typedef const char& const_reference;StringPiece::const_reference119,3523
+  typedef ptrdiff_t difference_type;StringPiece::difference_type120,3562
+  static const size_type npos;StringPiece::npos121,3599
+  typedef const char* const_iterator;StringPiece::const_iterator122,3630
+  typedef const char* iterator;StringPiece::iterator123,3668
+  typedef std::reverse_iterator<const_iterator> const_reverse_iterator;StringPiece::const_reverse_iterator124,3700
+  typedef std::reverse_iterator<iterator> reverse_iterator;StringPiece::reverse_iterator125,3772
+  iterator begin(StringPiece::begin126,3832
+  iterator end(StringPiece::end127,3874
+  const_reverse_iterator rbegin(StringPiece::rbegin128,3924
+  const_reverse_iterator rend(StringPiece::rend131,4021
+  size_type max_size(StringPiece::max_size135,4107
+  size_type capacity(StringPiece::capacity136,4156
+  size_type find_first_of(StringPiece::find_first_of146,4589
+  size_type find_last_of(StringPiece::find_last_of152,4897
+  static int wordmemcmp(StringPiece::wordmemcmp160,5201
+inline bool operator!=(operator!=167,5370
+inline bool operator<(171,5462
+inline bool operator>(177,5723
+inline bool operator<=(operator<=181,5810
+inline bool operator>=(operator>=185,5901
 
 rec/base/types.h,319
 #define BASE_BASICTYPES_H_6,202
@@ -974,38 +941,39 @@ typedef unsigned short 22,578
 typedef unsigned int 23,609
 typedef unsigned long 24,638
 
-rec/cd/GetAlbumsFromCDDB.cpp,298
-namespace rec 8,131
-namespace cd rec::cd9,147
-String normalize(rec::cd::normalize16,282
-bool similar(25,539
-bool similar(29,630
-bool similar(33,718
-Track fillTrack(48,1054
-Album fillAlbum(59,1352
-void addIfNotSimilar(80,2052
-String getAlbumsFromCDDB(90,2260
-void dedupeAlbums(127,3267
+rec/cd/GetAlbumsFromCDDB.cpp,334
+namespace rec 11,154
+namespace cd rec::cd12,170
+string normalize(rec::cd::normalize23,443
+bool similar(44,946
+bool similar(48,1037
+bool similar(52,1125
+inline string unnull(67,1461
+Track fillTrack(71,1531
+Album fillAlbum(82,1853
+void addIfNotSimilar(102,2549
+string getAlbumsFromCDDB(112,2769
+void dedupeAlbums(149,3781
 
-rec/cd/GetAlbumsFromCDDB.h,452
+rec/cd/GetAlbumsFromCDDB.h,474
 #define __REC_CD_GETALBUMSFROMCDDB__2,37
-struct Track 9,148
-  int length_;10,163
-  int frameOffset_;11,178
-  String title_;13,199
-  String artist_;14,216
-  String extdata_;15,234
-struct Album 18,257
-  int discid_;19,272
-  int length_;20,287
-  int revision_;21,302
-  int year_;22,319
-  String category_;24,333
-  String genre_;25,353
-  String title_;26,370
-  String artist_;27,387
-  String extdata_;28,405
-  Array<Track> tracks_;30,425
+struct Track 10,153
+  int length_;11,168
+  int frameOffset_;12,183
+  string title_;14,204
+  string artist_;15,221
+  string extdata_;16,239
+struct Album 19,262
+  int discid_;20,277
+  int length_;21,292
+  int revision_;22,307
+  int year_;23,324
+  string category_;25,338
+  string genre_;26,358
+  string title_;27,375
+  string artist_;28,392
+  string extdata_;29,410
+  std::vector<Track> tracks_;Album::tracks_31,430
 
 rec/cd/GetAlbumsFromCDDB_test.cpp,74
 namespace rec 6,97
@@ -1013,55 +981,63 @@ namespace cd rec::cd7,113
 TEST(rec::cd::TEST9,129
 
 rec/cd/juce_AudioCDReader_test.cpp,212
-TEST(14,251
-TEST(22,569
-const int TRACK_COUNT ::TRACK_COUNT37,1111
-const int SPF ::SPF39,1140
-int TRACK_LENGTHS[::TRACK_LENGTHS42,1246
-const int CDDB_ID 57,1494
-TEST(61,1530
-TEST(72,1814
-TEST(79,2046
+TEST(14,245
+TEST(22,563
+const int TRACK_COUNT ::TRACK_COUNT37,1105
+const int SPF ::SPF39,1134
+int TRACK_LENGTHS[::TRACK_LENGTHS42,1240
+const int CDDB_ID 57,1488
+TEST(61,1524
+TEST(72,1808
+TEST(79,2040
 
-rec/commands/CommandManager.h,1101
+rec/commands/CommandManager.h,1287
 #define __REC_COMMANDS_COMMANDMANAGER__2,40
-class MenuDelegate 10,181
-  virtual bool getMenuBarNames(12,211
-  virtual bool getMenuForIndex(13,280
-  virtual ~MenuDelegate(16,379
-class MultiMenu 19,412
-  virtual const StringArray getMenuBarNames(MultiMenu::getMenuBarNames21,501
-  virtual const PopupMenu getMenuForIndex(MultiMenu::getMenuForIndex27,647
-class CommandDelegate 37,884
-  virtual bool menuItemSelected(CommandDelegate::menuItemSelected39,917
-  virtual bool getAllCommands(CommandDelegate::getAllCommands42,1012
-  virtual bool getCommandInfo(CommandDelegate::getCommandInfo43,1089
-  virtual bool perform(CommandDelegate::perform46,1189
-class MultiCommand 49,1262
-  MultiMenu(MultiCommand::MultiMenu51,1363
-  virtual void menuItemSelected(MultiCommand::menuItemSelected55,1479
-  virtual void getCommandInfo(MultiCommand::getCommandInfo59,1607
-  virtual void getAllCommands(MultiCommand::getAllCommands63,1738
-  virtual bool perform(MultiCommand::perform67,1855
-  virtual ApplicationCommandTarget* getNextCommandTarget(MultiCommand::getNextCommandTarget71,1959
+typedef ApplicationCommandTarget::InvocationInfo InvocationInfo;10,181
+class MenuDelegate 12,247
+  virtual bool getMenuBarNames(MenuDelegate::getMenuBarNames14,277
+  virtual bool getMenuForIndex(MenuDelegate::getMenuForIndex15,346
+  virtual ~MenuDelegate(MenuDelegate::~MenuDelegate18,445
+class MultiMenu 21,478
+  virtual const StringArray getMenuBarNames(MultiMenu::getMenuBarNames23,567
+  virtual const PopupMenu getMenuForIndex(MultiMenu::getMenuForIndex29,723
+class CommandDelegate 39,970
+  virtual bool menuItemSelected(CommandDelegate::menuItemSelected41,1003
+  virtual bool getAllCommands(CommandDelegate::getAllCommands44,1098
+  virtual bool getCommandInfo(CommandDelegate::getCommandInfo45,1175
+  virtual bool perform(CommandDelegate::perform48,1275
+  virtual ~CommandDelegate(CommandDelegate::~CommandDelegate49,1344
+class MultiCommand 52,1380
+  virtual void menuItemSelected(MultiCommand::menuItemSelected55,1508
+  virtual void getCommandInfo(MultiCommand::getCommandInfo59,1648
+  virtual void getAllCommands(MultiCommand::getAllCommands63,1793
+  virtual bool perform(MultiCommand::perform67,1923
+  virtual ApplicationCommandTarget* getNextCommandTarget(MultiCommand::getNextCommandTarget71,2041
 
 rec/commands/CommandManager_test.cpp,93
 namespace rec 6,94
 namespace commands rec::commands7,110
 TEST(rec::commands::TEST10,144
 
-rec/commands/EventQueue.h,495
+rec/commands/EventQueue.cpp,222
+namespace rec 8,146
+namespace commands rec::commands9,162
+EventQueue::EventQueue(rec::commands::EventQueue::EventQueue11,184
+EventQueue::~EventQueue(16,313
+void EventQueue::add(18,353
+void EventQueue::write(23,445
+
+rec/commands/EventQueue.h,416
 #define __REC_EVENT_EVENTQUEUE__2,33
-class EventQueue 16,286
-  explicit EventQueue(18,314
-  ~EventQueue(EventQueue::~EventQueue23,433
-  void add(EventQueue::add25,463
-  void write(EventQueue::write30,550
-  typedef std::vector<Event*> EventList;EventQueue::EventList48,863
-  EventList events_;EventQueue::events_50,905
-  scoped_ptr<proto::logfile::Output> logfile_;EventQueue::logfile_51,926
-  File file_;EventQueue::file_52,973
-  CriticalSection lock_;EventQueue::lock_53,987
+class EventQueue 24,304
+  explicit EventQueue(26,332
+  ~EventQueue(28,380
+  void add(30,398
+  void write(32,425
+  typedef std::vector<Event*> EventList;EventQueue::EventList35,452
+  EventList events_;EventQueue::events_37,494
+  scoped_ptr<proto::logfile::Output> logfile_;EventQueue::logfile_38,515
+  scoped_ptr<juce::CriticalSection> lock_;EventQueue::lock_39,562
 
 rec/components/AudioSetupPage.cpp,154
 AudioSetupPage::AudioSetupPage 32,996
@@ -1075,23 +1051,129 @@ class AudioSetupPage 39,1344
     AudioDeviceManager& deviceManager;AudioSetupPage::deviceManager59,2030
     AudioDeviceSelectorComponent* deviceSelector;AudioSetupPage::deviceSelector63,2182
 
-rec/components/AudioThumbnailComponent.cpp,740
-namespace rec 5,118
-namespace gui rec::gui6,134
-AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,151
-AudioThumbnailComponent::~AudioThumbnailComponent(18,596
-void AudioThumbnailComponent::setFile(22,694
-void AudioThumbnailComponent::setZoomFactor(30,930
-void AudioThumbnailComponent::mouseWheelMove(39,1256
-Rectangle<int> AudioThumbnailComponent::cursorRectangle(53,1741
-bool AudioThumbnailComponent::within(65,2202
-void AudioThumbnailComponent::mouseUp(69,2300
-void AudioThumbnailComponent::setCursor(77,2543
-void AudioThumbnailComponent::paint(94,2967
-int AudioThumbnailComponent::getCursor(120,3825
-void AudioThumbnailComponent::changeListenerCallback(126,4007
+rec/components/MainPageComponent.cpp,335
+MainPageComponent::MainPageComponent 36,1087
+MainPageComponent::~MainPageComponent(56,1796
+void MainPageComponent::paint 68,2165
+void MainPageComponent::resized(79,2421
+Component* createAudioDemo(90,2809
+void MainPageComponent::loadRecentFile(95,2884
+void MainPageComponent::cut(100,3062
+void MainPageComponent::paste(104,3192
 
-rec/components/AudioThumbnailComponent.h,850
+rec/components/MainPageComponent.h,278
+#define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__23,782
+class MainPageComponent 38,1338
+    AudioDeviceManager deviceManager;MainPageComponent::deviceManager62,2079
+    TabbedComponent* tabbedComponent;MainPageComponent::tabbedComponent66,2230
+
+rec/components/MainPageJ.cpp,298
+MainPageJ::MainPageJ(33,1041
+MainPageJ::~MainPageJ(125,4929
+void MainPageJ::paint 150,5706
+void MainPageJ::resized(161,5958
+void MainPageJ::buttonClicked 180,6915
+void MainPageJ::sliderValueChanged 202,7497
+void MainPageJ::sliderDragEnded 228,8344
+void MainPageJ::selectionChanged(233,8460
+
+rec/components/MainPageJ.h,1122
+#define __REC_COMPONENT_MAIN_PAGE_J_H__23,744
+class MainPageJ 40,1257
+  rec::slow::MainPageK peer_;MainPageJ::peer_61,1958
+  void loadRecentFile(MainPageJ::loadRecentFile67,2082
+  void cut(MainPageJ::cut68,2159
+  void paste(MainPageJ::paste69,2190
+    Label* zoomLabel;MainPageJ::zoomLabel76,2350
+    rec::gui::AudioThumbnailComponent* thumbnail;MainPageJ::thumbnail77,2373
+    TextButton* startStopButton;MainPageJ::startStopButton78,2424
+    FileTreeComponent* fileTreeComp;MainPageJ::fileTreeComp79,2458
+    Label* explanation;MainPageJ::explanation80,2496
+    Slider* zoomSlider;MainPageJ::zoomSlider81,2521
+    Slider* timeScaleSlider;MainPageJ::timeScaleSlider82,2546
+    Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider83,2576
+    ToggleButton* loopingButton;MainPageJ::loopingButton84,2607
+    rec::gui::time::TextComponent* songTime;MainPageJ::songTime85,2641
+    rec::gui::time::TextComponent* realTime;MainPageJ::realTime86,2687
+    rec::gui::time::DialComponent* songDial;MainPageJ::songDial87,2733
+    rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2779
+
+rec/components/MainPageK.cpp,1269
+using rec::audio::source::TimeStretch;19,421
+using rec::gui::ThreadDescription;21,463
+using rec::gui::ThumbnailDescription;22,499
+using rec::gui::ThumbnailDescription;23,538
+using rec::persist::copy;25,579
+using rec::thread::Callback;27,608
+using rec::thread::LockedMessage;28,638
+using rec::thread::Runnable;29,673
+using rec::thread::RunnableThread;30,703
+using rec::thread::WaitLoop;31,739
+using rec::thread::makeCallback;32,769
+namespace rec 34,805
+namespace slow rec::slow35,822
+MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1207
+static Thread* makeCursorThread(51,1435
+void MainPageK::construct(60,1838
+void MainPageK::destruct(94,2958
+void MainPageK::loadRecentFile(110,3422
+static const int RATE 116,3645
+void MainPageK::updateCursor(118,3679
+void MainPageK::setPosition(129,4155
+void MainPageK::loadFileIntoTransport(133,4280
+void MainPageK::sliderDragEnded(164,5323
+void MainPageK::sliderValueChanged(173,5656
+static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6198
+void MainPageK::changeListenerCallback(204,6712
+void MainPageK::startStopButtonClicked(225,7296
+void MainPageK::loopingButtonClicked(232,7451
+void MainPageK::selectionChanged(237,7584
+void MainPageK::cut(244,7765
+void MainPageK::paste(251,7954
+
+rec/components/MainPageK.h,1783
+#define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
+namespace rec 14,290
+namespace slow rec::slow15,306
+class MainPageK rec::slow::MainPageK17,324
+  ~MainPageK(rec::slow::MainPageK::~MainPageK22,500
+  virtual void fileClicked(rec::slow::MainPageK::fileClicked39,937
+  virtual void fileDoubleClicked(rec::slow::MainPageK::fileDoubleClicked40,1006
+  DirectoryContentsList* directoryList(rec::slow::MainPageK::directoryList42,1061
+  static const TreeView::ColourIds BACKGROUND;rec::slow::MainPageK::BACKGROUND52,1311
+  static const Colour FOREGROUND;rec::slow::MainPageK::FOREGROUND53,1358
+  static const File::SpecialLocationType START_DIR;rec::slow::MainPageK::START_DIR54,1392
+  static const char* PREVIEW_THREAD_NAME;rec::slow::MainPageK::PREVIEW_THREAD_NAME55,1444
+  MainPageJ* peer_;rec::slow::MainPageK::peer_60,1563
+  TimeSliceThread directoryListThread_;rec::slow::MainPageK::directoryListThread_63,1644
+  DirectoryContentsList directoryList_;rec::slow::MainPageK::directoryList_64,1684
+  AudioTransportSource transportSource_;rec::slow::MainPageK::transportSource_67,1768
+  AudioSourcePlayer player_;rec::slow::MainPageK::player_70,1850
+  AudioDeviceManager* deviceManager_;rec::slow::MainPageK::deviceManager_73,1911
+  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;rec::slow::MainPageK::DoubleStretchyThread75,1950
+  scoped_ptr<DoubleStretchyThread> stretchy_;rec::slow::MainPageK::stretchy_76,2023
+  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;rec::slow::MainPageK::stretchyDeleter_77,2069
+  scoped_ptr<Thread> cursorThread_;rec::slow::MainPageK::cursorThread_79,2123
+  std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_81,2160
+  StringArray cdNames_;rec::slow::MainPageK::cdNames_83,2201
+
+rec/gui/AudioThumbnailComponent.cpp,740
+namespace rec 5,111
+namespace gui rec::gui6,127
+AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,144
+AudioThumbnailComponent::~AudioThumbnailComponent(18,589
+void AudioThumbnailComponent::setFile(22,687
+void AudioThumbnailComponent::setZoomFactor(30,923
+void AudioThumbnailComponent::mouseWheelMove(39,1249
+Rectangle<int> AudioThumbnailComponent::cursorRectangle(54,1779
+bool AudioThumbnailComponent::within(66,2240
+void AudioThumbnailComponent::mouseUp(70,2338
+void AudioThumbnailComponent::setCursor(78,2581
+void AudioThumbnailComponent::paint(95,3005
+int AudioThumbnailComponent::getCursor(121,3863
+void AudioThumbnailComponent::changeListenerCallback(127,4045
+
+rec/gui/AudioThumbnailComponent.h,850
 #define __THUMBNAIL_COMP2,25
 class AudioThumbnailComponent 21,273
   AudioThumbnailComponent(23,356
@@ -1109,393 +1191,329 @@ class AudioThumbnailComponent 21,273
   int cursorX_;AudioThumbnailComponent::cursorX_51,1151
   CriticalSection lock_;AudioThumbnailComponent::lock_52,1167
 
-rec/components/MainPageComponent.cpp,257
-MainPageComponent::MainPageComponent 36,1087
-MainPageComponent::~MainPageComponent(56,1796
-void MainPageComponent::paint 68,2165
-void MainPageComponent::resized(79,2421
-Component* createAudioDemo(90,2809
-void MainPageComponent::loadRecentFile(95,2884
-
-rec/components/MainPageComponent.h,278
-#define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__23,782
-class MainPageComponent 38,1338
-    AudioDeviceManager deviceManager;MainPageComponent::deviceManager60,2043
-    TabbedComponent* tabbedComponent;MainPageComponent::tabbedComponent64,2194
-
-rec/components/MainPageJ.cpp,298
-MainPageJ::MainPageJ(32,1011
-MainPageJ::~MainPageJ(113,4577
-void MainPageJ::paint 136,5292
-void MainPageJ::resized(147,5544
-void MainPageJ::buttonClicked 164,6385
-void MainPageJ::sliderValueChanged 186,6967
-void MainPageJ::sliderDragEnded 212,7814
-void MainPageJ::selectionChanged(217,7930
-
-rec/components/MainPageJ.h,902
-#define __REC_COMPONENT_MAIN_PAGE_J_H__23,744
-class MainPageJ 40,1257
-  rec::slow::MainPageK peer_;MainPageJ::peer_61,1958
-  void loadRecentFile(MainPageJ::loadRecentFile67,2082
-    Label* zoomLabel;MainPageJ::zoomLabel74,2284
-    rec::gui::AudioThumbnailComponent* thumbnail;MainPageJ::thumbnail75,2307
-    TextButton* startStopButton;MainPageJ::startStopButton76,2358
-    FileTreeComponent* fileTreeComp;MainPageJ::fileTreeComp77,2392
-    Label* explanation;MainPageJ::explanation78,2430
-    Slider* zoomSlider;MainPageJ::zoomSlider79,2455
-    Slider* timeScaleSlider;MainPageJ::timeScaleSlider80,2480
-    Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider81,2510
-    ToggleButton* loopingButton;MainPageJ::loopingButton82,2541
-    rec::gui::time::TextComponent* songTime;MainPageJ::songTime83,2575
-    rec::gui::time::TextComponent* realTime;MainPageJ::realTime84,2621
-
-rec/components/MainPageK.cpp,1207
-using rec::audio::source::TimeStretch;19,427
-using rec::gui::ThreadDescription;21,469
-using rec::gui::ThumbnailDescription;22,505
-using rec::gui::ThumbnailDescription;23,544
-using rec::persist::copy;25,585
-using rec::thread::Callback;27,614
-using rec::thread::LockedMessage;28,644
-using rec::thread::Runnable;29,679
-using rec::thread::RunnableThread;30,709
-using rec::thread::WaitLoop;31,745
-using rec::thread::makeCallback;32,775
-namespace rec 34,811
-namespace slow rec::slow35,828
-MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1213
-static Thread* makeCursorThread(51,1441
-void MainPageK::construct(60,1844
-void MainPageK::destruct(94,2960
-void MainPageK::loadRecentFile(110,3424
-static const int RATE 116,3641
-void MainPageK::updateCursor(118,3675
-void MainPageK::setPosition(127,4063
-void MainPageK::loadFileIntoTransport(131,4188
-void MainPageK::sliderDragEnded(162,5226
-void MainPageK::sliderValueChanged(171,5559
-static const char* const CD_STATE_NAMES[CD_STATE_NAMES193,6101
-void MainPageK::changeListenerCallback(202,6615
-void MainPageK::startStopButtonClicked(223,7199
-void MainPageK::loopingButtonClicked(230,7354
-void MainPageK::selectionChanged(235,7487
-
-rec/components/MainPageK.h,1783
-#define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
-namespace rec 15,330
-namespace slow rec::slow16,346
-class MainPageK rec::slow::MainPageK18,364
-  ~MainPageK(rec::slow::MainPageK::~MainPageK23,540
-  virtual void fileClicked(rec::slow::MainPageK::fileClicked40,977
-  virtual void fileDoubleClicked(rec::slow::MainPageK::fileDoubleClicked41,1046
-  DirectoryContentsList* directoryList(rec::slow::MainPageK::directoryList43,1101
-  static const TreeView::ColourIds BACKGROUND;rec::slow::MainPageK::BACKGROUND51,1321
-  static const Colour FOREGROUND;rec::slow::MainPageK::FOREGROUND52,1368
-  static const File::SpecialLocationType START_DIR;rec::slow::MainPageK::START_DIR53,1402
-  static const char* PREVIEW_THREAD_NAME;rec::slow::MainPageK::PREVIEW_THREAD_NAME54,1454
-  MainPageJ* peer_;rec::slow::MainPageK::peer_59,1573
-  TimeSliceThread directoryListThread_;rec::slow::MainPageK::directoryListThread_62,1654
-  DirectoryContentsList directoryList_;rec::slow::MainPageK::directoryList_63,1694
-  AudioTransportSource transportSource_;rec::slow::MainPageK::transportSource_66,1778
-  AudioSourcePlayer player_;rec::slow::MainPageK::player_69,1860
-  AudioDeviceManager* deviceManager_;rec::slow::MainPageK::deviceManager_72,1921
-  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;rec::slow::MainPageK::DoubleStretchyThread74,1960
-  scoped_ptr<DoubleStretchyThread> stretchy_;rec::slow::MainPageK::stretchy_75,2033
-  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;rec::slow::MainPageK::stretchyDeleter_76,2079
-  scoped_ptr<Thread> cursorThread_;rec::slow::MainPageK::cursorThread_78,2133
-  std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_80,2170
-  StringArray cdNames_;rec::slow::MainPageK::cdNames_82,2211
-
 rec/gui/Color.cpp,224
 namespace rec 6,87
 namespace gui rec::gui7,103
 namespace color rec::gui::color8,119
 uint32 makeARGB(rec::gui::color::makeARGB12,151
-Colour makeColour(23,380
-Colour get(29,474
-Colour get(44,807
-void prepare(48,934
+Colour makeColour(26,398
+Colour get(30,475
+Colour get(45,808
+void prepare(49,935
 
 rec/gui/Color.h,32
 #define __REC_GUI_COLORS__2,27
+
+rec/gui/Component.h,384
+#define __REC_GUI_COMPONENT__2,30
+class ComponentDelegate 10,156
+  ComponentDelegate(12,191
+  const colors::Colors& colors(ComponentDelegate::colors17,336
+  const FontDesc& font(ComponentDelegate::font21,459
+  const int margin(ComponentDelegate::margin25,568
+  ComponentDesc* desc_;ComponentDelegate::desc_31,734
+  ComponentDelegate* next_;ComponentDelegate::next_32,758
 
 rec/gui/Font.h,51
 #define __REC_GUI_FONT__2,25
 namespace rec 7,108
 
-rec/gui/Time.h,430
+rec/gui/RecentFiles.cpp,245
+namespace rec 4,68
+namespace gui rec::gui5,84
+struct CompareRecentFiles rec::gui::CompareRecentFiles7,101
+  bool operator()(rec::gui::CompareRecentFiles::operator()8,129
+RecentFiles getSortedRecentFiles(14,278
+void addRecentFile(25,629
+
+rec/gui/RecentFiles.h,38
+#define __REC_SLOW_RECENTFILES__2,33
+
+rec/gui/Time.cpp,437
+namespace rec 11,170
+namespace gui rec::gui12,186
+namespace time rec::gui::time13,202
+TextComponent::TextComponent(rec::gui::time::TextComponent::TextComponent15,220
+void TextComponent::setTimeSamples(27,621
+void TextComponent::setTimeSeconds(31,722
+void TextComponent::paint(36,803
+DialComponent::DialComponent(59,1418
+static const float ALMOST_ZERO 68,1660
+static const float PI 70,1707
+void DialComponent::paint(73,1747
+
+rec/gui/Time.h,598
 #define __REC_GUI_TIME__2,25
-class TextComponent 15,231
-  TextComponent(18,332
-  void setTimeSamples(TextComponent::setTimeSamples28,648
-  void setTimeSeconds(TextComponent::setTimeSeconds29,733
-  void paint(TextComponent::paint34,807
-  Text desc_;TextComponent::desc_57,1450
-  color::Colors colors_;TextComponent::colors_58,1464
-  float time_;TextComponent::time_59,1489
-  Font font_;TextComponent::font_60,1504
+class TextComponent 23,271
+  TextComponent(26,372
+  void setTimeSamples(28,457
+  void setTimeSeconds(29,493
+  void paint(31,529
+  scoped_ptr<Text> desc_;34,567
+  scoped_ptr<color::Colors> colors_;TextComponent::colors_35,593
+  float time_;TextComponent::time_36,630
+  Font font_;TextComponent::font_37,645
+class DialComponent 42,713
+  void setTimeRatio(DialComponent::setTimeRatio47,876
+  scoped_ptr<Dial> desc_;DialComponent::desc_55,986
+  scoped_ptr<color::Colors> colors_;DialComponent::colors_56,1012
+  float time_;DialComponent::time_57,1049
 
-rec/persist/App.h,655
+rec/persist/App.h,606
 #define __REC_PERSIST_APPBASE__2,32
-class App 20,322
-  typedef std::string string;App::string22,343
-  typedef std::map<string,App::string23,373
-  typedef std::map<string, UntypedData*> DataMap;App::DataMap23,373
-  Data<Proto>* getData(App::getData26,452
-  command::Manager* commandManager(App::commandManager40,892
-  const string& name(App::name42,958
-  virtual ~App(App::~App44,1006
-  File appDir(App::appDir48,1066
-  explicit App(App::App56,1327
-  DataMap data_;App::data_60,1432
-  CriticalSection lock_;App::lock_61,1449
-  const string name_;App::name_62,1474
-  command::Manager* commandManager_;App::commandManager_63,1496
+class App 25,361
+  typedef std::map<string,App::string27,382
+  typedef std::map<string, UntypedData*> DataMap;App::DataMap27,382
+  Data<Proto>* getData(App::getData30,461
+  command::Manager* commandManager(App::commandManager44,901
+  const string& name(App::name46,967
+  virtual ~App(App::~App48,1015
+  File appDir(App::appDir52,1075
+  explicit App(App::App60,1336
+  DataMap data_;App::data_66,1476
+  CriticalSection lock_;App::lock_67,1493
+  const string name_;App::name_68,1518
+  command::Manager* commandManager_;App::commandManager_69,1540
 
-rec/persist/AppInstance.cpp,452
-namespace rec 4,75
-namespace persist rec::persist5,91
-AppInstance::AppInstance(rec::persist::AppInstance::AppInstance7,112
-AppInstance::~AppInstance(23,635
-void AppInstance::needsUpdate(29,775
-bool lockedEmpty(38,948
-void extendAndClear(44,1086
-void AppInstance::update(54,1307
-void AppInstance::write(67,1627
-void AppInstance::start(78,1871
-void AppInstance::stop(83,1978
-AppInstance* AppInstance::instance_ 89,2068
-App* getApp(91,2113
+rec/persist/AppInstance.cpp,455
+namespace rec 8,158
+namespace persist rec::persist9,174
+AppInstance::AppInstance(rec::persist::AppInstance::AppInstance11,195
+AppInstance::~AppInstance(25,683
+void AppInstance::needsUpdate(31,823
+bool lockedEmpty(40,996
+void extendAndClear(46,1134
+void AppInstance::update(56,1355
+void AppInstance::write(69,1675
+void AppInstance::start(80,1919
+void AppInstance::stop(85,2026
+AppInstance* AppInstance::instance_ 91,2116
+App* getApp(93,2161
 
-rec/persist/AppInstance.h,764
+rec/persist/AppInstance.h,680
 #define __REC_PERSIST_APPINSTANCE__2,36
-class AppInstance 20,356
-  virtual void needsUpdate(29,600
-  void update(31,648
-  void write(32,665
-  static void start(34,682
-  static void stop(35,723
-  static File appDir(36,745
-  static AppInstance* getInstance(38,788
-  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet40,847
-  const File appDir_;AppInstance::appDir_46,973
-  CriticalSection lock_;AppInstance::lock_47,995
-  DataSet updateData_;AppInstance::updateData_49,1021
-  DataSet writeData_;AppInstance::writeData_50,1044
-  thread::RunnableThread updateThread_;AppInstance::updateThread_52,1067
-  thread::RunnableThread writeThread_;AppInstance::writeThread_53,1107
-  static AppInstance* instance_;AppInstance::instance_55,1147
+class AppInstance 16,256
+  virtual void needsUpdate(25,500
+  void update(27,548
+  void write(28,565
+  static void start(30,582
+  static void stop(31,623
+  static AppInstance* getInstance(33,646
+  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet35,705
+  CriticalSection lock_;AppInstance::lock_41,831
+  DataSet updateData_;AppInstance::updateData_43,857
+  DataSet writeData_;AppInstance::writeData_44,880
+  thread::RunnableThread updateThread_;AppInstance::updateThread_46,903
+  thread::RunnableThread writeThread_;AppInstance::writeThread_47,943
+  static AppInstance* instance_;AppInstance::instance_49,983
 
-rec/persist/Copy.cpp,728
-namespace rec 8,159
-namespace persist rec::persist9,175
-using google::protobuf::TextFormat;rec::persist::google::protobuf::TextFormat11,196
-bool assign(rec::persist::assign17,297
-template <typename From,23,434
-bool copycopy(24,472
-template <typename From,30,599
-bool through(31,637
-bool proto(37,822
-bool proto(41,960
-bool proto(45,1099
-bool file(50,1193
-bool file(54,1274
-bool file(69,1709
-bool copy(107,2711
-bool copy(108,2785
-bool copy(109,2862
-bool copy(110,2939
-bool copy(112,3014
-bool copy(113,3091
-bool copy(114,3166
-bool copy(115,3243
-bool copy(117,3319
-bool copy(118,3396
-bool copy(119,3473
-bool copy(120,3549
-bool copy(122,3628
-bool copy(123,3702
-bool copy(124,3777
-bool copy(125,3855
+rec/persist/Copy.cpp,718
+namespace rec 9,167
+namespace persist rec::persist10,183
+using google::protobuf::TextFormat;rec::persist::google::protobuf::TextFormat12,204
+bool assign(rec::persist::assign18,305
+bool strcopy(24,442
+bool strcopy(30,596
+template <typename From,36,725
+bool through(37,763
+bool proto(43,943
+bool proto(47,1081
+bool proto(51,1220
+bool file(56,1314
+bool file(60,1395
+bool file(75,1830
+bool copy(113,2832
+bool copy(114,2906
+bool copy(115,2983
+bool copy(116,3060
+bool copy(118,3135
+bool copy(119,3212
+bool copy(120,3287
+bool copy(121,3364
+bool copy(123,3440
+bool copy(124,3517
+bool copy(125,3594
+bool copy(126,3670
+bool copy(128,3748
+bool copy(129,3822
+bool copy(130,3897
+bool copy(131,3974
 
-rec/persist/Copy.h,119
+rec/persist/Copy.h,84
 #define __REC_PERSIST_COPY__2,29
-typedef google::protobuf::Message Message;29,669
-typedef std::string string;30,712
+typedef google::protobuf::Message Message;29,656
 
-rec/persist/Data.h,687
+rec/persist/Data.h,658
 #define __REC_PERSIST_DATA__2,29
-class Data 16,247
-  Proto get(19,331
-  struct Listener 21,353
-    virtual ~Listener(23,428
-  bool addListener(27,530
-  bool removeListener(28,564
-  virtual void change(29,601
-  virtual ~Data(Data::~Data31,675
-  typedef std::set<Listener*> Listeners;Data::Listeners38,773
-  Data(Data::Data40,815
-  Proto proto_;Data::proto_42,888
-  Listeners listeners_;Data::listeners_43,904
-  CriticalSection listenerLock_;Data::listenerLock_44,928
-Proto Data<Proto>::get(get52,1060
-bool Data<Proto>::addListener(addListener62,1209
-bool Data<Proto>::removeListener(removeListener74,1519
-void Data<Proto>::changeCallback(changeCallback86,1837
+class Data 17,281
+  Proto get(20,365
+  typedef util::Listener<const Proto&> Listener;Data::Listener22,387
+  virtual void change(Data::change27,577
+  virtual ~Data(Data::~Data29,651
+  typedef std::set<Listener*> Listeners;Data::Listeners36,749
+  Data(Data::Data38,791
+  Proto proto_;Data::proto_40,864
+  Listeners listeners_;Data::listeners_41,880
+  CriticalSection listenerLock_;Data::listenerLock_42,904
+Proto Data<Proto>::get(get50,1036
+bool Data<Proto>::addListener(addListener60,1186
+bool Data<Proto>::removeListener(removeListener72,1496
+void Data<Proto>::changeCallback(changeCallback84,1814
 
-rec/persist/TypedData.h,718
-#define __REC_PERSIST_TYPEDDATA__2,34
-class TypedData 15,227
-  Proto get(18,309
-  struct Listener TypedData::Listener27,573
-    virtual ~Listener(TypedData::Listener::~Listener29,648
-  virtual ~TypedData(TypedData::~TypedData32,681
-  typedef std::set<Listener*> Listeners;TypedData::Listeners39,784
-  TypedData(TypedData::TypedData41,826
-  App* app_;TypedData::app_46,941
-  Proto message_;TypedData::message_47,954
-  CriticalSection listenerLock_;TypedData::listenerLock_49,995
-Proto TypedData<Proto>::get(get58,1133
-bool TypedData<Proto>::addListener(addListener67,1272
-bool TypedData<Proto>::removeListener(removeListener79,1578
-void TypedData<Proto>::changeCallback(changeCallback91,1892
+rec/persist/UntypedData.cpp,384
+namespace rec 13,251
+namespace persist rec::persist14,267
+using rec::proto::Operation;rec::persist::rec::proto::Operation16,288
+UntypedData::UntypedData(rec::persist::UntypedData::UntypedData18,318
+void UntypedData::readFromFile(27,554
+UntypedData::~UntypedData(35,772
+void UntypedData::change(40,868
+void UntypedData::update(48,1007
+void UntypedData::writeToFile(64,1319
 
-rec/persist/UntypedData.cpp,383
-namespace rec 11,213
-namespace persist rec::persist12,229
-using rec::proto::Operation;rec::persist::rec::proto::Operation14,250
-UntypedData::UntypedData(rec::persist::UntypedData::UntypedData16,280
-void UntypedData::readFromFile(24,472
-UntypedData::~UntypedData(32,688
-void UntypedData::change(37,784
-void UntypedData::update(45,922
-void UntypedData::writeToFile(61,1240
-
-rec/persist/UntypedData.h,737
+rec/persist/UntypedData.h,683
 #define __REC_PERSIST_UNTYPEDDATA__2,36
-typedef proto::arg::Setter Setter;15,304
-class UntypedData 20,371
-  typedef google::protobuf::Message Message;UntypedData::Message22,426
-  Setter* setter(UntypedData::setter30,743
-  typedef std::vector<proto::Operation*> OperationList;UntypedData::OperationList43,1000
-  OperationList queue_;UntypedData::queue_45,1057
-  OperationList undo_;UntypedData::undo_46,1081
-  File file_;UntypedData::file_48,1105
-  mutable Message* message_;UntypedData::message_49,1119
-  Setter setter_;UntypedData::setter_50,1148
-  App* app_;UntypedData::app_52,1167
-  CriticalSection lock_;UntypedData::lock_53,1180
-  mutable bool alreadyReadFromFile_;UntypedData::alreadyReadFromFile_54,1205
+typedef proto::arg::Setter Setter;14,230
+class UntypedData 16,266
+  Setter* setter(UntypedData::setter25,610
+  typedef std::vector<proto::Operation*> OperationList;UntypedData::OperationList38,867
+  OperationList queue_;UntypedData::queue_40,924
+  OperationList undo_;UntypedData::undo_41,948
+  scoped_ptr<File> file_;UntypedData::file_43,972
+  mutable Message* message_;UntypedData::message_44,998
+  Setter setter_;UntypedData::setter_45,1027
+  App* app_;UntypedData::app_47,1046
+  scoped_ptr<CriticalSection> lock_;UntypedData::lock_48,1059
+  mutable bool alreadyReadFromFile_;UntypedData::alreadyReadFromFile_49,1096
 
-rec/proto/Address.h,325
+rec/proto/Address.h,329
 #define __REC_PROTO_ADDRESS__2,30
-struct AField 11,180
-  AField(12,219
-  AField(13,267
-  AField(14,308
-  AField(15,342
-struct Address 19,407
-  typedef const AField& P;20,448
-  void p(21,475
-  Address(23,520
-  Address(24,535
-  Address(25,560
-  Address(26,596
-  Address(27,643
-  Address(28,701
-  Address(29,770
+struct Address 13,220
+  struct Field 14,261
+    Field(15,309
+    Field(16,353
+    Field(17,395
+    Field(18,430
+  typedef const Field& P;21,503
+  void p(22,529
+  Address(24,574
+  Address(25,589
+  Address(26,614
+  Address(27,650
+  Address(28,697
+  Address(29,755
+  Address(30,824
 
-rec/proto/Field.cpp,579
-namespace rec 9,188
-namespace proto rec::proto10,204
-Operation* Field::apply(rec::proto::Field::apply12,223
-bool Field::dereference(22,472
-bool Field::copyFrom(75,1919
-bool Field::copyTo(80,2091
-bool Field::addFrom(85,2259
-typedef bool (Field::*Applier)Applier89,2350
-Operation* Field::apply(91,2385
-bool Field::error(121,3284
-bool Field::addRepeated(126,3374
-bool Field::doRemove(138,3627
-bool Field::clearRepeated(155,3982
-bool Field::clearSingle(159,4036
-bool Field::removeRepeated(165,4166
-bool Field::setSingle(169,4241
-bool Field::swapRepeated(184,4592
+rec/proto/Field.cpp,580
+namespace rec 11,254
+namespace proto rec::proto12,270
+Operation* Field::apply(rec::proto::Field::apply14,289
+bool Field::dereference(24,538
+bool Field::copyFrom(77,1993
+bool Field::copyTo(82,2165
+bool Field::addFrom(87,2333
+typedef bool (Field::*Applier)Applier91,2424
+Operation* Field::apply(93,2459
+bool Field::error(123,3358
+bool Field::addRepeated(128,3448
+bool Field::doRemove(140,3701
+bool Field::clearRepeated(157,4064
+bool Field::clearSingle(161,4118
+bool Field::removeRepeated(167,4248
+bool Field::setSingle(171,4323
+bool Field::swapRepeated(186,4674
 
-rec/proto/Field.h,789
+rec/proto/Field.h,900
 #define __REC_PROTO_FIELD__2,28
-class Field 14,287
-  static Operation* apply(16,310
-  explicit Field(18,377
-  bool dereference(23,467
-  Operation* apply(24,507
-  bool copyFrom(26,549
-  bool addFrom(27,586
-  bool copyTo(28,622
-  enum Type 31,668
-    INDEXED 32,682
-    REPEATED 33,699
-    SINGLE 34,717
-    TYPE_COUNT 35,733
-  bool addRepeated(38,759
-  bool removeRepeated(39,781
-  bool swapRepeated(40,806
-  bool clearRepeated(42,830
-  bool clearSingle(43,854
-  bool setIndexed(45,877
-  bool setSingle(46,921
-  bool error(48,942
-  bool doRemove(50,959
-  Message* message_;52,996
-  const FieldDescriptor* field_;53,1017
-  uint32 index_;54,1050
-  Type type_;55,1067
-  uint32 repeatCount_;56,1081
-  Operation* undo_;58,1105
-  const Operation* operation_;59,1125
+class Field 22,301
+  static Operation* apply(24,324
+  explicit Field(26,391
+  bool dereference(31,481
+  Operation* apply(32,528
+  bool copyFrom(34,570
+  bool addFrom(35,607
+  bool copyTo(36,643
+  enum Type 39,689
+    INDEXED 40,703
+    REPEATED 41,720
+    SINGLE 42,738
+    TYPE_COUNT 43,754
+  bool addRepeated(46,780
+  bool removeRepeated(47,802
+  bool swapRepeated(48,827
+  bool clearRepeated(50,851
+  bool clearSingle(51,875
+  bool setIndexed(53,898
+  bool setSingle(54,942
+  bool error(56,963
+  bool doRemove(58,980
+  Message* message_;60,1017
+  const google::protobuf::FieldDescriptor* field_;Field::field_61,1038
+  uint32 index_;Field::index_62,1089
+  Type type_;Field::type_63,1106
+  uint32 repeatCount_;Field::repeatCount_64,1120
+  Operation* undo_;Field::undo_66,1144
+  const Operation* operation_;Field::operation_67,1164
 
-rec/proto/LogFile.h,710
+rec/proto/LogFile.cpp,1203
+namespace rec 6,102
+namespace proto rec::proto7,118
+namespace logfile rec::proto::logfile8,136
+typedef google::protobuf::io::CodedOutputStream CodedOutputStream;rec::proto::logfile::CodedOutputStream10,157
+typedef google::protobuf::io::CodedInputStream CodedInputStream;rec::proto::logfile::CodedInputStream11,224
+template <typename Zero,rec::proto::logfile::Zero13,290
+class Base rec::proto::logfile::Base14,331
+  Base(rec::proto::logfile::Base::Base16,353
+  Zero zero_;rec::proto::logfile::Base::zero_19,424
+  Coded coded_;rec::proto::logfile::Base::coded_20,438
+typedef Base<zerocopy::Input,zerocopy::Input26,500
+typedef Base<zerocopy::Input, CodedInputStream> InputBase;26,500
+class InputImpl 28,560
+  explicit InputImpl(InputImpl::InputImpl30,606
+  bool read(InputImpl::read32,667
+typedef Base<zerocopy::Output,zerocopy::Output41,851
+typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;41,851
+class OutputImpl 43,914
+  explicit OutputImpl(OutputImpl::OutputImpl45,962
+  void write(OutputImpl::write47,1025
+Input::Input(58,1241
+Input::~Input(59,1304
+bool Input::read(60,1323
+Output::Output(62,1392
+Output::~Output(63,1458
+void Output::write(64,1479
+
+rec/proto/LogFile.h,270
 #define __REC_PROTO_LOGFILE__2,30
-typedef google::protobuf::io::CodedOutputStream CodedOutputStream;14,288
-typedef google::protobuf::io::CodedInputStream CodedInputStream;15,355
-class Base 18,462
-  Base(Base::Base20,484
-  Zero zero_;Base::zero_23,555
-  Coded coded_;Base::coded_24,569
-typedef Base<zerocopy::Output,zerocopy::Output29,630
-typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;29,630
-class Output 31,693
-  Output(Output::Output33,737
-  void write(Output::write35,787
-typedef Base<zerocopy::Input,zerocopy::Input43,964
-typedef Base<zerocopy::Input, CodedInputStream> InputBase;43,964
-class Input 45,1024
-  Input(Input::Input47,1066
-  bool read(Input::read49,1114
+class Input 13,180
+  explicit Input(15,203
+  ~Input(16,239
+  bool read(18,252
+  scoped_ptr<InputImpl> impl_;21,294
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(22,325
+class Output 25,370
+  scoped_ptr<OutputImpl> impl_;Output::impl_33,494
 
-rec/proto/LogFile_test.cpp,165
-namespace rec 6,84
-namespace proto rec::proto7,100
-namespace logfile rec::proto::logfile8,118
-TEST(rec::proto::logfile::TEST11,151
-TEST(30,486
-TEST(58,1159
+rec/proto/LogFile_test.cpp,167
+namespace rec 8,160
+namespace proto rec::proto9,176
+namespace logfile rec::proto::logfile10,194
+TEST(rec::proto::logfile::TEST13,227
+TEST(32,562
+TEST(60,1235
 
-rec/proto/Proto.cpp,117
-namespace rec 9,193
-namespace proto rec::proto10,209
-Operation* applyOperation(rec::proto::applyOperation12,228
+rec/proto/Proto.cpp,112
+namespace rec 5,57
+namespace proto rec::proto6,73
+Operation* applyOperation(rec::proto::applyOperation8,92
 
 rec/proto/Proto.h,31
 #define __REC_PROTO_PROTO2,26
 
 rec/proto/Proto_test.cpp,85
-namespace rec 8,150
-namespace proto rec::proto9,166
-TEST(rec::proto::TEST11,185
+namespace rec 7,117
+namespace proto rec::proto8,133
+TEST(rec::proto::TEST10,152
 
 rec/proto/Setter.cpp,420
 namespace rec 3,31
@@ -1512,46 +1530,40 @@ void Setter::remove(47,984
 void Setter::set(51,1089
 void Setter::swap(55,1213
 
-rec/proto/Setter.h,1288
+rec/proto/Setter.h,1211
 #define __REC_PROTO_SETTER__2,29
-class Setter 13,231
-  class Listener 15,255
-    virtual ~Listener(18,329
-  Setter(21,362
-  void append(23,405
-  void clear(24,469
-  void remove(25,512
-  void set(26,575
-  void swap(27,636
-  typedef arg::Address A;Setter::A29,695
-  typedef const AField& P;Setter::P30,721
-  typedef const Value& V;Setter::V31,748
-  void append(Setter::append33,775
-  void append(Setter::append34,827
-  void append(Setter::append35,887
-  void append(Setter::append36,955
-  void append(Setter::append37,1031
-  void clear(Setter::clear39,1116
-  void clear(Setter::clear40,1158
-  void clear(Setter::clear41,1208
-  void clear(Setter::clear42,1266
-  void clear(Setter::clear43,1332
-  void remove(Setter::remove45,1407
-  void remove(Setter::remove46,1462
-  void remove(Setter::remove47,1525
-  void remove(Setter::remove48,1596
-  void remove(Setter::remove49,1675
-  void set(Setter::set51,1763
-  void set(Setter::set52,1809
-  void set(Setter::set53,1863
-  void set(Setter::set54,1925
-  void set(Setter::set55,1995
-  void swap(Setter::swap57,2074
-  void swap(Setter::swap58,2134
-  void swap(Setter::swap59,2202
-  void swap(Setter::swap60,2278
-  void swap(Setter::swap61,2362
-  Listener* data_;Setter::data_64,2465
+class Setter 13,229
+  typedef util::Listener<Operation*> Listener;Setter::Listener15,253
+  Setter(Setter::Setter17,301
+  typedef Address A;Setter::A25,609
+  typedef const A::Field& P;Setter::P26,630
+  typedef const Value& V;Setter::V27,659
+  void append(Setter::append29,686
+  void append(Setter::append30,738
+  void append(Setter::append31,798
+  void append(Setter::append32,866
+  void append(Setter::append33,942
+  void clear(Setter::clear35,1027
+  void clear(Setter::clear36,1069
+  void clear(Setter::clear37,1119
+  void clear(Setter::clear38,1177
+  void clear(Setter::clear39,1243
+  void remove(Setter::remove41,1318
+  void remove(Setter::remove42,1373
+  void remove(Setter::remove43,1436
+  void remove(Setter::remove44,1507
+  void remove(Setter::remove45,1586
+  void set(Setter::set47,1674
+  void set(Setter::set48,1720
+  void set(Setter::set49,1774
+  void set(Setter::set50,1836
+  void set(Setter::set51,1906
+  void swap(Setter::swap53,1985
+  void swap(Setter::swap54,2045
+  void swap(Setter::swap55,2113
+  void swap(Setter::swap56,2189
+  void swap(Setter::swap57,2273
+  Listener* data_;Setter::data_60,2376
 
 rec/proto/TypedTyper.cpp,826
 namespace rec 3,35
@@ -1577,237 +1589,144 @@ void TypedTyper<penum>::Set(Set119,3959
 void TypedTyper<penum>::SetRepeated(SetRepeated124,4094
 void TypedTyper<penum>::Add(Add130,4289
 
-rec/proto/TypedTyper.h,1051
+rec/proto/TypedTyper.h,685
 #define __REC_PROTO_TYPEDTYPER__2,33
-class Typer 13,245
-  Typer(15,268
-  virtual ~Typer(16,315
-  virtual void copyTo(18,338
-  virtual void copyTo(19,411
-  virtual void copyFrom(21,488
-  virtual void copyFrom(22,563
-  virtual void add(24,642
-  Typer(27,725
-  scoped_ptr<Typer> typer_;28,738
-  DISALLOW_COPY_AND_ASSIGN(30,767
-class TypedTyperBase 33,806
-  TypedTyperBase(TypedTyperBase::TypedTyperBase35,853
-  const Reflection& reflection(TypedTyperBase::reflection42,1067
-  Message* msg_;TypedTyperBase::msg_44,1142
-  const FieldDescriptor* field_;TypedTyperBase::field_45,1159
-class TypedTyper 51,1272
-  static const FieldDescriptor::Type TYPE_INDEX;TypedTyper::TYPE_INDEX53,1324
-  TypedTyper(TypedTyper::TypedTyper54,1373
-  virtual void copyFrom(TypedTyper::copyFrom71,1777
-  virtual void copyFrom(TypedTyper::copyFrom72,1847
-  virtual void copyTo(TypedTyper::copyTo73,1927
-  virtual void copyTo(TypedTyper::copyTo74,1998
-  virtual void add(TypedTyper::add75,2078
-  virtual Typer* clone(TypedTyper::clone77,2148
+class Typer 11,177
+  Typer(13,200
+  virtual ~Typer(16,279
+  virtual Typer* clone(17,301
+  Message* msg_;31,741
+  const FieldDescriptor* field_;32,758
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(34,792
+class TypedTyper 38,862
+  static const FieldDescriptor::Type TYPE_INDEX;TypedTyper::TYPE_INDEX40,905
+  TypedTyper(TypedTyper::TypedTyper41,954
+  virtual void copyFrom(TypedTyper::copyFrom56,1340
+  virtual void copyFrom(TypedTyper::copyFrom57,1410
+  virtual void copyTo(TypedTyper::copyTo58,1490
+  virtual void copyTo(TypedTyper::copyTo59,1561
+  virtual void add(TypedTyper::add60,1641
+  virtual Typer* clone(TypedTyper::clone62,1711
 
 rec/proto/Typer.cpp,255
 namespace rec 7,112
 namespace proto rec::proto8,128
 namespace typer rec::proto::typer9,146
-class STyper 34,915
-  STyper(STyper::STyper36,966
-bool copyTo(46,1144
-bool copyTo(51,1269
-bool copyFrom(56,1407
-bool copyFrom(61,1524
-bool add(66,1654
+class STyper 34,906
+  STyper(STyper::STyper36,957
+bool copyTo(46,1135
+bool copyTo(51,1260
+bool copyFrom(56,1398
+bool copyFrom(61,1515
+bool add(66,1645
 
-rec/proto/Typer.h,33
+rec/proto/Typer.h,123
 #define __REC_PROTO_TYPER__2,28
+typedef google::protobuf::FieldDescriptor FieldDescriptor;19,248
+namespace typer 21,308
 
-rec/proto/Types.h,648
+rec/proto/Types.h,563
 #define __REC_PROTO_TYPES__2,28
-typedef Operation::Command Command;13,221
-typedef google::protobuf::FieldDescriptor FieldDescriptor;14,257
-typedef google::protobuf::Message Message;15,316
-typedef google::protobuf::Reflection Reflection;16,359
-typedef uint32 Tag;17,408
-typedef std::string string;18,428
-#define PROTO_MAKE_TYPE(20,457
-#undef PROTO_MAKE_TYPE41,1142
-struct pmessage 43,1166
-  pmessage(pmessage::pmessage44,1184
-  pmessage(pmessage::pmessage45,1200
-  pmessage(pmessage::pmessage46,1263
-  operator string(pmessage::operator string47,1306
-  bool Parse(pmessage::Parse49,1352
-  string value_;pmessage::value_51,1417
+typedef Operation::Command Command;13,215
+typedef google::protobuf::FieldDescriptor FieldDescriptor;14,251
+typedef google::protobuf::Reflection Reflection;15,310
+typedef uint32 Tag;16,359
+#define PROTO_MAKE_TYPE(18,380
+#undef PROTO_MAKE_TYPE39,1065
+struct pmessage 41,1089
+  pmessage(pmessage::pmessage42,1107
+  pmessage(pmessage::pmessage43,1123
+  pmessage(pmessage::pmessage44,1186
+  operator string(pmessage::operator string45,1229
+  bool Parse(pmessage::Parse47,1275
+  string value_;pmessage::value_49,1340
 
 rec/proto/Value.h,357
 #define __REC_PROTO_VALUE__2,28
-class Value 12,203
-  Value(14,248
-  Value(15,261
-  Value(16,300
-  Value(17,337
-  Value(18,374
-  Value(19,413
-  Value(20,450
-  Value(21,489
-  Value(22,524
-  Value(23,563
-  Value(24,600
-  Value(25,641
-  Value(26,682
-  Value(27,725
-  Value(28,768
-  Value(29,807
-  Value(30,846
-  Value(31,888
-  Value(33,925
+class Value 12,197
+  Value(14,242
+  Value(15,255
+  Value(16,294
+  Value(17,331
+  Value(18,368
+  Value(19,407
+  Value(20,444
+  Value(21,483
+  Value(22,518
+  Value(23,557
+  Value(24,594
+  Value(25,635
+  Value(26,676
+  Value(27,719
+  Value(28,762
+  Value(29,801
+  Value(30,840
+  Value(31,882
+  Value(33,919
 
-rec/proto/ZeroCopy.h,1288
+rec/proto/ZeroCopy.h,1286
 #define __REC_PROTO_ZEROCOPY__2,31
-typedef google::protobuf::io::ZeroCopyOutputStream ZeroCopyOutputStream;17,340
-typedef google::protobuf::io::ZeroCopyInputStream ZeroCopyInputStream;18,413
-class Base 21,533
-  Base(Base::Base24,611
-  void* buffer(Base::buffer29,717
-  int size(Base::size30,766
-  scoped_ptr<JuceStream> stream_;Base::stream_33,825
-  std::vector<uint8> buffer_;Base::buffer_36,870
-typedef Base<FileOutputStream,FileOutputStream41,945
-typedef Base<FileOutputStream, google::protobuf::io::ZeroCopyOutputStream> OutputBase;41,945
-class Output 43,1033
-  Output(Output::Output45,1077
-  virtual ~Output(Output::~Output50,1222
-  virtual bool Next(Output::Next54,1264
-  virtual void BackUp(Output::BackUp63,1402
-  virtual int64 ByteCount(Output::ByteCount70,1534
-  bool full_;Output::full_75,1620
-typedef Base<FileInputStream,FileInputStream79,1680
-typedef Base<FileInputStream, google::protobuf::io::ZeroCopyInputStream> InputBase;79,1680
-class Input 81,1765
-  Input(Input::Input83,1807
-  virtual ~Input(Input::~Input87,1920
-  virtual bool Next(Input::Next89,1943
-  virtual void BackUp(Input::BackUp98,2131
-  virtual bool Skip(Input::Skip99,2174
-  virtual int64 ByteCount(Input::ByteCount100,2252
-  bool full_;Input::full_103,2332
+typedef google::protobuf::io::ZeroCopyOutputStream ZeroCopyOutputStream;16,301
+typedef google::protobuf::io::ZeroCopyInputStream ZeroCopyInputStream;17,374
+class Base 20,494
+  Base(Base::Base23,572
+  void* buffer(Base::buffer28,678
+  int size(Base::size29,727
+  scoped_ptr<JuceStream> stream_;Base::stream_32,786
+  std::vector<uint8> buffer_;Base::buffer_35,831
+typedef Base<FileOutputStream,FileOutputStream40,906
+typedef Base<FileOutputStream, google::protobuf::io::ZeroCopyOutputStream> OutputBase;40,906
+class Output 42,994
+  Output(Output::Output44,1038
+  virtual ~Output(Output::~Output49,1183
+  virtual bool Next(Output::Next53,1225
+  virtual void BackUp(Output::BackUp62,1363
+  virtual int64 ByteCount(Output::ByteCount69,1495
+  bool full_;Output::full_74,1581
+typedef Base<FileInputStream,FileInputStream78,1641
+typedef Base<FileInputStream, google::protobuf::io::ZeroCopyInputStream> InputBase;78,1641
+class Input 80,1726
+  Input(Input::Input82,1768
+  virtual ~Input(Input::~Input86,1881
+  virtual bool Next(Input::Next88,1904
+  virtual void BackUp(Input::BackUp97,2092
+  virtual bool Skip(Input::Skip98,2135
+  virtual int64 ByteCount(Input::ByteCount99,2213
+  bool full_;Input::full_102,2293
 
 rec/slow/Preferences.h,148
 #define __REC_SLOW_PREFERENCES__2,33
-typedef persist::Data<proto::Preferences> Data;13,261
-inline const proto::Preferences getPreferences(20,438
+typedef persist::Data<proto::Preferences> Data;10,168
+inline const proto::Preferences getPreferences(17,345
 
-rec/slow/RecentFiles.cpp,252
-namespace rec 6,127
-namespace slow rec::slow7,143
-struct CompareRecentFiles rec::slow::CompareRecentFiles9,161
-  bool operator()(rec::slow::CompareRecentFiles::operator()10,189
-RecentFiles getSortedRecentFiles(16,338
-void addRecentFile(27,677
-
-rec/slow/RecentFiles.h,38
-#define __REC_SLOW_RECENTFILES__2,33
-
-rec/thread/Callback.h,304
-#define __REC_THREAD_CALLBACK__2,32
-class Callback 11,193
-  typedef void (Type::*Method)Method13,237
-  Callback(14,271
-  virtual void run(16,350
-  Type* object_;19,416
-  Method method_;20,433
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(22,452
-template <typename Type,25,500
-Runnable* makeCallback(26,542
-
-rec/thread/CallbackLoop.h,41
-#define __REC_THREAD_CALLBACKLOOP__2,36
-
-rec/thread/Cycler.h,303
-#define __REC_THREAD_CYCLER__2,30
-class Cycler 9,131
-  Cycler(11,173
-  explicit Cycler(13,200
-  Cycler(17,275
-  virtual void run(22,383
-  virtual ~Cycler(30,539
-  typedef std::vector<Runnable*> Cycle;Cycler::Cycle36,664
-  Cycle cycle_;Cycler::cycle_37,704
-  int index_;Cycler::index_38,720
-
-rec/thread/LockedMessage.h,161
-#define __REC_THREAD_LOCKEDMESSAGE__2,37
-class LockedMessage 9,144
-  LockedMessage(11,192
-  virtual void run(13,238
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(20,387
-
-rec/thread/Loop.h,134
-#define __REC_THREAD_LOOP__2,28
-class Loop 9,126
-  Loop(11,165
-  virtual void run(13,202
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,326
-
-rec/thread/Runnable.h,110
-#define __REC_THREAD_RUNNABLE2,30
-class Runnable 10,171
-  virtual ~Runnable(12,197
-  void operator(14,262
-
-rec/thread/RunnableThread.h,163
-#define __REC_THREAD_RUNNABLETHREAD2,36
-class RunnableThread 10,175
-  RunnableThread(12,239
-  virtual void run(14,314
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(17,372
-
-rec/thread/Waiter.h,166
-#define __REC_THREAD_WAITER__2,30
-class Waiter 9,131
-  Waiter(11,173
-  virtual void run(12,209
-  const int time_;18,325
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,344
-
-rec/thread/WaitLoop.h,120
-#define __REC_THREAD_WAITLOOP__2,32
-class WaitLoop 11,193
-  WaitLoop(13,233
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,321
-
-rec/thread/Wrapper.h,183
-#define __REC_THREAD_WRAPPER2,29
-class Wrapper 11,163
-  Wrapper(13,206
-  virtual void run(14,247
-  scoped_ptr<Runnable> runnable_;17,323
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(18,357
-
-rec/util/Callback.h,177
+rec/util/Callback.h,178
 #define __REC_UTIL_CALLBACK2,28
-class Callback 8,150
-  Callback(10,176
-  void operator(12,256
-  Class *class_;class_15,325
-  Method method_;16,342
-  Value value_;17,360
+class Callback 10,178
+  Callback(12,204
+  void operator(14,284
+  Class *class_;class_17,353
+  Method method_;18,370
+  Value value_;19,388
 
-rec/util/Circular.h,514
+rec/util/Circular.cpp,302
+namespace rec 3,32
+namespace util rec::util4,48
+Circular::Circular(rec::util::Circular::Circular6,66
+void Circular::reset(10,141
+bool Circular::fill(16,247
+int64 Circular::remaining(22,373
+int64 Circular::remainingBlock(26,440
+int64 Circular::end(30,533
+int64 Circular::availableFrom(33,658
+
+rec/util/Circular.h,164
 #define __REC_UTIL_CIRCULAR__2,30
-struct Circular 11,205
-  Circular(13,232
-  Circular(14,248
-  void reset(16,323
-  void reset(18,377
-  bool fill(24,483
-  int64 remaining(Circular::remaining30,609
-  int64 remainingBlock(Circular::remainingBlock31,670
-  int64 begin(Circular::begin33,753
-  int64 end(Circular::end34,803
-  int64 availableFrom(Circular::availableFrom37,933
-  int64 begin_;Circular::begin_48,1129
-  int64 filled_;Circular::filled_49,1145
-  int64 length_;Circular::length_50,1200
+struct Circular 11,204
+  Circular(13,231
+  Circular(14,247
+  void reset(16,287
+  bool fill(17,328
+  int64 remaining(19,355
 
 rec/util/Circular_test.cpp,163
 namespace rec 5,58
@@ -1816,8 +1735,10 @@ typedef int64 Result[rec::util::Result10,105
 void testAvailable(rec::util::testAvailable12,131
 TEST(19,268
 
-rec/util/Listener.h,35
+rec/util/Listener.h,86
 #define __REC_UTIL_LISTENER__2,30
+class Listener 10,148
+  virtual ~Listener(13,209
 
 rec/util/Math.h,29
 #define __REC_UTIL_MATH2,24
@@ -1827,82 +1748,84 @@ namespace rec 5,81
 namespace util rec::util6,97
 TEST(rec::util::TEST8,115
 
-rec/util/Method.h,1823
+rec/util/Method.h,1824
 #define __REC_UTIL_METHOD__2,28
-class Method0 10,167
-  Method0(12,192
-  bool operator(14,229
-  Method method_;17,301
-template <typename Type,20,323
-template <typename Type, typename Method,20,323
-class Method1 21,377
-  Method1(Method1::Method123,402
-  bool operator()(Method1::operator()25,451
-  Method method_;Method1::method_28,525
-  A a_;Method1::a_29,543
-template <typename Type,32,555
-template <typename Type, typename Method,32,555
-template <typename Type, typename Method, typename A,32,555
-class Method2 33,621
-  Method2(Method2::Method235,646
-  bool operator()(Method2::operator()37,707
-  Method method_;Method2::method_40,785
-  A a_;Method2::a_41,803
-  B b_;Method2::b_42,811
-template <typename Type,45,823
-template <typename Type, typename Method,45,823
-template <typename Type, typename Method, typename A,45,823
-template <typename Type, typename Method, typename A, typename B,45,823
-class Method3 46,901
-  Method3(Method3::Method348,926
-  bool operator()(Method3::operator()50,999
-  Method method_;Method3::method_53,1081
-  A a_;Method3::a_54,1099
-  B b_;Method3::b_55,1107
-  C c_;Method3::c_56,1115
-template <typename Type,59,1127
-Method0<Type, Method> getMethod(60,1169
-template <typename Type,64,1251
-template <typename Type, typename Method,64,1251
-Method1<Type, Method, A> getMethod(65,1305
-template <typename Type,69,1401
-template <typename Type, typename Method,69,1401
-template <typename Type, typename Method, typename A,69,1401
-Method2<Type, Method, A, B> getMethod(70,1467
-template <typename Type,74,1577
-template <typename Type, typename Method,74,1577
-template <typename Type, typename Method, typename A,74,1577
-template <typename Type, typename Method, typename A, typename B,74,1577
-Method3<Type, Method, A, B, C> getMethod(75,1655
+class Method0 10,156
+  Method0(12,181
+  bool operator(14,213
+  M method_;17,285
+template <typename Type,20,302
+template <typename Type, typename M,20,302
+class Method1 21,351
+  Method1(Method1::Method123,376
+  bool operator()(Method1::operator()25,420
+  M method_;Method1::method_28,494
+  A a_;Method1::a_29,507
+template <typename Type,32,519
+template <typename Type, typename M,32,519
+template <typename Type, typename M, typename A,32,519
+class Method2 33,580
+  Method2(Method2::Method235,605
+  bool operator()(Method2::operator()37,661
+  M method_;Method2::method_40,739
+  A a_;Method2::a_41,752
+  B b_;Method2::b_42,760
+template <typename Type,45,772
+template <typename Type, typename M,45,772
+template <typename Type, typename M, typename A,45,772
+template <typename Type, typename M, typename A, typename B,45,772
+class Method3 46,845
+  Method3(Method3::Method348,870
+  bool operator()(Method3::operator()50,938
+  M method_;Method3::method_53,1020
+  A a_;Method3::a_54,1033
+  B b_;Method3::b_55,1041
+  C c_;Method3::c_56,1049
+struct Method 60,1086
+  static Method0<Method::Method062,1126
+  static Method0<Type, M> get(Method::get62,1126
+  template <typename M,Method::M66,1200
+  static Method1<Method::Method167,1236
+  static Method1<Type, M, A> get(Method::get67,1236
+  template <typename M,Method::M71,1324
+  template <typename M, typename A,Method::A71,1324
+  static Method2<Method::Method272,1372
+  static Method2<Type, M, A, B> get(Method::get72,1372
+  template <typename M,Method::M76,1474
+  template <typename M, typename A,Method::A76,1474
+  template <typename M, typename A, typename B,Method::B76,1474
+  static Method3<Method::Method377,1534
+  static Method3<Type, M, A, B, C> get(Method::get77,1534
 
-rec/util/PointerList.h,964
+rec/util/PointerList.h,987
 #define __REC_UTIL_POINTERLIST__2,33
-class PointerList 15,312
-  PointerList(17,341
-  typedef std::vector<Type*> List;PointerList::List19,361
-  List* list(PointerList::list21,399
-  const List& list(PointerList::list22,433
-  CriticalSection* lock(PointerList::lock24,479
-  bool forEach(PointerList::forEach27,554
-  template <typename Method,PointerList::Method31,655
-  bool forEach(PointerList::forEach32,696
-  template <typename Method,PointerList::Method36,805
-  template <typename Method, typename A,PointerList::A36,805
-  bool forEach(PointerList::forEach37,858
-  template <typename Method,PointerList::Method41,975
-  template <typename Method, typename A,PointerList::A41,975
-  template <typename Method, typename A, typename B,PointerList::B41,975
-  bool forEach(PointerList::forEach42,1040
-  bool forEach(PointerList::forEach47,1197
-  List list_;PointerList::list_57,1445
-  CriticalSection lock_;PointerList::lock_58,1459
+class PointerList 16,298
+  PointerList(18,327
+  typedef std::vector<Type*> List;PointerList::List20,347
+  typedef util::Method<Type> Method;PointerList::Method21,382
+  List* list(PointerList::list23,420
+  const List& list(PointerList::list24,454
+  CriticalSection* lock(PointerList::lock26,500
+  bool forEach(PointerList::forEach29,570
+  template <typename M,PointerList::M33,658
+  bool forEach(PointerList::forEach34,694
+  template <typename M,PointerList::M38,790
+  template <typename M, typename A,PointerList::A38,790
+  bool forEach(PointerList::forEach39,838
+  template <typename M,PointerList::M43,942
+  template <typename M, typename A,PointerList::A43,942
+  template <typename M, typename A, typename B,PointerList::B43,942
+  bool forEach(PointerList::forEach44,1002
+  bool forEachOp(PointerList::forEachOp49,1146
+  List list_;PointerList::list_63,1446
+  CriticalSection lock_;PointerList::lock_64,1460
 
 rec/util/STL.h,169
 #define __REC_UTIL_STL__2,25
-void deletePointers(16,283
-void deleteMapPointers(22,405
-void deleteMapPointers(28,551
-typename Container::value_type pop_front(34,680
+void deletePointers(16,277
+void deleteMapPointers(22,399
+void deleteMapPointers(28,545
+typename Container::value_type pop_front(34,674
 
 rec/util/Substitute.h,78
 #define __REC_UTIL_SUBSTITUTE__2,32
@@ -1916,4 +1839,1287 @@ rec/util/TestData.h,85
 namespace rec 6,102
 inline File testFile(13,239
 
-rec/ammf_scaler/mfMath.h,0
+rec/util/thread/Callback.h,304
+#define __REC_THREAD_CALLBACK__2,32
+class Callback 11,187
+  typedef void (Type::*Method)Method13,231
+  Callback(14,265
+  virtual void run(16,344
+  Type* object_;19,410
+  Method method_;20,427
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(22,446
+template <typename Type,25,494
+Runnable* makeCallback(26,536
+
+rec/util/thread/CallbackLoop.h,41
+#define __REC_THREAD_CALLBACKLOOP__2,36
+
+rec/util/thread/Cycler.h,303
+#define __REC_THREAD_CYCLER__2,30
+class Cycler 9,131
+  Cycler(11,173
+  explicit Cycler(13,200
+  Cycler(17,275
+  virtual void run(22,383
+  virtual ~Cycler(30,539
+  typedef std::vector<Runnable*> Cycle;Cycler::Cycle36,664
+  Cycle cycle_;Cycler::cycle_37,704
+  int index_;Cycler::index_38,720
+
+rec/util/thread/LockedMessage.h,161
+#define __REC_THREAD_LOCKEDMESSAGE__2,37
+class LockedMessage 9,144
+  LockedMessage(11,192
+  virtual void run(13,238
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(20,387
+
+rec/util/thread/Loop.h,134
+#define __REC_THREAD_LOOP__2,28
+class Loop 9,126
+  Loop(11,165
+  virtual void run(13,202
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,326
+
+rec/util/thread/Runnable.h,110
+#define __REC_THREAD_RUNNABLE2,30
+class Runnable 13,159
+  virtual ~Runnable(15,185
+  void operator(17,250
+
+rec/util/thread/RunnableThread.h,163
+#define __REC_THREAD_RUNNABLETHREAD2,36
+class RunnableThread 10,175
+  RunnableThread(12,239
+  virtual void run(14,314
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(17,372
+
+rec/util/thread/Waiter.h,166
+#define __REC_THREAD_WAITER__2,30
+class Waiter 9,131
+  Waiter(11,173
+  virtual void run(12,209
+  const int time_;18,325
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,344
+
+rec/util/thread/WaitLoop.h,120
+#define __REC_THREAD_WAITLOOP__2,32
+class WaitLoop 11,193
+  WaitLoop(13,233
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,321
+
+rec/util/thread/Wrapper.h,182
+#define __REC_THREAD_WRAPPER2,29
+class Wrapper 9,129
+  Wrapper(11,172
+  virtual void run(12,213
+  scoped_ptr<Runnable> runnable_;15,289
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,323
+
+rec/yaml/include/conversion.h,85
+#define CONVERSION_H_62B23520_7C8E_11DE_8A39_0800200C9A664,72
+namespace YAML12,208
+
+rec/yaml/include/emitter.h,2078
+#define EMITTER_H_62B23520_7C8E_11DE_8A39_0800200C9A664,69
+	class Emitter18,286
+		Emitter(21,313
+		~Emitter(22,326
+		const char *c_str(c_str25,353
+		enum ATOMIC_TYPE Emitter::ATOMIC_TYPE67,1547
+		enum ATOMIC_TYPE { AT_SCALAR,Emitter::ATOMIC_TYPE::AT_SCALAR67,1547
+		enum ATOMIC_TYPE { AT_SCALAR, AT_SEQ,Emitter::ATOMIC_TYPE::AT_SEQ67,1547
+		enum ATOMIC_TYPE { AT_SCALAR, AT_SEQ, AT_BLOCK_SEQ,Emitter::ATOMIC_TYPE::AT_BLOCK_SEQ67,1547
+		enum ATOMIC_TYPE { AT_SCALAR, AT_SEQ, AT_BLOCK_SEQ, AT_FLOW_SEQ,Emitter::ATOMIC_TYPE::AT_FLOW_SEQ67,1547
+		enum ATOMIC_TYPE { AT_SCALAR, AT_SEQ, AT_BLOCK_SEQ, AT_FLOW_SEQ, AT_MAP,Emitter::ATOMIC_TYPE::AT_MAP67,1547
+		enum ATOMIC_TYPE { AT_SCALAR, AT_SEQ, AT_BLOCK_SEQ, AT_FLOW_SEQ, AT_MAP, AT_BLOCK_MAP,Emitter::ATOMIC_TYPE::AT_BLOCK_MAP67,1547
+		enum ATOMIC_TYPE { AT_SCALAR, AT_SEQ, AT_BLOCK_SEQ, AT_FLOW_SEQ, AT_MAP, AT_BLOCK_MAP, AT_FLOW_MAP Emitter::ATOMIC_TYPE::AT_FLOW_MAP67,1547
+		ostream m_stream;Emitter::m_stream82,1910
+		std::auto_ptr <EmitterState> m_pState;Emitter::m_pState83,1930
+	inline Emitter& operator << operator <<117,2503
+	inline Emitter& operator << operator <<118,2602
+	inline Emitter& operator << operator <<119,2687
+	inline Emitter& operator << operator <<120,2781
+	inline Emitter& operator << operator <<121,2876
+	inline Emitter& operator << operator <<122,2968
+	inline Emitter& operator << operator <<123,3064
+	inline Emitter& operator << operator <<125,3158
+	inline Emitter& operator << operator <<127,3264
+	inline Emitter& operator << operator <<128,3360
+	inline Emitter& operator << operator <<129,3465
+	inline Emitter& operator << operator <<130,3563
+	inline Emitter& operator << operator <<131,3670
+	inline Emitter& operator << operator <<132,3767
+	inline Emitter& operator << operator <<133,3873
+	inline Emitter& operator << operator <<134,3975
+	inline Emitter& operator << operator <<136,4087
+	inline Emitter& operator << operator <<137,4183
+	inline Emitter& operator << operator <<139,4281
+	inline Emitter& operator << operator <<143,4395
+
+rec/yaml/include/emittermanip.h,1083
+#define EMITTERMANIP_H_62B23520_7C8E_11DE_8A39_0800200C9A664,74
+	enum EMITTER_MANIP 11,172
+		Auto,13,220
+		EmitNonAscii,16,255
+		EscapeNonAscii,17,271
+		SingleQuoted,21,341
+		DoubleQuoted,22,357
+		Literal,23,373
+		YesNoBool,26,410
+		TrueFalseBool,27,435
+		OnOffBool,28,468
+		UpperCase,29,493
+		LowerCase,30,518
+		CamelCase,31,542
+		LongBool,32,567
+		ShortBool,33,591
+		Dec,36,638
+		Hex,37,645
+		Oct,38,652
+		BeginSeq,41,689
+		EndSeq,42,701
+		Flow,43,711
+		Block,44,719
+		BeginMap,47,753
+		EndMap,48,765
+		Key,49,775
+		Value,50,782
+		LongKey54,864
+	struct _Indent 57,880
+		_Indent(58,898
+		int value;59,938
+	struct _Alias 66,1023
+		_Alias(67,1040
+		std::string content;_Alias::content68,1100
+	struct _Anchor 75,1210
+		_Anchor(_Anchor::_Anchor76,1228
+		std::string content;_Anchor::content77,1289
+	struct _Tag 84,1401
+		_Tag(_Tag::_Tag85,1416
+		std::string content;_Tag::content86,1490
+		bool verbatim;_Tag::verbatim87,1513
+	struct _Comment 94,1619
+		_Comment(_Comment::_Comment95,1638
+		std::string content;_Comment::content96,1700
+
+rec/yaml/include/exceptions.h,1272
+#define EXCEPTIONS_H_62B23520_7C8E_11DE_8A39_0800200C9A664,72
+	class Exception:Exception89,4753
+		Exception(Exception::Exception91,4804
+		virtual ~Exception(Exception::~Exception97,5055
+		virtual const char *what(Exception::what98,5089
+		Mark mark;Exception::mark100,5159
+		std::string msg;Exception::msg101,5172
+		std::string what_;Exception::what_104,5204
+	class ParserException:ParserException107,5230
+		ParserException(ParserException::ParserException109,5282
+	class RepresentationException:RepresentationException113,5380
+		RepresentationException(RepresentationException::RepresentationException115,5440
+	class InvalidScalar:InvalidScalar120,5576
+		InvalidScalar(InvalidScalar::InvalidScalar122,5640
+	class KeyNotFound:KeyNotFound126,5745
+		KeyNotFound(KeyNotFound::KeyNotFound129,5831
+	class TypedKeyNotFound:TypedKeyNotFound134,5987
+		TypedKeyNotFound(TypedKeyNotFound::TypedKeyNotFound136,6042
+		virtual ~TypedKeyNotFound(TypedKeyNotFound::~TypedKeyNotFound138,6139
+		T key;TypedKeyNotFound::key140,6181
+	class BadDereference:BadDereference148,6349
+		BadDereference(BadDereference::BadDereference150,6414
+	class EmitterException:EmitterException154,6511
+		EmitterException(EmitterException::EmitterException156,6564
+
+rec/yaml/include/iterator.h,228
+#define ITERATOR_H_62B23520_7C8E_11DE_8A39_0800200C9A664,70
+	class Iterator12,177
+		Iterator(15,205
+		Iterator(16,219
+		Iterator(17,248
+		~Iterator(18,281
+		Iterator operator ++ (int)22,371
+		const Node& operator 23,401
+
+rec/yaml/include/mark.h,204
+#define MARK_H_62B23520_7C8E_11DE_8A39_0800200C9A664,66
+	struct Mark 9,137
+		Mark(10,152
+		static const Mark null(12,195
+		int pos;14,254
+		int line,15,265
+		int line, column;15,265
+		Mark(18,298
+
+rec/yaml/include/node.h,969
+#define NODE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,66
+	enum CONTENT_TYPE 25,410
+	enum CONTENT_TYPE { CT_NONE,25,410
+	enum CONTENT_TYPE { CT_NONE, CT_SCALAR,25,410
+	enum CONTENT_TYPE { CT_NONE, CT_SCALAR, CT_SEQUENCE,25,410
+	enum CONTENT_TYPE { CT_NONE, CT_SCALAR, CT_SEQUENCE, CT_MAP 25,410
+	class Node:Node27,475
+		Node(30,520
+		~Node(31,530
+		void Clear(33,542
+		const Mark GetMark(Node::GetMark40,723
+		const Node *Identity(Node::Identity75,1542
+		bool IsAlias(Node::IsAlias76,1597
+		bool IsReferenced(Node::IsReferenced77,1640
+		const std::string GetTag(Node::GetTag80,1710
+	private:Node::private89,1991
+		Mark m_mark;Node::m_mark111,2705
+		std::string m_anchor,Node::m_anchor112,2720
+		std::string m_anchor, m_tag;Node::m_tag112,2720
+		Content *m_pContent;Node::m_pContent113,2751
+		bool m_alias;Node::m_alias114,2774
+		const Node *m_pIdentity;Node::m_pIdentity115,2790
+		mutable bool m_referenced;Node::m_referenced116,2817
+
+rec/yaml/include/nodeimpl.h,651
+#define NODEIMPL_H_62B23520_7C8E_11DE_8A39_0800200C9A664,70
+	Node::operator T(Node::operator T20,340
+	inline void operator >> operator >>25,415
+	inline const Node& Node::operator [] Node::operator []68,1310
+	inline const Node& Node::operator [] Node::operator []76,1504
+	inline bool operator == operator ==81,1632
+	inline bool operator == operator ==86,1759
+	inline bool operator != operator !=91,1886
+	inline bool operator != operator !=96,2013
+	inline bool operator == operator ==100,2116
+	inline bool operator == operator ==104,2223
+	inline bool operator != operator !=108,2330
+	inline bool operator != operator !=112,2437
+
+rec/yaml/include/nodereadimpl.h,277
+	struct read_impl<read_impl26,849
+		static bool read(read_impl::read28,898
+	struct read_impl<read_impl35,1038
+		static bool read(read_impl::read37,1088
+	namespace fallback 47,1245
+		struct flag fallback::flag49,1283
+		struct flag { char c[fallback::flag::c49,1283
+
+rec/yaml/include/nodeutil.h,764
+#define NODEUTIL_H_62B23520_7C8E_11DE_8A39_0800200C9A664,70
+	struct is_same_type 10,180
+		enum { value 11,203
+		enum { value = false 11,203
+		enum { value 16,287
+		enum { value = true 16,287
+	struct is_index_type_with_check 20,353
+		enum { value 21,388
+		enum { value = false 21,388
+	template <> struct is_index_type_with_check<std::size_t, false> { enum { value ::value24,420
+	template <> struct is_index_type_with_check<std::size_t, false> { enum { value = true ::true24,420
+#define MAKE_INDEX_TYPE(26,514
+#undef MAKE_INDEX_TYPE36,834
+	struct is_index_type:is_index_type39,882
+	struct _FindFromNodeAtIndex 43,1080
+		const Node *pRet;_FindFromNodeAtIndex::pRet44,1111
+		_FindFromNodeAtIndex(_FindFromNodeAtIndex::_FindFromNodeAtIndex45,1131
+
+rec/yaml/include/noncopyable.h,160
+#define NONCOPYABLE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,73
+	class noncopyable10,192
+			noncopyable(13,228
+			~noncopyable(14,248
+			noncopyable(17,284
+
+rec/yaml/include/null.h,79
+#define NULL_H_62B23520_7C8E_11DE_8A39_0800200C9A664,66
+	struct _Null 11,152
+
+rec/yaml/include/ostream.h,402
+#define OSTREAM_H_62B23520_7C8E_11DE_8A39_0800200C9A664,69
+	class ostream11,162
+		ostream(14,189
+		~ostream(15,202
+		void reserve(17,219
+		void put(18,250
+		const char *str(str19,271
+		unsigned row(21,321
+		unsigned col(22,362
+		unsigned pos(23,403
+		char *m_buffer;m_buffer26,457
+		unsigned m_pos;27,475
+		unsigned m_size;28,493
+		unsigned m_row,30,515
+		unsigned m_row, m_col;30,515
+
+rec/yaml/include/parser.h,290
+#define PARSER_H_62B23520_7C8E_11DE_8A39_0800200C9A664,68
+	class Parser:Parser21,322
+		Parser(24,369
+		Parser(25,381
+		~Parser(26,409
+		operator bool(28,423
+		std::auto_ptr<Scanner> m_pScanner;Parser::m_pScanner41,746
+		std::auto_ptr<ParserState> m_pState;Parser::m_pState42,783
+
+rec/yaml/include/stlemitter.h,273
+#define STLEMITTER_H_62B23520_7C8E_11DE_8A39_0800200C9A664,72
+		typedef typename std::vector 15,298
+	inline Emitter& operator << operator <<24,513
+		typedef typename std::list 25,587
+	inline Emitter& operator << operator <<34,814
+		typedef typename std::map 35,890
+
+rec/yaml/include/stlnode.h,98
+#define STLNODE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,69
+	void operator >> operator >>23,397
+
+rec/yaml/include/traits.h,2075
+#define TRAITS_H_62B23520_7C8E_11DE_8A39_0800200C9A664,68
+	struct is_numeric 10,162
+	struct is_numeric { enum { value 10,162
+	struct is_numeric { enum { value = false 10,162
+	template <> struct is_numeric <char> { enum { value 12,211
+	template <> struct is_numeric <char> { enum { value = true 12,211
+	template <> struct is_numeric <unsigned char> { enum { value 13,277
+	template <> struct is_numeric <unsigned char> { enum { value = true 13,277
+	template <> struct is_numeric <int> { enum { value 14,352
+	template <> struct is_numeric <int> { enum { value = true 14,352
+	template <> struct is_numeric <unsigned int> { enum { value 15,417
+	template <> struct is_numeric <unsigned int> { enum { value = true 15,417
+	template <> struct is_numeric <long int> { enum { value 16,491
+	template <> struct is_numeric <long int> { enum { value = true 16,491
+	template <> struct is_numeric <unsigned long int> { enum { value 17,561
+	template <> struct is_numeric <unsigned long int> { enum { value = true 17,561
+	template <> struct is_numeric <short int> { enum { value 18,640
+	template <> struct is_numeric <short int> { enum { value = true 18,640
+	template <> struct is_numeric <unsigned short int> { enum { value 19,711
+	template <> struct is_numeric <unsigned short int> { enum { value = true 19,711
+	template <> struct is_numeric <long long> { enum { value 20,791
+	template <> struct is_numeric <long long> { enum { value = true 20,791
+	template <> struct is_numeric <unsigned long long> { enum { value 21,862
+	template <> struct is_numeric <unsigned long long> { enum { value = true 21,862
+	template <> struct is_numeric <float> { enum { value 22,942
+	template <> struct is_numeric <float> { enum { value = true 22,942
+	template <> struct is_numeric <double> { enum { value 23,1009
+	template <> struct is_numeric <double> { enum { value = true 23,1009
+	template <> struct is_numeric <long double> { enum { value 24,1077
+	template <> struct is_numeric <long double> { enum { value = true 24,1077
+	  typedef T type;28,1206
+	  typedef T type;39,1440
+
+rec/yaml/include/yaml.h,57
+#define YAML_H_62B23520_7C8E_11DE_8A39_0800200C9A664,66
+
+rec/yaml/Internal.h,745
+#define __REC_YAML_INTERNAL__2,30
+using google::protobuf::EnumValueDescriptor;13,256
+using google::protobuf::FieldDescriptor;14,301
+using google::protobuf::Reflection;15,342
+namespace rec 17,379
+namespace yaml rec::yaml18,395
+typedef FieldDescriptor FD;rec::yaml::FD20,413
+struct MessageField rec::yaml::MessageField22,442
+  MessageField(rec::yaml::MessageField::MessageField23,464
+  const Message* message_;rec::yaml::MessageField::message_26,560
+  const FieldDescriptor* field_;rec::yaml::MessageField::field_27,587
+struct MessageFieldIndex 30,624
+  MessageFieldIndex(MessageFieldIndex::MessageFieldIndex31,673
+  MessageFieldIndex(MessageFieldIndex::MessageFieldIndex35,771
+  int index_;MessageFieldIndex::index_38,864
+
+rec/yaml/ReadYaml.cpp,179
+namespace rec 7,90
+namespace yaml rec::yaml8,106
+string str(rec::yaml::str14,192
+void doRead(18,262
+void doReadRepeated(45,1647
+void operator>>(77,3161
+void read(93,3648
+
+rec/yaml/src/aliascontent.cpp,1187
+namespace YAML3,27
+	AliasContent::AliasContent(YAML::AliasContent::AliasContent5,44
+	Content *AliasContent::Clone(YAML::AliasContent::Clone10,127
+	void AliasContent::Parse(YAML::AliasContent::Parse15,216
+	void AliasContent::Write(YAML::AliasContent::Write19,297
+	bool AliasContent::GetBegin(YAML::AliasContent::GetBegin24,378
+	bool AliasContent::GetBegin(YAML::AliasContent::GetBegin29,491
+	bool AliasContent::GetEnd(YAML::AliasContent::GetEnd34,617
+	bool AliasContent::GetEnd(YAML::AliasContent::GetEnd39,726
+	Node* AliasContent::GetNode(YAML::AliasContent::GetNode44,848
+	std::size_t AliasContent::GetSize(YAML::AliasContent::GetSize49,934
+	bool AliasContent::IsScalar(YAML::AliasContent::IsScalar54,1012
+	bool AliasContent::IsMap(YAML::AliasContent::IsMap59,1085
+	bool AliasContent::IsSequence(YAML::AliasContent::IsSequence64,1152
+	bool AliasContent::GetScalar(YAML::AliasContent::GetScalar69,1229
+	int AliasContent::Compare(YAML::AliasContent::Compare74,1329
+	int AliasContent::Compare(YAML::AliasContent::Compare79,1418
+	int AliasContent::Compare(YAML::AliasContent::Compare84,1504
+	int AliasContent::Compare(YAML::AliasContent::Compare89,1596
+
+rec/yaml/src/aliascontent.h,203
+#define ALIASCONTENT_H_62B23520_7C8E_11DE_8A39_0800200C9A664,74
+	class AliasContent 11,175
+		AliasContent(14,224
+		virtual Content *Clone(Clone16,266
+		Content* m_pRef;AliasContent::m_pRef39,1077
+
+rec/yaml/src/content.h,808
+#define CONTENT_H_62B23520_7C8E_11DE_8A39_0800200C9A664,69
+	class Content23,351
+		Content(26,378
+		virtual ~Content(27,393
+		virtual Content *Clone(Clone29,420
+		virtual bool GetBegin(Content::GetBegin35,658
+		virtual bool GetEnd(Content::GetEnd36,758
+		virtual bool GetEnd(Content::GetEnd37,843
+		virtual Node *GetNode(Content::GetNode38,941
+		virtual std::size_t GetSize(Content::GetSize39,998
+		virtual bool IsScalar(Content::IsScalar40,1050
+		virtual bool IsMap(Content::IsMap41,1100
+		virtual bool IsSequence(Content::IsSequence42,1147
+		virtual bool GetScalar(Content::GetScalar45,1216
+		virtual int Compare(Content::Compare48,1294
+		virtual int Compare(Content::Compare49,1341
+		virtual int Compare(Content::Compare50,1387
+		virtual int Compare(Content::Compare51,1435
+
+rec/yaml/src/conversion.cpp,424
+	bool IsLower(::IsLower10,263
+	bool IsUpper(::IsUpper11,321
+	char ToLower(::ToLower12,379
+	std::string tolower(::tolower14,449
+	bool IsEntirely(::IsEntirely22,616
+	bool IsFlexibleCase(::IsFlexibleCase36,874
+namespace YAML50,1163
+	bool Convert(YAML::Convert52,1180
+			std::string truename,YAML::truename58,1426
+			std::string truename, falsename;YAML::falsename58,1426
+	bool Convert(YAML::Convert84,1862
+
+rec/yaml/src/emitter.cpp,3224
+namespace YAML8,142
+	Emitter::Emitter(YAML::Emitter::Emitter10,160
+	Emitter::~Emitter(YAML::Emitter::~Emitter14,216
+	const char *Emitter::c_str(YAML::Emitter::c_str18,245
+	unsigned Emitter::size(YAML::Emitter::size23,314
+	bool Emitter::good(YAML::Emitter::good29,398
+	const std::string Emitter::GetLastError(YAML::Emitter::GetLastError34,461
+	bool Emitter::SetOutputCharset(YAML::Emitter::SetOutputCharset40,571
+	bool Emitter::SetStringFormat(YAML::Emitter::SetStringFormat45,683
+	bool Emitter::SetBoolFormat(YAML::Emitter::SetBoolFormat50,794
+	bool Emitter::SetIntBase(YAML::Emitter::SetIntBase62,1071
+	bool Emitter::SetSeqFormat(YAML::Emitter::SetSeqFormat67,1174
+	bool Emitter::SetMapFormat(YAML::Emitter::SetMapFormat72,1286
+	bool Emitter::SetIndent(YAML::Emitter::SetIndent82,1501
+	bool Emitter::SetPreCommentIndent(YAML::Emitter::SetPreCommentIndent87,1587
+	bool Emitter::SetPostCommentIndent(YAML::Emitter::SetPostCommentIndent92,1693
+	Emitter& Emitter::SetLocalValue(YAML::Emitter::SetLocalValue99,1876
+	Emitter& Emitter::SetLocalIndent(YAML::Emitter::SetLocalIndent130,2339
+	bool Emitter::GotoNextPreAtomicState(YAML::Emitter::GotoNextPreAtomicState138,2600
+	void Emitter::PreAtomicWrite(YAML::Emitter::PreAtomicWrite248,5804
+	void Emitter::PostAtomicWrite(YAML::Emitter::PostAtomicWrite259,5947
+	void Emitter::EmitSeparationIfNecessary(YAML::Emitter::EmitSeparationIfNecessary304,6991
+	void Emitter::EmitBeginSeq(YAML::Emitter::EmitBeginSeq315,7175
+	void Emitter::EmitEndSeq(YAML::Emitter::EmitEndSeq347,7992
+	void Emitter::EmitBeginMap(YAML::Emitter::EmitBeginMap383,9126
+	void Emitter::EmitEndMap(YAML::Emitter::EmitEndMap415,9936
+	void Emitter::EmitKey(YAML::Emitter::EmitKey450,11059
+	void Emitter::EmitValue(YAML::Emitter::EmitValue485,12139
+	Emitter& Emitter::Write(YAML::Emitter::Write508,12845
+	void Emitter::PreWriteIntegralType(YAML::Emitter::PreWriteIntegralType552,14074
+	void Emitter::PostWriteIntegralType(YAML::Emitter::PostWriteIntegralType573,14437
+	Emitter& Emitter::Write(YAML::Emitter::Write579,14558
+		struct BoolName YAML::BoolName588,14722
+		struct BoolName { std::string trueName,YAML::BoolName::trueName588,14722
+		struct BoolName { std::string trueName, falseName;YAML::BoolName::falseName588,14722
+		struct BoolFormatNames YAML::BoolFormatNames589,14778
+		struct BoolFormatNames { BoolName upper,YAML::BoolFormatNames::upper589,14778
+		struct BoolFormatNames { BoolName upper, lower,YAML::BoolFormatNames::lower589,14778
+		struct BoolFormatNames { BoolName upper, lower, camel;YAML::BoolFormatNames::camel589,14778
+		struct BoolTypes YAML::BoolTypes590,14838
+		struct BoolTypes { BoolFormatNames yesNo,YAML::BoolTypes::yesNo590,14838
+		struct BoolTypes { BoolFormatNames yesNo, trueFalse,YAML::BoolTypes::trueFalse590,14838
+		struct BoolTypes { BoolFormatNames yesNo, trueFalse, onOff;YAML::BoolTypes::onOff590,14838
+	Emitter& Emitter::Write(YAML::Emitter::Write618,15959
+	Emitter& Emitter::Write(YAML::Emitter::Write633,16256
+	Emitter& Emitter::Write(YAML::Emitter::Write649,16646
+	Emitter& Emitter::Write(YAML::Emitter::Write665,17020
+	Emitter& Emitter::Write(YAML::Emitter::Write675,17271
+
+rec/yaml/src/emitterstate.cpp,1979
+namespace YAML4,51
+	EmitterState::EmitterState(YAML::EmitterState::EmitterState6,68
+	EmitterState::~EmitterState(YAML::EmitterState::~EmitterState26,582
+	std::auto_ptr <EmitterState::Group> EmitterState::_PopGroup(YAML::EmitterState::_PopGroup32,664
+	void EmitterState::SetLocalValue(YAML::EmitterState::SetLocalValue45,1019
+	void EmitterState::BeginGroup(YAML::EmitterState::BeginGroup58,1389
+	void EmitterState::EndGroup(YAML::EmitterState::EndGroup76,1907
+	GROUP_TYPE EmitterState::GetCurGroupType(YAML::EmitterState::GetCurGroupType98,2563
+	FLOW_TYPE EmitterState::GetCurGroupFlowType(YAML::EmitterState::GetCurGroupFlowType106,2697
+	bool EmitterState::CurrentlyInLongKey(YAML::EmitterState::CurrentlyInLongKey114,2865
+	void EmitterState::StartLongKey(YAML::EmitterState::StartLongKey121,2993
+	void EmitterState::StartSimpleKey(YAML::EmitterState::StartSimpleKey127,3100
+	void EmitterState::ClearModifiedSettings(YAML::EmitterState::ClearModifiedSettings133,3209
+	bool EmitterState::SetOutputCharset(YAML::EmitterState::SetOutputCharset138,3290
+	bool EmitterState::SetStringFormat(YAML::EmitterState::SetStringFormat150,3523
+	bool EmitterState::SetBoolFormat(YAML::EmitterState::SetBoolFormat164,3783
+	bool EmitterState::SetBoolLengthFormat(YAML::EmitterState::SetBoolLengthFormat177,4027
+	bool EmitterState::SetBoolCaseFormat(YAML::EmitterState::SetBoolCaseFormat189,4259
+	bool EmitterState::SetIntFormat(YAML::EmitterState::SetIntFormat202,4507
+	bool EmitterState::SetIndent(YAML::EmitterState::SetIndent215,4727
+	bool EmitterState::SetPreCommentIndent(YAML::EmitterState::SetPreCommentIndent224,4881
+	bool EmitterState::SetPostCommentIndent(YAML::EmitterState::SetPostCommentIndent233,5056
+	bool EmitterState::SetFlowType(YAML::EmitterState::SetFlowType242,5232
+	EMITTER_MANIP EmitterState::GetFlowType(YAML::EmitterState::GetFlowType254,5496
+	bool EmitterState::SetMapKeyFormat(YAML::EmitterState::SetMapKeyFormat265,5825
+
+rec/yaml/src/emitterstate.h,4483
+#define EMITTERSTATE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,74
+	enum FMT_SCOPE 16,273
+		LOCAL,17,291
+		GLOBAL18,300
+	enum GROUP_TYPE 21,315
+		GT_NONE,22,334
+		GT_SEQ,23,345
+		GT_MAP24,355
+	enum FLOW_TYPE 27,370
+		FT_NONE,28,388
+		FT_FLOW,29,399
+		FT_BLOCK30,410
+	enum NODE_STATE 33,427
+		NS_START,34,446
+		NS_READY_FOR_ATOM,35,458
+		NS_END36,479
+	enum EMITTER_STATE 39,494
+		ES_WAITING_FOR_DOC,40,516
+		ES_WRITING_DOC,41,538
+		ES_DONE_WITH_DOC,42,556
+		ES_WAITING_FOR_BLOCK_SEQ_ENTRY,45,594
+		ES_WRITING_BLOCK_SEQ_ENTRY,46,628
+		ES_DONE_WITH_BLOCK_SEQ_ENTRY,47,658
+		ES_WAITING_FOR_FLOW_SEQ_ENTRY,50,707
+		ES_WRITING_FLOW_SEQ_ENTRY,51,740
+		ES_DONE_WITH_FLOW_SEQ_ENTRY,52,769
+		ES_WAITING_FOR_BLOCK_MAP_ENTRY,55,818
+		ES_WAITING_FOR_BLOCK_MAP_KEY,56,852
+		ES_WRITING_BLOCK_MAP_KEY,57,884
+		ES_DONE_WITH_BLOCK_MAP_KEY,58,912
+		ES_WAITING_FOR_BLOCK_MAP_VALUE,59,942
+		ES_WRITING_BLOCK_MAP_VALUE,60,976
+		ES_DONE_WITH_BLOCK_MAP_VALUE,61,1006
+		ES_WAITING_FOR_FLOW_MAP_ENTRY,64,1055
+		ES_WAITING_FOR_FLOW_MAP_KEY,65,1088
+		ES_WRITING_FLOW_MAP_KEY,66,1119
+		ES_DONE_WITH_FLOW_MAP_KEY,67,1146
+		ES_WAITING_FOR_FLOW_MAP_VALUE,68,1175
+		ES_WRITING_FLOW_MAP_VALUE,69,1208
+		ES_DONE_WITH_FLOW_MAP_VALUE70,1237
+	class EmitterState73,1273
+		EmitterState(76,1305
+		~EmitterState(77,1323
+		bool good(80,1371
+		const std::string GetLastError(EmitterState::GetLastError81,1412
+		void SetError(EmitterState::SetError82,1477
+		EMITTER_STATE GetCurState(EmitterState::GetCurState85,1596
+		void SwitchState(EmitterState::SwitchState86,1663
+		void PushState(EmitterState::PushState87,1737
+		void PopState(EmitterState::PopState88,1805
+		int GetCurIndent(EmitterState::GetCurIndent98,2068
+		bool RequiresSeparation(EmitterState::RequiresSeparation104,2200
+		void RequireSeparation(EmitterState::RequireSeparation105,2267
+		void UnsetSeparation(EmitterState::UnsetSeparation106,2327
+		EMITTER_MANIP GetOutputCharset(EmitterState::GetOutputCharset112,2499
+		EMITTER_MANIP GetStringFormat(EmitterState::GetStringFormat115,2631
+		EMITTER_MANIP GetBoolFormat(EmitterState::GetBoolFormat118,2761
+		EMITTER_MANIP GetBoolLengthFormat(EmitterState::GetBoolLengthFormat121,2894
+		EMITTER_MANIP GetBoolCaseFormat(EmitterState::GetBoolCaseFormat124,3037
+		EMITTER_MANIP GetIntFormat(EmitterState::GetIntFormat127,3171
+		int GetIndent(EmitterState::GetIndent130,3287
+		int GetPreCommentIndent(EmitterState::GetPreCommentIndent133,3402
+		int GetPostCommentIndent(EmitterState::GetPostCommentIndent135,3535
+		EMITTER_MANIP GetMapKeyFormat(EmitterState::GetMapKeyFormat141,3813
+		bool m_isGood;EmitterState::m_isGood149,4010
+		std::string m_lastError;EmitterState::m_lastError150,4027
+		std::stack <EMITTER_STATE> m_stateStack;EmitterState::m_stateStack153,4074
+		Setting <EMITTER_MANIP> m_charset;EmitterState::m_charset155,4120
+		Setting <EMITTER_MANIP> m_strFmt;EmitterState::m_strFmt156,4157
+		Setting <EMITTER_MANIP> m_boolFmt;EmitterState::m_boolFmt157,4193
+		Setting <EMITTER_MANIP> m_boolLengthFmt;EmitterState::m_boolLengthFmt158,4230
+		Setting <EMITTER_MANIP> m_boolCaseFmt;EmitterState::m_boolCaseFmt159,4273
+		Setting <EMITTER_MANIP> m_intFmt;EmitterState::m_intFmt160,4314
+		Setting <unsigned> m_indent;EmitterState::m_indent161,4350
+		Setting <unsigned> m_preCommentIndent,EmitterState::m_preCommentIndent162,4381
+		Setting <unsigned> m_preCommentIndent, m_postCommentIndent;EmitterState::m_postCommentIndent162,4381
+		Setting <EMITTER_MANIP> m_seqFmt;EmitterState::m_seqFmt163,4443
+		Setting <EMITTER_MANIP> m_mapFmt;EmitterState::m_mapFmt164,4479
+		Setting <EMITTER_MANIP> m_mapKeyFmt;EmitterState::m_mapKeyFmt165,4515
+		SettingChanges m_modifiedSettings;EmitterState::m_modifiedSettings167,4557
+		SettingChanges m_globalModifiedSettings;EmitterState::m_globalModifiedSettings168,4594
+		struct Group EmitterState::Group170,4640
+			Group(EmitterState::Group::Group171,4657
+			GROUP_TYPE type;EmitterState::Group::type173,4736
+			EMITTER_MANIP flow;EmitterState::Group::flow174,4756
+			bool usingLongKey;EmitterState::Group::usingLongKey175,4779
+			int indent;EmitterState::Group::indent176,4801
+			SettingChanges modifiedSettings;EmitterState::Group::modifiedSettings178,4820
+		std::stack <Group *> m_groups;EmitterState::m_groups183,4904
+		unsigned m_curIndent;EmitterState::m_curIndent184,4937
+		bool m_requiresSeparation;EmitterState::m_requiresSeparation185,4961
+
+rec/yaml/src/emitterutils.cpp,1235
+namespace YAML9,157
+	namespace UtilsYAML::Utils11,174
+			enum {REPLACEMENT_CHARACTER YAML::Utils::REPLACEMENT_CHARACTER14,208
+			enum {REPLACEMENT_CHARACTER = 0xFFFD}YAML::Utils::xFFFD14,208
+			bool IsAnchorChar(YAML::Utils::IsAnchorChar16,251
+			int Utf8BytesIndicated(YAML::Utils::Utf8BytesIndicated47,929
+			bool IsTrailingByte(YAML::Utils::IsTrailingByte63,1272
+			bool GetNextCodePointAndAdvance(YAML::Utils::GetNextCodePointAndAdvance67,1347
+			void WriteCodePoint(YAML::Utils::WriteCodePoint109,2546
+			bool IsValidPlainScalar(YAML::Utils::IsValidPlainScalar130,3400
+			void WriteDoubleQuoteEscapeSequence(YAML::Utils::WriteDoubleQuoteEscapeSequence159,4493
+			bool WriteAliasName(YAML::Utils::WriteAliasName182,5077
+		bool WriteString(YAML::Utils::WriteString197,5411
+		bool WriteSingleQuotedString(YAML::Utils::WriteSingleQuotedString206,5675
+		bool WriteDoubleQuotedString(YAML::Utils::WriteDoubleQuotedString226,6148
+		bool WriteLiteralString(YAML::Utils::WriteLiteralString251,7013
+		bool WriteComment(YAML::Utils::WriteComment268,7417
+		bool WriteAlias(YAML::Utils::WriteAlias285,7904
+		bool WriteAnchor(YAML::Utils::WriteAnchor291,8022
+		bool WriteTag(YAML::Utils::WriteTag297,8139
+
+rec/yaml/src/emitterutils.h,65
+#define EMITTERUTILS_H_62B23520_7C8E_11DE_8A39_0800200C9A664,74
+
+rec/yaml/src/exp.cpp,232
+namespace YAML5,61
+	namespace ExpYAML::Exp7,78
+		unsigned ParseHex(YAML::Exp::ParseHex9,96
+		std::string Str(YAML::Exp::Str30,580
+		std::string Escape(YAML::Exp::Escape38,814
+		std::string Escape(YAML::Exp::Escape71,1881
+
+rec/yaml/src/exp.h,81
+#define EXP_H_62B23520_7C8E_11DE_8A39_0800200C9A664,65
+	namespace Keys172,4905
+
+rec/yaml/src/indentation.h,200
+#define INDENTATION_H_62B23520_7C8E_11DE_8A39_0800200C9A664,73
+	struct Indentation 12,193
+		Indentation(13,215
+		unsigned n;14,252
+	struct IndentTo 23,413
+		IndentTo(24,432
+		unsigned n;25,466
+
+rec/yaml/src/iterator.cpp,790
+namespace YAML5,65
+	Iterator::Iterator(YAML::Iterator::Iterator7,82
+	Iterator::Iterator(YAML::Iterator::Iterator12,149
+	Iterator::Iterator(YAML::Iterator::Iterator16,209
+	Iterator& Iterator::operator = YAML::Iterator::operator =21,309
+	Iterator::~Iterator(YAML::Iterator::~Iterator31,481
+	Iterator& Iterator::operator ++ YAML::Iterator::operator ++36,529
+	Iterator Iterator::operator ++ YAML::Iterator::operator ++46,720
+	const Node& Iterator::operator * YAML::Iterator::operator *58,938
+	const Node *Iterator::operator -> YAML::Iterator::operator ->66,1085
+	const Node& Iterator::first(YAML::Iterator::first74,1232
+	const Node& Iterator::second(YAML::Iterator::second82,1379
+	bool operator == YAML::operator ==90,1528
+	bool operator != YAML::operator !=103,1870
+
+rec/yaml/src/iterpriv.h,518
+#define ITERPRIV_H_62B23520_7C8E_11DE_8A39_0800200C9A664,70
+	struct IterPriv17,318
+		IterPriv(19,338
+		IterPriv(20,369
+		IterPriv(21,451
+		enum ITER_TYPE 23,547
+		enum ITER_TYPE { IT_NONE,23,547
+		enum ITER_TYPE { IT_NONE, IT_SEQ,23,547
+		enum ITER_TYPE { IT_NONE, IT_SEQ, IT_MAP 23,547
+		ITER_TYPE type;24,593
+		std::vector <Node *>::const_iterator seqIter;IterPriv::seqIter26,612
+		std::map IterPriv::std::map27,660
+		std::map <Node *, Node *, ltnode>::const_iterator mapIter;IterPriv::mapIter27,660
+
+rec/yaml/src/ltnode.h,106
+#define LTNODE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,68
+	struct ltnode 11,155
+		bool operator(12,172
+
+rec/yaml/src/map.cpp,824
+namespace YAML8,121
+	Map::Map(YAML::Map::Map10,138
+	Map::Map(YAML::Map::Map14,158
+	Map::~Map(YAML::Map::~Map23,401
+	void Map::Clear(YAML::Map::Clear28,432
+	Content *Map::Clone(YAML::Map::Clone37,597
+	bool Map::GetBegin(YAML::Map::GetBegin42,660
+	bool Map::GetEnd(YAML::Map::GetEnd48,786
+	std::size_t Map::GetSize(YAML::Map::GetSize54,908
+	void Map::Parse(YAML::Map::Parse59,973
+	void Map::ParseBlock(YAML::Map::ParseBlock73,1398
+	void Map::ParseFlow(YAML::Map::ParseFlow112,2373
+	void Map::ParseCompact(YAML::Map::ParseCompact158,3625
+	void Map::ParseCompactWithNoKey(YAML::Map::ParseCompactWithNoKey179,4191
+	void Map::AddEntry(YAML::Map::AddEntry192,4532
+	void Map::Write(YAML::Map::Write201,4754
+	int Map::Compare(YAML::Map::Compare209,4959
+	int Map::Compare(YAML::Map::Compare214,5038
+
+rec/yaml/src/map.h,413
+#define MAP_H_62B23520_7C8E_11DE_8A39_0800200C9A664,65
+	class Map:Map15,204
+		typedef std::map <Node Map::Node18,244
+		typedef std::map <Node *, Node Map::Node18,244
+		typedef std::map <Node *, Node *, ltnode> node_map;Map::node_map18,244
+		virtual bool IsMap(Map::IsMap34,729
+		virtual int Compare(Map::Compare38,832
+		virtual int Compare(Map::Compare39,878
+		node_map m_data;Map::m_data51,1300
+
+rec/yaml/src/node.cpp,1034
+namespace YAML15,266
+	bool ltnode::operator ()(YAML::ltnode::operator ()18,301
+	Node::Node(YAML::Node::Node23,408
+	Node::Node(YAML::Node::Node27,499
+	Node::~Node(YAML::Node::~Node34,779
+	void Node::Clear(YAML::Node::Clear39,812
+	std::auto_ptr<Node> Node::Clone(YAML::Node::Clone49,959
+	void Node::Parse(YAML::Node::Parse57,1198
+	void Node::ParseHeader(YAML::Node::ParseHeader129,3123
+	void Node::ParseTag(YAML::Node::ParseTag144,3484
+	void Node::ParseAnchor(YAML::Node::ParseAnchor155,3738
+	void Node::ParseAlias(YAML::Node::ParseAlias166,3999
+	CONTENT_TYPE Node::GetType(YAML::Node::GetType179,4339
+	Iterator Node::begin(YAML::Node::begin196,4678
+	Iterator Node::end(YAML::Node::end214,5118
+	std::size_t Node::size(YAML::Node::size233,5582
+	const Node *Node::FindAtIndex(YAML::Node::FindAtIndex241,5685
+	bool Node::GetScalar(YAML::Node::GetScalar249,5811
+	Emitter& operator << YAML::operator <<262,5994
+	int Node::Compare(YAML::Node::Compare284,6396
+	bool operator < YAML::operator <299,6650
+
+rec/yaml/src/null.cpp,81
+namespace YAML4,37
+	_Null Null;YAML::Null6,54
+	bool IsNull(YAML::IsNull8,68
+
+rec/yaml/src/ostream.cpp,363
+namespace YAML4,41
+	ostream::ostream(YAML::ostream::ostream6,58
+	ostream::~ostream(YAML::ostream::~ostream11,157
+	void ostream::reserve(YAML::ostream::reserve16,208
+	void ostream::put(YAML::ostream::put29,497
+	ostream& operator << YAML::operator <<44,733
+	ostream& operator << YAML::operator <<52,906
+	ostream& operator << YAML::operator <<58,1011
+
+rec/yaml/src/parser.cpp,685
+namespace YAML9,147
+	Parser::Parser(YAML::Parser::Parser11,164
+	Parser::Parser(YAML::Parser::Parser15,190
+	Parser::~Parser(YAML::Parser::~Parser20,243
+	Parser::operator bool(YAML::Parser::operator bool24,269
+	void Parser::Load(YAML::Parser::Load29,358
+	bool Parser::GetNextDocument(YAML::Parser::GetNextDocument38,591
+	void Parser::ParseDirectives(YAML::Parser::ParseDirectives72,1377
+	void Parser::HandleDirective(YAML::Parser::HandleDirective95,1861
+	void Parser::HandleYamlDirective(YAML::Parser::HandleYamlDirective105,2129
+	void Parser::HandleTagDirective(YAML::Parser::HandleTagDirective129,2946
+	void Parser::PrintTokens(YAML::Parser::PrintTokens142,3368
+
+rec/yaml/src/parserstate.cpp,180
+namespace YAML3,26
+	ParserState::ParserState(YAML::ParserState::ParserState5,43
+	const std::string ParserState::TranslateTagHandle(YAML::ParserState::TranslateTagHandle13,161
+
+rec/yaml/src/parserstate.h,1082
+#define PARSERSTATE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,73
+	struct Version 14,221
+		bool isDefault;15,239
+		int major,16,257
+		int major, minor;16,257
+	struct ParserState19,283
+		enum COLLECTION_TYPE 21,306
+		enum COLLECTION_TYPE { NONE,21,306
+		enum COLLECTION_TYPE { NONE, BLOCK_MAP,21,306
+		enum COLLECTION_TYPE { NONE, BLOCK_MAP, BLOCK_SEQ,21,306
+		enum COLLECTION_TYPE { NONE, BLOCK_MAP, BLOCK_SEQ, FLOW_MAP,21,306
+		enum COLLECTION_TYPE { NONE, BLOCK_MAP, BLOCK_SEQ, FLOW_MAP, FLOW_SEQ,21,306
+		enum COLLECTION_TYPE { NONE, BLOCK_MAP, BLOCK_SEQ, FLOW_MAP, FLOW_SEQ, COMPACT_MAP 21,306
+		ParserState(23,397
+		COLLECTION_TYPE GetCurCollectionType(ParserState::GetCurCollectionType26,488
+		void PushCollectionType(ParserState::PushCollectionType28,613
+		void PopCollectionType(ParserState::PopCollectionType29,693
+		Version version;ParserState::version31,809
+		std::map ParserState::std::map32,828
+		std::map <std::string, std::string> tags;ParserState::tags32,828
+		std::stack <COLLECTION_TYPE> collectionStack;ParserState::collectionStack33,872
+
+rec/yaml/src/regex.cpp,398
+namespace YAML3,20
+	RegEx::RegEx(YAML::RegEx::RegEx6,54
+	RegEx::RegEx(YAML::RegEx::RegEx10,97
+	RegEx::RegEx(YAML::RegEx::RegEx14,142
+	RegEx::RegEx(YAML::RegEx::RegEx18,201
+	RegEx::RegEx(YAML::RegEx::RegEx22,274
+	RegEx operator ! YAML::operator !29,450
+	RegEx operator || YAML::operator ||36,562
+	RegEx operator && YAML::operator &&44,725
+	RegEx operator + YAML::operator +52,889
+
+rec/yaml/src/regex.h,1136
+#define REGEX_H_62B23520_7C8E_11DE_8A39_0800200C9A664,67
+	enum REGEX_OP 14,192
+	enum REGEX_OP { REGEX_EMPTY,14,192
+	enum REGEX_OP { REGEX_EMPTY, REGEX_MATCH,14,192
+	enum REGEX_OP { REGEX_EMPTY, REGEX_MATCH, REGEX_RANGE,14,192
+	enum REGEX_OP { REGEX_EMPTY, REGEX_MATCH, REGEX_RANGE, REGEX_OR,14,192
+	enum REGEX_OP { REGEX_EMPTY, REGEX_MATCH, REGEX_RANGE, REGEX_OR, REGEX_AND,14,192
+	enum REGEX_OP { REGEX_EMPTY, REGEX_MATCH, REGEX_RANGE, REGEX_OR, REGEX_AND, REGEX_NOT,14,192
+	enum REGEX_OP { REGEX_EMPTY, REGEX_MATCH, REGEX_RANGE, REGEX_OR, REGEX_AND, REGEX_NOT, REGEX_SEQ 14,192
+	class RegEx19,429
+		RegEx(22,454
+		RegEx(23,465
+		RegEx(24,483
+		RegEx(25,508
+		~RegEx(26,566
+		friend RegEx operator ! (const RegEx& ex)28,581
+		friend RegEx operator || (const RegEx& ex1, const RegEx& ex2)29,626
+		friend RegEx operator && (const RegEx& ex1, const RegEx& ex2)30,691
+		friend RegEx operator + (const RegEx& ex1, const RegEx& ex2)31,756
+		bool Matches(33,823
+		REGEX_OP m_op;RegEx::m_op57,1878
+		char m_a,RegEx::m_a58,1895
+		char m_a, m_z;RegEx::m_z58,1895
+		std::vector <RegEx> m_params;RegEx::m_params59,1912
+
+rec/yaml/src/regeximpl.h,84
+#define REGEXIMPL_H_62B23520_7C8E_11DE_8A39_0800200C9A664,71
+namespace YAML11,207
+
+rec/yaml/src/scalar.cpp,408
+namespace YAML8,124
+	Scalar::Scalar(YAML::Scalar::Scalar10,141
+	Scalar::Scalar(YAML::Scalar::Scalar14,166
+	Scalar::~Scalar(YAML::Scalar::~Scalar18,228
+	Content *Scalar::Clone(YAML::Scalar::Clone22,254
+	void Scalar::Parse(YAML::Scalar::Parse27,322
+	void Scalar::Write(YAML::Scalar::Write34,470
+	int Scalar::Compare(YAML::Scalar::Compare39,534
+	int Scalar::Compare(YAML::Scalar::Compare44,616
+
+rec/yaml/src/scalar.h,384
+#define SCALAR_H_62B23520_7C8E_11DE_8A39_0800200C9A664,68
+	class Scalar:Scalar12,181
+		Scalar(15,223
+		Scalar(16,235
+		virtual ~Scalar(17,270
+		virtual Content *Clone(Clone19,292
+		virtual bool GetScalar(27,497
+		virtual int Compare(33,606
+		virtual int Compare(34,648
+		virtual int Compare(35,688
+		virtual int Compare(36,737
+		std::string m_data;Scalar::m_data39,794
+
+rec/yaml/src/scanner.cpp,1596
+namespace YAML8,119
+	Scanner::Scanner(YAML::Scanner::Scanner10,136
+	Scanner::~Scanner(YAML::Scanner::~Scanner15,290
+	bool Scanner::empty(YAML::Scanner::empty24,483
+	void Scanner::pop(YAML::Scanner::pop32,623
+	Token& Scanner::peek(YAML::Scanner::peek46,944
+	void Scanner::EnsureTokensInQueue(YAML::Scanner::EnsureTokensInQueue65,1475
+	void Scanner::ScanNextToken(YAML::Scanner::ScanNextToken96,2135
+	void Scanner::ScanToNextToken(YAML::Scanner::ScanToNextToken173,4091
+	bool Scanner::IsWhitespaceToBeEaten(YAML::Scanner::IsWhitespaceToBeEaten218,5484
+	const RegEx& Scanner::GetValueRegex(YAML::Scanner::GetValueRegex231,5701
+	void Scanner::StartStream(YAML::Scanner::StartStream241,5947
+	void Scanner::EndStream(YAML::Scanner::EndStream253,6247
+	Token *Scanner::PushToken(YAML::Scanner::PushToken266,6446
+	Token::TYPE Scanner::GetStartTokenFor(YAML::Scanner::GetStartTokenFor272,6569
+	Scanner::IndentMarker *Scanner::PushIndentTo(YAML::Scanner::PushIndentTo286,7044
+	void Scanner::PopIndentToHere(YAML::Scanner::PopIndentToHere315,7992
+	void Scanner::PopAllIndents(YAML::Scanner::PopAllIndents339,8625
+	void Scanner::PopIndent(YAML::Scanner::PopIndent357,8960
+	int Scanner::GetTopIndent(YAML::Scanner::GetTopIndent374,9374
+	void Scanner::Save(YAML::Scanner::Save384,9583
+	const Node *Scanner::Retrieve(YAML::Scanner::Retrieve392,9817
+		typedef std::map<std::string, const Node *> map;YAML::map394,9884
+	void Scanner::ThrowParserException(YAML::Scanner::ThrowParserException408,10253
+	void Scanner::ClearAnchors(YAML::Scanner::ClearAnchors418,10484
+
+rec/yaml/src/scanner.h,2168
+#define SCANNER_H_62B23520_7C8E_11DE_8A39_0800200C9A664,69
+	class Scanner21,308
+		Scanner(24,335
+		~Scanner(25,364
+		bool empty(28,444
+		void pop(29,460
+		Token& peek(30,474
+		void Save(33,515
+		const Node *Retrieve(Retrieve34,568
+		struct IndentMarker 38,659
+			enum INDENT_TYPE 39,683
+			enum INDENT_TYPE { MAP,39,683
+			enum INDENT_TYPE { MAP, SEQ,39,683
+			enum INDENT_TYPE { MAP, SEQ, NONE 39,683
+			enum STATUS 40,723
+			enum STATUS { VALID,40,723
+			enum STATUS { VALID, INVALID,40,723
+			enum STATUS { VALID, INVALID, UNKNOWN 40,723
+			IndentMarker(41,767
+			int column;43,882
+			INDENT_TYPE type;44,897
+			STATUS status;45,918
+			Token *pStartToken;pStartToken46,936
+		enum FLOW_MARKER 49,967
+		enum FLOW_MARKER { FLOW_MAP,49,967
+		enum FLOW_MARKER { FLOW_MAP, FLOW_SEQ 49,967
+		void EnsureTokensInQueue(53,1037
+		void ScanNextToken(54,1067
+		void ScanToNextToken(55,1091
+		void StartStream(56,1117
+		void EndStream(57,1139
+		Token *PushToken(PushToken58,1159
+		bool InFlowContext(60,1200
+		bool InBlockContext(61,1258
+		int GetFlowLevel(62,1316
+		struct SimpleKey Scanner::SimpleKey84,1977
+			Mark mark;Scanner::SimpleKey::mark90,2094
+			int flowLevel;Scanner::SimpleKey::flowLevel91,2108
+			IndentMarker *pIndent;Scanner::SimpleKey::pIndent92,2126
+			Token *pMapStart,Scanner::SimpleKey::pMapStart93,2152
+			Token *pMapStart, *pKey;Scanner::SimpleKey::pKey93,2152
+		Stream INPUT;Scanner::INPUT117,2638
+		std::queue <Token> m_tokens;Scanner::m_tokens120,2680
+		bool m_startedStream,Scanner::m_startedStream123,2728
+		bool m_startedStream, m_endedStream;Scanner::m_endedStream123,2728
+		bool m_simpleKeyAllowed;Scanner::m_simpleKeyAllowed124,2767
+		bool m_canBeJSONFlow;Scanner::m_canBeJSONFlow125,2794
+		std::stack <SimpleKey> m_simpleKeys;Scanner::m_simpleKeys126,2818
+		std::stack <IndentMarker *> m_indents;Scanner::m_indents127,2857
+		std::vector <IndentMarker *> m_indentRefs;Scanner::m_indentRefs128,2898
+		std::stack <FLOW_MARKER> m_flows;Scanner::m_flows129,2971
+		std::map Scanner::std::map130,3007
+		std::map <std::string, const Node *> m_anchors;Scanner::m_anchors130,3007
+
+rec/yaml/src/scanscalar.cpp,70
+namespace YAML7,106
+	std::string ScanScalar(YAML::ScanScalar19,417
+
+rec/yaml/src/scanscalar.h,857
+#define SCANSCALAR_H_62B23520_7C8E_11DE_8A39_0800200C9A664,72
+	enum CHOMP 13,207
+	enum CHOMP { STRIP 13,207
+	enum CHOMP { STRIP = -1, CLIP,13,207
+	enum CHOMP { STRIP = -1, CLIP, KEEP 13,207
+	enum ACTION 14,247
+	enum ACTION { NONE,14,247
+	enum ACTION { NONE, BREAK,14,247
+	enum ACTION { NONE, BREAK, THROW 14,247
+	enum FOLD 15,284
+	enum FOLD { DONT_FOLD,15,284
+	enum FOLD { DONT_FOLD, FOLD_BLOCK,15,284
+	enum FOLD { DONT_FOLD, FOLD_BLOCK, FOLD_FLOW 15,284
+	struct ScanScalarParams 17,334
+		ScanScalarParams(18,361
+		RegEx end;22,607
+		bool eatEnd;23,677
+		int indent;24,759
+		bool detectIndent;25,851
+		bool eatLeadingWhitespace;26,928
+		char escape;27,1041
+		FOLD fold;28,1152
+		bool trimTrailingSpaces;29,1215
+		CHOMP chomp;30,1303
+		ACTION onDocIndicator;32,1519
+		ACTION onTabInIndentation;33,1602
+		bool leadingSpaces;36,1728
+
+rec/yaml/src/scantag.cpp,206
+namespace YAML6,82
+	const std::string ScanVerbatimTag(YAML::ScanVerbatimTag8,99
+	const std::string ScanTagHandle(YAML::ScanTagHandle32,523
+	const std::string ScanTagSuffix(YAML::ScanTagSuffix66,1124
+
+rec/yaml/src/scantag.h,60
+#define SCANTAG_H_62B23520_7C8E_11DE_8A39_0800200C9A664,69
+
+rec/yaml/src/scantoken.cpp,949
+namespace YAML10,163
+	void Scanner::ScanDirective(YAML::Scanner::ScanDirective17,392
+	void Scanner::ScanDocStart(YAML::Scanner::ScanDocStart59,1274
+	void Scanner::ScanDocEnd(YAML::Scanner::ScanDocEnd73,1522
+	void Scanner::ScanFlowStart(YAML::Scanner::ScanFlowStart87,1769
+	void Scanner::ScanFlowEnd(YAML::Scanner::ScanFlowEnd104,2228
+	void Scanner::ScanFlowEntry(YAML::Scanner::ScanFlowEntry135,3063
+	void Scanner::ScanBlockEntry(YAML::Scanner::ScanBlockEntry155,3531
+	void Scanner::ScanKey(YAML::Scanner::ScanKey176,4030
+	void Scanner::ScanValue(YAML::Scanner::ScanValue196,4510
+	void Scanner::ScanAnchorOrAlias(YAML::Scanner::ScanAnchorOrAlias225,5273
+	void Scanner::ScanTag(YAML::Scanner::ScanTag259,6164
+	void Scanner::ScanPlainScalar(YAML::Scanner::ScanPlainScalar294,6982
+	void Scanner::ScanQuotedScalar(YAML::Scanner::ScanQuotedScalar330,8077
+	void Scanner::ScanBlockScalar(YAML::Scanner::ScanBlockScalar372,9300
+
+rec/yaml/src/sequence.cpp,867
+namespace YAML8,123
+	Sequence::Sequence(YAML::Sequence::Sequence10,140
+	Sequence::Sequence(YAML::Sequence::Sequence15,170
+	Sequence::~Sequence(YAML::Sequence::~Sequence21,320
+	void Sequence::Clear(YAML::Sequence::Clear26,361
+	Content *Sequence::Clone(YAML::Sequence::Clone33,474
+	bool Sequence::GetBegin(YAML::Sequence::GetBegin38,546
+	bool Sequence::GetEnd(YAML::Sequence::GetEnd44,664
+	Node *Sequence::GetNode(YAML::Sequence::GetNode50,778
+	std::size_t Sequence::GetSize(YAML::Sequence::GetSize57,888
+	void Sequence::Parse(YAML::Sequence::Parse62,958
+	void Sequence::ParseBlock(YAML::Sequence::ParseBlock74,1261
+	void Sequence::ParseFlow(YAML::Sequence::ParseFlow108,2122
+	void Sequence::Write(YAML::Sequence::Write140,3007
+	int Sequence::Compare(YAML::Sequence::Compare148,3157
+	int Sequence::Compare(YAML::Sequence::Compare153,3241
+
+rec/yaml/src/sequence.h,427
+#define SEQUENCE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,70
+	class Sequence:Sequence14,199
+		Sequence(17,243
+		Sequence(18,257
+		virtual ~Sequence(19,302
+		void Clear(21,326
+		virtual Content *Clone(Clone22,342
+		virtual bool IsSequence(Sequence::IsSequence32,711
+		virtual int Compare(Sequence::Compare36,819
+		virtual int Compare(Sequence::Compare38,904
+		std::vector <Node *> m_data;Sequence::m_data45,1087
+
+rec/yaml/src/setting.h,1114
+#define SETTING_H_62B23520_7C8E_11DE_8A39_0800200C9A664,69
+	class Setting16,256
+		Setting(19,283
+		const T get(21,312
+		void restore(Setting::restore23,411
+		T m_value;Setting::m_value28,506
+	class SettingChangeBase31,524
+		virtual ~SettingChangeBase(SettingChangeBase::~SettingChangeBase34,561
+	class SettingChange:SettingChange39,650
+		SettingChange(SettingChange::SettingChange42,709
+		virtual void pop(SettingChange::pop47,851
+		Setting<T> *m_pCurSetting;SettingChange::m_pCurSetting52,930
+		Setting<T> m_oldSetting;SettingChange::m_oldSetting53,959
+	class SettingChanges:SettingChanges63,1206
+		SettingChanges(SettingChanges::SettingChanges66,1261
+		~SettingChanges(SettingChanges::~SettingChanges67,1283
+		void clear(SettingChanges::clear69,1319
+		void restore(SettingChanges::restore77,1506
+		void push(SettingChanges::push82,1650
+		SettingChanges& operator = SettingChanges::operator =87,1840
+		typedef std::vector <SettingChangeBase *> setting_changes;SettingChanges::setting_changes98,2058
+		setting_changes m_settingChanges;SettingChanges::m_settingChanges99,2119
+
+rec/yaml/src/simplekey.cpp,744
+namespace YAML6,82
+	Scanner::SimpleKey::SimpleKey(YAML::Scanner::SimpleKey::SimpleKey8,99
+	void Scanner::SimpleKey::Validate(YAML::Scanner::SimpleKey::Validate13,246
+	void Scanner::SimpleKey::Invalidate(YAML::Scanner::SimpleKey::Invalidate26,568
+	bool Scanner::CanInsertPotentialSimpleKey(YAML::Scanner::CanInsertPotentialSimpleKey37,805
+	bool Scanner::ExistsActiveSimpleKey(YAML::Scanner::ExistsActiveSimpleKey48,1134
+	void Scanner::InsertPotentialSimpleKey(YAML::Scanner::InsertPotentialSimpleKey60,1437
+	void Scanner::InvalidateSimpleKey(YAML::Scanner::InvalidateSimpleKey87,2165
+	bool Scanner::VerifySimpleKey(YAML::Scanner::VerifySimpleKey104,2523
+	void Scanner::PopAllSimpleKeys(YAML::Scanner::PopAllSimpleKeys133,3070
+
+rec/yaml/src/stream.cpp,3090
+#define YAML_PREFETCH_SIZE 6,85
+#define S_ARRAY_SIZE(9,125
+#define S_ARRAY_END(10,176
+#define CP_REPLACEMENT_CHARACTER 12,226
+namespace YAML14,269
+	enum UtfIntroState YAML::UtfIntroState16,286
+		uis_start,YAML::UtfIntroState::uis_start17,308
+		uis_utfbe_b1,YAML::UtfIntroState::uis_utfbe_b118,321
+		uis_utf32be_b2,YAML::UtfIntroState::uis_utf32be_b219,337
+		uis_utf32be_bom3,YAML::UtfIntroState::uis_utf32be_bom320,355
+		uis_utf32be,YAML::UtfIntroState::uis_utf32be21,375
+		uis_utf16be,YAML::UtfIntroState::uis_utf16be22,390
+		uis_utf16be_bom1,YAML::UtfIntroState::uis_utf16be_bom123,405
+		uis_utfle_bom1,YAML::UtfIntroState::uis_utfle_bom124,425
+		uis_utf16le_bom2,YAML::UtfIntroState::uis_utf16le_bom225,443
+		uis_utf32le_bom3,YAML::UtfIntroState::uis_utf32le_bom326,463
+		uis_utf16le,YAML::UtfIntroState::uis_utf16le27,483
+		uis_utf32le,YAML::UtfIntroState::uis_utf32le28,498
+		uis_utf8_imp,YAML::UtfIntroState::uis_utf8_imp29,513
+		uis_utf16le_imp,YAML::UtfIntroState::uis_utf16le_imp30,529
+		uis_utf32le_imp3,YAML::UtfIntroState::uis_utf32le_imp331,548
+		uis_utf8_bom1,YAML::UtfIntroState::uis_utf8_bom132,568
+		uis_utf8_bom2,YAML::UtfIntroState::uis_utf8_bom233,585
+		uis_utf8,YAML::UtfIntroState::uis_utf834,602
+		uis_errorYAML::UtfIntroState::uis_error35,614
+	enum UtfIntroCharType YAML::UtfIntroCharType38,631
+		uict00,YAML::UtfIntroCharType::uict0039,656
+		uictBB,YAML::UtfIntroCharType::uictBB40,666
+		uictBF,YAML::UtfIntroCharType::uictBF41,676
+		uictEF,YAML::UtfIntroCharType::uictEF42,686
+		uictFE,YAML::UtfIntroCharType::uictFE43,696
+		uictFF,YAML::UtfIntroCharType::uictFF44,706
+		uictAscii,YAML::UtfIntroCharType::uictAscii45,716
+		uictOther,YAML::UtfIntroCharType::uictOther46,729
+		uictMaxYAML::UtfIntroCharType::uictMax47,742
+	static bool s_introFinalState[YAML::s_introFinalState50,757
+	static UtfIntroState s_introTransitions[YAML::s_introTransitions72,1270
+	static char s_introUngetCount[YAML::s_introUngetCount94,4052
+	inline UtfIntroCharType IntroCharTypeOf(YAML::IntroCharTypeOf116,5401
+	inline char Utf8Adjust(YAML::Utf8Adjust138,5815
+	inline void QueueUnicodeCodepoint(YAML::QueueUnicodeCodepoint147,6139
+	Stream::Stream(YAML::Stream::Stream180,6916
+		typedef std::istream::traits_type char_traits;YAML::char_traits185,7101
+	Stream::~Stream(YAML::Stream::~Stream224,8254
+	char Stream::peek(YAML::Stream::peek229,8306
+	Stream::operator bool(YAML::Stream::operator bool239,8427
+	char Stream::get(YAML::Stream::get246,8627
+	std::string Stream::get(YAML::Stream::get262,8874
+	void Stream::eat(YAML::Stream::eat273,9064
+	void Stream::AdvanceCurrent(YAML::Stream::AdvanceCurrent279,9129
+	bool Stream::_ReadAheadTo(YAML::Stream::_ReadAheadTo290,9267
+	void Stream::StreamInUtf8(YAML::Stream::StreamInUtf8311,9738
+	void Stream::StreamInUtf16(YAML::Stream::StreamInUtf16320,9874
+	inline char* ReadBuffer(YAML::ReadBuffer394,11665
+	unsigned char Stream::GetNextByte(YAML::Stream::GetNextByte399,11764
+	void Stream::StreamInUtf32(YAML::Stream::StreamInUtf32426,12301
+
+rec/yaml/src/stream.h,1413
+#define STREAM_H_62B23520_7C8E_11DE_8A39_0800200C9A664,68
+namespace YAML15,253
+	class Stream:Stream19,317
+		Stream(24,400
+		~Stream(25,431
+		operator bool(27,445
+		char peek(30,536
+		static char eof(Stream::eof35,621
+		const Mark mark(Stream::mark37,661
+		int pos(Stream::pos38,706
+		int line(Stream::line39,747
+		int column(Stream::column40,790
+		void ResetColumn(Stream::ResetColumn41,837
+		enum CharacterSet Stream::CharacterSet44,892
+		enum CharacterSet {utf8,Stream::CharacterSet::utf844,892
+		enum CharacterSet {utf8, utf16le,Stream::CharacterSet::utf16le44,892
+		enum CharacterSet {utf8, utf16le, utf16be,Stream::CharacterSet::utf16be44,892
+		enum CharacterSet {utf8, utf16le, utf16be, utf32le,Stream::CharacterSet::utf32le44,892
+		enum CharacterSet {utf8, utf16le, utf16be, utf32le, utf32be}Stream::CharacterSet::utf32be44,892
+		std::istream& m_input;Stream::m_input46,957
+		Mark m_mark;Stream::m_mark47,982
+		CharacterSet m_charSet;Stream::m_charSet49,1000
+		unsigned char m_bufPushback[Stream::m_bufPushback50,1026
+		mutable size_t m_nPushedBack;Stream::m_nPushedBack51,1078
+		mutable std::deque<char> m_readahead;Stream::m_readahead52,1110
+		unsigned char* const m_pPrefetched;Stream::m_pPrefetched53,1150
+		mutable size_t m_nPrefetchedAvailable;Stream::m_nPrefetchedAvailable54,1188
+		mutable size_t m_nPrefetchedUsed;Stream::m_nPrefetchedUsed55,1229
+
+rec/yaml/src/streamcharsource.h,556
+#define STREAMCHARSOURCE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,78
+	class StreamCharSource12,206
+		StreamCharSource(15,242
+		StreamCharSource(16,317
+		~StreamCharSource(17,425
+		operator bool(19,451
+		bool operator !(StreamCharSource::operator !21,559
+		std::size_t m_offset;StreamCharSource::m_offset26,689
+		const Stream& m_stream;StreamCharSource::m_stream27,713
+	inline StreamCharSource::operator bool(StreamCharSource::operator bool32,822
+	inline const StreamCharSource StreamCharSource::operator + StreamCharSource::operator +36,918
+
+rec/yaml/src/stringsource.h,335
+#define STRINGSOURCE_H_62B23520_7C8E_11DE_8A39_0800200C9A664,74
+	class StringCharSource11,173
+		StringCharSource(14,209
+		operator bool(16,306
+		char operator 17,360
+		const char *m_str;StringCharSource::m_str39,906
+		std::size_t m_size;StringCharSource::m_size40,927
+		std::size_t m_offset;StringCharSource::m_offset41,949
+
+rec/yaml/src/tag.cpp,114
+namespace YAML6,81
+	Tag::Tag(YAML::Tag::Tag8,98
+	const std::string Tag::Translate(YAML::Tag::Translate31,521
+
+rec/yaml/src/tag.h,487
+#define TAG_H_62B23520_7C8E_11DE_8A39_0800200C9A664,65
+	struct Tag 13,190
+		enum TYPE 14,204
+			VERBATIM,15,218
+			VERBATIM, PRIMARY_HANDLE,15,218
+			VERBATIM, PRIMARY_HANDLE, SECONDARY_HANDLE,15,218
+			VERBATIM, PRIMARY_HANDLE, SECONDARY_HANDLE, NAMED_HANDLE,15,218
+			VERBATIM, PRIMARY_HANDLE, SECONDARY_HANDLE, NAMED_HANDLE, NON_SPECIFIC15,218
+		Tag(18,300
+		TYPE type;Tag::type21,387
+		std::string handle,Tag::handle22,400
+		std::string handle, value;Tag::value22,400
+
+rec/yaml/src/token.h,1604
+#define TOKEN_H_62B23520_7C8E_11DE_8A39_0800200C9A664,67
+namespace YAML12,192
+	struct Token 37,567
+		enum STATUS Token::STATUS39,594
+		enum STATUS { VALID,Token::STATUS::VALID39,594
+		enum STATUS { VALID, INVALID,Token::STATUS::INVALID39,594
+		enum STATUS { VALID, INVALID, UNVERIFIED Token::STATUS::UNVERIFIED39,594
+		enum TYPE Token::TYPE40,640
+			DIRECTIVE,Token::TYPE::DIRECTIVE41,654
+			DOC_START,Token::TYPE::DOC_START42,668
+			DOC_END,Token::TYPE::DOC_END43,682
+			BLOCK_SEQ_START,Token::TYPE::BLOCK_SEQ_START44,694
+			BLOCK_MAP_START,Token::TYPE::BLOCK_MAP_START45,714
+			BLOCK_SEQ_END,Token::TYPE::BLOCK_SEQ_END46,734
+			BLOCK_MAP_END,Token::TYPE::BLOCK_MAP_END47,752
+			BLOCK_ENTRY,Token::TYPE::BLOCK_ENTRY48,770
+			FLOW_SEQ_START,Token::TYPE::FLOW_SEQ_START49,786
+			FLOW_MAP_START,Token::TYPE::FLOW_MAP_START50,805
+			FLOW_SEQ_END,Token::TYPE::FLOW_SEQ_END51,824
+			FLOW_MAP_END,Token::TYPE::FLOW_MAP_END52,841
+			FLOW_MAP_COMPACT,Token::TYPE::FLOW_MAP_COMPACT53,858
+			FLOW_ENTRY,Token::TYPE::FLOW_ENTRY54,879
+			KEY,Token::TYPE::KEY55,894
+			VALUE,Token::TYPE::VALUE56,902
+			ANCHOR,Token::TYPE::ANCHOR57,912
+			ALIAS,Token::TYPE::ALIAS58,923
+			TAG,Token::TYPE::TAG59,933
+			SCALARToken::TYPE::SCALAR60,941
+		Token(Token::Token64,971
+		friend std::ostream& operator << Token::operator <<66,1064
+		STATUS status;Token::status73,1329
+		TYPE type;Token::type74,1346
+		Mark mark;Token::mark75,1359
+		std::string value;Token::value76,1372
+		std::vector <std::string> params;Token::params77,1393
+		int data;Token::data78,1429
+
+rec/yaml/WriteYaml.cpp,502
+namespace rec 4,50
+namespace yaml rec::yaml5,66
+YAML::Emitter& operator<<(rec::yaml::operator<<10,162
+YAML::Emitter& operator<<(14,270
+YAML::Emitter& operator<<(42,1868
+typedef std::vector<const FieldDescriptor*> FieldVector;78,3440
+static const int MAX_FIELD_COUNT 80,3498
+static const int MAX_ARRAY_COUNT 81,3536
+bool isSmall(83,3575
+YAML::Emitter& write(99,4027
+int shortLength(111,4378
+const static int SHORT_LENGTH 118,4506
+YAML::Emitter& operator<<(120,4543
+string write(138,5020
+
+rec/yaml/Yaml.h,31
+#define __REC_YAML_YAML__2,26
+
+rec/yaml/Yaml_test.cpp,154
+namespace rec 8,117
+namespace yaml rec::yaml9,133
+using proto::Operation;rec::yaml::proto::Operation12,163
+TEST(rec::yaml::TEST21,337
+TEST(31,587
+
+rec/audio/ammf_scaler/mfMath.h,0

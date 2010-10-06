@@ -2,7 +2,7 @@
 
 #include "rec/persist/AppInstance.h"
 #include "rec/persist/Data.h"
-#include "rec/thread/CallbackLoop.h"
+#include "rec/util/thread/CallbackLoop.h"
 #include "rec/util/STL.h"
 
 namespace rec {

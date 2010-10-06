@@ -4,7 +4,7 @@
 #include <set>
 
 #include "rec/persist/App.h"
-#include "rec/thread/RunnableThread.h"
+#include "rec/util/thread/RunnableThread.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 

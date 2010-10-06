@@ -1,8 +1,8 @@
 #ifndef __REC_THREAD_RUNNABLETHREAD
 #define __REC_THREAD_RUNNABLETHREAD
 
-#include "rec/thread/Runnable.h"
-#include "rec/thread/Wrapper.h"
+#include "rec/util/thread/Runnable.h"
+#include "rec/util/thread/Wrapper.h"
 
 namespace rec {
 namespace thread {

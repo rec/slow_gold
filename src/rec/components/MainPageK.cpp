@@ -10,10 +10,10 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/persist/Copy.h"
 
-#include "rec/thread/LockedMessage.h"
-#include "rec/thread/RunnableThread.h"
-#include "rec/thread/WaitLoop.h"
-#include "rec/thread/Callback.h"
+#include "rec/util/thread/LockedMessage.h"
+#include "rec/util/thread/RunnableThread.h"
+#include "rec/util/thread/WaitLoop.h"
+#include "rec/util/thread/Callback.h"
 #include "rec/yaml/Yaml.h"
 
 using rec::audio::source::TimeStretch;

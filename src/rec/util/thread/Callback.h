@@ -2,7 +2,7 @@
 #define __REC_THREAD_CALLBACK__
 
 #include "rec/base/base.h"
-#include "rec/thread/Runnable.h"
+#include "rec/util/thread/Runnable.h"
 
 namespace rec {
 namespace thread {

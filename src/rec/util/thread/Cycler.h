@@ -1,7 +1,7 @@
 #ifndef __REC_THREAD_CYCLER__
 #define __REC_THREAD_CYCLER__
 
-#include "rec/thread/Runnable.h"
+#include "rec/util/thread/Runnable.h"
 
 namespace rec {
 namespace thread {

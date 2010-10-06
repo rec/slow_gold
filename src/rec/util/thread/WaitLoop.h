@@ -1,9 +1,9 @@
 #ifndef __REC_THREAD_WAITLOOP__
 #define __REC_THREAD_WAITLOOP__
 
-#include "rec/thread/Cycler.h"
-#include "rec/thread/Waiter.h"
-#include "rec/thread/Loop.h"
+#include "rec/util/thread/Cycler.h"
+#include "rec/util/thread/Waiter.h"
+#include "rec/util/thread/Loop.h"
 
 namespace rec {
 namespace thread {

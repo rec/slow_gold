@@ -2,9 +2,9 @@
 #define __REC_THREAD_CALLBACKLOOP__
 
 #include "rec/base/base.h"
-#include "rec/thread/Callback.h"
-#include "rec/thread/RunnableThread.h"
-#include "rec/thread/WaitLoop.h"
+#include "rec/util/thread/Callback.h"
+#include "rec/util/thread/RunnableThread.h"
+#include "rec/util/thread/WaitLoop.h"
 
 namespace rec {
 namespace thread {

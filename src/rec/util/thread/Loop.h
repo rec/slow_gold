@@ -1,7 +1,7 @@
 #ifndef __REC_THREAD_LOOP__
 #define __REC_THREAD_LOOP__
 
-#include "rec/thread/Wrapper.h"
+#include "rec/util/thread/Wrapper.h"
 
 namespace rec {
 namespace thread {
