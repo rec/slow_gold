@@ -1,5 +1,5 @@
 #include "rec/widgets/AudioThumbnail.h"
-#include "rec/app/MainPageK.h"
+#include "rec/slow/app/MainPageK.h"
 #include "rec/gui/Color.h"
 
 namespace rec {

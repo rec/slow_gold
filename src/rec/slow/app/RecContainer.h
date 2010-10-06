@@ -4,8 +4,8 @@
 #include <algorithm>
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/app/ComponentContainer.h"
-#include "rec/app/MainPageComponent.h"
+#include "rec/slow/app/ComponentContainer.h"
+#include "rec/slow/app/MainPageComponent.h"
 
 namespace rec {
 

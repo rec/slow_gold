@@ -1,5 +1,5 @@
-#include "rec/app/RecWindow.h"
-#include "rec/app/RecContainer.h"
+#include "rec/slow/app/RecWindow.h"
+#include "rec/slow/app/RecContainer.h"
 
 namespace rec {
 
