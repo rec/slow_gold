@@ -1,4 +1,13 @@
 
+rec/app/AudioSetupPage.h,434
+#define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__2,73
+class AudioSetupPage 6,191
+  explicit AudioSetupPage(AudioSetupPage::AudioSetupPage8,245
+  void paint AudioSetupPage::paint17,594
+  void resized(AudioSetupPage::resized21,669
+  AudioDeviceManager& deviceManager_;AudioSetupPage::deviceManager_28,816
+  scoped_ptr<AudioDeviceSelectorComponent> deviceSelector_;AudioSetupPage::deviceSelector_29,855
+
 rec/app/ComponentContainer.h,540
 #define __REC_COMPONENT_CONTAINER2,34
 class ComponentContainer10,155
@@ -28,6 +37,112 @@ class GenericApplication 13,225
   void anotherInstanceStarted GenericApplication::anotherInstanceStarted40,1035
   const string name_;GenericApplication::name_43,1109
   const string version_;GenericApplication::version_44,1131
+
+rec/app/MainPageComponent.cpp,335
+MainPageComponent::MainPageComponent 36,1087
+MainPageComponent::~MainPageComponent(56,1796
+void MainPageComponent::paint 68,2165
+void MainPageComponent::resized(79,2421
+Component* createAudioDemo(90,2809
+void MainPageComponent::loadRecentFile(95,2884
+void MainPageComponent::cut(100,3062
+void MainPageComponent::paste(104,3192
+
+rec/app/MainPageComponent.h,278
+#define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__23,782
+class MainPageComponent 38,1338
+    AudioDeviceManager deviceManager;MainPageComponent::deviceManager62,2079
+    TabbedComponent* tabbedComponent;MainPageComponent::tabbedComponent66,2230
+
+rec/app/MainPageJ.cpp,298
+MainPageJ::MainPageJ(33,1041
+MainPageJ::~MainPageJ(125,4929
+void MainPageJ::paint 150,5706
+void MainPageJ::resized(161,5958
+void MainPageJ::buttonClicked 180,6915
+void MainPageJ::sliderValueChanged 202,7497
+void MainPageJ::sliderDragEnded 228,8344
+void MainPageJ::selectionChanged(233,8460
+
+rec/app/MainPageJ.h,1122
+#define __REC_COMPONENT_MAIN_PAGE_J_H__23,744
+class MainPageJ 40,1257
+  rec::slow::MainPageK peer_;MainPageJ::peer_61,1958
+  void loadRecentFile(MainPageJ::loadRecentFile67,2082
+  void cut(MainPageJ::cut68,2159
+  void paste(MainPageJ::paste69,2190
+    Label* zoomLabel;MainPageJ::zoomLabel76,2350
+    rec::gui::AudioThumbnailComponent* thumbnail;MainPageJ::thumbnail77,2373
+    TextButton* startStopButton;MainPageJ::startStopButton78,2424
+    FileTreeComponent* fileTreeComp;MainPageJ::fileTreeComp79,2458
+    Label* explanation;MainPageJ::explanation80,2496
+    Slider* zoomSlider;MainPageJ::zoomSlider81,2521
+    Slider* timeScaleSlider;MainPageJ::timeScaleSlider82,2546
+    Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider83,2576
+    ToggleButton* loopingButton;MainPageJ::loopingButton84,2607
+    rec::gui::time::TextComponent* songTime;MainPageJ::songTime85,2641
+    rec::gui::time::TextComponent* realTime;MainPageJ::realTime86,2687
+    rec::gui::time::DialComponent* songDial;MainPageJ::songDial87,2733
+    rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2779
+
+rec/app/MainPageK.cpp,1269
+using rec::audio::source::TimeStretch;19,451
+using rec::gui::ThreadDescription;21,493
+using rec::gui::ThumbnailDescription;22,529
+using rec::gui::ThumbnailDescription;23,568
+using rec::persist::copy;25,609
+using rec::thread::Callback;27,638
+using rec::thread::LockedMessage;28,668
+using rec::thread::Runnable;29,703
+using rec::thread::RunnableThread;30,733
+using rec::thread::WaitLoop;31,769
+using rec::thread::makeCallback;32,799
+namespace rec 34,835
+namespace slow rec::slow35,852
+MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1237
+static Thread* makeCursorThread(51,1465
+void MainPageK::construct(60,1868
+void MainPageK::destruct(94,2988
+void MainPageK::loadRecentFile(110,3452
+static const int RATE 116,3675
+void MainPageK::updateCursor(118,3709
+void MainPageK::setPosition(129,4185
+void MainPageK::loadFileIntoTransport(133,4310
+void MainPageK::sliderDragEnded(164,5353
+void MainPageK::sliderValueChanged(173,5686
+static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6228
+void MainPageK::changeListenerCallback(204,6742
+void MainPageK::startStopButtonClicked(225,7326
+void MainPageK::loopingButtonClicked(232,7481
+void MainPageK::selectionChanged(237,7614
+void MainPageK::cut(244,7795
+void MainPageK::paste(251,7984
+
+rec/app/MainPageK.h,1783
+#define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
+namespace rec 14,290
+namespace slow rec::slow15,306
+class MainPageK rec::slow::MainPageK17,324
+  ~MainPageK(rec::slow::MainPageK::~MainPageK22,500
+  virtual void fileClicked(rec::slow::MainPageK::fileClicked39,937
+  virtual void fileDoubleClicked(rec::slow::MainPageK::fileDoubleClicked40,1006
+  DirectoryContentsList* directoryList(rec::slow::MainPageK::directoryList42,1061
+  static const TreeView::ColourIds BACKGROUND;rec::slow::MainPageK::BACKGROUND52,1311
+  static const Colour FOREGROUND;rec::slow::MainPageK::FOREGROUND53,1358
+  static const File::SpecialLocationType START_DIR;rec::slow::MainPageK::START_DIR54,1392
+  static const char* PREVIEW_THREAD_NAME;rec::slow::MainPageK::PREVIEW_THREAD_NAME55,1444
+  MainPageJ* peer_;rec::slow::MainPageK::peer_60,1563
+  TimeSliceThread directoryListThread_;rec::slow::MainPageK::directoryListThread_63,1644
+  DirectoryContentsList directoryList_;rec::slow::MainPageK::directoryList_64,1684
+  AudioTransportSource transportSource_;rec::slow::MainPageK::transportSource_67,1768
+  AudioSourcePlayer player_;rec::slow::MainPageK::player_70,1850
+  AudioDeviceManager* deviceManager_;rec::slow::MainPageK::deviceManager_73,1911
+  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;rec::slow::MainPageK::DoubleStretchyThread75,1950
+  scoped_ptr<DoubleStretchyThread> stretchy_;rec::slow::MainPageK::stretchy_76,2023
+  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;rec::slow::MainPageK::stretchyDeleter_77,2069
+  scoped_ptr<Thread> cursorThread_;rec::slow::MainPageK::cursorThread_79,2123
+  std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_81,2160
+  StringArray cdNames_;rec::slow::MainPageK::cdNames_83,2201
 
 rec/app/RecApplication.h,183
 #define __REC_APP_RECAPPLICATION__2,35
@@ -988,121 +1103,6 @@ class EventQueue 24,304
   EventList events_;EventQueue::events_37,494
   scoped_ptr<proto::logfile::Output> logfile_;EventQueue::logfile_38,515
   scoped_ptr<juce::CriticalSection> lock_;EventQueue::lock_39,562
-
-rec/components/AudioSetupPage.h,430
-#define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__2,73
-class AudioSetupPage 6,191
-  explicit AudioSetupPage(AudioSetupPage::AudioSetupPage8,245
-  void paint AudioSetupPage::paint17,643
-  void resized(AudioSetupPage::resized21,718
-  AudioDeviceManager& deviceManager;AudioSetupPage::deviceManager28,866
-  scoped_ptr<AudioDeviceSelectorComponent> deviceSelector;AudioSetupPage::deviceSelector29,904
-
-rec/components/MainPageComponent.cpp,335
-MainPageComponent::MainPageComponent 36,1087
-MainPageComponent::~MainPageComponent(56,1796
-void MainPageComponent::paint 68,2165
-void MainPageComponent::resized(79,2421
-Component* createAudioDemo(90,2809
-void MainPageComponent::loadRecentFile(95,2884
-void MainPageComponent::cut(100,3062
-void MainPageComponent::paste(104,3192
-
-rec/components/MainPageComponent.h,278
-#define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__23,782
-class MainPageComponent 38,1338
-    AudioDeviceManager deviceManager;MainPageComponent::deviceManager62,2079
-    TabbedComponent* tabbedComponent;MainPageComponent::tabbedComponent66,2230
-
-rec/components/MainPageJ.cpp,298
-MainPageJ::MainPageJ(33,1041
-MainPageJ::~MainPageJ(125,4929
-void MainPageJ::paint 150,5706
-void MainPageJ::resized(161,5958
-void MainPageJ::buttonClicked 180,6915
-void MainPageJ::sliderValueChanged 202,7497
-void MainPageJ::sliderDragEnded 228,8344
-void MainPageJ::selectionChanged(233,8460
-
-rec/components/MainPageJ.h,1122
-#define __REC_COMPONENT_MAIN_PAGE_J_H__23,744
-class MainPageJ 40,1257
-  rec::slow::MainPageK peer_;MainPageJ::peer_61,1958
-  void loadRecentFile(MainPageJ::loadRecentFile67,2082
-  void cut(MainPageJ::cut68,2159
-  void paste(MainPageJ::paste69,2190
-    Label* zoomLabel;MainPageJ::zoomLabel76,2350
-    rec::gui::AudioThumbnailComponent* thumbnail;MainPageJ::thumbnail77,2373
-    TextButton* startStopButton;MainPageJ::startStopButton78,2424
-    FileTreeComponent* fileTreeComp;MainPageJ::fileTreeComp79,2458
-    Label* explanation;MainPageJ::explanation80,2496
-    Slider* zoomSlider;MainPageJ::zoomSlider81,2521
-    Slider* timeScaleSlider;MainPageJ::timeScaleSlider82,2546
-    Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider83,2576
-    ToggleButton* loopingButton;MainPageJ::loopingButton84,2607
-    rec::gui::time::TextComponent* songTime;MainPageJ::songTime85,2641
-    rec::gui::time::TextComponent* realTime;MainPageJ::realTime86,2687
-    rec::gui::time::DialComponent* songDial;MainPageJ::songDial87,2733
-    rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2779
-
-rec/components/MainPageK.cpp,1269
-using rec::audio::source::TimeStretch;19,451
-using rec::gui::ThreadDescription;21,493
-using rec::gui::ThumbnailDescription;22,529
-using rec::gui::ThumbnailDescription;23,568
-using rec::persist::copy;25,609
-using rec::thread::Callback;27,638
-using rec::thread::LockedMessage;28,668
-using rec::thread::Runnable;29,703
-using rec::thread::RunnableThread;30,733
-using rec::thread::WaitLoop;31,769
-using rec::thread::makeCallback;32,799
-namespace rec 34,835
-namespace slow rec::slow35,852
-MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1237
-static Thread* makeCursorThread(51,1465
-void MainPageK::construct(60,1868
-void MainPageK::destruct(94,2988
-void MainPageK::loadRecentFile(110,3452
-static const int RATE 116,3675
-void MainPageK::updateCursor(118,3709
-void MainPageK::setPosition(129,4185
-void MainPageK::loadFileIntoTransport(133,4310
-void MainPageK::sliderDragEnded(164,5353
-void MainPageK::sliderValueChanged(173,5686
-static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6228
-void MainPageK::changeListenerCallback(204,6742
-void MainPageK::startStopButtonClicked(225,7326
-void MainPageK::loopingButtonClicked(232,7481
-void MainPageK::selectionChanged(237,7614
-void MainPageK::cut(244,7795
-void MainPageK::paste(251,7984
-
-rec/components/MainPageK.h,1783
-#define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
-namespace rec 14,290
-namespace slow rec::slow15,306
-class MainPageK rec::slow::MainPageK17,324
-  ~MainPageK(rec::slow::MainPageK::~MainPageK22,500
-  virtual void fileClicked(rec::slow::MainPageK::fileClicked39,937
-  virtual void fileDoubleClicked(rec::slow::MainPageK::fileDoubleClicked40,1006
-  DirectoryContentsList* directoryList(rec::slow::MainPageK::directoryList42,1061
-  static const TreeView::ColourIds BACKGROUND;rec::slow::MainPageK::BACKGROUND52,1311
-  static const Colour FOREGROUND;rec::slow::MainPageK::FOREGROUND53,1358
-  static const File::SpecialLocationType START_DIR;rec::slow::MainPageK::START_DIR54,1392
-  static const char* PREVIEW_THREAD_NAME;rec::slow::MainPageK::PREVIEW_THREAD_NAME55,1444
-  MainPageJ* peer_;rec::slow::MainPageK::peer_60,1563
-  TimeSliceThread directoryListThread_;rec::slow::MainPageK::directoryListThread_63,1644
-  DirectoryContentsList directoryList_;rec::slow::MainPageK::directoryList_64,1684
-  AudioTransportSource transportSource_;rec::slow::MainPageK::transportSource_67,1768
-  AudioSourcePlayer player_;rec::slow::MainPageK::player_70,1850
-  AudioDeviceManager* deviceManager_;rec::slow::MainPageK::deviceManager_73,1911
-  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;rec::slow::MainPageK::DoubleStretchyThread75,1950
-  scoped_ptr<DoubleStretchyThread> stretchy_;rec::slow::MainPageK::stretchy_76,2023
-  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;rec::slow::MainPageK::stretchyDeleter_77,2069
-  scoped_ptr<Thread> cursorThread_;rec::slow::MainPageK::cursorThread_79,2123
-  std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_81,2160
-  StringArray cdNames_;rec::slow::MainPageK::cdNames_83,2201
 
 rec/data/persist/App.h,606
 #define __REC_PERSIST_APPBASE__2,32

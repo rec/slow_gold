@@ -24,7 +24,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 
-#include "rec/components/MainPageK.h"
+#include "rec/app/MainPageK.h"
 #include "rec/gui/Time.h"
 
 //[/Headers]

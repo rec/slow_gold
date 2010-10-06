@@ -5,7 +5,7 @@
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/app/ComponentContainer.h"
-#include "rec/components/MainPageComponent.h"
+#include "rec/app/MainPageComponent.h"
 
 namespace rec {
 
