@@ -2759,16 +2759,6 @@ void prepare(49,935
 rec/gui/Color.h,32
 #define __REC_GUI_COLORS__2,27
 
-rec/gui/Component.h,384
-#define __REC_GUI_COMPONENT__2,30
-class ComponentDelegate 10,156
-  ComponentDelegate(12,191
-  const colors::Colors& colors(ComponentDelegate::colors17,336
-  const FontDesc& font(ComponentDelegate::font21,459
-  const int margin(ComponentDelegate::margin25,568
-  ComponentDesc* desc_;ComponentDelegate::desc_31,734
-  ComponentDelegate* next_;ComponentDelegate::next_32,758
-
 rec/gui/Font.h,51
 #define __REC_GUI_FONT__2,25
 namespace rec 7,108
@@ -2874,6 +2864,17 @@ namespace util rec::util6,74
 typedef int64 Result[rec::util::Result10,105
 void testAvailable(rec::util::testAvailable12,131
 TEST(19,268
+
+rec/util/DelegateToList.h,39
+#define __REC_UTIL_DELEGATELIST__2,34
+
+rec/util/DelegateToList_test.cpp,256
+namespace rec 9,158
+namespace util rec::util10,174
+using widgets::Widget;rec::util::widgets::Widget13,204
+using gui::color::Colors;rec::util::gui::color::Colors14,227
+using gui::FontDesc;rec::util::gui::FontDesc15,253
+TEST(rec::util::TEST17,275
 
 rec/util/Listener.h,86
 #define __REC_UTIL_LISTENER__2,30
@@ -3055,21 +3056,21 @@ class Wrapper 9,134
   scoped_ptr<Runnable> runnable_;15,294
   DISALLOW_COPY_ASSIGN_AND_EMPTY(16,328
 
-rec/widgets/AudioThumbnail.cpp,740
-namespace rec 5,108
-namespace gui rec::gui6,124
-AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,141
-AudioThumbnailComponent::~AudioThumbnailComponent(18,586
-void AudioThumbnailComponent::setFile(22,684
-void AudioThumbnailComponent::setZoomFactor(30,920
-void AudioThumbnailComponent::mouseWheelMove(39,1246
-Rectangle<int> AudioThumbnailComponent::cursorRectangle(54,1776
-bool AudioThumbnailComponent::within(66,2237
-void AudioThumbnailComponent::mouseUp(70,2335
-void AudioThumbnailComponent::setCursor(78,2578
-void AudioThumbnailComponent::paint(95,3002
-int AudioThumbnailComponent::getCursor(121,3860
-void AudioThumbnailComponent::changeListenerCallback(127,4042
+rec/widgets/AudioThumbnail.cpp,739
+namespace rec 5,99
+namespace gui rec::gui6,115
+AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,132
+AudioThumbnailComponent::~AudioThumbnailComponent(18,577
+void AudioThumbnailComponent::setFile(22,675
+void AudioThumbnailComponent::setZoomFactor(30,911
+void AudioThumbnailComponent::mouseWheelMove(39,1237
+Rectangle<int> AudioThumbnailComponent::cursorRectangle(54,1767
+bool AudioThumbnailComponent::within(66,2228
+void AudioThumbnailComponent::mouseUp(70,2326
+void AudioThumbnailComponent::setCursor(78,2569
+void AudioThumbnailComponent::paint(95,2993
+int AudioThumbnailComponent::getCursor(121,3851
+void AudioThumbnailComponent::changeListenerCallback(127,4033
 
 rec/widgets/AudioThumbnail.h,850
 #define __THUMBNAIL_COMP2,25
