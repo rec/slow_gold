@@ -2,7 +2,7 @@ package rec.gui;
 
 import "rec/gui/Color.proto";
 import "rec/gui/ThumbnailDescription.proto";
-import "rec/gui/Time.proto";
+import "rec/widgets/Time.proto";
 
 message Appearance {
   optional color.Colors colors = 1;

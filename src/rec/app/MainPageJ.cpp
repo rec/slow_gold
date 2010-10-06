@@ -21,7 +21,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "MainPageK.h"
-#include "rec/gui/Time.pb.h"
+#include "rec/widgets/Time.pb.h"
 //[/Headers]
 
 #include "MainPageJ.h"

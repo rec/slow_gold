@@ -25,7 +25,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/gui/Color.pb.h"
 #include "rec/gui/ThumbnailDescription.pb.h"
-#include "rec/gui/Time.pb.h"
+#include "rec/widgets/Time.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {

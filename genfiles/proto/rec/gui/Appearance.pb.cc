@@ -76,15 +76,15 @@ void protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto() {
 
   ::rec::gui::color::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fThumbnailDescription_2eproto();
-  ::rec::gui::time::protobuf_AddDesc_rec_2fgui_2fTime_2eproto();
+  ::rec::gui::time::protobuf_AddDesc_rec_2fwidgets_2fTime_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/gui/Appearance.proto\022\007rec.gui\032\023rec"
     "/gui/Color.proto\032\"rec/gui/ThumbnailDescr"
-    "iption.proto\032\022rec/gui/Time.proto\"\207\001\n\nApp"
-    "earance\022%\n\006colors\030\001 \001(\0132\025.rec.gui.color."
-    "Colors\0220\n\tthumbnail\030\002 \001(\0132\035.rec.gui.Thum"
-    "bnailDescription\022 \n\004time\030\003 \001(\0132\022.rec.gui"
-    ".time.Time", 250);
+    "iption.proto\032\026rec/widgets/Time.proto\"\207\001\n"
+    "\nAppearance\022%\n\006colors\030\001 \001(\0132\025.rec.gui.co"
+    "lor.Colors\0220\n\tthumbnail\030\002 \001(\0132\035.rec.gui."
+    "ThumbnailDescription\022 \n\004time\030\003 \001(\0132\022.rec"
+    ".gui.time.Time", 254);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Appearance.proto", &protobuf_RegisterTypes);
   Appearance::default_instance_ = new Appearance();

@@ -1,8 +1,8 @@
 #include <math.h>
 
-#include "rec/gui/Time.h"
+#include "rec/widgets/Time.h"
 
-#include "rec/gui/Time.pb.h"
+#include "rec/widgets/Time.pb.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
 

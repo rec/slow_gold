@@ -55,35 +55,35 @@ class MainPageComponent 38,1338
     TabbedComponent* tabbedComponent;MainPageComponent::tabbedComponent66,2230
 
 rec/app/MainPageJ.cpp,298
-MainPageJ::MainPageJ(33,1041
-MainPageJ::~MainPageJ(125,4929
-void MainPageJ::paint 150,5706
-void MainPageJ::resized(161,5958
-void MainPageJ::buttonClicked 180,6915
-void MainPageJ::sliderValueChanged 202,7497
-void MainPageJ::sliderDragEnded 228,8344
-void MainPageJ::selectionChanged(233,8460
+MainPageJ::MainPageJ(33,1045
+MainPageJ::~MainPageJ(125,4933
+void MainPageJ::paint 150,5710
+void MainPageJ::resized(161,5962
+void MainPageJ::buttonClicked 180,6919
+void MainPageJ::sliderValueChanged 202,7501
+void MainPageJ::sliderDragEnded 228,8348
+void MainPageJ::selectionChanged(233,8464
 
 rec/app/MainPageJ.h,1122
 #define __REC_COMPONENT_MAIN_PAGE_J_H__23,744
-class MainPageJ 40,1257
-  rec::slow::MainPageK peer_;MainPageJ::peer_61,1958
-  void loadRecentFile(MainPageJ::loadRecentFile67,2082
-  void cut(MainPageJ::cut68,2159
-  void paste(MainPageJ::paste69,2190
-    Label* zoomLabel;MainPageJ::zoomLabel76,2350
-    rec::gui::AudioThumbnailComponent* thumbnail;MainPageJ::thumbnail77,2373
-    TextButton* startStopButton;MainPageJ::startStopButton78,2424
-    FileTreeComponent* fileTreeComp;MainPageJ::fileTreeComp79,2458
-    Label* explanation;MainPageJ::explanation80,2496
-    Slider* zoomSlider;MainPageJ::zoomSlider81,2521
-    Slider* timeScaleSlider;MainPageJ::timeScaleSlider82,2546
-    Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider83,2576
-    ToggleButton* loopingButton;MainPageJ::loopingButton84,2607
-    rec::gui::time::TextComponent* songTime;MainPageJ::songTime85,2641
-    rec::gui::time::TextComponent* realTime;MainPageJ::realTime86,2687
-    rec::gui::time::DialComponent* songDial;MainPageJ::songDial87,2733
-    rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2779
+class MainPageJ 40,1254
+  rec::slow::MainPageK peer_;MainPageJ::peer_61,1955
+  void loadRecentFile(MainPageJ::loadRecentFile67,2079
+  void cut(MainPageJ::cut68,2156
+  void paste(MainPageJ::paste69,2187
+    Label* zoomLabel;MainPageJ::zoomLabel76,2347
+    rec::gui::AudioThumbnailComponent* thumbnail;MainPageJ::thumbnail77,2370
+    TextButton* startStopButton;MainPageJ::startStopButton78,2421
+    FileTreeComponent* fileTreeComp;MainPageJ::fileTreeComp79,2455
+    Label* explanation;MainPageJ::explanation80,2493
+    Slider* zoomSlider;MainPageJ::zoomSlider81,2518
+    Slider* timeScaleSlider;MainPageJ::timeScaleSlider82,2543
+    Slider* pitchScaleSlider;MainPageJ::pitchScaleSlider83,2573
+    ToggleButton* loopingButton;MainPageJ::loopingButton84,2604
+    rec::gui::time::TextComponent* songTime;MainPageJ::songTime85,2638
+    rec::gui::time::TextComponent* realTime;MainPageJ::realTime86,2684
+    rec::gui::time::DialComponent* songDial;MainPageJ::songDial87,2730
+    rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2776
 
 rec/app/MainPageK.cpp,1269
 using rec::audio::source::TimeStretch;19,451
@@ -153,12 +153,12 @@ class Application 11,210
 
 rec/app/RecContainer.h,321
 #define __REC_REC_CONTAINER2,28
-class RecContainer 12,216
-  RecContainer(14,274
-  virtual const StringArray getMenuBarNames(18,354
-  virtual const PopupMenu getMenuForIndex(23,501
-  virtual void menuItemSelected(RecContainer::menuItemSelected40,1010
-  MainPageComponent* mainPage_;RecContainer::mainPage_52,1337
+class RecContainer 12,209
+  RecContainer(14,267
+  virtual const StringArray getMenuBarNames(18,347
+  virtual const PopupMenu getMenuForIndex(23,494
+  virtual void menuItemSelected(RecContainer::menuItemSelected40,1003
+  MainPageComponent* mainPage_;RecContainer::mainPage_52,1330
 
 rec/app/RecWindow.cpp,148
 namespace rec 4,66
@@ -2747,20 +2747,20 @@ TEST(rec::yaml::TEST21,347
 TEST(31,597
 
 rec/gui/AudioThumbnailComponent.cpp,740
-namespace rec 5,111
-namespace gui rec::gui6,127
-AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,144
-AudioThumbnailComponent::~AudioThumbnailComponent(18,589
-void AudioThumbnailComponent::setFile(22,687
-void AudioThumbnailComponent::setZoomFactor(30,923
-void AudioThumbnailComponent::mouseWheelMove(39,1249
-Rectangle<int> AudioThumbnailComponent::cursorRectangle(54,1779
-bool AudioThumbnailComponent::within(66,2240
-void AudioThumbnailComponent::mouseUp(70,2338
-void AudioThumbnailComponent::setCursor(78,2581
-void AudioThumbnailComponent::paint(95,3005
-int AudioThumbnailComponent::getCursor(121,3863
-void AudioThumbnailComponent::changeListenerCallback(127,4045
+namespace rec 5,104
+namespace gui rec::gui6,120
+AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,137
+AudioThumbnailComponent::~AudioThumbnailComponent(18,582
+void AudioThumbnailComponent::setFile(22,680
+void AudioThumbnailComponent::setZoomFactor(30,916
+void AudioThumbnailComponent::mouseWheelMove(39,1242
+Rectangle<int> AudioThumbnailComponent::cursorRectangle(54,1772
+bool AudioThumbnailComponent::within(66,2233
+void AudioThumbnailComponent::mouseUp(70,2331
+void AudioThumbnailComponent::setCursor(78,2574
+void AudioThumbnailComponent::paint(95,2998
+int AudioThumbnailComponent::getCursor(121,3856
+void AudioThumbnailComponent::changeListenerCallback(127,4038
 
 rec/gui/AudioThumbnailComponent.h,850
 #define __THUMBNAIL_COMP2,25
@@ -2817,36 +2817,6 @@ void addRecentFile(25,629
 
 rec/gui/RecentFiles.h,38
 #define __REC_SLOW_RECENTFILES__2,33
-
-rec/gui/Time.cpp,437
-namespace rec 11,170
-namespace gui rec::gui12,186
-namespace time rec::gui::time13,202
-TextComponent::TextComponent(rec::gui::time::TextComponent::TextComponent15,220
-void TextComponent::setTimeSamples(27,621
-void TextComponent::setTimeSeconds(31,722
-void TextComponent::paint(36,803
-DialComponent::DialComponent(59,1418
-static const float ALMOST_ZERO 68,1660
-static const float PI 70,1707
-void DialComponent::paint(73,1747
-
-rec/gui/Time.h,598
-#define __REC_GUI_TIME__2,25
-class TextComponent 23,271
-  TextComponent(26,372
-  void setTimeSamples(28,457
-  void setTimeSeconds(29,493
-  void paint(31,529
-  scoped_ptr<Text> desc_;34,567
-  scoped_ptr<color::Colors> colors_;TextComponent::colors_35,593
-  float time_;TextComponent::time_36,630
-  Font font_;TextComponent::font_37,645
-class DialComponent 42,713
-  void setTimeRatio(DialComponent::setTimeRatio47,876
-  scoped_ptr<Dial> desc_;DialComponent::desc_55,986
-  scoped_ptr<color::Colors> colors_;DialComponent::colors_56,1012
-  float time_;DialComponent::time_57,1049
 
 rec/slow/Preferences.h,148
 #define __REC_SLOW_PREFERENCES__2,33
@@ -3118,5 +3088,35 @@ class Wrapper 9,134
   virtual void run(12,218
   scoped_ptr<Runnable> runnable_;15,294
   DISALLOW_COPY_ASSIGN_AND_EMPTY(16,328
+
+rec/widgets/Time.cpp,437
+namespace rec 11,178
+namespace gui rec::gui12,194
+namespace time rec::gui::time13,210
+TextComponent::TextComponent(rec::gui::time::TextComponent::TextComponent15,228
+void TextComponent::setTimeSamples(27,629
+void TextComponent::setTimeSeconds(31,730
+void TextComponent::paint(36,811
+DialComponent::DialComponent(59,1426
+static const float ALMOST_ZERO 68,1668
+static const float PI 70,1715
+void DialComponent::paint(73,1755
+
+rec/widgets/Time.h,598
+#define __REC_GUI_TIME__2,25
+class TextComponent 23,271
+  TextComponent(26,372
+  void setTimeSamples(28,457
+  void setTimeSeconds(29,493
+  void paint(31,529
+  scoped_ptr<Text> desc_;34,567
+  scoped_ptr<color::Colors> colors_;TextComponent::colors_35,593
+  float time_;TextComponent::time_36,630
+  Font font_;TextComponent::font_37,645
+class DialComponent 42,713
+  void setTimeRatio(DialComponent::setTimeRatio47,876
+  scoped_ptr<Dial> desc_;DialComponent::desc_55,986
+  scoped_ptr<color::Colors> colors_;DialComponent::colors_56,1012
+  float time_;DialComponent::time_57,1049
 
 rec/audio/ammf_scaler/mfMath.h,0
