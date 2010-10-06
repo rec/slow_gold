@@ -6,6 +6,6 @@ import "rec/widgets/AudioThumbnail.proto";
 
 message Preferences {
   optional slow.proto.LoopWindow loop_window = 1;
-  optional gui.ThumbnailDescription thumbnail = 2;
+  optional widgets.ThumbnailDescription thumbnail = 2;
   optional gui.RecentFiles recent_files = 3;
 };

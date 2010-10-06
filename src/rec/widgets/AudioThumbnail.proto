@@ -1,7 +1,7 @@
 import "rec/gui/Color.proto";
 import "rec/gui/Font.proto";
 
-package rec.gui;
+package rec.widgets;
 
 message ThreadDescription {
   optional uint32 priority = 1 [default = 4];
@@ -9,13 +9,13 @@ message ThreadDescription {
 };
 
 message ThumbnailDescription {
-  optional rec.gui.color.Colors colors = 1;
+  optional gui.color.Colors colors = 1;
   optional uint32 cursor_thickness = 2                    [default = 1];
   optional uint32 margin = 3                              [default = 2];
   optional uint32 source_samples_per_thumbnail_sample = 4 [default = 512];
   optional uint32 thumbnail_cache = 5                     [default = 5];
   optional ThreadDescription cursor_thread = 6;
-  optional FontDesc font = 7;
+  optional gui.FontDesc font = 7;
   optional uint32 tic_height = 8                          [default = 8];
   optional uint32 subtic_height = 9                       [default = 3];
   optional bool use_captions = 10                         [default = true];

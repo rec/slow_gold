@@ -53,7 +53,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     zoomLabel->setColour (TextEditor::textColourId, Colours::black);
     zoomLabel->setColour (TextEditor::backgroundColourId, Colour (0x0));
 
-    addAndMakeVisible (thumbnail = new rec::gui::AudioThumbnailComponent());
+    addAndMakeVisible (thumbnail = new rec::widgets::AudioThumbnailComponent());
 
     addAndMakeVisible (startStopButton = new TextButton (String::empty));
     startStopButton->setButtonText (T("Play/Stop"));
@@ -96,15 +96,15 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     pitchScaleSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     pitchScaleSlider->addListener (this);
 
-    using rec::gui::time::TextComponent;
-    using rec::gui::time::Text;
+    using rec::widgets::time::TextComponent;
+    using rec::widgets::time::Text;
     using rec::gui::color::Colors;
 
     addAndMakeVisible(songTime = new TextComponent("st", Text(), Colors()));
     addAndMakeVisible(realTime = new TextComponent("rt", Text(), Colors()));
 
-    using rec::gui::time::DialComponent;
-    using rec::gui::time::Dial;
+    using rec::widgets::time::DialComponent;
+    using rec::widgets::time::Dial;
     addAndMakeVisible(songDial = new DialComponent("sd", Dial(), Colors()));
 
     Dial dial;

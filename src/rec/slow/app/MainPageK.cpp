@@ -18,9 +18,8 @@
 
 using rec::audio::source::TimeStretch;
 
-using rec::gui::ThreadDescription;
-using rec::gui::ThumbnailDescription;
-using rec::gui::ThumbnailDescription;
+using rec::widgets::ThreadDescription;
+using rec::widgets::ThumbnailDescription;
 
 using rec::persist::copy;
 

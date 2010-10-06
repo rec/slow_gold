@@ -102,12 +102,12 @@ class Preferences : public ::google::protobuf::Message {
   inline const ::rec::slow::proto::LoopWindow& loop_window() const;
   inline ::rec::slow::proto::LoopWindow* mutable_loop_window();
   
-  // optional .rec.gui.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widgets.ThumbnailDescription thumbnail = 2;
   inline bool has_thumbnail() const;
   inline void clear_thumbnail();
   static const int kThumbnailFieldNumber = 2;
-  inline const ::rec::gui::ThumbnailDescription& thumbnail() const;
-  inline ::rec::gui::ThumbnailDescription* mutable_thumbnail();
+  inline const ::rec::widgets::ThumbnailDescription& thumbnail() const;
+  inline ::rec::widgets::ThumbnailDescription* mutable_thumbnail();
   
   // optional .rec.gui.RecentFiles recent_files = 3;
   inline bool has_recent_files() const;
@@ -122,7 +122,7 @@ class Preferences : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::slow::proto::LoopWindow* loop_window_;
-  ::rec::gui::ThumbnailDescription* thumbnail_;
+  ::rec::widgets::ThumbnailDescription* thumbnail_;
   ::rec::gui::RecentFiles* recent_files_;
   friend void  protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto();
@@ -168,20 +168,20 @@ inline ::rec::slow::proto::LoopWindow* Preferences::mutable_loop_window() {
   return loop_window_;
 }
 
-// optional .rec.gui.ThumbnailDescription thumbnail = 2;
+// optional .rec.widgets.ThumbnailDescription thumbnail = 2;
 inline bool Preferences::has_thumbnail() const {
   return _has_bit(1);
 }
 inline void Preferences::clear_thumbnail() {
-  if (thumbnail_ != NULL) thumbnail_->::rec::gui::ThumbnailDescription::Clear();
+  if (thumbnail_ != NULL) thumbnail_->::rec::widgets::ThumbnailDescription::Clear();
   _clear_bit(1);
 }
-inline const ::rec::gui::ThumbnailDescription& Preferences::thumbnail() const {
+inline const ::rec::widgets::ThumbnailDescription& Preferences::thumbnail() const {
   return thumbnail_ != NULL ? *thumbnail_ : *default_instance_->thumbnail_;
 }
-inline ::rec::gui::ThumbnailDescription* Preferences::mutable_thumbnail() {
+inline ::rec::widgets::ThumbnailDescription* Preferences::mutable_thumbnail() {
   _set_bit(1);
-  if (thumbnail_ == NULL) thumbnail_ = new ::rec::gui::ThumbnailDescription;
+  if (thumbnail_ == NULL) thumbnail_ = new ::rec::widgets::ThumbnailDescription;
   return thumbnail_;
 }
 

@@ -77,16 +77,16 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
 
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   ::rec::slow::proto::protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto();
-  ::rec::gui::protobuf_AddDesc_rec_2fwidgets_2fAudioThumbnail_2eproto();
+  ::rec::widgets::protobuf_AddDesc_rec_2fwidgets_2fAudioThumbnail_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\016rec.slow.p"
     "roto\032\031rec/gui/RecentFiles.proto\032\031rec/slo"
     "w/LoopWindow.proto\032 rec/widgets/AudioThu"
-    "mbnail.proto\"\234\001\n\013Preferences\022/\n\013loop_win"
-    "dow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\0220\n"
-    "\tthumbnail\030\002 \001(\0132\035.rec.gui.ThumbnailDesc"
-    "ription\022*\n\014recent_files\030\003 \001(\0132\024.rec.gui."
-    "RecentFiles", 291);
+    "mbnail.proto\"\240\001\n\013Preferences\022/\n\013loop_win"
+    "dow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\0224\n"
+    "\tthumbnail\030\002 \001(\0132!.rec.widgets.Thumbnail"
+    "Description\022*\n\014recent_files\030\003 \001(\0132\024.rec."
+    "gui.RecentFiles", 295);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -117,7 +117,7 @@ Preferences::Preferences()
 
 void Preferences::InitAsDefaultInstance() {
   loop_window_ = const_cast< ::rec::slow::proto::LoopWindow*>(&::rec::slow::proto::LoopWindow::default_instance());
-  thumbnail_ = const_cast< ::rec::gui::ThumbnailDescription*>(&::rec::gui::ThumbnailDescription::default_instance());
+  thumbnail_ = const_cast< ::rec::widgets::ThumbnailDescription*>(&::rec::widgets::ThumbnailDescription::default_instance());
   recent_files_ = const_cast< ::rec::gui::RecentFiles*>(&::rec::gui::RecentFiles::default_instance());
 }
 
@@ -173,7 +173,7 @@ void Preferences::Clear() {
       if (loop_window_ != NULL) loop_window_->::rec::slow::proto::LoopWindow::Clear();
     }
     if (_has_bit(1)) {
-      if (thumbnail_ != NULL) thumbnail_->::rec::gui::ThumbnailDescription::Clear();
+      if (thumbnail_ != NULL) thumbnail_->::rec::widgets::ThumbnailDescription::Clear();
     }
     if (_has_bit(2)) {
       if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
@@ -202,7 +202,7 @@ bool Preferences::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.gui.ThumbnailDescription thumbnail = 2;
+      // optional .rec.widgets.ThumbnailDescription thumbnail = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -254,7 +254,7 @@ void Preferences::SerializeWithCachedSizes(
       1, this->loop_window(), output);
   }
   
-  // optional .rec.gui.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widgets.ThumbnailDescription thumbnail = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->thumbnail(), output);
@@ -281,7 +281,7 @@ void Preferences::SerializeWithCachedSizes(
         1, this->loop_window(), target);
   }
   
-  // optional .rec.gui.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widgets.ThumbnailDescription thumbnail = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -313,7 +313,7 @@ int Preferences::ByteSize() const {
           this->loop_window());
     }
     
-    // optional .rec.gui.ThumbnailDescription thumbnail = 2;
+    // optional .rec.widgets.ThumbnailDescription thumbnail = 2;
     if (has_thumbnail()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -358,7 +358,7 @@ void Preferences::MergeFrom(const Preferences& from) {
       mutable_loop_window()->::rec::slow::proto::LoopWindow::MergeFrom(from.loop_window());
     }
     if (from._has_bit(1)) {
-      mutable_thumbnail()->::rec::gui::ThumbnailDescription::MergeFrom(from.thumbnail());
+      mutable_thumbnail()->::rec::widgets::ThumbnailDescription::MergeFrom(from.thumbnail());
     }
     if (from._has_bit(2)) {
       mutable_recent_files()->::rec::gui::RecentFiles::MergeFrom(from.recent_files());

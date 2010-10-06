@@ -4,26 +4,19 @@
 #include <stdio.h>
 
 #include "rec/base/base.h"
+#include "rec/widgets/Time.pb.h"
+#include "rec/gui/Color.pb.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-namespace gui {
-namespace color {
-
-class Colors;
-
-} // namespace color
-
+namespace widgets {
 namespace time {
-
-class Dial;
-class Text;
 
 class TextComponent : public Component {
  public:
   static const float SAMPLES_PER_SECOND = 44100.0;
-  TextComponent(const String& name, const Text& desc, const color::Colors& colors);
+  TextComponent(const String& name, const Text& desc, const gui::color::Colors& colors);
 
   void setTimeSamples(int samples);
   void setTimeSeconds(float time);
@@ -32,7 +25,7 @@ class TextComponent : public Component {
 
  private:
   scoped_ptr<Text> desc_;
-  scoped_ptr<color::Colors> colors_;
+  scoped_ptr<gui::color::Colors> colors_;
   float time_;
   Font font_;
 
@@ -41,7 +34,7 @@ class TextComponent : public Component {
 
 class DialComponent : public Component {
  public:
-  DialComponent(const String& name, const Dial& desc, const color::Colors& colors);
+  DialComponent(const String& name, const Dial& desc, const gui::color::Colors& colors);
 
   // Value between 0 and 1.
   void setTimeRatio(float time) {
@@ -53,14 +46,14 @@ class DialComponent : public Component {
 
  private:
   scoped_ptr<Dial> desc_;
-  scoped_ptr<color::Colors> colors_;
+  scoped_ptr<gui::color::Colors> colors_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
 };
 
 }  // namespace time
-}  // namespace gui
+}  // namespace widgets
 }  // namespace rec
 
 #endif  // __REC_GUI_TIME__

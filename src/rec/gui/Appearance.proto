@@ -6,7 +6,7 @@ import "rec/widgets/Time.proto";
 
 message Appearance {
   optional color.Colors colors = 1;
-  optional ThumbnailDescription thumbnail = 2;
-  optional time.Time time = 3;
+  optional widgets.ThumbnailDescription thumbnail = 2;
+  optional widgets.time.Time time = 3;
 };
 

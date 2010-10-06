@@ -101,19 +101,19 @@ class Appearance : public ::google::protobuf::Message {
   inline const ::rec::gui::color::Colors& colors() const;
   inline ::rec::gui::color::Colors* mutable_colors();
   
-  // optional .rec.gui.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widgets.ThumbnailDescription thumbnail = 2;
   inline bool has_thumbnail() const;
   inline void clear_thumbnail();
   static const int kThumbnailFieldNumber = 2;
-  inline const ::rec::gui::ThumbnailDescription& thumbnail() const;
-  inline ::rec::gui::ThumbnailDescription* mutable_thumbnail();
+  inline const ::rec::widgets::ThumbnailDescription& thumbnail() const;
+  inline ::rec::widgets::ThumbnailDescription* mutable_thumbnail();
   
-  // optional .rec.gui.time.Time time = 3;
+  // optional .rec.widgets.time.Time time = 3;
   inline bool has_time() const;
   inline void clear_time();
   static const int kTimeFieldNumber = 3;
-  inline const ::rec::gui::time::Time& time() const;
-  inline ::rec::gui::time::Time* mutable_time();
+  inline const ::rec::widgets::time::Time& time() const;
+  inline ::rec::widgets::time::Time* mutable_time();
   
   // @@protoc_insertion_point(class_scope:rec.gui.Appearance)
  private:
@@ -121,8 +121,8 @@ class Appearance : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::gui::color::Colors* colors_;
-  ::rec::gui::ThumbnailDescription* thumbnail_;
-  ::rec::gui::time::Time* time_;
+  ::rec::widgets::ThumbnailDescription* thumbnail_;
+  ::rec::widgets::time::Time* time_;
   friend void  protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fAppearance_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fAppearance_2eproto();
@@ -167,37 +167,37 @@ inline ::rec::gui::color::Colors* Appearance::mutable_colors() {
   return colors_;
 }
 
-// optional .rec.gui.ThumbnailDescription thumbnail = 2;
+// optional .rec.widgets.ThumbnailDescription thumbnail = 2;
 inline bool Appearance::has_thumbnail() const {
   return _has_bit(1);
 }
 inline void Appearance::clear_thumbnail() {
-  if (thumbnail_ != NULL) thumbnail_->::rec::gui::ThumbnailDescription::Clear();
+  if (thumbnail_ != NULL) thumbnail_->::rec::widgets::ThumbnailDescription::Clear();
   _clear_bit(1);
 }
-inline const ::rec::gui::ThumbnailDescription& Appearance::thumbnail() const {
+inline const ::rec::widgets::ThumbnailDescription& Appearance::thumbnail() const {
   return thumbnail_ != NULL ? *thumbnail_ : *default_instance_->thumbnail_;
 }
-inline ::rec::gui::ThumbnailDescription* Appearance::mutable_thumbnail() {
+inline ::rec::widgets::ThumbnailDescription* Appearance::mutable_thumbnail() {
   _set_bit(1);
-  if (thumbnail_ == NULL) thumbnail_ = new ::rec::gui::ThumbnailDescription;
+  if (thumbnail_ == NULL) thumbnail_ = new ::rec::widgets::ThumbnailDescription;
   return thumbnail_;
 }
 
-// optional .rec.gui.time.Time time = 3;
+// optional .rec.widgets.time.Time time = 3;
 inline bool Appearance::has_time() const {
   return _has_bit(2);
 }
 inline void Appearance::clear_time() {
-  if (time_ != NULL) time_->::rec::gui::time::Time::Clear();
+  if (time_ != NULL) time_->::rec::widgets::time::Time::Clear();
   _clear_bit(2);
 }
-inline const ::rec::gui::time::Time& Appearance::time() const {
+inline const ::rec::widgets::time::Time& Appearance::time() const {
   return time_ != NULL ? *time_ : *default_instance_->time_;
 }
-inline ::rec::gui::time::Time* Appearance::mutable_time() {
+inline ::rec::widgets::time::Time* Appearance::mutable_time() {
   _set_bit(2);
-  if (time_ == NULL) time_ = new ::rec::gui::time::Time;
+  if (time_ == NULL) time_ = new ::rec::widgets::time::Time;
   return time_;
 }
 

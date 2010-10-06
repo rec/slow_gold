@@ -2,22 +2,21 @@
 
 #include "rec/widgets/Time.h"
 
-#include "rec/widgets/Time.pb.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-namespace gui {
+namespace widgets {
 namespace time {
 
 TextComponent::TextComponent(const String& name,
                              const Text& desc,
-                             const color::Colors& colors)
+                             const gui::color::Colors& colors)
     : Component(name),
       desc_(new Text(desc)),
-      colors_(new color::Colors(colors)),
+      colors_(new gui::color::Colors(colors)),
       time_(0),
       font_(getFont(desc.font())) {
   if (!desc_->font().has_name())
@@ -43,7 +42,7 @@ void TextComponent::paint(Graphics& g) {
   int hours = minutes / 60;
   seconds %= 60;
 
-  color::prepare(*colors_, &g);
+  gui::color::prepare(*colors_, &g);
   g.setFont(font_);
   char buffer[64];
   char ch = ':';
@@ -57,10 +56,10 @@ void TextComponent::paint(Graphics& g) {
 
 
 DialComponent::DialComponent(const String& name, const Dial& desc,
-                             const color::Colors& colors)
+                             const gui::color::Colors& colors)
     : Component(name),
       desc_(new Dial(desc)),
-      colors_(new color::Colors(colors)) {
+      colors_(new gui::color::Colors(colors)) {
 }
 
 
@@ -71,7 +70,7 @@ static const float PI = 3.1415926536;
 
 
 void DialComponent::paint(Graphics& g) {
-  color::prepare(*colors_, &g);
+  gui::color::prepare(*colors_, &g);
 
   float zeroAngle = desc_->zero_point() * 2.0 * PI;
   float timeAngle = zeroAngle + time_ * 2.0 * PI;
@@ -91,8 +90,8 @@ void DialComponent::paint(Graphics& g) {
   }
 #endif
   if (desc_->has_from_color() && desc_->has_to_color()) {
-    Colour from = color::makeColour(desc_->from_color());
-    Colour to = color::makeColour(desc_->to_color());
+    Colour from = gui::color::makeColour(desc_->from_color());
+    Colour to = gui::color::makeColour(desc_->to_color());
     g.setColour(from.interpolatedWith(to, time_));
   }
 
@@ -105,5 +104,5 @@ void DialComponent::paint(Graphics& g) {
 }
 
 }  // namespace time
-}  // namespace gui
+}  // namespace widgets
 }  // namespace rec

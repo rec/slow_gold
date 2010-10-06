@@ -1,4 +1,4 @@
-package rec.gui.time;
+package rec.widgets.time;
 
 import "rec/gui/Font.proto";
 import "rec/gui/Color.proto";
@@ -6,7 +6,7 @@ import "rec/gui/Color.proto";
 // Represents a text time display.
 message Text {
   optional string name = 5;
-  optional FontDesc font = 1;
+  optional gui.FontDesc font = 1;
 
   message Separator {
     optional string separator = 1;
@@ -42,13 +42,13 @@ message Dial {
   optional uint32 outline = 2;
   optional Direction direction = 3 [default = CLOCKWISE];
   optional bool display_lap_count = 4;
-  optional FontDesc font = 5;
+  optional gui.FontDesc font = 5;
   optional uint32 margin = 6 [default = 2];
   optional float zero_point = 7;
   optional bool empty_on_zero = 8 [default = true];
 
-  optional color.Color from_color = 9;
-  optional color.Color to_color = 10;
+  optional gui.color.Color from_color = 9;
+  optional gui.color.Color to_color = 10;
 };
 
 message Time {

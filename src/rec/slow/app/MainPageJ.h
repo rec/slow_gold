@@ -74,7 +74,7 @@ public:
 
     //==============================================================================
     Label* zoomLabel;
-    rec::gui::AudioThumbnailComponent* thumbnail;
+    rec::widgets::AudioThumbnailComponent* thumbnail;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
     Label* explanation;
@@ -82,10 +82,10 @@ public:
     Slider* timeScaleSlider;
     Slider* pitchScaleSlider;
     ToggleButton* loopingButton;
-    rec::gui::time::TextComponent* songTime;
-    rec::gui::time::TextComponent* realTime;
-    rec::gui::time::DialComponent* songDial;
-    rec::gui::time::DialComponent* realDial;
+    rec::widgets::time::TextComponent* songTime;
+    rec::widgets::time::TextComponent* realTime;
+    rec::widgets::time::DialComponent* songDial;
+    rec::widgets::time::DialComponent* realDial;
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)
     MainPageJ(const MainPageJ&);

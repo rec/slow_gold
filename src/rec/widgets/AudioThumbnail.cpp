@@ -1,9 +1,8 @@
 #include "rec/widgets/AudioThumbnail.h"
-#include "rec/slow/app/MainPageK.h"
 #include "rec/gui/Color.h"
 
 namespace rec {
-namespace gui {
+namespace widgets {
 
 AudioThumbnailComponent::AudioThumbnailComponent()
     : description_(rec::slow::getPreferences().thumbnail()),
@@ -94,8 +93,8 @@ void AudioThumbnailComponent::setCursor(double cursorRatio) {
 }
 
 void AudioThumbnailComponent::paint(Graphics& g) {
-  const color::Colors& colors = description_.colors();
-  color::prepare(colors, &g);
+  const gui::color::Colors& colors = description_.colors();
+  gui::color::prepare(colors, &g);
   int margin = description_.margin();
 
   if (thumbnail_.getTotalLength() > 0) {
@@ -109,7 +108,7 @@ void AudioThumbnailComponent::paint(Graphics& g) {
                              i, 1.0f);
     }
 
-    g.setColour(color::get(colors, 2));
+    g.setColour(gui::color::get(colors, 2));
     g.drawRect(cursorRectangle());
 
   } else {
@@ -129,6 +128,6 @@ void AudioThumbnailComponent::changeListenerCallback(void*) {
   repaint();
 }
 
-}  // namespace gui
+}  // namespace widgets
 }  // namespace rec
 
