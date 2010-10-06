@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/yaml/Yaml.h"
+#include "rec/data/yaml/Yaml.h"
 
 #include "rec/proto/Operation.pb.h"
 

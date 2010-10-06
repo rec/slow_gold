@@ -2,7 +2,7 @@
 #include <sstream>
 #include <vector>
 
-#include "rec/yaml/Internal.h"
+#include "rec/data/yaml/Internal.h"
 
 namespace rec {
 namespace yaml {

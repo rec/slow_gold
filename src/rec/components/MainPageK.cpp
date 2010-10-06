@@ -14,7 +14,7 @@
 #include "rec/util/thread/RunnableThread.h"
 #include "rec/util/thread/WaitLoop.h"
 #include "rec/util/thread/Callback.h"
-#include "rec/yaml/Yaml.h"
+#include "rec/data/yaml/Yaml.h"
 
 using rec::audio::source::TimeStretch;
 
