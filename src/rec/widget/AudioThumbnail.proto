@@ -8,7 +8,7 @@ message ThreadDescription {
   optional uint32 period = 2   [default = 40];
 };
 
-message ThumbnailDescription {
+message AudioThumbnailDesc {
   optional gui.Colors colors = 1;
   optional uint32 cursor_thickness = 2                    [default = 1];
   optional uint32 margin = 3                              [default = 2];

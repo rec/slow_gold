@@ -80,11 +80,11 @@ void protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/gui/Appearance.proto\022\007rec.gui\032\023rec"
     "/gui/Color.proto\032\037rec/widget/AudioThumbn"
-    "ail.proto\032\025rec/widget/Time.proto\"\207\001\n\nApp"
+    "ail.proto\032\025rec/widget/Time.proto\"\205\001\n\nApp"
     "earance\022\037\n\006colors\030\001 \001(\0132\017.rec.gui.Colors"
-    "\0223\n\tthumbnail\030\002 \001(\0132 .rec.widget.Thumbna"
-    "ilDescription\022#\n\004time\030\003 \001(\0132\025.rec.widget"
-    ".time.Time", 250);
+    "\0221\n\tthumbnail\030\002 \001(\0132\036.rec.widget.AudioTh"
+    "umbnailDesc\022#\n\004time\030\003 \001(\0132\025.rec.widget.t"
+    "ime.Time", 248);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Appearance.proto", &protobuf_RegisterTypes);
   Appearance::default_instance_ = new Appearance();
@@ -115,7 +115,7 @@ Appearance::Appearance()
 
 void Appearance::InitAsDefaultInstance() {
   colors_ = const_cast< ::rec::gui::Colors*>(&::rec::gui::Colors::default_instance());
-  thumbnail_ = const_cast< ::rec::widget::ThumbnailDescription*>(&::rec::widget::ThumbnailDescription::default_instance());
+  thumbnail_ = const_cast< ::rec::widget::AudioThumbnailDesc*>(&::rec::widget::AudioThumbnailDesc::default_instance());
   time_ = const_cast< ::rec::widget::time::Time*>(&::rec::widget::time::Time::default_instance());
 }
 
@@ -171,7 +171,7 @@ void Appearance::Clear() {
       if (colors_ != NULL) colors_->::rec::gui::Colors::Clear();
     }
     if (_has_bit(1)) {
-      if (thumbnail_ != NULL) thumbnail_->::rec::widget::ThumbnailDescription::Clear();
+      if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
     }
     if (_has_bit(2)) {
       if (time_ != NULL) time_->::rec::widget::time::Time::Clear();
@@ -200,7 +200,7 @@ bool Appearance::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+      // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -252,7 +252,7 @@ void Appearance::SerializeWithCachedSizes(
       1, this->colors(), output);
   }
   
-  // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->thumbnail(), output);
@@ -279,7 +279,7 @@ void Appearance::SerializeWithCachedSizes(
         1, this->colors(), target);
   }
   
-  // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -311,7 +311,7 @@ int Appearance::ByteSize() const {
           this->colors());
     }
     
-    // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+    // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
     if (has_thumbnail()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -356,7 +356,7 @@ void Appearance::MergeFrom(const Appearance& from) {
       mutable_colors()->::rec::gui::Colors::MergeFrom(from.colors());
     }
     if (from._has_bit(1)) {
-      mutable_thumbnail()->::rec::widget::ThumbnailDescription::MergeFrom(from.thumbnail());
+      mutable_thumbnail()->::rec::widget::AudioThumbnailDesc::MergeFrom(from.thumbnail());
     }
     if (from._has_bit(2)) {
       mutable_time()->::rec::widget::time::Time::MergeFrom(from.time());

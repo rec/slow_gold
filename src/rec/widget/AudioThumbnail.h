@@ -39,7 +39,7 @@ class AudioThumbnailWidget : public Component, public ChangeListener {
  private:
   typedef std::set<ChangeListener*> ListenerSet;
   ListenerSet listeners_;
-  const ThumbnailDescription description_;
+  const AudioThumbnailDesc description_;
 
   AudioThumbnailCache thumbnailCache_;
   AudioThumbnail thumbnail_;

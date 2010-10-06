@@ -19,7 +19,7 @@
 using rec::audio::source::TimeStretch;
 
 using rec::widget::ThreadDescription;
-using rec::widget::ThumbnailDescription;
+using rec::widget::AudioThumbnailDesc;
 
 using rec::persist::copy;
 

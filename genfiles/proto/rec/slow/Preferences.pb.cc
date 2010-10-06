@@ -82,11 +82,11 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
     "\n\032rec/slow/Preferences.proto\022\016rec.slow.p"
     "roto\032\031rec/gui/RecentFiles.proto\032\031rec/slo"
     "w/LoopWindow.proto\032\037rec/widget/AudioThum"
-    "bnail.proto\"\237\001\n\013Preferences\022/\n\013loop_wind"
-    "ow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\0223\n\t"
-    "thumbnail\030\002 \001(\0132 .rec.widget.ThumbnailDe"
-    "scription\022*\n\014recent_files\030\003 \001(\0132\024.rec.gu"
-    "i.RecentFiles", 293);
+    "bnail.proto\"\235\001\n\013Preferences\022/\n\013loop_wind"
+    "ow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\0221\n\t"
+    "thumbnail\030\002 \001(\0132\036.rec.widget.AudioThumbn"
+    "ailDesc\022*\n\014recent_files\030\003 \001(\0132\024.rec.gui."
+    "RecentFiles", 291);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -117,7 +117,7 @@ Preferences::Preferences()
 
 void Preferences::InitAsDefaultInstance() {
   loop_window_ = const_cast< ::rec::slow::proto::LoopWindow*>(&::rec::slow::proto::LoopWindow::default_instance());
-  thumbnail_ = const_cast< ::rec::widget::ThumbnailDescription*>(&::rec::widget::ThumbnailDescription::default_instance());
+  thumbnail_ = const_cast< ::rec::widget::AudioThumbnailDesc*>(&::rec::widget::AudioThumbnailDesc::default_instance());
   recent_files_ = const_cast< ::rec::gui::RecentFiles*>(&::rec::gui::RecentFiles::default_instance());
 }
 
@@ -173,7 +173,7 @@ void Preferences::Clear() {
       if (loop_window_ != NULL) loop_window_->::rec::slow::proto::LoopWindow::Clear();
     }
     if (_has_bit(1)) {
-      if (thumbnail_ != NULL) thumbnail_->::rec::widget::ThumbnailDescription::Clear();
+      if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
     }
     if (_has_bit(2)) {
       if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
@@ -202,7 +202,7 @@ bool Preferences::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+      // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -254,7 +254,7 @@ void Preferences::SerializeWithCachedSizes(
       1, this->loop_window(), output);
   }
   
-  // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->thumbnail(), output);
@@ -281,7 +281,7 @@ void Preferences::SerializeWithCachedSizes(
         1, this->loop_window(), target);
   }
   
-  // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -313,7 +313,7 @@ int Preferences::ByteSize() const {
           this->loop_window());
     }
     
-    // optional .rec.widget.ThumbnailDescription thumbnail = 2;
+    // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
     if (has_thumbnail()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -358,7 +358,7 @@ void Preferences::MergeFrom(const Preferences& from) {
       mutable_loop_window()->::rec::slow::proto::LoopWindow::MergeFrom(from.loop_window());
     }
     if (from._has_bit(1)) {
-      mutable_thumbnail()->::rec::widget::ThumbnailDescription::MergeFrom(from.thumbnail());
+      mutable_thumbnail()->::rec::widget::AudioThumbnailDesc::MergeFrom(from.thumbnail());
     }
     if (from._has_bit(2)) {
       mutable_recent_files()->::rec::gui::RecentFiles::MergeFrom(from.recent_files());
