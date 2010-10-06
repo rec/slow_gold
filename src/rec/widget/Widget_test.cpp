@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/widgets/Widget.h"
+#include "rec/widget/Widget.h"
 
 namespace rec {
-namespace widgets {
+namespace widget {
 namespace {
 
 class WidgetTest : public WidgetBase<Component> {
@@ -20,5 +20,5 @@ TEST(Widget, someMethod) {
 }
 
 }  // namespace
-}  // namespace widgets
+}  // namespace widget
 }  // namespace rec

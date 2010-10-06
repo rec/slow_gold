@@ -1,12 +1,12 @@
 package rec.gui;
 
 import "rec/gui/Color.proto";
-import "rec/widgets/AudioThumbnail.proto";
-import "rec/widgets/Time.proto";
+import "rec/widget/AudioThumbnail.proto";
+import "rec/widget/Time.proto";
 
 message Appearance {
   optional Colors colors = 1;
-  optional widgets.ThumbnailDescription thumbnail = 2;
-  optional widgets.time.Time time = 3;
+  optional widget.ThumbnailDescription thumbnail = 2;
+  optional widget.time.Time time = 3;
 };
 

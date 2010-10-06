@@ -7,7 +7,7 @@
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-namespace widgets {
+namespace widget {
 
 class AudioThumbnailComponent : public Component, public ChangeListener {
  public:
@@ -50,7 +50,7 @@ class AudioThumbnailComponent : public Component, public ChangeListener {
   DISALLOW_COPY_AND_ASSIGN(AudioThumbnailComponent);
 };
 
-}  // namespace widgets
+}  // namespace widget
 }  // namespace rec
 
 #endif

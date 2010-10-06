@@ -4,13 +4,13 @@
 #include "rec/util/DelegateToList.h"
 
 #include "rec/base/ArraySize.h"
-#include "rec/widgets/Widget.pb.h"
+#include "rec/widget/Widget.pb.h"
 
 namespace rec {
 namespace util {
 namespace {
 
-using widgets::WidgetDesc;
+using widget::WidgetDesc;
 using gui::Colors;
 using gui::FontDesc;
 

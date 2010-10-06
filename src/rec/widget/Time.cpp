@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include "rec/widgets/Time.h"
+#include "rec/widget/Time.h"
 
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
@@ -8,7 +8,7 @@
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-namespace widgets {
+namespace widget {
 namespace time {
 
 TextComponent::TextComponent(const String& name,
@@ -104,5 +104,5 @@ void DialComponent::paint(Graphics& g) {
 }
 
 }  // namespace time
-}  // namespace widgets
+}  // namespace widget
 }  // namespace rec

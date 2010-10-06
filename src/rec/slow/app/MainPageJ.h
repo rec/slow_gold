@@ -25,7 +25,7 @@
 //[Headers]     -- You can add your own extra header files here --
 
 #include "rec/slow/app/MainPageK.h"
-#include "rec/widgets/Time.h"
+#include "rec/widget/Time.h"
 
 //[/Headers]
 
@@ -74,7 +74,7 @@ public:
 
     //==============================================================================
     Label* zoomLabel;
-    rec::widgets::AudioThumbnailComponent* thumbnail;
+    rec::widget::AudioThumbnailComponent* thumbnail;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
     Label* explanation;
@@ -82,10 +82,10 @@ public:
     Slider* timeScaleSlider;
     Slider* pitchScaleSlider;
     ToggleButton* loopingButton;
-    rec::widgets::time::TextComponent* songTime;
-    rec::widgets::time::TextComponent* realTime;
-    rec::widgets::time::DialComponent* songDial;
-    rec::widgets::time::DialComponent* realDial;
+    rec::widget::time::TextComponent* songTime;
+    rec::widget::time::TextComponent* realTime;
+    rec::widget::time::DialComponent* songDial;
+    rec::widget::time::DialComponent* realDial;
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)
     MainPageJ(const MainPageJ&);

@@ -4,13 +4,13 @@
 #include <stdio.h>
 
 #include "rec/base/base.h"
-#include "rec/widgets/Time.pb.h"
+#include "rec/widget/Time.pb.h"
 #include "rec/gui/Color.pb.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-namespace widgets {
+namespace widget {
 namespace time {
 
 class TextComponent : public Component {
@@ -53,7 +53,7 @@ class DialComponent : public Component {
 };
 
 }  // namespace time
-}  // namespace widgets
+}  // namespace widget
 }  // namespace rec
 
 #endif  // __REC_GUI_TIME__

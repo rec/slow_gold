@@ -1,7 +1,7 @@
 import "rec/gui/Color.proto";
 import "rec/gui/Font.proto";
 
-package rec.widgets;
+package rec.widget;
 
 message ThreadDescription {
   optional uint32 priority = 1 [default = 4];

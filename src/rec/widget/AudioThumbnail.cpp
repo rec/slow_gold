@@ -1,8 +1,8 @@
-#include "rec/widgets/AudioThumbnail.h"
+#include "rec/widget/AudioThumbnail.h"
 #include "rec/gui/Color.h"
 
 namespace rec {
-namespace widgets {
+namespace widget {
 
 AudioThumbnailComponent::AudioThumbnailComponent()
     : description_(rec::slow::getPreferences().thumbnail()),
@@ -128,6 +128,6 @@ void AudioThumbnailComponent::changeListenerCallback(void*) {
   repaint();
 }
 
-}  // namespace widgets
+}  // namespace widget
 }  // namespace rec
 

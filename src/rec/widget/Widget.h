@@ -1,14 +1,14 @@
-#ifndef __REC_WIDGETS_WIDGET__
-#define __REC_WIDGETS_WIDGET__
+#ifndef __REC_WIDGET_WIDGET__
+#define __REC_WIDGET_WIDGET__
 
 #include "rec/base/base.h"
-#include "rec/widgets/Widget.pb.h"
+#include "rec/widget/Widget.pb.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-namespace widgets {
+namespace widget {
 
 template <typename Parent>
 class WidgetBase : public Parent {
@@ -40,7 +40,7 @@ class WidgetBase : public Parent {
 
 };
 
-}  // namespace widgets
+}  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGETS_WIDGET__
+#endif  // __REC_WIDGET_WIDGET__
