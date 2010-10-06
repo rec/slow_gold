@@ -120,29 +120,29 @@ void MainPageK::paste(251,7984
 
 rec/app/MainPageK.h,1783
 #define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
-namespace rec 14,290
-namespace slow rec::slow15,306
-class MainPageK rec::slow::MainPageK17,324
-  ~MainPageK(rec::slow::MainPageK::~MainPageK22,500
-  virtual void fileClicked(rec::slow::MainPageK::fileClicked39,937
-  virtual void fileDoubleClicked(rec::slow::MainPageK::fileDoubleClicked40,1006
-  DirectoryContentsList* directoryList(rec::slow::MainPageK::directoryList42,1061
-  static const TreeView::ColourIds BACKGROUND;rec::slow::MainPageK::BACKGROUND52,1311
-  static const Colour FOREGROUND;rec::slow::MainPageK::FOREGROUND53,1358
-  static const File::SpecialLocationType START_DIR;rec::slow::MainPageK::START_DIR54,1392
-  static const char* PREVIEW_THREAD_NAME;rec::slow::MainPageK::PREVIEW_THREAD_NAME55,1444
-  MainPageJ* peer_;rec::slow::MainPageK::peer_60,1563
-  TimeSliceThread directoryListThread_;rec::slow::MainPageK::directoryListThread_63,1644
-  DirectoryContentsList directoryList_;rec::slow::MainPageK::directoryList_64,1684
-  AudioTransportSource transportSource_;rec::slow::MainPageK::transportSource_67,1768
-  AudioSourcePlayer player_;rec::slow::MainPageK::player_70,1850
-  AudioDeviceManager* deviceManager_;rec::slow::MainPageK::deviceManager_73,1911
-  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;rec::slow::MainPageK::DoubleStretchyThread75,1950
-  scoped_ptr<DoubleStretchyThread> stretchy_;rec::slow::MainPageK::stretchy_76,2023
-  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;rec::slow::MainPageK::stretchyDeleter_77,2069
-  scoped_ptr<Thread> cursorThread_;rec::slow::MainPageK::cursorThread_79,2123
-  std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_81,2160
-  StringArray cdNames_;rec::slow::MainPageK::cdNames_83,2201
+namespace rec 14,285
+namespace slow rec::slow15,301
+class MainPageK rec::slow::MainPageK17,319
+  ~MainPageK(rec::slow::MainPageK::~MainPageK22,495
+  virtual void fileClicked(rec::slow::MainPageK::fileClicked39,932
+  virtual void fileDoubleClicked(rec::slow::MainPageK::fileDoubleClicked40,1001
+  DirectoryContentsList* directoryList(rec::slow::MainPageK::directoryList42,1056
+  static const TreeView::ColourIds BACKGROUND;rec::slow::MainPageK::BACKGROUND52,1306
+  static const Colour FOREGROUND;rec::slow::MainPageK::FOREGROUND53,1353
+  static const File::SpecialLocationType START_DIR;rec::slow::MainPageK::START_DIR54,1387
+  static const char* PREVIEW_THREAD_NAME;rec::slow::MainPageK::PREVIEW_THREAD_NAME55,1439
+  MainPageJ* peer_;rec::slow::MainPageK::peer_60,1558
+  TimeSliceThread directoryListThread_;rec::slow::MainPageK::directoryListThread_63,1639
+  DirectoryContentsList directoryList_;rec::slow::MainPageK::directoryList_64,1679
+  AudioTransportSource transportSource_;rec::slow::MainPageK::transportSource_67,1763
+  AudioSourcePlayer player_;rec::slow::MainPageK::player_70,1845
+  AudioDeviceManager* deviceManager_;rec::slow::MainPageK::deviceManager_73,1906
+  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;rec::slow::MainPageK::DoubleStretchyThread75,1945
+  scoped_ptr<DoubleStretchyThread> stretchy_;rec::slow::MainPageK::stretchy_76,2018
+  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;rec::slow::MainPageK::stretchyDeleter_77,2064
+  scoped_ptr<Thread> cursorThread_;rec::slow::MainPageK::cursorThread_79,2118
+  std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_81,2155
+  StringArray cdNames_;rec::slow::MainPageK::cdNames_83,2196
 
 rec/app/RecApplication.h,183
 #define __REC_APP_RECAPPLICATION__2,35
@@ -2746,40 +2746,6 @@ using proto::Operation;rec::yaml::proto::Operation12,173
 TEST(rec::yaml::TEST21,347
 TEST(31,597
 
-rec/gui/AudioThumbnailComponent.cpp,740
-namespace rec 5,104
-namespace gui rec::gui6,120
-AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,137
-AudioThumbnailComponent::~AudioThumbnailComponent(18,582
-void AudioThumbnailComponent::setFile(22,680
-void AudioThumbnailComponent::setZoomFactor(30,916
-void AudioThumbnailComponent::mouseWheelMove(39,1242
-Rectangle<int> AudioThumbnailComponent::cursorRectangle(54,1772
-bool AudioThumbnailComponent::within(66,2233
-void AudioThumbnailComponent::mouseUp(70,2331
-void AudioThumbnailComponent::setCursor(78,2574
-void AudioThumbnailComponent::paint(95,2998
-int AudioThumbnailComponent::getCursor(121,3856
-void AudioThumbnailComponent::changeListenerCallback(127,4038
-
-rec/gui/AudioThumbnailComponent.h,850
-#define __THUMBNAIL_COMP2,25
-class AudioThumbnailComponent 21,273
-  AudioThumbnailComponent(23,356
-  ~AudioThumbnailComponent(24,415
-  void setFile(26,446
-  void setZoomFactor(27,480
-  void mouseWheelMove(28,517
-  Rectangle<int> cursorRectangle(30,586
-  const ThumbnailDescription description_;AudioThumbnailComponent::description_46,999
-  AudioThumbnailCache thumbnailCache_;AudioThumbnailComponent::thumbnailCache_48,1043
-  AudioThumbnail thumbnail_;AudioThumbnailComponent::thumbnail_49,1082
-  double startTime_,AudioThumbnailComponent::startTime_50,1111
-  double startTime_, endTime_,AudioThumbnailComponent::endTime_50,1111
-  double startTime_, endTime_, cursor_;AudioThumbnailComponent::cursor_50,1111
-  int cursorX_;AudioThumbnailComponent::cursorX_51,1151
-  CriticalSection lock_;AudioThumbnailComponent::lock_52,1167
-
 rec/gui/Color.cpp,224
 namespace rec 6,87
 namespace gui rec::gui7,103
@@ -3088,6 +3054,40 @@ class Wrapper 9,134
   virtual void run(12,218
   scoped_ptr<Runnable> runnable_;15,294
   DISALLOW_COPY_ASSIGN_AND_EMPTY(16,328
+
+rec/widgets/AudioThumbnail.cpp,740
+namespace rec 5,108
+namespace gui rec::gui6,124
+AudioThumbnailComponent::AudioThumbnailComponent(rec::gui::AudioThumbnailComponent::AudioThumbnailComponent8,141
+AudioThumbnailComponent::~AudioThumbnailComponent(18,586
+void AudioThumbnailComponent::setFile(22,684
+void AudioThumbnailComponent::setZoomFactor(30,920
+void AudioThumbnailComponent::mouseWheelMove(39,1246
+Rectangle<int> AudioThumbnailComponent::cursorRectangle(54,1776
+bool AudioThumbnailComponent::within(66,2237
+void AudioThumbnailComponent::mouseUp(70,2335
+void AudioThumbnailComponent::setCursor(78,2578
+void AudioThumbnailComponent::paint(95,3002
+int AudioThumbnailComponent::getCursor(121,3860
+void AudioThumbnailComponent::changeListenerCallback(127,4042
+
+rec/widgets/AudioThumbnail.h,850
+#define __THUMBNAIL_COMP2,25
+class AudioThumbnailComponent 21,273
+  AudioThumbnailComponent(23,356
+  ~AudioThumbnailComponent(24,415
+  void setFile(26,446
+  void setZoomFactor(27,480
+  void mouseWheelMove(28,517
+  Rectangle<int> cursorRectangle(30,586
+  const ThumbnailDescription description_;AudioThumbnailComponent::description_46,999
+  AudioThumbnailCache thumbnailCache_;AudioThumbnailComponent::thumbnailCache_48,1043
+  AudioThumbnail thumbnail_;AudioThumbnailComponent::thumbnail_49,1082
+  double startTime_,AudioThumbnailComponent::startTime_50,1111
+  double startTime_, endTime_,AudioThumbnailComponent::endTime_50,1111
+  double startTime_, endTime_, cursor_;AudioThumbnailComponent::cursor_50,1111
+  int cursorX_;AudioThumbnailComponent::cursorX_51,1151
+  CriticalSection lock_;AudioThumbnailComponent::lock_52,1167
 
 rec/widgets/Time.cpp,437
 namespace rec 11,178

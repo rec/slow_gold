@@ -75,18 +75,18 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fThumbnailDescription_2eproto();
-  ::rec::slow::proto::protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
+  ::rec::slow::proto::protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fwidgets_2fAudioThumbnail_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\016rec.slow.p"
-    "roto\032\"rec/gui/ThumbnailDescription.proto"
-    "\032\031rec/slow/LoopWindow.proto\032\031rec/gui/Rec"
-    "entFiles.proto\"\234\001\n\013Preferences\022/\n\013loop_w"
-    "indow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\022"
-    "0\n\tthumbnail\030\002 \001(\0132\035.rec.gui.ThumbnailDe"
-    "scription\022*\n\014recent_files\030\003 \001(\0132\024.rec.gu"
-    "i.RecentFiles", 293);
+    "roto\032\031rec/gui/RecentFiles.proto\032\031rec/slo"
+    "w/LoopWindow.proto\032 rec/widgets/AudioThu"
+    "mbnail.proto\"\234\001\n\013Preferences\022/\n\013loop_win"
+    "dow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\0220\n"
+    "\tthumbnail\030\002 \001(\0132\035.rec.gui.ThumbnailDesc"
+    "ription\022*\n\014recent_files\030\003 \001(\0132\024.rec.gui."
+    "RecentFiles", 291);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();

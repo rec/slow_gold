@@ -1,8 +1,8 @@
 package rec.slow.proto;
 
-import "rec/gui/ThumbnailDescription.proto";
-import "rec/slow/LoopWindow.proto";
 import "rec/gui/RecentFiles.proto";
+import "rec/slow/LoopWindow.proto";
+import "rec/widgets/AudioThumbnail.proto";
 
 message Preferences {
   optional slow.proto.LoopWindow loop_window = 1;

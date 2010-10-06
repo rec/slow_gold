@@ -23,9 +23,9 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "rec/gui/ThumbnailDescription.pb.h"
-#include "rec/slow/LoopWindow.pb.h"
 #include "rec/gui/RecentFiles.pb.h"
+#include "rec/slow/LoopWindow.pb.h"
+#include "rec/widgets/AudioThumbnail.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {

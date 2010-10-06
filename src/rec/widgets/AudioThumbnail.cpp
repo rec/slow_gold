@@ -1,4 +1,4 @@
-#include "rec/gui/AudioThumbnailComponent.h"
+#include "rec/widgets/AudioThumbnail.h"
 #include "rec/app/MainPageK.h"
 #include "rec/gui/Color.h"
 

@@ -5,7 +5,7 @@
 
 #include "rec/slow/Preferences.h"
 #include "rec/audio/source/DoubleStretchyThread.h"
-#include "rec/gui/AudioThumbnailComponent.h"
+#include "rec/widgets/AudioThumbnail.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 

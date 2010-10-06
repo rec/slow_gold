@@ -24,7 +24,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/gui/Color.pb.h"
-#include "rec/gui/ThumbnailDescription.pb.h"
+#include "rec/widgets/AudioThumbnail.pb.h"
 #include "rec/widgets/Time.pb.h"
 // @@protoc_insertion_point(includes)
 
