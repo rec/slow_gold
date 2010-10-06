@@ -4,7 +4,7 @@
 namespace rec {
 namespace widget {
 
-AudioThumbnailComponent::AudioThumbnailComponent()
+AudioThumbnailWidget::AudioThumbnailWidget()
     : description_(rec::slow::getPreferences().thumbnail()),
       thumbnailCache_(description_.thumbnail_cache()),
       thumbnail_(description_.source_samples_per_thumbnail_sample(),
@@ -13,11 +13,11 @@ AudioThumbnailComponent::AudioThumbnailComponent()
   thumbnail_.addChangeListener(this);
 }
 
-AudioThumbnailComponent::~AudioThumbnailComponent() {
+AudioThumbnailWidget::~AudioThumbnailWidget() {
   thumbnail_.removeChangeListener(this);
 }
 
-void AudioThumbnailComponent::setFile(const File& file) {
+void AudioThumbnailWidget::setFile(const File& file) {
   ScopedLock l(lock_);
   thumbnail_.setSource(new FileInputSource(file));
   startTime_ = ratio_ = 0;
@@ -25,7 +25,7 @@ void AudioThumbnailComponent::setFile(const File& file) {
   cursor_ = (startTime_ + endTime_) / 2;
 }
 
-void AudioThumbnailComponent::setZoomFactor(double amount) {
+void AudioThumbnailWidget::setZoomFactor(double amount) {
   if (thumbnail_.getTotalLength() > 0) {
     double timeElapsed = thumbnail_.getTotalLength() - startTime_;
     double timeDisplayed = timeElapsed * (1.0 - jlimit(0.0, 1.0, amount));
@@ -34,7 +34,7 @@ void AudioThumbnailComponent::setZoomFactor(double amount) {
   }
 }
 
-void AudioThumbnailComponent::mouseWheelMove(const MouseEvent& e,
+void AudioThumbnailWidget::mouseWheelMove(const MouseEvent& e,
                                              float incX, float incY) {
   return;
   // no idea what this does yet.  :-D
@@ -49,7 +49,7 @@ void AudioThumbnailComponent::mouseWheelMove(const MouseEvent& e,
   }
 }
 
-Rectangle<int> AudioThumbnailComponent::cursorRectangle() const {
+Rectangle<int> AudioThumbnailWidget::cursorRectangle() const {
   int margin = description_.margin();
   int thickness = description_.cursor_thickness();
 
@@ -61,11 +61,11 @@ Rectangle<int> AudioThumbnailComponent::cursorRectangle() const {
   return Rectangle<int>(cursorX, margin, thickness, getHeight() - margin);
 }
 
-bool AudioThumbnailComponent::within(int x) const {
+bool AudioThumbnailWidget::within(int x) const {
   return x >= startTime_ && x <= endTime_;
 }
 
-void AudioThumbnailComponent::mouseUp(const MouseEvent& e) {
+void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
   int margin = description_.margin();
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
@@ -74,7 +74,7 @@ void AudioThumbnailComponent::mouseUp(const MouseEvent& e) {
     (*i)->changeListenerCallback(this);
 }
 
-void AudioThumbnailComponent::setCursor(double cursorRatio) {
+void AudioThumbnailWidget::setCursor(double cursorRatio) {
   double cursor = cursorRatio * thumbnail_.getTotalLength();
   Rectangle<int> before, after;
   {
@@ -92,7 +92,7 @@ void AudioThumbnailComponent::setCursor(double cursorRatio) {
   }
 }
 
-void AudioThumbnailComponent::paint(Graphics& g) {
+void AudioThumbnailWidget::paint(Graphics& g) {
   const gui::Colors& colors = description_.colors();
   gui::color::prepare(colors, &g);
   int margin = description_.margin();
@@ -118,13 +118,13 @@ void AudioThumbnailComponent::paint(Graphics& g) {
   }
 }
 
-int AudioThumbnailComponent::getCursor() const {
+int AudioThumbnailWidget::getCursor() const {
   ScopedLock l(lock_);
   return cursor_;
 }
 
 // this method is called by the thumbnail when it has changed, so we should repaint it..
-void AudioThumbnailComponent::changeListenerCallback(void*) {
+void AudioThumbnailWidget::changeListenerCallback(void*) {
   repaint();
 }
 

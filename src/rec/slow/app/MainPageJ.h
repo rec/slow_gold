@@ -74,7 +74,7 @@ public:
 
     //==============================================================================
     Label* zoomLabel;
-    rec::widget::AudioThumbnailComponent* thumbnail;
+    rec::widget::AudioThumbnailWidget* thumbnail;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
     Label* explanation;

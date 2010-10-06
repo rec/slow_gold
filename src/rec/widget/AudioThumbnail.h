@@ -9,10 +9,10 @@
 namespace rec {
 namespace widget {
 
-class AudioThumbnailComponent : public Component, public ChangeListener {
+class AudioThumbnailWidget : public Component, public ChangeListener {
  public:
-  AudioThumbnailComponent();
-  ~AudioThumbnailComponent();
+  AudioThumbnailWidget();
+  ~AudioThumbnailWidget();
 
   void setFile(const File& file);
   void setZoomFactor(double amount);
@@ -47,7 +47,7 @@ class AudioThumbnailComponent : public Component, public ChangeListener {
   int cursorX_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_AND_ASSIGN(AudioThumbnailComponent);
+  DISALLOW_COPY_AND_ASSIGN(AudioThumbnailWidget);
 };
 
 }  // namespace widget
