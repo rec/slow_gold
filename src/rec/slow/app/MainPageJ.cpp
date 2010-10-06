@@ -98,7 +98,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
 
     using rec::widgets::time::TextComponent;
     using rec::widgets::time::Text;
-    using rec::gui::color::Colors;
+    using rec::gui::Colors;
 
     addAndMakeVisible(songTime = new TextComponent("st", Text(), Colors()));
     addAndMakeVisible(realTime = new TextComponent("rt", Text(), Colors()));

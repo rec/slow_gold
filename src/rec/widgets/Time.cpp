@@ -13,10 +13,10 @@ namespace time {
 
 TextComponent::TextComponent(const String& name,
                              const Text& desc,
-                             const gui::color::Colors& colors)
+                             const gui::Colors& colors)
     : Component(name),
       desc_(new Text(desc)),
-      colors_(new gui::color::Colors(colors)),
+      colors_(new gui::Colors(colors)),
       time_(0),
       font_(getFont(desc.font())) {
   if (!desc_->font().has_name())
@@ -56,10 +56,10 @@ void TextComponent::paint(Graphics& g) {
 
 
 DialComponent::DialComponent(const String& name, const Dial& desc,
-                             const gui::color::Colors& colors)
+                             const gui::Colors& colors)
     : Component(name),
       desc_(new Dial(desc)),
-      colors_(new gui::color::Colors(colors)) {
+      colors_(new gui::Colors(colors)) {
 }
 
 

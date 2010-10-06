@@ -74,17 +74,17 @@ void protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::gui::color::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
+  ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::rec::widgets::protobuf_AddDesc_rec_2fwidgets_2fAudioThumbnail_2eproto();
   ::rec::widgets::time::protobuf_AddDesc_rec_2fwidgets_2fTime_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/gui/Appearance.proto\022\007rec.gui\032\023rec"
     "/gui/Color.proto\032 rec/widgets/AudioThumb"
-    "nail.proto\032\026rec/widgets/Time.proto\"\217\001\n\nA"
-    "ppearance\022%\n\006colors\030\001 \001(\0132\025.rec.gui.colo"
-    "r.Colors\0224\n\tthumbnail\030\002 \001(\0132!.rec.widget"
-    "s.ThumbnailDescription\022$\n\004time\030\003 \001(\0132\026.r"
-    "ec.widgets.time.Time", 260);
+    "nail.proto\032\026rec/widgets/Time.proto\"\211\001\n\nA"
+    "ppearance\022\037\n\006colors\030\001 \001(\0132\017.rec.gui.Colo"
+    "rs\0224\n\tthumbnail\030\002 \001(\0132!.rec.widgets.Thum"
+    "bnailDescription\022$\n\004time\030\003 \001(\0132\026.rec.wid"
+    "gets.time.Time", 254);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Appearance.proto", &protobuf_RegisterTypes);
   Appearance::default_instance_ = new Appearance();
@@ -114,7 +114,7 @@ Appearance::Appearance()
 }
 
 void Appearance::InitAsDefaultInstance() {
-  colors_ = const_cast< ::rec::gui::color::Colors*>(&::rec::gui::color::Colors::default_instance());
+  colors_ = const_cast< ::rec::gui::Colors*>(&::rec::gui::Colors::default_instance());
   thumbnail_ = const_cast< ::rec::widgets::ThumbnailDescription*>(&::rec::widgets::ThumbnailDescription::default_instance());
   time_ = const_cast< ::rec::widgets::time::Time*>(&::rec::widgets::time::Time::default_instance());
 }
@@ -168,7 +168,7 @@ Appearance* Appearance::New() const {
 void Appearance::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (colors_ != NULL) colors_->::rec::gui::color::Colors::Clear();
+      if (colors_ != NULL) colors_->::rec::gui::Colors::Clear();
     }
     if (_has_bit(1)) {
       if (thumbnail_ != NULL) thumbnail_->::rec::widgets::ThumbnailDescription::Clear();
@@ -187,7 +187,7 @@ bool Appearance::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.color.Colors colors = 1;
+      // optional .rec.gui.Colors colors = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -246,7 +246,7 @@ bool Appearance::MergePartialFromCodedStream(
 
 void Appearance::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.color.Colors colors = 1;
+  // optional .rec.gui.Colors colors = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->colors(), output);
@@ -272,7 +272,7 @@ void Appearance::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Appearance::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.color.Colors colors = 1;
+  // optional .rec.gui.Colors colors = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -304,7 +304,7 @@ int Appearance::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.color.Colors colors = 1;
+    // optional .rec.gui.Colors colors = 1;
     if (has_colors()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -353,7 +353,7 @@ void Appearance::MergeFrom(const Appearance& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_colors()->::rec::gui::color::Colors::MergeFrom(from.colors());
+      mutable_colors()->::rec::gui::Colors::MergeFrom(from.colors());
     }
     if (from._has_bit(1)) {
       mutable_thumbnail()->::rec::widgets::ThumbnailDescription::MergeFrom(from.thumbnail());

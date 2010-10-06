@@ -9,7 +9,7 @@ message ThreadDescription {
 };
 
 message ThumbnailDescription {
-  optional gui.color.Colors colors = 1;
+  optional gui.Colors colors = 1;
   optional uint32 cursor_thickness = 2                    [default = 1];
   optional uint32 margin = 3                              [default = 2];
   optional uint32 source_samples_per_thumbnail_sample = 4 [default = 512];

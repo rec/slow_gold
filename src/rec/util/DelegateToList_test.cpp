@@ -11,7 +11,7 @@ namespace util {
 namespace {
 
 using widgets::WidgetDesc;
-using gui::color::Colors;
+using gui::Colors;
 using gui::FontDesc;
 
 TEST(DelegateToList, All) {

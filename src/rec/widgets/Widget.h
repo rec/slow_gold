@@ -31,7 +31,7 @@ class WidgetBase : public Parent {
     if (desc_.has_font())
       g.setFont(font);
   }
-  
+
   virtual void doPaint(Graphics& g, const Rectangle<int>& bounds) = 0;
 
  private:

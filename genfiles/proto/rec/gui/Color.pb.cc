@@ -12,7 +12,6 @@
 
 namespace rec {
 namespace gui {
-namespace color {
 
 namespace {
 
@@ -101,12 +100,11 @@ void protobuf_AddDesc_rec_2fgui_2fColor_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\023rec/gui/Color.proto\022\rrec.gui.color\"x\n\005"
-    "Color\022\016\n\003rgb\030\001 \001(\r:\0010\022\022\n\005alpha\030\002 \001(\r:\00325"
-    "5\022\016\n\003red\030\003 \001(\r:\0010\022\020\n\005green\030\004 \001(\r:\0010\022\017\n\004b"
-    "lue\030\005 \001(\r:\0010\022\030\n\004argb\030\006 \001(\r:\n4278190080\"-"
-    "\n\006Colors\022#\n\005color\030\001 \003(\0132\024.rec.gui.color."
-    "Color", 205);
+    "\n\023rec/gui/Color.proto\022\007rec.gui\"x\n\005Color\022"
+    "\016\n\003rgb\030\001 \001(\r:\0010\022\022\n\005alpha\030\002 \001(\r:\003255\022\016\n\003r"
+    "ed\030\003 \001(\r:\0010\022\020\n\005green\030\004 \001(\r:\0010\022\017\n\004blue\030\005 "
+    "\001(\r:\0010\022\030\n\004argb\030\006 \001(\r:\n4278190080\"\'\n\006Colo"
+    "rs\022\035\n\005color\030\001 \003(\0132\016.rec.gui.Color", 193);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Color.proto", &protobuf_RegisterTypes);
   Color::default_instance_ = new Color();
@@ -597,7 +595,7 @@ bool Colors::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.gui.color.Color color = 1;
+      // repeated .rec.gui.Color color = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -630,7 +628,7 @@ bool Colors::MergePartialFromCodedStream(
 
 void Colors::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.gui.color.Color color = 1;
+  // repeated .rec.gui.Color color = 1;
   for (int i = 0; i < this->color_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->color(i), output);
@@ -644,7 +642,7 @@ void Colors::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Colors::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.gui.color.Color color = 1;
+  // repeated .rec.gui.Color color = 1;
   for (int i = 0; i < this->color_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -661,7 +659,7 @@ void Colors::SerializeWithCachedSizes(
 int Colors::ByteSize() const {
   int total_size = 0;
   
-  // repeated .rec.gui.color.Color color = 1;
+  // repeated .rec.gui.Color color = 1;
   total_size += 1 * this->color_size();
   for (int i = 0; i < this->color_size(); i++) {
     total_size +=
@@ -735,7 +733,6 @@ void Colors::Swap(Colors* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace color
 }  // namespace gui
 }  // namespace rec
 

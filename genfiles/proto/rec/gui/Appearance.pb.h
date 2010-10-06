@@ -94,12 +94,12 @@ class Appearance : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.gui.color.Colors colors = 1;
+  // optional .rec.gui.Colors colors = 1;
   inline bool has_colors() const;
   inline void clear_colors();
   static const int kColorsFieldNumber = 1;
-  inline const ::rec::gui::color::Colors& colors() const;
-  inline ::rec::gui::color::Colors* mutable_colors();
+  inline const ::rec::gui::Colors& colors() const;
+  inline ::rec::gui::Colors* mutable_colors();
   
   // optional .rec.widgets.ThumbnailDescription thumbnail = 2;
   inline bool has_thumbnail() const;
@@ -120,7 +120,7 @@ class Appearance : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::gui::color::Colors* colors_;
+  ::rec::gui::Colors* colors_;
   ::rec::widgets::ThumbnailDescription* thumbnail_;
   ::rec::widgets::time::Time* time_;
   friend void  protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto();
@@ -150,20 +150,20 @@ class Appearance : public ::google::protobuf::Message {
 
 // Appearance
 
-// optional .rec.gui.color.Colors colors = 1;
+// optional .rec.gui.Colors colors = 1;
 inline bool Appearance::has_colors() const {
   return _has_bit(0);
 }
 inline void Appearance::clear_colors() {
-  if (colors_ != NULL) colors_->::rec::gui::color::Colors::Clear();
+  if (colors_ != NULL) colors_->::rec::gui::Colors::Clear();
   _clear_bit(0);
 }
-inline const ::rec::gui::color::Colors& Appearance::colors() const {
+inline const ::rec::gui::Colors& Appearance::colors() const {
   return colors_ != NULL ? *colors_ : *default_instance_->colors_;
 }
-inline ::rec::gui::color::Colors* Appearance::mutable_colors() {
+inline ::rec::gui::Colors* Appearance::mutable_colors() {
   _set_bit(0);
-  if (colors_ == NULL) colors_ = new ::rec::gui::color::Colors;
+  if (colors_ == NULL) colors_ = new ::rec::gui::Colors;
   return colors_;
 }
 

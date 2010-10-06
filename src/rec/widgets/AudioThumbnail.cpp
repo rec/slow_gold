@@ -93,7 +93,7 @@ void AudioThumbnailComponent::setCursor(double cursorRatio) {
 }
 
 void AudioThumbnailComponent::paint(Graphics& g) {
-  const gui::color::Colors& colors = description_.colors();
+  const gui::Colors& colors = description_.colors();
   gui::color::prepare(colors, &g);
   int margin = description_.margin();
 

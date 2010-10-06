@@ -47,8 +47,8 @@ message Dial {
   optional float zero_point = 7;
   optional bool empty_on_zero = 8 [default = true];
 
-  optional gui.color.Color from_color = 9;
-  optional gui.color.Color to_color = 10;
+  optional gui.Color from_color = 9;
+  optional gui.Color to_color = 10;
 };
 
 message Time {

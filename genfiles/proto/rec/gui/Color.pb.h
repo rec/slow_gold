@@ -27,7 +27,6 @@
 
 namespace rec {
 namespace gui {
-namespace color {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
@@ -135,7 +134,7 @@ class Color : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 argb() const;
   inline void set_argb(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.gui.color.Color)
+  // @@protoc_insertion_point(class_scope:rec.gui.Color)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -222,24 +221,24 @@ class Colors : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // repeated .rec.gui.color.Color color = 1;
+  // repeated .rec.gui.Color color = 1;
   inline int color_size() const;
   inline void clear_color();
   static const int kColorFieldNumber = 1;
-  inline const ::rec::gui::color::Color& color(int index) const;
-  inline ::rec::gui::color::Color* mutable_color(int index);
-  inline ::rec::gui::color::Color* add_color();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::color::Color >&
+  inline const ::rec::gui::Color& color(int index) const;
+  inline ::rec::gui::Color* mutable_color(int index);
+  inline ::rec::gui::Color* add_color();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >&
       color() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::color::Color >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >*
       mutable_color();
   
-  // @@protoc_insertion_point(class_scope:rec.gui.color.Colors)
+  // @@protoc_insertion_point(class_scope:rec.gui.Colors)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::color::Color > color_;
+  ::google::protobuf::RepeatedPtrField< ::rec::gui::Color > color_;
   friend void  protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fColor_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fColor_2eproto();
@@ -367,27 +366,27 @@ inline void Color::set_argb(::google::protobuf::uint32 value) {
 
 // Colors
 
-// repeated .rec.gui.color.Color color = 1;
+// repeated .rec.gui.Color color = 1;
 inline int Colors::color_size() const {
   return color_.size();
 }
 inline void Colors::clear_color() {
   color_.Clear();
 }
-inline const ::rec::gui::color::Color& Colors::color(int index) const {
+inline const ::rec::gui::Color& Colors::color(int index) const {
   return color_.Get(index);
 }
-inline ::rec::gui::color::Color* Colors::mutable_color(int index) {
+inline ::rec::gui::Color* Colors::mutable_color(int index) {
   return color_.Mutable(index);
 }
-inline ::rec::gui::color::Color* Colors::add_color() {
+inline ::rec::gui::Color* Colors::add_color() {
   return color_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::color::Color >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >&
 Colors::color() const {
   return color_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::color::Color >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::gui::Color >*
 Colors::mutable_color() {
   return &color_;
 }
@@ -395,7 +394,6 @@ Colors::mutable_color() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace color
 }  // namespace gui
 }  // namespace rec
 
