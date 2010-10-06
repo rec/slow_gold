@@ -5,10 +5,11 @@ import "rec/gui/Font.proto";
 import "rec/gui/Geometry.proto";
 
 // Information common to all components.
-message Widget {
-  optional gui.color.Colors colors = 1;
-  optional gui.FontDesc font = 2;
-  optional uint32 margin = 3 [default = 2];
-  optional bool transparent = 4;
+message WidgetDesc {
+  optional string name = 1;
+  optional gui.color.Colors colors = 2;
+  optional gui.FontDesc font = 3;
+  optional uint32 margin = 4 [default = 2];
+  optional bool transparent = 5;
 };
 
