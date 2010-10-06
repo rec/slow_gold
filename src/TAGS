@@ -17,17 +17,17 @@ class ComponentContainer10,155
 
 rec/app/GenericApplication.h,696
 #define __REC_JUCE_GENERIC_APPLICATION2,39
-class GenericApplication 13,220
-  GenericApplication(19,353
-  virtual ~GenericApplication(23,463
-  virtual void initialise(25,499
-  virtual void shutdown(GenericApplication::shutdown31,713
-  const String getApplicationName(GenericApplication::getApplicationName36,839
-  const String getApplicationVersion(GenericApplication::getApplicationVersion37,904
-  bool moreThanOneInstanceAllowed(GenericApplication::moreThanOneInstanceAllowed38,972
-  void anotherInstanceStarted GenericApplication::anotherInstanceStarted40,1030
-  const string name_;GenericApplication::name_43,1104
-  const string version_;GenericApplication::version_44,1126
+class GenericApplication 13,225
+  GenericApplication(19,358
+  virtual ~GenericApplication(23,468
+  virtual void initialise(25,504
+  virtual void shutdown(GenericApplication::shutdown31,718
+  const String getApplicationName(GenericApplication::getApplicationName36,844
+  const String getApplicationVersion(GenericApplication::getApplicationVersion37,909
+  bool moreThanOneInstanceAllowed(GenericApplication::moreThanOneInstanceAllowed38,977
+  void anotherInstanceStarted GenericApplication::anotherInstanceStarted40,1035
+  const string name_;GenericApplication::name_43,1109
+  const string version_;GenericApplication::version_44,1131
 
 rec/app/RecApplication.h,183
 #define __REC_APP_RECAPPLICATION__2,35
@@ -989,17 +989,14 @@ class EventQueue 24,304
   scoped_ptr<proto::logfile::Output> logfile_;EventQueue::logfile_38,515
   scoped_ptr<juce::CriticalSection> lock_;EventQueue::lock_39,562
 
-rec/components/AudioSetupPage.cpp,154
-AudioSetupPage::AudioSetupPage 32,996
-AudioSetupPage::~AudioSetupPage(48,1427
-void AudioSetupPage::paint 60,1789
-void AudioSetupPage::resized(71,2046
-
-rec/components/AudioSetupPage.h,275
-#define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__23,778
-class AudioSetupPage 39,1344
-    AudioDeviceManager& deviceManager;AudioSetupPage::deviceManager59,2030
-    AudioDeviceSelectorComponent* deviceSelector;AudioSetupPage::deviceSelector63,2182
+rec/components/AudioSetupPage.h,430
+#define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__2,73
+class AudioSetupPage 6,191
+  explicit AudioSetupPage(AudioSetupPage::AudioSetupPage8,245
+  void paint AudioSetupPage::paint17,643
+  void resized(AudioSetupPage::resized21,718
+  AudioDeviceManager& deviceManager;AudioSetupPage::deviceManager28,866
+  scoped_ptr<AudioDeviceSelectorComponent> deviceSelector;AudioSetupPage::deviceSelector29,904
 
 rec/components/MainPageComponent.cpp,335
 MainPageComponent::MainPageComponent 36,1087
@@ -1049,37 +1046,37 @@ class MainPageJ 40,1257
     rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2779
 
 rec/components/MainPageK.cpp,1269
-using rec::audio::source::TimeStretch;19,446
-using rec::gui::ThreadDescription;21,488
-using rec::gui::ThumbnailDescription;22,524
-using rec::gui::ThumbnailDescription;23,563
-using rec::persist::copy;25,604
-using rec::thread::Callback;27,633
-using rec::thread::LockedMessage;28,663
-using rec::thread::Runnable;29,698
-using rec::thread::RunnableThread;30,728
-using rec::thread::WaitLoop;31,764
-using rec::thread::makeCallback;32,794
-namespace rec 34,830
-namespace slow rec::slow35,847
-MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1232
-static Thread* makeCursorThread(51,1460
-void MainPageK::construct(60,1863
-void MainPageK::destruct(94,2983
-void MainPageK::loadRecentFile(110,3447
-static const int RATE 116,3670
-void MainPageK::updateCursor(118,3704
-void MainPageK::setPosition(129,4180
-void MainPageK::loadFileIntoTransport(133,4305
-void MainPageK::sliderDragEnded(164,5348
-void MainPageK::sliderValueChanged(173,5681
-static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6223
-void MainPageK::changeListenerCallback(204,6737
-void MainPageK::startStopButtonClicked(225,7321
-void MainPageK::loopingButtonClicked(232,7476
-void MainPageK::selectionChanged(237,7609
-void MainPageK::cut(244,7790
-void MainPageK::paste(251,7979
+using rec::audio::source::TimeStretch;19,451
+using rec::gui::ThreadDescription;21,493
+using rec::gui::ThumbnailDescription;22,529
+using rec::gui::ThumbnailDescription;23,568
+using rec::persist::copy;25,609
+using rec::thread::Callback;27,638
+using rec::thread::LockedMessage;28,668
+using rec::thread::Runnable;29,703
+using rec::thread::RunnableThread;30,733
+using rec::thread::WaitLoop;31,769
+using rec::thread::makeCallback;32,799
+namespace rec 34,835
+namespace slow rec::slow35,852
+MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1237
+static Thread* makeCursorThread(51,1465
+void MainPageK::construct(60,1868
+void MainPageK::destruct(94,2988
+void MainPageK::loadRecentFile(110,3452
+static const int RATE 116,3675
+void MainPageK::updateCursor(118,3709
+void MainPageK::setPosition(129,4185
+void MainPageK::loadFileIntoTransport(133,4310
+void MainPageK::sliderDragEnded(164,5353
+void MainPageK::sliderValueChanged(173,5686
+static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6228
+void MainPageK::changeListenerCallback(204,6742
+void MainPageK::startStopButtonClicked(225,7326
+void MainPageK::loopingButtonClicked(232,7481
+void MainPageK::selectionChanged(237,7614
+void MainPageK::cut(244,7795
+void MainPageK::paste(251,7984
 
 rec/components/MainPageK.h,1783
 #define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
@@ -1109,83 +1106,83 @@ class MainPageK rec::slow::MainPageK17,324
 
 rec/data/persist/App.h,606
 #define __REC_PERSIST_APPBASE__2,32
-class App 25,361
-  typedef std::map<string,App::string27,382
-  typedef std::map<string, UntypedData*> DataMap;App::DataMap27,382
-  Data<Proto>* getData(App::getData30,461
-  command::Manager* commandManager(App::commandManager44,901
-  const string& name(App::name46,967
-  virtual ~App(App::~App48,1015
-  File appDir(App::appDir52,1075
-  explicit App(App::App60,1336
-  DataMap data_;App::data_66,1476
-  CriticalSection lock_;App::lock_67,1493
-  const string name_;App::name_68,1518
-  command::Manager* commandManager_;App::commandManager_69,1540
+class App 25,366
+  typedef std::map<string,App::string27,387
+  typedef std::map<string, UntypedData*> DataMap;App::DataMap27,387
+  Data<Proto>* getData(App::getData30,466
+  command::Manager* commandManager(App::commandManager44,906
+  const string& name(App::name46,972
+  virtual ~App(App::~App48,1020
+  File appDir(App::appDir52,1080
+  explicit App(App::App60,1341
+  DataMap data_;App::data_66,1481
+  CriticalSection lock_;App::lock_67,1498
+  const string name_;App::name_68,1523
+  command::Manager* commandManager_;App::commandManager_69,1545
 
 rec/data/persist/AppInstance.cpp,456
-namespace rec 8,163
-namespace persist rec::persist9,179
-AppInstance::AppInstance(rec::persist::AppInstance::AppInstance11,200
-AppInstance::~AppInstance(25,688
-void AppInstance::needsUpdate(31,828
-bool lockedEmpty(40,1001
-void extendAndClear(46,1139
-void AppInstance::update(56,1360
-void AppInstance::write(69,1680
-void AppInstance::start(80,1924
-void AppInstance::stop(85,2031
-AppInstance* AppInstance::instance_ 91,2121
-App* getApp(93,2166
+namespace rec 8,173
+namespace persist rec::persist9,189
+AppInstance::AppInstance(rec::persist::AppInstance::AppInstance11,210
+AppInstance::~AppInstance(25,698
+void AppInstance::needsUpdate(31,838
+bool lockedEmpty(40,1011
+void extendAndClear(46,1149
+void AppInstance::update(56,1370
+void AppInstance::write(69,1690
+void AppInstance::start(80,1934
+void AppInstance::stop(85,2041
+AppInstance* AppInstance::instance_ 91,2131
+App* getApp(93,2176
 
 rec/data/persist/AppInstance.h,680
 #define __REC_PERSIST_APPINSTANCE__2,36
-class AppInstance 16,261
-  virtual void needsUpdate(25,505
-  void update(27,553
-  void write(28,570
-  static void start(30,587
-  static void stop(31,628
-  static AppInstance* getInstance(33,651
-  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet35,710
-  CriticalSection lock_;AppInstance::lock_41,836
-  DataSet updateData_;AppInstance::updateData_43,862
-  DataSet writeData_;AppInstance::writeData_44,885
-  thread::RunnableThread updateThread_;AppInstance::updateThread_46,908
-  thread::RunnableThread writeThread_;AppInstance::writeThread_47,948
-  static AppInstance* instance_;AppInstance::instance_49,988
+class AppInstance 16,266
+  virtual void needsUpdate(25,510
+  void update(27,558
+  void write(28,575
+  static void start(30,592
+  static void stop(31,633
+  static AppInstance* getInstance(33,656
+  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet35,715
+  CriticalSection lock_;AppInstance::lock_41,841
+  DataSet updateData_;AppInstance::updateData_43,867
+  DataSet writeData_;AppInstance::writeData_44,890
+  thread::RunnableThread updateThread_;AppInstance::updateThread_46,913
+  thread::RunnableThread writeThread_;AppInstance::writeThread_47,953
+  static AppInstance* instance_;AppInstance::instance_49,993
 
 rec/data/persist/Copy.cpp,718
-namespace rec 9,167
-namespace persist rec::persist10,183
-using google::protobuf::TextFormat;rec::persist::google::protobuf::TextFormat12,204
-bool assign(rec::persist::assign18,305
-bool strcopy(24,442
-bool strcopy(30,596
-template <typename From,36,725
-bool through(37,763
-bool proto(43,943
-bool proto(47,1081
-bool proto(51,1220
-bool file(56,1314
-bool file(60,1395
-bool file(75,1830
-bool copy(113,2832
-bool copy(114,2906
-bool copy(115,2983
-bool copy(116,3060
-bool copy(118,3135
-bool copy(119,3212
-bool copy(120,3287
-bool copy(121,3364
-bool copy(123,3440
-bool copy(124,3517
-bool copy(125,3594
-bool copy(126,3670
-bool copy(128,3748
-bool copy(129,3822
-bool copy(130,3897
-bool copy(131,3974
+namespace rec 9,172
+namespace persist rec::persist10,188
+using google::protobuf::TextFormat;rec::persist::google::protobuf::TextFormat12,209
+bool assign(rec::persist::assign18,310
+bool strcopy(24,447
+bool strcopy(30,601
+template <typename From,36,730
+bool through(37,768
+bool proto(43,948
+bool proto(47,1086
+bool proto(51,1225
+bool file(56,1319
+bool file(60,1400
+bool file(75,1835
+bool copy(113,2837
+bool copy(114,2911
+bool copy(115,2988
+bool copy(116,3065
+bool copy(118,3140
+bool copy(119,3217
+bool copy(120,3292
+bool copy(121,3369
+bool copy(123,3445
+bool copy(124,3522
+bool copy(125,3599
+bool copy(126,3675
+bool copy(128,3753
+bool copy(129,3827
+bool copy(130,3902
+bool copy(131,3979
 
 rec/data/persist/Copy.h,84
 #define __REC_PERSIST_COPY__2,29
@@ -1193,31 +1190,31 @@ typedef google::protobuf::Message Message;29,656
 
 rec/data/persist/Data.h,658
 #define __REC_PERSIST_DATA__2,29
-class Data 17,281
-  Proto get(20,365
-  typedef util::Listener<const Proto&> Listener;Data::Listener22,387
-  virtual void change(Data::change27,577
-  virtual ~Data(Data::~Data29,651
-  typedef std::set<Listener*> Listeners;Data::Listeners36,749
-  Data(Data::Data38,791
-  Proto proto_;Data::proto_40,864
-  Listeners listeners_;Data::listeners_41,880
-  CriticalSection listenerLock_;Data::listenerLock_42,904
-Proto Data<Proto>::get(get50,1036
-bool Data<Proto>::addListener(addListener60,1186
-bool Data<Proto>::removeListener(removeListener72,1496
-void Data<Proto>::changeCallback(changeCallback84,1814
+class Data 17,286
+  Proto get(20,370
+  typedef util::Listener<const Proto&> Listener;Data::Listener22,392
+  virtual void change(Data::change27,582
+  virtual ~Data(Data::~Data29,656
+  typedef std::set<Listener*> Listeners;Data::Listeners36,754
+  Data(Data::Data38,796
+  Proto proto_;Data::proto_40,869
+  Listeners listeners_;Data::listeners_41,885
+  CriticalSection listenerLock_;Data::listenerLock_42,909
+Proto Data<Proto>::get(get50,1041
+bool Data<Proto>::addListener(addListener60,1191
+bool Data<Proto>::removeListener(removeListener72,1501
+void Data<Proto>::changeCallback(changeCallback84,1819
 
 rec/data/persist/UntypedData.cpp,384
-namespace rec 13,261
-namespace persist rec::persist14,277
-using rec::proto::Operation;rec::persist::rec::proto::Operation16,298
-UntypedData::UntypedData(rec::persist::UntypedData::UntypedData18,328
-void UntypedData::readFromFile(27,564
-UntypedData::~UntypedData(35,782
-void UntypedData::change(40,878
-void UntypedData::update(48,1017
-void UntypedData::writeToFile(64,1329
+namespace rec 13,276
+namespace persist rec::persist14,292
+using rec::proto::Operation;rec::persist::rec::proto::Operation16,313
+UntypedData::UntypedData(rec::persist::UntypedData::UntypedData18,343
+void UntypedData::readFromFile(27,579
+UntypedData::~UntypedData(35,797
+void UntypedData::change(40,893
+void UntypedData::update(48,1032
+void UntypedData::writeToFile(64,1344
 
 rec/data/persist/UntypedData.h,684
 #define __REC_PERSIST_UNTYPEDDATA__2,36
@@ -2853,8 +2850,8 @@ class DialComponent 42,713
 
 rec/slow/Preferences.h,148
 #define __REC_SLOW_PREFERENCES__2,33
-typedef persist::Data<proto::Preferences> Data;10,168
-inline const proto::Preferences getPreferences(17,345
+typedef persist::Data<proto::Preferences> Data;10,173
+inline const proto::Preferences getPreferences(17,350
 
 rec/util/Callback.h,178
 #define __REC_UTIL_CALLBACK2,28

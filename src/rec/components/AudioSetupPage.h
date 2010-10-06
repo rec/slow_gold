@@ -1,71 +1,33 @@
-/*
-  ==============================================================================
-
-  This is an automatically generated file created by the Jucer!
-
-  Creation date:  18 Sep 2009 11:26:45 am
-
-  Be careful when adding custom code to these files, as only the code within
-  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
-  and re-saved.
-
-  Jucer version: 1.12
-
-  ------------------------------------------------------------------------------
-
-  The Jucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright 2004-6 by Raw Material Software ltd.
-
-  ==============================================================================
-*/
-
 #ifndef __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
 #define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
 
-//[Headers]     -- You can add your own extra header files here --
 #include "JuceLibraryCode/JuceHeader.h"
-//[/Headers]
 
+class AudioSetupPage  : public Component {
+ public:
+  explicit AudioSetupPage(AudioDeviceManager& deviceManager)
+      : deviceManager_(deviceManager) {
+    deviceSelector_.reset(
+        new AudioDeviceSelectorComponent(deviceManager_,
+                                         0, 2, 0, 2, true, true, true, false));
+    addAndMakeVisible(deviceSelector_.get());
+    setSize (600, 400);
+  }
 
+  void paint (Graphics& g)  {
+    g.fillAll (Colours::lightgrey);
+  }
 
-//==============================================================================
-/**
-                                                                    //[Comments]
-    An auto-generated component, created by the Jucer.
+  void resized() {
+    deviceSelector_->setBounds (8, 8, getWidth() - 16, getHeight() - 16);
+  }
 
-    Describe your class and how it works here!
-                                                                    //[/Comments]
-*/
-class AudioSetupPage  : public Component
-{
-public:
-    //==============================================================================
-    AudioSetupPage (AudioDeviceManager& deviceManager_);
-    ~AudioSetupPage();
+  juce_UseDebuggingNewOperator
 
-    //==============================================================================
-    //[UserMethods]     -- You can add your own custom methods in this section.
-    //[/UserMethods]
-
-    void paint (Graphics& g);
-    void resized();
-
-
-    //==============================================================================
-    juce_UseDebuggingNewOperator
-
-private:
-    //[UserVariables]   -- You can add your own custom variables in this section.
-    AudioDeviceManager& deviceManager;
-    //[/UserVariables]
-
-    //==============================================================================
-    AudioDeviceSelectorComponent* deviceSelector;
-
-    //==============================================================================
-    // (prevent copy constructor and operator= being generated..)
-    AudioSetupPage (const AudioSetupPage&);
-    AudioSetupPage& operator= (const AudioSetupPage&);
+ private:
+  AudioDeviceManager& deviceManager_;
+  scoped_ptr<AudioDeviceSelectorComponent> deviceSelector_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioSetupPage);
 };
 
 
