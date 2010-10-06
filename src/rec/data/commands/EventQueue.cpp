@@ -1,11 +1,12 @@
-#include "rec/commands/EventQueue.h"
+#include "rec/data/commands/EventQueue.h"
 #include "rec/data/proto/LogFile.h"
 
-#include "rec/commands/Event.pb.h"
+#include "rec/data/commands/Event.pb.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
+namespace data {
 namespace commands {
 
 EventQueue::EventQueue(const File& file)
@@ -37,5 +38,6 @@ void EventQueue::write() {
   }
 }
 
+}  // namespace data
 }  // namespace commands
 }  // namespace rec

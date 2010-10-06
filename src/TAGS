@@ -1056,7 +1056,7 @@ typedef unsigned short 22,578
 typedef unsigned int 23,609
 typedef unsigned long 24,638
 
-rec/commands/CommandManager.h,1287
+rec/data/commands/CommandManager.h,1287
 #define __REC_COMMANDS_COMMANDMANAGER__2,40
 typedef ApplicationCommandTarget::InvocationInfo InvocationInfo;10,181
 class MenuDelegate 12,247
@@ -1079,20 +1079,15 @@ class MultiCommand 52,1380
   virtual bool perform(MultiCommand::perform67,1923
   virtual ApplicationCommandTarget* getNextCommandTarget(MultiCommand::getNextCommandTarget71,2041
 
-rec/commands/CommandManager_test.cpp,93
-namespace rec 6,94
-namespace commands rec::commands7,110
-TEST(rec::commands::TEST10,144
+rec/data/commands/EventQueue.cpp,222
+namespace rec 8,161
+namespace commands rec::commands9,177
+EventQueue::EventQueue(rec::commands::EventQueue::EventQueue11,199
+EventQueue::~EventQueue(16,328
+void EventQueue::add(18,368
+void EventQueue::write(23,460
 
-rec/commands/EventQueue.cpp,222
-namespace rec 8,151
-namespace commands rec::commands9,167
-EventQueue::EventQueue(rec::commands::EventQueue::EventQueue11,189
-EventQueue::~EventQueue(16,318
-void EventQueue::add(18,358
-void EventQueue::write(23,450
-
-rec/commands/EventQueue.h,416
+rec/data/commands/EventQueue.h,416
 #define __REC_EVENT_EVENTQUEUE__2,33
 class EventQueue 24,304
   explicit EventQueue(26,332

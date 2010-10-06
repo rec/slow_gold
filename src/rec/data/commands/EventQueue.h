@@ -17,6 +17,7 @@ class Output;
 
 
 namespace rec {
+namespace data {
 namespace commands {
 
 class Event;
@@ -42,6 +43,7 @@ class EventQueue {
 };
 
 }  // namespace commands
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_EVENT_EVENTQUEUE__
