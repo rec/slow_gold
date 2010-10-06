@@ -71,6 +71,8 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
 
+  peer_->thumbnail->addListener(this);
+
   burners_.resize(cdNames_.size());
   for (int i = 0; i < burners_.size(); ++i) {
     burners_[i] = AudioCDBurner::openDevice(i);
@@ -100,6 +102,7 @@ void MainPageK::destruct() {
 
   deviceManager_->removeAudioCallback(&player_);
   peer_->fileTreeComp->removeListener(this);
+  peer_->thumbnail->removeListener(this);
 
   for (int i = 0; i < burners_.size(); ++i)
     delete burners_[i];

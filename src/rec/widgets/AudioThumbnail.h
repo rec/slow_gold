@@ -1,6 +1,8 @@
 #ifndef __THUMBNAIL_COMP
 #define __THUMBNAIL_COMP
 
+#include <set>
+
 #include "rec/slow/Preferences.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -9,7 +11,7 @@ namespace gui {
 
 class AudioThumbnailComponent : public Component, public ChangeListener {
  public:
-  AudioThumbnailComponent(ChangeListener* listener);
+  AudioThumbnailComponent();
   ~AudioThumbnailComponent();
 
   void setFile(const File& file);
@@ -28,11 +30,15 @@ class AudioThumbnailComponent : public Component, public ChangeListener {
   int getCursor() const;
   double ratio() const { return ratio_; }
 
+  void addListener(ChangeListener* listener) { listeners_.insert(listener); }
+  void removeListener(ChangeListener* listener) { listeners_.erase(listener); }
+
   // this method is called by the thumbnail when it has changed, so we should repaint it..
   void changeListenerCallback(void*);
 
  private:
-  ChangeListener* listener_;
+  typedef std::set<ChangeListener*> ListenerSet;
+  ListenerSet listeners_;
   const ThumbnailDescription description_;
 
   AudioThumbnailCache thumbnailCache_;
@@ -41,7 +47,7 @@ class AudioThumbnailComponent : public Component, public ChangeListener {
   int cursorX_;
   CriticalSection lock_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioThumbnailComponent);
+  DISALLOW_COPY_AND_ASSIGN(AudioThumbnailComponent);
 };
 
 }  // namespace gui

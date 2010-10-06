@@ -5,9 +5,8 @@
 namespace rec {
 namespace gui {
 
-AudioThumbnailComponent::AudioThumbnailComponent(ChangeListener* listener)
-    : listener_(listener),
-      description_(rec::slow::getPreferences().thumbnail()),
+AudioThumbnailComponent::AudioThumbnailComponent()
+    : description_(rec::slow::getPreferences().thumbnail()),
       thumbnailCache_(description_.thumbnail_cache()),
       thumbnail_(description_.source_samples_per_thumbnail_sample(),
                  *AudioFormatManager::getInstance(), thumbnailCache_) {
@@ -72,7 +71,8 @@ void AudioThumbnailComponent::mouseUp(const MouseEvent& e) {
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
   setCursor(ratio);
-  listener_->changeListenerCallback(this);
+  for (ListenerSet::iterator i = listeners_.begin(); i != listeners_.end(); ++i)
+    (*i)->changeListenerCallback(this);
 }
 
 void AudioThumbnailComponent::setCursor(double cursorRatio) {
