@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "rec/base/ArraySize.h"
-#include "rec/cd/GetAlbumsFromCDDB.h"
+#include "rec/util/cd/GetAlbumsFromCDDB.h"
 
 namespace rec {
 namespace cd {
@@ -40,7 +40,7 @@ TEST(CD, GetAlbumsFromCDDB) {
 
   static int trackCount = arraysize(trackLengths) - 1;
 
-  std::vector<int> offsets(trackLengths, 
+  std::vector<int> offsets(trackLengths,
                            trackLengths + arraysize(trackLengths));
   std::vector<Album> albums;
   EXPECT_EQ(getAlbumsFromCDDB(offsets, &albums), "");

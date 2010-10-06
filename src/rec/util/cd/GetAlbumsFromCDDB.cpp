@@ -5,7 +5,7 @@
 
 #include <cddb/cddb.h>
 
-#include "rec/cd/GetAlbumsFromCDDB.h"
+#include "rec/util/cd/GetAlbumsFromCDDB.h"
 #include "rec/base/ArraySize.h"
 
 namespace rec {

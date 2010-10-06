@@ -941,56 +941,6 @@ typedef unsigned short 22,578
 typedef unsigned int 23,609
 typedef unsigned long 24,638
 
-rec/cd/GetAlbumsFromCDDB.cpp,334
-namespace rec 11,154
-namespace cd rec::cd12,170
-string normalize(rec::cd::normalize23,443
-bool similar(44,946
-bool similar(48,1037
-bool similar(52,1125
-inline string unnull(67,1461
-Track fillTrack(71,1531
-Album fillAlbum(82,1853
-void addIfNotSimilar(102,2549
-string getAlbumsFromCDDB(112,2769
-void dedupeAlbums(149,3781
-
-rec/cd/GetAlbumsFromCDDB.h,474
-#define __REC_CD_GETALBUMSFROMCDDB__2,37
-struct Track 10,153
-  int length_;11,168
-  int frameOffset_;12,183
-  string title_;14,204
-  string artist_;15,221
-  string extdata_;16,239
-struct Album 19,262
-  int discid_;20,277
-  int length_;21,292
-  int revision_;22,307
-  int year_;23,324
-  string category_;25,338
-  string genre_;26,358
-  string title_;27,375
-  string artist_;28,392
-  string extdata_;29,410
-  std::vector<Track> tracks_;Album::tracks_31,430
-
-rec/cd/GetAlbumsFromCDDB_test.cpp,74
-namespace rec 6,97
-namespace cd rec::cd7,113
-TEST(rec::cd::TEST9,129
-
-rec/cd/juce_AudioCDReader_test.cpp,212
-TEST(14,245
-TEST(22,563
-const int TRACK_COUNT ::TRACK_COUNT37,1105
-const int SPF ::SPF39,1134
-int TRACK_LENGTHS[::TRACK_LENGTHS42,1240
-const int CDDB_ID 57,1488
-TEST(61,1524
-TEST(72,1808
-TEST(79,2040
-
 rec/commands/CommandManager.h,1287
 #define __REC_COMMANDS_COMMANDMANAGER__2,40
 typedef ApplicationCommandTarget::InvocationInfo InvocationInfo;10,181
@@ -1099,37 +1049,37 @@ class MainPageJ 40,1257
     rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2779
 
 rec/components/MainPageK.cpp,1269
-using rec::audio::source::TimeStretch;19,421
-using rec::gui::ThreadDescription;21,463
-using rec::gui::ThumbnailDescription;22,499
-using rec::gui::ThumbnailDescription;23,538
-using rec::persist::copy;25,579
-using rec::thread::Callback;27,608
-using rec::thread::LockedMessage;28,638
-using rec::thread::Runnable;29,673
-using rec::thread::RunnableThread;30,703
-using rec::thread::WaitLoop;31,739
-using rec::thread::makeCallback;32,769
-namespace rec 34,805
-namespace slow rec::slow35,822
-MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1207
-static Thread* makeCursorThread(51,1435
-void MainPageK::construct(60,1838
-void MainPageK::destruct(94,2958
-void MainPageK::loadRecentFile(110,3422
-static const int RATE 116,3645
-void MainPageK::updateCursor(118,3679
-void MainPageK::setPosition(129,4155
-void MainPageK::loadFileIntoTransport(133,4280
-void MainPageK::sliderDragEnded(164,5323
-void MainPageK::sliderValueChanged(173,5656
-static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6198
-void MainPageK::changeListenerCallback(204,6712
-void MainPageK::startStopButtonClicked(225,7296
-void MainPageK::loopingButtonClicked(232,7451
-void MainPageK::selectionChanged(237,7584
-void MainPageK::cut(244,7765
-void MainPageK::paste(251,7954
+using rec::audio::source::TimeStretch;19,441
+using rec::gui::ThreadDescription;21,483
+using rec::gui::ThumbnailDescription;22,519
+using rec::gui::ThumbnailDescription;23,558
+using rec::persist::copy;25,599
+using rec::thread::Callback;27,628
+using rec::thread::LockedMessage;28,658
+using rec::thread::Runnable;29,693
+using rec::thread::RunnableThread;30,723
+using rec::thread::WaitLoop;31,759
+using rec::thread::makeCallback;32,789
+namespace rec 34,825
+namespace slow rec::slow35,842
+MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1227
+static Thread* makeCursorThread(51,1455
+void MainPageK::construct(60,1858
+void MainPageK::destruct(94,2978
+void MainPageK::loadRecentFile(110,3442
+static const int RATE 116,3665
+void MainPageK::updateCursor(118,3699
+void MainPageK::setPosition(129,4175
+void MainPageK::loadFileIntoTransport(133,4300
+void MainPageK::sliderDragEnded(164,5343
+void MainPageK::sliderValueChanged(173,5676
+static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6218
+void MainPageK::changeListenerCallback(204,6732
+void MainPageK::startStopButtonClicked(225,7316
+void MainPageK::loopingButtonClicked(232,7471
+void MainPageK::selectionChanged(237,7604
+void MainPageK::cut(244,7785
+void MainPageK::paste(251,7974
 
 rec/components/MainPageK.h,1783
 #define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
@@ -1275,37 +1225,37 @@ class App 25,361
   const string name_;App::name_68,1518
   command::Manager* commandManager_;App::commandManager_69,1540
 
-rec/persist/AppInstance.cpp,455
-namespace rec 8,158
-namespace persist rec::persist9,174
-AppInstance::AppInstance(rec::persist::AppInstance::AppInstance11,195
-AppInstance::~AppInstance(25,683
-void AppInstance::needsUpdate(31,823
-bool lockedEmpty(40,996
-void extendAndClear(46,1134
-void AppInstance::update(56,1355
-void AppInstance::write(69,1675
-void AppInstance::start(80,1919
-void AppInstance::stop(85,2026
-AppInstance* AppInstance::instance_ 91,2116
-App* getApp(93,2161
+rec/persist/AppInstance.cpp,456
+namespace rec 8,163
+namespace persist rec::persist9,179
+AppInstance::AppInstance(rec::persist::AppInstance::AppInstance11,200
+AppInstance::~AppInstance(25,688
+void AppInstance::needsUpdate(31,828
+bool lockedEmpty(40,1001
+void extendAndClear(46,1139
+void AppInstance::update(56,1360
+void AppInstance::write(69,1680
+void AppInstance::start(80,1924
+void AppInstance::stop(85,2031
+AppInstance* AppInstance::instance_ 91,2121
+App* getApp(93,2166
 
 rec/persist/AppInstance.h,680
 #define __REC_PERSIST_APPINSTANCE__2,36
-class AppInstance 16,256
-  virtual void needsUpdate(25,500
-  void update(27,548
-  void write(28,565
-  static void start(30,582
-  static void stop(31,623
-  static AppInstance* getInstance(33,646
-  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet35,705
-  CriticalSection lock_;AppInstance::lock_41,831
-  DataSet updateData_;AppInstance::updateData_43,857
-  DataSet writeData_;AppInstance::writeData_44,880
-  thread::RunnableThread updateThread_;AppInstance::updateThread_46,903
-  thread::RunnableThread writeThread_;AppInstance::writeThread_47,943
-  static AppInstance* instance_;AppInstance::instance_49,983
+class AppInstance 16,261
+  virtual void needsUpdate(25,505
+  void update(27,553
+  void write(28,570
+  static void start(30,587
+  static void stop(31,628
+  static AppInstance* getInstance(33,651
+  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet35,710
+  CriticalSection lock_;AppInstance::lock_41,836
+  DataSet updateData_;AppInstance::updateData_43,862
+  DataSet writeData_;AppInstance::writeData_44,885
+  thread::RunnableThread updateThread_;AppInstance::updateThread_46,908
+  thread::RunnableThread writeThread_;AppInstance::writeThread_47,948
+  static AppInstance* instance_;AppInstance::instance_49,988
 
 rec/persist/Copy.cpp,718
 namespace rec 9,167
@@ -1708,6 +1658,56 @@ class Callback 10,178
   Method method_;18,370
   Value value_;19,388
 
+rec/util/cd/GetAlbumsFromCDDB.cpp,334
+namespace rec 11,159
+namespace cd rec::cd12,175
+string normalize(rec::cd::normalize23,448
+bool similar(44,951
+bool similar(48,1042
+bool similar(52,1130
+inline string unnull(67,1466
+Track fillTrack(71,1536
+Album fillAlbum(82,1858
+void addIfNotSimilar(102,2554
+string getAlbumsFromCDDB(112,2774
+void dedupeAlbums(149,3786
+
+rec/util/cd/GetAlbumsFromCDDB.h,474
+#define __REC_CD_GETALBUMSFROMCDDB__2,37
+struct Track 10,153
+  int length_;11,168
+  int frameOffset_;12,183
+  string title_;14,204
+  string artist_;15,221
+  string extdata_;16,239
+struct Album 19,262
+  int discid_;20,277
+  int length_;21,292
+  int revision_;22,307
+  int year_;23,324
+  string category_;25,338
+  string genre_;26,358
+  string title_;27,375
+  string artist_;28,392
+  string extdata_;29,410
+  std::vector<Track> tracks_;Album::tracks_31,430
+
+rec/util/cd/GetAlbumsFromCDDB_test.cpp,75
+namespace rec 6,102
+namespace cd rec::cd7,118
+TEST(rec::cd::TEST9,134
+
+rec/util/cd/juce_AudioCDReader_test.cpp,212
+TEST(14,245
+TEST(22,563
+const int TRACK_COUNT ::TRACK_COUNT37,1105
+const int SPF ::SPF39,1134
+int TRACK_LENGTHS[::TRACK_LENGTHS42,1240
+const int CDDB_ID 57,1488
+TEST(61,1524
+TEST(72,1808
+TEST(79,2040
+
 rec/util/Circular.cpp,302
 namespace rec 3,32
 namespace util rec::util4,48
@@ -1841,44 +1841,44 @@ inline File testFile(13,239
 
 rec/util/thread/Callback.h,304
 #define __REC_THREAD_CALLBACK__2,32
-class Callback 11,187
-  typedef void (Type::*Method)Method13,231
-  Callback(14,265
-  virtual void run(16,344
-  Type* object_;19,410
-  Method method_;20,427
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(22,446
-template <typename Type,25,494
-Runnable* makeCallback(26,536
+class Callback 11,192
+  typedef void (Type::*Method)Method13,236
+  Callback(14,270
+  virtual void run(16,349
+  Type* object_;19,415
+  Method method_;20,432
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(22,451
+template <typename Type,25,499
+Runnable* makeCallback(26,541
 
 rec/util/thread/CallbackLoop.h,41
 #define __REC_THREAD_CALLBACKLOOP__2,36
 
 rec/util/thread/Cycler.h,303
 #define __REC_THREAD_CYCLER__2,30
-class Cycler 9,131
-  Cycler(11,173
-  explicit Cycler(13,200
-  Cycler(17,275
-  virtual void run(22,383
-  virtual ~Cycler(30,539
-  typedef std::vector<Runnable*> Cycle;Cycler::Cycle36,664
-  Cycle cycle_;Cycler::cycle_37,704
-  int index_;Cycler::index_38,720
+class Cycler 9,136
+  Cycler(11,178
+  explicit Cycler(13,205
+  Cycler(17,280
+  virtual void run(22,388
+  virtual ~Cycler(30,544
+  typedef std::vector<Runnable*> Cycle;Cycler::Cycle36,669
+  Cycle cycle_;Cycler::cycle_37,709
+  int index_;Cycler::index_38,725
 
 rec/util/thread/LockedMessage.h,161
 #define __REC_THREAD_LOCKEDMESSAGE__2,37
-class LockedMessage 9,144
-  LockedMessage(11,192
-  virtual void run(13,238
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(20,387
+class LockedMessage 9,149
+  LockedMessage(11,197
+  virtual void run(13,243
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(20,392
 
 rec/util/thread/Loop.h,134
 #define __REC_THREAD_LOOP__2,28
-class Loop 9,126
-  Loop(11,165
-  virtual void run(13,202
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,326
+class Loop 9,131
+  Loop(11,170
+  virtual void run(13,207
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,331
 
 rec/util/thread/Runnable.h,110
 #define __REC_THREAD_RUNNABLE2,30
@@ -1888,32 +1888,32 @@ class Runnable 13,159
 
 rec/util/thread/RunnableThread.h,163
 #define __REC_THREAD_RUNNABLETHREAD2,36
-class RunnableThread 10,175
-  RunnableThread(12,239
-  virtual void run(14,314
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(17,372
+class RunnableThread 10,185
+  RunnableThread(12,249
+  virtual void run(14,324
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(17,382
 
 rec/util/thread/Waiter.h,166
 #define __REC_THREAD_WAITER__2,30
-class Waiter 9,131
-  Waiter(11,173
-  virtual void run(12,209
-  const int time_;18,325
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,344
+class Waiter 9,136
+  Waiter(11,178
+  virtual void run(12,214
+  const int time_;18,330
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(19,349
 
 rec/util/thread/WaitLoop.h,120
 #define __REC_THREAD_WAITLOOP__2,32
-class WaitLoop 11,193
-  WaitLoop(13,233
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,321
+class WaitLoop 11,208
+  WaitLoop(13,248
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,336
 
 rec/util/thread/Wrapper.h,182
 #define __REC_THREAD_WRAPPER2,29
-class Wrapper 9,129
-  Wrapper(11,172
-  virtual void run(12,213
-  scoped_ptr<Runnable> runnable_;15,289
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,323
+class Wrapper 9,134
+  Wrapper(11,177
+  virtual void run(12,218
+  scoped_ptr<Runnable> runnable_;15,294
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(16,328
 
 rec/yaml/include/conversion.h,85
 #define CONVERSION_H_62B23520_7C8E_11DE_8A39_0800200C9A664,72
