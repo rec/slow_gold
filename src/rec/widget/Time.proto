@@ -1,19 +1,16 @@
 package rec.widget.time;
 
-import "rec/gui/Font.proto";
 import "rec/gui/Color.proto";
+import "rec/gui/Font.proto";
+import "rec/widget/Widget.proto";
 
 // Represents a text time display.
 message Text {
-  optional string name = 5;
-  optional gui.FontDesc font = 1;
-
   message Separator {
     optional string separator = 1;
     optional uint32 width = 2;
     optional bool flash = 3 [default = true];
   };
-  optional Separator separator = 2;
 
   message Fields {
     optional bool hours = 1 [default = false];
@@ -23,8 +20,9 @@ message Text {
     optional bool frames = 5 [default = false];
   };
 
+  optional Widget widget = 1;
+  optional Separator separator = 2;
   optional Fields fields = 3;
-  optional uint32 margin = 4 [default = 2];
 };
 
 
@@ -38,12 +36,11 @@ message Dial {
     COUNTER_CLOCKWISE = 2;
   };
 
-  optional string name = 1;
+  optional Widget widget = 1;
   optional uint32 outline = 2;
   optional Direction direction = 3 [default = CLOCKWISE];
   optional bool display_lap_count = 4;
   optional gui.FontDesc font = 5;
-  optional uint32 margin = 6 [default = 2];
   optional float zero_point = 7;
   optional bool empty_on_zero = 8 [default = true];
 

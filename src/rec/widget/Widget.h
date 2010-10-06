@@ -10,34 +10,42 @@
 namespace rec {
 namespace widget {
 
-template <typename Parent>
+template <typename Parent, typename Proto>
 class WidgetBase : public Parent {
  public:
-  WidgetBase(const WidgetDesc& desc) : Parent(desc.name().c_str()), desc_(desc) {}
-
-  virtual void paint(Graphics& g) {
-    if (!desc_.transparent())
-      g.fillAll(gui::color::get(desc_.colors(), 0));
-
-    g.setColour(gui::color::get(desc_.colors(), 1));
-
-    Font font = g.getCurrentFont();
-    if (desc_.has_font())
-      g.setFont(gui::getFont(desc_.font()));
-
-    uint32 margin = desc_.margin();
-    doPaint(g, this->getBounds().reduced(margin, margin));
-
-    if (desc_.has_font())
-      g.setFont(font);
+  WidgetBase(const Proto& desc)
+      : Parent(desc.widget().name().c_str()), desc_(desc) {
   }
 
-  virtual void doPaint(Graphics& g, const Rectangle<int>& bounds) = 0;
+  virtual void paint(Graphics& g) {
+    const Widget& widget = desc_.widget();
+    if (!widget.transparent())
+      g.fillAll(colour(0));
+
+    g.setColour(colour(1));
+
+    Font f = g.getCurrentFont();
+    if (widget.has_font())
+      g.setFont(font());
+
+    uint32 margin = widget.margin();
+    paint(g, this->getLocalBounds().reduced(margin, margin));
+
+    if (widget.has_font())
+      g.setFont(f);
+  }
+
+  virtual void paint(Graphics& g, const Rectangle<int>& bounds) = 0;
+
+  const Font font() const { return gui::getFont(desc_.widget().font()); }
+  const gui::Colors colors() const { return desc_.widget().colors(); }
+  const Colour colour(int i) const { return gui::color::get(colors(), i); }
+
+ protected:
+  Proto desc_;
 
  private:
-  WidgetDesc desc_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(WidgetBase);
-
 };
 
 }  // namespace widget

@@ -5,7 +5,7 @@ import "rec/gui/Font.proto";
 import "rec/gui/Geometry.proto";
 
 // Information common to all components.
-message WidgetDesc {
+message Widget {
   optional string name = 1;
   optional gui.Colors colors = 2;
   optional gui.FontDesc font = 3;

@@ -100,17 +100,21 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     using rec::widget::time::Text;
     using rec::gui::Colors;
 
-    addAndMakeVisible(songTime = new TextComponent("st", Text(), Colors()));
-    addAndMakeVisible(realTime = new TextComponent("rt", Text(), Colors()));
+    addAndMakeVisible(songTime = new TextComponent(Text()));
+    addAndMakeVisible(realTime = new TextComponent(Text()));
 
     using rec::widget::time::DialComponent;
     using rec::widget::time::Dial;
-    addAndMakeVisible(songDial = new DialComponent("sd", Dial(), Colors()));
+    using rec::gui::Colors;
 
     Dial dial;
-    dial.mutable_from_color()->set_argb(Colours::green.getARGB());
-    dial.mutable_to_color()->set_argb(Colours::red.getARGB());
-    addAndMakeVisible(realDial = new DialComponent("rd", dial, Colors()));
+    addAndMakeVisible(songDial = new DialComponent(dial));
+
+    Colors* colors = dial.mutable_widget()->mutable_colors();
+    colors->add_color()->set_argb(Colours::white.getARGB());
+    colors->add_color()->set_argb(Colours::green.getARGB());
+    colors->add_color()->set_argb(Colours::red.getARGB());
+    addAndMakeVisible(realDial = new DialComponent(dial));
 
     //[UserPreSize]
     //[/UserPreSize]

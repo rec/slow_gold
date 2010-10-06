@@ -2,21 +2,17 @@
 #include <glog/logging.h>
 
 #include "rec/widget/Widget.h"
+#include "rec/widget/Time.h"
 
 namespace rec {
 namespace widget {
 namespace {
 
-class WidgetTest : public WidgetBase<Component> {
- public:
-  WidgetTest() : WidgetBase<Component>(WidgetDesc()) {}
-  virtual void doPaint(Graphics& g, const Rectangle<int>& bounds) {}
-};
 
 TEST(Widget, someMethod) {
   // Just make sure it compiles.
   MessageManager::getInstance();
-  WidgetTest widget;
+  time::TextComponent widget(time::Text());
 }
 
 }  // namespace

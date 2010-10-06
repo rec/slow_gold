@@ -5,6 +5,7 @@
 
 #include "rec/base/base.h"
 #include "rec/widget/Time.pb.h"
+#include "rec/widget/Widget.h"
 #include "rec/gui/Color.pb.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -13,28 +14,25 @@ namespace rec {
 namespace widget {
 namespace time {
 
-class TextComponent : public Component {
+class TextComponent : public WidgetBase<Component, Text> {
  public:
   static const float SAMPLES_PER_SECOND = 44100.0;
-  TextComponent(const String& name, const Text& desc, const gui::Colors& colors);
+  explicit TextComponent(const Text& desc);
 
   void setTimeSamples(int samples);
   void setTimeSeconds(float time);
 
-  void paint(Graphics& g);
+  virtual void paint(Graphics& g, const Rectangle<int>& bounds);
 
  private:
-  scoped_ptr<Text> desc_;
-  scoped_ptr<gui::Colors> colors_;
   float time_;
-  Font font_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
 };
 
-class DialComponent : public Component {
+class DialComponent : public WidgetBase<Component, Dial> {
  public:
-  DialComponent(const String& name, const Dial& desc, const gui::Colors& colors);
+  explicit DialComponent(const Dial& desc);
 
   // Value between 0 and 1.
   void setTimeRatio(float time) {
@@ -42,11 +40,9 @@ class DialComponent : public Component {
     repaint();
   }
 
-  void paint(Graphics& g);
+  void paint(Graphics& g, const Rectangle<int>& bounds);
 
  private:
-  scoped_ptr<Dial> desc_;
-  scoped_ptr<gui::Colors> colors_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);

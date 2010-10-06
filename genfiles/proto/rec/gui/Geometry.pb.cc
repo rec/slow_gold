@@ -15,9 +15,9 @@ namespace gui {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Point_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* PointP_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Point_reflection_ = NULL;
+  PointP_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Rectangle_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Rectangle_reflection_ = NULL;
@@ -34,22 +34,22 @@ void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/gui/Geometry.proto");
   GOOGLE_CHECK(file != NULL);
-  Point_descriptor_ = file->message_type(0);
-  static const int Point_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point, x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point, y_),
+  PointP_descriptor_ = file->message_type(0);
+  static const int PointP_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PointP, x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PointP, y_),
   };
-  Point_reflection_ =
+  PointP_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Point_descriptor_,
-      Point::default_instance_,
-      Point_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point, _unknown_fields_),
+      PointP_descriptor_,
+      PointP::default_instance_,
+      PointP_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PointP, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PointP, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Point));
+      sizeof(PointP));
   Rectangle_descriptor_ = file->message_type(1);
   static const int Rectangle_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Rectangle, top_left_),
@@ -95,7 +95,7 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Point_descriptor_, &Point::default_instance());
+    PointP_descriptor_, &PointP::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Rectangle_descriptor_, &Rectangle::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -105,8 +105,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto() {
-  delete Point::default_instance_;
-  delete Point_reflection_;
+  delete PointP::default_instance_;
+  delete PointP_reflection_;
   delete Rectangle::default_instance_;
   delete Rectangle_reflection_;
   delete Layer::default_instance_;
@@ -120,18 +120,18 @@ void protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\026rec/gui/Geometry.proto\022\007rec.gui\"\035\n\005Poi"
-    "nt\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"Q\n\tRectangle\022 \n"
-    "\010top_left\030\001 \001(\0132\016.rec.gui.Point\022\"\n\ndimen"
-    "sions\030\002 \001(\0132\016.rec.gui.Point\":\n\005Layer\022\"\n\006"
-    "bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\r\n\005laye"
-    "r\030\002 \001(\005", 207);
+    "\n\026rec/gui/Geometry.proto\022\007rec.gui\"\036\n\006Poi"
+    "ntP\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"S\n\tRectangle\022!"
+    "\n\010top_left\030\001 \001(\0132\017.rec.gui.PointP\022#\n\ndim"
+    "ensions\030\002 \001(\0132\017.rec.gui.PointP\":\n\005Layer\022"
+    "\"\n\006bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\r\n\005l"
+    "ayer\030\002 \001(\005", 210);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Geometry.proto", &protobuf_RegisterTypes);
-  Point::default_instance_ = new Point();
+  PointP::default_instance_ = new PointP();
   Rectangle::default_instance_ = new Rectangle();
   Layer::default_instance_ = new Layer();
-  Point::default_instance_->InitAsDefaultInstance();
+  PointP::default_instance_->InitAsDefaultInstance();
   Rectangle::default_instance_->InitAsDefaultInstance();
   Layer::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto);
@@ -148,61 +148,61 @@ struct StaticDescriptorInitializer_rec_2fgui_2fGeometry_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Point::kXFieldNumber;
-const int Point::kYFieldNumber;
+const int PointP::kXFieldNumber;
+const int PointP::kYFieldNumber;
 #endif  // !_MSC_VER
 
-Point::Point()
+PointP::PointP()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Point::InitAsDefaultInstance() {
+void PointP::InitAsDefaultInstance() {
 }
 
-Point::Point(const Point& from)
+PointP::PointP(const PointP& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Point::SharedCtor() {
+void PointP::SharedCtor() {
   _cached_size_ = 0;
   x_ = 0;
   y_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Point::~Point() {
+PointP::~PointP() {
   SharedDtor();
 }
 
-void Point::SharedDtor() {
+void PointP::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Point::SetCachedSize(int size) const {
+void PointP::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Point::descriptor() {
+const ::google::protobuf::Descriptor* PointP::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Point_descriptor_;
+  return PointP_descriptor_;
 }
 
-const Point& Point::default_instance() {
+const PointP& PointP::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();  return *default_instance_;
 }
 
-Point* Point::default_instance_ = NULL;
+PointP* PointP::default_instance_ = NULL;
 
-Point* Point::New() const {
-  return new Point;
+PointP* PointP::New() const {
+  return new PointP;
 }
 
-void Point::Clear() {
+void PointP::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     x_ = 0;
     y_ = 0;
@@ -211,7 +211,7 @@ void Point::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool Point::MergePartialFromCodedStream(
+bool PointP::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -264,7 +264,7 @@ bool Point::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Point::SerializeWithCachedSizes(
+void PointP::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional int32 x = 1;
   if (_has_bit(0)) {
@@ -282,7 +282,7 @@ void Point::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* Point::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PointP::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional int32 x = 1;
   if (_has_bit(0)) {
@@ -301,7 +301,7 @@ void Point::SerializeWithCachedSizes(
   return target;
 }
 
-int Point::ByteSize() const {
+int PointP::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -331,10 +331,10 @@ int Point::ByteSize() const {
   return total_size;
 }
 
-void Point::MergeFrom(const ::google::protobuf::Message& from) {
+void PointP::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Point* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Point*>(
+  const PointP* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PointP*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -343,7 +343,7 @@ void Point::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Point::MergeFrom(const Point& from) {
+void PointP::MergeFrom(const PointP& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -356,24 +356,24 @@ void Point::MergeFrom(const Point& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Point::CopyFrom(const ::google::protobuf::Message& from) {
+void PointP::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Point::CopyFrom(const Point& from) {
+void PointP::CopyFrom(const PointP& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Point::IsInitialized() const {
+bool PointP::IsInitialized() const {
   
   return true;
 }
 
-void Point::Swap(Point* other) {
+void PointP::Swap(PointP* other) {
   if (other != this) {
     std::swap(x_, other->x_);
     std::swap(y_, other->y_);
@@ -383,11 +383,11 @@ void Point::Swap(Point* other) {
   }
 }
 
-::google::protobuf::Metadata Point::GetMetadata() const {
+::google::protobuf::Metadata PointP::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Point_descriptor_;
-  metadata.reflection = Point_reflection_;
+  metadata.descriptor = PointP_descriptor_;
+  metadata.reflection = PointP_reflection_;
   return metadata;
 }
 
@@ -405,8 +405,8 @@ Rectangle::Rectangle()
 }
 
 void Rectangle::InitAsDefaultInstance() {
-  top_left_ = const_cast< ::rec::gui::Point*>(&::rec::gui::Point::default_instance());
-  dimensions_ = const_cast< ::rec::gui::Point*>(&::rec::gui::Point::default_instance());
+  top_left_ = const_cast< ::rec::gui::PointP*>(&::rec::gui::PointP::default_instance());
+  dimensions_ = const_cast< ::rec::gui::PointP*>(&::rec::gui::PointP::default_instance());
 }
 
 Rectangle::Rectangle(const Rectangle& from)
@@ -456,10 +456,10 @@ Rectangle* Rectangle::New() const {
 void Rectangle::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (top_left_ != NULL) top_left_->::rec::gui::Point::Clear();
+      if (top_left_ != NULL) top_left_->::rec::gui::PointP::Clear();
     }
     if (_has_bit(1)) {
-      if (dimensions_ != NULL) dimensions_->::rec::gui::Point::Clear();
+      if (dimensions_ != NULL) dimensions_->::rec::gui::PointP::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -472,7 +472,7 @@ bool Rectangle::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.gui.Point top_left = 1;
+      // optional .rec.gui.PointP top_left = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -485,7 +485,7 @@ bool Rectangle::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.gui.Point dimensions = 2;
+      // optional .rec.gui.PointP dimensions = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -517,13 +517,13 @@ bool Rectangle::MergePartialFromCodedStream(
 
 void Rectangle::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.gui.Point top_left = 1;
+  // optional .rec.gui.PointP top_left = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->top_left(), output);
   }
   
-  // optional .rec.gui.Point dimensions = 2;
+  // optional .rec.gui.PointP dimensions = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->dimensions(), output);
@@ -537,14 +537,14 @@ void Rectangle::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Rectangle::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.gui.Point top_left = 1;
+  // optional .rec.gui.PointP top_left = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->top_left(), target);
   }
   
-  // optional .rec.gui.Point dimensions = 2;
+  // optional .rec.gui.PointP dimensions = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -562,14 +562,14 @@ int Rectangle::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.gui.Point top_left = 1;
+    // optional .rec.gui.PointP top_left = 1;
     if (has_top_left()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->top_left());
     }
     
-    // optional .rec.gui.Point dimensions = 2;
+    // optional .rec.gui.PointP dimensions = 2;
     if (has_dimensions()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -604,10 +604,10 @@ void Rectangle::MergeFrom(const Rectangle& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_top_left()->::rec::gui::Point::MergeFrom(from.top_left());
+      mutable_top_left()->::rec::gui::PointP::MergeFrom(from.top_left());
     }
     if (from._has_bit(1)) {
-      mutable_dimensions()->::rec::gui::Point::MergeFrom(from.dimensions());
+      mutable_dimensions()->::rec::gui::PointP::MergeFrom(from.dimensions());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
