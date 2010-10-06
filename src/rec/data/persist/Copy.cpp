@@ -1,7 +1,7 @@
 #include <google/protobuf/text_format.h>
 
 #include "rec/base/base.h"
-#include "rec/persist/Copy.h"
+#include "rec/data/persist/Copy.h"
 #include "glog/logging.h"
 
 #include "JuceLibraryCode/JuceHeader.h"

@@ -2,7 +2,7 @@
 #define __REC_PERSIST_APPBASE__
 
 #include "rec/base/base.h"
-#include "rec/persist/Data.h"
+#include "rec/data/persist/Data.h"
 #include "rec/util/STL.h"
 
 #include "JuceLibraryCode/JuceHeader.h"

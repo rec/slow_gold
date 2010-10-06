@@ -1107,6 +1107,133 @@ class MainPageK rec::slow::MainPageK17,324
   std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_81,2160
   StringArray cdNames_;rec::slow::MainPageK::cdNames_83,2201
 
+rec/data/persist/App.h,606
+#define __REC_PERSIST_APPBASE__2,32
+class App 25,361
+  typedef std::map<string,App::string27,382
+  typedef std::map<string, UntypedData*> DataMap;App::DataMap27,382
+  Data<Proto>* getData(App::getData30,461
+  command::Manager* commandManager(App::commandManager44,901
+  const string& name(App::name46,967
+  virtual ~App(App::~App48,1015
+  File appDir(App::appDir52,1075
+  explicit App(App::App60,1336
+  DataMap data_;App::data_66,1476
+  CriticalSection lock_;App::lock_67,1493
+  const string name_;App::name_68,1518
+  command::Manager* commandManager_;App::commandManager_69,1540
+
+rec/data/persist/AppInstance.cpp,456
+namespace rec 8,163
+namespace persist rec::persist9,179
+AppInstance::AppInstance(rec::persist::AppInstance::AppInstance11,200
+AppInstance::~AppInstance(25,688
+void AppInstance::needsUpdate(31,828
+bool lockedEmpty(40,1001
+void extendAndClear(46,1139
+void AppInstance::update(56,1360
+void AppInstance::write(69,1680
+void AppInstance::start(80,1924
+void AppInstance::stop(85,2031
+AppInstance* AppInstance::instance_ 91,2121
+App* getApp(93,2166
+
+rec/data/persist/AppInstance.h,680
+#define __REC_PERSIST_APPINSTANCE__2,36
+class AppInstance 16,261
+  virtual void needsUpdate(25,505
+  void update(27,553
+  void write(28,570
+  static void start(30,587
+  static void stop(31,628
+  static AppInstance* getInstance(33,651
+  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet35,710
+  CriticalSection lock_;AppInstance::lock_41,836
+  DataSet updateData_;AppInstance::updateData_43,862
+  DataSet writeData_;AppInstance::writeData_44,885
+  thread::RunnableThread updateThread_;AppInstance::updateThread_46,908
+  thread::RunnableThread writeThread_;AppInstance::writeThread_47,948
+  static AppInstance* instance_;AppInstance::instance_49,988
+
+rec/data/persist/Copy.cpp,718
+namespace rec 9,167
+namespace persist rec::persist10,183
+using google::protobuf::TextFormat;rec::persist::google::protobuf::TextFormat12,204
+bool assign(rec::persist::assign18,305
+bool strcopy(24,442
+bool strcopy(30,596
+template <typename From,36,725
+bool through(37,763
+bool proto(43,943
+bool proto(47,1081
+bool proto(51,1220
+bool file(56,1314
+bool file(60,1395
+bool file(75,1830
+bool copy(113,2832
+bool copy(114,2906
+bool copy(115,2983
+bool copy(116,3060
+bool copy(118,3135
+bool copy(119,3212
+bool copy(120,3287
+bool copy(121,3364
+bool copy(123,3440
+bool copy(124,3517
+bool copy(125,3594
+bool copy(126,3670
+bool copy(128,3748
+bool copy(129,3822
+bool copy(130,3897
+bool copy(131,3974
+
+rec/data/persist/Copy.h,84
+#define __REC_PERSIST_COPY__2,29
+typedef google::protobuf::Message Message;29,656
+
+rec/data/persist/Data.h,658
+#define __REC_PERSIST_DATA__2,29
+class Data 17,281
+  Proto get(20,365
+  typedef util::Listener<const Proto&> Listener;Data::Listener22,387
+  virtual void change(Data::change27,577
+  virtual ~Data(Data::~Data29,651
+  typedef std::set<Listener*> Listeners;Data::Listeners36,749
+  Data(Data::Data38,791
+  Proto proto_;Data::proto_40,864
+  Listeners listeners_;Data::listeners_41,880
+  CriticalSection listenerLock_;Data::listenerLock_42,904
+Proto Data<Proto>::get(get50,1036
+bool Data<Proto>::addListener(addListener60,1186
+bool Data<Proto>::removeListener(removeListener72,1496
+void Data<Proto>::changeCallback(changeCallback84,1814
+
+rec/data/persist/UntypedData.cpp,384
+namespace rec 13,261
+namespace persist rec::persist14,277
+using rec::proto::Operation;rec::persist::rec::proto::Operation16,298
+UntypedData::UntypedData(rec::persist::UntypedData::UntypedData18,328
+void UntypedData::readFromFile(27,564
+UntypedData::~UntypedData(35,782
+void UntypedData::change(40,878
+void UntypedData::update(48,1017
+void UntypedData::writeToFile(64,1329
+
+rec/data/persist/UntypedData.h,684
+#define __REC_PERSIST_UNTYPEDDATA__2,36
+typedef proto::arg::Setter Setter;14,235
+class UntypedData 16,271
+  Setter* setter(UntypedData::setter25,615
+  typedef std::vector<proto::Operation*> OperationList;UntypedData::OperationList38,872
+  OperationList queue_;UntypedData::queue_40,929
+  OperationList undo_;UntypedData::undo_41,953
+  scoped_ptr<File> file_;UntypedData::file_43,977
+  mutable Message* message_;UntypedData::message_44,1003
+  Setter setter_;UntypedData::setter_45,1032
+  App* app_;UntypedData::app_47,1051
+  scoped_ptr<CriticalSection> lock_;UntypedData::lock_48,1064
+  mutable bool alreadyReadFromFile_;UntypedData::alreadyReadFromFile_49,1101
+
 rec/data/proto/Address.h,329
 #define __REC_PROTO_ADDRESS__2,30
 struct Address 13,225
@@ -2723,133 +2850,6 @@ class DialComponent 42,713
   scoped_ptr<Dial> desc_;DialComponent::desc_55,986
   scoped_ptr<color::Colors> colors_;DialComponent::colors_56,1012
   float time_;DialComponent::time_57,1049
-
-rec/persist/App.h,606
-#define __REC_PERSIST_APPBASE__2,32
-class App 25,361
-  typedef std::map<string,App::string27,382
-  typedef std::map<string, UntypedData*> DataMap;App::DataMap27,382
-  Data<Proto>* getData(App::getData30,461
-  command::Manager* commandManager(App::commandManager44,901
-  const string& name(App::name46,967
-  virtual ~App(App::~App48,1015
-  File appDir(App::appDir52,1075
-  explicit App(App::App60,1336
-  DataMap data_;App::data_66,1476
-  CriticalSection lock_;App::lock_67,1493
-  const string name_;App::name_68,1518
-  command::Manager* commandManager_;App::commandManager_69,1540
-
-rec/persist/AppInstance.cpp,456
-namespace rec 8,163
-namespace persist rec::persist9,179
-AppInstance::AppInstance(rec::persist::AppInstance::AppInstance11,200
-AppInstance::~AppInstance(25,688
-void AppInstance::needsUpdate(31,828
-bool lockedEmpty(40,1001
-void extendAndClear(46,1139
-void AppInstance::update(56,1360
-void AppInstance::write(69,1680
-void AppInstance::start(80,1924
-void AppInstance::stop(85,2031
-AppInstance* AppInstance::instance_ 91,2121
-App* getApp(93,2166
-
-rec/persist/AppInstance.h,680
-#define __REC_PERSIST_APPINSTANCE__2,36
-class AppInstance 16,261
-  virtual void needsUpdate(25,505
-  void update(27,553
-  void write(28,570
-  static void start(30,587
-  static void stop(31,628
-  static AppInstance* getInstance(33,651
-  typedef std::set<UntypedData*> DataSet;AppInstance::DataSet35,710
-  CriticalSection lock_;AppInstance::lock_41,836
-  DataSet updateData_;AppInstance::updateData_43,862
-  DataSet writeData_;AppInstance::writeData_44,885
-  thread::RunnableThread updateThread_;AppInstance::updateThread_46,908
-  thread::RunnableThread writeThread_;AppInstance::writeThread_47,948
-  static AppInstance* instance_;AppInstance::instance_49,988
-
-rec/persist/Copy.cpp,718
-namespace rec 9,167
-namespace persist rec::persist10,183
-using google::protobuf::TextFormat;rec::persist::google::protobuf::TextFormat12,204
-bool assign(rec::persist::assign18,305
-bool strcopy(24,442
-bool strcopy(30,596
-template <typename From,36,725
-bool through(37,763
-bool proto(43,943
-bool proto(47,1081
-bool proto(51,1220
-bool file(56,1314
-bool file(60,1395
-bool file(75,1830
-bool copy(113,2832
-bool copy(114,2906
-bool copy(115,2983
-bool copy(116,3060
-bool copy(118,3135
-bool copy(119,3212
-bool copy(120,3287
-bool copy(121,3364
-bool copy(123,3440
-bool copy(124,3517
-bool copy(125,3594
-bool copy(126,3670
-bool copy(128,3748
-bool copy(129,3822
-bool copy(130,3897
-bool copy(131,3974
-
-rec/persist/Copy.h,84
-#define __REC_PERSIST_COPY__2,29
-typedef google::protobuf::Message Message;29,656
-
-rec/persist/Data.h,658
-#define __REC_PERSIST_DATA__2,29
-class Data 17,281
-  Proto get(20,365
-  typedef util::Listener<const Proto&> Listener;Data::Listener22,387
-  virtual void change(Data::change27,577
-  virtual ~Data(Data::~Data29,651
-  typedef std::set<Listener*> Listeners;Data::Listeners36,749
-  Data(Data::Data38,791
-  Proto proto_;Data::proto_40,864
-  Listeners listeners_;Data::listeners_41,880
-  CriticalSection listenerLock_;Data::listenerLock_42,904
-Proto Data<Proto>::get(get50,1036
-bool Data<Proto>::addListener(addListener60,1186
-bool Data<Proto>::removeListener(removeListener72,1496
-void Data<Proto>::changeCallback(changeCallback84,1814
-
-rec/persist/UntypedData.cpp,384
-namespace rec 13,261
-namespace persist rec::persist14,277
-using rec::proto::Operation;rec::persist::rec::proto::Operation16,298
-UntypedData::UntypedData(rec::persist::UntypedData::UntypedData18,328
-void UntypedData::readFromFile(27,564
-UntypedData::~UntypedData(35,782
-void UntypedData::change(40,878
-void UntypedData::update(48,1017
-void UntypedData::writeToFile(64,1329
-
-rec/persist/UntypedData.h,684
-#define __REC_PERSIST_UNTYPEDDATA__2,36
-typedef proto::arg::Setter Setter;14,235
-class UntypedData 16,271
-  Setter* setter(UntypedData::setter25,615
-  typedef std::vector<proto::Operation*> OperationList;UntypedData::OperationList38,872
-  OperationList queue_;UntypedData::queue_40,929
-  OperationList undo_;UntypedData::undo_41,953
-  scoped_ptr<File> file_;UntypedData::file_43,977
-  mutable Message* message_;UntypedData::message_44,1003
-  Setter setter_;UntypedData::setter_45,1032
-  App* app_;UntypedData::app_47,1051
-  scoped_ptr<CriticalSection> lock_;UntypedData::lock_48,1064
-  mutable bool alreadyReadFromFile_;UntypedData::alreadyReadFromFile_49,1101
 
 rec/slow/Preferences.h,148
 #define __REC_SLOW_PREFERENCES__2,33

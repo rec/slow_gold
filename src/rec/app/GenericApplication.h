@@ -4,7 +4,7 @@
 #include <string>
 #include <glog/logging.h>
 
-#include "rec/persist/AppInstance.h"
+#include "rec/data/persist/AppInstance.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 

@@ -8,7 +8,7 @@
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/Preferences.h"
 #include "rec/gui/RecentFiles.h"
-#include "rec/persist/Copy.h"
+#include "rec/data/persist/Copy.h"
 
 #include "rec/util/thread/LockedMessage.h"
 #include "rec/util/thread/RunnableThread.h"

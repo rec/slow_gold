@@ -5,7 +5,7 @@
 #include <glog/logging.h>
 
 #include "rec/base/base.h"
-#include "rec/persist/UntypedData.h"
+#include "rec/data/persist/UntypedData.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {

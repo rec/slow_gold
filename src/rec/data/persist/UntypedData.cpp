@@ -1,9 +1,9 @@
 #include <glog/logging.h>
 
-#include "rec/persist/UntypedData.h"
+#include "rec/data/persist/UntypedData.h"
 
-#include "rec/persist/App.h"
-#include "rec/persist/Copy.h"
+#include "rec/data/persist/App.h"
+#include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
 #include "rec/data/proto/Setter.h"

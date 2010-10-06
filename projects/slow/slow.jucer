@@ -29,532 +29,532 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="jRgI0QnZH" name="Slow">
-    <GROUP id="3uIu2P4IJ" name="rec">
-      <GROUP id="JEa3bmNFi" name="app">
-        <FILE compile="0" file="../../src/rec/app/ComponentContainer.h" id="QouGgmmuy"
+  <MAINGROUP id="g5DyRJhuY" name="Slow">
+    <GROUP id="1wnAuri5y" name="rec">
+      <GROUP id="WlC9DVuOQ" name="app">
+        <FILE compile="0" file="../../src/rec/app/ComponentContainer.h" id="xF9MPQVmO"
               name="ComponentContainer.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/GenericApplication.h" id="BEjuShXqn"
+        <FILE compile="0" file="../../src/rec/app/GenericApplication.h" id="QHLA2ntQu"
               name="GenericApplication.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/RecApplication.h" id="J79U4vgLV"
+        <FILE compile="0" file="../../src/rec/app/RecApplication.h" id="B2XV76WSR"
               name="RecApplication.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/RecContainer.h" id="VF3WkYJG2"
+        <FILE compile="0" file="../../src/rec/app/RecContainer.h" id="au9OyY1iy"
               name="RecContainer.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/app/RecWindow.cpp" id="UulRYPSZ6"
+        <FILE compile="1" file="../../src/rec/app/RecWindow.cpp" id="cYXZqbSZV"
               name="RecWindow.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/RecWindow.h" id="thfitcxiJ"
+        <FILE compile="0" file="../../src/rec/app/RecWindow.h" id="aju5rGmv4"
               name="RecWindow.h" resource="0"/>
       </GROUP>
-      <GROUP id="ALikY9imx" name="audio">
-        <GROUP id="QeUHuBCjn" name="ammf_scaler">
+      <GROUP id="DsmqI05yK" name="audio">
+        <GROUP id="ggqv5Ajeg" name="ammf_scaler">
           <FILE compile="1" file="../../src/rec/audio/ammf_scaler/AudioResampler.cpp"
-                id="szDHsEoAB" name="AudioResampler.cpp" resource="0"/>
+                id="hIpLnl4Si" name="AudioResampler.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/AudioResampler.h"
-                id="T9r9mJKUp" name="AudioResampler.h" resource="0"/>
+                id="gn5NuloYu" name="AudioResampler.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/ammf_scaler/AudioTimeScaler.cpp"
-                id="W5g4Z7Dy1" name="AudioTimeScaler.cpp" resource="0"/>
+                id="F5QDfibzz" name="AudioTimeScaler.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/AudioTimeScaler.h"
-                id="mmgxYSzPV" name="AudioTimeScaler.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/ammf_scaler/hfft.c" id="UMYoc92ES"
+                id="GzYF7G8R8" name="AudioTimeScaler.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/ammf_scaler/hfft.c" id="jqxpoTV4H"
                 name="hfft.c" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/hfft.h" id="5UJQQfVCQ"
+          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/hfft.h" id="QyIbJkfag"
                 name="hfft.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/ammf_scaler/mfAlloc.c"
-                id="LtIHBBkfo" name="mfAlloc.c" resource="0"/>
+                id="14rIpOSrn" name="mfAlloc.c" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfAlloc.h"
-                id="g5BRH3PT2" name="mfAlloc.h" resource="0"/>
+                id="eycCQKUwm" name="mfAlloc.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfGlobals.h"
-                id="WZTujCJWT" name="mfGlobals.h" resource="0"/>
+                id="seHJOw1fQ" name="mfGlobals.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMacros.h"
-                id="3q1lWTIsh" name="mfMacros.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMath.h" id="EFGFdh3wk"
+                id="asbMP56kc" name="mfMacros.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMath.h" id="fWb1N2ty7"
                 name="mfMath.h" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/audio/CopySamples.h" id="nm6rk8Uin"
+        <FILE compile="0" file="../../src/rec/audio/CopySamples.h" id="Rbvk5wirb"
               name="CopySamples.h" resource="0"/>
-        <GROUP id="FJLkW3eiF" name="format">
-          <GROUP id="8mIqiOIKe" name="mpg123">
+        <GROUP id="CSXFCrOHs" name="format">
+          <GROUP id="6cI8d5pZP" name="mpg123">
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Copier.cpp"
-                  id="Mrwygxtgg" name="Copier.cpp" resource="0"/>
+                  id="uk1ORSRGz" name="Copier.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Copier.h"
-                  id="oyQSWgWeW" name="Copier.h" resource="0"/>
+                  id="juGzJzvew" name="Copier.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/CreateReader.cpp"
-                  id="D4Bqp4htT" name="CreateReader.cpp" resource="0"/>
+                  id="a2GVNxCuR" name="CreateReader.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/CreateReader.h"
-                  id="WxVFD4JS3" name="CreateReader.h" resource="0"/>
+                  id="XIF85ObjM" name="CreateReader.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Format.h"
-                  id="3JYjdB0Ly" name="Format.h" resource="0"/>
+                  id="hvPs5xTXC" name="Format.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Manager.h"
-                  id="27PbCEIeZ" name="Manager.h" resource="0"/>
+                  id="X2LpjvuYA" name="Manager.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Mpg123.cpp"
-                  id="brQHcOZpz" name="Mpg123.cpp" resource="0"/>
+                  id="AgqRbrM2J" name="Mpg123.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Mpg123.h"
-                  id="sVQBWVgkC" name="Mpg123.h" resource="0"/>
+                  id="l2RdHMj90" name="Mpg123.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/NewHandle.cpp"
-                  id="1FelXwRIu" name="NewHandle.cpp" resource="0"/>
+                  id="SUo1mrKFL" name="NewHandle.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/NewHandle.h"
-                  id="xCuwBWKNZ" name="NewHandle.h" resource="0"/>
+                  id="wkVkTThyP" name="NewHandle.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Reader.cpp"
-                  id="8og8HrlMc" name="Reader.cpp" resource="0"/>
+                  id="SVGnp5Vwh" name="Reader.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Reader.h"
-                  id="QgdYfX24D" name="Reader.h" resource="0"/>
+                  id="5jFJWsvbi" name="Reader.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Tags.cpp"
-                  id="edwvtRlaw" name="Tags.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/audio/format/mpg123/Tags.h" id="PbPBlR3PN"
+                  id="l2IYq1Tqs" name="Tags.cpp" resource="0"/>
+            <FILE compile="0" file="../../src/rec/audio/format/mpg123/Tags.h" id="N6lckOyxI"
                   name="Tags.h" resource="0"/>
           </GROUP>
         </GROUP>
-        <GROUP id="oIUt6EmVy" name="source">
-          <FILE compile="1" file="../../src/rec/audio/source/Buffery.cpp" id="qKKdNUIKu"
+        <GROUP id="tchaBheyp" name="source">
+          <FILE compile="1" file="../../src/rec/audio/source/Buffery.cpp" id="OCttTIf2T"
                 name="Buffery.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="U6Xr6jCPg"
+          <FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="yJ5QETL59"
                 name="Buffery.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleStretchy.cpp"
-                id="ijTRG3eOj" name="DoubleStretchy.cpp" resource="0"/>
+                id="0aObBIAwX" name="DoubleStretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleStretchy.h"
-                id="S5tFG25z0" name="DoubleStretchy.h" resource="0"/>
+                id="R78zSdyqp" name="DoubleStretchy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleStretchyThread.h"
-                id="GHkwgomo8" name="DoubleStretchyThread.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Source.h" id="BpuY9qmKU"
+                id="jDfA8cO8g" name="DoubleStretchyThread.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Source.h" id="sDAjhJbJe"
                 name="Source.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Stereo.cpp" id="Zjaf5wnB6"
+          <FILE compile="1" file="../../src/rec/audio/source/Stereo.cpp" id="XDYAKFbdA"
                 name="Stereo.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Stereo.h" id="EfVrDcdHR"
+          <FILE compile="0" file="../../src/rec/audio/source/Stereo.h" id="pSIoS6JtI"
                 name="Stereo.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Stretchy.cpp" id="fvwo79qxm"
+          <FILE compile="1" file="../../src/rec/audio/source/Stretchy.cpp" id="fEJGpHpK2"
                 name="Stretchy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="JPj5809Mi"
+          <FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="ddNon7nwN"
                 name="Stretchy.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="GKLjKPL6i"
+          <FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="SUWukj3Fu"
                 name="TestHarness.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="puVndL2kK"
+          <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="U401axm2f"
                 name="Testy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/TimeScaler.cpp"
-                id="V5mLwpM4q" name="TimeScaler.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/TimeScaler.h" id="6QlyiFT7q"
+                id="RUfadDx0y" name="TimeScaler.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/TimeScaler.h" id="9V11tBsI1"
                 name="TimeScaler.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Wrappy.h" id="1geazCOLL"
+          <FILE compile="0" file="../../src/rec/audio/source/Wrappy.h" id="eTbksj3gJ"
                 name="Wrappy.h" resource="0"/>
         </GROUP>
       </GROUP>
-      <GROUP id="USsT7wwje" name="base">
-        <FILE compile="0" file="../../src/rec/base/ArraySize.h" id="tlZhIDUlN"
+      <GROUP id="va4BS0FJH" name="base">
+        <FILE compile="0" file="../../src/rec/base/ArraySize.h" id="akz3X8odp"
               name="ArraySize.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/base.h" id="P4jBskKJ9" name="base.h"
+        <FILE compile="0" file="../../src/rec/base/base.h" id="Xy6rJVXm4" name="base.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/basictypes.h" id="PKqrx3E3D"
+        <FILE compile="0" file="../../src/rec/base/basictypes.h" id="eEsACTk0Z"
               name="basictypes.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/build_config.h" id="B8GmDBDes"
+        <FILE compile="0" file="../../src/rec/base/build_config.h" id="rBuaW14go"
               name="build_config.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/Cast.h" id="OFTLEUSsW" name="Cast.h"
+        <FILE compile="0" file="../../src/rec/base/Cast.h" id="CDH2LVFOP" name="Cast.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/CompileAssert.h" id="XllB42rqJ"
+        <FILE compile="0" file="../../src/rec/base/CompileAssert.h" id="WA9V1ENES"
               name="CompileAssert.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/disallow.h" id="UEUZw39e7"
+        <FILE compile="0" file="../../src/rec/base/disallow.h" id="Y4FSCvuYd"
               name="disallow.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/port.h" id="vFLusR46P" name="port.h"
+        <FILE compile="0" file="../../src/rec/base/port.h" id="Gf8E4vtY2" name="port.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="G0dlBkmf3"
+        <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="4bFFeOLWy"
               name="scoped_array.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/scoped_ptr.h" id="yMbsqlU37"
+        <FILE compile="0" file="../../src/rec/base/scoped_ptr.h" id="VRt5J7u76"
               name="scoped_ptr.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/string_piece.h" id="jpF10Vv1k"
+        <FILE compile="0" file="../../src/rec/base/string_piece.h" id="TCqR1W3UD"
               name="string_piece.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/types.h" id="ixiBfwDTr"
+        <FILE compile="0" file="../../src/rec/base/types.h" id="UaZ587bPK"
               name="types.h" resource="0"/>
       </GROUP>
-      <GROUP id="wK1WAnsLg" name="commands">
-        <FILE compile="0" file="../../src/rec/commands/CommandManager.h" id="GT53vpVTP"
+      <GROUP id="H4t19qRPO" name="commands">
+        <FILE compile="0" file="../../src/rec/commands/CommandManager.h" id="aOzSNRJ7x"
               name="CommandManager.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/commands/EventQueue.cpp" id="YSu9qheDp"
+        <FILE compile="1" file="../../src/rec/commands/EventQueue.cpp" id="1wUedY5sN"
               name="EventQueue.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/commands/EventQueue.h" id="HjzosMM3Y"
+        <FILE compile="0" file="../../src/rec/commands/EventQueue.h" id="n6WfKYbwB"
               name="EventQueue.h" resource="0"/>
       </GROUP>
-      <GROUP id="IYjcyZwQF" name="components">
+      <GROUP id="AiUFLnyLn" name="components">
         <FILE compile="1" file="../../src/rec/components/AudioSetupPage.cpp"
-              id="3445QEvAe" name="AudioSetupPage.cpp" resource="0"/>
+              id="kAu1c0gLe" name="AudioSetupPage.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/components/AudioSetupPage.h"
-              id="uYcUFGrNX" name="AudioSetupPage.h" resource="0"/>
+              id="wkJYJZyYw" name="AudioSetupPage.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/components/MainPageComponent.cpp"
-              id="hbJH2EyDI" name="MainPageComponent.cpp" resource="0"/>
+              id="w260YopfU" name="MainPageComponent.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/components/MainPageComponent.h"
-              id="KiuWxAR9d" name="MainPageComponent.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/components/MainPageJ.cpp" id="STqCTm3TC"
+              id="d1J9UEtHl" name="MainPageComponent.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/components/MainPageJ.cpp" id="xEyLfwq2h"
               name="MainPageJ.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/components/MainPageJ.h" id="kINICVVf3"
+        <FILE compile="0" file="../../src/rec/components/MainPageJ.h" id="binEWM4mt"
               name="MainPageJ.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/components/MainPageK.cpp" id="lxQTlOIEp"
+        <FILE compile="1" file="../../src/rec/components/MainPageK.cpp" id="SrxPxDd7q"
               name="MainPageK.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/components/MainPageK.h" id="dMk7BDWA8"
+        <FILE compile="0" file="../../src/rec/components/MainPageK.h" id="n9KdNFlQ1"
               name="MainPageK.h" resource="0"/>
       </GROUP>
-      <GROUP id="wJWqEulQt" name="data">
-        <GROUP id="mPeNbzi0B" name="proto">
-          <FILE compile="0" file="../../src/rec/data/proto/Address.h" id="qj9Lp4gym"
+      <GROUP id="TTzGRYgIf" name="data">
+        <GROUP id="6JqTfEsVI" name="persist">
+          <FILE compile="0" file="../../src/rec/data/persist/App.h" id="auZuJlstk"
+                name="App.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/AppInstance.cpp"
+                id="LU3K6XC18" name="AppInstance.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/AppInstance.h" id="nWfZPCJf7"
+                name="AppInstance.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/Copy.cpp" id="ps22nRqyK"
+                name="Copy.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/Copy.h" id="hWziOrQZX"
+                name="Copy.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/Data.h" id="pMs4Zq9AN"
+                name="Data.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/UntypedData.cpp"
+                id="jHV9gJtmi" name="UntypedData.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/UntypedData.h" id="6PcyqhQh8"
+                name="UntypedData.h" resource="0"/>
+        </GROUP>
+        <GROUP id="yBNH2bbr8" name="proto">
+          <FILE compile="0" file="../../src/rec/data/proto/Address.h" id="0imUGJWo6"
                 name="Address.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Field.cpp" id="JNeUtKezX"
+          <FILE compile="1" file="../../src/rec/data/proto/Field.cpp" id="LAvT3dMFC"
                 name="Field.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Field.h" id="2MewjU3yn"
+          <FILE compile="0" file="../../src/rec/data/proto/Field.h" id="3ihnkQ5ly"
                 name="Field.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/LogFile.cpp" id="HiGTYRO60"
+          <FILE compile="1" file="../../src/rec/data/proto/LogFile.cpp" id="kiOguVnzP"
                 name="LogFile.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/LogFile.h" id="aW9G9REig"
+          <FILE compile="0" file="../../src/rec/data/proto/LogFile.h" id="GZgq9uWC9"
                 name="LogFile.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Proto.cpp" id="GKv1cvker"
+          <FILE compile="1" file="../../src/rec/data/proto/Proto.cpp" id="C8nO5LG9Q"
                 name="Proto.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Proto.h" id="D12sOEaca"
+          <FILE compile="0" file="../../src/rec/data/proto/Proto.h" id="z2gxu4KUF"
                 name="Proto.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Setter.cpp" id="HXlSA3dkS"
+          <FILE compile="1" file="../../src/rec/data/proto/Setter.cpp" id="cd5IeT7yt"
                 name="Setter.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Setter.h" id="qALZHkgpZ"
+          <FILE compile="0" file="../../src/rec/data/proto/Setter.h" id="tKBQsMWhU"
                 name="Setter.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/TypedTyper.cpp" id="oaYxb82dW"
+          <FILE compile="1" file="../../src/rec/data/proto/TypedTyper.cpp" id="twyuCBscW"
                 name="TypedTyper.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/TypedTyper.h" id="p8pgFoYoM"
+          <FILE compile="0" file="../../src/rec/data/proto/TypedTyper.h" id="7c7Lo0xZM"
                 name="TypedTyper.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Typer.cpp" id="jeVV1rcZW"
+          <FILE compile="1" file="../../src/rec/data/proto/Typer.cpp" id="IOhlYQEcz"
                 name="Typer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Typer.h" id="inRFRqQdZ"
+          <FILE compile="0" file="../../src/rec/data/proto/Typer.h" id="IAUeCSlY6"
                 name="Typer.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="EoNepUN5A"
+          <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="15YIuPc6u"
                 name="Types.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Value.h" id="IHL5ztQbZ"
+          <FILE compile="0" file="../../src/rec/data/proto/Value.h" id="hvWv2ReAW"
                 name="Value.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/ZeroCopy.h" id="AW3xFwRRJ"
+          <FILE compile="0" file="../../src/rec/data/proto/ZeroCopy.h" id="bHcGwm0x8"
                 name="ZeroCopy.h" resource="0"/>
         </GROUP>
-        <GROUP id="BPT9xvrFm" name="yaml">
-          <GROUP id="pSFhBwpf7" name="include">
+        <GROUP id="wGlraj2v0" name="yaml">
+          <GROUP id="L9KucNHwU" name="include">
             <FILE compile="0" file="../../src/rec/data/yaml/include/conversion.h"
-                  id="unjh5ZM7f" name="conversion.h" resource="0"/>
+                  id="XSHdDt8v5" name="conversion.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/emitter.h"
-                  id="CjURaloJJ" name="emitter.h" resource="0"/>
+                  id="vnLFT5Ajr" name="emitter.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/emittermanip.h"
-                  id="eq3WL2dGJ" name="emittermanip.h" resource="0"/>
+                  id="v989IiATk" name="emittermanip.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/exceptions.h"
-                  id="ZcrxPATtp" name="exceptions.h" resource="0"/>
+                  id="KFwLnyKHs" name="exceptions.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/iterator.h"
-                  id="NrCSJ2VjG" name="iterator.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/include/mark.h" id="u5MwWPYLl"
+                  id="kuGiVm67C" name="iterator.h" resource="0"/>
+            <FILE compile="0" file="../../src/rec/data/yaml/include/mark.h" id="PcLZbjxcV"
                   name="mark.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/include/node.h" id="UB4AWcDZa"
+            <FILE compile="0" file="../../src/rec/data/yaml/include/node.h" id="AAIQq90Ne"
                   name="node.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/nodeimpl.h"
-                  id="x9NjoMfqU" name="nodeimpl.h" resource="0"/>
+                  id="eA7BuQRQD" name="nodeimpl.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/nodereadimpl.h"
-                  id="9VHHFZAlc" name="nodereadimpl.h" resource="0"/>
+                  id="2KA0QoZwO" name="nodereadimpl.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/nodeutil.h"
-                  id="OY6ndeV8Z" name="nodeutil.h" resource="0"/>
+                  id="L83wVLMwK" name="nodeutil.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/noncopyable.h"
-                  id="HNIiBYfnv" name="noncopyable.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/include/null.h" id="wvJmZPBjk"
+                  id="a8YVwslXk" name="noncopyable.h" resource="0"/>
+            <FILE compile="0" file="../../src/rec/data/yaml/include/null.h" id="Lpi3CAWoa"
                   name="null.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/ostream.h"
-                  id="oEh1gVc72" name="ostream.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/include/parser.h" id="Lgaf3xxbI"
+                  id="rTmZ6MWs3" name="ostream.h" resource="0"/>
+            <FILE compile="0" file="../../src/rec/data/yaml/include/parser.h" id="vAHLhBEve"
                   name="parser.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/stlemitter.h"
-                  id="bRbQz8lM7" name="stlemitter.h" resource="0"/>
+                  id="wDx3NOVMq" name="stlemitter.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/include/stlnode.h"
-                  id="epXkWmrZu" name="stlnode.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/include/traits.h" id="tRJ3JDEh9"
+                  id="Fba8g6Lom" name="stlnode.h" resource="0"/>
+            <FILE compile="0" file="../../src/rec/data/yaml/include/traits.h" id="9BQqxF2uw"
                   name="traits.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/include/yaml.h" id="KjaNWOsK2"
+            <FILE compile="0" file="../../src/rec/data/yaml/include/yaml.h" id="y3PcT2kcl"
                   name="yaml.h" resource="0"/>
           </GROUP>
-          <FILE compile="0" file="../../src/rec/data/yaml/Internal.h" id="j4dXnGyGC"
+          <FILE compile="0" file="../../src/rec/data/yaml/Internal.h" id="bcCcu9S86"
                 name="Internal.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/yaml/ReadYaml.cpp" id="F0ze8MqWs"
+          <FILE compile="1" file="../../src/rec/data/yaml/ReadYaml.cpp" id="hM0iZTVaA"
                 name="ReadYaml.cpp" resource="0"/>
-          <GROUP id="AfQCGoYaa" name="src">
+          <GROUP id="m8InUBfbF" name="src">
             <FILE compile="1" file="../../src/rec/data/yaml/src/aliascontent.cpp"
-                  id="STRxNUgrX" name="aliascontent.cpp" resource="0"/>
+                  id="rBPOmpiyv" name="aliascontent.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/src/aliascontent.h"
-                  id="Db8817osw" name="aliascontent.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/content.h" id="3f0rAqS2A"
+                  id="D4InSxW2q" name="aliascontent.h" resource="0"/>
+            <FILE compile="0" file="../../src/rec/data/yaml/src/content.h" id="AGhsEyPSu"
                   name="content.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/data/yaml/src/conversion.cpp"
-                  id="jNaeUpD6S" name="conversion.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/emitter.cpp" id="8C5mO3jwM"
+                  id="3MR9e352H" name="conversion.cpp" resource="0"/>
+            <FILE compile="1" file="../../src/rec/data/yaml/src/emitter.cpp" id="OkXv7FV7z"
                   name="emitter.cpp" resource="0"/>
             <FILE compile="1" file="../../src/rec/data/yaml/src/emitterstate.cpp"
-                  id="DwkID33Xf" name="emitterstate.cpp" resource="0"/>
+                  id="wUzNKowNm" name="emitterstate.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/src/emitterstate.h"
-                  id="v18CmPV4m" name="emitterstate.h" resource="0"/>
+                  id="d8RHMKAmk" name="emitterstate.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/data/yaml/src/emitterutils.cpp"
-                  id="AGv6BYDyu" name="emitterutils.cpp" resource="0"/>
+                  id="uIrogx4Ac" name="emitterutils.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/src/emitterutils.h"
-                  id="Lz70OBlwE" name="emitterutils.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/exp.cpp" id="qdGtwK4pb"
+                  id="mGXRvjKAX" name="emitterutils.h" resource="0"/>
+            <FILE compile="1" file="../../src/rec/data/yaml/src/exp.cpp" id="2JqIVHqbe"
                   name="exp.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/exp.h" id="VauJJlgdx"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/exp.h" id="9n9utlUMQ"
                   name="exp.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/src/indentation.h"
-                  id="PqKWnFJzN" name="indentation.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/iterator.cpp" id="u7Y8MzbiV"
+                  id="JVTTbHFLl" name="indentation.h" resource="0"/>
+            <FILE compile="1" file="../../src/rec/data/yaml/src/iterator.cpp" id="YrhJrlDw4"
                   name="iterator.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/iterpriv.h" id="cJg9Mg7kQ"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/iterpriv.h" id="YHjTm9HgF"
                   name="iterpriv.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/ltnode.h" id="bYoSIRBdN"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/ltnode.h" id="nPzcCl2xv"
                   name="ltnode.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/map.cpp" id="kFRrHOh8Z"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/map.cpp" id="PwY0D2qPH"
                   name="map.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/map.h" id="HvOzS1CGl"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/map.h" id="er1DV3IzA"
                   name="map.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/node.cpp" id="5pBUDnl4H"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/node.cpp" id="Fj1s10PWq"
                   name="node.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/null.cpp" id="wYzH6DCQp"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/null.cpp" id="0GZduAT5e"
                   name="null.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/ostream.cpp" id="CajrFReTc"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/ostream.cpp" id="lHXOQQiXu"
                   name="ostream.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/parser.cpp" id="tEKUbTFij"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/parser.cpp" id="mLXpT9ekH"
                   name="parser.cpp" resource="0"/>
             <FILE compile="1" file="../../src/rec/data/yaml/src/parserstate.cpp"
-                  id="pb9wv9OwR" name="parserstate.cpp" resource="0"/>
+                  id="YtqeHZKDu" name="parserstate.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/src/parserstate.h"
-                  id="jMCUuLFrw" name="parserstate.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/regex.cpp" id="p4fzzIgPi"
+                  id="nLKu2j2fZ" name="parserstate.h" resource="0"/>
+            <FILE compile="1" file="../../src/rec/data/yaml/src/regex.cpp" id="GmGuR7HNX"
                   name="regex.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/regex.h" id="nRNZW8X2V"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/regex.h" id="pOaAgCObz"
                   name="regex.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/regeximpl.h" id="e9NYbNSZ8"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/regeximpl.h" id="dw9WqTueJ"
                   name="regeximpl.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scalar.cpp" id="888Fxm043"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/scalar.cpp" id="0CDyUo0Bd"
                   name="scalar.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scalar.h" id="fHCncdysW"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/scalar.h" id="zSRTTOL9r"
                   name="scalar.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scanner.cpp" id="DYBsLLvVQ"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/scanner.cpp" id="j3csiGvg5"
                   name="scanner.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scanner.h" id="VgjELFtq6"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/scanner.h" id="yVqEFdGSJ"
                   name="scanner.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/data/yaml/src/scanscalar.cpp"
-                  id="5cDh6ZqT8" name="scanscalar.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scanscalar.h" id="BeTFeCyJ9"
+                  id="Y7OvCw6ux" name="scanscalar.cpp" resource="0"/>
+            <FILE compile="0" file="../../src/rec/data/yaml/src/scanscalar.h" id="wmdb7Npqd"
                   name="scanscalar.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/scantag.cpp" id="uii5LbV1J"
+            <FILE compile="1" file="../../src/rec/data/yaml/src/scantag.cpp" id="TIp2hIEzh"
                   name="scantag.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/scantag.h" id="jyAIfT70M"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/scantag.h" id="P99vLgxTP"
                   name="scantag.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/data/yaml/src/scantoken.cpp"
-                  id="CWszacEkf" name="scantoken.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/sequence.cpp" id="EqrxaJTwP"
+                  id="y8dr9vy2p" name="scantoken.cpp" resource="0"/>
+            <FILE compile="1" file="../../src/rec/data/yaml/src/sequence.cpp" id="xYWE8Gs5c"
                   name="sequence.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/sequence.h" id="5mOWtlA3J"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/sequence.h" id="djMmb8qEv"
                   name="sequence.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/setting.h" id="ALImQ8KVx"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/setting.h" id="nXJJxzakY"
                   name="setting.h" resource="0"/>
             <FILE compile="1" file="../../src/rec/data/yaml/src/simplekey.cpp"
-                  id="1SVNUW4LD" name="simplekey.cpp" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/stream.cpp" id="TwjqzICEG"
+                  id="C2FwuPmK8" name="simplekey.cpp" resource="0"/>
+            <FILE compile="1" file="../../src/rec/data/yaml/src/stream.cpp" id="V5LEU8q8P"
                   name="stream.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/stream.h" id="NGtCHIxi6"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/stream.h" id="8mXXBoAPX"
                   name="stream.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/src/streamcharsource.h"
-                  id="0fEQ0Jck8" name="streamcharsource.h" resource="0"/>
+                  id="JQQOjXJrY" name="streamcharsource.h" resource="0"/>
             <FILE compile="0" file="../../src/rec/data/yaml/src/stringsource.h"
-                  id="eObUdpTuM" name="stringsource.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/data/yaml/src/tag.cpp" id="ZwZ07ivmS"
+                  id="bqnwRfTSD" name="stringsource.h" resource="0"/>
+            <FILE compile="1" file="../../src/rec/data/yaml/src/tag.cpp" id="h5lx2NavI"
                   name="tag.cpp" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/tag.h" id="TmJ26csQS"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/tag.h" id="7BClrcEfi"
                   name="tag.h" resource="0"/>
-            <FILE compile="0" file="../../src/rec/data/yaml/src/token.h" id="SIbOFgoLX"
+            <FILE compile="0" file="../../src/rec/data/yaml/src/token.h" id="EawYLKGxK"
                   name="token.h" resource="0"/>
           </GROUP>
-          <FILE compile="1" file="../../src/rec/data/yaml/WriteYaml.cpp" id="8lhWJWsOU"
+          <FILE compile="1" file="../../src/rec/data/yaml/WriteYaml.cpp" id="lACqDQQic"
                 name="WriteYaml.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/yaml/Yaml.h" id="uFAvCSwHx"
+          <FILE compile="0" file="../../src/rec/data/yaml/Yaml.h" id="I3f5umvTT"
                 name="Yaml.h" resource="0"/>
         </GROUP>
       </GROUP>
-      <GROUP id="yp3m0Q7eJ" name="gui">
+      <GROUP id="FnOylZFjJ" name="gui">
         <FILE compile="1" file="../../src/rec/gui/AudioThumbnailComponent.cpp"
-              id="E58vj4L7q" name="AudioThumbnailComponent.cpp" resource="0"/>
+              id="yesAMFBtd" name="AudioThumbnailComponent.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/AudioThumbnailComponent.h"
-              id="rV40RhJee" name="AudioThumbnailComponent.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/Color.cpp" id="wkw366Ol9"
+              id="1DecQhNnV" name="AudioThumbnailComponent.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/Color.cpp" id="g6dGzP9Jx"
               name="Color.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/Color.h" id="GoDNGrVKW" name="Color.h"
+        <FILE compile="0" file="../../src/rec/gui/Color.h" id="sxiEphJ5Y" name="Color.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/Component.h" id="m9HTvrxll"
+        <FILE compile="0" file="../../src/rec/gui/Component.h" id="067pwFhMB"
               name="Component.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/Font.h" id="rcHlHnXjW" name="Font.h"
+        <FILE compile="0" file="../../src/rec/gui/Font.h" id="hjB9YDdMs" name="Font.h"
               resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/RecentFiles.cpp" id="NY2077fRD"
+        <FILE compile="1" file="../../src/rec/gui/RecentFiles.cpp" id="qoVUzA5Ih"
               name="RecentFiles.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="8FT2fsN4L"
+        <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="MVh38v2xh"
               name="RecentFiles.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/Time.cpp" id="j4dVtRnz3"
+        <FILE compile="1" file="../../src/rec/gui/Time.cpp" id="YvcZDohvV"
               name="Time.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/Time.h" id="4zgWmHyZV" name="Time.h"
+        <FILE compile="0" file="../../src/rec/gui/Time.h" id="vsvWXsAL6" name="Time.h"
               resource="0"/>
       </GROUP>
-      <GROUP id="bVD3ojcb7" name="persist">
-        <FILE compile="0" file="../../src/rec/persist/App.h" id="qsbKzul6e"
-              name="App.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/persist/AppInstance.cpp" id="7FGNy9vli"
-              name="AppInstance.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/persist/AppInstance.h" id="BoUUsjwMR"
-              name="AppInstance.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/persist/Copy.cpp" id="NrzCI0jCB"
-              name="Copy.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/persist/Copy.h" id="icEavPnD5"
-              name="Copy.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/persist/Data.h" id="fhtEtvxiU"
-              name="Data.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/persist/UntypedData.cpp" id="l0qiMi3Fv"
-              name="UntypedData.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/persist/UntypedData.h" id="X1Aej3c85"
-              name="UntypedData.h" resource="0"/>
-      </GROUP>
-      <GROUP id="nSmduYM5K" name="slow">
-        <FILE compile="0" file="../../src/rec/slow/Preferences.h" id="sbX7imR3J"
+      <GROUP id="eLDFHpl2j" name="slow">
+        <FILE compile="0" file="../../src/rec/slow/Preferences.h" id="UzLVIvgJS"
               name="Preferences.h" resource="0"/>
       </GROUP>
-      <GROUP id="2G2wju7n8" name="util">
-        <FILE compile="0" file="../../src/rec/util/Callback.h" id="x5msmI2HU"
+      <GROUP id="sdwswCzgh" name="util">
+        <FILE compile="0" file="../../src/rec/util/Callback.h" id="2dkugMhXh"
               name="Callback.h" resource="0"/>
-        <GROUP id="CPOep2o5e" name="cd">
+        <GROUP id="qDGWw43ox" name="cd">
           <FILE compile="1" file="../../src/rec/util/cd/GetAlbumsFromCDDB.cpp"
-                id="ifFuQX6d5" name="GetAlbumsFromCDDB.cpp" resource="0"/>
+                id="Mp4vyBEL9" name="GetAlbumsFromCDDB.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/GetAlbumsFromCDDB.h"
-                id="OTCLdqtJy" name="GetAlbumsFromCDDB.h" resource="0"/>
+                id="k5zE7bMjx" name="GetAlbumsFromCDDB.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/util/Circular.cpp" id="kPYGMvPxQ"
+        <FILE compile="1" file="../../src/rec/util/Circular.cpp" id="TFrltAqfi"
               name="Circular.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Circular.h" id="Sh8MSXDju"
+        <FILE compile="0" file="../../src/rec/util/Circular.h" id="9azyjQvmW"
               name="Circular.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Listener.h" id="bG0of43iG"
+        <FILE compile="0" file="../../src/rec/util/Listener.h" id="haDpQxyKi"
               name="Listener.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Math.h" id="rzaHHN5qB" name="Math.h"
+        <FILE compile="0" file="../../src/rec/util/Math.h" id="xfE33O6j5" name="Math.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Method.h" id="ruRd52p6x"
+        <FILE compile="0" file="../../src/rec/util/Method.h" id="8mdCcMDBi"
               name="Method.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/PointerList.h" id="2btZIPtsN"
+        <FILE compile="0" file="../../src/rec/util/PointerList.h" id="WLvthxc3O"
               name="PointerList.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/STL.h" id="z8j1IsH83" name="STL.h"
+        <FILE compile="0" file="../../src/rec/util/STL.h" id="6oGlUAmkq" name="STL.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Substitute.h" id="2RisOpqb3"
+        <FILE compile="0" file="../../src/rec/util/Substitute.h" id="4tAD4m4bD"
               name="Substitute.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/TestData.h" id="iaNXPST9F"
+        <FILE compile="0" file="../../src/rec/util/TestData.h" id="Y18NJsKFN"
               name="TestData.h" resource="0"/>
-        <GROUP id="cJdHp2mnH" name="thread">
-          <FILE compile="0" file="../../src/rec/util/thread/Callback.h" id="GEU7JNMtz"
+        <GROUP id="pjUKETnf7" name="thread">
+          <FILE compile="0" file="../../src/rec/util/thread/Callback.h" id="PklVsvXmk"
                 name="Callback.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/CallbackLoop.h" id="fcJt4c8c7"
+          <FILE compile="0" file="../../src/rec/util/thread/CallbackLoop.h" id="f62ZNmvi5"
                 name="CallbackLoop.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Cycler.h" id="5zyImVNSP"
+          <FILE compile="0" file="../../src/rec/util/thread/Cycler.h" id="usFUuxR1x"
                 name="Cycler.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/LockedMessage.h"
-                id="QlKcsfpI7" name="LockedMessage.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Loop.h" id="fbGVBvvF1"
+                id="BvhUpi7lN" name="LockedMessage.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Loop.h" id="onTpXf4HI"
                 name="Loop.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Runnable.h" id="6Dcr2Tchd"
+          <FILE compile="0" file="../../src/rec/util/thread/Runnable.h" id="YzwmRMLih"
                 name="Runnable.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/RunnableThread.h"
-                id="iUY4OTeQi" name="RunnableThread.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Waiter.h" id="3outwVhyZ"
+                id="rCqjDU9S9" name="RunnableThread.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Waiter.h" id="THNj3TGQA"
                 name="Waiter.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/WaitLoop.h" id="nu50mYCNU"
+          <FILE compile="0" file="../../src/rec/util/thread/WaitLoop.h" id="0vgN8SDPD"
                 name="WaitLoop.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Wrapper.h" id="9qxq9iixs"
+          <FILE compile="0" file="../../src/rec/util/thread/Wrapper.h" id="1aNqbGCgr"
                 name="Wrapper.h" resource="0"/>
         </GROUP>
       </GROUP>
     </GROUP>
-    <GROUP id="0RSosCIsf" name="proto">
-      <GROUP id="O48g1XJRq" name="rec">
-        <GROUP id="CyG6VV66w" name="access">
+    <GROUP id="83VB0mrl7" name="proto">
+      <GROUP id="HMFqFQNRZ" name="rec">
+        <GROUP id="UE7nvDQop" name="access">
           <FILE compile="1" file="../../genfiles/proto/rec/access/Access.pb.cc"
-                id="rqxX2rTMz" name="Access.pb.cc" resource="0"/>
+                id="tyM6emDMU" name="Access.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/access/Access.pb.h"
-                id="ogadeDQAT" name="Access.pb.h" resource="0"/>
+                id="a2gMfpSMs" name="Access.pb.h" resource="0"/>
         </GROUP>
-        <GROUP id="bqEFMcYoS" name="audio">
-          <GROUP id="QHLy5owrc" name="source">
+        <GROUP id="ezsCvinM9" name="audio">
+          <GROUP id="XGIuNvp9V" name="source">
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/TimeStretch.pb.cc"
-                  id="TNRqwUTci" name="TimeStretch.pb.cc" resource="0"/>
+                  id="UiG0vQpEG" name="TimeStretch.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/source/TimeStretch.pb.h"
-                  id="IX2wOGjbc" name="TimeStretch.pb.h" resource="0"/>
+                  id="1dlHybUGX" name="TimeStretch.pb.h" resource="0"/>
           </GROUP>
         </GROUP>
-        <GROUP id="vumyCQyL0" name="commands">
+        <GROUP id="Kff00aA9P" name="commands">
           <FILE compile="1" file="../../genfiles/proto/rec/commands/Event.pb.cc"
-                id="4ksUmNaBr" name="Event.pb.cc" resource="0"/>
+                id="r21xTHwzS" name="Event.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/commands/Event.pb.h"
-                id="iw2iS60rV" name="Event.pb.h" resource="0"/>
+                id="eRpr7yCu8" name="Event.pb.h" resource="0"/>
         </GROUP>
-        <GROUP id="K9XNSlBoI" name="data">
-          <GROUP id="d56uQ8YRN" name="proto">
+        <GROUP id="KqlDYDd3Y" name="data">
+          <GROUP id="tBDSOKQxb" name="proto">
             <FILE compile="1" file="../../genfiles/proto/rec/data/proto/Address.pb.cc"
-                  id="qg5Br9agj" name="Address.pb.cc" resource="0"/>
+                  id="phcDSmFYD" name="Address.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/data/proto/Address.pb.h"
-                  id="1o5CKOWz3" name="Address.pb.h" resource="0"/>
+                  id="gmI9AWQkT" name="Address.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/data/proto/Operation.pb.cc"
-                  id="7CkgTHo10" name="Operation.pb.cc" resource="0"/>
+                  id="FegfztGOZ" name="Operation.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/data/proto/Operation.pb.h"
-                  id="LZq1Q8j0s" name="Operation.pb.h" resource="0"/>
+                  id="S79KKdgzC" name="Operation.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/data/proto/TestData.pb.cc"
-                  id="Ve0vQCktU" name="TestData.pb.cc" resource="0"/>
+                  id="iFoVkgFAA" name="TestData.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/data/proto/TestData.pb.h"
-                  id="PkhcaWsR5" name="TestData.pb.h" resource="0"/>
+                  id="wLT9X3eWs" name="TestData.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/data/proto/Value.pb.cc"
-                  id="me69kIrAI" name="Value.pb.cc" resource="0"/>
+                  id="xkRhV6ElS" name="Value.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/data/proto/Value.pb.h"
-                  id="kzevzC7p6" name="Value.pb.h" resource="0"/>
+                  id="xhnop3Snx" name="Value.pb.h" resource="0"/>
           </GROUP>
         </GROUP>
-        <GROUP id="Ybb0bUozQ" name="gui">
+        <GROUP id="GtkhVDTMu" name="gui">
           <FILE compile="1" file="../../genfiles/proto/rec/gui/Appearance.pb.cc"
-                id="JrjNUcehJ" name="Appearance.pb.cc" resource="0"/>
+                id="UEAvyTqev" name="Appearance.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Appearance.pb.h"
-                id="n5zR6aMMU" name="Appearance.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/gui/Color.pb.cc" id="eZzW1aUFn"
+                id="ELfjcwtdF" name="Appearance.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/gui/Color.pb.cc" id="rpspQ7dvS"
                 name="Color.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/gui/Color.pb.h" id="wz8QZINH0"
+          <FILE compile="0" file="../../genfiles/proto/rec/gui/Color.pb.h" id="oBECIyDYr"
                 name="Color.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/Component.pb.cc"
-                id="bUoWtLCKs" name="Component.pb.cc" resource="0"/>
+                id="8jZcycqGK" name="Component.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Component.pb.h"
-                id="XuC0Yze7s" name="Component.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/gui/Font.pb.cc" id="CjPdjuuDF"
+                id="tOYgHu4mM" name="Component.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/gui/Font.pb.cc" id="J2XrIorqr"
                 name="Font.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/gui/Font.pb.h" id="IenGZ1yIX"
+          <FILE compile="0" file="../../genfiles/proto/rec/gui/Font.pb.h" id="s8ypQCBPM"
                 name="Font.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/Geometry.pb.cc"
-                id="u3NHh3z4F" name="Geometry.pb.cc" resource="0"/>
+                id="g1hFcwDdR" name="Geometry.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Geometry.pb.h"
-                id="Zt4Q11ouO" name="Geometry.pb.h" resource="0"/>
+                id="2la2xA2n9" name="Geometry.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/RecentFiles.pb.cc"
-                id="ydULIoQ5I" name="RecentFiles.pb.cc" resource="0"/>
+                id="amt7nZyl4" name="RecentFiles.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/RecentFiles.pb.h"
-                id="KXmibcJue" name="RecentFiles.pb.h" resource="0"/>
+                id="uqt4jDElx" name="RecentFiles.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/ThumbnailDescription.pb.cc"
-                id="1dQvARRLj" name="ThumbnailDescription.pb.cc" resource="0"/>
+                id="ULZNp3Bii" name="ThumbnailDescription.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/ThumbnailDescription.pb.h"
-                id="yj3bpacAf" name="ThumbnailDescription.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/gui/Time.pb.cc" id="4BOnnHBu4"
+                id="T7RjAsr1p" name="ThumbnailDescription.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/gui/Time.pb.cc" id="RRNKnGIs4"
                 name="Time.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/gui/Time.pb.h" id="DugsBnMfb"
+          <FILE compile="0" file="../../genfiles/proto/rec/gui/Time.pb.h" id="bEmtRD5XV"
                 name="Time.pb.h" resource="0"/>
         </GROUP>
-        <GROUP id="tctpfp5gY" name="slow">
+        <GROUP id="sZNX9hCNP" name="slow">
           <FILE compile="1" file="../../genfiles/proto/rec/slow/LoopWindow.pb.cc"
-                id="qARj1HDkG" name="LoopWindow.pb.cc" resource="0"/>
+                id="g79adKb9D" name="LoopWindow.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/slow/LoopWindow.pb.h"
-                id="I4cO9ava0" name="LoopWindow.pb.h" resource="0"/>
+                id="aS6xSKAtf" name="LoopWindow.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/slow/Preferences.pb.cc"
-                id="EJLJ28Ufq" name="Preferences.pb.cc" resource="0"/>
+                id="VpcLM1uzc" name="Preferences.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/slow/Preferences.pb.h"
-                id="jpTRyaJoz" name="Preferences.pb.h" resource="0"/>
+                id="mSe3YuM9b" name="Preferences.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/slow/State.pb.cc"
-                id="nZMgZ0eDG" name="State.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/slow/State.pb.h" id="ezhUNxYs1"
+                id="j2krtGUXf" name="State.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/slow/State.pb.h" id="sw70r2NQ1"
                 name="State.pb.h" resource="0"/>
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="rLkCAqdK6" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="PbVptAdjC" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

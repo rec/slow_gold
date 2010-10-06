@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_PREFERENCES__
 #define __REC_SLOW_PREFERENCES__
 
-#include "rec/persist/App.h"
+#include "rec/data/persist/App.h"
 #include "rec/slow/Preferences.pb.h"
 
 namespace rec {

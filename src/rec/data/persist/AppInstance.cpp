@@ -1,7 +1,7 @@
 #include <glog/logging.h>
 
-#include "rec/persist/AppInstance.h"
-#include "rec/persist/Data.h"
+#include "rec/data/persist/AppInstance.h"
+#include "rec/data/persist/Data.h"
 #include "rec/util/thread/CallbackLoop.h"
 #include "rec/util/STL.h"
 

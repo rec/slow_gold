@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/persist/App.h"
+#include "rec/data/persist/App.h"
 #include "rec/util/thread/RunnableThread.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
