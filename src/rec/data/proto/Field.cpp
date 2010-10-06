@@ -1,12 +1,12 @@
 #include <glog/logging.h>
 #include <google/protobuf/descriptor.h>
 
-#include "rec/proto/Field.h"
-#include "rec/proto/Address.h"
-#include "rec/proto/Operation.pb.h"
-#include "rec/proto/Typer.h"
-#include "rec/proto/Types.h"
-#include "rec/proto/Value.pb.h"
+#include "rec/data/proto/Field.h"
+#include "rec/data/proto/Address.h"
+#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/proto/Typer.h"
+#include "rec/data/proto/Types.h"
+#include "rec/data/proto/Value.pb.h"
 
 namespace rec {
 namespace proto {

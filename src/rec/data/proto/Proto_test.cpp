@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/proto/TestData.pb.h"
-#include "rec/proto/Field.h"
+#include "rec/data/proto/TestData.pb.h"
+#include "rec/data/proto/Field.h"
 
 namespace rec {
 namespace proto {

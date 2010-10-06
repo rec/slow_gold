@@ -2,8 +2,8 @@
 #define __REC_PROTO_SETTER__
 
 #include "rec/base/base.h"
-#include "rec/proto/Address.h"
-#include "rec/proto/Value.h"
+#include "rec/data/proto/Address.h"
+#include "rec/data/proto/Value.h"
 #include "rec/util/Listener.h"
 
 namespace rec {

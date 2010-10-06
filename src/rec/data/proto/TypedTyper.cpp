@@ -1,4 +1,4 @@
-#include "rec/proto/TypedTyper.h"
+#include "rec/data/proto/TypedTyper.h"
 
 namespace rec {
 namespace proto {

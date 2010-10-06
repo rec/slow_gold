@@ -4,9 +4,9 @@
 
 #include "rec/persist/App.h"
 #include "rec/persist/Copy.h"
-#include "rec/proto/Proto.h"
+#include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
-#include "rec/proto/Setter.h"
+#include "rec/data/proto/Setter.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 

@@ -1,5 +1,5 @@
 #include "rec/commands/EventQueue.h"
-#include "rec/proto/LogFile.h"
+#include "rec/data/proto/LogFile.h"
 
 #include "rec/commands/Event.pb.h"
 

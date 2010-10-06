@@ -1,6 +1,6 @@
 package rec.commands;
 
-import "rec/proto/Operation.proto";
+import "rec/data/proto/Operation.proto";
 
 message Source {
   enum Type {

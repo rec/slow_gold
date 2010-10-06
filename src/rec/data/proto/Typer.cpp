@@ -1,8 +1,8 @@
 #include <vector>
 
-#include "rec/proto/Types.h"
-#include "rec/proto/Typer.h"
-#include "rec/proto/TypedTyper.h"
+#include "rec/data/proto/Types.h"
+#include "rec/data/proto/Typer.h"
+#include "rec/data/proto/TypedTyper.h"
 
 namespace rec {
 namespace proto {

@@ -1,7 +1,7 @@
-#include "rec/proto/LogFile.h"
+#include "rec/data/proto/LogFile.h"
 
 #include "google/protobuf/message.h"
-#include "rec/proto/ZeroCopy.h"
+#include "rec/data/proto/ZeroCopy.h"
 
 namespace rec {
 namespace proto {

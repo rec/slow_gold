@@ -2,7 +2,7 @@
 #define __REC_PROTO_ADDRESS__
 
 #include "rec/base/base.h"
-#include "rec/proto/Address.pb.h"
+#include "rec/data/proto/Address.pb.h"
 
 namespace rec {
 namespace proto {

@@ -2,7 +2,7 @@
 #define __REC_PROTO_TYPEDTYPER__
 
 #include "rec/base/base.h"
-#include "rec/proto/Types.h"
+#include "rec/data/proto/Types.h"
 
 namespace rec {
 namespace proto {

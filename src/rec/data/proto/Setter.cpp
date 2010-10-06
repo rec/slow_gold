@@ -1,4 +1,4 @@
-#include "rec/proto/Setter.h"
+#include "rec/data/proto/Setter.h"
 
 namespace rec {
 namespace proto {

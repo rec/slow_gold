@@ -2,7 +2,7 @@
 #define __REC_PERSIST_UNTYPEDDATA__
 
 #include "rec/base/base.h"
-#include "rec/proto/Setter.h"
+#include "rec/data/proto/Setter.h"
 #include "rec/util/Listener.h"
 
 namespace rec {

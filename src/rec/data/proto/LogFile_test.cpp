@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/proto/LogFile.h"
-#include "rec/proto/Operation.pb.h"
+#include "rec/data/proto/LogFile.h"
+#include "rec/data/proto/Operation.pb.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {

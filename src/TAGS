@@ -970,12 +970,12 @@ namespace commands rec::commands7,110
 TEST(rec::commands::TEST10,144
 
 rec/commands/EventQueue.cpp,222
-namespace rec 8,146
-namespace commands rec::commands9,162
-EventQueue::EventQueue(rec::commands::EventQueue::EventQueue11,184
-EventQueue::~EventQueue(16,313
-void EventQueue::add(18,353
-void EventQueue::write(23,445
+namespace rec 8,151
+namespace commands rec::commands9,167
+EventQueue::EventQueue(rec::commands::EventQueue::EventQueue11,189
+EventQueue::~EventQueue(16,318
+void EventQueue::add(18,358
+void EventQueue::write(23,450
 
 rec/commands/EventQueue.h,416
 #define __REC_EVENT_EVENTQUEUE__2,33
@@ -1049,37 +1049,37 @@ class MainPageJ 40,1257
     rec::gui::time::DialComponent* realDial;MainPageJ::realDial88,2779
 
 rec/components/MainPageK.cpp,1269
-using rec::audio::source::TimeStretch;19,441
-using rec::gui::ThreadDescription;21,483
-using rec::gui::ThumbnailDescription;22,519
-using rec::gui::ThumbnailDescription;23,558
-using rec::persist::copy;25,599
-using rec::thread::Callback;27,628
-using rec::thread::LockedMessage;28,658
-using rec::thread::Runnable;29,693
-using rec::thread::RunnableThread;30,723
-using rec::thread::WaitLoop;31,759
-using rec::thread::makeCallback;32,789
-namespace rec 34,825
-namespace slow rec::slow35,842
-MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1227
-static Thread* makeCursorThread(51,1455
-void MainPageK::construct(60,1858
-void MainPageK::destruct(94,2978
-void MainPageK::loadRecentFile(110,3442
-static const int RATE 116,3665
-void MainPageK::updateCursor(118,3699
-void MainPageK::setPosition(129,4175
-void MainPageK::loadFileIntoTransport(133,4300
-void MainPageK::sliderDragEnded(164,5343
-void MainPageK::sliderValueChanged(173,5676
-static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6218
-void MainPageK::changeListenerCallback(204,6732
-void MainPageK::startStopButtonClicked(225,7316
-void MainPageK::loopingButtonClicked(232,7471
-void MainPageK::selectionChanged(237,7604
-void MainPageK::cut(244,7785
-void MainPageK::paste(251,7974
+using rec::audio::source::TimeStretch;19,446
+using rec::gui::ThreadDescription;21,488
+using rec::gui::ThumbnailDescription;22,524
+using rec::gui::ThumbnailDescription;23,563
+using rec::persist::copy;25,604
+using rec::thread::Callback;27,633
+using rec::thread::LockedMessage;28,663
+using rec::thread::Runnable;29,698
+using rec::thread::RunnableThread;30,728
+using rec::thread::WaitLoop;31,764
+using rec::thread::makeCallback;32,794
+namespace rec 34,830
+namespace slow rec::slow35,847
+MainPageK::MainPageK(rec::slow::MainPageK::MainPageK43,1232
+static Thread* makeCursorThread(51,1460
+void MainPageK::construct(60,1863
+void MainPageK::destruct(94,2983
+void MainPageK::loadRecentFile(110,3447
+static const int RATE 116,3670
+void MainPageK::updateCursor(118,3704
+void MainPageK::setPosition(129,4180
+void MainPageK::loadFileIntoTransport(133,4305
+void MainPageK::sliderDragEnded(164,5348
+void MainPageK::sliderValueChanged(173,5681
+static const char* const CD_STATE_NAMES[CD_STATE_NAMES195,6223
+void MainPageK::changeListenerCallback(204,6737
+void MainPageK::startStopButtonClicked(225,7321
+void MainPageK::loopingButtonClicked(232,7476
+void MainPageK::selectionChanged(237,7609
+void MainPageK::cut(244,7790
+void MainPageK::paste(251,7979
 
 rec/components/MainPageK.h,1783
 #define __REC_COMPONENT_MAIN_PAGE_K_H__2,40
@@ -1106,6 +1106,314 @@ class MainPageK rec::slow::MainPageK17,324
   scoped_ptr<Thread> cursorThread_;rec::slow::MainPageK::cursorThread_79,2123
   std::vector<AudioCDBurner*> burners_;rec::slow::MainPageK::burners_81,2160
   StringArray cdNames_;rec::slow::MainPageK::cdNames_83,2201
+
+rec/data/proto/Address.h,329
+#define __REC_PROTO_ADDRESS__2,30
+struct Address 13,225
+  struct Field 14,266
+    Field(15,314
+    Field(16,358
+    Field(17,400
+    Field(18,435
+  typedef const Field& P;21,508
+  void p(22,534
+  Address(24,579
+  Address(25,594
+  Address(26,619
+  Address(27,655
+  Address(28,702
+  Address(29,760
+  Address(30,829
+
+rec/data/proto/Field.cpp,580
+namespace rec 11,284
+namespace proto rec::proto12,300
+Operation* Field::apply(rec::proto::Field::apply14,319
+bool Field::dereference(24,568
+bool Field::copyFrom(77,2023
+bool Field::copyTo(82,2195
+bool Field::addFrom(87,2363
+typedef bool (Field::*Applier)Applier91,2454
+Operation* Field::apply(93,2489
+bool Field::error(123,3388
+bool Field::addRepeated(128,3478
+bool Field::doRemove(140,3731
+bool Field::clearRepeated(157,4094
+bool Field::clearSingle(161,4148
+bool Field::removeRepeated(167,4278
+bool Field::setSingle(171,4353
+bool Field::swapRepeated(186,4704
+
+rec/data/proto/Field.h,900
+#define __REC_PROTO_FIELD__2,28
+class Field 22,301
+  static Operation* apply(24,324
+  explicit Field(26,391
+  bool dereference(31,481
+  Operation* apply(32,528
+  bool copyFrom(34,570
+  bool addFrom(35,607
+  bool copyTo(36,643
+  enum Type 39,689
+    INDEXED 40,703
+    REPEATED 41,720
+    SINGLE 42,738
+    TYPE_COUNT 43,754
+  bool addRepeated(46,780
+  bool removeRepeated(47,802
+  bool swapRepeated(48,827
+  bool clearRepeated(50,851
+  bool clearSingle(51,875
+  bool setIndexed(53,898
+  bool setSingle(54,942
+  bool error(56,963
+  bool doRemove(58,980
+  Message* message_;60,1017
+  const google::protobuf::FieldDescriptor* field_;Field::field_61,1038
+  uint32 index_;Field::index_62,1089
+  Type type_;Field::type_63,1106
+  uint32 repeatCount_;Field::repeatCount_64,1120
+  Operation* undo_;Field::undo_66,1144
+  const Operation* operation_;Field::operation_67,1164
+
+rec/data/proto/LogFile.cpp,1203
+namespace rec 6,112
+namespace proto rec::proto7,128
+namespace logfile rec::proto::logfile8,146
+typedef google::protobuf::io::CodedOutputStream CodedOutputStream;rec::proto::logfile::CodedOutputStream10,167
+typedef google::protobuf::io::CodedInputStream CodedInputStream;rec::proto::logfile::CodedInputStream11,234
+template <typename Zero,rec::proto::logfile::Zero13,300
+class Base rec::proto::logfile::Base14,341
+  Base(rec::proto::logfile::Base::Base16,363
+  Zero zero_;rec::proto::logfile::Base::zero_19,434
+  Coded coded_;rec::proto::logfile::Base::coded_20,448
+typedef Base<zerocopy::Input,zerocopy::Input26,510
+typedef Base<zerocopy::Input, CodedInputStream> InputBase;26,510
+class InputImpl 28,570
+  explicit InputImpl(InputImpl::InputImpl30,616
+  bool read(InputImpl::read32,677
+typedef Base<zerocopy::Output,zerocopy::Output41,861
+typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;41,861
+class OutputImpl 43,924
+  explicit OutputImpl(OutputImpl::OutputImpl45,972
+  void write(OutputImpl::write47,1035
+Input::Input(58,1251
+Input::~Input(59,1314
+bool Input::read(60,1333
+Output::Output(62,1402
+Output::~Output(63,1468
+void Output::write(64,1489
+
+rec/data/proto/LogFile.h,270
+#define __REC_PROTO_LOGFILE__2,30
+class Input 13,180
+  explicit Input(15,203
+  ~Input(16,239
+  bool read(18,252
+  scoped_ptr<InputImpl> impl_;21,294
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(22,325
+class Output 25,370
+  scoped_ptr<OutputImpl> impl_;Output::impl_33,494
+
+rec/data/proto/LogFile_test.cpp,167
+namespace rec 8,170
+namespace proto rec::proto9,186
+namespace logfile rec::proto::logfile10,204
+TEST(rec::proto::logfile::TEST13,237
+TEST(32,572
+TEST(60,1245
+
+rec/data/proto/Proto.cpp,112
+namespace rec 5,62
+namespace proto rec::proto6,78
+Operation* applyOperation(rec::proto::applyOperation8,97
+
+rec/data/proto/Proto.h,31
+#define __REC_PROTO_PROTO2,26
+
+rec/data/proto/Proto_test.cpp,85
+namespace rec 7,127
+namespace proto rec::proto8,143
+TEST(rec::proto::TEST10,162
+
+rec/data/proto/Setter.cpp,421
+namespace rec 3,36
+namespace proto rec::proto4,52
+namespace arg rec::proto::arg5,70
+typedef Operation::Command Command;rec::proto::arg::Command9,100
+Operation* newOp(rec::proto::arg::newOp11,137
+Operation* valueOp(18,296
+Operation* removeOp(24,449
+Operation* swapOp(30,590
+void Setter::append(39,760
+void Setter::clear(43,890
+void Setter::remove(47,989
+void Setter::set(51,1094
+void Setter::swap(55,1218
+
+rec/data/proto/Setter.h,1211
+#define __REC_PROTO_SETTER__2,29
+class Setter 13,239
+  typedef util::Listener<Operation*> Listener;Setter::Listener15,263
+  Setter(Setter::Setter17,311
+  typedef Address A;Setter::A25,619
+  typedef const A::Field& P;Setter::P26,640
+  typedef const Value& V;Setter::V27,669
+  void append(Setter::append29,696
+  void append(Setter::append30,748
+  void append(Setter::append31,808
+  void append(Setter::append32,876
+  void append(Setter::append33,952
+  void clear(Setter::clear35,1037
+  void clear(Setter::clear36,1079
+  void clear(Setter::clear37,1129
+  void clear(Setter::clear38,1187
+  void clear(Setter::clear39,1253
+  void remove(Setter::remove41,1328
+  void remove(Setter::remove42,1383
+  void remove(Setter::remove43,1446
+  void remove(Setter::remove44,1517
+  void remove(Setter::remove45,1596
+  void set(Setter::set47,1684
+  void set(Setter::set48,1730
+  void set(Setter::set49,1784
+  void set(Setter::set50,1846
+  void set(Setter::set51,1916
+  void swap(Setter::swap53,1995
+  void swap(Setter::swap54,2055
+  void swap(Setter::swap55,2123
+  void swap(Setter::swap56,2199
+  void swap(Setter::swap57,2283
+  Listener* data_;Setter::data_60,2386
+
+rec/data/proto/TypedTyper.cpp,826
+namespace rec 3,40
+namespace proto rec::proto4,56
+namespace typer rec::proto::typer5,74
+#define METHOD(7,93
+#define GETTER(13,396
+#define GETTERS(16,534
+#define SETTER(21,743
+#define SETTERS(24,869
+#define ADD(29,1097
+#define DEF_TYPE(32,1235
+#define COPY(36,1423
+#define DEF_ALL(44,1872
+pmessage TypedTyper<pmessage>::Get(rec::proto::typer::Get74,2924
+pmessage TypedTyper<pmessage>::GetRepeated(GetRepeated81,3081
+void TypedTyper<pmessage>::Set(Set89,3270
+void TypedTyper<pmessage>::SetRepeated(SetRepeated94,3395
+void TypedTyper<pmessage>::Add(Add100,3554
+penum TypedTyper<penum>::Get(Get109,3717
+penum TypedTyper<penum>::GetRepeated(GetRepeated114,3827
+void TypedTyper<penum>::Set(Set119,3964
+void TypedTyper<penum>::SetRepeated(SetRepeated124,4099
+void TypedTyper<penum>::Add(Add130,4294
+
+rec/data/proto/TypedTyper.h,685
+#define __REC_PROTO_TYPEDTYPER__2,33
+class Typer 11,182
+  Typer(13,205
+  virtual ~Typer(16,284
+  virtual Typer* clone(17,306
+  Message* msg_;31,746
+  const FieldDescriptor* field_;32,763
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(34,797
+class TypedTyper 38,867
+  static const FieldDescriptor::Type TYPE_INDEX;TypedTyper::TYPE_INDEX40,910
+  TypedTyper(TypedTyper::TypedTyper41,959
+  virtual void copyFrom(TypedTyper::copyFrom56,1345
+  virtual void copyFrom(TypedTyper::copyFrom57,1415
+  virtual void copyTo(TypedTyper::copyTo58,1495
+  virtual void copyTo(TypedTyper::copyTo59,1566
+  virtual void add(TypedTyper::add60,1646
+  virtual Typer* clone(TypedTyper::clone62,1716
+
+rec/data/proto/Typer.cpp,255
+namespace rec 7,127
+namespace proto rec::proto8,143
+namespace typer rec::proto::typer9,161
+class STyper 34,921
+  STyper(STyper::STyper36,972
+bool copyTo(46,1150
+bool copyTo(51,1275
+bool copyFrom(56,1413
+bool copyFrom(61,1530
+bool add(66,1660
+
+rec/data/proto/Typer.h,123
+#define __REC_PROTO_TYPER__2,28
+typedef google::protobuf::FieldDescriptor FieldDescriptor;19,248
+namespace typer 21,308
+
+rec/data/proto/Types.h,563
+#define __REC_PROTO_TYPES__2,28
+typedef Operation::Command Command;13,220
+typedef google::protobuf::FieldDescriptor FieldDescriptor;14,256
+typedef google::protobuf::Reflection Reflection;15,315
+typedef uint32 Tag;16,364
+#define PROTO_MAKE_TYPE(18,385
+#undef PROTO_MAKE_TYPE39,1070
+struct pmessage 41,1094
+  pmessage(pmessage::pmessage42,1112
+  pmessage(pmessage::pmessage43,1128
+  pmessage(pmessage::pmessage44,1191
+  operator string(pmessage::operator string45,1234
+  bool Parse(pmessage::Parse47,1280
+  string value_;pmessage::value_49,1345
+
+rec/data/proto/Value.h,357
+#define __REC_PROTO_VALUE__2,28
+class Value 12,207
+  Value(14,252
+  Value(15,265
+  Value(16,304
+  Value(17,341
+  Value(18,378
+  Value(19,417
+  Value(20,454
+  Value(21,493
+  Value(22,528
+  Value(23,567
+  Value(24,604
+  Value(25,645
+  Value(26,686
+  Value(27,729
+  Value(28,772
+  Value(29,811
+  Value(30,850
+  Value(31,892
+  Value(33,929
+
+rec/data/proto/ZeroCopy.h,1286
+#define __REC_PROTO_ZEROCOPY__2,31
+typedef google::protobuf::io::ZeroCopyOutputStream ZeroCopyOutputStream;16,301
+typedef google::protobuf::io::ZeroCopyInputStream ZeroCopyInputStream;17,374
+class Base 20,494
+  Base(Base::Base23,572
+  void* buffer(Base::buffer28,678
+  int size(Base::size29,727
+  scoped_ptr<JuceStream> stream_;Base::stream_32,786
+  std::vector<uint8> buffer_;Base::buffer_35,831
+typedef Base<FileOutputStream,FileOutputStream40,906
+typedef Base<FileOutputStream, google::protobuf::io::ZeroCopyOutputStream> OutputBase;40,906
+class Output 42,994
+  Output(Output::Output44,1038
+  virtual ~Output(Output::~Output49,1183
+  virtual bool Next(Output::Next53,1225
+  virtual void BackUp(Output::BackUp62,1363
+  virtual int64 ByteCount(Output::ByteCount69,1495
+  bool full_;Output::full_74,1581
+typedef Base<FileInputStream,FileInputStream78,1641
+typedef Base<FileInputStream, google::protobuf::io::ZeroCopyInputStream> InputBase;78,1641
+class Input 80,1726
+  Input(Input::Input82,1768
+  virtual ~Input(Input::~Input86,1881
+  virtual bool Next(Input::Next88,1904
+  virtual void BackUp(Input::BackUp97,2092
+  virtual bool Skip(Input::Skip98,2135
+  virtual int64 ByteCount(Input::ByteCount99,2213
+  bool full_;Input::full_102,2293
 
 rec/data/yaml/include/conversion.h,85
 #define CONVERSION_H_62B23520_7C8E_11DE_8A39_0800200C9A664,72
@@ -1397,29 +1705,29 @@ rec/data/yaml/include/yaml.h,57
 
 rec/data/yaml/Internal.h,745
 #define __REC_YAML_INTERNAL__2,30
-using google::protobuf::EnumValueDescriptor;13,256
-using google::protobuf::FieldDescriptor;14,301
-using google::protobuf::Reflection;15,342
-namespace rec 17,379
-namespace yaml rec::yaml18,395
-typedef FieldDescriptor FD;rec::yaml::FD20,413
-struct MessageField rec::yaml::MessageField22,442
-  MessageField(rec::yaml::MessageField::MessageField23,464
-  const Message* message_;rec::yaml::MessageField::message_26,560
-  const FieldDescriptor* field_;rec::yaml::MessageField::field_27,587
-struct MessageFieldIndex 30,624
-  MessageFieldIndex(MessageFieldIndex::MessageFieldIndex31,673
-  MessageFieldIndex(MessageFieldIndex::MessageFieldIndex35,771
-  int index_;MessageFieldIndex::index_38,864
+using google::protobuf::EnumValueDescriptor;13,266
+using google::protobuf::FieldDescriptor;14,311
+using google::protobuf::Reflection;15,352
+namespace rec 17,389
+namespace yaml rec::yaml18,405
+typedef FieldDescriptor FD;rec::yaml::FD20,423
+struct MessageField rec::yaml::MessageField22,452
+  MessageField(rec::yaml::MessageField::MessageField23,474
+  const Message* message_;rec::yaml::MessageField::message_26,570
+  const FieldDescriptor* field_;rec::yaml::MessageField::field_27,597
+struct MessageFieldIndex 30,634
+  MessageFieldIndex(MessageFieldIndex::MessageFieldIndex31,683
+  MessageFieldIndex(MessageFieldIndex::MessageFieldIndex35,781
+  int index_;MessageFieldIndex::index_38,874
 
 rec/data/yaml/ReadYaml.cpp,179
-namespace rec 7,90
-namespace yaml rec::yaml8,106
-string str(rec::yaml::str14,192
-void doRead(18,262
-void doReadRepeated(45,1647
-void operator>>(77,3161
-void read(93,3648
+namespace rec 7,95
+namespace yaml rec::yaml8,111
+string str(rec::yaml::str14,197
+void doRead(18,267
+void doReadRepeated(45,1652
+void operator>>(77,3166
+void read(93,3653
 
 rec/data/yaml/src/aliascontent.cpp,1187
 namespace YAML3,27
@@ -2289,30 +2597,30 @@ namespace YAML12,192
 		int data;Token::data78,1429
 
 rec/data/yaml/WriteYaml.cpp,502
-namespace rec 4,50
-namespace yaml rec::yaml5,66
-YAML::Emitter& operator<<(rec::yaml::operator<<10,162
-YAML::Emitter& operator<<(14,270
-YAML::Emitter& operator<<(42,1868
-typedef std::vector<const FieldDescriptor*> FieldVector;78,3440
-static const int MAX_FIELD_COUNT 80,3498
-static const int MAX_ARRAY_COUNT 81,3536
-bool isSmall(83,3575
-YAML::Emitter& write(99,4027
-int shortLength(111,4378
-const static int SHORT_LENGTH 118,4506
-YAML::Emitter& operator<<(120,4543
-string write(138,5020
+namespace rec 4,55
+namespace yaml rec::yaml5,71
+YAML::Emitter& operator<<(rec::yaml::operator<<10,167
+YAML::Emitter& operator<<(14,275
+YAML::Emitter& operator<<(42,1873
+typedef std::vector<const FieldDescriptor*> FieldVector;78,3445
+static const int MAX_FIELD_COUNT 80,3503
+static const int MAX_ARRAY_COUNT 81,3541
+bool isSmall(83,3580
+YAML::Emitter& write(99,4032
+int shortLength(111,4383
+const static int SHORT_LENGTH 118,4511
+YAML::Emitter& operator<<(120,4548
+string write(138,5025
 
 rec/data/yaml/Yaml.h,31
 #define __REC_YAML_YAML__2,26
 
 rec/data/yaml/Yaml_test.cpp,154
-namespace rec 8,117
-namespace yaml rec::yaml9,133
-using proto::Operation;rec::yaml::proto::Operation12,163
-TEST(rec::yaml::TEST21,337
-TEST(31,587
+namespace rec 8,127
+namespace yaml rec::yaml9,143
+using proto::Operation;rec::yaml::proto::Operation12,173
+TEST(rec::yaml::TEST21,347
+TEST(31,597
 
 rec/gui/AudioThumbnailComponent.cpp,740
 namespace rec 5,111
@@ -2518,338 +2826,30 @@ bool Data<Proto>::removeListener(removeListener72,1496
 void Data<Proto>::changeCallback(changeCallback84,1814
 
 rec/persist/UntypedData.cpp,384
-namespace rec 13,251
-namespace persist rec::persist14,267
-using rec::proto::Operation;rec::persist::rec::proto::Operation16,288
-UntypedData::UntypedData(rec::persist::UntypedData::UntypedData18,318
-void UntypedData::readFromFile(27,554
-UntypedData::~UntypedData(35,772
-void UntypedData::change(40,868
-void UntypedData::update(48,1007
-void UntypedData::writeToFile(64,1319
+namespace rec 13,261
+namespace persist rec::persist14,277
+using rec::proto::Operation;rec::persist::rec::proto::Operation16,298
+UntypedData::UntypedData(rec::persist::UntypedData::UntypedData18,328
+void UntypedData::readFromFile(27,564
+UntypedData::~UntypedData(35,782
+void UntypedData::change(40,878
+void UntypedData::update(48,1017
+void UntypedData::writeToFile(64,1329
 
-rec/persist/UntypedData.h,683
+rec/persist/UntypedData.h,684
 #define __REC_PERSIST_UNTYPEDDATA__2,36
-typedef proto::arg::Setter Setter;14,230
-class UntypedData 16,266
-  Setter* setter(UntypedData::setter25,610
-  typedef std::vector<proto::Operation*> OperationList;UntypedData::OperationList38,867
-  OperationList queue_;UntypedData::queue_40,924
-  OperationList undo_;UntypedData::undo_41,948
-  scoped_ptr<File> file_;UntypedData::file_43,972
-  mutable Message* message_;UntypedData::message_44,998
-  Setter setter_;UntypedData::setter_45,1027
-  App* app_;UntypedData::app_47,1046
-  scoped_ptr<CriticalSection> lock_;UntypedData::lock_48,1059
-  mutable bool alreadyReadFromFile_;UntypedData::alreadyReadFromFile_49,1096
-
-rec/proto/Address.h,329
-#define __REC_PROTO_ADDRESS__2,30
-struct Address 13,220
-  struct Field 14,261
-    Field(15,309
-    Field(16,353
-    Field(17,395
-    Field(18,430
-  typedef const Field& P;21,503
-  void p(22,529
-  Address(24,574
-  Address(25,589
-  Address(26,614
-  Address(27,650
-  Address(28,697
-  Address(29,755
-  Address(30,824
-
-rec/proto/Field.cpp,580
-namespace rec 11,254
-namespace proto rec::proto12,270
-Operation* Field::apply(rec::proto::Field::apply14,289
-bool Field::dereference(24,538
-bool Field::copyFrom(77,1993
-bool Field::copyTo(82,2165
-bool Field::addFrom(87,2333
-typedef bool (Field::*Applier)Applier91,2424
-Operation* Field::apply(93,2459
-bool Field::error(123,3358
-bool Field::addRepeated(128,3448
-bool Field::doRemove(140,3701
-bool Field::clearRepeated(157,4064
-bool Field::clearSingle(161,4118
-bool Field::removeRepeated(167,4248
-bool Field::setSingle(171,4323
-bool Field::swapRepeated(186,4674
-
-rec/proto/Field.h,900
-#define __REC_PROTO_FIELD__2,28
-class Field 22,301
-  static Operation* apply(24,324
-  explicit Field(26,391
-  bool dereference(31,481
-  Operation* apply(32,528
-  bool copyFrom(34,570
-  bool addFrom(35,607
-  bool copyTo(36,643
-  enum Type 39,689
-    INDEXED 40,703
-    REPEATED 41,720
-    SINGLE 42,738
-    TYPE_COUNT 43,754
-  bool addRepeated(46,780
-  bool removeRepeated(47,802
-  bool swapRepeated(48,827
-  bool clearRepeated(50,851
-  bool clearSingle(51,875
-  bool setIndexed(53,898
-  bool setSingle(54,942
-  bool error(56,963
-  bool doRemove(58,980
-  Message* message_;60,1017
-  const google::protobuf::FieldDescriptor* field_;Field::field_61,1038
-  uint32 index_;Field::index_62,1089
-  Type type_;Field::type_63,1106
-  uint32 repeatCount_;Field::repeatCount_64,1120
-  Operation* undo_;Field::undo_66,1144
-  const Operation* operation_;Field::operation_67,1164
-
-rec/proto/LogFile.cpp,1203
-namespace rec 6,102
-namespace proto rec::proto7,118
-namespace logfile rec::proto::logfile8,136
-typedef google::protobuf::io::CodedOutputStream CodedOutputStream;rec::proto::logfile::CodedOutputStream10,157
-typedef google::protobuf::io::CodedInputStream CodedInputStream;rec::proto::logfile::CodedInputStream11,224
-template <typename Zero,rec::proto::logfile::Zero13,290
-class Base rec::proto::logfile::Base14,331
-  Base(rec::proto::logfile::Base::Base16,353
-  Zero zero_;rec::proto::logfile::Base::zero_19,424
-  Coded coded_;rec::proto::logfile::Base::coded_20,438
-typedef Base<zerocopy::Input,zerocopy::Input26,500
-typedef Base<zerocopy::Input, CodedInputStream> InputBase;26,500
-class InputImpl 28,560
-  explicit InputImpl(InputImpl::InputImpl30,606
-  bool read(InputImpl::read32,667
-typedef Base<zerocopy::Output,zerocopy::Output41,851
-typedef Base<zerocopy::Output, CodedOutputStream> OutputBase;41,851
-class OutputImpl 43,914
-  explicit OutputImpl(OutputImpl::OutputImpl45,962
-  void write(OutputImpl::write47,1025
-Input::Input(58,1241
-Input::~Input(59,1304
-bool Input::read(60,1323
-Output::Output(62,1392
-Output::~Output(63,1458
-void Output::write(64,1479
-
-rec/proto/LogFile.h,270
-#define __REC_PROTO_LOGFILE__2,30
-class Input 13,180
-  explicit Input(15,203
-  ~Input(16,239
-  bool read(18,252
-  scoped_ptr<InputImpl> impl_;21,294
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(22,325
-class Output 25,370
-  scoped_ptr<OutputImpl> impl_;Output::impl_33,494
-
-rec/proto/LogFile_test.cpp,167
-namespace rec 8,160
-namespace proto rec::proto9,176
-namespace logfile rec::proto::logfile10,194
-TEST(rec::proto::logfile::TEST13,227
-TEST(32,562
-TEST(60,1235
-
-rec/proto/Proto.cpp,112
-namespace rec 5,57
-namespace proto rec::proto6,73
-Operation* applyOperation(rec::proto::applyOperation8,92
-
-rec/proto/Proto.h,31
-#define __REC_PROTO_PROTO2,26
-
-rec/proto/Proto_test.cpp,85
-namespace rec 7,117
-namespace proto rec::proto8,133
-TEST(rec::proto::TEST10,152
-
-rec/proto/Setter.cpp,420
-namespace rec 3,31
-namespace proto rec::proto4,47
-namespace arg rec::proto::arg5,65
-typedef Operation::Command Command;rec::proto::arg::Command9,95
-Operation* newOp(rec::proto::arg::newOp11,132
-Operation* valueOp(18,291
-Operation* removeOp(24,444
-Operation* swapOp(30,585
-void Setter::append(39,755
-void Setter::clear(43,885
-void Setter::remove(47,984
-void Setter::set(51,1089
-void Setter::swap(55,1213
-
-rec/proto/Setter.h,1211
-#define __REC_PROTO_SETTER__2,29
-class Setter 13,229
-  typedef util::Listener<Operation*> Listener;Setter::Listener15,253
-  Setter(Setter::Setter17,301
-  typedef Address A;Setter::A25,609
-  typedef const A::Field& P;Setter::P26,630
-  typedef const Value& V;Setter::V27,659
-  void append(Setter::append29,686
-  void append(Setter::append30,738
-  void append(Setter::append31,798
-  void append(Setter::append32,866
-  void append(Setter::append33,942
-  void clear(Setter::clear35,1027
-  void clear(Setter::clear36,1069
-  void clear(Setter::clear37,1119
-  void clear(Setter::clear38,1177
-  void clear(Setter::clear39,1243
-  void remove(Setter::remove41,1318
-  void remove(Setter::remove42,1373
-  void remove(Setter::remove43,1436
-  void remove(Setter::remove44,1507
-  void remove(Setter::remove45,1586
-  void set(Setter::set47,1674
-  void set(Setter::set48,1720
-  void set(Setter::set49,1774
-  void set(Setter::set50,1836
-  void set(Setter::set51,1906
-  void swap(Setter::swap53,1985
-  void swap(Setter::swap54,2045
-  void swap(Setter::swap55,2113
-  void swap(Setter::swap56,2189
-  void swap(Setter::swap57,2273
-  Listener* data_;Setter::data_60,2376
-
-rec/proto/TypedTyper.cpp,826
-namespace rec 3,35
-namespace proto rec::proto4,51
-namespace typer rec::proto::typer5,69
-#define METHOD(7,88
-#define GETTER(13,391
-#define GETTERS(16,529
-#define SETTER(21,738
-#define SETTERS(24,864
-#define ADD(29,1092
-#define DEF_TYPE(32,1230
-#define COPY(36,1418
-#define DEF_ALL(44,1867
-pmessage TypedTyper<pmessage>::Get(rec::proto::typer::Get74,2919
-pmessage TypedTyper<pmessage>::GetRepeated(GetRepeated81,3076
-void TypedTyper<pmessage>::Set(Set89,3265
-void TypedTyper<pmessage>::SetRepeated(SetRepeated94,3390
-void TypedTyper<pmessage>::Add(Add100,3549
-penum TypedTyper<penum>::Get(Get109,3712
-penum TypedTyper<penum>::GetRepeated(GetRepeated114,3822
-void TypedTyper<penum>::Set(Set119,3959
-void TypedTyper<penum>::SetRepeated(SetRepeated124,4094
-void TypedTyper<penum>::Add(Add130,4289
-
-rec/proto/TypedTyper.h,685
-#define __REC_PROTO_TYPEDTYPER__2,33
-class Typer 11,177
-  Typer(13,200
-  virtual ~Typer(16,279
-  virtual Typer* clone(17,301
-  Message* msg_;31,741
-  const FieldDescriptor* field_;32,758
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(34,792
-class TypedTyper 38,862
-  static const FieldDescriptor::Type TYPE_INDEX;TypedTyper::TYPE_INDEX40,905
-  TypedTyper(TypedTyper::TypedTyper41,954
-  virtual void copyFrom(TypedTyper::copyFrom56,1340
-  virtual void copyFrom(TypedTyper::copyFrom57,1410
-  virtual void copyTo(TypedTyper::copyTo58,1490
-  virtual void copyTo(TypedTyper::copyTo59,1561
-  virtual void add(TypedTyper::add60,1641
-  virtual Typer* clone(TypedTyper::clone62,1711
-
-rec/proto/Typer.cpp,255
-namespace rec 7,112
-namespace proto rec::proto8,128
-namespace typer rec::proto::typer9,146
-class STyper 34,906
-  STyper(STyper::STyper36,957
-bool copyTo(46,1135
-bool copyTo(51,1260
-bool copyFrom(56,1398
-bool copyFrom(61,1515
-bool add(66,1645
-
-rec/proto/Typer.h,123
-#define __REC_PROTO_TYPER__2,28
-typedef google::protobuf::FieldDescriptor FieldDescriptor;19,248
-namespace typer 21,308
-
-rec/proto/Types.h,563
-#define __REC_PROTO_TYPES__2,28
-typedef Operation::Command Command;13,215
-typedef google::protobuf::FieldDescriptor FieldDescriptor;14,251
-typedef google::protobuf::Reflection Reflection;15,310
-typedef uint32 Tag;16,359
-#define PROTO_MAKE_TYPE(18,380
-#undef PROTO_MAKE_TYPE39,1065
-struct pmessage 41,1089
-  pmessage(pmessage::pmessage42,1107
-  pmessage(pmessage::pmessage43,1123
-  pmessage(pmessage::pmessage44,1186
-  operator string(pmessage::operator string45,1229
-  bool Parse(pmessage::Parse47,1275
-  string value_;pmessage::value_49,1340
-
-rec/proto/Value.h,357
-#define __REC_PROTO_VALUE__2,28
-class Value 12,197
-  Value(14,242
-  Value(15,255
-  Value(16,294
-  Value(17,331
-  Value(18,368
-  Value(19,407
-  Value(20,444
-  Value(21,483
-  Value(22,518
-  Value(23,557
-  Value(24,594
-  Value(25,635
-  Value(26,676
-  Value(27,719
-  Value(28,762
-  Value(29,801
-  Value(30,840
-  Value(31,882
-  Value(33,919
-
-rec/proto/ZeroCopy.h,1286
-#define __REC_PROTO_ZEROCOPY__2,31
-typedef google::protobuf::io::ZeroCopyOutputStream ZeroCopyOutputStream;16,301
-typedef google::protobuf::io::ZeroCopyInputStream ZeroCopyInputStream;17,374
-class Base 20,494
-  Base(Base::Base23,572
-  void* buffer(Base::buffer28,678
-  int size(Base::size29,727
-  scoped_ptr<JuceStream> stream_;Base::stream_32,786
-  std::vector<uint8> buffer_;Base::buffer_35,831
-typedef Base<FileOutputStream,FileOutputStream40,906
-typedef Base<FileOutputStream, google::protobuf::io::ZeroCopyOutputStream> OutputBase;40,906
-class Output 42,994
-  Output(Output::Output44,1038
-  virtual ~Output(Output::~Output49,1183
-  virtual bool Next(Output::Next53,1225
-  virtual void BackUp(Output::BackUp62,1363
-  virtual int64 ByteCount(Output::ByteCount69,1495
-  bool full_;Output::full_74,1581
-typedef Base<FileInputStream,FileInputStream78,1641
-typedef Base<FileInputStream, google::protobuf::io::ZeroCopyInputStream> InputBase;78,1641
-class Input 80,1726
-  Input(Input::Input82,1768
-  virtual ~Input(Input::~Input86,1881
-  virtual bool Next(Input::Next88,1904
-  virtual void BackUp(Input::BackUp97,2092
-  virtual bool Skip(Input::Skip98,2135
-  virtual int64 ByteCount(Input::ByteCount99,2213
-  bool full_;Input::full_102,2293
+typedef proto::arg::Setter Setter;14,235
+class UntypedData 16,271
+  Setter* setter(UntypedData::setter25,615
+  typedef std::vector<proto::Operation*> OperationList;UntypedData::OperationList38,872
+  OperationList queue_;UntypedData::queue_40,929
+  OperationList undo_;UntypedData::undo_41,953
+  scoped_ptr<File> file_;UntypedData::file_43,977
+  mutable Message* message_;UntypedData::message_44,1003
+  Setter setter_;UntypedData::setter_45,1032
+  App* app_;UntypedData::app_47,1051
+  scoped_ptr<CriticalSection> lock_;UntypedData::lock_48,1064
+  mutable bool alreadyReadFromFile_;UntypedData::alreadyReadFromFile_49,1101
 
 rec/slow/Preferences.h,148
 #define __REC_SLOW_PREFERENCES__2,33
