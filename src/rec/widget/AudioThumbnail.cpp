@@ -70,8 +70,7 @@ void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
   setCursor(ratio);
-  for (ListenerSet::iterator i = listeners_.begin(); i != listeners_.end(); ++i)
-    (*i)->changeListenerCallback(this);
+  sendChangeMessage(this);
 }
 
 void AudioThumbnailWidget::setCursor(double cursorRatio) {
@@ -123,9 +122,9 @@ int AudioThumbnailWidget::getCursor() const {
   return cursor_;
 }
 
-// this method is called by the thumbnail when it has changed, so we should repaint it..
-void AudioThumbnailWidget::changeListenerCallback(void*) {
-  repaint();
+double AudioThumbnailWidget::ratio() const {
+  ScopedLock l(lock_);
+  return ratio_;
 }
 
 }  // namespace widget

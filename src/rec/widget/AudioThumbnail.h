@@ -4,12 +4,12 @@
 #include <set>
 
 #include "rec/slow/Preferences.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace widget {
 
-class AudioThumbnailWidget : public Component, public ChangeListener {
+class AudioThumbnailWidget : public Component, public ChangeListener,
+                             public ChangeBroadcaster {
  public:
   AudioThumbnailWidget();
   ~AudioThumbnailWidget();
@@ -28,17 +28,12 @@ class AudioThumbnailWidget : public Component, public ChangeListener {
   void setCursor(double cursorRatio);
   void paint(Graphics& g);
   int getCursor() const;
-  double ratio() const { return ratio_; }
-
-  void addListener(ChangeListener* listener) { listeners_.insert(listener); }
-  void removeListener(ChangeListener* listener) { listeners_.erase(listener); }
+  double ratio() const;
 
   // this method is called by the thumbnail when it has changed, so we should repaint it..
-  void changeListenerCallback(void*);
+  virtual void changeListenerCallback(void*) { repaint(); }
 
  private:
-  typedef std::set<ChangeListener*> ListenerSet;
-  ListenerSet listeners_;
   const AudioThumbnailDesc description_;
 
   AudioThumbnailCache thumbnailCache_;
