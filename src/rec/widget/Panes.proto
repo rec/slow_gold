@@ -1,0 +1,31 @@
+package rec.widget;
+
+import "rec/widget/Widget.proto";
+import "rec/audio/source/TimeStretch.proto";
+
+message Path {
+  repeated string path = 1;
+};
+
+message NavigationPane {
+  enum Tab {
+    FILE = 1;
+    CD = 2;
+    URL = 3;
+  };
+
+  optional Widget widget = 1;
+  optional Tab tab = 2;
+  optional Path path = 3;
+};
+
+message DirectoryPane {
+  optional Widget widget = 1;
+  optional Path path = 2;
+};
+
+message TrackPane {
+  optional Widget widget = 1;
+  optional Path path = 2;
+  optional audio.source.TimeStretch timestretch = 3;
+};
