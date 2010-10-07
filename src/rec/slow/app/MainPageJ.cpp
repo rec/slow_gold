@@ -53,7 +53,8 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     zoomLabel->setColour (TextEditor::textColourId, Colours::black);
     zoomLabel->setColour (TextEditor::backgroundColourId, Colour (0x0));
 
-    addAndMakeVisible (thumbnail = new rec::widget::AudioThumbnailWidget());
+    addAndMakeVisible (thumbnail = new rec::widget::AudioThumbnailWidget(
+        rec::widget::AudioThumbnailDesc()));
 
     addAndMakeVisible (startStopButton = new TextButton (String::empty));
     startStopButton->setButtonText (T("Play/Stop"));

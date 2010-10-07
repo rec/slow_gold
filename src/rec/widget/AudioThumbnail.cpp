@@ -4,8 +4,8 @@
 namespace rec {
 namespace widget {
 
-AudioThumbnailWidget::AudioThumbnailWidget()
-    : description_(rec::slow::getPreferences().thumbnail()),
+AudioThumbnailWidget::AudioThumbnailWidget(const AudioThumbnailDesc& desc)
+    : WidgetBase<Component, AudioThumbnailDesc>(desc),
       thumbnailCache_(description_.thumbnail_cache()),
       thumbnail_(description_.source_samples_per_thumbnail_sample(),
                  *AudioFormatManager::getInstance(), thumbnailCache_) {
@@ -50,7 +50,7 @@ void AudioThumbnailWidget::mouseWheelMove(const MouseEvent& e,
 }
 
 Rectangle<int> AudioThumbnailWidget::cursorRectangle() const {
-  int margin = description_.margin();
+  int margin = description_.widget().margin();
   int thickness = description_.cursor_thickness();
 
   double position = jlimit(startTime_, endTime_, cursor_);
@@ -66,7 +66,7 @@ bool AudioThumbnailWidget::within(int x) const {
 }
 
 void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
-  int margin = description_.margin();
+  int margin = description_.widget().margin();
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
   setCursor(ratio);
@@ -91,10 +91,8 @@ void AudioThumbnailWidget::setCursor(double cursorRatio) {
   }
 }
 
-void AudioThumbnailWidget::paint(Graphics& g) {
-  const gui::Colors& colors = description_.colors();
-  gui::color::prepare(colors, &g);
-  int margin = description_.margin();
+void AudioThumbnailWidget::paint(Graphics& g, const Rectangle<int>& bounds) {
+  int margin = description_.widget().margin();
 
   if (thumbnail_.getTotalLength() > 0) {
     int heightPerChannel = (getHeight() - 2 * margin) /
@@ -107,7 +105,7 @@ void AudioThumbnailWidget::paint(Graphics& g) {
                              i, 1.0f);
     }
 
-    g.setColour(gui::color::get(colors, 2));
+    setColour(g, HIGHLIGHT);
     g.drawRect(cursorRectangle());
 
   } else {

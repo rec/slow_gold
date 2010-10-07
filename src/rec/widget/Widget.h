@@ -13,6 +13,12 @@ namespace widget {
 template <typename Parent, typename Proto>
 class WidgetBase : public Parent {
  public:
+  enum ColorNames {
+    BACKGROUND,
+    FOREGROUND,
+    HIGHLIGHT,
+  };
+
   WidgetBase(const Proto& desc)
       : Parent(desc.widget().name().c_str()), desc_(desc) {
   }
@@ -20,9 +26,9 @@ class WidgetBase : public Parent {
   virtual void paint(Graphics& g) {
     const Widget& widget = desc_.widget();
     if (!widget.transparent())
-      g.fillAll(colour(0));
+      g.fillAll(colour(BACKGROUND));
 
-    g.setColour(colour(1));
+    setColour(g, FOREGROUND);
 
     Font f = g.getCurrentFont();
     if (widget.has_font())
@@ -40,6 +46,7 @@ class WidgetBase : public Parent {
   const Font font() const { return gui::getFont(desc_.widget().font()); }
   const gui::Colors colors() const { return desc_.widget().colors(); }
   const Colour colour(int i) const { return gui::color::get(colors(), i); }
+  void setColour(Graphics& g, int i) const { g.setColour(colour(i)); }
 
  protected:
   Proto desc_;

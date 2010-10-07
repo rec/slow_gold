@@ -3,15 +3,17 @@
 
 #include <set>
 
-#include "rec/slow/Preferences.h"
+#include "rec/widget/AudioThumbnail.pb.h"
+#include "rec/widget/Widget.h"
 
 namespace rec {
 namespace widget {
 
-class AudioThumbnailWidget : public Component, public ChangeListener,
+class AudioThumbnailWidget : public WidgetBase<Component, AudioThumbnailDesc>,
+                             public ChangeListener,
                              public ChangeBroadcaster {
  public:
-  AudioThumbnailWidget();
+  AudioThumbnailWidget(const AudioThumbnailDesc& desc);
   ~AudioThumbnailWidget();
 
   void setFile(const File& file);
@@ -26,7 +28,8 @@ class AudioThumbnailWidget : public Component, public ChangeListener,
 
   // Ranges between 0 and 1.
   void setCursor(double cursorRatio);
-  void paint(Graphics& g);
+  virtual void paint(Graphics& g, const Rectangle<int>& bounds);
+
   int getCursor() const;
   double ratio() const;
 
