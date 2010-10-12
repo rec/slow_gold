@@ -32,13 +32,13 @@ StringArray getMp3FileExtensions();
 
 // The list of preferred samples rates - however, the decoder can apparently
 // emit any sample rate you like.
-Array<int> getSampleRates();
+juce::Array<int> getSampleRates();
 
 // A list of all the possible bit depths - 8, 16, 32, 64.  Note that mpg123
 // doesn't seem to be able to output 24 bit samples.  The MPG123_ENC_FLOAT_64 is
 // the only example of a 64-bit type and I'm not sure if it's ever encountered
 // in the wild...
-Array<int> getBitDepths();
+juce::Array<int> getBitDepths();
 
 // Number of bits per sample for this output encoding.
 // encoding should be from mpg123_enc_enum.

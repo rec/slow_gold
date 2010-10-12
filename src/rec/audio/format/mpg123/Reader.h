@@ -14,20 +14,23 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-class Reader : public AudioFormatReader {
+class Reader : public juce::AudioFormatReader {
  public:
   ~Reader();
 
-  virtual bool readSamples(int** destSamples, int numDestChannels,
+  virtual bool readSamples(int** destSamples, 
+                           int numDestChannels,
                            int startOffsetInDestBuffer,
-                           int64 startSampleInFile, int numSamples);
+                           int64 startSampleInFile, 
+                           int numSamples);
 
   juce_UseDebuggingNewOperator
 
  private:
-  Reader(InputStream* in, const String& name, mpg123_handle* mh, Copier copier);
+  Reader(juce::InputStream* in, const String& name, mpg123_handle* mh, Copier copier);
 
-  friend Error createReader(InputStream*, AudioFormatReader**, OutputFormat*, OutputFormat*);
+  friend Error createReader(juce::InputStream*, 
+                            juce::AudioFormatReader**, OutputFormat*, OutputFormat*);
 
   mpg123_handle* mh_;
   void* buffer_;

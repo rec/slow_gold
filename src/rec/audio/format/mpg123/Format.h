@@ -10,35 +10,25 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-class Format : public AudioFormat {
+class Format : public juce::AudioFormat {
  public:
-  Format() : AudioFormat(getTranslatedName(), getMp3FileExtensions()) {}
+  Format();
+  ~Format();
 
-  ~Format() {}
+  virtual juce::AudioFormatReader* createReaderFor(juce::InputStream* source,
+                                                   bool deleteStreamOnFail);
 
-  virtual AudioFormatReader* createReaderFor(InputStream* sourceStream,
-                                             bool deleteStreamIfOpeningFails) {
-    AudioFormatReader* reader = NULL;
-    if (Error e = createReader(sourceStream, &reader)) {
-      std::cerr << "mpg123 create error:" << mpg123_plain_strerror(e) << "\n";
-      if (deleteStreamIfOpeningFails)
-        delete sourceStream;
-    }
-
-    return reader;
-  }
-
-  virtual AudioFormatWriter* createWriterFor(OutputStream* streamToWriteTo,
-                                             double sampleRateToUse,
-                                             unsigned int numberOfChannels,
-                                             int bitsPerSample,
-                                             const StringPairArray& metadata,
-                                             int qualityOptionIndex) {
+  virtual juce::AudioFormatWriter* createWriterFor(juce::OutputStream* output,
+                                                   double sampleRateToUse,
+                                                   unsigned int numChannels,
+                                                   int bitsPerSample,
+                                                   const StringPairArray& meta,
+                                                   int quality) {
     return NULL;
   }
 
-  virtual const Array<int> getPossibleSampleRates() { return getSampleRates(); }
-  virtual const Array<int> getPossibleBitDepths() { return getBitDepths(); }
+  virtual const juce::Array<int> getPossibleSampleRates();
+  virtual const juce::Array<int> getPossibleBitDepths();
 
   virtual bool canDoStereo() { return true; }
   virtual bool canDoMono() { return true; }

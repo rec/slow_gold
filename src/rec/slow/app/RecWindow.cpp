@@ -1,6 +1,8 @@
 #include "rec/slow/app/RecWindow.h"
 #include "rec/slow/app/RecContainer.h"
 
+using namespace juce;
+
 namespace rec {
 
 RecWindow::RecWindow()

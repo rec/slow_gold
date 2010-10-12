@@ -20,8 +20,8 @@ struct OutputFormat {
 // Create a reader from an InputStream, or return an error.  begin/end form a
 // list of OutputFormats that we want to accept - if they're NULL, or the same,
 // we accept all formats.
-Error createReader(InputStream* sourceStream,
-                   AudioFormatReader** reader,
+Error createReader(juce::InputStream* sourceStream,
+                   juce::AudioFormatReader** reader,
                    OutputFormat* begin = NULL,
                    OutputFormat* end = NULL);
 

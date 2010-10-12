@@ -28,7 +28,7 @@ class DoubleStretchy : public Source {
   virtual void setNextReadPosition(int position);
   virtual void prepareToPlay(int s, double r);
   virtual void releaseResources();
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
   virtual bool isLooping() const;
   virtual void setLooping(bool looping);
 

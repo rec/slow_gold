@@ -2,6 +2,8 @@
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/audio/format/mpg123/Format.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace format {
@@ -67,7 +69,7 @@ StringArray getMp3FileExtensions() {
   return StringArray(extensions);
 }
 
-Array<int> getSampleRates() {
+juce::Array<int> getSampleRates() {
   const long* rates;
   size_t ratesCount;
   mpg123_rates(&rates, &ratesCount);
@@ -78,7 +80,7 @@ Array<int> getSampleRates() {
   return r;
 }
 
-Array<int> getBitDepths() {
+juce::Array<int> getBitDepths() {
   static const int depths[] = {8, 16, 32, 64, 0};
   return Array<int>(depths);
 }

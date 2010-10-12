@@ -4,9 +4,11 @@
 #include "rec/slow/Preferences.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
+using namespace juce;
+
 namespace rec {
 
-class RecWindow  : public DocumentWindow {
+class RecWindow  : public juce::DocumentWindow {
  public:
   RecWindow();
   ~RecWindow();

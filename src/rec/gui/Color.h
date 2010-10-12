@@ -9,11 +9,11 @@ namespace rec {
 namespace gui {
 namespace color {
 
-Colour get(unsigned int i);
-Colour get(const Colors& colors, unsigned int index);
-void prepare(const Colors& colors, Graphics* g);
+juce::Colour get(unsigned int i);
+juce::Colour get(const Colors& colors, unsigned int index);
+void prepare(const Colors& colors, juce::Graphics* g);
 
-Colour makeColour(const Color& color);
+juce::Colour makeColour(const Color& color);
 
 }  // namespace color
 }  // namespace gui

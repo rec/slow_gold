@@ -8,10 +8,9 @@ namespace rec {
 namespace widget {
 namespace {
 
-
 TEST(Widget, someMethod) {
   // Just make sure it compiles.
-  MessageManager::getInstance();
+  juce::MessageManager::getInstance();
   time::TextComponent widget(time::Text());
 }
 

@@ -20,6 +20,10 @@ namespace juce {
 class CriticalSection;
 class File;
 class String;
+class ScopedLock;
+class StringArray;
+class Thread;
+class StringPairArray;
 
 }  // namespace juce
 
@@ -29,6 +33,10 @@ typedef google::protobuf::Message Message;
 typedef juce::CriticalSection CriticalSection;
 typedef juce::File File;
 typedef juce::String String;
+typedef juce::ScopedLock ScopedLock;
+typedef juce::StringArray StringArray;
+typedef juce::StringPairArray StringPairArray;
+typedef juce::Thread Thread;
 
 typedef std::string string;
 

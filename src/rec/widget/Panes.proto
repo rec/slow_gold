@@ -3,8 +3,9 @@ package rec.widget;
 import "rec/widget/Widget.proto";
 import "rec/audio/source/TimeStretch.proto";
 
-message Path {
+message Pane {
   repeated string path = 1;
+  optional Widget widget = 2;
 };
 
 message NavigationPane {
@@ -14,18 +15,15 @@ message NavigationPane {
     URL = 3;
   };
 
-  optional Widget widget = 1;
+  optional Pane pane = 1;
   optional Tab tab = 2;
-  optional Path path = 3;
 };
 
 message DirectoryPane {
-  optional Widget widget = 1;
-  optional Path path = 2;
+  optional Pane pane = 1;
 };
 
 message TrackPane {
-  optional Widget widget = 1;
-  optional Path path = 2;
-  optional audio.source.TimeStretch timestretch = 3;
+  optional Pane pane = 1;
+  optional audio.source.TimeStretch timestretch = 2;
 };

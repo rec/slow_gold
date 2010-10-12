@@ -2,6 +2,8 @@
 
 #include "rec/util/Substitute.h"
 
+using namespace juce;
+
 TEST(Util, Mod) {
     StringPairArray v;
     EXPECT_STREQ(substituteVariables(v, "").toCString(),

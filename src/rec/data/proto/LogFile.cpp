@@ -3,6 +3,8 @@
 #include "google/protobuf/message.h"
 #include "rec/data/proto/ZeroCopy.h"
 
+using namespace juce;
+
 namespace rec {
 namespace proto {
 namespace logfile {

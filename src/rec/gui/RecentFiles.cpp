@@ -23,7 +23,7 @@ RecentFiles getSortedRecentFiles() {
 }
 
 void addRecentFile(const string& filename) {
-  int64 timestamp = Time::currentTimeMillis();
+  int64 timestamp = juce::Time::currentTimeMillis();
   slow::proto::Preferences pref = slow::getPreferences();
   RecentFiles* recent = pref.mutable_recent_files();
 

@@ -5,6 +5,8 @@
 #include "rec/audio/format/mpg123/Reader.h"
 #include "rec/audio/format/mpg123/Tags.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace format {

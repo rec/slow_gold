@@ -1,6 +1,8 @@
 #include "rec/widget/AudioThumbnail.h"
 #include "rec/gui/Color.h"
 
+using namespace juce;
+
 namespace rec {
 namespace widget {
 

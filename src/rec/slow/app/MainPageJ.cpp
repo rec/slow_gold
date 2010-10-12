@@ -22,6 +22,7 @@
 //[Headers] You can add your own extra header files here...
 #include "MainPageK.h"
 #include "rec/widget/Time.pb.h"
+using namespace juce;
 //[/Headers]
 
 #include "MainPageJ.h"

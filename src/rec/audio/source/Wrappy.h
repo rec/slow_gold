@@ -15,7 +15,7 @@ class Wrappy : public Source {
  public:
   Wrappy(Source* source) : source_(source) {}
 
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
     source_->getNextAudioBlock(info);
   }
 

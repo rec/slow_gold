@@ -23,14 +23,14 @@ class WidgetBase : public Parent {
       : Parent(desc.widget().name().c_str()), desc_(desc) {
   }
 
-  virtual void paint(Graphics& g) {
+  virtual void paint(juce::Graphics& g) {
     const Widget& widget = desc_.widget();
     if (!widget.transparent())
       g.fillAll(colour(BACKGROUND));
 
     setColour(g, FOREGROUND);
 
-    Font f = g.getCurrentFont();
+    juce::Font f = g.getCurrentFont();
     if (widget.has_font())
       g.setFont(font());
 
@@ -41,12 +41,12 @@ class WidgetBase : public Parent {
       g.setFont(f);
   }
 
-  virtual void paint(Graphics& g, const Rectangle<int>& bounds) = 0;
+  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds) = 0;
 
-  const Font font() const { return gui::getFont(desc_.widget().font()); }
+  const juce::Font font() const { return gui::getFont(desc_.widget().font()); }
   const gui::Colors colors() const { return desc_.widget().colors(); }
-  const Colour colour(int i) const { return gui::color::get(colors(), i); }
-  void setColour(Graphics& g, int i) const { g.setColour(colour(i)); }
+  const juce::Colour colour(int i) const { return gui::color::get(colors(), i); }
+  void setColour(juce::Graphics& g, int i) const { g.setColour(colour(i)); }
 
  protected:
   Proto desc_;

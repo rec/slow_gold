@@ -9,6 +9,8 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
+using namespace juce;
+
 namespace rec {
 namespace proto {
 namespace zerocopy {

@@ -6,6 +6,8 @@
 #include "rec/audio/source/TimeScaler.h"
 #include "rec/audio/source/TimeStretch.pb.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace source {

@@ -33,20 +33,20 @@ void  protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
 void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto();
 void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto();
 
-class PointP;
+class Point;
 class Rectangle;
 class Layer;
 
 // ===================================================================
 
-class PointP : public ::google::protobuf::Message {
+class Point : public ::google::protobuf::Message {
  public:
-  PointP();
-  virtual ~PointP();
+  Point();
+  virtual ~Point();
   
-  PointP(const PointP& from);
+  Point(const Point& from);
   
-  inline PointP& operator=(const PointP& from) {
+  inline Point& operator=(const Point& from) {
     CopyFrom(from);
     return *this;
   }
@@ -60,17 +60,17 @@ class PointP : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const PointP& default_instance();
+  static const Point& default_instance();
   
-  void Swap(PointP* other);
+  void Swap(Point* other);
   
   // implements Message ----------------------------------------------
   
-  PointP* New() const;
+  Point* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PointP& from);
-  void MergeFrom(const PointP& from);
+  void CopyFrom(const Point& from);
+  void MergeFrom(const Point& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -107,7 +107,7 @@ class PointP : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 y() const;
   inline void set_y(::google::protobuf::int32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.gui.PointP)
+  // @@protoc_insertion_point(class_scope:rec.gui.Point)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -132,7 +132,7 @@ class PointP : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static PointP* default_instance_;
+  static Point* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -190,27 +190,27 @@ class Rectangle : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.gui.PointP top_left = 1;
+  // optional .rec.gui.Point top_left = 1;
   inline bool has_top_left() const;
   inline void clear_top_left();
   static const int kTopLeftFieldNumber = 1;
-  inline const ::rec::gui::PointP& top_left() const;
-  inline ::rec::gui::PointP* mutable_top_left();
+  inline const ::rec::gui::Point& top_left() const;
+  inline ::rec::gui::Point* mutable_top_left();
   
-  // optional .rec.gui.PointP dimensions = 2;
+  // optional .rec.gui.Point dimensions = 2;
   inline bool has_dimensions() const;
   inline void clear_dimensions();
   static const int kDimensionsFieldNumber = 2;
-  inline const ::rec::gui::PointP& dimensions() const;
-  inline ::rec::gui::PointP* mutable_dimensions();
+  inline const ::rec::gui::Point& dimensions() const;
+  inline ::rec::gui::Point* mutable_dimensions();
   
   // @@protoc_insertion_point(class_scope:rec.gui.Rectangle)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::gui::PointP* top_left_;
-  ::rec::gui::PointP* dimensions_;
+  ::rec::gui::Point* top_left_;
+  ::rec::gui::Point* dimensions_;
   friend void  protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto();
@@ -333,36 +333,36 @@ class Layer : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// PointP
+// Point
 
 // optional int32 x = 1;
-inline bool PointP::has_x() const {
+inline bool Point::has_x() const {
   return _has_bit(0);
 }
-inline void PointP::clear_x() {
+inline void Point::clear_x() {
   x_ = 0;
   _clear_bit(0);
 }
-inline ::google::protobuf::int32 PointP::x() const {
+inline ::google::protobuf::int32 Point::x() const {
   return x_;
 }
-inline void PointP::set_x(::google::protobuf::int32 value) {
+inline void Point::set_x(::google::protobuf::int32 value) {
   _set_bit(0);
   x_ = value;
 }
 
 // optional int32 y = 2;
-inline bool PointP::has_y() const {
+inline bool Point::has_y() const {
   return _has_bit(1);
 }
-inline void PointP::clear_y() {
+inline void Point::clear_y() {
   y_ = 0;
   _clear_bit(1);
 }
-inline ::google::protobuf::int32 PointP::y() const {
+inline ::google::protobuf::int32 Point::y() const {
   return y_;
 }
-inline void PointP::set_y(::google::protobuf::int32 value) {
+inline void Point::set_y(::google::protobuf::int32 value) {
   _set_bit(1);
   y_ = value;
 }
@@ -371,37 +371,37 @@ inline void PointP::set_y(::google::protobuf::int32 value) {
 
 // Rectangle
 
-// optional .rec.gui.PointP top_left = 1;
+// optional .rec.gui.Point top_left = 1;
 inline bool Rectangle::has_top_left() const {
   return _has_bit(0);
 }
 inline void Rectangle::clear_top_left() {
-  if (top_left_ != NULL) top_left_->::rec::gui::PointP::Clear();
+  if (top_left_ != NULL) top_left_->::rec::gui::Point::Clear();
   _clear_bit(0);
 }
-inline const ::rec::gui::PointP& Rectangle::top_left() const {
+inline const ::rec::gui::Point& Rectangle::top_left() const {
   return top_left_ != NULL ? *top_left_ : *default_instance_->top_left_;
 }
-inline ::rec::gui::PointP* Rectangle::mutable_top_left() {
+inline ::rec::gui::Point* Rectangle::mutable_top_left() {
   _set_bit(0);
-  if (top_left_ == NULL) top_left_ = new ::rec::gui::PointP;
+  if (top_left_ == NULL) top_left_ = new ::rec::gui::Point;
   return top_left_;
 }
 
-// optional .rec.gui.PointP dimensions = 2;
+// optional .rec.gui.Point dimensions = 2;
 inline bool Rectangle::has_dimensions() const {
   return _has_bit(1);
 }
 inline void Rectangle::clear_dimensions() {
-  if (dimensions_ != NULL) dimensions_->::rec::gui::PointP::Clear();
+  if (dimensions_ != NULL) dimensions_->::rec::gui::Point::Clear();
   _clear_bit(1);
 }
-inline const ::rec::gui::PointP& Rectangle::dimensions() const {
+inline const ::rec::gui::Point& Rectangle::dimensions() const {
   return dimensions_ != NULL ? *dimensions_ : *default_instance_->dimensions_;
 }
-inline ::rec::gui::PointP* Rectangle::mutable_dimensions() {
+inline ::rec::gui::Point* Rectangle::mutable_dimensions() {
   _set_bit(1);
-  if (dimensions_ == NULL) dimensions_ = new ::rec::gui::PointP;
+  if (dimensions_ == NULL) dimensions_ = new ::rec::gui::Point;
   return dimensions_;
 }
 

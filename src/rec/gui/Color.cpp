@@ -3,6 +3,8 @@
 #include "rec/gui/Color.h"
 #include "rec/base/ArraySize.h"
 
+using namespace juce;
+
 namespace rec {
 namespace gui {
 namespace color {

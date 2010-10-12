@@ -26,6 +26,7 @@
 
 #include "rec/slow/app/MainPageK.h"
 #include "rec/widget/Time.h"
+using namespace juce;
 
 //[/Headers]
 

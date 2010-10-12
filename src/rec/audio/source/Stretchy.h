@@ -25,16 +25,16 @@ class Stretchy : public Wrappy::Position {
 
   virtual int getTotalLength() const;
   virtual void setNextReadPosition(int position);
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
   const TimeStretch& getDescription() const { return *description_; }
 
  private:
-  int processOneChunk(const AudioSourceChannelInfo& info);
+  int processOneChunk(const juce::AudioSourceChannelInfo& info);
 
   scoped_ptr<TimeStretch> description_;
   int channels_;
-  AudioSampleBuffer buffer_;
+  juce::AudioSampleBuffer buffer_;
   scoped_ptr<AudioTimeScaler> scaler_;
   std::vector<float*> outOffset_;
 

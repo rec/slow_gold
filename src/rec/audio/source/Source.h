@@ -9,7 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-typedef PositionableAudioSource Source;
+typedef juce::PositionableAudioSource Source;
 
 class SourceMaker {
   virtual Source* make() const;

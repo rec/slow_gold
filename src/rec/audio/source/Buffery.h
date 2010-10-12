@@ -10,7 +10,7 @@ namespace source {
 
 class Buffery : public Wrappy::Position {
  public:
-  typedef rec::util::Circular Circular;
+  typedef util::Circular Circular;
 
   Buffery(Source* source) : Wrappy::Position(source) {}
 
@@ -28,9 +28,9 @@ class Buffery : public Wrappy::Position {
   // buffering again from this position.
   void resetFrom(int channels, int position);
 
-  AudioSampleBuffer* buffer() { return buffer_.get(); }
+  juce::AudioSampleBuffer* buffer() { return buffer_.get(); }
 
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& i);
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& i);
 
   // Returns true if there is more to be filled.  Only call this from one
   // thread please, it's likely the underlying source is not thread-safe.
@@ -38,8 +38,8 @@ class Buffery : public Wrappy::Position {
 
  private:
   Circular filled_;
-  scoped_ptr<AudioSampleBuffer> buffer_;
-  AudioSourceChannelInfo sourceInfo_;
+  scoped_ptr<juce::AudioSampleBuffer> buffer_;
+  juce::AudioSourceChannelInfo sourceInfo_;
   CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(Buffery);

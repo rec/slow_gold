@@ -6,6 +6,8 @@
 #include "rec/audio/source/TimeStretch.pb.h"
 #include "rec/audio/source/Wrappy.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace source {
@@ -94,7 +96,7 @@ bool DoubleStretchy::fillNext() {
 
   bool filled = toFill->filled();
   if (!filled) {
-    ScopedUnlock l(lock_);
+  juce:ScopedUnlock l(lock_);
     toFill->fillNext(description_->chunk_size());
   }
 

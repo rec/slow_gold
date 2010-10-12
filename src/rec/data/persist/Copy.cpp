@@ -6,10 +6,11 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
+using google::protobuf::TextFormat;
+using namespace juce;
+
 namespace rec {
 namespace persist {
-
-using google::protobuf::TextFormat;
 
 namespace {
 

@@ -7,6 +7,8 @@
 
 #include "rec/audio/source/Source.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace source {

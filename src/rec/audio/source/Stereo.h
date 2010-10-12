@@ -24,7 +24,7 @@ class Stereo : public Wrappy {
 
   void setType(Type type);
   void setSide(Side side);
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
  private:
   Type type_;

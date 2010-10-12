@@ -7,6 +7,8 @@
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/util/TestData.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace format {

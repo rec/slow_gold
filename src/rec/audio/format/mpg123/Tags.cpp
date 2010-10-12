@@ -1,5 +1,7 @@
 #include "rec/audio/format/mpg123/Tags.h"
 
+using juce::StringPairArray;
+
 namespace rec {
 namespace audio {
 namespace format {

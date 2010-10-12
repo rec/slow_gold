@@ -11,6 +11,8 @@
 using rec::gui::Colors;
 using rec::gui::Color;
 
+using namespace juce;
+
 namespace rec {
 namespace widget {
 namespace time {

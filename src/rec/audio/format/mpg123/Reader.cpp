@@ -5,6 +5,8 @@
 #include "rec/audio/format/mpg123/NewHandle.h"
 #include "rec/audio/format/mpg123/Format.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace format {

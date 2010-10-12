@@ -52,6 +52,8 @@ class Jucer(dom_file.DomFile):
       headers = library.getHeaders(self.libraries, Jucer.JUCE_ROOT, config)
       headerPath = self.join(headers, ';')
       c.setAttribute('headerPath', headerPath)
+      c.setAttribute('defines',
+                     'DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO')
 
 
   def setMaingroup(self):

@@ -4,6 +4,8 @@
 #include "rec/base/base.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 

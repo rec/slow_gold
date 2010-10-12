@@ -30,6 +30,8 @@ using rec::thread::RunnableThread;
 using rec::thread::WaitLoop;
 using rec::thread::makeCallback;
 
+using namespace juce;
+
 namespace rec {
 namespace slow {
 

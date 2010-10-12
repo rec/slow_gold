@@ -7,7 +7,8 @@
 namespace rec {
 namespace gui {
 
-inline const Font getFont(const FontDesc& font) {
+inline const juce::Font getFont(const FontDesc& font) {
+  using juce::Font;
   int style = 0;
 
   if (font.has_style()) {

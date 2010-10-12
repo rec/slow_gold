@@ -1,13 +1,13 @@
 package rec.gui;
 
-message PointP {
+message Point {
   optional int32 x = 1;
   optional int32 y = 2;
 };
 
 message Rectangle {
-  optional PointP top_left = 1;
-  optional PointP dimensions = 2;
+  optional Point top_left = 1;
+  optional Point dimensions = 2;
 };
 
 message Layer {

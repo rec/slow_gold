@@ -10,7 +10,7 @@
 
 namespace rec {
 
-class GenericApplication : public JUCEApplication {
+class GenericApplication : public juce::JUCEApplication {
  public:
 
   static const int SAVE_PERIOD = 25;

@@ -1,5 +1,7 @@
 #include "rec/audio/source/Stereo.h"
 
+using namespace juce;
+
 namespace rec {
 namespace audio {
 namespace source {

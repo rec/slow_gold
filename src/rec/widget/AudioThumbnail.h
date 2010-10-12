@@ -9,26 +9,26 @@
 namespace rec {
 namespace widget {
 
-class AudioThumbnailWidget : public WidgetBase<Component, AudioThumbnailDesc>,
-                             public ChangeListener,
-                             public ChangeBroadcaster {
+class AudioThumbnailWidget : public WidgetBase<juce::Component, AudioThumbnailDesc>,
+                             public juce::ChangeListener,
+                             public juce::ChangeBroadcaster {
  public:
   AudioThumbnailWidget(const AudioThumbnailDesc& desc);
   ~AudioThumbnailWidget();
 
   void setFile(const File& file);
   void setZoomFactor(double amount);
-  void mouseWheelMove(const MouseEvent& e, float incX, float incY);
+  void mouseWheelMove(const juce::MouseEvent& e, float incX, float incY);
 
-  Rectangle<int> cursorRectangle() const;
+  juce::Rectangle<int> cursorRectangle() const;
 
   bool within(int x) const;
 
-  virtual void mouseUp(const MouseEvent& e);
+  virtual void mouseUp(const juce::MouseEvent& e);
 
   // Ranges between 0 and 1.
   void setCursor(double cursorRatio);
-  virtual void paint(Graphics& g, const Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
 
   int getCursor() const;
   double ratio() const;
@@ -39,8 +39,8 @@ class AudioThumbnailWidget : public WidgetBase<Component, AudioThumbnailDesc>,
  private:
   const AudioThumbnailDesc description_;
 
-  AudioThumbnailCache thumbnailCache_;
-  AudioThumbnail thumbnail_;
+  juce::AudioThumbnailCache thumbnailCache_;
+  juce::AudioThumbnail thumbnail_;
   double startTime_, endTime_, cursor_, ratio_;
   int cursorX_;
   CriticalSection lock_;

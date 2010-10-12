@@ -14,7 +14,7 @@ namespace rec {
 namespace widget {
 namespace time {
 
-class TextComponent : public WidgetBase<Component, Text> {
+class TextComponent : public WidgetBase<juce::Component, Text> {
  public:
   static const float SAMPLES_PER_SECOND = 44100.0;
   explicit TextComponent(const Text& desc);
@@ -22,7 +22,7 @@ class TextComponent : public WidgetBase<Component, Text> {
   void setTimeSamples(int samples);
   void setTimeSeconds(float time);
 
-  virtual void paint(Graphics& g, const Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
 
  private:
   float time_;
@@ -30,7 +30,7 @@ class TextComponent : public WidgetBase<Component, Text> {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
 };
 
-class DialComponent : public WidgetBase<Component, Dial> {
+class DialComponent : public WidgetBase<juce::Component, Dial> {
  public:
   explicit DialComponent(const Dial& desc);
 
@@ -40,7 +40,7 @@ class DialComponent : public WidgetBase<Component, Dial> {
     repaint();
   }
 
-  void paint(Graphics& g, const Rectangle<int>& bounds);
+  void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
 
  private:
   float time_;
