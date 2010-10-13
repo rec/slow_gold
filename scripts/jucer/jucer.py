@@ -16,7 +16,7 @@ import library
 
 class Jucer(dom_file.DomFile):
   JUCE_ROOT = '../../../../..'
-  LIBRARY_ROOT = JUCE_ROOT + '/build/mac'
+  LIBRARY_ROOT = JUCE_ROOT + '/build'
   CHARS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   ID_SIZE = 9
 
