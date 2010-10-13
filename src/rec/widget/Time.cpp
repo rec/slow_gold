@@ -31,6 +31,10 @@ void TextComponent::setTimeSeconds(float time) {
   repaint();
 }
 
+#ifdef _WIN32
+#define snprintf snprintf_s
+#endif
+
 void TextComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
   int seconds = time_;
   float fraction = time_ - seconds;
