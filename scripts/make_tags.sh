@@ -12,8 +12,5 @@ fi
 
 source "rec/scripts/platform/platform.sh"
 
-#  "build/$PLATFORM/$CONFIG"
-
-
 find rec/src \( -name \*.h -or -name \*.cpp \) | xargs etags > rec/TAGS
 echo "done."

@@ -48,7 +48,7 @@ class Jucer(dom_file.DomFile):
   def setHeaders(self):
     configurations = self.element('CONFIGURATIONS')
     for c in configurations.getElementsByTagName('CONFIGURATION'):
-      config = 'build/mac/%s' % c.getAttribute('name').lower()
+      config = 'build/%s' % c.getAttribute('name').lower()
       headers = library.getHeaders(self.libraries, Jucer.JUCE_ROOT, config)
       headerPath = self.join(headers, ';')
       c.setAttribute('headerPath', headerPath)
