@@ -1,4 +1,4 @@
-package rec.widget;
+package rec.widget.pane;
 
 import "rec/widget/Widget.proto";
 import "rec/audio/source/TimeStretch.proto";
@@ -8,7 +8,7 @@ message Pane {
   optional Widget widget = 2;
 };
 
-message NavigationPane {
+message Navigation {
   enum Tab {
     FILE = 1;
     CD = 2;
@@ -19,11 +19,11 @@ message NavigationPane {
   optional Tab tab = 2;
 };
 
-message DirectoryPane {
+message Directory {
   optional Pane pane = 1;
 };
 
-message TrackPane {
+message Track {
   optional Pane pane = 1;
   optional audio.source.TimeStretch timestretch = 2;
 };

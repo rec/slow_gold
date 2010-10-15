@@ -132,6 +132,13 @@ class Widget : public ::google::protobuf::Message {
   inline bool transparent() const;
   inline void set_transparent(bool value);
   
+  // optional .rec.gui.Layer layer = 6;
+  inline bool has_layer() const;
+  inline void clear_layer();
+  static const int kLayerFieldNumber = 6;
+  inline const ::rec::gui::Layer& layer() const;
+  inline ::rec::gui::Layer* mutable_layer();
+  
   // @@protoc_insertion_point(class_scope:rec.widget.Widget)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -143,11 +150,12 @@ class Widget : public ::google::protobuf::Message {
   ::rec::gui::FontDesc* font_;
   ::google::protobuf::uint32 margin_;
   bool transparent_;
+  ::rec::gui::Layer* layer_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fWidget_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fWidget_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -276,6 +284,23 @@ inline bool Widget::transparent() const {
 inline void Widget::set_transparent(bool value) {
   _set_bit(4);
   transparent_ = value;
+}
+
+// optional .rec.gui.Layer layer = 6;
+inline bool Widget::has_layer() const {
+  return _has_bit(5);
+}
+inline void Widget::clear_layer() {
+  if (layer_ != NULL) layer_->::rec::gui::Layer::Clear();
+  _clear_bit(5);
+}
+inline const ::rec::gui::Layer& Widget::layer() const {
+  return layer_ != NULL ? *layer_ : *default_instance_->layer_;
+}
+inline ::rec::gui::Layer* Widget::mutable_layer() {
+  _set_bit(5);
+  if (layer_ == NULL) layer_ = new ::rec::gui::Layer;
+  return layer_;
 }
 
 

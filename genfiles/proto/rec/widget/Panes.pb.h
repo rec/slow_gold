@@ -29,6 +29,7 @@
 
 namespace rec {
 namespace widget {
+namespace pane {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
@@ -36,29 +37,29 @@ void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
 void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
 
 class Pane;
-class NavigationPane;
-class DirectoryPane;
-class TrackPane;
+class Navigation;
+class Directory;
+class Track;
 
-enum NavigationPane_Tab {
-  NavigationPane_Tab_FILE = 1,
-  NavigationPane_Tab_CD = 2,
-  NavigationPane_Tab_URL = 3
+enum Navigation_Tab {
+  Navigation_Tab_FILE = 1,
+  Navigation_Tab_CD = 2,
+  Navigation_Tab_URL = 3
 };
-bool NavigationPane_Tab_IsValid(int value);
-const NavigationPane_Tab NavigationPane_Tab_Tab_MIN = NavigationPane_Tab_FILE;
-const NavigationPane_Tab NavigationPane_Tab_Tab_MAX = NavigationPane_Tab_URL;
-const int NavigationPane_Tab_Tab_ARRAYSIZE = NavigationPane_Tab_Tab_MAX + 1;
+bool Navigation_Tab_IsValid(int value);
+const Navigation_Tab Navigation_Tab_Tab_MIN = Navigation_Tab_FILE;
+const Navigation_Tab Navigation_Tab_Tab_MAX = Navigation_Tab_URL;
+const int Navigation_Tab_Tab_ARRAYSIZE = Navigation_Tab_Tab_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* NavigationPane_Tab_descriptor();
-inline const ::std::string& NavigationPane_Tab_Name(NavigationPane_Tab value) {
+const ::google::protobuf::EnumDescriptor* Navigation_Tab_descriptor();
+inline const ::std::string& Navigation_Tab_Name(Navigation_Tab value) {
   return ::google::protobuf::internal::NameOfEnum(
-    NavigationPane_Tab_descriptor(), value);
+    Navigation_Tab_descriptor(), value);
 }
-inline bool NavigationPane_Tab_Parse(
-    const ::std::string& name, NavigationPane_Tab* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<NavigationPane_Tab>(
-    NavigationPane_Tab_descriptor(), name, value);
+inline bool Navigation_Tab_Parse(
+    const ::std::string& name, Navigation_Tab* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Navigation_Tab>(
+    Navigation_Tab_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -139,7 +140,7 @@ class Pane : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // @@protoc_insertion_point(class_scope:rec.widget.Pane)
+  // @@protoc_insertion_point(class_scope:rec.widget.pane.Pane)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -168,14 +169,14 @@ class Pane : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class NavigationPane : public ::google::protobuf::Message {
+class Navigation : public ::google::protobuf::Message {
  public:
-  NavigationPane();
-  virtual ~NavigationPane();
+  Navigation();
+  virtual ~Navigation();
   
-  NavigationPane(const NavigationPane& from);
+  Navigation(const Navigation& from);
   
-  inline NavigationPane& operator=(const NavigationPane& from) {
+  inline Navigation& operator=(const Navigation& from) {
     CopyFrom(from);
     return *this;
   }
@@ -189,17 +190,17 @@ class NavigationPane : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const NavigationPane& default_instance();
+  static const Navigation& default_instance();
   
-  void Swap(NavigationPane* other);
+  void Swap(Navigation* other);
   
   // implements Message ----------------------------------------------
   
-  NavigationPane* New() const;
+  Navigation* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const NavigationPane& from);
-  void MergeFrom(const NavigationPane& from);
+  void CopyFrom(const Navigation& from);
+  void MergeFrom(const Navigation& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -220,53 +221,53 @@ class NavigationPane : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef NavigationPane_Tab Tab;
-  static const Tab FILE = NavigationPane_Tab_FILE;
-  static const Tab CD = NavigationPane_Tab_CD;
-  static const Tab URL = NavigationPane_Tab_URL;
+  typedef Navigation_Tab Tab;
+  static const Tab FILE = Navigation_Tab_FILE;
+  static const Tab CD = Navigation_Tab_CD;
+  static const Tab URL = Navigation_Tab_URL;
   static inline bool Tab_IsValid(int value) {
-    return NavigationPane_Tab_IsValid(value);
+    return Navigation_Tab_IsValid(value);
   }
   static const Tab Tab_MIN =
-    NavigationPane_Tab_Tab_MIN;
+    Navigation_Tab_Tab_MIN;
   static const Tab Tab_MAX =
-    NavigationPane_Tab_Tab_MAX;
+    Navigation_Tab_Tab_MAX;
   static const int Tab_ARRAYSIZE =
-    NavigationPane_Tab_Tab_ARRAYSIZE;
+    Navigation_Tab_Tab_ARRAYSIZE;
   static inline const ::google::protobuf::EnumDescriptor*
   Tab_descriptor() {
-    return NavigationPane_Tab_descriptor();
+    return Navigation_Tab_descriptor();
   }
   static inline const ::std::string& Tab_Name(Tab value) {
-    return NavigationPane_Tab_Name(value);
+    return Navigation_Tab_Name(value);
   }
   static inline bool Tab_Parse(const ::std::string& name,
       Tab* value) {
-    return NavigationPane_Tab_Parse(name, value);
+    return Navigation_Tab_Parse(name, value);
   }
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   inline bool has_pane() const;
   inline void clear_pane();
   static const int kPaneFieldNumber = 1;
-  inline const ::rec::widget::Pane& pane() const;
-  inline ::rec::widget::Pane* mutable_pane();
+  inline const ::rec::widget::pane::Pane& pane() const;
+  inline ::rec::widget::pane::Pane* mutable_pane();
   
-  // optional .rec.widget.NavigationPane.Tab tab = 2;
+  // optional .rec.widget.pane.Navigation.Tab tab = 2;
   inline bool has_tab() const;
   inline void clear_tab();
   static const int kTabFieldNumber = 2;
-  inline ::rec::widget::NavigationPane_Tab tab() const;
-  inline void set_tab(::rec::widget::NavigationPane_Tab value);
+  inline ::rec::widget::pane::Navigation_Tab tab() const;
+  inline void set_tab(::rec::widget::pane::Navigation_Tab value);
   
-  // @@protoc_insertion_point(class_scope:rec.widget.NavigationPane)
+  // @@protoc_insertion_point(class_scope:rec.widget.pane.Navigation)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::widget::Pane* pane_;
+  ::rec::widget::pane::Pane* pane_;
   int tab_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
@@ -286,18 +287,18 @@ class NavigationPane : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static NavigationPane* default_instance_;
+  static Navigation* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class DirectoryPane : public ::google::protobuf::Message {
+class Directory : public ::google::protobuf::Message {
  public:
-  DirectoryPane();
-  virtual ~DirectoryPane();
+  Directory();
+  virtual ~Directory();
   
-  DirectoryPane(const DirectoryPane& from);
+  Directory(const Directory& from);
   
-  inline DirectoryPane& operator=(const DirectoryPane& from) {
+  inline Directory& operator=(const Directory& from) {
     CopyFrom(from);
     return *this;
   }
@@ -311,17 +312,17 @@ class DirectoryPane : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const DirectoryPane& default_instance();
+  static const Directory& default_instance();
   
-  void Swap(DirectoryPane* other);
+  void Swap(Directory* other);
   
   // implements Message ----------------------------------------------
   
-  DirectoryPane* New() const;
+  Directory* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const DirectoryPane& from);
-  void MergeFrom(const DirectoryPane& from);
+  void CopyFrom(const Directory& from);
+  void MergeFrom(const Directory& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -344,19 +345,19 @@ class DirectoryPane : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   inline bool has_pane() const;
   inline void clear_pane();
   static const int kPaneFieldNumber = 1;
-  inline const ::rec::widget::Pane& pane() const;
-  inline ::rec::widget::Pane* mutable_pane();
+  inline const ::rec::widget::pane::Pane& pane() const;
+  inline ::rec::widget::pane::Pane* mutable_pane();
   
-  // @@protoc_insertion_point(class_scope:rec.widget.DirectoryPane)
+  // @@protoc_insertion_point(class_scope:rec.widget.pane.Directory)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::widget::Pane* pane_;
+  ::rec::widget::pane::Pane* pane_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
@@ -375,18 +376,18 @@ class DirectoryPane : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static DirectoryPane* default_instance_;
+  static Directory* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class TrackPane : public ::google::protobuf::Message {
+class Track : public ::google::protobuf::Message {
  public:
-  TrackPane();
-  virtual ~TrackPane();
+  Track();
+  virtual ~Track();
   
-  TrackPane(const TrackPane& from);
+  Track(const Track& from);
   
-  inline TrackPane& operator=(const TrackPane& from) {
+  inline Track& operator=(const Track& from) {
     CopyFrom(from);
     return *this;
   }
@@ -400,17 +401,17 @@ class TrackPane : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const TrackPane& default_instance();
+  static const Track& default_instance();
   
-  void Swap(TrackPane* other);
+  void Swap(Track* other);
   
   // implements Message ----------------------------------------------
   
-  TrackPane* New() const;
+  Track* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const TrackPane& from);
-  void MergeFrom(const TrackPane& from);
+  void CopyFrom(const Track& from);
+  void MergeFrom(const Track& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -433,12 +434,12 @@ class TrackPane : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   inline bool has_pane() const;
   inline void clear_pane();
   static const int kPaneFieldNumber = 1;
-  inline const ::rec::widget::Pane& pane() const;
-  inline ::rec::widget::Pane* mutable_pane();
+  inline const ::rec::widget::pane::Pane& pane() const;
+  inline ::rec::widget::pane::Pane* mutable_pane();
   
   // optional .rec.audio.source.TimeStretch timestretch = 2;
   inline bool has_timestretch() const;
@@ -447,12 +448,12 @@ class TrackPane : public ::google::protobuf::Message {
   inline const ::rec::audio::source::TimeStretch& timestretch() const;
   inline ::rec::audio::source::TimeStretch* mutable_timestretch();
   
-  // @@protoc_insertion_point(class_scope:rec.widget.TrackPane)
+  // @@protoc_insertion_point(class_scope:rec.widget.pane.Track)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::widget::Pane* pane_;
+  ::rec::widget::pane::Pane* pane_;
   ::rec::audio::source::TimeStretch* timestretch_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
@@ -472,7 +473,7 @@ class TrackPane : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static TrackPane* default_instance_;
+  static Track* default_instance_;
 };
 // ===================================================================
 
@@ -544,96 +545,96 @@ inline ::rec::widget::Widget* Pane::mutable_widget() {
 
 // -------------------------------------------------------------------
 
-// NavigationPane
+// Navigation
 
-// optional .rec.widget.Pane pane = 1;
-inline bool NavigationPane::has_pane() const {
+// optional .rec.widget.pane.Pane pane = 1;
+inline bool Navigation::has_pane() const {
   return _has_bit(0);
 }
-inline void NavigationPane::clear_pane() {
-  if (pane_ != NULL) pane_->::rec::widget::Pane::Clear();
+inline void Navigation::clear_pane() {
+  if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
   _clear_bit(0);
 }
-inline const ::rec::widget::Pane& NavigationPane::pane() const {
+inline const ::rec::widget::pane::Pane& Navigation::pane() const {
   return pane_ != NULL ? *pane_ : *default_instance_->pane_;
 }
-inline ::rec::widget::Pane* NavigationPane::mutable_pane() {
+inline ::rec::widget::pane::Pane* Navigation::mutable_pane() {
   _set_bit(0);
-  if (pane_ == NULL) pane_ = new ::rec::widget::Pane;
+  if (pane_ == NULL) pane_ = new ::rec::widget::pane::Pane;
   return pane_;
 }
 
-// optional .rec.widget.NavigationPane.Tab tab = 2;
-inline bool NavigationPane::has_tab() const {
+// optional .rec.widget.pane.Navigation.Tab tab = 2;
+inline bool Navigation::has_tab() const {
   return _has_bit(1);
 }
-inline void NavigationPane::clear_tab() {
+inline void Navigation::clear_tab() {
   tab_ = 1;
   _clear_bit(1);
 }
-inline ::rec::widget::NavigationPane_Tab NavigationPane::tab() const {
-  return static_cast< ::rec::widget::NavigationPane_Tab >(tab_);
+inline ::rec::widget::pane::Navigation_Tab Navigation::tab() const {
+  return static_cast< ::rec::widget::pane::Navigation_Tab >(tab_);
 }
-inline void NavigationPane::set_tab(::rec::widget::NavigationPane_Tab value) {
-  GOOGLE_DCHECK(::rec::widget::NavigationPane_Tab_IsValid(value));
+inline void Navigation::set_tab(::rec::widget::pane::Navigation_Tab value) {
+  GOOGLE_DCHECK(::rec::widget::pane::Navigation_Tab_IsValid(value));
   _set_bit(1);
   tab_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// DirectoryPane
+// Directory
 
-// optional .rec.widget.Pane pane = 1;
-inline bool DirectoryPane::has_pane() const {
+// optional .rec.widget.pane.Pane pane = 1;
+inline bool Directory::has_pane() const {
   return _has_bit(0);
 }
-inline void DirectoryPane::clear_pane() {
-  if (pane_ != NULL) pane_->::rec::widget::Pane::Clear();
+inline void Directory::clear_pane() {
+  if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
   _clear_bit(0);
 }
-inline const ::rec::widget::Pane& DirectoryPane::pane() const {
+inline const ::rec::widget::pane::Pane& Directory::pane() const {
   return pane_ != NULL ? *pane_ : *default_instance_->pane_;
 }
-inline ::rec::widget::Pane* DirectoryPane::mutable_pane() {
+inline ::rec::widget::pane::Pane* Directory::mutable_pane() {
   _set_bit(0);
-  if (pane_ == NULL) pane_ = new ::rec::widget::Pane;
+  if (pane_ == NULL) pane_ = new ::rec::widget::pane::Pane;
   return pane_;
 }
 
 // -------------------------------------------------------------------
 
-// TrackPane
+// Track
 
-// optional .rec.widget.Pane pane = 1;
-inline bool TrackPane::has_pane() const {
+// optional .rec.widget.pane.Pane pane = 1;
+inline bool Track::has_pane() const {
   return _has_bit(0);
 }
-inline void TrackPane::clear_pane() {
-  if (pane_ != NULL) pane_->::rec::widget::Pane::Clear();
+inline void Track::clear_pane() {
+  if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
   _clear_bit(0);
 }
-inline const ::rec::widget::Pane& TrackPane::pane() const {
+inline const ::rec::widget::pane::Pane& Track::pane() const {
   return pane_ != NULL ? *pane_ : *default_instance_->pane_;
 }
-inline ::rec::widget::Pane* TrackPane::mutable_pane() {
+inline ::rec::widget::pane::Pane* Track::mutable_pane() {
   _set_bit(0);
-  if (pane_ == NULL) pane_ = new ::rec::widget::Pane;
+  if (pane_ == NULL) pane_ = new ::rec::widget::pane::Pane;
   return pane_;
 }
 
 // optional .rec.audio.source.TimeStretch timestretch = 2;
-inline bool TrackPane::has_timestretch() const {
+inline bool Track::has_timestretch() const {
   return _has_bit(1);
 }
-inline void TrackPane::clear_timestretch() {
+inline void Track::clear_timestretch() {
   if (timestretch_ != NULL) timestretch_->::rec::audio::source::TimeStretch::Clear();
   _clear_bit(1);
 }
-inline const ::rec::audio::source::TimeStretch& TrackPane::timestretch() const {
+inline const ::rec::audio::source::TimeStretch& Track::timestretch() const {
   return timestretch_ != NULL ? *timestretch_ : *default_instance_->timestretch_;
 }
-inline ::rec::audio::source::TimeStretch* TrackPane::mutable_timestretch() {
+inline ::rec::audio::source::TimeStretch* Track::mutable_timestretch() {
   _set_bit(1);
   if (timestretch_ == NULL) timestretch_ = new ::rec::audio::source::TimeStretch;
   return timestretch_;
@@ -642,6 +643,7 @@ inline ::rec::audio::source::TimeStretch* TrackPane::mutable_timestretch() {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace pane
 }  // namespace widget
 }  // namespace rec
 
@@ -650,8 +652,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::widget::NavigationPane_Tab>() {
-  return ::rec::widget::NavigationPane_Tab_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::widget::pane::Navigation_Tab>() {
+  return ::rec::widget::pane::Navigation_Tab_descriptor();
 }
 
 }  // namespace google

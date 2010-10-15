@@ -31,7 +31,7 @@ void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto() {
   GOOGLE_CHECK(file != NULL);
   Preferences_descriptor_ = file->message_type(0);
   static const int Preferences_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, loop_window_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, track_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, thumbnail_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, recent_files_),
   };
@@ -76,17 +76,16 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
-  ::rec::slow::proto::protobuf_AddDesc_rec_2fslow_2fLoopWindow_2eproto();
+  ::rec::widget::pane::protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\016rec.slow.p"
-    "roto\032\031rec/gui/RecentFiles.proto\032\031rec/slo"
-    "w/LoopWindow.proto\032\037rec/widget/AudioThum"
-    "bnail.proto\"\235\001\n\013Preferences\022/\n\013loop_wind"
-    "ow\030\001 \001(\0132\032.rec.slow.proto.LoopWindow\0221\n\t"
-    "thumbnail\030\002 \001(\0132\036.rec.widget.AudioThumbn"
-    "ailDesc\022*\n\014recent_files\030\003 \001(\0132\024.rec.gui."
-    "RecentFiles", 291);
+    "roto\032\031rec/gui/RecentFiles.proto\032\026rec/wid"
+    "get/Panes.proto\032\037rec/widget/AudioThumbna"
+    "il.proto\"\223\001\n\013Preferences\022%\n\005track\030\001 \001(\0132"
+    "\026.rec.widget.pane.Track\0221\n\tthumbnail\030\002 \001"
+    "(\0132\036.rec.widget.AudioThumbnailDesc\022*\n\014re"
+    "cent_files\030\003 \001(\0132\024.rec.gui.RecentFiles", 278);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -105,7 +104,7 @@ struct StaticDescriptorInitializer_rec_2fslow_2fPreferences_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Preferences::kLoopWindowFieldNumber;
+const int Preferences::kTrackFieldNumber;
 const int Preferences::kThumbnailFieldNumber;
 const int Preferences::kRecentFilesFieldNumber;
 #endif  // !_MSC_VER
@@ -116,7 +115,7 @@ Preferences::Preferences()
 }
 
 void Preferences::InitAsDefaultInstance() {
-  loop_window_ = const_cast< ::rec::slow::proto::LoopWindow*>(&::rec::slow::proto::LoopWindow::default_instance());
+  track_ = const_cast< ::rec::widget::pane::Track*>(&::rec::widget::pane::Track::default_instance());
   thumbnail_ = const_cast< ::rec::widget::AudioThumbnailDesc*>(&::rec::widget::AudioThumbnailDesc::default_instance());
   recent_files_ = const_cast< ::rec::gui::RecentFiles*>(&::rec::gui::RecentFiles::default_instance());
 }
@@ -129,7 +128,7 @@ Preferences::Preferences(const Preferences& from)
 
 void Preferences::SharedCtor() {
   _cached_size_ = 0;
-  loop_window_ = NULL;
+  track_ = NULL;
   thumbnail_ = NULL;
   recent_files_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -141,7 +140,7 @@ Preferences::~Preferences() {
 
 void Preferences::SharedDtor() {
   if (this != default_instance_) {
-    delete loop_window_;
+    delete track_;
     delete thumbnail_;
     delete recent_files_;
   }
@@ -170,7 +169,7 @@ Preferences* Preferences::New() const {
 void Preferences::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (loop_window_ != NULL) loop_window_->::rec::slow::proto::LoopWindow::Clear();
+      if (track_ != NULL) track_->::rec::widget::pane::Track::Clear();
     }
     if (_has_bit(1)) {
       if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
@@ -189,12 +188,12 @@ bool Preferences::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.slow.proto.LoopWindow loop_window = 1;
+      // optional .rec.widget.pane.Track track = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_loop_window()));
+               input, mutable_track()));
         } else {
           goto handle_uninterpreted;
         }
@@ -248,10 +247,10 @@ bool Preferences::MergePartialFromCodedStream(
 
 void Preferences::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.slow.proto.LoopWindow loop_window = 1;
+  // optional .rec.widget.pane.Track track = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->loop_window(), output);
+      1, this->track(), output);
   }
   
   // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
@@ -274,11 +273,11 @@ void Preferences::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Preferences::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.slow.proto.LoopWindow loop_window = 1;
+  // optional .rec.widget.pane.Track track = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->loop_window(), target);
+        1, this->track(), target);
   }
   
   // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
@@ -306,11 +305,11 @@ int Preferences::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.slow.proto.LoopWindow loop_window = 1;
-    if (has_loop_window()) {
+    // optional .rec.widget.pane.Track track = 1;
+    if (has_track()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->loop_window());
+          this->track());
     }
     
     // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
@@ -355,7 +354,7 @@ void Preferences::MergeFrom(const Preferences& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_loop_window()->::rec::slow::proto::LoopWindow::MergeFrom(from.loop_window());
+      mutable_track()->::rec::widget::pane::Track::MergeFrom(from.track());
     }
     if (from._has_bit(1)) {
       mutable_thumbnail()->::rec::widget::AudioThumbnailDesc::MergeFrom(from.thumbnail());
@@ -386,7 +385,7 @@ bool Preferences::IsInitialized() const {
 
 void Preferences::Swap(Preferences* other) {
   if (other != this) {
-    std::swap(loop_window_, other->loop_window_);
+    std::swap(track_, other->track_);
     std::swap(thumbnail_, other->thumbnail_);
     std::swap(recent_files_, other->recent_files_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

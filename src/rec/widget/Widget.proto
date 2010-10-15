@@ -11,5 +11,6 @@ message Widget {
   optional gui.FontDesc font = 3;
   optional uint32 margin = 4 [default = 2];
   optional bool transparent = 5;
+  optional gui.Layer layer = 6;
 };
 

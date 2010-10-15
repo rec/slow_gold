@@ -24,7 +24,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/gui/RecentFiles.pb.h"
-#include "rec/slow/LoopWindow.pb.h"
+#include "rec/widget/Panes.pb.h"
 #include "rec/widget/AudioThumbnail.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -95,12 +95,12 @@ class Preferences : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.slow.proto.LoopWindow loop_window = 1;
-  inline bool has_loop_window() const;
-  inline void clear_loop_window();
-  static const int kLoopWindowFieldNumber = 1;
-  inline const ::rec::slow::proto::LoopWindow& loop_window() const;
-  inline ::rec::slow::proto::LoopWindow* mutable_loop_window();
+  // optional .rec.widget.pane.Track track = 1;
+  inline bool has_track() const;
+  inline void clear_track();
+  static const int kTrackFieldNumber = 1;
+  inline const ::rec::widget::pane::Track& track() const;
+  inline ::rec::widget::pane::Track* mutable_track();
   
   // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
   inline bool has_thumbnail() const;
@@ -121,7 +121,7 @@ class Preferences : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::slow::proto::LoopWindow* loop_window_;
+  ::rec::widget::pane::Track* track_;
   ::rec::widget::AudioThumbnailDesc* thumbnail_;
   ::rec::gui::RecentFiles* recent_files_;
   friend void  protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto();
@@ -151,21 +151,21 @@ class Preferences : public ::google::protobuf::Message {
 
 // Preferences
 
-// optional .rec.slow.proto.LoopWindow loop_window = 1;
-inline bool Preferences::has_loop_window() const {
+// optional .rec.widget.pane.Track track = 1;
+inline bool Preferences::has_track() const {
   return _has_bit(0);
 }
-inline void Preferences::clear_loop_window() {
-  if (loop_window_ != NULL) loop_window_->::rec::slow::proto::LoopWindow::Clear();
+inline void Preferences::clear_track() {
+  if (track_ != NULL) track_->::rec::widget::pane::Track::Clear();
   _clear_bit(0);
 }
-inline const ::rec::slow::proto::LoopWindow& Preferences::loop_window() const {
-  return loop_window_ != NULL ? *loop_window_ : *default_instance_->loop_window_;
+inline const ::rec::widget::pane::Track& Preferences::track() const {
+  return track_ != NULL ? *track_ : *default_instance_->track_;
 }
-inline ::rec::slow::proto::LoopWindow* Preferences::mutable_loop_window() {
+inline ::rec::widget::pane::Track* Preferences::mutable_track() {
   _set_bit(0);
-  if (loop_window_ == NULL) loop_window_ = new ::rec::slow::proto::LoopWindow;
-  return loop_window_;
+  if (track_ == NULL) track_ = new ::rec::widget::pane::Track;
+  return track_;
 }
 
 // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;

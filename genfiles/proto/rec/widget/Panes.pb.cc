@@ -12,22 +12,23 @@
 
 namespace rec {
 namespace widget {
+namespace pane {
 
 namespace {
 
 const ::google::protobuf::Descriptor* Pane_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Pane_reflection_ = NULL;
-const ::google::protobuf::Descriptor* NavigationPane_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Navigation_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  NavigationPane_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* NavigationPane_Tab_descriptor_ = NULL;
-const ::google::protobuf::Descriptor* DirectoryPane_descriptor_ = NULL;
+  Navigation_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* Navigation_Tab_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Directory_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  DirectoryPane_reflection_ = NULL;
-const ::google::protobuf::Descriptor* TrackPane_descriptor_ = NULL;
+  Directory_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Track_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  TrackPane_reflection_ = NULL;
+  Track_reflection_ = NULL;
 
 }  // namespace
 
@@ -54,54 +55,54 @@ void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Pane));
-  NavigationPane_descriptor_ = file->message_type(1);
-  static const int NavigationPane_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigationPane, pane_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigationPane, tab_),
+  Navigation_descriptor_ = file->message_type(1);
+  static const int Navigation_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, pane_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, tab_),
   };
-  NavigationPane_reflection_ =
+  Navigation_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      NavigationPane_descriptor_,
-      NavigationPane::default_instance_,
-      NavigationPane_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigationPane, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NavigationPane, _unknown_fields_),
+      Navigation_descriptor_,
+      Navigation::default_instance_,
+      Navigation_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(NavigationPane));
-  NavigationPane_Tab_descriptor_ = NavigationPane_descriptor_->enum_type(0);
-  DirectoryPane_descriptor_ = file->message_type(2);
-  static const int DirectoryPane_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DirectoryPane, pane_),
+      sizeof(Navigation));
+  Navigation_Tab_descriptor_ = Navigation_descriptor_->enum_type(0);
+  Directory_descriptor_ = file->message_type(2);
+  static const int Directory_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Directory, pane_),
   };
-  DirectoryPane_reflection_ =
+  Directory_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      DirectoryPane_descriptor_,
-      DirectoryPane::default_instance_,
-      DirectoryPane_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DirectoryPane, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DirectoryPane, _unknown_fields_),
+      Directory_descriptor_,
+      Directory::default_instance_,
+      Directory_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Directory, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Directory, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(DirectoryPane));
-  TrackPane_descriptor_ = file->message_type(3);
-  static const int TrackPane_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrackPane, pane_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrackPane, timestretch_),
+      sizeof(Directory));
+  Track_descriptor_ = file->message_type(3);
+  static const int Track_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, pane_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, timestretch_),
   };
-  TrackPane_reflection_ =
+  Track_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      TrackPane_descriptor_,
-      TrackPane::default_instance_,
-      TrackPane_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrackPane, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrackPane, _unknown_fields_),
+      Track_descriptor_,
+      Track::default_instance_,
+      Track_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(TrackPane));
+      sizeof(Track));
 }
 
 namespace {
@@ -117,11 +118,11 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Pane_descriptor_, &Pane::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    NavigationPane_descriptor_, &NavigationPane::default_instance());
+    Navigation_descriptor_, &Navigation::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    DirectoryPane_descriptor_, &DirectoryPane::default_instance());
+    Directory_descriptor_, &Directory::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    TrackPane_descriptor_, &TrackPane::default_instance());
+    Track_descriptor_, &Track::default_instance());
 }
 
 }  // namespace
@@ -129,12 +130,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto() {
   delete Pane::default_instance_;
   delete Pane_reflection_;
-  delete NavigationPane::default_instance_;
-  delete NavigationPane_reflection_;
-  delete DirectoryPane::default_instance_;
-  delete DirectoryPane_reflection_;
-  delete TrackPane::default_instance_;
-  delete TrackPane_reflection_;
+  delete Navigation::default_instance_;
+  delete Navigation_reflection_;
+  delete Directory::default_instance_;
+  delete Directory_reflection_;
+  delete Track::default_instance_;
+  delete Track_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
@@ -146,27 +147,27 @@ void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   ::rec::audio::source::protobuf_AddDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\026rec/widget/Panes.proto\022\nrec.widget\032\027re"
-    "c/widget/Widget.proto\032\"rec/audio/source/"
-    "TimeStretch.proto\"8\n\004Pane\022\014\n\004path\030\001 \003(\t\022"
-    "\"\n\006widget\030\002 \001(\0132\022.rec.widget.Widget\"\177\n\016N"
-    "avigationPane\022\036\n\004pane\030\001 \001(\0132\020.rec.widget"
-    ".Pane\022+\n\003tab\030\002 \001(\0162\036.rec.widget.Navigati"
-    "onPane.Tab\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002CD\020\002\022\007\n\003U"
-    "RL\020\003\"/\n\rDirectoryPane\022\036\n\004pane\030\001 \001(\0132\020.re"
-    "c.widget.Pane\"_\n\tTrackPane\022\036\n\004pane\030\001 \001(\013"
-    "2\020.rec.widget.Pane\0222\n\013timestretch\030\002 \001(\0132"
-    "\035.rec.audio.source.TimeStretch", 430);
+    "\n\026rec/widget/Panes.proto\022\017rec.widget.pan"
+    "e\032\027rec/widget/Widget.proto\032\"rec/audio/so"
+    "urce/TimeStretch.proto\"8\n\004Pane\022\014\n\004path\030\001"
+    " \003(\t\022\"\n\006widget\030\002 \001(\0132\022.rec.widget.Widget"
+    "\"\201\001\n\nNavigation\022#\n\004pane\030\001 \001(\0132\025.rec.widg"
+    "et.pane.Pane\022,\n\003tab\030\002 \001(\0162\037.rec.widget.p"
+    "ane.Navigation.Tab\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002C"
+    "D\020\002\022\007\n\003URL\020\003\"0\n\tDirectory\022#\n\004pane\030\001 \001(\0132"
+    "\025.rec.widget.pane.Pane\"`\n\005Track\022#\n\004pane\030"
+    "\001 \001(\0132\025.rec.widget.pane.Pane\0222\n\013timestre"
+    "tch\030\002 \001(\0132\035.rec.audio.source.TimeStretch", 440);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Panes.proto", &protobuf_RegisterTypes);
   Pane::default_instance_ = new Pane();
-  NavigationPane::default_instance_ = new NavigationPane();
-  DirectoryPane::default_instance_ = new DirectoryPane();
-  TrackPane::default_instance_ = new TrackPane();
+  Navigation::default_instance_ = new Navigation();
+  Directory::default_instance_ = new Directory();
+  Track::default_instance_ = new Track();
   Pane::default_instance_->InitAsDefaultInstance();
-  NavigationPane::default_instance_->InitAsDefaultInstance();
-  DirectoryPane::default_instance_->InitAsDefaultInstance();
-  TrackPane::default_instance_->InitAsDefaultInstance();
+  Navigation::default_instance_->InitAsDefaultInstance();
+  Directory::default_instance_->InitAsDefaultInstance();
+  Track::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto);
 }
 
@@ -440,11 +441,11 @@ void Pane::Swap(Pane* other) {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* NavigationPane_Tab_descriptor() {
+const ::google::protobuf::EnumDescriptor* Navigation_Tab_descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return NavigationPane_Tab_descriptor_;
+  return Navigation_Tab_descriptor_;
 }
-bool NavigationPane_Tab_IsValid(int value) {
+bool Navigation_Tab_IsValid(int value) {
   switch(value) {
     case 1:
     case 2:
@@ -456,74 +457,74 @@ bool NavigationPane_Tab_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const NavigationPane_Tab NavigationPane::FILE;
-const NavigationPane_Tab NavigationPane::CD;
-const NavigationPane_Tab NavigationPane::URL;
-const NavigationPane_Tab NavigationPane::Tab_MIN;
-const NavigationPane_Tab NavigationPane::Tab_MAX;
-const int NavigationPane::Tab_ARRAYSIZE;
+const Navigation_Tab Navigation::FILE;
+const Navigation_Tab Navigation::CD;
+const Navigation_Tab Navigation::URL;
+const Navigation_Tab Navigation::Tab_MIN;
+const Navigation_Tab Navigation::Tab_MAX;
+const int Navigation::Tab_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
-const int NavigationPane::kPaneFieldNumber;
-const int NavigationPane::kTabFieldNumber;
+const int Navigation::kPaneFieldNumber;
+const int Navigation::kTabFieldNumber;
 #endif  // !_MSC_VER
 
-NavigationPane::NavigationPane()
+Navigation::Navigation()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void NavigationPane::InitAsDefaultInstance() {
-  pane_ = const_cast< ::rec::widget::Pane*>(&::rec::widget::Pane::default_instance());
+void Navigation::InitAsDefaultInstance() {
+  pane_ = const_cast< ::rec::widget::pane::Pane*>(&::rec::widget::pane::Pane::default_instance());
 }
 
-NavigationPane::NavigationPane(const NavigationPane& from)
+Navigation::Navigation(const Navigation& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void NavigationPane::SharedCtor() {
+void Navigation::SharedCtor() {
   _cached_size_ = 0;
   pane_ = NULL;
   tab_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-NavigationPane::~NavigationPane() {
+Navigation::~Navigation() {
   SharedDtor();
 }
 
-void NavigationPane::SharedDtor() {
+void Navigation::SharedDtor() {
   if (this != default_instance_) {
     delete pane_;
   }
 }
 
-void NavigationPane::SetCachedSize(int size) const {
+void Navigation::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* NavigationPane::descriptor() {
+const ::google::protobuf::Descriptor* Navigation::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return NavigationPane_descriptor_;
+  return Navigation_descriptor_;
 }
 
-const NavigationPane& NavigationPane::default_instance() {
+const Navigation& Navigation::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();  return *default_instance_;
 }
 
-NavigationPane* NavigationPane::default_instance_ = NULL;
+Navigation* Navigation::default_instance_ = NULL;
 
-NavigationPane* NavigationPane::New() const {
-  return new NavigationPane;
+Navigation* Navigation::New() const {
+  return new Navigation;
 }
 
-void NavigationPane::Clear() {
+void Navigation::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (pane_ != NULL) pane_->::rec::widget::Pane::Clear();
+      if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
     }
     tab_ = 1;
   }
@@ -531,13 +532,13 @@ void NavigationPane::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool NavigationPane::MergePartialFromCodedStream(
+bool Navigation::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.Pane pane = 1;
+      // optional .rec.widget.pane.Pane pane = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -550,7 +551,7 @@ bool NavigationPane::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.widget.NavigationPane.Tab tab = 2;
+      // optional .rec.widget.pane.Navigation.Tab tab = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -559,8 +560,8 @@ bool NavigationPane::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::widget::NavigationPane_Tab_IsValid(value)) {
-            set_tab(static_cast< ::rec::widget::NavigationPane_Tab >(value));
+          if (::rec::widget::pane::Navigation_Tab_IsValid(value)) {
+            set_tab(static_cast< ::rec::widget::pane::Navigation_Tab >(value));
           } else {
             mutable_unknown_fields()->AddVarint(2, value);
           }
@@ -587,15 +588,15 @@ bool NavigationPane::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void NavigationPane::SerializeWithCachedSizes(
+void Navigation::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->pane(), output);
   }
   
-  // optional .rec.widget.NavigationPane.Tab tab = 2;
+  // optional .rec.widget.pane.Navigation.Tab tab = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->tab(), output);
@@ -607,16 +608,16 @@ void NavigationPane::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* NavigationPane::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Navigation::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->pane(), target);
   }
   
-  // optional .rec.widget.NavigationPane.Tab tab = 2;
+  // optional .rec.widget.pane.Navigation.Tab tab = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->tab(), target);
@@ -629,18 +630,18 @@ void NavigationPane::SerializeWithCachedSizes(
   return target;
 }
 
-int NavigationPane::ByteSize() const {
+int Navigation::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.Pane pane = 1;
+    // optional .rec.widget.pane.Pane pane = 1;
     if (has_pane()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->pane());
     }
     
-    // optional .rec.widget.NavigationPane.Tab tab = 2;
+    // optional .rec.widget.pane.Navigation.Tab tab = 2;
     if (has_tab()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->tab());
@@ -658,10 +659,10 @@ int NavigationPane::ByteSize() const {
   return total_size;
 }
 
-void NavigationPane::MergeFrom(const ::google::protobuf::Message& from) {
+void Navigation::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const NavigationPane* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const NavigationPane*>(
+  const Navigation* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Navigation*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -670,11 +671,11 @@ void NavigationPane::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void NavigationPane::MergeFrom(const NavigationPane& from) {
+void Navigation::MergeFrom(const Navigation& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_pane()->::rec::widget::Pane::MergeFrom(from.pane());
+      mutable_pane()->::rec::widget::pane::Pane::MergeFrom(from.pane());
     }
     if (from._has_bit(1)) {
       set_tab(from.tab());
@@ -683,24 +684,24 @@ void NavigationPane::MergeFrom(const NavigationPane& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void NavigationPane::CopyFrom(const ::google::protobuf::Message& from) {
+void Navigation::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void NavigationPane::CopyFrom(const NavigationPane& from) {
+void Navigation::CopyFrom(const Navigation& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool NavigationPane::IsInitialized() const {
+bool Navigation::IsInitialized() const {
   
   return true;
 }
 
-void NavigationPane::Swap(NavigationPane* other) {
+void Navigation::Swap(Navigation* other) {
   if (other != this) {
     std::swap(pane_, other->pane_);
     std::swap(tab_, other->tab_);
@@ -710,11 +711,11 @@ void NavigationPane::Swap(NavigationPane* other) {
   }
 }
 
-::google::protobuf::Metadata NavigationPane::GetMetadata() const {
+::google::protobuf::Metadata Navigation::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = NavigationPane_descriptor_;
-  metadata.reflection = NavigationPane_reflection_;
+  metadata.descriptor = Navigation_descriptor_;
+  metadata.reflection = Navigation_reflection_;
   return metadata;
 }
 
@@ -722,77 +723,77 @@ void NavigationPane::Swap(NavigationPane* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int DirectoryPane::kPaneFieldNumber;
+const int Directory::kPaneFieldNumber;
 #endif  // !_MSC_VER
 
-DirectoryPane::DirectoryPane()
+Directory::Directory()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void DirectoryPane::InitAsDefaultInstance() {
-  pane_ = const_cast< ::rec::widget::Pane*>(&::rec::widget::Pane::default_instance());
+void Directory::InitAsDefaultInstance() {
+  pane_ = const_cast< ::rec::widget::pane::Pane*>(&::rec::widget::pane::Pane::default_instance());
 }
 
-DirectoryPane::DirectoryPane(const DirectoryPane& from)
+Directory::Directory(const Directory& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void DirectoryPane::SharedCtor() {
+void Directory::SharedCtor() {
   _cached_size_ = 0;
   pane_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-DirectoryPane::~DirectoryPane() {
+Directory::~Directory() {
   SharedDtor();
 }
 
-void DirectoryPane::SharedDtor() {
+void Directory::SharedDtor() {
   if (this != default_instance_) {
     delete pane_;
   }
 }
 
-void DirectoryPane::SetCachedSize(int size) const {
+void Directory::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* DirectoryPane::descriptor() {
+const ::google::protobuf::Descriptor* Directory::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return DirectoryPane_descriptor_;
+  return Directory_descriptor_;
 }
 
-const DirectoryPane& DirectoryPane::default_instance() {
+const Directory& Directory::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();  return *default_instance_;
 }
 
-DirectoryPane* DirectoryPane::default_instance_ = NULL;
+Directory* Directory::default_instance_ = NULL;
 
-DirectoryPane* DirectoryPane::New() const {
-  return new DirectoryPane;
+Directory* Directory::New() const {
+  return new Directory;
 }
 
-void DirectoryPane::Clear() {
+void Directory::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (pane_ != NULL) pane_->::rec::widget::Pane::Clear();
+      if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool DirectoryPane::MergePartialFromCodedStream(
+bool Directory::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.Pane pane = 1;
+      // optional .rec.widget.pane.Pane pane = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -821,9 +822,9 @@ bool DirectoryPane::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void DirectoryPane::SerializeWithCachedSizes(
+void Directory::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->pane(), output);
@@ -835,9 +836,9 @@ void DirectoryPane::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* DirectoryPane::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Directory::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -851,11 +852,11 @@ void DirectoryPane::SerializeWithCachedSizes(
   return target;
 }
 
-int DirectoryPane::ByteSize() const {
+int Directory::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.Pane pane = 1;
+    // optional .rec.widget.pane.Pane pane = 1;
     if (has_pane()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -874,10 +875,10 @@ int DirectoryPane::ByteSize() const {
   return total_size;
 }
 
-void DirectoryPane::MergeFrom(const ::google::protobuf::Message& from) {
+void Directory::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const DirectoryPane* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const DirectoryPane*>(
+  const Directory* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Directory*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -886,34 +887,34 @@ void DirectoryPane::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void DirectoryPane::MergeFrom(const DirectoryPane& from) {
+void Directory::MergeFrom(const Directory& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_pane()->::rec::widget::Pane::MergeFrom(from.pane());
+      mutable_pane()->::rec::widget::pane::Pane::MergeFrom(from.pane());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void DirectoryPane::CopyFrom(const ::google::protobuf::Message& from) {
+void Directory::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void DirectoryPane::CopyFrom(const DirectoryPane& from) {
+void Directory::CopyFrom(const Directory& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool DirectoryPane::IsInitialized() const {
+bool Directory::IsInitialized() const {
   
   return true;
 }
 
-void DirectoryPane::Swap(DirectoryPane* other) {
+void Directory::Swap(Directory* other) {
   if (other != this) {
     std::swap(pane_, other->pane_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -922,11 +923,11 @@ void DirectoryPane::Swap(DirectoryPane* other) {
   }
 }
 
-::google::protobuf::Metadata DirectoryPane::GetMetadata() const {
+::google::protobuf::Metadata Directory::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = DirectoryPane_descriptor_;
-  metadata.reflection = DirectoryPane_reflection_;
+  metadata.descriptor = Directory_descriptor_;
+  metadata.reflection = Directory_reflection_;
   return metadata;
 }
 
@@ -934,68 +935,68 @@ void DirectoryPane::Swap(DirectoryPane* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int TrackPane::kPaneFieldNumber;
-const int TrackPane::kTimestretchFieldNumber;
+const int Track::kPaneFieldNumber;
+const int Track::kTimestretchFieldNumber;
 #endif  // !_MSC_VER
 
-TrackPane::TrackPane()
+Track::Track()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void TrackPane::InitAsDefaultInstance() {
-  pane_ = const_cast< ::rec::widget::Pane*>(&::rec::widget::Pane::default_instance());
+void Track::InitAsDefaultInstance() {
+  pane_ = const_cast< ::rec::widget::pane::Pane*>(&::rec::widget::pane::Pane::default_instance());
   timestretch_ = const_cast< ::rec::audio::source::TimeStretch*>(&::rec::audio::source::TimeStretch::default_instance());
 }
 
-TrackPane::TrackPane(const TrackPane& from)
+Track::Track(const Track& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void TrackPane::SharedCtor() {
+void Track::SharedCtor() {
   _cached_size_ = 0;
   pane_ = NULL;
   timestretch_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-TrackPane::~TrackPane() {
+Track::~Track() {
   SharedDtor();
 }
 
-void TrackPane::SharedDtor() {
+void Track::SharedDtor() {
   if (this != default_instance_) {
     delete pane_;
     delete timestretch_;
   }
 }
 
-void TrackPane::SetCachedSize(int size) const {
+void Track::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* TrackPane::descriptor() {
+const ::google::protobuf::Descriptor* Track::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return TrackPane_descriptor_;
+  return Track_descriptor_;
 }
 
-const TrackPane& TrackPane::default_instance() {
+const Track& Track::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();  return *default_instance_;
 }
 
-TrackPane* TrackPane::default_instance_ = NULL;
+Track* Track::default_instance_ = NULL;
 
-TrackPane* TrackPane::New() const {
-  return new TrackPane;
+Track* Track::New() const {
+  return new Track;
 }
 
-void TrackPane::Clear() {
+void Track::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (pane_ != NULL) pane_->::rec::widget::Pane::Clear();
+      if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
     }
     if (_has_bit(1)) {
       if (timestretch_ != NULL) timestretch_->::rec::audio::source::TimeStretch::Clear();
@@ -1005,13 +1006,13 @@ void TrackPane::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool TrackPane::MergePartialFromCodedStream(
+bool Track::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.Pane pane = 1;
+      // optional .rec.widget.pane.Pane pane = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1054,9 +1055,9 @@ bool TrackPane::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void TrackPane::SerializeWithCachedSizes(
+void Track::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->pane(), output);
@@ -1074,9 +1075,9 @@ void TrackPane::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* TrackPane::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Track::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.Pane pane = 1;
+  // optional .rec.widget.pane.Pane pane = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1097,11 +1098,11 @@ void TrackPane::SerializeWithCachedSizes(
   return target;
 }
 
-int TrackPane::ByteSize() const {
+int Track::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.Pane pane = 1;
+    // optional .rec.widget.pane.Pane pane = 1;
     if (has_pane()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1127,10 +1128,10 @@ int TrackPane::ByteSize() const {
   return total_size;
 }
 
-void TrackPane::MergeFrom(const ::google::protobuf::Message& from) {
+void Track::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const TrackPane* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const TrackPane*>(
+  const Track* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Track*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1139,11 +1140,11 @@ void TrackPane::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void TrackPane::MergeFrom(const TrackPane& from) {
+void Track::MergeFrom(const Track& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_pane()->::rec::widget::Pane::MergeFrom(from.pane());
+      mutable_pane()->::rec::widget::pane::Pane::MergeFrom(from.pane());
     }
     if (from._has_bit(1)) {
       mutable_timestretch()->::rec::audio::source::TimeStretch::MergeFrom(from.timestretch());
@@ -1152,24 +1153,24 @@ void TrackPane::MergeFrom(const TrackPane& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void TrackPane::CopyFrom(const ::google::protobuf::Message& from) {
+void Track::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TrackPane::CopyFrom(const TrackPane& from) {
+void Track::CopyFrom(const Track& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TrackPane::IsInitialized() const {
+bool Track::IsInitialized() const {
   
   return true;
 }
 
-void TrackPane::Swap(TrackPane* other) {
+void Track::Swap(Track* other) {
   if (other != this) {
     std::swap(pane_, other->pane_);
     std::swap(timestretch_, other->timestretch_);
@@ -1179,17 +1180,18 @@ void TrackPane::Swap(TrackPane* other) {
   }
 }
 
-::google::protobuf::Metadata TrackPane::GetMetadata() const {
+::google::protobuf::Metadata Track::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = TrackPane_descriptor_;
-  metadata.reflection = TrackPane_reflection_;
+  metadata.descriptor = Track_descriptor_;
+  metadata.reflection = Track_reflection_;
   return metadata;
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace pane
 }  // namespace widget
 }  // namespace rec
 

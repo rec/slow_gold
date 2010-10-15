@@ -12,7 +12,6 @@ mkdir -p "$PROTO_ROOT"
 echo "Deleting `find "$PROTO_ROOT" -name \*.pb.\* | wc -l` compiled files."
 find "$PROTO_ROOT" -name \*.pb.\* | xargs rm
 
-
 find "$SRC_ROOT" -name \*.proto |\
  xargs "$INSTALL_DIR/bin/protoc"\
    -I"$SRC_ROOT"\

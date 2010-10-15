@@ -67,7 +67,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
   peer_->fileTreeComp->addListener(this);
 
-  TimeStretch d = getPreferences().loop_window().timestretch();
+  TimeStretch d = getPreferences().track().timestretch();
 
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
@@ -126,7 +126,7 @@ void MainPageK::updateCursor() {
   peer_->realDial->setTimeRatio(position);
   peer_->songDial->setTimeRatio(position);
   peer_->realTime->setTimeSamples(samples);
-  double scale = getPreferences().loop_window().timestretch().time_scale();
+  double scale = getPreferences().track().timestretch().time_scale();
   peer_->songTime->setTimeSamples(samples / scale);
 }
 
@@ -141,7 +141,7 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     if (stretchy_)
       stretchy_->stop();
 
-    TimeStretch d = getPreferences().loop_window().timestretch();
+    TimeStretch d = getPreferences().track().timestretch();
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
@@ -164,10 +164,10 @@ void MainPageK::loadFileIntoTransport(const File& file) {
 void MainPageK::sliderDragEnded(Slider* slider) {
   double v = slider->getValue();
   if (slider == peer_->timeScaleSlider)
-    prefs()->setter()->set("loop_window", "timestretch", "time_scale", v);
+    prefs()->setter()->set("track", "timestretch", "time_scale", v);
 
   else if (slider == peer_->pitchScaleSlider)
-    prefs()->setter()->set("loop_window", "timestretch", "pitch_scale", v);
+    prefs()->setter()->set("track", "timestretch", "pitch_scale", v);
 }
 
 void MainPageK::sliderValueChanged(Slider* slider) {
@@ -177,7 +177,7 @@ void MainPageK::sliderValueChanged(Slider* slider) {
   }
 
   if (stretchy_) {
-    TimeStretch stretch = getPreferences().loop_window().timestretch();
+    TimeStretch stretch = getPreferences().track().timestretch();
 
     if (slider == peer_->timeScaleSlider)
       stretch.set_time_scale(slider->getValue());
