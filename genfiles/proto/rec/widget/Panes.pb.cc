@@ -16,13 +16,14 @@ namespace pane {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Pane_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Path_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Pane_reflection_ = NULL;
+  Path_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Navigation_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Navigation_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* Navigation_Tab_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* Navigation_Orientation_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* Directory_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Directory_reflection_ = NULL;
@@ -39,26 +40,27 @@ void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/widget/Panes.proto");
   GOOGLE_CHECK(file != NULL);
-  Pane_descriptor_ = file->message_type(0);
-  static const int Pane_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Pane, path_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Pane, widget_),
+  Path_descriptor_ = file->message_type(0);
+  static const int Path_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Path, path_),
   };
-  Pane_reflection_ =
+  Path_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Pane_descriptor_,
-      Pane::default_instance_,
-      Pane_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Pane, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Pane, _unknown_fields_),
+      Path_descriptor_,
+      Path::default_instance_,
+      Path_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Path, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Path, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Pane));
+      sizeof(Path));
   Navigation_descriptor_ = file->message_type(1);
-  static const int Navigation_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, pane_),
+  static const int Navigation_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, widget_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, path_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, tab_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Navigation, orientation_),
   };
   Navigation_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -72,9 +74,11 @@ void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Navigation));
   Navigation_Tab_descriptor_ = Navigation_descriptor_->enum_type(0);
+  Navigation_Orientation_descriptor_ = Navigation_descriptor_->enum_type(1);
   Directory_descriptor_ = file->message_type(2);
-  static const int Directory_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Directory, pane_),
+  static const int Directory_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Directory, widget_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Directory, path_),
   };
   Directory_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -88,8 +92,9 @@ void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Directory));
   Track_descriptor_ = file->message_type(3);
-  static const int Track_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, pane_),
+  static const int Track_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, widget_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, path_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, timestretch_),
   };
   Track_reflection_ =
@@ -116,7 +121,7 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Pane_descriptor_, &Pane::default_instance());
+    Path_descriptor_, &Path::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Navigation_descriptor_, &Navigation::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -128,8 +133,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto() {
-  delete Pane::default_instance_;
-  delete Pane_reflection_;
+  delete Path::default_instance_;
+  delete Path_reflection_;
   delete Navigation::default_instance_;
   delete Navigation_reflection_;
   delete Directory::default_instance_;
@@ -149,22 +154,28 @@ void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026rec/widget/Panes.proto\022\017rec.widget.pan"
     "e\032\027rec/widget/Widget.proto\032\"rec/audio/so"
-    "urce/TimeStretch.proto\"8\n\004Pane\022\014\n\004path\030\001"
-    " \003(\t\022\"\n\006widget\030\002 \001(\0132\022.rec.widget.Widget"
-    "\"\201\001\n\nNavigation\022#\n\004pane\030\001 \001(\0132\025.rec.widg"
-    "et.pane.Pane\022,\n\003tab\030\002 \001(\0162\037.rec.widget.p"
-    "ane.Navigation.Tab\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002C"
-    "D\020\002\022\007\n\003URL\020\003\"0\n\tDirectory\022#\n\004pane\030\001 \001(\0132"
-    "\025.rec.widget.pane.Pane\"`\n\005Track\022#\n\004pane\030"
-    "\001 \001(\0132\025.rec.widget.pane.Pane\0222\n\013timestre"
-    "tch\030\002 \001(\0132\035.rec.audio.source.TimeStretch", 440);
+    "urce/TimeStretch.proto\"\024\n\004Path\022\014\n\004path\030\001"
+    " \003(\t\"\274\002\n\nNavigation\022\"\n\006widget\030\001 \001(\0132\022.re"
+    "c.widget.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widg"
+    "et.pane.Path\022,\n\003tab\030\003 \001(\0162\037.rec.widget.p"
+    "ane.Navigation.Tab\022<\n\013orientation\030\004 \001(\0162"
+    "\'.rec.widget.pane.Navigation.Orientation"
+    "\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002CD\020\002\022\007\n\003URL\020\003\"W\n\013Or"
+    "ientation\022\017\n\013TABS_AT_TOP\020\000\022\022\n\016TABS_AT_BO"
+    "TTOM\020\001\022\020\n\014TABS_AT_LEFT\020\002\022\021\n\rTABS_AT_RIGH"
+    "T\020\003\"T\n\tDirectory\022\"\n\006widget\030\001 \001(\0132\022.rec.w"
+    "idget.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widget."
+    "pane.Path\"\204\001\n\005Track\022\"\n\006widget\030\001 \001(\0132\022.re"
+    "c.widget.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widg"
+    "et.pane.Path\0222\n\013timestretch\030\003 \001(\0132\035.rec."
+    "audio.source.TimeStretch", 664);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Panes.proto", &protobuf_RegisterTypes);
-  Pane::default_instance_ = new Pane();
+  Path::default_instance_ = new Path();
   Navigation::default_instance_ = new Navigation();
   Directory::default_instance_ = new Directory();
   Track::default_instance_ = new Track();
-  Pane::default_instance_->InitAsDefaultInstance();
+  Path::default_instance_->InitAsDefaultInstance();
   Navigation::default_instance_->InitAsDefaultInstance();
   Directory::default_instance_->InitAsDefaultInstance();
   Track::default_instance_->InitAsDefaultInstance();
@@ -182,73 +193,64 @@ struct StaticDescriptorInitializer_rec_2fwidget_2fPanes_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Pane::kPathFieldNumber;
-const int Pane::kWidgetFieldNumber;
+const int Path::kPathFieldNumber;
 #endif  // !_MSC_VER
 
-Pane::Pane()
+Path::Path()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Pane::InitAsDefaultInstance() {
-  widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
+void Path::InitAsDefaultInstance() {
 }
 
-Pane::Pane(const Pane& from)
+Path::Path(const Path& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Pane::SharedCtor() {
+void Path::SharedCtor() {
   _cached_size_ = 0;
-  widget_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Pane::~Pane() {
+Path::~Path() {
   SharedDtor();
 }
 
-void Pane::SharedDtor() {
+void Path::SharedDtor() {
   if (this != default_instance_) {
-    delete widget_;
   }
 }
 
-void Pane::SetCachedSize(int size) const {
+void Path::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Pane::descriptor() {
+const ::google::protobuf::Descriptor* Path::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Pane_descriptor_;
+  return Path_descriptor_;
 }
 
-const Pane& Pane::default_instance() {
+const Path& Path::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();  return *default_instance_;
 }
 
-Pane* Pane::default_instance_ = NULL;
+Path* Path::default_instance_ = NULL;
 
-Pane* Pane::New() const {
-  return new Pane;
+Path* Path::New() const {
+  return new Path;
 }
 
-void Pane::Clear() {
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (_has_bit(1)) {
-      if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
-    }
-  }
+void Path::Clear() {
   path_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool Pane::MergePartialFromCodedStream(
+bool Path::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -268,20 +270,6 @@ bool Pane::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_path;
-        if (input->ExpectTag(18)) goto parse_widget;
-        break;
-      }
-      
-      // optional .rec.widget.Widget widget = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_widget:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_widget()));
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -302,7 +290,7 @@ bool Pane::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Pane::SerializeWithCachedSizes(
+void Path::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // repeated string path = 1;
   for (int i = 0; i < this->path_size(); i++) {
@@ -313,19 +301,13 @@ void Pane::SerializeWithCachedSizes(
       1, this->path(i), output);
   }
   
-  // optional .rec.widget.Widget widget = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->widget(), output);
-  }
-  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
 }
 
-::google::protobuf::uint8* Pane::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Path::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // repeated string path = 1;
   for (int i = 0; i < this->path_size(); i++) {
@@ -336,13 +318,6 @@ void Pane::SerializeWithCachedSizes(
       WriteStringToArray(1, this->path(i), target);
   }
   
-  // optional .rec.widget.Widget widget = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->widget(), target);
-  }
-  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -350,18 +325,9 @@ void Pane::SerializeWithCachedSizes(
   return target;
 }
 
-int Pane::ByteSize() const {
+int Path::ByteSize() const {
   int total_size = 0;
   
-  if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional .rec.widget.Widget widget = 2;
-    if (has_widget()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->widget());
-    }
-    
-  }
   // repeated string path = 1;
   total_size += 1 * this->path_size();
   for (int i = 0; i < this->path_size(); i++) {
@@ -380,10 +346,10 @@ int Pane::ByteSize() const {
   return total_size;
 }
 
-void Pane::MergeFrom(const ::google::protobuf::Message& from) {
+void Path::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Pane* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Pane*>(
+  const Path* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Path*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -392,49 +358,43 @@ void Pane::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Pane::MergeFrom(const Pane& from) {
+void Path::MergeFrom(const Path& from) {
   GOOGLE_CHECK_NE(&from, this);
   path_.MergeFrom(from.path_);
-  if (from._has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    if (from._has_bit(1)) {
-      mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
-    }
-  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Pane::CopyFrom(const ::google::protobuf::Message& from) {
+void Path::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Pane::CopyFrom(const Pane& from) {
+void Path::CopyFrom(const Path& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Pane::IsInitialized() const {
+bool Path::IsInitialized() const {
   
   return true;
 }
 
-void Pane::Swap(Pane* other) {
+void Path::Swap(Path* other) {
   if (other != this) {
     path_.Swap(&other->path_);
-    std::swap(widget_, other->widget_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata Pane::GetMetadata() const {
+::google::protobuf::Metadata Path::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Pane_descriptor_;
-  metadata.reflection = Pane_reflection_;
+  metadata.descriptor = Path_descriptor_;
+  metadata.reflection = Path_reflection_;
   return metadata;
 }
 
@@ -464,9 +424,36 @@ const Navigation_Tab Navigation::Tab_MIN;
 const Navigation_Tab Navigation::Tab_MAX;
 const int Navigation::Tab_ARRAYSIZE;
 #endif  // _MSC_VER
+const ::google::protobuf::EnumDescriptor* Navigation_Orientation_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Navigation_Orientation_descriptor_;
+}
+bool Navigation_Orientation_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
 #ifndef _MSC_VER
-const int Navigation::kPaneFieldNumber;
+const Navigation_Orientation Navigation::TABS_AT_TOP;
+const Navigation_Orientation Navigation::TABS_AT_BOTTOM;
+const Navigation_Orientation Navigation::TABS_AT_LEFT;
+const Navigation_Orientation Navigation::TABS_AT_RIGHT;
+const Navigation_Orientation Navigation::Orientation_MIN;
+const Navigation_Orientation Navigation::Orientation_MAX;
+const int Navigation::Orientation_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int Navigation::kWidgetFieldNumber;
+const int Navigation::kPathFieldNumber;
 const int Navigation::kTabFieldNumber;
+const int Navigation::kOrientationFieldNumber;
 #endif  // !_MSC_VER
 
 Navigation::Navigation()
@@ -475,7 +462,8 @@ Navigation::Navigation()
 }
 
 void Navigation::InitAsDefaultInstance() {
-  pane_ = const_cast< ::rec::widget::pane::Pane*>(&::rec::widget::pane::Pane::default_instance());
+  widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
+  path_ = const_cast< ::rec::widget::pane::Path*>(&::rec::widget::pane::Path::default_instance());
 }
 
 Navigation::Navigation(const Navigation& from)
@@ -486,8 +474,10 @@ Navigation::Navigation(const Navigation& from)
 
 void Navigation::SharedCtor() {
   _cached_size_ = 0;
-  pane_ = NULL;
+  widget_ = NULL;
+  path_ = NULL;
   tab_ = 1;
+  orientation_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -497,7 +487,8 @@ Navigation::~Navigation() {
 
 void Navigation::SharedDtor() {
   if (this != default_instance_) {
-    delete pane_;
+    delete widget_;
+    delete path_;
   }
 }
 
@@ -524,9 +515,13 @@ Navigation* Navigation::New() const {
 void Navigation::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
+      if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
+    }
+    if (_has_bit(1)) {
+      if (path_ != NULL) path_->::rec::widget::pane::Path::Clear();
     }
     tab_ = 1;
+    orientation_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -538,21 +533,35 @@ bool Navigation::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.pane.Pane pane = 1;
+      // optional .rec.widget.Widget widget = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_pane()));
+               input, mutable_widget()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_tab;
+        if (input->ExpectTag(18)) goto parse_path;
         break;
       }
       
-      // optional .rec.widget.pane.Navigation.Tab tab = 2;
+      // optional .rec.widget.pane.Path path = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_path:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_path()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_tab;
+        break;
+      }
+      
+      // optional .rec.widget.pane.Navigation.Tab tab = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_tab:
@@ -563,7 +572,28 @@ bool Navigation::MergePartialFromCodedStream(
           if (::rec::widget::pane::Navigation_Tab_IsValid(value)) {
             set_tab(static_cast< ::rec::widget::pane::Navigation_Tab >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(2, value);
+            mutable_unknown_fields()->AddVarint(3, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_orientation;
+        break;
+      }
+      
+      // optional .rec.widget.pane.Navigation.Orientation orientation = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_orientation:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::widget::pane::Navigation_Orientation_IsValid(value)) {
+            set_orientation(static_cast< ::rec::widget::pane::Navigation_Orientation >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(4, value);
           }
         } else {
           goto handle_uninterpreted;
@@ -590,16 +620,28 @@ bool Navigation::MergePartialFromCodedStream(
 
 void Navigation::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.pane.Pane pane = 1;
+  // optional .rec.widget.Widget widget = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->pane(), output);
+      1, this->widget(), output);
   }
   
-  // optional .rec.widget.pane.Navigation.Tab tab = 2;
+  // optional .rec.widget.pane.Path path = 2;
   if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->path(), output);
+  }
+  
+  // optional .rec.widget.pane.Navigation.Tab tab = 3;
+  if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->tab(), output);
+      3, this->tab(), output);
+  }
+  
+  // optional .rec.widget.pane.Navigation.Orientation orientation = 4;
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->orientation(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -610,17 +652,30 @@ void Navigation::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Navigation::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.pane.Pane pane = 1;
+  // optional .rec.widget.Widget widget = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->pane(), target);
+        1, this->widget(), target);
   }
   
-  // optional .rec.widget.pane.Navigation.Tab tab = 2;
+  // optional .rec.widget.pane.Path path = 2;
   if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->path(), target);
+  }
+  
+  // optional .rec.widget.pane.Navigation.Tab tab = 3;
+  if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->tab(), target);
+      3, this->tab(), target);
+  }
+  
+  // optional .rec.widget.pane.Navigation.Orientation orientation = 4;
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      4, this->orientation(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -634,17 +689,30 @@ int Navigation::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.pane.Pane pane = 1;
-    if (has_pane()) {
+    // optional .rec.widget.Widget widget = 1;
+    if (has_widget()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->pane());
+          this->widget());
     }
     
-    // optional .rec.widget.pane.Navigation.Tab tab = 2;
+    // optional .rec.widget.pane.Path path = 2;
+    if (has_path()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->path());
+    }
+    
+    // optional .rec.widget.pane.Navigation.Tab tab = 3;
     if (has_tab()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->tab());
+    }
+    
+    // optional .rec.widget.pane.Navigation.Orientation orientation = 4;
+    if (has_orientation()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->orientation());
     }
     
   }
@@ -675,10 +743,16 @@ void Navigation::MergeFrom(const Navigation& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_pane()->::rec::widget::pane::Pane::MergeFrom(from.pane());
+      mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
     }
     if (from._has_bit(1)) {
+      mutable_path()->::rec::widget::pane::Path::MergeFrom(from.path());
+    }
+    if (from._has_bit(2)) {
       set_tab(from.tab());
+    }
+    if (from._has_bit(3)) {
+      set_orientation(from.orientation());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -703,8 +777,10 @@ bool Navigation::IsInitialized() const {
 
 void Navigation::Swap(Navigation* other) {
   if (other != this) {
-    std::swap(pane_, other->pane_);
+    std::swap(widget_, other->widget_);
+    std::swap(path_, other->path_);
     std::swap(tab_, other->tab_);
+    std::swap(orientation_, other->orientation_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -723,7 +799,8 @@ void Navigation::Swap(Navigation* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Directory::kPaneFieldNumber;
+const int Directory::kWidgetFieldNumber;
+const int Directory::kPathFieldNumber;
 #endif  // !_MSC_VER
 
 Directory::Directory()
@@ -732,7 +809,8 @@ Directory::Directory()
 }
 
 void Directory::InitAsDefaultInstance() {
-  pane_ = const_cast< ::rec::widget::pane::Pane*>(&::rec::widget::pane::Pane::default_instance());
+  widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
+  path_ = const_cast< ::rec::widget::pane::Path*>(&::rec::widget::pane::Path::default_instance());
 }
 
 Directory::Directory(const Directory& from)
@@ -743,7 +821,8 @@ Directory::Directory(const Directory& from)
 
 void Directory::SharedCtor() {
   _cached_size_ = 0;
-  pane_ = NULL;
+  widget_ = NULL;
+  path_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -753,7 +832,8 @@ Directory::~Directory() {
 
 void Directory::SharedDtor() {
   if (this != default_instance_) {
-    delete pane_;
+    delete widget_;
+    delete path_;
   }
 }
 
@@ -780,7 +860,10 @@ Directory* Directory::New() const {
 void Directory::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
+      if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
+    }
+    if (_has_bit(1)) {
+      if (path_ != NULL) path_->::rec::widget::pane::Path::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -793,12 +876,26 @@ bool Directory::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.pane.Pane pane = 1;
+      // optional .rec.widget.Widget widget = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_pane()));
+               input, mutable_widget()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_path;
+        break;
+      }
+      
+      // optional .rec.widget.pane.Path path = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_path:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_path()));
         } else {
           goto handle_uninterpreted;
         }
@@ -824,10 +921,16 @@ bool Directory::MergePartialFromCodedStream(
 
 void Directory::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.pane.Pane pane = 1;
+  // optional .rec.widget.Widget widget = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->pane(), output);
+      1, this->widget(), output);
+  }
+  
+  // optional .rec.widget.pane.Path path = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->path(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -838,11 +941,18 @@ void Directory::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Directory::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.pane.Pane pane = 1;
+  // optional .rec.widget.Widget widget = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->pane(), target);
+        1, this->widget(), target);
+  }
+  
+  // optional .rec.widget.pane.Path path = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->path(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -856,11 +966,18 @@ int Directory::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.pane.Pane pane = 1;
-    if (has_pane()) {
+    // optional .rec.widget.Widget widget = 1;
+    if (has_widget()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->pane());
+          this->widget());
+    }
+    
+    // optional .rec.widget.pane.Path path = 2;
+    if (has_path()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->path());
     }
     
   }
@@ -891,7 +1008,10 @@ void Directory::MergeFrom(const Directory& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_pane()->::rec::widget::pane::Pane::MergeFrom(from.pane());
+      mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
+    }
+    if (from._has_bit(1)) {
+      mutable_path()->::rec::widget::pane::Path::MergeFrom(from.path());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -916,7 +1036,8 @@ bool Directory::IsInitialized() const {
 
 void Directory::Swap(Directory* other) {
   if (other != this) {
-    std::swap(pane_, other->pane_);
+    std::swap(widget_, other->widget_);
+    std::swap(path_, other->path_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -935,7 +1056,8 @@ void Directory::Swap(Directory* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Track::kPaneFieldNumber;
+const int Track::kWidgetFieldNumber;
+const int Track::kPathFieldNumber;
 const int Track::kTimestretchFieldNumber;
 #endif  // !_MSC_VER
 
@@ -945,7 +1067,8 @@ Track::Track()
 }
 
 void Track::InitAsDefaultInstance() {
-  pane_ = const_cast< ::rec::widget::pane::Pane*>(&::rec::widget::pane::Pane::default_instance());
+  widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
+  path_ = const_cast< ::rec::widget::pane::Path*>(&::rec::widget::pane::Path::default_instance());
   timestretch_ = const_cast< ::rec::audio::source::TimeStretch*>(&::rec::audio::source::TimeStretch::default_instance());
 }
 
@@ -957,7 +1080,8 @@ Track::Track(const Track& from)
 
 void Track::SharedCtor() {
   _cached_size_ = 0;
-  pane_ = NULL;
+  widget_ = NULL;
+  path_ = NULL;
   timestretch_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -968,7 +1092,8 @@ Track::~Track() {
 
 void Track::SharedDtor() {
   if (this != default_instance_) {
-    delete pane_;
+    delete widget_;
+    delete path_;
     delete timestretch_;
   }
 }
@@ -996,9 +1121,12 @@ Track* Track::New() const {
 void Track::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (pane_ != NULL) pane_->::rec::widget::pane::Pane::Clear();
+      if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
     }
     if (_has_bit(1)) {
+      if (path_ != NULL) path_->::rec::widget::pane::Path::Clear();
+    }
+    if (_has_bit(2)) {
       if (timestretch_ != NULL) timestretch_->::rec::audio::source::TimeStretch::Clear();
     }
   }
@@ -1012,21 +1140,35 @@ bool Track::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.pane.Pane pane = 1;
+      // optional .rec.widget.Widget widget = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_pane()));
+               input, mutable_widget()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_timestretch;
+        if (input->ExpectTag(18)) goto parse_path;
         break;
       }
       
-      // optional .rec.audio.source.TimeStretch timestretch = 2;
+      // optional .rec.widget.pane.Path path = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_path:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_path()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_timestretch;
+        break;
+      }
+      
+      // optional .rec.audio.source.TimeStretch timestretch = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_timestretch:
@@ -1057,16 +1199,22 @@ bool Track::MergePartialFromCodedStream(
 
 void Track::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.pane.Pane pane = 1;
+  // optional .rec.widget.Widget widget = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->pane(), output);
+      1, this->widget(), output);
   }
   
-  // optional .rec.audio.source.TimeStretch timestretch = 2;
+  // optional .rec.widget.pane.Path path = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->timestretch(), output);
+      2, this->path(), output);
+  }
+  
+  // optional .rec.audio.source.TimeStretch timestretch = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->timestretch(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1077,18 +1225,25 @@ void Track::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Track::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.pane.Pane pane = 1;
+  // optional .rec.widget.Widget widget = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->pane(), target);
+        1, this->widget(), target);
   }
   
-  // optional .rec.audio.source.TimeStretch timestretch = 2;
+  // optional .rec.widget.pane.Path path = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->timestretch(), target);
+        2, this->path(), target);
+  }
+  
+  // optional .rec.audio.source.TimeStretch timestretch = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->timestretch(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1102,14 +1257,21 @@ int Track::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.pane.Pane pane = 1;
-    if (has_pane()) {
+    // optional .rec.widget.Widget widget = 1;
+    if (has_widget()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->pane());
+          this->widget());
     }
     
-    // optional .rec.audio.source.TimeStretch timestretch = 2;
+    // optional .rec.widget.pane.Path path = 2;
+    if (has_path()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->path());
+    }
+    
+    // optional .rec.audio.source.TimeStretch timestretch = 3;
     if (has_timestretch()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1144,9 +1306,12 @@ void Track::MergeFrom(const Track& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_pane()->::rec::widget::pane::Pane::MergeFrom(from.pane());
+      mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
     }
     if (from._has_bit(1)) {
+      mutable_path()->::rec::widget::pane::Path::MergeFrom(from.path());
+    }
+    if (from._has_bit(2)) {
       mutable_timestretch()->::rec::audio::source::TimeStretch::MergeFrom(from.timestretch());
     }
   }
@@ -1172,7 +1337,8 @@ bool Track::IsInitialized() const {
 
 void Track::Swap(Track* other) {
   if (other != this) {
-    std::swap(pane_, other->pane_);
+    std::swap(widget_, other->widget_);
+    std::swap(path_, other->path_);
     std::swap(timestretch_, other->timestretch_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

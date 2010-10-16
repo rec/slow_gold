@@ -13,6 +13,7 @@ namespace widget {
 template <typename Parent, typename Proto>
 class WidgetBase : public Parent {
  public:
+  // TODO: move to Color.proto.
   enum ColorNames {
     BACKGROUND,
     FOREGROUND,

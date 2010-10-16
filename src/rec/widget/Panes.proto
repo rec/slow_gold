@@ -6,10 +6,8 @@ package rec.widget.pane;
 import "rec/widget/Widget.proto";
 import "rec/audio/source/TimeStretch.proto";
 
-// Pane is the generic base for Widgets that have a path.
-message Pane {
+message Path {
   repeated string path = 1;
-  optional Widget widget = 2;
 };
 
 // The Navigation Pane is the top-level pane that lets you switch between
@@ -21,14 +19,25 @@ message Navigation {
     URL = 3;
   };
 
-  optional Pane pane = 1;
-  optional Tab tab = 2;
+  // See juce_TabbedButtonBar.h.
+  enum Orientation {
+    TABS_AT_TOP = 0;
+    TABS_AT_BOTTOM = 1;
+    TABS_AT_LEFT = 2;
+    TABS_AT_RIGHT = 3;
+  };
+
+  optional Widget widget = 1;
+  optional Path path = 2;
+  optional Tab tab = 3;
+  optional Orientation orientation = 4;
 };
 
 // The Directory Pane is used to show a directory that contains one or more
 // audio files, which are presumed to be "an album" or connected in some way.
 message Directory {
-  optional Pane pane = 1;
+  optional Widget widget = 1;
+  optional Path path = 2;
 };
 
 // This represents a single "track" - which is probably a filename or a URL.
@@ -36,6 +45,7 @@ message Directory {
 // probably need one data structure for each separate loop in a track.
 // Perhaps AudioFile would be a better name?  All will be clear later.
 message Track {
-  optional Pane pane = 1;
-  optional audio.source.TimeStretch timestretch = 2;
+  optional Widget widget = 1;
+  optional Path path = 2;
+  optional audio.source.TimeStretch timestretch = 3;
 };
