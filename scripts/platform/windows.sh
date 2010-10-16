@@ -1,0 +1,1 @@
+CONFIG_PACKAGES="gtest libcddb mpg123"

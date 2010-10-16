@@ -8,7 +8,7 @@ source "$ROOT/rec/scripts/base.sh"
 if [ ! "$1" ]
 then
 
-  "$ROOT/rec/scripts/download.sh" $PACKAGES
+  "$ROOT/rec/scripts/download.sh" $CONFIG_PACKAGES
 
 else
 
