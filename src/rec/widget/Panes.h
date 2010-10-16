@@ -9,7 +9,7 @@ namespace rec {
 namespace widget {
 
 typedef WidgetBase<juce::TabbedComponent, pane::Navigation> NavigationComponentBase;
-  
+
 template <>
 inline NavigationComponentBase::WidgetBase(const pane::Navigation& n)
   : juce::TabbedComponent(juce::TabbedButtonBar::Orientation(n.orientation())), desc_(n) {
@@ -17,13 +17,17 @@ inline NavigationComponentBase::WidgetBase(const pane::Navigation& n)
 
 namespace pane {
 
-class NavigationComponent : public NavigationComponentBase {
+class NavigationComponent : public NavigationComponentBase,
+                            public juce::FileBrowserListener {
  public:
-  NavigationComponent(const Navigation& d) : NavigationComponentBase(d) {}
+  NavigationComponent(const Navigation& d);
 
   virtual void paint(juce::Graphics& g) { TabbedComponent::paint(g); }
-
   virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds) {}
+
+  virtual void selectionChanged() {}
+  virtual void fileClicked (const File& file, const juce::MouseEvent& e);
+  virtual void fileDoubleClicked (const File& file) {}
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(NavigationComponent);

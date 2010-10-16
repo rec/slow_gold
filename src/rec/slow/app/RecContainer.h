@@ -20,9 +20,12 @@ class RecContainer : public ComponentContainer {
     return StringArray(names);
   }
 
+  static const int NEW_WINDOW_MENU_INDEX = 1001;
+
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& menuName) {
     PopupMenu menu;
     if (menuName == "File") {
+      menu.addItem(NEW_WINDOW_MENU_INDEX, "New window");
       gui::RecentFiles recent = gui::getSortedRecentFiles();
       PopupMenu submenu;
       for (int i = 0; i < recent.file_size(); ++i)
@@ -39,7 +42,10 @@ class RecContainer : public ComponentContainer {
 
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
     if (topLevelMenuIndex == 0) {
-      mainPage_->loadRecentFile(menuItemID);
+      if (menuItemID == NEW_WINDOW_MENU_INDEX) {
+      } else {
+        mainPage_->loadRecentFile(menuItemID);
+      }
     } else if (topLevelMenuIndex == 1) {
       if (menuItemID == 1)
         mainPage_->cut();
