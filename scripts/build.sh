@@ -11,7 +11,7 @@ fi
 if [ ! "$1" ]
 then
 
-  "$ROOT/rec/scripts/build.sh" $CONFIG $PACKAGES
+  "$ROOT/rec/scripts/build.sh" $CONFIG $CONFIG_PACKAGES
 
 else
 
