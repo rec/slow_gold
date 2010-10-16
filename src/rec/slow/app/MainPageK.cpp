@@ -120,8 +120,11 @@ void MainPageK::loadRecentFile(int menuItemID) {
 static const int RATE = 44100;
 
 void MainPageK::updateCursor() {
+  int length = transportSource_.getTotalLength();
+  if (!length)
+    return;
   double samples = RATE * transportSource_.getCurrentPosition();
-  double position = samples / transportSource_.getTotalLength();
+  double position = samples / length;
   peer_->thumbnail->setCursor(position);
   peer_->realDial->setTimeRatio(position);
   peer_->songDial->setTimeRatio(position);

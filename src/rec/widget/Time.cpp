@@ -56,7 +56,7 @@ void TextComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
 }
 
 DialComponent::DialComponent(const Dial& desc)
-    : WidgetBase<Component, Dial>(desc) {
+    : WidgetBase<Component, Dial>(desc), time_(0) {
 }
 
 // Half a degree.
