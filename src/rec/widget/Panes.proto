@@ -1,13 +1,19 @@
+// This is a collection of Widgets which represent or edit a file that lives at
+// a specific "path", which you can think of as a file path, or a URL.
+
 package rec.widget.pane;
 
 import "rec/widget/Widget.proto";
 import "rec/audio/source/TimeStretch.proto";
 
+// Pane is the generic base for Widgets that have a path.
 message Pane {
   repeated string path = 1;
   optional Widget widget = 2;
 };
 
+// The Navigation Pane is the top-level pane that lets you switch between
+// browsing your filesystem, the CD in the drive, or files on the network.
 message Navigation {
   enum Tab {
     FILE = 1;
@@ -19,10 +25,16 @@ message Navigation {
   optional Tab tab = 2;
 };
 
+// The Directory Pane is used to show a directory that contains one or more
+// audio files, which are presumed to be "an album" or connected in some way.
 message Directory {
   optional Pane pane = 1;
 };
 
+// This represents a single "track" - which is probably a filename or a URL.
+// This isn't a good name, nor is the idea completely nailed down yet - we
+// probably need one data structure for each separate loop in a track.
+// Perhaps AudioFile would be a better name?  All will be clear later.
 message Track {
   optional Pane pane = 1;
   optional audio.source.TimeStretch timestretch = 2;
