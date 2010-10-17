@@ -16,7 +16,7 @@ class Application : public GenericApplication {
     GenericApplication::initialise(commandLine);
     window_.reset(new RecWindow());
 
-#if false && JUCE_MAC
+#if JUCE_MAC
     // TODO: fix these casts that Juce seems to require.
     MenuBarModel* model = (MenuBarModel*) window_->getContentComponent();
     MenuBarModel::setMacMainMenu(model);
