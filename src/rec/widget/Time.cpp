@@ -32,7 +32,7 @@ void TextComponent::setTimeSeconds(float time) {
 }
 
 #ifdef _WIN32
-#define snprintf snprintf_s
+#define snprintf _snprintf
 #endif
 
 void TextComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
@@ -49,7 +49,7 @@ void TextComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
   char ch = ':';
   if (desc_.separator().flash() && (seconds & 1))
     ch = ' ';
-  _snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
+   snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
           hours, minutes, ch, seconds, milliseconds);
   int margin = desc_.widget().margin();
   g.drawSingleLineText(buffer, margin, font().getAscent() + margin);

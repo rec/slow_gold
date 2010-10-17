@@ -23,7 +23,7 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
-                   headerPath="&quot;../../../../../mpg123-1.12.5/ports/msvc++&quot;;&quot;../../../../../protobuf-2.3.0/src&quot;;../../../../../rec/src/rec/data/yaml/include;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../build/debug/libcddb/include;../../../../../build/debug/gflags/include;&quot;../../../../../glog-0.3.1/src/windows&quot;;../.."
+                   headerPath="&quot;../../../../../mpg123-1.12.5/ports&quot;;&quot;../../../../../mpg123-1.12.5/src/libmpg123&quot;;&quot;../../../../../protobuf-2.3.0/src&quot;;../../../../../rec/src/rec/data/yaml/include;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../build/debug/libcddb/include;../../../../../build/debug/gflags/include;&quot;../../../../../glog-0.3.1/src/windows&quot;;../.."
                    isDebug="1" name="Debug" optimisation="1" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
     <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"

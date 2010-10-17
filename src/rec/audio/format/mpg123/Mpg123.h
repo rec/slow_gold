@@ -11,7 +11,7 @@ namespace audio {
 namespace format {
 namespace mpg123 {
 
-#include "mpg123.h"
+#include "msvc++/mpg123.h"
 
 typedef int Error;
 typedef long long int64;
