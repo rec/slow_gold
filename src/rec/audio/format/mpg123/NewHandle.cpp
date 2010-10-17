@@ -17,7 +17,7 @@ namespace mpg123 {
 
 namespace {
 
-ssize_t read(void *inputStream, void *buf, size_t nbytes) {
+size_t read(void *inputStream, void *buf, size_t nbytes) {
   return reinterpret_cast<InputStream*>(inputStream)->read(buf, nbytes);
 }
 

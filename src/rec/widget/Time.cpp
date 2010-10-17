@@ -23,7 +23,7 @@ TextComponent::TextComponent(const Text& desc)
 }
 
 void TextComponent::setTimeSamples(int samples) {
-  setTimeSeconds(samples / SAMPLES_PER_SECOND);
+  setTimeSeconds(samples / 44100.0);
 }
 
 void TextComponent::setTimeSeconds(float time) {

@@ -39,7 +39,7 @@ typedef juce::StringPairArray StringPairArray;
 typedef juce::Thread Thread;
 
 typedef std::string string;
-
+typedef unsigned int uint;
 }  // namespace rec
 
 #endif  // __REC_BASE_BASE__

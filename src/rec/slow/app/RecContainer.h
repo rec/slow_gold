@@ -53,11 +53,11 @@ class RecContainer : public ComponentContainer {
         mainPage_->paste();
     }
   }
-
+  juce_UseDebuggingNewOperator
  private:
   MainPageComponent* mainPage_;
 
-  juce_UseDebuggingNewOperator
+
 };
 
 }
