@@ -16,7 +16,6 @@ namespace time {
 
 class TextComponent : public WidgetBase<juce::Component, Text> {
  public:
-  static const float SAMPLES_PER_SECOND = 44100.0;
   explicit TextComponent(const Text& desc);
 
   void setTimeSamples(int samples);

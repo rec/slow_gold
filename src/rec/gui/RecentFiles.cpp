@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/Preferences.h"
 

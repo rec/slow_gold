@@ -14,7 +14,7 @@ class Typer {
       : field_(f), msg_(m) {
   }
   virtual ~Typer() {}
-  virtual Typer* clone(google::protobuf::Message* f,
+  virtual Typer* clone(google::protobuf::Message* m,
                        const FieldDescriptor* f) const = 0;
 
   virtual void copyTo(Value* v) const = 0;

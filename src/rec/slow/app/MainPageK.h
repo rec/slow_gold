@@ -31,7 +31,7 @@ class MainPageK : public juce::FileBrowserListener,
   virtual void sliderValueChanged(juce::Slider* slider);
   virtual void sliderDragEnded(juce::Slider* slider);
 
-  // ChangeListener - for when CDs are inserted.
+  // ChangeListener
   virtual void changeListenerCallback(void* objectThatHasChanged);
 
   // FileBrowserListener
@@ -76,10 +76,6 @@ class MainPageK : public juce::FileBrowserListener,
   scoped_ptr<DoubleStretchyThread> stretchyDeleter_;
 
   scoped_ptr<Thread> cursorThread_;
-
-  std::vector<juce::AudioCDBurner*> burners_;
-
-  StringArray cdNames_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

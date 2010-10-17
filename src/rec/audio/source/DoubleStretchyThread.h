@@ -35,6 +35,8 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
     notify();
   }
 
+  juce_UseDebuggingNewOperator
+
  private:
   int waitTime_;
 

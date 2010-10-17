@@ -44,10 +44,8 @@ const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
-    directoryList_(NULL, directoryListThread_),
-    cdNames_(AudioCDBurner::findAvailableDevices()) {
+    directoryList_(NULL, directoryListThread_) {
 }
-
 
 static Thread* makeCursorThread(MainPageK* main) {
   ThreadDescription thumbnail(slow::getPreferences().thumbnail().cursor_thread());
@@ -74,13 +72,6 @@ void MainPageK::construct(MainPageJ* peer) {
 
   peer_->thumbnail->addChangeListener(this);
 
-  burners_.resize(cdNames_.size());
-  for (int i = 0; i < burners_.size(); ++i) {
-    burners_[i] = AudioCDBurner::openDevice(i);
-    burners_[i]->addChangeListener(this);
-    changeListenerCallback(burners_[i]);
-  }
-
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(&transportSource_);
@@ -104,11 +95,6 @@ void MainPageK::destruct() {
   deviceManager_->removeAudioCallback(&player_);
   peer_->fileTreeComp->removeListener(this);
   peer_->thumbnail->removeChangeListener(this);
-
-  for (int i = 0; i < burners_.size(); ++i)
-    delete burners_[i];
-
-  burners_.clear();
 }
 
 void MainPageK::loadRecentFile(int menuItemID) {
@@ -215,20 +201,6 @@ void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
     transportSource_.setPosition(p * transportSource_.getTotalLength() / RATE);
     return;
   }
-
-  AudioCDBurner* cd = (AudioCDBurner*) objectThatHasChanged;
-  AudioCDBurner::DiskState state = cd->getDiskState();
-  LOG(INFO) << CD_STATE_NAMES[state];
-
-  if (state != AudioCDBurner::readOnlyDiskPresent)
-    return;
-
-  int i = 0;
-  for (; i < burners_.size() && burners_[i] != cd; ++i);
-  if (i == burners_.size())
-    return;
-
-  scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
 }
 
 void MainPageK::startStopButtonClicked() {
