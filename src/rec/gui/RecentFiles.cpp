@@ -2,6 +2,7 @@
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/Preferences.h"
+#include <algorithm>
 
 namespace rec {
 namespace gui {
