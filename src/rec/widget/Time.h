@@ -5,7 +5,7 @@
 
 #include "rec/base/base.h"
 #include "rec/widget/Time.pb.h"
-#include "rec/widget/Widget.h"
+#include "rec/widget/Painter.h"
 #include "rec/gui/Color.pb.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -14,23 +14,23 @@ namespace rec {
 namespace widget {
 namespace time {
 
-class TextComponent : public WidgetBase<juce::Component, Text> {
+class TextComponent : public juce::Component {
  public:
-//  static const float SAMPLES_PER_SECOND = 44100.0;
   explicit TextComponent(const Text& desc);
 
   void setTimeSamples(int samples);
   void setTimeSeconds(float time);
 
-  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g);
 
  private:
+  Text description_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
 };
 
-class DialComponent : public WidgetBase<juce::Component, Dial> {
+class DialComponent : public juce::Component {
  public:
   explicit DialComponent(const Dial& desc);
 
@@ -40,9 +40,10 @@ class DialComponent : public WidgetBase<juce::Component, Dial> {
     repaint();
   }
 
-  void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g);
 
  private:
+  Dial description_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);

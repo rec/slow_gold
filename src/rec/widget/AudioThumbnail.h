@@ -4,17 +4,17 @@
 #include <set>
 
 #include "rec/widget/AudioThumbnail.pb.h"
-#include "rec/widget/Widget.h"
+#include "rec/widget/Painter.h"
 
 namespace rec {
 namespace widget {
 
-class AudioThumbnailWidget : public WidgetBase<juce::Component, AudioThumbnailDesc>,
+class AudioThumbnailWidget : public juce::Component,
                              public juce::ChangeListener,
                              public juce::ChangeBroadcaster {
  public:
   AudioThumbnailWidget(const AudioThumbnailDesc& desc);
-  ~AudioThumbnailWidget();
+  virtual ~AudioThumbnailWidget();
 
   void setFile(const File& file);
   void setZoomFactor(double amount);
@@ -28,7 +28,7 @@ class AudioThumbnailWidget : public WidgetBase<juce::Component, AudioThumbnailDe
 
   // Ranges between 0 and 1.
   void setCursor(double cursorRatio);
-  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g);
 
   int getCursor() const;
   double ratio() const;

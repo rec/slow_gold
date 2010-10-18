@@ -18,7 +18,8 @@ namespace widget {
 namespace time {
 
 TextComponent::TextComponent(const Text& desc)
-    : WidgetBase<Component, Text>(desc),
+    : Component(desc.widget().name().c_str()),
+      description_(desc),
       time_(0) {
 }
 
@@ -35,7 +36,8 @@ void TextComponent::setTimeSeconds(float time) {
 #define snprintf _snprintf
 #endif
 
-void TextComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
+void TextComponent::paint(Graphics& g) {
+  Painter p(description_.widget(), &g);
   int seconds = time_;
   float fraction = time_ - seconds;
   int milliseconds = 1000 * fraction;
@@ -47,16 +49,17 @@ void TextComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
 
   char buffer[64];
   char ch = ':';
-  if (desc_.separator().flash() && (seconds & 1))
+  if (description_.separator().flash() && (seconds & 1))
     ch = ' ';
    snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
           hours, minutes, ch, seconds, milliseconds);
-  int margin = desc_.widget().margin();
-  g.drawSingleLineText(buffer, margin, font().getAscent() + margin);
+  g.drawSingleLineText(buffer, p.margin(), p.font().getAscent() + p.margin());
 }
 
 DialComponent::DialComponent(const Dial& desc)
-    : WidgetBase<Component, Dial>(desc), time_(0) {
+    : Component(desc.widget().name().c_str()),
+      description_(desc),
+      time_(0) {
 }
 
 // Half a degree.
@@ -64,11 +67,13 @@ static const float ALMOST_ZERO = 0.5 / 360.0;
 
 static const float PI = 3.1415926536;
 
-void DialComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
-  float zeroAngle = desc_.zero_point() * 2.0 * PI;
+void DialComponent::paint(Graphics& g) {
+  Painter p(description_.widget(), &g);
+  Rectangle<int> bounds = p.getBounds(this);
+  float zeroAngle = description_.zero_point() * 2.0 * PI;
   float timeAngle = zeroAngle + time_ * 2.0 * PI;
-  if (colors().color_size() > 2)
-    g.setColour(colour(1).interpolatedWith(colour(2), time_));
+  if (p.colors().color_size() > 2)
+    g.setColour(p.colour(Painter::FOREGROUND).interpolatedWith(p.colour(Painter::HIGHLIGHT), time_));
 
   Path path;
   path.addPieSegment(bounds.getX(), bounds.getY(),

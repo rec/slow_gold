@@ -34,7 +34,9 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
     signalThreadShouldExit();
     notify();
   }
-juce_UseDebuggingNewOperator
+
+  juce_UseDebuggingNewOperator
+
  private:
   int waitTime_;
 
