@@ -5,7 +5,7 @@
 
 #include "rec/base/base.h"
 #include "rec/widget/Time.pb.h"
-#include "rec/widget/Widget.h"
+#include "rec/widget/Painter.h"
 #include "rec/gui/Color.pb.h"
 
 #include "JuceLibraryCode/JuceHeader.h"

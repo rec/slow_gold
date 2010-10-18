@@ -4,7 +4,7 @@
 #include <set>
 
 #include "rec/widget/AudioThumbnail.pb.h"
-#include "rec/widget/Widget.h"
+#include "rec/widget/Painter.h"
 
 namespace rec {
 namespace widget {
