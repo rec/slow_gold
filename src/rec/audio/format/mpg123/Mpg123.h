@@ -5,13 +5,15 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/base.h"
+//#define __cplusplus
+#include "include/mpg123.h"
 
 namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
 
-#include "include/mpg123.h"
+
 
 typedef int Error;
 typedef long long int64;
