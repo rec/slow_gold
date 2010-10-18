@@ -10,21 +10,19 @@
 namespace rec {
 namespace widget {
 
-template <typename Parent, typename Proto>
-class WidgetBase : public Parent {
+template <typename Proto>
+class WidgetBase {
  public:
-  // TODO: move to Color.proto.
+  // TODO: move this enum to Color.proto.
   enum ColorNames {
     BACKGROUND,
     FOREGROUND,
     HIGHLIGHT,
   };
 
-  WidgetBase(const Proto& desc)
-      : Parent(desc.widget().name().c_str()), desc_(desc) {
-  }
+  WidgetBase(const Proto& desc) : desc_(desc) {}
 
-  virtual void paint(juce::Graphics& g) {
+  juce::Font startPaint(juce::Graphics& g) {
     const Widget& widget = desc_.widget();
     if (!widget.transparent())
       g.fillAll(colour(BACKGROUND));
@@ -35,19 +33,14 @@ class WidgetBase : public Parent {
     if (widget.has_font())
       g.setFont(font());
 
-    uint32 margin = widget.margin();
-    paint(g, this->getLocalBounds().reduced(margin, margin));
-
-    if (widget.has_font())
-      g.setFont(f);
+    return f;
   }
-
-  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds) = 0;
 
   const juce::Font font() const { return gui::getFont(desc_.widget().font()); }
   const gui::Colors colors() const { return desc_.widget().colors(); }
   const juce::Colour colour(int i) const { return gui::color::get(colors(), i); }
-  void setColour(juce::Graphics& g, int i) const { g.setColour(colour(i)); }
+  void setColor(juce::Graphics& g, int i) const { g.setColour(colour(i)); }
+  void setColor(juce::Graphics& g, ColorNames n) const { setColor(g, (int)n); }
 
  protected:
   Proto desc_;

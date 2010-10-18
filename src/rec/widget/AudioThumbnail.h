@@ -9,12 +9,13 @@
 namespace rec {
 namespace widget {
 
-class AudioThumbnailWidget : public WidgetBase<juce::Component, AudioThumbnailDesc>,
+class AudioThumbnailWidget : public WidgetBase<AudioThumbnailDesc>,
+                             public juce::Component,
                              public juce::ChangeListener,
                              public juce::ChangeBroadcaster {
  public:
   AudioThumbnailWidget(const AudioThumbnailDesc& desc);
-  ~AudioThumbnailWidget();
+  virtual ~AudioThumbnailWidget();
 
   void setFile(const File& file);
   void setZoomFactor(double amount);

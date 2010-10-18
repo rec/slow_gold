@@ -132,12 +132,12 @@ class Widget : public ::google::protobuf::Message {
   inline bool transparent() const;
   inline void set_transparent(bool value);
   
-  // optional .rec.gui.Layer layer = 6;
-  inline bool has_layer() const;
-  inline void clear_layer();
-  static const int kLayerFieldNumber = 6;
-  inline const ::rec::gui::Layer& layer() const;
-  inline ::rec::gui::Layer* mutable_layer();
+  // optional .rec.gui.Rectangle bounds = 6;
+  inline bool has_bounds() const;
+  inline void clear_bounds();
+  static const int kBoundsFieldNumber = 6;
+  inline const ::rec::gui::Rectangle& bounds() const;
+  inline ::rec::gui::Rectangle* mutable_bounds();
   
   // @@protoc_insertion_point(class_scope:rec.widget.Widget)
  private:
@@ -150,7 +150,7 @@ class Widget : public ::google::protobuf::Message {
   ::rec::gui::FontDesc* font_;
   ::google::protobuf::uint32 margin_;
   bool transparent_;
-  ::rec::gui::Layer* layer_;
+  ::rec::gui::Rectangle* bounds_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fWidget_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fWidget_2eproto();
@@ -286,21 +286,21 @@ inline void Widget::set_transparent(bool value) {
   transparent_ = value;
 }
 
-// optional .rec.gui.Layer layer = 6;
-inline bool Widget::has_layer() const {
+// optional .rec.gui.Rectangle bounds = 6;
+inline bool Widget::has_bounds() const {
   return _has_bit(5);
 }
-inline void Widget::clear_layer() {
-  if (layer_ != NULL) layer_->::rec::gui::Layer::Clear();
+inline void Widget::clear_bounds() {
+  if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
   _clear_bit(5);
 }
-inline const ::rec::gui::Layer& Widget::layer() const {
-  return layer_ != NULL ? *layer_ : *default_instance_->layer_;
+inline const ::rec::gui::Rectangle& Widget::bounds() const {
+  return bounds_ != NULL ? *bounds_ : *default_instance_->bounds_;
 }
-inline ::rec::gui::Layer* Widget::mutable_layer() {
+inline ::rec::gui::Rectangle* Widget::mutable_bounds() {
   _set_bit(5);
-  if (layer_ == NULL) layer_ = new ::rec::gui::Layer;
-  return layer_;
+  if (bounds_ == NULL) bounds_ = new ::rec::gui::Rectangle;
+  return bounds_;
 }
 
 

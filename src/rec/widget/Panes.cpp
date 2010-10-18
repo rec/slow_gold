@@ -5,6 +5,7 @@ namespace rec {
 namespace widget {
 namespace pane {
 
+#if 0
 using juce::FileBrowserComponent;
 
 NavigationComponent::NavigationComponent(const Navigation& d)
@@ -29,7 +30,7 @@ void NavigationComponent::fileClicked (const File& file,
   LOG(INFO) << "Found file" << file.getFullPathName().toCString();
 }
 
-
+#endif
 }  // namespace pane
 }  // namespace widget
 }  // namespace rec

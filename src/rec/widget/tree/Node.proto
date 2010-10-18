@@ -1,0 +1,12 @@
+// This is a collection of Widgets which represent or edit a file that lives at
+// a specific "path", which you can think of as a file path, or a URL.
+
+package rec.widget.tree;
+
+import "rec/widget/Widget.proto";
+import "rec/audio/source/TimeStretch.proto";
+
+message NodeDesc {
+  optional Widget widget = 1;
+  optional uint32 max_branch = 2 [default = 16];
+};

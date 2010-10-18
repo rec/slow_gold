@@ -7,7 +7,8 @@ namespace rec {
 namespace widget {
 
 AudioThumbnailWidget::AudioThumbnailWidget(const AudioThumbnailDesc& desc)
-    : WidgetBase<Component, AudioThumbnailDesc>(desc),
+    : WidgetBase<AudioThumbnailDesc>(desc),
+      Component(desc.widget().name().c_str()),
       thumbnailCache_(description_.thumbnail_cache()),
       thumbnail_(description_.source_samples_per_thumbnail_sample(),
                  *AudioFormatManager::getInstance(), thumbnailCache_) {
@@ -107,7 +108,7 @@ void AudioThumbnailWidget::paint(Graphics& g, const Rectangle<int>& bounds) {
                              i, 1.0f);
     }
 
-    setColour(g, HIGHLIGHT);
+    setColor(g, HIGHLIGHT);
     g.drawRect(cursorRectangle());
 
   } else {

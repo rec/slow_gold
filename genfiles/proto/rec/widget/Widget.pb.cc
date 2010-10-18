@@ -35,7 +35,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fWidget_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, font_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, margin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, transparent_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, layer_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, bounds_),
   };
   Widget_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -83,11 +83,11 @@ void protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\027rec/widget/Widget.proto\022\nrec.widget\032\023r"
     "ec/gui/Color.proto\032\022rec/gui/Font.proto\032\026"
-    "rec/gui/Geometry.proto\"\237\001\n\006Widget\022\014\n\004nam"
+    "rec/gui/Geometry.proto\"\244\001\n\006Widget\022\014\n\004nam"
     "e\030\001 \001(\t\022\037\n\006colors\030\002 \001(\0132\017.rec.gui.Colors"
     "\022\037\n\004font\030\003 \001(\0132\021.rec.gui.FontDesc\022\021\n\006mar"
-    "gin\030\004 \001(\r:\0012\022\023\n\013transparent\030\005 \001(\010\022\035\n\005lay"
-    "er\030\006 \001(\0132\016.rec.gui.Layer", 264);
+    "gin\030\004 \001(\r:\0012\022\023\n\013transparent\030\005 \001(\010\022\"\n\006bou"
+    "nds\030\006 \001(\0132\022.rec.gui.Rectangle", 269);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Widget.proto", &protobuf_RegisterTypes);
   Widget::default_instance_ = new Widget();
@@ -112,7 +112,7 @@ const int Widget::kColorsFieldNumber;
 const int Widget::kFontFieldNumber;
 const int Widget::kMarginFieldNumber;
 const int Widget::kTransparentFieldNumber;
-const int Widget::kLayerFieldNumber;
+const int Widget::kBoundsFieldNumber;
 #endif  // !_MSC_VER
 
 Widget::Widget()
@@ -123,7 +123,7 @@ Widget::Widget()
 void Widget::InitAsDefaultInstance() {
   colors_ = const_cast< ::rec::gui::Colors*>(&::rec::gui::Colors::default_instance());
   font_ = const_cast< ::rec::gui::FontDesc*>(&::rec::gui::FontDesc::default_instance());
-  layer_ = const_cast< ::rec::gui::Layer*>(&::rec::gui::Layer::default_instance());
+  bounds_ = const_cast< ::rec::gui::Rectangle*>(&::rec::gui::Rectangle::default_instance());
 }
 
 Widget::Widget(const Widget& from)
@@ -139,7 +139,7 @@ void Widget::SharedCtor() {
   font_ = NULL;
   margin_ = 2u;
   transparent_ = false;
-  layer_ = NULL;
+  bounds_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -154,7 +154,7 @@ void Widget::SharedDtor() {
   if (this != default_instance_) {
     delete colors_;
     delete font_;
-    delete layer_;
+    delete bounds_;
   }
 }
 
@@ -194,7 +194,7 @@ void Widget::Clear() {
     margin_ = 2u;
     transparent_ = false;
     if (_has_bit(5)) {
-      if (layer_ != NULL) layer_->::rec::gui::Layer::Clear();
+      if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -279,17 +279,17 @@ bool Widget::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_layer;
+        if (input->ExpectTag(50)) goto parse_bounds;
         break;
       }
       
-      // optional .rec.gui.Layer layer = 6;
+      // optional .rec.gui.Rectangle bounds = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_layer:
+         parse_bounds:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_layer()));
+               input, mutable_bounds()));
         } else {
           goto handle_uninterpreted;
         }
@@ -346,10 +346,10 @@ void Widget::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->transparent(), output);
   }
   
-  // optional .rec.gui.Layer layer = 6;
+  // optional .rec.gui.Rectangle bounds = 6;
   if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->layer(), output);
+      6, this->bounds(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -394,11 +394,11 @@ void Widget::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->transparent(), target);
   }
   
-  // optional .rec.gui.Layer layer = 6;
+  // optional .rec.gui.Rectangle bounds = 6;
   if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->layer(), target);
+        6, this->bounds(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -445,11 +445,11 @@ int Widget::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional .rec.gui.Layer layer = 6;
-    if (has_layer()) {
+    // optional .rec.gui.Rectangle bounds = 6;
+    if (has_bounds()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->layer());
+          this->bounds());
     }
     
   }
@@ -495,7 +495,7 @@ void Widget::MergeFrom(const Widget& from) {
       set_transparent(from.transparent());
     }
     if (from._has_bit(5)) {
-      mutable_layer()->::rec::gui::Layer::MergeFrom(from.layer());
+      mutable_bounds()->::rec::gui::Rectangle::MergeFrom(from.bounds());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -525,7 +525,7 @@ void Widget::Swap(Widget* other) {
     std::swap(font_, other->font_);
     std::swap(margin_, other->margin_);
     std::swap(transparent_, other->transparent_);
-    std::swap(layer_, other->layer_);
+    std::swap(bounds_, other->bounds_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -8,13 +8,8 @@
 namespace rec {
 namespace widget {
 
-typedef WidgetBase<juce::TabbedComponent, pane::Navigation> NavigationComponentBase;
-
-template <>
-inline NavigationComponentBase::WidgetBase(const pane::Navigation& n)
-  : juce::TabbedComponent(juce::TabbedButtonBar::Orientation(n.orientation())), desc_(n) {
-}
-
+#if 0
+typedef WidgetBase<, pane::Navigation> NavigationComponentBase;
 namespace pane {
 
 class NavigationComponent : public NavigationComponentBase,
@@ -34,6 +29,7 @@ class NavigationComponent : public NavigationComponentBase,
 };
 
 }  // namespace pane
+#endif
 }  // namespace widget
 }  // namespace rec
 

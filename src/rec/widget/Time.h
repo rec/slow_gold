@@ -14,7 +14,7 @@ namespace rec {
 namespace widget {
 namespace time {
 
-class TextComponent : public WidgetBase<juce::Component, Text> {
+class TextComponent : public WidgetBase<Text>, public juce::Component {
  public:
   explicit TextComponent(const Text& desc);
 
@@ -29,7 +29,7 @@ class TextComponent : public WidgetBase<juce::Component, Text> {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
 };
 
-class DialComponent : public WidgetBase<juce::Component, Dial> {
+class DialComponent : public WidgetBase<Dial>, public juce::Component {
  public:
   explicit DialComponent(const Dial& desc);
 

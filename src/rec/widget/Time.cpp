@@ -18,7 +18,8 @@ namespace widget {
 namespace time {
 
 TextComponent::TextComponent(const Text& desc)
-    : WidgetBase<Component, Text>(desc),
+    : WidgetBase<Text>(desc),
+      Component(desc.widget().name().c_str()),
       time_(0) {
 }
 
@@ -56,7 +57,9 @@ void TextComponent::paint(Graphics& g, const Rectangle<int>& bounds) {
 }
 
 DialComponent::DialComponent(const Dial& desc)
-    : WidgetBase<Component, Dial>(desc), time_(0) {
+    : WidgetBase<Dial>(desc), 
+      Component(desc.widget().name().c_str()), 
+      time_(0) {
 }
 
 // Half a degree.
