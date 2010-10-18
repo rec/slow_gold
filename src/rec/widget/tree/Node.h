@@ -10,7 +10,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Node : public WidgetBase<NodeDesc>, public juce::TreeViewItem {
+class Node : public juce::TreeViewItem {
  public:
   Node(const Widget& widget, const string& name)
       : widget_(widget),

@@ -9,8 +9,7 @@
 namespace rec {
 namespace widget {
 
-class AudioThumbnailWidget : public WidgetBase<AudioThumbnailDesc>,
-                             public juce::Component,
+class AudioThumbnailWidget : public juce::Component,
                              public juce::ChangeListener,
                              public juce::ChangeBroadcaster {
  public:
@@ -29,7 +28,7 @@ class AudioThumbnailWidget : public WidgetBase<AudioThumbnailDesc>,
 
   // Ranges between 0 and 1.
   void setCursor(double cursorRatio);
-  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g);
 
   int getCursor() const;
   double ratio() const;

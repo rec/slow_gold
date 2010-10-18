@@ -14,22 +14,23 @@ namespace rec {
 namespace widget {
 namespace time {
 
-class TextComponent : public WidgetBase<Text>, public juce::Component {
+class TextComponent : public juce::Component {
  public:
   explicit TextComponent(const Text& desc);
 
   void setTimeSamples(int samples);
   void setTimeSeconds(float time);
 
-  virtual void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g);
 
  private:
+  Text description_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
 };
 
-class DialComponent : public WidgetBase<Dial>, public juce::Component {
+class DialComponent : public juce::Component {
  public:
   explicit DialComponent(const Dial& desc);
 
@@ -39,9 +40,10 @@ class DialComponent : public WidgetBase<Dial>, public juce::Component {
     repaint();
   }
 
-  void paint(juce::Graphics& g, const juce::Rectangle<int>& bounds);
+  virtual void paint(juce::Graphics& g);
 
  private:
+  Dial description_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);

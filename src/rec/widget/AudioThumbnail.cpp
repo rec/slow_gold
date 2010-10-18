@@ -7,8 +7,8 @@ namespace rec {
 namespace widget {
 
 AudioThumbnailWidget::AudioThumbnailWidget(const AudioThumbnailDesc& desc)
-    : WidgetBase<AudioThumbnailDesc>(desc),
-      Component(desc.widget().name().c_str()),
+    : Component(desc.widget().name().c_str()),
+      description_(desc),
       thumbnailCache_(description_.thumbnail_cache()),
       thumbnail_(description_.source_samples_per_thumbnail_sample(),
                  *AudioFormatManager::getInstance(), thumbnailCache_) {
@@ -94,9 +94,9 @@ void AudioThumbnailWidget::setCursor(double cursorRatio) {
   }
 }
 
-void AudioThumbnailWidget::paint(Graphics& g, const Rectangle<int>& bounds) {
-  int margin = description_.widget().margin();
-
+void AudioThumbnailWidget::paint(Graphics& g) {
+  Painter p(description_.widget(), &g);
+  int margin = p.margin();
   if (thumbnail_.getTotalLength() > 0) {
     int heightPerChannel = (getHeight() - 2 * margin) /
       thumbnail_.getNumChannels();
@@ -108,7 +108,7 @@ void AudioThumbnailWidget::paint(Graphics& g, const Rectangle<int>& bounds) {
                              i, 1.0f);
     }
 
-    setColor(g, HIGHLIGHT);
+    p.setColor(Painter::HIGHLIGHT);
     g.drawRect(cursorRectangle());
 
   } else {

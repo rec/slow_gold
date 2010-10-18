@@ -10,8 +10,7 @@
 namespace rec {
 namespace widget {
 
-template <typename Proto>
-class WidgetBase {
+class Painter {
  public:
   // TODO: move this enum to Color.proto.
   enum ColorNames {
@@ -20,33 +19,45 @@ class WidgetBase {
     HIGHLIGHT,
   };
 
-  WidgetBase(const Proto& desc) : desc_(desc) {}
+  Painter(const Widget& widget, juce::Graphics* g)
+      : widget_(widget),
+        graphics_(g),
+        font_(g->getCurrentFont()),
+        margin_(widget_.margin()) {
+    if (!widget_.transparent())
+      g->fillAll(colour(BACKGROUND));
 
-  juce::Font startPaint(juce::Graphics& g) {
-    const Widget& widget = desc_.widget();
-    if (!widget.transparent())
-      g.fillAll(colour(BACKGROUND));
+    setColor(FOREGROUND);
 
-    setColour(g, FOREGROUND);
-
-    juce::Font f = g.getCurrentFont();
-    if (widget.has_font())
-      g.setFont(font());
-
-    return f;
+    if (widget_.has_font())
+      g->setFont(font());
   }
 
-  const juce::Font font() const { return gui::getFont(desc_.widget().font()); }
-  const gui::Colors colors() const { return desc_.widget().colors(); }
-  const juce::Colour colour(int i) const { return gui::color::get(colors(), i); }
-  void setColor(juce::Graphics& g, int i) const { g.setColour(colour(i)); }
-  void setColor(juce::Graphics& g, ColorNames n) const { setColor(g, (int)n); }
+  ~Painter() { graphics_->setFont(font_); }
 
- protected:
-  Proto desc_;
+  const juce::Font font() const { return gui::getFont(widget_.font()); }
+
+  const gui::Colors& colors() const { return widget_.colors(); }
+  const juce::Colour colour(int i) const { return gui::color::get(colors(), i); }
+
+  void setColor(int i) const { graphics_->setColour(colour(i)); }
+
+  void setColor(ColorNames n) const { setColor((int)n); }
+
+  juce::Rectangle<int> getBounds(juce::Component* c) const {
+    return c->getLocalBounds().reduced(margin_, margin_);
+  }
+
+  int margin() const { return margin_; }
+
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(WidgetBase);
+  const Widget& widget_;
+  juce::Font const font_;
+  juce::Graphics* const graphics_;
+  int margin_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Painter);
 };
 
 }  // namespace widget
