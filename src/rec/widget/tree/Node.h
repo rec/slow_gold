@@ -58,7 +58,7 @@ class Node : public juce::TreeViewItem {
   bool ready_;
   bool visited_;
   bool containsMusic_;
-  const juce::Drawable* const icon_;
+  const juce::Drawable* icon_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
 };

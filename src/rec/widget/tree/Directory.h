@@ -9,10 +9,12 @@ namespace tree {
 
 class Directory : public Node {
  public:
-  Directory(const NodeDesc& desc, const Address& addr) : Node(desc, addr) {}
+  Directory(const NodeDesc& desc, const Path& path) : Node(desc, path) {}
   virtual bool mightContainSubItems() { return true; }
+  virtual void fillSubItems() {
+    File f = pathToFile(path_);
 
-
+  }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);

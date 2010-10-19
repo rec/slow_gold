@@ -40,7 +40,7 @@ def new_class(filename, **context):
 
   context.update(
     classname=file_root,
-    header_file='/'.join(path + [file_root + '.h']),
+    header_file='/'.join(path + [file_root + suffix]),
     namespace='\n'.join('namespace %s {' % p for p in path),
     namespace_end='\n'.join('}  // namespace %s' % p for p in reversed(path)),
     method='get',
@@ -73,7 +73,7 @@ struct {classname} {{
 
   '.svg.cpp':
 """#include "{header_file}"
-#include "rec/gui/icon/OpenFolder.svg.h"
+#include "rec/base/ArraySize.h"
 
 {namespace}
 

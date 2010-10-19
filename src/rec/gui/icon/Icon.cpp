@@ -27,6 +27,9 @@ struct IconMapMaker {
 }  // namespace
 
 const Drawable* getIcon(const string& n) {
+  if (n.empty())
+    return NULL;
+
   static IconMapMaker* maker = new IconMapMaker();
   static IconMap& map = maker->map_;
   IconMap::const_iterator i = map.find(n);
