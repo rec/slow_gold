@@ -9,11 +9,11 @@ namespace tree {
 
 class Directory : public Node {
  public:
-  Directory(const NodeDesc& desc, const Path& path) : Node(desc, path) {}
+  Directory(const NodeDesc& desc, const Path& path) : Node(desc, path) {
+  }
   virtual bool mightContainSubItems() { return true; }
   virtual void fillSubItems() {
     File f = pathToFile(path_);
-
   }
 
  private:

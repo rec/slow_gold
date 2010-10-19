@@ -51,6 +51,14 @@ class Node : public juce::TreeViewItem {
   }
   virtual void fillSubItems() {}
 
+  File addPathToFile(File file) const {
+    for (int i = 1; i < path_.step_size(); ++i)
+  }
+
+  File pathToShadowFile() const {
+    return persist::getApp()->appDir().getChildFile("shadow")
+  }
+
  protected:
   NodeDesc desc_;
   Path path_;

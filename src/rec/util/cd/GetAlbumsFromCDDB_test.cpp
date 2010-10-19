@@ -1,3 +1,5 @@
+#if JUCE_MAC
+
 #include <gtest/gtest.h>
 
 #include "rec/base/ArraySize.h"
@@ -65,3 +67,5 @@ TEST(CD, GetAlbumsFromCDDB) {
 
 }  // namespace rec
 }  // namespace cd
+
+#endif  // JUCE_MAC

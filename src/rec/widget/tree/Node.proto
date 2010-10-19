@@ -6,7 +6,7 @@ package rec.widget.tree;
 import "rec/widget/Widget.proto";
 
 message Path {
-  repeated string field = 1;
+  repeated string step = 1;
 };
 
 message NodeDesc {

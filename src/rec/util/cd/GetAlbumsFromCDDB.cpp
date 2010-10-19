@@ -1,3 +1,5 @@
+#if JUCE_MAC
+
 #include <ctype.h>
 #include <string.h>
 
@@ -162,3 +164,4 @@ void dedupeAlbums(std::vector<Album>* albums) {
 }  // namespace cd
 }  // namespace rec
 
+#endif  // JUCE_MAC
