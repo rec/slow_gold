@@ -33,9 +33,14 @@ def new_class(filename, **context):
   file_parts[-1] = file_root
   file_base = '/'.join(file_parts)
 
+  if context['svg']:
+    suffix = '.svg.h'
+  else:
+    suffix = '.h'
+
   context.update(
     classname=file_root,
-    header_file='/'.join(path + [file_root + '.h']),
+    header_file='/'.join(path + [file_root + suffix]),
     namespace='\n'.join('namespace %s {' % p for p in path),
     namespace_end='\n'.join('}  // namespace %s' % p for p in reversed(path)),
     method='get',
@@ -68,15 +73,18 @@ struct {classname} {{
 
   '.svg.cpp':
 """#include "{header_file}"
+#include "rec/base/ArraySize.h"
 
 {namespace}
 
 using juce::Drawable;
 
+// Original .svg file: {svg_file}
+
 Drawable* {classname}::{method}() {{
   static const char data[] = {svg};
 
-  static Drawable* d = Drawable::createFromImageData(data);
+  static Drawable* d = Drawable::createFromImageData(data, arraysize(data));
   return d;
 }};
 
@@ -148,6 +156,7 @@ if __name__ == "__main__":
   context = {}
   if options.svg:
     context['svg'] = readSVGFile(options.svg)
+    context['svg_file'] = options.svg
     file = (files or [options.svg.split('/')[-1]])[0].split('.')[0]
     files = [file + '.svg.cpp', file + '.svg.h']
 

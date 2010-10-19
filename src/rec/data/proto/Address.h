@@ -30,7 +30,6 @@ struct Address : public proto::Address {
   Address(P a, P b, P c, P d, P e, P f) { p(a); p(b); p(c); p(d); p(e); p(f); }
 };
 
-
 }  // namespace arg
 }  // namespace proto
 }  // namespace rec

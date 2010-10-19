@@ -8,9 +8,11 @@
 
 namespace rec {
 namespace gui {
+namespace icon {
 
 const juce::Drawable* getIcon(const string& n);
 
+}  // namespace icon
 }  // namespace gui
 }  // namespace rec
 
