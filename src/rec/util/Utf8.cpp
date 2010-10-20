@@ -43,7 +43,7 @@ int decode(StringPiece* s, const char** error) {
   if (cp < BIT[0])  // The most common case.
     return cp;
 
-  int len = 1;
+  int len = 0;
   for (; len != arraysize(BIT) && (cp & BIT[len]); cp -= BIT[len++]);
 
   FAIL_IF(len == 1, "Bad UTF-8 prefix 10xxxxxx");
@@ -70,7 +70,7 @@ int encodedLength(int cp) {
 }
 
 int encode(int cp, char* out, int length) {
-  if (!checkCodepoint(cp))
+  if (checkCodepoint(cp))
     return 0;
 
   if (cp < BIT[0]) {
