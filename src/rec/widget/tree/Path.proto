@@ -3,10 +3,6 @@
 
 package rec.widget.tree;
 
-import "rec/widget/Widget.proto";
-
-message NodeDesc {
-  optional Widget widget = 1;
-  optional uint32 max_branch = 2 [default = 16];
-  optional string icon = 3;
+message Path {
+  repeated string step = 1;
 };

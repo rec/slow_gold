@@ -5,6 +5,9 @@
 
 #include "rec/base/base.h"
 #include "rec/gui/icon/Icon.h"
+#include "rec/widget/tree/Node.pb.h"
+#include "rec/widget/Painter.h"
+
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
@@ -13,18 +16,14 @@ namespace tree {
 
 class Node : public juce::TreeViewItem {
  public:
-  Node(const NodeDesc& d, const Path& path)
+  Node(const NodeDesc& d, const File& file, const File& shadow)
       : desc_(d),
-        path_(path),
-        name_(path.field().end()[-1]),
+        file_(file),
+        shadow_(shadow),
         ready_(false),
-        visited_(false),
         containsMusic_(false),
-        icon_(gui::icon::getIcon(desc.icon())) {
+        icon_(gui::icon::getIcon(d.icon())) {
   }
-
-  void setName(const string& n) { name_ = n; }
-  void setVisited(bool v) { visited_ = v; }
 
   virtual bool mightContainSubItems() { return false; }
   virtual void itemOpennessChanged(bool isNowOpen) {
@@ -33,38 +32,31 @@ class Node : public juce::TreeViewItem {
       ready_ = true;
     }
   }
-
-  const juce::Rectangle& bounds() const { return desc_.widget().bounds(); }
-
-  virtual int getItemWidth() const { return bounds().x(); }
-  virtual int getItemHeight() const { return bounds().y(); }
-  bool alreadyVisited() const { return visited_; }
-  bool containsMusic() const { return containsMusic_; }
-
-  virtual const string& getName() const { return name_; }
-
-  virtual void paintItem(Graphics& g, int width, int height) {
-    Paintable p(desc_.widget(), &g);
-    if (icon_)
-      icon_->draw(g, 1.0);
-    g.drawSingleLineText(getName().c_str(), 0, 20);  // TODO
-  }
   virtual void fillSubItems() {}
 
-  File addPathToFile(File file) const {
-    for (int i = 1; i < path_.step_size(); ++i)
-  }
+  const gui::Rectangle bounds() const { return desc_.widget().bounds(); }
 
-  File pathToShadowFile() const {
-    return persist::getApp()->appDir().getChildFile("shadow")
+  virtual int getItemWidth() const { return bounds().top_left().x(); }
+  virtual int getItemHeight() const { return bounds().top_left().y(); }
+  bool alreadyVisited() const { return shadow_.exists(); }
+  bool containsMusic() const { return containsMusic_; }
+
+  const File& file() const { return file_; }
+  const File& shadow() const { return shadow_; }
+
+  virtual void paintItem(juce::Graphics& g, int width, int height) {
+    Painter p(desc_.widget(), &g);
+    if (icon_)
+      icon_->draw(g, 1.0);
+    g.drawSingleLineText(file_.getFileName(), 0, 20);  // TODO
   }
 
  protected:
   NodeDesc desc_;
-  Path path_;
-  string name_;
+  File file_;
+  File shadow_;
+
   bool ready_;
-  bool visited_;
   bool containsMusic_;
   const juce::Drawable* icon_;
 

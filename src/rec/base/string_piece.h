@@ -24,7 +24,7 @@
 
 #include "rec/base/base.h"
 
-namespace base {
+namespace rec {
 
 class StringPiece {
  public:
@@ -41,7 +41,7 @@ class StringPiece {
   StringPiece() : ptr_(NULL), length_(0) { }
   StringPiece(const char* str)
     : ptr_(str), length_((str == NULL) ? 0 : strlen(str)) { }
-  StringPiece(const string& str)
+  StringPiece(const std::string& str)
     : ptr_(str.data()), length_(str.size()) { }
   StringPiece(const char* offset, size_type len)
     : ptr_(offset), length_(len) { }
@@ -72,6 +72,15 @@ class StringPiece {
     length_ = len;
   }
 
+  char pop() {
+    char ch;
+    if (!empty()) {
+      ch = *ptr_++;
+      length_--;
+    }
+    return ch;
+  }
+
   char operator[](size_type i) const { return ptr_[i]; }
 
   void remove_prefix(size_type n) {
@@ -92,13 +101,13 @@ class StringPiece {
     return r;
   }
 
-  string as_string() const {
+  std::string as_string() const {
     // string doesn't like to take a NULL pointer even with a 0 size.
-    return string(!empty() ? data() : "", size());
+    return std::string(!empty() ? data() : "", size());
   }
 
-  void CopyToString(string* target) const;
-  void AppendToString(string* target) const;
+  void CopyToString(std::string* target) const;
+  void AppendToString(std::string* target) const;
 
   // Does "this" start with "x"
   bool starts_with(const StringPiece& x) const {
@@ -189,6 +198,6 @@ inline bool operator>=(const StringPiece& x, const StringPiece& y) {
 // allow StringPiece to be logged (needed for unit testing).
 extern std::ostream& operator<<(std::ostream& o, const StringPiece& piece);
 
-}  // namespace base
+}  // namespace rec
 
 #endif  // BASE_STRING_PIECE_H_
