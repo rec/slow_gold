@@ -6,7 +6,7 @@
 namespace rec {
 namespace util {
 
-int popUtf8Codepoint(StringPiece* s);
+int popUtf8Codepoint(StringPiece* s, const char** error = NULL);
 
 }  // namespace util
 }  // namespace rec
