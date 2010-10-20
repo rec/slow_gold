@@ -5,9 +5,13 @@
 
 namespace rec {
 namespace util {
+namespace utf8 {
 
-int popUtf8Codepoint(StringPiece* s, const char** error = NULL);
+int decode(StringPiece* s, const char** error = NULL);
+int encodedLength(int codepoint);
+int encode(int codepoint, char* out, int length = 0);
 
+}  // namespace utf8
 }  // namespace util
 }  // namespace rec
 
