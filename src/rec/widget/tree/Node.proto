@@ -7,6 +7,7 @@ import "rec/widget/Widget.proto";
 
 message NodeDesc {
   optional Widget widget = 1;
-  optional uint32 max_branch = 2 [default = 16];
-  optional string icon = 3;
+  optional uint32 max_branch = 2 [default = 32];
+  optional uint32 best_branch = 3 [default = 16];
+  optional string icon = 4;
 };

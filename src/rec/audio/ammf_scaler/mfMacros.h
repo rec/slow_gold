@@ -1,11 +1,11 @@
-/*	
+/*
  *	MFmacros - Misc utility macros
  *	Copyright (C) 1996 Muscle Fish LLC
  *	All Rights Reserved
  */
 
 #ifndef _MFMACROS_H
-#define _MFMACROS_H 
+#define _MFMACROS_H
 
 #include <stdlib.h>
 #if defined(unix)
@@ -32,13 +32,6 @@
 #define Calloc  MfCalloc
 #define Strdup  MfStrdup
 #define Free    MfFree
-
-/* Use Strdup() everywhere now, instead of strdup() or _strdup(). */
-/*
-#if (defined(macintosh) || defined(WIN32))
-#define strdup _strdup
-#endif
-*/
 
 #ifndef MIN
 #define MIN(a,b)		    (((a) < (b)) ? (a) : (b))

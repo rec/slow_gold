@@ -10,24 +10,20 @@ namespace {
 
 inline int pop(StringPiece* s) { return s->pop() & 0xFF; }
 
-const int BIT[] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
-int BOUNDS[] = {0x80, 0x800, 0x10000, 0x200000, 0x4000000};
-
-inline const char* checkCodepoint(int cp) {
+inline const char* checkLetter(int cp) {
   if (cp >= 0xD800 && cp <= 0xDFFF)
     return "UTF-16 surrogate";
 
   if (cp >= 0xFFFE && cp <= 0xFFFF)
-    return "Forbidden codepoint";
+    return "Forbidden letter";
 
-  if (cp < 0 || cp & 0x80000000)  // same condition?
-    return "Negative codepoint";
+  if (cp < 0 || cp & 0x80000000)  // Redundant condition?
+    return "Negative letter";
 
   return NULL;
 }
 
 }  // namespace
-
 
 #define FAIL_IF(COND, STR)                             \
   if (COND) {                                          \
@@ -36,10 +32,12 @@ inline const char* checkCodepoint(int cp) {
     return -1;                                         \
   }
 
+static const int BIT[] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
+
 int decode(StringPiece* s, const char** error) {
   FAIL_IF(s->empty(), "Empty string");
 
-  int cp = pop(s);   // Our codepoint!
+  int cp = pop(s);   // Our letter!
   if (cp < BIT[0])  // The most common case.
     return cp;
 
@@ -59,9 +57,11 @@ int decode(StringPiece* s, const char** error) {
     (cp <<= 6) += (ch - BIT[0]);
   }
 
-  FAIL_IF(const char* e = checkCodepoint(cp), e);
+  FAIL_IF(const char* e = checkLetter(cp), e);
   return cp;
 }
+
+static const int BOUNDS[] = {0x80, 0x800, 0x10000, 0x200000, 0x4000000};
 
 int encodedLength(int cp) {
   for (int i = 0; ; ++i)
@@ -70,7 +70,7 @@ int encodedLength(int cp) {
 }
 
 int encode(int cp, char* out, int length) {
-  if (checkCodepoint(cp))
+  if (checkLetter(cp))
     return 0;
 
   if (cp < BIT[0]) {
@@ -91,6 +91,36 @@ int encode(int cp, char* out, int length) {
   out[0] += cp;
   return length;
 }
+
+int cmp(StringPiece* s1, StringPiece *s2, Filter f) {
+  while (true) {
+    if (s1->empty() && s2->empty())
+      return true;
+
+    int l1 = f(decode(s1));
+    int l2 = f(decode(s2));
+    if (l1 < 0)
+      return 1;
+
+    if (l2 < 0)
+      return -1;
+
+    if (l1 != l2)
+      return l2 - l1;
+  }
+}
+
+int toLower(int lt) {
+  return (lt < 0 || lt >= BIT[0] || !isupper(lt)) ? lt : tolower(lt);
+}
+
+int toUpper(int lt) {
+  return (lt < 0 || lt >= BIT[0] || !islower(lt)) ? lt : toupper(lt);
+}
+
+inline int identity(int x) { return x; }
+
+int cmp(StringPiece* s1, StringPiece *s2) { return cmp(s1, s2, &identity); }
 
 }  // namespace utf8
 }  // namespace util

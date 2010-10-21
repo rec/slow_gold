@@ -100,17 +100,24 @@ class NodeDesc : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // optional uint32 max_branch = 2 [default = 16];
+  // optional uint32 max_branch = 2 [default = 32];
   inline bool has_max_branch() const;
   inline void clear_max_branch();
   static const int kMaxBranchFieldNumber = 2;
   inline ::google::protobuf::uint32 max_branch() const;
   inline void set_max_branch(::google::protobuf::uint32 value);
   
-  // optional string icon = 3;
+  // optional uint32 best_branch = 3 [default = 16];
+  inline bool has_best_branch() const;
+  inline void clear_best_branch();
+  static const int kBestBranchFieldNumber = 3;
+  inline ::google::protobuf::uint32 best_branch() const;
+  inline void set_best_branch(::google::protobuf::uint32 value);
+  
+  // optional string icon = 4;
   inline bool has_icon() const;
   inline void clear_icon();
-  static const int kIconFieldNumber = 3;
+  static const int kIconFieldNumber = 4;
   inline const ::std::string& icon() const;
   inline void set_icon(const ::std::string& value);
   inline void set_icon(const char* value);
@@ -124,13 +131,14 @@ class NodeDesc : public ::google::protobuf::Message {
   
   ::rec::widget::Widget* widget_;
   ::google::protobuf::uint32 max_branch_;
+  ::google::protobuf::uint32 best_branch_;
   ::std::string* icon_;
   static const ::std::string _default_icon_;
   friend void  protobuf_AddDesc_rec_2fwidget_2ftree_2fNode_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2ftree_2fNode_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2ftree_2fNode_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -170,12 +178,12 @@ inline ::rec::widget::Widget* NodeDesc::mutable_widget() {
   return widget_;
 }
 
-// optional uint32 max_branch = 2 [default = 16];
+// optional uint32 max_branch = 2 [default = 32];
 inline bool NodeDesc::has_max_branch() const {
   return _has_bit(1);
 }
 inline void NodeDesc::clear_max_branch() {
-  max_branch_ = 16u;
+  max_branch_ = 32u;
   _clear_bit(1);
 }
 inline ::google::protobuf::uint32 NodeDesc::max_branch() const {
@@ -186,42 +194,58 @@ inline void NodeDesc::set_max_branch(::google::protobuf::uint32 value) {
   max_branch_ = value;
 }
 
-// optional string icon = 3;
-inline bool NodeDesc::has_icon() const {
+// optional uint32 best_branch = 3 [default = 16];
+inline bool NodeDesc::has_best_branch() const {
   return _has_bit(2);
+}
+inline void NodeDesc::clear_best_branch() {
+  best_branch_ = 16u;
+  _clear_bit(2);
+}
+inline ::google::protobuf::uint32 NodeDesc::best_branch() const {
+  return best_branch_;
+}
+inline void NodeDesc::set_best_branch(::google::protobuf::uint32 value) {
+  _set_bit(2);
+  best_branch_ = value;
+}
+
+// optional string icon = 4;
+inline bool NodeDesc::has_icon() const {
+  return _has_bit(3);
 }
 inline void NodeDesc::clear_icon() {
   if (icon_ != &_default_icon_) {
     icon_->clear();
   }
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline const ::std::string& NodeDesc::icon() const {
   return *icon_;
 }
 inline void NodeDesc::set_icon(const ::std::string& value) {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }
   icon_->assign(value);
 }
 inline void NodeDesc::set_icon(const char* value) {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }
   icon_->assign(value);
 }
 inline void NodeDesc::set_icon(const char* value, size_t size) {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }
   icon_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* NodeDesc::mutable_icon() {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }

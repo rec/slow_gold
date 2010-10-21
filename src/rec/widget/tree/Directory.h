@@ -4,22 +4,36 @@
 #include <algorithm>
 
 #include "rec/widget/tree/Node.h"
+#include "rec/util/BeginEnd.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 
+typedef util::BeginEnd<int> Range;
+
 class Directory : public Node {
  public:
-  Directory(const NodeDesc& d, const File& f, const File& s) : Node(d, f, s) {}
+  typedef juce::Array<File> FileArray;
+
+  Directory(const NodeDesc& d, const ShadowFile s)
+      : Node(d, s), children_(NULL) {
+  }
   virtual bool mightContainSubItems() { return true; }
   virtual void fillSubItems();
 
- private:
+ protected:
+  Directory(const Directory& d, const Range& r)
+      : Node(d.desc_, d.shadow_), range_(r), children_(d.children_) {
+  }
   virtual void fillFewItems();
   virtual void fillManyItems();
 
-  juce::Array<File> children_;
+  FileArray *children_;
+  Range range_;
+  scoped_ptr<FileArray> childrenDeleter_;
+
+  int getLetter(int child, int depth = 1);
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
 };

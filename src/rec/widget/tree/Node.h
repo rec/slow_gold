@@ -14,14 +14,20 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+struct ShadowFile {
+  File file_;
+  File shadow_;
+
+  ShadowFile() {}
+  ShadowFile(const File& f, const File& s) : file_(f), shadow_(s) {}
+};
+
 class Node : public juce::TreeViewItem {
  public:
-  Node(const NodeDesc& d, const File& file, const File& shadow)
+  Node(const NodeDesc& d, const ShadowFile& s)
       : desc_(d),
-        file_(file),
-        shadow_(shadow),
+        shadow_(s),
         ready_(false),
-        containsMusic_(false),
         icon_(gui::icon::getIcon(d.icon())) {
   }
 
@@ -38,23 +44,23 @@ class Node : public juce::TreeViewItem {
 
   virtual int getItemWidth() const { return bounds().top_left().x(); }
   virtual int getItemHeight() const { return bounds().top_left().y(); }
-  bool alreadyVisited() const { return shadow_.exists(); }
-  bool containsMusic() const { return containsMusic_; }
+  bool alreadyVisited() const { return shadow_.shadow_.exists(); }
+  bool containsMusic() const { return false; }
 
-  const File& file() const { return file_; }
-  const File& shadow() const { return shadow_; }
+  const ShadowFile& shadow() const { return shadow_; }
+
+  virtual String name() const { return shadow_.file_.getFileName(); }
 
   virtual void paintItem(juce::Graphics& g, int width, int height) {
     Painter p(desc_.widget(), &g);
     if (icon_)
       icon_->draw(g, 1.0);
-    g.drawSingleLineText(file_.getFileName(), 0, 20);  // TODO
+    g.drawSingleLineText(name(), 0, 20);  // TODO
   }
 
  protected:
   NodeDesc desc_;
-  File file_;
-  File shadow_;
+  ShadowFile shadow_;
 
   bool ready_;
   bool containsMusic_;
