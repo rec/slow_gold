@@ -62,6 +62,14 @@ int decode(StringPiece* s, const char** error) {
   return cp;
 }
 
+const char* skip(const char* s, int letters, const char** error) {
+  StringPiece sp(s, 6 * letters);
+  for (int i = 0, code = 0; i < letters && code >= 0 && *sp.data(); ++i)
+    code = decode(&sp, error);
+
+  return sp.data();
+}
+
 static const int BOUNDS[] = {0x80, 0x800, 0x10000, 0x200000, 0x4000000};
 
 int encodedLength(int cp) {
@@ -111,11 +119,11 @@ int cmp(const StringPiece& s, const StringPiece& t, Filter f) {
 }
 
 int identity(int x) { return x; }
-  
+
 int cmp(const StringPiece& s, const StringPiece& t) {
   return cmp(s, t, &identity);
 }
-  
+
 int cmpi(const StringPiece& s, const StringPiece& t) {
   return cmp(s, t, &tolower);
 }
@@ -123,7 +131,7 @@ int cmpi(const StringPiece& s, const StringPiece& t) {
 int cmp(const String& s, const String& t) {
   StringPiece ss(s.toUTF8(), s.length());
   StringPiece tt(t.toUTF8(), t.length());
-  return cmp(ss, tt); 
+  return cmp(ss, tt);
 }
 
 int cmpi(const String& s, const String& t) {
@@ -131,6 +139,8 @@ int cmpi(const String& s, const String& t) {
   StringPiece tt(t.toUTF8(), t.length());
   return cmpi(ss, tt);
 }
+
+
 
 }  // namespace utf8
 }  // namespace util

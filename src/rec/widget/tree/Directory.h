@@ -4,7 +4,6 @@
 #include <algorithm>
 
 #include "rec/widget/tree/Node.h"
-#include "rec/widget/tree/Range.h"
 
 namespace rec {
 namespace widget {
@@ -15,19 +14,21 @@ class Directory : public Node {
   typedef juce::Array<File> FileArray;
 
   Directory(const NodeDesc& d, const ShadowFile s)
-      : Node(d, s), children_(NULL) {
+      : Node(d, s), children_(NULL), ready_(false) {
   }
   virtual bool mightContainSubItems() { return true; }
-  virtual void fillSubItems();
+  virtual String name() const;
 
+  virtual void itemOpennessChanged(bool isNowOpen);
+  
  protected:
   Directory(const Directory& d, const Range& r)
-      : Node(d.desc_, d.shadow_), range_(r), children_(d.children_) {
+      : Node(d.desc_, d.shadow_), range_(r), children_(d.children_),
+        ready_(false) {
   }
-  virtual void fillFewItems();
-  virtual void fillManyItems();
 
   FileArray *children_;
+  bool ready_;
   Range range_;
   scoped_ptr<FileArray> childrenDeleter_;
 

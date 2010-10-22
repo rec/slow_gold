@@ -65,6 +65,21 @@ TEST(Utf8, International) {
   EXPECT_STREQ(out, "高");
 }
 
+TEST(Utf8, Skip) {
+  EXPECT_STREQ(skip("abc", 0), "abc");
+  EXPECT_STREQ(skip("abc", 1), "bc");
+  EXPECT_STREQ(skip("abc", 2), "c");
+  EXPECT_STREQ(skip("abc", 3), "");
+  EXPECT_STREQ(skip("abc", 4), "");
+
+  EXPECT_STREQ(skip("高橋洋子", 0), "高橋洋子");
+  EXPECT_STREQ(skip("高橋洋子", 1), "橋洋子");
+  EXPECT_STREQ(skip("高橋洋子", 2), "洋子");
+  EXPECT_STREQ(skip("高橋洋子", 3), "子");
+  EXPECT_STREQ(skip("高橋洋子", 4), "");
+  EXPECT_STREQ(skip("高橋洋子", 5), "");
+}
+
 }  // namespace
 }  // namespace utf8
 }  // namespace util

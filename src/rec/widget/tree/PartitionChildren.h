@@ -2,7 +2,7 @@
 #define __REC_WIDGET_TREE_PARTITIONCHILDREN__
 
 #include "rec/base/base.h"
-#include "rec/widget/tree/Range.h"
+#include "rec/widget/tree/Tree.h"
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {

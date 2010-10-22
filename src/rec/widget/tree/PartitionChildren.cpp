@@ -3,7 +3,6 @@
 #include "rec/widget/tree/PartitionChildren.h"
 
 #include "rec/base/basictypes.h"
-#include "rec/util/Utf8.h"
 
 using namespace juce;
 
@@ -12,19 +11,10 @@ namespace widget {
 namespace tree {
 namespace {
 
-inline String getName(const File& f) { return f.getFileName(); }
-inline string getName(const string& s) { return s; }
-
-template <typename Children>
-int cmpi(const Children& kids, int i) {
-  return util::utf8::cmpi(getName(kids[i - 1]), getName(kids[i]));
-}
-
 inline void add(Array<int>* list, int x) { list->add(x); }
 inline void add(std::vector<int>* list, int x) { list->push_back(x); }
 
 }  // namespace
-
 
 template <typename Children, typename IntegerList>
 void partitionChildrenT(const Children& kids, const Range& range,
@@ -69,11 +59,13 @@ void partitionChildrenT(const Children& kids, const Range& range,
 
 using std::vector;
 
-void partitionChildren(const Array<File>& c, const Range& r, int branch, Array<int>* l) {
+void partitionChildren(const Array<File>& c, const Range& r, int branch,
+                       Array<int>* l) {
   partitionChildrenT(c, r, branch, l);
 }
 
-void partitionChildren(const vector<string>& c, const Range& r, int branch, vector<int>* l) {
+void partitionChildren(const vector<string>& c, const Range& r, int branch,
+                       vector<int>* l) {
   partitionChildrenT(c, r, branch, l);
 }
 
