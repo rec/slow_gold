@@ -1,0 +1,8 @@
+// This is a collection of Widgets which represent or edit a file that lives at
+// a specific "path", which you can think of as a file path, or a URL.
+
+package rec.widget.tree;
+
+message Path {
+  repeated string step = 1;
+};

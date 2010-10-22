@@ -75,7 +75,10 @@ void MainPageK::construct(MainPageJ* peer) {
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(&transportSource_);
+
+#if JUCE_MAC
   rec::audio::format::mpg123::initializeOnce();
+#endif
 
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();

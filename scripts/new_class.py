@@ -33,7 +33,7 @@ def new_class(filename, **context):
   file_parts[-1] = file_root
   file_base = '/'.join(file_parts)
 
-  if context['svg']:
+  if 'svg' in context:
     suffix = '.svg.h'
   else:
     suffix = '.h'

@@ -35,108 +35,9 @@ void  protobuf_AddDesc_rec_2fwidget_2ftree_2fNode_2eproto();
 void protobuf_AssignDesc_rec_2fwidget_2ftree_2fNode_2eproto();
 void protobuf_ShutdownFile_rec_2fwidget_2ftree_2fNode_2eproto();
 
-class Path;
 class NodeDesc;
 
 // ===================================================================
-
-class Path : public ::google::protobuf::Message {
- public:
-  Path();
-  virtual ~Path();
-  
-  Path(const Path& from);
-  
-  inline Path& operator=(const Path& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Path& default_instance();
-  
-  void Swap(Path* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Path* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Path& from);
-  void MergeFrom(const Path& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // repeated string field = 1;
-  inline int field_size() const;
-  inline void clear_field();
-  static const int kFieldFieldNumber = 1;
-  inline const ::std::string& field(int index) const;
-  inline ::std::string* mutable_field(int index);
-  inline void set_field(int index, const ::std::string& value);
-  inline void set_field(int index, const char* value);
-  inline void set_field(int index, const char* value, size_t size);
-  inline ::std::string* add_field();
-  inline void add_field(const ::std::string& value);
-  inline void add_field(const char* value);
-  inline void add_field(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& field() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_field();
-  
-  // @@protoc_insertion_point(class_scope:rec.widget.tree.Path)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::google::protobuf::RepeatedPtrField< ::std::string> field_;
-  friend void  protobuf_AddDesc_rec_2fwidget_2ftree_2fNode_2eproto();
-  friend void protobuf_AssignDesc_rec_2fwidget_2ftree_2fNode_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fwidget_2ftree_2fNode_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Path* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class NodeDesc : public ::google::protobuf::Message {
  public:
@@ -199,17 +100,24 @@ class NodeDesc : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // optional uint32 max_branch = 2 [default = 16];
+  // optional uint32 max_branch = 2 [default = 32];
   inline bool has_max_branch() const;
   inline void clear_max_branch();
   static const int kMaxBranchFieldNumber = 2;
   inline ::google::protobuf::uint32 max_branch() const;
   inline void set_max_branch(::google::protobuf::uint32 value);
   
-  // optional string icon = 3;
+  // optional uint32 best_branch = 3 [default = 16];
+  inline bool has_best_branch() const;
+  inline void clear_best_branch();
+  static const int kBestBranchFieldNumber = 3;
+  inline ::google::protobuf::uint32 best_branch() const;
+  inline void set_best_branch(::google::protobuf::uint32 value);
+  
+  // optional string icon = 4;
   inline bool has_icon() const;
   inline void clear_icon();
-  static const int kIconFieldNumber = 3;
+  static const int kIconFieldNumber = 4;
   inline const ::std::string& icon() const;
   inline void set_icon(const ::std::string& value);
   inline void set_icon(const char* value);
@@ -223,13 +131,14 @@ class NodeDesc : public ::google::protobuf::Message {
   
   ::rec::widget::Widget* widget_;
   ::google::protobuf::uint32 max_branch_;
+  ::google::protobuf::uint32 best_branch_;
   ::std::string* icon_;
   static const ::std::string _default_icon_;
   friend void  protobuf_AddDesc_rec_2fwidget_2ftree_2fNode_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2ftree_2fNode_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2ftree_2fNode_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -250,54 +159,6 @@ class NodeDesc : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// Path
-
-// repeated string field = 1;
-inline int Path::field_size() const {
-  return field_.size();
-}
-inline void Path::clear_field() {
-  field_.Clear();
-}
-inline const ::std::string& Path::field(int index) const {
-  return field_.Get(index);
-}
-inline ::std::string* Path::mutable_field(int index) {
-  return field_.Mutable(index);
-}
-inline void Path::set_field(int index, const ::std::string& value) {
-  field_.Mutable(index)->assign(value);
-}
-inline void Path::set_field(int index, const char* value) {
-  field_.Mutable(index)->assign(value);
-}
-inline void Path::set_field(int index, const char* value, size_t size) {
-  field_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Path::add_field() {
-  return field_.Add();
-}
-inline void Path::add_field(const ::std::string& value) {
-  field_.Add()->assign(value);
-}
-inline void Path::add_field(const char* value) {
-  field_.Add()->assign(value);
-}
-inline void Path::add_field(const char* value, size_t size) {
-  field_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-Path::field() const {
-  return field_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-Path::mutable_field() {
-  return &field_;
-}
-
-// -------------------------------------------------------------------
-
 // NodeDesc
 
 // optional .rec.widget.Widget widget = 1;
@@ -317,12 +178,12 @@ inline ::rec::widget::Widget* NodeDesc::mutable_widget() {
   return widget_;
 }
 
-// optional uint32 max_branch = 2 [default = 16];
+// optional uint32 max_branch = 2 [default = 32];
 inline bool NodeDesc::has_max_branch() const {
   return _has_bit(1);
 }
 inline void NodeDesc::clear_max_branch() {
-  max_branch_ = 16u;
+  max_branch_ = 32u;
   _clear_bit(1);
 }
 inline ::google::protobuf::uint32 NodeDesc::max_branch() const {
@@ -333,42 +194,58 @@ inline void NodeDesc::set_max_branch(::google::protobuf::uint32 value) {
   max_branch_ = value;
 }
 
-// optional string icon = 3;
-inline bool NodeDesc::has_icon() const {
+// optional uint32 best_branch = 3 [default = 16];
+inline bool NodeDesc::has_best_branch() const {
   return _has_bit(2);
+}
+inline void NodeDesc::clear_best_branch() {
+  best_branch_ = 16u;
+  _clear_bit(2);
+}
+inline ::google::protobuf::uint32 NodeDesc::best_branch() const {
+  return best_branch_;
+}
+inline void NodeDesc::set_best_branch(::google::protobuf::uint32 value) {
+  _set_bit(2);
+  best_branch_ = value;
+}
+
+// optional string icon = 4;
+inline bool NodeDesc::has_icon() const {
+  return _has_bit(3);
 }
 inline void NodeDesc::clear_icon() {
   if (icon_ != &_default_icon_) {
     icon_->clear();
   }
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline const ::std::string& NodeDesc::icon() const {
   return *icon_;
 }
 inline void NodeDesc::set_icon(const ::std::string& value) {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }
   icon_->assign(value);
 }
 inline void NodeDesc::set_icon(const char* value) {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }
   icon_->assign(value);
 }
 inline void NodeDesc::set_icon(const char* value, size_t size) {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }
   icon_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* NodeDesc::mutable_icon() {
-  _set_bit(2);
+  _set_bit(3);
   if (icon_ == &_default_icon_) {
     icon_ = new ::std::string;
   }
