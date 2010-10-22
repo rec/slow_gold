@@ -23,7 +23,7 @@ void sortedChildren(const File& f, juce::Array<File>* kids) {
   int size = f.findChildFiles(*kids,
                               File::findFilesAndDirectories +
                               File::ignoreHiddenFiles, false);
-  for (int i = 0; i < size; ) {
+  for (int i = 0; i < size; ++i) {
     if (!includeChild((*kids)[i]))
       kids->swap(i, --size);
   }

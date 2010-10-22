@@ -10,6 +10,10 @@ namespace {
 
 TEST(Directory, All) {
   Directory d(NodeDesc(), ShadowFile(File("~/iTunes"), File("~/iTunes")));
+  d.setOpen(true);
+
+  for (int i = 0; i < d.getNumSubItems(); ++i)
+    LOG(INFO) << ((Node*) d.getSubItem(i))->name();
 }
 
 }  // namespace

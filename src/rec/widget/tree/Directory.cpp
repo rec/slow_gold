@@ -55,9 +55,13 @@ String Directory::name() const {
 
   int begin = range_.begin_ ? cmpi(*children_, range_.begin_) : 1;
   int end = range_.end_ == size ? 1 : cmpi(*children_, range_.end_);
+  LOG(INFO) << begin << ", " << end;
 
   return getSub((*children_)[range_.begin_], begin) + " - " +
-    getSub((*children_)[range_.end_ - 1], end);
+    getSub((*children_)[range_.end_ - 1], end) + String(" | ") +
+
+  "'" + (*children_)[range_.begin_].getFileName() + "' - '" +
+    (*children_)[range_.end_ - 1].getFileName();
 }
 
 }  // namespace tree
