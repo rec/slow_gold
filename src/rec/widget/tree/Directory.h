@@ -4,13 +4,11 @@
 #include <algorithm>
 
 #include "rec/widget/tree/Node.h"
-#include "rec/util/BeginEnd.h"
+#include "rec/widget/tree/Range.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
-
-typedef util::BeginEnd<int> Range;
 
 class Directory : public Node {
  public:

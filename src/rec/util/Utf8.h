@@ -11,13 +11,13 @@ int decode(StringPiece* s, const char** error = NULL);
 int encodedLength(int letter);
 int encode(int letter, char* out, int length = 0);
 
-// ASCII only right now.
-int toLower(int letter);
-int toUpper(int letter);
-
 typedef int (*Filter)(int);
-int cmp(StringPiece* s1, StringPiece *s2);
-int cmp(StringPiece* s1, StringPiece *s2, Filter f);
+
+// Returns 0 if the two string pieces compare the same as UTF-8.  Returns a
+// negative value if s1 is less than s2, positive if s1 is greater than s2, and
+// the magnitude is the UTF-8 position that the files differ at.
+int cmp(StringPiece* s, StringPiece *t);
+int cmpi(StringPiece* s, StringPiece *t);
 
 }  // namespace utf8
 }  // namespace util

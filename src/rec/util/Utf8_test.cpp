@@ -40,14 +40,14 @@ TEST(Utf8, Extended) {
 }
 
 TEST(Utf8, UpperLower) {
-  EXPECT_EQ(toUpper(0xA9), 0xA9);
-  EXPECT_EQ(toLower(0xA9), 0xA9);
+  EXPECT_EQ(toupper(0xA9), 0xA9);
+  EXPECT_EQ(tolower(0xA9), 0xA9);
 
-  EXPECT_EQ(toUpper('a'), 'A');
-  EXPECT_EQ(toLower('a'), 'a');
+  EXPECT_EQ(toupper('a'), 'A');
+  EXPECT_EQ(tolower('a'), 'a');
 
-  EXPECT_EQ(toUpper('Z'), 'Z');
-  EXPECT_EQ(toLower('Z'), 'z');
+  EXPECT_EQ(toupper('Z'), 'Z');
+  EXPECT_EQ(tolower('Z'), 'z');
 }
 
 TEST(Utf8, International) {

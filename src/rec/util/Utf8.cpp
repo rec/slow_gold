@@ -93,34 +93,24 @@ int encode(int cp, char* out, int length) {
 }
 
 int cmp(StringPiece* s1, StringPiece *s2, Filter f) {
-  while (true) {
+  for (int i = 1; ; ++i) {
     if (s1->empty() && s2->empty())
-      return true;
+      return 0;
 
     int l1 = f(decode(s1));
     int l2 = f(decode(s2));
-    if (l1 < 0)
-      return 1;
+    if (l1 < 0 || l1 < l2)
+      return i;
 
-    if (l2 < 0)
-      return -1;
-
-    if (l1 != l2)
-      return l2 - l1;
+    if (l2 < 0 || l2 < l1)
+      return -i;
   }
-}
-
-int toLower(int lt) {
-  return (lt < 0 || lt >= BIT[0] || !isupper(lt)) ? lt : tolower(lt);
-}
-
-int toUpper(int lt) {
-  return (lt < 0 || lt >= BIT[0] || !islower(lt)) ? lt : toupper(lt);
 }
 
 inline int identity(int x) { return x; }
 
 int cmp(StringPiece* s1, StringPiece *s2) { return cmp(s1, s2, &identity); }
+int cmpi(StringPiece* s1, StringPiece *s2) { return cmp(s1, s2, &tolower); }
 
 }  // namespace utf8
 }  // namespace util
