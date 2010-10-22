@@ -9,11 +9,11 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-void partitionChildren(const juce::Array<File>&, const Range&, int branching,
-                       juce::Array<int>*);
+void partitionChildren(const juce::Array<File>& kids, const Range& range,
+                       int branching, juce::Array<int>* partition);
 
-void partitionChildren(const std::vector<string>&, const Range&, int branching,
-                       std::vector<int>*);
+void partitionChildren(const std::vector<string>& kids, const Range& range,
+                       int branching, std::vector<int>* partition);
 
 }  // namespace tree
 }  // namespace widget
