@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "rec/widget/tree/SortedChildren.h"
+#include "rec/widget/tree/Tree.h"
 
 namespace rec {
 namespace widget {
@@ -17,6 +18,12 @@ bool includeChild(const File& file) {
     file.hasFileExtension("ogg");
 }
 
+struct Compare {
+  bool operator()(const File& f, const File& g) const {
+    return util::utf8::cmpi(f.getFileName(), g.getFileName()) > 0;
+  }
+};
+
 }  // namespace
 
 void sortedChildren(const File& f, juce::Array<File>* kids) {
@@ -31,7 +38,7 @@ void sortedChildren(const File& f, juce::Array<File>* kids) {
   kids->removeRange(size, kids->size());
   File* begin = kids->getRawDataPointer();
   File* end = begin + size;
-  std::sort(begin, end);
+  std::sort(begin, end, Compare());
 }
 
 }  // namespace tree

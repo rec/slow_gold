@@ -44,8 +44,9 @@ void Directory::itemOpennessChanged(bool isNowOpen) {
 }
 
 String getSub(const File& f, int letters) {
-  String n = f.getFileName();
-  return String(n.toUTF8(), util::utf8::skip(n.toUTF8(), letters));
+  String s = f.getFileName().substring(0, letters);
+  s[0] = toupper(s[0]);
+  return s;
 }
 
 String Directory::name() const {
@@ -55,13 +56,11 @@ String Directory::name() const {
 
   int begin = range_.begin_ ? cmpi(*children_, range_.begin_) : 1;
   int end = range_.end_ == size ? 1 : cmpi(*children_, range_.end_);
-  LOG(INFO) << begin << ", " << end;
 
-  return getSub((*children_)[range_.begin_], begin) + " - " +
-    getSub((*children_)[range_.end_ - 1], end) + String(" | ") +
+  String begins = getSub((*children_)[range_.begin_], begin);
+  String ends = getSub((*children_)[range_.end_ - 1], end);
 
-  "'" + (*children_)[range_.begin_].getFileName() + "' - '" +
-    (*children_)[range_.end_ - 1].getFileName();
+  return (begins == ends) ? begins : (begins + " - " + ends);
 }
 
 }  // namespace tree
