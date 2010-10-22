@@ -2,6 +2,7 @@
 
 #include "rec/util/Utf8.h"
 #include "rec/base/Arraysize.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {
@@ -92,13 +93,15 @@ int encode(int cp, char* out, int length) {
   return length;
 }
 
-int cmp(StringPiece* s1, StringPiece *s2, Filter f) {
+int cmp(const StringPiece& s, const StringPiece& t, Filter f) {
+  StringPiece ss(s);
+  StringPiece tt(t);
   for (int i = 1; ; ++i) {
-    if (s1->empty() && s2->empty())
+    if (ss.empty() && tt.empty())
       return 0;
 
-    int l1 = f(decode(s1));
-    int l2 = f(decode(s2));
+    int l1 = f(decode(&ss));
+    int l2 = f(decode(&tt));
     if (l1 < 0 || l1 < l2)
       return i;
 
@@ -107,10 +110,27 @@ int cmp(StringPiece* s1, StringPiece *s2, Filter f) {
   }
 }
 
-inline int identity(int x) { return x; }
+int identity(int x) { return x; }
+  
+int cmp(const StringPiece& s, const StringPiece& t) {
+  return cmp(s, t, &identity);
+}
+  
+int cmpi(const StringPiece& s, const StringPiece& t) {
+  return cmp(s, t, &tolower);
+}
 
-int cmp(StringPiece* s1, StringPiece *s2) { return cmp(s1, s2, &identity); }
-int cmpi(StringPiece* s1, StringPiece *s2) { return cmp(s1, s2, &tolower); }
+int cmp(const String& s, const String& t) {
+  StringPiece ss(s.toUTF8(), s.length());
+  StringPiece tt(t.toUTF8(), t.length());
+  return cmp(ss, tt); 
+}
+
+int cmpi(const String& s, const String& t) {
+  StringPiece ss(s.toUTF8(), s.length());
+  StringPiece tt(t.toUTF8(), t.length());
+  return cmpi(ss, tt);
+}
 
 }  // namespace utf8
 }  // namespace util
