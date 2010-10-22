@@ -66,18 +66,20 @@ TEST(Utf8, International) {
 }
 
 TEST(Utf8, Skip) {
-  EXPECT_STREQ(skip("abc", 0), "abc");
-  EXPECT_STREQ(skip("abc", 1), "bc");
-  EXPECT_STREQ(skip("abc", 2), "c");
-  EXPECT_STREQ(skip("abc", 3), "");
-  EXPECT_STREQ(skip("abc", 4), "");
+  EXPECT_EQ(skip("abc", 0), 0);
+  EXPECT_EQ(skip("abc", 1), 1);
+  EXPECT_EQ(skip("abc", 2), 2);
+  EXPECT_EQ(skip("abc", 3), 3);
+  EXPECT_EQ(skip("abc", 4), 3);
 
-  EXPECT_STREQ(skip("高橋洋子", 0), "高橋洋子");
-  EXPECT_STREQ(skip("高橋洋子", 1), "橋洋子");
-  EXPECT_STREQ(skip("高橋洋子", 2), "洋子");
-  EXPECT_STREQ(skip("高橋洋子", 3), "子");
-  EXPECT_STREQ(skip("高橋洋子", 4), "");
-  EXPECT_STREQ(skip("高橋洋子", 5), "");
+  EXPECT_EQ(skip("高橋洋子", 0), 0);
+  EXPECT_EQ(skip("高橋洋子", 1), 3);
+  EXPECT_EQ(skip("高橋洋子", 2), 6);
+  EXPECT_EQ(skip("高橋洋子", 3), 9);
+  EXPECT_EQ(skip("高橋洋子", 4), 12);
+  EXPECT_EQ(skip("高橋洋子", 5), 12);
+
+  EXPECT_EQ(skip("©", 1), 2);
 }
 
 }  // namespace

@@ -11,7 +11,7 @@ int decode(StringPiece* s, const char** error = NULL);
 int encodedLength(int letter);
 int encode(int letter, char* out, int length = 0);
 
-const char* skip(const char* s, int letters, const char** error = NULL);
+int skip(const char* s, int letters, const char** error = NULL);
 
 typedef int (*Filter)(int);
 

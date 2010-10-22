@@ -62,12 +62,12 @@ int decode(StringPiece* s, const char** error) {
   return cp;
 }
 
-const char* skip(const char* s, int letters, const char** error) {
+int skip(const char* s, int letters, const char** error) {
   StringPiece sp(s, 6 * letters);
   for (int i = 0, code = 0; i < letters && code >= 0 && *sp.data(); ++i)
     code = decode(&sp, error);
 
-  return sp.data();
+  return sp.data() - s;
 }
 
 static const int BOUNDS[] = {0x80, 0x800, 0x10000, 0x200000, 0x4000000};
