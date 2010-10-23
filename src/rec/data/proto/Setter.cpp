@@ -37,23 +37,23 @@ Operation* swapOp(const Address& a, int s, int t) {
 }  // namespace
 
 void Setter::append(const Address& address, const Value& value) {
-  data_->change(valueOp(Operation::APPEND, address, value));
+  (*data_)(valueOp(Operation::APPEND, address, value));
 }
 
 void Setter::clear(const Address& address) {
-  data_->change(newOp(Operation::CLEAR, address));
+  (*data_)(newOp(Operation::CLEAR, address));
 }
 
 void Setter::remove(const Address& address, int remove) {
-  data_->change(removeOp(address, remove));
+  (*data_)(removeOp(address, remove));
 }
 
 void Setter::set(const Address& address, const Value& value) {
-  data_->change(valueOp(Operation::SET, address, value));
+  (*data_)(valueOp(Operation::SET, address, value));
 }
 
 void Setter::swap(const Address& a, int s, int t) {
-  data_->change(swapOp(a, s, t));
+  (*data_)(swapOp(a, s, t));
 }
 
 }  // namespace arg

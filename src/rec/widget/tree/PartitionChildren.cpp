@@ -34,7 +34,7 @@ void partitionChildrenT(const Children& kids, const Range& range,
 
     int c = cmpi(kids, end);
     int newEnd = end;
-    for (int j = 0; end < range.end_ && c > 1 && i < averageBranch; ++j) {
+    for (int j = 0; end < range.end_ && c > 1 && j < averageBranch; ++j) {
       int end2 = end + (1 + j / 2) * ((j & 1) ? 1 : -1);
       if (end2 >= range.end_) {
         newEnd = range.end_;

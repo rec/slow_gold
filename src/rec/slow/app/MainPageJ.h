@@ -51,7 +51,6 @@ public:
   void resized();
   void buttonClicked (Button* buttonThatWasClicked);
   void sliderValueChanged (Slider* sliderThatWasMoved);
-  void selectionChanged();
 
 
     //==============================================================================
@@ -78,6 +77,7 @@ public:
     rec::widget::AudioThumbnailWidget* thumbnail;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
+    TreeView* treeTreeComp;
     Label* explanation;
     Slider* zoomSlider;
     Slider* timeScaleSlider;
