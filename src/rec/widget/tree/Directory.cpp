@@ -58,6 +58,12 @@ void Directory::itemOpennessChanged(bool isNowOpen) {
 }
 
 String getSub(const File& f, int letters) {
+  LOG(ERROR) 
+    << "sub: "
+    << f.getFileName().toCString() << ", "
+    << f.getFileName().toUTF8() << ", "
+    << f.getFileName().substring(0, 1).toCString() << ", "
+    << f.getFileName().substring(0, 1).toUTF8() << ", ";
   String s = f.getFileName().substring(0, letters);
   s[0] = tolower(s[0]);
   return s;
