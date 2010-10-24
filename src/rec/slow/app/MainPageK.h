@@ -43,8 +43,6 @@ class MainPageK : public juce::Slider::Listener,
   void cut();
   void paste();
 
-  static MainPageK* getInstance() { return INSTANCE; }
-
   void loadFileIntoTransport(const File& audioFile);
 
  private:
@@ -54,7 +52,6 @@ class MainPageK : public juce::Slider::Listener,
   static const juce::Colour FOREGROUND;
   static const File::SpecialLocationType START_DIR;
   static const char* PREVIEW_THREAD_NAME;
-  static MainPageK* INSTANCE;
 
   void readyToPlay();
 

@@ -17,7 +17,6 @@
 #include "rec/data/yaml/Yaml.h"
 #include "rec/widget/tree/Directory.h"
 
-
 using rec::audio::source::TimeStretch;
 
 using rec::widget::ThreadDescription;
@@ -44,13 +43,10 @@ const Colour MainPageK::FOREGROUND = Colours::white;
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 
-MainPageK* MainPageK::INSTANCE = NULL;
-
 MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_) {
-  INSTANCE = this;
 }
 
 static Thread* makeCursorThread(MainPageK* main) {
@@ -88,9 +84,7 @@ void MainPageK::construct(MainPageJ* peer) {
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(&transportSource_);
 
-#if JUCE_MAC
   rec::audio::format::mpg123::initializeOnce();
-#endif
 
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
