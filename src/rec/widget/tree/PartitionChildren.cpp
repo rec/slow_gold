@@ -38,6 +38,7 @@ void partitionChildrenT(const Children& kids, const Range& range,
       int end2 = end + (1 + j / 2) * ((j & 1) ? 1 : -1);
       if (end2 >= range.end_) {
         newEnd = range.end_;
+
       } else if (end2 > begin) {
         int c2 = cmpi(kids, end2);
         if (c2 < c) {
@@ -55,7 +56,6 @@ void partitionChildrenT(const Children& kids, const Range& range,
   }
   add(list, range.end_);
 }
-
 
 using std::vector;
 

@@ -16,7 +16,7 @@
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
-                   headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../build/release/libcddb/include;../../../../../build/release/gflags/include;../../../../../build/release/glog/include;../../../../../build/release/gtest/include;../../../../../build/release/mpg123;../../../../../build/release/protobuf/include;../.."
+                   headerPath="../../../../../mpg123-1.12.5/ports/MSVC++;../../../../../protobuf-2.3.0/src;../../../../../rec/src/rec/data/yaml/include;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../build/debug/libcddb/include;../../../../../build/debug/gflags/include;../../../../../glog-0.3.1/src/windows;../..."
                    isDebug="1" name="Debug" optimisation="1" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
     <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"

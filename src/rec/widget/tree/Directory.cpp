@@ -58,7 +58,7 @@ void Directory::itemOpennessChanged(bool isNowOpen) {
 }
 
 String getSub(const File& f, int letters) {
-  LOG(ERROR) 
+  LOG(ERROR)
     << "sub: "
     << f.getFileName().toCString() << ", "
     << f.getFileName().toUTF8() << ", "
