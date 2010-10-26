@@ -12,11 +12,11 @@
     <VS2008 juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
             targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"
             extraLinkerFlags="libcddb.lib libgflags-debug.lib libglog.lib libmpg123.lib libprotobuf.lib /LIBPATH:..\..\..\..\..\libcddb-1.3.2\Debug /LIBPATH:..\..\..\..\..\gflags-1.3\Debug /LIBPATH:..\..\..\..\..\glog-0.3.1\Debug /LIBPATH:..\..\..\..\..\mpg123-1.12.5\ports\MSVC++\2008\Debug /LIBPATH:..\..\..\..\..\protobuf-2.3.0\vsprojects\Debug /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
-            extraDefs=""/>
+            extraDefs="GOOGLE_GLOG_DLL_DECL="/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
-                   headerPath="../../../../../mpg123-1.12.5/ports/MSVC++;../../../../../protobuf-2.3.0/src;../../../../../rec/src/rec/data/yaml/include;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../build/debug/libcddb/include;../../../../../build/debug/gflags/include;../../../../../glog-0.3.1/src/windows;../..."
+                   headerPath="../../../../../mpg123-1.12.5/ports/MSVC++;../../../../../protobuf-2.3.0/src;../../../../../rec/src/rec/data/yaml/include;../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../build/debug/libcddb/include;../../../../../build/debug/gflags/include;../../../../../glog-0.3.1/src/windows;../..;."
                    isDebug="1" name="Debug" optimisation="1" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
     <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
