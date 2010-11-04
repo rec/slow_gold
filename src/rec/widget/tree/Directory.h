@@ -13,19 +13,16 @@ class Directory : public Node {
  public:
   typedef juce::Array<File> FileArray;
 
-  Directory(const NodeDesc& d, const ShadowFile s)
-      : Node(d, s), children_(NULL), ready_(false) {
-  }
+  Directory(const NodeDesc& d, const ShadowFile s);
   virtual bool mightContainSubItems() { return true; }
   virtual String name() const;
 
   virtual void itemOpennessChanged(bool isNowOpen);
-  
+  virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
+  virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
+
  protected:
-  Directory(const Directory& d, const Range& r)
-      : Node(d.desc_, d.shadow_), range_(r), children_(d.children_),
-        ready_(false) {
-  }
+  Directory(const Directory& d, const Range& r);
 
   FileArray *children_;
   bool ready_;

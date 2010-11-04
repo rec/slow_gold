@@ -20,7 +20,7 @@ class UntypedData : public util::Listener<proto::Operation*> {
   // Change the data with an Operation.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
-  virtual void change(proto::Operation* op);
+  virtual void operator()(proto::Operation* op);
 
   Setter* setter() { return &setter_; }
 

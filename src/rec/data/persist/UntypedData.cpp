@@ -39,7 +39,7 @@ UntypedData::~UntypedData() {
   stl::deletePointers(&undo_);
 }
 
-void UntypedData::change(proto::Operation* op) {
+void UntypedData::operator()(proto::Operation* op) {
   {
     ScopedLock l(*lock_);
     queue_.push_back(op);

@@ -6,6 +6,7 @@
 #include "rec/slow/Preferences.h"
 #include "rec/audio/source/DoubleStretchyThread.h"
 #include "rec/widget/AudioThumbnail.h"
+#include "rec/util/Listener.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -14,9 +15,9 @@ class MainPageJ;
 namespace rec {
 namespace slow {
 
-class MainPageK : public juce::FileBrowserListener,
-                  public juce::Slider::Listener,
-                  public juce::ChangeListener {
+class MainPageK : public juce::Slider::Listener,
+                  public juce::ChangeListener,
+                  public util::Listener<const File&> {
  public:
   MainPageK(juce::AudioDeviceManager* d);
   ~MainPageK() {}
@@ -34,16 +35,15 @@ class MainPageK : public juce::FileBrowserListener,
   // ChangeListener
   virtual void changeListenerCallback(void* objectThatHasChanged);
 
-  // FileBrowserListener
-  virtual void selectionChanged();
-  virtual void fileClicked(const File& file, const juce::MouseEvent& e) {}
-  virtual void fileDoubleClicked(const File& file) {}
+  virtual void operator()(const File& file) { loadFileIntoTransport(file); }
 
   juce::DirectoryContentsList* directoryList() { return &directoryList_; }
   void updateCursor();
   void loadRecentFile(int menuItemId);
   void cut();
   void paste();
+
+  void loadFileIntoTransport(const File& audioFile);
 
  private:
   static const int THREAD_PRIORITY = 3;
@@ -53,7 +53,6 @@ class MainPageK : public juce::FileBrowserListener,
   static const File::SpecialLocationType START_DIR;
   static const char* PREVIEW_THREAD_NAME;
 
-  void loadFileIntoTransport(const File& audioFile);
   void readyToPlay();
 
   MainPageJ* peer_;

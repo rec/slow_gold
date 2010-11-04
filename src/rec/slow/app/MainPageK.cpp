@@ -15,6 +15,7 @@
 #include "rec/util/thread/WaitLoop.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/data/yaml/Yaml.h"
+#include "rec/widget/tree/Directory.h"
 
 using rec::audio::source::TimeStretch;
 
@@ -30,6 +31,7 @@ using rec::thread::RunnableThread;
 using rec::thread::WaitLoop;
 using rec::thread::makeCallback;
 
+using namespace rec::widget::tree;
 using namespace juce;
 
 namespace rec {
@@ -62,8 +64,14 @@ void MainPageK::construct(MainPageJ* peer) {
   directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
   directoryListThread_.startThread(THREAD_PRIORITY);
 
-  peer_->fileTreeComp->setColour(BACKGROUND, FOREGROUND);
-  peer_->fileTreeComp->addListener(this);
+  TreeView* tree = peer_->treeTreeComp;
+  tree->setColour(BACKGROUND, FOREGROUND);
+  File f = File::getSpecialLocation(File::userMusicDirectory);
+  // File f("~/iTunes");
+  Directory* directory = new Directory(NodeDesc(), ShadowFile(f, f));
+  tree->setRootItem(directory);
+  LOG(ERROR) << "MainPageK " << this << ", " << directory->listeners();
+  directory->listeners()->insert(this);
 
   TimeStretch d = getPreferences().track().timestretch();
 
@@ -76,9 +84,7 @@ void MainPageK::construct(MainPageJ* peer) {
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(&transportSource_);
 
-#if JUCE_MAC
   rec::audio::format::mpg123::initializeOnce();
-#endif
 
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
@@ -96,7 +102,6 @@ void MainPageK::destruct() {
   player_.setSource(NULL);
 
   deviceManager_->removeAudioCallback(&player_);
-  peer_->fileTreeComp->removeListener(this);
   peer_->thumbnail->removeChangeListener(this);
 }
 
@@ -216,13 +221,6 @@ void MainPageK::startStopButtonClicked() {
 void MainPageK::loopingButtonClicked() {
   if (stretchy_)
     stretchy_->setLooping(peer_->loopingButton->getToggleState());
-}
-
-void MainPageK::selectionChanged() {
-  peer_->zoomSlider->setValue(0, false, false);
-
-  File file = peer_->fileTreeComp->getSelectedFile();
-  loadFileIntoTransport(file);
 }
 
 void MainPageK::cut() {

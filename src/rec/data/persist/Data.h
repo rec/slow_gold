@@ -24,7 +24,7 @@ class Data : public UntypedData {
   // Add a listener so you get notified every time the data changes.
   bool addListener(Listener* ls);
   bool removeListener(Listener* ls);
-  virtual void change(proto::Operation* op) { UntypedData::change(op); }
+  virtual void operator()(proto::Operation* op) { UntypedData::operator()(op); }
 
   virtual ~Data() {}
 
@@ -87,7 +87,7 @@ void Data<Proto>::changeCallback() {
   ScopedLock l(listenerLock_);
   typename Listeners::iterator i;
   for (i = listeners_.begin(); i != listeners_.end(); ++i)
-    (*i)->change(proto);
+    (**i)(proto);
 }
 
 }  // namespace persist

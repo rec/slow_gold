@@ -35,7 +35,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     : zoomLabel (0),
       thumbnail (0),
       startStopButton (0),
-      fileTreeComp (0),
+      treeTreeComp (0),
       explanation (0),
       zoomSlider (0),
       timeScaleSlider (0),
@@ -62,8 +62,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     startStopButton->addButtonListener (this);
     startStopButton->setColour (TextButton::buttonColourId, Colour (0xff79ed7f));
 
-    addAndMakeVisible (fileTreeComp = new FileTreeComponent(*peer_.directoryList()));
-
+    addAndMakeVisible (treeTreeComp = new TreeView);
     addAndMakeVisible (explanation = new Label (String::empty,
                                                 T("Select an audio file in the treeview above.")));
     explanation->setFont (Font (14.0000f, Font::plain));
@@ -137,7 +136,8 @@ MainPageJ::~MainPageJ()
     deleteAndZero (zoomLabel);
     deleteAndZero (thumbnail);
     deleteAndZero (startStopButton);
-    deleteAndZero (fileTreeComp);
+    treeTreeComp->deleteRootItem();
+    deleteAndZero (treeTreeComp);
     deleteAndZero (explanation);
     deleteAndZero (zoomSlider);
     deleteAndZero (loopingButton);
@@ -169,7 +169,7 @@ void MainPageJ::resized()
     zoomLabel->setBounds (16, getHeight() - 90, 55, 24);
     thumbnail->setBounds (16, getHeight() - 221, getWidth() - 32, 123);
     startStopButton->setBounds (16, getHeight() - 46, 150, 32);
-    fileTreeComp->setBounds (16, 8, getWidth() - 32, getHeight() - 245);
+    treeTreeComp->setBounds (16, 8, getWidth() - 32, getHeight() - 245);
     explanation->setBounds (224, getHeight() - 42, getWidth() - 248, 32);
     zoomSlider->setBounds (72, getHeight() - 90, 200, 24);
     loopingButton->setBounds (192, getHeight() - 40, 150, 24);
@@ -234,11 +234,6 @@ void MainPageJ::sliderValueChanged (Slider* sliderThatWasMoved)
 void MainPageJ::sliderDragEnded (Slider* sliderThatWasMoved)
 {
   peer_.sliderDragEnded(sliderThatWasMoved);
-}
-
-void MainPageJ::selectionChanged()
-{
-  peer_.selectionChanged();
 }
 
 //[MiscUserCode]

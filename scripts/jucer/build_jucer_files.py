@@ -19,13 +19,16 @@ LIBRARIES = (
   library.Library('rec/genfiles/proto', header_only=True),
   library.Library('juce', header_only=True),
 
-  library.Library('libcddb', libraries=['cddb']),
-  library.Library('gflags'),
-  library.Library('glog'),
-  library.Library('gtest', libraries=['gtest', 'gtest_main']),
+  library.Library('libcddb', libraries=['cddb'], version='1.3.2'),
+  library.Library('gflags', version='1.3'),
+  library.Library('glog', version='0.3.1'),
+  library.Library('gtest', libraries=['gtest', 'gtest_main'], version='1.5.0'),
   library.Library('iconv', header_needed=False),
-  library.Library('mpg123', include=''),
-  library.Library('protobuf'),
+  library.Library('mpg123', include='', version='1.12.5'),
+  library.Library('protobuf', version='2.3.0'),
+
+  library.Library('MSVCRTD', win_nodefaultlib=True),
+  library.Library('msvcprtd', win_nodefaultlib=True),
 
   library.Library('../..', header_only=True, relative=False),
 )
