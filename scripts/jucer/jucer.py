@@ -11,20 +11,19 @@
 
 import dom_file
 import filetree
-import library
+import package
 
 
 class Jucer(dom_file.DomFile):
-  JUCE_ROOT = '../../../../..'
-  LIBRARY_ROOT = JUCE_ROOT + '/build'
   CHARS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   ID_SIZE = 9
 
-  def __init__(self, filename, is_test, libraries, root):
+  def __init__(self, filename, is_test, libraries, root, platform='mac'):
     dom_file.DomFile.__init__(self, filename)
     self.is_test = is_test
     self.libraries = libraries
     self.root = root
+    self.platform = platform
 
 
   def modify(self):
@@ -38,20 +37,24 @@ class Jucer(dom_file.DomFile):
     return self.dom.toprettyxml()
 
 
-  def setLibraries(self, config='debug'):
-    xcode = self.element('EXPORTFORMATS', 'XCODE_MAC')
-    links = library.getLinks(self.libraries, Jucer.LIBRARY_ROOT, config)
-    libs = self.join(links)
-    xcode.setAttribute('extraLinkerFlags', libs)
+  def setLibraries(self, config='Debug'):
+    if self.platform == 'mac':
+      element = 'XCODE_MAC'
+    else:
+      element = 'VS2008'
+
+    xcode = self.element('EXPORTFORMATS', element)
+    links = [package.link(l, self.platform, config) for l in self.libraries]
+    xcode.setAttribute('extraLinkerFlags', self.join(links))
 
 
   def setHeaders(self):
     configurations = self.element('CONFIGURATIONS')
     for c in configurations.getElementsByTagName('CONFIGURATION'):
-      config = 'build/%s' % c.getAttribute('name').lower()
-      headers = library.getHeaders(self.libraries, Jucer.JUCE_ROOT, config)
-      headerPath = self.join(headers, ';')
-      c.setAttribute('headerPath', headerPath)
+      cfg = c.getAttribute('name').capitalize()
+      c.setAttribute('name', cfg)
+      headers = [package.header(l, self.platform, cfg) for l in self.libraries]
+      c.setAttribute('headerPath', self.join(headers, ';'))
       c.setAttribute('defines',
                      'DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO')
 
@@ -109,4 +112,4 @@ class Jucer(dom_file.DomFile):
 
 
   def accept(self, s):
-    return self.is_test or not '_test.' in s
+    return s and (self.is_test or not '_test.' in s)

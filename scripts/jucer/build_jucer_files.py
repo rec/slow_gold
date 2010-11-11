@@ -11,36 +11,46 @@
 import os
 
 import jucer
-import library
 
 
 LIBRARIES = (
-  library.Library('rec/src', header_only=True),
-  library.Library('rec/genfiles/proto', header_only=True),
-  library.Library('juce', header_only=True),
+  dict(header='rec/src', header_only=True),
+  dict(header='rec/genfiles/proto', header_only=True),
+  dict(header='juce', header_only=True),
+  dict(header='rec/src/rec/data/yaml/include', header_only=True),
 
-  library.Library('libcddb', libraries=['cddb'], version='1.3.2'),
-  library.Library('gflags', version='1.3'),
-  library.Library('glog', version='0.3.1'),
-  library.Library('gtest', libraries=['gtest', 'gtest_main'], version='1.5.0'),
-  library.Library('iconv', header_needed=False),
-  library.Library('mpg123', include='', version='1.12.5'),
-  library.Library('protobuf', version='2.3.0'),
+  dict(name='libcddb', libraries=['cddb']),
+  dict(name='gflags'),
+  dict(name='glog', win_header='glog/src/windows'),
+  dict(name='gtest', libraries=['gtest', 'gtest_main']),
+  dict(name='iconv', header_needed=False),
 
-  library.Library('MSVCRTD', win_nodefaultlib=True),
-  library.Library('msvcprtd', win_nodefaultlib=True),
+  dict(name='mpg123',
+       include='',
+       win_header='mpg123-1.12.5/ports/MSVC++',
+       win_extralinkpath=r'\ports\MSVC++\2008'),
+  dict(name='protobuf', win_extralinkpath=r'\vsprojects'),
 
-  library.Library('../..', header_only=True, relative=False),
+  dict(name='MSVCRTD', win_nodefaultlib=True),
+  dict(name='msvcprtd', win_nodefaultlib=True),
+
+  dict(name='../..', header_only=True, relative=False),
 )
 
 
 def build(*names):
   for name in names:
     root = os.getenv('ROOT')
-    doc = '%s/rec/projects/%s/%s.jucer' % (root, name, name)
-    results = jucer.Jucer(doc, 'test' in name, LIBRARIES, root).toxml()
+    base = name.split('.')[0]
+    doc = '%s/rec/projects/%s/%s.jucer' % (root, base, name)
+    if '.win' in name:
+      plat = 'win'
+    else:
+      plat = 'mac'
+
+    results = jucer.Jucer(doc, 'test' in name, LIBRARIES, root, plat).toxml()
     open(doc, 'w').write(results)
     print 'Written', doc
 
 
-build('console', 'slow', 'tests')
+build('console', 'slow.mac', 'slow.win', 'tests')
