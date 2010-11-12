@@ -49,8 +49,11 @@ def build(*names):
       plat = 'mac'
 
     results = jucer.Jucer(doc, 'test' in name, LIBRARIES, root, plat).toxml()
-    open(doc, 'w').write(results)
+    f = open(doc, 'w')
+    for line in results:
+      if line.strip():
+        f.write(results)
     print 'Written', doc
 
 
-build('console', 'slow.mac', 'slow.win', 'tests')
+build('slow.mac', 'slow.win')
