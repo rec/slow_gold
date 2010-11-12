@@ -79,7 +79,7 @@ struct {classname} {{
 
 using juce::Drawable;
 
-// Original .svg file: {svg_file}
+// Original command line: {cmd} {args}
 
 Drawable* {classname}::{method}() {{
   static const char data[] = {svg};
@@ -144,16 +144,50 @@ TEST({classname}, {method}) {{
 }
 
 
+DESIRED_LINE_SPLIT = 78
+MAX_LINE_SPLIT = 16380
+SPLITTERS = ' /;,'
+
+def maxSplit(s):
+  s = s[0 : DESIRED_LINE_SPLIT]
+  finds = [i for i in map(s.rfind, SPLITTERS) if i >= 0]
+
+  if finds:
+    return max(finds)
+
+  return -1
+
+
+def splitLargeLines(lines):
+  for i, l in enumerate(lines):
+    while len(l) > DESIRED_LINE_SPLIT:
+      loc = maxSplit(l)
+      if loc is -1:
+        break
+      yield l[0 : loc + 1] + '"\n  "'
+      l = l[loc + 1 : ]
+
+    if len(l) > MAX_LINE_SPLIT:
+      raise ValueError, "Couldn't split line " + str(i) + ' len ' + str(len(l))
+
+    yield l + '\n'
+
+
 def readSVGFile(f):
-  return '"%s\\n"' % (open(f).read().replace('"', '\\"')
-                      .replace('\n', '\\n"\n  "'))
+  svg = '"%s\\n"' % (open(f).read().replace('"', '\\"')
+                     .replace('\n', '\\n"\n  "'))
+
+  return ''.join(splitLargeLines(svg.split('\n')))
+
 
 if __name__ == "__main__":
+  context = dict(
+    cmd=sys.argv[0].split('/')[-1],
+    args=' '.join(sys.argv[1:]))
   parser = optparse.OptionParser()
   parser.add_option('--svg', dest='svg')
 
   options, files = parser.parse_args()
-  context = {}
   if options.svg:
     context['svg'] = readSVGFile(options.svg)
     context['svg_file'] = options.svg
