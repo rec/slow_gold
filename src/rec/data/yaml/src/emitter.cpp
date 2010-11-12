@@ -1,8 +1,8 @@
-#include "emitter.h"
+#include "yaml-cpp/emitter.h"
 #include "emitterstate.h"
 #include "emitterutils.h"
 #include "indentation.h"
-#include "exceptions.h"
+#include "yaml-cpp/exceptions.h"
 #include <sstream>
 
 namespace YAML
@@ -120,6 +120,12 @@ namespace YAML
 			case Value:
 				EmitValue();
 				break;
+			case TagByKind:
+				EmitKindTag();
+				break;
+			case Newline:
+				EmitNewline();
+				break;
 			default:
 				m_pState->SetLocalValue(value);
 				break;
@@ -195,10 +201,6 @@ namespace YAML
 				m_pState->SetError(ErrorMsg::EXPECTED_VALUE_TOKEN);
 				return true;
 			case ES_WAITING_FOR_BLOCK_MAP_VALUE:
-				if(m_pState->CurrentlyInLongKey())
-					m_stream << IndentTo(curIndent);
-				m_stream << ':';
-				m_pState->RequireSeparation();
 				m_pState->SwitchState(ES_WRITING_BLOCK_MAP_VALUE);
 				return true;
 			case ES_WRITING_BLOCK_MAP_VALUE:
@@ -280,6 +282,10 @@ namespace YAML
 				
 				// block map
 			case ES_WRITING_BLOCK_MAP_KEY:
+				if(!m_pState->CurrentlyInLongKey()) {
+					m_stream << ':';
+					m_pState->RequireSeparation();
+				}
 				m_pState->SwitchState(ES_DONE_WITH_BLOCK_MAP_KEY);
 				break;
 			case ES_WRITING_BLOCK_MAP_VALUE:
@@ -493,13 +499,37 @@ namespace YAML
 			return m_pState->SetError(ErrorMsg::UNEXPECTED_VALUE_TOKEN);
 
 		if(flowType == FT_BLOCK) {
-			if(m_pState->CurrentlyInLongKey())
+			if(m_pState->CurrentlyInLongKey()) {
 				m_stream << '\n';
+				m_stream << IndentTo(m_pState->GetCurIndent());
+				m_stream << ':';
+				m_pState->RequireSeparation();
+			}
 			m_pState->SwitchState(ES_WAITING_FOR_BLOCK_MAP_VALUE);
 		} else if(flowType == FT_FLOW) {
 			m_pState->SwitchState(ES_WAITING_FOR_FLOW_MAP_VALUE);
 		} else
 			assert(false);
+	}
+
+	// EmitNewline
+	void Emitter::EmitNewline()
+	{
+		if(!good())
+			return;
+
+		if(CanEmitNewline())
+			m_stream << '\n';
+	}
+
+	bool Emitter::CanEmitNewline() const
+	{
+		FLOW_TYPE flowType = m_pState->GetCurGroupFlowType();
+		if(flowType == FT_BLOCK && m_pState->CurrentlyInLongKey())
+			return true;
+
+		EMITTER_STATE curState = m_pState->GetCurState();
+		return curState != ES_DONE_WITH_BLOCK_MAP_KEY && curState != ES_WAITING_FOR_BLOCK_MAP_VALUE && curState != ES_WRITING_BLOCK_MAP_VALUE;
 	}
 
 	// *******************************************************************************************
@@ -548,7 +578,7 @@ namespace YAML
 		PostAtomicWrite();
 		return *this;
 	}
-	
+
 	void Emitter::PreWriteIntegralType(std::stringstream& str)
 	{
 		PreAtomicWrite();
@@ -569,7 +599,7 @@ namespace YAML
 				assert(false);
 		}
 	}
-	
+
 	void Emitter::PostWriteIntegralType(const std::stringstream& str)
 	{
 		m_stream << str.str();
@@ -650,16 +680,31 @@ namespace YAML
 	{
 		if(!good())
 			return *this;
-		
+
 		PreAtomicWrite();
 		EmitSeparationIfNecessary();
-		if(!Utils::WriteTag(m_stream, tag.content)) {
+		
+		bool success = false;
+		if(tag.type == _Tag::Type::Verbatim)
+			success = Utils::WriteTag(m_stream, tag.content, true);
+		else if(tag.type == _Tag::Type::PrimaryHandle)
+			success = Utils::WriteTag(m_stream, tag.content, false);
+		else
+			success = Utils::WriteTagWithPrefix(m_stream, tag.prefix, tag.content);
+		
+		if(!success) {
 			m_pState->SetError(ErrorMsg::INVALID_TAG);
 			return *this;
 		}
+		
 		m_pState->RequireSeparation();
 		// Note: no PostAtomicWrite() because we need another value for this node
 		return *this;
+	}
+
+	void Emitter::EmitKindTag()
+	{
+		Write(LocalTag(""));
 	}
 
 	Emitter& Emitter::Write(const _Comment& comment)
@@ -680,6 +725,20 @@ namespace YAML
 		PreAtomicWrite();
 		EmitSeparationIfNecessary();
 		m_stream << "~";
+		PostAtomicWrite();
+		return *this;
+	}
+
+	Emitter& Emitter::Write(const _Binary& binary)
+	{
+		Write(SecondaryTag("binary"));
+
+		if(!good())
+			return *this;
+		
+		PreAtomicWrite();
+		EmitSeparationIfNecessary();
+		Utils::WriteBinary(m_stream, binary.data, binary.size);
 		PostAtomicWrite();
 		return *this;
 	}

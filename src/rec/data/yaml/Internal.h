@@ -8,7 +8,7 @@
 
 #include "rec/base/base.h"
 #include "rec/data/yaml/Yaml.h"
-#include "rec/data/yaml/include/yaml.h"
+#include "rec/data/yaml/include/yaml-cpp/yaml.h"
 
 using google::protobuf::EnumValueDescriptor;
 using google::protobuf::FieldDescriptor;

@@ -4,8 +4,8 @@
 #define TOKEN_H_62B23520_7C8E_11DE_8A39_0800200C9A66
 
 
-#include "mark.h"
-#include <ios>
+#include "yaml-cpp/mark.h"
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -57,9 +57,10 @@ namespace YAML
 			ANCHOR,
 			ALIAS,
 			TAG,
-			SCALAR
+			PLAIN_SCALAR,
+			NON_PLAIN_SCALAR
 		};
-				
+
 		// data
 		Token(TYPE type_, const Mark& mark_): status(VALID), type(type_), mark(mark_), data(0) {}
 

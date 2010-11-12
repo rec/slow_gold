@@ -32,7 +32,9 @@ else
     curl -O "$ARCHIVE_PATH"
     tar "$TAR_ARGS" "$ARCHIVE"
     rm "$ARCHIVE"
-    mv -f "$PACKAGE" "$PACKAGE.old"
+    if [ -f "$PACKAGE" ]; then
+      mv -f "$PACKAGE" "$PACKAGE.old"
+    fi
     mv "$PACKAGE-$VERSION" "$PACKAGE"
 
   done

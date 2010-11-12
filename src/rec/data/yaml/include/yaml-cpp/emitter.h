@@ -4,9 +4,10 @@
 #define EMITTER_H_62B23520_7C8E_11DE_8A39_0800200C9A66
 
 
-#include "emittermanip.h"
-#include "ostream.h"
-#include "null.h"
+#include "yaml-cpp/emittermanip.h"
+#include "yaml-cpp/ostream.h"
+#include "yaml-cpp/noncopyable.h"
+#include "yaml-cpp/null.h"
 #include <memory>
 #include <string>
 #include <sstream>
@@ -15,7 +16,7 @@ namespace YAML
 {
 	class EmitterState;
 
-	class Emitter
+	class Emitter: private noncopyable
 	{
 	public:
 		Emitter();
@@ -52,6 +53,7 @@ namespace YAML
 		Emitter& Write(const _Tag& tag);
 		Emitter& Write(const _Comment& comment);
 		Emitter& Write(const _Null& null);
+		Emitter& Write(const _Binary& binary);
 
 		template <typename T>
 		Emitter& WriteIntegralType(T value);
@@ -77,6 +79,11 @@ namespace YAML
 		void EmitEndMap();
 		void EmitKey();
 		void EmitValue();
+		void EmitNewline();
+		void EmitKindTag();
+		void EmitTag(bool verbatim, const _Tag& tag);
+
+		bool CanEmitNewline() const;
 
 	private:
 		ostream m_stream;
@@ -121,6 +128,7 @@ namespace YAML
 	inline Emitter& operator << (Emitter& emitter, const _Tag& v) { return emitter.Write(v); }
 	inline Emitter& operator << (Emitter& emitter, const _Comment& v) { return emitter.Write(v); }
 	inline Emitter& operator << (Emitter& emitter, const _Null& v) { return emitter.Write(v); }
+	inline Emitter& operator << (Emitter& emitter, const _Binary& b) { return emitter.Write(b); }
 
 	inline Emitter& operator << (Emitter& emitter, const char *v) { return emitter.Write(std::string(v)); }
 
@@ -128,10 +136,10 @@ namespace YAML
 	inline Emitter& operator << (Emitter& emitter, unsigned int v) { return emitter.WriteIntegralType(v); }
 	inline Emitter& operator << (Emitter& emitter, short v) { return emitter.WriteIntegralType(v); }
 	inline Emitter& operator << (Emitter& emitter, unsigned short v) { return emitter.WriteIntegralType(v); }
-	inline Emitter& operator << (Emitter& emitter, long v) { return emitter.WriteIntegralType(v); }
-	inline Emitter& operator << (Emitter& emitter, unsigned long v) { return emitter.WriteIntegralType(v); }
 	inline Emitter& operator << (Emitter& emitter, long long v) { return emitter.WriteIntegralType(v); }
 	inline Emitter& operator << (Emitter& emitter, unsigned long long v) { return emitter.WriteIntegralType(v); }
+	inline Emitter& operator << (Emitter& emitter, long v) { return emitter.WriteIntegralType(v); }
+	inline Emitter& operator << (Emitter& emitter, unsigned long v) { return emitter.WriteIntegralType(v); }
 
 	inline Emitter& operator << (Emitter& emitter, float v) { return emitter.WriteStreamable(v); }
 	inline Emitter& operator << (Emitter& emitter, double v) { return emitter.WriteStreamable(v); }
