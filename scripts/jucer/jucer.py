@@ -18,6 +18,7 @@ class Jucer(dom_file.DomFile):
   CHARS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   ID_SIZE = 9
 
+
   def __init__(self, filename, is_test, libraries, root, platform='mac'):
     dom_file.DomFile.__init__(self, filename)
     self.is_test = is_test

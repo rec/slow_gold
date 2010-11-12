@@ -23,7 +23,7 @@ LIBRARIES = (
   dict(name='gflags'),
   dict(name='glog', win_header='glog/src/windows'),
   dict(name='gtest', libraries=['gtest', 'gtest_main']),
-  dict(name='iconv', header_needed=False),
+  dict(name='iconv', header_needed=False, system=True),
 
   dict(name='mpg123',
        include='',
@@ -50,9 +50,10 @@ def build(*names):
 
     results = jucer.Jucer(doc, 'test' in name, LIBRARIES, root, plat).toxml()
     f = open(doc, 'w')
-    for line in results:
+    for line in results.split('\n'):
       if line.strip():
-        f.write(results)
+        f.write(line)
+        f.write('\n')
     print 'Written', doc
 
 
