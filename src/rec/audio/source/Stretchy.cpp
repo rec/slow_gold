@@ -38,13 +38,13 @@ void Stretchy::setNextReadPosition(int position) {
   position_ = position;
   source_->setNextReadPosition(position / description_->time_scale());
 
-#ifndef NO_EXCEPTIONS
+#ifndef CATCH_EXCEPTIONS
   try {
 #endif
 
     Init(*description_, scaler_.get());
 
-#ifndef NO_EXCEPTIONS
+#ifndef CATCH_EXCEPTIONS
   } catch (...) {
     LOG(ERROR) << "Couldn't Init";
   }
@@ -55,7 +55,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   CHECK_EQ(info.buffer->getNumChannels(), channels_);
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
-#ifndef NO_EXCEPTIONS
+#ifndef CATCH_EXCEPTIONS
     try {
 #endif
       if (int processed = processOneChunk(i)) {
@@ -79,7 +79,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       } else {
         ++zeroCount;
       }
-#ifndef NO_EXCEPTIONS
+#ifndef CATCH_EXCEPTIONS
     } catch (...) {
       LOG(ERROR) << "Couldn't getNextAudioBlock";
       return;

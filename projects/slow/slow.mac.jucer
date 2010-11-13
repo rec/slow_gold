@@ -14,11 +14,11 @@
                vstFolder="~/SDKs/vstsdk2.4"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
-    <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
+    <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO CATCH_EXCEPTIONS"
                    headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
                    isDebug="1" name="Debug" optimisation="1" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
-    <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
+    <CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO CATCH_EXCEPTIONS"
                    headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Release/libcddb/include;../../../../../build/Release/gflags/include;../../../../../build/Release/glog/include;../../../../../build/Release/gtest/include;../../../../../build/Release/mpg123;../../../../../build/Release/protobuf/include;../.."
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
