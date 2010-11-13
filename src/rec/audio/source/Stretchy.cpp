@@ -37,34 +37,54 @@ int Stretchy::getTotalLength() const {
 void Stretchy::setNextReadPosition(int position) {
   position_ = position;
   source_->setNextReadPosition(position / description_->time_scale());
-  Init(*description_, scaler_.get());
+
+#ifndef NO_EXCEPTIONS
+  try {
+#endif
+
+    Init(*description_, scaler_.get());
+
+#ifndef NO_EXCEPTIONS
+  } catch (...) {
+    LOG(ERROR) << "Couldn't Init";
+  }
+#endif
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   CHECK_EQ(info.buffer->getNumChannels(), channels_);
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
-    if (int processed = processOneChunk(i)) {
-      if (false && zeroCount) {
-        LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
+#ifndef NO_EXCEPTIONS
+    try {
+#endif
+      if (int processed = processOneChunk(i)) {
+        if (false && zeroCount) {
+          LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
+        }
+        i.numSamples -= processed;
+        i.startSample += processed;
+        position_ += processed;
+        zeroCount = 0;
+
+      } else if (zeroCount > 10) {
+        LOG_FIRST_N(ERROR, 20)
+          << "0 samples " << zeroCount << " times in a row,"
+          << " asked for " << i.numSamples
+          << " from " << info.numSamples
+          << "next read " << getNextReadPosition()
+          << "next read source " << source_->getNextReadPosition();
+        return;
+
+      } else {
+        ++zeroCount;
       }
-      i.numSamples -= processed;
-      i.startSample += processed;
-      position_ += processed;
-      zeroCount = 0;
-
-    } else if (zeroCount > 10) {
-      LOG_FIRST_N(ERROR, 20)
-        << "0 samples " << zeroCount << " times in a row,"
-        << " asked for " << i.numSamples
-        << " from " << info.numSamples
-        << "next read " << getNextReadPosition()
-        << "next read source " << source_->getNextReadPosition();
+#ifndef NO_EXCEPTIONS
+    } catch (...) {
+      LOG(ERROR) << "Couldn't getNextAudioBlock";
       return;
-
-    } else {
-      ++zeroCount;
     }
+#endif
   }
 }
 
