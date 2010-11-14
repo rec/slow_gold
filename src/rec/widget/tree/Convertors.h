@@ -10,34 +10,14 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-inline String getName(const File& f) { return f.getFileName(); }
-inline string getName(const string& s) { return s; }
+template <typename Str>                int getLength(const Str&);
+template <typename Str>                Str toLowerCase(const Str& s);
 
-inline int getLength(const string& s) { return s.size(); }
-inline int getLength(const String& s) { return s.length(); }
+template <typename List, typename Item> void add(List* list, Item item);
+template <typename List, typename Item> Item get(const List& list, int i);
 
-inline String toLowerCase(const String& s) { return s.toLowerCase(); }
-
-inline string toLowerCase(const string& s) {
-  string t = s;
-  for (int i = 0; i < t.size(); ++i)
-    t[i] = tolower(t[i]);
-  return t;
-}
-  
-  inline int foo() { return 1; }
-
-inline void add(juce::Array<int>* list, int x) { list->add(x); }
-inline void add(std::vector<int>* list, int x) { list->push_back(x); }
-
-inline const String& get(const juce::Array<File>& files, int i) {
-  return files[i].getFullPathName();
-}
-
-inline const string& get(const std::vector<string>& files, int i) {
-  return files[i];
-}
-
+String getName(const File& f);
+string getName(const string& v);
 
 }  // namespace tree
 }  // namespace widget

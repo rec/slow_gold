@@ -7,7 +7,7 @@
 		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.." isDebug="1" name="Debug" optimisation="1" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Release/libcddb/include;../../../../../build/Release/gflags/include;../../../../../build/Release/glog/include;../../../../../build/Release/gtest/include;../../../../../build/Release/mpg123;../../../../../build/Release/protobuf/include;../.." isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 	</CONFIGURATIONS>
-	<MAINGROUP id="AiRohqljm" name="Slow">
+	<MAINGROUP id="021LjZ5JR" name="Slow">
 		<GROUP id="PLr5202F9" name="rec">
 			<GROUP id="HoPy53YIH" name="audio">
 				<GROUP id="bIGG6D88t" name="ammf_scaler">
@@ -288,6 +288,8 @@
 				<FILE compile="1" file="../../src/rec/widget/Time.cpp" id="lNAZNtOm3" name="Time.cpp" resource="0"/>
 				<FILE compile="0" file="../../src/rec/widget/Time.h" id="bmxvKnNac" name="Time.h" resource="0"/>
 				<GROUP id="rQEaW84fo" name="tree">
+					<FILE compile="1" file="../../src/rec/widget/tree/Convertors.cpp" id="4VhTX7RiX" name="Convertors.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/rec/widget/tree/Convertors.h" id="K05JYnwoh" name="Convertors.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/widget/tree/Directory.cpp" id="076iIcZG4" name="Directory.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="291KhfFAZ" name="Directory.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/widget/tree/Node.cpp" id="AabDolBz3" name="Node.cpp" resource="0"/>
@@ -364,7 +366,7 @@
 				</GROUP>
 			</GROUP>
 		</GROUP>
-		<FILE compile="1" file="Main.cpp" id="JNwm2cFDU" name="Main.cpp" resource="0"/>
+		<FILE compile="1" file="Main.cpp" id="Dj7BEDetj" name="Main.cpp" resource="0"/>
 	</MAINGROUP>
 	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>
