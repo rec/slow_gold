@@ -2,28 +2,13 @@
 #define __REC_WIDGET_TREE_TREE__
 
 #include "rec/util/BeginEnd.h"
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/widget/tree/Convertors.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 
 typedef util::BeginEnd<int> Range;
-
-inline String getName(const File& f) { return f.getFileName(); }
-inline string getName(const string& s) { return s; }
-
-inline int getLength(const string& s) { return s.size(); }
-inline int getLength(const String& s) { return s.length(); }
-
-inline String toLowerCase(const String& s) { return s.toLowerCase(); }
-
-inline string toLowerCase(const string& s) {
-  string t = s;
-  for (int i = 0; i < t.size(); ++i)
-    t[i] = tolower(t[i]);
-  return t;
-}
 
 struct ShadowFile {
   File file_;

@@ -12,9 +12,6 @@ namespace widget {
 namespace tree {
 namespace {
 
-inline void add(Array<int>* list, int x) { list->add(x); }
-inline void add(std::vector<int>* list, int x) { list->push_back(x); }
-
 template <typename Children, typename IntegerList>
 void partitionChildrenT(const Children& kids, const Range& range,
                         int branch, IntegerList* list) {
