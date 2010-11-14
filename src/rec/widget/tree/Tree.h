@@ -52,7 +52,7 @@ int indexOfDifference(const Str& s, const Str& t) {
 }
 
 template <typename Collection>
-int cmpi(const Collection& items, const int i) {
+int indexOfDifference(const Collection& items, const int i) {
   return indexOfDifference(toLowerCase(getName(items[i - 1])),
                            toLowerCase(getName(items[i])));
 }

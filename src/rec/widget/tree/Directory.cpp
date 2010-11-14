@@ -77,13 +77,13 @@ String Directory::name() const {
   if (range_.size() == size)
     return Node::name();
 
-  int begin = range_.begin_ ? cmpi(*children_, range_.begin_) : 1;
-  int end = range_.end_ == size ? 1 : cmpi(*children_, range_.end_);
+  int b = range_.begin_ ? indexOfDifference(*children_, range_.begin_) : 1;
+  int e = range_.end_ == size ? 1 : indexOfDifference(*children_, range_.end_);
 
-  String begins = getSub((*children_)[range_.begin_], begin);
-  String ends = getSub((*children_)[range_.end_ - 1], end);
+  String begin = getSub((*children_)[range_.begin_], b);
+  String end = getSub((*children_)[range_.end_ - 1], e);
 
-  return (begins == ends) ? begins : (begins + " - " + ends);
+  return (begin == end) ? begin : (begin + " - " + end);
 }
 
 }  // namespace tree

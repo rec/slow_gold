@@ -5,6 +5,7 @@
 #include "rec/base/basictypes.h"
 
 using namespace juce;
+using std::vector;
 
 namespace rec {
 namespace widget {
@@ -14,14 +15,13 @@ namespace {
 inline void add(Array<int>* list, int x) { list->add(x); }
 inline void add(std::vector<int>* list, int x) { list->push_back(x); }
 
-}  // namespace
-
 template <typename Children, typename IntegerList>
 void partitionChildrenT(const Children& kids, const Range& range,
                         int branch, IntegerList* list) {
   int size = range.size();
   int averageBranch = size / branch;
   int begin = range.begin_;
+
   add(list, begin);
 
   for (int i = 1; i < branch; ++i) {
@@ -32,7 +32,7 @@ void partitionChildrenT(const Children& kids, const Range& range,
     if (end >= range.end_)
       break;
 
-    int c = cmpi(kids, end);
+    int c = indexOfDifference(kids, end);
     int newEnd = end;
     for (int j = 0; end < range.end_ && c > 1 && j < averageBranch; ++j) {
       int end2 = end + (1 + j / 2) * ((j & 1) ? 1 : -1);
@@ -40,7 +40,7 @@ void partitionChildrenT(const Children& kids, const Range& range,
         newEnd = range.end_;
 
       } else if (end2 > begin) {
-        int c2 = cmpi(kids, end2);
+        int c2 = indexOfDifference(kids, end2);
         if (c2 < c) {
           newEnd = end2;
           c = c2;
@@ -54,10 +54,11 @@ void partitionChildrenT(const Children& kids, const Range& range,
     add(list, newEnd);
     begin = newEnd;
   }
+
   add(list, range.end_);
 }
 
-using std::vector;
+}  // namespace
 
 void partitionChildren(const Array<File>& c, const Range& r, int branch,
                        Array<int>* l) {
