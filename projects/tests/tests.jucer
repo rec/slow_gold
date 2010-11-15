@@ -32,7 +32,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="default"
                    osxSDK="default" targetName="unit-tests"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="z4YbmR7A3" name="tests">
+  <MAINGROUP id="rXAXh63iG" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -594,10 +594,10 @@
                 name="Directory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/Directory_test.cpp"
                 id="OqnMXLmng" name="Directory_test.cpp" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/Node.cpp" id="S6I0kJYSY"
-                name="Node.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Node.h" id="uguY7NKiu"
                 name="Node.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/tree/NodeP.cpp" id="KEmag1ip8"
+                name="NodeP.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/PartitionChildren.cpp"
                 id="UYMOIHz74" name="PartitionChildren.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/PartitionChildren.h"
@@ -719,7 +719,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="N53dTjuoy" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="f5pWZzS09" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
