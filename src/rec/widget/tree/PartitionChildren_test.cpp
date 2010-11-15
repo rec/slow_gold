@@ -45,11 +45,6 @@ class PartitionChildrenTest : public testing::Test {
   }
 };
 
-TEST_F(PartitionChildrenTest, Branch1) {
-  static const int result[] = {0, 14};
-  test(0, arraysize(NAMES), 1, result, arraysize(result));
-}
-
 TEST_F(PartitionChildrenTest, Branch2) {
   static const int result[] = {0, 5, 14};
   test(0, arraysize(NAMES), 2, result, arraysize(result));

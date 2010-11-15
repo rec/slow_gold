@@ -1,4 +1,7 @@
 #include <vector>
+#include <set>
+
+#include <glog/logging.h>
 
 #include "rec/widget/tree/PartitionChildren.h"
 
@@ -12,47 +15,64 @@ namespace widget {
 namespace tree {
 namespace {
 
+template <typename Children>
+int getChildChar(const Children& kids, int kid, int ch) {
+  return getName(kids[kid])[ch];
+}
+
 template <typename Children, typename IntegerList>
 void partitionChildrenT(const Children& kids, const Range& range,
                         int branch, IntegerList* list) {
+  DCHECK_GE(branch, 2);
+
   int size = range.size();
-  int averageBranch = size / branch;
-  int begin = range.begin_;
+  int child = range.begin_;
+  int end = range.end_;
 
-  add(list, begin);
-
-  for (int i = 1; i < branch; ++i) {
-    int end = range.begin_ + (size * i) / branch;
-    if (end < begin + 1)
-      end = begin + 1;
-
-    if (end >= range.end_)
-      break;
-
-    int c = indexOfDifference(kids, end);
-    int newEnd = end;
-    for (int j = 0; end < range.end_ && c > 1 && j < averageBranch; ++j) {
-      int end2 = end + (1 + j / 2) * ((j & 1) ? 1 : -1);
-      if (end2 >= range.end_) {
-        newEnd = range.end_;
-
-      } else if (end2 > begin) {
-        int c2 = indexOfDifference(kids, end2);
-        if (c2 < c) {
-          newEnd = end2;
-          c = c2;
-        }
-      }
-    }
-
-    if (newEnd >= range.end_)
-      break;
-
-    add(list, newEnd);
-    begin = newEnd;
+  if (size <= branch) {
+    // List is smaller than branching.
+    for (; child < range.end_; ++child)
+      add(list, child);
+    add(list, end);
+    return;
   }
 
-  add(list, range.end_);
+  DCHECK_GT(size, 2);
+
+  // This is the index of the first character different between the first and
+  // last entries in the names table.
+  int diff = indexOfDifference(getName(kids[child]), getName(kids[end - 1]));
+
+  // Special case: put all punctuation into one bucket if this doesn't result in
+  // only one bucket.
+  int punc = child;
+  for (; punc < end - 1 && getChildChar(kids, punc, diff) < '0'; ++punc) {}
+
+  if (punc != child && punc < end - 1) {
+    add(list, child);
+    child = punc;
+    branch;
+  }
+
+
+  std::set<int> charsSet;
+  for (int i = child; i < end; ++i)
+    charsSet.insert(getChildChar(kids, i, diff));
+
+  typedef std::vector<int> Chars;
+  Chars chars(charsSet.begin(), charsSet.end());
+
+  int remaining = branch - list->size();
+  float r = (1.0 * remaining) / chars.size();
+
+  for (int i = 0; i < remaining && child < end; ++i) {
+    int ch = chars[i * r];
+    for (; child < end && getChildChar(kids, child, diff) < ch; ++child) {}
+    add(list, child);
+  }
+
+  if (child != end)
+    add(list, end);
 }
 
 }  // namespace
