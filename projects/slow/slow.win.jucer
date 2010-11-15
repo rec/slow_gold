@@ -4,10 +4,10 @@
 		<VS2008 extraDefs="" extraLinkerFlags="/LIBPATH:..\..\..\..\..\libcddb\Debug libcddb.lib /LIBPATH:..\..\..\..\..\gflags\Debug libgflags.lib /LIBPATH:..\..\..\..\..\glog\Debug libglog.lib /LIBPATH:..\..\..\..\..\gtest\Debug libgtest.lib libgtest_main.lib libiconv.lib /LIBPATH:..\..\..\..\..\mpg123\ports\MSVC++\2008\Debug libmpg123.lib /LIBPATH:..\..\..\..\..\protobuf\vsprojects\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd" juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK" targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
 	</EXPORTFORMATS>
 	<CONFIGURATIONS>
-		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO GOOGLE_GLOG_DLL_DECL" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123-1.12.5/ports/MSVC++;../../../../../build/Debug/protobuf/include;../.." isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
-		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO GOOGLE_GLOG_DLL_DECL" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Release/libcddb/include;../../../../../build/Release/gflags/include;../../../../../glog/src/windows;../../../../../build/Release/gtest/include;../../../../../mpg123-1.12.5/ports/MSVC++;../../../../../build/Release/protobuf/include;../.." isDebug="0" name="Release" optimisation="1" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
+		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO GOOGLE_GLOG_DLL_DECL" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../../../../../../protobuf/src;../.." isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
+		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO GOOGLE_GLOG_DLL_DECL" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Release/libcddb/include;../../../../../build/Release/gflags/include;../../../../../glog/src/windows;../../../../../build/Release/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../../../../../../protobuf/src;../.." isDebug="0" name="Release" optimisation="1" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 	</CONFIGURATIONS>
-	<MAINGROUP id="9Et94bbk6" name="Slow">
+	<MAINGROUP id="1qwkFXgwY" name="Slow">
 		<GROUP id="VdEVblIO9" name="rec">
 			<GROUP id="b0HzrMj6A" name="audio">
 				<GROUP id="savwfEiwO" name="ammf_scaler">
@@ -366,7 +366,7 @@
 				</GROUP>
 			</GROUP>
 		</GROUP>
-		<FILE compile="1" file="Main.cpp" id="8VQ5QV769" name="Main.cpp" resource="0"/>
+		<FILE compile="1" file="Main.cpp" id="A7CsfF3kc" name="Main.cpp" resource="0"/>
 	</MAINGROUP>
 	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>

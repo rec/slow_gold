@@ -32,7 +32,7 @@ void sortedChildren(const File& f, juce::Array<File>* kids) {
 
   File* begin = kids->getRawDataPointer();
   File* end = begin + size;
-  std::sort(begin, end, CompareFiles());
+  std::sort(begin, end, compareFiles);
 }
 
 }  // namespace tree

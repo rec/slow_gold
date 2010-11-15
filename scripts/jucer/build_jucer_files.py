@@ -27,9 +27,10 @@ LIBRARIES = (
 
   dict(name='mpg123',
        include='',
-       win_header='mpg123-1.12.5/ports/MSVC++',
+       win_header='mpg123/ports/MSVC++',
        win_extralinkpath=r'\ports\MSVC++\2008'),
-  dict(name='protobuf', win_extralinkpath=r'\vsprojects'),
+  dict(name='protobuf', win_extralinkpath=r'\vsprojects',
+       win_header='../../../../../protobuf/src'),
 
   dict(name='MSVCRTD', win_nodefaultlib=True),
   dict(name='msvcprtd', win_nodefaultlib=True),
