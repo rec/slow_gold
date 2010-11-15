@@ -15,6 +15,13 @@ namespace widget {
 namespace tree {
 namespace {
 
+struct LessThanEqualChar {
+  LessThanEqualChar(int c) : c_(c) {}
+  bool operator()(int c) const { return c < c_; }
+
+  int c_;
+};
+
 template <typename Collection, typename IntList, typename Str>
 class Partition {
  public:
@@ -43,37 +50,38 @@ class Partition {
   int lower(int i, int d) const { return tolower(getName(i)[d]); }
 
   void largePartition() {
-      // This is the index of the first character different between the first and
-      // last entries in the names table.
-      extractRange('0');  // punctuation.
-      extractRange('9' + 1);  // 0-9.
+    // This is the index of the first character different between the first and
+    // last entries in the names table.
+    extractRange(isPunctuation);  // punctuation.
+    extractRange(isdigit);  // 0-9.
 
-      int diff = difference(range_);
-      std::set<int> charsSet;
-      for (int i = range_.begin_; i < range_.end_; ++i)
-        charsSet.insert(lower(i, diff));
+    int diff = difference(range_);
+    std::set<int, CompareChars> charsSet;
+    for (int i = range_.begin_; i < range_.end_; ++i)
+      charsSet.insert(lower(i, diff));
 
-      typedef std::vector<int> Chars;
-      Chars chars(charsSet.begin(), charsSet.end());
+    typedef std::vector<int> Chars;
+    Chars chars(charsSet.begin(), charsSet.end());
 
-      int remaining = branch_ - list_->size();
-      double r = chars.size() * 1.0 / remaining;
+    int remaining = branch_ - list_->size();
+    double r = chars.size() * 1.0 / remaining;
 
-      for (int i = 0; i < remaining && range_.size() > 0; ++i)
-        extractRange(chars[i * r]);
+    for (int i = 0; i < remaining && range_.size() > 0; ++i)
+      extractRange(LessThanEqualChar(chars[i * r]));
   }
 
   Str getName(int i) const;
   void add(int i);
 
-  void extractRange(int ch) {
+  template <typename Operator>
+  void extractRange(Operator op) {
     // This is the index of the first character different between the first and
     // last entries in the names table.
     int diff = difference(range_);
     int end = range_.end_ + (list_->size() ? 0 : -1);  // Enforce branches > 1.
 
     int next = range_.begin_;
-    for (; next < end && lower(next, diff) < ch; ++next) {}
+    for (; next < end && op(lower(next, diff)); ++next) {}
 
     if (next > range_.begin_ && next < end) {
       add(range_.begin_);

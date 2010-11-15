@@ -32,6 +32,12 @@ inline int compareChars(int c, int d) {
   return (pc == pd) ? (tolower(c) - tolower(d)) : (pc ? -1 : 1);
 }
 
+struct CompareChars {
+  bool operator()(int c, int d) {
+    return compareChars(c, d) < 0;
+  }
+};
+
 template <typename Str>
 int compareStrings(const Str& x, const Str& y) {
   for (int i = 0; ; ++i) {
