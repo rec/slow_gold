@@ -15,76 +15,114 @@ namespace widget {
 namespace tree {
 namespace {
 
-template <typename Children>
-int getChildChar(const Children& kids, int kid, int ch) {
-  return getName(kids[kid])[ch];
+template <typename Collection, typename IntList, typename Str>
+class Partition {
+ public:
+  Partition(const Collection& k, const Range& r, int branch, IntList* list)
+      : kids_(k), range_(r), branch_(branch), list_(list) {
+    DCHECK_GE(branch, 2);
+    partition();
+  }
+
+ private:
+  void partition() {
+    if (range_.size() <= branch_)
+      smallPartition();
+    else
+      largePartition();
+
+    if ((*list_)[list_->size() - 1] != range_.end_)
+      add(range_.end_);
+  }
+
+  void smallPartition() {
+    for (int i = range_.begin_; i < range_.end_; ++i)
+       add(i);
+  }
+
+  int lower(int i, int d) const { return tolower(getName(i)[d]); }
+
+  void largePartition() {
+      // This is the index of the first character different between the first and
+      // last entries in the names table.
+      extractRange('0');  // punctuation.
+      extractRange('9' + 1);  // 0-9.
+
+      int diff = difference(range_);
+      std::set<int> charsSet;
+      for (int i = range_.begin_; i < range_.end_; ++i)
+        charsSet.insert(lower(i, diff));
+
+      typedef std::vector<int> Chars;
+      Chars chars(charsSet.begin(), charsSet.end());
+
+      int remaining = branch_ - list_->size();
+      double r = chars.size() * 1.0 / remaining;
+
+      for (int i = 0; i < remaining && range_.size() > 0; ++i)
+        extractRange(chars[i * r]);
+  }
+
+  Str getName(int i) const;
+  void add(int i);
+
+  void extractRange(int ch) {
+    // This is the index of the first character different between the first and
+    // last entries in the names table.
+    int diff = difference(range_);
+    int end = range_.end_ + (list_->size() ? 0 : -1);  // Enforce branches > 1.
+
+    int next = range_.begin_;
+    for (; next < end && lower(next, diff) < ch; ++next) {}
+
+    if (next > range_.begin_ && next < end) {
+      add(range_.begin_);
+      range_.begin_ = next;
+    }
+  }
+
+  int difference(const Range& r) const {
+    return indexOfDifference(getName(r.begin_), getName(r.end_ - 1));
+  }
+
+  const Collection& kids_;
+  Range range_;
+  int branch_;
+  IntList* list_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Partition);
+};
+
+typedef Partition<const Array<File>, Array<int>, String>
+  JucePartition;
+
+typedef Partition<const vector<string>, vector<int>, string>
+  STLPartition;
+
+
+template <>
+String JucePartition::getName(int i) const {
+  return kids_[i].getFileName();
 }
 
-template <typename Children, typename IntegerList>
-void partitionChildrenT(const Children& kids, const Range& range,
-                        int branch, IntegerList* list) {
-  DCHECK_GE(branch, 2);
-
-  int size = range.size();
-  int child = range.begin_;
-  int end = range.end_;
-
-  if (size <= branch) {
-    // List is smaller than branching.
-    for (; child < range.end_; ++child)
-      add(list, child);
-    add(list, end);
-    return;
-  }
-
-  DCHECK_GT(size, 2);
-
-  // This is the index of the first character different between the first and
-  // last entries in the names table.
-  int diff = indexOfDifference(getName(kids[child]), getName(kids[end - 1]));
-
-  // Special case: put all punctuation into one bucket if this doesn't result in
-  // only one bucket.
-  int punc = child;
-  for (; punc < end - 1 && getChildChar(kids, punc, diff) < '0'; ++punc) {}
-
-  if (punc != child && punc < end - 1) {
-    add(list, child);
-    child = punc;
-    branch;
-  }
-
-
-  std::set<int> charsSet;
-  for (int i = child; i < end; ++i)
-    charsSet.insert(getChildChar(kids, i, diff));
-
-  typedef std::vector<int> Chars;
-  Chars chars(charsSet.begin(), charsSet.end());
-
-  int remaining = branch - list->size();
-  float r = (1.0 * remaining) / chars.size();
-
-  for (int i = 0; i < remaining && child < end; ++i) {
-    int ch = chars[i * r];
-    for (; child < end && getChildChar(kids, child, diff) < ch; ++child) {}
-    add(list, child);
-  }
-
-  if (child != end)
-    add(list, end);
+template <>
+string STLPartition::getName(int i) const {
+  return kids_[i];
 }
+
+template <> void JucePartition::add(int i) { list_->add(i); }
+template <> void STLPartition::add(int i) { list_->push_back(i); }
 
 }  // namespace
 
 void partitionChildren(const Array<File>& c, const Range& r, int branch,
                        Array<int>* l) {
-  partitionChildrenT(c, r, branch, l);
+  JucePartition partition(c, r, branch, l);
 }
 
 void partitionChildren(const vector<string>& c, const Range& r, int branch,
                        vector<int>* l) {
-  partitionChildrenT(c, r, branch, l);
+  STLPartition partition(c, r, branch, l);
 }
 
 

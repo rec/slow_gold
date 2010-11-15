@@ -53,8 +53,11 @@ class Jucer(dom_file.DomFile):
       c.setAttribute('name', cfg)
       headers = [package.header(l, self.platform, cfg) for l in self.libraries]
       c.setAttribute('headerPath', self.join(headers, ';'))
-      c.setAttribute('defines',
-                     'DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO')
+      defines = 'DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO'
+      if self.platform != 'mac':
+        defines += ' GOOGLE_GLOG_DLL_DECL'
+
+      c.setAttribute('defines', defines)
 
 
   def setFileIdDict(self, n, path, depth=0):

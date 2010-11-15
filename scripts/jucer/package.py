@@ -85,3 +85,4 @@ def link(package, platform, config):
     libraries.insert(0, fmt(platform['library_path'], package, config))
 
   return ' '.join(libraries)
+
