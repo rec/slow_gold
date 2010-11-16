@@ -19,11 +19,20 @@ namespace tree {
 class Node : public juce::TreeViewItem,
              public util::Listener<const File&>::Set {
  public:
-  Node(const NodeDesc& d, const ShadowFile& s);
+  Node(const NodeDesc& d, const ShadowFile& s)
+      : desc_(d),
+        shadow_(s),
+        icon_(gui::icon::getIcon(d.icon())) {
+  }
 
   virtual bool mightContainSubItems() { return false; }
   virtual void itemOpennessChanged(bool isNowOpen) {}
-  virtual void paintItem(juce::Graphics& g, int width, int height);
+  virtual void paintItem(juce::Graphics& g, int width, int height) {
+    Painter p(desc_.widget(), &g);
+    if (icon_)
+      icon_->draw(g, 1.0);
+    g.drawSingleLineText(name(), 0, 20);  // TODO
+  }
 
   virtual String name() const { return shadow_.file_.getFileName(); }
 

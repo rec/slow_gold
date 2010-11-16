@@ -3,6 +3,7 @@
 
 #include "rec/util/thread/Runnable.h"
 #include "rec/util/thread/Wrapper.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace thread {

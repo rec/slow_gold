@@ -30,11 +30,12 @@ void protobuf_AssignDesc_rec_2fwidget_2ftree_2fNode_2eproto() {
       "rec/widget/tree/Node.proto");
   GOOGLE_CHECK(file != NULL);
   NodeDesc_descriptor_ = file->message_type(0);
-  static const int NodeDesc_offsets_[4] = {
+  static const int NodeDesc_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NodeDesc, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NodeDesc, max_branch_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NodeDesc, best_branch_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NodeDesc, icon_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(NodeDesc, thread_priority_),
   };
   NodeDesc_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,10 +80,11 @@ void protobuf_AddDesc_rec_2fwidget_2ftree_2fNode_2eproto() {
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/widget/tree/Node.proto\022\017rec.widget"
-    ".tree\032\027rec/widget/Widget.proto\"m\n\010NodeDe"
-    "sc\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget\022\026"
-    "\n\nmax_branch\030\002 \001(\r:\00232\022\027\n\013best_branch\030\003 "
-    "\001(\r:\00216\022\014\n\004icon\030\004 \001(\t", 181);
+    ".tree\032\027rec/widget/Widget.proto\"\211\001\n\010NodeD"
+    "esc\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget\022"
+    "\026\n\nmax_branch\030\002 \001(\r:\00232\022\027\n\013best_branch\030\003"
+    " \001(\r:\00216\022\014\n\004icon\030\004 \001(\t\022\032\n\017thread_priorit"
+    "y\030\005 \001(\r:\0014", 210);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/tree/Node.proto", &protobuf_RegisterTypes);
   NodeDesc::default_instance_ = new NodeDesc();
@@ -106,6 +108,7 @@ const int NodeDesc::kWidgetFieldNumber;
 const int NodeDesc::kMaxBranchFieldNumber;
 const int NodeDesc::kBestBranchFieldNumber;
 const int NodeDesc::kIconFieldNumber;
+const int NodeDesc::kThreadPriorityFieldNumber;
 #endif  // !_MSC_VER
 
 NodeDesc::NodeDesc()
@@ -129,6 +132,7 @@ void NodeDesc::SharedCtor() {
   max_branch_ = 32u;
   best_branch_ = 16u;
   icon_ = const_cast< ::std::string*>(&_default_icon_);
+  thread_priority_ = 4u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -177,6 +181,7 @@ void NodeDesc::Clear() {
         icon_->clear();
       }
     }
+    thread_priority_ = 4u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -246,6 +251,22 @@ bool NodeDesc::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(40)) goto parse_thread_priority;
+        break;
+      }
+      
+      // optional uint32 thread_priority = 5 [default = 4];
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_thread_priority:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &thread_priority_)));
+          _set_bit(4);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -293,6 +314,11 @@ void NodeDesc::SerializeWithCachedSizes(
       4, this->icon(), output);
   }
   
+  // optional uint32 thread_priority = 5 [default = 4];
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->thread_priority(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -326,6 +352,11 @@ void NodeDesc::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         4, this->icon(), target);
+  }
+  
+  // optional uint32 thread_priority = 5 [default = 4];
+  if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->thread_priority(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -367,6 +398,13 @@ int NodeDesc::ByteSize() const {
           this->icon());
     }
     
+    // optional uint32 thread_priority = 5 [default = 4];
+    if (has_thread_priority()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->thread_priority());
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -406,6 +444,9 @@ void NodeDesc::MergeFrom(const NodeDesc& from) {
     if (from._has_bit(3)) {
       set_icon(from.icon());
     }
+    if (from._has_bit(4)) {
+      set_thread_priority(from.thread_priority());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -433,6 +474,7 @@ void NodeDesc::Swap(NodeDesc* other) {
     std::swap(max_branch_, other->max_branch_);
     std::swap(best_branch_, other->best_branch_);
     std::swap(icon_, other->icon_);
+    std::swap(thread_priority_, other->thread_priority_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

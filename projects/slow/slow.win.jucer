@@ -7,7 +7,7 @@
 		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO GOOGLE_GLOG_DLL_DECL" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../../../../../../protobuf/src;../.." isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 		<CONFIGURATION defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO GOOGLE_GLOG_DLL_DECL" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Release/libcddb/include;../../../../../build/Release/gflags/include;../../../../../glog/src/windows;../../../../../build/Release/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../../../../../../protobuf/src;../.." isDebug="0" name="Release" optimisation="1" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 	</CONFIGURATIONS>
-	<MAINGROUP id="1qwkFXgwY" name="Slow">
+	<MAINGROUP id="QqEFJ8awo" name="Slow">
 		<GROUP id="VdEVblIO9" name="rec">
 			<GROUP id="b0HzrMj6A" name="audio">
 				<GROUP id="savwfEiwO" name="ammf_scaler">
@@ -293,7 +293,6 @@
 					<FILE compile="1" file="../../src/rec/widget/tree/Directory.cpp" id="JU3qA29Of" name="Directory.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="ZvZCP6Bjv" name="Directory.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/widget/tree/Node.h" id="KKIFmqnah" name="Node.h" resource="0"/>
-					<FILE compile="1" file="../../src/rec/widget/tree/NodeP.cpp" id="INq5MvIpp" name="NodeP.cpp" resource="0"/>
 					<FILE compile="1" file="../../src/rec/widget/tree/PartitionChildren.cpp" id="039JgPi34" name="PartitionChildren.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/widget/tree/PartitionChildren.h" id="kzbPXqbow" name="PartitionChildren.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/widget/tree/SortedChildren.cpp" id="GAAFtWW6I" name="SortedChildren.cpp" resource="0"/>
@@ -366,7 +365,7 @@
 				</GROUP>
 			</GROUP>
 		</GROUP>
-		<FILE compile="1" file="Main.cpp" id="A7CsfF3kc" name="Main.cpp" resource="0"/>
+		<FILE compile="1" file="Main.cpp" id="L1thDz7Hg" name="Main.cpp" resource="0"/>
 	</MAINGROUP>
 	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>

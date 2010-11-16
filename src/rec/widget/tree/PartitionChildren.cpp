@@ -78,6 +78,8 @@ class Partition {
     // This is the index of the first character different between the first and
     // last entries in the names table.
     int diff = difference(range_);
+    if (diff < 0)
+      return;
     int end = range_.end_ + (list_->size() ? 0 : -1);  // Enforce branches > 1.
 
     int next = range_.begin_;

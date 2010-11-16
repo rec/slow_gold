@@ -124,6 +124,13 @@ class NodeDesc : public ::google::protobuf::Message {
   inline void set_icon(const char* value, size_t size);
   inline ::std::string* mutable_icon();
   
+  // optional uint32 thread_priority = 5 [default = 4];
+  inline bool has_thread_priority() const;
+  inline void clear_thread_priority();
+  static const int kThreadPriorityFieldNumber = 5;
+  inline ::google::protobuf::uint32 thread_priority() const;
+  inline void set_thread_priority(::google::protobuf::uint32 value);
+  
   // @@protoc_insertion_point(class_scope:rec.widget.tree.NodeDesc)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -134,11 +141,12 @@ class NodeDesc : public ::google::protobuf::Message {
   ::google::protobuf::uint32 best_branch_;
   ::std::string* icon_;
   static const ::std::string _default_icon_;
+  ::google::protobuf::uint32 thread_priority_;
   friend void  protobuf_AddDesc_rec_2fwidget_2ftree_2fNode_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2ftree_2fNode_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2ftree_2fNode_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -250,6 +258,22 @@ inline ::std::string* NodeDesc::mutable_icon() {
     icon_ = new ::std::string;
   }
   return icon_;
+}
+
+// optional uint32 thread_priority = 5 [default = 4];
+inline bool NodeDesc::has_thread_priority() const {
+  return _has_bit(4);
+}
+inline void NodeDesc::clear_thread_priority() {
+  thread_priority_ = 4u;
+  _clear_bit(4);
+}
+inline ::google::protobuf::uint32 NodeDesc::thread_priority() const {
+  return thread_priority_;
+}
+inline void NodeDesc::set_thread_priority(::google::protobuf::uint32 value) {
+  _set_bit(4);
+  thread_priority_ = value;
 }
 
 

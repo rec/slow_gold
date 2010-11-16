@@ -10,4 +10,5 @@ message NodeDesc {
   optional uint32 max_branch = 2 [default = 32];
   optional uint32 best_branch = 3 [default = 16];
   optional string icon = 4;
+  optional uint32 thread_priority = 5 [default = 4];
 };
