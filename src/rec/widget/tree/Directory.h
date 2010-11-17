@@ -31,14 +31,13 @@ class Directory : public Node {
 
   void startThread();
 
+  Range range_;
   FileArray *children_;
   scoped_ptr<Thread> thread_;
-  Range range_;
   scoped_ptr<FileArray> childrenDeleter_;
   CriticalSection lock_;
-  bool computing_;
   const bool isShard_;
-  const bool startThread_;
+  bool computing_;
 
   int getLetter(int child, int depth = 1);
 

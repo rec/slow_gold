@@ -15,8 +15,8 @@ namespace source {
 Stretchy::Stretchy(Source* s)
     : Wrappy::Position(s),
       description_(new TimeStretch),
-      scaler_(new AudioTimeScaler),
-      buffer_(2, SAMPLE_BUFFER_INITIAL_SIZE) {
+      buffer_(2, SAMPLE_BUFFER_INITIAL_SIZE),
+      scaler_(new AudioTimeScaler) {
 }
 
 Stretchy::~Stretchy() {}

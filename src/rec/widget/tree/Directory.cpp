@@ -43,7 +43,7 @@ Directory::Directory(const Directory& d, const Range& r, bool startThread)
 
 Directory::~Directory() {
   ScopedLock l(lock_);
-  thread_->stopThread();
+  thread_->stopThread(1000);
 }
 
 void Directory::computeChildren() {
@@ -55,7 +55,7 @@ void Directory::computeChildren() {
 
   childrenDeleter_.reset(new FileArray);
   children_ = childrenDeleter_.get();
-  sortedChildren(f, children);
+  sortedChildren(f, children_);
 
   range_.begin_ = 0;
   range_.end_ = children_->size();
@@ -65,8 +65,7 @@ void Directory::computeChildren() {
       const File& f = (*children_)[i];
       ShadowFile sf(f, shadow_.shadow_.getChildFile(f.getFileName()));
       bool isDir = f.isDirectory();
-      Node* node = isDir ? new Directory(desc_, sf, startThread_) :
-        new Node(desc_, sf);
+      Node* node = isDir ? new Directory(desc_, sf) : new Node(desc_, sf);
       node->listeners()->insert(this);
 
       MessageManagerLock l(thread_.get());
@@ -77,8 +76,7 @@ void Directory::computeChildren() {
     partitionChildren(*children_, range_, desc_.best_branch(), &partition);
 
     for (int i = 0; i < partition.size() - 1; ++i) {
-      Node* node = new Directory(*this, Range(partition[i], partition[i + 1]),
-                                 startThread_);
+      Node* node = new Directory(*this, Range(partition[i], partition[i + 1]));
       node->listeners()->insert(this);
       MessageManagerLock l(thread_.get());
       addSubItem(node);

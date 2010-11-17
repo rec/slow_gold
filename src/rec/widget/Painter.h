@@ -53,8 +53,8 @@ class Painter {
 
  private:
   const Widget& widget_;
-  juce::Font const font_;
   juce::Graphics* const graphics_;
+  juce::Font const font_;
   int margin_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Painter);

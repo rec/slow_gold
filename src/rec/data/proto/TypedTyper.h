@@ -28,8 +28,8 @@ class Typer {
  protected:
   const Reflection& reflection() const { return *msg_->GetReflection(); }
 
-  Message* msg_;
   const FieldDescriptor* field_;
+  Message* msg_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Typer);
 };

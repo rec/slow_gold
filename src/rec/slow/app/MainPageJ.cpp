@@ -32,7 +32,8 @@ using namespace juce;
 
 //==============================================================================
 MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
-    : zoomLabel (0),
+:     peer_(&deviceManager),
+      zoomLabel (0),
       thumbnail (0),
       startStopButton (0),
       treeTreeComp (0),
@@ -43,8 +44,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
       songTime (0),
       realTime (0),
       songDial (0),
-      realDial (0),
-      peer_(&deviceManager)
+      realDial (0)
 {
     addAndMakeVisible (zoomLabel = new Label (String::empty,
                                               T("zoom:")));
