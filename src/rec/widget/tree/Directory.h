@@ -13,7 +13,8 @@ class Directory : public Node {
  public:
   typedef juce::Array<File> FileArray;
 
-  Directory(const NodeDesc& d, const ShadowFile s);
+  Directory(const NodeDesc& d, const ShadowFile s, bool startThread = true);
+  ~Directory();
 
   void computeChildren();
 
@@ -23,14 +24,21 @@ class Directory : public Node {
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
 
- protected:
-  Directory(const Directory& d, const Range& r);
+  virtual void itemOpennessChanged (bool isNowOpen);
+
+ private:
+  Directory(const Directory& d, const Range& r, bool startThread = true);
+
+  void startThread();
 
   FileArray *children_;
   scoped_ptr<Thread> thread_;
   Range range_;
   scoped_ptr<FileArray> childrenDeleter_;
   CriticalSection lock_;
+  bool computing_;
+  const bool isShard_;
+  const bool startThread_;
 
   int getLetter(int child, int depth = 1);
 
