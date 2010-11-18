@@ -11,53 +11,19 @@
 
 import dom_file
 import filetree
-import package
 
 
 class Jucer(dom_file.DomFile):
-  def __init__(self, filename, is_test, libraries, root, platform='mac'):
+  def __init__(self, filename, is_test, root):
     dom_file.DomFile.__init__(self, filename)
     self.is_test = is_test
-    self.libraries = libraries
     self.root = root
-    self.platform = platform
     self.file_id_dict = {}
 
 
-  def modify(self):
-    self.setLibraries()
-    self.setHeaders()
-    self.setMaingroup()
-
-
   def toxml(self):
-    self.modify()
+    self.setMaingroup()
     return self.dom.toprettyxml()
-
-
-  def setLibraries(self, config='Debug'):
-    if self.platform == 'mac':
-      element = 'XCODE_MAC'
-    else:
-      element = 'VS2008'
-
-    xcode = self.element('EXPORTFORMATS', element)
-    links = [package.link(l, self.platform, config) for l in self.libraries]
-    xcode.setAttribute('extraLinkerFlags', self.join(links))
-
-
-  def setHeaders(self):
-    configurations = self.element('CONFIGURATIONS')
-    for c in configurations.getElementsByTagName('CONFIGURATION'):
-      cfg = c.getAttribute('name').capitalize()
-      c.setAttribute('name', cfg)
-      headers = [package.header(l, self.platform, cfg) for l in self.libraries]
-      c.setAttribute('headerPath', self.join(headers, ';'))
-      defines = 'DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO'
-      if self.platform != 'mac':
-        defines += ' GOOGLE_GLOG_DLL_DECL'
-
-      c.setAttribute('defines', defines)
 
 
   def setFileIdDict(self, n, path, depth=0):
@@ -82,7 +48,6 @@ class Jucer(dom_file.DomFile):
     old = self.element('MAINGROUP')
     name = old.getAttribute('name')
     self.setFileIdDict(old, '')
-    #  print self.file_id_dict
 
     maingroup = self.createFromDict('MAINGROUP', name, name=name)
     self.documentElement.replaceChild(maingroup, old)
