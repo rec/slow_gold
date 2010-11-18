@@ -25,7 +25,7 @@ class Node : public juce::TreeViewItem,
         icon_(gui::icon::getIcon(d.icon())) {
   }
 
-  virtual bool mightContainSubItems() { return false; }
+  virtual bool mightContainSubItems() { return isDirectory(); }
   virtual void itemOpennessChanged(bool isNowOpen) {}
   virtual void paintItem(juce::Graphics& g, int width, int height) {
     Painter p(desc_.widget(), &g);
@@ -45,8 +45,12 @@ class Node : public juce::TreeViewItem,
 
   virtual void itemClicked(const juce::MouseEvent&) { operator()(file()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
+  virtual void startThread() {}
 
  protected:
+  virtual bool isDirectory() const { return false; }
+
+
   NodeDesc desc_;
   ShadowFile shadow_;
   Listeners listeners_;

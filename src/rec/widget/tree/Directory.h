@@ -18,28 +18,32 @@ class Directory : public Node {
 
   void computeChildren();
 
-  virtual bool mightContainSubItems() { return true; }
   virtual String name() const;
 
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
 
   virtual void itemOpennessChanged (bool isNowOpen);
+  virtual void startThread();
+
+ protected:
+  virtual bool isDirectory() const { return true; }
 
  private:
   Directory(const Directory& d, const Range& r, bool startThread = true);
 
-  void startThread();
+  ShadowFile getChildShadowFile(int child);
+  int getLetter(int child, int depth = 1);
 
   Range range_;
   FileArray *children_;
-  scoped_ptr<Thread> thread_;
   scoped_ptr<FileArray> childrenDeleter_;
+  scoped_ptr<Thread> thread_;
   CriticalSection lock_;
   const bool isShard_;
   bool computing_;
-
-  int getLetter(int child, int depth = 1);
+  bool computingDone_;
+  bool isOpen_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
 };

@@ -10,7 +10,7 @@
               pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0"
               pluginWantsMidiIn="0" projectType="guiapp" version="0.0.1">
   <EXPORTFORMATS>
-    <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL= __JUCE_INCLUDES=../../../../../rec/src\\ ../../../../../rec/genfiles/proto\\ ../../../../../juce\\ ../../../../../rec/src/rec/data/yaml/include\\ ../../../../../build/Debug/libcddb/include\\ ../../../../../build/Debug/gflags/include\\ ../../../../../glog/src/windows\\ ../../../../../build/Debug/gtest/include\\ ../../../../../mpg123/ports/MSVC++\\ ../../../../../protobuf/src\\ ../.."
+    <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/ __JUCE_INCLUDES=../../../../../rec/src\\ ../../../../../rec/genfiles/proto\\ ../../../../../juce\\ ../../../../../rec/src/rec/data/yaml/include\\ ../../../../../build/Debug/libcddb/include\\ ../../../../../build/Debug/gflags/include\\ ../../../../../glog/src/windows\\ ../../../../../build/Debug/gtest/include\\ ../../../../../mpg123/ports/MSVC++\\ ../../../../../protobuf/src\\ ../.."
             extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\libcddb\\vsprojects\\Debug libcddb.lib /LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
             targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>

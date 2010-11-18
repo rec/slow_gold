@@ -14,23 +14,13 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-void Directory::startThread() {
-  ScopedLock l(lock_);
-  if (!(computing_ || isShard_)) {
-    computing_ = true;
-    thread_.reset(new RunnableThread("LargeDirectory",
-                                     makeCallback(this,
-                                                  &Directory::computeChildren)));
-    thread_->setPriority(desc_.thread_priority());
-    thread_->startThread();
-  }
-}
-
 Directory::Directory(const NodeDesc& d, const ShadowFile s, bool startThread)
     : Node(d, s),
       children_(NULL),
       isShard_(false),
-      computing_(false) {
+      computing_(false),
+      computingDone_(false),
+      isOpen_(false) {
 }
 
 Directory::Directory(const Directory& d, const Range& r, bool startThread)
@@ -38,13 +28,33 @@ Directory::Directory(const Directory& d, const Range& r, bool startThread)
       range_(r),
       children_(d.children_),
       isShard_(true),
-      computing_(false) {
+      computing_(false),
+      computingDone_(true),
+      isOpen_(false) {
 }
 
 Directory::~Directory() {
   ScopedLock l(lock_);
-  if (thread_) 
+  if (thread_)
     thread_->stopThread(1000);
+}
+
+void Directory::startThread() {
+  ScopedLock l(lock_);
+  if (computing_ || computingDone_ || isShard_)
+    return;
+
+  computing_ = true;
+  thread_.reset(new RunnableThread("LargeDirectory",
+                                   makeCallback(this,
+                                                &Directory::computeChildren)));
+  thread_->setPriority(desc_.thread_priority());
+  thread_->startThread();
+}
+
+ShadowFile Directory::getChildShadowFile(int child) {
+  const File& f = (*children_)[child];
+  return ShadowFile(f, shadow_.shadow_.getChildFile(f.getFileName()));
 }
 
 void Directory::computeChildren() {
@@ -63,9 +73,8 @@ void Directory::computeChildren() {
 
   if (range_.size() <= desc_.max_branch()) {
     for (int i = range_.begin_; i != range_.end_; ++i) {
-      const File& f = (*children_)[i];
-      ShadowFile sf(f, shadow_.shadow_.getChildFile(f.getFileName()));
-      bool isDir = f.isDirectory();
+      ShadowFile sf = getChildShadowFile(i);
+      bool isDir = sf.file_.isDirectory();
       Node* node = isDir ? new Directory(desc_, sf) : new Node(desc_, sf);
       node->listeners()->insert(this);
 
@@ -77,12 +86,22 @@ void Directory::computeChildren() {
     partitionChildren(*children_, range_, desc_.best_branch(), &partition);
 
     for (int i = 0; i < partition.size() - 1; ++i) {
-      Node* node = new Directory(*this, Range(partition[i], partition[i + 1]));
+      int p0 = partition[i];
+      int p1 = partition[i + 1];
+      Node* node = ((p1 - p0) == 1) ? new Directory(*this, Range(p0, p1)) :
+        new Node(desc_, getChildShadowFile(p0));
       node->listeners()->insert(this);
+      if (isOpen_)
+        node->startThread();
+
       MessageManagerLock l(thread_.get());
       addSubItem(node);
     }
   }
+
+  ScopedLock l(lock_);
+  computing_ = false;
+  computingDone_ = true;
 }
 
 String getSub(const File& f, int letters) {
@@ -116,7 +135,21 @@ String Directory::name() const {
 }
 
 void Directory::itemOpennessChanged(bool isOpen) {
+  isOpen_ = isOpen;
+  if (!isOpen)
+    return;
 
+  {
+    ScopedLock l(lock_);
+    if (!computingDone_) {
+      if (!computing_)
+        startThread();
+      return;
+    }
+  }
+
+  for (int i = 0; i < getNumSubItems(); ++i)
+    ((Node*) getSubItem(i))->startThread();
 }
 
 }  // namespace tree
