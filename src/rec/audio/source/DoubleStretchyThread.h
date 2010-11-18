@@ -13,6 +13,9 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
     : DoubleStretchy(s0, s1), Thread("DoubleStretchy") {
   }
 
+  static const int SHUTDOWN_DELAY = 1000;
+  ~DoubleStretchyThread() { stopThread(SHUTDOWN_DELAY); }
+
   virtual void setDescription(const TimeStretch& description) {
     DoubleStretchy::setDescription(description);
     waitTime_ = description.inactive_wait_time();

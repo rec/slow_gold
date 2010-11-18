@@ -10,7 +10,9 @@ namespace thread {
 
 class RunnableThread : public Thread, public Wrapper {
  public:
+  static const int SHUTDOWN_DELAY = 1000;
   RunnableThread(const String& n, Runnable* r) : Thread(n), Wrapper(r) {}
+  ~RunnableThread() { stopThread(SHUTDOWN_DELAY); }
 
   virtual void run() { runnable_->run(this); }
 
