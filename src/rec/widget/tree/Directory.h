@@ -25,8 +25,6 @@ class Directory : public Node {
 
   virtual void itemOpennessChanged (bool isNowOpen);
   virtual void startThread();
-
- protected:
   virtual bool isDirectory() const { return true; }
 
  private:

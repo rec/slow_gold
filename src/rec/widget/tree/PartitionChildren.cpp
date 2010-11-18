@@ -62,12 +62,15 @@ class Partition {
 
     typedef std::vector<int> Chars;
     Chars chars(charsSet.begin(), charsSet.end());
+    int remaining = branch_ - list_->size() - 1;
+    if (remaining > 0) {
+      double r = chars.size() * 1.0 / (remaining + 1);
 
-    int remaining = branch_ - list_->size();
-    double r = chars.size() * 1.0 / remaining;
+      for (int i = 1; i <= remaining && range_.size() > 0; ++i)
+        extractRange(LessThanEqualChar(chars[i * r]));
 
-    for (int i = 0; i < remaining && range_.size() > 0; ++i)
-      extractRange(LessThanEqualChar(chars[i * r]));
+      add(range_.begin_);
+    }
   }
 
   Str getName(int i) const;
