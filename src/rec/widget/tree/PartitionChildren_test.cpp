@@ -46,71 +46,43 @@ class PartitionChildrenTest : public testing::Test {
 };
 
 TEST_F(PartitionChildrenTest, Branch2) {
-  static const int result[] = {0, 5, 14};
+  static const int result[] = {0, 4, 14};
   test(0, arraysize(NAMES), 2, result, arraysize(result));
 }
 
 TEST_F(PartitionChildrenTest, Branch3) {
-  static const int result[] = {0, 4, 10, 14};
+  static const int result[] = {0, 2, 5, 14};
   test(0, arraysize(NAMES), 3, result, arraysize(result));
 }
 
 TEST_F(PartitionChildrenTest, Branch4) {
-  static const int result[] = {0, 3, 5, 10, 14};
+  static const int result[] = {0, 2, 4, 10, 14};
   test(0, arraysize(NAMES), 4, result, arraysize(result));
 }
 
 TEST_F(PartitionChildrenTest, Branch5) {
-  static const int result[] = {0, 2, 5, 8, 11, 14};
+  static const int result[] = {0, 1, 3, 4, 10, 14};
   test(0, arraysize(NAMES), 5, result, arraysize(result));
 }
 
 TEST_F(PartitionChildrenTest, Branch6) {
-  static const int result[] = {0, 2, 4, 7, 9, 11, 14};
+  static const int result[] = {0, 1, 2, 4, 5, 10, 14};
   test(0, arraysize(NAMES), 6, result, arraysize(result));
 }
 
 TEST_F(PartitionChildrenTest, Branch7) {
-  static const int result[] = {0, 2, 4, 6, 8, 10, 12, 14};
+  static const int result[] = {0, 1, 2, 3, 4, 5, 10, 14};
   test(0, arraysize(NAMES), 7, result, arraysize(result));
 }
 
 TEST_F(PartitionChildrenTest, Branch8) {
-  static const int result[] = {0, 1, 3, 5, 7, 8, 10, 12, 14};
+  static const int result[] = {0, 1, 2, 3, 4, 5, 10, 11, 14};
   test(0, arraysize(NAMES), 8, result, arraysize(result));
-}
-
-TEST_F(PartitionChildrenTest, Branch9) {
-  static const int result[] = {0, 1, 3, 4, 6, 7, 9, 10, 12, 14};
   test(0, arraysize(NAMES), 9, result, arraysize(result));
-}
-
-TEST_F(PartitionChildrenTest, Branch10) {
-  static const int result[] = {0, 1, 2, 4, 5, 7, 8, 9, 11, 12, 14};
   test(0, arraysize(NAMES), 10, result, arraysize(result));
-}
-
-TEST_F(PartitionChildrenTest, Branch11) {
-  static const int result[] = {0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 14};
   test(0, arraysize(NAMES), 11, result, arraysize(result));
-}
-
-TEST_F(PartitionChildrenTest, Branch12) {
-  static const int result[] = {0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 14};
   test(0, arraysize(NAMES), 12, result, arraysize(result));
-}
-
-TEST_F(PartitionChildrenTest, Branch13) {
-  static const int result[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14};
   test(0, arraysize(NAMES), 13, result, arraysize(result));
-}
-
-TEST_F(PartitionChildrenTest, Branch14) {
-  static const int result[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
-  test(0, arraysize(NAMES), 14, result, arraysize(result));
-  test(0, arraysize(NAMES), 15, result, arraysize(result));
-  test(0, arraysize(NAMES), 16, result, arraysize(result));
-  test(0, arraysize(NAMES), 17, result, arraysize(result));
 }
 
 }  // namespace
