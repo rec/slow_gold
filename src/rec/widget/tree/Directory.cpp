@@ -43,7 +43,8 @@ Directory::Directory(const Directory& d, const Range& r, bool startThread)
 
 Directory::~Directory() {
   ScopedLock l(lock_);
-  thread_->stopThread(1000);
+  if (thread_) 
+    thread_->stopThread(1000);
 }
 
 void Directory::computeChildren() {

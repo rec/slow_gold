@@ -17,12 +17,8 @@ def build(*names):
     root = os.getenv('ROOT')
     base = name.split('.')[0]
     doc = '%s/rec/projects/%s/%s.jucer' % (root, base, name)
-    if '.win' in name:
-      plat = 'win'
-    else:
-      plat = 'mac'
 
-    results = jucer.Jucer(doc, 'test' in name, root, plat).toxml()
+    results = jucer.Jucer(doc, 'test' in name, root).toxml()
     f = open(doc, 'w')
     for line in results.split('\n'):
       if line.strip():
@@ -31,4 +27,4 @@ def build(*names):
     print 'Written', doc
 
 
-build('slow.mac', 'slow.win', 'tests')
+build('slow')
