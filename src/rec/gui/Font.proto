@@ -10,4 +10,12 @@ message FontDesc {
     optional bool underlined = 3;
   };
   optional Style style = 3;
+
+  enum Type {
+    SANS_SERIF = 1;
+    SERIF = 2;
+    MONOSPACE = 3;
+  };
+
+  optional Type type = 4;
 };

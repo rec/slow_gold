@@ -23,10 +23,23 @@ inline const juce::Font getFont(const FontDesc& font) {
       style += Font::underlined;
   }
 
+  String name;
   if (font.has_name())
-    return Font(font.name().c_str(), font.font_height(), style);
+    name = font.name().c_str();
+
+  else if (font.type() == FontDesc::SANS_SERIF)
+    name = juce::Font::getDefaultSansSerifFontName();
+
+  else if (font.type() == FontDesc::SERIF)
+    name = juce::Font::getDefaultSerifFontName();
+
+  else if (font.type() == FontDesc::MONOSPACE)
+    name = juce::Font::getDefaultMonospacedFontName();
+
   else
     return Font(font.font_height(), style);
+
+  return Font(name, font.font_height(), style);
 };
 
 }  // namespace gui

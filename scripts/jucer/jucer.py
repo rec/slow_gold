@@ -54,6 +54,7 @@ class Jucer(dom_file.DomFile):
 
     for prefix, n2 in (('src', 'rec'), ('genfiles', 'proto')):
       self.createCPPFileGroup(maingroup, prefix, n2, '%s/rec' % self.root, name)
+
     maingroup.appendChild(self.createFile('Main.cpp', 'Main.cpp',
                                           name + '/Main.cpp'))
 
@@ -68,12 +69,9 @@ class Jucer(dom_file.DomFile):
 
 
   def createFile(self, name, file, path):
-    return self.createFromDict('FILE',
-                               path,
-                               name=name,
-                               resource='0',
-                               file=file,
-                               compile=str(int(not file.endswith('.h'))))
+    compile = str(int(not file.endswith('.h')))
+    d = dict(name=name, resource='0', file=file, compile=compile)
+    return self.createFromDict('FILE', path, **dict)
 
 
   def createFileOrGroup(self, prefix, name, tree, path):

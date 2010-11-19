@@ -5,6 +5,7 @@
 
 #include "rec/base/base.h"
 #include "rec/gui/icon/Icon.h"
+#include "rec/gui/Font.h"
 #include "rec/util/Listener.h"
 #include "rec/widget/tree/Node.pb.h"
 #include "rec/widget/tree/Tree.h"
@@ -23,16 +24,23 @@ class Node : public juce::TreeViewItem,
       : desc_(d),
         shadow_(s),
         icon_(gui::icon::getIcon(d.icon())),
-        selected_(false) {
+        selected_(false),
+        font_(gui::getFont(desc_.widget().font())),
+        height_(font_.getHeight()),
+        ascent_(font_.getAscent()),
+        descent_(height_ - ascent_),
+        margin_(d.widget().margin()) {
   }
 
   virtual bool mightContainSubItems() { return isDirectory(); }
   virtual void itemOpennessChanged(bool isNowOpen) {}
+
   void paint(juce::Graphics& g) const {
     Painter p(desc_.widget(), &g);
     if (icon_)
       icon_->draw(g, 1.0);
-    g.drawSingleLineText(name(), 0, 20);  // TODO
+
+    g.drawSingleLineText(name(), margin_, ascent_ + margin_);
   }
 
   virtual String name() const { return shadow_.file_.getFileName(); }
@@ -40,8 +48,12 @@ class Node : public juce::TreeViewItem,
 
   const gui::Rectangle bounds() const { return desc_.widget().bounds(); }
 
-  virtual int getItemWidth() const { return 200; }  // bounds().top_left().x(); }
-  virtual int getItemHeight() const { return 25; } // bounds().top_left().y(); }
+  virtual int getItemWidth() const {
+    return font_.getStringWidth(name()) + 2 * margin_;
+  }
+  virtual int getItemHeight() const {
+    return ascent_ + descent_ + 2 * margin_;
+  }
   bool alreadyVisited() const { return shadow_.shadow_.exists(); }
   const File& file() const { return shadow_.file_; }
 
@@ -60,25 +72,29 @@ class Node : public juce::TreeViewItem,
   Listeners listeners_;
   const juce::Drawable* icon_;
   bool selected_;
-               
+  const juce::Font font_;
+  const short height_, ascent_, descent_, margin_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
 };
 
 class NodeComponent : public juce::Component {
  public:
-  NodeComponent(const String& name, const Node& node)
-      : Component(name), node_(node) {
+  NodeComponent(Node* node)
+      : Component(node->name()), node_(node) {
   }
 
-  virtual void paint(juce::Graphics& g) { node_.paint(g); }
+  virtual void paint(juce::Graphics& g) { node_->paint(g); }
+  virtual void itemClicked(const juce::MouseEvent& m) { node_->itemClicked(m); }
+  virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
 
  private:
-  const Node& node_;
+  Node* node_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(NodeComponent);
 };
 
 inline juce::Component* Node::createItemComponent() {
-  return new NodeComponent(this->name(), *this);
+  return new NodeComponent(this);
 }
 
 }  // namespace tree

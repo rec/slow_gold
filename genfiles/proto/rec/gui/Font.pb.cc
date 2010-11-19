@@ -21,6 +21,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* FontDesc_Style_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   FontDesc_Style_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* FontDesc_Type_descriptor_ = NULL;
 
 }  // namespace
 
@@ -32,10 +33,11 @@ void protobuf_AssignDesc_rec_2fgui_2fFont_2eproto() {
       "rec/gui/Font.proto");
   GOOGLE_CHECK(file != NULL);
   FontDesc_descriptor_ = file->message_type(0);
-  static const int FontDesc_offsets_[3] = {
+  static const int FontDesc_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FontDesc, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FontDesc, font_height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FontDesc, style_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FontDesc, type_),
   };
   FontDesc_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -65,6 +67,7 @@ void protobuf_AssignDesc_rec_2fgui_2fFont_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(FontDesc_Style));
+  FontDesc_Type_descriptor_ = FontDesc_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -99,11 +102,13 @@ void protobuf_AddDesc_rec_2fgui_2fFont_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\022rec/gui/Font.proto\022\007rec.gui\"\224\001\n\010FontDe"
+    "\n\022rec/gui/Font.proto\022\007rec.gui\"\354\001\n\010FontDe"
     "sc\022\014\n\004name\030\001 \001(\t\022\027\n\013font_height\030\002 \001(\002:\0021"
     "8\022&\n\005style\030\003 \001(\0132\027.rec.gui.FontDesc.Styl"
-    "e\0329\n\005Style\022\014\n\004bold\030\001 \001(\010\022\016\n\006italic\030\002 \001(\010"
-    "\022\022\n\nunderlined\030\003 \001(\010", 180);
+    "e\022$\n\004type\030\004 \001(\0162\026.rec.gui.FontDesc.Type\032"
+    "9\n\005Style\022\014\n\004bold\030\001 \001(\010\022\016\n\006italic\030\002 \001(\010\022\022"
+    "\n\nunderlined\030\003 \001(\010\"0\n\004Type\022\016\n\nSANS_SERIF"
+    "\020\001\022\t\n\005SERIF\020\002\022\r\n\tMONOSPACE\020\003", 268);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Font.proto", &protobuf_RegisterTypes);
   FontDesc::default_instance_ = new FontDesc();
@@ -123,6 +128,29 @@ struct StaticDescriptorInitializer_rec_2fgui_2fFont_2eproto {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* FontDesc_Type_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return FontDesc_Type_descriptor_;
+}
+bool FontDesc_Type_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const FontDesc_Type FontDesc::SANS_SERIF;
+const FontDesc_Type FontDesc::SERIF;
+const FontDesc_Type FontDesc::MONOSPACE;
+const FontDesc_Type FontDesc::Type_MIN;
+const FontDesc_Type FontDesc::Type_MAX;
+const int FontDesc::Type_ARRAYSIZE;
+#endif  // _MSC_VER
 #ifndef _MSC_VER
 const int FontDesc_Style::kBoldFieldNumber;
 const int FontDesc_Style::kItalicFieldNumber;
@@ -409,6 +437,7 @@ const ::std::string FontDesc::_default_name_;
 const int FontDesc::kNameFieldNumber;
 const int FontDesc::kFontHeightFieldNumber;
 const int FontDesc::kStyleFieldNumber;
+const int FontDesc::kTypeFieldNumber;
 #endif  // !_MSC_VER
 
 FontDesc::FontDesc()
@@ -431,6 +460,7 @@ void FontDesc::SharedCtor() {
   name_ = const_cast< ::std::string*>(&_default_name_);
   font_height_ = 18;
   style_ = NULL;
+  type_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -478,6 +508,7 @@ void FontDesc::Clear() {
     if (_has_bit(2)) {
       if (style_ != NULL) style_->::rec::gui::FontDesc_Style::Clear();
     }
+    type_ = 1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -531,6 +562,27 @@ bool FontDesc::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(32)) goto parse_type;
+        break;
+      }
+      
+      // optional .rec.gui.FontDesc.Type type = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_type:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::gui::FontDesc_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::gui::FontDesc_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(4, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -573,6 +625,12 @@ void FontDesc::SerializeWithCachedSizes(
       3, this->style(), output);
   }
   
+  // optional .rec.gui.FontDesc.Type type = 4;
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->type(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -603,6 +661,12 @@ void FontDesc::SerializeWithCachedSizes(
         3, this->style(), target);
   }
   
+  // optional .rec.gui.FontDesc.Type type = 4;
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      4, this->type(), target);
+  }
+  
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -631,6 +695,12 @@ int FontDesc::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->style());
+    }
+    
+    // optional .rec.gui.FontDesc.Type type = 4;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
   }
@@ -669,6 +739,9 @@ void FontDesc::MergeFrom(const FontDesc& from) {
     if (from._has_bit(2)) {
       mutable_style()->::rec::gui::FontDesc_Style::MergeFrom(from.style());
     }
+    if (from._has_bit(3)) {
+      set_type(from.type());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -695,6 +768,7 @@ void FontDesc::Swap(FontDesc* other) {
     std::swap(name_, other->name_);
     std::swap(font_height_, other->font_height_);
     std::swap(style_, other->style_);
+    std::swap(type_, other->type_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

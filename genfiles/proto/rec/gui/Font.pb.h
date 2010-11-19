@@ -36,6 +36,26 @@ void protobuf_ShutdownFile_rec_2fgui_2fFont_2eproto();
 class FontDesc;
 class FontDesc_Style;
 
+enum FontDesc_Type {
+  FontDesc_Type_SANS_SERIF = 1,
+  FontDesc_Type_SERIF = 2,
+  FontDesc_Type_MONOSPACE = 3
+};
+bool FontDesc_Type_IsValid(int value);
+const FontDesc_Type FontDesc_Type_Type_MIN = FontDesc_Type_SANS_SERIF;
+const FontDesc_Type FontDesc_Type_Type_MAX = FontDesc_Type_MONOSPACE;
+const int FontDesc_Type_Type_ARRAYSIZE = FontDesc_Type_Type_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* FontDesc_Type_descriptor();
+inline const ::std::string& FontDesc_Type_Name(FontDesc_Type value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    FontDesc_Type_descriptor(), value);
+}
+inline bool FontDesc_Type_Parse(
+    const ::std::string& name, FontDesc_Type* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<FontDesc_Type>(
+    FontDesc_Type_descriptor(), name, value);
+}
 // ===================================================================
 
 class FontDesc_Style : public ::google::protobuf::Message {
@@ -197,6 +217,31 @@ class FontDesc : public ::google::protobuf::Message {
   
   typedef FontDesc_Style Style;
   
+  typedef FontDesc_Type Type;
+  static const Type SANS_SERIF = FontDesc_Type_SANS_SERIF;
+  static const Type SERIF = FontDesc_Type_SERIF;
+  static const Type MONOSPACE = FontDesc_Type_MONOSPACE;
+  static inline bool Type_IsValid(int value) {
+    return FontDesc_Type_IsValid(value);
+  }
+  static const Type Type_MIN =
+    FontDesc_Type_Type_MIN;
+  static const Type Type_MAX =
+    FontDesc_Type_Type_MAX;
+  static const int Type_ARRAYSIZE =
+    FontDesc_Type_Type_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Type_descriptor() {
+    return FontDesc_Type_descriptor();
+  }
+  static inline const ::std::string& Type_Name(Type value) {
+    return FontDesc_Type_Name(value);
+  }
+  static inline bool Type_Parse(const ::std::string& name,
+      Type* value) {
+    return FontDesc_Type_Parse(name, value);
+  }
+  
   // accessors -------------------------------------------------------
   
   // optional string name = 1;
@@ -223,6 +268,13 @@ class FontDesc : public ::google::protobuf::Message {
   inline const ::rec::gui::FontDesc_Style& style() const;
   inline ::rec::gui::FontDesc_Style* mutable_style();
   
+  // optional .rec.gui.FontDesc.Type type = 4;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 4;
+  inline ::rec::gui::FontDesc_Type type() const;
+  inline void set_type(::rec::gui::FontDesc_Type value);
+  
   // @@protoc_insertion_point(class_scope:rec.gui.FontDesc)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -232,11 +284,12 @@ class FontDesc : public ::google::protobuf::Message {
   static const ::std::string _default_name_;
   float font_height_;
   ::rec::gui::FontDesc_Style* style_;
+  int type_;
   friend void  protobuf_AddDesc_rec_2fgui_2fFont_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fFont_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fFont_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -386,6 +439,23 @@ inline ::rec::gui::FontDesc_Style* FontDesc::mutable_style() {
   return style_;
 }
 
+// optional .rec.gui.FontDesc.Type type = 4;
+inline bool FontDesc::has_type() const {
+  return _has_bit(3);
+}
+inline void FontDesc::clear_type() {
+  type_ = 1;
+  _clear_bit(3);
+}
+inline ::rec::gui::FontDesc_Type FontDesc::type() const {
+  return static_cast< ::rec::gui::FontDesc_Type >(type_);
+}
+inline void FontDesc::set_type(::rec::gui::FontDesc_Type value) {
+  GOOGLE_DCHECK(::rec::gui::FontDesc_Type_IsValid(value));
+  _set_bit(3);
+  type_ = value;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -396,6 +466,10 @@ inline ::rec::gui::FontDesc_Style* FontDesc::mutable_style() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::gui::FontDesc_Type>() {
+  return ::rec::gui::FontDesc_Type_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf
