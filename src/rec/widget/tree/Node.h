@@ -22,12 +22,13 @@ class Node : public juce::TreeViewItem,
   Node(const NodeDesc& d, const ShadowFile& s)
       : desc_(d),
         shadow_(s),
-        icon_(gui::icon::getIcon(d.icon())) {
+        icon_(gui::icon::getIcon(d.icon())),
+        selected_(false) {
   }
 
   virtual bool mightContainSubItems() { return isDirectory(); }
   virtual void itemOpennessChanged(bool isNowOpen) {}
-  virtual void paintItem(juce::Graphics& g, int width, int height) {
+  void paint(juce::Graphics& g) const {
     Painter p(desc_.widget(), &g);
     if (icon_)
       icon_->draw(g, 1.0);
@@ -35,6 +36,7 @@ class Node : public juce::TreeViewItem,
   }
 
   virtual String name() const { return shadow_.file_.getFileName(); }
+  virtual juce::Component* createItemComponent();
 
   const gui::Rectangle bounds() const { return desc_.widget().bounds(); }
 
@@ -47,16 +49,37 @@ class Node : public juce::TreeViewItem,
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
   virtual void requestPartition() {}
   virtual bool isDirectory() const { return false; }
+  virtual void itemSelectionChanged(bool s) {
+    selected_ = s;
+    TreeViewItem::itemSelectionChanged(s);
+  }
 
  protected:
   NodeDesc desc_;
   ShadowFile shadow_;
   Listeners listeners_;
-
   const juce::Drawable* icon_;
-
+  bool selected_;
+               
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
 };
+
+class NodeComponent : public juce::Component {
+ public:
+  NodeComponent(const String& name, const Node& node)
+      : Component(name), node_(node) {
+  }
+
+  virtual void paint(juce::Graphics& g) { node_.paint(g); }
+
+ private:
+  const Node& node_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(NodeComponent);
+};
+
+inline juce::Component* Node::createItemComponent() {
+  return new NodeComponent(this->name(), *this);
+}
 
 }  // namespace tree
 }  // namespace widget
