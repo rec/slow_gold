@@ -13,10 +13,11 @@ class Directory : public Node {
  public:
   typedef juce::Array<File> FileArray;
 
-  Directory(const NodeDesc& d, const ShadowFile s, bool startThread = true);
+  Directory(const NodeDesc& d, const ShadowFile s);
   ~Directory();
 
   void computeChildren();
+  void partition();
 
   virtual String name() const;
 
@@ -24,14 +25,12 @@ class Directory : public Node {
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
 
   virtual void itemOpennessChanged (bool isNowOpen);
-  virtual void startThread();
+  virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
+  void addChildFile(int begin, int end);
 
  private:
-  Directory(const Directory& d, const Range& r, bool startThread = true);
-
-  ShadowFile getChildShadowFile(int child);
-  int getLetter(int child, int depth = 1);
+  Directory(const Directory& d, const Range& r);
 
   Range range_;
   FileArray *children_;

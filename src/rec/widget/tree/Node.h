@@ -45,7 +45,7 @@ class Node : public juce::TreeViewItem,
 
   virtual void itemClicked(const juce::MouseEvent&) { operator()(file()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
-  virtual void startThread() {}
+  virtual void requestPartition() {}
   virtual bool isDirectory() const { return false; }
 
  protected:

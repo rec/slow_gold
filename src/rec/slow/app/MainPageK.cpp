@@ -70,7 +70,7 @@ void MainPageK::construct(MainPageJ* peer) {
   // File f("~/iTunes");
   Directory* directory = new Directory(NodeDesc(), ShadowFile(f, f));
   tree->setRootItem(directory);
-  LOG(ERROR) << "MainPageK " << this << ", " << directory->listeners();
+  directory->requestPartition();
   directory->listeners()->insert(this);
 
   TimeStretch d = getPreferences().track().timestretch();
