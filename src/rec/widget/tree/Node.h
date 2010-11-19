@@ -43,6 +43,10 @@ class Node : public juce::TreeViewItem,
     g.drawSingleLineText(name(), margin_, ascent_ + margin_);
   }
 
+  virtual void paintItem(juce::Graphics& g, int, int) {
+    paint(g);
+  }
+
   virtual String name() const { return shadow_.file_.getFileName(); }
   virtual juce::Component* createItemComponent();
 
@@ -57,7 +61,9 @@ class Node : public juce::TreeViewItem,
   bool alreadyVisited() const { return shadow_.shadow_.exists(); }
   const File& file() const { return shadow_.file_; }
 
-  virtual void itemClicked(const juce::MouseEvent&) { operator()(file()); }
+  virtual void itemClicked(const juce::MouseEvent&) {
+    operator()(file());
+  }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
   virtual void requestPartition() {}
   virtual bool isDirectory() const { return false; }
@@ -81,15 +87,23 @@ class Node : public juce::TreeViewItem,
 class NodeComponent : public juce::Component {
  public:
   NodeComponent(Node* node)
-      : Component(node->name()), node_(node) {
+      : Component(node->name()), node_(node), clicked_(false) {
   }
 
   virtual void paint(juce::Graphics& g) { node_->paint(g); }
-  virtual void itemClicked(const juce::MouseEvent& m) { node_->itemClicked(m); }
-  virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
+  virtual void mouseDown(const juce::MouseEvent& m) {
+    clicked_ = true;
+  }
+  virtual void mouseUp(const juce::MouseEvent& m) {
+    if (clicked_) {
+      node_->itemClicked(m);
+      clicked_ = false;
+    }
+  }
 
  private:
   Node* node_;
+  bool clicked_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(NodeComponent);
 };
 

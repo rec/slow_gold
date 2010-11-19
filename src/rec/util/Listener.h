@@ -18,13 +18,12 @@ class Listener {
   class Set : public Listener<Type> {
    public:
     typedef std::set<Listener*> Listeners;
+    typedef typename Listeners::iterator iterator;
 
     Listeners* listeners() { return &listeners_; }
 
     virtual void operator()(Type x) {
-      LOG(ERROR) << "Callback " << this << " " << listeners_.size() << ", " << &listeners_;
-      typename Listeners::iterator i;
-      for (i = listeners_.begin(); i != listeners_.end(); ++i)
+      for (iterator i = listeners_.begin(); i != listeners_.end(); ++i)
         (**i)(x);
     }
 
