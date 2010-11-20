@@ -44,14 +44,15 @@ const String formatTime(float time, bool flash) {
   char ch = ':';
   if (flash && (seconds & 1))
     ch = ' ';
+  #ifdef _WIN32
+#define snprintf _snprintf
+#endif
   snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
            hours, minutes, ch, seconds, milliseconds);
   return buffer;
 }
 
-#ifdef _WIN32
-#define snprintf _snprintf
-#endif
+
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(desc.widget().name().c_str()),
