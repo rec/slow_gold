@@ -25,7 +25,7 @@
 //[Headers]     -- You can add your own extra header files here --
 
 #include "rec/slow/app/MainPageK.h"
-#include "rec/widget/Time.h"
+#include "rec/widget/time/Time.h"
 using namespace juce;
 
 //[/Headers]

@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #include "rec/base/base.h"
-#include "rec/widget/Time.pb.h"
+#include "rec/widget/time/Time.pb.h"
 #include "rec/widget/Painter.h"
 #include "rec/gui/Color.pb.h"
 
@@ -14,14 +14,14 @@ namespace rec {
 namespace widget {
 namespace time {
 
-class TextComponent : public juce::Component {
+const String formatTime(float time, bool flash=false);
+
+class TextComponent : public juce::Label {
  public:
   explicit TextComponent(const Text& desc);
 
   void setTimeSamples(int samples);
   void setTimeSeconds(float time);
-
-  virtual void paint(juce::Graphics& g);
 
  private:
   Text description_;

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="U4btxjDTv" name="Slow">
+  <MAINGROUP id="kkFx55Kqx" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -538,10 +538,12 @@
               name="AudioThumbnail.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="ncov8y044"
               name="Painter.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/widget/Time.cpp" id="pspVSih1D"
-              name="Time.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/widget/Time.h" id="9hOhmSFg2"
-              name="Time.h" resource="0"/>
+        <GROUP id="AnoLZEW8n" name="time">
+          <FILE compile="1" file="../../src/rec/widget/time/Time.cpp" id="d1uasv647"
+                name="Time.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/time/Time.h" id="h9zW5rHxC"
+                name="Time.h" resource="0"/>
+        </GROUP>
         <GROUP id="m5OH8IAxk" name="tree">
           <FILE compile="1" file="../../src/rec/widget/tree/Convertors.cpp" id="7XizWqpu1"
                 name="Convertors.cpp" resource="0"/>
@@ -551,8 +553,12 @@
                 name="Directory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="ZvZCP6Bjv"
                 name="Directory.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/Node.h" id="KKIFmqnah"
-                name="Node.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/tree/NodeComponent.h"
+                id="cOpB2ffGE" name="NodeComponent.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/tree/NodeItem.cpp" id="rjnQ7RViD"
+                name="NodeItem.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/tree/NodeItem.h" id="Am03z4lpV"
+                name="NodeItem.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/PartitionChildren.cpp"
                 id="039JgPi34" name="PartitionChildren.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/PartitionChildren.h"
@@ -649,10 +655,12 @@
                 id="ciYThZNQa" name="Panes.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/widget/Panes.pb.h"
                 id="1n5LHBZF6" name="Panes.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/widget/Time.pb.cc"
-                id="dJlTLpmtd" name="Time.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/widget/Time.pb.h"
-                id="6KbJRDemE" name="Time.pb.h" resource="0"/>
+          <GROUP id="kRiMIw9U8" name="time">
+            <FILE compile="1" file="../../genfiles/proto/rec/widget/time/Time.pb.cc"
+                  id="42dJzvKyc" name="Time.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/widget/time/Time.pb.h"
+                  id="fs0Lk46bN" name="Time.pb.h" resource="0"/>
+          </GROUP>
           <GROUP id="MqCA3tPaT" name="tree">
             <FILE compile="1" file="../../genfiles/proto/rec/widget/tree/Node.pb.cc"
                   id="gaUjvSWMi" name="Node.pb.cc" resource="0"/>
@@ -670,7 +678,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="pbirsYfv7" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="B2zg1X9Rl" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

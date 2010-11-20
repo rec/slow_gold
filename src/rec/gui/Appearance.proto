@@ -2,7 +2,7 @@ package rec.gui;
 
 import "rec/gui/Color.proto";
 import "rec/widget/AudioThumbnail.proto";
-import "rec/widget/Time.proto";
+import "rec/widget/time/Time.proto";
 
 message Appearance {
   optional Colors colors = 1;

@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-#include "rec/widget/tree/Node.h"
+#include "rec/widget/tree/NodeItem.h"
 
 namespace rec {
 namespace widget {

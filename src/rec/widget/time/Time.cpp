@@ -1,7 +1,7 @@
 #include <math.h>
 #include <glog/logging.h>
 
-#include "rec/widget/Time.h"
+#include "rec/widget/time/Time.h"
 
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
@@ -18,9 +18,8 @@ namespace widget {
 namespace time {
 
 TextComponent::TextComponent(const Text& desc)
-    : Component(desc.widget().name().c_str()),
-      description_(desc),
-      time_(0) {
+    : Label(desc.widget().name().c_str()),
+      description_(desc) {
 }
 
 void TextComponent::setTimeSamples(int samples) {
@@ -28,18 +27,12 @@ void TextComponent::setTimeSamples(int samples) {
 }
 
 void TextComponent::setTimeSeconds(float time) {
-  time_ = time;
-  repaint();
+  setText(formatTime(time, description_.separator().flash()), false);
 }
 
-#ifdef _WIN32
-#define snprintf _snprintf
-#endif
-
-void TextComponent::paint(Graphics& g) {
-  Painter p(description_.widget(), &g);
-  int seconds = time_;
-  float fraction = time_ - seconds;
+const String formatTime(float time, bool flash) {
+  int seconds = time;
+  float fraction = time - seconds;
   int milliseconds = 1000 * fraction;
   // int frames = 75 * fraction;
 
@@ -49,12 +42,16 @@ void TextComponent::paint(Graphics& g) {
 
   char buffer[64];
   char ch = ':';
-  if (description_.separator().flash() && (seconds & 1))
+  if (flash && (seconds & 1))
     ch = ' ';
-   snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
-          hours, minutes, ch, seconds, milliseconds);
-  g.drawSingleLineText(buffer, p.margin(), p.font().getAscent() + p.margin());
+  snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
+           hours, minutes, ch, seconds, milliseconds);
+  return buffer;
 }
+
+#ifdef _WIN32
+#define snprintf _snprintf
+#endif
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(desc.widget().name().c_str()),

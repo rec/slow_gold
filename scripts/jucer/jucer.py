@@ -71,7 +71,7 @@ class Jucer(dom_file.DomFile):
   def createFile(self, name, file, path):
     compile = str(int(not file.endswith('.h')))
     d = dict(name=name, resource='0', file=file, compile=compile)
-    return self.createFromDict('FILE', path, **dict)
+    return self.createFromDict('FILE', path, **d)
 
 
   def createFileOrGroup(self, prefix, name, tree, path):
