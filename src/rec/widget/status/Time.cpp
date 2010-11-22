@@ -46,11 +46,19 @@ const String formatTime(float time, bool flash) {
   char ch = ':';
   if (flash && (seconds & 1))
     ch = ' ';
+  #ifdef _WIN32
+#define snprintf _snprintf
+#endif
   snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
            hours, minutes, ch, seconds, milliseconds);
   return buffer;
 }
 
+<<<<<<< HEAD:src/rec/widget/status/Time.cpp
+=======
+
+
+>>>>>>> 9691da2bab78b04219364a3932b428b0ffac0708:src/rec/widget/time/Time.cpp
 DialComponent::DialComponent(const Dial& desc)
     : Component(desc.widget().name().c_str()),
       description_(desc),
