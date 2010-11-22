@@ -1,0 +1,24 @@
+package rec.widget.status;
+
+import "rec/widget/Widget.proto";
+import "rec/widget/status/Time.proto";
+
+message Text {
+  optional Widget widget = 1;
+};
+
+message Transport {
+  optional Widget widget = 1;
+};
+
+// Represents a text time display.
+message StatusDesc {
+  optional Widget widget = 1;
+  optional time.Text time = 2;
+  optional time.Dial dial = 3;
+  optional Widget album = 4;
+  optional Widget track = 5;
+  optional Widget loop_indicator = 6;
+  optional Transport transport = 7;
+};
+

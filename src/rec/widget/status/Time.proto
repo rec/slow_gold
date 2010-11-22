@@ -1,7 +1,6 @@
-package rec.widget.time;
+package rec.widget.status.time;
 
 import "rec/gui/Color.proto";
-import "rec/gui/Font.proto";
 import "rec/widget/Widget.proto";
 
 // Represents a text time display.
@@ -25,10 +24,6 @@ message Text {
   optional Fields fields = 3;
 };
 
-
-message Bar {
-};
-
 // Represents a dial-style time display.
 message Dial {
   enum Direction {
@@ -40,12 +35,14 @@ message Dial {
   optional uint32 outline = 2;
   optional Direction direction = 3 [default = CLOCKWISE];
   optional bool display_lap_count = 4;
-  optional gui.FontDesc font = 5;
   optional float zero_point = 7;
   optional bool empty_on_zero = 8 [default = true];
 
   optional gui.Color from_color = 9;
   optional gui.Color to_color = 10;
+};
+
+message Bar {
 };
 
 message Time {

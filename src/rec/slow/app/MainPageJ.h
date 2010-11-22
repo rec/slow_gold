@@ -25,7 +25,7 @@
 //[Headers]     -- You can add your own extra header files here --
 
 #include "rec/slow/app/MainPageK.h"
-#include "rec/widget/time/Time.h"
+#include "rec/widget/status/Time.h"
 using namespace juce;
 
 //[/Headers]
@@ -83,10 +83,10 @@ public:
     Slider* timeScaleSlider;
     Slider* pitchScaleSlider;
     ToggleButton* loopingButton;
-    rec::widget::time::TextComponent* songTime;
-    rec::widget::time::TextComponent* realTime;
-    rec::widget::time::DialComponent* songDial;
-    rec::widget::time::DialComponent* realDial;
+  rec::widget::status::time::TextComponent* songTime;
+    rec::widget::status::time::TextComponent* realTime;
+    rec::widget::status::time::DialComponent* songDial;
+    rec::widget::status::time::DialComponent* realDial;
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)
     MainPageJ(const MainPageJ&);

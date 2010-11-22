@@ -21,7 +21,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "MainPageK.h"
-#include "rec/widget/time/Time.pb.h"
+#include "rec/widget/status/Time.pb.h"
 using namespace juce;
 //[/Headers]
 
@@ -97,15 +97,15 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     pitchScaleSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     pitchScaleSlider->addListener (this);
 
-    using rec::widget::time::TextComponent;
-    using rec::widget::time::Text;
+    using rec::widget::status::time::TextComponent;
+    using rec::widget::status::time::Text;
     using rec::gui::Colors;
 
     addAndMakeVisible(songTime = new TextComponent(Text()));
     addAndMakeVisible(realTime = new TextComponent(Text()));
 
-    using rec::widget::time::DialComponent;
-    using rec::widget::time::Dial;
+    using rec::widget::status::time::DialComponent;
+    using rec::widget::status::time::Dial;
     using rec::gui::Colors;
 
     Dial dial;

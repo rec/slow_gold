@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #include "rec/base/base.h"
-#include "rec/widget/time/Time.pb.h"
+#include "rec/widget/status/Time.pb.h"
 #include "rec/widget/Painter.h"
 #include "rec/gui/Color.pb.h"
 
@@ -12,6 +12,7 @@
 
 namespace rec {
 namespace widget {
+namespace status {
 namespace time {
 
 const String formatTime(float time, bool flash=false);
@@ -50,6 +51,7 @@ class DialComponent : public juce::Component {
 };
 
 }  // namespace time
+}  // namespace status
 }  // namespace widget
 }  // namespace rec
 

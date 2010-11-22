@@ -25,7 +25,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/gui/Color.pb.h"
 #include "rec/widget/AudioThumbnail.pb.h"
-#include "rec/widget/time/Time.pb.h"
+#include "rec/widget/status/Time.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -108,12 +108,12 @@ class Appearance : public ::google::protobuf::Message {
   inline const ::rec::widget::AudioThumbnailDesc& thumbnail() const;
   inline ::rec::widget::AudioThumbnailDesc* mutable_thumbnail();
   
-  // optional .rec.widget.time.Time time = 3;
+  // optional .rec.widget.status.time.Time time = 3;
   inline bool has_time() const;
   inline void clear_time();
   static const int kTimeFieldNumber = 3;
-  inline const ::rec::widget::time::Time& time() const;
-  inline ::rec::widget::time::Time* mutable_time();
+  inline const ::rec::widget::status::time::Time& time() const;
+  inline ::rec::widget::status::time::Time* mutable_time();
   
   // @@protoc_insertion_point(class_scope:rec.gui.Appearance)
  private:
@@ -122,7 +122,7 @@ class Appearance : public ::google::protobuf::Message {
   
   ::rec::gui::Colors* colors_;
   ::rec::widget::AudioThumbnailDesc* thumbnail_;
-  ::rec::widget::time::Time* time_;
+  ::rec::widget::status::time::Time* time_;
   friend void  protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fAppearance_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fAppearance_2eproto();
@@ -184,20 +184,20 @@ inline ::rec::widget::AudioThumbnailDesc* Appearance::mutable_thumbnail() {
   return thumbnail_;
 }
 
-// optional .rec.widget.time.Time time = 3;
+// optional .rec.widget.status.time.Time time = 3;
 inline bool Appearance::has_time() const {
   return _has_bit(2);
 }
 inline void Appearance::clear_time() {
-  if (time_ != NULL) time_->::rec::widget::time::Time::Clear();
+  if (time_ != NULL) time_->::rec::widget::status::time::Time::Clear();
   _clear_bit(2);
 }
-inline const ::rec::widget::time::Time& Appearance::time() const {
+inline const ::rec::widget::status::time::Time& Appearance::time() const {
   return time_ != NULL ? *time_ : *default_instance_->time_;
 }
-inline ::rec::widget::time::Time* Appearance::mutable_time() {
+inline ::rec::widget::status::time::Time* Appearance::mutable_time() {
   _set_bit(2);
-  if (time_ == NULL) time_ = new ::rec::widget::time::Time;
+  if (time_ == NULL) time_ = new ::rec::widget::status::time::Time;
   return time_;
 }
 

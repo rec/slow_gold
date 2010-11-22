@@ -380,6 +380,7 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Defaulter.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Listener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
@@ -407,9 +408,11 @@
           <File RelativePath="..\..\..\..\src\rec\widget\AudioThumbnail.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\widget\AudioThumbnail.h"/>
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
-          <Filter Name="time">
-            <File RelativePath="..\..\..\..\src\rec\widget\time\Time.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\time\Time.h"/>
+          <Filter Name="status">
+            <File RelativePath="..\..\..\..\src\rec\widget\status\Status.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\Status.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\Time.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\Time.h"/>
           </Filter>
           <Filter Name="tree">
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Convertors.cpp"/>
@@ -478,9 +481,11 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\AudioThumbnail.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h"/>
-            <Filter Name="time">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\time\Time.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\time\Time.pb.h"/>
+            <Filter Name="status">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.h"/>
             </Filter>
             <Filter Name="tree">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc"/>

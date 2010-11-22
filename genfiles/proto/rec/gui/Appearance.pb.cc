@@ -76,15 +76,15 @@ void protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto() {
 
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
-  ::rec::widget::time::protobuf_AddDesc_rec_2fwidget_2ftime_2fTime_2eproto();
+  ::rec::widget::status::time::protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/gui/Appearance.proto\022\007rec.gui\032\023rec"
     "/gui/Color.proto\032\037rec/widget/AudioThumbn"
-    "ail.proto\032\032rec/widget/time/Time.proto\"\205\001"
-    "\n\nAppearance\022\037\n\006colors\030\001 \001(\0132\017.rec.gui.C"
-    "olors\0221\n\tthumbnail\030\002 \001(\0132\036.rec.widget.Au"
-    "dioThumbnailDesc\022#\n\004time\030\003 \001(\0132\025.rec.wid"
-    "get.time.Time", 253);
+    "ail.proto\032\034rec/widget/status/Time.proto\""
+    "\214\001\n\nAppearance\022\037\n\006colors\030\001 \001(\0132\017.rec.gui"
+    ".Colors\0221\n\tthumbnail\030\002 \001(\0132\036.rec.widget."
+    "AudioThumbnailDesc\022*\n\004time\030\003 \001(\0132\034.rec.w"
+    "idget.status.time.Time", 262);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Appearance.proto", &protobuf_RegisterTypes);
   Appearance::default_instance_ = new Appearance();
@@ -116,7 +116,7 @@ Appearance::Appearance()
 void Appearance::InitAsDefaultInstance() {
   colors_ = const_cast< ::rec::gui::Colors*>(&::rec::gui::Colors::default_instance());
   thumbnail_ = const_cast< ::rec::widget::AudioThumbnailDesc*>(&::rec::widget::AudioThumbnailDesc::default_instance());
-  time_ = const_cast< ::rec::widget::time::Time*>(&::rec::widget::time::Time::default_instance());
+  time_ = const_cast< ::rec::widget::status::time::Time*>(&::rec::widget::status::time::Time::default_instance());
 }
 
 Appearance::Appearance(const Appearance& from)
@@ -174,7 +174,7 @@ void Appearance::Clear() {
       if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
     }
     if (_has_bit(2)) {
-      if (time_ != NULL) time_->::rec::widget::time::Time::Clear();
+      if (time_ != NULL) time_->::rec::widget::status::time::Time::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -214,7 +214,7 @@ bool Appearance::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.widget.time.Time time = 3;
+      // optional .rec.widget.status.time.Time time = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -258,7 +258,7 @@ void Appearance::SerializeWithCachedSizes(
       2, this->thumbnail(), output);
   }
   
-  // optional .rec.widget.time.Time time = 3;
+  // optional .rec.widget.status.time.Time time = 3;
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->time(), output);
@@ -286,7 +286,7 @@ void Appearance::SerializeWithCachedSizes(
         2, this->thumbnail(), target);
   }
   
-  // optional .rec.widget.time.Time time = 3;
+  // optional .rec.widget.status.time.Time time = 3;
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -318,7 +318,7 @@ int Appearance::ByteSize() const {
           this->thumbnail());
     }
     
-    // optional .rec.widget.time.Time time = 3;
+    // optional .rec.widget.status.time.Time time = 3;
     if (has_time()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -359,7 +359,7 @@ void Appearance::MergeFrom(const Appearance& from) {
       mutable_thumbnail()->::rec::widget::AudioThumbnailDesc::MergeFrom(from.thumbnail());
     }
     if (from._has_bit(2)) {
-      mutable_time()->::rec::widget::time::Time::MergeFrom(from.time());
+      mutable_time()->::rec::widget::status::time::Time::MergeFrom(from.time());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());

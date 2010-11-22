@@ -7,6 +7,13 @@
 namespace rec {
 namespace gui {
 
+static const int FONT_SIZE = 14;
+
+inline const juce::Font getDefaultFont() {
+  return juce::Font(juce::Font::getDefaultMonospacedFontName(), FONT_SIZE,
+                    juce::Font::plain);
+}
+
 inline const juce::Font getFont(const FontDesc& font) {
   using juce::Font;
   int style = 0;
@@ -40,7 +47,16 @@ inline const juce::Font getFont(const FontDesc& font) {
     return Font(font.font_height(), style);
 
   return Font(name, font.font_height(), style);
+}
+
+inline const juce::Font getFont(const FontDesc* font) {
+  return font ? getFont(*font) : getDefaultFont();
 };
+
+template <typename Proto>
+juce::Font getFont(const Proto& proto) {
+  return getFont(proto.has_font() ? &proto.font() : NULL);
+}
 
 }  // namespace gui
 }  // namespace rec

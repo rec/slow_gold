@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/widget/time/Time.h"
+#include "rec/widget/status/Time.h"
 
 namespace rec {
 namespace widget {

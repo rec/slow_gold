@@ -29,8 +29,7 @@ class Painter {
 
     setColor(FOREGROUND);
 
-    if (widget_.has_font())
-      g->setFont(font());
+    g->setFont(font());
   }
 
   ~Painter() { graphics_->setFont(font_); }
@@ -49,7 +48,6 @@ class Painter {
   }
 
   int margin() const { return margin_; }
-
 
  private:
   const Widget& widget_;

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="kkFx55Kqx" name="Slow">
+  <MAINGROUP id="HTW0XbSpB" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -488,6 +488,8 @@
               name="Circular.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Circular.h" id="VIf5GxvTm"
               name="Circular.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="YRS1YwSBB"
+              name="Defaulter.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/DelegateToList.h" id="ncDSV6ACA"
               name="DelegateToList.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Listener.h" id="jc2g0XHbL"
@@ -538,10 +540,14 @@
               name="AudioThumbnail.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="ncov8y044"
               name="Painter.h" resource="0"/>
-        <GROUP id="AnoLZEW8n" name="time">
-          <FILE compile="1" file="../../src/rec/widget/time/Time.cpp" id="d1uasv647"
+        <GROUP id="r42TkfHe0" name="status">
+          <FILE compile="1" file="../../src/rec/widget/status/Status.cpp" id="vyk2KvK0m"
+                name="Status.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/status/Status.h" id="YSrWKVnNC"
+                name="Status.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/status/Time.cpp" id="yVZbTEtsQ"
                 name="Time.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/time/Time.h" id="h9zW5rHxC"
+          <FILE compile="0" file="../../src/rec/widget/status/Time.h" id="ZloZvgIxf"
                 name="Time.h" resource="0"/>
         </GROUP>
         <GROUP id="m5OH8IAxk" name="tree">
@@ -655,11 +661,15 @@
                 id="ciYThZNQa" name="Panes.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/widget/Panes.pb.h"
                 id="1n5LHBZF6" name="Panes.pb.h" resource="0"/>
-          <GROUP id="kRiMIw9U8" name="time">
-            <FILE compile="1" file="../../genfiles/proto/rec/widget/time/Time.pb.cc"
-                  id="42dJzvKyc" name="Time.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/widget/time/Time.pb.h"
-                  id="fs0Lk46bN" name="Time.pb.h" resource="0"/>
+          <GROUP id="pcrG4YQPm" name="status">
+            <FILE compile="1" file="../../genfiles/proto/rec/widget/status/Status.pb.cc"
+                  id="OOWkoe3um" name="Status.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/widget/status/Status.pb.h"
+                  id="H5RbckTiv" name="Status.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/widget/status/Time.pb.cc"
+                  id="yFT3X0EC9" name="Time.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/widget/status/Time.pb.h"
+                  id="Re0Pghzl4" name="Time.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="MqCA3tPaT" name="tree">
             <FILE compile="1" file="../../genfiles/proto/rec/widget/tree/Node.pb.cc"
@@ -678,7 +688,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="B2zg1X9Rl" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="W1MGw9cMp" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

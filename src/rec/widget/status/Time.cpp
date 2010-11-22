@@ -1,12 +1,9 @@
 #include <math.h>
 #include <glog/logging.h>
 
-#include "rec/widget/time/Time.h"
+#include "rec/widget/status/Time.h"
 
 #include "rec/gui/Color.h"
-#include "rec/gui/Font.h"
-
-#include "JuceLibraryCode/JuceHeader.h"
 
 using rec::gui::Colors;
 using rec::gui::Color;
@@ -15,6 +12,7 @@ using namespace juce;
 
 namespace rec {
 namespace widget {
+namespace status {
 namespace time {
 
 TextComponent::TextComponent(const Text& desc)
@@ -29,6 +27,10 @@ void TextComponent::setTimeSamples(int samples) {
 void TextComponent::setTimeSeconds(float time) {
   setText(formatTime(time, description_.separator().flash()), false);
 }
+
+#ifdef _WIN32
+#define snprintf _snprintf
+#endif
 
 const String formatTime(float time, bool flash) {
   int seconds = time;
@@ -48,10 +50,6 @@ const String formatTime(float time, bool flash) {
            hours, minutes, ch, seconds, milliseconds);
   return buffer;
 }
-
-#ifdef _WIN32
-#define snprintf _snprintf
-#endif
 
 DialComponent::DialComponent(const Dial& desc)
     : Component(desc.widget().name().c_str()),
@@ -81,5 +79,6 @@ void DialComponent::paint(Graphics& g) {
 }
 
 }  // namespace time
+}  // namespace status
 }  // namespace widget
 }  // namespace rec
