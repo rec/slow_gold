@@ -10,7 +10,7 @@ namespace {
 TEST(Widget, someMethod) {
   // Just make sure it compiles.
   juce::MessageManager::getInstance();
-  time::TextComponent widget(time::Text());
+  status::time::TextComponent widget(status::time::Text());
 }
 
 }  // namespace

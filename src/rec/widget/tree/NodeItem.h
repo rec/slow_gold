@@ -4,12 +4,13 @@
 #include <set>
 
 #include "rec/base/base.h"
-#include "rec/gui/icon/Icon.h"
 #include "rec/gui/Font.h"
+#include "rec/gui/icon/Icon.h"
 #include "rec/util/Listener.h"
-#include "rec/widget/tree/Node.pb.h"
-#include "rec/widget/tree/Tree.h"
 #include "rec/widget/Painter.h"
+#include "rec/widget/tree/Node.pb.h"
+#include "rec/widget/tree/ShadowFile.h"
+#include "rec/widget/tree/Tree.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -28,6 +29,8 @@ class Node : public juce::TreeViewItem,
   virtual void paintItem(juce::Graphics& g, int, int) {
     paint(g);
   }
+
+  const NodeDesc& desc() const { return desc_; }
 
   virtual String name() const;
   virtual juce::Component* createItemComponent();
@@ -49,7 +52,6 @@ class Node : public juce::TreeViewItem,
   Listeners listeners_;
   const juce::Drawable* icon_;
   const juce::Font font_;
-  const short height_, ascent_, descent_, margin_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
 };

@@ -3,13 +3,21 @@
 
 #include "rec/widget/tree/Directory.h"
 
+using namespace juce;
+
 namespace rec {
 namespace widget {
 namespace tree {
 namespace {
 
 TEST(Directory, All) {
-  Directory d(NodeDesc(), ShadowFile(File("~/iTunes"), File("~/iTunes")), false);
+#if 0
+  {
+    MessageManagerLock l(Thread::getCurrentThread());
+    LookAndFeel::setDefaultLookAndFeel(NULL);
+  }
+#endif
+  Directory d(NodeDesc(), ShadowFile(File("~/iTunes"), File("~/iTunes")));
   d.computeChildren();
   d.setOpen(true);
 

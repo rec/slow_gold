@@ -4,6 +4,8 @@
 #include "rec/base/base.h"
 #include "rec/gui/Font.pb.h"
 
+#include "JuceLibraryCode/JuceHeader.h"
+
 namespace rec {
 namespace gui {
 

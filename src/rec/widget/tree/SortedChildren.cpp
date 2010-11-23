@@ -19,19 +19,20 @@ bool includeChild(const File& file) {
 }
 }  // namespace
 
-void sortedChildren(const File& f, juce::Array<File>* kids) {
-  int size = f.findChildFiles(*kids,
-                              File::findFilesAndDirectories +
-                              File::ignoreHiddenFiles, false);
+void sortedChildren(const File& f, juce::Array<File>* kids,
+                    const juce::Thread* thread) {
+  juce::DirectoryIterator i(f, false, "*", juce::File::findFilesAndDirectories);
+  while (i.next()) {
+    File f(i.getFile());
+    if (includeChild(f))
+      kids->add(f);
 
-  for (int i = 0; i < size; ++i) {
-    if (!includeChild((*kids)[i]))
-      kids->swap(i, --size);
+    if (thread && thread->threadShouldExit())
+      return;
   }
-  kids->removeRange(size, kids->size());
 
   File* begin = kids->getRawDataPointer();
-  File* end = begin + size;
+  File* end = begin + kids->size();
   std::sort(begin, end, compareFiles);
 }
 

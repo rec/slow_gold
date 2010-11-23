@@ -10,14 +10,6 @@ namespace tree {
 
 typedef util::BeginEnd<int> Range;
 
-struct ShadowFile {
-  File file_;
-  File shadow_;
-
-  ShadowFile() {}
-  ShadowFile(const File& f, const File& s) : file_(f), shadow_(s) {}
-};
-
 inline bool isASCII(int c) { return c >= 0 && c <= 0xFF; }
 
 inline bool isPunctuation(int c) {

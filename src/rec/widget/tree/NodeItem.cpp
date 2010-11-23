@@ -9,11 +9,7 @@ Node::Node(const NodeDesc& d, const ShadowFile& s)
     : desc_(d),
       shadow_(s),
       icon_(gui::icon::getIcon(d.icon())),
-      font_(gui::getFont(desc_.widget().font())),
-      height_(font_.getHeight()),
-      ascent_(font_.getAscent()),
-      descent_(height_ - ascent_),
-      margin_(d.widget().margin()) {
+      font_(gui::getFont(desc_.widget().font())) {
 }
 
 void Node::paint(juce::Graphics& g) const {
@@ -21,19 +17,22 @@ void Node::paint(juce::Graphics& g) const {
   if (icon_)
     icon_->draw(g, 1.0);
 
-  g.drawSingleLineText(name(), margin_, ascent_ + margin_);
+  g.drawSingleLineText(name(), desc_.widget().margin(),
+                       font_.getAscent() + desc_.widget().margin());
 }
 
 String Node::name() const { return shadow_.file_.getFileName(); }
 
-const gui::Rectangle Node::bounds() const { return desc_.widget().bounds(); }
+const gui::Rectangle Node::bounds() const {
+  return desc_.widget().layer().bounds();
+}
 
 int Node::getItemWidth() const {
-  return font_.getStringWidth(name()) + 2 * margin_;
+  return font_.getStringWidth(name()) + 2 * desc_.widget().margin();
 }
 
 int Node::getItemHeight() const {
-  return ascent_ + descent_ + 2 * margin_;
+  return font_.getHeight() + 2 * desc_.widget().margin();
 }
 
 bool Node::alreadyVisited() const { return shadow_.shadow_.exists(); }

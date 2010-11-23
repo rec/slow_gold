@@ -36,7 +36,7 @@ Directory::Directory(const Directory& d, const Range& r)
 Directory::~Directory() {
   ScopedLock l(lock_);
   if (thread_)
-    thread_->stopThread(1000);
+    thread_->stopThread(10000);
 }
 
 void Directory::requestPartition() {
@@ -90,7 +90,7 @@ void Directory::computeChildren() {
 
   childrenDeleter_.reset(new FileArray);
   children_ = childrenDeleter_.get();
-  sortedChildren(f, children_);
+  sortedChildren(f, children_, juce::Thread::getCurrentThread());
 
   range_.begin_ = 0;
   range_.end_ = children_->size();

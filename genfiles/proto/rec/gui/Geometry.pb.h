@@ -294,12 +294,12 @@ class Layer : public ::google::protobuf::Message {
   inline const ::rec::gui::Rectangle& bounds() const;
   inline ::rec::gui::Rectangle* mutable_bounds();
   
-  // optional int32 layer = 2;
-  inline bool has_layer() const;
-  inline void clear_layer();
-  static const int kLayerFieldNumber = 2;
-  inline ::google::protobuf::int32 layer() const;
-  inline void set_layer(::google::protobuf::int32 value);
+  // optional int32 zOrder = 2 [default = -1];
+  inline bool has_zorder() const;
+  inline void clear_zorder();
+  static const int kZOrderFieldNumber = 2;
+  inline ::google::protobuf::int32 zorder() const;
+  inline void set_zorder(::google::protobuf::int32 value);
   
   // @@protoc_insertion_point(class_scope:rec.gui.Layer)
  private:
@@ -307,7 +307,7 @@ class Layer : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::gui::Rectangle* bounds_;
-  ::google::protobuf::int32 layer_;
+  ::google::protobuf::int32 zorder_;
   friend void  protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto();
@@ -426,20 +426,20 @@ inline ::rec::gui::Rectangle* Layer::mutable_bounds() {
   return bounds_;
 }
 
-// optional int32 layer = 2;
-inline bool Layer::has_layer() const {
+// optional int32 zOrder = 2 [default = -1];
+inline bool Layer::has_zorder() const {
   return _has_bit(1);
 }
-inline void Layer::clear_layer() {
-  layer_ = 0;
+inline void Layer::clear_zorder() {
+  zorder_ = -1;
   _clear_bit(1);
 }
-inline ::google::protobuf::int32 Layer::layer() const {
-  return layer_;
+inline ::google::protobuf::int32 Layer::zorder() const {
+  return zorder_;
 }
-inline void Layer::set_layer(::google::protobuf::int32 value) {
+inline void Layer::set_zorder(::google::protobuf::int32 value) {
   _set_bit(1);
-  layer_ = value;
+  zorder_ = value;
 }
 
 

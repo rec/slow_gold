@@ -12,7 +12,5 @@ message Rectangle {
 
 message Layer {
   optional Rectangle bounds = 1;
-  optional int32 layer = 2;
-  // Layer 0 is the top layer, layer 1 below that...
-  // Perhaps layer -1 is the bottom layer?
+  optional int32 zOrder = 2 [default = -1];  // Same as the Juce value.
 };

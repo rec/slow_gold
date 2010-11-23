@@ -27,4 +27,4 @@ def build(*names):
     print 'Written', doc
 
 
-build('slow')
+build('slow', 'tests')

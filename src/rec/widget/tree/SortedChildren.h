@@ -8,7 +8,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-void sortedChildren(const File& f, juce::Array<File>* files);
+void sortedChildren(const File& f, juce::Array<File>* files,
+                    const juce::Thread* threadToCheck = NULL);
 
 }  // namespace tree
 }  // namespace widget

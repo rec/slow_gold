@@ -6,22 +6,19 @@
 namespace rec {
 namespace util {
 
-template <typename Proto, typename Initializer>
-const Proto* getDefault(Initializer init) {
-  Proto* pr = new Proto();
-  init(pr);
-  return pr;
-}
+bool fillFromDefault(const string& dflt, Message* creator);
 
-template <typename Proto, typename Initializer>
-const Proto* getOrDefault(const Proto* pr, Initializer init) {
-  static const Proto* dflt = getDefault<Proto, Initializer>(init);
-  return pr ? pr : dflt;
-}
+template <typename Proto>
+class Defaulter {
+ public:
+  Defaulter(const string& dflt) { fillFromDefault(dflt, &proto_); }
+  const Proto& get(const Proto* p) { return p ? *p : proto_; }
+
+ private:
+  const Proto proto_;
+};
 
 }  // namespace util
 }  // namespace rec
-
-#define GET_OR_DEFAULT(P, F, I) ((P.has_ ## F()) ? &P.F() : getOrDefault(&P, I))
 
 #endif  // __REC_UTIL_DEFAULTER__

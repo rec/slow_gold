@@ -69,7 +69,7 @@ void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto() {
   Layer_descriptor_ = file->message_type(2);
   static const int Layer_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, bounds_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, layer_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, zorder_),
   };
   Layer_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -123,9 +123,9 @@ void protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto() {
     "\n\026rec/gui/Geometry.proto\022\007rec.gui\"\035\n\005Poi"
     "nt\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"Q\n\tRectangle\022 \n"
     "\010top_left\030\001 \001(\0132\016.rec.gui.Point\022\"\n\ndimen"
-    "sions\030\002 \001(\0132\016.rec.gui.Point\":\n\005Layer\022\"\n\006"
-    "bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\r\n\005laye"
-    "r\030\002 \001(\005", 207);
+    "sions\030\002 \001(\0132\016.rec.gui.Point\"?\n\005Layer\022\"\n\006"
+    "bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\022\n\006zOrd"
+    "er\030\002 \001(\005:\002-1", 212);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Geometry.proto", &protobuf_RegisterTypes);
   Point::default_instance_ = new Point();
@@ -653,7 +653,7 @@ void Rectangle::Swap(Rectangle* other) {
 
 #ifndef _MSC_VER
 const int Layer::kBoundsFieldNumber;
-const int Layer::kLayerFieldNumber;
+const int Layer::kZOrderFieldNumber;
 #endif  // !_MSC_VER
 
 Layer::Layer()
@@ -674,7 +674,7 @@ Layer::Layer(const Layer& from)
 void Layer::SharedCtor() {
   _cached_size_ = 0;
   bounds_ = NULL;
-  layer_ = 0;
+  zorder_ = -1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -713,7 +713,7 @@ void Layer::Clear() {
     if (_has_bit(0)) {
       if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
     }
-    layer_ = 0;
+    zorder_ = -1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -734,18 +734,18 @@ bool Layer::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_layer;
+        if (input->ExpectTag(16)) goto parse_zOrder;
         break;
       }
       
-      // optional int32 layer = 2;
+      // optional int32 zOrder = 2 [default = -1];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_layer:
+         parse_zOrder:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &layer_)));
+                 input, &zorder_)));
           _set_bit(1);
         } else {
           goto handle_uninterpreted;
@@ -778,9 +778,9 @@ void Layer::SerializeWithCachedSizes(
       1, this->bounds(), output);
   }
   
-  // optional int32 layer = 2;
+  // optional int32 zOrder = 2 [default = -1];
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->layer(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->zorder(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -798,9 +798,9 @@ void Layer::SerializeWithCachedSizes(
         1, this->bounds(), target);
   }
   
-  // optional int32 layer = 2;
+  // optional int32 zOrder = 2 [default = -1];
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->layer(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->zorder(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -821,11 +821,11 @@ int Layer::ByteSize() const {
           this->bounds());
     }
     
-    // optional int32 layer = 2;
-    if (has_layer()) {
+    // optional int32 zOrder = 2 [default = -1];
+    if (has_zorder()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->layer());
+          this->zorder());
     }
     
   }
@@ -859,7 +859,7 @@ void Layer::MergeFrom(const Layer& from) {
       mutable_bounds()->::rec::gui::Rectangle::MergeFrom(from.bounds());
     }
     if (from._has_bit(1)) {
-      set_layer(from.layer());
+      set_zorder(from.zorder());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -885,7 +885,7 @@ bool Layer::IsInitialized() const {
 void Layer::Swap(Layer* other) {
   if (other != this) {
     std::swap(bounds_, other->bounds_);
-    std::swap(layer_, other->layer_);
+    std::swap(zorder_, other->zorder_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
