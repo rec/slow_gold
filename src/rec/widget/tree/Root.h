@@ -21,7 +21,8 @@ class Root : public juce::TreeView,
   void addChildren();
 
  private:
-  void addSubItem(const VolumeFile& volumeFile);
+  void addFile(const VolumeFile& volumeFile);
+  void addVolume(Volume::Type type);
 
   NodeDesc desc_;
   scoped_ptr<juce::TreeViewItem> root_;

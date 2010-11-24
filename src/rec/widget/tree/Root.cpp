@@ -33,18 +33,21 @@ Root::~Root() {
 void Root::addChildren() {
   setRootItem(root_.get());
   setRootItemVisible(false);
-
-  VolumeFile vf;
-  vf.mutable_volume()->set_type(Volume::MUSIC);
-
-  addSubItem(vf);
+  addVolume(Volume::MUSIC);
+  addVolume(Volume::USER);
 }
 
-void Root::addSubItem(const VolumeFile& volumeFile) {
+void Root::addFile(const VolumeFile& volumeFile) {
   Directory* directory = new Directory(desc_, volumeFile);
   directory->requestPartition();
   directory->listeners()->insert(this);
   root_->addSubItem(directory);
+}
+
+void Root::addVolume(Volume::Type type) {
+  VolumeFile vf;
+  vf.mutable_volume()->set_type(type);
+  addFile(vf);
 }
 
 }  // namespace tree

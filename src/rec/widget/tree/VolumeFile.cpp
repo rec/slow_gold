@@ -42,6 +42,11 @@ const File getVolume(const Volume& v) {
 #endif
   }
 
+  if (v.type() == Volume::USER) {
+    DCHECK_EQ(v.name_size(), 0);
+    return File("~");
+  }
+
   CHECK(false) << v.type();
   return File();
 }
