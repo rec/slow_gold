@@ -705,6 +705,20 @@
 			name = access;
 			sourceTree = "<group>";
 		};
+		68D5E17DB1BA71399ECA04A6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		6D93E2AE92DA8779562AB8F1 /* audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,20 +856,6 @@
 				9F2788E0C63C99D95F6E57FC /* UntypedData.h */,
 			);
 			name = persist;
-			sourceTree = "<group>";
-		};
-		9BB8ECCD40347BCDF2E72582 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		9D13522C94A0F37D4ABBF46C /* yaml */ = {
@@ -1235,7 +1235,7 @@
 				French,
 				German,
 			);
-			mainGroup = 9BB8ECCD40347BCDF2E72582 /* Source */;
+			mainGroup = 68D5E17DB1BA71399ECA04A6 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

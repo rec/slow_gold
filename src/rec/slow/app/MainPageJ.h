@@ -26,6 +26,7 @@
 
 #include "rec/slow/app/MainPageK.h"
 #include "rec/widget/status/Time.h"
+#include "rec/widget/tree/Root.h"
 using namespace juce;
 
 //[/Headers]
@@ -77,7 +78,7 @@ public:
     rec::widget::AudioThumbnailWidget* thumbnail;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
-    TreeView* treeTreeComp;
+  rec::widget::tree::Root* treeTreeComp;
     Label* explanation;
     Slider* zoomSlider;
     Slider* timeScaleSlider;

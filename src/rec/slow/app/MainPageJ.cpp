@@ -22,7 +22,9 @@
 //[Headers] You can add your own extra header files here...
 #include "MainPageK.h"
 #include "rec/widget/status/Time.pb.h"
+#include "rec/widget/tree/Root.h"
 using namespace juce;
+using namespace rec::widget::tree;
 //[/Headers]
 
 #include "MainPageJ.h"
@@ -62,7 +64,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     startStopButton->addButtonListener (this);
     startStopButton->setColour (TextButton::buttonColourId, Colour (0xff79ed7f));
 
-    addAndMakeVisible (treeTreeComp = new TreeView);
+    addAndMakeVisible (treeTreeComp = new Root(NodeDesc()));
     addAndMakeVisible (explanation = new Label (String::empty,
                                                 T("Select an audio file in the treeview above.")));
     explanation->setFont (Font (14.0000f, Font::plain));

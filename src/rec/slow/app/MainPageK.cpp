@@ -15,7 +15,6 @@
 #include "rec/util/thread/WaitLoop.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/data/yaml/Yaml.h"
-#include "rec/widget/tree/Directory.h"
 
 using rec::audio::source::TimeStretch;
 
@@ -31,7 +30,6 @@ using rec::thread::RunnableThread;
 using rec::thread::WaitLoop;
 using rec::thread::makeCallback;
 
-using namespace rec::widget::tree;
 using namespace juce;
 
 namespace rec {
@@ -61,16 +59,8 @@ void MainPageK::construct(MainPageJ* peer) {
   directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
   directoryListThread_.startThread(THREAD_PRIORITY);
 
-  TreeView* tree = peer_->treeTreeComp;
-  // tree->setColour(BACKGROUND, FOREGROUND);
-  // File f = File::getSpecialLocation(File::userMusicDirectory);
-  // File f("~/iTunes");
-  VolumeFile vf;
-  vf.mutable_volume()->set_type(Volume::MUSIC);
-  Directory* directory = new Directory(NodeDesc(), vf);
-  tree->setRootItem(directory);
-  directory->requestPartition();
-  directory->listeners()->insert(this);
+  peer_->treeTreeComp->listeners()->insert(this);
+  peer_->treeTreeComp->addChildren();
 
   TimeStretch d = getPreferences().track().timestretch();
 
