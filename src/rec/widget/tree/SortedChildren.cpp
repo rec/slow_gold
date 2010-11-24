@@ -11,6 +11,9 @@ namespace {
 
 bool includeChild(const File& file) {
   // hack.
+  if (file.getFileName()[0] == '.')
+    return false;
+
   return file.isDirectory() ||
     file.hasFileExtension("mp3") ||
     file.hasFileExtension("aiff") ||

@@ -34,12 +34,9 @@ const File getVolume(const Volume& v) {
 #if JUCE_MAC
     if (v.name_size() == 0)
       return File("/");
-
-    DCHECK_EQ(v.name_size(), 1);
-    return File(String("/Volumes/") + v.name(0).c_str());
-#else
-    return File(v.name());
 #endif
+    DCHECK_EQ(v.name_size(), 1);
+    return File(("/Volume/" + v.name(0)).c_str());
   }
 
   if (v.type() == Volume::USER) {

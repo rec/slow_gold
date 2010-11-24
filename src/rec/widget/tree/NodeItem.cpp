@@ -27,18 +27,18 @@ String Node::name() const {
     return volumeFile_.path(size - 1).c_str();
 
   if (type == Volume::MUSIC)
-    return "Music";
+    return "<Music>";
 
   if (type == Volume::USER)
-    return "User";
+    return "<User>";
 
   if (type == Volume::VOLUME) {
 
     if (int size = volumeFile_.volume().name_size())
       return volumeFile_.volume().name(size - 1).c_str();
 
-    DCHECK(false);
-    return "";
+    // DCHECK(false);
+    return "<Root>";
   }
 
   DCHECK(false);
