@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="vfew3H73i" name="tests">
+  <MAINGROUP id="BUgf9olN2" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -178,6 +178,8 @@
         <GROUP id="yRjyeuJbc" name="persist">
           <FILE compile="0" file="../../src/rec/data/persist/App.h" id="CZ4PBqgfX"
                 name="App.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/AppDirectory.h"
+                id="875CgAbE0" name="AppDirectory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/AppInstance.cpp"
                 id="dJhmI7Gzp" name="AppInstance.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/AppInstance.h" id="xkDWsVxMs"
@@ -624,6 +626,12 @@
                 id="Ne6p6bgEF" name="SortedChildren.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Tree.h" id="pWp0b4eZ3"
                 name="Tree.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/tree/VirtualFile.cpp"
+                id="75PuaduCX" name="VirtualFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/tree/VirtualFile.h" id="ede4Pyiza"
+                name="VirtualFile.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/tree/VirtualFile_test.cpp"
+                id="FLwV4uAua" name="VirtualFile_test.cpp" resource="0"/>
         </GROUP>
         <FILE compile="0" file="../../src/rec/widget/Widget.h" id="PHTmHvr5H"
               name="Widget.h" resource="0"/>
@@ -733,6 +741,10 @@
                   id="fmqBl7kBz" name="Path.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/widget/tree/Path.pb.h"
                   id="UsydFuhXf" name="Path.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/widget/tree/VirtualFile.pb.cc"
+                  id="3ZaulcVhb" name="VirtualFile.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/widget/tree/VirtualFile.pb.h"
+                  id="T1oz1eKhR" name="VirtualFile.pb.h" resource="0"/>
           </GROUP>
           <FILE compile="1" file="../../genfiles/proto/rec/widget/Widget.pb.cc"
                 id="qbHJc8TMF" name="Widget.pb.cc" resource="0"/>
@@ -741,7 +753,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="6oCIJ9sPt" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="RJpgamWzT" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

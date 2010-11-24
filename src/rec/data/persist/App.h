@@ -6,6 +6,7 @@
 #include "rec/util/STL.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
+#include "rec/data/persist/AppDirectory.h"
 
 namespace rec {
 namespace command {
@@ -49,11 +50,7 @@ class App {
     stl::deleteMapPointers(&data_);
   }
 
-  File appDir() const {
-    static const char COMPANY_ROOT_NAME[] = "recs";
-    return File::getSpecialLocation(File::userApplicationDataDirectory).
-      getChildFile(COMPANY_ROOT_NAME).getChildFile(name_.c_str());
-  }
+  File appDir() const { return data::persist::appDirectory().getChildFile(name_.c_str()); }
 
  protected:
   friend class UntypedData;

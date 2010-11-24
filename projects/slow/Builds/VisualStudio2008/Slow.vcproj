@@ -205,6 +205,7 @@
           </Filter>
           <Filter Name="persist">
             <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
@@ -431,6 +432,8 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\SortedChildren.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\SortedChildren.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Tree.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\VirtualFile.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\VirtualFile.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\widget\Widget.h"/>
         </Filter>
@@ -497,6 +500,8 @@
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\VirtualFile.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\VirtualFile.pb.h"/>
             </Filter>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h"/>
