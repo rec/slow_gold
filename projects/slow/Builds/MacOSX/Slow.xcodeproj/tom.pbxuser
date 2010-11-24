@@ -95,6 +95,7 @@
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
 			E2AEE6741296099600B693AE /* Directory.cpp:145 */,
+			E2AEEC94129DDCE200B693AE /* VolumeFile.cpp:38 */,
 		);
 		codeSenseManager = E2AEE53F1295AE8C00B693AE /* Code sense */;
 		executables = (
@@ -196,6 +197,10 @@
 			E2AEEC64129DDB8F00B693AE = E2AEEC64129DDB8F00B693AE /* PBXTextBookmark */;
 			E2AEEC65129DDB8F00B693AE = E2AEEC65129DDB8F00B693AE /* PBXTextBookmark */;
 			E2AEEC67129DDB8F00B693AE = E2AEEC67129DDB8F00B693AE /* PBXTextBookmark */;
+			E2AEEC98129DDCE500B693AE /* PBXTextBookmark */ = E2AEEC98129DDCE500B693AE /* PBXTextBookmark */;
+			E2AEEC99129DDCE500B693AE /* PBXTextBookmark */ = E2AEEC99129DDCE500B693AE /* PBXTextBookmark */;
+			E2AEEC9F129DDCF900B693AE /* PBXTextBookmark */ = E2AEEC9F129DDCF900B693AE /* PBXTextBookmark */;
+			E2AEECA6129DDD4400B693AE /* PBXTextBookmark */ = E2AEECA6129DDD4400B693AE /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2AEE53E1295AE8C00B693AE /* Source Control */;
 		userBuildSettings = {
@@ -260,9 +265,9 @@
 	};
 	DCF1FAEA8DD6D3D8C10DB8C1 /* VolumeFile.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {649, 888}}";
+			sepNavIntBoundsRect = "{{0, 0}, {760, 923}}";
 			sepNavSelRange = "{806, 0}";
-			sepNavVisRange = "{0, 1489}";
+			sepNavVisRange = "{0, 1545}";
 		};
 	};
 	E2AEE5311295AE8500B693AE /* Slow */ = {
@@ -355,7 +360,7 @@
 		ignoreCount = 0;
 		lineNumber = 145;
 		location = SlowBurn;
-		modificationTime = 312335083.93019;
+		modificationTime = 312335682.417455;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -809,6 +814,64 @@
 		rType = 0;
 		vrLen = 1533;
 		vrLoc = 73;
+	};
+	E2AEEC94129DDCE200B693AE /* VolumeFile.cpp:38 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = DCF1FAEA8DD6D3D8C10DB8C1 /* VolumeFile.cpp */;
+		functionName = "getVolume(const Volume& v)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 38;
+		location = SlowBurn;
+		modificationTime = 312335682.417775;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E2AEEC98129DDCE500B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DCF1FAEA8DD6D3D8C10DB8C1 /* VolumeFile.cpp */;
+		name = "VolumeFile.cpp: 38";
+		rLen = 0;
+		rLoc = 806;
+		rType = 0;
+		vrLen = 1544;
+		vrLoc = 0;
+	};
+	E2AEEC99129DDCE500B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DCF1FAEA8DD6D3D8C10DB8C1 /* VolumeFile.cpp */;
+		name = "VolumeFile.cpp: 38";
+		rLen = 0;
+		rLoc = 806;
+		rType = 0;
+		vrLen = 1544;
+		vrLoc = 0;
+	};
+	E2AEEC9F129DDCF900B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DCF1FAEA8DD6D3D8C10DB8C1 /* VolumeFile.cpp */;
+		name = "VolumeFile.cpp: 38";
+		rLen = 0;
+		rLoc = 806;
+		rType = 0;
+		vrLen = 1544;
+		vrLoc = 0;
+	};
+	E2AEECA6129DDD4400B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DCF1FAEA8DD6D3D8C10DB8C1 /* VolumeFile.cpp */;
+		name = "VolumeFile.cpp: 38";
+		rLen = 0;
+		rLoc = 806;
+		rType = 0;
+		vrLen = 1545;
+		vrLoc = 0;
 	};
 	E8229099821BA6315927E4BB /* Directory.h */ = {
 		uiCtxt = {
