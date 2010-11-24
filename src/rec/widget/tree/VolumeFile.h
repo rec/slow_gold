@@ -2,13 +2,11 @@
 #define __REC_WIDGET_TREE_VIRTUALFILE__
 
 #include "rec/base/base.h"
+#include "rec/widget/tree/VolumeFile.pb.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
-
-class VolumeFile;
-class Volume;
 
 const File getVolume(const Volume& v);
 const File getFile(const VolumeFile& file);

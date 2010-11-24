@@ -14,8 +14,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-Directory::Directory(const NodeDesc& d, const ShadowFile s)
-    : Node(d, s),
+Directory::Directory(const NodeDesc& d, const VolumeFile& vf)
+    : Node(d, vf),
       children_(NULL),
       isShard_(false),
       computing_(false),
@@ -24,7 +24,7 @@ Directory::Directory(const NodeDesc& d, const ShadowFile s)
 }
 
 Directory::Directory(const Directory& d, const Range& r)
-    : Node(d.desc_, d.shadow_),
+    : Node(d.desc_, d.volumeFile_),
       range_(r),
       children_(d.children_),
       isShard_(true),
@@ -66,9 +66,10 @@ void Directory::addChildFile(int begin, int end) {
 
   } else {
     const File& f = (*children_)[begin];
-    ShadowFile sf(f, shadow_.shadow_.getChildFile(f.getFileName()));
-    bool isDir = sf.file_.isDirectory();
-    node = isDir ? new Directory(desc_, sf) : new Node(desc_, sf);
+    VolumeFile vf(volumeFile_);
+    vf.add_path(f.getFileName().toCString());
+    bool isDir = getFile(vf).isDirectory();
+    node = isDir ? new Directory(desc_, vf) : new Node(desc_, vf);
   }
 
   node->listeners()->insert(this);
@@ -82,7 +83,7 @@ void Directory::addChildFile(int begin, int end) {
 }
 
 void Directory::computeChildren() {
-  File f = shadow_.file_;
+  File f = getFile(volumeFile_);
   if (!f.isDirectory()) {
     LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
     return;

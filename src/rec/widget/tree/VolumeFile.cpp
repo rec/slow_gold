@@ -1,8 +1,6 @@
 #include <glog/logging.h>
 
-#include "rec/widget/tree/VirtualFile.h"
-#include "rec/widget/tree/VirtualFile.pb.h"
-
+#include "rec/widget/tree/VolumeFile.h"
 #include "rec/data/persist/AppDirectory.h"
 
 namespace rec {
@@ -43,7 +41,7 @@ const File getVolume(const Volume& v) {
     return File(v.name());
 #endif
   }
-  
+
   CHECK(false) << v.type();
   return File();
 }

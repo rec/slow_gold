@@ -1,14 +1,14 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/widget/tree/VirtualFile.h"
+#include "rec/widget/tree/VolumeFile.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 namespace {
 
-TEST(VirtualFile, get) {
+TEST(VolumeFile, get) {
 }
 
 }  // namespace

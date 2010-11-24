@@ -66,9 +66,11 @@ void MainPageK::construct(MainPageJ* peer) {
 
   TreeView* tree = peer_->treeTreeComp;
   tree->setColour(BACKGROUND, FOREGROUND);
-  File f = File::getSpecialLocation(File::userMusicDirectory);
+  // File f = File::getSpecialLocation(File::userMusicDirectory);
   // File f("~/iTunes");
-  Directory* directory = new Directory(NodeDesc(), ShadowFile(f, f));
+  VolumeFile vf;
+  vf.mutable_volume()->set_type(Volume::MUSIC);
+  Directory* directory = new Directory(NodeDesc(), vf);
   tree->setRootItem(directory);
   directory->requestPartition();
   directory->listeners()->insert(this);

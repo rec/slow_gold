@@ -9,7 +9,8 @@
 #include "rec/util/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/Node.pb.h"
-#include "rec/widget/tree/ShadowFile.h"
+#include "rec/widget/tree/VolumeFile.h"
+#include "rec/widget/tree/VolumeFile.h"
 #include "rec/widget/tree/Tree.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -21,7 +22,7 @@ namespace tree {
 class Node : public juce::TreeViewItem,
              public util::Listener<const File&>::Set {
  public:
-  Node(const NodeDesc& d, const ShadowFile& s);
+  Node(const NodeDesc& d, const VolumeFile& vf);
   virtual bool mightContainSubItems() { return isDirectory(); }
 
   void paint(juce::Graphics& g) const;
@@ -40,7 +41,7 @@ class Node : public juce::TreeViewItem,
   virtual int getItemWidth() const;
   virtual int getItemHeight() const;
   bool alreadyVisited() const;
-  const File& file() const;
+  File file() const;
 
   virtual void itemClicked(const juce::MouseEvent&);
   virtual void requestPartition() {}
@@ -48,7 +49,7 @@ class Node : public juce::TreeViewItem,
 
  protected:
   NodeDesc desc_;
-  ShadowFile shadow_;
+  VolumeFile volumeFile_;
   Listeners listeners_;
   const juce::Drawable* icon_;
   const juce::Font font_;

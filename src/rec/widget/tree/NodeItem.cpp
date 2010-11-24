@@ -5,9 +5,9 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-Node::Node(const NodeDesc& d, const ShadowFile& s)
+Node::Node(const NodeDesc& d, const VolumeFile& vf)
     : desc_(d),
-      shadow_(s),
+      volumeFile_(vf),
       icon_(gui::icon::getIcon(d.icon())),
       font_(gui::getFont(desc_.widget().font())) {
 }
@@ -21,7 +21,15 @@ void Node::paint(juce::Graphics& g) const {
                        font_.getAscent() + desc_.widget().margin());
 }
 
-String Node::name() const { return shadow_.file_.getFileName(); }
+String Node::name() const {
+  if (int size = volumeFile_.path_size())
+    return volumeFile_.path(size - 1).c_str();
+
+  if (volumeFile_.volume().type() == Volume::MUSIC)
+    return "Music";
+
+  return "<Unknown>";
+}
 
 const gui::Rectangle Node::bounds() const {
   return desc_.widget().layer().bounds();
@@ -35,8 +43,11 @@ int Node::getItemHeight() const {
   return font_.getHeight() + 2 * desc_.widget().margin();
 }
 
-bool Node::alreadyVisited() const { return shadow_.shadow_.exists(); }
-const File& Node::file() const { return shadow_.file_; }
+bool Node::alreadyVisited() const {
+  return getShadowFile(volumeFile_).exists();
+}
+
+File Node::file() const { return getFile(volumeFile_); }
 
 void Node::itemClicked(const juce::MouseEvent&) { operator()(file()); }
 

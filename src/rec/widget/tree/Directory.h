@@ -13,7 +13,7 @@ class Directory : public Node {
  public:
   typedef juce::Array<File> FileArray;
 
-  Directory(const NodeDesc& d, const ShadowFile s);
+  Directory(const NodeDesc& d, const VolumeFile& vf);
   ~Directory();
 
   void computeChildren();

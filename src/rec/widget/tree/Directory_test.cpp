@@ -11,13 +11,11 @@ namespace tree {
 namespace {
 
 TEST(Directory, All) {
-#if 0
-  {
-    MessageManagerLock l(Thread::getCurrentThread());
-    LookAndFeel::setDefaultLookAndFeel(NULL);
-  }
-#endif
-  Directory d(NodeDesc(), ShadowFile(File("~/iTunes"), File("~/iTunes")));
+  VolumeFile vf;
+  vf.mutable_volume()->set_type(Volume::VOLUME);
+  vf.add_path("~/iTunes");
+
+  Directory d(NodeDesc(), vf);
   d.computeChildren();
   d.setOpen(true);
 
