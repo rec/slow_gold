@@ -48,8 +48,6 @@ class MainPageK : public juce::Slider::Listener,
  private:
   static const int THREAD_PRIORITY = 3;
 
-  static const juce::TreeView::ColourIds BACKGROUND;
-  static const juce::Colour FOREGROUND;
   static const File::SpecialLocationType START_DIR;
   static const char* PREVIEW_THREAD_NAME;
 

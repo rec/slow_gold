@@ -37,9 +37,6 @@ using namespace juce;
 namespace rec {
 namespace slow {
 
-// TODO: why can't this be defined in the .h with other primitives?!
-const TreeView::ColourIds MainPageK::BACKGROUND = FileTreeComponent::backgroundColourId;
-const Colour MainPageK::FOREGROUND = Colours::white;
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 
@@ -65,7 +62,7 @@ void MainPageK::construct(MainPageJ* peer) {
   directoryListThread_.startThread(THREAD_PRIORITY);
 
   TreeView* tree = peer_->treeTreeComp;
-  tree->setColour(BACKGROUND, FOREGROUND);
+  // tree->setColour(BACKGROUND, FOREGROUND);
   // File f = File::getSpecialLocation(File::userMusicDirectory);
   // File f("~/iTunes");
   VolumeFile vf;
