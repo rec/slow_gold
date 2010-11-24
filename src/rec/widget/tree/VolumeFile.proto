@@ -9,7 +9,8 @@ message Volume {
   enum Type {
     CD = 1;
     MUSIC = 2;
-    VOLUME = 3;
+    USER = 3;
+    VOLUME = 4;
   };
 
   optional Type type = 1;

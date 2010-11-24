@@ -22,12 +22,26 @@ void Node::paint(juce::Graphics& g) const {
 }
 
 String Node::name() const {
+  Volume::Type type = volumeFile_.volume().type();
   if (int size = volumeFile_.path_size())
     return volumeFile_.path(size - 1).c_str();
 
-  if (volumeFile_.volume().type() == Volume::MUSIC)
+  if (type == Volume::MUSIC)
     return "Music";
 
+  if (type == Volume::USER)
+    return "User";
+
+  if (type == Volume::VOLUME) {
+
+    if (int size = volumeFile_.volume().name_size())
+      return volumeFile_.volume().name(size - 1).c_str();
+
+    DCHECK(false);
+    return "";
+  }
+
+  DCHECK(false);
   return "<Unknown>";
 }
 

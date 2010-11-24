@@ -102,12 +102,12 @@ void protobuf_AddDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto() {
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/widget/tree/VolumeFile.proto\022\017rec."
-    "widget.tree\032\027rec/widget/Widget.proto\"i\n\006"
+    "widget.tree\032\027rec/widget/Widget.proto\"s\n\006"
     "Volume\022*\n\004type\030\001 \001(\0162\034.rec.widget.tree.V"
-    "olume.Type\022\014\n\004name\030\002 \003(\t\"%\n\004Type\022\006\n\002CD\020\001"
-    "\022\t\n\005MUSIC\020\002\022\n\n\006VOLUME\020\003\"C\n\nVolumeFile\022\'\n"
-    "\006volume\030\001 \001(\0132\027.rec.widget.tree.Volume\022\014"
-    "\n\004path\030\002 \003(\t", 252);
+    "olume.Type\022\014\n\004name\030\002 \003(\t\"/\n\004Type\022\006\n\002CD\020\001"
+    "\022\t\n\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006VOLUME\020\004\"C\n\nVol"
+    "umeFile\022\'\n\006volume\030\001 \001(\0132\027.rec.widget.tre"
+    "e.Volume\022\014\n\004path\030\002 \003(\t", 262);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/tree/VolumeFile.proto", &protobuf_RegisterTypes);
   Volume::default_instance_ = new Volume();
@@ -136,6 +136,7 @@ bool Volume_Type_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+    case 4:
       return true;
     default:
       return false;
@@ -145,6 +146,7 @@ bool Volume_Type_IsValid(int value) {
 #ifndef _MSC_VER
 const Volume_Type Volume::CD;
 const Volume_Type Volume::MUSIC;
+const Volume_Type Volume::USER;
 const Volume_Type Volume::VOLUME;
 const Volume_Type Volume::Type_MIN;
 const Volume_Type Volume::Type_MAX;

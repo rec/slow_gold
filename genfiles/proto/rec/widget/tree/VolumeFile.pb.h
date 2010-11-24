@@ -41,7 +41,8 @@ class VolumeFile;
 enum Volume_Type {
   Volume_Type_CD = 1,
   Volume_Type_MUSIC = 2,
-  Volume_Type_VOLUME = 3
+  Volume_Type_USER = 3,
+  Volume_Type_VOLUME = 4
 };
 bool Volume_Type_IsValid(int value);
 const Volume_Type Volume_Type_Type_MIN = Volume_Type_CD;
@@ -115,6 +116,7 @@ class Volume : public ::google::protobuf::Message {
   typedef Volume_Type Type;
   static const Type CD = Volume_Type_CD;
   static const Type MUSIC = Volume_Type_MUSIC;
+  static const Type USER = Volume_Type_USER;
   static const Type VOLUME = Volume_Type_VOLUME;
   static inline bool Type_IsValid(int value) {
     return Volume_Type_IsValid(value);

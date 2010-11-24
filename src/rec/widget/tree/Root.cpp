@@ -8,28 +8,25 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-#if 0
-
 namespace {
 
-void addSubItem(TreeViewItem* item) {
-}
+class TreeViewItem : public juce::TreeViewItem {
+ public:
+  bool mightContainSubItems() { return true; }
+};
 
-}
+}  // namespace
+
+Root::Root(const NodeDesc& desc) : desc_(desc), root_(new TreeViewItem) {}
 
 Root::~Root() {
   delete getRootItem();
 }
 
 void Root::addChildren() {
-  TreeViewItem* root = new TreeViewItem("root");
-  root->addSubItem(
-
-  setRootItem(root);
+  setRootItem(root_.get());
   setRootItemVisible(false);
 }
-
-#endif
 
 }  // namespace tree
 }  // namespace widget

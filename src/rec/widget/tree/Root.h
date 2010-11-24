@@ -1,8 +1,9 @@
 #ifndef __REC_WIDGET_TREE_ROOT__
 #define __REC_WIDGET_TREE_ROOT__
 
-#if 0
 #include "rec/base/base.h"
+#include "rec/widget/tree/Node.pb.h"
+
 #include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
@@ -11,16 +12,16 @@ namespace tree {
 
 class Root : public juce::TreeView {
  public:
-  explicit Root(const NodeDesc& desc) : desc_(desc) {}
+  explicit Root(const NodeDesc& desc);
   ~Root();
 
   void addChildren();
 
  private:
-  void addSubItem(const File& file, const File& shadow)
+  void addSubItem(const File& file, const File& shadow);
 
   NodeDesc desc_;
-  TreeViewItem root_;
+  scoped_ptr<juce::TreeViewItem> root_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
 };
@@ -29,7 +30,5 @@ class Root : public juce::TreeView {
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
-
-#endif 
 
 #endif  // __REC_WIDGET_TREE_ROOT__
