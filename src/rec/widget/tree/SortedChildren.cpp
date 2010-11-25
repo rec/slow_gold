@@ -37,6 +37,9 @@ bool includeChild(const File& file) {
     "/tmp",
     "/usr",
     "/var",
+#else
+    // Add list of hidden files in Windows here.
+    // We might also need code to deal with C:\ volume names.
 #endif
   };
 
