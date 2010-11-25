@@ -1,5 +1,7 @@
 #include <algorithm>
+#include <set>
 
+#include "rec/base/ArraySize.h"
 #include "rec/widget/tree/SortedChildren.h"
 #include "rec/widget/tree/Tree.h"
 
@@ -12,6 +14,42 @@ namespace {
 bool includeChild(const File& file) {
   // hack.
   if (file.getFileName()[0] == '.')
+    return false;
+
+  static const char* names[] = {
+#if JUCE_MAC
+    "/Library",
+    "/OpenFolderListDF\015",
+    "/Network",
+    "/System",
+    "/System Folder",
+    "/TheVolumeSettingsFolder",
+    "/Volumes",
+    "/bin",
+    "/cores",
+    "/dev",
+    "/etc",
+    "/home",
+    "/net",
+    "/opt",
+    "/private",
+    "/sbin",
+    "/tmp",
+    "/usr",
+    "/var",
+#endif
+  };
+
+  static std::set<string> nameSet(names, names + arraysize(names));
+  string name = file.getFullPathName().toCString();
+#if JUCE_MAC
+  if (name.find("/Volumes/") == 0) {
+    int pos = name.find("/", strlen("/Volumes/"));
+    if (pos != -1)
+      name.erase(0, pos);
+  }
+#endif
+  if (nameSet.find(name) != nameSet.end())
     return false;
 
   return file.isDirectory() ||
