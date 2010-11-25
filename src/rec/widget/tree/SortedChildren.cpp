@@ -1,20 +1,28 @@
 #include <algorithm>
 #include <set>
 
-#include "rec/base/ArraySize.h"
 #include "rec/widget/tree/SortedChildren.h"
+#include "rec/base/ArraySize.h"
+#include "rec/util/ShouldExit.h"
 #include "rec/widget/tree/Tree.h"
+
+using namespace juce;
 
 namespace rec {
 namespace widget {
 namespace tree {
 
-namespace {
+void eraseVolumePrefix(string* name) {
+  if (name->find("/Volumes/") == 0) {
+    int pos = name->find("/", strlen("/Volumes/"));
+    if (pos != -1)
+      name->erase(0, pos);
+  }
+}
 
-bool includeChild(const File& file) {
-  // hack.
+bool isHiddenFile(const File& file) {
   if (file.getFileName()[0] == '.')
-    return false;
+    return true;
 
   static const char* names[] = {
 #if JUCE_MAC
@@ -45,39 +53,37 @@ bool includeChild(const File& file) {
 
   static std::set<string> nameSet(names, names + arraysize(names));
   string name = file.getFullPathName().toCString();
+
 #if JUCE_MAC
-  if (name.find("/Volumes/") == 0) {
-    int pos = name.find("/", strlen("/Volumes/"));
-    if (pos != -1)
-      name.erase(0, pos);
-  }
+  eraseVolumePrefix(&name);
 #endif
-  if (nameSet.find(name) != nameSet.end())
-    return false;
 
-  return file.isDirectory() ||
-    file.hasFileExtension("mp3") ||
-    file.hasFileExtension("aiff") ||
-    file.hasFileExtension("wav") ||
-    file.hasFileExtension("ogg");
+  return nameSet.find(name) != nameSet.end();
 }
-}  // namespace
 
-void sortedChildren(const File& f, juce::Array<File>* kids,
-                    const juce::Thread* thread) {
-  juce::DirectoryIterator i(f, false, "*", juce::File::findFilesAndDirectories);
-  while (i.next()) {
+bool isAudioFileOrDirectory(const File& file) {
+  return !isHiddenFile(file) &&
+    (file.isDirectory() ||
+     file.hasFileExtension("mp3") ||
+     file.hasFileExtension("aiff") ||
+     file.hasFileExtension("wav") ||
+     file.hasFileExtension("ogg"));
+}
+
+void sortedChildren(const File& f, Array<File>* kids, FileFilter* filter) {
+  Thread* thread = Thread::getCurrentThread();
+  DirectoryIterator i(f, false, "*", File::findFilesAndDirectories);
+  while (!util::shouldExit(thread) && i.next()) {
     File f(i.getFile());
-    if (includeChild(f))
+    if (filter(f))
       kids->add(f);
-
-    if (thread && thread->threadShouldExit())
-      return;
   }
 
-  File* begin = kids->getRawDataPointer();
-  File* end = begin + kids->size();
-  std::sort(begin, end, compareFiles);
+  if (!util::shouldExit(thread)) {
+    File* begin = kids->getRawDataPointer();
+    File* end = begin + kids->size();
+    std::sort(begin, end, compareFiles);
+  }
 }
 
 }  // namespace tree

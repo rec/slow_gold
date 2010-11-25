@@ -91,7 +91,7 @@ void Directory::computeChildren() {
 
   childrenDeleter_.reset(new FileArray);
   children_ = childrenDeleter_.get();
-  sortedChildren(f, children_, juce::Thread::getCurrentThread());
+  sortedChildren(f, children_);
 
   range_.begin_ = 0;
   range_.end_ = children_->size();

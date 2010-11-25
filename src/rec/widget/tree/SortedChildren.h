@@ -8,8 +8,15 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+
+void eraseVolumePrefix(string* name);
+bool isHiddenFile(const File& file);
+bool isAudioFileOrDirectory(const File& file);
+
+typedef bool FileFilter(const File& file);
+
 void sortedChildren(const File& f, juce::Array<File>* files,
-                    const juce::Thread* threadToCheck = NULL);
+                    FileFilter* filter = &isAudioFileOrDirectory);
 
 }  // namespace tree
 }  // namespace widget
