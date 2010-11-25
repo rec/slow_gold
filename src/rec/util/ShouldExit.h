@@ -6,7 +6,8 @@
 namespace rec {
 namespace util {
 
-inline bool shouldExit(Thread* thread) {
+template <typename Thread>
+bool shouldExit(Thread* thread) {
   return thread && thread->threadShouldExit();
 }
 
