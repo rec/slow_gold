@@ -44,7 +44,7 @@ const File getVolume(const Volume& v) {
 
   if (v.type() == Volume::USER) {
     DCHECK_EQ(v.name_size(), 0);
-    return File("~");
+    return File::getSpecialLocation(File::userHomeDirectory);
   }
 
   CHECK(false) << v.type();

@@ -46,8 +46,9 @@ bool isHiddenFile(const File& file) {
     "/usr",
     "/var",
 #else
-    // Add list of hidden files in Windows here.
-    // We might also need code to deal with C:\ volume names.
+    "RECYCLER",
+    "System Volume Information",
+    // We might also need code to deal with volume names like C:\.
 #endif
   };
 
