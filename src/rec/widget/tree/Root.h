@@ -8,8 +8,6 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
-#define NEW_ROOT_CODE 1
-
 namespace rec {
 namespace widget {
 namespace tree {
@@ -27,9 +25,6 @@ class Root : public juce::TreeView,
   virtual void changeListenerCallback(void*) { update(); }
 
  private:
-  void addVolume(const VolumeFile& volumeFile);
-  void addVolume(Volume::Type type, const string& name);
-
   void addVolume(const Volume& volume, int insertAt);
 
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
