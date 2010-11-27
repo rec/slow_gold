@@ -11,18 +11,25 @@
 namespace rec {
 namespace widget {
 namespace tree {
+  
+class Node;
 
 class Root : public juce::TreeView,
-             public util::Listener<const File&>::Set {
+             public util::Listener<const File&>::Set,
+             public juce::ChangeListener {
  public:
   explicit Root(const NodeDesc& desc);
   ~Root();
 
   void update();
+  virtual void changeListenerCallback(void*) { update(); }
 
  private:
   void addVolume(const VolumeFile& volumeFile);
   void addVolume(Volume::Type type, const string& name);
+
+  Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
+  int getNumNodes() const { return root_.getNumSubItems(); }
 
   class TreeViewItem : public juce::TreeViewItem {
    public:
