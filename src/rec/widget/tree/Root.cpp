@@ -63,6 +63,16 @@ void Root::addVolume(Volume::Type type, const string& name) {
   addVolume(vf);
 }
 
+void Root::addVolume(const Volume& volume, int insertAt) {
+  VolumeFile vf;
+  vf.mutable_volume()->CopyFrom(volume);
+
+  Directory* directory = new Directory(desc_, vf);
+  directory->listeners()->insert(this);
+  root_.addSubItem(directory, insertAt);
+  directory->requestPartition();
+}
+
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec

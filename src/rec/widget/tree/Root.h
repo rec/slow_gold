@@ -11,7 +11,7 @@
 namespace rec {
 namespace widget {
 namespace tree {
-  
+
 class Node;
 
 class Root : public juce::TreeView,
@@ -27,6 +27,8 @@ class Root : public juce::TreeView,
  private:
   void addVolume(const VolumeFile& volumeFile);
   void addVolume(Volume::Type type, const string& name);
+
+  void addVolume(const Volume& volume, int insertAt);
 
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
   int getNumNodes() const { return root_.getNumSubItems(); }
