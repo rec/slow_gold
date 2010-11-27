@@ -60,7 +60,7 @@ void MainPageK::construct(MainPageJ* peer) {
   directoryListThread_.startThread(THREAD_PRIORITY);
 
   peer_->treeTreeComp->listeners()->insert(this);
-  peer_->treeTreeComp->addChildren();
+  peer_->treeTreeComp->update();
 
   TimeStretch d = getPreferences().track().timestretch();
 

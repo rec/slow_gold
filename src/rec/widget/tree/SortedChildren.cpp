@@ -12,14 +12,6 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-void eraseVolumePrefix(string* name) {
-  if (name->find("/Volumes/") == 0) {
-    int pos = name->find("/", strlen("/Volumes/"));
-    if (pos != -1)
-      name->erase(0, pos);
-  }
-}
-
 bool isHiddenFile(const File& file) {
   if (file.getFileName()[0] == '.')
     return true;

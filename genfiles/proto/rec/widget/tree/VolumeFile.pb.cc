@@ -104,7 +104,7 @@ void protobuf_AddDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto() {
     "\n rec/widget/tree/VolumeFile.proto\022\017rec."
     "widget.tree\032\027rec/widget/Widget.proto\"s\n\006"
     "Volume\022*\n\004type\030\001 \001(\0162\034.rec.widget.tree.V"
-    "olume.Type\022\014\n\004name\030\002 \003(\t\"/\n\004Type\022\006\n\002CD\020\001"
+    "olume.Type\022\014\n\004name\030\002 \001(\t\"/\n\004Type\022\006\n\002CD\020\001"
     "\022\t\n\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006VOLUME\020\004\"C\n\nVol"
     "umeFile\022\'\n\006volume\030\001 \001(\0132\027.rec.widget.tre"
     "e.Volume\022\014\n\004path\030\002 \003(\t", 262);
@@ -152,6 +152,7 @@ const Volume_Type Volume::Type_MIN;
 const Volume_Type Volume::Type_MAX;
 const int Volume::Type_ARRAYSIZE;
 #endif  // _MSC_VER
+const ::std::string Volume::_default_name_;
 #ifndef _MSC_VER
 const int Volume::kTypeFieldNumber;
 const int Volume::kNameFieldNumber;
@@ -174,6 +175,7 @@ Volume::Volume(const Volume& from)
 void Volume::SharedCtor() {
   _cached_size_ = 0;
   type_ = 1;
+  name_ = const_cast< ::std::string*>(&_default_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -182,6 +184,9 @@ Volume::~Volume() {
 }
 
 void Volume::SharedDtor() {
+  if (name_ != &_default_name_) {
+    delete name_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -209,8 +214,12 @@ Volume* Volume::New() const {
 void Volume::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 1;
+    if (_has_bit(1)) {
+      if (name_ != &_default_name_) {
+        name_->clear();
+      }
+    }
   }
-  name_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -241,20 +250,19 @@ bool Volume::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated string name = 2;
+      // optional string name = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_name:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_name()));
+                input, this->mutable_name()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name(0).data(), this->name(0).length(),
+            this->name().data(), this->name().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_name;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -283,13 +291,13 @@ void Volume::SerializeWithCachedSizes(
       1, this->type(), output);
   }
   
-  // repeated string name = 2;
-  for (int i = 0; i < this->name_size(); i++) {
-  ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->name(i).data(), this->name(i).length(),
-    ::google::protobuf::internal::WireFormat::SERIALIZE);
+  // optional string name = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(i), output);
+      2, this->name(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -306,13 +314,14 @@ void Volume::SerializeWithCachedSizes(
       1, this->type(), target);
   }
   
-  // repeated string name = 2;
-  for (int i = 0; i < this->name_size(); i++) {
+  // optional string name = 2;
+  if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name(i).data(), this->name(i).length(),
+      this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(2, this->name(i), target);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->name(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -332,14 +341,14 @@ int Volume::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
+    // optional string name = 2;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+    
   }
-  // repeated string name = 2;
-  total_size += 1 * this->name_size();
-  for (int i = 0; i < this->name_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->name(i));
-  }
-  
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -365,10 +374,12 @@ void Volume::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Volume::MergeFrom(const Volume& from) {
   GOOGLE_CHECK_NE(&from, this);
-  name_.MergeFrom(from.name_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
       set_type(from.type());
+    }
+    if (from._has_bit(1)) {
+      set_name(from.name());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -394,7 +405,7 @@ bool Volume::IsInitialized() const {
 void Volume::Swap(Volume* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    name_.Swap(&other->name_);
+    std::swap(name_, other->name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

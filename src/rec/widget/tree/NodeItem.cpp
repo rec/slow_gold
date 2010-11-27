@@ -32,16 +32,12 @@ String Node::name() const {
   if (type == Volume::USER)
     return "<User>";
 
-  if (type == Volume::VOLUME) {
-
-    if (int size = volumeFile_.volume().name_size())
-      return volumeFile_.volume().name(size - 1).c_str();
-
-    // DCHECK(false);
-    return "<Root>";
+  if (type == Volume::VOLUME || type == Volume::CD) {
+    string name = volumeFile_.volume().name();
+    eraseVolumePrefix(&name, false);
+    return name.empty() ? "<Root>" : name.c_str();
   }
 
-  DCHECK(false);
   return "<Unknown>";
 }
 

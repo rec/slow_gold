@@ -9,11 +9,15 @@ namespace tree {
 
 namespace {
 
+const File getFile(const File& f, const string& path) {
+  return f.getChildFile(path.c_str());
+}
+
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
 const File getFile(File f, const Path& path) {
   for (int i = 0; i < path.size(); ++i)
-    f = f.getChildFile(path.Get(i).c_str());
+    f = getFile(f, path.Get(i).c_str());
 
   return f;
 }
@@ -26,24 +30,22 @@ const File getVolume(const Volume& v) {
   }
 
   if (v.type() == Volume::MUSIC) {
-    DCHECK_EQ(v.name_size(), 0);
+    DCHECK_EQ(v.name(), "");
     return File::getSpecialLocation(File::userMusicDirectory);
   }
 
   if (v.type() == Volume::VOLUME) {
 #if JUCE_MAC
-    if (v.name_size() == 0)
+    if (v.name().empty())
       return File("/");
-    DCHECK_EQ(v.name_size(), 1);
-    return File(("/Volumes/" + v.name(0)).c_str());
 #else
-    DCHECK_EQ(v.name_size(), 1);
-    return File(v.name(0).c_str());
+    DCHECK(!v.name.empty());
 #endif
+    return File(v.name().c_str());
   }
 
   if (v.type() == Volume::USER) {
-    DCHECK_EQ(v.name_size(), 0);
+    DCHECK_EQ(v.name(), "");
     return File::getSpecialLocation(File::userHomeDirectory);
   }
 
@@ -63,6 +65,10 @@ const File getFile(const VolumeFile& file) {
 
 const File getShadowFile(const VolumeFile& file) {
   return getFile(getShadowVolume(file.volume()), file.path());
+}
+
+bool compareVolumes(const Volume& x, const Volume& y) {
+  return x.type() < y.type() || (x.type() == y.type() && x.name() < y.name());
 }
 
 }  // namespace tree

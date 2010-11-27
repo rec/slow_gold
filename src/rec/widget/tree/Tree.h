@@ -10,19 +10,11 @@ namespace tree {
 
 typedef util::BeginEnd<int> Range;
 
-inline bool isASCII(int c) { return c >= 0 && c <= 0xFF; }
-
-inline bool isPunctuation(int c) {
-  return isASCII(c) &&
-    (c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z');
-}
-
-inline int compareChars(int c, int d) {
-  bool pc = isPunctuation(c);
-  bool pd = isPunctuation(d);
-
-  return (pc == pd) ? (tolower(c) - tolower(d)) : (pc ? -1 : 1);
-}
+bool compareFiles(const File& f, const File& g);
+bool isASCII(int c);
+bool isPunctuation(int c);
+int compareChars(int c, int d);
+void eraseVolumePrefix(string* name, bool diskToo = true);
 
 struct CompareChars {
   bool operator()(int c, int d) {
@@ -42,10 +34,6 @@ int compareStrings(const Str& x, const Str& y) {
     if (int cmp = compareChars(x[i], y[i]))
       return cmp;
   }
-}
-
-inline bool compareFiles(const File& f, const File& g) {
-  return compareStrings(f.getFileName(), g.getFileName()) < 0;
 }
 
 template <typename Str>

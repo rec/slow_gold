@@ -148,21 +148,15 @@ class Volume : public ::google::protobuf::Message {
   inline ::rec::widget::tree::Volume_Type type() const;
   inline void set_type(::rec::widget::tree::Volume_Type value);
   
-  // repeated string name = 2;
-  inline int name_size() const;
+  // optional string name = 2;
+  inline bool has_name() const;
   inline void clear_name();
   static const int kNameFieldNumber = 2;
-  inline const ::std::string& name(int index) const;
-  inline ::std::string* mutable_name(int index);
-  inline void set_name(int index, const ::std::string& value);
-  inline void set_name(int index, const char* value);
-  inline void set_name(int index, const char* value, size_t size);
-  inline ::std::string* add_name();
-  inline void add_name(const ::std::string& value);
-  inline void add_name(const char* value);
-  inline void add_name(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& name() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_name();
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
   
   // @@protoc_insertion_point(class_scope:rec.widget.tree.Volume)
  private:
@@ -170,7 +164,8 @@ class Volume : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int type_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> name_;
+  ::std::string* name_;
+  static const ::std::string _default_name_;
   friend void  protobuf_AddDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2ftree_2fVolumeFile_2eproto();
@@ -321,48 +316,46 @@ inline void Volume::set_type(::rec::widget::tree::Volume_Type value) {
   type_ = value;
 }
 
-// repeated string name = 2;
-inline int Volume::name_size() const {
-  return name_.size();
+// optional string name = 2;
+inline bool Volume::has_name() const {
+  return _has_bit(1);
 }
 inline void Volume::clear_name() {
-  name_.Clear();
+  if (name_ != &_default_name_) {
+    name_->clear();
+  }
+  _clear_bit(1);
 }
-inline const ::std::string& Volume::name(int index) const {
-  return name_.Get(index);
+inline const ::std::string& Volume::name() const {
+  return *name_;
 }
-inline ::std::string* Volume::mutable_name(int index) {
-  return name_.Mutable(index);
+inline void Volume::set_name(const ::std::string& value) {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
 }
-inline void Volume::set_name(int index, const ::std::string& value) {
-  name_.Mutable(index)->assign(value);
+inline void Volume::set_name(const char* value) {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
 }
-inline void Volume::set_name(int index, const char* value) {
-  name_.Mutable(index)->assign(value);
+inline void Volume::set_name(const char* value, size_t size) {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline void Volume::set_name(int index, const char* value, size_t size) {
-  name_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Volume::add_name() {
-  return name_.Add();
-}
-inline void Volume::add_name(const ::std::string& value) {
-  name_.Add()->assign(value);
-}
-inline void Volume::add_name(const char* value) {
-  name_.Add()->assign(value);
-}
-inline void Volume::add_name(const char* value, size_t size) {
-  name_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-Volume::name() const {
+inline ::std::string* Volume::mutable_name() {
+  _set_bit(1);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
   return name_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-Volume::mutable_name() {
-  return &name_;
 }
 
 // -------------------------------------------------------------------

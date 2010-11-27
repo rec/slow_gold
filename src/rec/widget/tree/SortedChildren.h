@@ -8,8 +8,6 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-
-void eraseVolumePrefix(string* name);
 bool isHiddenFile(const File& file);
 bool isAudioFileOrDirectory(const File& file);
 

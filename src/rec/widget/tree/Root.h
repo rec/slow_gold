@@ -18,11 +18,11 @@ class Root : public juce::TreeView,
   explicit Root(const NodeDesc& desc);
   ~Root();
 
-  void addChildren();
+  void update();
 
  private:
-  void addFile(const VolumeFile& volumeFile);
-  void addVolume(Volume::Type type);
+  void addVolume(const VolumeFile& volumeFile);
+  void addVolume(Volume::Type type, const string& name);
 
   NodeDesc desc_;
   scoped_ptr<juce::TreeViewItem> root_;

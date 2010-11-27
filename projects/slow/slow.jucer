@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="WUL7CAL6w" name="Slow">
+  <MAINGROUP id="0DouV0URU" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -481,6 +481,10 @@
         <FILE compile="0" file="../../src/rec/util/Callback.h" id="12Gchw0jv"
               name="Callback.h" resource="0"/>
         <GROUP id="VnUzHunMh" name="cd">
+          <FILE compile="1" file="../../src/rec/util/cd/DiscTracker.cpp" id="hzqXMYy4e"
+                name="DiscTracker.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/DiscTracker.h" id="bIGI3zDyf"
+                name="DiscTracker.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/GetAlbumsFromCDDB.cpp"
                 id="k6qIVWCeJ" name="GetAlbumsFromCDDB.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/GetAlbumsFromCDDB.h"
@@ -504,6 +508,8 @@
               name="Method.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="fvfA42mwn"
               name="PointerList.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="dxxW3WyQl"
+              name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="zlTv7pqd1" name="STL.h"
               resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Substitute.h" id="0uys7vYdc"
@@ -563,6 +569,10 @@
                 name="Directory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="ZvZCP6Bjv"
                 name="Directory.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/tree/GetVolumes.cpp" id="2NGMISHQR"
+                name="GetVolumes.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/tree/GetVolumes.h" id="Poo1mS9OI"
+                name="GetVolumes.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/NodeComponent.h"
                 id="cOpB2ffGE" name="NodeComponent.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/NodeItem.cpp" id="rjnQ7RViD"
@@ -581,6 +591,8 @@
                 id="GAAFtWW6I" name="SortedChildren.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/SortedChildren.h"
                 id="TlUyCYx2x" name="SortedChildren.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/tree/Tree.cpp" id="6vy9mVed9"
+                name="Tree.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Tree.h" id="y4jvJvsdd"
                 name="Tree.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/VolumeFile.cpp" id="LK7qJkEHL"
@@ -706,7 +718,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="XQfBjNLtN" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="GbQP4Uw4j" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

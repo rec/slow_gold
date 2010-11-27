@@ -14,6 +14,8 @@ const File getFile(const VolumeFile& file);
 const File getShadowVolume(const Volume& v);
 const File getShadowFile(const VolumeFile& file);
 
+bool compareVolumes(const Volume& x, const Volume& y);
+
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec

@@ -30,48 +30,44 @@ Root::~Root() {
   delete getRootItem();
 }
 
-void Root::addChildren() {
+void Root::update() {
   setRootItem(root_.get());
   setRootItemVisible(false);
 
-  addVolume(Volume::MUSIC);
-  addVolume(Volume::USER);
+  addVolume(Volume::MUSIC, "");
+  addVolume(Volume::USER, "");
 
   VolumeFile vf;
   vf.mutable_volume()->set_type(Volume::VOLUME);
   juce::Array<File> roots;
 
 #if JUCE_MAC
-  addFile(vf);
+  addVolume(Volume::VOLUME, "");
   File("/Volumes").findChildFiles(roots, File::findFilesAndDirectories, false);
 #else
   File::findFileSystemRoots(roots);
 #endif
 
-  string* s = vf.mutable_volume()->add_name();
   for (int i = 0; i < roots.size(); ++i) {
     if (roots[i].isOnHardDisk() && roots[i].getLinkedTarget() == roots[i]) {
-#if JUCE_MAC
-      (*s) = roots[i].getFileName().toCString();
-#else
-      (*s) = roots[i].getFullPathName().toCString();
-#endif
-      addFile(vf);
+      string s(roots[i].getFullPathName().toCString());
+      addVolume(Volume::VOLUME, s);
     }
   }
 }
 
-void Root::addFile(const VolumeFile& volumeFile) {
+void Root::addVolume(const VolumeFile& volumeFile) {
   Directory* directory = new Directory(desc_, volumeFile);
   directory->requestPartition();
   directory->listeners()->insert(this);
   root_->addSubItem(directory);
 }
 
-void Root::addVolume(Volume::Type type) {
+void Root::addVolume(Volume::Type type, const string& name) {
   VolumeFile vf;
   vf.mutable_volume()->set_type(type);
-  addFile(vf);
+  vf.mutable_volume()->set_name(name);
+  addVolume(vf);
 }
 
 }  // namespace tree
