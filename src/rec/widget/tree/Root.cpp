@@ -23,7 +23,27 @@ Root::~Root() {
 }
 
 void Root::update() {
-  VolumeList list = getVolumes();
+  VolumeList volumes = getVolumes();
+
+#if NEW_ROOT_CODE
+  for (int i = 0, j = 0; i < volumes.size() || j < getNumNodes(); ++i) {
+    const Volume* v1 = (i < volumes.size()) ? &volumes[i] : NULL;
+    const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;
+    const Volume* v2 = n ? &(n->volumeFile().volume()) : NULL;
+
+    if (!v1)
+      root_.removeSubItem(j);
+    else if (!v2 || compareVolumes(*v1, *v2))
+      addVolume(*v1, j++);
+    else if (compareVolumes(*v2, *v1))
+      root_.removeSubItem(j);
+    else
+      j++;
+  }
+  setRootItem(&root_);
+  setRootItemVisible(false);
+
+#else
   setRootItem(&root_);
   setRootItemVisible(false);
 
@@ -47,6 +67,7 @@ void Root::update() {
       addVolume(Volume::VOLUME, s);
     }
   }
+#endif
 }
 
 void Root::addVolume(const VolumeFile& volumeFile) {

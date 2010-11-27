@@ -46,8 +46,11 @@ class Node : public juce::TreeViewItem,
   virtual void itemClicked(const juce::MouseEvent&);
   virtual void requestPartition() {}
   virtual bool isDirectory() const { return false; }
+  const VolumeFile& volumeFile() const { return volumeFile_; }
+  Volume::Type type() const { return volumeFile_.volume().type(); }
 
  protected:
+
   NodeDesc desc_;
   VolumeFile volumeFile_;
   Listeners listeners_;

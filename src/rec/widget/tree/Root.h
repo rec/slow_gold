@@ -8,6 +8,8 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
+#define NEW_ROOT_CODE 1
+
 namespace rec {
 namespace widget {
 namespace tree {
