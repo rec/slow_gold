@@ -11,18 +11,9 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-namespace {
-
-class TreeViewItem : public juce::TreeViewItem {
- public:
-  bool mightContainSubItems() { return true; }
-};
-
-}  // namespace
-
 using namespace rec::gui;
 
-Root::Root(const NodeDesc& desc) : desc_(desc), root_(new TreeViewItem) {
+Root::Root(const NodeDesc& desc) : desc_(desc) {
   const Colors& colors = desc_.widget().colors();
   setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
 }
@@ -33,7 +24,7 @@ Root::~Root() {
 
 void Root::update() {
   VolumeList list = getVolumes();
-  setRootItem(root_.get());
+  setRootItem(&root_);
   setRootItemVisible(false);
 
   addVolume(Volume::MUSIC, "");
@@ -62,7 +53,7 @@ void Root::addVolume(const VolumeFile& volumeFile) {
   Directory* directory = new Directory(desc_, volumeFile);
   directory->requestPartition();
   directory->listeners()->insert(this);
-  root_->addSubItem(directory);
+  root_.addSubItem(directory);
 }
 
 void Root::addVolume(Volume::Type type, const string& name) {

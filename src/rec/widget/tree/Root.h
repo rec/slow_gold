@@ -24,8 +24,13 @@ class Root : public juce::TreeView,
   void addVolume(const VolumeFile& volumeFile);
   void addVolume(Volume::Type type, const string& name);
 
+  class TreeViewItem : public juce::TreeViewItem {
+   public:
+    bool mightContainSubItems() { return true; }
+  };
+
   NodeDesc desc_;
-  scoped_ptr<juce::TreeViewItem> root_;
+  TreeViewItem root_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
 };
