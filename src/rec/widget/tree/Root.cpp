@@ -1,5 +1,6 @@
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/tree/Directory.h"
+#include "rec/widget/tree/GetVolumes.h"
 #include "rec/gui/Color.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -31,6 +32,7 @@ Root::~Root() {
 }
 
 void Root::update() {
+  VolumeList list = getVolumes();
   setRootItem(root_.get());
   setRootItemVisible(false);
 
