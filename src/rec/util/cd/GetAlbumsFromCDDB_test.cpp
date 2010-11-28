@@ -1,5 +1,3 @@
-#if JUCE_MAC
-
 #include <gtest/gtest.h>
 
 #include "rec/base/ArraySize.h"
@@ -42,9 +40,8 @@ TEST(CD, GetAlbumsFromCDDB) {
 
   static int trackCount = arraysize(trackLengths) - 1;
 
-  std::vector<int> offsets(trackLengths,
-                           trackLengths + arraysize(trackLengths));
-  std::vector<Album> albums;
+  TrackOffsets offsets(trackLengths, trackLengths + arraysize(trackLengths));
+  AlbumList albums;
   EXPECT_EQ(getAlbumsFromCDDB(offsets, &albums), "");
 
   EXPECT_EQ(albums.size(), 3);
@@ -67,5 +64,3 @@ TEST(CD, GetAlbumsFromCDDB) {
 
 }  // namespace rec
 }  // namespace cd
-
-#endif  // JUCE_MAC

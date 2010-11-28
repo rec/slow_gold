@@ -16,6 +16,8 @@ struct Track {
   string extdata_;
 };
 
+typedef std::vector<Track> TrackList;
+
 struct Album {
   int discid_;
   int length_;
@@ -28,17 +30,19 @@ struct Album {
   string artist_;
   string extdata_;
 
-  std::vector<Track> tracks_;
+  TrackList tracks_;
 };
+
+typedef std::vector<int> TrackOffsets;
+typedef std::vector<Album> AlbumList;
 
 // Fill a list of albums from the CDDB.  Return an error message or the empty
 // string if there was no error.
-string getAlbumsFromCDDB(const std::vector<int>& trackOffsets,
-                         std::vector<Album>* albums);
+string getAlbumsFromCDDB(const TrackOffsets& offsets, AlbumList* albums);
 
 
 // Remove any albums that are similar to another album in the list.
-void dedupeAlbums(std::vector<Album>* albums);
+void dedupeAlbums(AlbumList* albums);
 
 }  // namespace cd
 }  // namespace rec

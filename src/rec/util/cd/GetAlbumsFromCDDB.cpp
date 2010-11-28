@@ -1,5 +1,3 @@
-#if JUCE_MAC
-
 #include <ctype.h>
 #include <string.h>
 
@@ -101,7 +99,7 @@ Album fillAlbum(cddb_disc_t* disc) {
   return album;
 }
 
-void addIfNotSimilar(std::vector<Album>* albums, const Album& album) {
+void addIfNotSimilar(AlbumList* albums, const Album& album) {
   for (int i = 0; i < albums->size(); ++i) {
     if (similar(album, (*albums)[i]))
       return;
@@ -111,7 +109,7 @@ void addIfNotSimilar(std::vector<Album>* albums, const Album& album) {
 
 }  // namespace
 
-string getAlbumsFromCDDB(const std::vector<int>& offsets, std::vector<Album>* albums) {
+string getAlbumsFromCDDB(const TrackOffsets& offsets, AlbumList* albums) {
   string error;
   cddb_conn_t *conn = cddb_new();
   cddb_disc_t *disc = cddb_disc_new();
@@ -148,7 +146,7 @@ string getAlbumsFromCDDB(const std::vector<int>& offsets, std::vector<Album>* al
   return error;
 }
 
-void dedupeAlbums(std::vector<Album>* albums) {
+void dedupeAlbums(AlbumList* albums) {
   // This process is quadratic in the number of albums, but we only ever get a
   // handful.
   for (int i = albums->size() - 1; i > 0; --i) {
@@ -164,4 +162,3 @@ void dedupeAlbums(std::vector<Album>* albums) {
 }  // namespace cd
 }  // namespace rec
 
-#endif  // JUCE_MAC

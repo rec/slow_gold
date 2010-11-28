@@ -1,14 +1,17 @@
 #include <glog/logging.h>
 
+#include "rec/widget/tree/Directory.h"
+
+#include "rec/util/cd/GetAlbumsFromCDDB.h"
 #include "rec/util/thread/RunnableThread.h"
 #include "rec/util/thread/Callback.h"
-#include "rec/widget/tree/Directory.h"
 #include "rec/widget/tree/SortedChildren.h"
 #include "rec/widget/tree/PartitionChildren.h"
 
-using rec::thread::RunnableThread;
-using rec::thread::makeCallback;
-using juce::MessageManagerLock;
+using namespace juce;
+
+using namespace rec::cd;
+using namespace rec::thread;
 
 namespace rec {
 namespace widget {
@@ -82,20 +85,67 @@ void Directory::addChildFile(int begin, int end) {
     node->requestPartition();
 }
 
-void Directory::computeChildren() {
-  File f = getFile(volumeFile_);
-  if (!f.isDirectory()) {
-    LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
-    return;
+static AudioCDReader* getReader(const string& idString) {
+  int id = String(idString.c_str()).getIntValue();
+  StringArray names = AudioCDReader::getAvailableCDNames();
+  int size = names.size();
+  for (int i = 0; i < size; ++i) {
+    scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
+    if (!reader)
+      LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
+    else if (reader->getCDDBId() == id)
+      return reader.transfer();
   }
+  LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
+  return NULL;
+}
 
-  childrenDeleter_.reset(new FileArray);
-  children_ = childrenDeleter_.get();
-  sortedChildren(f, children_);
+void Directory::computeChildren() {
+  if (type() == Volume::CD) {
+    scoped_ptr<AudioCDReader> reader(getReader(volumeFile_.volume().name()));
+    string name = "<Unknown>";
+    std::vector<string> trackNames;
+    if (reader) {
+      AlbumList albums;
+      const Array<int>& off = reader->getTrackOffsets();
+      std::vector<int> trackOffsets(off.getReference(0),
+                                    (&off.getReference(off.size() - 1))[1]);
+      string err = getAlbumsFromCDDB(trackOffsets, &albums);
+      dedupeAlbums(&albums);
+      if (err.empty() || !albums.size()) {
+        LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
+                   << " with error " << err;
+        for (int i = 0; i < reader->getNumTracks(); ++i) {
+          if (reader->isTrackAudio(i))
+            trackNames.push_back(String((int) trackNames.size() + 1).toCString());
+        }
 
-  range_.begin_ = 0;
-  range_.end_ = children_->size();
-  partition();
+      } else {
+        Album& album = albums[0];
+        name = album.title_ + "/" + album.artist_;
+        for (int i = 0; i < album.tracks_.size(); ++i)
+          trackNames.push_back(album.tracks_[i].title_);
+      }
+    }
+
+    resetChildren();
+    ScopedLock l(lock_);
+    computingDone_ = computing_ = true;
+
+  } else {
+    File f = getFile(volumeFile_);
+    if (!f.isDirectory()) {
+      LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
+      return;
+    }
+
+    resetChildren();
+    sortedChildren(f, children_);
+
+    range_.begin_ = 0;
+    range_.end_ = children_->size();
+    partition();
+  }
 }
 
 void Directory::partition() {
@@ -117,6 +167,9 @@ String getSub(const File& f, int letters) {
 }
 
 String Directory::name() const {
+  if (name_.length())
+    return name_;
+
   if (!isShard_)
     return Node::name();
 
@@ -130,7 +183,8 @@ String Directory::name() const {
   String begin = getSub((*children_)[range_.begin_], b);
   String end = getSub((*children_)[range_.end_ - 1], e);
 
-  return (begin == end) ? begin : (begin + " - " + end);
+  name_ = (begin == end) ? begin : (begin + " - " + end);
+  return name_;
 }
 
 void Directory::itemOpennessChanged(bool isOpen) {

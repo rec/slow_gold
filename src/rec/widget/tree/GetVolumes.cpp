@@ -58,7 +58,7 @@ VolumeList getVolumes() {
 
   add(Volume::MUSIC, "", &volumes);
   add(Volume::USER, "", &volumes);
-  // addAudioCDs(&volumes);
+  addAudioCDs(&volumes);
   addFileRoots(&volumes);
 
   std::sort(volumes.begin(), volumes.end(), compareVolumes);

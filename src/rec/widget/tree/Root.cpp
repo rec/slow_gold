@@ -36,7 +36,7 @@ void Root::update() {
       addVolume(*v1, j++);
     else if (compareVolumes(*v2, *v1))
       root_.removeSubItem(j);
-    else
+    else  // They're the same!
       j++;
   }
   setRootItem(&root_);

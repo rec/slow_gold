@@ -39,7 +39,7 @@ const File getVolume(const Volume& v) {
     if (v.name().empty())
       return File("/");
 #else
-    DCHECK(!v.name.empty());
+    DCHECK(!v.name().empty());
 #endif
     return File(v.name().c_str());
   }

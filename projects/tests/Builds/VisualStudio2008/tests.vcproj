@@ -387,6 +387,8 @@
           <File RelativePath="..\..\..\..\src\rec\util\BeginEnd.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Callback.h"/>
           <Filter Name="cd">
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DiscTracker.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DiscTracker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB_test.cpp"/>
@@ -404,6 +406,7 @@
           <File RelativePath="..\..\..\..\src\rec\util\math_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Method.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\PointerList.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\ShouldExit.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Substitute.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Substitute_test.cpp"/>
@@ -440,6 +443,9 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\GetVolumes.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\GetVolumes.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\GetVolumes_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeComponent.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.h"/>
@@ -450,6 +456,7 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Root.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\SortedChildren.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\SortedChildren.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\Tree.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Tree.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.h"/>

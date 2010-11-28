@@ -32,6 +32,11 @@ class Directory : public Node {
  private:
   Directory(const Directory& d, const Range& r);
 
+  void resetChildren() {
+    childrenDeleter_.reset(new FileArray);
+    children_ = childrenDeleter_.get();
+  }
+
   Range range_;
   FileArray *children_;
   scoped_ptr<FileArray> childrenDeleter_;
@@ -41,6 +46,7 @@ class Directory : public Node {
   bool computing_;
   bool computingDone_;
   bool isOpen_;
+  mutable String name_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
 };
