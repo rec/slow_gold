@@ -1412,7 +1412,6 @@
 					../../../../../rec/genfiles/proto,
 					../../../../../juce,
 					../../../../../rec/src/rec/data/yaml/include,
-					../../../../../build/Debug/libcddb/include,
 					../../../../../build/Debug/gflags/include,
 					../../../../../build/Debug/glog/include,
 					../../../../../build/Debug/gtest/include,
@@ -1426,8 +1425,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				OTHER_LDFLAGS = (
-					"-L../../../../../build/Release/libcddb/lib",
-					"-lcddb",
 					"-L../../../../../build/Release/gflags/lib",
 					"-lgflags",
 					"-L../../../../../build/Release/glog/lib",
@@ -1483,7 +1480,6 @@
 					../../../../../rec/genfiles/proto,
 					../../../../../juce,
 					../../../../../rec/src/rec/data/yaml/include,
-					../../../../../build/Debug/libcddb/include,
 					../../../../../build/Debug/gflags/include,
 					../../../../../build/Debug/glog/include,
 					../../../../../build/Debug/gtest/include,
@@ -1498,8 +1494,6 @@
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				OTHER_LDFLAGS = (
-					"-L../../../../../build/Debug/libcddb/lib",
-					"-lcddb",
 					"-L../../../../../build/Debug/gflags/lib",
 					"-lgflags",
 					"-L../../../../../build/Debug/glog/lib",

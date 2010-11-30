@@ -55,7 +55,7 @@ const int FRAMES_PER_SECOND = 75;
 const int SAMPLES_PER_FRAME = 44100 / FRAMES_PER_SECOND;
 
 String trackOffsetString(const TrackOffsets& offsets) {
-  String result(offsets.size());
+  String result(offsets.size() - 1);
   for (int i = 0; i < offsets.size() - 1; ++i)
     result += (" " + String((offsets[i] + 88200) / SAMPLES_PER_FRAME));
 
@@ -67,8 +67,8 @@ String getDiscId(Socket *s, const String& trackOffset ) {
   String req = "discid " + trackOffset;
   StringArray id = makeCDDBRequest(req, s);
   if (id.size() != 1)
-    throw Exception(string("No diskid ") + id.joinIntoString(", ").toCString() + 
-                    string(" ") + req.toCString()); 
+    throw Exception(string("No diskid ") + id.joinIntoString(", ").toCString() +
+                    string(" ") + req.toCString());
 
   const String& response = id[0];
   static const char *const prefix = "200 Disc ID is ";

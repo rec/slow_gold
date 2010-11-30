@@ -32,7 +32,7 @@
             Optimization="0"
             BufferSecurityCheck=""
             DebugInformationFormat="4"
-            AdditionalIncludeDirectories="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
+            AdditionalIncludeDirectories="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
             PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
@@ -55,7 +55,7 @@
             ProgramDatabaseFile=".\Debug\SlowBurn.pdb"
             SubSystem="2"
             TargetMachine="1"
-            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\libcddb\\vsprojects\\Debug libcddb.lib /LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>
@@ -89,7 +89,7 @@
             Optimization="3"
             InlineFunctionExpansion="1"
             StringPooling="true"
-            AdditionalIncludeDirectories="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
+            AdditionalIncludeDirectories="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
             PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
@@ -115,7 +115,7 @@
             OptimizeReferences="2"
             EnableCOMDATFolding="2"
             TargetMachine="1"
-            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\libcddb\\vsprojects\\Debug libcddb.lib /LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>

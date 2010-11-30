@@ -52,6 +52,7 @@ TEST(CD, Albums) {
 
   for (int i = 0; i < albums.album_size(); ++i) {
     const Album& album = albums.album(i);
+    std::cerr << "album " << album.title() << "\n";
     EXPECT_NE(album.title().find("Never For Ever"), -1);
     // EXPECT_STREQ(album.title().toCString(), "Never For Ever");
     EXPECT_EQ(album.year(), "1980");

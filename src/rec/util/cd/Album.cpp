@@ -21,7 +21,7 @@ StringPair split(const string& s, int ch) {
   int loc = s.find(ch);
   if (loc != -1) {
     first = String(s.substr(0, loc - 1).c_str()).trimEnd().toCString();
-    second = String(s.substr(0, loc - 1).c_str()).trimStart().toCString();
+    second = String(s.substr(loc + 1).c_str()).trimStart().toCString();
   }
   return std::make_pair(first, second);
 }
@@ -82,7 +82,7 @@ void fillAlbum(const StringPairArray& cd, Album* album) {
 
 StringPairArray parseCDData(const StringArray& cds) {
   StringPairArray result;
-  for (int i = 1; i < cds.size(); ++i) {
+  for (int i = 1; i < cds.size() - 1; ++i) {
     const String& line = cds[i];
     if (line.length() && line[0] != '#') {
       int loc = line.indexOfChar('=');
@@ -101,9 +101,11 @@ StringPairArray parseCDData(const StringArray& cds) {
 void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   const String offsets = trackOffsetString(off);
   StringArray cds = getPossibleCDs(sock, offsets);
-  for (int i = 0; i < cds.size(); ++i) {
+  for (int i = 1; i < cds.size() - 1; ++i) {
     Album album;
     fillAlbum(parseCDData(getCDData(sock, cds[i])), &album);
+    splitTitle(&album);
+    splitTracks(&album);
     addIfNotSimilar(albums, album);
   }
 }
