@@ -31,6 +31,7 @@ void readSocket(Socket* sock, String* str, int timeout) {
   if (read <= 0)
     throw Exception(string("Socket read error ") + String(read).toCString());
 
+  LOG(ERROR) << "read: " << String(buffer, read).toCString();
   (*str) = String(buffer, read);
 }
 

@@ -33,6 +33,18 @@ bool stripLine(String* data, StringArray* lines) {
   return false;
 }
 
+StringPair splitLine(const string& s, int ch) {
+  string first = s, second;
+  string sep = "   ";
+  sep[1] = ch;
+  int loc = s.find(sep);
+  if (loc != -1) {
+    first = s.substr(0, loc);
+    second = s.substr(loc + sep.size());
+  }
+  return std::make_pair(first, second);
+}
+
 }  // namespace cd
 }  // namespace util
 }  // namespace rec

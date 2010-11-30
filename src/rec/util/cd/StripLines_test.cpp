@@ -16,6 +16,14 @@ TEST(StripLines, Trivial) {
 
   data = "a";
   ASSERT_EQ(stripLines(&data, &lines), 0);
+  ASSERT_EQ(data, "a");
+}
+
+TEST(StripLines, Remaining) {
+  String data("line 1\nline 2");
+  juce::StringArray lines;
+  ASSERT_EQ(stripLines(&data, &lines), 1);
+  ASSERT_EQ(data, "line 2");
 }
 
 TEST(StripLines, Complex) {
@@ -29,6 +37,12 @@ TEST(StripLines, Complex) {
   EXPECT_STREQ(lines[4].toCString(), "");
   EXPECT_STREQ(lines[5].toCString(), "");
   EXPECT_STREQ(data.toCString(), "");
+}
+
+TEST(splitLine, All) {
+  StringPair p = splitLine("Kate Bush / The Dreaming", '/');
+  EXPECT_EQ(p.first, "Kate Bush");
+  EXPECT_EQ(p.second, "The Dreaming");
 }
 
 }  // namespace

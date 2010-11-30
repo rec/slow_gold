@@ -5,6 +5,7 @@
 #include "rec/util/cd/CDDBResponse.h"
 #include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/cd/Socket.h"
+#include "rec/util/cd/StripLines.h"
 #include "rec/util/Exception.h"
 #include "rec/base/ArraySize.h"
 
@@ -12,25 +13,9 @@ namespace rec {
 namespace util {
 namespace cd {
 
-namespace {
-
-typedef std::pair<string, string> StringPair;
-
-StringPair split(const string& s, int ch) {
-  string first = s, second;
-  int loc = s.find(ch);
-  if (loc != -1) {
-    first = String(s.substr(0, loc - 1).c_str()).trimEnd().toCString();
-    second = String(s.substr(loc + 1).c_str()).trimStart().toCString();
-  }
-  return std::make_pair(first, second);
-}
-
-}  // namespace
-
 void splitTitle(Album *album) {
   // Split title up.
-  StringPair title = split(album->title(), '/');
+  StringPair title = splitLine(album->title(), '/');
   if (!title.second.empty()) {
     album->set_artist(title.first);
     album->set_title(title.second);
@@ -48,7 +33,7 @@ void splitTracks(Album* album) {
       splitting = (album->track(i).title().find(ch) > 0);
 
     for (int j = 0; splitting && j < album->track_size(); ++j) {
-      StringPair p = split(album->track(j).title(), ch);
+      StringPair p = splitLine(album->track(j).title(), ch);
       album->mutable_track(j)->set_artist(p.first);
       album->mutable_track(j)->set_title(p.second);
     }
@@ -76,7 +61,7 @@ void fillAlbum(const StringPairArray& cd, int tracks, Album* album) {
       album->set_title(value);
 
     else if (key.startsWith("TTITLE"))
-      *album->mutable_track(key.getTrailingIntValue())->mutable_title() += value;
+      (*album->mutable_track(key.getTrailingIntValue())->mutable_title()) += value;
 
     else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
       LOG(ERROR) << "Unknown key " << key.toCString() << " '" << value << "'";
