@@ -86,12 +86,13 @@ StringPairArray parseCDData(const StringArray& cds) {
     const String& line = cds[i];
     if (line.length() && line[0] != '#') {
       int loc = line.indexOfChar('=');
-      if (loc == -1)
-        throw Exception(string("Couldn't find = in line ") + line.toCString());
-
-      String value = line.substring(loc + 1);
-      if (value.length() || !value.startsWith("EXT"))
-        result.set(line.substring(0, loc), value);
+      if (loc == -1) {
+        LOG(ERROR) << "Couldn't find = in line " << line.toCString();
+      } else {
+        String value = line.substring(loc + 1);
+        if (value.length() || !value.startsWith("EXT"))
+          result.set(line.substring(0, loc), value);
+      }
     }
   }
 

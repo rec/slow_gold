@@ -110,13 +110,7 @@ void Directory::computeChildren() {
     if (reader) {
       AlbumList albums;
       TrackOffsets trackOffsets = reader->getTrackOffsets();
-      for (int i = 0; i < trackOffsets.size(); ++i) {
-        trackOffsets.getReference(i) = (trackOffsets[i] + 88200) 
-          / AudioCDReader::framesPerSecond;
-      }
-
       String err = fillAlbums(trackOffsets, &albums);
-      // dedupeAlbums(&albums);
       if (err.length() || !albums.album_size()) {
         LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
                    << " with error " << err;
@@ -127,14 +121,15 @@ void Directory::computeChildren() {
 
       } else {
         Album album = albums.album(0);
-        name = album.title() + "/" + album.artist();
+        name = album.title() + " / " + album.artist();
         for (int i = 0; i < album.track_size(); ++i)
           trackNames.push_back(album.track(i).title());
       }
     }
-
+    
     resetChildren();
     ScopedLock l(lock_);
+    name_ = name.c_str();
     computingDone_ = computing_ = true;
 
   } else {

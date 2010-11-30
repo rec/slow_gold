@@ -59,7 +59,8 @@ String trackOffsetString(const TrackOffsets& offsets) {
   for (int i = 0; i < offsets.size() - 1; ++i)
     result += (" " + String((offsets[i] + 88200) / SAMPLES_PER_FRAME));
 
-  result += (" " + String(offsets[offsets.size() - 1] / SAMPLES_PER_SECOND));
+  result += (" " + String((offsets[offsets.size() - 1] + 88200) /
+                          SAMPLES_PER_SECOND));
   return result;
 }
 
