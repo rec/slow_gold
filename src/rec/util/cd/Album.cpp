@@ -1,6 +1,12 @@
+#include <glog/logging.h>
+
 #include "rec/util/cd/Album.h"
 #include "rec/util/cd/Album.pb.h"
+#include "rec/util/cd/CDDBResponse.h"
+#include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/cd/Socket.h"
+#include "rec/util/Exception.h"
+#include "rec/base/ArraySize.h"
 
 namespace rec {
 namespace util {
@@ -33,7 +39,7 @@ void splitTitle(Album *album) {
 
 void splitTracks(Album* album) {
   // Now look for likely song splits.
-  static const char* splits = "/:-";
+  static const char splits[] = "/:-";
   bool splitting;
   for (int i = 0; !splitting && i < arraysize(splits); ++i) {
     char ch = splits[i];
@@ -42,9 +48,9 @@ void splitTracks(Album* album) {
       splitting = (album->track(i).title().find(ch) > 0);
 
     for (int j = 0; splitting && j < album->track_size(); ++j) {
-      StringPair p = split(album->track(), ch);
-      album->mutable_track()->set_artist(p.first);
-      album->mutable_track()->set_title(p.second);
+      StringPair p = split(album->track(j).title(), ch);
+      album->mutable_track(j)->set_artist(p.first);
+      album->mutable_track(j)->set_title(p.second);
     }
   }
 }
@@ -81,10 +87,10 @@ StringPairArray parseCDData(const StringArray& cds) {
     if (line.length() && line[0] != '#') {
       int loc = line.indexOfChar('=');
       if (loc == -1)
-        throw Exception("Couldn't find = in line " + line);
+        throw Exception(string("Couldn't find = in line ") + line.toCString());
 
       String value = line.substring(loc + 1);
-      if (value.length() || !key.startsWith("EXT"))
+      if (value.length() || !value.startsWith("EXT"))
         result.set(line.substring(0, loc), value);
     }
   }
@@ -95,8 +101,11 @@ StringPairArray parseCDData(const StringArray& cds) {
 void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   const String offsets = trackOffsetString(off);
   StringArray cds = getPossibleCDs(sock, offsets);
-  for (int i = 0; i < cds.size(); ++i)
-    fillAlbum(parseCDData(getCDData(sock, cds[i]), albums->add_album()));
+  for (int i = 0; i < cds.size(); ++i) {
+    Album album;
+    fillAlbum(parseCDData(getCDData(sock, cds[i])), &album);
+    addIfNotSimilar(albums, album);
+  }
 }
 
 #define DEFAULT_USER        "anonymous"
@@ -107,7 +116,7 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
 #define DEFAULT_PATH_QUERY  "/~cddb/cddb.cgi"
 #define DEFAULT_PATH_SUBMIT "/~cddb/submit.cgi"
 
-String fillAlbumList(const TrackOffsets& off, AlbumList* albums) {
+String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   try {
     Socket sock;
     connect(&sock, DEFAULT_SERVER, DEFAULT_PORT, DEFAULT_TIMEOUT * 1000);
@@ -115,7 +124,7 @@ String fillAlbumList(const TrackOffsets& off, AlbumList* albums) {
     makeCDDBRequest("proto 6", &sock);
     fillAlbumList(&sock, off, albums);
     return "";
-  } catch (exception& e) {
+  } catch (Exception& e) {
     return e.what();
   }
 }

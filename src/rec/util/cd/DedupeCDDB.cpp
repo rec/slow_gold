@@ -1,4 +1,5 @@
 #include "rec/util/cd/DedupeCDDB.h"
+#include "rec/util/cd/Album.pb.h"
 
 namespace rec {
 namespace util {
@@ -26,14 +27,14 @@ string normalize(const string& s) {
 }
 
 bool similar(const Album& x, const Album& y) {
-  int size = x.tracks_.size();
-  if (!(similar(x.artist_, y.artist_) &&
-        similar(x.title_, y.title_) &&
-        size == y.tracks_.size()))
+  int size = x.track_size();
+  if (!(similar(x.artist(), y.artist()) &&
+        similar(x.title(), y.title()) &&
+        size == y.track_size()))
     return false;
 
   for (int i = 0; i < size; ++i) {
-    if (!similar(x.tracks_[i], y.tracks_[i]))
+    if (!similar(x.track(i), y.track(i)))
       return false;
   }
 
@@ -48,30 +49,28 @@ bool similar(const Track& x, const Track& y) {
   return similar(x.title(), y.title());
 }
 
-string unnull(const char* x) {
-  return string(x ? x : "");
-}
-
 void addIfNotSimilar(AlbumList* albums, const Album& album) {
-  for (int i = 0; i < albums->size(); ++i) {
-    if (similar(album, (*albums)[i]))
+  for (int i = 0; i < albums->album_size(); ++i) {
+    if (similar(album, albums->album(i)))
       return;
   }
-  albums->push_back(album);
+  albums->add_album()->CopyFrom(album);
 }
 
+#if 0
 void dedupeAlbums(AlbumList* albums) {
   // This process is quadratic in the number of albums, but we only ever get a
   // handful.
-  for (int i = albums->size() - 1; i > 0; --i) {
+  for (int i = albums->album_size() - 1; i > 0; --i) {
     for (int j = i - 1; j >= 0; --j) {
-      if (similar((*albums)[i], (*albums)[j])) {
-        albums->erase(i + albums->begin());
+      if (similar(albums->album(i), albums->album(j))) {
+        albums->erase(i + albums-begin());
         break;
       }
     }
   }
 }
+#endif
 
 }  // namespace cd
 }  // namespace util

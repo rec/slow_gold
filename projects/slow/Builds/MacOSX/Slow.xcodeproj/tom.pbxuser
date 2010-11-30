@@ -116,7 +116,6 @@
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
 			E22EC2E412A323D400501884 /* GetVolumes.cpp:46 */,
-			E22EC32F12A327D500501884 /* Directory.cpp:114 */,
 			E22EC33712A3287600501884 /* juce_amalgamated.cpp:276619 */,
 		);
 		codeSenseManager = E2AEE53F1295AE8C00B693AE /* Code sense */;
@@ -462,24 +461,6 @@
 		vrLen = 1444;
 		vrLoc = 241;
 	};
-	E22EC32F12A327D500501884 /* Directory.cpp:114 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
-		functionName = "Directory::computeChildren()";
-		hitCount = 1;
-		ignoreCount = 0;
-		lineNumber = 114;
-		location = SlowBurn;
-		modificationTime = 312703736.6963261;
-		originalNumberOfMultipleMatches = 1;
-		state = 0;
-	};
 	E22EC33312A327E000501884 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 9B1CFDE59805876D2187EEE3 /* GetVolumes.cpp */;
@@ -494,7 +475,7 @@
 		isa = PBXTextBookmark;
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		rLen = 0;
-		rLoc = 104;
+		rLoc = 105;
 		rType = 1;
 	};
 	E22EC33512A327E000501884 /* PBXTextBookmark */ = {
@@ -502,7 +483,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 105";
 		rLen = 0;
-		rLoc = 2650;
+		rLoc = 2692;
 		rType = 0;
 		vrLen = 1980;
 		vrLoc = 2028;
@@ -530,7 +511,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 105";
 		rLen = 0;
-		rLoc = 2650;
+		rLoc = 2692;
 		rType = 0;
 		vrLen = 1980;
 		vrLoc = 2028;
@@ -540,7 +521,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 204";
 		rLen = 0;
-		rLoc = 5447;
+		rLoc = 5485;
 		rType = 0;
 		vrLen = 1876;
 		vrLoc = 2259;
@@ -550,7 +531,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 204";
 		rLen = 0;
-		rLoc = 5447;
+		rLoc = 5485;
 		rType = 0;
 		vrLen = 1873;
 		vrLoc = 2259;
@@ -606,7 +587,7 @@
 		isa = PBXTextBookmark;
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		rLen = 0;
-		rLoc = 109;
+		rLoc = 110;
 		rType = 1;
 	};
 	E22EC35F12A32E0A00501884 /* PBXTextBookmark */ = {
@@ -614,7 +595,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 205";
 		rLen = 0;
-		rLoc = 5531;
+		rLoc = 5557;
 		rType = 0;
 		vrLen = 1953;
 		vrLoc = 2259;
@@ -624,7 +605,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 117";
 		rLen = 0;
-		rLoc = 3248;
+		rLoc = 3286;
 		rType = 0;
 		vrLen = 1954;
 		vrLoc = 2259;
@@ -649,7 +630,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 115";
 		rLen = 0;
-		rLoc = 3147;
+		rLoc = 3189;
 		rType = 0;
 		vrLen = 1989;
 		vrLoc = 2224;
@@ -702,7 +683,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 115";
 		rLen = 0;
-		rLoc = 3147;
+		rLoc = 3189;
 		rType = 0;
 		vrLen = 1954;
 		vrLoc = 2259;
@@ -790,7 +771,7 @@
 		isa = PBXTextBookmark;
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		rLen = 0;
-		rLoc = 114;
+		rLoc = 115;
 		rType = 1;
 	};
 	E22EC38B12A3787500501884 /* PBXTextBookmark */ = {
@@ -798,7 +779,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 115";
 		rLen = 0;
-		rLoc = 3147;
+		rLoc = 3189;
 		rType = 0;
 		vrLen = 1883;
 		vrLoc = 2334;

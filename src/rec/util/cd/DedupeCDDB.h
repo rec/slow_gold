@@ -9,6 +9,7 @@ namespace cd {
 
 class Album;
 class AlbumList;
+class Track;
 
 string normalize(const string& s);
 
@@ -18,8 +19,10 @@ bool similar(const Album& x, const Album& y);
 
 void addIfNotSimilar(AlbumList* albums, const Album& album);
 
+#if 0
 // Remove any albums that are similar to another album in the list.
 void dedupeAlbums(AlbumList* albums);
+#endif
 
 }  // namespace cd
 }  // namespace util

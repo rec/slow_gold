@@ -37,7 +37,7 @@ void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto() {
   GOOGLE_CHECK(file != NULL);
   Track_descriptor_ = file->message_type(0);
   static const int Track_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, title_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, artist_),
   };
   Track_reflection_ =
@@ -58,7 +58,7 @@ void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Album, genre_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Album, title_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Album, artist_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Album, tracks_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Album, track_),
   };
   Album_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -73,7 +73,7 @@ void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto() {
       sizeof(Album));
   AlbumList_descriptor_ = file->message_type(2);
   static const int AlbumList_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AlbumList, albums_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AlbumList, album_),
   };
   AlbumList_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -124,13 +124,13 @@ void protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\027rec/util/cd/Album.proto\022\013rec.util.cd\"%"
-    "\n\005Track\022\014\n\004name\030\001 \001(\t\022\016\n\006artist\030\002 \001(\t\"w\n"
-    "\005Album\022\016\n\006discid\030\001 \001(\t\022\014\n\004year\030\002 \001(\t\022\r\n\005"
-    "genre\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\022\016\n\006artist\030\005 \001"
-    "(\t\022\"\n\006tracks\030\006 \003(\0132\022.rec.util.cd.Track\"/"
-    "\n\tAlbumList\022\"\n\006albums\030\001 \003(\0132\022.rec.util.c"
-    "d.Album", 247);
+    "\n\027rec/util/cd/Album.proto\022\013rec.util.cd\"&"
+    "\n\005Track\022\r\n\005title\030\001 \001(\t\022\016\n\006artist\030\002 \001(\t\"v"
+    "\n\005Album\022\016\n\006discid\030\001 \001(\t\022\014\n\004year\030\002 \001(\t\022\r\n"
+    "\005genre\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\022\016\n\006artist\030\005 "
+    "\001(\t\022!\n\005track\030\006 \003(\0132\022.rec.util.cd.Track\"."
+    "\n\tAlbumList\022!\n\005album\030\001 \003(\0132\022.rec.util.cd"
+    ".Album", 246);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/cd/Album.proto", &protobuf_RegisterTypes);
   Track::default_instance_ = new Track();
@@ -152,10 +152,10 @@ struct StaticDescriptorInitializer_rec_2futil_2fcd_2fAlbum_2eproto {
 
 // ===================================================================
 
-const ::std::string Track::_default_name_;
+const ::std::string Track::_default_title_;
 const ::std::string Track::_default_artist_;
 #ifndef _MSC_VER
-const int Track::kNameFieldNumber;
+const int Track::kTitleFieldNumber;
 const int Track::kArtistFieldNumber;
 #endif  // !_MSC_VER
 
@@ -175,7 +175,7 @@ Track::Track(const Track& from)
 
 void Track::SharedCtor() {
   _cached_size_ = 0;
-  name_ = const_cast< ::std::string*>(&_default_name_);
+  title_ = const_cast< ::std::string*>(&_default_title_);
   artist_ = const_cast< ::std::string*>(&_default_artist_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -185,8 +185,8 @@ Track::~Track() {
 }
 
 void Track::SharedDtor() {
-  if (name_ != &_default_name_) {
-    delete name_;
+  if (title_ != &_default_title_) {
+    delete title_;
   }
   if (artist_ != &_default_artist_) {
     delete artist_;
@@ -218,8 +218,8 @@ Track* Track::New() const {
 void Track::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (name_ != &_default_name_) {
-        name_->clear();
+      if (title_ != &_default_title_) {
+        title_->clear();
       }
     }
     if (_has_bit(1)) {
@@ -238,14 +238,14 @@ bool Track::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string name = 1;
+      // optional string title = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
+                input, this->mutable_title()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
+            this->title().data(), this->title().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -289,13 +289,13 @@ bool Track::MergePartialFromCodedStream(
 
 void Track::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string name = 1;
+  // optional string title = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
+      this->title().data(), this->title().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->name(), output);
+      1, this->title(), output);
   }
   
   // optional string artist = 2;
@@ -315,14 +315,14 @@ void Track::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Track::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional string name = 1;
+  // optional string title = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
+      this->title().data(), this->title().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+        1, this->title(), target);
   }
   
   // optional string artist = 2;
@@ -346,11 +346,11 @@ int Track::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string name = 1;
-    if (has_name()) {
+    // optional string title = 1;
+    if (has_title()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
+          this->title());
     }
     
     // optional string artist = 2;
@@ -388,7 +388,7 @@ void Track::MergeFrom(const Track& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      set_name(from.name());
+      set_title(from.title());
     }
     if (from._has_bit(1)) {
       set_artist(from.artist());
@@ -416,7 +416,7 @@ bool Track::IsInitialized() const {
 
 void Track::Swap(Track* other) {
   if (other != this) {
-    std::swap(name_, other->name_);
+    std::swap(title_, other->title_);
     std::swap(artist_, other->artist_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -446,7 +446,7 @@ const int Album::kYearFieldNumber;
 const int Album::kGenreFieldNumber;
 const int Album::kTitleFieldNumber;
 const int Album::kArtistFieldNumber;
-const int Album::kTracksFieldNumber;
+const int Album::kTrackFieldNumber;
 #endif  // !_MSC_VER
 
 Album::Album()
@@ -545,7 +545,7 @@ void Album::Clear() {
       }
     }
   }
-  tracks_.Clear();
+  track_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -636,21 +636,21 @@ bool Album::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_tracks;
+        if (input->ExpectTag(50)) goto parse_track;
         break;
       }
       
-      // repeated .rec.util.cd.Track tracks = 6;
+      // repeated .rec.util.cd.Track track = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_tracks:
+         parse_track:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_tracks()));
+                input, add_track()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_tracks;
+        if (input->ExpectTag(50)) goto parse_track;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -718,10 +718,10 @@ void Album::SerializeWithCachedSizes(
       5, this->artist(), output);
   }
   
-  // repeated .rec.util.cd.Track tracks = 6;
-  for (int i = 0; i < this->tracks_size(); i++) {
+  // repeated .rec.util.cd.Track track = 6;
+  for (int i = 0; i < this->track_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->tracks(i), output);
+      6, this->track(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -782,11 +782,11 @@ void Album::SerializeWithCachedSizes(
         5, this->artist(), target);
   }
   
-  // repeated .rec.util.cd.Track tracks = 6;
-  for (int i = 0; i < this->tracks_size(); i++) {
+  // repeated .rec.util.cd.Track track = 6;
+  for (int i = 0; i < this->track_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->tracks(i), target);
+        6, this->track(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -836,12 +836,12 @@ int Album::ByteSize() const {
     }
     
   }
-  // repeated .rec.util.cd.Track tracks = 6;
-  total_size += 1 * this->tracks_size();
-  for (int i = 0; i < this->tracks_size(); i++) {
+  // repeated .rec.util.cd.Track track = 6;
+  total_size += 1 * this->track_size();
+  for (int i = 0; i < this->track_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->tracks(i));
+        this->track(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -869,7 +869,7 @@ void Album::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Album::MergeFrom(const Album& from) {
   GOOGLE_CHECK_NE(&from, this);
-  tracks_.MergeFrom(from.tracks_);
+  track_.MergeFrom(from.track_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
       set_discid(from.discid());
@@ -914,7 +914,7 @@ void Album::Swap(Album* other) {
     std::swap(genre_, other->genre_);
     std::swap(title_, other->title_);
     std::swap(artist_, other->artist_);
-    tracks_.Swap(&other->tracks_);
+    track_.Swap(&other->track_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -933,7 +933,7 @@ void Album::Swap(Album* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int AlbumList::kAlbumsFieldNumber;
+const int AlbumList::kAlbumFieldNumber;
 #endif  // !_MSC_VER
 
 AlbumList::AlbumList()
@@ -985,7 +985,7 @@ AlbumList* AlbumList::New() const {
 }
 
 void AlbumList::Clear() {
-  albums_.Clear();
+  album_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -996,17 +996,17 @@ bool AlbumList::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.util.cd.Album albums = 1;
+      // repeated .rec.util.cd.Album album = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_albums:
+         parse_album:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_albums()));
+                input, add_album()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(10)) goto parse_albums;
+        if (input->ExpectTag(10)) goto parse_album;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1029,10 +1029,10 @@ bool AlbumList::MergePartialFromCodedStream(
 
 void AlbumList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.util.cd.Album albums = 1;
-  for (int i = 0; i < this->albums_size(); i++) {
+  // repeated .rec.util.cd.Album album = 1;
+  for (int i = 0; i < this->album_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->albums(i), output);
+      1, this->album(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1043,11 +1043,11 @@ void AlbumList::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* AlbumList::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.util.cd.Album albums = 1;
-  for (int i = 0; i < this->albums_size(); i++) {
+  // repeated .rec.util.cd.Album album = 1;
+  for (int i = 0; i < this->album_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->albums(i), target);
+        1, this->album(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1060,12 +1060,12 @@ void AlbumList::SerializeWithCachedSizes(
 int AlbumList::ByteSize() const {
   int total_size = 0;
   
-  // repeated .rec.util.cd.Album albums = 1;
-  total_size += 1 * this->albums_size();
-  for (int i = 0; i < this->albums_size(); i++) {
+  // repeated .rec.util.cd.Album album = 1;
+  total_size += 1 * this->album_size();
+  for (int i = 0; i < this->album_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->albums(i));
+        this->album(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -1093,7 +1093,7 @@ void AlbumList::MergeFrom(const ::google::protobuf::Message& from) {
 
 void AlbumList::MergeFrom(const AlbumList& from) {
   GOOGLE_CHECK_NE(&from, this);
-  albums_.MergeFrom(from.albums_);
+  album_.MergeFrom(from.album_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1116,7 +1116,7 @@ bool AlbumList::IsInitialized() const {
 
 void AlbumList::Swap(AlbumList* other) {
   if (other != this) {
-    albums_.Swap(&other->albums_);
+    album_.Swap(&other->album_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

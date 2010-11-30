@@ -3,6 +3,8 @@
 #include "rec/widget/tree/Directory.h"
 
 #include "rec/util/cd/Album.h"
+#include "rec/util/cd/Album.pb.h"
+#include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/thread/RunnableThread.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/widget/tree/SortedChildren.h"
@@ -10,7 +12,7 @@
 
 using namespace juce;
 
-using namespace rec::cd;
+using namespace rec::util::cd;
 using namespace rec::thread;
 
 namespace rec {
@@ -107,14 +109,15 @@ void Directory::computeChildren() {
     std::vector<string> trackNames;
     if (reader) {
       AlbumList albums;
-      const Array<int>& off = reader->getTrackOffsets();
-      std::vector<int> trackOffsets(off.size());
-      for (int i = 0; i < off.size(); ++i)
-        trackOffsets[i] = (off[i] + 88200) / AudioCDReader::framesPerSecond;
-        // trackOffsets[i] = (off[i] + 88200); // / AudioCDReader::samplesPerFrame;
-      String err = getAlbumsFromCDDB(trackOffsets, &albums);
-      dedupeAlbums(&albums);
-      if (err.length() || !albums.size()) {
+      TrackOffsets trackOffsets = reader->getTrackOffsets();
+      for (int i = 0; i < trackOffsets.size(); ++i) {
+        trackOffsets.getReference(i) = (trackOffsets[i] + 88200) 
+          / AudioCDReader::framesPerSecond;
+      }
+
+      String err = fillAlbums(trackOffsets, &albums);
+      // dedupeAlbums(&albums);
+      if (err.length() || !albums.album_size()) {
         LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
                    << " with error " << err;
         for (int i = 0; i < reader->getNumTracks(); ++i) {
@@ -123,10 +126,10 @@ void Directory::computeChildren() {
         }
 
       } else {
-        Album& album = albums[0];
-        name = album.title_ + "/" + album.artist_;
-        for (int i = 0; i < album.tracks_.size(); ++i)
-          trackNames.push_back(album.tracks_[i].title_);
+        Album album = albums.album(0);
+        name = album.title() + "/" + album.artist();
+        for (int i = 0; i < album.track_size(); ++i)
+          trackNames.push_back(album.track(i).title());
       }
     }
 

@@ -10,14 +10,14 @@ namespace rec {
 namespace util {
 namespace cd {
 
-class Exception : public exception {
+class Exception : public std::exception {
  public:
-  explicit Exception(const String& m) : message_(m) {}
-  virtual const char* what() const { return m.toCString(); }
+  explicit Exception(const string& m) : message_(m) {}
+  virtual ~Exception() throw() {}
+  virtual const char* what() const throw() { return message_.c_str(); }
 
  private:
-  const String message_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Exception);
+  const string message_;
 };
 
 }  // namespace cd

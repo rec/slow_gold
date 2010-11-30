@@ -2,6 +2,8 @@
 
 #include "JuceLibraryCode/JuceHeader.h"
 
+using namespace juce;
+
 namespace rec {
 namespace util {
 namespace cd {
@@ -15,7 +17,7 @@ int stripLines(String* data, StringArray* lines) {
 bool stripLine(String* data, StringArray* lines) {
   const juce_wchar* begin = *data;
   for (const juce_wchar* i = begin; *i; ++i) {
-    char juce_wchar* end = NULL;
+    const juce_wchar* end = NULL;
     if (*i == '\n')
       end = i;
 

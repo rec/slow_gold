@@ -1,7 +1,7 @@
 package rec.util.cd;
 
 message Track {
-  optional string name = 1;
+  optional string title = 1;
   optional string artist = 2;
 };
 
@@ -11,9 +11,9 @@ message Album {
   optional string genre = 3;
   optional string title = 4;
   optional string artist = 5;
-  repeated Track tracks = 6;
+  repeated Track track = 6;
 };
 
 message AlbumList {
-  repeated Album albums = 1;
+  repeated Album album = 1;
 };

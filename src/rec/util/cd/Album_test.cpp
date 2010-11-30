@@ -5,6 +5,7 @@
 #include "rec/util/cd/Album.pb.h"
 
 namespace rec {
+namespace util {
 namespace cd {
 
 TEST(CD, Albums) {
@@ -41,26 +42,27 @@ TEST(CD, Albums) {
 
   static int trackCount = arraysize(trackLengths) - 1;
 
-  TrackOffsets offsets(trackLengths, trackLengths + arraysize(trackLengths));
-  AlbumList albums;
-  EXPECT_EQ(fillAlbumList(offsets, &albums), "");
-  EXPECT_EQ(albums.size(), 3);
+  TrackOffsets offsets;
+  for (int i = 0; i < arraysize(trackLengths); ++i)
+    offsets.add(trackLengths[i]);
 
-  for (int i = 0; i < albums.size(); ++i) {
-    const Album& album = albums[i];
-    EXPECT_NE(album.title_.find("Never For Ever"), -1);
-    // EXPECT_STREQ(album.title_.toCString(), "Never For Ever");
-    EXPECT_EQ(album.year_, 1980);
-    EXPECT_EQ(album.artist_, "Kate Bush");
-    EXPECT_EQ(album.tracks_.size(), trackCount);
+  AlbumList albums;
+  EXPECT_EQ(fillAlbums(offsets, &albums), "");
+  EXPECT_EQ(albums.album_size(), 1);
+
+  for (int i = 0; i < albums.album_size(); ++i) {
+    const Album& album = albums.album(i);
+    EXPECT_NE(album.title().find("Never For Ever"), -1);
+    // EXPECT_STREQ(album.title().toCString(), "Never For Ever");
+    EXPECT_EQ(album.year(), "1980");
+    EXPECT_EQ(album.artist(), "Kate Bush");
+    EXPECT_EQ(album.track_size(), trackCount);
 
     for (int j = 0; j < trackCount; ++j)
-      EXPECT_EQ(trackNames[j], album.tracks_[j].title_);
+      EXPECT_EQ(trackNames[j], album.track(j).title());
   }
-
-  dedupeAlbums(&albums);
-  EXPECT_EQ(albums.size(), 1);
 }
 
-}  // namespace rec
 }  // namespace cd
+}  // namespace util
+}  // namespace rec

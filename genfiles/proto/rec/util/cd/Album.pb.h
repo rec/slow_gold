@@ -94,15 +94,15 @@ class Track : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional string name = 1;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 1;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
+  // optional string title = 1;
+  inline bool has_title() const;
+  inline void clear_title();
+  static const int kTitleFieldNumber = 1;
+  inline const ::std::string& title() const;
+  inline void set_title(const ::std::string& value);
+  inline void set_title(const char* value);
+  inline void set_title(const char* value, size_t size);
+  inline ::std::string* mutable_title();
   
   // optional string artist = 2;
   inline bool has_artist() const;
@@ -119,8 +119,8 @@ class Track : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::std::string* name_;
-  static const ::std::string _default_name_;
+  ::std::string* title_;
+  static const ::std::string _default_title_;
   ::std::string* artist_;
   static const ::std::string _default_artist_;
   friend void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
@@ -249,17 +249,17 @@ class Album : public ::google::protobuf::Message {
   inline void set_artist(const char* value, size_t size);
   inline ::std::string* mutable_artist();
   
-  // repeated .rec.util.cd.Track tracks = 6;
-  inline int tracks_size() const;
-  inline void clear_tracks();
-  static const int kTracksFieldNumber = 6;
-  inline const ::rec::util::cd::Track& tracks(int index) const;
-  inline ::rec::util::cd::Track* mutable_tracks(int index);
-  inline ::rec::util::cd::Track* add_tracks();
+  // repeated .rec.util.cd.Track track = 6;
+  inline int track_size() const;
+  inline void clear_track();
+  static const int kTrackFieldNumber = 6;
+  inline const ::rec::util::cd::Track& track(int index) const;
+  inline ::rec::util::cd::Track* mutable_track(int index);
+  inline ::rec::util::cd::Track* add_track();
   inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >&
-      tracks() const;
+      track() const;
   inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >*
-      mutable_tracks();
+      mutable_track();
   
   // @@protoc_insertion_point(class_scope:rec.util.cd.Album)
  private:
@@ -276,7 +276,7 @@ class Album : public ::google::protobuf::Message {
   static const ::std::string _default_title_;
   ::std::string* artist_;
   static const ::std::string _default_artist_;
-  ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track > tracks_;
+  ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track > track_;
   friend void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fcd_2fAlbum_2eproto();
@@ -353,24 +353,24 @@ class AlbumList : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // repeated .rec.util.cd.Album albums = 1;
-  inline int albums_size() const;
-  inline void clear_albums();
-  static const int kAlbumsFieldNumber = 1;
-  inline const ::rec::util::cd::Album& albums(int index) const;
-  inline ::rec::util::cd::Album* mutable_albums(int index);
-  inline ::rec::util::cd::Album* add_albums();
+  // repeated .rec.util.cd.Album album = 1;
+  inline int album_size() const;
+  inline void clear_album();
+  static const int kAlbumFieldNumber = 1;
+  inline const ::rec::util::cd::Album& album(int index) const;
+  inline ::rec::util::cd::Album* mutable_album(int index);
+  inline ::rec::util::cd::Album* add_album();
   inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Album >&
-      albums() const;
+      album() const;
   inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Album >*
-      mutable_albums();
+      mutable_album();
   
   // @@protoc_insertion_point(class_scope:rec.util.cd.AlbumList)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Album > albums_;
+  ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Album > album_;
   friend void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fcd_2fAlbum_2eproto();
@@ -398,46 +398,46 @@ class AlbumList : public ::google::protobuf::Message {
 
 // Track
 
-// optional string name = 1;
-inline bool Track::has_name() const {
+// optional string title = 1;
+inline bool Track::has_title() const {
   return _has_bit(0);
 }
-inline void Track::clear_name() {
-  if (name_ != &_default_name_) {
-    name_->clear();
+inline void Track::clear_title() {
+  if (title_ != &_default_title_) {
+    title_->clear();
   }
   _clear_bit(0);
 }
-inline const ::std::string& Track::name() const {
-  return *name_;
+inline const ::std::string& Track::title() const {
+  return *title_;
 }
-inline void Track::set_name(const ::std::string& value) {
+inline void Track::set_title(const ::std::string& value) {
   _set_bit(0);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (title_ == &_default_title_) {
+    title_ = new ::std::string;
   }
-  name_->assign(value);
+  title_->assign(value);
 }
-inline void Track::set_name(const char* value) {
+inline void Track::set_title(const char* value) {
   _set_bit(0);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (title_ == &_default_title_) {
+    title_ = new ::std::string;
   }
-  name_->assign(value);
+  title_->assign(value);
 }
-inline void Track::set_name(const char* value, size_t size) {
+inline void Track::set_title(const char* value, size_t size) {
   _set_bit(0);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (title_ == &_default_title_) {
+    title_ = new ::std::string;
   }
-  name_->assign(reinterpret_cast<const char*>(value), size);
+  title_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Track::mutable_name() {
+inline ::std::string* Track::mutable_title() {
   _set_bit(0);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
+  if (title_ == &_default_title_) {
+    title_ = new ::std::string;
   }
-  return name_;
+  return title_;
 }
 
 // optional string artist = 2;
@@ -696,58 +696,58 @@ inline ::std::string* Album::mutable_artist() {
   return artist_;
 }
 
-// repeated .rec.util.cd.Track tracks = 6;
-inline int Album::tracks_size() const {
-  return tracks_.size();
+// repeated .rec.util.cd.Track track = 6;
+inline int Album::track_size() const {
+  return track_.size();
 }
-inline void Album::clear_tracks() {
-  tracks_.Clear();
+inline void Album::clear_track() {
+  track_.Clear();
 }
-inline const ::rec::util::cd::Track& Album::tracks(int index) const {
-  return tracks_.Get(index);
+inline const ::rec::util::cd::Track& Album::track(int index) const {
+  return track_.Get(index);
 }
-inline ::rec::util::cd::Track* Album::mutable_tracks(int index) {
-  return tracks_.Mutable(index);
+inline ::rec::util::cd::Track* Album::mutable_track(int index) {
+  return track_.Mutable(index);
 }
-inline ::rec::util::cd::Track* Album::add_tracks() {
-  return tracks_.Add();
+inline ::rec::util::cd::Track* Album::add_track() {
+  return track_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >&
-Album::tracks() const {
-  return tracks_;
+Album::track() const {
+  return track_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >*
-Album::mutable_tracks() {
-  return &tracks_;
+Album::mutable_track() {
+  return &track_;
 }
 
 // -------------------------------------------------------------------
 
 // AlbumList
 
-// repeated .rec.util.cd.Album albums = 1;
-inline int AlbumList::albums_size() const {
-  return albums_.size();
+// repeated .rec.util.cd.Album album = 1;
+inline int AlbumList::album_size() const {
+  return album_.size();
 }
-inline void AlbumList::clear_albums() {
-  albums_.Clear();
+inline void AlbumList::clear_album() {
+  album_.Clear();
 }
-inline const ::rec::util::cd::Album& AlbumList::albums(int index) const {
-  return albums_.Get(index);
+inline const ::rec::util::cd::Album& AlbumList::album(int index) const {
+  return album_.Get(index);
 }
-inline ::rec::util::cd::Album* AlbumList::mutable_albums(int index) {
-  return albums_.Mutable(index);
+inline ::rec::util::cd::Album* AlbumList::mutable_album(int index) {
+  return album_.Mutable(index);
 }
-inline ::rec::util::cd::Album* AlbumList::add_albums() {
-  return albums_.Add();
+inline ::rec::util::cd::Album* AlbumList::add_album() {
+  return album_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Album >&
-AlbumList::albums() const {
-  return albums_;
+AlbumList::album() const {
+  return album_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Album >*
-AlbumList::mutable_albums() {
-  return &albums_;
+AlbumList::mutable_album() {
+  return &album_;
 }
 
 

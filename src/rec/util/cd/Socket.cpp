@@ -10,9 +10,11 @@ namespace util {
 namespace cd {
 
 void writeSocket(Socket* sock, const String& s) {
-  int w = write(s.toCString(), s.size());
-  if (w != out.size())
-    throw Exception(String::formatted("Wrote %d of %d chars", w, s.size()));
+  int w = sock->write(s.toCString(), s.length());
+  if (w != s.length()) {
+    throw Exception((String("Wrote ") + String(w) + " of " + 
+                     String(s.length()) + " chars.").toCString());
+  }
 }
 
 void readSocket(Socket* sock, String* str, int timeout) {
@@ -21,18 +23,21 @@ void readSocket(Socket* sock, String* str, int timeout) {
 
   int error = sock->waitUntilReady(true, timeout);
   if (error <= 0)
-    throw Exception("Socket wait error " + String(error));
+    throw Exception(string("Socket wait error ") + String(error).toCString());
 
   int read = sock->read(buffer, BUFFER_SIZE, false);
   if (read <= 0)
-    throw Exception("Socket read error " + String(read));
+    throw Exception(string("Socket read error ") + String(read).toCString());
 
   (*str) = String(buffer, read);
 }
 
 void connect(Socket* s, const String& server, int port, int timeout) {
-  if (!s->connect(server, port, timeout))
-    throw Exception("Couldn't open socket to " + server + ":" + String(port));
+  if (!s->connect(server, port, timeout)) {
+    throw Exception("Couldn't open socket to " + 
+                    string(server.toCString()) + 
+                    ":" + string(String(port).toCString()));
+  }
 }
 
 }  // namespace cd

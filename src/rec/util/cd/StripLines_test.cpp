@@ -21,7 +21,7 @@ TEST(StripLines, Trivial) {
 TEST(StripLines, Complex) {
   String data("Hello, line 1\nline 2 \rline3\r\nline4\n\n\r\n");
   juce::StringArray lines;
-  ASSERT_EQ(stripLines(data, &lines), 6);
+  ASSERT_EQ(stripLines(&data, &lines), 6);
   EXPECT_STREQ(lines[0].toCString(), "Hello, line1");
   EXPECT_STREQ(lines[1].toCString(), "line2 ");
   EXPECT_STREQ(lines[2].toCString(), "line3");

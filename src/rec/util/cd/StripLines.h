@@ -11,8 +11,8 @@ namespace rec {
 namespace util {
 namespace cd {
 
-int stripLines(const String& data, juce::StringArray* lines);
-bool stripLine(const String& data, juce::StringArray* lines);
+int stripLines(String* data, juce::StringArray* lines);
+bool stripLine(String* data, juce::StringArray* lines);
 
 }  // namespace cd
 }  // namespace util

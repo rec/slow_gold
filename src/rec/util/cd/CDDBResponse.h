@@ -2,6 +2,9 @@
 #define __REC_UTIL_CD_CDDBRESPONSE__
 
 #include "rec/util/cd/Socket.h"
+#include "rec/util/cd/Album.h"
+
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {
