@@ -10,12 +10,12 @@
               pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0"
               pluginWantsMidiIn="0" projectType="guiapp" version="0.0.1">
   <EXPORTFORMATS>
-    <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/ __JUCE_INCLUDES=../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/libcddb/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
-            extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\libcddb\\vsprojects\\Debug libcddb.lib /LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
+    <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/ __JUCE_INCLUDES=../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
+            extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
             targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
-    <XCODE_MAC extraDefs="__JUCE_INCLUDES=../../../../../rec/src\\ ../../../../../rec/genfiles/proto\\ ../../../../../juce\\ ../../../../../rec/src/rec/data/yaml/include\\ ../../../../../build/Debug/libcddb/include\\ ../../../../../build/Debug/gflags/include\\ ../../../../../build/Debug/glog/include\\ ../../../../../build/Debug/gtest/include\\ ../../../../../build/Debug/mpg123\\ ../../../../../build/Debug/protobuf/include\\ ../.."
-               extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/libcddb/lib -lcddb -L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf"
+    <XCODE_MAC extraDefs="__JUCE_INCLUDES=../../../../../rec/src\\ ../../../../../rec/genfiles/proto\\ ../../../../../juce\\ ../../../../../rec/src/rec/data/yaml/include\\ ../../../../../build/Debug/gflags/include\\ ../../../../../build/Debug/glog/include\\ ../../../../../build/Debug/gtest/include\\ ../../../../../build/Debug/mpg123\\ ../../../../../build/Debug/protobuf/include\\ ../.."
+               extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf"
                juceFolder="../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX"
                vstFolder="~/SDKs/vstsdk2.4"/>
   </EXPORTFORMATS>
@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="0DouV0URU" name="Slow">
+  <MAINGROUP id="Gs1D9mcL5" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -481,14 +481,26 @@
         <FILE compile="0" file="../../src/rec/util/Callback.h" id="12Gchw0jv"
               name="Callback.h" resource="0"/>
         <GROUP id="VnUzHunMh" name="cd">
-          <FILE compile="1" file="../../src/rec/util/cd/DiscTracker.cpp" id="hzqXMYy4e"
-                name="DiscTracker.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/cd/DiscTracker.h" id="bIGI3zDyf"
-                name="DiscTracker.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/cd/GetAlbumsFromCDDB.cpp"
-                id="k6qIVWCeJ" name="GetAlbumsFromCDDB.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/cd/GetAlbumsFromCDDB.h"
-                id="iAyjXwYdl" name="GetAlbumsFromCDDB.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="5eZeHtVuv"
+                name="Album.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/Album.h" id="1XFoEYSPl"
+                name="Album.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/cd/CDDBResponse.cpp" id="QWTYphiWn"
+                name="CDDBResponse.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/CDDBResponse.h" id="lrvbeQnBj"
+                name="CDDBResponse.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/cd/DedupeCDDB.cpp" id="rej21mQrb"
+                name="DedupeCDDB.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/DedupeCDDB.h" id="Ugg4NDkPZ"
+                name="DedupeCDDB.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/cd/Socket.cpp" id="EIXaJaXi8"
+                name="Socket.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/Socket.h" id="QyfSwb6Fj"
+                name="Socket.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/cd/StripLines.cpp" id="bS8QssdxS"
+                name="StripLines.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/StripLines.h" id="O3gfl80Bl"
+                name="StripLines.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/util/Circular.cpp" id="5VGCJvDPO"
               name="Circular.cpp" resource="0"/>
@@ -500,6 +512,8 @@
               name="Defaulter.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/DelegateToList.h" id="ncDSV6ACA"
               name="DelegateToList.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Exception.h" id="1NBgtGGVg"
+              name="Exception.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Listener.h" id="jc2g0XHbL"
               name="Listener.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="I0DJX0jGU" name="Math.h"
@@ -678,6 +692,14 @@
           <FILE compile="0" file="../../genfiles/proto/rec/slow/State.pb.h" id="47Gi33MDJ"
                 name="State.pb.h" resource="0"/>
         </GROUP>
+        <GROUP id="qwZkyDMdz" name="util">
+          <GROUP id="xFWJUpaJ6" name="cd">
+            <FILE compile="1" file="../../genfiles/proto/rec/util/cd/Album.pb.cc"
+                  id="S2Z9K8zjy" name="Album.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/util/cd/Album.pb.h"
+                  id="YZbiu8Y2y" name="Album.pb.h" resource="0"/>
+          </GROUP>
+        </GROUP>
         <GROUP id="OZcaExzrG" name="widget">
           <FILE compile="1" file="../../genfiles/proto/rec/widget/AudioThumbnail.pb.cc"
                 id="0q7CU4NKo" name="AudioThumbnail.pb.cc" resource="0"/>
@@ -718,7 +740,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="GbQP4Uw4j" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="uXOSnpymD" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

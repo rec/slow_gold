@@ -19,11 +19,12 @@ namespace juce {
 
 class CriticalSection;
 class File;
-class String;
 class ScopedLock;
+class StreamingSocket;
+class String;
 class StringArray;
-class Thread;
 class StringPairArray;
+class Thread;
 
 }  // namespace juce
 
@@ -34,6 +35,7 @@ typedef juce::CriticalSection CriticalSection;
 typedef juce::File File;
 typedef juce::String String;
 typedef juce::ScopedLock ScopedLock;
+typedef juce::StreamingSocket Socket;
 typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
 typedef juce::Thread Thread;

@@ -1,12 +1,13 @@
 #include <gtest/gtest.h>
 
 #include "rec/base/ArraySize.h"
-#include "rec/util/cd/GetAlbumsFromCDDB.h"
+#include "rec/util/cd/Album.h"
+#include "rec/util/cd/Album.pb.h"
 
 namespace rec {
 namespace cd {
 
-TEST(CD, GetAlbumsFromCDDB) {
+TEST(CD, Albums) {
   static const int SPF = 44100 / 75;
 
   static int trackLengths[] = {
@@ -42,8 +43,7 @@ TEST(CD, GetAlbumsFromCDDB) {
 
   TrackOffsets offsets(trackLengths, trackLengths + arraysize(trackLengths));
   AlbumList albums;
-  EXPECT_EQ(getAlbumsFromCDDB(offsets, &albums), "");
-
+  EXPECT_EQ(fillAlbumList(offsets, &albums), "");
   EXPECT_EQ(albums.size(), 3);
 
   for (int i = 0; i < albums.size(); ++i) {

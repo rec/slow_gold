@@ -33,7 +33,7 @@
             BufferSecurityCheck=""
             DebugInformationFormat="4"
             AdditionalIncludeDirectories="${__JUCE_INCLUDES}"
-            PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/libcddb/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
+            PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -55,7 +55,7 @@
             ProgramDatabaseFile=".\Debug\SlowBurn.pdb"
             SubSystem="1"
             TargetMachine="1"
-            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\libcddb\\vsprojects\\${__JUCE_INCLUDES} libcddb.lib /LIBPATH:..\\..\\..\\..\\..\\gflags\\${__JUCE_INCLUDES} libgflags-${__JUCE_INCLUDES}.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\${__JUCE_INCLUDES} libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\${__JUCE_INCLUDES} libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\${__JUCE_INCLUDES} libprotobuf.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\${__JUCE_INCLUDES} libgtest.lib libgtest_main.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\${__JUCE_INCLUDES} libgflags-${__JUCE_INCLUDES}.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\${__JUCE_INCLUDES} libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\${__JUCE_INCLUDES} libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\${__JUCE_INCLUDES} libprotobuf.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\${__JUCE_INCLUDES} libgtest.lib libgtest_main.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>
@@ -90,7 +90,7 @@
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories="${__JUCE_INCLUDES}"
-            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/libcddb/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
+            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -115,7 +115,7 @@
             OptimizeReferences="2"
             EnableCOMDATFolding="2"
             TargetMachine="1"
-            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\libcddb\\vsprojects\\${__JUCE_INCLUDES} libcddb.lib /LIBPATH:..\\..\\..\\..\\..\\gflags\\${__JUCE_INCLUDES} libgflags-${__JUCE_INCLUDES}.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\${__JUCE_INCLUDES} libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\${__JUCE_INCLUDES} libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\${__JUCE_INCLUDES} libprotobuf.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\${__JUCE_INCLUDES} libgtest.lib libgtest_main.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\${__JUCE_INCLUDES} libgflags-${__JUCE_INCLUDES}.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\${__JUCE_INCLUDES} libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\${__JUCE_INCLUDES} libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\${__JUCE_INCLUDES} libprotobuf.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\${__JUCE_INCLUDES} libgtest.lib libgtest_main.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
       <Tool Name="VCALinkTool"/>
       <Tool Name="VCManifestTool"/>
       <Tool Name="VCXDCMakeTool"/>
@@ -387,12 +387,21 @@
           <File RelativePath="..\..\..\..\src\rec\util\BeginEnd.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Callback.h"/>
           <Filter Name="cd">
-            <File RelativePath="..\..\..\..\src\rec\util\cd\DiscTracker.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\DiscTracker.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\juce_AudioCDReader_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines_test.cpp"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
@@ -401,6 +410,7 @@
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList_test.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Listener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\math_test.cpp"/>
@@ -511,6 +521,12 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\Preferences.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\State.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\State.pb.h"/>
+          </Filter>
+          <Filter Name="util">
+            <Filter Name="cd">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.h"/>
+            </Filter>
           </Filter>
           <Filter Name="widget">
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\AudioThumbnail.pb.cc"/>

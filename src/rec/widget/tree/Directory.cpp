@@ -2,7 +2,7 @@
 
 #include "rec/widget/tree/Directory.h"
 
-#include "rec/util/cd/GetAlbumsFromCDDB.h"
+#include "rec/util/cd/Album.h"
 #include "rec/util/thread/RunnableThread.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/widget/tree/SortedChildren.h"
@@ -108,11 +108,13 @@ void Directory::computeChildren() {
     if (reader) {
       AlbumList albums;
       const Array<int>& off = reader->getTrackOffsets();
-      std::vector<int> trackOffsets(off.getReference(0),
-                                    (&off.getReference(off.size() - 1))[1]);
-      string err = getAlbumsFromCDDB(trackOffsets, &albums);
+      std::vector<int> trackOffsets(off.size());
+      for (int i = 0; i < off.size(); ++i)
+        trackOffsets[i] = (off[i] + 88200) / AudioCDReader::framesPerSecond;
+        // trackOffsets[i] = (off[i] + 88200); // / AudioCDReader::samplesPerFrame;
+      String err = getAlbumsFromCDDB(trackOffsets, &albums);
       dedupeAlbums(&albums);
-      if (err.empty() || !albums.size()) {
+      if (err.length() || !albums.size()) {
         LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
                    << " with error " << err;
         for (int i = 0; i < reader->getNumTracks(); ++i) {

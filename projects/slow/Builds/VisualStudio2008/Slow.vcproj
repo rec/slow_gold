@@ -376,16 +376,23 @@
           <File RelativePath="..\..\..\..\src\rec\util\BeginEnd.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Callback.h"/>
           <Filter Name="cd">
-            <File RelativePath="..\..\..\..\src\rec\util\cd\DiscTracker.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\DiscTracker.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\GetAlbumsFromCDDB.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Listener.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Method.h"/>
@@ -488,6 +495,12 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\Preferences.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\State.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\State.pb.h"/>
+          </Filter>
+          <Filter Name="util">
+            <Filter Name="cd">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.h"/>
+            </Filter>
           </Filter>
           <Filter Name="widget">
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\AudioThumbnail.pb.cc"/>
