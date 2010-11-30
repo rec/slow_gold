@@ -15,7 +15,7 @@ typedef juce::Array<int> TrackOffsets;
 
 void splitTitle(Album *album);
 void splitTracks(Album* album);
-void fillAlbum(const StringPairArray& cd, Album* album);
+void fillAlbum(const StringPairArray& cd, int tracks, Album* album);
 StringPairArray parseCDData(const StringArray& cds);
 void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums);
 String fillAlbums(const TrackOffsets& off, AlbumList* albums);

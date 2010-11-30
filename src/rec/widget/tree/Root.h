@@ -2,8 +2,7 @@
 #define __REC_WIDGET_TREE_ROOT__
 
 #include "rec/base/base.h"
-#include "rec/util/Listener.h"
-#include "rec/widget/tree/Node.pb.h"
+#include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/VolumeFile.pb.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -14,15 +13,12 @@ namespace tree {
 
 class Node;
 
-class Root : public juce::TreeView,
-             public util::Listener<const File&>::Set,
-             public juce::ChangeListener {
+class Root : public juce::TreeView, public NodeListener::Set {
  public:
   explicit Root(const NodeDesc& desc);
   ~Root();
 
   void update();
-  virtual void changeListenerCallback(void*) { update(); }
 
  private:
   void addVolume(const Volume& volume, int insertAt);
@@ -40,7 +36,6 @@ class Root : public juce::TreeView,
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
 };
-
 
 }  // namespace tree
 }  // namespace widget

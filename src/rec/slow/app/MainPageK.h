@@ -6,6 +6,7 @@
 #include "rec/slow/Preferences.h"
 #include "rec/audio/source/DoubleStretchyThread.h"
 #include "rec/widget/AudioThumbnail.h"
+#include "rec/widget/tree/NodeItem.h"
 #include "rec/util/Listener.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
@@ -17,7 +18,7 @@ namespace slow {
 
 class MainPageK : public juce::Slider::Listener,
                   public juce::ChangeListener,
-                  public util::Listener<const File&> {
+                  public widget::tree::NodeListener {
  public:
   MainPageK(juce::AudioDeviceManager* d);
   ~MainPageK() {}
@@ -35,7 +36,7 @@ class MainPageK : public juce::Slider::Listener,
   // ChangeListener
   virtual void changeListenerCallback(void* objectThatHasChanged);
 
-  virtual void operator()(const File& file) { loadFileIntoTransport(file); }
+  virtual void operator()(const widget::tree::VolumeFile& file);
 
   juce::DirectoryContentsList* directoryList() { return &directoryList_; }
   void updateCursor();

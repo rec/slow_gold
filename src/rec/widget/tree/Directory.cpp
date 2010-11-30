@@ -63,7 +63,7 @@ void Directory::requestPartition() {
   }
 }
 
-void Directory::addChildFile(int begin, int end) {
+Node* Directory::createChildFile(int begin, int end) {
   Node* node;
   bool isShard = ((end - begin) != 1);
   if (isShard) {
@@ -76,7 +76,10 @@ void Directory::addChildFile(int begin, int end) {
     bool isDir = getFile(vf).isDirectory();
     node = isDir ? new Directory(desc_, vf) : new Node(desc_, vf);
   }
+  return node;
+}
 
+void Directory::addChildFile(Node* node) {
   node->listeners()->insert(this);
   {
     MessageManagerLock l(thread_.get());
@@ -122,14 +125,24 @@ void Directory::computeChildren() {
       } else {
         Album album = albums.album(0);
         name = album.title() + " / " + album.artist();
-        for (int i = 0; i < album.track_size(); ++i)
-          trackNames.push_back(album.track(i).title());
+        for (int i = 0; i < album.track_size(); ++i) {
+          const Track& track = album.track(i);
+          trackNames.push_back(track.artist().empty() ? track.title() :
+                               track.artist() + " / " + track.title());
+        }
       }
     }
-    
+
     resetChildren();
-    ScopedLock l(lock_);
     name_ = name.c_str();
+
+    VolumeFile vf(volumeFile_);
+    string* path = vf.add_path();
+    for (int i = 0; i < trackNames.size(); ++i) {
+      *path = String(i).toCString();
+      addChildFile(new Node(desc_, vf, trackNames[i].c_str()));
+    }
+
     computingDone_ = computing_ = true;
 
   } else {

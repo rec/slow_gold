@@ -31,6 +31,7 @@ using rec::thread::WaitLoop;
 using rec::thread::makeCallback;
 
 using namespace juce;
+using namespace rec::widget::tree;
 
 namespace rec {
 namespace slow {
@@ -101,6 +102,13 @@ void MainPageK::loadRecentFile(int menuItemID) {
 
 // TODO: fix this magic constant
 static const int RATE = 44100;
+
+void MainPageK::operator()(const VolumeFile& file) {
+  if (file.volume().type() == Volume::CD)
+    LOG(ERROR) << "Couldn't open CD file " << file.DebugString();
+  else
+    loadFileIntoTransport(getFile(file));
+}
 
 void MainPageK::updateCursor() {
   int length = transportSource_.getTotalLength();

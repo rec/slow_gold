@@ -19,10 +19,11 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Node : public juce::TreeViewItem,
-             public util::Listener<const File&>::Set {
+typedef util::Listener<const VolumeFile&> NodeListener;
+
+class Node : public juce::TreeViewItem, public NodeListener::Set {
  public:
-  Node(const NodeDesc& d, const VolumeFile& vf);
+  Node(const NodeDesc& d, const VolumeFile& vf, const char* name = NULL);
   virtual bool mightContainSubItems() { return isDirectory(); }
 
   void paint(juce::Graphics& g) const;
@@ -50,7 +51,7 @@ class Node : public juce::TreeViewItem,
   Volume::Type type() const { return volumeFile_.volume().type(); }
 
  protected:
-
+  string name_;
   NodeDesc desc_;
   VolumeFile volumeFile_;
   Listeners listeners_;

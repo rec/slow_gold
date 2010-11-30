@@ -5,11 +5,13 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-Node::Node(const NodeDesc& d, const VolumeFile& vf)
+Node::Node(const NodeDesc& d, const VolumeFile& vf, const char* name)
     : desc_(d),
       volumeFile_(vf),
       icon_(gui::icon::getIcon(d.icon())),
       font_(gui::getFont(desc_.widget().font())) {
+  if (name)
+    name_ = name;
 }
 
 void Node::paint(juce::Graphics& g) const {
@@ -22,6 +24,9 @@ void Node::paint(juce::Graphics& g) const {
 }
 
 String Node::name() const {
+  if (name_.length())
+    return name_.c_str();
+
   Volume::Type type = volumeFile_.volume().type();
   if (int size = volumeFile_.path_size())
     return volumeFile_.path(size - 1).c_str();
@@ -59,7 +64,7 @@ bool Node::alreadyVisited() const {
 
 File Node::file() const { return getFile(volumeFile_); }
 
-void Node::itemClicked(const juce::MouseEvent&) { operator()(file()); }
+void Node::itemClicked(const juce::MouseEvent&) { operator()(volumeFile_); }
 
 juce::Component* Node::createItemComponent() {
   return new NodeComponent(this);

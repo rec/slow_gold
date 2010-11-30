@@ -55,8 +55,11 @@ void splitTracks(Album* album) {
   }
 }
 
-void fillAlbum(const StringPairArray& cd, Album* album) {
+void fillAlbum(const StringPairArray& cd, int tracks, Album* album) {
   const StringArray& keys = cd.getAllKeys();
+  for (int i = 0; i < tracks; ++i)
+    album->add_track();
+
   for (int i = 0; i < keys.size(); ++i) {
     const String& key = keys[i];
     const string& value = cd[key].toCString();
@@ -73,7 +76,7 @@ void fillAlbum(const StringPairArray& cd, Album* album) {
       album->set_title(value);
 
     else if (key.startsWith("TTITLE"))
-      album->add_track()->set_title(value);
+      *album->mutable_track(key.getTrailingIntValue())->mutable_title() += value;
 
     else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
       LOG(ERROR) << "Unknown key " << key.toCString() << " '" << value << "'";
@@ -104,7 +107,7 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   StringArray cds = getPossibleCDs(sock, offsets);
   for (int i = 1; i < cds.size() - 1; ++i) {
     Album album;
-    fillAlbum(parseCDData(getCDData(sock, cds[i])), &album);
+    fillAlbum(parseCDData(getCDData(sock, cds[i])), off.size() - 1, &album);
     splitTitle(&album);
     splitTracks(&album);
     addIfNotSimilar(albums, album);
@@ -125,7 +128,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
     connect(&sock, DEFAULT_SERVER, DEFAULT_PORT, DEFAULT_TIMEOUT * 1000);
     // makeCDDBRequest("", &sock);
     readCDDBResponse(&sock);
-    makeCDDBRequest("cddb hello anon localhost slowgold 1.0", &sock);
+    makeCDDBRequest("cddb hello anonymous localhost slowgold 1.0", &sock);
     makeCDDBRequest("proto 6", &sock);
     fillAlbumList(&sock, off, albums);
     return "";

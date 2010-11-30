@@ -27,10 +27,13 @@ class Directory : public Node {
   virtual void itemOpennessChanged (bool isNowOpen);
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
-  void addChildFile(int begin, int end);
+  void addChildFile(int b, int e) { addChildFile(createChildFile(b, e)); }
 
  private:
   Directory(const Directory& d, const Range& r);
+
+  Node* createChildFile(int begin, int end);
+  void addChildFile(Node* node);
 
   void resetChildren() {
     childrenDeleter_.reset(new FileArray);
