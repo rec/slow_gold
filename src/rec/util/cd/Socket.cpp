@@ -1,3 +1,5 @@
+#include <glog/logging.h>
+
 #include "rec/util/cd/Socket.h"
 #include "rec/util/Exception.h"
 
@@ -12,7 +14,7 @@ namespace cd {
 void writeSocket(Socket* sock, const String& s) {
   int w = sock->write(s.toCString(), s.length());
   if (w != s.length()) {
-    throw Exception((String("Wrote ") + String(w) + " of " + 
+    throw Exception((String("Wrote ") + String(w) + " of " +
                      String(s.length()) + " chars.").toCString());
   }
 }
@@ -29,13 +31,14 @@ void readSocket(Socket* sock, String* str, int timeout) {
   if (read <= 0)
     throw Exception(string("Socket read error ") + String(read).toCString());
 
+  LOG(ERROR) << "readsocket " << String(buffer, read).toCString();
   (*str) = String(buffer, read);
 }
 
 void connect(Socket* s, const String& server, int port, int timeout) {
   if (!s->connect(server, port, timeout)) {
-    throw Exception("Couldn't open socket to " + 
-                    string(server.toCString()) + 
+    throw Exception("Couldn't open socket to " +
+                    string(server.toCString()) +
                     ":" + string(String(port).toCString()));
   }
 }

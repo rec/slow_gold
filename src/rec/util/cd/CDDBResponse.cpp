@@ -17,7 +17,7 @@ bool oneCDDBResponse(String* data, StringArray* lines) {
   bool wasEmpty = (lines->size() == 0);
   if (stripLines(data, lines)) {
     if (wasEmpty) {
-      const String& header = data[0];
+      const String& header = (*lines)[0];
       int status = header[0];
       if (status == '5')
         throw Exception("CDDB Error: " + string(header.toCString()));
@@ -42,7 +42,7 @@ StringArray readCDDBResponse(Socket *sock) {
   String data;
   StringArray lines;
   static const int TIMEOUT = 3000;
-  while (readSocket(sock, &data, TIMEOUT), !oneCDDBResponse(&data, &lines));
+  while (readSocket(sock, &data, TIMEOUT), oneCDDBResponse(&data, &lines));
   return lines;
 }
 

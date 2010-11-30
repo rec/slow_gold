@@ -120,6 +120,8 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   try {
     Socket sock;
     connect(&sock, DEFAULT_SERVER, DEFAULT_PORT, DEFAULT_TIMEOUT * 1000);
+    // makeCDDBRequest("", &sock);
+    readCDDBResponse(&sock);
     makeCDDBRequest("cddb hello anon localhost slowgold 1.0", &sock);
     makeCDDBRequest("proto 6", &sock);
     fillAlbumList(&sock, off, albums);
