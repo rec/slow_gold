@@ -1,10 +1,12 @@
 #include <glog/logging.h>
 
 #include "rec/widget/tree/CDReader.h"
+#include "rec/audio/format/OffsetAudioFormatReader.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
+using namespace rec::audio::format;
 
 namespace rec {
 namespace widget {
@@ -24,6 +26,42 @@ AudioCDReader* getCDReader(const string& idString) {
   LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
   return NULL;
 }
+
+int getAudioTrackIndex(const AudioCDReader& reader, int audioTrack) {
+  for (int i = 0, audioTracks = 0; i < reader.getNumTracks(); ++i) {
+    if (reader.isTrackAudio(i) && audioTracks++ == audioTrack)
+      return i;
+  }
+  return -1;
+}
+
+int getAudioTrackCount(const AudioCDReader& reader) {
+  int audioTracks = 0;
+  for (int i = 0; i < reader.getNumTracks(); ++i) {
+    if (reader.isTrackAudio(i))
+        ++audioTracks;
+  }
+  return audioTracks;
+}
+
+AudioFormatReader* createCDTrackReader(const string& idString, int track) {
+  scoped_ptr<AudioCDReader> reader(getCDReader(idString));
+  if (!reader) {
+    LOG(ERROR) << "Couldn't create reader for " << idString;
+    return NULL;
+  }
+
+  int trackIndex = getAudioTrackIndex(*reader, track);
+  if (trackIndex == -1) {
+    LOG(ERROR) << "No track " << track << " in " << idString;
+    return NULL;
+  }
+
+  int begin = reader->getPositionOfTrackStart(trackIndex);
+  int end = reader->getPositionOfTrackStart(trackIndex + 1);
+  return new OffsetAudioFormatReader(reader.transfer(), begin, end - begin);
+}
+
 
 }  // namespace tree
 }  // namespace widget

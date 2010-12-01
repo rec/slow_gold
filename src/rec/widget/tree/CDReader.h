@@ -3,17 +3,14 @@
 
 #include "rec/base/base.h"
 
-namespace juce {
-  
-class AudioCDReader;
-
-}
-
 namespace rec {
 namespace widget {
 namespace tree {
 
-juce::AudioCDReader* getCDReader(const string& idString);
+AudioCDReader* getCDReader(const string& idString);
+int getAudioTrackIndex(const AudioCDReader& reader, int track);
+AudioFormatReader* createCDTrackReader(const string& idString, int track);
+int getAudioTrackCount(const AudioCDReader& reader);
 
 }  // namespace tree
 }  // namespace widget

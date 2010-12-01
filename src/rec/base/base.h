@@ -17,6 +17,8 @@ class Message;
 
 namespace juce {
 
+class AudioCDReader;
+class AudioFormatReader;
 class CriticalSection;
 class File;
 class ScopedLock;
@@ -31,6 +33,9 @@ class Thread;
 namespace rec {
 
 typedef google::protobuf::Message Message;
+
+typedef juce::AudioCDReader AudioCDReader;
+typedef juce::AudioFormatReader AudioFormatReader;
 typedef juce::CriticalSection CriticalSection;
 typedef juce::File File;
 typedef juce::String String;

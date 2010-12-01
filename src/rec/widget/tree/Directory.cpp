@@ -110,10 +110,9 @@ void Directory::computeCDChildren() {
     if (err.length() || !albums.album_size()) {
       LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
                  << " with error " << err;
-      for (int i = 0; i < reader->getNumTracks(); ++i) {
-        if (reader->isTrackAudio(i))
-          tracks.push_back(String((int) tracks.size() + 1).toCString());
-      }
+      int audioTracks = getAudioTrackCount(*reader);
+      for (int i = 0; i < audioTracks; ++i)
+        tracks.push_back(String(i).toCString());
 
     } else {
       Album album = albums.album(0);

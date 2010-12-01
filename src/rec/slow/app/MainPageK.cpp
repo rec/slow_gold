@@ -115,15 +115,6 @@ void MainPageK::updateCursor() {
   peer_->songTime->setTimeSamples(samples / scale);
 }
 
-AudioFormatReader* createReader(const VolumeFile& file) {
-  if (file.volume().type() == Volume::CD) {
-    LOG(ERROR) << "Not quite reading CDs yet";
-    return NULL;
-  } else {
-    return AudioFormatManager::getInstance()->createReaderFor(getFile(file));
-  }
-}
-
 void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
   if (AudioFormatReader* r0 = createReader(file)) {
     AudioFormatReader* r1 = createReader(file);
@@ -147,7 +138,7 @@ void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
 
     gui::addRecentFile(file);
 
-    if (file.volume().type() != widget::tree::Volume::CD) 
+    if (file.volume().type() != widget::tree::Volume::CD)
       peer_->thumbnail->setFile(getFile(file));
   } else {
     LOG(ERROR) << "Didn't understand file type for filename "

@@ -2,6 +2,11 @@
 
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/data/persist/AppDirectory.h"
+#include "rec/audio/format/OffsetAudioFormatReader.h"
+#include "rec/widget/tree/CDReader.h"
+
+using namespace juce;
+using namespace rec::audio::format;
 
 namespace rec {
 namespace widget {
@@ -86,6 +91,14 @@ bool operator==(const VolumeFile& x, const VolumeFile& y) {
   return true;
 }
 
+AudioFormatReader* createReader(const VolumeFile& file) {
+  const Volume& v = file.volume();
+  if (v.type() != Volume::CD)
+    return AudioFormatManager::getInstance()->createReaderFor(getFile(file));
+
+  int track = String(file.path(0).c_str()).getIntValue();
+  return createCDTrackReader(v.name(), track);
+}
 
 }  // namespace tree
 }  // namespace widget

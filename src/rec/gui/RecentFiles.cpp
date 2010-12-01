@@ -2,7 +2,7 @@
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/Preferences.h"
-#include "rec/widget/tree/Volumefile.h"
+#include "rec/widget/tree/VolumeFile.h"
 
 using rec::widget::tree::VolumeFile;
 
@@ -38,7 +38,7 @@ void addRecentFile(const VolumeFile& f) {
 
   for (int i = 0; !found && i < recent->file_size(); ++i) {
     const RecentFile& file = recent->file(i);
-    if (file.file() == f) {
+    if (file.file() != f) {
       slot = i;
       found = true;
 

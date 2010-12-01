@@ -4,7 +4,6 @@
 #include <exception>
 
 #include "rec/base/base.h"
-#include "rec/base/scoped_ptr.h"
 
 namespace rec {
 namespace util {
