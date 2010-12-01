@@ -10,7 +10,7 @@
               pluginRTASCategory="" pluginSilenceInIsSilenceOut="0" pluginTailLength="0"
               pluginWantsMidiIn="0" projectType="guiapp" version="0.0.1">
   <EXPORTFORMATS>
-    <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/ __JUCE_INCLUDES=../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
+    <VS2008 extraDefs="GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/ __JUCE_INCLUDES=../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../.."
             extraLinkerFlags="/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
             targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="UxnigdPP1" name="Slow">
+  <MAINGROUP id="U52AP4Sbz" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -740,7 +740,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="E4GzA4oYr" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="cICL3qnuq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

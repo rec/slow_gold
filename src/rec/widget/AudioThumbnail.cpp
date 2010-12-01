@@ -38,7 +38,7 @@ void AudioThumbnailWidget::setZoomFactor(double amount) {
 }
 
 void AudioThumbnailWidget::mouseWheelMove(const MouseEvent& e,
-                                             float incX, float incY) {
+                                          float incX, float incY) {
   return;
   // no idea what this does yet.  :-D
   if (thumbnail_.getTotalLength() > 0) {

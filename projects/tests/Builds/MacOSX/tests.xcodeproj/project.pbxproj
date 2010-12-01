@@ -640,20 +640,6 @@
 			name = rec;
 			sourceTree = "<group>";
 		};
-		304FCCE09D56ECBBA825C8ED /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		401AE059F2A868FC7EB8632E /* icon */ = {
 			isa = PBXGroup;
 			children = (
@@ -1038,6 +1024,20 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		C90097AEBBD16544F0BEEE32 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		CB58FEE23098914760EE6131 /* app */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,7 +1300,7 @@
 				French,
 				German,
 			);
-			mainGroup = 304FCCE09D56ECBBA825C8ED /* Source */;
+			mainGroup = C90097AEBBD16544F0BEEE32 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
