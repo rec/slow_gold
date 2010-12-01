@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="U52AP4Sbz" name="Slow">
+  <MAINGROUP id="wLtdqh0iq" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -575,6 +575,10 @@
                 name="Time.h" resource="0"/>
         </GROUP>
         <GROUP id="m5OH8IAxk" name="tree">
+          <FILE compile="1" file="../../src/rec/widget/tree/CDReader.cpp" id="vE56YikDD"
+                name="CDReader.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/tree/CDReader.h" id="l0W62XJXA"
+                name="CDReader.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/Convertors.cpp" id="7XizWqpu1"
                 name="Convertors.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Convertors.h" id="38nTxyNT6"
@@ -740,7 +744,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="cICL3qnuq" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="K7RzkdgiF" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

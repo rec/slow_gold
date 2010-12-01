@@ -5,10 +5,11 @@
 #include "rec/util/cd/Album.h"
 #include "rec/util/cd/Album.pb.h"
 #include "rec/util/cd/DedupeCDDB.h"
-#include "rec/util/thread/RunnableThread.h"
 #include "rec/util/thread/Callback.h"
-#include "rec/widget/tree/SortedChildren.h"
+#include "rec/util/thread/RunnableThread.h"
+#include "rec/widget/tree/CDReader.h"
 #include "rec/widget/tree/PartitionChildren.h"
+#include "rec/widget/tree/SortedChildren.h"
 
 using namespace juce;
 
@@ -90,75 +91,69 @@ void Directory::addChildFile(Node* node) {
     node->requestPartition();
 }
 
-static AudioCDReader* getReader(const string& idString) {
-  int id = String(idString.c_str()).getHexValue32();
-  StringArray names = AudioCDReader::getAvailableCDNames();
-  int size = names.size();
-  for (int i = 0; i < size; ++i) {
-    scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
-    if (!reader)
-      LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
-    else if (reader->getCDDBId() == id)
-      return reader.transfer();
-  }
-  LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
-  return NULL;
+void Directory::computeChildren() {
+  if (type() == Volume::CD)
+    computeCDChildren();
+  else
+    computeFileChildren();
 }
 
-void Directory::computeChildren() {
-  if (type() == Volume::CD) {
-    scoped_ptr<AudioCDReader> reader(getReader(volumeFile_.volume().name()));
-    string name = "<Unknown>";
-    std::vector<string> tracks;
-    if (reader) {
-      AlbumList albums;
-      TrackOffsets trackOffsets = reader->getTrackOffsets();
-      String err = fillAlbums(trackOffsets, &albums);
-      if (err.length() || !albums.album_size()) {
-        LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
-                   << " with error " << err;
-        for (int i = 0; i < reader->getNumTracks(); ++i) {
-          if (reader->isTrackAudio(i))
-            tracks.push_back(String((int) tracks.size() + 1).toCString());
-        }
+void Directory::computeCDChildren() {
+  string name = "<Unknown>";
+  std::vector<string> tracks;
 
-      } else {
-        Album album = albums.album(0);
-        name = album.title() + " / " + album.artist();
-        for (int i = 0; i < album.track_size(); ++i) {
-          const Track& track = album.track(i);
-          tracks.push_back(track.artist().empty() ? track.title() :
-                           track.artist() + " / " + track.title());
-        }
+  scoped_ptr<AudioCDReader> reader(getCDReader(volumeFile_.volume().name()));
+  if (reader) {
+    AlbumList albums;
+    TrackOffsets trackOffsets = reader->getTrackOffsets();
+    String err = fillAlbums(trackOffsets, &albums);
+    if (err.length() || !albums.album_size()) {
+      LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
+                 << " with error " << err;
+      for (int i = 0; i < reader->getNumTracks(); ++i) {
+        if (reader->isTrackAudio(i))
+          tracks.push_back(String((int) tracks.size() + 1).toCString());
+      }
+
+    } else {
+      Album album = albums.album(0);
+      name = album.title() + " / " + album.artist();
+      for (int i = 0; i < album.track_size(); ++i) {
+        const Track& track = album.track(i);
+        tracks.push_back(track.artist().empty() ? track.title() :
+                         track.artist() + " / " + track.title());
       }
     }
-
-    resetChildren();
-    name_ = name.c_str();
-
-    VolumeFile vf(volumeFile_);
-    string* path = vf.add_path();
-    for (int i = 0; i < tracks.size(); ++i) {
-      *path = String(i).toCString();
-      addChildFile(new Node(desc_, vf, tracks[i].c_str()));
-    }
-
-    computingDone_ = computing_ = true;
-
   } else {
-    File f = getFile(volumeFile_);
-    if (!f.isDirectory()) {
-      LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
-      return;
-    }
-
-    resetChildren();
-    sortedChildren(f, children_);
-
-    range_.begin_ = 0;
-    range_.end_ = children_->size();
-    partition();
+    LOG(ERROR) << "Tried to computeCDChildren but no reader";
   }
+
+  resetChildren();
+  name_ = name.c_str();
+
+  VolumeFile vf(volumeFile_);
+  string* path = vf.add_path();
+  for (int i = 0; i < tracks.size(); ++i) {
+    *path = String(i).toCString();
+    addChildFile(new Node(desc_, vf, tracks[i].c_str()));
+  }
+
+  computingDone_ = computing_ = true;
+}
+
+void Directory::computeFileChildren() {
+  File f = getFile(volumeFile_);
+  if (!f.isDirectory()) {
+    LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
+    return;
+  }
+
+  resetChildren();
+  sortedChildren(f, children_);
+
+  range_.begin_ = 0;
+  range_.end_ = children_->size();
+  partition();
 }
 
 void Directory::partition() {

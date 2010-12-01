@@ -34,6 +34,8 @@ class Directory : public Node {
 
   Node* createChildFile(int begin, int end);
   void addChildFile(Node* node);
+  void computeCDChildren();
+  void computeFileChildren();
 
   void resetChildren() {
     childrenDeleter_.reset(new FileArray);
