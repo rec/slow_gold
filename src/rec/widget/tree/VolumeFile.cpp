@@ -71,6 +71,22 @@ bool compareVolumes(const Volume& x, const Volume& y) {
   return x.type() < y.type() || (x.type() == y.type() && x.name() < y.name());
 }
 
+bool operator==(const Volume& x, const Volume& y) {
+  return !(compareVolumes(x, y) || compareVolumes(y, x));
+}
+
+bool operator==(const VolumeFile& x, const VolumeFile& y) {
+  if (!(x.volume() == y.volume() && x.path_size() == y.path_size()))
+    return false;
+
+  for (int i = 0; i < x.path_size(); ++i) {
+    if (x.path(i) != y.path(i))
+      return false;
+  }
+  return true;
+}
+
+
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec

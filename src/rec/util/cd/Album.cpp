@@ -43,7 +43,7 @@ void splitTracks(Album* album) {
 void fillAlbum(const StringArray& cds, int tracks, Album* album) {
   while (album->track_size() < tracks)
     album->add_track();
-  
+
   for (int i = 1; i < cds.size() - 1; ++i) {
     const String& line = cds[i];
     if (line.length() && line[0] != '#') {
@@ -72,10 +72,8 @@ void addAlbumValue(const String& key, const string& value, Album* album) {
   else if (key == "DTITLE")
     *album->mutable_title() += value;
 
-  else if (key.startsWith("TTITLE")) {
-    LOG(INFO) << "Title! " << key << " " << value;
-    (*album->mutable_track(key.getTrailingIntValue())->mutable_title()) += value;
-  }
+  else if (key.startsWith("TTITLE"))
+    *album->mutable_track(key.getTrailingIntValue())->mutable_title() += value;
 
   else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
     LOG(ERROR) << "Unknown key " << key.toCString() << " '" << value << "'";
@@ -106,7 +104,6 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   try {
     Socket sock;
     connect(&sock, DEFAULT_SERVER, DEFAULT_PORT, DEFAULT_TIMEOUT * 1000);
-    // makeCDDBRequest("", &sock);
     readCDDBResponse(&sock);
     makeCDDBRequest("cddb hello anonymous localhost slowgold 1.0", &sock);
     makeCDDBRequest("proto 6", &sock);

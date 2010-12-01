@@ -2,7 +2,9 @@
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/Preferences.h"
-#include <algorithm>
+#include "rec/widget/tree/Volumefile.h"
+
+using rec::widget::tree::VolumeFile;
 
 namespace rec {
 namespace gui {
@@ -25,7 +27,7 @@ RecentFiles getSortedRecentFiles() {
   return prefs.recent_files();
 }
 
-void addRecentFile(const string& filename) {
+void addRecentFile(const VolumeFile& f) {
   int64 timestamp = juce::Time::currentTimeMillis();
   slow::proto::Preferences pref = slow::getPreferences();
   RecentFiles* recent = pref.mutable_recent_files();
@@ -35,13 +37,13 @@ void addRecentFile(const string& filename) {
   bool found = false;
 
   for (int i = 0; !found && i < recent->file_size(); ++i) {
-    RecentFile* file = recent->mutable_file(i);
-    if (file->name() == filename) {
+    const RecentFile& file = recent->file(i);
+    if (file.file() == f) {
       slot = i;
       found = true;
 
-    } else if (file->timestamp() < least) {
-      least = file->timestamp();
+    } else if (file.timestamp() < least) {
+      least = file.timestamp();
       slot = i;
     }
   }
@@ -49,7 +51,7 @@ void addRecentFile(const string& filename) {
 
   RecentFile r;
   r.set_timestamp(timestamp);
-  r.set_name(filename);
+  r.mutable_file()->CopyFrom(f);
 
   rec::proto::pmessage msg(r);
 

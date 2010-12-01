@@ -42,16 +42,28 @@ bool through(const From& from, To* to, bool readable) {
 
 // Copy using googlebase::proto functions.
 bool proto(const Message& f, string* t, bool readable) {
-  return readable ? TextFormat::PrintToString(f, t) : f.SerializeToString(t);
+  try {
+    return readable ? TextFormat::PrintToString(f, t) : f.SerializeToString(t);
+  } catch (...) {
+    return false;
+  }
 }
 
 bool proto(const string& f, Message* t, bool readable) {
-  return readable ? TextFormat::ParseFromString(f, t) : t->ParseFromString(f);
+  try {
+    return readable ? TextFormat::ParseFromString(f, t) : t->ParseFromString(f);
+  } catch (...) {
+    return false;
+  }
 }
 
 bool proto(const Message& f, Message* t, bool readable) {
-  t->CopyFrom(f);
-  return true;
+  try {
+    t->CopyFrom(f);
+    return true;
+  } catch (...) {
+    return false;
+  }
 }
 
 bool file(const File &f, File *t, bool readable) {
@@ -59,54 +71,62 @@ bool file(const File &f, File *t, bool readable) {
 }
 
 bool file(const File &file, string *s, bool readable) {
-  scoped_ptr<FileInputStream> in(file.createInputStream());
-  if (!in) {
-    LOG(WARNING) << "Couldn't read file " << file.getFullPathName();
+  try {
+    scoped_ptr<FileInputStream> in(file.createInputStream());
+    if (!in) {
+      LOG(WARNING) << "Couldn't read file " << file.getFullPathName();
+      return false;
+    }
+    int64 length = in->getTotalLength();
+    s->resize(length);
+    int bytesRead = in->read((void*)s->data(), length);
+    LOG_IF(ERROR, bytesRead < 0) << "negative bytes read.";
+    s->resize(bytesRead);
+
+    return true;
+  } catch (...) {
     return false;
   }
-  int64 length = in->getTotalLength();
-  s->resize(length);
-  int bytesRead = in->read((void*)s->data(), length);
-  LOG_IF(FATAL, bytesRead < 0) << "negative bytes read.";
-  s->resize(bytesRead);
-
-  return true;
 }
 
 bool file(const string &from, File *to, bool readable) {
-  if (!to->getParentDirectory().createDirectory()) {
-    LOG(FATAL) << "Couldn't create directory for "
-                << to->getFullPathName().toCString();
-    return false;
-  }
-
-  bool rename = to->exists();
-  File backupFile;
-  if (rename) {
-    backupFile = File(to->getFullPathName() + ".bak");
-    if (!to->moveFileTo(backupFile)) {
-      LOG(FATAL) << "Couldn't rename to backup file: "
-                  << backupFile.getFullPathName();
+  try {
+    if (!to->getParentDirectory().createDirectory()) {
+      LOG(ERROR) << "Couldn't create directory for "
+                 << to->getFullPathName().toCString();
+      return false;
     }
-  }
 
-  scoped_ptr<FileOutputStream> out(to->createOutputStream());
-  if (!out) {
-    LOG(FATAL) << "Couldn't create OutputStream for " << to->getFullPathName();
+    bool rename = to->exists();
+    File backupFile;
+    if (rename) {
+      backupFile = File(to->getFullPathName() + ".bak");
+      if (!to->moveFileTo(backupFile)) {
+        LOG(ERROR) << "Couldn't rename to backup file: "
+                   << backupFile.getFullPathName();
+      }
+    }
+
+    scoped_ptr<FileOutputStream> out(to->createOutputStream());
+    if (!out) {
+      LOG(ERROR) << "Couldn't make OutputStream for " << to->getFullPathName();
+      return false;
+    }
+
+    if (!out->write(from.data(), from.size())) {
+      LOG(ERROR) << "Couldn't write file " << to->getFullPathName();
+      return false;
+    }
+
+    if (rename && !backupFile.deleteFile()) {
+      LOG(ERROR) << "Couldn't delete backup " << to->getFullPathName();
+      return false;
+    }
+
+    return true;
+  } catch (...) {
     return false;
   }
-
-  if (!out->write(from.data(), from.size())) {
-    LOG(FATAL) << "Couldn't write file " << to->getFullPathName();
-    return false;
-  }
-
-  if (rename && !backupFile.deleteFile()) {
-    LOG(FATAL) << "Couldn't delete backup " << to->getFullPathName();
-    return false;
-  }
-
-  return true;
 }
 
 }  // namespace

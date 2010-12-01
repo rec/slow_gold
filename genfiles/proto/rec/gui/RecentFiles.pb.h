@@ -23,6 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
+#include "rec/widget/tree/VolumeFile.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -99,15 +100,12 @@ class RecentFile : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 timestamp() const;
   inline void set_timestamp(::google::protobuf::int64 value);
   
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
+  // optional .rec.widget.tree.VolumeFile file = 2;
+  inline bool has_file() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 2;
+  inline const ::rec::widget::tree::VolumeFile& file() const;
+  inline ::rec::widget::tree::VolumeFile* mutable_file();
   
   // @@protoc_insertion_point(class_scope:rec.gui.RecentFile)
  private:
@@ -115,8 +113,7 @@ class RecentFile : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::google::protobuf::int64 timestamp_;
-  ::std::string* name_;
-  static const ::std::string _default_name_;
+  ::rec::widget::tree::VolumeFile* file_;
   friend void  protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fRecentFiles_2eproto();
@@ -270,46 +267,21 @@ inline void RecentFile::set_timestamp(::google::protobuf::int64 value) {
   timestamp_ = value;
 }
 
-// optional string name = 2;
-inline bool RecentFile::has_name() const {
+// optional .rec.widget.tree.VolumeFile file = 2;
+inline bool RecentFile::has_file() const {
   return _has_bit(1);
 }
-inline void RecentFile::clear_name() {
-  if (name_ != &_default_name_) {
-    name_->clear();
-  }
+inline void RecentFile::clear_file() {
+  if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
   _clear_bit(1);
 }
-inline const ::std::string& RecentFile::name() const {
-  return *name_;
+inline const ::rec::widget::tree::VolumeFile& RecentFile::file() const {
+  return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline void RecentFile::set_name(const ::std::string& value) {
+inline ::rec::widget::tree::VolumeFile* RecentFile::mutable_file() {
   _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void RecentFile::set_name(const char* value) {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void RecentFile::set_name(const char* value, size_t size) {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* RecentFile::mutable_name() {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  return name_;
+  if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
+  return file_;
 }
 
 // -------------------------------------------------------------------

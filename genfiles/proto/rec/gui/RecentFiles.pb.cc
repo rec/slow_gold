@@ -34,7 +34,7 @@ void protobuf_AssignDesc_rec_2fgui_2fRecentFiles_2eproto() {
   RecentFile_descriptor_ = file->message_type(0);
   static const int RecentFile_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, timestamp_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RecentFile, file_),
   };
   RecentFile_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -97,12 +97,15 @@ void protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::rec::widget::tree::protobuf_AddDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\031rec/gui/RecentFiles.proto\022\007rec.gui\"-\n\n"
-    "RecentFile\022\021\n\ttimestamp\030\001 \001(\003\022\014\n\004name\030\002 "
-    "\001(\t\"i\n\013RecentFiles\022!\n\004file\030\003 \003(\0132\023.rec.g"
-    "ui.RecentFile\022\025\n\tmax_files\030\004 \001(\r:\00216\022 \n\022"
-    "reload_most_recent\030\005 \001(\010:\004true", 190);
+    "\n\031rec/gui/RecentFiles.proto\022\007rec.gui\032 re"
+    "c/widget/tree/VolumeFile.proto\"J\n\nRecent"
+    "File\022\021\n\ttimestamp\030\001 \001(\003\022)\n\004file\030\002 \001(\0132\033."
+    "rec.widget.tree.VolumeFile\"i\n\013RecentFile"
+    "s\022!\n\004file\030\003 \003(\0132\023.rec.gui.RecentFile\022\025\n\t"
+    "max_files\030\004 \001(\r:\00216\022 \n\022reload_most_recen"
+    "t\030\005 \001(\010:\004true", 253);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/RecentFiles.proto", &protobuf_RegisterTypes);
   RecentFile::default_instance_ = new RecentFile();
@@ -122,10 +125,9 @@ struct StaticDescriptorInitializer_rec_2fgui_2fRecentFiles_2eproto {
 
 // ===================================================================
 
-const ::std::string RecentFile::_default_name_;
 #ifndef _MSC_VER
 const int RecentFile::kTimestampFieldNumber;
-const int RecentFile::kNameFieldNumber;
+const int RecentFile::kFileFieldNumber;
 #endif  // !_MSC_VER
 
 RecentFile::RecentFile()
@@ -134,6 +136,7 @@ RecentFile::RecentFile()
 }
 
 void RecentFile::InitAsDefaultInstance() {
+  file_ = const_cast< ::rec::widget::tree::VolumeFile*>(&::rec::widget::tree::VolumeFile::default_instance());
 }
 
 RecentFile::RecentFile(const RecentFile& from)
@@ -145,7 +148,7 @@ RecentFile::RecentFile(const RecentFile& from)
 void RecentFile::SharedCtor() {
   _cached_size_ = 0;
   timestamp_ = GOOGLE_LONGLONG(0);
-  name_ = const_cast< ::std::string*>(&_default_name_);
+  file_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -154,10 +157,8 @@ RecentFile::~RecentFile() {
 }
 
 void RecentFile::SharedDtor() {
-  if (name_ != &_default_name_) {
-    delete name_;
-  }
   if (this != default_instance_) {
+    delete file_;
   }
 }
 
@@ -185,9 +186,7 @@ void RecentFile::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     timestamp_ = GOOGLE_LONGLONG(0);
     if (_has_bit(1)) {
-      if (name_ != &_default_name_) {
-        name_->clear();
-      }
+      if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -211,20 +210,17 @@ bool RecentFile::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_name;
+        if (input->ExpectTag(18)) goto parse_file;
         break;
       }
       
-      // optional string name = 2;
+      // optional .rec.widget.tree.VolumeFile file = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
+         parse_file:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_file()));
         } else {
           goto handle_uninterpreted;
         }
@@ -255,13 +251,10 @@ void RecentFile::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->timestamp(), output);
   }
   
-  // optional string name = 2;
+  // optional .rec.widget.tree.VolumeFile file = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->file(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -277,14 +270,11 @@ void RecentFile::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->timestamp(), target);
   }
   
-  // optional string name = 2;
+  // optional .rec.widget.tree.VolumeFile file = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->file(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -305,11 +295,11 @@ int RecentFile::ByteSize() const {
           this->timestamp());
     }
     
-    // optional string name = 2;
-    if (has_name()) {
+    // optional .rec.widget.tree.VolumeFile file = 2;
+    if (has_file()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->file());
     }
     
   }
@@ -343,7 +333,7 @@ void RecentFile::MergeFrom(const RecentFile& from) {
       set_timestamp(from.timestamp());
     }
     if (from._has_bit(1)) {
-      set_name(from.name());
+      mutable_file()->::rec::widget::tree::VolumeFile::MergeFrom(from.file());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -369,7 +359,7 @@ bool RecentFile::IsInitialized() const {
 void RecentFile::Swap(RecentFile* other) {
   if (other != this) {
     std::swap(timestamp_, other->timestamp_);
-    std::swap(name_, other->name_);
+    std::swap(file_, other->file_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -23,15 +23,9 @@ using rec::widget::AudioThumbnailDesc;
 
 using rec::persist::copy;
 
-using rec::thread::Callback;
-using rec::thread::LockedMessage;
-using rec::thread::Runnable;
-using rec::thread::RunnableThread;
-using rec::thread::WaitLoop;
-using rec::thread::makeCallback;
-
 using namespace juce;
 using namespace rec::widget::tree;
+using namespace rec::thread;
 
 namespace rec {
 namespace slow {
@@ -97,17 +91,14 @@ void MainPageK::destruct() {
 
 void MainPageK::loadRecentFile(int menuItemID) {
   gui::RecentFiles recent = gui::getSortedRecentFiles();
-  loadFileIntoTransport(File(recent.file(menuItemID - 1).name().c_str()));
+  loadFileIntoTransport(recent.file(menuItemID - 1).file());
 }
 
 // TODO: fix this magic constant
 static const int RATE = 44100;
 
 void MainPageK::operator()(const VolumeFile& file) {
-  if (file.volume().type() == Volume::CD)
-    LOG(ERROR) << "Couldn't open CD file " << file.DebugString();
-  else
-    loadFileIntoTransport(getFile(file));
+  loadFileIntoTransport(file);
 }
 
 void MainPageK::updateCursor() {
@@ -124,10 +115,18 @@ void MainPageK::updateCursor() {
   peer_->songTime->setTimeSamples(samples / scale);
 }
 
-void MainPageK::loadFileIntoTransport(const File& file) {
-  AudioFormatManager* afm = AudioFormatManager::getInstance();
-  if (AudioFormatReader* r0 = afm->createReaderFor(file)) {
-    AudioFormatReader* r1 = afm->createReaderFor(file);
+AudioFormatReader* createReader(const VolumeFile& file) {
+  if (file.volume().type() == Volume::CD) {
+    LOG(ERROR) << "Not quite reading CDs yet";
+    return NULL;
+  } else {
+    return AudioFormatManager::getInstance()->createReaderFor(getFile(file));
+  }
+}
+
+void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
+  if (AudioFormatReader* r0 = createReader(file)) {
+    AudioFormatReader* r1 = createReader(file);
     DCHECK(r1);
 
     transportSource_.stop();
@@ -146,12 +145,13 @@ void MainPageK::loadFileIntoTransport(const File& file) {
     loopingButtonClicked();
     transportSource_.setSource(stretchy_.get());
 
-    gui::addRecentFile(file.getFullPathName().toCString());
+    gui::addRecentFile(file);
 
-    peer_->thumbnail->setFile(file);
+    if (file.volume().type() != widget::tree::Volume::CD) 
+      peer_->thumbnail->setFile(getFile(file));
   } else {
     LOG(ERROR) << "Didn't understand file type for filename "
-               << file.getFullPathName();
+               << file.DebugString();
   }
 }
 

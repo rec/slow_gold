@@ -1,8 +1,10 @@
 package rec.gui;
 
+import "rec/widget/tree/VolumeFile.proto";
+
 message RecentFile {
   optional int64 timestamp = 1;
-  optional string name = 2;
+  optional widget.tree.VolumeFile file = 2;
 };
 
 message RecentFiles {
