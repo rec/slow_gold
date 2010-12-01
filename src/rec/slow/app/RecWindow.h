@@ -21,7 +21,9 @@ class RecWindow  : public juce::DocumentWindow {
   // the command manager object used to dispatch command events
   ApplicationCommandManager commandManager;
 
+#if 0
   Component* taskbarIcon;
+#endif
 };
 
 }  // namespace rec

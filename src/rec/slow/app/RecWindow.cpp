@@ -42,7 +42,9 @@ RecWindow::RecWindow()
 
 RecWindow::~RecWindow() {
 #if JUCE_WIN32 || JUCE_LINUX
+#if 0
   deleteAndZero (taskbarIcon);
+#endif
 #endif
 
   // because we've set the content comp to be used as our menu bar model, we
