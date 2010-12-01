@@ -19,7 +19,7 @@ void writeSocket(Socket* sock, const String& s) {
   }
 }
 
-void readSocket(Socket* sock, String* str, int timeout) {
+String readSocket(Socket* sock, int timeout) {
   static const int BUFFER_SIZE = 4096;
   char buffer[BUFFER_SIZE];
 
@@ -31,8 +31,7 @@ void readSocket(Socket* sock, String* str, int timeout) {
   if (read <= 0)
     throw Exception(string("Socket read error ") + String(read).toCString());
 
-  LOG(ERROR) << "read: " << String(buffer, read).toCString();
-  (*str) = String(buffer, read);
+  return String(buffer, read);
 }
 
 void connect(Socket* s, const String& server, int port, int timeout) {

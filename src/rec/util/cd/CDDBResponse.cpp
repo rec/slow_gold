@@ -42,14 +42,15 @@ StringArray readCDDBResponse(Socket *sock) {
   String data;
   StringArray lines;
   static const int TIMEOUT = 3000;
-  while (readSocket(sock, &data, TIMEOUT), oneCDDBResponse(&data, &lines));
-  for (int i = 0; i < lines.size(); ++i)
-    LOG(ERROR) << i << " -> " << lines[i].toCString();
+
+  do {
+    data += readSocket(sock, TIMEOUT);
+  } while (oneCDDBResponse(&data, &lines));
+
   return lines;
 }
 
 StringArray makeCDDBRequest(const String& request, Socket *s) {
-  LOG(ERROR) << " -> " << request;
   return (writeSocket(s, request + "\n"), readCDDBResponse(s));
 }
 

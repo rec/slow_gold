@@ -40,36 +40,10 @@ void splitTracks(Album* album) {
   }
 }
 
-void fillAlbum(const StringPairArray& cd, int tracks, Album* album) {
-  const StringArray& keys = cd.getAllKeys();
-  for (int i = 0; i < tracks; ++i)
+void fillAlbum(const StringArray& cds, int tracks, Album* album) {
+  while (album->track_size() < tracks)
     album->add_track();
-
-  for (int i = 0; i < keys.size(); ++i) {
-    const String& key = keys[i];
-    const string& value = cd[key].toCString();
-    if (key == "DISCID")
-      album->set_discid(value);
-
-    else if (key == "DYEAR")
-      album->set_year(value);
-
-    else if (key == "DGENRE")
-      album->set_genre(value);
-
-    else if (key == "DTITLE")
-      album->set_title(value);
-
-    else if (key.startsWith("TTITLE"))
-      (*album->mutable_track(key.getTrailingIntValue())->mutable_title()) += value;
-
-    else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
-      LOG(ERROR) << "Unknown key " << key.toCString() << " '" << value << "'";
-  }
-}
-
-StringPairArray parseCDData(const StringArray& cds) {
-  StringPairArray result;
+  
   for (int i = 1; i < cds.size() - 1; ++i) {
     const String& line = cds[i];
     if (line.length() && line[0] != '#') {
@@ -79,20 +53,41 @@ StringPairArray parseCDData(const StringArray& cds) {
       } else {
         String value = line.substring(loc + 1);
         if (value.length() || !value.startsWith("EXT"))
-          result.set(line.substring(0, loc), value);
+          addAlbumValue(line.substring(0, loc), value.toCString(), album);
       }
     }
   }
-
-  return result;
 }
+
+void addAlbumValue(const String& key, const string& value, Album* album) {
+  if (key == "DISCID")
+    album->set_discid(value);
+
+  else if (key == "DYEAR")
+    album->set_year(value);
+
+  else if (key == "DGENRE")
+    album->set_genre(value);
+
+  else if (key == "DTITLE")
+    *album->mutable_title() += value;
+
+  else if (key.startsWith("TTITLE")) {
+    LOG(INFO) << "Title! " << key << " " << value;
+    (*album->mutable_track(key.getTrailingIntValue())->mutable_title()) += value;
+  }
+
+  else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
+    LOG(ERROR) << "Unknown key " << key.toCString() << " '" << value << "'";
+}
+
 
 void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   const String offsets = trackOffsetString(off);
   StringArray cds = getPossibleCDs(sock, offsets);
   for (int i = 1; i < cds.size() - 1; ++i) {
     Album album;
-    fillAlbum(parseCDData(getCDData(sock, cds[i])), off.size() - 1, &album);
+    fillAlbum(getCDData(sock, cds[i]), off.size() - 1, &album);
     splitTitle(&album);
     splitTracks(&album);
     addIfNotSimilar(albums, album);
