@@ -91,7 +91,7 @@ void Directory::addChildFile(Node* node) {
 }
 
 static AudioCDReader* getReader(const string& idString) {
-  int id = String(idString.c_str()).getIntValue();
+  int id = String(idString.c_str()).getHexValue32();
   StringArray names = AudioCDReader::getAvailableCDNames();
   int size = names.size();
   for (int i = 0; i < size; ++i) {
@@ -109,7 +109,7 @@ void Directory::computeChildren() {
   if (type() == Volume::CD) {
     scoped_ptr<AudioCDReader> reader(getReader(volumeFile_.volume().name()));
     string name = "<Unknown>";
-    std::vector<string> trackNames;
+    std::vector<string> tracks;
     if (reader) {
       AlbumList albums;
       TrackOffsets trackOffsets = reader->getTrackOffsets();
@@ -119,7 +119,7 @@ void Directory::computeChildren() {
                    << " with error " << err;
         for (int i = 0; i < reader->getNumTracks(); ++i) {
           if (reader->isTrackAudio(i))
-            trackNames.push_back(String((int) trackNames.size() + 1).toCString());
+            tracks.push_back(String((int) tracks.size() + 1).toCString());
         }
 
       } else {
@@ -127,8 +127,8 @@ void Directory::computeChildren() {
         name = album.title() + " / " + album.artist();
         for (int i = 0; i < album.track_size(); ++i) {
           const Track& track = album.track(i);
-          trackNames.push_back(track.artist().empty() ? track.title() :
-                               track.artist() + " / " + track.title());
+          tracks.push_back(track.artist().empty() ? track.title() :
+                           track.artist() + " / " + track.title());
         }
       }
     }
@@ -138,9 +138,9 @@ void Directory::computeChildren() {
 
     VolumeFile vf(volumeFile_);
     string* path = vf.add_path();
-    for (int i = 0; i < trackNames.size(); ++i) {
+    for (int i = 0; i < tracks.size(); ++i) {
       *path = String(i).toCString();
-      addChildFile(new Node(desc_, vf, trackNames[i].c_str()));
+      addChildFile(new Node(desc_, vf, tracks[i].c_str()));
     }
 
     computingDone_ = computing_ = true;

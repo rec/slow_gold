@@ -45,9 +45,9 @@ void addFileRoots(VolumeList* volumes) {
 void addAudioCDs(VolumeList* volumes) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   for (int i = 0; i < names.size(); ++i) {
-    scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
-    if (reader)
-      add(Volume::CD, String(reader->getCDDBId()).toCString(), volumes);
+    scoped_ptr<AudioCDReader> r(AudioCDReader::createReaderForCD(i));
+    if (r)
+      add(Volume::CD, String::toHexString(r->getCDDBId()).toCString(), volumes);
     else
       LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
   }
