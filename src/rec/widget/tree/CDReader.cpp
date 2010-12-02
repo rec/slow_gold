@@ -1,12 +1,10 @@
 #include <glog/logging.h>
 
 #include "rec/widget/tree/CDReader.h"
-#include "rec/audio/format/OffsetAudioFormatReader.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
-using namespace rec::audio::format;
 
 namespace rec {
 namespace widget {
@@ -59,7 +57,8 @@ AudioFormatReader* createCDTrackReader(const string& idString, int track) {
 
   int begin = reader->getPositionOfTrackStart(trackIndex);
   int end = reader->getPositionOfTrackStart(trackIndex + 1);
-  return new OffsetAudioFormatReader(reader.transfer(), begin, end - begin);
+  return new juce::AudioSubsectionReader(reader.transfer(), begin, end - begin,
+                                        true);
 }
 
 

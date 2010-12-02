@@ -8,6 +8,11 @@
 
 namespace rec {
 namespace widget {
+namespace tree {
+
+class VolumeFile;
+
+}  // namespace
 
 class AudioThumbnailWidget : public juce::Component,
                              public juce::ChangeListener,
@@ -16,7 +21,7 @@ class AudioThumbnailWidget : public juce::Component,
   AudioThumbnailWidget(const AudioThumbnailDesc& desc);
   virtual ~AudioThumbnailWidget();
 
-  void setFile(const File& file);
+  void setFile(const tree::VolumeFile& file);
   void setZoomFactor(double amount);
   void mouseWheelMove(const juce::MouseEvent& e, float incX, float incY);
 

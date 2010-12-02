@@ -2,11 +2,9 @@
 
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/data/persist/AppDirectory.h"
-#include "rec/audio/format/OffsetAudioFormatReader.h"
 #include "rec/widget/tree/CDReader.h"
 
 using namespace juce;
-using namespace rec::audio::format;
 
 namespace rec {
 namespace widget {

@@ -569,20 +569,6 @@
 			name = audio;
 			sourceTree = "<group>";
 		};
-		0D7D9BADC0CF1905D0CB8297 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		12C79CBAB1FF5B6488CACDD4 /* source */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +594,20 @@
 				1B79815371777CE7111956DA /* Wrappy.h */,
 			);
 			name = source;
+			sourceTree = "<group>";
+		};
+		1304FE127054FC26D55684AD /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		17614959EB6CEE9636E5B177 /* util */ = {
@@ -1305,7 +1305,7 @@
 				French,
 				German,
 			);
-			mainGroup = 0D7D9BADC0CF1905D0CB8297 /* Source */;
+			mainGroup = 1304FE127054FC26D55684AD /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

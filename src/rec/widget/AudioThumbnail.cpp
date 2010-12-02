@@ -1,7 +1,9 @@
 #include "rec/widget/AudioThumbnail.h"
 #include "rec/gui/Color.h"
+#include "rec/widget/tree/VolumeFile.h"
 
 using namespace juce;
+using namespace rec::widget::tree;
 
 namespace rec {
 namespace widget {
@@ -20,12 +22,15 @@ AudioThumbnailWidget::~AudioThumbnailWidget() {
   thumbnail_.removeChangeListener(this);
 }
 
-void AudioThumbnailWidget::setFile(const File& file) {
+void AudioThumbnailWidget::setFile(const VolumeFile& file) {
   ScopedLock l(lock_);
-  thumbnail_.setSource(new FileInputSource(file));
-  startTime_ = ratio_ = 0;
-  endTime_ = thumbnail_.getTotalLength();
-  cursor_ = (startTime_ + endTime_) / 2;
+  if (file.volume().type() == tree::Volume::CD) {
+  } else {
+    thumbnail_.setSource(new FileInputSource(tree::getFile(file)));
+    startTime_ = ratio_ = 0;
+    endTime_ = thumbnail_.getTotalLength();
+    cursor_ = (startTime_ + endTime_) / 2;
+  }
 }
 
 void AudioThumbnailWidget::setZoomFactor(double amount) {

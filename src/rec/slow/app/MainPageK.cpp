@@ -140,7 +140,7 @@ void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
     gui::addRecentFile(file);
 
     if (file.volume().type() != widget::tree::Volume::CD)
-      peer_->thumbnail->setFile(getFile(file));
+      peer_->thumbnail->setFile(file);
   } else {
     LOG(ERROR) << "Didn't understand file " << file.DebugString();
   }

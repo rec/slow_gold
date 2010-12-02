@@ -24,6 +24,7 @@ static AudioFormatReaderSource* newSource() {
 TEST(RecAudioSource, DoubleStretchyFile) {
   rec::audio::format::mpg123::initializeOnce();
   DoubleStretchy ds(newSource(), newSource());
+  ds.initialize();
   ds.setDescription(TimeStretch());
   while (ds.fillNext());
   EXPECT_EQ(ds.available(), 44100);
@@ -34,6 +35,7 @@ TEST(RecAudioSource, DoubleStretchy) {
 
   Testy t1, t2;
   DoubleStretchy ds(new Testy, new Testy);
+  ds.initialize();
   ds.setDescription(TimeStretch());
   while (ds.fillNext());
   EXPECT_EQ(ds.available(), 128);

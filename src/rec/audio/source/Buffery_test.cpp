@@ -10,6 +10,7 @@ namespace source {
 TEST(RecAudio, Buffery) {
   Testy testy;
   Buffery bp(&testy);
+  bp.initialize();
   bp.resetFrom(2, 0);
 
   EXPECT_EQ(bp.available(), 0);
