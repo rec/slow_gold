@@ -1,26 +1,29 @@
 #include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/basictypes.h"
-#include "rec/block/blocks.h"
-#include "rec/block/GetNextBlock.h"
+#include "rec/util/block/Block.h"
+#include "rec/util/block/GetNextBlock.h"
 
 namespace rec {
-namespace buffer {
+namespace util {
+namespace block {
 
 Block getNextBlock(const Block& requested, const BlockSet& set) {
   Block block = requested;
 
+  // upper is the first element that starts above the given block's beginning.
   BlockSet::const_iterator upper = set.upper_bound(requested);
   Size top = (upper == set.end()) ? kint64max : upper->first;
 
   if (upper != set.begin()) {
-    --upper;
-    block.first = jmax(block.first, upper->second);
+    --upper;  // This is now the last element whose block is below this one.
+    block.first = juce::jmax(block.first, upper->second);
     block.second = block.first + getSize(requested);
   }
 
-  block.second = jmin(block.second, top);
+  block.second = juce::jmin(block.second, top);
   return block;
 }
 
-}  // namespace buffer
+}  // namespace block
+}  // namespace util
 }  // namespace rec

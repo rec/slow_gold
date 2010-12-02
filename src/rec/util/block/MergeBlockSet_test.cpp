@@ -1,9 +1,10 @@
 #include <gtest/gtest.h>
 #include "rec/base/ArraySize.h"
-#include "rec/block/MergeBlockSet.h"
+#include "rec/util/block/MergeBlockSet.h"
 
 namespace rec {
-namespace buffer {
+namespace util {
+namespace block {
 
 static
 void expectBlockSetEqual(const BlockSet& set, Block* begin, Block* end) {
@@ -55,5 +56,6 @@ TEST(MergeBlockList, List) {
   }
 }
 
-}  // namespace buffer
+}  // namespace block
+}  // namespace util
 }  // namespace rec

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="424j4qIcg" name="tests">
+  <MAINGROUP id="bhDaHDsb8" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -501,6 +501,22 @@
       <GROUP id="7tu1XPqEp" name="util">
         <FILE compile="0" file="../../src/rec/util/BeginEnd.h" id="CYOEh83kr"
               name="BeginEnd.h" resource="0"/>
+        <GROUP id="IN3ao8UNh" name="block">
+          <FILE compile="0" file="../../src/rec/util/block/Block.h" id="5wTkO1w7s"
+                name="Block.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/block/GetNextBlock.cpp"
+                id="Dm4Qwayky" name="GetNextBlock.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/block/GetNextBlock.h" id="bSQWCSSh0"
+                name="GetNextBlock.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/block/GetNextBlock_test.cpp"
+                id="BLLmaMTxS" name="GetNextBlock_test.cpp" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet.cpp"
+                id="DTWTP5nhz" name="MergeBlockSet.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="2rrYy3A6j"
+                name="MergeBlockSet.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet_test.cpp"
+                id="VqE7k1HH0" name="MergeBlockSet_test.cpp" resource="0"/>
+        </GROUP>
         <FILE compile="0" file="../../src/rec/util/Callback.h" id="FaEu5YA2I"
               name="Callback.h" resource="0"/>
         <GROUP id="ypwGwignU" name="cd">
@@ -797,7 +813,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="niEOYzzLQ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="aYgdJtxVB" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

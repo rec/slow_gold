@@ -385,6 +385,15 @@
         </Filter>
         <Filter Name="util">
           <File RelativePath="..\..\..\..\src\rec\util\BeginEnd.h"/>
+          <Filter Name="block">
+            <File RelativePath="..\..\..\..\src\rec\util\block\Block.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\GetNextBlock.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\GetNextBlock.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\GetNextBlock_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet_test.cpp"/>
+          </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Callback.h"/>
           <Filter Name="cd">
             <File RelativePath="..\..\..\..\src\rec\util\cd\Album.cpp"/>

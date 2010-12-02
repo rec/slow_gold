@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleStretchyThread : public DoubleStretchy, Thread {
+class DoubleStretchyThread : public DoubleStretchy, public Thread {
  public:
   DoubleStretchyThread(Source* s0, Source* s1)
     : DoubleStretchy(s0, s1), Thread("DoubleStretchy") {

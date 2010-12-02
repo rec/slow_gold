@@ -10,6 +10,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/data/persist/Copy.h"
 
+#include "rec/util/STL.h"
 #include "rec/util/thread/LockedMessage.h"
 #include "rec/util/thread/RunnableThread.h"
 #include "rec/util/thread/WaitLoop.h"
@@ -37,6 +38,10 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : directoryListThread_(PREVIEW_THREAD_NAME),
     directoryList_(NULL, directoryListThread_),
     deviceManager_(d) {
+}
+
+MainPageK::~MainPageK() {
+  rec::stl::deletePointers(&stretchyDeleter_);
 }
 
 static Thread* makeCursorThread(MainPageK* main) {
@@ -129,8 +134,12 @@ void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
     AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
     AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
 
-    stretchyDeleter_.reset(new DoubleStretchyThread(s0, s1));
-    stretchyDeleter_.swap(stretchy_);
+    scoped_ptr<DoubleStretchyThread> stretch(new DoubleStretchyThread(s0, s1));
+    stretchy_.swap(stretch);
+    if (stretch) {
+      stretch->stop();
+      stretchyDeleter_.insert(stretch.transfer());
+    }
     stretchy_->initialize();
     stretchy_->setDescription(d);
 
@@ -138,8 +147,19 @@ void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
     transportSource_.setSource(stretchy_.get());
 
     gui::addRecentFile(file);
-
     peer_->thumbnail->setFile(file);
+
+    std::vector<DoubleStretchyThread*> remove;
+    for (StretchySet::iterator i = stretchyDeleter_.begin();
+         i != stretchyDeleter_.end(); ++i) {
+      if (!(*i)->isThreadRunning())
+        remove.push_back(*i);
+    }
+
+    for (int i = 0; i < remove.size(); ++i) {
+      stretchyDeleter_.erase(remove[i]);
+      delete remove[i];
+    }
   } else {
     LOG(ERROR) << "Didn't understand file " << file.DebugString();
   }
@@ -156,7 +176,7 @@ void MainPageK::sliderDragEnded(Slider* slider) {
 
 void MainPageK::sliderValueChanged(Slider* slider) {
   if (slider == peer_->zoomSlider) {
-    peer_->thumbnail->setZoomFactor(slider->getValue());
+     peer_->thumbnail->setZoomFactor(slider->getValue());
     return;
   }
 
@@ -185,6 +205,31 @@ static const char* const CD_STATE_NAMES[] = {
   "readOnlyDiskPresent"     /** The drive contains a read-only disk. */
 };
 
+
+class RestartAfterReposition : public Thread {
+ public:
+  explicit RestartAfterReposition(MainPageK* mainPage) 
+    : Thread("RestartAfterReposition"), mainPage_(mainPage) {
+    setPriority(4);
+    startThread();
+  }
+
+  virtual void run() {
+    while (!mainPage_->ready())
+      sleep(10);
+    mainPage_->start();
+    delete this;
+  }
+
+ private:
+  MainPageK* mainPage_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(RestartAfterReposition);
+};
+
+bool MainPageK::ready() const {
+  return !stretchy_ || stretchy_->ready(MINIMUM_SAMPLE_PRELOAD);
+}
+
 void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
   if (objectThatHasChanged == (void*)&transportSource_) {
     updateCursor();
@@ -192,17 +237,27 @@ void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
   }
 
   if (objectThatHasChanged == peer_->thumbnail) {
+    bool wasPlaying = transportSource_.isPlaying();
+    if (wasPlaying)
+      start(false);
+
     double p = peer_->thumbnail->ratio();
     transportSource_.setPosition(p * transportSource_.getTotalLength() / RATE);
+    if (wasPlaying)
+      new RestartAfterReposition(this);  // deletes self.
     return;
   }
 }
 
 void MainPageK::startStopButtonClicked() {
-  if (transportSource_.isPlaying())
-    transportSource_.stop();
-  else
+  start(!transportSource_.isPlaying());
+}
+
+void MainPageK::start(bool isStart) {
+  if (isStart)
     transportSource_.start();
+  else
+    transportSource_.stop();
 }
 
 void MainPageK::loopingButtonClicked() {

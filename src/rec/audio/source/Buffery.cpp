@@ -18,7 +18,6 @@ void Buffery::initialize() {
   sourceInfo_.buffer = &buffer_;
 }
 
-
 Buffery::~Buffery() {
   free(sampleData_[0]);
   free(sampleData_[1]);

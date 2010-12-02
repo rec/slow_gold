@@ -81,6 +81,11 @@ int DoubleStretchy::available() const {
   return buffer_->available();
 }
 
+bool DoubleStretchy::ready(int amount) const {
+  ScopedLock l(lock_);
+  return buffer_->ready(amount);
+}
+
 void DoubleStretchy::prepareToPlay(int s, double r) {
   buffer0_->prepareToPlay(s, r);
   buffer1_->prepareToPlay(s, r);

@@ -1,6 +1,7 @@
 #ifndef __REC_COMPONENT_MAIN_PAGE_K_H__
 #define __REC_COMPONENT_MAIN_PAGE_K_H__
 
+#include <set>
 #include <vector>
 
 #include "rec/slow/Preferences.h"
@@ -21,7 +22,7 @@ class MainPageK : public juce::Slider::Listener,
                   public widget::tree::NodeListener {
  public:
   MainPageK(juce::AudioDeviceManager* d);
-  ~MainPageK() {}
+  virtual ~MainPageK();
 
   void construct(MainPageJ* peer);
   void destruct();
@@ -43,16 +44,17 @@ class MainPageK : public juce::Slider::Listener,
   void loadRecentFile(int menuItemId);
   void cut();
   void paste();
+  void start(bool isStart = true);
+  bool ready() const;
 
   void loadFileIntoTransport(const widget::tree::VolumeFile& audioFile);
 
  private:
   static const int THREAD_PRIORITY = 3;
+  static const int MINIMUM_SAMPLE_PRELOAD = 4096;
 
   static const File::SpecialLocationType START_DIR;
   static const char* PREVIEW_THREAD_NAME;
-
-  void readyToPlay();
 
   MainPageJ* peer_;
 
@@ -70,8 +72,10 @@ class MainPageK : public juce::Slider::Listener,
   juce::AudioDeviceManager* deviceManager_;
 
   typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;
+  typedef std::set<DoubleStretchyThread*> StretchySet;
+
   scoped_ptr<DoubleStretchyThread> stretchy_;
-  scoped_ptr<DoubleStretchyThread> stretchyDeleter_;
+  StretchySet stretchyDeleter_;
 
   scoped_ptr<Thread> cursorThread_;
 

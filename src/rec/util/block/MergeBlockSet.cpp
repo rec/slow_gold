@@ -1,8 +1,9 @@
 #include "JuceLibraryCode/JuceHeader.h"
-#include "rec/block/MergeBlockSet.h"
+#include "rec/util/block/MergeBlockSet.h"
 
 namespace rec {
-namespace buffer {
+namespace util {
+namespace block {
 
 void merge(const Block& block, BlockSet* set) {
   // "begin" is the first block that isn't entirely below the new block.
@@ -11,8 +12,8 @@ void merge(const Block& block, BlockSet* set) {
 
   // "end" is the first block that's entirely above the new block.
   // "last" is one before "end"
-  BlockSet::const_iterator last, end = begin;
-  for (; end != set->end() && end->first <= block.second; last = end, ++end);
+  BlockSet::const_iterator preEnd, end = begin;
+  for (; end != set->end() && end->first <= block.second; preEnd = end++);
 
   if (begin == end) {
     // We don't intersect or touch any existing blocks, so insert this block.
@@ -20,12 +21,13 @@ void merge(const Block& block, BlockSet* set) {
 
   } else {
     // This block intersects or touches every block in [begin, end).
-    Size first = jmin(block.first, begin->first);
-    Size second = jmax(block.second, last->second);
+    Size first = juce::jmin(block.first, begin->first);
+    Size second = juce::jmax(block.second, preEnd->second);
     set->erase(begin, end);
     set->insert(Block(first, second));
   }
 }
 
-}  // namespace buffer
+}  // namespace block
+}  // namespace util
 }  // namespace rec

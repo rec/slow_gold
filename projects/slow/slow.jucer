@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="tSdt0papq" name="Slow">
+  <MAINGROUP id="MpBtzvuCK" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -478,6 +478,18 @@
       <GROUP id="3lD41JxzP" name="util">
         <FILE compile="0" file="../../src/rec/util/BeginEnd.h" id="uEwUgrs9t"
               name="BeginEnd.h" resource="0"/>
+        <GROUP id="GAd1vtHeS" name="block">
+          <FILE compile="0" file="../../src/rec/util/block/Block.h" id="k6tOAEpZk"
+                name="Block.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/block/GetNextBlock.cpp"
+                id="5vKGGSZ2v" name="GetNextBlock.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/block/GetNextBlock.h" id="nTKqIT2xO"
+                name="GetNextBlock.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet.cpp"
+                id="mPUDYOGeE" name="MergeBlockSet.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="wc1tJNInc"
+                name="MergeBlockSet.h" resource="0"/>
+        </GROUP>
         <FILE compile="0" file="../../src/rec/util/Callback.h" id="12Gchw0jv"
               name="Callback.h" resource="0"/>
         <GROUP id="VnUzHunMh" name="cd">
@@ -744,7 +756,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="nfpuqbT7Z" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="3BJXziloX" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

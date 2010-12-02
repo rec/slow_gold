@@ -1,14 +1,16 @@
 #ifndef __REC_AUDIO_SOURCE_GET_NEXT_BLOCK_H__
 #define __REC_AUDIO_SOURCE_GET_NEXT_BLOCK_H__
 
-#include "rec/block/blocks.h"
+#include "rec/util/block/Block.h"
 
 namespace rec {
-namespace buffer {
+namespace util {
+namespace block {
 
 Block getNextBlock(const Block& requested, const BlockSet& set);
 
-}  // namespace buffer
+}  // namespace block
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_AUDIO_SOURCE_GET_NEXT_BLOCK_H__

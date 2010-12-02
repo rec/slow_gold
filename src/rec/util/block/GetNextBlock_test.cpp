@@ -1,9 +1,10 @@
 #include <gtest/gtest.h>
 #include "rec/base/ArraySize.h"
-#include "rec/block/GetNextBlock.h"
+#include "rec/util/block/GetNextBlock.h"
 
 namespace rec {
-namespace buffer {
+namespace util {
+namespace block {
 
 static
 void expectNextBlock(const BlockSet& set, const Block& requested,
@@ -27,5 +28,7 @@ TEST(GetNextBlock, Simple) {
   expectNextBlock(set, Block(15, 20), Block(20, 25));
 }
 
-}  // namespace buffer
+}  // namespace block
+}  // namespace util
 }  // namespace rec
+
