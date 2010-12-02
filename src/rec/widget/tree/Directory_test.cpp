@@ -19,8 +19,10 @@ TEST(Directory, All) {
   d.computeChildren();
   d.setOpen(true);
 
+#if 0
   for (int i = 0; i < d.getNumSubItems(); ++i)
     LOG(INFO) << ((Node*) d.getSubItem(i))->name();
+#endif
 }
 
 }  // namespace

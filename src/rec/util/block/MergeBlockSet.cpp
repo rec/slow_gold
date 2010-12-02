@@ -11,9 +11,8 @@ void merge(const Block& block, BlockSet* set) {
   for (; begin != set->end() && begin->second < block.first; ++begin);
 
   // "end" is the first block that's entirely above the new block.
-  // "last" is one before "end"
-  BlockSet::const_iterator preEnd, end = begin;
-  for (; end != set->end() && end->first <= block.second; preEnd = end++);
+  BlockSet::const_iterator end = begin;
+  for (; end != set->end() && end->first <= block.second; ++end);
 
   if (begin == end) {
     // We don't intersect or touch any existing blocks, so insert this block.
@@ -22,8 +21,9 @@ void merge(const Block& block, BlockSet* set) {
   } else {
     // This block intersects or touches every block in [begin, end).
     Size first = juce::jmin(block.first, begin->first);
-    Size second = juce::jmax(block.second, preEnd->second);
-    set->erase(begin, end);
+    Size second = juce::jmax(block.second, (--end)->second);
+    
+    set->erase(begin, ++end);
     set->insert(Block(first, second));
   }
 }

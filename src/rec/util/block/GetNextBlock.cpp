@@ -17,7 +17,7 @@ Block getNextBlock(const Block& requested, const BlockSet& set) {
   if (upper != set.begin()) {
     --upper;  // This is now the last element whose block is below this one.
     block.first = juce::jmax(block.first, upper->second);
-    block.second = block.first + getSize(requested);
+    // block.second = block.first + getSize(requested);
   }
 
   block.second = juce::jmin(block.second, top);

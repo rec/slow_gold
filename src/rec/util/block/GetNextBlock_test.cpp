@@ -25,7 +25,7 @@ TEST(GetNextBlock, Simple) {
   expectNextBlock(set, Block(0, 10), Block(0, 10));
   expectNextBlock(set, Block(0, 15), Block(0, 10));
   expectNextBlock(set, Block(9, 15), Block(9, 10));
-  expectNextBlock(set, Block(15, 20), Block(20, 25));
+  expectNextBlock(set, Block(15, 20), Block(20, 20));
 }
 
 }  // namespace block
