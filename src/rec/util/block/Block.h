@@ -25,6 +25,14 @@ inline Size getSize(const Block& b) {
   return (b.second > b.first) ? (b.second - b.first) : 0;
 }
 
+inline bool isBelow(const Block& a, const Block& b) {
+  return a.second <= b.first;
+}
+
+inline bool notBelow(const Block& a, const Block& b) {
+  return a.second > b.first;
+}
+
 }  // namespace block
 }  // namespace util
 }  // namespace rec
