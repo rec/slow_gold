@@ -131,6 +131,7 @@ void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
 
     stretchyDeleter_.reset(new DoubleStretchyThread(s0, s1));
     stretchyDeleter_.swap(stretchy_);
+    stretchy_->initialize();
     stretchy_->setDescription(d);
 
     loopingButtonClicked();
@@ -141,8 +142,7 @@ void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
     if (file.volume().type() != widget::tree::Volume::CD)
       peer_->thumbnail->setFile(getFile(file));
   } else {
-    LOG(ERROR) << "Didn't understand file type for filename "
-               << file.DebugString();
+    LOG(ERROR) << "Didn't understand file " << file.DebugString();
   }
 }
 

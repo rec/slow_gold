@@ -96,6 +96,12 @@ AudioFormatReader* createReader(const VolumeFile& file) {
   if (v.type() != Volume::CD)
     return AudioFormatManager::getInstance()->createReaderFor(getFile(file));
 
+  if (!file.path_size()) {
+    LOG(ERROR) << "Can't create track for root CD volume for "
+               << file.DebugString();
+    return NULL;
+  }
+
   int track = String(file.path(0).c_str()).getIntValue();
   return createCDTrackReader(v.name(), track);
 }

@@ -26,6 +26,10 @@ class DoubleStretchyThread : public DoubleStretchy, Thread {
       startThread();
   }
 
+  void startThread() {
+    Thread::startThread();
+  }
+
   virtual void run() {
     while (!threadShouldExit()) {
       if (!(fillNext() || threadShouldExit()))

@@ -43,6 +43,12 @@ DoubleStretchy::DoubleStretchy(Source* s0, Source* s1)
 
 DoubleStretchy::~DoubleStretchy() {}
 
+void DoubleStretchy::initialize() {
+  buffer0_->initialize();
+  buffer1_->initialize();
+}
+
+
 void DoubleStretchy::setDescription(const TimeStretch& description) {
   ScopedLock l(lock_);
   descriptionChanged_ = true;

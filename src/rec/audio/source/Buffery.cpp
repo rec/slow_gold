@@ -7,17 +7,28 @@ namespace rec {
 namespace audio {
 namespace source {
 
-void Buffery::resetFrom(int channels, int position) {
-  ScopedLock l(lock_);
-  int len = getTotalLength();
-  if (buffer_) {
-    buffer_->setSize(channels, len, false, false, true);
-  } else {
-    buffer_.reset(new AudioSampleBuffer(channels, len));
-    sourceInfo_.buffer = buffer_.get();
-  }
+Buffery::Buffery(Source* source) : Wrappy::Position(source), buffer_(2, 0) {}
 
-  filled_.reset(position, len);
+void Buffery::initialize() {
+  int len = getTotalLength();
+  sampleData_[0] = (float*) malloc(sizeof(float) * len);
+  sampleData_[1] = (float*) malloc(sizeof(float) * len);
+
+  buffer_.setDataToReferTo(sampleData_, 2, len);
+  sourceInfo_.buffer = &buffer_;
+}
+
+
+Buffery::~Buffery() {
+  free(sampleData_[0]);
+  free(sampleData_[1]);
+}
+
+void Buffery::resetFrom(int channels, int position) {
+  DCHECK_EQ(channels, 2);
+
+  ScopedLock l(lock_);
+  filled_.reset(position, getTotalLength());
   setNextReadPosition(position);
 }
 
@@ -36,7 +47,7 @@ void Buffery::getNextAudioBlock(const AudioSourceChannelInfo& i) {
     position = position_;
   }
 
-  int32 newPos = rec::audio::copyCircularSamples(*buffer_, position, info);
+  int32 newPos = rec::audio::copyCircularSamples(buffer_, position, info);
 
   {
     ScopedLock l(lock_);

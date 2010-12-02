@@ -1,6 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERY__
 #define __REC_AUDIO_SOURCE_BUFFERY__
 
+#include "rec/base/scoped_array.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Circular.h"
 
@@ -12,7 +13,10 @@ class Buffery : public Wrappy::Position {
  public:
   typedef util::Circular Circular;
 
-  Buffery(Source* source) : Wrappy::Position(source) {}
+  Buffery(Source* source);
+  ~Buffery();
+
+  virtual void initialize();
 
   // How many samples are available (already computed?)
   int64 available() const;
@@ -28,7 +32,7 @@ class Buffery : public Wrappy::Position {
   // buffering again from this position.
   void resetFrom(int channels, int position);
 
-  juce::AudioSampleBuffer* buffer() { return buffer_.get(); }
+  juce::AudioSampleBuffer* buffer() { return &buffer_; }
 
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& i);
 
@@ -38,9 +42,11 @@ class Buffery : public Wrappy::Position {
 
  private:
   Circular filled_;
-  scoped_ptr<juce::AudioSampleBuffer> buffer_;
+  juce::AudioSampleBuffer buffer_;
   juce::AudioSourceChannelInfo sourceInfo_;
   CriticalSection lock_;
+
+  float* sampleData_[2];
 
   DISALLOW_COPY_AND_ASSIGN(Buffery);
 };

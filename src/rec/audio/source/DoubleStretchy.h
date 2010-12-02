@@ -19,6 +19,8 @@ class DoubleStretchy : public Source {
   DoubleStretchy(Source* s0, Source* s1);
   ~DoubleStretchy();
 
+  virtual void initialize();
+
   virtual bool fillNext();
   virtual int available() const;
   virtual void setDescription(const TimeStretch& description);
