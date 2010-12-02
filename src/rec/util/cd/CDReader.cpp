@@ -1,14 +1,14 @@
 #include <glog/logging.h>
 
-#include "rec/widget/tree/CDReader.h"
+#include "rec/util/cd/CDReader.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace cd {
 
 AudioCDReader* getCDReader(const string& idString) {
   int id = String(idString.c_str()).getHexValue32();
@@ -57,11 +57,9 @@ AudioFormatReader* createCDTrackReader(const string& idString, int track) {
 
   int begin = reader->getPositionOfTrackStart(trackIndex);
   int end = reader->getPositionOfTrackStart(trackIndex + 1);
-  return new juce::AudioSubsectionReader(reader.transfer(), begin, end - begin,
-                                        true);
+  return new AudioSubsectionReader(reader.transfer(), begin, end - begin, true);
 }
 
-
-}  // namespace tree
-}  // namespace widget
+}  // namespace cd
+}  // namespace util
 }  // namespace rec

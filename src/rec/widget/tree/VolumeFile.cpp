@@ -2,7 +2,7 @@
 
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/data/persist/AppDirectory.h"
-#include "rec/widget/tree/CDReader.h"
+#include "rec/util/cd/CDReader.h"
 
 using namespace juce;
 
@@ -101,7 +101,7 @@ AudioFormatReader* createReader(const VolumeFile& file) {
   }
 
   int track = String(file.path(0).c_str()).getIntValue();
-  return createCDTrackReader(v.name(), track);
+  return util::cd::createCDTrackReader(v.name(), track);
 }
 
 }  // namespace tree

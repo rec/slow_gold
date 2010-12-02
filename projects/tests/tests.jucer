@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="WPrVRVPUE" name="tests">
+  <MAINGROUP id="424j4qIcg" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -516,6 +516,10 @@
                 name="CDDBResponse.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/CDDBResponse_test.cpp"
                 id="UgEk4q25e" name="CDDBResponse_test.cpp" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/cd/CDReader.cpp" id="T9HaK6bWJ"
+                name="CDReader.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/CDReader.h" id="94a8aAp26"
+                name="CDReader.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/DedupeCDDB.cpp" id="Uzfl3757T"
                 name="DedupeCDDB.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/DedupeCDDB.h" id="CMtl2JQVs"
@@ -618,10 +622,6 @@
                 name="Time.h" resource="0"/>
         </GROUP>
         <GROUP id="XG8GOIIwK" name="tree">
-          <FILE compile="1" file="../../src/rec/widget/tree/CDReader.cpp" id="RtrWLVqbY"
-                name="CDReader.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/CDReader.h" id="2RGTr2zvX"
-                name="CDReader.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/Convertors.cpp" id="5J5B3pptX"
                 name="Convertors.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Convertors.h" id="8x9yuvhGE"
@@ -797,7 +797,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="pBVFLgRgU" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="niEOYzzLQ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -7,7 +7,7 @@
 #include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/RunnableThread.h"
-#include "rec/widget/tree/CDReader.h"
+#include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/PartitionChildren.h"
 #include "rec/widget/tree/SortedChildren.h"
 
