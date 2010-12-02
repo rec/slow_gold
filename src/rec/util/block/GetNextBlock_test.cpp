@@ -28,6 +28,15 @@ TEST(GetNextBlock, Simple) {
   expectNextBlock(set, Block(15, 20), Block(20, 20));
 }
 
+TEST(Diff, All) {
+  Block b[] = {Block(5, 8), Block(10, 20)};
+  BlockSet set(b, b + arraysize(b));
+
+  BlockSet d1 = difference(set, Block(0, 5));
+  EXPECT_EQ(d1.size(), 1);
+  EXPECT_TRUE(*d1.begin() == Block(0, 5));
+}
+
 }  // namespace block
 }  // namespace util
 }  // namespace rec

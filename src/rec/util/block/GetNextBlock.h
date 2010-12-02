@@ -8,6 +8,7 @@ namespace util {
 namespace block {
 
 Block getNextBlock(const Block& requested, const BlockSet& set);
+BlockSet difference(const BlockSet& set, const Block& block);
 
 }  // namespace block
 }  // namespace util

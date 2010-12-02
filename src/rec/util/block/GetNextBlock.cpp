@@ -24,6 +24,22 @@ Block getNextBlock(const Block& requested, const BlockSet& set) {
   return block;
 }
 
+BlockSet difference(const BlockSet& set, const Block& block) {
+  BlockSet diff;
+  Block b = block;
+  BlockSet::const_iterator i;
+  for (i = set.begin(); i != set.end() && getSize(b) > 0; ++i) {
+    if (i->second > b.first) {
+      if (i->first > b.first)
+        diff.insert(Block(b.first, juce::jmin(b.second, i->first)));
+      b.first = i->second;
+    }
+  }
+
+  return diff;
+}
+
+
 }  // namespace block
 }  // namespace util
 }  // namespace rec
