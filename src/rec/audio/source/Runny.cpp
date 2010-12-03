@@ -13,6 +13,8 @@ Runny::Runny(Source* source, int bufferSize, int minBufferSize, int chunkSize)
       chunkSize_(chunkSize) {
 }
 
+Runny::~Runny() {}
+
 bool Runny::isReady() {
   ScopedLock l(lock_);
   return filled_.filled() >= minBufferSize_;
@@ -34,7 +36,7 @@ bool Runny::fill() {
     ScopedLock l(lock_);
     toFill = juce::jmin(filled_.remainingBlock(), (int64)chunkSize_);
     if (!toFill)
-      return false;
+      return true;  // No more to fill!
 
     info.buffer = &buffer_;
     info.startSample = filled_.end();
@@ -44,23 +46,50 @@ bool Runny::fill() {
   source_->getNextAudioBlock(info);
 
   ScopedLock l(lock_);
-  return filled_.fill(toFill);
+  return !filled_.fill(toFill);
 }
 
 void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  ScopedLock l(lock_);
-  int begin = filled_.begin();
-  int ready = filled_.filled();
-
+  int begin, ready;
   {
-    ScopedUnlock l(lock_);
-    if (ready < info.numSamples)
-      LOG(ERROR) << "Expected " << ready << " but got " << info.numSamples;
-
-    copyCircularSamples(buffer_, begin, info);
+    ScopedLock l(lock_);
+    begin = filled_.begin();
+    ready = filled_.filled();
   }
 
+  if (ready < info.numSamples)
+    LOG(ERROR) << "Expected " << ready << " but got " << info.numSamples;
+
+  copyCircularSamples(buffer_, begin, info);
+
+  ScopedLock l(lock_);
   filled_.consume(info.numSamples);
+}
+
+class RunnyThread : public Thread {
+ public:
+  RunnyThread(Runny* runny, int wait)
+      : Thread("RunnyThread"),
+        runny_(runny),
+        wait_(wait) {
+  }
+
+  virtual void run() {
+    while (!threadShouldExit()) {
+      if (!runny_->fill())
+        wait(wait_);
+    }
+  }
+
+ private:
+  Runny* runny_;
+  const int wait_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnyThread);
+};
+
+Thread* Runny::makeThread(int wait) {
+  return new RunnyThread(this, wait);
 }
 
 }  // namespace source

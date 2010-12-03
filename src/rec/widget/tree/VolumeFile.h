@@ -4,10 +4,6 @@
 #include "rec/base/base.h"
 #include "rec/widget/tree/VolumeFile.pb.h"
 
-namespace juce {
-class AudioFormatReader;
-}
-
 namespace rec {
 namespace widget {
 namespace tree {
@@ -31,7 +27,7 @@ inline bool operator!=(const VolumeFile& x, const VolumeFile& y) {
   return !(x == y);
 }
 
-juce::AudioFormatReader* createReader(const VolumeFile& file);
+AudioFormatReader* createReader(const VolumeFile& file);
 
 }  // namespace tree
 }  // namespace widget

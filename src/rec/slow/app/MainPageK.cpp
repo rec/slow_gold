@@ -28,6 +28,8 @@ using namespace juce;
 using namespace rec::widget::tree;
 using namespace rec::thread;
 
+using rec::audio::source::Source;
+
 namespace rec {
 namespace slow {
 
@@ -131,8 +133,8 @@ void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
       stretchy_->stop();
 
     TimeStretch d = getPreferences().track().timestretch();
-    AudioFormatReaderSource *s0 = new AudioFormatReaderSource(r0, true);
-    AudioFormatReaderSource *s1 = new AudioFormatReaderSource(r1, true);
+    Source *s0 = new AudioFormatReaderSource(r0, true);
+    Source *s1 = new AudioFormatReaderSource(r1, true);
 
     scoped_ptr<DoubleStretchyThread> stretch(new DoubleStretchyThread(s0, s1));
     stretchy_.swap(stretch);
@@ -207,10 +209,10 @@ static const char* const CD_STATE_NAMES[] = {
 
 
 // Leak these guys!
-  
+
 class RestartAfterReposition : public Thread {
  public:
-  explicit RestartAfterReposition(MainPageK* mainPage) 
+  explicit RestartAfterReposition(MainPageK* mainPage)
     : Thread("RestartAfterReposition"), mainPage_(mainPage) {
     setPriority(4);
     startThread();

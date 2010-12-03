@@ -167,16 +167,24 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.h"/>
             </Filter>
+            <Filter Name="reader">
+              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.h"/>
+            </Filter>
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\AudioTimeScaler_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Double.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchyThread.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Runny_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Source.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
@@ -414,6 +422,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines_test.cpp"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\ChangeLocker.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular_test.cpp"/>
@@ -437,6 +446,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\CallbackLoop.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Cycler.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\LockedMessage.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Loop.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Runnable.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\RunnableThread.h"/>

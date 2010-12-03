@@ -19,6 +19,9 @@ namespace {
 const ::google::protobuf::Descriptor* TimeStretch_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   TimeStretch_reflection_ = NULL;
+const ::google::protobuf::Descriptor* StretchedFile_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  StretchedFile_reflection_ = NULL;
 
 }  // namespace
 
@@ -54,6 +57,22 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TimeStretch));
+  StretchedFile_descriptor_ = file->message_type(1);
+  static const int StretchedFile_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchedFile, stretch_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchedFile, file_),
+  };
+  StretchedFile_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      StretchedFile_descriptor_,
+      StretchedFile::default_instance_,
+      StretchedFile_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchedFile, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchedFile, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(StretchedFile));
 }
 
 namespace {
@@ -68,6 +87,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     TimeStretch_descriptor_, &TimeStretch::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    StretchedFile_descriptor_, &StretchedFile::default_instance());
 }
 
 }  // namespace
@@ -75,6 +96,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2faudio_2fsource_2fTimeStretch_2eproto() {
   delete TimeStretch::default_instance_;
   delete TimeStretch_reflection_;
+  delete StretchedFile::default_instance_;
+  delete StretchedFile_reflection_;
 }
 
 void protobuf_AddDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto() {
@@ -83,21 +106,27 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::rec::widget::tree::protobuf_AddDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\"rec/audio/source/TimeStretch.proto\022\020re"
-    "c.audio.source\"\265\002\n\013TimeStretch\022\025\n\ntime_s"
-    "cale\030\001 \001(\001:\0011\022\032\n\013sample_rate\030\002 \001(\001:\0054410"
-    "0\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 "
-    "\001(\001:\0011\022\023\n\005bands\030\005 \001(\r:\0042048\022\031\n\016filter_ov"
-    "erlap\030\006 \001(\r:\0011\022\027\n\nchunk_size\030\007 \001(\r:\003512\022"
-    "\033\n\014prefill_size\030\010 \001(\r:\00515000\022$\n\025next_buf"
-    "fer_fill_size\030\t \001(\r:\00515000\022\036\n\022inactive_w"
-    "ait_time\030\n \001(\005:\002-1\022\032\n\017thread_priority\030\013 "
-    "\001(\r:\0014", 366);
+    "c.audio.source\032 rec/widget/tree/VolumeFi"
+    "le.proto\"\265\002\n\013TimeStretch\022\025\n\ntime_scale\030\001"
+    " \001(\001:\0011\022\032\n\013sample_rate\030\002 \001(\001:\00544100\022\023\n\010c"
+    "hannels\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 \001(\001:\0011"
+    "\022\023\n\005bands\030\005 \001(\r:\0042048\022\031\n\016filter_overlap\030"
+    "\006 \001(\r:\0011\022\027\n\nchunk_size\030\007 \001(\r:\003512\022\033\n\014pre"
+    "fill_size\030\010 \001(\r:\00515000\022$\n\025next_buffer_fi"
+    "ll_size\030\t \001(\r:\00515000\022\036\n\022inactive_wait_ti"
+    "me\030\n \001(\005:\002-1\022\032\n\017thread_priority\030\013 \001(\r:\0014"
+    "\"j\n\rStretchedFile\022.\n\007stretch\030\001 \001(\0132\035.rec"
+    ".audio.source.TimeStretch\022)\n\004file\030\002 \001(\0132"
+    "\033.rec.widget.tree.VolumeFile", 508);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/TimeStretch.proto", &protobuf_RegisterTypes);
   TimeStretch::default_instance_ = new TimeStretch();
+  StretchedFile::default_instance_ = new StretchedFile();
   TimeStretch::default_instance_->InitAsDefaultInstance();
+  StretchedFile::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2faudio_2fsource_2fTimeStretch_2eproto);
 }
 
@@ -712,6 +741,263 @@ void TimeStretch::Swap(TimeStretch* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = TimeStretch_descriptor_;
   metadata.reflection = TimeStretch_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int StretchedFile::kStretchFieldNumber;
+const int StretchedFile::kFileFieldNumber;
+#endif  // !_MSC_VER
+
+StretchedFile::StretchedFile()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void StretchedFile::InitAsDefaultInstance() {
+  stretch_ = const_cast< ::rec::audio::source::TimeStretch*>(&::rec::audio::source::TimeStretch::default_instance());
+  file_ = const_cast< ::rec::widget::tree::VolumeFile*>(&::rec::widget::tree::VolumeFile::default_instance());
+}
+
+StretchedFile::StretchedFile(const StretchedFile& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void StretchedFile::SharedCtor() {
+  _cached_size_ = 0;
+  stretch_ = NULL;
+  file_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+StretchedFile::~StretchedFile() {
+  SharedDtor();
+}
+
+void StretchedFile::SharedDtor() {
+  if (this != default_instance_) {
+    delete stretch_;
+    delete file_;
+  }
+}
+
+void StretchedFile::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* StretchedFile::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return StretchedFile_descriptor_;
+}
+
+const StretchedFile& StretchedFile::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto();  return *default_instance_;
+}
+
+StretchedFile* StretchedFile::default_instance_ = NULL;
+
+StretchedFile* StretchedFile::New() const {
+  return new StretchedFile;
+}
+
+void StretchedFile::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (_has_bit(0)) {
+      if (stretch_ != NULL) stretch_->::rec::audio::source::TimeStretch::Clear();
+    }
+    if (_has_bit(1)) {
+      if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool StretchedFile::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.audio.source.TimeStretch stretch = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_stretch()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_file;
+        break;
+      }
+      
+      // optional .rec.widget.tree.VolumeFile file = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_file:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_file()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void StretchedFile::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.audio.source.TimeStretch stretch = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->stretch(), output);
+  }
+  
+  // optional .rec.widget.tree.VolumeFile file = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->file(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* StretchedFile::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.audio.source.TimeStretch stretch = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->stretch(), target);
+  }
+  
+  // optional .rec.widget.tree.VolumeFile file = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->file(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int StretchedFile::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.audio.source.TimeStretch stretch = 1;
+    if (has_stretch()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->stretch());
+    }
+    
+    // optional .rec.widget.tree.VolumeFile file = 2;
+    if (has_file()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->file());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void StretchedFile::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const StretchedFile* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const StretchedFile*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void StretchedFile::MergeFrom(const StretchedFile& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      mutable_stretch()->::rec::audio::source::TimeStretch::MergeFrom(from.stretch());
+    }
+    if (from._has_bit(1)) {
+      mutable_file()->::rec::widget::tree::VolumeFile::MergeFrom(from.file());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void StretchedFile::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void StretchedFile::CopyFrom(const StretchedFile& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StretchedFile::IsInitialized() const {
+  
+  return true;
+}
+
+void StretchedFile::Swap(StretchedFile* other) {
+  if (other != this) {
+    std::swap(stretch_, other->stretch_);
+    std::swap(file_, other->file_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata StretchedFile::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = StretchedFile_descriptor_;
+  metadata.reflection = StretchedFile_reflection_;
   return metadata;
 }
 

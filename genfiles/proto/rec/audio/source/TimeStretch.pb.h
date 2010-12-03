@@ -23,6 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
+#include "rec/widget/tree/VolumeFile.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -35,6 +36,7 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto();
 void protobuf_ShutdownFile_rec_2faudio_2fsource_2fTimeStretch_2eproto();
 
 class TimeStretch;
+class StretchedFile;
 
 // ===================================================================
 
@@ -204,6 +206,103 @@ class TimeStretch : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static TimeStretch* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class StretchedFile : public ::google::protobuf::Message {
+ public:
+  StretchedFile();
+  virtual ~StretchedFile();
+  
+  StretchedFile(const StretchedFile& from);
+  
+  inline StretchedFile& operator=(const StretchedFile& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StretchedFile& default_instance();
+  
+  void Swap(StretchedFile* other);
+  
+  // implements Message ----------------------------------------------
+  
+  StretchedFile* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const StretchedFile& from);
+  void MergeFrom(const StretchedFile& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional .rec.audio.source.TimeStretch stretch = 1;
+  inline bool has_stretch() const;
+  inline void clear_stretch();
+  static const int kStretchFieldNumber = 1;
+  inline const ::rec::audio::source::TimeStretch& stretch() const;
+  inline ::rec::audio::source::TimeStretch* mutable_stretch();
+  
+  // optional .rec.widget.tree.VolumeFile file = 2;
+  inline bool has_file() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 2;
+  inline const ::rec::widget::tree::VolumeFile& file() const;
+  inline ::rec::widget::tree::VolumeFile* mutable_file();
+  
+  // @@protoc_insertion_point(class_scope:rec.audio.source.StretchedFile)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::rec::audio::source::TimeStretch* stretch_;
+  ::rec::widget::tree::VolumeFile* file_;
+  friend void  protobuf_AddDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto();
+  friend void protobuf_AssignDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto();
+  friend void protobuf_ShutdownFile_rec_2faudio_2fsource_2fTimeStretch_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static StretchedFile* default_instance_;
 };
 // ===================================================================
 
@@ -386,6 +485,44 @@ inline ::google::protobuf::uint32 TimeStretch::thread_priority() const {
 inline void TimeStretch::set_thread_priority(::google::protobuf::uint32 value) {
   _set_bit(10);
   thread_priority_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// StretchedFile
+
+// optional .rec.audio.source.TimeStretch stretch = 1;
+inline bool StretchedFile::has_stretch() const {
+  return _has_bit(0);
+}
+inline void StretchedFile::clear_stretch() {
+  if (stretch_ != NULL) stretch_->::rec::audio::source::TimeStretch::Clear();
+  _clear_bit(0);
+}
+inline const ::rec::audio::source::TimeStretch& StretchedFile::stretch() const {
+  return stretch_ != NULL ? *stretch_ : *default_instance_->stretch_;
+}
+inline ::rec::audio::source::TimeStretch* StretchedFile::mutable_stretch() {
+  _set_bit(0);
+  if (stretch_ == NULL) stretch_ = new ::rec::audio::source::TimeStretch;
+  return stretch_;
+}
+
+// optional .rec.widget.tree.VolumeFile file = 2;
+inline bool StretchedFile::has_file() const {
+  return _has_bit(1);
+}
+inline void StretchedFile::clear_file() {
+  if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
+  _clear_bit(1);
+}
+inline const ::rec::widget::tree::VolumeFile& StretchedFile::file() const {
+  return file_ != NULL ? *file_ : *default_instance_->file_;
+}
+inline ::rec::widget::tree::VolumeFile* StretchedFile::mutable_file() {
+  _set_bit(1);
+  if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
+  return file_;
 }
 
 

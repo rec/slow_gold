@@ -95,14 +95,14 @@ class ThreadDescription : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional uint32 priority = 1 [default = 6];
+  // optional uint32 priority = 1 [default = 4];
   inline bool has_priority() const;
   inline void clear_priority();
   static const int kPriorityFieldNumber = 1;
   inline ::google::protobuf::uint32 priority() const;
   inline void set_priority(::google::protobuf::uint32 value);
   
-  // optional uint32 period = 2 [default = 40];
+  // optional uint32 period = 2 [default = 100];
   inline bool has_period() const;
   inline void clear_period();
   static const int kPeriodFieldNumber = 2;
@@ -296,12 +296,12 @@ class AudioThumbnailDesc : public ::google::protobuf::Message {
 
 // ThreadDescription
 
-// optional uint32 priority = 1 [default = 6];
+// optional uint32 priority = 1 [default = 4];
 inline bool ThreadDescription::has_priority() const {
   return _has_bit(0);
 }
 inline void ThreadDescription::clear_priority() {
-  priority_ = 6u;
+  priority_ = 4u;
   _clear_bit(0);
 }
 inline ::google::protobuf::uint32 ThreadDescription::priority() const {
@@ -312,12 +312,12 @@ inline void ThreadDescription::set_priority(::google::protobuf::uint32 value) {
   priority_ = value;
 }
 
-// optional uint32 period = 2 [default = 40];
+// optional uint32 period = 2 [default = 100];
 inline bool ThreadDescription::has_period() const {
   return _has_bit(1);
 }
 inline void ThreadDescription::clear_period() {
-  period_ = 40u;
+  period_ = 100u;
   _clear_bit(1);
 }
 inline ::google::protobuf::uint32 ThreadDescription::period() const {

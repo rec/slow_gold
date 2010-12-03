@@ -21,11 +21,18 @@ class Runny : public Wrappy::Position {
         int minBufferSize = MIN_BUFFER_SIZE,
         int chunkSize = CHUNK_SIZE);
 
+  virtual ~Runny();
+
   virtual bool isReady();
   virtual void setNextReadPosition(int p);
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
+  // Try to pre-fill the lookahead buffer.
+  // Return true when the buffer is full, false otherwise.
   bool fill();
+
+  // Make a thread that calls fill() repeatedly.
+  Thread* makeThread(int wait);
 
  private:
   CriticalSection lock_;
@@ -36,26 +43,6 @@ class Runny : public Wrappy::Position {
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Runny);
 };
-
-class RunnyThread : public Thread {
- public:
-  static const int THREAD_WAIT = 100;
-
-  explicit RunnyThread(Runny* runny) : Thread("RunnyThread"), runny_(runny) {}
-
-  virtual void run() {
-    while (!threadShouldExit()) {
-      if (!runny_->fill())
-        wait(THREAD_WAIT);
-    }
-  }
-
- private:
-  Runny* runny_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnyThread);
-};
-
 
 }  // namespace source
 }  // namespace audio
