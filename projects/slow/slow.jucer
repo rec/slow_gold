@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="MpBtzvuCK" name="Slow">
+  <MAINGROUP id="mNuFRUdeE" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -89,6 +89,12 @@
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Tags.h" id="MEkWL6CSD"
                   name="Tags.h" resource="0"/>
           </GROUP>
+          <GROUP id="tOzkJJG7H" name="reader">
+            <FILE compile="1" file="../../src/rec/audio/format/reader/CachedAudioFormatReader.cpp"
+                  id="oWsAn1ztB" name="CachedAudioFormatReader.cpp" resource="0"/>
+            <FILE compile="0" file="../../src/rec/audio/format/reader/CachedAudioFormatReader.h"
+                  id="qY0lADcTM" name="CachedAudioFormatReader.h" resource="0"/>
+          </GROUP>
         </GROUP>
         <GROUP id="MvzZ34pgb" name="source">
           <FILE compile="1" file="../../src/rec/audio/source/Buffery.cpp" id="HbiIrqZYw"
@@ -101,6 +107,10 @@
                 id="Hw9pt6Fk6" name="DoubleStretchy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleStretchyThread.h"
                 id="7u4dxwXUs" name="DoubleStretchyThread.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/Runny.cpp" id="ZjlpG8DJD"
+                name="Runny.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Runny.h" id="Jh3wFPfh6"
+                name="Runny.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Source.h" id="hS99xBzLi"
                 name="Source.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Stereo.cpp" id="tqSv08Udy"
@@ -756,7 +766,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="3BJXziloX" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="uWoFcpZ3Q" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

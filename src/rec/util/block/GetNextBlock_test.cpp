@@ -35,6 +35,26 @@ TEST(Diff, All) {
   BlockSet d1 = difference(set, Block(0, 5));
   EXPECT_EQ(d1.size(), 1);
   EXPECT_TRUE(*d1.begin() == Block(0, 5));
+
+  d1 = difference(set, Block(0, 10));
+  EXPECT_EQ(d1.size(), 2);
+  BlockSet::const_iterator i = d1.begin();
+  EXPECT_TRUE(*i++ == Block(0, 5));
+  EXPECT_TRUE(*i++ == Block(8, 10));
+
+  d1 = difference(set, Block(0, 15));
+  EXPECT_EQ(d1.size(), 2);
+  i = d1.begin();
+  EXPECT_TRUE(*i == Block(0, 5));
+  EXPECT_TRUE(*++i == Block(8, 10));
+
+
+  d1 = difference(set, Block(0, 30));
+  EXPECT_EQ(d1.size(), 3);
+  i = d1.begin();
+  EXPECT_TRUE(*i == Block(0, 5));
+  EXPECT_TRUE(*++i == Block(8, 10));
+  EXPECT_TRUE(*++i == Block(20, 30));
 }
 
 }  // namespace block

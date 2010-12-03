@@ -117,6 +117,13 @@
 			sepNavVisRange = "{0, 466}";
 		};
 	};
+	3E41776759EB3902574FA6D8 /* Runny.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {987, 962}}";
+			sepNavSelRange = "{126, 63}";
+			sepNavVisRange = "{0, 823}";
+		};
+	};
 	415A1E6BE9017A921C8AD09F /* PartitionChildren.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {649, 1885}}";
@@ -226,8 +233,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 313011785;
-			PBXWorkspaceStateSaveDate = 313011785;
+			PBXPerProjectTemplateStateSaveDate = 313037545;
+			PBXWorkspaceStateSaveDate = 313037545;
 		};
 		perUserProjectItems = {
 			E22EC1C212A0895D00501884 = E22EC1C212A0895D00501884 /* PBXTextBookmark */;
@@ -270,6 +277,10 @@
 			E28D56F612A8262F00C02728 = E28D56F612A8262F00C02728 /* PBXTextBookmark */;
 			E28D56F712A8262F00C02728 = E28D56F712A8262F00C02728 /* PBXTextBookmark */;
 			E28D56F812A8262F00C02728 = E28D56F812A8262F00C02728 /* PBXTextBookmark */;
+			E28D57C912A8934700C02728 /* XCBuildMessageTextBookmark */ = E28D57C912A8934700C02728 /* XCBuildMessageTextBookmark */;
+			E28D57CC12A8935100C02728 /* PBXTextBookmark */ = E28D57CC12A8935100C02728 /* PBXTextBookmark */;
+			E28D57CE12A8937400C02728 /* XCBuildMessageTextBookmark */ = E28D57CE12A8937400C02728 /* XCBuildMessageTextBookmark */;
+			E28D57D312A8941400C02728 /* PBXTextBookmark */ = E28D57D312A8941400C02728 /* PBXTextBookmark */;
 			E2AEE61D1295F2B400B693AE = E2AEE61D1295F2B400B693AE /* PBXTextBookmark */;
 			E2AEE61E1295F2B400B693AE = E2AEE61E1295F2B400B693AE /* PBXTextBookmark */;
 			E2AEE79E1297201C00B693AE = E2AEE79E1297201C00B693AE /* PBXTextBookmark */;
@@ -834,6 +845,68 @@
 		rType = 0;
 		vrLen = 919;
 		vrLoc = 143;
+	};
+	E28D57C812A8934700C02728 /* Runny.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Runny.h;
+		path = ../../../../../rec/src/rec/audio/source/Runny.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1027}}";
+			sepNavSelRange = "{708, 17}";
+			sepNavVisRange = "{0, 1300}";
+		};
+	};
+	E28D57C912A8934700C02728 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'AudioSampleBuffer' does not name a type";
+		fRef = E28D57C812A8934700C02728 /* Runny.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 31;
+		rType = 1;
+	};
+	E28D57CC12A8935100C02728 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E28D57C812A8934700C02728 /* Runny.h */;
+		name = "Runny.h: 31";
+		rLen = 17;
+		rLoc = 739;
+		rType = 0;
+		vrLen = 1300;
+		vrLoc = 0;
+	};
+	E28D57CD12A8937400C02728 /* Runny.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Runny.h;
+		path = ../../../../../rec/src/rec/audio/source/Runny.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1027}}";
+			sepNavSelRange = "{774, 0}";
+			sepNavVisRange = "{0, 1360}";
+		};
+	};
+	E28D57CE12A8937400C02728 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'Circular_' does not name a type";
+		fRef = E28D57CD12A8937400C02728 /* Runny.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 32;
+		rType = 1;
+	};
+	E28D57D312A8941400C02728 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E28D57CD12A8937400C02728 /* Runny.h */;
+		name = "Runny.h: 33";
+		rLen = 0;
+		rLoc = 774;
+		rType = 0;
+		vrLen = 1360;
+		vrLoc = 0;
 	};
 	E2AEE5311295AE8500B693AE /* Slow */ = {
 		isa = PBXExecutable;

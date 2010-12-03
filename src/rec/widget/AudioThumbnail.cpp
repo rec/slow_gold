@@ -28,6 +28,9 @@ void AudioThumbnailWidget::setFile(const VolumeFile& file) {
   ScopedLock l(lock_);
 
   if (file.volume().type() == tree::Volume::CD) {
+    if (true) {
+      return;
+    }
     if (!file.path_size()) {
       LOG(ERROR) << "Empty CD track path";
       return;

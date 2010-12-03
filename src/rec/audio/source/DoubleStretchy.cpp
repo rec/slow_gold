@@ -107,7 +107,7 @@ bool DoubleStretchy::fillNext() {
 
   bool filled = toFill->filled();
   if (!filled) {
-  juce:ScopedUnlock l(lock_);
+    juce:ScopedUnlock l(lock_);
     toFill->fillNext(description_->chunk_size());
   }
 

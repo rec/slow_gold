@@ -32,8 +32,6 @@ class Buffery : public Wrappy::Position {
   // buffering again from this position.
   void resetFrom(int channels, int position);
 
-  juce::AudioSampleBuffer* buffer() { return &buffer_; }
-
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& i);
 
   // Returns true if there is more to be filled.  Only call this from one

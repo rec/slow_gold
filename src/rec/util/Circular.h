@@ -13,7 +13,7 @@ struct Circular {
   Circular() {}
   Circular(int64 begin, int64 length);
 
-  void reset(int64 begin, int64 length);
+  void reset(int64 begin = 0, int64 length = -1);
   bool fill(int64 delta);
 
   int64 remaining() const;
@@ -21,14 +21,18 @@ struct Circular {
 
   // How many samples are available starting at begin?
   int64 availableFrom(int64 begin) const;
+  int begin() const { return begin_; }
   int64 end() const;
+
+  int64 fromBegin(int x) const;
+  int64 consume(int64 amount);
+
+  int64 filled() const { return filled_; }
 
  private:
   int64 begin_;
   int64 filled_;  // Of this region within the buffer.
   int64 length_;  // Of the whole buffer.
-
-  // This class is copiable and assignable.
 };
 
 }  // namespace util

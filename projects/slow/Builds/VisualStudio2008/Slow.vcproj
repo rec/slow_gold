@@ -164,6 +164,10 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.h"/>
             </Filter>
+            <Filter Name="reader">
+              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.h"/>
+            </Filter>
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
@@ -171,6 +175,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchyThread.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Source.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>

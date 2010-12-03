@@ -206,6 +206,8 @@ static const char* const CD_STATE_NAMES[] = {
 };
 
 
+// Leak these guys!
+  
 class RestartAfterReposition : public Thread {
  public:
   explicit RestartAfterReposition(MainPageK* mainPage) 
@@ -218,7 +220,6 @@ class RestartAfterReposition : public Thread {
     while (!mainPage_->ready())
       sleep(10);
     mainPage_->start();
-    delete this;
   }
 
  private:

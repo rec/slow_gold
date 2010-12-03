@@ -19,6 +19,7 @@ namespace juce {
 
 class AudioCDReader;
 class AudioFormatReader;
+class AudioSampleBuffer;
 class AudioSourceChannelInfo;
 class CriticalSection;
 class File;
@@ -37,6 +38,7 @@ typedef google::protobuf::Message Message;
 
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioFormatReader AudioFormatReader;
+typedef juce::AudioSampleBuffer AudioSampleBuffer;
 typedef juce::AudioSourceChannelInfo AudioSourceChannelInfo;
 typedef juce::CriticalSection CriticalSection;
 typedef juce::File File;
