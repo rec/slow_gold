@@ -48,7 +48,7 @@ void Root::addVolume(const Volume& volume, int insertAt) {
   vf.mutable_volume()->CopyFrom(volume);
 
   Directory* directory = new Directory(desc_, vf);
-  directory->listeners()->insert(this);
+  directory->addListener(this);
   root_.addSubItem(directory, insertAt);
   directory->requestPartition();
 }

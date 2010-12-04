@@ -19,7 +19,7 @@
 
 using rec::audio::source::TimeStretch;
 
-using rec::widget::ThreadDescription;
+using rec::util::thread::ThreadDescription;
 using rec::widget::AudioThumbnailDesc;
 
 using rec::persist::copy;
@@ -61,7 +61,7 @@ void MainPageK::construct(MainPageJ* peer) {
   directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
   directoryListThread_.startThread(THREAD_PRIORITY);
 
-  peer_->treeTreeComp->listeners()->insert(this);
+  peer_->treeTreeComp->addListener(this);
   peer_->treeTreeComp->update();
 
   TimeStretch d = getPreferences().track().timestretch();
@@ -281,7 +281,6 @@ void MainPageK::paste() {
   proto::Preferences prefs;
   yaml::read(s, &prefs);
 }
-
 
 }  // namespace slow
 }  // namespace rec

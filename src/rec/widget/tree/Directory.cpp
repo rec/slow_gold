@@ -81,7 +81,7 @@ Node* Directory::createChildFile(int begin, int end) {
 }
 
 void Directory::addChildFile(Node* node) {
-  node->listeners()->insert(this);
+  node->addListener(this);
   {
     MessageManagerLock l(thread_.get());
     addSubItem(node);

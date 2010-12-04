@@ -4,7 +4,7 @@
 package rec.widget.pane;
 
 import "rec/widget/Widget.proto";
-import "rec/audio/source/TimeStretch.proto";
+import "rec/audio/source/Stretchy.proto";
 
 message Path {
   repeated string path = 1;

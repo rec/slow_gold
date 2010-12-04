@@ -1,6 +1,7 @@
 package rec.audio.source;
 
 import "rec/widget/tree/VolumeFile.proto";
+import "rec/audio/source/Runny.proto";
 // Describe how exactly to apply the timescaler to a sample.
 
 message TimeStretch {
@@ -30,7 +31,12 @@ message TimeStretch {
   optional uint32 thread_priority = 11   [default = 4];
 };
 
-message StretchedFile {
+message StretchyDesc {
   optional TimeStretch stretch = 1;
   optional widget.tree.VolumeFile file = 2;
+};
+
+message StretchyRunnyDesc {
+  optional StretchyDesc stretchy = 1;
+  optional RunnyDesc runny = 2;
 };

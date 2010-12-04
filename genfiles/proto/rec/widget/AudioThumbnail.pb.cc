@@ -15,9 +15,6 @@ namespace widget {
 
 namespace {
 
-const ::google::protobuf::Descriptor* ThreadDescription_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  ThreadDescription_reflection_ = NULL;
 const ::google::protobuf::Descriptor* AudioThumbnailDesc_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   AudioThumbnailDesc_reflection_ = NULL;
@@ -31,23 +28,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fAudioThumbnail_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/widget/AudioThumbnail.proto");
   GOOGLE_CHECK(file != NULL);
-  ThreadDescription_descriptor_ = file->message_type(0);
-  static const int ThreadDescription_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThreadDescription, priority_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThreadDescription, period_),
-  };
-  ThreadDescription_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      ThreadDescription_descriptor_,
-      ThreadDescription::default_instance_,
-      ThreadDescription_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThreadDescription, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThreadDescription, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(ThreadDescription));
-  AudioThumbnailDesc_descriptor_ = file->message_type(1);
+  AudioThumbnailDesc_descriptor_ = file->message_type(0);
   static const int AudioThumbnailDesc_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AudioThumbnailDesc, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AudioThumbnailDesc, cursor_thickness_),
@@ -83,16 +64,12 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    ThreadDescription_descriptor_, &ThreadDescription::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     AudioThumbnailDesc_descriptor_, &AudioThumbnailDesc::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fwidget_2fAudioThumbnail_2eproto() {
-  delete ThreadDescription::default_instance_;
-  delete ThreadDescription_reflection_;
   delete AudioThumbnailDesc::default_instance_;
   delete AudioThumbnailDesc_reflection_;
 }
@@ -106,25 +83,23 @@ void protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fFont_2eproto();
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
+  ::rec::util::thread::protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/widget/AudioThumbnail.proto\022\nrec.w"
     "idget\032\023rec/gui/Color.proto\032\022rec/gui/Font"
-    ".proto\032\027rec/widget/Widget.proto\"=\n\021Threa"
-    "dDescription\022\023\n\010priority\030\001 \001(\r:\0014\022\023\n\006per"
-    "iod\030\002 \001(\r:\003100\"\304\002\n\022AudioThumbnailDesc\022\"\n"
-    "\006widget\030\001 \001(\0132\022.rec.widget.Widget\022\033\n\020cur"
-    "sor_thickness\030\002 \001(\r:\0011\0220\n#source_samples"
-    "_per_thumbnail_sample\030\004 \001(\r:\003512\022\032\n\017thum"
-    "bnail_cache\030\005 \001(\r:\0015\0224\n\rcursor_thread\030\006 "
-    "\001(\0132\035.rec.widget.ThreadDescription\022\025\n\nti"
-    "c_height\030\010 \001(\r:\0018\022\030\n\rsubtic_height\030\t \001(\r"
-    ":\0013\022\032\n\014use_captions\030\n \001(\010:\004true\022\034\n\016tics_"
-    "at_bottom\030\013 \001(\010:\004true", 501);
+    ".proto\032\027rec/widget/Widget.proto\032\034rec/uti"
+    "l/thread/Thread.proto\"\311\002\n\022AudioThumbnail"
+    "Desc\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget"
+    "\022\033\n\020cursor_thickness\030\002 \001(\r:\0011\0220\n#source_"
+    "samples_per_thumbnail_sample\030\004 \001(\r:\003512\022"
+    "\032\n\017thumbnail_cache\030\005 \001(\r:\0015\0229\n\rcursor_th"
+    "read\030\006 \001(\0132\".rec.util.thread.ThreadDescr"
+    "iption\022\025\n\ntic_height\030\010 \001(\r:\0018\022\030\n\rsubtic_"
+    "height\030\t \001(\r:\0013\022\032\n\014use_captions\030\n \001(\010:\004t"
+    "rue\022\034\n\016tics_at_bottom\030\013 \001(\010:\004true", 473);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/AudioThumbnail.proto", &protobuf_RegisterTypes);
-  ThreadDescription::default_instance_ = new ThreadDescription();
   AudioThumbnailDesc::default_instance_ = new AudioThumbnailDesc();
-  ThreadDescription::default_instance_->InitAsDefaultInstance();
   AudioThumbnailDesc::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fwidget_2fAudioThumbnail_2eproto);
 }
@@ -135,253 +110,6 @@ struct StaticDescriptorInitializer_rec_2fwidget_2fAudioThumbnail_2eproto {
     protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
   }
 } static_descriptor_initializer_rec_2fwidget_2fAudioThumbnail_2eproto_;
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int ThreadDescription::kPriorityFieldNumber;
-const int ThreadDescription::kPeriodFieldNumber;
-#endif  // !_MSC_VER
-
-ThreadDescription::ThreadDescription()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void ThreadDescription::InitAsDefaultInstance() {
-}
-
-ThreadDescription::ThreadDescription(const ThreadDescription& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void ThreadDescription::SharedCtor() {
-  _cached_size_ = 0;
-  priority_ = 4u;
-  period_ = 100u;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-ThreadDescription::~ThreadDescription() {
-  SharedDtor();
-}
-
-void ThreadDescription::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void ThreadDescription::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* ThreadDescription::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return ThreadDescription_descriptor_;
-}
-
-const ThreadDescription& ThreadDescription::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();  return *default_instance_;
-}
-
-ThreadDescription* ThreadDescription::default_instance_ = NULL;
-
-ThreadDescription* ThreadDescription::New() const {
-  return new ThreadDescription;
-}
-
-void ThreadDescription::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    priority_ = 4u;
-    period_ = 100u;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool ThreadDescription::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 priority = 1 [default = 4];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &priority_)));
-          _set_bit(0);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_period;
-        break;
-      }
-      
-      // optional uint32 period = 2 [default = 100];
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_period:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &period_)));
-          _set_bit(1);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void ThreadDescription::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 priority = 1 [default = 4];
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->priority(), output);
-  }
-  
-  // optional uint32 period = 2 [default = 100];
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->period(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* ThreadDescription::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional uint32 priority = 1 [default = 4];
-  if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->priority(), target);
-  }
-  
-  // optional uint32 period = 2 [default = 100];
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->period(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int ThreadDescription::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 priority = 1 [default = 4];
-    if (has_priority()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->priority());
-    }
-    
-    // optional uint32 period = 2 [default = 100];
-    if (has_period()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->period());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void ThreadDescription::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const ThreadDescription* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const ThreadDescription*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void ThreadDescription::MergeFrom(const ThreadDescription& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      set_priority(from.priority());
-    }
-    if (from._has_bit(1)) {
-      set_period(from.period());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void ThreadDescription::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void ThreadDescription::CopyFrom(const ThreadDescription& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ThreadDescription::IsInitialized() const {
-  
-  return true;
-}
-
-void ThreadDescription::Swap(ThreadDescription* other) {
-  if (other != this) {
-    std::swap(priority_, other->priority_);
-    std::swap(period_, other->period_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata ThreadDescription::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = ThreadDescription_descriptor_;
-  metadata.reflection = ThreadDescription_reflection_;
-  return metadata;
-}
 
 
 // ===================================================================
@@ -405,7 +133,7 @@ AudioThumbnailDesc::AudioThumbnailDesc()
 
 void AudioThumbnailDesc::InitAsDefaultInstance() {
   widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
-  cursor_thread_ = const_cast< ::rec::widget::ThreadDescription*>(&::rec::widget::ThreadDescription::default_instance());
+  cursor_thread_ = const_cast< ::rec::util::thread::ThreadDescription*>(&::rec::util::thread::ThreadDescription::default_instance());
 }
 
 AudioThumbnailDesc::AudioThumbnailDesc(const AudioThumbnailDesc& from)
@@ -468,7 +196,7 @@ void AudioThumbnailDesc::Clear() {
     source_samples_per_thumbnail_sample_ = 512u;
     thumbnail_cache_ = 5u;
     if (_has_bit(4)) {
-      if (cursor_thread_ != NULL) cursor_thread_->::rec::widget::ThreadDescription::Clear();
+      if (cursor_thread_ != NULL) cursor_thread_->::rec::util::thread::ThreadDescription::Clear();
     }
     tic_height_ = 8u;
     subtic_height_ = 3u;
@@ -548,7 +276,7 @@ bool AudioThumbnailDesc::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.widget.ThreadDescription cursor_thread = 6;
+      // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -665,7 +393,7 @@ void AudioThumbnailDesc::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->thumbnail_cache(), output);
   }
   
-  // optional .rec.widget.ThreadDescription cursor_thread = 6;
+  // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
   if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, this->cursor_thread(), output);
@@ -721,7 +449,7 @@ void AudioThumbnailDesc::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->thumbnail_cache(), target);
   }
   
-  // optional .rec.widget.ThreadDescription cursor_thread = 6;
+  // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
   if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -787,7 +515,7 @@ int AudioThumbnailDesc::ByteSize() const {
           this->thumbnail_cache());
     }
     
-    // optional .rec.widget.ThreadDescription cursor_thread = 6;
+    // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
     if (has_cursor_thread()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -860,7 +588,7 @@ void AudioThumbnailDesc::MergeFrom(const AudioThumbnailDesc& from) {
       set_thumbnail_cache(from.thumbnail_cache());
     }
     if (from._has_bit(4)) {
-      mutable_cursor_thread()->::rec::widget::ThreadDescription::MergeFrom(from.cursor_thread());
+      mutable_cursor_thread()->::rec::util::thread::ThreadDescription::MergeFrom(from.cursor_thread());
     }
     if (from._has_bit(5)) {
       set_tic_height(from.tic_height());

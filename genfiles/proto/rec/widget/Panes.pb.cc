@@ -150,25 +150,25 @@ void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
-  ::rec::audio::source::protobuf_AddDesc_rec_2faudio_2fsource_2fTimeStretch_2eproto();
+  ::rec::audio::source::protobuf_AddDesc_rec_2faudio_2fsource_2fStretchy_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026rec/widget/Panes.proto\022\017rec.widget.pan"
-    "e\032\027rec/widget/Widget.proto\032\"rec/audio/so"
-    "urce/TimeStretch.proto\"\024\n\004Path\022\014\n\004path\030\001"
-    " \003(\t\"\274\002\n\nNavigation\022\"\n\006widget\030\001 \001(\0132\022.re"
-    "c.widget.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widg"
-    "et.pane.Path\022,\n\003tab\030\003 \001(\0162\037.rec.widget.p"
-    "ane.Navigation.Tab\022<\n\013orientation\030\004 \001(\0162"
-    "\'.rec.widget.pane.Navigation.Orientation"
-    "\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002CD\020\002\022\007\n\003URL\020\003\"W\n\013Or"
-    "ientation\022\017\n\013TABS_AT_TOP\020\000\022\022\n\016TABS_AT_BO"
-    "TTOM\020\001\022\020\n\014TABS_AT_LEFT\020\002\022\021\n\rTABS_AT_RIGH"
-    "T\020\003\"T\n\tDirectory\022\"\n\006widget\030\001 \001(\0132\022.rec.w"
+    "e\032\027rec/widget/Widget.proto\032\037rec/audio/so"
+    "urce/Stretchy.proto\"\024\n\004Path\022\014\n\004path\030\001 \003("
+    "\t\"\274\002\n\nNavigation\022\"\n\006widget\030\001 \001(\0132\022.rec.w"
     "idget.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widget."
-    "pane.Path\"\204\001\n\005Track\022\"\n\006widget\030\001 \001(\0132\022.re"
-    "c.widget.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widg"
-    "et.pane.Path\0222\n\013timestretch\030\003 \001(\0132\035.rec."
-    "audio.source.TimeStretch", 664);
+    "pane.Path\022,\n\003tab\030\003 \001(\0162\037.rec.widget.pane"
+    ".Navigation.Tab\022<\n\013orientation\030\004 \001(\0162\'.r"
+    "ec.widget.pane.Navigation.Orientation\" \n"
+    "\003Tab\022\010\n\004FILE\020\001\022\006\n\002CD\020\002\022\007\n\003URL\020\003\"W\n\013Orien"
+    "tation\022\017\n\013TABS_AT_TOP\020\000\022\022\n\016TABS_AT_BOTTO"
+    "M\020\001\022\020\n\014TABS_AT_LEFT\020\002\022\021\n\rTABS_AT_RIGHT\020\003"
+    "\"T\n\tDirectory\022\"\n\006widget\030\001 \001(\0132\022.rec.widg"
+    "et.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widget.pan"
+    "e.Path\"\204\001\n\005Track\022\"\n\006widget\030\001 \001(\0132\022.rec.w"
+    "idget.Widget\022#\n\004path\030\002 \001(\0132\025.rec.widget."
+    "pane.Path\0222\n\013timestretch\030\003 \001(\0132\035.rec.aud"
+    "io.source.TimeStretch", 661);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Panes.proto", &protobuf_RegisterTypes);
   Path::default_instance_ = new Path();

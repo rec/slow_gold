@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="xXq8FZxGt" name="tests">
+  <MAINGROUP id="G5bp99ir3" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -140,6 +140,8 @@
                 name="Stretchy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Stretchy_test.cpp"
                 id="F9pVjTzFM" name="Stretchy_test.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/StretchyFactory.h"
+                id="5fnxSUXXJ" name="StretchyFactory.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="wv92ZzL1g"
                 name="TestHarness.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="4jKydRFeH"
@@ -569,8 +571,6 @@
           <FILE compile="1" file="../../src/rec/util/cd/StripLines_test.cpp"
                 id="ylAaJUlV2" name="StripLines_test.cpp" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/util/ChangeLocker.h" id="L3IcEiqYk"
-              name="ChangeLocker.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Circular.cpp" id="2QsjC37Cl"
               name="Circular.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Circular.h" id="vDoVwhEbc"
@@ -612,8 +612,12 @@
                 name="Callback.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/CallbackLoop.h" id="kv2rwFuJ7"
                 name="CallbackLoop.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/ChangeLocker.h" id="p0Y8Bp7Bd"
+                name="ChangeLocker.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Cycler.h" id="KUstZh1GG"
                 name="Cycler.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Factory.h" id="1IXQNeOLO"
+                name="Factory.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/LockedMessage.h"
                 id="dCnGZs2KL" name="LockedMessage.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Locker.h" id="XhghJviRV"
@@ -624,6 +628,8 @@
                 name="Runnable.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/RunnableThread.h"
                 id="CKRmkFvxN" name="RunnableThread.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Trash.h" id="viZajKWxb"
+                name="Trash.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Waiter.h" id="WvWyIFfU0"
                 name="Waiter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/WaitLoop.h" id="qozZ9B5TX"
@@ -719,10 +725,14 @@
         </GROUP>
         <GROUP id="RWXdw5RuA" name="audio">
           <GROUP id="LaLhoIKxe" name="source">
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/TimeStretch.pb.cc"
-                  id="Dz6FXthEh" name="TimeStretch.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/TimeStretch.pb.h"
-                  id="ZxGiseGmG" name="TimeStretch.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
+                  id="aEJPeVALd" name="Runny.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Runny.pb.h"
+                  id="mBJVRgNGC" name="Runny.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.cc"
+                  id="5CMieWj10" name="Stretchy.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.h"
+                  id="UbpeBb8wH" name="Stretchy.pb.h" resource="0"/>
           </GROUP>
         </GROUP>
         <GROUP id="OJ6PRjMj4" name="data">
@@ -790,6 +800,12 @@
             <FILE compile="0" file="../../genfiles/proto/rec/util/cd/Album.pb.h"
                   id="EKWPGYD7f" name="Album.pb.h" resource="0"/>
           </GROUP>
+          <GROUP id="boJapF56x" name="thread">
+            <FILE compile="1" file="../../genfiles/proto/rec/util/thread/Thread.pb.cc"
+                  id="68eC0Vh2j" name="Thread.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/util/thread/Thread.pb.h"
+                  id="9HXyxZDGr" name="Thread.pb.h" resource="0"/>
+          </GROUP>
         </GROUP>
         <GROUP id="q4gziFlTa" name="widget">
           <FILE compile="1" file="../../genfiles/proto/rec/widget/AudioThumbnail.pb.cc"
@@ -831,7 +847,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="oQqT0o7ru" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="8YO1WkEaN" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

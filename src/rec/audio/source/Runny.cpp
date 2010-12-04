@@ -5,20 +5,15 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Runny::Runny(Source* source, int bufferSize, int minBufferSize, int chunkSize)
+Runny::Runny(const RunnyDesc& desc, Source* source)
     : Wrappy::Position(source),
-      buffer_(2, bufferSize),
-      filled_(0, bufferSize),
-      minBufferSize_(minBufferSize),
-      chunkSize_(chunkSize) {
+      Thread("Runny"),
+      buffer_(2, desc.buffer_size()),
+      desc_(desc) {
+  setPriority(desc.thread().priority());
 }
 
 Runny::~Runny() {}
-
-bool Runny::isReady() {
-  ScopedLock l(lock_);
-  return filled_.filled() >= minBufferSize_;
-}
 
 void Runny::setNextReadPosition(int p) {
   {
@@ -30,23 +25,28 @@ void Runny::setNextReadPosition(int p) {
 }
 
 bool Runny::fill() {
-  int toFill;
   AudioSourceChannelInfo info;
   {
     ScopedLock l(lock_);
-    toFill = juce::jmin(filled_.remainingBlock(), (int64)chunkSize_);
-    if (!toFill)
+    info.numSamples = juce::jmin(filled_.remainingBlock(),
+                                 (int64)desc_.chunk_size());
+    if (!info.numSamples)
       return true;  // No more to fill!
 
-    info.buffer = &buffer_;
     info.startSample = filled_.end();
-    info.numSamples = toFill;
   }
+  info.buffer = &buffer_;
+
+  if (threadShouldExit())
+    return true;
 
   source_->getNextAudioBlock(info);
 
+  if (threadShouldExit())
+    return true;
+
   ScopedLock l(lock_);
-  return !filled_.fill(toFill);
+  return !filled_.fill(info.numSamples);
 }
 
 void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -57,39 +57,25 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     ready = filled_.filled();
   }
 
+  if (threadShouldExit())
+    return;
+
   if (ready < info.numSamples)
     LOG(ERROR) << "Expected " << ready << " but got " << info.numSamples;
-
   copyCircularSamples(buffer_, begin, info);
+
+  if (threadShouldExit())
+    return;
 
   ScopedLock l(lock_);
   filled_.consume(info.numSamples);
 }
 
-class RunnyThread : public Thread {
- public:
-  RunnyThread(Runny* runny, int wait)
-      : Thread("RunnyThread"),
-        runny_(runny),
-        wait_(wait) {
+void Runny::run() {
+  while (!threadShouldExit()) {
+    if (fill() && !threadShouldExit())
+      wait(desc_.thread().period());
   }
-
-  virtual void run() {
-    while (!threadShouldExit()) {
-      if (!runny_->fill())
-        wait(wait_);
-    }
-  }
-
- private:
-  Runny* runny_;
-  const int wait_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnyThread);
-};
-
-Thread* Runny::makeThread(int wait) {
-  return new RunnyThread(this, wait);
 }
 
 }  // namespace source

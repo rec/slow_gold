@@ -3,7 +3,7 @@
 #include "rec/audio/source/Buffery.h"
 #include "rec/audio/source/Stretchy.h"
 #include "rec/audio/source/TimeScaler.h"
-#include "rec/audio/source/TimeStretch.pb.h"
+#include "rec/audio/source/Stretchy.pb.h"
 #include "rec/audio/source/Wrappy.h"
 
 using namespace juce;

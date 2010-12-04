@@ -24,7 +24,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/widget/Widget.pb.h"
-#include "rec/audio/source/TimeStretch.pb.h"
+#include "rec/audio/source/Stretchy.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {

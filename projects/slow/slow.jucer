@@ -8,7 +8,7 @@
 		<CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="${__JUCE_INCLUDES}" isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 		<CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="${__JUCE_INCLUDES}" isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 	</CONFIGURATIONS>
-	<MAINGROUP id="EblnLhMRu" name="Slow">
+	<MAINGROUP id="JWFiRUUXX" name="Slow">
 		<GROUP id="VdEVblIO9" name="rec">
 			<GROUP id="b0HzrMj6A" name="audio">
 				<GROUP id="savwfEiwO" name="ammf_scaler">
@@ -62,6 +62,7 @@
 					<FILE compile="0" file="../../src/rec/audio/source/Stereo.h" id="eyoyO9r5W" name="Stereo.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/Stretchy.cpp" id="kRsUWC1ll" name="Stretchy.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="BATVw6q8t" name="Stretchy.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/audio/source/StretchyFactory.h" id="erfMuJAJ6" name="StretchyFactory.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="j33iCd7eI" name="TestHarness.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="auALBxCW7" name="Testy.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/TimeScaler.cpp" id="51CVywQLS" name="TimeScaler.cpp" resource="0"/>
@@ -282,7 +283,6 @@
 					<FILE compile="1" file="../../src/rec/util/cd/StripLines.cpp" id="bS8QssdxS" name="StripLines.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/cd/StripLines.h" id="O3gfl80Bl" name="StripLines.h" resource="0"/>
 				</GROUP>
-				<FILE compile="0" file="../../src/rec/util/ChangeLocker.h" id="mGaDgQwfa" name="ChangeLocker.h" resource="0"/>
 				<FILE compile="1" file="../../src/rec/util/Circular.cpp" id="5VGCJvDPO" name="Circular.cpp" resource="0"/>
 				<FILE compile="0" file="../../src/rec/util/Circular.h" id="VIf5GxvTm" name="Circular.h" resource="0"/>
 				<FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="VBh6REprH" name="Defaulter.cpp" resource="0"/>
@@ -300,12 +300,15 @@
 				<GROUP id="C9O0mgzqg" name="thread">
 					<FILE compile="0" file="../../src/rec/util/thread/Callback.h" id="A0I5x4KgD" name="Callback.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/CallbackLoop.h" id="O6x67hbBr" name="CallbackLoop.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/util/thread/ChangeLocker.h" id="Tp2B5QCzf" name="ChangeLocker.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/Cycler.h" id="FDrw9lrWg" name="Cycler.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/util/thread/Factory.h" id="XuMo2uxI2" name="Factory.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/LockedMessage.h" id="WhJwXMdkn" name="LockedMessage.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/Locker.h" id="e5QIvMRLh" name="Locker.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/Loop.h" id="DXNc7S9Tc" name="Loop.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/Runnable.h" id="KcVOOmClF" name="Runnable.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/RunnableThread.h" id="fieqhKbOy" name="RunnableThread.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/util/thread/Trash.h" id="7qeqGdyNq" name="Trash.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/Waiter.h" id="TqLqwhMi4" name="Waiter.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/WaitLoop.h" id="Tby4zMHvM" name="WaitLoop.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/thread/Wrapper.h" id="TS41Lo2iZ" name="Wrapper.h" resource="0"/>
@@ -355,8 +358,10 @@
 				</GROUP>
 				<GROUP id="bFaWjO8dm" name="audio">
 					<GROUP id="NisLgiNe0" name="source">
-						<FILE compile="1" file="../../genfiles/proto/rec/audio/source/TimeStretch.pb.cc" id="AUVyLD4Xn" name="TimeStretch.pb.cc" resource="0"/>
-						<FILE compile="0" file="../../genfiles/proto/rec/audio/source/TimeStretch.pb.h" id="JezK8nKxq" name="TimeStretch.pb.h" resource="0"/>
+						<FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc" id="I9UIdkLCw" name="Runny.pb.cc" resource="0"/>
+						<FILE compile="0" file="../../genfiles/proto/rec/audio/source/Runny.pb.h" id="IUSIBflIF" name="Runny.pb.h" resource="0"/>
+						<FILE compile="1" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.cc" id="h2z89p79E" name="Stretchy.pb.cc" resource="0"/>
+						<FILE compile="0" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.h" id="iiBTSEHYB" name="Stretchy.pb.h" resource="0"/>
 					</GROUP>
 				</GROUP>
 				<GROUP id="RKRzivjp3" name="data">
@@ -398,6 +403,10 @@
 						<FILE compile="1" file="../../genfiles/proto/rec/util/cd/Album.pb.cc" id="S2Z9K8zjy" name="Album.pb.cc" resource="0"/>
 						<FILE compile="0" file="../../genfiles/proto/rec/util/cd/Album.pb.h" id="YZbiu8Y2y" name="Album.pb.h" resource="0"/>
 					</GROUP>
+					<GROUP id="S82fApWyp" name="thread">
+						<FILE compile="1" file="../../genfiles/proto/rec/util/thread/Thread.pb.cc" id="FGyFpH45t" name="Thread.pb.cc" resource="0"/>
+						<FILE compile="0" file="../../genfiles/proto/rec/util/thread/Thread.pb.h" id="3Nxthk8Ax" name="Thread.pb.h" resource="0"/>
+					</GROUP>
 				</GROUP>
 				<GROUP id="OZcaExzrG" name="widget">
 					<FILE compile="1" file="../../genfiles/proto/rec/widget/AudioThumbnail.pb.cc" id="0q7CU4NKo" name="AudioThumbnail.pb.cc" resource="0"/>
@@ -423,7 +432,7 @@
 				</GROUP>
 			</GROUP>
 		</GROUP>
-		<FILE compile="1" file="Main.cpp" id="EaIETHaK5" name="Main.cpp" resource="0"/>
+		<FILE compile="1" file="Main.cpp" id="aJ9OL3UUT" name="Main.cpp" resource="0"/>
 	</MAINGROUP>
 	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>

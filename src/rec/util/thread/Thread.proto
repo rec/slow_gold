@@ -1,0 +1,7 @@
+package rec.util.thread;
+
+message ThreadDescription {
+  optional uint32 priority = 1 [default = 4];
+  optional uint32 period = 2   [default = 100];
+};
+

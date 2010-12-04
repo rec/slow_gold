@@ -26,6 +26,7 @@
 #include "rec/gui/Color.pb.h"
 #include "rec/gui/Font.pb.h"
 #include "rec/widget/Widget.pb.h"
+#include "rec/util/thread/Thread.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -36,107 +37,9 @@ void  protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
 void protobuf_AssignDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
 void protobuf_ShutdownFile_rec_2fwidget_2fAudioThumbnail_2eproto();
 
-class ThreadDescription;
 class AudioThumbnailDesc;
 
 // ===================================================================
-
-class ThreadDescription : public ::google::protobuf::Message {
- public:
-  ThreadDescription();
-  virtual ~ThreadDescription();
-  
-  ThreadDescription(const ThreadDescription& from);
-  
-  inline ThreadDescription& operator=(const ThreadDescription& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const ThreadDescription& default_instance();
-  
-  void Swap(ThreadDescription* other);
-  
-  // implements Message ----------------------------------------------
-  
-  ThreadDescription* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ThreadDescription& from);
-  void MergeFrom(const ThreadDescription& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // optional uint32 priority = 1 [default = 4];
-  inline bool has_priority() const;
-  inline void clear_priority();
-  static const int kPriorityFieldNumber = 1;
-  inline ::google::protobuf::uint32 priority() const;
-  inline void set_priority(::google::protobuf::uint32 value);
-  
-  // optional uint32 period = 2 [default = 100];
-  inline bool has_period() const;
-  inline void clear_period();
-  static const int kPeriodFieldNumber = 2;
-  inline ::google::protobuf::uint32 period() const;
-  inline void set_period(::google::protobuf::uint32 value);
-  
-  // @@protoc_insertion_point(class_scope:rec.widget.ThreadDescription)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::google::protobuf::uint32 priority_;
-  ::google::protobuf::uint32 period_;
-  friend void  protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
-  friend void protobuf_AssignDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fwidget_2fAudioThumbnail_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static ThreadDescription* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class AudioThumbnailDesc : public ::google::protobuf::Message {
  public:
@@ -220,12 +123,12 @@ class AudioThumbnailDesc : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 thumbnail_cache() const;
   inline void set_thumbnail_cache(::google::protobuf::uint32 value);
   
-  // optional .rec.widget.ThreadDescription cursor_thread = 6;
+  // optional .rec.util.thread.ThreadDescription cursor_thread = 6;
   inline bool has_cursor_thread() const;
   inline void clear_cursor_thread();
   static const int kCursorThreadFieldNumber = 6;
-  inline const ::rec::widget::ThreadDescription& cursor_thread() const;
-  inline ::rec::widget::ThreadDescription* mutable_cursor_thread();
+  inline const ::rec::util::thread::ThreadDescription& cursor_thread() const;
+  inline ::rec::util::thread::ThreadDescription* mutable_cursor_thread();
   
   // optional uint32 tic_height = 8 [default = 8];
   inline bool has_tic_height() const;
@@ -264,7 +167,7 @@ class AudioThumbnailDesc : public ::google::protobuf::Message {
   ::google::protobuf::uint32 cursor_thickness_;
   ::google::protobuf::uint32 source_samples_per_thumbnail_sample_;
   ::google::protobuf::uint32 thumbnail_cache_;
-  ::rec::widget::ThreadDescription* cursor_thread_;
+  ::rec::util::thread::ThreadDescription* cursor_thread_;
   ::google::protobuf::uint32 tic_height_;
   ::google::protobuf::uint32 subtic_height_;
   bool use_captions_;
@@ -293,42 +196,6 @@ class AudioThumbnailDesc : public ::google::protobuf::Message {
 
 
 // ===================================================================
-
-// ThreadDescription
-
-// optional uint32 priority = 1 [default = 4];
-inline bool ThreadDescription::has_priority() const {
-  return _has_bit(0);
-}
-inline void ThreadDescription::clear_priority() {
-  priority_ = 4u;
-  _clear_bit(0);
-}
-inline ::google::protobuf::uint32 ThreadDescription::priority() const {
-  return priority_;
-}
-inline void ThreadDescription::set_priority(::google::protobuf::uint32 value) {
-  _set_bit(0);
-  priority_ = value;
-}
-
-// optional uint32 period = 2 [default = 100];
-inline bool ThreadDescription::has_period() const {
-  return _has_bit(1);
-}
-inline void ThreadDescription::clear_period() {
-  period_ = 100u;
-  _clear_bit(1);
-}
-inline ::google::protobuf::uint32 ThreadDescription::period() const {
-  return period_;
-}
-inline void ThreadDescription::set_period(::google::protobuf::uint32 value) {
-  _set_bit(1);
-  period_ = value;
-}
-
-// -------------------------------------------------------------------
 
 // AudioThumbnailDesc
 
@@ -397,20 +264,20 @@ inline void AudioThumbnailDesc::set_thumbnail_cache(::google::protobuf::uint32 v
   thumbnail_cache_ = value;
 }
 
-// optional .rec.widget.ThreadDescription cursor_thread = 6;
+// optional .rec.util.thread.ThreadDescription cursor_thread = 6;
 inline bool AudioThumbnailDesc::has_cursor_thread() const {
   return _has_bit(4);
 }
 inline void AudioThumbnailDesc::clear_cursor_thread() {
-  if (cursor_thread_ != NULL) cursor_thread_->::rec::widget::ThreadDescription::Clear();
+  if (cursor_thread_ != NULL) cursor_thread_->::rec::util::thread::ThreadDescription::Clear();
   _clear_bit(4);
 }
-inline const ::rec::widget::ThreadDescription& AudioThumbnailDesc::cursor_thread() const {
+inline const ::rec::util::thread::ThreadDescription& AudioThumbnailDesc::cursor_thread() const {
   return cursor_thread_ != NULL ? *cursor_thread_ : *default_instance_->cursor_thread_;
 }
-inline ::rec::widget::ThreadDescription* AudioThumbnailDesc::mutable_cursor_thread() {
+inline ::rec::util::thread::ThreadDescription* AudioThumbnailDesc::mutable_cursor_thread() {
   _set_bit(4);
-  if (cursor_thread_ == NULL) cursor_thread_ = new ::rec::widget::ThreadDescription;
+  if (cursor_thread_ == NULL) cursor_thread_ = new ::rec::util::thread::ThreadDescription;
   return cursor_thread_;
 }
 

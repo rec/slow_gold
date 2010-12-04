@@ -49,6 +49,7 @@ class MainPageK : public juce::Slider::Listener,
 
   void loadFileIntoTransport(const widget::tree::VolumeFile& audioFile);
 
+
  private:
   static const int THREAD_PRIORITY = 3;
   static const int MINIMUM_SAMPLE_PRELOAD = 4096;

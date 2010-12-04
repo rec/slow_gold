@@ -5,6 +5,7 @@
 #include <set>
 
 #include "rec/base/base.h"
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {
@@ -20,22 +21,35 @@ class Listener {
     typedef std::set<Listener*> Listeners;
     typedef typename Listeners::iterator iterator;
 
-    Listeners* listeners() { return &listeners_; }
+    Set() {}
+    virtual ~Set() {}
 
-    virtual void operator()(Type x) {
+    void addListener(Listener* listener) {
+      ScopedLock l(lock_);
+      listeners_.insert(listener);
+    }
+
+    void removeListener(Listener* listener) {
+      ScopedLock l(lock_);
+      listeners_.remove(listener);
+    }
+
+    void tellListeners(Type x) {
+      ScopedLock l(lock_);
       for (iterator i = listeners_.begin(); i != listeners_.end(); ++i)
         (**i)(x);
     }
 
-    virtual ~Set() {}
+    virtual void operator()(Type x) {
+      tellListeners(x);
+    }
 
-   private:
+   protected:
+    CriticalSection lock_;
     Listeners listeners_;
+    DISALLOW_COPY_AND_ASSIGN(Set);
   };
 };
-
-
-
 
 }  // namespace util
 }  // namespace rec
