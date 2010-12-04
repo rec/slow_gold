@@ -19,7 +19,6 @@ UntypedData::UntypedData(const File& file, Message* message, App* app)
       message_(message),
       setter_(this),
       app_(app),
-      lock_(new CriticalSection),
       alreadyReadFromFile_(false) {
 }
 
@@ -29,6 +28,7 @@ void UntypedData::readFromFile() const {
       LOG(INFO) << "Opening data " << file_->getFullPathName().toCString();
     else
       LOG(ERROR) << "New data " << file_->getFullPathName().toCString();
+
     alreadyReadFromFile_ = true;
   }
 }
@@ -40,7 +40,7 @@ UntypedData::~UntypedData() {
 
 void UntypedData::operator()(proto::Operation* op) {
   {
-    ScopedLock l(*lock_);
+    ScopedLock l(lock_);
     queue_.push_back(op);
   }
   app_->needsUpdate(this);
@@ -48,11 +48,10 @@ void UntypedData::operator()(proto::Operation* op) {
 
 void UntypedData::update() {
   {
-    ScopedLock l(*lock_);
+    ScopedLock l(lock_);
     if (queue_.empty())
       return;
 
-    readFromFile();
     for (OperationList::iterator i = queue_.begin(); i != queue_.end(); ++i)
       undo_.push_back(applyOperation(**i, message_));
 
@@ -65,7 +64,7 @@ void UntypedData::update() {
 void UntypedData::writeToFile() const {
   scoped_ptr<Message> msg;
   {
-    ScopedLock l(*lock_);
+    ScopedLock l(lock_);
     if (!alreadyReadFromFile_)
       return;
 

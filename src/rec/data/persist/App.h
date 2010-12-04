@@ -34,6 +34,7 @@ class App {
     if (i == data_.end()) {
       File file = appDir().getChildFile(filename.c_str());
       Data<Proto>* data = new Data<Proto>(file, this);
+      data->readFromFile();
       data_[filename] = data;
       return data;
     }

@@ -45,7 +45,7 @@ class UntypedData : public util::Listener<proto::Operation*> {
   Setter setter_;
 
   App* app_;
-  scoped_ptr<CriticalSection> lock_;
+  CriticalSection lock_;
   mutable bool alreadyReadFromFile_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedData);
