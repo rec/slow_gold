@@ -6,7 +6,6 @@
 #include "rec/base/base.h"
 #include "rec/util/Method.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {

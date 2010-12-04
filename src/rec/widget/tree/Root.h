@@ -5,7 +5,6 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/VolumeFile.pb.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace widget {

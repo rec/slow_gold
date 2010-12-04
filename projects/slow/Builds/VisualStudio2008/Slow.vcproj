@@ -172,6 +172,7 @@
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Double.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchyThread.h"/>
@@ -182,6 +183,7 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TestHarness.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TimeScaler.cpp"/>
@@ -192,6 +194,7 @@
         <Filter Name="base">
           <File RelativePath="..\..\..\..\src\rec\base\ArraySize.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\base.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\BaseNoJuce.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\basictypes.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\build_config.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\Cast.h"/>
@@ -376,6 +379,7 @@
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\slow\Preferences.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Preferences.h"/>
         </Filter>
         <Filter Name="util">
@@ -419,11 +423,15 @@
           <Filter Name="thread">
             <File RelativePath="..\..\..\..\src\rec\util\thread\Callback.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\CallbackLoop.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\ChangeLocker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Cycler.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Factory.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\LockedMessage.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Loop.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Runnable.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\RunnableThread.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Waiter.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\WaitLoop.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Wrapper.h"/>
@@ -473,8 +481,10 @@
           </Filter>
           <Filter Name="audio">
             <Filter Name="source">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\TimeStretch.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\TimeStretch.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.h"/>
             </Filter>
           </Filter>
           <Filter Name="data">
@@ -515,6 +525,10 @@
             <Filter Name="cd">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.h"/>
+            </Filter>
+            <Filter Name="thread">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h"/>
             </Filter>
           </Filter>
           <Filter Name="widget">

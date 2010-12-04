@@ -1,4 +1,8 @@
 #include <vector>
+
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/message.h>
+
 #include "rec/data/yaml/Internal.h"
 
 namespace rec {

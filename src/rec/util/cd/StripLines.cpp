@@ -1,6 +1,5 @@
 #include "rec/util/cd/StripLines.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
 

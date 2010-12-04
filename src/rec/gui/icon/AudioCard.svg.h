@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_ICON_AUDIOCARD__
 #define __REC_GUI_ICON_AUDIOCARD__
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace gui {

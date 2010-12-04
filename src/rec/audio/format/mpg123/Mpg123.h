@@ -3,7 +3,6 @@
 
 // Constants and static functions for the mpg123 library.
 
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/base/base.h"
 //#define __cplusplus
 #include "include/mpg123.h"

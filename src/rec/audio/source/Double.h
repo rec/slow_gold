@@ -5,7 +5,6 @@
 #include "rec/audio/source/Stretchy.pb.h"
 #include "rec/util/ChangeLocker.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

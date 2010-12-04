@@ -1,41 +1,9 @@
 #ifndef __REC_BASE_BASE__
-#define __REC_BASE_BASE__
 
-#include <string>
-
-#include "rec/base/disallow.h"
-#include "rec/base/scoped_ptr.h"
-#include "rec/base/types.h"
-
-namespace google {
-namespace protobuf {
-
-class Message;
-
-}  // namespace protobuf
-}  // namespace google
-
-namespace juce {
-
-class AudioCDReader;
-class AudioFormatReader;
-class AudioSampleBuffer;
-class AudioSourceChannelInfo;
-class CriticalSection;
-class File;
-class PositionableAudioSource;
-class ScopedLock;
-class StreamingSocket;
-class String;
-class StringArray;
-class StringPairArray;
-class Thread;
-
-}  // namespace juce
+#include "rec/base/BaseNoJuce.h"  // defines the guards here!
+#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
-
-typedef google::protobuf::Message Message;
 
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioFormatReader AudioFormatReader;
@@ -51,8 +19,6 @@ typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
 typedef juce::Thread Thread;
 
-typedef std::string string;
-typedef unsigned int uint;
 }  // namespace rec
 
-#endif  // __REC_BASE_BASE__
+#endif

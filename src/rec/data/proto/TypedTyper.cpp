@@ -1,3 +1,5 @@
+#include <google/protobuf/descriptor.h>
+
 #include "rec/data/proto/TypedTyper.h"
 
 namespace rec {
@@ -47,6 +49,8 @@ namespace typer {
   ADD(CTYPE, TYPE)                                                      \
   DEF_TYPE(CTYPE, UPPER)                                                \
   COPY(CTYPE, CTYPE)                                                    \
+
+#undef STRING
 
 DEF_ALL(double, Double, DOUBLE)
 DEF_ALL(float, Float, FLOAT)

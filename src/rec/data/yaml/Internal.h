@@ -3,19 +3,27 @@
 
 #include <glog/logging.h>
 
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/message.h>
-
-#include "rec/base/base.h"
 #include "rec/data/yaml/Yaml.h"
+#include "rec/base/BaseNoJuce.h"
 #include "rec/data/yaml/include/yaml-cpp/yaml.h"
 
-using google::protobuf::EnumValueDescriptor;
-using google::protobuf::FieldDescriptor;
-using google::protobuf::Reflection;
+namespace google {
+namespace protobuf {
+
+class EnumValueDescriptor;
+class FieldDescriptor;
+class Reflection;
+
+}  // namespace google
+}  // namespace protobuf
+
 
 namespace rec {
 namespace yaml {
+
+typedef google::protobuf::EnumValueDescriptor EnumValueDescriptor;
+typedef google::protobuf::FieldDescriptor FieldDescriptor;
+typedef google::protobuf::Reflection Reflection;
 
 typedef FieldDescriptor FD;
 

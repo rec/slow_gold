@@ -8,7 +8,6 @@
 #include "rec/widget/Painter.h"
 #include "rec/gui/Color.pb.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace widget {

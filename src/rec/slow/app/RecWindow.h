@@ -2,7 +2,6 @@
 #define __REC_WINDOW
 
 #include "rec/slow/Preferences.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
 

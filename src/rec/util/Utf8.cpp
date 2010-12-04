@@ -2,7 +2,6 @@
 
 #include "rec/util/Utf8.h"
 #include "rec/base/Arraysize.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {

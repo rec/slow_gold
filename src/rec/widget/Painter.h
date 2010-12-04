@@ -5,7 +5,6 @@
 #include "rec/widget/Widget.pb.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace widget {

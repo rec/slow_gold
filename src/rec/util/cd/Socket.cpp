@@ -3,7 +3,6 @@
 #include "rec/util/cd/Socket.h"
 #include "rec/util/Exception.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
 

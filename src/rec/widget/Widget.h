@@ -2,7 +2,6 @@
 #define __REC_WIDGET_WIDGET__
 
 #include "rec/base/base.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace widget {

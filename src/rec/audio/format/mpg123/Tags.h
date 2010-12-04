@@ -2,7 +2,6 @@
 #define __REC_AUDIO_FORMAT_MPG123_TAGS__
 
 #include "rec/audio/format/mpg123/Mpg123.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace audio {

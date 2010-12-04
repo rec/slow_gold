@@ -3,7 +3,6 @@
 
 #include "rec/data/proto/LogFile.h"
 #include "rec/data/proto/Operation.pb.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace proto {

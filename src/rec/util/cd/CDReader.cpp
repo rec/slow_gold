@@ -2,7 +2,6 @@
 
 #include "rec/util/cd/CDReader.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
 

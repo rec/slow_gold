@@ -1,4 +1,3 @@
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/audio/format/mpg123/Format.h"
 

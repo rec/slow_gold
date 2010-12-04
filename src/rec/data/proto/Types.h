@@ -3,7 +3,6 @@
 
 #include <string>
 
-#include <google/protobuf/descriptor.h>
 #include "rec/base/base.h"
 #include "rec/data/proto/Operation.pb.h"
 

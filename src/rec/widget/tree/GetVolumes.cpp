@@ -6,8 +6,6 @@
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/widget/tree/Tree.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
-
 using namespace juce;
 
 namespace rec {

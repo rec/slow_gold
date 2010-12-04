@@ -5,7 +5,6 @@
 #include "rec/data/persist/Data.h"
 #include "rec/util/STL.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/data/persist/AppDirectory.h"
 
 namespace rec {

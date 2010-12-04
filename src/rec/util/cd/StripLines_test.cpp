@@ -2,7 +2,6 @@
 #include <glog/logging.h>
 
 #include "rec/util/cd/StripLines.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {

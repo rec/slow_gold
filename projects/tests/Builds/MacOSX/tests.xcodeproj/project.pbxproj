@@ -163,6 +163,7 @@
 		E81A83EF6817555BDA84B06D /* GetVolumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAFAED7CC74F470416E267 /* GetVolumes.cpp */; };
 		EC4EB9FFACB5FF6303173EC4 /* stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B66FA43BEC82099194C54D8 /* stream.cpp */; };
 		ED4397EE973B01B63A66FFA5 /* JuceLibraryCode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 93BF2BCB183C30ABB83AB74A /* JuceLibraryCode.mm */; };
+		EE38591555A22B7584DE3E18 /* Preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EAD81574ACF05AC27D04B76 /* Preferences.cpp */; };
 		EE3A13376054A5498566D5AF /* GetNextBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF28D4E2D93055FD30893EF1 /* GetNextBlock.cpp */; };
 		F1B382EA61590995A1352965 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A433B710BF477DE534CF18B /* Cocoa.framework */; };
 		F28641B39D6646DB083DF4DE /* Socket_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D029FABB1252F9A8600B3E6 /* Socket_test.cpp */; };
@@ -270,6 +271,7 @@
 		4CCBFD4FD6D238116FC2EAE8 /* emitterutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = emitterutils.h; path = ../../../../src/rec/data/yaml/src/emitterutils.h; sourceTree = SOURCE_ROOT; };
 		4D431D9E24A5740D3FCA6CAD /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
 		4DD45B4AF3DDEA69A8DE4CA7 /* Reader_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Reader_test.cpp; path = ../../../../src/rec/audio/format/mpg123/Reader_test.cpp; sourceTree = SOURCE_ROOT; };
+		4EAD81574ACF05AC27D04B76 /* Preferences.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Preferences.cpp; path = ../../../../src/rec/slow/Preferences.cpp; sourceTree = SOURCE_ROOT; };
 		4F9D41ECC224C42CEA84BBFB /* MergeBlockSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MergeBlockSet.h; path = ../../../../src/rec/util/block/MergeBlockSet.h; sourceTree = SOURCE_ROOT; };
 		4FDFA33DF4EAF1E05335DA58 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		4FEB0BCB1EE0C28230FB4E39 /* emitter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitter.cpp; path = ../../../../src/rec/data/yaml/src/emitter.cpp; sourceTree = SOURCE_ROOT; };
@@ -503,6 +505,7 @@
 		DDF8779E8FFF1F33A0333FEB /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.h; path = ../../../../src/rec/gui/Color.h; sourceTree = SOURCE_ROOT; };
 		DE23CFE673643158F65ED445 /* Convertors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Convertors.cpp; path = ../../../../src/rec/widget/tree/Convertors.cpp; sourceTree = SOURCE_ROOT; };
 		DE98B28A9113C0D820F70346 /* stringsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stringsource.h; path = ../../../../src/rec/data/yaml/src/stringsource.h; sourceTree = SOURCE_ROOT; };
+		E0715BED1B299348F9621C18 /* BaseNoJuce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseNoJuce.h; path = ../../../../src/rec/base/BaseNoJuce.h; sourceTree = SOURCE_ROOT; };
 		E0CE3F2FD4A1456EFC505BB4 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Types.h; path = ../../../../src/rec/data/proto/Types.h; sourceTree = SOURCE_ROOT; };
 		E32168006936976727C38508 /* Exception.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Exception.h; path = ../../../../src/rec/util/Exception.h; sourceTree = SOURCE_ROOT; };
 		E3D98A2FC27286C826B6BEA6 /* CDDBResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDDBResponse.h; path = ../../../../src/rec/util/cd/CDDBResponse.h; sourceTree = SOURCE_ROOT; };
@@ -658,20 +661,6 @@
 			name = gui;
 			sourceTree = "<group>";
 		};
-		2DE6846C54C2318261EDFB24 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		2EAE964B011CB54B2E0C215B /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +681,20 @@
 				5AA1B34F00CD57CEBFF8DF24 /* widget */,
 			);
 			name = rec;
+			sourceTree = "<group>";
+		};
+		3DA3385A8B62BF0E7F1A048B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		401AE059F2A868FC7EB8632E /* icon */ = {
@@ -1239,6 +1242,7 @@
 			isa = PBXGroup;
 			children = (
 				CB58FEE23098914760EE6131 /* app */,
+				4EAD81574ACF05AC27D04B76 /* Preferences.cpp */,
 				D2D15B7BD86027CF914DFF29 /* Preferences.h */,
 			);
 			name = slow;
@@ -1268,6 +1272,7 @@
 			children = (
 				5C9E5CE25F359AB1053A59B4 /* ArraySize.h */,
 				D82E65A615A8B6043D56E732 /* base.h */,
+				E0715BED1B299348F9621C18 /* BaseNoJuce.h */,
 				826A8B25C8C5B88DB82DA078 /* basictypes.h */,
 				8DBBD52D060C2E557EB7D936 /* build_config.h */,
 				CA44CF23F9C6BE15355CF99B /* Cast.h */,
@@ -1382,7 +1387,7 @@
 				French,
 				German,
 			);
-			mainGroup = 2DE6846C54C2318261EDFB24 /* Source */;
+			mainGroup = 3DA3385A8B62BF0E7F1A048B /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1493,6 +1498,7 @@
 				CFB79974266A20D4A65162A0 /* MainPageJ.cpp in Sources */,
 				14235BFD53600B493E28A4B6 /* MainPageK.cpp in Sources */,
 				183224AD801B0C58EEDD29EC /* RecWindow.cpp in Sources */,
+				EE38591555A22B7584DE3E18 /* Preferences.cpp in Sources */,
 				EE3A13376054A5498566D5AF /* GetNextBlock.cpp in Sources */,
 				CBA49366624BA9C146D461D0 /* GetNextBlock_test.cpp in Sources */,
 				0D295FB7E331C2EE5E9D8BA8 /* MergeBlockSet.cpp in Sources */,

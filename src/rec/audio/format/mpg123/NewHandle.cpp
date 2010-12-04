@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <sys/types.h>
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/audio/format/mpg123/mpg123.h"
 

@@ -8,7 +8,6 @@
 #include "rec/util/STL.h"
 #include "rec/data/proto/Setter.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace persist {

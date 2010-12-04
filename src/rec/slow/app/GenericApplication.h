@@ -6,7 +6,6 @@
 
 #include "rec/data/persist/AppInstance.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 

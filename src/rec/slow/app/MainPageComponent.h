@@ -23,7 +23,6 @@
 #define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 
 //[Headers]     -- You can add your own extra header files here --
-#include "JuceLibraryCode/JuceHeader.h"
 using namespace juce;
 //[/Headers]
 

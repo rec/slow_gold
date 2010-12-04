@@ -203,6 +203,7 @@
         <Filter Name="base">
           <File RelativePath="..\..\..\..\src\rec\base\ArraySize.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\base.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\BaseNoJuce.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\basictypes.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\build_config.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\Cast.h"/>
@@ -390,6 +391,7 @@
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\slow\Preferences.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Preferences.h"/>
         </Filter>
         <Filter Name="util">

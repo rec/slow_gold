@@ -3,7 +3,6 @@
 
 #include <gtest/gtest.h>
 
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/util/TestData.h"
 

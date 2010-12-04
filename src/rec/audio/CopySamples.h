@@ -2,7 +2,6 @@
 #define __REC_AUDIO_SOURCE_COPY__
 
 #include "rec/base/base.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
 

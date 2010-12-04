@@ -3,7 +3,6 @@
 
 #include "rec/base/base.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace juce {
 
@@ -50,7 +49,7 @@ inline String substituteVariables(const StringPairArray& variables, const String
     }
     return result;
 }
-  
+
 }  // namespace juce
 
 #endif  // __REC_UTIL_SUBSTITUTE__

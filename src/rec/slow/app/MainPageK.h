@@ -10,7 +10,6 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/Listener.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 class MainPageJ;
 

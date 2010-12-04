@@ -1,7 +1,7 @@
 #ifndef __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
 #define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/base/base.h"
 
 class AudioSetupPage  : public Component {
  public:

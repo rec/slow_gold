@@ -2,7 +2,6 @@
 #define __REC_UTIL_TESTDATA__
 
 #include "rec/base/base.h"
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace util {

@@ -1,5 +1,7 @@
 #include <vector>
 
+#include <google/protobuf/descriptor.h>
+
 #include "rec/data/proto/Types.h"
 #include "rec/data/proto/Typer.h"
 #include "rec/data/proto/TypedTyper.h"

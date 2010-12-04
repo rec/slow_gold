@@ -1,7 +1,6 @@
 #ifndef __REC_AUDIO_FORMAT_MPG123_CREATE_READER__
 #define __REC_AUDIO_FORMAT_MPG123_CREATE_READER__
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 

@@ -3,7 +3,6 @@
 
 #include <gtest/gtest.h>
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 #include "rec/base/base.h"
 

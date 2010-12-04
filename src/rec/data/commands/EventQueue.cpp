@@ -3,7 +3,6 @@
 
 #include "rec/data/commands/Event.pb.h"
 
-#include "JuceLibraryCode/JuceHeader.h"
 
 namespace rec {
 namespace data {

@@ -4,6 +4,9 @@
 
 #include "rec/data/yaml/Internal.h"
 
+#include <google/protobuf/message.h>
+#include <google/protobuf/descriptor.h>
+
 namespace rec {
 namespace yaml {
 
@@ -14,6 +17,8 @@ void operator>>(const YAML::Node& node, Message* to);
 string str(const YAML::Node& node) {
   return node.Read<string>();
 }
+
+typedef google::protobuf::FieldDescriptor FD;
 
 void doRead(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
   const Reflection& r = *m->GetReflection();

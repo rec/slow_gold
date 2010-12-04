@@ -1,7 +1,7 @@
 #ifndef __REC_YAML_YAML__
 #define __REC_YAML_YAML__
 
-#include "rec/base/base.h"
+#include "rec/base/BaseNoJuce.h"
 
 namespace rec {
 namespace yaml {

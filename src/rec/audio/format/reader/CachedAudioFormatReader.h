@@ -2,7 +2,6 @@
 #define __REC_AUDIO_FORMAT_READER_CACHEDAUDIOFORMATREADER__
 
 #include "rec/base/base.h"
-#include "JuceLibraryCode/JuceHeader.h"
 #include "rec/util/block/Block.h"
 
 namespace rec {
