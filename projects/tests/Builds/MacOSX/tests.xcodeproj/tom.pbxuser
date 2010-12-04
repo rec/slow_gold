@@ -343,6 +343,10 @@
 			E288A6C812AAC299008EA2F0 /* PBXTextBookmark */ = E288A6C812AAC299008EA2F0 /* PBXTextBookmark */;
 			E288A6C912AAC299008EA2F0 /* PBXTextBookmark */ = E288A6C912AAC299008EA2F0 /* PBXTextBookmark */;
 			E288A6CA12AAC299008EA2F0 /* PBXTextBookmark */ = E288A6CA12AAC299008EA2F0 /* PBXTextBookmark */;
+			E288A6D412AAC7B7008EA2F0 /* PBXTextBookmark */ = E288A6D412AAC7B7008EA2F0 /* PBXTextBookmark */;
+			E288A6D512AAC7B7008EA2F0 /* PBXTextBookmark */ = E288A6D512AAC7B7008EA2F0 /* PBXTextBookmark */;
+			E288A6D612AAC7B7008EA2F0 /* XCBuildMessageTextBookmark */ = E288A6D612AAC7B7008EA2F0 /* XCBuildMessageTextBookmark */;
+			E288A6D712AAC7B7008EA2F0 /* PBXTextBookmark */ = E288A6D712AAC7B7008EA2F0 /* PBXTextBookmark */;
 			E28BEC25128B64590094D647 = E28BEC25128B64590094D647 /* PBXTextBookmark */;
 			E28D57C512A892EE00C02728 = E28D57C512A892EE00C02728 /* PBXTextBookmark */;
 			E28D583812AABAE500C02728 = E28D583812AABAE500C02728 /* PBXTextBookmark */;
@@ -1596,6 +1600,45 @@
 		vrLen = 2814;
 		vrLoc = 784;
 	};
+	E288A6D412AAC7B7008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EA70D99A1C1287E391F05A90 /* TypedTyper.cpp */;
+		name = "TypedTyper.cpp: 61";
+		rLen = 0;
+		rLoc = 2561;
+		rType = 0;
+		vrLen = 679;
+		vrLoc = 2209;
+	};
+	E288A6D512AAC7B7008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7555AAA03CF0439E105899A8 /* WriteYaml.cpp */;
+		name = "WriteYaml.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 531;
+		vrLoc = 0;
+	};
+	E288A6D612AAC7B7008EA2F0 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /Users/tom/Documents/development/rec/projects/tests/Builds/MacOSX/../../../../src/rec/data/yaml/ReadYaml.cpp";
+		fRef = 85EF74DB6155D961C98F75C0 /* ReadYaml.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E288A6D712AAC7B7008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 85EF74DB6155D961C98F75C0 /* ReadYaml.cpp */;
+		name = "ReadYaml.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 391;
+		vrLoc = 0;
+	};
 	E28BEC25128B64590094D647 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Unused variable 'BITS_LOST'";
@@ -1888,9 +1931,10 @@
 	};
 	EA70D99A1C1287E391F05A90 /* TypedTyper.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1716}}";
+			sepNavIntBoundsRect = "{{0, 0}, {708, 1547}}";
 			sepNavSelRange = "{4538, 0}";
-			sepNavVisRange = "{784, 2814}";
+			sepNavVisRange = "{1538, 986}";
+			sepNavWindowFrame = "{{15, 33}, {730, 1140}}";
 		};
 	};
 	EB4B8C546C8241087DB8DCE0 /* PartitionChildren.h */ = {
