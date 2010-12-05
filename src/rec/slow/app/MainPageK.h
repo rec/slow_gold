@@ -8,8 +8,6 @@
 #include "rec/audio/source/DoubleStretchyThread.h"
 #include "rec/widget/AudioThumbnail.h"
 #include "rec/widget/tree/NodeItem.h"
-#include "rec/util/Listener.h"
-
 
 class MainPageJ;
 
@@ -36,6 +34,7 @@ class MainPageK : public juce::Slider::Listener,
   // ChangeListener
   virtual void changeListenerCallback(void* objectThatHasChanged);
 
+  // Listener<VolumeFile>
   virtual void operator()(const widget::tree::VolumeFile& file);
 
   juce::DirectoryContentsList* directoryList() { return &directoryList_; }

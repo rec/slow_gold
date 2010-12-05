@@ -247,8 +247,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 313179871;
-			PBXWorkspaceStateSaveDate = 313179871;
+			PBXPerProjectTemplateStateSaveDate = 313268105;
+			PBXWorkspaceStateSaveDate = 313268105;
 		};
 		perUserProjectItems = {
 			E22EC1C212A0895D00501884 = E22EC1C212A0895D00501884 /* PBXTextBookmark */;
@@ -256,10 +256,10 @@
 			E22EC69012A5AB4800501884 = E22EC69012A5AB4800501884 /* PBXTextBookmark */;
 			E22EC69112A5AB4800501884 = E22EC69112A5AB4800501884 /* PBXBookmark */;
 			E22EC9A512A7887E00501884 = E22EC9A512A7887E00501884 /* PBXTextBookmark */;
-			E288A65512AABF08008EA2F0 /* XCBuildMessageTextBookmark */ = E288A65512AABF08008EA2F0 /* XCBuildMessageTextBookmark */;
-			E288A65812AABF0C008EA2F0 /* PBXTextBookmark */ = E288A65812AABF0C008EA2F0 /* PBXTextBookmark */;
-			E288A6E112AAD9F7008EA2F0 /* XCBuildMessageTextBookmark */ = E288A6E112AAD9F7008EA2F0 /* XCBuildMessageTextBookmark */;
-			E288A6E412AADA06008EA2F0 /* PBXTextBookmark */ = E288A6E412AADA06008EA2F0 /* PBXTextBookmark */;
+			E288A65512AABF08008EA2F0 = E288A65512AABF08008EA2F0 /* PBXTextBookmark */;
+			E288A65812AABF0C008EA2F0 = E288A65812AABF0C008EA2F0 /* PBXTextBookmark */;
+			E288A6E112AAD9F7008EA2F0 = E288A6E112AAD9F7008EA2F0 /* PBXTextBookmark */;
+			E288A6E412AADA06008EA2F0 = E288A6E412AADA06008EA2F0 /* PBXTextBookmark */;
 			E28D56AC12A8116700C02728 = E28D56AC12A8116700C02728 /* PBXTextBookmark */;
 			E2AEE61D1295F2B400B693AE = E2AEE61D1295F2B400B693AE /* PBXTextBookmark */;
 			E2AEE61E1295F2B400B693AE = E2AEE61E1295F2B400B693AE /* PBXTextBookmark */;
@@ -474,18 +474,11 @@
 		name = App.h;
 		path = ../../../../../rec/src/rec/data/persist/App.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1027}}";
-			sepNavSelRange = "{554, 64}";
-			sepNavVisRange = "{0, 1615}";
-			sepNavWindowFrame = "{{38, 12}, {730, 1140}}";
-		};
 	};
-	E288A65512AABF08008EA2F0 /* XCBuildMessageTextBookmark */ = {
+	E288A65512AABF08008EA2F0 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Invalid use of incomplete type 'const struct google::protobuf::Descriptor'";
 		fRef = E288A65412AABF08008EA2F0 /* App.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 31;
 		rType = 1;
@@ -506,18 +499,11 @@
 		name = App.h;
 		path = ../../../../../rec/src/rec/data/persist/App.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1027}}";
-			sepNavSelRange = "{816, 0}";
-			sepNavVisRange = "{0, 1603}";
-			sepNavWindowFrame = "{{38, 12}, {730, 1140}}";
-		};
 	};
-	E288A6E112AAD9F7008EA2F0 /* XCBuildMessageTextBookmark */ = {
+	E288A6E112AAD9F7008EA2F0 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'class rec::persist::Data<rec::slow::proto::Preferences>' has no member named 'readFile'";
 		fRef = E288A6E012AAD9F7008EA2F0 /* App.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 36;
 		rType = 1;

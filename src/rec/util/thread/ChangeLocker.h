@@ -2,14 +2,14 @@
 #define __REC_UTIL_CHANGELOCKER__
 
 #include "rec/base/base.h"
-#include "rec/util/Broadcaster.h"
+#include "rec/util/listener/Broadcaster.h"
 
 namespace rec {
 namespace util {
 namespace thread {
 
 template <typename Data>
-class ChangeLocker : public Thread, public Broadcaster<Data> {
+class ChangeLocker : public Thread, public listener::Broadcaster<Data> {
  public:
   ChangeLocker(int wait) : wait_(wait) {}
 

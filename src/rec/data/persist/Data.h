@@ -6,7 +6,7 @@
 
 #include "rec/base/base.h"
 #include "rec/data/persist/UntypedData.h"
-#include "rec/util/Broadcaster.h"
+#include "rec/util/listener/Broadcaster.h"
 
 namespace rec {
 namespace persist {
@@ -14,7 +14,8 @@ namespace persist {
 class App;
 
 template <typename Proto>
-class Data : public UntypedData, public util::Broadcaster<const Proto&> {
+class Data : public UntypedData,
+             public util::listener::Broadcaster<const Proto&> {
  public:
   // Get a snapshot of the current data.
   Proto get() const {

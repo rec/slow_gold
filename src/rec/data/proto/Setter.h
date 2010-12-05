@@ -4,13 +4,13 @@
 #include "rec/base/base.h"
 #include "rec/data/proto/Address.h"
 #include "rec/data/proto/Value.h"
-#include "rec/util/Broadcaster.h"
+#include "rec/util/listener/Broadcaster.h"
 
 namespace rec {
 namespace proto {
 namespace arg {
 
-class Setter : public util::Broadcaster<Operation*> {
+class Setter : public util::listener::Broadcaster<Operation*> {
  public:
   Setter() {}
 

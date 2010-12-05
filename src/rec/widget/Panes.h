@@ -3,7 +3,9 @@
 
 #include "rec/base/base.h"
 #include "rec/widget/Panes.pb.h"
-#include "rec/widget/VolumeFile.h"
+#include "rec/widget/tree/VolumeFile.h"
+
+using rec::audio::source::TimeStretch;
 
 namespace rec {
 namespace widget {
@@ -12,11 +14,10 @@ namespace pane {
 inline bool operator==(const Track& x, const Track& y) {
   const TimeStretch& sx = x.timestretch();
   const TimeStretch& sy = y.timestretch();
-  return x.volume() == y.volume()
-    && x.sample_rate() == y.sample_rate()
-    && x.channels() == y.channels()
-    && x.pitch_scale() == y.pitch_scale();
- }
+  return x.file() == y.file()
+    && sx.sample_rate() == sy.sample_rate()
+    && sx.channels() == sy.channels()
+    && sx.pitch_scale() == sy.pitch_scale();
 }
 
 }  // namespace pane

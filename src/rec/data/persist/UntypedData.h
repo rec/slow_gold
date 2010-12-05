@@ -3,7 +3,7 @@
 
 #include "rec/base/base.h"
 #include "rec/data/proto/Setter.h"
-#include "rec/util/Listener.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace persist {
@@ -13,7 +13,7 @@ class AppInstance;
 
 typedef proto::arg::Setter Setter;
 
-class UntypedData : public util::Listener<proto::Operation*> {
+class UntypedData : public util::listener::Listener<proto::Operation*> {
  public:
   virtual ~UntypedData();
 

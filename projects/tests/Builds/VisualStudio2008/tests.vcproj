@@ -191,6 +191,7 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyFactory.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TestHarness.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
@@ -433,7 +434,11 @@
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\Listener.h"/>
+          <Filter Name="listener">
+            <File RelativePath="..\..\..\..\src\rec\util\listener\Broadcaster.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
+          </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\math_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Method.h"/>
@@ -467,6 +472,7 @@
           <File RelativePath="..\..\..\..\src\rec\widget\AudioThumbnail.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\widget\AudioThumbnail.h"/>
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
+          <File RelativePath="..\..\..\..\src\rec\widget\Panes.h"/>
           <Filter Name="status">
             <File RelativePath="..\..\..\..\src\rec\widget\status\Status.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\status\Status.h"/>

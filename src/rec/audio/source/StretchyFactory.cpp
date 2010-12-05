@@ -1,4 +1,8 @@
 #include "rec/audio/source/StretchyFactory.h"
+#include "rec/audio/source/Runny.h"
+#include "rec/audio/source/Stretchy.h"
+
+using namespace rec::widget::pane;
 
 namespace rec {
 namespace audio {
@@ -7,10 +11,10 @@ namespace source {
 Runny* newRunny(const Track& track) {
   AudioFormatReader* reader = widget::tree::createReader(track.file());
   Source* source = new juce::AudioFormatReaderSource(reader, true);
-  Stretch* stretchy = new Stretchy(source);
+  Stretchy* stretchy = new Stretchy(source);
   stretchy->setDescription(track.timestretch());
 
-  return new Runny(track.runny(), stretchy));
+  return new Runny(track.runny(), stretchy);
 }
 
 Runny* filledRunny(const Track& track, Thread* thread) {
@@ -30,7 +34,9 @@ typedef rec::util::thread::Factory<Runny, const Track&> StretchyFactoryBase;
 
 class StretchyFactory : public StretchyFactoryBase {
  public:
-  StretchyFactory() {}
+  StretchyFactory(Thread *thread = NULL) : thread_(thread) {}
+
+  bool threadShouldExit() const { return thread_ && thread_->threadShouldExit(); }
 
   virtual Runny* makeProduct(const Track& track) {
     if (threadShouldExit())
@@ -38,7 +44,7 @@ class StretchyFactory : public StretchyFactoryBase {
 
     AudioFormatReader* reader = widget::tree::createReader(track.file());
     Source* source = new juce::AudioFormatReaderSource(reader, true);
-    Stretch* stretchy = new Stretchy(source);
+    Stretchy* stretchy = new Stretchy(source);
     stretchy->setDescription(track.timestretch());
 
     scoped_ptr<Runny> runny(new Runny(track.runny(), stretchy));
@@ -51,7 +57,8 @@ class StretchyFactory : public StretchyFactoryBase {
   };
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(StretchyFactory);
+  Thread* thread_;
+  DISALLOW_COPY_AND_ASSIGN(StretchyFactory);
 };
 
 

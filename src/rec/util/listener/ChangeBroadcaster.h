@@ -1,10 +1,11 @@
-#ifndef __REC_UTIL_CHANGEBROADCASTER__
-#define __REC_UTIL_CHANGEBROADCASTER__
+#ifndef __REC_UTIL_LISTENER_CHANGEBROADCASTER__
+#define __REC_UTIL_LISTENER_CHANGEBROADCASTER__
 
-#include "rec/util/Broadcaster.h"
+#include "rec/util/listener/Broadcaster.h"
 
 namespace rec {
 namespace util {
+namespace listener {
 
 template <typename Type>
 class ChangeBroadcaster : public Broadcaster<Type> {
@@ -23,7 +24,8 @@ class ChangeBroadcaster : public Broadcaster<Type> {
   DISALLOW_COPY_AND_ASSIGN(ChangeBroadcaster);
 };
 
+}  // namespace listener
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CHANGEBROADCASTER__
+#endif  // __REC_UTIL_LISTENER_CHANGEBROADCASTER__

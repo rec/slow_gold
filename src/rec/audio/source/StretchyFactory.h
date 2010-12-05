@@ -10,8 +10,10 @@ namespace rec {
 namespace audio {
 namespace source {
 
+class Runny;
+
 Runny* newRunny(const widget::pane::Track& track);
-Runny* filledRunny(const Track& track, widget::pane::Thread* thread);
+Runny* filledRunny(const widget::pane::Track& track, Thread* thread);
 
 }  // namespace source
 }  // namespace audio

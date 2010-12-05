@@ -6,7 +6,7 @@
 #include "rec/base/base.h"
 #include "rec/gui/Font.h"
 #include "rec/gui/icon/Icon.h"
-#include "rec/util/Listener.h"
+#include "rec/util/listener/Broadcaster.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/Node.pb.h"
 #include "rec/widget/tree/VolumeFile.h"
@@ -19,7 +19,8 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-typedef util::Broadcaster<const VolumeFile&> NodeBroadcaster;
+typedef util::listener::Listener<const VolumeFile&> NodeListener;
+typedef util::listener::Broadcaster<const VolumeFile&> NodeBroadcaster;
 
 class Node : public juce::TreeViewItem, public NodeBroadcaster {
  public:

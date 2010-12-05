@@ -1,23 +1,27 @@
-#ifndef __REC_UTIL_BROADCASTER__
-#define __REC_UTIL_BROADCASTER__
+#ifndef __REC_UTIL_LISTENER_BROADCASTER__
+#define __REC_UTIL_LISTENER_BROADCASTER__
 
-#include "rec/util/Listener.h"
+#include <set>
+
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace util {
+namespace listener {
 
 template <typename Type>
 class Broadcaster : public Listener<Type> {
  public:
-  typedef std::set<Listener*> Listeners;
+  Broadcaster() {}
+  typedef std::set<Listener<Type>*> Listeners;
   typedef typename Listeners::iterator iterator;
 
-  void addListener(Listener* listener) {
+  void addListener(Listener<Type>* listener) {
     ScopedLock l(lock_);
     listeners_.insert(listener);
   }
 
-  void removeListener(Listener* listener) {
+  void removeListener(Listener<Type>* listener) {
     ScopedLock l(lock_);
     listeners_.remove(listener);
   }
@@ -38,7 +42,8 @@ class Broadcaster : public Listener<Type> {
   DISALLOW_COPY_AND_ASSIGN(Broadcaster);
 };
 
+}  // namespace listener
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_BROADCASTER__
+#endif  // __REC_UTIL_LISTENER_BROADCASTER__
