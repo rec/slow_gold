@@ -5,10 +5,7 @@ package rec.widget.pane;
 
 import "rec/widget/Widget.proto";
 import "rec/audio/source/Stretchy.proto";
-
-message Path {
-  repeated string path = 1;
-};
+import "rec/widget/tree/VolumeFile.proto";
 
 // The Navigation Pane is the top-level pane that lets you switch between
 // browsing your filesystem, the CD in the drive, or files on the network.
@@ -28,7 +25,7 @@ message Navigation {
   };
 
   optional Widget widget = 1;
-  optional Path path = 2;
+  optional widget.tree.VolumeFile file = 2;
   optional Tab tab = 3;
   optional Orientation orientation = 4;
 };
@@ -37,7 +34,7 @@ message Navigation {
 // audio files, which are presumed to be "an album" or connected in some way.
 message Directory {
   optional Widget widget = 1;
-  optional Path path = 2;
+  optional widget.tree.VolumeFile file = 2;
 };
 
 // This represents a single "track" - which is probably a filename or a URL.
@@ -46,6 +43,7 @@ message Directory {
 // Perhaps AudioFile would be a better name?  All will be clear later.
 message Track {
   optional Widget widget = 1;
-  optional Path path = 2;
+  optional widget.tree.VolumeFile file = 2;
   optional audio.source.TimeStretch timestretch = 3;
+  optional audio.source.RunnyDesc runny = 4;
 };

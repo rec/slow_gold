@@ -50,7 +50,9 @@ class App {
     stl::deleteMapPointers(&data_);
   }
 
-  File appDir() const { return data::persist::appDirectory().getChildFile(name_.c_str()); }
+  File appDir() const {
+    return data::persist::appDirectory().getChildFile(name_.c_str());
+  }
 
  protected:
   friend class UntypedData;

@@ -12,7 +12,7 @@ namespace tree {
 
 class Node;
 
-class Root : public juce::TreeView, public NodeListener::Set {
+class Root : public juce::TreeView, public NodeBroadcaster {
  public:
   explicit Root(const NodeDesc& desc);
   ~Root();

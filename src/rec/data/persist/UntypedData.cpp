@@ -17,9 +17,9 @@ using rec::proto::Operation;
 UntypedData::UntypedData(const File& file, Message* message, App* app)
     : file_(new File(file)),
       message_(message),
-      setter_(this),
       app_(app),
       alreadyReadFromFile_(false) {
+  setter_.addListener(this);
 }
 
 void UntypedData::readFromFile() const {

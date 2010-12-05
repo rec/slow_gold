@@ -15,7 +15,7 @@ class UntypedData;
 class AppInstance : public App {
  public:
   static const int UPDATE_PRIORITY = 5;
-  static const int UPDATE_PERIOD = 100;
+  static const int UPDATE_PERIOD = 40;
 
   static const int WRITE_PRIORITY = 5;
   static const int WRITE_PERIOD = 100;

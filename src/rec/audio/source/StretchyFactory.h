@@ -3,24 +3,15 @@
 
 #include "rec/base/base.h"
 #include "rec/util/thread/Factory.h"
+#include "rec/widget/tree/VolumeFile.h"
+#include "rec/widget/Panes.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class StretchyRunny : public Runny {
- public:
-  explicit StretchyRunny(const StretchyRunnyDesc& desc)
-      : Runny(desc.runny(), new Stretchy(desc.stretchy())) {
-    while (!fill());
-    startThread();
-  }
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(StretchyRunny);
-};
-
-typedef util::thead::Factory<StretchyRunny, StretchyRunnyDesc> StretchyFactory;
+Runny* newRunny(const widget::pane::Track& track);
+Runny* filledRunny(const Track& track, widget::pane::Thread* thread);
 
 }  // namespace source
 }  // namespace audio

@@ -5,7 +5,6 @@
 #include "rec/audio/source/Stretchy.pb.h"
 #include "rec/util/ChangeLocker.h"
 
-
 namespace rec {
 namespace audio {
 namespace source {
@@ -14,17 +13,17 @@ typedef util::ChangeLocker<StretchyDesc> ChangeLocker;
 
 template <typename Description, typename Result>
 class Double : public ChangeLocker<Description>,
-               public Listener<Result*>::Set {
+               public Broadcaster<Result*> {
  public:
   Double(const Data& data, int wait) : ChangeLocker<Data>(data, wait) {}
   virtual void operator()(Data data) {
-    tellListeners(new Result(data));
+    broadcast(new Result(data));
   }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Double);
 };
-o
+
 template <typename Data>
 class Locker {
  public:

@@ -25,6 +25,8 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/widget/Widget.pb.h"
 #include "rec/audio/source/Stretchy.pb.h"
+#include "rec/audio/source/Runny.pb.h"
+#include "rec/widget/tree/VolumeFile.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -36,7 +38,6 @@ void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
 void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
 void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
 
-class Path;
 class Navigation;
 class Directory;
 class Track;
@@ -83,104 +84,6 @@ inline bool Navigation_Orientation_Parse(
     Navigation_Orientation_descriptor(), name, value);
 }
 // ===================================================================
-
-class Path : public ::google::protobuf::Message {
- public:
-  Path();
-  virtual ~Path();
-  
-  Path(const Path& from);
-  
-  inline Path& operator=(const Path& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Path& default_instance();
-  
-  void Swap(Path* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Path* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Path& from);
-  void MergeFrom(const Path& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // repeated string path = 1;
-  inline int path_size() const;
-  inline void clear_path();
-  static const int kPathFieldNumber = 1;
-  inline const ::std::string& path(int index) const;
-  inline ::std::string* mutable_path(int index);
-  inline void set_path(int index, const ::std::string& value);
-  inline void set_path(int index, const char* value);
-  inline void set_path(int index, const char* value, size_t size);
-  inline ::std::string* add_path();
-  inline void add_path(const ::std::string& value);
-  inline void add_path(const char* value);
-  inline void add_path(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& path() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_path();
-  
-  // @@protoc_insertion_point(class_scope:rec.widget.pane.Path)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::google::protobuf::RepeatedPtrField< ::std::string> path_;
-  friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
-  friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Path* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class Navigation : public ::google::protobuf::Message {
  public:
@@ -294,12 +197,12 @@ class Navigation : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // optional .rec.widget.pane.Path path = 2;
-  inline bool has_path() const;
-  inline void clear_path();
-  static const int kPathFieldNumber = 2;
-  inline const ::rec::widget::pane::Path& path() const;
-  inline ::rec::widget::pane::Path* mutable_path();
+  // optional .rec.widget.tree.VolumeFile file = 2;
+  inline bool has_file() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 2;
+  inline const ::rec::widget::tree::VolumeFile& file() const;
+  inline ::rec::widget::tree::VolumeFile* mutable_file();
   
   // optional .rec.widget.pane.Navigation.Tab tab = 3;
   inline bool has_tab() const;
@@ -321,7 +224,7 @@ class Navigation : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::widget::Widget* widget_;
-  ::rec::widget::pane::Path* path_;
+  ::rec::widget::tree::VolumeFile* file_;
   int tab_;
   int orientation_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
@@ -407,12 +310,12 @@ class Directory : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // optional .rec.widget.pane.Path path = 2;
-  inline bool has_path() const;
-  inline void clear_path();
-  static const int kPathFieldNumber = 2;
-  inline const ::rec::widget::pane::Path& path() const;
-  inline ::rec::widget::pane::Path* mutable_path();
+  // optional .rec.widget.tree.VolumeFile file = 2;
+  inline bool has_file() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 2;
+  inline const ::rec::widget::tree::VolumeFile& file() const;
+  inline ::rec::widget::tree::VolumeFile* mutable_file();
   
   // @@protoc_insertion_point(class_scope:rec.widget.pane.Directory)
  private:
@@ -420,7 +323,7 @@ class Directory : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::widget::Widget* widget_;
-  ::rec::widget::pane::Path* path_;
+  ::rec::widget::tree::VolumeFile* file_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
@@ -504,12 +407,12 @@ class Track : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // optional .rec.widget.pane.Path path = 2;
-  inline bool has_path() const;
-  inline void clear_path();
-  static const int kPathFieldNumber = 2;
-  inline const ::rec::widget::pane::Path& path() const;
-  inline ::rec::widget::pane::Path* mutable_path();
+  // optional .rec.widget.tree.VolumeFile file = 2;
+  inline bool has_file() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 2;
+  inline const ::rec::widget::tree::VolumeFile& file() const;
+  inline ::rec::widget::tree::VolumeFile* mutable_file();
   
   // optional .rec.audio.source.TimeStretch timestretch = 3;
   inline bool has_timestretch() const;
@@ -518,19 +421,27 @@ class Track : public ::google::protobuf::Message {
   inline const ::rec::audio::source::TimeStretch& timestretch() const;
   inline ::rec::audio::source::TimeStretch* mutable_timestretch();
   
+  // optional .rec.audio.source.RunnyDesc runny = 4;
+  inline bool has_runny() const;
+  inline void clear_runny();
+  static const int kRunnyFieldNumber = 4;
+  inline const ::rec::audio::source::RunnyDesc& runny() const;
+  inline ::rec::audio::source::RunnyDesc* mutable_runny();
+  
   // @@protoc_insertion_point(class_scope:rec.widget.pane.Track)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::rec::widget::Widget* widget_;
-  ::rec::widget::pane::Path* path_;
+  ::rec::widget::tree::VolumeFile* file_;
   ::rec::audio::source::TimeStretch* timestretch_;
+  ::rec::audio::source::RunnyDesc* runny_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -551,54 +462,6 @@ class Track : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// Path
-
-// repeated string path = 1;
-inline int Path::path_size() const {
-  return path_.size();
-}
-inline void Path::clear_path() {
-  path_.Clear();
-}
-inline const ::std::string& Path::path(int index) const {
-  return path_.Get(index);
-}
-inline ::std::string* Path::mutable_path(int index) {
-  return path_.Mutable(index);
-}
-inline void Path::set_path(int index, const ::std::string& value) {
-  path_.Mutable(index)->assign(value);
-}
-inline void Path::set_path(int index, const char* value) {
-  path_.Mutable(index)->assign(value);
-}
-inline void Path::set_path(int index, const char* value, size_t size) {
-  path_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Path::add_path() {
-  return path_.Add();
-}
-inline void Path::add_path(const ::std::string& value) {
-  path_.Add()->assign(value);
-}
-inline void Path::add_path(const char* value) {
-  path_.Add()->assign(value);
-}
-inline void Path::add_path(const char* value, size_t size) {
-  path_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-Path::path() const {
-  return path_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-Path::mutable_path() {
-  return &path_;
-}
-
-// -------------------------------------------------------------------
-
 // Navigation
 
 // optional .rec.widget.Widget widget = 1;
@@ -618,21 +481,21 @@ inline ::rec::widget::Widget* Navigation::mutable_widget() {
   return widget_;
 }
 
-// optional .rec.widget.pane.Path path = 2;
-inline bool Navigation::has_path() const {
+// optional .rec.widget.tree.VolumeFile file = 2;
+inline bool Navigation::has_file() const {
   return _has_bit(1);
 }
-inline void Navigation::clear_path() {
-  if (path_ != NULL) path_->::rec::widget::pane::Path::Clear();
+inline void Navigation::clear_file() {
+  if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
   _clear_bit(1);
 }
-inline const ::rec::widget::pane::Path& Navigation::path() const {
-  return path_ != NULL ? *path_ : *default_instance_->path_;
+inline const ::rec::widget::tree::VolumeFile& Navigation::file() const {
+  return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline ::rec::widget::pane::Path* Navigation::mutable_path() {
+inline ::rec::widget::tree::VolumeFile* Navigation::mutable_file() {
   _set_bit(1);
-  if (path_ == NULL) path_ = new ::rec::widget::pane::Path;
-  return path_;
+  if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
+  return file_;
 }
 
 // optional .rec.widget.pane.Navigation.Tab tab = 3;
@@ -690,21 +553,21 @@ inline ::rec::widget::Widget* Directory::mutable_widget() {
   return widget_;
 }
 
-// optional .rec.widget.pane.Path path = 2;
-inline bool Directory::has_path() const {
+// optional .rec.widget.tree.VolumeFile file = 2;
+inline bool Directory::has_file() const {
   return _has_bit(1);
 }
-inline void Directory::clear_path() {
-  if (path_ != NULL) path_->::rec::widget::pane::Path::Clear();
+inline void Directory::clear_file() {
+  if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
   _clear_bit(1);
 }
-inline const ::rec::widget::pane::Path& Directory::path() const {
-  return path_ != NULL ? *path_ : *default_instance_->path_;
+inline const ::rec::widget::tree::VolumeFile& Directory::file() const {
+  return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline ::rec::widget::pane::Path* Directory::mutable_path() {
+inline ::rec::widget::tree::VolumeFile* Directory::mutable_file() {
   _set_bit(1);
-  if (path_ == NULL) path_ = new ::rec::widget::pane::Path;
-  return path_;
+  if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
+  return file_;
 }
 
 // -------------------------------------------------------------------
@@ -728,21 +591,21 @@ inline ::rec::widget::Widget* Track::mutable_widget() {
   return widget_;
 }
 
-// optional .rec.widget.pane.Path path = 2;
-inline bool Track::has_path() const {
+// optional .rec.widget.tree.VolumeFile file = 2;
+inline bool Track::has_file() const {
   return _has_bit(1);
 }
-inline void Track::clear_path() {
-  if (path_ != NULL) path_->::rec::widget::pane::Path::Clear();
+inline void Track::clear_file() {
+  if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
   _clear_bit(1);
 }
-inline const ::rec::widget::pane::Path& Track::path() const {
-  return path_ != NULL ? *path_ : *default_instance_->path_;
+inline const ::rec::widget::tree::VolumeFile& Track::file() const {
+  return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline ::rec::widget::pane::Path* Track::mutable_path() {
+inline ::rec::widget::tree::VolumeFile* Track::mutable_file() {
   _set_bit(1);
-  if (path_ == NULL) path_ = new ::rec::widget::pane::Path;
-  return path_;
+  if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
+  return file_;
 }
 
 // optional .rec.audio.source.TimeStretch timestretch = 3;
@@ -760,6 +623,23 @@ inline ::rec::audio::source::TimeStretch* Track::mutable_timestretch() {
   _set_bit(2);
   if (timestretch_ == NULL) timestretch_ = new ::rec::audio::source::TimeStretch;
   return timestretch_;
+}
+
+// optional .rec.audio.source.RunnyDesc runny = 4;
+inline bool Track::has_runny() const {
+  return _has_bit(3);
+}
+inline void Track::clear_runny() {
+  if (runny_ != NULL) runny_->::rec::audio::source::RunnyDesc::Clear();
+  _clear_bit(3);
+}
+inline const ::rec::audio::source::RunnyDesc& Track::runny() const {
+  return runny_ != NULL ? *runny_ : *default_instance_->runny_;
+}
+inline ::rec::audio::source::RunnyDesc* Track::mutable_runny() {
+  _set_bit(3);
+  if (runny_ == NULL) runny_ = new ::rec::audio::source::RunnyDesc;
+  return runny_;
 }
 
 

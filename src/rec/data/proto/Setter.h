@@ -4,17 +4,15 @@
 #include "rec/base/base.h"
 #include "rec/data/proto/Address.h"
 #include "rec/data/proto/Value.h"
-#include "rec/util/Listener.h"
+#include "rec/util/Broadcaster.h"
 
 namespace rec {
 namespace proto {
 namespace arg {
 
-class Setter {
+class Setter : public util::Broadcaster<Operation*> {
  public:
-  typedef util::Listener<Operation*> Listener;
-
-  Setter(Listener* data) : data_(data) {}
+  Setter() {}
 
   void append(const Address& address, const Value& value);
   void clear(const Address& address);
@@ -57,8 +55,7 @@ class Setter {
   void swap(P a, P b, P c, P d, P e, int s, int t) { return swap(A(a, b, c, d, e), s, t); }
 
  private:
-  Listener* data_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Setter);
+  DISALLOW_COPY_AND_ASSIGN(Setter);
 };
 
 }  // namespace arg

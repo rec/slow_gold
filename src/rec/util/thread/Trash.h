@@ -19,17 +19,20 @@ class Trash {
     collect();
   }
 
+  void register(Thread* t) {
+    ScopedLock l(lock_);
+    threads_.insert(thread);
+  }
+
   void discard(Thread* t) { discardNoEmpty(t); empty(); }
 
   void discardNoEmpty(Thread* thread) {
     if (thread) {
       thread->signalThreadShouldExit();
-      if (thread->isThreadRunning()) {
-        ScopedLock l(lock_);
-        threads_.insert(thread);
-      } else {
+      if (thread->isThreadRunning())
+        register(thread);
+      else
         delete thread;
-      }
     }
   }
 
@@ -37,7 +40,7 @@ class Trash {
     ThreadSet stopped;
     {
       ScopedLock l(lock_);
-      for (ThreadSet::iterator i = threads_.begin(); i threads_.end(); ++i) {
+      for (ThreadSet::iterator i = threads_.begin(); i != threads_.end(); ++i) {
         if (!(*i)->isThreadRunning())
           stopped.insert(*i);
       }
@@ -45,6 +48,12 @@ class Trash {
     }
 
     stl::deletePointers(&stopped);
+  }
+
+  void signalThreadShouldExit() {
+    ScopedLock l(lock_);
+    for (ThreadSet::iterator i = threads_.begin(); i != threads_.end(); ++i)
+      (*i)->signalThreadShouldExit();
   }
 
  private:
