@@ -52,8 +52,10 @@ void UntypedData::update() {
     if (queue_.empty())
       return;
 
-    for (OperationList::iterator i = queue_.begin(); i != queue_.end(); ++i)
-      undo_.push_back(applyOperation(**i, message_));
+    for (OperationList::iterator i = queue_.begin(); i != queue_.end(); ++i) {
+      if (*i)
+        undo_.push_back(applyOperation(**i, message_));
+    }
 
     stl::deletePointers(&queue_);
   }

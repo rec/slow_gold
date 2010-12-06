@@ -4,11 +4,9 @@
 #include <set>
 #include <vector>
 
-#include "rec/audio/source/DoubleStretchyThread.h"
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/source/StretchyFactory.h"
 #include "rec/slow/Preferences.h"
-#include "rec/util/listener/ChangeBroadcaster.h"
 #include "rec/util/thread/ChangeLocker.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/AudioThumbnail.h"
@@ -17,22 +15,20 @@
 
 class MainPageJ;
 
+using namespace rec::util::listener;
+using namespace rec::util::thread;
+using namespace rec::audio::source;
+using namespace rec::widget::tree;
+
 namespace rec {
 namespace slow {
 
-class ChangeBroadcaster : public util::listener::ChangeBroadcaster<slow::proto::Preferences> {
- public:
-  ChangeBroadcaster() {}
-  virtual bool isChanged(const slow::proto::Preferences& x,
-                         const slow::proto::Preferences& y) const {
-    return x.track() != y.track();
-  }
-};
+typedef slow::proto::Preferences Preferences;
 
 class MainPageK : public juce::Slider::Listener,
                   public juce::ChangeListener,
-                  public widget::tree::NodeListener,
-                  public util::listener::Listener<audio::source::Runny*> {
+                  public NodeListener,
+                  public Listener<const Preferences&> {
  public:
   MainPageK(juce::AudioDeviceManager* d);
   virtual ~MainPageK();
@@ -45,25 +41,20 @@ class MainPageK : public juce::Slider::Listener,
 
   // SliderListener.
   virtual void sliderValueChanged(juce::Slider* slider);
-  virtual void sliderDragEnded(juce::Slider* slider);
 
   // ChangeListener
-  virtual void changeListenerCallback(void* objectThatHasChanged);
+  virtual void changeListenerCallback(juce::ChangeBroadcaster* objectThatHasChanged);
 
-  // Listener<const VolumeFile&>
-  virtual void operator()(const widget::tree::VolumeFile& file);
-
-  // Listener<Runny*>
-  virtual void operator()(audio::source::Runny* runny);
+  virtual void operator()(const VolumeFile& file);
+  virtual void operator()(const Preferences& prefs);
 
   void updateCursor();
   void loadRecentFile(int menuItemId);
   void cut();
   void paste();
   void start(bool isStart = true);
-  bool ready() const;
 
-  void loadFileIntoTransport(const widget::tree::VolumeFile& audioFile);
+  void loadFileIntoTransport(const VolumeFile& audioFile);
 
  private:
   static const int THREAD_PRIORITY = 3;
@@ -84,18 +75,12 @@ class MainPageK : public juce::Slider::Listener,
   // Receives the final audio!
   juce::AudioDeviceManager* deviceManager_;
 
-  typedef rec::audio::source::DoubleStretchyThread DoubleStretchyThread;
-  typedef std::set<DoubleStretchyThread*> StretchySet;
-
-  scoped_ptr<DoubleStretchyThread> stretchy_;
-  StretchySet stretchyDeleter_;
-
-  ChangeBroadcaster changeBroadcaster_;
-  scoped_ptr<util::thread::ChangeLocker<slow::proto::Preferences> > changeLocker_;
-  audio::source::StretchyFactory stretchyFactory_;
-  scoped_ptr<audio::source::Runny> runny_;
+  scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
+  scoped_ptr<Runny> runny_;
 
   scoped_ptr<Thread> cursorThread_;
+  Preferences prefs_;
+  int newPosition_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

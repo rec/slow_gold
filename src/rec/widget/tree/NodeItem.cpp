@@ -64,7 +64,9 @@ bool Node::alreadyVisited() const {
 
 File Node::file() const { return getFile(volumeFile_); }
 
-void Node::itemClicked(const juce::MouseEvent&) { operator()(volumeFile_); }
+void Node::itemClicked(const juce::MouseEvent&) { 
+  operator()(volumeFile_); 
+}
 
 juce::Component* Node::createItemComponent() {
   return new NodeComponent(this);

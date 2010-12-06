@@ -23,12 +23,19 @@ class Setter : public util::listener::Broadcaster<Operation*> {
   typedef Address A;
   typedef const A::Field& P;
   typedef const Value& V;
+  typedef const Message& M;
 
   void append(P a, V v) { return append(A(a), v); }
   void append(P a, P b, V v) { return append(A(a, b), v); }
   void append(P a, P b, P c, V v) { return append(A(a, b, c), v); }
   void append(P a, P b, P c, P d, V v) { return append(A(a, b, c, d), v); }
   void append(P a, P b, P c, P d, P e, V v) { return append(A(a, b, c, d, e), v); }
+
+  void append(P a, M m) { return append(A(a), Value(m)); }
+  void append(P a, P b, M m) { return append(A(a, b), Value(m)); }
+  void append(P a, P b, P c, M m) { return append(A(a, b, c), Value(m)); }
+  void append(P a, P b, P c, P d, M m) { return append(A(a, b, c, d), Value(m)); }
+  void append(P a, P b, P c, P d, P e, M m) { return append(A(a, b, c, d, e), Value(m)); }
 
   void clear(P a) { return clear(A(a)); }
   void clear(P a, P b) { return clear(A(a, b)); }
@@ -47,6 +54,12 @@ class Setter : public util::listener::Broadcaster<Operation*> {
   void set(P a, P b, P c, V v) { return set(A(a, b, c), v); }
   void set(P a, P b, P c, P d, V v) { return set(A(a, b, c, d), v); }
   void set(P a, P b, P c, P d, P e, V v) { return set(A(a, b, c, d, e), v); }
+
+  void set(P a, M m) { return set(A(a), Value(m)); }
+  void set(P a, P b, M m) { return set(A(a, b), Value(m)); }
+  void set(P a, P b, P c, M m) { return set(A(a, b, c), Value(m)); }
+  void set(P a, P b, P c, P d, M m) { return set(A(a, b, c, d), Value(m)); }
+  void set(P a, P b, P c, P d, P e, M m) { return set(A(a, b, c, d, e), Value(m)); }
 
   void swap(P a, int s, int t) { return swap(A(a), s, t); }
   void swap(P a, P b, int s, int t) { return swap(A(a, b), s, t); }

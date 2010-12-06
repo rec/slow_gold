@@ -28,7 +28,7 @@ void AudioThumbnailWidget::setFile(const VolumeFile& file) {
   ScopedLock l(lock_);
 
   if (file.volume().type() == tree::Volume::CD) {
-    if (true) {
+    if (!true) {
       return;
     }
     if (!file.path_size()) {
@@ -91,7 +91,7 @@ void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
   setCursor(ratio);
-  sendChangeMessage(this);
+  sendChangeMessage();
 }
 
 void AudioThumbnailWidget::setCursor(double cursorRatio) {
@@ -120,10 +120,9 @@ void AudioThumbnailWidget::paint(Graphics& g) {
       thumbnail_.getNumChannels();
 
     for (int i = 0; i < thumbnail_.getNumChannels(); ++i) {
-      thumbnail_.drawChannel(g, margin, margin + heightPerChannel * i,
-                             getWidth() - 2 * margin, heightPerChannel,
-                             startTime_, endTime_,
-                             i, 1.0f);
+      juce::Rectangle<int> rect(margin, margin + heightPerChannel * i,
+                                getWidth() - 2 * margin, heightPerChannel);
+      thumbnail_.drawChannel(g, rect, startTime_, endTime_, i, 1.0f);
     }
 
     p.setColor(Painter::HIGHLIGHT);

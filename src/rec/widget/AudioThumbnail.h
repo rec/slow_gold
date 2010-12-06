@@ -39,7 +39,7 @@ class AudioThumbnailWidget : public juce::Component,
   double ratio() const;
 
   // this method is called by the thumbnail when it has changed, so we should repaint it..
-  virtual void changeListenerCallback(void*) { repaint(); }
+  virtual void changeListenerCallback(ChangeBroadcaster*) { repaint(); }
 
  private:
   const AudioThumbnailDesc description_;

@@ -19,7 +19,6 @@ Root::Root(const NodeDesc& desc) : desc_(desc) {
 }
 
 Root::~Root() {
-  delete getRootItem();
 }
 
 void Root::update() {

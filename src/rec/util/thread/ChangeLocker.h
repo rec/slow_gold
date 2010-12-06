@@ -11,19 +11,17 @@ namespace thread {
 
 template <typename Data>
 class ChangeLocker : public Thread,
-                     public listener::Broadcaster<const Data&> {
+                     public listener::Broadcaster<const Data&>,
+                     public Locker<Data> {
  public:
   ChangeLocker(int wait) : Thread("ChangeLocker"), wait_(wait) {}
 
-  void set(const Data& data) {
-    dataLocker_.set(data);
-    notify();
-  }
+  virtual void onChange() { notify(); }
 
   virtual void run() {
     Data data;
     while (!threadShouldExit()) {
-      if (dataLocker_.getDataIfChanged(&data) && !threadShouldExit())
+      if (getDataIfChanged(&data) && !threadShouldExit())
         (*this)(data);
 
       if (!threadShouldExit())
@@ -32,7 +30,6 @@ class ChangeLocker : public Thread,
   }
 
  private:
-  Locker<Data> dataLocker_;
   const int wait_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(ChangeLocker);

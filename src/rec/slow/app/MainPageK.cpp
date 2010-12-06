@@ -25,7 +25,9 @@ using rec::audio::source::Source;
 using rec::audio::source::TimeStretch;
 using rec::persist::copy;
 using rec::util::thread::ThreadDescription;
+using rec::util::thread::ChangeLocker;
 using rec::widget::AudioThumbnailDesc;
+using namespace rec::util::thread;
 
 namespace rec {
 namespace slow {
@@ -37,14 +39,11 @@ static const int CHANGE_LOCKER_WAIT = 100;
 MainPageK::MainPageK(AudioDeviceManager* d)
   : directoryListThread_(PREVIEW_THREAD_NAME),
     deviceManager_(d),
-    changeLocker_(new util::thread::ChangeLocker<slow::proto::Preferences>(CHANGE_LOCKER_WAIT)),
-    stretchyFactory_(changeLocker_.get()),
-    runny_(NULL) {
+    changeLocker_(new ChangeLocker<slow::proto::Preferences>(CHANGE_LOCKER_WAIT)),
+    newPosition_(-1) {
 }
 
-MainPageK::~MainPageK() {
-  rec::stl::deletePointers(&stretchyDeleter_);
-}
+MainPageK::~MainPageK() {}
 
 static Thread* makeCursorThread(MainPageK* main) {
   ThreadDescription thumbnail(slow::getPreferences().thumbnail().cursor_thread());
@@ -55,17 +54,47 @@ static Thread* makeCursorThread(MainPageK* main) {
   return t;
 }
 
+void MainPageK::operator()(const Preferences& prefs) {
+  int newPosition = -1;
+  {
+    ScopedLock l(changeLocker_->lock());
+    if (newPosition_ != -1) {
+      newPosition = newPosition_;
+      newPosition_ = -1;
+    }
+  }
 
-void MainPageK::operator()(audio::source::Runny* runny) {
-  LOG(INFO) << "MainPageK::operator()(Runny* runny)";
+  if (prefs.track().file() != prefs_.track().file()) {
+    if (transportSource_.isPlaying())
+      transportSource_.stop();
+    transportSource_.setPosition(0);
+    peer_->thumbnail->setFile(prefs.track().file());
+
+  } else if (prefs.track() == prefs_.track() && newPosition == -1) {
+    return;
+  }
+
+  Thread* thread = Thread::getCurrentThread();
+  scoped_ptr<Runny> runny(newRunny(prefs_.track()));
+
+  if (runny) {
+    static const int SAMPLES = 0;
+    runny->setNextReadPosition((newPosition == -1) ?
+                               transportSource_.getCurrentPosition() + SAMPLES :
+                               newPosition);
+    while (!thread->threadShouldExit() && !runny->fill());
+    runny->startThread();
+    runny.swap(runny_);
+    transportSource_.setSource(runny_.get());
+    if (newPosition != -1)
+      transportSource_.setPosition(newPosition);
+
+    trash::discard(runny.transfer());
+  }
+  prefs_ = prefs;
 }
 
 void MainPageK::construct(MainPageJ* peer) {
-  changeLocker_->startThread();
-  prefs()->addListener(&changeBroadcaster_);
-  changeBroadcaster_.addListener(&stretchyFactory_);
-  stretchyFactory_.addListener(this);
-
   peer_ = peer;
 
   directoryListThread_.startThread(THREAD_PRIORITY);
@@ -89,17 +118,19 @@ void MainPageK::construct(MainPageJ* peer) {
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
 
-  gui::RecentFiles recent = gui::getSortedRecentFiles();
-  if (recent.reload_most_recent() && recent.file_size())
-    loadRecentFile(1);
-
+  changeLocker_->addListener(this);
+  changeLocker_->startThread();
+  prefs()->addListener(changeLocker_.get());
+  prefs()->requestUpdate();
 }
 
 void MainPageK::destruct() {
   // TODO: why does this have to be called so early in the destructor sequence?
   // Can we get rid of all of this entirely?
-  util::thread::trash::discard(changeLocker_.transfer());
-  util::thread::trash::discard(cursorThread_.transfer());
+  trash::discard(changeLocker_.transfer());
+  trash::discard(cursorThread_.transfer());
+  trash::discard(runny_.transfer());
+
   transportSource_.setSource(NULL);
   player_.setSource(NULL);
 
@@ -134,79 +165,21 @@ void MainPageK::updateCursor() {
 }
 
 void MainPageK::loadFileIntoTransport(const VolumeFile& file) {
-  if (AudioFormatReader* r0 = createReader(file)) {
-    AudioFormatReader* r1 = createReader(file);
-    DCHECK(r1);
-
+  if (transportSource_.isPlaying())
     transportSource_.stop();
-    transportSource_.setSource(NULL);
-    if (stretchy_)
-      stretchy_->stop();
-
-    TimeStretch d = getPreferences().track().timestretch();
-    Source *s0 = new AudioFormatReaderSource(r0, true);
-    Source *s1 = new AudioFormatReaderSource(r1, true);
-
-    scoped_ptr<DoubleStretchyThread> stretch(new DoubleStretchyThread(s0, s1));
-    stretchy_.swap(stretch);
-    if (stretch) {
-      stretch->stop();
-      stretchyDeleter_.insert(stretch.transfer());
-    }
-    stretchy_->initialize();
-    stretchy_->setDescription(d);
-
-    loopingButtonClicked();
-    transportSource_.setSource(stretchy_.get());
-
-    gui::addRecentFile(file);
-    peer_->thumbnail->setFile(file);
-
-    std::vector<DoubleStretchyThread*> remove;
-    for (StretchySet::iterator i = stretchyDeleter_.begin();
-         i != stretchyDeleter_.end(); ++i) {
-      if (!(*i)->isThreadRunning())
-        remove.push_back(*i);
-    }
-
-    for (int i = 0; i < remove.size(); ++i) {
-      stretchyDeleter_.erase(remove[i]);
-      delete remove[i];
-    }
-  } else {
-    LOG(ERROR) << "Didn't understand file " << file.DebugString();
-  }
+  prefs()->setter()->set("track", "file", file);
 }
 
-void MainPageK::sliderDragEnded(Slider* slider) {
+void MainPageK::sliderValueChanged(Slider* slider) {
   double v = slider->getValue();
+  if (slider == peer_->zoomSlider)
+     peer_->thumbnail->setZoomFactor(v);
+
   if (slider == peer_->timeScaleSlider)
     prefs()->setter()->set("track", "timestretch", "time_scale", v);
 
   else if (slider == peer_->pitchScaleSlider)
     prefs()->setter()->set("track", "timestretch", "pitch_scale", v);
-}
-
-void MainPageK::sliderValueChanged(Slider* slider) {
-  if (slider == peer_->zoomSlider) {
-     peer_->thumbnail->setZoomFactor(slider->getValue());
-    return;
-  }
-
-  if (stretchy_) {
-    TimeStretch stretch = getPreferences().track().timestretch();
-
-    if (slider == peer_->timeScaleSlider)
-      stretch.set_time_scale(slider->getValue());
-
-    else if (slider == peer_->pitchScaleSlider)
-      stretch.set_pitch_scale(slider->getValue());
-
-    else
-      return;
-
-    stretchy_->setDescription(stretch);
-  }
 }
 
 static const char* const CD_STATE_NAMES[] = {
@@ -218,48 +191,17 @@ static const char* const CD_STATE_NAMES[] = {
   "readOnlyDiskPresent"     /** The drive contains a read-only disk. */
 };
 
-
-// Leak these guys!
-
-class RestartAfterReposition : public Thread {
- public:
-  explicit RestartAfterReposition(MainPageK* mainPage)
-    : Thread("RestartAfterReposition"), mainPage_(mainPage) {
-    setPriority(4);
-    startThread();
-  }
-
-  virtual void run() {
-    while (!mainPage_->ready())
-      sleep(10);
-    mainPage_->start();
-  }
-
- private:
-  MainPageK* mainPage_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(RestartAfterReposition);
-};
-
-bool MainPageK::ready() const {
-  return !stretchy_ || stretchy_->ready(MINIMUM_SAMPLE_PRELOAD);
-}
-
-void MainPageK::changeListenerCallback(void* objectThatHasChanged) {
-  if (objectThatHasChanged == (void*)&transportSource_) {
+void MainPageK::changeListenerCallback(juce::ChangeBroadcaster* objectThatHasChanged) {
+  if (objectThatHasChanged == &transportSource_) {
     updateCursor();
-    return;
   }
 
   if (objectThatHasChanged == peer_->thumbnail) {
-    bool wasPlaying = transportSource_.isPlaying();
-    if (wasPlaying)
-      start(false);
+    ScopedLock l(changeLocker_->lock());
 
-    double p = peer_->thumbnail->ratio();
-    transportSource_.setPosition(p * transportSource_.getTotalLength() / RATE);
-    if (wasPlaying)
-      new RestartAfterReposition(this);  // deletes self.
-    return;
+    double ratio = peer_->thumbnail->ratio();
+    newPosition_ = (ratio * transportSource_.getTotalLength()) / RATE;
+    prefs()->requestUpdate();
   }
 }
 
@@ -275,8 +217,6 @@ void MainPageK::start(bool isStart) {
 }
 
 void MainPageK::loopingButtonClicked() {
-  if (stretchy_)
-    stretchy_->setLooping(peer_->loopingButton->getToggleState());
 }
 
 void MainPageK::cut() {

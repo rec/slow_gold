@@ -17,22 +17,6 @@ class Runny;
 Runny* newRunny(const widget::pane::Track& track);
 Runny* filledRunny(const widget::pane::Track& track, Thread* thread);
 
-typedef util::thread::Factory<Runny*, const slow::proto::Preferences&> StretchyFactoryBase;
-
-class StretchyFactory : public StretchyFactoryBase {
- public:
-  StretchyFactory(Thread *thread = NULL) : thread_(thread) {}
-
-  bool threadShouldExit() const { return thread_ && thread_->threadShouldExit(); }
-
-  virtual Runny* makeProduct(const slow::proto::Preferences& track);
-
- private:
-  Thread* thread_;
-  DISALLOW_COPY_AND_ASSIGN(StretchyFactory);
-};
-
-
 }  // namespace source
 }  // namespace audio
 }  // namespace rec

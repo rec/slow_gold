@@ -9,6 +9,7 @@ Runny::Runny(const RunnyDesc& desc, Source* source)
     : Wrappy::Position(source),
       Thread("Runny"),
       buffer_(2, desc.buffer_size()),
+      filled_(0, desc.buffer_size()),
       desc_(desc) {
   setPriority(desc.thread().priority());
 }

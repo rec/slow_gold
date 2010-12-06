@@ -13,10 +13,18 @@ class Locker {
   Locker() : changed_(false) {}
   virtual ~Locker() {}
 
+  virtual void onChange() {}
+
+  virtual void change() {
+    ScopedLock l(lock_);
+    changed_ = true;
+    onChange();
+  }
+
   virtual void set(const Data& data) {
     ScopedLock l(lock_);
     data_ = data;
-    changed_ = true;
+    change();
   }
 
   const Data get() const {
@@ -37,13 +45,6 @@ class Locker {
     changed_ = false;
     *data = data_;
     return true;
-  }
-
-  bool resetChanged() {
-    ScopedLock l(lock_);
-    bool c = changed_;
-    changed_ = false;
-    return c;
   }
 
   CriticalSection& lock() { return lock_; }
