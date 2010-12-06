@@ -5,7 +5,6 @@
 #include "rec/data/persist/Data.h"
 
 namespace rec {
-
 namespace slow {
 
 typedef persist::Data<proto::Preferences> Data;

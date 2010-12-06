@@ -3,15 +3,17 @@
 
 #include "rec/base/base.h"
 #include "rec/util/listener/Broadcaster.h"
+#include "rec/util/thread/Locker.h"
 
 namespace rec {
 namespace util {
 namespace thread {
 
 template <typename Data>
-class ChangeLocker : public Thread, public listener::Broadcaster<Data> {
+class ChangeLocker : public Thread,
+                     public listener::Broadcaster<const Data&> {
  public:
-  ChangeLocker(int wait) : wait_(wait) {}
+  ChangeLocker(int wait) : Thread("ChangeLocker"), wait_(wait) {}
 
   void set(const Data& data) {
     dataLocker_.set(data);

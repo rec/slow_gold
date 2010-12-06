@@ -11,6 +11,7 @@ template <typename Data>
 class Locker {
  public:
   Locker() : changed_(false) {}
+  virtual ~Locker() {}
 
   virtual void set(const Data& data) {
     ScopedLock l(lock_);
@@ -45,7 +46,7 @@ class Locker {
     return c;
   }
 
-  Lock& lock() { return lock_; }
+  CriticalSection& lock() { return lock_; }
 
  private:
   CriticalSection lock_;

@@ -17,29 +17,29 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/data/yaml/Yaml.h"
 
-using rec::audio::source::TimeStretch;
-
-using rec::util::thread::ThreadDescription;
-using rec::widget::AudioThumbnailDesc;
-
-using rec::persist::copy;
-
 using namespace juce;
-using namespace rec::widget::tree;
 using namespace rec::thread;
+using namespace rec::widget::tree;
 
 using rec::audio::source::Source;
+using rec::audio::source::TimeStretch;
+using rec::persist::copy;
+using rec::util::thread::ThreadDescription;
+using rec::widget::AudioThumbnailDesc;
 
 namespace rec {
 namespace slow {
 
 const File::SpecialLocationType MainPageK::START_DIR = File::userHomeDirectory;
 const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
+static const int CHANGE_LOCKER_WAIT = 100;
 
 MainPageK::MainPageK(AudioDeviceManager* d)
   : directoryListThread_(PREVIEW_THREAD_NAME),
-    directoryList_(NULL, directoryListThread_),
-    deviceManager_(d) {
+    deviceManager_(d),
+    changeLocker_(new util::thread::ChangeLocker<slow::proto::Preferences>(CHANGE_LOCKER_WAIT)),
+    stretchyFactory_(changeLocker_.get()),
+    runny_(NULL) {
 }
 
 MainPageK::~MainPageK() {
@@ -55,10 +55,19 @@ static Thread* makeCursorThread(MainPageK* main) {
   return t;
 }
 
+
+void MainPageK::operator()(audio::source::Runny* runny) {
+  LOG(INFO) << "MainPageK::operator()(Runny* runny)";
+}
+
 void MainPageK::construct(MainPageJ* peer) {
+  changeLocker_->startThread();
+  prefs()->addListener(&changeBroadcaster_);
+  changeBroadcaster_.addListener(&stretchyFactory_);
+  stretchyFactory_.addListener(this);
+
   peer_ = peer;
 
-  directoryList_.setDirectory(File::getSpecialLocation(START_DIR), true, true);
   directoryListThread_.startThread(THREAD_PRIORITY);
 
   peer_->treeTreeComp->addListener(this);
@@ -83,12 +92,14 @@ void MainPageK::construct(MainPageJ* peer) {
   gui::RecentFiles recent = gui::getSortedRecentFiles();
   if (recent.reload_most_recent() && recent.file_size())
     loadRecentFile(1);
+
 }
 
 void MainPageK::destruct() {
   // TODO: why does this have to be called so early in the destructor sequence?
   // Can we get rid of all of this entirely?
-  cursorThread_->signalThreadShouldExit();
+  util::thread::trash::discard(changeLocker_.transfer());
+  util::thread::trash::discard(cursorThread_.transfer());
   transportSource_.setSource(NULL);
   player_.setSource(NULL);
 

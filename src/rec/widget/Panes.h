@@ -20,6 +20,10 @@ inline bool operator==(const Track& x, const Track& y) {
     && sx.pitch_scale() == sy.pitch_scale();
 }
 
+inline bool operator!=(const Track& x, const Track& y) {
+  return !(x == y);
+}
+
 }  // namespace pane
 }  // namespace widget
 }  // namespace rec

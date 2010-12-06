@@ -2,6 +2,7 @@
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHYTHREAD__
 
 #include "rec/audio/source/DoubleStretchy.h"
+#include "rec/audio/source/Stretchy.pb.h"
 
 namespace rec {
 namespace audio {

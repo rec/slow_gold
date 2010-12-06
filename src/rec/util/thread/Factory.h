@@ -9,17 +9,17 @@ namespace util {
 namespace thread {
 
 template <typename Product, typename Description>
-class Factory : public listener::Broadcaster<Product*>, 
+class Factory : public listener::Broadcaster<Product>,
                 public listener::Listener<Description> {
  public:
   Factory(Thread* thread = NULL) : thread_(thread) {}
-  virtual Product* makeProduct(Description) { return NULL; }
+  virtual Product makeProduct(Description) { return NULL; }
 
   virtual void operator()(Description desc) {
     ScopedLock l(this->lock_);
-    typename listener::Broadcaster<Product*>::iterator i = this->listeners_.begin();
+    typename listener::Broadcaster<Product>::iterator i = this->listeners_.begin();
     for (; i != this->listeners_.end() && !(thread_ && thread_->threadShouldExit()); ++i) {
-      if (Product* product = makeProduct(desc))
+      if (Product product = makeProduct(desc))
         (**i)(product);
     }
   }

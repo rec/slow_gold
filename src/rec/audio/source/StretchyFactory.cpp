@@ -1,8 +1,10 @@
 #include "rec/audio/source/StretchyFactory.h"
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/source/Stretchy.h"
+#include "rec/slow/Preferences.h"
 
 using namespace rec::widget::pane;
+typedef rec::slow::proto::Preferences Preferences;
 
 namespace rec {
 namespace audio {
@@ -29,54 +31,27 @@ Runny* filledRunny(const Track& track, Thread* thread) {
   return NULL;
 }
 
+Runny* StretchyFactory::makeProduct(const Preferences& prefs) {
+  if (threadShouldExit())
+    return NULL;
+  
+  const Track& track = prefs.track();
 
-typedef rec::util::thread::Factory<Runny, const Track&> StretchyFactoryBase;
+  scoped_ptr<AudioFormatReader> reader(widget::tree::createReader(track.file()));
+  if (!reader)
+    return false;
+  scoped_ptr<Source> source(new juce::AudioFormatReaderSource(reader.get(), true));
+  scoped_ptr<Stretchy> stretchy(new Stretchy(source.transfer()));
+  stretchy->setDescription(track.timestretch());
 
-class StretchyFactory : public StretchyFactoryBase {
- public:
-  StretchyFactory(Thread *thread = NULL) : thread_(thread) {}
-
-  bool threadShouldExit() const { return thread_ && thread_->threadShouldExit(); }
-
-  virtual Runny* makeProduct(const Track& track) {
+  scoped_ptr<Runny> runny(new Runny(track.runny(), stretchy.transfer()));
+  do {
     if (threadShouldExit())
       return NULL;
+  } while (!runny->fill());
 
-    AudioFormatReader* reader = widget::tree::createReader(track.file());
-    Source* source = new juce::AudioFormatReaderSource(reader, true);
-    Stretchy* stretchy = new Stretchy(source);
-    stretchy->setDescription(track.timestretch());
-
-    scoped_ptr<Runny> runny(new Runny(track.runny(), stretchy));
-    do {
-      if (threadShouldExit())
-        return NULL;
-    } while (!runny->fill());
-
-    return runny.transfer();
-  };
-
- private:
-  Thread* thread_;
-  DISALLOW_COPY_AND_ASSIGN(StretchyFactory);
-};
-
-
-#if 0
-    trash_.empty();
-
-  util::thread::Trash trash_;
-
-
-  void signalThreadShouldExit() {
-    Thread::signalThreadShouldExit();
-    trash_.signalThreadShouldExit();
-  }
-
-
-  ChangeLocker<Description> changeLocker_;
-
-#endif
+  return runny.transfer();
+}
 
 }  // namespace source
 }  // namespace audio

@@ -8,16 +8,17 @@ namespace util {
 namespace listener {
 
 template <typename Type>
-class ChangeBroadcaster : public Broadcaster<Type> {
+class ChangeBroadcaster : public Broadcaster<const Type&> {
  public:
-  virtual void operator()(Type x) {
-    if (isChanged(x)) {
+  ChangeBroadcaster() {}
+  virtual void operator()(const Type& x) {
+    if (isChanged(x, data_)) {
       data_ = x;
       broadcast(x);
     }
   }
 
-  virtual bool isChanged(Type x) const { return data_ != x; }
+  virtual bool isChanged(const Type& x, const Type& y) const = 0;
 
  private:
   Type data_;
