@@ -18,6 +18,7 @@ class TestApplication : public GenericApplication {
     int argc = 1;
     testing::InitGoogleTest(&argc, argv);
     setApplicationReturnValue(RUN_ALL_TESTS());
+    juce::AudioFormatManager::deleteInstance();
     quit();
   }
 };

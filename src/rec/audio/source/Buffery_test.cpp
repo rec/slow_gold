@@ -8,8 +8,7 @@ namespace audio {
 namespace source {
 
 TEST(RecAudio, Buffery) {
-  Testy testy;
-  Buffery bp(&testy);
+  Buffery bp(new Testy);
   bp.initialize();
   bp.resetFrom(2, 0);
 

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="y6CZZeXDp" name="Slow">
+  <MAINGROUP id="tEn14T6uS" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -54,6 +54,8 @@
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMath.h" id="YPlZErYJu"
                 name="mfMath.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/audio/CopySamples.cpp" id="f98BQkGKJ"
+              name="CopySamples.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/audio/CopySamples.h" id="W9w63kMK4"
               name="CopySamples.h" resource="0"/>
         <GROUP id="7VIkKRYsy" name="format">
@@ -804,7 +806,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="KmbrSVmXW" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="rGyr0Z4qf" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

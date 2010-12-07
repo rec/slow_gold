@@ -90,6 +90,7 @@ bool operator==(const VolumeFile& x, const VolumeFile& y) {
 }
 
 AudioFormatReader* createReader(const VolumeFile& file) {
+  DLOG(INFO) << "Creating file: " << file.DebugString();
   const Volume& v = file.volume();
   if (v.type() != Volume::CD)
     return AudioFormatManager::getInstance()->createReaderFor(getFile(file));
@@ -101,7 +102,7 @@ AudioFormatReader* createReader(const VolumeFile& file) {
   }
 
   int track = String(file.path(0).c_str()).getIntValue();
-  return util::cd::createCDTrackReader(v.name(), track);
+  return util::cd::createCDTrackReader(v.name().c_str(), track);
 }
 
 }  // namespace tree

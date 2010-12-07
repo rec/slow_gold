@@ -1,7 +1,6 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERY__
 #define __REC_AUDIO_SOURCE_BUFFERY__
 
-#include "rec/base/scoped_array.h"
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Circular.h"
 
@@ -9,10 +8,11 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Buffery : public Wrappy::Position {
+class Buffery : public Wrappy {
  public:
   typedef util::Circular Circular;
 
+  // Buffery owns its source.
   Buffery(Source* source);
   ~Buffery();
 

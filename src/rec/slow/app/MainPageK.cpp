@@ -55,6 +55,7 @@ static Thread* makeCursorThread(MainPageK* main) {
 }
 
 void MainPageK::operator()(const Preferences& prefs) {
+  DLOG(INFO) << "New preferences " << prefs.DebugString();
   int newPosition = -1;
   {
     ScopedLock l(changeLocker_->lock());
@@ -73,9 +74,10 @@ void MainPageK::operator()(const Preferences& prefs) {
   } else if (prefs.track() == prefs_.track() && newPosition == -1) {
     return;
   }
+  prefs_ = prefs;
 
   Thread* thread = Thread::getCurrentThread();
-  scoped_ptr<Runny> runny(newRunny(prefs_.track()));
+  scoped_ptr<Runny> runny(newRunny(prefs.track()));
 
   if (runny) {
     static const int SAMPLES = 0;
@@ -85,13 +87,15 @@ void MainPageK::operator()(const Preferences& prefs) {
     while (!thread->threadShouldExit() && !runny->fill());
     runny->startThread();
     runny.swap(runny_);
+    int oldPosition = runny ? runny->getNextReadPosition() : -1;
     transportSource_.setSource(runny_.get());
     if (newPosition != -1)
       transportSource_.setPosition(newPosition);
+    else if (oldPosition != -1)
+      transportSource_.setPosition(oldPosition);
 
     trash::discard(runny.transfer());
   }
-  prefs_ = prefs;
 }
 
 void MainPageK::construct(MainPageJ* peer) {
@@ -121,7 +125,7 @@ void MainPageK::construct(MainPageJ* peer) {
   changeLocker_->addListener(this);
   changeLocker_->startThread();
   prefs()->addListener(changeLocker_.get());
-  prefs()->requestUpdate();
+  // prefs()->requestUpdate();
 }
 
 void MainPageK::destruct() {
@@ -223,12 +227,12 @@ void MainPageK::cut() {
   proto::Preferences prefs = slow::getPreferences();
   string s = yaml::write(prefs);
   SystemClipboard::copyTextToClipboard(s.c_str());
-  LOG(INFO) << s;
+  DLOG(INFO) << s;
 }
 
 void MainPageK::paste() {
   string s = SystemClipboard::getTextFromClipboard().toCString();
-  LOG(INFO) << s;
+  DLOG(INFO) << s;
   proto::Preferences prefs;
   yaml::read(s, &prefs);
 }

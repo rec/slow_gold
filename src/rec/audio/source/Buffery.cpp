@@ -7,7 +7,10 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Buffery::Buffery(Source* source) : Wrappy::Position(source), buffer_(2, 0) {}
+Buffery::Buffery(Source* source)
+    : Wrappy(source),
+      buffer_(2, 0) {
+}
 
 void Buffery::initialize() {
   int len = getTotalLength();
@@ -43,24 +46,24 @@ void Buffery::getNextAudioBlock(const AudioSourceChannelInfo& i) {
       info.numSamples = samples;
     }
 
-    position = position_;
+    position = getNextReadPosition();
   }
 
   int32 newPos = rec::audio::copyCircularSamples(buffer_, position, info);
 
   {
     ScopedLock l(lock_);
-    if (position_ == position)
-      position_ = newPos;
+    if (getNextReadPosition() == position)
+      setNextReadPosition(newPos);
     else {
-      LOG_FIRST_N(ERROR, 10) << "Another thread changed position_";
+      LOG_FIRST_N(ERROR, 10) << "Another thread changed position";
     }
   }
 }
 
 int64 Buffery::available() const {
   ScopedLock l(lock_);
-  return filled_.availableFrom(position_);
+  return filled_.availableFrom(getNextReadPosition());
 }
 
 // Returns true if there is more to be filled.  Only call this from one

@@ -6,36 +6,31 @@
 #include <vector>
 
 #include "rec/audio/source/Wrappy.h"
-
-class AudioTimeScaler;
+#include "rec/audio/ammf_scaler/AudioTimeScaler.h"
+#include "rec/audio/source/TimeScaler.h"
+#include "rec/audio/source/Stretchy.pb.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class TimeStretch;
-
-class Stretchy : public Wrappy::Position {
+class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
   Stretchy(Source* s);
   ~Stretchy();
 
-  void setDescription(const TimeStretch& d);
-
   virtual int getTotalLength() const;
   virtual void setNextReadPosition(int position);
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
-  const TimeStretch& getDescription() const { return *description_; }
-
  private:
   int processOneChunk(const juce::AudioSourceChannelInfo& info);
 
-  scoped_ptr<TimeStretch> description_;
+  TimeStretch description_;
   int channels_;
-  juce::AudioSampleBuffer buffer_;
-  scoped_ptr<AudioTimeScaler> scaler_;
+  AudioSampleBuffer buffer_;
+  AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);

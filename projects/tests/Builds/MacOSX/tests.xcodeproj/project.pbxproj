@@ -133,6 +133,7 @@
 		A48C820FA0A448415E918667 /* AppInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCC3E057ABD6CF5D7DC4FAD0 /* AppInstance.cpp */; };
 		A6DCA840FEF54A4239D57C7B /* Substitute_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 531B6AB27EC7EBD11575DFE1 /* Substitute_test.cpp */; };
 		A8EE5D424D31FBB7D2FD541F /* RecentFiles.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9F6B278BDF653D58B6B7F045 /* RecentFiles.pb.cc */; };
+		AA26E762A86E9A5E0DD17222 /* CopySamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3C211BF89FE0B0B7829316E /* CopySamples.cpp */; };
 		AAFEBE9DE78A093328A0D67F /* State.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = BA3B6B9C8FD2BF41B230D20C /* State.pb.cc */; };
 		AD0952C08D2C602829659BF5 /* Icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7E2D052165BD779D8AE31B8 /* Icon.cpp */; };
 		B27EBFCD27FB717E0ADB37A8 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CCDB866E3DA1673374E660F0 /* Reader.cpp */; };
@@ -472,6 +473,7 @@
 		C217F175B0F702C494E90178 /* MainPageJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPageJ.h; path = ../../../../src/rec/slow/app/MainPageJ.h; sourceTree = SOURCE_ROOT; };
 		C2D6A16940B3656FF230FB55 /* RecWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecWindow.h; path = ../../../../src/rec/slow/app/RecWindow.h; sourceTree = SOURCE_ROOT; };
 		C31D0F94D3029871E21D6EA7 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Main.cpp; sourceTree = SOURCE_ROOT; };
+		C3C211BF89FE0B0B7829316E /* CopySamples.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CopySamples.cpp; path = ../../../../src/rec/audio/CopySamples.cpp; sourceTree = SOURCE_ROOT; };
 		C4CAE3D492075E9CB7A10B98 /* aliasmanager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aliasmanager.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/aliasmanager.h"; sourceTree = SOURCE_ROOT; };
 		C5FF96B2BD86DC8A43A5399B /* Utf8_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Utf8_test.cpp; path = ../../../../src/rec/util/Utf8_test.cpp; sourceTree = SOURCE_ROOT; };
 		C707322122227D60F477C385 /* aliascontent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aliascontent.cpp; path = ../../../../src/rec/data/yaml/src/aliascontent.cpp; sourceTree = SOURCE_ROOT; };
@@ -798,6 +800,20 @@
 			name = widget;
 			sourceTree = "<group>";
 		};
+		5E5EA9DB197172AD3119FF3A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		60A842C53113D1851943D7FF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,6 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				52F38132DF1FA4DEAF714BB1 /* ammf_scaler */,
+				C3C211BF89FE0B0B7829316E /* CopySamples.cpp */,
 				C714FEB549F6CF50AB89F854 /* CopySamples.h */,
 				A40AE15D3B113EED57AB3B2B /* format */,
 				12C79CBAB1FF5B6488CACDD4 /* source */,
@@ -974,20 +991,6 @@
 				9F2788E0C63C99D95F6E57FC /* UntypedData.h */,
 			);
 			name = persist;
-			sourceTree = "<group>";
-		};
-		9A5329D526F0847E8C516DE3 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		9D13522C94A0F37D4ABBF46C /* yaml */ = {
@@ -1407,7 +1410,7 @@
 				French,
 				German,
 			);
-			mainGroup = 9A5329D526F0847E8C516DE3 /* Source */;
+			mainGroup = 5E5EA9DB197172AD3119FF3A /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1435,6 +1438,7 @@
 				C0A48939E84474B6FF1E4BCE /* AudioTimeScaler.cpp in Sources */,
 				914CFB0DDB0D4A64AB01E05F /* hfft.c in Sources */,
 				3F73E067FD960B9A5DB4FE14 /* mfAlloc.c in Sources */,
+				AA26E762A86E9A5E0DD17222 /* CopySamples.cpp in Sources */,
 				7DC48A4B957AE29CAC4E9983 /* Copier.cpp in Sources */,
 				2980782F0530001C83CB0725 /* Copier_test.cpp in Sources */,
 				8416BE1F6C6EE9F9F78C8BC8 /* CreateReader.cpp in Sources */,

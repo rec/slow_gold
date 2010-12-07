@@ -10,8 +10,8 @@ namespace source {
 
 TEST(RecAudioSource, Stretchy) {
   Testy testy;
-  Stretchy stretchy(&testy);
-  stretchy.setDescription(TimeStretch());
+  Stretchy stretchy(TimeStretch(), &testy);
+
   Testy::expectNear(&stretchy, 0.0086, 2);
 }
 

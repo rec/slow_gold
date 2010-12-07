@@ -43,12 +43,13 @@ class DoubleStretchy : public Source {
   bool gettingBlock_;
 
   static const int BUFFER_COUNT = 2;
-  scoped_ptr<BufferedStretchy> buffer0_;
-  scoped_ptr<BufferedStretchy> buffer1_;
+  scoped_ptr<BufferedStretchy> buffers_[2];
 
   BufferedStretchy* buffer_;
   BufferedStretchy* next_;
   CriticalSection lock_;
+
+  scoped_ptr<Source> source_[2];
 
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchy);
 };

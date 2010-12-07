@@ -92,7 +92,7 @@ class ThreadDescription : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional uint32 priority = 1 [default = 4];
+  // optional uint32 priority = 1 [default = 5];
   inline bool has_priority() const;
   inline void clear_priority();
   static const int kPriorityFieldNumber = 1;
@@ -140,12 +140,12 @@ class ThreadDescription : public ::google::protobuf::Message {
 
 // ThreadDescription
 
-// optional uint32 priority = 1 [default = 4];
+// optional uint32 priority = 1 [default = 5];
 inline bool ThreadDescription::has_priority() const {
   return _has_bit(0);
 }
 inline void ThreadDescription::clear_priority() {
-  priority_ = 4u;
+  priority_ = 5u;
   _clear_bit(0);
 }
 inline ::google::protobuf::uint32 ThreadDescription::priority() const {

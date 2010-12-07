@@ -77,7 +77,7 @@ void protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/util/thread/Thread.proto\022\017rec.util"
     ".thread\"=\n\021ThreadDescription\022\023\n\010priority"
-    "\030\001 \001(\r:\0014\022\023\n\006period\030\002 \001(\r:\003100", 110);
+    "\030\001 \001(\r:\0015\022\023\n\006period\030\002 \001(\r:\003100", 110);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/thread/Thread.proto", &protobuf_RegisterTypes);
   ThreadDescription::default_instance_ = new ThreadDescription();
@@ -116,7 +116,7 @@ ThreadDescription::ThreadDescription(const ThreadDescription& from)
 
 void ThreadDescription::SharedCtor() {
   _cached_size_ = 0;
-  priority_ = 4u;
+  priority_ = 5u;
   period_ = 100u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -152,7 +152,7 @@ ThreadDescription* ThreadDescription::New() const {
 
 void ThreadDescription::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    priority_ = 4u;
+    priority_ = 5u;
     period_ = 100u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -165,7 +165,7 @@ bool ThreadDescription::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 priority = 1 [default = 4];
+      // optional uint32 priority = 1 [default = 5];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -214,7 +214,7 @@ bool ThreadDescription::MergePartialFromCodedStream(
 
 void ThreadDescription::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 priority = 1 [default = 4];
+  // optional uint32 priority = 1 [default = 5];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->priority(), output);
   }
@@ -232,7 +232,7 @@ void ThreadDescription::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* ThreadDescription::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 priority = 1 [default = 4];
+  // optional uint32 priority = 1 [default = 5];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->priority(), target);
   }
@@ -253,7 +253,7 @@ int ThreadDescription::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 priority = 1 [default = 4];
+    // optional uint32 priority = 1 [default = 5];
     if (has_priority()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

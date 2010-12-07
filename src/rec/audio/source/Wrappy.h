@@ -17,22 +17,22 @@ class Wrappy : public Source {
   virtual void initialize() {}
 
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
-    source_->getNextAudioBlock(info);
+    source()->getNextAudioBlock(info);
   }
 
-  virtual int getTotalLength() const { return source_->getTotalLength(); }
+  virtual int getTotalLength() const { return source()->getTotalLength(); }
 
   virtual int getNextReadPosition() const {
-    return source_->getNextReadPosition();
+    return source()->getNextReadPosition();
   }
 
-  virtual void setNextReadPosition(int p) { source_->setNextReadPosition(p); }
+  virtual void setNextReadPosition(int p) { source()->setNextReadPosition(p); }
 
-  virtual bool isLooping() const { return source_->isLooping(); }
-  virtual void setLooping(bool looping) { source_->setLooping(looping); }
+  virtual bool isLooping() const { return source()->isLooping(); }
+  virtual void setLooping(bool looping) { source()->setLooping(looping); }
 
-  virtual void prepareToPlay(int s, double r) { source_->prepareToPlay(s, r);  }
-  virtual void releaseResources() { source_->releaseResources(); }
+  virtual void prepareToPlay(int s, double r) { source()->prepareToPlay(s, r);  }
+  virtual void releaseResources() { source()->releaseResources(); }
 
   int mod(int x) const { return util::mod(x, getTotalLength()); }
 
@@ -40,34 +40,15 @@ class Wrappy : public Source {
     setNextReadPosition(mod(x + getNextReadPosition()));
   }
 
-  class Position;
+  void setSource(Source* source) { source_.reset(source); }
+  Source* transfer() { return source_.transfer(); }
 
  protected:
-  Source* source_;
+  virtual Source* source() { return source_.get(); }
+  scoped_ptr<Source> source_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);
-};
-
-// A Source with an embedded Position.  Probably we should be
-// using this less and relying more on the contained class's position_.
-class Wrappy::Position : public Wrappy {
- public:
-  Position(Source* source, int position = 0)
-      : Wrappy(source), position_(position) {
-  }
-
-  virtual int getNextReadPosition() const { return position_; }
-  virtual void setNextReadPosition(int p) {
-    source_->setNextReadPosition(p);
-    position_ = p;
-  }
-
- protected:
-  int position_;
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Position);
 };
 
 }  // namespace source

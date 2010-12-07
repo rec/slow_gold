@@ -136,6 +136,7 @@
 		E0AED36426123AC665734EBF /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C31B634103849F680A6D6D4 /* QuickTime.framework */; };
 		E5406149587043DD0F6E509B /* RecentFiles.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = ECCD3A82FAB4856ED329FCC2 /* RecentFiles.pb.cc */; };
 		E750B19502C951594511C2EB /* State.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = F79D7E93AA100767EEA2DE88 /* State.pb.cc */; };
+		E788EB69C4ACD2643A426EAE /* CopySamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 002424B6944D5320959B3DEA /* CopySamples.cpp */; };
 		EAC9BB7CF839266A96D1B234 /* emitfromevents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0C25ECDCA094453BE8092FD /* emitfromevents.cpp */; };
 		EE780D22138418DE3F84F36D /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EA4E4C39879BB30FB4DDDC /* DiscRecording.framework */; };
 		EEB0407468B4645D5199D632 /* Status.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = CCA271DB22A58D8F8AC93371 /* Status.pb.cc */; };
@@ -149,6 +150,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		002424B6944D5320959B3DEA /* CopySamples.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CopySamples.cpp; path = ../../../../src/rec/audio/CopySamples.cpp; sourceTree = SOURCE_ROOT; };
 		01C37FE36244605E462404AC /* Path.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Path.pb.h; path = ../../../../genfiles/proto/rec/widget/tree/Path.pb.h; sourceTree = SOURCE_ROOT; };
 		046936284D70C57621E8BF01 /* aliascontent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aliascontent.cpp; path = ../../../../src/rec/data/yaml/src/aliascontent.cpp; sourceTree = SOURCE_ROOT; };
 		04ED2787988EC4989489D5B8 /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = App.h; path = ../../../../src/rec/data/persist/App.h; sourceTree = SOURCE_ROOT; };
@@ -688,20 +690,6 @@
 			name = access;
 			sourceTree = "<group>";
 		};
-		37DA6F8152A311411D0951D6 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				7BFCF91B869043B98C913592 /* rec */,
-				D26125E1DCE7B2460E400BCD /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		4AD967CDC162F767C425A37C /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,6 +985,20 @@
 			name = listener;
 			sourceTree = "<group>";
 		};
+		AAFC09C234D15501D55AA1CB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7BFCF91B869043B98C913592 /* rec */,
+				D26125E1DCE7B2460E400BCD /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,6 +1011,7 @@
 			isa = PBXGroup;
 			children = (
 				F279675AD2B02F2BB48C6DB8 /* ammf_scaler */,
+				002424B6944D5320959B3DEA /* CopySamples.cpp */,
 				1476F1BC65350776D8FAE4C0 /* CopySamples.h */,
 				0C1D228EB7C0C7B323A538C8 /* format */,
 				A41F1EFC3C551C83A04990BC /* source */,
@@ -1322,7 +1325,7 @@
 				French,
 				German,
 			);
-			mainGroup = 37DA6F8152A311411D0951D6 /* Source */;
+			mainGroup = AAFC09C234D15501D55AA1CB /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1350,6 +1353,7 @@
 				0D069C21F383CCDC2C80474A /* AudioTimeScaler.cpp in Sources */,
 				DEAEFE04F74B928AD873ECDB /* hfft.c in Sources */,
 				7CD5F36E18D553B08A25F990 /* mfAlloc.c in Sources */,
+				E788EB69C4ACD2643A426EAE /* CopySamples.cpp in Sources */,
 				CA269D42B0B82AB2D9B0950F /* Copier.cpp in Sources */,
 				C177B11687BD211F24FD8744 /* CreateReader.cpp in Sources */,
 				0D991B89B84527E6125EE2C0 /* Format.cpp in Sources */,

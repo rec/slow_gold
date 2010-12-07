@@ -25,7 +25,7 @@ UntypedData::UntypedData(const File& file, Message* message, App* app)
 void UntypedData::readFromFile() const {
   if (!alreadyReadFromFile_) {
     if (copy(*file_, message_))
-      LOG(INFO) << "Opening data " << file_->getFullPathName().toCString();
+      DLOG(INFO) << "Opening data " << file_->getFullPathName().toCString();
     else
       LOG(ERROR) << "New data " << file_->getFullPathName().toCString();
 

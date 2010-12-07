@@ -42,6 +42,24 @@ TEST(Util, Circular) {
   EXPECT_EQ(c.remainingBlock(), 0);
   Result r4 = {8, 8, 8, 8, 8, 8, 8, 8};
   testAvailable(c, r4);
+
+  c.reset(3, 8);
+  EXPECT_EQ(c.filled(), 0);
+  c.fill(4);
+  EXPECT_EQ(c.filled(), 4);
+  EXPECT_EQ(c.remaining(), 4);
+  EXPECT_EQ(c.remainingBlock(), 1);
+
+  c.consume(3);
+  EXPECT_EQ(c.filled(), 1);
+  EXPECT_EQ(c.remaining(), 7);
+  EXPECT_EQ(c.remainingBlock(), 1);
+
+  c.fill(5);
+  EXPECT_EQ(c.filled(), 6);
+  EXPECT_EQ(c.remaining(), 2);
+  EXPECT_EQ(c.remainingBlock(), 2);
+
 }
 
 }  // namespace util

@@ -1,3 +1,5 @@
+#include <glog/logging.h>
+
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -16,14 +18,20 @@ class Trash {
     empty();
   }
 
+  void doDelete(Thread* thread) {
+    DLOG(INFO) << "Deleting thread " << thread->getThreadName();
+    delete thread;
+  }
+
   void discard(Thread* thread) {
     if (thread) {
       thread->signalThreadShouldExit();
+      thread->notify();
       if (thread->isThreadRunning()) {
         ScopedLock l(lock_);
         threads_.insert(thread);
       } else {
-        delete thread;
+        doDelete(thread);
       }
     }
   }
@@ -39,7 +47,8 @@ class Trash {
       threads_.erase(stopped.begin(), stopped.end());
     }
 
-    stl::deletePointers(&stopped);
+    for (ThreadSet::iterator i = stopped.begin(); i != stopped.end(); ++i)
+      doDelete(*i);
   }
 
   void waitForAllThreadsToExit(int timeout) {

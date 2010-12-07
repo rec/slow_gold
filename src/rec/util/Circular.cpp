@@ -1,7 +1,12 @@
 #include "rec/util/Circular.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace util {
+
+Circular::Circular(int64 length) {
+  reset(0, length);
+}
 
 Circular::Circular(int64 begin, int64 length) {
   reset(begin, length);
@@ -45,6 +50,7 @@ int64 Circular::availableFrom(int64 begin) const {
 int64 Circular::consume(int64 amount) {
   amount = std::min(amount, filled_);
   begin_ = fromBegin(amount);
+  filled_ -= amount;
   return amount;
 }
 

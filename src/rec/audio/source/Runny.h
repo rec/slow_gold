@@ -11,7 +11,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Runny : public Wrappy::Position, public Thread {
+class Runny : public Wrappy, public Thread {
  public:
   Runny(const RunnyDesc& desc, Source* source);
 

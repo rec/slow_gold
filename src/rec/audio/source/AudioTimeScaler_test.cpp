@@ -96,7 +96,7 @@ TEST(RecAudio, AudioTimeScaler) {
     samplesOut += samplesToProcess;
   }
   if (false)
-    LOG(INFO) << "maxdiff " << maxDiff << std::endl;
+    DLOG(INFO) << "maxdiff " << maxDiff << std::endl;
 }
 
 }  // namespace source

@@ -18,8 +18,7 @@ Root::Root(const NodeDesc& desc) : desc_(desc) {
   setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
 }
 
-Root::~Root() {
-}
+Root::~Root() {}
 
 void Root::update() {
   VolumeList volumes = getVolumes();

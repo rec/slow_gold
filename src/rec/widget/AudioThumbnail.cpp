@@ -28,22 +28,25 @@ void AudioThumbnailWidget::setFile(const VolumeFile& file) {
   ScopedLock l(lock_);
 
   if (file.volume().type() == tree::Volume::CD) {
-    if (!true) {
+    if (false) {
+      if (!file.path_size()) {
+        LOG(ERROR) << "Empty CD track path";
+        return;
+      }
+      int64 id = String(file.volume().name().c_str()).getHexValue32();
+      int64 track = String(file.path(0).c_str()).getIntValue();
+      thumbnail_.setReader(createReader(file), 1000L * id + track);
+    } else {
+      startTime_ = ratio_ = 0;
+      endTime_ = 60;
       return;
     }
-    if (!file.path_size()) {
-      LOG(ERROR) << "Empty CD track path";
-      return;
-    }
-    int64 id = String(file.volume().name().c_str()).getHexValue32();
-    int64 track = String(file.path(0).c_str()).getIntValue();
-    thumbnail_.setReader(createReader(file), 1000L * id + track);
   } else {
     thumbnail_.setSource(new FileInputSource(tree::getFile(file)));
   }
   startTime_ = ratio_ = 0;
   endTime_ = thumbnail_.getTotalLength();
-  cursor_ = (startTime_ + endTime_) / 2;
+  cursor_ = 0;
 }
 
 void AudioThumbnailWidget::setZoomFactor(double amount) {
@@ -78,6 +81,7 @@ Rectangle<int> AudioThumbnailWidget::cursorRectangle() const {
   double ratio = (position - startTime_) / (endTime_ - startTime_);
   int width = (getWidth() - 2 * margin);
   int cursorX = (margin - thickness / 2) + width * ratio;
+  // LOG(ERROR) << margin << "," << thickness << "," << width << "," << ratio;
 
   return Rectangle<int>(cursorX, margin, thickness, getHeight() - margin);
 }

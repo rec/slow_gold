@@ -1,53 +1,42 @@
+#include <glog/logging.h>
+
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/CopySamples.h"
+
+using namespace juce;
 
 namespace rec {
 namespace audio {
 namespace source {
 
 Runny::Runny(const RunnyDesc& desc, Source* source)
-    : Wrappy::Position(source),
+    : Wrappy(source),
       Thread("Runny"),
       buffer_(2, desc.buffer_size()),
-      filled_(0, desc.buffer_size()),
+      filled_(desc.buffer_size()),
       desc_(desc) {
+  DLOG(INFO) << "Creating runny with: " << this << "\n" << desc.DebugString();
   setPriority(desc.thread().priority());
 }
 
-Runny::~Runny() {}
-
-void Runny::setNextReadPosition(int p) {
-  {
-    ScopedLock l(lock_);
-    filled_.reset();
-    position_ = p;
-  }
-  source_->setNextReadPosition(p);
+Runny::~Runny() {
+  DLOG(INFO) << "Deleting runny with: " << this;
 }
 
-bool Runny::fill() {
-  AudioSourceChannelInfo info;
+void Runny::setNextReadPosition(int newPos) {
+  // DLOG(INFO) << "Setting next read position: " << newPos;
   {
     ScopedLock l(lock_);
-    info.numSamples = juce::jmin(filled_.remainingBlock(),
-                                 (int64)desc_.chunk_size());
-    if (!info.numSamples)
-      return true;  // No more to fill!
+    int64 skip = newPos - getNextReadPosition();
 
-    info.startSample = filled_.end();
+    if (skip >= 0 && skip <= filled_.filled())
+      filled_.consume(skip);
+    else
+      filled_.reset();
   }
-  info.buffer = &buffer_;
 
-  if (threadShouldExit())
-    return true;
-
-  source_->getNextAudioBlock(info);
-
-  if (threadShouldExit())
-    return true;
-
-  ScopedLock l(lock_);
-  return !filled_.fill(info.numSamples);
+  notify();
+  Wrappy::setNextReadPosition(newPos);
 }
 
 void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -56,13 +45,16 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     ScopedLock l(lock_);
     begin = filled_.begin();
     ready = filled_.filled();
+    // DLOG(INFO) << "-> * " << filled_.begin() << ":" << filled_.filled() << ", " << this;
   }
 
   if (threadShouldExit())
     return;
 
-  if (ready < info.numSamples)
-    LOG(ERROR) << "Expected " << ready << " but got " << info.numSamples;
+  if (ready < info.numSamples) {
+    LOG_FIRST_N(ERROR, 9) << "request:" << info.numSamples << " got:" << ready;
+  }
+
   copyCircularSamples(buffer_, begin, info);
 
   if (threadShouldExit())
@@ -70,6 +62,29 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
   ScopedLock l(lock_);
   filled_.consume(info.numSamples);
+}
+
+bool Runny::fill() {
+  AudioSourceChannelInfo info;
+  {
+    ScopedLock l(lock_);
+    info.buffer = &buffer_;
+    info.startSample = filled_.end();
+    info.numSamples = jmin(filled_.remainingBlock(), (int64)desc_.chunk_size());
+  }
+
+  if (!info.numSamples || threadShouldExit())
+    return true;  // No more to fill!
+
+  // DLOG(INFO) << "* <- " << filled_.begin() << ":" << filled_.filled() << ", " << this;
+  source_->getNextAudioBlock(info);
+
+  if (threadShouldExit())
+    return true;
+
+  ScopedLock l(lock_);
+  filled_.fill(info.numSamples);
+  return !filled_.remaining();
 }
 
 void Runny::run() {

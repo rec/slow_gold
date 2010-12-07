@@ -15,6 +15,7 @@ namespace source {
 class BufferedStretchy : public Buffery {
  public:
   BufferedStretchy(Source* s) : Buffery(&stretchy_), stretchy_(s) {}
+  ~BufferedStretchy() { stretchy_.transfer(); }
 
   void setDescription(const TimeStretch& t, int position) {
     stretchy_.setDescription(t);
@@ -35,17 +36,19 @@ DoubleStretchy::DoubleStretchy(Source* s0, Source* s1)
     : descriptionChanged_(false),
       description_(new TimeStretch),
       gettingBlock_(false),
-      buffer0_(new BufferedStretchy(s0)),
-      buffer1_(new BufferedStretchy(s1)),
       buffer_(NULL),
       next_(NULL) {
+  buffers_[0].reset(new BufferedStretchy(s0));
+  buffers_[1].reset(new BufferedStretchy(s1));
+  source_[0].reset(s0);
+  source_[1].reset(s1);
 }
 
 DoubleStretchy::~DoubleStretchy() {}
 
 void DoubleStretchy::initialize() {
-  buffer0_->initialize();
-  buffer1_->initialize();
+  buffers_[0]->initialize();
+  buffers_[1]->initialize();
 }
 
 
@@ -55,7 +58,7 @@ void DoubleStretchy::setDescription(const TimeStretch& description) {
   description_->CopyFrom(description);
 
   if (!buffer_) {
-    buffer_ = buffer0_.get();
+    buffer_ = buffers_[0].get();
     buffer_->setDescription(*description_, getNextReadPosition());
   }
 }
@@ -87,13 +90,13 @@ bool DoubleStretchy::ready(int amount) const {
 }
 
 void DoubleStretchy::prepareToPlay(int s, double r) {
-  buffer0_->prepareToPlay(s, r);
-  buffer1_->prepareToPlay(s, r);
+  buffers_[0]->prepareToPlay(s, r);
+  buffers_[1]->prepareToPlay(s, r);
 }
 
 void DoubleStretchy::releaseResources() {
-  buffer0_->releaseResources();
-  buffer1_->releaseResources();
+  buffers_[0]->releaseResources();
+  buffers_[1]->releaseResources();
 }
 
 bool DoubleStretchy::fillNext() {
@@ -127,7 +130,7 @@ bool DoubleStretchy::fillNext() {
     float scale = description_->time_scale() /
       buffer_->getDescription().time_scale();
 
-    next_ = (buffer_ == buffer1_.get()) ? buffer0_.get() : buffer1_.get();
+    next_ = (buffer_ == buffers_[1].get()) ? buffers_[0].get() : buffers_[1].get();
     next_->setDescription(*description_, getNextReadPosition() * scale);
     descriptionChanged_ = false;
   }
@@ -154,8 +157,8 @@ bool DoubleStretchy::isLooping() const {
 
 void DoubleStretchy::setLooping(bool looping) {
   ScopedLock l(lock_);
-  buffer0_->setLooping(looping);
-  buffer1_->setLooping(looping);
+  buffers_[0]->setLooping(looping);
+  buffers_[1]->setLooping(looping);
 }
 
 }  // namespace source

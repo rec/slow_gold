@@ -9,7 +9,7 @@ namespace util {
 namespace cd {
 
 AudioCDReader* getAudioCDReader(const String& idString) {
-  int id = String(idString.c_str()).getHexValue32();
+  int id = idString.getHexValue32();
   StringArray names = AudioCDReader::getAvailableCDNames();
   int size = names.size();
   for (int i = 0; i < size; ++i) {
@@ -17,7 +17,7 @@ AudioCDReader* getAudioCDReader(const String& idString) {
     if (!reader)
       LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
     else if (reader->getCDDBId() == id)
-      return reader.transfer();
+      return reader.release();
   }
   LOG(ERROR) << "Couldn't find an AudioCDReader for ID " << id;
   return NULL;
@@ -27,19 +27,19 @@ AudioFormatReader* createCDTrackReader(AudioCDReader* r, int track) {
   ScopedPointer<AudioCDReader> reader(r);
   int trackIndex = getAudioTrackIndex(*reader, track);
   if (trackIndex == -1) {
-    LOG(ERROR) << "No track " << track << " in " << idString;
+    LOG(ERROR) << "No track " << track << " in " << r->getCDDBId();
     return NULL;
   }
 
   int begin = reader->getPositionOfTrackStart(trackIndex);
   int end = reader->getPositionOfTrackStart(trackIndex + 1);
-  return new AudioSubsectionReader(reader.transfer(), begin, end - begin, true);
+  return new AudioSubsectionReader(reader.release(), begin, end - begin, true);
 }
 
 AudioFormatReader* createCDTrackReader(const String& idString, int track) {
   ScopedPointer<AudioCDReader> reader(getAudioCDReader(idString));
   if (reader)
-    return createCDTrackReader(reader.transfer(), track);
+    return createCDTrackReader(reader.release(), track);
 
   LOG(ERROR) << "Couldn't create reader for " << idString;
   return NULL;

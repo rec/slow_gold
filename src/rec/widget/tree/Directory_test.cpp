@@ -11,6 +11,7 @@ namespace tree {
 namespace {
 
 TEST(Directory, All) {
+#if 0
   VolumeFile vf;
   vf.mutable_volume()->set_type(Volume::VOLUME);
   vf.add_path("~/iTunes");
@@ -19,7 +20,6 @@ TEST(Directory, All) {
   d.computeChildren();
   d.setOpen(true);
 
-#if 0
   for (int i = 0; i < d.getNumSubItems(); ++i)
     LOG(INFO) << ((Node*) d.getSubItem(i))->name();
 #endif
