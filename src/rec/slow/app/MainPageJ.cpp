@@ -138,7 +138,6 @@ MainPageJ::~MainPageJ()
     deleteAndZero (zoomLabel);
     deleteAndZero (thumbnail);
     deleteAndZero (startStopButton);
-    treeTreeComp->deleteRootItem();
     deleteAndZero (treeTreeComp);
     deleteAndZero (explanation);
     deleteAndZero (zoomSlider);

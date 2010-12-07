@@ -55,46 +55,12 @@ static Thread* makeCursorThread(MainPageK* main) {
 }
 
 void MainPageK::operator()(const Preferences& prefs) {
-  DLOG(INFO) << "New preferences " << prefs.DebugString();
-  int newPosition = -1;
-  {
-    ScopedLock l(changeLocker_->lock());
-    if (newPosition_ != -1) {
-      newPosition = newPosition_;
-      newPosition_ = -1;
-    }
-  }
-
-  if (prefs.track().file() != prefs_.track().file()) {
-    if (transportSource_.isPlaying())
-      transportSource_.stop();
+  const VolumeFile& file = prefs.track().file();
+  if (file != file_) {
+    transportSource_.stop();
     transportSource_.setPosition(0);
-    peer_->thumbnail->setFile(prefs.track().file());
-
-  } else if (prefs.track() == prefs_.track() && newPosition == -1) {
-    return;
-  }
-  prefs_ = prefs;
-
-  Thread* thread = Thread::getCurrentThread();
-  scoped_ptr<Runny> runny(newRunny(prefs.track()));
-
-  if (runny) {
-    static const int SAMPLES = 0;
-    runny->setNextReadPosition((newPosition == -1) ?
-                               transportSource_.getCurrentPosition() + SAMPLES :
-                               newPosition);
-    while (!thread->threadShouldExit() && !runny->fill());
-    runny->startThread();
-    runny.swap(runny_);
-    int oldPosition = runny ? runny->getNextReadPosition() : -1;
-    transportSource_.setSource(runny_.get());
-    if (newPosition != -1)
-      transportSource_.setPosition(newPosition);
-    else if (oldPosition != -1)
-      transportSource_.setPosition(oldPosition);
-
-    trash::discard(runny.transfer());
+    peer_->thumbnail->setFile(file);
+    file_ = file;
   }
 }
 
@@ -122,10 +88,11 @@ void MainPageK::construct(MainPageJ* peer) {
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
 
+  doubleRunny_.addListener(this);
   changeLocker_->addListener(this);
+  changeLocker_->addListener(&doubleRunny_);
   changeLocker_->startThread();
   prefs()->addListener(changeLocker_.get());
-  // prefs()->requestUpdate();
 }
 
 void MainPageK::destruct() {
@@ -133,7 +100,6 @@ void MainPageK::destruct() {
   // Can we get rid of all of this entirely?
   trash::discard(changeLocker_.transfer());
   trash::discard(cursorThread_.transfer());
-  trash::discard(runny_.transfer());
 
   transportSource_.setSource(NULL);
   player_.setSource(NULL);
@@ -152,6 +118,10 @@ static const int RATE = 44100;
 
 void MainPageK::operator()(const VolumeFile& file) {
   loadFileIntoTransport(file);
+}
+
+void MainPageK::operator()(Source* source) {
+  transportSource_.setSource(source);
 }
 
 void MainPageK::updateCursor() {

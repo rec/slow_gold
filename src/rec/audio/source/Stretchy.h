@@ -17,11 +17,12 @@ namespace source {
 class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
-  Stretchy(Source* s);
+  Stretchy(const TimeStretch& desc, Source* s);
   ~Stretchy();
 
   virtual int getTotalLength() const;
   virtual void setNextReadPosition(int position);
+  virtual int getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
  private:
@@ -32,6 +33,7 @@ class Stretchy : public Wrappy {
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };

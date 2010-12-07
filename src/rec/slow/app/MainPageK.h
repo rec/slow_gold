@@ -4,8 +4,7 @@
 #include <set>
 #include <vector>
 
-#include "rec/audio/source/Runny.h"
-#include "rec/audio/source/StretchyFactory.h"
+#include "rec/audio/source/DoubleRunny.h"
 #include "rec/slow/Preferences.h"
 #include "rec/util/thread/ChangeLocker.h"
 #include "rec/util/thread/Trash.h"
@@ -28,7 +27,8 @@ typedef slow::proto::Preferences Preferences;
 class MainPageK : public juce::Slider::Listener,
                   public juce::ChangeListener,
                   public NodeListener,
-                  public Listener<const Preferences&> {
+                  public Listener<const Preferences&>,
+                  public Listener<Source*> {
  public:
   MainPageK(juce::AudioDeviceManager* d);
   virtual ~MainPageK();
@@ -47,6 +47,7 @@ class MainPageK : public juce::Slider::Listener,
 
   virtual void operator()(const VolumeFile& file);
   virtual void operator()(const Preferences& prefs);
+  virtual void operator()(Source* prefs);
 
   void updateCursor();
   void loadRecentFile(int menuItemId);
@@ -76,10 +77,10 @@ class MainPageK : public juce::Slider::Listener,
   juce::AudioDeviceManager* deviceManager_;
 
   scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
-  scoped_ptr<Runny> runny_;
+  DoubleRunny doubleRunny_;
 
   scoped_ptr<Thread> cursorThread_;
-  Preferences prefs_;
+  VolumeFile file_;
   int newPosition_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);

@@ -44,7 +44,7 @@ class Wrappy : public Source {
   Source* transfer() { return source_.transfer(); }
 
  protected:
-  virtual Source* source() { return source_.get(); }
+  virtual Source* source() const { return source_.get(); }
   scoped_ptr<Source> source_;
 
  private:

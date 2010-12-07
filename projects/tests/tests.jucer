@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="5TnnpOWFR" name="tests">
+  <MAINGROUP id="YFYutMnbY" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -114,8 +114,10 @@
                 name="Buffery.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Buffery_test.cpp"
                 id="RIXmwf6QJ" name="Buffery_test.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Double.h" id="JYNwSP6iC"
-                name="Double.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp"
+                id="mI61CtQ68" name="DoubleRunny.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/DoubleRunny.h" id="ZbigF9cjr"
+                name="DoubleRunny.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleStretchy.cpp"
                 id="j1uUcRE90" name="DoubleStretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleStretchy.h"
@@ -865,7 +867,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="wfBwXzSyR" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="EgaIAYWZH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

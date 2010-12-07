@@ -14,17 +14,19 @@ namespace source {
 
 class BufferedStretchy : public Buffery {
  public:
-  BufferedStretchy(Source* s) : Buffery(&stretchy_), stretchy_(s) {}
+  BufferedStretchy(const TimeStretch& desc, Source* s) : Buffery(&stretchy_), stretchy_(desc, s) {}
   ~BufferedStretchy() { stretchy_.transfer(); }
 
   void setDescription(const TimeStretch& t, int position) {
-    stretchy_.setDescription(t);
+    // stretchy_.setDescription(t);
     resetFrom(t.channels(), position);
     setNextReadPosition(position);
   }
 
   const TimeStretch& getDescription() const {
-    return stretchy_.getDescription();
+    // return stretchy_.getDescription();
+    static TimeStretch t;
+    return t;
   }
 
  private:
@@ -38,8 +40,8 @@ DoubleStretchy::DoubleStretchy(Source* s0, Source* s1)
       gettingBlock_(false),
       buffer_(NULL),
       next_(NULL) {
-  buffers_[0].reset(new BufferedStretchy(s0));
-  buffers_[1].reset(new BufferedStretchy(s1));
+  buffers_[0].reset(new BufferedStretchy(*description_, s0));
+  buffers_[1].reset(new BufferedStretchy(*description_, s1));
   source_[0].reset(s0);
   source_[1].reset(s1);
 }

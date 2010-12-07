@@ -77,6 +77,7 @@ bool Runny::fill() {
     return true;  // No more to fill!
 
   // DLOG(INFO) << "* <- " << filled_.begin() << ":" << filled_.filled() << ", " << this;
+  source_->prepareToPlay(desc_.chunk_size(), 44100);
   source_->getNextAudioBlock(info);
 
   if (threadShouldExit())

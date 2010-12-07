@@ -44,11 +44,14 @@ class Trash {
         if (!(*i)->isThreadRunning())
           stopped.insert(*i);
       }
-      threads_.erase(stopped.begin(), stopped.end());
+      for (ThreadSet::iterator i = stopped.begin(); i != stopped.end(); ++i)
+        threads_.erase(*i);
     }
-
-    for (ThreadSet::iterator i = stopped.begin(); i != stopped.end(); ++i)
+    
+    for (ThreadSet::iterator i = stopped.begin(); i != stopped.end(); ++i) {
+      LOG(ERROR) << "Not deleting " << *i;
       doDelete(*i);
+    }
   }
 
   void waitForAllThreadsToExit(int timeout) {

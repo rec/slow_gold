@@ -15,10 +15,7 @@ Runny* newRunny(const Track& track) {
   if (!reader)
     return NULL;
   Source* source = new juce::AudioFormatReaderSource(reader, true);
-  Stretchy* stretchy = new Stretchy(source);
-  stretchy->setDescription(track.timestretch());
-
-  return new Runny(track.runny(), stretchy);
+  return new Runny(track.runny(), new Stretchy(track.timestretch(), source));
 }
 
 Runny* filledRunny(const Track& track, Thread* thread) {
