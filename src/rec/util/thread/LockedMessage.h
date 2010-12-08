@@ -11,7 +11,7 @@ class LockedMessage : public Wrapper {
   LockedMessage(Runnable* r) : Wrapper(r) {}
 
   virtual void run(Thread* thread) {
-    MessageManagerLock lock(thread);
+    juce::MessageManagerLock lock(thread);
     if (lock.lockWasGained())
       runnable_->run(thread);
   }

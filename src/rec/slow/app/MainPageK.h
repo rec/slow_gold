@@ -14,9 +14,9 @@
 
 class MainPageJ;
 
+using namespace rec::audio::source;
 using namespace rec::util::listener;
 using namespace rec::util::thread;
-using namespace rec::audio::source;
 using namespace rec::widget::tree;
 
 namespace rec {
@@ -28,7 +28,8 @@ class MainPageK : public juce::Slider::Listener,
                   public juce::ChangeListener,
                   public NodeListener,
                   public Listener<const Preferences&>,
-                  public Listener<Source*> {
+                  public Listener<Source*>,
+                  public Listener<double> {
  public:
   MainPageK(juce::AudioDeviceManager* d);
   virtual ~MainPageK();
@@ -47,7 +48,8 @@ class MainPageK : public juce::Slider::Listener,
 
   virtual void operator()(const VolumeFile& file);
   virtual void operator()(const Preferences& prefs);
-  virtual void operator()(Source* prefs);
+  virtual void operator()(double cursorRatio);
+  virtual void operator()(Source* runny);
 
   void updateCursor();
   void loadRecentFile(int menuItemId);
@@ -63,7 +65,6 @@ class MainPageK : public juce::Slider::Listener,
 
   static const File::SpecialLocationType START_DIR;
   static const char* PREVIEW_THREAD_NAME;
-  juce::TimeSliceThread directoryListThread_;
 
   MainPageJ* peer_;
 
@@ -80,8 +81,10 @@ class MainPageK : public juce::Slider::Listener,
   DoubleRunny doubleRunny_;
 
   scoped_ptr<Thread> cursorThread_;
-  VolumeFile file_;
+  slow::proto::Preferences prefs_;
   int newPosition_;
+  CriticalSection lock_;
+  bool transportSourceSet_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);
 };

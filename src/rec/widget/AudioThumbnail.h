@@ -4,6 +4,7 @@
 #include <set>
 
 #include "rec/widget/AudioThumbnail.pb.h"
+#include "rec/util/listener/Broadcaster.h"
 #include "rec/widget/Painter.h"
 
 namespace rec {
@@ -16,7 +17,8 @@ class VolumeFile;
 
 class AudioThumbnailWidget : public juce::Component,
                              public juce::ChangeListener,
-                             public juce::ChangeBroadcaster {
+                             public juce::ChangeBroadcaster,
+                             public util::listener::Broadcaster<double> {
  public:
   AudioThumbnailWidget(const AudioThumbnailDesc& desc);
   virtual ~AudioThumbnailWidget();

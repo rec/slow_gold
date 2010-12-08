@@ -4,28 +4,34 @@
 #include "rec/slow/Preferences.h"
 
 using namespace rec::widget::pane;
+using namespace rec::widget::tree;
 typedef rec::slow::proto::Preferences Preferences;
 
 namespace rec {
 namespace audio {
 namespace source {
 
-Runny* newRunny(const Track& track) {
-  AudioFormatReader* reader = widget::tree::createReader(track.file());
+Runny* filledRunny(const Track& track, int position) {
+  scoped_ptr<AudioFormatReader> reader(createReader(track.file()));
   if (!reader)
     return NULL;
-  Source* source = new juce::AudioFormatReaderSource(reader, true);
-  return new Runny(track.runny(), new Stretchy(track.timestretch(), source));
-}
+  
+  scoped_ptr<Source> source(
+      new AudioFormatReaderSource(reader.transfer(), true));
 
-Runny* filledRunny(const Track& track, Thread* thread) {
-  scoped_ptr<Runny> runny;
+  scoped_ptr<Stretchy> stretchy(
+      new Stretchy(track.timestretch(), source.transfer()));
+
+  scoped_ptr<Runny> runny(
+      new Runny(track.runny(), stretchy.transfer()));
+  runny->setNextReadPosition(position);
+
+  Thread* thread = Thread::getCurrentThread();
   while (!(thread && thread->threadShouldExit())) {
-    if (!runny)
-      runny.reset(newRunny(track));
-
-    else if (runny->fill())
+    if (runny->fill()) {
+      runny->startThread();
       return runny.transfer();
+    }
   }
   return NULL;
 }

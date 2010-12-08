@@ -18,6 +18,7 @@ class Root : public juce::TreeView, public NodeBroadcaster {
   ~Root();
 
   void update();
+  void startThread() { thread_->startThread(); }
 
  private:
   void addVolume(const Volume& volume, int insertAt);
@@ -32,6 +33,7 @@ class Root : public juce::TreeView, public NodeBroadcaster {
 
   NodeDesc desc_;
   TreeViewItem root_;
+  Thread* thread_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
 };

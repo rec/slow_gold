@@ -1,11 +1,15 @@
 #include "rec/widget/tree/Root.h"
+#include "rec/gui/Color.h"
+#include "rec/util/thread/Callback.h"
+#include "rec/util/thread/RunnableThread.h"
+#include "rec/util/thread/LockedMessage.h"
+#include "rec/util/thread/WaitLoop.h"
+#include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Directory.h"
 #include "rec/widget/tree/GetVolumes.h"
-#include "rec/gui/Color.h"
-
-#include "JuceLibraryCode/JuceHeader.h"
 
 using namespace juce;
+using namespace rec::thread;
 
 namespace rec {
 namespace widget {
@@ -16,9 +20,14 @@ using namespace rec::gui;
 Root::Root(const NodeDesc& desc) : desc_(desc) {
   const Colors& colors = desc_.widget().colors();
   setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
+  Runnable* callback = makeCallback(this, &Root::update);
+  Runnable* locked = new LockedMessage(callback);
+  thread_ = new RunnableThread("Polling for volumes", new WaitLoop(1000, locked));
 }
 
-Root::~Root() {}
+Root::~Root() {
+  util::thread::trash::discard(thread_);
+}
 
 void Root::update() {
   VolumeList volumes = getVolumes();

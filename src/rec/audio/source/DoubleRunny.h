@@ -5,24 +5,22 @@
 #include "rec/audio/source/Runny.h"
 #include "rec/util/listener/Broadcaster.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/thread/ChangeLocker.h"
 #include "rec/slow/Preferences.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-typedef util::listener::Listener<const slow::proto::Preferences&>
-  PreferencesListener;
-
 class DoubleRunny : public Wrappy,
-                    public PreferencesListener,
                     public util::listener::Broadcaster<Source*> {
  public:
   DoubleRunny() : Wrappy(NULL) {}
   ~DoubleRunny();
 
-  virtual void operator()(const slow::proto::Preferences& prefs);
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
+  void setPreferences(const slow::proto::Preferences& prefs,
+                      int pos = -1, double ratio = 1.0);
 
  protected:
   virtual Source* source() const;

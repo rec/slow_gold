@@ -7,6 +7,7 @@ namespace rec {
 
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioFormatReader AudioFormatReader;
+typedef juce::AudioFormatReaderSource AudioFormatReaderSource;
 typedef juce::AudioSampleBuffer AudioSampleBuffer;
 typedef juce::AudioSourceChannelInfo AudioSourceChannelInfo;
 typedef juce::CriticalSection CriticalSection;

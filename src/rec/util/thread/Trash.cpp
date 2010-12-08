@@ -19,7 +19,7 @@ class Trash {
   }
 
   void doDelete(Thread* thread) {
-    DLOG(INFO) << "Deleting thread " << thread->getThreadName();
+    // DLOG(INFO) << "Deleting thread " << thread->getThreadName();
     delete thread;
   }
 
@@ -47,9 +47,9 @@ class Trash {
       for (ThreadSet::iterator i = stopped.begin(); i != stopped.end(); ++i)
         threads_.erase(*i);
     }
-    
+
     for (ThreadSet::iterator i = stopped.begin(); i != stopped.end(); ++i) {
-      LOG(ERROR) << "Not deleting " << *i;
+      // LOG(ERROR) << "Not deleting " << *i;
       doDelete(*i);
     }
   }

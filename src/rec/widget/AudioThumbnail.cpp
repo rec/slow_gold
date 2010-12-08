@@ -28,7 +28,7 @@ void AudioThumbnailWidget::setFile(const VolumeFile& file) {
   ScopedLock l(lock_);
 
   if (file.volume().type() == tree::Volume::CD) {
-    if (false) {
+    if (true) {
       if (!file.path_size()) {
         LOG(ERROR) << "Empty CD track path";
         return;
@@ -94,8 +94,8 @@ void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
   int margin = description_.widget().margin();
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
+  broadcast(ratio);
   setCursor(ratio);
-  sendChangeMessage();
 }
 
 void AudioThumbnailWidget::setCursor(double cursorRatio) {

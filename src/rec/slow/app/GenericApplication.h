@@ -5,7 +5,7 @@
 #include <glog/logging.h>
 
 #include "rec/data/persist/AppInstance.h"
-
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 
@@ -30,6 +30,7 @@ class GenericApplication : public juce::JUCEApplication {
   virtual void shutdown() {
     persist::AppInstance::stop();
     juce::AudioFormatManager::deleteInstance();
+    util::thread::trash::empty();
     LOG(INFO) << "Shutting down " << getApplicationName();
   }
 

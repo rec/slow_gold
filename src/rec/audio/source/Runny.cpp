@@ -15,12 +15,12 @@ Runny::Runny(const RunnyDesc& desc, Source* source)
       buffer_(2, desc.buffer_size()),
       filled_(desc.buffer_size()),
       desc_(desc) {
-  DLOG(INFO) << "Creating runny with: " << this << "\n" << desc.DebugString();
+  // DLOG(INFO) << "Creating runny with: " << this << "\n" << desc.DebugString();
   setPriority(desc.thread().priority());
 }
 
 Runny::~Runny() {
-  DLOG(INFO) << "Deleting runny with: " << this;
+  // DLOG(INFO) << "Deleting runny with: " << this;
 }
 
 void Runny::setNextReadPosition(int newPos) {

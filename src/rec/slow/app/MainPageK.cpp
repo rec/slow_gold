@@ -25,8 +25,8 @@ using rec::audio::source::Source;
 using rec::audio::source::TimeStretch;
 using rec::persist::copy;
 using rec::util::thread::ThreadDescription;
-using rec::util::thread::ChangeLocker;
 using rec::widget::AudioThumbnailDesc;
+
 using namespace rec::util::thread;
 
 namespace rec {
@@ -37,10 +37,10 @@ const char* MainPageK::PREVIEW_THREAD_NAME = "audio file preview";
 static const int CHANGE_LOCKER_WAIT = 100;
 
 MainPageK::MainPageK(AudioDeviceManager* d)
-  : directoryListThread_(PREVIEW_THREAD_NAME),
-    deviceManager_(d),
-    changeLocker_(new ChangeLocker<slow::proto::Preferences>(CHANGE_LOCKER_WAIT)),
-    newPosition_(-1) {
+  : deviceManager_(d),
+    changeLocker_(new ChangeLocker<Preferences>(CHANGE_LOCKER_WAIT)),
+    newPosition_(-1),
+    transportSourceSet_(false) {
 }
 
 MainPageK::~MainPageK() {}
@@ -56,18 +56,31 @@ static Thread* makeCursorThread(MainPageK* main) {
 
 void MainPageK::operator()(const Preferences& prefs) {
   const VolumeFile& file = prefs.track().file();
-  if (file != file_) {
+  if (file != prefs_.track().file()) {
     transportSource_.stop();
     transportSource_.setPosition(0);
     peer_->thumbnail->setFile(file);
-    file_ = file;
   }
+
+  int newPosition;
+  double ratio;
+  {
+    ScopedLock l(lock_);
+    if (prefs.track() == prefs_.track() && newPosition == -1)
+      return;
+    newPosition = newPosition_;
+    if (newPosition == -1)
+      newPosition = transportSource_.getCurrentPosition();
+    ratio = prefs.track().timestretch().time_scale() /
+      prefs_.track().timestretch().time_scale();
+    prefs_ = prefs;
+  }
+
+  doubleRunny_.setPreferences(prefs, newPosition, ratio);
 }
 
 void MainPageK::construct(MainPageJ* peer) {
   peer_ = peer;
-
-  directoryListThread_.startThread(THREAD_PRIORITY);
 
   peer_->treeTreeComp->addListener(this);
   peer_->treeTreeComp->update();
@@ -77,7 +90,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
 
-  peer_->thumbnail->addChangeListener(this);
+  peer_->thumbnail->addListener(this);
 
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);
@@ -85,14 +98,14 @@ void MainPageK::construct(MainPageJ* peer) {
 
   rec::audio::format::mpg123::initializeOnce();
 
+  doubleRunny_.addListener(this);
   cursorThread_.reset(makeCursorThread(this));
   cursorThread_->startThread();
 
-  doubleRunny_.addListener(this);
   changeLocker_->addListener(this);
-  changeLocker_->addListener(&doubleRunny_);
   changeLocker_->startThread();
   prefs()->addListener(changeLocker_.get());
+  peer_->treeTreeComp->startThread();
 }
 
 void MainPageK::destruct() {
@@ -108,6 +121,27 @@ void MainPageK::destruct() {
   peer_->thumbnail->removeChangeListener(this);
 }
 
+void MainPageK::operator()(Source* runny) {
+  // DLOG(INFO) << "New source " << newPosition_;
+  bool transportSourceSet;
+  int newPosition;
+  {
+    ScopedLock l(lock_);
+    transportSourceSet = transportSourceSet_;
+    transportSourceSet_ = true;
+    newPosition = newPosition_;
+    newPosition_ = -1;
+  }
+
+  if (!transportSourceSet)
+    transportSource_.setSource(runny);
+
+  if (newPosition != -1) {
+    // DLOG(INFO) << "Setting newPosition " << newPosition;
+    transportSource_.setPosition(newPosition);
+  }
+}
+
 void MainPageK::loadRecentFile(int menuItemID) {
   gui::RecentFiles recent = gui::getSortedRecentFiles();
   loadFileIntoTransport(recent.file(menuItemID - 1).file());
@@ -120,8 +154,14 @@ void MainPageK::operator()(const VolumeFile& file) {
   loadFileIntoTransport(file);
 }
 
-void MainPageK::operator()(Source* source) {
-  transportSource_.setSource(source);
+void MainPageK::operator()(double cursorRatio) {
+  ScopedLock l(changeLocker_->lock());
+  {
+    ScopedLock l(lock_);
+    int np = (cursorRatio * transportSource_.getTotalLength()) / 44100;
+    newPosition_ = np;
+  }
+  prefs()->requestUpdate();
 }
 
 void MainPageK::updateCursor() {
@@ -168,14 +208,6 @@ static const char* const CD_STATE_NAMES[] = {
 void MainPageK::changeListenerCallback(juce::ChangeBroadcaster* objectThatHasChanged) {
   if (objectThatHasChanged == &transportSource_) {
     updateCursor();
-  }
-
-  if (objectThatHasChanged == peer_->thumbnail) {
-    ScopedLock l(changeLocker_->lock());
-
-    double ratio = peer_->thumbnail->ratio();
-    newPosition_ = (ratio * transportSource_.getTotalLength()) / RATE;
-    prefs()->requestUpdate();
   }
 }
 

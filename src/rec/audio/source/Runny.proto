@@ -3,7 +3,7 @@ import "rec/util/thread/Thread.proto";
 package rec.audio.source;
 
 message RunnyDesc {
-  optional uint32 buffer_size = 1 [default = 50000];
+  optional uint32 buffer_size = 1 [default = 51200];
   optional uint32 chunk_size = 2 [default = 1024];
   optional util.thread.ThreadDescription thread = 3;
 };

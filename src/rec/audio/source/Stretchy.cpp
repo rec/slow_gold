@@ -10,15 +10,15 @@ namespace source {
 
 Stretchy::Stretchy(const TimeStretch& desc, Source* s)
     : Wrappy(s),
-  description_(desc), 
+  description_(desc),
       buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),
       outOffset_(desc.channels()) {
-  DLOG(INFO) << "Creating stretchy with: " << description_.DebugString();
+  // DLOG(INFO) << "Creating stretchy with: " << description_.DebugString();
   Init(description_, &scaler_);
 }
 
 Stretchy::~Stretchy() {
-  DLOG(INFO) << "Destroying stretchy with: " << this;
+  // DLOG(INFO) << "Destroying stretchy with: " << this;
 }
 
 int Stretchy::getTotalLength() const {

@@ -5,6 +5,7 @@
 
 
 using namespace rec::util::thread;
+using namespace rec::slow::proto;
 using rec::widget::pane::Track;
 
 namespace rec {
@@ -21,31 +22,16 @@ Source* DoubleRunny::source() const {
   return runny_.get();
 }
 
-void DoubleRunny::operator()(const slow::proto::Preferences& prefs) {
-  const Track& track = prefs.track();
-  if (track == prefs_.track())
-    return;
-
-  ratio_ = track.timestretch().time_scale() /
-    prefs_.track().timestretch().time_scale();
-
-  scoped_ptr<Runny> runny(newRunny(track));
+void DoubleRunny::setPreferences(const Preferences& prefs, int position, double ratio) {
+  scoped_ptr<Runny> runny(filledRunny(prefs.track(), position));
   if (runny) {
-    prefs_ = prefs;
-    {
-      ScopedLock l(lock_);
-      runny->setNextReadPosition(runny_ ? runny_->getNextReadPosition() : 0);
-    }
-    Thread* thread = Thread::getCurrentThread();
-    while (!(thread && thread->threadShouldExit()) && !runny->fill());
-    runny->startThread();
-
     ScopedLock l(lock_);
     nextRunny_.swap(runny);
-    if (!runny_) {
+    ratio_ = ratio;
+    if (!runny_)
       runny_.swap(nextRunny_);
-      broadcast(this);
-    }
+
+    broadcast(this);
   }
 
   trash::discard(runny.transfer());

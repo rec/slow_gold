@@ -14,8 +14,7 @@ namespace source {
 
 class Runny;
 
-Runny* newRunny(const widget::pane::Track& track);
-Runny* filledRunny(const widget::pane::Track& track, Thread* thread);
+Runny* filledRunny(const widget::pane::Track& track, int position);
 
 }  // namespace source
 }  // namespace audio
