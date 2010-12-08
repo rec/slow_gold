@@ -84,6 +84,7 @@ class MainPageK : public juce::Slider::Listener,
   slow::proto::Preferences prefs_;
   int newPosition_;
   CriticalSection lock_;
+  int samplePosition_;
   bool transportSourceSet_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);

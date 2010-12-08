@@ -40,6 +40,7 @@ MainPageK::MainPageK(AudioDeviceManager* d)
   : deviceManager_(d),
     changeLocker_(new ChangeLocker<Preferences>(CHANGE_LOCKER_WAIT)),
     newPosition_(-1),
+    samplePosition_(-1),
     transportSourceSet_(false) {
 }
 
@@ -133,11 +134,13 @@ void MainPageK::operator()(Source* runny) {
     newPosition_ = -1;
   }
 
-  if (!transportSourceSet)
+  if (!transportSourceSet) {
     transportSource_.setSource(runny);
+    transportSource_.setPosition(0);
+  }
 
   if (newPosition != -1) {
-    // DLOG(INFO) << "Setting newPosition " << newPosition;
+    DLOG(INFO) << "Setting newPosition " << newPosition;
     transportSource_.setPosition(newPosition);
   }
 }
@@ -155,6 +158,7 @@ void MainPageK::operator()(const VolumeFile& file) {
 }
 
 void MainPageK::operator()(double cursorRatio) {
+  // DLOG(INFO) << "Setting cursor " << cursorRatio;
   ScopedLock l(changeLocker_->lock());
   {
     ScopedLock l(lock_);
@@ -166,16 +170,20 @@ void MainPageK::operator()(double cursorRatio) {
 
 void MainPageK::updateCursor() {
   int length = transportSource_.getTotalLength();
-  if (!length)
+  double current = transportSource_.getCurrentPosition();
+  int old = samplePosition_;
+  samplePosition_ = RATE * current;
+  if (samplePosition_ == old || !length)
     return;
-  double samples = RATE * transportSource_.getCurrentPosition();
-  double position = samples / length;
+
+  double position = samplePosition_ / (1.0 * length);
   peer_->thumbnail->setCursor(position);
   peer_->realDial->setTimeRatio(position);
   peer_->songDial->setTimeRatio(position);
-  peer_->realTime->setTimeSamples(samples);
+  peer_->realTime->setTimeSamples(samplePosition_);
+
   double scale = getPreferences().track().timestretch().time_scale();
-  peer_->songTime->setTimeSamples(samples / scale);
+  peer_->songTime->setTimeSamples(samplePosition_ / scale);
 }
 
 void MainPageK::loadFileIntoTransport(const VolumeFile& file) {

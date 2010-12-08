@@ -3,6 +3,7 @@
 #include "rec/widget/AudioThumbnail.h"
 #include "rec/gui/Color.h"
 #include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/cd/CDReader.h"
 
 using namespace juce;
 using namespace rec::widget::tree;
@@ -24,11 +25,27 @@ AudioThumbnailWidget::~AudioThumbnailWidget() {
   thumbnail_.removeChangeListener(this);
 }
 
+#define USE_THUMBNAIL_WIDGETS false
+
 void AudioThumbnailWidget::setFile(const VolumeFile& file) {
   ScopedLock l(lock_);
 
   if (file.volume().type() == tree::Volume::CD) {
-    if (true) {
+    if (!USE_THUMBNAIL_WIDGETS) {
+      thumbnail_.setSource(NULL);
+      scoped_ptr<AudioFormatReader> reader(createReader(file));
+      startTime_ = ratio_ = 0;
+      if (reader) {
+        double rate = reader->sampleRate;
+        if (rate < 1.0)
+          rate = 44100.0;
+        endTime_ = reader->lengthInSamples / rate;
+      } else {
+        LOG(ERROR) << "Can't read file " << file.DebugString();
+        endTime_ = 6000;
+      }
+      return;
+    } else {
       if (!file.path_size()) {
         LOG(ERROR) << "Empty CD track path";
         return;
@@ -36,10 +53,6 @@ void AudioThumbnailWidget::setFile(const VolumeFile& file) {
       int64 id = String(file.volume().name().c_str()).getHexValue32();
       int64 track = String(file.path(0).c_str()).getIntValue();
       thumbnail_.setReader(createReader(file), 1000L * id + track);
-    } else {
-      startTime_ = ratio_ = 0;
-      endTime_ = 60;
-      return;
     }
   } else {
     thumbnail_.setSource(new FileInputSource(tree::getFile(file)));
@@ -78,10 +91,11 @@ Rectangle<int> AudioThumbnailWidget::cursorRectangle() const {
   int thickness = description_.cursor_thickness();
 
   double position = jlimit(startTime_, endTime_, cursor_);
-  double ratio = (position - startTime_) / (endTime_ - startTime_);
+  double ratio = (endTime_ == startTime_) ? 0 :
+    (position - startTime_) / (endTime_ - startTime_);
   int width = (getWidth() - 2 * margin);
   int cursorX = (margin - thickness / 2) + width * ratio;
-  // LOG(ERROR) << margin << "," << thickness << "," << width << "," << ratio;
+  // DLOG(INFO) << margin << "," << thickness << "," << width << "," << ratio;
 
   return Rectangle<int>(cursorX, margin, thickness, getHeight() - margin);
 }
@@ -99,6 +113,7 @@ void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
 }
 
 void AudioThumbnailWidget::setCursor(double cursorRatio) {
+  DLOG(INFO) << "Setting cursor " << cursorRatio;
   double cursor = cursorRatio * thumbnail_.getTotalLength();
   Rectangle<int> before, after;
   {

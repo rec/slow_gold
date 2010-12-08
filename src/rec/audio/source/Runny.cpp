@@ -10,7 +10,7 @@ namespace audio {
 namespace source {
 
 Runny::Runny(const RunnyDesc& desc, Source* source)
-    : Wrappy(source),
+  : Wrappy::Position(source),
       Thread("Runny"),
       buffer_(2, desc.buffer_size()),
       filled_(desc.buffer_size()),
@@ -34,9 +34,9 @@ void Runny::setNextReadPosition(int newPos) {
     else
       filled_.reset();
   }
+  Wrappy::Position::setNextReadPosition(newPos);
 
   notify();
-  Wrappy::setNextReadPosition(newPos);
 }
 
 void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -52,7 +52,10 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     return;
 
   if (ready < info.numSamples) {
-    LOG_FIRST_N(ERROR, 9) << "request:" << info.numSamples << " got:" << ready;
+    LOG(ERROR) << "request:" << info.numSamples << " got:" << ready
+               << " filled: " << filled_.filled()
+               << " begin: " << filled_.begin();
+    // TODO:  put blanks in the missing data.
   }
 
   copyCircularSamples(buffer_, begin, info);
@@ -66,9 +69,9 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
 bool Runny::fill() {
   AudioSourceChannelInfo info;
+  info.buffer = &buffer_;
   {
     ScopedLock l(lock_);
-    info.buffer = &buffer_;
     info.startSample = filled_.end();
     info.numSamples = jmin(filled_.remainingBlock(), (int64)desc_.chunk_size());
   }

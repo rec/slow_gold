@@ -43,12 +43,48 @@ class Wrappy : public Source {
   void setSource(Source* source) { source_.reset(source); }
   Source* transfer() { return source_.transfer(); }
 
+  class Position;
+
  protected:
   virtual Source* source() const { return source_.get(); }
   scoped_ptr<Source> source_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);
+};
+
+// A Source with an embedded Position.
+class Wrappy::Position : public Wrappy {
+ public:
+  Position(Source* source, int position = 0)
+      : Wrappy(source), position_(position) {
+  }
+
+  virtual int getNextReadPosition() const {
+    ScopedLock l(lock_);
+    return position_;
+  }
+
+  virtual void setNextReadPosition(int p) {
+    source_->setNextReadPosition(p);
+    ScopedLock l(lock_);
+    position_ = p;
+  }
+
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
+    {
+      ScopedLock l(lock_);
+      position_ = mod(position_ + info.numSamples);
+    }
+    source()->getNextAudioBlock(info);
+  }
+
+ protected:
+  CriticalSection lock_;
+  int position_;
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Position);
 };
 
 }  // namespace source

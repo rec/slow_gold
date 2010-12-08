@@ -11,7 +11,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Runny : public Wrappy, public Thread {
+class Runny : public Wrappy::Position, public Thread {
  public:
   Runny(const RunnyDesc& desc, Source* source);
 
@@ -26,7 +26,6 @@ class Runny : public Wrappy, public Thread {
   virtual void run();
 
  private:
-  CriticalSection lock_;
   AudioSampleBuffer buffer_;
   util::Circular filled_;
   const RunnyDesc desc_;
