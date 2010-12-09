@@ -113,7 +113,7 @@ void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
 }
 
 void AudioThumbnailWidget::setCursor(double cursorRatio) {
-  DLOG(INFO) << "Setting cursor " << cursorRatio;
+  // DLOG(INFO) << "Setting cursor " << cursorRatio;
   double cursor = cursorRatio * thumbnail_.getTotalLength();
   Rectangle<int> before, after;
   {

@@ -52,9 +52,10 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     return;
 
   if (ready < info.numSamples) {
-    LOG(ERROR) << "request:" << info.numSamples << " got:" << ready
-               << " filled: " << filled_.filled()
-               << " begin: " << filled_.begin();
+    LOG_FIRST_N(ERROR, 10) << "request:" << info.numSamples
+                           << " got:" << ready
+                           << " filled: " << filled_.filled()
+                           << " begin: " << filled_.begin();
     // TODO:  put blanks in the missing data.
   }
 
@@ -65,6 +66,7 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
   ScopedLock l(lock_);
   filled_.consume(info.numSamples);
+  position_ = mod(position_ + info.numSamples);
 }
 
 bool Runny::fill() {

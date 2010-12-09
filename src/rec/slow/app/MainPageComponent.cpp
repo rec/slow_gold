@@ -44,7 +44,6 @@ MainPageComponent::MainPageComponent ()
 
 
     //[UserPreSize]
-    deviceManager.initialise (2, 2, 0, true, String::empty, 0);
     //[/UserPreSize]
 
     setSize (600, 400);

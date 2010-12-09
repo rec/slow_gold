@@ -18,13 +18,15 @@ UntypedData::UntypedData(const File& file, Message* message, App* app)
     : file_(new File(file)),
       message_(message),
       app_(app),
-      alreadyReadFromFile_(false) {
+      alreadyReadFromFile_(false),
+      fileReadSuccess_(false) {
   setter_.addListener(this);
 }
 
 void UntypedData::readFromFile() const {
   if (!alreadyReadFromFile_) {
-    if (copy(*file_, message_))
+    fileReadSuccess_ = copy(*file_, message_);
+    if (fileReadSuccess_)
       DLOG(INFO) << "Opening data " << file_->getFullPathName().toCString();
     else
       LOG(ERROR) << "New data " << file_->getFullPathName().toCString();

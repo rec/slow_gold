@@ -128,24 +128,50 @@ bool file(const string &from, File *to, bool readable) {
   }
 }
 
+typedef MemoryBlock Memory;
+
+bool memory(const string& in, Memory* out, bool readable) {
+  int size = in.size();
+  out->ensureSize(size);
+  out->copyFrom(in.data(), 0, size);
+  return true;
+}
+
+bool memory(const Memory& in, string* out, bool readable) {
+  int size = in.getSize();
+  out->resize(size);
+  in.copyTo(&((*out)[0]), 0, size);
+  return true;
+}
+
 }  // namespace
 
 bool copy(const File &f,    File *t,    bool r) { return file(f, t, r); }
+bool copy(const File &f,    Memory *t, bool r) { return through(f, t, r); }
 bool copy(const File &f,    Message *t, bool r) { return through(f, t, r); }
 bool copy(const File &f,    String *t,  bool r) { return through(f, t, r); }
 bool copy(const File &f,    string *t,  bool r) { return file(f, t, r); }
 
+bool copy(const Memory &f,  File *t,    bool r) { return through(f, t, r); }
+bool copy(const Memory &f,  Memory *t, bool r) { return assign(f, t, r); }
+bool copy(const Memory &f,  Message *t, bool r) { return through(f, t, r); }
+bool copy(const Memory &f,  String *t,  bool r) { return through(f, t, r); }
+bool copy(const Memory &f,  string *t,  bool r) { return memory(f, t, r); }
+
 bool copy(const Message &f, File *t,    bool r) { return through(f, t, r); }
+bool copy(const Message &f, Memory *t, bool r) { return through(f, t, r); }
 bool copy(const Message &f, Message *t, bool r) { return proto(f, t, r); }
 bool copy(const Message &f, String *t,  bool r) { return through(f, t, r); }
 bool copy(const Message &f, string *t,  bool r) { return proto(f, t, r); }
 
 bool copy(const String &f,  File *t,    bool r) { return through(f, t, r); }
+bool copy(const String &f,  Memory *t, bool r) { return through(f, t, r); }
 bool copy(const String &f,  Message *t, bool r) { return through(f, t, r); }
 bool copy(const String &f,  String *t,  bool r) { return assign(f, t, r); }
 bool copy(const String &f,  string *t,  bool r) { return strcopy(f, t, r); }
 
 bool copy(const string &f,  File *t,    bool r) { return file(f, t, r); }
+bool copy(const string &f,  Memory *t, bool r) { return memory(f, t, r); }
 bool copy(const string &f,  Message *t, bool r) { return proto(f, t, r); }
 bool copy(const string &f,  String *t,  bool r) { return strcopy(f, t, r); }
 bool copy(const string &f,  string *t,  bool r) { return assign(f, t, r); }

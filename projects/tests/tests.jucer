@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="YFYutMnbY" name="tests">
+  <MAINGROUP id="n6mkFZmHo" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -55,6 +55,10 @@
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMath.h" id="Ujd4YsIVO"
                 name="mfMath.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/audio/AudioDeviceSetup.cpp" id="ozfK4iYwM"
+              name="AudioDeviceSetup.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/audio/AudioDeviceSetup.h" id="n1blWs4lD"
+              name="AudioDeviceSetup.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/audio/CopySamples.cpp" id="nyEzdI1y5"
               name="CopySamples.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/audio/CopySamples.h" id="EA6g1PsAS"
@@ -744,6 +748,10 @@
                 id="bAuHTF4gQ" name="Access.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="RWXdw5RuA" name="audio">
+          <FILE compile="1" file="../../genfiles/proto/rec/audio/AudioDeviceSetup.pb.cc"
+                id="KQ2EAISGq" name="AudioDeviceSetup.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/audio/AudioDeviceSetup.pb.h"
+                id="M4PFbNQ9K" name="AudioDeviceSetup.pb.h" resource="0"/>
           <GROUP id="LaLhoIKxe" name="source">
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
                   id="aEJPeVALd" name="Runny.pb.cc" resource="0"/>
@@ -867,7 +875,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="EgaIAYWZH" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="mGq6nyJUH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

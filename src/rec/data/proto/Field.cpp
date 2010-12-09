@@ -85,20 +85,21 @@ bool Field::copyTo(Value* value) const {
 }
 
 bool Field::addFrom(const Value& value) {
-  return typer::add(message_, field_, value);
+  if (field_)
+    return typer::add(message_, field_, value);
+
+  LOG(ERROR) << "Can't add to self";
+  return false;
 }
 
 typedef bool (Field::*Applier)();
 
 Operation* Field::apply(const Operation& op) {
-  if (!field_) {
-    LOG(ERROR) << "Bad field descriptor!";
-    return NULL;
-  }
-
-  Applier applier = &Field::error;
-
   Operation::Command command = op.command();
+  Applier applier = &Field::error;
+  if (field_ == NULL) 
+    type_ = SINGLE;
+
   if (command >= 0 && command < Operation::COMMAND_COUNT) {
     static Applier appliers[Operation::COMMAND_COUNT][TYPE_COUNT] = {
       {&Field::error,       &Field::addRepeated,     &Field::error},
@@ -174,7 +175,8 @@ bool Field::setSingle() {
     return false;
   }
 
-  if (type_ == INDEXED || message_->GetReflection()->HasField(*message_, field_))
+  if (!field_ || type_ == INDEXED ||
+      message_->GetReflection()->HasField(*message_, field_))
     copyTo(undo_->add_value());
   else
     undo_->set_command(Operation::CLEAR);
@@ -184,6 +186,10 @@ bool Field::setSingle() {
 
 
 bool Field::swapRepeated() {
+  if (!field_) {
+    LOG(ERROR) << "Can't swap repeated on self";
+    return false;
+  }
   message_->GetReflection()->SwapElements(message_, field_,
                                           operation_->swap1(),
                                           operation_->swap2());

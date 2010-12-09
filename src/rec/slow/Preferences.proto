@@ -1,5 +1,6 @@
 package rec.slow.proto;
 
+import "rec/audio/AudioDeviceSetup.proto"
 import "rec/gui/RecentFiles.proto";
 import "rec/widget/Panes.proto";
 import "rec/widget/AudioThumbnail.proto";
@@ -8,4 +9,5 @@ message Preferences {
   optional widget.pane.Track track = 1;
   optional widget.AudioThumbnailDesc thumbnail = 2;
   optional gui.RecentFiles recent_files = 3;
+  optional audio.AudioDeviceSetupProto audio_setup = 4;
 };

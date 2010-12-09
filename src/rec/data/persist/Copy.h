@@ -26,24 +26,32 @@
 namespace rec {
 namespace persist {
 
-typedef google::protobuf::Message Message;
-
 bool copy(const File& from, File* to, bool readable = true);
+bool copy(const File& from, MemoryBlock* to, bool readable = true);
 bool copy(const File& from, Message* to, bool readable = true);
 bool copy(const File& from, String* to, bool readable = true);
 bool copy(const File& from, string* to, bool readable = true);
 
 bool copy(const Message& from, File* to, bool readable = true);
+bool copy(const Message& from, MemoryBlock* to, bool readable = true);
 bool copy(const Message& from, Message* to, bool readable = true);
 bool copy(const Message& from, String* to, bool readable = true);
 bool copy(const Message& from, string* to, bool readable = true);
 
+bool copy(const MemoryBlock& from, File* to, bool readable = true);
+bool copy(const MemoryBlock& from, MemoryBlock* to, bool readable = true);
+bool copy(const MemoryBlock& from, Message* to, bool readable = true);
+bool copy(const MemoryBlock& from, String* to, bool readable = true);
+bool copy(const MemoryBlock& from, string* to, bool readable = true);
+
 bool copy(const String& from, File* to, bool readable = true);
+bool copy(const String& from, MemoryBlock* to, bool readable = true);
 bool copy(const String& from, Message* to, bool readable = true);
 bool copy(const String& from, String* to, bool readable = true);
 bool copy(const String& from, string* to, bool readable = true);
 
 bool copy(const string& from, File* to, bool readable = true);
+bool copy(const string& from, MemoryBlock* to, bool readable = true);
 bool copy(const string& from, Message* to, bool readable = true);
 bool copy(const string& from, String* to, bool readable = true);
 bool copy(const string& from, string* to, bool readable = true);

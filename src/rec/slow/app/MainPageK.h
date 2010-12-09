@@ -24,27 +24,26 @@ namespace slow {
 
 typedef slow::proto::Preferences Preferences;
 
-class MainPageK : public juce::Slider::Listener,
-                  public juce::ChangeListener,
+class MainPageK : public Slider::Listener,
+                  public ChangeListener,
                   public NodeListener,
                   public Listener<const Preferences&>,
                   public Listener<Source*>,
                   public Listener<double> {
  public:
-  MainPageK(juce::AudioDeviceManager* d);
+  MainPageK(AudioDeviceManager* manager);
   virtual ~MainPageK();
 
   void construct(MainPageJ* peer);
   void destruct();
 
   void startStopButtonClicked();
-  void loopingButtonClicked();
 
   // SliderListener.
-  virtual void sliderValueChanged(juce::Slider* slider);
+  virtual void sliderValueChanged(Slider* slider);
 
   // ChangeListener
-  virtual void changeListenerCallback(juce::ChangeBroadcaster* objectThatHasChanged);
+  virtual void changeListenerCallback(ChangeBroadcaster* objectThatHasChanged);
 
   virtual void operator()(const VolumeFile& file);
   virtual void operator()(const Preferences& prefs);
@@ -69,13 +68,13 @@ class MainPageK : public juce::Slider::Listener,
   MainPageJ* peer_;
 
   // Sends audio to the AudioSourcePlayer.
-  juce::AudioTransportSource transportSource_;
+  AudioTransportSource transportSource_;
 
   // Streams audio to an AudioIODevice.
-  juce::AudioSourcePlayer player_;
+  AudioSourcePlayer player_;
 
   // Receives the final audio!
-  juce::AudioDeviceManager* deviceManager_;
+  AudioDeviceManager* deviceManager_;
 
   scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
   DoubleRunny doubleRunny_;

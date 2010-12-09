@@ -145,6 +145,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfMath.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.h"/>
           <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.h"/>
           <Filter Name="format">
@@ -489,6 +491,8 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\access\Access.pb.h"/>
           </Filter>
           <Filter Name="audio">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.h"/>
             <Filter Name="source">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>

@@ -6,6 +6,7 @@
 #include "MainPageK.h"
 
 #include "rec/audio/format/mpg123/Mpg123.h"
+#include "rec/audio/AudioDeviceSetup.h"
 #include "rec/slow/Preferences.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/data/persist/Copy.h"
@@ -82,6 +83,7 @@ void MainPageK::operator()(const Preferences& prefs) {
 
 void MainPageK::construct(MainPageJ* peer) {
   peer_ = peer;
+  deviceManager_->initialise(0, 2, 0, true, String::empty, 0);
 
   peer_->treeTreeComp->addListener(this);
   peer_->treeTreeComp->update();
@@ -95,6 +97,7 @@ void MainPageK::construct(MainPageJ* peer) {
 
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);
+  deviceManager_->addChangeListener(this);
   player_.setSource(&transportSource_);
 
   rec::audio::format::mpg123::initializeOnce();
@@ -107,6 +110,29 @@ void MainPageK::construct(MainPageJ* peer) {
   changeLocker_->startThread();
   prefs()->addListener(changeLocker_.get());
   peer_->treeTreeComp->startThread();
+
+  AudioDeviceSetup setup;
+  if (audioSetupData()->fileReadSuccess()) {
+    if (!persist::copy(audioSetupData()->get(), &setup)) {
+      LOG(ERROR) << "Couldn't copy audio setup data";
+    } else {
+      String err = deviceManager_->setAudioDeviceSetup(setup, true);
+      if (err.length())
+        LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
+      else
+        DLOG(INFO) << "read audio setup from file";
+    }
+  } else {
+#if 0
+    DLOG(INFO) << "Creating a new audio setup file";
+    deviceManager_->getAudioDeviceSetup(setup);
+    audio::AudioDeviceSetupProto setupProto;
+    if (false && persist::copy(setup, &setupProto))
+      audioSetupData()->setter()->set(setupProto);
+    else
+      LOG(ERROR) << "Couldn't uncopy audio setup data";
+#endif
+  }
 }
 
 void MainPageK::destruct() {
@@ -119,6 +145,7 @@ void MainPageK::destruct() {
   player_.setSource(NULL);
 
   deviceManager_->removeAudioCallback(&player_);
+  deviceManager_->removeChangeListener(this);
   peer_->thumbnail->removeChangeListener(this);
 }
 
@@ -214,8 +241,21 @@ static const char* const CD_STATE_NAMES[] = {
 };
 
 void MainPageK::changeListenerCallback(juce::ChangeBroadcaster* objectThatHasChanged) {
-  if (objectThatHasChanged == &transportSource_) {
+  if (objectThatHasChanged == &transportSource_)
     updateCursor();
+
+  if (objectThatHasChanged == deviceManager_) {
+    AudioDeviceSetup setup;
+    deviceManager_->getAudioDeviceSetup(setup);
+
+    audio::AudioDeviceSetupProto setupProto;
+    if (!persist::copy(setup, &setupProto)) {
+      LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";
+      return;
+    }
+
+    DLOG(INFO) << "Audio setup changed";
+    slow::audioSetupData()->setter()->set(setupProto);
   }
 }
 
@@ -228,9 +268,6 @@ void MainPageK::start(bool isStart) {
     transportSource_.start();
   else
     transportSource_.stop();
-}
-
-void MainPageK::loopingButtonClicked() {
 }
 
 void MainPageK::cut() {

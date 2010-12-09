@@ -77,26 +77,28 @@ COPY(pmessage, message)
 template <>
 pmessage TypedTyper<pmessage>::Get() const {
   pmessage p;
-  reflection().GetMessage(*msg_, field_).SerializeToString(&p.value_);
+  (field_ ? reflection().GetMessage(*msg_, field_) : *msg_).
+    SerializeToString(&p.value_);
   return p;
 }
 
 template <>
 pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
   pmessage p;
-  reflection().GetRepeatedMessage(*msg_, field_, i).
+  (field_ ? reflection().GetRepeatedMessage(*msg_, field_, i) : *msg_).
     SerializeToString(&p.value_);
   return p;
 }
 
 template <>
 void TypedTyper<pmessage>::Set(pmessage t) {
-  reflection().MutableMessage(msg_, field_)->ParseFromString(t);
+  (field_ ? reflection().MutableMessage(msg_, field_) : msg_)->
+    ParseFromString(t);
 }
 
 template <>
 void TypedTyper<pmessage>::SetRepeated(uint32 i, pmessage t) {
-  reflection().MutableRepeatedMessage(msg_, field_, i)->
+  (field_ ? reflection().MutableRepeatedMessage(msg_, field_, i) : msg_)->
     ParseFromString(t);
 }
 

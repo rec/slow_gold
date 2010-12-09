@@ -197,7 +197,7 @@ void MainPageJ::buttonClicked (Button* buttonThatWasClicked)
     }
     else if (buttonThatWasClicked == loopingButton)
     {
-      peer_.loopingButtonClicked();
+      // peer_.loopingButtonClicked();
 
         //[/UserButtonCode_loopingButton]
     }

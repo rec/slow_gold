@@ -59,11 +59,11 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    AudioDeviceManager deviceManager;
     //[/UserVariables]
 
     //==============================================================================
     TabbedComponent* tabbedComponent;
+    AudioDeviceManager deviceManager;
 
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)

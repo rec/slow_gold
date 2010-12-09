@@ -24,6 +24,7 @@ class UntypedData : public util::listener::Listener<proto::Operation*> {
   void requestUpdate() { (*this)((proto::Operation*)NULL); }
 
   Setter* setter() { return &setter_; }
+  bool fileReadSuccess() const { return fileReadSuccess_; }
 
  protected:
   friend class AppInstance;
@@ -47,8 +48,10 @@ class UntypedData : public util::listener::Listener<proto::Operation*> {
 
   App* app_;
   CriticalSection lock_;
-  mutable bool alreadyReadFromFile_;
 
+ private:
+  mutable bool alreadyReadFromFile_;
+  mutable bool fileReadSuccess_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedData);
 };
 

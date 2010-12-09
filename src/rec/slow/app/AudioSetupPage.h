@@ -9,7 +9,7 @@ class AudioSetupPage  : public Component {
       : deviceManager_(deviceManager) {
     deviceSelector_.reset(
         new AudioDeviceSelectorComponent(deviceManager_,
-                                         0, 2, 0, 2, true, true, true, false));
+                                         0, 0, 2, 2, false, false, true, true));
     addAndMakeVisible(deviceSelector_.get());
     setSize (600, 400);
   }

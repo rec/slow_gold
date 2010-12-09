@@ -36,7 +36,8 @@ const Typer* const TYPE_LIST[FieldDescriptor::MAX_TYPE] = {
 class STyper : public scoped_ptr<Typer> {
  public:
   STyper(Message* m, const FieldDescriptor* f) {
-    this->reset(TYPE_LIST[f->type()]->clone(m, f));
+    FieldDescriptor::Type t = f ? f->type() : FieldDescriptor::TYPE_MESSAGE;
+    this->reset(TYPE_LIST[t]->clone(m, f));
   }
 
  private:
