@@ -7,8 +7,8 @@ namespace rec {
 namespace util {
 namespace block {
 
-Block getNextBlock(const Block& requested, const BlockSet& set);
 BlockSet difference(const BlockSet& set, const Block& block);
+Block firstEmptyBlockAfter(const BlockSet& s, int pos, int length);
 
 }  // namespace block
 }  // namespace util

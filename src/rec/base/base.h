@@ -18,7 +18,9 @@ typedef juce::ChangeBroadcaster ChangeBroadcaster;
 typedef juce::ChangeListener ChangeListener;
 typedef juce::CriticalSection CriticalSection;
 typedef juce::File File;
+typedef juce::InputStream InputStream;
 typedef juce::MemoryBlock MemoryBlock;
+typedef juce::OutputStream OutputStream;
 typedef juce::PositionableAudioSource PositionableAudioSource;
 
 typedef juce::String String;

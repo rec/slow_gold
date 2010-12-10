@@ -1,22 +1,9 @@
 #include "rec/util/block/Block.h"
-#include "rec/util/block/GetNextBlock.h"
+#include "rec/util/block/Difference.h"
 
 namespace rec {
 namespace util {
 namespace block {
-
-Block getNextBlock(const Block& requested, const BlockSet& set) {
-  Block ret = requested;
-  BlockSet diff = difference(set, requested);
-  if (diff.empty()) {
-    ret.first = ret.second;
-  } else {
-    ret.first = diff.begin()->first;
-    ret.second = diff.rbegin()->second;
-  }
-
-  return ret;
-}
 
 BlockSet difference(const BlockSet& s, const Block& block) {
   BlockSet diff;
@@ -43,6 +30,13 @@ BlockSet difference(const BlockSet& s, const Block& block) {
   return diff;
 }
 
+Block firstEmptyBlockAfter(const BlockSet& s, int pos, int length) {
+  BlockSet diff = difference(s, Block(pos, length));
+  if (diff.empty())
+    diff = difference(s, Block(0, pos));
+
+  return diff.empty() ? Block(pos, pos) : *diff.begin();
+}
 
 }  // namespace block
 }  // namespace util

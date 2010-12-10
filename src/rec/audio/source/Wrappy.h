@@ -14,6 +14,8 @@ namespace source {
 class Wrappy : public Source {
  public:
   Wrappy(Source* source) : source_(source) {}
+
+  // TODO:  no longer used?
   virtual void initialize() {}
 
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
@@ -40,6 +42,7 @@ class Wrappy : public Source {
     setNextReadPosition(mod(x + getNextReadPosition()));
   }
 
+  // TODO: remove this.
   void setSource(Source* source) { source_.reset(source); }
   Source* transfer() { return source_.transfer(); }
 
@@ -47,9 +50,9 @@ class Wrappy : public Source {
 
  protected:
   virtual Source* source() const { return source_.get(); }
-  scoped_ptr<Source> source_;
 
  private:
+  scoped_ptr<Source> source_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);
 };
 
@@ -66,7 +69,7 @@ class Wrappy::Position : public Wrappy {
   }
 
   virtual void setNextReadPosition(int p) {
-    source_->setNextReadPosition(p);
+    source()->setNextReadPosition(p);
     ScopedLock l(lock_);
     position_ = p;
   }

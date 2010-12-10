@@ -13,7 +13,8 @@ namespace rec {
 namespace util {
 namespace block {
 
-/** The size of a buffer. */
+// The size of a buffer.
+// TODO:  size_t is unsigned which makes for weirdnesses.  Change to signed!
 typedef size_t Size;
 
 typedef std::pair<Size, Size> Block;
@@ -21,16 +22,13 @@ typedef std::vector<Block> BlockList;
 typedef std::set<Block> BlockSet;
 
 inline Block makeBlock(Size a, Size b) { return std::make_pair(a, b); }
+
 inline Size getSize(const Block& b) {
   return (b.second > b.first) ? (b.second - b.first) : 0;
 }
 
-inline bool isBelow(const Block& a, const Block& b) {
-  return a.second <= b.first;
-}
-
-inline bool notBelow(const Block& a, const Block& b) {
-  return a.second > b.first;
+inline bool isBlock(const BlockSet& set, const Block& block) {
+  return set.size() == 1 && *set.begin() == block;
 }
 
 }  // namespace block

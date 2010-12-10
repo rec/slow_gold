@@ -3,48 +3,46 @@
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Circular.h"
+#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class Buffery : public Wrappy {
+// #define USE_MALLOC_FOR_BUFFERY
+
+class Buffery : public util::listener::Broadcaster<const AudioSourceChannelInfo&>,
+                public util::listener::Broadcaster<const Buffery&>,
+                public Thread {
  public:
-  typedef util::Circular Circular;
+  typedef util::block::Block Block;
+  typedef util::block::BlockSet BlockSet;
 
   // Buffery owns its source.
-  Buffery(Source* source);
+  Buffery(Source* source, int blockSize);
   ~Buffery();
 
-  virtual void initialize();
+  virtual void run();
+  void setReadPosition(int newPosition);
 
-  // How many samples are available (already computed?)
-  int64 available() const;
+  bool fillBlock(const Block& block);
+  bool fillOnce();
+  bool isFull() const { return isFull_; }
 
-  // Is this buffer completely full?
-  bool filled() const { return getTotalLength() <= available(); }
-
-  bool ready(int size) const {
-    return available() >= std::min(getTotalLength(), size);
-  }
-
-  // A change in the underlying source has invalidated the buffer, start
-  // buffering again from this position.
-  void resetFrom(int channels, int position);
-
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& i);
-
-  // Returns true if there is more to be filled.  Only call this from one
-  // thread please, it's likely the underlying source is not thread-safe.
-  bool fillNext(int64 chunkSize);
+  void getAudioBlock(const AudioSourceChannelInfo& info, int position);
 
  private:
-  Circular filled_;
-  juce::AudioSampleBuffer buffer_;
-  juce::AudioSourceChannelInfo sourceInfo_;
-  CriticalSection lock_;
+  bool fillFromSource(const Block& block);
+  // Maps out the areas that are already full.
+  BlockSet filled_;
+  AudioSampleBuffer buffer_;
+  bool isFull;
+  const int blockSize_;
+  int position_;
 
+#ifdef USE_MALLOC_FOR_BUFFERY
   float* sampleData_[2];
+#endif
 
   DISALLOW_COPY_AND_ASSIGN(Buffery);
 };

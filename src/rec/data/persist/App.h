@@ -4,6 +4,7 @@
 #include "rec/base/base.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/STL.h"
+#include "rec/widget/tree/VolumeFile.h"
 
 #include "rec/data/persist/AppDirectory.h"
 
@@ -27,21 +28,33 @@ class App {
   typedef std::map<string, UntypedData*> DataMap;
 
   template <typename Proto>
-  Data<Proto>* getData(const string& file) {
-    string filename = file + "." + Proto::descriptor()->name();
-    ScopedLock l(lock_);
-    DataMap::const_iterator i = data_.find(filename);
-    if (i == data_.end()) {
-      File file = appDir().getChildFile(filename.c_str());
-      Data<Proto>* data = new Data<Proto>(file, this);
-      data->readFromFile();
-      data_[filename] = data;
-      return data;
-    }
-
-    return static_cast<Data<Proto>*>(i->second);
+  Data<Proto>* getData(const string& fileRoot) {
+    return getData(appDir(), fileRoot);
   }
 
+  template <typename Proto>
+  Data<Proto>* getData(const VolumeFile& file, const string& fileRoot) {
+    return getData(getShadowDirectory(file), fileRoot);
+  }
+
+ protected:
+  template <typename Proto>
+  Data<Proto>* getData(const File& directory, const string& fileRoot) {
+    string fileName = fileRoot + "." + Proto::descriptor()->name();
+    string fileKey = file.getFullPathName().toCString() + ("/" + fileName);
+    ScopedLock l(lock_);
+    DataMap::const_iterator i = data_.find();
+    if (i != data_.end())
+      return static_cast<Data<Proto>*>(i->second);
+
+    File file = directory.getChildFile(filename.c_str());
+    Data<Proto>* data = new Data<Proto>(file, this);
+    data->readFromFile();
+    data_[fileKey] = data;
+    return data;
+  }
+
+ public:
   command::Manager* commandManager() { return commandManager_; }
 
   const string& name() const { return name_; }

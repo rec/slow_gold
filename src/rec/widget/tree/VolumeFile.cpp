@@ -56,7 +56,7 @@ const File getVolume(const Volume& v) {
   return File();
 }
 
-const File getShadowVolume(const Volume& v) {
+const File getShadowDirectory(const Volume& v) {
   String name = String(Volume::Type_Name(v.type()).c_str()).toLowerCase();
   File f = data::persist::appDirectory().getChildFile(name);
   return getFile(f, v.name());
@@ -66,8 +66,8 @@ const File getFile(const VolumeFile& file) {
   return getFile(getVolume(file.volume()), file.path());
 }
 
-const File getShadowFile(const VolumeFile& file) {
-  return getFile(getShadowVolume(file.volume()), file.path());
+const File getShadowDirectory(const VolumeFile& file) {
+  return getFile(getShadowDirectory(file.volume()), file.path());
 }
 
 bool compareVolumes(const Volume& x, const Volume& y) {

@@ -23,6 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
+#include "rec/audio/AudioDeviceSetup.pb.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/widget/Panes.pb.h"
 #include "rec/widget/AudioThumbnail.pb.h"
@@ -116,6 +117,13 @@ class Preferences : public ::google::protobuf::Message {
   inline const ::rec::gui::RecentFiles& recent_files() const;
   inline ::rec::gui::RecentFiles* mutable_recent_files();
   
+  // optional .rec.audio.AudioDeviceSetupProto audio_setup = 4;
+  inline bool has_audio_setup() const;
+  inline void clear_audio_setup();
+  static const int kAudioSetupFieldNumber = 4;
+  inline const ::rec::audio::AudioDeviceSetupProto& audio_setup() const;
+  inline ::rec::audio::AudioDeviceSetupProto* mutable_audio_setup();
+  
   // @@protoc_insertion_point(class_scope:rec.slow.proto.Preferences)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -124,11 +132,12 @@ class Preferences : public ::google::protobuf::Message {
   ::rec::widget::pane::Track* track_;
   ::rec::widget::AudioThumbnailDesc* thumbnail_;
   ::rec::gui::RecentFiles* recent_files_;
+  ::rec::audio::AudioDeviceSetupProto* audio_setup_;
   friend void  protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fPreferences_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -200,6 +209,23 @@ inline ::rec::gui::RecentFiles* Preferences::mutable_recent_files() {
   _set_bit(2);
   if (recent_files_ == NULL) recent_files_ = new ::rec::gui::RecentFiles;
   return recent_files_;
+}
+
+// optional .rec.audio.AudioDeviceSetupProto audio_setup = 4;
+inline bool Preferences::has_audio_setup() const {
+  return _has_bit(3);
+}
+inline void Preferences::clear_audio_setup() {
+  if (audio_setup_ != NULL) audio_setup_->::rec::audio::AudioDeviceSetupProto::Clear();
+  _clear_bit(3);
+}
+inline const ::rec::audio::AudioDeviceSetupProto& Preferences::audio_setup() const {
+  return audio_setup_ != NULL ? *audio_setup_ : *default_instance_->audio_setup_;
+}
+inline ::rec::audio::AudioDeviceSetupProto* Preferences::mutable_audio_setup() {
+  _set_bit(3);
+  if (audio_setup_ == NULL) audio_setup_ = new ::rec::audio::AudioDeviceSetupProto;
+  return audio_setup_;
 }
 
 

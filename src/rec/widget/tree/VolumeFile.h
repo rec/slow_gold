@@ -8,11 +8,11 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-const File getVolume(const Volume& v);
+const File getVolume(const Volume& volume);
 const File getFile(const VolumeFile& file);
 
-const File getShadowVolume(const Volume& v);
-const File getShadowFile(const VolumeFile& file);
+const File getShadowDirectory(const Volume& volume);
+const File getShadowDirectory(const VolumeFile& file);
 
 bool compareVolumes(const Volume& x, const Volume& y);
 
