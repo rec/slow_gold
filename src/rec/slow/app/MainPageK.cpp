@@ -93,7 +93,8 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
 
-  peer_->thumbnail->addListener(this);
+  ((Broadcaster<double>*)(peer_->thumbnail))->addListener(this);
+  ((Broadcaster<const widget::AudioThumbnailWidget&>*)(peer_->thumbnail))->addListener(this);
 
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);

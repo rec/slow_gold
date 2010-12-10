@@ -4,6 +4,7 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Circular.h"
 #include "rec/util/block/Block.h"
+#include "rec/util/listener/Broadcaster.h"
 
 namespace rec {
 namespace audio {
@@ -27,16 +28,20 @@ class Buffery : public util::listener::Broadcaster<const AudioSourceChannelInfo&
 
   bool fillBlock(const Block& block);
   bool fillOnce();
-  bool isFull() const { return isFull_; }
+  bool isFull() const;
 
-  void getAudioBlock(const AudioSourceChannelInfo& info, int position);
+  int getAudioBlock(const AudioSourceChannelInfo& info, int position);
+  int getTotalLength() const { return source_->getTotalLength(); }
 
  private:
   bool fillFromSource(const Block& block);
+
   // Maps out the areas that are already full.
+  CriticalSection lock_;
+  Source* source_;
   BlockSet filled_;
   AudioSampleBuffer buffer_;
-  bool isFull;
+  bool isFull_;
   const int blockSize_;
   int position_;
 

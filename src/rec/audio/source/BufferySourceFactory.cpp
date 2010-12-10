@@ -1,12 +1,15 @@
-#include "rec/audio/source/BufferyTrackReader.h"
-#include "rec/audio/source/TrackReader.h"
+#include "rec/audio/source/BufferySourceFactory.h"
+#include "rec/audio/source/TrackSource.h"
+#include "rec/widget/tree/VolumeFile.h"
+
+using namespace rec::widget::tree;
 
 namespace rec {
 namespace audio {
 namespace source {
 
 BufferySourceFactory::BufferySourceFactory(const VolumeFile& f, int blockSize)
-    : Buffery(createReader(f), blockSize), duringShutdown_(false) {
+    : Buffery(new AudioFormatReaderSource(createReader(f), true), blockSize), duringShutdown_(false) {
 }
 
 Source* BufferySourceFactory::newSource(int offset) {
@@ -16,16 +19,14 @@ Source* BufferySourceFactory::newSource(int offset) {
     return NULL;
   }
   TrackSource* source = new TrackSource(this, offset);
-  sources_->insert(source);
+  sources_.insert(source);
   return source;
 }
 
 BufferySourceFactory::~BufferySourceFactory() {
-  while (true) {
-    {
-      ScopedLock l(lock_);
+  ScopedLock l(lock_);
   while (!sources_.empty())
-    sources_.begin()->clearFactory();
+    (*sources_.begin())->release();
 }
 
 }  // namespace source

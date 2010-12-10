@@ -4,6 +4,7 @@
 #include "rec/gui/Color.h"
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/util/cd/CDReader.h"
+#include "rec/util/thread/Trash.h"
 
 using namespace juce;
 using namespace rec::widget::tree;
@@ -29,26 +30,26 @@ AudioThumbnailWidget::~AudioThumbnailWidget() {
 class WriteThread : public Thread {
  public:
   WriteThread(const AudioThumbnail& thumbnail, const File& file)
-      : thumbnail_(thumbnail), file_(file) {
+      : Thread("thumbnail writing thread"), thumbnail_(thumbnail), file_(file) {
   }
 
   void run() {
-    string file = file_.getFullPath().toCString();
+    string file = file_.getFullPathName().toCString();
     if (!file_.getParentDirectory().createDirectory()) {
       LOG(ERROR) << "Can't make dir " << file;
-    } else if (!file.deleteFile()) {
+    } else if (!file_.deleteFile()) {
       LOG(ERROR) << "Can't delete file " << file;
     } else {
       scoped_ptr<OutputStream> out(file_.createOutputStream());
       if (out) {
-        thumbnail.saveTo(*out);
+        thumbnail_.saveTo(*out);
         DLOG(INFO) << "Saved to file " << file;
       } else {
         LOG(ERROR) << "Can't create file " << file;
       }
     }
 
-    trash::discard(this);
+    util::thread::trash::discard(this);
   }
 
  private:
@@ -58,10 +59,10 @@ class WriteThread : public Thread {
 };
 
 void AudioThumbnailWidget::operator()(const AudioSourceChannelInfo& i) {
-  if (!thumbnail_.fullyLoaded()) {
+  if (!thumbnail_.isFullyLoaded()) {
     thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
-    if (thumbnail_.fullyLoaded())
-      new WriteThread(thumbnail_, getThumbnailFile()).startThread();
+    if (thumbnail_.isFullyLoaded())
+      (new WriteThread(thumbnail_, getThumbnailFile()))->startThread();
   }
 }
 
@@ -71,9 +72,9 @@ File AudioThumbnailWidget::getThumbnailFile() {
 
 #define USE_THUMBNAIL_WIDGETS false
 
-void AudioThumbnailWidget::setFile(const VolumeFile& file) {
+void AudioThumbnailWidget::setFile(const VolumeFile& volumeFile) {
   ScopedLock l(lock_);
-  file_ = file;
+  file_ = volumeFile;
   startTime_ = ratio_ = 0;
   cursor_ = 0;
   thumbnail_.reset(2, 44100);
@@ -86,12 +87,13 @@ void AudioThumbnailWidget::setFile(const VolumeFile& file) {
       thumbnail_.loadFrom(*in);
       thumbnailSet_ = true;
     } else {
-      LOG(ERROR) << "Unable to create input for " << file.getFullPath().toCString();
+      LOG(ERROR) << "Unable to create input for " 
+                 << file.getFullPathName().toCString();
     }
   }
 
-  scoped_ptr<AudioFormatReader> reader(createReader(file));
-  endTime_ = reader.lengthInSamples / 44100;
+  scoped_ptr<AudioFormatReader> reader(createReader(file_));
+  endTime_ = reader->lengthInSamples / 44100;
   if (file_.volume().type() != tree::Volume::CD && !thumbnailSet_)
     thumbnail_.setSource(new FileInputSource(tree::getFile(file_)));
 }
@@ -142,7 +144,7 @@ void AudioThumbnailWidget::mouseUp(const MouseEvent& e) {
   int margin = description_.widget().margin();
   int width = getWidth() - 2 * margin;
   double ratio = (e.x - margin) / (1.0 * width);
-  broadcast(ratio);
+  Broadcaster<double>::broadcast(ratio);
   setCursor(ratio);
 }
 

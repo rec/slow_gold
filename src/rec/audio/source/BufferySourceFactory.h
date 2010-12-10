@@ -1,17 +1,18 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERYTRACKREADER__
 #define __REC_AUDIO_SOURCE_BUFFERYTRACKREADER__
 
-#include "rec/base/base.h"
+#include "rec/audio/source/Buffery.h"
+#include "rec/widget/tree/VolumeFile.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class TrackReader;
+class TrackSource;
 
 class BufferySourceFactory : public Buffery {
  public:
-  BufferySourceFactory(const VolumeFile& file, int blockSize);
+  BufferySourceFactory(const widget::tree::VolumeFile& file, int blockSize);
   ~BufferySourceFactory();
 
   Source* newSource(int offset = 0);

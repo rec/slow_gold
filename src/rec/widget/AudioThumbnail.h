@@ -11,13 +11,13 @@
 namespace rec {
 namespace widget {
 
-using juce::util::listener;
+using namespace rec::util::listener;
 
 class AudioThumbnailWidget : public juce::Component,
                              public juce::ChangeListener,
                              public juce::ChangeBroadcaster,
                              public Broadcaster<double>,
-                             public Broadcaster<const AudioThumbnail&>,
+                             public Broadcaster<const AudioThumbnailWidget&>,
                              public Listener<const AudioSourceChannelInfo&>,
                              public Listener<InputStream*> {
  public:
@@ -35,7 +35,7 @@ class AudioThumbnailWidget : public juce::Component,
   virtual void mouseUp(const juce::MouseEvent& e);
   virtual void operator()(const AudioSourceChannelInfo& info);
   virtual void operator()(InputStream* stream) { thumbnail_.loadFrom(*stream); }
-  File getThumbnailFile() {
+  File getThumbnailFile();
 
   // Ranges between 0 and 1.
   void setCursor(double cursorRatio);

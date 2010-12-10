@@ -29,25 +29,26 @@ class App {
 
   template <typename Proto>
   Data<Proto>* getData(const string& fileRoot) {
-    return getData(appDir(), fileRoot);
+    return getData<Proto>(appDir(), fileRoot);
   }
 
   template <typename Proto>
-  Data<Proto>* getData(const VolumeFile& file, const string& fileRoot) {
-    return getData(getShadowDirectory(file), fileRoot);
+  Data<Proto>* getData(const widget::tree::VolumeFile& file, 
+                       const string& fileRoot) {
+    return getData<Proto>(getShadowDirectory(file), fileRoot);
   }
 
  protected:
   template <typename Proto>
   Data<Proto>* getData(const File& directory, const string& fileRoot) {
     string fileName = fileRoot + "." + Proto::descriptor()->name();
-    string fileKey = file.getFullPathName().toCString() + ("/" + fileName);
+    string fileKey = directory.getFullPathName().toCString() + ("/" + fileName);
     ScopedLock l(lock_);
-    DataMap::const_iterator i = data_.find();
+    DataMap::const_iterator i = data_.find(fileKey);
     if (i != data_.end())
       return static_cast<Data<Proto>*>(i->second);
 
-    File file = directory.getChildFile(filename.c_str());
+    File file = directory.getChildFile(fileName.c_str());
     Data<Proto>* data = new Data<Proto>(file, this);
     data->readFromFile();
     data_[fileKey] = data;

@@ -175,11 +175,10 @@
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySourceFactory.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySourceFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchy.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchyThread.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Source.h"/>
@@ -193,6 +192,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TimeScaler.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TimeScaler.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\TrackSource.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\TrackSource.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
           </Filter>
         </Filter>
@@ -391,8 +392,8 @@
           <File RelativePath="..\..\..\..\src\rec\util\BeginEnd.h"/>
           <Filter Name="block">
             <File RelativePath="..\..\..\..\src\rec\util\block\Block.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\block\GetNextBlock.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\block\GetNextBlock.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Difference.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Difference.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
           </Filter>

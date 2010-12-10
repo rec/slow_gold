@@ -17,7 +17,7 @@ void Stereo::setSide(Side side) {
 }
 
 void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  source_->getNextAudioBlock(info);
+  source()->getNextAudioBlock(info);
   if (type_ == PASSTHROUGH || info.buffer->getNumChannels() != 2)
     return;
 

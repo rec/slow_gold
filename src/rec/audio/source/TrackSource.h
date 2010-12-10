@@ -18,19 +18,20 @@ class TrackSource : public Source {
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
   virtual int getTotalLength() const;
-  virtual int getNextReadPosition() cons;
+  virtual int getNextReadPosition() const;
   virtual void setNextReadPosition(int p);
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) {}
 
   virtual void prepareToPlay(int s, double r) {}
   virtual void releaseResources() {}
+  void clearFactory();
 
  private:
-  CriticalSection* lock_;
-  scoped_ptr<CriticalSection> myLock_;
   BufferySourceFactory* factory_;
   const int offset_;
+  CriticalSection* lock_;
+  scoped_ptr<CriticalSection> myLock_;
   int position_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TrackSource);

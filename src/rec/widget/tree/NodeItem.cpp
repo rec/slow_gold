@@ -59,7 +59,7 @@ int Node::getItemHeight() const {
 }
 
 bool Node::alreadyVisited() const {
-  return getShadowFile(volumeFile_).exists();
+  return getShadowDirectory(volumeFile_).exists();
 }
 
 File Node::file() const { return getFile(volumeFile_); }

@@ -29,6 +29,7 @@ class MainPageK : public Slider::Listener,
                   public NodeListener,
                   public Listener<const Preferences&>,
                   public Listener<Source*>,
+                  public Listener<const widget::AudioThumbnailWidget&>,
                   public Listener<double> {
  public:
   MainPageK(AudioDeviceManager* manager);
@@ -49,6 +50,7 @@ class MainPageK : public Slider::Listener,
   virtual void operator()(const Preferences& prefs);
   virtual void operator()(double cursorRatio);
   virtual void operator()(Source* runny);
+  virtual void operator()(const widget::AudioThumbnailWidget& ) {}
 
   void updateCursor();
   void loadRecentFile(int menuItemId);
