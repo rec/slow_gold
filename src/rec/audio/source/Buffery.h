@@ -12,9 +12,7 @@ namespace source {
 
 // #define USE_MALLOC_FOR_BUFFERY
 
-class Buffery : public util::listener::Broadcaster<const AudioSourceChannelInfo&>,
-                public util::listener::Broadcaster<const Buffery&>,
-                public Thread {
+class Buffery : public listener::Broadcaster<const Buffery&>, public Thread {
  public:
   typedef util::block::Block Block;
   typedef util::block::BlockSet BlockSet;
@@ -26,15 +24,18 @@ class Buffery : public util::listener::Broadcaster<const AudioSourceChannelInfo&
   virtual void run();
   void setReadPosition(int newPosition);
 
-  bool fillBlock(const Block& block);
-  bool fillOnce();
+  bool fillBlocksCovering(const Block& block);
+  bool fillNextEmptyBlock();
   bool isFull() const;
 
   int getAudioBlock(const AudioSourceChannelInfo& info, int position);
   int getTotalLength() const { return source_->getTotalLength(); }
 
+ protected:
+  virtual bool fill(const AudioSourceChannelInfo& info);
+
  private:
-  bool fillFromSource(const Block& block);
+  bool fill(const Block& block);
 
   // Maps out the areas that are already full.
   CriticalSection lock_;

@@ -28,6 +28,7 @@ inline bool operator!=(const VolumeFile& x, const VolumeFile& y) {
 }
 
 AudioFormatReader* createReader(const VolumeFile& file);
+PositionableAudioSource* createSource(const VolumeFile& file);
 
 }  // namespace tree
 }  // namespace widget

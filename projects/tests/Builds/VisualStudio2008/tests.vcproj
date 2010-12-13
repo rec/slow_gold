@@ -179,7 +179,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\AudioTimeScaler_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySourceFactory.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySourceFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.cpp"/>
@@ -355,6 +354,8 @@
           <File RelativePath="..\..\..\..\src\rec\gui\Color.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Font.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Geometry.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Geometry.h"/>
           <Filter Name="icon">
             <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h"/>
@@ -458,6 +459,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\ChangeLocker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Cycler.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Factory.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\LockedMessage.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Loop.h"/>
@@ -509,6 +511,13 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile_test.cpp"/>
           </Filter>
+          <Filter Name="waveform">
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\widget\Widget.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\widget\Widget.h"/>
           <File RelativePath="..\..\..\..\src\rec\widget\Widget_test.cpp"/>
         </Filter>

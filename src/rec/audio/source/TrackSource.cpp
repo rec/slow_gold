@@ -14,7 +14,7 @@ TrackSource::TrackSource(BufferySourceFactory* f, int offset)
 void TrackSource::release() {
   ScopedLock l(*lock_);
   if (factory_) {
-    factory_->sources_.erase(this);
+    factory_->removeSource(this);
     factory_ = NULL;
     myLock_.reset(new CriticalSection);
     lock_ = myLock_.get();

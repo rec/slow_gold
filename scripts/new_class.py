@@ -4,7 +4,8 @@ import os
 import optparse
 import sys
 
-DEFAULT_SUFFIXES = ['_test.cpp', '.h', '.cpp']
+# DEFAULT_SUFFIXES = ['_test.cpp', '.h', '.cpp']
+DEFAULT_SUFFIXES = ['.h', '.cpp', '.proto']
 SUFFIXES = ['.svg.h', '.svg.cpp', '_test.cpp', '.h', '.cpp']
 
 
@@ -40,12 +41,13 @@ def new_class(filename, **context):
 
   context.update(
     classname=file_root,
+    guard='__%s__' % '_'.join(s.upper() for s in path + [file_root]),
     header_file='/'.join(path + [file_root + suffix]),
     namespace='\n'.join('namespace %s {' % p for p in path),
     namespace_end='\n'.join('}  // namespace %s' % p for p in reversed(path)),
     method='get',
     method_body=method_body,
-    guard='__%s__' % '_'.join(s.upper() for s in path + [file_root]),
+    package='.'.join(path),
     )
 
   for suffix in suffixes:
@@ -140,6 +142,16 @@ TEST({classname}, {method}) {{
 
 }}  // namespace
 {namespace_end}
+""",
+  '.proto':
+"""import "rec/widget/Widget.proto";
+
+package {package};
+
+message {classname}Proto {{
+  optional Widget widget = 1;
+  optional uint32 data = 2           [default = 1];
+}};
 """
 }
 

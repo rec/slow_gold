@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="U5eLwwlfD" name="tests">
+  <MAINGROUP id="uDwv5XPZn" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -116,8 +116,6 @@
                 name="Buffery.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="XFI3VkEZu"
                 name="Buffery.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Buffery_test.cpp"
-                id="RIXmwf6QJ" name="Buffery_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/BufferySourceFactory.cpp"
                 id="vHGnkN8Vv" name="BufferySourceFactory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/BufferySourceFactory.h"
@@ -447,6 +445,10 @@
               resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="IJmPtaJbj" name="Font.h"
               resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/Geometry.cpp" id="u2bbfwSZM"
+              name="Geometry.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/Geometry.h" id="yXS9BWyS7"
+              name="Geometry.h" resource="0"/>
         <GROUP id="kfweGYzRF" name="icon">
           <FILE compile="1" file="../../src/rec/gui/icon/AudioCard.svg.cpp" id="UmMv5BPrk"
                 name="AudioCard.svg.cpp" resource="0"/>
@@ -638,6 +640,8 @@
                 name="Cycler.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Factory.h" id="1IXQNeOLO"
                 name="Factory.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/FileWriter.h" id="LFYAtItik"
+                name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/LockedMessage.h"
                 id="dCnGZs2KL" name="LockedMessage.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Locker.h" id="XhghJviRV"
@@ -733,6 +737,18 @@
           <FILE compile="1" file="../../src/rec/widget/tree/VolumeFile_test.cpp"
                 id="tvLXZx5Yw" name="VolumeFile_test.cpp" resource="0"/>
         </GROUP>
+        <GROUP id="NBDuqRkuF" name="waveform">
+          <FILE compile="1" file="../../src/rec/widget/waveform/Cursor.cpp" id="cpKkORRgJ"
+                name="Cursor.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/waveform/Cursor.h" id="XRKOsUGBH"
+                name="Cursor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/waveform/Waveform.cpp"
+                id="AEh4kOOuB" name="Waveform.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/waveform/Waveform.h" id="GxygR1ziw"
+                name="Waveform.h" resource="0"/>
+        </GROUP>
+        <FILE compile="1" file="../../src/rec/widget/Widget.cpp" id="TXJxB5tWn"
+              name="Widget.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/widget/Widget.h" id="PHTmHvr5H"
               name="Widget.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/widget/Widget_test.cpp" id="9d7h9UzQM"
@@ -875,7 +891,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="V96NHicYF" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="lsEIvLwcN" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

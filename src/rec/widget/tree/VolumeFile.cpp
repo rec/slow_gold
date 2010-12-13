@@ -104,6 +104,10 @@ AudioFormatReader* createReader(const VolumeFile& file) {
   return util::cd::createCDTrackReader(v.name().c_str(), track);
 }
 
+PositionableAudioSource* createSource(const VolumeFile& file) {
+  return new AudioFormatReaderSource(createReader(f), true);
+}
+
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec

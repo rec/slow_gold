@@ -7,17 +7,25 @@ namespace rec {
 
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioDeviceManager AudioDeviceManager;
+
 typedef juce::AudioFormatReader AudioFormatReader;
 typedef juce::AudioFormatReaderSource AudioFormatReaderSource;
+
 typedef juce::AudioSampleBuffer AudioSampleBuffer;
 typedef juce::AudioSourceChannelInfo AudioSourceChannelInfo;
 typedef juce::AudioSourcePlayer AudioSourcePlayer;
+
+typedef juce::AudioThumbnail AudioThumbnail;
+typedef juce::AudioThumbnailCache AudioThumbnailCache;
 typedef juce::AudioTransportSource AudioTransportSource;
 
 typedef juce::ChangeBroadcaster ChangeBroadcaster;
 typedef juce::ChangeListener ChangeListener;
 typedef juce::CriticalSection CriticalSection;
+typedef juce::Colour Colour;
+
 typedef juce::File File;
+typedef juce::Font Font;
 typedef juce::InputStream InputStream;
 typedef juce::MemoryBlock MemoryBlock;
 typedef juce::OutputStream OutputStream;

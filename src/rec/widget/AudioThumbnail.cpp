@@ -27,51 +27,6 @@ AudioThumbnailWidget::~AudioThumbnailWidget() {
   thumbnail_.removeChangeListener(this);
 }
 
-class WriteThread : public Thread {
- public:
-  WriteThread(const AudioThumbnail& thumbnail, const File& file)
-      : Thread("thumbnail writing thread"), thumbnail_(thumbnail), file_(file) {
-  }
-
-  void run() {
-    string file = file_.getFullPathName().toCString();
-    if (!file_.getParentDirectory().createDirectory()) {
-      LOG(ERROR) << "Can't make dir " << file;
-    } else if (!file_.deleteFile()) {
-      LOG(ERROR) << "Can't delete file " << file;
-    } else {
-      scoped_ptr<OutputStream> out(file_.createOutputStream());
-      if (out) {
-        thumbnail_.saveTo(*out);
-        DLOG(INFO) << "Saved to file " << file;
-      } else {
-        LOG(ERROR) << "Can't create file " << file;
-      }
-    }
-
-    util::thread::trash::discard(this);
-  }
-
- private:
-  const AudioThumbnail& thumbnail_;
-  const File& file_;
-  DISALLOW_COPY_AND_ASSIGN(WriteThread);
-};
-
-void AudioThumbnailWidget::operator()(const AudioSourceChannelInfo& i) {
-  if (!thumbnail_.isFullyLoaded()) {
-    thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
-    if (thumbnail_.isFullyLoaded())
-      (new WriteThread(thumbnail_, getThumbnailFile()))->startThread();
-  }
-}
-
-File AudioThumbnailWidget::getThumbnailFile() {
-  return getShadowDirectory(file_).getChildFile("thumbnail.stream");
-}
-
-#define USE_THUMBNAIL_WIDGETS false
-
 void AudioThumbnailWidget::setFile(const VolumeFile& volumeFile) {
   ScopedLock l(lock_);
   file_ = volumeFile;
@@ -87,7 +42,7 @@ void AudioThumbnailWidget::setFile(const VolumeFile& volumeFile) {
       thumbnail_.loadFrom(*in);
       thumbnailSet_ = true;
     } else {
-      LOG(ERROR) << "Unable to create input for " 
+      LOG(ERROR) << "Unable to create input for "
                  << file.getFullPathName().toCString();
     }
   }
@@ -98,36 +53,12 @@ void AudioThumbnailWidget::setFile(const VolumeFile& volumeFile) {
     thumbnail_.setSource(new FileInputSource(tree::getFile(file_)));
 }
 
-void AudioThumbnailWidget::setZoomFactor(double amount) {
-  if (thumbnail_.getTotalLength() > 0) {
-    double timeElapsed = thumbnail_.getTotalLength() - startTime_;
-    double timeDisplayed = timeElapsed * (1.0 - jlimit(0.0, 1.0, amount));
-    endTime_ = startTime_ + std::max(0.001, timeDisplayed);
-    repaint();
-  }
-}
-
-void AudioThumbnailWidget::mouseWheelMove(const MouseEvent& e,
-                                          float incX, float incY) {
-  return;
-  // no idea what this does yet.  :-D
-  if (thumbnail_.getTotalLength() > 0) {
-    double newStart = startTime_ + (incX + incY) * (endTime_ - startTime_)
-      / 10.0;
-    newStart = jlimit(0.0, thumbnail_.getTotalLength() -
-                      (endTime_ - startTime_), newStart);
-    endTime_ = newStart + (endTime_ - startTime_);
-    startTime_ = newStart;
-    repaint();
-  }
-}
-
 Rectangle<int> AudioThumbnailWidget::cursorRectangle() const {
   int margin = description_.widget().margin();
   int thickness = description_.cursor_thickness();
 
   double position = jlimit(startTime_, endTime_, cursor_);
-  double ratio = (endTime_ == startTime_) ? 0 :
+  double ratio = ((endTime_ - startTime_) < 0.1) ? 0 :
     (position - startTime_) / (endTime_ - startTime_);
   int width = (getWidth() - 2 * margin);
   int cursorX = (margin - thickness / 2) + width * ratio;
@@ -200,6 +131,30 @@ int AudioThumbnailWidget::getCursor() const {
 double AudioThumbnailWidget::ratio() const {
   ScopedLock l(lock_);
   return ratio_;
+}
+
+void AudioThumbnailWidget::setZoomFactor(double amount) {
+  if (thumbnail_.getTotalLength() > 0) {
+    double timeElapsed = thumbnail_.getTotalLength() - startTime_;
+    double timeDisplayed = timeElapsed * (1.0 - jlimit(0.0, 1.0, amount));
+    endTime_ = startTime_ + std::max(0.001, timeDisplayed);
+    repaint();
+  }
+}
+
+void AudioThumbnailWidget::mouseWheelMove(const MouseEvent& e,
+                                          float incX, float incY) {
+  return;
+  // no idea what this does yet.  :-D
+  if (thumbnail_.getTotalLength() > 0) {
+    double newStart = startTime_ + (incX + incY) * (endTime_ - startTime_)
+      / 10.0;
+    newStart = jlimit(0.0, thumbnail_.getTotalLength() -
+                      (endTime_ - startTime_), newStart);
+    endTime_ = newStart + (endTime_ - startTime_);
+    startTime_ = newStart;
+    repaint();
+  }
 }
 
 }  // namespace widget

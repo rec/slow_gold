@@ -8,23 +8,27 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class TrackSource;
-
 class BufferySourceFactory : public Buffery {
  public:
   BufferySourceFactory(const widget::tree::VolumeFile& file, int blockSize);
   ~BufferySourceFactory();
 
   Source* newSource(int offset = 0);
+  void removeSource(TrackSource* source);
+
+ protected:
+  virtual bool fill(const AudioSourceChannelInfo& info);
 
  private:
-  friend class TrackSource;
+
 
   typedef std::set<TrackSource*> SourceSet;
 
+  const File file_;
   CriticalSection lock_;
   SourceSet sources_;
-  bool duringShutdown_;
+  AudioThumbnail thumbnail_;
+  AudioThumbnailCache thumbnailCache_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferySourceFactory);
 };

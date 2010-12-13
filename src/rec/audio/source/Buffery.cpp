@@ -45,7 +45,7 @@ Buffery::~Buffery() {
 }
 
 void Buffery::run() {
-  while (!(threadShouldExit() || fillOnce()));
+  while (!(threadShouldExit() || fillBlocksCovering()));
 }
 
 bool Buffery::isFull() const {
@@ -58,15 +58,15 @@ void Buffery::setReadPosition(int pos) {
   position_ = pos;
 }
 
-bool Buffery::fillFromSource(const Block& block) {
+bool Buffery::fill(const Block& block) {
   ScopedLock l(lock_);
   if (isFull_) {
-    LOG(ERROR) << "Calling fillFromSource when isFull_";
+    LOG(ERROR) << "Calling fill when isFull_";
     return true;
   }
 
   if (!getSize(block)) {
-    LOG(ERROR) << "Calling fillFromSource for no data.";
+    LOG(ERROR) << "Calling fill for no data.";
     return false;
   }
 
@@ -74,29 +74,32 @@ bool Buffery::fillFromSource(const Block& block) {
   info.buffer = &buffer_;
   info.startSample = block.first;
   info.numSamples = getSize(block);
+  return fill(info);
+}
 
+bool Buffery::fill(const AudioSourceChannelInfo& info) {
+  ScopedLock l(lock_);
   int length = getTotalLength();
-  source_->setNextReadPosition(block.first);
+  source_->setNextReadPosition(info.startSample);
   source_->getNextAudioBlock(info);
   position_ = util::mod(position_ + info.numSamples, length);
-  Broadcaster<const AudioSourceChannelInfo&>::broadcast(info);
 
   merge(block, &filled_);
   isFull_ = isBlock(filled_, Block(0, length));
   if (isFull_)
-    Broadcaster<const Buffery&>::broadcast(*this);
+    broadcast(*this);
 
   return isFull_;
 }
 
-bool Buffery::fillBlock(const Block& block) {
+bool Buffery::fillBlocksCovering(const Block& block) {
   ScopedLock l(lock_);
   if (isFull_)
     return true;
 
   BlockSet blocks = difference(filled_, block);
   for (BlockSet::iterator i = blocks.begin(); i != blocks.end(); ++i) {
-    if (fillFromSource(*i)) {
+    if (fill(*i)) {
       if (++i != blocks.end())
         LOG(ERROR) << "Ran out of space with blocks to fill.";
       return true;
@@ -105,11 +108,10 @@ bool Buffery::fillBlock(const Block& block) {
   return false;
 }
 
-bool Buffery::fillOnce() {
+bool Buffery::fillNextEmptyBlock() {
   ScopedLock l(lock_);
   return isFull_ ||
-    fillFromSource(firstEmptyBlockAfter(filled_, position_, 
-                                        getTotalLength()));
+    fill(firstEmptyBlockAfter(filled_, position_, getTotalLength()));
 }
 
 int Buffery::getAudioBlock(const AudioSourceChannelInfo& info, int position) {
@@ -118,10 +120,12 @@ int Buffery::getAudioBlock(const AudioSourceChannelInfo& info, int position) {
     if (!isFull_) {
       size_t end = position + info.numSamples;
       size_t length = getTotalLength();
-      if (end <= length)
-        fillBlock(Block(position, end));
-      else
-        fillBlock(Block(position, length)) || fillBlock(Block(0, end - length));
+      if (end <= length) {
+        fillBlocksCovering(Block(position, end));
+      } else {
+        fillBlocksCovering(Block(position, length)) ||
+          fillBlocksCovering(Block(0, end - length));
+      }
 
       position_ = end;
     }

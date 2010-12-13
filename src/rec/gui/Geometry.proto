@@ -10,6 +10,12 @@ message Rectangle {
   optional Point dimensions = 2;
 };
 
+message Line {
+  optional Rectangle bounds = 1;
+  optional float thickness = 2;
+  repeated float dashing = 3;
+};
+
 message Layer {
   optional Rectangle bounds = 1;
   optional int32 zOrder = 2 [default = -1];  // Same as the Juce value.

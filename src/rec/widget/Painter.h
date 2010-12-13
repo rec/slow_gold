@@ -2,7 +2,7 @@
 #define __REC_WIDGET_WIDGET__
 
 #include "rec/base/base.h"
-#include "rec/widget/Widget.pb.h"
+#include "rec/widget/Widget.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
 
@@ -18,25 +18,26 @@ class Painter {
     HIGHLIGHT,
   };
 
-  Painter(const Widget& widget, juce::Graphics* g)
+  Painter(const Widget& widget, juce::Graphics* g,
+          const StateColors* stateColors = NULL)
       : widget_(widget),
         graphics_(g),
         font_(g->getCurrentFont()),
-        margin_(widget_.margin()) {
+        margin_(widget_.margin()),
+        colors_(getColors(stateColors, widget.state(), widget.colors())) {
     if (!widget_.transparent())
       g->fillAll(colour(BACKGROUND));
 
     setColor(FOREGROUND);
-
     g->setFont(font());
   }
 
   ~Painter() { graphics_->setFont(font_); }
 
-  const juce::Font font() const { return gui::getFont(widget_.font()); }
+  const Font font() const { return gui::getFont(widget_.font()); }
 
-  const gui::Colors& colors() const { return widget_.colors(); }
-  const juce::Colour colour(int i) const { return gui::color::get(colors(), i); }
+  const gui::Colors& colors() const { return colors_; }
+  const Colour colour(int i) const { return gui::color::get(colors_, i); }
 
   void setColor(int i) const { graphics_->setColour(colour(i)); }
 
@@ -53,6 +54,7 @@ class Painter {
   juce::Graphics* const graphics_;
   juce::Font const font_;
   int margin_;
+  const Colors& colors_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Painter);
 };

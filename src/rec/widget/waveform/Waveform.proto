@@ -5,7 +5,7 @@ import "rec/util/thread/Thread.proto";
 
 package rec.widget;
 
-message AudioThumbnailDesc {
+message WaveformProto {
   optional Widget widget = 1;
   optional uint32 cursor_thickness = 2                    [default = 1];
   optional uint32 source_samples_per_thumbnail_sample = 4 [default = 512];

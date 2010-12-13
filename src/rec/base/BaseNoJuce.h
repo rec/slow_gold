@@ -22,6 +22,11 @@ typedef unsigned int uint;
 
 typedef google::protobuf::Message Message;
 
+namespace util {
+}
+
+using namespace util;
+
 }  // namespace rec
 
 #endif  // __REC_BASE_BASENOJUCE__

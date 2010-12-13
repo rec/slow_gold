@@ -1,0 +1,17 @@
+import "rec/widget/Widget.proto";
+import "rec/gui/Geometry.proto";
+
+package rec.widget.waveform;
+
+message CursorProto {
+  optional Widget widget = 1;
+
+  enum Type {
+    NONE = 0;
+    PLAYBACK_POSITION = 1;
+    LOOP_START = 2;
+    LOOP_END = 3;
+  };
+  optional Type type = 2;
+  optional gui.Line line = 3;
+};
