@@ -49,7 +49,7 @@ static Colors getDefaultInternal() {
 
   Colors colors;
   for (int i = 0; i < arraysize(DEFAULT_COLORS); ++i)
-    colors.add_color()->set_argb(DEFAULT_COLORS[i]);
+    colors.add_color()->set_argb(DEFAULT_COLORS[i].getARGB());
   return colors;
 };
 

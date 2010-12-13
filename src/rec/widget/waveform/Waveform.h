@@ -8,6 +8,7 @@
 
 namespace rec {
 namespace widget {
+namespace waveform {
 
 // This handles waveform display only (no command information).
 class Waveform : public Component {
@@ -18,6 +19,7 @@ class Waveform : public Component {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(WaveformProto);
 };
 
+}  // namespace waveform
 }  // namespace widget
 }  // namespace rec
 

@@ -27,10 +27,10 @@ struct Math {
 };
 
 template <typename Number>
-inline Number abs(Number x) { return Math.abs(x); }
+Number abs(Number x) { return Math<Number>::abs(x); }
 
 template <typename Number>
-inline Number mod(Number p, Number q) { return Math.mod(p, q); }
+Number mod(Number p, Number q) { return Math<Number>::mod(p, q); }
 
 }  // namespace util
 }  // namespace rec

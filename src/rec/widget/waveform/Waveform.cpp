@@ -1,13 +1,10 @@
-#include "rec/widget/Waveform.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace widget {
+namespace waveform {
 
 
-class Cursor :
-
-void Waveform::get() {
-}
-
+}  // namespace waveform
 }  // namespace widget
 }  // namespace rec

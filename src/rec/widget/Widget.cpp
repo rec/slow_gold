@@ -6,16 +6,17 @@ namespace widget {
 const Colors& getColors(const State& state, const StateColors* stateColors,
                         const Colors& defaultColors) {
   if (stateColors) {
-    State::MouseState mouse = state.mouse_state();
+    State::MouseState mouse = state.mouse();
     do {
       bool selected = state.selected();
       do {
-        const Colors& colors = stateColors[mouse][selected];
+        const Colors& colors = (*stateColors)[mouse][selected];
         if (colors.color_size())
           return colors;
         selected = !selected;
       } while (!selected);
-    } while (mouse-- != State::MouseState_MIN);
+      mouse = (State::MouseState) (mouse - 1);
+    } while (mouse != State::MouseState_MIN);
   }
   return defaultColors;
 }

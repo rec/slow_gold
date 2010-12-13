@@ -1,5 +1,5 @@
-#ifndef __REC_WIDGET_WIDGET__
-#define __REC_WIDGET_WIDGET__
+#ifndef __REC_WIDGET_PAINTER__
+#define __REC_WIDGET_PAINTER__
 
 #include "rec/base/base.h"
 #include "rec/widget/Widget.h"
@@ -24,7 +24,7 @@ class Painter {
         graphics_(g),
         font_(g->getCurrentFont()),
         margin_(widget_.margin()),
-        colors_(getColors(stateColors, widget.state(), widget.colors())) {
+        colors_(getColors(widget.state(), stateColors, widget.colors())) {
     if (!widget_.transparent())
       g->fillAll(colour(BACKGROUND));
 
@@ -62,4 +62,4 @@ class Painter {
 }  // namespace widget
 }  // namespace rec
 
-#endif  // __REC_WIDGET_WIDGET__
+#endif  // __REC_WIDGET_PAINTER__

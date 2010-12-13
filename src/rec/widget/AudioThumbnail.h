@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/widget/AudioThumbnail.pb.h"
+#include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/util/listener/Broadcaster.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/VolumeFile.h"

@@ -36,9 +36,152 @@ void  protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
 void protobuf_AssignDesc_rec_2fwidget_2fWidget_2eproto();
 void protobuf_ShutdownFile_rec_2fwidget_2fWidget_2eproto();
 
+class State;
 class Widget;
 
+enum State_MouseState {
+  State_MouseState_NONE = 0,
+  State_MouseState_DOWN = 1,
+  State_MouseState_HOVERING = 2
+};
+bool State_MouseState_IsValid(int value);
+const State_MouseState State_MouseState_MouseState_MIN = State_MouseState_NONE;
+const State_MouseState State_MouseState_MouseState_MAX = State_MouseState_HOVERING;
+const int State_MouseState_MouseState_ARRAYSIZE = State_MouseState_MouseState_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* State_MouseState_descriptor();
+inline const ::std::string& State_MouseState_Name(State_MouseState value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    State_MouseState_descriptor(), value);
+}
+inline bool State_MouseState_Parse(
+    const ::std::string& name, State_MouseState* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<State_MouseState>(
+    State_MouseState_descriptor(), name, value);
+}
 // ===================================================================
+
+class State : public ::google::protobuf::Message {
+ public:
+  State();
+  virtual ~State();
+  
+  State(const State& from);
+  
+  inline State& operator=(const State& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const State& default_instance();
+  
+  void Swap(State* other);
+  
+  // implements Message ----------------------------------------------
+  
+  State* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const State& from);
+  void MergeFrom(const State& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  typedef State_MouseState MouseState;
+  static const MouseState NONE = State_MouseState_NONE;
+  static const MouseState DOWN = State_MouseState_DOWN;
+  static const MouseState HOVERING = State_MouseState_HOVERING;
+  static inline bool MouseState_IsValid(int value) {
+    return State_MouseState_IsValid(value);
+  }
+  static const MouseState MouseState_MIN =
+    State_MouseState_MouseState_MIN;
+  static const MouseState MouseState_MAX =
+    State_MouseState_MouseState_MAX;
+  static const int MouseState_ARRAYSIZE =
+    State_MouseState_MouseState_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  MouseState_descriptor() {
+    return State_MouseState_descriptor();
+  }
+  static inline const ::std::string& MouseState_Name(MouseState value) {
+    return State_MouseState_Name(value);
+  }
+  static inline bool MouseState_Parse(const ::std::string& name,
+      MouseState* value) {
+    return State_MouseState_Parse(name, value);
+  }
+  
+  // accessors -------------------------------------------------------
+  
+  // optional bool selected = 1;
+  inline bool has_selected() const;
+  inline void clear_selected();
+  static const int kSelectedFieldNumber = 1;
+  inline bool selected() const;
+  inline void set_selected(bool value);
+  
+  // optional .rec.widget.State.MouseState mouse = 2;
+  inline bool has_mouse() const;
+  inline void clear_mouse();
+  static const int kMouseFieldNumber = 2;
+  inline ::rec::widget::State_MouseState mouse() const;
+  inline void set_mouse(::rec::widget::State_MouseState value);
+  
+  // @@protoc_insertion_point(class_scope:rec.widget.State)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  bool selected_;
+  int mouse_;
+  friend void  protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
+  friend void protobuf_AssignDesc_rec_2fwidget_2fWidget_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fwidget_2fWidget_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static State* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class Widget : public ::google::protobuf::Message {
  public:
@@ -139,6 +282,13 @@ class Widget : public ::google::protobuf::Message {
   inline const ::rec::gui::Layer& layer() const;
   inline ::rec::gui::Layer* mutable_layer();
   
+  // optional .rec.widget.State state = 7;
+  inline bool has_state() const;
+  inline void clear_state();
+  static const int kStateFieldNumber = 7;
+  inline const ::rec::widget::State& state() const;
+  inline ::rec::widget::State* mutable_state();
+  
   // @@protoc_insertion_point(class_scope:rec.widget.Widget)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -151,11 +301,12 @@ class Widget : public ::google::protobuf::Message {
   ::google::protobuf::uint32 margin_;
   bool transparent_;
   ::rec::gui::Layer* layer_;
+  ::rec::widget::State* state_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fWidget_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fWidget_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -175,6 +326,43 @@ class Widget : public ::google::protobuf::Message {
 
 
 // ===================================================================
+
+// State
+
+// optional bool selected = 1;
+inline bool State::has_selected() const {
+  return _has_bit(0);
+}
+inline void State::clear_selected() {
+  selected_ = false;
+  _clear_bit(0);
+}
+inline bool State::selected() const {
+  return selected_;
+}
+inline void State::set_selected(bool value) {
+  _set_bit(0);
+  selected_ = value;
+}
+
+// optional .rec.widget.State.MouseState mouse = 2;
+inline bool State::has_mouse() const {
+  return _has_bit(1);
+}
+inline void State::clear_mouse() {
+  mouse_ = 0;
+  _clear_bit(1);
+}
+inline ::rec::widget::State_MouseState State::mouse() const {
+  return static_cast< ::rec::widget::State_MouseState >(mouse_);
+}
+inline void State::set_mouse(::rec::widget::State_MouseState value) {
+  GOOGLE_DCHECK(::rec::widget::State_MouseState_IsValid(value));
+  _set_bit(1);
+  mouse_ = value;
+}
+
+// -------------------------------------------------------------------
 
 // Widget
 
@@ -303,6 +491,23 @@ inline ::rec::gui::Layer* Widget::mutable_layer() {
   return layer_;
 }
 
+// optional .rec.widget.State state = 7;
+inline bool Widget::has_state() const {
+  return _has_bit(6);
+}
+inline void Widget::clear_state() {
+  if (state_ != NULL) state_->::rec::widget::State::Clear();
+  _clear_bit(6);
+}
+inline const ::rec::widget::State& Widget::state() const {
+  return state_ != NULL ? *state_ : *default_instance_->state_;
+}
+inline ::rec::widget::State* Widget::mutable_state() {
+  _set_bit(6);
+  if (state_ == NULL) state_ = new ::rec::widget::State;
+  return state_;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -313,6 +518,10 @@ inline ::rec::gui::Layer* Widget::mutable_layer() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::widget::State_MouseState>() {
+  return ::rec::widget::State_MouseState_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

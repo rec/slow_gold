@@ -105,7 +105,7 @@ AudioFormatReader* createReader(const VolumeFile& file) {
 }
 
 PositionableAudioSource* createSource(const VolumeFile& file) {
-  return new AudioFormatReaderSource(createReader(f), true);
+  return new AudioFormatReaderSource(createReader(file), true);
 }
 
 }  // namespace tree

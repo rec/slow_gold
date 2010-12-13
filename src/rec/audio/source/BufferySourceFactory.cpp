@@ -1,9 +1,10 @@
 #include "rec/audio/source/BufferySourceFactory.h"
 #include "rec/audio/source/TrackSource.h"
 #include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/thread/FileWriter.h"
+#include "rec/util/thread/Trash.h"
 
 using namespace rec::widget::tree;
-using namespace util::thread;;
 
 namespace rec {
 namespace audio {
@@ -13,9 +14,9 @@ BufferySourceFactory::BufferySourceFactory(const VolumeFile& f, int blockSize)
     : Buffery(createSource(f), blockSize),
       file_(getShadowDirectory(f).getChildFile("thumbnail.stream")),
       thumbnailCache_(1),
-      thumbnail_(thumbnailCache_) {
+      thumbnail_(512, audioFormatManager_, thumbnailCache_) {
   if (file_.exists()) {
-    scoped_ptr<FileInputStream> out(file.createInputStream());
+    scoped_ptr<juce::FileInputStream> out(file_.createInputStream());
 
     if (out)
       thumbnail_.loadFrom(*out);
@@ -37,19 +38,18 @@ void BufferySourceFactory::removeSource(TrackSource* source) {
   sources_.erase(source);
 }
 
-bool BufferySourceFactory::fill(const AudioSourceChannelInfo& info) {
+bool BufferySourceFactory::fill(const AudioSourceChannelInfo& i) {
   ScopedLock l(lock_);
-  bool full = Buffery::fill(info);
+  bool full = Buffery::fill(i);
 
   if (!thumbnail_.isFullyLoaded()) {
     thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
 
     if (thumbnail_.isFullyLoaded()) {
-      File file = getThumbnailFile(file_);
-      scoped_ptr<FileWriter> writer(new FileWriter(thumbnail_, file));
-
-      thumbnail_.saveTo(*(writer->memory()));
-      writer->release()->start();
+      scoped_ptr<thread::FileWriter> writer(new thread::FileWriter(file_));
+      juce::MemoryOutputStream mos(*writer->memory(), false);
+      thumbnail_.saveTo(mos);
+      writer.transfer()->startThread();
     }
   }
 

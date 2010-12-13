@@ -15,6 +15,10 @@ namespace widget {
 
 namespace {
 
+const ::google::protobuf::Descriptor* State_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  State_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* State_MouseState_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* Widget_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Widget_reflection_ = NULL;
@@ -28,14 +32,32 @@ void protobuf_AssignDesc_rec_2fwidget_2fWidget_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/widget/Widget.proto");
   GOOGLE_CHECK(file != NULL);
-  Widget_descriptor_ = file->message_type(0);
-  static const int Widget_offsets_[6] = {
+  State_descriptor_ = file->message_type(0);
+  static const int State_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(State, selected_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(State, mouse_),
+  };
+  State_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      State_descriptor_,
+      State::default_instance_,
+      State_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(State, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(State, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(State));
+  State_MouseState_descriptor_ = State_descriptor_->enum_type(0);
+  Widget_descriptor_ = file->message_type(1);
+  static const int Widget_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, colors_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, font_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, margin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, transparent_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, layer_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Widget, state_),
   };
   Widget_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -61,12 +83,16 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    State_descriptor_, &State::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Widget_descriptor_, &Widget::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fwidget_2fWidget_2eproto() {
+  delete State::default_instance_;
+  delete State_reflection_;
   delete Widget::default_instance_;
   delete Widget_reflection_;
 }
@@ -83,14 +109,20 @@ void protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\027rec/widget/Widget.proto\022\nrec.widget\032\023r"
     "ec/gui/Color.proto\032\022rec/gui/Font.proto\032\026"
-    "rec/gui/Geometry.proto\"\237\001\n\006Widget\022\014\n\004nam"
+    "rec/gui/Geometry.proto\"v\n\005State\022\020\n\010selec"
+    "ted\030\001 \001(\010\022+\n\005mouse\030\002 \001(\0162\034.rec.widget.St"
+    "ate.MouseState\".\n\nMouseState\022\010\n\004NONE\020\000\022\010"
+    "\n\004DOWN\020\001\022\014\n\010HOVERING\020\002\"\301\001\n\006Widget\022\014\n\004nam"
     "e\030\001 \001(\t\022\037\n\006colors\030\002 \001(\0132\017.rec.gui.Colors"
     "\022\037\n\004font\030\003 \001(\0132\021.rec.gui.FontDesc\022\021\n\006mar"
     "gin\030\004 \001(\r:\0012\022\023\n\013transparent\030\005 \001(\010\022\035\n\005lay"
-    "er\030\006 \001(\0132\016.rec.gui.Layer", 264);
+    "er\030\006 \001(\0132\016.rec.gui.Layer\022 \n\005state\030\007 \001(\0132"
+    "\021.rec.widget.State", 418);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Widget.proto", &protobuf_RegisterTypes);
+  State::default_instance_ = new State();
   Widget::default_instance_ = new Widget();
+  State::default_instance_->InitAsDefaultInstance();
   Widget::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fwidget_2fWidget_2eproto);
 }
@@ -105,6 +137,280 @@ struct StaticDescriptorInitializer_rec_2fwidget_2fWidget_2eproto {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* State_MouseState_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return State_MouseState_descriptor_;
+}
+bool State_MouseState_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const State_MouseState State::NONE;
+const State_MouseState State::DOWN;
+const State_MouseState State::HOVERING;
+const State_MouseState State::MouseState_MIN;
+const State_MouseState State::MouseState_MAX;
+const int State::MouseState_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int State::kSelectedFieldNumber;
+const int State::kMouseFieldNumber;
+#endif  // !_MSC_VER
+
+State::State()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void State::InitAsDefaultInstance() {
+}
+
+State::State(const State& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void State::SharedCtor() {
+  _cached_size_ = 0;
+  selected_ = false;
+  mouse_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+State::~State() {
+  SharedDtor();
+}
+
+void State::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void State::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* State::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return State_descriptor_;
+}
+
+const State& State::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();  return *default_instance_;
+}
+
+State* State::default_instance_ = NULL;
+
+State* State::New() const {
+  return new State;
+}
+
+void State::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    selected_ = false;
+    mouse_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool State::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional bool selected = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &selected_)));
+          _set_bit(0);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_mouse;
+        break;
+      }
+      
+      // optional .rec.widget.State.MouseState mouse = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_mouse:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::widget::State_MouseState_IsValid(value)) {
+            set_mouse(static_cast< ::rec::widget::State_MouseState >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(2, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void State::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional bool selected = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->selected(), output);
+  }
+  
+  // optional .rec.widget.State.MouseState mouse = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->mouse(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* State::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional bool selected = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->selected(), target);
+  }
+  
+  // optional .rec.widget.State.MouseState mouse = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->mouse(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int State::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional bool selected = 1;
+    if (has_selected()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional .rec.widget.State.MouseState mouse = 2;
+    if (has_mouse()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->mouse());
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void State::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const State* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const State*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void State::MergeFrom(const State& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      set_selected(from.selected());
+    }
+    if (from._has_bit(1)) {
+      set_mouse(from.mouse());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void State::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void State::CopyFrom(const State& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool State::IsInitialized() const {
+  
+  return true;
+}
+
+void State::Swap(State* other) {
+  if (other != this) {
+    std::swap(selected_, other->selected_);
+    std::swap(mouse_, other->mouse_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata State::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = State_descriptor_;
+  metadata.reflection = State_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
 const ::std::string Widget::_default_name_;
 #ifndef _MSC_VER
 const int Widget::kNameFieldNumber;
@@ -113,6 +419,7 @@ const int Widget::kFontFieldNumber;
 const int Widget::kMarginFieldNumber;
 const int Widget::kTransparentFieldNumber;
 const int Widget::kLayerFieldNumber;
+const int Widget::kStateFieldNumber;
 #endif  // !_MSC_VER
 
 Widget::Widget()
@@ -124,6 +431,7 @@ void Widget::InitAsDefaultInstance() {
   colors_ = const_cast< ::rec::gui::Colors*>(&::rec::gui::Colors::default_instance());
   font_ = const_cast< ::rec::gui::FontDesc*>(&::rec::gui::FontDesc::default_instance());
   layer_ = const_cast< ::rec::gui::Layer*>(&::rec::gui::Layer::default_instance());
+  state_ = const_cast< ::rec::widget::State*>(&::rec::widget::State::default_instance());
 }
 
 Widget::Widget(const Widget& from)
@@ -140,6 +448,7 @@ void Widget::SharedCtor() {
   margin_ = 2u;
   transparent_ = false;
   layer_ = NULL;
+  state_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -155,6 +464,7 @@ void Widget::SharedDtor() {
     delete colors_;
     delete font_;
     delete layer_;
+    delete state_;
   }
 }
 
@@ -195,6 +505,9 @@ void Widget::Clear() {
     transparent_ = false;
     if (_has_bit(5)) {
       if (layer_ != NULL) layer_->::rec::gui::Layer::Clear();
+    }
+    if (_has_bit(6)) {
+      if (state_ != NULL) state_->::rec::widget::State::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -293,6 +606,20 @@ bool Widget::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(58)) goto parse_state;
+        break;
+      }
+      
+      // optional .rec.widget.State state = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_state:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_state()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -352,6 +679,12 @@ void Widget::SerializeWithCachedSizes(
       6, this->layer(), output);
   }
   
+  // optional .rec.widget.State state = 7;
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->state(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -399,6 +732,13 @@ void Widget::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         6, this->layer(), target);
+  }
+  
+  // optional .rec.widget.State state = 7;
+  if (_has_bit(6)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->state(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -452,6 +792,13 @@ int Widget::ByteSize() const {
           this->layer());
     }
     
+    // optional .rec.widget.State state = 7;
+    if (has_state()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->state());
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -497,6 +844,9 @@ void Widget::MergeFrom(const Widget& from) {
     if (from._has_bit(5)) {
       mutable_layer()->::rec::gui::Layer::MergeFrom(from.layer());
     }
+    if (from._has_bit(6)) {
+      mutable_state()->::rec::widget::State::MergeFrom(from.state());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -526,6 +876,7 @@ void Widget::Swap(Widget* other) {
     std::swap(margin_, other->margin_);
     std::swap(transparent_, other->transparent_);
     std::swap(layer_, other->layer_);
+    std::swap(state_, other->state_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -21,6 +21,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* Rectangle_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Rectangle_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Line_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Line_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Layer_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Layer_reflection_ = NULL;
@@ -66,7 +69,24 @@ void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Rectangle));
-  Layer_descriptor_ = file->message_type(2);
+  Line_descriptor_ = file->message_type(2);
+  static const int Line_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Line, bounds_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Line, thickness_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Line, dashing_),
+  };
+  Line_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Line_descriptor_,
+      Line::default_instance_,
+      Line_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Line, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Line, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Line));
+  Layer_descriptor_ = file->message_type(3);
   static const int Layer_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, bounds_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Layer, zorder_),
@@ -99,6 +119,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Rectangle_descriptor_, &Rectangle::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Line_descriptor_, &Line::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Layer_descriptor_, &Layer::default_instance());
 }
 
@@ -109,6 +131,8 @@ void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto() {
   delete Point_reflection_;
   delete Rectangle::default_instance_;
   delete Rectangle_reflection_;
+  delete Line::default_instance_;
+  delete Line_reflection_;
   delete Layer::default_instance_;
   delete Layer_reflection_;
 }
@@ -123,16 +147,20 @@ void protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto() {
     "\n\026rec/gui/Geometry.proto\022\007rec.gui\"\035\n\005Poi"
     "nt\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"Q\n\tRectangle\022 \n"
     "\010top_left\030\001 \001(\0132\016.rec.gui.Point\022\"\n\ndimen"
-    "sions\030\002 \001(\0132\016.rec.gui.Point\"?\n\005Layer\022\"\n\006"
+    "sions\030\002 \001(\0132\016.rec.gui.Point\"N\n\004Line\022\"\n\006b"
+    "ounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\021\n\tthick"
+    "ness\030\002 \001(\002\022\017\n\007dashing\030\003 \003(\002\"?\n\005Layer\022\"\n\006"
     "bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\022\n\006zOrd"
-    "er\030\002 \001(\005:\002-1", 212);
+    "er\030\002 \001(\005:\002-1", 292);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Geometry.proto", &protobuf_RegisterTypes);
   Point::default_instance_ = new Point();
   Rectangle::default_instance_ = new Rectangle();
+  Line::default_instance_ = new Line();
   Layer::default_instance_ = new Layer();
   Point::default_instance_->InitAsDefaultInstance();
   Rectangle::default_instance_->InitAsDefaultInstance();
+  Line::default_instance_->InitAsDefaultInstance();
   Layer::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto);
 }
@@ -645,6 +673,301 @@ void Rectangle::Swap(Rectangle* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = Rectangle_descriptor_;
   metadata.reflection = Rectangle_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int Line::kBoundsFieldNumber;
+const int Line::kThicknessFieldNumber;
+const int Line::kDashingFieldNumber;
+#endif  // !_MSC_VER
+
+Line::Line()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void Line::InitAsDefaultInstance() {
+  bounds_ = const_cast< ::rec::gui::Rectangle*>(&::rec::gui::Rectangle::default_instance());
+}
+
+Line::Line(const Line& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Line::SharedCtor() {
+  _cached_size_ = 0;
+  bounds_ = NULL;
+  thickness_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Line::~Line() {
+  SharedDtor();
+}
+
+void Line::SharedDtor() {
+  if (this != default_instance_) {
+    delete bounds_;
+  }
+}
+
+void Line::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Line::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Line_descriptor_;
+}
+
+const Line& Line::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();  return *default_instance_;
+}
+
+Line* Line::default_instance_ = NULL;
+
+Line* Line::New() const {
+  return new Line;
+}
+
+void Line::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (_has_bit(0)) {
+      if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
+    }
+    thickness_ = 0;
+  }
+  dashing_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Line::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.gui.Rectangle bounds = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_bounds()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(21)) goto parse_thickness;
+        break;
+      }
+      
+      // optional float thickness = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_thickness:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &thickness_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(29)) goto parse_dashing;
+        break;
+      }
+      
+      // repeated float dashing = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_dashing:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 1, 29, input, this->mutable_dashing())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, this->mutable_dashing())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(29)) goto parse_dashing;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Line::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.gui.Rectangle bounds = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->bounds(), output);
+  }
+  
+  // optional float thickness = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->thickness(), output);
+  }
+  
+  // repeated float dashing = 3;
+  for (int i = 0; i < this->dashing_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(
+      3, this->dashing(i), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* Line::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.gui.Rectangle bounds = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->bounds(), target);
+  }
+  
+  // optional float thickness = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->thickness(), target);
+  }
+  
+  // repeated float dashing = 3;
+  for (int i = 0; i < this->dashing_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteFloatToArray(3, this->dashing(i), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int Line::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.gui.Rectangle bounds = 1;
+    if (has_bounds()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->bounds());
+    }
+    
+    // optional float thickness = 2;
+    if (has_thickness()) {
+      total_size += 1 + 4;
+    }
+    
+  }
+  // repeated float dashing = 3;
+  {
+    int data_size = 0;
+    data_size = 4 * this->dashing_size();
+    total_size += 1 * this->dashing_size() + data_size;
+  }
+  
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Line::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Line* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Line*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Line::MergeFrom(const Line& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  dashing_.MergeFrom(from.dashing_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      mutable_bounds()->::rec::gui::Rectangle::MergeFrom(from.bounds());
+    }
+    if (from._has_bit(1)) {
+      set_thickness(from.thickness());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Line::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Line::CopyFrom(const Line& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Line::IsInitialized() const {
+  
+  return true;
+}
+
+void Line::Swap(Line* other) {
+  if (other != this) {
+    std::swap(bounds_, other->bounds_);
+    std::swap(thickness_, other->thickness_);
+    dashing_.Swap(&other->dashing_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Line::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Line_descriptor_;
+  metadata.reflection = Line_reflection_;
   return metadata;
 }
 

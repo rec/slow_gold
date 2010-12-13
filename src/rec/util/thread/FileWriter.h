@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_THREAD_FILEWRITER__
 #define __REC_UTIL_THREAD_FILEWRITER__
 
-#include "rec/base/base.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace util {
@@ -30,7 +30,7 @@ class FileWriter : public Thread {
       }
     }
 
-    util::thread::trash::discard(this);
+    trash::discard(this);
   }
 
  private:

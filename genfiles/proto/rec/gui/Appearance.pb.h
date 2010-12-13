@@ -24,7 +24,6 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/gui/Color.pb.h"
-#include "rec/widget/AudioThumbnail.pb.h"
 #include "rec/widget/status/Time.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -101,13 +100,6 @@ class Appearance : public ::google::protobuf::Message {
   inline const ::rec::gui::Colors& colors() const;
   inline ::rec::gui::Colors* mutable_colors();
   
-  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-  inline bool has_thumbnail() const;
-  inline void clear_thumbnail();
-  static const int kThumbnailFieldNumber = 2;
-  inline const ::rec::widget::AudioThumbnailDesc& thumbnail() const;
-  inline ::rec::widget::AudioThumbnailDesc* mutable_thumbnail();
-  
   // optional .rec.widget.status.time.Time time = 3;
   inline bool has_time() const;
   inline void clear_time();
@@ -121,13 +113,12 @@ class Appearance : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::gui::Colors* colors_;
-  ::rec::widget::AudioThumbnailDesc* thumbnail_;
   ::rec::widget::status::time::Time* time_;
   friend void  protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fAppearance_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fAppearance_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -167,36 +158,19 @@ inline ::rec::gui::Colors* Appearance::mutable_colors() {
   return colors_;
 }
 
-// optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-inline bool Appearance::has_thumbnail() const {
-  return _has_bit(1);
-}
-inline void Appearance::clear_thumbnail() {
-  if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
-  _clear_bit(1);
-}
-inline const ::rec::widget::AudioThumbnailDesc& Appearance::thumbnail() const {
-  return thumbnail_ != NULL ? *thumbnail_ : *default_instance_->thumbnail_;
-}
-inline ::rec::widget::AudioThumbnailDesc* Appearance::mutable_thumbnail() {
-  _set_bit(1);
-  if (thumbnail_ == NULL) thumbnail_ = new ::rec::widget::AudioThumbnailDesc;
-  return thumbnail_;
-}
-
 // optional .rec.widget.status.time.Time time = 3;
 inline bool Appearance::has_time() const {
-  return _has_bit(2);
+  return _has_bit(1);
 }
 inline void Appearance::clear_time() {
   if (time_ != NULL) time_->::rec::widget::status::time::Time::Clear();
-  _clear_bit(2);
+  _clear_bit(1);
 }
 inline const ::rec::widget::status::time::Time& Appearance::time() const {
   return time_ != NULL ? *time_ : *default_instance_->time_;
 }
 inline ::rec::widget::status::time::Time* Appearance::mutable_time() {
-  _set_bit(2);
+  _set_bit(1);
   if (time_ == NULL) time_ = new ::rec::widget::status::time::Time;
   return time_;
 }

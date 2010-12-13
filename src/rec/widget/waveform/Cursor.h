@@ -2,6 +2,8 @@
 #define __REC_WIDGET_WAVEFORM_CURSOR__
 
 #include "rec/widget/Painter.h"
+#include "rec/gui/Geometry.h"
+#include "rec/widget/waveform/Cursor.pb.h"
 
 namespace rec {
 namespace widget {
@@ -11,15 +13,15 @@ class Cursor : public Component {
  public:
   Cursor(const CursorProto& desc) : desc_(desc) {}
 
-  void Cursor::paint(Graphics& g) {
+  void paint(Graphics& g) {
     Painter p(desc_.widget(), &g);
-    Rectangle<int> bounds = getLocalBounds();
+    juce::Rectangle<int> bounds = getLocalBounds();
 
     float middle = bounds.getWidth() / 2.0F;
     float margin = desc_.widget().margin();
     float bottom = bounds.getHeight() - 2.0F * margin;
 
-    drawLine(g, desc_.line(), middle, margin, middle, bottom);
+    gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
   }
 
  private:

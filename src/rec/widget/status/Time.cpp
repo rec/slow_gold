@@ -69,11 +69,13 @@ static const float PI = 3.1415926536;
 
 void DialComponent::paint(Graphics& g) {
   Painter p(description_.widget(), &g);
-  Rectangle<int> bounds = p.getBounds(this);
+  juce::Rectangle<int> bounds = p.getBounds(this);
   float zeroAngle = description_.zero_point() * 2.0 * PI;
   float timeAngle = zeroAngle + time_ * 2.0 * PI;
-  if (p.colors().color_size() > 2)
-    g.setColour(p.colour(Painter::FOREGROUND).interpolatedWith(p.colour(Painter::HIGHLIGHT), time_));
+  if (p.colors().color_size() > 2) {
+    g.setColour(p.colour(Painter::FOREGROUND).
+                interpolatedWith(p.colour(Painter::HIGHLIGHT), time_));
+  }
 
   Path path;
   path.addPieSegment(bounds.getX(), bounds.getY(),

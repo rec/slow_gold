@@ -23,9 +23,11 @@ typedef juce::ChangeBroadcaster ChangeBroadcaster;
 typedef juce::ChangeListener ChangeListener;
 typedef juce::CriticalSection CriticalSection;
 typedef juce::Colour Colour;
+typedef juce::Component Component;
 
 typedef juce::File File;
 typedef juce::Font Font;
+typedef juce::Graphics Graphics;
 typedef juce::InputStream InputStream;
 typedef juce::MemoryBlock MemoryBlock;
 typedef juce::OutputStream OutputStream;

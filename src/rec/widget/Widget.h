@@ -8,7 +8,9 @@
 namespace rec {
 namespace widget {
 
-typedef Colors[State::MouseState_ARRAYSIZE][2] StateColors;
+using namespace rec::gui;
+
+typedef Colors StateColors[State::MouseState_ARRAYSIZE][2];
 
 const Colors& getColors(const State& state,
                         const StateColors* stateColors,

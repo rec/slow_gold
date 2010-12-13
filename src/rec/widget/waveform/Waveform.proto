@@ -3,7 +3,7 @@ import "rec/gui/Font.proto";
 import "rec/widget/Widget.proto";
 import "rec/util/thread/Thread.proto";
 
-package rec.widget;
+package rec.widget.waveform;
 
 message WaveformProto {
   optional Widget widget = 1;

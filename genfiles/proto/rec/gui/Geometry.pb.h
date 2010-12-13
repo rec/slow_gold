@@ -35,6 +35,7 @@ void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto();
 
 class Point;
 class Rectangle;
+class Line;
 class Layer;
 
 // ===================================================================
@@ -233,6 +234,116 @@ class Rectangle : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Line : public ::google::protobuf::Message {
+ public:
+  Line();
+  virtual ~Line();
+  
+  Line(const Line& from);
+  
+  inline Line& operator=(const Line& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Line& default_instance();
+  
+  void Swap(Line* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Line* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Line& from);
+  void MergeFrom(const Line& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional .rec.gui.Rectangle bounds = 1;
+  inline bool has_bounds() const;
+  inline void clear_bounds();
+  static const int kBoundsFieldNumber = 1;
+  inline const ::rec::gui::Rectangle& bounds() const;
+  inline ::rec::gui::Rectangle* mutable_bounds();
+  
+  // optional float thickness = 2;
+  inline bool has_thickness() const;
+  inline void clear_thickness();
+  static const int kThicknessFieldNumber = 2;
+  inline float thickness() const;
+  inline void set_thickness(float value);
+  
+  // repeated float dashing = 3;
+  inline int dashing_size() const;
+  inline void clear_dashing();
+  static const int kDashingFieldNumber = 3;
+  inline float dashing(int index) const;
+  inline void set_dashing(int index, float value);
+  inline void add_dashing(float value);
+  inline const ::google::protobuf::RepeatedField< float >&
+      dashing() const;
+  inline ::google::protobuf::RepeatedField< float >*
+      mutable_dashing();
+  
+  // @@protoc_insertion_point(class_scope:rec.gui.Line)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::rec::gui::Rectangle* bounds_;
+  float thickness_;
+  ::google::protobuf::RepeatedField< float > dashing_;
+  friend void  protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
+  friend void protobuf_AssignDesc_rec_2fgui_2fGeometry_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fgui_2fGeometry_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static Line* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class Layer : public ::google::protobuf::Message {
  public:
   Layer();
@@ -403,6 +514,68 @@ inline ::rec::gui::Point* Rectangle::mutable_dimensions() {
   _set_bit(1);
   if (dimensions_ == NULL) dimensions_ = new ::rec::gui::Point;
   return dimensions_;
+}
+
+// -------------------------------------------------------------------
+
+// Line
+
+// optional .rec.gui.Rectangle bounds = 1;
+inline bool Line::has_bounds() const {
+  return _has_bit(0);
+}
+inline void Line::clear_bounds() {
+  if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
+  _clear_bit(0);
+}
+inline const ::rec::gui::Rectangle& Line::bounds() const {
+  return bounds_ != NULL ? *bounds_ : *default_instance_->bounds_;
+}
+inline ::rec::gui::Rectangle* Line::mutable_bounds() {
+  _set_bit(0);
+  if (bounds_ == NULL) bounds_ = new ::rec::gui::Rectangle;
+  return bounds_;
+}
+
+// optional float thickness = 2;
+inline bool Line::has_thickness() const {
+  return _has_bit(1);
+}
+inline void Line::clear_thickness() {
+  thickness_ = 0;
+  _clear_bit(1);
+}
+inline float Line::thickness() const {
+  return thickness_;
+}
+inline void Line::set_thickness(float value) {
+  _set_bit(1);
+  thickness_ = value;
+}
+
+// repeated float dashing = 3;
+inline int Line::dashing_size() const {
+  return dashing_.size();
+}
+inline void Line::clear_dashing() {
+  dashing_.Clear();
+}
+inline float Line::dashing(int index) const {
+  return dashing_.Get(index);
+}
+inline void Line::set_dashing(int index, float value) {
+  dashing_.Set(index, value);
+}
+inline void Line::add_dashing(float value) {
+  dashing_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< float >&
+Line::dashing() const {
+  return dashing_;
+}
+inline ::google::protobuf::RepeatedField< float >*
+Line::mutable_dashing() {
+  return &dashing_;
 }
 
 // -------------------------------------------------------------------

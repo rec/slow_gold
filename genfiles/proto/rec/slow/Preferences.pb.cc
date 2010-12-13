@@ -32,7 +32,7 @@ void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto() {
   Preferences_descriptor_ = file->message_type(0);
   static const int Preferences_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, track_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, thumbnail_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, waveform_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, recent_files_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Preferences, audio_setup_),
   };
@@ -79,18 +79,18 @@ void protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto() {
   ::rec::audio::protobuf_AddDesc_rec_2faudio_2fAudioDeviceSetup_2eproto();
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   ::rec::widget::pane::protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
-  ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
+  ::rec::widget::waveform::protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\032rec/slow/Preferences.proto\022\016rec.slow.p"
     "roto\032 rec/audio/AudioDeviceSetup.proto\032\031"
     "rec/gui/RecentFiles.proto\032\026rec/widget/Pa"
-    "nes.proto\032\037rec/widget/AudioThumbnail.pro"
-    "to\"\312\001\n\013Preferences\022%\n\005track\030\001 \001(\0132\026.rec."
-    "widget.pane.Track\0221\n\tthumbnail\030\002 \001(\0132\036.r"
-    "ec.widget.AudioThumbnailDesc\022*\n\014recent_f"
-    "iles\030\003 \001(\0132\024.rec.gui.RecentFiles\0225\n\013audi"
-    "o_setup\030\004 \001(\0132 .rec.audio.AudioDeviceSet"
-    "upProto", 367);
+    "nes.proto\032\"rec/widget/waveform/Waveform."
+    "proto\"\315\001\n\013Preferences\022%\n\005track\030\001 \001(\0132\026.r"
+    "ec.widget.pane.Track\0224\n\010waveform\030\002 \001(\0132\""
+    ".rec.widget.waveform.WaveformProto\022*\n\014re"
+    "cent_files\030\003 \001(\0132\024.rec.gui.RecentFiles\0225"
+    "\n\013audio_setup\030\004 \001(\0132 .rec.audio.AudioDev"
+    "iceSetupProto", 373);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Preferences.proto", &protobuf_RegisterTypes);
   Preferences::default_instance_ = new Preferences();
@@ -110,7 +110,7 @@ struct StaticDescriptorInitializer_rec_2fslow_2fPreferences_2eproto {
 
 #ifndef _MSC_VER
 const int Preferences::kTrackFieldNumber;
-const int Preferences::kThumbnailFieldNumber;
+const int Preferences::kWaveformFieldNumber;
 const int Preferences::kRecentFilesFieldNumber;
 const int Preferences::kAudioSetupFieldNumber;
 #endif  // !_MSC_VER
@@ -122,7 +122,7 @@ Preferences::Preferences()
 
 void Preferences::InitAsDefaultInstance() {
   track_ = const_cast< ::rec::widget::pane::Track*>(&::rec::widget::pane::Track::default_instance());
-  thumbnail_ = const_cast< ::rec::widget::AudioThumbnailDesc*>(&::rec::widget::AudioThumbnailDesc::default_instance());
+  waveform_ = const_cast< ::rec::widget::waveform::WaveformProto*>(&::rec::widget::waveform::WaveformProto::default_instance());
   recent_files_ = const_cast< ::rec::gui::RecentFiles*>(&::rec::gui::RecentFiles::default_instance());
   audio_setup_ = const_cast< ::rec::audio::AudioDeviceSetupProto*>(&::rec::audio::AudioDeviceSetupProto::default_instance());
 }
@@ -136,7 +136,7 @@ Preferences::Preferences(const Preferences& from)
 void Preferences::SharedCtor() {
   _cached_size_ = 0;
   track_ = NULL;
-  thumbnail_ = NULL;
+  waveform_ = NULL;
   recent_files_ = NULL;
   audio_setup_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -149,7 +149,7 @@ Preferences::~Preferences() {
 void Preferences::SharedDtor() {
   if (this != default_instance_) {
     delete track_;
-    delete thumbnail_;
+    delete waveform_;
     delete recent_files_;
     delete audio_setup_;
   }
@@ -181,7 +181,7 @@ void Preferences::Clear() {
       if (track_ != NULL) track_->::rec::widget::pane::Track::Clear();
     }
     if (_has_bit(1)) {
-      if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
+      if (waveform_ != NULL) waveform_->::rec::widget::waveform::WaveformProto::Clear();
     }
     if (_has_bit(2)) {
       if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
@@ -209,17 +209,17 @@ bool Preferences::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_thumbnail;
+        if (input->ExpectTag(18)) goto parse_waveform;
         break;
       }
       
-      // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
+      // optional .rec.widget.waveform.WaveformProto waveform = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_thumbnail:
+         parse_waveform:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_thumbnail()));
+               input, mutable_waveform()));
         } else {
           goto handle_uninterpreted;
         }
@@ -279,10 +279,10 @@ void Preferences::SerializeWithCachedSizes(
       1, this->track(), output);
   }
   
-  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
+  // optional .rec.widget.waveform.WaveformProto waveform = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->thumbnail(), output);
+      2, this->waveform(), output);
   }
   
   // optional .rec.gui.RecentFiles recent_files = 3;
@@ -312,11 +312,11 @@ void Preferences::SerializeWithCachedSizes(
         1, this->track(), target);
   }
   
-  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
+  // optional .rec.widget.waveform.WaveformProto waveform = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->thumbnail(), target);
+        2, this->waveform(), target);
   }
   
   // optional .rec.gui.RecentFiles recent_files = 3;
@@ -351,11 +351,11 @@ int Preferences::ByteSize() const {
           this->track());
     }
     
-    // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-    if (has_thumbnail()) {
+    // optional .rec.widget.waveform.WaveformProto waveform = 2;
+    if (has_waveform()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->thumbnail());
+          this->waveform());
     }
     
     // optional .rec.gui.RecentFiles recent_files = 3;
@@ -403,7 +403,7 @@ void Preferences::MergeFrom(const Preferences& from) {
       mutable_track()->::rec::widget::pane::Track::MergeFrom(from.track());
     }
     if (from._has_bit(1)) {
-      mutable_thumbnail()->::rec::widget::AudioThumbnailDesc::MergeFrom(from.thumbnail());
+      mutable_waveform()->::rec::widget::waveform::WaveformProto::MergeFrom(from.waveform());
     }
     if (from._has_bit(2)) {
       mutable_recent_files()->::rec::gui::RecentFiles::MergeFrom(from.recent_files());
@@ -435,7 +435,7 @@ bool Preferences::IsInitialized() const {
 void Preferences::Swap(Preferences* other) {
   if (other != this) {
     std::swap(track_, other->track_);
-    std::swap(thumbnail_, other->thumbnail_);
+    std::swap(waveform_, other->waveform_);
     std::swap(recent_files_, other->recent_files_);
     std::swap(audio_setup_, other->audio_setup_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

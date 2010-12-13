@@ -26,7 +26,7 @@
 #include "rec/audio/AudioDeviceSetup.pb.h"
 #include "rec/gui/RecentFiles.pb.h"
 #include "rec/widget/Panes.pb.h"
-#include "rec/widget/AudioThumbnail.pb.h"
+#include "rec/widget/waveform/Waveform.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -103,12 +103,12 @@ class Preferences : public ::google::protobuf::Message {
   inline const ::rec::widget::pane::Track& track() const;
   inline ::rec::widget::pane::Track* mutable_track();
   
-  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-  inline bool has_thumbnail() const;
-  inline void clear_thumbnail();
-  static const int kThumbnailFieldNumber = 2;
-  inline const ::rec::widget::AudioThumbnailDesc& thumbnail() const;
-  inline ::rec::widget::AudioThumbnailDesc* mutable_thumbnail();
+  // optional .rec.widget.waveform.WaveformProto waveform = 2;
+  inline bool has_waveform() const;
+  inline void clear_waveform();
+  static const int kWaveformFieldNumber = 2;
+  inline const ::rec::widget::waveform::WaveformProto& waveform() const;
+  inline ::rec::widget::waveform::WaveformProto* mutable_waveform();
   
   // optional .rec.gui.RecentFiles recent_files = 3;
   inline bool has_recent_files() const;
@@ -130,7 +130,7 @@ class Preferences : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::widget::pane::Track* track_;
-  ::rec::widget::AudioThumbnailDesc* thumbnail_;
+  ::rec::widget::waveform::WaveformProto* waveform_;
   ::rec::gui::RecentFiles* recent_files_;
   ::rec::audio::AudioDeviceSetupProto* audio_setup_;
   friend void  protobuf_AddDesc_rec_2fslow_2fPreferences_2eproto();
@@ -177,21 +177,21 @@ inline ::rec::widget::pane::Track* Preferences::mutable_track() {
   return track_;
 }
 
-// optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-inline bool Preferences::has_thumbnail() const {
+// optional .rec.widget.waveform.WaveformProto waveform = 2;
+inline bool Preferences::has_waveform() const {
   return _has_bit(1);
 }
-inline void Preferences::clear_thumbnail() {
-  if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
+inline void Preferences::clear_waveform() {
+  if (waveform_ != NULL) waveform_->::rec::widget::waveform::WaveformProto::Clear();
   _clear_bit(1);
 }
-inline const ::rec::widget::AudioThumbnailDesc& Preferences::thumbnail() const {
-  return thumbnail_ != NULL ? *thumbnail_ : *default_instance_->thumbnail_;
+inline const ::rec::widget::waveform::WaveformProto& Preferences::waveform() const {
+  return waveform_ != NULL ? *waveform_ : *default_instance_->waveform_;
 }
-inline ::rec::widget::AudioThumbnailDesc* Preferences::mutable_thumbnail() {
+inline ::rec::widget::waveform::WaveformProto* Preferences::mutable_waveform() {
   _set_bit(1);
-  if (thumbnail_ == NULL) thumbnail_ = new ::rec::widget::AudioThumbnailDesc;
-  return thumbnail_;
+  if (waveform_ == NULL) waveform_ = new ::rec::widget::waveform::WaveformProto;
+  return waveform_;
 }
 
 // optional .rec.gui.RecentFiles recent_files = 3;

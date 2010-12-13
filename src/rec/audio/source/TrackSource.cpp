@@ -8,7 +8,7 @@ namespace source {
 TrackSource::TrackSource(BufferySourceFactory* f, int offset)
     : factory_(f),
       offset_(offset),
-      lock_(&f->lock_) {
+      lock_(&f->lock()) {
 }
 
 void TrackSource::release() {

@@ -8,6 +8,8 @@ namespace rec {
 namespace audio {
 namespace source {
 
+class TrackSource;
+
 class BufferySourceFactory : public Buffery {
  public:
   BufferySourceFactory(const widget::tree::VolumeFile& file, int blockSize);
@@ -15,6 +17,7 @@ class BufferySourceFactory : public Buffery {
 
   Source* newSource(int offset = 0);
   void removeSource(TrackSource* source);
+  CriticalSection& lock() { return lock_; }
 
  protected:
   virtual bool fill(const AudioSourceChannelInfo& info);
@@ -27,8 +30,9 @@ class BufferySourceFactory : public Buffery {
   const File file_;
   CriticalSection lock_;
   SourceSet sources_;
-  AudioThumbnail thumbnail_;
+  juce::AudioFormatManager audioFormatManager_;
   AudioThumbnailCache thumbnailCache_;
+  AudioThumbnail thumbnail_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferySourceFactory);
 };

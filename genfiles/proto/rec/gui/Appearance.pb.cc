@@ -29,9 +29,8 @@ void protobuf_AssignDesc_rec_2fgui_2fAppearance_2eproto() {
       "rec/gui/Appearance.proto");
   GOOGLE_CHECK(file != NULL);
   Appearance_descriptor_ = file->message_type(0);
-  static const int Appearance_offsets_[3] = {
+  static const int Appearance_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Appearance, colors_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Appearance, thumbnail_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Appearance, time_),
   };
   Appearance_reflection_ =
@@ -75,16 +74,13 @@ void protobuf_AddDesc_rec_2fgui_2fAppearance_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
-  ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fAudioThumbnail_2eproto();
   ::rec::widget::status::time::protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/gui/Appearance.proto\022\007rec.gui\032\023rec"
-    "/gui/Color.proto\032\037rec/widget/AudioThumbn"
-    "ail.proto\032\034rec/widget/status/Time.proto\""
-    "\214\001\n\nAppearance\022\037\n\006colors\030\001 \001(\0132\017.rec.gui"
-    ".Colors\0221\n\tthumbnail\030\002 \001(\0132\036.rec.widget."
-    "AudioThumbnailDesc\022*\n\004time\030\003 \001(\0132\034.rec.w"
-    "idget.status.time.Time", 262);
+    "/gui/Color.proto\032\034rec/widget/status/Time"
+    ".proto\"Y\n\nAppearance\022\037\n\006colors\030\001 \001(\0132\017.r"
+    "ec.gui.Colors\022*\n\004time\030\003 \001(\0132\034.rec.widget"
+    ".status.time.Time", 177);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Appearance.proto", &protobuf_RegisterTypes);
   Appearance::default_instance_ = new Appearance();
@@ -104,7 +100,6 @@ struct StaticDescriptorInitializer_rec_2fgui_2fAppearance_2eproto {
 
 #ifndef _MSC_VER
 const int Appearance::kColorsFieldNumber;
-const int Appearance::kThumbnailFieldNumber;
 const int Appearance::kTimeFieldNumber;
 #endif  // !_MSC_VER
 
@@ -115,7 +110,6 @@ Appearance::Appearance()
 
 void Appearance::InitAsDefaultInstance() {
   colors_ = const_cast< ::rec::gui::Colors*>(&::rec::gui::Colors::default_instance());
-  thumbnail_ = const_cast< ::rec::widget::AudioThumbnailDesc*>(&::rec::widget::AudioThumbnailDesc::default_instance());
   time_ = const_cast< ::rec::widget::status::time::Time*>(&::rec::widget::status::time::Time::default_instance());
 }
 
@@ -128,7 +122,6 @@ Appearance::Appearance(const Appearance& from)
 void Appearance::SharedCtor() {
   _cached_size_ = 0;
   colors_ = NULL;
-  thumbnail_ = NULL;
   time_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -140,7 +133,6 @@ Appearance::~Appearance() {
 void Appearance::SharedDtor() {
   if (this != default_instance_) {
     delete colors_;
-    delete thumbnail_;
     delete time_;
   }
 }
@@ -171,9 +163,6 @@ void Appearance::Clear() {
       if (colors_ != NULL) colors_->::rec::gui::Colors::Clear();
     }
     if (_has_bit(1)) {
-      if (thumbnail_ != NULL) thumbnail_->::rec::widget::AudioThumbnailDesc::Clear();
-    }
-    if (_has_bit(2)) {
       if (time_ != NULL) time_->::rec::widget::status::time::Time::Clear();
     }
   }
@@ -193,20 +182,6 @@ bool Appearance::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_colors()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_thumbnail;
-        break;
-      }
-      
-      // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_thumbnail:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_thumbnail()));
         } else {
           goto handle_uninterpreted;
         }
@@ -252,14 +227,8 @@ void Appearance::SerializeWithCachedSizes(
       1, this->colors(), output);
   }
   
-  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->thumbnail(), output);
-  }
-  
   // optional .rec.widget.status.time.Time time = 3;
-  if (_has_bit(2)) {
+  if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->time(), output);
   }
@@ -279,15 +248,8 @@ void Appearance::SerializeWithCachedSizes(
         1, this->colors(), target);
   }
   
-  // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->thumbnail(), target);
-  }
-  
   // optional .rec.widget.status.time.Time time = 3;
-  if (_has_bit(2)) {
+  if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->time(), target);
@@ -309,13 +271,6 @@ int Appearance::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->colors());
-    }
-    
-    // optional .rec.widget.AudioThumbnailDesc thumbnail = 2;
-    if (has_thumbnail()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->thumbnail());
     }
     
     // optional .rec.widget.status.time.Time time = 3;
@@ -356,9 +311,6 @@ void Appearance::MergeFrom(const Appearance& from) {
       mutable_colors()->::rec::gui::Colors::MergeFrom(from.colors());
     }
     if (from._has_bit(1)) {
-      mutable_thumbnail()->::rec::widget::AudioThumbnailDesc::MergeFrom(from.thumbnail());
-    }
-    if (from._has_bit(2)) {
       mutable_time()->::rec::widget::status::time::Time::MergeFrom(from.time());
     }
   }
@@ -385,7 +337,6 @@ bool Appearance::IsInitialized() const {
 void Appearance::Swap(Appearance* other) {
   if (other != this) {
     std::swap(colors_, other->colors_);
-    std::swap(thumbnail_, other->thumbnail_);
     std::swap(time_, other->time_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

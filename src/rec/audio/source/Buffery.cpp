@@ -45,7 +45,7 @@ Buffery::~Buffery() {
 }
 
 void Buffery::run() {
-  while (!(threadShouldExit() || fillBlocksCovering()));
+  while (!(threadShouldExit() || fill()));
 }
 
 bool Buffery::isFull() const {
@@ -80,11 +80,11 @@ bool Buffery::fill(const Block& block) {
 bool Buffery::fill(const AudioSourceChannelInfo& info) {
   ScopedLock l(lock_);
   int length = getTotalLength();
-  source_->setNextReadPosition(info.startSample);
+  source_->setNextReadPosition(position_);  // info.startSample
   source_->getNextAudioBlock(info);
   position_ = util::mod(position_ + info.numSamples, length);
 
-  merge(block, &filled_);
+  merge(Block(info.startSample, info., &filled_);
   isFull_ = isBlock(filled_, Block(0, length));
   if (isFull_)
     broadcast(*this);
