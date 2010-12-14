@@ -9,9 +9,12 @@ namespace thread {
 class Waiter : public Runnable {
  public:
   Waiter(int time) : time_(time) {}
-  virtual void run(Thread* thread) {
-    if (!thread->threadShouldExit())
-      thread->wait(time_);
+  virtual bool run(Thread* thread) {
+    if (thread->threadShouldExit())
+      return false;
+
+    thread->wait(time_);
+    return true;
   }
 
  private:

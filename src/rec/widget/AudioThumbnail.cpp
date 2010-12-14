@@ -1,6 +1,6 @@
 #include <glog/logging.h>
 
-#include "rec/widget/AudioThumbnail.h"
+#include "rec/widget/waveform/Waveform.h"
 #include "rec/gui/Color.h"
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/util/cd/CDReader.h"

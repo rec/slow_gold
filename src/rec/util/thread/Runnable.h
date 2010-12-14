@@ -13,8 +13,8 @@ namespace thread {
 class Runnable {
  public:
   virtual ~Runnable() {}
-  virtual void run(Thread* thread) = 0;
-  void operator()(Thread* thread) { run(thread); }
+  virtual bool run(Thread* thread) = 0;
+  bool operator()(Thread* thread) { return run(thread); }
 };
 
 }  // namespace runnable

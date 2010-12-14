@@ -13,8 +13,7 @@ namespace source {
 BufferySourceFactory::BufferySourceFactory(const VolumeFile& f, int blockSize)
     : Buffery(createSource(f), blockSize),
       file_(getShadowDirectory(f).getChildFile("thumbnail.stream")),
-      thumbnailCache_(1),
-      thumbnail_(512, audioFormatManager_, thumbnailCache_) {
+      thumbnail_(512) {
   if (file_.exists()) {
     scoped_ptr<juce::FileInputStream> out(file_.createInputStream());
 
@@ -38,9 +37,10 @@ void BufferySourceFactory::removeSource(TrackSource* source) {
   sources_.erase(source);
 }
 
-bool BufferySourceFactory::fill(const AudioSourceChannelInfo& i) {
+bool BufferySourceFactory::fill(const Block& block,
+                                const AudioSourceChannelInfo& i) {
   ScopedLock l(lock_);
-  bool full = Buffery::fill(i);
+  bool full = Buffery::fill(block, i);
 
   if (!thumbnail_.isFullyLoaded()) {
     thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);

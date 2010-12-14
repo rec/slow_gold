@@ -22,11 +22,17 @@ void merge(const Block& block, BlockSet* set) {
     // This block intersects or touches every block in [begin, end).
     Size first = juce::jmin(block.first, begin->first);
     Size second = juce::jmax(block.second, (--end)->second);
-    
+
     set->erase(begin, ++end);
     set->insert(Block(first, second));
   }
 }
+
+void merge(const BlockSet& b, BlockSet* set) {
+  for (BlockSet::const_iterator i = b.begin(); i != b.end(); ++i)
+    merge(*i, set);
+}
+
 
 }  // namespace block
 }  // namespace util

@@ -11,20 +11,26 @@ template <typename Type>
 class Callback : public Runnable {
  public:
   typedef void (Type::*Method)();
-  Callback(Type* object, Method method) : object_(object), method_(method) {}
+  Callback(Type* obj, Method m, bool owns = false)
+      : object_(obj), method_(m), owns_(owns) {
+  }
+  virtual ~Callback() { if (owns_) delete object_; }
 
-  virtual void run(Thread*) { (object_->*method_)(); }
+  virtual bool run(Thread*) {
+    return (object_->*method_)();
+  }
 
  private:
   Type* object_;
+  const bool owns_;
   Method method_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Callback);
 };
 
 template <typename Type, typename Method>
-Runnable* makeCallback(Type* object, Method method) {
-  return new Callback<Type>(object, method);
+Runnable* makeCallback(Type* object, Method method, bool owns = false) {
+  return new Callback<Type>(object, method, owns);
 }
 
 }  // namespace thread

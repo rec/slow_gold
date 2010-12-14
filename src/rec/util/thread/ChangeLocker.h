@@ -18,7 +18,7 @@ class ChangeLocker : public Thread,
 
   virtual void onChange() { notify(); }
 
-  virtual void run() {
+  virtual bool run() {
     Data data;
     while (!threadShouldExit()) {
       if (getDataIfChanged(&data) && !threadShouldExit())
@@ -27,6 +27,7 @@ class ChangeLocker : public Thread,
       if (!threadShouldExit())
         wait(wait_);
     }
+    return false;
   }
 
  private:

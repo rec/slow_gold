@@ -12,7 +12,7 @@ TrackSource::TrackSource(BufferySourceFactory* f, int offset)
 }
 
 void TrackSource::release() {
-  ScopedLock l(*lock_);
+  ScopedLock l(lock());
   if (factory_) {
     factory_->removeSource(this);
     factory_ = NULL;
@@ -22,12 +22,12 @@ void TrackSource::release() {
 }
 
 void TrackSource::clearFactory() {
-  ScopedLock l(*lock_);
+  ScopedLock l(lock());
   factory_ = NULL;
 }
 
 void TrackSource::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  ScopedLock l(*lock_);
+  ScopedLock l(lock());
   if (!factory_) {
     LOG(ERROR) << "Couldn't get audio block for deceased factory";
   } else {
@@ -38,17 +38,17 @@ void TrackSource::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 }
 
 int TrackSource::getTotalLength() const {
-  ScopedLock l(*lock_);
+  ScopedLock l(lock());
   return factory_ ? factory_->getTotalLength() : 0;
 }
 
 int TrackSource::getNextReadPosition() const {
-  ScopedLock l(*lock_);
+  ScopedLock l(lock());
   return position_;
 }
 
 void TrackSource::setNextReadPosition(int p) {
-  ScopedLock l(*lock_);
+  ScopedLock l(lock());
   if (factory_)
     factory_->setReadPosition(p);
   position_ = p;

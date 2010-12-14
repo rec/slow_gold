@@ -90,17 +90,17 @@
 	};
 	26232314D469D136E56428EC /* MainPageK.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {847, 3770}}";
-			sepNavSelRange = "{6351, 0}";
-			sepNavVisRange = "{4298, 1377}";
+			sepNavIntBoundsRect = "{{0, 0}, {847, 3796}}";
+			sepNavSelRange = "{8944, 0}";
+			sepNavVisRange = "{4164, 1355}";
 			sepNavWindowFrame = "{{431, 115}, {819, 1021}}";
 		};
 	};
 	293C0546DBA5E1D39E5FFCCC /* Buffery.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1131}}";
-			sepNavSelRange = "{2198, 0}";
-			sepNavVisRange = "{0, 1945}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1885}}";
+			sepNavSelRange = "{3276, 0}";
+			sepNavVisRange = "{0, 1702}";
 		};
 	};
 	2A85C2ED9EA2896E23CFC0C1 /* Convertors.cpp */ = {
@@ -596,6 +596,10 @@
 			E288B24312B5D961008EA2F0 /* PBXBookmark */ = E288B24312B5D961008EA2F0 /* PBXBookmark */;
 			E288B24412B5D961008EA2F0 /* PBXTextBookmark */ = E288B24412B5D961008EA2F0 /* PBXTextBookmark */;
 			E288B24712B5D961008EA2F0 /* PBXTextBookmark */ = E288B24712B5D961008EA2F0 /* PBXTextBookmark */;
+			E288B33012B6A1F0008EA2F0 /* PBXTextBookmark */ = E288B33012B6A1F0008EA2F0 /* PBXTextBookmark */;
+			E288B33112B6DBBB008EA2F0 /* XCBuildMessageTextBookmark */ = E288B33112B6DBBB008EA2F0 /* XCBuildMessageTextBookmark */;
+			E288B33412B6DC04008EA2F0 /* PBXTextBookmark */ = E288B33412B6DC04008EA2F0 /* PBXTextBookmark */;
+			E288B33712B6DC04008EA2F0 /* PBXTextBookmark */ = E288B33712B6DC04008EA2F0 /* PBXTextBookmark */;
 			E2AEE61D1295F2B400B693AE = E2AEE61D1295F2B400B693AE /* PBXTextBookmark */;
 			E2AEE61E1295F2B400B693AE = E2AEE61E1295F2B400B693AE /* PBXTextBookmark */;
 			E2AEE7B5129760A300B693AE = E2AEE7B5129760A300B693AE /* PBXTextBookmark */;
@@ -3164,6 +3168,45 @@
 		rLoc = 824;
 		rType = 0;
 		vrLen = 945;
+		vrLoc = 0;
+	};
+	E288B33012B6A1F0008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 26232314D469D136E56428EC /* MainPageK.cpp */;
+		name = "MainPageK.cpp: 290";
+		rLen = 0;
+		rLoc = 8944;
+		rType = 0;
+		vrLen = 1355;
+		vrLoc = 4164;
+	};
+	E288B33112B6DBBB008EA2F0 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/audio/source/Buffery.cpp";
+		fRef = 293C0546DBA5E1D39E5FFCCC /* Buffery.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E288B33412B6DC04008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 26232314D469D136E56428EC /* MainPageK.cpp */;
+		name = "MainPageK.cpp: 290";
+		rLen = 0;
+		rLoc = 8944;
+		rType = 0;
+		vrLen = 1355;
+		vrLoc = 4164;
+	};
+	E288B33712B6DC04008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 293C0546DBA5E1D39E5FFCCC /* Buffery.cpp */;
+		name = "Buffery.cpp: 140";
+		rLen = 0;
+		rLoc = 3276;
+		rType = 0;
+		vrLen = 1702;
 		vrLoc = 0;
 	};
 	E2AEE5311295AE8500B693AE /* Slow */ = {

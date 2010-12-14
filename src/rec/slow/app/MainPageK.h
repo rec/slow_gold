@@ -8,7 +8,7 @@
 #include "rec/slow/Preferences.h"
 #include "rec/util/thread/ChangeLocker.h"
 #include "rec/util/thread/Trash.h"
-#include "rec/widget/AudioThumbnail.h"
+#include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/Panes.h"
 
@@ -29,7 +29,7 @@ class MainPageK : public Slider::Listener,
                   public NodeListener,
                   public Listener<const Preferences&>,
                   public Listener<Source*>,
-                  public Listener<const widget::AudioThumbnailWidget&>,
+                  public Listener<const widget::waveform::Waveform&>,
                   public Listener<double> {
  public:
   MainPageK(AudioDeviceManager* manager);
@@ -50,7 +50,7 @@ class MainPageK : public Slider::Listener,
   virtual void operator()(const Preferences& prefs);
   virtual void operator()(double cursorRatio);
   virtual void operator()(Source* runny);
-  virtual void operator()(const widget::AudioThumbnailWidget& ) {}
+  virtual void operator()(const widget::waveform::Waveform& ) {}
 
   void updateCursor();
   void loadRecentFile(int menuItemId);

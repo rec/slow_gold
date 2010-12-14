@@ -9,7 +9,7 @@ namespace thread {
 class Wrapper : public Runnable {
  public:
   Wrapper(Runnable* r) : runnable_(r) {}
-  virtual void run(Thread* thread) { runnable_->run(thread); }
+  virtual bool run(Thread* thread) { return runnable_->run(thread); }
 
  protected:
   scoped_ptr<Runnable> runnable_;

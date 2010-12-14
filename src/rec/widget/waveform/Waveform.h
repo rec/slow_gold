@@ -16,6 +16,8 @@ class Waveform : public Component {
   explicit Waveform(const WaveformProto& desc) : desc_(desc) {}
 
  private:
+  WaveformProto desc_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(WaveformProto);
 };
 

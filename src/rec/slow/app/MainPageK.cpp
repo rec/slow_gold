@@ -26,7 +26,7 @@ using rec::audio::source::Source;
 using rec::audio::source::TimeStretch;
 using rec::persist::copy;
 using rec::util::thread::ThreadDescription;
-using rec::widget::AudioThumbnailDesc;
+using rec::widget::waveform::WaveformProto;
 
 using namespace rec::util::thread;
 
@@ -94,7 +94,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
 
   ((Broadcaster<double>*)(peer_->thumbnail))->addListener(this);
-  ((Broadcaster<const widget::AudioThumbnailWidget&>*)(peer_->thumbnail))->addListener(this);
+  ((Broadcaster<const widget::waveform::Waveform&>*)(peer_->thumbnail))->addListener(this);
 
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);

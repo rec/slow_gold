@@ -31,6 +31,21 @@ inline bool isBlock(const BlockSet& set, const Block& block) {
   return set.size() == 1 && *set.begin() == block;
 }
 
+inline int fullTo(const BlockSet& set) {
+  return (set.empty() || set.begin().first) ? 0 : set.begin()->second;
+}
+
+inline BlockSet slice(const Block& block, int length) {
+  BlockSet s;
+  if (b.second <= length) {
+    s.insert(b);
+  } else {
+    s.insert(Block(b.first, length));
+    s.insert(Block(0, b.second - length));
+  }
+  return s;
+}
+
 }  // namespace block
 }  // namespace util
 }  // namespace rec

@@ -8,12 +8,11 @@ namespace thread {
 
 class LockedMessage : public Wrapper {
  public:
-  LockedMessage(Runnable* r) : Wrapper(r) {}
+  explicit LockedMessage(Runnable* r) : Wrapper(r) {}
 
-  virtual void run(Thread* thread) {
+  virtual bool run(Thread* thread) {
     juce::MessageManagerLock lock(thread);
-    if (lock.lockWasGained())
-      runnable_->run(thread);
+    return lock.lockWasGained() && runnable_->run(thread);
   }
 
  private:

@@ -8,6 +8,7 @@ namespace util {
 namespace block {
 
 void merge(const Block& block, BlockSet* list);
+void merge(const BlockSet& blocks, BlockSet* list);
 
 }  // namespace block
 }  // namespace util

@@ -12,7 +12,7 @@ class FileWriter : public Thread {
   FileWriter(const File& file) : Thread("FileWriter"), file_(file) {}
   MemoryBlock* memory() { return &memory_; }
 
-  void run() {
+  virtual void run() {
     string file = file_.getFullPathName().toCString();
     if (!file_.getParentDirectory().createDirectory()) {
       LOG(ERROR) << "Can't make dir " << file;

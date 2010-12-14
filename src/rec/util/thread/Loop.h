@@ -10,9 +10,9 @@ class Loop : public Wrapper {
  public:
   Loop(Runnable* r) : Wrapper(r) {}
 
-  virtual void run(Thread* thread) {
-    while (!thread->threadShouldExit())
-      runnable_->run(thread);
+  virtual bool run(Thread* thread) {
+    while (!(thread->threadShouldExit() && runnable_->run(thread)));
+    return false;
   }
 
  protected:

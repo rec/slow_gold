@@ -75,16 +75,16 @@ public:
 
     //==============================================================================
     Label* zoomLabel;
-    rec::widget::AudioThumbnailWidget* thumbnail;
+    rec::widget::waveform::Waveform* thumbnail;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
-  rec::widget::tree::Root* treeTreeComp;
+    rec::widget::tree::Root* treeTreeComp;
     Label* explanation;
     Slider* zoomSlider;
     Slider* timeScaleSlider;
     Slider* pitchScaleSlider;
     ToggleButton* loopingButton;
-  rec::widget::status::time::TextComponent* songTime;
+    rec::widget::status::time::TextComponent* songTime;
     rec::widget::status::time::TextComponent* realTime;
     rec::widget::status::time::DialComponent* songDial;
     rec::widget::status::time::DialComponent* realDial;

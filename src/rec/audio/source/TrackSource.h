@@ -9,7 +9,7 @@ namespace source {
 
 class BufferySourceFactory;
 
-class TrackSource : public Source {
+class TrackSource : public PositionableAudioSource {
  public:
   TrackSource(BufferySourceFactory* f, int offset = 0);
   virtual ~TrackSource() { release(); }
@@ -27,11 +27,13 @@ class TrackSource : public Source {
   virtual void releaseResources() {}
   void clearFactory();
 
+  CriticalSection& lock() { return factory_->lock(); }
+
  private:
   BufferySourceFactory* factory_;
+
   const int offset_;
-  CriticalSection* lock_;
-  scoped_ptr<CriticalSection> myLock_;
+  CriticalSection lock_;
   int position_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TrackSource);

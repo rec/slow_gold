@@ -19,12 +19,14 @@ class Cycler : public Runnable {
     cycle_.push_back(r2);
   }
 
-  virtual void run(Thread* thread) {
+  virtual bool run(Thread* thread) {
     if (!cycle_.empty())
       cycle_[index_]->run(thread);
 
     if (++index_ >= cycle_.size())
       index_ = 0;
+
+    return true;
   }
 
   virtual ~Cycler() {

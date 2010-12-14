@@ -10,7 +10,7 @@ namespace source {
 
 class TrackSource;
 
-class BufferySourceFactory : public Buffery {
+class BufferySourceFactory {
  public:
   BufferySourceFactory(const widget::tree::VolumeFile& file, int blockSize);
   ~BufferySourceFactory();
@@ -20,18 +20,16 @@ class BufferySourceFactory : public Buffery {
   CriticalSection& lock() { return lock_; }
 
  protected:
-  virtual bool fill(const AudioSourceChannelInfo& info);
+  virtual bool fill(const Block& block, const AudioSourceChannelInfo& i);
 
  private:
-
-
   typedef std::set<TrackSource*> SourceSet;
 
   const File file_;
   CriticalSection lock_;
   SourceSet sources_;
-  juce::AudioFormatManager audioFormatManager_;
-  AudioThumbnailCache thumbnailCache_;
+  Buffery buffery_;
+
   AudioThumbnail thumbnail_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferySourceFactory);

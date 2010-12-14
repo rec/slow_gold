@@ -10,8 +10,8 @@ namespace rec {
 namespace thread {
 
 template <typename Type, typename Method>
-Runnable* callbackLoop(int period, Type* object, Method method) {
-  return new WaitLoop(period, makeCallback(object, method));
+Runnable* callbackLoop(int period, Type* obj, Method m, bool owns = false) {
+  return new WaitLoop(period, makeCallback(obj, m, owns));
 };
 
 }  // namespace thread

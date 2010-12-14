@@ -64,6 +64,7 @@
 			sepNavIntBoundsRect = "{{0, 0}, {671, 1027}}";
 			sepNavSelRange = "{295, 0}";
 			sepNavVisRange = "{0, 1065}";
+			sepNavWindowFrame = "{{38, 12}, {730, 1140}}";
 		};
 	};
 	1F0146CEEA5DBCCA0E0C05B9 /* TrackSource.cpp */ = {
@@ -409,6 +410,8 @@
 			E288B32D12B60AA9008EA2F0 /* PBXTextBookmark */ = E288B32D12B60AA9008EA2F0 /* PBXTextBookmark */;
 			E288B32E12B60AA9008EA2F0 /* PBXTextBookmark */ = E288B32E12B60AA9008EA2F0 /* PBXTextBookmark */;
 			E288B32F12B60AA9008EA2F0 /* PBXTextBookmark */ = E288B32F12B60AA9008EA2F0 /* PBXTextBookmark */;
+			E288B33812B6DC04008EA2F0 /* PBXTextBookmark */ = E288B33812B6DC04008EA2F0 /* PBXTextBookmark */;
+			E288B33912B6DC04008EA2F0 /* PBXTextBookmark */ = E288B33912B6DC04008EA2F0 /* PBXTextBookmark */;
 			E28BEC25128B64590094D647 = E28BEC25128B64590094D647 /* PBXTextBookmark */;
 			E293697E120FA49300D78BB1 = E293697E120FA49300D78BB1 /* PBXTextBookmark */;
 			E2975522120BB31600764447 = E2975522120BB31600764447 /* PBXTextBookmark */;
@@ -2217,6 +2220,26 @@
 		vrLen = 1065;
 		vrLoc = 0;
 	};
+	E288B33812B6DC04008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EDDAF24FC05699BD61EEF040 /* Buffery.cpp */;
+		name = "Buffery.cpp: 140";
+		rLen = 0;
+		rLoc = 3276;
+		rType = 0;
+		vrLen = 749;
+		vrLoc = 779;
+	};
+	E288B33912B6DC04008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E288B30512B60676008EA2F0 /* Cursor.h */;
+		name = "Cursor.h: 16";
+		rLen = 0;
+		rLoc = 344;
+		rType = 0;
+		vrLen = 859;
+		vrLoc = 0;
+	};
 	E28BEC25128B64590094D647 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Unused variable 'BITS_LOST'";
@@ -2493,9 +2516,9 @@
 	};
 	EDDAF24FC05699BD61EEF040 /* Buffery.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {708, 1898}}";
-			sepNavSelRange = "{1085, 43}";
-			sepNavVisRange = "{894, 643}";
+			sepNavIntBoundsRect = "{{0, 0}, {708, 1911}}";
+			sepNavSelRange = "{3276, 0}";
+			sepNavVisRange = "{779, 749}";
 			sepNavWindowFrame = "{{781, 38}, {730, 1140}}";
 		};
 	};
