@@ -2,10 +2,12 @@
 #define __REC_WINDOW
 
 #include "rec/slow/Preferences.h"
+#include "rec/slow/app/CompContainer.h"
 
 using namespace juce;
 
 namespace rec {
+namespace slow {
 
 class RecWindow  : public juce::DocumentWindow {
  public:
@@ -14,17 +16,15 @@ class RecWindow  : public juce::DocumentWindow {
 
   void closeButtonPressed();
 
-  juce_UseDebuggingNewOperator
-
  private:
-  // the command manager object used to dispatch command events
-  ApplicationCommandManager commandManager;
+  ApplicationCommandManager commandManager_;
+  CompContainer container_;
+  // TODO: Component* taskbarIcon used to be here.
 
-#if 0
-  Component* taskbarIcon;
-#endif
+  DISALLOW_COPY_AND_ASSIGN(RecWindow);
 };
 
+}  // namespace slow
 }  // namespace rec
 
 #endif   // __REC_WINDOW

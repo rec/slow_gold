@@ -1,8 +1,9 @@
 #ifndef __REC_WIDGET_WAVEFORM_CURSOR__
 #define __REC_WIDGET_WAVEFORM_CURSOR__
 
-#include "rec/widget/Painter.h"
 #include "rec/gui/Geometry.h"
+#include "rec/util/listener/Time.h"
+#include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.h"
 
@@ -10,15 +11,25 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component {
+class Cursor : public Component, public listener::TimeChangeListener {
  public:
-  Cursor(const CursorProto& d) : Component("Cursor"), desc_(d), time_(0.0f) {}
+  Cursor(const CursorProto& d, Waveform* waveform, float time = 0f)
+      : Component("Cursor"), desc_(d), waveform_(waveform) {
+    waveform->addChildComponent(this);
+    setTime(time);
+  }
 
-  float getTime() const { return time_; }
-  void setTime(int time) { time_ = time; }
-  const CursorProto& desc() const { return desc_; }
+  static const float SAMPLE_RATE = 44100f;
+  virtual void operator()(float t) { setTime(t); }
+
+  void setTime(float time) {
+    ScopedLock l(lock_);
+    time_ = time;
+    waveform_->layoutCursor(this);
+  }
 
   void paint(Graphics& g) {
+    ScopedLock l(lock_);
     Painter p(desc_.widget(), &g);
     juce::Rectangle<int> bounds = getLocalBounds();
 
@@ -29,8 +40,16 @@ class Cursor : public Component {
     gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
   }
 
+  float getTime() const {
+    ScopedLock l(lock_);
+    return time_;
+  }
+
+  const CursorProto& desc() const { return desc_; }
+
  private:
-  CursorProto desc_;
+  CriticalSection lock_;
+  const CursorProto desc_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Cursor);

@@ -8,6 +8,7 @@
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
+namespace slow {
 
 class GenericApplication : public juce::JUCEApplication {
  public:
@@ -48,6 +49,7 @@ class GenericApplication : public juce::JUCEApplication {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
 };
 
+}  // namespace slow
 }  // namespace rec
 
 #endif  // __REC_JUCE_GENERIC_APPLICATION

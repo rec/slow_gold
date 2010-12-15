@@ -6,7 +6,7 @@
 #include "rec/slow/Preferences.h"
 
 namespace rec {
-namespace app {
+namespace slow {
 
 class Application : public GenericApplication {
  public:
@@ -24,14 +24,12 @@ class Application : public GenericApplication {
 #endif
   }
 
-  juce_UseDebuggingNewOperator
-
  private:
   scoped_ptr<RecWindow> window_;
   DISALLOW_COPY_AND_ASSIGN(Application);
 };
 
-}  // namespace app
+}  // namespace slow
 }  // namespace rec
 
 #endif  // __REC_APP_RECAPPLICATION__

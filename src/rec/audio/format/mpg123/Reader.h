@@ -23,8 +23,6 @@ class Reader : public juce::AudioFormatReader {
                            int64 startSampleInFile,
                            int numSamples);
 
-  juce_UseDebuggingNewOperator
-
  private:
   Reader(juce::InputStream* in, const String& name, mpg123_handle* mh, Copier copier);
 

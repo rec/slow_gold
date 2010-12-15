@@ -3,40 +3,20 @@
 
 #include "rec/base/base.h"
 
-
 namespace rec {
+namespace slow {
 
-class ComponentContainer
-  : public Component,
-    public MenuBarModel,
-    public ApplicationCommandTarget {
-
- protected:
-  Component* component_;
+class ComponentContainer : public Component,
+                           public MenuBarModel,
+                           public ApplicationCommandTarget {
 
  public:
-  ComponentContainer() : component_(NULL) {}
+  ComponentContainer(Component* c) : component_(c) { addAndMakeVisible(c); }
 
-  void show(Component* component) {
-    if (component_) {
-      removeChildComponent(component_);
-      delete component_;
-    }
-
-    component_ = component;
-    if (component_) {
-      addAndMakeVisible(component_);
-      resized();
-    }
-  };
-
-  virtual ~ComponentContainer() {
-    deleteAllChildren();
-  }
+  virtual ~ComponentContainer() {}
 
   virtual void resized() {
-    if (component_)
-      component_->setBounds(0, 0, getWidth(), getHeight());
+    component_->setBounds(0, 0, getWidth(), getHeight());
   }
 
   // MenuBarModel virtual methods.
@@ -59,9 +39,11 @@ class ComponentContainer
     return findFirstTargetParentComponent();
   }
 
-  juce_UseDebuggingNewOperator
+ protected:
+  scoped_ptr<Component> component_;
 };
 
+}  // namespace slow
 }  // namespace rec
 
 #endif  // __REC_COMPONENT_CONTAINER

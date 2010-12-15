@@ -41,31 +41,33 @@ void Waveform::paint(Graphics& g) {
 }
 
 Waveform::~Waveform() {
+  ScopedLock l(lock_);
   for (int i = getNumChildComponents(); i > 0; --i)
     delete getChildComponent(i - 1);
 }
 
 Cursor* Waveform::addCursor(const CursorProto& desc, float time) {
-  Cursor* cursor = new Cursor(desc);
-  addChildComponent(cursor);
-  moveCursor(cursor, time);
-  return cursor;
-}
-
-void Waveform::moveCursor(Cursor* cursor, float time) {
-  cursor->setTime(time);
-  layoutCursor(cursor);
+  ScopedLock l(lock_);
+  return new Cursor(desc, this);
 }
 
 void Waveform::setTimeBounds(float begin, float end) {
-  ScopedLock l(lock_);
-  begin_ = begin;
-  end_ = end;
+  {
+    ScopedLock l(lock_);
+    begin_ = begin;
+    end_ = end;
+  }
   repaint();
   layoutCursors();
 }
 
+std::pair<float, float> Waveform::getTimeBounds() const {
+  ScopedLock l(lock_);
+  return std::make_pair(begin_, end_);
+}
+
 void Waveform::layoutCursors() {
+  ScopedLock l(lock_);
   for (int i = getNumChildComponents(); i > 0; --i) {
     Component* comp = getChildComponent(i);
     if (comp->getName() == "Cursor")
@@ -87,7 +89,11 @@ void Waveform::layoutCursor(Cursor *cursor) {
 }
 
 void Waveform::mouseUp(const MouseEvent& e) {
-  broadcast(e.x * (end_ - begin_) / getWidth());
+  {
+    ScopedLock l(lock_);
+    float time = e.x * (end_ - begin_) / getWidth();
+  }
+  broadcast(time);
 }
 
 }  // namespace waveform

@@ -4,17 +4,15 @@
 #include <set>
 #include <vector>
 
-#include "rec/audio/source/DoubleRunny.h"
+#include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/slow/Preferences.h"
 #include "rec/util/thread/ChangeLocker.h"
-#include "rec/util/thread/Trash.h"
-#include "rec/widget/waveform/Waveform.h"
-#include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/Panes.h"
-
-class MainPageJ;
+#include "rec/widget/tree/NodeItem.h"
+#include "rec/widget/waveform/Waveform.h"
 
 using namespace rec::audio::source;
+using namespace rec::slow::proto;
 using namespace rec::util::listener;
 using namespace rec::util::thread;
 using namespace rec::widget::tree;
@@ -22,7 +20,7 @@ using namespace rec::widget::tree;
 namespace rec {
 namespace slow {
 
-typedef slow::proto::Preferences Preferences;
+class MainPageJ;
 
 class MainPageK : public Slider::Listener,
                   public ChangeListener,
@@ -43,14 +41,12 @@ class MainPageK : public Slider::Listener,
   virtual void sliderValueChanged(Slider* slider);
 
   // ChangeListener
-  virtual void changeListenerCallback(ChangeBroadcaster* objectThatHasChanged);
+  virtual void changeListenerCallback(ChangeBroadcaster* obj);
 
   virtual void operator()(const VolumeFile& file);
   virtual void operator()(const Preferences& prefs);
-  virtual void operator()(double time);
   virtual void operator()(PositionableAudioSource* source);
 
-  void updateCursor();
   void loadRecentFile(int menuItemId);
   void cut();
   void paste();
@@ -59,12 +55,6 @@ class MainPageK : public Slider::Listener,
   void loadFileIntoTransport(const VolumeFile& audioFile);
 
  private:
-  static const int THREAD_PRIORITY = 3;
-  static const int MINIMUM_SAMPLE_PRELOAD = 4096;
-
-  static const File::SpecialLocationType START_DIR;
-  static const char* PREVIEW_THREAD_NAME;
-
   MainPageJ* peer_;
 
   // Sends audio to the AudioSourcePlayer.
@@ -79,11 +69,8 @@ class MainPageK : public Slider::Listener,
   scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
   DoubleRunnyBuffer doubleRunny_;
 
-  scoped_ptr<Thread> cursorThread_;
   slow::proto::Preferences prefs_;
-  int newPosition_;
   CriticalSection lock_;
-  int samplePosition_;
   bool transportSourceSet_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageK);

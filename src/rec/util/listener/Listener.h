@@ -22,7 +22,4 @@ class Listener {
 }  // namespace util
 }  // namespace rec
 
-
-
-
 #endif  // __REC_UTIL_LISTENER_LISTENER__

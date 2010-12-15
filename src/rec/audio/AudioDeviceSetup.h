@@ -9,6 +9,17 @@ namespace persist {
 
 bool copy(const audio::AudioDeviceSetupProto& in, AudioDeviceSetup *out);
 bool copy(const AudioDeviceSetup& in, audio::AudioDeviceSetupProto* out);
+bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetup *out);
+bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetupProto *out);
+
+class AudioDeviceSetupListener : public ChangeListener {
+ public:
+  AudioDeviceSetupListener() {}
+  void changeListenerCallback(ChangeBroadcaster* manager);
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(AudioDeviceSetupListener);
+};
 
 }  // namespace persist
 }  // namespace rec

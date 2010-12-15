@@ -11,9 +11,8 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-// This handles waveform display only (no command information).
-class Waveform : public Component,
-                 public listener::Broadcaster<float> {
+// This handles waveform display of a juce::AudioThumbnail.
+class Waveform : public Component, public listener::Broadcaster<float> {
  public:
   explicit Waveform(const WaveformProto& desc);
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
@@ -23,6 +22,8 @@ class Waveform : public Component,
   Cursor* addCursor(const CursorProto& desc, float time);
   void moveCursor(Cursor* cursor, float time);
   void setTimeBounds(float begin, float end);
+  std::pair<float, float> getTimeBounds() const;
+
   virtual void paint(Graphics& g);
   void mouseUp(const MouseEvent& e);
 

@@ -33,13 +33,35 @@ bool copy(const AudioDeviceSetup& in, AudioDeviceSetupProto* out) {
   MemoryBlock block = in.inputChannels.toMemoryBlock();
   copy(block, out->mutable_input_channels());
   out->set_use_default_input_channels(in.useDefaultInputChannels);
-  
+
   block = in.outputChannels.toMemoryBlock();
   copy(block, out->mutable_output_channels());
   out->set_use_default_output_channels(in.useDefaultOutputChannels);
 
   return true;
 }
+
+bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetup *out) {
+  manager->getAudioDeviceSetup(setup);
+  return true;
+}
+
+bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetupProto *out) {
+  AudioDeviceSetup setup;
+  return copy(in, &setup) && copy(setup, out);
+}
+
+void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster* x) {
+    audio::AudioDeviceSetupProto setupProto;
+    if (copy(((AudioDeviceManager*) x), &setupProto)) {
+      DLOG(INFO) << "Audio setup changed";
+      slow::audioSetupData()->setter()->set(setupProto);
+    } else {
+      LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";
+    }
+  }
+}
+
 
 }  // namespace persist
 }  // namespace rec

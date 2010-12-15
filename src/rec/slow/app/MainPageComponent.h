@@ -1,75 +1,53 @@
-/*
-  ==============================================================================
-
-  This is an automatically generated file created by the Jucer!
-
-  Creation date:  19 Mar 2010 9:28:39pm
-
-  Be careful when adding custom code to these files, as only the code within
-  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
-  and re-saved.
-
-  Jucer version: 1.12
-
-  ------------------------------------------------------------------------------
-
-  The Jucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright 2004-6 by Raw Material Software ltd.
-
-  ==============================================================================
-*/
-
 #ifndef __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 #define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 
-//[Headers]     -- You can add your own extra header files here --
-using namespace juce;
-//[/Headers]
+#include "rec/slow/Preferences.h"
 
+#include "rec/slow/app/MainPageJ.h"
+#include "rec/slow/app/AudioSetupPage.h"
 
+namespace rec {
+namespace slow {
 
-//==============================================================================
-/**
-                                                                    //[Comments]
-    This component creates the set of tabs that hold the various
-    audio demo pages..
-                                                                    //[/Comments]
-*/
-class MainPageComponent  : public Component
-{
-public:
-    //==============================================================================
-    MainPageComponent ();
-    ~MainPageComponent();
+class MainPageJ;
 
-    //==============================================================================
-    //[UserMethods]     -- You can add your own custom methods in this section.
-    void loadRecentFile(int menuItemId);
-    void cut();
-    void paste();
+class MainPageComponent  : public Component {
+ public:
+  MainPageComponent() : tabs_(TabbedButtonBar::TabsAtTop),
+                        mainPageJ_(deviceManager_),
+                        audioSetupPage_(deviceManager_) {
+    tabs_.setTabBarDepth (30);
+    tabs_.addTab("File Playback", Colours::lightgrey, &mainPageJ_, false);
+    tabs_.addTab("Audio Device Setup", Colours::lightgrey, &audioSetupPage_,
+                 false);
+    tabs_.setCurrentTabIndex(0);
+    addAndMakeVisible(&tabbedComponent);
 
-    //[/UserMethods]
+    setSize(600, 400);
+  }
 
-    void paint (Graphics& g);
-    void resized();
+  ~MainPageComponent() {}
 
+  void loadRecentFile(int menuItemId) {
+    mainPageJ_.loadRecentFile(menuItemId);
+  }
 
-    //==============================================================================
-    juce_UseDebuggingNewOperator
+  void cut() { mainPageJ_.cut(); }
+  void paste()  { mainPageJ_.paste(); }
+  void paint(Graphics& g) { g.fillAll(Colours::white); }
 
-private:
-    //[UserVariables]   -- You can add your own custom variables in this section.
-    //[/UserVariables]
+  void resized() { tabs_.setBounds(getLocalBounds()); }
 
-    //==============================================================================
-    TabbedComponent* tabbedComponent;
-    AudioDeviceManager deviceManager;
+ private:
+  TabbedComponent tabs_;
+  AudioDeviceManager deviceManager_;
+  AudioSetupPage audioSetupPage_;
+  MainPageJ mainPage_;
 
-    //==============================================================================
-    // (prevent copy constructor and operator= being generated..)
-    MainPageComponent (const MainPageComponent&);
-    const MainPageComponent& operator= (const MainPageComponent&);
+  DISALLOW_COPY_AND_ASSIGN(MainPageComponent);
 };
 
+}  // namespace slow
+}  // namespace rec
 
 #endif   // __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__

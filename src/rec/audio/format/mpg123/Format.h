@@ -34,8 +34,6 @@ class Format : public juce::AudioFormat {
   virtual bool canDoMono() { return true; }
   virtual bool isCompressed() { return true; }
 
-  juce_UseDebuggingNewOperator
-
  private:
   DISALLOW_COPY_AND_ASSIGN(Format);
 };

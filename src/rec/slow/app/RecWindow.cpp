@@ -1,43 +1,29 @@
 #include "rec/slow/app/RecWindow.h"
-#include "rec/slow/app/RecContainer.h"
+#include "rec/slow/app/MainPageComponent.h"
 
 using namespace juce;
 
 namespace rec {
+namespace slow {
 
 RecWindow::RecWindow()
-  : DocumentWindow(T("Rec"),
-                   Colours::azure,
-                   DocumentWindow::allButtons,
-                   true) {
-  setResizable (true, false); // resizability is a property of ResizableWindow
-  setResizeLimits (400, 300, 8192, 8192);
+    : DocumentWindow(T("Rec"), Colours::azure, DocumentWindow::allButtons, true),
+      container_(new MainPageComponent) {
+  setResizable(true, false); // resizability is a property of ResizableWindow
+  setResizeLimits(400, 300, 8192, 8192);
 
-  RecContainer* recContainer = new RecContainer();
+  commandManager_.registerAllCommandsForTarget(&container_);
+  commandManager_.registerAllCommandsForTarget(JUCEApplication::getInstance());
+  addKeyListener(commandManager_.getKeyMappings());
 
-  commandManager.registerAllCommandsForTarget(recContainer);
-  commandManager.registerAllCommandsForTarget(JUCEApplication::getInstance());
+  setContentComponent(&container_);
 
-  // this lets the command manager use keypresses that arrive in our window to send
-  // out commands
-  addKeyListener(commandManager.getKeyMappings());
+  setMenuBar(&container_);
+  container_.setApplicationCommandManagerToWatch(&commandManager_);
 
-  // sets the main content component for the window to be this tabbed
-  // panel. This will be deleted when the window is deleted.
-  setContentComponent(recContainer);
-
-  // this tells the DocumentWindow to automatically create and manage a MenuBarComponent
-  // which uses our recContainer as its MenuBarModel
-  setMenuBar(recContainer);
-
-  // tells our menu bar model that it should watch this command manager for
-  // changes, and send change messages accordingly.
-  recContainer->setApplicationCommandManagerToWatch(&commandManager);
-
-  setVisible (true);
-  centreWithSize (700, 600);
-
+  centreWithSize(700, 600);
   setUsingNativeTitleBar(true);
+  setVisible (true);
 }
 
 RecWindow::~RecWindow() {
@@ -61,12 +47,13 @@ RecWindow::~RecWindow() {
   // also delete the content component, but in this case we need to
   // make sure our content comp has gone away before deleting our command
   // manager.
-  setContentComponent (0, true);
+  setContentComponent(NULL, false);
 }
 
 void RecWindow::closeButtonPressed() {
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
+}  // namespace slow
 }  // namespace rec
 
