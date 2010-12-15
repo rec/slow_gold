@@ -19,24 +19,20 @@
   ==============================================================================
 */
 
-//[Headers] You can add your own extra header files here...
 #include "MainPageK.h"
 #include "rec/widget/status/Time.pb.h"
 #include "rec/widget/tree/Root.h"
+
 using namespace juce;
 using namespace rec::widget::tree;
-//[/Headers]
+
 
 #include "MainPageJ.h"
 
-//[MiscUserDefs] You can add your own user definitions and misc code here...
-//[/MiscUserDefs]
-
-//==============================================================================
 MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
 :     peer_(&deviceManager),
       zoomLabel (0),
-      thumbnail (0),
+      waveform (0),
       startStopButton (0),
       treeTreeComp (0),
       explanation (0),
@@ -56,7 +52,7 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
     zoomLabel->setColour (TextEditor::textColourId, Colours::black);
     zoomLabel->setColour (TextEditor::backgroundColourId, Colour (0x0));
 
-    addAndMakeVisible (thumbnail = new rec::widget::waveform::Waveform(
+    addAndMakeVisible (waveform = new rec::widget::waveform::Waveform(
         rec::widget::WaveformProto()));
 
     addAndMakeVisible (startStopButton = new TextButton (String::empty));
@@ -136,7 +132,7 @@ MainPageJ::~MainPageJ()
     //[/Destructor_pre]
 
     deleteAndZero (zoomLabel);
-    deleteAndZero (thumbnail);
+    deleteAndZero (waveform);
     deleteAndZero (startStopButton);
     deleteAndZero (treeTreeComp);
     deleteAndZero (explanation);
@@ -168,7 +164,7 @@ void MainPageJ::paint (Graphics& g)
 void MainPageJ::resized()
 {
     zoomLabel->setBounds (16, getHeight() - 90, 55, 24);
-    thumbnail->setBounds (16, getHeight() - 221, getWidth() - 32, 123);
+    waveform->setBounds (16, getHeight() - 221, getWidth() - 32, 123);
     startStopButton->setBounds (16, getHeight() - 46, 150, 32);
     treeTreeComp->setBounds (16, 8, getWidth() - 32, getHeight() - 245);
     explanation->setBounds (224, getHeight() - 42, getWidth() - 248, 32);
@@ -236,58 +232,3 @@ void MainPageJ::sliderDragEnded (Slider* sliderThatWasMoved)
 {
   peer_.sliderDragEnded(sliderThatWasMoved);
 }
-
-//[MiscUserCode]
-//[/MiscUserCode]
-
-
-
-//==============================================================================
-#if 0
-/*  -- Jucer information section --
-
-    This is where the Jucer puts all of its metadata, so don't change anything in here!
-
-BEGIN_JUCER_METADATA
-
-<JUCER_COMPONENT documentType="Component" className="MainPageJ" componentName=""
-                 parentClasses="public Component, public FileBrowserListener"
-                 variableInitialisers="peer_(&deviceManager),"
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330000013"
-                 fixedSize="0" initialWidth="600" initialHeight="400">
-  <BACKGROUND backgroundColour="ffd3d3d3"/>
-  <LABEL name="" id="d4f78f975d81c8d3" memberName="zoomLabel" virtualName=""
-         explicitFocusOrder="0" pos="16 90R 55 24" edTextCol="ff000000"
-         edBkgCol="0" labelText="zoom:" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="15"
-         bold="0" italic="0" justification="34"/>
-  <GENERICCOMPONENT name="" id="beef657b0e007936" memberName="thumbnail" virtualName=""
-                    explicitFocusOrder="0" pos="16 221R 32M 123" class="rec::AudioThumbnailWidget"
-                    params="&peer_"/>
-  <TEXTBUTTON name="" id="abe446e2f3f09420" memberName="startStopButton" virtualName=""
-              explicitFocusOrder="0" pos="16 46R 150 32" bgColOff="ff79ed7f"
-              buttonText="Play/Stop" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <GENERICCOMPONENT name="" id="1de1dc6a18a9032b" memberName="fileTreeComp" virtualName=""
-                    explicitFocusOrder="0" pos="16 8 32M 245M" class="FileTreeComponent"
-                    params="peer_->directoryList"/>
-  <LABEL name="" id="7db7d0a64ef21311" memberName="explanation" virtualName=""
-         explicitFocusOrder="0" pos="224 72R 248M 32" edTextCol="ff000000"
-         edBkgCol="0" labelText="Select an audio file in the treeview above."
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="14" bold="0" italic="0" justification="18"/>
-  <SLIDER name="" id="38bbc108f4c96092" memberName="zoomSlider" virtualName=""
-          explicitFocusOrder="0" pos="72 90R 200 24" min="0" max="1" int="0"
-          style="LinearHorizontal" textBoxPos="NoTextBox" textBoxEditable="1"
-          textBoxWidth="80" textBoxHeight="20" skewFactor="2"/>
-  <TOGGLEBUTTON name="looping button" id="df3101bc58894e22" memberName="loopingButton"
-                virtualName="" explicitFocusOrder="0" pos="192 40R 150 24" buttonText="Loop sample?"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
-  <SLIDER name="Time Scale" id="e5ac8e6febb7de41" memberName="timeScaleSlider"
-          virtualName="" explicitFocusOrder="0" pos="120 856 150 24" tooltip="Drag this to set the timescale."
-          min="0.1" max="10" int="0" style="LinearHorizontal" textBoxPos="TextBoxLeft"
-          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1"/>
-</JUCER_COMPONENT>
-
-END_JUCER_METADATA
-*/
-#endif

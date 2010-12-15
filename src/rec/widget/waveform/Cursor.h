@@ -4,6 +4,7 @@
 #include "rec/widget/Painter.h"
 #include "rec/gui/Geometry.h"
 #include "rec/widget/waveform/Cursor.pb.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace widget {
@@ -11,7 +12,11 @@ namespace waveform {
 
 class Cursor : public Component {
  public:
-  Cursor(const CursorProto& desc) : desc_(desc) {}
+  Cursor(const CursorProto& d) : Component("Cursor"), desc_(d), time_(0.0f) {}
+
+  float getTime() const { return time_; }
+  void setTime(int time) { time_ = time; }
+  const CursorProto& desc() const { return desc_; }
 
   void paint(Graphics& g) {
     Painter p(desc_.widget(), &g);
@@ -26,6 +31,8 @@ class Cursor : public Component {
 
  private:
   CursorProto desc_;
+  float time_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Cursor);
 };
 

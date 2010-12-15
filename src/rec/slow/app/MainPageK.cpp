@@ -70,6 +70,7 @@ void MainPageK::operator()(const Preferences& prefs) {
     ScopedLock l(lock_);
     if (prefs.track() == prefs_.track() && newPosition == -1)
       return;
+
     newPosition = newPosition_;
     if (newPosition == -1)
       newPosition = transportSource_.getCurrentPosition();
@@ -93,9 +94,7 @@ void MainPageK::construct(MainPageJ* peer) {
   peer_->timeScaleSlider->setValue(d.time_scale());
   peer_->pitchScaleSlider->setValue(d.pitch_scale());
 
-  ((Broadcaster<double>*)(peer_->thumbnail))->addListener(this);
-  ((Broadcaster<const widget::waveform::Waveform&>*)(peer_->thumbnail))->addListener(this);
-
+  peer_->waveform->addListener(this);
   transportSource_.addChangeListener(this);
   deviceManager_->addAudioCallback(&player_);
   deviceManager_->addChangeListener(this);
@@ -150,7 +149,7 @@ void MainPageK::destruct() {
   peer_->thumbnail->removeChangeListener(this);
 }
 
-void MainPageK::operator()(Source* runny) {
+void MainPageK::operator()(PositionableAudioSource* source) {
   // DLOG(INFO) << "New source " << newPosition_;
   bool transportSourceSet;
   int newPosition;
@@ -163,7 +162,7 @@ void MainPageK::operator()(Source* runny) {
   }
 
   if (!transportSourceSet) {
-    transportSource_.setSource(runny);
+    transportSource_.setSource(source);
     transportSource_.setPosition(0);
   }
 
@@ -186,7 +185,9 @@ void MainPageK::operator()(const VolumeFile& file) {
 }
 
 void MainPageK::operator()(double cursorRatio) {
-  // DLOG(INFO) << "Setting cursor " << cursorRatio;
+  DLOG(INFO) << "Setting cursor " << cursorRatio;
+  return;
+
   ScopedLock l(changeLocker_->lock());
   {
     ScopedLock l(lock_);

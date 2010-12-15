@@ -75,7 +75,7 @@ public:
 
     //==============================================================================
     Label* zoomLabel;
-    rec::widget::waveform::Waveform* thumbnail;
+    rec::widget::waveform::Waveform* waveform;
     TextButton* startStopButton;
     FileTreeComponent* fileTreeComp;
     rec::widget::tree::Root* treeTreeComp;

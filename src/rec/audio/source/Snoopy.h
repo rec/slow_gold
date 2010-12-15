@@ -18,6 +18,14 @@ class Snoopy : public Wrappy::Position,
     broadcast(info);
   }
 
+  static
+  Snoopy* add(PositionableAudioSource* source,
+              listener::Listener<const AudioSourceChannelInfo&> *listener) {
+    scoped_ptr<Snoopy> s(new Snoopy(source));
+    s->addListener(listener);
+    return s.transfer();
+  }
+
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Snoopy);
 };

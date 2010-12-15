@@ -22,10 +22,18 @@ typedef unsigned int uint;
 
 typedef google::protobuf::Message Message;
 
-namespace util {
-}
-
+namespace util {}
 using namespace util;
+
+namespace widget {
+namespace tree {
+
+class VolumeFile;
+
+}  // namespace tree
+}  // namespace widget
+
+using VolumeFile;
 
 }  // namespace rec
 

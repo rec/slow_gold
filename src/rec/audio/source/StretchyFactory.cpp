@@ -11,31 +11,37 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Runny* filledRunny(const Track& track, int position) {
-  scoped_ptr<AudioFormatReader> reader(createReader(track.file()));
-  if (!reader)
-    return NULL;
-  
-  scoped_ptr<Source> source(
-      new AudioFormatReaderSource(reader.transfer(), true));
+Stretchy* createStretchyReader(const TimeStretch& ts, AudioFormatReader* r) {
+  return r ? new Stretchy(ts, new AudioFormatReaderSource(r, true)) : NULL;
+}
 
-  scoped_ptr<Stretchy> stretchy(
-      new Stretchy(track.timestretch(), source.transfer()));
+Stretchy* createStretchyReader(const Track& track) {
+  return createStretchyReader(track.timestretch(), createReader(track.file()));
+}
 
-  scoped_ptr<Runny> runny(
-      new Runny(track.runny(), stretchy.transfer()));
-  runny->setNextReadPosition(position);
+Runny* createStretchyRunny(const Track& track) {
+  return new Runny(track.runny(), createStretchyReader(track));
+}
 
-  Thread* thread = Thread::getCurrentThread();
-  while (!(thread && thread->threadShouldExit())) {
-    if (runny->fill()) {
-      runny->startThread();
-      return runny.transfer();
+Runny* fillRunny(Runny* r, int position) {
+  scoped_ptr<Runny> runny(r);
+  if (runny) {
+    runny->setNextReadPosition(position);
+
+    Thread* thread = Thread::getCurrentThread();
+    while (!(thread && thread->threadShouldExit())) {
+      if (runny->fill()) {
+        runny->startThread();
+        return runny->transfer();
+      }
     }
   }
   return NULL;
 }
 
+Runny* filledRunny(const Track& track, int position) {
+  return fillRunny(createStretchyRunny(track), position);
+}
 
 }  // namespace source
 }  // namespace audio

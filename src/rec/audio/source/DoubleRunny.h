@@ -12,15 +12,19 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleRunny : public Wrappy,
-                    public util::listener::Broadcaster<Source*> {
+class DoubleRunny
+  : public Wrappy,
+    public util::listener::Broadcaster<PositionableAudioSource*> {
  public:
   DoubleRunny() : Wrappy(NULL) {}
   ~DoubleRunny();
 
+  virtual PositionableAudioSource* makeSource(const VolumeFile& file);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
   void setPreferences(const slow::proto::Preferences& prefs,
                       int pos = -1, double ratio = 1.0);
+
+  virtual void setPosition(int position) {}
 
  protected:
   virtual Source* source() const;

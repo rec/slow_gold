@@ -5,6 +5,8 @@ package rec.widget.waveform;
 
 message CursorProto {
   optional Widget widget = 1;
+  optional uint32 width = 2 [default = 1];
+  optional uint32 display_width = 3 [default = 3];
 
   enum Type {
     NONE = 0;

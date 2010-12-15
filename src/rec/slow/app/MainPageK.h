@@ -26,11 +26,10 @@ typedef slow::proto::Preferences Preferences;
 
 class MainPageK : public Slider::Listener,
                   public ChangeListener,
-                  public NodeListener,
+                  public Listener<PositionableAudioSource*>,
                   public Listener<const Preferences&>,
-                  public Listener<Source*>,
-                  public Listener<const widget::waveform::Waveform&>,
-                  public Listener<double> {
+                  public Listener<const VolumeFile&>,
+                  public Listener<float> {
  public:
   MainPageK(AudioDeviceManager* manager);
   virtual ~MainPageK();
@@ -48,9 +47,8 @@ class MainPageK : public Slider::Listener,
 
   virtual void operator()(const VolumeFile& file);
   virtual void operator()(const Preferences& prefs);
-  virtual void operator()(double cursorRatio);
-  virtual void operator()(Source* runny);
-  virtual void operator()(const widget::waveform::Waveform& ) {}
+  virtual void operator()(double time);
+  virtual void operator()(PositionableAudioSource* source);
 
   void updateCursor();
   void loadRecentFile(int menuItemId);
@@ -79,7 +77,7 @@ class MainPageK : public Slider::Listener,
   AudioDeviceManager* deviceManager_;
 
   scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
-  DoubleRunny doubleRunny_;
+  DoubleRunnyBuffer doubleRunny_;
 
   scoped_ptr<Thread> cursorThread_;
   slow::proto::Preferences prefs_;

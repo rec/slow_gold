@@ -15,4 +15,10 @@ message WaveformProto {
   optional uint32 subtic_height = 9                       [default = 3];
   optional bool use_captions = 10                         [default = true];
   optional bool tics_at_bottom = 11                       [default = true];
+
+  enum Layout {
+    STACKED = 1;
+    PARALLEL = 2;
+  };
+  optional Layout layout = 12;
 };

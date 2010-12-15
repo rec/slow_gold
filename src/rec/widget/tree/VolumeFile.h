@@ -14,6 +14,11 @@ const File getFile(const VolumeFile& file);
 const File getShadowDirectory(const Volume& volume);
 const File getShadowDirectory(const VolumeFile& file);
 
+template <typename Proto>
+const File getShadowFile(const Proto& pr, const string& child) {
+  return getShadowDirectory(pr).getChildFile(child);
+}
+
 bool compareVolumes(const Volume& x, const Volume& y);
 
 bool operator==(const Volume& x, const Volume& y);

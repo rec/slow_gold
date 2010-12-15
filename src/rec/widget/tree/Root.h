@@ -12,7 +12,8 @@ namespace tree {
 
 class Node;
 
-class Root : public juce::TreeView, public NodeBroadcaster {
+class Root : public juce::TreeView,
+             public listener::Broadcaster<const VolumeFile&> {
  public:
   explicit Root(const NodeDesc& desc);
   ~Root();
