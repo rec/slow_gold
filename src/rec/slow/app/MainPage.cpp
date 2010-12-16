@@ -34,7 +34,7 @@ static const int CHANGE_LOCKER_WAIT = 100;
 
 }  // namespace
 
-MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
+MainPage::MainPage(AudioDeviceManager& deviceManager)
     : waveform_(WaveformProto()),
       startStopButton_(String::empty),
       treeRoot_(new Root(NodeDesc())),
@@ -44,11 +44,12 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
       pitchScaleSlider_(T("Pitch Scale"), prefs(),
                        Address("track", "timestretch", "pitch_scale")),
       songTime_(Text()),
-      realTime_(Text()),
-      songDial_(Dial()),
-      realDial_(realTimeDial()),
+      songDial_(realTimeDial()),
       changeLocker_(new ChangeLocker<Preferences>(CHANGE_LOCKER_WAIT)),
-      transportSourceSet_(false) {
+      transportSourceSet_(false),
+      fileListener_(prefs(), Address("track", "file")) {
+  setSize(600, 400);
+
   startStopButton_.setButtonText(T("Play/Stop"));
   startStopButton_.setColour(TextButton::buttonColourId, Colour(0xff79ed7f));
 
@@ -75,50 +76,46 @@ MainPageJ::MainPageJ(AudioDeviceManager& deviceManager)
   addAndMakeVisible(&timeScaleSlider_);
   addAndMakeVisible(&pitchScaleSlider_);
   addAndMakeVisible(&songTime_);
-  addAndMakeVisible(&realTime_);
   addAndMakeVisible(&songDial_);
-  addAndMakeVisible(&realDial_);
 
   cursor_ = waveform_.addCursor(CursorProto(), 0.0);
-  setSize(600, 400);
 
   changeLocker_->addListener(this);
   doubleRunny_.addListener(this);
   prefs()->addListener(changeLocker_.get());
   startStopButton_.addButtonListener(this);
-  transportSource_.addListener(&realDial_);
-  transportSource_.addListener(&realTime_);
+  treeRoot_->addListener(fileListener_);
+
   transportSource_.addListener(&songDial_);
   transportSource_.addListener(&songTime_);
   transportSource_.addListener(cursor_);
-  treeRoot_->addListener(this);
 
   treeRoot_->update();
   treeRoot_->startThread();
   changeLocker_->startThread();
+  prefs()->requestUpdate();
 }
 
-MainPageJ::~MainPageJ() {
+MainPage::~MainPage() {
   changeLocker_->removeListener(this);
   doubleRunny_.removeListener(this);
   prefs()->removeListener(changeLocker_.get());
   startStopButton_.removeButtonListener(this);
-  transportSource_.removeListener(&realDial_);
-  transportSource_.removeListener(&realTime_);
+  treeRoot_->removeListener(fileListener_);
+
   transportSource_.removeListener(&songDial_);
   transportSource_.removeListener(&songTime_);
   transportSource_.removeListener(cursor_);
-  treeRoot_->removeListener(this);
 
   trash::discard(changeLocker_.transfer());
   trash::discard(treeRoot_.transfer());
 }
 
-void MainPageJ::paint(Graphics& g) {
+void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
 }
 
-void MainPageJ::resized() {
+void MainPage::resized() {
   waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
   startStopButton_.setBounds(16, getHeight() - 46, 150, 32);
   treeRoot_->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
@@ -126,42 +123,37 @@ void MainPageJ::resized() {
   timeScaleSlider_.setBounds(300, getHeight() - 90, 200, 24);
   pitchScaleSlider_.setBounds(300, getHeight() - 60, 200, 24);
   songTime_.setBounds(520, getHeight() - 90, 110, 22);
-  realTime_.setBounds(520, getHeight() - 50, 110, 22);
   songDial_.setBounds(640, getHeight() - 90, 36, 36);
-  realDial_.setBounds(640, getHeight() - 50, 36, 36);
 }
 
-void MainPageJ::buttonClicked(Button* buttonThatWasClicked) {
+void MainPage::buttonClicked(Button* buttonThatWasClicked) {
   transportSource_.toggle();
 }
 
-void MainPageJ::operator()(const VolumeFile& file) {
-  transportSource_.stop();
-  transportSource_.setPosition(0);
-  thumbnail_.setFile(file);
-  if (transportSource_.isPlaying())
+static const int BLOCKSIZE = 1024;
+
+void MainPage::operator()(const Preferences& prefs) {
+  if (prefs_.file() != prefs.file()) {
     transportSource_.stop();
+    transportSource_.setPosition(0);
+    transportSource_.setSource(NULL);
+    thumbnail_.setFile(file);
 
-  prefs()->setter()->set("track", "file", file);
-}
+    scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
+    dr->setPreferences(prefs);
+    dr->startThread();
+    doubleRunny_.swap(dr);
+    transportSource_.setSource(doubleRunny_.get());
+    trash::discard(dr.transfer());
 
-void MainPageJ::operator()(const Preferences& prefs) {
-  int newPosition;
-  double ratio;
-  {
-    ScopedLock l(lock_);
-    if (prefs.track() == prefs_.track() && newPosition == -1)
-      return;
-
-    newPosition = newPosition_;
-    if (newPosition == -1)
-      newPosition = transportSource_.getCurrentPosition();
+  } else if (doubleRunny_) {
     ratio = prefs.track().timestretch().time_scale() /
       prefs_.track().timestretch().time_scale();
-    prefs_ = prefs;
+    int position = transportSource_.getNextReadPosition();
+    doubleRunny_->setPreferences(prefs, position, ratio);
   }
 
-  doubleRunny_.setPreferences(prefs, newPosition, ratio);
+  prefs_ = prefs;
 }
 
 }  // namespace slow

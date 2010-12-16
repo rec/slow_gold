@@ -13,8 +13,6 @@ class Locker {
   Locker() : changed_(false) {}
   virtual ~Locker() {}
 
-  virtual void onChange() {}
-
   virtual void change() {
     ScopedLock l(lock_);
     changed_ = true;
@@ -50,6 +48,8 @@ class Locker {
   CriticalSection& lock() { return lock_; }
 
  private:
+  virtual void onChange() {}
+
   CriticalSection lock_;
 
   Data data_;

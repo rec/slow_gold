@@ -8,7 +8,7 @@
 		<CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="${__JUCE_INCLUDES}" isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 		<CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="${__JUCE_INCLUDES}" isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 	</CONFIGURATIONS>
-	<MAINGROUP id="n6nb6Ivrb" name="tests">
+	<MAINGROUP id="gM4pR0RrE" name="tests">
 		<GROUP id="fVWXRtaTT" name="rec">
 			<GROUP id="GKbTArUaD" name="audio">
 				<GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -55,16 +55,23 @@
 					</GROUP>
 				</GROUP>
 				<GROUP id="1CsM6ZONT" name="source">
+					<FILE compile="0" file="../../src/rec/audio/source/AudioThumbnail.h" id="bDXmVhdkh" name="AudioThumbnail.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/AudioTimeScaler_test.cpp" id="2V7IlnMaI" name="AudioTimeScaler_test.cpp" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/Buffery.cpp" id="NZYl9Lrpy" name="Buffery.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="XFI3VkEZu" name="Buffery.h" resource="0"/>
-					<FILE compile="1" file="../../src/rec/audio/source/BufferySourceFactory.cpp" id="vHGnkN8Vv" name="BufferySourceFactory.cpp" resource="0"/>
-					<FILE compile="0" file="../../src/rec/audio/source/BufferySourceFactory.h" id="gc4GJMh9D" name="BufferySourceFactory.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/audio/source/BufferySource.h" id="sxKob4IXv" name="BufferySource.h" resource="0"/>
+					<FILE compile="1" file="../../src/rec/audio/source/BufferyThumbnail.cpp" id="2eJ35GPU4" name="BufferyThumbnail.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/rec/audio/source/BufferyThumbnail.h" id="OCXoJkBwn" name="BufferyThumbnail.h" resource="0"/>
+					<FILE compile="1" file="../../src/rec/audio/source/CachedThumbnail.cpp" id="pDYn0M5Jn" name="CachedThumbnail.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/rec/audio/source/CachedThumbnail.h" id="zQpGhgpuP" name="CachedThumbnail.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp" id="mI61CtQ68" name="DoubleRunny.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/DoubleRunny.h" id="ZbigF9cjr" name="DoubleRunny.h" resource="0"/>
+					<FILE compile="1" file="../../src/rec/audio/source/DoubleRunnyBuffer.cpp" id="Nla7QcCaM" name="DoubleRunnyBuffer.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h" id="f0hsu9MJo" name="DoubleRunnyBuffer.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/Runny.cpp" id="pO9kyeUMd" name="Runny.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/Runny.h" id="WkdDpEVAB" name="Runny.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/Runny_test.cpp" id="oebxYC324" name="Runny_test.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/rec/audio/source/Snoopy.h" id="7te4oiK2k" name="Snoopy.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/Source.h" id="fzqhLh7bf" name="Source.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/audio/source/Stereo.cpp" id="96hUbHlR2" name="Stereo.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/audio/source/Stereo.h" id="ds7F7YTe6" name="Stereo.h" resource="0"/>
@@ -259,20 +266,18 @@
 				</GROUP>
 				<FILE compile="1" file="../../src/rec/gui/RecentFiles.cpp" id="MMRTcAMfa" name="RecentFiles.cpp" resource="0"/>
 				<FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="GVwhlEC2q" name="RecentFiles.h" resource="0"/>
+				<FILE compile="0" file="../../src/rec/gui/SetterSlider.h" id="uQfr8LK9j" name="SetterSlider.h" resource="0"/>
 			</GROUP>
 			<GROUP id="vrHU7SxTi" name="slow">
 				<GROUP id="iYkm5tfnT" name="app">
 					<FILE compile="0" file="../../src/rec/slow/app/AudioSetupPage.h" id="5Tzrb1HOL" name="AudioSetupPage.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/slow/app/AudioTransportSourcePlayer.h" id="KzrKdi7l8" name="AudioTransportSourcePlayer.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/ComponentContainer.h" id="tkqan7mXm" name="ComponentContainer.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/GenericApplication.h" id="uDpBWoCIX" name="GenericApplication.h" resource="0"/>
-					<FILE compile="1" file="../../src/rec/slow/app/MainPageComponent.cpp" id="WugwNZEpH" name="MainPageComponent.cpp" resource="0"/>
+					<FILE compile="1" file="../../src/rec/slow/app/MainPage.cpp" id="jaxepYjnY" name="MainPage.cpp" resource="0"/>
+					<FILE compile="0" file="../../src/rec/slow/app/MainPage.h" id="0SJk1hXl2" name="MainPage.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/MainPageComponent.h" id="QBuNOa5JD" name="MainPageComponent.h" resource="0"/>
-					<FILE compile="1" file="../../src/rec/slow/app/MainPageJ.cpp" id="jFWAp66FU" name="MainPageJ.cpp" resource="0"/>
-					<FILE compile="0" file="../../src/rec/slow/app/MainPageJ.h" id="cSqCqhjSw" name="MainPageJ.h" resource="0"/>
-					<FILE compile="1" file="../../src/rec/slow/app/MainPageK.cpp" id="enkpEIZx7" name="MainPageK.cpp" resource="0"/>
-					<FILE compile="0" file="../../src/rec/slow/app/MainPageK.h" id="3MCrPyMsi" name="MainPageK.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/RecApplication.h" id="tXsb7TQCo" name="RecApplication.h" resource="0"/>
-					<FILE compile="0" file="../../src/rec/slow/app/RecContainer.h" id="ejnBaZp4L" name="RecContainer.h" resource="0"/>
 					<FILE compile="1" file="../../src/rec/slow/app/RecWindow.cpp" id="Nvtm4Rcjr" name="RecWindow.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/RecWindow.h" id="TtLSwyxUo" name="RecWindow.h" resource="0"/>
 				</GROUP>
@@ -322,6 +327,8 @@
 					<FILE compile="0" file="../../src/rec/util/listener/Broadcaster.h" id="N1gZ3GXUj" name="Broadcaster.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/listener/ChangeBroadcaster.h" id="cWImQuoWA" name="ChangeBroadcaster.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/util/listener/Listener.h" id="NropoomA8" name="Listener.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/util/listener/Setter.h" id="zs4I84DTh" name="Setter.h" resource="0"/>
+					<FILE compile="0" file="../../src/rec/util/listener/Time.h" id="2EwKPqL9D" name="Time.h" resource="0"/>
 				</GROUP>
 				<FILE compile="0" file="../../src/rec/util/Math.h" id="KJ9D4bgfF" name="Math.h" resource="0"/>
 				<FILE compile="1" file="../../src/rec/util/math_test.cpp" id="ayTP9DKGr" name="math_test.cpp" resource="0"/>
@@ -489,7 +496,7 @@
 				</GROUP>
 			</GROUP>
 		</GROUP>
-		<FILE compile="1" file="Main.cpp" id="ZhdYQpbIZ" name="Main.cpp" resource="0"/>
+		<FILE compile="1" file="Main.cpp" id="r25jKZe8r" name="Main.cpp" resource="0"/>
 	</MAINGROUP>
 	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>

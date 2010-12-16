@@ -16,17 +16,17 @@ class Broadcaster : public Listener<Type> {
   typedef std::set<Listener<Type>*> Listeners;
   typedef typename Listeners::iterator iterator;
 
-  void addListener(Listener<Type>* listener) {
+  virtual void addListener(Listener<Type>* listener) {
     ScopedLock l(lock_);
     listeners_.insert(listener);
   }
 
-  void removeListener(Listener<Type>* listener) {
+  virtual void removeListener(Listener<Type>* listener) {
     ScopedLock l(lock_);
     listeners_.remove(listener);
   }
 
-  void broadcast(Type x) {
+  virtual void broadcast(Type x) {
     ScopedLock l(lock_);
     for (iterator i = listeners_.begin(); i != listeners_.end(); ++i)
       (**i)(x);

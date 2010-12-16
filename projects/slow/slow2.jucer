@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="OHExUYKcn" name="Slow">
+  <MAINGROUP id="Cwav3AOMh" name="Slow">
     <GROUP id="VdEVblIO9" name="rec">
       <GROUP id="b0HzrMj6A" name="audio">
         <GROUP id="savwfEiwO" name="ammf_scaler">
@@ -103,36 +103,22 @@
           </GROUP>
         </GROUP>
         <GROUP id="MvzZ34pgb" name="source">
-          <FILE compile="0" file="../../src/rec/audio/source/AudioThumbnail.h"
-                id="albqhYiPb" name="AudioThumbnail.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Buffery.cpp" id="HbiIrqZYw"
                 name="Buffery.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="W23HM23QE"
                 name="Buffery.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/BufferySource.h"
-                id="KRtVyAhx0" name="BufferySource.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/BufferyThumbnail.cpp"
-                id="YOuhSRYNe" name="BufferyThumbnail.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/BufferyThumbnail.h"
-                id="19nF6BtyC" name="BufferyThumbnail.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/CachedThumbnail.cpp"
-                id="4SiDzEknG" name="CachedThumbnail.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/CachedThumbnail.h"
-                id="JuEgLvgsN" name="CachedThumbnail.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/BufferySourceFactory.cpp"
+                id="re2Rl2s4y" name="BufferySourceFactory.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/BufferySourceFactory.h"
+                id="4yxlvCxyS" name="BufferySourceFactory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp"
                 id="UwRXyc2OA" name="DoubleRunny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunny.h" id="Ktv1BtBdZ"
                 name="DoubleRunny.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/DoubleRunnyBuffer.cpp"
-                id="0yxBgWR1f" name="DoubleRunnyBuffer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
-                id="YggWxkIgk" name="DoubleRunnyBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Runny.cpp" id="ZjlpG8DJD"
                 name="Runny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Runny.h" id="Jh3wFPfh6"
                 name="Runny.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Snoopy.h" id="OcDmYTy6S"
-                name="Snoopy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Source.h" id="hS99xBzLi"
                 name="Source.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Stereo.cpp" id="tqSv08Udy"
@@ -438,10 +424,6 @@
               resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="8wrT5zeeI" name="Font.h"
               resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/Geometry.cpp" id="Cn1PzcRzV"
-              name="Geometry.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/Geometry.h" id="ZV4fhm0oo"
-              name="Geometry.h" resource="0"/>
         <GROUP id="EUcDDAvl4" name="icon">
           <FILE compile="1" file="../../src/rec/gui/icon/AudioCard.svg.cpp" id="qLK0nCHyj"
                 name="AudioCard.svg.cpp" resource="0"/>
@@ -488,27 +470,31 @@
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="5z0mgcWFX"
               name="RecentFiles.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/SetterSlider.h" id="aejxf9Hmb"
-              name="SetterSlider.h" resource="0"/>
       </GROUP>
       <GROUP id="X9GDu7FkK" name="slow">
         <GROUP id="nRxhclCHe" name="app">
           <FILE compile="0" file="../../src/rec/slow/app/AudioSetupPage.h" id="sizVNPPgo"
                 name="AudioSetupPage.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/AudioTransportSourcePlayer.h"
-                id="qFE5wrLuA" name="AudioTransportSourcePlayer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/ComponentContainer.h"
                 id="BTDh7oDnE" name="ComponentContainer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/GenericApplication.h"
                 id="W3TSec9Cb" name="GenericApplication.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/MainPage.cpp" id="vuWn4P7iG"
-                name="MainPage.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/MainPage.h" id="we4UBftGP"
-                name="MainPage.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/app/MainPageComponent.cpp"
+                id="weGnIEkJu" name="MainPageComponent.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/MainPageComponent.h"
                 id="2mMddmYqM" name="MainPageComponent.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/app/MainPageJ.cpp" id="78aizmPlA"
+                name="MainPageJ.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/app/MainPageJ.h" id="xsDVIvEKI"
+                name="MainPageJ.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/app/MainPageK.cpp" id="MDAOWROi1"
+                name="MainPageK.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/app/MainPageK.h" id="hTHtmEwym"
+                name="MainPageK.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/RecApplication.h" id="dQxM5SroW"
                 name="RecApplication.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/app/RecContainer.h" id="vUm4CeShH"
+                name="RecContainer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/app/RecWindow.cpp" id="ohPngWaJ2"
                 name="RecWindow.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/RecWindow.h" id="rnRkSaeje"
@@ -581,10 +567,6 @@
                 id="DKaQS7UeY" name="ChangeBroadcaster.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/Listener.h" id="z6ECCv3g9"
                 name="Listener.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/listener/Setter.h" id="vKO3ItPgZ"
-                name="Setter.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/listener/Time.h" id="UjP1VIw8a"
-                name="Time.h" resource="0"/>
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="I0DJX0jGU" name="Math.h"
               resource="0"/>
@@ -611,8 +593,6 @@
                 name="Cycler.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Factory.h" id="XuMo2uxI2"
                 name="Factory.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/FileWriter.h" id="o1xgQMECR"
-                name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/LockedMessage.h"
                 id="WhJwXMdkn" name="LockedMessage.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Locker.h" id="e5QIvMRLh"
@@ -698,18 +678,6 @@
           <FILE compile="0" file="../../src/rec/widget/tree/VolumeFile.h" id="j5DwAyk7F"
                 name="VolumeFile.h" resource="0"/>
         </GROUP>
-        <GROUP id="2C5iM4eeZ" name="waveform">
-          <FILE compile="1" file="../../src/rec/widget/waveform/Cursor.cpp" id="AjAK4W9I3"
-                name="Cursor.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/waveform/Cursor.h" id="Qom6NTS6c"
-                name="Cursor.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/waveform/Waveform.cpp"
-                id="yqUlZw2G5" name="Waveform.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/waveform/Waveform.h" id="YqImCG64T"
-                name="Waveform.h" resource="0"/>
-        </GROUP>
-        <FILE compile="1" file="../../src/rec/widget/Widget.cpp" id="TiJpf5X3e"
-              name="Widget.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/widget/Widget.h" id="L5uDTS8VS"
               name="Widget.h" resource="0"/>
       </GROUP>
@@ -811,6 +779,10 @@
           </GROUP>
         </GROUP>
         <GROUP id="OZcaExzrG" name="widget">
+          <FILE compile="1" file="../../genfiles/proto/rec/widget/AudioThumbnail.pb.cc"
+                id="0q7CU4NKo" name="AudioThumbnail.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/widget/AudioThumbnail.pb.h"
+                id="HfhTYzeE1" name="AudioThumbnail.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/widget/Panes.pb.cc"
                 id="ciYThZNQa" name="Panes.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/widget/Panes.pb.h"
@@ -839,16 +811,6 @@
             <FILE compile="0" file="../../genfiles/proto/rec/widget/tree/VolumeFile.pb.h"
                   id="0oXD5w6YG" name="VolumeFile.pb.h" resource="0"/>
           </GROUP>
-          <GROUP id="ZsSMdXXmB" name="waveform">
-            <FILE compile="1" file="../../genfiles/proto/rec/widget/waveform/Cursor.pb.cc"
-                  id="pOkpkMEhJ" name="Cursor.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/widget/waveform/Cursor.pb.h"
-                  id="qt4f1T5C9" name="Cursor.pb.h" resource="0"/>
-            <FILE compile="1" file="../../genfiles/proto/rec/widget/waveform/Waveform.pb.cc"
-                  id="8Ks5QWnJz" name="Waveform.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/widget/waveform/Waveform.pb.h"
-                  id="C1ydmSe6c" name="Waveform.pb.h" resource="0"/>
-          </GROUP>
           <FILE compile="1" file="../../genfiles/proto/rec/widget/Widget.pb.cc"
                 id="pRl7fOcg0" name="Widget.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/widget/Widget.pb.h"
@@ -856,7 +818,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="AQPfSuIzo" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="WfUbr2mrX" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

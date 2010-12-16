@@ -40,6 +40,25 @@ void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
 
 class WaveformProto;
 
+enum WaveformProto_Layout {
+  WaveformProto_Layout_STACKED = 1,
+  WaveformProto_Layout_PARALLEL = 2
+};
+bool WaveformProto_Layout_IsValid(int value);
+const WaveformProto_Layout WaveformProto_Layout_Layout_MIN = WaveformProto_Layout_STACKED;
+const WaveformProto_Layout WaveformProto_Layout_Layout_MAX = WaveformProto_Layout_PARALLEL;
+const int WaveformProto_Layout_Layout_ARRAYSIZE = WaveformProto_Layout_Layout_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* WaveformProto_Layout_descriptor();
+inline const ::std::string& WaveformProto_Layout_Name(WaveformProto_Layout value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    WaveformProto_Layout_descriptor(), value);
+}
+inline bool WaveformProto_Layout_Parse(
+    const ::std::string& name, WaveformProto_Layout* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<WaveformProto_Layout>(
+    WaveformProto_Layout_descriptor(), name, value);
+}
 // ===================================================================
 
 class WaveformProto : public ::google::protobuf::Message {
@@ -93,6 +112,30 @@ class WaveformProto : public ::google::protobuf::Message {
   ::google::protobuf::Metadata GetMetadata() const;
   
   // nested types ----------------------------------------------------
+  
+  typedef WaveformProto_Layout Layout;
+  static const Layout STACKED = WaveformProto_Layout_STACKED;
+  static const Layout PARALLEL = WaveformProto_Layout_PARALLEL;
+  static inline bool Layout_IsValid(int value) {
+    return WaveformProto_Layout_IsValid(value);
+  }
+  static const Layout Layout_MIN =
+    WaveformProto_Layout_Layout_MIN;
+  static const Layout Layout_MAX =
+    WaveformProto_Layout_Layout_MAX;
+  static const int Layout_ARRAYSIZE =
+    WaveformProto_Layout_Layout_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Layout_descriptor() {
+    return WaveformProto_Layout_descriptor();
+  }
+  static inline const ::std::string& Layout_Name(Layout value) {
+    return WaveformProto_Layout_Name(value);
+  }
+  static inline bool Layout_Parse(const ::std::string& name,
+      Layout* value) {
+    return WaveformProto_Layout_Parse(name, value);
+  }
   
   // accessors -------------------------------------------------------
   
@@ -159,6 +202,13 @@ class WaveformProto : public ::google::protobuf::Message {
   inline bool tics_at_bottom() const;
   inline void set_tics_at_bottom(bool value);
   
+  // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+  inline bool has_layout() const;
+  inline void clear_layout();
+  static const int kLayoutFieldNumber = 12;
+  inline ::rec::widget::waveform::WaveformProto_Layout layout() const;
+  inline void set_layout(::rec::widget::waveform::WaveformProto_Layout value);
+  
   // @@protoc_insertion_point(class_scope:rec.widget.waveform.WaveformProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -173,11 +223,12 @@ class WaveformProto : public ::google::protobuf::Message {
   ::google::protobuf::uint32 subtic_height_;
   bool use_captions_;
   bool tics_at_bottom_;
+  int layout_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -346,6 +397,23 @@ inline void WaveformProto::set_tics_at_bottom(bool value) {
   tics_at_bottom_ = value;
 }
 
+// optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+inline bool WaveformProto::has_layout() const {
+  return _has_bit(9);
+}
+inline void WaveformProto::clear_layout() {
+  layout_ = 1;
+  _clear_bit(9);
+}
+inline ::rec::widget::waveform::WaveformProto_Layout WaveformProto::layout() const {
+  return static_cast< ::rec::widget::waveform::WaveformProto_Layout >(layout_);
+}
+inline void WaveformProto::set_layout(::rec::widget::waveform::WaveformProto_Layout value) {
+  GOOGLE_DCHECK(::rec::widget::waveform::WaveformProto_Layout_IsValid(value));
+  _set_bit(9);
+  layout_ = value;
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -357,6 +425,10 @@ inline void WaveformProto::set_tics_at_bottom(bool value) {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::widget::waveform::WaveformProto_Layout>() {
+  return ::rec::widget::waveform::WaveformProto_Layout_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

@@ -35,8 +35,7 @@ namespace slow {
 
 class MainPageJ : public Component,
                   public ButtonListener,
-                  public Listener<const Preferences&>,
-                  public Listener<const VolumeFile&> {
+                  public Listener<const Preferences&> {
  public:
   MainPageJ(AudioDeviceManager& deviceManager);
   virtual ~MainPageJ() ()
@@ -45,7 +44,6 @@ class MainPageJ : public Component,
   void resized();
   void buttonClicked(Button* buttonThatWasClicked);
 
-  virtual void operator()(const VolumeFile& file);
   virtual void operator()(const Preferences& prefs);
 
   void loadRecentFile(int menuItemId);
@@ -64,15 +62,14 @@ class MainPageJ : public Component,
   SetterSlider timeScaleSlider_;
   SetterSlider pitchScaleSlider_;
   TextComponent songTime_;
-  TextComponent realTime_;
   DialComponent songDial_;
-  DialComponent realDial_;
   Cursor* cursor_;
 
   CriticalSection lock_;
   AudioTransportSourcePlayer transportSource_;
   scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
-  DoubleRunnyBuffer doubleRunny_;
+  scoped_ptr<DoubleRunnyBuffer> doubleRunny_;
+  SetterListener<const VolumeFile&> fileListener_;
 
   slow::proto::Preferences prefs_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPageJ);

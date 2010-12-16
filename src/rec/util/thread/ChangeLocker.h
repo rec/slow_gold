@@ -16,8 +16,6 @@ class ChangeLocker : public Thread,
  public:
   ChangeLocker(int wait) : Thread("ChangeLocker"), wait_(wait) {}
 
-  virtual void onChange() { notify(); }
-
   virtual bool run() {
     Data data;
     while (!threadShouldExit()) {
@@ -29,6 +27,9 @@ class ChangeLocker : public Thread,
     }
     return false;
   }
+
+ protected:
+  virtual void onChange() { notify(); }
 
  private:
   const int wait_;

@@ -31,8 +31,10 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fCursor_2eproto() {
       "rec/widget/waveform/Cursor.proto");
   GOOGLE_CHECK(file != NULL);
   CursorProto_descriptor_ = file->message_type(0);
-  static const int CursorProto_offsets_[3] = {
+  static const int CursorProto_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, widget_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, width_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, display_width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, line_),
   };
@@ -82,12 +84,14 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fCursor_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/widget/waveform/Cursor.proto\022\023rec."
     "widget.waveform\032\027rec/widget/Widget.proto"
-    "\032\026rec/gui/Geometry.proto\"\312\001\n\013CursorProto"
-    "\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget\0223\n\004"
-    "type\030\002 \001(\0162%.rec.widget.waveform.CursorP"
-    "roto.Type\022\033\n\004line\030\003 \001(\0132\r.rec.gui.Line\"E"
-    "\n\004Type\022\010\n\004NONE\020\000\022\025\n\021PLAYBACK_POSITION\020\001\022"
-    "\016\n\nLOOP_START\020\002\022\014\n\010LOOP_END\020\003", 309);
+    "\032\026rec/gui/Geometry.proto\"\211\002\n\013CursorProto"
+    "\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget\022\020\n\005"
+    "width\030\002 \001(\r:\0011\022\030\n\rdisplay_width\030\003 \001(\r:\0013"
+    "\022F\n\004type\030\004 \001(\0162%.rec.widget.waveform.Cur"
+    "sorProto.Type:\021PLAYBACK_POSITION\022\033\n\004line"
+    "\030\005 \001(\0132\r.rec.gui.Line\"E\n\004Type\022\010\n\004NONE\020\000\022"
+    "\025\n\021PLAYBACK_POSITION\020\001\022\016\n\nLOOP_START\020\002\022\014"
+    "\n\010LOOP_END\020\003", 372);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Cursor.proto", &protobuf_RegisterTypes);
   CursorProto::default_instance_ = new CursorProto();
@@ -132,6 +136,8 @@ const int CursorProto::Type_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int CursorProto::kWidgetFieldNumber;
+const int CursorProto::kWidthFieldNumber;
+const int CursorProto::kDisplayWidthFieldNumber;
 const int CursorProto::kTypeFieldNumber;
 const int CursorProto::kLineFieldNumber;
 #endif  // !_MSC_VER
@@ -155,7 +161,9 @@ CursorProto::CursorProto(const CursorProto& from)
 void CursorProto::SharedCtor() {
   _cached_size_ = 0;
   widget_ = NULL;
-  type_ = 0;
+  width_ = 1u;
+  display_width_ = 3u;
+  type_ = 1;
   line_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -196,8 +204,10 @@ void CursorProto::Clear() {
     if (_has_bit(0)) {
       if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
     }
-    type_ = 0;
-    if (_has_bit(2)) {
+    width_ = 1u;
+    display_width_ = 3u;
+    type_ = 1;
+    if (_has_bit(4)) {
       if (line_ != NULL) line_->::rec::gui::Line::Clear();
     }
   }
@@ -220,12 +230,44 @@ bool CursorProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_type;
+        if (input->ExpectTag(16)) goto parse_width;
         break;
       }
       
-      // optional .rec.widget.waveform.CursorProto.Type type = 2;
+      // optional uint32 width = 2 [default = 1];
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_width:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &width_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_display_width;
+        break;
+      }
+      
+      // optional uint32 display_width = 3 [default = 3];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_display_width:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &display_width_)));
+          _set_bit(2);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_type;
+        break;
+      }
+      
+      // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_type:
@@ -236,17 +278,17 @@ bool CursorProto::MergePartialFromCodedStream(
           if (::rec::widget::waveform::CursorProto_Type_IsValid(value)) {
             set_type(static_cast< ::rec::widget::waveform::CursorProto_Type >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(2, value);
+            mutable_unknown_fields()->AddVarint(4, value);
           }
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_line;
+        if (input->ExpectTag(42)) goto parse_line;
         break;
       }
       
-      // optional .rec.gui.Line line = 3;
-      case 3: {
+      // optional .rec.gui.Line line = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_line:
@@ -283,16 +325,26 @@ void CursorProto::SerializeWithCachedSizes(
       1, this->widget(), output);
   }
   
-  // optional .rec.widget.waveform.CursorProto.Type type = 2;
+  // optional uint32 width = 2 [default = 1];
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->type(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->width(), output);
   }
   
-  // optional .rec.gui.Line line = 3;
+  // optional uint32 display_width = 3 [default = 3];
   if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->display_width(), output);
+  }
+  
+  // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->type(), output);
+  }
+  
+  // optional .rec.gui.Line line = 5;
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->line(), output);
+      5, this->line(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -310,17 +362,27 @@ void CursorProto::SerializeWithCachedSizes(
         1, this->widget(), target);
   }
   
-  // optional .rec.widget.waveform.CursorProto.Type type = 2;
+  // optional uint32 width = 2 [default = 1];
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->type(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->width(), target);
   }
   
-  // optional .rec.gui.Line line = 3;
+  // optional uint32 display_width = 3 [default = 3];
   if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->display_width(), target);
+  }
+  
+  // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      4, this->type(), target);
+  }
+  
+  // optional .rec.gui.Line line = 5;
+  if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->line(), target);
+        5, this->line(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -341,13 +403,27 @@ int CursorProto::ByteSize() const {
           this->widget());
     }
     
-    // optional .rec.widget.waveform.CursorProto.Type type = 2;
+    // optional uint32 width = 2 [default = 1];
+    if (has_width()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->width());
+    }
+    
+    // optional uint32 display_width = 3 [default = 3];
+    if (has_display_width()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->display_width());
+    }
+    
+    // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
     if (has_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
-    // optional .rec.gui.Line line = 3;
+    // optional .rec.gui.Line line = 5;
     if (has_line()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -385,9 +461,15 @@ void CursorProto::MergeFrom(const CursorProto& from) {
       mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
     }
     if (from._has_bit(1)) {
-      set_type(from.type());
+      set_width(from.width());
     }
     if (from._has_bit(2)) {
+      set_display_width(from.display_width());
+    }
+    if (from._has_bit(3)) {
+      set_type(from.type());
+    }
+    if (from._has_bit(4)) {
       mutable_line()->::rec::gui::Line::MergeFrom(from.line());
     }
   }
@@ -414,6 +496,8 @@ bool CursorProto::IsInitialized() const {
 void CursorProto::Swap(CursorProto* other) {
   if (other != this) {
     std::swap(widget_, other->widget_);
+    std::swap(width_, other->width_);
+    std::swap(display_width_, other->display_width_);
     std::swap(type_, other->type_);
     std::swap(line_, other->line_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

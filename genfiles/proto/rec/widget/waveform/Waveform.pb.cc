@@ -19,6 +19,7 @@ namespace {
 const ::google::protobuf::Descriptor* WaveformProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   WaveformProto_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* WaveformProto_Layout_descriptor_ = NULL;
 
 }  // namespace
 
@@ -30,7 +31,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
       "rec/widget/waveform/Waveform.proto");
   GOOGLE_CHECK(file != NULL);
   WaveformProto_descriptor_ = file->message_type(0);
-  static const int WaveformProto_offsets_[9] = {
+  static const int WaveformProto_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, cursor_thickness_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, source_samples_per_thumbnail_sample_),
@@ -40,6 +41,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, subtic_height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, use_captions_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, tics_at_bottom_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, layout_),
   };
   WaveformProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -52,6 +54,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WaveformProto));
+  WaveformProto_Layout_descriptor_ = WaveformProto_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -89,7 +92,7 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "\n\"rec/widget/waveform/Waveform.proto\022\023re"
     "c.widget.waveform\032\023rec/gui/Color.proto\032\022"
     "rec/gui/Font.proto\032\027rec/widget/Widget.pr"
-    "oto\032\034rec/util/thread/Thread.proto\"\304\002\n\rWa"
+    "oto\032\034rec/util/thread/Thread.proto\"\244\003\n\rWa"
     "veformProto\022\"\n\006widget\030\001 \001(\0132\022.rec.widget"
     ".Widget\022\033\n\020cursor_thickness\030\002 \001(\r:\0011\0220\n#"
     "source_samples_per_thumbnail_sample\030\004 \001("
@@ -97,7 +100,10 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "rsor_thread\030\006 \001(\0132\".rec.util.thread.Thre"
     "adDescription\022\025\n\ntic_height\030\010 \001(\r:\0018\022\030\n\r"
     "subtic_height\030\t \001(\r:\0013\022\032\n\014use_captions\030\n"
-    " \001(\010:\004true\022\034\n\016tics_at_bottom\030\013 \001(\010:\004true", 480);
+    " \001(\010:\004true\022\034\n\016tics_at_bottom\030\013 \001(\010:\004true"
+    "\0229\n\006layout\030\014 \001(\0162).rec.widget.waveform.W"
+    "aveformProto.Layout\"#\n\006Layout\022\013\n\007STACKED"
+    "\020\001\022\014\n\010PARALLEL\020\002", 576);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Waveform.proto", &protobuf_RegisterTypes);
   WaveformProto::default_instance_ = new WaveformProto();
@@ -115,6 +121,27 @@ struct StaticDescriptorInitializer_rec_2fwidget_2fwaveform_2fWaveform_2eproto {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* WaveformProto_Layout_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return WaveformProto_Layout_descriptor_;
+}
+bool WaveformProto_Layout_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const WaveformProto_Layout WaveformProto::STACKED;
+const WaveformProto_Layout WaveformProto::PARALLEL;
+const WaveformProto_Layout WaveformProto::Layout_MIN;
+const WaveformProto_Layout WaveformProto::Layout_MAX;
+const int WaveformProto::Layout_ARRAYSIZE;
+#endif  // _MSC_VER
 #ifndef _MSC_VER
 const int WaveformProto::kWidgetFieldNumber;
 const int WaveformProto::kCursorThicknessFieldNumber;
@@ -125,6 +152,7 @@ const int WaveformProto::kTicHeightFieldNumber;
 const int WaveformProto::kSubticHeightFieldNumber;
 const int WaveformProto::kUseCaptionsFieldNumber;
 const int WaveformProto::kTicsAtBottomFieldNumber;
+const int WaveformProto::kLayoutFieldNumber;
 #endif  // !_MSC_VER
 
 WaveformProto::WaveformProto()
@@ -154,6 +182,7 @@ void WaveformProto::SharedCtor() {
   subtic_height_ = 3u;
   use_captions_ = true;
   tics_at_bottom_ = true;
+  layout_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -205,6 +234,7 @@ void WaveformProto::Clear() {
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     tics_at_bottom_ = true;
+    layout_ = 1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -351,6 +381,27 @@ bool WaveformProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(96)) goto parse_layout;
+        break;
+      }
+      
+      // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_layout:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::widget::waveform::WaveformProto_Layout_IsValid(value)) {
+            set_layout(static_cast< ::rec::widget::waveform::WaveformProto_Layout >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(12, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -420,6 +471,12 @@ void WaveformProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(11, this->tics_at_bottom(), output);
   }
   
+  // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+  if (_has_bit(9)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      12, this->layout(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -475,6 +532,12 @@ void WaveformProto::SerializeWithCachedSizes(
   // optional bool tics_at_bottom = 11 [default = true];
   if (_has_bit(8)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(11, this->tics_at_bottom(), target);
+  }
+  
+  // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+  if (_has_bit(9)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      12, this->layout(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -549,6 +612,12 @@ int WaveformProto::ByteSize() const {
       total_size += 1 + 1;
     }
     
+    // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+    if (has_layout()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->layout());
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -605,6 +674,9 @@ void WaveformProto::MergeFrom(const WaveformProto& from) {
     if (from._has_bit(8)) {
       set_tics_at_bottom(from.tics_at_bottom());
     }
+    if (from._has_bit(9)) {
+      set_layout(from.layout());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -637,6 +709,7 @@ void WaveformProto::Swap(WaveformProto* other) {
     std::swap(subtic_height_, other->subtic_height_);
     std::swap(use_captions_, other->use_captions_);
     std::swap(tics_at_bottom_, other->tics_at_bottom_);
+    std::swap(layout_, other->layout_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
