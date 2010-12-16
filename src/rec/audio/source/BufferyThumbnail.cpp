@@ -1,5 +1,4 @@
 #include "rec/audio/source/BufferyThumbnail.h"
-#include "rec/audio/source/TrackSource.h"
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/util/thread/FileWriter.h"
 #include "rec/util/thread/Trash.h"

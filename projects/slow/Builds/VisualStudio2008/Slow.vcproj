@@ -173,21 +173,14 @@
             </Filter>
           </Filter>
           <Filter Name="source">
-            <File RelativePath="..\..\..\..\src\rec\audio\source\AudioThumbnail.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySource.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferyThumbnail.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferyThumbnail.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\CachedThumbnail.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\CachedThumbnail.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySourceFactory.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySourceFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Source.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
@@ -351,8 +344,6 @@
           <File RelativePath="..\..\..\..\src\rec\gui\Color.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Font.h"/>
-          <File RelativePath="..\..\..\..\src\rec\gui\Geometry.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\gui\Geometry.h"/>
           <Filter Name="icon">
             <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h"/>
@@ -377,18 +368,20 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.h"/>
-          <File RelativePath="..\..\..\..\src\rec\gui\SetterSlider.h"/>
         </Filter>
         <Filter Name="slow">
           <Filter Name="app">
             <File RelativePath="..\..\..\..\src\rec\slow\app\AudioSetupPage.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\AudioTransportSourcePlayer.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\ComponentContainer.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\GenericApplication.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPage.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPage.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageComponent.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageComponent.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageJ.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageJ.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageK.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageK.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecApplication.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\RecContainer.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.h"/>
           </Filter>
@@ -429,8 +422,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\listener\Broadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\listener\Time.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Method.h"/>
@@ -445,7 +436,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\ChangeLocker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Cycler.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Factory.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\LockedMessage.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Loop.h"/>
@@ -492,13 +482,6 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.h"/>
           </Filter>
-          <Filter Name="waveform">
-            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.h"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
-          </Filter>
-          <File RelativePath="..\..\..\..\src\rec\widget\Widget.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\widget\Widget.h"/>
         </Filter>
       </Filter>
@@ -563,6 +546,8 @@
             </Filter>
           </Filter>
           <Filter Name="widget">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\AudioThumbnail.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\AudioThumbnail.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h"/>
             <Filter Name="status">
@@ -578,12 +563,6 @@
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\VolumeFile.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\VolumeFile.pb.h"/>
-            </Filter>
-            <Filter Name="waveform">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h"/>
             </Filter>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h"/>
