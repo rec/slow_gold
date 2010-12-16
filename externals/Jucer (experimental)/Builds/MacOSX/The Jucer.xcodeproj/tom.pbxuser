@@ -1,0 +1,254 @@
+// !$*UTF8*$!
+{
+	169DB589B861F57CDF896A02 /* jucer_CodeHelpers.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 6240}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1741}";
+		};
+	};
+	1D7AE967F4874BD12DFB964D /* jucer_Project.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {558, 14508}}";
+			sepNavSelRange = "{38378, 0}";
+			sepNavVisRange = "{37066, 2220}";
+		};
+	};
+	296E0498784BF03FA18B164B /* jucer_ProjectExporter.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {558, 3900}}";
+			sepNavSelRange = "{9836, 0}";
+			sepNavVisRange = "{7741, 2513}";
+		};
+	};
+	889715B0152919B2EAA1F5F9 /* jucer_ProjectExport_Make.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 4797}}";
+			sepNavSelRange = "{5072, 0}";
+			sepNavVisRange = "{4503, 1630}";
+		};
+	};
+	907F302BB89308CDB2C5FD0E /* jucer_ProjectExport_MSVC.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {815, 20293}}";
+			sepNavSelRange = "{30110, 0}";
+			sepNavVisRange = "{29063, 2554}";
+		};
+	};
+	95587D99F55802DE5AA2EE5D /* jucer_MiscUtilities.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {558, 6682}}";
+			sepNavSelRange = "{4393, 0}";
+			sepNavVisRange = "{3544, 1862}";
+			sepNavWindowFrame = "{{241, 280}, {730, 891}}";
+		};
+	};
+	ADF962F14A1FCBB05B499E6C /* jucer_ProjectSaver.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {558, 7722}}";
+			sepNavSelRange = "{2910, 0}";
+			sepNavVisRange = "{1916, 1974}";
+		};
+	};
+	C9D7F4B7778274154DB6F172 /* jucer_MiscUtilities.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {671, 3822}}";
+			sepNavSelRange = "{9216, 0}";
+			sepNavVisRange = "{7425, 1791}";
+			sepNavWindowFrame = "{{38, 261}, {730, 891}}";
+		};
+	};
+	D64DFDDF5D2CD74A8171CF81 /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = E208F2CE12948126000C223D /* The Jucer */;
+		activeTarget = EB946A866C16B958168C9A39 /* The Jucer */;
+		breakpoints = (
+		);
+		codeSenseManager = E208F2F212948136000C223D /* Code sense */;
+		executables = (
+			E208F2CE12948126000C223D /* The Jucer */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					637,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 314223676;
+			PBXWorkspaceStateSaveDate = 314223676;
+		};
+		perUserProjectItems = {
+			E225635A12BAAC4C005EC40E /* PBXTextBookmark */ = E225635A12BAAC4C005EC40E /* PBXTextBookmark */;
+			E225635B12BAAC4C005EC40E /* PBXTextBookmark */ = E225635B12BAAC4C005EC40E /* PBXTextBookmark */;
+			E225635C12BAAC4C005EC40E /* PBXTextBookmark */ = E225635C12BAAC4C005EC40E /* PBXTextBookmark */;
+			E288B34512B9F6F6008EA2F0 = E288B34512B9F6F6008EA2F0 /* PBXTextBookmark */;
+			E2AA60B512B9F7180014F1B8 = E2AA60B512B9F7180014F1B8 /* PBXTextBookmark */;
+			E2AEE43D129598EB00B693AE = E2AEE43D129598EB00B693AE /* PBXTextBookmark */;
+			E2AEE4AB12959FA000B693AE = E2AEE4AB12959FA000B693AE /* PBXTextBookmark */;
+			E2AEE4B81295A00600B693AE = E2AEE4B81295A00600B693AE /* PBXTextBookmark */;
+			E2AEE56B1295B2FB00B693AE = E2AEE56B1295B2FB00B693AE /* PBXTextBookmark */;
+		};
+		sourceControlManager = E208F2F112948136000C223D /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	E208F2CE12948126000C223D /* The Jucer */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "The Jucer";
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	E208F2F112948136000C223D /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	E208F2F212948136000C223D /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	E225635A12BAAC4C005EC40E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 907F302BB89308CDB2C5FD0E /* jucer_ProjectExport_MSVC.h */;
+		name = "jucer_ProjectExport_MSVC.h: 701";
+		rLen = 0;
+		rLoc = 30110;
+		rType = 0;
+		vrLen = 2554;
+		vrLoc = 29063;
+	};
+	E225635B12BAAC4C005EC40E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 169DB589B861F57CDF896A02 /* jucer_CodeHelpers.cpp */;
+		name = "jucer_CodeHelpers.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1741;
+		vrLoc = 0;
+	};
+	E225635C12BAAC4C005EC40E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 169DB589B861F57CDF896A02 /* jucer_CodeHelpers.cpp */;
+		name = "jucer_CodeHelpers.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1741;
+		vrLoc = 0;
+	};
+	E288B34512B9F6F6008EA2F0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 907F302BB89308CDB2C5FD0E /* jucer_ProjectExport_MSVC.h */;
+		name = "jucer_ProjectExport_MSVC.h: 701";
+		rLen = 0;
+		rLoc = 30110;
+		rType = 0;
+		vrLen = 2494;
+		vrLoc = 29127;
+	};
+	E2AA60B512B9F7180014F1B8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 907F302BB89308CDB2C5FD0E /* jucer_ProjectExport_MSVC.h */;
+		name = "jucer_ProjectExport_MSVC.h: 701";
+		rLen = 0;
+		rLoc = 30110;
+		rType = 0;
+		vrLen = 2376;
+		vrLoc = 29127;
+	};
+	E2AEE43D129598EB00B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 889715B0152919B2EAA1F5F9 /* jucer_ProjectExport_Make.h */;
+		name = "jucer_ProjectExport_Make.h: 144";
+		rLen = 0;
+		rLoc = 5072;
+		rType = 0;
+		vrLen = 1630;
+		vrLoc = 4503;
+	};
+	E2AEE4AB12959FA000B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 95587D99F55802DE5AA2EE5D /* jucer_MiscUtilities.cpp */;
+		name = "jucer_MiscUtilities.cpp: 489";
+		rLen = 0;
+		rLoc = 14870;
+		rType = 0;
+		vrLen = 1482;
+		vrLoc = 3834;
+	};
+	E2AEE4B81295A00600B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D7F4B7778274154DB6F172 /* jucer_MiscUtilities.h */;
+		name = "jucer_MiscUtilities.h: 275";
+		rLen = 0;
+		rLoc = 9216;
+		rType = 0;
+		vrLen = 1556;
+		vrLoc = 7174;
+	};
+	E2AEE56B1295B2FB00B693AE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 907F302BB89308CDB2C5FD0E /* jucer_ProjectExport_MSVC.h */;
+		name = "jucer_ProjectExport_MSVC.h: 1566";
+		rLen = 0;
+		rLoc = 72041;
+		rType = 0;
+		vrLen = 2558;
+		vrLoc = 29063;
+	};
+	EB946A866C16B958168C9A39 /* The Jucer */ = {
+		activeExec = 0;
+		executables = (
+			E208F2CE12948126000C223D /* The Jucer */,
+		);
+	};
+}
