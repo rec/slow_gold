@@ -95,8 +95,9 @@ class Jucer(dom_file.DomFile):
   def acceptCpp(self, s):
     return (self.accept(s) and
             ('.' + s).split('.')[-1] in ['h', 'cpp', 'cc', 'c'] and
-            not (self.is_test and 'Main.c' in s))
-  # TODO: is that last condition now irrelevant?
+            not (self.is_test and 'Main.c' in s) and
+            'mfMath.h' not in s)
+  # TODO: is that second-last condition now irrelevant?
 
 
   def accept(self, s):
