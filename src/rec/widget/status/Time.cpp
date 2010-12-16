@@ -2,8 +2,8 @@
 #include <glog/logging.h>
 
 #include "rec/widget/status/Time.h"
-
 #include "rec/gui/Color.h"
+#include "rec/widget/Painter.h"
 
 using rec::gui::Colors;
 using rec::gui::Color;
@@ -20,11 +20,7 @@ TextComponent::TextComponent(const Text& desc)
       description_(desc) {
 }
 
-void TextComponent::setTimeSamples(int samples) {
-  setTimeSeconds(samples / 44100.0);
-}
-
-void TextComponent::setTimeSeconds(float time) {
+void TextComponent::setTime(float time) {
   setText(formatTime(time, description_.separator().flash()), false);
 }
 
@@ -47,19 +43,15 @@ const String formatTime(float time, bool flash) {
   if (flash && (seconds & 1))
     ch = ' ';
 
-#ifdef _WIN32
-#define snprintf _snprintf
-#endif
-
   snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
            hours, minutes, ch, seconds, milliseconds);
   return buffer;
 }
 
-DialComponent::DialComponent(const Dial& desc)
+DialComponent::DialComponent(const Dial& desc, float time)
     : Component(desc.widget().name().c_str()),
       description_(desc),
-      time_(0) {
+      time_(time) {
 }
 
 // Half a degree.
@@ -68,6 +60,8 @@ static const float ALMOST_ZERO = 0.5 / 360.0;
 static const float PI = 3.1415926536;
 
 void DialComponent::paint(Graphics& g) {
+  ScopedLock l(lock_);
+  float timeRatio = Math::near(length_, 0f, 0.001f) ? 0f : (time_ / length_);
   Painter p(description_.widget(), &g);
   juce::Rectangle<int> bounds = p.getBounds(this);
   float zeroAngle = description_.zero_point() * 2.0 * PI;
@@ -83,6 +77,18 @@ void DialComponent::paint(Graphics& g) {
                      zeroAngle, timeAngle, 0);
 
   g.fillPath(path);
+}
+
+void DialComponent::setTime(float time) {
+  ScopedLock l(lock_);
+  time_ = time;
+  repaint();
+}
+
+void DialComponent::setLength(float length) {
+  ScopedLock l(lock_);
+  length_ = length;
+  repaint();
 }
 
 }  // namespace time

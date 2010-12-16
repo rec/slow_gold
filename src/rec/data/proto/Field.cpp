@@ -21,6 +21,18 @@ Operation* Field::apply(const Operation &op, Message* message) {
   return field.apply(op);
 }
 
+Value Field::getValue(const Address& address, const Message& msg) {
+  Field field(message);
+  for (int i = 0; i < address.field_size(); ++i) {
+    if (!field.dereference(address.field(i)))
+      return Value();
+  }
+
+  Value value;
+  field.copyTo(&value);
+  return value;
+}
+
 bool Field::dereference(const proto::Address::Field& afield) {
   if (field_) {
     const Reflection& r = *message_->GetReflection();
@@ -97,7 +109,7 @@ typedef bool (Field::*Applier)();
 Operation* Field::apply(const Operation& op) {
   Operation::Command command = op.command();
   Applier applier = &Field::error;
-  if (field_ == NULL) 
+  if (field_ == NULL)
     type_ = SINGLE;
 
   if (command >= 0 && command < Operation::COMMAND_COUNT) {

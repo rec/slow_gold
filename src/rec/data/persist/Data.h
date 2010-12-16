@@ -14,10 +14,9 @@ namespace persist {
 class App;
 
 template <typename Proto>
-class Data : public UntypedData,
-             public util::listener::Broadcaster<const Proto&> {
+class Data : public UntypedData, public listener::Broadcaster<const Proto&> {
  public:
-  // Get a snapshot of the current data.
+  // Get a snapshot of the current.
   Proto get() const {
     ScopedLock l(lock_);
     return proto_;
@@ -26,7 +25,11 @@ class Data : public UntypedData,
   virtual ~Data() {}
 
  protected:
-  virtual void changeCallback() { broadcast(get()); }
+  virtual void changeCallback() {
+    Proto proto = get();
+    broadcast(proto);
+    broadcast((const Message&)proto);
+  }
 
  private:
   friend class App;

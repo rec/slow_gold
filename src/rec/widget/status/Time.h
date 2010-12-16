@@ -3,11 +3,8 @@
 
 #include <stdio.h>
 
-#include "rec/base/base.h"
 #include "rec/widget/status/Time.pb.h"
-#include "rec/widget/Painter.h"
-#include "rec/gui/Color.pb.h"
-
+#include "rec/util/listener/Time.h"
 
 namespace rec {
 namespace widget {
@@ -16,12 +13,11 @@ namespace time {
 
 const String formatTime(float time, bool flash=false);
 
-class TextComponent : public juce::Label {
+class TextComponent : public juce::Label, public listener::Time {
  public:
   explicit TextComponent(const Text& desc);
-
-  void setTimeSamples(int samples);
-  void setTimeSeconds(float time);
+  virtual void operator()(float time) { setTime(time); }
+  void setTime(float time);
 
  private:
   Text description_;
@@ -30,19 +26,17 @@ class TextComponent : public juce::Label {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
 };
 
-class DialComponent : public juce::Component {
+class DialComponent : public juce::Component, public listener::Time {
  public:
-  explicit DialComponent(const Dial& desc);
-
-  // Value between 0 and 1.
-  void setTimeRatio(float time) {
-    time_ = time;
-    repaint();
-  }
+  explicit DialComponent(const Dial& desc,
+                         float length = 0.0f, float time = 0.0f);
+  void setLength(float length);
+  void setTime(float time);
 
   virtual void paint(juce::Graphics& g);
 
  private:
+  CriticalSection lock_;
   Dial description_;
   float time_;
 

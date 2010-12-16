@@ -22,6 +22,7 @@ class Value;
 class Field {
  public:
   static Operation* apply(const Operation &op, Message* message);
+  static Value getValue(const Address& address, const Message& msg);
 
   explicit Field(Message* message)
       : message_(message),

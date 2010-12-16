@@ -14,10 +14,11 @@ bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetupProto *out);
 
 class AudioDeviceSetupListener : public ChangeListener {
  public:
-  AudioDeviceSetupListener() {}
+  AudioDeviceSetupListener(AudioDeviceManager* m);
   void changeListenerCallback(ChangeBroadcaster* manager);
 
  private:
+  AudioDeviceManager* manager_;
   DISALLOW_COPY_AND_ASSIGN(AudioDeviceSetupListener);
 };
 

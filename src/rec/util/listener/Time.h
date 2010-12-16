@@ -7,28 +7,22 @@ namespace rec {
 namespace util {
 namespace listener {
 
-class Time : public Listener<int>, public Listener<float> {
+class Time : public Listener<int>,
+             public Listener<float>,
+             public ChangeListener {
  public:
-  TimeListener(float sr = 44100f) : sampleRate_(sr) {}
+  Time(float sr = 44100f) : sampleRate_(sr) {}
 
+  virtual void operator()(float time) = 0;
   virtual void operator()(int time) { (*this)(time / sampleRate_); }
 
- private:
-  const float sampleRate_;
-  DISALLOW_COPY_AND_ASSIGN(Time);
-};
-
-class TimeChangeListener : public ChangeListener, public Time {
- public:
-  explicit TimeBroadcaster(float sr = 44100f) : Time(sr) {}
   virtual void changeListenerCallback(ChangeBroadcaster* x) {
     (*this)(((PositionableAudioSource*) x)->getNextReadPosition());
   }
 
  private:
   const float sampleRate_;
-
-  DISALLOW_COPY_AND_ASSIGN(TimeBroadcaster);
+  DISALLOW_COPY_AND_ASSIGN(Time);
 };
 
 }  // namespace listener

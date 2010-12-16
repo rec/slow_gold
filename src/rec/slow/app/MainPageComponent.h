@@ -1,39 +1,53 @@
 #ifndef __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 #define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 
-#include "rec/slow/Preferences.h"
+#include <glog/logging.h>
 
-#include "rec/slow/app/MainPageJ.h"
+#include "rec/gui/RecentFiles.h"
+#include "rec/slow/Preferences.h"
+#include "rec/slow/app/MainPage.h"
 #include "rec/slow/app/AudioSetupPage.h"
 
 namespace rec {
 namespace slow {
 
-class MainPageJ;
-
 class MainPageComponent  : public Component {
  public:
   MainPageComponent() : tabs_(TabbedButtonBar::TabsAtTop),
-                        mainPageJ_(deviceManager_),
-                        audioSetupPage_(deviceManager_) {
+                        mainPage_(deviceManager_),
+                        audioSetupPage_(deviceManager_),
+                        deviceListener_(&deviceManager_) {
     tabs_.setTabBarDepth (30);
-    tabs_.addTab("File Playback", Colours::lightgrey, &mainPageJ_, false);
+    tabs_.addTab("File Playback", Colours::lightgrey, &mainPage_, false);
     tabs_.addTab("Audio Device Setup", Colours::lightgrey, &audioSetupPage_,
                  false);
     tabs_.setCurrentTabIndex(0);
     addAndMakeVisible(&tabbedComponent);
-
     setSize(600, 400);
+    deviceManager_.initialise(0, 2, 0, true, String::empty, 0);
   }
 
   ~MainPageComponent() {}
 
   void loadRecentFile(int menuItemId) {
-    mainPageJ_.loadRecentFile(menuItemId);
+    gui::RecentFiles recent = gui::getSortedRecentFiles();
+    mainPage_(recent.file(menuItemID - 1).file());
   }
 
-  void cut() { mainPageJ_.cut(); }
-  void paste()  { mainPageJ_.paste(); }
+  void cut() {
+    proto::Preferences prefs = slow::getPreferences();
+    string s = yaml::write(prefs);
+    SystemClipboard::copyTextToClipboard(s.c_str());
+    DLOG(INFO) << s;
+  }
+
+  void paste() {
+    string s = SystemClipboard::getTextFromClipboard().toCString();
+    DLOG(INFO) << s;
+    proto::Preferences prefs;
+    yaml::read(s, &prefs);
+  }
+
   void paint(Graphics& g) { g.fillAll(Colours::white); }
 
   void resized() { tabs_.setBounds(getLocalBounds()); }
@@ -42,7 +56,8 @@ class MainPageComponent  : public Component {
   TabbedComponent tabs_;
   AudioDeviceManager deviceManager_;
   AudioSetupPage audioSetupPage_;
-  MainPageJ mainPage_;
+  MainPage mainPage_;
+  AudioDeviceSetupListener deviceListener_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageComponent);
 };

@@ -14,6 +14,6 @@ message CursorProto {
     LOOP_START = 2;
     LOOP_END = 3;
   };
-  optional Type type = 2;
+  optional Type type = 2 [default = PLAYBACK_POSITION];
   optional gui.Line line = 3;
 };

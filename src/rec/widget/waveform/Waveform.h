@@ -12,7 +12,7 @@ namespace widget {
 namespace waveform {
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public Component, public listener::Broadcaster<float> {
+class Waveform : public Component {
  public:
   explicit Waveform(const WaveformProto& desc);
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
