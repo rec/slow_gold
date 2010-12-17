@@ -16,7 +16,7 @@ class Directory : public Node {
   Directory(const NodeDesc& d, const VolumeFile& vf);
   ~Directory();
 
-  void computeChildren();
+  bool computeChildren();
   void partition();
 
   virtual String name() const;

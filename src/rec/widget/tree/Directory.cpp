@@ -91,11 +91,12 @@ void Directory::addChildFile(Node* node) {
     node->requestPartition();
 }
 
-void Directory::computeChildren() {
+bool Directory::computeChildren() {
   if (type() == Volume::CD)
     computeCDChildren();
   else
     computeFileChildren();
+  return true;
 }
 
 void Directory::computeCDChildren() {

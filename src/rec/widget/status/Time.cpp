@@ -2,6 +2,7 @@
 #include <glog/logging.h>
 
 #include "rec/widget/status/Time.h"
+#include "rec/util/Math.h"
 #include "rec/gui/Color.h"
 #include "rec/widget/Painter.h"
 
@@ -48,9 +49,10 @@ const String formatTime(float time, bool flash) {
   return buffer;
 }
 
-DialComponent::DialComponent(const Dial& desc, float time)
+  DialComponent::DialComponent(const Dial& desc, float length, float time)
     : Component(desc.widget().name().c_str()),
       description_(desc),
+      length_(length),
       time_(time) {
 }
 
@@ -61,14 +63,14 @@ static const float PI = 3.1415926536;
 
 void DialComponent::paint(Graphics& g) {
   ScopedLock l(lock_);
-  float timeRatio = Math::near(length_, 0f, 0.001f) ? 0f : (time_ / length_);
+  float timeRatio = Math<float>::near(length_, 0.0f, 0.001f) ? 0.0f : (time_ / length_);
   Painter p(description_.widget(), &g);
   juce::Rectangle<int> bounds = p.getBounds(this);
   float zeroAngle = description_.zero_point() * 2.0 * PI;
-  float timeAngle = zeroAngle + time_ * 2.0 * PI;
+  float timeAngle = zeroAngle + timeRatio * 2.0 * PI;
   if (p.colors().color_size() > 2) {
     g.setColour(p.colour(Painter::FOREGROUND).
-                interpolatedWith(p.colour(Painter::HIGHLIGHT), time_));
+                interpolatedWith(p.colour(Painter::HIGHLIGHT), timeRatio));
   }
 
   Path path;

@@ -38,6 +38,7 @@ class DialComponent : public juce::Component, public listener::Time {
  private:
   CriticalSection lock_;
   Dial description_;
+  float length_;
   float time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
