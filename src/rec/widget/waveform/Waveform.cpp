@@ -88,7 +88,7 @@ void Waveform::layoutCursor(Cursor *cursor) {
   bounds.setX(x - (displayWidth - cursor.desc().width()) / 2);
 }
 
-void Waveform::mouseUp(const MouseEvent& e) {
+void Waveform::mouseUp(const juce::MouseEvent& e) {
   {
     ScopedLock l(lock_);
     float time = e.x * (end_ - begin_) / getWidth();

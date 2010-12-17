@@ -13,41 +13,18 @@ namespace waveform {
 
 class Cursor : public Component, public listener::Time {
  public:
-  Cursor(const CursorProto& d, Waveform* waveform, float time = 0f)
-      : Component("Cursor"), desc_(d), waveform_(waveform) {
-    waveform->addChildComponent(this);
-    setTime(time);
-  }
+  Cursor(const CursorProto& d, Waveform* waveform, float time = 0.0f);
 
-  static const float SAMPLE_RATE = 44100f;
   virtual void operator()(float t) { setTime(t); }
 
-  void setTime(float time) {
-    ScopedLock l(lock_);
-    time_ = time;
-    waveform_->layoutCursor(this);
-  }
-
-  void paint(Graphics& g) {
-    ScopedLock l(lock_);
-    Painter p(desc_.widget(), &g);
-    juce::Rectangle<int> bounds = getLocalBounds();
-
-    float middle = bounds.getWidth() / 2.0F;
-    float margin = desc_.widget().margin();
-    float bottom = bounds.getHeight() - 2.0F * margin;
-
-    gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
-  }
-
-  float getTime() const {
-    ScopedLock l(lock_);
-    return time_;
-  }
+  void setTime(float time);
+  void paint(Graphics& g);
+  float getTime() const;
 
   const CursorProto& desc() const { return desc_; }
 
  private:
+  Waveform* const waveform_;
   CriticalSection lock_;
   const CursorProto desc_;
   float time_;

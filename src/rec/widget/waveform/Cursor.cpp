@@ -46,6 +46,36 @@ const CursorStateColors& getStateColors() {
 }  // namespace
 
 
+Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
+    : Component("Cursor"), waveform_(waveform), desc_(d) {
+  waveform->addChildComponent(this);
+  setTime(time);
+}
+
+void Cursor::setTime(float time) {
+  ScopedLock l(lock_);
+  time_ = time;
+  waveform_->layoutCursor(this);
+}
+
+void Cursor::paint(Graphics& g) {
+  ScopedLock l(lock_);
+  Painter p(desc_.widget(), &g);
+  juce::Rectangle<int> bounds = getLocalBounds();
+
+  float middle = bounds.getWidth() / 2.0f;
+  float margin = desc_.widget().margin();
+  float bottom = bounds.getHeight() - 2.0f * margin;
+
+  gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
+}
+
+float Cursor::getTime() const {
+  ScopedLock l(lock_);
+  return time_;
+}
+
+
 }  // namespace waveform
 }  // namespace widget
 }  // namespace rec

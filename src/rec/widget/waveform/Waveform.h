@@ -5,11 +5,12 @@
 #include "rec/util/listener/Broadcaster.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/VolumeFile.h"
-#include "rec/widget/waveform/Cursor.h"
 
 namespace rec {
 namespace widget {
 namespace waveform {
+  
+class Cursor;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component {
@@ -25,7 +26,7 @@ class Waveform : public Component {
   std::pair<float, float> getTimeBounds() const;
 
   virtual void paint(Graphics& g);
-  void mouseUp(const MouseEvent& e);
+  void mouseUp(const juce::MouseEvent& e);
 
  private:
   void layoutCursors();
@@ -37,7 +38,7 @@ class Waveform : public Component {
   float end_;
   Cursor* timeCursor_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(WaveformProto);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Waveform);
 };
 
 }  // namespace waveform
