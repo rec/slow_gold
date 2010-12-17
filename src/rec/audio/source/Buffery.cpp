@@ -8,7 +8,6 @@
 
 using namespace rec::util::block;
 using namespace rec::util::listener;
-using namespace rec::util::thread;
 
 namespace rec {
 namespace audio {
@@ -46,16 +45,16 @@ bool Buffery::isFull() const {
   return (fullTo(filled_) == length_);
 }
 
-void Buffery::fillNext() {
+void Buffery::fillNextBlock() {
   Block block;
   {
     ScopedLock l(lock_);
-    block = firstEmptyBlockAfter(filled_, p == -1 ? p : position_, length_);
+    block = firstEmptyBlockAfter(filled_, position_, length_);
   }
 
   if (int numSamples = getSize(block)) {
     AudioSourceChannelInfo info;
-    info.buffer = buffer_;
+    info.buffer = &buffer_;
     info.startSample = block.first;
     info.numSamples = juce::jmin(numSamples, blockSize_);
 

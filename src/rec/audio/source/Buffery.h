@@ -19,7 +19,7 @@ class Buffery : public listener::Listener<int> {
   virtual void operator()(int pos) { setPosition(pos); }
   void setPosition(int position);
   bool hasFilled(int length) const;
-  bool hasFilled(const Block& b) const;
+  bool hasFilled(const block::Block& b) const;
   void fillNextBlock();
   bool isFull() const;
 
@@ -27,10 +27,10 @@ class Buffery : public listener::Listener<int> {
   CriticalSection lock_;
   const int length_;
   AudioSampleBuffer buffer_;
-  scoped_ptr<PositionableAudioSource> source_;
-  BlockSet filled_;
   int position_;
+  scoped_ptr<PositionableAudioSource> source_;
   const int blockSize_;
+  block::BlockSet filled_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Buffery);
 };

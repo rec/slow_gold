@@ -32,10 +32,10 @@ inline bool isBlock(const BlockSet& set, const Block& block) {
 }
 
 inline int fullTo(const BlockSet& set) {
-  return (set.empty() || set.begin().first) ? 0 : set.begin()->second;
+  return (set.empty() || set.begin()->first) ? 0 : set.begin()->second;
 }
 
-inline BlockSet slice(const Block& block, int length) {
+inline BlockSet slice(const Block& b, int length) {
   BlockSet s;
   if (b.second <= length) {
     s.insert(b);

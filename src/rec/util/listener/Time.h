@@ -11,7 +11,7 @@ class Time : public Listener<int>,
              public Listener<float>,
              public ChangeListener {
  public:
-  Time(float sr = 44100f) : sampleRate_(sr) {}
+  Time(float sr = 44100f0) : sampleRate_(sr) {}
 
   virtual void operator()(float time) = 0;
   virtual void operator()(int time) { (*this)(time / sampleRate_); }
