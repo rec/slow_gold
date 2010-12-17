@@ -9,7 +9,7 @@
 namespace rec {
 namespace slow {
 
-class Application : public GenericApplication {
+class Application : public app::GenericApplication {
  public:
   Application() : GenericApplication("SlowGold", "1.0") {}
 

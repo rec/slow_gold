@@ -1,5 +1,12 @@
 // !$*UTF8*$!
 {
+	107F029BEE50E0870F8E5A13 /* Main.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {847, 431}}";
+			sepNavSelRange = "{74, 0}";
+			sepNavVisRange = "{0, 89}";
+		};
+	};
 	998399C0F86735CBC8189E96 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = E2AEE5311295AE8500B693AE /* Slow */;
@@ -61,6 +68,10 @@
 			PBXWorkspaceStateSaveDate = 314238828;
 		};
 		perUserProjectItems = {
+			E212A55E12BB078B00C1BEC3 /* XCBuildMessageTextBookmark */ = E212A55E12BB078B00C1BEC3 /* XCBuildMessageTextBookmark */;
+			E212A56312BB07B000C1BEC3 /* XCBuildMessageTextBookmark */ = E212A56312BB07B000C1BEC3 /* XCBuildMessageTextBookmark */;
+			E212A56412BB07B000C1BEC3 /* PBXTextBookmark */ = E212A56412BB07B000C1BEC3 /* PBXTextBookmark */;
+			E212A56712BB07B000C1BEC3 /* PBXTextBookmark */ = E212A56712BB07B000C1BEC3 /* PBXTextBookmark */;
 			E22EC1C212A0895D00501884 = E22EC1C212A0895D00501884 /* PBXTextBookmark */;
 			E22EC3AA12A4A61100501884 = E22EC3AA12A4A61100501884 /* PBXTextBookmark */;
 			E22EC69012A5AB4800501884 = E22EC69012A5AB4800501884 /* PBXTextBookmark */;
@@ -92,6 +103,56 @@
 		executables = (
 			E2AEE5311295AE8500B693AE /* Slow */,
 		);
+	};
+	E212A55D12BB078B00C1BEC3 /* RecApplication.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = RecApplication.h;
+		path = ../../../../../rec/src/rec/slow/app/RecApplication.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1027}}";
+			sepNavSelRange = "{265, 0}";
+			sepNavVisRange = "{0, 975}";
+		};
+	};
+	E212A55E12BB078B00C1BEC3 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected class-name before '{' token";
+		fRef = E212A55D12BB078B00C1BEC3 /* RecApplication.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 11;
+		rType = 1;
+	};
+	E212A56312BB07B000C1BEC3 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected type-specifier";
+		fRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 2;
+		rType = 1;
+	};
+	E212A56412BB07B000C1BEC3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */;
+		name = "Main.cpp: 3";
+		rLen = 0;
+		rLoc = 74;
+		rType = 0;
+		vrLen = 89;
+		vrLoc = 0;
+	};
+	E212A56712BB07B000C1BEC3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212A55D12BB078B00C1BEC3 /* RecApplication.h */;
+		name = "RecApplication.h: 12";
+		rLen = 0;
+		rLoc = 265;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 0;
 	};
 	E22EC1C212A0895D00501884 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
