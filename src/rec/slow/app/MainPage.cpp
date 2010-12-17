@@ -137,11 +137,11 @@ void MainPage::operator()(const Preferences& prefs) {
     transportSource_.stop();
     transportSource_.setPosition(0);
     transportSource_.setSource(NULL);
-    // TODO:  make sure thumbnail gets updated with new data.
 
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
     dr->setPreferences(prefs);
     dr->startThread();
+    waveform_.setAudioThumbnail(dr->thumbnail());
     doubleRunny_.swap(dr);
     transportSource_.setSource(doubleRunny_.get());
     trash::discard(dr.transfer());
