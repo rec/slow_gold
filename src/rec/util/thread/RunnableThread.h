@@ -15,7 +15,9 @@ class RunnableThread : public Thread, public Wrapper {
   ~RunnableThread() { stopThread(SHUTDOWN_DELAY); }
 
   virtual void run() { (*this)(); }
-  bool operator()() { return runnable_->run(this); }
+  bool operator()() {
+    return runnable_->run(this);
+  }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnableThread);

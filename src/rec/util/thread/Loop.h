@@ -12,7 +12,7 @@ class Loop : public Wrapper {
   Loop(Runnable* r) : Wrapper(r) {}
 
   virtual bool run(Thread* thread) {
-    while (!(thread->threadShouldExit() && runnable_->run(thread)));
+    while (!thread->threadShouldExit() && runnable_->run(thread));
     return false;
   }
 

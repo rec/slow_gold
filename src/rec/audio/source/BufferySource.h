@@ -9,7 +9,7 @@ namespace source {
 
 class BufferySource : public PositionableAudioSource {
  public:
-  BufferySource(const AudioSampleBuffer& buffer) : buffer_(buffer) { }
+  BufferySource(const AudioSampleBuffer& buffer) : buffer_(buffer), position_(0) { }
 
   virtual void prepareToPlay(int, double) {}
   virtual void releaseResources() {}
@@ -19,7 +19,9 @@ class BufferySource : public PositionableAudioSource {
     setNextReadPosition((position_ + info.numSamples) % getTotalLength());
   }
 
-  virtual void setNextReadPosition (int p) { position_ = p; }
+  virtual void setNextReadPosition (int p) { 
+    position_ = p; 
+  }
   virtual int getNextReadPosition() const { return position_; };
   virtual int getTotalLength() const { return buffer_.getNumSamples();  }
   virtual bool isLooping() const { return looping_; }
