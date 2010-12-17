@@ -17,6 +17,7 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
+#include "rec/widget/waveform/Cursor.h"
 #include "rec/gui/SetterSlider.h"
 
 using namespace rec::audio::source;
@@ -34,10 +35,11 @@ namespace slow {
 
 class MainPage : public Component,
                  public ButtonListener,
+                 public listener::Listener<PositionableAudioSource*>,
                  public listener::Listener<const Preferences&> {
  public:
   MainPage(AudioDeviceManager& deviceManager);
-  virtual ~MainPage() {}
+  virtual ~MainPage();
 
   void paint(Graphics& g);
   void resized();
@@ -45,16 +47,18 @@ class MainPage : public Component,
 
   virtual void operator()(const Preferences& prefs);
 
+  // TODO
+  virtual void operator()(PositionableAudioSource*) {}
+
   void loadRecentFile(int menuItemId);
 
  private:
-
   Waveform waveform_;
   TextButton startStopButton_;
   scoped_ptr<Root> treeRoot_;
   Label explanation_;
-  SetterSlider timeScaleSlider_;
-  SetterSlider pitchScaleSlider_;
+  SetterSlider<Preferences> timeScaleSlider_;
+  SetterSlider<Preferences> pitchScaleSlider_;
   TextComponent songTime_;
   DialComponent songDial_;
   Cursor* cursor_;

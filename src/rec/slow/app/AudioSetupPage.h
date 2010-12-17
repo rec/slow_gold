@@ -18,7 +18,7 @@ class AudioSetupPage  : public Component {
     setSize (600, 400);
   }
 
-  void paint (Graphics& g) { g.fillAll (Colours::lightgrey); a}
+  void paint (Graphics& g) { g.fillAll (Colours::lightgrey); }
 
   void resized() {
     deviceSelector_->setBounds(8, 8, getWidth() - 16, getHeight() - 16);

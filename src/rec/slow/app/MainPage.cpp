@@ -38,14 +38,17 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
       startStopButton_(String::empty),
       treeRoot_(new Root(NodeDesc())),
       explanation_(String::empty, T("<Explanation here>.")),
-      timeScaleSlider_(T("Time Scale"), prefs(),
-                       Address("track", "timestretch", "time_scale")),
-      pitchScaleSlider_(T("Pitch Scale"), prefs(),
-                       Address("track", "timestretch", "pitch_scale")),
+      timeScaleSlider_(slow::prefs(),
+                       Address("track", "timestretch", "time_scale"),
+                       T("Time Scale")),
+      pitchScaleSlider_(slow::prefs(),
+                        Address("track", "timestretch", "pitch_scale"),
+                        T("Pitch Scale")),
       songTime_(Text()),
       songDial_(realTimeDial()),
+      transportSource_(&deviceManager),
       changeLocker_(new ChangeLocker<Preferences>(CHANGE_LOCKER_WAIT)),
-      fileListener_(prefs(), Address("track", "file")) {
+      fileListener_(slow::prefs()->setter(), Address("track", "file")) {
   setSize(600, 400);
 
   startStopButton_.setButtonText(T("Play/Stop"));
@@ -79,8 +82,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
   changeLocker_->addListener(this);
-  doubleRunny_.addListener(this);
-  prefs()->addListener(changeLocker_.get());
+  doubleRunny_->addListener(this);
+  slow::prefs()->addListener(changeLocker_.get());
   startStopButton_.addButtonListener(this);
   treeRoot_->addListener(fileListener_);
 
@@ -91,13 +94,13 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   treeRoot_->update();
   treeRoot_->startThread();
   changeLocker_->startThread();
-  prefs()->requestUpdate();
+  slow::prefs()->requestUpdate();
 }
 
 MainPage::~MainPage() {
   changeLocker_->removeListener(this);
-  doubleRunny_.removeListener(this);
-  prefs()->removeListener(changeLocker_.get());
+  doubleRunny_->removeListener(this);
+  slow::prefs()->removeListener(changeLocker_.get());
   startStopButton_.removeButtonListener(this);
   treeRoot_->removeListener(fileListener_);
 
@@ -107,6 +110,7 @@ MainPage::~MainPage() {
 
   trash::discard(changeLocker_.transfer());
   trash::discard(treeRoot_.transfer());
+  trash::discard(doubleRunny_.transfer());
 }
 
 void MainPage::paint(Graphics& g) {

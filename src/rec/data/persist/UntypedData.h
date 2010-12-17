@@ -13,8 +13,7 @@ class AppInstance;
 
 typedef proto::arg::Setter Setter;
 
-class UntypedData : public listener::Listener<proto::Operation*>,
-                    public listener::Broadcaster<const Message&> {
+class UntypedData : public listener::Listener<proto::Operation*> {
  public:
   virtual ~UntypedData();
 

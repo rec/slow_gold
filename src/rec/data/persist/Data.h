@@ -25,11 +25,7 @@ class Data : public UntypedData, public listener::Broadcaster<const Proto&> {
   virtual ~Data() {}
 
  protected:
-  virtual void changeCallback() {
-    Proto proto = get();
-    listener::Broadcaster<const Proto&>::broadcast(proto);
-    listener::Broadcaster<const Message&>::broadcast(proto);
-  }
+  virtual void changeCallback() { broadcast(get()); }
 
  private:
   friend class App;

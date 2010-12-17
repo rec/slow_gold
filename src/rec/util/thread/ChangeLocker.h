@@ -25,7 +25,6 @@ class ChangeLocker : public Thread,
       if (!threadShouldExit())
         wait(wait_);
     }
-    return false;
   }
 
  protected:

@@ -7,6 +7,7 @@
 #include "rec/slow/Preferences.h"
 #include "rec/slow/app/MainPage.h"
 #include "rec/slow/app/AudioSetupPage.h"
+#include "rec/data/yaml/Yaml.h"
 
 namespace rec {
 namespace slow {
@@ -22,7 +23,7 @@ class MainPageComponent  : public Component {
     tabs_.addTab("Audio Device Setup", Colours::lightgrey, &audioSetupPage_,
                  false);
     tabs_.setCurrentTabIndex(0);
-    addAndMakeVisible(&tabbedComponent);
+    addAndMakeVisible(&tabs_);
     setSize(600, 400);
     deviceManager_.initialise(0, 2, 0, true, String::empty, 0);
   }
@@ -31,7 +32,8 @@ class MainPageComponent  : public Component {
 
   void loadRecentFile(int menuItemId) {
     gui::RecentFiles recent = gui::getSortedRecentFiles();
-    mainPage_(recent.file(menuItemID - 1).file());
+    const VolumeFile& file = recent.file(menuItemId - 1).file();
+    slow::prefs()->setter()->set("track", "file", file);
   }
 
   void cut() {
@@ -55,9 +57,9 @@ class MainPageComponent  : public Component {
  private:
   TabbedComponent tabs_;
   AudioDeviceManager deviceManager_;
-  AudioSetupPage audioSetupPage_;
   MainPage mainPage_;
-  AudioDeviceSetupListener deviceListener_;
+  AudioSetupPage audioSetupPage_;
+  persist::AudioDeviceSetupListener deviceListener_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageComponent);
 };
