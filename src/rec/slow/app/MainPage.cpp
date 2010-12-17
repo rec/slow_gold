@@ -85,11 +85,11 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   doubleRunny_->addListener(this);
   slow::prefs()->addListener(changeLocker_.get());
   startStopButton_.addButtonListener(this);
-  treeRoot_->addListener(fileListener_);
+  treeRoot_->addListener(&fileListener_);
 
-  transportSource_.addListener(&songDial_);
-  transportSource_.addListener(&songTime_);
-  transportSource_.addListener(cursor_);
+  transportSource_.addChangeListener(&songDial_);
+  transportSource_.addChangeListener(&songTime_);
+  transportSource_.addChangeListener(cursor_);
 
   treeRoot_->update();
   treeRoot_->startThread();
@@ -102,11 +102,11 @@ MainPage::~MainPage() {
   doubleRunny_->removeListener(this);
   slow::prefs()->removeListener(changeLocker_.get());
   startStopButton_.removeButtonListener(this);
-  treeRoot_->removeListener(fileListener_);
+  treeRoot_->removeListener(&fileListener_);
 
-  transportSource_.removeListener(&songDial_);
-  transportSource_.removeListener(&songTime_);
-  transportSource_.removeListener(cursor_);
+  transportSource_.removeChangeListener(&songDial_);
+  transportSource_.removeChangeListener(&songTime_);
+  transportSource_.removeChangeListener(cursor_);
 
   trash::discard(changeLocker_.transfer());
   trash::discard(treeRoot_.transfer());
@@ -135,12 +135,13 @@ void MainPage::buttonClicked(Button* buttonThatWasClicked) {
 static const int BLOCKSIZE = 1024;
 
 void MainPage::operator()(const Preferences& prefs) {
-  if (prefs_.file() != prefs.file()) {
+  const VolumeFile& file = prefs.track().file();
+  if (prefs_.track().file() != file) {
     transportSource_.stop();
     transportSource_.setPosition(0);
     transportSource_.setSource(NULL);
-    thumbnail_.setFile(file);
-
+    // TODO:  make sure thumbnail gets updated with new data.
+    
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
     dr->setPreferences(prefs);
     dr->startThread();
@@ -149,7 +150,7 @@ void MainPage::operator()(const Preferences& prefs) {
     trash::discard(dr.transfer());
 
   } else if (doubleRunny_) {
-    ratio = prefs.track().timestretch().time_scale() /
+    float ratio = prefs.track().timestretch().time_scale() /
       prefs_.track().timestretch().time_scale();
     int position = transportSource_.getNextReadPosition();
     doubleRunny_->setPreferences(prefs, position, ratio);

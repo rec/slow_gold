@@ -17,16 +17,16 @@ namespace tree {
 
 using namespace rec::gui;
 
-Root::Root(const NodeDesc& desc) : desc_(desc) {
+Root::Root(const NodeDesc& desc) : Thread("tree::Root"), desc_(desc) {
   const Colors& colors = desc_.widget().colors();
   setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   Runnable* callback = makeCallback(this, &Root::update);
   Runnable* locked = new LockedMessage(callback);
-  thread_ = new RunnableThread("Polling for volumes", new WaitLoop(1000, locked));
+  thread_.reset(new RunnableThread("Polling for volumes", new WaitLoop(1000, locked)));
 }
 
 Root::~Root() {
-  util::thread::trash::discard(thread_);
+  util::thread::trash::discard(thread_.transfer());
 }
 
 bool Root::update() {

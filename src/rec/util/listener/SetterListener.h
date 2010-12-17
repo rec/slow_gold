@@ -7,11 +7,12 @@ namespace rec {
 namespace util {
 namespace listener {
 
-template <typename Value>
-class SetterListener : public Listener<Value> {
+template <typename Proto>
+class SetterListener : public Listener<Proto> {
  public:
   typedef proto::arg::Setter Setter;
   typedef proto::arg::Address Address;
+  typedef proto::arg::Value Value;
 
   typedef Address A;
   typedef const A::Field& P;
@@ -24,7 +25,7 @@ class SetterListener : public Listener<Value> {
   SetterListener(Setter* s, P a, P b, P c) : address_(a, b, c), setter_(s) {}
   SetterListener(Setter* s, P a, P b, P c, P d) : address_(a, b, c, d), setter_(s) {}
 
-  virtual void operator()(Value v) { setter_->set(address_, v); }
+  virtual void operator()(Proto v) { setter_->set(address_, Value(v)); }
 
  private:
   const Address address_;

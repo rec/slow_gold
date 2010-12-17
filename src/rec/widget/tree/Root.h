@@ -13,13 +13,15 @@ namespace tree {
 class Node;
 
 class Root : public juce::TreeView,
-             public listener::Broadcaster<const VolumeFile&> {
+             public listener::Broadcaster<const VolumeFile&>,
+             public Thread {
  public:
   explicit Root(const NodeDesc& desc);
   ~Root();
 
   bool update();
-  void startThread() { thread_->startThread(); }
+
+  virtual void run() { thread_->run(); }
 
  private:
   void addVolume(const Volume& volume, int insertAt);
@@ -34,7 +36,7 @@ class Root : public juce::TreeView,
 
   NodeDesc desc_;
   TreeViewItem root_;
-  Thread* thread_;
+  scoped_ptr<Thread> thread_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
 };
