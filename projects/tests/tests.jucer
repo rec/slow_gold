@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="9uqDcaUMG" name="tests">
+  <MAINGROUP id="vvnoyUmVo" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -679,10 +679,6 @@
               name="Utf8_test.cpp" resource="0"/>
       </GROUP>
       <GROUP id="hFkrretDQ" name="widget">
-        <FILE compile="1" file="../../src/rec/widget/AudioThumbnail.cpp" id="uQXNXEDpk"
-              name="AudioThumbnail.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/widget/AudioThumbnail.h" id="ZWMEutcv1"
-              name="AudioThumbnail.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="zCSrsHYWM"
               name="Painter.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/widget/Panes.h" id="vsQhr91i1"
@@ -905,7 +901,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="cKCMd5yTC" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="FRKAE3iHs" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

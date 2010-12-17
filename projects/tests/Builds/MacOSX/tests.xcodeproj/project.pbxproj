@@ -28,7 +28,6 @@
 		15E54896BBA2C969BE182556 /* DoubleRunny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BF45FD70FA1F4A3CC283E92 /* DoubleRunny.cpp */; };
 		15FE4605716102AD70BD125E /* Operation.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1012205EC3F496F1545AD /* Operation.pb.cc */; };
 		16C905097FBF9F123239715C /* Mpg123.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13E2F5AE9B5860E894E1F6D5 /* Mpg123.cpp */; };
-		178CF29830AE902726FFCE0C /* AudioThumbnail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8B0032A2DBF29C1E023C91F /* AudioThumbnail.cpp */; };
 		17BD0CB20A63972607F27909 /* TestData.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = F86B29C8283B90AE70A5A9B0 /* TestData.pb.cc */; };
 		183224AD801B0C58EEDD29EC /* RecWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74A969D19CF2710BE6E20764 /* RecWindow.cpp */; };
 		18AD8CEC06FEBA89E6C206F9 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC4A6ACA1273539B268343EC /* QTKit.framework */; };
@@ -441,7 +440,6 @@
 		9FB69D5FC3C5777BCB1D0684 /* DedupeCDDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DedupeCDDB.h; path = ../../../../src/rec/util/cd/DedupeCDDB.h; sourceTree = SOURCE_ROOT; };
 		9FCDF4A7BFCA75A4A6363CA7 /* Album_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Album_test.cpp; path = ../../../../src/rec/util/cd/Album_test.cpp; sourceTree = SOURCE_ROOT; };
 		A1BCE3B18EBF23B2D0A0D547 /* Album.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Album.cpp; path = ../../../../src/rec/util/cd/Album.cpp; sourceTree = SOURCE_ROOT; };
-		A1EC7A44686D06DC346563D9 /* AudioThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioThumbnail.h; path = ../../../../src/rec/widget/AudioThumbnail.h; sourceTree = SOURCE_ROOT; };
 		A23A1C060A0E10F1A34D53D4 /* Album.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Album.h; path = ../../../../src/rec/util/cd/Album.h; sourceTree = SOURCE_ROOT; };
 		A2E65F50FA1C1B78D31FFB92 /* STL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = STL.h; path = ../../../../src/rec/util/STL.h; sourceTree = SOURCE_ROOT; };
 		A3A1077D61C2F6ACAE0E33CB /* NodeItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NodeItem.cpp; path = ../../../../src/rec/widget/tree/NodeItem.cpp; sourceTree = SOURCE_ROOT; };
@@ -528,7 +526,6 @@
 		D7B6DB21B6231CD078BEC377 /* CreateReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateReader.h; path = ../../../../src/rec/audio/format/mpg123/CreateReader.h; sourceTree = SOURCE_ROOT; };
 		D82E65A615A8B6043D56E732 /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = base.h; path = ../../../../src/rec/base/base.h; sourceTree = SOURCE_ROOT; };
 		D8390EE579EA68952D6004C8 /* emitterstate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitterstate.cpp; path = ../../../../src/rec/data/yaml/src/emitterstate.cpp; sourceTree = SOURCE_ROOT; };
-		D8B0032A2DBF29C1E023C91F /* AudioThumbnail.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioThumbnail.cpp; path = ../../../../src/rec/widget/AudioThumbnail.cpp; sourceTree = SOURCE_ROOT; };
 		D8E3EC7207D969A2B202662D /* Field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Field.cpp; path = ../../../../src/rec/data/proto/Field.cpp; sourceTree = SOURCE_ROOT; };
 		D9B1304D760EF4B8FAC83FD7 /* AudioInputMicrophone.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioInputMicrophone.svg.cpp; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.cpp; sourceTree = SOURCE_ROOT; };
 		DBC264B1DC398875017EAB6F /* RecentFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecentFiles.h; path = ../../../../src/rec/gui/RecentFiles.h; sourceTree = SOURCE_ROOT; };
@@ -823,8 +820,6 @@
 		5AA1B34F00CD57CEBFF8DF24 /* widget */ = {
 			isa = PBXGroup;
 			children = (
-				D8B0032A2DBF29C1E023C91F /* AudioThumbnail.cpp */,
-				A1EC7A44686D06DC346563D9 /* AudioThumbnail.h */,
 				1B532489B15B6DDC166C101C /* Painter.h */,
 				ED12EA63AE70153F903549FB /* Panes.h */,
 				98CC691210EA3127D211C23A /* status */,
@@ -1178,20 +1173,6 @@
 			name = util;
 			sourceTree = "<group>";
 		};
-		C82935C8B7E731B6A1AE1942 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		CB58FEE23098914760EE6131 /* app */ = {
 			isa = PBXGroup;
 			children = (
@@ -1327,6 +1308,20 @@
 				D2D15B7BD86027CF914DFF29 /* Preferences.h */,
 			);
 			name = slow;
+			sourceTree = "<group>";
+		};
+		E8FE20C37637A4C9EDE50265 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		F06E991FF8183A25C8615C5C /* proto */ = {
@@ -1468,7 +1463,7 @@
 				French,
 				German,
 			);
-			mainGroup = C82935C8B7E731B6A1AE1942 /* Source */;
+			mainGroup = E8FE20C37637A4C9EDE50265 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1607,7 +1602,6 @@
 				772EC118BCF3F4BA24602997 /* Trash.cpp in Sources */,
 				6A8239F44C60033A7F7F650D /* Utf8.cpp in Sources */,
 				02952183D173DA43D668F167 /* Utf8_test.cpp in Sources */,
-				178CF29830AE902726FFCE0C /* AudioThumbnail.cpp in Sources */,
 				D18EE8FE91699AD36D0451DB /* Status.cpp in Sources */,
 				FC7DD6326A584A14B37DA60F /* Time.cpp in Sources */,
 				1F89F681D1D48EA1567D12B7 /* Convertors.cpp in Sources */,

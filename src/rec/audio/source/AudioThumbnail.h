@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_AUDIOTHUMBNAIL__
 #define __REC_AUDIO_SOURCE_AUDIOTHUMBNAIL__
 
-#include "rec/base/base.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace audio {
