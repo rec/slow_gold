@@ -2,12 +2,15 @@
 #include "rec/audio/source/Snoopy.h"
 #include "rec/widget/tree/VolumeFile.h"
 
+static const int COMPRESSION = 512;
+
 namespace rec {
 namespace audio {
 namespace source {
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, int blockSize)
     : Thread("DoubleRunnyBuffer"),
+      cachedThumbnail_(getShadowFile(file, "thumbnail.stream"), COMPRESSION),
       buffery_(Snoopy::add(createSource(file), &cachedThumbnail_), blockSize) {
 }
 
@@ -27,8 +30,8 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
 }
 
 void DoubleRunnyBuffer::run() {
-  while (!(threadShouldExit() || buffery.isFull()))
-    buffery_.fill();
+  while (!(threadShouldExit() || buffery_.isFull()))
+    buffery_.fillNextBlock();
 }
 
 

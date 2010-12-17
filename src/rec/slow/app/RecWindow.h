@@ -2,7 +2,7 @@
 #define __REC_WINDOW
 
 #include "rec/slow/Preferences.h"
-#include "rec/slow/app/CompContainer.h"
+#include "rec/slow/app/ComponentContainer.h"
 
 using namespace juce;
 
@@ -18,7 +18,7 @@ class RecWindow  : public juce::DocumentWindow {
 
  private:
   ApplicationCommandManager commandManager_;
-  CompContainer container_;
+  ComponentContainer container_;
   // TODO: Component* taskbarIcon used to be here.
 
   DISALLOW_COPY_AND_ASSIGN(RecWindow);

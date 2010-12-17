@@ -1,4 +1,4 @@
-#include "rec/slow/MainPage.h"
+#include "rec/slow/app/MainPage.h"
 
 #include "rec/data/persist/Copy.h"
 #include "rec/util/STL.h"

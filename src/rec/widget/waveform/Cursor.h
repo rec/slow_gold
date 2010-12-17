@@ -11,7 +11,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public listener::TimeChangeListener {
+class Cursor : public Component, public listener::Time {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, float time = 0f)
       : Component("Cursor"), desc_(d), waveform_(waveform) {

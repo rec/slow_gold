@@ -53,9 +53,9 @@ void extendAndClear(Container *from, Container *to, CriticalSection* lock) {
   }
 }
 
-void AppInstance::update() {
+bool AppInstance::update() {
   if (lockedEmpty(updateData_, &lock_))
-    return;
+    return true;
 
   DataSet updates;
   extendAndClear(&updateData_, &updates, &lock_);
@@ -64,17 +64,19 @@ void AppInstance::update() {
 
   extendAndClear(&updates, &writeData_, &lock_);
   writeThread_.notify();
+  return true;
 }
 
-void AppInstance::write() {
+bool AppInstance::write() {
   if (lockedEmpty(writeData_, &lock_))
-    return;
+    return true;
 
   DataSet writes;
   extendAndClear(&writeData_, &writes, &lock_);
 
   for (DataSet::iterator i = writes.begin(); i != writes.end(); ++i)
     (*i)->writeToFile();
+  return true;
 }
 
 void AppInstance::start(const string& name) {

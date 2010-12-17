@@ -17,7 +17,7 @@ class AudioTransportSourcePlayer : public AudioTransportSource {
   ~AudioTransportSourcePlayer() {
     deviceManager_->removeAudioCallback(&player_);
     setSource(NULL);
-    player_->setSource(NULL);
+    player_.setSource(NULL);
   }
 
   void start(bool isStart = true) {

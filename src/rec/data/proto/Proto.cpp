@@ -11,7 +11,7 @@ Operation* applyOperation(const Operation& operation, Message* msg) {
 }
 
 Value getValue(const Address& address, const Message& msg) {
-  return Field::apply(address, msg);
+  return Field::getValue(address, msg);
 }
 
 }  // namespace proto

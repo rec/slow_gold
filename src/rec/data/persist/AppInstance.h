@@ -23,8 +23,8 @@ class AppInstance : public App {
   // A piece of data got new information!
   virtual void needsUpdate(UntypedData* data);
 
-  void update();
-  void write();
+  bool update();
+  bool write();
 
   static void start(const string& name);
   static void stop();
@@ -34,8 +34,8 @@ class AppInstance : public App {
   typedef std::set<UntypedData*> DataSet;
 
 private:
-  explicit AppInstance(const string& appName);
   virtual ~AppInstance();
+  explicit AppInstance(const string& appName);
 
   CriticalSection lock_;
 

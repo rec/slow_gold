@@ -8,7 +8,7 @@
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
-namespace slow {
+namespace app {
 
 class GenericApplication : public juce::JUCEApplication {
  public:
@@ -50,6 +50,6 @@ class GenericApplication : public juce::JUCEApplication {
 };
 
 }  // namespace slow
-}  // namespace rec
+}  // namespace app
 
 #endif  // __REC_JUCE_GENERIC_APPLICATION

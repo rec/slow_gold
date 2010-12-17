@@ -16,7 +16,7 @@ const File getShadowDirectory(const VolumeFile& file);
 
 template <typename Proto>
 const File getShadowFile(const Proto& pr, const string& child) {
-  return getShadowDirectory(pr).getChildFile(child);
+  return getShadowDirectory(pr).getChildFile(child.c_str());
 }
 
 bool compareVolumes(const Volume& x, const Volume& y);

@@ -11,6 +11,7 @@ namespace {
 class TestApplication : public GenericApplication {
  public:
   TestApplication() : GenericApplication("tests", "1.0") {}
+  virtual ~TestApplication() {}
 
   virtual void initialise(const String& commandLine) {
     GenericApplication::initialise(commandLine);
