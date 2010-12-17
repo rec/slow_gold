@@ -16,9 +16,9 @@ class TestApplication : public GenericApplication {
   virtual void initialise(const String& commandLine) {
     GenericApplication::initialise(commandLine);
 
-    char* argv[] = {"test"};
+    const char* argv[] = {"test"};
     int argc = 1;
-    testing::InitGoogleTest(&argc, argv);
+    testing::InitGoogleTest(&argc, (char**) argv);
     setApplicationReturnValue(RUN_ALL_TESTS());
     juce::AudioFormatManager::deleteInstance();
     quit();
