@@ -30,10 +30,12 @@ class SetterSlider : public juce::Slider,
 
   virtual void operator()(const Proto& message) {
     proto::Value value = proto::getValue(address_, message);
-    if (value.has_double_f())
+    if (value.has_double_f()) {
+      juce::MessageManagerLock lock(Thread::getCurrentThread());
       setValue(value.double_f(), false);
-    else
+    } else {
       LOG(ERROR) << "Got an update but no double value!";
+    }
   }
 
   virtual void valueChanged() {

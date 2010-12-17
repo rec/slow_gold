@@ -12,9 +12,8 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleRunny
-  : public Wrappy,
-    public util::listener::Broadcaster<PositionableAudioSource*> {
+class DoubleRunny : public Wrappy {
+  //    public util::listener::Broadcaster<PositionableAudioSource*> {
  public:
   DoubleRunny() : Wrappy(NULL) {}
   ~DoubleRunny();

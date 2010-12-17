@@ -25,7 +25,6 @@ class MainPageComponent  : public Component {
     tabs_.setCurrentTabIndex(0);
     addAndMakeVisible(&tabs_);
     setSize(600, 400);
-    deviceManager_.initialise(0, 2, 0, true, String::empty, 0);
   }
 
   ~MainPageComponent() {}

@@ -143,7 +143,6 @@ void MainPage::operator()(const Preferences& prefs) {
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
     dr->setPreferences(prefs);
     dr->startThread();
-    doubleRunny_->addListener(this);
     doubleRunny_.swap(dr);
     transportSource_.setSource(doubleRunny_.get());
     trash::discard(dr.transfer());

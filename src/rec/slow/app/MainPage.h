@@ -46,8 +46,7 @@ class MainPage : public Component,
   void buttonClicked(Button* buttonThatWasClicked);
 
   virtual void operator()(const Preferences& prefs);
-
-  // TODO
+  // TODO: remove?
   virtual void operator()(PositionableAudioSource*) {}
 
   void loadRecentFile(int menuItemId);

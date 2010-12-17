@@ -37,7 +37,7 @@ void DoubleRunny::setPreferences(const Preferences& prefs,
   scoped_ptr<Stretchy> str(new Stretchy(prefs.track().timestretch(), src.transfer()));
   scoped_ptr<Runny> runny(new Runny(prefs.track().runny(), str.transfer()));
 
-  runny->setNextReadPosition(position);
+  runny->setNextReadPosition(position >= 0 ? position : 0);
   while (runny->fill());
   runny->startThread();
 
@@ -49,7 +49,6 @@ void DoubleRunny::setPreferences(const Preferences& prefs,
       runny_.swap(nextRunny_);
   }
 
-  broadcast(this);
   trash::discardAndEmpty(runny.transfer());
 }
 

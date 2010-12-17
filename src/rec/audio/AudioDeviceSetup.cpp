@@ -55,17 +55,25 @@ bool copy(AudioDeviceManager& in, audio::AudioDeviceSetupProto *out) {
 AudioDeviceSetupListener::AudioDeviceSetupListener(AudioDeviceManager* manager)
     : manager_(manager) {
   AudioDeviceSetup setup;
+  bool readSuccessful = false;
   if (slow::audioSetupData()->fileReadSuccess()) {
     if (!persist::copy(slow::audioSetupData()->get(), &setup)) {
       LOG(ERROR) << "Couldn't copy audio setup data";
     } else {
       String err = manager->setAudioDeviceSetup(setup, true);
-      if (err.length())
-        LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
-      else
+      readSuccessful = (err.length() == 0);
+      if (readSuccessful)
         DLOG(INFO) << "read audio setup from file";
+      else
+        LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
     }
+  } else {
+    DLOG(INFO) << "Did not read audio setup from file";
   }
+
+  if (!readSuccessful)
+    manager->initialise(0, 2, 0, true, String::empty, 0);
+
   manager->addChangeListener(this);
 }
 
@@ -73,10 +81,12 @@ AudioDeviceSetupListener::~AudioDeviceSetupListener() {
   manager_->removeChangeListener(this);
 }
 
-void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster*) {
+void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster* cb) {
+  if (cb != manager_)
+    LOG(ERROR) << "whoops! TODO";
   audio::AudioDeviceSetupProto setupProto;
   if (copy(*manager_, &setupProto)) {
-    DLOG(INFO) << "Audio setup changed";
+    DLOG(INFO) << "Audio setup changed to:\n" << setupProto.DebugString();
     slow::audioSetupData()->setter()->set(setupProto);
   } else {
     LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";
