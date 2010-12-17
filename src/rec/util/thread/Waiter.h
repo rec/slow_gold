@@ -4,6 +4,7 @@
 #include "rec/util/thread/Runnable.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 class Waiter : public Runnable {
@@ -23,6 +24,7 @@ class Waiter : public Runnable {
 };
 
 }  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_WAITER__

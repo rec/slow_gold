@@ -3,11 +3,9 @@
 
 #include "rec/base/base.h"
 
-namespace juce {
-class Thread;
-}
 
 namespace rec {
+namespace util {
 namespace thread {
 
 class Runnable {
@@ -17,7 +15,8 @@ class Runnable {
   bool operator()(Thread* thread) { return run(thread); }
 };
 
-}  // namespace runnable
+}  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_RUNNABLEX

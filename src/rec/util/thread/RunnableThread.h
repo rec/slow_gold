@@ -5,6 +5,7 @@
 #include "rec/util/thread/Wrapper.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 class RunnableThread : public Thread, public Wrapper {
@@ -20,7 +21,8 @@ class RunnableThread : public Thread, public Wrapper {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(RunnableThread);
 };
 
-}  // namespace runnable
+}  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_RUNNABLETHREADX

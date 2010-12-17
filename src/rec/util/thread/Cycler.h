@@ -4,6 +4,7 @@
 #include "rec/util/thread/Runnable.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 class Cycler : public Runnable {
@@ -44,6 +45,7 @@ class Cycler : public Runnable {
 };
 
 }  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_CYCLER__

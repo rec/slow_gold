@@ -21,7 +21,9 @@ class UntypedData : public listener::Listener<proto::Operation*> {
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
   virtual void operator()(proto::Operation* op);
-  void requestUpdate() { (*this)((proto::Operation*)NULL); }
+  void requestUpdate() { 
+    (*this)((proto::Operation*)NULL); 
+  }
 
   Setter* setter() { return &setter_; }
   bool fileReadSuccess() const { return fileReadSuccess_; }

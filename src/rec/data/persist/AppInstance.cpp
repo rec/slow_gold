@@ -3,28 +3,34 @@
 #include "rec/data/persist/AppInstance.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/thread/CallbackLoop.h"
+#include "rec/util/thread/Trash.h"
 #include "rec/util/STL.h"
 
 namespace rec {
 namespace persist {
 
+using namespace rec::util::thread;
+
 AppInstance::AppInstance(const string& appName)
     : App(appName),
-      updateThread_("App::update",
-                    thread::callbackLoop(UPDATE_PERIOD, this, &AppInstance::update)),
-      writeThread_("App::write",
-                   thread::callbackLoop(WRITE_PERIOD, this, &AppInstance::write)) {
+      updateThread_(new RunnableThread("App::update",
+                               callbackLoop(UPDATE_PERIOD,
+                                                    this,
+                                                    &AppInstance::update))),
+      writeThread_(new RunnableThread("App::write",
+                              callbackLoop(WRITE_PERIOD,
+                                                   this,
+                                                   &AppInstance::write))) {
   CHECK(appName.length());
-  updateThread_.setPriority(UPDATE_PRIORITY);
-  writeThread_.setPriority(WRITE_PRIORITY);
-
-  updateThread_.startThread();
-  writeThread_.startThread();
+  updateThread_->setPriority(UPDATE_PRIORITY);
+  writeThread_->setPriority(WRITE_PRIORITY);
+  updateThread_->startThread();
+  writeThread_->startThread();
 }
 
 AppInstance::~AppInstance() {
-  updateThread_.stopThread(1000);
-  writeThread_.stopThread(1000);
+  thread::trash::discard(updateThread_.transfer());
+  thread::trash::discard(writeThread_.transfer());
 }
 
 // A piece of data got new information!
@@ -33,7 +39,7 @@ void AppInstance::needsUpdate(UntypedData* data) {
     ScopedLock l(lock_);
     updateData_.insert(data);
   }
-  updateThread_.notify();
+  updateThread_->notify();
 }
 
 template <typename Container>
@@ -63,7 +69,7 @@ bool AppInstance::update() {
     (*i)->update();
 
   extendAndClear(&updates, &writeData_, &lock_);
-  writeThread_.notify();
+  writeThread_->notify();
   return true;
 }
 

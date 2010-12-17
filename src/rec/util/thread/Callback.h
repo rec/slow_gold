@@ -5,6 +5,7 @@
 #include "rec/util/thread/Runnable.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 template <typename Type>
@@ -12,7 +13,7 @@ class Callback : public Runnable {
  public:
   typedef bool (Type::*Method)();
   Callback(Type* obj, Method m) : object_(obj), method_(m) {}
-  
+
   virtual ~Callback() {}
   virtual bool run(Thread*) {
     return (object_->*method_)();
@@ -31,6 +32,7 @@ Runnable* makeCallback(Type* object, Method method) {
 }
 
 }  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_CALLBACK__

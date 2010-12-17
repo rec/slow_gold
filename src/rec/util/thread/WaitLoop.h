@@ -6,6 +6,7 @@
 #include "rec/util/thread/Loop.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 class WaitLoop : public Loop {
@@ -17,6 +18,7 @@ class WaitLoop : public Loop {
 };
 
 }  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_WAITLOOP__

@@ -7,6 +7,7 @@
 #include "rec/util/thread/WaitLoop.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 template <typename Type, typename Method>
@@ -15,6 +16,7 @@ Runnable* callbackLoop(int period, Type* obj, Method m) {
 };
 
 }  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_CALLBACKLOOP__

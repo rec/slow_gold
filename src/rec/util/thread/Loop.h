@@ -4,6 +4,7 @@
 #include "rec/util/thread/Wrapper.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 class Loop : public Wrapper {
@@ -20,6 +21,7 @@ class Loop : public Wrapper {
 };
 
 }  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_LOOP__

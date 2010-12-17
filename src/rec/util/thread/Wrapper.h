@@ -4,6 +4,7 @@
 #include "rec/util/thread/Runnable.h"
 
 namespace rec {
+namespace util {
 namespace thread {
 
 class Wrapper : public Runnable {
@@ -17,6 +18,7 @@ class Wrapper : public Runnable {
 };
 
 }  // namespace thread
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_THREAD_WRAPPER
