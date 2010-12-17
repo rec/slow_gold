@@ -29,7 +29,7 @@ class SetterListener : public Listener<Value> {
  private:
   const Address address_;
   Setter* setter_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Setter);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterListener);
 };
 
 }  // namespace listener

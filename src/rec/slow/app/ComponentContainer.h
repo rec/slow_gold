@@ -3,6 +3,8 @@
 
 #include "rec/base/base.h"
 
+using namespace juce;
+
 namespace rec {
 namespace slow {
 

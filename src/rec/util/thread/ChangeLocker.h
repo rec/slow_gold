@@ -16,7 +16,7 @@ class ChangeLocker : public Thread,
  public:
   ChangeLocker(int wait) : Thread("ChangeLocker"), wait_(wait) {}
 
-  virtual bool run() {
+  virtual void run() {
     Data data;
     while (!threadShouldExit()) {
       if (getDataIfChanged(&data) && !threadShouldExit())

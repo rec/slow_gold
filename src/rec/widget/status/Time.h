@@ -26,12 +26,14 @@ class TextComponent : public juce::Label, public listener::Time {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
 };
 
+// TODO: must get updates for length!
 class DialComponent : public juce::Component, public listener::Time {
  public:
   explicit DialComponent(const Dial& desc,
                          float length = 0.0f, float time = 0.0f);
   void setLength(float length);
   void setTime(float time);
+  virtual void operator()(float time) { setTime(time); }
 
   virtual void paint(juce::Graphics& g);
 

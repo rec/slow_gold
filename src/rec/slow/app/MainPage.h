@@ -10,6 +10,7 @@
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/slow/Preferences.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
+#include "rec/util/listener/SetterListener.h"
 #include "rec/util/thread/ChangeLocker.h"
 #include "rec/widget/Panes.h"
 #include "rec/widget/status/Time.h"
@@ -18,27 +19,25 @@
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/gui/SetterSlider.h"
 
-using audio::source::Source;
-using audio::source::TimeStretch;
 using namespace rec::audio::source;
+using namespace rec::gui;
 using namespace rec::slow::proto;
 using namespace rec::util::thread;
+using namespace rec::widget::status::time;
 using namespace rec::widget::tree;
-using namespace rec::gui;
+using namespace rec::widget::waveform;
 
-using persist::copy;
-using util::thread::ThreadDescription;
-using widget::waveform::WaveformProto;
+using rec::persist::copy;
 
 namespace rec {
 namespace slow {
 
-class MainPageJ : public Component,
-                  public ButtonListener,
-                  public Listener<const Preferences&> {
+class MainPage : public Component,
+                 public ButtonListener,
+                 public listener::Listener<const Preferences&> {
  public:
-  MainPageJ(AudioDeviceManager& deviceManager);
-  virtual ~MainPageJ() ()
+  MainPage(AudioDeviceManager& deviceManager);
+  virtual ~MainPage() {}
 
   void paint(Graphics& g);
   void resized();
@@ -49,11 +48,6 @@ class MainPageJ : public Component,
   void loadRecentFile(int menuItemId);
 
  private:
-  using widget::waveform::Cursor;
-  using widget::waveform::Waveform;
-  using widget::status::time::TextComponent;
-  using widget::status::time::DialComponent;
-  using widget::tree::Root;
 
   Waveform waveform_;
   TextButton startStopButton_;
@@ -66,13 +60,13 @@ class MainPageJ : public Component,
   Cursor* cursor_;
 
   CriticalSection lock_;
-  AudioTransportSourcePlayer transportSource_;
+  app::AudioTransportSourcePlayer transportSource_;
   scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
   scoped_ptr<DoubleRunnyBuffer> doubleRunny_;
-  SetterListener<const VolumeFile&> fileListener_;
+  listener::SetterListener<const VolumeFile&> fileListener_;
 
   slow::proto::Preferences prefs_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPageJ);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };
 
 }  // namespace slow

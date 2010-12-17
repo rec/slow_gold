@@ -29,7 +29,6 @@ Dial realTimeDial() {
   return dial;
 }
 
-static const char* PREVIEW_THREAD_NAME = "audio file preview";
 static const int CHANGE_LOCKER_WAIT = 100;
 
 }  // namespace
@@ -46,7 +45,6 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
       songTime_(Text()),
       songDial_(realTimeDial()),
       changeLocker_(new ChangeLocker<Preferences>(CHANGE_LOCKER_WAIT)),
-      transportSourceSet_(false),
       fileListener_(prefs(), Address("track", "file")) {
   setSize(600, 400);
 
@@ -78,7 +76,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   addAndMakeVisible(&songTime_);
   addAndMakeVisible(&songDial_);
 
-  cursor_ = waveform_.addCursor(CursorProto(), 0.0);
+  cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
   changeLocker_->addListener(this);
   doubleRunny_.addListener(this);

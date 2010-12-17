@@ -8,12 +8,18 @@
 namespace rec {
 namespace gui {
 
+typedef proto::arg::Address Address;
+typedef persist::UntypedData UntypedData;
+
 class SetterSlider : public juce::Slider,
-                     public listener::Listener<UntypedData*> {
+                     public listener::Listener<const Message&> {
  public:
+  typedef proto::arg::Address Address;
+  typedef persist::UntypedData UntypedData;
+
   SetterSlider(UntypedData* d, const Address& a,
-                 const String& name = String::empty)
-      : juce::Slider(name), data_(d), address_(s) {
+              const String& name = String::empty)
+      : juce::Slider(name), data_(d), address_(a) {
     data_->addListener(this);
   }
 
@@ -22,8 +28,8 @@ class SetterSlider : public juce::Slider,
   }
 
   virtual void operator()(const Message& message) {
-    proto::Value value = getValue(address_, message);
-    if (value.has_double())
+    proto::Value value = proto::getValue(address_, message);
+    if (value.has_double_f())
       setValue(value.double_f(), false);
     else
       LOG(ERROR) << "Got an update but no double value!";
@@ -34,6 +40,7 @@ class SetterSlider : public juce::Slider,
   }
 
  private:
+  UntypedData* const data_;
   const Address address_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterSlider);
