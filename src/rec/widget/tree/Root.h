@@ -5,12 +5,9 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/VolumeFile.pb.h"
 
-
 namespace rec {
 namespace widget {
 namespace tree {
-
-class Node;
 
 class Root : public juce::TreeView,
              public listener::Broadcaster<const VolumeFile&>,

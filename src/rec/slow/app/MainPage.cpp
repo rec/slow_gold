@@ -82,7 +82,6 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
   changeLocker_->addListener(this);
-  doubleRunny_->addListener(this);
   slow::prefs()->addListener(changeLocker_.get());
   startStopButton_.addButtonListener(this);
   treeRoot_->addListener(&fileListener_);
@@ -99,7 +98,6 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
 MainPage::~MainPage() {
   changeLocker_->removeListener(this);
-  doubleRunny_->removeListener(this);
   slow::prefs()->removeListener(changeLocker_.get());
   startStopButton_.removeButtonListener(this);
   treeRoot_->removeListener(&fileListener_);
@@ -141,10 +139,11 @@ void MainPage::operator()(const Preferences& prefs) {
     transportSource_.setPosition(0);
     transportSource_.setSource(NULL);
     // TODO:  make sure thumbnail gets updated with new data.
-    
+
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
     dr->setPreferences(prefs);
     dr->startThread();
+    doubleRunny_->addListener(this);
     doubleRunny_.swap(dr);
     transportSource_.setSource(doubleRunny_.get());
     trash::discard(dr.transfer());

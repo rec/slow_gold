@@ -70,7 +70,7 @@ std::pair<float, float> Waveform::getTimeBounds() const {
 void Waveform::layoutCursors() {
   ScopedLock l(lock_);
   for (int i = getNumChildComponents(); i > 0; --i) {
-    Component* comp = getChildComponent(i);
+    Component* comp = getChildComponent(i - 1);
     if (comp->getName() == "Cursor")
       layoutCursor((Cursor*) comp);
   }
