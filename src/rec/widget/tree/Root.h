@@ -14,15 +14,12 @@ class Root : public juce::TreeView,
              public Thread {
  public:
   explicit Root(const NodeDesc& desc);
-  ~Root();
-
-  bool update();
-
-  virtual void run() { thread_->run(); }
+  virtual ~Root() {}
+  virtual void run();
 
  private:
+  void update();
   void addVolume(const Volume& volume, int insertAt);
-
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
   int getNumNodes() const { return root_.getNumSubItems(); }
 
@@ -33,7 +30,6 @@ class Root : public juce::TreeView,
 
   NodeDesc desc_;
   TreeViewItem root_;
-  scoped_ptr<Thread> thread_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
 };

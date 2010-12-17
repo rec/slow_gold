@@ -22,7 +22,9 @@ class Data : public UntypedData, public listener::Broadcaster<const Proto&> {
     return proto_;
   }
 
-  virtual ~Data() {}
+  virtual ~Data() {
+    DLOG(INFO) << "Shutting down data: " << Proto::descriptor()->name();
+  }
 
  protected:
   virtual void changeCallback() { broadcast(get()); }

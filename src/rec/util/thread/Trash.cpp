@@ -19,7 +19,6 @@ class Trash {
   }
 
   void doDelete(Thread* thread) {
-    // DLOG(INFO) << "Deleting thread " << thread->getThreadName();
     delete thread;
   }
 
@@ -56,6 +55,7 @@ class Trash {
 
   void waitForAllThreadsToExit(int timeout) {
     ScopedLock l(lock_);
+    empty();
     for (ThreadSet::iterator i = threads_.begin(); i != threads_.end(); ++i)
       (*i)->waitForThreadToExit(timeout);
   }

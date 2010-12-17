@@ -27,6 +27,11 @@ class Application : public app::GenericApplication {
 #endif
   }
 
+  virtual void shutdown() {
+    window_.reset();
+    GenericApplication::shutdown();
+  }
+
  private:
   scoped_ptr<RecWindow> window_;
   DISALLOW_COPY_AND_ASSIGN(Application);

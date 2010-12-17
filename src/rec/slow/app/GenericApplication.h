@@ -29,9 +29,9 @@ class GenericApplication : public juce::JUCEApplication {
   }
 
   virtual void shutdown() {
+    util::thread::trash::waitForAllThreadsToExit(1000);
     persist::AppInstance::stop();
     juce::AudioFormatManager::deleteInstance();
-    util::thread::trash::empty();
     LOG(INFO) << "Shutting down " << getApplicationName();
   }
 

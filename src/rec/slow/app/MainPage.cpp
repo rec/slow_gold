@@ -90,7 +90,6 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   transportSource_.addChangeListener(&songTime_);
   transportSource_.addChangeListener(cursor_);
 
-  treeRoot_->update();
   treeRoot_->startThread();
   changeLocker_->startThread();
   slow::prefs()->requestUpdate();
