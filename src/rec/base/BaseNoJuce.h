@@ -33,8 +33,9 @@ class VolumeFile;
 }  // namespace tree
 }  // namespace widget
 
-using VolumeFile;
+using widget::tree::VolumeFile;
 
 }  // namespace rec
+
 
 #endif  // __REC_BASE_BASENOJUCE__

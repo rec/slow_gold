@@ -42,12 +42,12 @@ bool copy(const AudioDeviceSetup& in, AudioDeviceSetupProto* out) {
   return true;
 }
 
-bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetup *out) {
-  manager->getAudioDeviceSetup(setup);
+bool copy(AudioDeviceManager& in, AudioDeviceSetup *out) {
+  in.getAudioDeviceSetup(*out);
   return true;
 }
 
-bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetupProto *out) {
+bool copy(AudioDeviceManager& in, audio::AudioDeviceSetupProto *out) {
   AudioDeviceSetup setup;
   return copy(in, &setup) && copy(setup, out);
 }
@@ -55,32 +55,31 @@ bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetupProto *out) {
 AudioDeviceSetupListener::AudioDeviceSetupListener(AudioDeviceManager* manager)
     : manager_(manager) {
   AudioDeviceSetup setup;
-  if (audioSetupData()->fileReadSuccess()) {
+  if (slow::audioSetupData()->fileReadSuccess()) {
     if (!persist::copy(slow::audioSetupData()->get(), &setup)) {
       LOG(ERROR) << "Couldn't copy audio setup data";
     } else {
-      String err = deviceManager_->setAudioDeviceSetup(setup, true);
+      String err = manager->setAudioDeviceSetup(setup, true);
       if (err.length())
         LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
       else
         DLOG(INFO) << "read audio setup from file";
     }
   }
-  manager_->addListener(this);
+  manager->addChangeListener(this);
 }
 
 AudioDeviceSetupListener::~AudioDeviceSetupListener() {
-  manager_->removeListener(this);
+  manager_->removeChangeListener(this);
 }
 
 void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster*) {
-    audio::AudioDeviceSetupProto setupProto;
-    if (copy(manager_, &setupProto)) {
-      DLOG(INFO) << "Audio setup changed";
-      slow::audioSetupData()->setter()->set(setupProto);
-    } else {
-      LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";
-    }
+  audio::AudioDeviceSetupProto setupProto;
+  if (copy(*manager_, &setupProto)) {
+    DLOG(INFO) << "Audio setup changed";
+    slow::audioSetupData()->setter()->set(setupProto);
+  } else {
+    LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";
   }
 }
 

@@ -23,7 +23,7 @@ class Broadcaster : public Listener<Type> {
 
   virtual void removeListener(Listener<Type>* listener) {
     ScopedLock l(lock_);
-    listeners_.remove(listener);
+    listeners_.erase(listener);
   }
 
   virtual void broadcast(Type x) {

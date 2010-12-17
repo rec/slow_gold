@@ -9,12 +9,13 @@ namespace persist {
 
 bool copy(const audio::AudioDeviceSetupProto& in, AudioDeviceSetup *out);
 bool copy(const AudioDeviceSetup& in, audio::AudioDeviceSetupProto* out);
-bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetup *out);
-bool copy(const AudioDeviceManager& in, audio::AudioDeviceSetupProto *out);
+bool copy(AudioDeviceManager& in, AudioDeviceSetup *out);
+bool copy(AudioDeviceManager& in, audio::AudioDeviceSetupProto *out);
 
 class AudioDeviceSetupListener : public ChangeListener {
  public:
   AudioDeviceSetupListener(AudioDeviceManager* m);
+  virtual ~AudioDeviceSetupListener();
   void changeListenerCallback(ChangeBroadcaster* manager);
 
  private:
