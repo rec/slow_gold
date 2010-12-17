@@ -11,11 +11,13 @@ namespace widget {
 namespace waveform {
   
 class Cursor;
+class CursorProto;
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public Component {
+class Waveform : public Component, public listener::Broadcaster<float> {
  public:
   explicit Waveform(const WaveformProto& desc);
+  virtual ~Waveform();
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized() { layoutCursors(); }
 

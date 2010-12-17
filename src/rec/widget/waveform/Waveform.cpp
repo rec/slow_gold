@@ -1,4 +1,5 @@
 #include "rec/widget/waveform/Waveform.h"
+#include "rec/widget/waveform/Cursor.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -10,7 +11,7 @@ Waveform::Waveform(const WaveformProto& d)
       desc_(d),
       thumbnail_(NULL),
       begin_(0),
-      end_(0) (
+      end_(0) {
 }
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
@@ -20,14 +21,14 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
 }
 
 void Waveform::paint(Graphics& g) {
-  Painter p(description_.widget(), &g);
+  Painter p(desc_.widget(), &g);
   ScopedLock l(lock_);
   if (thumbnail_) {
     if (desc_.layout() == WaveformProto::PARALLEL) {
       thumbnail_->drawChannels(g, getLocalBounds(), begin_, end_, 1.0f);
 
     } else {
-      for (int i = 0; i < thumbnail_.getNumChannels(); ++i) {
+      for (int i = 0; i < thumbnail_->getNumChannels(); ++i) {
         p.setColor(i + 1);
         thumbnail_->drawChannel(g, getLocalBounds(), begin_, end_, i, 1.0f);
       }
@@ -36,7 +37,7 @@ void Waveform::paint(Graphics& g) {
   } else {
     g.setFont(14.0f);
     g.drawFittedText("(No audio file selected)", 0, 0, getWidth(), getHeight(),
-                     Justification::centred, margin);
+                     juce::Justification::centred, 0);
   }
 }
 
@@ -71,7 +72,7 @@ void Waveform::layoutCursors() {
   for (int i = getNumChildComponents(); i > 0; --i) {
     Component* comp = getChildComponent(i);
     if (comp->getName() == "Cursor")
-      layoutCursor((Cursor) comp);
+      layoutCursor((Cursor*) comp);
   }
 }
 
@@ -79,19 +80,20 @@ void Waveform::layoutCursor(Cursor *cursor) {
   ScopedLock l(lock_);
   juce::Rectangle<int> bounds = getLocalBounds();
   int width = getLocalBounds().getWidth();
-  int displayWidth = cursor->desc()->display_width();
+  int displayWidth = cursor->desc().display_width();
   bounds.setWidth(displayWidth);
   int x = 0;
-  if (!Math::near(begin_, end_, 0.001))
+  if (!Math<float>::near(begin_, end_, 0.001))
     x = width * (cursor->getTime() - begin_) / (end_ - begin_);
 
-  bounds.setX(x - (displayWidth - cursor.desc().width()) / 2);
+  bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);
 }
 
 void Waveform::mouseUp(const juce::MouseEvent& e) {
+  float time;
   {
     ScopedLock l(lock_);
-    float time = e.x * (end_ - begin_) / getWidth();
+    time = e.x * (end_ - begin_) / getWidth();
   }
   broadcast(time);
 }
