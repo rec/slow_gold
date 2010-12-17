@@ -4,18 +4,21 @@
 #include "rec/base/base.h"
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/VolumeFile.pb.h"
+#include "rec/widget/tree/GetVolumes.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 
-class Root : public juce::TreeView,
+class Root : public AsyncUpdater,
              public listener::Broadcaster<const VolumeFile&>,
              public Thread {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
   virtual void run();
+  virtual void handleAsyncUpdate();
+  TreeView* treeView() { return &tree_; }
 
  private:
   void update();
@@ -28,8 +31,10 @@ class Root : public juce::TreeView,
     bool mightContainSubItems() { return true; }
   };
 
-  NodeDesc desc_;
+  TreeView tree_;
   TreeViewItem root_;
+  NodeDesc desc_;
+  VolumeList volumes_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
 };

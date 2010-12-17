@@ -1,3 +1,5 @@
+#include <glog/logging.h>
+
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/util/Math.h"
@@ -60,8 +62,7 @@ void Waveform::setTimeBounds(float begin, float end) {
   }
   layoutCursors();
 
-  juce::MessageManagerLock lock(Thread::getCurrentThread());
-  repaint();
+  triggerAsyncUpdate();
 }
 
 std::pair<float, float> Waveform::getTimeBounds() const {
@@ -89,9 +90,7 @@ void Waveform::layoutCursor(Cursor *cursor) {
     x = width * (cursor->getTime() - begin_) / (end_ - begin_);
 
   bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);
-
-  juce::MessageManagerLock lock(Thread::getCurrentThread());
-  cursor->setBounds(bounds);
+  cursor->setBoundsAsync(bounds);
 }
 
 void Waveform::mouseUp(const juce::MouseEvent& e) {

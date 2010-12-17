@@ -5,6 +5,7 @@
 
 namespace rec {
 
+typedef juce::AsyncUpdater AsyncUpdater;
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioDeviceManager AudioDeviceManager;
 
@@ -40,6 +41,7 @@ typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
 
 typedef juce::Thread Thread;
+typedef juce::TreeView TreeView;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 

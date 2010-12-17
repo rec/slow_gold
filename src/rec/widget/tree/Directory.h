@@ -9,7 +9,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Directory : public Node {
+class Directory : public Node, public AsyncUpdater {
  public:
   typedef juce::Array<File> FileArray;
 
@@ -18,7 +18,7 @@ class Directory : public Node {
 
   bool computeChildren();
   void partition();
-
+  virtual void handleAsyncUpdate();
   virtual String name() const;
 
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
@@ -52,6 +52,7 @@ class Directory : public Node {
   bool computingDone_;
   bool isOpen_;
   mutable String name_;
+  Node* nodeToAdd_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
 };

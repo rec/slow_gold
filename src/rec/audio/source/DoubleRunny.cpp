@@ -22,14 +22,14 @@ Source* DoubleRunny::source() const {
   return runny_.get();
 }
 
-  PositionableAudioSource* DoubleRunny::makeSource(const VolumeFile& file) {
+PositionableAudioSource* DoubleRunny::makeSource(const VolumeFile& file) {
   scoped_ptr<AudioFormatReader> r(createReader(file));
   return r ? new AudioFormatReaderSource(r.transfer(), true) : NULL;
 }
 
 void DoubleRunny::setPreferences(const Preferences& prefs,
                                  int position, double ratio) {
-  setPosition(position);
+  setPosition(position >= 0 ? position : 0);
   scoped_ptr<PositionableAudioSource> src(makeSource(prefs.track().file()));
   if (!src)
     return;

@@ -1,8 +1,9 @@
+#include <glog/logging.h>
+
 #include "rec/widget/tree/Root.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/RunnableThread.h"
-#include "rec/util/thread/LockedMessage.h"
 #include "rec/util/thread/WaitLoop.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Directory.h"
@@ -21,25 +22,23 @@ static const int ROOT_WAIT_TIME = 1000;
 
 Root::Root(const NodeDesc& desc) : Thread("tree::Root"), desc_(desc) {
   const Colors& colors = desc_.widget().colors();
-  setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
+  tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
 }
 
 void Root::run() {
   while (!threadShouldExit()) {
-    update();
+    volumes_ = getVolumes();
+    triggerAsyncUpdate();
     wait(ROOT_WAIT_TIME);
   }
 }
 
-void Root::update() {
-  VolumeList volumes = getVolumes();
-
-  for (int i = 0, j = 0; i < volumes.size() || j < getNumNodes(); ++i) {
-    const Volume* v1 = (i < volumes.size()) ? &volumes[i] : NULL;
+void Root::handleAsyncUpdate() {
+  for (int i = 0, j = 0; i < volumes_.size() || j < getNumNodes(); ++i) {
+    const Volume* v1 = (i < volumes_.size()) ? &volumes_[i] : NULL;
     const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;
     const Volume* v2 = n ? &(n->volumeFile().volume()) : NULL;
 
-    juce::MessageManagerLock lock(Thread::getCurrentThread());
     if (!v1)
       root_.removeSubItem(j);
     else if (!v2 || compareVolumes(*v1, *v2))
@@ -50,9 +49,8 @@ void Root::update() {
       j++;
   }
 
-  juce::MessageManagerLock lock(Thread::getCurrentThread());
-  setRootItem(&root_);
-  setRootItemVisible(false);
+  tree_.setRootItem(&root_);
+  tree_.setRootItemVisible(false);
 }
 
 void Root::addVolume(const Volume& volume, int insertAt) {

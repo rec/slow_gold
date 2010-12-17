@@ -72,7 +72,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   addAndMakeVisible(&waveform_);
   addAndMakeVisible(&startStopButton_);
-  addAndMakeVisible(treeRoot_.get());
+  addAndMakeVisible(treeRoot_->treeView());
   addAndMakeVisible(&explanation_);
   addAndMakeVisible(&timeScaleSlider_);
   addAndMakeVisible(&pitchScaleSlider_);
@@ -117,7 +117,7 @@ void MainPage::paint(Graphics& g) {
 void MainPage::resized() {
   waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
   startStopButton_.setBounds(16, getHeight() - 46, 150, 32);
-  treeRoot_->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
+  treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
   explanation_.setBounds(224, getHeight() - 42, getWidth() - 248, 32);
   timeScaleSlider_.setBounds(300, getHeight() - 90, 200, 24);
   pitchScaleSlider_.setBounds(300, getHeight() - 60, 200, 24);
@@ -139,8 +139,8 @@ void MainPage::operator()(const Preferences& prefs) {
     transportSource_.setSource(NULL);
 
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
-    dr->setPreferences(prefs);
     dr->startThread();
+    dr->setPreferences(prefs);
     waveform_.setAudioThumbnail(dr->thumbnail());
     doubleRunny_.swap(dr);
     transportSource_.setSource(doubleRunny_.get());

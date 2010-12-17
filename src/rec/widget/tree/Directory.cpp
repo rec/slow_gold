@@ -80,15 +80,17 @@ Node* Directory::createChildFile(int begin, int end) {
   return node;
 }
 
+void Directory::handleAsyncUpdate() {
+  addSubItem(nodeToAdd_);
+}
+
 void Directory::addChildFile(Node* node) {
   node->addListener(this);
-  {
-    MessageManagerLock l(thread_.get());
-    addSubItem(node);
-  }
-
   if (isOpen_)
     node->requestPartition();
+
+  nodeToAdd_ = node;
+  triggerAsyncUpdate();
 }
 
 bool Directory::computeChildren() {

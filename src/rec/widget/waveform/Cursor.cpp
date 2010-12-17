@@ -75,6 +75,14 @@ float Cursor::getTime() const {
   return time_;
 }
 
+void Cursor::handleAsyncUpdate() {
+  setBounds(bounds_);
+}
+
+void Cursor::setBoundsAsync(const juce::Rectangle<int>& bounds) {
+  bounds_ = bounds;
+  triggerAsyncUpdate();
+}
 
 }  // namespace waveform
 }  // namespace widget

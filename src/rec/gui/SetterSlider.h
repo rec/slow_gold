@@ -28,13 +28,15 @@ class SetterSlider : public juce::Slider,
     data_->removeListener(this);
   }
 
+  virtual void handleAsyncUpdate() {
+    setValue(value_, false);
+  }
+
   virtual void operator()(const Proto& message) {
     proto::Value value = proto::getValue(address_, message);
     if (value.has_double_f()) {
-      juce::MessageManagerLock lock(Thread::getCurrentThread());
-      setValue(value.double_f(), false);
-    } else {
-      LOG(ERROR) << "Got an update but no double value!";
+      value_ = value.double_f();
+      this->triggerAsyncUpdate();
     }
   }
 
@@ -45,6 +47,7 @@ class SetterSlider : public juce::Slider,
  private:
   Data* const data_;
   const Address address_;
+  double value_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterSlider);
 };

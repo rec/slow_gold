@@ -57,12 +57,15 @@ void Buffery::fillNextBlock() {
     info.buffer = &buffer_;
     info.startSample = block.first;
     info.numSamples = juce::jmin(numSamples, blockSize_);
+    block.second = block.first + info.numSamples;
 
     source_->setNextReadPosition(block.first);
     source_->getNextAudioBlock(info);
 
     ScopedLock l(lock_);
     merge(block, &filled_);
+  } else {
+    LOG(ERROR) << "Getting an empty block";
   }
 }
 
