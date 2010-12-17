@@ -29,7 +29,7 @@ Root::~Root() {
   util::thread::trash::discard(thread_);
 }
 
-void Root::update() {
+bool Root::update() {
   VolumeList volumes = getVolumes();
 
   for (int i = 0, j = 0; i < volumes.size() || j < getNumNodes(); ++i) {
@@ -48,6 +48,7 @@ void Root::update() {
   }
   setRootItem(&root_);
   setRootItemVisible(false);
+  return true;
 }
 
 void Root::addVolume(const Volume& volume, int insertAt) {

@@ -1,7 +1,7 @@
 #include "rec/audio/source/DoubleRunny.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/Panes.h"
-#include "rec/audio/source/StretchyFactory.h"
+#include "rec/audio/source/Stretchy.h"
 
 using namespace rec::util::thread;
 using namespace rec::slow::proto;
@@ -22,7 +22,7 @@ Source* DoubleRunny::source() const {
   return runny_.get();
 }
 
-PositionableAudioSource* DoubleRunny::makeSource(const VolumeFile& f) {
+  PositionableAudioSource* DoubleRunny::makeSource(const VolumeFile& file) {
   scoped_ptr<AudioFormatReader> r(createReader(file));
   return r ? new AudioFormatReaderSource(r.transfer(), true) : NULL;
 }
@@ -34,11 +34,11 @@ void DoubleRunny::setPreferences(const Preferences& prefs,
   if (!src)
     return;
 
-  scoped_ptr<Stretchy> str(new Stretchy(prefs.timestretch(), src.transfer()));
-  scoped_ptr<Runny> runny(new Runny(prefs.runny(), str.transfer()));
+  scoped_ptr<Stretchy> str(new Stretchy(prefs.track().timestretch(), src.transfer()));
+  scoped_ptr<Runny> runny(new Runny(prefs.track().runny(), str.transfer()));
 
   runny->setNextReadPosition(position);
-  while (!(threadShouldExit() || runny->fill()));
+  while (runny->fill());
   runny->startThread();
 
   {

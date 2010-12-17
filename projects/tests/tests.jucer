@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="vvnoyUmVo" name="tests">
+  <MAINGROUP id="fpZwX7GL9" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -118,10 +118,6 @@
                 name="Buffery.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/BufferySource.h"
                 id="sxKob4IXv" name="BufferySource.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/BufferyThumbnail.cpp"
-                id="2eJ35GPU4" name="BufferyThumbnail.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/BufferyThumbnail.h"
-                id="OCXoJkBwn" name="BufferyThumbnail.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/CachedThumbnail.cpp"
                 id="pDYn0M5Jn" name="CachedThumbnail.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/CachedThumbnail.h"
@@ -901,7 +897,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="FRKAE3iHs" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Br3udPbmn" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

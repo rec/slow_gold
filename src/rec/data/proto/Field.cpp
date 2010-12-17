@@ -22,7 +22,7 @@ Operation* Field::apply(const Operation &op, Message* message) {
 }
 
 Value Field::getValue(const Address& address, const Message& msg) {
-  Field field(message);
+  Field field(msg);
   for (int i = 0; i < address.field_size(); ++i) {
     if (!field.dereference(address.field(i)))
       return Value();

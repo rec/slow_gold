@@ -18,7 +18,7 @@ class Root : public juce::TreeView,
   explicit Root(const NodeDesc& desc);
   ~Root();
 
-  void update();
+  bool update();
   void startThread() { thread_->startThread(); }
 
  private:

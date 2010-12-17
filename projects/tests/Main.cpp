@@ -5,6 +5,7 @@
 #include "rec/slow/app/GenericApplication.h"
 
 namespace rec {
+namespace app {
 namespace {
 
 class TestApplication : public GenericApplication {
@@ -24,6 +25,7 @@ class TestApplication : public GenericApplication {
 };
 
 }  // namespace
+}  // namespace app
 }  // namespace rec
 
-START_JUCE_APPLICATION(rec::TestApplication)
+START_JUCE_APPLICATION(rec::app::TestApplication)

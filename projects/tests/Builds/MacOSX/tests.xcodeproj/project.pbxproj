@@ -80,7 +80,6 @@
 		55CD13C449AA8A6268E5868A /* StretchyFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1E68257023179398F09B3E /* StretchyFactory.cpp */; };
 		566E2FF678392D12348760BF /* scantag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C75A62E980C1C2FDDCB2 /* scantag.cpp */; };
 		56C33539C3BDF6C0635C649B /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA0E4E08076B548487ADBC73 /* node.cpp */; };
-		573154C7487B10F83C1665BF /* BufferyThumbnail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC3D97C1378B7D7435287A /* BufferyThumbnail.cpp */; };
 		5810A92347C62B9D9BD06F65 /* conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FD15C2501D15841EE0BA648 /* conversion.cpp */; };
 		5829E55CE23AEE32B93F99AC /* Runny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EF73603E9DF1EC2AEDBA5C /* Runny.cpp */; };
 		59FB8AC3928B86C761BFA8A8 /* regex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78B1151C9410885C5861B30D /* regex.cpp */; };
@@ -235,7 +234,6 @@
 		21C11C2ED8BF29ECBFC9964A /* Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manager.h; path = ../../../../src/rec/audio/format/mpg123/Manager.h; sourceTree = SOURCE_ROOT; };
 		2311B4F85FE009596940D8BC /* null.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = null.cpp; path = ../../../../src/rec/data/yaml/src/null.cpp; sourceTree = SOURCE_ROOT; };
 		235055B0594066535CFE84D7 /* Thread.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Thread.pb.cc; path = ../../../../genfiles/proto/rec/util/thread/Thread.pb.cc; sourceTree = SOURCE_ROOT; };
-		254125D02FB153605211CE07 /* BufferyThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BufferyThumbnail.h; path = ../../../../src/rec/audio/source/BufferyThumbnail.h; sourceTree = SOURCE_ROOT; };
 		259406DDB79C3E8AEF92A63B /* singledocparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = singledocparser.cpp; path = ../../../../src/rec/data/yaml/src/singledocparser.cpp; sourceTree = SOURCE_ROOT; };
 		25D21237DBCD70A56C17866D /* NewHandle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NewHandle.cpp; path = ../../../../src/rec/audio/format/mpg123/NewHandle.cpp; sourceTree = SOURCE_ROOT; };
 		260490D9CBF4AB3AD2E0EDA7 /* TypedTyper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedTyper.h; path = ../../../../src/rec/data/proto/TypedTyper.h; sourceTree = SOURCE_ROOT; };
@@ -263,7 +261,6 @@
 		39CF1BBA9C7D3B3B74E5F12C /* LockedMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LockedMessage.h; path = ../../../../src/rec/util/thread/LockedMessage.h; sourceTree = SOURCE_ROOT; };
 		39D23C2B2EB3175623816641 /* Mpg123.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mpg123.h; path = ../../../../src/rec/audio/format/mpg123/Mpg123.h; sourceTree = SOURCE_ROOT; };
 		3A309D9805BBA49A70B48464 /* disallow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = disallow.h; path = ../../../../src/rec/base/disallow.h; sourceTree = SOURCE_ROOT; };
-		3AFC3D97C1378B7D7435287A /* BufferyThumbnail.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BufferyThumbnail.cpp; path = ../../../../src/rec/audio/source/BufferyThumbnail.cpp; sourceTree = SOURCE_ROOT; };
 		3B195625E3168FAC063ED4AD /* hfft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hfft.h; path = ../../../../src/rec/audio/ammf_scaler/hfft.h; sourceTree = SOURCE_ROOT; };
 		3B66FA43BEC82099194C54D8 /* stream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stream.cpp; path = ../../../../src/rec/data/yaml/src/stream.cpp; sourceTree = SOURCE_ROOT; };
 		3C1A6751E747DFE4D1D6439D /* Broadcaster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Broadcaster.h; path = ../../../../src/rec/util/listener/Broadcaster.h; sourceTree = SOURCE_ROOT; };
@@ -643,8 +640,6 @@
 				EDDAF24FC05699BD61EEF040 /* Buffery.cpp */,
 				6B458211ED4920B7A907A7F0 /* Buffery.h */,
 				B3A67A7722D1E3B1E3204A81 /* BufferySource.h */,
-				3AFC3D97C1378B7D7435287A /* BufferyThumbnail.cpp */,
-				254125D02FB153605211CE07 /* BufferyThumbnail.h */,
 				C448B2A71C82E9D761BDCA68 /* CachedThumbnail.cpp */,
 				2620B3DFBF1F4B92DE9FCD3E /* CachedThumbnail.h */,
 				0BF45FD70FA1F4A3CC283E92 /* DoubleRunny.cpp */,
@@ -1108,6 +1103,20 @@
 			name = rec;
 			sourceTree = "<group>";
 		};
+		AF996EEDFC99C39D23D8746C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		B453D2FEBD8785B3C4D5BBE8 /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1310,20 +1319,6 @@
 			name = slow;
 			sourceTree = "<group>";
 		};
-		E8FE20C37637A4C9EDE50265 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		F06E991FF8183A25C8615C5C /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1463,7 +1458,7 @@
 				French,
 				German,
 			);
-			mainGroup = E8FE20C37637A4C9EDE50265 /* Source */;
+			mainGroup = AF996EEDFC99C39D23D8746C /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1506,7 +1501,6 @@
 				39103F52F98E0D9E72CCE23A /* CachedAudioFormatReader.cpp in Sources */,
 				11E8A2C79E0F287FE9CEA3AF /* AudioTimeScaler_test.cpp in Sources */,
 				D5F4485654494301D3908EB0 /* Buffery.cpp in Sources */,
-				573154C7487B10F83C1665BF /* BufferyThumbnail.cpp in Sources */,
 				1B3B13CD3313EA994A9BAFA5 /* CachedThumbnail.cpp in Sources */,
 				15E54896BBA2C969BE182556 /* DoubleRunny.cpp in Sources */,
 				0D9F53FCA7F68319115051FF /* DoubleRunnyBuffer.cpp in Sources */,

@@ -22,8 +22,8 @@ class Callback : public Runnable {
 
  private:
   Type* object_;
-  const bool owns_;
   Method method_;
+  const bool owns_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Callback);
 };

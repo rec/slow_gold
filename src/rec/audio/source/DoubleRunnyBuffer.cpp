@@ -7,7 +7,8 @@ namespace audio {
 namespace source {
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, int blockSize)
-    : buffery_(Snoopy::add(createSource(file), cachedThumbnail_), blockSize) {
+    : Thread("DoubleRunnyBuffer"),
+      buffery_(Snoopy::add(createSource(file), &cachedThumbnail_), blockSize) {
 }
 
 PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
@@ -22,10 +23,10 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
     wait(WAIT_TIME);
   }
 
-  return threadShouldExit() ? NULL : new BufferySource(buffery_.buffer());
+  return threadShouldExit() ? NULL : new BufferySource(*buffery_.buffer());
 }
 
-virtual void DoubleRunnyBuffer::run() {
+void DoubleRunnyBuffer::run() {
   while (!(threadShouldExit() || buffery.isFull()))
     buffery_.fill();
 }

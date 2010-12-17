@@ -1,6 +1,7 @@
 #include <glog/logging.h>
 
 #include "rec/data/proto/Field.h"
+#include "rec/data/proto/Value.h"
 
 namespace rec {
 namespace proto {

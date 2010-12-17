@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
 #define __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
 
-#include "rec/base/base.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace audio {
@@ -10,7 +10,7 @@ namespace source {
 class CachedThumbnail
   : public listener::Listener<const AudioSourceChannelInfo&> {
  public:
-  CachedThumbnail(const File& file);
+  CachedThumbnail(const File& file, int compression);
   virtual ~CachedThumbnail();
 
   juce::AudioThumbnail* thumbnail() { return &thumbnail_; }

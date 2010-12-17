@@ -32,7 +32,7 @@ Runny* fillRunny(Runny* r, int position) {
     while (!(thread && thread->threadShouldExit())) {
       if (runny->fill()) {
         runny->startThread();
-        return runny->transfer();
+        return runny.transfer();
       }
     }
   }

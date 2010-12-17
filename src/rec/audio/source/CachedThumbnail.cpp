@@ -7,9 +7,10 @@ namespace rec {
 namespace audio {
 namespace source {
 
-CachedThumbnail::CachedThumbnail(const File& file)
+CachedThumbnail::CachedThumbnail(const File& file, int compression)
   : file_(file),
-    thumbnail_(compression, manager_, cache_) {}
+    thumbnail_(compression, manager_, cache_),
+    cache_(1) {
   if (file_.exists()) {
     scoped_ptr<juce::FileInputStream> out(file_.createInputStream());
     if (out) {
@@ -20,12 +21,13 @@ CachedThumbnail::CachedThumbnail(const File& file)
   }
 }
 
+  
 CachedThumbnail::~CachedThumbnail() {
   if (!thumbnail_.isFullyLoaded())
     writeThumbnail(false);
 }
 
-void CachedThumbnail::operator()(const AudioSourceChannelInfo& info) {
+void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
   if (!thumbnail_.isFullyLoaded()) {
     thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
     if (thumbnail_.isFullyLoaded())
@@ -42,6 +44,7 @@ void CachedThumbnail::writeThumbnail(bool deferred) {
   else
     writer->run();
 }
+
 
 }  // namespace source
 }  // namespace audio

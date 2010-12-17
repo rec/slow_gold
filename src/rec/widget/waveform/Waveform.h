@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_WAVEFORM__
 #define __REC_WIDGET_WAVEFORM__
 
-#include "rec/widget/Waveform.pb.h"
+#include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/util/listener/Broadcaster.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/VolumeFile.h"
