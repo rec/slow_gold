@@ -1,14 +1,15 @@
 #ifndef __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
 #define __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
 
-#include "rec/util/listener/Listener.h"
+#include "rec/util/listener/Broadcaster.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
 class CachedThumbnail
-  : public listener::Listener<const AudioSourceChannelInfo&> {
+  : public listener::Listener<const AudioSourceChannelInfo&>,
+    public listener::Broadcaster<const juce::AudioThumbnail&> {
  public:
   CachedThumbnail(const File& file, int compression);
   virtual ~CachedThumbnail();
@@ -18,13 +19,15 @@ class CachedThumbnail
   // Update the thumbnail here.
   virtual void operator()(const AudioSourceChannelInfo& info);
 
- private:
   void writeThumbnail(bool deferred);
+
+ private:
 
   const File file_;
   juce::AudioThumbnail thumbnail_;
   AudioFormatManager manager_;
   juce::AudioThumbnailCache cache_;
+  bool written_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CachedThumbnail);
 };

@@ -12,6 +12,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, int blockSize)
     : Thread("DoubleRunnyBuffer"),
       cachedThumbnail_(getShadowFile(file, "thumbnail.stream"), COMPRESSION),
       buffery_(Snoopy::add(createSource(file), &cachedThumbnail_), blockSize) {
+  buffery_.addListener(this);
 }
 
 PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
@@ -27,10 +28,15 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
 }
 
 void DoubleRunnyBuffer::run() {
+  DLOG(INFO) << "Starting to fetch.";
   while (!(threadShouldExit() || buffery_.isFull()))
     buffery_.fillNextBlock();
+  DLOG_IF(INFO, buffery_.isFull()) << "buffer is full";
 }
 
+  void DoubleRunnyBuffer::operator()(const Buffery&) {
+  cachedThumbnail_.writeThumbnail(true);
+}
 
 }  // namespace source
 }  // namespace audio

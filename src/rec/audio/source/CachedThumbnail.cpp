@@ -10,39 +10,38 @@ namespace source {
 CachedThumbnail::CachedThumbnail(const File& file, int compression)
   : file_(file),
     thumbnail_(compression, manager_, cache_),
-    cache_(1) {
+    cache_(1),
+    written_(false) {
   if (file_.exists()) {
     scoped_ptr<juce::FileInputStream> out(file_.createInputStream());
     if (out) {
       thumbnail_.loadFrom(*out);
+      written_ = true;
       return;
     }
     LOG(ERROR) << "Couldn't load from " << file_.getFullPathName().toCString();
   }
 }
 
-  
-CachedThumbnail::~CachedThumbnail() {
-  if (!thumbnail_.isFullyLoaded())
-    writeThumbnail(false);
-}
+
+CachedThumbnail::~CachedThumbnail() {}
 
 void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
-  if (!thumbnail_.isFullyLoaded()) {
-    thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
-    if (thumbnail_.isFullyLoaded())
-      writeThumbnail(true);
-  }
+  thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
+  broadcast(thumbnail_);
 }
 
 void CachedThumbnail::writeThumbnail(bool deferred) {
-  scoped_ptr<thread::FileWriter> writer(new thread::FileWriter(file_));
-  juce::MemoryOutputStream mos(*writer->memory(), false);
-  thumbnail_.saveTo(mos);
-  if (deferred)
-    writer.transfer()->startThread();
-  else
-    writer->run();
+  if (!written_) {
+    scoped_ptr<thread::FileWriter> writer(new thread::FileWriter(file_));
+    juce::MemoryOutputStream mos(*writer->memory(), false);
+    thumbnail_.saveTo(mos);
+    if (deferred)
+      writer.transfer()->startThread();
+    else
+      writer->run();
+    written_ = true;
+  }
 }
 
 

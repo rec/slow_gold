@@ -52,21 +52,29 @@ void Buffery::fillNextBlock() {
     block = firstEmptyBlockAfter(filled_, position_, length_);
   }
 
-  if (int numSamples = getSize(block)) {
-    AudioSourceChannelInfo info;
-    info.buffer = &buffer_;
-    info.startSample = block.first;
-    info.numSamples = juce::jmin(numSamples, blockSize_);
-    block.second = block.first + info.numSamples;
+  int numSamples = getSize(block);
+  if (!numSamples) {
+    LOG(ERROR) << "Getting an empty block";
+    return;
+  }
 
-    source_->setNextReadPosition(block.first);
-    source_->getNextAudioBlock(info);
+  AudioSourceChannelInfo info;
+  info.buffer = &buffer_;
+  info.startSample = block.first;
+  info.numSamples = juce::jmin(numSamples, blockSize_);
+  block.second = block.first + info.numSamples;
 
+  source_->setNextReadPosition(block.first);
+  source_->getNextAudioBlock(info);
+
+  bool full;
+  {
     ScopedLock l(lock_);
     merge(block, &filled_);
-  } else {
-    LOG(ERROR) << "Getting an empty block";
+    full = isFull();
   }
+  if (full)
+    broadcast(*this);
 }
 
 }  // namespace source

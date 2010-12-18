@@ -10,7 +10,8 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Buffery : public listener::Listener<int> {
+class Buffery : public listener::Listener<int>,
+                public listener::Broadcaster<const Buffery&> {
  public:
   Buffery(PositionableAudioSource* source, int blockSize);
 

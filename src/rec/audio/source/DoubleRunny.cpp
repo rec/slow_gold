@@ -29,6 +29,7 @@ PositionableAudioSource* DoubleRunny::makeSource(const VolumeFile& file) {
 
 void DoubleRunny::setPreferences(const Preferences& prefs,
                                  int position, double ratio) {
+  DLOG(INFO) << "New preferences";
   setPosition(position >= 0 ? position : 0);
   scoped_ptr<PositionableAudioSource> src(makeSource(prefs.track().file()));
   if (!src)
@@ -45,8 +46,10 @@ void DoubleRunny::setPreferences(const Preferences& prefs,
     ScopedLock l(lock_);
     nextRunny_.swap(runny);
     ratio_ = ratio;
-    if (!runny_)
+    if (!runny_) {
+      DLOG(INFO) << "First preferences";
       runny_.swap(nextRunny_);
+    }
   }
 
   trash::discardAndEmpty(runny.transfer());

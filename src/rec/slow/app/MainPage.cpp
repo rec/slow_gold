@@ -143,7 +143,8 @@ void MainPage::operator()(const Preferences& prefs) {
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
     dr->startThread();
     dr->setPreferences(prefs);
-    waveform_.setAudioThumbnail(dr->thumbnail());
+    waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
+    dr->cachedThumbnail()->addListener(&waveform_);
     doubleRunny_.swap(dr);
     transportSource_.setSource(doubleRunny_.get());
     trash::discard(dr.transfer());

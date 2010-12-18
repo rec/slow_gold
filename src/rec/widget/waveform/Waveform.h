@@ -16,6 +16,7 @@ class CursorProto;
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public listener::Broadcaster<float>,
+                 public listener::Listener<const juce::AudioThumbnail&>,
                  public AsyncUpdater {
  public:
   explicit Waveform(const WaveformProto& desc);
@@ -30,6 +31,7 @@ class Waveform : public Component,
   void moveCursor(Cursor* cursor, float time);
   void setTimeBounds(float begin, float end);
   std::pair<float, float> getTimeBounds() const;
+  virtual void operator()(const juce::AudioThumbnail&) { triggerAsyncUpdate(); }
 
   virtual void paint(Graphics& g);
   void mouseUp(const juce::MouseEvent& e);

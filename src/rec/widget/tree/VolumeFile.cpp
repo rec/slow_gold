@@ -1,7 +1,7 @@
 #include <glog/logging.h>
 
 #include "rec/widget/tree/VolumeFile.h"
-#include "rec/data/persist/AppDirectory.h"
+#include "rec/data/persist/App.h"
 #include "rec/util/cd/CDReader.h"
 
 using namespace juce;
@@ -58,7 +58,7 @@ const File getVolume(const Volume& v) {
 
 const File getShadowDirectory(const Volume& v) {
   String name = String(Volume::Type_Name(v.type()).c_str()).toLowerCase();
-  File f = data::persist::appDirectory().getChildFile(name);
+  File f = persist::getApp()->appDir().getChildFile(name);
   return getFile(f, v.name());
 }
 

@@ -10,7 +10,8 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleRunnyBuffer : public DoubleRunny, public Thread {
+class DoubleRunnyBuffer : public DoubleRunny, public Thread,
+                          public listener::Listener<const Buffery&> {
  public:
   DoubleRunnyBuffer(const VolumeFile& file, int blockSize);
 
@@ -22,7 +23,9 @@ class DoubleRunnyBuffer : public DoubleRunny, public Thread {
 
   virtual PositionableAudioSource* makeSource(const VolumeFile& f);
   juce::AudioThumbnail* thumbnail() { return cachedThumbnail_.thumbnail(); }
+  CachedThumbnail* cachedThumbnail() { return &cachedThumbnail_; }
 
+  virtual void operator()(const Buffery&);
   virtual void run();
 
  private:

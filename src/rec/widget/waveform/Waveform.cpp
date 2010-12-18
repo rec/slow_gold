@@ -20,6 +20,7 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   ScopedLock l(lock_);
   thumbnail_ = thumbnail;
   setTimeBounds(0, thumbnail_->getTotalLength());
+  triggerAsyncUpdate();
 }
 
 void Waveform::paint(Graphics& g) {
