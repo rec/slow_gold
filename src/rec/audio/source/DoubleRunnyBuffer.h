@@ -29,8 +29,8 @@ class DoubleRunnyBuffer : public DoubleRunny, public Thread,
   virtual void run();
 
  private:
-  CachedThumbnail cachedThumbnail_;
   Buffery buffery_;
+  CachedThumbnail cachedThumbnail_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleRunnyBuffer);
 };

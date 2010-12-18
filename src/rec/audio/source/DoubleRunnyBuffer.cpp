@@ -10,8 +10,9 @@ namespace source {
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, int blockSize)
     : Thread("DoubleRunnyBuffer"),
-      cachedThumbnail_(getShadowFile(file, "thumbnail.stream"), COMPRESSION),
-      buffery_(Snoopy::add(createSource(file), &cachedThumbnail_), blockSize) {
+      buffery_(Snoopy::add(createSource(file), &cachedThumbnail_), blockSize),
+      cachedThumbnail_(getShadowFile(file, "thumbnail.stream"),
+                       COMPRESSION, buffery_.getLength()) {
   buffery_.addListener(this);
 }
 

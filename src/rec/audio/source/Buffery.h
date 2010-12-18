@@ -23,6 +23,7 @@ class Buffery : public listener::Listener<int>,
   bool hasFilled(const block::Block& b) const;
   void fillNextBlock();
   bool isFull() const;
+  int getLength() const { return length_; }
 
  private:
   CriticalSection lock_;

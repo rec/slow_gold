@@ -11,7 +11,7 @@ class CachedThumbnail
   : public listener::Listener<const AudioSourceChannelInfo&>,
     public listener::Broadcaster<const juce::AudioThumbnail&> {
  public:
-  CachedThumbnail(const File& file, int compression);
+      CachedThumbnail(const File& file, int compression, int sampleLength);
   virtual ~CachedThumbnail();
 
   juce::AudioThumbnail* thumbnail() { return &thumbnail_; }

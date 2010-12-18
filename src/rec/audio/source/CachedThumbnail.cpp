@@ -7,12 +7,13 @@ namespace rec {
 namespace audio {
 namespace source {
 
-CachedThumbnail::CachedThumbnail(const File& file, int compression)
+CachedThumbnail::CachedThumbnail(const File& file, int compression,
+                                 int sampleLength)
   : file_(file),
     thumbnail_(compression, manager_, cache_),
     cache_(1),
     written_(false) {
-  thumbnail_.reset(2, 44100.0f);  // TODO
+  thumbnail_.reset(2, 44100.0f, sampleLength);  // TODO
   thumbnail_.createChannels(2);
   if (file_.exists()) {
     scoped_ptr<juce::FileInputStream> out(file_.createInputStream());
