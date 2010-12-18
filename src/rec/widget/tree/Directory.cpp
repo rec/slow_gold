@@ -81,7 +81,14 @@ Node* Directory::createChildFile(int begin, int end) {
 }
 
 void Directory::handleAsyncUpdate() {
-  addSubItem(nodeToAdd_);
+  NodeSet nodes;
+  {
+    ScopedLock l(lock_);
+    nodes.swap(nodesToAdd_);
+  }
+
+  for (NodeSet::iterator i = nodes.begin(); i != nodes.end(); ++i)
+    addSubItem(*i);
 }
 
 void Directory::addChildFile(Node* node) {
@@ -89,7 +96,10 @@ void Directory::addChildFile(Node* node) {
   if (isOpen_)
     node->requestPartition();
 
-  nodeToAdd_ = node;
+  {
+    ScopedLock l(lock_);
+    nodesToAdd_.insert(node);
+  }
   triggerAsyncUpdate();
 }
 

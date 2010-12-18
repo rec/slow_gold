@@ -30,6 +30,8 @@ class Directory : public Node, public AsyncUpdater {
   void addChildFile(int b, int e) { addChildFile(createChildFile(b, e)); }
 
  private:
+  typedef std::set<Node*> NodeSet;
+
   Directory(const Directory& d, const Range& r);
 
   Node* createChildFile(int begin, int end);
@@ -47,14 +49,14 @@ class Directory : public Node, public AsyncUpdater {
   scoped_ptr<FileArray> childrenDeleter_;
   scoped_ptr<Thread> thread_;
   CriticalSection lock_;
+  NodeSet nodesToAdd_;
   const bool isShard_;
   bool computing_;
   bool computingDone_;
   bool isOpen_;
   mutable String name_;
-  Node* nodeToAdd_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Directory);
 };
 
 }  // namespace tree

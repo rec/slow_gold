@@ -27,6 +27,7 @@ typedef juce::Component Component;
 
 typedef juce::File File;
 typedef juce::Font Font;
+
 typedef juce::Graphics Graphics;
 typedef juce::InputStream InputStream;
 typedef juce::MemoryBlock MemoryBlock;
@@ -46,5 +47,7 @@ typedef juce::TreeView TreeView;
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
 }  // namespace rec
+
+using  juce::LeakedObjectDetector;
 
 #endif

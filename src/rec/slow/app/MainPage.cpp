@@ -96,6 +96,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 }
 
 MainPage::~MainPage() {
+  transportSource_.setSource(NULL);
+
   changeLocker_->removeListener(this);
   slow::prefs()->removeListener(changeLocker_.get());
   startStopButton_.removeButtonListener(this);

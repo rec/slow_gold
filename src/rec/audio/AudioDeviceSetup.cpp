@@ -63,12 +63,12 @@ AudioDeviceSetupListener::AudioDeviceSetupListener(AudioDeviceManager* manager)
       String err = manager->setAudioDeviceSetup(setup, true);
       readSuccessful = (err.length() == 0);
       if (readSuccessful)
-        DLOG(INFO) << "read audio setup from file";
+        DLOG(INFO) << "Read audio setup from preferences.";
       else
         LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
     }
   } else {
-    DLOG(INFO) << "Did not read audio setup from file";
+    DLOG(INFO) << "Using default audio setup";
   }
 
   if (!readSuccessful)
@@ -82,8 +82,6 @@ AudioDeviceSetupListener::~AudioDeviceSetupListener() {
 }
 
 void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster* cb) {
-  if (cb != manager_)
-    LOG(ERROR) << "whoops! TODO";
   audio::AudioDeviceSetupProto setupProto;
   if (copy(*manager_, &setupProto)) {
     DLOG(INFO) << "Audio setup changed to:\n" << setupProto.DebugString();
