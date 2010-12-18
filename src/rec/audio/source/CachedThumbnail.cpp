@@ -12,6 +12,8 @@ CachedThumbnail::CachedThumbnail(const File& file, int compression)
     thumbnail_(compression, manager_, cache_),
     cache_(1),
     written_(false) {
+  thumbnail_.reset(2, 44100.0f);  // TODO
+  thumbnail_.createChannels(2);
   if (file_.exists()) {
     scoped_ptr<juce::FileInputStream> out(file_.createInputStream());
     if (out) {

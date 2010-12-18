@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E219954412BC4A9C00B384B5</string>
+						<string>E219958912BC508B00B384B5</string>
 						<key>history</key>
 						<array>
 							<string>E23CEC2712BC49CD00C8C2CB</string>
@@ -270,8 +270,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -317,7 +315,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>11</integer>
+									<integer>14</integer>
 									<integer>9</integer>
 									<integer>2</integer>
 									<integer>1</integer>
@@ -355,12 +353,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MainPage.cpp</string>
+								<string>juce_amalgamated.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -368,11 +368,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MainPage.cpp</string>
+										<string>juce_amalgamated.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E219954312BC4A9C00B384B5</string>
+										<string>E219958812BC508B00B384B5</string>
 										<key>history</key>
 										<array>
 											<string>E2AEE61D1295F2B400B693AE</string>
@@ -413,10 +413,10 @@
 											<string>E2AB070912BB4AE40056679D</string>
 											<string>E2F28D0912BC2C7C000A29C0</string>
 											<string>E2F28D1512BC2E79000A29C0</string>
-											<string>E2F28D5212BC359E000A29C0</string>
 											<string>E2F28D5E12BC3629000A29C0</string>
-											<string>E23CEC0C12BC474700C8C2CB</string>
-											<string>E23CEC2612BC49CD00C8C2CB</string>
+											<string>E219956C12BC4CD500B384B5</string>
+											<string>E219957412BC4E9600B384B5</string>
+											<string>E219958712BC508B00B384B5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -614,14 +614,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E219954012BC4A6E00B384B5</string>
+		<string>E219958A12BC508B00B384B5</string>
 		<string>E219954112BC4A6E00B384B5</string>
 		<string>E219954212BC4A6E00B384B5</string>
 		<string>E290FED3120A432900532309</string>
-		<string>E23CEBF412BC467D00C8C2CB</string>
-		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>E23CEBF412BC467D00C8C2CB</string>
+		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>562 112 1239 1057 0 0 1920 1178 </string>
@@ -797,10 +797,10 @@
 									<key>Frame</key>
 									<string>{{0, 501}, {640, 502}}</string>
 									<key>RubberWindowFrame</key>
-									<string>465 134 1280 1044 0 0 1920 1178 </string>
+									<string>549 123 1280 1044 0 0 1920 1178 </string>
 								</dict>
 								<key>RubberWindowFrame</key>
-								<string>465 134 1280 1044 0 0 1920 1178 </string>
+								<string>549 123 1280 1044 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugSessionModule</string>
@@ -834,11 +834,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 			<key>WindowString</key>
-			<string>465 134 1280 1044 0 0 1920 1178 </string>
+			<string>549 123 1280 1044 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
