@@ -2,6 +2,7 @@
 #define __REC_UTIL_LISTENER_TIME__
 
 #include "rec/util/listener/Broadcaster.h"
+#include "rec/slow/app/AudioTransportSourcePlayer.h"
 
 namespace rec {
 namespace util {
@@ -17,7 +18,8 @@ class Time : public Listener<int>,
   virtual void operator()(int time) { (*this)(time / sampleRate_); }
 
   virtual void changeListenerCallback(ChangeBroadcaster* x) {
-    (*this)(((PositionableAudioSource*) x)->getNextReadPosition());
+    slow::app::AudioTransportSourcePlayer* source = (slow::app::AudioTransportSourcePlayer*) x;
+    (*this)(source->getNextReadPosition());
   }
 
  private:
