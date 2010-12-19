@@ -52,7 +52,8 @@ Waveform::~Waveform() {
 
 Cursor* Waveform::addCursor(const CursorProto& desc, float time) {
   ScopedLock l(lock_);
-  return new Cursor(desc, this);
+  Cursor* cursor = new Cursor(desc, this);
+  addAndMakeVisible(cursor);
 }
 
 void Waveform::setTimeBounds(float begin, float end) {

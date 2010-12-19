@@ -67,6 +67,7 @@ void Cursor::paint(Graphics& g) {
   float margin = desc_.widget().margin();
   float bottom = bounds.getHeight() - 2.0f * margin;
 
+  DLOG(INFO) << middle << ", " << margin << ", " << middle << ", " << bottom;
   gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
 }
 
