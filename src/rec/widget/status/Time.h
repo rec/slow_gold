@@ -3,8 +3,8 @@
 
 #include <stdio.h>
 
+#include "rec/util/listener/Listener.h"
 #include "rec/widget/status/Time.pb.h"
-#include "rec/util/listener/Time.h"
 
 namespace rec {
 namespace widget {
@@ -13,11 +13,14 @@ namespace time {
 
 const String formatTime(float time, bool flash=false);
 
-class TextComponent : public juce::Label, public listener::Time {
+class TextComponent : public juce::Label,
+                      public listener::Listener<float>,
+                      public AsyncUpdater {
  public:
   explicit TextComponent(const Text& desc);
   virtual void operator()(float time) { setTime(time); }
   void setTime(float time);
+  virtual void handleAsyncUpdate();
 
  private:
   Text description_;
@@ -27,15 +30,17 @@ class TextComponent : public juce::Label, public listener::Time {
 };
 
 // TODO: must get updates for length!
-class DialComponent : public juce::Component, public listener::Time {
+class DialComponent : public juce::Component, 
+                      public listener::Listener<float>,
+                      public AsyncUpdater {
  public:
-  explicit DialComponent(const Dial& desc,
-                         float length = 0.0f, float time = 0.0f);
+  explicit DialComponent(const Dial& desc, float length = 0.0f, float time = 0.0f);
   void setLength(float length);
   void setTime(float time);
   virtual void operator()(float time) { setTime(time); }
 
   virtual void paint(juce::Graphics& g);
+                        void handleAsyncUpdate();
 
  private:
   CriticalSection lock_;

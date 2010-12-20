@@ -34,7 +34,8 @@ static const int CHANGE_LOCKER_WAIT = 100;
 }  // namespace
 
 MainPage::MainPage(AudioDeviceManager& deviceManager)
-    : waveform_(WaveformProto()),
+  : transportSource_(new app::AudioTransportSourcePlayer(&deviceManager)),
+      waveform_(WaveformProto()),
       startStopButton_(String::empty),
       treeRoot_(new Root(NodeDesc())),
       explanation_(String::empty, T("<Explanation here>.")),
@@ -46,7 +47,6 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
                         T("Pitch Scale")),
       songTime_(Text()),
       songDial_(realTimeDial()),
-      transportSource_(&deviceManager),
       changeLocker_(new ChangeLocker<Preferences>(CHANGE_LOCKER_WAIT)),
       fileListener_(slow::prefs()->setter(), Address("track", "file")) {
   setSize(600, 400);
@@ -86,9 +86,9 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   startStopButton_.addButtonListener(this);
   treeRoot_->addListener(&fileListener_);
 
-  transportSource_.addChangeListener(&songDial_);
-  transportSource_.addChangeListener(&songTime_);
-  // transportSource_.addChangeListener(cursor_);
+  transportSource_->addListener(&songDial_);
+  transportSource_->addListener(&songTime_);
+  transportSource_->addListener(cursor_);
 
   treeRoot_->startThread();
   changeLocker_->startThread();
@@ -96,20 +96,22 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 }
 
 MainPage::~MainPage() {
-  transportSource_.setSource(NULL);
+  transportSource_->stop();
+  transportSource_->setSource(NULL);
 
   changeLocker_->removeListener(this);
   slow::prefs()->removeListener(changeLocker_.get());
   startStopButton_.removeButtonListener(this);
   treeRoot_->removeListener(&fileListener_);
 
-  transportSource_.removeChangeListener(&songDial_);
-  transportSource_.removeChangeListener(&songTime_);
-  transportSource_.removeChangeListener(cursor_);
+  transportSource_->removeListener(&songDial_);
+  transportSource_->removeListener(&songTime_);
+  transportSource_->removeListener(cursor_);
 
   trash::discard(changeLocker_.transfer());
   trash::discard(treeRoot_.transfer());
   trash::discard(doubleRunny_.transfer());
+  trash::discard(transportSource_.transfer());
 }
 
 void MainPage::paint(Graphics& g) {
@@ -128,7 +130,7 @@ void MainPage::resized() {
 }
 
 void MainPage::buttonClicked(Button* buttonThatWasClicked) {
-  transportSource_.toggle();
+  transportSource_->toggle();
 }
 
 static const int BLOCKSIZE = 1024;
@@ -136,22 +138,22 @@ static const int BLOCKSIZE = 1024;
 void MainPage::operator()(const Preferences& prefs) {
   const VolumeFile& file = prefs.track().file();
   if (prefs_.track().file() != file) {
-    transportSource_.stop();
-    transportSource_.setPosition(0);
-    transportSource_.setSource(NULL);
+    transportSource_->stop();
+    transportSource_->setPosition(0);
+    transportSource_->setSource(NULL);
 
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
     dr->setPreferences(prefs);
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);
     doubleRunny_.swap(dr);
-    transportSource_.setSource(doubleRunny_.get());
+    transportSource_->setSource(doubleRunny_.get());
     trash::discard(dr.transfer());
 
   } else if (doubleRunny_) {
     float ratio = prefs.track().timestretch().time_scale() /
       prefs_.track().timestretch().time_scale();
-    int position = transportSource_.getNextReadPosition();
+    int position = transportSource_->getNextReadPosition();
     doubleRunny_->setPreferences(prefs, position, ratio);
   }
 

@@ -74,6 +74,7 @@ void DoubleRunny::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
     LOG(ERROR) << "No runny";
 
   trash::discard(lastRunny.transfer());
+  broadcast(this);
 }
 
 }  // namespace source

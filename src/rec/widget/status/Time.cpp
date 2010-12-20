@@ -22,7 +22,12 @@ TextComponent::TextComponent(const Text& desc)
 }
 
 void TextComponent::setTime(float time) {
-  setText(formatTime(time, description_.separator().flash()), false);
+  time_ = time_;
+  triggerAsyncUpdate();
+}
+
+void TextComponent::handleAsyncUpdate() {
+  setText(formatTime(time_, description_.separator().flash()), false);
 }
 
 #ifdef _WIN32
@@ -49,7 +54,7 @@ const String formatTime(float time, bool flash) {
   return buffer;
 }
 
-  DialComponent::DialComponent(const Dial& desc, float length, float time)
+DialComponent::DialComponent(const Dial& desc, float length, float time)
     : Component(desc.widget().name().c_str()),
       description_(desc),
       length_(length),
@@ -84,12 +89,16 @@ void DialComponent::paint(Graphics& g) {
 void DialComponent::setTime(float time) {
   ScopedLock l(lock_);
   time_ = time;
-  repaint();
+  triggerAsyncUpdate();
 }
 
 void DialComponent::setLength(float length) {
   ScopedLock l(lock_);
   length_ = length;
+  triggerAsyncUpdate();
+} 
+
+void DialComponent::handleAsyncUpdate() {
   repaint();
 }
 

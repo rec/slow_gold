@@ -2,7 +2,7 @@
 #define __REC_WIDGET_WAVEFORM_CURSOR__
 
 #include "rec/gui/Geometry.h"
-#include "rec/util/listener/Time.h"
+#include "rec/util/listener/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -11,7 +11,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public listener::Time, public AsyncUpdater {
+class Cursor : public Component, public listener::Listener<float>, public AsyncUpdater {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, float time = 0.0f);
 

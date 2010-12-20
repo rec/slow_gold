@@ -1,15 +1,21 @@
 #ifndef __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
 #define __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
 
-#include "rec/base/base.h"
+#include "rec/util/listener/Broadcaster.h"
 
 namespace rec {
 namespace slow {
 namespace app {
 
-class AudioTransportSourcePlayer : public AudioTransportSource {
+class AudioTransportSourcePlayer
+  : public AudioTransportSource,
+    public Thread,
+    public listener::Broadcaster<float> {
  public:
-  AudioTransportSourcePlayer(AudioDeviceManager* dm) : deviceManager_(dm) {
+  static const int THREAD_WAIT = 40;
+
+  AudioTransportSourcePlayer(AudioDeviceManager* dm) 
+      : Thread("AudioTransportSourcePlayer"), deviceManager_(dm) {
     deviceManager_->addAudioCallback(&player_);
     player_.setSource(this);
   }
@@ -20,11 +26,24 @@ class AudioTransportSourcePlayer : public AudioTransportSource {
     player_.setSource(NULL);
   }
 
+  virtual void changeCallback(ChangeBroadcaster* thing) {}
+
   void start(bool isStart = true) {
-    if (isStart)
+    if (isStart) {
+      startThread();
       AudioTransportSource::start();
-    else
+    } else {
+      signalThreadShouldExit();
       AudioTransportSource::stop();
+    }
+  }
+
+  virtual void run() {
+    while (!threadShouldExit()) {
+      broadcast(getNextReadPosition() / 44100.0f);
+      if (!threadShouldExit())
+        wait(THREAD_WAIT);
+    }
   }
 
   void toggle() { start(!isPlaying()); }

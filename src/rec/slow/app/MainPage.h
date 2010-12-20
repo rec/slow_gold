@@ -52,6 +52,7 @@ class MainPage : public Component,
   void loadRecentFile(int menuItemId);
 
  private:
+  scoped_ptr<app::AudioTransportSourcePlayer> transportSource_;
   Waveform waveform_;
   TextButton startStopButton_;
   scoped_ptr<Root> treeRoot_;
@@ -63,7 +64,6 @@ class MainPage : public Component,
   Cursor* cursor_;
 
   CriticalSection lock_;
-  app::AudioTransportSourcePlayer transportSource_;
   scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
   scoped_ptr<DoubleRunnyBuffer> doubleRunny_;
   listener::SetterListener<const VolumeFile&> fileListener_;

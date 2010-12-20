@@ -45,9 +45,10 @@ const CursorStateColors& getStateColors() {
 
 }  // namespace
 
-
 Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
-    : Component("Cursor"), waveform_(waveform), desc_(d) {
+    : Component("Cursor"),
+      waveform_(waveform),
+      desc_(d) {
   waveform->addChildComponent(this);
   setTime(time);
 }
@@ -67,7 +68,6 @@ void Cursor::paint(Graphics& g) {
   float margin = desc_.widget().margin();
   float bottom = bounds.getHeight() - 2.0f * margin;
 
-  DLOG(INFO) << middle << ", " << margin << ", " << middle << ", " << bottom;
   gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
 }
 
@@ -82,6 +82,7 @@ void Cursor::handleAsyncUpdate() {
 
 void Cursor::setBoundsAsync(const juce::Rectangle<int>& bounds) {
   bounds_ = bounds;
+  DLOG(INFO) << "setting the bounds";
   triggerAsyncUpdate();
 }
 
