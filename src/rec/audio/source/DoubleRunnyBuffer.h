@@ -10,27 +10,30 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleRunnyBuffer : public DoubleRunny, public Thread,
+class Snoopy;
+
+class DoubleRunnyBuffer : public DoubleRunny,
+                          public Thread,
                           public listener::Listener<const Buffery&> {
  public:
   DoubleRunnyBuffer(const VolumeFile& file, int blockSize);
 
   static const int READAHEAD = 20000;
   static const int WAIT_TIME = 20;
-  static const int MAX_WAIT_TIME = 1000;
+  static const int MAX_WAIT_TIME = 7000;
 
-  virtual void setPosition(int pos) { buffery_.setPosition(pos); }
+  virtual void setPosition(int pos) { buffery_->setPosition(pos); }
 
   virtual PositionableAudioSource* makeSource(const VolumeFile& f);
-  juce::AudioThumbnail* thumbnail() { return cachedThumbnail_.thumbnail(); }
-  CachedThumbnail* cachedThumbnail() { return &cachedThumbnail_; }
+  juce::AudioThumbnail* thumbnail() { return cachedThumbnail_->thumbnail(); }
+  CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
 
   virtual void operator()(const Buffery&);
   virtual void run();
 
  private:
-  Buffery buffery_;
-  CachedThumbnail cachedThumbnail_;
+  scoped_ptr<Buffery> buffery_;
+  scoped_ptr<CachedThumbnail> cachedThumbnail_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleRunnyBuffer);
 };

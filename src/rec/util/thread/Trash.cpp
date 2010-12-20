@@ -58,6 +58,7 @@ class Trash {
     empty();
     for (ThreadSet::iterator i = threads_.begin(); i != threads_.end(); ++i)
       (*i)->waitForThreadToExit(timeout);
+    empty();
   }
 
  private:

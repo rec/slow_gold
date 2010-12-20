@@ -295,7 +295,7 @@ class Line : public ::google::protobuf::Message {
   inline const ::rec::gui::Rectangle& bounds() const;
   inline ::rec::gui::Rectangle* mutable_bounds();
   
-  // optional float thickness = 2;
+  // optional float thickness = 2 [default = 1];
   inline bool has_thickness() const;
   inline void clear_thickness();
   static const int kThicknessFieldNumber = 2;
@@ -537,12 +537,12 @@ inline ::rec::gui::Rectangle* Line::mutable_bounds() {
   return bounds_;
 }
 
-// optional float thickness = 2;
+// optional float thickness = 2 [default = 1];
 inline bool Line::has_thickness() const {
   return _has_bit(1);
 }
 inline void Line::clear_thickness() {
-  thickness_ = 0;
+  thickness_ = 1;
   _clear_bit(1);
 }
 inline float Line::thickness() const {

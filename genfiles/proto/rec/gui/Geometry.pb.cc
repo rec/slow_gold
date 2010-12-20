@@ -147,11 +147,11 @@ void protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto() {
     "\n\026rec/gui/Geometry.proto\022\007rec.gui\"\035\n\005Poi"
     "nt\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"Q\n\tRectangle\022 \n"
     "\010top_left\030\001 \001(\0132\016.rec.gui.Point\022\"\n\ndimen"
-    "sions\030\002 \001(\0132\016.rec.gui.Point\"N\n\004Line\022\"\n\006b"
-    "ounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\021\n\tthick"
-    "ness\030\002 \001(\002\022\017\n\007dashing\030\003 \003(\002\"?\n\005Layer\022\"\n\006"
-    "bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\022\n\006zOrd"
-    "er\030\002 \001(\005:\002-1", 292);
+    "sions\030\002 \001(\0132\016.rec.gui.Point\"Q\n\004Line\022\"\n\006b"
+    "ounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\024\n\tthick"
+    "ness\030\002 \001(\002:\0011\022\017\n\007dashing\030\003 \003(\002\"?\n\005Layer\022"
+    "\"\n\006bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\022\n\006z"
+    "Order\030\002 \001(\005:\002-1", 295);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Geometry.proto", &protobuf_RegisterTypes);
   Point::default_instance_ = new Point();
@@ -703,7 +703,7 @@ Line::Line(const Line& from)
 void Line::SharedCtor() {
   _cached_size_ = 0;
   bounds_ = NULL;
-  thickness_ = 0;
+  thickness_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -742,7 +742,7 @@ void Line::Clear() {
     if (_has_bit(0)) {
       if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
     }
-    thickness_ = 0;
+    thickness_ = 1;
   }
   dashing_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -768,7 +768,7 @@ bool Line::MergePartialFromCodedStream(
         break;
       }
       
-      // optional float thickness = 2;
+      // optional float thickness = 2 [default = 1];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
@@ -830,7 +830,7 @@ void Line::SerializeWithCachedSizes(
       1, this->bounds(), output);
   }
   
-  // optional float thickness = 2;
+  // optional float thickness = 2 [default = 1];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->thickness(), output);
   }
@@ -856,7 +856,7 @@ void Line::SerializeWithCachedSizes(
         1, this->bounds(), target);
   }
   
-  // optional float thickness = 2;
+  // optional float thickness = 2 [default = 1];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->thickness(), target);
   }
@@ -885,7 +885,7 @@ int Line::ByteSize() const {
           this->bounds());
     }
     
-    // optional float thickness = 2;
+    // optional float thickness = 2 [default = 1];
     if (has_thickness()) {
       total_size += 1 + 4;
     }

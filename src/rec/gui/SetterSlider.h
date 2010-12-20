@@ -30,6 +30,7 @@ class SetterSlider : public juce::Slider,
 
   virtual void handleAsyncUpdate() {
     setValue(value_, false);
+    LOG(INFO) << "setting " << value_;
   }
 
   virtual void operator()(const Proto& message) {
@@ -37,11 +38,13 @@ class SetterSlider : public juce::Slider,
     if (value.has_double_f()) {
       value_ = value.double_f();
       this->triggerAsyncUpdate();
+      LOG(INFO) << "saving " << value_;
     }
   }
 
   virtual void valueChanged() {
-    data_->setter()->set(address_, getValue());
+    LOG(ERROR) << "getValue() " << getValue();
+    // data_->setter()->set(address_, getValue());
   }
 
  private:

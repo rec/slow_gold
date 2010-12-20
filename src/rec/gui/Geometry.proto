@@ -12,7 +12,7 @@ message Rectangle {
 
 message Line {
   optional Rectangle bounds = 1;
-  optional float thickness = 2;
+  optional float thickness = 2 [default = 1];
   repeated float dashing = 3;
 };
 

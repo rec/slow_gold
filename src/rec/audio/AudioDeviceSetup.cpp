@@ -84,8 +84,8 @@ AudioDeviceSetupListener::~AudioDeviceSetupListener() {
 void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster* cb) {
   audio::AudioDeviceSetupProto setupProto;
   if (copy(*manager_, &setupProto)) {
-    DLOG(INFO) << "Audio setup changed to:\n" << setupProto.DebugString();
     slow::audioSetupData()->setter()->set(setupProto);
+    DLOG(INFO) << "Audio setup changed";
   } else {
     LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";
   }

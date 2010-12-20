@@ -88,7 +88,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   transportSource_.addChangeListener(&songDial_);
   transportSource_.addChangeListener(&songTime_);
-  transportSource_.addChangeListener(cursor_);
+  // transportSource_.addChangeListener(cursor_);
 
   treeRoot_->startThread();
   changeLocker_->startThread();
@@ -141,7 +141,6 @@ void MainPage::operator()(const Preferences& prefs) {
     transportSource_.setSource(NULL);
 
     scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
-    dr->startThread();
     dr->setPreferences(prefs);
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);

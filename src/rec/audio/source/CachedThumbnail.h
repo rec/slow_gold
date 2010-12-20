@@ -21,8 +21,9 @@ class CachedThumbnail
 
   void writeThumbnail(bool deferred);
 
- private:
+  bool isFull() const { return written_; }
 
+ private:
   const File file_;
   juce::AudioThumbnail thumbnail_;
   AudioFormatManager manager_;
