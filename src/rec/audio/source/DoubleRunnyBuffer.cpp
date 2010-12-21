@@ -1,24 +1,39 @@
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/thread/Trash.h"
+#include "rec/util/thread/ChangeLocker.h"
 
 static const int COMPRESSION = 512;
 static const int THREAD_TIMEOUT = 2000;
+static const int SPIN_WAIT = 40;
+static const int BLOCK_SIZE = 1024;
 
 namespace rec {
 namespace audio {
 namespace source {
 
-DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, int blockSize)
-    : Thread("DoubleRunnyBuffer") {
+DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file,
+                                     DoubleRunnyBuffer::Data* data)
+    : DoubleRunny(file), Thread("DoubleRunnyBuffer"), data_(data) {
   PositionableAudioSource* source = createSource(file);
-  File shadowFile = getShadowFile(file, "thumbnail.stream");
-  cachedThumbnail_.reset(new CachedThumbnail(shadowFile, COMPRESSION,
+  buffery_.reset(new Buffery(source, BLOCK_SIZE));
+  File shadowThumbnailFile = getShadowFile(file, "thumbnail.stream");
+  cachedThumbnail_.reset(new CachedThumbnail(shadowThumbnailFile, COMPRESSION,
                                              source->getTotalLength()));
   if (!cachedThumbnail_->isFull())
     source = Snoopy::add(source, cachedThumbnail_.get());
-  buffery_.reset(new Buffery(source, blockSize));
+
   buffery_->addListener(this);
+  changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
+  changeLocker_->initialize(data->get());
+  data_->addListener(changeLocker_.get());
+  changeLocker_->addListener(this);
+  changeLocker_->startThread();
+}
+
+DoubleRunnyBuffer::~DoubleRunnyBuffer() {
+  thread::trash::discard(&changeLocker_);
 }
 
 PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
@@ -26,22 +41,7 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
     return NULL;
 
   startThread();
-  for (int i = 0; !buffery_->hasFilled(READAHEAD); ++i) {
-    if (threadShouldExit())
-      return NULL;
-
-    if (buffery_->isFull()) {
-      LOG(ERROR) << "Full but not hasFilled?";
-      break;
-    }
-
-    if ((i * WAIT_TIME) > MAX_WAIT_TIME) {
-      LOG(ERROR) << "Waited for a long time, no data: " << i * WAIT_TIME;
-      return NULL;
-    }
-    wait(WAIT_TIME);
-  }
-
+  buffery_->waitUntilFilled(READAHEAD);
   return new BufferySource(*buffery_->buffer());
 }
 

@@ -1,11 +1,9 @@
 #include "rec/audio/source/DoubleRunny.h"
 #include "rec/util/thread/Trash.h"
-#include "rec/widget/Panes.h"
 #include "rec/audio/source/Stretchy.h"
+#include "rec/widget/tree/VolumeFile.h"
 
 using namespace rec::util::thread;
-using namespace rec::slow::proto;
-using rec::widget::pane::Track;
 
 namespace rec {
 namespace audio {
@@ -17,38 +15,46 @@ DoubleRunny::~DoubleRunny() {
   trash::empty();
 }
 
-Source* DoubleRunny::source() const {
-  ScopedLock l(lock_);
-  return runny_.get();
-}
-
-PositionableAudioSource* DoubleRunny::makeSource(const VolumeFile& file) {
-  scoped_ptr<AudioFormatReader> r(createReader(file));
+PositionableAudioSource* DoubleRunny::makeSource() {
+  scoped_ptr<AudioFormatReader> r(createReader(file_));
   return r ? new AudioFormatReaderSource(r.transfer(), true) : NULL;
 }
 
-void DoubleRunny::setPreferences(const Preferences& prefs,
-                                 int position, double ratio) {
-  DLOG(INFO) << "New preferences";
-  setPosition(position >= 0 ? position : 0);
-  scoped_ptr<PositionableAudioSource> src(makeSource(prefs.track().file()));
-  if (!src)
+void DoubleRunny::setStretchy(const StretchyProto& desc) {
+  Thread* thread = Thread::getCurrentThread();
+  DLOG(INFO) << "DoubleRunny::setStretchy";
+
+  scoped_ptr<PositionableAudioSource> source(makeSource());
+  if (!source) {
+    LOG(ERROR) << "Unable to make source for file " << file_.DebugString();
+    return;
+  }
+  scoped_ptr<Stretchy> stretchy(new Stretchy(desc, source.transfer()));
+  scoped_ptr<Runny> runny(new Runny(runnyDesc_, stretchy.transfer()));
+  {
+    ScopedLock l(lock_);
+    ratio_ *= desc.time_scale() / stretchyDesc_.time_scale();
+    stretchyDesc_ = desc;
+    if (runny_)
+      runny->setNextReadPosition(runny_->getNextReadPosition() * ratio_);
+  }
+
+  while (!runny->fill()) {
+    if (thread->threadShouldExit())
+      return;
+  }
+  
+  if (thread->threadShouldExit())
     return;
 
-  scoped_ptr<Stretchy> str(new Stretchy(prefs.track().timestretch(), src.transfer()));
-  scoped_ptr<Runny> runny(new Runny(prefs.track().runny(), str.transfer()));
-
-  runny->setNextReadPosition(position >= 0 ? position : 0);
-  while (runny->fill());
   runny->startThread();
 
   {
     ScopedLock l(lock_);
     nextRunny_.swap(runny);
-    ratio_ = ratio;
     if (!runny_) {
-      DLOG(INFO) << "First preferences";
       runny_.swap(nextRunny_);
+      ratio_ = 1.0;
     }
   }
 
@@ -60,9 +66,8 @@ void DoubleRunny::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
   {
     ScopedLock l(lock_);
     if (nextRunny_) {
-      if (runny_)
-        nextRunny_->setNextReadPosition(ratio_ * runny_->getNextReadPosition());
-
+      nextRunny_->setNextReadPosition(ratio_ * runny_->getNextReadPosition());
+      ratio_ = 1.0;
       lastRunny.swap(runny_);
       nextRunny_.swap(runny_);
     }
@@ -74,7 +79,11 @@ void DoubleRunny::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
     LOG(ERROR) << "No runny";
 
   trash::discard(lastRunny.transfer());
-  broadcast(this);
+}
+
+Source* DoubleRunny::source() const {
+  ScopedLock l(lock_);
+  return runny_.get();
 }
 
 }  // namespace source

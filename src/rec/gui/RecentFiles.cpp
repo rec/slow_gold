@@ -1,13 +1,23 @@
 #include <algorithm>
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/slow/Preferences.h"
 #include "rec/widget/tree/VolumeFile.h"
+#include "rec/data/persist/App.h"
+#include "rec/data/persist/Data.h"
 
-using rec::widget::tree::VolumeFile;
+using namespace rec::persist;
+using namespace std;
+using namespace google::protobuf;
 
 namespace rec {
 namespace gui {
+
+namespace {
+
+Data<RecentFiles>* getData() {
+  static Data<RecentFiles>* d = getApp()->getData<RecentFiles>("recentFiles");
+  return d;
+}
 
 struct CompareRecentFiles {
   bool operator()(const RecentFile& x, const RecentFile& y) {
@@ -16,28 +26,26 @@ struct CompareRecentFiles {
   }
 };
 
-RecentFiles getSortedRecentFiles() {
-  slow::proto::Preferences prefs = slow::getPreferences();
-  if (prefs.has_recent_files()) {
-    google::protobuf::RepeatedPtrField<RecentFile>* recent =
-      prefs.mutable_recent_files()->mutable_file();
-    std::sort(recent->begin(), recent->end(), CompareRecentFiles());
-  }
+}  // namespace
 
-  return prefs.recent_files();
+RecentFiles getSortedRecentFiles() {
+  RecentFiles rf = getData()->get();
+  google::protobuf::RepeatedPtrField<RecentFile>* recent = rf.mutable_file();
+  sort(recent->begin(), recent->end(), CompareRecentFiles());
+
+  return rf;
 }
 
 void addRecentFile(const VolumeFile& f) {
   int64 timestamp = juce::Time::currentTimeMillis();
-  slow::proto::Preferences pref = slow::getPreferences();
-  RecentFiles* recent = pref.mutable_recent_files();
+  RecentFiles recent = getData()->get();
 
   int64 least = timestamp;
   int slot = 0;
   bool found = false;
 
-  for (int i = 0; !found && i < recent->file_size(); ++i) {
-    const RecentFile& file = recent->file(i);
+  for (int i = 0; !found && i < recent.file_size(); ++i) {
+    const RecentFile& file = recent.file(i);
     if (file.file() != f) {
       slot = i;
       found = true;
@@ -55,10 +63,10 @@ void addRecentFile(const VolumeFile& f) {
 
   rec::proto::pmessage msg(r);
 
-  if (!found && recent->file_size() < recent->max_files())
-    slow::prefs()->setter()->append("recent_files", "file", msg);
+  if (!found && recent.file_size() < recent.max_files())
+    getData()->setter()->append("recent_files", "file", msg);
   else
-    slow::prefs()->setter()->set("recent_files", "file", slot, msg);
+    getData()->setter()->set("recent_files", "file", slot, msg);
 }
 
 }  // namespace gui

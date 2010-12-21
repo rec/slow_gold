@@ -2,6 +2,7 @@
 
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/data/persist/App.h"
+#include "rec/data/persist/Data.h"
 #include "rec/util/cd/CDReader.h"
 
 using namespace juce;
@@ -106,6 +107,11 @@ AudioFormatReader* createReader(const VolumeFile& file) {
 
 PositionableAudioSource* createSource(const VolumeFile& file) {
   return new AudioFormatReaderSource(createReader(file), true);
+}
+
+VolumeFileData* getCurrentFileData() {
+  static VolumeFileData* d = persist::getApp()->getData<VolumeFile>("currentFile");
+  return d;
 }
 
 }  // namespace tree

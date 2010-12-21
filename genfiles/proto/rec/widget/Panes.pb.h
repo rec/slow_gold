@@ -40,7 +40,6 @@ void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
 
 class Navigation;
 class Directory;
-class Track;
 
 enum Navigation_Tab {
   Navigation_Tab_FILE = 1,
@@ -344,119 +343,6 @@ class Directory : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static Directory* default_instance_;
 };
-// -------------------------------------------------------------------
-
-class Track : public ::google::protobuf::Message {
- public:
-  Track();
-  virtual ~Track();
-  
-  Track(const Track& from);
-  
-  inline Track& operator=(const Track& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Track& default_instance();
-  
-  void Swap(Track* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Track* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Track& from);
-  void MergeFrom(const Track& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // optional .rec.widget.Widget widget = 1;
-  inline bool has_widget() const;
-  inline void clear_widget();
-  static const int kWidgetFieldNumber = 1;
-  inline const ::rec::widget::Widget& widget() const;
-  inline ::rec::widget::Widget* mutable_widget();
-  
-  // optional .rec.widget.tree.VolumeFile file = 2;
-  inline bool has_file() const;
-  inline void clear_file();
-  static const int kFileFieldNumber = 2;
-  inline const ::rec::widget::tree::VolumeFile& file() const;
-  inline ::rec::widget::tree::VolumeFile* mutable_file();
-  
-  // optional .rec.audio.source.TimeStretch timestretch = 3;
-  inline bool has_timestretch() const;
-  inline void clear_timestretch();
-  static const int kTimestretchFieldNumber = 3;
-  inline const ::rec::audio::source::TimeStretch& timestretch() const;
-  inline ::rec::audio::source::TimeStretch* mutable_timestretch();
-  
-  // optional .rec.audio.source.RunnyDesc runny = 4;
-  inline bool has_runny() const;
-  inline void clear_runny();
-  static const int kRunnyFieldNumber = 4;
-  inline const ::rec::audio::source::RunnyDesc& runny() const;
-  inline ::rec::audio::source::RunnyDesc* mutable_runny();
-  
-  // @@protoc_insertion_point(class_scope:rec.widget.pane.Track)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  ::rec::widget::Widget* widget_;
-  ::rec::widget::tree::VolumeFile* file_;
-  ::rec::audio::source::TimeStretch* timestretch_;
-  ::rec::audio::source::RunnyDesc* runny_;
-  friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
-  friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Track* default_instance_;
-};
 // ===================================================================
 
 
@@ -568,78 +454,6 @@ inline ::rec::widget::tree::VolumeFile* Directory::mutable_file() {
   _set_bit(1);
   if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
   return file_;
-}
-
-// -------------------------------------------------------------------
-
-// Track
-
-// optional .rec.widget.Widget widget = 1;
-inline bool Track::has_widget() const {
-  return _has_bit(0);
-}
-inline void Track::clear_widget() {
-  if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
-  _clear_bit(0);
-}
-inline const ::rec::widget::Widget& Track::widget() const {
-  return widget_ != NULL ? *widget_ : *default_instance_->widget_;
-}
-inline ::rec::widget::Widget* Track::mutable_widget() {
-  _set_bit(0);
-  if (widget_ == NULL) widget_ = new ::rec::widget::Widget;
-  return widget_;
-}
-
-// optional .rec.widget.tree.VolumeFile file = 2;
-inline bool Track::has_file() const {
-  return _has_bit(1);
-}
-inline void Track::clear_file() {
-  if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
-  _clear_bit(1);
-}
-inline const ::rec::widget::tree::VolumeFile& Track::file() const {
-  return file_ != NULL ? *file_ : *default_instance_->file_;
-}
-inline ::rec::widget::tree::VolumeFile* Track::mutable_file() {
-  _set_bit(1);
-  if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
-  return file_;
-}
-
-// optional .rec.audio.source.TimeStretch timestretch = 3;
-inline bool Track::has_timestretch() const {
-  return _has_bit(2);
-}
-inline void Track::clear_timestretch() {
-  if (timestretch_ != NULL) timestretch_->::rec::audio::source::TimeStretch::Clear();
-  _clear_bit(2);
-}
-inline const ::rec::audio::source::TimeStretch& Track::timestretch() const {
-  return timestretch_ != NULL ? *timestretch_ : *default_instance_->timestretch_;
-}
-inline ::rec::audio::source::TimeStretch* Track::mutable_timestretch() {
-  _set_bit(2);
-  if (timestretch_ == NULL) timestretch_ = new ::rec::audio::source::TimeStretch;
-  return timestretch_;
-}
-
-// optional .rec.audio.source.RunnyDesc runny = 4;
-inline bool Track::has_runny() const {
-  return _has_bit(3);
-}
-inline void Track::clear_runny() {
-  if (runny_ != NULL) runny_->::rec::audio::source::RunnyDesc::Clear();
-  _clear_bit(3);
-}
-inline const ::rec::audio::source::RunnyDesc& Track::runny() const {
-  return runny_ != NULL ? *runny_ : *default_instance_->runny_;
-}
-inline ::rec::audio::source::RunnyDesc* Track::mutable_runny() {
-  _set_bit(3);
-  if (runny_ == NULL) runny_ = new ::rec::audio::source::RunnyDesc;
-  return runny_;
 }
 
 

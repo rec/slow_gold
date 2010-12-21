@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="QcQDN46w7" name="Slow">
+  <MAINGROUP id="kAcE1X2U9" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -137,10 +137,6 @@
                 name="Stretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="DaXZYkHwH"
                 name="Stretchy.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/StretchyFactory.cpp"
-                id="8HrOIJEvK" name="StretchyFactory.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/StretchyFactory.h"
-                id="sfwpdEskJ" name="StretchyFactory.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="6Mfnx1zUH"
                 name="TestHarness.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="8p2gEgkqs"
@@ -191,6 +187,8 @@
                 name="EventQueue.h" resource="0"/>
         </GROUP>
         <GROUP id="p9GHA3VGt" name="persist">
+          <FILE compile="1" file="../../src/rec/data/persist/App.cpp" id="xaA3M1wJA"
+                name="App.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/App.h" id="bxaLWu80g"
                 name="App.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/AppDirectory.h"
@@ -573,8 +571,6 @@
                 name="Listener.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/SetterListener.h"
                 id="9Hs97sV24" name="SetterListener.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/listener/Time.h" id="i7bzSEZNf"
-                name="Time.h" resource="0"/>
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="jinvo0ree" name="Math.h"
               resource="0"/>
@@ -630,8 +626,6 @@
       <GROUP id="SUnByOVEB" name="widget">
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="pywYbaxoY"
               name="Painter.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/widget/Panes.h" id="LyRz49l4H"
-              name="Panes.h" resource="0"/>
         <GROUP id="uwPn7akDM" name="status">
           <FILE compile="1" file="../../src/rec/widget/status/Status.cpp" id="YH5mSel4M"
                 name="Status.cpp" resource="0"/>
@@ -840,7 +834,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ggFFWRxyD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="SGjmpwiDT" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

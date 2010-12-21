@@ -16,9 +16,9 @@ namespace source {
 
 namespace {
 
-const ::google::protobuf::Descriptor* RunnyDesc_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* RunnyProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  RunnyDesc_reflection_ = NULL;
+  RunnyProto_reflection_ = NULL;
 
 }  // namespace
 
@@ -29,23 +29,23 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fRunny_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/audio/source/Runny.proto");
   GOOGLE_CHECK(file != NULL);
-  RunnyDesc_descriptor_ = file->message_type(0);
-  static const int RunnyDesc_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyDesc, buffer_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyDesc, chunk_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyDesc, thread_),
+  RunnyProto_descriptor_ = file->message_type(0);
+  static const int RunnyProto_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, buffer_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, chunk_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, thread_),
   };
-  RunnyDesc_reflection_ =
+  RunnyProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      RunnyDesc_descriptor_,
-      RunnyDesc::default_instance_,
-      RunnyDesc_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyDesc, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyDesc, _unknown_fields_),
+      RunnyProto_descriptor_,
+      RunnyProto::default_instance_,
+      RunnyProto_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(RunnyDesc));
+      sizeof(RunnyProto));
 }
 
 namespace {
@@ -59,14 +59,14 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    RunnyDesc_descriptor_, &RunnyDesc::default_instance());
+    RunnyProto_descriptor_, &RunnyProto::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2faudio_2fsource_2fRunny_2eproto() {
-  delete RunnyDesc::default_instance_;
-  delete RunnyDesc_reflection_;
+  delete RunnyProto::default_instance_;
+  delete RunnyProto_reflection_;
 }
 
 void protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto() {
@@ -78,14 +78,14 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto() {
   ::rec::util::thread::protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/audio/source/Runny.proto\022\020rec.audi"
-    "o.source\032\034rec/util/thread/Thread.proto\"u"
-    "\n\tRunnyDesc\022\032\n\013buffer_size\030\001 \001(\r:\00551200\022"
-    "\030\n\nchunk_size\030\002 \001(\r:\0041024\0222\n\006thread\030\003 \001("
-    "\0132\".rec.util.thread.ThreadDescription", 197);
+    "o.source\032\034rec/util/thread/Thread.proto\"v"
+    "\n\nRunnyProto\022\032\n\013buffer_size\030\001 \001(\r:\00551200"
+    "\022\030\n\nchunk_size\030\002 \001(\r:\0041024\0222\n\006thread\030\003 \001"
+    "(\0132\".rec.util.thread.ThreadDescription", 198);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Runny.proto", &protobuf_RegisterTypes);
-  RunnyDesc::default_instance_ = new RunnyDesc();
-  RunnyDesc::default_instance_->InitAsDefaultInstance();
+  RunnyProto::default_instance_ = new RunnyProto();
+  RunnyProto::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2faudio_2fsource_2fRunny_2eproto);
 }
 
@@ -100,27 +100,27 @@ struct StaticDescriptorInitializer_rec_2faudio_2fsource_2fRunny_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int RunnyDesc::kBufferSizeFieldNumber;
-const int RunnyDesc::kChunkSizeFieldNumber;
-const int RunnyDesc::kThreadFieldNumber;
+const int RunnyProto::kBufferSizeFieldNumber;
+const int RunnyProto::kChunkSizeFieldNumber;
+const int RunnyProto::kThreadFieldNumber;
 #endif  // !_MSC_VER
 
-RunnyDesc::RunnyDesc()
+RunnyProto::RunnyProto()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void RunnyDesc::InitAsDefaultInstance() {
+void RunnyProto::InitAsDefaultInstance() {
   thread_ = const_cast< ::rec::util::thread::ThreadDescription*>(&::rec::util::thread::ThreadDescription::default_instance());
 }
 
-RunnyDesc::RunnyDesc(const RunnyDesc& from)
+RunnyProto::RunnyProto(const RunnyProto& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void RunnyDesc::SharedCtor() {
+void RunnyProto::SharedCtor() {
   _cached_size_ = 0;
   buffer_size_ = 51200u;
   chunk_size_ = 1024u;
@@ -128,37 +128,37 @@ void RunnyDesc::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-RunnyDesc::~RunnyDesc() {
+RunnyProto::~RunnyProto() {
   SharedDtor();
 }
 
-void RunnyDesc::SharedDtor() {
+void RunnyProto::SharedDtor() {
   if (this != default_instance_) {
     delete thread_;
   }
 }
 
-void RunnyDesc::SetCachedSize(int size) const {
+void RunnyProto::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* RunnyDesc::descriptor() {
+const ::google::protobuf::Descriptor* RunnyProto::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return RunnyDesc_descriptor_;
+  return RunnyProto_descriptor_;
 }
 
-const RunnyDesc& RunnyDesc::default_instance() {
+const RunnyProto& RunnyProto::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto();  return *default_instance_;
 }
 
-RunnyDesc* RunnyDesc::default_instance_ = NULL;
+RunnyProto* RunnyProto::default_instance_ = NULL;
 
-RunnyDesc* RunnyDesc::New() const {
-  return new RunnyDesc;
+RunnyProto* RunnyProto::New() const {
+  return new RunnyProto;
 }
 
-void RunnyDesc::Clear() {
+void RunnyProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     buffer_size_ = 51200u;
     chunk_size_ = 1024u;
@@ -170,7 +170,7 @@ void RunnyDesc::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool RunnyDesc::MergePartialFromCodedStream(
+bool RunnyProto::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -237,7 +237,7 @@ bool RunnyDesc::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void RunnyDesc::SerializeWithCachedSizes(
+void RunnyProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional uint32 buffer_size = 1 [default = 51200];
   if (_has_bit(0)) {
@@ -261,7 +261,7 @@ void RunnyDesc::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* RunnyDesc::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* RunnyProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional uint32 buffer_size = 1 [default = 51200];
   if (_has_bit(0)) {
@@ -287,7 +287,7 @@ void RunnyDesc::SerializeWithCachedSizes(
   return target;
 }
 
-int RunnyDesc::ByteSize() const {
+int RunnyProto::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -324,10 +324,10 @@ int RunnyDesc::ByteSize() const {
   return total_size;
 }
 
-void RunnyDesc::MergeFrom(const ::google::protobuf::Message& from) {
+void RunnyProto::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const RunnyDesc* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const RunnyDesc*>(
+  const RunnyProto* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const RunnyProto*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -336,7 +336,7 @@ void RunnyDesc::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void RunnyDesc::MergeFrom(const RunnyDesc& from) {
+void RunnyProto::MergeFrom(const RunnyProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -352,24 +352,24 @@ void RunnyDesc::MergeFrom(const RunnyDesc& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void RunnyDesc::CopyFrom(const ::google::protobuf::Message& from) {
+void RunnyProto::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void RunnyDesc::CopyFrom(const RunnyDesc& from) {
+void RunnyProto::CopyFrom(const RunnyProto& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool RunnyDesc::IsInitialized() const {
+bool RunnyProto::IsInitialized() const {
   
   return true;
 }
 
-void RunnyDesc::Swap(RunnyDesc* other) {
+void RunnyProto::Swap(RunnyProto* other) {
   if (other != this) {
     std::swap(buffer_size_, other->buffer_size_);
     std::swap(chunk_size_, other->chunk_size_);
@@ -380,11 +380,11 @@ void RunnyDesc::Swap(RunnyDesc* other) {
   }
 }
 
-::google::protobuf::Metadata RunnyDesc::GetMetadata() const {
+::google::protobuf::Metadata RunnyProto::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = RunnyDesc_descriptor_;
-  metadata.reflection = RunnyDesc_reflection_;
+  metadata.descriptor = RunnyProto_descriptor_;
+  metadata.reflection = RunnyProto_reflection_;
   return metadata;
 }
 

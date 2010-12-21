@@ -25,7 +25,6 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/audio/AudioDeviceSetup.pb.h"
 #include "rec/gui/RecentFiles.pb.h"
-#include "rec/widget/Panes.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -96,13 +95,6 @@ class Preferences : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.widget.pane.Track track = 1;
-  inline bool has_track() const;
-  inline void clear_track();
-  static const int kTrackFieldNumber = 1;
-  inline const ::rec::widget::pane::Track& track() const;
-  inline ::rec::widget::pane::Track* mutable_track();
-  
   // optional .rec.widget.waveform.WaveformProto waveform = 2;
   inline bool has_waveform() const;
   inline void clear_waveform();
@@ -129,7 +121,6 @@ class Preferences : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::widget::pane::Track* track_;
   ::rec::widget::waveform::WaveformProto* waveform_;
   ::rec::gui::RecentFiles* recent_files_;
   ::rec::audio::AudioDeviceSetupProto* audio_setup_;
@@ -137,7 +128,7 @@ class Preferences : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fslow_2fPreferences_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fPreferences_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -160,70 +151,53 @@ class Preferences : public ::google::protobuf::Message {
 
 // Preferences
 
-// optional .rec.widget.pane.Track track = 1;
-inline bool Preferences::has_track() const {
-  return _has_bit(0);
-}
-inline void Preferences::clear_track() {
-  if (track_ != NULL) track_->::rec::widget::pane::Track::Clear();
-  _clear_bit(0);
-}
-inline const ::rec::widget::pane::Track& Preferences::track() const {
-  return track_ != NULL ? *track_ : *default_instance_->track_;
-}
-inline ::rec::widget::pane::Track* Preferences::mutable_track() {
-  _set_bit(0);
-  if (track_ == NULL) track_ = new ::rec::widget::pane::Track;
-  return track_;
-}
-
 // optional .rec.widget.waveform.WaveformProto waveform = 2;
 inline bool Preferences::has_waveform() const {
-  return _has_bit(1);
+  return _has_bit(0);
 }
 inline void Preferences::clear_waveform() {
   if (waveform_ != NULL) waveform_->::rec::widget::waveform::WaveformProto::Clear();
-  _clear_bit(1);
+  _clear_bit(0);
 }
 inline const ::rec::widget::waveform::WaveformProto& Preferences::waveform() const {
   return waveform_ != NULL ? *waveform_ : *default_instance_->waveform_;
 }
 inline ::rec::widget::waveform::WaveformProto* Preferences::mutable_waveform() {
-  _set_bit(1);
+  _set_bit(0);
   if (waveform_ == NULL) waveform_ = new ::rec::widget::waveform::WaveformProto;
   return waveform_;
 }
 
 // optional .rec.gui.RecentFiles recent_files = 3;
 inline bool Preferences::has_recent_files() const {
-  return _has_bit(2);
+  return _has_bit(1);
 }
 inline void Preferences::clear_recent_files() {
   if (recent_files_ != NULL) recent_files_->::rec::gui::RecentFiles::Clear();
-  _clear_bit(2);
+  _clear_bit(1);
 }
 inline const ::rec::gui::RecentFiles& Preferences::recent_files() const {
   return recent_files_ != NULL ? *recent_files_ : *default_instance_->recent_files_;
 }
 inline ::rec::gui::RecentFiles* Preferences::mutable_recent_files() {
-  _set_bit(2);
+  _set_bit(1);
   if (recent_files_ == NULL) recent_files_ = new ::rec::gui::RecentFiles;
   return recent_files_;
 }
 
 // optional .rec.audio.AudioDeviceSetupProto audio_setup = 4;
 inline bool Preferences::has_audio_setup() const {
-  return _has_bit(3);
+  return _has_bit(2);
 }
 inline void Preferences::clear_audio_setup() {
   if (audio_setup_ != NULL) audio_setup_->::rec::audio::AudioDeviceSetupProto::Clear();
-  _clear_bit(3);
+  _clear_bit(2);
 }
 inline const ::rec::audio::AudioDeviceSetupProto& Preferences::audio_setup() const {
   return audio_setup_ != NULL ? *audio_setup_ : *default_instance_->audio_setup_;
 }
 inline ::rec::audio::AudioDeviceSetupProto* Preferences::mutable_audio_setup() {
-  _set_bit(3);
+  _set_bit(2);
   if (audio_setup_ == NULL) audio_setup_ = new ::rec::audio::AudioDeviceSetupProto;
   return audio_setup_;
 }

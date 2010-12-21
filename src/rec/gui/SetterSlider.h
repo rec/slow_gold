@@ -18,38 +18,51 @@ class SetterSlider : public juce::Slider,
   typedef proto::arg::Address Address;
   typedef persist::Data<Proto> Data;
 
-  SetterSlider(Data* d, const Address& a,
-              const String& name = String::empty)
-      : juce::Slider(name), data_(d), address_(a) {
-    data_->addListener(this);
+  SetterSlider(const Address& address, const String& name = String::empty)
+      : juce::Slider(name), address_(address), data_(NULL) {
   }
 
   ~SetterSlider() {
-    data_->removeListener(this);
+    setData(NULL);
   }
 
-  virtual void handleAsyncUpdate() {
-    setValue(value_, false);
-    LOG(INFO) << "setting " << value_;
+  void setData(Data* data) {
+    if (data_)
+      data_->removeListener(this);
+
+    data_ = data;
+
+    if (data_) {
+      data_->addListener(this);
+      (*this)(data_->get());
+    }
   }
 
   virtual void operator()(const Proto& message) {
     proto::Value value = proto::getValue(address_, message);
-    if (value.has_double_f()) {
-      value_ = value.double_f();
-      this->triggerAsyncUpdate();
-      LOG(INFO) << "saving " << value_;
-    }
+    if (value.has_double_f())
+      (new Updater(this, value.double_f()))->post();
   }
 
   virtual void valueChanged() {
-    LOG(ERROR) << "getValue() " << getValue();
-    // data_->setter()->set(address_, getValue());
+    if (data_)
+      data_->setter()->set(address_, getValue());
   }
 
  private:
-  Data* const data_;
+  class Updater : public juce::CallbackMessage {
+   public:
+    Updater(juce::Slider* s, double v) : slider_(s), value_(v) {}
+
+    virtual void messageCallback() { slider_->setValue(value_, false); }
+
+   private:
+    juce::Slider* slider_;
+    const double value_;
+  };
+
   const Address address_;
+  Data* data_;
   double value_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterSlider);

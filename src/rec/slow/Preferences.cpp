@@ -16,11 +16,5 @@ const proto::Preferences getPreferences() {
   return prefs()->get();
 }
 
-AudioSetupData* audioSetupData() {
-  static AudioSetupData* data = persist::getApp()->
-    getData<audio::AudioDeviceSetupProto>("preferences");
-  return data;
-}
-
 }  // namespace slow
 }  // namespace rec

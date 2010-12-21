@@ -3,7 +3,6 @@
 
 #include "rec/base/base.h"
 #include "rec/data/persist/Data.h"
-#include "rec/util/STL.h"
 #include "rec/widget/tree/VolumeFile.h"
 
 #include "rec/data/persist/AppDirectory.h"
@@ -27,21 +26,29 @@ class App {
  public:
   typedef std::map<string, UntypedData*> DataMap;
 
+  virtual ~App();
+
+  command::Manager* commandManager() { return commandManager_; }
+  const string& name() const { return name_; }
+  File appDir() const;
+
   template <typename Proto>
-  Data<Proto>* getData(const string& fileRoot) {
-    return getData<Proto>(appDir(), fileRoot);
+  Data<Proto>* getData(const string& fileNameRoot) {
+    return getData<Proto>(appDir(), fileNameRoot);
   }
 
   template <typename Proto>
-  Data<Proto>* getData(const widget::tree::VolumeFile& file, 
-                       const string& fileRoot) {
-    return getData<Proto>(getShadowDirectory(file), fileRoot);
+  Data<Proto>* getData(const VolumeFile& file, const string& fileNameRoot) {
+    return getData<Proto>(getShadowDirectory(file), fileNameRoot);
   }
 
  protected:
+  explicit App(const string& name);
+  virtual void needsUpdate(UntypedData* data) = 0;
+
   template <typename Proto>
-  Data<Proto>* getData(const File& directory, const string& fileRoot) {
-    string fileName = fileRoot + "." + Proto::descriptor()->name();
+  Data<Proto>* getData(const File& directory, const string& fileNameRoot) {
+    string fileName = getFileName(fileNameRoot, Proto::default_instance());
     string fileKey = directory.getFullPathName().toCString() + ("/" + fileName);
     ScopedLock l(lock_);
     DataMap::const_iterator i = data_.find(fileKey);
@@ -55,26 +62,10 @@ class App {
     return data;
   }
 
- public:
-  command::Manager* commandManager() { return commandManager_; }
-
-  const string& name() const { return name_; }
-
-  virtual ~App() {
-    stl::deleteMapPointers(&data_);
-  }
-
-  File appDir() const {
-    return data::persist::appDirectory().getChildFile(name_.c_str());
-  }
-
- protected:
+ private:
   friend class UntypedData;
-  explicit App(const string& name) : name_(name) {
-    appDir().createDirectory();
-  }
 
-  virtual void needsUpdate(UntypedData* data) = 0;
+  static string getFileName(const string& nameRoot, const Message& instance);
 
   DataMap data_;
   CriticalSection lock_;

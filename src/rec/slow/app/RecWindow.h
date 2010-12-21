@@ -1,7 +1,6 @@
 #ifndef __REC_WINDOW
 #define __REC_WINDOW
 
-#include "rec/slow/Preferences.h"
 #include "rec/slow/app/ComponentContainer.h"
 
 using namespace juce;

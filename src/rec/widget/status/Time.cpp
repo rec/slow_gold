@@ -22,7 +22,7 @@ TextComponent::TextComponent(const Text& desc)
 }
 
 void TextComponent::setTime(float time) {
-  time_ = time_;
+  time_ = time;
   triggerAsyncUpdate();
 }
 
@@ -96,7 +96,7 @@ void DialComponent::setLength(float length) {
   ScopedLock l(lock_);
   length_ = length;
   triggerAsyncUpdate();
-} 
+}
 
 void DialComponent::handleAsyncUpdate() {
   repaint();

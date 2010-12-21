@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-const char* Init(const TimeStretch &desc, AudioTimeScaler* s) {
+const char* Init(const StretchyProto &desc, AudioTimeScaler* s) {
   return s->Init(desc.time_scale(),
                  desc.sample_rate(),
                  desc.channels(),

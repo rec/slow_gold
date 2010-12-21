@@ -13,6 +13,12 @@ class Locker {
   Locker() : changed_(false) {}
   virtual ~Locker() {}
 
+  virtual void initialize(const Data& data) {
+    ScopedLock l(lock_);
+    data_ = data;
+    changed_ = false;
+  }
+
   virtual void change() {
     ScopedLock l(lock_);
     changed_ = true;

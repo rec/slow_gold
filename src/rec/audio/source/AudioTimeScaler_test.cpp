@@ -21,7 +21,7 @@ float rampWave(int ramp, int scale) {
 }
 
 void Init(AudioTimeScaler* scaler) {
-  TimeStretch desc;
+  StretchyProto desc;
   desc.set_channels(2);
   Init(desc, scaler);
 }

@@ -33,6 +33,9 @@ bool Buffery::hasFilled(int length) const {
 
 bool Buffery::hasFilled(const Block& b) const {
   ScopedLock l(lock_);
+  if (isFull())
+    return true;
+
   if (b.second <= length_)
     return difference(filled_, b).empty();
 
@@ -75,6 +78,21 @@ void Buffery::fillNextBlock() {
   }
   if (full)
     broadcast(*this);
+}
+
+bool Buffery::waitUntilFilled(int length, int waitTime, int maxTime) {
+  Thread* thread = Thread::getCurrentThread();
+  for (int time = 0; !thread->threadShouldExit(); time += waitTime) {
+    if (hasFilled(length))
+      return true;
+
+    if (time > maxTime) {
+      LOG(ERROR) << "Waited for a long time, no data: " << time;
+      return false;
+    }
+    thread->wait(waitTime);
+  }
+  return false;
 }
 
 }  // namespace source

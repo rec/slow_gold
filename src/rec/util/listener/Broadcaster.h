@@ -9,12 +9,15 @@ namespace rec {
 namespace util {
 namespace listener {
 
+// Broadcast updates of type Type to a set of Listener<Type>.
 template <typename Type>
 class Broadcaster : public Listener<Type> {
  public:
-  Broadcaster() {}
   typedef std::set<Listener<Type>*> Listeners;
   typedef typename Listeners::iterator iterator;
+
+  Broadcaster() {}
+  virtual ~Broadcaster() {}
 
   virtual void addListener(Listener<Type>* listener) {
     ScopedLock l(lock_);
@@ -32,9 +35,7 @@ class Broadcaster : public Listener<Type> {
       (**i)(x);
   }
 
-  virtual void operator()(Type x) {
-    broadcast(x);
-  }
+  virtual void operator()(Type t) { broadcast(t); }
 
  protected:
   CriticalSection lock_;

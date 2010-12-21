@@ -68,9 +68,9 @@ void Waveform::setTimeBounds(float begin, float end) {
   triggerAsyncUpdate();
 }
 
-std::pair<float, float> Waveform::getTimeBounds() const {
+const TimeBounds Waveform::getTimeBounds() const {
   ScopedLock l(lock_);
-  return std::make_pair(begin_, end_);
+  return TimeBounds(begin_, end_);
 }
 
 void Waveform::layoutCursors() {
@@ -102,7 +102,7 @@ void Waveform::mouseUp(const juce::MouseEvent& e) {
     ScopedLock l(lock_);
     time = e.x * (end_ - begin_) / getWidth();
   }
-  broadcast(time);
+  broadcast(TimeAndMouseEvent(time, &e));
 }
 
 }  // namespace waveform

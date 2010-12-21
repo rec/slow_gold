@@ -9,7 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Runny::Runny(const RunnyDesc& desc, Source* source)
+Runny::Runny(const RunnyProto& desc, Source* source)
   : Wrappy::Position(source),
       Thread("Runny"),
       buffer_(2, desc.buffer_size()),

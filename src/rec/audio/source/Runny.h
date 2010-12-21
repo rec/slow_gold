@@ -13,7 +13,7 @@ namespace source {
 
 class Runny : public Wrappy::Position, public Thread {
  public:
-  Runny(const RunnyDesc& desc, Source* source);
+  Runny(const RunnyProto& desc, Source* source);
 
   virtual ~Runny();
 
@@ -28,7 +28,7 @@ class Runny : public Wrappy::Position, public Thread {
  private:
   AudioSampleBuffer buffer_;
   util::Circular filled_;
-  const RunnyDesc desc_;
+  const RunnyProto desc_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Runny);
 };

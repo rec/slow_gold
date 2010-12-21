@@ -10,12 +10,8 @@ namespace listener {
 template <typename Type>
 class Listener {
  public:
-  Listener() {}
-  virtual ~Listener() {}
   virtual void operator()(Type x) = 0;
-
- private:
-  DISALLOW_COPY_AND_ASSIGN(Listener);
+  virtual ~Listener() {}
 };
 
 }  // namespace listener

@@ -11,19 +11,22 @@
 namespace rec {
 namespace persist {
 
+const string& getProtoName(const Message& m);
 class App;
 
 template <typename Proto>
-class Data : public UntypedData, public listener::Broadcaster<const Proto&> {
+class Data : public UntypedData,
+             public listener::Broadcaster<const Proto&> {
  public:
-  // Get a snapshot of the current.
+  // Get a consistent snapshot of the current value.
   Proto get() const {
     ScopedLock l(lock_);
     return proto_;
   }
 
   virtual ~Data() {
-    DLOG(INFO) << "Shutting down data: " << Proto::descriptor()->name();
+    // I don't think this ever happens.
+    DLOG(INFO) << "Deleting data: " << getProtoName(Proto::default_instance());
   }
 
  protected:

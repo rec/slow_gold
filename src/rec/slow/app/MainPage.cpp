@@ -1,5 +1,9 @@
+#include <google/protobuf/descriptor.h>
+
 #include "rec/slow/app/MainPage.h"
 
+#include "rec/gui/RecentFiles.h"
+#include "rec/data/persist/App.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Trash.h"
@@ -35,20 +39,16 @@ static const int CHANGE_LOCKER_WAIT = 100;
 
 MainPage::MainPage(AudioDeviceManager& deviceManager)
   : transportSource_(new app::AudioTransportSourcePlayer(&deviceManager)),
-      waveform_(WaveformProto()),
-      startStopButton_(String::empty),
-      treeRoot_(new Root(NodeDesc())),
-      explanation_(String::empty, T("<Explanation here>.")),
-      timeScaleSlider_(slow::prefs(),
-                       Address("track", "timestretch", "time_scale"),
-                       T("Time Scale")),
-      pitchScaleSlider_(slow::prefs(),
-                        Address("track", "timestretch", "pitch_scale"),
-                        T("Pitch Scale")),
-      songTime_(Text()),
-      songDial_(realTimeDial()),
-      changeLocker_(new ChangeLocker<Preferences>(CHANGE_LOCKER_WAIT)),
-      fileListener_(slow::prefs()->setter(), Address("track", "file")) {
+    waveform_(WaveformProto()),
+    startStopButton_(String::empty),
+    treeRoot_(new Root(NodeDesc())),
+    explanation_(String::empty, T("<Explanation here>.")),
+    timeScaleSlider_(Address("time_scale"), T("Time Scale")),
+    pitchScaleSlider_(Address("pitch_scale"), T("Pitch Scale")),
+    songTime_(Text()),
+    songDial_(realTimeDial()),
+    fileListener_(getCurrentFileData()->setter(), Address()),
+    stretchy_(NULL) {
   setSize(600, 400);
 
   startStopButton_.setButtonText(T("Play/Stop"));
@@ -61,14 +61,16 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   explanation_.setColour(TextEditor::backgroundColourId, Colour(0x0));
 
   timeScaleSlider_.setTooltip(T("Drag this to set the slowdown."));
-  timeScaleSlider_.setRange(0.5, 5, 0);
+  timeScaleSlider_.setRange(0.1, 5, 0);
   timeScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
   timeScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
+  timeScaleSlider_.setValue(1.0);
 
   pitchScaleSlider_.setTooltip(T("Drag this to set the pitchscale."));
   pitchScaleSlider_.setRange(0.125, 4, 0);
   pitchScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
   pitchScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
+  pitchScaleSlider_.setValue(1.0);
 
   addAndMakeVisible(&waveform_);
   addAndMakeVisible(&startStopButton_);
@@ -81,9 +83,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
-  changeLocker_->addListener(this);
-  slow::prefs()->addListener(changeLocker_.get());
   startStopButton_.addButtonListener(this);
+  waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
 
   transportSource_->addListener(&songDial_);
@@ -91,16 +92,23 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   transportSource_->addListener(cursor_);
 
   treeRoot_->startThread();
-  changeLocker_->startThread();
-  slow::prefs()->requestUpdate();
+
+  gui::RecentFiles recent = gui::getSortedRecentFiles();
+  if (recent.file_size())
+    fileListener_(recent.file(0).file());
+}
+
+void MainPage::removeFileCallbacks() {
+  if (timeLocker_) {
+    timeLocker_->removeListener(this);
+    trash::discard(&timeLocker_);
+  }
 }
 
 MainPage::~MainPage() {
   transportSource_->stop();
   transportSource_->setSource(NULL);
 
-  changeLocker_->removeListener(this);
-  slow::prefs()->removeListener(changeLocker_.get());
   startStopButton_.removeButtonListener(this);
   treeRoot_->removeListener(&fileListener_);
 
@@ -108,10 +116,11 @@ MainPage::~MainPage() {
   transportSource_->removeListener(&songTime_);
   transportSource_->removeListener(cursor_);
 
-  trash::discard(changeLocker_.transfer());
-  trash::discard(treeRoot_.transfer());
-  trash::discard(doubleRunny_.transfer());
-  trash::discard(transportSource_.transfer());
+  trash::discard(&treeRoot_);
+  trash::discard(&doubleRunny_);
+  trash::discard(&transportSource_);
+
+  removeFileCallbacks();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -134,30 +143,46 @@ void MainPage::buttonClicked(Button* buttonThatWasClicked) {
 }
 
 static const int BLOCKSIZE = 1024;
+static const int SAMPLE_RATE = 44100.0f;
 
-void MainPage::operator()(const Preferences& prefs) {
-  const VolumeFile& file = prefs.track().file();
-  if (prefs_.track().file() != file) {
-    transportSource_->stop();
-    transportSource_->setPosition(0);
-    transportSource_->setSource(NULL);
+void MainPage::operator()(const VolumeFile& file) {
+  if (file_ != file) {
+    removeFileCallbacks();
 
-    scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file, BLOCKSIZE));
-    dr->setPreferences(prefs);
+    timeLocker_.reset(new thread::ChangeLocker<float>(CHANGE_LOCKER_WAIT));
+    timeLocker_->set(0);
+    timeLocker_->addListener(this);
+    timeLocker_->startThread();
+
+    stretchy_ = persist::getApp()->getData<StretchyProto>(file, "timestretch");
+    timeScaleSlider_.setData(stretchy_);
+    pitchScaleSlider_.setData(stretchy_);
+
+    file_ = file;
+    transportSource_->clear();
+    cursor_->setTime(0.0f);
+
+    scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file_, stretchy_));
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);
     doubleRunny_.swap(dr);
+
     transportSource_->setSource(doubleRunny_.get());
-    trash::discard(dr.transfer());
+    songDial_.setLength(doubleRunny_->getTotalLength() / SAMPLE_RATE);
 
-  } else if (doubleRunny_) {
-    float ratio = prefs.track().timestretch().time_scale() /
-      prefs_.track().timestretch().time_scale();
-    int position = transportSource_->getNextReadPosition();
-    doubleRunny_->setPreferences(prefs, position, ratio);
+    trash::discard(&dr);
   }
+}
 
-  prefs_ = prefs;
+static const int BUFFERY_READAHEAD = 10000;
+
+void MainPage::operator()(const float& time) {
+  if (!doubleRunny_)
+    return;
+  Buffery* buffery = doubleRunny_->buffery();
+  buffery->setPosition(SAMPLE_RATE * time);
+  if (buffery->waitUntilFilled(BUFFERY_READAHEAD))
+    transportSource_->setPosition(stretchy_->get().time_scale() * time);
 }
 
 }  // namespace slow

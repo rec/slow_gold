@@ -82,7 +82,6 @@ void Cursor::handleAsyncUpdate() {
 
 void Cursor::setBoundsAsync(const juce::Rectangle<int>& bounds) {
   bounds_ = bounds;
-  DLOG(INFO) << "setting the bounds";
   triggerAsyncUpdate();
 }
 

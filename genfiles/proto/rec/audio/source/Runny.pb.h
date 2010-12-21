@@ -35,18 +35,18 @@ void  protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto();
 void protobuf_AssignDesc_rec_2faudio_2fsource_2fRunny_2eproto();
 void protobuf_ShutdownFile_rec_2faudio_2fsource_2fRunny_2eproto();
 
-class RunnyDesc;
+class RunnyProto;
 
 // ===================================================================
 
-class RunnyDesc : public ::google::protobuf::Message {
+class RunnyProto : public ::google::protobuf::Message {
  public:
-  RunnyDesc();
-  virtual ~RunnyDesc();
+  RunnyProto();
+  virtual ~RunnyProto();
   
-  RunnyDesc(const RunnyDesc& from);
+  RunnyProto(const RunnyProto& from);
   
-  inline RunnyDesc& operator=(const RunnyDesc& from) {
+  inline RunnyProto& operator=(const RunnyProto& from) {
     CopyFrom(from);
     return *this;
   }
@@ -60,17 +60,17 @@ class RunnyDesc : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const RunnyDesc& default_instance();
+  static const RunnyProto& default_instance();
   
-  void Swap(RunnyDesc* other);
+  void Swap(RunnyProto* other);
   
   // implements Message ----------------------------------------------
   
-  RunnyDesc* New() const;
+  RunnyProto* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const RunnyDesc& from);
-  void MergeFrom(const RunnyDesc& from);
+  void CopyFrom(const RunnyProto& from);
+  void MergeFrom(const RunnyProto& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -114,7 +114,7 @@ class RunnyDesc : public ::google::protobuf::Message {
   inline const ::rec::util::thread::ThreadDescription& thread() const;
   inline ::rec::util::thread::ThreadDescription* mutable_thread();
   
-  // @@protoc_insertion_point(class_scope:rec.audio.source.RunnyDesc)
+  // @@protoc_insertion_point(class_scope:rec.audio.source.RunnyProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -140,59 +140,59 @@ class RunnyDesc : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static RunnyDesc* default_instance_;
+  static RunnyProto* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
 
-// RunnyDesc
+// RunnyProto
 
 // optional uint32 buffer_size = 1 [default = 51200];
-inline bool RunnyDesc::has_buffer_size() const {
+inline bool RunnyProto::has_buffer_size() const {
   return _has_bit(0);
 }
-inline void RunnyDesc::clear_buffer_size() {
+inline void RunnyProto::clear_buffer_size() {
   buffer_size_ = 51200u;
   _clear_bit(0);
 }
-inline ::google::protobuf::uint32 RunnyDesc::buffer_size() const {
+inline ::google::protobuf::uint32 RunnyProto::buffer_size() const {
   return buffer_size_;
 }
-inline void RunnyDesc::set_buffer_size(::google::protobuf::uint32 value) {
+inline void RunnyProto::set_buffer_size(::google::protobuf::uint32 value) {
   _set_bit(0);
   buffer_size_ = value;
 }
 
 // optional uint32 chunk_size = 2 [default = 1024];
-inline bool RunnyDesc::has_chunk_size() const {
+inline bool RunnyProto::has_chunk_size() const {
   return _has_bit(1);
 }
-inline void RunnyDesc::clear_chunk_size() {
+inline void RunnyProto::clear_chunk_size() {
   chunk_size_ = 1024u;
   _clear_bit(1);
 }
-inline ::google::protobuf::uint32 RunnyDesc::chunk_size() const {
+inline ::google::protobuf::uint32 RunnyProto::chunk_size() const {
   return chunk_size_;
 }
-inline void RunnyDesc::set_chunk_size(::google::protobuf::uint32 value) {
+inline void RunnyProto::set_chunk_size(::google::protobuf::uint32 value) {
   _set_bit(1);
   chunk_size_ = value;
 }
 
 // optional .rec.util.thread.ThreadDescription thread = 3;
-inline bool RunnyDesc::has_thread() const {
+inline bool RunnyProto::has_thread() const {
   return _has_bit(2);
 }
-inline void RunnyDesc::clear_thread() {
+inline void RunnyProto::clear_thread() {
   if (thread_ != NULL) thread_->::rec::util::thread::ThreadDescription::Clear();
   _clear_bit(2);
 }
-inline const ::rec::util::thread::ThreadDescription& RunnyDesc::thread() const {
+inline const ::rec::util::thread::ThreadDescription& RunnyProto::thread() const {
   return thread_ != NULL ? *thread_ : *default_instance_->thread_;
 }
-inline ::rec::util::thread::ThreadDescription* RunnyDesc::mutable_thread() {
+inline ::rec::util::thread::ThreadDescription* RunnyProto::mutable_thread() {
   _set_bit(2);
   if (thread_ == NULL) thread_ = new ::rec::util::thread::ThreadDescription;
   return thread_;

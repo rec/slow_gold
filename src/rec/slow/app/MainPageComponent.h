@@ -4,9 +4,9 @@
 #include <glog/logging.h>
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/slow/Preferences.h"
 #include "rec/slow/app/MainPage.h"
 #include "rec/slow/app/AudioSetupPage.h"
+#include "rec/audio/AudioDeviceSetup.h"
 #include "rec/data/yaml/Yaml.h"
 
 namespace rec {
@@ -32,21 +32,25 @@ class MainPageComponent  : public Component {
   void loadRecentFile(int menuItemId) {
     gui::RecentFiles recent = gui::getSortedRecentFiles();
     const VolumeFile& file = recent.file(menuItemId - 1).file();
-    slow::prefs()->setter()->set("track", "file", file);
+    getCurrentFileData()->setter()->set(file);
+    // TODO
+    // slow::prefs()->setter()->set("track", "file", file);
   }
 
   void cut() {
-    proto::Preferences prefs = slow::getPreferences();
+#if 0
     string s = yaml::write(prefs);
     SystemClipboard::copyTextToClipboard(s.c_str());
     DLOG(INFO) << s;
+#endif
   }
 
   void paste() {
+#if 0
     string s = SystemClipboard::getTextFromClipboard().toCString();
     DLOG(INFO) << s;
-    proto::Preferences prefs;
     yaml::read(s, &prefs);
+#endif
   }
 
   void paint(Graphics& g) { g.fillAll(Colours::white); }

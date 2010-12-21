@@ -12,6 +12,12 @@ namespace thread {
 namespace trash {
 
 void discard(Thread* t);
+
+template <typename ThreadClass>
+void discard(scoped_ptr<ThreadClass>* t) {
+  discard(t->transfer());
+}
+
 void empty();
 void waitForAllThreadsToExit(int timeout);
 inline void discardAndEmpty(Thread* t) { discard(t); empty(); }

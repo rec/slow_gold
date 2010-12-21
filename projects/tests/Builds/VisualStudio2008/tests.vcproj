@@ -188,7 +188,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\Runny_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Source.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
@@ -196,8 +195,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy_test.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyFactory.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TestHarness.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy_test.cpp"/>
@@ -228,6 +225,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\commands\EventQueue.h"/>
           </Filter>
           <Filter Name="persist">
+            <File RelativePath="..\..\..\..\src\rec\data\persist\App.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
@@ -444,7 +442,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\listener\Time.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\math_test.cpp"/>
@@ -462,7 +459,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\Cycler.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Factory.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\LockedMessage.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Loop.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Runnable.h"/>
@@ -479,7 +475,6 @@
         </Filter>
         <Filter Name="widget">
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
-          <File RelativePath="..\..\..\..\src\rec\widget\Panes.h"/>
           <Filter Name="status">
             <File RelativePath="..\..\..\..\src\rec\widget\status\Status.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\status\Status.h"/>

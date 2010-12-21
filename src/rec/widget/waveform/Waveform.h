@@ -14,9 +14,12 @@ namespace waveform {
 class Cursor;
 class CursorProto;
 
+typedef std::pair<float, const juce::MouseEvent*> TimeAndMouseEvent;
+typedef std::pair<float, float> TimeBounds;
+
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
-                 public listener::Broadcaster<float>,
+                 public listener::Broadcaster<const TimeAndMouseEvent&>,
                  public listener::Listener<const juce::AudioThumbnail&>,
                  public AsyncUpdater {
  public:
@@ -31,7 +34,7 @@ class Waveform : public Component,
   Cursor* addCursor(const CursorProto& desc, float time);
   void moveCursor(Cursor* cursor, float time);
   void setTimeBounds(float begin, float end);
-  std::pair<float, float> getTimeBounds() const;
+  const TimeBounds getTimeBounds() const;
   virtual void operator()(const juce::AudioThumbnail&) { triggerAsyncUpdate(); }
 
   virtual void paint(Graphics& g);

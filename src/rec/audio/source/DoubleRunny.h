@@ -3,35 +3,40 @@
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/source/Runny.h"
+#include "rec/audio/source/Stretchy.pb.h"
 #include "rec/util/listener/Broadcaster.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/ChangeLocker.h"
-#include "rec/slow/Preferences.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleRunny : public Wrappy,
-                    public util::listener::Broadcaster<PositionableAudioSource*> {
+class StretchyProto;
+
+class DoubleRunny : public Wrappy {
  public:
-  DoubleRunny() : Wrappy(NULL) {}
+  DoubleRunny(const VolumeFile& file,
+              const RunnyProto& desc = RunnyProto::default_instance())
+      : Wrappy(NULL), file_(file), runnyDesc_(desc) {
+  }
+
   ~DoubleRunny();
 
-  virtual PositionableAudioSource* makeSource(const VolumeFile& file);
+  void setStretchy(const StretchyProto& desc);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
-  void setPreferences(const slow::proto::Preferences& prefs,
-                      int pos = -1, double ratio = 1.0);
-
-  virtual void setPosition(int position) {}
 
  protected:
+  virtual PositionableAudioSource* makeSource();
   virtual Source* source() const;
+  StretchyProto stretchyDesc_;
 
  private:
+  const VolumeFile file_;
+  const RunnyProto runnyDesc_;
+
   CriticalSection lock_;
-  slow::proto::Preferences prefs_;
-  scoped_ptr<audio::source::Runny> runny_, nextRunny_;
+  scoped_ptr<Runny> runny_, nextRunny_;
   double ratio_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleRunny);

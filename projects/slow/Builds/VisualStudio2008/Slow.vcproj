@@ -190,8 +190,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyFactory.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TestHarness.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TimeScaler.cpp"/>
@@ -221,6 +219,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\commands\EventQueue.h"/>
           </Filter>
           <Filter Name="persist">
+            <File RelativePath="..\..\..\..\src\rec\data\persist\App.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
@@ -425,7 +424,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\listener\Time.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Method.h"/>
@@ -456,7 +454,6 @@
         </Filter>
         <Filter Name="widget">
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
-          <File RelativePath="..\..\..\..\src\rec\widget\Panes.h"/>
           <Filter Name="status">
             <File RelativePath="..\..\..\..\src\rec\widget\status\Status.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\status\Status.h"/>

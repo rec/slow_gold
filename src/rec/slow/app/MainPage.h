@@ -8,21 +8,21 @@
 #include <glog/logging.h>
 
 #include "rec/audio/source/DoubleRunnyBuffer.h"
-#include "rec/slow/Preferences.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/listener/SetterListener.h"
 #include "rec/util/thread/ChangeLocker.h"
-#include "rec/widget/Panes.h"
 #include "rec/widget/status/Time.h"
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/gui/SetterSlider.h"
+#include "rec/audio/source/Stretchy.pb.h"
+#include "rec/data/persist/Copy.h"
 
 using namespace rec::audio::source;
+using namespace rec::audio;
 using namespace rec::gui;
-using namespace rec::slow::proto;
 using namespace rec::util::thread;
 using namespace rec::widget::status::time;
 using namespace rec::widget::tree;
@@ -35,19 +35,24 @@ namespace slow {
 
 class MainPage : public Component,
                  public ButtonListener,
-                 public listener::Listener<PositionableAudioSource*>,
-                 public listener::Listener<const Preferences&> {
+                 public listener::Listener<const float&>,
+                 public listener::Listener<const TimeAndMouseEvent&>,
+                 public listener::Listener<const VolumeFile&> {
  public:
-  MainPage(AudioDeviceManager& deviceManager);
+  MainPage(AudioDeviceManager&);
   virtual ~MainPage();
 
-  void paint(Graphics& g);
+  void paint(Graphics&);
   void resized();
-  void buttonClicked(Button* buttonThatWasClicked);
+  void buttonClicked(Button*);
 
-  virtual void operator()(const Preferences& prefs);
-  // TODO: remove?
-  virtual void operator()(PositionableAudioSource*) {}
+  virtual void operator()(const TimeAndMouseEvent& timeMouse) {
+    timeLocker_->set(timeMouse.first);
+  }
+  virtual void operator()(const float& time);
+  virtual void operator()(const VolumeFile& file);
+
+  void removeFileCallbacks();
 
   void loadRecentFile(int menuItemId);
 
@@ -57,18 +62,20 @@ class MainPage : public Component,
   TextButton startStopButton_;
   scoped_ptr<Root> treeRoot_;
   Label explanation_;
-  SetterSlider<Preferences> timeScaleSlider_;
-  SetterSlider<Preferences> pitchScaleSlider_;
+
+  SetterSlider<StretchyProto> timeScaleSlider_;
+  SetterSlider<StretchyProto> pitchScaleSlider_;
   TextComponent songTime_;
   DialComponent songDial_;
   Cursor* cursor_;
 
   CriticalSection lock_;
-  scoped_ptr<ChangeLocker<Preferences> > changeLocker_;
+  VolumeFile file_;
   scoped_ptr<DoubleRunnyBuffer> doubleRunny_;
   listener::SetterListener<const VolumeFile&> fileListener_;
+  persist::Data<StretchyProto>* stretchy_;
+  scoped_ptr<thread::ChangeLocker<float> > timeLocker_;
 
-  slow::proto::Preferences prefs_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };
 

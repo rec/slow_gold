@@ -3,7 +3,6 @@
 
 #include "rec/slow/app/GenericApplication.h"
 #include "rec/slow/app/RecWindow.h"
-#include "rec/slow/Preferences.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 
 namespace rec {

@@ -24,6 +24,7 @@ class Buffery : public listener::Listener<int>,
   void fillNextBlock();
   bool isFull() const;
   int getLength() const { return length_; }
+  bool waitUntilFilled(int length, int waitTime = 40, int maxTime = 10000);
 
  private:
   CriticalSection lock_;

@@ -9,9 +9,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class TimeStretch;
+class StretchyProto;
 
-const char* Init(const TimeStretch &desc, AudioTimeScaler* s);
+const char* Init(const StretchyProto &desc, AudioTimeScaler* s);
 
 }  // namespace source
 }  // namespace audio

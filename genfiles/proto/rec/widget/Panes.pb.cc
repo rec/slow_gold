@@ -24,9 +24,6 @@ const ::google::protobuf::EnumDescriptor* Navigation_Orientation_descriptor_ = N
 const ::google::protobuf::Descriptor* Directory_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Directory_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Track_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Track_reflection_ = NULL;
 
 }  // namespace
 
@@ -73,24 +70,6 @@ void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Directory));
-  Track_descriptor_ = file->message_type(2);
-  static const int Track_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, widget_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, file_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, timestretch_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, runny_),
-  };
-  Track_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Track_descriptor_,
-      Track::default_instance_,
-      Track_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Track, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Track));
 }
 
 namespace {
@@ -107,8 +86,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
     Navigation_descriptor_, &Navigation::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Directory_descriptor_, &Directory::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Track_descriptor_, &Track::default_instance());
 }
 
 }  // namespace
@@ -118,8 +95,6 @@ void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto() {
   delete Navigation_reflection_;
   delete Directory::default_instance_;
   delete Directory_reflection_;
-  delete Track::default_instance_;
-  delete Track_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
@@ -147,20 +122,13 @@ void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
     "AT_BOTTOM\020\001\022\020\n\014TABS_AT_LEFT\020\002\022\021\n\rTABS_AT"
     "_RIGHT\020\003\"Z\n\tDirectory\022\"\n\006widget\030\001 \001(\0132\022."
     "rec.widget.Widget\022)\n\004file\030\002 \001(\0132\033.rec.wi"
-    "dget.tree.VolumeFile\"\266\001\n\005Track\022\"\n\006widget"
-    "\030\001 \001(\0132\022.rec.widget.Widget\022)\n\004file\030\002 \001(\013"
-    "2\033.rec.widget.tree.VolumeFile\0222\n\013timestr"
-    "etch\030\003 \001(\0132\035.rec.audio.source.TimeStretc"
-    "h\022*\n\005runny\030\004 \001(\0132\033.rec.audio.source.Runn"
-    "yDesc", 765);
+    "dget.tree.VolumeFile", 580);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Panes.proto", &protobuf_RegisterTypes);
   Navigation::default_instance_ = new Navigation();
   Directory::default_instance_ = new Directory();
-  Track::default_instance_ = new Track();
   Navigation::default_instance_->InitAsDefaultInstance();
   Directory::default_instance_->InitAsDefaultInstance();
-  Track::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto);
 }
 
@@ -822,353 +790,6 @@ void Directory::Swap(Directory* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = Directory_descriptor_;
   metadata.reflection = Directory_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Track::kWidgetFieldNumber;
-const int Track::kFileFieldNumber;
-const int Track::kTimestretchFieldNumber;
-const int Track::kRunnyFieldNumber;
-#endif  // !_MSC_VER
-
-Track::Track()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Track::InitAsDefaultInstance() {
-  widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
-  file_ = const_cast< ::rec::widget::tree::VolumeFile*>(&::rec::widget::tree::VolumeFile::default_instance());
-  timestretch_ = const_cast< ::rec::audio::source::TimeStretch*>(&::rec::audio::source::TimeStretch::default_instance());
-  runny_ = const_cast< ::rec::audio::source::RunnyDesc*>(&::rec::audio::source::RunnyDesc::default_instance());
-}
-
-Track::Track(const Track& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Track::SharedCtor() {
-  _cached_size_ = 0;
-  widget_ = NULL;
-  file_ = NULL;
-  timestretch_ = NULL;
-  runny_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Track::~Track() {
-  SharedDtor();
-}
-
-void Track::SharedDtor() {
-  if (this != default_instance_) {
-    delete widget_;
-    delete file_;
-    delete timestretch_;
-    delete runny_;
-  }
-}
-
-void Track::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Track::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Track_descriptor_;
-}
-
-const Track& Track::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();  return *default_instance_;
-}
-
-Track* Track::default_instance_ = NULL;
-
-Track* Track::New() const {
-  return new Track;
-}
-
-void Track::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (_has_bit(0)) {
-      if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
-    }
-    if (_has_bit(1)) {
-      if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
-    }
-    if (_has_bit(2)) {
-      if (timestretch_ != NULL) timestretch_->::rec::audio::source::TimeStretch::Clear();
-    }
-    if (_has_bit(3)) {
-      if (runny_ != NULL) runny_->::rec::audio::source::RunnyDesc::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Track::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.Widget widget = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_widget()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_file;
-        break;
-      }
-      
-      // optional .rec.widget.tree.VolumeFile file = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_file:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_file()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_timestretch;
-        break;
-      }
-      
-      // optional .rec.audio.source.TimeStretch timestretch = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_timestretch:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_timestretch()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_runny;
-        break;
-      }
-      
-      // optional .rec.audio.source.RunnyDesc runny = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_runny:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_runny()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Track::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.Widget widget = 1;
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->widget(), output);
-  }
-  
-  // optional .rec.widget.tree.VolumeFile file = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->file(), output);
-  }
-  
-  // optional .rec.audio.source.TimeStretch timestretch = 3;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->timestretch(), output);
-  }
-  
-  // optional .rec.audio.source.RunnyDesc runny = 4;
-  if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->runny(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Track::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.Widget widget = 1;
-  if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->widget(), target);
-  }
-  
-  // optional .rec.widget.tree.VolumeFile file = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->file(), target);
-  }
-  
-  // optional .rec.audio.source.TimeStretch timestretch = 3;
-  if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->timestretch(), target);
-  }
-  
-  // optional .rec.audio.source.RunnyDesc runny = 4;
-  if (_has_bit(3)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        4, this->runny(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Track::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.Widget widget = 1;
-    if (has_widget()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->widget());
-    }
-    
-    // optional .rec.widget.tree.VolumeFile file = 2;
-    if (has_file()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->file());
-    }
-    
-    // optional .rec.audio.source.TimeStretch timestretch = 3;
-    if (has_timestretch()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->timestretch());
-    }
-    
-    // optional .rec.audio.source.RunnyDesc runny = 4;
-    if (has_runny()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->runny());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Track::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Track* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Track*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Track::MergeFrom(const Track& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
-    }
-    if (from._has_bit(1)) {
-      mutable_file()->::rec::widget::tree::VolumeFile::MergeFrom(from.file());
-    }
-    if (from._has_bit(2)) {
-      mutable_timestretch()->::rec::audio::source::TimeStretch::MergeFrom(from.timestretch());
-    }
-    if (from._has_bit(3)) {
-      mutable_runny()->::rec::audio::source::RunnyDesc::MergeFrom(from.runny());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Track::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Track::CopyFrom(const Track& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Track::IsInitialized() const {
-  
-  return true;
-}
-
-void Track::Swap(Track* other) {
-  if (other != this) {
-    std::swap(widget_, other->widget_);
-    std::swap(file_, other->file_);
-    std::swap(timestretch_, other->timestretch_);
-    std::swap(runny_, other->runny_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Track::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Track_descriptor_;
-  metadata.reflection = Track_reflection_;
   return metadata;
 }
 

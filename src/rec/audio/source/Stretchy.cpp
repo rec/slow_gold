@@ -8,7 +8,17 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Stretchy::Stretchy(const TimeStretch& desc, Source* s)
+bool operator==(const StretchyProto& x, const StretchyProto& y) {
+  return x.sample_rate() == y.sample_rate()
+    && x.channels() == y.channels()
+    && x.pitch_scale() == y.pitch_scale();
+}
+
+bool operator!=(const StretchyProto& x, const StretchyProto& y) {
+  return !(x == y);
+}
+
+Stretchy::Stretchy(const StretchyProto& desc, Source* s)
     : Wrappy(s),
   description_(desc),
       buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),

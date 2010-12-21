@@ -14,10 +14,13 @@ namespace rec {
 namespace audio {
 namespace source {
 
+bool operator==(const StretchyProto&, const StretchyProto&);
+bool operator!=(const StretchyProto&, const StretchyProto&);
+
 class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
-  Stretchy(const TimeStretch& desc, Source* s);
+  Stretchy(const StretchyProto& desc, Source* s);
   ~Stretchy();
 
   virtual int getTotalLength() const;
@@ -28,7 +31,7 @@ class Stretchy : public Wrappy {
  private:
   int processOneChunk(const juce::AudioSourceChannelInfo& info);
 
-  TimeStretch description_;
+  StretchyProto description_;
   int channels_;
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;

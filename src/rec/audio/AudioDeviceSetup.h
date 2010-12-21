@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_AUDIODEVICESETUP__
-#define __REC_AUDIO_AUDIODEVICESETUP__
+#ifndef __REC_PERSIST_AUDIODEVICESETUP__
+#define __REC_PERSIST_AUDIODEVICESETUP__
 
 #include "rec/base/base.h"
 #include "rec/audio/AudioDeviceSetup.pb.h"
@@ -26,4 +26,4 @@ class AudioDeviceSetupListener : public ChangeListener {
 }  // namespace persist
 }  // namespace rec
 
-#endif  // __REC_AUDIO_AUDIODEVICESETUP__
+#endif  // __REC_PERSIST_AUDIODEVICESETUP__

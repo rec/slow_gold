@@ -14,7 +14,7 @@ class AudioTransportSourcePlayer
  public:
   static const int THREAD_WAIT = 40;
 
-  AudioTransportSourcePlayer(AudioDeviceManager* dm) 
+  AudioTransportSourcePlayer(AudioDeviceManager* dm)
       : Thread("AudioTransportSourcePlayer"), deviceManager_(dm) {
     deviceManager_->addAudioCallback(&player_);
     player_.setSource(this);
@@ -26,7 +26,16 @@ class AudioTransportSourcePlayer
     player_.setSource(NULL);
   }
 
-  virtual void changeCallback(ChangeBroadcaster* thing) {}
+  void clear() {
+    stop();
+    setPosition(0);
+    setSource(NULL);
+  }
+
+  void setPosition(double newPosition) {
+    broadcast(newPosition);
+    AudioTransportSource::setPosition(newPosition);
+  }
 
   void start(bool isStart = true) {
     if (isStart) {

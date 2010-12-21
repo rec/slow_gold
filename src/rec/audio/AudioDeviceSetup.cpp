@@ -1,12 +1,25 @@
 #include "rec/audio/AudioDeviceSetup.h"
-#include "rec/slow/Preferences.h"
+#include "rec/data/persist/App.h"
 #include "rec/data/persist/Copy.h"
+#include "rec/data/persist/Data.h"
 
 using namespace juce;
 using namespace rec::audio;
 
 namespace rec {
 namespace persist {
+
+namespace {
+
+typedef persist::Data<audio::AudioDeviceSetupProto> AudioSetupData;
+
+AudioSetupData* audioSetupData() {
+  static AudioSetupData* data = persist::getApp()->
+    getData<audio::AudioDeviceSetupProto>("preferences");
+  return data;
+}
+
+}
 
 bool copy(const AudioDeviceSetupProto& in, AudioDeviceSetup *out) {
   copy(in.output_device_name(), &out->outputDeviceName);
@@ -56,8 +69,8 @@ AudioDeviceSetupListener::AudioDeviceSetupListener(AudioDeviceManager* manager)
     : manager_(manager) {
   AudioDeviceSetup setup;
   bool readSuccessful = false;
-  if (slow::audioSetupData()->fileReadSuccess()) {
-    if (!persist::copy(slow::audioSetupData()->get(), &setup)) {
+  if (audioSetupData()->fileReadSuccess()) {
+    if (!persist::copy(audioSetupData()->get(), &setup)) {
       LOG(ERROR) << "Couldn't copy audio setup data";
     } else {
       String err = manager->setAudioDeviceSetup(setup, true);
@@ -84,7 +97,7 @@ AudioDeviceSetupListener::~AudioDeviceSetupListener() {
 void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster* cb) {
   audio::AudioDeviceSetupProto setupProto;
   if (copy(*manager_, &setupProto)) {
-    slow::audioSetupData()->setter()->set(setupProto);
+    audioSetupData()->setter()->set(setupProto);
     DLOG(INFO) << "Audio setup changed";
   } else {
     LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";

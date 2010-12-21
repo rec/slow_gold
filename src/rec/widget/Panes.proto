@@ -37,14 +37,3 @@ message Directory {
   optional Widget widget = 1;
   optional widget.tree.VolumeFile file = 2;
 };
-
-// This represents a single "track" - which is probably a filename or a URL.
-// This isn't a good name, nor is the idea completely nailed down yet - we
-// probably need one data structure for each separate loop in a track.
-// Perhaps AudioFile would be a better name?  All will be clear later.
-message Track {
-  optional Widget widget = 1;
-  optional widget.tree.VolumeFile file = 2;
-  optional audio.source.TimeStretch timestretch = 3;
-  optional audio.source.RunnyDesc runny = 4;
-};
