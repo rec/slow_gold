@@ -1,5 +1,4 @@
 #include <math.h>
-#include <glog/logging.h>
 
 #include "rec/widget/status/Time.h"
 #include "rec/util/Math.h"

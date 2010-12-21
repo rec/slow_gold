@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/gui/Color.h"
 #include "rec/base/ArraySize.h"
 

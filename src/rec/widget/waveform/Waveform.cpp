@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/util/Math.h"

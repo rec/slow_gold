@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <glog/logging.h>
 
 #include "rec/util/cd/StripLines.h"
 

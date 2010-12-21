@@ -7,13 +7,14 @@ import "rec/widget/Widget.proto";
 
 message Volume {
   enum Type {
+    NONE = 0;
     CD = 1;
     MUSIC = 2;
     USER = 3;
     VOLUME = 4;
   };
 
-  optional Type type = 1;
+  optional Type type = 1 [default = NONE];
   optional string name = 2;
 };
 

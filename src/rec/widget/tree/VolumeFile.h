@@ -39,6 +39,7 @@ inline bool operator!=(const VolumeFile& x, const VolumeFile& y) {
 
 AudioFormatReader* createReader(const VolumeFile& file);
 PositionableAudioSource* createSource(const VolumeFile& file);
+bool empty(const VolumeFile& file);
 
 typedef persist::Data<VolumeFile> VolumeFileData;
 VolumeFileData* getCurrentFileData();

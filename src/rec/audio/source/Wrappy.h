@@ -2,7 +2,6 @@
 #define __REC_AUDIO_SOURCE_WRAPPY__
 
 #include <vector>
-#include <glog/logging.h>
 
 #include "rec/audio/source/Source.h"
 #include "rec/util/Math.h"

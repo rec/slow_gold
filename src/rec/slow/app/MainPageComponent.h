@@ -1,8 +1,6 @@
 #ifndef __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 #define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 
-#include <glog/logging.h>
-
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/app/MainPage.h"
 #include "rec/slow/app/AudioSetupPage.h"
@@ -33,8 +31,6 @@ class MainPageComponent  : public Component {
     gui::RecentFiles recent = gui::getSortedRecentFiles();
     const VolumeFile& file = recent.file(menuItemId - 1).file();
     getCurrentFileData()->setter()->set(file);
-    // TODO
-    // slow::prefs()->setter()->set("track", "file", file);
   }
 
   void cut() {

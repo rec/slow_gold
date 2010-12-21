@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_TESTY__
 
 #include <vector>
-#include <glog/logging.h>
+
 #include <gtest/gtest.h>
 
 #include "rec/audio/source/Source.h"

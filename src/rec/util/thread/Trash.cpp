@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/util/thread/Trash.h"
 
 namespace rec {

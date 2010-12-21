@@ -2,8 +2,6 @@
 #define __REC_PERSIST_DATA__
 
 #include <set>
-#include <glog/logging.h>
-
 #include "rec/base/base.h"
 #include "rec/data/persist/UntypedData.h"
 #include "rec/util/listener/Broadcaster.h"
@@ -12,6 +10,12 @@ namespace rec {
 namespace persist {
 
 const string& getProtoName(const Message& m);
+
+template <typename Proto>
+const string& getProtoName() {
+  return getProtoName(Proto::default_instance());
+}
+
 class App;
 
 template <typename Proto>
@@ -27,6 +31,11 @@ class Data : public UntypedData,
   virtual ~Data() {
     // I don't think this ever happens.
     DLOG(INFO) << "Deleting data: " << getProtoName(Proto::default_instance());
+  }
+
+  virtual void addListener(listener::Listener<const Proto&>* listener) {
+    listener::Broadcaster<const Proto&>::addListener(listener);
+    (*listener)(get());
   }
 
  protected:

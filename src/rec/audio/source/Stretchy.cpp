@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/audio/source/Stretchy.h"
 
 using namespace juce;

@@ -5,8 +5,6 @@
 #include <set>
 #include <vector>
 
-#include <glog/logging.h>
-
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/listener/SetterListener.h"
@@ -57,6 +55,9 @@ class MainPage : public Component,
   void loadRecentFile(int menuItemId);
 
  private:
+  typedef thread::ChangeLocker<float> TimeLocker;
+  typedef thread::ChangeLocker<VolumeFile> FileLocker;
+
   scoped_ptr<app::AudioTransportSourcePlayer> transportSource_;
   Waveform waveform_;
   TextButton startStopButton_;
@@ -72,9 +73,12 @@ class MainPage : public Component,
   CriticalSection lock_;
   VolumeFile file_;
   scoped_ptr<DoubleRunnyBuffer> doubleRunny_;
-  listener::SetterListener<const VolumeFile&> fileListener_;
+  // listener::SetterListener<const VolumeFile&> fileListener_;
   persist::Data<StretchyProto>* stretchy_;
-  scoped_ptr<thread::ChangeLocker<float> > timeLocker_;
+  scoped_ptr<TimeLocker> timeLocker_;
+  scoped_ptr<FileLocker> fileLocker_;
+
+  listener::SetterListener<const VolumeFile&> fileListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };

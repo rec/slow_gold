@@ -1,8 +1,6 @@
 #ifndef __REC_YAML_INTERNAL__
 #define __REC_YAML_INTERNAL__
 
-#include <glog/logging.h>
-
 #include "rec/data/yaml/Yaml.h"
 #include "rec/base/BaseNoJuce.h"
 #include "rec/data/yaml/include/yaml-cpp/yaml.h"

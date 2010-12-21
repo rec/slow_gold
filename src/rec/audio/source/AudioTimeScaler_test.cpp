@@ -1,7 +1,6 @@
 #include <math.h>
 
 #include <gtest/gtest.h>
-#include <glog/logging.h>
 
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/source/TestHarness.h"

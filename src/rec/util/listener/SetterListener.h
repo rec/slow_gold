@@ -18,6 +18,7 @@ class SetterListener : public Listener<Proto> {
   typedef const A::Field& P;
   typedef const Message& M;
 
+  SetterListener(Setter* s) : setter_(s) {}
   SetterListener(Setter* s, const Address& a) : address_(a), setter_(s) {}
 
   SetterListener(Setter* s, P a) : address_(a), setter_(s) {}

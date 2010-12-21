@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/data/persist/AppInstance.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/thread/CallbackLoop.h"

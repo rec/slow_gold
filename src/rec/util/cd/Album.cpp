@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/util/cd/Album.h"
 #include "rec/util/cd/Album.pb.h"
 #include "rec/util/cd/CDDBResponse.h"

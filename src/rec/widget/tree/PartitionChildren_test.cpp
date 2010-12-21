@@ -1,7 +1,6 @@
 #include <vector>
 
 #include <gtest/gtest.h>
-#include <glog/logging.h>
 
 #include "rec/widget/tree/PartitionChildren.h"
 #include "rec/base/ArraySize.h"

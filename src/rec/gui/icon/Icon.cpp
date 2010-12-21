@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/gui/icon/Icon.h"
 #include "rec/gui/icon/OpenFolder.svg.h"
 #include "rec/gui/icon/ThickFolder.svg.h"

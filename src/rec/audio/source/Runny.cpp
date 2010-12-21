@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/CopySamples.h"
 

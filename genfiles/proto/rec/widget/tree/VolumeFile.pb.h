@@ -39,13 +39,14 @@ class Volume;
 class VolumeFile;
 
 enum Volume_Type {
+  Volume_Type_NONE = 0,
   Volume_Type_CD = 1,
   Volume_Type_MUSIC = 2,
   Volume_Type_USER = 3,
   Volume_Type_VOLUME = 4
 };
 bool Volume_Type_IsValid(int value);
-const Volume_Type Volume_Type_Type_MIN = Volume_Type_CD;
+const Volume_Type Volume_Type_Type_MIN = Volume_Type_NONE;
 const Volume_Type Volume_Type_Type_MAX = Volume_Type_VOLUME;
 const int Volume_Type_Type_ARRAYSIZE = Volume_Type_Type_MAX + 1;
 
@@ -114,6 +115,7 @@ class Volume : public ::google::protobuf::Message {
   // nested types ----------------------------------------------------
   
   typedef Volume_Type Type;
+  static const Type NONE = Volume_Type_NONE;
   static const Type CD = Volume_Type_CD;
   static const Type MUSIC = Volume_Type_MUSIC;
   static const Type USER = Volume_Type_USER;
@@ -141,7 +143,7 @@ class Volume : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.widget.tree.Volume.Type type = 1;
+  // optional .rec.widget.tree.Volume.Type type = 1 [default = NONE];
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
@@ -299,12 +301,12 @@ class VolumeFile : public ::google::protobuf::Message {
 
 // Volume
 
-// optional .rec.widget.tree.Volume.Type type = 1;
+// optional .rec.widget.tree.Volume.Type type = 1 [default = NONE];
 inline bool Volume::has_type() const {
   return _has_bit(0);
 }
 inline void Volume::clear_type() {
-  type_ = 1;
+  type_ = 0;
   _clear_bit(0);
 }
 inline ::rec::widget::tree::Volume_Type Volume::type() const {

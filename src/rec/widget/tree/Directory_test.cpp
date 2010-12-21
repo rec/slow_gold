@@ -1,6 +1,4 @@
 #include <gtest/gtest.h>
-#include <glog/logging.h>
-
 #include "rec/widget/tree/Directory.h"
 
 using namespace juce;

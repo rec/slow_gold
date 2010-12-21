@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/util/Utf8.h"
 #include "rec/base/Arraysize.h"
 

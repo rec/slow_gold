@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Data.h"
@@ -112,6 +110,10 @@ PositionableAudioSource* createSource(const VolumeFile& file) {
 VolumeFileData* getCurrentFileData() {
   static VolumeFileData* d = persist::getApp()->getData<VolumeFile>("currentFile");
   return d;
+}
+
+bool empty(const VolumeFile& f) {
+  return !(f.has_volume() && f.volume().has_type() && f.volume().type());
 }
 
 }  // namespace tree

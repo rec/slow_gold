@@ -2,8 +2,6 @@
 #define __REC_JUCE_GENERIC_APPLICATION
 
 #include <string>
-#include <glog/logging.h>
-
 #include "rec/data/persist/AppInstance.h"
 #include "rec/util/thread/Trash.h"
 

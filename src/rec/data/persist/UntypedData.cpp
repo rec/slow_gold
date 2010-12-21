@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/data/persist/UntypedData.h"
 
 #include "rec/data/persist/App.h"

@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <glog/logging.h>
 
 #include "rec/data/proto/LogFile.h"
 #include "rec/data/proto/Operation.pb.h"

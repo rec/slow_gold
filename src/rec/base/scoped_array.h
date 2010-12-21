@@ -2,7 +2,6 @@
 #define __REC_BASE_SCOPED_ARRAY__
 
 #include <cstddef>
-#include <glog/logging.h>
 
 #include "rec/base/base.h"
 

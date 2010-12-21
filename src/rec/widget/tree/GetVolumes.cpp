@@ -1,7 +1,5 @@
 #include <algorithm>
 
-#include <glog/logging.h>
-
 #include "rec/widget/tree/GetVolumes.h"
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/widget/tree/Tree.h"

@@ -20,6 +20,8 @@ namespace persist {
 
 App* getApp();
 
+const string& getProtoName(const Message& message);
+
 class UntypedData;
 
 class App {

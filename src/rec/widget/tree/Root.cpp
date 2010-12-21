@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/widget/tree/Root.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/Callback.h"

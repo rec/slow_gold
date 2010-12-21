@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/audio/source/Buffery.h"
 #include "rec/audio/CopySamples.h"
 #include "rec/util/Math.h"

@@ -18,8 +18,10 @@ using rec::widget::status::time::Text;
 using rec::widget::status::time::TextComponent;
 
 using namespace juce;
+
 using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
+using namespace rec::proto::arg;
 
 namespace {
 
@@ -47,8 +49,9 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     pitchScaleSlider_(Address("pitch_scale"), T("Pitch Scale")),
     songTime_(Text()),
     songDial_(realTimeDial()),
-    fileListener_(getCurrentFileData()->setter(), Address()),
-    stretchy_(NULL) {
+    stretchy_(NULL),
+    fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
+    fileListener_(getCurrentFileData()->setter()) {
   setSize(600, 400);
 
   startStopButton_.setButtonText(T("Play/Stop"));
@@ -93,9 +96,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   treeRoot_->startThread();
 
-  gui::RecentFiles recent = gui::getSortedRecentFiles();
-  if (recent.file_size())
-    fileListener_(recent.file(0).file());
+  fileLocker_->addListener(this);
+  getCurrentFileData()->addListener(fileLocker_.get());
 }
 
 void MainPage::removeFileCallbacks() {
@@ -106,8 +108,7 @@ void MainPage::removeFileCallbacks() {
 }
 
 MainPage::~MainPage() {
-  transportSource_->stop();
-  transportSource_->setSource(NULL);
+  getCurrentFileData()->removeListener(fileLocker_.get());
 
   startStopButton_.removeButtonListener(this);
   treeRoot_->removeListener(&fileListener_);
@@ -115,10 +116,15 @@ MainPage::~MainPage() {
   transportSource_->removeListener(&songDial_);
   transportSource_->removeListener(&songTime_);
   transportSource_->removeListener(cursor_);
+  getCurrentFileData()->removeListener(fileLocker_.get());
+
+  transportSource_->stop();
+  transportSource_->setSource(NULL);
 
   trash::discard(&treeRoot_);
   trash::discard(&doubleRunny_);
   trash::discard(&transportSource_);
+  trash::discard(&fileLocker_);
 
   removeFileCallbacks();
 }
@@ -148,17 +154,18 @@ static const int SAMPLE_RATE = 44100.0f;
 void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
     removeFileCallbacks();
+    file_ = file;
+    if (empty(file_))
+      return;
 
-    timeLocker_.reset(new thread::ChangeLocker<float>(CHANGE_LOCKER_WAIT));
+    timeLocker_.reset(new TimeLocker(CHANGE_LOCKER_WAIT));
     timeLocker_->set(0);
     timeLocker_->addListener(this);
     timeLocker_->startThread();
 
-    stretchy_ = persist::getApp()->getData<StretchyProto>(file, "timestretch");
-    timeScaleSlider_.setData(stretchy_);
-    pitchScaleSlider_.setData(stretchy_);
+    timeScaleSlider_(file_);
+    pitchScaleSlider_(file_);
 
-    file_ = file;
     transportSource_->clear();
     cursor_->setTime(0.0f);
 
@@ -179,10 +186,13 @@ static const int BUFFERY_READAHEAD = 10000;
 void MainPage::operator()(const float& time) {
   if (!doubleRunny_)
     return;
+
   Buffery* buffery = doubleRunny_->buffery();
   buffery->setPosition(SAMPLE_RATE * time);
   if (buffery->waitUntilFilled(BUFFERY_READAHEAD))
     transportSource_->setPosition(stretchy_->get().time_scale() * time);
+  else
+    LOG(ERROR) << "Failed to fill buffer.";
 }
 
 }  // namespace slow

@@ -1,8 +1,5 @@
-#include <glog/logging.h>
-
 #include "rec/util/cd/Socket.h"
 #include "rec/util/Exception.h"
-
 
 using namespace juce;
 

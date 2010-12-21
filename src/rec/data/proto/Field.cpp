@@ -1,4 +1,3 @@
-#include <glog/logging.h>
 #include <google/protobuf/descriptor.h>
 
 #include "rec/data/proto/Field.h"

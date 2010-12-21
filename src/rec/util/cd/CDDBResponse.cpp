@@ -1,7 +1,5 @@
 #include <algorithm>
 
-#include <glog/logging.h>
-
 #include "rec/util/cd/CDDBResponse.h"
 #include "rec/util/Exception.h"
 #include "rec/util/cd/Socket.h"

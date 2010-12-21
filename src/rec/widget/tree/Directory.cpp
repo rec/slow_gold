@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/widget/tree/Directory.h"
 
 #include "rec/util/cd/Album.h"

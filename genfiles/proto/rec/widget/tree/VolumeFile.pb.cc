@@ -102,12 +102,12 @@ void protobuf_AddDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto() {
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/widget/tree/VolumeFile.proto\022\017rec."
-    "widget.tree\032\027rec/widget/Widget.proto\"s\n\006"
-    "Volume\022*\n\004type\030\001 \001(\0162\034.rec.widget.tree.V"
-    "olume.Type\022\014\n\004name\030\002 \001(\t\"/\n\004Type\022\006\n\002CD\020\001"
-    "\022\t\n\005MUSIC\020\002\022\010\n\004USER\020\003\022\n\n\006VOLUME\020\004\"C\n\nVol"
-    "umeFile\022\'\n\006volume\030\001 \001(\0132\027.rec.widget.tre"
-    "e.Volume\022\014\n\004path\030\002 \003(\t", 262);
+    "widget.tree\032\027rec/widget/Widget.proto\"\203\001\n"
+    "\006Volume\0220\n\004type\030\001 \001(\0162\034.rec.widget.tree."
+    "Volume.Type:\004NONE\022\014\n\004name\030\002 \001(\t\"9\n\004Type\022"
+    "\010\n\004NONE\020\000\022\006\n\002CD\020\001\022\t\n\005MUSIC\020\002\022\010\n\004USER\020\003\022\n"
+    "\n\006VOLUME\020\004\"C\n\nVolumeFile\022\'\n\006volume\030\001 \001(\013"
+    "2\027.rec.widget.tree.Volume\022\014\n\004path\030\002 \003(\t", 279);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/tree/VolumeFile.proto", &protobuf_RegisterTypes);
   Volume::default_instance_ = new Volume();
@@ -133,6 +133,7 @@ const ::google::protobuf::EnumDescriptor* Volume_Type_descriptor() {
 }
 bool Volume_Type_IsValid(int value) {
   switch(value) {
+    case 0:
     case 1:
     case 2:
     case 3:
@@ -144,6 +145,7 @@ bool Volume_Type_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
+const Volume_Type Volume::NONE;
 const Volume_Type Volume::CD;
 const Volume_Type Volume::MUSIC;
 const Volume_Type Volume::USER;
@@ -174,7 +176,7 @@ Volume::Volume(const Volume& from)
 
 void Volume::SharedCtor() {
   _cached_size_ = 0;
-  type_ = 1;
+  type_ = 0;
   name_ = const_cast< ::std::string*>(&_default_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -213,7 +215,7 @@ Volume* Volume::New() const {
 
 void Volume::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    type_ = 1;
+    type_ = 0;
     if (_has_bit(1)) {
       if (name_ != &_default_name_) {
         name_->clear();
@@ -230,7 +232,7 @@ bool Volume::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.widget.tree.Volume.Type type = 1;
+      // optional .rec.widget.tree.Volume.Type type = 1 [default = NONE];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -285,7 +287,7 @@ bool Volume::MergePartialFromCodedStream(
 
 void Volume::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.widget.tree.Volume.Type type = 1;
+  // optional .rec.widget.tree.Volume.Type type = 1 [default = NONE];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
@@ -308,7 +310,7 @@ void Volume::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Volume::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.widget.tree.Volume.Type type = 1;
+  // optional .rec.widget.tree.Volume.Type type = 1 [default = NONE];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
@@ -335,7 +337,7 @@ int Volume::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.widget.tree.Volume.Type type = 1;
+    // optional .rec.widget.tree.Volume.Type type = 1 [default = NONE];
     if (has_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());

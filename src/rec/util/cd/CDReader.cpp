@@ -1,5 +1,3 @@
-#include <glog/logging.h>
-
 #include "rec/util/cd/CDReader.h"
 
 using namespace juce;
