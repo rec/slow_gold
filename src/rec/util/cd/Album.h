@@ -3,7 +3,6 @@
 
 #include "rec/base/base.h"
 
-
 namespace rec {
 namespace util {
 namespace cd {
@@ -19,6 +18,7 @@ void fillAlbum(const StringArray& cds, int tracks, Album* album);
 void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums);
 String fillAlbums(const TrackOffsets& off, AlbumList* albums);
 
+AlbumList getAlbums(const VolumeFile& file, const TrackOffsets& off);
 
 }  // namespace cd
 }  // namespace util

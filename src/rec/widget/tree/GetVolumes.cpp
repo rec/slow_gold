@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "rec/widget/tree/GetVolumes.h"
+#include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/widget/tree/Tree.h"
 
@@ -41,9 +42,9 @@ void addFileRoots(VolumeList* volumes) {
 void addAudioCDs(VolumeList* volumes) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   for (int i = 0; i < names.size(); ++i) {
-    scoped_ptr<AudioCDReader> r(AudioCDReader::createReaderForCD(i));
-    if (r)
-      add(Volume::CD, String::toHexString(r->getCDDBId()).toCString(), volumes);
+    scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
+    if (reader)
+      add(Volume::CD, cd::getCDKey(reader.get()).toCString(), volumes);
     else
       LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
   }

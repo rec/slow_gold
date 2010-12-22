@@ -2,10 +2,9 @@
 
 #include "rec/util/cd/Album.h"
 #include "rec/util/cd/Album.pb.h"
-#include "rec/util/cd/DedupeCDDB.h"
+#include "rec/util/cd/CDReader.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/RunnableThread.h"
-#include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/PartitionChildren.h"
 #include "rec/widget/tree/SortedChildren.h"
 
@@ -113,15 +112,12 @@ void Directory::computeCDChildren() {
   string name = "<Unknown>";
   std::vector<string> tracks;
 
-  const string& id = volumeFile_.volume().name();
-  scoped_ptr<AudioCDReader> reader(getAudioCDReader(id.c_str()));
+  const string& cdKey = volumeFile_.volume().name();
+  scoped_ptr<AudioCDReader> reader(getAudioCDReader(cdKey.c_str()));
   if (reader) {
-    AlbumList albums;
     TrackOffsets trackOffsets = reader->getTrackOffsets();
-    String err = fillAlbums(trackOffsets, &albums);
-    if (err.length() || !albums.album_size()) {
-      LOG(ERROR) << "Couldn't get album " << volumeFile_.volume().name()
-                 << " with error " << err;
+    AlbumList albums = getAlbums(volumeFile_, trackOffsets);
+    if (!albums.album_size()) {
       int audioTracks = getAudioTrackCount(*reader);
       for (int i = 0; i < audioTracks; ++i)
         tracks.push_back(String(i).toCString());

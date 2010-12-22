@@ -17,8 +17,8 @@ RecWindow::RecWindow()
   addKeyListener(commandManager_.getKeyMappings());
 
   setContentComponent(&container_);
-
   setMenuBar(&container_);
+
   container_.setApplicationCommandManagerToWatch(&commandManager_);
 
   centreWithSize(700, 600);

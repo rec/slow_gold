@@ -8,8 +8,8 @@ namespace slow {
 namespace app {
 
 class AudioTransportSourcePlayer
-  : public AudioTransportSource,
-    public Thread,
+  : public Thread,
+    public AudioTransportSource,
     public listener::Broadcaster<float> {
  public:
   static const int THREAD_WAIT = 40;

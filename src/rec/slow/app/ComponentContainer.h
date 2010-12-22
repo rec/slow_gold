@@ -2,6 +2,9 @@
 #define __REC_COMPONENT_CONTAINER
 
 #include "rec/base/base.h"
+#include "rec/gui/RecentFiles.h"
+#include "rec/widget/tree/VolumeFile.h"
+#include "rec/slow/app/MainPageComponent.h"
 
 using namespace juce;
 
@@ -13,26 +16,51 @@ class ComponentContainer : public Component,
                            public ApplicationCommandTarget {
 
  public:
-  ComponentContainer(Component* c) : component_(c) { addAndMakeVisible(c); }
+  ComponentContainer(MainPageComponent* c) : mainPage_(c) { addAndMakeVisible(c); }
 
   virtual ~ComponentContainer() {}
 
   virtual void resized() {
-    component_->setBounds(0, 0, getWidth(), getHeight());
+    mainPage_->setBounds(0, 0, getWidth(), getHeight());
   }
 
-  // MenuBarModel virtual methods.
   virtual const StringArray getMenuBarNames() {
-    static tchar* const names[] = {NULL};
-    return StringArray((const tchar**)names);
+    static const char* const names[] = {"File", "Edit", NULL};
+    return StringArray(names);
   }
 
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& menuName) {
-    return PopupMenu();
+    PopupMenu menu;
+    if (menuName == "File") {
+      menu.addItem(999, "Open...");
+
+      gui::RecentFiles recent = gui::getSortedRecentFiles();
+      PopupMenu submenu;
+      for (int i = 0; i < recent.file_size(); ++i)
+        submenu.addItem(i + 1, getFilename(recent.file(i).file()).c_str());
+
+      menu.addSubMenu("Open recent", submenu);
+    } else if (menuName == "Edit") {
+      menu.addItem(1, "Cut");
+      menu.addItem(2, "Paste");
+    }
+
+    return menu;
+  }
+
+  virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
+    if (topLevelMenuIndex == 0) {
+      if (menuItemID != 999)
+        mainPage_->loadRecentFile(menuItemID);
+    } else if (topLevelMenuIndex == 1) {
+      if (menuItemID == 1)
+        mainPage_->cut();
+      else if (menuItemID == 2)
+        mainPage_->paste();
+    }
   }
 
   // ApplicationCommandTarget virtual methods.
-  virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
   virtual void getAllCommands(Array <CommandID>& commands) {}
   virtual void getCommandInfo(CommandID commandID, ApplicationCommandInfo& result) {}
   virtual bool perform(const InvocationInfo& info) { return false; }
@@ -42,7 +70,7 @@ class ComponentContainer : public Component,
   }
 
  protected:
-  scoped_ptr<Component> component_;
+  scoped_ptr<MainPageComponent> mainPage_;
 };
 
 }  // namespace slow

@@ -1,4 +1,6 @@
 #include "rec/util/cd/Album.h"
+
+#include "rec/data/persist/Copy.h"
 #include "rec/util/cd/Album.pb.h"
 #include "rec/util/cd/CDDBResponse.h"
 #include "rec/util/cd/DedupeCDDB.h"
@@ -6,10 +8,12 @@
 #include "rec/util/cd/StripLines.h"
 #include "rec/util/Exception.h"
 #include "rec/base/ArraySize.h"
+#include "rec/widget/tree/VolumeFile.h"
 
 namespace rec {
 namespace util {
 namespace cd {
+
 
 void splitTitle(Album *album) {
   // Split title up.
@@ -111,6 +115,22 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
     return e.what();
   }
 }
+
+AlbumList getAlbums(const VolumeFile& file, const TrackOffsets& off) {
+  AlbumList albums;
+  File shadow = getShadowFile(file, "album");
+  if (!persist::copy(shadow, &albums)) {
+    String error = fillAlbums(off, &albums);
+    if (error.length())
+      albums.Clear();
+    else if (!persist::copy(albums, &shadow))
+      LOG(ERROR) << "Couldn't save CDDB information";
+  }
+
+  return albums;
+}
+
+
 
 }  // namespace cd
 }  // namespace util

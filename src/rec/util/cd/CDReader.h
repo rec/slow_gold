@@ -19,11 +19,11 @@ namespace cd {
 
 // Return a new AudioCDReader for the CD with the given CDDB id, or NULL if no
 // such CD exists in a CD drive.
-AudioCDReader* getAudioCDReader(const String& cddbId);
+AudioCDReader* getAudioCDReader(const String& cdKey);
 
 // Return a new AudioFormatReader for an audio cd track by audio track index.
 AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track);
-AudioFormatReader* createCDTrackReader(const String& cddbId, int track);
+AudioFormatReader* createCDTrackReader(const String& cdKey, int track);
 
 // Return the number of audio tracks on an audio CD.
 int getAudioTrackCount(const AudioCDReader& reader);
@@ -31,6 +31,10 @@ int getAudioTrackCount(const AudioCDReader& reader);
 // Given the index for an audio track on a CD, returns the index for that track
 // in the list of all tracks, data and audio.
 int getAudioTrackIndex(const AudioCDReader& reader, int track);
+
+// Get a CD key that uniquely identifies a given CD.  It consists of the CDDB
+// ID, and then a hash of the track lengths of all the tracks.
+String getCDKey(AudioCDReader* reader);
 
 }  // namespace cd
 }  // namespace util

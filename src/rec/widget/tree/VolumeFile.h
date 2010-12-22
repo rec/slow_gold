@@ -24,6 +24,8 @@ const File getShadowFile(const Proto& pr, const string& child) {
   return getShadowDirectory(pr).getChildFile(child.c_str());
 }
 
+const string getFilename(const VolumeFile& file);
+
 bool compareVolumes(const Volume& x, const Volume& y);
 
 bool operator==(const Volume& x, const Volume& y);

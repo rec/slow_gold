@@ -69,6 +69,10 @@ const File getShadowDirectory(const VolumeFile& file) {
   return getFile(getShadowDirectory(file.volume()), file.path());
 }
 
+const string getFilename(const VolumeFile& file) {
+  return file.path_size() ? file.path().end()[-1] : string("<none>");
+}
+
 bool compareVolumes(const Volume& x, const Volume& y) {
   return x.type() < y.type() || (x.type() == y.type() && x.name() < y.name());
 }

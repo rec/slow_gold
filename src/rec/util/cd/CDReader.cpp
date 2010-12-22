@@ -6,8 +6,8 @@ namespace rec {
 namespace util {
 namespace cd {
 
-AudioCDReader* getAudioCDReader(const String& idString) {
-  int id = idString.getHexValue32();
+AudioCDReader* getAudioCDReader(const String& cdKey) {
+  int id = cdKey.initialSectionNotContaining("-").getHexValue32();
   StringArray names = AudioCDReader::getAvailableCDNames();
   int size = names.size();
   for (int i = 0; i < size; ++i) {
@@ -34,12 +34,12 @@ AudioFormatReader* createCDTrackReader(AudioCDReader* r, int track) {
   return new AudioSubsectionReader(reader.release(), begin, end - begin, true);
 }
 
-AudioFormatReader* createCDTrackReader(const String& idString, int track) {
-  ScopedPointer<AudioCDReader> reader(getAudioCDReader(idString));
+AudioFormatReader* createCDTrackReader(const String& cdKey, int track) {
+  ScopedPointer<AudioCDReader> reader(getAudioCDReader(cdKey));
   if (reader)
     return createCDTrackReader(reader.release(), track);
 
-  LOG(ERROR) << "Couldn't create reader for " << idString;
+  LOG(ERROR) << "Couldn't create reader for " << cdKey;
   return NULL;
 }
 
@@ -58,6 +58,29 @@ int getAudioTrackCount(const AudioCDReader& reader) {
         ++audioTracks;
   }
   return audioTracks;
+}
+
+static int64 primes[] = {
+  1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
+  71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151,
+  157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233,
+  239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317,
+  331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419,
+  421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503,
+  509, 521, 523
+};
+
+String getCDKey(AudioCDReader* reader) {
+  const Array<int>& offsets = reader->getTrackOffsets();
+
+  int64 r = 0;
+  int last = offsets.size() - 1;
+  for (int i = 0; i < last; ++i)
+    r += (primes[i] * offsets[i] * (reader->isTrackAudio(i) ? 1 : -1));
+  r += primes[last] * offsets[last];
+
+  int c = reader->getCDDBId();
+  return (String::toHexString(c) + "-" + String::toHexString(r)).toUpperCase();
 }
 
 }  // namespace cd

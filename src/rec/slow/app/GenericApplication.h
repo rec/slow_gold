@@ -2,11 +2,12 @@
 #define __REC_JUCE_GENERIC_APPLICATION
 
 #include <string>
+
 #include "rec/data/persist/AppInstance.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
-namespace app {
+namespace slow {
 
 class GenericApplication : public juce::JUCEApplication {
  public:
