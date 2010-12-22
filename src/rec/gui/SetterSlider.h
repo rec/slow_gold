@@ -14,9 +14,9 @@ class SetterSlider : public juce::Slider,
   typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
-  SetterSlider(const Address& address, const String& name)
+  SetterSlider(const string& dataFileName, const Address& address, const String& name)
       : juce::Slider(name),
-        listener::FileDataListener<Proto>(address, name.toCString()) {
+        listener::FileDataListener<Proto>(address, dataFileName) {
   }
 
  protected:

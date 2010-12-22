@@ -32,7 +32,13 @@ class DoubleRunnyBuffer
   juce::AudioThumbnail* thumbnail() { return cachedThumbnail_->thumbnail(); }
   CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
 
-  virtual void operator()(const StretchyProto& p) { changeLocker_->set(p); }
+  virtual void operator()(const StretchyProto& p) { 
+    if (changeLocker_)
+      changeLocker_->set(p); 
+    else
+      LOG(ERROR) << "Empty changelocker";
+  }
+  
   virtual void operator()(const Buffery&);
 
   virtual void run();

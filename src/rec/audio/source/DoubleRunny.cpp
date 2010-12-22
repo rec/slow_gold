@@ -21,6 +21,7 @@ PositionableAudioSource* DoubleRunny::makeSource() {
 }
 
 void DoubleRunny::setStretchy(const StretchyProto& desc) {
+  // TODO: this should never run on the main thread!
   Thread* thread = Thread::getCurrentThread();
   DLOG(INFO) << "DoubleRunny::setStretchy";
 
@@ -40,11 +41,11 @@ void DoubleRunny::setStretchy(const StretchyProto& desc) {
   }
 
   while (!runny->fill()) {
-    if (thread->threadShouldExit())
+    if (thread && thread->threadShouldExit())
       return;
   }
   
-  if (thread->threadShouldExit())
+  if (thread && thread->threadShouldExit())
     return;
 
   runny->startThread();
