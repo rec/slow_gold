@@ -24,15 +24,17 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file,
   if (!cachedThumbnail_->isFull())
     source = Snoopy::add(source, cachedThumbnail_.get());
 
+  setStretchy(data_->get());
   buffery_->addListener(this);
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
   changeLocker_->initialize(data->get());
-  data_->addListener(changeLocker_.get());
   changeLocker_->addListener(this);
   changeLocker_->startThread();
+  data_->addListener(changeLocker_.get());
 }
 
 DoubleRunnyBuffer::~DoubleRunnyBuffer() {
+  data_->removeListener(changeLocker_.get());
   thread::trash::discard(&changeLocker_);
 }
 

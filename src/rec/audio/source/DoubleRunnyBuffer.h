@@ -11,8 +11,6 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Snoopy;
-
 class DoubleRunnyBuffer
   : public DoubleRunny,
     public Thread,
