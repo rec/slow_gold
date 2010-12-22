@@ -17,13 +17,14 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file,
                                      DoubleRunnyBuffer::Data* data)
     : DoubleRunny(file), Thread("DoubleRunnyBuffer"), data_(data) {
   scoped_ptr<PositionableAudioSource> source(createSource(file));
-  if (!cachedThumbnail_->isFull())
-    source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
-  buffery_.reset(new Buffery(source.transfer(), BLOCK_SIZE));
 
   File shadowThumbnailFile = getShadowFile(file, "thumbnail.stream");
   cachedThumbnail_.reset(new CachedThumbnail(shadowThumbnailFile, COMPRESSION,
                                              source->getTotalLength()));
+
+  if (!cachedThumbnail_->isFull())
+    source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
+  buffery_.reset(new Buffery(source.transfer(), BLOCK_SIZE));
 
   setStretchy(data_->get());
   buffery_->addListener(this);

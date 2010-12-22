@@ -8,7 +8,7 @@
 		<CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="${__JUCE_INCLUDES}" isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 		<CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="${__JUCE_INCLUDES}" isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 	</CONFIGURATIONS>
-	<MAINGROUP id="eoB5iLPoO" name="tests">
+	<MAINGROUP id="f5bazIQfe" name="tests">
 		<GROUP id="fVWXRtaTT" name="rec">
 			<GROUP id="GKbTArUaD" name="audio">
 				<GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -47,10 +47,6 @@
 						<FILE compile="1" file="../../src/rec/audio/format/mpg123/Reader_test.cpp" id="zcEIWXQTz" name="Reader_test.cpp" resource="0"/>
 						<FILE compile="1" file="../../src/rec/audio/format/mpg123/Tags.cpp" id="qzhi9BCiW" name="Tags.cpp" resource="0"/>
 						<FILE compile="0" file="../../src/rec/audio/format/mpg123/Tags.h" id="2a3v3r24w" name="Tags.h" resource="0"/>
-					</GROUP>
-					<GROUP id="iWgCO6YNT" name="reader">
-						<FILE compile="1" file="../../src/rec/audio/format/reader/CachedAudioFormatReader.cpp" id="M6M5qHwba" name="CachedAudioFormatReader.cpp" resource="0"/>
-						<FILE compile="0" file="../../src/rec/audio/format/reader/CachedAudioFormatReader.h" id="oPekhlVm6" name="CachedAudioFormatReader.h" resource="0"/>
 					</GROUP>
 				</GROUP>
 				<GROUP id="1CsM6ZONT" name="source">
@@ -91,6 +87,8 @@
 				<FILE compile="0" file="../../src/rec/base/Cast.h" id="b8RddzXzb" name="Cast.h" resource="0"/>
 				<FILE compile="0" file="../../src/rec/base/CompileAssert.h" id="s7Y6eK1Cn" name="CompileAssert.h" resource="0"/>
 				<FILE compile="0" file="../../src/rec/base/disallow.h" id="QZr2KhsZj" name="disallow.h" resource="0"/>
+				<FILE compile="0" file="../../src/rec/base/Juce.h" id="HTxw3DxOt" name="Juce.h" resource="0"/>
+				<FILE compile="0" file="../../src/rec/base/Leaks.h" id="Z9TVXtlct" name="Leaks.h" resource="0"/>
 				<FILE compile="0" file="../../src/rec/base/port.h" id="0537hk49o" name="port.h" resource="0"/>
 				<FILE compile="0" file="../../src/rec/base/scoped_array.h" id="u3e867eLQ" name="scoped_array.h" resource="0"/>
 				<FILE compile="0" file="../../src/rec/base/scoped_ptr.h" id="W6cwDSkyC" name="scoped_ptr.h" resource="0"/>
@@ -482,7 +480,7 @@
 				</GROUP>
 			</GROUP>
 		</GROUP>
-		<FILE compile="1" file="Main.cpp" id="7eSqTXvfQ" name="Main.cpp" resource="0"/>
+		<FILE compile="1" file="Main.cpp" id="ssY1Jiocx" name="Main.cpp" resource="0"/>
 	</MAINGROUP>
 	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>
