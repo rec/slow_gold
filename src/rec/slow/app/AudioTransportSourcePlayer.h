@@ -14,48 +14,17 @@ class AudioTransportSourcePlayer
  public:
   static const int THREAD_WAIT = 40;
 
-  AudioTransportSourcePlayer(AudioDeviceManager* dm)
-      : Thread("AudioTransportSourcePlayer"), deviceManager_(dm) {
-    deviceManager_->addAudioCallback(&player_);
-    player_.setSource(this);
-  }
+  AudioTransportSourcePlayer(AudioDeviceManager* dm);
+  virtual ~AudioTransportSourcePlayer();
 
-  ~AudioTransportSourcePlayer() {
-    deviceManager_->removeAudioCallback(&player_);
-    setSource(NULL);
-    player_.setSource(NULL);
-  }
+  // Set to zero and set source to NULL;
+  void clear();
+  virtual void run();
 
-  void clear() {
-    stop();
-    setPosition(0);
-    setSource(NULL);
-  }
+  void setPosition(double newPosition);
 
-  void setPosition(double newPosition) {
-    broadcast(newPosition);
-    AudioTransportSource::setPosition(newPosition);
-  }
-
-  void start(bool isStart = true) {
-    if (isStart) {
-      startThread();
-      AudioTransportSource::start();
-    } else {
-      signalThreadShouldExit();
-      AudioTransportSource::stop();
-    }
-  }
-
-  virtual void run() {
-    while (!threadShouldExit()) {
-      broadcast(getNextReadPosition() / 44100.0f);
-      if (!threadShouldExit())
-        wait(THREAD_WAIT);
-    }
-  }
-
-  void toggle() { start(!isPlaying()); }
+  void toggle() { setStart(!isPlaying()); }
+  void setStart(bool isStart = true);
 
  private:
   AudioSourcePlayer player_;

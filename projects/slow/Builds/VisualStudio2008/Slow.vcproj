@@ -166,10 +166,6 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.h"/>
             </Filter>
-            <Filter Name="reader">
-              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.cpp"/>
-              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.h"/>
-            </Filter>
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\AudioThumbnail.h"/>
@@ -206,6 +202,8 @@
           <File RelativePath="..\..\..\..\src\rec\base\Cast.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\CompileAssert.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\disallow.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Juce.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Leaks.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\port.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\scoped_array.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\scoped_ptr.h"/>

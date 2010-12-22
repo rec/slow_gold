@@ -3,7 +3,6 @@
 
 #include "rec/base/base.h"
 
-
 namespace rec {
 namespace slow {
 
@@ -18,7 +17,7 @@ class AudioSetupPage  : public Component {
     setSize (600, 400);
   }
 
-  void paint (Graphics& g) { g.fillAll (Colours::lightgrey); }
+  void paint(Graphics& g) { g.fillAll (Colours::lightgrey); }
 
   void resized() {
     deviceSelector_->setBounds(8, 8, getWidth() - 16, getHeight() - 16);
@@ -32,6 +31,5 @@ class AudioSetupPage  : public Component {
 
 }  // namespace rec
 }  // namespace slow
-
 
 #endif   // __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__

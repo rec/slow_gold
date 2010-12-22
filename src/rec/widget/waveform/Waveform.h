@@ -2,7 +2,7 @@
 #define __REC_WIDGET_WAVEFORM__
 
 #include "rec/widget/waveform/Waveform.pb.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
+// #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/listener/Broadcaster.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/VolumeFile.h"
