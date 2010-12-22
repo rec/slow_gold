@@ -8,7 +8,7 @@
 		<CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="${__JUCE_INCLUDES}" isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 		<CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="${__JUCE_INCLUDES}" isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
 	</CONFIGURATIONS>
-	<MAINGROUP id="f5bazIQfe" name="tests">
+	<MAINGROUP id="vXqMulZNO" name="tests">
 		<GROUP id="fVWXRtaTT" name="rec">
 			<GROUP id="GKbTArUaD" name="audio">
 				<GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -262,6 +262,7 @@
 			<GROUP id="vrHU7SxTi" name="slow">
 				<GROUP id="iYkm5tfnT" name="app">
 					<FILE compile="0" file="../../src/rec/slow/app/AudioSetupPage.h" id="5Tzrb1HOL" name="AudioSetupPage.h" resource="0"/>
+					<FILE compile="1" file="../../src/rec/slow/app/AudioTransportSourcePlayer.cpp" id="81vXCgWsS" name="AudioTransportSourcePlayer.cpp" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/AudioTransportSourcePlayer.h" id="KzrKdi7l8" name="AudioTransportSourcePlayer.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/ComponentContainer.h" id="tkqan7mXm" name="ComponentContainer.h" resource="0"/>
 					<FILE compile="0" file="../../src/rec/slow/app/GenericApplication.h" id="uDpBWoCIX" name="GenericApplication.h" resource="0"/>
@@ -480,7 +481,7 @@
 				</GROUP>
 			</GROUP>
 		</GROUP>
-		<FILE compile="1" file="Main.cpp" id="ssY1Jiocx" name="Main.cpp" resource="0"/>
+		<FILE compile="1" file="Main.cpp" id="GG8pd8vow" name="Main.cpp" resource="0"/>
 	</MAINGROUP>
 	<JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default" JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default" JUCE_STRINGS_ARE_UNICODE="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>

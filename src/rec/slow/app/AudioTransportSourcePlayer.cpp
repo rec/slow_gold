@@ -4,7 +4,7 @@ namespace rec {
 namespace slow {
 namespace app {
 
-AudioTransportSourcePlayer::(AudioDeviceManager* dm)
+AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
 : Thread("AudioTransportSourcePlayer"), deviceManager_(dm) {
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(this);
@@ -16,18 +16,18 @@ AudioTransportSourcePlayer::~AudioTransportSourcePlayer() {
   player_.setSource(NULL);
 }
 
-void AudioTransportSourcePlayer:clear() {
+void AudioTransportSourcePlayer::clear() {
   stop();
   setPosition(0);
   setSource(NULL);
 }
 
-void AudioTransportSourcePlayer:setPosition(double newPosition) {
+void AudioTransportSourcePlayer::setPosition(double newPosition) {
   broadcast(newPosition);
   AudioTransportSource::setPosition(newPosition);
 }
 
-void AudioTransportSourcePlayer:start(bool isStart) {
+void AudioTransportSourcePlayer::setStart(bool isStart) {
   if (isStart) {
     startThread();
     AudioTransportSource::start();
