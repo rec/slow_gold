@@ -8,14 +8,14 @@ namespace rec {
 namespace util {
 namespace thread {
 
-template <typename Type>
+template <typename Type, typename Return=bool>
 class Callback : public Runnable {
  public:
-  typedef bool (Type::*Method)();
+  typedef Return (Type::*Method)();
   Callback(Type* obj, Method m) : object_(obj), method_(m) {}
 
   virtual ~Callback() {}
-  virtual bool run(Thread*) {
+  virtual Return run(Thread*) {
     return (object_->*method_)();
   }
 
@@ -26,10 +26,34 @@ class Callback : public Runnable {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Callback);
 };
 
+template <typename Type>
+class AsyncCallback : public juce:: CallbackMessage {
+ public:
+  typedef void (Type::*Method)();
+  AsyncCallback(Type* obj, Method m) : object_(obj), method_(m) {}
+  virtual ~AsyncCallback() {}
+
+  virtual void messageCallback() {
+    (object_->*method_)();
+  }
+
+ private:
+  Type* object_;
+  Method method_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(AsyncCallback);
+};
+
 template <typename Type, typename Method>
 Runnable* makeCallback(Type* object, Method method) {
   return new Callback<Type>(object, method);
 }
+
+template <typename Type, typename Method>
+void callAsync(Type* object, Method method) {
+  (new AsyncCallback<Type>(object, method))->post();
+}
+
 
 }  // namespace thread
 }  // namespace util

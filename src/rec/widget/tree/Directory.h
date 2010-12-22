@@ -9,7 +9,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Directory : public Node, public AsyncUpdater {
+class Directory : public Node {
  public:
   typedef juce::Array<File> FileArray;
 
@@ -18,7 +18,7 @@ class Directory : public Node, public AsyncUpdater {
 
   bool computeChildren();
   void partition();
-  virtual void handleAsyncUpdate();
+  virtual void addSubItems();
   virtual String name() const;
 
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
@@ -56,7 +56,8 @@ class Directory : public Node, public AsyncUpdater {
   bool isOpen_;
   mutable String name_;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Directory);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
+  JUCE_LEAK_DETECTOR(Directory);
 };
 
 }  // namespace tree

@@ -26,12 +26,12 @@ Root::Root(const NodeDesc& desc) : Thread("tree::Root"), desc_(desc) {
 void Root::run() {
   while (!threadShouldExit()) {
     volumes_ = getVolumes();
-    triggerAsyncUpdate();
+    thread::callAsync(this, &Root::mergeNewIntoOld);
     wait(ROOT_WAIT_TIME);
   }
 }
 
-void Root::handleAsyncUpdate() {
+void Root::mergeNewIntoOld() {
   for (int i = 0, j = 0; i < volumes_.size() || j < getNumNodes(); ++i) {
     const Volume* v1 = (i < volumes_.size()) ? &volumes_[i] : NULL;
     const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;

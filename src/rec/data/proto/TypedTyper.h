@@ -65,7 +65,7 @@ class TypedTyper : public Typer {
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedTyper);
+  DISALLOW_COPY_AND_ASSIGN(TypedTyper);
 };
 
 }  // namespace typer

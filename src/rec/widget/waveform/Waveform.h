@@ -20,25 +20,22 @@ typedef std::pair<float, float> TimeBounds;
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public listener::Broadcaster<const TimeAndMouseEvent&>,
-                 public listener::Listener<const juce::AudioThumbnail&>,
-                 public AsyncUpdater {
+                 public listener::Listener<const juce::AudioThumbnail&> {
  public:
   explicit Waveform(const WaveformProto& desc);
   virtual ~Waveform();
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized() { layoutCursors(); }
 
-  virtual void handleAsyncUpdate() { repaint(); }
-
   void layoutCursor(Cursor* cursor);
   Cursor* addCursor(const CursorProto& desc, float time);
   void moveCursor(Cursor* cursor, float time);
   void setTimeBounds(float begin, float end);
   const TimeBounds getTimeBounds() const;
-  virtual void operator()(const juce::AudioThumbnail&) { triggerAsyncUpdate(); }
-
+  virtual void operator()(const juce::AudioThumbnail&);
   virtual void paint(Graphics& g);
   void mouseUp(const juce::MouseEvent& e);
+  virtual void repaint() { Component::repaint(); }
 
  private:
   void layoutCursors();

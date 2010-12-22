@@ -4,6 +4,7 @@
 #include "rec/util/Math.h"
 #include "rec/gui/Color.h"
 #include "rec/widget/Painter.h"
+#include "rec/util/thread/Callback.h"
 
 using rec::gui::Colors;
 using rec::gui::Color;
@@ -22,10 +23,10 @@ TextComponent::TextComponent(const Text& desc)
 
 void TextComponent::setTime(float time) {
   time_ = time;
-  triggerAsyncUpdate();
+  thread::callAsync(this, &TextComponent::redisplay);
 }
 
-void TextComponent::handleAsyncUpdate() {
+void TextComponent::redisplay() {
   setText(formatTime(time_, description_.separator().flash()), false);
 }
 
@@ -88,17 +89,13 @@ void DialComponent::paint(Graphics& g) {
 void DialComponent::setTime(float time) {
   ScopedLock l(lock_);
   time_ = time;
-  triggerAsyncUpdate();
+  thread::callAsync(this, &DialComponent::repaint);
 }
 
 void DialComponent::setLength(float length) {
   ScopedLock l(lock_);
   length_ = length;
-  triggerAsyncUpdate();
-}
-
-void DialComponent::handleAsyncUpdate() {
-  repaint();
+  thread::callAsync(this, &DialComponent::repaint);
 }
 
 }  // namespace time

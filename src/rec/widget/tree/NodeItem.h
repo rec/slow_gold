@@ -57,7 +57,8 @@ class Node : public juce::TreeViewItem,
   const juce::Drawable* icon_;
   const juce::Font font_;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Node);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
+  JUCE_LEAK_DETECTOR(Node);
 };
 
 }  // namespace tree

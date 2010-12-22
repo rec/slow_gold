@@ -1,6 +1,7 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
+#include "rec/util/thread/Callback.h"
 
 using namespace rec::gui;
 using namespace rec::gui::color;
@@ -76,13 +77,13 @@ float Cursor::getTime() const {
   return time_;
 }
 
-void Cursor::handleAsyncUpdate() {
+void Cursor::setSavedBounds() {
   setBounds(bounds_);
 }
 
 void Cursor::setBoundsAsync(const juce::Rectangle<int>& bounds) {
   bounds_ = bounds;
-  triggerAsyncUpdate();
+  thread::callAsync(this, &Cursor::setSavedBounds);
 }
 
 }  // namespace waveform

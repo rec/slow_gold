@@ -10,14 +10,12 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Root : public AsyncUpdater,
-             public listener::Broadcaster<const VolumeFile&>,
-             public Thread {
+class Root : public listener::Broadcaster<const VolumeFile&>, public Thread {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
   virtual void run();
-  virtual void handleAsyncUpdate();
+  void mergeNewIntoOld();
   TreeView* treeView() { return &tree_; }
 
  private:
@@ -37,6 +35,7 @@ class Root : public AsyncUpdater,
   VolumeList volumes_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
+  JUCE_LEAK_DETECTOR(Root);
 };
 
 }  // namespace tree

@@ -1,6 +1,7 @@
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/util/Math.h"
+#include "rec/util/thread/Callback.h"
 
 namespace rec {
 namespace widget {
@@ -18,7 +19,7 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   ScopedLock l(lock_);
   thumbnail_ = thumbnail;
   setTimeBounds(0, thumbnail_->getTotalLength());
-  triggerAsyncUpdate();
+  thread::callAsync(this, &Waveform::repaint);
 }
 
 void Waveform::paint(Graphics& g) {
@@ -63,7 +64,11 @@ void Waveform::setTimeBounds(float begin, float end) {
   }
   layoutCursors();
 
-  triggerAsyncUpdate();
+  thread::callAsync(this, &Waveform::repaint);
+}
+
+void Waveform::operator()(const juce::AudioThumbnail&) {
+  thread::callAsync(this, &Waveform::repaint);
 }
 
 const TimeBounds Waveform::getTimeBounds() const {

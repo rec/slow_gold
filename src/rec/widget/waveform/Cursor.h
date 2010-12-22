@@ -11,7 +11,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public listener::Listener<float>, public AsyncUpdater {
+class Cursor : public Component, public listener::Listener<float> {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, float time = 0.0f);
 
@@ -24,7 +24,7 @@ class Cursor : public Component, public listener::Listener<float>, public AsyncU
   const CursorProto& desc() const { return desc_; }
 
   void setBoundsAsync(const juce::Rectangle<int>& bounds);
-  void handleAsyncUpdate();
+  void setSavedBounds();
 
  private:
   Waveform* const waveform_;

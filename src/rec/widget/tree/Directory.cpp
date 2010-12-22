@@ -78,7 +78,7 @@ Node* Directory::createChildFile(int begin, int end) {
   return node;
 }
 
-void Directory::handleAsyncUpdate() {
+void Directory::addSubItems() {
   NodeSet nodes;
   {
     ScopedLock l(lock_);
@@ -98,7 +98,7 @@ void Directory::addChildFile(Node* node) {
     ScopedLock l(lock_);
     nodesToAdd_.insert(node);
   }
-  triggerAsyncUpdate();
+  thread::callAsync(this, &Directory::addSubItems);
 }
 
 bool Directory::computeChildren() {
