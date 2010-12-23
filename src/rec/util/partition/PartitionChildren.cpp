@@ -1,16 +1,68 @@
 #include <vector>
 #include <set>
 
-#include "rec/widget/tree/PartitionChildren.h"
+#include "rec/util/partition/PartitionChildren.h"
+#include "rec/util/partition/Convertors.h"
 
-#include "rec/base/basictypes.h"
-
-using namespace juce;
 using std::vector;
+using namespace juce;
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace partition {
+
+bool isASCII(int c) { return c >= 0 && c <= 0xFF; }
+
+bool isPunctuation(int c) {
+  return isASCII(c) &&
+    (c < '0' || (c > '9' && c < 'A') || (c > 'Z' && c < 'a') || c > 'z');
+}
+
+int compareChars(int c, int d) {
+  bool pc = isPunctuation(c);
+  bool pd = isPunctuation(d);
+
+  return (pc == pd) ? (tolower(c) - tolower(d)) : (pc ? -1 : 1);
+}
+
+struct CompareChars {
+  bool operator()(int c, int d) {
+    return compareChars(c, d) < 0;
+  }
+};
+
+template <typename Str>
+int compareStrings(const Str& x, const Str& y) {
+  for (int i = 0; ; ++i) {
+    if (i >= getLength(x))
+      return i >= getLength(y) ? 0 : -1;
+
+    if (i >= getLength(y))
+      return 1;
+
+    if (int cmp = compareChars(x[i], y[i]))
+      return cmp;
+  }
+}
+
+template <typename Str>
+int indexOfDifference(const Str& s, const Str& t) {
+  int slength = getLength(s);
+  int tlength = getLength(t);
+  int min = juce::jmin(slength, tlength);
+  for (int i = 0; i < min; ++i) {
+    if (compareChars(s[i], t[i]))
+      return i;
+  }
+  return (min == juce::jmax(slength, tlength)) ? -1 : min;
+}
+
+template <typename Collection>
+int indexOfDifference(const Collection& items, const int i) {
+  return indexOfDifference(toLowerCase(getName(items[i - 1])),
+                           toLowerCase(getName(items[i])));
+}
+
 namespace {
 
 struct LessThanEqualChar {
@@ -23,7 +75,7 @@ struct LessThanEqualChar {
 template <typename Collection, typename IntList, typename Str>
 class Partition {
  public:
-  Partition(const Collection& k, const Range& r, int branch, IntList* list)
+  Partition(const Collection& k, const Range<int>& r, int branch, IntList* list)
       : kids_(k), range_(r), branch_(branch), list_(list) {
     DCHECK_GE(branch, 2);
     partition();
@@ -92,12 +144,12 @@ class Partition {
     }
   }
 
-  int difference(const Range& r) const {
+  int difference(const Range<int>& r) const {
     return indexOfDifference(getName(r.begin_), getName(r.end_ - 1));
   }
 
   const Collection& kids_;
-  Range range_;
+  Range<int> range_;
   int branch_;
   IntList* list_;
 
@@ -126,17 +178,21 @@ template <> void STLPartition::add(int i) { list_->push_back(i); }
 
 }  // namespace
 
-void partitionChildren(const Array<File>& c, const Range& r, int branch,
+void partitionChildren(const Array<File>& c, const Range<int>& r, int branch,
                        Array<int>* l) {
   JucePartition partition(c, r, branch, l);
 }
 
-void partitionChildren(const vector<string>& c, const Range& r, int branch,
+void partitionChildren(const vector<string>& c, const Range<int>& r, int branch,
                        vector<int>* l) {
   STLPartition partition(c, r, branch, l);
 }
 
+template int compareStrings(const String& x, const String& y);
 
-}  // namespace tree
-}  // namespace widget
+template int indexOfDifference(const juce::Array<File>& items, const int i);
+
+
+}  // namespace partition
+}  // namespace util
 }  // namespace rec

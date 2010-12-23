@@ -1,15 +1,13 @@
-#include <vector>
-
 #include <gtest/gtest.h>
 
-#include "rec/widget/tree/PartitionChildren.h"
+#include "rec/util/partition/PartitionChildren.h"
 #include "rec/base/ArraySize.h"
 
 using std::vector;
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace partition {
 namespace {
 
 const char* NAMES[] = {"a", "bede", "c", "d",
@@ -29,7 +27,7 @@ class PartitionChildrenTest : public testing::Test {
 
   void test(int begin, int end, int branch, const int* result, int size) {
     vector<int> list;
-    partitionChildren(children_, Range(begin, end), branch, &list);
+    partitionChildren(children_, Range<int>(begin, end), branch, &list);
 
 #if 0
     std::cout << "test: ";
@@ -85,6 +83,6 @@ TEST_F(PartitionChildrenTest, Branch8) {
 }
 
 }  // namespace
-}  // namespace tree
-}  // namespace widget
+}  // namespace partition
+}  // namespace util
 }  // namespace rec

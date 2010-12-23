@@ -5,7 +5,7 @@
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/RunnableThread.h"
-#include "rec/widget/tree/PartitionChildren.h"
+#include "rec/util/partition/PartitionChildren.h"
 #include "rec/widget/tree/SortedChildren.h"
 
 using namespace juce;
@@ -26,7 +26,7 @@ Directory::Directory(const NodeDesc& d, const VolumeFile& vf)
       isOpen_(false) {
 }
 
-Directory::Directory(const Directory& d, const Range& r)
+Directory::Directory(const Directory& d, const Range<int>& r)
     : Node(d.desc_, d.volumeFile_),
       range_(r),
       children_(d.children_),
@@ -65,7 +65,7 @@ Node* Directory::createChildFile(int begin, int end) {
   Node* node;
   bool isShard = ((end - begin) != 1);
   if (isShard) {
-    node = new Directory(*this, Range(begin, end));
+    node = new Directory(*this, Range<int>(begin, end));
 
   } else {
     const File& f = (*children_)[begin];
@@ -166,7 +166,8 @@ void Directory::partition() {
   ScopedLock l(lock_);
   if (!computingDone_) {
     juce::Array<int> partition;
-    partitionChildren(*children_, range_, desc_.best_branch(), &partition);
+    partition::partitionChildren(*children_, range_, desc_.best_branch(),
+                                 &partition);
     for (int i = 0; i < partition.size() - 1; ++i)
       addChildFile(partition[i], partition[i + 1]);
 
@@ -191,8 +192,8 @@ String Directory::name() const {
   if (range_.size() == size)
     return Node::name();
 
-  int b = range_.begin_ ? indexOfDifference(*children_, range_.begin_) : 1;
-  int e = range_.end_ == size ? 1 : indexOfDifference(*children_, range_.end_);
+  int b = range_.begin_ ? partition::indexOfDifference(*children_, range_.begin_) : 1;
+  int e = range_.end_ == size ? 1 : partition::indexOfDifference(*children_, range_.end_);
 
   String begin = getSub((*children_)[range_.begin_], b);
   String end = getSub((*children_)[range_.end_ - 1], e);

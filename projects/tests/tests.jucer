@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="PN4WDA5qq" name="tests">
+  <MAINGROUP id="a10FsEon2" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -537,8 +537,6 @@
               name="Preferences.h" resource="0"/>
       </GROUP>
       <GROUP id="7tu1XPqEp" name="util">
-        <FILE compile="0" file="../../src/rec/util/BeginEnd.h" id="CYOEh83kr"
-              name="BeginEnd.h" resource="0"/>
         <GROUP id="IN3ao8UNh" name="block">
           <FILE compile="0" file="../../src/rec/util/block/Block.h" id="5wTkO1w7s"
                 name="Block.h" resource="0"/>
@@ -621,8 +619,22 @@
               name="math_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Method.h" id="7W7xmyDyZ"
               name="Method.h" resource="0"/>
+        <GROUP id="rJ0QA20g1" name="partition">
+          <FILE compile="1" file="../../src/rec/util/partition/Convertors.cpp"
+                id="bcKnVjwM4" name="Convertors.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/partition/Convertors.h"
+                id="PsJMCIB4e" name="Convertors.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/partition/PartitionChildren.cpp"
+                id="0ENR2Y6yb" name="PartitionChildren.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/partition/PartitionChildren.h"
+                id="bjjvYqMxL" name="PartitionChildren.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/partition/PartitionChildren_test.cpp"
+                id="tERxLVyuH" name="PartitionChildren_test.cpp" resource="0"/>
+        </GROUP>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="mAw0zFgKm"
               name="PointerList.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Range.h" id="AvppXo9nU"
+              name="Range.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="CWUnE0wxb"
               name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="Km8Ts3LYZ" name="STL.h"
@@ -686,10 +698,6 @@
                 name="Time.h" resource="0"/>
         </GROUP>
         <GROUP id="XG8GOIIwK" name="tree">
-          <FILE compile="1" file="../../src/rec/widget/tree/Convertors.cpp" id="5J5B3pptX"
-                name="Convertors.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/Convertors.h" id="8x9yuvhGE"
-                name="Convertors.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/Directory.cpp" id="arAeWRc77"
                 name="Directory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="iWylNXVxW"
@@ -708,12 +716,6 @@
                 name="NodeItem.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/NodeItem.h" id="IRMPbuCrn"
                 name="NodeItem.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/PartitionChildren.cpp"
-                id="UYMOIHz74" name="PartitionChildren.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/PartitionChildren.h"
-                id="IfVSvm2JX" name="PartitionChildren.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/PartitionChildren_test.cpp"
-                id="FfcIsay5j" name="PartitionChildren_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/Root.cpp" id="98UwAju7d"
                 name="Root.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Root.h" id="uAkww3les"
@@ -891,7 +893,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="nZvZJkV5g" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="wtKJ6XQLZ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

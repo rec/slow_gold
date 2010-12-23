@@ -1,11 +1,11 @@
-#include "rec/widget/tree/Convertors.h"
+#include "rec/util/partition/Convertors.h"
 
 using namespace juce;
 using std::vector;
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace partition {
 
 template <> int getLength(const string& s) { return s.size(); }
 template <> int getLength(const String& s) { return s.length(); }
@@ -33,6 +33,6 @@ template <> const string& get(const vector<string>& files, int i) {
 String getName(const File& f) { return f.getFileName();  }
 string getName(const string& v) { return v; }
 
-}  // namespace tree
-}  // namespace widget
+}  // namespace partition
+}  // namespace util
 }  // namespace rec

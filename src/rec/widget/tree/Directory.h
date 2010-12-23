@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include "rec/widget/tree/NodeItem.h"
+#include "rec/util/Range.h"
 
 namespace rec {
 namespace widget {
@@ -32,7 +33,7 @@ class Directory : public Node {
  private:
   typedef std::set<Node*> NodeSet;
 
-  Directory(const Directory& d, const Range& r);
+  Directory(const Directory& d, const Range<int>& r);
 
   Node* createChildFile(int begin, int end);
   void addChildFile(Node* node);
@@ -44,7 +45,7 @@ class Directory : public Node {
     children_ = childrenDeleter_.get();
   }
 
-  Range range_;
+  Range<int> range_;
   FileArray *children_;
   ptr<FileArray> childrenDeleter_;
   ptr<Thread> thread_;

@@ -1,5 +1,6 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/NodeComponent.h"
+#include "rec/widget/tree/Tree.h"
 
 namespace rec {
 namespace widget {
@@ -64,8 +65,8 @@ bool Node::alreadyVisited() const {
 
 File Node::file() const { return getFile(volumeFile_); }
 
-void Node::itemClicked(const juce::MouseEvent&) { 
-  broadcast(volumeFile_); 
+void Node::itemClicked(const juce::MouseEvent&) {
+  broadcast(volumeFile_);
 }
 
 juce::Component* Node::createItemComponent() {
