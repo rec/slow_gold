@@ -24,6 +24,28 @@ inline void discardAndEmpty(Thread* t) { discard(t); empty(); }
 
 }  // namespace trash
 }  // namespace thread
+
+
+template <typename Type>
+class thread_ptr : public ptr<Type> {
+public:
+  explicit thread_ptr(Type* p = 0) : ptr<Type>(p) {}
+
+  ~thread_ptr() { reset(); }
+
+  void reset(Type* p = NULL) {
+    if (p != this->get()) {
+      thread::trash::discard(this->transfer());
+      ptr<Type>::reset(p);
+    }
+  }
+
+  operator bool() const { return this->get(); }
+  bool operator!() const { return !this->get(); }
+
+  DISALLOW_COPY_AND_ASSIGN(thread_ptr);
+};
+
 }  // namespace util
 }  // namespace rec
 

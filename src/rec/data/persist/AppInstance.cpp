@@ -26,10 +26,7 @@ AppInstance::AppInstance(const string& appName)
   writeThread_->startThread();
 }
 
-AppInstance::~AppInstance() {
-  thread::trash::discard(updateThread_.transfer());
-  thread::trash::discard(writeThread_.transfer());
-}
+AppInstance::~AppInstance() {}
 
 // A piece of data got new information!
 void AppInstance::needsUpdate(UntypedData* data) {

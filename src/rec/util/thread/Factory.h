@@ -2,7 +2,7 @@
 #define __REC_UTIL_THREAD_FACTORY__
 
 #include "rec/base/base.h"
-#include "rec/util/listener/Broadcaster.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace util {

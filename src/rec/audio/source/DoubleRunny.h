@@ -4,9 +4,9 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/source/Stretchy.pb.h"
-#include "rec/util/listener/Broadcaster.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/ChangeLocker.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace audio {
@@ -34,7 +34,7 @@ class DoubleRunny : public Wrappy {
   const RunnyProto runnyDesc_;
 
   CriticalSection lock_;
-  ptr<Runny> runny_, nextRunny_;
+  thread_ptr<Runny> runny_, nextRunny_;
   double ratio_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleRunny);

@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
 #define __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
 
-#include "rec/util/listener/Broadcaster.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace audio {

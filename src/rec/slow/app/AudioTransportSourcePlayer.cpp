@@ -39,7 +39,8 @@ void AudioTransportSourcePlayer::setStart(bool isStart) {
 
 void AudioTransportSourcePlayer::run() {
   while (!threadShouldExit()) {
-    broadcast(getNextReadPosition() / 44100.0f);
+    float time = getNextReadPosition() / 44100.0f;
+    broadcast(time);
     if (!threadShouldExit())
       wait(THREAD_WAIT);
   }

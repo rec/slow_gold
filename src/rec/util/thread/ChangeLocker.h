@@ -2,7 +2,7 @@
 #define __REC_UTIL_CHANGELOCKER__
 
 #include "rec/base/base.h"
-#include "rec/util/listener/Broadcaster.h"
+#include "rec/util/listener/Listener.h"
 #include "rec/util/thread/Locker.h"
 
 namespace rec {
@@ -12,6 +12,7 @@ namespace thread {
 template <typename Data>
 class ChangeLocker : public Thread,
                      public listener::Broadcaster<const Data&>,
+                     public listener::Listener<Data>,
                      public Locker<Data> {
  public:
   ChangeLocker(int wait) : Thread("ChangeLocker"), wait_(wait) {}
@@ -20,12 +21,15 @@ class ChangeLocker : public Thread,
     Data data;
     while (!threadShouldExit()) {
       if (getDataIfChanged(&data) && !threadShouldExit())
-        (*this)(data);
+        broadcast(data);
 
       if (!threadShouldExit())
         wait(wait_);
     }
   }
+
+  virtual void operator()(const Data& data) { set(data); }
+  virtual void operator()(Data data) { set(data); }
 
  protected:
   virtual void onChange() { notify(); }

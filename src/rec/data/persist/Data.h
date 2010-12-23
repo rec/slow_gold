@@ -4,7 +4,7 @@
 #include <set>
 #include "rec/base/base.h"
 #include "rec/data/persist/UntypedData.h"
-#include "rec/util/listener/Broadcaster.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace persist {

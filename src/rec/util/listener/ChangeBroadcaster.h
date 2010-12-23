@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_LISTENER_CHANGEBROADCASTER__
 #define __REC_UTIL_LISTENER_CHANGEBROADCASTER__
 
-#include "rec/util/listener/Broadcaster.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace util {

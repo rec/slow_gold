@@ -13,8 +13,11 @@ namespace rec {
 namespace audio {
 namespace source {
 
-DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file,
-                                     DoubleRunnyBuffer::Data* data)
+static const int READAHEAD = 20000;
+static const int WAIT_TIME = 20;
+static const int MAX_WAIT_TIME = 7000;
+
+DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
     : DoubleRunny(file), Thread("DoubleRunnyBuffer"), data_(data) {
   ptr<PositionableAudioSource> source(createSource(file));
 
@@ -35,11 +38,6 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file,
   data_->addListener(changeLocker_.get());
 }
 
-DoubleRunnyBuffer::~DoubleRunnyBuffer() {
-  data_->removeListener(changeLocker_.get());
-  thread::trash::discard(&changeLocker_);
-}
-
 PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
   if (threadShouldExit())
     return NULL;
@@ -49,11 +47,25 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
   return new BufferySource(*buffery_->buffer());
 }
 
+void DoubleRunnyBuffer::operator()(const StretchyProto& p) {
+  if (changeLocker_)
+    changeLocker_->set(p);
+  else
+    LOG(ERROR) << "Empty changelocker";
+}
+
+static const int BUFFERY_READAHEAD = 10000;
+
+bool DoubleRunnyBuffer::fillFromPosition(int pos) {
+  buffery_->setPosition(pos);
+  return buffery_->waitUntilFilled(BUFFERY_READAHEAD);
+}
+
 void DoubleRunnyBuffer::run() {
   DLOG(INFO) << "DoubleRunnyBuffer::run";
-  while (!(threadShouldExit() || buffery_->isFull())) {
+  while (!(threadShouldExit() || buffery_->isFull()))
     buffery_->fillNextBlock();
-  }
+
   DLOG_IF(INFO, buffery_->isFull()) << "DoubleRunnyBuffer::run: isFull";
 }
 

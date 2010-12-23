@@ -4,7 +4,7 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Circular.h"
 #include "rec/util/block/Block.h"
-#include "rec/util/listener/Broadcaster.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace audio {

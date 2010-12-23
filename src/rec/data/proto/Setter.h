@@ -4,7 +4,7 @@
 #include "rec/base/base.h"
 #include "rec/data/proto/Address.h"
 #include "rec/data/proto/Value.h"
-#include "rec/util/listener/Broadcaster.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace proto {

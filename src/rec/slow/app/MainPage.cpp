@@ -19,6 +19,7 @@ using rec::widget::status::time::TextComponent;
 
 using namespace juce;
 
+using namespace rec::audio::source;
 using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
 using namespace rec::proto::arg;
@@ -50,6 +51,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     songTime_(Text()),
     songDial_(realTimeDial()),
     stretchy_(NULL),
+    timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
     fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
     fileListener_(getCurrentFileData()->setter()) {
   setSize(600, 400);
@@ -97,14 +99,12 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   treeRoot_->startThread();
 
   fileLocker_->addListener(this);
-  getCurrentFileData()->addListener(fileLocker_.get());
-}
+  timeLocker_->addListener(this);
+  transportSource_->addListener(timeLocker_.get());
 
-void MainPage::removeFileCallbacks() {
-  if (timeLocker_) {
-    timeLocker_->removeListener(this);
-    trash::discard(&timeLocker_);
-  }
+  fileLocker_->startThread();
+  timeLocker_->startThread();
+  getCurrentFileData()->addListener(fileLocker_.get());
 }
 
 MainPage::~MainPage() {
@@ -120,13 +120,6 @@ MainPage::~MainPage() {
 
   transportSource_->stop();
   transportSource_->setSource(NULL);
-
-  trash::discard(&treeRoot_);
-  trash::discard(&doubleRunny_);
-  trash::discard(&transportSource_);
-  trash::discard(&fileLocker_);
-
-  removeFileCallbacks();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -153,45 +146,37 @@ static const int SAMPLE_RATE = 44100.0f;
 
 void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
-    removeFileCallbacks();
     file_ = file;
     if (empty(file_))
       return;
 
-    timeLocker_.reset(new TimeLocker(CHANGE_LOCKER_WAIT));
-    timeLocker_->set(0);
-    timeLocker_->addListener(this);
-    timeLocker_->startThread();
+    timeLocker_->initialize(0);
 
     timeScaleSlider_(file_);
     pitchScaleSlider_(file_);
 
     transportSource_->clear();
     cursor_->setTime(0.0f);
-    stretchy_ = persist::getApp()->getData<audio::source::StretchyProto>(file, "timestretch");
+    stretchy_ = persist::getApp()->getData<StretchyProto>(file_, "timestretch");
 
-    ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file_, stretchy_));
+    thread_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file_, stretchy_));
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);
     doubleRunny_.swap(dr);
 
     transportSource_->setSource(doubleRunny_.get());
     songDial_.setLength(doubleRunny_->getTotalLength() / SAMPLE_RATE);
-
-    trash::discard(&dr);
   }
 }
 
-static const int BUFFERY_READAHEAD = 10000;
-
 void MainPage::operator()(const float& time) {
+  DLOG(INFO) << "Callback on time " << time;
   if (!doubleRunny_)
     return;
 
-  Buffery* buffery = doubleRunny_->buffery();
-  buffery->setPosition(SAMPLE_RATE * time);
-  if (buffery->waitUntilFilled(BUFFERY_READAHEAD))
+  else if (doubleRunny_->fillFromPosition(SAMPLE_RATE * time))
     transportSource_->setPosition(stretchy_->get().time_scale() * time);
+
   else
     LOG(ERROR) << "Failed to fill buffer.";
 }

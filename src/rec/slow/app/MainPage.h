@@ -50,18 +50,16 @@ class MainPage : public Component,
   virtual void operator()(const float& time);
   virtual void operator()(const VolumeFile& file);
 
-  void removeFileCallbacks();
-
   void loadRecentFile(int menuItemId);
 
  private:
   typedef thread::ChangeLocker<float> TimeLocker;
   typedef thread::ChangeLocker<VolumeFile> FileLocker;
 
-  ptr<app::AudioTransportSourcePlayer> transportSource_;
+  thread_ptr<app::AudioTransportSourcePlayer> transportSource_;
   Waveform waveform_;
   TextButton startStopButton_;
-  ptr<Root> treeRoot_;
+  thread_ptr<Root> treeRoot_;
   Label explanation_;
 
   SetterSlider<StretchyProto> timeScaleSlider_;
@@ -72,11 +70,10 @@ class MainPage : public Component,
 
   CriticalSection lock_;
   VolumeFile file_;
-  ptr<DoubleRunnyBuffer> doubleRunny_;
-  // listener::SetterListener<const VolumeFile&> fileListener_;
+  thread_ptr<DoubleRunnyBuffer> doubleRunny_;
   persist::Data<StretchyProto>* stretchy_;
-  ptr<TimeLocker> timeLocker_;
-  ptr<FileLocker> fileLocker_;
+  thread_ptr<TimeLocker> timeLocker_;
+  thread_ptr<FileLocker> fileLocker_;
 
   listener::SetterListener<const VolumeFile&> fileListener_;
 
