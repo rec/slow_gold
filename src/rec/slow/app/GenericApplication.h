@@ -24,13 +24,13 @@ class GenericApplication : public juce::JUCEApplication {
   virtual void initialise(const String& commandLine) {
     LOG(INFO) << "Starting up " << getApplicationName()
               << ", version " << getApplicationVersion();
+
     persist::AppInstance::start(name_);
   }
 
   virtual void shutdown() {
     util::thread::trash::waitForAllThreadsToExit(1000);
     persist::AppInstance::stop();
-    juce::AudioFormatManager::deleteInstance();
     LOG(INFO) << "Shutting down " << getApplicationName();
   }
 
@@ -49,6 +49,6 @@ class GenericApplication : public juce::JUCEApplication {
 };
 
 }  // namespace slow
-}  // namespace app
+}  // namespace rec
 
 #endif  // __REC_JUCE_GENERIC_APPLICATION

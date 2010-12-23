@@ -30,7 +30,6 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
   buffery_.reset(new Buffery(source.transfer(), BLOCK_SIZE));
 
   setStretchy(data_->get());
-  buffery_->addListener(this);
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
   changeLocker_->initialize(data->get());
   changeLocker_->addListener(this);
@@ -63,14 +62,11 @@ bool DoubleRunnyBuffer::fillFromPosition(int pos) {
 
 void DoubleRunnyBuffer::run() {
   DLOG(INFO) << "DoubleRunnyBuffer::run";
-  while (!(threadShouldExit() || buffery_->isFull()))
-    buffery_->fillNextBlock();
-
-  DLOG_IF(INFO, buffery_->isFull()) << "DoubleRunnyBuffer::run: isFull";
-}
-
-void DoubleRunnyBuffer::operator()(const Buffery&) {
-  cachedThumbnail_->writeThumbnail(true);
+  while (!(threadShouldExit() || buffery_->fillNextBlock()));
+  if (!threadShouldExit()) {
+    cachedThumbnail_->writeThumbnail(true);
+    DLOG(INFO) << "run(): buffery_.isFull()";
+  }
 }
 
 }  // namespace source

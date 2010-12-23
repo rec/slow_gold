@@ -10,8 +10,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Buffery : public listener::Listener<int>,
-                public listener::Broadcaster<const Buffery&> {
+class Buffery : public listener::Listener<int> {
  public:
   Buffery(PositionableAudioSource* source, int blockSize);
 
@@ -21,18 +20,20 @@ class Buffery : public listener::Listener<int>,
   void setPosition(int position);
   bool hasFilled(int length) const;
   bool hasFilled(const block::Block& b) const;
-  void fillNextBlock();
+  bool fillNextBlock();
   bool isFull() const;
   int getLength() const { return length_; }
   bool waitUntilFilled(int length, int waitTime = 40, int maxTime = 10000);
 
  private:
   CriticalSection lock_;
+
+  int position_;
   const int length_;
   AudioSampleBuffer buffer_;
-  int position_;
-  ptr<PositionableAudioSource> source_;
   const int blockSize_;
+
+  ptr<PositionableAudioSource> source_;
   block::BlockSet filled_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Buffery);

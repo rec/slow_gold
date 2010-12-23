@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="6Qph2gDOm" name="Slow">
+  <MAINGROUP id="hnWxW0aiX" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -56,6 +56,10 @@
               name="AudioDeviceSetup.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/audio/AudioDeviceSetup.h" id="ZSzNkK3JD"
               name="AudioDeviceSetup.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/audio/AudioFormatManager.cpp"
+              id="YDw129XmE" name="AudioFormatManager.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/audio/AudioFormatManager.h" id="O6wjaN5Ct"
+              name="AudioFormatManager.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/audio/CopySamples.cpp" id="JI5miayYu"
               name="CopySamples.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/audio/CopySamples.h" id="ao5ZPbont"
@@ -569,8 +573,6 @@
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="UvEXJklIm"
               name="Exception.h" resource="0"/>
         <GROUP id="7NAzl46CT" name="listener">
-          <FILE compile="0" file="../../src/rec/util/listener/Broadcaster.h"
-                id="t9TFVl0zu" name="Broadcaster.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/ChangeBroadcaster.h"
                 id="tbrmZIKGt" name="ChangeBroadcaster.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/FileDataListener.h"
@@ -842,7 +844,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="uCiWibqyz" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="XIseAfXvm" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

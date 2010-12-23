@@ -88,7 +88,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
-  startStopButton_.addButtonListener(this);
+  startStopButton_.addListener(this);
   waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
 
@@ -110,7 +110,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 MainPage::~MainPage() {
   getCurrentFileData()->removeListener(fileLocker_.get());
 
-  startStopButton_.removeButtonListener(this);
+  startStopButton_.removeListener(this);
   treeRoot_->removeListener(&fileListener_);
 
   transportSource_->removeListener(&songDial_);
@@ -166,11 +166,12 @@ void MainPage::operator()(const VolumeFile& file) {
 
     transportSource_->setSource(doubleRunny_.get());
     songDial_.setLength(doubleRunny_->getTotalLength() / SAMPLE_RATE);
+    gui::addRecentFile(file_);
   }
 }
 
 void MainPage::operator()(const float& time) {
-  DLOG(INFO) << "Callback on time " << time;
+  // DLOG(INFO) << "Callback on time " << time;
   if (!doubleRunny_)
     return;
 

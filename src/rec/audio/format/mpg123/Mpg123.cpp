@@ -19,12 +19,6 @@ class Initializer {
       initError_ = mpg123_init();
       running_ = true;
     }
-    if (!formatManagerInitialized_) {
-      formatManagerInitialized_ = true;
-      AudioFormatManager* afm = AudioFormatManager::getInstance();
-      afm->registerBasicFormats();
-      afm->registerFormat(new Format(), false);
-    }
     return initError_;
   }
 
@@ -38,7 +32,6 @@ class Initializer {
 
   Error initError_;
   bool running_;
-  static bool formatManagerInitialized_;
 
   static Initializer& instance() {
     // C guarantees thread-safe construction of this variable, so we're
@@ -48,8 +41,6 @@ class Initializer {
     return i;
   }
 };
-
-bool Initializer::formatManagerInitialized_ = false;
 
 }  // namespace
 

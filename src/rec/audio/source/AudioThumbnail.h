@@ -2,6 +2,7 @@
 #define __REC_AUDIO_SOURCE_AUDIOTHUMBNAIL__
 
 #include "rec/util/listener/Listener.h"
+#include "rec/audio/AudioFormatManager.h"
 
 namespace rec {
 namespace audio {
@@ -11,7 +12,9 @@ class AudioThumbnail : public juce::AudioThumbnail,
                        public listener::Listener<const AudioSourceChannelInfo&> {
  public:
   AudioThumbnail(const File& file, int compression = 512)
-      : juce::AudioThumbnail(compression, manager_, cache_), file_(file) {}
+      : juce::AudioThumbnail(compression, getAudioFormatManager() cache_),
+        file_(file) {
+  }
 
   virtual void operator()(const AudioSourceChannelInfo& info) {
     addBlock(info.startSample, *info.buffer, info.startSample, info.numSamples);
@@ -19,7 +22,6 @@ class AudioThumbnail : public juce::AudioThumbnail,
 
  private:
   const File file_;
-  AudioFormatManager manager_;
   juce::AudioThumbnailCache cache_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioThumbnail);

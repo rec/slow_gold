@@ -146,6 +146,8 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.h"/>
+          <File RelativePath="..\..\..\..\src\rec\audio\AudioFormatManager.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\audio\AudioFormatManager.h"/>
           <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.h"/>
           <Filter Name="format">
@@ -422,7 +424,6 @@
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
           <Filter Name="listener">
-            <File RelativePath="..\..\..\..\src\rec\util\listener\Broadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\FileDataListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>

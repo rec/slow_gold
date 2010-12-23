@@ -14,8 +14,7 @@ namespace source {
 class DoubleRunnyBuffer
   : public DoubleRunny,
     public Thread,
-    public listener::Listener<const StretchyProto&>,
-    public listener::Listener<const Buffery&> {
+    public listener::Listener<const StretchyProto&> {
  public:
   typedef persist::Data<StretchyProto> Data;
 
@@ -29,7 +28,6 @@ class DoubleRunnyBuffer
   CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
 
   virtual void operator()(const StretchyProto& p);
-  virtual void operator()(const Buffery&);
 
   virtual void run();
   Data* data() { return data_; }

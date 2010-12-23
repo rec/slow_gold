@@ -5,6 +5,7 @@
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/util/TestData.h"
+#include "rec/audio/AudioFormatManager.h"
 
 using namespace juce;
 
@@ -16,7 +17,7 @@ namespace mpg123 {
 using rec::util::testFile;
 
 TEST(Reader, All) {
-  AudioFormatManager* fm = AudioFormatManager::getInstance();
+  AudioFormatManager* fm = getAudioFormatManager();
   ptr<AudioFormatReader> wav(fm->createReaderFor(testFile("test1.wav")));
   ptr<AudioFormatReader> mp3(fm->createReaderFor(testFile("test1.mp3")));
 

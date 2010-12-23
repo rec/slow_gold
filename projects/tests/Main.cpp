@@ -5,7 +5,7 @@
 #include "rec/slow/app/GenericApplication.h"
 
 namespace rec {
-namespace app {
+namespace slow {
 namespace {
 
 class TestApplication : public GenericApplication {
@@ -20,13 +20,12 @@ class TestApplication : public GenericApplication {
     int argc = 1;
     testing::InitGoogleTest(&argc, (char**) argv);
     setApplicationReturnValue(RUN_ALL_TESTS());
-    juce::AudioFormatManager::deleteInstance();
     quit();
   }
 };
 
 }  // namespace
-}  // namespace app
+}  // namespace slow
 }  // namespace rec
 
-START_JUCE_APPLICATION(rec::app::TestApplication)
+START_JUCE_APPLICATION(rec::slow::TestApplication)

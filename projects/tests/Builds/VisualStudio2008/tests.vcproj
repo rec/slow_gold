@@ -146,6 +146,8 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.h"/>
+          <File RelativePath="..\..\..\..\src\rec\audio\AudioFormatManager.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\audio\AudioFormatManager.h"/>
           <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.h"/>
           <Filter Name="format">
@@ -169,10 +171,6 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.h"/>
             </Filter>
-            <Filter Name="reader">
-              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.cpp"/>
-              <File RelativePath="..\..\..\..\src\rec\audio\format\reader\CachedAudioFormatReader.h"/>
-            </Filter>
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\AudioThumbnail.h"/>
@@ -186,6 +184,7 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
@@ -195,6 +194,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy_test.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyRunny.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TestHarness.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy_test.cpp"/>
@@ -212,9 +213,11 @@
           <File RelativePath="..\..\..\..\src\rec\base\Cast.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\CompileAssert.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\disallow.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Juce.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Leaks.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\port.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\ptr.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\scoped_array.h"/>
-          <File RelativePath="..\..\..\..\src\rec\base\scoped_ptr.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\string_piece.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\types.h"/>
         </Filter>
@@ -385,6 +388,7 @@
         <Filter Name="slow">
           <Filter Name="app">
             <File RelativePath="..\..\..\..\src\rec\slow\app\AudioSetupPage.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\AudioTransportSourcePlayer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\AudioTransportSourcePlayer.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\ComponentContainer.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\GenericApplication.h"/>
@@ -416,7 +420,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\cd\Album_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDReader.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDReader.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp"/>
@@ -424,7 +427,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\cd\juce_AudioCDReader_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines_test.cpp"/>
@@ -438,8 +440,8 @@
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
           <Filter Name="listener">
-            <File RelativePath="..\..\..\..\src\rec\util\listener\Broadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\FileDataListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
           </Filter>
@@ -504,7 +506,6 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Tree.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.h"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile_test.cpp"/>
           </Filter>
           <Filter Name="waveform">
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>

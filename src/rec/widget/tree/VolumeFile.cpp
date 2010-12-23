@@ -2,6 +2,7 @@
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/cd/CDReader.h"
+#include "rec/audio/AudioFormatManager.h"
 
 using namespace juce;
 
@@ -95,7 +96,7 @@ bool operator==(const VolumeFile& x, const VolumeFile& y) {
 AudioFormatReader* createReader(const VolumeFile& file) {
   const Volume& v = file.volume();
   if (v.type() != Volume::CD)
-    return AudioFormatManager::getInstance()->createReaderFor(getFile(file));
+    return audio::getAudioFormatManager()->createReaderFor(getFile(file));
 
   if (!file.path_size()) {
     LOG(ERROR) << "Can't create track for root CD volume for "

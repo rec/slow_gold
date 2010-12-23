@@ -12,11 +12,11 @@ namespace audio {
 namespace source {
 
 Buffery::Buffery(PositionableAudioSource* source, int blockSize)
-    : length_(source->getTotalLength()),
+    : position_(0),
+      length_(source->getTotalLength()),
       buffer_(2, length_),
-      position_(0),
-      source_(source),
-      blockSize_(blockSize) {
+      blockSize_(blockSize),
+      source_(source) {
 }
 
 void Buffery::setPosition(int position) {
@@ -46,7 +46,7 @@ bool Buffery::isFull() const {
   return (fullTo(filled_) == length_);
 }
 
-void Buffery::fillNextBlock() {
+bool Buffery::fillNextBlock() {
   Block block;
   {
     ScopedLock l(lock_);
@@ -56,7 +56,7 @@ void Buffery::fillNextBlock() {
   int numSamples = getSize(block);
   if (!numSamples) {
     LOG(ERROR) << "Getting an empty block";
-    return;
+    return true;
   }
 
   AudioSourceChannelInfo info;
@@ -68,14 +68,9 @@ void Buffery::fillNextBlock() {
   source_->setNextReadPosition(block.first);
   source_->getNextAudioBlock(info);
 
-  bool full;
-  {
-    ScopedLock l(lock_);
-    merge(block, &filled_);
-    full = isFull();
-  }
-  if (full)
-    broadcast(*this);
+  ScopedLock l(lock_);
+  merge(block, &filled_);
+  return isFull();
 }
 
 bool Buffery::waitUntilFilled(int length, int waitTime, int maxTime) {

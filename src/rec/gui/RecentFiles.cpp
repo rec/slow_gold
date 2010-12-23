@@ -56,7 +56,6 @@ void addRecentFile(const VolumeFile& f) {
     }
   }
 
-
   RecentFile r;
   r.set_timestamp(timestamp);
   r.mutable_file()->CopyFrom(f);
@@ -64,9 +63,9 @@ void addRecentFile(const VolumeFile& f) {
   rec::proto::pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    getData()->setter()->append("recent_files", "file", msg);
+    getData()->setter()->append("file", msg);
   else
-    getData()->setter()->set("recent_files", "file", slot, msg);
+    getData()->setter()->set("file", slot, msg);
 }
 
 }  // namespace gui

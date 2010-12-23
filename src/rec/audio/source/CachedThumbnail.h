@@ -26,7 +26,6 @@ class CachedThumbnail
  private:
   const File file_;
   juce::AudioThumbnail thumbnail_;
-  AudioFormatManager manager_;
   juce::AudioThumbnailCache cache_;
   bool written_;
 
