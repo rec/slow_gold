@@ -136,6 +136,13 @@
 			sepNavVisRange = "{0, 1887}";
 		};
 	};
+	516DD6179BB28DE93A3B09C2 /* StretchyRunny.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1096, 822}}";
+			sepNavSelRange = "{821, 0}";
+			sepNavVisRange = "{0, 1011}";
+		};
+	};
 	54C560475F61F8C6B3786C82 /* UntypedData.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {847, 1092}}";
@@ -307,8 +314,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 314756711;
-			PBXWorkspaceStateSaveDate = 314756711;
+			PBXPerProjectTemplateStateSaveDate = 314760369;
+			PBXWorkspaceStateSaveDate = 314760369;
 		};
 		perUserProjectItems = {
 			E212A56C12BB11ED00C1BEC3 = E212A56C12BB11ED00C1BEC3 /* PBXTextBookmark */;
@@ -486,6 +493,8 @@
 			E2A20F7612C2C6EE004C4B9F = E2A20F7612C2C6EE004C4B9F /* PBXTextBookmark */;
 			E2A20F7712C2C6EE004C4B9F = E2A20F7712C2C6EE004C4B9F /* PBXTextBookmark */;
 			E2A20F7812C2C6EE004C4B9F = E2A20F7812C2C6EE004C4B9F /* PBXTextBookmark */;
+			E2A20F9F12C2DD41004C4B9F /* XCBuildMessageTextBookmark */ = E2A20F9F12C2DD41004C4B9F /* XCBuildMessageTextBookmark */;
+			E2A20FA112C2DD41004C4B9F /* PBXTextBookmark */ = E2A20FA112C2DD41004C4B9F /* PBXTextBookmark */;
 			E2AB063212BB31270056679D = E2AB063212BB31270056679D /* PBXTextBookmark */;
 			E2AB064512BB32D90056679D = E2AB064512BB32D90056679D /* PBXTextBookmark */;
 			E2AB064612BB32D90056679D = E2AB064612BB32D90056679D /* PBXTextBookmark */;
@@ -2486,6 +2495,44 @@
 		vrLen = 956;
 		vrLoc = 0;
 	};
+	E2A20F9912C2DCC7004C4B9F /* Wrappy.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Wrappy.h;
+		path = ../../../../../rec/src/rec/audio/source/Wrappy.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {567, 1183}}";
+			sepNavSelRange = "{1331, 0}";
+			sepNavVisRange = "{585, 1147}";
+			sepNavWindowFrame = "{{15, 33}, {730, 1140}}";
+		};
+	};
+	E2A20F9F12C2DD41004C4B9F /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Invalid conversion from 'void*' to 'juce::PositionableAudioSource*'";
+		fRef = E2A20FA012C2DD41004C4B9F /* Wrappy.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 42;
+		rType = 1;
+	};
+	E2A20FA012C2DD41004C4B9F /* Wrappy.h */ = {
+		isa = PBXFileReference;
+		name = Wrappy.h;
+		path = ../../../../../rec/src/rec/audio/source/Wrappy.h;
+		sourceTree = "<group>";
+	};
+	E2A20FA112C2DD41004C4B9F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A20F9912C2DCC7004C4B9F /* Wrappy.h */;
+		name = "Wrappy.h: 46";
+		rLen = 0;
+		rLoc = 1331;
+		rType = 0;
+		vrLen = 1147;
+		vrLoc = 585;
+	};
 	E2AB063212BB31270056679D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = C80A3AD45428327F447AFE21 /* Data.h */;
@@ -2555,7 +2602,7 @@
 		fRef = 58DB855A8CC5B40D4E8A4256 /* Wrappy.h */;
 		name = "Wrappy.h: 16";
 		rLen = 0;
-		rLoc = 277;
+		rLoc = 313;
 		rType = 0;
 		vrLen = 1340;
 		vrLoc = 0;

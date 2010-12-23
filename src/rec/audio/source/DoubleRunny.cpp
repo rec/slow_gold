@@ -1,6 +1,7 @@
 #include "rec/audio/source/DoubleRunny.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/audio/source/Stretchy.h"
+#include "rec/audio/source/StretchyRunny.h"
 #include "rec/widget/tree/VolumeFile.h"
 
 using namespace rec::util::thread;
@@ -8,7 +9,6 @@ using namespace rec::util::thread;
 namespace rec {
 namespace audio {
 namespace source {
-
 
 DoubleRunny::DoubleRunny(const VolumeFile& file, const RunnyProto& desc)
     : Wrappy(NULL), file_(file), runnyDesc_(desc) {
@@ -26,44 +26,29 @@ PositionableAudioSource* DoubleRunny::makeSource() {
 }
 
 void DoubleRunny::setStretchy(const StretchyProto& desc) {
-  Thread* thread = Thread::getCurrentThread();
   DLOG(INFO) << "DoubleRunny::setStretchy";
 
-  ptr<PositionableAudioSource> source(makeSource());
-  if (!source) {
-    LOG(ERROR) << "Unable to make source for file " << file_.DebugString();
-    return;
-  }
-  ptr<Stretchy> stretchy(new Stretchy(desc, source.transfer()));
-  ptr<Runny> runny(new Runny(runnyDesc_, stretchy.transfer()));
+  int position = 0;
   {
     ScopedLock l(lock_);
     ratio_ *= desc.time_scale() / stretchyDesc_.time_scale();
     stretchyDesc_ = desc;
     if (runny_)
-      runny->setNextReadPosition(runny_->getNextReadPosition() * ratio_);
+      position = runny_->getNextReadPosition() * ratio_;
   }
 
-  while (!runny->fill()) {
-    if (thread && thread->threadShouldExit())
-      return;
-  }
-
-  if (thread && thread->threadShouldExit())
-    return;
-
-  runny->startThread();
-
-  {
+  ptr<Runny> runny(makeStretchyRunny(makeSource(), desc, runnyDesc_, position));
+  if (runny) {
     ScopedLock l(lock_);
     nextRunny_.swap(runny);
     if (!runny_) {
       runny_.swap(nextRunny_);
       ratio_ = 1.0;
     }
+    trash::discardAndEmpty(runny.transfer());
+  } else {
+    LOG(ERROR) << "Unable to make source for file " << file_.DebugString();
   }
-
-  trash::discardAndEmpty(runny.transfer());
 }
 
 void DoubleRunny::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {

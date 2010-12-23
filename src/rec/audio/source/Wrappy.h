@@ -4,19 +4,18 @@
 #include <vector>
 
 #include "rec/audio/source/Source.h"
+#include "rec/audio/source/Empty.h"
 #include "rec/util/Math.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class Wrappy : public Source {
+class Wrappy : public PositionableAudioSource {
  public:
-  Wrappy(Source* source) : source_(source) {}
+  Wrappy(Source* source = NULL) { setSource(source); }
 
   // TODO:  no longer used?
-  virtual void initialize() {}
-
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
     source()->getNextAudioBlock(info);
   }
@@ -41,14 +40,17 @@ class Wrappy : public Source {
     setNextReadPosition(mod(x + getNextReadPosition()));
   }
 
-  // TODO: remove this.
-  void setSource(Source* source) { source_.reset(source); }
-  Source* transfer() { return source_.transfer(); }
+  virtual PositionableAudioSource* source() const { 
+    return source_.get(); 
+  }
+  void setSource(PositionableAudioSource* s = NULL) { 
+    source_.reset(s ? s : new Empty()); 
+  }
+  PositionableAudioSource* transfer() { 
+    return source_.transfer(); 
+  }
 
   class Position;
-
- protected:
-  virtual Source* source() const { return source_.get(); }
 
  private:
   ptr<Source> source_;
@@ -58,9 +60,7 @@ class Wrappy : public Source {
 // A Source with an embedded Position.
 class Wrappy::Position : public Wrappy {
  public:
-  Position(Source* source, int position = 0)
-      : Wrappy(source), position_(position) {
-  }
+  Position(Source* source, int pos = 0) : Wrappy(source), position_(pos) {}
 
   virtual int getNextReadPosition() const {
     ScopedLock l(lock_);
@@ -74,11 +74,10 @@ class Wrappy::Position : public Wrappy {
   }
 
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
-    {
-      ScopedLock l(lock_);
-      position_ = mod(position_ + info.numSamples);
-    }
     source()->getNextAudioBlock(info);
+
+    ScopedLock l(lock_);
+    position_ = mod(position_ + info.numSamples);
   }
 
  protected:

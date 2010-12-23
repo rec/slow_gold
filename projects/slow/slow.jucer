@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="MVMLWWiic" name="Slow">
+  <MAINGROUP id="6Qph2gDOm" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -115,6 +115,8 @@
                 id="Poj4Wc2yA" name="DoubleRunnyBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
                 id="d9Kiev6ft" name="DoubleRunnyBuffer.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="kRizCdCRl"
+                name="Empty.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Runny.cpp" id="4opayPWjZ"
                 name="Runny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Runny.h" id="AAgVplhqw"
@@ -131,6 +133,10 @@
                 name="Stretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="DaXZYkHwH"
                 name="Stretchy.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/StretchyRunny.cpp"
+                id="2q7chksD5" name="StretchyRunny.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/StretchyRunny.h"
+                id="p3RdTDxjJ" name="StretchyRunny.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="6Mfnx1zUH"
                 name="TestHarness.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="8p2gEgkqs"
@@ -836,7 +842,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="C6ZwMSbGA" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="uCiWibqyz" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
