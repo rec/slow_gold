@@ -17,6 +17,13 @@ struct CompareChars {
   }
 };
 
+struct LessThanEqualChar {
+  LessThanEqualChar(int c) : c_(c) {}
+  bool operator()(int c) const { return c < c_; }
+
+  int c_;
+};
+
 template <typename Str>
 int compareStrings(const Str& x, const Str& y);
 

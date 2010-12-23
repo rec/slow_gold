@@ -17,16 +17,6 @@ void partitionChildren(const std::vector<string>& kids,
                        int branching,
                        std::vector<int>* partition);
 
-bool isPunctuation(int c);
-int compareChars(int c, int d);
-bool compareFiles(const File& f, const File& g);
-
-template <typename Str>
-int compareStrings(const Str& x, const Str& y);
-
-template <typename Collection>
-int indexOfDifference(const Collection& items, const int i);
-
 }  // namespace partition
 }  // namespace util
 }  // namespace rec
