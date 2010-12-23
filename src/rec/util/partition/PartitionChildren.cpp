@@ -2,6 +2,7 @@
 #include <set>
 
 #include "rec/util/partition/PartitionChildren.h"
+#include "rec/util/partition/Partition.h"
 #include "rec/util/partition/Convertors.h"
 #include "rec/util/partition/Compare.h"
 
@@ -12,121 +13,6 @@ namespace rec {
 namespace util {
 namespace partition {
 
-
-namespace {
-
-struct LessThanEqualChar {
-  LessThanEqualChar(int c) : c_(c) {}
-  bool operator()(int c) const { return c < c_; }
-
-  int c_;
-};
-
-template <typename Collection, typename IntList, typename Str>
-class Partition {
- public:
-  Partition(const Collection& k, const Range<int>& r, int branch, IntList* list)
-      : kids_(k), range_(r), branch_(branch), list_(list) {
-    DCHECK_GE(branch, 2);
-    partition();
-  }
-
- private:
-  void partition() {
-    if (range_.size() <= branch_)
-      smallPartition();
-    else
-      largePartition();
-
-    if ((*list_)[list_->size() - 1] != range_.end_)
-      add(range_.end_);
-  }
-
-  void smallPartition() {
-    for (int i = range_.begin_; i < range_.end_; ++i)
-       add(i);
-  }
-
-  int lower(int i, int d) const { return tolower(getName(i)[d]); }
-
-  void largePartition() {
-    // This is the index of the first character different between the first and
-    // last entries in the names table.
-    extractRange(isPunctuation);  // punctuation.
-    extractRange(isdigit);  // 0-9.
-
-    int diff = difference(range_);
-    std::set<int, partition::CompareChars> charsSet;
-    for (int i = range_.begin_; i < range_.end_; ++i)
-      charsSet.insert(lower(i, diff));
-
-    typedef std::vector<int> Chars;
-    Chars chars(charsSet.begin(), charsSet.end());
-    int remaining = branch_ - list_->size() - 1;
-    if (remaining > 0) {
-      double r = chars.size() * 1.0 / (remaining + 1);
-
-      for (int i = 1; i <= remaining && range_.size() > 0; ++i)
-        extractRange(LessThanEqualChar(chars[i * r]));
-
-      add(range_.begin_);
-    }
-  }
-
-  Str getName(int i) const;
-  void add(int i);
-
-  template <typename Operator>
-  void extractRange(Operator op) {
-    // This is the index of the first character different between the first and
-    // last entries in the names table.
-    int diff = difference(range_);
-    if (diff < 0)
-      return;
-    int end = range_.end_ + (list_->size() ? 0 : -1);  // Enforce branches > 1.
-
-    int next = range_.begin_;
-    for (; next < end && op(lower(next, diff)); ++next) {}
-
-    if (next > range_.begin_ && next < end) {
-      add(range_.begin_);
-      range_.begin_ = next;
-    }
-  }
-
-  int difference(const Range<int>& r) const {
-    return indexOfDifference(getName(r.begin_), getName(r.end_ - 1));
-  }
-
-  const Collection& kids_;
-  Range<int> range_;
-  int branch_;
-  IntList* list_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Partition);
-};
-
-typedef Partition<const Array<File>, Array<int>, String>
-  JucePartition;
-
-typedef Partition<const vector<string>, vector<int>, string>
-  STLPartition;
-
-
-template <>
-String JucePartition::getName(int i) const {
-  return kids_[i].getFileName();
-}
-
-template <>
-string STLPartition::getName(int i) const {
-  return kids_[i];
-}
-
-template <> void JucePartition::add(int i) { list_->add(i); }
-template <> void STLPartition::add(int i) { list_->push_back(i); }
-
-}  // namespace
 
 void partitionChildren(const Array<File>& c, const Range<int>& r, int branch,
                        Array<int>* l) {

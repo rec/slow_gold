@@ -68,6 +68,7 @@
 		42EF616419DC523AB5411725 /* AudioInputMicrophone.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B1304D760EF4B8FAC83FD7 /* AudioInputMicrophone.svg.cpp */; };
 		4526B075235859A17CB2E433 /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 914EE70C26960421C5C688A6 /* Widget.cpp */; };
 		45A28EC2B51E01789AF4B7E7 /* NodeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A3A1077D61C2F6ACAE0E33CB /* NodeItem.cpp */; };
+		46AB1FB812010499FD3C0967 /* Partition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3C957A2F364B760F6959DE9 /* Partition.cpp */; };
 		48B86265BB9C25BDA0F04D2A /* SortedChildren.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC31343FBBE0E3795E1EA9 /* SortedChildren.cpp */; };
 		4C34ABACFEF7C71697E313C5 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601A0CEA135280AABEB1EE98 /* CoreMIDI.framework */; };
 		4CFBB2F879C828F9DF6333C5 /* AudioCard.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0C360A97FE89962AC7C13E8 /* AudioCard.svg.cpp */; };
@@ -535,6 +536,7 @@
 		DC166AB5F3582945B1055627 /* Stretchy.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchy.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Stretchy.pb.h; sourceTree = SOURCE_ROOT; };
 		DDF8779E8FFF1F33A0333FEB /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.h; path = ../../../../src/rec/gui/Color.h; sourceTree = SOURCE_ROOT; };
 		DE98B28A9113C0D820F70346 /* stringsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stringsource.h; path = ../../../../src/rec/data/yaml/src/stringsource.h; sourceTree = SOURCE_ROOT; };
+		DEBD0E0F9EAD4F8563AD20CB /* Partition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Partition.h; path = ../../../../src/rec/util/partition/Partition.h; sourceTree = SOURCE_ROOT; };
 		E0715BED1B299348F9621C18 /* BaseNoJuce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseNoJuce.h; path = ../../../../src/rec/base/BaseNoJuce.h; sourceTree = SOURCE_ROOT; };
 		E0CE3F2FD4A1456EFC505BB4 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Types.h; path = ../../../../src/rec/data/proto/Types.h; sourceTree = SOURCE_ROOT; };
 		E179476591EE8A8AE67191BF /* AudioDeviceSetup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioDeviceSetup.cpp; path = ../../../../src/rec/audio/AudioDeviceSetup.cpp; sourceTree = SOURCE_ROOT; };
@@ -568,6 +570,7 @@
 		F2F633218D0501E33038F502 /* Status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.h; path = ../../../../src/rec/widget/status/Status.h; sourceTree = SOURCE_ROOT; };
 		F3264519DC9FD455788DFA1E /* yaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = yaml.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/yaml.h"; sourceTree = SOURCE_ROOT; };
 		F365619867C61F2678E07A2A /* aliasmanager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aliasmanager.cpp; path = ../../../../src/rec/data/yaml/src/aliasmanager.cpp; sourceTree = SOURCE_ROOT; };
+		F3C957A2F364B760F6959DE9 /* Partition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Partition.cpp; path = ../../../../src/rec/util/partition/Partition.cpp; sourceTree = SOURCE_ROOT; };
 		F50482DC7139FCB40EB1C11D /* TestData.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestData.pb.h; path = ../../../../genfiles/proto/rec/data/proto/TestData.pb.h; sourceTree = SOURCE_ROOT; };
 		F5661646C08B6873D08BF8FD /* Difference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Difference.h; path = ../../../../src/rec/util/block/Difference.h; sourceTree = SOURCE_ROOT; };
 		F5BC46E2E16A39D622AD6447 /* Event.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Event.pb.h; path = ../../../../genfiles/proto/rec/data/commands/Event.pb.h; sourceTree = SOURCE_ROOT; };
@@ -849,6 +852,8 @@
 				AB085CBE024BCDB552AC06AE /* Compare.h */,
 				96A7564A2D45C9A4E59B406B /* Convertors.cpp */,
 				1E84221BB98A2878AAD4862A /* Convertors.h */,
+				F3C957A2F364B760F6959DE9 /* Partition.cpp */,
+				DEBD0E0F9EAD4F8563AD20CB /* Partition.h */,
 				917A92F5D84F8568C9247E71 /* PartitionChildren.cpp */,
 				CC69B02FE201EB4BECA98EBD /* PartitionChildren.h */,
 				5BBC4164EBAF4B8BAB331110 /* PartitionChildren_test.cpp */,
@@ -1129,20 +1134,6 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
-		BA843B3AB967BE69FF2A2176 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		C6BAF4FBD6178F89CF0B68DB /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1421,6 +1412,20 @@
 			name = src;
 			sourceTree = "<group>";
 		};
+		FC7F76E2084D2148068F9138 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1457,7 +1462,7 @@
 				French,
 				German,
 			);
-			mainGroup = BA843B3AB967BE69FF2A2176 /* Source */;
+			mainGroup = FC7F76E2084D2148068F9138 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1592,6 +1597,7 @@
 				66F7B494B78051604B78B5C0 /* math_test.cpp in Sources */,
 				3026DCB453C5B40EA9B363ED /* Compare.cpp in Sources */,
 				33AFE73797AC68C50ED73D7B /* Convertors.cpp in Sources */,
+				46AB1FB812010499FD3C0967 /* Partition.cpp in Sources */,
 				9F755055F9F7116800AF5919 /* PartitionChildren.cpp in Sources */,
 				DFCFD081BD2A256BD38B526B /* PartitionChildren_test.cpp in Sources */,
 				A6DCA840FEF54A4239D57C7B /* Substitute_test.cpp in Sources */,
