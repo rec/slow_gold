@@ -64,7 +64,7 @@ void UntypedData::update() {
 }
 
 void UntypedData::writeToFile() const {
-  scoped_ptr<Message> msg;
+  ptr<Message> msg;
   {
     ScopedLock l(lock_);
     if (!alreadyReadFromFile_)

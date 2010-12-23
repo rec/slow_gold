@@ -113,7 +113,7 @@ void Directory::computeCDChildren() {
   std::vector<string> tracks;
 
   const string& cdKey = volumeFile_.volume().name();
-  scoped_ptr<AudioCDReader> reader(getAudioCDReader(cdKey.c_str()));
+  ptr<AudioCDReader> reader(getAudioCDReader(cdKey.c_str()));
   if (reader) {
     TrackOffsets trackOffsets = reader->getTrackOffsets();
     AlbumList albums = getAlbums(volumeFile_, trackOffsets);

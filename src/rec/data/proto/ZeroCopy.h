@@ -30,7 +30,7 @@ class Base : public Stream {
   int size() const { return buffer_.size(); }
 
  protected:
-  scoped_ptr<JuceStream> stream_;
+  ptr<JuceStream> stream_;
 
  private:
   std::vector<uint8> buffer_;

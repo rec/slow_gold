@@ -83,8 +83,8 @@ class TestHarness {
   int cycle_;
   int channel_;
   int sampleNumber_;
-  scoped_ptr<AudioSource> source_;
-  scoped_ptr<AudioSource> wrapper_;
+  ptr<AudioSource> source_;
+  ptr<AudioSource> wrapper_;
 
   DISALLOW_COPY_AND_ASSIGN(TestHarness);
 };

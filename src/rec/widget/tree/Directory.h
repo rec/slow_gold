@@ -46,8 +46,8 @@ class Directory : public Node {
 
   Range range_;
   FileArray *children_;
-  scoped_ptr<FileArray> childrenDeleter_;
-  scoped_ptr<Thread> thread_;
+  ptr<FileArray> childrenDeleter_;
+  ptr<Thread> thread_;
   CriticalSection lock_;
   NodeSet nodesToAdd_;
   const bool isShard_;

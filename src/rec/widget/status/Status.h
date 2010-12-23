@@ -22,8 +22,8 @@ class Status : public juce::Component {
 
  private:
   const StatusDesc* desc_;
-  scoped_ptr<time::TextComponent> time_;
-  scoped_ptr<time::DialComponent> dial_;
+  ptr<time::TextComponent> time_;
+  ptr<time::DialComponent> dial_;
   juce::Label album_;
   juce::Label track_;
   // loop_indicator

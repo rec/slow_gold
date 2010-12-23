@@ -14,7 +14,7 @@ namespace trash {
 void discard(Thread* t);
 
 template <typename ThreadClass>
-void discard(scoped_ptr<ThreadClass>* t) {
+void discard(ptr<ThreadClass>* t) {
   discard(t->transfer());
 }
 

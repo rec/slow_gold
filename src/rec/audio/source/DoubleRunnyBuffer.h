@@ -32,13 +32,13 @@ class DoubleRunnyBuffer
   juce::AudioThumbnail* thumbnail() { return cachedThumbnail_->thumbnail(); }
   CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
 
-  virtual void operator()(const StretchyProto& p) { 
+  virtual void operator()(const StretchyProto& p) {
     if (changeLocker_)
-      changeLocker_->set(p); 
+      changeLocker_->set(p);
     else
       LOG(ERROR) << "Empty changelocker";
   }
-  
+
   virtual void operator()(const Buffery&);
 
   virtual void run();
@@ -47,10 +47,10 @@ class DoubleRunnyBuffer
  private:
   typedef thread::ChangeLocker<StretchyProto> ChangeLocker;
 
-  scoped_ptr<Buffery> buffery_;
-  scoped_ptr<CachedThumbnail> cachedThumbnail_;
+  ptr<Buffery> buffery_;
+  ptr<CachedThumbnail> cachedThumbnail_;
   persist::Data<StretchyProto>* const data_;
-  scoped_ptr<ChangeLocker> changeLocker_;
+  ptr<ChangeLocker> changeLocker_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleRunnyBuffer);
 };

@@ -21,7 +21,7 @@ class Snoopy : public Wrappy::Position,
   static
   Snoopy* add(PositionableAudioSource* source,
               listener::Listener<const AudioSourceChannelInfo&> *listener) {
-    scoped_ptr<Snoopy> s(new Snoopy(source));
+    ptr<Snoopy> s(new Snoopy(source));
     s->addListener(listener);
     return s.transfer();
   }

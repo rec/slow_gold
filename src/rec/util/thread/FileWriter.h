@@ -21,7 +21,7 @@ class FileWriter : public Thread {
       LOG(ERROR) << "Can't delete file " << file;
 
     } else {
-      scoped_ptr<OutputStream> out(file_.createOutputStream());
+      ptr<OutputStream> out(file_.createOutputStream());
       if (out) {
         (*out) << memory_;
         DLOG(INFO) << "Saved to file " << file;

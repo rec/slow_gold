@@ -71,7 +71,7 @@ bool file(const File &f, File *t, bool readable) {
 
 bool file(const File &file, string *s, bool readable) {
   try {
-    scoped_ptr<FileInputStream> in(file.createInputStream());
+    ptr<FileInputStream> in(file.createInputStream());
     if (!in) {
       LOG(WARNING) << "Couldn't read file " << file.getFullPathName();
       return false;
@@ -106,7 +106,7 @@ bool file(const string &from, File *to, bool readable) {
       }
     }
 
-    scoped_ptr<FileOutputStream> out(to->createOutputStream());
+    ptr<FileOutputStream> out(to->createOutputStream());
     if (!out) {
       LOG(ERROR) << "Couldn't make OutputStream for " << to->getFullPathName();
       return false;

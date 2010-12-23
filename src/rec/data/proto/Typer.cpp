@@ -33,7 +33,7 @@ const Typer* const TYPE_LIST[FieldDescriptor::MAX_TYPE] = {
   new TypedTyper<sint32>(NULL, NULL),
 };
 
-class STyper : public scoped_ptr<Typer> {
+class STyper : public ptr<Typer> {
  public:
   STyper(Message* m, const FieldDescriptor* f) {
     FieldDescriptor::Type t = f ? f->type() : FieldDescriptor::TYPE_MESSAGE;

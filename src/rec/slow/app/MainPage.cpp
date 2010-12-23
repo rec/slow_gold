@@ -170,7 +170,7 @@ void MainPage::operator()(const VolumeFile& file) {
     cursor_->setTime(0.0f);
     stretchy_ = persist::getApp()->getData<audio::source::StretchyProto>(file, "timestretch");
 
-    scoped_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file_, stretchy_));
+    ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file_, stretchy_));
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);
     doubleRunny_.swap(dr);

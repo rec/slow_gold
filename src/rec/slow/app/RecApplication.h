@@ -32,7 +32,7 @@ class Application : public GenericApplication {
   }
 
  private:
-  scoped_ptr<RecWindow> window_;
+  ptr<RecWindow> window_;
   DISALLOW_COPY_AND_ASSIGN(Application);
 };
 

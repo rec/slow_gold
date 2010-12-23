@@ -16,7 +16,7 @@ CachedThumbnail::CachedThumbnail(const File& file, int compression,
   thumbnail_.reset(2, 44100.0f, sampleLength);  // TODO
   thumbnail_.createChannels(2);
   if (file_.exists()) {
-    scoped_ptr<juce::FileInputStream> out(file_.createInputStream());
+    ptr<juce::FileInputStream> out(file_.createInputStream());
     if (out) {
       thumbnail_.loadFrom(*out);
       written_ = true;
@@ -36,7 +36,7 @@ void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
 
 void CachedThumbnail::writeThumbnail(bool deferred) {
   if (!written_) {
-    scoped_ptr<thread::FileWriter> writer(new thread::FileWriter(file_));
+    ptr<thread::FileWriter> writer(new thread::FileWriter(file_));
     juce::MemoryOutputStream mos(*writer->memory(), false);
     thumbnail_.saveTo(mos);
     if (deferred)

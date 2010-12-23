@@ -42,7 +42,7 @@ void addFileRoots(VolumeList* volumes) {
 void addAudioCDs(VolumeList* volumes) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   for (int i = 0; i < names.size(); ++i) {
-    scoped_ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
+    ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
     if (reader)
       add(Volume::CD, cd::getCDKey(reader.get()).toCString(), volumes);
     else

@@ -12,7 +12,7 @@
 
 TEST(AudioCDReaderHelper, getElementForKey) {
   XmlDocument doc("<dict><key>foo</key><value>bar</value></dict>");
-  scoped_ptr<XmlElement> xml(doc.getDocumentElement());
+  ptr<XmlElement> xml(doc.getDocumentElement());
   EXPECT_TRUE(!getElementForKey(*xml, "bar"));
   EXPECT_EQ(getElementForKey(*xml, "foo")->getFirstChildElement()->getText(),
             "bar");
@@ -20,7 +20,7 @@ TEST(AudioCDReaderHelper, getElementForKey) {
 
 TEST(AudioCDReaderHelper, getIntValueForKey) {
   XmlDocument doc("<dict><key>foo</key><value>123</value></dict>");
-  scoped_ptr<XmlElement> xml(doc.getDocumentElement());
+  ptr<XmlElement> xml(doc.getDocumentElement());
   EXPECT_EQ(getIntValueForKey(*xml, "bar"), -1);
   EXPECT_EQ(getIntValueForKey(*xml, "foo"), 123);
 }

@@ -51,7 +51,7 @@ class Wrappy : public Source {
   virtual Source* source() const { return source_.get(); }
 
  private:
-  scoped_ptr<Source> source_;
+  ptr<Source> source_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);
 };
 

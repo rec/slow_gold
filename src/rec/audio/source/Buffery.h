@@ -31,7 +31,7 @@ class Buffery : public listener::Listener<int>,
   const int length_;
   AudioSampleBuffer buffer_;
   int position_;
-  scoped_ptr<PositionableAudioSource> source_;
+  ptr<PositionableAudioSource> source_;
   const int blockSize_;
   block::BlockSet filled_;
 

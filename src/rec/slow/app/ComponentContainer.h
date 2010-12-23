@@ -70,7 +70,7 @@ class ComponentContainer : public Component,
   }
 
  protected:
-  scoped_ptr<MainPageComponent> mainPage_;
+  ptr<MainPageComponent> mainPage_;
 };
 
 }  // namespace slow

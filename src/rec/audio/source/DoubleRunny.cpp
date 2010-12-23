@@ -9,6 +9,11 @@ namespace rec {
 namespace audio {
 namespace source {
 
+
+DoubleRunny::DoubleRunny(const VolumeFile& file, const RunnyProto& desc)
+    : Wrappy(NULL), file_(file), runnyDesc_(desc) {
+}
+
 DoubleRunny::~DoubleRunny() {
   trash::discard(runny_.transfer());
   trash::discard(nextRunny_.transfer());
@@ -16,22 +21,21 @@ DoubleRunny::~DoubleRunny() {
 }
 
 PositionableAudioSource* DoubleRunny::makeSource() {
-  scoped_ptr<AudioFormatReader> r(createReader(file_));
+  ptr<AudioFormatReader> r(createReader(file_));
   return r ? new AudioFormatReaderSource(r.transfer(), true) : NULL;
 }
 
 void DoubleRunny::setStretchy(const StretchyProto& desc) {
-  // TODO: this should never run on the main thread!
   Thread* thread = Thread::getCurrentThread();
   DLOG(INFO) << "DoubleRunny::setStretchy";
 
-  scoped_ptr<PositionableAudioSource> source(makeSource());
+  ptr<PositionableAudioSource> source(makeSource());
   if (!source) {
     LOG(ERROR) << "Unable to make source for file " << file_.DebugString();
     return;
   }
-  scoped_ptr<Stretchy> stretchy(new Stretchy(desc, source.transfer()));
-  scoped_ptr<Runny> runny(new Runny(runnyDesc_, stretchy.transfer()));
+  ptr<Stretchy> stretchy(new Stretchy(desc, source.transfer()));
+  ptr<Runny> runny(new Runny(runnyDesc_, stretchy.transfer()));
   {
     ScopedLock l(lock_);
     ratio_ *= desc.time_scale() / stretchyDesc_.time_scale();
@@ -44,7 +48,7 @@ void DoubleRunny::setStretchy(const StretchyProto& desc) {
     if (thread && thread->threadShouldExit())
       return;
   }
-  
+
   if (thread && thread->threadShouldExit())
     return;
 
@@ -63,7 +67,7 @@ void DoubleRunny::setStretchy(const StretchyProto& desc) {
 }
 
 void DoubleRunny::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
-  scoped_ptr<Runny> lastRunny;
+  ptr<Runny> lastRunny;
   {
     ScopedLock l(lock_);
     if (nextRunny_) {

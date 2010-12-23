@@ -18,7 +18,7 @@ class Input {
   bool read(Message* message);
 
  private:
-  scoped_ptr<InputImpl> impl_;
+  ptr<InputImpl> impl_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Input);
 };
 
@@ -30,7 +30,7 @@ class Output {
   void write(const Message& message);
 
  private:
-  scoped_ptr<OutputImpl> impl_;
+  ptr<OutputImpl> impl_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Output);
 };
 

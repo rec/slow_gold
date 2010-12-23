@@ -36,8 +36,8 @@ class EventQueue {
   typedef std::vector<Event*> EventList;
 
   EventList events_;
-  scoped_ptr<proto::logfile::Output> logfile_;
-  scoped_ptr<juce::CriticalSection> lock_;
+  ptr<proto::logfile::Output> logfile_;
+  ptr<juce::CriticalSection> lock_;
 
   DISALLOW_COPY_AND_ASSIGN(EventQueue);
 };

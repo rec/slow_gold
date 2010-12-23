@@ -25,7 +25,7 @@ class AudioSetupPage  : public Component {
 
  private:
   AudioDeviceManager& deviceManager_;
-  scoped_ptr<AudioDeviceSelectorComponent> deviceSelector_;
+  ptr<AudioDeviceSelectorComponent> deviceSelector_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioSetupPage);
 };
 

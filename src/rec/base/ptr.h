@@ -1,5 +1,5 @@
-#ifndef __REC_UTIL_SCOPED_PTR
-#define __REC_UTIL_SCOPED_PTR
+#ifndef __REC_UTIL_PTR
+#define __REC_UTIL_PTR
 
 #include "rec/base/base.h"
 
@@ -8,11 +8,11 @@
 // an explicit reset().
 
 template <typename Type>
-class scoped_ptr {
+class ptr {
  public:
-  explicit scoped_ptr(Type* p = 0) : p_(p) { }
+  explicit ptr(Type* p = 0) : p_(p) { }
 
-  ~scoped_ptr() { delete p_; }
+  ~ptr() { delete p_; }
 
   void reset(Type* p = NULL) {
     if (p != p_) {
@@ -32,7 +32,7 @@ class scoped_ptr {
     return p;
   }
 
-  void swap(scoped_ptr & that) {
+  void swap(ptr & that) {
     Type* tmp = that.p_;
     that.p_ = this->p_;
     this->p_ = tmp;
@@ -44,7 +44,7 @@ class scoped_ptr {
  private:
   Type* p_;
 
-  DISALLOW_COPY_AND_ASSIGN(scoped_ptr);
+  DISALLOW_COPY_AND_ASSIGN(ptr);
 };
 
-#endif // __REC_UTIL_SCOPED_PTR
+#endif // __REC_UTIL_PTR

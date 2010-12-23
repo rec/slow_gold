@@ -16,7 +16,7 @@ namespace source {
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file,
                                      DoubleRunnyBuffer::Data* data)
     : DoubleRunny(file), Thread("DoubleRunnyBuffer"), data_(data) {
-  scoped_ptr<PositionableAudioSource> source(createSource(file));
+  ptr<PositionableAudioSource> source(createSource(file));
 
   File shadowThumbnailFile = getShadowFile(file, "thumbnail.stream");
   cachedThumbnail_.reset(new CachedThumbnail(shadowThumbnailFile, COMPRESSION,

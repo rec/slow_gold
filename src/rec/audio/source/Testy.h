@@ -56,7 +56,7 @@ class Testy : public Source {
 
     float maxDelta = 0.0;
 
-    scoped_ptr<AudioSampleBuffer> buffer[2];
+    ptr<AudioSampleBuffer> buffer[2];
 
     for (int i = 0; i < 2; ++i) {
       buffer[i].reset(new AudioSampleBuffer(channels, length));

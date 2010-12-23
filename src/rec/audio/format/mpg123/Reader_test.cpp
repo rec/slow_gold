@@ -17,8 +17,8 @@ using rec::util::testFile;
 
 TEST(Reader, All) {
   AudioFormatManager* fm = AudioFormatManager::getInstance();
-  scoped_ptr<AudioFormatReader> wav(fm->createReaderFor(testFile("test1.wav")));
-  scoped_ptr<AudioFormatReader> mp3(fm->createReaderFor(testFile("test1.mp3")));
+  ptr<AudioFormatReader> wav(fm->createReaderFor(testFile("test1.wav")));
+  ptr<AudioFormatReader> mp3(fm->createReaderFor(testFile("test1.mp3")));
 
   ASSERT_TRUE(!!wav);
   ASSERT_TRUE(!!mp3);

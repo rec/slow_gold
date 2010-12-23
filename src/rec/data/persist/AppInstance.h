@@ -42,8 +42,8 @@ private:
   DataSet updateData_;
   DataSet writeData_;
 
-  scoped_ptr<thread::RunnableThread> updateThread_;
-  scoped_ptr<thread::RunnableThread> writeThread_;
+  ptr<thread::RunnableThread> updateThread_;
+  ptr<thread::RunnableThread> writeThread_;
 
   static AppInstance* instance_;
 

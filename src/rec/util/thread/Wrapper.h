@@ -13,7 +13,7 @@ class Wrapper : public Runnable {
   virtual bool run(Thread* thread) { return runnable_->run(thread); }
 
  protected:
-  scoped_ptr<Runnable> runnable_;
+  ptr<Runnable> runnable_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrapper);
 };
 

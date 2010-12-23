@@ -6,6 +6,9 @@
 using namespace juce;
 using namespace rec::audio;
 
+using rec::audio::AudioDeviceSetupProto;
+using rec::persist::getApp;
+
 namespace rec {
 namespace persist {
 
@@ -14,8 +17,8 @@ namespace {
 typedef persist::Data<audio::AudioDeviceSetupProto> AudioSetupData;
 
 AudioSetupData* audioSetupData() {
-  static AudioSetupData* data = persist::getApp()->
-    getData<audio::AudioDeviceSetupProto>("preferences");
+  static AudioSetupData* data = persist::getApp()
+    ->getData<AudioDeviceSetupProto>("preferences");
   return data;
 }
 
@@ -69,22 +72,22 @@ AudioDeviceSetupListener::AudioDeviceSetupListener(AudioDeviceManager* manager)
     : manager_(manager) {
   AudioDeviceSetup setup;
   bool readSuccessful = false;
-  if (audioSetupData()->fileReadSuccess()) {
-    if (!persist::copy(audioSetupData()->get(), &setup)) {
-      LOG(ERROR) << "Couldn't copy audio setup data";
-    } else {
-      String err = manager->setAudioDeviceSetup(setup, true);
-      readSuccessful = (err.length() == 0);
-      if (readSuccessful)
-        DLOG(INFO) << "Read audio setup from preferences.";
-      else
-        LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
-    }
-  } else {
+  if (!audioSetupData()->fileReadSuccess()) {
     DLOG(INFO) << "Using default audio setup";
+
+  } else if (!persist::copy(audioSetupData()->get(), &setup)) {
+    LOG(ERROR) << "Couldn't copy audio setup data";
+
+  } else {
+    String err = manager->setAudioDeviceSetup(setup, true);
+    readSuccessful = (err.length() == 0);
+    if (!readSuccessful)
+      LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
   }
 
-  if (!readSuccessful)
+  if (readSuccessful)
+    DLOG(INFO) << "Read from file.";
+  else
     manager->initialise(0, 2, 0, true, String::empty, 0);
 
   manager->addChangeListener(this);

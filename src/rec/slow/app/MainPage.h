@@ -58,10 +58,10 @@ class MainPage : public Component,
   typedef thread::ChangeLocker<float> TimeLocker;
   typedef thread::ChangeLocker<VolumeFile> FileLocker;
 
-  scoped_ptr<app::AudioTransportSourcePlayer> transportSource_;
+  ptr<app::AudioTransportSourcePlayer> transportSource_;
   Waveform waveform_;
   TextButton startStopButton_;
-  scoped_ptr<Root> treeRoot_;
+  ptr<Root> treeRoot_;
   Label explanation_;
 
   SetterSlider<StretchyProto> timeScaleSlider_;
@@ -72,11 +72,11 @@ class MainPage : public Component,
 
   CriticalSection lock_;
   VolumeFile file_;
-  scoped_ptr<DoubleRunnyBuffer> doubleRunny_;
+  ptr<DoubleRunnyBuffer> doubleRunny_;
   // listener::SetterListener<const VolumeFile&> fileListener_;
   persist::Data<StretchyProto>* stretchy_;
-  scoped_ptr<TimeLocker> timeLocker_;
-  scoped_ptr<FileLocker> fileLocker_;
+  ptr<TimeLocker> timeLocker_;
+  ptr<FileLocker> fileLocker_;
 
   listener::SetterListener<const VolumeFile&> fileListener_;
 

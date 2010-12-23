@@ -17,9 +17,7 @@ class StretchyProto;
 class DoubleRunny : public Wrappy {
  public:
   DoubleRunny(const VolumeFile& file,
-              const RunnyProto& desc = RunnyProto::default_instance())
-      : Wrappy(NULL), file_(file), runnyDesc_(desc) {
-  }
+              const RunnyProto& desc = RunnyProto::default_instance());
 
   ~DoubleRunny();
 
@@ -36,7 +34,7 @@ class DoubleRunny : public Wrappy {
   const RunnyProto runnyDesc_;
 
   CriticalSection lock_;
-  scoped_ptr<Runny> runny_, nextRunny_;
+  ptr<Runny> runny_, nextRunny_;
   double ratio_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleRunny);

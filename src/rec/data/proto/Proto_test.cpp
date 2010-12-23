@@ -10,7 +10,7 @@ TEST(Proto, CreateOperation) {
 
 #ifdef PROTO_SET
   test::TestData3 test;
-  scoped_ptr<Operation> operation(createOperation(Operation::SET, NULL));
+  ptr<Operation> operation(createOperation(Operation::SET, NULL));
 
   EXPECT_EQ(operation->command(), Operation::SET);
   EXPECT_EQ(operation->address_size(), 0);
