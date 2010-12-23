@@ -1,5 +1,4 @@
 #include "rec/widget/tree/Tree.h"
-#include "rec/util/partition/PartitionChildren.h"
 
 namespace rec {
 namespace widget {
@@ -13,11 +12,6 @@ void eraseVolumePrefix(string* name, bool diskToo) {
       name->erase(0, pos);
   }
 }
-
-bool compareFiles(const File& f, const File& g) {
-  return partition::compareStrings(f.getFileName(), g.getFileName()) < 0;
-}
-
 
 }  // namespace tree
 }  // namespace widget

@@ -5,6 +5,7 @@
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/RunnableThread.h"
+#include "rec/util/partition/Compare.h"
 #include "rec/util/partition/PartitionChildren.h"
 #include "rec/widget/tree/SortedChildren.h"
 

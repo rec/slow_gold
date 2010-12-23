@@ -394,7 +394,6 @@
           <File RelativePath="..\..\..\..\src\rec\slow\Preferences.h"/>
         </Filter>
         <Filter Name="util">
-          <File RelativePath="..\..\..\..\src\rec\util\BeginEnd.h"/>
           <Filter Name="block">
             <File RelativePath="..\..\..\..\src\rec\util\block\Block.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\Difference.cpp"/>
@@ -431,7 +430,16 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Method.h"/>
+          <Filter Name="partition">
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Compare.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Compare.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Convertors.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\PartitionChildren.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\PartitionChildren.h"/>
+          </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\PointerList.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Range.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\ShouldExit.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Substitute.h"/>
@@ -465,8 +473,6 @@
             <File RelativePath="..\..\..\..\src\rec\widget\status\Time.h"/>
           </Filter>
           <Filter Name="tree">
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\Convertors.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\Convertors.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\GetVolumes.cpp"/>
@@ -474,8 +480,6 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeComponent.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.h"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\PartitionChildren.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\PartitionChildren.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Root.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Root.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\SortedChildren.cpp"/>

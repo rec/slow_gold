@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="a10FsEon2" name="tests">
+  <MAINGROUP id="nSGUPUtaP" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -620,6 +620,10 @@
         <FILE compile="0" file="../../src/rec/util/Method.h" id="7W7xmyDyZ"
               name="Method.h" resource="0"/>
         <GROUP id="rJ0QA20g1" name="partition">
+          <FILE compile="1" file="../../src/rec/util/partition/Compare.cpp" id="ffAwaCDJG"
+                name="Compare.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/partition/Compare.h" id="94JMuiNBE"
+                name="Compare.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/partition/Convertors.cpp"
                 id="bcKnVjwM4" name="Convertors.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/partition/Convertors.h"
@@ -893,7 +897,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="wtKJ6XQLZ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="zJvcaPyhP" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

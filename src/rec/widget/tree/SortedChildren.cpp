@@ -5,6 +5,7 @@
 #include "rec/base/ArraySize.h"
 #include "rec/util/ShouldExit.h"
 #include "rec/widget/tree/Tree.h"
+#include "rec/util/partition/Compare.h"
 
 using namespace juce;
 
@@ -75,7 +76,7 @@ void sortedChildren(const File& f, Array<File>* kids, FileFilter* filter) {
   if (!util::shouldExit(thread)) {
     File* begin = kids->getRawDataPointer();
     File* end = begin + kids->size();
-    std::sort(begin, end, compareFiles);
+    std::sort(begin, end, partition::compareFiles);
   }
 }
 

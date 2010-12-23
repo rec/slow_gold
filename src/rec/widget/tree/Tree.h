@@ -8,7 +8,6 @@ namespace widget {
 namespace tree {
 
 void eraseVolumePrefix(string* name, bool diskToo = true);
-bool compareFiles(const File& f, const File& g);
 
 
 }  // namespace tree
