@@ -116,20 +116,21 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   }
 }
 
-AlbumList getAlbums(const VolumeFile& file, const TrackOffsets& off) {
-  AlbumList albums;
-  File shadow = getShadowFile(file, "album");
-  if (!persist::copy(shadow, &albums)) {
+Album getAlbum(const VolumeFile& file, const TrackOffsets& off) {
+  Album album;
+  File shadow = getShadowFile(file, "album.Album");
+  if (!persist::copy(shadow, &album)) {
+    AlbumList albums;
     String error = fillAlbums(off, &albums);
-    if (error.length())
-      albums.Clear();
-    else if (!persist::copy(albums, &shadow))
-      LOG(ERROR) << "Couldn't save CDDB information";
+    if (!error.length() && albums.album_size()) {
+      album = albums.album(0);
+      if (!persist::copy(album, &shadow))
+        LOG(ERROR) << "Couldn't save CDDB information";
+    }
   }
 
-  return albums;
+  return album;
 }
-
 
 
 }  // namespace cd

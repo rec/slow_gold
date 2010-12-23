@@ -116,14 +116,13 @@ void Directory::computeCDChildren() {
   ptr<AudioCDReader> reader(getAudioCDReader(cdKey.c_str()));
   if (reader) {
     TrackOffsets trackOffsets = reader->getTrackOffsets();
-    AlbumList albums = getAlbums(volumeFile_, trackOffsets);
-    if (!albums.album_size()) {
+    Album album = getAlbum(volumeFile_, trackOffsets);
+    if (!album.track_size()) {
       int audioTracks = getAudioTrackCount(*reader);
       for (int i = 0; i < audioTracks; ++i)
         tracks.push_back(String(i).toCString());
 
     } else {
-      Album album = albums.album(0);
       name = album.title() + " / " + album.artist();
       for (int i = 0; i < album.track_size(); ++i) {
         const Track& track = album.track(i);

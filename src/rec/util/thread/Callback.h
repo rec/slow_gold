@@ -27,11 +27,11 @@ class Callback : public Runnable {
 };
 
 template <typename Type>
-class AsyncCallback : public juce:: CallbackMessage {
+class AsyncCallback0 : public juce:: CallbackMessage {
  public:
   typedef void (Type::*Method)();
-  AsyncCallback(Type* obj, Method m) : object_(obj), method_(m) {}
-  virtual ~AsyncCallback() {}
+  AsyncCallback0(Type* obj, Method m) : object_(obj), method_(m) {}
+  virtual ~AsyncCallback0() {}
 
   virtual void messageCallback() {
     (object_->*method_)();
@@ -41,7 +41,27 @@ class AsyncCallback : public juce:: CallbackMessage {
   Type* object_;
   Method method_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(AsyncCallback);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(AsyncCallback0);
+};
+
+template <typename Type, typename Value>
+class AsyncCallback1 : public juce::CallbackMessage {
+ public:
+  typedef void (Type::*Method)(Value);
+  AsyncCallback1(Type* obj, Method m, Value v)
+      : object_(obj), method_(m), value_(v) {}
+  virtual ~AsyncCallback1() {}
+
+  virtual void messageCallback() {
+    (object_->*method_)(value_);
+  }
+
+ private:
+  Type* object_;
+  Method method_;
+  Value value_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(AsyncCallback1);
 };
 
 template <typename Type, typename Method>
@@ -51,7 +71,12 @@ Runnable* makeCallback(Type* object, Method method) {
 
 template <typename Type, typename Method>
 void callAsync(Type* object, Method method) {
-  (new AsyncCallback<Type>(object, method))->post();
+  (new AsyncCallback0<Type>(object, method))->post();
+}
+
+template <typename Type, typename Method, typename Value>
+void callAsync(Type* object, Method method, Value value) {
+  (new AsyncCallback1<Type, Value>(object, method, value))->post();
 }
 
 
