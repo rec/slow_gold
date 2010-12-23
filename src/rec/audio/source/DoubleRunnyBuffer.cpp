@@ -38,7 +38,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
   data_->addListener(changeLocker_.get());
 }
 
-PositionableAudioSource* DoubleRunnyBuffer::makeSource(const VolumeFile& f) {
+PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
   if (threadShouldExit())
     return NULL;
 

@@ -24,7 +24,7 @@ class DoubleRunnyBuffer
 
   bool fillFromPosition(int pos);
 
-  virtual PositionableAudioSource* makeSource(const VolumeFile& f);
+  virtual PositionableAudioSource* makeSource();
   juce::AudioThumbnail* thumbnail() { return cachedThumbnail_->thumbnail(); }
   CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
 
