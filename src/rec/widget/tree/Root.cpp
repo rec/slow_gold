@@ -6,6 +6,7 @@
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Directory.h"
 #include "rec/widget/tree/GetVolumes.h"
+#include "rec/widget/tree/CD.h"
 
 using namespace juce;
 using namespace rec::thread;
@@ -55,7 +56,8 @@ void Root::addVolume(const Volume& volume, int insertAt) {
   VolumeFile vf;
   vf.mutable_volume()->CopyFrom(volume);
 
-  Directory* directory = new Directory(desc_, vf);
+  Directory* directory = (volume.type() == Volume::CD) ? new CD(desc_, vf) :
+    new Directory(desc_, vf);
   directory->addListener(this);
   root_.addSubItem(directory, insertAt);
   directory->requestPartition();
