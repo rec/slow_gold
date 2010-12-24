@@ -2,6 +2,7 @@
 #define __REC_BASE_BASE__
 
 #include <string>
+#include <vector>
 
 #include <glog/logging.h>
 
@@ -36,6 +37,7 @@ class VolumeFile;
 }  // namespace widget
 
 using widget::tree::VolumeFile;
+using std::vector;
 
 }  // namespace rec
 

@@ -6,7 +6,7 @@
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/RunnableThread.h"
 #include "rec/util/partition/Compare.h"
-#include "rec/util/partition/PartitionChildren.h"
+#include "rec/util/partition/Partition.h"
 #include "rec/widget/tree/SortedChildren.h"
 
 using namespace juce;
@@ -166,11 +166,9 @@ void Directory::computeFileChildren() {
 void Directory::partition() {
   ScopedLock l(lock_);
   if (!computingDone_) {
-    juce::Array<int> partition;
-    partition::partitionChildren(*children_, range_, desc_.best_branch(),
-                                 &partition);
-    for (int i = 0; i < partition.size() - 1; ++i)
-      addChildFile(partition[i], partition[i + 1]);
+    juce::Array<int> part = partition::partitionList(*children_, range_);
+    for (int i = 0; i < part.size() - 1; ++i)
+      addChildFile(part[i], part[i + 1]);
 
     computingDone_ = computing_ = true;
   }

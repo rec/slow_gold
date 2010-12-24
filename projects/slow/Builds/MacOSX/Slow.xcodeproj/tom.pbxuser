@@ -322,8 +322,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 314832428;
-			PBXWorkspaceStateSaveDate = 314832428;
+			PBXPerProjectTemplateStateSaveDate = 314846322;
+			PBXWorkspaceStateSaveDate = 314846322;
 		};
 		perUserProjectItems = {
 			E212A56C12BB11ED00C1BEC3 = E212A56C12BB11ED00C1BEC3 /* PBXTextBookmark */;
@@ -355,13 +355,16 @@
 			E2A2116F12C3D472004C4B9F = E2A2116F12C3D472004C4B9F /* PBXTextBookmark */;
 			E2A2117012C3D472004C4B9F = E2A2117012C3D472004C4B9F /* PBXTextBookmark */;
 			E2A2118512C3D4EF004C4B9F = E2A2118512C3D4EF004C4B9F /* PBXTextBookmark */;
-			E2A7193512C3F77D00FBDD81 /* XCBuildMessageTextBookmark */ = E2A7193512C3F77D00FBDD81 /* XCBuildMessageTextBookmark */;
-			E2A7193712C3F77D00FBDD81 /* PBXTextBookmark */ = E2A7193712C3F77D00FBDD81 /* PBXTextBookmark */;
-			E2A7193D12C3F7DE00FBDD81 /* XCBuildMessageTextBookmark */ = E2A7193D12C3F7DE00FBDD81 /* XCBuildMessageTextBookmark */;
-			E2A7193F12C3F7DE00FBDD81 /* PBXTextBookmark */ = E2A7193F12C3F7DE00FBDD81 /* PBXTextBookmark */;
-			E2A7194012C3F7DE00FBDD81 /* XCBuildMessageTextBookmark */ = E2A7194012C3F7DE00FBDD81 /* XCBuildMessageTextBookmark */;
-			E2A7194112C3F7DE00FBDD81 /* PBXTextBookmark */ = E2A7194112C3F7DE00FBDD81 /* PBXTextBookmark */;
-			E2A7194412C3F7E200FBDD81 /* PBXTextBookmark */ = E2A7194412C3F7E200FBDD81 /* PBXTextBookmark */;
+			E2A7193512C3F77D00FBDD81 = E2A7193512C3F77D00FBDD81 /* PBXTextBookmark */;
+			E2A7193712C3F77D00FBDD81 = E2A7193712C3F77D00FBDD81 /* PBXTextBookmark */;
+			E2A7193D12C3F7DE00FBDD81 = E2A7193D12C3F7DE00FBDD81 /* PBXTextBookmark */;
+			E2A7193F12C3F7DE00FBDD81 = E2A7193F12C3F7DE00FBDD81 /* PBXTextBookmark */;
+			E2A7194012C3F7DE00FBDD81 = E2A7194012C3F7DE00FBDD81 /* PBXTextBookmark */;
+			E2A7194112C3F7DE00FBDD81 = E2A7194112C3F7DE00FBDD81 /* PBXTextBookmark */;
+			E2A7194412C3F7E200FBDD81 = E2A7194412C3F7E200FBDD81 /* PBXTextBookmark */;
+			E2A7194712C41A4100FBDD81 = E2A7194712C41A4100FBDD81 /* PBXTextBookmark */;
+			E2A7196312C41AFD00FBDD81 = E2A7196312C41AFD00FBDD81 /* PBXTextBookmark */;
+			E2A7198512C4249D00FBDD81 = E2A7198512C4249D00FBDD81 /* PBXTextBookmark */;
 			E2AB063212BB31270056679D = E2AB063212BB31270056679D /* PBXTextBookmark */;
 			E2AB064512BB32D90056679D = E2AB064512BB32D90056679D /* PBXTextBookmark */;
 			E2AB064612BB32D90056679D = E2AB064612BB32D90056679D /* PBXTextBookmark */;
@@ -540,13 +543,6 @@
 			sepNavIntBoundsRect = "{{0, 0}, {1096, 1651}}";
 			sepNavSelRange = "{2408, 75}";
 			sepNavVisRange = "{1380, 1824}";
-		};
-	};
-	DEDCA6FDE39EDD8EF6967AFD /* PartitionChildren.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1096, 527}}";
-			sepNavSelRange = "{308, 0}";
-			sepNavVisRange = "{0, 709}";
 		};
 	};
 	E212A56C12BB11ED00C1BEC3 /* PBXTextBookmark */ = {
@@ -787,7 +783,7 @@
 		fRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */;
 		name = "Directory.cpp: 120";
 		rLen = 0;
-		rLoc = 2869;
+		rLoc = 2861;
 		rType = 0;
 		vrLen = 1156;
 		vrLoc = 2365;
@@ -852,54 +848,43 @@
 		name = Partition.h;
 		path = ../../../../../rec/src/rec/util/partition/Partition.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {567, 1599}}";
-			sepNavSelRange = "{3095, 0}";
-			sepNavVisRange = "{314, 1012}";
-			sepNavWindowFrame = "{{38, 12}, {730, 1140}}";
-		};
 	};
-	E2A7193512C3F77D00FBDD81 /* XCBuildMessageTextBookmark */ = {
+	E2A7193512C3F77D00FBDD81 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'isPunctuation' was not declared in this scope";
 		fRef = E2A7193612C3F77D00FBDD81 /* Partition.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 40;
+		rLen = 0;
+		rLoc = 21;
 		rType = 1;
 	};
 	E2A7193612C3F77D00FBDD81 /* Partition.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = Partition.h;
 		path = ../../../../../rec/src/rec/util/partition/Partition.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {567, 1612}}";
-			sepNavSelRange = "{3117, 0}";
-			sepNavVisRange = "{314, 1012}";
-		};
 	};
 	E2A7193712C3F77D00FBDD81 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E2A7192D12C3F6A600FBDD81 /* Partition.h */;
 		name = "Partition.h: 125";
 		rLen = 0;
-		rLoc = 3095;
+		rLoc = 471;
 		rType = 0;
-		vrLen = 1012;
+		vrLen = 149;
 		vrLoc = 314;
 	};
-	E2A7193D12C3F7DE00FBDD81 /* XCBuildMessageTextBookmark */ = {
+	E2A7193D12C3F7DE00FBDD81 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "ISO C++ forbids declaration of 'type name' with no type";
 		fRef = E2A7193E12C3F7DE00FBDD81 /* Partition.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 96;
+		rLen = 0;
+		rLoc = 21;
 		rType = 1;
 	};
 	E2A7193E12C3F7DE00FBDD81 /* Partition.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = Partition.h;
 		path = ../../../../../rec/src/rec/util/partition/Partition.h;
 		sourceTree = "<group>";
@@ -909,26 +894,23 @@
 		fRef = E2A7193612C3F77D00FBDD81 /* Partition.h */;
 		name = "Partition.h: 125";
 		rLen = 0;
-		rLoc = 3117;
+		rLoc = 471;
 		rType = 0;
-		vrLen = 1258;
-		vrLoc = 707;
+		vrLen = 0;
+		vrLoc = 463;
 	};
-	E2A7194012C3F7DE00FBDD81 /* XCBuildMessageTextBookmark */ = {
+	E2A7194012C3F7DE00FBDD81 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Redefinition of 'Str rec::util::partition::Partition<Collection, IntList, Str>::getName(int) const [with Collection = const juce::Array<juce::File, juce::DummyCriticalSection>, IntList = juce::Array<int, juce::DummyCriticalSection>, Str = juce::String]'";
-		fRef = DEDCA6FDE39EDD8EF6967AFD /* PartitionChildren.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 15;
+		rLoc = 16;
 		rType = 1;
 	};
 	E2A7194112C3F7DE00FBDD81 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = DEDCA6FDE39EDD8EF6967AFD /* PartitionChildren.cpp */;
 		name = "PartitionChildren.cpp: 16";
 		rLen = 0;
-		rLoc = 308;
+		rLoc = 309;
 		rType = 0;
 		vrLen = 709;
 		vrLoc = 0;
@@ -938,10 +920,40 @@
 		fRef = E2A7193612C3F77D00FBDD81 /* Partition.h */;
 		name = "Partition.h: 125";
 		rLen = 0;
-		rLoc = 3117;
+		rLoc = 471;
 		rType = 0;
-		vrLen = 1012;
+		vrLen = 149;
 		vrLoc = 314;
+	};
+	E2A7194712C41A4100FBDD81 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A7193E12C3F7DE00FBDD81 /* Partition.h */;
+		name = "Partition.h: 21";
+		rLen = 0;
+		rLoc = 471;
+		rType = 0;
+		vrLen = 463;
+		vrLoc = 0;
+	};
+	E2A7196312C41AFD00FBDD81 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2A2105F12C2F5F1004C4B9F /* Snoopy.h */;
+		name = "Snoopy.h: 18";
+		rLen = 21;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 908;
+		vrLoc = 0;
+	};
+	E2A7198512C4249D00FBDD81 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EE1EF6A8A90E6BC80D12C1C3 /* Album.cpp */;
+		name = "Album.cpp: 113";
+		rLen = 0;
+		rLoc = 3417;
+		rType = 0;
+		vrLen = 1000;
+		vrLoc = 2963;
 	};
 	E2AB063212BB31270056679D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1222,9 +1234,9 @@
 	};
 	EE1EF6A8A90E6BC80D12C1C3 /* Album.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {567, 1833}}";
+			sepNavIntBoundsRect = "{{0, 0}, {567, 1807}}";
 			sepNavSelRange = "{3417, 0}";
-			sepNavVisRange = "{2963, 1020}";
+			sepNavVisRange = "{2963, 1000}";
 		};
 	};
 	EF031A748C014EB2DB702E47 /* NodeItem.cpp */ = {

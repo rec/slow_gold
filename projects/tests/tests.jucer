@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="d23ylbIei" name="tests">
+  <MAINGROUP id="LxZv9waCe" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -632,12 +632,8 @@
                 id="HNETqPM7T" name="Partition.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/partition/Partition.h" id="BrTzh3AJ2"
                 name="Partition.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/partition/PartitionChildren.cpp"
-                id="0ENR2Y6yb" name="PartitionChildren.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/partition/PartitionChildren.h"
-                id="bjjvYqMxL" name="PartitionChildren.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/partition/PartitionChildren_test.cpp"
-                id="tERxLVyuH" name="PartitionChildren_test.cpp" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/partition/Partition_test.cpp"
+                id="rXvhr55dq" name="Partition_test.cpp" resource="0"/>
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="mAw0zFgKm"
               name="PointerList.h" resource="0"/>
@@ -901,7 +897,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="G8T3MkKzR" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="wSeLXGxNM" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
