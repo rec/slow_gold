@@ -5,6 +5,7 @@
 
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/Range.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace widget {
@@ -15,7 +16,7 @@ class Directory : public Node {
   typedef juce::Array<File> FileArray;
 
   Directory(const NodeDesc& d, const VolumeFile& vf);
-  ~Directory();
+  virtual ~Directory() {}
 
   bool computeChildren();
   void partition();
@@ -26,7 +27,7 @@ class Directory : public Node {
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
 
-  virtual void itemOpennessChanged (bool isNowOpen);
+  virtual void itemOpennessChanged(bool isNowOpen);
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
   void addChildFile(int b, int e) { addChildFile(createChildFile(b, e)); }
@@ -36,7 +37,7 @@ class Directory : public Node {
 
   Directory(const Directory& d, const Range<int>& r);
 
-  Node* createChildFile(int begin, int end);
+  virtual Node* createChildFile(int begin, int end) const;
   void addChildFile(Node* node);
   void computeCDChildren();
   void computeFileChildren();
@@ -49,7 +50,7 @@ class Directory : public Node {
   Range<int> range_;
   FileArray *children_;
   ptr<FileArray> childrenDeleter_;
-  ptr<Thread> thread_;
+  thread_ptr<Thread> thread_;
   CriticalSection lock_;
   NodeSet nodesToAdd_;
   const bool isShard_;

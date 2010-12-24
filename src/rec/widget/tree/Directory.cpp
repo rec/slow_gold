@@ -37,12 +37,6 @@ Directory::Directory(const Directory& d, const Range<int>& r)
       isOpen_(false) {
 }
 
-Directory::~Directory() {
-  ScopedLock l(lock_);
-  if (thread_)
-    thread_->stopThread(10000);
-}
-
 void Directory::requestPartition() {
   ScopedLock l(lock_);
   if (computing_ || computingDone_) {
@@ -62,7 +56,7 @@ void Directory::requestPartition() {
   }
 }
 
-Node* Directory::createChildFile(int begin, int end) {
+Node* Directory::createChildFile(int begin, int end) const {
   Node* node;
   bool isShard = ((end - begin) != 1);
   if (isShard) {
