@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="LxZv9waCe" name="tests">
+  <MAINGROUP id="vb6L9czLh" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -706,8 +706,6 @@
                 name="Directory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="iWylNXVxW"
                 name="Directory.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/Directory_test.cpp"
-                id="OqnMXLmng" name="Directory_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/GetVolumes.cpp" id="mKJdpNTTb"
                 name="GetVolumes.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/GetVolumes.h" id="x0wrFxqV8"
@@ -897,7 +895,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="wSeLXGxNM" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="0tM57hrHy" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
