@@ -7,9 +7,6 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-void eraseVolumePrefix(string* name, bool diskToo = true);
-
-
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec

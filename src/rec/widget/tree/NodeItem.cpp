@@ -24,27 +24,8 @@ void Node::paint(juce::Graphics& g) const {
                        font_.getAscent() + desc_.widget().margin());
 }
 
-String Node::name() const {
-  if (name_.length())
-    return name_.c_str();
-
-  Volume::Type type = volumeFile_.volume().type();
-  if (int size = volumeFile_.path_size())
-    return volumeFile_.path(size - 1).c_str();
-
-  if (type == Volume::MUSIC)
-    return "<Music>";
-
-  if (type == Volume::USER)
-    return "<User>";
-
-  if (type == Volume::VOLUME || type == Volume::CD) {
-    string name = volumeFile_.volume().name();
-    eraseVolumePrefix(&name, false);
-    return name.empty() ? "<Root>" : name.c_str();
-  }
-
-  return "<Unknown>";
+const String Node::name() const {
+  return (name_.length() ? name_ : getDisplayName(volumeFile_)).c_str();
 }
 
 const gui::Rectangle Node::bounds() const {
@@ -63,8 +44,6 @@ bool Node::alreadyVisited() const {
   return getShadowDirectory(volumeFile_).exists();
 }
 
-File Node::file() const { return getFile(volumeFile_); }
-
 void Node::itemClicked(const juce::MouseEvent&) {
   broadcast(volumeFile_);
 }
@@ -72,7 +51,6 @@ void Node::itemClicked(const juce::MouseEvent&) {
 juce::Component* Node::createItemComponent() {
   return new NodeComponent(this);
 }
-
 
 }  // namespace tree
 }  // namespace widget

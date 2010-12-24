@@ -19,8 +19,9 @@ class Directory : public Node {
 
   bool computeChildren();
   void partition();
+
   virtual void addSubItems();
-  virtual String name() const;
+  virtual const String name() const;
 
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }

@@ -74,6 +74,26 @@ const string getFilename(const VolumeFile& file) {
   return file.path_size() ? file.path().end()[-1] : string("<none>");
 }
 
+const string getDisplayName(const VolumeFile& file) {
+  Volume::Type type = file.volume().type();
+  if (int size = file.path_size())
+    return file.path(size - 1).c_str();
+
+  if (type == Volume::MUSIC)
+    return "<Music>";
+
+  if (type == Volume::USER)
+    return "<User>";
+
+  if (type == Volume::VOLUME || type == Volume::CD) {
+    string name = file.volume().name();
+    eraseVolumePrefix(&name, false);
+    return name.empty() ? "<Root>" : name.c_str();
+  }
+
+  return "<Unknown>";
+}
+
 bool compareVolumes(const Volume& x, const Volume& y) {
   return x.type() < y.type() || (x.type() == y.type() && x.name() < y.name());
 }
@@ -119,6 +139,15 @@ VolumeFileData* getCurrentFileData() {
 
 bool empty(const VolumeFile& f) {
   return !(f.has_volume() && f.volume().has_type() && f.volume().type());
+}
+
+void eraseVolumePrefix(string* name, bool diskToo) {
+  static const int len = strlen("/Volumes/");
+  if (name->find("/Volumes/") == 0) {
+    int pos = diskToo ? name->find("/", len) : len;
+    if (pos != -1)
+      name->erase(0, pos);
+  }
 }
 
 }  // namespace tree

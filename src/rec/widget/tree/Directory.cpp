@@ -180,7 +180,7 @@ String getSub(const File& f, int letters) {
   return s;
 }
 
-String Directory::name() const {
+const String Directory::name() const {
   if (name_.length())
     return name_;
 

@@ -25,6 +25,9 @@ const File getShadowFile(const Proto& pr, const string& child) {
 }
 
 const string getFilename(const VolumeFile& file);
+const string getDisplayName(const VolumeFile& file);
+
+void eraseVolumePrefix(string* name, bool diskToo = true);
 
 bool compareVolumes(const Volume& x, const Volume& y);
 

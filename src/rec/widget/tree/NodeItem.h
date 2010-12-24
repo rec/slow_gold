@@ -22,29 +22,27 @@ class Node : public juce::TreeViewItem,
              public listener::Broadcaster<const VolumeFile&> {
  public:
   Node(const NodeDesc& d, const VolumeFile& vf, const char* name = NULL);
+
+  virtual void requestPartition() {}
+
   virtual bool mightContainSubItems() { return isDirectory(); }
+  virtual const String getUniqueName() { return name(); }
+  virtual int getItemWidth() const;
+  virtual int getItemHeight() const;
+  virtual juce::Component* createItemComponent();
+  virtual void itemClicked(const juce::MouseEvent&);
+  virtual bool isDirectory() const { return false; }
+
+  virtual const String name() const;
 
   void paint(juce::Graphics& g) const;
 
-  virtual void paintItem(juce::Graphics& g, int, int) {
-    paint(g);
-  }
-
   const NodeDesc& desc() const { return desc_; }
-
-  virtual String name() const;
-  virtual juce::Component* createItemComponent();
 
   const gui::Rectangle bounds() const;
 
-  virtual int getItemWidth() const;
-  virtual int getItemHeight() const;
   bool alreadyVisited() const;
-  File file() const;
 
-  virtual void itemClicked(const juce::MouseEvent&);
-  virtual void requestPartition() {}
-  virtual bool isDirectory() const { return false; }
   const VolumeFile& volumeFile() const { return volumeFile_; }
   Volume::Type type() const { return volumeFile_.volume().type(); }
 

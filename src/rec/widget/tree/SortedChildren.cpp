@@ -4,7 +4,7 @@
 #include "rec/widget/tree/SortedChildren.h"
 #include "rec/base/ArraySize.h"
 #include "rec/util/ShouldExit.h"
-#include "rec/widget/tree/Tree.h"
+#include "rec/widget/tree/VolumeFile.h"
 #include "rec/util/partition/Compare.h"
 
 using namespace juce;
