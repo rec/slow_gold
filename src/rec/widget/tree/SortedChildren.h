@@ -12,7 +12,7 @@ bool isAudioFileOrDirectory(const File& file);
 
 typedef bool FileFilter(const File& file);
 
-void sortedChildren(const File& f, juce::Array<File>* files,
+bool sortedChildren(const File& f, juce::Array<File>* files,
                     FileFilter* filter = &isAudioFileOrDirectory);
 
 }  // namespace tree

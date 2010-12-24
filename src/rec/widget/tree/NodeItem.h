@@ -11,6 +11,7 @@
 #include "rec/widget/tree/Node.pb.h"
 #include "rec/widget/tree/VolumeFile.h"
 #include "rec/widget/tree/VolumeFile.h"
+#include "rec/widget/tree/NodeComponent.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -21,28 +22,46 @@ namespace tree {
 class Node : public juce::TreeViewItem,
              public listener::Broadcaster<const VolumeFile&> {
  public:
-  Node(const NodeDesc& d, const VolumeFile& vf, const char* name = NULL);
+  Node(const NodeDesc& d, const VolumeFile& f, const string& name = string())
+      : name_(name),
+        desc_(d),
+        volumeFile_(vf),
+        icon_(gui::icon::getIcon(desc_.icon())),
+        font_(gui::getFont(desc_.widget().font())) {{
+  }
 
+  const String name() const {
+    return (name_.length() ? name_ : getDisplayName(volumeFile_)).c_str();
+  }
+
+  const gui::Rectangle bounds() const {
+    return desc_.widget().layer().bounds();
+  }
+
+  int getItemWidth() const {
+    return font_.getStringWidth(name()) + 2 * desc_.widget().margin();
+  }
+
+  int getItemHeight() const {
+    return font_.getHeight() + 2 * desc_.widget().margin();
+  }
+
+  void paint(juce::Graphics& g) const {
+    Painter p(desc_.widget(), &g);
+    if (icon_)
+      icon_->draw(g, 1.0);
+
+    g.drawSingleLineText(name(), desc_.widget().margin(),
+                         font_.getAscent() + desc_.widget().margin());
+  }
+
+  void itemClicked(const juce::MouseEvent&) { broadcast(volumeFile_); }
+  juce::Component* createItemComponent() { return new NodeComponent(this); }
   virtual void requestPartition() {}
-
   virtual bool mightContainSubItems() { return isDirectory(); }
   virtual const String getUniqueName() { return name(); }
-  virtual int getItemWidth() const;
-  virtual int getItemHeight() const;
-  virtual juce::Component* createItemComponent();
-  virtual void itemClicked(const juce::MouseEvent&);
   virtual bool isDirectory() const { return false; }
-
-  virtual const String name() const;
-
-  void paint(juce::Graphics& g) const;
-
   const NodeDesc& desc() const { return desc_; }
-
-  const gui::Rectangle bounds() const;
-
-  bool alreadyVisited() const;
-
   const VolumeFile& volumeFile() const { return volumeFile_; }
   Volume::Type type() const { return volumeFile_.volume().type(); }
 

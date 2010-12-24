@@ -11,15 +11,15 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Directory : public Node {
+class Directory : public Node, public Thread {
  public:
   typedef juce::Array<File> FileArray;
 
   Directory(const NodeDesc& d, const VolumeFile& vf);
   virtual ~Directory() {}
 
-  bool computeChildren();
-  void partition();
+  virtual void computeChildren();
+  virtual void partition();
 
   virtual void addSubItems();
   virtual const String name() const;
@@ -31,6 +31,7 @@ class Directory : public Node {
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
   void addChildFile(int b, int e) { addChildFile(createChildFile(b, e)); }
+  virtual void run();
 
  private:
   typedef std::set<Node*> NodeSet;
@@ -39,8 +40,7 @@ class Directory : public Node {
 
   virtual Node* createChildFile(int begin, int end) const;
   void addChildFile(Node* node);
-  void computeCDChildren();
-  void computeFileChildren();
+
 
   void resetChildren() {
     childrenDeleter_.reset(new FileArray);

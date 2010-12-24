@@ -16,6 +16,7 @@ class NodeComponent : public juce::Component {
   virtual void mouseDown(const juce::MouseEvent& m) {
     clicked_ = true;
   }
+
   virtual void mouseUp(const juce::MouseEvent& m) {
     if (clicked_) {
       node_->itemClicked(m);

@@ -3,7 +3,6 @@
 #include "rec/widget/tree/GetVolumes.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/widget/tree/VolumeFile.h"
-#include "rec/widget/tree/Tree.h"
 
 using namespace juce;
 

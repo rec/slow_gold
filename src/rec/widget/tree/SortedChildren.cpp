@@ -64,20 +64,22 @@ bool isAudioFileOrDirectory(const File& file) {
      file.hasFileExtension("ogg"));
 }
 
-void sortedChildren(const File& f, Array<File>* kids, FileFilter* filter) {
+bool sortedChildren(const File& f, Array<File>* kids, FileFilter* filter) {
   Thread* thread = Thread::getCurrentThread();
   DirectoryIterator i(f, false, "*", File::findFilesAndDirectories);
-  while (!util::shouldExit(thread) && i.next()) {
+  while (!shouldExit(thread) && i.next()) {
     File f(i.getFile());
     if (filter(f))
       kids->add(f);
   }
 
-  if (!util::shouldExit(thread)) {
+  if (!shouldExit(thread)) {
     File* begin = kids->getRawDataPointer();
     File* end = begin + kids->size();
     std::sort(begin, end, partition::compareFiles);
   }
+
+  return !shouldExit(thread);
 }
 
 }  // namespace tree
