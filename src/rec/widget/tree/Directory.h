@@ -11,18 +11,17 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Directory : public Node, public Thread {
+class Directory : public Node {
  public:
   typedef juce::Array<File> FileArray;
 
   Directory(const NodeDesc& d, const VolumeFile& vf);
   virtual ~Directory() {}
 
-  virtual void computeChildren();
+  virtual bool computeChildren();
   virtual void partition();
 
-  virtual void addSubItems();
-  virtual const String name() const;
+  void addNode(Node* node) { addSubItem(node); }
 
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
@@ -31,34 +30,26 @@ class Directory : public Node, public Thread {
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
   void addChildFile(int b, int e) { addChildFile(createChildFile(b, e)); }
-  virtual void run();
+
+ protected:
+  void addChildFile(Node* node);
+  void resetChildren();
+  static String getSub(const File& f, int letters);
+
+  FileArray *children_;
+  Range<int> range_;
 
  private:
   typedef std::set<Node*> NodeSet;
 
-  Directory(const Directory& d, const Range<int>& r);
-
   virtual Node* createChildFile(int begin, int end) const;
-  void addChildFile(Node* node);
 
-
-  void resetChildren() {
-    childrenDeleter_.reset(new FileArray);
-    children_ = childrenDeleter_.get();
-  }
-
-  Range<int> range_;
-  FileArray *children_;
-  ptr<FileArray> childrenDeleter_;
   thread_ptr<Thread> thread_;
+  ptr<FileArray> childrenDeleter_;
   CriticalSection lock_;
-  NodeSet nodesToAdd_;
-  const bool isShard_;
-  bool computing_;
-  bool computingDone_;
   bool isOpen_;
-  mutable String name_;
 
+ private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);
   JUCE_LEAK_DETECTOR(Directory);
 };

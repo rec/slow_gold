@@ -1,8 +1,5 @@
 #include "rec/widget/tree/Directory.h"
 
-#include "rec/util/cd/Album.h"
-#include "rec/util/cd/Album.pb.h"
-#include "rec/util/cd/CDReader.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/RunnableThread.h"
 #include "rec/util/partition/Compare.h"
@@ -12,10 +9,9 @@
 
 using namespace juce;
 
-using namespace rec::util::cd;
 using namespace rec::thread;
 
-using partition::indexOfDifference;
+using rec::util::partition::indexOfDifference;
 
 namespace rec {
 namespace widget {
@@ -27,15 +23,20 @@ Directory::Directory(const NodeDesc& d, const VolumeFile& vf)
       isOpen_(false) {
 }
 
-void Directory::run() {
-  computeChildren();
-  partition();
+void Directory::requestPartition() {
+  ScopedLock l(lock_);
+  if (!thread_) {
+    thread_.reset(new RunnableThread("LargeDirectory",
+                                     makeCallback(this,
+                                                  &Directory::computeChildren)));
+    thread_->setPriority(desc_.thread_priority());
+    thread_->startThread();
+  }
 }
 
 Node* Directory::createChildFile(int begin, int end) const {
-  Node* node;
   if ((end - begin) != 1)
-    return new Shard(*this, Range<int>(begin, end));
+    return new Shard(*this, Range<int>(begin, end), children_);
 
   const File& f = (*children_)[begin];
   VolumeFile vf(volumeFile_);
@@ -49,20 +50,22 @@ void Directory::addChildFile(Node* node) {
   if (isOpen_)
     node->requestPartition();
 
-  thread::callAsync(this, &Directory::addSubItem, node);
+  thread::callAsync(this, &Directory::addNode, node);
 }
 
-void Directory::computeChildren() {
+bool Directory::computeChildren() {
   File f = getFile(volumeFile_);
   if (!f.isDirectory()) {
     LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
-    return;
+    return false;
   }
 
   resetChildren();
   sortedChildren(f, children_);
   range_.begin_ = 0;
   range_.end_ = children_->size();
+  partition();
+  return true;
 }
 
 void Directory::partition() {
@@ -71,28 +74,15 @@ void Directory::partition() {
     addChildFile(part[i], part[i + 1]);
 }
 
-String getSub(const File& f, int letters) {
+String Directory::getSub(const File& f, int letters) {
   String s = f.getFileName().substring(0, letters + 1);
   s[0] = tolower(s[0]);
   return s;
 }
 
-const String Directory::name() const {
-  if (name_.length())
-    return name_;
-
-  int size = children_->size();
-  if (range_.size() == size)
-    return Node::name();
-
-  int b = range_.begin_ ? indexOfDifference(*children_, range_.begin_) : 1;
-  int e = range_.end_ == size ? 1 : indexOfDifference(*children_, range_.end_);
-
-  String begin = getSub((*children_)[range_.begin_], b);
-  String end = getSub((*children_)[range_.end_ - 1], e);
-
-  name_ = (begin == end) ? begin : (begin + " - " + end);
-  return name_;
+void Directory::resetChildren() {
+  childrenDeleter_.reset(new FileArray);
+  children_ = childrenDeleter_.get();
 }
 
 void Directory::itemOpennessChanged(bool isOpen) {

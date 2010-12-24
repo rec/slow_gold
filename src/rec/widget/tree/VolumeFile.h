@@ -20,12 +20,12 @@ const File getShadowDirectory(const Volume& volume);
 const File getShadowDirectory(const VolumeFile& file);
 
 template <typename Proto>
-const File getShadowFile(const Proto& pr, const string& child) {
-  return getShadowDirectory(pr).getChildFile(child.c_str());
+const File getShadowFile(const Proto& pr, const String& child) {
+  return getShadowDirectory(pr).getChildFile(child);
 }
 
-const string getFilename(const VolumeFile& file);
-const string getDisplayName(const VolumeFile& file);
+const String getFilename(const VolumeFile& file);
+const String getDisplayName(const VolumeFile& file);
 
 void eraseVolumePrefix(string* name, bool diskToo = true);
 

@@ -33,7 +33,8 @@ class Node : public juce::TreeViewItem,
   virtual void itemClicked(const juce::MouseEvent&);
   virtual bool isDirectory() const { return false; }
 
-  virtual const String name() const;
+  const String name() const;
+  virtual const String computeName() const;
 
   void paint(juce::Graphics& g) const;
 
@@ -47,9 +48,9 @@ class Node : public juce::TreeViewItem,
   Volume::Type type() const { return volumeFile_.volume().type(); }
 
  protected:
-  string name_;
-  NodeDesc desc_;
-  VolumeFile volumeFile_;
+  mutable String name_;
+  const NodeDesc desc_;
+  const VolumeFile volumeFile_;
   Listeners listeners_;
   const juce::Drawable* icon_;
   const juce::Font font_;

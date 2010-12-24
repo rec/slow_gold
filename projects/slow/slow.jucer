@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="BQS2poGZ6" name="Slow">
+  <MAINGROUP id="4T5rh1K3s" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -661,6 +661,8 @@
                 name="Time.h" resource="0"/>
         </GROUP>
         <GROUP id="82Gb0wg1e" name="tree">
+          <FILE compile="0" file="../../src/rec/widget/tree/CD.h" id="LJ0AARiR5"
+                name="CD.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/Directory.cpp" id="joE2vuHwR"
                 name="Directory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="7EZvy3AiS"
@@ -679,14 +681,12 @@
                 name="Root.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Root.h" id="pUsAa5tSK"
                 name="Root.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/tree/Shard.h" id="rQKMSzg2n"
+                name="Shard.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/SortedChildren.cpp"
                 id="QTBjLMyUe" name="SortedChildren.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/SortedChildren.h"
                 id="EUCT6gumu" name="SortedChildren.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/Tree.cpp" id="0nzll5oXA"
-                name="Tree.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/Tree.h" id="9j6XDrSP7"
-                name="Tree.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/VolumeFile.cpp" id="LQwsdS4SN"
                 name="VolumeFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/VolumeFile.h" id="0ok8CFlih"
@@ -850,7 +850,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="lfVq6CFkw" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="NH7PHrSVt" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -37,7 +37,7 @@ class ComponentContainer : public Component,
       gui::RecentFiles recent = gui::getSortedRecentFiles();
       PopupMenu submenu;
       for (int i = 0; i < recent.file_size(); ++i)
-        submenu.addItem(i + 1, getFilename(recent.file(i).file()).c_str());
+        submenu.addItem(i + 1, getFilename(recent.file(i).file()));
 
       menu.addSubMenu("Open recent", submenu);
     } else if (menuName == "Edit") {

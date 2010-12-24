@@ -70,11 +70,11 @@ const File getShadowDirectory(const VolumeFile& file) {
   return getFile(getShadowDirectory(file.volume()), file.path());
 }
 
-const string getFilename(const VolumeFile& file) {
-  return file.path_size() ? file.path().end()[-1] : string("<none>");
+const String getFilename(const VolumeFile& file) {
+  return file.path_size() ? file.path().end()[-1].c_str() : "<none>";
 }
 
-const string getDisplayName(const VolumeFile& file) {
+const String getDisplayName(const VolumeFile& file) {
   Volume::Type type = file.volume().type();
   if (int size = file.path_size())
     return file.path(size - 1).c_str();

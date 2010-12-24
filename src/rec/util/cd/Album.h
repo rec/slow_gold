@@ -2,13 +2,12 @@
 #define __REC_UTIL_CD_ALBUM__
 
 #include "rec/base/base.h"
+#include "rec/util/cd/Album.pb.h"
 
 namespace rec {
 namespace util {
 namespace cd {
 
-class Album;
-class AlbumList;
 typedef juce::Array<int> TrackOffsets;
 
 void splitTitle(Album *album);
