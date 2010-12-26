@@ -7,27 +7,25 @@ namespace rec {
 namespace util {
 namespace thread {
 
-class Cycler : public Runnable {
+class Cycler : public CallbackMessage {
  public:
   Cycler() : index_(0) {}
 
-  explicit Cycler(Runnable* r) : index_(0) {
+  explicit Cycler(CallbackMessage* r) : index_(0) {
     cycle_.push_back(r);
   }
 
-  Cycler(Runnable* r1, Runnable* r2) : index_(0) {
+  Cycler(CallbackMessage* r1, CallbackMessage* r2) : index_(0) {
     cycle_.push_back(r1);
     cycle_.push_back(r2);
   }
 
-  virtual bool run(Thread* thread) {
+  virtual void messageCallback() {
     if (!cycle_.empty())
       cycle_[index_]->run(thread);
 
     if (++index_ >= cycle_.size())
       index_ = 0;
-
-    return true;
   }
 
   virtual ~Cycler() {
@@ -36,7 +34,8 @@ class Cycler : public Runnable {
   }
 
  protected:
-  typedef std::vector<Runnable*> Cycle;
+  typedef std::vector<CallbackMessage*> Cycle;
+
   Cycle cycle_;
   int index_;
 

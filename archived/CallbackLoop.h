@@ -11,7 +11,7 @@ namespace util {
 namespace thread {
 
 template <typename Type, typename Method>
-Runnable* callbackLoop(int period, Type* obj, Method m) {
+CallbackMessage* callbackLoop(int period, Type* obj, Method m) {
   return new WaitLoop(period, makeCallback(obj, m));
 };
 

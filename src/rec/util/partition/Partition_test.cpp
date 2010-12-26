@@ -26,7 +26,7 @@ class PartitionChildrenTest : public testing::Test {
   vector<string> children_;
 
   void test(int begin, int end, const int* result, int size) {
-    vector<int> list = partitionList(children_, Range<int>(begin, end));
+    vector<int> list = partitionList<vector<int> >(children_, Range<int>(begin, end), 5);
 
 #if 0
     std::cout << "test: ";

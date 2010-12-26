@@ -2,85 +2,68 @@
 #define __REC_THREAD_CALLBACK__
 
 #include "rec/base/base.h"
-#include "rec/util/thread/Runnable.h"
 
 namespace rec {
 namespace util {
 namespace thread {
+namespace callback {
 
-template <typename Type, typename Return=bool>
-class Callback : public Runnable {
+// A generic callback.
+class Callback {
  public:
-  typedef Return (Type::*Method)();
-  Callback(Type* obj, Method m) : object_(obj), method_(m) {}
-
+  virtual bool operator()() = 0;
   virtual ~Callback() {}
-  virtual Return run(Thread*) {
-    return (object_->*method_)();
-  }
-
- private:
-  Type* object_;
-  Method method_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Callback);
 };
 
-template <typename Type>
-class AsyncCallback0 : public juce:: CallbackMessage {
+// Wrap any C++ callable into a Callback.
+template <typename Operator>
+class Pointer : public Callback {
  public:
-  typedef void (Type::*Method)();
-  AsyncCallback0(Type* obj, Method m) : object_(obj), method_(m) {}
-  virtual ~AsyncCallback0() {}
+  Pointer(Operator op) : operator_(op) {}
+  virtual ~Pointer() {}
+  virtual bool operator()() { (*operator_)(); return true; }
 
-  virtual void messageCallback() {
-    (object_->*method_)();
-  }
-
- private:
-  Type* object_;
-  Method method_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(AsyncCallback0);
+ protected:
+  Operator const operator_;
 };
 
-template <typename Type, typename Value>
-class AsyncCallback1 : public juce::CallbackMessage {
+// Wrap any C++ callable into a Callback.
+template <typename Operator>
+class PointerBool : public Callback {
  public:
-  typedef void (Type::*Method)(Value);
-  AsyncCallback1(Type* obj, Method m, Value v)
-      : object_(obj), method_(m), value_(v) {}
-  virtual ~AsyncCallback1() {}
+  PointerBool(Operator op) : operator_(op) {}
+  virtual ~PointerBool() {}
+  virtual bool operator()() { return operator_(); }
 
-  virtual void messageCallback() {
-    (object_->*method_)(value_);
-  }
-
- private:
-  Type* object_;
-  Method method_;
-  Value value_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(AsyncCallback1);
+ protected:
+  Operator const operator_;
 };
 
-template <typename Type, typename Method>
-Runnable* makeCallback(Type* object, Method method) {
-  return new Callback<Type>(object, method);
-}
+// A Pointer that owns its underlying callable.
+template <typename Operator>
+class OwnedPointer : public Pointer<Operator*>,
+                     public ptr<Operator> {
+ public:
+  explicit OwnedPointer(Operator* r) : Pointer<Operator*>(r), ptr<Operator>(r) {}
+  virtual ~OwnedPointer() {}
+  virtual bool operator()() { (*(this->get()))(); return true; }
+};
 
-template <typename Type, typename Method>
-void callAsync(Type* object, Method method) {
-  (new AsyncCallback0<Type>(object, method))->post();
-}
+// A Pointer that owns its underlying callable.
+template <typename Operator>
+class BoolOwnedPointer : public Pointer<Operator*>,
+                         public ptr<Operator> {
+ public:
+  explicit BoolOwnedPointer(Operator* r = NULL) : Pointer<Operator*>(r), ptr<Operator>(r) {}
+  virtual ~BoolOwnedPointer() {}
+  virtual bool operator()() { return (*(this->get()))(); }
+};
 
-template <typename Type, typename Method, typename Value>
-void callAsync(Type* object, Method method, Value value) {
-  (new AsyncCallback1<Type, Value>(object, method, value))->post();
-}
-
-
+}  // namespace callback
 }  // namespace thread
+
+typedef thread::callback::Callback Callback;
+
 }  // namespace util
 }  // namespace rec
 

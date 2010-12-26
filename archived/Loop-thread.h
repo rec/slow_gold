@@ -7,13 +7,14 @@ namespace rec {
 namespace util {
 namespace thread {
 
-class Loop : public Wrapper {
+class Loop : public CallbackWrapper {
  public:
-  Loop(Runnable* r) : Wrapper(r) {}
+  Loop(CallbackMessage* msg) : CallbackWrapper(msg) {}
 
-  virtual bool run(Thread* thread) {
-    while (!thread->threadShouldExit() && runnable_->run(thread));
-    return false;
+  virtual void messageCallback() {
+    Thread* thread = Thread::getCurrentThread();
+    while (!(thread && threadShouldExit()))
+      get()->messageCallback();
   }
 
  protected:

@@ -1,7 +1,7 @@
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/util/Math.h"
-#include "rec/util/thread/Callback.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace widget {

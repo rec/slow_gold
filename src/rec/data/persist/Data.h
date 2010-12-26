@@ -33,11 +33,6 @@ class Data : public UntypedData,
     DLOG(INFO) << "Deleting data: " << getProtoName(Proto::default_instance());
   }
 
-  virtual void addListener(listener::Listener<const Proto&>* listener) {
-    listener::Broadcaster<const Proto&>::addListener(listener);
-    (*listener)(get());
-  }
-
  protected:
   virtual void changeCallback() { broadcast(get()); }
 

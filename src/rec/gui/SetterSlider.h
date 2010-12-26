@@ -2,6 +2,7 @@
 #define __REC_GUI_SETTERSLIDER__
 
 #include "rec/util/listener/FileDataListener.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
@@ -14,7 +15,7 @@ class SetterSlider : public juce::Slider,
   typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
-  SetterSlider(const string& dataFileName, const Address& address, const String& name)
+  SetterSlider(const String& name, const Address& address, const string& dataFileName)
       : juce::Slider(name),
         listener::FileDataListener<Proto>(address, dataFileName) {
   }
@@ -26,21 +27,10 @@ class SetterSlider : public juce::Slider,
 
   virtual void set(const Value& value) {
     if (value.has_double_f())
-      (new Updater(this, value.double_f()))->post();
+      thread::callAsync(this, &juce::Slider::setValue, value.double_f(), false);
   }
 
  private:
-  class Updater : public juce::CallbackMessage {
-   public:
-    Updater(juce::Slider* s, double v) : slider_(s), value_(v) {}
-
-    virtual void messageCallback() { slider_->setValue(value_, false); }
-
-   private:
-    juce::Slider* const slider_;
-    const double value_;
-  };
-
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterSlider);
 };
 

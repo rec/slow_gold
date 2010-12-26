@@ -34,7 +34,7 @@ class Shard : public Directory {
   }
 
   virtual void requestPartition() {}
-  virtual bool computeChildren() { return true; }
+  virtual void computeChildren() {}
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Shard);

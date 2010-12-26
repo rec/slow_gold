@@ -22,16 +22,16 @@ template <> string toLowerCase(const string& s) {
 template <> void add(Array<int>* list, int x) { list->add(x); }
 template <> void add(vector<int>* list, int x) { list->push_back(x); }
 
-template <> const String& get(const Array<File>& files, int i) {
+template <> const String get(const Array<File>& files, int i) {
   return files[i].getFullPathName();
 }
 
-template <> const string& get(const vector<string>& files, int i) {
-  return files[i];
+template <> const String get(const vector<string>& files, int i) {
+  return files[i].c_str();
 }
 
 String getName(const File& f) { return f.getFileName();  }
-string getName(const string& v) { return v; }
+String getName(const string& v) { return v.c_str(); }
 
 }  // namespace partition
 }  // namespace util

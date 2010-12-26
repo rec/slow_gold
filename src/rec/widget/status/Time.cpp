@@ -4,7 +4,7 @@
 #include "rec/util/Math.h"
 #include "rec/gui/Color.h"
 #include "rec/widget/Painter.h"
-#include "rec/util/thread/Callback.h"
+#include "rec/util/thread/CallAsync.h"
 
 using rec::gui::Colors;
 using rec::gui::Color;

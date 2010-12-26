@@ -1,29 +1,20 @@
 #include "rec/data/persist/AppInstance.h"
 #include "rec/data/persist/Data.h"
-#include "rec/util/thread/CallbackLoop.h"
-#include "rec/util/thread/Trash.h"
 #include "rec/util/STL.h"
+#include "rec/util/thread/MakeThread.h"
 
 namespace rec {
 namespace persist {
 
-using namespace rec::util::thread;
-
 AppInstance::AppInstance(const string& appName)
-    : App(appName),
-      updateThread_(new RunnableThread("App::update",
-                               callbackLoop(UPDATE_PERIOD,
-                                                    this,
-                                                    &AppInstance::update))),
-      writeThread_(new RunnableThread("App::write",
-                              callbackLoop(WRITE_PERIOD,
-                                                   this,
-                                                   &AppInstance::write))) {
-  CHECK(appName.length());
-  updateThread_->setPriority(UPDATE_PRIORITY);
-  writeThread_->setPriority(WRITE_PRIORITY);
-  updateThread_->startThread();
-  writeThread_->startThread();
+    : App(appName) {
+  using thread::callback::Loop;
+
+  DCHECK(appName.length());
+  updateThread_.reset(Loop::make("App::update", UPDATE_PERIOD, UPDATE_PRIORITY,
+                      makeCallback(this, &AppInstance::update)));
+  writeThread_.reset(Loop::make("App::write", WRITE_PERIOD, WRITE_PRIORITY,
+                     makeCallback(this, &AppInstance::write)));
 }
 
 AppInstance::~AppInstance() {}

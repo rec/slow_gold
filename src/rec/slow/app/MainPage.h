@@ -38,7 +38,7 @@ class MainPage : public Component,
                  public listener::Listener<const VolumeFile&> {
  public:
   MainPage(AudioDeviceManager&);
-  virtual ~MainPage();
+  virtual ~MainPage() {}
 
   void paint(Graphics&);
   void resized();

@@ -3,6 +3,7 @@
 
 #include "rec/util/cd/Album.h"
 #include "rec/util/cd/CDReader.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace widget {
@@ -12,7 +13,9 @@ class CD : public Directory {
  public:
   CD(const NodeDesc& d, const VolumeFile& vf) : Directory(d, vf) {}
 
-  virtual bool computeChildren() {
+  virtual int minPartition() const { return 100; }
+
+  virtual void computeChildren() {
     string name = "<Unknown>";
     std::vector<string> tracks;
 
@@ -45,9 +48,9 @@ class CD : public Directory {
     string* path = vf.add_path();
     for (int i = 0; i < tracks.size(); ++i) {
       *path = String(i).toCString();
-      addChildFile(new Node(desc_, vf, tracks[i].c_str()));
+      thread::callAsync(this, &Directory::addNode,
+                        new Node(desc_, vf, tracks[i].c_str()));
     }
-    return true;
   }
 
  private:

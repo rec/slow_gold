@@ -1,7 +1,7 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
-#include "rec/util/thread/Callback.h"
+#include "rec/util/thread/CallAsync.h"
 
 using namespace rec::gui;
 using namespace rec::gui::color;

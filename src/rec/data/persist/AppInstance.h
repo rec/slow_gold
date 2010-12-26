@@ -4,7 +4,6 @@
 #include <set>
 
 #include "rec/data/persist/App.h"
-#include "rec/util/thread/RunnableThread.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -42,8 +41,8 @@ private:
   DataSet updateData_;
   DataSet writeData_;
 
-  thread_ptr<thread::RunnableThread> updateThread_;
-  thread_ptr<thread::RunnableThread> writeThread_;
+  thread_ptr<Thread> updateThread_;
+  thread_ptr<Thread> writeThread_;
 
   static AppInstance* instance_;
 

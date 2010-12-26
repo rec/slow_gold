@@ -46,8 +46,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     startStopButton_(String::empty),
     treeRoot_(new Root(NodeDesc())),
     explanation_(String::empty, T("<Explanation here>.")),
-    timeScaleSlider_("timestretch",  Address("time_scale"), T("Time Scale")),
-    pitchScaleSlider_("timestretch", Address("pitch_scale"), T("Pitch Scale")),
+    timeScaleSlider_("Time Scale", Address("time_scale"), "timestretch"),
+    pitchScaleSlider_("Pitch Scale", Address("pitch_scale"), "timestretch"),
     songTime_(Text()),
     songDial_(realTimeDial()),
     stretchy_(NULL),
@@ -105,21 +105,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   fileLocker_->startThread();
   timeLocker_->startThread();
   getCurrentFileData()->addListener(fileLocker_.get());
-}
-
-MainPage::~MainPage() {
-  getCurrentFileData()->removeListener(fileLocker_.get());
-
-  startStopButton_.removeListener(this);
-  treeRoot_->removeListener(&fileListener_);
-
-  transportSource_->removeListener(&songDial_);
-  transportSource_->removeListener(&songTime_);
-  transportSource_->removeListener(cursor_);
-  getCurrentFileData()->removeListener(fileLocker_.get());
-
-  transportSource_->stop();
-  transportSource_->setSource(NULL);
+  getCurrentFileData()->requestUpdate();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -147,19 +133,24 @@ static const int SAMPLE_RATE = 44100.0f;
 void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
     file_ = file;
+    timeScaleSlider_.setData(NULL);
+    pitchScaleSlider_.setData(NULL);
+    timeLocker_->initialize(0);
+    transportSource_->clear();
+    cursor_->setTime(0.0f);
+    
     if (empty(file_))
       return;
 
-    timeLocker_->initialize(0);
-
-    timeScaleSlider_(file_);
-    pitchScaleSlider_(file_);
-
-    transportSource_->clear();
-    cursor_->setTime(0.0f);
     stretchy_ = persist::getApp()->getData<StretchyProto>(file_, "timestretch");
 
     thread_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file_, stretchy_));
+    if (dr->empty())
+      return;
+
+    timeScaleSlider_.setData(stretchy_);
+    pitchScaleSlider_.setData(stretchy_);
+
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);
     doubleRunny_.swap(dr);

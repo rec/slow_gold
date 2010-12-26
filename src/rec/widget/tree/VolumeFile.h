@@ -26,6 +26,7 @@ const File getShadowFile(const Proto& pr, const String& child) {
 
 const String getFilename(const VolumeFile& file);
 const String getDisplayName(const VolumeFile& file);
+const String getFullDisplayName(const VolumeFile& file);
 
 void eraseVolumePrefix(string* name, bool diskToo = true);
 

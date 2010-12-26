@@ -10,8 +10,10 @@ namespace rec {
 namespace util {
 namespace partition {
 
-vector<int> partitionList(const vector<string>&, const Range<int>&);
-juce::Array<int> partitionList(const juce::Array<File>&, const Range<int>&);
+template <typename List, typename Collection>
+List partitionList(const Collection& collection,
+                   const Range<int>& range,
+                   int minimumPartition);
 
 }  // namespace partition
 }  // namespace util

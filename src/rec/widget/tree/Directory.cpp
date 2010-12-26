@@ -1,7 +1,7 @@
 #include "rec/widget/tree/Directory.h"
 
-#include "rec/util/thread/Callback.h"
-#include "rec/util/thread/RunnableThread.h"
+#include "rec/util/thread/CallAsync.h"
+#include "rec/util/thread/MakeThread.h"
 #include "rec/util/partition/Compare.h"
 #include "rec/util/partition/Partition.h"
 #include "rec/widget/tree/SortedChildren.h"
@@ -26,9 +26,7 @@ Directory::Directory(const NodeDesc& d, const VolumeFile& vf)
 void Directory::requestPartition() {
   ScopedLock l(lock_);
   if (!thread_) {
-    thread_.reset(new RunnableThread("LargeDirectory",
-                                     makeCallback(this,
-                                                  &Directory::computeChildren)));
+    thread_.reset(makeThread("LargeDirectory", this, &Directory::computeChildren));
     thread_->setPriority(desc_.thread_priority());
     thread_->startThread();
   }
@@ -45,19 +43,17 @@ Node* Directory::createChildFile(int begin, int end) const {
   return isDir ? new Directory(desc_, vf) : new Node(desc_, vf);
 }
 
-void Directory::addChildFile(Node* node) {
-  node->addListener(this);
-  if (isOpen_)
-    node->requestPartition();
-
-  thread::callAsync(this, &Directory::addNode, node);
+void Directory::addNode(Node* node) {
+  DLOG(INFO) << "Adding a node " << getFullDisplayName(node->volumeFile()).toCString();
+  addSubItem(node);
 }
 
-bool Directory::computeChildren() {
+
+void Directory::computeChildren() {
   File f = getFile(volumeFile_);
   if (!f.isDirectory()) {
     LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
-    return false;
+    return;
   }
 
   resetChildren();
@@ -65,13 +61,21 @@ bool Directory::computeChildren() {
   range_.begin_ = 0;
   range_.end_ = children_->size();
   partition();
-  return true;
 }
 
 void Directory::partition() {
-  juce::Array<int> part = partition::partitionList(*children_, range_);
-  for (int i = 0; i < part.size() - 1; ++i)
-    addChildFile(part[i], part[i + 1]);
+  juce::Array<int> part = partition::partitionList<Array<int> >
+      (*children_, range_, minPartition());
+
+  for (int i = 0; i < part.size() - 1; ++i) {
+    ptr<Node> node(createChildFile(part[i], part[i + 1]));
+    node->addListener(this);
+    if (isOpen_)
+      node->requestPartition();
+
+    DLOG(INFO) << "ABOUT TO add a node " << getFullDisplayName(node->volumeFile()).toCString();
+    callAsync(this, &Directory::addNode, node.transfer());
+  }
 }
 
 String Directory::getSub(const File& f, int letters) {

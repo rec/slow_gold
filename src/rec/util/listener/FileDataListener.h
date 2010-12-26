@@ -11,8 +11,7 @@ namespace util {
 namespace listener {
 
 template <typename Proto>
-class FileDataListener : public Listener<const Proto&>,
-                         public Listener<const VolumeFile&> {
+class FileDataListener : public Listener<const Proto&> {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
@@ -20,7 +19,7 @@ class FileDataListener : public Listener<const Proto&>,
 
   explicit FileDataListener(const Address& address,
                             const string& name)
-      : address_(address), name_(name) {
+      : address_(address), name_(name), data_(NULL) {
   }
 
   ~FileDataListener() { setData(NULL); }
@@ -30,26 +29,9 @@ class FileDataListener : public Listener<const Proto&>,
     onChanged();
   }
 
-  virtual void operator()(const VolumeFile& file) {
-    setFile(file);
-  }
+  Data* data() { return data_; }
+  const Address& address() const { return address_; }
 
- protected:
-  virtual const Value get() const = 0;
-  virtual void set(const Value&) = 0;
-
-  virtual void onChanged() {
-    if (data_)
-      data_->setter()->set(address_, get());
-    else
-      LOG(ERROR) << "No data but got a change on " 
-                 << persist::getProtoName<Proto>();
-  }
-
-  const Address address_;
-  Data* data_;
-
- private:
   void setData(Data* data) {
     if (data_)
       data_->removeListener(this);
@@ -62,11 +44,22 @@ class FileDataListener : public Listener<const Proto&>,
     }
   }
 
-  void setFile(const VolumeFile& f) {
-    setData(empty(f) ? NULL : persist::getApp()->getData<Proto>(f, name_));
+ protected:
+  virtual const Value get() const = 0;
+  virtual void set(const Value&) = 0;
+
+  virtual void onChanged() {
+    if (data_)
+      data_->setter()->set(address_, get());
+    else
+      LOG(ERROR) << "No data but got a change on "
+                 << persist::getProtoName<Proto>();
   }
 
+ private:
+  const Address address_;
   const string name_;
+  Data* data_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(FileDataListener);
 };

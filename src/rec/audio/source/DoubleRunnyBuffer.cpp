@@ -18,8 +18,14 @@ static const int WAIT_TIME = 20;
 static const int MAX_WAIT_TIME = 7000;
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
-    : DoubleRunny(file), Thread("DoubleRunnyBuffer"), data_(data) {
+    : DoubleRunny(file), Thread("DoubleRunnyBuffer"),
+      data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
+  if (!source) {
+    LOG(ERROR) << "Unable to read file " << getFullDisplayName(file).toCString();
+    empty_ = true;
+    return;
+  }
 
   File shadowThumbnailFile = getShadowFile(file, "thumbnail.stream");
   cachedThumbnail_.reset(new CachedThumbnail(shadowThumbnailFile, COMPRESSION,

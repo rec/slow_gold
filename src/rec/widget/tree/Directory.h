@@ -18,10 +18,10 @@ class Directory : public Node {
   Directory(const NodeDesc& d, const VolumeFile& vf);
   virtual ~Directory() {}
 
-  virtual bool computeChildren();
+  virtual void computeChildren();
   virtual void partition();
 
-  void addNode(Node* node) { addSubItem(node); }
+  void addNode(Node* node);
 
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
@@ -30,6 +30,7 @@ class Directory : public Node {
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
   void addChildFile(int b, int e) { addChildFile(createChildFile(b, e)); }
+  virtual int minPartition() const { return 12; }
 
  protected:
   void addChildFile(Node* node);

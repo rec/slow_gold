@@ -47,19 +47,23 @@ void UntypedData::operator()(proto::Operation* op) {
 }
 
 void UntypedData::update() {
+  OperationList oldQueue;
   {
     ScopedLock l(lock_);
     if (queue_.empty())
       return;
 
-    for (OperationList::iterator i = queue_.begin(); i != queue_.end(); ++i) {
-      if (*i)
-        undo_.push_back(applyOperation(**i, message_));
-    }
-
-    stl::deletePointers(&queue_);
+    oldQueue.swap(queue_);
   }
 
+  for (OperationList::iterator i = oldQueue.begin(); i != oldQueue.end(); ++i) {
+    if (*i) {
+      ScopedLock l(lock_);
+      undo_.push_back(applyOperation(**i, message_));
+    }
+  }
+
+  stl::deletePointers(&oldQueue);
   changeCallback();
 }
 

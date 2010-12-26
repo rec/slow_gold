@@ -94,6 +94,13 @@ const String getDisplayName(const VolumeFile& file) {
   return "<Unknown>";
 }
 
+const String getFullDisplayName(const VolumeFile& file) {
+  String result = getDisplayName(file) + ":";
+  for (int i = 0; i < file.path_size(); ++i)
+    result += (file.path(i) + "/").c_str();
+  return result;
+}
+
 bool compareVolumes(const Volume& x, const Volume& y) {
   return x.type() < y.type() || (x.type() == y.type() && x.name() < y.name());
 }
@@ -129,7 +136,12 @@ AudioFormatReader* createReader(const VolumeFile& file) {
 }
 
 PositionableAudioSource* createSource(const VolumeFile& file) {
-  return new AudioFormatReaderSource(createReader(file), true);
+  ptr<AudioFormatReader> reader(createReader(file));
+  if (reader)
+    return new AudioFormatReaderSource(reader.transfer(), true);
+  else
+    LOG(ERROR) << "No reader for " << getFullDisplayName(file).toCString();
+  return NULL;
 }
 
 VolumeFileData* getCurrentFileData() {

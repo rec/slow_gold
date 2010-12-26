@@ -17,6 +17,7 @@ typedef juce::AudioSourcePlayer AudioSourcePlayer;
 
 typedef juce::AudioTransportSource AudioTransportSource;
 
+typedef juce::CallbackMessage CallbackMessage;
 typedef juce::ChangeBroadcaster ChangeBroadcaster;
 typedef juce::ChangeListener ChangeListener;
 typedef juce::CriticalSection CriticalSection;
@@ -40,6 +41,8 @@ typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
 
 typedef juce::Thread Thread;
+typedef juce::TimeSliceThread TimeSliceThread;
+typedef juce::TimeSliceClient TimeSliceClient;
 typedef juce::TreeView TreeView;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;

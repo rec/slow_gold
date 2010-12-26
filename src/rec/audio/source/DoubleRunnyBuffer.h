@@ -29,6 +29,8 @@ class DoubleRunnyBuffer
 
   virtual void operator()(const StretchyProto& p);
 
+  bool empty() const { return empty_; }
+
   virtual void run();
   Data* data() { return data_; }
 
@@ -39,6 +41,7 @@ class DoubleRunnyBuffer
   ptr<CachedThumbnail> cachedThumbnail_;
   persist::Data<StretchyProto>* const data_;
   thread_ptr<ChangeLocker> changeLocker_;
+  bool empty_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleRunnyBuffer);
 };
