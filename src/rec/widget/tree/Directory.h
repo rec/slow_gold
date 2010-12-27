@@ -6,6 +6,7 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/Range.h"
 #include "rec/util/thread/Trash.h"
+#include "rec/util/partition/Partition.h"
 
 namespace rec {
 namespace widget {
@@ -21,21 +22,19 @@ class Directory : public Node {
   virtual void computeChildren();
   virtual void partition();
 
-  void addNode(Node* node);
-
   virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
   virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
 
   virtual void itemOpennessChanged(bool isNowOpen);
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
-  void addChildFile(int b, int e) { addChildFile(createChildFile(b, e)); }
-  virtual int minPartition() const { return 12; }
+
+  virtual int minPartition() const { return 24; }
 
  protected:
   void addChildFile(Node* node);
   void resetChildren();
-  static String getSub(const File& f, int letters);
+  static String getPrefix(const File& f, int letters);
 
   FileArray *children_;
   Range<int> range_;
@@ -43,7 +42,7 @@ class Directory : public Node {
  private:
   typedef std::set<Node*> NodeSet;
 
-  virtual Node* createChildFile(int begin, int end) const;
+  Node* createChildFile(const partition::Shard& shard) const;
 
   thread_ptr<Thread> thread_;
   ptr<FileArray> childrenDeleter_;

@@ -9,7 +9,8 @@ Node::Node(const NodeDesc& d, const VolumeFile& vf, const char* name)
     : desc_(d),
       volumeFile_(vf),
       icon_(gui::icon::getIcon(d.icon())),
-      font_(gui::getFont(desc_.widget().font())) {
+      font_(gui::getFont(desc_.widget().font())),
+      processing_(false) {
   if (name)
     name_ = name;
 }
@@ -18,7 +19,7 @@ void Node::paint(juce::Graphics& g) const {
   Painter p(desc_.widget(), &g);
   if (icon_)
     icon_->draw(g, 1.0);
-
+  p.setColor(processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT);
   g.drawSingleLineText(name(), desc_.widget().margin(),
                        font_.getAscent() + desc_.widget().margin());
 }

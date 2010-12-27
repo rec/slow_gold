@@ -9,6 +9,7 @@ namespace util {
 template <typename Type>
 struct Range {
   Range() {}
+  Range(Type b) : begin_(b), end_(b + 1) {}
   Range(Type b, Type e) : begin_(b), end_(e) {}
 
   Type begin_;

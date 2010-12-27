@@ -48,8 +48,8 @@ class CD : public Directory {
     string* path = vf.add_path();
     for (int i = 0; i < tracks.size(); ++i) {
       *path = String(i).toCString();
-      thread::callAsync(this, &Directory::addNode,
-                        new Node(desc_, vf, tracks[i].c_str()));
+      thread::callAsync(this, &TreeViewItem::addSubItem,
+                        new Node(desc_, vf, tracks[i].c_str()), -1);
     }
   }
 

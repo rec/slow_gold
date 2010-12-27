@@ -7,6 +7,7 @@
 #include "rec/gui/Font.h"
 #include "rec/gui/icon/Icon.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/Node.pb.h"
 #include "rec/widget/tree/VolumeFile.h"
@@ -46,6 +47,12 @@ class Node : public juce::TreeViewItem,
 
   const VolumeFile& volumeFile() const { return volumeFile_; }
   Volume::Type type() const { return volumeFile_.volume().type(); }
+  bool processing() const { return processing_; }
+
+  void setProcessing(bool p) {
+    processing_ = p;
+    thread::callAsync(this, &TreeViewItem::repaintItem);
+  }
 
  protected:
   mutable String name_;
@@ -54,6 +61,9 @@ class Node : public juce::TreeViewItem,
   Listeners listeners_;
   const juce::Drawable* icon_;
   const juce::Font font_;
+
+ private:
+  bool processing_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
   JUCE_LEAK_DETECTOR(Node);

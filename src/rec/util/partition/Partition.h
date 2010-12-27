@@ -10,10 +10,20 @@ namespace rec {
 namespace util {
 namespace partition {
 
-template <typename List, typename Collection>
-List partitionList(const Collection& collection,
-                   const Range<int>& range,
-                   int minimumPartition);
+struct Shard {
+  String name_;
+  Range<int> range_;
+
+  Shard(String n, Range<int> r) : name_(n), range_(r) {}
+  Shard() {}
+};
+
+typedef juce::Array<Shard> ShardArray;
+
+template <typename Collection>
+ShardArray partitionList(const Collection& collection,
+                         const Range<int>& range,
+                         int minimumPartition);
 
 }  // namespace partition
 }  // namespace util

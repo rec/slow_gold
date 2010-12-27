@@ -7,6 +7,7 @@
 
 namespace rec {
 namespace util {
+namespace thread {
 
 // Callbacks for functions or methods which return null.
 
@@ -53,6 +54,7 @@ Callback* makeCallbackBool(Type* o, Method m, V1 v1, V2 v2) {
   return new thread::callback::CallbackBool2<Type, Method, V1, V2>(o, m, v1, v2);
 }
 
+}  // namespace thread
 }  // namespace util
 }  // namespace rec
 

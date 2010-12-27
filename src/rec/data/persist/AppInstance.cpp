@@ -1,4 +1,4 @@
-#include "rec/data/persist/AppInstance.h"
+ #include "rec/data/persist/AppInstance.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/MakeThread.h"
@@ -12,9 +12,9 @@ AppInstance::AppInstance(const string& appName)
 
   DCHECK(appName.length());
   updateThread_.reset(Loop::make("App::update", UPDATE_PERIOD, UPDATE_PRIORITY,
-                      makeCallback(this, &AppInstance::update)));
+                     thread::makeCallback(this, &AppInstance::update)));
   writeThread_.reset(Loop::make("App::write", WRITE_PERIOD, WRITE_PRIORITY,
-                     makeCallback(this, &AppInstance::write)));
+                     thread::makeCallback(this, &AppInstance::write)));
 }
 
 AppInstance::~AppInstance() {}

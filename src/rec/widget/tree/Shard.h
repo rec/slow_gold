@@ -12,31 +12,22 @@ namespace tree {
 
 class Shard : public Directory {
  public:
-  Shard(const Directory& d, const Range<int>& r, FileArray* children)
-    : Directory(d.desc(), d.volumeFile()) {
-      children_ = children;
-      range_ = r;
-      partition();
+  Shard(const NodeDesc& desc, const VolumeFile& file,
+        const partition::Shard& shard, FileArray* children)
+      : Directory(desc, file), shard_(shard) {
+    children_ = children;
+    range_ = shard_.range_;
+    partition();
   }
 
-  const String computeName() const {
-    int size = children_->size();
-    if (range_.size() == size)
-      return Node::name();
-
-    int b = range_.begin_ ? indexOfDifference(*children_, range_.begin_) : 1;
-    int e = range_.end_ == size ? 1 : indexOfDifference(*children_, range_.end_);
-
-    String begin = getSub((*children_)[range_.begin_], b);
-    String end = getSub((*children_)[range_.end_ - 1], e);
-
-    return (begin == end) ? begin : (begin + " - " + end);
-  }
+  const String computeName() const { return shard_.name_; }
 
   virtual void requestPartition() {}
   virtual void computeChildren() {}
 
  private:
+  const partition::Shard shard_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Shard);
 };
 

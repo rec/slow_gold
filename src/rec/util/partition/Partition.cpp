@@ -10,18 +10,28 @@ namespace partition {
 namespace {
 
 bool isNonAlpha(int ch) {
-  return isPunctuation(ch) || isdigit(ch);
+  return !ch || isPunctuation(ch) || isdigit(ch);
 }
 
-template <typename List, typename Collection>
-void doPartition(const Collection& c, const Range<int>& r, List* list) {
+void add(ShardArray* shards, const String& name, const Range<int>& range) {
+  shards->add(Shard(name.toUpperCase(), range));
+}
+
+template <typename Coll>
+void simplePartition(const Coll& col, const Range<int>& r, ShardArray* shards) {
+  for (int i = r.begin_; i != r.end_; ++i)
+    add(shards, getName(col[i]), i);
+}
+
+template <typename Coll>
+void complexPartition(const Coll& col, const Range<int>& r, ShardArray* shards) {
   Range<int> range = r;
   if (r.size() < 2) {
     LOG(ERROR) << "Can't partition very small ranges";
     return;
   }
 
-  Range<String> name(getName(c, range.begin_), getName(c, range.end_ - 1));
+  Range<String> name(getName(col, range.begin_), getName(col, range.end_ - 1));
   int diff = indexOfDifference(name.begin_, name.end_);
   if (diff < 0) {
     LOG(ERROR) << "Identical range";
@@ -29,54 +39,49 @@ void doPartition(const Collection& c, const Range<int>& r, List* list) {
   }
 
   Range<int> chars(name.begin_[diff], name.end_[diff]);
-  if (!chars.begin_) {
-    add(list, range.begin_);
-    chars.begin_ = getName(c, ++range.begin_)[diff];
+  if (isNonAlpha(chars.begin_) && !isNonAlpha(chars.end_)) {
+    Range<int> nonA = range;
+    while (isNonAlpha(getName(col[++range.begin_])[diff]));
+    nonA.end_ = range.begin_;
+    add(shards, "<0-9, punctuation>", nonA);
   }
 
-  if (isNonAlpha(chars.begin_) && !isNonAlpha(chars.end_)) {
-    add(list, range.begin_);
-    while (isNonAlpha(range.begin_)) {
-      if (++range.begin_ == range.end_)
-        return;
-    }
-  }
-  bool ascii = isASCII(getName(c, range.begin_)[diff]);
+  bool ascii = isASCII(getName(col, range.begin_)[diff]);
   while (range.begin_ != range.end_) {
-    int x = tolower(getName(c, range.begin_)[diff]);
-    if (ascii && !isASCII(x))
+    String name = getName(col, range.begin_);
+    int charToMatch = tolower(name[diff]);
+    if (ascii && !isASCII(charToMatch))
       break;
 
-    add(list, range.begin_);
+    Range<int> same = range;
     while (++range.begin_ != range.end_ &&
-         tolower(getName(c, range.begin_)[diff]) == x);
+         tolower(getName(col, range.begin_)[diff]) == charToMatch);
+    same.end_ = range.begin_;
+    add(shards, name.substring(0, diff + 1), same);
   }
-
-  if (range.begin_ != range.end_)
-    add(list, range.begin_);  // All the i18n as one.
-
-    add(list, range.end_);
 }
 
 }  // namespace
 
-template <typename List, typename Collection>
-List partitionList(const Collection& col, const Range<int>& r, int mp) {
-  List list;
+template <typename Coll>
+ShardArray partitionList(const Coll& col,
+                         const Range<int>& range,
+                         int minimumPartition) {
+  ShardArray result;
 
-  if (col.size() <= mp)
-    addRangeToList(Range<int>(r.begin_, r.end_ + 1), &list);
+  if (minimumPartition >= range.size())
+    simplePartition(col, range, &result);
   else
-    doPartition(col, r, &list);
+    complexPartition(col, range, &result);
 
-  return list;
+  return result;
 }
 
 template
-vector<int> partitionList(const vector<string>&, const Range<int>&, int);
+ShardArray partitionList(const vector<string>&, const Range<int>&, int);
 
 template
-Array<int> partitionList(const Array<File>&, const Range<int>&, int);
+ShardArray partitionList(const Array<File>&, const Range<int>&, int);
 
 }  // namespace partition
 }  // namespace util

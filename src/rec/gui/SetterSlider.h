@@ -27,7 +27,7 @@ class SetterSlider : public juce::Slider,
 
   virtual void set(const Value& value) {
     if (value.has_double_f())
-      thread::callAsync(this, &juce::Slider::setValue, value.double_f(), false);
+      callAsync(this, &juce::Slider::setValue, value.double_f(), false);
   }
 
  private:

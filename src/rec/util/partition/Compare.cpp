@@ -8,7 +8,7 @@ namespace rec {
 namespace util {
 namespace partition {
 
-bool isASCII(int c) { return c >= 0 && c <= 0xFF; }
+bool isASCII(int c) { return c > 0 && c <= 0xFF; }
 
 bool isPunctuation(int c) {
   return isASCII(c) &&

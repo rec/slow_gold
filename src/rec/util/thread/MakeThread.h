@@ -41,7 +41,6 @@ class Loop : public juce::Thread,
 
 
 }  // namespace callback
-}  // namespace thread
 
 template <typename Type>
 Thread* makeThread(const String& name, Type o) {
@@ -63,6 +62,7 @@ Thread* makeThread(const String& name, Type* o, Method m, V1 v1, V2 v2) {
   return new thread::callback::Thread(name, makeCallback<Type, Method, V1, V2>(o, m, v1, v2));
 }
 
+}  // namespace thread
 }  // namespace util
 }  // namespace rec
 
