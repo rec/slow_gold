@@ -16,6 +16,11 @@ class Trash {
     empty();
   }
 
+  void add(Thread* thread) {
+    ScopedLock l(lock_);
+    threads_.insert(thread);
+  }
+
   void doDelete(Thread* thread) {
     delete thread;
   }
@@ -24,12 +29,10 @@ class Trash {
     if (thread) {
       thread->signalThreadShouldExit();
       thread->notify();
-      if (thread->isThreadRunning()) {
-        ScopedLock l(lock_);
-        threads_.insert(thread);
-      } else {
+      if (thread->isThreadRunning())
+        add(thread);
+      else
         doDelete(thread);
-      }
     }
   }
 
@@ -75,10 +78,10 @@ Trash* instance() {
 
 }  // namespace
 
+Thread* add(Thread* t) { instance()->add(t); return t; }
 void discard(Thread* t) { instance()->discard(t); }
 void empty() { instance()->empty(); }
 void waitForAllThreadsToExit(int t) { instance()->waitForAllThreadsToExit(t); }
-
 
 }  // namespace trash
 }  // namespace thread

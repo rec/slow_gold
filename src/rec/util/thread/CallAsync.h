@@ -12,29 +12,36 @@ class CallbackMessage : public juce::CallbackMessage,
                         public OwnedPointer<Callback> {
  public:
   CallbackMessage(Callback* r = NULL) : OwnedPointer<Callback>(r) {}
-  virtual void messageCallback() { (*this)(); }
+  virtual void messageCallback() { 
+  	(*this)(); 
+  }
 };
 
 }  // namespace callback
 
+inline void callAsync(Callback* cb) {
+  // DLOG(INFO) << "Calling async";
+  (new thread::callback::CallbackMessage(cb))->post();
+}
+
 template <typename Type>
 void callAsync(Type o) {
-  (new thread::callback::CallbackMessage(makeCallback<Type>(o)))->post();
+  callAsync(makeCallback<Type>(o));
 }
 
 template <typename Type, typename Method>
 void callAsync(Type* o, Method m) {
-  (new thread::callback::CallbackMessage(makeCallback<Type, Method>(o, m)))->post();
+  callAsync(makeCallback<Type, Method>(o, m));
 }
 
 template <typename Type, typename Method, typename Value>
 void callAsync(Type* o, Method m, Value v) {
-  (new thread::callback::CallbackMessage(makeCallback<Type, Method, Value>(o, m, v)))->post();
+  callAsync(makeCallback<Type, Method, Value>(o, m, v));
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
 void callAsync(Type* o, Method m, V1 v1, V2 v2) {
-  (new thread::callback::CallbackMessage(makeCallback<Type, Method, V1, V2>(o, m, v1, v2)))->post();
+  callAsync(makeCallback<Type, Method, V1, V2>(o, m, v1, v2));
 }
 
 }  // namespace thread

@@ -18,6 +18,8 @@ void discard(ptr<ThreadClass>* t) {
   discard(t->transfer());
 }
 
+Thread* add(Thread* t);
+
 void empty();
 void waitForAllThreadsToExit(int timeout);
 inline void discardAndEmpty(Thread* t) { discard(t); empty(); }

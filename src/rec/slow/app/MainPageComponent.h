@@ -31,7 +31,7 @@ class MainPageComponent  : public Component {
 
   void loadRecentFile(int menuItemId) {
     gui::RecentFiles recent = gui::getSortedRecentFiles();
-    const VolumeFile& file = recent.file(menuItemId - 1).file();
+    const VolumeFile& file = recent.file(menuItemId).file();
     file::getCurrentFileData()->setter()->set(file);
   }
 

@@ -15,6 +15,7 @@ class Thread : public juce::Thread,
   Thread(const String& name, Callback* r, int waitTime = -1)
       : juce::Thread(name), OwnedPointer<Callback>(r), waitTime_(waitTime) {
   }
+
   virtual void run() {
     while (!threadShouldExit() && (*this)()) {
       if (waitTime_ < 0)
@@ -86,10 +87,11 @@ callback::Thread* makeLoop(int t, const String& name, Type* o, Method m, V1 v1, 
 }
 
 inline callback::Thread* runInNewThread(const String& n, int p, Callback* cb) {
-  callback::Thread* t = new callback::Thread(n, cb);
+  thread_ptr<callback::Thread> t(new callback::Thread(n, cb));
   t->setPriority(p);
   t->startThread();
-  return t;
+  trash::add(t.get());
+  return t.transfer();
 }
 
 template <typename Type>

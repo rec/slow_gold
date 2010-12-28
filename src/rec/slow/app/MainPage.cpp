@@ -8,6 +8,7 @@
 #include "rec/util/STL.h"
 #include "rec/util/file/Util.h"
 #include "rec/util/thread/Trash.h"
+#include "rec/util/thread/MakeThread.h"
 
 namespace rec {
 namespace slow {
@@ -200,9 +201,9 @@ void MainPage::doClose() {
 
 void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
   if (empty(file_))
-    doOpen();
+    thread::callAsync(this, &MainPage::doOpen);
   else
-    timeLocker_->set(timeMouse.first);
+    thread::callAsync(timeLocker_.get(), &TimeLocker::set, timeMouse.first);
 }
 
 }  // namespace slow

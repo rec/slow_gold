@@ -81,13 +81,17 @@ void Directory::resetChildren() {
 }
 
 void Directory::itemOpennessChanged(bool isOpen) {
+  ScopedLock l(lock_);
   isOpen_ = isOpen;
   if (!isOpen)
     return;
 
-  requestPartition();
-  for (int i = 0; i < getNumSubItems(); ++i)
-    ((Node*) getSubItem(i))->requestPartition();
+  if (!thread_) {
+    requestPartition();
+  } else {
+    for (int i = 0; i < getNumSubItems(); ++i)
+      ((Node*) getSubItem(i))->requestPartition();
+  }
 }
 
 }  // namespace tree
