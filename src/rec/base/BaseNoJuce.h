@@ -12,27 +12,25 @@
 
 namespace google {
 namespace protobuf {
-
 class Message;
-
-}  // namespace protobuf
-}  // namespace google
+}
+}
 
 namespace rec {
+namespace util {
+namespace listener {
+}
+namespace file { 
+class VolumeFile; 
+}
+}  // namespace util
 
 typedef std::string string;
 typedef unsigned int uint;
 
 typedef google::protobuf::Message Message;
 
-namespace util {
-namespace file {
-
-class VolumeFile;
-
-}  // namespace file
-}  // namespace util
-
+using namespace util::listener;
 using namespace util;
 
 using util::file::VolumeFile;

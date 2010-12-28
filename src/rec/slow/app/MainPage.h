@@ -59,17 +59,17 @@ class MainPage : public Component,
   typedef thread::ChangeLocker<VolumeFile> FileLocker;
 
   thread_ptr<app::AudioTransportSourcePlayer> transportSource_;
-  Waveform waveform_;
-  DropTarget waveformTarget_;
+  DropTarget<Waveform, WaveformProto> waveform_;
   TextButton startStopButton_;
   thread_ptr<Root> treeRoot_;
 
-  class DirectoryDropTarget : public DropTarget {
+#if 0
+  class DirectoryDropTarget : public DropTarget<Component, String> {
    public:
     virtual bool isInterestedInFileDrag(const StringArray&) { return true; }
   };
-
   DirectoryDropTarget treeRootTarget_;
+#endif
   Label explanation_;
 
   SetterSlider<StretchyProto> timeScaleSlider_;

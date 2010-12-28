@@ -3,7 +3,6 @@
 
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/util/listener/Listener.h"
-#include "rec/gui/DropTarget.h"
 #include "rec/widget/Painter.h"
 #include "rec/util/file/VolumeFile.h"
 #include "rec/util/Range.h"

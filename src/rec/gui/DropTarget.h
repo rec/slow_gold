@@ -9,11 +9,10 @@
 namespace rec {
 namespace gui {
 
-class DropTarget : public listener::Broadcaster<const VolumeFile&>,
-                   public FileDragAndDropTarget,
-                   public Component {
+template <typename Parent, typename Init = String>
+class DropTarget : public FileDragAndDropTarget, public Parent {
  public:
-  DropTarget(const String& name = String::empty) : Component(name), draggingOver_(false) {}
+  DropTarget(const Init& init) : Parent(init), draggingOver_(false) {}
   virtual ~DropTarget() {}
 
   virtual bool isInterestedInFileDrag(const StringArray& files) {
@@ -32,26 +31,30 @@ class DropTarget : public listener::Broadcaster<const VolumeFile&>,
     setDraggingOver(false);
     if (isInterestedInFileDrag(files)) {
       for (int i = 0; i < files.size(); ++i)
-        broadcast(file::toVolumeFile(File(files[i])));
+        broadcaster_.broadcast(file::toVolumeFile(File(files[i])));
     }
   }
 
-  virtual void paint(Graphics& g) {}
   virtual void paintOverChildren(Graphics& g) {
     if (draggingOver_) {
       g.setColour(juce::Colours::greenyellow);
-      g.drawRect(getLocalBounds(), 2);
+      g.drawRect(this->getLocalBounds(), 2);
     }
   }
 
+#if 0
   virtual void resized() {
-    for (int i = 0; i < getNumChildComponents(); ++i)
-      getChildComponent(i)->setBounds(getLocalBounds());
+    for (int i = 0; i < this->getNumChildComponents(); ++i)
+      this->getChildComponent(i)->setBounds(this->getLocalBounds());
   }
+#endif
 
-  void repaint() { Component::repaint(); }
+  void repaint() { Parent::repaint(); }
+  bool draggingOver() const { return draggingOver_; }
 
- protected:
+  Broadcaster<const VolumeFile&>* dropBroadcaster() { return &broadcaster_; }
+
+ private:
   void setDraggingOver(bool d) {
   	DLOG(INFO) << "Dragging! " << d;
     if (d != draggingOver_) {
@@ -60,6 +63,7 @@ class DropTarget : public listener::Broadcaster<const VolumeFile&>,
     }
   }
 
+  listener::Broadcaster<const VolumeFile&> broadcaster_;
   bool draggingOver_;
 
  private:

@@ -78,11 +78,14 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   pitchScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
   pitchScaleSlider_.setValue(1.0);
 
-  addAndMakeVisible(&waveformTarget_);
-  waveformTarget_.addAndMakeVisible(&waveform_);
+  addAndMakeVisible(&waveform_);
   addAndMakeVisible(&startStopButton_);
+#if 0
   addAndMakeVisible(&treeRootTarget_);
   treeRootTarget_.addAndMakeVisible(treeRoot_->treeView());
+#else
+  addAndMakeVisible(treeRoot_->treeView());
+#endif
   addAndMakeVisible(&explanation_);
   addAndMakeVisible(&timeScaleSlider_);
   addAndMakeVisible(&pitchScaleSlider_);
@@ -95,7 +98,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
   // treeRootTarget_.addListener(&fileListener_);
-  waveformTarget_.addListener(&fileListener_);
+  waveform_.dropBroadcaster()->addListener(&fileListener_);
 
   transportSource_->addListener(&songDial_);
   transportSource_->addListener(&songTime_);
@@ -118,9 +121,14 @@ void MainPage::paint(Graphics& g) {
 }
 
 void MainPage::resized() {
-  waveformTarget_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
+  waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
   startStopButton_.setBounds(16, getHeight() - 46, 150, 32);
+#if 0
   treeRootTarget_.setBounds(16, 8, getWidth() - 32, getHeight() - 245);
+#else
+  treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
+#endif
+
   explanation_.setBounds(224, getHeight() - 42, getWidth() - 248, 32);
   timeScaleSlider_.setBounds(300, getHeight() - 90, 200, 24);
   pitchScaleSlider_.setBounds(300, getHeight() - 60, 200, 24);
