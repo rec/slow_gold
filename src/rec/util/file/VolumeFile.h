@@ -1,8 +1,8 @@
-#ifndef __REC_WIDGET_TREE_VIRTUALFILE__
-#define __REC_WIDGET_TREE_VIRTUALFILE__
+#ifndef __REC_UTIL_FILE_VIRTUALFILE__
+#define __REC_UTIL_FILE_VIRTUALFILE__
 
 #include "rec/base/base.h"
-#include "rec/widget/tree/VolumeFile.pb.h"
+#include "rec/util/file/VolumeFile.pb.h"
 
 namespace rec {
 
@@ -10,8 +10,8 @@ namespace persist {
 template <typename Type> class Data;
 }  // namespace persist
 
-namespace widget {
-namespace tree {
+namespace util {
+namespace file {
 
 const File getVolume(const Volume& volume);
 const File getFile(const VolumeFile& file);
@@ -27,8 +27,6 @@ const File getShadowFile(const Proto& pr, const String& child) {
 const String getFilename(const VolumeFile& file);
 const String getDisplayName(const VolumeFile& file);
 const String getFullDisplayName(const VolumeFile& file);
-
-void eraseVolumePrefix(string* name, bool diskToo = true);
 
 bool compareVolumes(const Volume& x, const Volume& y);
 
@@ -50,8 +48,10 @@ bool empty(const VolumeFile& file);
 typedef persist::Data<VolumeFile> VolumeFileData;
 VolumeFileData* getCurrentFileData();
 
-}  // namespace tree
-}  // namespace widget
+VolumeFile toVolumeFile(const File& file);
+
+}  // namespace file
+}  // namespace util
 }  // namespace rec
 
-#endif  // __REC_WIDGET_TREE_VIRTUALFILE__
+#endif  // __REC_UTIL_FILE_VIRTUALFILE__

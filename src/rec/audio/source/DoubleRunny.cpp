@@ -2,7 +2,7 @@
 #include "rec/util/thread/Trash.h"
 #include "rec/audio/source/Stretchy.h"
 #include "rec/audio/source/StretchyRunny.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
 
 namespace rec {
 namespace audio {

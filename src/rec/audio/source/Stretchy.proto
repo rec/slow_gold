@@ -1,6 +1,6 @@
 package rec.audio.source;
 
-import "rec/widget/tree/VolumeFile.proto";
+import "rec/util/file/VolumeFile.proto";
 
 // Describe how exactly to apply the timescaler to a sample.
 message StretchyProto {

@@ -3,7 +3,7 @@
 
 #include "rec/base/base.h"
 #include "rec/gui/RecentFiles.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
 #include "rec/slow/app/MainPageComponent.h"
 
 using namespace juce;
@@ -14,7 +14,6 @@ namespace slow {
 class ComponentContainer : public Component,
                            public MenuBarModel,
                            public ApplicationCommandTarget {
-
  public:
   ComponentContainer(MainPageComponent* c) : mainPage_(c) { addAndMakeVisible(c); }
 

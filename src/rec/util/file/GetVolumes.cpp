@@ -1,14 +1,15 @@
 #include <algorithm>
 
-#include "rec/widget/tree/GetVolumes.h"
+#include "rec/util/file/GetVolumes.h"
 #include "rec/util/cd/CDReader.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/Util.h"
 
 using namespace juce;
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace file {
 
 namespace {
 
@@ -26,6 +27,7 @@ void addFileRoots(VolumeList* volumes) {
 
   File("/Volumes").findChildFiles(roots, File::findFilesAndDirectories, false);
 #else
+
   File::findFileSystemRoots(roots);
 #endif
 
@@ -63,6 +65,6 @@ VolumeList getVolumes() {
   return volumes;
 }
 
-}  // namespace tree
-}  // namespace widget
+}  // namespace file
+}  // namespace util
 }  // namespace rec

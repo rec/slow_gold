@@ -3,11 +3,12 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Directory.h"
-#include "rec/widget/tree/GetVolumes.h"
+#include "rec/util/file/GetVolumes.h"
 #include "rec/widget/tree/CD.h"
 
 using namespace juce;
 using namespace rec::thread;
+using namespace rec::util::file;
 
 namespace rec {
 namespace widget {

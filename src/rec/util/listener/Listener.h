@@ -85,6 +85,16 @@ void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
   listener->broadcasters_.erase(this);
 }
 
+template <typename Type>
+void add(Broadcaster<Type>* broadcaster, Listener<Type>* listener) {
+  broadcaster->addListener(listener);
+}
+
+template <typename Type>
+void remove(Broadcaster<Type>* broadcaster, Listener<Type>* listener) {
+  broadcaster->removeListener(listener);
+}
+
 }  // namespace listener
 }  // namespace util
 }  // namespace rec

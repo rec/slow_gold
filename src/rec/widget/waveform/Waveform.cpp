@@ -8,11 +8,8 @@ namespace widget {
 namespace waveform {
 
 Waveform::Waveform(const WaveformProto& d)
-    : Component("Waveform"),
-      desc_(d),
-      thumbnail_(NULL),
-      begin_(0),
-      end_(0) {
+  : desc_(d), thumbnail_(NULL), range_(0, 0) {
+  setName("Waveform");
 }
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
@@ -27,12 +24,12 @@ void Waveform::paint(Graphics& g) {
   ScopedLock l(lock_);
   if (thumbnail_) {
     if (desc_.layout() == WaveformProto::PARALLEL) {
-      thumbnail_->drawChannels(g, getLocalBounds(), begin_, end_, 1.0f);
+      thumbnail_->drawChannels(g, getLocalBounds(), range_.begin_, range_.end_, 1.0f);
 
     } else {
       for (int i = 0; i < thumbnail_->getNumChannels(); ++i) {
         p.setColor(i + 1);
-        thumbnail_->drawChannel(g, getLocalBounds(), begin_, end_, i, 1.0f);
+        thumbnail_->drawChannel(g, getLocalBounds(), range_.begin_, range_.end_, i, 1.0f);
       }
     }
 
@@ -59,8 +56,8 @@ Cursor* Waveform::addCursor(const CursorProto& desc, float time) {
 void Waveform::setTimeBounds(float begin, float end) {
   {
     ScopedLock l(lock_);
-    begin_ = begin;
-    end_ = end;
+    range_.begin_ = begin;
+    range_.end_ = end;
   }
   layoutCursors();
 
@@ -73,7 +70,7 @@ void Waveform::operator()(const juce::AudioThumbnail&) {
 
 const TimeBounds Waveform::getTimeBounds() const {
   ScopedLock l(lock_);
-  return TimeBounds(begin_, end_);
+  return TimeBounds(range_.begin_, range_.end_);
 }
 
 void Waveform::layoutCursors() {
@@ -92,8 +89,8 @@ void Waveform::layoutCursor(Cursor *cursor) {
   int displayWidth = cursor->desc().display_width();
   bounds.setWidth(displayWidth);
   int x = 0;
-  if (!Math<float>::near(begin_, end_, 0.001))
-    x = width * (cursor->getTime() - begin_) / (end_ - begin_);
+  if (!Math<float>::near(range_.begin_, range_.end_, 0.001))
+    x = width * (cursor->getTime() - range_.begin_) / (range_.end_ - range_.begin_);
 
   bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);
   cursor->setBoundsAsync(bounds);
@@ -103,9 +100,10 @@ void Waveform::mouseUp(const juce::MouseEvent& e) {
   float time;
   {
     ScopedLock l(lock_);
-    time = e.x * (end_ - begin_) / getWidth();
+    time = e.x * (range_.end_ - range_.begin_) / getWidth();
   }
-  broadcast(TimeAndMouseEvent(time, &e));
+  const TimeAndMouseEvent event(time, &e);
+  broadcast(event);
 }
 
 }  // namespace waveform

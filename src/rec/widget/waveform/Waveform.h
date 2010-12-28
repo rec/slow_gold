@@ -3,8 +3,10 @@
 
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/gui/DropTarget.h"
 #include "rec/widget/Painter.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
+#include "rec/util/Range.h"
 
 namespace rec {
 namespace widget {
@@ -17,9 +19,9 @@ typedef std::pair<float, const juce::MouseEvent*> TimeAndMouseEvent;
 typedef std::pair<float, float> TimeBounds;
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public Component,
-                 public listener::Broadcaster<const TimeAndMouseEvent&>,
-                 public listener::Listener<const juce::AudioThumbnail&> {
+class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
+                 public listener::Listener<const juce::AudioThumbnail&>,
+                 public Component {
  public:
   explicit Waveform(const WaveformProto& desc);
   virtual ~Waveform();
@@ -42,8 +44,7 @@ class Waveform : public Component,
   CriticalSection lock_;
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
-  float begin_;
-  float end_;
+  Range<float> range_;
   Cursor* timeCursor_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Waveform);

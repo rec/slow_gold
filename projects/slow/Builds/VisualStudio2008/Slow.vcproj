@@ -347,6 +347,7 @@
         <Filter Name="gui">
           <File RelativePath="..\..\..\..\src\rec\gui\Color.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\DropTarget.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Font.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Geometry.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Geometry.h"/>
@@ -418,10 +419,20 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Compare.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Compare.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
+          <Filter Name="file">
+            <File RelativePath="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\Util.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\Util.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\VolumeFile.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\VolumeFile.h"/>
+          </Filter>
           <Filter Name="listener">
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\FileDataListener.h"/>
@@ -429,10 +440,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\Method.h"/>
           <Filter Name="partition">
-            <File RelativePath="..\..\..\..\src\rec\util\partition\Compare.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\partition\Compare.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\partition\Convertors.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
@@ -442,27 +450,22 @@
           <File RelativePath="..\..\..\..\src\rec\util\Range.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\ShouldExit.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\Substitute.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\TestData.h"/>
           <Filter Name="thread">
+            <File RelativePath="..\..\..\..\src\rec\util\thread\CallAsync.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Callback.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\CallbackLoop.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback0.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback1.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback2.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\ChangeLocker.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\Cycler.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\Factory.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\Loop.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\Runnable.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\RunnableThread.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\TimeSliceClient.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\Waiter.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\WaitLoop.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\Wrapper.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\util\Utf8.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\util\Utf8.h"/>
         </Filter>
         <Filter Name="widget">
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
@@ -476,18 +479,12 @@
             <File RelativePath="..\..\..\..\src\rec\widget\tree\CD.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.h"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\GetVolumes.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\GetVolumes.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeComponent.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Root.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Root.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\tree\Shard.h"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\SortedChildren.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\SortedChildren.h"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\widget\tree\VolumeFile.h"/>
           </Filter>
           <Filter Name="waveform">
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
@@ -554,6 +551,10 @@
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.h"/>
             </Filter>
+            <Filter Name="file">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VolumeFile.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VolumeFile.pb.h"/>
+            </Filter>
             <Filter Name="thread">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h"/>
@@ -573,8 +574,6 @@
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\VolumeFile.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\VolumeFile.pb.h"/>
             </Filter>
             <Filter Name="waveform">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc"/>

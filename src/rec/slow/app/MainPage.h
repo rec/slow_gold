@@ -6,17 +6,18 @@
 #include <vector>
 
 #include "rec/audio/source/DoubleRunnyBuffer.h"
+#include "rec/audio/source/Stretchy.pb.h"
+#include "rec/data/persist/Copy.h"
+#include "rec/gui/SetterSlider.h"
+#include "rec/gui/DropTarget.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/listener/SetterListener.h"
 #include "rec/util/thread/ChangeLocker.h"
 #include "rec/widget/status/Time.h"
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/Root.h"
-#include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Cursor.h"
-#include "rec/gui/SetterSlider.h"
-#include "rec/audio/source/Stretchy.pb.h"
-#include "rec/data/persist/Copy.h"
+#include "rec/widget/waveform/Waveform.h"
 
 using namespace rec::audio::source;
 using namespace rec::audio;
@@ -58,8 +59,16 @@ class MainPage : public Component,
 
   thread_ptr<app::AudioTransportSourcePlayer> transportSource_;
   Waveform waveform_;
+  DropTarget waveformTarget_;
   TextButton startStopButton_;
   thread_ptr<Root> treeRoot_;
+
+  class DirectoryDropTarget : public DropTarget {
+   public:
+    virtual bool isInterestedInFileDrag(const StringArray&) { return true; }
+  };
+
+  DirectoryDropTarget treeRootTarget_;
   Label explanation_;
 
   SetterSlider<StretchyProto> timeScaleSlider_;

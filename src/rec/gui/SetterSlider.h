@@ -20,6 +20,8 @@ class SetterSlider : public juce::Slider,
         listener::FileDataListener<Proto>(address, dataFileName) {
   }
 
+  virtual void valueChanged() { this->onChange(); }
+
  protected:
   virtual const Value get() const {
     return Slider::getValue();

@@ -4,7 +4,7 @@
 #include <set>
 
 #include "rec/util/Range.h"
-#include "rec/util/partition/Compare.h"
+#include "rec/util/Compare.h"
 
 namespace rec {
 namespace util {

@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 
-#include "rec/widget/tree/GetVolumes.h"
+#include "rec/util/file/GetVolumes.h"
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace file {
 namespace {
 
 TEST(GetVolumes, get) {
@@ -16,6 +16,6 @@ TEST(GetVolumes, get) {
 }
 
 }  // namespace
-}  // namespace tree
-}  // namespace widget
+}  // namespace file
+}  // namespace util
 }  // namespace rec

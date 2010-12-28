@@ -2,9 +2,7 @@
 #define __REC_WIDGET_TREE_SHARD__
 
 #include "rec/widget/tree/Directory.h"
-#include "rec/util/partition/Compare.h"
-
-using rec::util::partition::indexOfDifference;
+#include "rec/util/Compare.h"
 
 namespace rec {
 namespace widget {

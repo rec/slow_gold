@@ -25,6 +25,7 @@ typedef juce::Colour Colour;
 typedef juce::Component Component;
 
 typedef juce::File File;
+typedef juce::FileDragAndDropTarget FileDragAndDropTarget;
 typedef juce::Font Font;
 
 typedef juce::Graphics Graphics;

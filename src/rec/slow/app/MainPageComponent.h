@@ -30,7 +30,7 @@ class MainPageComponent  : public Component {
   void loadRecentFile(int menuItemId) {
     gui::RecentFiles recent = gui::getSortedRecentFiles();
     const VolumeFile& file = recent.file(menuItemId - 1).file();
-    getCurrentFileData()->setter()->set(file);
+    file::getCurrentFileData()->setter()->set(file);
   }
 
   void cut() {
@@ -49,9 +49,8 @@ class MainPageComponent  : public Component {
 #endif
   }
 
-  void paint(Graphics& g) { g.fillAll(Colours::white); }
-
-  void resized() { tabs_.setBounds(getLocalBounds()); }
+  virtual void paint(Graphics& g) { g.fillAll(Colours::white); }
+  virtual void resized() { tabs_.setBounds(getLocalBounds()); }
 
  private:
   TabbedComponent tabs_;

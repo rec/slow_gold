@@ -83,18 +83,18 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fStretchy_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::widget::tree::protobuf_AddDesc_rec_2fwidget_2ftree_2fVolumeFile_2eproto();
+  ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/source/Stretchy.proto\022\020rec.a"
-    "udio.source\032 rec/widget/tree/VolumeFile."
-    "proto\"\267\002\n\rStretchyProto\022\025\n\ntime_scale\030\001 "
-    "\001(\001:\0011\022\032\n\013sample_rate\030\002 \001(\001:\00544100\022\023\n\010ch"
-    "annels\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 \001(\001:\0011\022"
-    "\023\n\005bands\030\005 \001(\r:\0042048\022\031\n\016filter_overlap\030\006"
-    " \001(\r:\0011\022\027\n\nchunk_size\030\007 \001(\r:\003512\022\033\n\014pref"
-    "ill_size\030\010 \001(\r:\00515000\022$\n\025next_buffer_fil"
-    "l_size\030\t \001(\r:\00515000\022\036\n\022inactive_wait_tim"
-    "e\030\n \001(\005:\002-1\022\032\n\017thread_priority\030\013 \001(\r:\0014", 399);
+    "udio.source\032\036rec/util/file/VolumeFile.pr"
+    "oto\"\267\002\n\rStretchyProto\022\025\n\ntime_scale\030\001 \001("
+    "\001:\0011\022\032\n\013sample_rate\030\002 \001(\001:\00544100\022\023\n\010chan"
+    "nels\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 \001(\001:\0011\022\023\n"
+    "\005bands\030\005 \001(\r:\0042048\022\031\n\016filter_overlap\030\006 \001"
+    "(\r:\0011\022\027\n\nchunk_size\030\007 \001(\r:\003512\022\033\n\014prefil"
+    "l_size\030\010 \001(\r:\00515000\022$\n\025next_buffer_fill_"
+    "size\030\t \001(\r:\00515000\022\036\n\022inactive_wait_time\030"
+    "\n \001(\005:\002-1\022\032\n\017thread_priority\030\013 \001(\r:\0014", 397);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Stretchy.proto", &protobuf_RegisterTypes);
   StretchyProto::default_instance_ = new StretchyProto();

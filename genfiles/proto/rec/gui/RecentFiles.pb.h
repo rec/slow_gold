@@ -23,7 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "rec/widget/tree/VolumeFile.pb.h"
+#include "rec/util/file/VolumeFile.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -100,12 +100,12 @@ class RecentFile : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 timestamp() const;
   inline void set_timestamp(::google::protobuf::int64 value);
   
-  // optional .rec.widget.tree.VolumeFile file = 2;
+  // optional .rec.util.file.VolumeFile file = 2;
   inline bool has_file() const;
   inline void clear_file();
   static const int kFileFieldNumber = 2;
-  inline const ::rec::widget::tree::VolumeFile& file() const;
-  inline ::rec::widget::tree::VolumeFile* mutable_file();
+  inline const ::rec::util::file::VolumeFile& file() const;
+  inline ::rec::util::file::VolumeFile* mutable_file();
   
   // @@protoc_insertion_point(class_scope:rec.gui.RecentFile)
  private:
@@ -113,7 +113,7 @@ class RecentFile : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::google::protobuf::int64 timestamp_;
-  ::rec::widget::tree::VolumeFile* file_;
+  ::rec::util::file::VolumeFile* file_;
   friend void  protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fRecentFiles_2eproto();
@@ -267,20 +267,20 @@ inline void RecentFile::set_timestamp(::google::protobuf::int64 value) {
   timestamp_ = value;
 }
 
-// optional .rec.widget.tree.VolumeFile file = 2;
+// optional .rec.util.file.VolumeFile file = 2;
 inline bool RecentFile::has_file() const {
   return _has_bit(1);
 }
 inline void RecentFile::clear_file() {
-  if (file_ != NULL) file_->::rec::widget::tree::VolumeFile::Clear();
+  if (file_ != NULL) file_->::rec::util::file::VolumeFile::Clear();
   _clear_bit(1);
 }
-inline const ::rec::widget::tree::VolumeFile& RecentFile::file() const {
+inline const ::rec::util::file::VolumeFile& RecentFile::file() const {
   return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline ::rec::widget::tree::VolumeFile* RecentFile::mutable_file() {
+inline ::rec::util::file::VolumeFile* RecentFile::mutable_file() {
   _set_bit(1);
-  if (file_ == NULL) file_ = new ::rec::widget::tree::VolumeFile;
+  if (file_ == NULL) file_ = new ::rec::util::file::VolumeFile;
   return file_;
 }
 

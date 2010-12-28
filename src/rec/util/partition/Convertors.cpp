@@ -5,7 +5,6 @@ using std::vector;
 
 namespace rec {
 namespace util {
-namespace partition {
 
 template <> int getLength(const string& s) { return s.size(); }
 template <> int getLength(const String& s) { return s.length(); }
@@ -33,6 +32,5 @@ template <> const String get(const vector<string>& files, int i) {
 String getName(const File& f) { return f.getFileName();  }
 String getName(const string& v) { return v.c_str(); }
 
-}  // namespace partition
 }  // namespace util
 }  // namespace rec

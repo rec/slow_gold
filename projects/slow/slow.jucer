@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="4T5rh1K3s" name="Slow">
+  <MAINGROUP id="l8MItt0D2" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -432,6 +432,8 @@
               name="Color.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Color.h" id="5qRhv4iG2" name="Color.h"
               resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/DropTarget.h" id="Hi5Hqwwgd"
+              name="DropTarget.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="oCD1iZDz7" name="Font.h"
               resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/Geometry.cpp" id="s4PWGCWMU"
@@ -562,6 +564,10 @@
               name="Circular.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Circular.h" id="TnDZ4aOPt"
               name="Circular.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/Compare.cpp" id="UHMybPoCG"
+              name="Compare.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Compare.h" id="Xx1K96mJm"
+              name="Compare.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="r1laIsTFq"
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="KPc16cdSD"
@@ -570,6 +576,20 @@
               name="DelegateToList.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="UvEXJklIm"
               name="Exception.h" resource="0"/>
+        <GROUP id="eEhvc9Q3H" name="file">
+          <FILE compile="1" file="../../src/rec/util/file/GetVolumes.cpp" id="wxxPexrBD"
+                name="GetVolumes.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/GetVolumes.h" id="cXAt0cChI"
+                name="GetVolumes.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/Util.cpp" id="einXTanQt"
+                name="Util.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/Util.h" id="9CFi0tSsV"
+                name="Util.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/VolumeFile.cpp" id="AaMMcieUv"
+                name="VolumeFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/VolumeFile.h" id="EgsuYQYzf"
+                name="VolumeFile.h" resource="0"/>
+        </GROUP>
         <GROUP id="7NAzl46CT" name="listener">
           <FILE compile="0" file="../../src/rec/util/listener/ChangeBroadcaster.h"
                 id="tbrmZIKGt" name="ChangeBroadcaster.h" resource="0"/>
@@ -582,13 +602,7 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="jinvo0ree" name="Math.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Method.h" id="hIlhXxsZU"
-              name="Method.h" resource="0"/>
         <GROUP id="6O1CdCJv4" name="partition">
-          <FILE compile="1" file="../../src/rec/util/partition/Compare.cpp" id="IFXzc1mjn"
-                name="Compare.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/partition/Compare.h" id="CbI6L0bvU"
-                name="Compare.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/partition/Convertors.cpp"
                 id="Gmk7Ear48" name="Convertors.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/partition/Convertors.h"
@@ -606,46 +620,36 @@
               name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="OrwebqVEp" name="STL.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Substitute.h" id="jRjqAQSmW"
-              name="Substitute.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/TestData.h" id="DgQ1cDJB0"
               name="TestData.h" resource="0"/>
         <GROUP id="gonimSYKx" name="thread">
+          <FILE compile="0" file="../../src/rec/util/thread/CallAsync.h" id="M9phQlmZb"
+                name="CallAsync.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Callback.h" id="0EmqJNbut"
                 name="Callback.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/CallbackLoop.h" id="5kWzou9pd"
-                name="CallbackLoop.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Callback0.h" id="hH3Ui1Bww"
+                name="Callback0.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Callback1.h" id="KuDMf3Yj5"
+                name="Callback1.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/Callback2.h" id="r4rgEOh0S"
+                name="Callback2.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/ChangeLocker.h" id="zTWV62fSP"
                 name="ChangeLocker.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Cycler.h" id="WyyGe1k2r"
-                name="Cycler.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Factory.h" id="g7EoGJA5u"
-                name="Factory.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FileWriter.h" id="fL2Cxfyok"
                 name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Locker.h" id="mOP1B13lf"
                 name="Locker.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Loop.h" id="sPAs1wMLY"
-                name="Loop.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Runnable.h" id="kFT948wFN"
-                name="Runnable.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/RunnableThread.h"
-                id="2o1e9MCID" name="RunnableThread.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/MakeCallback.h" id="UOmTBV9ag"
+                name="MakeCallback.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/MakeThread.h" id="xhCK4bXL5"
+                name="MakeThread.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/TimeSliceClient.h"
+                id="TW71BnD70" name="TimeSliceClient.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/thread/Trash.cpp" id="GnzTmDkzM"
                 name="Trash.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Trash.h" id="yfktbJn7d"
                 name="Trash.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Waiter.h" id="J8q1GfJzN"
-                name="Waiter.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/WaitLoop.h" id="23FhtgPns"
-                name="WaitLoop.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Wrapper.h" id="9R3JjgyUF"
-                name="Wrapper.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/util/Utf8.cpp" id="OHhcnQN3l"
-              name="Utf8.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Utf8.h" id="LAdqPSMCI" name="Utf8.h"
-              resource="0"/>
       </GROUP>
       <GROUP id="SUnByOVEB" name="widget">
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="pywYbaxoY"
@@ -667,10 +671,6 @@
                 name="Directory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Directory.h" id="7EZvy3AiS"
                 name="Directory.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/GetVolumes.cpp" id="r103iUmZe"
-                name="GetVolumes.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/GetVolumes.h" id="uurl55U8y"
-                name="GetVolumes.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/NodeComponent.h"
                 id="ZHedX71jT" name="NodeComponent.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/NodeItem.cpp" id="GrLJE8SRw"
@@ -683,14 +683,6 @@
                 name="Root.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/Shard.h" id="rQKMSzg2n"
                 name="Shard.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/SortedChildren.cpp"
-                id="QTBjLMyUe" name="SortedChildren.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/SortedChildren.h"
-                id="EUCT6gumu" name="SortedChildren.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/tree/VolumeFile.cpp" id="LQwsdS4SN"
-                name="VolumeFile.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/tree/VolumeFile.h" id="0ok8CFlih"
-                name="VolumeFile.h" resource="0"/>
         </GROUP>
         <GROUP id="DctK7jjBP" name="waveform">
           <FILE compile="1" file="../../src/rec/widget/waveform/Cursor.cpp" id="nL5OsfIWN"
@@ -797,6 +789,12 @@
             <FILE compile="0" file="../../genfiles/proto/rec/util/cd/Album.pb.h"
                   id="SZBEzp0uT" name="Album.pb.h" resource="0"/>
           </GROUP>
+          <GROUP id="AJBkSj4Oe" name="file">
+            <FILE compile="1" file="../../genfiles/proto/rec/util/file/VolumeFile.pb.cc"
+                  id="6D5g2aZBn" name="VolumeFile.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/util/file/VolumeFile.pb.h"
+                  id="wDO84qdFb" name="VolumeFile.pb.h" resource="0"/>
+          </GROUP>
           <GROUP id="SSsjTt1r5" name="thread">
             <FILE compile="1" file="../../genfiles/proto/rec/util/thread/Thread.pb.cc"
                   id="Afrrn4moK" name="Thread.pb.cc" resource="0"/>
@@ -828,10 +826,6 @@
                   id="hOAXJ0qEP" name="Path.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/widget/tree/Path.pb.h"
                   id="NdJMzgl9k" name="Path.pb.h" resource="0"/>
-            <FILE compile="1" file="../../genfiles/proto/rec/widget/tree/VolumeFile.pb.cc"
-                  id="YH1kRQx9d" name="VolumeFile.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/widget/tree/VolumeFile.pb.h"
-                  id="zqlaoshPs" name="VolumeFile.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="T2zpTD0mI" name="waveform">
             <FILE compile="1" file="../../genfiles/proto/rec/widget/waveform/Cursor.pb.cc"
@@ -850,7 +844,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="NH7PHrSVt" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="lDKvHgjK2" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

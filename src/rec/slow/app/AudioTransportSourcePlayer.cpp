@@ -11,6 +11,7 @@ AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
 }
 
 AudioTransportSourcePlayer::~AudioTransportSourcePlayer() {
+  clear();
   deviceManager_->removeAudioCallback(&player_);
   setSource(NULL);
   player_.setSource(NULL);

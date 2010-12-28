@@ -26,6 +26,7 @@ Colour get(unsigned int i) {
   static Colour DEFAULT_COLORS[] = {
     Colours::white,
     Colours::lightblue,
+    Colours::seagreen,
     Colours::black
   };
 
@@ -42,6 +43,7 @@ static Colors getDefaultInternal() {
   static Colour DEFAULT_COLORS[] = {
     Colours::white,
     Colours::lightblue,
+    Colours::seagreen,
     Colours::black
   };
 

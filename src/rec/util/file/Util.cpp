@@ -1,19 +1,17 @@
-#include <algorithm>
 #include <set>
 
-#include "rec/widget/tree/SortedChildren.h"
+#include "rec/util/file/Util.h"
 #include "rec/base/ArraySize.h"
 #include "rec/util/ShouldExit.h"
-#include "rec/widget/tree/VolumeFile.h"
-#include "rec/util/partition/Compare.h"
+#include "rec/util/Compare.h"
 
 using namespace juce;
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace file {
 
-bool isHiddenFile(const File& file) {
+bool isHidden(const File& file) {
   if (file.getFileName()[0] == '.')
     return true;
 
@@ -55,16 +53,21 @@ bool isHiddenFile(const File& file) {
   return nameSet.find(name) != nameSet.end();
 }
 
-bool isAudioFileOrDirectory(const File& file) {
-  return !isHiddenFile(file) &&
-    (file.isDirectory() ||
-     file.hasFileExtension("mp3") ||
-     file.hasFileExtension("aiff") ||
-     file.hasFileExtension("wav") ||
-     file.hasFileExtension("ogg"));
+bool isAudio(const File& file) {
+  return
+    file.hasFileExtension("aiff") ||
+    file.hasFileExtension("flac") ||
+    file.hasFileExtension("m4a") ||
+    file.hasFileExtension("mp3") ||
+    file.hasFileExtension("ogg") ||
+    file.hasFileExtension("wav");
 }
 
-bool sortedChildren(const File& f, Array<File>* kids, FileFilter* filter) {
+bool isAudioOrDirectory(const File& file) {
+  return !isHidden(file) && (file.isDirectory() || isAudio(file));
+}
+
+bool sortedChildren(const File& f, Array<File>* kids, Filter* filter) {
   Thread* thread = Thread::getCurrentThread();
   DirectoryIterator i(f, false, "*", File::findFilesAndDirectories);
   while (!shouldExit(thread) && i.next()) {
@@ -76,12 +79,21 @@ bool sortedChildren(const File& f, Array<File>* kids, FileFilter* filter) {
   if (!shouldExit(thread)) {
     File* begin = kids->getRawDataPointer();
     File* end = begin + kids->size();
-    std::sort(begin, end, partition::compareFiles);
+    std::sort(begin, end, compareFiles);
   }
 
   return !shouldExit(thread);
 }
 
-}  // namespace tree
-}  // namespace widget
+void eraseVolumePrefix(string* name, bool diskToo) {
+  static const int len = strlen("/Volumes/");
+  if (name->find("/Volumes/") == 0) {
+    int pos = diskToo ? name->find("/", len) : len;
+    if (pos != -1)
+      name->erase(0, pos);
+  }
+}
+
+}  // namespace file
+}  // namespace util
 }  // namespace rec

@@ -7,6 +7,7 @@
 #include "rec/data/persist/Copy.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Trash.h"
+#include "rec/util/file/Util.h"
 
 namespace rec {
 namespace slow {
@@ -53,7 +54,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     stretchy_(NULL),
     timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
     fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
-    fileListener_(getCurrentFileData()->setter()) {
+    fileListener_(file::getCurrentFileData()->setter()) {
   setSize(600, 400);
 
   startStopButton_.setButtonText(T("Play/Stop"));
@@ -77,9 +78,11 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   pitchScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
   pitchScaleSlider_.setValue(1.0);
 
-  addAndMakeVisible(&waveform_);
+  addAndMakeVisible(&waveformTarget_);
+  waveformTarget_.addAndMakeVisible(&waveform_);
   addAndMakeVisible(&startStopButton_);
-  addAndMakeVisible(treeRoot_->treeView());
+  addAndMakeVisible(&treeRootTarget_);
+  treeRootTarget_.addAndMakeVisible(treeRoot_->treeView());
   addAndMakeVisible(&explanation_);
   addAndMakeVisible(&timeScaleSlider_);
   addAndMakeVisible(&pitchScaleSlider_);
@@ -91,6 +94,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   startStopButton_.addListener(this);
   waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
+  // treeRootTarget_.addListener(&fileListener_);
+  waveformTarget_.addListener(&fileListener_);
 
   transportSource_->addListener(&songDial_);
   transportSource_->addListener(&songTime_);
@@ -104,8 +109,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   fileLocker_->startThread();
   timeLocker_->startThread();
-  getCurrentFileData()->addListener(fileLocker_.get());
-  getCurrentFileData()->requestUpdate();
+  file::getCurrentFileData()->addListener(fileLocker_.get());
+  file::getCurrentFileData()->requestUpdate();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -113,9 +118,9 @@ void MainPage::paint(Graphics& g) {
 }
 
 void MainPage::resized() {
-  waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
+  waveformTarget_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
   startStopButton_.setBounds(16, getHeight() - 46, 150, 32);
-  treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
+  treeRootTarget_.setBounds(16, 8, getWidth() - 32, getHeight() - 245);
   explanation_.setBounds(224, getHeight() - 42, getWidth() - 248, 32);
   timeScaleSlider_.setBounds(300, getHeight() - 90, 200, 24);
   pitchScaleSlider_.setBounds(300, getHeight() - 60, 200, 24);
@@ -138,7 +143,7 @@ void MainPage::operator()(const VolumeFile& file) {
     timeLocker_->initialize(0);
     transportSource_->clear();
     cursor_->setTime(0.0f);
-    
+
     if (empty(file_))
       return;
 

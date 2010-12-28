@@ -29,7 +29,6 @@ class Data : public UntypedData,
   }
 
   virtual ~Data() {
-    // I don't think this ever happens.
     DLOG(INFO) << "Deleting data: " << getProtoName(Proto::default_instance());
   }
 

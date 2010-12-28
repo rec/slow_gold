@@ -3,8 +3,8 @@
 
 #include "rec/base/base.h"
 #include "rec/widget/tree/NodeItem.h"
-#include "rec/widget/tree/VolumeFile.pb.h"
-#include "rec/widget/tree/GetVolumes.h"
+#include "rec/util/file/VolumeFile.pb.h"
+#include "rec/util/file/GetVolumes.h"
 
 namespace rec {
 namespace widget {
@@ -20,7 +20,7 @@ class Root : public listener::Broadcaster<const VolumeFile&>, public Thread {
 
  private:
   void update();
-  void addVolume(const Volume& volume, int insertAt);
+  void addVolume(const file::Volume& volume, int insertAt);
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
   int getNumNodes() const { return root_.getNumSubItems(); }
 
@@ -32,7 +32,7 @@ class Root : public listener::Broadcaster<const VolumeFile&>, public Thread {
   TreeView tree_;
   TreeViewItem root_;
   NodeDesc desc_;
-  VolumeList volumes_;
+  file::VolumeList volumes_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
   JUCE_LEAK_DETECTOR(Root);

@@ -5,7 +5,6 @@
 
 namespace rec {
 namespace util {
-namespace partition {
 
 bool isASCII(int c);
 bool isPunctuation(int c);
@@ -35,7 +34,6 @@ int indexOfDifference(const Collection& items, const int i);
 
 bool compareFiles(const File& f, const File& g);
 
-}  // namespace partition
 }  // namespace util
 }  // namespace rec
 

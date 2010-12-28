@@ -50,7 +50,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d) {
-  waveform->addChildComponent(this);
+  waveform_->addChildComponent(this);
   setTime(time);
 }
 

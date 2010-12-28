@@ -8,7 +8,7 @@
 #include "rec/util/cd/StripLines.h"
 #include "rec/util/Exception.h"
 #include "rec/base/ArraySize.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
 
 namespace rec {
 namespace util {

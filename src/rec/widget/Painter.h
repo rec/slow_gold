@@ -16,6 +16,7 @@ class Painter {
     BACKGROUND,
     FOREGROUND,
     HIGHLIGHT,
+    BORDER,
   };
 
   Painter(const Widget& widget, juce::Graphics* g,

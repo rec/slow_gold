@@ -10,8 +10,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/Node.pb.h"
-#include "rec/widget/tree/VolumeFile.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -46,7 +45,7 @@ class Node : public juce::TreeViewItem,
   bool alreadyVisited() const;
 
   const VolumeFile& volumeFile() const { return volumeFile_; }
-  Volume::Type type() const { return volumeFile_.volume().type(); }
+  file::Volume::Type type() const { return volumeFile_.volume().type(); }
   bool processing() const { return processing_; }
 
   void setProcessing(bool p) {

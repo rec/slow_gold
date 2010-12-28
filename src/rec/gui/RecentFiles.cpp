@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Data.h"
 

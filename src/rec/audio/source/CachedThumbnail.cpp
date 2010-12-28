@@ -1,7 +1,7 @@
 #include "rec/audio/source/CachedThumbnail.h"
 
 #include "rec/util/thread/FileWriter.h"
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
 #include "rec/audio/AudioFormatManager.h"
 
 namespace rec {

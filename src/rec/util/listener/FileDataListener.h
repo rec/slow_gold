@@ -26,7 +26,7 @@ class FileDataListener : public Listener<const Proto&> {
 
   virtual void operator()(const Proto& message) {
     set(proto::getValue(address_, message));
-    onChanged();
+    onChange();
   }
 
   Data* data() { return data_; }
@@ -38,23 +38,21 @@ class FileDataListener : public Listener<const Proto&> {
 
     data_ = data;
 
-    if (data_) {
+    if (data_)
       data_->addListener(this);
-      (*this)(data_->get());
-    }
   }
 
  protected:
-  virtual const Value get() const = 0;
-  virtual void set(const Value&) = 0;
-
-  virtual void onChanged() {
+  virtual void onChange() {
     if (data_)
       data_->setter()->set(address_, get());
     else
       LOG(ERROR) << "No data but got a change on "
                  << persist::getProtoName<Proto>();
   }
+
+  virtual const Value get() const = 0;
+  virtual void set(const Value&) = 0;
 
  private:
   const Address address_;

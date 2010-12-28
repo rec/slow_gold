@@ -2,16 +2,14 @@
 
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
-#include "rec/util/partition/Compare.h"
+#include "rec/util/Compare.h"
 #include "rec/util/partition/Partition.h"
-#include "rec/widget/tree/SortedChildren.h"
+#include "rec/util/file/Util.h"
 #include "rec/widget/tree/Shard.h"
 
 using namespace juce;
 
 using namespace rec::thread;
-
-using rec::util::partition::indexOfDifference;
 
 namespace rec {
 namespace widget {
@@ -52,7 +50,7 @@ void Directory::computeChildren() {
   }
 
   resetChildren();
-  sortedChildren(f, children_);
+  file::sortedChildren(f, children_);
   range_.begin_ = 0;
   range_.end_ = children_->size();
   partition();
@@ -63,7 +61,7 @@ void Directory::partition() {
   partition::ShardArray shards = partition::partitionList(*children_, range_,
                                                           minPartition());
 
-  for (int i = 0; i < shards.size() - 1; ++i) {
+  for (int i = 0; i < shards.size(); ++i) {
     ptr<Node> node(createChildFile(shards[i]));
     node->addListener(this);
     if (isOpen_)

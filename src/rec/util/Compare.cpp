@@ -1,4 +1,4 @@
-#include "rec/util/partition/Compare.h"
+#include "rec/util/Compare.h"
 #include "rec/util/partition/Convertors.h"
 
 using namespace juce;
@@ -6,7 +6,6 @@ using std::vector;
 
 namespace rec {
 namespace util {
-namespace partition {
 
 bool isASCII(int c) { return c > 0 && c <= 0xFF; }
 
@@ -55,7 +54,7 @@ int indexOfDifference(const Collection& items, const int i) {
 }
 
 bool compareFiles(const File& f, const File& g) {
-  return partition::compareStrings(f.getFileName(), g.getFileName()) < 0;
+  return compareStrings(f.getFileName(), g.getFileName()) < 0;
 }
 
 template int compareStrings(const String& x, const String& y);
@@ -63,6 +62,5 @@ template int compareStrings(const String& x, const String& y);
 template int indexOfDifference(const Array<File>& items, const int i);
 template int indexOfDifference(const vector<string>& items, const int i);
 
-}  // namespace partition
 }  // namespace util
 }  // namespace rec

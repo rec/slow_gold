@@ -1,5 +1,5 @@
 #include "rec/util/partition/Partition.h"
-#include "rec/util/partition/Compare.h"
+#include "rec/util/Compare.h"
 #include "rec/util/partition/Convertors.h"
 
 using namespace juce;
@@ -43,15 +43,17 @@ void complexPartition(const Coll& col, const Range<int>& r, ShardArray* shards) 
     Range<int> nonA = range;
     while (isNonAlpha(getName(col[++range.begin_])[diff]));
     nonA.end_ = range.begin_;
-    add(shards, "<0-9, punctuation>", nonA);
+    add(shards, "<!-/, 0-9>", nonA);
   }
 
   bool ascii = isASCII(getName(col, range.begin_)[diff]);
   while (range.begin_ != range.end_) {
     String name = getName(col, range.begin_);
     int charToMatch = tolower(name[diff]);
-    if (ascii && !isASCII(charToMatch))
+    if (ascii && !isASCII(charToMatch)) {
+      add(shards, "...", range);
       break;
+    }
 
     Range<int> same = range;
     while (++range.begin_ != range.end_ &&

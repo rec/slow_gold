@@ -1,4 +1,5 @@
-#include "rec/widget/tree/VolumeFile.h"
+#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/Util.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/cd/CDReader.h"
@@ -7,8 +8,8 @@
 using namespace juce;
 
 namespace rec {
-namespace widget {
-namespace tree {
+namespace util {
+namespace file {
 
 namespace {
 
@@ -153,15 +154,35 @@ bool empty(const VolumeFile& f) {
   return !(f.has_volume() && f.volume().has_type() && f.volume().type());
 }
 
-void eraseVolumePrefix(string* name, bool diskToo) {
-  static const int len = strlen("/Volumes/");
-  if (name->find("/Volumes/") == 0) {
-    int pos = diskToo ? name->find("/", len) : len;
-    if (pos != -1)
-      name->erase(0, pos);
+VolumeFile toVolumeFile(const File& file) {
+  VolumeFile vf;
+  vf.mutable_volume()->set_type(Volume::VOLUME);
+
+  File f = file, p = file.getParentDirectory();
+  for (; f != p; f = p, p = f.getParentDirectory())
+    vf.add_path(f.getFileName().toCString());
+  vf.add_path(f.getFileName().toCString());
+
+
+#if JUCE_MAC
+  int last = vf.path_size() - 1;
+  const string& root = vf.path(last);
+
+  if (root == "Volumes" && last != 0) {
+    vf.mutable_volume()->set_name(vf.path(last - 1));
+    vf.mutable_path()->RemoveLast();
+    vf.mutable_path()->RemoveLast();
   }
+
+  // TODO: CD things here.
+#endif
+
+  for (int i = 0; i < vf.path_size() / 2; ++i)
+    vf.mutable_path()->SwapElements(i, vf.path_size() - i - 1);
+
+  return vf;
 }
 
-}  // namespace tree
-}  // namespace widget
+}  // namespace file
+}  // namespace util
 }  // namespace rec

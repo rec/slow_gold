@@ -7,7 +7,6 @@
 
 namespace rec {
 namespace util {
-namespace partition {
 
 template <typename Str> int getLength(const Str&);
 template <typename Str> Str toLowerCase(const Str& s);
@@ -34,8 +33,6 @@ List rangeToList(const Range<int>& range) {
   return list;
 }
 
-
-}  // namespace partition
 }  // namespace util
 }  // namespace rec
 
