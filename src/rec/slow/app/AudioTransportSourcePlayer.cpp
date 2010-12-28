@@ -19,8 +19,8 @@ AudioTransportSourcePlayer::~AudioTransportSourcePlayer() {
 
 void AudioTransportSourcePlayer::clear() {
   stop();
-  setPosition(0);
   setSource(NULL);
+  setPosition(0);
 }
 
 void AudioTransportSourcePlayer::setPosition(double newPosition) {

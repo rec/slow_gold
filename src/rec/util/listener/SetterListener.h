@@ -26,7 +26,9 @@ class SetterListener : public Listener<Proto> {
   SetterListener(Setter* s, P a, P b, P c) : address_(a, b, c), setter_(s) {}
   SetterListener(Setter* s, P a, P b, P c, P d) : address_(a, b, c, d), setter_(s) {}
 
-  virtual void operator()(Proto v) { setter_->set(address_, Value(v)); }
+  virtual void operator()(Proto v) {
+    setter_->set(address_, Value(v));
+  }
 
  private:
   const Address address_;

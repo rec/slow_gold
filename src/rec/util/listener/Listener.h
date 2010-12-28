@@ -73,6 +73,7 @@ Broadcaster<Type>::~Broadcaster() {
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
+  DCHECK(listener != this);
   ScopedLock l(lock_);
   listeners_.insert(listener);
   listener->broadcasters_.insert(this);

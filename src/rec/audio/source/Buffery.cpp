@@ -54,7 +54,7 @@ bool Buffery::fillNextBlock() {
   }
 
   int numSamples = getSize(block);
-  if (!numSamples) {
+  if (numSamples <= 0) {
     LOG(ERROR) << "Getting an empty block";
     return true;
   }

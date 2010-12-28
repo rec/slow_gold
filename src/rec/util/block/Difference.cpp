@@ -24,7 +24,7 @@ BlockSet difference(const BlockSet& s, const Block& block) {
     }
   }
 
-  if (getSize(b))
+  if (getSize(b) > 0)
     diff.insert(b);
 
   return diff;

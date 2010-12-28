@@ -33,10 +33,12 @@ class ComponentContainer : public Component,
     CLOSE,
     CUT,
     PASTE,
+    QUIT,
     RECENT_FILES
   };
 
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& menuName) {
+    DLOG(INFO) << "getMenuForIndex";
     PopupMenu menu;
     if (menuName == "File") {
       menu.addItem(OPEN, "Open...");
@@ -48,6 +50,8 @@ class ComponentContainer : public Component,
         submenu.addItem(RECENT_FILES + i, getFilename(recent.file(i).file()));
 
       menu.addSubMenu("Open recent", submenu);
+      menu.addItem(QUIT, "Quit");
+
     } else if (menuName == "Edit") {
       menu.addItem(CUT, "Cut");
       menu.addItem(PASTE, "Paste");
@@ -56,13 +60,19 @@ class ComponentContainer : public Component,
     return menu;
   }
 
+  void quit() {
+    JUCEApplication::getInstance()->systemRequestedQuit();
+  }
+
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
+    DLOG(INFO) << "menuItemSelected";
   	MainPage* mainPage = mainPage_->mainPage();
     switch (menuItemID) {
       case OPEN:   mainPage->doOpen(); return;
       case CLOSE:  mainPage->doClose(); return;
       case CUT:    mainPage_->cut(); return;
       case PASTE:  mainPage_->paste(); return;
+      case QUIT:  quit(); return;
     }
     mainPage_->loadRecentFile(menuItemID - RECENT_FILES);
   }
