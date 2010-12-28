@@ -45,13 +45,12 @@ class MainPage : public Component,
   void resized();
   void buttonClicked(Button*);
 
-  virtual void operator()(const TimeAndMouseEvent& timeMouse) {
-    timeLocker_->set(timeMouse.first);
-  }
+  virtual void operator()(const TimeAndMouseEvent& timeMouse);
   virtual void operator()(const float& time);
   virtual void operator()(const VolumeFile& file);
 
-  void loadRecentFile(int menuItemId);
+  void doOpen();
+  void doClose();
 
  private:
   typedef thread::ChangeLocker<float> TimeLocker;
@@ -94,3 +93,5 @@ class MainPage : public Component,
 
 
 #endif   // __REC_COMPONENT_MAIN_PAGE_J_H__
+
+

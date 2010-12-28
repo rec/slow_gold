@@ -35,8 +35,8 @@ void Waveform::paint(Graphics& g) {
 
   } else {
     g.setFont(14.0f);
-    g.drawFittedText("(No audio file selected)", 0, 0, getWidth(), getHeight(),
-                     juce::Justification::centred, 0);
+    g.drawFittedText("Drop files here or click to open a new file",
+                     0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
   }
 }
 

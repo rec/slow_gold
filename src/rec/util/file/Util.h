@@ -18,6 +18,8 @@ bool sortedChildren(const File& f, juce::Array<File>* files,
 
 void eraseVolumePrefix(string* name, bool diskToo = true);
 
+String audioFilePatterns();
+
 }  // namespace file
 }  // namespace util
 }  // namespace rec

@@ -11,6 +11,7 @@ namespace rec {
 namespace util {
 namespace file {
 
+
 bool isHidden(const File& file) {
   if (file.getFileName()[0] == '.')
     return true;
@@ -61,6 +62,10 @@ bool isAudio(const File& file) {
     file.hasFileExtension("mp3") ||
     file.hasFileExtension("ogg") ||
     file.hasFileExtension("wav");
+}
+
+String audioFilePatterns() {
+  return "*.aiff;*.flac;*.m4a;*.mp3;*.ogg;*.wav";
 }
 
 bool isAudioOrDirectory(const File& file) {

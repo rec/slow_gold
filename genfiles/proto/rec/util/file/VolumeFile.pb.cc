@@ -23,6 +23,9 @@ const ::google::protobuf::EnumDescriptor* Volume_Type_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* VolumeFile_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   VolumeFile_reflection_ = NULL;
+const ::google::protobuf::Descriptor* VolumeFileList_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  VolumeFileList_reflection_ = NULL;
 
 }  // namespace
 
@@ -66,6 +69,21 @@ void protobuf_AssignDesc_rec_2futil_2ffile_2fVolumeFile_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(VolumeFile));
+  VolumeFileList_descriptor_ = file->message_type(2);
+  static const int VolumeFileList_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFileList, file_),
+  };
+  VolumeFileList_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      VolumeFileList_descriptor_,
+      VolumeFileList::default_instance_,
+      VolumeFileList_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFileList, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFileList, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(VolumeFileList));
 }
 
 namespace {
@@ -82,6 +100,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     Volume_descriptor_, &Volume::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     VolumeFile_descriptor_, &VolumeFile::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    VolumeFileList_descriptor_, &VolumeFileList::default_instance());
 }
 
 }  // namespace
@@ -91,6 +111,8 @@ void protobuf_ShutdownFile_rec_2futil_2ffile_2fVolumeFile_2eproto() {
   delete Volume_reflection_;
   delete VolumeFile::default_instance_;
   delete VolumeFile_reflection_;
+  delete VolumeFileList::default_instance_;
+  delete VolumeFileList_reflection_;
 }
 
 void protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto() {
@@ -106,13 +128,16 @@ void protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto() {
     "\"9\n\004Type\022\010\n\004NONE\020\000\022\006\n\002CD\020\001\022\t\n\005MUSIC\020\002\022\010\n"
     "\004USER\020\003\022\n\n\006VOLUME\020\004\"A\n\nVolumeFile\022%\n\006vol"
     "ume\030\001 \001(\0132\025.rec.util.file.Volume\022\014\n\004path"
-    "\030\002 \003(\t", 246);
+    "\030\002 \003(\t\"9\n\016VolumeFileList\022\'\n\004file\030\001 \003(\0132\031"
+    ".rec.util.file.VolumeFile", 305);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/file/VolumeFile.proto", &protobuf_RegisterTypes);
   Volume::default_instance_ = new Volume();
   VolumeFile::default_instance_ = new VolumeFile();
+  VolumeFileList::default_instance_ = new VolumeFileList();
   Volume::default_instance_->InitAsDefaultInstance();
   VolumeFile::default_instance_->InitAsDefaultInstance();
+  VolumeFileList::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2futil_2ffile_2fVolumeFile_2eproto);
 }
 
@@ -677,6 +702,208 @@ void VolumeFile::Swap(VolumeFile* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = VolumeFile_descriptor_;
   metadata.reflection = VolumeFile_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int VolumeFileList::kFileFieldNumber;
+#endif  // !_MSC_VER
+
+VolumeFileList::VolumeFileList()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void VolumeFileList::InitAsDefaultInstance() {
+}
+
+VolumeFileList::VolumeFileList(const VolumeFileList& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void VolumeFileList::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+VolumeFileList::~VolumeFileList() {
+  SharedDtor();
+}
+
+void VolumeFileList::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void VolumeFileList::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* VolumeFileList::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return VolumeFileList_descriptor_;
+}
+
+const VolumeFileList& VolumeFileList::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();  return *default_instance_;
+}
+
+VolumeFileList* VolumeFileList::default_instance_ = NULL;
+
+VolumeFileList* VolumeFileList::New() const {
+  return new VolumeFileList;
+}
+
+void VolumeFileList::Clear() {
+  file_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool VolumeFileList::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .rec.util.file.VolumeFile file = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_file:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_file()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(10)) goto parse_file;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void VolumeFileList::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated .rec.util.file.VolumeFile file = 1;
+  for (int i = 0; i < this->file_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->file(i), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* VolumeFileList::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated .rec.util.file.VolumeFile file = 1;
+  for (int i = 0; i < this->file_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->file(i), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int VolumeFileList::ByteSize() const {
+  int total_size = 0;
+  
+  // repeated .rec.util.file.VolumeFile file = 1;
+  total_size += 1 * this->file_size();
+  for (int i = 0; i < this->file_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->file(i));
+  }
+  
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void VolumeFileList::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const VolumeFileList* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const VolumeFileList*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void VolumeFileList::MergeFrom(const VolumeFileList& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  file_.MergeFrom(from.file_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void VolumeFileList::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void VolumeFileList::CopyFrom(const VolumeFileList& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool VolumeFileList::IsInitialized() const {
+  
+  return true;
+}
+
+void VolumeFileList::Swap(VolumeFileList* other) {
+  if (other != this) {
+    file_.Swap(&other->file_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata VolumeFileList::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = VolumeFileList_descriptor_;
+  metadata.reflection = VolumeFileList_reflection_;
   return metadata;
 }
 

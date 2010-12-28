@@ -2,12 +2,12 @@
 
 #include "rec/slow/app/MainPage.h"
 
-#include "rec/gui/RecentFiles.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Copy.h"
+#include "rec/gui/RecentFiles.h"
 #include "rec/util/STL.h"
-#include "rec/util/thread/Trash.h"
 #include "rec/util/file/Util.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace slow {
@@ -178,6 +178,24 @@ void MainPage::operator()(const float& time) {
     LOG(ERROR) << "Failed to fill buffer.";
 }
 
+void MainPage::doOpen() {
+  juce::FileChooser chooser("Please choose an audio file", File::nonexistent,
+                            file::audioFilePatterns(), true);
+
+  if (chooser.browseForFileToOpen())
+    fileListener_(file::toVolumeFile(chooser.getResult()));
+}
+
+void MainPage::doClose() {
+  fileListener_(VolumeFile());
+}
+
+void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
+  if (empty(file_))
+    doOpen();
+  else
+    timeLocker_->set(timeMouse.first);
+}
+
 }  // namespace slow
 }  // namespace rec
-

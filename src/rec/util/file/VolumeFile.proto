@@ -17,3 +17,7 @@ message VolumeFile {
   optional Volume volume = 1;
   repeated string path = 2;
 };
+
+message VolumeFileList {
+  repeated VolumeFile file = 1;
+};

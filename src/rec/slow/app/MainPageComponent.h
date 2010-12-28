@@ -27,6 +27,8 @@ class MainPageComponent  : public Component {
 
   ~MainPageComponent() {}
 
+  MainPage* mainPage() { return &mainPage_; }
+
   void loadRecentFile(int menuItemId) {
     gui::RecentFiles recent = gui::getSortedRecentFiles();
     const VolumeFile& file = recent.file(menuItemId - 1).file();

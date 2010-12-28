@@ -28,35 +28,43 @@ class ComponentContainer : public Component,
     return StringArray(names);
   }
 
+  enum MenuItems {
+    OPEN = 1,
+    CLOSE,
+    CUT,
+    PASTE,
+    RECENT_FILES
+  };
+
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& menuName) {
     PopupMenu menu;
     if (menuName == "File") {
-      menu.addItem(999, "Open...");
+      menu.addItem(OPEN, "Open...");
+      menu.addItem(CLOSE, "Close");
 
       gui::RecentFiles recent = gui::getSortedRecentFiles();
       PopupMenu submenu;
       for (int i = 0; i < recent.file_size(); ++i)
-        submenu.addItem(i + 1, getFilename(recent.file(i).file()));
+        submenu.addItem(RECENT_FILES + i, getFilename(recent.file(i).file()));
 
       menu.addSubMenu("Open recent", submenu);
     } else if (menuName == "Edit") {
-      menu.addItem(1, "Cut");
-      menu.addItem(2, "Paste");
+      menu.addItem(CUT, "Cut");
+      menu.addItem(PASTE, "Paste");
     }
 
     return menu;
   }
 
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
-    if (topLevelMenuIndex == 0) {
-      if (menuItemID != 999)
-        mainPage_->loadRecentFile(menuItemID);
-    } else if (topLevelMenuIndex == 1) {
-      if (menuItemID == 1)
-        mainPage_->cut();
-      else if (menuItemID == 2)
-        mainPage_->paste();
+  	MainPage* mainPage = mainPage_->mainPage();
+    switch (menuItemID) {
+      case OPEN:   mainPage->doOpen(); return;
+      case CLOSE:  mainPage->doClose(); return;
+      case CUT:    mainPage_->cut(); return;
+      case PASTE:  mainPage_->paste(); return;
     }
+    mainPage_->loadRecentFile(menuItemID - RECENT_FILES);
   }
 
   // ApplicationCommandTarget virtual methods.
