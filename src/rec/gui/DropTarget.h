@@ -42,13 +42,6 @@ class DropTarget : public FileDragAndDropTarget, public Parent {
     }
   }
 
-#if 0
-  virtual void resized() {
-    for (int i = 0; i < this->getNumChildComponents(); ++i)
-      this->getChildComponent(i)->setBounds(this->getLocalBounds());
-  }
-#endif
-
   void repaint() { Parent::repaint(); }
   bool draggingOver() const { return draggingOver_; }
 
