@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_TREE_ROOT__
 #define __REC_WIDGET_TREE_ROOT__
 
-#include "rec/base/base.h"
+#include "rec/gui/DropTarget.h"
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/file/VolumeFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
@@ -10,10 +10,11 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Root : public listener::Broadcaster<const VolumeFile&>, public Thread {
+class Root : public Thread, public listener::Broadcaster<const VolumeFile&> {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
+
   virtual void run();
   void mergeNewIntoOld();
   TreeView* treeView() { return &tree_; }
@@ -29,9 +30,9 @@ class Root : public listener::Broadcaster<const VolumeFile&>, public Thread {
     bool mightContainSubItems() { return true; }
   };
 
-  TreeView tree_;
-  TreeViewItem root_;
   NodeDesc desc_;
+  gui::DropTarget<TreeView, String, gui::NullInterface> tree_;
+  TreeViewItem root_;
   file::VolumeList volumes_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);

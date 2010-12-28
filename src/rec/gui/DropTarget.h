@@ -9,8 +9,12 @@
 namespace rec {
 namespace gui {
 
-template <typename Parent, typename Init = String>
-class DropTarget : public FileDragAndDropTarget, public Parent {
+struct NullInterface {};
+
+template <typename Parent,
+          typename Init = String,
+          typename Interface = FileDragAndDropTarget>
+class DropTarget : public Interface, public Parent {
  public:
   DropTarget(const Init& init) : Parent(init), draggingOver_(false) {}
   virtual ~DropTarget() {}

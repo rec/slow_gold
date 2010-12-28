@@ -18,7 +18,8 @@ using namespace rec::gui;
 
 static const int ROOT_WAIT_TIME = 1000;
 
-Root::Root(const NodeDesc& desc) : Thread("tree::Root"), desc_(desc) {
+Root::Root(const NodeDesc& desc)
+    : Thread("tree::Root"), desc_(desc), tree_("Root") {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
 }

@@ -20,8 +20,8 @@ namespace rec {
 namespace util {
 namespace listener {
 }
-namespace file { 
-class VolumeFile; 
+namespace file {
+class VolumeFile;
 }
 }  // namespace util
 
