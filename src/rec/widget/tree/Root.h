@@ -16,7 +16,7 @@ class Root : public Thread, public listener::Broadcaster<const VolumeFile&> {
   virtual ~Root() {}
 
   virtual void run();
-  void mergeNewIntoOld();
+  void mergeNewIntoOld(const file::VolumeList& volumes);
   TreeView* treeView() { return &tree_; }
 
  private:

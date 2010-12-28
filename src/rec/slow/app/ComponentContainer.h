@@ -65,16 +65,17 @@ class ComponentContainer : public Component,
   }
 
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
-    DLOG(INFO) << "menuItemSelected";
+    DLOG(INFO) << "menuItemSelected: "
+               << menuItemID << ", " << topLevelMenuIndex;
   	MainPage* mainPage = mainPage_->mainPage();
     switch (menuItemID) {
-      case OPEN:   mainPage->doOpen(); return;
-      case CLOSE:  mainPage->doClose(); return;
-      case CUT:    mainPage_->cut(); return;
-      case PASTE:  mainPage_->paste(); return;
-      case QUIT:  quit(); return;
+      case OPEN:   mainPage->doOpen(); break;
+      case CLOSE:  mainPage->doClose(); break;
+      case CUT:    mainPage_->cut(); break;
+      case PASTE:  mainPage_->paste(); break;
+      case QUIT:   quit(); break;
+      default:     mainPage_->loadRecentFile(menuItemID - RECENT_FILES); break;
     }
-    mainPage_->loadRecentFile(menuItemID - RECENT_FILES);
   }
 
   // ApplicationCommandTarget virtual methods.

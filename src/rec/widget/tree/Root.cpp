@@ -26,15 +26,14 @@ Root::Root(const NodeDesc& desc)
 
 void Root::run() {
   while (!threadShouldExit()) {
-    volumes_ = getVolumes();
-    thread::callAsync(this, &Root::mergeNewIntoOld);
+    thread::callAsync(this, &Root::mergeNewIntoOld, getVolumes());
     wait(ROOT_WAIT_TIME);
   }
 }
 
-void Root::mergeNewIntoOld() {
-  for (int i = 0, j = 0; i < volumes_.size() || j < getNumNodes(); ++i) {
-    const Volume* v1 = (i < volumes_.size()) ? &volumes_[i] : NULL;
+void Root::mergeNewIntoOld(const file::VolumeList& volumes) {
+  for (int i = 0, j = 0; i < volumes.size() || j < getNumNodes(); ++i) {
+    const Volume* v1 = (i < volumes.size()) ? &volumes[i] : NULL;
     const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;
     const Volume* v2 = n ? &(n->volumeFile().volume()) : NULL;
 
