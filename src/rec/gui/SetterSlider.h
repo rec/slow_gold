@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_SETTERSLIDER__
 #define __REC_GUI_SETTERSLIDER__
 
-#include "rec/util/listener/FileDataListener.h"
+#include "rec/util/listener/DataListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -9,7 +9,7 @@ namespace gui {
 
 template <typename Proto>
 class SetterSlider : public juce::Slider,
-                     public listener::FileDataListener<Proto> {
+                     public listener::DataListener<Proto> {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
@@ -17,7 +17,7 @@ class SetterSlider : public juce::Slider,
 
   SetterSlider(const String& name, const Address& address, const string& dataFileName)
       : juce::Slider(name),
-        listener::FileDataListener<Proto>(address, dataFileName) {
+        listener::DataListener<Proto>(address, dataFileName) {
   }
 
   virtual void valueChanged() { this->onChange(); }

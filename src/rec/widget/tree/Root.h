@@ -5,12 +5,14 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/file/VolumeFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
+#include "rec/util/listener/DataListener.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 
-class Root : public Thread, public listener::Broadcaster<const VolumeFile&> {
+class Root : public Thread,
+             public listener::Broadcaster<const VolumeFile&> {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
@@ -34,6 +36,7 @@ class Root : public Thread, public listener::Broadcaster<const VolumeFile&> {
   gui::DropTarget<TreeView, String, gui::NullInterface> tree_;
   TreeViewItem root_;
   file::VolumeList volumes_;
+  // listener::DataListener<file::VolumeFileList> fileListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
   JUCE_LEAK_DETECTOR(Root);

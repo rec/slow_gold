@@ -5,6 +5,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/file/VolumeFile.h"
 #include "rec/slow/app/MainPageComponent.h"
+#include "rec/util/thread/MakeThread.h"
 
 using namespace juce;
 
@@ -34,6 +35,7 @@ class ComponentContainer : public Component,
     CUT,
     PASTE,
     QUIT,
+    EJECT,
     RECENT_FILES
   };
 
@@ -50,6 +52,7 @@ class ComponentContainer : public Component,
         submenu.addItem(RECENT_FILES + i, getFilename(recent.file(i).file()));
 
       menu.addSubMenu("Open recent", submenu);
+      menu.addItem(EJECT, "Eject all discs");
       menu.addItem(QUIT, "Quit");
 
     } else if (menuName == "Edit") {
@@ -64,7 +67,19 @@ class ComponentContainer : public Component,
     JUCEApplication::getInstance()->systemRequestedQuit();
   }
 
+  void eject() {
+    StringArray burners = AudioCDBurner::findAvailableDevices();
+    for (int i = 0; i < burners.size(); ++i)
+      ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
+  }
+
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {
+    thread::runInNewThread("doMenuSelected", 5, 
+    											 this, &ComponentContainer::doMenuItemSelected,
+                           menuItemID, topLevelMenuIndex);
+  }
+
+  void doMenuItemSelected(int menuItemID, int topLevelMenuIndex) {
     DLOG(INFO) << "menuItemSelected: "
                << menuItemID << ", " << topLevelMenuIndex;
   	MainPage* mainPage = mainPage_->mainPage();
@@ -73,6 +88,7 @@ class ComponentContainer : public Component,
       case CLOSE:  mainPage->doClose(); break;
       case CUT:    mainPage_->cut(); break;
       case PASTE:  mainPage_->paste(); break;
+      case EJECT:  eject(); break;
       case QUIT:   quit(); break;
       default:     mainPage_->loadRecentFile(menuItemID - RECENT_FILES); break;
     }

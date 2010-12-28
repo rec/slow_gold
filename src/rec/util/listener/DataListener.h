@@ -1,5 +1,5 @@
-#ifndef __REC_UTIL_LISTENER_FILEDATALISTENER__
-#define __REC_UTIL_LISTENER_FILEDATALISTENER__
+#ifndef __REC_UTIL_LISTENER_DATALISTENER__
+#define __REC_UTIL_LISTENER_DATALISTENER__
 
 #include "rec/util/listener/Listener.h"
 #include "rec/data/persist/Data.h"
@@ -11,22 +11,21 @@ namespace util {
 namespace listener {
 
 template <typename Proto>
-class FileDataListener : public Listener<const Proto&> {
+class DataListener : public Listener<const Proto&> {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
-  explicit FileDataListener(const Address& address,
-                            const string& name)
+  explicit DataListener(const Address& address,
+                        const string& name)
       : address_(address), name_(name), data_(NULL) {
   }
 
-  ~FileDataListener() { setData(NULL); }
+  ~DataListener() { setData(NULL); }
 
   virtual void operator()(const Proto& message) {
     set(proto::getValue(address_, message));
-    onChange();
   }
 
   Data* data() { return data_; }
@@ -59,7 +58,7 @@ class FileDataListener : public Listener<const Proto&> {
   const string name_;
   Data* data_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(FileDataListener);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(DataListener);
 };
 
 
@@ -67,4 +66,4 @@ class FileDataListener : public Listener<const Proto&> {
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_LISTENER_FILEDATALISTENER__
+#endif  // __REC_UTIL_LISTENER_DATALISTENER__

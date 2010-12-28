@@ -8,13 +8,16 @@ namespace persist {
 
 AppInstance::AppInstance(const string& appName)
     : App(appName) {
-  using thread::callback::Loop;
-
   DCHECK(appName.length());
-  updateThread_.reset(Loop::make("App::update", UPDATE_PERIOD, UPDATE_PRIORITY,
-                     thread::makeCallback(this, &AppInstance::update)));
-  writeThread_.reset(Loop::make("App::write", WRITE_PERIOD, WRITE_PRIORITY,
-                     thread::makeCallback(this, &AppInstance::write)));
+  updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
+                                       this, &AppInstance::update));
+  updateThread_->setPriority(UPDATE_PRIORITY);
+  updateThread_->startThread();
+
+  writeThread_.reset(thread::makeLoop(WRITE_PERIOD, "App::write",
+                                       this, &AppInstance::write));
+  writeThread_->setPriority(WRITE_PRIORITY);
+  writeThread_->startThread();
 }
 
 AppInstance::~AppInstance() {}

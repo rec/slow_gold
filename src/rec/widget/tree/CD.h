@@ -51,6 +51,7 @@ class CD : public Directory {
       thread::callAsync(this, &TreeViewItem::addSubItem,
                         new Node(desc_, vf, tracks[i].c_str()), -1);
     }
+    setProcessing(false);
   }
 
  private:
