@@ -21,6 +21,7 @@
 		14E97BB2A16D0746F24DF90A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76A1D10AA9A54C30E972106B /* CoreAudio.framework */; };
 		184D05A2CE3863105F8279D8 /* Root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFF718C20886014E3A7E0968 /* Root.cpp */; };
 		1B89F86B25AC2387D2A08F61 /* Directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF6A3CCB38CBE7983E8528FA /* Directory.cpp */; };
+		1E4D1253D97D0CC626CDD5D9 /* ComponentContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EC36AADA599007B5FF5E7A4 /* ComponentContainer.cpp */; };
 		1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2501DE5143C9726EFD4CFEE5 /* Status.cpp */; };
 		218748B1BC795061B48B383C /* ReadYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C24187D27D942187F6F0613C /* ReadYaml.cpp */; };
 		28A0CDF6B7F4478930892A40 /* stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88C80D4AC91778AF36BD5055 /* stream.cpp */; };
@@ -320,6 +321,7 @@
 		68101CE7EAD44439CE55486C /* MakeThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MakeThread.h; path = ../../../../src/rec/util/thread/MakeThread.h; sourceTree = SOURCE_ROOT; };
 		69AAA86FB1A1350002574001 /* NodeComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NodeComponent.h; path = ../../../../src/rec/widget/tree/NodeComponent.h; sourceTree = SOURCE_ROOT; };
 		6CEDC50620E5F86319AD56FA /* emitterutils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitterutils.cpp; path = ../../../../src/rec/data/yaml/src/emitterutils.cpp; sourceTree = SOURCE_ROOT; };
+		6EC36AADA599007B5FF5E7A4 /* ComponentContainer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ComponentContainer.cpp; path = ../../../../src/rec/slow/app/ComponentContainer.cpp; sourceTree = SOURCE_ROOT; };
 		6F4409A5A6A7B80EC152E251 /* Mpg123.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mpg123.cpp; path = ../../../../src/rec/audio/format/mpg123/Mpg123.cpp; sourceTree = SOURCE_ROOT; };
 		6F5F60E255EC320E15627F4B /* Util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Util.cpp; path = ../../../../src/rec/util/file/Util.cpp; sourceTree = SOURCE_ROOT; };
 		7073B7FF6A3F516F96A1D338 /* null.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = null.cpp; path = ../../../../src/rec/data/yaml/src/null.cpp; sourceTree = SOURCE_ROOT; };
@@ -596,6 +598,7 @@
 				0B374ED179D5A10DD051DDB3 /* AudioSetupPage.h */,
 				D5C0D4C9F63313E83E128A08 /* AudioTransportSourcePlayer.cpp */,
 				BB0522C4ADCA5680285A5D25 /* AudioTransportSourcePlayer.h */,
+				6EC36AADA599007B5FF5E7A4 /* ComponentContainer.cpp */,
 				F6A265A780DB6EFDB2F599FD /* ComponentContainer.h */,
 				336B8609BA8818432CC0FB57 /* GenericApplication.h */,
 				879211C91C851E138CF61DD0 /* MainPage.cpp */,
@@ -666,6 +669,20 @@
 				001F75315906945159C85224 /* VolumeFile.h */,
 			);
 			name = file;
+			sourceTree = "<group>";
+		};
+		2B904CBC019C978961B881DB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		2CA4CEC7799F5D0A577935BE /* base */ = {
@@ -940,20 +957,6 @@
 				8365111D9219CCA28070F994 /* ZeroCopy.h */,
 			);
 			name = proto;
-			sourceTree = "<group>";
-		};
-		8971EB7C7372E66F092D349E /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		901085F431F5837B0268703B /* ammf_scaler */ = {
@@ -1392,7 +1395,7 @@
 				French,
 				German,
 			);
-			mainGroup = 8971EB7C7372E66F092D349E /* Source */;
+			mainGroup = 2B904CBC019C978961B881DB /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1495,6 +1498,7 @@
 				D4E81B2C18D947D6A8A83BDF /* ThinFolder.svg.cpp in Sources */,
 				A449A75BAE696198F89C5828 /* RecentFiles.cpp in Sources */,
 				EEAB7A4744C5D3105F982B69 /* AudioTransportSourcePlayer.cpp in Sources */,
+				1E4D1253D97D0CC626CDD5D9 /* ComponentContainer.cpp in Sources */,
 				DCEB49B4AD7AF16EFC1036C6 /* MainPage.cpp in Sources */,
 				559328A49B5A546E1B4F1569 /* RecWindow.cpp in Sources */,
 				2B9A6D1C70E1638BB14F2A95 /* Preferences.cpp in Sources */,
