@@ -13,7 +13,7 @@ Runny* makeStretchyRunny(PositionableAudioSource* source,
                          int position) {
   if (source) {
     ptr<Stretchy> stretchy(new Stretchy(stretchyDesc, source));
-    ptr<Runny> runny(new Runny(runnyDesc, stretchy.transfer()));
+    ptr<Runny> runny(new Runny(stretchy.transfer(), runnyDesc));
     runny->setNextReadPosition(position);
 
     Thread* thread = Thread::getCurrentThread();

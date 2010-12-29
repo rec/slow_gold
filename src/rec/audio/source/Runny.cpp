@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Runny::Runny(const RunnyProto& desc, Source* source)
+Runny::Runny(Source* source, const RunnyProto& desc)
   : Wrappy::Position(source),
       Thread("Runny"),
       buffer_(2, desc.buffer_size()),
@@ -43,17 +43,18 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     ScopedLock l(lock_);
     begin = filled_.begin();
     ready = filled_.filled();
-    // DLOG(INFO) << "-> * " << filled_.begin() << ":" << filled_.filled() << ", " << this;
+    DLOG_EVERY_N(INFO, 64) << "-> * " << filled_.begin()
+                           << ":" << filled_.filled() << ", " << this;
   }
 
   if (threadShouldExit())
     return;
 
   if (ready < info.numSamples) {
-    LOG_FIRST_N(ERROR, 10) << "request:" << info.numSamples
-                           << " got:" << ready
-                           << " filled: " << filled_.filled()
-                           << " begin: " << filled_.begin();
+    LOG_FIRST_N(INFO, 10) << "LIMITED: request:" << info.numSamples
+                          << " got:" << ready
+                          << " filled: " << filled_.filled()
+                          << " begin: " << filled_.begin();
     // TODO:  put blanks in the missing data.
   }
 
@@ -79,7 +80,9 @@ bool Runny::fill() {
   if (!info.numSamples || threadShouldExit())
     return true;  // No more to fill!
 
-  // DLOG(INFO) << "* <- " << filled_.begin() << ":" << filled_.filled() << ", " << this;
+  DLOG_EVERY_N(INFO, 64) << "* <- " << filled_.begin()
+                         << ":" << filled_.filled() << ", " << this;
+
   source()->prepareToPlay(desc_.chunk_size(), 44100);
   source()->getNextAudioBlock(info);
 

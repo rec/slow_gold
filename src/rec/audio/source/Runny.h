@@ -13,7 +13,8 @@ namespace source {
 
 class Runny : public Wrappy::Position, public Thread {
  public:
-  Runny(const RunnyProto& desc, Source* source);
+  Runny(Source* source, 
+  	    const RunnyProto& desc = RunnyProto::default_instance());
 
   virtual ~Runny();
 

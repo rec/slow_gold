@@ -40,17 +40,19 @@ class Wrappy : public PositionableAudioSource {
     setNextReadPosition(mod(x + getNextReadPosition()));
   }
 
-  virtual PositionableAudioSource* source() const { 
-    return source_.get(); 
+  virtual PositionableAudioSource* source() const {
+    ScopedLock l(lock_);
+    return source_.get();
   }
-  void setSource(PositionableAudioSource* s = NULL) { 
-    source_.reset(s ? s : new Empty()); 
-  }
-  PositionableAudioSource* transfer() { 
-    return source_.transfer(); 
+  void setSource(PositionableAudioSource* s = NULL) {
+    ScopedLock l(lock_);
+    source_.reset(s ? s : new Empty());
   }
 
   class Position;
+
+ protected:
+  CriticalSection lock_;
 
  private:
   ptr<Source> source_;
@@ -81,7 +83,6 @@ class Wrappy::Position : public Wrappy {
   }
 
  protected:
-  CriticalSection lock_;
   int position_;
 
  private:
