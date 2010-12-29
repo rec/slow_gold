@@ -2,10 +2,8 @@
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/file/VolumeFile.h"
-#include "rec/data/persist/App.h"
-#include "rec/data/persist/Data.h"
+#include "rec/data/persist/Persist.h"
 
-using namespace rec::persist;
 using namespace std;
 using namespace google::protobuf;
 
@@ -13,11 +11,6 @@ namespace rec {
 namespace gui {
 
 namespace {
-
-Data<RecentFiles>* getData() {
-  static Data<RecentFiles>* d = getApp()->getData<RecentFiles>("recentFiles");
-  return d;
-}
 
 struct CompareRecentFiles {
   bool operator()(const RecentFile& x, const RecentFile& y) {
@@ -29,7 +22,7 @@ struct CompareRecentFiles {
 }  // namespace
 
 RecentFiles getSortedRecentFiles() {
-  RecentFiles rf = getData()->get();
+  RecentFiles rf = persist::get<RecentFiles>();
   google::protobuf::RepeatedPtrField<RecentFile>* recent = rf.mutable_file();
   sort(recent->begin(), recent->end(), CompareRecentFiles());
 
@@ -38,7 +31,7 @@ RecentFiles getSortedRecentFiles() {
 
 void addRecentFile(const VolumeFile& f) {
   int64 timestamp = juce::Time::currentTimeMillis();
-  RecentFiles recent = getData()->get();
+  RecentFiles recent = persist::get<RecentFiles>();
 
   int64 least = timestamp;
   int slot = 0;
@@ -63,9 +56,9 @@ void addRecentFile(const VolumeFile& f) {
   rec::proto::pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    getData()->setter()->append("file", msg);
+    persist::data<RecentFiles>()->set("file", msg);
   else
-    getData()->setter()->set("file", slot, msg);
+    persist::data<RecentFiles>()->set("file", slot, msg);
 }
 
 }  // namespace gui

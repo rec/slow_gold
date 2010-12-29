@@ -7,8 +7,7 @@ namespace rec {
 namespace slow {
 
 Data* prefs() {
-  static Data* prefs = persist::getApp()->
-    getData<proto::Preferences>("preferences");
+  return persistent<Preferences>("preferences");
   return prefs;
 }
 

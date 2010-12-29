@@ -8,16 +8,14 @@ namespace rec {
 namespace gui {
 
 template <typename Proto>
-class SetterSlider : public juce::Slider,
-                     public listener::DataListener<Proto> {
+class SetterSlider : public juce::Slider, public DataListener<Proto> {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
   SetterSlider(const String& name, const Address& address, const string& dataFileName)
-      : juce::Slider(name),
-        listener::DataListener<Proto>(address, dataFileName) {
+      : juce::Slider(name), DataListener<Proto>(address, dataFileName) {
   }
 
   virtual void valueChanged() { this->onChange(); }

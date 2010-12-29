@@ -55,7 +55,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     stretchy_(NULL),
     timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
     fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
-    fileListener_(file::getCurrentFileData()->setter()) {
+    fileListener_(persist::data<VolumeFile>()) {
   setSize(600, 400);
 
   startStopButton_.setButtonText(T("Play/Stop"));
@@ -113,8 +113,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   fileLocker_->startThread();
   timeLocker_->startThread();
-  file::getCurrentFileData()->addListener(fileLocker_.get());
-  file::getCurrentFileData()->requestUpdate();
+  persist::data<VolumeFile>()->addListener(fileLocker_.get());
+  persist::data<VolumeFile>()->update();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -124,11 +124,7 @@ void MainPage::paint(Graphics& g) {
 void MainPage::resized() {
   waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
   startStopButton_.setBounds(16, getHeight() - 46, 150, 32);
-#if 0
-  treeRootTarget_.setBounds(16, 8, getWidth() - 32, getHeight() - 245);
-#else
   treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
-#endif
 
   explanation_.setBounds(224, getHeight() - 42, getWidth() - 248, 32);
   timeScaleSlider_.setBounds(300, getHeight() - 90, 200, 24);
@@ -156,7 +152,7 @@ void MainPage::operator()(const VolumeFile& file) {
     if (empty(file_))
       return;
 
-    stretchy_ = persist::getApp()->getData<StretchyProto>(file_, "timestretch");
+    stretchy_ = persist::data<StretchyProto>(file_);
 
     thread_ptr<DoubleRunnyBuffer> dr(new DoubleRunnyBuffer(file_, stretchy_));
     if (dr->empty())

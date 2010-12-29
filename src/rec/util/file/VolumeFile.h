@@ -29,6 +29,7 @@ const String getDisplayName(const VolumeFile& file);
 const String getFullDisplayName(const VolumeFile& file);
 
 bool compareVolumes(const Volume& x, const Volume& y);
+bool compareVolumeFiles(const VolumeFile& x, const VolumeFile& y);
 
 bool operator==(const Volume& x, const Volume& y);
 bool operator==(const VolumeFile& x, const VolumeFile& y);
@@ -46,7 +47,6 @@ PositionableAudioSource* createSource(const VolumeFile& file);
 bool empty(const VolumeFile& file);
 
 typedef persist::Data<VolumeFile> VolumeFileData;
-VolumeFileData* getCurrentFileData();
 
 VolumeFile toVolumeFile(const File& file);
 

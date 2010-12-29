@@ -4,6 +4,7 @@
 #include "rec/util/cd/Album.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/widget/tree/Directory.h"
 
 namespace rec {
 namespace widget {

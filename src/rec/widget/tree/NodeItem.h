@@ -19,7 +19,7 @@ namespace widget {
 namespace tree {
 
 class Node : public juce::TreeViewItem,
-             public listener::Broadcaster<const VolumeFile&> {
+             public Broadcaster<const VolumeFile&> {
  public:
   Node(const NodeDesc& d, const VolumeFile& vf, const char* name = NULL);
 

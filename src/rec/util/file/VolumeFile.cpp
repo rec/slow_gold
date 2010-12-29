@@ -1,7 +1,6 @@
 #include "rec/util/file/VolumeFile.h"
 #include "rec/util/file/Util.h"
-#include "rec/data/persist/App.h"
-#include "rec/data/persist/Data.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/audio/AudioFormatManager.h"
 
@@ -106,6 +105,27 @@ bool compareVolumes(const Volume& x, const Volume& y) {
   return x.type() < y.type() || (x.type() == y.type() && x.name() < y.name());
 }
 
+bool compareVolumeFiles(const VolumeFile& x, const VolumeFile& y) {
+  if (compareVolumes(x.volume(), y.volume()))
+    return true;
+
+  if (compareVolumes(y.volume(), x.volume()))
+    return false;
+
+  for (int i = 0; ; i++) {
+    bool xDone = (i >= x.path_size() - 1);
+    bool yDone = (i >= y.path_size() - 1);
+    if (xDone)
+      return !yDone;
+    if (yDone)
+      return false;
+    if (x.path(i) < y.path(i))
+      return true;
+    if (y.path(i) < x.path(i))
+      return false;
+  }
+}
+
 bool operator==(const Volume& x, const Volume& y) {
   return !(compareVolumes(x, y) || compareVolumes(y, x));
 }
@@ -143,11 +163,6 @@ PositionableAudioSource* createSource(const VolumeFile& file) {
   else
     LOG(ERROR) << "No reader for " << getFullDisplayName(file).toCString();
   return NULL;
-}
-
-VolumeFileData* getCurrentFileData() {
-  static VolumeFileData* d = persist::getApp()->getData<VolumeFile>("currentFile");
-  return d;
 }
 
 bool empty(const VolumeFile& f) {

@@ -31,6 +31,7 @@ class AppInstance : public App {
   static AppInstance* getInstance() { return instance_; }
 
   typedef std::set<UntypedData*> DataSet;
+  bool running() const;
 
 private:
   virtual ~AppInstance();

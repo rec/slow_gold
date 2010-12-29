@@ -5,22 +5,15 @@
 #include "rec/base/base.h"
 #include "rec/data/persist/UntypedData.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/data/proto/GetProtoName.h"
 
 namespace rec {
 namespace persist {
 
-const string& getProtoName(const Message& m);
-
-template <typename Proto>
-const string& getProtoName() {
-  return getProtoName(Proto::default_instance());
-}
-
 class App;
 
 template <typename Proto>
-class Data : public UntypedData,
-             public listener::Broadcaster<const Proto&> {
+class Data : public UntypedData, public Broadcaster<const Proto&> {
  public:
   // Get a consistent snapshot of the current value.
   Proto get() const {
@@ -29,7 +22,7 @@ class Data : public UntypedData,
   }
 
   virtual ~Data() {
-    DLOG(INFO) << "Deleting data: " << getProtoName(Proto::default_instance());
+    DLOG(INFO) << "Deleting data: " << data::proto::getName(Proto::default_instance());
   }
 
  protected:

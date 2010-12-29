@@ -13,7 +13,7 @@ class AppInstance;
 
 typedef proto::arg::Setter Setter;
 
-class UntypedData : public listener::Listener<proto::Operation*> {
+class UntypedData : public Setter {
  public:
   virtual ~UntypedData();
 
@@ -21,11 +21,11 @@ class UntypedData : public listener::Listener<proto::Operation*> {
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
   virtual void operator()(proto::Operation* op);
-  void requestUpdate() {
+
+  void update() {
     (*this)((proto::Operation*)NULL);
   }
 
-  Setter* setter() { return &setter_; }
   bool fileReadSuccess() const { return fileReadSuccess_; }
 
  protected:
@@ -34,7 +34,7 @@ class UntypedData : public listener::Listener<proto::Operation*> {
   UntypedData(const File& file, Message* message, App* app);
   void readFromFile() const;
 
-  void update();
+  void doUpdate();
   void writeToFile() const;
 
   virtual void changeCallback() = 0;
@@ -46,7 +46,6 @@ class UntypedData : public listener::Listener<proto::Operation*> {
 
   ptr<File> file_;
   mutable Message* message_;
-  Setter setter_;
 
   App* app_;
   CriticalSection lock_;

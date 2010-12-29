@@ -12,11 +12,11 @@ AppInstance::AppInstance(const string& appName)
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
                                        this, &AppInstance::update));
   updateThread_->setPriority(UPDATE_PRIORITY);
-  updateThread_->startThread();
 
   writeThread_.reset(thread::makeLoop(WRITE_PERIOD, "App::write",
                                        this, &AppInstance::write));
   writeThread_->setPriority(WRITE_PRIORITY);
+  updateThread_->startThread();
   writeThread_->startThread();
 }
 
@@ -29,6 +29,11 @@ void AppInstance::needsUpdate(UntypedData* data) {
     updateData_.insert(data);
   }
   updateThread_->notify();
+}
+
+bool AppInstance::running() const {
+	return writeThread_ && updateThread_ && 
+    !(writeThread_->threadShouldExit() || writeThread_->threadShouldExit());
 }
 
 template <typename Container>
@@ -49,16 +54,17 @@ void extendAndClear(Container *from, Container *to, CriticalSection* lock) {
 }
 
 bool AppInstance::update() {
-  if (lockedEmpty(updateData_, &lock_))
+  if (lockedEmpty(updateData_, &lock_) || !running())
     return true;
 
   DataSet updates;
   extendAndClear(&updateData_, &updates, &lock_);
-  for (DataSet::iterator i = updates.begin(); i != updates.end(); ++i)
+  for (DataSet::iterator i = updates.begin(); i != updates.end() && running(); ++i)
     (*i)->update();
 
   extendAndClear(&updates, &writeData_, &lock_);
-  writeThread_->notify();
+  if (running())
+    writeThread_->notify();
   return true;
 }
 
@@ -69,7 +75,7 @@ bool AppInstance::write() {
   DataSet writes;
   extendAndClear(&writeData_, &writes, &lock_);
 
-  for (DataSet::iterator i = writes.begin(); i != writes.end(); ++i)
+  for (DataSet::iterator i = writes.begin(); i != writes.end() && running(); ++i)
     (*i)->writeToFile();
   return true;
 }

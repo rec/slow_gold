@@ -13,13 +13,13 @@ namespace file {
 
 namespace {
 
-void add(Volume::Type type, const string& name, VolumeList* volumes) {
-  volumes->push_back(Volume());
-  volumes->back().set_type(type);
-  volumes->back().set_name(name);
+void add(Volume::Type type, const string& name, VolumeFileList* volumes) {
+  Volume* vf = volumes->add_file()->mutable_volume();
+  vf->set_type(type);
+  vf->set_name(name);
 }
 
-void addFileRoots(VolumeList* volumes) {
+void addFileRoots(VolumeFileList* volumes) {
   juce::Array<File> roots;
 
 #if JUCE_MAC
@@ -40,11 +40,11 @@ void addFileRoots(VolumeList* volumes) {
   }
 }
 
-void addAudioCDs(VolumeList* volumes) {
+void addAudioCDs(VolumeFileList* volumes) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   for (int i = 0; i < names.size(); ++i) {
     ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
-    if (reader)
+    if (reader && reader->getNumTracks())
       add(Volume::CD, cd::getCDKey(reader.get()).toCString(), volumes);
     else
       LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
@@ -53,15 +53,16 @@ void addAudioCDs(VolumeList* volumes) {
 
 }  // namespace
 
-VolumeList getVolumes() {
-  VolumeList volumes;
+VolumeFileList getVolumes() {
+  VolumeFileList volumes;
 
   add(Volume::MUSIC, "", &volumes);
   add(Volume::USER, "", &volumes);
   addAudioCDs(&volumes);
   addFileRoots(&volumes);
 
-  std::sort(volumes.begin(), volumes.end(), compareVolumes);
+  std::sort(volumes.mutable_file()->begin(), 
+            volumes.mutable_file()->end(), compareVolumeFiles);
   return volumes;
 }
 

@@ -53,8 +53,10 @@ void ComponentContainer::quit() {
 
 void ComponentContainer::eject() {
   StringArray burners = AudioCDBurner::findAvailableDevices();
-  for (int i = 0; i < burners.size(); ++i)
+  for (int i = 0; i < burners.size(); ++i) {
     ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
+    DLOG(INFO) << "Burner " << burners[i].toCString();
+  }
 }
 
 void ComponentContainer::menuItemSelected(int menuItemID, int topLevelMenuIndex) {

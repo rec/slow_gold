@@ -12,14 +12,20 @@ namespace widget {
 namespace tree {
 
 class Root : public Thread,
-             public listener::Broadcaster<const VolumeFile&> {
+             public Broadcaster<const VolumeFile&>,
+             public Listener<const util::file::VolumeFileList&>, 
+             public Listener<const VolumeFile&> {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
 
   virtual void run();
-  void mergeNewIntoOld(const file::VolumeList& volumes);
+  void mergeNewIntoOld(const util::file::VolumeFileList& volumes);
   TreeView* treeView() { return &tree_; }
+
+  virtual bool isInterestedInFileDrag(const StringArray& files);
+  virtual void operator()(const VolumeFile&) {}
+  virtual void operator()(const util::file::VolumeFileList&);
 
  private:
   void update();
@@ -35,8 +41,7 @@ class Root : public Thread,
   NodeDesc desc_;
   gui::DropTarget<TreeView, String, gui::NullInterface> tree_;
   TreeViewItem root_;
-  file::VolumeList volumes_;
-  // listener::DataListener<file::VolumeFileList> fileListener_;
+  file::VolumeFileList volumes_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
   JUCE_LEAK_DETECTOR(Root);

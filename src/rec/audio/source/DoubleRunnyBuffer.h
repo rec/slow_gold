@@ -5,7 +5,7 @@
 #include "rec/audio/source/BufferySource.h"
 #include "rec/audio/source/CachedThumbnail.h"
 #include "rec/audio/source/DoubleRunny.h"
-#include "rec/data/persist/Data.h"
+#include "rec/data/persist/Persist.h"
 
 namespace rec {
 namespace audio {
@@ -39,7 +39,7 @@ class DoubleRunnyBuffer
 
   ptr<Buffery> buffery_;
   ptr<CachedThumbnail> cachedThumbnail_;
-  persist::Data<StretchyProto>* const data_;
+  Data* const data_;
   thread_ptr<ChangeLocker> changeLocker_;
   bool empty_;
 

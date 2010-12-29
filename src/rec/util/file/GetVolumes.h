@@ -10,9 +10,7 @@ namespace rec {
 namespace util {
 namespace file {
 
-typedef std::vector<Volume> VolumeList;
-
-VolumeList getVolumes();
+VolumeFileList getVolumes();
 
 }  // namespace file
 }  // namespace util

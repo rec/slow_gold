@@ -222,7 +222,6 @@
             <File RelativePath="..\..\..\..\src\rec\data\commands\EventQueue.h"/>
           </Filter>
           <Filter Name="persist">
-            <File RelativePath="..\..\..\..\src\rec\data\persist\App.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
@@ -230,6 +229,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Data.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\Persist.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.h"/>
           </Filter>
@@ -237,6 +237,8 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\Address.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Field.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Field.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\GetProtoName.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\GetProtoName.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\LogFile.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\LogFile.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.cpp"/>
@@ -392,8 +394,6 @@
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\slow\Preferences.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\Preferences.h"/>
         </Filter>
         <Filter Name="util">
           <Filter Name="block">
@@ -539,12 +539,6 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h"/>
-          </Filter>
-          <Filter Name="slow">
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\Preferences.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\Preferences.pb.h"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\State.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\State.pb.h"/>
           </Filter>
           <Filter Name="util">
             <Filter Name="cd">

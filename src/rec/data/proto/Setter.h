@@ -10,9 +10,11 @@ namespace rec {
 namespace proto {
 namespace arg {
 
-class Setter : public util::listener::Broadcaster<Operation*> {
+class Setter : public Listener<Operation*> {
  public:
   Setter() {}
+
+  virtual void operator()(Operation*) = 0;
 
   void append(const Address& address, const Value& value);
   void clear(const Address& address);
@@ -25,54 +27,54 @@ class Setter : public util::listener::Broadcaster<Operation*> {
   typedef const Value& V;
   typedef const Message& M;
 
-  void append(V v) { return append(A(), v); }
-  void append(P a, V v) { return append(A(a), v); }
-  void append(P a, P b, V v) { return append(A(a, b), v); }
-  void append(P a, P b, P c, V v) { return append(A(a, b, c), v); }
-  void append(P a, P b, P c, P d, V v) { return append(A(a, b, c, d), v); }
-  void append(P a, P b, P c, P d, P e, V v) { return append(A(a, b, c, d, e), v); }
+  void append(V v) { append(A(), v); }
+  void append(P a, V v) { append(A(a), v); }
+  void append(P a, P b, V v) { append(A(a, b), v); }
+  void append(P a, P b, P c, V v) { append(A(a, b, c), v); }
+  void append(P a, P b, P c, P d, V v) { append(A(a, b, c, d), v); }
+  void append(P a, P b, P c, P d, P e, V v) { append(A(a, b, c, d, e), v); }
 
-  void append(M m) { return append(A(), Value(m)); }
-  void append(P a, M m) { return append(A(a), Value(m)); }
-  void append(P a, P b, M m) { return append(A(a, b), Value(m)); }
-  void append(P a, P b, P c, M m) { return append(A(a, b, c), Value(m)); }
-  void append(P a, P b, P c, P d, M m) { return append(A(a, b, c, d), Value(m)); }
-  void append(P a, P b, P c, P d, P e, M m) { return append(A(a, b, c, d, e), Value(m)); }
+  void append(M m) { append(A(), Value(m)); }
+  void append(P a, M m) { append(A(a), Value(m)); }
+  void append(P a, P b, M m) { append(A(a, b), Value(m)); }
+  void append(P a, P b, P c, M m) { append(A(a, b, c), Value(m)); }
+  void append(P a, P b, P c, P d, M m) { append(A(a, b, c, d), Value(m)); }
+  void append(P a, P b, P c, P d, P e, M m) { append(A(a, b, c, d, e), Value(m)); }
 
-  void clear() { return clear(A()); }
-  void clear(P a) { return clear(A(a)); }
-  void clear(P a, P b) { return clear(A(a, b)); }
-  void clear(P a, P b, P c) { return clear(A(a, b, c)); }
-  void clear(P a, P b, P c, P d) { return clear(A(a, b, c, d)); }
-  void clear(P a, P b, P c, P d, P e) { return clear(A(a, b, c, d, e)); }
+  void clear() { clear(A()); }
+  void clear(P a) { clear(A(a)); }
+  void clear(P a, P b) { clear(A(a, b)); }
+  void clear(P a, P b, P c) { clear(A(a, b, c)); }
+  void clear(P a, P b, P c, P d) { clear(A(a, b, c, d)); }
+  void clear(P a, P b, P c, P d, P e) { clear(A(a, b, c, d, e)); }
 
-  void remove(int i)  { return remove(A(), i); }
-  void remove(P a, int i)  { return remove(A(a), i); }
-  void remove(P a, P b, int i)  { return remove(A(a, b), i); }
-  void remove(P a, P b, P c, int i)  { return remove(A(a, b, c), i); }
-  void remove(P a, P b, P c, P d, int i)  { return remove(A(a, b, c, d), i); }
-  void remove(P a, P b, P c, P d, P e, int i)  { return remove(A(a, b, c, d, e), i); }
+  void remove(int i)  { remove(A(), i); }
+  void remove(P a, int i)  { remove(A(a), i); }
+  void remove(P a, P b, int i)  { remove(A(a, b), i); }
+  void remove(P a, P b, P c, int i)  { remove(A(a, b, c), i); }
+  void remove(P a, P b, P c, P d, int i)  { remove(A(a, b, c, d), i); }
+  void remove(P a, P b, P c, P d, P e, int i)  { remove(A(a, b, c, d, e), i); }
 
-  void set(V v) { return set(A(), v); }
-  void set(P a, V v) { return set(A(a), v); }
-  void set(P a, P b, V v) { return set(A(a, b), v); }
-  void set(P a, P b, P c, V v) { return set(A(a, b, c), v); }
-  void set(P a, P b, P c, P d, V v) { return set(A(a, b, c, d), v); }
-  void set(P a, P b, P c, P d, P e, V v) { return set(A(a, b, c, d, e), v); }
+  void set(V v) { set(A(), v); }
+  void set(P a, V v) { set(A(a), v); }
+  void set(P a, P b, V v) { set(A(a, b), v); }
+  void set(P a, P b, P c, V v) { set(A(a, b, c), v); }
+  void set(P a, P b, P c, P d, V v) { set(A(a, b, c, d), v); }
+  void set(P a, P b, P c, P d, P e, V v) { set(A(a, b, c, d, e), v); }
 
-  void set(M m) { return set(A(), Value(m)); }
-  void set(P a, M m) { return set(A(a), Value(m)); }
-  void set(P a, P b, M m) { return set(A(a, b), Value(m)); }
-  void set(P a, P b, P c, M m) { return set(A(a, b, c), Value(m)); }
-  void set(P a, P b, P c, P d, M m) { return set(A(a, b, c, d), Value(m)); }
-  void set(P a, P b, P c, P d, P e, M m) { return set(A(a, b, c, d, e), Value(m)); }
+  void set(M m) { set(A(), Value(m)); }
+  void set(P a, M m) { set(A(a), Value(m)); }
+  void set(P a, P b, M m) { set(A(a, b), Value(m)); }
+  void set(P a, P b, P c, M m) { set(A(a, b, c), Value(m)); }
+  void set(P a, P b, P c, P d, M m) { set(A(a, b, c, d), Value(m)); }
+  void set(P a, P b, P c, P d, P e, M m) { set(A(a, b, c, d, e), Value(m)); }
 
-  void swap(int s, int t) { return swap(A(), s, t); }
-  void swap(P a, int s, int t) { return swap(A(a), s, t); }
-  void swap(P a, P b, int s, int t) { return swap(A(a, b), s, t); }
-  void swap(P a, P b, P c, int s, int t) { return swap(A(a, b, c), s, t); }
-  void swap(P a, P b, P c, P d, int s, int t) { return swap(A(a, b, c, d), s, t); }
-  void swap(P a, P b, P c, P d, P e, int s, int t) { return swap(A(a, b, c, d, e), s, t); }
+  void swap(int s, int t) { swap(A(), s, t); }
+  void swap(P a, int s, int t) { swap(A(a), s, t); }
+  void swap(P a, P b, int s, int t) { swap(A(a, b), s, t); }
+  void swap(P a, P b, P c, int s, int t) { swap(A(a, b, c), s, t); }
+  void swap(P a, P b, P c, P d, int s, int t) { swap(A(a, b, c, d), s, t); }
+  void swap(P a, P b, P c, P d, P e, int s, int t) { swap(A(a, b, c, d, e), s, t); }
 
  private:
   DISALLOW_COPY_AND_ASSIGN(Setter);

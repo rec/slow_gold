@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="tjEmrPyml" name="Slow">
+  <MAINGROUP id="7vQsWEtgG" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -195,8 +195,6 @@
                 name="EventQueue.h" resource="0"/>
         </GROUP>
         <GROUP id="p9GHA3VGt" name="persist">
-          <FILE compile="1" file="../../src/rec/data/persist/App.cpp" id="xaA3M1wJA"
-                name="App.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/App.h" id="bxaLWu80g"
                 name="App.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/AppDirectory.h"
@@ -211,6 +209,8 @@
                 name="Copy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Data.h" id="hVp5K8taw"
                 name="Data.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/Persist.h" id="IedRLr3XY"
+                name="Persist.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/UntypedData.cpp"
                 id="Tiv7Hwgbj" name="UntypedData.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/UntypedData.h" id="EBJd8c5zo"
@@ -223,6 +223,10 @@
                 name="Field.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Field.h" id="gTtHSxFsU"
                 name="Field.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/proto/GetProtoName.cpp"
+                id="8YJ1j1HN6" name="GetProtoName.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/proto/GetProtoName.h" id="VlGhza2sZ"
+                name="GetProtoName.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/LogFile.cpp" id="ToOu5jwQE"
                 name="LogFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/LogFile.h" id="L4DIYCJQB"
@@ -516,10 +520,6 @@
           <FILE compile="0" file="../../src/rec/slow/app/RecWindow.h" id="eehexZcfk"
                 name="RecWindow.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/slow/Preferences.cpp" id="aNJXeyMNa"
-              name="Preferences.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/Preferences.h" id="xRad5QVKM"
-              name="Preferences.h" resource="0"/>
       </GROUP>
       <GROUP id="DEDkN5VGv" name="util">
         <GROUP id="DvbpRbdDI" name="block">
@@ -772,16 +772,6 @@
           <FILE compile="0" file="../../genfiles/proto/rec/gui/RecentFiles.pb.h"
                 id="EVjVRdw5z" name="RecentFiles.pb.h" resource="0"/>
         </GROUP>
-        <GROUP id="cIFxlWgKi" name="slow">
-          <FILE compile="1" file="../../genfiles/proto/rec/slow/Preferences.pb.cc"
-                id="6j6r4jDn9" name="Preferences.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/slow/Preferences.pb.h"
-                id="iWQK9VqBI" name="Preferences.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/slow/State.pb.cc"
-                id="wlrHLZoVp" name="State.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/slow/State.pb.h" id="4cfrZqmZP"
-                name="State.pb.h" resource="0"/>
-        </GROUP>
         <GROUP id="lW8Z1QAu7" name="util">
           <GROUP id="HmCodGvyW" name="cd">
             <FILE compile="1" file="../../genfiles/proto/rec/util/cd/Album.pb.cc"
@@ -844,7 +834,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="oTX6EkGt5" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Ra5HJiAl2" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

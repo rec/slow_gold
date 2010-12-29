@@ -18,7 +18,6 @@ UntypedData::UntypedData(const File& file, Message* message, App* app)
       app_(app),
       alreadyReadFromFile_(false),
       fileReadSuccess_(false) {
-  setter_.addListener(this);
 }
 
 void UntypedData::readFromFile() const {
@@ -46,7 +45,7 @@ void UntypedData::operator()(proto::Operation* op) {
   app_->needsUpdate(this);
 }
 
-void UntypedData::update() {
+void UntypedData::doUpdate() {
   OperationList oldQueue;
   {
     ScopedLock l(lock_);

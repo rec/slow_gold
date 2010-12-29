@@ -4,23 +4,20 @@
 #include "rec/base/base.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/file/VolumeFile.h"
+#include "rec/data/proto/GetProtoName.h"
+#include "rec/util/STL.h"
 
 #include "rec/data/persist/AppDirectory.h"
 
 namespace rec {
+
 namespace command {
-
 class Manager;
-
 }  // namespace command
-}  // namespace rec
 
-namespace rec {
 namespace persist {
 
 App* getApp();
-
-const string& getProtoName(const Message& message);
 
 class UntypedData;
 
@@ -28,56 +25,57 @@ class App {
  public:
   typedef std::map<string, UntypedData*> DataMap;
 
-  virtual ~App();
+  virtual ~App() { stl::deleteMapPointers(&data_); }
 
   command::Manager* commandManager() { return commandManager_; }
   const string& name() const { return name_; }
-  File appDir() const;
 
   template <typename Proto>
-  Data<Proto>* getData(const string& fileNameRoot) {
-    return getData<Proto>(appDir(), fileNameRoot);
-  }
+  Data<Proto>* data(const VolumeFile& file = VolumeFile::default_instance);
 
-  template <typename Proto>
-  Data<Proto>* getData(const VolumeFile& file, const string& fileNameRoot) {
-    return getData<Proto>(getShadowDirectory(file), fileNameRoot);
+  File appDir() const {
+    return appDir_.getChildFile(name_.c_str());
   }
 
  protected:
-  explicit App(const string& name);
-  virtual void needsUpdate(UntypedData* data) = 0;
-
-  template <typename Proto>
-  Data<Proto>* getData(const File& directory, const string& fileNameRoot) {
-    string fileName = getFileName(fileNameRoot, Proto::default_instance());
-    string fileKey = directory.getFullPathName().toCString() + ("/" + fileName);
-    ScopedLock l(lock_);
-    DataMap::const_iterator i = data_.find(fileKey);
-    if (i != data_.end())
-      return static_cast<Data<Proto>*>(i->second);
-
-    File file = directory.getChildFile(fileName.c_str());
-    Data<Proto>* data = new Data<Proto>(file, this);
-    data->readFromFile();
-    data_[fileKey] = data;
-    return data;
+  explicit App(const string& name) : name_(name) {
+    static const char COMPANY_NAME[] = "recs";
+    File dd = File::getSpecialLocation(File::userApplicationDataDirectory);
+    appDir_ = dd.getChildFile(COMPANY_NAME);
   }
+  virtual void needsUpdate(UntypedData* data) = 0;
 
  private:
   friend class UntypedData;
 
-  static string getFileName(const string& nameRoot, const Message& instance);
-
   DataMap data_;
   CriticalSection lock_;
   const string name_;
+  File appDir_;
   command::Manager* commandManager_;
 
   DISALLOW_COPY_AND_ASSIGN(App);
 };
 
+template <typename Proto>
+Data<Proto>* App::data(const VolumeFile& vf) {
+  File directory = empty(vf) ? appDir() : getShadowDirectory(vf);
+
+  string fileName = data::proto::getName<Proto>();
+  string fileKey = directory.getFullPathName().toCString() + ("/" + fileName);
+  ScopedLock l(lock_);
+  DataMap::const_iterator i = data_.find(fileKey);
+  if (i != data_.end())
+    return static_cast<Data<Proto>*>(i->second);
+
+  File file = directory.getChildFile(fileName.c_str());
+  Data<Proto>* data = new Data<Proto>(file, this);
+  data->readFromFile();
+  data_[fileKey] = data;
+  return data;
+}
 }  // namespace persist
+
 }  // namespace rec
 
 #endif  // __REC_PERSIST_APPBASE__

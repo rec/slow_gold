@@ -31,7 +31,7 @@ class Listener {
 
 // Broadcast updates of type Type to a set of Listener<Type>.
 template <typename Type>
-class Broadcaster : public Listener<Type> {
+class Broadcaster { // : public Listener<Type> {
  public:
   typedef std::set<Listener<Type>*> Listeners;
   typedef typename Listeners::iterator iterator;
@@ -73,7 +73,6 @@ Broadcaster<Type>::~Broadcaster() {
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
-  DCHECK(listener != this);
   ScopedLock l(lock_);
   listeners_.insert(listener);
   listener->broadcasters_.insert(this);

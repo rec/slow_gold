@@ -11,8 +11,9 @@ namespace thread {
 
 template <typename Data>
 class ChangeLocker : public Thread,
-                     public listener::Broadcaster<const Data&>,
-                     public listener::Listener<Data>,
+                     public Broadcaster<const Data&>,
+                     public Listener<const Data&>,
+                     public Listener<Data>,
                      public Locker<Data> {
  public:
   ChangeLocker(int wait) : Thread("ChangeLocker"), wait_(wait) {}
