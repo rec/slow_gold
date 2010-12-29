@@ -20,7 +20,8 @@ bool operator!=(const StretchyProto&, const StretchyProto&);
 class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
-  Stretchy(const StretchyProto& desc, Source* s);
+  Stretchy(Source* s,
+           const StretchyProto& desc = StretchyProto::default_instance());
   ~Stretchy();
 
   virtual int getTotalLength() const;

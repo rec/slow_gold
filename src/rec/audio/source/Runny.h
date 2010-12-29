@@ -11,9 +11,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Runny : public Wrappy::Position, public Thread {
+class Runny : public Thread, public Wrappy::Position {
  public:
-  Runny(Source* source, 
+  Runny(Source* source,
   	    const RunnyProto& desc = RunnyProto::default_instance());
 
   virtual ~Runny();

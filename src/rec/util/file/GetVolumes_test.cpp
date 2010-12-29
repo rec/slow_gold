@@ -8,7 +8,7 @@ namespace file {
 namespace {
 
 TEST(GetVolumes, get) {
-  VolumeList list = getVolumes();
+  VolumeFileList list = getVolumes();
 #if 0
   for (int i = 0; i < list.size(); ++i)
     LOG(INFO) << list[i].DebugString();

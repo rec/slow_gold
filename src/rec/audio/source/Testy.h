@@ -13,7 +13,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Testy : public Source {
+class Testy : public PositionableAudioSource {
  public:
   static const int SIZE = 128;
   Testy() : position_(0) {}

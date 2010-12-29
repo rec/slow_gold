@@ -6,19 +6,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-bool operator==(const StretchyProto& x, const StretchyProto& y) {
-  return x.sample_rate() == y.sample_rate()
-    && x.channels() == y.channels()
-    && x.pitch_scale() == y.pitch_scale();
-}
-
-bool operator!=(const StretchyProto& x, const StretchyProto& y) {
-  return !(x == y);
-}
-
-Stretchy::Stretchy(const StretchyProto& desc, Source* s)
+Stretchy::Stretchy(Source* s, const StretchyProto& desc)
     : Wrappy(s),
-  description_(desc),
+      description_(desc),
       buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),
       outOffset_(desc.channels()) {
   // DLOG(INFO) << "Creating stretchy with: " << description_.DebugString();
@@ -87,6 +77,16 @@ int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
 
   int samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);
   return samples;
+}
+
+bool operator==(const StretchyProto& x, const StretchyProto& y) {
+  return x.sample_rate() == y.sample_rate()
+    && x.channels() == y.channels()
+    && x.pitch_scale() == y.pitch_scale();
+}
+
+bool operator!=(const StretchyProto& x, const StretchyProto& y) {
+  return !(x == y);
 }
 
 }  // namespace source

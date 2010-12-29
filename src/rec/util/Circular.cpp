@@ -48,9 +48,8 @@ int64 Circular::availableFrom(int64 begin) const {
 }
 
 int64 Circular::consume(int64 amount) {
-  amount = std::min(amount, filled_);
   begin_ = fromBegin(amount);
-  filled_ -= amount;
+  filled_ = mod(filled_ - amount, length_);
   return amount;
 }
 

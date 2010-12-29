@@ -12,7 +12,7 @@ Runny* makeStretchyRunny(PositionableAudioSource* source,
                          const RunnyProto& runnyDesc,
                          int position) {
   if (source) {
-    ptr<Stretchy> stretchy(new Stretchy(stretchyDesc, source));
+    ptr<Stretchy> stretchy(new Stretchy(source, stretchyDesc));
     ptr<Runny> runny(new Runny(stretchy.transfer(), runnyDesc));
     runny->setNextReadPosition(position);
 
