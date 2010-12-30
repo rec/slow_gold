@@ -11,6 +11,7 @@ namespace util {
 namespace file {
 
 VolumeFileList getVolumes();
+void fillVolumes(VolumeFileList* volumes);
 
 }  // namespace file
 }  // namespace util

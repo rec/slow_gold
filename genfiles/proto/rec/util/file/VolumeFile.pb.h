@@ -34,161 +34,55 @@ void  protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
 void protobuf_AssignDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
 void protobuf_ShutdownFile_rec_2futil_2ffile_2fVolumeFile_2eproto();
 
-class Volume;
 class VolumeFile;
 class VolumeFileList;
 
-enum Volume_Type {
-  Volume_Type_NONE = 0,
-  Volume_Type_CD = 1,
-  Volume_Type_MUSIC = 2,
-  Volume_Type_USER = 3,
-  Volume_Type_VOLUME = 4
+enum VolumeFile_Type {
+  VolumeFile_Type_NONE = 0,
+  VolumeFile_Type_CD = 1,
+  VolumeFile_Type_MUSIC = 2,
+  VolumeFile_Type_USER = 3,
+  VolumeFile_Type_VOLUME = 4
 };
-bool Volume_Type_IsValid(int value);
-const Volume_Type Volume_Type_Type_MIN = Volume_Type_NONE;
-const Volume_Type Volume_Type_Type_MAX = Volume_Type_VOLUME;
-const int Volume_Type_Type_ARRAYSIZE = Volume_Type_Type_MAX + 1;
+bool VolumeFile_Type_IsValid(int value);
+const VolumeFile_Type VolumeFile_Type_Type_MIN = VolumeFile_Type_NONE;
+const VolumeFile_Type VolumeFile_Type_Type_MAX = VolumeFile_Type_VOLUME;
+const int VolumeFile_Type_Type_ARRAYSIZE = VolumeFile_Type_Type_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Volume_Type_descriptor();
-inline const ::std::string& Volume_Type_Name(Volume_Type value) {
+const ::google::protobuf::EnumDescriptor* VolumeFile_Type_descriptor();
+inline const ::std::string& VolumeFile_Type_Name(VolumeFile_Type value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Volume_Type_descriptor(), value);
+    VolumeFile_Type_descriptor(), value);
 }
-inline bool Volume_Type_Parse(
-    const ::std::string& name, Volume_Type* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Volume_Type>(
-    Volume_Type_descriptor(), name, value);
+inline bool VolumeFile_Type_Parse(
+    const ::std::string& name, VolumeFile_Type* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<VolumeFile_Type>(
+    VolumeFile_Type_descriptor(), name, value);
+}
+enum VolumeFile_Status {
+  VolumeFile_Status_ONLINE = 1,
+  VolumeFile_Status_OFFLINE = 2,
+  VolumeFile_Status_DISK_OPEN = 3,
+  VolumeFile_Status_WRITEABLE_DISK = 4,
+  VolumeFile_Status_NO_DISK = 5,
+  VolumeFile_Status_UNKNOWN = 6
+};
+bool VolumeFile_Status_IsValid(int value);
+const VolumeFile_Status VolumeFile_Status_Status_MIN = VolumeFile_Status_ONLINE;
+const VolumeFile_Status VolumeFile_Status_Status_MAX = VolumeFile_Status_UNKNOWN;
+const int VolumeFile_Status_Status_ARRAYSIZE = VolumeFile_Status_Status_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* VolumeFile_Status_descriptor();
+inline const ::std::string& VolumeFile_Status_Name(VolumeFile_Status value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    VolumeFile_Status_descriptor(), value);
+}
+inline bool VolumeFile_Status_Parse(
+    const ::std::string& name, VolumeFile_Status* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<VolumeFile_Status>(
+    VolumeFile_Status_descriptor(), name, value);
 }
 // ===================================================================
-
-class Volume : public ::google::protobuf::Message {
- public:
-  Volume();
-  virtual ~Volume();
-  
-  Volume(const Volume& from);
-  
-  inline Volume& operator=(const Volume& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Volume& default_instance();
-  
-  void Swap(Volume* other);
-  
-  // implements Message ----------------------------------------------
-  
-  Volume* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Volume& from);
-  void MergeFrom(const Volume& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  typedef Volume_Type Type;
-  static const Type NONE = Volume_Type_NONE;
-  static const Type CD = Volume_Type_CD;
-  static const Type MUSIC = Volume_Type_MUSIC;
-  static const Type USER = Volume_Type_USER;
-  static const Type VOLUME = Volume_Type_VOLUME;
-  static inline bool Type_IsValid(int value) {
-    return Volume_Type_IsValid(value);
-  }
-  static const Type Type_MIN =
-    Volume_Type_Type_MIN;
-  static const Type Type_MAX =
-    Volume_Type_Type_MAX;
-  static const int Type_ARRAYSIZE =
-    Volume_Type_Type_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  Type_descriptor() {
-    return Volume_Type_descriptor();
-  }
-  static inline const ::std::string& Type_Name(Type value) {
-    return Volume_Type_Name(value);
-  }
-  static inline bool Type_Parse(const ::std::string& name,
-      Type* value) {
-    return Volume_Type_Parse(name, value);
-  }
-  
-  // accessors -------------------------------------------------------
-  
-  // optional .rec.util.file.Volume.Type type = 1 [default = NONE];
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 1;
-  inline ::rec::util::file::Volume_Type type() const;
-  inline void set_type(::rec::util::file::Volume_Type value);
-  
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  
-  // @@protoc_insertion_point(class_scope:rec.util.file.Volume)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  int type_;
-  ::std::string* name_;
-  static const ::std::string _default_name_;
-  friend void  protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
-  friend void protobuf_AssignDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
-  friend void protobuf_ShutdownFile_rec_2futil_2ffile_2fVolumeFile_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static Volume* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class VolumeFile : public ::google::protobuf::Message {
  public:
@@ -242,19 +136,84 @@ class VolumeFile : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
+  typedef VolumeFile_Type Type;
+  static const Type NONE = VolumeFile_Type_NONE;
+  static const Type CD = VolumeFile_Type_CD;
+  static const Type MUSIC = VolumeFile_Type_MUSIC;
+  static const Type USER = VolumeFile_Type_USER;
+  static const Type VOLUME = VolumeFile_Type_VOLUME;
+  static inline bool Type_IsValid(int value) {
+    return VolumeFile_Type_IsValid(value);
+  }
+  static const Type Type_MIN =
+    VolumeFile_Type_Type_MIN;
+  static const Type Type_MAX =
+    VolumeFile_Type_Type_MAX;
+  static const int Type_ARRAYSIZE =
+    VolumeFile_Type_Type_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Type_descriptor() {
+    return VolumeFile_Type_descriptor();
+  }
+  static inline const ::std::string& Type_Name(Type value) {
+    return VolumeFile_Type_Name(value);
+  }
+  static inline bool Type_Parse(const ::std::string& name,
+      Type* value) {
+    return VolumeFile_Type_Parse(name, value);
+  }
+  
+  typedef VolumeFile_Status Status;
+  static const Status ONLINE = VolumeFile_Status_ONLINE;
+  static const Status OFFLINE = VolumeFile_Status_OFFLINE;
+  static const Status DISK_OPEN = VolumeFile_Status_DISK_OPEN;
+  static const Status WRITEABLE_DISK = VolumeFile_Status_WRITEABLE_DISK;
+  static const Status NO_DISK = VolumeFile_Status_NO_DISK;
+  static const Status UNKNOWN = VolumeFile_Status_UNKNOWN;
+  static inline bool Status_IsValid(int value) {
+    return VolumeFile_Status_IsValid(value);
+  }
+  static const Status Status_MIN =
+    VolumeFile_Status_Status_MIN;
+  static const Status Status_MAX =
+    VolumeFile_Status_Status_MAX;
+  static const int Status_ARRAYSIZE =
+    VolumeFile_Status_Status_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Status_descriptor() {
+    return VolumeFile_Status_descriptor();
+  }
+  static inline const ::std::string& Status_Name(Status value) {
+    return VolumeFile_Status_Name(value);
+  }
+  static inline bool Status_Parse(const ::std::string& name,
+      Status* value) {
+    return VolumeFile_Status_Parse(name, value);
+  }
+  
   // accessors -------------------------------------------------------
   
-  // optional .rec.util.file.Volume volume = 1;
-  inline bool has_volume() const;
-  inline void clear_volume();
-  static const int kVolumeFieldNumber = 1;
-  inline const ::rec::util::file::Volume& volume() const;
-  inline ::rec::util::file::Volume* mutable_volume();
+  // optional .rec.util.file.VolumeFile.Type type = 1 [default = NONE];
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::rec::util::file::VolumeFile_Type type() const;
+  inline void set_type(::rec::util::file::VolumeFile_Type value);
   
-  // repeated string path = 2;
+  // optional string name = 2;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 2;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  
+  // repeated string path = 3;
   inline int path_size() const;
   inline void clear_path();
-  static const int kPathFieldNumber = 2;
+  static const int kPathFieldNumber = 3;
   inline const ::std::string& path(int index) const;
   inline ::std::string* mutable_path(int index);
   inline void set_path(int index, const ::std::string& value);
@@ -267,18 +226,28 @@ class VolumeFile : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& path() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_path();
   
+  // optional .rec.util.file.VolumeFile.Status status = 4 [default = ONLINE];
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 4;
+  inline ::rec::util::file::VolumeFile_Status status() const;
+  inline void set_status(::rec::util::file::VolumeFile_Status value);
+  
   // @@protoc_insertion_point(class_scope:rec.util.file.VolumeFile)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::util::file::Volume* volume_;
+  int type_;
+  ::std::string* name_;
+  static const ::std::string _default_name_;
   ::google::protobuf::RepeatedPtrField< ::std::string> path_;
+  int status_;
   friend void  protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2ffile_2fVolumeFile_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -393,60 +362,60 @@ class VolumeFileList : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// Volume
+// VolumeFile
 
-// optional .rec.util.file.Volume.Type type = 1 [default = NONE];
-inline bool Volume::has_type() const {
+// optional .rec.util.file.VolumeFile.Type type = 1 [default = NONE];
+inline bool VolumeFile::has_type() const {
   return _has_bit(0);
 }
-inline void Volume::clear_type() {
+inline void VolumeFile::clear_type() {
   type_ = 0;
   _clear_bit(0);
 }
-inline ::rec::util::file::Volume_Type Volume::type() const {
-  return static_cast< ::rec::util::file::Volume_Type >(type_);
+inline ::rec::util::file::VolumeFile_Type VolumeFile::type() const {
+  return static_cast< ::rec::util::file::VolumeFile_Type >(type_);
 }
-inline void Volume::set_type(::rec::util::file::Volume_Type value) {
-  GOOGLE_DCHECK(::rec::util::file::Volume_Type_IsValid(value));
+inline void VolumeFile::set_type(::rec::util::file::VolumeFile_Type value) {
+  GOOGLE_DCHECK(::rec::util::file::VolumeFile_Type_IsValid(value));
   _set_bit(0);
   type_ = value;
 }
 
 // optional string name = 2;
-inline bool Volume::has_name() const {
+inline bool VolumeFile::has_name() const {
   return _has_bit(1);
 }
-inline void Volume::clear_name() {
+inline void VolumeFile::clear_name() {
   if (name_ != &_default_name_) {
     name_->clear();
   }
   _clear_bit(1);
 }
-inline const ::std::string& Volume::name() const {
+inline const ::std::string& VolumeFile::name() const {
   return *name_;
 }
-inline void Volume::set_name(const ::std::string& value) {
+inline void VolumeFile::set_name(const ::std::string& value) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Volume::set_name(const char* value) {
+inline void VolumeFile::set_name(const char* value) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Volume::set_name(const char* value, size_t size) {
+inline void VolumeFile::set_name(const char* value, size_t size) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Volume::mutable_name() {
+inline ::std::string* VolumeFile::mutable_name() {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
@@ -454,28 +423,7 @@ inline ::std::string* Volume::mutable_name() {
   return name_;
 }
 
-// -------------------------------------------------------------------
-
-// VolumeFile
-
-// optional .rec.util.file.Volume volume = 1;
-inline bool VolumeFile::has_volume() const {
-  return _has_bit(0);
-}
-inline void VolumeFile::clear_volume() {
-  if (volume_ != NULL) volume_->::rec::util::file::Volume::Clear();
-  _clear_bit(0);
-}
-inline const ::rec::util::file::Volume& VolumeFile::volume() const {
-  return volume_ != NULL ? *volume_ : *default_instance_->volume_;
-}
-inline ::rec::util::file::Volume* VolumeFile::mutable_volume() {
-  _set_bit(0);
-  if (volume_ == NULL) volume_ = new ::rec::util::file::Volume;
-  return volume_;
-}
-
-// repeated string path = 2;
+// repeated string path = 3;
 inline int VolumeFile::path_size() const {
   return path_.size();
 }
@@ -519,6 +467,23 @@ VolumeFile::mutable_path() {
   return &path_;
 }
 
+// optional .rec.util.file.VolumeFile.Status status = 4 [default = ONLINE];
+inline bool VolumeFile::has_status() const {
+  return _has_bit(3);
+}
+inline void VolumeFile::clear_status() {
+  status_ = 1;
+  _clear_bit(3);
+}
+inline ::rec::util::file::VolumeFile_Status VolumeFile::status() const {
+  return static_cast< ::rec::util::file::VolumeFile_Status >(status_);
+}
+inline void VolumeFile::set_status(::rec::util::file::VolumeFile_Status value) {
+  GOOGLE_DCHECK(::rec::util::file::VolumeFile_Status_IsValid(value));
+  _set_bit(3);
+  status_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // VolumeFileList
@@ -560,8 +525,12 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::util::file::Volume_Type>() {
-  return ::rec::util::file::Volume_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::util::file::VolumeFile_Type>() {
+  return ::rec::util::file::VolumeFile_Type_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::util::file::VolumeFile_Status>() {
+  return ::rec::util::file::VolumeFile_Status_descriptor();
 }
 
 }  // namespace google

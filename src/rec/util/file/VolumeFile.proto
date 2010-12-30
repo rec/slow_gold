@@ -1,6 +1,6 @@
 package rec.util.file;
 
-message Volume {
+message VolumeFile {
   enum Type {
     NONE = 0;
     CD = 1;
@@ -9,13 +9,19 @@ message Volume {
     VOLUME = 4;
   };
 
+  enum Status {
+    ONLINE = 1;
+    OFFLINE = 2;
+    DISK_OPEN = 3;
+    WRITEABLE_DISK = 4;
+    NO_DISK = 5;
+    UNKNOWN = 6;
+  };
+
   optional Type type = 1 [default = NONE];
   optional string name = 2;
-};
-
-message VolumeFile {
-  optional Volume volume = 1;
-  repeated string path = 2;
+  repeated string path = 3;
+  optional Status status = 4 [default = ONLINE];
 };
 
 message VolumeFileList {

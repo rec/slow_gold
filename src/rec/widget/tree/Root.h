@@ -2,6 +2,7 @@
 #define __REC_WIDGET_TREE_ROOT__
 
 #include "rec/gui/DropTarget.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/file/VolumeFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
@@ -11,10 +12,35 @@ namespace rec {
 namespace widget {
 namespace tree {
 
+typedef gui::DropTarget<TreeView, String, gui::NullInterface> TreeViewDrop;
+
+class TreeViewDropAll : public TreeViewDrop, public Listener<const VolumeFile&> {
+ public:
+  TreeViewDropAll() : TreeViewDrop("Tree") {
+    dropBroadcaster()->addListener(this);
+  }
+
+  virtual void operator()(const VolumeFile& f) {
+    persist::data<file::VolumeFileList>()->append("file", f);
+  }
+
+  bool isInterestedInFileDrag(const StringArray& files) {
+    for (int i = 0; i < files.size(); ++i) {
+      if (file::isAudio(files[i]) || File(files[i]).isDirectory())
+        return true;
+    }
+    return false;
+  }
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(TreeViewDropAll);
+};
+
 class Root : public Thread,
              public Broadcaster<const VolumeFile&>,
-             public Listener<const util::file::VolumeFileList&>, 
-             public Listener<const VolumeFile&> {
+             public Listener<const util::file::VolumeFileList&>,
+             public Listener<const VolumeFile&>
+{
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
@@ -23,13 +49,12 @@ class Root : public Thread,
   void mergeNewIntoOld(const util::file::VolumeFileList& volumes);
   TreeView* treeView() { return &tree_; }
 
-  virtual bool isInterestedInFileDrag(const StringArray& files);
-  virtual void operator()(const VolumeFile&) {}
+  virtual void operator()(const VolumeFile&);
   virtual void operator()(const util::file::VolumeFileList&);
 
  private:
   void update();
-  void addVolume(const file::Volume& volume, int insertAt);
+  void addVolume(const VolumeFile& volume, int insertAt);
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
   int getNumNodes() const { return root_.getNumSubItems(); }
 
@@ -39,9 +64,12 @@ class Root : public Thread,
   };
 
   NodeDesc desc_;
-  gui::DropTarget<TreeView, String, gui::NullInterface> tree_;
   TreeViewItem root_;
+
+  TreeViewDropAll tree_;
   file::VolumeFileList volumes_;
+
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
   JUCE_LEAK_DETECTOR(Root);

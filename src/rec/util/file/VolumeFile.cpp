@@ -27,17 +27,17 @@ const File getFile(File f, const Path& path) {
 
 }  // namespace
 
-const File getVolume(const Volume& v) {
-  if (v.type() == Volume::CD) {
-    CHECK(v.type() != Volume::CD);
+const File getVolume(const VolumeFile& v) {
+  if (v.type() == VolumeFile::CD) {
+    CHECK(v.type() != VolumeFile::CD);
   }
 
-  if (v.type() == Volume::MUSIC) {
+  if (v.type() == VolumeFile::MUSIC) {
     DCHECK_EQ(v.name(), "");
     return File::getSpecialLocation(File::userMusicDirectory);
   }
 
-  if (v.type() == Volume::VOLUME) {
+  if (v.type() == VolumeFile::VOLUME) {
 #if JUCE_MAC
     if (v.name().empty())
       return File("/");
@@ -47,7 +47,7 @@ const File getVolume(const Volume& v) {
     return File(v.name().c_str());
   }
 
-  if (v.type() == Volume::USER) {
+  if (v.type() == VolumeFile::USER) {
     DCHECK_EQ(v.name(), "");
     return File::getSpecialLocation(File::userHomeDirectory);
   }
@@ -56,18 +56,14 @@ const File getVolume(const Volume& v) {
   return File();
 }
 
-const File getShadowDirectory(const Volume& v) {
-  String name = String(Volume::Type_Name(v.type()).c_str()).toLowerCase();
+const File getShadowDirectory(const VolumeFile& vf) {
+  String name = String(VolumeFile::Type_Name(vf.type()).c_str()).toLowerCase();
   File f = persist::getApp()->appDir().getChildFile(name);
-  return getFile(f, v.name());
+  return getFile(getFile(f, vf.name()), vf.path());
 }
 
 const File getFile(const VolumeFile& file) {
-  return getFile(getVolume(file.volume()), file.path());
-}
-
-const File getShadowDirectory(const VolumeFile& file) {
-  return getFile(getShadowDirectory(file.volume()), file.path());
+  return getFile(getVolume(file), file.path());
 }
 
 const String getFilename(const VolumeFile& file) {
@@ -75,18 +71,18 @@ const String getFilename(const VolumeFile& file) {
 }
 
 const String getDisplayName(const VolumeFile& file) {
-  Volume::Type type = file.volume().type();
+  VolumeFile::Type type = file.type();
   if (int size = file.path_size())
     return file.path(size - 1).c_str();
 
-  if (type == Volume::MUSIC)
+  if (type == VolumeFile::MUSIC)
     return "<Music>";
 
-  if (type == Volume::USER)
+  if (type == VolumeFile::USER)
     return "<User>";
 
-  if (type == Volume::VOLUME || type == Volume::CD) {
-    string name = file.volume().name();
+  if (type == VolumeFile::VOLUME || type == VolumeFile::CD) {
+    string name = file.name();
     eraseVolumePrefix(&name, false);
     return name.empty() ? "<Root>" : name.c_str();
   }
@@ -101,15 +97,17 @@ const String getFullDisplayName(const VolumeFile& file) {
   return result;
 }
 
-bool compareVolumes(const Volume& x, const Volume& y) {
-  return x.type() < y.type() || (x.type() == y.type() && x.name() < y.name());
-}
-
-bool compareVolumeFiles(const VolumeFile& x, const VolumeFile& y) {
-  if (compareVolumes(x.volume(), y.volume()))
+bool compare(const VolumeFile& x, const VolumeFile& y) {
+  if (x.type() < y.type())
     return true;
 
-  if (compareVolumes(y.volume(), x.volume()))
+  if (x.type() > y.type())
+    return false;
+
+  if (x.name() < y.name())
+    return true;
+
+  if (x.name() > y.name())
     return false;
 
   for (int i = 0; ; i++) {
@@ -126,24 +124,12 @@ bool compareVolumeFiles(const VolumeFile& x, const VolumeFile& y) {
   }
 }
 
-bool operator==(const Volume& x, const Volume& y) {
-  return !(compareVolumes(x, y) || compareVolumes(y, x));
-}
-
 bool operator==(const VolumeFile& x, const VolumeFile& y) {
-  if (!(x.volume() == y.volume() && x.path_size() == y.path_size()))
-    return false;
-
-  for (int i = 0; i < x.path_size(); ++i) {
-    if (x.path(i) != y.path(i))
-      return false;
-  }
-  return true;
+  return !(compare(x, y) || compare(y, x));
 }
 
 AudioFormatReader* createReader(const VolumeFile& file) {
-  const Volume& v = file.volume();
-  if (v.type() != Volume::CD)
+  if (file.type() != VolumeFile::CD)
     return audio::getAudioFormatManager()->createReaderFor(getFile(file));
 
   if (!file.path_size()) {
@@ -153,7 +139,7 @@ AudioFormatReader* createReader(const VolumeFile& file) {
   }
 
   int track = String(file.path(0).c_str()).getIntValue();
-  return util::cd::createCDTrackReader(v.name().c_str(), track);
+  return util::cd::createCDTrackReader(file.name().c_str(), track);
 }
 
 PositionableAudioSource* createSource(const VolumeFile& file) {
@@ -166,17 +152,19 @@ PositionableAudioSource* createSource(const VolumeFile& file) {
 }
 
 bool empty(const VolumeFile& f) {
-  return !(f.has_volume() && f.volume().has_type() && f.volume().type());
+  return f.has_type();
 }
 
 VolumeFile toVolumeFile(const File& file) {
   VolumeFile vf;
-  vf.mutable_volume()->set_type(Volume::VOLUME);
+  vf.set_type(VolumeFile::VOLUME);
 
   File f = file, p = file.getParentDirectory();
   for (; f != p; f = p, p = f.getParentDirectory())
     vf.add_path(f.getFileName().toCString());
-  vf.add_path(f.getFileName().toCString());
+  string lastName = f.getFileName().toCString();
+  if (lastName.size())
+    vf.add_path(lastName);
 
 
 #if JUCE_MAC
@@ -184,7 +172,7 @@ VolumeFile toVolumeFile(const File& file) {
   const string& root = vf.path(last);
 
   if (root == "Volumes" && last != 0) {
-    vf.mutable_volume()->set_name(vf.path(last - 1));
+    vf.set_name(vf.path(last - 1));
     vf.mutable_path()->RemoveLast();
     vf.mutable_path()->RemoveLast();
   }
@@ -196,6 +184,10 @@ VolumeFile toVolumeFile(const File& file) {
     vf.mutable_path()->SwapElements(i, vf.path_size() - i - 1);
 
   return vf;
+}
+
+void sort(VolumeFileList* v) {
+  std::sort(v->mutable_file()->begin(), v->mutable_file()->end(), compare);
 }
 
 }  // namespace file

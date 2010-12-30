@@ -45,8 +45,6 @@ class DataListener : public Listener<const Proto&> {
   virtual void onChange() {
     if (data_)
       data_->set(address_, get());
-    else
-      LOG(ERROR) << "No data but got a change on " << data::proto::getName<Proto>();
   }
 
   virtual const Value get() const = 0;

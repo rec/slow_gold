@@ -22,19 +22,19 @@ class UntypedData : public Setter {
   // get() won't immediately be updated.
   virtual void operator()(proto::Operation* op);
 
-  void update() {
-    (*this)((proto::Operation*)NULL);
-  }
-
+  // Request an update to this data in a different thread.
+  void requestUpdate();
   bool fileReadSuccess() const { return fileReadSuccess_; }
 
  protected:
   friend class AppInstance;
 
+  // Update the clients in this thread.
+  void update();
+
   UntypedData(const File& file, Message* message, App* app);
   void readFromFile() const;
 
-  void doUpdate();
   void writeToFile() const;
 
   virtual void changeCallback() = 0;

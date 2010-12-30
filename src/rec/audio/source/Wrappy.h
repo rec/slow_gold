@@ -13,18 +13,16 @@ namespace source {
 
 class Wrappy : public PositionableAudioSource {
  public:
-  Wrappy(Source* source = NULL) { setSource(source); }
+  Wrappy(PositionableAudioSource* s = NULL) { setSource(s); }
 
   // TODO:  no longer used?
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
-    source()->getNextAudioBlock(info);
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
+    source()->getNextAudioBlock(i);
   }
 
   virtual int getTotalLength() const { return source()->getTotalLength(); }
 
-  virtual int getNextReadPosition() const {
-    return source()->getNextReadPosition();
-  }
+  virtual int getNextReadPosition() const { return source()->getNextReadPosition(); }
 
   virtual void setNextReadPosition(int p) { source()->setNextReadPosition(p); }
 
@@ -36,15 +34,12 @@ class Wrappy : public PositionableAudioSource {
 
   int mod(int x) const { return util::mod(x, getTotalLength()); }
 
-  void advance(int x) {
-    setNextReadPosition(mod(x + getNextReadPosition()));
-  }
-
   virtual PositionableAudioSource* source() const {
     ScopedLock l(lock_);
     return source_.get();
   }
-  void setSource(PositionableAudioSource* s = NULL) {
+
+  void setSource(PositionableAudioSource* s) {
     ScopedLock l(lock_);
     source_.reset(s ? s : new Empty());
   }
@@ -70,8 +65,8 @@ class Wrappy::Position : public Wrappy {
   }
 
   virtual void setNextReadPosition(int p) {
-    source()->setNextReadPosition(p);
     ScopedLock l(lock_);
+    source()->setNextReadPosition(p);
     position_ = p;
   }
 

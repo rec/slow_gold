@@ -1,5 +1,6 @@
 #include "rec/audio/source/DoubleRunny.h"
 #include "rec/util/thread/Trash.h"
+#include "rec/audio/source/Clear.h"
 #include "rec/audio/source/Stretchy.h"
 #include "rec/audio/source/StretchyRunny.h"
 #include "rec/util/file/VolumeFile.h"
@@ -58,10 +59,12 @@ void DoubleRunny::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
     }
   }
 
-  if (runny_)
+  if (runny_) {
     runny_->getNextAudioBlock(info);
-  else
-    LOG(ERROR) << "No runny";
+  } else {
+    LOG(ERROR) << "No audio data available";
+    clear(info);
+  }
 }
 
 Source* DoubleRunny::source() const {

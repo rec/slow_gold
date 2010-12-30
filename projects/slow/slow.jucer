@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="7vQsWEtgG" name="Slow">
+  <MAINGROUP id="JZx9GFD48" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -101,16 +101,18 @@
         <GROUP id="ngaS8lhNw" name="source">
           <FILE compile="0" file="../../src/rec/audio/source/AudioThumbnail.h"
                 id="8xp2Uhojv" name="AudioThumbnail.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
+                id="3N82QYAas" name="BufferSource.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Buffery.cpp" id="j65lAhK0O"
                 name="Buffery.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="xg6gai8lw"
                 name="Buffery.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/BufferySource.h"
-                id="r2erB0SM5" name="BufferySource.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/CachedThumbnail.cpp"
                 id="icFYTzeme" name="CachedThumbnail.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/CachedThumbnail.h"
                 id="J0XdlDtBc" name="CachedThumbnail.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Clear.h" id="o6VnvBKtk"
+                name="Clear.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp"
                 id="iL3pgjU3f" name="DoubleRunny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunny.h" id="8DYi8ImuJ"
@@ -529,6 +531,10 @@
                 name="Difference.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/Difference.h" id="uK9PhskRb"
                 name="Difference.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/block/Filler.cpp" id="A61LYXMng"
+                name="Filler.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/block/Filler.h" id="0W86OtaOV"
+                name="Filler.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet.cpp"
                 id="14xwP05j3" name="MergeBlockSet.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="3KLkh5Mjs"
@@ -834,7 +840,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Ra5HJiAl2" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="cxyNDsumF" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

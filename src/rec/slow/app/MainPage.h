@@ -19,6 +19,8 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Waveform.h"
 
+using namespace juce;
+
 using namespace rec::audio::source;
 using namespace rec::audio;
 using namespace rec::gui;
@@ -33,10 +35,10 @@ namespace rec {
 namespace slow {
 
 class MainPage : public Component,
-                 public ButtonListener,
-                 public listener::Listener<const float&>,
-                 public listener::Listener<const TimeAndMouseEvent&>,
-                 public listener::Listener<const VolumeFile&> {
+                 public juce::ButtonListener,
+                 public Listener<const float&>,
+                 public Listener<const TimeAndMouseEvent&>,
+                 public Listener<const VolumeFile&> {
  public:
   MainPage(AudioDeviceManager&);
   virtual ~MainPage() {
@@ -63,13 +65,6 @@ class MainPage : public Component,
   TextButton startStopButton_;
   thread_ptr<Root> treeRoot_;
 
-#if 0
-  class DirectoryDropTarget : public DropTarget<Component, String> {
-   public:
-    virtual bool isInterestedInFileDrag(const StringArray&) { return true; }
-  };
-  DirectoryDropTarget treeRootTarget_;
-#endif
   Label explanation_;
 
   SetterSlider<StretchyProto> timeScaleSlider_;
@@ -85,7 +80,7 @@ class MainPage : public Component,
   thread_ptr<TimeLocker> timeLocker_;
   thread_ptr<FileLocker> fileLocker_;
 
-  listener::SetterListener<const VolumeFile&> fileListener_;
+  SetterListener<const VolumeFile&> fileListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };

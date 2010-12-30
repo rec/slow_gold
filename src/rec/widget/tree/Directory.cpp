@@ -44,16 +44,13 @@ Node* Directory::createChildFile(const partition::Shard& shard) const {
 
 void Directory::computeChildren() {
   File f = getFile(volumeFile_);
-  if (!f.isDirectory()) {
-    LOG(ERROR) << f.getFullPathName().toCString() << " is not a directory";
-    return;
+  if (f.isDirectory()) {
+    resetChildren();
+    file::sortedChildren(f, children_);
+    range_.begin_ = 0;
+    range_.end_ = children_->size();
+    partition();
   }
-
-  resetChildren();
-  file::sortedChildren(f, children_);
-  range_.begin_ = 0;
-  range_.end_ = children_->size();
-  partition();
   setProcessing(false);
 }
 

@@ -45,7 +45,7 @@ class Node : public juce::TreeViewItem,
   bool alreadyVisited() const;
 
   const VolumeFile& volumeFile() const { return volumeFile_; }
-  file::Volume::Type type() const { return volumeFile_.volume().type(); }
+  VolumeFile::Type type() const { return volumeFile_.type(); }
   bool processing() const { return processing_; }
 
   void setProcessing(bool p) {

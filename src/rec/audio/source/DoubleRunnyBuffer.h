@@ -2,10 +2,10 @@
 #define __REC_AUDIO_SOURCE_DOUBLERUNNYBUFFER__
 
 #include "rec/audio/source/Buffery.h"
-#include "rec/audio/source/BufferySource.h"
 #include "rec/audio/source/CachedThumbnail.h"
 #include "rec/audio/source/DoubleRunny.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/util/thread/ChangeLocker.h"
 
 namespace rec {
 namespace audio {
@@ -14,17 +14,17 @@ namespace source {
 class DoubleRunnyBuffer
   : public DoubleRunny,
     public Thread,
-    public listener::Listener<const StretchyProto&> {
+    public Listener<const StretchyProto&> {
  public:
   typedef persist::Data<StretchyProto> Data;
 
   DoubleRunnyBuffer(const VolumeFile& file, Data* data);
-  virtual ~DoubleRunnyBuffer() {}
+  virtual ~DoubleRunnyBuffer();
 
   bool fillFromPosition(int pos);
 
   virtual PositionableAudioSource* makeSource();
-  juce::AudioThumbnail* thumbnail() { return cachedThumbnail_->thumbnail(); }
+  // juce::AudioThumbnail* thumbnail() { return cachedThumbnail_->thumbnail(); }
   CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
 
   virtual void operator()(const StretchyProto& p);

@@ -1,8 +1,8 @@
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/audio/source/Snoopy.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/audio/source/BufferSource.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/util/thread/Trash.h"
-#include "rec/util/thread/ChangeLocker.h"
 
 static const int COMPRESSION = 512;
 static const int THREAD_TIMEOUT = 2000;
@@ -14,8 +14,7 @@ namespace audio {
 namespace source {
 
 static const int READAHEAD = 20000;
-static const int WAIT_TIME = 20;
-static const int MAX_WAIT_TIME = 7000;
+
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
     : DoubleRunny(file), Thread("DoubleRunnyBuffer"),
@@ -43,13 +42,16 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
   data_->addListener(changeLocker_.get());
 }
 
+DoubleRunnyBuffer::~DoubleRunnyBuffer() {}
+
 PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
   if (threadShouldExit())
     return NULL;
 
   startThread();
-  buffery_->waitUntilFilled(READAHEAD);
-  return new BufferySource(*buffery_->buffer());
+  int pos = getNextReadPosition();
+  buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
+  return new BufferSource(*buffery_->buffer());
 }
 
 void DoubleRunnyBuffer::operator()(const StretchyProto& p) {
@@ -63,12 +65,17 @@ static const int BUFFERY_READAHEAD = 10000;
 
 bool DoubleRunnyBuffer::fillFromPosition(int pos) {
   buffery_->setPosition(pos);
-  return buffery_->waitUntilFilled(BUFFERY_READAHEAD);
+  return buffery_->waitUntilFilled(block::Block(pos, pos + BUFFERY_READAHEAD));
 }
 
 void DoubleRunnyBuffer::run() {
   DLOG(INFO) << "DoubleRunnyBuffer::run";
-  while (!(threadShouldExit() || buffery_->fillNextBlock()));
+  while (!buffery_->isFull()) {
+    if (threadShouldExit())
+      return;
+    else
+      buffery_->fillNextBlock();
+  }
   if (!threadShouldExit()) {
     cachedThumbnail_->writeThumbnail(true);
     DLOG(INFO) << "run(): buffery_.isFull()";

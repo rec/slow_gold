@@ -171,11 +171,12 @@
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\AudioThumbnail.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferySource.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\CachedThumbnail.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\CachedThumbnail.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Clear.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.cpp"/>
@@ -400,6 +401,8 @@
             <File RelativePath="..\..\..\..\src\rec\util\block\Block.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\Difference.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\Difference.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Filler.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Filler.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
           </Filter>

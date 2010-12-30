@@ -45,7 +45,11 @@ void UntypedData::operator()(proto::Operation* op) {
   app_->needsUpdate(this);
 }
 
-void UntypedData::doUpdate() {
+void UntypedData::requestUpdate() {
+  (*this)((proto::Operation*)NULL);
+}
+
+void UntypedData::update() {
   OperationList oldQueue;
   {
     ScopedLock l(lock_);

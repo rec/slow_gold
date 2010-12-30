@@ -20,43 +20,51 @@ using namespace rec::gui;
 static const int ROOT_WAIT_TIME = 1000;
 
 Root::Root(const NodeDesc& desc)
-    : Thread("tree::Root"), desc_(desc), tree_("Root") {
+    : Thread("tree::Root"), desc_(desc) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   tree_.dropBroadcaster()->addListener(this);
   persist::data<VolumeFileList>()->addListener(this);
-  persist::data<VolumeFileList>()->update();
+  persist::data<VolumeFileList>()->requestUpdate();
 }
 
 void Root::run() {
   while (!threadShouldExit()) {
-    thread::callAsync(this, &Root::mergeNewIntoOld, getVolumes());
-    wait(ROOT_WAIT_TIME);
+    VolumeFileList volumes;
+    {
+      ScopedLock l(lock_);
+      volumes = volumes_;
+    }
+
+    fillVolumes(&volumes);
+    if (!threadShouldExit()) {
+      thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
+      wait(ROOT_WAIT_TIME);
+    }
   }
+}
+
+void Root::operator()(const VolumeFile& file) {
+	broadcast(file);
 }
 
 void Root::operator()(const VolumeFileList& volumes) {
-}
-
-bool Root::isInterestedInFileDrag(const StringArray& files) {
-  for (int i = 0; i < files.size(); ++i) {
-    if (file::isAudio(files[i]) || File(files[i]).isDirectory())
-      return true;
-  }
-  return false;
+  ScopedLock l(lock_);
+  volumes_ = volumes;
+  notify();
 }
 
 void Root::mergeNewIntoOld(const file::VolumeFileList& volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
-    const Volume* v1 = (i < volumes.file_size()) ? &volumes.file(i).volume() : NULL;
+    const VolumeFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : NULL;
     const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;
-    const Volume* v2 = n ? &(n->volumeFile().volume()) : NULL;
+    const VolumeFile* v2 = n ? &(n->volumeFile()) : NULL;
 
     if (!v1)
       root_.removeSubItem(j);
-    else if (!v2 || compareVolumes(*v1, *v2))
+    else if (!v2 || compare(*v1, *v2))
       addVolume(*v1, j++);
-    else if (compareVolumes(*v2, *v1))
+    else if (compare(*v2, *v1))
       root_.removeSubItem(j);
     else  // They're the same!
       j++;
@@ -66,15 +74,19 @@ void Root::mergeNewIntoOld(const file::VolumeFileList& volumes) {
   tree_.setRootItemVisible(false);
 }
 
-void Root::addVolume(const Volume& volume, int insertAt) {
-  VolumeFile vf;
-  vf.mutable_volume()->CopyFrom(volume);
+void Root::addVolume(const VolumeFile& volume, int insertAt) {
+  ptr<Node> directory;
 
-  Directory* directory = (volume.type() == Volume::CD) ? new CD(desc_, vf) :
-    new Directory(desc_, vf);
+  if (volume.type() == VolumeFile::CD)
+    directory.reset(new CD(desc_, volume));
+  else if (getFile(volume).isDirectory())
+    directory.reset(new Directory(desc_, volume));
+  else
+    directory.reset(new Node(desc_, volume));
+
   directory->addListener(this);
-  root_.addSubItem(directory, insertAt);
-  directory->requestPartition();
+  root_.addSubItem(directory.get(), insertAt);
+  directory.transfer()->requestPartition();
 }
 
 }  // namespace tree

@@ -13,10 +13,7 @@ template <typename Type> class Data;
 namespace util {
 namespace file {
 
-const File getVolume(const Volume& volume);
 const File getFile(const VolumeFile& file);
-
-const File getShadowDirectory(const Volume& volume);
 const File getShadowDirectory(const VolumeFile& file);
 
 template <typename Proto>
@@ -28,15 +25,9 @@ const String getFilename(const VolumeFile& file);
 const String getDisplayName(const VolumeFile& file);
 const String getFullDisplayName(const VolumeFile& file);
 
-bool compareVolumes(const Volume& x, const Volume& y);
-bool compareVolumeFiles(const VolumeFile& x, const VolumeFile& y);
+bool compare(const VolumeFile& x, const VolumeFile& y);
 
-bool operator==(const Volume& x, const Volume& y);
 bool operator==(const VolumeFile& x, const VolumeFile& y);
-
-inline bool operator!=(const Volume& x, const Volume& y) {
-  return !(x == y);
-}
 
 inline bool operator!=(const VolumeFile& x, const VolumeFile& y) {
   return !(x == y);
@@ -49,6 +40,8 @@ bool empty(const VolumeFile& file);
 typedef persist::Data<VolumeFile> VolumeFileData;
 
 VolumeFile toVolumeFile(const File& file);
+
+void sort(VolumeFileList* volumes);
 
 }  // namespace file
 }  // namespace util

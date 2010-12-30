@@ -13,13 +13,13 @@ namespace source {
 
 class Runny : public Thread, public Wrappy::Position {
  public:
-  Runny(Source* source,
-  	    const RunnyProto& desc = RunnyProto::default_instance());
+  Runny(PositionableAudioSource* source,
+        const RunnyProto& d = RunnyProto::default_instance());
 
   virtual ~Runny();
 
   virtual void setNextReadPosition(int p);
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
   // Try to pre-fill the lookahead buffer.
   // Return true when the buffer is full, false otherwise.

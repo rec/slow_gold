@@ -16,13 +16,11 @@ namespace file {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Volume_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Volume_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* Volume_Type_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* VolumeFile_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   VolumeFile_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* VolumeFile_Type_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* VolumeFile_Status_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* VolumeFileList_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   VolumeFileList_reflection_ = NULL;
@@ -36,27 +34,12 @@ void protobuf_AssignDesc_rec_2futil_2ffile_2fVolumeFile_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/util/file/VolumeFile.proto");
   GOOGLE_CHECK(file != NULL);
-  Volume_descriptor_ = file->message_type(0);
-  static const int Volume_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Volume, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Volume, name_),
-  };
-  Volume_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Volume_descriptor_,
-      Volume::default_instance_,
-      Volume_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Volume, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Volume, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Volume));
-  Volume_Type_descriptor_ = Volume_descriptor_->enum_type(0);
-  VolumeFile_descriptor_ = file->message_type(1);
-  static const int VolumeFile_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFile, volume_),
+  VolumeFile_descriptor_ = file->message_type(0);
+  static const int VolumeFile_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFile, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFile, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFile, path_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFile, status_),
   };
   VolumeFile_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -69,7 +52,9 @@ void protobuf_AssignDesc_rec_2futil_2ffile_2fVolumeFile_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(VolumeFile));
-  VolumeFileList_descriptor_ = file->message_type(2);
+  VolumeFile_Type_descriptor_ = VolumeFile_descriptor_->enum_type(0);
+  VolumeFile_Status_descriptor_ = VolumeFile_descriptor_->enum_type(1);
+  VolumeFileList_descriptor_ = file->message_type(1);
   static const int VolumeFileList_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VolumeFileList, file_),
   };
@@ -97,8 +82,6 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Volume_descriptor_, &Volume::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     VolumeFile_descriptor_, &VolumeFile::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     VolumeFileList_descriptor_, &VolumeFileList::default_instance());
@@ -107,8 +90,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2futil_2ffile_2fVolumeFile_2eproto() {
-  delete Volume::default_instance_;
-  delete Volume_reflection_;
   delete VolumeFile::default_instance_;
   delete VolumeFile_reflection_;
   delete VolumeFileList::default_instance_;
@@ -123,19 +104,20 @@ void protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\036rec/util/file/VolumeFile.proto\022\rrec.ut"
-    "il.file\"\201\001\n\006Volume\022.\n\004type\030\001 \001(\0162\032.rec.u"
-    "til.file.Volume.Type:\004NONE\022\014\n\004name\030\002 \001(\t"
+    "il.file\"\261\002\n\nVolumeFile\0222\n\004type\030\001 \001(\0162\036.r"
+    "ec.util.file.VolumeFile.Type:\004NONE\022\014\n\004na"
+    "me\030\002 \001(\t\022\014\n\004path\030\003 \003(\t\0228\n\006status\030\004 \001(\0162 "
+    ".rec.util.file.VolumeFile.Status:\006ONLINE"
     "\"9\n\004Type\022\010\n\004NONE\020\000\022\006\n\002CD\020\001\022\t\n\005MUSIC\020\002\022\010\n"
-    "\004USER\020\003\022\n\n\006VOLUME\020\004\"A\n\nVolumeFile\022%\n\006vol"
-    "ume\030\001 \001(\0132\025.rec.util.file.Volume\022\014\n\004path"
-    "\030\002 \003(\t\"9\n\016VolumeFileList\022\'\n\004file\030\001 \003(\0132\031"
-    ".rec.util.file.VolumeFile", 305);
+    "\004USER\020\003\022\n\n\006VOLUME\020\004\"^\n\006Status\022\n\n\006ONLINE\020"
+    "\001\022\013\n\007OFFLINE\020\002\022\r\n\tDISK_OPEN\020\003\022\022\n\016WRITEAB"
+    "LE_DISK\020\004\022\013\n\007NO_DISK\020\005\022\013\n\007UNKNOWN\020\006\"9\n\016V"
+    "olumeFileList\022\'\n\004file\030\001 \003(\0132\031.rec.util.f"
+    "ile.VolumeFile", 414);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/file/VolumeFile.proto", &protobuf_RegisterTypes);
-  Volume::default_instance_ = new Volume();
   VolumeFile::default_instance_ = new VolumeFile();
   VolumeFileList::default_instance_ = new VolumeFileList();
-  Volume::default_instance_->InitAsDefaultInstance();
   VolumeFile::default_instance_->InitAsDefaultInstance();
   VolumeFileList::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2futil_2ffile_2fVolumeFile_2eproto);
@@ -151,11 +133,11 @@ struct StaticDescriptorInitializer_rec_2futil_2ffile_2fVolumeFile_2eproto {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* Volume_Type_descriptor() {
+const ::google::protobuf::EnumDescriptor* VolumeFile_Type_descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Volume_Type_descriptor_;
+  return VolumeFile_Type_descriptor_;
 }
-bool Volume_Type_IsValid(int value) {
+bool VolumeFile_Type_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
@@ -169,289 +151,50 @@ bool Volume_Type_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const Volume_Type Volume::NONE;
-const Volume_Type Volume::CD;
-const Volume_Type Volume::MUSIC;
-const Volume_Type Volume::USER;
-const Volume_Type Volume::VOLUME;
-const Volume_Type Volume::Type_MIN;
-const Volume_Type Volume::Type_MAX;
-const int Volume::Type_ARRAYSIZE;
+const VolumeFile_Type VolumeFile::NONE;
+const VolumeFile_Type VolumeFile::CD;
+const VolumeFile_Type VolumeFile::MUSIC;
+const VolumeFile_Type VolumeFile::USER;
+const VolumeFile_Type VolumeFile::VOLUME;
+const VolumeFile_Type VolumeFile::Type_MIN;
+const VolumeFile_Type VolumeFile::Type_MAX;
+const int VolumeFile::Type_ARRAYSIZE;
 #endif  // _MSC_VER
-const ::std::string Volume::_default_name_;
-#ifndef _MSC_VER
-const int Volume::kTypeFieldNumber;
-const int Volume::kNameFieldNumber;
-#endif  // !_MSC_VER
-
-Volume::Volume()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Volume::InitAsDefaultInstance() {
-}
-
-Volume::Volume(const Volume& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Volume::SharedCtor() {
-  _cached_size_ = 0;
-  type_ = 0;
-  name_ = const_cast< ::std::string*>(&_default_name_);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Volume::~Volume() {
-  SharedDtor();
-}
-
-void Volume::SharedDtor() {
-  if (name_ != &_default_name_) {
-    delete name_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void Volume::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Volume::descriptor() {
+const ::google::protobuf::EnumDescriptor* VolumeFile_Status_descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Volume_descriptor_;
+  return VolumeFile_Status_descriptor_;
 }
-
-const Volume& Volume::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();  return *default_instance_;
-}
-
-Volume* Volume::default_instance_ = NULL;
-
-Volume* Volume::New() const {
-  return new Volume;
-}
-
-void Volume::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    type_ = 0;
-    if (_has_bit(1)) {
-      if (name_ != &_default_name_) {
-        name_->clear();
-      }
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Volume::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.util.file.Volume.Type type = 1 [default = NONE];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::rec::util::file::Volume_Type_IsValid(value)) {
-            set_type(static_cast< ::rec::util::file::Volume_Type >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(1, value);
-          }
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_name;
-        break;
-      }
-      
-      // optional string name = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Volume::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.util.file.Volume.Type type = 1 [default = NONE];
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->type(), output);
-  }
-  
-  // optional string name = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
+bool VolumeFile_Status_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      return true;
+    default:
+      return false;
   }
 }
-
-::google::protobuf::uint8* Volume::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional .rec.util.file.Volume.Type type = 1 [default = NONE];
-  if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->type(), target);
-  }
-  
-  // optional string name = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Volume::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.util.file.Volume.Type type = 1 [default = NONE];
-    if (has_type()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
-    }
-    
-    // optional string name = 2;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Volume::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Volume* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Volume*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Volume::MergeFrom(const Volume& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      set_type(from.type());
-    }
-    if (from._has_bit(1)) {
-      set_name(from.name());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Volume::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Volume::CopyFrom(const Volume& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Volume::IsInitialized() const {
-  
-  return true;
-}
-
-void Volume::Swap(Volume* other) {
-  if (other != this) {
-    std::swap(type_, other->type_);
-    std::swap(name_, other->name_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Volume::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Volume_descriptor_;
-  metadata.reflection = Volume_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
 
 #ifndef _MSC_VER
-const int VolumeFile::kVolumeFieldNumber;
+const VolumeFile_Status VolumeFile::ONLINE;
+const VolumeFile_Status VolumeFile::OFFLINE;
+const VolumeFile_Status VolumeFile::DISK_OPEN;
+const VolumeFile_Status VolumeFile::WRITEABLE_DISK;
+const VolumeFile_Status VolumeFile::NO_DISK;
+const VolumeFile_Status VolumeFile::UNKNOWN;
+const VolumeFile_Status VolumeFile::Status_MIN;
+const VolumeFile_Status VolumeFile::Status_MAX;
+const int VolumeFile::Status_ARRAYSIZE;
+#endif  // _MSC_VER
+const ::std::string VolumeFile::_default_name_;
+#ifndef _MSC_VER
+const int VolumeFile::kTypeFieldNumber;
+const int VolumeFile::kNameFieldNumber;
 const int VolumeFile::kPathFieldNumber;
+const int VolumeFile::kStatusFieldNumber;
 #endif  // !_MSC_VER
 
 VolumeFile::VolumeFile()
@@ -460,7 +203,6 @@ VolumeFile::VolumeFile()
 }
 
 void VolumeFile::InitAsDefaultInstance() {
-  volume_ = const_cast< ::rec::util::file::Volume*>(&::rec::util::file::Volume::default_instance());
 }
 
 VolumeFile::VolumeFile(const VolumeFile& from)
@@ -471,7 +213,9 @@ VolumeFile::VolumeFile(const VolumeFile& from)
 
 void VolumeFile::SharedCtor() {
   _cached_size_ = 0;
-  volume_ = NULL;
+  type_ = 0;
+  name_ = const_cast< ::std::string*>(&_default_name_);
+  status_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -480,8 +224,10 @@ VolumeFile::~VolumeFile() {
 }
 
 void VolumeFile::SharedDtor() {
+  if (name_ != &_default_name_) {
+    delete name_;
+  }
   if (this != default_instance_) {
-    delete volume_;
   }
 }
 
@@ -507,9 +253,13 @@ VolumeFile* VolumeFile::New() const {
 
 void VolumeFile::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (_has_bit(0)) {
-      if (volume_ != NULL) volume_->::rec::util::file::Volume::Clear();
+    type_ = 0;
+    if (_has_bit(1)) {
+      if (name_ != &_default_name_) {
+        name_->clear();
+      }
     }
+    status_ = 1;
   }
   path_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -522,21 +272,45 @@ bool VolumeFile::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.util.file.Volume volume = 1;
+      // optional .rec.util.file.VolumeFile.Type type = 1 [default = NONE];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_volume()));
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::util::file::VolumeFile_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::util::file::VolumeFile_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_path;
+        if (input->ExpectTag(18)) goto parse_name;
         break;
       }
       
-      // repeated string path = 2;
+      // optional string name = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_path;
+        break;
+      }
+      
+      // repeated string path = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_path:
@@ -548,7 +322,28 @@ bool VolumeFile::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_path;
+        if (input->ExpectTag(26)) goto parse_path;
+        if (input->ExpectTag(32)) goto parse_status;
+        break;
+      }
+      
+      // optional .rec.util.file.VolumeFile.Status status = 4 [default = ONLINE];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_status:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::util::file::VolumeFile_Status_IsValid(value)) {
+            set_status(static_cast< ::rec::util::file::VolumeFile_Status >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(4, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -571,19 +366,34 @@ bool VolumeFile::MergePartialFromCodedStream(
 
 void VolumeFile::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.util.file.Volume volume = 1;
+  // optional .rec.util.file.VolumeFile.Type type = 1 [default = NONE];
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->volume(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
   }
   
-  // repeated string path = 2;
+  // optional string name = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->name(), output);
+  }
+  
+  // repeated string path = 3;
   for (int i = 0; i < this->path_size(); i++) {
   ::google::protobuf::internal::WireFormat::VerifyUTF8String(
     this->path(i).data(), this->path(i).length(),
     ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->path(i), output);
+      3, this->path(i), output);
+  }
+  
+  // optional .rec.util.file.VolumeFile.Status status = 4 [default = ONLINE];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->status(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -594,20 +404,35 @@ void VolumeFile::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* VolumeFile::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.util.file.Volume volume = 1;
+  // optional .rec.util.file.VolumeFile.Type type = 1 [default = NONE];
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->volume(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->type(), target);
   }
   
-  // repeated string path = 2;
+  // optional string name = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->name(), target);
+  }
+  
+  // repeated string path = 3;
   for (int i = 0; i < this->path_size(); i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->path(i).data(), this->path(i).length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(2, this->path(i), target);
+      WriteStringToArray(3, this->path(i), target);
+  }
+  
+  // optional .rec.util.file.VolumeFile.Status status = 4 [default = ONLINE];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      4, this->status(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -621,15 +446,27 @@ int VolumeFile::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.util.file.Volume volume = 1;
-    if (has_volume()) {
+    // optional .rec.util.file.VolumeFile.Type type = 1 [default = NONE];
+    if (has_type()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->volume());
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+    
+    // optional string name = 2;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+    
+    // optional .rec.util.file.VolumeFile.Status status = 4 [default = ONLINE];
+    if (has_status()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
     }
     
   }
-  // repeated string path = 2;
+  // repeated string path = 3;
   total_size += 1 * this->path_size();
   for (int i = 0; i < this->path_size(); i++) {
     total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -664,7 +501,13 @@ void VolumeFile::MergeFrom(const VolumeFile& from) {
   path_.MergeFrom(from.path_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_volume()->::rec::util::file::Volume::MergeFrom(from.volume());
+      set_type(from.type());
+    }
+    if (from._has_bit(1)) {
+      set_name(from.name());
+    }
+    if (from._has_bit(3)) {
+      set_status(from.status());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -689,8 +532,10 @@ bool VolumeFile::IsInitialized() const {
 
 void VolumeFile::Swap(VolumeFile* other) {
   if (other != this) {
-    std::swap(volume_, other->volume_);
+    std::swap(type_, other->type_);
+    std::swap(name_, other->name_);
     path_.Swap(&other->path_);
+    std::swap(status_, other->status_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

@@ -98,7 +98,6 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   startStopButton_.addListener(this);
   waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
-  // treeRootTarget_.addListener(&fileListener_);
   waveform_.dropBroadcaster()->addListener(&fileListener_);
 
   transportSource_->addListener(&songDial_);
@@ -114,7 +113,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   fileLocker_->startThread();
   timeLocker_->startThread();
   persist::data<VolumeFile>()->addListener(fileLocker_.get());
-  persist::data<VolumeFile>()->update();
+  persist::data<VolumeFile>()->requestUpdate();
 }
 
 void MainPage::paint(Graphics& g) {

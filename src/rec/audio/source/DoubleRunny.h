@@ -33,7 +33,6 @@ class DoubleRunny : public Wrappy {
   const VolumeFile file_;
   const RunnyProto runnyDesc_;
 
-  CriticalSection lock_;
   thread_ptr<Runny> runny_, nextRunny_;
   double ratio_;
 

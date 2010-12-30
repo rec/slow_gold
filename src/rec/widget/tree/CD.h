@@ -20,7 +20,7 @@ class CD : public Directory {
     string name = "<Unknown>";
     std::vector<string> tracks;
 
-    const string& cdKey = volumeFile_.volume().name();
+    const string& cdKey = volumeFile_.name();
     ptr<AudioCDReader> reader(cd::getAudioCDReader(cdKey.c_str()));
     if (reader) {
       cd::TrackOffsets trackOffsets = reader->getTrackOffsets();
