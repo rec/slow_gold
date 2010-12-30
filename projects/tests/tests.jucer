@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="d2T3kgz79" name="tests">
+  <MAINGROUP id="DMPQGerDH" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -106,8 +106,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
-          <FILE compile="0" file="../../src/rec/audio/source/AudioThumbnail.h"
-                id="bDXmVhdkh" name="AudioThumbnail.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/AudioTimeScaler_test.cpp"
                 id="2V7IlnMaI" name="AudioTimeScaler_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
@@ -116,10 +114,6 @@
                 name="Buffery.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="XFI3VkEZu"
                 name="Buffery.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/CachedThumbnail.cpp"
-                id="pDYn0M5Jn" name="CachedThumbnail.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/CachedThumbnail.h"
-                id="zQpGhgpuP" name="CachedThumbnail.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Clear.h" id="P9OUV2gpV"
                 name="Clear.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp"
@@ -453,6 +447,12 @@
         </GROUP>
       </GROUP>
       <GROUP id="3L8ZCKlmn" name="gui">
+        <FILE compile="0" file="../../src/rec/gui/AudioThumbnail.h" id="OJs3ZxZue"
+              name="AudioThumbnail.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/CachedThumbnail.cpp" id="rYmUiiVGV"
+              name="CachedThumbnail.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/CachedThumbnail.h" id="3fHwo91Ur"
+              name="CachedThumbnail.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/Color.cpp" id="ZKoMfwmD0"
               name="Color.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Color.h" id="8c5n7LS8Q" name="Color.h"
@@ -883,7 +883,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="kwOLpT6mH" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="fetf5VW7R" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

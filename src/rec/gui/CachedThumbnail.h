@@ -1,17 +1,16 @@
-#ifndef __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
-#define __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
+#ifndef __REC_GUI_CACHEDTHUMBNAIL__
+#define __REC_GUI_CACHEDTHUMBNAIL__
 
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
-namespace audio {
-namespace source {
+namespace gui {
 
 class CachedThumbnail
-  : public listener::Listener<const AudioSourceChannelInfo&>,
-    public listener::Broadcaster<const juce::AudioThumbnail&> {
+  : public Listener<const AudioSourceChannelInfo&>,
+    public Broadcaster<const juce::AudioThumbnail&> {
  public:
-      CachedThumbnail(const File& file, int compression, int sampleLength);
+  CachedThumbnail(const File& file, int compression, int sampleLength);
   virtual ~CachedThumbnail();
 
   juce::AudioThumbnail* thumbnail() { return &thumbnail_; }
@@ -32,8 +31,7 @@ class CachedThumbnail
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CachedThumbnail);
 };
 
-}  // namespace source
-}  // namespace audio
+}  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_CACHEDTHUMBNAIL__
+#endif  // __REC_GUI_CACHEDTHUMBNAIL__

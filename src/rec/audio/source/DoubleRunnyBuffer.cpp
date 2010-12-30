@@ -9,12 +9,13 @@ static const int THREAD_TIMEOUT = 2000;
 static const int SPIN_WAIT = 40;
 static const int BLOCK_SIZE = 1024;
 
+using namespace rec::gui;
+
 namespace rec {
 namespace audio {
 namespace source {
 
 static const int READAHEAD = 20000;
-
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
     : DoubleRunny(file), Thread("DoubleRunnyBuffer"),

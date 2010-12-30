@@ -1,17 +1,16 @@
-#include "rec/audio/source/CachedThumbnail.h"
+#include "rec/gui/CachedThumbnail.h"
 
 #include "rec/util/thread/FileWriter.h"
 #include "rec/util/file/VolumeFile.h"
 #include "rec/audio/AudioFormatManager.h"
 
 namespace rec {
-namespace audio {
-namespace source {
+namespace gui {
 
 CachedThumbnail::CachedThumbnail(const File& file, int compression,
                                  int sampleLength)
   : file_(file),
-    thumbnail_(compression, *getAudioFormatManager(), cache_),
+    thumbnail_(compression, *audio::getAudioFormatManager(), cache_),
     cache_(1),
     written_(false) {
   thumbnail_.reset(2, 44100.0f, sampleLength);  // TODO
@@ -25,7 +24,6 @@ CachedThumbnail::CachedThumbnail(const File& file, int compression,
     LOG(ERROR) << "Couldn't load from " << file_.getFullPathName().toCString();
   }
 }
-
 
 CachedThumbnail::~CachedThumbnail() {}
 
@@ -47,7 +45,5 @@ void CachedThumbnail::writeThumbnail(bool deferred) {
   }
 }
 
-
-}  // namespace source
-}  // namespace audio
+}  // namespace gui
 }  // namespace rec

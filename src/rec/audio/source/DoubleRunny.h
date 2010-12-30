@@ -25,7 +25,7 @@ class DoubleRunny : public Wrappy {
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
  protected:
-  virtual PositionableAudioSource* makeSource();
+  virtual PositionableAudioSource* makeSource() = 0;
   virtual Source* source() const;
   StretchyProto stretchyDesc_;
 

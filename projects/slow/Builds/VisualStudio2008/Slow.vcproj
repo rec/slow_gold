@@ -170,12 +170,9 @@
             </Filter>
           </Filter>
           <Filter Name="source">
-            <File RelativePath="..\..\..\..\src\rec\audio\source\AudioThumbnail.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\CachedThumbnail.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\CachedThumbnail.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Clear.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
@@ -348,6 +345,9 @@
           </Filter>
         </Filter>
         <Filter Name="gui">
+          <File RelativePath="..\..\..\..\src\rec\gui\AudioThumbnail.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\CachedThumbnail.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\CachedThumbnail.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\DropTarget.h"/>

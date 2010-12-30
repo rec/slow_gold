@@ -1,12 +1,11 @@
-#ifndef __REC_AUDIO_SOURCE_AUDIOTHUMBNAIL__
-#define __REC_AUDIO_SOURCE_AUDIOTHUMBNAIL__
+#ifndef __REC_GUI_AUDIOTHUMBNAIL__
+#define __REC_GUI_AUDIOTHUMBNAIL__
 
 #include "rec/util/listener/Listener.h"
 #include "rec/audio/AudioFormatManager.h"
 
 namespace rec {
-namespace audio {
-namespace source {
+namespace gui {
 
 class AudioThumbnail : public juce::AudioThumbnail,
                        public listener::Listener<const AudioSourceChannelInfo&> {
@@ -27,8 +26,7 @@ class AudioThumbnail : public juce::AudioThumbnail,
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioThumbnail);
 };
 
-}  // namespace source
-}  // namespace audio
+}  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_AUDIOTHUMBNAIL__
+#endif  // __REC_GUI_AUDIOTHUMBNAIL__

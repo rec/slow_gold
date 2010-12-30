@@ -15,11 +15,6 @@ DoubleRunny::DoubleRunny(const VolumeFile& file, const RunnyProto& desc)
 
 DoubleRunny::~DoubleRunny() {}
 
-PositionableAudioSource* DoubleRunny::makeSource() {
-  ptr<AudioFormatReader> r(createReader(file_));
-  return r ? new AudioFormatReaderSource(r.transfer(), true) : NULL;
-}
-
 void DoubleRunny::setStretchy(const StretchyProto& desc) {
   DLOG(INFO) << "DoubleRunny::setStretchy";
 
@@ -34,16 +29,16 @@ void DoubleRunny::setStretchy(const StretchyProto& desc) {
 
   thread_ptr<Runny> runny(makeStretchyRunny(makeSource(), desc,
                                              runnyDesc_, position));
-  if (runny) {
-    ScopedLock l(lock_);
-    nextRunny_.swap(runny);
-    if (!runny_) {
-      runny_.swap(nextRunny_);
-      ratio_ = 1.0;
-    }
-
-  } else {
+  if (!runny) {
     LOG(ERROR) << "Unable to make source for file " << file_.DebugString();
+    return;
+  }
+
+  ScopedLock l(lock_);
+  nextRunny_.swap(runny);
+  if (!runny_) {
+    runny_.swap(nextRunny_);
+    ratio_ = 1.0;
   }
 }
 
