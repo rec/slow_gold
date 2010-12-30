@@ -1,9 +1,10 @@
 #include "rec/widget/tree/Root.h"
+
+#include "rec/data/persist/Persist.h"
 #include "rec/gui/Color.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Trash.h"
-#include "rec/data/persist/Persist.h"
 #include "rec/widget/tree/CD.h"
 #include "rec/widget/tree/Directory.h"
 

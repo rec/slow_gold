@@ -31,6 +31,10 @@ namespace typer {
 #define ADD(CTYPE, TYPE)                                            \
   METHOD(CTYPE, TYPE, Add, (CTYPE v), void, , , (msg_, field_, v))
 
+#define CLEAR(CTYPE)                                                 \
+  METHOD(CTYPE, Field, Clear, (), void, , , (msg_, field_))
+
+
 #define DEF_TYPE(CTYPE, UPPER)                                          \
   template <> const FieldDescriptor::Type TypedTyper<CTYPE>::TYPE_INDEX = \
     FieldDescriptor::TYPE_ ## UPPER;
@@ -47,6 +51,7 @@ namespace typer {
   GETTERS(CTYPE, TYPE)                                                  \
   SETTERS(CTYPE, TYPE)                                                  \
   ADD(CTYPE, TYPE)                                                      \
+  CLEAR(CTYPE)                                                          \
   DEF_TYPE(CTYPE, UPPER)                                                \
   COPY(CTYPE, CTYPE)                                                    \
 
@@ -67,12 +72,10 @@ DEF_ALL(sfixed32, Int32, SFIXED32)
 DEF_ALL(sfixed64, Int64, SFIXED64)
 DEF_ALL(sint32, Int32, SINT32)
 DEF_ALL(sint64, Int64, SINT64)
-// DEF_ALL(pmessage, Message, MESSAGE)
-// DEF_ALL(penum, Enum, ENUM)
-
 
 DEF_TYPE(pmessage, MESSAGE)
 COPY(pmessage, message)
+CLEAR(pmessage)
 
 template <>
 pmessage TypedTyper<pmessage>::Get() const {
@@ -110,6 +113,7 @@ void TypedTyper<pmessage>::Add(pmessage t) {
 
 DEF_TYPE(penum, ENUM)
 COPY(penum, enum)
+CLEAR(penum)
 
 template <>
 penum TypedTyper<penum>::Get() const {
@@ -137,6 +141,19 @@ void TypedTyper<penum>::Add(penum t) {
   reflection().AddEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
 }
 
+#if 0
+
+template <>
+void TypedTyper<pmessage>::Clear() {
+  reflection().ClearField(msg_, field_);
+}
+
+template <>
+void TypedTyper<penum>::Clear() {
+  reflection().ClearField(msg_, field_);
+}
+
+#endif
 
 }  // namespace typer
 }  // namespace proto

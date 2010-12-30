@@ -441,6 +441,7 @@
 		C2C7BDA8573F8BB43DC99514 /* WriteYaml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WriteYaml.cpp; path = ../../../../src/rec/data/yaml/WriteYaml.cpp; sourceTree = SOURCE_ROOT; };
 		C3E0C5D69DCD7C54D1C66A50 /* ostream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ostream.cpp; path = ../../../../src/rec/data/yaml/src/ostream.cpp; sourceTree = SOURCE_ROOT; };
 		C4132813AF6EC06285C2AF89 /* regex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = regex.cpp; path = ../../../../src/rec/data/yaml/src/regex.cpp; sourceTree = SOURCE_ROOT; };
+		C448E428335991E8E5B42AF9 /* TreeViewDropAll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TreeViewDropAll.h; path = ../../../../src/rec/widget/tree/TreeViewDropAll.h; sourceTree = SOURCE_ROOT; };
 		C492F238E0B137F11CB59D99 /* Widget.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Widget.pb.h; path = ../../../../genfiles/proto/rec/widget/Widget.pb.h; sourceTree = SOURCE_ROOT; };
 		C64170AD00A386B40A5C70F3 /* stream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stream.h; path = ../../../../src/rec/data/yaml/src/stream.h; sourceTree = SOURCE_ROOT; };
 		C68ABB11D02E16C0C61008A8 /* Testy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Testy.h; path = ../../../../src/rec/audio/source/Testy.h; sourceTree = SOURCE_ROOT; };
@@ -911,6 +912,20 @@
 			name = src;
 			sourceTree = "<group>";
 		};
+		85D00DC4BE1023D018084B29 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		872E4A7523BA4AA9ACFF6C68 /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -942,20 +957,6 @@
 				8365111D9219CCA28070F994 /* ZeroCopy.h */,
 			);
 			name = proto;
-			sourceTree = "<group>";
-		};
-		8DD663ADC581955E2C24983E /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		901085F431F5837B0268703B /* ammf_scaler */ = {
@@ -1149,6 +1150,7 @@
 				BFF718C20886014E3A7E0968 /* Root.cpp */,
 				A9D4C013E87CDC5FBD477DFE /* Root.h */,
 				00252EEEADB4EF3E8503A3E1 /* Shard.h */,
+				C448E428335991E8E5B42AF9 /* TreeViewDropAll.h */,
 			);
 			name = tree;
 			sourceTree = "<group>";
@@ -1383,7 +1385,7 @@
 				French,
 				German,
 			);
-			mainGroup = 8DD663ADC581955E2C24983E /* Source */;
+			mainGroup = 85D00DC4BE1023D018084B29 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

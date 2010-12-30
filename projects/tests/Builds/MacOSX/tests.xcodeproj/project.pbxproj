@@ -355,6 +355,7 @@
 		7665593C03C6666B30051DC9 /* conversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conversion.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/conversion.h"; sourceTree = SOURCE_ROOT; };
 		768EC2DF717E243EA4656ED3 /* ostream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ostream.cpp; path = ../../../../src/rec/data/yaml/src/ostream.cpp; sourceTree = SOURCE_ROOT; };
 		7758A0B8218028F75CE7FB0F /* LogFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LogFile.h; path = ../../../../src/rec/data/proto/LogFile.h; sourceTree = SOURCE_ROOT; };
+		77E6E021181A49C3C8422E7C /* TreeViewDropAll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TreeViewDropAll.h; path = ../../../../src/rec/widget/tree/TreeViewDropAll.h; sourceTree = SOURCE_ROOT; };
 		7854C144841654317717F4C9 /* AudioInputMicrophone.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioInputMicrophone.svg.h; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.h; sourceTree = SOURCE_ROOT; };
 		78B1151C9410885C5861B30D /* regex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = regex.cpp; path = ../../../../src/rec/data/yaml/src/regex.cpp; sourceTree = SOURCE_ROOT; };
 		78F73F6C8CE543B33B019CC7 /* Yaml_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Yaml_test.cpp; path = ../../../../src/rec/data/yaml/Yaml_test.cpp; sourceTree = SOURCE_ROOT; };
@@ -1207,6 +1208,7 @@
 				629515CBFD37B9281D1D1DEC /* Root.cpp */,
 				5C72BC1CCD2E844990D68172 /* Root.h */,
 				C4C31AE7826597185892B764 /* Shard.h */,
+				77E6E021181A49C3C8422E7C /* TreeViewDropAll.h */,
 			);
 			name = tree;
 			sourceTree = "<group>";
@@ -1292,6 +1294,20 @@
 				AD25A6A38CA02ADE6C4C6838 /* rec */,
 			);
 			name = proto;
+			sourceTree = "<group>";
+		};
+		F07F261FBB6BEA12BF55AD2A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		F30253110B983ACE956D6A24 /* status */ = {
@@ -1391,20 +1407,6 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		FECC6239F21DAC14C681DED2 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1441,7 +1443,7 @@
 				French,
 				German,
 			);
-			mainGroup = FECC6239F21DAC14C681DED2 /* Source */;
+			mainGroup = F07F261FBB6BEA12BF55AD2A /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

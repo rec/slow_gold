@@ -20,12 +20,14 @@ class ComponentContainer : public Component,
   virtual void resized();
   virtual const StringArray getMenuBarNames();
 
-  enum MenuItems { OPEN = 1, CLOSE, CUT, PASTE, QUIT, EJECT, RECENT_FILES };
+  enum MenuItems { OPEN = 1, CLOSE, CUT, PASTE, QUIT, EJECT, CLEAR_TREE,
+                   RECENT_FILES };
 
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& menuName);
 
   void quit();
   void eject();
+  void clearTree();
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex);
   void doMenuItemSelected(int menuItemID, int topLevelMenuIndex);
 

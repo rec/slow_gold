@@ -42,6 +42,7 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex, const String&
   } else if (menuName == "Edit") {
     menu.addItem(CUT, "Cut");
     menu.addItem(PASTE, "Paste");
+    menu.addItem(CLEAR_TREE, "Clear directory window");
   }
 
   return menu;
@@ -65,6 +66,10 @@ void ComponentContainer::menuItemSelected(int menuItemID, int topLevelMenuIndex)
                          menuItemID, topLevelMenuIndex);
 }
 
+void ComponentContainer::clearTree() {
+  persist::data<file::VolumeFileList>()->clear();
+}
+
 void ComponentContainer::doMenuItemSelected(int menuItemID, int topLevelMenuIndex) {
   DLOG(INFO) << "menuItemSelected: "
              << menuItemID << ", " << topLevelMenuIndex;
@@ -76,6 +81,7 @@ void ComponentContainer::doMenuItemSelected(int menuItemID, int topLevelMenuInde
     case PASTE:  mainPage_->paste(); break;
     case EJECT:  eject(); break;
     case QUIT:   quit(); break;
+    case CLEAR_TREE: clearTree(); break;
     default:     mainPage_->loadRecentFile(menuItemID - RECENT_FILES); break;
   }
 }

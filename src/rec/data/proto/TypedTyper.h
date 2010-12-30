@@ -24,6 +24,7 @@ class Typer {
   virtual void copyFrom(uint32 i, const Value& v) = 0;
 
   virtual void add(const Value& v) = 0;
+  virtual void clear() = 0;
 
  protected:
   const Reflection& reflection() const { return *msg_->GetReflection(); }
@@ -52,12 +53,14 @@ class TypedTyper : public Typer {
   void SetRepeated(uint32 i, Type t);
 
   void Add(Type t);
+  void Clear();
 
   virtual void copyFrom(const Value& v)            { Set(copy(v));  }
   virtual void copyFrom(uint32 i, const Value& v)  { SetRepeated(i, copy(v)); }
   virtual void copyTo(Value* v) const              { copy(Get(), v); }
   virtual void copyTo(uint32 i, Value* v) const    { copy(GetRepeated(i), v); }
   virtual void add(const Value& v)                 { Add(copy(v)); }
+  virtual void clear()                             { Clear(); }
 
   virtual Typer* clone(google::protobuf::Message* m,
                        const FieldDescriptor* f) const {

@@ -173,7 +173,10 @@ bool Field::clearRepeated() {
 bool Field::clearSingle() {
   undo_->set_command(Operation::SET);
   undo_->clear_value();
-  return copyTo(undo_->add_value());
+  if (!copyTo(undo_->add_value()))
+    return false;
+  message_->Clear();
+  return true;
 }
 
 bool Field::removeRepeated() {

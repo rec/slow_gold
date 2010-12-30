@@ -1,46 +1,20 @@
 #ifndef __REC_WIDGET_TREE_ROOT__
 #define __REC_WIDGET_TREE_ROOT__
 
-#include "rec/gui/DropTarget.h"
-#include "rec/data/persist/Persist.h"
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/file/VolumeFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/listener/DataListener.h"
+#include "rec/widget/tree/TreeViewDropAll.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 
-typedef gui::DropTarget<TreeView, String, gui::NullInterface> TreeViewDrop;
-
-class TreeViewDropAll : public TreeViewDrop, public Listener<const VolumeFile&> {
- public:
-  TreeViewDropAll() : TreeViewDrop("Tree") {
-    dropBroadcaster()->addListener(this);
-  }
-
-  virtual void operator()(const VolumeFile& f) {
-    persist::data<file::VolumeFileList>()->append("file", f);
-  }
-
-  bool isInterestedInFileDrag(const StringArray& files) {
-    for (int i = 0; i < files.size(); ++i) {
-      if (file::isAudio(files[i]) || File(files[i]).isDirectory())
-        return true;
-    }
-    return false;
-  }
-
- private:
-  DISALLOW_COPY_AND_ASSIGN(TreeViewDropAll);
-};
-
 class Root : public Thread,
              public Broadcaster<const VolumeFile&>,
              public Listener<const util::file::VolumeFileList&>,
-             public Listener<const VolumeFile&>
-{
+             public Listener<const VolumeFile&> {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
