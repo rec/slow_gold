@@ -2,40 +2,31 @@
 #define __REC_AUDIO_SOURCE_DOUBLERUNNY__
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/audio/source/Runny.h"
-#include "rec/audio/source/Stretchy.pb.h"
-#include "rec/util/listener/Listener.h"
-#include "rec/util/thread/ChangeLocker.h"
+#include "rec/audio/source/Runny.pb.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class StretchyProto;
+class Runny;
 
-class DoubleRunny : public Wrappy {
+class DoubleRunny : public Wrappy::Position {
  public:
-  DoubleRunny(const VolumeFile& file,
-              const RunnyProto& desc = RunnyProto::default_instance());
+  DoubleRunny(const RunnyProto& proto = RunnyProto::default_instance());
+  virtual ~DoubleRunny();
 
-  ~DoubleRunny();
-
-  void setStretchy(const StretchyProto& desc);
+  void set(Runny* next);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
  protected:
-  virtual PositionableAudioSource* makeSource() = 0;
-  virtual Source* source() const;
-  StretchyProto stretchyDesc_;
-
- private:
-  const VolumeFile file_;
-  const RunnyProto runnyDesc_;
+  virtual void prepareNext(Runny*) {}
+  virtual PositionableAudioSource* getSource() const;
 
   thread_ptr<Runny> runny_, nextRunny_;
-  double ratio_;
+  RunnyProto runnyDesc_;
 
+ private:
   DISALLOW_COPY_AND_ASSIGN(DoubleRunny);
 };
 

@@ -178,6 +178,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchyRunny.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleStretchyRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
@@ -187,8 +189,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyRunny.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TestHarness.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\TimeScaler.cpp"/>
@@ -533,8 +533,6 @@
             </Filter>
           </Filter>
           <Filter Name="gui">
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Appearance.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Appearance.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc"/>

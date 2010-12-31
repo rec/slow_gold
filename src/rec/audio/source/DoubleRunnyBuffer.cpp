@@ -17,8 +17,9 @@ namespace source {
 
 static const int READAHEAD = 20000;
 
-DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
-    : DoubleRunny(file), Thread("DoubleRunnyBuffer"),
+DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data,
+                                     const RunnyProto& desc)
+    : DoubleStretchyRunny(file, desc), Thread("DoubleRunnyBuffer"),
       data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {
@@ -37,10 +38,10 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data)
 
   setStretchy(data_->get());
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
-  changeLocker_->initialize(data->get());
+  changeLocker_->initialize(data_->get());
+  data_->addListener(changeLocker_.get());
   changeLocker_->addListener(this);
   changeLocker_->startThread();
-  data_->addListener(changeLocker_.get());
 }
 
 DoubleRunnyBuffer::~DoubleRunnyBuffer() {}
@@ -53,13 +54,6 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
   int pos = getNextReadPosition();
   buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
   return new BufferSource(*buffery_->buffer());
-}
-
-void DoubleRunnyBuffer::operator()(const StretchyProto& p) {
-  if (changeLocker_)
-    changeLocker_->set(p);
-  else
-    LOG(ERROR) << "Empty changelocker";
 }
 
 static const int BUFFERY_READAHEAD = 10000;

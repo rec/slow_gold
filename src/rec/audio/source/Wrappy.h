@@ -36,17 +36,23 @@ class Wrappy : public PositionableAudioSource {
 
   virtual PositionableAudioSource* source() const {
     ScopedLock l(lock_);
-    return source_.get();
+    if (PositionableAudioSource* source = getSource())
+      return source;
+
+    static Empty empty;
+    return &empty;
   }
 
   void setSource(PositionableAudioSource* s) {
     ScopedLock l(lock_);
-    source_.reset(s ? s : new Empty());
+    source_.reset(s);
   }
 
   class Position;
 
  protected:
+  virtual PositionableAudioSource* getSource() const { return source_.get(); }
+
   CriticalSection lock_;
 
  private:
