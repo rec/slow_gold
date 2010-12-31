@@ -66,6 +66,14 @@ class MainPage : public Component,
   void doClose();
   void clearTime();
 
+  virtual bool keyPressed(const juce::KeyPress& kp) {
+    if (kp.getTextCharacter() == ' ') {
+      transportSource_->toggle();
+      return true;
+    }
+    return false;
+  }
+
  private:
   typedef thread::ChangeLocker<float> TimeLocker;
   typedef thread::ChangeLocker<VolumeFile> FileLocker;
