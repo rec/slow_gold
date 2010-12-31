@@ -14,7 +14,8 @@ namespace tree {
 class Root : public Thread,
              public Broadcaster<const VolumeFile&>,
              public Listener<const file::VolumeFileList&>,
-             public Listener<const VolumeFile&> {
+             public Listener<const VolumeFile&>,
+             public juce::MouseListener {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
@@ -25,6 +26,8 @@ class Root : public Thread,
 
   virtual void operator()(const VolumeFile&);
   virtual void operator()(const file::VolumeFileList&);
+  virtual void mouseUp(const juce::MouseEvent& e);
+  void doAdd();
 
  private:
   void update();

@@ -27,6 +27,7 @@ Root::Root(const NodeDesc& desc)
   tree_.dropBroadcaster()->addListener(this);
   persist::data<VolumeFileList>()->addListener(this);
   persist::data<VolumeFileList>()->requestUpdate();
+  tree_.addMouseListener(this, false);
 }
 
 void Root::run() {
@@ -54,6 +55,22 @@ void Root::operator()(const VolumeFileList& volumes) {
   volumes_ = volumes;
   notify();
 }
+
+void Root::mouseUp(const juce::MouseEvent& e) {
+  thread::callAsync(this, &Root::doAdd);
+}
+
+void Root::doAdd() {
+  juce::FileChooser chooser("Please choose files or directories to add", File::nonexistent,
+                            file::audioFilePatterns(), true);
+
+  if (chooser.browseForMultipleFilesOrDirectories()) {
+    const juce::Array<File>& files = chooser.getResults();
+    for (int i = 0; i < files.size(); ++i)
+      tree_.dropBroadcaster()->broadcast(toVolumeFile(files[i]));
+  }
+}
+
 
 void Root::mergeNewIntoOld(const file::VolumeFileList& volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
