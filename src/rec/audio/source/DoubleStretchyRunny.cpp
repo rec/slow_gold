@@ -16,7 +16,7 @@ DoubleStretchyRunny::DoubleStretchyRunny(const VolumeFile& file,
 DoubleStretchyRunny::~DoubleStretchyRunny() {}
 
 int DoubleStretchyRunny::nextRunnyPosition() const {
-  return runny_ ? (runny_->getNextReadPosition() * ratio_) :
+  return runny_ ? (runny_->getNextReadPosition() / ratio_) :
       getNextReadPosition();
 }
 

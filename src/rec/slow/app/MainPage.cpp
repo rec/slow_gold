@@ -176,6 +176,8 @@ void MainPage::operator()(const VolumeFile& file) {
 }
 
 void MainPage::clearTime() {
+  if (stretchy_)
+    stretchy_->clear();
 }
 
 void MainPage::operator()(const float& time) {

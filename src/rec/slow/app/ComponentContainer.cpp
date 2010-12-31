@@ -23,8 +23,8 @@ const StringArray ComponentContainer::getMenuBarNames() {
   return StringArray(names);
 }
 
-const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex, const String& menuName) {
-  DLOG(INFO) << "getMenuForIndex";
+const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
+                                                    const String& menuName) {
   PopupMenu menu;
   if (menuName == "File") {
     menu.addItem(OPEN, "Open...");
@@ -77,8 +77,6 @@ void ComponentContainer::clearFile() {
 }
 
 void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
-  DLOG(INFO) << "menuItemSelected: "
-             << itemID << ", " << topLevelMenuIndex;
   MainPage* mainPage = mainComponent_->mainPage();
   switch (itemID) {
     case OPEN:   mainPage->doOpen(); break;

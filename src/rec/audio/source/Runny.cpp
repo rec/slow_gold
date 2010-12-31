@@ -14,16 +14,11 @@ Runny::Runny(Source* source, const RunnyProto& desc)
     filled_(desc.buffer_size()),
     desc_(desc) {
   setPriority(desc.thread().priority());
-  DLOG(INFO) << "Creating runny " << this;
 }
 
-Runny::~Runny() {
-  DLOG(INFO) << "Deleting runny with: " << this;
-}
+Runny::~Runny() {}
 
 void Runny::setNextReadPosition(int newPos) {
-  LOG_FIRST_N(INFO, 8) << "Setting next read position: " << newPos;
-
   {
     ScopedLock l(lock_);
     // Check if the new position is within the current readahead buffer.
