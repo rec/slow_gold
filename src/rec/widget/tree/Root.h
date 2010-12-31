@@ -47,6 +47,7 @@ class Root : public Thread,
   file::VolumeFileList volumes_;
 
   CriticalSection lock_;
+  bool addDialogOpen_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
   JUCE_LEAK_DETECTOR(Root);

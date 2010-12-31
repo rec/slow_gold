@@ -21,7 +21,7 @@ using namespace rec::gui;
 static const int ROOT_WAIT_TIME = 1000;
 
 Root::Root(const NodeDesc& desc)
-    : Thread("tree::Root"), desc_(desc) {
+    : Thread("tree::Root"), desc_(desc), addDialogOpen_(false) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   tree_.dropBroadcaster()->addListener(this);
@@ -61,6 +61,9 @@ void Root::mouseUp(const juce::MouseEvent& e) {
 }
 
 void Root::doAdd() {
+  if (addDialogOpen_)
+    return;
+  addDialogOpen_ = true;
   juce::FileChooser chooser("Please choose files or directories to add", File::nonexistent,
                             file::audioFilePatterns(), true);
 
@@ -69,6 +72,7 @@ void Root::doAdd() {
     for (int i = 0; i < files.size(); ++i)
       tree_.dropBroadcaster()->broadcast(toVolumeFile(files[i]));
   }
+  addDialogOpen_ = false;
 }
 
 

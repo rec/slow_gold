@@ -91,6 +91,7 @@ class MainPage : public Component,
   thread_ptr<FileLocker> fileLocker_;
 
   SetterListener<const VolumeFile&> fileListener_;
+  bool openDialogOpen_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };
