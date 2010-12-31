@@ -25,6 +25,7 @@ class AudioTransportSourcePlayer
 
   void toggle() { setStart(!isPlaying()); }
   void setStart(bool isStart = true);
+  void update();
 
  private:
   AudioSourcePlayer player_;

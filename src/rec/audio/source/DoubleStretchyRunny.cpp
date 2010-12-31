@@ -40,6 +40,7 @@ void DoubleStretchyRunny::setStretchy(const StretchyProto& desc) {
       if (runny->fill() && !shouldExit(thread)) {
         runny->startThread();
         set(runny.transfer());
+        return;
       }
     }
   }

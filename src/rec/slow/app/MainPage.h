@@ -37,8 +37,10 @@ namespace slow {
 class MainPage : public Component,
                  public juce::ButtonListener,
                  public Listener<const float&>,
+                 public Listener<float>,
                  public Listener<const TimeAndMouseEvent&>,
-                 public Listener<const VolumeFile&> {
+                 public Listener<const VolumeFile&>,
+                 public Broadcaster<float> {
  public:
   MainPage(AudioDeviceManager&);
   virtual ~MainPage() {
@@ -49,8 +51,15 @@ class MainPage : public Component,
   void resized();
   void buttonClicked(Button*);
 
+  // Callback from someone clicking in the waveform.
   virtual void operator()(const TimeAndMouseEvent& timeMouse);
+
+  // Callback from the AudioTransport.
+  virtual void operator()(float time);
+
+  // Callback when we're ready to actually jump to that new time.
   virtual void operator()(const float& time);
+
   virtual void operator()(const VolumeFile& file);
 
   void doOpen();

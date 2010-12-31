@@ -35,6 +35,7 @@ void DoubleRunny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     runny_->getNextAudioBlock(info);
   else
     clear(info);
+  position_ = mod(position_ + info.numSamples);
 }
 
 PositionableAudioSource* DoubleRunny::getSource() const { return runny_.get(); }

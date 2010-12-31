@@ -152,7 +152,7 @@ PositionableAudioSource* createSource(const VolumeFile& file) {
 }
 
 bool empty(const VolumeFile& f) {
-  return f.has_type();
+  return !f.has_type();
 }
 
 VolumeFile toVolumeFile(const File& file) {

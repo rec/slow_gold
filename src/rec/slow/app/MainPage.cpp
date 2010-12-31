@@ -100,15 +100,16 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   treeRoot_->addListener(&fileListener_);
   waveform_.dropBroadcaster()->addListener(&fileListener_);
 
-  transportSource_->addListener(&songDial_);
-  transportSource_->addListener(&songTime_);
-  transportSource_->addListener(cursor_);
-
   treeRoot_->startThread();
 
   fileLocker_->addListener(this);
   timeLocker_->addListener(this);
-  transportSource_->addListener(timeLocker_.get());
+
+  transportSource_->addListener(this);
+
+  addListener(&songDial_);
+  addListener(&songTime_);
+  addListener(cursor_);
 
   fileLocker_->startThread();
   timeLocker_->startThread();
@@ -167,15 +168,13 @@ void MainPage::operator()(const VolumeFile& file) {
     transportSource_->setSource(doubleRunny_.get());
     songDial_.setLength(doubleRunny_->getTotalLength() / SAMPLE_RATE);
     gui::addRecentFile(file_);
+    stretchy_->requestUpdate();
   }
 }
 
 void MainPage::operator()(const float& time) {
   // DLOG(INFO) << "Callback on time " << time;
-  if (!doubleRunny_)
-    return;
-
-  else if (doubleRunny_->fillFromPosition(SAMPLE_RATE * time))
+  if (!doubleRunny_ || doubleRunny_->fillFromPosition(SAMPLE_RATE * time))
     transportSource_->setPosition(stretchy_->get().time_scale() * time);
 
   else
@@ -199,6 +198,11 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
     thread::callAsync(this, &MainPage::doOpen);
   else
     thread::callAsync(timeLocker_.get(), &TimeLocker::set, timeMouse.first);
+}
+
+void MainPage::operator()(float time) {
+  if (stretchy_)
+    broadcast(time / stretchy_->get().time_scale());
 }
 
 }  // namespace slow

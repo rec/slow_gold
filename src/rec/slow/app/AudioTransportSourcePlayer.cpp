@@ -24,8 +24,12 @@ void AudioTransportSourcePlayer::clear() {
 }
 
 void AudioTransportSourcePlayer::setPosition(double newPosition) {
-  broadcast(newPosition);
   AudioTransportSource::setPosition(newPosition);
+  update();
+}
+
+void AudioTransportSourcePlayer::update() {
+  broadcast(getNextReadPosition() / 44100.0f);
 }
 
 void AudioTransportSourcePlayer::setStart(bool isStart) {
@@ -33,15 +37,13 @@ void AudioTransportSourcePlayer::setStart(bool isStart) {
     startThread();
     AudioTransportSource::start();
   } else {
-    signalThreadShouldExit();
     AudioTransportSource::stop();
   }
 }
 
 void AudioTransportSourcePlayer::run() {
   while (!threadShouldExit()) {
-    float time = getNextReadPosition() / 44100.0f;
-    broadcast(time);
+    update();
     if (!threadShouldExit())
       wait(THREAD_WAIT);
   }

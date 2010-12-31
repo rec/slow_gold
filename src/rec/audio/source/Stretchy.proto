@@ -19,7 +19,6 @@ message StretchyProto {
   // next buffer?
   optional uint32 next_buffer_fill_size = 9 [default = 15000];
 
-
   // How long does our thread wait when it believes it has nothing to do?  -1
   // means "wait forever".  That *should* work but if our threading is a little
   // wonky, might occasionally deadlock.  The only cost of setting this to a

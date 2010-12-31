@@ -13,7 +13,7 @@ namespace tree {
 
 class Root : public Thread,
              public Broadcaster<const VolumeFile&>,
-             public Listener<const util::file::VolumeFileList&>,
+             public Listener<const file::VolumeFileList&>,
              public Listener<const VolumeFile&> {
  public:
   explicit Root(const NodeDesc& desc);
@@ -24,7 +24,7 @@ class Root : public Thread,
   TreeView* treeView() { return &tree_; }
 
   virtual void operator()(const VolumeFile&);
-  virtual void operator()(const util::file::VolumeFileList&);
+  virtual void operator()(const file::VolumeFileList&);
 
  private:
   void update();

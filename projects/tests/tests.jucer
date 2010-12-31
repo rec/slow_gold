@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="DMPQGerDH" name="tests">
+  <MAINGROUP id="1Fo8P3KKC" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -124,6 +124,10 @@
                 id="Nla7QcCaM" name="DoubleRunnyBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
                 id="f0hsu9MJo" name="DoubleRunnyBuffer.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/DoubleStretchyRunny.cpp"
+                id="pa3tvBrCN" name="DoubleStretchyRunny.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/DoubleStretchyRunny.h"
+                id="yFleUdJYO" name="DoubleStretchyRunny.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="Ok5da1Dyg"
                 name="Empty.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Runny.cpp" id="pO9kyeUMd"
@@ -144,10 +148,6 @@
                 name="Stretchy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Stretchy_test.cpp"
                 id="F9pVjTzFM" name="Stretchy_test.cpp" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/StretchyRunny.cpp"
-                id="NZCmluxI0" name="StretchyRunny.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/StretchyRunny.h"
-                id="eHr07D39T" name="StretchyRunny.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="wv92ZzL1g"
                 name="TestHarness.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="4jKydRFeH"
@@ -800,10 +800,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="wnA7W209k" name="gui">
-          <FILE compile="1" file="../../genfiles/proto/rec/gui/Appearance.pb.cc"
-                id="khUIOlvmT" name="Appearance.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/gui/Appearance.pb.h"
-                id="MZ59jGEWf" name="Appearance.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/Color.pb.cc" id="AVVmJqPAt"
                 name="Color.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Color.pb.h" id="nBUgxnfea"
@@ -883,7 +879,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="fetf5VW7R" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="jMVUU92dp" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
