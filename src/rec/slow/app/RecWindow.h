@@ -14,6 +14,7 @@ class RecWindow  : public juce::DocumentWindow {
   ~RecWindow();
 
   void closeButtonPressed();
+  ComponentContainer* getTarget() { return &container_; }
 
  private:
   ApplicationCommandManager commandManager_;
