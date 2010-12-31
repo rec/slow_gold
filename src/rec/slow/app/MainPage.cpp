@@ -55,7 +55,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     stretchy_(NULL),
     timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
     fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
-    fileListener_(persist::data<VolumeFile>()) {
+    fileListener_(persist::data<VolumeFile>()),
+    openDialogOpen_(false) {
   setSize(600, 400);
 
   startStopButton_.setButtonText(T("Play/Stop"));
@@ -149,8 +150,10 @@ void MainPage::operator()(const VolumeFile& file) {
     transportSource_->clear();
     cursor_->setTime(0.0f);
 
-    if (empty(file_))
+    if (empty(file_)) {
+      waveform_.setAudioThumbnail(NULL);
       return;
+    }
 
     stretchy_ = persist::data<StretchyProto>(file_);
 
@@ -172,6 +175,9 @@ void MainPage::operator()(const VolumeFile& file) {
   }
 }
 
+void MainPage::clearTime() {
+}
+
 void MainPage::operator()(const float& time) {
   // DLOG(INFO) << "Callback on time " << time;
   if (!doubleRunny_ || doubleRunny_->fillFromPosition(SAMPLE_RATE * time))
@@ -182,11 +188,15 @@ void MainPage::operator()(const float& time) {
 }
 
 void MainPage::doOpen() {
+  if (openDialogOpen_)
+    return;
+  openDialogOpen_ = true;
   juce::FileChooser chooser("Please choose an audio file", File::nonexistent,
                             file::audioFilePatterns(), true);
 
   if (chooser.browseForFileToOpen())
     fileListener_(file::toVolumeFile(chooser.getResult()));
+  openDialogOpen_ = false;
 }
 
 void MainPage::doClose() {

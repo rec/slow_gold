@@ -30,13 +30,15 @@ class Node : public juce::TreeViewItem,
   virtual int getItemWidth() const;
   virtual int getItemHeight() const;
   virtual juce::Component* createItemComponent();
-  virtual void itemClicked(const juce::MouseEvent&);
+  virtual void itemClicked();
   virtual bool isDirectory() const { return false; }
 
   const String name() const;
   virtual const String computeName() const;
 
   void paint(juce::Graphics& g) const;
+
+  void setClicked(bool clicked);
 
   const NodeDesc& desc() const { return desc_; }
 
@@ -63,6 +65,7 @@ class Node : public juce::TreeViewItem,
 
  private:
   bool processing_;
+  bool clicked_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
   JUCE_LEAK_DETECTOR(Node);

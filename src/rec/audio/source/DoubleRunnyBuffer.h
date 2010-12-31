@@ -26,6 +26,7 @@ class DoubleRunnyBuffer
 
   virtual PositionableAudioSource* makeSource();
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
+  virtual int getTotalLength() const { return buffery_->getLength(); }
 
   virtual void operator()(const StretchyProto& p) { setStretchy(p); }
 

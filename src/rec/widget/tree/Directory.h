@@ -22,8 +22,7 @@ class Directory : public Node, public Listener<const VolumeFile&> {
   virtual void computeChildren();
   virtual void partition();
 
-  virtual void itemClicked(const juce::MouseEvent&) { setOpen(!isOpen()); }
-  virtual void itemDoubleClicked(const juce::MouseEvent& m) { itemClicked(m); }
+  virtual void itemClicked() { setOpen(!isOpen()); }
 
   virtual void itemOpennessChanged(bool isNowOpen);
   virtual void requestPartition();

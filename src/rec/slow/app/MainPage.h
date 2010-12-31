@@ -64,6 +64,7 @@ class MainPage : public Component,
 
   void doOpen();
   void doClose();
+  void clearTime();
 
  private:
   typedef thread::ChangeLocker<float> TimeLocker;

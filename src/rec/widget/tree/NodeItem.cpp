@@ -10,7 +10,8 @@ Node::Node(const NodeDesc& d, const VolumeFile& vf, const char* name)
       volumeFile_(vf),
       icon_(gui::icon::getIcon(d.icon())),
       font_(gui::getFont(desc_.widget().font())),
-      processing_(false) {
+      processing_(false),
+      clicked_(false) {
   if (name)
     name_ = name;
 }
@@ -19,7 +20,8 @@ void Node::paint(juce::Graphics& g) const {
   Painter p(desc_.widget(), &g);
   if (icon_)
     icon_->draw(g, 1.0);
-  p.setColor(processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT);
+  p.setColor(clicked_ ? Painter::BORDER :
+             (processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT));
   g.drawSingleLineText(name(), desc_.widget().margin(),
                        font_.getAscent() + desc_.widget().margin());
 }
@@ -29,6 +31,19 @@ const String Node::name() const {
     name_ = computeName();
 
   return name_;
+}
+
+void Node::setClicked(bool clicked) {
+  bool mouseUp = (!clicked && clicked_);
+  clicked_ = clicked;
+  thread::callAsync(this, &TreeViewItem::repaintItem);
+
+  if (mouseUp)
+    itemClicked();
+}
+
+void Node::itemClicked() {
+  broadcast(volumeFile_);
 }
 
 const String Node::computeName() const {
@@ -49,10 +64,6 @@ int Node::getItemHeight() const {
 
 bool Node::alreadyVisited() const {
   return getShadowDirectory(volumeFile_).exists();
-}
-
-void Node::itemClicked(const juce::MouseEvent&) {
-  broadcast(volumeFile_);
 }
 
 juce::Component* Node::createItemComponent() {

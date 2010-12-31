@@ -8,14 +8,14 @@
 namespace rec {
 namespace slow {
 
-ComponentContainer::ComponentContainer(MainPageComponent* c) : mainPage_(c) {
+ComponentContainer::ComponentContainer(MainPageComponent* c) : mainComponent_(c) {
   addAndMakeVisible(c);
 }
 
 ComponentContainer::~ComponentContainer() {}
 
 void ComponentContainer::resized() {
-  mainPage_->setBounds(0, 0, getWidth(), getHeight());
+  mainComponent_->setBounds(0, 0, getWidth(), getHeight());
 }
 
 const StringArray ComponentContainer::getMenuBarNames() {
@@ -42,6 +42,8 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex, const String&
   } else if (menuName == "Edit") {
     menu.addItem(CUT, "Cut");
     menu.addItem(PASTE, "Paste");
+    menu.addItem(CLEAR_FILE, "Clear file");
+    menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
     menu.addItem(CLEAR_TREE, "Clear directory window");
   }
 
@@ -70,19 +72,25 @@ void ComponentContainer::clearTree() {
   persist::data<file::VolumeFileList>()->clear();
 }
 
-void ComponentContainer::doMenuItemSelected(int menuItemID, int topLevelMenuIndex) {
+void ComponentContainer::clearFile() {
+  persist::data<file::VolumeFile>()->clear();
+}
+
+void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
   DLOG(INFO) << "menuItemSelected: "
-             << menuItemID << ", " << topLevelMenuIndex;
-  MainPage* mainPage = mainPage_->mainPage();
-  switch (menuItemID) {
+             << itemID << ", " << topLevelMenuIndex;
+  MainPage* mainPage = mainComponent_->mainPage();
+  switch (itemID) {
     case OPEN:   mainPage->doOpen(); break;
     case CLOSE:  mainPage->doClose(); break;
-    case CUT:    mainPage_->cut(); break;
-    case PASTE:  mainPage_->paste(); break;
+    case CUT:    mainComponent_->cut(); break;
+    case PASTE:  mainComponent_->paste(); break;
     case EJECT:  eject(); break;
     case QUIT:   quit(); break;
     case CLEAR_TREE: clearTree(); break;
-    default:     mainPage_->loadRecentFile(menuItemID - RECENT_FILES); break;
+    case CLEAR_TIME: mainPage->clearTime(); break;
+    case CLEAR_FILE: clearFile(); break;
+    default:     mainComponent_->loadRecentFile(itemID - RECENT_FILES); break;
   }
 }
 

@@ -15,7 +15,7 @@ Waveform::Waveform(const WaveformProto& d)
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   ScopedLock l(lock_);
   thumbnail_ = thumbnail;
-  setTimeBounds(0, thumbnail_->getTotalLength());
+  setTimeBounds(0, thumbnail_ ? thumbnail_->getTotalLength() : 0);
   thread::callAsync(this, &Waveform::repaint);
 }
 
