@@ -16,7 +16,7 @@ DoubleStretchyRunny::DoubleStretchyRunny(const VolumeFile& file,
 DoubleStretchyRunny::~DoubleStretchyRunny() {}
 
 int DoubleStretchyRunny::nextRunnyPosition() const {
-  return runny_ ? (runny_->getNextReadPosition() / ratio_) :
+  return runny_ ? (runny_->getNextReadPosition() * ratio_) :
       getNextReadPosition();
 }
 
@@ -27,6 +27,11 @@ void DoubleStretchyRunny::setStretchy(const StretchyProto& desc) {
   {
     ScopedLock l(lock_);
     ratio_ *= (desc.time_scale() / stretchyDesc_.time_scale());
+#if 0
+    LOG(ERROR) << "Scale was " << desc.time_scale()
+               << " scale is " << stretchyDesc_.time_scale()
+               << " ratio is " << ratio_;
+#endif
     stretchyDesc_ = desc;
     position = nextRunnyPosition();
   }
