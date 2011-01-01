@@ -14,8 +14,8 @@ class SetterSlider : public juce::Slider, public DataListener<Proto> {
   typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
-  SetterSlider(const String& name, const Address& address, const string& dataFileName)
-      : juce::Slider(name), DataListener<Proto>(address, dataFileName) {
+  SetterSlider(const String& name, const Address& address)
+      : juce::Slider(name), DataListener<Proto>(address) {
   }
 
   virtual void valueChanged() { this->onChange(); }

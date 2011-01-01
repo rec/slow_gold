@@ -15,6 +15,9 @@ class CD : public Directory {
   CD(const NodeDesc& d, const VolumeFile& vf) : Directory(d, vf) {}
 
   virtual int minPartition() const { return 100; }
+  virtual void itemClicked() {
+    Node::itemClicked();
+  }
 
   virtual void computeChildren() {
     string name = "<Unknown>";
@@ -49,8 +52,9 @@ class CD : public Directory {
     string* path = vf.add_path();
     for (int i = 0; i < tracks.size(); ++i) {
       *path = String(i).toCString();
-      thread::callAsync(this, &TreeViewItem::addSubItem,
-                        new Node(desc_, vf, tracks[i].c_str()), -1);
+      ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));
+      node->addListener(this);
+      thread::callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);
     }
     setProcessing(false);
   }

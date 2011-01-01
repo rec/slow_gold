@@ -56,7 +56,7 @@ void addRecentFile(const VolumeFile& f) {
   rec::proto::pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    persist::data<RecentFiles>()->set("file", msg);
+    persist::data<RecentFiles>()->append("file", msg);
   else
     persist::data<RecentFiles>()->set("file", slot, msg);
 }

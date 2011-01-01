@@ -83,10 +83,11 @@ class MainPage : public Component,
   TextButton startStopButton_;
   thread_ptr<Root> treeRoot_;
 
-  Label explanation_;
+  Label explanation_[3];
 
   SetterSlider<StretchyProto> timeScaleSlider_;
   SetterSlider<StretchyProto> pitchScaleSlider_;
+  SetterSlider<StretchyProto> fineScaleSlider_;
   TextComponent songTime_;
   DialComponent songDial_;
   Cursor* cursor_;

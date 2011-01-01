@@ -17,9 +17,8 @@ class DataListener : public Listener<const Proto&> {
   typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
-  explicit DataListener(const Address& address,
-                        const string& name)
-      : address_(address), name_(name), data_(NULL) {
+  explicit DataListener(const Address& address)
+      : address_(address), data_(NULL) {
   }
 
   ~DataListener() { setData(NULL); }
@@ -52,7 +51,6 @@ class DataListener : public Listener<const Proto&> {
 
  private:
   const Address address_;
-  const string name_;
   Data* data_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DataListener);

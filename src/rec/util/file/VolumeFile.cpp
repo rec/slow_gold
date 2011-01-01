@@ -111,8 +111,8 @@ bool compare(const VolumeFile& x, const VolumeFile& y) {
     return false;
 
   for (int i = 0; ; i++) {
-    bool xDone = (i >= x.path_size() - 1);
-    bool yDone = (i >= y.path_size() - 1);
+    bool xDone = (i >= x.path_size());
+    bool yDone = (i >= y.path_size());
     if (xDone)
       return !yDone;
     if (yDone)
@@ -122,6 +122,7 @@ bool compare(const VolumeFile& x, const VolumeFile& y) {
     if (y.path(i) < x.path(i))
       return false;
   }
+  return false;
 }
 
 bool operator==(const VolumeFile& x, const VolumeFile& y) {

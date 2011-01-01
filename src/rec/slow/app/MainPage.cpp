@@ -2,6 +2,7 @@
 
 #include "rec/slow/app/MainPage.h"
 
+#include "rec/base/Arraysize.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/gui/RecentFiles.h"
@@ -47,9 +48,9 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     waveform_(WaveformProto()),
     startStopButton_(String::empty),
     treeRoot_(new Root(NodeDesc())),
-    explanation_(String::empty, T("<Explanation here>.")),
-    timeScaleSlider_("Time Scale", Address("time_scale"), "timestretch"),
-    pitchScaleSlider_("Pitch Scale", Address("pitch_scale"), "timestretch"),
+    timeScaleSlider_("Time Scale", Address("time_scale")),
+    pitchScaleSlider_("Pitch Scale", Address("semitone_shift")),
+    fineScaleSlider_("Fine Scale", Address("detune_cents")),
     songTime_(Text()),
     songDial_(realTimeDial()),
     stretchy_(NULL),
@@ -62,35 +63,44 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   startStopButton_.setButtonText(T("Play/Stop"));
   startStopButton_.setColour(TextButton::buttonColourId, Colour(0xff79ed7f));
 
-  explanation_.setFont(Font(14.0000f, Font::plain));
-  explanation_.setJustificationType(Justification::bottomRight);
-  explanation_.setEditable(false, false, false);
-  explanation_.setColour(TextEditor::textColourId, Colours::black);
-  explanation_.setColour(TextEditor::backgroundColourId, Colour(0x0));
+  explanation_[0].setText("Drag this to set the slowdown", false);
+  explanation_[1].setText("Semitone tune up or down", false);
+  explanation_[2].setText("Detune up or down (in cents)", false);
+
+  for (int i = 0; i < arraysize(explanation_); ++i) {
+    explanation_[i].setFont(Font(14.0000f, Font::plain));
+    explanation_[i].setJustificationType(Justification::bottomRight);
+    explanation_[i].setEditable(false, false, false);
+    explanation_[i].setColour(TextEditor::textColourId, Colours::black);
+    explanation_[i].setColour(TextEditor::backgroundColourId, Colour(0x0));
+    addAndMakeVisible(&(explanation_[i]));
+  }
 
   timeScaleSlider_.setTooltip(T("Drag this to set the slowdown."));
-  timeScaleSlider_.setRange(0.1, 5, 0);
+  timeScaleSlider_.setRange(1.0, 3.0, 0.05);
   timeScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
   timeScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
   timeScaleSlider_.setValue(1.0);
 
-  pitchScaleSlider_.setTooltip(T("Drag this to set the pitchscale."));
-  pitchScaleSlider_.setRange(0.125, 4, 0);
+  pitchScaleSlider_.setTooltip(T("Semitone tune up or down."));
+  pitchScaleSlider_.setRange(-7.0, 7.0, 0.5);
   pitchScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
   pitchScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
-  pitchScaleSlider_.setValue(1.0);
+  pitchScaleSlider_.setValue(0.0);
+
+  fineScaleSlider_.setTooltip(T("Detune up or down (in cents)."));
+  fineScaleSlider_.setRange(-50.0, 50.0, 1.0);
+  fineScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
+  fineScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
+  fineScaleSlider_.setValue(1.0);
 
   addAndMakeVisible(&waveform_);
   addAndMakeVisible(&startStopButton_);
-#if 0
-  addAndMakeVisible(&treeRootTarget_);
-  treeRootTarget_.addAndMakeVisible(treeRoot_->treeView());
-#else
   addAndMakeVisible(treeRoot_->treeView());
-#endif
-  addAndMakeVisible(&explanation_);
+
   addAndMakeVisible(&timeScaleSlider_);
   addAndMakeVisible(&pitchScaleSlider_);
+  addAndMakeVisible(&fineScaleSlider_);
   addAndMakeVisible(&songTime_);
   addAndMakeVisible(&songDial_);
 
@@ -116,6 +126,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   timeLocker_->startThread();
   persist::data<VolumeFile>()->addListener(fileLocker_.get());
   persist::data<VolumeFile>()->requestUpdate();
+
+  transportSource_->update();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -124,14 +136,18 @@ void MainPage::paint(Graphics& g) {
 
 void MainPage::resized() {
   waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
-  startStopButton_.setBounds(16, getHeight() - 46, 150, 32);
+  startStopButton_.setBounds(16, getHeight() - 66, 120, 32);
   treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
 
-  explanation_.setBounds(224, getHeight() - 42, getWidth() - 248, 32);
-  timeScaleSlider_.setBounds(300, getHeight() - 90, 200, 24);
-  pitchScaleSlider_.setBounds(300, getHeight() - 60, 200, 24);
-  songTime_.setBounds(520, getHeight() - 90, 110, 22);
-  songDial_.setBounds(640, getHeight() - 90, 36, 36);
+  for (int i = 0; i < arraysize(explanation_); ++i)
+    explanation_[i].setBounds(255, getHeight() - 90 + (25 * i), 275, 32);
+
+  timeScaleSlider_.setBounds(150, getHeight() - 85, 200, 24);
+  pitchScaleSlider_.setBounds(150, getHeight() - 60, 200, 24);
+  fineScaleSlider_.setBounds(150, getHeight() - 35, 200, 24);
+
+  songTime_.setBounds(getWidth() - 120, getHeight() - 70, 110, 22);
+  songDial_.setBounds(getWidth() - 46, getHeight() - 46, 36, 36);
 }
 
 void MainPage::buttonClicked(Button* buttonThatWasClicked) {
@@ -146,6 +162,7 @@ void MainPage::operator()(const VolumeFile& file) {
     file_ = file;
     timeScaleSlider_.setData(NULL);
     pitchScaleSlider_.setData(NULL);
+    fineScaleSlider_.setData(NULL);
     timeLocker_->initialize(0);
     transportSource_->clear();
     cursor_->setTime(0.0f);
@@ -163,6 +180,7 @@ void MainPage::operator()(const VolumeFile& file) {
 
     timeScaleSlider_.setData(stretchy_);
     pitchScaleSlider_.setData(stretchy_);
+    fineScaleSlider_.setData(stretchy_);
 
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);

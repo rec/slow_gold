@@ -15,7 +15,9 @@ class NodeComponent : public juce::Component {
 
   virtual void mouseDown(const juce::MouseEvent& m) { node_->setClicked(true); }
 
-  virtual void mouseUp(const juce::MouseEvent& m) { node_->setClicked(false); }
+  virtual void mouseUp(const juce::MouseEvent& m) {
+    node_->setClicked(false);
+  }
 
  private:
   Node* node_;

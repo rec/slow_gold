@@ -38,8 +38,10 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
     ScopedLock l(lock_);
     begin = filled_.begin();
     ready = filled_.filled();
+#if 0
     DLOG_EVERY_N(INFO, 64) << "-> * " << filled_.begin()
                            << ":" << filled_.filled() << ", " << this;
+#endif
   }
 
   if (ready < info.numSamples) {
@@ -82,8 +84,10 @@ bool Runny::fill() {
   if (!info.numSamples || threadShouldExit())
     return true;  // No more to fill!
 
+#if 0
   DLOG_EVERY_N(INFO, 64) << "* <- " << filled_.begin()
                          << ":" << filled_.filled() << ", " << this;
+#endif
 
   source()->prepareToPlay(desc_.chunk_size(), 44100);
 

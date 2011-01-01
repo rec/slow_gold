@@ -73,7 +73,6 @@ void DoubleRunnyBuffer::run() {
   }
   if (!threadShouldExit()) {
     cachedThumbnail_->writeThumbnail(true);
-    DLOG(INFO) << "run(): buffery_.isFull()";
   }
 }
 

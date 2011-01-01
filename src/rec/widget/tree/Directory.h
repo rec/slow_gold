@@ -22,7 +22,9 @@ class Directory : public Node, public Listener<const VolumeFile&> {
   virtual void computeChildren();
   virtual void partition();
 
-  virtual void itemClicked() { setOpen(!isOpen()); }
+  virtual void itemClicked() {
+    setOpen(!isOpen());
+  }
 
   virtual void itemOpennessChanged(bool isNowOpen);
   virtual void requestPartition();
