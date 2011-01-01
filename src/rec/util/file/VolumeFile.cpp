@@ -5,6 +5,7 @@
 #include "rec/audio/AudioFormatManager.h"
 
 using namespace juce;
+using namespace google;
 
 namespace rec {
 namespace util {

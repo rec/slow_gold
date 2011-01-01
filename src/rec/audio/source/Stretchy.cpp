@@ -1,6 +1,7 @@
 #include "rec/audio/source/Stretchy.h"
 
 using namespace juce;
+using namespace google;
 
 namespace rec {
 namespace audio {
