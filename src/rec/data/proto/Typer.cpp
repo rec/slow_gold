@@ -3,7 +3,7 @@
 #include <google/protobuf/descriptor.h>
 
 #include "rec/data/proto/Types.h"
-#include "rec/data/proto/Typer.h"
+#include "rec/data/proto/TypedOperations.h"
 #include "rec/data/proto/TypedTyper.h"
 
 namespace rec {
@@ -47,12 +47,12 @@ class STyper : public ptr<Typer> {
 } // namespace
 
 bool copyTo(const Message& m, const FieldDescriptor* f, Value* v) {
-  STyper((Message*) &m, f)->copyTo(v);
+  STyper(const_cast<Message*>(&m), f)->copyTo(v);
   return true;
 }
 
 bool copyTo(const Message& m, const FieldDescriptor* f, uint32 i, Value* v) {
-  STyper((Message*) &m, f)->copyTo(i, v);
+  STyper(const_cast<Message*>(&m), f)->copyTo(i, v);
   return true;
 }
 
@@ -70,6 +70,40 @@ bool add(Message* m, const FieldDescriptor* f, const Value& v) {
   STyper(m, f)->add(v);
   return true;
 }
+
+bool equals(const Message& m1, const Message& m2, const FieldDescriptor* f,
+            int i, const Comparer& cmp) {
+  return STyper(const_cast<Message*>(&m1), f)->equals(m2, i, cmp);
+}
+
+bool equals(const Message& x, const Message& y, const FieldDescriptor* field,
+            const Comparer& cmp) {
+  if (!field->is_repeated())
+    return STyper(const_cast<Message*>(&x), field)->equals(y, cmp);
+
+  int len = x.GetReflection()->FieldSize(x, field);
+  if (len != y.GetReflection()->FieldSize(x, field))
+    return false;
+
+  for (int i = 0; i < len; ++i)
+    if (!equals(x, y, field, i, cmp))
+      return false;
+  return true;
+}
+
+bool equals(const Message& x, const Message& y, const Comparer& cmp) {
+  const google::protobuf::Descriptor* desc = x.GetDescriptor();
+  if (desc != y.GetDescriptor())
+    return false;
+
+  for (int i = 0; i < desc->field_count(); ++i) {
+    if (!equals(x, y, desc->field(i), cmp))
+      return false;
+  }
+
+  return true;
+}
+
 
 }  // namespace typer
 }  // namespace proto

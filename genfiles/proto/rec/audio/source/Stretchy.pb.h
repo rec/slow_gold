@@ -100,6 +100,13 @@ class StretchyProto : public ::google::protobuf::Message {
   inline double time_scale() const;
   inline void set_time_scale(double value);
   
+  // optional double time_percent = 14 [default = 100];
+  inline bool has_time_percent() const;
+  inline void clear_time_percent();
+  static const int kTimePercentFieldNumber = 14;
+  inline double time_percent() const;
+  inline void set_time_percent(double value);
+  
   // optional double sample_rate = 2 [default = 44100];
   inline bool has_sample_rate() const;
   inline void clear_sample_rate();
@@ -190,6 +197,7 @@ class StretchyProto : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   double time_scale_;
+  double time_percent_;
   double sample_rate_;
   ::google::protobuf::uint32 channels_;
   double pitch_scale_;
@@ -206,7 +214,7 @@ class StretchyProto : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2faudio_2fsource_2fStretchy_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fsource_2fStretchy_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(14 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -245,195 +253,211 @@ inline void StretchyProto::set_time_scale(double value) {
   time_scale_ = value;
 }
 
+// optional double time_percent = 14 [default = 100];
+inline bool StretchyProto::has_time_percent() const {
+  return _has_bit(1);
+}
+inline void StretchyProto::clear_time_percent() {
+  time_percent_ = 100;
+  _clear_bit(1);
+}
+inline double StretchyProto::time_percent() const {
+  return time_percent_;
+}
+inline void StretchyProto::set_time_percent(double value) {
+  _set_bit(1);
+  time_percent_ = value;
+}
+
 // optional double sample_rate = 2 [default = 44100];
 inline bool StretchyProto::has_sample_rate() const {
-  return _has_bit(1);
+  return _has_bit(2);
 }
 inline void StretchyProto::clear_sample_rate() {
   sample_rate_ = 44100;
-  _clear_bit(1);
+  _clear_bit(2);
 }
 inline double StretchyProto::sample_rate() const {
   return sample_rate_;
 }
 inline void StretchyProto::set_sample_rate(double value) {
-  _set_bit(1);
+  _set_bit(2);
   sample_rate_ = value;
 }
 
 // optional uint32 channels = 3 [default = 2];
 inline bool StretchyProto::has_channels() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void StretchyProto::clear_channels() {
   channels_ = 2u;
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline ::google::protobuf::uint32 StretchyProto::channels() const {
   return channels_;
 }
 inline void StretchyProto::set_channels(::google::protobuf::uint32 value) {
-  _set_bit(2);
+  _set_bit(3);
   channels_ = value;
 }
 
 // optional double pitch_scale = 4 [default = 1];
 inline bool StretchyProto::has_pitch_scale() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void StretchyProto::clear_pitch_scale() {
   pitch_scale_ = 1;
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline double StretchyProto::pitch_scale() const {
   return pitch_scale_;
 }
 inline void StretchyProto::set_pitch_scale(double value) {
-  _set_bit(3);
+  _set_bit(4);
   pitch_scale_ = value;
 }
 
 // optional double semitone_shift = 5 [default = 0];
 inline bool StretchyProto::has_semitone_shift() const {
-  return _has_bit(4);
+  return _has_bit(5);
 }
 inline void StretchyProto::clear_semitone_shift() {
   semitone_shift_ = 0;
-  _clear_bit(4);
+  _clear_bit(5);
 }
 inline double StretchyProto::semitone_shift() const {
   return semitone_shift_;
 }
 inline void StretchyProto::set_semitone_shift(double value) {
-  _set_bit(4);
+  _set_bit(5);
   semitone_shift_ = value;
 }
 
 // optional double detune_cents = 6 [default = 0];
 inline bool StretchyProto::has_detune_cents() const {
-  return _has_bit(5);
+  return _has_bit(6);
 }
 inline void StretchyProto::clear_detune_cents() {
   detune_cents_ = 0;
-  _clear_bit(5);
+  _clear_bit(6);
 }
 inline double StretchyProto::detune_cents() const {
   return detune_cents_;
 }
 inline void StretchyProto::set_detune_cents(double value) {
-  _set_bit(5);
+  _set_bit(6);
   detune_cents_ = value;
 }
 
 // optional uint32 bands = 7 [default = 2048];
 inline bool StretchyProto::has_bands() const {
-  return _has_bit(6);
+  return _has_bit(7);
 }
 inline void StretchyProto::clear_bands() {
   bands_ = 2048u;
-  _clear_bit(6);
+  _clear_bit(7);
 }
 inline ::google::protobuf::uint32 StretchyProto::bands() const {
   return bands_;
 }
 inline void StretchyProto::set_bands(::google::protobuf::uint32 value) {
-  _set_bit(6);
+  _set_bit(7);
   bands_ = value;
 }
 
 // optional uint32 filter_overlap = 8 [default = 1];
 inline bool StretchyProto::has_filter_overlap() const {
-  return _has_bit(7);
+  return _has_bit(8);
 }
 inline void StretchyProto::clear_filter_overlap() {
   filter_overlap_ = 1u;
-  _clear_bit(7);
+  _clear_bit(8);
 }
 inline ::google::protobuf::uint32 StretchyProto::filter_overlap() const {
   return filter_overlap_;
 }
 inline void StretchyProto::set_filter_overlap(::google::protobuf::uint32 value) {
-  _set_bit(7);
+  _set_bit(8);
   filter_overlap_ = value;
 }
 
 // optional uint32 chunk_size = 9 [default = 512];
 inline bool StretchyProto::has_chunk_size() const {
-  return _has_bit(8);
+  return _has_bit(9);
 }
 inline void StretchyProto::clear_chunk_size() {
   chunk_size_ = 512u;
-  _clear_bit(8);
+  _clear_bit(9);
 }
 inline ::google::protobuf::uint32 StretchyProto::chunk_size() const {
   return chunk_size_;
 }
 inline void StretchyProto::set_chunk_size(::google::protobuf::uint32 value) {
-  _set_bit(8);
+  _set_bit(9);
   chunk_size_ = value;
 }
 
 // optional uint32 prefill_size = 10 [default = 15000];
 inline bool StretchyProto::has_prefill_size() const {
-  return _has_bit(9);
+  return _has_bit(10);
 }
 inline void StretchyProto::clear_prefill_size() {
   prefill_size_ = 15000u;
-  _clear_bit(9);
+  _clear_bit(10);
 }
 inline ::google::protobuf::uint32 StretchyProto::prefill_size() const {
   return prefill_size_;
 }
 inline void StretchyProto::set_prefill_size(::google::protobuf::uint32 value) {
-  _set_bit(9);
+  _set_bit(10);
   prefill_size_ = value;
 }
 
 // optional uint32 next_buffer_fill_size = 11 [default = 15000];
 inline bool StretchyProto::has_next_buffer_fill_size() const {
-  return _has_bit(10);
+  return _has_bit(11);
 }
 inline void StretchyProto::clear_next_buffer_fill_size() {
   next_buffer_fill_size_ = 15000u;
-  _clear_bit(10);
+  _clear_bit(11);
 }
 inline ::google::protobuf::uint32 StretchyProto::next_buffer_fill_size() const {
   return next_buffer_fill_size_;
 }
 inline void StretchyProto::set_next_buffer_fill_size(::google::protobuf::uint32 value) {
-  _set_bit(10);
+  _set_bit(11);
   next_buffer_fill_size_ = value;
 }
 
 // optional int32 inactive_wait_time = 12 [default = -1];
 inline bool StretchyProto::has_inactive_wait_time() const {
-  return _has_bit(11);
+  return _has_bit(12);
 }
 inline void StretchyProto::clear_inactive_wait_time() {
   inactive_wait_time_ = -1;
-  _clear_bit(11);
+  _clear_bit(12);
 }
 inline ::google::protobuf::int32 StretchyProto::inactive_wait_time() const {
   return inactive_wait_time_;
 }
 inline void StretchyProto::set_inactive_wait_time(::google::protobuf::int32 value) {
-  _set_bit(11);
+  _set_bit(12);
   inactive_wait_time_ = value;
 }
 
 // optional uint32 thread_priority = 13 [default = 4];
 inline bool StretchyProto::has_thread_priority() const {
-  return _has_bit(12);
+  return _has_bit(13);
 }
 inline void StretchyProto::clear_thread_priority() {
   thread_priority_ = 4u;
-  _clear_bit(12);
+  _clear_bit(13);
 }
 inline ::google::protobuf::uint32 StretchyProto::thread_priority() const {
   return thread_priority_;
 }
 inline void StretchyProto::set_thread_priority(::google::protobuf::uint32 value) {
-  _set_bit(12);
+  _set_bit(13);
   thread_priority_ = value;
 }
 

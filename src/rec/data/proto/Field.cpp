@@ -3,7 +3,7 @@
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/Address.h"
 #include "rec/data/proto/Operation.pb.h"
-#include "rec/data/proto/Typer.h"
+#include "rec/data/proto/TypedOperations.h"
 #include "rec/data/proto/Types.h"
 #include "rec/data/proto/Value.pb.h"
 

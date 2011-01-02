@@ -1,6 +1,9 @@
-#include <google/protobuf/descriptor.h>
 
+#include "rec/data/proto/TypedOperations.h"
 #include "rec/data/proto/TypedTyper.h"
+#include "rec/data/proto/Equals.h"
+
+#include <google/protobuf/descriptor.h>
 
 namespace rec {
 namespace proto {
@@ -34,6 +37,17 @@ namespace typer {
 #define CLEAR(CTYPE)                                                 \
   METHOD(CTYPE, Field, Clear, (), void, , , (msg_, field_))
 
+#define EQUALS(CTYPE)                                                   \
+  template <> bool TypedTyper<CTYPE>::Equals(const Message& m,          \
+                                             const Comparer& c) const { \
+    return c(Get(), TypedTyper<CTYPE>(msg_, field_).Get());             \
+  }                                                                     \
+                                                                        \
+  template <> bool TypedTyper<CTYPE>::Equals(const Message& m, uint32 i, \
+                                             const Comparer& c) const { \
+    return c(GetRepeated(i), TypedTyper<CTYPE>(msg_, field_).GetRepeated(i)); \
+  }
+
 
 #define DEF_TYPE(CTYPE, UPPER)                                          \
   template <> const FieldDescriptor::Type TypedTyper<CTYPE>::TYPE_INDEX = \
@@ -54,6 +68,7 @@ namespace typer {
   CLEAR(CTYPE)                                                          \
   DEF_TYPE(CTYPE, UPPER)                                                \
   COPY(CTYPE, CTYPE)                                                    \
+  EQUALS(CTYPE)
 
 #undef STRING
 
@@ -63,9 +78,9 @@ DEF_ALL(int64, Int64, INT64)
 DEF_ALL(uint64, UInt64, UINT64)
 DEF_ALL(int32, Int32, INT32)
 DEF_ALL(uint32, UInt32, UINT32)
-DEF_ALL(bool, Bool, BOOL)
+//DEF_ALL(bool, Bool, BOOL)
 DEF_ALL(string, String, STRING)
-DEF_ALL(bytes, String, BYTES)
+// DEF_ALL(bytes, String, BYTES)
 DEF_ALL(fixed32, UInt32, FIXED32)
 DEF_ALL(fixed64, UInt64, FIXED64)
 DEF_ALL(sfixed32, Int32, SFIXED32)
@@ -110,10 +125,11 @@ void TypedTyper<pmessage>::Add(pmessage t) {
   reflection().AddMessage(msg_, field_)->ParseFromString(t);
 }
 
+template <>
+bool TypedTyper<pmessage>::Equals(const rec::Message& m, const Comparer& cmp) const {
+  return rec::proto::equals(*msg_, m, cmp);
+}
 
-DEF_TYPE(penum, ENUM)
-COPY(penum, enum)
-CLEAR(penum)
 
 template <>
 penum TypedTyper<penum>::Get() const {
@@ -124,6 +140,12 @@ template <>
 penum TypedTyper<penum>::GetRepeated(uint32 i) const {
   return reflection().GetRepeatedEnum(*msg_, field_, i)->number();
 }
+
+DEF_TYPE(penum, ENUM)
+COPY(penum, enum)
+CLEAR(penum)
+EQUALS(penum)
+
 
 template <>
 void TypedTyper<penum>::Set(penum t) {
@@ -141,8 +163,6 @@ void TypedTyper<penum>::Add(penum t) {
   reflection().AddEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
 }
 
-#if 0
-
 template <>
 void TypedTyper<pmessage>::Clear() {
   reflection().ClearField(msg_, field_);
@@ -152,8 +172,6 @@ template <>
 void TypedTyper<penum>::Clear() {
   reflection().ClearField(msg_, field_);
 }
-
-#endif
 
 }  // namespace typer
 }  // namespace proto

@@ -10,8 +10,9 @@ namespace rec {
 namespace proto {
 
 typedef Operation::Command Command;
-typedef google::protobuf::FieldDescriptor FieldDescriptor;
-typedef google::protobuf::Reflection Reflection;
+using google::protobuf::FieldDescriptor;
+using google::protobuf::Reflection;
+
 typedef uint32 Tag;
 
 #define PROTO_MAKE_TYPE(OUT, IN)                       \

@@ -139,6 +139,7 @@
 		B27EBFCD27FB717E0ADB37A8 /* Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CCDB866E3DA1673374E660F0 /* Reader.cpp */; };
 		B2E50FF57F427E6BFF2B18FD /* TimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98F97711C06122CCA1CB79F3 /* TimeScaler.cpp */; };
 		B76D5CBEE67D38F81713C401 /* simplekey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFAE0C5EEAA77965822ACE /* simplekey.cpp */; };
+		B7C20D85DC432ABBA9C5788B /* Equals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAF714BB10D7F60D583A0 /* Equals.cpp */; };
 		B910E1CE1BE8A13673481202 /* VolumeFile.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = E3400259E738CC394ED2605C /* VolumeFile.pb.cc */; };
 		B94CECCDBC6733A66786D64D /* Circular_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2187E86C895D175A456E11A7 /* Circular_test.cpp */; };
 		BDB06654DEC92678A9ED0F0D /* DriveHardDisk.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 013E8CE9CABFA286CF2F14A0 /* DriveHardDisk.svg.cpp */; };
@@ -428,6 +429,7 @@
 		A3A1077D61C2F6ACAE0E33CB /* NodeItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NodeItem.cpp; path = ../../../../src/rec/widget/tree/NodeItem.cpp; sourceTree = SOURCE_ROOT; };
 		A3D1E4ED9B5098C5063BB38D /* Waveform.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Waveform.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Waveform.pb.h; sourceTree = SOURCE_ROOT; };
 		A403F01CF351F7442E082EAF /* regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = regex.h; path = ../../../../src/rec/data/yaml/src/regex.h; sourceTree = SOURCE_ROOT; };
+		A4DEAF714BB10D7F60D583A0 /* Equals.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Equals.cpp; path = ../../../../src/rec/data/proto/Equals.cpp; sourceTree = SOURCE_ROOT; };
 		A6062018D4A300EC20137C6F /* DropTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DropTarget.h; path = ../../../../src/rec/gui/DropTarget.h; sourceTree = SOURCE_ROOT; };
 		A7997EF0A71CC77064CFBC5A /* Source.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Source.h; path = ../../../../src/rec/audio/source/Source.h; sourceTree = SOURCE_ROOT; };
 		A79C9E10CEA15BEA9BB45997 /* Callback1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback1.h; path = ../../../../src/rec/util/thread/Callback1.h; sourceTree = SOURCE_ROOT; };
@@ -510,6 +512,7 @@
 		D8390EE579EA68952D6004C8 /* emitterstate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitterstate.cpp; path = ../../../../src/rec/data/yaml/src/emitterstate.cpp; sourceTree = SOURCE_ROOT; };
 		D8E3EC7207D969A2B202662D /* Field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Field.cpp; path = ../../../../src/rec/data/proto/Field.cpp; sourceTree = SOURCE_ROOT; };
 		D9B1304D760EF4B8FAC83FD7 /* AudioInputMicrophone.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioInputMicrophone.svg.cpp; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.cpp; sourceTree = SOURCE_ROOT; };
+		DB5C0EC7F3D81D1ECAC5B818 /* Equals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Equals.h; path = ../../../../src/rec/data/proto/Equals.h; sourceTree = SOURCE_ROOT; };
 		DBC264B1DC398875017EAB6F /* RecentFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecentFiles.h; path = ../../../../src/rec/gui/RecentFiles.h; sourceTree = SOURCE_ROOT; };
 		DC1068DE2F323322273E8114 /* NewHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NewHandle.h; path = ../../../../src/rec/audio/format/mpg123/NewHandle.h; sourceTree = SOURCE_ROOT; };
 		DC166AB5F3582945B1055627 /* Stretchy.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchy.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Stretchy.pb.h; sourceTree = SOURCE_ROOT; };
@@ -824,20 +827,6 @@
 			name = widget;
 			sourceTree = "<group>";
 		};
-		5B9D213A2FE7669290CC841D /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		5F9272656D5B09209BA0732F /* waveform */ = {
 			isa = PBXGroup;
 			children = (
@@ -945,6 +934,8 @@
 			isa = PBXGroup;
 			children = (
 				15354D54B4C097B16C129260 /* Address.h */,
+				A4DEAF714BB10D7F60D583A0 /* Equals.cpp */,
+				DB5C0EC7F3D81D1ECAC5B818 /* Equals.h */,
 				D8E3EC7207D969A2B202662D /* Field.cpp */,
 				02BB89308CDB2C5FD0E1FC9A /* Field.h */,
 				C2975072819FE84412C5F7FF /* GetProtoName.cpp */,
@@ -1292,6 +1283,20 @@
 			name = source;
 			sourceTree = "<group>";
 		};
+		E205F9D476D864AC60D0B18C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		E812E8C193A90FB1A45D026F /* slow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1441,7 +1446,7 @@
 				French,
 				German,
 			);
-			mainGroup = 5B9D213A2FE7669290CC841D /* Source */;
+			mainGroup = E205F9D476D864AC60D0B18C /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1497,6 +1502,7 @@
 				A48C820FA0A448415E918667 /* AppInstance.cpp in Sources */,
 				15546065C1A9AA5AA0C640B5 /* Copy.cpp in Sources */,
 				7918EE0D03DC97CB1DEC11A6 /* UntypedData.cpp in Sources */,
+				B7C20D85DC432ABBA9C5788B /* Equals.cpp in Sources */,
 				275FC2CB4F625481F9949BD4 /* Field.cpp in Sources */,
 				48E138283FC265B58D252AAC /* GetProtoName.cpp in Sources */,
 				3AFD2B0145D1EBF2230050E2 /* LogFile.cpp in Sources */,

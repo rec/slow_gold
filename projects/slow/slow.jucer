@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="MmnnzVhl7" name="Slow">
+  <MAINGROUP id="Beb748yZu" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -215,6 +215,10 @@
         <GROUP id="PN3hOtUWb" name="proto">
           <FILE compile="0" file="../../src/rec/data/proto/Address.h" id="MRclQKXYU"
                 name="Address.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/proto/Equals.cpp" id="FK0YavQaT"
+                name="Equals.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/proto/Equals.h" id="BPh1EBMy3"
+                name="Equals.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Field.cpp" id="NcATZn95L"
                 name="Field.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Field.h" id="gTtHSxFsU"
@@ -840,7 +844,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="t3TeMVYjk" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Ln67uBz5b" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -3,6 +3,7 @@
 
 #include "rec/base/BaseNoJuce.h"
 #include "rec/data/proto/Types.h"
+#include "rec/data/proto/Comparer.h"
 
 namespace rec {
 namespace proto {
@@ -14,8 +15,7 @@ class Typer {
       : field_(f), msg_(m) {
   }
   virtual ~Typer() {}
-  virtual Typer* clone(google::protobuf::Message* m,
-                       const FieldDescriptor* f) const = 0;
+  virtual Typer* clone(Message* m, const FieldDescriptor* f) const = 0;
 
   virtual void copyTo(Value* v) const = 0;
   virtual void copyTo(uint32 i, Value* v) const = 0;
@@ -25,6 +25,9 @@ class Typer {
 
   virtual void add(const Value& v) = 0;
   virtual void clear() = 0;
+
+  virtual bool equals(const Message& m, const Comparer& cmp) const = 0;
+  virtual bool equals(const Message& m, uint32 i, const Comparer& cmp) const = 0;
 
  protected:
   const Reflection& reflection() const { return *msg_->GetReflection(); }
@@ -54,6 +57,8 @@ class TypedTyper : public Typer {
 
   void Add(Type t);
   void Clear();
+  bool Equals(const Message& m, const Comparer& c) const;
+  bool Equals(const Message& m, uint32 i, const Comparer& c) const;
 
   virtual void copyFrom(const Value& v)            { Set(copy(v));  }
   virtual void copyFrom(uint32 i, const Value& v)  { SetRepeated(i, copy(v)); }
@@ -61,6 +66,8 @@ class TypedTyper : public Typer {
   virtual void copyTo(uint32 i, Value* v) const    { copy(GetRepeated(i), v); }
   virtual void add(const Value& v)                 { Add(copy(v)); }
   virtual void clear()                             { Clear(); }
+  virtual bool equals(const Message& m, const Comparer& c) const      { return Equals(m, c); }
+  virtual bool equals(const Message& m, uint32 i, const Comparer& c) const { return Equals(m, i, c); }
 
   virtual Typer* clone(google::protobuf::Message* m,
                        const FieldDescriptor* f) const {

@@ -5,11 +5,13 @@ import "rec/util/file/VolumeFile.proto";
 // Describe how exactly to apply the timescaler to a sample.
 message StretchyProto {
   optional double time_scale = 1        [default = 1.0];
+  optional double time_percent = 14     [default = 100.0];
   optional double sample_rate = 2       [default = 44100.0];
   optional uint32 channels = 3          [default = 2];
   optional double pitch_scale = 4       [default = 1.0];
   optional double semitone_shift = 5    [default = 0.0];
   optional double detune_cents = 6      [default = 0.0];
+
   optional uint32 bands = 7             [default = 2048];
   optional uint32 filter_overlap = 8    [default = 1];
   optional uint32 chunk_size = 9        [default = 512];

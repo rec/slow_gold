@@ -61,6 +61,7 @@ template int compareStrings(const String& x, const String& y);
 
 template int indexOfDifference(const Array<File>& items, const int i);
 template int indexOfDifference(const vector<string>& items, const int i);
+template int indexOfDifference(const String& s, const String& t);
 
 }  // namespace util
 }  // namespace rec
