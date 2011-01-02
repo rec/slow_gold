@@ -1,9 +1,8 @@
-
-#include "rec/data/proto/TypedOperations.h"
-#include "rec/data/proto/TypedTyper.h"
-#include "rec/data/proto/Equals.h"
-
 #include <google/protobuf/descriptor.h>
+
+#include "rec/data/proto/TypedTyper.h"
+#include "rec/data/proto/TypedOperations.h"
+#include "rec/data/proto/Equals.h"
 
 namespace rec {
 namespace proto {
@@ -78,9 +77,9 @@ DEF_ALL(int64, Int64, INT64)
 DEF_ALL(uint64, UInt64, UINT64)
 DEF_ALL(int32, Int32, INT32)
 DEF_ALL(uint32, UInt32, UINT32)
-//DEF_ALL(bool, Bool, BOOL)
+DEF_ALL(bool, Bool, BOOL)
 DEF_ALL(string, String, STRING)
-// DEF_ALL(bytes, String, BYTES)
+DEF_ALL(bytes, String, BYTES)
 DEF_ALL(fixed32, UInt32, FIXED32)
 DEF_ALL(fixed64, UInt64, FIXED64)
 DEF_ALL(sfixed32, Int32, SFIXED32)
@@ -127,7 +126,14 @@ void TypedTyper<pmessage>::Add(pmessage t) {
 
 template <>
 bool TypedTyper<pmessage>::Equals(const rec::Message& m, const Comparer& cmp) const {
-  return rec::proto::equals(*msg_, m, cmp);
+  return typer::equals(*msg_, m, field_, cmp);
+}
+
+
+template <>
+bool TypedTyper<pmessage>::Equals(const rec::Message& m, uint32 i,
+                                  const Comparer& cmp) const {
+  return typer::equals(*msg_, m, field_, i, cmp);
 }
 
 
@@ -163,15 +169,6 @@ void TypedTyper<penum>::Add(penum t) {
   reflection().AddEnum(msg_, field_, field_->enum_type()->FindValueByNumber(t));
 }
 
-template <>
-void TypedTyper<pmessage>::Clear() {
-  reflection().ClearField(msg_, field_);
-}
-
-template <>
-void TypedTyper<penum>::Clear() {
-  reflection().ClearField(msg_, field_);
-}
 
 }  // namespace typer
 }  // namespace proto

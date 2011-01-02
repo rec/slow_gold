@@ -1,6 +1,7 @@
 #ifndef __REC_DATA_PROTO_EQUAL__
 #define __REC_DATA_PROTO_EQUAL__
 
+#include "rec/data/proto/Types.h"
 #include "rec/data/proto/Comparer.h"
 
 namespace rec {

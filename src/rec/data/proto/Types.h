@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "rec/base/base.h"
+#include "rec/base/BaseNoJuce.h"
 #include "rec/data/proto/Operation.pb.h"
 
 namespace rec {
@@ -34,6 +34,11 @@ PROTO_MAKE_TYPE(sint32,   uint32);
 PROTO_MAKE_TYPE(sint64,   uint64);
 
 PROTO_MAKE_TYPE(bytes,    string);
+
+inline bool operator==(const bytes& b1, const bytes& b2) {
+  return b1.value_ == b2.value_;
+}
+
 PROTO_MAKE_TYPE(penum,    int);
 
 #undef PROTO_MAKE_TYPE

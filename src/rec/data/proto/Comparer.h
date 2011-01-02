@@ -1,8 +1,6 @@
 #ifndef __REC_DATA_PROTO_COMPARER__
 #define __REC_DATA_PROTO_COMPARER__
 
-#include "rec/base/base.h"
-
 namespace rec {
 namespace proto {
 
