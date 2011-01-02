@@ -85,7 +85,7 @@ class MainPage : public Component,
 
   Label explanation_[3];
 
-  SetterSlider<StretchyProto> timeScaleSlider_;
+  SetterSlider<StretchyProto> playbackSpeedSlider_;
   SetterSlider<StretchyProto> pitchScaleSlider_;
   SetterSlider<StretchyProto> fineScaleSlider_;
   TextComponent songTime_;

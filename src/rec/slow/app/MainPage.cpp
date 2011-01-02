@@ -49,7 +49,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     waveform_(WaveformProto()),
     startStopButton_(String::empty),
     treeRoot_(new Root(NodeDesc())),
-    timeScaleSlider_("Time Scale", Address("time_scale")),
+    playbackSpeedSlider_("Time Scale", Address("time_percent")),
     pitchScaleSlider_("Pitch Scale", Address("semitone_shift")),
     fineScaleSlider_("Fine Scale", Address("detune_cents")),
     songTime_(Text()),
@@ -77,11 +77,11 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     addAndMakeVisible(&(explanation_[i]));
   }
 
-  timeScaleSlider_.setTooltip(T("Drag this to set the slowdown."));
-  timeScaleSlider_.setRange(1.0, 3.0, 0.05);
-  timeScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
-  timeScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
-  timeScaleSlider_.setValue(1.0);
+  playbackSpeedSlider_.setTooltip(T("Playback speed."));
+  playbackSpeedSlider_.setRange(5.0, 200.0, 1.0);
+  playbackSpeedSlider_.setSliderStyle(Slider::LinearHorizontal);
+  playbackSpeedSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
+  playbackSpeedSlider_.setValue(1.0);
 
   pitchScaleSlider_.setTooltip(T("Semitone tune up or down."));
   pitchScaleSlider_.setRange(-7.0, 7.0, 0.5);
@@ -99,7 +99,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   addAndMakeVisible(&startStopButton_);
   addAndMakeVisible(treeRoot_->treeView());
 
-  addAndMakeVisible(&timeScaleSlider_);
+  addAndMakeVisible(&playbackSpeedSlider_);
   addAndMakeVisible(&pitchScaleSlider_);
   addAndMakeVisible(&fineScaleSlider_);
   addAndMakeVisible(&songTime_);
@@ -143,7 +143,7 @@ void MainPage::resized() {
   for (int i = 0; i < arraysize(explanation_); ++i)
     explanation_[i].setBounds(255, getHeight() - 90 + (25 * i), 275, 32);
 
-  timeScaleSlider_.setBounds(150, getHeight() - 85, 200, 24);
+  playbackSpeedSlider_.setBounds(150, getHeight() - 85, 200, 24);
   pitchScaleSlider_.setBounds(150, getHeight() - 60, 200, 24);
   fineScaleSlider_.setBounds(150, getHeight() - 35, 200, 24);
 
@@ -161,7 +161,7 @@ static const int SAMPLE_RATE = 44100.0f;
 void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
     file_ = file;
-    timeScaleSlider_.setData(NULL);
+    playbackSpeedSlider_.setData(NULL);
     pitchScaleSlider_.setData(NULL);
     fineScaleSlider_.setData(NULL);
     timeLocker_->initialize(0);
@@ -179,7 +179,7 @@ void MainPage::operator()(const VolumeFile& file) {
     if (dr->empty())
       return;
 
-    timeScaleSlider_.setData(stretchy_);
+    playbackSpeedSlider_.setData(stretchy_);
     pitchScaleSlider_.setData(stretchy_);
     fineScaleSlider_.setData(stretchy_);
 
