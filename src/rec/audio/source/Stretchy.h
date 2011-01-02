@@ -39,6 +39,10 @@ class Stretchy : public Wrappy {
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };
 
+double timeScale(const StretchyProto& d);
+double pitchScale(const StretchyProto& d);
+
+
 }  // namespace source
 }  // namespace audio
 }  // namespace rec

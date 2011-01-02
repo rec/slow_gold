@@ -80,6 +80,15 @@ int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   return samples;
 }
 
+double timeScale(const StretchyProto& d) {
+  return d.time_scale() * (100.0 / d.time_percent());
+}
+
+double pitchScale(const StretchyProto& d) {
+  double detune = d.detune_cents() / 100.0 + d.semitone_shift() / 12.0;
+  return d.pitch_scale() * pow(2.0, detune);
+}
+
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
