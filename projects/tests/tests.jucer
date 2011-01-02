@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="SZYbE00OS" name="tests">
+  <MAINGROUP id="mOcGQZkJu" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -228,10 +228,14 @@
         <GROUP id="2PaHmfyN0" name="proto">
           <FILE compile="0" file="../../src/rec/data/proto/Address.h" id="0HNpB81Dy"
                 name="Address.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="8PlkqlMk8"
+                name="Comparer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Equals.cpp" id="BMFo7eWEk"
                 name="Equals.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Equals.h" id="ub1DiK193"
                 name="Equals.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/proto/Equals_test.cpp" id="e1lVtsMuD"
+                name="Equals_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Field.cpp" id="tTSr9KxVV"
                 name="Field.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Field.h" id="OdL6hyBoE"
@@ -256,12 +260,14 @@
                 name="Setter.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Setter.h" id="GTnPE5pBx"
                 name="Setter.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/proto/TypedOperations.cpp"
+                id="Uogi9MBXS" name="TypedOperations.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/proto/TypedOperations.h"
+                id="o8vK1kFA1" name="TypedOperations.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/TypedTyper.cpp" id="FbQrcSZvC"
                 name="TypedTyper.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/TypedTyper.h" id="fVCOXZIv4"
                 name="TypedTyper.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Typer.cpp" id="LhcJzxZQ6"
-                name="Typer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Typer.h" id="z7PJoUBS6"
                 name="Typer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="1DRxgqAD5"
@@ -885,7 +891,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="qRkQCtdJk" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="2P1U0k1Xj" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

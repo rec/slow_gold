@@ -11,9 +11,11 @@ bool equals(const Message& x, const Message& y, const Comparer& c = Comparer());
 
 }  // namespace proto
 
-inline bool operator==(const Message& m1, const Message& m2) {
-  return proto::equals(m1, m2);
+inline bool operator==(const Message& x, const Message& y) {
+  return proto::equals(x, y);
 }
+
+inline bool operator!=(const Message& x, const Message& y) { return !(x == y); }
 
 }  // namespace rec
 

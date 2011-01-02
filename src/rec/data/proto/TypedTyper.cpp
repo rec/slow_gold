@@ -39,12 +39,14 @@ namespace typer {
 #define EQUALS(CTYPE)                                                   \
   template <> bool TypedTyper<CTYPE>::Equals(const Message& m,          \
                                              const Comparer& c) const { \
-    return c(Get(), TypedTyper<CTYPE>(msg_, field_).Get());             \
+    TypedTyper<CTYPE> that(const_cast<Message*>(&m), field_);           \
+    return c(Get(), that.Get());                                        \
   }                                                                     \
                                                                         \
   template <> bool TypedTyper<CTYPE>::Equals(const Message& m, uint32 i, \
                                              const Comparer& c) const { \
-    return c(GetRepeated(i), TypedTyper<CTYPE>(msg_, field_).GetRepeated(i)); \
+    TypedTyper<CTYPE> that(const_cast<Message*>(&m), field_);           \
+    return c(GetRepeated(i), that.GetRepeated(i));                      \
   }
 
 

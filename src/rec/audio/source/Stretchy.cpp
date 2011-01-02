@@ -80,16 +80,6 @@ int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   return samples;
 }
 
-bool operator==(const StretchyProto& x, const StretchyProto& y) {
-  return x.sample_rate() == y.sample_rate()
-    && x.channels() == y.channels()
-    && x.pitch_scale() == y.pitch_scale();
-}
-
-bool operator!=(const StretchyProto& x, const StretchyProto& y) {
-  return !(x == y);
-}
-
 }  // namespace source
 }  // namespace audio
 }  // namespace rec

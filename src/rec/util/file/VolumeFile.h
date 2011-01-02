@@ -27,12 +27,6 @@ const String getFullDisplayName(const VolumeFile& file);
 
 bool compare(const VolumeFile& x, const VolumeFile& y);
 
-bool operator==(const VolumeFile& x, const VolumeFile& y);
-
-inline bool operator!=(const VolumeFile& x, const VolumeFile& y) {
-  return !(x == y);
-}
-
 AudioFormatReader* createReader(const VolumeFile& file);
 PositionableAudioSource* createSource(const VolumeFile& file);
 bool empty(const VolumeFile& file);

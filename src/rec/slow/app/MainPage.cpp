@@ -5,11 +5,12 @@
 #include "rec/base/Arraysize.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Copy.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/Util.h"
-#include "rec/util/thread/Trash.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace slow {

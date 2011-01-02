@@ -3,6 +3,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/file/VolumeFile.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/data/proto/Equals.h"
 
 using namespace std;
 using namespace google::protobuf;

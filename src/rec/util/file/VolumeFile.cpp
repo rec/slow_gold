@@ -1,8 +1,9 @@
 #include "rec/util/file/VolumeFile.h"
-#include "rec/util/file/Util.h"
+
+#include "rec/audio/AudioFormatManager.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/util/cd/CDReader.h"
-#include "rec/audio/AudioFormatManager.h"
+#include "rec/util/file/Util.h"
 
 using namespace juce;
 using namespace google;
@@ -124,10 +125,6 @@ bool compare(const VolumeFile& x, const VolumeFile& y) {
       return false;
   }
   return false;
-}
-
-bool operator==(const VolumeFile& x, const VolumeFile& y) {
-  return !(compare(x, y) || compare(y, x));
 }
 
 AudioFormatReader* createReader(const VolumeFile& file) {
