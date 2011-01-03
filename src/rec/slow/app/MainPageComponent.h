@@ -52,7 +52,10 @@ class MainPageComponent  : public Component {
   }
 
   virtual void paint(Graphics& g) { g.fillAll(Colours::white); }
-  virtual void resized() { tabs_.setBounds(getLocalBounds()); }
+
+  virtual void resized() {
+    tabs_.setBounds(getLocalBounds());
+  }
 
  private:
   TabbedComponent tabs_;

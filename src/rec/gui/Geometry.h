@@ -14,6 +14,20 @@ inline void drawLine(Graphics& g, const Line& line, const juce::Rectangle<int>& 
   drawLine(g, line, r.getX(), r.getY(), r.getRight(), r.getBottom());
 }
 
+void copy(const Rectangle& from, juce::Rectangle<int>* to);
+void copy(const juce::Rectangle<int>& from, Rectangle* to);
+
+inline juce::Rectangle<int> copy(const Rectangle& rect) {
+  juce::Rectangle<int> r;
+  copy(rect, &r);
+  return r;
+}
+
+inline Rectangle copy(const juce::Rectangle<int>& rect) {
+  Rectangle r;
+  copy(rect, &r);
+  return r;
+}
 
 }  // namespace gui
 }  // namespace rec

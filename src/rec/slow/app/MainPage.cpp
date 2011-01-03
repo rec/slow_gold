@@ -64,7 +64,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   startStopButton_.setButtonText(T("Play/Stop"));
   startStopButton_.setColour(TextButton::buttonColourId, Colour(0xff79ed7f));
 
-  explanation_[0].setText("Drag this to set the slowdown", false);
+  explanation_[0].setText("Playback speed (%)", false);
   explanation_[1].setText("Semitone tune up or down", false);
   explanation_[2].setText("Detune up or down (in cents)", false);
 
@@ -81,7 +81,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   playbackSpeedSlider_.setRange(5.0, 200.0, 1.0);
   playbackSpeedSlider_.setSliderStyle(Slider::LinearHorizontal);
   playbackSpeedSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
-  playbackSpeedSlider_.setValue(1.0);
+  playbackSpeedSlider_.setValue(100.0);
 
   pitchScaleSlider_.setTooltip(T("Semitone tune up or down."));
   pitchScaleSlider_.setRange(-7.0, 7.0, 0.5);
@@ -141,7 +141,7 @@ void MainPage::resized() {
   treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
 
   for (int i = 0; i < arraysize(explanation_); ++i)
-    explanation_[i].setBounds(255, getHeight() - 90 + (25 * i), 275, 32);
+    explanation_[i].setBounds(255, getHeight() - 100 + (25 * i), 275, 32);
 
   playbackSpeedSlider_.setBounds(150, getHeight() - 85, 200, 24);
   pitchScaleSlider_.setBounds(150, getHeight() - 60, 200, 24);

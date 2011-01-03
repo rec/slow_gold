@@ -1,5 +1,6 @@
 #include "rec/slow/app/RecWindow.h"
 #include "rec/slow/app/MainPageComponent.h"
+#include "rec/gui/Geometry.h"
 
 using namespace juce;
 
@@ -8,9 +9,21 @@ namespace slow {
 
 RecWindow::RecWindow()
     : DocumentWindow(T("Rec"), Colours::azure, DocumentWindow::allButtons, true),
-      container_(new MainPageComponent) {
+      container_(new MainPageComponent),
+      data_(persist::data<gui::Rectangle>()) {
+  if (data_->fileReadSuccess()) {
+    juce::Rectangle<int> bounds = gui::copy(data_->get());
+    bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
+    bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
+    bounds.setX(juce::jmax(bounds.getX(), 50));
+    bounds.setY(juce::jmax(bounds.getY(), 50));
+    setBounds(bounds);
+  } else {
+    centreWithSize(700, 600);
+    writeData();
+  }
   setResizable(true, false); // resizability is a property of ResizableWindow
-  setResizeLimits(400, 300, 8192, 8192);
+  setResizeLimits(500, 500, 8192, 8192);
 
   commandManager_.registerAllCommandsForTarget(&container_);
   commandManager_.registerAllCommandsForTarget(JUCEApplication::getInstance());
@@ -20,8 +33,6 @@ RecWindow::RecWindow()
   setMenuBar(&container_);
 
   container_.setApplicationCommandManagerToWatch(&commandManager_);
-
-  centreWithSize(700, 600);
   setUsingNativeTitleBar(true);
   setVisible (true);
 }
@@ -50,10 +61,24 @@ RecWindow::~RecWindow() {
   setContentComponent(NULL, false);
 }
 
+
+void RecWindow::resized() {
+  writeData();
+  DocumentWindow::resized();
+}
+
+void RecWindow::writeData() {
+  data_->set(gui::copy(getBounds()));
+}
+
+void RecWindow::moved() {
+  writeData();
+  DocumentWindow::moved();
+}
+
 void RecWindow::closeButtonPressed() {
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
 }  // namespace slow
 }  // namespace rec
-

@@ -20,7 +20,7 @@ class CD : public Directory {
   }
 
   virtual void computeChildren() {
-    string name = "<Unknown>";
+    name_ = "<Unknown CD>";
     std::vector<string> tracks;
 
     const string& cdKey = volumeFile_.name();
@@ -33,8 +33,10 @@ class CD : public Directory {
         for (int i = 0; i < audioTracks; ++i)
           tracks.push_back(String(i).toCString());
 
+        name_ = "Unknown CD: ID = 0x" + cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
+
       } else {
-        name = album.title() + " / " + album.artist();
+        name_ = (album.title() + " / " + album.artist()).c_str();
         for (int i = 0; i < album.track_size(); ++i) {
           const cd::Track& track = album.track(i);
           tracks.push_back(track.artist().empty() ? track.title() :
@@ -46,7 +48,6 @@ class CD : public Directory {
     }
 
     resetChildren();
-    name_ = name.c_str();
 
     VolumeFile vf(volumeFile_);
     string* path = vf.add_path();

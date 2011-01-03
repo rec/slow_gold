@@ -89,7 +89,7 @@ const String getDisplayName(const VolumeFile& file) {
     return name.empty() ? "<Root>" : name.c_str();
   }
 
-  return "<Unknown>";
+  return "<Unknown Volume>";
 }
 
 const String getFullDisplayName(const VolumeFile& file) {

@@ -2,10 +2,20 @@
 #define __REC_WINDOW
 
 #include "rec/slow/app/ComponentContainer.h"
+#include "rec/data/persist/Persist.h"
 
 using namespace juce;
 
 namespace rec {
+
+namespace gui {
+class Rectangle;
+}
+
+namespace persist {
+template <typename T> class Data;
+}
+
 namespace slow {
 
 class RecWindow  : public juce::DocumentWindow {
@@ -16,9 +26,16 @@ class RecWindow  : public juce::DocumentWindow {
   void closeButtonPressed();
   ComponentContainer* getTarget() { return &container_; }
 
+  virtual void resized();
+  virtual void moved();
+
  private:
+  void writeData();
+
   ApplicationCommandManager commandManager_;
   ComponentContainer container_;
+  persist::Data<gui::Rectangle>* data_;
+
   // TODO: Component* taskbarIcon used to be here.
 
   DISALLOW_COPY_AND_ASSIGN(RecWindow);

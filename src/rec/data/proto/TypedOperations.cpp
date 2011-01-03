@@ -78,7 +78,6 @@ bool equals(const Message& m1, const Message& m2, const FieldDescriptor* f,
 
 bool equals(const Message& x, const Message& y, const FieldDescriptor* field,
             const Comparer& cmp) {
-  DLOG(INFO) << "! " << field->full_name();
   if (!field->is_repeated())
     return STyper(const_cast<Message*>(&x), field)->equals(y, cmp);
 
