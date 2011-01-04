@@ -28,13 +28,13 @@ string normalize(const string& s) {
 
 bool similar(const Album& x, const Album& y) {
   int size = x.track_size();
-  if (!(similar(x.artist(), y.artist()) &&
-        similar(x.title(), y.title()) &&
+  if (!(similar(x.album().artist(), y.album().artist()) &&
+        similar(x.album().album_title(), y.album().album_title()) &&
         size == y.track_size()))
     return false;
 
   for (int i = 0; i < size; ++i) {
-    if (!similar(x.track(i), y.track(i)))
+    if (!similarTrack(x.track(i), y.track(i)))
       return false;
   }
 
@@ -45,8 +45,8 @@ bool similar(const string& x, const string& y) {
   return normalize(x) == normalize(y);
 }
 
-bool similar(const Track& x, const Track& y) {
-  return similar(x.title(), y.title());
+bool similarTrack(const Metadata& x, const Metadata& y) {
+  return similar(x.track_title(), y.track_title());
 }
 
 void addIfNotSimilar(AlbumList* albums, const Album& album) {
@@ -56,21 +56,6 @@ void addIfNotSimilar(AlbumList* albums, const Album& album) {
   }
   albums->add_album()->CopyFrom(album);
 }
-
-#if 0
-void dedupeAlbums(AlbumList* albums) {
-  // This process is quadratic in the number of albums, but we only ever get a
-  // handful.
-  for (int i = albums->album_size() - 1; i > 0; --i) {
-    for (int j = i - 1; j >= 0; --j) {
-      if (similar(albums->album(i), albums->album(j))) {
-        albums->erase(i + albums-begin());
-        break;
-      }
-    }
-  }
-}
-#endif
 
 }  // namespace cd
 }  // namespace util

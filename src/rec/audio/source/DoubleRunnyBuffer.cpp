@@ -64,7 +64,6 @@ bool DoubleRunnyBuffer::fillFromPosition(int pos) {
 }
 
 void DoubleRunnyBuffer::run() {
-  DLOG(INFO) << "DoubleRunnyBuffer::run";
   while (!buffery_->isFull()) {
     if (threadShouldExit())
       return;

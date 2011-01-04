@@ -30,6 +30,8 @@ class Runny : public Thread, public Wrappy::Position {
 
   bool isFull() const { return !filled_.remaining(); }
 
+  util::Circular getFilled() const { return filled_; }
+
  private:
   AudioSampleBuffer buffer_;
   util::Circular filled_;

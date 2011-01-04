@@ -9,12 +9,12 @@ namespace cd {
 
 class Album;
 class AlbumList;
-class Track;
+class Metadata;
 
 string normalize(const string& s);
 
 bool similar(const string& x, const string& y);
-bool similar(const Track& x, const Track& y);
+bool similarTrack(const Metadata& x, const Metadata& y);
 bool similar(const Album& x, const Album& y);
 
 void addIfNotSimilar(AlbumList* albums, const Album& album);

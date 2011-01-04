@@ -9,6 +9,7 @@
 #include "rec/audio/source/Stretchy.pb.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/gui/DropTarget.h"
+#include "rec/gui/SetterToggle.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/listener/SetterListener.h"
@@ -45,9 +46,8 @@ class MainPage : public Component,
                  public Broadcaster<float> {
  public:
   MainPage(AudioDeviceManager&);
-  virtual ~MainPage() {
-    transportSource_->setSource(NULL);
-  }
+
+  virtual ~MainPage();
 
   void paint(Graphics&);
   void resized();
@@ -87,7 +87,7 @@ class MainPage : public Component,
   thread_ptr<app::AudioTransportSourcePlayer> transportSource_;
   DropTarget<Waveform, WaveformProto> waveform_;
   juce::DrawableButton startStopButton_;
-  juce::ToggleButton disableButton_;
+  gui::SetterToggle<StretchyProto> disableButton_;
   thread_ptr<Root> treeRoot_;
 
   gui::StretchyController stretchyController_;

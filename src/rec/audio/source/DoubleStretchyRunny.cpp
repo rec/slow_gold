@@ -22,8 +22,6 @@ int DoubleStretchyRunny::nextRunnyPosition() const {
 }
 
 void DoubleStretchyRunny::setStretchy(const StretchyProto& desc) {
-  DLOG(INFO) << "DoubleStretchyRunny::setStretchy";
-
   double timeRatio = timeScale(desc);
   int position = 0;
   {

@@ -51,7 +51,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   : transportSource_(new app::AudioTransportSourcePlayer(&deviceManager)),
     waveform_(WaveformProto()),
     startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
-    disableButton_("Disable pitch/time shift"),
+    disableButton_("Disable pitch/time shift", Address("disabled")),
     treeRoot_(new Root(NodeDesc())),
     songTime_(Text()),
     songDial_(realTimeDial()),
@@ -79,7 +79,6 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
   startStopButton_.addListener(this);
-  disableButton_.addListener(this);
   waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
   waveform_.dropBroadcaster()->addListener(&fileListener_);
@@ -91,6 +90,8 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
 
   transportSource_->addListener(this);
   transportSource_->changeBroadcaster()->addListener(this);
+
+  disableButton_.addListener(this);
 
   addListener(&songDial_);
   addListener(&songTime_);
@@ -104,6 +105,11 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   transportSource_->update();
 }
 
+MainPage::~MainPage() {
+  transportSource_->stop();
+  transportSource_->setSource(NULL);
+}
+
 void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
 }
@@ -111,10 +117,9 @@ void MainPage::paint(Graphics& g) {
 void MainPage::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
     transportSource_->toggle();
-  else if (stretchy_)
-    stretchy_->set("disabled", button->getToggleState());
 
-  // TODO: this button should be its own listener.
+  else if (button == &disableButton_)
+    stretchyController_.setEnabled(!disableButton_.getToggleState());
 }
 
 void MainPage::resized() {
@@ -135,6 +140,7 @@ void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
     file_ = file;
     stretchyController_.setData(NULL);
+    disableButton_.setData(NULL);
     timeLocker_->initialize(0);
     transportSource_->clear();
     cursor_->setTime(0.0f);
@@ -151,6 +157,7 @@ void MainPage::operator()(const VolumeFile& file) {
       return;
 
     stretchyController_.setData(stretchy_);
+    disableButton_.setData(stretchy_);
 
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);

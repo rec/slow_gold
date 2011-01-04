@@ -78,10 +78,10 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto() {
   ::rec::util::thread::protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/audio/source/Runny.proto\022\020rec.audi"
-    "o.source\032\034rec/util/thread/Thread.proto\"w"
-    "\n\nRunnyProto\022\033\n\013buffer_size\030\001 \001(\r:\00625120"
-    "0\022\030\n\nchunk_size\030\002 \001(\r:\0041024\0222\n\006thread\030\003 "
-    "\001(\0132\".rec.util.thread.ThreadDescription", 199);
+    "o.source\032\034rec/util/thread/Thread.proto\"v"
+    "\n\nRunnyProto\022\032\n\013buffer_size\030\001 \001(\r:\00551200"
+    "\022\030\n\nchunk_size\030\002 \001(\r:\0041024\0222\n\006thread\030\003 \001"
+    "(\0132\".rec.util.thread.ThreadDescription", 198);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Runny.proto", &protobuf_RegisterTypes);
   RunnyProto::default_instance_ = new RunnyProto();
@@ -122,7 +122,7 @@ RunnyProto::RunnyProto(const RunnyProto& from)
 
 void RunnyProto::SharedCtor() {
   _cached_size_ = 0;
-  buffer_size_ = 251200u;
+  buffer_size_ = 51200u;
   chunk_size_ = 1024u;
   thread_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -160,7 +160,7 @@ RunnyProto* RunnyProto::New() const {
 
 void RunnyProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    buffer_size_ = 251200u;
+    buffer_size_ = 51200u;
     chunk_size_ = 1024u;
     if (_has_bit(2)) {
       if (thread_ != NULL) thread_->::rec::util::thread::ThreadDescription::Clear();
@@ -176,7 +176,7 @@ bool RunnyProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 buffer_size = 1 [default = 251200];
+      // optional uint32 buffer_size = 1 [default = 51200];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -239,7 +239,7 @@ bool RunnyProto::MergePartialFromCodedStream(
 
 void RunnyProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 buffer_size = 1 [default = 251200];
+  // optional uint32 buffer_size = 1 [default = 51200];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->buffer_size(), output);
   }
@@ -263,7 +263,7 @@ void RunnyProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* RunnyProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 buffer_size = 1 [default = 251200];
+  // optional uint32 buffer_size = 1 [default = 51200];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->buffer_size(), target);
   }
@@ -291,7 +291,7 @@ int RunnyProto::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 buffer_size = 1 [default = 251200];
+    // optional uint32 buffer_size = 1 [default = 51200];
     if (has_buffer_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

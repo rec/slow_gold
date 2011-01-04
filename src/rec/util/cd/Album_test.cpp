@@ -51,16 +51,16 @@ TEST(CD, Albums) {
   EXPECT_EQ(albums.album_size(), 1);
 
   for (int i = 0; i < albums.album_size(); ++i) {
-    const Album& album = albums.album(i);
-    std::cerr << "album " << album.title() << "\n";
-    EXPECT_NE(album.title().find("Never For Ever"), -1);
-    // EXPECT_STREQ(album.title().toCString(), "Never For Ever");
+    const Metadata& album = albums.album(i).album();
+    std::cerr << "album " << album.album_title() << "\n";
+    EXPECT_NE(album.album_title().find("Never For Ever"), -1);
+    // EXPECT_STREQ(album.album_title().toCString(), "Never For Ever");
     EXPECT_EQ(album.year(), "1980");
     EXPECT_EQ(album.artist(), "Kate Bush");
-    EXPECT_EQ(album.track_size(), trackCount);
+    EXPECT_EQ(albums.album(i).track_size(), trackCount);
 
     for (int j = 0; j < trackCount; ++j)
-      EXPECT_EQ(trackNames[j], album.track(j).title());
+      EXPECT_EQ(trackNames[j], albums.album(i).track(j).track_title());
   }
 }
 

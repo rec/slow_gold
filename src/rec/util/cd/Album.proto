@@ -1,17 +1,18 @@
 package rec.util.cd;
 
-message Track {
-  optional string title = 1;
-  optional string artist = 2;
-};
-
-message Album {
+message Metadata {
   optional string discid = 1;
   optional string year = 2;
   optional string genre = 3;
-  optional string title = 4;
-  optional string artist = 5;
-  repeated Track track = 6;
+  optional string track_title = 4;
+  optional string album_title = 5;
+  optional string artist = 6;
+  optional string track_number = 7;
+};
+
+message Album {
+  optional Metadata album = 1;
+  repeated Metadata track = 2;
 };
 
 message AlbumList {

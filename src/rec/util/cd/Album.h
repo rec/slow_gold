@@ -18,6 +18,7 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums);
 String fillAlbums(const TrackOffsets& off, AlbumList* albums);
 
 Album getAlbum(const VolumeFile& file, const TrackOffsets& off);
+Metadata getTrack(const StringPairArray& metadata);
 
 }  // namespace cd
 }  // namespace util

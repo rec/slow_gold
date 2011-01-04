@@ -34,20 +34,20 @@ void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
 void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto();
 void protobuf_ShutdownFile_rec_2futil_2fcd_2fAlbum_2eproto();
 
-class Track;
+class Metadata;
 class Album;
 class AlbumList;
 
 // ===================================================================
 
-class Track : public ::google::protobuf::Message {
+class Metadata : public ::google::protobuf::Message {
  public:
-  Track();
-  virtual ~Track();
+  Metadata();
+  virtual ~Metadata();
   
-  Track(const Track& from);
+  Metadata(const Metadata& from);
   
-  inline Track& operator=(const Track& from) {
+  inline Metadata& operator=(const Metadata& from) {
     CopyFrom(from);
     return *this;
   }
@@ -61,17 +61,17 @@ class Track : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Track& default_instance();
+  static const Metadata& default_instance();
   
-  void Swap(Track* other);
+  void Swap(Metadata* other);
   
   // implements Message ----------------------------------------------
   
-  Track* New() const;
+  Metadata* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Track& from);
-  void MergeFrom(const Track& from);
+  void CopyFrom(const Metadata& from);
+  void MergeFrom(const Metadata& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -94,40 +94,100 @@ class Track : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional string title = 1;
-  inline bool has_title() const;
-  inline void clear_title();
-  static const int kTitleFieldNumber = 1;
-  inline const ::std::string& title() const;
-  inline void set_title(const ::std::string& value);
-  inline void set_title(const char* value);
-  inline void set_title(const char* value, size_t size);
-  inline ::std::string* mutable_title();
+  // optional string discid = 1;
+  inline bool has_discid() const;
+  inline void clear_discid();
+  static const int kDiscidFieldNumber = 1;
+  inline const ::std::string& discid() const;
+  inline void set_discid(const ::std::string& value);
+  inline void set_discid(const char* value);
+  inline void set_discid(const char* value, size_t size);
+  inline ::std::string* mutable_discid();
   
-  // optional string artist = 2;
+  // optional string year = 2;
+  inline bool has_year() const;
+  inline void clear_year();
+  static const int kYearFieldNumber = 2;
+  inline const ::std::string& year() const;
+  inline void set_year(const ::std::string& value);
+  inline void set_year(const char* value);
+  inline void set_year(const char* value, size_t size);
+  inline ::std::string* mutable_year();
+  
+  // optional string genre = 3;
+  inline bool has_genre() const;
+  inline void clear_genre();
+  static const int kGenreFieldNumber = 3;
+  inline const ::std::string& genre() const;
+  inline void set_genre(const ::std::string& value);
+  inline void set_genre(const char* value);
+  inline void set_genre(const char* value, size_t size);
+  inline ::std::string* mutable_genre();
+  
+  // optional string track_title = 4;
+  inline bool has_track_title() const;
+  inline void clear_track_title();
+  static const int kTrackTitleFieldNumber = 4;
+  inline const ::std::string& track_title() const;
+  inline void set_track_title(const ::std::string& value);
+  inline void set_track_title(const char* value);
+  inline void set_track_title(const char* value, size_t size);
+  inline ::std::string* mutable_track_title();
+  
+  // optional string album_title = 5;
+  inline bool has_album_title() const;
+  inline void clear_album_title();
+  static const int kAlbumTitleFieldNumber = 5;
+  inline const ::std::string& album_title() const;
+  inline void set_album_title(const ::std::string& value);
+  inline void set_album_title(const char* value);
+  inline void set_album_title(const char* value, size_t size);
+  inline ::std::string* mutable_album_title();
+  
+  // optional string artist = 6;
   inline bool has_artist() const;
   inline void clear_artist();
-  static const int kArtistFieldNumber = 2;
+  static const int kArtistFieldNumber = 6;
   inline const ::std::string& artist() const;
   inline void set_artist(const ::std::string& value);
   inline void set_artist(const char* value);
   inline void set_artist(const char* value, size_t size);
   inline ::std::string* mutable_artist();
   
-  // @@protoc_insertion_point(class_scope:rec.util.cd.Track)
+  // optional string track_number = 7;
+  inline bool has_track_number() const;
+  inline void clear_track_number();
+  static const int kTrackNumberFieldNumber = 7;
+  inline const ::std::string& track_number() const;
+  inline void set_track_number(const ::std::string& value);
+  inline void set_track_number(const char* value);
+  inline void set_track_number(const char* value, size_t size);
+  inline ::std::string* mutable_track_number();
+  
+  // @@protoc_insertion_point(class_scope:rec.util.cd.Metadata)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::std::string* title_;
-  static const ::std::string _default_title_;
+  ::std::string* discid_;
+  static const ::std::string _default_discid_;
+  ::std::string* year_;
+  static const ::std::string _default_year_;
+  ::std::string* genre_;
+  static const ::std::string _default_genre_;
+  ::std::string* track_title_;
+  static const ::std::string _default_track_title_;
+  ::std::string* album_title_;
+  static const ::std::string _default_album_title_;
   ::std::string* artist_;
   static const ::std::string _default_artist_;
+  ::std::string* track_number_;
+  static const ::std::string _default_track_number_;
   friend void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fcd_2fAlbum_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -141,7 +201,7 @@ class Track : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Track* default_instance_;
+  static Metadata* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -199,66 +259,23 @@ class Album : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional string discid = 1;
-  inline bool has_discid() const;
-  inline void clear_discid();
-  static const int kDiscidFieldNumber = 1;
-  inline const ::std::string& discid() const;
-  inline void set_discid(const ::std::string& value);
-  inline void set_discid(const char* value);
-  inline void set_discid(const char* value, size_t size);
-  inline ::std::string* mutable_discid();
+  // optional .rec.util.cd.Metadata album = 1;
+  inline bool has_album() const;
+  inline void clear_album();
+  static const int kAlbumFieldNumber = 1;
+  inline const ::rec::util::cd::Metadata& album() const;
+  inline ::rec::util::cd::Metadata* mutable_album();
   
-  // optional string year = 2;
-  inline bool has_year() const;
-  inline void clear_year();
-  static const int kYearFieldNumber = 2;
-  inline const ::std::string& year() const;
-  inline void set_year(const ::std::string& value);
-  inline void set_year(const char* value);
-  inline void set_year(const char* value, size_t size);
-  inline ::std::string* mutable_year();
-  
-  // optional string genre = 3;
-  inline bool has_genre() const;
-  inline void clear_genre();
-  static const int kGenreFieldNumber = 3;
-  inline const ::std::string& genre() const;
-  inline void set_genre(const ::std::string& value);
-  inline void set_genre(const char* value);
-  inline void set_genre(const char* value, size_t size);
-  inline ::std::string* mutable_genre();
-  
-  // optional string title = 4;
-  inline bool has_title() const;
-  inline void clear_title();
-  static const int kTitleFieldNumber = 4;
-  inline const ::std::string& title() const;
-  inline void set_title(const ::std::string& value);
-  inline void set_title(const char* value);
-  inline void set_title(const char* value, size_t size);
-  inline ::std::string* mutable_title();
-  
-  // optional string artist = 5;
-  inline bool has_artist() const;
-  inline void clear_artist();
-  static const int kArtistFieldNumber = 5;
-  inline const ::std::string& artist() const;
-  inline void set_artist(const ::std::string& value);
-  inline void set_artist(const char* value);
-  inline void set_artist(const char* value, size_t size);
-  inline ::std::string* mutable_artist();
-  
-  // repeated .rec.util.cd.Track track = 6;
+  // repeated .rec.util.cd.Metadata track = 2;
   inline int track_size() const;
   inline void clear_track();
-  static const int kTrackFieldNumber = 6;
-  inline const ::rec::util::cd::Track& track(int index) const;
-  inline ::rec::util::cd::Track* mutable_track(int index);
-  inline ::rec::util::cd::Track* add_track();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >&
+  static const int kTrackFieldNumber = 2;
+  inline const ::rec::util::cd::Metadata& track(int index) const;
+  inline ::rec::util::cd::Metadata* mutable_track(int index);
+  inline ::rec::util::cd::Metadata* add_track();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Metadata >&
       track() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Metadata >*
       mutable_track();
   
   // @@protoc_insertion_point(class_scope:rec.util.cd.Album)
@@ -266,22 +283,13 @@ class Album : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::std::string* discid_;
-  static const ::std::string _default_discid_;
-  ::std::string* year_;
-  static const ::std::string _default_year_;
-  ::std::string* genre_;
-  static const ::std::string _default_genre_;
-  ::std::string* title_;
-  static const ::std::string _default_title_;
-  ::std::string* artist_;
-  static const ::std::string _default_artist_;
-  ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track > track_;
+  ::rec::util::cd::Metadata* album_;
+  ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Metadata > track_;
   friend void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fcd_2fAlbum_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -396,131 +404,43 @@ class AlbumList : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// Track
-
-// optional string title = 1;
-inline bool Track::has_title() const {
-  return _has_bit(0);
-}
-inline void Track::clear_title() {
-  if (title_ != &_default_title_) {
-    title_->clear();
-  }
-  _clear_bit(0);
-}
-inline const ::std::string& Track::title() const {
-  return *title_;
-}
-inline void Track::set_title(const ::std::string& value) {
-  _set_bit(0);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
-  }
-  title_->assign(value);
-}
-inline void Track::set_title(const char* value) {
-  _set_bit(0);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
-  }
-  title_->assign(value);
-}
-inline void Track::set_title(const char* value, size_t size) {
-  _set_bit(0);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
-  }
-  title_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Track::mutable_title() {
-  _set_bit(0);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
-  }
-  return title_;
-}
-
-// optional string artist = 2;
-inline bool Track::has_artist() const {
-  return _has_bit(1);
-}
-inline void Track::clear_artist() {
-  if (artist_ != &_default_artist_) {
-    artist_->clear();
-  }
-  _clear_bit(1);
-}
-inline const ::std::string& Track::artist() const {
-  return *artist_;
-}
-inline void Track::set_artist(const ::std::string& value) {
-  _set_bit(1);
-  if (artist_ == &_default_artist_) {
-    artist_ = new ::std::string;
-  }
-  artist_->assign(value);
-}
-inline void Track::set_artist(const char* value) {
-  _set_bit(1);
-  if (artist_ == &_default_artist_) {
-    artist_ = new ::std::string;
-  }
-  artist_->assign(value);
-}
-inline void Track::set_artist(const char* value, size_t size) {
-  _set_bit(1);
-  if (artist_ == &_default_artist_) {
-    artist_ = new ::std::string;
-  }
-  artist_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Track::mutable_artist() {
-  _set_bit(1);
-  if (artist_ == &_default_artist_) {
-    artist_ = new ::std::string;
-  }
-  return artist_;
-}
-
-// -------------------------------------------------------------------
-
-// Album
+// Metadata
 
 // optional string discid = 1;
-inline bool Album::has_discid() const {
+inline bool Metadata::has_discid() const {
   return _has_bit(0);
 }
-inline void Album::clear_discid() {
+inline void Metadata::clear_discid() {
   if (discid_ != &_default_discid_) {
     discid_->clear();
   }
   _clear_bit(0);
 }
-inline const ::std::string& Album::discid() const {
+inline const ::std::string& Metadata::discid() const {
   return *discid_;
 }
-inline void Album::set_discid(const ::std::string& value) {
+inline void Metadata::set_discid(const ::std::string& value) {
   _set_bit(0);
   if (discid_ == &_default_discid_) {
     discid_ = new ::std::string;
   }
   discid_->assign(value);
 }
-inline void Album::set_discid(const char* value) {
+inline void Metadata::set_discid(const char* value) {
   _set_bit(0);
   if (discid_ == &_default_discid_) {
     discid_ = new ::std::string;
   }
   discid_->assign(value);
 }
-inline void Album::set_discid(const char* value, size_t size) {
+inline void Metadata::set_discid(const char* value, size_t size) {
   _set_bit(0);
   if (discid_ == &_default_discid_) {
     discid_ = new ::std::string;
   }
   discid_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Album::mutable_discid() {
+inline ::std::string* Metadata::mutable_discid() {
   _set_bit(0);
   if (discid_ == &_default_discid_) {
     discid_ = new ::std::string;
@@ -529,40 +449,40 @@ inline ::std::string* Album::mutable_discid() {
 }
 
 // optional string year = 2;
-inline bool Album::has_year() const {
+inline bool Metadata::has_year() const {
   return _has_bit(1);
 }
-inline void Album::clear_year() {
+inline void Metadata::clear_year() {
   if (year_ != &_default_year_) {
     year_->clear();
   }
   _clear_bit(1);
 }
-inline const ::std::string& Album::year() const {
+inline const ::std::string& Metadata::year() const {
   return *year_;
 }
-inline void Album::set_year(const ::std::string& value) {
+inline void Metadata::set_year(const ::std::string& value) {
   _set_bit(1);
   if (year_ == &_default_year_) {
     year_ = new ::std::string;
   }
   year_->assign(value);
 }
-inline void Album::set_year(const char* value) {
+inline void Metadata::set_year(const char* value) {
   _set_bit(1);
   if (year_ == &_default_year_) {
     year_ = new ::std::string;
   }
   year_->assign(value);
 }
-inline void Album::set_year(const char* value, size_t size) {
+inline void Metadata::set_year(const char* value, size_t size) {
   _set_bit(1);
   if (year_ == &_default_year_) {
     year_ = new ::std::string;
   }
   year_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Album::mutable_year() {
+inline ::std::string* Metadata::mutable_year() {
   _set_bit(1);
   if (year_ == &_default_year_) {
     year_ = new ::std::string;
@@ -571,40 +491,40 @@ inline ::std::string* Album::mutable_year() {
 }
 
 // optional string genre = 3;
-inline bool Album::has_genre() const {
+inline bool Metadata::has_genre() const {
   return _has_bit(2);
 }
-inline void Album::clear_genre() {
+inline void Metadata::clear_genre() {
   if (genre_ != &_default_genre_) {
     genre_->clear();
   }
   _clear_bit(2);
 }
-inline const ::std::string& Album::genre() const {
+inline const ::std::string& Metadata::genre() const {
   return *genre_;
 }
-inline void Album::set_genre(const ::std::string& value) {
+inline void Metadata::set_genre(const ::std::string& value) {
   _set_bit(2);
   if (genre_ == &_default_genre_) {
     genre_ = new ::std::string;
   }
   genre_->assign(value);
 }
-inline void Album::set_genre(const char* value) {
+inline void Metadata::set_genre(const char* value) {
   _set_bit(2);
   if (genre_ == &_default_genre_) {
     genre_ = new ::std::string;
   }
   genre_->assign(value);
 }
-inline void Album::set_genre(const char* value, size_t size) {
+inline void Metadata::set_genre(const char* value, size_t size) {
   _set_bit(2);
   if (genre_ == &_default_genre_) {
     genre_ = new ::std::string;
   }
   genre_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Album::mutable_genre() {
+inline ::std::string* Metadata::mutable_genre() {
   _set_bit(2);
   if (genre_ == &_default_genre_) {
     genre_ = new ::std::string;
@@ -612,111 +532,216 @@ inline ::std::string* Album::mutable_genre() {
   return genre_;
 }
 
-// optional string title = 4;
-inline bool Album::has_title() const {
+// optional string track_title = 4;
+inline bool Metadata::has_track_title() const {
   return _has_bit(3);
 }
-inline void Album::clear_title() {
-  if (title_ != &_default_title_) {
-    title_->clear();
+inline void Metadata::clear_track_title() {
+  if (track_title_ != &_default_track_title_) {
+    track_title_->clear();
   }
   _clear_bit(3);
 }
-inline const ::std::string& Album::title() const {
-  return *title_;
+inline const ::std::string& Metadata::track_title() const {
+  return *track_title_;
 }
-inline void Album::set_title(const ::std::string& value) {
+inline void Metadata::set_track_title(const ::std::string& value) {
   _set_bit(3);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
+  if (track_title_ == &_default_track_title_) {
+    track_title_ = new ::std::string;
   }
-  title_->assign(value);
+  track_title_->assign(value);
 }
-inline void Album::set_title(const char* value) {
+inline void Metadata::set_track_title(const char* value) {
   _set_bit(3);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
+  if (track_title_ == &_default_track_title_) {
+    track_title_ = new ::std::string;
   }
-  title_->assign(value);
+  track_title_->assign(value);
 }
-inline void Album::set_title(const char* value, size_t size) {
+inline void Metadata::set_track_title(const char* value, size_t size) {
   _set_bit(3);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
+  if (track_title_ == &_default_track_title_) {
+    track_title_ = new ::std::string;
   }
-  title_->assign(reinterpret_cast<const char*>(value), size);
+  track_title_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Album::mutable_title() {
+inline ::std::string* Metadata::mutable_track_title() {
   _set_bit(3);
-  if (title_ == &_default_title_) {
-    title_ = new ::std::string;
+  if (track_title_ == &_default_track_title_) {
+    track_title_ = new ::std::string;
   }
-  return title_;
+  return track_title_;
 }
 
-// optional string artist = 5;
-inline bool Album::has_artist() const {
+// optional string album_title = 5;
+inline bool Metadata::has_album_title() const {
   return _has_bit(4);
 }
-inline void Album::clear_artist() {
-  if (artist_ != &_default_artist_) {
-    artist_->clear();
+inline void Metadata::clear_album_title() {
+  if (album_title_ != &_default_album_title_) {
+    album_title_->clear();
   }
   _clear_bit(4);
 }
-inline const ::std::string& Album::artist() const {
+inline const ::std::string& Metadata::album_title() const {
+  return *album_title_;
+}
+inline void Metadata::set_album_title(const ::std::string& value) {
+  _set_bit(4);
+  if (album_title_ == &_default_album_title_) {
+    album_title_ = new ::std::string;
+  }
+  album_title_->assign(value);
+}
+inline void Metadata::set_album_title(const char* value) {
+  _set_bit(4);
+  if (album_title_ == &_default_album_title_) {
+    album_title_ = new ::std::string;
+  }
+  album_title_->assign(value);
+}
+inline void Metadata::set_album_title(const char* value, size_t size) {
+  _set_bit(4);
+  if (album_title_ == &_default_album_title_) {
+    album_title_ = new ::std::string;
+  }
+  album_title_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Metadata::mutable_album_title() {
+  _set_bit(4);
+  if (album_title_ == &_default_album_title_) {
+    album_title_ = new ::std::string;
+  }
+  return album_title_;
+}
+
+// optional string artist = 6;
+inline bool Metadata::has_artist() const {
+  return _has_bit(5);
+}
+inline void Metadata::clear_artist() {
+  if (artist_ != &_default_artist_) {
+    artist_->clear();
+  }
+  _clear_bit(5);
+}
+inline const ::std::string& Metadata::artist() const {
   return *artist_;
 }
-inline void Album::set_artist(const ::std::string& value) {
-  _set_bit(4);
+inline void Metadata::set_artist(const ::std::string& value) {
+  _set_bit(5);
   if (artist_ == &_default_artist_) {
     artist_ = new ::std::string;
   }
   artist_->assign(value);
 }
-inline void Album::set_artist(const char* value) {
-  _set_bit(4);
+inline void Metadata::set_artist(const char* value) {
+  _set_bit(5);
   if (artist_ == &_default_artist_) {
     artist_ = new ::std::string;
   }
   artist_->assign(value);
 }
-inline void Album::set_artist(const char* value, size_t size) {
-  _set_bit(4);
+inline void Metadata::set_artist(const char* value, size_t size) {
+  _set_bit(5);
   if (artist_ == &_default_artist_) {
     artist_ = new ::std::string;
   }
   artist_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Album::mutable_artist() {
-  _set_bit(4);
+inline ::std::string* Metadata::mutable_artist() {
+  _set_bit(5);
   if (artist_ == &_default_artist_) {
     artist_ = new ::std::string;
   }
   return artist_;
 }
 
-// repeated .rec.util.cd.Track track = 6;
+// optional string track_number = 7;
+inline bool Metadata::has_track_number() const {
+  return _has_bit(6);
+}
+inline void Metadata::clear_track_number() {
+  if (track_number_ != &_default_track_number_) {
+    track_number_->clear();
+  }
+  _clear_bit(6);
+}
+inline const ::std::string& Metadata::track_number() const {
+  return *track_number_;
+}
+inline void Metadata::set_track_number(const ::std::string& value) {
+  _set_bit(6);
+  if (track_number_ == &_default_track_number_) {
+    track_number_ = new ::std::string;
+  }
+  track_number_->assign(value);
+}
+inline void Metadata::set_track_number(const char* value) {
+  _set_bit(6);
+  if (track_number_ == &_default_track_number_) {
+    track_number_ = new ::std::string;
+  }
+  track_number_->assign(value);
+}
+inline void Metadata::set_track_number(const char* value, size_t size) {
+  _set_bit(6);
+  if (track_number_ == &_default_track_number_) {
+    track_number_ = new ::std::string;
+  }
+  track_number_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Metadata::mutable_track_number() {
+  _set_bit(6);
+  if (track_number_ == &_default_track_number_) {
+    track_number_ = new ::std::string;
+  }
+  return track_number_;
+}
+
+// -------------------------------------------------------------------
+
+// Album
+
+// optional .rec.util.cd.Metadata album = 1;
+inline bool Album::has_album() const {
+  return _has_bit(0);
+}
+inline void Album::clear_album() {
+  if (album_ != NULL) album_->::rec::util::cd::Metadata::Clear();
+  _clear_bit(0);
+}
+inline const ::rec::util::cd::Metadata& Album::album() const {
+  return album_ != NULL ? *album_ : *default_instance_->album_;
+}
+inline ::rec::util::cd::Metadata* Album::mutable_album() {
+  _set_bit(0);
+  if (album_ == NULL) album_ = new ::rec::util::cd::Metadata;
+  return album_;
+}
+
+// repeated .rec.util.cd.Metadata track = 2;
 inline int Album::track_size() const {
   return track_.size();
 }
 inline void Album::clear_track() {
   track_.Clear();
 }
-inline const ::rec::util::cd::Track& Album::track(int index) const {
+inline const ::rec::util::cd::Metadata& Album::track(int index) const {
   return track_.Get(index);
 }
-inline ::rec::util::cd::Track* Album::mutable_track(int index) {
+inline ::rec::util::cd::Metadata* Album::mutable_track(int index) {
   return track_.Mutable(index);
 }
-inline ::rec::util::cd::Track* Album::add_track() {
+inline ::rec::util::cd::Metadata* Album::add_track() {
   return track_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Metadata >&
 Album::track() const {
   return track_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Track >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::util::cd::Metadata >*
 Album::mutable_track() {
   return &track_;
 }

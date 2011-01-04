@@ -36,11 +36,12 @@ class CD : public Directory {
         name_ = "Unknown CD: ID = 0x" + cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
 
       } else {
-        name_ = (album.title() + " / " + album.artist()).c_str();
+        const cd::Metadata& data = album.album();
+        name_ = (data.album_title() + " / " + data.artist()).c_str();
         for (int i = 0; i < album.track_size(); ++i) {
-          const cd::Track& track = album.track(i);
-          tracks.push_back(track.artist().empty() ? track.title() :
-                           track.artist() + " / " + track.title());
+          const cd::Metadata& track = album.track(i);
+          tracks.push_back(track.artist().empty() ? track.track_title() :
+                           track.artist() + " / " + track.track_title());
         }
       }
     } else {

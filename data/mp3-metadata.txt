@@ -1,0 +1,611 @@
+
+[Session started at 2011-01-04 02:50:42 -0500.]
+GNU gdb 6.3.50-20050815 (Apple version gdb-1510) (Wed Sep 22 02:45:02 UTC 2010)
+Copyright 2004 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "x86_64-apple-darwin".tty /dev/ttys003
+Loading program into debugger…
+sharedlibrary apply-load-rules all
+Program loaded.
+run
+[Switching to process 61557]
+Running…
+JUCE v1.53.6
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/ah_private.o" - no debug information available for "ah_private.c".
+
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/ah_cl.o" - no debug information available for "ah_cl.c".
+
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/ah_serv.o" - no debug information available for "ah_serv.c".
+
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/main.o" - no debug information available for "main.c".
+
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/rbuffer.o" - no debug information available for "rbuffer.c".
+
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/megamix.o" - no debug information available for "megamix.c".
+
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/resampler.o" - no debug information available for "resampler.c".
+
+warning: Could not find object file "/Users/qdc/Projects/main-105sdk/tools/hijack/ahs/build/ahs.build/Release FAT/ah_hermes.build/Objects-normal/i386/coreaudio.o" - no debug information available for "coreaudio.c".
+
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0104 02:50:53.443155 2692552000 GenericApplication.h:26] Starting up SlowGold, version 1.0
+I0104 02:50:53.659045 2692552000 UntypedData.cpp:27] Opening data /Users/tom/Library/recs/SlowGold/VolumeFileList
+I0104 02:50:53.699208 2692552000 UntypedData.cpp:27] Opening data /Users/tom/Library/recs/SlowGold/VolumeFile
+I0104 02:50:53.816405 2955980800 UntypedData.cpp:27] Opening data /Users/tom/Library/recs/SlowGold/volume/Users/tom/Music/Amazon MP3/The Residents/Duck Stab/02 - Sinister Exaggerator.mp3/StretchyProto
+I0104 02:50:54.284152 2955980800 CreateReader.cpp:65] !!
+I0104 02:50:54.284193 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:50:54.284208 2955980800 CreateReader.cpp:67] TCOM -> The Residents
+I0104 02:50:54.284219 2955980800 CreateReader.cpp:67] TIT2 -> Sinister Exaggerator
+I0104 02:50:54.284230 2955980800 CreateReader.cpp:67] TCOP -> (C) 2008 Cryptic Corporation under exclusive licence to Mute Records Ltd This label copy information is the subject of copyright protection. All rights reserved. (C) 2008 Mute Records Ltd
+I0104 02:50:54.284251 2955980800 CreateReader.cpp:67] TCON -> Pop
+I0104 02:50:54.284262 2955980800 CreateReader.cpp:67] TPE1 -> The Residents
+I0104 02:50:54.284275 2955980800 CreateReader.cpp:67] TPE3 ->
+I0104 02:50:54.284286 2955980800 CreateReader.cpp:67] TALB -> Duck Stab
+I0104 02:50:54.284296 2955980800 CreateReader.cpp:67] TRCK -> 2/14
+I0104 02:50:54.284313 2955980800 CreateReader.cpp:67] TPE2 -> The Residents
+I0104 02:50:54.284328 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 02:50:54.284343 2955980800 CreateReader.cpp:67] TYER -> 2008
+I0104 02:50:54.284358 2955980800 CreateReader.cpp:67] COMM -> Amazon.com Song ID: 205763781
+I0104 02:50:54.608955 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:50:54.609159 2957578240 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:50:54.677551 2955980800 UntypedData.cpp:27] Opening data /Users/tom/Library/recs/SlowGold/RecentFiles
+I0104 02:50:54.678035 2958643200 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:50:56.768621 2692552000 UntypedData.cpp:27] Opening data /Users/tom/Library/recs/SlowGold/AudioDeviceSetupProto
+I0104 02:50:56.836216 2692552000 AudioDeviceSetup.cpp:76] Read from file.
+I0104 02:50:56.889395 2692552000 UntypedData.cpp:27] Opening data /Users/tom/Library/recs/SlowGold/Rectangle
+I0104 02:50:57.927686 2692552000 AudioDeviceSetup.cpp:91] Audio setup changed
+W0104 02:52:06.550302 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/StretchyProto
+E0104 02:52:06.550359 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/StretchyProto
+E0104 02:52:06.550647 2955980800 VolumeFile.cpp:149] No reader for The Orb:Users/tom/iTunes/The Orb/
+E0104 02:52:06.550679 2955980800 DoubleRunnyBuffer.cpp:26] Unable to read file The Orb:Users/tom/iTunes/The Orb/
+W0104 02:52:12.824094 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Asylum (disc 1)/1-01 Asylum (7_ edit).mp3/StretchyProto
+E0104 02:52:12.824142 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Asylum (disc 1)/1-01 Asylum (7_ edit).mp3/StretchyProto
+I0104 02:52:12.909504 2955980800 CreateReader.cpp:65] !!
+I0104 02:52:12.909548 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:52:12.909562 2955980800 CreateReader.cpp:67] TIT2 -> Asylum (7" edit)
+I0104 02:52:12.909574 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:52:12.909587 2955980800 CreateReader.cpp:67] TRCK -> 1/3
+I0104 02:52:12.909600 2955980800 CreateReader.cpp:67] TALB -> Asylum (disc 1)
+I0104 02:52:12.909611 2955980800 CreateReader.cpp:67] TPOS -> 1/2
+I0104 02:52:12.909623 2955980800 CreateReader.cpp:67] TDRC -> 1997-05-12
+I0104 02:52:12.909636 2955980800 CreateReader.cpp:67] TCON -> Electronica/Dance
+I0104 02:52:12.909648 2955980800 CreateReader.cpp:67] TPE2 -> The Orb
+I0104 02:52:12.909669 2955980800 CreateReader.cpp:67] TSOP -> Orb, The
+I0104 02:52:12.909688 2955980800 CreateReader.cpp:67] TENC -> iTunes v4.7
+I0104 02:52:12.909704 2955980800 CreateReader.cpp:67] TPUB -> Island Records
+I0104 02:52:12.909720 2955980800 CreateReader.cpp:67] COMM ->  000005C8 000007B4 00002EC7 00009405 00003C4E 00003D39 00008783 00008696 00031824 0000B363
+I0104 02:52:12.909739 2955980800 CreateReader.cpp:67] COMM+ -> 3+2E79507FF2480021B2C68FFF7FD9B1FB+789483
+I0104 02:52:12.909764 2955980800 CreateReader.cpp:67] TXXX -> single
+I0104 02:52:12.909781 2955980800 CreateReader.cpp:67] TXXX+ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:52:12.909800 2955980800 CreateReader.cpp:67] TXXX++ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:52:12.909816 2955980800 CreateReader.cpp:67] TXXX+++ -> CID 657
+I0104 02:52:12.909829 2955980800 CreateReader.cpp:67] TXXX++++ -> Orb, The
+I0104 02:52:12.909842 2955980800 CreateReader.cpp:67] TXXX+++++ -> c2c5e682-574e-4dcd-b766-751332cb6915
+I0104 02:52:12.909857 2955980800 CreateReader.cpp:67] TXXX++++++ -> GB
+I0104 02:52:12.909870 2955980800 CreateReader.cpp:67] TXXX+++++++ -> official
+I0104 02:52:12.910542 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:52:12.910668 2957578240 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:52:12.936713 2961874944 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:52:21.940580 2958643200 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Asylum (disc 1)/1-01 Asylum (7_ edit).mp3/thumbnail.stream
+W0104 02:52:54.033653 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Bicycles & Tricycles/01 Orb Is (Shopping version).mp3/StretchyProto
+E0104 02:52:54.033711 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Bicycles & Tricycles/01 Orb Is (Shopping version).mp3/StretchyProto
+I0104 02:52:54.139480 2955980800 CreateReader.cpp:65] !!
+I0104 02:52:54.139534 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:52:54.139549 2955980800 CreateReader.cpp:67] TIT2 -> Orb Is (Shopping version)
+I0104 02:52:54.139561 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:52:54.139574 2955980800 CreateReader.cpp:67] TRCK -> 1/11
+I0104 02:52:54.139585 2955980800 CreateReader.cpp:67] TALB -> Bicycles & Tricycles
+I0104 02:52:54.139597 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 02:52:54.139610 2955980800 CreateReader.cpp:67] TDRC -> 2004
+I0104 02:52:54.139621 2955980800 CreateReader.cpp:67] TCON -> Electronica/Dance
+I0104 02:52:54.139634 2955980800 CreateReader.cpp:67] TPE2 -> The Orb
+I0104 02:52:54.139648 2955980800 CreateReader.cpp:67] TSOP -> Orb, The
+I0104 02:52:54.139662 2955980800 CreateReader.cpp:67] TCOM -> Simon Phillips
+I0104 02:52:54.139678 2955980800 CreateReader.cpp:67] TENC -> iTunes 9.0.2
+I0104 02:52:54.139693 2955980800 CreateReader.cpp:67] COMM ->  0000039A 00000406 00006749 000091FD 0001A053 0001AD14 000088F9 00008D9D 00015C78 00018492
+I0104 02:52:54.139708 2955980800 CreateReader.cpp:67] COMM+ -> 11+A4417831EA07E866AC270906EC245E46+4313730
+I0104 02:52:54.139724 2955980800 CreateReader.cpp:67] COMM++ -> 0
+I0104 02:52:54.139737 2955980800 CreateReader.cpp:67] COMM+++ ->  00000000 00000210 000007BC 0000000000C2F034 00000000 006A087E 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 02:52:54.139754 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:52:54.139767 2955980800 CreateReader.cpp:67] TXXX+ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:52:54.139782 2955980800 CreateReader.cpp:67] TXXX++ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:52:54.139797 2955980800 CreateReader.cpp:67] TXXX+++ -> B0002D2MPG
+I0104 02:52:54.139811 2955980800 CreateReader.cpp:67] TXXX++++ -> Orb, The
+I0104 02:52:54.139826 2955980800 CreateReader.cpp:67] TXXX+++++ -> bfe8ae44-ed72-45c2-85ba-65be6acdb158
+I0104 02:52:54.139840 2955980800 CreateReader.cpp:67] TXXX++++++ -> official
+I0104 02:52:54.139853 2955980800 CreateReader.cpp:67] TXXX+++++++ -> US
+I0104 02:52:54.140519 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:52:54.140599 2958643200 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:52:54.166642 2960809984 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+2011-01-04 02:53:05.000 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:05.060 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:05.366 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:05.388 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:05.404 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+I0104 02:53:05.414042 2957045760 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Bicycles & Tricycles/01 Orb Is (Shopping version).mp3/thumbnail.stream
+2011-01-04 02:53:05.432 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+W0104 02:53:07.946137 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Live 93 (disc 2)/2-01 Valley.mp3/StretchyProto
+E0104 02:53:07.946181 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Live 93 (disc 2)/2-01 Valley.mp3/StretchyProto
+I0104 02:53:08.168511 2955980800 CreateReader.cpp:65] !!
+I0104 02:53:08.168555 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:53:08.168568 2955980800 CreateReader.cpp:67] TIT2 -> Valley
+I0104 02:53:08.168581 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:53:08.168592 2955980800 CreateReader.cpp:67] TRCK -> 1/6
+I0104 02:53:08.168604 2955980800 CreateReader.cpp:67] TALB -> Live 93 (disc 2)
+I0104 02:53:08.168617 2955980800 CreateReader.cpp:67] TPOS -> 2/2
+I0104 02:53:08.168629 2955980800 CreateReader.cpp:67] TDRC -> 1993-11-22
+I0104 02:53:08.168642 2955980800 CreateReader.cpp:67] TCON -> Electronica/Dance
+I0104 02:53:08.168653 2955980800 CreateReader.cpp:67] TPE2 -> The Orb
+I0104 02:53:08.168668 2955980800 CreateReader.cpp:67] TSOP -> Orb, The
+I0104 02:53:08.168679 2955980800 CreateReader.cpp:67] TCOM -> Green/Philiips/Weston
+I0104 02:53:08.168694 2955980800 CreateReader.cpp:67] TENC -> iTunes v7.0.1
+I0104 02:53:08.168706 2955980800 CreateReader.cpp:67] TPUB -> Island Records
+I0104 02:53:08.168720 2955980800 CreateReader.cpp:67] COMM ->  00000465 00000665 000042CB 0000797F 0001826D 0001FFBC 00007E45 0000820B 0007DF34 00033672
+I0104 02:53:08.168735 2955980800 CreateReader.cpp:67] COMM+ -> 6+1D047BE59BFC714B45FADFFCE1DE40BD+441149
+I0104 02:53:08.168748 2955980800 CreateReader.cpp:67] COMM++ -> 0
+I0104 02:53:08.168762 2955980800 CreateReader.cpp:67] COMM+++ ->  00000000 00000210 00000A14 00000000018F7C5C 00000000 0121CF06 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 02:53:08.168778 2955980800 CreateReader.cpp:67] TXXX -> live
+I0104 02:53:08.168792 2955980800 CreateReader.cpp:67] TXXX+ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:53:08.168807 2955980800 CreateReader.cpp:67] TXXX++ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:53:08.168820 2955980800 CreateReader.cpp:67] TXXX+++ -> 32bc3af3-9e5d-4726-a5a3-794199a74368
+I0104 02:53:08.168834 2955980800 CreateReader.cpp:67] TXXX++++ -> 162-535 004-2
+I0104 02:53:08.168848 2955980800 CreateReader.cpp:67] TXXX+++++ -> Orb, The
+I0104 02:53:08.168860 2955980800 CreateReader.cpp:67] TXXX++++++ -> B000026JBX
+I0104 02:53:08.168874 2955980800 CreateReader.cpp:67] TXXX+++++++ -> official
+I0104 02:53:08.168886 2955980800 CreateReader.cpp:67] TXXX++++++++ -> US
+I0104 02:53:08.169939 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:53:08.170063 2958643200 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:53:08.196411 2961874944 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:53:39.795339 2953850880 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Live 93 (disc 2)/2-01 Valley.mp3/thumbnail.stream
+2011-01-04 02:53:57.075 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.091 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.107 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.123 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.155 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.547 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.571 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.595 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:57.619 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:58.203 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:58.227 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:58.251 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:58.283 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:58.707 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:58.731 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:53:58.779 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+W0104 02:54:01.555994 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Orbus Terrarum/01 Valley.mp3/StretchyProto
+E0104 02:54:01.556042 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Orbus Terrarum/01 Valley.mp3/StretchyProto
+I0104 02:54:01.706907 2955980800 CreateReader.cpp:65] !!
+I0104 02:54:01.706949 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:54:01.706964 2955980800 CreateReader.cpp:67] TIT2 -> Valley
+I0104 02:54:01.706980 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:54:01.706991 2955980800 CreateReader.cpp:67] TRCK -> 1/7
+I0104 02:54:01.707003 2955980800 CreateReader.cpp:67] TALB -> Orbus Terrarum
+I0104 02:54:01.707018 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 02:54:01.707031 2955980800 CreateReader.cpp:67] TDRC -> 1995-03-20
+I0104 02:54:01.707042 2955980800 CreateReader.cpp:67] TCON -> Electronica/Dance
+I0104 02:54:01.707054 2955980800 CreateReader.cpp:67] TPE2 -> The Orb
+I0104 02:54:01.707067 2955980800 CreateReader.cpp:67] TSOP -> Orb, The
+I0104 02:54:01.707080 2955980800 CreateReader.cpp:67] TENC -> iTunes v4.7.1
+I0104 02:54:01.707093 2955980800 CreateReader.cpp:67] TPUB -> Island Records
+I0104 02:54:01.707108 2955980800 CreateReader.cpp:67] COMM ->  000001EB 000001CF 0000375C 00002AE0 0002DECB 00034629 00008324 00008181 0003292F 0003ABB1
+I0104 02:54:01.707124 2955980800 CreateReader.cpp:67] COMM+ -> 7+E340164BDF822A12D86B180E22AD8BC7+441867
+I0104 02:54:01.707139 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:54:01.707151 2955980800 CreateReader.cpp:67] TXXX+ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:54:01.707165 2955980800 CreateReader.cpp:67] TXXX++ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:54:01.707180 2955980800 CreateReader.cpp:67] TXXX+++ -> 74f7a932-7d3b-49d1-8f3c-6e811e724b64
+I0104 02:54:01.707195 2955980800 CreateReader.cpp:67] TXXX++++ -> 524 087-2
+I0104 02:54:01.707207 2955980800 CreateReader.cpp:67] TXXX+++++ -> Orb, The
+I0104 02:54:01.707221 2955980800 CreateReader.cpp:67] TXXX++++++ -> B000008106
+I0104 02:54:01.707233 2955980800 CreateReader.cpp:67] TXXX+++++++ -> GB
+I0104 02:54:01.707247 2955980800 CreateReader.cpp:67] TXXX++++++++ -> official
+I0104 02:54:01.708179 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:54:01.708246 2958643200 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:54:01.733489 2960809984 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+2011-01-04 02:54:14.361 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:14.393 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:14.396 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:14.415 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:14.744 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:14.777 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:14.795 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:14.829 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:15.142 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:15.175 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:15.444 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:15.467 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:15.485 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:15.510 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:19.396 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:19.456 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:19.506 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:19.822 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:19.856 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:19.876 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:19.939 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:20.740 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:20.780 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:20.823 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:21.364 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:21.421 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:21.470 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+I0104 02:54:22.049268 2957578240 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Orbus Terrarum/01 Valley.mp3/thumbnail.stream
+2011-01-04 02:54:23.460 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:23.492 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:23.820 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:23.836 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:23.852 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:23.876 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:24.388 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:24.404 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:24.428 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:24.460 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+W0104 02:54:25.796771 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Unknown Album/Orb6mix_vbr.mp3/StretchyProto
+E0104 02:54:25.796835 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/Unknown Album/Orb6mix_vbr.mp3/StretchyProto
+I0104 02:54:26.968327 2955980800 CreateReader.cpp:65] !!
+I0104 02:54:26.968369 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:54:26.968389 2955980800 CreateReader.cpp:67] TSSE -> LAME 32bits version 3.98 (http://www.mp3dev.org/)
+I0104 02:54:26.968401 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:54:26.968412 2955980800 CreateReader.cpp:67] TLEN -> 0
+I0104 02:54:26.968425 2955980800 CreateReader.cpp:67] TCOP -> . Licensed to the public under http://creativecommons.org/licenses/by/2.5/ verify at http://www.archive.org/details/TheOrbTheOrb-6mix
+I0104 02:54:26.968438 2955980800 CreateReader.cpp:67] COMM -> http://www.archive.org/details/TheOrbTheOrb-6mix
+I0104 02:54:26.968451 2955980800 CreateReader.cpp:67] COMM+ ->  0000060E 0000063C 000055CF 00005AC8 000F5074 000F5074 00008000 00008000 000F0E6B 000E89B9
+I0104 02:54:26.973456 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:54:26.973543 2958643200 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:54:26.999601 2961874944 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+2011-01-04 02:54:41.633 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:41.699 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 02:54:41.800 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+W0104 02:54:44.437441 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/U.F.Orb/04 Towers of Dub.mp3/StretchyProto
+E0104 02:54:44.437500 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/U.F.Orb/04 Towers of Dub.mp3/StretchyProto
+Note: Illegal Audio-MPEG-Header 0x00743117 at offset 36035761.
+Note: Trying to resync...
+Note: Skipped 183 bytes in input.
+I0104 02:54:44.845412 2955980800 CreateReader.cpp:65] !!
+I0104 02:54:44.845453 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:54:44.845466 2955980800 CreateReader.cpp:67] TIT2 -> Towers of Dub
+I0104 02:54:44.845479 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:54:44.845489 2955980800 CreateReader.cpp:67] TRCK -> 4/7
+I0104 02:54:44.845501 2955980800 CreateReader.cpp:67] TALB -> U.F.Orb
+I0104 02:54:44.845515 2955980800 CreateReader.cpp:67] TDRC -> 1992-03
+I0104 02:54:44.845530 2955980800 CreateReader.cpp:67] TCON -> Electronica/Dance
+I0104 02:54:44.845543 2955980800 CreateReader.cpp:67] TIPL -> producer
+I0104 02:54:44.845558 2955980800 CreateReader.cpp:67] TPE2 -> The Orb
+I0104 02:54:44.845577 2955980800 CreateReader.cpp:67] TSOP -> Orb, The
+I0104 02:54:44.845590 2955980800 CreateReader.cpp:67] TENC -> iTunes v1.0.1
+I0104 02:54:44.845610 2955980800 CreateReader.cpp:67] TPUB -> Big Life
+I0104 02:54:44.845624 2955980800 CreateReader.cpp:67] COMM ->  00000081 0000007E 000013BA 00001B33 0004DB6A 00091540 0000514D 00005188 0003C440 0009152A
+I0104 02:54:44.845643 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:54:44.845657 2955980800 CreateReader.cpp:67] TXXX+ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:54:44.845674 2955980800 CreateReader.cpp:67] TXXX++ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:54:44.845690 2955980800 CreateReader.cpp:67] TXXX+++ -> 731451374920
+I0104 02:54:44.845705 2955980800 CreateReader.cpp:67] TXXX++++ -> B000005HTY
+I0104 02:54:44.845721 2955980800 CreateReader.cpp:67] TXXX+++++ -> BLRCD 18
+I0104 02:54:44.845739 2955980800 CreateReader.cpp:67] TXXX++++++ -> Orb, The
+I0104 02:54:44.845754 2955980800 CreateReader.cpp:67] TXXX+++++++ -> 57b5d4c9-12fa-45c1-bad4-1d8b0aec7971
+I0104 02:54:44.845772 2955980800 CreateReader.cpp:67] TXXX++++++++ -> GB
+I0104 02:54:44.845788 2955980800 CreateReader.cpp:67] TXXX+++++++++ -> official
+I0104 02:54:44.847467 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+      I0104 02:54:44.847563 2959175680 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:54:44.887410 2963247104 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+W0104 02:54:54.740453 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/U.F.Orb/01 O.O.B.E..mp3/StretchyProto
+E0104 02:54:54.740504 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/U.F.Orb/01 O.O.B.E..mp3/StretchyProto
+Note: Illegal Audio-MPEG-Header 0x00edce42 at offset 30877676.
+Note: Trying to resync...
+Note: Skipped 1024 bytes in input.
+[parse.c:680] error: Giving up resync after 1024 bytes - your stream is not nice... (maybe increasing resync limit could help).
+I0104 02:54:55.094357 2955980800 CreateReader.cpp:65] !!
+I0104 02:54:55.094390 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:54:55.094404 2955980800 CreateReader.cpp:67] TIT2 -> O.O.B.E.
+I0104 02:54:55.094418 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:54:55.094430 2955980800 CreateReader.cpp:67] TRCK -> 1/7
+I0104 02:54:55.094442 2955980800 CreateReader.cpp:67] TALB -> U.F.Orb
+I0104 02:54:55.094456 2955980800 CreateReader.cpp:67] TDRC -> 1992-03
+I0104 02:54:55.094468 2955980800 CreateReader.cpp:67] TCON -> Electronica/Dance
+I0104 02:54:55.094481 2955980800 CreateReader.cpp:67] TIPL -> producer
+I0104 02:54:55.094495 2955980800 CreateReader.cpp:67] TPE2 -> The Orb
+I0104 02:54:55.094507 2955980800 CreateReader.cpp:67] TSOP -> Orb, The
+I0104 02:54:55.094521 2955980800 CreateReader.cpp:67] TENC -> iTunes v1.0.1
+I0104 02:54:55.094533 2955980800 CreateReader.cpp:67] TPUB -> Big Life
+I0104 02:54:55.094547 2955980800 CreateReader.cpp:67] COMM ->  00000035 00000036 0000026A 000005B8 0008EFEA 0004B155 000026FA 000024F7 0005FBC0 0005BBD5
+I0104 02:54:55.094562 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:54:55.094574 2955980800 CreateReader.cpp:67] TXXX+ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:54:55.094588 2955980800 CreateReader.cpp:67] TXXX++ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:54:55.094602 2955980800 CreateReader.cpp:67] TXXX+++ -> 731451374920
+I0104 02:54:55.094616 2955980800 CreateReader.cpp:67] TXXX++++ -> B000005HTY
+I0104 02:54:55.094630 2955980800 CreateReader.cpp:67] TXXX+++++ -> BLRCD 18
+I0104 02:54:55.094645 2955980800 CreateReader.cpp:67] TXXX++++++ -> Orb, The
+I0104 02:54:55.094658 2955980800 CreateReader.cpp:67] TXXX+++++++ -> 57b5d4c9-12fa-45c1-bad4-1d8b0aec7971
+I0104 02:54:55.094674 2955980800 CreateReader.cpp:67] TXXX++++++++ -> GB
+I0104 02:54:55.094688 2955980800 CreateReader.cpp:67] TXXX+++++++++ -> official
+I0104 02:54:55.096122 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:54:55.096185 2964824064 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:54:55.122988 2965889024 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+W0104 02:55:00.431201 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/U.F.Orb/06 Majestic.mp3/StretchyProto
+E0104 02:55:00.431253 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/U.F.Orb/06 Majestic.mp3/StretchyProto
+Note: Illegal Audio-MPEG-Header 0x00b0a00c at offset 26672876.
+Note: Trying to resync...
+Note: Skipped 1024 bytes in input.
+[parse.c:680] error: Giving up resync after 1024 bytes - your stream is not nice... (maybe increasing resync limit could help).
+I0104 02:55:00.728389 2955980800 CreateReader.cpp:65] !!
+I0104 02:55:00.728430 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:55:00.728447 2955980800 CreateReader.cpp:67] TIT2 -> Majestic
+I0104 02:55:00.728463 2955980800 CreateReader.cpp:67] TPE1 -> The Orb
+I0104 02:55:00.728477 2955980800 CreateReader.cpp:67] TRCK -> 6/7
+I0104 02:55:00.728489 2955980800 CreateReader.cpp:67] TALB -> U.F.Orb
+I0104 02:55:00.728503 2955980800 CreateReader.cpp:67] TDRC -> 1992-03
+I0104 02:55:00.728517 2955980800 CreateReader.cpp:67] TCON -> Electronica/Dance
+I0104 02:55:00.728530 2955980800 CreateReader.cpp:67] TIPL -> producer
+I0104 02:55:00.728543 2955980800 CreateReader.cpp:67] TPE2 -> The Orb
+I0104 02:55:00.728557 2955980800 CreateReader.cpp:67] TSOP -> Orb, The
+I0104 02:55:00.728570 2955980800 CreateReader.cpp:67] TENC -> iTunes v1.0.1
+I0104 02:55:00.728585 2955980800 CreateReader.cpp:67] TPUB -> Big Life
+I0104 02:55:00.728600 2955980800 CreateReader.cpp:67] COMM ->  0000007D 00000095 00000A27 00000B18 00003940 00026940 00005477 0000543D 0000CD80 00041E00
+I0104 02:55:00.728615 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:55:00.728629 2955980800 CreateReader.cpp:67] TXXX+ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:55:00.728643 2955980800 CreateReader.cpp:67] TXXX++ -> 42c14c80-bd17-47e4-9bb2-a35897638c4d
+I0104 02:55:00.728663 2955980800 CreateReader.cpp:67] TXXX+++ -> 731451374920
+I0104 02:55:00.728678 2955980800 CreateReader.cpp:67] TXXX++++ -> B000005HTY
+I0104 02:55:00.728693 2955980800 CreateReader.cpp:67] TXXX+++++ -> BLRCD 18
+I0104 02:55:00.728706 2955980800 CreateReader.cpp:67] TXXX++++++ -> Orb, The
+I0104 02:55:00.728720 2955980800 CreateReader.cpp:67] TXXX+++++++ -> 57b5d4c9-12fa-45c1-bad4-1d8b0aec7971
+I0104 02:55:00.728736 2955980800 CreateReader.cpp:67] TXXX++++++++ -> GB
+I0104 02:55:00.728751 2955980800 CreateReader.cpp:67] TXXX+++++++++ -> official
+I0104 02:55:00.730116 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:55:00.730197 2966421504 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:55:00.756479 2967486464 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:55:45.156960 2966953984 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/The Orb/U.F.Orb/06 Majestic.mp3/thumbnail.stream
+W0104 02:56:20.986031 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/StretchyProto
+E0104 02:56:20.986076 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/StretchyProto
+E0104 02:56:20.986321 2955980800 VolumeFile.cpp:149] No reader for Throbbing Gristle:Users/tom/iTunes/Throbbing Gristle/
+E0104 02:56:20.986346 2955980800 DoubleRunnyBuffer.cpp:26] Unable to read file Throbbing Gristle:Users/tom/iTunes/Throbbing Gristle/
+W0104 02:56:25.897395 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/01 20 Jazz Funk Greats.mp3/StretchyProto
+E0104 02:56:25.897443 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/01 20 Jazz Funk Greats.mp3/StretchyProto
+I0104 02:56:25.997020 2955980800 CreateReader.cpp:65] !!
+I0104 02:56:25.997063 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:56:25.997077 2955980800 CreateReader.cpp:67] TIT2 -> 20 Jazz Funk Greats
+I0104 02:56:25.997089 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 02:56:25.997102 2955980800 CreateReader.cpp:67] TRCK -> 1/13
+I0104 02:56:25.997112 2955980800 CreateReader.cpp:67] TALB -> 20 Jazz Funk Greats
+I0104 02:56:25.997124 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 02:56:25.997138 2955980800 CreateReader.cpp:67] TDRC -> 1991-11-01
+I0104 02:56:25.997148 2955980800 CreateReader.cpp:67] TCON -> Alternative & Punk
+I0104 02:56:25.997161 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 02:56:25.997176 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 02:56:25.997191 2955980800 CreateReader.cpp:67] TENC -> iTunes 8.2.1
+I0104 02:56:25.997205 2955980800 CreateReader.cpp:67] TPUB -> The Grey Area
+I0104 02:56:25.997221 2955980800 CreateReader.cpp:67] TMCL -> cornet, synthesizer and guitars
+I0104 02:56:25.997236 2955980800 CreateReader.cpp:67] COMM ->  00000031 00000035 000003E2 0000032C 00020868 000238FA 00003CFC 00003C06 000223A7 0000EFCB
+I0104 02:56:25.997253 2955980800 CreateReader.cpp:67] COMM+ -> 13+7285BE6F5D7F10C0B2586853EA84BCF9+455070
+I0104 02:56:25.997268 2955980800 CreateReader.cpp:67] COMM++ -> 0
+I0104 02:56:25.997282 2955980800 CreateReader.cpp:67] COMM+++ ->  00000000 00000210 00000A38 000000000073A6B8 00000000 0068D0A8 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 02:56:25.997298 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:56:25.997318 2955980800 CreateReader.cpp:67] TXXX+ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 02:56:25.997335 2955980800 CreateReader.cpp:67] TXXX++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 02:56:25.997354 2955980800 CreateReader.cpp:67] TXXX+++ -> 508d80f8-dd06-441c-864a-616af1195acb
+I0104 02:56:25.997370 2955980800 CreateReader.cpp:67] TXXX++++ -> TG CD 4
+I0104 02:56:25.997387 2955980800 CreateReader.cpp:67] TXXX+++++ -> Throbbing Gristle
+I0104 02:56:25.997403 2955980800 CreateReader.cpp:67] TXXX++++++ -> B000003Z5E
+I0104 02:56:25.997421 2955980800 CreateReader.cpp:67] TXXX+++++++ -> official
+I0104 02:56:25.997437 2955980800 CreateReader.cpp:67] TXXX++++++++ -> GB
+I0104 02:56:25.997980 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:56:25.998066 2966953984 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:56:26.023789 2968887296 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:56:33.108547 2964824064 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/01 20 Jazz Funk Greats.mp3/thumbnail.stream
+W0104 02:56:42.019191 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/02 Beachy Head.mp3/StretchyProto
+E0104 02:56:42.019239 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/02 Beachy Head.mp3/StretchyProto
+I0104 02:56:42.140213 2955980800 CreateReader.cpp:65] !!
+I0104 02:56:42.140264 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:56:42.140279 2955980800 CreateReader.cpp:67] TIT2 -> Beachy Head
+I0104 02:56:42.140291 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 02:56:42.140303 2955980800 CreateReader.cpp:67] TRCK -> 2/13
+I0104 02:56:42.140316 2955980800 CreateReader.cpp:67] TALB -> 20 Jazz Funk Greats
+I0104 02:56:42.140327 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 02:56:42.140339 2955980800 CreateReader.cpp:67] TDRC -> 1991-11-01
+I0104 02:56:42.140352 2955980800 CreateReader.cpp:67] TCON -> Alternative & Punk
+I0104 02:56:42.140364 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 02:56:42.140377 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 02:56:42.140390 2955980800 CreateReader.cpp:67] TENC -> iTunes 8.2.1
+I0104 02:56:42.140404 2955980800 CreateReader.cpp:67] TPUB -> The Grey Area
+I0104 02:56:42.140418 2955980800 CreateReader.cpp:67] TMCL -> cornet, synthesizer and guitars
+I0104 02:56:42.140432 2955980800 CreateReader.cpp:67] COMM ->  00000019 00000022 000000F5 000001A2 00009063 00016F8D 00002583 00002AC5 00019034 00016F8D
+I0104 02:56:42.140447 2955980800 CreateReader.cpp:67] COMM+ -> 13+7285BE6F5D7F10C0B2586853EA84BCF9+455070
+I0104 02:56:42.140462 2955980800 CreateReader.cpp:67] COMM++ -> 0
+I0104 02:56:42.140475 2955980800 CreateReader.cpp:67] COMM+++ ->  00000000 00000210 00000A2C 000000000095AEC4 00000000 0087AEB2 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 02:56:42.140492 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:56:42.140506 2955980800 CreateReader.cpp:67] TXXX+ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 02:56:42.140521 2955980800 CreateReader.cpp:67] TXXX++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 02:56:42.140535 2955980800 CreateReader.cpp:67] TXXX+++ -> 508d80f8-dd06-441c-864a-616af1195acb
+I0104 02:56:42.140550 2955980800 CreateReader.cpp:67] TXXX++++ -> TG CD 4
+I0104 02:56:42.140565 2955980800 CreateReader.cpp:67] TXXX+++++ -> Throbbing Gristle
+I0104 02:56:42.140578 2955980800 CreateReader.cpp:67] TXXX++++++ -> B000003Z5E
+I0104 02:56:42.140593 2955980800 CreateReader.cpp:67] TXXX+++++++ -> official
+I0104 02:56:42.140605 2955980800 CreateReader.cpp:67] TXXX++++++++ -> GB
+I0104 02:56:42.141250 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:56:42.141321 2966953984 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:56:42.167175 2968018944 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+W0104 02:56:45.105905 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/03 Still Walking.mp3/StretchyProto
+E0104 02:56:45.105955 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/03 Still Walking.mp3/StretchyProto
+I0104 02:56:45.243065 2955980800 CreateReader.cpp:65] !!
+I0104 02:56:45.243113 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 02:56:45.243129 2955980800 CreateReader.cpp:67] TIT2 -> Still Walking
+I0104 02:56:45.243141 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 02:56:45.243154 2955980800 CreateReader.cpp:67] TRCK -> 3/13
+I0104 02:56:45.243165 2955980800 CreateReader.cpp:67] TALB -> 20 Jazz Funk Greats
+I0104 02:56:45.243177 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 02:56:45.243190 2955980800 CreateReader.cpp:67] TDRC -> 1991-11-01
+I0104 02:56:45.243201 2955980800 CreateReader.cpp:67] TCON -> Alternative & Punk
+I0104 02:56:45.243221 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 02:56:45.243235 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 02:56:45.243249 2955980800 CreateReader.cpp:67] TENC -> iTunes 8.2.1
+I0104 02:56:45.243265 2955980800 CreateReader.cpp:67] TPUB -> The Grey Area
+I0104 02:56:45.243278 2955980800 CreateReader.cpp:67] TMCL -> cornet, synthesizer and guitars
+I0104 02:56:45.243293 2955980800 CreateReader.cpp:67] COMM ->  0000014D 000000BA 000019A8 00000B55 0000BFBC 00032D29 0000558E 000047E4 0001916D 0003BAB1
+I0104 02:56:45.243307 2955980800 CreateReader.cpp:67] COMM+ -> 13+7285BE6F5D7F10C0B2586853EA84BCF9+455070
+I0104 02:56:45.243321 2955980800 CreateReader.cpp:67] COMM++ -> 0
+I0104 02:56:45.243335 2955980800 CreateReader.cpp:67] COMM+++ ->  00000000 00000210 000008D0 0000000000C77820 00000000 00B4D5E1 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 02:56:45.243356 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 02:56:45.243370 2955980800 CreateReader.cpp:67] TXXX+ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 02:56:45.243382 2955980800 CreateReader.cpp:67] TXXX++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 02:56:45.243396 2955980800 CreateReader.cpp:67] TXXX+++ -> 508d80f8-dd06-441c-864a-616af1195acb
+I0104 02:56:45.243410 2955980800 CreateReader.cpp:67] TXXX++++ -> TG CD 4
+I0104 02:56:45.243424 2955980800 CreateReader.cpp:67] TXXX+++++ -> Throbbing Gristle
+I0104 02:56:45.243438 2955980800 CreateReader.cpp:67] TXXX++++++ -> B000003Z5E
+I0104 02:56:45.243453 2955980800 CreateReader.cpp:67] TXXX+++++++ -> official
+I0104 02:56:45.243466 2955980800 CreateReader.cpp:67] TXXX++++++++ -> GB
+I0104 02:56:45.244139 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:56:45.244231 2967486464 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 02:56:45.269806 2969419776 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 02:56:59.084825 2968887296 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/20 Jazz Funk Greats/03 Still Walking.mp3/thumbnail.stream
+2011-01-04 03:01:33.979 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 03:01:34.003 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 03:01:34.043 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 03:01:34.123 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 03:01:34.763 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 03:01:34.787 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 03:01:34.819 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+2011-01-04 03:01:34.859 SlowBurn[61557:a0f] *** Assertion failure in -[NSEvent deviceDeltaX], /SourceCache/AppKit/AppKit-1038.35/AppKit.subproj/NSEvent.m:2323
+W0104 03:01:36.228430 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/03 After Cease to Exist.mp3/StretchyProto
+E0104 03:01:36.228482 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/03 After Cease to Exist.mp3/StretchyProto
+I0104 03:01:36.401803 2955980800 CreateReader.cpp:65] !!
+I0104 03:01:36.401845 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 03:01:36.401859 2955980800 CreateReader.cpp:67] TIT2 -> After Cease to Exist
+I0104 03:01:36.401871 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 03:01:36.401885 2955980800 CreateReader.cpp:67] TRCK -> 3/10
+I0104 03:01:36.401897 2955980800 CreateReader.cpp:67] TALB -> Heathen Earth: The Live Sound of TG
+I0104 03:01:36.401914 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 03:01:36.401926 2955980800 CreateReader.cpp:67] TDRC -> 1980
+I0104 03:01:36.401938 2955980800 CreateReader.cpp:67] TCON -> Industrial
+I0104 03:01:36.401950 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 03:01:36.401964 2955980800 CreateReader.cpp:67] TENC -> iTunes v6.0.5
+I0104 03:01:36.401978 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 03:01:36.401990 2955980800 CreateReader.cpp:67] COMM ->  00000397 0000024B 00004F3D 0000404B 000518CB 0005191A 000055A4 0000514E 000519B6 000338CB
+I0104 03:01:36.402009 2955980800 CreateReader.cpp:67] COMM+ -> 10+E96FE972558C21874A97FFB78CFAB37F+594012
+I0104 03:01:36.402024 2955980800 CreateReader.cpp:67] COMM++ ->  00000000 00000210 00000720 00000000012689D0 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 03:01:36.402040 2955980800 CreateReader.cpp:67] TXXX -> e7698872-20dc-4c11-8ff1-a4cff56df7fe
+I0104 03:01:36.402053 2955980800 CreateReader.cpp:67] TXXX+ -> Throbbing Gristle
+I0104 03:01:36.402066 2955980800 CreateReader.cpp:67] TXXX++ -> album
+I0104 03:01:36.402081 2955980800 CreateReader.cpp:67] TXXX+++ -> official
+I0104 03:01:36.402093 2955980800 CreateReader.cpp:67] TXXX++++ -> GB
+I0104 03:01:36.402107 2955980800 CreateReader.cpp:67] TXXX+++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:01:36.402122 2955980800 CreateReader.cpp:67] TXXX++++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:01:36.403096 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 03:01:36.403193 2968887296 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 03:01:36.429666 2970484736 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 03:01:56.455800 2966953984 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/03 After Cease to Exist.mp3/thumbnail.stream
+W0104 03:02:10.085676 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/03 After Cease to Exist 2.mp3/StretchyProto
+E0104 03:02:10.085772 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/03 After Cease to Exist 2.mp3/StretchyProto
+I0104 03:02:10.215597 2955980800 CreateReader.cpp:65] !!
+I0104 03:02:10.215646 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 03:02:10.215662 2955980800 CreateReader.cpp:67] TIT2 -> After Cease to Exist
+I0104 03:02:10.215675 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 03:02:10.215687 2955980800 CreateReader.cpp:67] TRCK -> 3/10
+I0104 03:02:10.215699 2955980800 CreateReader.cpp:67] TALB -> Heathen Earth: The Live Sound of TG
+I0104 03:02:10.215713 2955980800 CreateReader.cpp:67] TDRC -> 1980
+I0104 03:02:10.215725 2955980800 CreateReader.cpp:67] TCON -> Industrial
+I0104 03:02:10.215738 2955980800 CreateReader.cpp:67] TENC -> iTunes v4.7
+I0104 03:02:10.215749 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 03:02:10.215762 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 03:02:10.215780 2955980800 CreateReader.cpp:67] COMM ->  00000397 0000024B 00004F49 0000406A 000518CB 00051934 000055A4 0000514E 000519D1 000338CB
+I0104 03:02:10.215798 2955980800 CreateReader.cpp:67] COMM+ -> 10+E96FE972558C21874A97FFB78CFAB37F+594012
+I0104 03:02:10.215816 2955980800 CreateReader.cpp:67] TXXX -> Throbbing Gristle
+I0104 03:02:10.215831 2955980800 CreateReader.cpp:67] TXXX+ -> album
+I0104 03:02:10.215847 2955980800 CreateReader.cpp:67] TXXX++ -> e7698872-20dc-4c11-8ff1-a4cff56df7fe
+I0104 03:02:10.215864 2955980800 CreateReader.cpp:67] TXXX+++ -> official
+I0104 03:02:10.215880 2955980800 CreateReader.cpp:67] TXXX++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:10.215898 2955980800 CreateReader.cpp:67] TXXX+++++ -> GB
+I0104 03:02:10.215914 2955980800 CreateReader.cpp:67] TXXX++++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:10.216784 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 03:02:10.216876 2968887296 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 03:02:10.244231 2969952256 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+W0104 03:02:14.885990 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/04 The World is a War Film.mp3/StretchyProto
+E0104 03:02:14.886039 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/04 The World is a War Film.mp3/StretchyProto
+I0104 03:02:15.062337 2955980800 CreateReader.cpp:65] !!
+I0104 03:02:15.062391 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 03:02:15.062405 2955980800 CreateReader.cpp:67] TIT2 -> The World is a War Film
+I0104 03:02:15.062417 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 03:02:15.062428 2955980800 CreateReader.cpp:67] TRCK -> 4/10
+I0104 03:02:15.062440 2955980800 CreateReader.cpp:67] TALB -> Heathen Earth: The Live Sound of TG
+I0104 03:02:15.062453 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 03:02:15.062463 2955980800 CreateReader.cpp:67] TDRC -> 1980
+I0104 03:02:15.062475 2955980800 CreateReader.cpp:67] TCON -> Industrial
+I0104 03:02:15.062486 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 03:02:15.062501 2955980800 CreateReader.cpp:67] TENC -> iTunes v6.0.5
+I0104 03:02:15.062516 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 03:02:15.062530 2955980800 CreateReader.cpp:67] COMM ->  00000123 0000017A 0000225E 00001929 0004B11F 0000047D 000073F5 00007C8D 000501A1 0000B553
+I0104 03:02:15.062546 2955980800 CreateReader.cpp:67] COMM+ -> 10+E96FE972558C21874A97FFB78CFAB37F+594012
+I0104 03:02:15.062562 2955980800 CreateReader.cpp:67] COMM++ ->  00000000 00000210 00000B4C 000000000139FB24 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 03:02:15.062579 2955980800 CreateReader.cpp:67] TXXX -> e7698872-20dc-4c11-8ff1-a4cff56df7fe
+I0104 03:02:15.062594 2955980800 CreateReader.cpp:67] TXXX+ -> Throbbing Gristle
+I0104 03:02:15.062608 2955980800 CreateReader.cpp:67] TXXX++ -> album
+I0104 03:02:15.062623 2955980800 CreateReader.cpp:67] TXXX+++ -> official
+I0104 03:02:15.062638 2955980800 CreateReader.cpp:67] TXXX++++ -> GB
+I0104 03:02:15.062655 2955980800 CreateReader.cpp:67] TXXX+++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:15.062669 2955980800 CreateReader.cpp:67] TXXX++++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:15.063546 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 03:02:15.063631 2969419776 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 03:02:15.094032 2971017216 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+W0104 03:02:22.766237 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/05 Dreammachine 2.mp3/StretchyProto
+E0104 03:02:22.766295 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/Heathen Earth_ The Live Sound of TG/05 Dreammachine 2.mp3/StretchyProto
+I0104 03:02:22.908900 2955980800 CreateReader.cpp:65] !!
+I0104 03:02:22.908947 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 03:02:22.908962 2955980800 CreateReader.cpp:67] TIT2 -> Dreammachine
+I0104 03:02:22.908974 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 03:02:22.908987 2955980800 CreateReader.cpp:67] TRCK -> 5/10
+I0104 03:02:22.908998 2955980800 CreateReader.cpp:67] TALB -> Heathen Earth: The Live Sound of TG
+I0104 03:02:22.909011 2955980800 CreateReader.cpp:67] TDRC -> 1980
+I0104 03:02:22.909024 2955980800 CreateReader.cpp:67] TCON -> Industrial
+I0104 03:02:22.909036 2955980800 CreateReader.cpp:67] TENC -> iTunes v4.7
+I0104 03:02:22.909049 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 03:02:22.909061 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 03:02:22.909075 2955980800 CreateReader.cpp:67] COMM ->  0000017B 0000011C 00000EC5 00001EDE 00018EE0 0003571A 00004867 000047D7 0005B5BC 0005FD0F
+I0104 03:02:22.909091 2955980800 CreateReader.cpp:67] COMM+ -> 10+E96FE972558C21874A97FFB78CFAB37F+594012
+I0104 03:02:22.909106 2955980800 CreateReader.cpp:67] TXXX -> Throbbing Gristle
+I0104 03:02:22.909119 2955980800 CreateReader.cpp:67] TXXX+ -> album
+I0104 03:02:22.909132 2955980800 CreateReader.cpp:67] TXXX++ -> e7698872-20dc-4c11-8ff1-a4cff56df7fe
+I0104 03:02:22.909147 2955980800 CreateReader.cpp:67] TXXX+++ -> official
+I0104 03:02:22.909162 2955980800 CreateReader.cpp:67] TXXX++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:22.909175 2955980800 CreateReader.cpp:67] TXXX+++++ -> GB
+I0104 03:02:22.909189 2955980800 CreateReader.cpp:67] TXXX++++++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:22.910034 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 03:02:22.910130 2971549696 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 03:02:22.936701 2973429760 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+W0104 03:02:33.688416 2955980800 Copy.cpp:76] Couldn't read file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/The Third Mind Movements/01 The Man From Nowhere.mp3/StretchyProto
+E0104 03:02:33.688462 2955980800 UntypedData.cpp:29] New data /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/The Third Mind Movements/01 The Man From Nowhere.mp3/StretchyProto
+I0104 03:02:33.895303 2955980800 CreateReader.cpp:65] !!
+I0104 03:02:33.895345 2955980800 CreateReader.cpp:67] idversion -> id3v2
+I0104 03:02:33.895359 2955980800 CreateReader.cpp:67] TIT2 -> The Man From Nowhere
+I0104 03:02:33.895372 2955980800 CreateReader.cpp:67] TPE1 -> Throbbing Gristle
+I0104 03:02:33.895383 2955980800 CreateReader.cpp:67] TRCK -> 1/8
+I0104 03:02:33.895395 2955980800 CreateReader.cpp:67] TALB -> The Third Mind Movements
+I0104 03:02:33.895412 2955980800 CreateReader.cpp:67] TPOS -> 1/1
+I0104 03:02:33.895423 2955980800 CreateReader.cpp:67] TDRC -> 2009-04-16
+I0104 03:02:33.895434 2955980800 CreateReader.cpp:67] TCON -> Industrial
+I0104 03:02:33.895447 2955980800 CreateReader.cpp:67] TPE2 -> Throbbing Gristle
+I0104 03:02:33.895458 2955980800 CreateReader.cpp:67] TSOP -> Throbbing Gristle
+I0104 03:02:33.895470 2955980800 CreateReader.cpp:67] TCOM -> Carter, Christopherson, Tutti, P-Orridge
+I0104 03:02:33.895486 2955980800 CreateReader.cpp:67] TENC -> iTunes 8.2.1
+I0104 03:02:33.895501 2955980800 CreateReader.cpp:67] TPUB -> Industrial Records
+I0104 03:02:33.895516 2955980800 CreateReader.cpp:67] COMM ->  0000055B 000004B5 000093FF 00007643 00048A8D 00038D97 000079DD 000078BA 0005C46D 00017EC1
+I0104 03:02:33.895534 2955980800 CreateReader.cpp:67] COMM+ -> 8+63999D15610690E40DF05B6A5DF4EF01+12661820
+I0104 03:02:33.895549 2955980800 CreateReader.cpp:67] COMM++ -> 0
+I0104 03:02:33.895565 2955980800 CreateReader.cpp:67] COMM+++ ->  00000000 00000210 00000804 000000000128856C 00000000 010CDC93 00000000 00000000 00000000 00000000 00000000 00000000
+I0104 03:02:33.895585 2955980800 CreateReader.cpp:67] TXXX -> album
+I0104 03:02:33.895601 2955980800 CreateReader.cpp:67] TXXX+ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:33.895616 2955980800 CreateReader.cpp:67] TXXX++ -> IR 2009/4
+I0104 03:02:33.895628 2955980800 CreateReader.cpp:67] TXXX+++ -> e135d690-9c53-4333-8f11-98aec8c9f434
+I0104 03:02:33.895644 2955980800 CreateReader.cpp:67] TXXX++++ -> Throbbing Gristle
+I0104 03:02:33.895660 2955980800 CreateReader.cpp:67] TXXX+++++ -> b0ee0a1a-81cb-45de-b551-5cf31c385a65
+I0104 03:02:33.895675 2955980800 CreateReader.cpp:67] TXXX++++++ -> official
+I0104 03:02:33.895690 2955980800 CreateReader.cpp:67] TXXX+++++++ -> US
+I0104 03:02:33.896585 2955980800 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 03:02:33.896678 2973962240 DoubleRunnyBuffer.cpp:67] DoubleRunnyBuffer::run
+I0104 03:02:33.925891 2975027200 DoubleStretchyRunny.cpp:25] DoubleStretchyRunny::setStretchy
+I0104 03:02:58.027215 2974494720 FileWriter.h:27] Saved to file /Users/tom/Library/recs/SlowGold/volume/Users/tom/iTunes/Throbbing Gristle/The Third Mind Movements/01 The Man From Nowhere.mp3/thumbnail.stream
+CoreAudio error: 277254 - 216f626a
+JUCE Assertion failure in ../../../../../rec/src/../../juce/juce_amalgamated.cpp, line 277089
+Debugger() was called!
+(gdb)

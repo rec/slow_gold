@@ -14,30 +14,35 @@ namespace rec {
 namespace util {
 namespace cd {
 
+namespace {
 
-void splitTitle(Album *album) {
+void splitTitle(Metadata *album) {
   // Split title up.
-  StringPair title = splitLine(album->title(), '/');
+  StringPair title = splitLine(album->album_title(), '/');
   if (!title.second.empty()) {
     album->set_artist(title.first);
-    album->set_title(title.second);
+    album->set_album_title(title.second);
   }
 }
 
+}
+
+void splitTitle(Album *album) { splitTitle(album->mutable_album()); }
+
 void splitTracks(Album* album) {
-  // Now look for likely song splits.
+  // Look for likely song splits.
   static const char splits[] = "/:-";
   bool splitting;
   for (int i = 0; !splitting && i < arraysize(splits); ++i) {
     char ch = splits[i];
     splitting = true;
     for (int j = 0; splitting && j < album->track_size(); ++j)
-      splitting = (album->track(i).title().find(ch) > 0);
+      splitting = (album->track(i).track_title().find(ch) > 0);
 
     for (int j = 0; splitting && j < album->track_size(); ++j) {
-      StringPair p = splitLine(album->track(j).title(), ch);
+      StringPair p = splitLine(album->track(j).track_title(), ch);
       album->mutable_track(j)->set_artist(p.first);
-      album->mutable_track(j)->set_title(p.second);
+      album->mutable_track(j)->set_track_title(p.second);
     }
   }
 }
@@ -61,26 +66,26 @@ void fillAlbum(const StringArray& cds, int tracks, Album* album) {
   }
 }
 
-void addAlbumValue(const String& key, const string& value, Album* album) {
+void addAlbumValue(const String& key, const string& v, Album* album) {
+  Metadata* data = album->mutable_album();
   if (key == "DISCID")
-    album->set_discid(value);
+    data->set_discid(v);
 
   else if (key == "DYEAR")
-    album->set_year(value);
+    data->set_year(v);
 
   else if (key == "DGENRE")
-    album->set_genre(value);
+    data->set_genre(v);
 
   else if (key == "DTITLE")
-    *album->mutable_title() += value;
+    *data->mutable_album_title() += v;
 
   else if (key.startsWith("TTITLE"))
-    *album->mutable_track(key.getTrailingIntValue())->mutable_title() += value;
+    *album->mutable_track(key.getTrailingIntValue())->mutable_track_title() += v;
 
   else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
-    LOG(ERROR) << "Unknown key " << key.toCString() << " '" << value << "'";
+    LOG(ERROR) << "Unknown key " << key.toCString() << " '" << v << "'";
 }
-
 
 void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   const String offsets = trackOffsetString(off);
@@ -132,6 +137,32 @@ Album getAlbum(const VolumeFile& file, const TrackOffsets& off) {
   return album;
 }
 
+Metadata getTrack(const Album& album, int i) {
+  Metadata track = album.album();
+  if (i >= 0 && i < album.track_size())
+    track.MergeFrom(album.track(i));
+
+  return track;
+}
+
+Metadata getTrack(const StringPairArray& metadata) {
+  Metadata t;
+  const StringArray& keys = metadata.getAllKeys();
+  for (int i = 0; i < keys.size(); ++i) {
+    const String& k = keys[i];
+    const string& v = metadata[k].toCString();
+
+    if (k < "TALB" || k > "TRCK") continue;
+    else if (k == "TALB") t.set_album_title(v);
+    else if (k == "TCON") t.set_genre(v);
+    else if (k == "TDRC") t.set_year(v);
+    else if (k == "TIT2") t.set_track_title(v);
+    else if (k == "TPE1") t.set_artist(v);
+    else if (k == "TPE2") t.set_artist(v);  // difference?!
+    else if (k == "TRCK") t.set_track_number(v);
+  }
+  return t;
+}
 
 }  // namespace cd
 }  // namespace util

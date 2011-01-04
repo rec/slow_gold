@@ -28,6 +28,7 @@ struct Circular {
   int64 consume(int64 amount);
 
   int64 filled() const { return filled_; }
+  int64 length() const { return length_; }
 
   // Return an index restricted to the circular buffer..
   int64 restrict(int64 x) const { return mod(x, length_); }
@@ -36,8 +37,6 @@ struct Circular {
   int64 begin_;
   int64 filled_;  // Of this region within the buffer.
   int64 length_;  // Of the whole buffer.
-
-  DISALLOW_COPY_AND_ASSIGN(Circular);
 };
 
 }  // namespace util
