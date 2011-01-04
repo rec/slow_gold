@@ -23,13 +23,13 @@ class SetterSlider : public Layout, public AddressListener<Proto> {
       : Layout(Layout::HORIZONTAL, true, name),
         AddressListener<Proto>(address), slider_(name), label_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
-    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
+    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 90, 20);
 
     const String& cap = caption.length() ? caption : name;
     slider_.setTooltip(tip.length() ? tip : cap);
     label_.setText(cap, false);
-    addToLayout(&slider_, 100, -0.7, -0.7);
-    addToLayout(&label_, 100, -0.3, -0.3);
+    addToLayout(&slider_, 100, -0.6, -0.6);
+    addToLayout(&label_, 100, -0.4, -0.4);
     label_.setFont(Font(14.0000f, Font::plain));
     label_.setJustificationType(juce::Justification::centredLeft);
     label_.setEditable(false, false, false);
@@ -37,9 +37,7 @@ class SetterSlider : public Layout, public AddressListener<Proto> {
     label_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
   }
 
-  void setRange(double min, double max, double interval = 0) {
-    slider_.setRange(min, max, interval);
-  }
+  Slider* slider() { return &slider_; }
 
   virtual void valueChanged() { this->onChange(); }
 

@@ -19,9 +19,13 @@ class StretchyController : public Layout {
         playbackSpeed_("Playback Speed", Address("time_percent")),
         pitchScale_("Semitone tune up or down", Address("semitone_shift")),
         fineScale_("Detune up or down (in cents)", Address("detune_cents")) {
-    playbackSpeed_.setRange(5.0, 200.0, 1.0);
-    pitchScale_.setRange(-7.0, 7.0, 0.5);
-    fineScale_.setRange(-50.0, 50.0, 1.0);
+    playbackSpeed_.slider()->setRange(5.0, 200.0, 1.0);
+    pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
+    fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
+
+    playbackSpeed_.slider()->setTextValueSuffix("%");
+    pitchScale_.slider()->setTextValueSuffix(" semitones");
+    fineScale_.slider()->setTextValueSuffix(" cents");
 
     addToLayout(&playbackSpeed_, -1.0/3.0);
     addToLayout(&pitchScale_, -1.0/3.0);

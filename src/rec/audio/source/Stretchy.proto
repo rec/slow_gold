@@ -4,6 +4,7 @@ import "rec/util/file/VolumeFile.proto";
 
 // Describe how exactly to apply the timescaler to a sample.
 message StretchyProto {
+  optional bool disable = 14            [default = false];
   optional double time_scale = 1        [default = 1.0];
   optional double time_percent = 14     [default = 100.0];
   optional double sample_rate = 2       [default = 44100.0];
