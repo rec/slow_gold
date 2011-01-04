@@ -56,7 +56,7 @@ void Root::operator()(const VolumeFileList& volumes) {
   notify();
 }
 
-void Root::mouseUp(const juce::MouseEvent& e) {
+void Root::mouseDoubleClick(const juce::MouseEvent& e) {
   thread::callAsync(this, &Root::doAdd);
 }
 

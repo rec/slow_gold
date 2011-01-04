@@ -2,6 +2,7 @@
 #include "rec/gui/icon/OpenFolder.svg.h"
 #include "rec/gui/icon/ThickFolder.svg.h"
 #include "rec/gui/icon/ThinFolder.svg.h"
+#include "rec/util/STL.h"
 
 using namespace juce;
 
@@ -37,6 +38,21 @@ const Drawable* getIcon(const string& n) {
   LOG(ERROR) << "Couldn't find icon " << n;
   return NULL;
 }
+
+
+static std::vector<Drawable*> ICONS;
+
+Drawable* createFromImageData(const char* data, int len) {
+  Drawable* d = Drawable::createFromImageData(data, len);
+  ICONS.push_back(d);
+
+  return d;
+}
+
+void deleteIcons() {
+  stl::deletePointers(&ICONS);
+}
+
 
 }  // namespace icon
 }  // namespace gui

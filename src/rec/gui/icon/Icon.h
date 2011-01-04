@@ -9,6 +9,10 @@ namespace rec {
 namespace gui {
 namespace icon {
 
+juce::Drawable* createFromImageData(const char* data, int len);
+void deleteIcons();
+
+// Not in use.
 const juce::Drawable* getIcon(const string& n);
 
 }  // namespace icon

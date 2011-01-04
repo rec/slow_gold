@@ -216,6 +216,7 @@
           <File RelativePath="..\..\..\..\src\rec\base\port.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\ptr.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\scoped_array.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Standard.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\string_piece.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\types.h"/>
         </Filter>
@@ -383,6 +384,10 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\Icon.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.cpp"/>
@@ -390,9 +395,12 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\gui\Layout.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterSlider.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.h"/>
         </Filter>
         <Filter Name="slow">
           <Filter Name="app">
@@ -459,6 +467,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\file\VolumeFile.h"/>
           </Filter>
           <Filter Name="listener">
+            <File RelativePath="..\..\..\..\src\rec\util\listener\AddressListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\DataListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>

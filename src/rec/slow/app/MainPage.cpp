@@ -7,13 +7,12 @@
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/gui/icon/MediaPlaybackStart.svg.h"
+#include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/Util.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/Trash.h"
-
-namespace rec {
-namespace slow {
 
 using rec::gui::Colors;
 using rec::widget::status::time::Dial;
@@ -24,9 +23,13 @@ using rec::widget::status::time::TextComponent;
 using namespace juce;
 
 using namespace rec::audio::source;
+using namespace rec::proto::arg;
 using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
-using namespace rec::proto::arg;
+
+
+namespace rec {
+namespace slow {
 
 namespace {
 
@@ -47,11 +50,8 @@ static const int CHANGE_LOCKER_WAIT = 100;
 MainPage::MainPage(AudioDeviceManager& deviceManager)
   : transportSource_(new app::AudioTransportSourcePlayer(&deviceManager)),
     waveform_(WaveformProto()),
-    startStopButton_(String::empty),
+    startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
     treeRoot_(new Root(NodeDesc())),
-    playbackSpeedSlider_("Time Scale", Address("time_percent")),
-    pitchScaleSlider_("Pitch Scale", Address("semitone_shift")),
-    fineScaleSlider_("Fine Scale", Address("detune_cents")),
     songTime_(Text()),
     songDial_(realTimeDial()),
     stretchy_(NULL),
@@ -61,47 +61,16 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     openDialogOpen_(false) {
   setSize(600, 400);
 
-  startStopButton_.setButtonText(T("Play/Stop"));
-  startStopButton_.setColour(TextButton::buttonColourId, Colour(0xff79ed7f));
-
-  explanation_[0].setText("Playback speed (%)", false);
-  explanation_[1].setText("Semitone tune up or down", false);
-  explanation_[2].setText("Detune up or down (in cents)", false);
-
-  for (int i = 0; i < arraysize(explanation_); ++i) {
-    explanation_[i].setFont(Font(14.0000f, Font::plain));
-    explanation_[i].setJustificationType(Justification::bottomRight);
-    explanation_[i].setEditable(false, false, false);
-    explanation_[i].setColour(TextEditor::textColourId, Colours::black);
-    explanation_[i].setColour(TextEditor::backgroundColourId, Colour(0x0));
-    addAndMakeVisible(&(explanation_[i]));
-  }
-
-  playbackSpeedSlider_.setTooltip(T("Playback speed."));
-  playbackSpeedSlider_.setRange(5.0, 200.0, 1.0);
-  playbackSpeedSlider_.setSliderStyle(Slider::LinearHorizontal);
-  playbackSpeedSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
-  playbackSpeedSlider_.setValue(100.0);
-
-  pitchScaleSlider_.setTooltip(T("Semitone tune up or down."));
-  pitchScaleSlider_.setRange(-7.0, 7.0, 0.5);
-  pitchScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
-  pitchScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
-  pitchScaleSlider_.setValue(0.0);
-
-  fineScaleSlider_.setTooltip(T("Detune up or down (in cents)."));
-  fineScaleSlider_.setRange(-50.0, 50.0, 1.0);
-  fineScaleSlider_.setSliderStyle(Slider::LinearHorizontal);
-  fineScaleSlider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
-  fineScaleSlider_.setValue(1.0);
+  startStopButton_.setImages(gui::icon::MediaPlaybackStart::get(),
+                             NULL, NULL, NULL,
+                             gui::icon::MediaPlaybackStop::get());
+  startStopButton_.setClickingTogglesState(true);
 
   addAndMakeVisible(&waveform_);
   addAndMakeVisible(&startStopButton_);
   addAndMakeVisible(treeRoot_->treeView());
+  addAndMakeVisible(&stretchyController_);
 
-  addAndMakeVisible(&playbackSpeedSlider_);
-  addAndMakeVisible(&pitchScaleSlider_);
-  addAndMakeVisible(&fineScaleSlider_);
   addAndMakeVisible(&songTime_);
   addAndMakeVisible(&songDial_);
 
@@ -118,6 +87,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   timeLocker_->addListener(this);
 
   transportSource_->addListener(this);
+  transportSource_->changeBroadcaster()->addListener(this);
 
   addListener(&songDial_);
   addListener(&songTime_);
@@ -137,22 +107,12 @@ void MainPage::paint(Graphics& g) {
 
 void MainPage::resized() {
   waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
-  startStopButton_.setBounds(16, getHeight() - 66, 120, 32);
+  startStopButton_.setBounds(16, getHeight() - 66, 32, 32);
   treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
-
-  for (int i = 0; i < arraysize(explanation_); ++i)
-    explanation_[i].setBounds(255, getHeight() - 100 + (25 * i), 275, 32);
-
-  playbackSpeedSlider_.setBounds(150, getHeight() - 85, 200, 24);
-  pitchScaleSlider_.setBounds(150, getHeight() - 60, 200, 24);
-  fineScaleSlider_.setBounds(150, getHeight() - 35, 200, 24);
+  stretchyController_.setBounds(145, getHeight() - 90, getWidth() - 250, 85);
 
   songTime_.setBounds(getWidth() - 120, getHeight() - 70, 110, 22);
   songDial_.setBounds(getWidth() - 46, getHeight() - 46, 36, 36);
-}
-
-void MainPage::buttonClicked(Button* buttonThatWasClicked) {
-  transportSource_->toggle();
 }
 
 static const int BLOCKSIZE = 1024;
@@ -161,9 +121,7 @@ static const int SAMPLE_RATE = 44100.0f;
 void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
     file_ = file;
-    playbackSpeedSlider_.setData(NULL);
-    pitchScaleSlider_.setData(NULL);
-    fineScaleSlider_.setData(NULL);
+    stretchyController_.setData(NULL);
     timeLocker_->initialize(0);
     transportSource_->clear();
     cursor_->setTime(0.0f);
@@ -179,9 +137,7 @@ void MainPage::operator()(const VolumeFile& file) {
     if (dr->empty())
       return;
 
-    playbackSpeedSlider_.setData(stretchy_);
-    pitchScaleSlider_.setData(stretchy_);
-    fineScaleSlider_.setData(stretchy_);
+    stretchyController_.setData(stretchy_);
 
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);
@@ -234,6 +190,16 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
 void MainPage::operator()(float time) {
   if (stretchy_)
     broadcast(time / stretchy_->get().time_scale());
+}
+
+void MainPage::setButtonState() {
+  startStopButton_.setToggleState(transportSource_->isPlaying(), false);
+  startStopButton_.repaint();
+}
+
+
+void MainPage::operator()(const AudioTransportSourcePlayer& player) {
+  thread::callAsync(this, &MainPage::setButtonState);
 }
 
 }  // namespace slow

@@ -35,7 +35,7 @@ void Waveform::paint(Graphics& g) {
 
   } else {
     g.setFont(14.0f);
-    g.drawFittedText("Drop files here or click to open a new file",
+    g.drawFittedText("Drop files here or double-click to open a new file",
                      0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
   }
 }
@@ -96,7 +96,7 @@ void Waveform::layoutCursor(Cursor *cursor) {
   cursor->setBoundsAsync(bounds);
 }
 
-void Waveform::mouseUp(const juce::MouseEvent& e) {
+void Waveform::mouseDoubleClick(const juce::MouseEvent& e) {
   float time;
   {
     ScopedLock l(lock_);

@@ -8,8 +8,8 @@
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/audio/source/Stretchy.pb.h"
 #include "rec/data/persist/Copy.h"
-#include "rec/gui/SetterSlider.h"
 #include "rec/gui/DropTarget.h"
+#include "rec/gui/StretchyController.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/listener/SetterListener.h"
 #include "rec/util/thread/ChangeLocker.h"
@@ -24,6 +24,7 @@ using namespace juce;
 using namespace rec::audio::source;
 using namespace rec::audio;
 using namespace rec::gui;
+using namespace rec::slow::app;
 using namespace rec::util::thread;
 using namespace rec::widget::status::time;
 using namespace rec::widget::tree;
@@ -40,6 +41,7 @@ class MainPage : public Component,
                  public Listener<float>,
                  public Listener<const TimeAndMouseEvent&>,
                  public Listener<const VolumeFile&>,
+                 public Listener<const AudioTransportSourcePlayer&>,
                  public Broadcaster<float> {
  public:
   MainPage(AudioDeviceManager&);
@@ -49,7 +51,7 @@ class MainPage : public Component,
 
   void paint(Graphics&);
   void resized();
-  void buttonClicked(Button*);
+  void buttonClicked(Button*) { transportSource_->toggle(); }
 
   // Callback from someone clicking in the waveform.
   virtual void operator()(const TimeAndMouseEvent& timeMouse);
@@ -60,11 +62,15 @@ class MainPage : public Component,
   // Callback when we're ready to actually jump to that new time.
   virtual void operator()(const float& time);
 
+  // The player has started or stopped.
+  virtual void operator()(const AudioTransportSourcePlayer& player);
+
   virtual void operator()(const VolumeFile& file);
 
   void doOpen();
   void doClose();
   void clearTime();
+  void setButtonState();
 
   virtual bool keyPressed(const juce::KeyPress& kp) {
     if (kp.getTextCharacter() == ' ') {
@@ -80,14 +86,10 @@ class MainPage : public Component,
 
   thread_ptr<app::AudioTransportSourcePlayer> transportSource_;
   DropTarget<Waveform, WaveformProto> waveform_;
-  TextButton startStopButton_;
+  juce::DrawableButton startStopButton_;
   thread_ptr<Root> treeRoot_;
 
-  Label explanation_[3];
-
-  SetterSlider<StretchyProto> playbackSpeedSlider_;
-  SetterSlider<StretchyProto> pitchScaleSlider_;
-  SetterSlider<StretchyProto> fineScaleSlider_;
+  gui::StretchyController stretchyController_;
   TextComponent songTime_;
   DialComponent songDial_;
   Cursor* cursor_;

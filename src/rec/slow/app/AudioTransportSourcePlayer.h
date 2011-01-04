@@ -10,7 +10,8 @@ namespace app {
 class AudioTransportSourcePlayer
   : public Thread,
     public AudioTransportSource,
-    public listener::Broadcaster<float> {
+    public Broadcaster<float>,
+    public juce::ChangeListener {
  public:
   static const int THREAD_WAIT = 40;
 
@@ -26,10 +27,19 @@ class AudioTransportSourcePlayer
   void toggle() { setStart(!isPlaying()); }
   void setStart(bool isStart = true);
   void update();
+  Broadcaster<const AudioTransportSourcePlayer&>* changeBroadcaster() {
+    return &changeBroadcaster_;
+  }
+
+  virtual void changeListenerCallback(ChangeBroadcaster*) {
+    changeBroadcaster_.broadcast(*this);
+  }
+
 
  private:
   AudioSourcePlayer player_;
   AudioDeviceManager* deviceManager_;
+  Broadcaster<const AudioTransportSourcePlayer&> changeBroadcaster_;
 
   DISALLOW_COPY_AND_ASSIGN(AudioTransportSourcePlayer);
 };

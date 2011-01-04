@@ -4,7 +4,6 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/util/file/VolumeFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
-#include "rec/util/listener/DataListener.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
 
 namespace rec {
@@ -26,7 +25,7 @@ class Root : public Thread,
 
   virtual void operator()(const VolumeFile&);
   virtual void operator()(const file::VolumeFileList&);
-  virtual void mouseUp(const juce::MouseEvent& e);
+  virtual void mouseDoubleClick(const juce::MouseEvent& e);
   void doAdd();
 
  private:

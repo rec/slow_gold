@@ -5,6 +5,7 @@
 
 #include "rec/data/persist/AppInstance.h"
 #include "rec/util/thread/Trash.h"
+#include "rec/gui/icon/Icon.h"
 
 namespace rec {
 namespace slow {
@@ -29,9 +30,12 @@ class GenericApplication : public juce::JUCEApplication {
   }
 
   virtual void shutdown() {
+    LOG(INFO) << "Shutting down";
     util::thread::trash::waitForAllThreadsToExit(1000);
     persist::AppInstance::stop();
-    LOG(INFO) << "Shutting down " << getApplicationName();
+    // delete juce::MessageManager::getInstance();
+    gui::icon::deleteIcons();
+    LOG(INFO) << "Shut down finished.";
   }
 
   const String getApplicationName()    { return name_.c_str(); }

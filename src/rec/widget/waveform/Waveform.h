@@ -34,7 +34,7 @@ class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
   const TimeBounds getTimeBounds() const;
   virtual void operator()(const juce::AudioThumbnail&);
   virtual void paint(Graphics& g);
-  void mouseUp(const juce::MouseEvent& e);
+  void mouseDoubleClick(const juce::MouseEvent& e);
   virtual void repaint() { Component::repaint(); }
 
  private:

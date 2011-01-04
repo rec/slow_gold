@@ -1,34 +1,60 @@
 #ifndef __REC_GUI_SETTERSLIDER__
 #define __REC_GUI_SETTERSLIDER__
 
-#include "rec/util/listener/DataListener.h"
+#include "rec/gui/Layout.h"
+#include "rec/gui/Geometry.h"
+#include "rec/util/listener/AddressListener.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/Range.h"
 
 namespace rec {
 namespace gui {
 
 template <typename Proto>
-class SetterSlider : public juce::Slider, public DataListener<Proto> {
+class SetterSlider : public Layout, public AddressListener<Proto> {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
-  SetterSlider(const String& name, const Address& address)
-      : juce::Slider(name), DataListener<Proto>(address) {
+  SetterSlider(const String& name, const Address& address,
+               const String& caption = String::empty,
+               const String& tip = String::empty)
+      : Layout(Layout::HORIZONTAL, true, name),
+        AddressListener<Proto>(address), slider_(name), label_(caption) {
+    slider_.setSliderStyle(Slider::LinearHorizontal);
+    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 80, 20);
+
+    const String& cap = caption.length() ? caption : name;
+    slider_.setTooltip(tip.length() ? tip : cap);
+    label_.setText(cap, false);
+    addToLayout(&slider_, 100, -0.7, -0.7);
+    addToLayout(&label_, 100, -0.3, -0.3);
+    label_.setFont(Font(14.0000f, Font::plain));
+    label_.setJustificationType(juce::Justification::centredLeft);
+    label_.setEditable(false, false, false);
+    label_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
+    label_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
+  }
+
+  void setRange(double min, double max, double interval = 0) {
+    slider_.setRange(min, max, interval);
   }
 
   virtual void valueChanged() { this->onChange(); }
 
  protected:
   virtual const Value get() const {
-    return Slider::getValue();
+    return slider_.getValue();
   }
 
   virtual void set(const Value& value) {
     if (value.has_double_f())
-      callAsync(this, &juce::Slider::setValue, value.double_f(), false);
+      thread::callAsync(&slider_, &juce::Slider::setValue, value.double_f(), false);
   }
+
+  Slider slider_;
+  juce::Label label_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterSlider);

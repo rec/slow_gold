@@ -15,13 +15,14 @@ void TreeViewDropAll::operator()(const VolumeFile& f) {
 void TreeViewDropAll::paint(Graphics& g) {
   TreeView::paint(g);
 
- g.setFont(14.0f);
+  g.setFont(14.0f);
+
   static const int HEIGHT = 10;
   g.drawFittedText("Drop directories and files here, or",
                    0, 0, getWidth(), getHeight() - HEIGHT,
                    juce::Justification::centred, 0);
 
-  g.drawFittedText("click to add directories and files.",
+  g.drawFittedText("double-click to add directories and files.",
                    0, HEIGHT, getWidth(), getHeight(),
                    juce::Justification::centred, 0);
 }

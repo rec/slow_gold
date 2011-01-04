@@ -8,6 +8,7 @@ AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
 : Thread("AudioTransportSourcePlayer"), deviceManager_(dm) {
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(this);
+  addChangeListener(this);  // Listen to ourselves!
 }
 
 AudioTransportSourcePlayer::~AudioTransportSourcePlayer() {

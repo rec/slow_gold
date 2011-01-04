@@ -13,22 +13,13 @@ namespace listener {
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
  public:
-  typedef proto::arg::Address Address;
-  typedef proto::arg::Value Value;
   typedef persist::Data<Proto> Data;
 
-  explicit DataListener(const Address& address)
-      : address_(address), data_(NULL) {
-  }
+  DataListener() : data_(NULL) {}
 
-  ~DataListener() { setData(NULL); }
-
-  virtual void operator()(const Proto& message) {
-    set(proto::getValue(address_, message));
-  }
+  virtual ~DataListener() { setData(NULL); }
 
   Data* data() { return data_; }
-  const Address& address() const { return address_; }
 
   void setData(Data* data) {
     if (data_)
@@ -40,22 +31,11 @@ class DataListener : public Listener<const Proto&> {
       data_->addListener(this);
   }
 
- protected:
-  virtual void onChange() {
-    if (data_)
-      data_->set(address_, get());
-  }
-
-  virtual const Value get() const = 0;
-  virtual void set(const Value&) = 0;
-
  private:
-  const Address address_;
   Data* data_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(DataListener);
+  DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
-
 
 }  // namespace listener
 }  // namespace util

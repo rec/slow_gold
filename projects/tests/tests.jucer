@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="mOcGQZkJu" name="tests">
+  <MAINGROUP id="hgyAusxqe" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -189,6 +189,8 @@
               resource="0"/>
         <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="u3e867eLQ"
               name="scoped_array.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/Standard.h" id="xY1be553T"
+              name="Standard.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/string_piece.h" id="oCH6K8ie3"
               name="string_piece.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/types.h" id="yFDfi4dtp"
@@ -504,6 +506,14 @@
                 id="oqmn4Vizw" name="MediaOptical.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaOptical.svg.h"
                 id="icjiOZEgo" name="MediaOptical.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.cpp"
+                id="cHkBi2uhQ" name="MediaPlaybackStart.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.h"
+                id="Gbe6TBX6E" name="MediaPlaybackStart.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp"
+                id="Jqqb08Oql" name="MediaPlaybackStop.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.h"
+                id="FntBVkCZ9" name="MediaPlaybackStop.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/OpenFolder.svg.cpp"
                 id="4motCqz4o" name="OpenFolder.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/OpenFolder.svg.h" id="LNPCGbipx"
@@ -517,12 +527,18 @@
           <FILE compile="0" file="../../src/rec/gui/icon/ThinFolder.svg.h" id="hDGSqB9Gk"
                 name="ThinFolder.svg.h" resource="0"/>
         </GROUP>
+        <FILE compile="0" file="../../src/rec/gui/Layout.h" id="qdG78ZSvr"
+              name="Layout.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/RecentFiles.cpp" id="MMRTcAMfa"
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="GVwhlEC2q"
               name="RecentFiles.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterSlider.h" id="uQfr8LK9j"
               name="SetterSlider.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/StretchyController.cpp" id="oBnVLXjyj"
+              name="StretchyController.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/StretchyController.h" id="LxikXE5wP"
+              name="StretchyController.h" resource="0"/>
       </GROUP>
       <GROUP id="vrHU7SxTi" name="slow">
         <GROUP id="iYkm5tfnT" name="app">
@@ -642,6 +658,8 @@
                 name="VolumeFile.h" resource="0"/>
         </GROUP>
         <GROUP id="sU4e5LjIk" name="listener">
+          <FILE compile="0" file="../../src/rec/util/listener/AddressListener.h"
+                id="qneHqQ9Lu" name="AddressListener.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/ChangeBroadcaster.h"
                 id="cWImQuoWA" name="ChangeBroadcaster.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/DataListener.h"
@@ -891,7 +909,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2P1U0k1Xj" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ZwkmFJMoC" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
