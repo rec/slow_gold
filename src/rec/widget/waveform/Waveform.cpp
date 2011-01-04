@@ -96,13 +96,15 @@ void Waveform::layoutCursor(Cursor *cursor) {
   cursor->setBoundsAsync(bounds);
 }
 
-void Waveform::mouseDoubleClick(const juce::MouseEvent& e) {
-  float time;
+void Waveform::doClick(const juce::MouseEvent& e, int clickCount) {
+  TimeAndMouseEvent event;
+  event.mouseEvent_ = &e;
+  event.clickCount_ = clickCount;
   {
     ScopedLock l(lock_);
-    time = e.x * (range_.end_ - range_.begin_) / getWidth();
+    event.time_ = e.x * (range_.end_ - range_.begin_) / getWidth();
   }
-  const TimeAndMouseEvent event(time, &e);
+
   broadcast(event);
 }
 

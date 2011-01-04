@@ -32,6 +32,12 @@ Number abs(Number x) { return Math<Number>::abs(x); }
 template <typename Number>
 Number mod(Number p, Number q) { return Math<Number>::mod(p, q); }
 
+template <typename Number>
+Number near(Number x, Number y, Number diff) {
+  return Math<Number>::near(x, y, diff);
+}
+
+
 }  // namespace util
 }  // namespace rec
 

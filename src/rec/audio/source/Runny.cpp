@@ -69,9 +69,14 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
   position_ = mod(position_ + i.numSamples);
 }
 
-bool Runny::fill() {
+void Runny::fill() {
+  while (!(threadShouldExit() || isFull()))
+    fillOnce();
+}
+
+void Runny::fillOnce() {
   if (threadShouldExit())
-    return true;
+    return;
 
   AudioSourceChannelInfo info;
   info.buffer = &buffer_;
@@ -82,7 +87,7 @@ bool Runny::fill() {
   }
 
   if (!info.numSamples || threadShouldExit())
-    return true;  // No more to fill!
+    return;  // No more to fill!
 
 #if 0
   DLOG_EVERY_N(INFO, 64) << "* <- " << filled_.begin()
@@ -91,22 +96,19 @@ bool Runny::fill() {
 
   source()->prepareToPlay(desc_.chunk_size(), 44100);
 
-  if (threadShouldExit())
-    return true;
+  if (!threadShouldExit())
+    source()->getNextAudioBlock(info);
 
-  source()->getNextAudioBlock(info);
-
-  if (threadShouldExit())
-    return true;
-
-  ScopedLock l(lock_);
-  filled_.fill(info.numSamples);
-  return !filled_.remaining();
+  if (!threadShouldExit()) {
+    ScopedLock l(lock_);
+    filled_.fill(info.numSamples);
+  }
 }
 
 void Runny::run() {
-  while (!threadShouldExit()) {
-    if (fill() && !threadShouldExit())
+  while (!(threadShouldExit())) {
+    fill();
+    if (!threadShouldExit())
       wait(desc_.thread().period());
   }
 }

@@ -3,6 +3,7 @@
 #include "rec/audio/source/Stretchy.h"
 #include "rec/util/file/VolumeFile.h"
 #include "rec/util/ShouldExit.h"
+#include "rec/util/math.h"
 
 namespace rec {
 namespace audio {
@@ -23,10 +24,11 @@ int DoubleStretchyRunny::nextRunnyPosition() const {
 void DoubleStretchyRunny::setStretchy(const StretchyProto& desc) {
   DLOG(INFO) << "DoubleStretchyRunny::setStretchy";
 
+  double timeRatio = timeScale(desc);
   int position = 0;
   {
     ScopedLock l(lock_);
-    ratio_ *= (timeScale(desc) / timeScale(stretchyDesc_));
+    ratio_ *= (timeRatio / timeScale(stretchyDesc_));
 #if 0
     LOG(ERROR) << "Scale was " << desc.time_scale()
                << " scale is " << stretchyDesc_.time_scale()
@@ -36,18 +38,29 @@ void DoubleStretchyRunny::setStretchy(const StretchyProto& desc) {
     position = nextRunnyPosition();
   }
 
-  if (PositionableAudioSource* source = makeSource()) {
-    ptr<Runny> runny(new Runny(new Stretchy(source, desc), runnyDesc_));
-    runny->setNextReadPosition(position);
+  ptr<PositionableAudioSource> source(makeSource());
+  if (!source) {
+    LOG(ERROR) << "Couldn't make source";
+    return;
+  }
 
-    Thread* thread = Thread::getCurrentThread();
-    while (!shouldExit(thread)) {
-      if (runny->fill() && !shouldExit(thread)) {
-        runny->startThread();
-        set(runny.transfer());
-        return;
-      }
-    }
+  static const double DELTA = 0.00001;
+  if (!(desc.passthrough_when_disabled() &&
+        near(timeRatio, 1.0, DELTA) &&
+        near(pitchScale(desc), 1.0, DELTA))) {
+    source.reset(new Stretchy(source.transfer(), desc));
+  }
+
+  ptr<Runny> runny(new Runny(source.transfer(), runnyDesc_));
+  runny->setNextReadPosition(position);
+
+  Thread* thread = Thread::getCurrentThread();
+  while (!(shouldExit(thread) || runny->isFull()))
+    runny->fill();
+
+  if (!shouldExit(thread)) {
+    runny->startThread();
+    set(runny.transfer());
   }
 }
 

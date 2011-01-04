@@ -4,15 +4,12 @@
 // Constants and static functions for the mpg123 library.
 
 #include "rec/base/base.h"
-//#define __cplusplus
 #include "include/mpg123.h"
 
 namespace rec {
 namespace audio {
 namespace format {
 namespace mpg123 {
-
-
 
 typedef int Error;
 typedef long long int64;

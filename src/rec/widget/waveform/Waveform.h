@@ -14,7 +14,12 @@ namespace waveform {
 class Cursor;
 class CursorProto;
 
-typedef std::pair<float, const juce::MouseEvent*> TimeAndMouseEvent;
+struct TimeAndMouseEvent {
+  float time_;
+  const juce::MouseEvent* mouseEvent_;
+  int clickCount_;
+};
+
 typedef std::pair<float, float> TimeBounds;
 
 // This handles waveform display of a juce::AudioThumbnail.
@@ -34,10 +39,12 @@ class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
   const TimeBounds getTimeBounds() const;
   virtual void operator()(const juce::AudioThumbnail&);
   virtual void paint(Graphics& g);
-  void mouseDoubleClick(const juce::MouseEvent& e);
+  void mouseDoubleClick(const juce::MouseEvent& e) { doClick(e, 2); }
+  void mouseUp(const juce::MouseEvent& e) { doClick(e, 1); }
   virtual void repaint() { Component::repaint(); }
 
  private:
+  void doClick(const juce::MouseEvent& e, int clickCount);
   void layoutCursors();
 
   CriticalSection lock_;

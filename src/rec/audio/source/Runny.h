@@ -21,10 +21,14 @@ class Runny : public Thread, public Wrappy::Position {
   virtual void setNextReadPosition(int p);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
-  // Try to pre-fill the lookahead buffer.
-  // Return true when the buffer is full, false otherwise.
-  bool fill();
+  // Try to pre-fill the lookahead buffer one slot.
+  void fillOnce();
+
+  void fill();
+
   virtual void run();
+
+  bool isFull() const { return !filled_.remaining(); }
 
  private:
   AudioSampleBuffer buffer_;

@@ -194,10 +194,10 @@ void MainPage::doClose() {
 }
 
 void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
-  if (empty(file_))
+  if (timeMouse.clickCount_ > 1)
     thread::callAsync(this, &MainPage::doOpen);
   else
-    thread::callAsync(timeLocker_.get(), &TimeLocker::set, timeMouse.first);
+    thread::callAsync(timeLocker_.get(), &TimeLocker::set, timeMouse.time_);
 }
 
 void MainPage::operator()(float time) {
