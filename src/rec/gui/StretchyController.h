@@ -16,10 +16,10 @@ class StretchyController : public Layout {
 
   StretchyController()
       : Layout(Layout::VERTICAL, true, "StretchyController"),
-        playbackSpeed_("Playback Speed", Address("time_percent")),
-        pitchScale_("Semitone tune up or down", Address("semitone_shift")),
-        fineScale_("Detune up or down (in cents)", Address("detune_cents")) {
-    playbackSpeed_.slider()->setRange(5.0, 200.0, 1.0);
+        playbackSpeed_("Playback speed", Address("time_percent")),
+        pitchScale_("Transpose", Address("semitone_shift")),
+        fineScale_("Fine tuning", Address("detune_cents")) {
+    playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
     pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
     fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
 

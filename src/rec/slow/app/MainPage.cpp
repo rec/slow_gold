@@ -51,6 +51,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   : transportSource_(new app::AudioTransportSourcePlayer(&deviceManager)),
     waveform_(WaveformProto()),
     startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
+    disableButton_("Disable pitch/time shift"),
     treeRoot_(new Root(NodeDesc())),
     songTime_(Text()),
     songDial_(realTimeDial()),
@@ -67,6 +68,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   startStopButton_.setClickingTogglesState(true);
 
   addAndMakeVisible(&waveform_);
+  addAndMakeVisible(&disableButton_);
   addAndMakeVisible(&startStopButton_);
   addAndMakeVisible(treeRoot_->treeView());
   addAndMakeVisible(&stretchyController_);
@@ -77,6 +79,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
   startStopButton_.addListener(this);
+  disableButton_.addListener(this);
   waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
   waveform_.dropBroadcaster()->addListener(&fileListener_);
@@ -105,11 +108,21 @@ void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
 }
 
+void MainPage::buttonClicked(juce::Button *button) {
+  if (button == &startStopButton_)
+    transportSource_->toggle();
+  else if (stretchy_)
+    stretchy_->set("disabled", button->getToggleState());
+
+  // TODO: this button should be its own listener.
+}
+
 void MainPage::resized() {
   waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
-  startStopButton_.setBounds(16, getHeight() - 66, 32, 32);
+  startStopButton_.setBounds(16, getHeight() - 90, 42, 42);
+  disableButton_.setBounds(16, getHeight() - 36, 150, 20);
   treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
-  stretchyController_.setBounds(145, getHeight() - 90, getWidth() - 250, 85);
+  stretchyController_.setBounds(200, getHeight() - 90, getWidth() - 250, 85);
 
   songTime_.setBounds(getWidth() - 120, getHeight() - 70, 110, 22);
   songDial_.setBounds(getWidth() - 46, getHeight() - 46, 36, 36);

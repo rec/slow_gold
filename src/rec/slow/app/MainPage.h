@@ -51,7 +51,7 @@ class MainPage : public Component,
 
   void paint(Graphics&);
   void resized();
-  void buttonClicked(Button*) { transportSource_->toggle(); }
+  void buttonClicked(Button*);
 
   // Callback from someone clicking in the waveform.
   virtual void operator()(const TimeAndMouseEvent& timeMouse);
@@ -87,6 +87,7 @@ class MainPage : public Component,
   thread_ptr<app::AudioTransportSourcePlayer> transportSource_;
   DropTarget<Waveform, WaveformProto> waveform_;
   juce::DrawableButton startStopButton_;
+  juce::ToggleButton disableButton_;
   thread_ptr<Root> treeRoot_;
 
   gui::StretchyController stretchyController_;
@@ -112,5 +113,3 @@ class MainPage : public Component,
 
 
 #endif   // __REC_COMPONENT_MAIN_PAGE_J_H__
-
-

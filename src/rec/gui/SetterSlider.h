@@ -11,7 +11,9 @@ namespace rec {
 namespace gui {
 
 template <typename Proto>
-class SetterSlider : public Layout, public AddressListener<Proto> {
+class SetterSlider : public Layout,
+                     public AddressListener<Proto>,
+                     public juce::Slider::Listener {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
@@ -27,19 +29,22 @@ class SetterSlider : public Layout, public AddressListener<Proto> {
 
     const String& cap = caption.length() ? caption : name;
     slider_.setTooltip(tip.length() ? tip : cap);
+    slider_.addListener(this);
+
     label_.setText(cap, false);
-    addToLayout(&slider_, 100, -0.6, -0.6);
-    addToLayout(&label_, 100, -0.4, -0.4);
     label_.setFont(Font(14.0000f, Font::plain));
-    label_.setJustificationType(juce::Justification::centredLeft);
+    label_.setJustificationType(juce::Justification::centredRight);
     label_.setEditable(false, false, false);
     label_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
     label_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
+
+    addToLayout(&label_, 100, -0.3, -0.3);
+    addToLayout(&slider_, 100, -0.7, -0.7);
   }
 
   Slider* slider() { return &slider_; }
 
-  virtual void valueChanged() { this->onChange(); }
+  virtual void sliderValueChanged (Slider* slider) { this->onChange(); }
 
  protected:
   virtual const Value get() const {

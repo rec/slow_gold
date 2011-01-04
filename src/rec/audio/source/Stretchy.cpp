@@ -81,10 +81,12 @@ int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
 }
 
 double timeScale(const StretchyProto& d) {
-  return d.time_scale() * (100.0 / d.time_percent());
+  return d.disabled() ? 1.0 : (d.time_scale() * (100.0 / d.time_percent()));
 }
 
 double pitchScale(const StretchyProto& d) {
+  if (d.disabled())
+    return 1.0;
   double detune = d.detune_cents() / 100.0 + d.semitone_shift() / 12.0;
   return d.pitch_scale() * pow(2.0, detune);
 }
