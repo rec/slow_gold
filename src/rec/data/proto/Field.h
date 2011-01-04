@@ -23,6 +23,7 @@ class Field {
  public:
   static Operation* apply(const Operation &op, Message* message);
   static Value getValue(const Address& address, const Message& msg);
+  static bool hasValue(const Address& address, const Message& msg);
 
   explicit Field(Message* message)
       : message_(message),
@@ -43,6 +44,8 @@ class Field {
     SINGLE = 2,
     TYPE_COUNT = 3,
   };
+
+  bool hasValue() const;
 
   bool addRepeated();
   bool removeRepeated();

@@ -61,7 +61,6 @@ RecWindow::~RecWindow() {
   setContentComponent(NULL, false);
 }
 
-
 void RecWindow::resized() {
   writeData();
   DocumentWindow::resized();

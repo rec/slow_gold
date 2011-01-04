@@ -12,6 +12,8 @@ class App;
 class AppInstance;
 
 typedef proto::arg::Setter Setter;
+typedef proto::arg::Value Value;
+typedef proto::arg::Address Address;
 
 class UntypedData : public Setter {
  public:
@@ -25,6 +27,9 @@ class UntypedData : public Setter {
   // Request an update to this data in a different thread.
   void requestUpdate();
   bool fileReadSuccess() const { return fileReadSuccess_; }
+
+  virtual const Value get(const Address& address) const;
+  virtual bool has(const Address& address) const;
 
  protected:
   friend class AppInstance;

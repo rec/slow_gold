@@ -20,8 +20,12 @@ Operation* Field::apply(const Operation &op, Message* message) {
   return field.apply(op);
 }
 
+bool Field::hasValue() const {
+  return message_->GetReflection()->HasField(*message_, field_);
+}
+
 Value Field::getValue(const Address& address, const Message& msg) {
-  Field field((Message*) &msg);  // CONSTNESS!
+  Field field(const_cast<Message*>(&msg));
   for (int i = 0; i < address.field_size(); ++i) {
     if (!field.dereference(address.field(i)))
       return Value();
@@ -30,6 +34,15 @@ Value Field::getValue(const Address& address, const Message& msg) {
   Value value;
   field.copyTo(&value);
   return value;
+}
+
+bool Field::hasValue(const Address& address, const Message& msg) {
+  Field field(const_cast<Message*>(&msg));
+  for (int i = 0; i < address.field_size(); ++i) {
+    if (!field.dereference(address.field(i)))
+      return false;
+  }
+  return field.hasValue();
 }
 
 bool Field::dereference(const proto::Address::Field& afield) {
@@ -189,8 +202,7 @@ bool Field::setSingle() {
     return false;
   }
 
-  if (!field_ || type_ == INDEXED ||
-      message_->GetReflection()->HasField(*message_, field_))
+  if (!field_ || type_ == INDEXED || hasValue())
     copyTo(undo_->add_value());
   else
     undo_->set_command(Operation::CLEAR);

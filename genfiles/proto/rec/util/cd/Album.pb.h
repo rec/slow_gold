@@ -164,6 +164,13 @@ class Metadata : public ::google::protobuf::Message {
   inline void set_track_number(const char* value, size_t size);
   inline ::std::string* mutable_track_number();
   
+  // optional uint64 track_length = 8;
+  inline bool has_track_length() const;
+  inline void clear_track_length();
+  static const int kTrackLengthFieldNumber = 8;
+  inline ::google::protobuf::uint64 track_length() const;
+  inline void set_track_length(::google::protobuf::uint64 value);
+  
   // @@protoc_insertion_point(class_scope:rec.util.cd.Metadata)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -183,11 +190,12 @@ class Metadata : public ::google::protobuf::Message {
   static const ::std::string _default_artist_;
   ::std::string* track_number_;
   static const ::std::string _default_track_number_;
+  ::google::protobuf::uint64 track_length_;
   friend void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fcd_2fAlbum_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -698,6 +706,22 @@ inline ::std::string* Metadata::mutable_track_number() {
     track_number_ = new ::std::string;
   }
   return track_number_;
+}
+
+// optional uint64 track_length = 8;
+inline bool Metadata::has_track_length() const {
+  return _has_bit(7);
+}
+inline void Metadata::clear_track_length() {
+  track_length_ = GOOGLE_ULONGLONG(0);
+  _clear_bit(7);
+}
+inline ::google::protobuf::uint64 Metadata::track_length() const {
+  return track_length_;
+}
+inline void Metadata::set_track_length(::google::protobuf::uint64 value) {
+  _set_bit(7);
+  track_length_ = value;
 }
 
 // -------------------------------------------------------------------

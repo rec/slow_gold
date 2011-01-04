@@ -6,11 +6,18 @@
 #include "rec/util/STL.h"
 #include "rec/data/proto/Setter.h"
 
-
 namespace rec {
 namespace persist {
 
 using rec::proto::Operation;
+
+bool UntypedData::has(const Address& address) const {
+  return hasValue(address, *message_);
+}
+
+const Value UntypedData::get(const Address& address) const {
+  return getValue(address, *message_);
+}
 
 UntypedData::UntypedData(const File& file, Message* message, App* app)
     : file_(new File(file)),

@@ -158,6 +158,8 @@ void MainPage::operator()(const VolumeFile& file) {
 
     stretchyController_.setData(stretchy_);
     disableButton_.setData(stretchy_);
+    thread::callAsync(&stretchyController_, &Component::setEnabled,
+                      !stretchy_->get().disabled());
 
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);

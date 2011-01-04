@@ -12,5 +12,9 @@ Value getValue(const Address& address, const Message& msg) {
   return Field::getValue(address, msg);
 }
 
+bool hasValue(const Address& address, const Message& msg) {
+  return Field::hasValue(address, msg);
+}
+
 }  // namespace proto
 }  // namespace rec

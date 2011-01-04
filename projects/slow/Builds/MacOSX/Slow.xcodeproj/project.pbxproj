@@ -69,7 +69,6 @@
 		6EE7AB0829C2C2638EDB398F /* AudioResampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE1063E506CE5C5210226389 /* AudioResampler.cpp */; };
 		7001EB3EA2FBA0EB3B4928F7 /* Convertors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3095941488411CA120D4BE7 /* Convertors.cpp */; };
 		752CA61E22F468FA163B7D19 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95A353F3CAC7E1B0000A0E98 /* scanner.cpp */; };
-		7584CF9A31E15C433EE8076C /* StretchyController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */; };
 		75BD85D0F7112C06B557C6AF /* emitterutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDC50620E5F86319AD56FA /* emitterutils.cpp */; };
 		775F2F086020331850714C6E /* LogFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F08D4E271CD79A7F211E844 /* LogFile.cpp */; };
 		7A4960341F02ACDBF630C65F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05EBBE6ECD75008F41ECB8AB /* Carbon.framework */; };
@@ -429,7 +428,6 @@
 		B3C76C331E15AE715D760846 /* conversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conversion.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/conversion.h"; sourceTree = SOURCE_ROOT; };
 		B4B5D54B9F55AC57A478F045 /* AudioInputMicrophone.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioInputMicrophone.svg.h; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.h; sourceTree = SOURCE_ROOT; };
 		B4BAA3AF3CCE701D8958E78B /* LogFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LogFile.h; path = ../../../../src/rec/data/proto/LogFile.h; sourceTree = SOURCE_ROOT; };
-		B4BC50DAF35370323BE4A74A /* StretchyController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StretchyController.cpp; path = ../../../../src/rec/gui/StretchyController.cpp; sourceTree = SOURCE_ROOT; };
 		B54F45E4D165529595DDAB5C /* SetterToggle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterToggle.h; path = ../../../../src/rec/gui/SetterToggle.h; sourceTree = SOURCE_ROOT; };
 		B5AE3FEEEB1792709D630FB7 /* content.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = content.cpp; path = ../../../../src/rec/data/yaml/src/content.cpp; sourceTree = SOURCE_ROOT; };
 		B60B5B0B4126E0194BD469E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -688,6 +686,20 @@
 				001F75315906945159C85224 /* VolumeFile.h */,
 			);
 			name = file;
+			sourceTree = "<group>";
+		};
+		27FC5FE87D75883E78FE4B7B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		2CA4CEC7799F5D0A577935BE /* base */ = {
@@ -1109,7 +1121,6 @@
 				182478B8E788D09B2EEFA6EC /* RecentFiles.h */,
 				F14164686ED978124289D67F /* SetterSlider.h */,
 				B54F45E4D165529595DDAB5C /* SetterToggle.h */,
-				B4BC50DAF35370323BE4A74A /* StretchyController.cpp */,
 				A01B3007C9A345ECA165750F /* StretchyController.h */,
 			);
 			name = gui;
@@ -1154,20 +1165,6 @@
 				0E5561BA8F7A19892CFB3AED /* widget */,
 			);
 			name = rec;
-			sourceTree = "<group>";
-		};
-		C31B686D07485D760AA1A7C2 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		C538D90412B6270966BA1C60 /* tree */ = {
@@ -1415,7 +1412,7 @@
 				French,
 				German,
 			);
-			mainGroup = C31B686D07485D760AA1A7C2 /* Source */;
+			mainGroup = 27FC5FE87D75883E78FE4B7B /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1520,7 +1517,6 @@
 				5CB9E7A23208EA8357897F51 /* ThickFolder.svg.cpp in Sources */,
 				D4E81B2C18D947D6A8A83BDF /* ThinFolder.svg.cpp in Sources */,
 				A449A75BAE696198F89C5828 /* RecentFiles.cpp in Sources */,
-				7584CF9A31E15C433EE8076C /* StretchyController.cpp in Sources */,
 				EEAB7A4744C5D3105F982B69 /* AudioTransportSourcePlayer.cpp in Sources */,
 				1E4D1253D97D0CC626CDD5D9 /* ComponentContainer.cpp in Sources */,
 				DCEB49B4AD7AF16EFC1036C6 /* MainPage.cpp in Sources */,

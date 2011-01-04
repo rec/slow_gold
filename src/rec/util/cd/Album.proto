@@ -8,6 +8,7 @@ message Metadata {
   optional string album_title = 5;
   optional string artist = 6;
   optional string track_number = 7;
+  optional uint64 track_length = 8;  // in samples.
 };
 
 message Album {
