@@ -45,7 +45,6 @@
 		275FC2CB4F625481F9949BD4 /* Field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8E3EC7207D969A2B202662D /* Field.cpp */; };
 		276E55523C5A1CC9CE4A6324 /* MergeBlockSet_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62FE3729520998304E4B05FB /* MergeBlockSet_test.cpp */; };
 		28148A17687ABF20F246785F /* Panes.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = E73EBBD9EF8D94598E4A9B7E /* Panes.pb.cc */; };
-		2822CC922692043D01760BEF /* StretchyController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775A4DE3E804282C1E73ACCE /* StretchyController.cpp */; };
 		2980782F0530001C83CB0725 /* Copier_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C8D909180859CEF7210E311 /* Copier_test.cpp */; };
 		2B5AD116F7AA830B10FA808C /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25D21237DBCD70A56C17866D /* NewHandle.cpp */; };
 		2F0FC50D060CB6D2A2718BCD /* sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E686CF6F29AE56A42D0CB12 /* sequence.cpp */; };
@@ -167,6 +166,7 @@
 		E126D8D5EF294B2AF3DE83F6 /* emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB0BCB1EE0C28230FB4E39 /* emitter.cpp */; };
 		E2B363FBB7B42859CABFB838 /* StripLines_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 008AD80E3040443C031D32BB /* StripLines_test.cpp */; };
 		E42534BA912A085B871A3CBF /* ReadYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85EF74DB6155D961C98F75C0 /* ReadYaml.cpp */; };
+		EB9901A2EB10711A57DEA7E5 /* Value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD49B7C2B51DA64F895DEF5 /* Value.cpp */; };
 		EC4EB9FFACB5FF6303173EC4 /* stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B66FA43BEC82099194C54D8 /* stream.cpp */; };
 		ED4397EE973B01B63A66FFA5 /* JuceLibraryCode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 93BF2BCB183C30ABB83AB74A /* JuceLibraryCode.mm */; };
 		EEC79FB951F00A40E06DAC11 /* TreeViewDropAll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552AC06AE698C668E6993B1 /* TreeViewDropAll.cpp */; };
@@ -361,7 +361,6 @@
 		7665593C03C6666B30051DC9 /* conversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = conversion.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/conversion.h"; sourceTree = SOURCE_ROOT; };
 		768EC2DF717E243EA4656ED3 /* ostream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ostream.cpp; path = ../../../../src/rec/data/yaml/src/ostream.cpp; sourceTree = SOURCE_ROOT; };
 		7758A0B8218028F75CE7FB0F /* LogFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LogFile.h; path = ../../../../src/rec/data/proto/LogFile.h; sourceTree = SOURCE_ROOT; };
-		775A4DE3E804282C1E73ACCE /* StretchyController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StretchyController.cpp; path = ../../../../src/rec/gui/StretchyController.cpp; sourceTree = SOURCE_ROOT; };
 		77E6E021181A49C3C8422E7C /* TreeViewDropAll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TreeViewDropAll.h; path = ../../../../src/rec/widget/tree/TreeViewDropAll.h; sourceTree = SOURCE_ROOT; };
 		7854C144841654317717F4C9 /* AudioInputMicrophone.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioInputMicrophone.svg.h; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.h; sourceTree = SOURCE_ROOT; };
 		78B1151C9410885C5861B30D /* regex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = regex.cpp; path = ../../../../src/rec/data/yaml/src/regex.cpp; sourceTree = SOURCE_ROOT; };
@@ -480,6 +479,7 @@
 		BEB9FD574F7FE6A80C5A9C08 /* CallAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CallAsync.h; path = ../../../../src/rec/util/thread/CallAsync.h; sourceTree = SOURCE_ROOT; };
 		BF8F3C95A63DF07EE9652B34 /* TimeScaler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeScaler.h; path = ../../../../src/rec/audio/source/TimeScaler.h; sourceTree = SOURCE_ROOT; };
 		BF9EF8CFCCC5B80E9D67A369 /* MergeBlockSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet.cpp; path = ../../../../src/rec/util/block/MergeBlockSet.cpp; sourceTree = SOURCE_ROOT; };
+		BFD49B7C2B51DA64F895DEF5 /* Value.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.cpp; path = ../../../../src/rec/data/proto/Value.cpp; sourceTree = SOURCE_ROOT; };
 		BFF9FF1ED2055D7202DA9EAD /* Status.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.pb.h; path = ../../../../genfiles/proto/rec/widget/status/Status.pb.h; sourceTree = SOURCE_ROOT; };
 		C0158D487E08617AB044E246 /* CDDBResponse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CDDBResponse.cpp; path = ../../../../src/rec/util/cd/CDDBResponse.cpp; sourceTree = SOURCE_ROOT; };
 		C080DD5589A0EB2E1F7A2972 /* MediaPlaybackStop.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaPlaybackStop.svg.h; path = ../../../../src/rec/gui/icon/MediaPlaybackStop.svg.h; sourceTree = SOURCE_ROOT; };
@@ -816,7 +816,6 @@
 				DBC264B1DC398875017EAB6F /* RecentFiles.h */,
 				B4EF5171439A200C1517DAF3 /* SetterSlider.h */,
 				79EE32FDB6260A8F696CAFD0 /* SetterToggle.h */,
-				775A4DE3E804282C1E73ACCE /* StretchyController.cpp */,
 				64B92D0FBE54FDC675F47983 /* StretchyController.h */,
 			);
 			name = gui;
@@ -982,24 +981,11 @@
 				260490D9CBF4AB3AD2E0EDA7 /* TypedTyper.h */,
 				9DF47A2A41F9534AC7E2EBC9 /* Typer.h */,
 				E0CE3F2FD4A1456EFC505BB4 /* Types.h */,
+				BFD49B7C2B51DA64F895DEF5 /* Value.cpp */,
 				BB86330699CDB2AF4B7D065C /* Value.h */,
 				36030E2677CB748C530F0E17 /* ZeroCopy.h */,
 			);
 			name = proto;
-			sourceTree = "<group>";
-		};
-		85CCCE8E2085A5AF6E451E10 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		865617D983052FBE0ADDDEDF /* widget */ = {
@@ -1326,6 +1312,20 @@
 			name = source;
 			sourceTree = "<group>";
 		};
+		E26D308944A329654F502A9D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		E812E8C193A90FB1A45D026F /* slow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1476,7 +1476,7 @@
 				French,
 				German,
 			);
-			mainGroup = 85CCCE8E2085A5AF6E451E10 /* Source */;
+			mainGroup = E26D308944A329654F502A9D /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1543,6 +1543,7 @@
 				F73FC1E84C01AB16AECF174B /* Setter.cpp in Sources */,
 				682FEA626B4F5833D5883CCB /* TypedOperations.cpp in Sources */,
 				840D843C938CC5C3A12579BB /* TypedTyper.cpp in Sources */,
+				EB9901A2EB10711A57DEA7E5 /* Value.cpp in Sources */,
 				E42534BA912A085B871A3CBF /* ReadYaml.cpp in Sources */,
 				9493D6E82AC776F57553EA07 /* aliascontent.cpp in Sources */,
 				0BDA969D031D960741E4EE1D /* aliasmanager.cpp in Sources */,
@@ -1591,7 +1592,6 @@
 				1F57D4AA27B9926D2A1873E5 /* ThickFolder.svg.cpp in Sources */,
 				97861735FC9AFFB07B374F53 /* ThinFolder.svg.cpp in Sources */,
 				67E7A454832A2972CB3A6CAC /* RecentFiles.cpp in Sources */,
-				2822CC922692043D01760BEF /* StretchyController.cpp in Sources */,
 				A149774028769B0A22373FED /* AudioTransportSourcePlayer.cpp in Sources */,
 				D1EB0F5CCE3EB4A0F95CE95D /* ComponentContainer.cpp in Sources */,
 				808935CD822BA948CFAF4A49 /* MainPage.cpp in Sources */,

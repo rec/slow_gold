@@ -7,6 +7,9 @@
 
 namespace rec {
 namespace proto {
+
+String toString(const Value& value);
+
 namespace arg {
 
 class Value : public proto::Value {

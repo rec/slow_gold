@@ -30,6 +30,7 @@
 		3491D4EF6750E33BDB2003C8 /* Setter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB6457CC72AF09C1E1CB5733 /* Setter.cpp */; };
 		35DB68C3E4EDD8FA27FC6C11 /* AudioFormatManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 298C82B77DFC683CC4CB26F5 /* AudioFormatManager.cpp */; };
 		363D79B5ADAA58C67379104E /* Widget.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 23A34552B919AAB64559DBDA /* Widget.pb.cc */; };
+		38FB14A9066FB930844FA261 /* Value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC369E7336A0228A2506CA71 /* Value.cpp */; };
 		39DFE93A7597923AEFEF928B /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC41A67CC51223ACB7177017 /* Time.cpp */; };
 		3B29A2A06C3F52661DDE989D /* TreeViewDropAll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1B4BFFDC9B8D47CBBDA8F3D /* TreeViewDropAll.cpp */; };
 		3E1585E18CA841ABDEA615E1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A53E782643CFF470BDFD07 /* Cocoa.framework */; };
@@ -543,6 +544,7 @@
 		FBCFD0675ABD69C723DDDBBF /* AudioTimeScaler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioTimeScaler.h; path = ../../../../src/rec/audio/ammf_scaler/AudioTimeScaler.h; sourceTree = SOURCE_ROOT; };
 		FBE89CB20CB80EA5845D84ED /* Setter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Setter.h; path = ../../../../src/rec/data/proto/Setter.h; sourceTree = SOURCE_ROOT; };
 		FBF00CC6D7140024CAD8AFE6 /* MergeBlockSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet.cpp; path = ../../../../src/rec/util/block/MergeBlockSet.cpp; sourceTree = SOURCE_ROOT; };
+		FC369E7336A0228A2506CA71 /* Value.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.cpp; path = ../../../../src/rec/data/proto/Value.cpp; sourceTree = SOURCE_ROOT; };
 		FC5BF215ED5495983F4B9A29 /* Status.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.pb.h; path = ../../../../genfiles/proto/rec/widget/status/Status.pb.h; sourceTree = SOURCE_ROOT; };
 		FD227E4F5EFA6DD53CE22B76 /* Range.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Range.h; path = ../../../../src/rec/util/Range.h; sourceTree = SOURCE_ROOT; };
 		FD48E942DCF34E501D534EE3 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = ../../../../src/rec/gui/Color.cpp; sourceTree = SOURCE_ROOT; };
@@ -572,6 +574,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		028C3EAB6C51AC9A3E07F4BA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		0E5561BA8F7A19892CFB3AED /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,20 +702,6 @@
 				001F75315906945159C85224 /* VolumeFile.h */,
 			);
 			name = file;
-			sourceTree = "<group>";
-		};
-		27FC5FE87D75883E78FE4B7B /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		2CA4CEC7799F5D0A577935BE /* base */ = {
@@ -976,6 +978,7 @@
 				6266A3C0E643F3500F52D823 /* TypedTyper.h */,
 				DA567D215C489B60F454D735 /* Typer.h */,
 				2D204227EFF09D7429C25730 /* Types.h */,
+				FC369E7336A0228A2506CA71 /* Value.cpp */,
 				F8E7460EB41C0AB478EE02D8 /* Value.h */,
 				8365111D9219CCA28070F994 /* ZeroCopy.h */,
 			);
@@ -1412,7 +1415,7 @@
 				French,
 				German,
 			);
-			mainGroup = 27FC5FE87D75883E78FE4B7B /* Source */;
+			mainGroup = 028C3EAB6C51AC9A3E07F4BA /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1470,6 +1473,7 @@
 				3491D4EF6750E33BDB2003C8 /* Setter.cpp in Sources */,
 				B481FE69869D9059F2F92847 /* TypedOperations.cpp in Sources */,
 				C16F9723AEDB0DD9CE967537 /* TypedTyper.cpp in Sources */,
+				38FB14A9066FB930844FA261 /* Value.cpp in Sources */,
 				218748B1BC795061B48B383C /* ReadYaml.cpp in Sources */,
 				D1F5D9EF3506BE0BA2C4E683 /* aliascontent.cpp in Sources */,
 				473CA9951E5CEE2D7E55DA99 /* aliasmanager.cpp in Sources */,
