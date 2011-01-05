@@ -5,7 +5,6 @@
 
 namespace rec {
 namespace slow {
-namespace app {
 
 class AudioTransportSourcePlayer
   : public Thread,
@@ -35,7 +34,6 @@ class AudioTransportSourcePlayer
     changeBroadcaster_.broadcast(*this);
   }
 
-
  private:
   AudioSourcePlayer player_;
   AudioDeviceManager* deviceManager_;
@@ -44,7 +42,6 @@ class AudioTransportSourcePlayer
   DISALLOW_COPY_AND_ASSIGN(AudioTransportSourcePlayer);
 };
 
-}  // namespace app
 }  // namespace slow
 }  // namespace rec
 

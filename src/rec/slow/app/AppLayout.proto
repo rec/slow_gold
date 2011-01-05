@@ -1,0 +1,11 @@
+package rec.slow.app;
+
+import "rec/gui/Geometry.proto";
+
+message AppLayout {
+  optional gui.Rectangle rectangle = 1;
+  optional uint32 directory_height = 2;
+  optional uint32 waveform_height = 3;
+  optional uint32 controls_height = 4;
+  optional uint32 loops_width = 5;
+};

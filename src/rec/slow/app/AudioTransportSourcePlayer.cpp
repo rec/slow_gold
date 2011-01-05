@@ -2,7 +2,6 @@
 
 namespace rec {
 namespace slow {
-namespace app {
 
 AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
 : Thread("AudioTransportSourcePlayer"), deviceManager_(dm) {
@@ -50,6 +49,5 @@ void AudioTransportSourcePlayer::run() {
   }
 }
 
-}  // namespace app
 }  // namespace slow
 }  // namespace rec

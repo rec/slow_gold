@@ -7,18 +7,8 @@
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.h"
-#include "rec/gui/icon/MediaPlaybackStart.svg.h"
-#include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/Util.h"
-#include "rec/util/thread/MakeThread.h"
-#include "rec/util/thread/Trash.h"
-
-using rec::gui::Colors;
-using rec::widget::status::time::Dial;
-using rec::widget::status::time::DialComponent;
-using rec::widget::status::time::Text;
-using rec::widget::status::time::TextComponent;
 
 using namespace juce;
 
@@ -27,58 +17,32 @@ using namespace rec::proto::arg;
 using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
 
-
 namespace rec {
 namespace slow {
 
-namespace {
-
-Dial realTimeDial() {
-  Dial dial;
-  Colors* colors = dial.mutable_widget()->mutable_colors();
-  colors->add_color()->set_argb(Colours::white.getARGB());
-  colors->add_color()->set_argb(Colours::green.getARGB());
-  colors->add_color()->set_argb(Colours::red.getARGB());
-
-  return dial;
-}
-
 static const int CHANGE_LOCKER_WAIT = 100;
 
-}  // namespace
-
 MainPage::MainPage(AudioDeviceManager& deviceManager)
-  : transportSource_(new app::AudioTransportSourcePlayer(&deviceManager)),
-    waveform_(WaveformProto()),
-    startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
-    disableButton_("Disable pitch/time shift", Address("disabled")),
-    treeRoot_(new Root(NodeDesc())),
-    songTime_(Text()),
-    songDial_(realTimeDial()),
-    stretchy_(NULL),
-    timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
-    fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
-    fileListener_(persist::data<VolumeFile>()),
-    openDialogOpen_(false) {
+    : Layout(Layout::VERTICAL, true, "MainPage"),
+      transportSource_(new AudioTransportSourcePlayer(&deviceManager)),
+      treeRoot_(new Root(NodeDesc())),
+      bar_(&layoutManager_, 1, false),
+      waveform_(WaveformProto()),
+      controller_(transportSource_.get()),
+      stretchy_(NULL),
+      timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
+      fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
+      fileListener_(persist::data<VolumeFile>()),
+      openDialogOpen_(false) {
   setSize(600, 400);
 
-  startStopButton_.setImages(gui::icon::MediaPlaybackStart::get(),
-                             NULL, NULL, NULL,
-                             gui::icon::MediaPlaybackStop::get());
-  startStopButton_.setClickingTogglesState(true);
-
-  addAndMakeVisible(&waveform_);
-  addAndMakeVisible(&disableButton_);
-  addAndMakeVisible(&startStopButton_);
-  addAndMakeVisible(treeRoot_->treeView());
-  addAndMakeVisible(&stretchyController_);
-
-  addAndMakeVisible(&songTime_);
-  addAndMakeVisible(&songDial_);
+  addToLayout(treeRoot_->treeView(), 50, -1.0, -0.4);
+  addToLayout(&bar_, 8, 8, 8);
+  addToLayout(&waveform_, 50, -1.0, -0.4);
+  addToLayout(&controller_, 100, 100, 100);
 
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
-  startStopButton_.addListener(this);
   waveform_.addListener(this);
   treeRoot_->addListener(&fileListener_);
   waveform_.dropBroadcaster()->addListener(&fileListener_);
@@ -88,14 +52,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   fileLocker_->addListener(this);
   timeLocker_->addListener(this);
 
-  transportSource_->addListener(this);
-  transportSource_->changeBroadcaster()->addListener(this);
-
-  disableButton_.addListener(this);
-
-  addListener(&songDial_);
-  addListener(&songTime_);
-  addListener(cursor_);
+  transportSource_->addListener(cursor_);
 
   fileLocker_->startThread();
   timeLocker_->startThread();
@@ -113,34 +70,20 @@ MainPage::~MainPage() {
 void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
 }
-
-void MainPage::buttonClicked(juce::Button *button) {
-  if (button == &startStopButton_)
-    transportSource_->toggle();
-
-  else if (button == &disableButton_)
-    stretchyController_.setEnabled(!disableButton_.getToggleState());
-}
-
+#if 0
 void MainPage::resized() {
   waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
-  startStopButton_.setBounds(16, getHeight() - 90, 42, 42);
-  disableButton_.setBounds(16, getHeight() - 36, 150, 20);
   treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
-  stretchyController_.setBounds(200, getHeight() - 90, getWidth() - 250, 85);
-
-  songTime_.setBounds(getWidth() - 120, getHeight() - 70, 110, 22);
-  songDial_.setBounds(getWidth() - 46, getHeight() - 46, 36, 36);
+  controller_.setBounds(16, getHeight() - 102, getWidth() - 16, 102);
 }
-
+#endif
 static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100.0f;
 
 void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
     file_ = file;
-    stretchyController_.setData(NULL);
-    disableButton_.setData(NULL);
+    controller_.setData(NULL);
     timeLocker_->initialize(0);
     transportSource_->clear();
     cursor_->setTime(0.0f);
@@ -156,20 +99,25 @@ void MainPage::operator()(const VolumeFile& file) {
     if (dr->empty())
       return;
 
-    stretchyController_.setData(stretchy_);
-    disableButton_.setData(stretchy_);
-    thread::callAsync(&stretchyController_, &Component::setEnabled,
-                      !stretchy_->get().disabled());
+    controller_.setData(stretchy_);
 
     waveform_.setAudioThumbnail(dr->cachedThumbnail()->thumbnail());
     dr->cachedThumbnail()->addListener(&waveform_);
     doubleRunny_.swap(dr);
 
     transportSource_->setSource(doubleRunny_.get());
-    songDial_.setLength(doubleRunny_->getTotalLength() / SAMPLE_RATE);
     gui::addRecentFile(file_);
     stretchy_->requestUpdate();
+    controller_.setLength(doubleRunny_->getTotalLength() / SAMPLE_RATE);
   }
+}
+
+bool MainPage::keyPressed(const juce::KeyPress& kp) {
+  if (kp.getTextCharacter() == ' ') {
+    transportSource_->toggle();
+    return true;
+  }
+  return false;
 }
 
 void MainPage::clearTime() {
@@ -209,20 +157,6 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
     thread::callAsync(timeLocker_.get(), &TimeLocker::set, timeMouse.time_);
 }
 
-void MainPage::operator()(float time) {
-  if (stretchy_)
-    broadcast(time / stretchy_->get().time_scale());
-}
-
-void MainPage::setButtonState() {
-  startStopButton_.setToggleState(transportSource_->isPlaying(), false);
-  startStopButton_.repaint();
-}
-
-
-void MainPage::operator()(const AudioTransportSourcePlayer& player) {
-  thread::callAsync(this, &MainPage::setButtonState);
-}
 
 }  // namespace slow
 }  // namespace rec

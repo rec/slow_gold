@@ -21,7 +21,7 @@ class DataListener : public Listener<const Proto&> {
 
   Data* data() { return data_; }
 
-  void setData(Data* data) {
+  virtual void setData(Data* data) {
     if (data_)
       data_->removeListener(this);
 
