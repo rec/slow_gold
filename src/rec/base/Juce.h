@@ -40,6 +40,7 @@ typedef juce::Slider Slider;
 typedef juce::StreamingSocket Socket;
 typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
+typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
 
 typedef juce::Thread Thread;
 typedef juce::TimeSliceThread TimeSliceThread;

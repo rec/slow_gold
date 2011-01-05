@@ -23,10 +23,7 @@ class SetterToggle : public juce::ToggleButton,
   }
 
  protected:
-  virtual const Value get() const {
-    DLOG(INFO) << "toggleState " << getToggleState();
-    return getToggleState();
-  }
+  virtual const Value get() const { return getToggleState(); }
 
   virtual void set(const Value& v) {
     if (v.has_bool_f())

@@ -33,6 +33,33 @@ class Value : public proto::Value {
   Value(pmessage x) { set_message_f(x); }
   Value(penum x) { set_enum_f(x); }
 
+  template <typename T>
+  T cast() const {
+    if (has_double_f()) return double_f();
+    if (has_float_f()) return float_f();
+    if (has_int64_f()) return int64_f();
+    if (has_uint64_f()) return uint64_f();
+    if (has_int32_f()) return int32_f();
+    if (has_uint32_f()) return uint32_f();
+    if (has_bool_f()) return bool_f();
+    if (has_fixed32_f()) return fixed32_f();
+    if (has_fixed64_f()) return fixed64_f();
+    if (has_sfixed32_f()) return sfixed32_f();
+    if (has_sfixed64_f()) return sfixed64_f();
+    if (has_sint32_f()) return sint32_f();
+    if (has_sint64_f()) return sint64_f();
+    if (has_enum_f()) return enum_f();
+    return 0;
+  }
+
+  operator double() const { return cast<double>(); }
+  operator float() const { return cast<float>(); }
+  operator int64() const { return cast<int64>(); }
+  operator uint64() const { return cast<uint64>(); }
+  operator int32() const { return cast<int32>(); }
+  operator uint32() const { return cast<uint32>(); }
+  operator bool() const { return cast<bool>(); }
+
   Value(const proto::Value v) : proto::Value(v) {}
 };
 

@@ -24,6 +24,9 @@ namespace file {
 class VolumeFile;
 }
 }  // namespace util
+}  // namespace rec
+
+namespace rec {
 
 typedef std::string string;
 typedef unsigned int uint;
@@ -36,7 +39,8 @@ using namespace util;
 using util::file::VolumeFile;
 using std::vector;
 
-}  // namespace rec
+enum Orientation {HORIZONTAL, VERTICAL};
 
+}  // namespace rec
 
 #endif  // __REC_BASE_BASENOJUCE__
