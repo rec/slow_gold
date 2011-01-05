@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Z1nxLvcSB" name="Slow">
+  <MAINGROUP id="gXA46TY2s" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -812,6 +812,14 @@
           <FILE compile="0" file="../../genfiles/proto/rec/gui/RecentFiles.pb.h"
                 id="EVjVRdw5z" name="RecentFiles.pb.h" resource="0"/>
         </GROUP>
+        <GROUP id="ACwrASV4L" name="slow">
+          <GROUP id="NVVb93S4k" name="app">
+            <FILE compile="1" file="../../genfiles/proto/rec/slow/app/AppLayout.pb.cc"
+                  id="yZghVNv25" name="AppLayout.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/slow/app/AppLayout.pb.h"
+                  id="FaRlDSz2W" name="AppLayout.pb.h" resource="0"/>
+          </GROUP>
+        </GROUP>
         <GROUP id="lW8Z1QAu7" name="util">
           <GROUP id="HmCodGvyW" name="cd">
             <FILE compile="1" file="../../genfiles/proto/rec/util/cd/Album.pb.cc"
@@ -874,7 +882,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="r6rPHLZQ7" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="olTBkuXvX" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

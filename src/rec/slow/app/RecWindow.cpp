@@ -1,5 +1,6 @@
 #include "rec/slow/app/RecWindow.h"
 #include "rec/slow/app/MainPageComponent.h"
+#include "rec/slow/app/AppLayout.pb.h"
 #include "rec/gui/Geometry.h"
 
 using namespace juce;
@@ -10,9 +11,9 @@ namespace slow {
 RecWindow::RecWindow()
     : DocumentWindow(T("Rec"), Colours::azure, DocumentWindow::allButtons, true),
       container_(new MainPageComponent),
-      data_(persist::data<gui::Rectangle>()) {
+      data_(persist::data<AppLayout>()) {
   if (data_->fileReadSuccess()) {
-    juce::Rectangle<int> bounds = gui::copy(data_->get());
+    juce::Rectangle<int> bounds = gui::copy(data_->get().bounds());
     bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
     bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
     bounds.setX(juce::jmax(bounds.getX(), 50));
@@ -67,7 +68,7 @@ void RecWindow::resized() {
 }
 
 void RecWindow::writeData() {
-  data_->set(gui::copy(getBounds()));
+  data_->set("bounds", gui::copy(getBounds()));
 }
 
 void RecWindow::moved() {

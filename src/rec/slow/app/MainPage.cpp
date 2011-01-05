@@ -34,7 +34,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
       fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
       fileListener_(persist::data<VolumeFile>()),
       openDialogOpen_(false) {
-  setSize(600, 400);
+  // setSize(600, 400);
 
   addToLayout(treeRoot_->treeView(), 50, -1.0, -0.4);
   addToLayout(&bar_, 8, 8, 8);

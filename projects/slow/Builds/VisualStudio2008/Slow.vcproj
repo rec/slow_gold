@@ -560,6 +560,12 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h"/>
           </Filter>
+          <Filter Name="slow">
+            <Filter Name="app">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\app\AppLayout.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\app\AppLayout.pb.h"/>
+            </Filter>
+          </Filter>
           <Filter Name="util">
             <Filter Name="cd">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.cc"/>

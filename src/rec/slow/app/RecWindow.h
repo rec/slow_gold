@@ -18,6 +18,8 @@ template <typename T> class Data;
 
 namespace slow {
 
+class AppLayout;
+
 class RecWindow  : public juce::DocumentWindow {
  public:
   RecWindow();
@@ -34,7 +36,7 @@ class RecWindow  : public juce::DocumentWindow {
 
   ApplicationCommandManager commandManager_;
   ComponentContainer container_;
-  persist::Data<gui::Rectangle>* data_;
+  persist::Data<AppLayout>* data_;
 
   // TODO: Component* taskbarIcon used to be here.
 
