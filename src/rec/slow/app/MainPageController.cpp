@@ -34,7 +34,7 @@ Dial realTimeDial() {
 
 
 MainPageController::MainPageController(AudioTransportSourcePlayer* transport)
-    : Layout(Layout::VERTICAL, true, "Main controls"),
+    : Layout(VERTICAL, true, "Main controls"),
       transportSource_(transport),
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
       disableButton_("Disable pitch/time shift", Address("disabled")),
