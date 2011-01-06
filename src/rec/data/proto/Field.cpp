@@ -13,8 +13,11 @@ namespace proto {
 Operation* Field::apply(const Operation &op, Message* message) {
   Field field(message);
   for (int i = 0; i < op.address().field_size(); ++i) {
-    if (!field.dereference(op.address().field(i)))
+    if (!field.dereference(op.address().field(i))) {
+      LOG(ERROR) << "Couldn't apply to address " 
+                 << op.address().DebugString();
       return NULL;
+    }
   }
 
   return field.apply(op);
@@ -27,8 +30,10 @@ bool Field::hasValue() const {
 Value Field::getValue(const Address& address, const Message& msg) {
   Field field(const_cast<Message*>(&msg));
   for (int i = 0; i < address.field_size(); ++i) {
-    if (!field.dereference(address.field(i)))
+    if (!field.dereference(address.field(i))) {
+      LOG(ERROR) << "Couldn't get field from address " << address.DebugString();
       return Value();
+    }
   }
 
   Value value;
@@ -39,8 +44,10 @@ Value Field::getValue(const Address& address, const Message& msg) {
 bool Field::hasValue(const Address& address, const Message& msg) {
   Field field(const_cast<Message*>(&msg));
   for (int i = 0; i < address.field_size(); ++i) {
-    if (!field.dereference(address.field(i)))
+    if (!field.dereference(address.field(i))) {
+      LOG(ERROR) << "Couldn't get has from address " << address.DebugString();
       return false;
+    }
   }
   return field.hasValue();
 }
@@ -140,7 +147,8 @@ Operation* Field::apply(const Operation& op) {
   undo_->clear_value();
   if ((this->*applier)())
     return undo_;
-
+    
+  LOG(ERROR) << "Unable to execute operation " << op.DebugString();
   delete undo_;
   return NULL;
 }

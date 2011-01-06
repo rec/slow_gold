@@ -57,6 +57,8 @@ class MainPageComponent  : public Component {
     tabs_.setBounds(getLocalBounds());
   }
 
+  AudioSetupPage* audioSetupPage() { return &audioSetupPage_; }
+
  private:
   TabbedComponent tabs_;
   AudioDeviceManager deviceManager_;

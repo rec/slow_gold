@@ -2,11 +2,12 @@
 
 #include "rec/slow/app/MainPage.h"
 
-#include "rec/base/Arraysize.h"
+#include "rec/base/ArraySize.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/slow/app/AppLayout.pb.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/Util.h"
 
@@ -26,7 +27,7 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     : Layout(VERTICAL, true, "MainPage"),
       transportSource_(new AudioTransportSourcePlayer(&deviceManager)),
       treeRoot_(new Root(NodeDesc())),
-      bar_(&layoutManager_, 1, false),
+      bar_(Address("directory_height"), &layoutManager_, 1, HORIZONTAL),
       waveform_(WaveformProto()),
       controller_(transportSource_.get()),
       stretchy_(NULL),
@@ -35,9 +36,9 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
       fileListener_(persist::data<VolumeFile>()),
       openDialogOpen_(false) {
   // setSize(600, 400);
-
+  bar_.setSetter(persist::data<AppLayout>());
   addToLayout(treeRoot_->treeView(), 50, -1.0, -0.4);
-  addToLayout(&bar_, 8, 8, 8);
+  addToLayout(&bar_, 12, 12, 12);
   addToLayout(&waveform_, 50, -1.0, -0.4);
   addToLayout(&controller_, 100, 100, 100);
 

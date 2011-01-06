@@ -18,6 +18,7 @@
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Waveform.h"
+#include "rec/gui/SetterResizer.h"
 
 using namespace juce;
 
@@ -67,7 +68,7 @@ class MainPage : public gui::Layout,
   thread_ptr<AudioTransportSourcePlayer> transportSource_;
 
   thread_ptr<Root> treeRoot_;
-  StretchableLayoutResizerBar bar_;
+  SetterResizer bar_;
   DropTarget<Waveform, WaveformProto> waveform_;
   MainPageController controller_;
 

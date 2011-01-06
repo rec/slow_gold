@@ -3,6 +3,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/file/VolumeFile.h"
 #include "rec/slow/app/MainPageComponent.h"
+#include "rec/slow/app/AudioSetupPage.h"
 #include "rec/util/thread/MakeThread.h"
 
 namespace rec {
@@ -45,6 +46,7 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
     menu.addItem(CLEAR_FILE, "Clear file");
     menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
     menu.addItem(CLEAR_TREE, "Clear directory window");
+    menu.addItem(AUDIO_PREFERENCES, "Set audio preferences...");
   }
 
   return menu;
@@ -76,6 +78,12 @@ void ComponentContainer::clearFile() {
   persist::data<file::VolumeFile>()->clear();
 }
 
+void ComponentContainer::audioPreferences() {
+  juce::DialogWindow::showModalDialog("Set Audio Preferences",
+                  mainComponent_->audioSetupPage(), NULL,
+                  Colours::white, true);
+}
+
 void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
   MainPage* mainPage = mainComponent_->mainPage();
   switch (itemID) {
@@ -88,6 +96,7 @@ void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
     case CLEAR_TREE: clearTree(); break;
     case CLEAR_TIME: mainPage->clearTime(); break;
     case CLEAR_FILE: clearFile(); break;
+    case AUDIO_PREFERENCES: thread::callAsync(this, &ComponentContainer::audioPreferences); break;
     default:     mainComponent_->loadRecentFile(itemID - RECENT_FILES); break;
   }
 }

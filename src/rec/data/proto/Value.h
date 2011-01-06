@@ -35,12 +35,12 @@ class Value : public proto::Value {
 
   template <typename T>
   T cast() const {
+    if (has_uint32_f()) return uint32_f();
     if (has_double_f()) return double_f();
     if (has_float_f()) return float_f();
     if (has_int64_f()) return int64_f();
     if (has_uint64_f()) return uint64_f();
     if (has_int32_f()) return int32_f();
-    if (has_uint32_f()) return uint32_f();
     if (has_bool_f()) return bool_f();
     if (has_fixed32_f()) return fixed32_f();
     if (has_fixed64_f()) return fixed64_f();
@@ -52,6 +52,7 @@ class Value : public proto::Value {
     return 0;
   }
 
+  operator int() const { return cast<double>(); }
   operator double() const { return cast<double>(); }
   operator float() const { return cast<float>(); }
   operator int64() const { return cast<int64>(); }

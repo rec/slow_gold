@@ -20,7 +20,10 @@ AppInstance::AppInstance(const string& appName)
   writeThread_->startThread();
 }
 
-AppInstance::~AppInstance() {}
+AppInstance::~AppInstance() {
+  writeThread_->stopThread(1000);
+  updateThread_->stopThread(1000);
+}
 
 // A piece of data got new information!
 void AppInstance::needsUpdate(UntypedData* data) {
@@ -32,7 +35,7 @@ void AppInstance::needsUpdate(UntypedData* data) {
 }
 
 bool AppInstance::running() const {
-	return writeThread_ && updateThread_ && 
+	return writeThread_ && updateThread_ &&
     !(writeThread_->threadShouldExit() || writeThread_->threadShouldExit());
 }
 
