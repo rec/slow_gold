@@ -14,7 +14,7 @@ class AudioSetupPage  : public Component {
         new AudioDeviceSelectorComponent(deviceManager_,
                                          0, 0, 2, 2, false, false, true, true));
     addAndMakeVisible(deviceSelector_.get());
-    setSize (600, 400);
+    setSize(400, 200);
   }
 
   void paint(Graphics& g) { g.fillAll (Colours::lightgrey); }

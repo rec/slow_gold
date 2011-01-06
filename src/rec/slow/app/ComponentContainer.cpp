@@ -80,8 +80,9 @@ void ComponentContainer::clearFile() {
 
 void ComponentContainer::audioPreferences() {
   juce::DialogWindow::showModalDialog("Set Audio Preferences",
-                  mainComponent_->audioSetupPage(), NULL,
-                  Colours::white, true);
+                                      mainComponent_->audioSetupPage(),
+                                      mainComponent_.get(),
+                                      Colours::white, true);
 }
 
 void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {

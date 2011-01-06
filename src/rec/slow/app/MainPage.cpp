@@ -71,13 +71,7 @@ MainPage::~MainPage() {
 void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
 }
-#if 0
-void MainPage::resized() {
-  waveform_.setBounds(16, getHeight() - 221, getWidth() - 32, 123);
-  treeRoot_->treeView()->setBounds(16, 8, getWidth() - 32, getHeight() - 245);
-  controller_.setBounds(16, getHeight() - 102, getWidth() - 16, 102);
-}
-#endif
+
 static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100.0f;
 
