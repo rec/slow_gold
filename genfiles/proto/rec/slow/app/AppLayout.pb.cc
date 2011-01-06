@@ -29,9 +29,10 @@ void protobuf_AssignDesc_rec_2fslow_2fapp_2fAppLayout_2eproto() {
       "rec/slow/app/AppLayout.proto");
   GOOGLE_CHECK(file != NULL);
   AppLayout_descriptor_ = file->message_type(0);
-  static const int AppLayout_offsets_[3] = {
+  static const int AppLayout_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppLayout, bounds_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppLayout, directory_height_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppLayout, wave_height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AppLayout, loops_width_),
   };
   AppLayout_reflection_ =
@@ -77,9 +78,10 @@ void protobuf_AddDesc_rec_2fslow_2fapp_2fAppLayout_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/slow/app/AppLayout.proto\022\010rec.slow"
-    "\032\026rec/gui/Geometry.proto\"^\n\tAppLayout\022\"\n"
+    "\032\026rec/gui/Geometry.proto\"s\n\tAppLayout\022\"\n"
     "\006bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\030\n\020dir"
-    "ectory_height\030\002 \001(\r\022\023\n\013loops_width\030\003 \001(\r", 160);
+    "ectory_height\030\002 \001(\r\022\023\n\013wave_height\030\003 \001(\r"
+    "\022\023\n\013loops_width\030\004 \001(\r", 181);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/app/AppLayout.proto", &protobuf_RegisterTypes);
   AppLayout::default_instance_ = new AppLayout();
@@ -100,6 +102,7 @@ struct StaticDescriptorInitializer_rec_2fslow_2fapp_2fAppLayout_2eproto {
 #ifndef _MSC_VER
 const int AppLayout::kBoundsFieldNumber;
 const int AppLayout::kDirectoryHeightFieldNumber;
+const int AppLayout::kWaveHeightFieldNumber;
 const int AppLayout::kLoopsWidthFieldNumber;
 #endif  // !_MSC_VER
 
@@ -122,6 +125,7 @@ void AppLayout::SharedCtor() {
   _cached_size_ = 0;
   bounds_ = NULL;
   directory_height_ = 0u;
+  wave_height_ = 0u;
   loops_width_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -162,6 +166,7 @@ void AppLayout::Clear() {
       if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
     }
     directory_height_ = 0u;
+    wave_height_ = 0u;
     loops_width_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -199,19 +204,35 @@ bool AppLayout::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_loops_width;
+        if (input->ExpectTag(24)) goto parse_wave_height;
         break;
       }
       
-      // optional uint32 loops_width = 3;
+      // optional uint32 wave_height = 3;
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_wave_height:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &wave_height_)));
+          _set_bit(2);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_loops_width;
+        break;
+      }
+      
+      // optional uint32 loops_width = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_loops_width:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &loops_width_)));
-          _set_bit(2);
+          _set_bit(3);
         } else {
           goto handle_uninterpreted;
         }
@@ -248,9 +269,14 @@ void AppLayout::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->directory_height(), output);
   }
   
-  // optional uint32 loops_width = 3;
+  // optional uint32 wave_height = 3;
   if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->loops_width(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->wave_height(), output);
+  }
+  
+  // optional uint32 loops_width = 4;
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->loops_width(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -273,9 +299,14 @@ void AppLayout::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->directory_height(), target);
   }
   
-  // optional uint32 loops_width = 3;
+  // optional uint32 wave_height = 3;
   if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->loops_width(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->wave_height(), target);
+  }
+  
+  // optional uint32 loops_width = 4;
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->loops_width(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -303,7 +334,14 @@ int AppLayout::ByteSize() const {
           this->directory_height());
     }
     
-    // optional uint32 loops_width = 3;
+    // optional uint32 wave_height = 3;
+    if (has_wave_height()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->wave_height());
+    }
+    
+    // optional uint32 loops_width = 4;
     if (has_loops_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -344,6 +382,9 @@ void AppLayout::MergeFrom(const AppLayout& from) {
       set_directory_height(from.directory_height());
     }
     if (from._has_bit(2)) {
+      set_wave_height(from.wave_height());
+    }
+    if (from._has_bit(3)) {
       set_loops_width(from.loops_width());
     }
   }
@@ -371,6 +412,7 @@ void AppLayout::Swap(AppLayout* other) {
   if (other != this) {
     std::swap(bounds_, other->bounds_);
     std::swap(directory_height_, other->directory_height_);
+    std::swap(wave_height_, other->wave_height_);
     std::swap(loops_width_, other->loops_width_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

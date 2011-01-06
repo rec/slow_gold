@@ -64,11 +64,12 @@ class MainPage : public gui::Layout,
 
   thread_ptr<AudioTransportSourcePlayer> transportSource_;
 
-  thread_ptr<Root> treeRoot_;
+  gui::Layout panel_;
   SetterResizer hbar_;
-  gui::Layout waveAndLoop_;
-  DropTarget<Waveform, WaveformProto> waveform_;
   SetterResizer vbar_;
+
+  thread_ptr<Root> treeRoot_;
+  DropTarget<Waveform, WaveformProto> waveform_;
   juce::Label loops_;
   MainPageController controller_;
 

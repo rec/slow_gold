@@ -106,10 +106,17 @@ class AppLayout : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 directory_height() const;
   inline void set_directory_height(::google::protobuf::uint32 value);
   
-  // optional uint32 loops_width = 3;
+  // optional uint32 wave_height = 3;
+  inline bool has_wave_height() const;
+  inline void clear_wave_height();
+  static const int kWaveHeightFieldNumber = 3;
+  inline ::google::protobuf::uint32 wave_height() const;
+  inline void set_wave_height(::google::protobuf::uint32 value);
+  
+  // optional uint32 loops_width = 4;
   inline bool has_loops_width() const;
   inline void clear_loops_width();
-  static const int kLoopsWidthFieldNumber = 3;
+  static const int kLoopsWidthFieldNumber = 4;
   inline ::google::protobuf::uint32 loops_width() const;
   inline void set_loops_width(::google::protobuf::uint32 value);
   
@@ -120,12 +127,13 @@ class AppLayout : public ::google::protobuf::Message {
   
   ::rec::gui::Rectangle* bounds_;
   ::google::protobuf::uint32 directory_height_;
+  ::google::protobuf::uint32 wave_height_;
   ::google::protobuf::uint32 loops_width_;
   friend void  protobuf_AddDesc_rec_2fslow_2fapp_2fAppLayout_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fapp_2fAppLayout_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fapp_2fAppLayout_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -181,19 +189,35 @@ inline void AppLayout::set_directory_height(::google::protobuf::uint32 value) {
   directory_height_ = value;
 }
 
-// optional uint32 loops_width = 3;
-inline bool AppLayout::has_loops_width() const {
+// optional uint32 wave_height = 3;
+inline bool AppLayout::has_wave_height() const {
   return _has_bit(2);
+}
+inline void AppLayout::clear_wave_height() {
+  wave_height_ = 0u;
+  _clear_bit(2);
+}
+inline ::google::protobuf::uint32 AppLayout::wave_height() const {
+  return wave_height_;
+}
+inline void AppLayout::set_wave_height(::google::protobuf::uint32 value) {
+  _set_bit(2);
+  wave_height_ = value;
+}
+
+// optional uint32 loops_width = 4;
+inline bool AppLayout::has_loops_width() const {
+  return _has_bit(3);
 }
 inline void AppLayout::clear_loops_width() {
   loops_width_ = 0u;
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline ::google::protobuf::uint32 AppLayout::loops_width() const {
   return loops_width_;
 }
 inline void AppLayout::set_loops_width(::google::protobuf::uint32 value) {
-  _set_bit(2);
+  _set_bit(3);
   loops_width_ = value;
 }
 

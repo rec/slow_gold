@@ -24,13 +24,13 @@ namespace slow {
 static const int CHANGE_LOCKER_WAIT = 100;
 
 MainPage::MainPage(AudioDeviceManager& deviceManager)
-    : Layout(VERTICAL, true, "MainPage"),
+    : Layout(HORIZONTAL, "MainPage"),
       transportSource_(new AudioTransportSourcePlayer(&deviceManager)),
+      panel_(VERTICAL, true, "TreeWaveAndControl"),
+      hbar_(Address("directory_height"), panel_.layoutManager(), 1, HORIZONTAL),
+      vbar_(Address("loops_width"), layoutManager(), 1, VERTICAL),
       treeRoot_(new Root(NodeDesc())),
-      hbar_(Address("directory_height"), &layoutManager_, 1, HORIZONTAL),
-      waveAndLoop_(HORIZONTAL, true, "WaveAndLoopPanel"),
       waveform_(WaveformProto()),
-      vbar_(Address("loops_width"), waveAndLoop_.layoutManager(), 1, VERTICAL),
       loops_("Loops"),
       controller_(transportSource_.get()),
       stretchy_(NULL),
@@ -38,15 +38,14 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
       fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
       fileListener_(persist::data<VolumeFile>()),
       openDialogOpen_(false) {
-  addToLayout(treeRoot_->treeView(), 50, -1.0, -0.4);
-  addToLayout(&hbar_, 12, 12, 12);
+  panel_.addToLayout(treeRoot_->treeView(), 50, -1.0, -0.5);
+  panel_.addToLayout(&hbar_, 10, 10, 10);
+  panel_.addToLayout(&waveform_, 150, -1.0, -0.5);
+  panel_.addToLayout(&controller_, 100, 100, 100);
 
-  waveAndLoop_.addToLayout(&waveform_, 150, 2000, -0.8);
-  waveAndLoop_.addToLayout(&vbar_, 10);
-  waveAndLoop_.addToLayout(&loops_, 150, 500, -0.2);
-
-  addToLayout(&waveAndLoop_, 50, -1.0, -0.4);
-  addToLayout(&controller_, 100, 100, 100);
+  addToLayout(&panel_, 200, -1.0, -0.7);
+  addToLayout(&vbar_, 10);
+  addToLayout(&loops_, 150, 500, -0.3);
 
   vbar_.setSetter(persist::data<AppLayout>());
   hbar_.setSetter(persist::data<AppLayout>());
