@@ -11,8 +11,6 @@ namespace gui {
 
 class Layout : public Component {
  public:
-  enum Orientation {HORIZONTAL, VERTICAL};
-
   Layout(Orientation o, bool resizeOther, const String& name = String::empty)
       : Component(name), orientation_(o), resizeOtherDimension_(resizeOther) {}
 
