@@ -15,7 +15,7 @@ class StretchyController : public Layout {
   typedef proto::arg::Address Address;
 
   StretchyController()
-      : Layout(Layout::VERTICAL, true, "StretchyController"),
+      : Layout(VERTICAL, true, "StretchyController"),
         playbackSpeed_("Playback speed", Address("time_percent")),
         pitchScale_("Transpose", Address("semitone_shift")),
         fineScale_("Fine tuning", Address("detune_cents")) {

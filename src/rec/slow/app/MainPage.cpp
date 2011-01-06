@@ -23,7 +23,7 @@ namespace slow {
 static const int CHANGE_LOCKER_WAIT = 100;
 
 MainPage::MainPage(AudioDeviceManager& deviceManager)
-    : Layout(Layout::VERTICAL, true, "MainPage"),
+    : Layout(VERTICAL, true, "MainPage"),
       transportSource_(new AudioTransportSourcePlayer(&deviceManager)),
       treeRoot_(new Root(NodeDesc())),
       bar_(&layoutManager_, 1, false),
