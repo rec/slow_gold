@@ -12,17 +12,10 @@ namespace slow {
 
 class MainPageComponent  : public Component {
  public:
-  MainPageComponent() : tabs_(TabbedButtonBar::TabsAtTop),
-                        mainPage_(deviceManager_),
+  MainPageComponent() : mainPage_(deviceManager_),
                         audioSetupPage_(deviceManager_),
                         deviceListener_(&deviceManager_) {
-    tabs_.setTabBarDepth (30);
-    tabs_.addTab("File Playback", Colours::lightgrey, &mainPage_, false);
-    tabs_.addTab("Audio Device Setup", Colours::lightgrey, &audioSetupPage_,
-                 false);
-    tabs_.setCurrentTabIndex(0);
-    addAndMakeVisible(&tabs_);
-    setSize(600, 400);
+    addAndMakeVisible(&mainPage_);
   }
 
   ~MainPageComponent() {}
@@ -54,14 +47,14 @@ class MainPageComponent  : public Component {
   virtual void paint(Graphics& g) { g.fillAll(Colours::white); }
 
   virtual void resized() {
-    tabs_.setBounds(getLocalBounds());
+    mainPage_.setBounds(getLocalBounds());
   }
 
   AudioSetupPage* audioSetupPage() { return &audioSetupPage_; }
 
  private:
-  TabbedComponent tabs_;
   AudioDeviceManager deviceManager_;
+
   MainPage mainPage_;
   AudioSetupPage audioSetupPage_;
   persist::AudioDeviceSetupListener deviceListener_;

@@ -670,6 +670,14 @@
 			E20E491E12D5810600B27497 /* PBXTextBookmark */ = E20E491E12D5810600B27497 /* PBXTextBookmark */;
 			E20E492212D5816800B27497 /* PBXTextBookmark */ = E20E492212D5816800B27497 /* PBXTextBookmark */;
 			E20E492312D5816800B27497 /* PBXTextBookmark */ = E20E492312D5816800B27497 /* PBXTextBookmark */;
+			E20E492812D5820B00B27497 /* XCBuildMessageTextBookmark */ = E20E492812D5820B00B27497 /* XCBuildMessageTextBookmark */;
+			E20E492912D5821200B27497 /* PBXTextBookmark */ = E20E492912D5821200B27497 /* PBXTextBookmark */;
+			E20E492C12D5821200B27497 /* PBXTextBookmark */ = E20E492C12D5821200B27497 /* PBXTextBookmark */;
+			E20E492D12D5821200B27497 /* PBXTextBookmark */ = E20E492D12D5821200B27497 /* PBXTextBookmark */;
+			E20E493012D5823000B27497 /* PBXTextBookmark */ = E20E493012D5823000B27497 /* PBXTextBookmark */;
+			E20E493112D5823000B27497 /* PBXTextBookmark */ = E20E493112D5823000B27497 /* PBXTextBookmark */;
+			E20E493512D5827000B27497 /* PBXTextBookmark */ = E20E493512D5827000B27497 /* PBXTextBookmark */;
+			E20E493612D5827000B27497 /* PBXTextBookmark */ = E20E493612D5827000B27497 /* PBXTextBookmark */;
 			E21096A412D0349B00202625 = E21096A412D0349B00202625 /* PBXTextBookmark */;
 			E21096B812D0387600202625 = E21096B812D0387600202625 /* PBXTextBookmark */;
 			E21096B912D0387600202625 = E21096B912D0387600202625 /* PBXTextBookmark */;
@@ -1948,6 +1956,98 @@
 		vrLen = 1365;
 		vrLoc = 0;
 	};
+	E20E492712D5820B00B27497 /* MainPageComponent.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = MainPageComponent.h;
+		path = ../../../../../rec/src/rec/slow/app/MainPageComponent.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {776, 884}}";
+			sepNavSelRange = "{1816, 0}";
+			sepNavVisRange = "{365, 1368}";
+			sepNavWindowFrame = "{{766, 244}, {835, 827}}";
+		};
+	};
+	E20E492812D5820B00B27497 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Class 'rec::slow::MainPageComponent' does not have any field named 'audioSetupPage_'";
+		fRef = E20E492712D5820B00B27497 /* MainPageComponent.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 15;
+		rType = 1;
+	};
+	E20E492912D5821200B27497 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E21096D212D0393200202625 /* juce_amalgamated.h */;
+		name = "juce_amalgamated.h: 27130";
+		rLen = 0;
+		rLoc = 888740;
+		rType = 0;
+		vrLen = 1259;
+		vrLoc = 709269;
+	};
+	E20E492C12D5821200B27497 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20E492712D5820B00B27497 /* MainPageComponent.h */;
+		name = "MainPageComponent.h: 17";
+		rLen = 0;
+		rLoc = 603;
+		rType = 0;
+		vrLen = 1339;
+		vrLoc = 442;
+	};
+	E20E492D12D5821200B27497 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20E491912D580ED00B27497 /* SetterResizer.h */;
+		name = "SetterResizer.h: 51";
+		rLen = 0;
+		rLoc = 1266;
+		rType = 0;
+		vrLen = 1386;
+		vrLoc = 0;
+	};
+	E20E493012D5823000B27497 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E21096D212D0393200202625 /* juce_amalgamated.h */;
+		name = "juce_amalgamated.h: 27130";
+		rLen = 0;
+		rLoc = 888740;
+		rType = 0;
+		vrLen = 1183;
+		vrLoc = 709269;
+	};
+	E20E493112D5823000B27497 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20E491912D580ED00B27497 /* SetterResizer.h */;
+		name = "SetterResizer.h: 51";
+		rLen = 0;
+		rLoc = 1266;
+		rType = 0;
+		vrLen = 1365;
+		vrLoc = 0;
+	};
+	E20E493512D5827000B27497 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E21096D212D0393200202625 /* juce_amalgamated.h */;
+		name = "juce_amalgamated.h: 27130";
+		rLen = 0;
+		rLoc = 888740;
+		rType = 0;
+		vrLen = 1183;
+		vrLoc = 709269;
+	};
+	E20E493612D5827000B27497 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20E491912D580ED00B27497 /* SetterResizer.h */;
+		name = "SetterResizer.h: 51";
+		rLen = 0;
+		rLoc = 1266;
+		rType = 0;
+		vrLen = 1365;
+		vrLoc = 0;
+	};
 	E21096A412D0349B00202625 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 203B9E16EDB1DEEE5327BA12 /* CDDBResponse.h */;
@@ -2648,7 +2748,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 1532;
+		vrLen = 1227;
 		vrLoc = 554;
 	};
 	E2B2E2A212CE93E6005716B5 /* PBXTextBookmark */ = {
@@ -2759,9 +2859,9 @@
 		path = /Users/tom/Documents/development/juce/juce_amalgamated.cpp;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {652, 3.66937e+06}}";
-			sepNavSelRange = "{973186, 0}";
-			sepNavVisRange = "{972045, 1588}";
+			sepNavIntBoundsRect = "{{0, 0}, {652, 3.66944e+06}}";
+			sepNavSelRange = "{287069, 0}";
+			sepNavVisRange = "{288641, 1962}";
 		};
 	};
 	E2E5954B12D2A3E300FAEE58 /* PBXTextBookmark */ = {
