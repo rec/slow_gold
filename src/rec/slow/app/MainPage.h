@@ -8,7 +8,6 @@
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/audio/source/Stretchy.pb.h"
 #include "rec/data/persist/Copy.h"
-#include "rec/gui/DropTarget.h"
 #include "rec/gui/Layout.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/slow/app/MainPageController.h"
@@ -17,7 +16,6 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
-#include "rec/widget/waveform/Waveform.h"
 #include "rec/gui/SetterResizer.h"
 
 using namespace juce;
@@ -59,7 +57,6 @@ class MainPage : public gui::Layout,
   void clearTime();
 
   virtual bool keyPressed(const juce::KeyPress& kp);
-  // virtual void resized();
 
  private:
   typedef thread::ChangeLocker<float> TimeLocker;
@@ -68,8 +65,11 @@ class MainPage : public gui::Layout,
   thread_ptr<AudioTransportSourcePlayer> transportSource_;
 
   thread_ptr<Root> treeRoot_;
-  SetterResizer bar_;
+  SetterResizer hbar_;
+  gui::Layout waveAndLoop_;
   DropTarget<Waveform, WaveformProto> waveform_;
+  SetterResizer vbar_;
+  juce::Label loops_;
   MainPageController controller_;
 
   Cursor* cursor_;

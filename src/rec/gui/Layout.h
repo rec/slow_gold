@@ -29,6 +29,8 @@ class Layout : public Component {
     layout();
   }
 
+  juce::StretchableLayoutManager* layoutManager() { return &layoutManager_; }
+
  protected:
   void layout() {
     layoutManager_.layOutComponents(&components_[0], components_.size(),

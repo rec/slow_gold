@@ -27,20 +27,29 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
     : Layout(VERTICAL, true, "MainPage"),
       transportSource_(new AudioTransportSourcePlayer(&deviceManager)),
       treeRoot_(new Root(NodeDesc())),
-      bar_(Address("directory_height"), &layoutManager_, 1, HORIZONTAL),
+      hbar_(Address("directory_height"), &layoutManager_, 1, HORIZONTAL),
+      waveAndLoop_(HORIZONTAL, true, "WaveAndLoopPanel"),
       waveform_(WaveformProto()),
+      vbar_(Address("loops_width"), waveAndLoop_.layoutManager(), 1, VERTICAL),
+      loops_("Loops"),
       controller_(transportSource_.get()),
       stretchy_(NULL),
       timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
       fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
       fileListener_(persist::data<VolumeFile>()),
       openDialogOpen_(false) {
-  // setSize(600, 400);
-  bar_.setSetter(persist::data<AppLayout>());
   addToLayout(treeRoot_->treeView(), 50, -1.0, -0.4);
-  addToLayout(&bar_, 12, 12, 12);
-  addToLayout(&waveform_, 50, -1.0, -0.4);
+  addToLayout(&hbar_, 12, 12, 12);
+
+  waveAndLoop_.addToLayout(&waveform_, 150, 2000, -0.8);
+  waveAndLoop_.addToLayout(&vbar_, 10);
+  waveAndLoop_.addToLayout(&loops_, 150, 500, -0.2);
+
+  addToLayout(&waveAndLoop_, 50, -1.0, -0.4);
   addToLayout(&controller_, 100, 100, 100);
+
+  vbar_.setSetter(persist::data<AppLayout>());
+  hbar_.setSetter(persist::data<AppLayout>());
 
   cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
 
@@ -53,19 +62,17 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   fileLocker_->addListener(this);
   timeLocker_->addListener(this);
 
-  transportSource_->addListener(cursor_);
-
   fileLocker_->startThread();
   timeLocker_->startThread();
   persist::data<VolumeFile>()->addListener(fileLocker_.get());
   persist::data<VolumeFile>()->requestUpdate();
 
+  transportSource_->addListener(cursor_);
   transportSource_->update();
 }
 
 MainPage::~MainPage() {
-  transportSource_->stop();
-  transportSource_->setSource(NULL);
+  transportSource_->clear();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -121,7 +128,6 @@ void MainPage::clearTime() {
 }
 
 void MainPage::operator()(const float& time) {
-  // DLOG(INFO) << "Callback on time " << time;
   if (!doubleRunny_ || doubleRunny_->fillFromPosition(SAMPLE_RATE * time))
     transportSource_->setPosition(stretchy_->get().time_scale() * time);
 
@@ -138,6 +144,7 @@ void MainPage::doOpen() {
 
   if (chooser.browseForFileToOpen())
     fileListener_(file::toVolumeFile(chooser.getResult()));
+
   openDialogOpen_ = false;
 }
 
