@@ -1,5 +1,5 @@
-#ifndef __REC_SLOW_APP_MAINPAGECONTROLLER__
-#define __REC_SLOW_APP_MAINPAGECONTROLLER__
+#ifndef __REC_SLOW_APP_PLAYBACKCONTROLLER__
+#define __REC_SLOW_APP_PLAYBACKCONTROLLER__
 
 #include "rec/gui/Layout.h"
 #include "rec/gui/SetterToggle.h"
@@ -18,7 +18,7 @@ typedef widget::status::time::DialComponent DialComponent;
 
 class AudioTransportSourcePlayer;
 
-class MainPageController : public gui::Layout,
+class PlaybackController : public gui::Layout,
                            public Listener<const AudioTransportSourcePlayer&>,
                            public Listener<const VolumeFile&>,
                            public juce::ButtonListener,
@@ -28,7 +28,7 @@ class MainPageController : public gui::Layout,
  public:
   typedef persist::Data<StretchyProto> Data;
 
-  MainPageController(AudioTransportSourcePlayer* transportSource);
+  PlaybackController(AudioTransportSourcePlayer* transportSource);
 
   void buttonClicked(juce::Button *button);
   void setLength(int length);
@@ -56,4 +56,4 @@ class MainPageController : public gui::Layout,
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_APP_MAINPAGECONTROLLER__
+#endif  // __REC_SLOW_APP_PLAYBACKCONTROLLER__

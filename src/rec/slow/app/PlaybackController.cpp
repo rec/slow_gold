@@ -1,4 +1,4 @@
-#include "rec/slow/app/MainPageController.h"
+#include "rec/slow/app/PlaybackController.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/gui/SetterToggle.h"
@@ -35,7 +35,7 @@ Dial realTimeDial() {
 }  // namespace
 
 
-MainPageController::MainPageController(AudioTransportSourcePlayer* transport)
+PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport)
     : Layout(VERTICAL, true, "Main controls"),
       transportSource_(transport),
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
@@ -70,17 +70,17 @@ MainPageController::MainPageController(AudioTransportSourcePlayer* transport)
   transportSource_->changeBroadcaster()->addListener(this);
 }
 
-void MainPageController::operator()(float time) {
+void PlaybackController::operator()(float time) {
   if (getData())
     broadcast(time / getData()->get().time_scale());
 }
 
-void MainPageController::operator()(const StretchyProto& desc) {
+void PlaybackController::operator()(const StretchyProto& desc) {
   thread::callAsync(&stretchyController_, &Component::setEnabled,
                     !desc.disabled());
 }
 
-void MainPageController::buttonClicked(juce::Button *button) {
+void PlaybackController::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
     transportSource_->toggle();
 
@@ -88,20 +88,20 @@ void MainPageController::buttonClicked(juce::Button *button) {
     getData()->set("disable", disableButton_.getToggleState());
 }
 
-void MainPageController::setLength(int length) {
+void PlaybackController::setLength(int length) {
   songDial_.setLength(length);
 }
 
-void MainPageController::operator()(const AudioTransportSourcePlayer& player) {
-  thread::callAsync(this, &MainPageController::setButtonState);
+void PlaybackController::operator()(const AudioTransportSourcePlayer& player) {
+  thread::callAsync(this, &PlaybackController::setButtonState);
 }
 
-void MainPageController::setButtonState() {
+void PlaybackController::setButtonState() {
   startStopButton_.setToggleState(transportSource_->isPlaying(), false);
   startStopButton_.repaint();
 }
 
-void MainPageController::setData(Data* data) {
+void PlaybackController::setData(Data* data) {
   DataListener<StretchyProto>::setData(data);
   disableButton_.setData(data);
   stretchyController_.setData(data);
@@ -112,7 +112,7 @@ void MainPageController::setData(Data* data) {
 
 }
 
-void MainPageController::resized() {
+void PlaybackController::resized() {
   startStopButton_.setBounds(8, 8, 32, 32);
   disableButton_.setBounds(8, 50, 100, 20);
   songData_.setBounds(120, 8, 270, getHeight() - 16);
@@ -122,7 +122,7 @@ void MainPageController::resized() {
   songDial_.setBounds(getWidth() - 46, 90 - 46, 36, 36);
 }
 
-void MainPageController::operator()(const VolumeFile& file) {
+void PlaybackController::operator()(const VolumeFile& file) {
   songData_.setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
 }
 

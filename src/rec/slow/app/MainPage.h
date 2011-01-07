@@ -10,7 +10,7 @@
 #include "rec/data/persist/Copy.h"
 #include "rec/gui/Layout.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
-#include "rec/slow/app/MainPageController.h"
+#include "rec/slow/app/PlaybackController.h"
 #include "rec/util/listener/SetterListener.h"
 #include "rec/util/thread/ChangeLocker.h"
 #include "rec/widget/tree/NodeItem.h"
@@ -71,7 +71,7 @@ class MainPage : public gui::Layout,
   thread_ptr<Root> treeRoot_;
   DropTarget<Waveform, WaveformProto> waveform_;
   juce::Label loops_;
-  MainPageController controller_;
+  PlaybackController controller_;
 
   Cursor* cursor_;
 
