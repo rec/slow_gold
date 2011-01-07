@@ -1,4 +1,5 @@
 #include "rec/slow/app/MainPageController.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
@@ -6,6 +7,7 @@
 #include "rec/gui/Color.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/cd/Album.h"
 
 using namespace rec::proto::arg;
 
@@ -39,7 +41,8 @@ MainPageController::MainPageController(AudioTransportSourcePlayer* transport)
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
       disableButton_("Disable pitch/time shift", Address("disabled")),
       songTime_(Text()),
-      songDial_(realTimeDial()) {
+      songDial_(realTimeDial()),
+      songData_("SongData") {
   startStopButton_.setImages(gui::icon::MediaPlaybackStart::get(),
                              NULL, NULL, NULL,
                              gui::icon::MediaPlaybackStop::get());
@@ -48,8 +51,16 @@ MainPageController::MainPageController(AudioTransportSourcePlayer* transport)
   addAndMakeVisible(&startStopButton_);
   addAndMakeVisible(&stretchyController_);
 
+  songData_.add("Track", Address("track_title"));
+  songData_.add("Album", Address("album_title"));
+  songData_.add("Artist", Address("artist"));
+  songData_.add("Track Number", Address("track_number"));
+  songData_.add("Notes", Address("notes"));
+  songData_.addToLayoutManager();
+
   addAndMakeVisible(&songTime_);
   addAndMakeVisible(&songDial_);
+  addAndMakeVisible(&songData_);
 
   startStopButton_.addListener(this);
   disableButton_.addListener(this);
@@ -60,8 +71,8 @@ MainPageController::MainPageController(AudioTransportSourcePlayer* transport)
 }
 
 void MainPageController::operator()(float time) {
-  if (data())
-    broadcast(time / data()->get().time_scale());
+  if (getData())
+    broadcast(time / getData()->get().time_scale());
 }
 
 void MainPageController::operator()(const StretchyProto& desc) {
@@ -73,8 +84,8 @@ void MainPageController::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
     transportSource_->toggle();
 
-  else if (button == &disableButton_ && data())
-    data()->set("disable", disableButton_.getToggleState());
+  else if (button == &disableButton_ && getData())
+    getData()->set("disable", disableButton_.getToggleState());
 }
 
 void MainPageController::setLength(int length) {
@@ -102,12 +113,17 @@ void MainPageController::setData(Data* data) {
 }
 
 void MainPageController::resized() {
-  startStopButton_.setBounds(16, 10, 42, 42);
-  disableButton_.setBounds(16, 70, 150, 20);
-  stretchyController_.setBounds(200, 0, getWidth() - 250, 85);
+  startStopButton_.setBounds(8, 8, 32, 32);
+  disableButton_.setBounds(8, 50, 100, 20);
+  songData_.setBounds(120, 8, 270, getHeight() - 16);
+  stretchyController_.setBounds(500, 0, getWidth() - 500, 85);
 
   songTime_.setBounds(getWidth() - 120, 60, 110, 22);
   songDial_.setBounds(getWidth() - 46, 90 - 46, 36, 36);
+}
+
+void MainPageController::operator()(const VolumeFile& file) {
+  songData_.setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
 }
 
 }  // namespace slow

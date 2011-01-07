@@ -62,9 +62,11 @@ Error createReader(InputStream* in,
 
     getMp3Tags(mh, &r.metadataValues);
     const StringArray& a = r.metadataValues.getAllKeys();
+#if 0
     DLOG(INFO) << "!!";
     for (int i = 0; i < a.size(); ++i)
       DLOG(INFO) << a[i] << " -> " << r.metadataValues[a[i]];
+#endif
   }
 
   return e;

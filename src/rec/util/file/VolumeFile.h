@@ -27,7 +27,6 @@ const String getFullDisplayName(const VolumeFile& file);
 
 bool compare(const VolumeFile& x, const VolumeFile& y);
 
-AudioFormatReader* createReader(const VolumeFile& file);
 PositionableAudioSource* createSource(const VolumeFile& file);
 bool empty(const VolumeFile& file);
 

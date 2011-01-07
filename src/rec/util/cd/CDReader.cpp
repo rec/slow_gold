@@ -1,4 +1,5 @@
 #include "rec/util/cd/CDReader.h"
+#include "rec/util/cd/Album.h"
 
 using namespace juce;
 
@@ -21,23 +22,23 @@ AudioCDReader* getAudioCDReader(const String& cdKey) {
   return NULL;
 }
 
-AudioFormatReader* createCDTrackReader(AudioCDReader* r, int track) {
-  ScopedPointer<AudioCDReader> reader(r);
-  int trackIndex = getAudioTrackIndex(*reader, track);
+AudioFormatReader* createCDTrackReader(AudioCDReader* reader, int track) {
+  ptr<AudioCDReader> r(reader);
+  int trackIndex = getAudioTrackIndex(*r, track);
   if (trackIndex == -1) {
-    LOG(ERROR) << "No track " << track << " in " << r->getCDDBId();
+    LOG(ERROR) << "No track " << track << " in " << reader->getCDDBId();
     return NULL;
   }
 
-  int begin = reader->getPositionOfTrackStart(trackIndex);
-  int end = reader->getPositionOfTrackStart(trackIndex + 1);
-  return new AudioSubsectionReader(reader.release(), begin, end - begin, true);
+  int begin = r->getPositionOfTrackStart(trackIndex);
+  int end = r->getPositionOfTrackStart(trackIndex + 1);
+  return new AudioSubsectionReader(r.transfer(), begin, end - begin, true);
 }
 
 AudioFormatReader* createCDTrackReader(const String& cdKey, int track) {
-  ScopedPointer<AudioCDReader> reader(getAudioCDReader(cdKey));
+  ptr<AudioCDReader> reader(getAudioCDReader(cdKey));
   if (reader)
-    return createCDTrackReader(reader.release(), track);
+    return createCDTrackReader(reader.transfer(), track);
 
   LOG(ERROR) << "Couldn't create reader for " << cdKey;
   return NULL;

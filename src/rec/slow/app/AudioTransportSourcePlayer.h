@@ -26,6 +26,7 @@ class AudioTransportSourcePlayer
   void toggle() { setStart(!isPlaying()); }
   void setStart(bool isStart = true);
   void update();
+
   Broadcaster<const AudioTransportSourcePlayer&>* changeBroadcaster() {
     return &changeBroadcaster_;
   }

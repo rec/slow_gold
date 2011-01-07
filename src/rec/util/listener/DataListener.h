@@ -2,6 +2,7 @@
 #define __REC_UTIL_LISTENER_DATALISTENER__
 
 #include "rec/util/listener/Listener.h"
+#include "rec/util/Reference.h"
 #include "rec/data/persist/Data.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/data/persist/App.h"
@@ -11,28 +12,25 @@ namespace util {
 namespace listener {
 
 template <typename Proto>
-class DataListener : public Listener<const Proto&> {
+class DataListener : public Reference<persist::Data<Proto> >,
+                     public Listener<const Proto&> {
  public:
   typedef persist::Data<Proto> Data;
+  typedef Reference<persist::Data<Proto> > Super;
 
-  DataListener() : data_(NULL) {}
+  DataListener() {}
 
-  virtual ~DataListener() { setData(NULL); }
+  virtual ~DataListener() {}
 
-  Data* data() { return data_; }
+  virtual void setData(Data* d) {
+    if (this->getData())
+      this->getData()->removeListener(this);
 
-  virtual void setData(Data* data) {
-    if (data_)
-      data_->removeListener(this);
+    Super::setData(d);
 
-    data_ = data;
-
-    if (data_)
-      data_->addListener(this);
+    if (this->getData())
+      this->getData()->addListener(this);
   }
-
- private:
-  Data* data_;
 
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };

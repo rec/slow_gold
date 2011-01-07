@@ -39,12 +39,11 @@ class Layout : public Component {
   }
 
   juce::StretchableLayoutManager layoutManager_;
-
- private:
   std::vector<Component*> components_;
   const Orientation orientation_;
   const bool resizeOtherDimension_;
 
+ private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Layout);
 };
 

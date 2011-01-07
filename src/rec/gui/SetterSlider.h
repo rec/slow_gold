@@ -23,7 +23,7 @@ class SetterSlider : public Layout,
                const String& caption = String::empty,
                const String& tip = String::empty)
       : Layout(HORIZONTAL, true, name),
-        AddressListener<Proto>(address), slider_(name), label_(caption) {
+        AddressListener<Proto>(address), slider_(name), caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
     slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 90, 20);
 
@@ -31,15 +31,15 @@ class SetterSlider : public Layout,
     slider_.setTooltip(tip.length() ? tip : cap);
     slider_.addListener(this);
 
-    label_.setText(cap, false);
-    label_.setFont(Font(14.0000f, Font::plain));
-    label_.setJustificationType(juce::Justification::centredRight);
-    label_.setEditable(false, false, false);
-    label_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
-    label_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
+    caption_.setText(cap, false);
+    caption_.setFont(Font(14.0000f, Font::plain));
+    caption_.setJustificationType(juce::Justification::centredRight);
+    caption_.setEditable(false, false, false);
+    caption_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
+    caption_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
 
-    addToLayout(&label_, 100, -0.3, -0.3);
-    addToLayout(&slider_, 100, -0.7, -0.7);
+    addToLayout(&caption_, 80);
+    addToLayout(&slider_, 0, -1.0, -1.0);
   }
 
   Slider* slider() { return &slider_; }
@@ -57,7 +57,7 @@ class SetterSlider : public Layout,
   }
 
   Slider slider_;
-  juce::Label label_;
+  juce::Label caption_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterSlider);

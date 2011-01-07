@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="5NIW8u6KW" name="tests">
+  <MAINGROUP id="ovT8N03b7" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -220,6 +220,8 @@
                 name="Copy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Data.h" id="RsGKM6i7V"
                 name="Data.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/HasData.h" id="e90e8DEjK"
+                name="HasData.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Persist.h" id="TcNAHUJck"
                 name="Persist.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/UntypedData.cpp"
@@ -471,8 +473,6 @@
               name="Color.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Color.h" id="8c5n7LS8Q" name="Color.h"
               resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/DataDisplayer.h" id="GMcsvFRlL"
-              name="DataDisplayer.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/DropTarget.h" id="WvrqWset5"
               name="DropTarget.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="IJmPtaJbj" name="Font.h"
@@ -537,8 +537,14 @@
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="GVwhlEC2q"
               name="RecentFiles.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="CdQM9fV1F"
+              name="SetterResizer.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterSlider.h" id="uQfr8LK9j"
               name="SetterSlider.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SetterText.h" id="HijpG7Y7z"
+              name="SetterText.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SetterTextArea.h" id="uFKu07ojF"
+              name="SetterTextArea.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterToggle.h" id="OW7Zo8djw"
               name="SetterToggle.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/StretchyController.h" id="LxikXE5wP"
@@ -697,6 +703,8 @@
               name="PointerList.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="AvppXo9nU"
               name="Range.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Reference.h" id="vZZYQTicG"
+              name="Reference.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="CWUnE0wxb"
               name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="Km8Ts3LYZ" name="STL.h"
@@ -925,7 +933,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ij3BLI22o" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="JWCh7gOcH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

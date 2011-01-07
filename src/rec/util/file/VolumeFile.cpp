@@ -2,7 +2,9 @@
 
 #include "rec/audio/AudioFormatManager.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/util/cd/CDReader.h"
+#include "rec/util/cd/Album.h"
 #include "rec/util/file/Util.h"
 
 using namespace juce;
@@ -127,19 +129,42 @@ bool compare(const VolumeFile& x, const VolumeFile& y) {
   return false;
 }
 
-AudioFormatReader* createReader(const VolumeFile& file) {
-  if (file.type() != VolumeFile::CD)
-    return audio::getAudioFormatManager()->createReaderFor(getFile(file));
+namespace {
 
-  if (!file.path_size()) {
-    LOG(ERROR) << "Can't create track for root CD volume for "
-               << file.DebugString();
-    return NULL;
+AudioFormatReader* createReader(const VolumeFile& file) {
+  cd::Metadata metadata;
+  ptr<AudioFormatReader> reader;
+  persist::Data<cd::Metadata>* data = persist::data<cd::Metadata>(file);
+  bool needsRead = !data->fileReadSuccess();
+
+  if (file.type() == VolumeFile::CD) {
+    if (!file.path_size()) {
+      LOG(ERROR) << "Can't create track for root CD volume for "
+                 << file.DebugString();
+      return NULL;
+    }
+
+    int track = String(file.path(0).c_str()).getIntValue();
+    reader.reset(util::cd::createCDTrackReader(file.name().c_str(), track));
+
+    if (needsRead) {
+      const cd::TrackOffsets& off = dynamic_cast<AudioCDReader*>(
+          reader.get())->getTrackOffsets();
+      metadata = getTrack(cd::getAlbum(file, off), track);
+          }
+  } else {
+    reader.reset(audio::getAudioFormatManager()->createReaderFor(getFile(file)));
+    if (needsRead)
+      metadata = cd::getMetadata(reader->metadataValues);
   }
 
-  int track = String(file.path(0).c_str()).getIntValue();
-  return util::cd::createCDTrackReader(file.name().c_str(), track);
+  if (needsRead && (metadata != cd::Metadata::default_instance()))
+    data->set(metadata);
+
+  return reader.transfer();
 }
+
+}  // namespace
 
 PositionableAudioSource* createSource(const VolumeFile& file) {
   ptr<AudioFormatReader> reader(createReader(file));

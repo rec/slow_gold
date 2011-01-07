@@ -123,7 +123,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
 
 Album getAlbum(const VolumeFile& file, const TrackOffsets& off) {
   Album album;
-  File shadow = getShadowFile(file, "album.Album");
+  File shadow = getShadowFile(file, "album");
   if (!persist::copy(shadow, &album)) {
     AlbumList albums;
     String error = fillAlbums(off, &albums);
@@ -145,7 +145,7 @@ Metadata getTrack(const Album& album, int i) {
   return track;
 }
 
-Metadata getTrack(const StringPairArray& metadata) {
+Metadata getMetadata(const StringPairArray& metadata) {
   Metadata t;
   const StringArray& keys = metadata.getAllKeys();
   for (int i = 0; i < keys.size(); ++i) {
@@ -163,6 +163,23 @@ Metadata getTrack(const StringPairArray& metadata) {
   }
   return t;
 }
+
+#if 0
+namespace {
+
+typedef void Metadata::(*Setter)(const string&);
+
+std::pair<string, Setter> setters[] = {
+  std::make_pair("TALB", &Metadata::set_album_title),
+  std::make_pair("TCON", &Metadata::set_genre),
+  std::make_pair("TDRC", &Metadata::set_year),
+  std::make_pair("TIT2", &Metadata::set_track_title),
+  std::make_pair("TPE1", &Metadata::set_artist),
+  std::make_pair("TPE2", &Metadata::set_artist),
+  std::make_pair("TRCK", &Metadata::set_track_number),
+};
+}  // namespace
+#endif
 
 }  // namespace cd
 }  // namespace util

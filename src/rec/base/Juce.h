@@ -42,6 +42,7 @@ typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
 typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
 
+typedef juce::TextEditor TextEditor;
 typedef juce::Thread Thread;
 typedef juce::TimeSliceThread TimeSliceThread;
 typedef juce::TimeSliceClient TimeSliceClient;

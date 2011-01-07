@@ -234,6 +234,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Data.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\HasData.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Persist.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.h"/>
@@ -366,7 +367,6 @@
           <File RelativePath="..\..\..\..\src\rec\gui\CachedThumbnail.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.h"/>
-          <File RelativePath="..\..\..\..\src\rec\gui\DataDisplayer.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\DropTarget.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Font.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Geometry.cpp"/>
@@ -400,7 +400,10 @@
           <File RelativePath="..\..\..\..\src\rec\gui\Layout.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterSlider.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterText.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterToggle.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.h"/>
         </Filter>
@@ -488,6 +491,7 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\PointerList.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Range.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Reference.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\ShouldExit.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\TestData.h"/>

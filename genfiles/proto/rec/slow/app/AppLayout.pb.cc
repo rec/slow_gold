@@ -78,10 +78,10 @@ void protobuf_AddDesc_rec_2fslow_2fapp_2fAppLayout_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/slow/app/AppLayout.proto\022\010rec.slow"
-    "\032\026rec/gui/Geometry.proto\"s\n\tAppLayout\022\"\n"
-    "\006bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\030\n\020dir"
-    "ectory_height\030\002 \001(\r\022\023\n\013wave_height\030\003 \001(\r"
-    "\022\023\n\013loops_width\030\004 \001(\r", 181);
+    "\032\026rec/gui/Geometry.proto\"\202\001\n\tAppLayout\022\""
+    "\n\006bounds\030\001 \001(\0132\022.rec.gui.Rectangle\022\035\n\020di"
+    "rectory_height\030\002 \001(\r:\003350\022\030\n\013wave_height"
+    "\030\003 \001(\r:\003500\022\030\n\013loops_width\030\004 \001(\r:\003800", 197);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/app/AppLayout.proto", &protobuf_RegisterTypes);
   AppLayout::default_instance_ = new AppLayout();
@@ -124,9 +124,9 @@ AppLayout::AppLayout(const AppLayout& from)
 void AppLayout::SharedCtor() {
   _cached_size_ = 0;
   bounds_ = NULL;
-  directory_height_ = 0u;
-  wave_height_ = 0u;
-  loops_width_ = 0u;
+  directory_height_ = 350u;
+  wave_height_ = 500u;
+  loops_width_ = 800u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -165,9 +165,9 @@ void AppLayout::Clear() {
     if (_has_bit(0)) {
       if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
     }
-    directory_height_ = 0u;
-    wave_height_ = 0u;
-    loops_width_ = 0u;
+    directory_height_ = 350u;
+    wave_height_ = 500u;
+    loops_width_ = 800u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -192,7 +192,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 directory_height = 2;
+      // optional uint32 directory_height = 2 [default = 350];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -208,7 +208,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 wave_height = 3;
+      // optional uint32 wave_height = 3 [default = 500];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -224,7 +224,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 loops_width = 4;
+      // optional uint32 loops_width = 4 [default = 800];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -264,17 +264,17 @@ void AppLayout::SerializeWithCachedSizes(
       1, this->bounds(), output);
   }
   
-  // optional uint32 directory_height = 2;
+  // optional uint32 directory_height = 2 [default = 350];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->directory_height(), output);
   }
   
-  // optional uint32 wave_height = 3;
+  // optional uint32 wave_height = 3 [default = 500];
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->wave_height(), output);
   }
   
-  // optional uint32 loops_width = 4;
+  // optional uint32 loops_width = 4 [default = 800];
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->loops_width(), output);
   }
@@ -294,17 +294,17 @@ void AppLayout::SerializeWithCachedSizes(
         1, this->bounds(), target);
   }
   
-  // optional uint32 directory_height = 2;
+  // optional uint32 directory_height = 2 [default = 350];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->directory_height(), target);
   }
   
-  // optional uint32 wave_height = 3;
+  // optional uint32 wave_height = 3 [default = 500];
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->wave_height(), target);
   }
   
-  // optional uint32 loops_width = 4;
+  // optional uint32 loops_width = 4 [default = 800];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->loops_width(), target);
   }
@@ -327,21 +327,21 @@ int AppLayout::ByteSize() const {
           this->bounds());
     }
     
-    // optional uint32 directory_height = 2;
+    // optional uint32 directory_height = 2 [default = 350];
     if (has_directory_height()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->directory_height());
     }
     
-    // optional uint32 wave_height = 3;
+    // optional uint32 wave_height = 3 [default = 500];
     if (has_wave_height()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->wave_height());
     }
     
-    // optional uint32 loops_width = 4;
+    // optional uint32 loops_width = 4 [default = 800];
     if (has_loops_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

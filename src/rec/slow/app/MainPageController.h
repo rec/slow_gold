@@ -3,9 +3,11 @@
 
 #include "rec/gui/Layout.h"
 #include "rec/gui/SetterToggle.h"
+#include "rec/gui/SetterTextArea.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/widget/status/Time.h"
+#include "rec/util/cd/Album.pb.h"
 
 namespace rec {
 namespace slow {
@@ -18,6 +20,7 @@ class AudioTransportSourcePlayer;
 
 class MainPageController : public gui::Layout,
                            public Listener<const AudioTransportSourcePlayer&>,
+                           public Listener<const VolumeFile&>,
                            public juce::ButtonListener,
                            public Listener<float>,
                            public Broadcaster<float>,
@@ -33,9 +36,10 @@ class MainPageController : public gui::Layout,
   virtual void operator()(const AudioTransportSourcePlayer& player);
   virtual void operator()(float time);
   virtual void operator()(const StretchyProto&);
+  virtual void operator()(const VolumeFile&);
 
   void setButtonState();
-   virtual void setData(Data* data);
+  virtual void setData(Data* data);
 
   void resized();
 
@@ -46,6 +50,7 @@ class MainPageController : public gui::Layout,
   gui::StretchyController stretchyController_;
   TextComponent songTime_;
   DialComponent songDial_;
+  gui::SetterTextArea<cd::Metadata> songData_;
 };
 
 }  // namespace slow

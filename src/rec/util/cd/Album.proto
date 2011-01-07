@@ -9,6 +9,7 @@ message Metadata {
   optional string artist = 6;
   optional string track_number = 7;
   optional uint64 track_length = 8;  // in samples.
+  optional string notes = 9;  // User-created notes.
 };
 
 message Album {

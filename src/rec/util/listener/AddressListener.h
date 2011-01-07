@@ -26,8 +26,8 @@ class AddressListener : public DataListener<Proto> {
 
  protected:
   virtual void onChange() {
-    if (this->data())
-      this->data()->set(address_, get());
+    if (this->getData())
+      this->getData()->set(address_, get());
   }
 
   virtual const Value get() const = 0;

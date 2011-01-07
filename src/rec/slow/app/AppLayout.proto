@@ -4,7 +4,7 @@ import "rec/gui/Geometry.proto";
 
 message AppLayout {
   optional gui.Rectangle bounds = 1;
-  optional uint32 directory_height = 2;
-  optional uint32 wave_height = 3;
-  optional uint32 loops_width = 4;
+  optional uint32 directory_height = 2 [default = 350];
+  optional uint32 wave_height = 3 [default = 500];
+  optional uint32 loops_width = 4 [default = 800];
 };

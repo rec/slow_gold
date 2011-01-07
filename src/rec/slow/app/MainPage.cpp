@@ -56,18 +56,20 @@ MainPage::MainPage(AudioDeviceManager& deviceManager)
   treeRoot_->addListener(&fileListener_);
   waveform_.dropBroadcaster()->addListener(&fileListener_);
 
-  treeRoot_->startThread();
-
   fileLocker_->addListener(this);
+  fileLocker_->addListener(&controller_);
   timeLocker_->addListener(this);
 
-  fileLocker_->startThread();
-  timeLocker_->startThread();
   persist::data<VolumeFile>()->addListener(fileLocker_.get());
-  persist::data<VolumeFile>()->requestUpdate();
 
   transportSource_->addListener(cursor_);
+
+  treeRoot_->startThread();
+  fileLocker_->startThread();
+  timeLocker_->startThread();
+
   transportSource_->update();
+  persist::data<VolumeFile>()->requestUpdate();
 }
 
 MainPage::~MainPage() {
@@ -79,7 +81,7 @@ void MainPage::paint(Graphics& g) {
 }
 
 static const int BLOCKSIZE = 1024;
-static const int SAMPLE_RATE = 44100.0f;
+static const int SAMPLE_RATE = 44100;
 
 void MainPage::operator()(const VolumeFile& file) {
   if (file_ != file) {
@@ -157,7 +159,6 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
   else
     thread::callAsync(timeLocker_.get(), &TimeLocker::set, timeMouse.time_);
 }
-
 
 }  // namespace slow
 }  // namespace rec

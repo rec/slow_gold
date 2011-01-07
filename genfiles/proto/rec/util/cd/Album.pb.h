@@ -171,6 +171,16 @@ class Metadata : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 track_length() const;
   inline void set_track_length(::google::protobuf::uint64 value);
   
+  // optional string notes = 9;
+  inline bool has_notes() const;
+  inline void clear_notes();
+  static const int kNotesFieldNumber = 9;
+  inline const ::std::string& notes() const;
+  inline void set_notes(const ::std::string& value);
+  inline void set_notes(const char* value);
+  inline void set_notes(const char* value, size_t size);
+  inline ::std::string* mutable_notes();
+  
   // @@protoc_insertion_point(class_scope:rec.util.cd.Metadata)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -191,11 +201,13 @@ class Metadata : public ::google::protobuf::Message {
   ::std::string* track_number_;
   static const ::std::string _default_track_number_;
   ::google::protobuf::uint64 track_length_;
+  ::std::string* notes_;
+  static const ::std::string _default_notes_;
   friend void  protobuf_AddDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fcd_2fAlbum_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fcd_2fAlbum_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -722,6 +734,48 @@ inline ::google::protobuf::uint64 Metadata::track_length() const {
 inline void Metadata::set_track_length(::google::protobuf::uint64 value) {
   _set_bit(7);
   track_length_ = value;
+}
+
+// optional string notes = 9;
+inline bool Metadata::has_notes() const {
+  return _has_bit(8);
+}
+inline void Metadata::clear_notes() {
+  if (notes_ != &_default_notes_) {
+    notes_->clear();
+  }
+  _clear_bit(8);
+}
+inline const ::std::string& Metadata::notes() const {
+  return *notes_;
+}
+inline void Metadata::set_notes(const ::std::string& value) {
+  _set_bit(8);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  notes_->assign(value);
+}
+inline void Metadata::set_notes(const char* value) {
+  _set_bit(8);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  notes_->assign(value);
+}
+inline void Metadata::set_notes(const char* value, size_t size) {
+  _set_bit(8);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  notes_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Metadata::mutable_notes() {
+  _set_bit(8);
+  if (notes_ == &_default_notes_) {
+    notes_ = new ::std::string;
+  }
+  return notes_;
 }
 
 // -------------------------------------------------------------------
