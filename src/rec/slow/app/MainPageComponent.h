@@ -12,7 +12,7 @@ namespace slow {
 
 class MainPageComponent  : public Component {
  public:
-  MainPageComponent() : mainPage_(deviceManager_),
+  MainPageComponent() : mainPage_(&deviceManager_),
                         audioSetupPage_(deviceManager_),
                         deviceListener_(&deviceManager_) {
     addAndMakeVisible(&mainPage_);

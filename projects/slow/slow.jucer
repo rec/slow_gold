@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="jK4JWrbNR" name="Slow">
+  <MAINGROUP id="egdm44jEe" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -559,6 +559,10 @@
                 name="RecWindow.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/RecWindow.h" id="eehexZcfk"
                 name="RecWindow.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/app/StretchyPlayer.cpp"
+                id="HkJAZ1xGo" name="StretchyPlayer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/app/StretchyPlayer.h" id="Oa4sETw6e"
+                name="StretchyPlayer.h" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="DEDkN5VGv" name="util">
@@ -890,7 +894,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Bdsg97ex4" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="jhSPbDLgH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -119,6 +119,7 @@
 		B78C44F06E991FF8183A25C8 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B15833E2B2EB99E74F7E6 /* Socket.cpp */; };
 		B9733F5A75DC97D8469BF078 /* PlaybackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFD1EB641408802ED757B1B7 /* PlaybackController.cpp */; };
 		BA6C761172B85D1727591E29 /* MediaPlaybackStop.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43818744A9AA0BE6E19C4BC2 /* MediaPlaybackStop.svg.cpp */; };
+		BA89F807C88BE2A473D64135 /* StretchyPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20F4B33CBD7524CDFB854F26 /* StretchyPlayer.cpp */; };
 		BB38E1A91947F2A14CB23DD5 /* Thread.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 60B269B7648EBE79896F7F54 /* Thread.pb.cc */; };
 		BBF9C52A8F10B7D04B5FBEC9 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */; };
 		BE652DE043DBBAF8C10E8B5C /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20F428DEA148977B8CCBA4AC /* Waveform.cpp */; };
@@ -197,6 +198,7 @@
 		13BDD945E532565AC5D254D1 /* RecentFiles.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RecentFiles.cpp; path = ../../../../src/rec/gui/RecentFiles.cpp; sourceTree = SOURCE_ROOT; };
 		1418DE18D16254F6952FBFF3 /* CreateReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateReader.h; path = ../../../../src/rec/audio/format/mpg123/CreateReader.h; sourceTree = SOURCE_ROOT; };
 		1476F1BC65350776D8FAE4C0 /* CopySamples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CopySamples.h; path = ../../../../src/rec/audio/CopySamples.h; sourceTree = SOURCE_ROOT; };
+		148150DB696F8D15457ACD97 /* StretchyPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StretchyPlayer.h; path = ../../../../src/rec/slow/app/StretchyPlayer.h; sourceTree = SOURCE_ROOT; };
 		14A6B202F703695BCB99FD2E /* Locker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Locker.h; path = ../../../../src/rec/util/thread/Locker.h; sourceTree = SOURCE_ROOT; };
 		170B2EFA8B2446EA16DC731F /* Panes.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Panes.pb.h; path = ../../../../genfiles/proto/rec/widget/Panes.pb.h; sourceTree = SOURCE_ROOT; };
 		174985731F6DD5E606DB8611 /* ltnode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ltnode.h; path = ../../../../src/rec/data/yaml/src/ltnode.h; sourceTree = SOURCE_ROOT; };
@@ -219,6 +221,7 @@
 		203B9E16EDB1DEEE5327BA12 /* CDDBResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDDBResponse.h; path = ../../../../src/rec/util/cd/CDDBResponse.h; sourceTree = SOURCE_ROOT; };
 		20837C077485EF8D54348074 /* Exception.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Exception.h; path = ../../../../src/rec/util/Exception.h; sourceTree = SOURCE_ROOT; };
 		20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Waveform.cpp; path = ../../../../src/rec/widget/waveform/Waveform.cpp; sourceTree = SOURCE_ROOT; };
+		20F4B33CBD7524CDFB854F26 /* StretchyPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StretchyPlayer.cpp; path = ../../../../src/rec/slow/app/StretchyPlayer.cpp; sourceTree = SOURCE_ROOT; };
 		2156D158361076E91DD5D101 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2229918D7B3E59F708F34D9B /* AppDirectory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDirectory.h; path = ../../../../src/rec/data/persist/AppDirectory.h; sourceTree = SOURCE_ROOT; };
 		22E6A127E8EA05C450A50D59 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../../../../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
@@ -635,6 +638,8 @@
 				D2C56AF4639F0DBE660DB5DF /* RecApplication.h */,
 				B00B6CD9B741B9211353F3E0 /* RecWindow.cpp */,
 				0F38B4605B01BD752FA1E7D1 /* RecWindow.h */,
+				20F4B33CBD7524CDFB854F26 /* StretchyPlayer.cpp */,
+				148150DB696F8D15457ACD97 /* StretchyPlayer.h */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -1088,20 +1093,6 @@
 			name = access;
 			sourceTree = "<group>";
 		};
-		A7BFC81A8B95AF64036E58BD /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1213,6 +1204,20 @@
 				C448E428335991E8E5B42AF9 /* TreeViewDropAll.h */,
 			);
 			name = tree;
+			sourceTree = "<group>";
+		};
+		C5F902F5AF6EF45EC5B9EE62 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		C7FA3BF37B26C59BB5AF647B /* persist */ = {
@@ -1451,7 +1456,7 @@
 				French,
 				German,
 			);
-			mainGroup = A7BFC81A8B95AF64036E58BD /* Source */;
+			mainGroup = C5F902F5AF6EF45EC5B9EE62 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1562,6 +1567,7 @@
 				DCEB49B4AD7AF16EFC1036C6 /* MainPage.cpp in Sources */,
 				B9733F5A75DC97D8469BF078 /* PlaybackController.cpp in Sources */,
 				559328A49B5A546E1B4F1569 /* RecWindow.cpp in Sources */,
+				BA89F807C88BE2A473D64135 /* StretchyPlayer.cpp in Sources */,
 				59AA35AA1E931C53CFD26709 /* Difference.cpp in Sources */,
 				C634C1A6B2B814A56413954A /* Filler.cpp in Sources */,
 				5A8B62BF0E7F1A048B0E7724 /* MergeBlockSet.cpp in Sources */,

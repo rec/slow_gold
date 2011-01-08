@@ -35,9 +35,9 @@ Dial realTimeDial() {
 }  // namespace
 
 
-PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport)
+PlaybackController::PlaybackController()
     : Layout(VERTICAL, true, "Main controls"),
-      transportSource_(transport),
+      transportSource_(NULL),
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
       disableButton_("Disable pitch/time shift", Address("disabled")),
       songTime_(Text()),
@@ -64,10 +64,22 @@ PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport)
 
   startStopButton_.addListener(this);
   disableButton_.addListener(this);
+}
 
-  transportSource_->addListener(&songDial_);
-  transportSource_->addListener(&songTime_);
-  transportSource_->changeBroadcaster()->addListener(this);
+void PlaybackController::setTransport(AudioTransportSourcePlayer* source) {
+  if (transportSource_) {
+    transportSource_->removeListener(&songDial_);
+    transportSource_->removeListener(&songTime_);
+    transportSource_->changeBroadcaster()->removeListener(this);
+  }
+
+  transportSource_ = source;
+
+  if (transportSource_) {
+    transportSource_->addListener(&songDial_);
+    transportSource_->addListener(&songTime_);
+    transportSource_->changeBroadcaster()->addListener(this);
+  }
 }
 
 void PlaybackController::operator()(float time) {

@@ -31,7 +31,7 @@ class Listener {
 
 // Broadcast updates of type Type to a set of Listener<Type>.
 template <typename Type>
-class Broadcaster { // : public Listener<Type> {
+class Broadcaster {
  public:
   typedef std::set<Listener<Type>*> Listeners;
   typedef typename Listeners::iterator iterator;
@@ -40,7 +40,6 @@ class Broadcaster { // : public Listener<Type> {
 
   virtual ~Broadcaster();
   virtual void broadcast(Type x);
-  virtual void operator()(Type t) { broadcast(t); }
 
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);

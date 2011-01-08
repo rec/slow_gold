@@ -28,7 +28,8 @@ class PlaybackController : public gui::Layout,
  public:
   typedef persist::Data<StretchyProto> Data;
 
-  PlaybackController(AudioTransportSourcePlayer* transportSource);
+  PlaybackController();
+  void setTransport(AudioTransportSourcePlayer* transportSource);
 
   void buttonClicked(juce::Button *button);
   void setLength(int length);
@@ -51,6 +52,8 @@ class PlaybackController : public gui::Layout,
   TextComponent songTime_;
   DialComponent songDial_;
   gui::SetterTextArea<cd::Metadata> songData_;
+
+  DISALLOW_COPY_AND_ASSIGN(PlaybackController);
 };
 
 }  // namespace slow
