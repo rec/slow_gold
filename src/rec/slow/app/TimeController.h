@@ -29,8 +29,13 @@ class TimeController : public gui::Layout,
   void setButtonState();
 
  private:
+  Layout transportLayout_;
+  Layout timesAndClockLayout_;
+  Layout timesLayout_;
+
   AudioTransportSourcePlayer* transportSource_;
   juce::DrawableButton startStopButton_;
+
   widget::status::time::TextComponent songTime_;
   widget::status::time::DialComponent songDial_;
 
