@@ -5,8 +5,8 @@
 #include "rec/gui/SetterTextArea.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/util/listener/DataListener.h"
-#include "rec/widget/status/Time.h"
-#include "rec/util/cd/Album.pb.h"
+#include "rec/slow/app/TimeController.h"
+#include "rec/util/cd/Album.h"
 
 namespace rec {
 namespace slow {
@@ -15,12 +15,8 @@ typedef audio::source::StretchyProto StretchyProto;
 typedef widget::status::time::TextComponent TextComponent;
 typedef widget::status::time::DialComponent DialComponent;
 
-class AudioTransportSourcePlayer;
-
 class PlaybackController : public gui::Layout,
-                           public Listener<const AudioTransportSourcePlayer&>,
                            public Listener<const VolumeFile&>,
-                           public juce::ButtonListener,
                            public Listener<float>,
                            public Broadcaster<float>,
                            public DataListener<StretchyProto> {
@@ -28,28 +24,20 @@ class PlaybackController : public gui::Layout,
   typedef persist::Data<StretchyProto> Data;
 
   PlaybackController();
-  void setTransport(AudioTransportSourcePlayer* transportSource);
 
-  void buttonClicked(juce::Button *button);
-  void setLength(int length);
-
-  virtual void operator()(const AudioTransportSourcePlayer& player);
   virtual void operator()(float time);
   virtual void operator()(const VolumeFile&);
   virtual void operator()(const StretchyProto&);
 
-  void setButtonState();
   virtual void setData(Data* data);
 
   void resized();
+  TimeController* timeController() { return &timeController_; }
 
  private:
-  AudioTransportSourcePlayer* transportSource_;
-  juce::DrawableButton startStopButton_;
   gui::StretchyController stretchyController_;
-  TextComponent songTime_;
-  DialComponent songDial_;
   gui::SetterTextArea<cd::Metadata> songData_;
+  TimeController timeController_;
 
   DISALLOW_COPY_AND_ASSIGN(PlaybackController);
 };

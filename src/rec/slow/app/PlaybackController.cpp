@@ -5,7 +5,6 @@
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/Color.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/cd/Album.h"
 
@@ -21,31 +20,9 @@ using rec::widget::status::time::TextComponent;
 namespace rec {
 namespace slow {
 
-namespace {
-
-Dial realTimeDial() {
-  Dial dial;
-  Colors* colors = dial.mutable_widget()->mutable_colors();
-  colors->add_color()->set_argb(Colours::white.getARGB());
-  colors->add_color()->set_argb(Colours::green.getARGB());
-  colors->add_color()->set_argb(Colours::red.getARGB());
-
-  return dial;
-}
-}  // namespace
-
 PlaybackController::PlaybackController()
     : Layout(VERTICAL, true, "Main controls"),
-      transportSource_(NULL),
-      startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
-      songTime_(Text()),
-      songDial_(realTimeDial()),
       songData_("SongData") {
-  startStopButton_.setImages(gui::icon::MediaPlaybackStart::get(),
-                             NULL, NULL, NULL,
-                             gui::icon::MediaPlaybackStop::get());
-  startStopButton_.setClickingTogglesState(true);
-  addAndMakeVisible(&startStopButton_);
   addAndMakeVisible(&stretchyController_);
 
   songData_.add("Track", Address("track_title"),
@@ -59,27 +36,8 @@ PlaybackController::PlaybackController()
   songData_.add("Notes", Address("notes"), "Put whatever you like here");
   songData_.addToLayoutManager();
 
-  addAndMakeVisible(&songTime_);
-  addAndMakeVisible(&songDial_);
+  addAndMakeVisible(&timeController_);
   addAndMakeVisible(&songData_);
-
-  startStopButton_.addListener(this);
-}
-
-void PlaybackController::setTransport(AudioTransportSourcePlayer* source) {
-  if (transportSource_) {
-    transportSource_->removeListener(&songDial_);
-    transportSource_->removeListener(&songTime_);
-    transportSource_->changeBroadcaster()->removeListener(this);
-  }
-
-  transportSource_ = source;
-
-  if (transportSource_) {
-    transportSource_->addListener(&songDial_);
-    transportSource_->addListener(&songTime_);
-    transportSource_->changeBroadcaster()->addListener(this);
-  }
 }
 
 void PlaybackController::operator()(float time) {
@@ -88,27 +46,13 @@ void PlaybackController::operator()(float time) {
 }
 
 void PlaybackController::operator()(const StretchyProto& desc) {
-  thread::callAsync(&stretchyController_, 
+  thread::callAsync(&stretchyController_,
                     &gui::StretchyController::enableSliders,
                     !desc.disabled());
 }
 
-void PlaybackController::buttonClicked(juce::Button *button) {
-  if (button == &startStopButton_)
-    transportSource_->toggle();
-}
-
-void PlaybackController::setLength(int length) {
-  songDial_.setLength(length);
-}
-
-void PlaybackController::operator()(const AudioTransportSourcePlayer& player) {
-  thread::callAsync(this, &PlaybackController::setButtonState);
-}
-
-void PlaybackController::setButtonState() {
-  startStopButton_.setToggleState(transportSource_->isPlaying(), false);
-  startStopButton_.repaint();
+void PlaybackController::operator()(const VolumeFile& file) {
+  songData_.setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
 }
 
 void PlaybackController::setData(Data* data) {
@@ -117,16 +61,9 @@ void PlaybackController::setData(Data* data) {
 }
 
 void PlaybackController::resized() {
-  startStopButton_.setBounds(8, 8, 32, 32);
   songData_.setBounds(120, 8, 370, getHeight() - 16);
   stretchyController_.setBounds(500, 0, getWidth() - 500, 85);
-
-  songTime_.setBounds(getWidth() - 120, 60, 110, 22);
-  songDial_.setBounds(getWidth() - 46, 90 - 46, 36, 36);
-}
-
-void PlaybackController::operator()(const VolumeFile& file) {
-  songData_.setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
+  timeController_.setBounds(8, 8, getHeight() - 16, 100);
 }
 
 }  // namespace slow

@@ -1,7 +1,7 @@
 #include "rec/slow/app/StretchyPlayer.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
-#include "rec/data/proto/Equals.h"
 #include "rec/audio/source/DoubleRunnyBuffer.h"
+#include "rec/data/proto/Equals.h"
+#include "rec/slow/app/AudioTransportSourcePlayer.h"
 
 namespace rec {
 namespace slow {

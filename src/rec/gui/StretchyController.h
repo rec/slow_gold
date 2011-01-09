@@ -29,12 +29,12 @@ class StretchyController : public Layout {
     pitchScale_.slider()->setTextValueSuffix(" semitones");
     fineScale_.slider()->setTextValueSuffix(" cents");
 
-    double portion = -1.0 / 4.0;
-    addToLayout(&disableButton_, portion);
+    double portion = -1.0 / 3.0;
+    double portion2 = -1.0 / 5.0;
+    addToLayout(&disableButton_, portion2);
     addToLayout(&playbackSpeed_, portion);
     addToLayout(&pitchScale_, portion);
     addToLayout(&fineScale_, portion);
-    // getData()->set("disable", disableButton_.getToggleState());
   }
 
   virtual bool isOpaque() const { return true; }

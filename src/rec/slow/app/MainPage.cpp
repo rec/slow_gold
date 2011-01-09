@@ -32,7 +32,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       loops_("Loops"),
       openDialogOpen_(false),
       player_(deviceManager) {
-  controller_.setTransport(player_.getTransport());
+  controller_.timeController()->setTransport(player_.getTransport());
 
   panel_.addToLayout(treeRoot_->treeView(), 50, -1.0, -0.5);
   panel_.addToLayout(&hbar_, 10, 10, 10);
@@ -58,7 +58,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
 }
 
 MainPage::~MainPage() {
-  controller_.setTransport(NULL);
+  controller_.timeController()->setTransport(NULL);
 }
 
 void MainPage::paint(Graphics& g) {
@@ -110,7 +110,7 @@ void MainPage::operator()(const VolumeFile& file) {
     waveform_.setAudioThumbnail(player_.cachedThumbnail()->thumbnail());
     player_.cachedThumbnail()->addListener(&waveform_);
     gui::addRecentFile(file);
-    controller_.setLength(player_.length());
+    controller_.timeController()->setLength(player_.length());
   }
 }
 

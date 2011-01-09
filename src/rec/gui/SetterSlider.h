@@ -25,7 +25,7 @@ class SetterSlider : public Layout,
       : Layout(HORIZONTAL, true, name),
         AddressListener<Proto>(address), slider_(name), caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
-    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 90, 20);
+    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 85, 16);
 
     const String& cap = caption.length() ? caption : name;
     slider_.setTooltip(tip.length() ? tip : cap);
