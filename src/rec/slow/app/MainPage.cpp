@@ -27,6 +27,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       panel_(VERTICAL, true, "TreeWaveAndControl"),
       hbar_(Address("directory_height"), panel_.layoutManager(), 1, HORIZONTAL),
       vbar_(Address("loops_width"), layoutManager(), 1, VERTICAL),
+      hbar2_(Address("wave_height"), panel_.layoutManager(), 3, HORIZONTAL),
       treeRoot_(new Root(NodeDesc())),
       waveform_(WaveformProto()),
       loops_("Loops"),
@@ -34,10 +35,11 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       player_(deviceManager) {
   controller_.timeController()->setTransport(player_.getTransport());
 
-  panel_.addToLayout(treeRoot_->treeView(), 50, -1.0, -0.5);
+  panel_.addToLayout(treeRoot_->treeView());
   panel_.addToLayout(&hbar_, 10, 10, 10);
-  panel_.addToLayout(&waveform_, 150, -1.0, -0.5);
-  panel_.addToLayout(&controller_, 100, 100, 100);
+  panel_.addToLayout(&waveform_);
+  panel_.addToLayout(&hbar2_, 10, 10, 10);
+  panel_.addToLayout(&controller_);
 
   addToLayout(&panel_, 200, -1.0, -0.7);
   addToLayout(&vbar_, 10);
@@ -105,7 +107,6 @@ void MainPage::operator()(const VolumeFile& file) {
   controller_(file);
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);
-    // cursor_->setTime(0.0f);  happens automatically?
   } else {
     waveform_.setAudioThumbnail(player_.cachedThumbnail()->thumbnail());
     player_.cachedThumbnail()->addListener(&waveform_);

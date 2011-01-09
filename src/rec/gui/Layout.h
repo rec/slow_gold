@@ -14,6 +14,10 @@ class Layout : public Component {
   Layout(Orientation o, bool resizeOther, const String& name = String::empty)
       : Component(name), orientation_(o), resizeOtherDimension_(resizeOther) {}
 
+  void addToLayout(Component* c) {
+    addToLayout(c, 0, -1.0, -1.0);
+  }
+
   void addToLayout(Component* c, double m) {
     addToLayout(c, m, m, m);
   }

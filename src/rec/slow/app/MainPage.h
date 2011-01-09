@@ -13,7 +13,6 @@
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/gui/SetterResizer.h"
-#include "rec/util/thread/Trash.h"
 
 using namespace juce;
 
@@ -55,11 +54,11 @@ class MainPage : public gui::Layout,
   gui::Layout panel_;
   SetterResizer hbar_;
   SetterResizer vbar_;
+  SetterResizer hbar2_;
 
   thread_ptr<Root> treeRoot_;
   DropTarget<Waveform, WaveformProto> waveform_;
   juce::Label loops_;
-  Cursor* cursor_;
   bool openDialogOpen_;
   PlaybackController controller_;
   StretchyPlayer player_;

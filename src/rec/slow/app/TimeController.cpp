@@ -37,7 +37,7 @@ Dial realTimeDial() {
 
 TimeController::TimeController()
     : Layout(VERTICAL, true, "Time controls"),
-      transportLayout_(HORIZONTAL, true, transport),
+      transportLayout_(HORIZONTAL, true, "Transport"),
       timesAndClockLayout_(HORIZONTAL, true, "Times and clock"),
       timesLayout_(VERTICAL, true, "Times"),
       transportSource_(NULL),
@@ -50,8 +50,8 @@ TimeController::TimeController()
   startStopButton_.setClickingTogglesState(true);
   startStopButton_.addListener(this);
 
-  transportSource_.addToLayout(&startStopButton_, 30);
-  timesAndClockLayout_.addToLayout(&timesLayout, 100);
+  transportLayout_.addToLayout(&startStopButton_, 30);
+  timesAndClockLayout_.addToLayout(&timesLayout_, 100);
   timesAndClockLayout_.addToLayout(&songDial_, 20, -1.0, -1.0);
 
   addToLayout(&transportLayout_, 30);

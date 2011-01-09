@@ -23,6 +23,7 @@ class Listener {
   virtual void operator()(Type x) = 0;
 
  private:
+  CriticalSection listenerLock_;
   Broadcasters broadcasters_;
 
   friend class Broadcaster<Type>;
@@ -53,8 +54,19 @@ class Broadcaster {
 
 template <typename Type>
 Listener<Type>::~Listener() {
-  for (iterator i = broadcasters_.begin(); i != broadcasters_.end(); ++i)
-    (*i)->removeListener(this);
+  while (true) {
+    Broadcasters toDelete;
+    {
+      ScopedLock l(listenerLock_);
+      if (broadcasters_.empty())
+        return;
+
+      broadcasters_.swap(toDelete);
+    }
+
+    for (iterator i = toDelete.begin(); i != toDelete.end(); ++i)
+      (*i)->removeListener(this);
+  }
 }
 
 template <typename Type>
@@ -72,15 +84,35 @@ Broadcaster<Type>::~Broadcaster() {
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
-  ScopedLock l(lock_);
-  listeners_.insert(listener);
-  listener->broadcasters_.insert(this);
+  // addListener and removeListener calls might be going on at the same time,
+  // and there's a faint possibility that they might interleave for the same
+  // listener and broadcaster, so we loop here until that hasn't happened,
+  // just to be extra-cautious.
+  while (true) {
+    {
+      ScopedLock l(lock_);
+      listeners_.insert(listener);
+    }
+
+    {
+      ScopedLock l(listener->listenerLock_);
+      listener->broadcasters_.insert(this);
+    }
+
+    ScopedLock l(lock_);
+    if (listeners_.find(listener) != listeners_.end())
+      return;  // Good, no one else called removeListener.
+  }
 }
 
 template <typename Type>
 void Broadcaster<Type>::removeListener(Listener<Type>* listener) {
-  ScopedLock l(lock_);
-  listeners_.erase(listener);
+  {
+    ScopedLock l(lock_);
+    listeners_.erase(listener);
+  }
+
+  ScopedLock l(listener->listenerLock_);
   listener->broadcasters_.erase(this);
 }
 
