@@ -48,6 +48,7 @@ void StretchyPlayer::operator()(const VolumeFile& file) {
     timeLocker_->initialize(0);
     transportSource_->clear();
     dr.swap(doubleRunny_);
+    transportSource_->setSource(doubleRunny_.get());
     stretchy_ = stretchy;
     if (stretchy_)
       stretchy_->requestUpdate();

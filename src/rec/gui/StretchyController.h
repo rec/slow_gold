@@ -17,7 +17,7 @@ class StretchyController : public Layout {
 
   StretchyController()
       : Layout(VERTICAL, true, "StretchyController"),
-        disableButton_("Disable", Address("disable")),
+        disableButton_("Disable", Address("disabled")),
         playbackSpeed_("Playback speed", Address("time_percent")),
         pitchScale_("Transpose", Address("semitone_shift")),
         fineScale_("Fine tuning", Address("detune_cents")) {
@@ -46,8 +46,13 @@ class StretchyController : public Layout {
     disableButton_.setData(data);
 
     bool enable = !(data && data->get().disabled());
-    if (enable != isEnabled())
-      thread::callAsync(this, &Component::setEnabled, enable);
+    thread::callAsync(this, &StretchyController::enableSliders, enable);
+  }
+
+  void enableSliders(bool enabled) {
+    playbackSpeed_.setEnabled(enabled);
+    pitchScale_.setEnabled(enabled);
+    fineScale_.setEnabled(enabled);
   }
 
  private:

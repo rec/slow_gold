@@ -14,7 +14,7 @@ Operation* Field::apply(const Operation &op, Message* message) {
   Field field(message);
   for (int i = 0; i < op.address().field_size(); ++i) {
     if (!field.dereference(op.address().field(i))) {
-      LOG(ERROR) << "Couldn't apply to address " 
+      LOG(ERROR) << "Couldn't apply to address "
                  << op.address().DebugString();
       return NULL;
     }
@@ -94,9 +94,11 @@ bool Field::dereference(const proto::Address::Field& afield) {
                << " in class named " << message_->GetTypeName();
     return false;
   }
+
   if (field_->label() == FieldDescriptor::LABEL_REPEATED) {
     type_ = REPEATED;
     repeatCount_ = message_->GetReflection()->FieldSize(*message_, field_);
+
   } else {
     type_ = SINGLE;
     repeatCount_ = 1;
@@ -147,7 +149,7 @@ Operation* Field::apply(const Operation& op) {
   undo_->clear_value();
   if ((this->*applier)())
     return undo_;
-    
+
   LOG(ERROR) << "Unable to execute operation " << op.DebugString();
   delete undo_;
   return NULL;
@@ -196,6 +198,7 @@ bool Field::clearSingle() {
   undo_->clear_value();
   if (!copyTo(undo_->add_value()))
     return false;
+
   message_->Clear();
   return true;
 }
@@ -210,10 +213,10 @@ bool Field::setSingle() {
     return false;
   }
 
-  if (!field_ || type_ == INDEXED || hasValue())
-    copyTo(undo_->add_value());
-  else
+  if (field_ && type_ != INDEXED && !hasValue())
     undo_->set_command(Operation::CLEAR);
+  else if (!copyTo(undo_->add_value()))
+    LOG(ERROR) << "Couldn't copy undo value, continuing";
 
   return copyFrom(operation_->value(0));
 }

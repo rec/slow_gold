@@ -35,8 +35,8 @@ class PlaybackController : public gui::Layout,
 
   virtual void operator()(const AudioTransportSourcePlayer& player);
   virtual void operator()(float time);
-  virtual void operator()(const StretchyProto&);
   virtual void operator()(const VolumeFile&);
+  virtual void operator()(const StretchyProto&);
 
   void setButtonState();
   virtual void setData(Data* data);

@@ -88,7 +88,8 @@ void PlaybackController::operator()(float time) {
 }
 
 void PlaybackController::operator()(const StretchyProto& desc) {
-  thread::callAsync(&stretchyController_, &Component::setEnabled,
+  thread::callAsync(&stretchyController_, 
+                    &gui::StretchyController::enableSliders,
                     !desc.disabled());
 }
 
