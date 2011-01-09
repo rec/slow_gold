@@ -36,13 +36,13 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   controller_.timeController()->setTransport(player_.getTransport());
 
   panel_.addToLayout(treeRoot_->treeView());
-  panel_.addToLayout(&hbar_, 10, 10, 10);
+  panel_.addToLayout(&hbar_);
   panel_.addToLayout(&waveform_);
-  panel_.addToLayout(&hbar2_, 10, 10, 10);
+  panel_.addToLayout(&hbar2_);
   panel_.addToLayout(&controller_);
 
   addToLayout(&panel_, 200, -1.0, -0.7);
-  addToLayout(&vbar_, 10);
+  addToLayout(&vbar_);
   addToLayout(&loops_, 150, 500, -0.3);
 
   vbar_.setSetter(persist::data<AppLayout>());

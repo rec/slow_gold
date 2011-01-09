@@ -5,6 +5,7 @@
 
 #include "rec/base/base.h"
 #include "rec/gui/Geometry.h"
+#include "rec/gui/SetterResizer.h"
 
 namespace rec {
 namespace gui {
@@ -16,6 +17,10 @@ class Layout : public Component {
 
   void addToLayout(Component* c) {
     addToLayout(c, 0, -1.0, -1.0);
+  }
+
+  void addToLayout(SetterResizer* c) {
+    addToLayout(c, 7, 7, 7);
   }
 
   void addToLayout(Component* c, double m) {

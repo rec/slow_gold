@@ -35,8 +35,8 @@ class SetterText : public Layout,
     caption_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
     caption_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
 
-    addToLayout(&caption_, 100, -0.3, -0.3);
-    addToLayout(&editor_, 100, -0.7, -0.7);
+    addToLayout(&caption_, 70);
+    addToLayout(&editor_);
 
     editor_.addListener(this);
   }

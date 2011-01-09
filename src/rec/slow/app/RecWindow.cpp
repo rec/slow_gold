@@ -24,7 +24,7 @@ RecWindow::RecWindow()
     writeData();
   }
   setResizable(true, false); // resizability is a property of ResizableWindow
-  setResizeLimits(500, 500, 8192, 8192);
+  setResizeLimits(1, 1, 8192, 8192);
 
   commandManager_.registerAllCommandsForTarget(&container_);
   commandManager_.registerAllCommandsForTarget(JUCEApplication::getInstance());

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="IU0KmVSQh" name="Slow">
+  <MAINGROUP id="NZAoG0vSk" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -516,6 +516,8 @@
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="0WJQne3mL"
               name="RecentFiles.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/SetterResizer.cpp" id="yc2VCmVwR"
+              name="SetterResizer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="8xNw3SJgL"
               name="SetterResizer.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterSlider.h" id="bhKchXauN"
@@ -526,6 +528,8 @@
               name="SetterTextArea.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterToggle.h" id="uLIkoOGrJ"
               name="SetterToggle.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/StretchyController.cpp" id="H03uYtZY9"
+              name="StretchyController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/StretchyController.h" id="Dp1seQ7jw"
               name="StretchyController.h" resource="0"/>
       </GROUP>
@@ -898,7 +902,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="69UHSgrNe" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="j93asQW86" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

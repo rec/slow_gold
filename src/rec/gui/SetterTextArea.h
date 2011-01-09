@@ -24,23 +24,14 @@ class SetterTextArea : public Layout,
 
   ~SetterTextArea() { stl::deletePointers(&components_); }
 
-  void add(Text* t) {
-    components_.push_back(t);
-    addAndMakeVisible(t);
-  }
-
   Text* text(int i) { return static_cast<Text*>(components_[i]); }
 
-  void add(const String& name, const Address& address,
+  Text* add(const String& name, const Address& address,
            const String& tip = String::empty,
            const String& caption = String::empty) {
-    add(new Text(name, address, tip, caption));
-  }
-
-  void addToLayoutManager() {
-    double share = -1.0 / components_.size();
-    for (int i = 0; i < components_.size(); ++i)
-      layoutManager_.setItemLayout(i, share, share, share);
+    Text* text = new Text(name, address, tip, caption);
+    addToLayout(text, 12, 20, 20);
+    return text;
   }
 
   virtual void setData(Data* data) {

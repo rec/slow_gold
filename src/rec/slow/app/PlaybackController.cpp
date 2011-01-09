@@ -33,8 +33,12 @@ PlaybackController::PlaybackController()
                 "The creator of this specific track");
   songData_.add("Number", Address("track_number"),
                 "If this was from a CD, which track was it?");
-  songData_.add("Notes", Address("notes"), "Put whatever you like here");
-  songData_.addToLayoutManager();
+  songData_.add("Year", Address("year"),
+                "What year was this track recorded?");
+  songData_.add("Genre", Address("genre"),
+                "Tags that categorize this track.");
+  songData_.add("Notes", Address("notes"), "Put whatever you like here")->
+      editor()->setMultiLine(true, true);
 
   addAndMakeVisible(&timeController_);
   addAndMakeVisible(&songData_);

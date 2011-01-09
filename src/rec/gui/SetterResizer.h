@@ -15,34 +15,13 @@ class SetterResizer : public StretchableLayoutResizerBar {
   SetterResizer(const Address& address,
                 juce::StretchableLayoutManager* layout,
                 int itemIndexInLayout,
-                Orientation o)
-      : StretchableLayoutResizerBar(layout, itemIndexInLayout, o != HORIZONTAL),
-        layout_(layout),
-        index_(itemIndexInLayout),
-        address_(address),
-        orientation_(o),
-        setter_(NULL) {
-  }
+                Orientation o);
 
-  int get() const {
-    return (orientation_ == HORIZONTAL) ? getY() : getX();
-  }
-
-  void set(int distance) {
-    layout_->setItemPosition(index_, distance);
-    hasBeenMoved();
-  }
-
-  void setSetter(persist::Setter* setter) {
-    setter_ = setter;
-    int size = setter_->get(address_).uint32_f();
-    thread::callAsync(this, &SetterResizer::set, size);
-  }
-
-  virtual void moved() {
-    if (setter_)
-      setter_->set(address_, static_cast<uint32>(get()));
-  }
+  int get() const;
+  void set(int distance);
+  void setSetter(persist::Setter* setter);
+  virtual void moved();
+  virtual void paint(Graphics& g);
 
  private:
   juce::StretchableLayoutManager* layout_;
@@ -50,6 +29,7 @@ class SetterResizer : public StretchableLayoutResizerBar {
   Address address_;
   Orientation orientation_;
   Setter* setter_;
+  
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterResizer);
 };
 
