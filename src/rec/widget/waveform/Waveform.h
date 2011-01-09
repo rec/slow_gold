@@ -2,6 +2,7 @@
 #define __REC_WIDGET_WAVEFORM__
 
 #include "rec/widget/waveform/Waveform.pb.h"
+#include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/util/file/VolumeFile.h"
@@ -27,7 +28,8 @@ class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
                  public listener::Listener<const juce::AudioThumbnail&>,
                  public Component {
  public:
-  explicit Waveform(const WaveformProto& desc);
+  Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
+           const CursorProto* cursor = &CursorProto::default_instance());
   virtual ~Waveform();
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized() { layoutCursors(); }
@@ -43,6 +45,8 @@ class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
   void mouseUp(const juce::MouseEvent& e) { doClick(e, 1); }
   virtual void repaint() { Component::repaint(); }
 
+  Cursor* timeCursor() { return timeCursor_; }
+
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
   void layoutCursors();
@@ -53,7 +57,7 @@ class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
   Range<float> range_;
   Cursor* timeCursor_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Waveform);
+  DISALLOW_COPY_AND_ASSIGN(Waveform);
 };
 
 }  // namespace waveform

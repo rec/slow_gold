@@ -7,9 +7,12 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-Waveform::Waveform(const WaveformProto& d)
+Waveform::Waveform(const WaveformProto& d, const CursorProto* cursor)
   : desc_(d), thumbnail_(NULL), range_(0, 0) {
   setName("Waveform");
+
+  if (cursor)
+    timeCursor_ = addCursor(*cursor, 0.0f);
 }
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {

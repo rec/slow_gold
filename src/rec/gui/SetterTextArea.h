@@ -32,9 +32,9 @@ class SetterTextArea : public Layout,
   Text* text(int i) { return static_cast<Text*>(components_[i]); }
 
   void add(const String& name, const Address& address,
-           const String& caption = String::empty,
-           const String& tip = String::empty) {
-    add(new Text(name, address, caption, tip));
+           const String& tip = String::empty,
+           const String& caption = String::empty) {
+    add(new Text(name, address, tip, caption));
   }
 
   void addToLayoutManager() {

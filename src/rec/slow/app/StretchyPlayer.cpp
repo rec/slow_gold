@@ -48,6 +48,7 @@ void StretchyPlayer::operator()(const VolumeFile& file) {
     timeLocker_->initialize(0);
     transportSource_->clear();
     dr.swap(doubleRunny_);
+    stretchy_ = stretchy;
     if (stretchy_)
       stretchy_->requestUpdate();
   }
@@ -56,7 +57,7 @@ void StretchyPlayer::operator()(const VolumeFile& file) {
 }
 
 void StretchyPlayer::operator()(const float& time) {
-  if (!doubleRunny_ || doubleRunny_->fillFromPosition(44100.0 * time))
+  if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100.0 * time)))
     transportSource_->setPosition(stretchy_->get().time_scale() * time);
 
   else

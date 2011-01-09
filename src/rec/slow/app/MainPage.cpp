@@ -46,8 +46,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   vbar_.setSetter(persist::data<AppLayout>());
   hbar_.setSetter(persist::data<AppLayout>());
 
-  cursor_ = waveform_.addCursor(CursorProto(), 0.0f);
-  player_.getTransport()->addListener(cursor_);
+  player_.getTransport()->addListener(waveform_.timeCursor());
 
   waveform_.addListener(this);
   treeRoot_->addListener(player_.fileListener());
@@ -56,7 +55,6 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
 
   treeRoot_->startThread();
   persist::data<VolumeFile>()->requestUpdate();
-  // player_.fileListener()->addListener(&controller_);
 }
 
 MainPage::~MainPage() {

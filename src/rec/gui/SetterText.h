@@ -18,8 +18,8 @@ class SetterText : public Layout,
   typedef persist::Data<Proto> Data;
 
   SetterText(const String& name, const Address& address,
-             const String& caption = String::empty,
-             const String& tip = String::empty)
+             const String& tip = String::empty,
+             const String& caption = String::empty)
       : Layout(HORIZONTAL, true, name),
         AddressListener<Proto>(address),
         caption_(caption + ".caption"),

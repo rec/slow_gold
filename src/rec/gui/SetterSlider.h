@@ -38,7 +38,7 @@ class SetterSlider : public Layout,
     caption_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
     caption_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
 
-    addToLayout(&caption_, 80);
+    addToLayout(&caption_, 100);
     addToLayout(&slider_, 0, -1.0, -1.0);
   }
 

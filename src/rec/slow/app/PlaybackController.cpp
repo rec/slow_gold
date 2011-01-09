@@ -34,12 +34,10 @@ Dial realTimeDial() {
 }
 }  // namespace
 
-
 PlaybackController::PlaybackController()
     : Layout(VERTICAL, true, "Main controls"),
       transportSource_(NULL),
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
-      disableButton_("Disable pitch/time shift", Address("disabled")),
       songTime_(Text()),
       songDial_(realTimeDial()),
       songData_("SongData") {
@@ -47,15 +45,18 @@ PlaybackController::PlaybackController()
                              NULL, NULL, NULL,
                              gui::icon::MediaPlaybackStop::get());
   startStopButton_.setClickingTogglesState(true);
-  addAndMakeVisible(&disableButton_);
   addAndMakeVisible(&startStopButton_);
   addAndMakeVisible(&stretchyController_);
 
-  songData_.add("Track", Address("track_title"));
-  songData_.add("Album", Address("album_title"));
-  songData_.add("Artist", Address("artist"));
-  songData_.add("Track Number", Address("track_number"));
-  songData_.add("Notes", Address("notes"));
+  songData_.add("Track", Address("track_title"),
+                "The name of the individual track.");
+  songData_.add("Album", Address("album_title"),
+                "The name of the album this track is from, if any.");
+  songData_.add("Artist", Address("artist"),
+                "The creator of this specific track");
+  songData_.add("Number", Address("track_number"),
+                "If this was from a CD, which track was it?");
+  songData_.add("Notes", Address("notes"), "Put whatever you like here");
   songData_.addToLayoutManager();
 
   addAndMakeVisible(&songTime_);
@@ -63,7 +64,6 @@ PlaybackController::PlaybackController()
   addAndMakeVisible(&songData_);
 
   startStopButton_.addListener(this);
-  disableButton_.addListener(this);
 }
 
 void PlaybackController::setTransport(AudioTransportSourcePlayer* source) {
@@ -95,9 +95,6 @@ void PlaybackController::operator()(const StretchyProto& desc) {
 void PlaybackController::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
     transportSource_->toggle();
-
-  else if (button == &disableButton_ && getData())
-    getData()->set("disable", disableButton_.getToggleState());
 }
 
 void PlaybackController::setLength(int length) {
@@ -115,19 +112,12 @@ void PlaybackController::setButtonState() {
 
 void PlaybackController::setData(Data* data) {
   DataListener<StretchyProto>::setData(data);
-  disableButton_.setData(data);
   stretchyController_.setData(data);
-  bool enable = !(data && data->get().disabled());
-
-  if (enable != stretchyController_.isEnabled())
-    thread::callAsync(&stretchyController_, &Component::setEnabled, enable);
-
 }
 
 void PlaybackController::resized() {
   startStopButton_.setBounds(8, 8, 32, 32);
-  disableButton_.setBounds(8, 50, 100, 20);
-  songData_.setBounds(120, 8, 270, getHeight() - 16);
+  songData_.setBounds(120, 8, 370, getHeight() - 16);
   stretchyController_.setBounds(500, 0, getWidth() - 500, 85);
 
   songTime_.setBounds(getWidth() - 120, 60, 110, 22);

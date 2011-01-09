@@ -2,7 +2,6 @@
 #define __REC_SLOW_APP_PLAYBACKCONTROLLER__
 
 #include "rec/gui/Layout.h"
-#include "rec/gui/SetterToggle.h"
 #include "rec/gui/SetterTextArea.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/util/listener/DataListener.h"
@@ -47,7 +46,6 @@ class PlaybackController : public gui::Layout,
  private:
   AudioTransportSourcePlayer* transportSource_;
   juce::DrawableButton startStopButton_;
-  gui::SetterToggle<StretchyProto> disableButton_;
   gui::StretchyController stretchyController_;
   TextComponent songTime_;
   DialComponent songDial_;
