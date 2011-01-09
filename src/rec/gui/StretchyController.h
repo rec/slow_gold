@@ -22,10 +22,10 @@ class StretchyController : public Layout {
   void enableSliders(bool enabled);
 
  private:
-  gui::SetterToggle<StretchyProto> disableButton_;
   StretchySlider playbackSpeed_;
   StretchySlider pitchScale_;
   StretchySlider fineScale_;
+  gui::SetterToggle<StretchyProto> disableButton_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
 };
