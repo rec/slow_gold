@@ -3,9 +3,11 @@
 
 #include "rec/gui/Layout.h"
 #include "rec/gui/SetterTextArea.h"
+#include "rec/gui/SetterResizer.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/slow/app/TimeController.h"
+#include "rec/slow/app/AppLayout.pb.h"
 #include "rec/util/cd/Album.h"
 
 namespace rec {
@@ -15,6 +17,8 @@ typedef audio::source::StretchyProto StretchyProto;
 typedef widget::status::time::TextComponent TextComponent;
 typedef widget::status::time::DialComponent DialComponent;
 
+typedef gui::SetterTextArea<cd::Metadata> SongData;
+
 class PlaybackController : public gui::Layout,
                            public Listener<const VolumeFile&>,
                            public Listener<float>,
@@ -22,8 +26,11 @@ class PlaybackController : public gui::Layout,
                            public DataListener<StretchyProto> {
  public:
   typedef persist::Data<StretchyProto> Data;
+  typedef gui::SetterResizer SetterResizer;
 
   PlaybackController();
+
+  void setLayoutData();
 
   virtual void operator()(float time);
   virtual void operator()(const VolumeFile&);
@@ -31,13 +38,19 @@ class PlaybackController : public gui::Layout,
 
   virtual void setData(Data* data);
 
-  void resized();
   TimeController* timeController() { return &timeController_; }
 
  private:
-  gui::StretchyController stretchyController_;
-  gui::SetterTextArea<cd::Metadata> songData_;
   TimeController timeController_;
+  SetterResizer timeControllerResizer_;
+
+  SongData songData_;
+  SetterResizer songDataResizer_;
+
+  Layout panel_;
+  gui::StretchyController stretchyController_;
+  SetterResizer stretchyResizer_;
+  juce::Label transport_;
 
   DISALLOW_COPY_AND_ASSIGN(PlaybackController);
 };

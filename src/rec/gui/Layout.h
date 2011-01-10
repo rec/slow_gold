@@ -5,27 +5,23 @@
 
 #include "rec/base/base.h"
 #include "rec/gui/Geometry.h"
-#include "rec/gui/SetterResizer.h"
 
 namespace rec {
 namespace gui {
 
 class Layout : public Component {
  public:
-  Layout(Orientation o, bool resizeOther, const String& name = String::empty)
-      : Component(name), orientation_(o), resizeOtherDimension_(resizeOther) {}
-
-  void addToLayout(Component* c) {
-    addToLayout(c, 0, -1.0, -1.0);
+  Layout(const String& name = String::empty,
+         Orientation o = HORIZONTAL,
+         bool resizeOther = true)
+      : Component(name), orientation_(o), resizeOtherDimension_(resizeOther) {
   }
 
-  void addToLayout(SetterResizer* c) {
-    addToLayout(c, 7, 7, 7);
-  }
+  void setOrientation(Orientation o) { orientation_ = o; }
+  Orientation orientation() const { return orientation_; }
 
-  void addToLayout(Component* c, double m) {
-    addToLayout(c, m, m, m);
-  }
+  void addToLayout(Component* c)           { addToLayout(c, 0, -1.0, -1.0); }
+  void addToLayout(Component* c, double m) { addToLayout(c, m, m, m); }
 
   void addToLayout(Component* c, double min, double max, double pref) {
     layoutManager_.setItemLayout(components_.size(), min, max, pref);
@@ -33,12 +29,14 @@ class Layout : public Component {
     addAndMakeVisible(c);
   }
 
+  int size() const { return components_.size(); }
+
   virtual void resized() {
     Component::resized();
     layout();
   }
 
-  juce::StretchableLayoutManager* layoutManager() { return &layoutManager_; }
+  StretchableLayoutManager* layoutManager() { return &layoutManager_; }
 
  protected:
   void layout() {
@@ -47,13 +45,13 @@ class Layout : public Component {
                                     orientation_, resizeOtherDimension_);
   }
 
-  juce::StretchableLayoutManager layoutManager_;
+  StretchableLayoutManager layoutManager_;
   std::vector<Component*> components_;
-  const Orientation orientation_;
+  Orientation orientation_;
   const bool resizeOtherDimension_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Layout);
+  DISALLOW_COPY_AND_ASSIGN(Layout);
 };
 
 }  // namespace gui

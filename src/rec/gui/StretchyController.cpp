@@ -4,7 +4,7 @@ namespace rec {
 namespace gui {
 
 StretchyController::StretchyController()
-    : Layout(VERTICAL, true, "StretchyController"),
+    : Layout("StretchyController", VERTICAL),
       playbackSpeed_("Playback speed", Address("time_percent")),
       pitchScale_("Transpose", Address("semitone_shift")),
       fineScale_("Fine tuning", Address("detune_cents")),

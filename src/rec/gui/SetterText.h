@@ -20,7 +20,7 @@ class SetterText : public Layout,
   SetterText(const String& name, const Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty)
-      : Layout(HORIZONTAL, true, name),
+      : Layout(name, HORIZONTAL),
         AddressListener<Proto>(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {

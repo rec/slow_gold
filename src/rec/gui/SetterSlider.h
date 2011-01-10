@@ -22,7 +22,7 @@ class SetterSlider : public Layout,
   SetterSlider(const String& name, const Address& address,
                const String& caption = String::empty,
                const String& tip = String::empty)
-      : Layout(HORIZONTAL, true, name),
+      : Layout(name, HORIZONTAL, true),
         AddressListener<Proto>(address), slider_(name), caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
     slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 85, 16);

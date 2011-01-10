@@ -61,8 +61,8 @@ Error createReader(InputStream* in,
     r.numChannels = numChannels;
 
     getMp3Tags(mh, &r.metadataValues);
-    const StringArray& a = r.metadataValues.getAllKeys();
 #if 0
+    const StringArray& a = r.metadataValues.getAllKeys();
     DLOG(INFO) << "!!";
     for (int i = 0; i < a.size(); ++i)
       DLOG(INFO) << a[i] << " -> " << r.metadataValues[a[i]];

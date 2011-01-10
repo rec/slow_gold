@@ -4,15 +4,16 @@ namespace rec {
 namespace gui {
 
 SetterResizer::SetterResizer(const Address& address,
-                             juce::StretchableLayoutManager* layout,
-                             int itemIndexInLayout,
-                             Orientation o)
-    : StretchableLayoutResizerBar(layout, itemIndexInLayout, o != HORIZONTAL),
-      layout_(layout),
-      index_(itemIndexInLayout),
-      address_(address),
-      orientation_(o),
-      setter_(NULL) {
+                             Layout* layout,
+                             int itemIndexInLayout)
+  : StretchableLayoutResizerBar(layout->layoutManager(),
+                                itemIndexInLayout,
+                                layout->orientation() == HORIZONTAL),
+    layout_(layout),
+    index_(itemIndexInLayout),
+    address_(address),
+    orientation_(inverse(layout->orientation())),
+    setter_(NULL) {
 }
 
 int SetterResizer::get() const {
@@ -20,7 +21,7 @@ int SetterResizer::get() const {
 }
 
 void SetterResizer::set(int distance) {
-  layout_->setItemPosition(index_, distance);
+  layout_->layoutManager()->setItemPosition(index_, distance);
   hasBeenMoved();
 }
 
@@ -31,6 +32,7 @@ void SetterResizer::setSetter(persist::Setter* setter) {
 }
 
 void SetterResizer::moved() {
+	DLOG(INFO) << "moved " << setter_ << ", " << get();
   if (setter_)
     setter_->set(address_, static_cast<uint32>(get()));
 }

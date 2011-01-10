@@ -41,6 +41,7 @@ typedef juce::StreamingSocket Socket;
 typedef juce::StringArray StringArray;
 typedef juce::StringPairArray StringPairArray;
 typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
+typedef juce::StretchableLayoutManager StretchableLayoutManager;
 
 typedef juce::TextEditor TextEditor;
 typedef juce::Thread Thread;

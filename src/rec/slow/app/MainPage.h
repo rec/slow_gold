@@ -51,16 +51,22 @@ class MainPage : public gui::Layout,
   virtual bool keyPressed(const juce::KeyPress& kp);
 
  private:
-  gui::Layout panel_;
-  SetterResizer hbar_;
-  SetterResizer vbar_;
-  SetterResizer hbar2_;
+  void addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo);
 
-  thread_ptr<Root> treeRoot_;
+  void doLayout();
+
+  ptr<SetterResizer> resizer_[2];
+  ptr<SetterResizer> loopResizer_;
+
+  thread_ptr<Root> directory_;
   DropTarget<Waveform, WaveformProto> waveform_;
   juce::Label loops_;
-  bool openDialogOpen_;
   PlaybackController controller_;
+
+  gui::Layout panel_;
+  gui::Layout subpanel_;
+
+  bool openDialogOpen_;
   StretchyPlayer player_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);

@@ -19,7 +19,7 @@ class SetterTextArea : public Layout,
   typedef proto::arg::Address Address;
 
   SetterTextArea(const String& name = String::empty)
-      : Layout(VERTICAL, true, name) {
+      : Layout(name, VERTICAL) {
   }
 
   ~SetterTextArea() { stl::deletePointers(&components_); }

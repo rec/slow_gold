@@ -36,10 +36,10 @@ Dial realTimeDial() {
 }  // namespace
 
 TimeController::TimeController()
-    : Layout(VERTICAL, true, "Time controls"),
-      transportLayout_(HORIZONTAL, true, "Transport"),
-      timesAndClockLayout_(HORIZONTAL, true, "Times and clock"),
-      timesLayout_(VERTICAL, true, "Times"),
+    : Layout("Time controls", VERTICAL),
+      transportLayout_("Transport"),
+      timesAndClockLayout_("Times and clock"),
+      timesLayout_("Times", VERTICAL),
       transportSource_(NULL),
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
       songTime_(Text()),

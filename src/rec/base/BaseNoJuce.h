@@ -41,6 +41,10 @@ using std::vector;
 
 enum Orientation {HORIZONTAL, VERTICAL};
 
+inline Orientation inverse(Orientation o) {
+  return (o == HORIZONTAL) ? VERTICAL : HORIZONTAL;
+}
+
 }  // namespace rec
 
 #endif  // __REC_BASE_BASENOJUCE__

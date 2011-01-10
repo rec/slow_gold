@@ -21,10 +21,13 @@ namespace rec {
 namespace slow {
 
 PlaybackController::PlaybackController()
-    : Layout(VERTICAL, true, "Main controls"),
-      songData_("SongData") {
-  addAndMakeVisible(&stretchyController_);
-
+    : Layout("Main controls"),
+      timeControllerResizer_(Address("clock_x"), this, 1),
+      songData_("SongData"),
+      songDataResizer_(Address("songdata_x"), this, 3),
+      panel_("Main panel", VERTICAL),
+      stretchyResizer_(Address("stretchy_y"), &panel_, 1),
+      transport_("tranport goes here") {
   songData_.add("Track", Address("track_title"),
                 "The name of the individual track.");
   songData_.add("Album", Address("album_title"),
@@ -40,8 +43,23 @@ PlaybackController::PlaybackController()
   songData_.add("Notes", Address("notes"), "Put whatever you like here")->
       editor()->setMultiLine(true, true);
 
-  addAndMakeVisible(&timeController_);
-  addAndMakeVisible(&songData_);
+  addToLayout(&timeController_);
+  timeControllerResizer_.add();
+  addToLayout(&songData_);
+  songDataResizer_.add();
+  addToLayout(&panel_);
+
+  panel_.addToLayout(&stretchyController_);
+  stretchyResizer_.add();
+  panel_.addToLayout(&transport_);
+}
+
+void PlaybackController::setLayoutData() {
+  persist::Data<AppLayout>* data = persist::data<AppLayout>();
+
+  timeControllerResizer_.setSetter(data);
+  songDataResizer_.setSetter(data);
+  stretchyResizer_.setSetter(data);
 }
 
 void PlaybackController::operator()(float time) {
@@ -62,12 +80,6 @@ void PlaybackController::operator()(const VolumeFile& file) {
 void PlaybackController::setData(Data* data) {
   DataListener<StretchyProto>::setData(data);
   stretchyController_.setData(data);
-}
-
-void PlaybackController::resized() {
-  songData_.setBounds(120, 8, 370, getHeight() - 16);
-  stretchyController_.setBounds(500, 0, getWidth() - 500, 85);
-  timeController_.setBounds(8, 8, getHeight() - 16, 100);
 }
 
 }  // namespace slow
