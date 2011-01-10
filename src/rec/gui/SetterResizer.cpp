@@ -32,7 +32,6 @@ void SetterResizer::setSetter(persist::Setter* setter) {
 }
 
 void SetterResizer::moved() {
-	DLOG(INFO) << "moved " << setter_ << ", " << get();
   if (setter_)
     setter_->set(address_, static_cast<uint32>(get()));
 }
