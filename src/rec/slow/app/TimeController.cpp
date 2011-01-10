@@ -50,6 +50,7 @@ TimeController::TimeController()
                              gui::icon::MediaPlaybackStop::get());
   startStopButton_.setClickingTogglesState(true);
   startStopButton_.addListener(this);
+
   addListener(&songDial_);
   addListener(&realTime_);
   addListener(&songTime_);
@@ -86,7 +87,7 @@ void TimeController::setLength(int length) {
 }
 
 void TimeController::operator()(float time) {
-  // broadcast(ClockUpdate(time, -1));
+  broadcast(ClockUpdate(time, -1));
 }
 
 void TimeController::operator()(const AudioTransportSourcePlayer& player) {

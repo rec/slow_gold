@@ -88,6 +88,7 @@ void DialComponent::paint(Graphics& g) {
 }
 
 void DialComponent::setTime(float time) {
+  LOG(INFO) << "Update " << time << " length " << length_;
   ScopedLock l(lock_);
   time_ = time;
   thread::callAsync(this, &DialComponent::repaint);

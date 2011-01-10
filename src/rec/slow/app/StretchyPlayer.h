@@ -40,7 +40,7 @@ class StretchyPlayer : public Listener<const VolumeFile&>,
   }
 
   int length() const {
-    return doubleRunny_ ? (doubleRunny_->getTotalLength() / 44100) : 0;
+    return doubleRunny_ ? doubleRunny_->getTotalLength() : 0;
   }
 
  private:
@@ -51,12 +51,12 @@ class StretchyPlayer : public Listener<const VolumeFile&>,
 
   CriticalSection lock_;
   VolumeFile file_;
-  thread_ptr<audio::source::DoubleRunnyBuffer> doubleRunny_;
   persist::Data<StretchyProto>* stretchy_;
   thread_ptr<TimeLocker> timeLocker_;
   thread_ptr<FileLocker> fileLocker_;
 
   SetterListener<const VolumeFile&> fileListener_;
+  thread_ptr<audio::source::DoubleRunnyBuffer> doubleRunny_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(StretchyPlayer);
 };

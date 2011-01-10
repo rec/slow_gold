@@ -46,7 +46,7 @@ class DialComponent : public Component,
       setTime(c.time_);
 
     if (c.length_ >= 0)
-      setLength(c.time_);
+      setLength(c.length_);
   }
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }

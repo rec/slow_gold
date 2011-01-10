@@ -16,6 +16,8 @@ class DoubleRunny : public Wrappy::Position {
   DoubleRunny(const RunnyProto& proto = RunnyProto::default_instance());
   virtual ~DoubleRunny();
 
+  virtual void shutdown();
+
   void set(Runny* next);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 

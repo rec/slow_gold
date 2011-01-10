@@ -44,7 +44,9 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data,
   changeLocker_->startThread();
 }
 
-DoubleRunnyBuffer::~DoubleRunnyBuffer() {}
+DoubleRunnyBuffer::~DoubleRunnyBuffer() {
+  shutdown();
+}
 
 PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
   if (threadShouldExit())
