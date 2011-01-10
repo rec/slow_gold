@@ -3,6 +3,7 @@
 #include "rec/widget/status/Time.h"
 #include "rec/util/Math.h"
 #include "rec/gui/Color.h"
+#include "rec/gui/Geometry.h"
 #include "rec/widget/Painter.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -70,7 +71,7 @@ void DialComponent::paint(Graphics& g) {
   ScopedLock l(lock_);
   float timeRatio = Math<float>::near(length_, 0.0f, 0.001f) ? 0.0f : (time_ / length_);
   Painter p(description_.widget(), &g);
-  juce::Rectangle<int> bounds = p.getBounds(this);
+  juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));
   float zeroAngle = description_.zero_point() * 2.0 * PI;
   float timeAngle = zeroAngle + timeRatio * 2.0 * PI;
   if (p.colors().color_size() > 2) {

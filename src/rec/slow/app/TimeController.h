@@ -6,7 +6,7 @@
 #include "rec/gui/Layout.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/ClockUpdate.h"
-#include "rec/widget/status/Time.h"
+#include "rec/widget/status/TimeAndLength.h"
 
 namespace rec {
 namespace slow {
@@ -33,8 +33,6 @@ class TimeController : public gui::Layout,
   void setButtonState();
 
  private:
-  void setTimeOrLength(float time, float length);
-
   Layout transportLayout_;
   Layout timesAndClockLayout_;
   Layout timesLayout_;
@@ -42,12 +40,10 @@ class TimeController : public gui::Layout,
   AudioTransportSourcePlayer* transportSource_;
   juce::DrawableButton startStopButton_;
 
-  widget::status::time::TextComponent realTime_;
-  widget::status::time::TextComponent songTime_;
   widget::status::time::DialComponent songDial_;
 
-  float time_;
-  float length_;
+  widget::status::TimeAndLength realTime_;
+  widget::status::TimeAndLength songTime_;
 
   CriticalSection lock_;
 

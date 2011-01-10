@@ -42,10 +42,9 @@ TimeController::TimeController()
       timesLayout_("Times", VERTICAL),
       transportSource_(NULL),
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
-      songTime_(Text()),
       songDial_(realTimeDial()),
-      time_(0.0),
-      length_(0.0) {
+      realTime_("Real", Text()),
+      songTime_("Track", Text()) {
   startStopButton_.setImages(gui::icon::MediaPlaybackStart::get(),
                              NULL, NULL, NULL,
                              gui::icon::MediaPlaybackStop::get());
@@ -82,25 +81,12 @@ void TimeController::buttonClicked(juce::Button *button) {
     transportSource_->toggle();
 }
 
-void TimeController::setTimeOrLength(float time, float length) {
-  ClockUpdate update;
-  {
-    ScopedLock l(lock_);
-    if (time >= 0.0)
-      time_ = time;
-    if (length >= 0.0)
-      length_ = length;
-    update = ClockUpdate(time_, length_);
-  }
-  broadcast(update);
-}
-
 void TimeController::setLength(int length) {
-  setTimeOrLength(-1, length / 44100.0);
+  broadcast(ClockUpdate(-1, length / 44100.0));
 }
 
 void TimeController::operator()(float time) {
-  setTimeOrLength(time, -1);
+  // broadcast(ClockUpdate(time, -1));
 }
 
 void TimeController::operator()(const AudioTransportSourcePlayer& player) {

@@ -44,13 +44,13 @@ PlaybackController::PlaybackController()
       editor()->setMultiLine(true, true);
 
   addToLayout(&timeController_);
-  timeControllerResizer_.add();
+  timeControllerResizer_.add(5);
   addToLayout(&songData_);
-  songDataResizer_.add();
+  songDataResizer_.add(5);
   addToLayout(&panel_);
 
   panel_.addToLayout(&stretchyController_);
-  stretchyResizer_.add();
+  stretchyResizer_.add(5);
   panel_.addToLayout(&transport_);
 }
 

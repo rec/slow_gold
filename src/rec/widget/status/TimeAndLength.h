@@ -3,6 +3,7 @@
 
 #include "rec/widget/status/Time.h"
 #include "rec/gui/Layout.h"
+#include "rec/gui/SimpleLabel.h"
 
 namespace rec {
 namespace widget {
@@ -11,9 +12,11 @@ namespace status {
 class TimeAndLength : public gui::Layout, public Listener<const ClockUpdate&> {
  public:
   TimeAndLength(const String& label,
-                const time.Text& desc = time.Text::default_instance())
-      : label_(label), time_(desc), length_(desc) {
-
+                const time::Text& desc = time::Text::default_instance())
+      : Layout("TimeAndLength", VERTICAL), label_(label), time_(desc), length_(desc) {
+    addToLayout(&label_);
+    addToLayout(&time_);
+    addToLayout(&length_);
   }
 
   virtual void operator()(const ClockUpdate& c) {
@@ -22,7 +25,7 @@ class TimeAndLength : public gui::Layout, public Listener<const ClockUpdate&> {
   }
 
  private:
-	SimpleLabel label_;
+	gui::SimpleLabel label_;
   time::TextComponent time_;
   time::TextComponent length_;
 

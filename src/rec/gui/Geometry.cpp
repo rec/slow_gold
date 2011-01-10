@@ -33,5 +33,27 @@ void copy(const juce::Rectangle<int>& from, Rectangle* to) {
   p->set_y(from.getHeight());
 }
 
+void drawLine(Graphics& g, const Line& line, const juce::Rectangle<int>& r) {
+  drawLine(g, line, r.getX(), r.getY(), r.getRight(), r.getBottom());
+}
+
+juce::Rectangle<int> copy(const Rectangle& rect) {
+  juce::Rectangle<int> r;
+  copy(rect, &r);
+  return r;
+}
+
+Rectangle copy(const juce::Rectangle<int>& rect) {
+  Rectangle r;
+  copy(rect, &r);
+  return r;
+}
+
+juce::Rectangle<int> centerSquare(const juce::Rectangle<int>& r) {
+  int s = juce::jmin(r.getWidth(), r.getHeight());
+  juce::Point<int> c = r.getCentre();
+  return juce::Rectangle<int>(c.getX() - s / 2, c.getY() - s / 2, s, s);
+}
+
 }  // namespace gui
 }  // namespace rec

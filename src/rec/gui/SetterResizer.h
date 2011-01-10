@@ -20,8 +20,8 @@ class SetterResizer : public StretchableLayoutResizerBar {
   int get() const;
   void set(int distance);
   void setSetter(persist::Setter* setter);
-  void add() {
-    layout_->addToLayout(this, 7, 7, 7);
+  void add(int size = 7) {
+    layout_->addToLayout(this, size, size, size);
   }
   virtual void moved();
   virtual void paint(Graphics& g);
