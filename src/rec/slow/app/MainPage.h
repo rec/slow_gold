@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "rec/data/persist/Copy.h"
+#include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Layout.h"
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/slow/app/PlaybackController.h"
@@ -60,7 +61,7 @@ class MainPage : public gui::Layout,
 
   thread_ptr<Root> directory_;
   DropTarget<Waveform, WaveformProto> waveform_;
-  juce::Label loops_;
+  SimpleLabel loops_;
   PlaybackController controller_;
 
   gui::Layout panel_;

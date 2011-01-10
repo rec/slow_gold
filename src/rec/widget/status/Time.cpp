@@ -17,7 +17,7 @@ namespace status {
 namespace time {
 
 TextComponent::TextComponent(const Text& desc)
-    : Label(desc.widget().name().c_str()),
+    : gui::SimpleLabel(desc.widget().name().c_str()),
       description_(desc) {
 }
 

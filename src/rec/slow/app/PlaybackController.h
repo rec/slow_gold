@@ -2,6 +2,7 @@
 #define __REC_SLOW_APP_PLAYBACKCONTROLLER__
 
 #include "rec/gui/Layout.h"
+#include "rec/gui/SimpleLabel.h"
 #include "rec/gui/SetterTextArea.h"
 #include "rec/gui/SetterResizer.h"
 #include "rec/gui/StretchyController.h"
@@ -50,7 +51,7 @@ class PlaybackController : public gui::Layout,
   Layout panel_;
   gui::StretchyController stretchyController_;
   SetterResizer stretchyResizer_;
-  juce::Label transport_;
+  gui::SimpleLabel transport_;
 
   DISALLOW_COPY_AND_ASSIGN(PlaybackController);
 };

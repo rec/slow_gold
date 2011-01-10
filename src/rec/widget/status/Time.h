@@ -4,6 +4,8 @@
 #include <stdio.h>
 
 #include "rec/util/listener/Listener.h"
+#include "rec/util/ClockUpdate.h"
+#include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
 
 namespace rec {
@@ -11,12 +13,13 @@ namespace widget {
 namespace status {
 namespace time {
 
-const String formatTime(float time, bool flash=false);
+const String formatTime(float time, bool flash = false);
 
-class TextComponent : public juce::Label, public listener::Listener<float> {
+class TextComponent : public gui::SimpleLabel,
+                      public Listener<const ClockUpdate&> {
  public:
-  explicit TextComponent(const Text& desc);
-  virtual void operator()(float time) { setTime(time); }
+  explicit TextComponent(const Text& desc = Text::default_instance());
+  virtual void operator()(const ClockUpdate& c) { setTime(c.time_); }
   void setTime(float time);
   void redisplay();
 
@@ -24,17 +27,21 @@ class TextComponent : public juce::Label, public listener::Listener<float> {
   Text description_;
   float time_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TextComponent);
+  DISALLOW_COPY_AND_ASSIGN(TextComponent);
 };
 
 // TODO: must get updates for length!
-class DialComponent : public Component, public listener::Listener<float> {
+class DialComponent : public Component,
+                      public Listener<const ClockUpdate&> {
  public:
   explicit DialComponent(const Dial& desc, float length = 0.0f, float time = 0.0f);
   void setLength(float length);
   void setTime(float time);
 
-  virtual void operator()(float time) { setTime(time); }
+  virtual void operator()(const ClockUpdate& c) {
+    setTime(c.time_);
+    setLength(c.length_);
+  }
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
 

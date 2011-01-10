@@ -43,12 +43,17 @@ TimeController::TimeController()
       transportSource_(NULL),
       startStopButton_("Start stop button", juce::DrawableButton::ImageFitted),
       songTime_(Text()),
-      songDial_(realTimeDial()) {
+      songDial_(realTimeDial()),
+      time_(0.0),
+      length_(0.0) {
   startStopButton_.setImages(gui::icon::MediaPlaybackStart::get(),
                              NULL, NULL, NULL,
                              gui::icon::MediaPlaybackStop::get());
   startStopButton_.setClickingTogglesState(true);
   startStopButton_.addListener(this);
+  addListener(&songDial_);
+  addListener(&realTime_);
+  addListener(&songTime_);
 
   transportLayout_.addToLayout(&startStopButton_, 30);
   timesAndClockLayout_.addToLayout(&timesLayout_, 100);
@@ -63,19 +68,13 @@ TimeController::TimeController()
 }
 
 void TimeController::setTransport(AudioTransportSourcePlayer* source) {
-  if (transportSource_) {
-    transportSource_->removeListener(&songDial_);
-    transportSource_->removeListener(&songTime_);
-    transportSource_->changeBroadcaster()->removeListener(this);
-  }
+  if (transportSource_)
+    transportSource_->removeListener(this);
 
   transportSource_ = source;
 
-  if (transportSource_) {
-    transportSource_->addListener(&songDial_);
-    transportSource_->addListener(&songTime_);
-    transportSource_->changeBroadcaster()->addListener(this);
-  }
+  if (transportSource_)
+    transportSource_->addListener(this);
 }
 
 void TimeController::buttonClicked(juce::Button *button) {
@@ -83,8 +82,25 @@ void TimeController::buttonClicked(juce::Button *button) {
     transportSource_->toggle();
 }
 
+void TimeController::setTimeOrLength(float time, float length) {
+  ClockUpdate update;
+  {
+    ScopedLock l(lock_);
+    if (time >= 0.0)
+      time_ = time;
+    if (length >= 0.0)
+      length_ = length;
+    update = ClockUpdate(time_, length_);
+  }
+  broadcast(update);
+}
+
 void TimeController::setLength(int length) {
-  songDial_.setLength(length);
+  setTimeOrLength(-1, length / 44100.0);
+}
+
+void TimeController::operator()(float time) {
+  setTimeOrLength(time, -1);
 }
 
 void TimeController::operator()(const AudioTransportSourcePlayer& player) {

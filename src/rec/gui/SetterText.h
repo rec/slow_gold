@@ -2,6 +2,7 @@
 #define __REC_GUI_SETTERTEXT__
 
 #include "rec/gui/Layout.h"
+#include "rec/gui/SimpleLabel.h"
 #include "rec/util/listener/AddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -27,13 +28,6 @@ class SetterText : public Layout,
     const String& cap = caption.length() ? caption : name;
     caption_.setText(cap, false);
     editor_.setTooltip(tip.length() ? tip : cap);
-
-    caption_.setText(cap, false);
-    caption_.setFont(Font(14.0000f, Font::bold));
-    caption_.setJustificationType(juce::Justification::centredRight);
-    caption_.setEditable(false, false, false);
-    caption_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
-    caption_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
 
     addToLayout(&caption_, 70);
     addToLayout(&editor_);
@@ -72,7 +66,7 @@ class SetterText : public Layout,
 
   void repaint() { Layout::repaint(); }
 
-  juce::Label caption_;
+  SimpleLabel caption_;
   TextEditor editor_;
 
  private:

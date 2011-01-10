@@ -2,6 +2,7 @@
 #define __REC_GUI_SETTERSLIDER__
 
 #include "rec/gui/Layout.h"
+#include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/listener/AddressListener.h"
 #include "rec/util/thread/CallAsync.h"
@@ -32,12 +33,6 @@ class SetterSlider : public Layout,
     slider_.addListener(this);
 
     caption_.setText(cap, false);
-    caption_.setFont(Font(14.0000f, Font::plain));
-    caption_.setJustificationType(juce::Justification::centredRight);
-    caption_.setEditable(false, false, false);
-    caption_.setColour(juce::TextEditor::textColourId, juce::Colours::black);
-    caption_.setColour(juce::TextEditor::backgroundColourId, Colour(0x0));
-
     addToLayout(&caption_, 100);
     addToLayout(&slider_, 0, -1.0, -1.0);
   }
@@ -57,7 +52,7 @@ class SetterSlider : public Layout,
   }
 
   Slider slider_;
-  juce::Label caption_;
+  SimpleLabel caption_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterSlider);
