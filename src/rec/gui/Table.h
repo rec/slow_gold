@@ -12,7 +12,7 @@ class Table : public juce::TableListBoxModel, public DataListener<Proto> {
   Table(const Address& address) : address_(address) {}
 
   int getNumRows() {
-
+    return data_ ? : NULL;
   }
 
   virtual void paintRowBackground (Graphics& g,
