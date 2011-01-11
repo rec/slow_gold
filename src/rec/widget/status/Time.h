@@ -19,10 +19,9 @@ class TextComponent : public gui::SimpleLabel,
                       public Listener<const ClockUpdate&> {
  public:
   explicit TextComponent(const Text& desc = Text::default_instance());
-  virtual void operator()(const ClockUpdate& c) {
-    if (c.time_ >= 0)
-      setTime(c.time_);
-  }
+  virtual void operator()(const ClockUpdate& c);
+
+  float getTime() const { return time_; }
   void setTime(float time);
   void redisplay();
 
@@ -41,13 +40,7 @@ class DialComponent : public Component,
   void setLength(float length);
   void setTime(float time);
 
-  virtual void operator()(const ClockUpdate& c) {
-    if (c.time_ >= 0)
-      setTime(c.time_);
-
-    if (c.length_ >= 0)
-      setLength(c.length_);
-  }
+  virtual void operator()(const ClockUpdate& c) { c.update(this); }
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
 

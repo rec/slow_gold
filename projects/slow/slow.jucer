@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="NZAoG0vSk" name="Slow">
+  <MAINGROUP id="cStibSVd9" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -528,10 +528,14 @@
               name="SetterTextArea.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterToggle.h" id="uLIkoOGrJ"
               name="SetterToggle.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SimpleLabel.h" id="3Vn7xtSlf"
+              name="SimpleLabel.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/StretchyController.cpp" id="H03uYtZY9"
               name="StretchyController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/StretchyController.h" id="Dp1seQ7jw"
               name="StretchyController.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/TransportController.h" id="o7HX7m3lM"
+              name="TransportController.h" resource="0"/>
       </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
         <GROUP id="TngxiCooG" name="app">
@@ -620,6 +624,8 @@
               name="Circular.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Circular.h" id="TnDZ4aOPt"
               name="Circular.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/ClockUpdate.h" id="KBV6Ygzbq"
+              name="ClockUpdate.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Compare.cpp" id="UHMybPoCG"
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="Xx1K96mJm"
@@ -723,6 +729,8 @@
                 name="Time.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/status/Time.h" id="AeRx4PxOo"
                 name="Time.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/status/TimeAndLength.h"
+                id="BBm29yBJn" name="TimeAndLength.h" resource="0"/>
         </GROUP>
         <GROUP id="82Gb0wg1e" name="tree">
           <FILE compile="0" file="../../src/rec/widget/tree/CD.h" id="LJ0AARiR5"
@@ -902,7 +910,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="j93asQW86" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="rs0HC2Jj4" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

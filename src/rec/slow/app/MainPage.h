@@ -56,6 +56,8 @@ class MainPage : public gui::Layout,
 
   void doLayout();
 
+  StretchyPlayer player_;
+
   ptr<SetterResizer> resizer_[2];
   ptr<SetterResizer> loopResizer_;
 
@@ -68,7 +70,6 @@ class MainPage : public gui::Layout,
   gui::Layout subpanel_;
 
   bool openDialogOpen_;
-  StretchyPlayer player_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };

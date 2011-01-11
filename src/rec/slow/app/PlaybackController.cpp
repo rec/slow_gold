@@ -2,8 +2,6 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/gui/SetterToggle.h"
-#include "rec/gui/icon/MediaPlaybackStart.svg.h"
-#include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/cd/Album.h"
@@ -20,29 +18,14 @@ using rec::widget::status::time::TextComponent;
 namespace rec {
 namespace slow {
 
-PlaybackController::PlaybackController()
+PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport)
     : Layout("Main controls"),
+      timeController_(transport),
       timeControllerResizer_(Address("clock_x"), this, 1),
-      songData_("SongData"),
       songDataResizer_(Address("songdata_x"), this, 3),
       panel_("Main panel", VERTICAL),
       stretchyResizer_(Address("stretchy_y"), &panel_, 1),
-      transport_("tranport goes here") {
-  songData_.add("Track", Address("track_title"),
-                "The name of the individual track.");
-  songData_.add("Album", Address("album_title"),
-                "The name of the album this track is from, if any.");
-  songData_.add("Artist", Address("artist"),
-                "The creator of this specific track");
-  songData_.add("Number", Address("track_number"),
-                "If this was from a CD, which track was it?");
-  songData_.add("Year", Address("year"),
-                "What year was this track recorded?");
-  songData_.add("Genre", Address("genre"),
-                "Tags that categorize this track.");
-  songData_.add("Notes", Address("notes"), "Put whatever you like here")->
-      editor()->setMultiLine(true, true);
-
+      transportController_(transport) {
   addToLayout(&timeController_);
   timeControllerResizer_.add(5);
   addToLayout(&songData_);
@@ -51,7 +34,7 @@ PlaybackController::PlaybackController()
 
   panel_.addToLayout(&stretchyController_);
   stretchyResizer_.add(5);
-  panel_.addToLayout(&transport_);
+  panel_.addToLayout(&transportController_);
 }
 
 void PlaybackController::setLayoutData() {
@@ -62,15 +45,11 @@ void PlaybackController::setLayoutData() {
   stretchyResizer_.setSetter(data);
 }
 
-void PlaybackController::operator()(float time) {
-  if (getData())
-    broadcast(time / getData()->get().time_scale());
-}
-
 void PlaybackController::operator()(const StretchyProto& desc) {
   thread::callAsync(&stretchyController_,
                     &gui::StretchyController::enableSliders,
                     !desc.disabled());
+  timeController_(desc);
 }
 
 void PlaybackController::operator()(const VolumeFile& file) {

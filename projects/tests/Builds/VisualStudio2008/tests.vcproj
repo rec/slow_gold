@@ -406,8 +406,10 @@
           <File RelativePath="..\..\..\..\src\rec\gui\SetterText.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterToggle.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SimpleLabel.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\TransportController.h"/>
         </Filter>
         <Filter Name="slow">
           <Filter Name="app">
@@ -463,6 +465,7 @@
           <File RelativePath="..\..\..\..\src\rec\util\Circular.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Circular_test.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\ClockUpdate.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Compare.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Compare.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Defaulter.cpp"/>
@@ -524,6 +527,7 @@
             <File RelativePath="..\..\..\..\src\rec\widget\status\Status.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\status\Time.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\status\Time.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\TimeAndLength.h"/>
           </Filter>
           <Filter Name="tree">
             <File RelativePath="..\..\..\..\src\rec\widget\tree\CD.h"/>

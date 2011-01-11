@@ -27,7 +27,6 @@ class StretchyPlayer : public Listener<const VolumeFile&>,
   virtual void operator()(const float& time);
 
   void setTime(int time) {
-    // thread::callAsync(timeLocker_.get(), &TimeLocker::set, timeMouse.time_);
     timeLocker_->set(time);
   }
 

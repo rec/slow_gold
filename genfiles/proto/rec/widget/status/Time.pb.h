@@ -136,7 +136,7 @@ class Text_Separator : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 width() const;
   inline void set_width(::google::protobuf::uint32 value);
   
-  // optional bool flash = 3 [default = true];
+  // optional bool flash = 3 [default = false];
   inline bool has_flash() const;
   inline void clear_flash();
   static const int kFlashFieldNumber = 3;
@@ -821,12 +821,12 @@ inline void Text_Separator::set_width(::google::protobuf::uint32 value) {
   width_ = value;
 }
 
-// optional bool flash = 3 [default = true];
+// optional bool flash = 3 [default = false];
 inline bool Text_Separator::has_flash() const {
   return _has_bit(2);
 }
 inline void Text_Separator::clear_flash() {
-  flash_ = true;
+  flash_ = false;
   _clear_bit(2);
 }
 inline bool Text_Separator::flash() const {

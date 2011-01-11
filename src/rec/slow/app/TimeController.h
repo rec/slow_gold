@@ -7,6 +7,7 @@
 #include "rec/slow/app/AudioTransportSourcePlayer.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/widget/status/TimeAndLength.h"
+#include "rec/audio/source/Stretchy.pb.h"
 
 namespace rec {
 namespace slow {
@@ -14,31 +15,25 @@ namespace slow {
 class AudioTransportSourcePlayer;
 
 class TimeController : public gui::Layout,
-                       public Listener<const AudioTransportSourcePlayer&>,
                        public Listener<float>,
-                       public Broadcaster<const ClockUpdate&>,
-                       public juce::ButtonListener {
+                       public Listener<const audio::source::StretchyProto&>,
+                       public Listener<const ClockUpdate&>,
+                       public Broadcaster<const ClockUpdate&> {
  public:
   typedef persist::Data<audio::source::StretchyProto> Data;
 
-  TimeController();
-  void setTransport(AudioTransportSourcePlayer* transportSource);
+  TimeController(AudioTransportSourcePlayer* transportSource);
 
-  void buttonClicked(juce::Button *button);
-  void setLength(int length);
-
-  virtual void operator()(const AudioTransportSourcePlayer& player);
-  virtual void operator()(float time);
-
-  void setButtonState();
+  virtual void operator()(const ClockUpdate& up) { broadcast(up); }
+  virtual void operator()(const audio::source::StretchyProto&);
+  virtual void operator()(float time) {
+    broadcast(ClockUpdate(time, -1));
+  }
 
  private:
-  Layout transportLayout_;
-  Layout timesAndClockLayout_;
-  Layout timesLayout_;
-
   AudioTransportSourcePlayer* transportSource_;
-  juce::DrawableButton startStopButton_;
+
+  Layout timesLayout_;
 
   widget::status::time::DialComponent songDial_;
 

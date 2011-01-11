@@ -12,6 +12,14 @@ struct ClockUpdate {
 
   ClockUpdate(float time, float length) : time_(time), length_(length) {}
   ClockUpdate() {}
+
+  template <typename Type>
+  void update(Type *t) const {
+    if (time_ >= 0)
+      t->setTime(time_);
+    if (length_ >= 0)
+      t->setLength(length_);
+  }
 };
 
 }  // namespace util

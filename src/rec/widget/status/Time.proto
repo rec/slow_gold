@@ -8,7 +8,7 @@ message Text {
   message Separator {
     optional string separator = 1;
     optional uint32 width = 2;
-    optional bool flash = 3 [default = true];
+    optional bool flash = 3 [default = false];
   };
 
   message Fields {

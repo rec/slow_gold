@@ -20,11 +20,18 @@ namespace time {
 TextComponent::TextComponent(const Text& desc)
     : gui::SimpleLabel(desc.widget().name().c_str()),
       description_(desc) {
+  setJustificationType(juce::Justification::centred);
+  setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
 }
 
 void TextComponent::setTime(float time) {
   time_ = time;
   thread::callAsync(this, &TextComponent::redisplay);
+}
+
+void TextComponent::operator()(const ClockUpdate& c) {
+  if (c.time_ >= 0)
+    setTime(c.time_);
 }
 
 void TextComponent::redisplay() {
@@ -88,7 +95,6 @@ void DialComponent::paint(Graphics& g) {
 }
 
 void DialComponent::setTime(float time) {
-  LOG(INFO) << "Update " << time << " length " << length_;
   ScopedLock l(lock_);
   time_ = time;
   thread::callAsync(this, &DialComponent::repaint);

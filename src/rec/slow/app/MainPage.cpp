@@ -24,14 +24,14 @@ namespace slow {
 
 MainPage::MainPage(AudioDeviceManager* deviceManager)
     : Layout("MainPage"),
+      player_(deviceManager),
       directory_(new Root(NodeDesc())),
       waveform_(WaveformProto()),
       loops_("Loops"),
-      openDialogOpen_(false),
-      player_(deviceManager) {
+      controller_(player_.getTransport()),
+      openDialogOpen_(false) {
   doLayout();
 
-  controller_.timeController()->setTransport(player_.getTransport());
   player_.getTransport()->addListener(waveform_.timeCursor());
 
   waveform_.addListener(this);
@@ -41,6 +41,8 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
 
   directory_->startThread();
   persist::data<VolumeFile>()->requestUpdate();
+
+  player_.getTransport()->addListener(controller_.timeController());
 }
 
 void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
@@ -119,7 +121,7 @@ void MainPage::doLayout() {
 }
 
 MainPage::~MainPage() {
-  controller_.timeController()->setTransport(NULL);
+  // controller_.timeController()->setTransport(NULL);
 }
 
 void MainPage::paint(Graphics& g) {
@@ -170,7 +172,7 @@ void MainPage::operator()(const VolumeFile& file) {
     waveform_.setAudioThumbnail(player_.cachedThumbnail()->thumbnail());
     player_.cachedThumbnail()->addListener(&waveform_);
     gui::addRecentFile(file);
-    controller_.timeController()->setLength(player_.length());
+    (*(controller_.timeController()))(ClockUpdate(-1, player_.length() / 44100.0));
   }
 }
 

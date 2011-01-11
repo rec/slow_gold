@@ -20,7 +20,7 @@ class Layout : public Component {
   void setOrientation(Orientation o) { orientation_ = o; }
   Orientation orientation() const { return orientation_; }
 
-  void addToLayout(Component* c)           { addToLayout(c, 0, -1.0, -1.0); }
+  void addToLayout(Component* c)           { addToLayout(c, 1, -1.0, -1.0); }
   void addToLayout(Component* c, double m) { addToLayout(c, m, m, m); }
 
   void addToLayout(Component* c, double min, double max, double pref) {
@@ -39,7 +39,7 @@ class Layout : public Component {
   StretchableLayoutManager* layoutManager() { return &layoutManager_; }
 
  protected:
-  void layout() {
+  virtual void layout() {
     layoutManager_.layOutComponents(&components_[0], components_.size(),
                                     0, 0, getWidth(), getHeight(),
                                     orientation_, resizeOtherDimension_);
