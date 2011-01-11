@@ -143,6 +143,13 @@ class Text_Separator : public ::google::protobuf::Message {
   inline bool flash() const;
   inline void set_flash(bool value);
   
+  // optional bool display_ms = 4 [default = true];
+  inline bool has_display_ms() const;
+  inline void clear_display_ms();
+  static const int kDisplayMsFieldNumber = 4;
+  inline bool display_ms() const;
+  inline void set_display_ms(bool value);
+  
   // @@protoc_insertion_point(class_scope:rec.widget.status.time.Text.Separator)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -152,11 +159,12 @@ class Text_Separator : public ::google::protobuf::Message {
   static const ::std::string _default_separator_;
   ::google::protobuf::uint32 width_;
   bool flash_;
+  bool display_ms_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fstatus_2fTime_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -835,6 +843,22 @@ inline bool Text_Separator::flash() const {
 inline void Text_Separator::set_flash(bool value) {
   _set_bit(2);
   flash_ = value;
+}
+
+// optional bool display_ms = 4 [default = true];
+inline bool Text_Separator::has_display_ms() const {
+  return _has_bit(3);
+}
+inline void Text_Separator::clear_display_ms() {
+  display_ms_ = true;
+  _clear_bit(3);
+}
+inline bool Text_Separator::display_ms() const {
+  return display_ms_;
+}
+inline void Text_Separator::set_display_ms(bool value) {
+  _set_bit(3);
+  display_ms_ = value;
 }
 
 // -------------------------------------------------------------------

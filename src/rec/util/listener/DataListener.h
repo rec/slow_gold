@@ -32,6 +32,7 @@ class DataListener : public Reference<persist::Data<Proto> >,
       this->getData()->addListener(this);
   }
 
+ private:
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
 

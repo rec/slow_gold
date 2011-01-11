@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="KP8G5UWzL" name="tests">
+  <MAINGROUP id="3XGmwy1OF" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -537,6 +537,8 @@
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="GVwhlEC2q"
               name="RecentFiles.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SegmentTable.h" id="l9lXnMhvc"
+              name="SegmentTable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/SetterResizer.cpp" id="mxJp5OvfN"
               name="SetterResizer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="CdQM9fV1F"
@@ -551,10 +553,16 @@
               name="SetterToggle.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SimpleLabel.h" id="OHgGO4SJA"
               name="SimpleLabel.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/SongData.h" id="SGFhE67PV"
+              name="SongData.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/StretchyController.cpp" id="h1fOQgeR0"
               name="StretchyController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/StretchyController.h" id="LxikXE5wP"
               name="StretchyController.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/Table.cpp" id="kTJVfvgJ1"
+              name="Table.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/Table.h" id="iHYNfiHv9" name="Table.h"
+              resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TransportController.h" id="ZkOVf6iI6"
               name="TransportController.h" resource="0"/>
       </GROUP>
@@ -833,6 +841,10 @@
                   id="aEJPeVALd" name="Runny.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Runny.pb.h"
                   id="mBJVRgNGC" name="Runny.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Segment.pb.cc"
+                  id="0qt0vMmbC" name="Segment.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Segment.pb.h"
+                  id="2pfDqsxzG" name="Segment.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.cc"
                   id="5CMieWj10" name="Stretchy.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.h"
@@ -882,6 +894,10 @@
                 id="o8a1vXFke" name="RecentFiles.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/RecentFiles.pb.h"
                 id="F0FDseTEN" name="RecentFiles.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/gui/TableColumn.pb.cc"
+                id="1dvjiHAfa" name="TableColumn.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/gui/TableColumn.pb.h"
+                id="KRxNfzXnd" name="TableColumn.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="zdICogwiF" name="slow">
           <GROUP id="Cudkuu3Ut" name="app">
@@ -953,7 +969,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="UhAaqf5pA" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="UF3f6DlV5" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

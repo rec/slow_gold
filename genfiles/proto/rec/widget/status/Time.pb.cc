@@ -64,10 +64,11 @@ void protobuf_AssignDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Text));
   Text_Separator_descriptor_ = Text_descriptor_->nested_type(0);
-  static const int Text_Separator_offsets_[3] = {
+  static const int Text_Separator_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text_Separator, separator_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text_Separator, width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text_Separator, flash_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Text_Separator, display_ms_),
   };
   Text_Separator_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -207,28 +208,28 @@ void protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/widget/status/Time.proto\022\026rec.widg"
     "et.status.time\032\023rec/gui/Color.proto\032\027rec"
-    "/widget/Widget.proto\"\340\002\n\004Text\022\"\n\006widget\030"
+    "/widget/Widget.proto\"\372\002\n\004Text\022\"\n\006widget\030"
     "\001 \001(\0132\022.rec.widget.Widget\0229\n\tseparator\030\002"
     " \001(\0132&.rec.widget.status.time.Text.Separ"
     "ator\0223\n\006fields\030\003 \001(\0132#.rec.widget.status"
-    ".time.Text.Fields\032C\n\tSeparator\022\021\n\tsepara"
+    ".time.Text.Fields\032]\n\tSeparator\022\021\n\tsepara"
     "tor\030\001 \001(\t\022\r\n\005width\030\002 \001(\r\022\024\n\005flash\030\003 \001(\010:"
-    "\005false\032\177\n\006Fields\022\024\n\005hours\030\001 \001(\010:\005false\022\025"
-    "\n\007minutes\030\002 \001(\010:\004true\022\025\n\007seconds\030\003 \001(\010:\004"
-    "true\022\032\n\014milliseconds\030\004 \001(\010:\004true\022\025\n\006fram"
-    "es\030\005 \001(\010:\005false\"\306\002\n\004Dial\022\"\n\006widget\030\001 \001(\013"
-    "2\022.rec.widget.Widget\022\017\n\007outline\030\002 \001(\r\022D\n"
-    "\tdirection\030\003 \001(\0162&.rec.widget.status.tim"
-    "e.Dial.Direction:\tCLOCKWISE\022\031\n\021display_l"
-    "ap_count\030\004 \001(\010\022\022\n\nzero_point\030\007 \001(\002\022\033\n\rem"
-    "pty_on_zero\030\010 \001(\010:\004true\022\"\n\nfrom_color\030\t "
-    "\001(\0132\016.rec.gui.Color\022 \n\010to_color\030\n \001(\0132\016."
-    "rec.gui.Color\"1\n\tDirection\022\r\n\tCLOCKWISE\020"
-    "\001\022\025\n\021COUNTER_CLOCKWISE\020\002\"\005\n\003Bar\"\210\001\n\004Time"
-    "\022*\n\004text\030\001 \001(\0132\034.rec.widget.status.time."
-    "Text\022*\n\004dial\030\002 \001(\0132\034.rec.widget.status.t"
-    "ime.Dial\022(\n\003bar\030\003 \001(\0132\033.rec.widget.statu"
-    "s.time.Bar", 930);
+    "\005false\022\030\n\ndisplay_ms\030\004 \001(\010:\004true\032\177\n\006Fiel"
+    "ds\022\024\n\005hours\030\001 \001(\010:\005false\022\025\n\007minutes\030\002 \001("
+    "\010:\004true\022\025\n\007seconds\030\003 \001(\010:\004true\022\032\n\014millis"
+    "econds\030\004 \001(\010:\004true\022\025\n\006frames\030\005 \001(\010:\005fals"
+    "e\"\306\002\n\004Dial\022\"\n\006widget\030\001 \001(\0132\022.rec.widget."
+    "Widget\022\017\n\007outline\030\002 \001(\r\022D\n\tdirection\030\003 \001"
+    "(\0162&.rec.widget.status.time.Dial.Directi"
+    "on:\tCLOCKWISE\022\031\n\021display_lap_count\030\004 \001(\010"
+    "\022\022\n\nzero_point\030\007 \001(\002\022\033\n\rempty_on_zero\030\010 "
+    "\001(\010:\004true\022\"\n\nfrom_color\030\t \001(\0132\016.rec.gui."
+    "Color\022 \n\010to_color\030\n \001(\0132\016.rec.gui.Color\""
+    "1\n\tDirection\022\r\n\tCLOCKWISE\020\001\022\025\n\021COUNTER_C"
+    "LOCKWISE\020\002\"\005\n\003Bar\"\210\001\n\004Time\022*\n\004text\030\001 \001(\013"
+    "2\034.rec.widget.status.time.Text\022*\n\004dial\030\002"
+    " \001(\0132\034.rec.widget.status.time.Dial\022(\n\003ba"
+    "r\030\003 \001(\0132\033.rec.widget.status.time.Bar", 956);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/status/Time.proto", &protobuf_RegisterTypes);
   Text::default_instance_ = new Text();
@@ -261,6 +262,7 @@ const ::std::string Text_Separator::_default_separator_;
 const int Text_Separator::kSeparatorFieldNumber;
 const int Text_Separator::kWidthFieldNumber;
 const int Text_Separator::kFlashFieldNumber;
+const int Text_Separator::kDisplayMsFieldNumber;
 #endif  // !_MSC_VER
 
 Text_Separator::Text_Separator()
@@ -282,6 +284,7 @@ void Text_Separator::SharedCtor() {
   separator_ = const_cast< ::std::string*>(&_default_separator_);
   width_ = 0u;
   flash_ = false;
+  display_ms_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -326,6 +329,7 @@ void Text_Separator::Clear() {
     }
     width_ = 0u;
     flash_ = false;
+    display_ms_ = true;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -381,6 +385,22 @@ bool Text_Separator::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(32)) goto parse_display_ms;
+        break;
+      }
+      
+      // optional bool display_ms = 4 [default = true];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_display_ms:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &display_ms_)));
+          _set_bit(3);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -422,6 +442,11 @@ void Text_Separator::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->flash(), output);
   }
   
+  // optional bool display_ms = 4 [default = true];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->display_ms(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -448,6 +473,11 @@ void Text_Separator::SerializeWithCachedSizes(
   // optional bool flash = 3 [default = false];
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->flash(), target);
+  }
+  
+  // optional bool display_ms = 4 [default = true];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->display_ms(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -477,6 +507,11 @@ int Text_Separator::ByteSize() const {
     
     // optional bool flash = 3 [default = false];
     if (has_flash()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional bool display_ms = 4 [default = true];
+    if (has_display_ms()) {
       total_size += 1 + 1;
     }
     
@@ -516,6 +551,9 @@ void Text_Separator::MergeFrom(const Text_Separator& from) {
     if (from._has_bit(2)) {
       set_flash(from.flash());
     }
+    if (from._has_bit(3)) {
+      set_display_ms(from.display_ms());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -542,6 +580,7 @@ void Text_Separator::Swap(Text_Separator* other) {
     std::swap(separator_, other->separator_);
     std::swap(width_, other->width_);
     std::swap(flash_, other->flash_);
+    std::swap(display_ms_, other->display_ms_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

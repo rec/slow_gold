@@ -18,15 +18,25 @@ class Message;
 
 namespace rec {
 namespace util {
+
 namespace listener {
 }
+
 namespace file {
 class VolumeFile;
 }
-}  // namespace util
-}  // namespace rec
 
-namespace rec {
+}  // namespace util
+
+namespace proto {
+namespace arg {
+
+class Address;
+class Setter;
+class Value;
+
+}  // namespace arg
+}  // namespace proto
 
 typedef std::string string;
 typedef unsigned int uint;
@@ -38,6 +48,9 @@ using namespace util;
 
 using util::file::VolumeFile;
 using std::vector;
+using proto::arg::Address;
+using proto::arg::Setter;
+using proto::arg::Value;
 
 enum Orientation {HORIZONTAL, VERTICAL};
 

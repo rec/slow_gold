@@ -30,6 +30,8 @@ typedef juce::Font Font;
 
 typedef juce::Graphics Graphics;
 typedef juce::InputStream InputStream;
+typedef juce::Justification Justification;
+
 typedef juce::MemoryBlock MemoryBlock;
 typedef juce::OutputStream OutputStream;
 typedef juce::PositionableAudioSource PositionableAudioSource;
@@ -43,6 +45,7 @@ typedef juce::StringPairArray StringPairArray;
 typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
 typedef juce::StretchableLayoutManager StretchableLayoutManager;
 
+typedef juce::TableHeaderComponent TableHeaderComponent;
 typedef juce::TextEditor TextEditor;
 typedef juce::Thread Thread;
 typedef juce::TimeSliceThread TimeSliceThread;

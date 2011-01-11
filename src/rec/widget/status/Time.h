@@ -13,7 +13,7 @@ namespace widget {
 namespace status {
 namespace time {
 
-const String formatTime(float time, bool flash = false);
+const String formatTime(float time, bool flash = false, bool displayMs = true);
 
 class TextComponent : public gui::SimpleLabel,
                       public Listener<const ClockUpdate&> {

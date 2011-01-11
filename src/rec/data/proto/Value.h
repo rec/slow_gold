@@ -62,6 +62,7 @@ class Value : public proto::Value {
   operator bool() const { return cast<bool>(); }
 
   Value(const proto::Value v) : proto::Value(v) {}
+
 };
 
 }  // namespace arg

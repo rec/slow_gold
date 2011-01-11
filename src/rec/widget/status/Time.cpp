@@ -42,23 +42,25 @@ void TextComponent::redisplay() {
 #define snprintf _snprintf
 #endif
 
-const String formatTime(float time, bool flash) {
-  int seconds = time;
-  float fraction = time - seconds;
-  int milliseconds = 1000 * fraction;
-  // int frames = 75 * fraction;
+const String formatTime(float time, bool flash, bool displayMs) {
+  int sec = time;
+  float fraction = time - sec;
+  int ms = 1000 * fraction;
 
-  int minutes = seconds / 60;
+  int minutes = sec / 60;
   int hours = minutes / 60;
-  seconds %= 60;
+  sec %= 60;
 
   char buffer[64];
   char ch = ':';
-  if (flash && (seconds & 1))
+  if (flash && (sec & 1))
     ch = ' ';
 
-  snprintf(buffer, 64, "%02d:%02d%c%02d.%03d",
-           hours, minutes, ch, seconds, milliseconds);
+  if (displayMs)
+    snprintf(buffer, 64, "%02d:%02d%c%02d.%03d", hours, minutes, ch, sec, ms);
+  else
+    snprintf(buffer, 64, "%02d:%02d%c%02d", hours, minutes, ch, sec);
+
   return buffer;
 }
 

@@ -390,6 +390,7 @@
           <File RelativePath="..\..\..\..\src\rec\gui\Layout.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SegmentTable.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterSlider.h"/>
@@ -397,8 +398,11 @@
           <File RelativePath="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterToggle.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SimpleLabel.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SongData.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Table.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Table.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TransportController.h"/>
         </Filter>
         <Filter Name="slow">
@@ -544,6 +548,8 @@
             <Filter Name="source">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Segment.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Segment.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.h"/>
             </Filter>
@@ -573,6 +579,8 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
           </Filter>
           <Filter Name="slow">
             <Filter Name="app">
