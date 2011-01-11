@@ -10,46 +10,25 @@
 namespace rec {
 namespace proto {
 
-Operation* Field::apply(const Operation &op, Message* message) {
-  Field field(message);
-  for (int i = 0; i < op.address().field_size(); ++i) {
-    if (!field.dereference(op.address().field(i))) {
-      LOG(ERROR) << "Couldn't apply to address "
-                 << op.address().DebugString();
+Field* Field::makeField(const Address& address, const Message& msg) {
+  ptr<Field> field(new Field(const_cast<Message*>(&msg)));
+  for (int i = 0; i < address.field_size(); ++i) {
+    if (!field->dereference(address.field(i))) {
+      LOG(ERROR) << "Couldn't get field from address:\n"
+                 << address.DebugString()
+                 << "\nMessage:\n" << msg.DebugString();
       return NULL;
     }
   }
-
-  return field.apply(op);
+  return field.transfer();
 }
 
 bool Field::hasValue() const {
   return message_->GetReflection()->HasField(*message_, field_);
 }
 
-Value Field::getValue(const Address& address, const Message& msg) {
-  Field field(const_cast<Message*>(&msg));
-  for (int i = 0; i < address.field_size(); ++i) {
-    if (!field.dereference(address.field(i))) {
-      LOG(ERROR) << "Couldn't get field from address " << address.DebugString();
-      return Value();
-    }
-  }
-
-  Value value;
-  field.copyTo(&value);
-  return value;
-}
-
-bool Field::hasValue(const Address& address, const Message& msg) {
-  Field field(const_cast<Message*>(&msg));
-  for (int i = 0; i < address.field_size(); ++i) {
-    if (!field.dereference(address.field(i))) {
-      LOG(ERROR) << "Couldn't get has from address " << address.DebugString();
-      return false;
-    }
-  }
-  return field.hasValue();
+int Field::getSize() const {
+  return message_->GetReflection()->FieldSize(*message_, field_);
 }
 
 bool Field::dereference(const proto::Address::Field& afield) {

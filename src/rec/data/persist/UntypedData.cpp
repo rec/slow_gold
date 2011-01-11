@@ -19,6 +19,10 @@ const Value UntypedData::get(const Address& address) const {
   return getValue(address, *message_);
 }
 
+int UntypedData::getSize(const Address& address) const {
+  return proto::getSize(address, *message_);
+}
+
 UntypedData::UntypedData(const File& file, Message* message, App* app)
     : file_(new File(file)),
       message_(message),

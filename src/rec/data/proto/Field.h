@@ -21,14 +21,9 @@ class Value;
 
 class Field {
  public:
-  static Operation* apply(const Operation &op, Message* message);
-  static Value getValue(const Address& address, const Message& msg);
-  static bool hasValue(const Address& address, const Message& msg);
+  static Field* makeField(const Address& address, const Message& msg);
 
-  explicit Field(Message* message)
-      : message_(message),
-        field_(NULL) {
-  }
+  explicit Field(Message* message) : message_(message), field_(NULL) {}
 
   bool dereference(const Address_Field& part);
   Operation* apply(const Operation& op);
@@ -37,6 +32,10 @@ class Field {
   bool addFrom(const Value& value);
   bool copyTo(Value* value) const;
 
+  bool hasValue() const;
+  int getSize() const;
+
+
  private:
   enum Type {
     INDEXED = 0,
@@ -44,8 +43,6 @@ class Field {
     SINGLE = 2,
     TYPE_COUNT = 3,
   };
-
-  bool hasValue() const;
 
   bool addRepeated();
   bool removeRepeated();

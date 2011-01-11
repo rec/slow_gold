@@ -13,6 +13,7 @@ class Operation;
 Operation* applyOperation(const Operation& operation, Message* msg);
 Value getValue(const Address& address, const Message& msg);
 bool hasValue(const Address& address, const Message& msg);
+int getSize(const Address& address, const Message& msg);
 
 }  // namespace proto
 }  // namespace rec

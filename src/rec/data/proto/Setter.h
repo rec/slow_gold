@@ -23,6 +23,7 @@ class Setter : public Listener<Operation*> {
   void swap(const Address& address, int s1, int s2);
   virtual const Value get(const Address& address) const = 0;
   virtual bool has(const Address& address) const = 0;
+  virtual int getSize(const Address& address) const = 0;
 
   typedef Address A;
   typedef const A::Field& P;

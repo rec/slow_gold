@@ -1,7 +1,5 @@
 package rec.audio.source;
 
-import "rec/util/file/VolumeFile.proto";
-
 // Describe how exactly to apply the timescaler to a sample.
 message StretchyProto {
   optional bool disabled = 15           [default = false];
