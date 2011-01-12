@@ -29,8 +29,8 @@ class UntypedData : public Setter {
   bool fileReadSuccess() const { return fileReadSuccess_; }
 
   // TODO: possible  race condition on these two. :-(
-  virtual const Value get(const Address& address) const;
-  virtual bool has(const Address& address) const;
+  virtual const Value getValue(const Address& address) const;
+  virtual bool hasValue(const Address& address) const;
   virtual int getSize(const Address& address) const;
 
  protected:

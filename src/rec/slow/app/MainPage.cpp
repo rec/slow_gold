@@ -27,7 +27,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       player_(deviceManager),
       directory_(new Root(NodeDesc())),
       waveform_(WaveformProto()),
-      loops_("Loops"),
+      loops_(Address("segment"), TableColumnList(), Address("selected")),
       controller_(player_.getTransport()),
       openDialogOpen_(false) {
   doLayout();

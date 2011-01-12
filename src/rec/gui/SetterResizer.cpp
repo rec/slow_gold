@@ -27,7 +27,7 @@ void SetterResizer::set(int distance) {
 
 void SetterResizer::setSetter(persist::Setter* setter) {
   setter_ = setter;
-  int size = setter_->get(address_).uint32_f();
+  int size = setter_->getValue(address_).uint32_f();
   thread::callAsync(this, &SetterResizer::set, size);
 }
 

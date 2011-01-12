@@ -19,8 +19,8 @@ class DataListener : public Reference<persist::Data<Proto> >,
   typedef Reference<persist::Data<Proto> > Super;
 
   DataListener() {}
-
   virtual ~DataListener() {}
+  virtual void operator()(const Proto&) = 0;
 
   virtual void setData(Data* d) {
     if (this->getData())

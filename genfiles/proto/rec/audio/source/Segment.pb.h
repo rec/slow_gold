@@ -227,17 +227,30 @@ class SegmentList : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::audio::source::Segment >*
       mutable_segment();
   
+  // repeated bool selected = 2;
+  inline int selected_size() const;
+  inline void clear_selected();
+  static const int kSelectedFieldNumber = 2;
+  inline bool selected(int index) const;
+  inline void set_selected(int index, bool value);
+  inline void add_selected(bool value);
+  inline const ::google::protobuf::RepeatedField< bool >&
+      selected() const;
+  inline ::google::protobuf::RepeatedField< bool >*
+      mutable_selected();
+  
   // @@protoc_insertion_point(class_scope:rec.audio.source.SegmentList)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::audio::source::Segment > segment_;
+  ::google::protobuf::RepeatedField< bool > selected_;
   friend void  protobuf_AddDesc_rec_2faudio_2fsource_2fSegment_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fsource_2fSegment_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fsource_2fSegment_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -403,6 +416,31 @@ SegmentList::segment() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::audio::source::Segment >*
 SegmentList::mutable_segment() {
   return &segment_;
+}
+
+// repeated bool selected = 2;
+inline int SegmentList::selected_size() const {
+  return selected_.size();
+}
+inline void SegmentList::clear_selected() {
+  selected_.Clear();
+}
+inline bool SegmentList::selected(int index) const {
+  return selected_.Get(index);
+}
+inline void SegmentList::set_selected(int index, bool value) {
+  selected_.Set(index, value);
+}
+inline void SegmentList::add_selected(bool value) {
+  selected_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< bool >&
+SegmentList::selected() const {
+  return selected_;
+}
+inline ::google::protobuf::RepeatedField< bool >*
+SegmentList::mutable_selected() {
+  return &selected_;
 }
 
 

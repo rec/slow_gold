@@ -5,6 +5,7 @@
 #include <set>
 #include <vector>
 
+#include "rec/audio/source/Segment.pb.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Layout.h"
@@ -14,6 +15,7 @@
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/gui/SetterResizer.h"
+#include "rec/gui/TableModel.h"
 
 using namespace juce;
 
@@ -29,6 +31,8 @@ using rec::persist::copy;
 
 namespace rec {
 namespace slow {
+
+using audio::source::SegmentList;
 
 class MainPage : public gui::Layout,
                  public Listener<const TimeAndMouseEvent&>,
@@ -63,7 +67,7 @@ class MainPage : public gui::Layout,
 
   thread_ptr<Root> directory_;
   DropTarget<Waveform, WaveformProto> waveform_;
-  SimpleLabel loops_;
+  gui::TableModel<SegmentList> loops_;
   PlaybackController controller_;
 
   gui::Layout panel_;

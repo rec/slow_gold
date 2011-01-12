@@ -11,4 +11,5 @@ message Segment {
 
 message SegmentList {
   repeated Segment segment = 1;
+  repeated bool selected = 2;
 };

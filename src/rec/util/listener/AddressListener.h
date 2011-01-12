@@ -22,7 +22,7 @@ class AddressListener : public DataListener<Proto> {
     set(proto::getValue(address_, message));
   }
 
-  const Address& address() const { return address_; }
+  virtual const Address& address() const { return address_; }
 
  protected:
   virtual void onChange() {

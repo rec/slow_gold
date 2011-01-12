@@ -21,8 +21,9 @@ class Setter : public Listener<Operation*> {
   void remove(const Address& address, int itemsToRemove);
   void set(const Address& address, const Value& value);
   void swap(const Address& address, int s1, int s2);
-  virtual const Value get(const Address& address) const = 0;
-  virtual bool has(const Address& address) const = 0;
+
+  virtual const Value getValue(const Address& address) const = 0;
+  virtual bool hasValue(const Address& address) const = 0;
   virtual int getSize(const Address& address) const = 0;
 
   typedef Address A;
@@ -79,19 +80,19 @@ class Setter : public Listener<Operation*> {
   void swap(P a, P b, P c, P d, int s, int t) { swap(A(a, b, c, d), s, t); }
   void swap(P a, P b, P c, P d, P e, int s, int t) { swap(A(a, b, c, d, e), s, t); }
 
-  const Value get() const { return get(A()); }
-  const Value get(P a) const { return get(A(a)); }
-  const Value get(P a, P b) const { return get(A(a, b)); }
-  const Value get(P a, P b, P c) const { return get(A(a, b, c)); }
-  const Value get(P a, P b, P c, P d) const { return get(A(a, b, c, d)); }
-  const Value get(P a, P b, P c, P d, P e) const { return get(A(a, b, c, d, e)); }
+  const Value getValue() const { return getValue(A()); }
+  const Value getValue(P a) const { return getValue(A(a)); }
+  const Value getValue(P a, P b) const { return getValue(A(a, b)); }
+  const Value getValue(P a, P b, P c) const { return getValue(A(a, b, c)); }
+  const Value getValue(P a, P b, P c, P d) const { return getValue(A(a, b, c, d)); }
+  const Value getValue(P a, P b, P c, P d, P e) const { return getValue(A(a, b, c, d, e)); }
 
-  bool has() const { return has(A()); }
-  bool has(P a) const { return has(A(a)); }
-  bool has(P a, P b) const { return has(A(a, b)); }
-  bool has(P a, P b, P c) const { return has(A(a, b, c)); }
-  bool has(P a, P b, P c, P d) const { return has(A(a, b, c, d)); }
-  bool has(P a, P b, P c, P d, P e) const { return has(A(a, b, c, d, e)); }
+  bool hasValue() const { return hasValue(A()); }
+  bool hasValue(P a) const { return hasValue(A(a)); }
+  bool hasValue(P a, P b) const { return hasValue(A(a, b)); }
+  bool hasValue(P a, P b, P c) const { return hasValue(A(a, b, c)); }
+  bool hasValue(P a, P b, P c, P d) const { return hasValue(A(a, b, c, d)); }
+  bool hasValue(P a, P b, P c, P d, P e) const { return hasValue(A(a, b, c, d, e)); }
 
  private:
   DISALLOW_COPY_AND_ASSIGN(Setter);

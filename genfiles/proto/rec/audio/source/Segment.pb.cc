@@ -51,8 +51,9 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fSegment_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Segment));
   SegmentList_descriptor_ = file->message_type(1);
-  static const int SegmentList_offsets_[1] = {
+  static const int SegmentList_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SegmentList, segment_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SegmentList, selected_),
   };
   SegmentList_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -103,9 +104,9 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fSegment_2eproto() {
     "\n\036rec/audio/source/Segment.proto\022\020rec.au"
     "dio.source\032\036rec/util/file/VolumeFile.pro"
     "to\"B\n\007Segment\022\r\n\005begin\030\001 \001(\001\022\013\n\003end\030\002 \001("
-    "\001\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"9\n\013Segmen"
+    "\001\022\014\n\004name\030\003 \001(\t\022\r\n\005notes\030\004 \001(\t\"K\n\013Segmen"
     "tList\022*\n\007segment\030\001 \003(\0132\031.rec.audio.sourc"
-    "e.Segment", 209);
+    "e.Segment\022\020\n\010selected\030\002 \003(\010", 227);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Segment.proto", &protobuf_RegisterTypes);
   Segment::default_instance_ = new Segment();
@@ -486,6 +487,7 @@ void Segment::Swap(Segment* other) {
 
 #ifndef _MSC_VER
 const int SegmentList::kSegmentFieldNumber;
+const int SegmentList::kSelectedFieldNumber;
 #endif  // !_MSC_VER
 
 SegmentList::SegmentList()
@@ -538,6 +540,7 @@ SegmentList* SegmentList::New() const {
 
 void SegmentList::Clear() {
   segment_.Clear();
+  selected_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -559,6 +562,28 @@ bool SegmentList::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_segment;
+        if (input->ExpectTag(16)) goto parse_selected;
+        break;
+      }
+      
+      // repeated bool selected = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_selected:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 1, 16, input, this->mutable_selected())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, this->mutable_selected())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_selected;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -587,6 +612,12 @@ void SegmentList::SerializeWithCachedSizes(
       1, this->segment(i), output);
   }
   
+  // repeated bool selected = 2;
+  for (int i = 0; i < this->selected_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(
+      2, this->selected(i), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -600,6 +631,12 @@ void SegmentList::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->segment(i), target);
+  }
+  
+  // repeated bool selected = 2;
+  for (int i = 0; i < this->selected_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteBoolToArray(2, this->selected(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -618,6 +655,13 @@ int SegmentList::ByteSize() const {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->segment(i));
+  }
+  
+  // repeated bool selected = 2;
+  {
+    int data_size = 0;
+    data_size = 1 * this->selected_size();
+    total_size += 1 * this->selected_size() + data_size;
   }
   
   if (!unknown_fields().empty()) {
@@ -646,6 +690,7 @@ void SegmentList::MergeFrom(const ::google::protobuf::Message& from) {
 void SegmentList::MergeFrom(const SegmentList& from) {
   GOOGLE_CHECK_NE(&from, this);
   segment_.MergeFrom(from.segment_);
+  selected_.MergeFrom(from.selected_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -669,6 +714,7 @@ bool SegmentList::IsInitialized() const {
 void SegmentList::Swap(SegmentList* other) {
   if (other != this) {
     segment_.Swap(&other->segment_);
+    selected_.Swap(&other->selected_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

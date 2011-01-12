@@ -11,12 +11,12 @@ namespace persist {
 
 using rec::proto::Operation;
 
-bool UntypedData::has(const Address& address) const {
-  return hasValue(address, *message_);
+bool UntypedData::hasValue(const Address& address) const {
+  return proto::hasValue(address, *message_);
 }
 
-const Value UntypedData::get(const Address& address) const {
-  return getValue(address, *message_);
+const Value UntypedData::getValue(const Address& address) const {
+  return proto::getValue(address, *message_);
 }
 
 int UntypedData::getSize(const Address& address) const {
