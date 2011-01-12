@@ -2,37 +2,25 @@
 #define __REC_COMPONENT_MAIN_PAGE_J_H__
 
 #include <set>
-#include <set>
 #include <vector>
 
-#include "rec/audio/source/Segment.pb.h"
-#include "rec/data/persist/Copy.h"
-#include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Layout.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
+#include "rec/gui/Loops.h"
+#include "rec/gui/SetterResizer.h"
 #include "rec/slow/app/PlaybackController.h"
 #include "rec/slow/app/StretchyPlayer.h"
 #include "rec/widget/tree/Root.h"
-#include "rec/widget/waveform/Cursor.h"
-#include "rec/gui/SetterResizer.h"
-#include "rec/gui/TableModel.h"
+#include "rec/widget/waveform/Waveform.h"
 
-using namespace juce;
-
-using namespace rec::audio;
-using namespace rec::audio::source;
 using namespace rec::gui;
-using namespace rec::util::thread;
-using namespace rec::widget::status::time;
-using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
 
-using rec::persist::copy;
+using rec::audio::source::SegmentList;
+using rec::widget::tree::Root;
 
 namespace rec {
 namespace slow {
 
-using audio::source::SegmentList;
 
 class MainPage : public gui::Layout,
                  public Listener<const TimeAndMouseEvent&>,
@@ -67,7 +55,7 @@ class MainPage : public gui::Layout,
 
   thread_ptr<Root> directory_;
   DropTarget<Waveform, WaveformProto> waveform_;
-  gui::TableModel<SegmentList> loops_;
+  gui::Loops loops_;
   PlaybackController controller_;
 
   gui::Layout panel_;

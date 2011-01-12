@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="iBV1gDxyD" name="tests">
+  <MAINGROUP id="e5fdjVu37" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -533,6 +533,10 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/gui/Layout.h" id="qdG78ZSvr"
               name="Layout.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/Loops.cpp" id="r2DlyeZv7"
+              name="Loops.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/Loops.h" id="yYdhnW7SI" name="Loops.h"
+              resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/RecentFiles.cpp" id="MMRTcAMfa"
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="GVwhlEC2q"
@@ -971,7 +975,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="5NEWCtVp2" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="1FpE4L5JC" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

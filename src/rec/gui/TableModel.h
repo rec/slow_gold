@@ -14,9 +14,8 @@ template <typename Proto>
 class TableModel : public TableModelBase, public AddressListener<Proto> {
  public:
   typedef persist::Data<Proto> Data;
-  TableModel(const Address& addr, const TableColumnList& c,
-             const Address& selected = Address::default_instance())
-      : TableModelBase(c), AddressListener<Proto>(addr), selected_(selected) {
+  TableModel(const TableColumnList& c, const Address& addr, const Address& sel)
+      : TableModelBase(c), AddressListener<Proto>(addr), selected_(sel) {
   }
 
   virtual void setData(Data* data) {

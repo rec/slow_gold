@@ -107,20 +107,20 @@ void protobuf_AddDesc_rec_2fgui_2fTableColumn_2eproto() {
   ::rec::proto::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/gui/TableColumn.proto\022\007rec.gui\032\034re"
-    "c/data/proto/Address.proto\"\272\003\n\013TableColu"
-    "mn\022\014\n\004name\030\007 \001(\t\022\r\n\005width\030\001 \001(\r\022\025\n\rminim"
-    "um_width\030\002 \001(\r\022\025\n\rmaximum_width\030\003 \001(\r\022@\n"
-    "\016property_flags\030\004 \001(\0162\037.rec.gui.TableCol"
-    "umn.Properties:\007DEFAULT\022#\n\007address\030\005 \001(\013"
-    "2\022.rec.proto.Address\022\'\n\004type\030\006 \001(\0162\031.rec"
-    ".gui.TableColumn.Type\"\231\001\n\nProperties\022\013\n\007"
-    "VISIBLE\020\001\022\r\n\tRESIZABLE\020\002\022\r\n\tDRAGGABLE\020\004\022"
-    "\032\n\026APPEARS_ON_COLUMN_MENU\020\010\022\014\n\010SORTABLE\020"
-    "\020\022\023\n\017SORTED_FORWARDS\020 \022\024\n\020SORTED_BACKWAR"
-    "DS\020@\022\013\n\007DEFAULT\020\037\"4\n\004Type\022\n\n\006STRING\020\001\022\010\n"
-    "\004TIME\020\002\022\n\n\006UINT32\020\003\022\n\n\006DOUBLE\020\004\"7\n\017Table"
-    "ColumnList\022$\n\006column\030\001 \003(\0132\024.rec.gui.Tab"
-    "leColumn", 568);
+    "c/data/proto/Address.proto\"\306\003\n\013TableColu"
+    "mn\022\014\n\004name\030\007 \001(\t\022\021\n\005width\030\001 \001(\r:\00260\022\031\n\rm"
+    "inimum_width\030\002 \001(\r:\00260\022\031\n\rmaximum_width\030"
+    "\003 \001(\r:\00260\022@\n\016property_flags\030\004 \001(\0162\037.rec."
+    "gui.TableColumn.Properties:\007DEFAULT\022#\n\007a"
+    "ddress\030\005 \001(\0132\022.rec.proto.Address\022\'\n\004type"
+    "\030\006 \001(\0162\031.rec.gui.TableColumn.Type\"\231\001\n\nPr"
+    "operties\022\013\n\007VISIBLE\020\001\022\r\n\tRESIZABLE\020\002\022\r\n\t"
+    "DRAGGABLE\020\004\022\032\n\026APPEARS_ON_COLUMN_MENU\020\010\022"
+    "\014\n\010SORTABLE\020\020\022\023\n\017SORTED_FORWARDS\020 \022\024\n\020SO"
+    "RTED_BACKWARDS\020@\022\013\n\007DEFAULT\020\037\"4\n\004Type\022\n\n"
+    "\006STRING\020\001\022\010\n\004TIME\020\002\022\n\n\006UINT32\020\003\022\n\n\006DOUBL"
+    "E\020\004\"7\n\017TableColumnList\022$\n\006column\030\001 \003(\0132\024"
+    ".rec.gui.TableColumn", 580);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/TableColumn.proto", &protobuf_RegisterTypes);
   TableColumn::default_instance_ = new TableColumn();
@@ -227,9 +227,9 @@ TableColumn::TableColumn(const TableColumn& from)
 void TableColumn::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&_default_name_);
-  width_ = 0u;
-  minimum_width_ = 0u;
-  maximum_width_ = 0u;
+  width_ = 60u;
+  minimum_width_ = 60u;
+  maximum_width_ = 60u;
   property_flags_ = 31;
   address_ = NULL;
   type_ = 1;
@@ -276,9 +276,9 @@ void TableColumn::Clear() {
         name_->clear();
       }
     }
-    width_ = 0u;
-    minimum_width_ = 0u;
-    maximum_width_ = 0u;
+    width_ = 60u;
+    minimum_width_ = 60u;
+    maximum_width_ = 60u;
     property_flags_ = 31;
     if (_has_bit(5)) {
       if (address_ != NULL) address_->::rec::proto::Address::Clear();
@@ -295,7 +295,7 @@ bool TableColumn::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 width = 1;
+      // optional uint32 width = 1 [default = 60];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -310,7 +310,7 @@ bool TableColumn::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 minimum_width = 2;
+      // optional uint32 minimum_width = 2 [default = 60];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -326,7 +326,7 @@ bool TableColumn::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 maximum_width = 3;
+      // optional uint32 maximum_width = 3 [default = 60];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -433,17 +433,17 @@ bool TableColumn::MergePartialFromCodedStream(
 
 void TableColumn::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 width = 1;
+  // optional uint32 width = 1 [default = 60];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->width(), output);
   }
   
-  // optional uint32 minimum_width = 2;
+  // optional uint32 minimum_width = 2 [default = 60];
   if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->minimum_width(), output);
   }
   
-  // optional uint32 maximum_width = 3;
+  // optional uint32 maximum_width = 3 [default = 60];
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->maximum_width(), output);
   }
@@ -483,17 +483,17 @@ void TableColumn::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* TableColumn::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 width = 1;
+  // optional uint32 width = 1 [default = 60];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->width(), target);
   }
   
-  // optional uint32 minimum_width = 2;
+  // optional uint32 minimum_width = 2 [default = 60];
   if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->minimum_width(), target);
   }
   
-  // optional uint32 maximum_width = 3;
+  // optional uint32 maximum_width = 3 [default = 60];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->maximum_width(), target);
   }
@@ -545,21 +545,21 @@ int TableColumn::ByteSize() const {
           this->name());
     }
     
-    // optional uint32 width = 1;
+    // optional uint32 width = 1 [default = 60];
     if (has_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->width());
     }
     
-    // optional uint32 minimum_width = 2;
+    // optional uint32 minimum_width = 2 [default = 60];
     if (has_minimum_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->minimum_width());
     }
     
-    // optional uint32 maximum_width = 3;
+    // optional uint32 maximum_width = 3 [default = 60];
     if (has_maximum_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

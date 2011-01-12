@@ -3,14 +3,9 @@
 #include "rec/slow/app/MainPage.h"
 
 #include "rec/base/ArraySize.h"
-#include "rec/data/persist/App.h"
-#include "rec/data/persist/Copy.h"
-#include "rec/data/proto/Equals.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/app/AppLayout.pb.h"
-#include "rec/util/STL.h"
-#include "rec/util/file/Util.h"
-#include "rec/widget/tree/NodeItem.h"
+#include "rec/widget/waveform/Cursor.h"
 
 using namespace juce;
 
@@ -27,7 +22,6 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       player_(deviceManager),
       directory_(new Root(NodeDesc())),
       waveform_(WaveformProto()),
-      loops_(Address("segment"), TableColumnList(), Address("selected")),
       controller_(player_.getTransport()),
       openDialogOpen_(false) {
   doLayout();
@@ -165,6 +159,7 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
 
 void MainPage::operator()(const VolumeFile& file) {
   controller_.setData(player_.getStretchy());
+  loops_.setData(persist::data<SegmentList>(file));
   controller_(file);
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);

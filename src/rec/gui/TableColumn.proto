@@ -24,9 +24,9 @@ message TableColumn {
   };
 
   optional string name = 7;
-  optional uint32 width = 1;
-  optional uint32 minimum_width = 2;
-  optional uint32 maximum_width = 3;
+  optional uint32 width = 1 [default = 60];
+  optional uint32 minimum_width = 2 [default = 60];
+  optional uint32 maximum_width = 3 [default = 60];
 
   optional Properties property_flags = 4 [default = DEFAULT];
   optional proto.Address address = 5;

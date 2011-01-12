@@ -108,6 +108,7 @@
 		C1BCC9B684D0C54F9B7FB6A4 = { isa = PBXBuildFile; fileRef = 8DB11C35DCABE4A1E9A3B634; };
 		1F57D4AA27B9926D2A1873E5 = { isa = PBXBuildFile; fileRef = 43471B5A59B990E43C0B976C; };
 		97861735FC9AFFB07B374F53 = { isa = PBXBuildFile; fileRef = D0F5054412AC848253A2F793; };
+		DA8FEB7203288D0F8BDB0A0F = { isa = PBXBuildFile; fileRef = C4ECA2AAA6022D779D9196AC; };
 		67E7A454832A2972CB3A6CAC = { isa = PBXBuildFile; fileRef = D65BD64DD9F41E4598606855; };
 		482983984F2DC58576AAA0A4 = { isa = PBXBuildFile; fileRef = 532A5FEE805C5C546E12C642; };
 		2822CC922692043D01760BEF = { isa = PBXBuildFile; fileRef = 775A4DE3E804282C1E73ACCE; };
@@ -434,6 +435,8 @@
 		D0F5054412AC848253A2F793 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ThinFolder.svg.cpp; path = ../../../../src/rec/gui/icon/ThinFolder.svg.cpp; sourceTree = SOURCE_ROOT; };
 		ABF084CB3198E605215DA0CD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThinFolder.svg.h; path = ../../../../src/rec/gui/icon/ThinFolder.svg.h; sourceTree = SOURCE_ROOT; };
 		C972AB97EB155B9EF4C50DD4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Layout.h; path = ../../../../src/rec/gui/Layout.h; sourceTree = SOURCE_ROOT; };
+		C4ECA2AAA6022D779D9196AC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Loops.cpp; path = ../../../../src/rec/gui/Loops.cpp; sourceTree = SOURCE_ROOT; };
+		816567F36ADCA63BAD6382F8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Loops.h; path = ../../../../src/rec/gui/Loops.h; sourceTree = SOURCE_ROOT; };
 		D65BD64DD9F41E4598606855 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RecentFiles.cpp; path = ../../../../src/rec/gui/RecentFiles.cpp; sourceTree = SOURCE_ROOT; };
 		DBC264B1DC398875017EAB6F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecentFiles.h; path = ../../../../src/rec/gui/RecentFiles.h; sourceTree = SOURCE_ROOT; };
 		65C72CBB1A41DFD71FBB0E05 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SegmentTable.h; path = ../../../../src/rec/gui/SegmentTable.h; sourceTree = SOURCE_ROOT; };
@@ -888,6 +891,8 @@
 				976CB35D28D5A83B6F5441ED,
 				401AE059F2A868FC7EB8632E,
 				C972AB97EB155B9EF4C50DD4,
+				C4ECA2AAA6022D779D9196AC,
+				816567F36ADCA63BAD6382F8,
 				D65BD64DD9F41E4598606855,
 				DBC264B1DC398875017EAB6F,
 				65C72CBB1A41DFD71FBB0E05,
@@ -1161,7 +1166,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		92E4BED7589BF4391ECB067D = { isa = PBXGroup; children = (
+		C740908142853C46C8674BFC = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1336,6 +1341,7 @@
 				C1BCC9B684D0C54F9B7FB6A4,
 				1F57D4AA27B9926D2A1873E5,
 				97861735FC9AFFB07B374F53,
+				DA8FEB7203288D0F8BDB0A0F,
 				67E7A454832A2972CB3A6CAC,
 				482983984F2DC58576AAA0A4,
 				2822CC922692043D01760BEF,
@@ -1430,7 +1436,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 92E4BED7589BF4391ECB067D; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = C740908142853C46C8674BFC; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }
