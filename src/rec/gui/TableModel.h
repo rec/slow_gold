@@ -4,6 +4,7 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/util/listener/AddressListener.h"
 #include "rec/gui/TableModelBase.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
@@ -25,7 +26,10 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
       proto_ = data->get();
     else
       proto_.Clear();
+    thread::callAsync(this, &TableListBox::updateContent);
   }
+
+  void repaint() { TableModelBase::repaint(); }
 
   virtual const Value get() const {
     ScopedLock l(lock_);

@@ -29,7 +29,7 @@ class Typer {
   virtual bool equals(const Message& m, uint32 i, const Comparer& cmp) const = 0;
 
  protected:
-  const Reflection& reflection() const { return *msg_->GetReflection(); }
+  const Reflection& ref() const { return *msg_->GetReflection(); }
 
   const FieldDescriptor* field_;
   Message* msg_;

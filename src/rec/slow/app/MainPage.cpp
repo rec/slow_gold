@@ -2,9 +2,7 @@
 
 #include "rec/slow/app/MainPage.h"
 
-#include "rec/base/ArraySize.h"
 #include "rec/gui/RecentFiles.h"
-#include "rec/slow/app/AppLayout.pb.h"
 #include "rec/widget/waveform/Cursor.h"
 
 using namespace juce;
@@ -44,76 +42,6 @@ void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
   (*r)->add();
 }
 
-void MainPage::doLayout() {
-  persist::Data<AppLayout>* data = persist::data<AppLayout>();
-  AppLayout a = data->get();
-
-  bool full[] = {a.full_directory(),  a.full_waveform(), a.full_controller()};
-  Component* comp[] = {directory_->treeView(), &waveform_, &controller_};
-  const char* address[] = {"directory_y", "waveform_y", NULL};
-
-  static const int SIZE = arraysize(full);
-  DCHECK_EQ(SIZE, arraysize(comp));
-  DCHECK_EQ(SIZE, arraysize(address));
-  bool vertical = full[0] || full[1] || full[2];
-  bool compound = (full[0] + full[1] + full[2]) == 2;
-  DCHECK(!compound || full[1]);
-
-  setOrientation(static_cast<Orientation>(vertical));
-  panel_.setOrientation(static_cast<Orientation>(!vertical));
-
-  if (!vertical) {
-    for (int i = 0; i < SIZE; ++i) {
-      panel_.addToLayout(comp[i]);
-      if (address[i])
-        addResizer(&resizer_[i], address[i], &panel_);
-    }
-    addToLayout(&panel_);
-    addResizer(&loopResizer_, "loops_x", this);
-    addToLayout(&loops_);
-
-  } else if (compound) {
-    if (full[0]) {
-      addToLayout(comp[0]);
-      addResizer(&resizer_[0], address[0], this);
-
-      subpanel_.addToLayout(comp[1]);
-      addResizer(&resizer_[1], address[1], &subpanel_);
-      subpanel_.addToLayout(comp[2]);
-
-      addToLayout(&panel_);
-    } else {
-      subpanel_.addToLayout(comp[0]);
-      addResizer(&resizer_[0], address[0], &subpanel_);
-      subpanel_.addToLayout(comp[1]);
-      addResizer(&resizer_[1], address[1], this);
-
-      addToLayout(comp[2]);
-    }
-    panel_.addToLayout(&subpanel_);
-    addResizer(&loopResizer_, "loops_x", &panel_);
-    panel_.addToLayout(&loops_);
-
-  } else {
-    for (int i = 0; i < SIZE; ++i) {
-      if (full[i]) {
-        addToLayout(comp[i]);
-      } else {
-        panel_.addToLayout(comp[i]);
-        addResizer(&loopResizer_, "loops_x", &panel_);
-        panel_.addToLayout(&loops_);
-      }
-      if (address[i])
-        addResizer(&resizer_[i], address[i], this);
-    }
-  }
-
-  resizer_[0]->setSetter(data);
-  resizer_[1]->setSetter(data);
-  loopResizer_->setSetter(data);
-  controller_.setLayoutData();
-}
-
 MainPage::~MainPage() {
   // controller_.timeController()->setTransport(NULL);
 }
@@ -126,11 +54,21 @@ static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100;
 
 bool MainPage::keyPressed(const juce::KeyPress& kp) {
-  if (kp.getTextCharacter() == ' ') {
-    player_.getTransport()->toggle();
-    return true;
+  switch (kp.getTextCharacter()) {
+    case ' ': player_.getTransport()->toggle(); return true;
+    case 'x':
+    case 'X': addLoopPoint(); return true;
+    default: return false;
   }
-  return false;
+}
+
+void MainPage::addLoopPoint() {
+  if (loops_.getData()) {
+    LoopPoint p;
+    p.set_time(player_.getTransport()->getCurrentPosition());
+    loops_.getData()->append("loop_point", p);
+    loops_.getData()->append("selected", false);
+  }
 }
 
 void MainPage::doOpen() {
@@ -159,14 +97,19 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
 
 void MainPage::operator()(const VolumeFile& file) {
   controller_.setData(player_.getStretchy());
-  loops_.setData(persist::data<SegmentList>(file));
   controller_(file);
+
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);
+    loops_.setData(NULL);
+
   } else {
+    loops_.setData(persist::data<LoopPointList>(file));
     waveform_.setAudioThumbnail(player_.cachedThumbnail()->thumbnail());
     player_.cachedThumbnail()->addListener(&waveform_);
     gui::addRecentFile(file);
+
+    // Adjust the length of clients - fix this!
     (*(controller_.timeController()))(ClockUpdate(-1, player_.length() / 44100.0));
   }
 }

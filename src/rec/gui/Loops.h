@@ -1,14 +1,14 @@
 #ifndef __REC_GUI_LOOPS__
 #define __REC_GUI_LOOPS__
 
-#include "rec/audio/source/Segment.pb.h"
+#include "rec/audio/source/LoopPoint.pb.h"
 #include "rec/gui/TableModel.h"
 
 namespace rec {
 namespace gui {
 
-typedef audio::source::SegmentList SegmentList;
-typedef TableModel<SegmentList> LoopsBase;
+typedef audio::source::LoopPointList LoopPointList;
+typedef TableModel<LoopPointList> LoopsBase;
 
 class Loops : public LoopsBase {
  public:

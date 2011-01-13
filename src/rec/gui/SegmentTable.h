@@ -1,20 +1,20 @@
 #ifndef __REC_GUI_SEGMENTTABLE__
 #define __REC_GUI_SEGMENTTABLE__
 
-#include "rec/audio/source/Segment.pb.h"
+#include "rec/audio/source/LoopPoint.pb.h"
 
 namespace rec {
 namespace gui {
 
-class SegmentTable {
+class LoopPointTable {
  public:
-  SegmentTable() {}
+  LoopPointTable() {}
 
   void get() {
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SegmentTable);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopPointTable);
 };
 
 }  // namespace gui

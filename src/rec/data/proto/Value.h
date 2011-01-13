@@ -60,6 +60,8 @@ class Value : public proto::Value {
   operator int32() const { return cast<int32>(); }
   operator uint32() const { return cast<uint32>(); }
   operator bool() const { return cast<bool>(); }
+  operator penum() const { return enum_f(); }
+  operator pmessage() const { return message_f(); }
 
   Value(const proto::Value v) : proto::Value(v) {}
 };

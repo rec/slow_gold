@@ -11,18 +11,19 @@ TableModelBase::TableModelBase(const TableColumnList& c)
     : TableListBox("TableModelBase", this), columns_(c) {
 }
 
-void TableModelBase::fillHeaders(TableHeaderComponent* headers) {
+void TableModelBase::fillHeader(TableHeaderComponent* headers) {
   ScopedLock l(lock_);
   for (int i = 0; i < columns_.column_size(); ++i)  {
     const TableColumn& col = columns_.column(i);
-    headers->addColumn(col.name().c_str(), i, col.width(), col.minimum_width(),
+    headers->addColumn(col.name().c_str(), i + 1, col.width(), col.minimum_width(),
                        col.maximum_width(), col.property_flags());
   }
 }
 
 int TableModelBase::getNumRows() {
   ScopedLock l(lock_);
-  return proto::getSize(address(), message());
+  int size = proto::getSize(address(), message());
+  return size;
 }
 
 void TableModelBase::paintRowBackground(Graphics& g,
@@ -41,7 +42,7 @@ void TableModelBase::paintCell(Graphics& g,
                                bool rowIsSelected) {
   ScopedLock l(lock_);
 
-  const TableColumn& column = columns_.column(columnId);
+  const TableColumn& column = columns_.column(columnId - 1);
   Address addr = address();
   addr.add_field()->set_index(rowNumber);
   addr.MergeFrom(column.address());

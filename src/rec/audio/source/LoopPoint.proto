@@ -1,0 +1,12 @@
+package rec.audio.source;
+
+message LoopPoint {
+  optional double time = 1;
+  optional string name = 2;
+  optional string notes = 3;
+};
+
+message LoopPointList {
+  repeated LoopPoint loop_point = 1;
+  repeated bool selected = 2;
+};

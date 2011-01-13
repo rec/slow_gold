@@ -15,7 +15,7 @@
 using namespace rec::gui;
 using namespace rec::widget::waveform;
 
-using rec::audio::source::SegmentList;
+using rec::audio::source::LoopPointList;
 using rec::widget::tree::Root;
 
 namespace rec {
@@ -45,6 +45,7 @@ class MainPage : public gui::Layout,
 
  private:
   void addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo);
+  void addLoopPoint();
 
   void doLayout();
 

@@ -28,8 +28,16 @@ class TypedTyper : public Typer {
 
   void Add(Type t);
   void Clear();
-  bool Equals(const Message& m, const Comparer& c) const;
-  bool Equals(const Message& m, uint32 i, const Comparer& c) const;
+
+  bool Equals(const Message& m, const Comparer& c) const {
+    TypedTyper<Type> that(const_cast<Message*>(&m), field_);
+    return c(Get(), that.Get());
+  }
+
+  bool Equals(const Message& m, uint32 i, const Comparer& c) const {
+    TypedTyper<Type> that(const_cast<Message*>(&m), field_);
+    return c(GetRepeated(i), that.GetRepeated(i));
+  }
 
   virtual void copyFrom(const Value& v)            { Set(copy(v));  }
   virtual void copyFrom(uint32 i, const Value& v)  { SetRepeated(i, copy(v)); }

@@ -18,7 +18,7 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* cursor)
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   ScopedLock l(lock_);
   thumbnail_ = thumbnail;
-  setTimeBounds(0, thumbnail_ ? thumbnail_->getTotalLength() : 0);
+  setTimeBounds(TimeBounds(0, thumbnail_ ? thumbnail_->getTotalLength() : 0));
   thread::callAsync(this, &Waveform::repaint);
 }
 
@@ -26,14 +26,26 @@ void Waveform::paint(Graphics& g) {
   Painter p(desc_.widget(), &g);
   ScopedLock l(lock_);
   if (thumbnail_) {
-    if (desc_.layout() == WaveformProto::PARALLEL) {
-      thumbnail_->drawChannels(g, getLocalBounds(), range_.begin_, range_.end_, 1.0f);
+    SelectionRange::iterator i = selection_.begin();
+    Range<double> r = range_;
+    while (r.size() > 0.0) {
+      for (; i != selection_.end() && i->end_ <= r.begin_; ++i);
+      bool selected = (i != selection_.end() || r.begin_ >= i->begin_);
+      Range<double> draw = r;
+      if (selected)
+        r.end_ = i->end_;
 
-    } else {
-      for (int i = 0; i < thumbnail_->getNumChannels(); ++i) {
-        p.setColor(i + 1);
-        thumbnail_->drawChannel(g, getLocalBounds(), range_.begin_, range_.end_, i, 1.0f);
+      if (desc_.layout() == WaveformProto::PARALLEL) {
+        p.setColor(1 + 2 * selected);
+        thumbnail_->drawChannels(g, getLocalBounds(), draw.begin_, draw.end_, 1.0f);
+
+      } else {
+        for (int i = 0; i < thumbnail_->getNumChannels(); ++i) {
+          p.setColor(i + 1 + 2 * selected);
+          thumbnail_->drawChannel(g, getLocalBounds(), draw.begin_, draw.end_, i, 1.0f);
+        }
       }
+      r.begin_ = draw.end_;
     }
 
   } else {
@@ -49,20 +61,19 @@ Waveform::~Waveform() {
     delete getChildComponent(i - 1);
 }
 
-Cursor* Waveform::addCursor(const CursorProto& desc, float time) {
+Cursor* Waveform::addCursor(const CursorProto& desc, double time) {
   ScopedLock l(lock_);
   Cursor* cursor = new Cursor(desc, this);
   addAndMakeVisible(cursor);
   return cursor;
 }
 
-void Waveform::setTimeBounds(float begin, float end) {
+void Waveform::setTimeBounds(const TimeBounds& bounds) {
   {
     ScopedLock l(lock_);
-    range_.begin_ = begin;
-    range_.end_ = end;
+    range_ = bounds;
   }
-  layoutCursors();
+  resized();
 
   thread::callAsync(this, &Waveform::repaint);
 }
@@ -76,7 +87,7 @@ const TimeBounds Waveform::getTimeBounds() const {
   return TimeBounds(range_.begin_, range_.end_);
 }
 
-void Waveform::layoutCursors() {
+void Waveform::resized() {
   ScopedLock l(lock_);
   for (int i = getNumChildComponents(); i > 0; --i) {
     Component* comp = getChildComponent(i - 1);
@@ -92,7 +103,7 @@ void Waveform::layoutCursor(Cursor *cursor) {
   int displayWidth = cursor->desc().display_width();
   bounds.setWidth(displayWidth);
   int x = 0;
-  if (!Math<float>::near(range_.begin_, range_.end_, 0.001))
+  if (!Math<double>::near(range_.begin_, range_.end_, 0.001))
     x = width * (cursor->getTime() - range_.begin_) / (range_.end_ - range_.begin_);
 
   bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);

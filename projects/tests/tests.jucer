@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="e5fdjVu37" name="tests">
+  <MAINGROUP id="iwSh61GSd" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -592,6 +592,8 @@
                 name="MainPage.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/MainPageComponent.h"
                 id="QBuNOa5JD" name="MainPageComponent.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/slow/app/MainPageLayout.cpp"
+                id="rG03UGy9o" name="MainPageLayout.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/app/PlaybackController.cpp"
                 id="0DW5uTJtc" name="PlaybackController.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/app/PlaybackController.h"
@@ -843,14 +845,14 @@
           <FILE compile="0" file="../../genfiles/proto/rec/audio/AudioDeviceSetup.pb.h"
                 id="M4PFbNQ9K" name="AudioDeviceSetup.pb.h" resource="0"/>
           <GROUP id="LaLhoIKxe" name="source">
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/LoopPoint.pb.cc"
+                  id="W8twvVG9i" name="LoopPoint.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/LoopPoint.pb.h"
+                  id="cW5RyzGue" name="LoopPoint.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
                   id="aEJPeVALd" name="Runny.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Runny.pb.h"
                   id="mBJVRgNGC" name="Runny.pb.h" resource="0"/>
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Segment.pb.cc"
-                  id="0qt0vMmbC" name="Segment.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Segment.pb.h"
-                  id="2pfDqsxzG" name="Segment.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.cc"
                   id="5CMieWj10" name="Stretchy.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Stretchy.pb.h"
@@ -975,7 +977,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="1FpE4L5JC" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="vGOUu6DOq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

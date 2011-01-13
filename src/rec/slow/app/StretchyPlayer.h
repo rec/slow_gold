@@ -26,9 +26,7 @@ class StretchyPlayer : public Listener<const VolumeFile&>,
   // Callback when we're ready to actually jump to a new time.
   virtual void operator()(const float& time);
 
-  void setTime(int time) {
-    timeLocker_->set(time);
-  }
+  void setTime(int time) { timeLocker_->set(time); }
 
   Listener<const VolumeFile&>* fileListener() { return &fileListener_; }
   AudioTransportSourcePlayer* getTransport() { return transportSource_.get(); }

@@ -419,6 +419,7 @@
             <File RelativePath="..\..\..\..\src\rec\slow\app\MainPage.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\MainPage.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageComponent.h"/>
+            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageLayout.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\PlaybackController.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\PlaybackController.h"/>
             <File RelativePath="..\..\..\..\src\rec\slow\app\RecApplication.h"/>
@@ -549,10 +550,10 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.h"/>
             <Filter Name="source">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\LoopPoint.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\LoopPoint.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Segment.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Segment.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.h"/>
             </Filter>

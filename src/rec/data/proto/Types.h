@@ -15,31 +15,29 @@ using google::protobuf::Reflection;
 
 typedef uint32 Tag;
 
+// Make fictitious types to correspond to the Google proto types that aren't
+// primitive C++ types.
 #define PROTO_MAKE_TYPE(OUT, IN)                       \
   struct OUT {                                         \
-    OUT();                                             \
+    OUT() {}                                           \
     OUT(IN value) : value_(value) {}                   \
     operator IN() const { return value_; }             \
                                                        \
     IN value_;                                         \
-  }
+  };
 
 PROTO_MAKE_TYPE(fixed32,  uint32);
 PROTO_MAKE_TYPE(fixed64,  uint64);
-
 PROTO_MAKE_TYPE(sfixed32, uint32);
 PROTO_MAKE_TYPE(sfixed64, uint64);
-
 PROTO_MAKE_TYPE(sint32,   uint32);
 PROTO_MAKE_TYPE(sint64,   uint64);
-
 PROTO_MAKE_TYPE(bytes,    string);
+PROTO_MAKE_TYPE(penum,    int);
 
 inline bool operator==(const bytes& b1, const bytes& b2) {
   return b1.value_ == b2.value_;
 }
-
-PROTO_MAKE_TYPE(penum,    int);
 
 #undef PROTO_MAKE_TYPE
 
