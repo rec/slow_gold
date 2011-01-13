@@ -1,8 +1,9 @@
 #ifndef __REC_PROTO_TYPEDTYPER__
 #define __REC_PROTO_TYPEDTYPER__
 
-#include "rec/data/proto/Types.h"
 #include "rec/data/proto/Typer.h"
+#include "rec/data/proto/TypedOperations.h"
+#include "rec/data/proto/Types.h"
 #include "rec/data/proto/Comparer.h"
 
 namespace rec {
@@ -29,15 +30,8 @@ class TypedTyper : public Typer {
   void Add(Type t);
   void Clear();
 
-  bool Equals(const Message& m, const Comparer& c) const {
-    TypedTyper<Type> that(const_cast<Message*>(&m), field_);
-    return c(Get(), that.Get());
-  }
-
-  bool Equals(const Message& m, uint32 i, const Comparer& c) const {
-    TypedTyper<Type> that(const_cast<Message*>(&m), field_);
-    return c(GetRepeated(i), that.GetRepeated(i));
-  }
+  bool Equals(const Message& m, const Comparer& c) const;
+  bool Equals(const Message& m, uint32 i, const Comparer& c) const;
 
   virtual void copyFrom(const Value& v)            { Set(copy(v));  }
   virtual void copyFrom(uint32 i, const Value& v)  { SetRepeated(i, copy(v)); }
@@ -45,8 +39,6 @@ class TypedTyper : public Typer {
   virtual void copyTo(uint32 i, Value* v) const    { copy(GetRepeated(i), v); }
   virtual void add(const Value& v)                 { Add(copy(v)); }
   virtual void clear()                             { Clear(); }
-  virtual bool equals(const Message& m, const Comparer& c) const      { return Equals(m, c); }
-  virtual bool equals(const Message& m, uint32 i, const Comparer& c) const { return Equals(m, i, c); }
 
   virtual Typer* clone(google::protobuf::Message* m,
                        const FieldDescriptor* f) const {
@@ -56,6 +48,32 @@ class TypedTyper : public Typer {
  private:
   DISALLOW_COPY_AND_ASSIGN(TypedTyper);
 };
+
+template <>
+inline bool TypedTyper<pmessage>::Equals(const rec::Message& m,
+                                         const Comparer& cmp) const {
+  return typer::equals(*msg_, m, field_, cmp);
+}
+
+template <>
+inline bool TypedTyper<pmessage>::Equals(const rec::Message& m, uint32 i,
+                                         const Comparer& cmp) const {
+  return typer::equals(*msg_, m, field_, i, cmp);
+}
+
+template <typename Type>
+bool TypedTyper<Type>::Equals(const Message& m, const Comparer& c) const {
+  TypedTyper<Type> that(const_cast<Message*>(&m), field_);
+  return c(Get(), that.Get());
+}
+
+template <typename Type>
+bool TypedTyper<Type>::Equals(const Message& m, uint32 i,
+                              const Comparer& c) const {
+  TypedTyper<Type> that(const_cast<Message*>(&m), field_);
+  return c(GetRepeated(i), that.GetRepeated(i));
+}
+
 
 }  // namespace typer
 }  // namespace proto

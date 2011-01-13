@@ -25,8 +25,8 @@ class Typer {
   virtual void add(const Value& v) = 0;
   virtual void clear() = 0;
 
-  virtual bool equals(const Message& m, const Comparer& cmp) const = 0;
-  virtual bool equals(const Message& m, uint32 i, const Comparer& cmp) const = 0;
+  virtual bool Equals(const Message& m, const Comparer& cmp) const = 0;
+  virtual bool Equals(const Message& m, uint32 i, const Comparer& cmp) const = 0;
 
  protected:
   const Reflection& ref() const { return *msg_->GetReflection(); }

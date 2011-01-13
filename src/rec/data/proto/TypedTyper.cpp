@@ -1,7 +1,6 @@
 #include <google/protobuf/descriptor.h>
 
 #include "rec/data/proto/TypedTyper.h"
-#include "rec/data/proto/TypedOperations.h"
 #include "rec/data/proto/Equals.h"
 
 namespace rec {
@@ -24,18 +23,18 @@ namespace typer {
     return v.LOWER ## _f();                                             \
   }                                                                     \
                                                                         \
-  template <> void TypedTyper<TYPE>::copy(T t, Value* v) {              \
+  template <> void TypedTyper<TYPE>::copy(TYPE t, Value* v) {           \
     v->set_ ## LOWER ## _f(t);                                          \
   }                                                                     \
                                                                         \
 
 
 #define METHODS_COMMON_TO_MOST(TYPE, CAP)                               \
-  template <> void TypedTyper<TYPE>:Add(TYPE t) {                       \
-    ref().Add ## CAP(msg_, field_, v);                                  \
+  template <> void TypedTyper<TYPE>::Add(TYPE t) {                      \
+    ref().Add ## CAP(msg_, field_, t);                                  \
   }                                                                     \
                                                                         \
-  template <> TYPE TypedTyper<CTYPE>::Get() const {                     \
+  template <> TYPE TypedTyper<TYPE>::Get() const {                      \
     return ref().Get ## CAP(*msg_, field_);                             \
   }                                                                     \
                                                                         \
@@ -43,11 +42,11 @@ namespace typer {
     return ref().GetRepeated ## CAP(*msg_, field_, i);                  \
   }                                                                     \
                                                                         \
-  template <> TypedTyper<TYPE>::Set(TYPE t) {                           \
-    ref().Set ## CAP(t, msg_, field_);                                  \
+  template <> void TypedTyper<TYPE>::Set(TYPE t) {                      \
+    ref().Set ## CAP(msg_, field_, t);                                  \
   }                                                                     \
                                                                         \
-  template <> TypedTyper<TYPE>::Set(uint32 i, TYPE t) {                 \
+  template <> void TypedTyper<TYPE>::SetRepeated(uint32 i, TYPE t) {    \
     ref().SetRepeated ## CAP(msg_, field_, i, t);                       \
   }                                                                     \
                                                                         \
@@ -110,19 +109,6 @@ template <>
 void TypedTyper<pmessage>::Add(pmessage t) {
   ref().AddMessage(msg_, field_)->ParseFromString(t);
 }
-
-template <>
-bool TypedTyper<pmessage>::Equals(const rec::Message& m, const Comparer& cmp) const {
-  return typer::equals(*msg_, m, field_, cmp);
-}
-
-
-template <>
-bool TypedTyper<pmessage>::Equals(const rec::Message& m, uint32 i,
-                                  const Comparer& cmp) const {
-  return typer::equals(*msg_, m, field_, i, cmp);
-}
-
 
 template <>
 penum TypedTyper<penum>::Get() const {

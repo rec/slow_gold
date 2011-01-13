@@ -73,13 +73,13 @@ bool add(Message* m, const FieldDescriptor* f, const Value& v) {
 
 bool equals(const Message& m1, const Message& m2, const FieldDescriptor* f,
             int i, const Comparer& cmp) {
-  return STyper(const_cast<Message*>(&m1), f)->equals(m2, i, cmp);
+  return STyper(const_cast<Message*>(&m1), f)->Equals(m2, i, cmp);
 }
 
 bool equals(const Message& x, const Message& y, const FieldDescriptor* field,
             const Comparer& cmp) {
   if (!field->is_repeated())
-    return STyper(const_cast<Message*>(&x), field)->equals(y, cmp);
+    return STyper(const_cast<Message*>(&x), field)->Equals(y, cmp);
 
   int len = x.GetReflection()->FieldSize(x, field);
   if (len != y.GetReflection()->FieldSize(y, field))
