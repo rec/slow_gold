@@ -39,7 +39,10 @@ namespace typer {
   }                                                                     \
                                                                         \
   template <> TYPE TypedTyper<TYPE>::GetRepeated(uint32 i) const {      \
-    return ref().GetRepeated ## CAP(*msg_, field_, i);                  \
+    if (i < ref().FieldSize(*msg_, field_))                             \
+      return ref().GetRepeated ## CAP(*msg_, field_, i);                \
+    LOG(ERROR) << "Index " << i << " out of bounds for type " << #TYPE; \
+    return TYPE();                                                      \
   }                                                                     \
                                                                         \
   template <> void TypedTyper<TYPE>::Set(TYPE t) {                      \
@@ -47,7 +50,10 @@ namespace typer {
   }                                                                     \
                                                                         \
   template <> void TypedTyper<TYPE>::SetRepeated(uint32 i, TYPE t) {    \
-    ref().SetRepeated ## CAP(msg_, field_, i, t);                       \
+    if (i < ref().FieldSize(*msg_, field_))                             \
+      ref().SetRepeated ## CAP(msg_, field_, i, t);                     \
+    else                                                                \
+      LOG(ERROR) << "Index " << i << " out of bounds for type " << #TYPE; \
   }                                                                     \
                                                                         \
 
@@ -88,8 +94,12 @@ pmessage TypedTyper<pmessage>::Get() const {
 template <>
 pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
   pmessage p;
-  (field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_).
-    SerializeToString(&p.value_);
+  if (i < ref().FieldSize(*msg_, field_)) {
+    (field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_).
+      SerializeToString(&p.value_);
+  } else {
+    LOG(ERROR) << "Index " << i << " out of bounds for type pmessage";
+  }
   return p;
 }
 
@@ -101,8 +111,12 @@ void TypedTyper<pmessage>::Set(pmessage t) {
 
 template <>
 void TypedTyper<pmessage>::SetRepeated(uint32 i, pmessage t) {
-  (field_ ? ref().MutableRepeatedMessage(msg_, field_, i) : msg_)->
-    ParseFromString(t);
+  if (i < ref().FieldSize(*msg_, field_)) {
+    (field_ ? ref().MutableRepeatedMessage(msg_, field_, i) : msg_)->
+      ParseFromString(t);
+  } else {
+    LOG(ERROR) << "Index " << i << " out of bounds for type pmessage";
+  }
 }
 
 template <>
@@ -117,7 +131,10 @@ penum TypedTyper<penum>::Get() const {
 
 template <>
 penum TypedTyper<penum>::GetRepeated(uint32 i) const {
-  return ref().GetRepeatedEnum(*msg_, field_, i)->number();
+  if (i < ref().FieldSize(*msg_, field_))
+    return ref().GetRepeatedEnum(*msg_, field_, i)->number();
+  LOG(ERROR) << "Index " << i << " out of bounds for type pmessage";
+  return penum();
 }
 
 template <>
@@ -127,8 +144,12 @@ void TypedTyper<penum>::Set(penum t) {
 
 template <>
 void TypedTyper<penum>::SetRepeated(uint32 i, penum t) {
-  ref().SetRepeatedEnum(msg_, field_, i,
-                               field_->enum_type()->FindValueByNumber(t));
+  if (i < ref().FieldSize(*msg_, field_)) {
+    ref().SetRepeatedEnum(msg_, field_, i,
+                          field_->enum_type()->FindValueByNumber(t));
+  } else {
+    LOG(ERROR) << "Index " << i << " out of bounds for type pmessage";
+  }
 }
 
 template <>
