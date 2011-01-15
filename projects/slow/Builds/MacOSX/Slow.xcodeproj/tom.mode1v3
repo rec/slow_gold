@@ -321,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>juce_amalgamated.cpp</string>
+								<string>MainPage.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>juce_amalgamated.cpp</string>
+										<string>MainPage.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E275888B12E15E1E00E37D3F</string>
+										<string>E27588B612E1720100E37D3F</string>
 										<key>history</key>
 										<array>
 											<string>E2AEE61D1295F2B400B693AE</string>
@@ -395,7 +395,6 @@
 											<string>E21096B912D0387600202625</string>
 											<string>E21096D012D0393200202625</string>
 											<string>E210975112D166E500202625</string>
-											<string>E210975212D166E500202625</string>
 											<string>E210983B12D1B70A00202625</string>
 											<string>E210990B12D2435800202625</string>
 											<string>E2E594A012D26EB800FAEE58</string>
@@ -433,8 +432,9 @@
 											<string>E275887A12E1590E00E37D3F</string>
 											<string>E275887B12E1590E00E37D3F</string>
 											<string>E275887C12E1590E00E37D3F</string>
-											<string>E275888212E15D3800E37D3F</string>
-											<string>E275888312E15D3800E37D3F</string>
+											<string>E275889E12E16E2100E37D3F</string>
+											<string>E27588B412E1720100E37D3F</string>
+											<string>E27588B512E1720100E37D3F</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -632,13 +632,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E27588B712E1720100E37D3F</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>E275882812DFE4BD00E37D3F</string>
 		<string>E275882912DFE4BD00E37D3F</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>E290FED3120A432900532309</string>
-		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>E290FED3120A432900532309</string>
 	</array>
 	<key>WindowString</key>
 	<string>160 124 1133 1054 0 0 1920 1178 </string>
@@ -657,6 +658,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -679,8 +682,6 @@
 							<string>698pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -733,7 +734,7 @@
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1014,7 +1015,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

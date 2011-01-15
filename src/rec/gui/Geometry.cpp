@@ -8,11 +8,11 @@ namespace gui {
 
 void drawLine(Graphics& g, const Line& line,
               float sx, float sy, float ex, float ey) {
-  float thick = line.thickness();
-  if (int dash = line.dashing_size())
-    g.drawDashedLine(sx, sy, ex, ey, line.dashing().data(), dash, thick);
+  float t = line.thickness();
+  if (int d = line.dashing_size())
+    g.drawDashedLine(juce::Line<float>(sx, sy, ex, ey), line.dashing().data(), d, t);
   else
-    g.drawLine(sx, sy, ex, ey, thick);
+    g.drawLine(sx, sy, ex, ey, t);
 }
 
 void copy(const Rectangle& from, juce::Rectangle<int>* to) {

@@ -26,6 +26,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
 
   waveform_.addListener(this);
   waveform_.dropBroadcaster()->addListener(player_.fileListener());
+  directory_->addListener(player_.fileListener());
   player_.addListener(this);
 
   directory_->startThread();
