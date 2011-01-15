@@ -2,7 +2,7 @@
 #include <glog/logging.h>
 #include <gtest/gtest.h>
 
-#include "rec/slow/app/GenericApplication.h"
+#include "rec/slow/GenericApplication.h"
 
 namespace rec {
 namespace slow {

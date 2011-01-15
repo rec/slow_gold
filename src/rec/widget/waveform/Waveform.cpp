@@ -50,7 +50,7 @@ void Waveform::paint(Graphics& g) {
 
   } else {
     g.setFont(14.0f);
-    g.drawFittedText("Drop files here or double-click to open a new file",
+    g.drawFittedText("Drop a file here or double-click to open a new file",
                      0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
   }
 }

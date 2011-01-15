@@ -26,7 +26,6 @@
 		1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2501DE5143C9726EFD4CFEE5 /* Status.cpp */; };
 		218748B1BC795061B48B383C /* ReadYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C24187D27D942187F6F0613C /* ReadYaml.cpp */; };
 		28A0CDF6B7F4478930892A40 /* stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88C80D4AC91778AF36BD5055 /* stream.cpp */; };
-		2AA4AAE5B28A49DC57D7FB21 /* JuceLibraryCode.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0112EC2338A88B1E5ACA3C7 /* JuceLibraryCode.mm */; };
 		2E88ECDC0A679340104F7E72 /* emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C0EC2293E1A986C6D3AB5 /* emitter.cpp */; };
 		3491D4EF6750E33BDB2003C8 /* Setter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB6457CC72AF09C1E1CB5733 /* Setter.cpp */; };
 		35DB68C3E4EDD8FA27FC6C11 /* AudioFormatManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 298C82B77DFC683CC4CB26F5 /* AudioFormatManager.cpp */; };
@@ -136,19 +135,23 @@
 		C634C1A6B2B814A56413954A /* Filler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33384CC0D93E8CDA25D8B31D /* Filler.cpp */; };
 		C653BA4552E6838DFA4F8722 /* parserstate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AC0C5B89073B0A55BF23A3 /* parserstate.cpp */; };
 		C8E008E8CE6A2AD351B4F07C /* Cursor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = A80D354590E89BEA54C67DC2 /* Cursor.pb.cc */; };
+		CA062277033A2F1A42D2870B /* JuceLibraryCode2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9FAA12E0AAB647B4F4FBAF25 /* JuceLibraryCode2.mm */; };
 		CA269D42B0B82AB2D9B0950F /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC987E2C0BF96C46EB809A6B /* Copier.cpp */; };
 		CAB70C8EA6C74910D7DAC49A /* iterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 908B46BCECCDD21AC4BFD400 /* iterator.cpp */; };
+		CE7F11E6276F5802180D43F0 /* JuceLibraryCode1.mm in Sources */ = {isa = PBXBuildFile; fileRef = 567349E59DCBC48120082CE5 /* JuceLibraryCode1.mm */; };
 		CF421BCD0EAF08BE20EFB40C /* AudioTransportSourcePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */; };
 		D13CD404C98771CFB76688E6 /* DriveOptical.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2AAAD0A8B6877EC8FBBBBFF /* DriveOptical.svg.cpp */; };
 		D1F5D9EF3506BE0BA2C4E683 /* aliascontent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 046936284D70C57621E8BF01 /* aliascontent.cpp */; };
 		D3D88253E21C8183DA54DAB0 /* Stretchy.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4501D48705DD8F94EAEFD2BA /* Stretchy.pb.cc */; };
 		D48DF312F83E7715FE0C63E0 /* Address.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = CFC39A2BB09083C350DEF61E /* Address.pb.cc */; };
 		D4E81B2C18D947D6A8A83BDF /* ThinFolder.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C57184B3DEADC988014F31F /* ThinFolder.svg.cpp */; };
+		D69C3218EFF5E6227CB7CB06 /* JuceLibraryCode3.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9C0DBECB7A1B9D8D8DF2364 /* JuceLibraryCode3.mm */; };
 		DE3BF2396021B081CBFB616C /* Album.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93199C319E27661E45A5AA17 /* Album.pb.cc */; };
 		DEAEFE04F74B928AD873ECDB /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD3D0F303A37C8661D7DA7 /* hfft.c */; };
 		DED2531C6E62596A11087193 /* MainPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */; };
 		E02A77248DDC1EB6D9CEBBCC /* Album.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE1EF6A8A90E6BC80D12C1C3 /* Album.cpp */; };
 		E0AED36426123AC665734EBF /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C31B634103849F680A6D6D4 /* QuickTime.framework */; };
+		E22342A9BBB0BC3AA79C0001 /* JuceLibraryCode4.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22E7A4D7C38D3C0BBCB2A7B4 /* JuceLibraryCode4.mm */; };
 		E5406149587043DD0F6E509B /* RecentFiles.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = ECCD3A82FAB4856ED329FCC2 /* RecentFiles.pb.cc */; };
 		E641768CA04431D8080CE959 /* TableColumn.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = E97C78039C069A9FE363170B /* TableColumn.pb.cc */; };
 		E788EB69C4ACD2643A426EAE /* CopySamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 002424B6944D5320959B3DEA /* CopySamples.cpp */; };
@@ -229,6 +232,7 @@
 		2156D158361076E91DD5D101 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2229918D7B3E59F708F34D9B /* AppDirectory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDirectory.h; path = ../../../../src/rec/data/persist/AppDirectory.h; sourceTree = SOURCE_ROOT; };
 		22E6A127E8EA05C450A50D59 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../../../../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
+		22E7A4D7C38D3C0BBCB2A7B4 /* JuceLibraryCode4.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode4.mm; path = ../../JuceLibraryCode/JuceLibraryCode4.mm; sourceTree = SOURCE_ROOT; };
 		237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = SOURCE_ROOT; };
 		23A34552B919AAB64559DBDA /* Widget.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.pb.cc; path = ../../../../genfiles/proto/rec/widget/Widget.pb.cc; sourceTree = SOURCE_ROOT; };
 		2444E35A22AA2F9F051F3D24 /* Icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Icon.cpp; path = ../../../../src/rec/gui/icon/Icon.cpp; sourceTree = SOURCE_ROOT; };
@@ -313,6 +317,7 @@
 		55295BC8F2C653BA4552E683 /* scalar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scalar.h; path = ../../../../src/rec/data/yaml/src/scalar.h; sourceTree = SOURCE_ROOT; };
 		55B2494A8023C02EBBDC329D /* CompileAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CompileAssert.h; path = ../../../../src/rec/base/CompileAssert.h; sourceTree = SOURCE_ROOT; };
 		5643F10B98D25BC8271DCBA3 /* Geometry.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.pb.cc; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.cc; sourceTree = SOURCE_ROOT; };
+		567349E59DCBC48120082CE5 /* JuceLibraryCode1.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode1.mm; path = ../../JuceLibraryCode/JuceLibraryCode1.mm; sourceTree = SOURCE_ROOT; };
 		57AC0C5B89073B0A55BF23A3 /* parserstate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = parserstate.cpp; path = ../../../../src/rec/data/yaml/src/parserstate.cpp; sourceTree = SOURCE_ROOT; };
 		57BAD6CA05CE71056CAFCC77 /* Cursor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cursor.h; path = ../../../../src/rec/widget/waveform/Cursor.h; sourceTree = SOURCE_ROOT; };
 		58B52781CCAAA5E243DD1C98 /* Painter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Painter.h; path = ../../../../src/rec/widget/Painter.h; sourceTree = SOURCE_ROOT; };
@@ -422,6 +427,7 @@
 		9E51C20884951529E731C3DB /* Font.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Font.pb.cc; path = ../../../../genfiles/proto/rec/gui/Font.pb.cc; sourceTree = SOURCE_ROOT; };
 		9EC1B06A708112332FF88983 /* scoped_array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scoped_array.h; path = ../../../../src/rec/base/scoped_array.h; sourceTree = SOURCE_ROOT; };
 		9F08D4E271CD79A7F211E844 /* LogFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LogFile.cpp; path = ../../../../src/rec/data/proto/LogFile.cpp; sourceTree = SOURCE_ROOT; };
+		9FAA12E0AAB647B4F4FBAF25 /* JuceLibraryCode2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode2.mm; path = ../../JuceLibraryCode/JuceLibraryCode2.mm; sourceTree = SOURCE_ROOT; };
 		9FAA653CDBF71A04CE2AEB72 /* port.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = port.h; path = ../../../../src/rec/base/port.h; sourceTree = SOURCE_ROOT; };
 		A01B3007C9A345ECA165750F /* StretchyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StretchyController.h; path = ../../../../src/rec/gui/StretchyController.h; sourceTree = SOURCE_ROOT; };
 		A1856BDC6C42E9EE43593B39 /* nodeimpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nodeimpl.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/nodeimpl.h"; sourceTree = SOURCE_ROOT; };
@@ -509,7 +515,6 @@
 		CF3F33848CE79523BC796DAB /* CommandManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandManager.h; path = ../../../../src/rec/data/commands/CommandManager.h; sourceTree = SOURCE_ROOT; };
 		CFC39A2BB09083C350DEF61E /* Address.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Address.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/Address.pb.cc; sourceTree = SOURCE_ROOT; };
 		CFCC9E1CE303F093E59EACF4 /* basictypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = basictypes.h; path = ../../../../src/rec/base/basictypes.h; sourceTree = SOURCE_ROOT; };
-		D0112EC2338A88B1E5ACA3C7 /* JuceLibraryCode.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode.mm; path = ../../JuceLibraryCode/JuceLibraryCode.mm; sourceTree = SOURCE_ROOT; };
 		D0369F9DA91DDE2ED5A4412D /* Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Internal.h; path = ../../../../src/rec/data/yaml/Internal.h; sourceTree = SOURCE_ROOT; };
 		D0F62BA5E9E1F2EF1ADE5A48 /* Time.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Time.pb.cc; path = ../../../../genfiles/proto/rec/widget/status/Time.pb.cc; sourceTree = SOURCE_ROOT; };
 		D14E3385BB6606921E380B56 /* Runny.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Runny.h; path = ../../../../src/rec/audio/source/Runny.h; sourceTree = SOURCE_ROOT; };
@@ -557,6 +562,7 @@
 		E902679066139A5CEFF71E3F /* DoubleStretchyRunny.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DoubleStretchyRunny.cpp; path = ../../../../src/rec/audio/source/DoubleStretchyRunny.cpp; sourceTree = SOURCE_ROOT; };
 		E97C78039C069A9FE363170B /* TableColumn.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TableColumn.pb.cc; path = ../../../../genfiles/proto/rec/gui/TableColumn.pb.cc; sourceTree = SOURCE_ROOT; };
 		E9AC7EC13DB29BA143F43E68 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
+		E9C0DBECB7A1B9D8D8DF2364 /* JuceLibraryCode3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode3.mm; path = ../../JuceLibraryCode/JuceLibraryCode3.mm; sourceTree = SOURCE_ROOT; };
 		E9ED030EBF6F174FD5C24D77 /* OpenFolder.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenFolder.svg.h; path = ../../../../src/rec/gui/icon/OpenFolder.svg.h; sourceTree = SOURCE_ROOT; };
 		EAA0BE1D5978704335723B96 /* Access.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Access.pb.h; path = ../../../../genfiles/proto/rec/access/Access.pb.h; sourceTree = SOURCE_ROOT; };
 		EAB082B3DEB7425B3CEA5A70 /* AudioThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioThumbnail.h; path = ../../../../src/rec/gui/AudioThumbnail.h; sourceTree = SOURCE_ROOT; };
@@ -1341,7 +1347,10 @@
 			children = (
 				8AA5219530F4CC135C2C6829 /* AppConfig.h */,
 				4121F83242BFF073C048DC89 /* JuceHeader.h */,
-				D0112EC2338A88B1E5ACA3C7 /* JuceLibraryCode.mm */,
+				567349E59DCBC48120082CE5 /* JuceLibraryCode1.mm */,
+				9FAA12E0AAB647B4F4FBAF25 /* JuceLibraryCode2.mm */,
+				E9C0DBECB7A1B9D8D8DF2364 /* JuceLibraryCode3.mm */,
+				22E7A4D7C38D3C0BBCB2A7B4 /* JuceLibraryCode4.mm */,
 			);
 			name = "Juce Library Code";
 			sourceTree = "<group>";
@@ -1661,7 +1670,10 @@
 				FC3B0F3F33B09BA2B896123B /* Waveform.pb.cc in Sources */,
 				363D79B5ADAA58C67379104E /* Widget.pb.cc in Sources */,
 				BBF9C52A8F10B7D04B5FBEC9 /* Main.cpp in Sources */,
-				2AA4AAE5B28A49DC57D7FB21 /* JuceLibraryCode.mm in Sources */,
+				CE7F11E6276F5802180D43F0 /* JuceLibraryCode1.mm in Sources */,
+				CA062277033A2F1A42D2870B /* JuceLibraryCode2.mm in Sources */,
+				D69C3218EFF5E6227CB7CB06 /* JuceLibraryCode3.mm in Sources */,
+				E22342A9BBB0BC3AA79C0001 /* JuceLibraryCode4.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

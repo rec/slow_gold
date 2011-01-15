@@ -47,8 +47,8 @@ TEST(CD, Albums) {
     offsets.add(trackLengths[i]);
 
   AlbumList albums;
-  EXPECT_EQ(fillAlbums(offsets, &albums), "");
-  EXPECT_EQ(albums.album_size(), 1);
+  EXPECT_EQ(String(""), fillAlbums(offsets, &albums));
+  EXPECT_EQ(1, albums.album_size());
 
   for (int i = 0; i < albums.album_size(); ++i) {
     const Metadata& album = albums.album(i).album();
