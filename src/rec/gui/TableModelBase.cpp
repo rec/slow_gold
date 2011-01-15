@@ -34,17 +34,17 @@ void TableModelBase::paintRowBackground(Graphics& g,
                                         int width, int height,
                                         bool rowIsSelected) {
   ScopedLock l(lock_);
-  g.setColour(rowIsSelected ? juce::Colours::yellow : juce::Colours::white);
+  g.setColour(rowIsSelected ? juce::Colour(0xffefef80) : juce::Colours::white);
   g.fillRect(0, 0, width, height);
 }
 
 void TableModelBase::paintCell(Graphics& g,
- int rowNumber,
+                               int rowNumber,
                                int columnId,
                                int width, int height,
                                bool rowIsSelected) {
   ScopedLock l(lock_);
-
+  g.setColour(juce::Colours::black);
   const TableColumn& column = columns_.column(columnId - 1);
   Address addr = address();
   addr.add_field()->set_index(rowNumber);
