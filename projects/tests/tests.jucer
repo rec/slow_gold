@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="JuNhBgVaG" name="tests">
+  <MAINGROUP id="ZpOvipXOm" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -573,46 +573,44 @@
               name="TransportController.h" resource="0"/>
       </GROUP>
       <GROUP id="vrHU7SxTi" name="slow">
-        <GROUP id="iYkm5tfnT" name="app">
-          <FILE compile="0" file="../../src/rec/slow/app/AudioSetupPage.h" id="5Tzrb1HOL"
-                name="AudioSetupPage.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/AudioTransportSourcePlayer.cpp"
-                id="81vXCgWsS" name="AudioTransportSourcePlayer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/AudioTransportSourcePlayer.h"
-                id="KzrKdi7l8" name="AudioTransportSourcePlayer.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/ComponentContainer.cpp"
-                id="jJ4mHE06Q" name="ComponentContainer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/ComponentContainer.h"
-                id="tkqan7mXm" name="ComponentContainer.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/GenericApplication.h"
-                id="uDpBWoCIX" name="GenericApplication.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/MainPage.cpp" id="jaxepYjnY"
-                name="MainPage.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/MainPage.h" id="0SJk1hXl2"
-                name="MainPage.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/MainPageComponent.h"
-                id="QBuNOa5JD" name="MainPageComponent.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/MainPageLayout.cpp"
-                id="rG03UGy9o" name="MainPageLayout.cpp" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/PlaybackController.cpp"
-                id="0DW5uTJtc" name="PlaybackController.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/PlaybackController.h"
-                id="hOGNQtVCX" name="PlaybackController.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/RecApplication.h" id="tXsb7TQCo"
-                name="RecApplication.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/RecWindow.cpp" id="Nvtm4Rcjr"
-                name="RecWindow.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/RecWindow.h" id="TtLSwyxUo"
-                name="RecWindow.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/StretchyPlayer.cpp"
-                id="UcOAhKQQn" name="StretchyPlayer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/StretchyPlayer.h" id="kun0oav0z"
-                name="StretchyPlayer.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/app/TimeController.cpp"
-                id="FdtoEW3vf" name="TimeController.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/app/TimeController.h" id="fcXtcotvP"
-                name="TimeController.h" resource="0"/>
-        </GROUP>
+        <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="W5xESeAC9"
+              name="AudioSetupPage.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/AudioTransportSourcePlayer.cpp"
+              id="eMtVKFU3O" name="AudioTransportSourcePlayer.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/AudioTransportSourcePlayer.h"
+              id="WTZmf0ccw" name="AudioTransportSourcePlayer.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/ComponentContainer.cpp"
+              id="IXA2k1Uls" name="ComponentContainer.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/ComponentContainer.h" id="DUyB85nIn"
+              name="ComponentContainer.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/GenericApplication.h" id="pTWLwuawe"
+              name="GenericApplication.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/MainPage.cpp" id="P5guAT8zS"
+              name="MainPage.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/MainPage.h" id="TT6HK9vlp"
+              name="MainPage.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/MainPageComponent.h" id="gviDelv5L"
+              name="MainPageComponent.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/MainPageLayout.cpp" id="RRPGQcVhE"
+              name="MainPageLayout.cpp" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/PlaybackController.cpp"
+              id="mvRF8HIiy" name="PlaybackController.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/PlaybackController.h" id="UeinlnxCx"
+              name="PlaybackController.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/RecApplication.h" id="UAfWJN1rc"
+              name="RecApplication.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/RecWindow.cpp" id="dFUMC4KNR"
+              name="RecWindow.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/RecWindow.h" id="vRy2CmjXT"
+              name="RecWindow.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/StretchyPlayer.cpp" id="XUq3UYWFV"
+              name="StretchyPlayer.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/StretchyPlayer.h" id="C0Hk5gv70"
+              name="StretchyPlayer.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/TimeController.cpp" id="vUkqSvvNv"
+              name="TimeController.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/TimeController.h" id="DDCsbrpBJ"
+              name="TimeController.h" resource="0"/>
       </GROUP>
       <GROUP id="7tu1XPqEp" name="util">
         <GROUP id="IN3ao8UNh" name="block">
@@ -908,12 +906,10 @@
                 id="KRxNfzXnd" name="TableColumn.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="zdICogwiF" name="slow">
-          <GROUP id="Cudkuu3Ut" name="app">
-            <FILE compile="1" file="../../genfiles/proto/rec/slow/app/AppLayout.pb.cc"
-                  id="ZFyIoi1zW" name="AppLayout.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/slow/app/AppLayout.pb.h"
-                  id="cYDlCIUip" name="AppLayout.pb.h" resource="0"/>
-          </GROUP>
+          <FILE compile="1" file="../../genfiles/proto/rec/slow/AppLayout.pb.cc"
+                id="5Jt2v5gSl" name="AppLayout.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/slow/AppLayout.pb.h"
+                id="UtdxuYqQ8" name="AppLayout.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="OOoCyKoQN" name="util">
           <GROUP id="wLh3fE8p2" name="cd">
@@ -977,7 +973,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="fyMBpuf3k" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="h79nSjwOW" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

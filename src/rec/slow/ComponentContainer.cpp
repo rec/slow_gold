@@ -1,9 +1,9 @@
-#include "rec/slow/app/ComponentContainer.h"
+#include "rec/slow/ComponentContainer.h"
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/slow/app/MainPageComponent.h"
-#include "rec/slow/app/AudioSetupPage.h"
+#include "rec/slow/MainPageComponent.h"
+#include "rec/slow/AudioSetupPage.h"
 #include "rec/util/thread/MakeThread.h"
 
 namespace rec {

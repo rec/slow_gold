@@ -1,7 +1,7 @@
 #ifndef __REC_WINDOW
 #define __REC_WINDOW
 
-#include "rec/slow/app/ComponentContainer.h"
+#include "rec/slow/ComponentContainer.h"
 #include "rec/data/persist/Persist.h"
 
 using namespace juce;

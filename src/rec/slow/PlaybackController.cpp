@@ -1,4 +1,4 @@
-#include "rec/slow/app/PlaybackController.h"
+#include "rec/slow/PlaybackController.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/gui/SetterToggle.h"

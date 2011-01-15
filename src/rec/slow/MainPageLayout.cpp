@@ -1,6 +1,6 @@
 #include "rec/base/ArraySize.h"
-#include "rec/slow/app/MainPage.h"
-#include "rec/slow/app/AppLayout.pb.h"
+#include "rec/slow/MainPage.h"
+#include "rec/slow/AppLayout.pb.h"
 
 namespace rec {
 namespace slow {

@@ -409,27 +409,25 @@
           <File RelativePath="..\..\..\..\src\rec\gui\TransportController.h"/>
         </Filter>
         <Filter Name="slow">
-          <Filter Name="app">
-            <File RelativePath="..\..\..\..\src\rec\slow\app\AudioSetupPage.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\AudioTransportSourcePlayer.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\AudioTransportSourcePlayer.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\ComponentContainer.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\ComponentContainer.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\GenericApplication.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPage.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPage.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageComponent.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\MainPageLayout.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\PlaybackController.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\PlaybackController.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\RecApplication.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\RecWindow.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\StretchyPlayer.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\StretchyPlayer.h"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\TimeController.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\slow\app\TimeController.h"/>
-          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\slow\AudioSetupPage.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\AudioTransportSourcePlayer.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\AudioTransportSourcePlayer.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\ComponentContainer.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\ComponentContainer.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\GenericApplication.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MainPage.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MainPage.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MainPageComponent.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MainPageLayout.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\RecApplication.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\RecWindow.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\RecWindow.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\StretchyPlayer.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\StretchyPlayer.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\TimeController.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\TimeController.h"/>
         </Filter>
         <Filter Name="util">
           <Filter Name="block">
@@ -587,10 +585,8 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
           </Filter>
           <Filter Name="slow">
-            <Filter Name="app">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\app\AppLayout.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\app\AppLayout.pb.h"/>
-            </Filter>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
           </Filter>
           <Filter Name="util">
             <Filter Name="cd">

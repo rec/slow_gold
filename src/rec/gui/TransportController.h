@@ -2,7 +2,7 @@
 #define __REC_GUI_TRANSPORTCONTROLLER__
 
 #include "rec/gui/Layout.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
+#include "rec/slow/AudioTransportSourcePlayer.h"
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 

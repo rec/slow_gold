@@ -1,6 +1,6 @@
-#include "rec/slow/app/RecWindow.h"
-#include "rec/slow/app/MainPageComponent.h"
-#include "rec/slow/app/AppLayout.pb.h"
+#include "rec/slow/RecWindow.h"
+#include "rec/slow/MainPageComponent.h"
+#include "rec/slow/AppLayout.pb.h"
 #include "rec/gui/Geometry.h"
 
 using namespace juce;

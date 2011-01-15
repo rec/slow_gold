@@ -2,8 +2,8 @@
 #define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/slow/app/MainPage.h"
-#include "rec/slow/app/AudioSetupPage.h"
+#include "rec/slow/MainPage.h"
+#include "rec/slow/AudioSetupPage.h"
 #include "rec/audio/AudioDeviceSetup.h"
 #include "rec/data/yaml/Yaml.h"
 

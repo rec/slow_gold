@@ -1,4 +1,4 @@
-#include "rec/slow/app/TimeController.h"
+#include "rec/slow/TimeController.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/audio/source/Stretchy.h"
 #include "rec/gui/StretchyController.h"
@@ -6,7 +6,7 @@
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/Color.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
+#include "rec/slow/AudioTransportSourcePlayer.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/cd/Album.h"
 

@@ -7,8 +7,8 @@
 #include "rec/gui/Layout.h"
 #include "rec/gui/Loops.h"
 #include "rec/gui/SetterResizer.h"
-#include "rec/slow/app/PlaybackController.h"
-#include "rec/slow/app/StretchyPlayer.h"
+#include "rec/slow/PlaybackController.h"
+#include "rec/slow/StretchyPlayer.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 

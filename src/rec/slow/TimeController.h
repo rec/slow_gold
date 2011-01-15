@@ -4,7 +4,7 @@
 #include "rec/audio/source/Stretchy.pb.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Layout.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
+#include "rec/slow/AudioTransportSourcePlayer.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/widget/status/TimeAndLength.h"
 #include "rec/audio/source/Stretchy.pb.h"

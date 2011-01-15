@@ -1,8 +1,8 @@
 #ifndef __REC_APP_RECAPPLICATION__
 #define __REC_APP_RECAPPLICATION__
 
-#include "rec/slow/app/GenericApplication.h"
-#include "rec/slow/app/RecWindow.h"
+#include "rec/slow/GenericApplication.h"
+#include "rec/slow/RecWindow.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 
 namespace rec {

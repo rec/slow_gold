@@ -9,9 +9,9 @@
 #include "rec/gui/StretchyController.h"
 #include "rec/gui/TransportController.h"
 #include "rec/util/listener/DataListener.h"
-#include "rec/slow/app/TimeController.h"
-#include "rec/slow/app/AppLayout.pb.h"
-#include "rec/slow/app/AudioTransportSourcePlayer.h"
+#include "rec/slow/TimeController.h"
+#include "rec/slow/AppLayout.pb.h"
+#include "rec/slow/AudioTransportSourcePlayer.h"
 
 namespace rec {
 namespace slow {

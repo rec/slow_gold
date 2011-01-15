@@ -1,6 +1,6 @@
 #include <google/protobuf/descriptor.h>
 
-#include "rec/slow/app/MainPage.h"
+#include "rec/slow/MainPage.h"
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/widget/waveform/Cursor.h"
