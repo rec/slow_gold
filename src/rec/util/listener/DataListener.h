@@ -36,6 +36,28 @@ class DataListener : public Reference<persist::Data<Proto> >,
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
 
+#if 0
+class SetterListener : public Reference<Setter>, public Listener<const Message&> {
+ public:
+  SetterListener() {}
+  virtual ~SetterListener() {}
+  virtual void operator()(const Message&) = 0;
+
+  virtual void setData(Setter* s) {
+    if (this->getData())
+      this->getData()->removeListener(this);
+
+    Super::setData(d);
+
+    if (this->getData())
+      this->getData()->addListener(this);
+  }
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(SetterListener);
+};
+#endif
+
 }  // namespace listener
 }  // namespace util
 }  // namespace rec
