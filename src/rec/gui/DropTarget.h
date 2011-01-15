@@ -2,7 +2,7 @@
 #define __REC_GUI_DROPTARGET__
 
 #include "rec/util/file/Util.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/listener/Listener.h"
 
@@ -35,7 +35,7 @@ class DropTarget : public Interface, public Parent {
     setDraggingOver(false);
     if (isInterestedInFileDrag(files)) {
       for (int i = 0; i < files.size(); ++i)
-        broadcaster_.broadcast(file::toVolumeFile(File(files[i])));
+        broadcaster_.broadcast(file::toVirtualFile(File(files[i])));
     }
   }
 
@@ -49,7 +49,7 @@ class DropTarget : public Interface, public Parent {
   void repaint() { Parent::repaint(); }
   bool draggingOver() const { return draggingOver_; }
 
-  Broadcaster<const VolumeFile&>* dropBroadcaster() { return &broadcaster_; }
+  Broadcaster<const VirtualFile&>* dropBroadcaster() { return &broadcaster_; }
 
  private:
   void setDraggingOver(bool d) {
@@ -59,7 +59,7 @@ class DropTarget : public Interface, public Parent {
     }
   }
 
-  listener::Broadcaster<const VolumeFile&> broadcaster_;
+  listener::Broadcaster<const VirtualFile&> broadcaster_;
   bool draggingOver_;
 
  private:

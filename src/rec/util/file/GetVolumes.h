@@ -4,14 +4,14 @@
 #include <vector>
 
 #include "rec/base/base.h"
-#include "rec/util/file/VolumeFile.pb.h"
+#include "rec/util/file/VirtualFile.pb.h"
 
 namespace rec {
 namespace util {
 namespace file {
 
-VolumeFileList getVolumes();
-void fillVolumes(VolumeFileList* volumes);
+VirtualFileList getVolumes();
+void fillVolumes(VirtualFileList* volumes);
 
 }  // namespace file
 }  // namespace util

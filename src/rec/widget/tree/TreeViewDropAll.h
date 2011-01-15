@@ -11,10 +11,10 @@ namespace tree {
 
 typedef gui::DropTarget<TreeView, String, gui::NullInterface> TreeViewDrop;
 
-class TreeViewDropAll : public TreeViewDrop, public Listener<const VolumeFile&> {
+class TreeViewDropAll : public TreeViewDrop, public Listener<const VirtualFile&> {
  public:
   TreeViewDropAll();
-  virtual void operator()(const VolumeFile& f);
+  virtual void operator()(const VirtualFile& f);
   virtual void paint(Graphics& g);
 
   bool isInterestedInFileDrag(const StringArray& files);

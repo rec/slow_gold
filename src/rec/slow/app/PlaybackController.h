@@ -22,7 +22,7 @@ typedef widget::status::time::DialComponent DialComponent;
 
 
 class PlaybackController : public gui::Layout,
-                           public Listener<const VolumeFile&>,
+                           public Listener<const VirtualFile&>,
                            public DataListener<StretchyProto> {
  public:
   typedef persist::Data<StretchyProto> Data;
@@ -32,7 +32,7 @@ class PlaybackController : public gui::Layout,
 
   void setLayoutData();
 
-  virtual void operator()(const VolumeFile&);
+  virtual void operator()(const VirtualFile&);
   virtual void operator()(const StretchyProto&);
 
   virtual void setData(Data* data);

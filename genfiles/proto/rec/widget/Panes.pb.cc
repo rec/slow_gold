@@ -106,23 +106,23 @@ void protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto() {
   ::rec::widget::protobuf_AddDesc_rec_2fwidget_2fWidget_2eproto();
   ::rec::audio::source::protobuf_AddDesc_rec_2faudio_2fsource_2fStretchy_2eproto();
   ::rec::audio::source::protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto();
-  ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVolumeFile_2eproto();
+  ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\026rec/widget/Panes.proto\022\017rec.widget.pan"
     "e\032\027rec/widget/Widget.proto\032\037rec/audio/so"
     "urce/Stretchy.proto\032\034rec/audio/source/Ru"
-    "nny.proto\032\036rec/util/file/VolumeFile.prot"
-    "o\"\300\002\n\nNavigation\022\"\n\006widget\030\001 \001(\0132\022.rec.w"
-    "idget.Widget\022\'\n\004file\030\002 \001(\0132\031.rec.util.fi"
-    "le.VolumeFile\022,\n\003tab\030\003 \001(\0162\037.rec.widget."
-    "pane.Navigation.Tab\022<\n\013orientation\030\004 \001(\016"
-    "2\'.rec.widget.pane.Navigation.Orientatio"
-    "n\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002CD\020\002\022\007\n\003URL\020\003\"W\n\013O"
-    "rientation\022\017\n\013TABS_AT_TOP\020\000\022\022\n\016TABS_AT_B"
-    "OTTOM\020\001\022\020\n\014TABS_AT_LEFT\020\002\022\021\n\rTABS_AT_RIG"
-    "HT\020\003\"X\n\tDirectory\022\"\n\006widget\030\001 \001(\0132\022.rec."
-    "widget.Widget\022\'\n\004file\030\002 \001(\0132\031.rec.util.f"
-    "ile.VolumeFile", 574);
+    "nny.proto\032\037rec/util/file/VirtualFile.pro"
+    "to\"\301\002\n\nNavigation\022\"\n\006widget\030\001 \001(\0132\022.rec."
+    "widget.Widget\022(\n\004file\030\002 \001(\0132\032.rec.util.f"
+    "ile.VirtualFile\022,\n\003tab\030\003 \001(\0162\037.rec.widge"
+    "t.pane.Navigation.Tab\022<\n\013orientation\030\004 \001"
+    "(\0162\'.rec.widget.pane.Navigation.Orientat"
+    "ion\" \n\003Tab\022\010\n\004FILE\020\001\022\006\n\002CD\020\002\022\007\n\003URL\020\003\"W\n"
+    "\013Orientation\022\017\n\013TABS_AT_TOP\020\000\022\022\n\016TABS_AT"
+    "_BOTTOM\020\001\022\020\n\014TABS_AT_LEFT\020\002\022\021\n\rTABS_AT_R"
+    "IGHT\020\003\"Y\n\tDirectory\022\"\n\006widget\030\001 \001(\0132\022.re"
+    "c.widget.Widget\022(\n\004file\030\002 \001(\0132\032.rec.util"
+    ".file.VirtualFile", 577);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/Panes.proto", &protobuf_RegisterTypes);
   Navigation::default_instance_ = new Navigation();
@@ -204,7 +204,7 @@ Navigation::Navigation()
 
 void Navigation::InitAsDefaultInstance() {
   widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
-  file_ = const_cast< ::rec::util::file::VolumeFile*>(&::rec::util::file::VolumeFile::default_instance());
+  file_ = const_cast< ::rec::util::file::VirtualFile*>(&::rec::util::file::VirtualFile::default_instance());
 }
 
 Navigation::Navigation(const Navigation& from)
@@ -259,7 +259,7 @@ void Navigation::Clear() {
       if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
     }
     if (_has_bit(1)) {
-      if (file_ != NULL) file_->::rec::util::file::VolumeFile::Clear();
+      if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
     }
     tab_ = 1;
     orientation_ = 0;
@@ -287,7 +287,7 @@ bool Navigation::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.util.file.VolumeFile file = 2;
+      // optional .rec.util.file.VirtualFile file = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -367,7 +367,7 @@ void Navigation::SerializeWithCachedSizes(
       1, this->widget(), output);
   }
   
-  // optional .rec.util.file.VolumeFile file = 2;
+  // optional .rec.util.file.VirtualFile file = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->file(), output);
@@ -400,7 +400,7 @@ void Navigation::SerializeWithCachedSizes(
         1, this->widget(), target);
   }
   
-  // optional .rec.util.file.VolumeFile file = 2;
+  // optional .rec.util.file.VirtualFile file = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -437,7 +437,7 @@ int Navigation::ByteSize() const {
           this->widget());
     }
     
-    // optional .rec.util.file.VolumeFile file = 2;
+    // optional .rec.util.file.VirtualFile file = 2;
     if (has_file()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -487,7 +487,7 @@ void Navigation::MergeFrom(const Navigation& from) {
       mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
     }
     if (from._has_bit(1)) {
-      mutable_file()->::rec::util::file::VolumeFile::MergeFrom(from.file());
+      mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
     }
     if (from._has_bit(2)) {
       set_tab(from.tab());
@@ -551,7 +551,7 @@ Directory::Directory()
 
 void Directory::InitAsDefaultInstance() {
   widget_ = const_cast< ::rec::widget::Widget*>(&::rec::widget::Widget::default_instance());
-  file_ = const_cast< ::rec::util::file::VolumeFile*>(&::rec::util::file::VolumeFile::default_instance());
+  file_ = const_cast< ::rec::util::file::VirtualFile*>(&::rec::util::file::VirtualFile::default_instance());
 }
 
 Directory::Directory(const Directory& from)
@@ -604,7 +604,7 @@ void Directory::Clear() {
       if (widget_ != NULL) widget_->::rec::widget::Widget::Clear();
     }
     if (_has_bit(1)) {
-      if (file_ != NULL) file_->::rec::util::file::VolumeFile::Clear();
+      if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -630,7 +630,7 @@ bool Directory::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.util.file.VolumeFile file = 2;
+      // optional .rec.util.file.VirtualFile file = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -668,7 +668,7 @@ void Directory::SerializeWithCachedSizes(
       1, this->widget(), output);
   }
   
-  // optional .rec.util.file.VolumeFile file = 2;
+  // optional .rec.util.file.VirtualFile file = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->file(), output);
@@ -689,7 +689,7 @@ void Directory::SerializeWithCachedSizes(
         1, this->widget(), target);
   }
   
-  // optional .rec.util.file.VolumeFile file = 2;
+  // optional .rec.util.file.VirtualFile file = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -714,7 +714,7 @@ int Directory::ByteSize() const {
           this->widget());
     }
     
-    // optional .rec.util.file.VolumeFile file = 2;
+    // optional .rec.util.file.VirtualFile file = 2;
     if (has_file()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -752,7 +752,7 @@ void Directory::MergeFrom(const Directory& from) {
       mutable_widget()->::rec::widget::Widget::MergeFrom(from.widget());
     }
     if (from._has_bit(1)) {
-      mutable_file()->::rec::util::file::VolumeFile::MergeFrom(from.file());
+      mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());

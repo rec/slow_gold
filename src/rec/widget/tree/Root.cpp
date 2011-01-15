@@ -25,14 +25,14 @@ Root::Root(const NodeDesc& desc)
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   tree_.dropBroadcaster()->addListener(this);
-  persist::data<VolumeFileList>()->addListener(this);
-  persist::data<VolumeFileList>()->requestUpdate();
+  persist::data<VirtualFileList>()->addListener(this);
+  persist::data<VirtualFileList>()->requestUpdate();
   tree_.addMouseListener(this, false);
 }
 
 void Root::run() {
   while (!threadShouldExit()) {
-    VolumeFileList volumes;
+    VirtualFileList volumes;
     {
       ScopedLock l(lock_);
       volumes = volumes_;
@@ -46,11 +46,11 @@ void Root::run() {
   }
 }
 
-void Root::operator()(const VolumeFile& file) {
+void Root::operator()(const VirtualFile& file) {
 	broadcast(file);
 }
 
-void Root::operator()(const VolumeFileList& volumes) {
+void Root::operator()(const VirtualFileList& volumes) {
   ScopedLock l(lock_);
   volumes_ = volumes;
   notify();
@@ -70,17 +70,17 @@ void Root::doAdd() {
   if (chooser.browseForMultipleFilesOrDirectories()) {
     const juce::Array<File>& files = chooser.getResults();
     for (int i = 0; i < files.size(); ++i)
-      tree_.dropBroadcaster()->broadcast(toVolumeFile(files[i]));
+      tree_.dropBroadcaster()->broadcast(toVirtualFile(files[i]));
   }
   addDialogOpen_ = false;
 }
 
 
-void Root::mergeNewIntoOld(const file::VolumeFileList& volumes) {
+void Root::mergeNewIntoOld(const file::VirtualFileList& volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
-    const VolumeFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : NULL;
+    const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : NULL;
     const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;
-    const VolumeFile* v2 = n ? &(n->volumeFile()) : NULL;
+    const VirtualFile* v2 = n ? &(n->volumeFile()) : NULL;
 
     if (!v1)
       root_.removeSubItem(j);
@@ -96,10 +96,10 @@ void Root::mergeNewIntoOld(const file::VolumeFileList& volumes) {
   tree_.setRootItemVisible(false);
 }
 
-void Root::addVolume(const VolumeFile& volume, int insertAt) {
+void Root::addVolume(const VirtualFile& volume, int insertAt) {
   ptr<Node> directory;
 
-  if (volume.type() == VolumeFile::CD)
+  if (volume.type() == VirtualFile::CD)
     directory.reset(new CD(desc_, volume));
   else if (getFile(volume).isDirectory())
     directory.reset(new Directory(desc_, volume));

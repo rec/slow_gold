@@ -1,4 +1,4 @@
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 
 #include "rec/audio/AudioFormatManager.h"
 #include "rec/data/persist/Persist.h"
@@ -31,17 +31,17 @@ const File getFile(File f, const Path& path) {
 
 }  // namespace
 
-const File getVolume(const VolumeFile& v) {
-  if (v.type() == VolumeFile::CD) {
-    CHECK(v.type() != VolumeFile::CD);
+const File getVirtual(const VirtualFile& v) {
+  if (v.type() == VirtualFile::CD) {
+    CHECK(v.type() != VirtualFile::CD);
   }
 
-  if (v.type() == VolumeFile::MUSIC) {
+  if (v.type() == VirtualFile::MUSIC) {
     DCHECK_EQ(v.name(), "");
     return File::getSpecialLocation(File::userMusicDirectory);
   }
 
-  if (v.type() == VolumeFile::VOLUME) {
+  if (v.type() == VirtualFile::VOLUME) {
 #if JUCE_MAC
     if (v.name().empty())
       return File("/");
@@ -51,7 +51,7 @@ const File getVolume(const VolumeFile& v) {
     return File(v.name().c_str());
   }
 
-  if (v.type() == VolumeFile::USER) {
+  if (v.type() == VirtualFile::USER) {
     DCHECK_EQ(v.name(), "");
     return File::getSpecialLocation(File::userHomeDirectory);
   }
@@ -60,48 +60,48 @@ const File getVolume(const VolumeFile& v) {
   return File();
 }
 
-const File getShadowDirectory(const VolumeFile& vf) {
-  String name = String(VolumeFile::Type_Name(vf.type()).c_str()).toLowerCase();
+const File getShadowDirectory(const VirtualFile& vf) {
+  String name = String(VirtualFile::Type_Name(vf.type()).c_str()).toLowerCase();
   File f = persist::getApp()->appDir().getChildFile(name);
   return getFile(getFile(f, vf.name()), vf.path());
 }
 
-const File getFile(const VolumeFile& file) {
-  return getFile(getVolume(file), file.path());
+const File getFile(const VirtualFile& file) {
+  return getFile(getVirtual(file), file.path());
 }
 
-const String getFilename(const VolumeFile& file) {
+const String getFilename(const VirtualFile& file) {
   return file.path_size() ? file.path().end()[-1].c_str() : "<none>";
 }
 
-const String getDisplayName(const VolumeFile& file) {
-  VolumeFile::Type type = file.type();
+const String getDisplayName(const VirtualFile& file) {
+  VirtualFile::Type type = file.type();
   if (int size = file.path_size())
     return file.path(size - 1).c_str();
 
-  if (type == VolumeFile::MUSIC)
+  if (type == VirtualFile::MUSIC)
     return "<Music>";
 
-  if (type == VolumeFile::USER)
+  if (type == VirtualFile::USER)
     return "<User>";
 
-  if (type == VolumeFile::VOLUME || type == VolumeFile::CD) {
+  if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
     string name = file.name();
     eraseVolumePrefix(&name, false);
     return name.empty() ? "<Root>" : name.c_str();
   }
 
-  return "<Unknown Volume>";
+  return "<Unknown Virtual>";
 }
 
-const String getFullDisplayName(const VolumeFile& file) {
+const String getFullDisplayName(const VirtualFile& file) {
   String result = getDisplayName(file) + ":";
   for (int i = 0; i < file.path_size(); ++i)
     result += (file.path(i) + "/").c_str();
   return result;
 }
 
-bool compare(const VolumeFile& x, const VolumeFile& y) {
+bool compare(const VirtualFile& x, const VirtualFile& y) {
   if (x.type() < y.type())
     return true;
 
@@ -131,13 +131,13 @@ bool compare(const VolumeFile& x, const VolumeFile& y) {
 
 namespace {
 
-AudioFormatReader* createReader(const VolumeFile& file) {
+AudioFormatReader* createReader(const VirtualFile& file) {
   cd::Metadata metadata;
   ptr<AudioFormatReader> reader;
   persist::Data<cd::Metadata>* data = persist::data<cd::Metadata>(file);
   bool needsRead = !data->fileReadSuccess();
 
-  if (file.type() == VolumeFile::CD) {
+  if (file.type() == VirtualFile::CD) {
     if (!file.path_size()) {
       LOG(ERROR) << "Can't create track for root CD volume for "
                  << file.DebugString();
@@ -158,7 +158,7 @@ AudioFormatReader* createReader(const VolumeFile& file) {
       LOG(ERROR) << "Couldn't create reader for file " << file.ShortDebugString();
       return NULL;
     }
-    
+
     if (needsRead)
       metadata = cd::getMetadata(reader->metadataValues);
   }
@@ -171,7 +171,7 @@ AudioFormatReader* createReader(const VolumeFile& file) {
 
 }  // namespace
 
-PositionableAudioSource* createSource(const VolumeFile& file) {
+PositionableAudioSource* createSource(const VirtualFile& file) {
   ptr<AudioFormatReader> reader(createReader(file));
   if (reader)
     return new AudioFormatReaderSource(reader.transfer(), true);
@@ -180,13 +180,13 @@ PositionableAudioSource* createSource(const VolumeFile& file) {
   return NULL;
 }
 
-bool empty(const VolumeFile& f) {
+bool empty(const VirtualFile& f) {
   return !f.has_type();
 }
 
-VolumeFile toVolumeFile(const File& file) {
-  VolumeFile vf;
-  vf.set_type(VolumeFile::VOLUME);
+VirtualFile toVirtualFile(const File& file) {
+  VirtualFile vf;
+  vf.set_type(VirtualFile::VOLUME);
 
   File f = file, p = file.getParentDirectory();
   for (; f != p; f = p, p = f.getParentDirectory())
@@ -200,7 +200,7 @@ VolumeFile toVolumeFile(const File& file) {
   int last = vf.path_size() - 1;
   const string& root = vf.path(last);
 
-  if (root == "Volumes" && last != 0) {
+  if (root == "Virtuals" && last != 0) {
     vf.set_name(vf.path(last - 1));
     vf.mutable_path()->RemoveLast();
     vf.mutable_path()->RemoveLast();
@@ -215,7 +215,7 @@ VolumeFile toVolumeFile(const File& file) {
   return vf;
 }
 
-void sort(VolumeFileList* v) {
+void sort(VirtualFileList* v) {
   std::sort(v->mutable_file()->begin(), v->mutable_file()->end(), compare);
 }
 

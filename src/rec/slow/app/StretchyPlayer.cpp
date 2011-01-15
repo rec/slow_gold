@@ -13,11 +13,11 @@ StretchyPlayer::StretchyPlayer(AudioDeviceManager* deviceManager)
       stretchy_(NULL),
       timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
       fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
-      fileListener_(persist::data<VolumeFile>()) {
+      fileListener_(persist::data<VirtualFile>()) {
   fileLocker_->addListener(this);
   timeLocker_->addListener(this);
 
-  persist::data<VolumeFile>()->addListener(fileLocker_.get());
+  persist::data<VirtualFile>()->addListener(fileLocker_.get());
 
   fileLocker_->startThread();
   timeLocker_->startThread();
@@ -28,7 +28,7 @@ StretchyPlayer::~StretchyPlayer() {
   transportSource_->clear();
 }
 
-void StretchyPlayer::operator()(const VolumeFile& file) {
+void StretchyPlayer::operator()(const VirtualFile& file) {
   {
     ScopedLock l(lock_);
     if (file_ == file)

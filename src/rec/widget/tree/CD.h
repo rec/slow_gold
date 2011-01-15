@@ -12,7 +12,7 @@ namespace tree {
 
 class CD : public Directory {
  public:
-  CD(const NodeDesc& d, const VolumeFile& vf) : Directory(d, vf) {}
+  CD(const NodeDesc& d, const VirtualFile& vf) : Directory(d, vf) {}
 
   virtual int minPartition() const { return 100; }
   virtual void itemClicked() {
@@ -50,7 +50,7 @@ class CD : public Directory {
 
     resetChildren();
 
-    VolumeFile vf(volumeFile_);
+    VirtualFile vf(volumeFile_);
     string* path = vf.add_path();
     for (int i = 0; i < tracks.size(); ++i) {
       *path = String(i).toCString();

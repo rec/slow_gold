@@ -8,8 +8,8 @@ TreeViewDropAll::TreeViewDropAll() : TreeViewDrop("Tree") {
   dropBroadcaster()->addListener(this);
 }
 
-void TreeViewDropAll::operator()(const VolumeFile& f) {
-  persist::data<file::VolumeFileList>()->append("file", f);
+void TreeViewDropAll::operator()(const VirtualFile& f) {
+  persist::data<file::VirtualFileList>()->append("file", f);
 }
 
 void TreeViewDropAll::paint(Graphics& g) {

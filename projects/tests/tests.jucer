@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="iwSh61GSd" name="tests">
+  <MAINGROUP id="JuNhBgVaG" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -700,10 +700,10 @@
                 name="Util.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/Util.h" id="EbLeye5vp"
                 name="Util.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/file/VolumeFile.cpp" id="ojbTCeGjP"
-                name="VolumeFile.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/file/VolumeFile.h" id="CtQ6kiaM4"
-                name="VolumeFile.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/VirtualFile.cpp" id="qOEbXGZX1"
+                name="VirtualFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/VirtualFile.h" id="T3ZpDt5uU"
+                name="VirtualFile.h" resource="0"/>
         </GROUP>
         <GROUP id="sU4e5LjIk" name="listener">
           <FILE compile="0" file="../../src/rec/util/listener/AddressListener.h"
@@ -923,10 +923,10 @@
                   id="EKWPGYD7f" name="Album.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="kCdXLpIlx" name="file">
-            <FILE compile="1" file="../../genfiles/proto/rec/util/file/VolumeFile.pb.cc"
-                  id="m40qxscc9" name="VolumeFile.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/util/file/VolumeFile.pb.h"
-                  id="bADLJsGh8" name="VolumeFile.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/util/file/VirtualFile.pb.cc"
+                  id="TCmlimlt1" name="VirtualFile.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/util/file/VirtualFile.pb.h"
+                  id="8cExbKMvV" name="VirtualFile.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="boJapF56x" name="thread">
             <FILE compile="1" file="../../genfiles/proto/rec/util/thread/Thread.pb.cc"
@@ -977,7 +977,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="vGOUu6DOq" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="fyMBpuf3k" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

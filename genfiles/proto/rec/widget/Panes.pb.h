@@ -26,7 +26,7 @@
 #include "rec/widget/Widget.pb.h"
 #include "rec/audio/source/Stretchy.pb.h"
 #include "rec/audio/source/Runny.pb.h"
-#include "rec/util/file/VolumeFile.pb.h"
+#include "rec/util/file/VirtualFile.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -196,12 +196,12 @@ class Navigation : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // optional .rec.util.file.VolumeFile file = 2;
+  // optional .rec.util.file.VirtualFile file = 2;
   inline bool has_file() const;
   inline void clear_file();
   static const int kFileFieldNumber = 2;
-  inline const ::rec::util::file::VolumeFile& file() const;
-  inline ::rec::util::file::VolumeFile* mutable_file();
+  inline const ::rec::util::file::VirtualFile& file() const;
+  inline ::rec::util::file::VirtualFile* mutable_file();
   
   // optional .rec.widget.pane.Navigation.Tab tab = 3;
   inline bool has_tab() const;
@@ -223,7 +223,7 @@ class Navigation : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::widget::Widget* widget_;
-  ::rec::util::file::VolumeFile* file_;
+  ::rec::util::file::VirtualFile* file_;
   int tab_;
   int orientation_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
@@ -309,12 +309,12 @@ class Directory : public ::google::protobuf::Message {
   inline const ::rec::widget::Widget& widget() const;
   inline ::rec::widget::Widget* mutable_widget();
   
-  // optional .rec.util.file.VolumeFile file = 2;
+  // optional .rec.util.file.VirtualFile file = 2;
   inline bool has_file() const;
   inline void clear_file();
   static const int kFileFieldNumber = 2;
-  inline const ::rec::util::file::VolumeFile& file() const;
-  inline ::rec::util::file::VolumeFile* mutable_file();
+  inline const ::rec::util::file::VirtualFile& file() const;
+  inline ::rec::util::file::VirtualFile* mutable_file();
   
   // @@protoc_insertion_point(class_scope:rec.widget.pane.Directory)
  private:
@@ -322,7 +322,7 @@ class Directory : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::widget::Widget* widget_;
-  ::rec::util::file::VolumeFile* file_;
+  ::rec::util::file::VirtualFile* file_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fPanes_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fPanes_2eproto();
@@ -367,20 +367,20 @@ inline ::rec::widget::Widget* Navigation::mutable_widget() {
   return widget_;
 }
 
-// optional .rec.util.file.VolumeFile file = 2;
+// optional .rec.util.file.VirtualFile file = 2;
 inline bool Navigation::has_file() const {
   return _has_bit(1);
 }
 inline void Navigation::clear_file() {
-  if (file_ != NULL) file_->::rec::util::file::VolumeFile::Clear();
+  if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
   _clear_bit(1);
 }
-inline const ::rec::util::file::VolumeFile& Navigation::file() const {
+inline const ::rec::util::file::VirtualFile& Navigation::file() const {
   return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline ::rec::util::file::VolumeFile* Navigation::mutable_file() {
+inline ::rec::util::file::VirtualFile* Navigation::mutable_file() {
   _set_bit(1);
-  if (file_ == NULL) file_ = new ::rec::util::file::VolumeFile;
+  if (file_ == NULL) file_ = new ::rec::util::file::VirtualFile;
   return file_;
 }
 
@@ -439,20 +439,20 @@ inline ::rec::widget::Widget* Directory::mutable_widget() {
   return widget_;
 }
 
-// optional .rec.util.file.VolumeFile file = 2;
+// optional .rec.util.file.VirtualFile file = 2;
 inline bool Directory::has_file() const {
   return _has_bit(1);
 }
 inline void Directory::clear_file() {
-  if (file_ != NULL) file_->::rec::util::file::VolumeFile::Clear();
+  if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
   _clear_bit(1);
 }
-inline const ::rec::util::file::VolumeFile& Directory::file() const {
+inline const ::rec::util::file::VirtualFile& Directory::file() const {
   return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline ::rec::util::file::VolumeFile* Directory::mutable_file() {
+inline ::rec::util::file::VirtualFile* Directory::mutable_file() {
   _set_bit(1);
-  if (file_ == NULL) file_ = new ::rec::util::file::VolumeFile;
+  if (file_ == NULL) file_ = new ::rec::util::file::VirtualFile;
   return file_;
 }
 

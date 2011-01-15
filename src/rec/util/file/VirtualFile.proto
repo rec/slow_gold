@@ -1,6 +1,6 @@
 package rec.util.file;
 
-message VolumeFile {
+message VirtualFile {
   enum Type {
     NONE = 0;
     CD = 1;
@@ -24,6 +24,6 @@ message VolumeFile {
   optional Status status = 4 [default = ONLINE];
 };
 
-message VolumeFileList {
-  repeated VolumeFile file = 1;
+message VirtualFileList {
+  repeated VirtualFile file = 1;
 };

@@ -2,7 +2,7 @@
 
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/cd/CDReader.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/file/Util.h"
 
 using namespace juce;
@@ -13,17 +13,17 @@ namespace file {
 
 namespace {
 
-void add(VolumeFile::Type type, const string& name, VolumeFileList* volumes) {
-  VolumeFile* vf = volumes->add_file();
+void add(VirtualFile::Type type, const string& name, VirtualFileList* volumes) {
+  VirtualFile* vf = volumes->add_file();
   vf->set_type(type);
   vf->set_name(name);
 }
 
-void addFileRoots(VolumeFileList* volumes) {
+void addFileRoots(VirtualFileList* volumes) {
   juce::Array<File> roots;
 
 #if JUCE_MAC
-  add(VolumeFile::VOLUME, "", volumes);
+  add(VirtualFile::VOLUME, "", volumes);
 
   File("/Volumes").findChildFiles(roots, File::findFilesAndDirectories, false);
 #else
@@ -35,17 +35,17 @@ void addFileRoots(VolumeFileList* volumes) {
     if (roots[i].isOnHardDisk() && roots[i].getLinkedTarget() == roots[i]) {
       string s(roots[i].getFullPathName().toCString());
       eraseVolumePrefix(&s);
-      add(VolumeFile::VOLUME, s, volumes);
+      add(VirtualFile::VOLUME, s, volumes);
     }
   }
 }
 
-void addAudioCDs(VolumeFileList* volumes) {
+void addAudioCDs(VirtualFileList* volumes) {
   StringArray names = AudioCDReader::getAvailableCDNames();
   for (int i = 0; i < names.size(); ++i) {
     ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
     if (reader && reader->getNumTracks())
-      add(VolumeFile::CD, cd::getCDKey(reader.get()).toCString(), volumes);
+      add(VirtualFile::CD, cd::getCDKey(reader.get()).toCString(), volumes);
     else
       LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
   }
@@ -53,11 +53,11 @@ void addAudioCDs(VolumeFileList* volumes) {
 
 }  // namespace
 
-VolumeFileList getVolumes() {
-  VolumeFileList volumes;
+VirtualFileList getVolumes() {
+  VirtualFileList volumes;
 
-  add(VolumeFile::MUSIC, "", &volumes);
-  add(VolumeFile::USER, "", &volumes);
+  add(VirtualFile::MUSIC, "", &volumes);
+  add(VirtualFile::USER, "", &volumes);
   addAudioCDs(&volumes);
   addFileRoots(&volumes);
 
@@ -65,7 +65,7 @@ VolumeFileList getVolumes() {
   return volumes;
 }
 
-void fillVolumes(VolumeFileList* volumes) {
+void fillVolumes(VirtualFileList* volumes) {
   addAudioCDs(volumes);
   sort(volumes);
 }

@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 
@@ -30,7 +30,7 @@ RecentFiles getSortedRecentFiles() {
   return rf;
 }
 
-void addRecentFile(const VolumeFile& f) {
+void addRecentFile(const VirtualFile& f) {
   int64 timestamp = juce::Time::currentTimeMillis();
   RecentFiles recent = persist::get<RecentFiles>();
 

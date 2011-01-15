@@ -11,9 +11,9 @@ namespace slow {
 
 class AudioTransportSourcePlayer;
 
-class StretchyPlayer : public Listener<const VolumeFile&>,
+class StretchyPlayer : public Listener<const VirtualFile&>,
                        public Listener<const float&>,
-                       public Broadcaster<const VolumeFile&> {
+                       public Broadcaster<const VirtualFile&> {
  public:
   typedef audio::source::StretchyProto StretchyProto;
 
@@ -21,14 +21,14 @@ class StretchyPlayer : public Listener<const VolumeFile&>,
   virtual ~StretchyPlayer();
 
   // Callback when we get a new file.
-  virtual void operator()(const VolumeFile& file);
+  virtual void operator()(const VirtualFile& file);
 
   // Callback when we're ready to actually jump to a new time.
   virtual void operator()(const float& time);
 
   void setTime(int time) { timeLocker_->set(time); }
 
-  Listener<const VolumeFile&>* fileListener() { return &fileListener_; }
+  Listener<const VirtualFile&>* fileListener() { return &fileListener_; }
   AudioTransportSourcePlayer* getTransport() { return transportSource_.get(); }
 
   persist::Data<StretchyProto>* getStretchy() { return stretchy_; }
@@ -42,17 +42,17 @@ class StretchyPlayer : public Listener<const VolumeFile&>,
 
  private:
   typedef thread::ChangeLocker<float> TimeLocker;
-  typedef thread::ChangeLocker<VolumeFile> FileLocker;
+  typedef thread::ChangeLocker<VirtualFile> FileLocker;
 
   thread_ptr<AudioTransportSourcePlayer> transportSource_;
 
   CriticalSection lock_;
-  VolumeFile file_;
+  VirtualFile file_;
   persist::Data<StretchyProto>* stretchy_;
   thread_ptr<TimeLocker> timeLocker_;
   thread_ptr<FileLocker> fileLocker_;
 
-  SetterListener<const VolumeFile&> fileListener_;
+  SetterListener<const VirtualFile&> fileListener_;
   thread_ptr<audio::source::DoubleRunnyBuffer> doubleRunny_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(StretchyPlayer);

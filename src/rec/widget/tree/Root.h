@@ -2,7 +2,7 @@
 #define __REC_WIDGET_TREE_ROOT__
 
 #include "rec/widget/tree/NodeItem.h"
-#include "rec/util/file/VolumeFile.pb.h"
+#include "rec/util/file/VirtualFile.pb.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/widget/tree/TreeViewDropAll.h"
 
@@ -11,26 +11,26 @@ namespace widget {
 namespace tree {
 
 class Root : public Thread,
-             public Broadcaster<const VolumeFile&>,
-             public Listener<const file::VolumeFileList&>,
-             public Listener<const VolumeFile&>,
+             public Broadcaster<const VirtualFile&>,
+             public Listener<const file::VirtualFileList&>,
+             public Listener<const VirtualFile&>,
              public juce::MouseListener {
  public:
   explicit Root(const NodeDesc& desc);
   virtual ~Root() {}
 
   virtual void run();
-  void mergeNewIntoOld(const util::file::VolumeFileList& volumes);
+  void mergeNewIntoOld(const util::file::VirtualFileList& volumes);
   TreeView* treeView() { return &tree_; }
 
-  virtual void operator()(const VolumeFile&);
-  virtual void operator()(const file::VolumeFileList&);
+  virtual void operator()(const VirtualFile&);
+  virtual void operator()(const file::VirtualFileList&);
   virtual void mouseDoubleClick(const juce::MouseEvent& e);
   void doAdd();
 
  private:
   void update();
-  void addVolume(const VolumeFile& volume, int insertAt);
+  void addVolume(const VirtualFile& volume, int insertAt);
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
   int getNumNodes() const { return root_.getNumSubItems(); }
 
@@ -43,7 +43,7 @@ class Root : public Thread,
   TreeViewItem root_;
 
   TreeViewDropAll tree_;
-  file::VolumeFileList volumes_;
+  file::VirtualFileList volumes_;
 
   CriticalSection lock_;
   bool addDialogOpen_;

@@ -4,7 +4,7 @@
 #include <set>
 
 #include "rec/util/Range.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"

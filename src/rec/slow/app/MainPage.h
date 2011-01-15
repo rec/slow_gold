@@ -24,7 +24,7 @@ namespace slow {
 
 class MainPage : public gui::Layout,
                  public Listener<const TimeAndMouseEvent&>,
-                 public Listener<const VolumeFile&> {
+                 public Listener<const VirtualFile&> {
  public:
   MainPage(AudioDeviceManager*);
   virtual ~MainPage();
@@ -35,7 +35,7 @@ class MainPage : public gui::Layout,
   virtual void operator()(const TimeAndMouseEvent& timeMouse);
 
   // Callback when a new file has been installed.
-  virtual void operator()(const VolumeFile& file);
+  virtual void operator()(const VirtualFile& file);
 
   void doOpen();
   void doClose();

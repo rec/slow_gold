@@ -24,8 +24,8 @@ class MainPageComponent  : public Component {
 
   void loadRecentFile(int menuItemId) {
     gui::RecentFiles recent = gui::getSortedRecentFiles();
-    const VolumeFile& file = recent.file(menuItemId).file();
-    persist::data<VolumeFile>()->set(file);
+    const VirtualFile& file = recent.file(menuItemId).file();
+    persist::data<VirtualFile>()->set(file);
   }
 
   void cut() {

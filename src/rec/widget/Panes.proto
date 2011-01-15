@@ -6,7 +6,7 @@ package rec.widget.pane;
 import "rec/widget/Widget.proto";
 import "rec/audio/source/Stretchy.proto";
 import "rec/audio/source/Runny.proto";
-import "rec/util/file/VolumeFile.proto";
+import "rec/util/file/VirtualFile.proto";
 
 // The Navigation Pane is the top-level pane that lets you switch between
 // browsing your filesystem, the CD in the drive, or files on the network.
@@ -26,7 +26,7 @@ message Navigation {
   };
 
   optional Widget widget = 1;
-  optional util.file.VolumeFile file = 2;
+  optional util.file.VirtualFile file = 2;
   optional Tab tab = 3;
   optional Orientation orientation = 4;
 };
@@ -35,5 +35,5 @@ message Navigation {
 // audio files, which are presumed to be "an album" or connected in some way.
 message Directory {
   optional Widget widget = 1;
-  optional util.file.VolumeFile file = 2;
+  optional util.file.VirtualFile file = 2;
 };

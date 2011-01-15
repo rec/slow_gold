@@ -9,7 +9,7 @@ namespace gui {
 
 RecentFiles getSortedRecentFiles();
 
-void addRecentFile(const VolumeFile& filename);
+void addRecentFile(const VirtualFile& filename);
 
 }  // namespace gui
 }  // namespace rec

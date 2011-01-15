@@ -5,7 +5,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-Node::Node(const NodeDesc& d, const VolumeFile& vf, const char* name)
+Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
     : desc_(d),
       volumeFile_(vf),
       icon_(gui::icon::getIcon(d.icon())),

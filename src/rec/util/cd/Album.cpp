@@ -8,7 +8,7 @@
 #include "rec/util/cd/StripLines.h"
 #include "rec/util/Exception.h"
 #include "rec/base/ArraySize.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace util {
@@ -121,7 +121,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   }
 }
 
-Album getAlbum(const VolumeFile& file, const TrackOffsets& off) {
+Album getAlbum(const VirtualFile& file, const TrackOffsets& off) {
   Album album;
   File shadow = getShadowFile(file, "album");
   if (!persist::copy(shadow, &album)) {

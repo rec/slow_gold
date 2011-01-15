@@ -7,12 +7,12 @@ namespace rec {
 namespace persist {
 
 template <typename Proto>
-Data<Proto>* data(const VolumeFile& f = VolumeFile::default_instance()) {
+Data<Proto>* data(const VirtualFile& f = VirtualFile::default_instance()) {
   return getApp()->data<Proto>(f);
 }
 
 template <typename Proto>
-const Proto get(const VolumeFile& f = VolumeFile::default_instance()) {
+const Proto get(const VirtualFile& f = VirtualFile::default_instance()) {
   return data<Proto>(f)->get();
 }
 

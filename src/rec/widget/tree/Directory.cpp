@@ -15,7 +15,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-Directory::Directory(const NodeDesc& d, const VolumeFile& vf)
+Directory::Directory(const NodeDesc& d, const VirtualFile& vf)
     : Node(d, vf),
       children_(NULL),
       isOpen_(false) {
@@ -36,7 +36,7 @@ Node* Directory::createChildFile(const partition::Shard& shard) const {
     return new Shard(desc(), volumeFile(), shard, children_);
 
   const File& f = (*children_)[shard.range_.begin_];
-  VolumeFile vf(volumeFile_);
+  VirtualFile vf(volumeFile_);
   vf.add_path(f.getFileName().toCString());
   bool isDir = getFile(vf).isDirectory();
   return isDir ? new Directory(desc_, vf) : new Node(desc_, vf);

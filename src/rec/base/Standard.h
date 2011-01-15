@@ -8,7 +8,7 @@
 #include "rec/util/Range.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/Util.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/Trash.h"

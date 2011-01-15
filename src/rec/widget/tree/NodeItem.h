@@ -10,7 +10,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/tree/Node.pb.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 
 #include "JuceLibraryCode/JuceHeader.h"
 
@@ -19,9 +19,9 @@ namespace widget {
 namespace tree {
 
 class Node : public juce::TreeViewItem,
-             public Broadcaster<const VolumeFile&> {
+             public Broadcaster<const VirtualFile&> {
  public:
-  Node(const NodeDesc& d, const VolumeFile& vf, const char* name = NULL);
+  Node(const NodeDesc& d, const VirtualFile& vf, const char* name = NULL);
 
   virtual void requestPartition() {}
 
@@ -46,8 +46,8 @@ class Node : public juce::TreeViewItem,
 
   bool alreadyVisited() const;
 
-  const VolumeFile& volumeFile() const { return volumeFile_; }
-  VolumeFile::Type type() const { return volumeFile_.type(); }
+  const VirtualFile& volumeFile() const { return volumeFile_; }
+  VirtualFile::Type type() const { return volumeFile_.type(); }
   bool processing() const { return processing_; }
 
   void setProcessing(bool p) {
@@ -58,7 +58,7 @@ class Node : public juce::TreeViewItem,
  protected:
   mutable String name_;
   const NodeDesc desc_;
-  const VolumeFile volumeFile_;
+  const VirtualFile volumeFile_;
   Listeners listeners_;
   const juce::Drawable* icon_;
   const juce::Font font_;

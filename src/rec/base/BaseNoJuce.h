@@ -23,7 +23,7 @@ namespace listener {
 }
 
 namespace file {
-class VolumeFile;
+class VirtualFile;
 }
 
 }  // namespace util
@@ -46,7 +46,7 @@ typedef google::protobuf::Message Message;
 using namespace util::listener;
 using namespace util;
 
-using util::file::VolumeFile;
+using util::file::VirtualFile;
 using std::vector;
 using proto::arg::Address;
 using proto::arg::Setter;

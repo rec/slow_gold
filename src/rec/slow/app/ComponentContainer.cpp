@@ -1,7 +1,7 @@
 #include "rec/slow/app/ComponentContainer.h"
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/slow/app/MainPageComponent.h"
 #include "rec/slow/app/AudioSetupPage.h"
 #include "rec/util/thread/MakeThread.h"
@@ -71,11 +71,11 @@ void ComponentContainer::menuItemSelected(int menuItemID, int topLevelMenuIndex)
 }
 
 void ComponentContainer::clearTree() {
-  persist::data<file::VolumeFileList>()->clear();
+  persist::data<file::VirtualFileList>()->clear();
 }
 
 void ComponentContainer::clearFile() {
-  persist::data<file::VolumeFile>()->clear();
+  persist::data<file::VirtualFile>()->clear();
 }
 
 void ComponentContainer::audioPreferences() {

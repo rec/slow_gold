@@ -52,7 +52,7 @@ void PlaybackController::operator()(const StretchyProto& desc) {
   timeController_(desc);
 }
 
-void PlaybackController::operator()(const VolumeFile& file) {
+void PlaybackController::operator()(const VirtualFile& file) {
   songData_.setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
 }
 

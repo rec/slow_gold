@@ -469,8 +469,8 @@
             <File RelativePath="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\file\Util.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\file\Util.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\file\VolumeFile.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\file\VolumeFile.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\VirtualFile.h"/>
           </Filter>
           <Filter Name="listener">
             <File RelativePath="..\..\..\..\src\rec\util\listener\AddressListener.h"/>
@@ -598,8 +598,8 @@
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.h"/>
             </Filter>
             <Filter Name="file">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VolumeFile.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VolumeFile.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
             </Filter>
             <Filter Name="thread">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/Equals.h"
 
 namespace rec {
@@ -9,10 +9,10 @@ namespace proto {
 namespace {
 
 TEST(Equals, get) {
-  VolumeFile vf, vf2;
+  VirtualFile vf, vf2;
   EXPECT_TRUE(equals(vf, vf));
 
-  vf2.set_type(VolumeFile::CD);
+  vf2.set_type(VirtualFile::CD);
   EXPECT_FALSE(equals(vf, vf2));
 
   vf.CopyFrom(vf2);

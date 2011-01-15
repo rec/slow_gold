@@ -10,7 +10,7 @@ namespace tree {
 
 class Shard : public Directory {
  public:
-  Shard(const NodeDesc& desc, const VolumeFile& file,
+  Shard(const NodeDesc& desc, const VirtualFile& file,
         const partition::Shard& shard, FileArray* children)
       : Directory(desc, file), shard_(shard) {
     children_ = children;

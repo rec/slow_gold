@@ -1,7 +1,7 @@
 #include "rec/audio/source/DoubleStretchyRunny.h"
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/source/Stretchy.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/ShouldExit.h"
 #include "rec/util/math.h"
 
@@ -9,7 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-DoubleStretchyRunny::DoubleStretchyRunny(const VolumeFile& file,
+DoubleStretchyRunny::DoubleStretchyRunny(const VirtualFile& file,
                                          const RunnyProto& desc)
     : DoubleRunny(desc), file_(file), ratio_(1.0) {
 }

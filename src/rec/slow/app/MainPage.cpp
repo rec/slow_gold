@@ -30,7 +30,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   player_.addListener(this);
 
   directory_->startThread();
-  persist::data<VolumeFile>()->requestUpdate();
+  persist::data<VirtualFile>()->requestUpdate();
 
   player_.getTransport()->addListener(controller_.timeController());
 }
@@ -75,13 +75,13 @@ void MainPage::doOpen() {
                             file::audioFilePatterns(), true);
 
   if (chooser.browseForFileToOpen())
-    (*player_.fileListener())(file::toVolumeFile(chooser.getResult()));
+    (*player_.fileListener())(file::toVirtualFile(chooser.getResult()));
 
   openDialogOpen_ = false;
 }
 
 void MainPage::doClose() {
-  (*player_.fileListener())(VolumeFile());
+  (*player_.fileListener())(VirtualFile());
 }
 
 void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
@@ -91,7 +91,7 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
     player_.setTime(timeMouse.time_);
 }
 
-void MainPage::operator()(const VolumeFile& file) {
+void MainPage::operator()(const VirtualFile& file) {
   controller_.setData(player_.getStretchy());
   controller_(file);
 

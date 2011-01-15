@@ -3,7 +3,7 @@
 
 #include "rec/base/base.h"
 #include "rec/data/persist/Data.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/GetProtoName.h"
 #include "rec/util/STL.h"
 
@@ -31,7 +31,7 @@ class App {
   const string& name() const { return name_; }
 
   template <typename Proto>
-  Data<Proto>* data(const VolumeFile& file = VolumeFile::default_instance);
+  Data<Proto>* data(const VirtualFile& file = VirtualFile::default_instance);
 
   File appDir() const {
     return appDir_.getChildFile(name_.c_str());
@@ -58,7 +58,7 @@ class App {
 };
 
 template <typename Proto>
-Data<Proto>* App::data(const VolumeFile& vf) {
+Data<Proto>* App::data(const VirtualFile& vf) {
   File directory = empty(vf) ? appDir() : getShadowDirectory(vf);
 
   string fileName = data::proto::getName<Proto>();

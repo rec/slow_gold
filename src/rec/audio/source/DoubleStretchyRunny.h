@@ -3,7 +3,7 @@
 
 #include "rec/audio/source/DoubleRunny.h"
 #include "rec/audio/source/Stretchy.pb.h"
-#include "rec/util/file/VolumeFile.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace audio {
@@ -11,7 +11,7 @@ namespace source {
 
 class DoubleStretchyRunny : public DoubleRunny {
  public:
-  DoubleStretchyRunny(const VolumeFile& file,
+  DoubleStretchyRunny(const VirtualFile& file,
                       const RunnyProto& desc = RunnyProto::default_instance());
 
   ~DoubleStretchyRunny();
@@ -26,7 +26,7 @@ class DoubleStretchyRunny : public DoubleRunny {
   int nextRunnyPosition() const;
 
  private:
-  const VolumeFile file_;
+  const VirtualFile file_;
   double ratio_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchyRunny);

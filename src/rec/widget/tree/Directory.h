@@ -12,11 +12,11 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Directory : public Node, public Listener<const VolumeFile&> {
+class Directory : public Node, public Listener<const VirtualFile&> {
  public:
   typedef juce::Array<File> FileArray;
 
-  Directory(const NodeDesc& d, const VolumeFile& vf);
+  Directory(const NodeDesc& d, const VirtualFile& vf);
   virtual ~Directory() {}
 
   virtual void computeChildren();
@@ -31,7 +31,7 @@ class Directory : public Node, public Listener<const VolumeFile&> {
   virtual bool isDirectory() const { return true; }
 
   virtual int minPartition() const { return 24; }
-  virtual void operator()(const VolumeFile& file) { broadcast(file); }
+  virtual void operator()(const VirtualFile& file) { broadcast(file); }
 
  protected:
   void addChildFile(Node* node);

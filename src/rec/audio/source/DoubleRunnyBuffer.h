@@ -18,7 +18,7 @@ class DoubleRunnyBuffer
  public:
   typedef persist::Data<StretchyProto> Data;
 
-  DoubleRunnyBuffer(const VolumeFile& file, Data* data,
+  DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                     const RunnyProto& desc = RunnyProto::default_instance());
   virtual ~DoubleRunnyBuffer();
 

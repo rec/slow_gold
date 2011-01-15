@@ -17,7 +17,7 @@ namespace source {
 
 static const int READAHEAD = 20000;
 
-DoubleRunnyBuffer::DoubleRunnyBuffer(const VolumeFile& file, Data* data,
+DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
     : DoubleStretchyRunny(file, desc), Thread("DoubleRunnyBuffer"),
       data_(data), empty_(false) {
