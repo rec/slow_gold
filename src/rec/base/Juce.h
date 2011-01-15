@@ -46,6 +46,8 @@ typedef juce::StretchableLayoutResizerBar StretchableLayoutResizerBar;
 typedef juce::StretchableLayoutManager StretchableLayoutManager;
 
 typedef juce::TableHeaderComponent TableHeaderComponent;
+typedef juce::TableListBox TableListBox;
+typedef juce::TableListBoxModel TableListBoxModel;
 typedef juce::TextEditor TextEditor;
 typedef juce::Thread Thread;
 typedef juce::TimeSliceThread TimeSliceThread;

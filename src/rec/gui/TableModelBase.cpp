@@ -9,7 +9,7 @@ namespace rec {
 namespace gui {
 
 TableModelBase::TableModelBase(const TableColumnList& c)
-    : TableListBox("TableModelBase", this), columns_(c) {
+    : TableListBox("TableModelBase", this), columns_(c), setter_(NULL) {
 }
 
 void TableModelBase::fillHeader(TableHeaderComponent* headers) {
@@ -37,7 +37,7 @@ void TableModelBase::paintRowBackground(Graphics& g,
 }
 
 void TableModelBase::paintCell(Graphics& g,
-                               int rowNumber,
+ int rowNumber,
                                int columnId,
                                int width, int height,
                                bool rowIsSelected) {

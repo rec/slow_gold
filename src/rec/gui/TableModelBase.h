@@ -8,9 +8,7 @@
 namespace rec {
 namespace gui {
 
-class TableModelBase :
-    public juce::TableListBoxModel,
-    public juce::TableListBox {
+class TableModelBase : public TableListBoxModel, public TableListBox {
  public:
   TableModelBase(const TableColumnList& columns);
 
@@ -28,6 +26,11 @@ class TableModelBase :
   const Value get() const;
   void set(const Value& v);
 
+  void setSetter(Setter* setter) {
+    ScopedLock l(lock_);
+    setter_ = setter;
+  }
+
  protected:
   virtual const Message& message() const = 0;
   virtual Message* mutable_message() = 0;
@@ -39,6 +42,7 @@ class TableModelBase :
 
   const TableColumnList columns_;
   CriticalSection lock_;
+  Setter* setter_;
   // ptr<Message> proto_;
 
  private:

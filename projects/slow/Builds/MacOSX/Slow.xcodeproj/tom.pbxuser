@@ -435,8 +435,8 @@
 	84AD5995935F823A2EE45AC3 /* TableModelBase.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 759}}";
-			sepNavSelRange = "{1380, 0}";
-			sepNavVisRange = "{0, 1380}";
+			sepNavSelRange = "{1466, 0}";
+			sepNavVisRange = "{0, 1466}";
 		};
 	};
 	86CA505FA866779DAF3A7388 /* DoubleRunnyBuffer.h */ = {
@@ -716,6 +716,8 @@
 			E27589B112E23D8000E37D3F /* PBXTextBookmark */ = E27589B112E23D8000E37D3F /* PBXTextBookmark */;
 			E27589B412E23D8B00E37D3F /* PBXTextBookmark */ = E27589B412E23D8B00E37D3F /* PBXTextBookmark */;
 			E27589B712E23D9200E37D3F /* PBXTextBookmark */ = E27589B712E23D9200E37D3F /* PBXTextBookmark */;
+			E27589BA12E23E5500E37D3F /* PBXTextBookmark */ = E27589BA12E23E5500E37D3F /* PBXTextBookmark */;
+			E27589BD12E23E7500E37D3F /* PBXTextBookmark */ = E27589BD12E23E7500E37D3F /* PBXTextBookmark */;
 			E288AA3112ACAD38008EA2F0 = E288AA3112ACAD38008EA2F0 /* PBXTextBookmark */;
 			E288AA3212ACAD38008EA2F0 = E288AA3212ACAD38008EA2F0 /* PBXTextBookmark */;
 			E288AA3D12ACAD64008EA2F0 = E288AA3D12ACAD64008EA2F0 /* PBXTextBookmark */;
@@ -2225,6 +2227,26 @@
 		rLoc = 1380;
 		rType = 0;
 		vrLen = 1380;
+		vrLoc = 0;
+	};
+	E27589BA12E23E5500E37D3F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 84AD5995935F823A2EE45AC3 /* TableModelBase.h */;
+		name = "TableModelBase.h: 56";
+		rLen = 0;
+		rLoc = 1465;
+		rType = 0;
+		vrLen = 1465;
+		vrLoc = 0;
+	};
+	E27589BD12E23E7500E37D3F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 84AD5995935F823A2EE45AC3 /* TableModelBase.h */;
+		name = "TableModelBase.h: 56";
+		rLen = 0;
+		rLoc = 1466;
+		rType = 0;
+		vrLen = 1466;
 		vrLoc = 0;
 	};
 	E288A9B712AC76B5008EA2F0 /* NSGeometry.h */ = {
