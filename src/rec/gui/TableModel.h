@@ -30,12 +30,12 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
   }
 
   virtual void setSelected(int index, bool selected) {
-    Data* data = this->getData();
-    if (data) {
+    ScopedLock l(lock_);
+    if (setter_) {
       Address addr = address();
       addr.add_field()->set_index(index);
-      if (data->getValue(addr).bool_f() != selected) {
-        data->set(addr, selected);
+      if (setter_->getValue(addr).bool_f() != selected) {
+        setter_->set(addr, selected);
         Operation op;
         op.set_command(Operation::SET);
         op.mutable_address()->CopyFrom(addr);
