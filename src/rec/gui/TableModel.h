@@ -4,7 +4,6 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/util/listener/AddressListener.h"
 #include "rec/gui/TableModelBase.h"
-#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
@@ -20,18 +19,6 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
   }
 
   virtual void setData(Data* data) { setSetter(data); }
-  virtual void setSetter(Setter* setter) {
-    ScopedLock l(lock_);
-    setter_ = setter;
-    if (Message* msg = mutable_message()) {
-      if (setter_)
-        setter_->copyTo(msg);
-      else
-        msg->Clear();
-    }
-    thread::callAsync(this, &TableModelBase::updateContent);
-  }
-
   virtual const Value get() const { return TableModelBase::get(); }
   virtual void set(const Value& v) { TableModelBase::set(v); }
 

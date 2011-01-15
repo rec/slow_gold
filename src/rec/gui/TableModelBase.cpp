@@ -1,6 +1,7 @@
 #include "rec/gui/TableModelBase.h"
 #include "rec/widget/status/Time.h"
 #include "rec/data/proto/Proto.h"
+#include "rec/data/proto/Setter.h"
 #include "rec/util/thread/CallAsync.h"
 
 using namespace juce;
@@ -26,6 +27,7 @@ int TableModelBase::getNumRows() {
   int size = proto::getSize(address(), message());
   return size;
 }
+
 
 void TableModelBase::paintRowBackground(Graphics& g,
                                         int rowNumber,
@@ -88,6 +90,19 @@ void TableModelBase::selectedRowsChanged(const juce::SparseSet<int>& selected) {
       setSelected(done, true);
   }
 }
+
+void TableModelBase::setSetter(Setter* setter) {
+  ScopedLock l(lock_);
+  setter_ = setter;
+  if (Message* msg = mutable_message()) {
+    if (setter_)
+      setter_->copyTo(msg);
+    else
+      msg->Clear();
+  }
+  thread::callAsync(this, &TableModelBase::updateContent);
+}
+
 
 }  // namespace gui
 }  // namespace rec

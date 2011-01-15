@@ -26,10 +26,7 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
   const Value get() const;
   void set(const Value& v);
 
-  void setSetter(Setter* setter) {
-    ScopedLock l(lock_);
-    setter_ = setter;
-  }
+  virtual void setSetter(Setter* setter);
 
  protected:
   virtual const Message& message() const = 0;
