@@ -154,6 +154,11 @@ AudioFormatReader* createReader(const VolumeFile& file) {
           }
   } else {
     reader.reset(audio::getAudioFormatManager()->createReaderFor(getFile(file)));
+    if (!reader) {
+      LOG(ERROR) << "Couldn't create reader for file " << file.ShortDebugString();
+      return NULL;
+    }
+    
     if (needsRead)
       metadata = cd::getMetadata(reader->metadataValues);
   }

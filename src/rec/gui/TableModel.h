@@ -43,6 +43,8 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
 
     if (!proto_.ParseFromString(v.message_f()))
       LOG(ERROR) << "Couldn't parse value: " << proto_.DebugString();
+
+    thread::callAsync(this, &TableListBox::updateContent);      
   }
 
  protected:

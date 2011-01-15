@@ -8,8 +8,6 @@
 using namespace juce;
 
 using namespace rec::audio::source;
-using namespace rec::proto::arg;
-using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
 
 namespace rec {
@@ -18,7 +16,7 @@ namespace slow {
 MainPage::MainPage(AudioDeviceManager* deviceManager)
     : Layout("MainPage"),
       player_(deviceManager),
-      directory_(new Root(NodeDesc())),
+      directory_(new Root(widget::tree::NodeDesc())),
       waveform_(WaveformProto()),
       controller_(player_.getTransport()),
       openDialogOpen_(false) {
@@ -27,7 +25,6 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   player_.getTransport()->addListener(waveform_.timeCursor());
 
   waveform_.addListener(this);
-  directory_->addListener(player_.fileListener());
   waveform_.dropBroadcaster()->addListener(player_.fileListener());
   player_.addListener(this);
 
@@ -42,9 +39,7 @@ void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
   (*r)->add();
 }
 
-MainPage::~MainPage() {
-  // controller_.timeController()->setTransport(NULL);
-}
+MainPage::~MainPage() {}
 
 void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
@@ -105,8 +100,13 @@ void MainPage::operator()(const VolumeFile& file) {
 
   } else {
     loops_.setData(persist::data<LoopPointList>(file));
-    waveform_.setAudioThumbnail(player_.cachedThumbnail()->thumbnail());
-    player_.cachedThumbnail()->addListener(&waveform_);
+    if (gui::CachedThumbnail* thumb = player_.cachedThumbnail()) {
+      waveform_.setAudioThumbnail(thumb->thumbnail());
+      thumb->addListener(&waveform_);
+    } else {
+      LOG(ERROR) << "Can't get waveform for file " << file.ShortDebugString();
+      return;
+    }
     gui::addRecentFile(file);
 
     // Adjust the length of clients - fix this!
