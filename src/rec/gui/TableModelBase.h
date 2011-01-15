@@ -19,9 +19,7 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
 
-  virtual void selectedRowsChanged(int lastRowSelected) {
-    selectedRowsChanged(getSelectedRows());
-  }
+  virtual void selectedRowsChanged(int lastRowSelected);
 
   void repaint() { TableListBox::repaint(); }
 
@@ -29,7 +27,6 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
   void set(const Value& v);
 
   virtual void setSetter(Setter* setter);
-
   virtual void setSelected(int index, bool selected);
 
  protected:
@@ -37,7 +34,6 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
   virtual Message* mutable_message() = 0;
   virtual const Address& address() const { return baseAddress_; }
 
-  void selectedRowsChanged(const juce::SparseSet<int>& selected);
   static String displayText(const TableColumn& col, const Value& value);
 
   const TableColumnList columns_;

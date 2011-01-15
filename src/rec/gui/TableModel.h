@@ -25,9 +25,6 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
  protected:
   virtual const Message& message() const { return proto_; }
   virtual Message* mutable_message() { return &proto_; }
-  virtual const Address& address() const {
-    return AddressListener<Proto>::address();
-  }
 
  private:
   Proto proto_;

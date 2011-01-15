@@ -80,7 +80,9 @@ void TableModelBase::set(const Value& v) {
   thread::callAsync(this, &TableListBox::updateContent);
 }
 
-void TableModelBase::selectedRowsChanged(const juce::SparseSet<int>& selected) {
+void TableModelBase::selectedRowsChanged(int lastRowSelected) {
+  ScopedLock l(lock_);
+  const juce::SparseSet<int>& selected = getSelectedRows();
   for (int i = 0, done = 0; i < selected.getNumRanges(); ++i) {
     juce::Range<int> range = selected.getRange(i);
     for (; done < range.getStart(); ++done)
@@ -110,13 +112,13 @@ void TableModelBase::setSelected(int index, bool selected) {
     addr.add_field()->set_index(index);
     if (setter_->getValue(addr).bool_f() != selected) {
       setter_->set(addr, selected);
-      
+
       using proto::Operation;
-      
+
       Operation op;
       op.set_command(Operation::SET);
       op.mutable_address()->CopyFrom(addr);
-      
+
       ptr<Operation> undo(proto::applyOperation(op, mutable_message()));
     }
   }
