@@ -30,11 +30,12 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
 
   virtual void setSetter(Setter* setter);
 
+  virtual void setSelected(int index, bool selected);
+
  protected:
   virtual const Message& message() const = 0;
   virtual Message* mutable_message() = 0;
   virtual const Address& address() const = 0;
-  virtual void setSelected(int index, bool selected) = 0;
 
   void selectedRowsChanged(const juce::SparseSet<int>& selected);
   static String displayText(const TableColumn& col, const Value& value);

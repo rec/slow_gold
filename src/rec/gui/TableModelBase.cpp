@@ -4,8 +4,6 @@
 #include "rec/data/proto/Setter.h"
 #include "rec/util/thread/CallAsync.h"
 
-using namespace juce;
-
 namespace rec {
 namespace gui {
 
@@ -105,6 +103,24 @@ void TableModelBase::setSetter(Setter* setter) {
   thread::callAsync(this, &TableModelBase::updateContent);
 }
 
+void TableModelBase::setSelected(int index, bool selected) {
+  ScopedLock l(lock_);
+  if (setter_) {
+    Address addr = address();
+    addr.add_field()->set_index(index);
+    if (setter_->getValue(addr).bool_f() != selected) {
+      setter_->set(addr, selected);
+      
+      using proto::Operation;
+      
+      Operation op;
+      op.set_command(Operation::SET);
+      op.mutable_address()->CopyFrom(addr);
+      
+      ptr<Operation> undo(proto::applyOperation(op, mutable_message()));
+    }
+  }
+}
 
 }  // namespace gui
 }  // namespace rec
