@@ -22,6 +22,7 @@ class TableModelBase : public juce::TableListBoxModel, public juce::TableListBox
 
  protected:
   virtual const Message& message() const = 0;
+  virtual Message* mutable_message() = 0;
   virtual const Address& address() const = 0;
   virtual void selectedRowsChanged(const juce::SparseSet<int>& selected) = 0;
   static String displayText(const TableColumn& col, const Value& value);

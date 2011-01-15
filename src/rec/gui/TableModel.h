@@ -34,21 +34,22 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
   virtual const Value get() const {
     ScopedLock l(lock_);
     Value value;
-    proto_.SerializeToString(value.mutable_message_f());
+    message().SerializeToString(value.mutable_message_f());
     return value;
   }
 
   virtual void set(const Value& v) {
     ScopedLock l(lock_);
 
-    if (!proto_.ParseFromString(v.message_f()))
+    if (!mutable_message()->ParseFromString(v.message_f()))
       LOG(ERROR) << "Couldn't parse value: " << proto_.DebugString();
 
-    thread::callAsync(this, &TableListBox::updateContent);      
+    thread::callAsync(this, &TableListBox::updateContent);
   }
 
  protected:
   virtual const Message& message() const { return proto_; }
+  virtual Message* mutable_message() { return &proto_; }
   virtual const Address& address() const {
     return AddressListener<Proto>::address();
   }
@@ -74,14 +75,14 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
         Operation op;
         op.set_command(Operation::SET);
         op.mutable_address()->CopyFrom(addr);
-        ptr<Operation> undo(proto::applyOperation(op, &proto_));
+        ptr<Operation> undo(proto::applyOperation(op, mutable_message()));
       }
     }
   }
 
  private:
   Proto proto_;
-  Address selected_;
+ Address selected_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModel);
 };
