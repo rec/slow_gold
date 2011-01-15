@@ -29,21 +29,6 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
     return AddressListener<Proto>::address();
   }
 
-  virtual void setSelected(int index, bool selected) {
-    ScopedLock l(lock_);
-    if (setter_) {
-      Address addr = address();
-      addr.add_field()->set_index(index);
-      if (setter_->getValue(addr).bool_f() != selected) {
-        setter_->set(addr, selected);
-        Operation op;
-        op.set_command(Operation::SET);
-        op.mutable_address()->CopyFrom(addr);
-        ptr<Operation> undo(proto::applyOperation(op, mutable_message()));
-      }
-    }
-  }
-
  private:
   Proto proto_;
 
