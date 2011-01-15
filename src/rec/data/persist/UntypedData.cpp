@@ -12,15 +12,23 @@ namespace persist {
 using rec::proto::Operation;
 
 bool UntypedData::hasValue(const Address& address) const {
+  ScopedLock l(lock_);
   return proto::hasValue(address, *message_);
 }
 
 const Value UntypedData::getValue(const Address& address) const {
+  ScopedLock l(lock_);
   return proto::getValue(address, *message_);
 }
 
 int UntypedData::getSize(const Address& address) const {
+  ScopedLock l(lock_);
   return proto::getSize(address, *message_);
+}
+
+void UntypedData::copyTo(Message* message) const {
+  ScopedLock l(lock_);
+  message->CopyFrom(*message_);
 }
 
 UntypedData::UntypedData(const File& file, Message* message, App* app)
@@ -32,6 +40,7 @@ UntypedData::UntypedData(const File& file, Message* message, App* app)
 }
 
 void UntypedData::readFromFile() const {
+  ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
     fileReadSuccess_ = copy(*file_, message_);
     if (fileReadSuccess_)

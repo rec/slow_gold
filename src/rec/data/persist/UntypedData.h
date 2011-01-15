@@ -28,10 +28,10 @@ class UntypedData : public Setter {
   void requestUpdate();
   bool fileReadSuccess() const { return fileReadSuccess_; }
 
-  // TODO: possible  race condition on these two. :-(
   virtual const Value getValue(const Address& address) const;
   virtual bool hasValue(const Address& address) const;
   virtual int getSize(const Address& address) const;
+  virtual void copyTo(Message* message) const;
 
  protected:
   friend class AppInstance;

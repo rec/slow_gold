@@ -25,6 +25,7 @@ class Setter : public Listener<Operation*> {
   virtual const Value getValue(const Address& address) const = 0;
   virtual bool hasValue(const Address& address) const = 0;
   virtual int getSize(const Address& address) const = 0;
+  virtual void copyTo(Message* message) const = 0;
 
   typedef Address A;
   typedef const A::Field& P;

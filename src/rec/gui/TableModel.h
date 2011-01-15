@@ -19,13 +19,16 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
       : TableModelBase(c), AddressListener<Proto>(addr), selected_(sel) {
   }
 
-  virtual void setData(Data* data) {
+  virtual void setData(Data* data) { setSetter(data); }
+  virtual void setSetter(Setter* setter) {
     ScopedLock l(lock_);
-    DataListener<Proto>::setData(data);
-    if (data)
-      proto_ = data->get();
-    else
-      proto_.Clear();
+    setter_ = setter;
+    if (Message* msg = mutable_message()) {
+      if (setter_)
+        setter_->copyTo(msg);
+      else
+        msg->Clear();
+    }
     thread::callAsync(this, &TableModelBase::updateContent);
   }
 
