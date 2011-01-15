@@ -3,11 +3,14 @@
 
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
+#include "rec/util/Reference.h"
 
 namespace rec {
 namespace gui {
 
-class TableModelBase : public juce::TableListBoxModel, public juce::TableListBox {
+class TableModelBase :
+    public juce::TableListBoxModel,
+    public juce::TableListBox {
  public:
   TableModelBase(const TableColumnList& columns);
 
@@ -20,15 +23,23 @@ class TableModelBase : public juce::TableListBoxModel, public juce::TableListBox
     selectedRowsChanged(getSelectedRows());
   }
 
+  void repaint() { TableListBox::repaint(); }
+
+  const Value get() const;
+  void set(const Value& v);
+
  protected:
   virtual const Message& message() const = 0;
   virtual Message* mutable_message() = 0;
   virtual const Address& address() const = 0;
-  virtual void selectedRowsChanged(const juce::SparseSet<int>& selected) = 0;
+  virtual void setSelected(int index, bool selected) = 0;
+
+  void selectedRowsChanged(const juce::SparseSet<int>& selected);
   static String displayText(const TableColumn& col, const Value& value);
 
   const TableColumnList columns_;
   CriticalSection lock_;
+  // ptr<Message> proto_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModelBase);

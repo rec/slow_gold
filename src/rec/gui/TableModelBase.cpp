@@ -1,6 +1,7 @@
 #include "rec/gui/TableModelBase.h"
 #include "rec/widget/status/Time.h"
 #include "rec/data/proto/Proto.h"
+#include "rec/util/thread/CallAsync.h"
 
 using namespace juce;
 
@@ -58,6 +59,33 @@ String TableModelBase::displayText(const TableColumn& col, const Value& value) {
    case TableColumn::DOUBLE: return String(static_cast<double>(value));
 
    default: return "<unknown>";
+  }
+}
+
+const Value TableModelBase::get() const {
+  ScopedLock l(lock_);
+  Value value;
+  message().SerializeToString(value.mutable_message_f());
+  return value;
+}
+
+void TableModelBase::set(const Value& v) {
+  ScopedLock l(lock_);
+
+  if (!mutable_message()->ParseFromString(v.message_f()))
+    LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
+
+  thread::callAsync(this, &TableListBox::updateContent);
+}
+
+void TableModelBase::selectedRowsChanged(const juce::SparseSet<int>& selected) {
+  for (int i = 0, done = 0; i < selected.getNumRanges(); ++i) {
+    juce::Range<int> range = selected.getRange(i);
+    for (; done < range.getStart(); ++done)
+      setSelected(done, false);
+
+    for (; done != range.getEnd(); ++done)
+      setSelected(done, true);
   }
 }
 

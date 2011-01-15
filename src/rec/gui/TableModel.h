@@ -26,26 +26,11 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
       proto_ = data->get();
     else
       proto_.Clear();
-    thread::callAsync(this, &TableListBox::updateContent);
+    thread::callAsync(this, &TableModelBase::updateContent);
   }
 
-  void repaint() { TableModelBase::repaint(); }
-
-  virtual const Value get() const {
-    ScopedLock l(lock_);
-    Value value;
-    message().SerializeToString(value.mutable_message_f());
-    return value;
-  }
-
-  virtual void set(const Value& v) {
-    ScopedLock l(lock_);
-
-    if (!mutable_message()->ParseFromString(v.message_f()))
-      LOG(ERROR) << "Couldn't parse value: " << proto_.DebugString();
-
-    thread::callAsync(this, &TableListBox::updateContent);
-  }
+  virtual const Value get() const { return TableModelBase::get(); }
+  virtual void set(const Value& v) { TableModelBase::set(v); }
 
  protected:
   virtual const Message& message() const { return proto_; }
@@ -54,18 +39,7 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
     return AddressListener<Proto>::address();
   }
 
-  virtual void selectedRowsChanged(const juce::SparseSet<int>& selected) {
-    for (int i = 0, done = 0; i < selected.getNumRanges(); ++i) {
-      juce::Range<int> range = selected.getRange(i);
-      for (; done < range.getStart(); ++done)
-        setSelected(done, false);
-
-      for (; done != range.getEnd(); ++done)
-        setSelected(done, true);
-    }
-  }
-
-  void setSelected(int index, bool selected) {
+  virtual void setSelected(int index, bool selected) {
     Data* data = this->getData();
     if (data) {
       Address addr = address();
@@ -82,7 +56,7 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
 
  private:
   Proto proto_;
- Address selected_;
+  Address selected_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModel);
 };
