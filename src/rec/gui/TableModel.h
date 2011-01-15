@@ -15,7 +15,7 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
  public:
   typedef persist::Data<Proto> Data;
   TableModel(const TableColumnList& c, const Address& addr, const Address& sel)
-      : TableModelBase(c), AddressListener<Proto>(addr), selected_(sel) {
+      : TableModelBase(c, addr, sel), AddressListener<Proto>(addr) {
   }
 
   virtual void setData(Data* data) { setSetter(data); }
@@ -46,7 +46,6 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
 
  private:
   Proto proto_;
-  Address selected_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModel);
 };

@@ -9,8 +9,10 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-TableModelBase::TableModelBase(const TableColumnList& c)
-    : TableListBox("TableModelBase", this), columns_(c), setter_(NULL) {
+TableModelBase::TableModelBase(const TableColumnList& c, const Address& addr,
+                               const Address& sel)
+    : TableListBox("TableModelBase", this), columns_(c), setter_(NULL),
+      baseAddress_(addr), selected_(sel) {
 }
 
 void TableModelBase::fillHeader(TableHeaderComponent* headers) {

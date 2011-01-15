@@ -4,13 +4,15 @@
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
 #include "rec/util/Reference.h"
+#include "rec/data/proto/Address.h"
 
 namespace rec {
 namespace gui {
 
 class TableModelBase : public TableListBoxModel, public TableListBox {
  public:
-  TableModelBase(const TableColumnList& columns);
+  TableModelBase(const TableColumnList& columns, const Address& addr,
+                 const Address& selected);
 
   virtual void fillHeader(TableHeaderComponent* headers);
   virtual int getNumRows();
@@ -41,6 +43,9 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
   CriticalSection lock_;
   Setter* setter_;
   // ptr<Message> proto_;
+
+  Address baseAddress_;
+  Address selected_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModelBase);
