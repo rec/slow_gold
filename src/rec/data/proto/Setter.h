@@ -14,7 +14,8 @@ class Setter : public Listener<Operation*> {
  public:
   Setter() {}
 
-  virtual void operator()(Operation*) = 0;
+  void operator()(Operation*);
+  virtual void operator()(OperationList*) = 0;
 
   void append(const Address& address, const Value& value);
   void clear(const Address& address);

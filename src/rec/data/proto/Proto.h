@@ -11,7 +11,7 @@ namespace proto {
 class Operation;
 
 Operation* applyOperation(const Operation& operation, Message* msg);
-Value getValue(const Address& address, const Message& msg);
+arg::Value getValue(const Address& address, const Message& msg);
 bool hasValue(const Address& address, const Message& msg);
 int getSize(const Address& address, const Message& msg);
 
@@ -25,7 +25,7 @@ struct ProtoAddress {
       : proto_(const_cast<Message*>(&p)), address_(a) {
   }
 
-  Value getValue() const;
+  arg::Value getValue() const;
   bool hasValue() const;
   int getSize() const;
 };

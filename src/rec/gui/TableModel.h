@@ -14,11 +14,15 @@ template <typename Proto>
 class TableModel : public TableModelBase, public AddressListener<Proto> {
  public:
   typedef persist::Data<Proto> Data;
-  TableModel(const TableColumnList& c, const Address& addr, const Address& sel)
-      : TableModelBase(c, addr, sel), AddressListener<Proto>(addr) {
+  TableModel(const TableColumnList& c, const Address& address)
+      : TableModelBase(c, address), AddressListener<Proto>(address) {
   }
 
-  virtual void setData(Data* data) { setSetter(data); }
+  virtual void setData(Data* data) {
+    setSetter(data);
+    AddressListener<Proto>::setData(data);
+  }
+
   virtual const Value get() const { return TableModelBase::get(); }
   virtual void set(const Value& v) { TableModelBase::set(v); }
 
@@ -26,9 +30,9 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
   virtual const Message& message() const { return proto_; }
   virtual Message* mutable_message() { return &proto_; }
 
- private:
   Proto proto_;
 
+ private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModel);
 };
 

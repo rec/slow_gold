@@ -28,9 +28,16 @@ struct Address : public proto::Address {
   Address(P a, P b, P c, P d) { p(a); p(b); p(c); p(d); }
   Address(P a, P b, P c, P d, P e) { p(a); p(b); p(c); p(d); p(e); }
   Address(P a, P b, P c, P d, P e, P f) { p(a); p(b); p(c); p(d); p(e); p(f); }
+
+  Address(const proto::Address a) : proto::Address(a) {}
 };
 
 }  // namespace arg
+
+const Address operator+(const Address& x, const Address& y);
+const Address operator+(const Address& x, int i);
+const Address operator+(const Address& x, const string& name);
+
 }  // namespace proto
 }  // namespace rec
 

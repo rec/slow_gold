@@ -19,10 +19,10 @@ class UntypedData : public Setter {
  public:
   virtual ~UntypedData();
 
-  // Change the data with an Operation.  op will eventually be deleted.  The
+  // Change the data with an OperationList.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
-  virtual void operator()(proto::Operation* op);
+  virtual void operator()(proto::OperationList* op);
 
   // Request an update to this data in a different thread.
   void requestUpdate();
@@ -46,10 +46,10 @@ class UntypedData : public Setter {
 
   virtual void changeCallback() = 0;
 
-  typedef std::vector<proto::Operation*> OperationList;
+  typedef std::vector<proto::OperationList*> OperationQueue;
 
-  OperationList queue_;
-  OperationList undo_;
+  OperationQueue queue_;
+  OperationQueue undo_;
 
   ptr<File> file_;
   mutable Message* message_;

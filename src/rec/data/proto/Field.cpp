@@ -12,6 +12,7 @@ namespace proto {
 
 Field* Field::makeField(const Address& address, const Message& msg) {
   ptr<Field> field(new Field(const_cast<Message*>(&msg)));
+  DCHECK_LT(field->index_, 20);
   for (int i = 0; i < address.field_size(); ++i) {
     if (!field->dereference(address.field(i))) {
       LOG(ERROR) << "Couldn't get field from address:\n"
@@ -33,9 +34,14 @@ int Field::getSize() const {
 
 bool Field::dereference(const proto::Address::Field& afield) {
   if (field_) {
+    index_ = -1;
     const Reflection& r = *message_->GetReflection();
     if (type_ == INDEXED) {
       if (field_->type() == FieldDescriptor::TYPE_MESSAGE) {
+        if (index_ < 0 || index_ >= getSize()) {
+          LOG(ERROR) << " Index " << index_ << " not in range " << getSize();
+          return false;
+        }
         message_ = r.MutableRepeatedMessage(message_, field_, index_);
       } else {
         LOG(ERROR) << "Non-terminal field had type " << field_->type();
@@ -55,6 +61,7 @@ bool Field::dereference(const proto::Address::Field& afield) {
 
       type_ = INDEXED;
       index_ = index;
+      DCHECK_LE(index_, 20);
       return true;
 
     } else {
@@ -64,6 +71,11 @@ bool Field::dereference(const proto::Address::Field& afield) {
 
   if (!afield.has_name()) {
     LOG(ERROR) << "Expected a name at this point";
+    return false;
+  }
+
+  if (!message_) {
+    LOG(ERROR) << "Empty message";
     return false;
   }
 
@@ -92,8 +104,14 @@ bool Field::copyFrom(const Value& value) {
 }
 
 bool Field::copyTo(Value* value) const {
-  return (type_ == SINGLE) ? typer::copyTo(*message_, field_, value) :
-    typer::copyTo(*message_, field_, index_, value);
+  if (type_ == SINGLE)
+    return typer::copyTo(*message_, field_, value);
+
+  if (index_ >= 0)
+    return typer::copyTo(*message_, field_, index_, value);
+
+  LOG(ERROR) << "copyTo failed with no index " << message_->GetTypeName();
+  return false;
 }
 
 bool Field::addFrom(const Value& value) {
@@ -154,16 +172,21 @@ bool Field::addRepeated() {
 bool Field::doRemove(int toRemove) {
   undo_->set_command(Operation::APPEND);
 
-  Field f = *this;
+  Field f(message_);
+  f.field_ = field_;
+  f.type_ = type_;
+  f.repeatCount_ = repeatCount_;
   f.dereference(arg::Address::Field(0));
   if (toRemove < 0)
     toRemove = f.repeatCount_;
 
   f.index_ = f.repeatCount_ - toRemove;
   for (; f.index_ < f.repeatCount_; ++f.index_) {
+    DCHECK_LT(f.index_, 20);
     if (!f.copyTo(undo_->add_value()))
       return false;
   }
+
 
   return true;
 }
@@ -206,11 +229,16 @@ bool Field::swapRepeated() {
     LOG(ERROR) << "Can't swap repeated on self";
     return false;
   }
-  message_->GetReflection()->SwapElements(message_, field_,
-                                          operation_->swap1(),
-                                          operation_->swap2());
+  uint32 s1 = operation_->swap1(), s2 = operation_->swap2();
+  int size = getSize();
 
-  return true;
+  bool inRange = (s1 >= 0 && s2 >= 0 && s1 < size && s2 < size);
+  if (inRange)
+    message_->GetReflection()->SwapElements(message_, field_, s1, s2);
+  else
+    LOG(ERROR) << "Can't swap positions " << s1 << "," << s2 << ": " << size;
+
+  return inRange;
 }
 
 }  // namespace proto

@@ -11,15 +11,12 @@ namespace gui {
 
 class TableModelBase : public TableListBoxModel, public TableListBox {
  public:
-  TableModelBase(const TableColumnList& columns, const Address& addr,
-                 const Address& selected);
+  TableModelBase(const TableColumnList& columns, const Address& address);
 
   virtual void fillHeader(TableHeaderComponent* headers);
   virtual int getNumRows();
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
-
-  virtual void selectedRowsChanged(int lastRowSelected);
 
   void repaint() { TableListBox::repaint(); }
 
@@ -27,22 +24,23 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
   void set(const Value& v);
 
   virtual void setSetter(Setter* setter);
-  virtual void setSelected(int index, bool selected);
+
+  virtual void selectedRowsChanged(int lastRowSelected) {}
+  // virtual void setSelected(int index, bool selected);
 
  protected:
   virtual const Message& message() const = 0;
   virtual Message* mutable_message() = 0;
-  virtual const Address& address() const { return baseAddress_; }
+  virtual void onChange();
 
   static String displayText(const TableColumn& col, const Value& value);
 
   const TableColumnList columns_;
   CriticalSection lock_;
   Setter* setter_;
-  // ptr<Message> proto_;
 
-  Address baseAddress_;
-  Address selected_;
+  Address address_;
+  int numRows_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModelBase);

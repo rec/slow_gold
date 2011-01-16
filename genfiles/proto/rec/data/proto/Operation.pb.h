@@ -36,6 +36,7 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fOperation_2eproto();
 void protobuf_ShutdownFile_rec_2fdata_2fproto_2fOperation_2eproto();
 
 class Operation;
+class OperationList;
 
 enum Operation_Command {
   Operation_Command_APPEND = 0,
@@ -222,6 +223,100 @@ class Operation : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static Operation* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class OperationList : public ::google::protobuf::Message {
+ public:
+  OperationList();
+  virtual ~OperationList();
+  
+  OperationList(const OperationList& from);
+  
+  inline OperationList& operator=(const OperationList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const OperationList& default_instance();
+  
+  void Swap(OperationList* other);
+  
+  // implements Message ----------------------------------------------
+  
+  OperationList* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const OperationList& from);
+  void MergeFrom(const OperationList& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // repeated .rec.proto.Operation operation = 1;
+  inline int operation_size() const;
+  inline void clear_operation();
+  static const int kOperationFieldNumber = 1;
+  inline const ::rec::proto::Operation& operation(int index) const;
+  inline ::rec::proto::Operation* mutable_operation(int index);
+  inline ::rec::proto::Operation* add_operation();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >&
+      operation() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >*
+      mutable_operation();
+  
+  // @@protoc_insertion_point(class_scope:rec.proto.OperationList)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation > operation_;
+  friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fOperation_2eproto();
+  friend void protobuf_AssignDesc_rec_2fdata_2fproto_2fOperation_2eproto();
+  friend void protobuf_ShutdownFile_rec_2fdata_2fproto_2fOperation_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static OperationList* default_instance_;
+};
 // ===================================================================
 
 
@@ -334,6 +429,35 @@ inline ::google::protobuf::uint32 Operation::swap2() const {
 inline void Operation::set_swap2(::google::protobuf::uint32 value) {
   _set_bit(5);
   swap2_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// OperationList
+
+// repeated .rec.proto.Operation operation = 1;
+inline int OperationList::operation_size() const {
+  return operation_.size();
+}
+inline void OperationList::clear_operation() {
+  operation_.Clear();
+}
+inline const ::rec::proto::Operation& OperationList::operation(int index) const {
+  return operation_.Get(index);
+}
+inline ::rec::proto::Operation* OperationList::mutable_operation(int index) {
+  return operation_.Mutable(index);
+}
+inline ::rec::proto::Operation* OperationList::add_operation() {
+  return operation_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >&
+OperationList::operation() const {
+  return operation_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >*
+OperationList::mutable_operation() {
+  return &operation_;
 }
 
 

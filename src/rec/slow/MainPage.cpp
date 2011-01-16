@@ -59,12 +59,7 @@ bool MainPage::keyPressed(const juce::KeyPress& kp) {
 }
 
 void MainPage::addLoopPoint() {
-  if (loops_.getData()) {
-    LoopPoint p;
-    p.set_time(player_.getTransport()->getCurrentPosition());
-    loops_.getData()->append("loop_point", p);
-    loops_.getData()->append("selected", false);
-  }
+  loops_.addLoopPoint(player_.getTransport()->getCurrentPosition());
 }
 
 void MainPage::doOpen() {

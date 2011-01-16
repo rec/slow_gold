@@ -3,11 +3,13 @@
 
 #include "rec/audio/source/LoopPoint.pb.h"
 #include "rec/gui/TableModel.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace gui {
 
 typedef audio::source::LoopPointList LoopPointList;
+typedef audio::source::LoopPoint LoopPoint;
 typedef TableModel<LoopPointList> LoopsBase;
 
 class Loops : public LoopsBase {
@@ -15,7 +17,17 @@ class Loops : public LoopsBase {
   explicit Loops(const TableColumnList* desc = NULL);
   virtual ~Loops() {}
 
+  static const double CLOSE = 0.5;
+
+  double near(double x, double y) const { return util::near(x, y, CLOSE); }
+
+  void setLength(int len);
+  bool isNewLoopPoint(double t) const;
+  void addLoopPoint(double time);
+
  private:
+  double length_;
+
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };
 

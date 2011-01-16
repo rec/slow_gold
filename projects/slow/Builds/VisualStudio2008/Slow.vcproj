@@ -234,6 +234,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.h"/>
           </Filter>
           <Filter Name="proto">
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Address.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Address.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Comparer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
@@ -242,6 +243,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\Field.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\GetProtoName.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\GetProtoName.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\InsertSorted.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\LogFile.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\LogFile.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.cpp"/>
@@ -380,6 +382,8 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.cpp"/>
@@ -633,10 +637,7 @@
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
-      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode1.cpp"/>
-      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode2.cpp"/>
-      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode3.cpp"/>
-      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode4.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode.cpp"/>
     </Filter>
   </Files>
   <Globals/>

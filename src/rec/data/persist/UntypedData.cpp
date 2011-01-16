@@ -10,6 +10,7 @@ namespace rec {
 namespace persist {
 
 using rec::proto::Operation;
+using rec::proto::OperationList;
 
 bool UntypedData::hasValue(const Address& address) const {
   ScopedLock l(lock_);
@@ -57,7 +58,7 @@ UntypedData::~UntypedData() {
   stl::deletePointers(&undo_);
 }
 
-void UntypedData::operator()(proto::Operation* op) {
+void UntypedData::operator()(OperationList* op) {
   {
     ScopedLock l(lock_);
     queue_.push_back(op);
@@ -66,27 +67,30 @@ void UntypedData::operator()(proto::Operation* op) {
 }
 
 void UntypedData::requestUpdate() {
-  (*this)((proto::Operation*)NULL);
+  (*this)(new OperationList);
 }
 
 void UntypedData::update() {
-  OperationList oldQueue;
+  OperationQueue old;
   {
     ScopedLock l(lock_);
     if (queue_.empty())
       return;
 
-    oldQueue.swap(queue_);
+    old.swap(queue_);
   }
 
-  for (OperationList::iterator i = oldQueue.begin(); i != oldQueue.end(); ++i) {
-    if (*i) {
-      ScopedLock l(lock_);
-      undo_.push_back(applyOperation(**i, message_));
+  for (OperationQueue::iterator i = old.begin(); i != old.end(); ++i) {
+    ScopedLock l(lock_);
+    undo_.push_back(new OperationList);
+    const OperationList& list = **i;
+    for (int j = 0; j < list.operation_size(); ++j) {
+      ptr<Operation> op(applyOperation(list.operation(j), message_));
+      undo_.back()->add_operation()->CopyFrom(*op);
     }
   }
 
-  stl::deletePointers(&oldQueue);
+  stl::deletePointers(&old);
   changeCallback();
 }
 

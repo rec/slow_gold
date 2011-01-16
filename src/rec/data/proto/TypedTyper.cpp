@@ -98,7 +98,8 @@ pmessage TypedTyper<pmessage>::GetRepeated(uint32 i) const {
     (field_ ? ref().GetRepeatedMessage(*msg_, field_, i) : *msg_).
       SerializeToString(&p.value_);
   } else {
-    LOG(ERROR) << "Index " << i << " out of bounds for type pmessage";
+    LOG(ERROR) << "Index " << i << " out of bounds for type pmessage: "
+               << msg_->ShortDebugString();
   }
   return p;
 }

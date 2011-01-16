@@ -5,8 +5,8 @@
 namespace rec {
 namespace proto {
 
-Value ProtoAddress::getValue() const {
-  Value value;
+arg::Value ProtoAddress::getValue() const {
+  arg::Value value;
   ptr<Field> field(Field::makeField(address_, *proto_));
   if (field)
     field->copyTo(&value);
@@ -24,7 +24,7 @@ int ProtoAddress::getSize() const {
   return field ? field->getSize() : 0;
 }
 
-Value getValue(const Address& a, const Message& m) {
+arg::Value getValue(const Address& a, const Message& m) {
   return ProtoAddress(m, a).getValue();
 }
 

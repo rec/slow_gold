@@ -23,7 +23,12 @@ class Field {
  public:
   static Field* makeField(const Address& address, const Message& msg);
 
-  explicit Field(Message* message) : message_(message), field_(NULL) {}
+  explicit Field(Message* message) : message_(message),
+                                     field_(NULL),
+                                     index_(-1),
+                                     undo_(NULL),
+                                     operation_(NULL) {
+  }
 
   bool dereference(const Address_Field& part);
   Operation* apply(const Operation& op);
@@ -34,7 +39,6 @@ class Field {
 
   bool hasValue() const;
   int getSize() const;
-
 
  private:
   enum Type {
@@ -60,12 +64,14 @@ class Field {
 
   Message* message_;
   const google::protobuf::FieldDescriptor* field_;
-  uint32 index_;
+  int32 index_;
   Type type_;
   uint32 repeatCount_;
 
   Operation* undo_;
   const Operation* operation_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Field);
 };
 
 }  // namespace proto

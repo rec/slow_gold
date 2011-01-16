@@ -2,7 +2,7 @@
 
 <JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests"
               defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
-              id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_multi"
+              id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_big"
               jucerVersion="23.0.0" name="tests" pluginAUExportPrefix="TestsAU"
               pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}"
               pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0"
@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="ZpOvipXOm" name="tests">
+  <MAINGROUP id="oZqFaZoz3" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -230,6 +230,8 @@
                 name="UntypedData.h" resource="0"/>
         </GROUP>
         <GROUP id="2PaHmfyN0" name="proto">
+          <FILE compile="1" file="../../src/rec/data/proto/Address.cpp" id="Gvd8D3GPP"
+                name="Address.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Address.h" id="0HNpB81Dy"
                 name="Address.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="8PlkqlMk8"
@@ -973,7 +975,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="h79nSjwOW" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="AR1hiYoyc" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

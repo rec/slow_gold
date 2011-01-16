@@ -7,10 +7,12 @@
 namespace rec {
 namespace gui {
 
-TableModelBase::TableModelBase(const TableColumnList& c, const Address& addr,
-                               const Address& sel)
-    : TableListBox("TableModelBase", this), columns_(c), setter_(NULL),
-      baseAddress_(addr), selected_(sel) {
+TableModelBase::TableModelBase(const TableColumnList& c, const Address& address)
+    : TableListBox("TableModelBase", this),
+      columns_(c),
+      setter_(NULL),
+      address_(address),
+      numRows_(0) {
 }
 
 void TableModelBase::fillHeader(TableHeaderComponent* headers) {
@@ -24,10 +26,8 @@ void TableModelBase::fillHeader(TableHeaderComponent* headers) {
 
 int TableModelBase::getNumRows() {
   ScopedLock l(lock_);
-  int size = proto::getSize(address(), message());
-  return size;
+  return numRows_;
 }
-
 
 void TableModelBase::paintRowBackground(Graphics& g,
                                         int rowNumber,
@@ -45,11 +45,13 @@ void TableModelBase::paintCell(Graphics& g,
                                bool rowIsSelected) {
   ScopedLock l(lock_);
   g.setColour(juce::Colours::black);
+  if (columnId > columns_.column_size() || columnId <= 0) {
+    LOG(ERROR) << "columnId " << columnId << " size " << columns_.column_size();
+    return;
+  }
   const TableColumn& column = columns_.column(columnId - 1);
-  Address addr = address();
-  addr.add_field()->set_index(rowNumber);
-  addr.MergeFrom(column.address());
-  String t = displayText(column, proto::getValue(addr, message()));
+  Address row = (address_ + rowNumber) + column.address();
+  String t = displayText(column, proto::getValue(row, message()));
   g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
 }
 
@@ -71,14 +73,33 @@ const Value TableModelBase::get() const {
   return value;
 }
 
+void TableModelBase::onChange() {
+  numRows_ = proto::getSize(address_, message());
+  thread::callAsync(this, &TableListBox::updateContent);
+}
+
 void TableModelBase::set(const Value& v) {
   ScopedLock l(lock_);
 
   if (!mutable_message()->ParseFromString(v.message_f()))
     LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
-
-  thread::callAsync(this, &TableListBox::updateContent);
+  onChange();
 }
+
+void TableModelBase::setSetter(Setter* setter) {
+  ScopedLock l(lock_);
+  setter_ = setter;
+  numRows_ = 0;
+  if (Message* msg = mutable_message()) {
+    if (setter_)
+      setter_->copyTo(msg);
+    else
+      msg->Clear();
+  }
+  onChange();
+}
+
+#if 0
 
 void TableModelBase::selectedRowsChanged(int lastRowSelected) {
   ScopedLock l(lock_);
@@ -93,27 +114,14 @@ void TableModelBase::selectedRowsChanged(int lastRowSelected) {
   }
 }
 
-void TableModelBase::setSetter(Setter* setter) {
-  ScopedLock l(lock_);
-  setter_ = setter;
-  if (Message* msg = mutable_message()) {
-    if (setter_)
-      setter_->copyTo(msg);
-    else
-      msg->Clear();
-  }
-  thread::callAsync(this, &TableModelBase::updateContent);
-}
-
-void TableModelBase::setSelected(int index, bool selected) {
+void TableModelBase::setSelected(int index, bool sel) {
   ScopedLock l(lock_);
   if (setter_) {
-    Address addr = address();
-    addr.add_field()->set_index(index);
-    if (setter_->getValue(addr).bool_f() != selected) {
-      setter_->set(addr, selected);
-
+    Address addr = selected_ + index;
+    if (setter_->getValue(addr).bool_f() != sel) {
       using proto::Operation;
+
+      setter_->set(addr, sel);
 
       Operation op;
       op.set_command(Operation::SET);
@@ -123,6 +131,8 @@ void TableModelBase::setSelected(int index, bool selected) {
     }
   }
 }
+
+#endif
 
 }  // namespace gui
 }  // namespace rec
