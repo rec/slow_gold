@@ -35,20 +35,20 @@ class Value : public proto::Value {
 
   template <typename T>
   T cast() const {
-    if (has_uint32_f()) return uint32_f();
-    if (has_double_f()) return double_f();
-    if (has_float_f()) return float_f();
-    if (has_int64_f()) return int64_f();
-    if (has_uint64_f()) return uint64_f();
-    if (has_int32_f()) return int32_f();
-    if (has_bool_f()) return bool_f();
-    if (has_fixed32_f()) return fixed32_f();
-    if (has_fixed64_f()) return fixed64_f();
-    if (has_sfixed32_f()) return sfixed32_f();
-    if (has_sfixed64_f()) return sfixed64_f();
-    if (has_sint32_f()) return sint32_f();
-    if (has_sint64_f()) return sint64_f();
-    if (has_enum_f()) return enum_f();
+    if (has_uint32_f()) return static_cast<T>(uint32_f());
+    if (has_double_f()) return static_cast<T>(double_f());
+    if (has_float_f()) return static_cast<T>(float_f());
+    if (has_int64_f()) return static_cast<T>(int64_f());
+    if (has_uint64_f()) return static_cast<T>(uint64_f());
+    if (has_int32_f()) return static_cast<T>(int32_f());
+    if (has_bool_f()) return static_cast<T>(bool_f());
+    if (has_fixed32_f()) return static_cast<T>(fixed32_f());
+    if (has_fixed64_f()) return static_cast<T>(fixed64_f());
+    if (has_sfixed32_f()) return static_cast<T>(sfixed32_f());
+    if (has_sfixed64_f()) return static_cast<T>(sfixed64_f());
+    if (has_sint32_f()) return static_cast<T>(sint32_f());
+    if (has_sint64_f()) return static_cast<T>(sint64_f());
+    if (has_enum_f()) return static_cast<T>(enum_f());
     return 0;
   }
 

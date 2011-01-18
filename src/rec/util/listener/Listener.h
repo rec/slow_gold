@@ -54,12 +54,14 @@ class Broadcaster {
 
 template <typename Type>
 Listener<Type>::~Listener() {
-  while (true) {
+  for (bool finished = false; !finished; ) {
     Broadcasters toDelete;
     {
       ScopedLock l(listenerLock_);
-      if (broadcasters_.empty())
-        return;
+      if (broadcasters_.empty()) {
+        finished = true;
+        continue;
+      }
 
       broadcasters_.swap(toDelete);
     }
