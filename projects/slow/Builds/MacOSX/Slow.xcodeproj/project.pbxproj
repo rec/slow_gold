@@ -44,6 +44,7 @@
 		454A720C13F65FB2AEB02991 /* scantoken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3B1D3C8D7B4A179CC63E /* scantoken.cpp */; };
 		46CFA0BFEBD851A9AA33EE35 /* WriteYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2C7BDA8573F8BB43DC99514 /* WriteYaml.cpp */; };
 		473CA9951E5CEE2D7E55DA99 /* aliasmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30D7748F8205674CA55176A7 /* aliasmanager.cpp */; };
+		47D8256C99ED817A26B86206 /* MessageField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71BF190106219F20E4492E93 /* MessageField.cpp */; };
 		4AF157F3B244DB2F4EC14C6B /* DoubleRunnyBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1061CA02BB8B9CB5FCB22775 /* DoubleRunnyBuffer.cpp */; };
 		4E013E8D44E3C0395E6445A5 /* MediaRecord.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE654237ACD381A97E400C4E /* MediaRecord.svg.cpp */; };
 		52575C8ED6F0018FEB8A11D2 /* DoubleRunny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 485652DE1AE04CB8F99A2A1E /* DoubleRunny.cpp */; };
@@ -355,6 +356,7 @@
 		6F5F60E255EC320E15627F4B /* Util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Util.cpp; path = ../../../../src/rec/util/file/Util.cpp; sourceTree = SOURCE_ROOT; };
 		701EB983A56229124E690822 /* CachedThumbnail.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CachedThumbnail.cpp; path = ../../../../src/rec/gui/CachedThumbnail.cpp; sourceTree = SOURCE_ROOT; };
 		7073B7FF6A3F516F96A1D338 /* null.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = null.cpp; path = ../../../../src/rec/data/yaml/src/null.cpp; sourceTree = SOURCE_ROOT; };
+		71BF190106219F20E4492E93 /* MessageField.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MessageField.cpp; path = ../../../../src/rec/data/proto/MessageField.cpp; sourceTree = SOURCE_ROOT; };
 		7234162EF60CC8CA998882E9 /* NewHandle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NewHandle.cpp; path = ../../../../src/rec/audio/format/mpg123/NewHandle.cpp; sourceTree = SOURCE_ROOT; };
 		7248EB65C25CF51327A360A2 /* Proto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Proto.h; path = ../../../../src/rec/data/proto/Proto.h; sourceTree = SOURCE_ROOT; };
 		72E57727D75F92F702E87F28 /* Leaks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Leaks.h; path = ../../../../src/rec/base/Leaks.h; sourceTree = SOURCE_ROOT; };
@@ -433,6 +435,7 @@
 		A25892186595739DFF0EC06A /* ChangeLocker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChangeLocker.h; path = ../../../../src/rec/util/thread/ChangeLocker.h; sourceTree = SOURCE_ROOT; };
 		A27FB01F82BCC82F92921F90 /* Empty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Empty.h; path = ../../../../src/rec/audio/source/Empty.h; sourceTree = SOURCE_ROOT; };
 		A33C617311C94F615E0ACCCF /* Format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Format.h; path = ../../../../src/rec/audio/format/mpg123/Format.h; sourceTree = SOURCE_ROOT; };
+		A408AA7B92724CFAEF5D8BEB /* MessageField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageField.h; path = ../../../../src/rec/data/proto/MessageField.h; sourceTree = SOURCE_ROOT; };
 		A66F07870DC3DCE06E0489D3 /* FileWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileWriter.h; path = ../../../../src/rec/util/thread/FileWriter.h; sourceTree = SOURCE_ROOT; };
 		A6F07F2318BC5640DB644378 /* nodebuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nodebuilder.h; path = ../../../../src/rec/data/yaml/src/nodebuilder.h; sourceTree = SOURCE_ROOT; };
 		A7D43A4019388C9A988D8745 /* TransportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportController.h; path = ../../../../src/rec/gui/TransportController.h; sourceTree = SOURCE_ROOT; };
@@ -622,20 +625,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0BF5D1B2A14239B0351261D8 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		0E5561BA8F7A19892CFB3AED /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1004,6 +993,8 @@
 				2BE1B62BFE8CD89FA1E8535C /* InsertSorted.h */,
 				9F08D4E271CD79A7F211E844 /* LogFile.cpp */,
 				B4BAA3AF3CCE701D8958E78B /* LogFile.h */,
+				71BF190106219F20E4492E93 /* MessageField.cpp */,
+				A408AA7B92724CFAEF5D8BEB /* MessageField.h */,
 				769B124FE15AF19EA9AC2F81 /* Proto.cpp */,
 				7248EB65C25CF51327A360A2 /* Proto.h */,
 				CB6457CC72AF09C1E1CB5733 /* Setter.cpp */,
@@ -1239,6 +1230,20 @@
 				0E5561BA8F7A19892CFB3AED /* widget */,
 			);
 			name = rec;
+			sourceTree = "<group>";
+		};
+		C201F7B10F9A73F864679CA9 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		C538D90412B6270966BA1C60 /* tree */ = {
@@ -1498,7 +1503,7 @@
 				French,
 				German,
 			);
-			mainGroup = 0BF5D1B2A14239B0351261D8 /* Source */;
+			mainGroup = C201F7B10F9A73F864679CA9 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1553,6 +1558,7 @@
 				64B1D5B25AB0AC9726059750 /* Field.cpp in Sources */,
 				85434B2F5A11BDDAA9862628 /* GetProtoName.cpp in Sources */,
 				775F2F086020331850714C6E /* LogFile.cpp in Sources */,
+				47D8256C99ED817A26B86206 /* MessageField.cpp in Sources */,
 				5B405A20154D86DC74911320 /* Proto.cpp in Sources */,
 				3491D4EF6750E33BDB2003C8 /* Setter.cpp in Sources */,
 				B481FE69869D9059F2F92847 /* TypedOperations.cpp in Sources */,

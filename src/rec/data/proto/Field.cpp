@@ -24,14 +24,6 @@ Field* Field::makeField(const Address& address, const Message& msg) {
   return field.transfer();
 }
 
-bool Field::hasValue() const {
-  return message_->GetReflection()->HasField(*message_, field_);
-}
-
-int Field::getSize() const {
-  return message_->GetReflection()->FieldSize(*message_, field_);
-}
-
 bool Field::dereference(const proto::Address::Field& afield) {
   if (field_) {
     index_ = -1;

@@ -28,9 +28,6 @@ class Field : public MessageField {
   bool addFrom(const Value& value);
   bool copyTo(Value* value) const;
 
-  bool hasValue() const;
-  int getSize() const;
-
  private:
   enum Type {
     INDEXED = 0,
