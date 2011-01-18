@@ -398,7 +398,6 @@
           <File RelativePath="..\..\..\..\src\rec\gui\Loops.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.h"/>
-          <File RelativePath="..\..\..\..\src\rec\gui\SegmentTable.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterSlider.h"/>
@@ -554,8 +553,6 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.h"/>
             <Filter Name="source">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\LoopPoint.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\LoopPoint.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.cc"/>
@@ -585,6 +582,8 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\LoopPoint.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\LoopPoint.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>

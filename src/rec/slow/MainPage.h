@@ -15,7 +15,6 @@
 using namespace rec::gui;
 using namespace rec::widget::waveform;
 
-using rec::audio::source::LoopPointList;
 using rec::widget::tree::Root;
 
 namespace rec {

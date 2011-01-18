@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="zZTBBWQAW" name="tests">
+  <MAINGROUP id="tRcYOgZLH" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -553,8 +553,6 @@
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="GVwhlEC2q"
               name="RecentFiles.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/SegmentTable.h" id="l9lXnMhvc"
-              name="SegmentTable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/SetterResizer.cpp" id="mxJp5OvfN"
               name="SetterResizer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="CdQM9fV1F"
@@ -855,10 +853,6 @@
           <FILE compile="0" file="../../genfiles/proto/rec/audio/AudioDeviceSetup.pb.h"
                 id="M4PFbNQ9K" name="AudioDeviceSetup.pb.h" resource="0"/>
           <GROUP id="LaLhoIKxe" name="source">
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/source/LoopPoint.pb.cc"
-                  id="W8twvVG9i" name="LoopPoint.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/source/LoopPoint.pb.h"
-                  id="cW5RyzGue" name="LoopPoint.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
                   id="aEJPeVALd" name="Runny.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/source/Runny.pb.h"
@@ -908,6 +902,10 @@
                 id="1DOYJsmi4" name="Geometry.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Geometry.pb.h"
                 id="R7TPRG57E" name="Geometry.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/gui/LoopPoint.pb.cc"
+                id="c1FmN2lyV" name="LoopPoint.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/gui/LoopPoint.pb.h"
+                id="KE4Mqcx86" name="LoopPoint.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/RecentFiles.pb.cc"
                 id="o8a1vXFke" name="RecentFiles.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/RecentFiles.pb.h"
@@ -985,7 +983,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="53fPsusxt" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="BNYlPpKEt" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
