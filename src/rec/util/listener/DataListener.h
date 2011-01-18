@@ -11,6 +11,9 @@ namespace rec {
 namespace util {
 namespace listener {
 
+// DataListener listens to changes in peristent data and contains a
+// a reference to the data it's listening to.
+
 template <typename Proto>
 class DataListener : public Reference<persist::Data<Proto> >,
                      public Listener<const Proto&> {

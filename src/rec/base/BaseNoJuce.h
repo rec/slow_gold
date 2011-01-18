@@ -31,7 +31,7 @@ class VirtualFile;
 namespace proto {
 namespace arg {
 
-class Address;
+struct Address;
 class Setter;
 class Value;
 

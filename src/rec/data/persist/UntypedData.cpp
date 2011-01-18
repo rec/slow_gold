@@ -44,11 +44,12 @@ void UntypedData::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
     fileReadSuccess_ = copy(*file_, message_);
+#if 0
     if (fileReadSuccess_)
       DLOG(INFO) << "Opening data " << file_->getFullPathName().toCString();
     else
       LOG(ERROR) << "New data " << file_->getFullPathName().toCString();
-
+#endif
     alreadyReadFromFile_ = true;
   }
 }

@@ -25,9 +25,13 @@ class SetterToggle : public juce::ToggleButton,
  protected:
   virtual const Value get() const { return getToggleState(); }
 
+  void setToggle(bool state) {
+    setToggleState(state, false);
+  }
+
   virtual void set(const Value& v) {
     if (v.has_bool_f())
-      thread::callAsync(this, &juce::Button::setToggleState, v.bool_f(), false);
+      thread::callAsync(this, &SetterToggle::setToggle, v.bool_f());
   }
 
  private:

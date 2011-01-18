@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "rec/util/file/VirtualFile.h"
 
 #include "rec/audio/AudioFormatManager.h"

@@ -83,7 +83,6 @@ void TableModelBase::set(const Value& v) {
 
   if (!mutable_message()->ParseFromString(v.message_f()))
     LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
-  onChange();
 }
 
 void TableModelBase::setSetter(Setter* setter) {

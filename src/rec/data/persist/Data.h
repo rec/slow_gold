@@ -22,7 +22,7 @@ class Data : public UntypedData, public Broadcaster<const Proto&> {
   }
 
   virtual ~Data() {
-    DLOG(INFO) << "Deleting data: " << data::proto::getName(Proto::default_instance());
+    DLOG(INFO) << "Deleting data: " << data::proto::getName<Proto>();
   }
 
  protected:

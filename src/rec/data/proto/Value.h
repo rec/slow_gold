@@ -57,7 +57,7 @@ class Value : public proto::Value {
   operator float() const { return cast<float>(); }
   operator int64() const { return cast<int64>(); }
   operator uint64() const { return cast<uint64>(); }
-  operator int32() const { return cast<int32>(); }
+  // operator int32() const { return cast<int32>(); }
   operator uint32() const { return cast<uint32>(); }
   operator bool() const { return cast<bool>(); }
   operator penum() const { return enum_f(); }
