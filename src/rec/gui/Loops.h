@@ -17,7 +17,7 @@ class Loops : public LoopsBase {
   explicit Loops(const TableColumnList* desc = NULL);
   virtual ~Loops() {}
 
-  static const double CLOSE = 0.5;
+  static const double CLOSE;
 
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
 

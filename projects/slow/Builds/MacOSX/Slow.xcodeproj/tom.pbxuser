@@ -35,7 +35,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 3211}}";
 			sepNavSelRange = "{6384, 0}";
-			sepNavVisRange = "{1894, 1189}";
+			sepNavVisRange = "{1894, 1209}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -147,6 +147,10 @@
 			E2E28AEA12E6457B004DE2DE /* PBXTextBookmark */ = E2E28AEA12E6457B004DE2DE /* PBXTextBookmark */;
 			E2E28AEB12E6457B004DE2DE /* PBXTextBookmark */ = E2E28AEB12E6457B004DE2DE /* PBXTextBookmark */;
 			E2E28AEE12E645BE004DE2DE /* PBXTextBookmark */ = E2E28AEE12E645BE004DE2DE /* PBXTextBookmark */;
+			E2E28AF312E64AD3004DE2DE /* PBXTextBookmark */ = E2E28AF312E64AD3004DE2DE /* PBXTextBookmark */;
+			E2E28AF412E64AD3004DE2DE /* XCBuildMessageTextBookmark */ = E2E28AF412E64AD3004DE2DE /* XCBuildMessageTextBookmark */;
+			E2E28AF512E64AD3004DE2DE /* PBXTextBookmark */ = E2E28AF512E64AD3004DE2DE /* PBXTextBookmark */;
+			E2E28AF612E64AD5004DE2DE /* PBXTextBookmark */ = E2E28AF612E64AD5004DE2DE /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -624,6 +628,45 @@
 		rLoc = 6384;
 		rType = 0;
 		vrLen = 1189;
+		vrLoc = 1894;
+	};
+	E2E28AF312E64AD3004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 71BF190106219F20E4492E93 /* MessageField.cpp */;
+		name = "MessageField.cpp: 11";
+		rLen = 0;
+		rLoc = 220;
+		rType = 0;
+		vrLen = 368;
+		vrLoc = 0;
+	};
+	E2E28AF412E64AD3004DE2DE /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No 'bool rec::proto::Field::hasValue() const' member function declared in class 'rec::proto::Field'";
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 26;
+		rType = 1;
+	};
+	E2E28AF512E64AD3004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 251";
+		rLen = 0;
+		rLoc = 6384;
+		rType = 0;
+		vrLen = 866;
+		vrLoc = 303;
+	};
+	E2E28AF612E64AD5004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 251";
+		rLen = 0;
+		rLoc = 6384;
+		rType = 0;
+		vrLen = 1209;
 		vrLoc = 1894;
 	};
 	FBE89CB20CB80EA5845D84ED /* Setter.h */ = {

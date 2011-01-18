@@ -58,6 +58,10 @@ inline Orientation inverse(Orientation o) {
   return (o == HORIZONTAL) ? VERTICAL : HORIZONTAL;
 }
 
+inline double samplesToTime(int samples, double sampleRate = 44100.0) {
+  return samples / sampleRate;
+}
+
 }  // namespace rec
 
 #endif  // __REC_BASE_BASENOJUCE__

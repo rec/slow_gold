@@ -12,6 +12,8 @@ static Defaulter<TableColumnList> dflt(
 "column { type: STRING name: \"Notes\" address { field { name: \"notes\" } } } "
 );
 
+const double Loops::CLOSE = 0.5;
+
 Loops::Loops(const TableColumnList* desc)
     : LoopsBase(dflt.get(desc), Address("loop_point")), length_(0) {
   fillHeader(&getHeader());
