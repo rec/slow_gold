@@ -99,11 +99,13 @@ bool Field::dereference(const proto::Address::Field& afield) {
 }
 
 bool Field::copyFrom(const Value& value) {
+  DLOG(INFO) << "copyFrom";
   return (type_ == SINGLE) ? typer::copyFrom(message_, field_, value) :
     typer::copyFrom(message_, field_, index_, value);
 }
 
 bool Field::copyTo(Value* value) const {
+  DLOG(INFO) << "copyTo";
   if (type_ == SINGLE)
     return typer::copyTo(*message_, field_, value);
 
@@ -115,6 +117,7 @@ bool Field::copyTo(Value* value) const {
 }
 
 bool Field::addFrom(const Value& value) {
+  DLOG(INFO) << "addFrom";
   if (field_)
     return typer::add(message_, field_, value);
 
@@ -125,6 +128,7 @@ bool Field::addFrom(const Value& value) {
 typedef bool (Field::*Applier)();
 
 Operation* Field::apply(const Operation& op) {
+  DLOG(INFO) << "apply";
   Operation::Command command = op.command();
   Applier applier = &Field::error;
   if (field_ == NULL)

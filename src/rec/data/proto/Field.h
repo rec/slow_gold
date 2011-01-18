@@ -1,15 +1,7 @@
 #ifndef __REC_PROTO_FIELD__
 #define __REC_PROTO_FIELD__
 
-#include "rec/base/base.h"
-
-namespace google {
-namespace protobuf {
-
-class FieldDescriptor;
-
-}  // namespace protobuf
-}  // namespace google
+#include "rec/data/proto/MessageField.h"
 
 namespace rec {
 namespace proto {
@@ -19,12 +11,11 @@ class Address_Field;
 class Operation;
 class Value;
 
-class Field {
+class Field : public MessageField {
  public:
   static Field* makeField(const Address& address, const Message& msg);
 
-  explicit Field(Message* message) : message_(message),
-                                     field_(NULL),
+  explicit Field(Message* message) : MessageField(message),
                                      index_(-1),
                                      undo_(NULL),
                                      operation_(NULL) {
@@ -62,8 +53,6 @@ class Field {
 
   bool doRemove(int toRemove = -1);
 
-  Message* message_;
-  const google::protobuf::FieldDescriptor* field_;
   int32 index_;
   Type type_;
   uint32 repeatCount_;
