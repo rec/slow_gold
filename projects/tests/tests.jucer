@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="oZqFaZoz3" name="tests">
+  <MAINGROUP id="YqhL0JH0l" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -250,6 +250,8 @@
                 id="4ZC2XwyCH" name="GetProtoName.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/GetProtoName.h" id="dB9MRZaA8"
                 name="GetProtoName.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/proto/InsertSorted.h" id="ppTbAEW1E"
+                name="InsertSorted.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/LogFile.cpp" id="VjJliPZEC"
                 name="LogFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/LogFile.h" id="TaGxDpyrt"
@@ -520,6 +522,10 @@
                 id="Jqqb08Oql" name="MediaPlaybackStop.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.h"
                 id="FntBVkCZ9" name="MediaPlaybackStop.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MediaRecord.svg.cpp"
+                id="Kfn6rJFtP" name="MediaRecord.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MediaRecord.svg.h" id="QZHcK48Lr"
+                name="MediaRecord.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/OpenFolder.svg.cpp"
                 id="4motCqz4o" name="OpenFolder.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/OpenFolder.svg.h" id="LNPCGbipx"
@@ -975,7 +981,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="AR1hiYoyc" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="y46JJrva8" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

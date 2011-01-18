@@ -99,7 +99,7 @@ class AppLayout : public ::google::protobuf::Message {
   inline const ::rec::gui::Rectangle& bounds() const;
   inline ::rec::gui::Rectangle* mutable_bounds();
   
-  // optional uint32 directory_y = 2 [default = 350];
+  // optional uint32 directory_y = 2 [default = 225];
   inline bool has_directory_y() const;
   inline void clear_directory_y();
   static const int kDirectoryYFieldNumber = 2;
@@ -113,28 +113,28 @@ class AppLayout : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 waveform_y() const;
   inline void set_waveform_y(::google::protobuf::uint32 value);
   
-  // optional uint32 loops_x = 4 [default = 800];
+  // optional uint32 loops_x = 4 [default = 825];
   inline bool has_loops_x() const;
   inline void clear_loops_x();
   static const int kLoopsXFieldNumber = 4;
   inline ::google::protobuf::uint32 loops_x() const;
   inline void set_loops_x(::google::protobuf::uint32 value);
   
-  // optional uint32 clock_x = 5 [default = 600];
+  // optional uint32 clock_x = 5 [default = 325];
   inline bool has_clock_x() const;
   inline void clear_clock_x();
   static const int kClockXFieldNumber = 5;
   inline ::google::protobuf::uint32 clock_x() const;
   inline void set_clock_x(::google::protobuf::uint32 value);
   
-  // optional uint32 stretchy_y = 6 [default = 200];
+  // optional uint32 stretchy_y = 6 [default = 75];
   inline bool has_stretchy_y() const;
   inline void clear_stretchy_y();
   static const int kStretchyYFieldNumber = 6;
   inline ::google::protobuf::uint32 stretchy_y() const;
   inline void set_stretchy_y(::google::protobuf::uint32 value);
   
-  // optional uint32 songdata_x = 7 [default = 600];
+  // optional uint32 songdata_x = 7 [default = 525];
   inline bool has_songdata_x() const;
   inline void clear_songdata_x();
   static const int kSongdataXFieldNumber = 7;
@@ -221,12 +221,12 @@ inline ::rec::gui::Rectangle* AppLayout::mutable_bounds() {
   return bounds_;
 }
 
-// optional uint32 directory_y = 2 [default = 350];
+// optional uint32 directory_y = 2 [default = 225];
 inline bool AppLayout::has_directory_y() const {
   return _has_bit(1);
 }
 inline void AppLayout::clear_directory_y() {
-  directory_y_ = 350u;
+  directory_y_ = 225u;
   _clear_bit(1);
 }
 inline ::google::protobuf::uint32 AppLayout::directory_y() const {
@@ -253,12 +253,12 @@ inline void AppLayout::set_waveform_y(::google::protobuf::uint32 value) {
   waveform_y_ = value;
 }
 
-// optional uint32 loops_x = 4 [default = 800];
+// optional uint32 loops_x = 4 [default = 825];
 inline bool AppLayout::has_loops_x() const {
   return _has_bit(3);
 }
 inline void AppLayout::clear_loops_x() {
-  loops_x_ = 800u;
+  loops_x_ = 825u;
   _clear_bit(3);
 }
 inline ::google::protobuf::uint32 AppLayout::loops_x() const {
@@ -269,12 +269,12 @@ inline void AppLayout::set_loops_x(::google::protobuf::uint32 value) {
   loops_x_ = value;
 }
 
-// optional uint32 clock_x = 5 [default = 600];
+// optional uint32 clock_x = 5 [default = 325];
 inline bool AppLayout::has_clock_x() const {
   return _has_bit(4);
 }
 inline void AppLayout::clear_clock_x() {
-  clock_x_ = 600u;
+  clock_x_ = 325u;
   _clear_bit(4);
 }
 inline ::google::protobuf::uint32 AppLayout::clock_x() const {
@@ -285,12 +285,12 @@ inline void AppLayout::set_clock_x(::google::protobuf::uint32 value) {
   clock_x_ = value;
 }
 
-// optional uint32 stretchy_y = 6 [default = 200];
+// optional uint32 stretchy_y = 6 [default = 75];
 inline bool AppLayout::has_stretchy_y() const {
   return _has_bit(5);
 }
 inline void AppLayout::clear_stretchy_y() {
-  stretchy_y_ = 200u;
+  stretchy_y_ = 75u;
   _clear_bit(5);
 }
 inline ::google::protobuf::uint32 AppLayout::stretchy_y() const {
@@ -301,12 +301,12 @@ inline void AppLayout::set_stretchy_y(::google::protobuf::uint32 value) {
   stretchy_y_ = value;
 }
 
-// optional uint32 songdata_x = 7 [default = 600];
+// optional uint32 songdata_x = 7 [default = 525];
 inline bool AppLayout::has_songdata_x() const {
   return _has_bit(6);
 }
 inline void AppLayout::clear_songdata_x() {
-  songdata_x_ = 600u;
+  songdata_x_ = 525u;
   _clear_bit(6);
 }
 inline ::google::protobuf::uint32 AppLayout::songdata_x() const {

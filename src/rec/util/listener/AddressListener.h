@@ -7,8 +7,6 @@ namespace rec {
 namespace util {
 namespace listener {
 
-// AddressListener is a DataListener that's listening to a specific Address
-// within that persistent data.
 template <typename Proto>
 class AddressListener : public DataListener<Proto> {
  public:
@@ -17,20 +15,16 @@ class AddressListener : public DataListener<Proto> {
   typedef persist::Data<Proto> Data;
 
   explicit AddressListener(const Address& a) : address_(a) {}
+
   virtual ~AddressListener() {}
 
   virtual void operator()(const Proto& message) {
-    setAndChange(proto::getValue(address_, message));
+    set(proto::getValue(address_, message));
   }
 
   virtual const Address& address() const { return address_; }
 
  protected:
-  void setAndChange(const Value& v) {
-    set(v);
-    onChange();
-  }
-
   virtual void onChange() {
     if (this->getData())
       this->getData()->set(address_, get());

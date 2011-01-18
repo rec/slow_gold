@@ -84,14 +84,14 @@ void protobuf_AddDesc_rec_2fslow_2fAppLayout_2eproto() {
   ::rec::gui::protobuf_AddDesc_rec_2fgui_2fGeometry_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\030rec/slow/AppLayout.proto\022\010rec.slow\032\026re"
-    "c/gui/Geometry.proto\"\235\002\n\tAppLayout\022\"\n\006bo"
+    "c/gui/Geometry.proto\"\234\002\n\tAppLayout\022\"\n\006bo"
     "unds\030\001 \001(\0132\022.rec.gui.Rectangle\022\030\n\013direct"
-    "ory_y\030\002 \001(\r:\003350\022\027\n\nwaveform_y\030\003 \001(\r:\00350"
-    "0\022\024\n\007loops_x\030\004 \001(\r:\003800\022\024\n\007clock_x\030\005 \001(\r"
-    ":\003600\022\027\n\nstretchy_y\030\006 \001(\r:\003200\022\027\n\nsongda"
-    "ta_x\030\007 \001(\r:\003600\022\035\n\016full_directory\030\010 \001(\010:"
-    "\005false\022\034\n\rfull_waveform\030\t \001(\010:\005false\022\036\n\017"
-    "full_controller\030\n \001(\010:\005false", 348);
+    "ory_y\030\002 \001(\r:\003225\022\027\n\nwaveform_y\030\003 \001(\r:\00350"
+    "0\022\024\n\007loops_x\030\004 \001(\r:\003825\022\024\n\007clock_x\030\005 \001(\r"
+    ":\003325\022\026\n\nstretchy_y\030\006 \001(\r:\00275\022\027\n\nsongdat"
+    "a_x\030\007 \001(\r:\003525\022\035\n\016full_directory\030\010 \001(\010:\005"
+    "false\022\034\n\rfull_waveform\030\t \001(\010:\005false\022\036\n\017f"
+    "ull_controller\030\n \001(\010:\005false", 347);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/AppLayout.proto", &protobuf_RegisterTypes);
   AppLayout::default_instance_ = new AppLayout();
@@ -140,12 +140,12 @@ AppLayout::AppLayout(const AppLayout& from)
 void AppLayout::SharedCtor() {
   _cached_size_ = 0;
   bounds_ = NULL;
-  directory_y_ = 350u;
+  directory_y_ = 225u;
   waveform_y_ = 500u;
-  loops_x_ = 800u;
-  clock_x_ = 600u;
-  stretchy_y_ = 200u;
-  songdata_x_ = 600u;
+  loops_x_ = 825u;
+  clock_x_ = 325u;
+  stretchy_y_ = 75u;
+  songdata_x_ = 525u;
   full_directory_ = false;
   full_waveform_ = false;
   full_controller_ = false;
@@ -187,12 +187,12 @@ void AppLayout::Clear() {
     if (_has_bit(0)) {
       if (bounds_ != NULL) bounds_->::rec::gui::Rectangle::Clear();
     }
-    directory_y_ = 350u;
+    directory_y_ = 225u;
     waveform_y_ = 500u;
-    loops_x_ = 800u;
-    clock_x_ = 600u;
-    stretchy_y_ = 200u;
-    songdata_x_ = 600u;
+    loops_x_ = 825u;
+    clock_x_ = 325u;
+    stretchy_y_ = 75u;
+    songdata_x_ = 525u;
     full_directory_ = false;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
@@ -222,7 +222,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 directory_y = 2 [default = 350];
+      // optional uint32 directory_y = 2 [default = 225];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -254,7 +254,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 loops_x = 4 [default = 800];
+      // optional uint32 loops_x = 4 [default = 825];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -270,7 +270,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 clock_x = 5 [default = 600];
+      // optional uint32 clock_x = 5 [default = 325];
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -286,7 +286,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 stretchy_y = 6 [default = 200];
+      // optional uint32 stretchy_y = 6 [default = 75];
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -302,7 +302,7 @@ bool AppLayout::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 songdata_x = 7 [default = 600];
+      // optional uint32 songdata_x = 7 [default = 525];
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -390,7 +390,7 @@ void AppLayout::SerializeWithCachedSizes(
       1, this->bounds(), output);
   }
   
-  // optional uint32 directory_y = 2 [default = 350];
+  // optional uint32 directory_y = 2 [default = 225];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->directory_y(), output);
   }
@@ -400,22 +400,22 @@ void AppLayout::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->waveform_y(), output);
   }
   
-  // optional uint32 loops_x = 4 [default = 800];
+  // optional uint32 loops_x = 4 [default = 825];
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->loops_x(), output);
   }
   
-  // optional uint32 clock_x = 5 [default = 600];
+  // optional uint32 clock_x = 5 [default = 325];
   if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->clock_x(), output);
   }
   
-  // optional uint32 stretchy_y = 6 [default = 200];
+  // optional uint32 stretchy_y = 6 [default = 75];
   if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->stretchy_y(), output);
   }
   
-  // optional uint32 songdata_x = 7 [default = 600];
+  // optional uint32 songdata_x = 7 [default = 525];
   if (_has_bit(6)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->songdata_x(), output);
   }
@@ -450,7 +450,7 @@ void AppLayout::SerializeWithCachedSizes(
         1, this->bounds(), target);
   }
   
-  // optional uint32 directory_y = 2 [default = 350];
+  // optional uint32 directory_y = 2 [default = 225];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->directory_y(), target);
   }
@@ -460,22 +460,22 @@ void AppLayout::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->waveform_y(), target);
   }
   
-  // optional uint32 loops_x = 4 [default = 800];
+  // optional uint32 loops_x = 4 [default = 825];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->loops_x(), target);
   }
   
-  // optional uint32 clock_x = 5 [default = 600];
+  // optional uint32 clock_x = 5 [default = 325];
   if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->clock_x(), target);
   }
   
-  // optional uint32 stretchy_y = 6 [default = 200];
+  // optional uint32 stretchy_y = 6 [default = 75];
   if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->stretchy_y(), target);
   }
   
-  // optional uint32 songdata_x = 7 [default = 600];
+  // optional uint32 songdata_x = 7 [default = 525];
   if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->songdata_x(), target);
   }
@@ -513,7 +513,7 @@ int AppLayout::ByteSize() const {
           this->bounds());
     }
     
-    // optional uint32 directory_y = 2 [default = 350];
+    // optional uint32 directory_y = 2 [default = 225];
     if (has_directory_y()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -527,28 +527,28 @@ int AppLayout::ByteSize() const {
           this->waveform_y());
     }
     
-    // optional uint32 loops_x = 4 [default = 800];
+    // optional uint32 loops_x = 4 [default = 825];
     if (has_loops_x()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->loops_x());
     }
     
-    // optional uint32 clock_x = 5 [default = 600];
+    // optional uint32 clock_x = 5 [default = 325];
     if (has_clock_x()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->clock_x());
     }
     
-    // optional uint32 stretchy_y = 6 [default = 200];
+    // optional uint32 stretchy_y = 6 [default = 75];
     if (has_stretchy_y()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->stretchy_y());
     }
     
-    // optional uint32 songdata_x = 7 [default = 600];
+    // optional uint32 songdata_x = 7 [default = 525];
     if (has_songdata_x()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

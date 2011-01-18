@@ -72,10 +72,8 @@ bool file(const File &f, File *t, bool readable) {
 bool file(const File &file, string *s, bool readable) {
   try {
     ptr<FileInputStream> in(file.createInputStream());
-    if (!in) {
-      LOG(WARNING) << "Couldn't read file " << file.getFullPathName();
+    if (!in)
       return false;
-    }
     int64 length = in->getTotalLength();
     s->resize(length);
     int bytesRead = in->read((void*)s->data(), length);
