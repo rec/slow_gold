@@ -46,9 +46,13 @@ class SetterSlider : public Layout,
     return slider_.getValue();
   }
 
+  void setValue(double value) {
+    slider_.setValue(value, false);
+  }
+
   virtual void set(const Value& value) {
     if (value.has_double_f())
-      thread::callAsync(&slider_, &juce::Slider::setValue, value.double_f(), false);
+      thread::callAsync(this, &SetterSlider::setValue, value.double_f());
   }
 
   Slider slider_;
