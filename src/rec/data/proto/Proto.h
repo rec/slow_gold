@@ -15,21 +15,6 @@ arg::Value getValue(const Address& address, const Message& msg);
 bool hasValue(const Address& address, const Message& msg);
 int getSize(const Address& address, const Message& msg);
 
-struct ProtoAddress {
-  Message* proto_;
-  Address address_;
-
-  ProtoAddress() {}
-  ProtoAddress(Message* p, const Address& a) : proto_(p), address_(a) {}
-  ProtoAddress(const Message& p, const Address& a)
-      : proto_(const_cast<Message*>(&p)), address_(a) {
-  }
-
-  arg::Value getValue() const;
-  bool hasValue() const;
-  int getSize() const;
-};
-
 }  // namespace proto
 }  // namespace rec
 

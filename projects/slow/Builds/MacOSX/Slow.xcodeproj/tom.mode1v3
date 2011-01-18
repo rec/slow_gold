@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E2E28B0B12E64FF7004DE2DE</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>Proto.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E2E28B0C12E64FF7004DE2DE</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>Proto.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E2E28B0D12E64FF7004DE2DE</string>
+						<key>history</key>
+						<array>
+							<string>E2E28AFF12E64F7C004DE2DE</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {911, 1062}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>15 70 911 1103 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -337,7 +378,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E2E28AF612E64AD5004DE2DE</string>
+										<string>E2E28B0A12E64FF7004DE2DE</string>
 										<key>history</key>
 										<array>
 											<string>E2E28AE912E6457B004DE2DE</string>
@@ -539,12 +580,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E2E28B0E12E64FF7004DE2DE</string>
 		<string>E2E28AD612E63FBF004DE2DE</string>
 		<string>E2E28AD712E63FBF004DE2DE</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>E290FED3120A432900532309</string>
-		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>E290FED3120A432900532309</string>
+		<string>E2E28B0B12E64FF7004DE2DE</string>
 	</array>
 	<key>WindowString</key>
 	<string>504 120 1133 1054 0 0 1920 1178 </string>
@@ -568,7 +611,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Field.cpp</string>
+								<string>Proto.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -920,7 +963,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

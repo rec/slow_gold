@@ -35,7 +35,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 3211}}";
 			sepNavSelRange = "{6384, 0}";
-			sepNavVisRange = "{1894, 1209}";
+			sepNavVisRange = "{1664, 1087}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -45,6 +45,13 @@
 			sepNavSelRange = "{368, 0}";
 			sepNavVisRange = "{0, 368}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
+		};
+	};
+	769B124FE15AF19EA9AC2F81 /* Proto.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1023}}";
+			sepNavSelRange = "{1168, 0}";
+			sepNavVisRange = "{0, 1216}";
 		};
 	};
 	998399C0F86735CBC8189E96 /* Project object */ = {
@@ -151,6 +158,11 @@
 			E2E28AF412E64AD3004DE2DE /* XCBuildMessageTextBookmark */ = E2E28AF412E64AD3004DE2DE /* XCBuildMessageTextBookmark */;
 			E2E28AF512E64AD3004DE2DE /* PBXTextBookmark */ = E2E28AF512E64AD3004DE2DE /* PBXTextBookmark */;
 			E2E28AF612E64AD5004DE2DE /* PBXTextBookmark */ = E2E28AF612E64AD5004DE2DE /* PBXTextBookmark */;
+			E2E28AF712E64BCD004DE2DE /* PBXTextBookmark */ = E2E28AF712E64BCD004DE2DE /* PBXTextBookmark */;
+			E2E28AF812E64BCF004DE2DE /* PBXTextBookmark */ = E2E28AF812E64BCF004DE2DE /* PBXTextBookmark */;
+			E2E28AFF12E64F7C004DE2DE /* XCBuildMessageTextBookmark */ = E2E28AFF12E64F7C004DE2DE /* XCBuildMessageTextBookmark */;
+			E2E28B0A12E64FF7004DE2DE /* PBXTextBookmark */ = E2E28B0A12E64FF7004DE2DE /* PBXTextBookmark */;
+			E2E28B0D12E64FF7004DE2DE /* PBXTextBookmark */ = E2E28B0D12E64FF7004DE2DE /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -668,6 +680,55 @@
 		rType = 0;
 		vrLen = 1209;
 		vrLoc = 1894;
+	};
+	E2E28AF712E64BCD004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 251";
+		rLen = 0;
+		rLoc = 6384;
+		rType = 0;
+		vrLen = 764;
+		vrLoc = 303;
+	};
+	E2E28AF812E64BCF004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 251";
+		rLen = 0;
+		rLoc = 6384;
+		rType = 0;
+		vrLen = 1087;
+		vrLoc = 1664;
+	};
+	E2E28AFF12E64F7C004DE2DE /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'makeField' was not declared in this scope";
+		fRef = 769B124FE15AF19EA9AC2F81 /* Proto.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 13;
+		rType = 1;
+	};
+	E2E28B0A12E64FF7004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 251";
+		rLen = 0;
+		rLoc = 6384;
+		rType = 0;
+		vrLen = 1087;
+		vrLoc = 1664;
+	};
+	E2E28B0D12E64FF7004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 769B124FE15AF19EA9AC2F81 /* Proto.cpp */;
+		name = "Proto.cpp: 53";
+		rLen = 0;
+		rLoc = 1168;
+		rType = 0;
+		vrLen = 1216;
+		vrLoc = 0;
 	};
 	FBE89CB20CB80EA5845D84ED /* Setter.h */ = {
 		uiCtxt = {
