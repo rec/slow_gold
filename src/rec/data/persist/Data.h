@@ -17,7 +17,7 @@ class Data : public UntypedData, public Broadcaster<const Proto&> {
  public:
   // Get a consistent snapshot of the current value.
   Proto get() const {
-    ScopedLock l(lock_);
+    ScopedLock l(UntypedData::lock_);
     return proto_;
   }
 
