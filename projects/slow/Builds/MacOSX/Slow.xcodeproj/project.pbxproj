@@ -150,6 +150,7 @@
 		DE3BF2396021B081CBFB616C /* Album.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 93199C319E27661E45A5AA17 /* Album.pb.cc */; };
 		DEAEFE04F74B928AD873ECDB /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD3D0F303A37C8661D7DA7 /* hfft.c */; };
 		DED2531C6E62596A11087193 /* MainPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */; };
+		DF9E7E4FE3D7B5EDB74379BB /* RandomSelfInverseFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8936CB260298B1F71B24B8C4 /* RandomSelfInverseFunction.cpp */; };
 		E02A77248DDC1EB6D9CEBBCC /* Album.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE1EF6A8A90E6BC80D12C1C3 /* Album.cpp */; };
 		E0AED36426123AC665734EBF /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C31B634103849F680A6D6D4 /* QuickTime.framework */; };
 		E5406149587043DD0F6E509B /* RecentFiles.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = ECCD3A82FAB4856ED329FCC2 /* RecentFiles.pb.cc */; };
@@ -290,6 +291,7 @@
 		42FCEF841E8DB927D88027DF /* Copier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Copier.h; path = ../../../../src/rec/audio/format/mpg123/Copier.h; sourceTree = SOURCE_ROOT; };
 		43553262AA264130AEB57E8F /* Stretchy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretchy.cpp; path = ../../../../src/rec/audio/source/Stretchy.cpp; sourceTree = SOURCE_ROOT; };
 		43818744A9AA0BE6E19C4BC2 /* MediaPlaybackStop.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaPlaybackStop.svg.cpp; path = ../../../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp; sourceTree = SOURCE_ROOT; };
+		44DAEC78E7E4236E7DD8AABC /* RandomSelfInverseFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RandomSelfInverseFunction.h; path = ../../../../src/rec/util/RandomSelfInverseFunction.h; sourceTree = SOURCE_ROOT; };
 		4501D48705DD8F94EAEFD2BA /* Stretchy.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretchy.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Stretchy.pb.cc; sourceTree = SOURCE_ROOT; };
 		4521E22B443FC51293329736 /* parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = parser.cpp; path = ../../../../src/rec/data/yaml/src/parser.cpp; sourceTree = SOURCE_ROOT; };
 		45FB2B839FCCC1B6BEB1169F /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Util.h; path = ../../../../src/rec/util/file/Util.h; sourceTree = SOURCE_ROOT; };
@@ -390,6 +392,7 @@
 		88C80D4AC91778AF36BD5055 /* stream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stream.cpp; path = ../../../../src/rec/data/yaml/src/stream.cpp; sourceTree = SOURCE_ROOT; };
 		88CF7BFEBA41A31A25D4C87F /* RecWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RecWindow.cpp; path = ../../../../src/rec/slow/RecWindow.cpp; sourceTree = SOURCE_ROOT; };
 		88FDDC0F38B4605B01BD752F /* DedupeCDDB.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DedupeCDDB.cpp; path = ../../../../src/rec/util/cd/DedupeCDDB.cpp; sourceTree = SOURCE_ROOT; };
+		8936CB260298B1F71B24B8C4 /* RandomSelfInverseFunction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RandomSelfInverseFunction.cpp; path = ../../../../src/rec/util/RandomSelfInverseFunction.cpp; sourceTree = SOURCE_ROOT; };
 		8AA5219530F4CC135C2C6829 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppConfig.h; path = ../../JuceLibraryCode/AppConfig.h; sourceTree = SOURCE_ROOT; };
 		8ACA76921FB9D6F80A87B902 /* Listener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../../src/rec/util/listener/Listener.h; sourceTree = SOURCE_ROOT; };
 		8ADA592894E8A90001FFD8DC /* Filler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Filler.h; path = ../../../../src/rec/util/block/Filler.h; sourceTree = SOURCE_ROOT; };
@@ -708,6 +711,20 @@
 				58C262946D0DA527CEB3E37C /* Trash.h */,
 			);
 			name = thread;
+			sourceTree = "<group>";
+		};
+		1CA2DE1833536C26E1A6F40C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		23BA494E83EED5906543C5B0 /* file */ = {
@@ -1086,6 +1103,8 @@
 				94646382FAB21A45C282242D /* Math.h */,
 				FCA5A278B2A59C0DAF27922C /* partition */,
 				0D679A62D1AD15621CFE411C /* PointerList.h */,
+				8936CB260298B1F71B24B8C4 /* RandomSelfInverseFunction.cpp */,
+				44DAEC78E7E4236E7DD8AABC /* RandomSelfInverseFunction.h */,
 				FD227E4F5EFA6DD53CE22B76 /* Range.h */,
 				965C2291AC33F649689083F2 /* Reference.h */,
 				9DFF16DE142A0F84FB09EC1C /* ShouldExit.h */,
@@ -1401,20 +1420,6 @@
 			name = slow;
 			sourceTree = "<group>";
 		};
-		F2CB6B03852C1141DAEDED99 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		F5495BB1B8B716831989C22D /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1501,7 +1506,7 @@
 				French,
 				German,
 			);
-			mainGroup = F2CB6B03852C1141DAEDED99 /* Source */;
+			mainGroup = 1CA2DE1833536C26E1A6F40C /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1639,6 +1644,7 @@
 				7FE0BC330B130293FA5FCD14 /* VirtualFile.cpp in Sources */,
 				7001EB3EA2FBA0EB3B4928F7 /* Convertors.cpp in Sources */,
 				830D13AF3D404CBF2A9E05E3 /* Partition.cpp in Sources */,
+				DF9E7E4FE3D7B5EDB74379BB /* RandomSelfInverseFunction.cpp in Sources */,
 				B380D51FD7324CCF50D21514 /* Trash.cpp in Sources */,
 				1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */,
 				39DFE93A7597923AEFEF928B /* Time.cpp in Sources */,

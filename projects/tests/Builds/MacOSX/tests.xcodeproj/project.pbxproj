@@ -71,6 +71,7 @@
 		482983984F2DC58576AAA0A4 /* SetterResizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 532A5FEE805C5C546E12C642 /* SetterResizer.cpp */; };
 		48E138283FC265B58D252AAC /* GetProtoName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2975072819FE84412C5F7FF /* GetProtoName.cpp */; };
 		4C34ABACFEF7C71697E313C5 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601A0CEA135280AABEB1EE98 /* CoreMIDI.framework */; };
+		4C6B70DFDC08D472EBEE6A02 /* RandomSelfInverseFunction_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48DE7ABD54D82DA24B5C21C /* RandomSelfInverseFunction_test.cpp */; };
 		4CFBB2F879C828F9DF6333C5 /* AudioCard.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0C360A97FE89962AC7C13E8 /* AudioCard.svg.cpp */; };
 		509FB6478374D4D98DC79523 /* Time.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 939418AECEA2AAD9ED6D5FDC /* Time.pb.cc */; };
 		50C6578E11ADA25CB7A6EC9E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A2F3AE5531E742F044302B /* QuartzCore.framework */; };
@@ -126,6 +127,7 @@
 		8D55F9878B88F10AAA78D81E /* iterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 532942B4C18E8AF4975EE884 /* iterator.cpp */; };
 		914CFB0DDB0D4A64AB01E05F /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = C14B2A1825EBEFA249AC712B /* hfft.c */; };
 		9170501552140154E4968517 /* MainPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E745048C0393295B0D8953 /* MainPage.cpp */; };
+		923C6B47D7886DD79AD28D3F /* RandomSelfInverseFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4C82FF75969E1EEB2BC48 /* RandomSelfInverseFunction.cpp */; };
 		93C377541305CF4335207B5B /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4553676E2F9B94A59AD572 /* CreateReader_test.cpp */; };
 		9493D6E82AC776F57553EA07 /* aliascontent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C707322122227D60F477C385 /* aliascontent.cpp */; };
 		94DAC10DBE4839B98AF59C6A /* DriveOptical.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9548AA03601A3FD6634ACF73 /* DriveOptical.svg.cpp */; };
@@ -289,6 +291,7 @@
 		3B195625E3168FAC063ED4AD /* hfft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hfft.h; path = ../../../../src/rec/audio/ammf_scaler/hfft.h; sourceTree = SOURCE_ROOT; };
 		3B66FA43BEC82099194C54D8 /* stream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stream.cpp; path = ../../../../src/rec/data/yaml/src/stream.cpp; sourceTree = SOURCE_ROOT; };
 		3C8D909180859CEF7210E311 /* Copier_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copier_test.cpp; path = ../../../../src/rec/audio/format/mpg123/Copier_test.cpp; sourceTree = SOURCE_ROOT; };
+		3CD4C82FF75969E1EEB2BC48 /* RandomSelfInverseFunction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RandomSelfInverseFunction.cpp; path = ../../../../src/rec/util/RandomSelfInverseFunction.cpp; sourceTree = SOURCE_ROOT; };
 		3D0AA2045674E3C883161687 /* Font.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Font.pb.h; path = ../../../../genfiles/proto/rec/gui/Font.pb.h; sourceTree = SOURCE_ROOT; };
 		3E391C6E723404920108C65B /* Circular.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Circular.h; path = ../../../../src/rec/util/Circular.h; sourceTree = SOURCE_ROOT; };
 		3E773A45756BB6F0D342D4DB /* Geometry.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.pb.h; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.h; sourceTree = SOURCE_ROOT; };
@@ -622,12 +625,14 @@
 		F3264519DC9FD455788DFA1E /* yaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = yaml.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/yaml.h"; sourceTree = SOURCE_ROOT; };
 		F365619867C61F2678E07A2A /* aliasmanager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aliasmanager.cpp; path = ../../../../src/rec/data/yaml/src/aliasmanager.cpp; sourceTree = SOURCE_ROOT; };
 		F3C957A2F364B760F6959DE9 /* Partition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Partition.cpp; path = ../../../../src/rec/util/partition/Partition.cpp; sourceTree = SOURCE_ROOT; };
+		F48DE7ABD54D82DA24B5C21C /* RandomSelfInverseFunction_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RandomSelfInverseFunction_test.cpp; path = ../../../../src/rec/util/RandomSelfInverseFunction_test.cpp; sourceTree = SOURCE_ROOT; };
 		F50482DC7139FCB40EB1C11D /* TestData.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestData.pb.h; path = ../../../../genfiles/proto/rec/data/proto/TestData.pb.h; sourceTree = SOURCE_ROOT; };
 		F5661646C08B6873D08BF8FD /* Difference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Difference.h; path = ../../../../src/rec/util/block/Difference.h; sourceTree = SOURCE_ROOT; };
 		F5BC46E2E16A39D622AD6447 /* Event.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Event.pb.h; path = ../../../../genfiles/proto/rec/data/commands/Event.pb.h; sourceTree = SOURCE_ROOT; };
 		F61F744D8D6BC3D0B42B4F46 /* MediaPlaybackStop.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaPlaybackStop.svg.cpp; path = ../../../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp; sourceTree = SOURCE_ROOT; };
 		F6D649D9BDE044C40867B790 /* Filler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Filler.cpp; path = ../../../../src/rec/util/block/Filler.cpp; sourceTree = SOURCE_ROOT; };
 		F774C2D5C72BC1CCD2E84499 /* parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = parser.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/parser.h"; sourceTree = SOURCE_ROOT; };
+		F779D971DC96EB484066BF30 /* RandomSelfInverseFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RandomSelfInverseFunction.h; path = ../../../../src/rec/util/RandomSelfInverseFunction.h; sourceTree = SOURCE_ROOT; };
 		F86B29C8283B90AE70A5A9B0 /* TestData.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TestData.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/TestData.pb.cc; sourceTree = SOURCE_ROOT; };
 		F8AFC080FA9E378EBD7EE63E /* Stretchy.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretchy.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Stretchy.pb.cc; sourceTree = SOURCE_ROOT; };
 		F92807969A8C112E821E8CC3 /* Clear.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Clear.h; path = ../../../../src/rec/audio/source/Clear.h; sourceTree = SOURCE_ROOT; };
@@ -674,20 +679,6 @@
 				9D13522C94A0F37D4ABBF46C /* yaml */,
 			);
 			name = data;
-			sourceTree = "<group>";
-		};
-		04A8E8E048C0228004A66B1C /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		08079E40C46FEC958CB6B928 /* file */ = {
@@ -1047,6 +1038,20 @@
 			name = tree;
 			sourceTree = "<group>";
 		};
+		841E9AE3E5B65287A6BD9E7B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		8544BE6615D289B0A6A6EA8E /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1288,6 +1293,9 @@
 				F11AE31B693093253A9C071D /* Mathy_test.cpp */,
 				6C23D6DD357F18A070A70B50 /* partition */,
 				C105876BC65FDD4CEF8D569F /* PointerList.h */,
+				3CD4C82FF75969E1EEB2BC48 /* RandomSelfInverseFunction.cpp */,
+				F779D971DC96EB484066BF30 /* RandomSelfInverseFunction.h */,
+				F48DE7ABD54D82DA24B5C21C /* RandomSelfInverseFunction_test.cpp */,
 				B0C07B4843AB25CF0F713F0A /* Range.h */,
 				59FA2F9A81F4BE234B2E8785 /* Reference.h */,
 				409D02E6F9ECB77EDE98F090 /* ShouldExit.h */,
@@ -1562,7 +1570,7 @@
 				French,
 				German,
 			);
-			mainGroup = 04A8E8E048C0228004A66B1C /* Source */;
+			mainGroup = 841E9AE3E5B65287A6BD9E7B /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1720,6 +1728,8 @@
 				33AFE73797AC68C50ED73D7B /* Convertors.cpp in Sources */,
 				46AB1FB812010499FD3C0967 /* Partition.cpp in Sources */,
 				F9EABFA1EE32FC5AFDF9E891 /* Partition_test.cpp in Sources */,
+				923C6B47D7886DD79AD28D3F /* RandomSelfInverseFunction.cpp in Sources */,
+				4C6B70DFDC08D472EBEE6A02 /* RandomSelfInverseFunction_test.cpp in Sources */,
 				772EC118BCF3F4BA24602997 /* Trash.cpp in Sources */,
 				D18EE8FE91699AD36D0451DB /* Status.cpp in Sources */,
 				FC7DD6326A584A14B37DA60F /* Time.cpp in Sources */,
@@ -1841,7 +1851,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;

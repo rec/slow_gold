@@ -147,13 +147,13 @@ AudioFormatReader* createReader(const VirtualFile& file) {
     }
 
     int track = String(file.path(0).c_str()).getIntValue();
-    reader.reset(util::cd::createCDTrackReader(file.name().c_str(), track));
+    String filename = file.name().c_str();
+    reader.reset(cd::createCDTrackReader(filename, track));
 
     if (needsRead) {
-      const cd::TrackOffsets& off = dynamic_cast<AudioCDReader*>(
-          reader.get())->getTrackOffsets();
-      metadata = getTrack(cd::getAlbum(file, off), track);
-          }
+      ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
+      metadata = getTrack(cd::getAlbum(file, cdr->getTrackOffsets()), track);
+    }
   } else {
     reader.reset(audio::getAudioFormatManager()->createReaderFor(getFile(file)));
     if (!reader) {

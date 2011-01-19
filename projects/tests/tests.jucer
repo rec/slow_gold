@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="3jvGjOxl6" name="tests">
+  <MAINGROUP id="W9aTSUmeT" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -743,6 +743,12 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="mAw0zFgKm"
               name="PointerList.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction.cpp"
+              id="Yp4dJp6J8" name="RandomSelfInverseFunction.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/RandomSelfInverseFunction.h"
+              id="Ioq7Pxbpg" name="RandomSelfInverseFunction.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction_test.cpp"
+              id="s9u2Oy5KL" name="RandomSelfInverseFunction_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="AvppXo9nU"
               name="Range.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Reference.h" id="vZZYQTicG"
@@ -983,7 +989,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="G3P9DkhW6" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="o126BhKar" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

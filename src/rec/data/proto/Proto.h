@@ -11,8 +11,11 @@ namespace proto {
 class Operation;
 
 OperationList* applyOperations(const OperationList& operations, Message* msg);
+
 arg::Value getValue(const Address& address, const Message& msg);
+
 bool hasValue(const Address& address, const Message& msg);
+
 int getSize(const Address& address, const Message& msg);
 
 }  // namespace proto

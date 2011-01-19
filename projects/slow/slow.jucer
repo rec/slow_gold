@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Rrx33KYgM" name="Slow">
+  <MAINGROUP id="Q8nwo927l" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -702,6 +702,10 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="qSpbRp5vh"
               name="PointerList.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction.cpp"
+              id="CF7SnDCv9" name="RandomSelfInverseFunction.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/RandomSelfInverseFunction.h"
+              id="CvzURvOBy" name="RandomSelfInverseFunction.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="Z58jWDkgr"
               name="Range.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Reference.h" id="33KkZbQsu"
@@ -940,7 +944,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="LpNeNZdNh" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="t2F5eroCF" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

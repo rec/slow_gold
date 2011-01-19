@@ -25,8 +25,6 @@ void splitTitle(Metadata *album) {
   }
 }
 
-}
-
 void splitTitle(Album *album) { splitTitle(album->mutable_album()); }
 
 void splitTracks(Album* album) {
@@ -43,25 +41,6 @@ void splitTracks(Album* album) {
       StringPair p = splitLine(album->track(j).track_title(), ch);
       album->mutable_track(j)->set_artist(p.first);
       album->mutable_track(j)->set_track_title(p.second);
-    }
-  }
-}
-
-void fillAlbum(const StringArray& cds, int tracks, Album* album) {
-  while (album->track_size() < tracks)
-    album->add_track();
-
-  for (int i = 1; i < cds.size() - 1; ++i) {
-    const String& line = cds[i];
-    if (line.length() && line[0] != '#') {
-      int loc = line.indexOfChar('=');
-      if (loc == -1) {
-        LOG(ERROR) << "Couldn't find = in line " << line.toCString();
-      } else {
-        String value = line.substring(loc + 1);
-        if (value.length() || !value.startsWith("EXT"))
-          addAlbumValue(line.substring(0, loc), value.toCString(), album);
-      }
     }
   }
 }
@@ -87,6 +66,25 @@ void addAlbumValue(const String& key, const string& v, Album* album) {
     LOG(ERROR) << "Unknown key " << key.toCString() << " '" << v << "'";
 }
 
+void fillAlbum(const StringArray& cds, int tracks, Album* album) {
+  while (album->track_size() < tracks)
+    album->add_track();
+
+  for (int i = 1; i < cds.size() - 1; ++i) {
+    const String& line = cds[i];
+    if (line.length() && line[0] != '#') {
+      int loc = line.indexOfChar('=');
+      if (loc == -1) {
+        LOG(ERROR) << "Couldn't find = in line " << line.toCString();
+      } else {
+        String value = line.substring(loc + 1);
+        if (value.length() || !value.startsWith("EXT"))
+          addAlbumValue(line.substring(0, loc), value.toCString(), album);
+      }
+    }
+  }
+}
+
 void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   const String offsets = trackOffsetString(off);
   StringArray cds = getPossibleCDs(sock, offsets);
@@ -98,6 +96,8 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
     addIfNotSimilar(albums, album);
   }
 }
+
+}  // namespace
 
 #define DEFAULT_USER        "anonymous"
 #define DEFAULT_HOST        "localhost"
