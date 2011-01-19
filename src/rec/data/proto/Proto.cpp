@@ -49,8 +49,17 @@ int getSize(const Address& a, const Message& m) {
   return ProtoAddress(m, a).getSize();
 }
 
-Operation* applyOperation(const Operation& op, Message* m) {
-  return ProtoAddress(m, op.address()).applyOperation(op);
+OperationList* applyOperations(const OperationList& list, Message* m) {
+  ptr<OperationList> result (new OperationList());
+  for (int i = 0; i < list.operation_size(); ++i) {
+    const Operation& op = list.operation(i);
+    ptr<Operation> undo(ProtoAddress(m, op.address()).applyOperation(op));
+    if (undo)
+      result->add_operation()->CopyFrom(*undo);
+    else
+      LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
+  }
+  return result.transfer();
 }
 
 }  // namespace proto

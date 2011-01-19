@@ -10,7 +10,7 @@ namespace proto {
 
 class Operation;
 
-Operation* applyOperation(const Operation& operation, Message* msg);
+OperationList* applyOperations(const OperationList& operations, Message* msg);
 arg::Value getValue(const Address& address, const Message& msg);
 bool hasValue(const Address& address, const Message& msg);
 int getSize(const Address& address, const Message& msg);

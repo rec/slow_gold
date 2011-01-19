@@ -39,6 +39,13 @@
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
+	54C560475F61F8C6B3786C82 /* UntypedData.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1404}}";
+			sepNavSelRange = "{2002, 0}";
+			sepNavVisRange = "{528, 1732}";
+		};
+	};
 	71BF190106219F20E4492E93 /* MessageField.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 632}}";
@@ -111,8 +118,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 317086177;
-			PBXWorkspaceStateSaveDate = 317086177;
+			PBXPerProjectTemplateStateSaveDate = 317088390;
+			PBXWorkspaceStateSaveDate = 317088390;
 		};
 		perUserProjectItems = {
 			E2758BDD12E3697C00E37D3F = E2758BDD12E3697C00E37D3F /* PBXTextBookmark */;
@@ -163,6 +170,10 @@
 			E2E28AFF12E64F7C004DE2DE = E2E28AFF12E64F7C004DE2DE /* PBXTextBookmark */;
 			E2E28B0A12E64FF7004DE2DE = E2E28B0A12E64FF7004DE2DE /* PBXTextBookmark */;
 			E2E28B0D12E64FF7004DE2DE = E2E28B0D12E64FF7004DE2DE /* PBXTextBookmark */;
+			E2E28B3112E6629B004DE2DE /* XCBuildMessageTextBookmark */ = E2E28B3112E6629B004DE2DE /* XCBuildMessageTextBookmark */;
+			E2E28B3412E662B6004DE2DE /* XCBuildMessageTextBookmark */ = E2E28B3412E662B6004DE2DE /* XCBuildMessageTextBookmark */;
+			E2E28B3512E662B6004DE2DE /* PBXTextBookmark */ = E2E28B3512E662B6004DE2DE /* PBXTextBookmark */;
+			E2E28B3812E662B6004DE2DE /* PBXTextBookmark */ = E2E28B3812E662B6004DE2DE /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -722,10 +733,48 @@
 		fRef = 769B124FE15AF19EA9AC2F81 /* Proto.cpp */;
 		name = "Proto.cpp: 53";
 		rLen = 0;
-		rLoc = 1168;
+		rLoc = 1167;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 0;
+	};
+	E2E28B3112E6629B004DE2DE /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'_message' was not declared in this scope";
+		fRef = 54C560475F61F8C6B3786C82 /* UntypedData.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 85;
+		rType = 1;
+	};
+	E2E28B3412E662B6004DE2DE /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'_message' was not declared in this scope";
+		fRef = 54C560475F61F8C6B3786C82 /* UntypedData.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 85;
+		rType = 1;
+	};
+	E2E28B3512E662B6004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 54C560475F61F8C6B3786C82 /* UntypedData.cpp */;
+		name = "UntypedData.cpp: 86";
+		rLen = 0;
+		rLoc = 1994;
+		rType = 0;
+		vrLen = 959;
+		vrLoc = 1168;
+	};
+	E2E28B3812E662B6004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 54C560475F61F8C6B3786C82 /* UntypedData.cpp */;
+		name = "UntypedData.cpp: 86";
+		rLen = 0;
+		rLoc = 2002;
+		rType = 0;
+		vrLen = 1732;
+		vrLoc = 528;
 	};
 	FBE89CB20CB80EA5845D84ED /* Setter.h */ = {
 		uiCtxt = {

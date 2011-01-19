@@ -128,7 +128,7 @@ void TableModelBase::setSelected(int index, bool sel) {
       op.set_command(Operation::SET);
       op.mutable_address()->CopyFrom(addr);
 
-      ptr<Operation> undo(proto::applyOperation(op, mutable_message()));
+      ptr<OperationList> undo(proto::applyOperations(op, mutable_message()));
     }
   }
 }

@@ -83,12 +83,7 @@ void UntypedData::update() {
 
   for (OperationQueue::iterator i = old.begin(); i != old.end(); ++i) {
     ScopedLock l(lock_);
-    undo_.push_back(new OperationList);
-    const OperationList& list = **i;
-    for (int j = 0; j < list.operation_size(); ++j) {
-      ptr<Operation> op(applyOperation(list.operation(j), message_));
-      undo_.back()->add_operation()->CopyFrom(*op);
-    }
+    undo_.push_back(applyOperations(**i, message_));
   }
 
   stl::deletePointers(&old);
