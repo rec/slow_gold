@@ -6,7 +6,7 @@
 namespace rec {
 namespace util {
 
-bool fillFromDefault(const string& dflt, Message* creator);
+bool fillFromDefault(const string&, Message*);
 
 template <typename Proto>
 class Defaulter {

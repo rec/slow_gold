@@ -2,49 +2,26 @@
 
 #include "rec/data/proto/TestData.pb.h"
 #include "rec/data/proto/Field.h"
+#include "rec/data/proto/Proto.h"
+#include "rec/util/Defaulter.h"
+#include "rec/gui/LoopPoint.pb.h"
+#include "rec/data/proto/Operation.pb.h"
 
 namespace rec {
 namespace proto {
 
-TEST(Proto, CreateOperation) {
+TEST(Proto, Apply) {
+  gui::LoopPointList loop_point;
+  loop_point.add_loop_point()->set_time(23.5);
 
-#ifdef PROTO_SET
-  test::TestData3 test;
-  ptr<Operation> operation(createOperation(Operation::SET, NULL));
-
-  EXPECT_EQ(operation->command(), Operation::SET);
-  EXPECT_EQ(operation->address_size(), 0);
-  EXPECT_FALSE(applyOperation(*operation, &test));
-
-  operation.reset(createOperation(Operation::SET,
-                                  test::TestData3::kTestDoubleFieldNumber,
-                                  NULL));
-
-  operation->add_value()->set_double_f(2.0);
-  EXPECT_TRUE(applyOperation(*operation, &test));
-  EXPECT_EQ(test.test_double(), 2.0);
-
-#if false
-  EXPECT_FALSE(test.has_test2());
-  operation.reset(createOperation(Operation::CREATE,
-                                  test::TestData3::kTest2FieldNumber,
-                                  NULL));
-  EXPECT_TRUE(applyOperation(*operation, &test));
-  EXPECT_TRUE(test.has_test2());
-  EXPECT_FALSE(applyOperation(*operation, &test));
-#endif
-
-  operation.reset(createOperation(Operation::SET,
-                                  test::TestData3::kTest2FieldNumber,
-                                  test::TestData2::kTestUintFieldNumber,
-                                  NULL));
-  operation->add_value()->set_uint32_f(23);
-
-  EXPECT_TRUE(applyOperation(*operation, &test));
-  EXPECT_EQ(test.test2().test_uint(), 23);
-#endif
+  Address address;
+  ASSERT_TRUE(fillFromDefault("field { name: \"loop_point\" } "
+                              "field { index: 0 } "
+                              "field { name: \"time\"}", &address));
+  Value v = getValue(address, loop_point);
+  EXPECT_TRUE(v.has_double_f());
+  EXPECT_EQ(v.double_f(), 23.5);
 }
-
 
 }  // namespace proto
 }  // namespace rec

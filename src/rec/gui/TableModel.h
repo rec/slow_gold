@@ -15,7 +15,7 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
  public:
   typedef persist::Data<Proto> Data;
   TableModel(const TableColumnList& c, const Address& address)
-      : TableModelBase(c, address), AddressListener<Proto>(address) {
+      : TableModelBase(c, address), AddressListener<Proto>(Address()) {
   }
 
   virtual void setData(Data* data) {
