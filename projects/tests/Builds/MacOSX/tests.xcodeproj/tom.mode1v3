@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -299,7 +301,7 @@
 							<real>336</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>719 162 1127 974 0 0 1920 1178 </string>
+						<string>182 204 1127 974 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -310,8 +312,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E2E28CB012E7C72F004DE2DE</string>
+										<string>E2E28CB812E7CE2E004DE2DE</string>
 										<key>history</key>
 										<array>
 											<string>E2714F39120B1A5A0045B28D</string>
@@ -412,7 +412,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {769, 506}}</string>
 								<key>RubberWindowFrame</key>
-								<string>719 162 1127 974 0 0 1920 1178 </string>
+								<string>182 204 1127 974 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -432,7 +432,7 @@
 								<key>Frame</key>
 								<string>{{0, 511}, {769, 422}}</string>
 								<key>RubberWindowFrame</key>
-								<string>719 162 1127 974 0 0 1920 1178 </string>
+								<string>182 204 1127 974 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -596,11 +596,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E2E28CC012E7CE2E004DE2DE</string>
+		<string>E2E28CC112E7CE2E004DE2DE</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E2714F3E120B1A5A0045B28D</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/tom/Documents/development/rec/projects/tests/Builds/MacOSX/tests.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>719 162 1127 974 0 0 1920 1178 </string>
+	<string>182 204 1127 974 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -799,13 +803,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E2E28C5112E786AB004DE2DE</string>
+				<string>E2E28CB912E7CE2E004DE2DE</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E2E28C5212E786AB004DE2DE</string>
-				<string>E2E28C5312E786AB004DE2DE</string>
-				<string>E2E28C5412E786AB004DE2DE</string>
-				<string>E2E28C5512E786AB004DE2DE</string>
-				<string>E2E28C5612E786AB004DE2DE</string>
+				<string>E2E28CBA12E7CE2E004DE2DE</string>
+				<string>E2E28CBB12E7CE2E004DE2DE</string>
+				<string>E2E28CBC12E7CE2E004DE2DE</string>
+				<string>E2E28CBD12E7CE2E004DE2DE</string>
+				<string>E2E28CBE12E7CE2E004DE2DE</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -961,7 +965,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E2E28C5712E786AB004DE2DE</string>
+				<string>E2E28CBF12E7CE2E004DE2DE</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -971,7 +975,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

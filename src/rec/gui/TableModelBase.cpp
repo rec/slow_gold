@@ -109,39 +109,5 @@ void TableModelBase::selectedRowsChanged(int lastRowSelected) {
   broadcast(s);
 }
 
-#if 0
-
-  ScopedLock l(lock_);
-  const juce::SparseSet<int>& selected = getSelectedRows();
-  for (int i = 0, done = 0; i < selected.getNumRanges(); ++i) {
-    juce::Range<int> range = selected.getRange(i);
-    for (; done < range.getStart(); ++done)
-      setSelected(done, false);
-
-    for (; done != range.getEnd(); ++done)
-      setSelected(done, true);
-  }
-}
-
-void TableModelBase::setSelected(int index, bool sel) {
-  ScopedLock l(lock_);
-  if (setter_) {
-    Address addr = selected_ + index;
-    if (setter_->getValue(addr).bool_f() != sel) {
-      using proto::Operation;
-
-      setter_->set(addr, sel);
-
-      Operation op;
-      op.set_command(Operation::SET);
-      op.mutable_address()->CopyFrom(addr);
-
-      ptr<OperationList> undo(proto::applyOperations(op, mutable_message()));
-    }
-  }
-}
-
-#endif
-
 }  // namespace gui
 }  // namespace rec

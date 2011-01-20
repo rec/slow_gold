@@ -2,6 +2,7 @@
 
 #include "rec/gui/Loops.h"
 #include "rec/util/Defaulter.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
@@ -17,11 +18,60 @@ const double Loops::CLOSE = 0.5;
 Loops::Loops(const TableColumnList* desc)
     : LoopsBase(dflt.get(desc), Address("loop_point")), length_(0) {
   fillHeader(&getHeader());
+  setMultipleSelectionEnabled(true);
 }
 
 void Loops::setLength(int len) {
   ScopedLock l(lock_);
   length_ = len;
+}
+
+void Loops::selectedRowsChanged(int lastRowSelected) {
+  ScopedLock l(lock_);
+  const juce::SparseSet<int> selected = getSelectedRows();
+  const juce::Range<int> range = selected.getTotalRange();
+
+  int numRanges = selected.getNumRanges();
+  if (numRanges > 1) {
+    selectRangeOfRows(range.getStart(), range.getEnd());
+  } else {
+    for (int i = 0; i < proto_.loop_point_size(); ++i) {
+      if (i < proto_.selected_size())
+        proto_.set_selected(i, false);
+      else
+        proto_.add_selected(false);
+    }
+    for (int i = 0; i < numRanges; ++i) {
+      juce::Range<int> r = selected.getRange(i);
+      for (int j = r.getStart(); j < r.getEnd(); ++j)
+        proto_.set_selected(j, true);
+    }
+  }
+  // onChange();
+}
+
+#if 0
+void Loops::setData(Data* d) {
+  LoopsBase::setData(d);
+  onChange();
+}
+#endif
+
+void Loops::doSelect() {
+  return;
+  juce::SparseSet<int> sel;
+  for (int i = 0; i < proto_.selected_size(); ++i) {
+    if (proto_.selected(i))
+      sel.addRange(juce::Range<int>(i, i + 1));
+  }
+  setSelectedRows(sel, false);
+}
+
+void Loops::onChange() {
+  LOG(ERROR) << "!!!";
+  TableModelBase::onChange();
+  AddressListener<LoopPointList>::onChange();
+  // thread::callAsync(this, &Loops::doSelect);
 }
 
 bool Loops::isNewLoopPoint(double t) const {

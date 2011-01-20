@@ -217,17 +217,30 @@ class LoopPointList : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::gui::LoopPoint >*
       mutable_loop_point();
   
+  // repeated bool selected = 2;
+  inline int selected_size() const;
+  inline void clear_selected();
+  static const int kSelectedFieldNumber = 2;
+  inline bool selected(int index) const;
+  inline void set_selected(int index, bool value);
+  inline void add_selected(bool value);
+  inline const ::google::protobuf::RepeatedField< bool >&
+      selected() const;
+  inline ::google::protobuf::RepeatedField< bool >*
+      mutable_selected();
+  
   // @@protoc_insertion_point(class_scope:rec.gui.LoopPointList)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::gui::LoopPoint > loop_point_;
+  ::google::protobuf::RepeatedField< bool > selected_;
   friend void  protobuf_AddDesc_rec_2fgui_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fLoopPoint_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fLoopPoint_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -377,6 +390,31 @@ LoopPointList::loop_point() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::gui::LoopPoint >*
 LoopPointList::mutable_loop_point() {
   return &loop_point_;
+}
+
+// repeated bool selected = 2;
+inline int LoopPointList::selected_size() const {
+  return selected_.size();
+}
+inline void LoopPointList::clear_selected() {
+  selected_.Clear();
+}
+inline bool LoopPointList::selected(int index) const {
+  return selected_.Get(index);
+}
+inline void LoopPointList::set_selected(int index, bool value) {
+  selected_.Set(index, value);
+}
+inline void LoopPointList::add_selected(bool value) {
+  selected_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< bool >&
+LoopPointList::selected() const {
+  return selected_;
+}
+inline ::google::protobuf::RepeatedField< bool >*
+LoopPointList::mutable_selected() {
+  return &selected_;
 }
 
 

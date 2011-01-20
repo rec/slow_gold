@@ -19,9 +19,14 @@ class Loops : public LoopsBase {
 
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
 
+  virtual void onChange();
+  void doSelect();
+
   void setLength(int len);
   bool isNewLoopPoint(double t) const;
   void addLoopPoint(double time);
+  virtual void selectedRowsChanged(int lastRowSelected);
+  // virtual void setData(Data* d);
 
  private:
   double length_;

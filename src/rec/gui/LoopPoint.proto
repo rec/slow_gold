@@ -8,4 +8,5 @@ message LoopPoint {
 
 message LoopPointList {
   repeated LoopPoint loop_point = 1;
+  repeated bool selected = 2;
 };
