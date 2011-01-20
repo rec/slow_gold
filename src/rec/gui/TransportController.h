@@ -18,13 +18,16 @@ class TransportController : public Layout,
                             public juce::ButtonListener,
                             public Listener<const slow::AudioTransportSourcePlayer&> {
  public:
-  TransportController(slow::AudioTransportSourcePlayer* transport, 
+  TransportController(slow::AudioTransportSourcePlayer* transport,
                       slow::MainPage* mp);
   virtual void buttonClicked(juce::Button *button);
   void setButtonState();
   void operator()(const slow::AudioTransportSourcePlayer& player);
 
   virtual void layout() { Layout::layout(); }
+
+  bool getLoopPointButtonEnabled() const { return addLoopPointButton_.isEnabled(); }
+  void enableLoopPointButton(bool e) { addLoopPointButton_.setEnabled(e); }
 
  private:
   slow::AudioTransportSourcePlayer* transport_;

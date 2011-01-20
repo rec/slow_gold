@@ -22,6 +22,7 @@ namespace slow {
 
 
 class MainPage : public gui::Layout,
+                 public Listener<float>,
                  public Listener<const TimeAndMouseEvent&>,
                  public Listener<const VirtualFile&> {
  public:
@@ -35,6 +36,8 @@ class MainPage : public gui::Layout,
 
   // Callback when a new file has been installed.
   virtual void operator()(const VirtualFile& file);
+
+  virtual void operator()(float time);
 
   void doOpen();
   void doClose();

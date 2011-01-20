@@ -39,6 +39,7 @@ class PlaybackController : public gui::Layout,
 
   virtual void setData(Data* data);
 
+  void enableLoopPointButton(bool e);
   TimeController* timeController() { return &timeController_; }
 
  private:

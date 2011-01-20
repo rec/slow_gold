@@ -62,5 +62,13 @@ void PlaybackController::setData(Data* data) {
   stretchyController_.setData(data);
 }
 
+void PlaybackController::enableLoopPointButton(bool e) {
+  if (e != transportController_.getLoopPointButtonEnabled()) {
+    thread::callAsync(&transportController_,
+                      &gui::TransportController::enableLoopPointButton,
+                      e);
+  }
+}
+
 }  // namespace slow
 }  // namespace rec

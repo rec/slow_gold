@@ -3,6 +3,7 @@
 #include "rec/slow/MainPage.h"
 
 #include "rec/gui/RecentFiles.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 
 using namespace juce;
@@ -23,6 +24,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   doLayout();
 
   player_.getTransport()->addListener(waveform_.timeCursor());
+  player_.getTransport()->addListener(this);
 
   waveform_.addListener(this);
   waveform_.dropBroadcaster()->addListener(player_.fileListener());
@@ -33,6 +35,11 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   persist::data<VirtualFile>()->requestUpdate();
 
   player_.getTransport()->addListener(controller_.timeController());
+  (*this)(0.0);
+}
+
+void MainPage::operator()(float time) {
+  controller_.enableLoopPointButton(loops_.isNewLoopPoint(time));
 }
 
 void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
@@ -60,6 +67,7 @@ bool MainPage::keyPressed(const juce::KeyPress& kp) {
 
 void MainPage::addLoopPoint() {
   loops_.addLoopPoint(player_.getTransport()->getCurrentPosition());
+  controller_.enableLoopPointButton(false);
 }
 
 void MainPage::doOpen() {
@@ -108,6 +116,7 @@ void MainPage::operator()(const VirtualFile& file) {
     // Adjust the length of clients - fix this!
     (*(controller_.timeController()))(ClockUpdate(-1, player_.length() / 44100.0));
   }
+  (*this)(0.0);
 }
 
 void MainPage::clearTime() {
