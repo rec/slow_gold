@@ -1,5 +1,6 @@
 #include "rec/widget/waveform/Waveform.h"
 #include "rec/widget/waveform/Cursor.h"
+#include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -13,6 +14,12 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* cursor)
 
   if (cursor)
     timeCursor_ = addCursor(*cursor, 0.0f);
+}
+
+const CursorProto& Waveform::defaultTimeCursor() {
+  static Defaulter<CursorProto> c(
+      "widget { colors { color: { name: \"yellow\" }");
+  return c.get();
 }
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {

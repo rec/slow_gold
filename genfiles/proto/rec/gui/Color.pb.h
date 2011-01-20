@@ -134,6 +134,16 @@ class Color : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 argb() const;
   inline void set_argb(::google::protobuf::uint32 value);
   
+  // optional string name = 7;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 7;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  
   // @@protoc_insertion_point(class_scope:rec.gui.Color)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -145,11 +155,13 @@ class Color : public ::google::protobuf::Message {
   ::google::protobuf::uint32 green_;
   ::google::protobuf::uint32 blue_;
   ::google::protobuf::uint32 argb_;
+  ::std::string* name_;
+  static const ::std::string _default_name_;
   friend void  protobuf_AddDesc_rec_2fgui_2fColor_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fColor_2eproto();
   friend void protobuf_ShutdownFile_rec_2fgui_2fColor_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -360,6 +372,48 @@ inline ::google::protobuf::uint32 Color::argb() const {
 inline void Color::set_argb(::google::protobuf::uint32 value) {
   _set_bit(5);
   argb_ = value;
+}
+
+// optional string name = 7;
+inline bool Color::has_name() const {
+  return _has_bit(6);
+}
+inline void Color::clear_name() {
+  if (name_ != &_default_name_) {
+    name_->clear();
+  }
+  _clear_bit(6);
+}
+inline const ::std::string& Color::name() const {
+  return *name_;
+}
+inline void Color::set_name(const ::std::string& value) {
+  _set_bit(6);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Color::set_name(const char* value) {
+  _set_bit(6);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void Color::set_name(const char* value, size_t size) {
+  _set_bit(6);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Color::mutable_name() {
+  _set_bit(6);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  return name_;
 }
 
 // -------------------------------------------------------------------

@@ -18,7 +18,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       player_(deviceManager),
       directory_(new Root(widget::tree::NodeDesc())),
       waveform_(WaveformProto()),
-      controller_(player_.getTransport()),
+      controller_(player_.getTransport(), this),
       openDialogOpen_(false) {
   doLayout();
 

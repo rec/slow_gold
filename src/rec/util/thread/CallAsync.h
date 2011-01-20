@@ -12,16 +12,22 @@ class CallbackMessage : public juce::CallbackMessage,
                         public OwnedPointer<Callback> {
  public:
   CallbackMessage(Callback* r = NULL) : OwnedPointer<Callback>(r) {}
-  virtual void messageCallback() { 
-  	(*this)(); 
+  virtual void messageCallback() {
+  	(*this)();
   }
 };
 
 }  // namespace callback
 
 inline void callAsync(Callback* cb) {
-  // DLOG(INFO) << "Calling async";
+#ifndef ALWAYS_ASYNC
   (new thread::callback::CallbackMessage(cb))->post();
+#else
+  if (juce::MessageManager::getInstance()->isThisTheMessageThread())
+    (*cb)();
+  else
+    (new thread::callback::CallbackMessage(cb))->post();
+#endif
 }
 
 template <typename Type>

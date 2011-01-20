@@ -25,14 +25,16 @@ struct TimeAndMouseEvent {
 
 typedef Range<double> TimeBounds;
 
-
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
                  public listener::Listener<const juce::AudioThumbnail&>,
                  public Component {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
-           const CursorProto* cursor = &CursorProto::default_instance());
+           const CursorProto* cursor = &defaultTimeCursor());
+
+  static const CursorProto& defaultTimeCursor();
+
   virtual ~Waveform();
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();

@@ -18,14 +18,15 @@ using rec::widget::status::time::TextComponent;
 namespace rec {
 namespace slow {
 
-PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport)
+PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport,
+                                       MainPage* mainPage)
     : Layout("Main controls"),
       timeController_(transport),
       timeControllerResizer_(Address("clock_x"), this, 1),
       songDataResizer_(Address("songdata_x"), this, 3),
       panel_("Main panel", VERTICAL),
       stretchyResizer_(Address("stretchy_y"), &panel_, 1),
-      transportController_(transport) {
+      transportController_(transport, mainPage) {
   addToLayout(&timeController_);
   timeControllerResizer_.add(5);
   addToLayout(&songData_);

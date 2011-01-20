@@ -2,54 +2,37 @@
 #define __REC_GUI_TRANSPORTCONTROLLER__
 
 #include "rec/gui/Layout.h"
-#include "rec/slow/AudioTransportSourcePlayer.h"
-#include "rec/gui/icon/MediaPlaybackStart.svg.h"
-#include "rec/gui/icon/MediaPlaybackStop.svg.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
+namespace slow {
+
+class AudioTransportSourcePlayer;
+class MainPage;
+
+}  // namespace slow
+
 namespace gui {
 
 class TransportController : public Layout,
                             public juce::ButtonListener,
                             public Listener<const slow::AudioTransportSourcePlayer&> {
  public:
-  TransportController(slow::AudioTransportSourcePlayer* transport)
-      : Layout("TransportController", HORIZONTAL),
-        transport_(transport),
-        startStopButton_("Start/stop", juce::DrawableButton::ImageFitted) {
-    startStopButton_.setClickingTogglesState(true);
-    startStopButton_.addListener(this);
+  TransportController(slow::AudioTransportSourcePlayer* transport, 
+                      slow::MainPage* mp);
+  virtual void buttonClicked(juce::Button *button);
+  void setButtonState();
+  void operator()(const slow::AudioTransportSourcePlayer& player);
 
-    startStopButton_.setImages(gui::icon::MediaPlaybackStart::get(),
-                               NULL, NULL, NULL,
-                               gui::icon::MediaPlaybackStop::get());
-    addToLayout(&startStopButton_, 30, 30, 30);
-    addToLayout(&filler_);
-    transport->changeBroadcaster()->addListener(this);
-  }
-
-  void buttonClicked(juce::Button *button) {
-    if (button == &startStopButton_)
-      transport_->toggle();
-  }
-
-  void setButtonState() {
-    startStopButton_.setToggleState(transport_->isPlaying(), false);
-    startStopButton_.repaint();
-  }
-
-  void operator()(const slow::AudioTransportSourcePlayer& player) {
-    thread::callAsync(this, &TransportController::setButtonState);
-  }
-
-  virtual void layout() {
-    Layout::layout();
-  }
+  virtual void layout() { Layout::layout(); }
 
  private:
   slow::AudioTransportSourcePlayer* transport_;
+  slow::MainPage* mainPage_;
   juce::DrawableButton startStopButton_;
+  juce::DrawableButton addLoopPointButton_;
   juce::Label filler_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TransportController);
 };
 

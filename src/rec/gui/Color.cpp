@@ -7,7 +7,17 @@ namespace rec {
 namespace gui {
 namespace color {
 
+uint32 nameToARGB(const string& name, const juce::Colour& dflt) {
+  return juce::Colours::findColourForName(name.c_str(), dflt).getARGB();
+}
+
 uint32 makeARGB(const Color& c) {
+  if (c.has_name()) {
+    int argb = nameToARGB(c.name(), juce::Colour());
+    if (argb || !nameToARGB(c.name(), juce::Colours::white))
+      return argb;
+  }
+
   if (c.has_argb())
     return c.argb();
 

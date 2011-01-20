@@ -32,13 +32,14 @@ void protobuf_AssignDesc_rec_2fgui_2fColor_2eproto() {
       "rec/gui/Color.proto");
   GOOGLE_CHECK(file != NULL);
   Color_descriptor_ = file->message_type(0);
-  static const int Color_offsets_[6] = {
+  static const int Color_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, rgb_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, alpha_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, red_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, green_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, blue_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, argb_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, name_),
   };
   Color_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -100,11 +101,12 @@ void protobuf_AddDesc_rec_2fgui_2fColor_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\023rec/gui/Color.proto\022\007rec.gui\"x\n\005Color\022"
-    "\016\n\003rgb\030\001 \001(\r:\0010\022\022\n\005alpha\030\002 \001(\r:\003255\022\016\n\003r"
-    "ed\030\003 \001(\r:\0010\022\020\n\005green\030\004 \001(\r:\0010\022\017\n\004blue\030\005 "
-    "\001(\r:\0010\022\030\n\004argb\030\006 \001(\r:\n4278190080\"\'\n\006Colo"
-    "rs\022\035\n\005color\030\001 \003(\0132\016.rec.gui.Color", 193);
+    "\n\023rec/gui/Color.proto\022\007rec.gui\"\206\001\n\005Color"
+    "\022\016\n\003rgb\030\001 \001(\r:\0010\022\022\n\005alpha\030\002 \001(\r:\003255\022\016\n\003"
+    "red\030\003 \001(\r:\0010\022\020\n\005green\030\004 \001(\r:\0010\022\017\n\004blue\030\005"
+    " \001(\r:\0010\022\030\n\004argb\030\006 \001(\r:\n4278190080\022\014\n\004nam"
+    "e\030\007 \001(\t\"\'\n\006Colors\022\035\n\005color\030\001 \003(\0132\016.rec.g"
+    "ui.Color", 208);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/Color.proto", &protobuf_RegisterTypes);
   Color::default_instance_ = new Color();
@@ -124,6 +126,7 @@ struct StaticDescriptorInitializer_rec_2fgui_2fColor_2eproto {
 
 // ===================================================================
 
+const ::std::string Color::_default_name_;
 #ifndef _MSC_VER
 const int Color::kRgbFieldNumber;
 const int Color::kAlphaFieldNumber;
@@ -131,6 +134,7 @@ const int Color::kRedFieldNumber;
 const int Color::kGreenFieldNumber;
 const int Color::kBlueFieldNumber;
 const int Color::kArgbFieldNumber;
+const int Color::kNameFieldNumber;
 #endif  // !_MSC_VER
 
 Color::Color()
@@ -155,6 +159,7 @@ void Color::SharedCtor() {
   green_ = 0u;
   blue_ = 0u;
   argb_ = 4278190080u;
+  name_ = const_cast< ::std::string*>(&_default_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -163,6 +168,9 @@ Color::~Color() {
 }
 
 void Color::SharedDtor() {
+  if (name_ != &_default_name_) {
+    delete name_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -195,6 +203,11 @@ void Color::Clear() {
     green_ = 0u;
     blue_ = 0u;
     argb_ = 4278190080u;
+    if (_has_bit(6)) {
+      if (name_ != &_default_name_) {
+        name_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -297,6 +310,23 @@ bool Color::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(58)) goto parse_name;
+        break;
+      }
+      
+      // optional string name = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -349,6 +379,15 @@ void Color::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->argb(), output);
   }
   
+  // optional string name = 7;
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      7, this->name(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -385,6 +424,16 @@ void Color::SerializeWithCachedSizes(
   // optional uint32 argb = 6 [default = 4278190080];
   if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->argb(), target);
+  }
+  
+  // optional string name = 7;
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->name(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -440,6 +489,13 @@ int Color::ByteSize() const {
           this->argb());
     }
     
+    // optional string name = 7;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+    
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -485,6 +541,9 @@ void Color::MergeFrom(const Color& from) {
     if (from._has_bit(5)) {
       set_argb(from.argb());
     }
+    if (from._has_bit(6)) {
+      set_name(from.name());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -514,6 +573,7 @@ void Color::Swap(Color* other) {
     std::swap(green_, other->green_);
     std::swap(blue_, other->blue_);
     std::swap(argb_, other->argb_);
+    std::swap(name_, other->name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

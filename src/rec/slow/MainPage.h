@@ -41,10 +41,10 @@ class MainPage : public gui::Layout,
   void clearTime();
 
   virtual bool keyPressed(const juce::KeyPress& kp);
+  void addLoopPoint();
 
  private:
   void addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo);
-  void addLoopPoint();
 
   void doLayout();
 

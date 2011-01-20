@@ -16,6 +16,8 @@
 namespace rec {
 namespace slow {
 
+class MainPage;
+
 typedef audio::source::StretchyProto StretchyProto;
 typedef widget::status::time::TextComponent TextComponent;
 typedef widget::status::time::DialComponent DialComponent;
@@ -28,7 +30,7 @@ class PlaybackController : public gui::Layout,
   typedef persist::Data<StretchyProto> Data;
   typedef gui::SetterResizer SetterResizer;
 
-  PlaybackController(AudioTransportSourcePlayer* transport);
+  PlaybackController(AudioTransportSourcePlayer* transport, MainPage* mainPage);
 
   void setLayoutData();
 

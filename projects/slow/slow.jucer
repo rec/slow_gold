@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Q8nwo927l" name="Slow">
+  <MAINGROUP id="97KsLwCLf" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -497,6 +497,10 @@
                 id="VEUPUUY4g" name="MediaOptical.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaOptical.svg.h"
                 id="seVcw9DZh" name="MediaOptical.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlay.svg.cpp" id="Mr2hHNhFp"
+                name="MediaPlay.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlay.svg.h" id="tfDV48fnd"
+                name="MediaPlay.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.cpp"
                 id="2M23J7RCB" name="MediaPlaybackStart.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.h"
@@ -558,6 +562,8 @@
               name="TableModelBase.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TableModelBase.h" id="B7b2D8oH6"
               name="TableModelBase.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/TransportController.cpp"
+              id="9tkQi8TjE" name="TransportController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TransportController.h" id="o7HX7m3lM"
               name="TransportController.h" resource="0"/>
       </GROUP>
@@ -944,7 +950,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="t2F5eroCF" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="UBVa17RUT" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -11,6 +11,9 @@ message Color {
   optional uint32 blue   = 5 [default = 0];
 
   optional uint32 argb   = 6 [default = 0xFF000000];
+
+  // Retrieve by Juce name.
+  optional string name   = 7;
 };
 
 // Lists the colors used by an object, from back to from, so color(0) will be
