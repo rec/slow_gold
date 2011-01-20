@@ -3,13 +3,20 @@
 
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
+#include "rec/util/listener/Listener.h"
 #include "rec/util/Reference.h"
 #include "rec/data/proto/Address.h"
+
+namespace juce {
+template <typename T> class SparseSet;
+}
 
 namespace rec {
 namespace gui {
 
-class TableModelBase : public TableListBoxModel, public TableListBox {
+class TableModelBase : public TableListBoxModel,
+                       public TableListBox,
+                       public Broadcaster<const juce::SparseSet<int>&> {
  public:
   TableModelBase(const TableColumnList& columns, const Address& address);
 
@@ -25,8 +32,7 @@ class TableModelBase : public TableListBoxModel, public TableListBox {
 
   virtual void setSetter(Setter* setter);
 
-  virtual void selectedRowsChanged(int lastRowSelected) {}
-  // virtual void setSelected(int index, bool selected);
+  virtual void selectedRowsChanged(int lastRowSelected);
 
  protected:
   virtual const Message& message() const = 0;

@@ -12,12 +12,7 @@ static const int STATE_SIZE = 16;
 typedef std::vector<byte> ByteVector;
 
 static int randomItemIndex(int size) {
-  return static_cast<unsigned long>(random()) % size;
-}
-
-static void checkByte(int b) {
-  DCHECK_GE(b, 0);
-  DCHECK_LT(b, ByteFunction::COUNT);
+  return static_cast<unsigned long>(rand()) % size;
 }
 
 template <typename T>
@@ -26,8 +21,7 @@ static void swap(T& b1, T& b2) {
 }
 
 ByteFunction randomSelfInverseFunction(unsigned seed) {
-  char state[STATE_SIZE];
-  initstate(seed, state, STATE_SIZE);
+  srand(seed);
 
   static const int COUNT = ByteFunction::COUNT;
 
@@ -42,15 +36,13 @@ ByteFunction randomSelfInverseFunction(unsigned seed) {
     int y = randomItemIndex(size);
     int bx = bytes[x];
     int by = bytes[y];
-    checkByte(x);
-    checkByte(y);
-    checkByte(bx);
-    checkByte(by);
+
     func.function[bx] = by;
     func.function[by] = bx;
 
     if (x < y)
       swap(x, y);
+
     swap(bytes[x], bytes[size - 1]);
     if (x == y) {
       bytes.resize(size - 1);

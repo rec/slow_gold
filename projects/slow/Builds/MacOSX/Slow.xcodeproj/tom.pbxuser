@@ -2,9 +2,9 @@
 {
 	014EA5A1C140758DBA029118 /* Loops.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {796, 754}}";
-			sepNavSelRange = "{1422, 0}";
-			sepNavVisRange = "{0, 1422}";
+			sepNavIntBoundsRect = "{{0, 0}, {796, 780}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1182}";
 			sepNavWindowFrame = "{{148, 19}, {911, 1159}}";
 		};
 	};
@@ -42,7 +42,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {796, 3159}}";
 			sepNavSelRange = "{810, 16}";
-			sepNavVisRange = "{631, 1354}";
+			sepNavVisRange = "{0, 1637}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -157,6 +157,12 @@
 			E2E28B4E12E6886C004DE2DE = E2E28B4E12E6886C004DE2DE /* PBXTextBookmark */;
 			E2E28B7812E6C462004DE2DE = E2E28B7812E6C462004DE2DE /* PBXTextBookmark */;
 			E2E28BBC12E6C635004DE2DE = E2E28BBC12E6C635004DE2DE /* PBXTextBookmark */;
+			E2E28C7412E7C573004DE2DE /* XCBuildMessageTextBookmark */ = E2E28C7412E7C573004DE2DE /* XCBuildMessageTextBookmark */;
+			E2E28C7712E7C5A0004DE2DE /* PBXTextBookmark */ = E2E28C7712E7C5A0004DE2DE /* PBXTextBookmark */;
+			E2E28C7812E7C5A0004DE2DE /* XCBuildMessageTextBookmark */ = E2E28C7812E7C5A0004DE2DE /* XCBuildMessageTextBookmark */;
+			E2E28C7912E7C5A0004DE2DE /* PBXTextBookmark */ = E2E28C7912E7C5A0004DE2DE /* PBXTextBookmark */;
+			E2E28C7E12E7C5A0004DE2DE /* PBXTextBookmark */ = E2E28C7E12E7C5A0004DE2DE /* PBXTextBookmark */;
+			E2E28C8D12E7C5F1004DE2DE /* PBXTextBookmark */ = E2E28C8D12E7C5F1004DE2DE /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -296,6 +302,77 @@
 		rType = 0;
 		vrLen = 1354;
 		vrLoc = 631;
+	};
+	E2E28C7312E7C573004DE2DE /* TableModelBase.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TableModelBase.h;
+		path = ../../../../../rec/src/rec/gui/TableModelBase.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {717, 741}}";
+			sepNavSelRange = "{1495, 0}";
+			sepNavVisRange = "{0, 585}";
+			sepNavWindowFrame = "{{138, 19}, {911, 1159}}";
+		};
+	};
+	E2E28C7412E7C573004DE2DE /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "ISO C++ forbids declaration of 'type name' with no type";
+		fRef = E2E28C7312E7C573004DE2DE /* TableModelBase.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 19;
+		rType = 1;
+	};
+	E2E28C7712E7C5A0004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 27";
+		rLen = 16;
+		rLoc = 810;
+		rType = 0;
+		vrLen = 1637;
+		vrLoc = 0;
+	};
+	E2E28C7812E7C5A0004DE2DE /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/gui/Loops.cpp";
+		fRef = 014EA5A1C140758DBA029118 /* Loops.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E2E28C7912E7C5A0004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 014EA5A1C140758DBA029118 /* Loops.cpp */;
+		name = "Loops.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1182;
+		vrLoc = 0;
+	};
+	E2E28C7E12E7C5A0004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2E28C7312E7C573004DE2DE /* TableModelBase.h */;
+		name = "TableModelBase.h: 37";
+		rLen = 0;
+		rLoc = 1089;
+		rType = 0;
+		vrLen = 1551;
+		vrLoc = 0;
+	};
+	E2E28C8D12E7C5F1004DE2DE /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 014EA5A1C140758DBA029118 /* Loops.cpp */;
+		name = "Loops.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1182;
+		vrLoc = 0;
 	};
 	FBE89CB20CB80EA5845D84ED /* Setter.h */ = {
 		uiCtxt = {

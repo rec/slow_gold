@@ -100,9 +100,17 @@ void TableModelBase::setSetter(Setter* setter) {
   onChange();
 }
 
+void TableModelBase::selectedRowsChanged(int lastRowSelected) {
+  juce::SparseSet<int> s;
+  {
+    ScopedLock l(lock_);
+    s = getSelectedRows();
+  }
+  broadcast(s);
+}
+
 #if 0
 
-void TableModelBase::selectedRowsChanged(int lastRowSelected) {
   ScopedLock l(lock_);
   const juce::SparseSet<int>& selected = getSelectedRows();
   for (int i = 0, done = 0; i < selected.getNumRanges(); ++i) {
