@@ -74,7 +74,10 @@ const Value TableModelBase::get() const {
 }
 
 void TableModelBase::onChange() {
-  numRows_ = proto::getSize(address_, message());
+  {
+    ScopedLock l(lock_);
+    numRows_ = proto::getSize(address_, message());
+  }
   thread::callAsync(this, &TableListBox::updateContent);
 }
 
@@ -88,12 +91,14 @@ void TableModelBase::set(const Value& v) {
 }
 
 void TableModelBase::setSetter(Setter* setter) {
-  ScopedLock l(lock_);
-  setter_ = setter;
-  numRows_ = 0;
+  {
+    ScopedLock l(lock_);
+    setter_ = setter;
+    numRows_ = 0;
+  }
   if (Message* msg = mutable_message()) {
-    if (setter_)
-      setter_->copyTo(msg);
+    if (setter)
+      setter->copyTo(msg);
     else
       msg->Clear();
   }
