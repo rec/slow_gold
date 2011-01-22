@@ -46,6 +46,7 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
       }
     }
   }
+
   if (numRanges > 1)
     selectRangeOfRows(range.getStart(), range.getEnd());
   else
