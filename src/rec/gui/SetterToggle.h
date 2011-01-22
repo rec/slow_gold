@@ -1,22 +1,17 @@
 #ifndef __REC_GUI_SETTERTOGGLE__
 #define __REC_GUI_SETTERTOGGLE__
 
-#include "rec/util/listener/AddressListener.h"
+#include "rec/util/listener/UntypedAddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
 
-template <typename Proto>
 class SetterToggle : public juce::ToggleButton,
-                     public AddressListener<Proto> {
+                     public UntypedAddressListener {
  public:
-  typedef proto::arg::Address Address;
-  typedef proto::arg::Value Value;
-  typedef persist::Data<Proto> Data;
-
   SetterToggle(const String& name, const Address& address)
-      : juce::ToggleButton(name), AddressListener<Proto>(address) {}
+      : juce::ToggleButton(name), UntypedAddressListener(address) {}
 
   virtual void clicked() {
     this->updatePersistentData();

@@ -1,7 +1,6 @@
 #include "rec/slow/PlaybackController.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/StretchyController.h"
-#include "rec/gui/SetterToggle.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/cd/Album.h"

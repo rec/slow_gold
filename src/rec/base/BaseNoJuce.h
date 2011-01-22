@@ -18,7 +18,6 @@ class Message;
 
 namespace rec {
 namespace util {
-
 namespace listener {
 }
 
@@ -38,6 +37,10 @@ class Value;
 }  // namespace arg
 }  // namespace proto
 
+namespace persist {
+class UntypedData;
+}
+
 typedef std::string string;
 typedef unsigned int uint;
 
@@ -48,6 +51,7 @@ using namespace util;
 
 using util::file::VirtualFile;
 using std::vector;
+using persist::UntypedData;
 using proto::arg::Address;
 using proto::arg::Setter;
 using proto::arg::Value;

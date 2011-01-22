@@ -23,13 +23,13 @@ StretchyController::StretchyController()
   addToLayout(&disableButton_, 14);
 }
 
-void StretchyController::setData(persist::Data<StretchyProto>* data) {
+void StretchyController::setData(UntypedData* data) {
   playbackSpeed_.setData(data);
   pitchScale_.setData(data);
   fineScale_.setData(data);
   disableButton_.setData(data);
 
-  bool enable = !(data && data->get().disabled());
+  bool enable = !(data && data->get<StretchyProto>().disabled());
   thread::callAsync(this, &StretchyController::enableSliders, enable);
 }
 

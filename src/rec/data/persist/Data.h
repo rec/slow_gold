@@ -21,8 +21,10 @@ class Data : public UntypedData, public Broadcaster<const Proto&> {
     return proto_;
   }
 
+  virtual string getTypeName() const { return proto_.GetTypeName(); }
+
   virtual ~Data() {
-    DLOG(INFO) << "Deleting data: " << data::proto::getName<Proto>();
+    DLOG(INFO) << "Deleting data: " << getTypeName();
   }
 
  protected:
@@ -37,11 +39,12 @@ class Data : public UntypedData, public Broadcaster<const Proto&> {
   }
 
  private:
-  friend class App;
+  Proto proto_;
 
   Data(const File& file, App* app) : UntypedData(file, &proto_, app) {}
 
-  Proto proto_;
+  friend class App;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Data);
 };
 

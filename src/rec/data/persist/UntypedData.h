@@ -37,8 +37,21 @@ class UntypedData : public Setter {
     return &messageBroadcaster_;
   }
 
+  template <typename T> T get() const {
+    T t;
+    ScopedLock l(lock_);
+
+    if (t.GetTypeName() == getTypeName())
+      copyTo(&t);
+    else
+      LOG(ERROR) << "types: " << t.GetTypeName() << ", " << getTypeName();
+
+    return t;
+  }
+
  protected:
   virtual void onDataChange() = 0;
+  virtual string getTypeName() const = 0;
 
   // Update the clients in this thread.
   void update();

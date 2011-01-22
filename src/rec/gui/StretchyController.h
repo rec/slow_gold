@@ -16,14 +16,14 @@ class StretchyController : public Layout {
   StretchyController();
   virtual bool isOpaque() const { return true; }
 
-  void setData(persist::Data<StretchyProto>* data);
+  void setData(UntypedData* data);
   void enableSliders(bool enabled);
 
  private:
   SetterSlider playbackSpeed_;
   SetterSlider pitchScale_;
   SetterSlider fineScale_;
-  gui::SetterToggle<StretchyProto> disableButton_;
+  gui::SetterToggle disableButton_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
 };
