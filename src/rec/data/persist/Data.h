@@ -27,7 +27,13 @@ class Data : public UntypedData, public Broadcaster<const Proto&> {
 
  protected:
   virtual void onDataChange() {
-    broadcast(get());
+    Proto p;
+    {
+      ScopedLock l(lock_);
+      p.CopyFrom(proto_);
+    }
+    messageBroadcaster()->broadcast(p);
+    broadcast(p);
   }
 
  private:

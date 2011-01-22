@@ -33,6 +33,10 @@ class UntypedData : public Setter {
   virtual int getSize(const Address& address) const;
   virtual void copyTo(Message* message) const;
 
+  Broadcaster<const Message&>* messageBroadcaster() {
+    return &messageBroadcaster_;
+  }
+
  protected:
   virtual void onDataChange() = 0;
 
@@ -60,6 +64,8 @@ class UntypedData : public Setter {
  private:
   mutable bool alreadyReadFromFile_;
   mutable bool fileReadSuccess_;
+  Broadcaster<const Message&> messageBroadcaster_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedData);
 };
 
