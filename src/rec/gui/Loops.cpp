@@ -27,42 +27,44 @@ void Loops::setLength(int len) {
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
-  ScopedLock l(lock_);
-  const juce::SparseSet<int> selected = getSelectedRows();
-  const juce::Range<int> range = selected.getTotalRange();
+  juce::Range<int> range;
+  int numRanges;
+  {
+    ScopedLock l(lock_);
+    const juce::SparseSet<int> selected = getSelectedRows();
 
-  int numRanges = selected.getNumRanges();
-  if (numRanges > 1) {
-    selectRangeOfRows(range.getStart(), range.getEnd());
-  } else {
-    for (int i = 0; i < proto_.loop_point_size(); ++i) {
-      if (i < proto_.selected_size())
-        proto_.set_selected(i, false);
-      else
-        proto_.add_selected(false);
-    }
-    for (int i = 0; i < numRanges; ++i) {
-      juce::Range<int> r = selected.getRange(i);
-      for (int j = r.getStart(); j < r.getEnd(); ++j)
-        proto_.set_selected(j, true);
+    range = selected.getTotalRange();
+    numRanges = selected.getNumRanges();
+
+    if (numRanges == 1) {
+      for (int i = 0; i < proto_.loop_point_size(); ++i) {
+        bool sel = range.contains(i);
+        if (i < proto_.selected_size())
+          proto_.set_selected(i, sel);
+        else
+          proto_.add_selected(sel);
+      }
     }
   }
-  onChange();
+  if (numRanges > 1)
+    selectRangeOfRows(range.getStart(), range.getEnd());
+  else
+    onChange();
 }
 
-#if 0
 void Loops::setData(Data* d) {
   LoopsBase::setData(d);
   onChange();
 }
-#endif
 
 void Loops::doSelect() {
-  return;
   juce::SparseSet<int> sel;
-  for (int i = 0; i < proto_.selected_size(); ++i) {
-    if (proto_.selected(i))
-      sel.addRange(juce::Range<int>(i, i + 1));
+  {
+    ScopedLock l(lock_);
+    for (int i = 0; i < proto_.selected_size(); ++i) {
+      if (proto_.selected(i))
+        sel.addRange(juce::Range<int>(i, i + 1));
+    }
   }
   setSelectedRows(sel, false);
 }

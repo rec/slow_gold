@@ -21,12 +21,12 @@ class Loops : public LoopsBase {
 
   virtual void onChange();
   void doSelect();
+  void setData(Data* d);
 
   void setLength(int len);
   bool isNewLoopPoint(double t) const;
   void addLoopPoint(double time);
   virtual void selectedRowsChanged(int lastRowSelected);
-  // virtual void setData(Data* d);
 
  private:
   double length_;
