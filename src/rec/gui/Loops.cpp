@@ -47,7 +47,7 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
         proto_.set_selected(j, true);
     }
   }
-  // onChange();
+  onChange();
 }
 
 #if 0
@@ -71,7 +71,7 @@ void Loops::onChange() {
   LOG(ERROR) << "!!!";
   TableModelBase::onChange();
   // AddressListener<LoopPointList>::onChange();
-  // thread::callAsync(this, &Loops::doSelect);
+  thread::callAsync(this, &Loops::doSelect);
 }
 
 bool Loops::isNewLoopPoint(double t) const {

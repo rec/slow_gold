@@ -19,7 +19,6 @@ class DataListener : public Reference<persist::Data<Proto> >,
                      public Listener<const Proto&> {
  public:
   typedef persist::Data<Proto> Data;
-  typedef Reference<persist::Data<Proto> > Super;
 
   DataListener() {}
   virtual ~DataListener() {}
@@ -29,7 +28,7 @@ class DataListener : public Reference<persist::Data<Proto> >,
     if (this->getData())
       this->getData()->removeListener(this);
 
-    Super::setData(d);
+    Reference<Data>::setData(d);
 
     if (this->getData())
       this->getData()->addListener(this);

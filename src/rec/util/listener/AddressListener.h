@@ -30,7 +30,10 @@ class AddressListener : public DataListener<Proto> {
       this->getData()->set(address_, get());
   }
 
+  // Gets the data from the "view".
   virtual const Value get() const = 0;
+
+  // Set the "view" data.
   virtual void set(const Value&) = 0;
 
  private:

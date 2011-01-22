@@ -9,7 +9,7 @@ namespace widget {
 namespace waveform {
 
 Waveform::Waveform(const WaveformProto& d, const CursorProto* cursor)
-  : desc_(d), thumbnail_(NULL), range_(0, 0) {
+    : desc_(d), thumbnail_(NULL), range_(0, 0) {
   setName("Waveform");
 
   if (cursor)
@@ -18,7 +18,7 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* cursor)
 
 const CursorProto& Waveform::defaultTimeCursor() {
   static Defaulter<CursorProto> c(
-      "widget { colors { color: { name: \"yellow\" }");
+      "widget {colors {color: {name: \"yellow\"}}}");
   return c.get();
 }
 
@@ -37,7 +37,7 @@ void Waveform::paint(Graphics& g) {
     Range<double> r = range_;
     while (r.size() > 0.0) {
       for (; i != selection_.end() && i->end_ <= r.begin_; ++i);
-      bool selected = (i != selection_.end() || r.begin_ >= i->begin_);
+      bool selected = (i != selection_.end() && r.begin_ >= i->begin_);
       Range<double> draw = r;
       if (selected)
         r.end_ = i->end_;
