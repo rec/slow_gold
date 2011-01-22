@@ -11,10 +11,10 @@ namespace gui {
 using proto::Operation;
 
 template <typename Proto>
-class TableModel : public TableController, public AddressListener<Proto> {
+class TypedTableController : public TableController, public AddressListener<Proto> {
  public:
   typedef persist::Data<Proto> Data;
-  TableModel(const TableColumnList& c, const Address& address)
+  TypedTableController(const TableColumnList& c, const Address& address)
       : TableController(c, address), AddressListener<Proto>(Address()) {
   }
 
@@ -33,7 +33,7 @@ class TableModel : public TableController, public AddressListener<Proto> {
   Proto proto_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModel);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedTableController);
 };
 
 }  // namespace gui

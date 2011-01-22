@@ -2,13 +2,13 @@
 #define __REC_GUI_LOOPS__
 
 #include "rec/gui/LoopPoint.pb.h"
-#include "rec/gui/TableModel.h"
+#include "rec/gui/TypedTableController.h"
 #include "rec/util/Math.h"
 
 namespace rec {
 namespace gui {
 
-typedef TableModel<LoopPointList> LoopsBase;
+typedef TypedTableController<LoopPointList> LoopsBase;
 
 class Loops : public LoopsBase {
  public:
