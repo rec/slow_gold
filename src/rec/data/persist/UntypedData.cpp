@@ -87,7 +87,7 @@ void UntypedData::update() {
   }
 
   stl::deletePointers(&old);
-  changeCallback();
+  onDataChange();
 }
 
 void UntypedData::writeToFile() const {

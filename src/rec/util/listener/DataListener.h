@@ -45,7 +45,7 @@ class SetterListener : public Reference<Setter>, public Listener<const Message&>
   virtual ~SetterListener() {}
   virtual void operator()(const Message&) = 0;
 
-  virtual void setData(Setter* s) {
+  virtual void setData(UntypedData* s) {
     if (this->getData())
       this->getData()->removeListener(this);
 
@@ -59,7 +59,6 @@ class SetterListener : public Reference<Setter>, public Listener<const Message&>
   DISALLOW_COPY_AND_ASSIGN(SetterListener);
 };
 #endif
-
 }  // namespace listener
 }  // namespace util
 }  // namespace rec

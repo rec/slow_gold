@@ -34,7 +34,7 @@ class UntypedData : public Setter {
   virtual void copyTo(Message* message) const;
 
  protected:
-  friend class AppInstance;
+  virtual void onDataChange() = 0;
 
   // Update the clients in this thread.
   void update();
@@ -43,8 +43,6 @@ class UntypedData : public Setter {
   void readFromFile() const;
 
   void writeToFile() const;
-
-  virtual void changeCallback() = 0;
 
   typedef std::vector<proto::OperationList*> OperationQueue;
 
@@ -56,6 +54,8 @@ class UntypedData : public Setter {
 
   App* app_;
   CriticalSection lock_;
+
+  friend class AppInstance;
 
  private:
   mutable bool alreadyReadFromFile_;

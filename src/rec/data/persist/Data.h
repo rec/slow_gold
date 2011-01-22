@@ -26,7 +26,9 @@ class Data : public UntypedData, public Broadcaster<const Proto&> {
   }
 
  protected:
-  virtual void changeCallback() { broadcast(get()); }
+  virtual void onDataChange() {
+    broadcast(get());
+  }
 
  private:
   friend class App;
