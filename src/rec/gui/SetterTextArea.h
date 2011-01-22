@@ -3,18 +3,17 @@
 
 #include "rec/gui/Layout.h"
 #include "rec/gui/SetterText.h"
-#include "rec/util/listener/AddressListener.h"
+#include "rec/util/listener/UntypedAddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/STL.h"
 
 namespace rec {
 namespace gui {
 
-template <typename Proto>
 class SetterTextArea : public Layout,
-                       public Reference<persist::Data<Proto> > {
+                       public Reference<persist::UntypedData> {
  public:
-  typedef persist::Data<Proto> Data;
+  typedef persist::UntypedData UntypedData;
   typedef proto::arg::Address Address;
 
   SetterTextArea(const String& name = String::empty)
@@ -33,8 +32,8 @@ class SetterTextArea : public Layout,
     return text;
   }
 
-  virtual void setData(Data* data) {
-    Reference<persist::Data<Proto> >::setData(data);
+  virtual void setData(UntypedData* data) {
+    Reference<UntypedData>::setData(data);
     for (int i = 0; i < components_.size(); ++i)
       text(i)->setData(data);
 

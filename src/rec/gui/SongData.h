@@ -7,9 +7,9 @@
 namespace rec {
 namespace gui {
 
-class SongData : public gui::SetterTextArea<cd::Metadata> {
+class SongData : public gui::SetterTextArea {
  public:
-  SongData() : gui::SetterTextArea<cd::Metadata>("SongData") {
+  SongData() : gui::SetterTextArea("SongData") {
     using persist::Address;
 
     add("Track", Address("track_title"), "The name of the individual track.");
