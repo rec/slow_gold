@@ -8,17 +8,19 @@
 #include "rec/data/proto/Address.h"
 
 namespace juce {
+
 template <typename T> class SparseSet;
+
 }
 
 namespace rec {
 namespace gui {
 
-class TableModelBase : public TableListBoxModel,
+class TableController : public TableListBoxModel,
                        public TableListBox,
                        public Broadcaster<const juce::SparseSet<int>&> {
  public:
-  TableModelBase(const TableColumnList& columns, const Address& address);
+  TableController(const TableColumnList& columns, const Address& address);
 
   virtual void fillHeader(TableHeaderComponent* headers);
   virtual int getNumRows();
@@ -49,7 +51,7 @@ class TableModelBase : public TableListBoxModel,
   int numRows_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TableModelBase);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(TableController);
 };
 
 }  // namespace gui

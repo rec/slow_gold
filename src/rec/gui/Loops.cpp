@@ -75,7 +75,7 @@ void Loops::doSelect() {
 }
 
 void Loops::onChange() {
-  TableModelBase::onDataChange();
+  TableController::onDataChange();
   AddressListener<LoopPointList>::onChange();
   thread::callAsync(this, &Loops::doSelect);
 }

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="h1GKFxI2b" name="tests">
+  <MAINGROUP id="hIdw8zLzY" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -577,12 +577,12 @@
               name="StretchyController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/StretchyController.h" id="LxikXE5wP"
               name="StretchyController.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/TableController.cpp" id="qlfcAhasB"
+              name="TableController.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/TableController.h" id="CYE9kOoSZ"
+              name="TableController.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TableModel.h" id="99RfIwNVj"
               name="TableModel.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/TableModelBase.cpp" id="XRZYjfduI"
-              name="TableModelBase.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/TableModelBase.h" id="Pw27gwtvM"
-              name="TableModelBase.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/TransportController.cpp"
               id="mDCnPv6RT" name="TransportController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TransportController.h" id="ZkOVf6iI6"
@@ -995,7 +995,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="9cnFhMf1f" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="JTaOcYYsP" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

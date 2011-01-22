@@ -1,4 +1,4 @@
-#include "rec/gui/TableModelBase.h"
+#include "rec/gui/TableController.h"
 #include "rec/widget/status/Time.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/data/proto/Setter.h"
@@ -7,15 +7,15 @@
 namespace rec {
 namespace gui {
 
-TableModelBase::TableModelBase(const TableColumnList& c, const Address& address)
-    : TableListBox("TableModelBase", this),
+TableController::TableController(const TableColumnList& c, const Address& address)
+    : TableListBox("TableController", this),
       columns_(c),
       setter_(NULL),
       address_(address),
       numRows_(0) {
 }
 
-void TableModelBase::fillHeader(TableHeaderComponent* headers) {
+void TableController::fillHeader(TableHeaderComponent* headers) {
   ScopedLock l(lock_);
   for (int i = 0; i < columns_.column_size(); ++i)  {
     const TableColumn& col = columns_.column(i);
@@ -24,12 +24,12 @@ void TableModelBase::fillHeader(TableHeaderComponent* headers) {
   }
 }
 
-int TableModelBase::getNumRows() {
+int TableController::getNumRows() {
   ScopedLock l(lock_);
   return numRows_;
 }
 
-void TableModelBase::paintRowBackground(Graphics& g,
+void TableController::paintRowBackground(Graphics& g,
                                         int rowNumber,
                                         int width, int height,
                                         bool rowIsSelected) {
@@ -38,7 +38,7 @@ void TableModelBase::paintRowBackground(Graphics& g,
   g.fillRect(0, 0, width, height);
 }
 
-void TableModelBase::paintCell(Graphics& g,
+void TableController::paintCell(Graphics& g,
                                int rowNumber,
                                int columnId,
                                int width, int height,
@@ -55,7 +55,7 @@ void TableModelBase::paintCell(Graphics& g,
   g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
 }
 
-String TableModelBase::displayText(const TableColumn& col, const Value& value) {
+String TableController::displayText(const TableColumn& col, const Value& value) {
   switch (col.type()) {
    case TableColumn::STRING: return toString(value);
    case TableColumn::UINT32: return String(static_cast<uint32>(value));
@@ -66,14 +66,14 @@ String TableModelBase::displayText(const TableColumn& col, const Value& value) {
   }
 }
 
-const Value TableModelBase::get() const {
+const Value TableController::get() const {
   ScopedLock l(lock_);
   Value value;
   message().SerializeToString(value.mutable_message_f());
   return value;
 }
 
-void TableModelBase::onDataChange() {
+void TableController::onDataChange() {
   {
     ScopedLock l(lock_);
     numRows_ = proto::getSize(address_, message());
@@ -81,13 +81,13 @@ void TableModelBase::onDataChange() {
   thread::callAsync(this, &TableListBox::updateContent);
 }
 
-void TableModelBase::set(const Value& v) {
+void TableController::set(const Value& v) {
   ScopedLock l(lock_);
   if (!mutable_message()->ParseFromString(v.message_f()))
     LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
 }
 
-void TableModelBase::setSetter(Setter* setter) {
+void TableController::setSetter(Setter* setter) {
   {
     ScopedLock l(lock_);
     setter_ = setter;
@@ -102,7 +102,7 @@ void TableModelBase::setSetter(Setter* setter) {
   onDataChange();
 }
 
-void TableModelBase::selectedRowsChanged(int lastRowSelected) {
+void TableController::selectedRowsChanged(int lastRowSelected) {
   juce::SparseSet<int> s;
   {
     ScopedLock l(lock_);

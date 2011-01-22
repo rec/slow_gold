@@ -3,7 +3,7 @@
 
 #include "rec/data/persist/Persist.h"
 #include "rec/util/listener/AddressListener.h"
-#include "rec/gui/TableModelBase.h"
+#include "rec/gui/TableController.h"
 
 namespace rec {
 namespace gui {
@@ -11,11 +11,11 @@ namespace gui {
 using proto::Operation;
 
 template <typename Proto>
-class TableModel : public TableModelBase, public AddressListener<Proto> {
+class TableModel : public TableController, public AddressListener<Proto> {
  public:
   typedef persist::Data<Proto> Data;
   TableModel(const TableColumnList& c, const Address& address)
-      : TableModelBase(c, address), AddressListener<Proto>(Address()) {
+      : TableController(c, address), AddressListener<Proto>(Address()) {
   }
 
   virtual void setData(Data* data) {
@@ -23,8 +23,8 @@ class TableModel : public TableModelBase, public AddressListener<Proto> {
     AddressListener<Proto>::setData(data);
   }
 
-  virtual const Value get() const { return TableModelBase::get(); }
-  virtual void set(const Value& v) { TableModelBase::set(v); }
+  virtual const Value get() const { return TableController::get(); }
+  virtual void set(const Value& v) { TableController::set(v); }
 
  protected:
   virtual const Message& message() const { return proto_; }
