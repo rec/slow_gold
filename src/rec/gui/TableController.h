@@ -17,8 +17,8 @@ namespace rec {
 namespace gui {
 
 class TableController : public TableListBoxModel,
-                       public TableListBox,
-                       public Broadcaster<const juce::SparseSet<int>&> {
+                        public TableListBox,
+                        public Broadcaster<const juce::SparseSet<int>&> {
  public:
   TableController(const TableColumnList& columns, const Address& address);
 
@@ -37,9 +37,11 @@ class TableController : public TableListBoxModel,
   virtual void selectedRowsChanged(int lastRowSelected);
 
  protected:
+  // onDataChange() is called to update the GUI when the persistent data
+  // underlying this GUI component changes
+  virtual void onDataChange();
   virtual const Message& message() const = 0;
   virtual Message* mutable_message() = 0;
-  virtual void onDataChange();
 
   static String displayText(const TableColumn& col, const Value& value);
 

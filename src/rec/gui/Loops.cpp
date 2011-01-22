@@ -39,6 +39,7 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
 
   if (numRanges > 1) {
     selectRangeOfRows(range.getStart(), range.getEnd());
+
   } else {
     {
       ScopedLock l(lock_);
@@ -51,13 +52,8 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
       for (int i = range.getStart(); i < range.getEnd(); ++i)
         proto_.set_selected(i, true);
     }
-    onChange();
+    updatePersistentData();
   }
-}
-
-void Loops::setData(Data* d) {
-  LoopsBase::setData(d);
-  onChange();
 }
 
 void Loops::doSelect() {
@@ -74,9 +70,8 @@ void Loops::doSelect() {
   setSelectedRows(sel, false);
 }
 
-void Loops::onChange() {
+void Loops::onDataChange() {
   TableController::onDataChange();
-  AddressListener<LoopPointList>::onChange();
   thread::callAsync(this, &Loops::doSelect);
 }
 

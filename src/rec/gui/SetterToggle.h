@@ -19,7 +19,7 @@ class SetterToggle : public juce::ToggleButton,
       : juce::ToggleButton(name), AddressListener<Proto>(address) {}
 
   virtual void clicked() {
-    this->onChange();
+    this->updatePersistentData();
   }
 
  protected:

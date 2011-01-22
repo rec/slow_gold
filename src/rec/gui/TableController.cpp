@@ -83,7 +83,9 @@ void TableController::onDataChange() {
 
 void TableController::set(const Value& v) {
   ScopedLock l(lock_);
-  if (!mutable_message()->ParseFromString(v.message_f()))
+  if (mutable_message()->ParseFromString(v.message_f()))
+    onDataChange();
+  else
     LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
 }
 

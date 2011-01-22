@@ -19,9 +19,8 @@ class Loops : public LoopsBase {
 
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
 
-  virtual void onChange();
+  virtual void onDataChange();
   void doSelect();
-  void setData(Data* d);
 
   void setLength(int len);
   bool isNewLoopPoint(double t) const;

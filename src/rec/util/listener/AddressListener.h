@@ -27,7 +27,7 @@ class AddressListener : public DataListener<Proto> {
  protected:
   // onChange is called when the local copy of the data is changed by the GUI,
   // to update the persistent data.
-  virtual void onChange() {
+  virtual void updatePersistentData() {
     if (this->getData())
       this->getData()->set(address_, get());
   }

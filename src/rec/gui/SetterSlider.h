@@ -39,7 +39,9 @@ class SetterSlider : public Layout,
 
   Slider* slider() { return &slider_; }
 
-  virtual void sliderValueChanged (Slider* slider) { this->onChange(); }
+  virtual void sliderValueChanged (Slider* slider) { 
+    this->updatePersistentData(); 
+  }
 
  protected:
   virtual const Value get() const {
