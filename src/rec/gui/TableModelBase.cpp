@@ -73,7 +73,7 @@ const Value TableModelBase::get() const {
   return value;
 }
 
-void TableModelBase::onChange() {
+void TableModelBase::onDataChange() {
   {
     ScopedLock l(lock_);
     numRows_ = proto::getSize(address_, message());
@@ -85,8 +85,6 @@ void TableModelBase::set(const Value& v) {
   ScopedLock l(lock_);
   if (!mutable_message()->ParseFromString(v.message_f()))
     LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
-  else
-    onChange();
 }
 
 void TableModelBase::setSetter(Setter* setter) {
@@ -101,7 +99,7 @@ void TableModelBase::setSetter(Setter* setter) {
     else
       msg->Clear();
   }
-  onChange();
+  onDataChange();
 }
 
 void TableModelBase::selectedRowsChanged(int lastRowSelected) {

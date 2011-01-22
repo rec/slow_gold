@@ -37,7 +37,7 @@ class TableModelBase : public TableListBoxModel,
  protected:
   virtual const Message& message() const = 0;
   virtual Message* mutable_message() = 0;
-  virtual void onChange();
+  virtual void onDataChange();
 
   static String displayText(const TableColumn& col, const Value& value);
 
