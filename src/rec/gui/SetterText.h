@@ -9,20 +9,18 @@
 namespace rec {
 namespace gui {
 
-template <typename Proto>
 class SetterText : public Layout,
-                   public AddressListener<Proto>,
+                   public UntypedAddressListener,
                    public TextEditor::Listener {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
-  typedef persist::Data<Proto> Data;
 
   SetterText(const String& name, const Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty)
       : Layout(name, HORIZONTAL),
-        AddressListener<Proto>(address),
+        UntypedAddressListener(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
     const String& cap = caption.length() ? caption : name;
@@ -46,8 +44,8 @@ class SetterText : public Layout,
 
   TextEditor* editor() { return &editor_; }
 
-  virtual void textEditorTextChanged (TextEditor& editor) { 
-    this->updatePersistentData(); 
+  virtual void textEditorTextChanged (TextEditor& editor) {
+    this->updatePersistentData();
   }
   virtual void textEditorReturnKeyPressed (TextEditor& editor) {}
   virtual void textEditorEscapeKeyPressed (TextEditor& editor) {}

@@ -2,6 +2,7 @@
 #define __REC_UTIL_LISTENER_UNTYPEDADDRESSLISTENER__
 
 #include "rec/util/listener/UntypedDataListener.h"
+#include "rec/data/proto/Proto.h"
 
 namespace rec {
 namespace util {

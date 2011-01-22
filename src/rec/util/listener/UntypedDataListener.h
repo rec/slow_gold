@@ -3,6 +3,7 @@
 
 #include "rec/util/Reference.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/data/persist/UntypedData.h"
 
 namespace rec {
 namespace util {

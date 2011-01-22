@@ -14,7 +14,6 @@ template <typename Proto>
 class SetterTextArea : public Layout,
                        public Reference<persist::Data<Proto> > {
  public:
-  typedef SetterText<Proto> Text;
   typedef persist::Data<Proto> Data;
   typedef proto::arg::Address Address;
 
@@ -24,12 +23,12 @@ class SetterTextArea : public Layout,
 
   ~SetterTextArea() { stl::deletePointers(&components_); }
 
-  Text* text(int i) { return static_cast<Text*>(components_[i]); }
+  SetterText* text(int i) { return static_cast<SetterText*>(components_[i]); }
 
-  Text* add(const String& name, const Address& address,
-           const String& tip = String::empty,
-           const String& caption = String::empty) {
-    Text* text = new Text(name, address, tip, caption);
+  SetterText* add(const String& name, const Address& address,
+                  const String& tip = String::empty,
+                  const String& caption = String::empty) {
+    SetterText* text = new SetterText(name, address, tip, caption);
     addToLayout(text, 12, 20, 20);
     return text;
   }

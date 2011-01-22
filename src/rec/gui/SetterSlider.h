@@ -4,7 +4,7 @@
 #include "rec/gui/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Geometry.h"
-#include "rec/util/listener/AddressListener.h"
+#include "rec/util/listener/UntypedAddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Range.h"
 

@@ -264,6 +264,11 @@
 			E288C2E212EB77A900AAB106 = E288C2E212EB77A900AAB106 /* PBXTextBookmark */;
 			E288C33F12EB899500AAB106 /* XCBuildMessageTextBookmark */ = E288C33F12EB899500AAB106 /* XCBuildMessageTextBookmark */;
 			E288C34412EB89A400AAB106 /* PBXTextBookmark */ = E288C34412EB89A400AAB106 /* PBXTextBookmark */;
+			E288C34812EB89ED00AAB106 /* XCBuildMessageTextBookmark */ = E288C34812EB89ED00AAB106 /* XCBuildMessageTextBookmark */;
+			E288C35312EB8B3200AAB106 /* PBXTextBookmark */ = E288C35312EB8B3200AAB106 /* PBXTextBookmark */;
+			E288C35412EB8B3200AAB106 /* PBXTextBookmark */ = E288C35412EB8B3200AAB106 /* PBXTextBookmark */;
+			E288C35F12EB8B9D00AAB106 /* PBXTextBookmark */ = E288C35F12EB8B9D00AAB106 /* PBXTextBookmark */;
+			E288C36012EB8B9D00AAB106 /* PBXTextBookmark */ = E288C36012EB8B9D00AAB106 /* PBXTextBookmark */;
 			E2E28AE912E6457B004DE2DE = E2E28AE912E6457B004DE2DE /* PBXTextBookmark */;
 			E2E28B4D12E6886C004DE2DE = E2E28B4D12E6886C004DE2DE /* PBXTextBookmark */;
 			E2E28B4E12E6886C004DE2DE = E2E28B4E12E6886C004DE2DE /* PBXTextBookmark */;
@@ -282,6 +287,14 @@
 		executables = (
 			E2758BB212E2968800E37D3F /* Slow */,
 		);
+	};
+	B4BC50DAF35370323BE4A74A /* StretchyController.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1392}";
+			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
+		};
 	};
 	BEC3F96BDD2E98143AD9F8DF /* Operation.pb.h */ = {
 		uiCtxt = {
@@ -302,6 +315,14 @@
 			sepNavIntBoundsRect = "{{0, 0}, {595, 986}}";
 			sepNavSelRange = "{1355, 0}";
 			sepNavVisRange = "{0, 1526}";
+		};
+	};
+	CE957C0F0BE731F6B69CDF54 /* TimeController.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {717, 793}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1668}";
+			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
 	CEC76BFA752BEE51DAD47E74 /* Loops.h */ = {
@@ -626,8 +647,8 @@
 		sourceTree = "<group>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
-			sepNavSelRange = "{483, 0}";
-			sepNavVisRange = "{0, 1282}";
+			sepNavSelRange = "{517, 0}";
+			sepNavVisRange = "{0, 1316}";
 		};
 	};
 	E288C33F12EB899500AAB106 /* XCBuildMessageTextBookmark */ = {
@@ -636,7 +657,7 @@
 		fRef = E288C33E12EB899500AAB106 /* UntypedAddressListener.h */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 17;
+		rLoc = 18;
 		rType = 1;
 	};
 	E288C34412EB89A400AAB106 /* PBXTextBookmark */ = {
@@ -644,9 +665,70 @@
 		fRef = E288C33E12EB899500AAB106 /* UntypedAddressListener.h */;
 		name = "UntypedAddressListener.h: 18";
 		rLen = 0;
-		rLoc = 483;
+		rLoc = 517;
 		rType = 0;
 		vrLen = 1282;
+		vrLoc = 0;
+	};
+	E288C34712EB89ED00AAB106 /* SetterSlider.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = SetterSlider.h;
+		path = ../../../../../rec/src/rec/gui/SetterSlider.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
+			sepNavSelRange = "{1739, 0}";
+			sepNavVisRange = "{0, 1739}";
+		};
+	};
+	E288C34812EB89ED00AAB106 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Type 'rec::util::listener::AddressListener<rec::audio::source::StretchyProto>' is not a direct base of 'rec::gui::SetterSlider<rec::audio::source::StretchyProto>'";
+		fRef = E288C34712EB89ED00AAB106 /* SetterSlider.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 26;
+		rType = 1;
+	};
+	E288C35312EB8B3200AAB106 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E288C34712EB89ED00AAB106 /* SetterSlider.h */;
+		name = "SetterSlider.h: 66";
+		rLen = 0;
+		rLoc = 1739;
+		rType = 0;
+		vrLen = 1739;
+		vrLoc = 0;
+	};
+	E288C35412EB8B3200AAB106 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E288C33E12EB899500AAB106 /* UntypedAddressListener.h */;
+		name = "UntypedAddressListener.h: 18";
+		rLen = 0;
+		rLoc = 517;
+		rType = 0;
+		vrLen = 1282;
+		vrLoc = 0;
+	};
+	E288C35F12EB8B9D00AAB106 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E288C34712EB89ED00AAB106 /* SetterSlider.h */;
+		name = "SetterSlider.h: 66";
+		rLen = 0;
+		rLoc = 1739;
+		rType = 0;
+		vrLen = 1739;
+		vrLoc = 0;
+	};
+	E288C36012EB8B9D00AAB106 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E288C33E12EB899500AAB106 /* UntypedAddressListener.h */;
+		name = "UntypedAddressListener.h: 19";
+		rLen = 0;
+		rLoc = 517;
+		rType = 0;
+		vrLen = 1316;
 		vrLoc = 0;
 	};
 	E2E28AE912E6457B004DE2DE /* PBXTextBookmark */ = {
