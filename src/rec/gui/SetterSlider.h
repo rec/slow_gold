@@ -11,20 +11,15 @@
 namespace rec {
 namespace gui {
 
-template <typename Proto>
 class SetterSlider : public Layout,
-                     public AddressListener<Proto>,
+                     public UntypedAddressListener,
                      public juce::Slider::Listener {
  public:
-  typedef proto::arg::Address Address;
-  typedef proto::arg::Value Value;
-  typedef persist::Data<Proto> Data;
-
   SetterSlider(const String& name, const Address& address,
                const String& caption = String::empty,
                const String& tip = String::empty)
       : Layout(name, HORIZONTAL, true),
-        AddressListener<Proto>(address), slider_(name), caption_(caption) {
+        UntypedAddressListener(address), slider_(name), caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
     slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 85, 16);
 
@@ -39,8 +34,8 @@ class SetterSlider : public Layout,
 
   Slider* slider() { return &slider_; }
 
-  virtual void sliderValueChanged (Slider* slider) { 
-    this->updatePersistentData(); 
+  virtual void sliderValueChanged (Slider* slider) {
+    this->updatePersistentData();
   }
 
  protected:

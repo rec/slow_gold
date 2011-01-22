@@ -12,8 +12,6 @@ namespace gui {
 class StretchyController : public Layout {
  public:
   typedef audio::source::StretchyProto StretchyProto;
- 	typedef SetterSlider<StretchyProto> StretchySlider;
-  typedef proto::arg::Address Address;
 
   StretchyController();
   virtual bool isOpaque() const { return true; }
@@ -22,9 +20,9 @@ class StretchyController : public Layout {
   void enableSliders(bool enabled);
 
  private:
-  StretchySlider playbackSpeed_;
-  StretchySlider pitchScale_;
-  StretchySlider fineScale_;
+  SetterSlider playbackSpeed_;
+  SetterSlider pitchScale_;
+  SetterSlider fineScale_;
   gui::SetterToggle<StretchyProto> disableButton_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
