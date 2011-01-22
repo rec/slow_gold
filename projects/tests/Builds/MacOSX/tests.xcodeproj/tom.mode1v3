@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -312,6 +310,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E288C2A312EB67D600AAB106</string>
+										<string>E288C2A912EB6EAE00AAB106</string>
 										<key>history</key>
 										<array>
 											<string>E2714F39120B1A5A0045B28D</string>
@@ -596,6 +596,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E288C2B112EB6EAE00AAB106</string>
+		<string>E288C2B212EB6EAE00AAB106</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E2714F3E120B1A5A0045B28D</string>
 		<string>/Users/tom/Documents/development/rec/projects/tests/Builds/MacOSX/tests.xcodeproj</string>
 	</array>
@@ -799,13 +803,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E2E28CB912E7CE2E004DE2DE</string>
+				<string>E288C2AA12EB6EAE00AAB106</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E2E28CBA12E7CE2E004DE2DE</string>
-				<string>E2E28CBB12E7CE2E004DE2DE</string>
-				<string>E2E28CBC12E7CE2E004DE2DE</string>
-				<string>E2E28CBD12E7CE2E004DE2DE</string>
-				<string>E2E28CBE12E7CE2E004DE2DE</string>
+				<string>E288C2AB12EB6EAE00AAB106</string>
+				<string>E288C2AC12EB6EAE00AAB106</string>
+				<string>E288C2AD12EB6EAE00AAB106</string>
+				<string>E288C2AE12EB6EAE00AAB106</string>
+				<string>E288C2AF12EB6EAE00AAB106</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -924,8 +928,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -961,7 +963,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E2E28CBF12E7CE2E004DE2DE</string>
+				<string>E288C2B012EB6EAE00AAB106</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -971,7 +973,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

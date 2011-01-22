@@ -35,22 +35,24 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
 
     range = selected.getTotalRange();
     numRanges = selected.getNumRanges();
-
-    if (numRanges == 1) {
-      for (int i = 0; i < proto_.loop_point_size(); ++i) {
-        bool sel = range.contains(i);
-        if (i < proto_.selected_size())
-          proto_.set_selected(i, sel);
-        else
-          proto_.add_selected(sel);
-      }
-    }
   }
 
-  if (numRanges > 1)
+  if (numRanges > 1) {
     selectRangeOfRows(range.getStart(), range.getEnd());
-  else
+  } else {
+    {
+      ScopedLock l(lock_);
+      for (int i = 0; i < proto_.selected_size(); ++i)
+        proto_.set_selected(i, false);
+
+      while (proto_.selected_size() < proto_.loop_point_size())
+        proto_.add_selected(false);
+
+      for (int i = range.getStart(); i < range.getEnd(); ++i)
+        proto_.set_selected(i, true);
+    }
     onChange();
+  }
 }
 
 void Loops::setData(Data* d) {
@@ -66,6 +68,8 @@ void Loops::doSelect() {
       if (proto_.selected(i))
         sel.addRange(juce::Range<int>(i, i + 1));
     }
+    if (sel == getSelectedRows())
+      return;
   }
   setSelectedRows(sel, false);
 }

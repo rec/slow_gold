@@ -83,7 +83,6 @@ void TableModelBase::onChange() {
 
 void TableModelBase::set(const Value& v) {
   ScopedLock l(lock_);
-
   if (!mutable_message()->ParseFromString(v.message_f()))
     LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
   else
