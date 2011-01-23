@@ -10,17 +10,15 @@ namespace gui {
 
 using proto::Operation;
 
-template <typename Proto>
-class TypedTableController : public TableController, public AddressListener<Proto> {
+class TypedTableController : public TableController, public UntypedAddressListener {
  public:
-  typedef persist::Data<Proto> Data;
   TypedTableController(const TableColumnList& c, const Address& address)
-      : TableController(c, address), AddressListener<Proto>(Address()) {
+      : TableController(c, address), UntypedAddressListener(Address()) {
   }
 
-  virtual void setData(Data* data) {
+  virtual void setData(UntypedData* data) {
     setSetter(data);
-    AddressListener<Proto>::setData(data);
+    UntypedAddressListener::setData(data);
   }
 
   virtual const Value get() const { return TableController::get(); }

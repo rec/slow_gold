@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="kL7DWOt19" name="Slow">
+  <MAINGROUP id="gWbVVfnHB" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -560,12 +560,12 @@
               name="TableController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TableController.h" id="CCCo1SuGl"
               name="TableController.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/TableModel.h" id="NyIonjguI"
-              name="TableModel.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/TransportController.cpp"
               id="9tkQi8TjE" name="TransportController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TransportController.h" id="o7HX7m3lM"
               name="TransportController.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/TypedTableController.h" id="Kz1vaW2EH"
+              name="TypedTableController.h" resource="0"/>
       </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
         <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="hAzbc8MNi"
@@ -693,6 +693,10 @@
                 name="Listener.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/SetterListener.h"
                 id="9Hs97sV24" name="SetterListener.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/listener/UntypedAddressListener.h"
+                id="tueYvUz3W" name="UntypedAddressListener.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/listener/UntypedDataListener.h"
+                id="bAfa9IxFS" name="UntypedDataListener.h" resource="0"/>
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="jinvo0ree" name="Math.h"
               resource="0"/>
@@ -950,7 +954,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="UMO3QA692" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="pjfsFnMbL" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

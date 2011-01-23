@@ -29,7 +29,8 @@ void StretchyController::setData(UntypedData* data) {
   fineScale_.setData(data);
   disableButton_.setData(data);
 
-  bool enable = !(data && data->get<StretchyProto>().disabled());
+  StretchyProto proto;
+  bool enable = !(data && data->fill(&proto) && proto.disabled());
   thread::callAsync(this, &StretchyController::enableSliders, enable);
 }
 

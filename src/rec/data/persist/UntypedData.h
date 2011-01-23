@@ -37,16 +37,16 @@ class UntypedData : public Setter {
     return &messageBroadcaster_;
   }
 
-  template <typename T> T get() const {
-    T t;
+  template <typename T> bool fill(T* t) const {
+    if (t->GetTypeName() != getTypeName()) {
+      LOG(ERROR) << "Couldn't fill " << t->GetTypeName()
+                 << " from " << getTypeName();
+      return false;
+    }
+
     ScopedLock l(lock_);
-
-    if (t.GetTypeName() == getTypeName())
-      copyTo(&t);
-    else
-      LOG(ERROR) << "types: " << t.GetTypeName() << ", " << getTypeName();
-
-    return t;
+    copyTo(t);
+    return true;
   }
 
  protected:

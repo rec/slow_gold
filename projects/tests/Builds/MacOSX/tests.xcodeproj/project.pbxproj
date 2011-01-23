@@ -467,9 +467,9 @@
 		64B92D0FBE54FDC675F47983 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StretchyController.h; path = ../../../../src/rec/gui/StretchyController.h; sourceTree = SOURCE_ROOT; };
 		14D6B93BB1CF0134C040B5AC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TableController.cpp; path = ../../../../src/rec/gui/TableController.cpp; sourceTree = SOURCE_ROOT; };
 		E01D797FA90CF10A159C8006 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableController.h; path = ../../../../src/rec/gui/TableController.h; sourceTree = SOURCE_ROOT; };
-		04FD6AA30CDC3B502CE30E9E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableModel.h; path = ../../../../src/rec/gui/TableModel.h; sourceTree = SOURCE_ROOT; };
 		3150DE7161FA80C6931E0CFD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TransportController.cpp; path = ../../../../src/rec/gui/TransportController.cpp; sourceTree = SOURCE_ROOT; };
 		6A7227490EF934846B1C8BC8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportController.h; path = ../../../../src/rec/gui/TransportController.h; sourceTree = SOURCE_ROOT; };
+		363E874A7599C1FEEE538F2D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedTableController.h; path = ../../../../src/rec/gui/TypedTableController.h; sourceTree = SOURCE_ROOT; };
 		ED0422A07F2FAEEA9DA97A6D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioSetupPage.h; path = ../../../../src/rec/slow/AudioSetupPage.h; sourceTree = SOURCE_ROOT; };
 		5AF173EB066246DE8DDE4333 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTransportSourcePlayer.cpp; path = ../../../../src/rec/slow/AudioTransportSourcePlayer.cpp; sourceTree = SOURCE_ROOT; };
 		278B2BB4E9FB9941C7E9D682 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioTransportSourcePlayer.h; path = ../../../../src/rec/slow/AudioTransportSourcePlayer.h; sourceTree = SOURCE_ROOT; };
@@ -536,6 +536,8 @@
 		CDD8BC16A4EB518C9F4AA345 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataListener.h; path = ../../../../src/rec/util/listener/DataListener.h; sourceTree = SOURCE_ROOT; };
 		4D68739BF46B9EE2DD16BD85 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../../src/rec/util/listener/Listener.h; sourceTree = SOURCE_ROOT; };
 		6FA4419F13120E1D17A69831 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterListener.h; path = ../../../../src/rec/util/listener/SetterListener.h; sourceTree = SOURCE_ROOT; };
+		279965A845C275EB7FDBAA51 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedAddressListener.h; path = ../../../../src/rec/util/listener/UntypedAddressListener.h; sourceTree = SOURCE_ROOT; };
+		38D1987EFA8BD286AEDAFC93 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedDataListener.h; path = ../../../../src/rec/util/listener/UntypedDataListener.h; sourceTree = SOURCE_ROOT; };
 		4702608BDF74C22FA51028A1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Math.h; path = ../../../../src/rec/util/Math.h; sourceTree = SOURCE_ROOT; };
 		F11AE31B693093253A9C071D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mathy_test.cpp; path = ../../../../src/rec/util/Mathy_test.cpp; sourceTree = SOURCE_ROOT; };
 		96A7564A2D45C9A4E59B406B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Convertors.cpp; path = ../../../../src/rec/util/partition/Convertors.cpp; sourceTree = SOURCE_ROOT; };
@@ -935,9 +937,9 @@
 				64B92D0FBE54FDC675F47983,
 				14D6B93BB1CF0134C040B5AC,
 				E01D797FA90CF10A159C8006,
-				04FD6AA30CDC3B502CE30E9E,
 				3150DE7161FA80C6931E0CFD,
-				6A7227490EF934846B1C8BC8 ); name = gui; sourceTree = "<group>"; };
+				6A7227490EF934846B1C8BC8,
+				363E874A7599C1FEEE538F2D ); name = gui; sourceTree = "<group>"; };
 		E812E8C193A90FB1A45D026F = { isa = PBXGroup; children = (
 				ED0422A07F2FAEEA9DA97A6D,
 				5AF173EB066246DE8DDE4333,
@@ -997,7 +999,9 @@
 				01AF79300E59F2858CBC8778,
 				CDD8BC16A4EB518C9F4AA345,
 				4D68739BF46B9EE2DD16BD85,
-				6FA4419F13120E1D17A69831 ); name = listener; sourceTree = "<group>"; };
+				6FA4419F13120E1D17A69831,
+				279965A845C275EB7FDBAA51,
+				38D1987EFA8BD286AEDAFC93 ); name = listener; sourceTree = "<group>"; };
 		6C23D6DD357F18A070A70B50 = { isa = PBXGroup; children = (
 				96A7564A2D45C9A4E59B406B,
 				1E84221BB98A2878AAD4862A,
@@ -1194,7 +1198,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		C46BF9DA87541FB1BF2BA73D = { isa = PBXGroup; children = (
+		F4714C0257FA3A7290842556 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1472,7 +1476,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = C46BF9DA87541FB1BF2BA73D; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = F4714C0257FA3A7290842556; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

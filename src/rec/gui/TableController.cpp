@@ -9,8 +9,8 @@ namespace gui {
 
 TableController::TableController(const TableColumnList& c, const Address& address)
     : TableListBox("TableController", this),
+      UntypedAddressListener(Address()),
       columns_(c),
-      setter_(NULL),
       address_(address),
       numRows_(0) {
 }
@@ -51,7 +51,7 @@ void TableController::paintCell(Graphics& g,
   }
   const TableColumn& column = columns_.column(columnId - 1);
   Address row = (address_ + rowNumber) + column.address();
-  String t = displayText(column, proto::getValue(row, message()));
+  String t = displayText(column, proto::getValue(row, *message_));
   g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
 }
 
@@ -69,49 +69,41 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
 const Value TableController::get() const {
   ScopedLock l(lock_);
   Value value;
-  message().SerializeToString(value.mutable_message_f());
+  message_->SerializeToString(value.mutable_message_f());
   return value;
 }
 
 void TableController::onDataChange() {
   {
     ScopedLock l(lock_);
-    numRows_ = proto::getSize(address_, message());
+    numRows_ = proto::getSize(address_, *message_);
   }
   thread::callAsync(this, &TableListBox::updateContent);
 }
 
 void TableController::set(const Value& v) {
   ScopedLock l(lock_);
-  if (mutable_message()->ParseFromString(v.message_f()))
+  if (message_.get()->ParseFromString(v.message_f()))
     onDataChange();
   else
-    LOG(ERROR) << "Couldn't parse value: " << message().DebugString();
+    LOG(ERROR) << "Couldn't parse value: " << message_->DebugString();
 }
 
-void TableController::setSetter(Setter* setter) {
+void TableController::setData(UntypedData* data) {
   {
     ScopedLock l(lock_);
-    setter_ = setter;
+    UntypedDataListener::setData(data);
     numRows_ = 0;
   }
-  if (Message* msg = mutable_message()) {
-    if (setter)
-      setter->copyTo(msg);
+  if (Message* msg = message_.get()) {
+    if (data)
+      data->copyTo(msg);
     else
       msg->Clear();
   }
   onDataChange();
 }
 
-void TableController::selectedRowsChanged(int lastRowSelected) {
-  juce::SparseSet<int> s;
-  {
-    ScopedLock l(lock_);
-    s = getSelectedRows();
-  }
-  broadcast(s);
-}
 
 }  // namespace gui
 }  // namespace rec

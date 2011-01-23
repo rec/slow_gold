@@ -3,22 +3,16 @@
 
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
-#include "rec/util/listener/Listener.h"
+#include "rec/util/listener/UntypedAddressListener.h"
 #include "rec/util/Reference.h"
 #include "rec/data/proto/Address.h"
-
-namespace juce {
-
-template <typename T> class SparseSet;
-
-}
 
 namespace rec {
 namespace gui {
 
 class TableController : public TableListBoxModel,
                         public TableListBox,
-                        public Broadcaster<const juce::SparseSet<int>&> {
+                        public UntypedAddressListener {
  public:
   TableController(const TableColumnList& columns, const Address& address);
 
@@ -27,27 +21,23 @@ class TableController : public TableListBoxModel,
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
 
-  void repaint() { TableListBox::repaint(); }
+  virtual void setData(UntypedData* data);
 
   const Value get() const;
   void set(const Value& v);
 
-  virtual void setSetter(Setter* setter);
-
-  virtual void selectedRowsChanged(int lastRowSelected);
+  virtual void selectedRowsChanged(int lastRowSelected) = 0;
 
  protected:
   // onDataChange() is called to update the GUI when the persistent data
   // underlying this GUI component changes
   virtual void onDataChange();
-  virtual const Message& message() const = 0;
-  virtual Message* mutable_message() = 0;
 
   static String displayText(const TableColumn& col, const Value& value);
 
+  ptr<Message> message_;
   const TableColumnList columns_;
   CriticalSection lock_;
-  Setter* setter_;
 
   Address address_;
   int numRows_;

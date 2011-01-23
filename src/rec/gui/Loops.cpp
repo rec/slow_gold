@@ -16,9 +16,14 @@ static Defaulter<TableColumnList> dflt(
 const double Loops::CLOSE = 0.5;
 
 Loops::Loops(const TableColumnList* desc)
-    : LoopsBase(dflt.get(desc), Address("loop_point")), length_(0) {
+    : TableController(dflt.get(desc), Address("loop_point")), length_(0) {
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
+  message_.reset(&loopPoints_);
+}
+
+Loops::~Loops() {
+  message_.transfer();
 }
 
 void Loops::setLength(int len) {
@@ -43,14 +48,14 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
   } else {
     {
       ScopedLock l(lock_);
-      for (int i = 0; i < proto_.selected_size(); ++i)
-        proto_.set_selected(i, false);
+      for (int i = 0; i < loopPoints_.selected_size(); ++i)
+        loopPoints_.set_selected(i, false);
 
-      while (proto_.selected_size() < proto_.loop_point_size())
-        proto_.add_selected(false);
+      while (loopPoints_.selected_size() < loopPoints_.loop_point_size())
+        loopPoints_.add_selected(false);
 
       for (int i = range.getStart(); i < range.getEnd(); ++i)
-        proto_.set_selected(i, true);
+        loopPoints_.set_selected(i, true);
     }
     updatePersistentData();
   }
@@ -60,8 +65,8 @@ void Loops::doSelect() {
   juce::SparseSet<int> sel;
   {
     ScopedLock l(lock_);
-    for (int i = 0; i < proto_.selected_size(); ++i) {
-      if (proto_.selected(i))
+    for (int i = 0; i < loopPoints_.selected_size(); ++i) {
+      if (loopPoints_.selected(i))
         sel.addRange(juce::Range<int>(i, i + 1));
     }
     if (sel == getSelectedRows())
@@ -71,14 +76,15 @@ void Loops::doSelect() {
 }
 
 void Loops::onDataChange() {
+  getData()->fill(&loopPoints_);
   TableController::onDataChange();
   thread::callAsync(this, &Loops::doSelect);
 }
 
 bool Loops::isNewLoopPoint(double t) const {
   ScopedLock l(lock_);
-  for (int i = 0; i < proto_.loop_point_size(); ++i) {
-    double t2 = proto_.loop_point(i).time();
+  for (int i = 0; i < loopPoints_.loop_point_size(); ++i) {
+    double t2 = loopPoints_.loop_point(i).time();
     if (near(t, t2) || near(t + length_, t2) || near(t, t2 + length_))
       return false;
   }
@@ -97,12 +103,12 @@ struct CompareLoopPoints {
 
 void Loops::addLoopPoint(double time) {
   ScopedLock l(lock_);
-  if (setter_ && isNewLoopPoint(time)) {
-    proto_.add_loop_point()->set_time(time);
-    std::sort(proto_.mutable_loop_point()->begin(),
-              proto_.mutable_loop_point()->end(),
+  if (getData() && isNewLoopPoint(time)) {
+    loopPoints_.add_loop_point()->set_time(time);
+    std::sort(loopPoints_.mutable_loop_point()->begin(),
+              loopPoints_.mutable_loop_point()->end(),
               CompareLoopPoints());
-    setter_->set(Address(), Value(proto_));
+    getData()->set(Address(), Value(loopPoints_));
   }
 }
 

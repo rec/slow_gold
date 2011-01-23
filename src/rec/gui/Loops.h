@@ -2,18 +2,16 @@
 #define __REC_GUI_LOOPS__
 
 #include "rec/gui/LoopPoint.pb.h"
-#include "rec/gui/TypedTableController.h"
+#include "rec/gui/TableController.h"
 #include "rec/util/Math.h"
 
 namespace rec {
 namespace gui {
 
-typedef TypedTableController<LoopPointList> LoopsBase;
-
-class Loops : public LoopsBase {
+class Loops : public TableController {
  public:
   explicit Loops(const TableColumnList* desc = NULL);
-  virtual ~Loops() {}
+  virtual ~Loops();
 
   static const double CLOSE;
 
@@ -29,6 +27,7 @@ class Loops : public LoopsBase {
 
  private:
   double length_;
+  LoopPointList loopPoints_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };

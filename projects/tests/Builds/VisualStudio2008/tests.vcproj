@@ -422,9 +422,9 @@
           <File RelativePath="..\..\..\..\src\rec\gui\StretchyController.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TableController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TableController.h"/>
-          <File RelativePath="..\..\..\..\src\rec\gui\TableModel.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TransportController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TransportController.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\TypedTableController.h"/>
         </Filter>
         <Filter Name="slow">
           <File RelativePath="..\..\..\..\src\rec\slow\AudioSetupPage.h"/>
@@ -502,6 +502,8 @@
             <File RelativePath="..\..\..\..\src\rec\util\listener\DataListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\UntypedAddressListener.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\UntypedDataListener.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Mathy_test.cpp"/>
