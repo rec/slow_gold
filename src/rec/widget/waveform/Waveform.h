@@ -25,7 +25,7 @@ struct TimeAndMouseEvent {
   int clickCount_;
 };
 
-typedef Range<double> TimeBounds;
+typedef Range<double> TimeRange;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
@@ -45,8 +45,8 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   void layoutCursor(Cursor* cursor) const;
   Cursor* addCursor(const CursorProto& desc, double time, int zorder = -1);
   void moveCursor(Cursor* cursor, double time);
-  void setTimeBounds(const TimeBounds&);
-  const TimeBounds getTimeBounds() const;
+  void setTimeRange(const TimeRange&);
+  const TimeRange getTimeRange() const;
 	void addAllCursors(const gui::LoopPointList& loopPoints);
 
 
@@ -64,13 +64,16 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
 
+  int timeToX(double t) const { return getWidth() * (t - range_.begin_) / range_.size(); }
+  double xToTime(int x) const { return range_.begin_ + (x * range_.size()) / getWidth(); }
+
   CriticalSection lock_;
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
-  TimeBounds range_;
+  TimeRange range_;
   Cursor* timeCursor_;
 
-  typedef std::set<TimeBounds> SelectionRange;
+  typedef std::set<TimeRange> SelectionRange;
   SelectionRange selection_;
 
   DISALLOW_COPY_AND_ASSIGN(Waveform);

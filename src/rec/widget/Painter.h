@@ -37,6 +37,7 @@ class Painter {
   ~Painter() { graphics_->setFont(font_); }
 
   const Font font() const { return gui::getFont(widget_.font()); }
+  Graphics* graphics() { return graphics_; }
 
   const gui::Colors& colors() const { return colors_; }
   const Colour colour(int i) const { return gui::color::get(colors_, i); }

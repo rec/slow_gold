@@ -13,10 +13,10 @@ struct Range {
   Range(Type b, Type e) : begin_(b), end_(e) {}
 
   bool operator==(const Range& x) const {
-    return begin_ == x.begin && end_ == x.end_;
+    return begin_ == x.begin_ && end_ == x.end_;
   }
   bool operator<(const Range& x) const {
-    return begin_ < x.begin || (begin_ == x.begin && end_ < x.end_);
+    return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
   }
 
   bool operator<=(const Range& x) const { return !(x < *this); }

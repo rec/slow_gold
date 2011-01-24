@@ -55,7 +55,6 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
 }
 
 void Cursor::setTime(float time) {
-  DLOG(INFO) << time;
   ScopedLock l(lock_);
   time_ = time;
   waveform_->layoutCursor(this);
