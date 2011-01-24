@@ -22,10 +22,15 @@ Waveform::~Waveform() {
     delete getChildComponent(i - 1);
 }
 
+static const Defaulter<CursorProto> timeDesc(
+    "widget {colors {color: {name: \"pink\"}}}");
+
+static const Defaulter<CursorProto> defaultDesc(
+    "widget {colors {color: {name: \"yellow\"}}}");
+
+
 const CursorProto& Waveform::defaultTimeCursor() {
-  static Defaulter<CursorProto> c(
-      "widget {colors {color: {name: \"yellow\"}}}");
-  return c.get();
+  return timeDesc.get();
 }
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
@@ -92,11 +97,10 @@ void Waveform::operator()(const juce::AudioThumbnail&) {
 
 void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   ScopedLock l(lock_);
-  static const CursorProto& desc = CursorProto::default_instance();
   for (int i = 0, c = 1; i < loopPoints.loop_point_size(); ) {
     double time = loopPoints.loop_point(i).time();
     if (c >= getNumChildComponents()) {
-      addCursor(desc, time);
+      addCursor(defaultDesc.get(), time);
       ++i;
       ++c;
     } else {
@@ -106,7 +110,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
         ++i;
         ++c;
       } else if (time < time2) {
-        addCursor(desc, time, c);
+        addCursor(defaultDesc.get(), time, c);
         ++i;
       } else {
         removeChildComponent(c);
