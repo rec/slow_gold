@@ -3,9 +3,11 @@
 
 #include <set>
 
+#include "rec/gui/LoopPoint.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/listener/DataListener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
@@ -26,8 +28,9 @@ struct TimeAndMouseEvent {
 typedef Range<double> TimeBounds;
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
-                 public listener::Listener<const juce::AudioThumbnail&>,
+class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
+                 public Listener<const juce::AudioThumbnail&>,
+                 public DataListener<gui::LoopPointList>,
                  public Component {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
@@ -39,13 +42,16 @@ class Waveform : public listener::Broadcaster<const TimeAndMouseEvent&>,
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();
 
-  void layoutCursor(Cursor* cursor);
-  Cursor* addCursor(const CursorProto& desc, double time);
+  void layoutCursor(Cursor* cursor) const;
+  Cursor* addCursor(const CursorProto& desc, double time, int zorder = -1);
   void moveCursor(Cursor* cursor, double time);
   void setTimeBounds(const TimeBounds&);
   const TimeBounds getTimeBounds() const;
+	void addAllCursors(const gui::LoopPointList& loopPoints);
+
 
   virtual void operator()(const juce::AudioThumbnail&);
+  virtual void operator()(const gui::LoopPointList&);
 
   virtual void paint(Graphics& g);
   virtual void repaint() { Component::repaint(); }

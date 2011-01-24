@@ -47,7 +47,9 @@ void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
   (*r)->add();
 }
 
-MainPage::~MainPage() {}
+MainPage::~MainPage() {
+  player_.getTransport()->clear();
+}
 
 void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
@@ -101,9 +103,14 @@ void MainPage::operator()(const VirtualFile& file) {
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);
     loops_.setData(NULL);
+    waveform_.setData(NULL);
 
   } else {
-    loops_.setData(persist::data<LoopPointList>(file));
+    persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
+    loops_.setData(listData);
+    waveform_.setData(listData);
+    listData->requestUpdate();
+
     if (gui::CachedThumbnail* thumb = player_.cachedThumbnail()) {
       waveform_.setAudioThumbnail(thumb->thumbnail());
       thumb->addListener(&waveform_);

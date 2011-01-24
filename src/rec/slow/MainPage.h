@@ -20,7 +20,6 @@ using rec::widget::tree::Root;
 namespace rec {
 namespace slow {
 
-
 class MainPage : public gui::Layout,
                  public Listener<float>,
                  public Listener<const TimeAndMouseEvent&>,

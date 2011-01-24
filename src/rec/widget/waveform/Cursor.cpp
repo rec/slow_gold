@@ -55,6 +55,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
 }
 
 void Cursor::setTime(float time) {
+  DLOG(INFO) << time;
   ScopedLock l(lock_);
   time_ = time;
   waveform_->layoutCursor(this);
@@ -63,6 +64,7 @@ void Cursor::setTime(float time) {
 void Cursor::paint(Graphics& g) {
   ScopedLock l(lock_);
   Painter p(desc_.widget(), &g);
+
   juce::Rectangle<int> bounds = getLocalBounds();
 
   float middle = bounds.getWidth() / 2.0f;

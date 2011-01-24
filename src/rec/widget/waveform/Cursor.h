@@ -13,7 +13,7 @@ namespace waveform {
 
 class Cursor : public Component, public listener::Listener<float> {
  public:
-  Cursor(const CursorProto& d, Waveform* waveform, float time = 0.0f);
+  Cursor(const CursorProto& d, Waveform* waveform, float time);
 
   virtual void operator()(float t) { setTime(t); }
 

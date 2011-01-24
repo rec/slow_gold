@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="J1FwYuOo8" name="tests">
+  <MAINGROUP id="bco8rDYHz" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -585,8 +585,6 @@
               id="mDCnPv6RT" name="TransportController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/TransportController.h" id="ZkOVf6iI6"
               name="TransportController.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/TypedTableController.h" id="a15uk0jaz"
-              name="TypedTableController.h" resource="0"/>
       </GROUP>
       <GROUP id="vrHU7SxTi" name="slow">
         <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="W5xESeAC9"
@@ -720,8 +718,6 @@
                 name="VirtualFile.h" resource="0"/>
         </GROUP>
         <GROUP id="sU4e5LjIk" name="listener">
-          <FILE compile="0" file="../../src/rec/util/listener/AddressListener.h"
-                id="qneHqQ9Lu" name="AddressListener.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/ChangeBroadcaster.h"
                 id="cWImQuoWA" name="ChangeBroadcaster.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/DataListener.h"
@@ -999,7 +995,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="sOUB3h7bh" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="AuY9D9eb2" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

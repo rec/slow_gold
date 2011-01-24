@@ -16,6 +16,12 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* cursor)
     timeCursor_ = addCursor(*cursor, 0.0f);
 }
 
+Waveform::~Waveform() {
+  ScopedLock l(lock_);
+  for (int i = getNumChildComponents(); i > 0; --i)
+    delete getChildComponent(i - 1);
+}
+
 const CursorProto& Waveform::defaultTimeCursor() {
   static Defaulter<CursorProto> c(
       "widget {colors {color: {name: \"yellow\"}}}");
@@ -62,16 +68,11 @@ void Waveform::paint(Graphics& g) {
   }
 }
 
-Waveform::~Waveform() {
+Cursor* Waveform::addCursor(const CursorProto& desc, double time, int zorder) {
   ScopedLock l(lock_);
-  for (int i = getNumChildComponents(); i > 0; --i)
-    delete getChildComponent(i - 1);
-}
-
-Cursor* Waveform::addCursor(const CursorProto& desc, double time) {
-  ScopedLock l(lock_);
-  Cursor* cursor = new Cursor(desc, this);
-  addAndMakeVisible(cursor);
+  Cursor* cursor = new Cursor(desc, this, time);
+  addAndMakeVisible(cursor, zorder);
+  layoutCursor(cursor);
   return cursor;
 }
 
@@ -89,6 +90,36 @@ void Waveform::operator()(const juce::AudioThumbnail&) {
   thread::callAsync(this, &Waveform::repaint);
 }
 
+void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
+  ScopedLock l(lock_);
+  static const CursorProto& desc = CursorProto::default_instance();
+  for (int i = 0, c = 1; i < loopPoints.loop_point_size(); ) {
+    double time = loopPoints.loop_point(i).time();
+    if (c >= getNumChildComponents()) {
+      addCursor(desc, time);
+      ++i;
+      ++c;
+    } else {
+      Cursor* kid = dynamic_cast<Cursor*>(getChildComponent(c));
+      double time2 = kid->getTime();
+      if (Math<double>::near(time, time2, 0.001)) {
+        ++i;
+        ++c;
+      } else if (time < time2) {
+        addCursor(desc, time, c);
+        ++i;
+      } else {
+        removeChildComponent(c);
+      }
+    }
+  }
+  repaint();
+}
+
+void Waveform::operator()(const gui::LoopPointList& loopPoints) {
+  thread::callAsync(this, &Waveform::addAllCursors, loopPoints);
+}
+
 const TimeBounds Waveform::getTimeBounds() const {
   ScopedLock l(lock_);
   return TimeBounds(range_.begin_, range_.end_);
@@ -103,13 +134,14 @@ void Waveform::resized() {
   }
 }
 
-void Waveform::layoutCursor(Cursor *cursor) {
+void Waveform::layoutCursor(Cursor *cursor) const {
   ScopedLock l(lock_);
   juce::Rectangle<int> bounds = getLocalBounds();
   int width = getLocalBounds().getWidth();
   int displayWidth = cursor->desc().display_width();
   bounds.setWidth(displayWidth);
   int x = 0;
+
   if (!Math<double>::near(range_.begin_, range_.end_, 0.001))
     x = width * (cursor->getTime() - range_.begin_) / (range_.end_ - range_.begin_);
 

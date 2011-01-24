@@ -104,6 +104,5 @@ void TableController::setData(UntypedData* data) {
   onDataChange();
 }
 
-
 }  // namespace gui
 }  // namespace rec
