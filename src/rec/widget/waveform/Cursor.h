@@ -1,6 +1,8 @@
 #ifndef __REC_WIDGET_WAVEFORM_CURSOR__
 #define __REC_WIDGET_WAVEFORM_CURSOR__
 
+#include <set>
+
 #include "rec/gui/Geometry.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/widget/Painter.h"
@@ -14,6 +16,7 @@ namespace waveform {
 class Cursor : public Component, public listener::Listener<float> {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, float time);
+  virtual ~Cursor() {}
 
   virtual void operator()(float t) { setTime(t); }
 
@@ -22,9 +25,6 @@ class Cursor : public Component, public listener::Listener<float> {
   float getTime() const;
 
   const CursorProto& desc() const { return desc_; }
-
-  void setBoundsAsync(const juce::Rectangle<int>& bounds);
-  void setSavedBounds();
 
  private:
   Waveform* const waveform_;
@@ -35,6 +35,12 @@ class Cursor : public Component, public listener::Listener<float> {
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Cursor);
 };
+
+struct CompareCursors {
+  bool operator()(Cursor* x, Cursor* y) { return x->getTime() < y->getTime(); }
+};
+
+typedef std::set<Cursor*, CompareCursors> CursorSet;
 
 }  // namespace waveform
 }  // namespace widget

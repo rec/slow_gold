@@ -42,13 +42,9 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();
 
-  void layoutCursor(Cursor* cursor) const;
-  Cursor* addCursor(const CursorProto& desc, double time, int zorder = -1);
-  void moveCursor(Cursor* cursor, double time);
   void setTimeRange(const TimeRange&);
   const TimeRange getTimeRange() const;
 	void addAllCursors(const gui::LoopPointList& loopPoints);
-
 
   virtual void operator()(const juce::AudioThumbnail&);
   virtual void operator()(const gui::LoopPointList&);
@@ -60,12 +56,15 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   void mouseUp(const juce::MouseEvent& e) { doClick(e, 1); }
 
   Cursor* timeCursor() { return timeCursor_; }
+  void layoutCursors();
 
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
 
   int timeToX(double t) const { return getWidth() * (t - range_.begin_) / range_.size(); }
   double xToTime(int x) const { return range_.begin_ + (x * range_.size()) / getWidth(); }
+
+  void setCursorBounds(Cursor *cursor) const;
 
   CriticalSection lock_;
   WaveformProto desc_;
@@ -77,6 +76,8 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   SelectionRange selection_;
 
   DISALLOW_COPY_AND_ASSIGN(Waveform);
+
+  friend class Cursor;
 };
 
 }  // namespace waveform

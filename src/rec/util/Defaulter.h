@@ -19,6 +19,18 @@ class Defaulter {
   Proto proto_;
 };
 
+template <typename Proto>
+class Def {
+ public:
+  explicit Def(const string& dflt) { fillFromDefault(dflt, &proto_); }
+  const Proto& get(const Proto* p = NULL) const { return p ? *p : proto_; }
+  const Proto& operator*() const { return get(); }
+
+ private:
+  Proto proto_;
+};
+
+
 }  // namespace util
 }  // namespace rec
 

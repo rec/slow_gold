@@ -57,7 +57,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
 void Cursor::setTime(float time) {
   ScopedLock l(lock_);
   time_ = time;
-  waveform_->layoutCursor(this);
+  thread::runOnMessageThread(waveform_, &Waveform::setCursorBounds, this);
 }
 
 void Cursor::paint(Graphics& g) {
@@ -76,15 +76,6 @@ void Cursor::paint(Graphics& g) {
 float Cursor::getTime() const {
   ScopedLock l(lock_);
   return time_;
-}
-
-void Cursor::setSavedBounds() {
-  setBounds(bounds_);
-}
-
-void Cursor::setBoundsAsync(const juce::Rectangle<int>& bounds) {
-  bounds_ = bounds;
-  thread::callAsync(this, &Cursor::setSavedBounds);
 }
 
 }  // namespace waveform
