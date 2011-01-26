@@ -1,10 +1,11 @@
 #include "rec/slow/AudioTransportSourcePlayer.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace slow {
 
 AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
-: Thread("AudioTransportSourcePlayer"), deviceManager_(dm) {
+    : Thread("AudioTransportSourcePlayer"), deviceManager_(dm), lastTime_(-1.0) {
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(this);
   addChangeListener(this);  // Listen to ourselves!
@@ -19,6 +20,7 @@ AudioTransportSourcePlayer::~AudioTransportSourcePlayer() {
 void AudioTransportSourcePlayer::clear() {
   stop();
   setSource(NULL);
+  signalThreadShouldExit();
 }
 
 void AudioTransportSourcePlayer::setPosition(double newPosition) {
@@ -27,7 +29,11 @@ void AudioTransportSourcePlayer::setPosition(double newPosition) {
 }
 
 void AudioTransportSourcePlayer::update() {
-  broadcast(getNextReadPosition() / 44100.0f);
+  float time = getNextReadPosition() / 44100.0f;
+  if (!Math<float>::near(time, lastTime_, 0.1)) {
+    lastTime_ = time;
+    broadcast(time);
+  }
 }
 
 void AudioTransportSourcePlayer::setStart(bool isStart) {

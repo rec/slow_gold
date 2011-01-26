@@ -39,6 +39,7 @@ class AudioTransportSourcePlayer
   AudioSourcePlayer player_;
   AudioDeviceManager* deviceManager_;
   Broadcaster<const AudioTransportSourcePlayer&> changeBroadcaster_;
+  float lastTime_;
 
   DISALLOW_COPY_AND_ASSIGN(AudioTransportSourcePlayer);
 };
