@@ -31,7 +31,7 @@ class Data : public UntypedData, public Broadcaster<const Proto&> {
   virtual void onDataChange() {
     Proto p;
     {
-      ScopedLock l(lock_);
+      ScopedLock l(UntypedData::lock_);
       p.CopyFrom(proto_);
     }
     messageBroadcaster()->broadcast(p);
