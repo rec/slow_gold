@@ -25,6 +25,8 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
 
   player_.getTransport()->addListener(waveform_.timeCursor());
   player_.getTransport()->addListener(this);
+  player_.getTransport()->addListener(controller_.timeController());
+  waveform_.selectionBroadcaster()->addListener(controller_.timeController());
 
   waveform_.addListener(this);
   waveform_.dropBroadcaster()->addListener(player_.fileListener());
@@ -34,7 +36,6 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   directory_->startThread();
   persist::data<VirtualFile>()->requestUpdate();
 
-  player_.getTransport()->addListener(controller_.timeController());
   (*this)(0.0);
 }
 
