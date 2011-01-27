@@ -11,8 +11,6 @@ namespace gui {
 
 class StretchyController : public Layout {
  public:
-  typedef audio::source::StretchyProto StretchyProto;
-
   StretchyController();
   virtual bool isOpaque() const { return true; }
 

@@ -35,10 +35,10 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
       return;
   }
 
-  persist::Data<StretchyProto>* stretchy = NULL;
+  persist::Data<StretchyLoop>* stretchy = NULL;
   thread_ptr<audio::source::DoubleRunnyBuffer> dr;
   if (!empty(file)) {
-    stretchy = persist::data<StretchyProto>(file);
+    stretchy = persist::data<StretchyLoop>(file);
     dr.reset(new audio::source::DoubleRunnyBuffer(file, stretchy));
   }
 
@@ -57,9 +57,9 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
   broadcast(file);
 }
 
-void StretchyPlayer::operator()(const float& time) {
-  if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100.0 * time)))
-    transportSource_->setPosition(stretchy_->get().time_scale() * time);
+void StretchyPlayer::operator()(const float& t) {
+  if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100 * t)))
+    transportSource_->setPosition(stretchy_->get().stretchy().time_scale() * t);
 
   else
     LOG(ERROR) << "Failed to fill buffer.";

@@ -33,3 +33,9 @@ message StretchyProto {
 
   optional uint32 thread_priority = 13   [default = 4];
 };
+
+message StretchyLoop {
+  optional StretchyProto stretchy = 1;
+  optional double begin = 2;
+  optional double end = 3;
+};

@@ -18,16 +18,16 @@ namespace slow {
 
 class MainPage;
 
-typedef audio::source::StretchyProto StretchyProto;
+typedef audio::source::StretchyLoop StretchyLoop;
 typedef widget::status::time::TextComponent TextComponent;
 typedef widget::status::time::DialComponent DialComponent;
 
 
 class PlaybackController : public gui::Layout,
                            public Listener<const VirtualFile&>,
-                           public DataListener<StretchyProto> {
+                           public DataListener<StretchyLoop> {
  public:
-  typedef persist::Data<StretchyProto> Data;
+  typedef persist::Data<StretchyLoop> Data;
   typedef gui::SetterResizer SetterResizer;
 
   PlaybackController(AudioTransportSourcePlayer* transport, MainPage* mainPage);
@@ -35,7 +35,7 @@ class PlaybackController : public gui::Layout,
   void setLayoutData();
 
   virtual void operator()(const VirtualFile&);
-  virtual void operator()(const StretchyProto&);
+  virtual void operator()(const StretchyLoop&);
 
   virtual void setData(Data* data);
 

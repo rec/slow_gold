@@ -45,10 +45,10 @@ void PlaybackController::setLayoutData() {
   stretchyResizer_.setSetter(data);
 }
 
-void PlaybackController::operator()(const StretchyProto& desc) {
+void PlaybackController::operator()(const StretchyLoop& desc) {
   thread::callAsync(&stretchyController_,
                     &gui::StretchyController::enableSliders,
-                    !desc.disabled());
+                    !desc.stretchy().disabled());
   timeController_(desc);
 }
 
@@ -57,7 +57,7 @@ void PlaybackController::operator()(const VirtualFile& file) {
 }
 
 void PlaybackController::setData(Data* data) {
-  DataListener<StretchyProto>::setData(data);
+  DataListener<StretchyLoop>::setData(data);
   stretchyController_.setData(data);
 }
 

@@ -35,6 +35,7 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fStretchy_2eproto();
 void protobuf_ShutdownFile_rec_2faudio_2fsource_2fStretchy_2eproto();
 
 class StretchyProto;
+class StretchyLoop;
 
 // ===================================================================
 
@@ -244,6 +245,111 @@ class StretchyProto : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static StretchyProto* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class StretchyLoop : public ::google::protobuf::Message {
+ public:
+  StretchyLoop();
+  virtual ~StretchyLoop();
+  
+  StretchyLoop(const StretchyLoop& from);
+  
+  inline StretchyLoop& operator=(const StretchyLoop& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StretchyLoop& default_instance();
+  
+  void Swap(StretchyLoop* other);
+  
+  // implements Message ----------------------------------------------
+  
+  StretchyLoop* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const StretchyLoop& from);
+  void MergeFrom(const StretchyLoop& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional .rec.audio.source.StretchyProto stretchy = 1;
+  inline bool has_stretchy() const;
+  inline void clear_stretchy();
+  static const int kStretchyFieldNumber = 1;
+  inline const ::rec::audio::source::StretchyProto& stretchy() const;
+  inline ::rec::audio::source::StretchyProto* mutable_stretchy();
+  
+  // optional double begin = 2;
+  inline bool has_begin() const;
+  inline void clear_begin();
+  static const int kBeginFieldNumber = 2;
+  inline double begin() const;
+  inline void set_begin(double value);
+  
+  // optional double end = 3;
+  inline bool has_end() const;
+  inline void clear_end();
+  static const int kEndFieldNumber = 3;
+  inline double end() const;
+  inline void set_end(double value);
+  
+  // @@protoc_insertion_point(class_scope:rec.audio.source.StretchyLoop)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  ::rec::audio::source::StretchyProto* stretchy_;
+  double begin_;
+  double end_;
+  friend void  protobuf_AddDesc_rec_2faudio_2fsource_2fStretchy_2eproto();
+  friend void protobuf_AssignDesc_rec_2faudio_2fsource_2fStretchy_2eproto();
+  friend void protobuf_ShutdownFile_rec_2faudio_2fsource_2fStretchy_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static StretchyLoop* default_instance_;
 };
 // ===================================================================
 
@@ -506,6 +612,59 @@ inline ::google::protobuf::uint32 StretchyProto::thread_priority() const {
 inline void StretchyProto::set_thread_priority(::google::protobuf::uint32 value) {
   _set_bit(15);
   thread_priority_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// StretchyLoop
+
+// optional .rec.audio.source.StretchyProto stretchy = 1;
+inline bool StretchyLoop::has_stretchy() const {
+  return _has_bit(0);
+}
+inline void StretchyLoop::clear_stretchy() {
+  if (stretchy_ != NULL) stretchy_->::rec::audio::source::StretchyProto::Clear();
+  _clear_bit(0);
+}
+inline const ::rec::audio::source::StretchyProto& StretchyLoop::stretchy() const {
+  return stretchy_ != NULL ? *stretchy_ : *default_instance_->stretchy_;
+}
+inline ::rec::audio::source::StretchyProto* StretchyLoop::mutable_stretchy() {
+  _set_bit(0);
+  if (stretchy_ == NULL) stretchy_ = new ::rec::audio::source::StretchyProto;
+  return stretchy_;
+}
+
+// optional double begin = 2;
+inline bool StretchyLoop::has_begin() const {
+  return _has_bit(1);
+}
+inline void StretchyLoop::clear_begin() {
+  begin_ = 0;
+  _clear_bit(1);
+}
+inline double StretchyLoop::begin() const {
+  return begin_;
+}
+inline void StretchyLoop::set_begin(double value) {
+  _set_bit(1);
+  begin_ = value;
+}
+
+// optional double end = 3;
+inline bool StretchyLoop::has_end() const {
+  return _has_bit(2);
+}
+inline void StretchyLoop::clear_end() {
+  end_ = 0;
+  _clear_bit(2);
+}
+inline double StretchyLoop::end() const {
+  return end_;
+}
+inline void StretchyLoop::set_end(double value) {
+  _set_bit(2);
+  end_ = value;
 }
 
 

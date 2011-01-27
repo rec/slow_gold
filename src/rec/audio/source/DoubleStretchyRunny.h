@@ -17,11 +17,11 @@ class DoubleStretchyRunny : public DoubleRunny {
   ~DoubleStretchyRunny();
 
   virtual void prepareNext(Runny* runny);
-  void setStretchy(const StretchyProto& desc);
+  void setStretchy(const StretchyLoop& loop);
 
  protected:
   virtual PositionableAudioSource* makeSource() = 0;
-  StretchyProto stretchyDesc_;
+  StretchyLoop loop_;
 
   int64 nextRunnyPosition() const;
 

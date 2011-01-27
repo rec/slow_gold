@@ -52,8 +52,8 @@ TimeController::TimeController(AudioTransportSourcePlayer* ts)
   timesLayout_.addToLayout(&songTime_);
 }
 
-void TimeController::operator()(const audio::source::StretchyProto& stretchy) {
-  songTime_.setTimeScale(1.0 / timeScale(stretchy));
+void TimeController::operator()(const audio::source::StretchyLoop& stretchy) {
+  songTime_.setTimeScale(1.0 / timeScale(stretchy.stretchy()));
 }
 
 void TimeController::operator()(const SelectionRange& r) {

@@ -15,7 +15,7 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
                        public Listener<const float&>,
                        public Broadcaster<const VirtualFile&> {
  public:
-  typedef audio::source::StretchyProto StretchyProto;
+  typedef audio::source::StretchyLoop StretchyLoop;
 
   explicit StretchyPlayer(AudioDeviceManager* deviceManager);
   virtual ~StretchyPlayer();
@@ -31,7 +31,7 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
   Listener<const VirtualFile&>* fileListener() { return &fileListener_; }
   AudioTransportSourcePlayer* getTransport() { return transportSource_.get(); }
 
-  persist::Data<StretchyProto>* getStretchy() { return stretchy_; }
+  persist::Data<StretchyLoop>* getStretchy() { return stretchy_; }
   gui::CachedThumbnail* cachedThumbnail() {
     return doubleRunny_? doubleRunny_->cachedThumbnail() : NULL;
   }
@@ -48,7 +48,7 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
 
   CriticalSection lock_;
   VirtualFile file_;
-  persist::Data<StretchyProto>* stretchy_;
+  persist::Data<StretchyLoop>* stretchy_;
   thread_ptr<TimeLocker> timeLocker_;
   thread_ptr<FileLocker> fileLocker_;
 

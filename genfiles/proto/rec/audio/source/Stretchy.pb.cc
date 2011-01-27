@@ -19,6 +19,9 @@ namespace {
 const ::google::protobuf::Descriptor* StretchyProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   StretchyProto_reflection_ = NULL;
+const ::google::protobuf::Descriptor* StretchyLoop_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  StretchyLoop_reflection_ = NULL;
 
 }  // namespace
 
@@ -59,6 +62,23 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fStretchy_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(StretchyProto));
+  StretchyLoop_descriptor_ = file->message_type(1);
+  static const int StretchyLoop_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyLoop, stretchy_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyLoop, begin_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyLoop, end_),
+  };
+  StretchyLoop_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      StretchyLoop_descriptor_,
+      StretchyLoop::default_instance_,
+      StretchyLoop_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyLoop, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyLoop, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(StretchyLoop));
 }
 
 namespace {
@@ -73,6 +93,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     StretchyProto_descriptor_, &StretchyProto::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    StretchyLoop_descriptor_, &StretchyLoop::default_instance());
 }
 
 }  // namespace
@@ -80,6 +102,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2faudio_2fsource_2fStretchy_2eproto() {
   delete StretchyProto::default_instance_;
   delete StretchyProto_reflection_;
+  delete StretchyLoop::default_instance_;
+  delete StretchyLoop_reflection_;
 }
 
 void protobuf_AddDesc_rec_2faudio_2fsource_2fStretchy_2eproto() {
@@ -101,11 +125,16 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fStretchy_2eproto() {
     "\n\nchunk_size\030\t \001(\r:\003512\022\033\n\014prefill_size\030"
     "\n \001(\r:\00515000\022$\n\025next_buffer_fill_size\030\013 "
     "\001(\r:\00515000\022\036\n\022inactive_wait_time\030\014 \001(\005:\002"
-    "-1\022\032\n\017thread_priority\030\r \001(\r:\0014", 510);
+    "-1\022\032\n\017thread_priority\030\r \001(\r:\0014\"]\n\014Stretc"
+    "hyLoop\0221\n\010stretchy\030\001 \001(\0132\037.rec.audio.sou"
+    "rce.StretchyProto\022\r\n\005begin\030\002 \001(\001\022\013\n\003end\030"
+    "\003 \001(\001", 605);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Stretchy.proto", &protobuf_RegisterTypes);
   StretchyProto::default_instance_ = new StretchyProto();
+  StretchyLoop::default_instance_ = new StretchyLoop();
   StretchyProto::default_instance_->InitAsDefaultInstance();
+  StretchyLoop::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2faudio_2fsource_2fStretchy_2eproto);
 }
 
@@ -910,6 +939,294 @@ void StretchyProto::Swap(StretchyProto* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = StretchyProto_descriptor_;
   metadata.reflection = StretchyProto_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int StretchyLoop::kStretchyFieldNumber;
+const int StretchyLoop::kBeginFieldNumber;
+const int StretchyLoop::kEndFieldNumber;
+#endif  // !_MSC_VER
+
+StretchyLoop::StretchyLoop()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void StretchyLoop::InitAsDefaultInstance() {
+  stretchy_ = const_cast< ::rec::audio::source::StretchyProto*>(&::rec::audio::source::StretchyProto::default_instance());
+}
+
+StretchyLoop::StretchyLoop(const StretchyLoop& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void StretchyLoop::SharedCtor() {
+  _cached_size_ = 0;
+  stretchy_ = NULL;
+  begin_ = 0;
+  end_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+StretchyLoop::~StretchyLoop() {
+  SharedDtor();
+}
+
+void StretchyLoop::SharedDtor() {
+  if (this != default_instance_) {
+    delete stretchy_;
+  }
+}
+
+void StretchyLoop::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* StretchyLoop::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return StretchyLoop_descriptor_;
+}
+
+const StretchyLoop& StretchyLoop::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fsource_2fStretchy_2eproto();  return *default_instance_;
+}
+
+StretchyLoop* StretchyLoop::default_instance_ = NULL;
+
+StretchyLoop* StretchyLoop::New() const {
+  return new StretchyLoop;
+}
+
+void StretchyLoop::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (_has_bit(0)) {
+      if (stretchy_ != NULL) stretchy_->::rec::audio::source::StretchyProto::Clear();
+    }
+    begin_ = 0;
+    end_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool StretchyLoop::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .rec.audio.source.StretchyProto stretchy = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_stretchy()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(17)) goto parse_begin;
+        break;
+      }
+      
+      // optional double begin = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_begin:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &begin_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(25)) goto parse_end;
+        break;
+      }
+      
+      // optional double end = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_end:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &end_)));
+          _set_bit(2);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void StretchyLoop::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional .rec.audio.source.StretchyProto stretchy = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->stretchy(), output);
+  }
+  
+  // optional double begin = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->begin(), output);
+  }
+  
+  // optional double end = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->end(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* StretchyLoop::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional .rec.audio.source.StretchyProto stretchy = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->stretchy(), target);
+  }
+  
+  // optional double begin = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->begin(), target);
+  }
+  
+  // optional double end = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->end(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int StretchyLoop::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.audio.source.StretchyProto stretchy = 1;
+    if (has_stretchy()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->stretchy());
+    }
+    
+    // optional double begin = 2;
+    if (has_begin()) {
+      total_size += 1 + 8;
+    }
+    
+    // optional double end = 3;
+    if (has_end()) {
+      total_size += 1 + 8;
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void StretchyLoop::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const StretchyLoop* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const StretchyLoop*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void StretchyLoop::MergeFrom(const StretchyLoop& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      mutable_stretchy()->::rec::audio::source::StretchyProto::MergeFrom(from.stretchy());
+    }
+    if (from._has_bit(1)) {
+      set_begin(from.begin());
+    }
+    if (from._has_bit(2)) {
+      set_end(from.end());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void StretchyLoop::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void StretchyLoop::CopyFrom(const StretchyLoop& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StretchyLoop::IsInitialized() const {
+  
+  return true;
+}
+
+void StretchyLoop::Swap(StretchyLoop* other) {
+  if (other != this) {
+    std::swap(stretchy_, other->stretchy_);
+    std::swap(begin_, other->begin_);
+    std::swap(end_, other->end_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata StretchyLoop::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = StretchyLoop_descriptor_;
+  metadata.reflection = StretchyLoop_reflection_;
   return metadata;
 }
 

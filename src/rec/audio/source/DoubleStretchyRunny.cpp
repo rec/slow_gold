@@ -21,18 +21,19 @@ int64 DoubleStretchyRunny::nextRunnyPosition() const {
       getNextReadPosition();
 }
 
-void DoubleStretchyRunny::setStretchy(const StretchyProto& desc) {
+void DoubleStretchyRunny::setStretchy(const StretchyLoop& loop) {
+  const StretchyProto& desc = loop.stretchy();
   double timeRatio = timeScale(desc);
   int64 position = 0;
   {
     ScopedLock l(lock_);
-    ratio_ *= (timeRatio / timeScale(stretchyDesc_));
+    ratio_ *= (timeRatio / timeScale(desc));
 #if 0
     LOG(ERROR) << "Scale was " << desc.time_scale()
                << " scale is " << stretchyDesc_.time_scale()
                << " ratio is " << ratio_;
 #endif
-    stretchyDesc_ = desc;
+    loop_ = loop;
     position = nextRunnyPosition();
   }
 
