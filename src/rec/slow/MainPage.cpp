@@ -109,7 +109,10 @@ void MainPage::operator()(const VirtualFile& file) {
     persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
     loops_.setData(listData);
     waveform_.setData(listData);
-    listData->requestUpdate();
+    if (listData->get().loop_point_size())
+      listData->requestUpdate();
+    else
+      listData->append(Address("loop_point"), Value(LoopPoint()));
 
     if (gui::CachedThumbnail* thumb = player_.cachedThumbnail()) {
       waveform_.setAudioThumbnail(thumb->thumbnail());

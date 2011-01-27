@@ -58,6 +58,7 @@
 		59AA35AA1E931C53CFD26709 /* Difference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09581CBCAE04688E5BF551DA /* Difference.cpp */; };
 		5A8B62BF0E7F1A048B0E7724 /* MergeBlockSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBF00CC6D7140024CAD8AFE6 /* MergeBlockSet.cpp */; };
 		5B405A20154D86DC74911320 /* Proto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769B124FE15AF19EA9AC2F81 /* Proto.cpp */; };
+		5B4FF2B8E059E57EB92EAC58 /* TimeAndLength.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10A38361FA34E20F8BB03C79 /* TimeAndLength.cpp */; };
 		5C547DA6AD3196BEC860AE07 /* GetVolumes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF78CEE14C91E8CDBCD65D6D /* GetVolumes.cpp */; };
 		5CB9E7A23208EA8357897F51 /* ThickFolder.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80A92E416408D8FA697D83E8 /* ThickFolder.svg.cpp */; };
 		5D1FB44E34B9DC33026DCB45 /* EventQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA5F5B60FDA1ACB637AB7B18 /* EventQueue.cpp */; };
@@ -206,6 +207,7 @@
 		101CB66AAD7D91CCD0421DDD /* TableColumn.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableColumn.pb.h; path = ../../../../genfiles/proto/rec/gui/TableColumn.pb.h; sourceTree = SOURCE_ROOT; };
 		1061CA02BB8B9CB5FCB22775 /* DoubleRunnyBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DoubleRunnyBuffer.cpp; path = ../../../../src/rec/audio/source/DoubleRunnyBuffer.cpp; sourceTree = SOURCE_ROOT; };
 		107F029BEE50E0870F8E5A13 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Main.cpp; sourceTree = SOURCE_ROOT; };
+		10A38361FA34E20F8BB03C79 /* TimeAndLength.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeAndLength.cpp; path = ../../../../src/rec/widget/status/TimeAndLength.cpp; sourceTree = SOURCE_ROOT; };
 		112BF6DBBD45A6A2E313F714 /* aliasmanager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aliasmanager.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/aliasmanager.h"; sourceTree = SOURCE_ROOT; };
 		11F272B3B33A174E5803B08A /* iterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iterator.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/iterator.h"; sourceTree = SOURCE_ROOT; };
 		1212C9EC153DC9F8706CBE91 /* NodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NodeItem.h; path = ../../../../src/rec/widget/tree/NodeItem.h; sourceTree = SOURCE_ROOT; };
@@ -862,6 +864,7 @@
 				3F584718985459096DAAE18E /* Status.h */,
 				BC41A67CC51223ACB7177017 /* Time.cpp */,
 				740DFD3A45D6069BBDBDC80A /* Time.h */,
+				10A38361FA34E20F8BB03C79 /* TimeAndLength.cpp */,
 				4BD05804905F0365D35C0AD3 /* TimeAndLength.h */,
 			);
 			name = status;
@@ -1324,20 +1327,6 @@
 			name = format;
 			sourceTree = "<group>";
 		};
-		D8CE0074E96EAF95104F63A4 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		DB617A20D9C265267D2D5AE8 /* file */ = {
 			isa = PBXGroup;
 			children = (
@@ -1447,6 +1436,20 @@
 			name = status;
 			sourceTree = "<group>";
 		};
+		FAC604D306DB2727F4DA1111 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		FBB52514084BA74AF9A3279D /* source */ = {
 			isa = PBXGroup;
 			children = (
@@ -1514,7 +1517,7 @@
 				French,
 				German,
 			);
-			mainGroup = D8CE0074E96EAF95104F63A4 /* Source */;
+			mainGroup = FAC604D306DB2727F4DA1111 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1658,6 +1661,7 @@
 				B380D51FD7324CCF50D21514 /* Trash.cpp in Sources */,
 				1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */,
 				39DFE93A7597923AEFEF928B /* Time.cpp in Sources */,
+				5B4FF2B8E059E57EB92EAC58 /* TimeAndLength.cpp in Sources */,
 				1B89F86B25AC2387D2A08F61 /* Directory.cpp in Sources */,
 				910481C9C05D598DC755B363 /* NodeItem.cpp in Sources */,
 				184D05A2CE3863105F8279D8 /* Root.cpp in Sources */,
@@ -1772,7 +1776,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;

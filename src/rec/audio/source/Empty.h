@@ -10,9 +10,9 @@ namespace source {
 class Empty : public PositionableAudioSource {
  public:
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) { clear(i); }
-  virtual int getTotalLength() const { return 0; }
-  virtual int getNextReadPosition() const { return 0; }
-  virtual void setNextReadPosition(int) {}
+  virtual int64 getTotalLength() const { return 0; }
+  virtual int64 getNextReadPosition() const { return 0; }
+  virtual void setNextReadPosition(int64) {}
 
   virtual bool isLooping() const { return false; }
   virtual void setLooping(bool looping) {}

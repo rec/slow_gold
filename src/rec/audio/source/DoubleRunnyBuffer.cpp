@@ -53,7 +53,7 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
     return NULL;
 
   startThread();
-  int pos = getNextReadPosition();
+  int64 pos = getNextReadPosition();
   buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
   return new BufferSource(*buffery_->buffer());
 }

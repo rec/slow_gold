@@ -16,14 +16,14 @@ DoubleStretchyRunny::DoubleStretchyRunny(const VirtualFile& file,
 
 DoubleStretchyRunny::~DoubleStretchyRunny() {}
 
-int DoubleStretchyRunny::nextRunnyPosition() const {
+int64 DoubleStretchyRunny::nextRunnyPosition() const {
   return runny_ ? (runny_->getNextReadPosition() * ratio_) :
       getNextReadPosition();
 }
 
 void DoubleStretchyRunny::setStretchy(const StretchyProto& desc) {
   double timeRatio = timeScale(desc);
-  int position = 0;
+  int64 position = 0;
   {
     ScopedLock l(lock_);
     ratio_ *= (timeRatio / timeScale(stretchyDesc_));

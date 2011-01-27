@@ -23,7 +23,7 @@ class DoubleStretchyRunny : public DoubleRunny {
   virtual PositionableAudioSource* makeSource() = 0;
   StretchyProto stretchyDesc_;
 
-  int nextRunnyPosition() const;
+  int64 nextRunnyPosition() const;
 
  private:
   const VirtualFile file_;

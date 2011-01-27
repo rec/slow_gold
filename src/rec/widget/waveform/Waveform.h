@@ -25,8 +25,6 @@ struct TimeAndMouseEvent {
   int clickCount_;
 };
 
-typedef Range<double> TimeRange;
-
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
                  public Listener<const juce::AudioThumbnail&>,

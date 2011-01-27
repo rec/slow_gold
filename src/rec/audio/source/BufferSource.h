@@ -20,17 +20,17 @@ class BufferSource : public Empty {
     setNextReadPosition(mod(position_ + i.numSamples, getTotalLength()));
   }
 
-  virtual void setNextReadPosition(int p) {
+  virtual void setNextReadPosition(int64 p) {
     position_ = p;
   }
-  virtual int getNextReadPosition() const { return position_; };
-  virtual int getTotalLength() const { return buffer_.getNumSamples();  }
+  virtual int64 getNextReadPosition() const { return position_; };
+  virtual int64 getTotalLength() const { return buffer_.getNumSamples();  }
   virtual bool isLooping() const { return looping_; }
   virtual void setLooping (bool shouldLoop) { looping_ = shouldLoop; }
 
  private:
   const AudioSampleBuffer& buffer_;
-  int position_;
+  int64 position_;
   bool looping_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferSource);

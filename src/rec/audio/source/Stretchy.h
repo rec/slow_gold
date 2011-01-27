@@ -21,13 +21,13 @@ class Stretchy : public Wrappy {
            const StretchyProto& desc = StretchyProto::default_instance());
   ~Stretchy();
 
-  virtual int getTotalLength() const;
-  virtual void setNextReadPosition(int position);
-  virtual int getNextReadPosition() const;
+  virtual int64 getTotalLength() const;
+  virtual void setNextReadPosition(int64 position);
+  virtual int64 getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
  private:
-  int processOneChunk(const juce::AudioSourceChannelInfo& info);
+  int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
 
   StretchyProto description_;
   int channels_;

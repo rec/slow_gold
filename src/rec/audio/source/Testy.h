@@ -26,19 +26,19 @@ class Testy : public PositionableAudioSource {
     position_ += i.numSamples;
   }
 
-  static float getSample(int p) { return (p % SIZE) / (1.0 * SIZE); }
+  static float getSample(int64 p) { return (p % SIZE) / (1.0 * SIZE); }
 
-  virtual int getTotalLength() const { return SIZE; }
+  virtual int64 getTotalLength() const { return SIZE; }
 
-  virtual int getNextReadPosition() const { return position_; }
-  virtual void setNextReadPosition(int p) { position_ = p; }
+  virtual int64 getNextReadPosition() const { return position_; }
+  virtual void setNextReadPosition(int64 p) { position_ = p; }
 
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) {}
-  virtual void prepareToPlay(int s, double r) {}
+  virtual void prepareToPlay(int64 s, double r) {}
   virtual void releaseResources() {}
 
-  int position_;
+  int64 position_;
 
   static float expectNear(Source* s,
                           float delta,
@@ -51,7 +51,7 @@ class Testy : public PositionableAudioSource {
                           Source* s1,
                           float delta,
                           int channels) {
-    int length = std::min(s0->getTotalLength(), s1->getTotalLength());
+    int64 length = std::min(s0->getTotalLength(), s1->getTotalLength());
     EXPECT_EQ(s0->getTotalLength(), s1->getTotalLength());
 
     float maxDelta = 0.0;

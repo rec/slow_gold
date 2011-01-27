@@ -20,11 +20,11 @@ class Wrappy : public PositionableAudioSource {
     source()->getNextAudioBlock(i);
   }
 
-  virtual int getTotalLength() const { return source()->getTotalLength(); }
+  virtual int64 getTotalLength() const { return source()->getTotalLength(); }
 
-  virtual int getNextReadPosition() const { return source()->getNextReadPosition(); }
+  virtual int64 getNextReadPosition() const { return source()->getNextReadPosition(); }
 
-  virtual void setNextReadPosition(int p) { source()->setNextReadPosition(p); }
+  virtual void setNextReadPosition(int64 p) { source()->setNextReadPosition(p); }
 
   virtual bool isLooping() const { return source()->isLooping(); }
   virtual void setLooping(bool looping) { source()->setLooping(looping); }
@@ -32,7 +32,7 @@ class Wrappy : public PositionableAudioSource {
   virtual void prepareToPlay(int s, double r) { source()->prepareToPlay(s, r);  }
   virtual void releaseResources() { source()->releaseResources(); }
 
-  int mod(int x) const { return util::mod(x, getTotalLength()); }
+  int mod(int64 x) const { return util::mod(x, getTotalLength()); }
 
   virtual PositionableAudioSource* source() const {
     ScopedLock l(lock_);
@@ -65,12 +65,12 @@ class Wrappy::Position : public Wrappy {
  public:
   Position(Source* source, int pos = 0) : Wrappy(source), position_(pos) {}
 
-  virtual int getNextReadPosition() const {
+  virtual int64 getNextReadPosition() const {
     ScopedLock l(lock_);
     return position_;
   }
 
-  virtual void setNextReadPosition(int p) {
+  virtual void setNextReadPosition(int64 p) {
     ScopedLock l(lock_);
     source()->setNextReadPosition(p);
     position_ = p;
@@ -84,7 +84,7 @@ class Wrappy::Position : public Wrappy {
   }
 
  protected:
-  int position_;
+  int64 position_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Position);

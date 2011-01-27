@@ -20,17 +20,16 @@ Stretchy::~Stretchy() {
   // DLOG(INFO) << "Destroying stretchy with: " << this;
 }
 
-int Stretchy::getTotalLength() const {
+int64 Stretchy::getTotalLength() const {
   return source()->getTotalLength() * description_.time_scale();
 }
 
-int Stretchy::getNextReadPosition() const {
+int64 Stretchy::getNextReadPosition() const {
   return source()->getNextReadPosition() * description_.time_scale();
 }
 
-void Stretchy::setNextReadPosition(int position) {
+void Stretchy::setNextReadPosition(int64 position) {
   source()->setNextReadPosition(position / description_.time_scale());
-  // Init(description_, &scaler_);
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -60,7 +59,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   }
 }
 
-int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
+int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   int64 inSampleCount = scaler_.GetInputBufferSize(info.numSamples) / 2;
   buffer_.setSize(description_.channels(), inSampleCount, false, false, true);
 
@@ -76,7 +75,7 @@ int Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   float** ins = buffer_.getArrayOfChannels();
   float** outs = &outOffset_.front();
 
-  int samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);
+  int64 samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);
   return samples;
 }
 

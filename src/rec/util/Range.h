@@ -30,6 +30,9 @@ struct Range {
   Type size() const { return end_ - begin_; }
 };
 
+typedef Range<double> TimeRange;
+
+
 }  // namespace util
 }  // namespace rec
 
