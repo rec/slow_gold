@@ -23,6 +23,7 @@ namespace slow {
 class MainPage : public gui::Layout,
                  public Listener<float>,
                  public Listener<const TimeAndMouseEvent&>,
+                 public Listener<const SelectionRange&>,
                  public Listener<const VirtualFile&> {
  public:
   MainPage(AudioDeviceManager*);
@@ -30,13 +31,10 @@ class MainPage : public gui::Layout,
 
   void paint(Graphics&);
 
-  // Callback from someone clicking in the waveform.
-  virtual void operator()(const TimeAndMouseEvent& timeMouse);
-
-  // Callback when a new file has been installed.
-  virtual void operator()(const VirtualFile& file);
-
+  virtual void operator()(const TimeAndMouseEvent&);
+  virtual void operator()(const VirtualFile&);
   virtual void operator()(float time);
+  virtual void operator()(const SelectionRange&);
 
   void doOpen();
   void doClose();

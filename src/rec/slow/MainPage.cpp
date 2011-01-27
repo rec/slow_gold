@@ -130,6 +130,10 @@ void MainPage::operator()(const VirtualFile& file) {
   (*this)(0.0);
 }
 
+void MainPage::operator()(const SelectionRange& range) {
+}
+
+
 void MainPage::clearTime() {
   if (player_.getStretchy())
     player_.getStretchy()->clear();

@@ -30,11 +30,14 @@ struct Range {
   Type end_;
 
   Type size() const { return end_ - begin_; }
+
+  typedef std::set<Range> Set;
 };
 
 typedef Range<double> TimeRange;
 
-typedef std::set<TimeRange> SelectionRange;
+typedef TimeRange::Set SelectionRange;
+
 
 }  // namespace util
 }  // namespace rec
