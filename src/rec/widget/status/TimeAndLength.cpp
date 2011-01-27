@@ -31,7 +31,15 @@ void TimeAndLength::setTimeScale(double s) {
   double scale = s / timeScale_;
   time_.setTime(scale * time_.getTime());
   length_.setTime(scale * length_.getTime());
+  begin_.setTime(scale * begin_.getTime());
+  end_.setTime(scale * end_.getTime());
+
   timeScale_ = s;
+}
+
+void TimeAndLength::operator()(const TimeRange& r) {
+  begin_.setTime(r.begin_);
+  end_.setTime(r.end_);
 }
 
 }  // namespace status

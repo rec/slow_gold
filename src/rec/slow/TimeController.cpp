@@ -56,5 +56,10 @@ void TimeController::operator()(const audio::source::StretchyProto& stretchy) {
   songTime_.setTimeScale(1.0 / timeScale(stretchy));
 }
 
+void TimeController::operator()(const TimeRange& r) {
+  realTime_(r);
+  songTime_(r);
+}
+
 }  // namespace slow
 }  // namespace rec

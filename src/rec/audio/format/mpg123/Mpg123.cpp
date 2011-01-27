@@ -53,9 +53,7 @@ void exitOnce() {
 }
 
 StringArray getMp3FileExtensions() {
-  static const tchar* const extensions[] = {
-    JUCE_T(".mp3"), JUCE_T(".mp2"), JUCE_T(".mp1"), NULL
-  };
+  static const char* const extensions[] = {".mp3", ".mp2", ".mp1", NULL};
   return StringArray(extensions);
 }
 

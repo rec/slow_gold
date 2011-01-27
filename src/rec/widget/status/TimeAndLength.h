@@ -19,8 +19,8 @@ class TimeAndLength : public gui::Layout,
 
   void setTimeScale(double s);
 
-  virtual void operator()(const ClockUpdate& c);
-  virtual void operator()(const TimeRange& tr) {}
+  virtual void operator()(const ClockUpdate&);
+  virtual void operator()(const TimeRange&);
 
  private:
 	gui::SimpleLabel label_;
