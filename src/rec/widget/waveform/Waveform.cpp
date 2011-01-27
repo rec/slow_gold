@@ -126,6 +126,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
       i = j;
     }
   }
+  selectionBroadcaster_.broadcast(selection_);
   repaint();
 }
 

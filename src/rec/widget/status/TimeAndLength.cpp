@@ -37,9 +37,11 @@ void TimeAndLength::setTimeScale(double s) {
   timeScale_ = s;
 }
 
-void TimeAndLength::operator()(const TimeRange& r) {
-  begin_.setTime(r.begin_);
-  end_.setTime(r.end_);
+void TimeAndLength::operator()(const SelectionRange& r) {
+  if (r.begin() != r.end()) {
+    begin_.setTime(r.begin()->begin_);
+    end_.setTime(r.rbegin()->end_);
+  }
 }
 
 }  // namespace status

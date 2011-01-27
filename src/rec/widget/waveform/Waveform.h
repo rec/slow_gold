@@ -56,6 +56,10 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();
 
+  Broadcaster<const SelectionRange&>* selectionBroadcaster() {
+    return &selectionBroadcaster_;
+  }
+
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
 
@@ -64,14 +68,13 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
 
   void setCursorBounds(Cursor *cursor) const;
 
-  CriticalSection lock_;
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   TimeRange range_;
   Cursor* timeCursor_;
-
-  typedef std::set<TimeRange> SelectionRange;
   SelectionRange selection_;
+
+  Broadcaster<const SelectionRange&> selectionBroadcaster_;
 
   DISALLOW_COPY_AND_ASSIGN(Waveform);
 

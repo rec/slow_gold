@@ -17,7 +17,7 @@ class AudioTransportSourcePlayer;
 class TimeController : public gui::Layout,
                        public Listener<float>,
                        public Listener<const audio::source::StretchyProto&>,
-                       public Listener<const TimeRange&>,
+                       public Listener<const SelectionRange&>,
                        public Listener<const ClockUpdate&>,
                        public Broadcaster<const ClockUpdate&> {
  public:
@@ -31,7 +31,7 @@ class TimeController : public gui::Layout,
     broadcast(ClockUpdate(time, -1));
   }
 
-  virtual void operator()(const TimeRange&);
+  virtual void operator()(const SelectionRange&);
 
  private:
   AudioTransportSourcePlayer* transportSource_;

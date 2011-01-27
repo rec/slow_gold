@@ -1,6 +1,8 @@
 #ifndef __REC_UTIL_RANGE__
 #define __REC_UTIL_RANGE__
 
+#include <set>
+
 #include "rec/base/base.h"
 
 namespace rec {
@@ -32,6 +34,7 @@ struct Range {
 
 typedef Range<double> TimeRange;
 
+typedef std::set<TimeRange> SelectionRange;
 
 }  // namespace util
 }  // namespace rec
