@@ -67,7 +67,7 @@ void Cursor::paint(Graphics& g) {
   juce::Rectangle<int> bounds = getLocalBounds();
 
   float middle = bounds.getWidth() / 2.0f;
-  float margin = desc_.widget().margin();
+  float margin = static_cast<float>(desc_.widget().margin());
   float bottom = bounds.getHeight() - 2.0f * margin;
 
   gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);

@@ -23,15 +23,15 @@ class DropTarget : public Interface, public Parent {
     return (files.size() == 1 && file::isAudio(files[0]));
   }
 
-  virtual void fileDragEnter(const StringArray& files, int x, int y) {
+  virtual void fileDragEnter(const StringArray& files, int, int) {
     setDraggingOver(isInterestedInFileDrag(files));
   }
 
-  virtual void fileDragExit(const StringArray& files) {
+  virtual void fileDragExit(const StringArray&) {
     setDraggingOver(false);
   }
 
-  virtual void filesDropped(const StringArray& files, int x, int y) {
+  virtual void filesDropped(const StringArray& files, int, int) {
     setDraggingOver(false);
     if (isInterestedInFileDrag(files)) {
       for (int i = 0; i < files.size(); ++i)

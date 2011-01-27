@@ -8,7 +8,7 @@
 namespace rec {
 namespace gui {
 
-static const int FONT_SIZE = 14;
+static const float FONT_SIZE = 14.0;
 
 inline const juce::Font getDefaultFont() {
   return juce::Font(juce::Font::getDefaultMonospacedFontName(), FONT_SIZE,

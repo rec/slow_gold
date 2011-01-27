@@ -19,7 +19,7 @@ class SimpleLabel : public juce::Label {
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SimpleLabel);
+  DISALLOW_COPY_AND_ASSIGN(SimpleLabel);
 };
 
 }  // namespace gui

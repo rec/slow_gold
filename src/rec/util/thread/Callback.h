@@ -25,6 +25,8 @@ class Pointer : public Callback {
 
  protected:
   Operator const operator_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Pointer);
 };
 
 // Wrap any C++ callable into a Callback.

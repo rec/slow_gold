@@ -23,7 +23,7 @@ void Node::paint(juce::Graphics& g) const {
   p.setColor(clicked_ ? Painter::BORDER :
              (processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT));
   g.drawSingleLineText(name(), desc_.widget().margin(),
-                       font_.getAscent() + desc_.widget().margin());
+                       static_cast<int>(font_.getAscent() + desc_.widget().margin()));
 }
 
 const String Node::name() const {

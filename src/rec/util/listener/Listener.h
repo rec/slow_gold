@@ -90,7 +90,7 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
   // and there's a faint possibility that they might interleave for the same
   // listener and broadcaster, so we loop here until that hasn't happened,
   // just to be extra-cautious.
-  while (true) {
+  for (bool finished = false; !finished; ) {
     {
       ScopedLock l(lock_);
       listeners_.insert(listener);
@@ -103,7 +103,7 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
 
     ScopedLock l(lock_);
     if (listeners_.find(listener) != listeners_.end())
-      return;  // Good, no one else called removeListener.
+      finished = true;  // Good, no one else called removeListener.
   }
 }
 

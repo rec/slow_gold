@@ -52,7 +52,7 @@ class CD : public Directory {
 
     VirtualFile vf(volumeFile_);
     string* path = vf.add_path();
-    for (int i = 0; i < tracks.size(); ++i) {
+    for (uint32 i = 0; i < tracks.size(); ++i) {
       *path = String(i).toCString();
       ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));
       node->addListener(this);

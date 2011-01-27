@@ -22,7 +22,7 @@ class GenericApplication : public juce::JUCEApplication {
 
   virtual ~GenericApplication() {}
 
-  virtual void initialise(const String& commandLine) {
+  virtual void initialise(const String&) {
     LOG(INFO) << "Starting up " << getApplicationName()
               << ", version " << getApplicationVersion();
 
@@ -42,7 +42,7 @@ class GenericApplication : public juce::JUCEApplication {
   const String getApplicationVersion() { return version_.c_str(); }
   bool moreThanOneInstanceAllowed()    { return false; }
 
-  void anotherInstanceStarted (const String& commandLine) {}
+  void anotherInstanceStarted (const String&) {}
 
  protected:
   const string name_;

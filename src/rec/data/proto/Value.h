@@ -52,14 +52,14 @@ class Value : public proto::Value {
     return 0;
   }
 
-  operator int() const { return cast<double>(); }
+  operator int() const { return cast<int>(); }
   operator double() const { return cast<double>(); }
   operator float() const { return cast<float>(); }
   operator int64() const { return cast<int64>(); }
   operator uint64() const { return cast<uint64>(); }
   // operator int32() const { return cast<int32>(); }
   operator uint32() const { return cast<uint32>(); }
-  operator bool() const { return cast<bool>(); }
+  operator bool() const { return bool_f(); }
   operator penum() const { return enum_f(); }
   operator pmessage() const { return message_f(); }
 

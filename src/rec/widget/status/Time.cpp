@@ -43,9 +43,9 @@ void TextComponent::redisplay() {
 #endif
 
 const String formatTime(float time, bool flash, bool displayMs) {
-  int sec = time;
+  int sec = static_cast<int>(time);
   float fraction = time - sec;
-  int ms = 1000 * fraction;
+  int ms = static_cast<int>(1000 * fraction);
 
   int minutes = sec / 60;
   int hours = minutes / 60;

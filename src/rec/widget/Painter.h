@@ -20,7 +20,6 @@ class Painter {
   };
 
   Painter(const Widget& widget, juce::Graphics* g,
-          ColorNames initial = FOREGROUND,
           const StateColors* stateColors = NULL)
       : widget_(widget),
         graphics_(g),

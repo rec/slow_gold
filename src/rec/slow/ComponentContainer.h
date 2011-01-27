@@ -35,9 +35,9 @@ class ComponentContainer : public Component,
   void doMenuItemSelected(int menuItemID, int topLevelMenuIndex);
 
   // ApplicationCommandTarget virtual methods.
-  virtual void getAllCommands(Array <CommandID>& commands) {}
-  virtual void getCommandInfo(CommandID commandID, ApplicationCommandInfo& result) {}
-  virtual bool perform(const InvocationInfo& info) { return false; }
+  virtual void getAllCommands(Array <CommandID>&) {}
+  virtual void getCommandInfo(CommandID, ApplicationCommandInfo&) {}
+  virtual bool perform(const InvocationInfo&) { return false; }
 
   virtual ApplicationCommandTarget* getNextCommandTarget();
 

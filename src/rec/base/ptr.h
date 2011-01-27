@@ -38,7 +38,7 @@ class ptr {
     this->p_ = tmp;
   }
 
-  operator bool() const { return p_; }
+  operator bool() const { return p_ != NULL; }
   bool operator!() const { return !p_; }
 
  private:
