@@ -32,6 +32,10 @@ struct Range {
   Type size() const { return end_ - begin_; }
 
   typedef std::set<Range> Set;
+
+  Range(const Set& s) : begin_(s.empty() ? 0 : s.begin()->begin_),
+                        end_(s.empty() ? 0 : s.rbegin()->end_) {
+  }
 };
 
 typedef Range<double> TimeRange;
