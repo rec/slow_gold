@@ -9,14 +9,14 @@ static const int COMPRESSION = 512;
 static const int THREAD_TIMEOUT = 2000;
 static const int SPIN_WAIT = 40;
 static const int BLOCK_SIZE = 1024;
+static const int READAHEAD = 20000;
+static const int BUFFERY_READAHEAD = 10000;
 
 using namespace rec::gui;
 
 namespace rec {
 namespace audio {
 namespace source {
-
-static const int READAHEAD = 20000;
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
@@ -60,8 +60,6 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
   buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
   return new BufferSource(*buffery_->buffer());
 }
-
-static const int BUFFERY_READAHEAD = 10000;
 
 bool DoubleRunnyBuffer::fillFromPosition(int pos) {
   buffery_->setPosition(pos);

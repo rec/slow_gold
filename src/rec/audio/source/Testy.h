@@ -36,6 +36,7 @@ class Testy : public PositionableAudioSource {
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) {}
   virtual void prepareToPlay(int64 s, double r) {}
+  virtual void prepareToPlay(int s, double r) {}  // why this?
   virtual void releaseResources() {}
 
   int64 position_;
