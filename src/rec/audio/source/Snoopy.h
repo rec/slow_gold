@@ -8,13 +8,13 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Snoopy : public Wrappy::Position,
+class Snoopy : public Wrappy,
                public listener::Broadcaster<const AudioSourceChannelInfo&> {
  public:
-  Snoopy(PositionableAudioSource* source) : Wrappy::Position(source) {}
+  Snoopy(PositionableAudioSource* source) : Wrappy(source) {}
 
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
-    Wrappy::Position::getNextAudioBlock(info);
+    Wrappy::getNextAudioBlock(info);
     broadcast(info);
   }
 

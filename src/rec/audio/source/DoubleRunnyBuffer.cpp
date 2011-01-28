@@ -34,6 +34,8 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
 
   if (!cachedThumbnail_->isFull())
     source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
+
+  // source.reset(new AudioSubsectionReader(
   buffery_.reset(new Buffery(source.transfer(), BLOCK_SIZE));
 
   setStretchy(data_->get());

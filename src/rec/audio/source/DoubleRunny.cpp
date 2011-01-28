@@ -7,7 +7,7 @@ namespace audio {
 namespace source {
 
 DoubleRunny::DoubleRunny(const RunnyProto& d)
-    : Wrappy::Position(NULL), runnyDesc_(d) {
+    : Wrappy(NULL), runnyDesc_(d) {
 }
 
 DoubleRunny::~DoubleRunny() {}

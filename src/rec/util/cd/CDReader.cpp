@@ -56,7 +56,7 @@ int getAudioTrackCount(const AudioCDReader& reader) {
   int audioTracks = 0;
   for (int i = 0; i < reader.getNumTracks(); ++i) {
     if (reader.isTrackAudio(i))
-        ++audioTracks;
+      ++audioTracks;
   }
   return audioTracks;
 }

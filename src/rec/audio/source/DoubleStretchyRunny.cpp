@@ -28,11 +28,6 @@ void DoubleStretchyRunny::setStretchy(const StretchyLoop& loop) {
   {
     ScopedLock l(lock_);
     ratio_ *= (timeRatio / timeScale(desc));
-#if 0
-    LOG(ERROR) << "Scale was " << desc.time_scale()
-               << " scale is " << stretchyDesc_.time_scale()
-               << " ratio is " << ratio_;
-#endif
     loop_ = loop;
     position = nextRunnyPosition();
   }

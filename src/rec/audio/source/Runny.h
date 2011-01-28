@@ -11,7 +11,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Runny : public Thread, public Wrappy::Position {
+class Runny : public Thread, public Wrappy {
  public:
   Runny(PositionableAudioSource* source,
         const RunnyProto& d = RunnyProto::default_instance());

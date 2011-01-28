@@ -45,6 +45,7 @@
 		21555A0B04D73375684B9245 = { isa = PBXBuildFile; fileRef = 834157B35C86CAE234E25959; };
 		71CEE4DAAA096CE38F5F5998 = { isa = PBXBuildFile; fileRef = AB9D04AEA1CE5852DAF463B6; };
 		B2E50FF57F427E6BFF2B18FD = { isa = PBXBuildFile; fileRef = 98F97711C06122CCA1CB79F3; };
+		D11FD4E915642040D3E49910 = { isa = PBXBuildFile; fileRef = DEA6FC8EECFABB82E8D9C715; };
 		10BDB147197A841DD5FCDFC8 = { isa = PBXBuildFile; fileRef = 9DFD5769D25254A01A3A8F9C; };
 		A48C820FA0A448415E918667 = { isa = PBXBuildFile; fileRef = BCC3E057ABD6CF5D7DC4FAD0; };
 		15546065C1A9AA5AA0C640B5 = { isa = PBXBuildFile; fileRef = 1748B196C7CF584702E6C34F; };
@@ -268,6 +269,7 @@
 		AB9D04AEA1CE5852DAF463B6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Testy_test.cpp; path = ../../../../src/rec/audio/source/Testy_test.cpp; sourceTree = SOURCE_ROOT; };
 		98F97711C06122CCA1CB79F3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeScaler.cpp; path = ../../../../src/rec/audio/source/TimeScaler.cpp; sourceTree = SOURCE_ROOT; };
 		BF8F3C95A63DF07EE9652B34 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeScaler.h; path = ../../../../src/rec/audio/source/TimeScaler.h; sourceTree = SOURCE_ROOT; };
+		DEA6FC8EECFABB82E8D9C715 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Wrappy.cpp; path = ../../../../src/rec/audio/source/Wrappy.cpp; sourceTree = SOURCE_ROOT; };
 		1B79815371777CE7111956DA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrappy.h; path = ../../../../src/rec/audio/source/Wrappy.h; sourceTree = SOURCE_ROOT; };
 		5C9E5CE25F359AB1053A59B4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ArraySize.h; path = ../../../../src/rec/base/ArraySize.h; sourceTree = SOURCE_ROOT; };
 		D82E65A615A8B6043D56E732 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = base.h; path = ../../../../src/rec/base/base.h; sourceTree = SOURCE_ROOT; };
@@ -708,6 +710,7 @@
 				AB9D04AEA1CE5852DAF463B6,
 				98F97711C06122CCA1CB79F3,
 				BF8F3C95A63DF07EE9652B34,
+				DEA6FC8EECFABB82E8D9C715,
 				1B79815371777CE7111956DA ); name = source; sourceTree = "<group>"; };
 		6D93E2AE92DA8779562AB8F1 = { isa = PBXGroup; children = (
 				52F38132DF1FA4DEAF714BB1,
@@ -1197,7 +1200,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		78E4A8F4466BB117CBDEFE1B = { isa = PBXGroup; children = (
+		BF1E7BB8DC55DE6735708991 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1309,6 +1312,7 @@
 				21555A0B04D73375684B9245,
 				71CEE4DAAA096CE38F5F5998,
 				B2E50FF57F427E6BFF2B18FD,
+				D11FD4E915642040D3E49910,
 				10BDB147197A841DD5FCDFC8,
 				A48C820FA0A448415E918667,
 				15546065C1A9AA5AA0C640B5,
@@ -1476,7 +1480,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 78E4A8F4466BB117CBDEFE1B; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = BF1E7BB8DC55DE6735708991; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

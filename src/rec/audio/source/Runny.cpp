@@ -9,7 +9,7 @@ namespace source {
 
 Runny::Runny(Source* source, const RunnyProto& desc)
   : Thread("Runny"),
-    Wrappy::Position(source),
+    Wrappy(source),
     buffer_(2, desc.buffer_size()),
     filled_(desc.buffer_size()),
     desc_(desc) {
@@ -27,7 +27,7 @@ void Runny::setNextReadPosition(int64 newPos) {
     if (available >= 0)
       filled_.fill(available);
   }
-  Wrappy::Position::setNextReadPosition(newPos);
+  Wrappy::setNextReadPosition(newPos);
   notify();
 }
 

@@ -11,7 +11,7 @@ namespace source {
 
 class Runny;
 
-class DoubleRunny : public Wrappy::Position {
+class DoubleRunny : public Wrappy {
  public:
   DoubleRunny(const RunnyProto& proto = RunnyProto::default_instance());
   virtual ~DoubleRunny();
