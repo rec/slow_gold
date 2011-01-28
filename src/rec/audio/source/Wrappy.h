@@ -13,7 +13,7 @@ namespace source {
 
 class Wrappy : public PositionableAudioSource {
  public:
-  Wrappy(PositionableAudioSource* s, int64 p = 0);
+  Wrappy(PositionableAudioSource* s);
   virtual int64 getTotalLength() const { return source()->getTotalLength(); }
 
   virtual bool isLooping() const { return source()->isLooping(); }

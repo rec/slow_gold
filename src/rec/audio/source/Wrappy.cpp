@@ -4,7 +4,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Wrappy::Wrappy(PositionableAudioSource* s, int64 p) : position_(p) {
+Wrappy::Wrappy(PositionableAudioSource* s) : position_(0) {
   setSource(s);
 }
 
@@ -28,8 +28,8 @@ void Wrappy::setSource(PositionableAudioSource* s) {
 }
 
 void Wrappy::setNextReadPosition(int64 p) {
-  ScopedLock l(lock_);
   source()->setNextReadPosition(p);
+  ScopedLock l(lock_);
   position_ = p;
 }
 
