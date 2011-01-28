@@ -22,11 +22,14 @@ class TimeAndLength : public gui::Layout,
   virtual void operator()(const ClockUpdate&);
   virtual void operator()(const SelectionRange&);
 
+  void setOffset(double o) { offset_ = o; }
+
  private:
 	gui::SimpleLabel label_;
 
   time::TextComponent length_, begin_, end_, time_;
   double timeScale_;
+  double offset_;
   ClockUpdate clockUpdate_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TimeAndLength);

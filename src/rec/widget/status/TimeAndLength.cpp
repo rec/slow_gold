@@ -9,7 +9,8 @@ TimeAndLength::TimeAndLength(const String& label, const time::Text& desc)
       label_(label),
       length_(desc),
       time_(desc),
-      timeScale_(1.0) {
+      timeScale_(1.0),
+      offset_(0.0) {
   label_.setJustificationType(juce::Justification::centred);
   addToLayout(&label_);
   addToLayout(&length_);
@@ -39,8 +40,8 @@ void TimeAndLength::setTimeScale(double s) {
 
 void TimeAndLength::operator()(const SelectionRange& s) {
   TimeRange range(s);
-  begin_.setTime(range.begin_);
-  end_.setTime(range.end_);
+  begin_.setTime(range.begin_ + offset_);
+  end_.setTime(range.end_ + offset_);
 }
 
 }  // namespace status

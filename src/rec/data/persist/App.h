@@ -39,7 +39,7 @@ class App {
 
  protected:
   explicit App(const string& name) : name_(name) {
-    static const char COMPANY_NAME[] = "recs";
+    static const char COMPANY_NAME[] = "World Wide Woodshed";
     File dd = File::getSpecialLocation(File::userApplicationDataDirectory);
     appDir_ = dd.getChildFile(COMPANY_NAME);
   }

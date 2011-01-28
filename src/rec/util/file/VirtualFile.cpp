@@ -43,15 +43,8 @@ const File getVirtual(const VirtualFile& v) {
     return File::getSpecialLocation(File::userMusicDirectory);
   }
 
-  if (v.type() == VirtualFile::VOLUME) {
-#if JUCE_MAC
-    if (v.name().empty())
-      return File("/");
-#else
-    DCHECK(!v.name().empty());
-#endif
+  if (v.type() == VirtualFile::VOLUME)
     return File(v.name().c_str());
-  }
 
   if (v.type() == VirtualFile::USER) {
     DCHECK_EQ(v.name(), "");
