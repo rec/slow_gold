@@ -28,6 +28,7 @@ class DoubleStretchyRunny : public DoubleRunny {
  private:
   const VirtualFile file_;
   double ratio_;
+  double offset_;
 
   DISALLOW_COPY_AND_ASSIGN(DoubleStretchyRunny);
 };

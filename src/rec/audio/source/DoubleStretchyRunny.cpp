@@ -11,7 +11,7 @@ namespace source {
 
 DoubleStretchyRunny::DoubleStretchyRunny(const VirtualFile& file,
                                          const RunnyProto& desc)
-    : DoubleRunny(desc), file_(file), ratio_(1.0) {
+    : DoubleRunny(desc), file_(file), ratio_(1.0), offset_(0.0) {
 }
 
 DoubleStretchyRunny::~DoubleStretchyRunny() {}
@@ -61,6 +61,7 @@ void DoubleStretchyRunny::setStretchy(const StretchyLoop& loop) {
 void DoubleStretchyRunny::prepareNext(Runny* runny) {
   runny->setNextReadPosition(nextRunnyPosition());
   ratio_ = 1.0;
+  offset_ = 0.0;
 }
 
 }  // namespace source
