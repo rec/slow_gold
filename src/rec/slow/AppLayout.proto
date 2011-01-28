@@ -5,13 +5,13 @@ import "rec/gui/Geometry.proto";
 message AppLayout {
   optional gui.Rectangle bounds = 1;
 
-  optional uint32 directory_y = 2 [default = 225];
-  optional uint32 waveform_y = 3 [default = 500];
-  optional uint32 loops_x = 4 [default = 825];
+  optional uint32 directory_y = 2 [default = 175];
+  optional uint32 waveform_y = 3 [default = 350];
+  optional uint32 stretchy_y = 4 [default = 175];
 
-  optional uint32 clock_x = 5 [default = 325];
-  optional uint32 stretchy_y = 6 [default = 75];
-  optional uint32 songdata_x = 7 [default = 525];
+  optional uint32 clock_x = 5 [default = 250];
+  optional uint32 songdata_x = 6 [default = 450];
+  optional uint32 loops_x = 7 [default = 650];
 
   optional bool full_directory = 8 [default = false];
   optional bool full_waveform = 9 [default = false];

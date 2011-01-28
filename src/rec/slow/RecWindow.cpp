@@ -12,17 +12,18 @@ RecWindow::RecWindow()
     : DocumentWindow(T("Rec"), Colours::azure, DocumentWindow::allButtons, true),
       container_(new MainPageComponent),
       data_(persist::data<AppLayout>()) {
-  if (data_->fileReadSuccess()) {
-    juce::Rectangle<int> bounds = gui::copy(data_->get().bounds());
-    bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
-    bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
-    bounds.setX(juce::jmax(bounds.getX(), 50));
-    bounds.setY(juce::jmax(bounds.getY(), 50));
-    setBounds(bounds);
-  } else {
-    centreWithSize(700, 600);
-    writeData();
-  }
+  AppLayout layout(data_->get());
+  juce::Rectangle<int> bounds(300, 100, 800, 600);
+  if (data_->fileReadSuccess())
+    bounds = gui::copy(layout.bounds());
+  else
+    data_->set("bounds", Value(gui::copy(bounds)));
+
+  bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
+  bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
+  bounds.setX(juce::jmax(bounds.getX(), 10));
+  bounds.setY(juce::jmax(bounds.getY(), 10));
+  setBounds(bounds);
   setResizable(true, false); // resizability is a property of ResizableWindow
   setResizeLimits(1, 1, 8192, 8192);
 
