@@ -1,5 +1,5 @@
 #include "rec/audio/source/Buffery.h"
-#include "rec/audio/CopySamples.h"
+#include "rec/audio/util/CopySamples.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/MergeBlockSet.h"

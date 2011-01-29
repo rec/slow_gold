@@ -2,7 +2,7 @@
 
 #include "rec/util/file/VirtualFile.h"
 
-#include "rec/audio/AudioFormatManager.h"
+#include "rec/audio/util/AudioFormatManager.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/util/cd/CDReader.h"

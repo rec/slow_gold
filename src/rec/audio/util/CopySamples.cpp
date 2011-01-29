@@ -1,4 +1,4 @@
-#include "rec/audio/CopySamples.h"
+#include "rec/audio/util/CopySamples.h"
 
 namespace rec {
 namespace audio {

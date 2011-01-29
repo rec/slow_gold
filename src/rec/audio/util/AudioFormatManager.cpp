@@ -1,4 +1,4 @@
-#include "rec/audio/AudioFormatManager.h"
+#include "rec/audio/util/AudioFormatManager.h"
 #include "rec/audio/format/mpg123/Format.h"
 
 namespace rec {

@@ -2,7 +2,7 @@
 #define __REC_PERSIST_AUDIODEVICESETUP__
 
 #include "rec/base/base.h"
-#include "rec/audio/AudioDeviceSetup.pb.h"
+#include "rec/audio/util/AudioDeviceSetup.pb.h"
 
 namespace rec {
 namespace persist {

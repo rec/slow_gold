@@ -2,7 +2,7 @@
 
 #include "rec/util/thread/FileWriter.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/audio/AudioFormatManager.h"
+#include "rec/audio/util/AudioFormatManager.h"
 
 namespace rec {
 namespace gui {

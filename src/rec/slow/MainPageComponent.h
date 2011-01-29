@@ -4,7 +4,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/AudioSetupPage.h"
-#include "rec/audio/AudioDeviceSetup.h"
+#include "rec/audio/util/AudioDeviceSetup.h"
 #include "rec/data/yaml/Yaml.h"
 
 namespace rec {

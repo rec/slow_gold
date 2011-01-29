@@ -5,7 +5,7 @@
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/util/TestData.h"
-#include "rec/audio/AudioFormatManager.h"
+#include "rec/audio/util/AudioFormatManager.h"
 
 using namespace juce;
 

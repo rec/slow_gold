@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="kJ0jH09hZ" name="Slow">
+  <MAINGROUP id="ywvwH13uq" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -52,20 +52,6 @@
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMacros.h"
                 id="Zso8OqAIM" name="mfMacros.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/audio/AudioDeviceSetup.cpp" id="2E1PZERRn"
-              name="AudioDeviceSetup.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/audio/AudioDeviceSetup.h" id="ZSzNkK3JD"
-              name="AudioDeviceSetup.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/audio/AudioFormatManager.cpp"
-              id="YDw129XmE" name="AudioFormatManager.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/audio/AudioFormatManager.h" id="O6wjaN5Ct"
-              name="AudioFormatManager.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/audio/Clear.h" id="Fl8sslc5m"
-              name="Clear.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/audio/CopySamples.cpp" id="JI5miayYu"
-              name="CopySamples.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/audio/CopySamples.h" id="ao5ZPbont"
-              name="CopySamples.h" resource="0"/>
         <GROUP id="rLQJfm3VY" name="format">
           <GROUP id="ddlQeMP1D" name="mpg123">
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Copier.cpp"
@@ -157,6 +143,22 @@
                 id="4kbR48poD" name="TimeScaler.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/TimeScaler.h" id="SfOde5HvM"
                 name="TimeScaler.h" resource="0"/>
+        </GROUP>
+        <GROUP id="ysbTVga8D" name="util">
+          <FILE compile="1" file="../../src/rec/audio/util/AudioDeviceSetup.cpp"
+                id="VvztAK2rx" name="AudioDeviceSetup.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/AudioDeviceSetup.h"
+                id="pSjs2WMsb" name="AudioDeviceSetup.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/AudioFormatManager.cpp"
+                id="jpiVAjYNq" name="AudioFormatManager.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/AudioFormatManager.h"
+                id="pAyvbUilk" name="AudioFormatManager.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/Clear.h" id="vpgoJhHVF"
+                name="Clear.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/CopySamples.cpp" id="ETgKhV8qV"
+                name="CopySamples.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/CopySamples.h" id="z7maFueFP"
+                name="CopySamples.h" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="dtlJsxVnc" name="base">
@@ -827,10 +829,6 @@
                 id="8PHIlIPCd" name="Access.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="6XFca2ef1" name="audio">
-          <FILE compile="1" file="../../genfiles/proto/rec/audio/AudioDeviceSetup.pb.cc"
-                id="0h81yODhb" name="AudioDeviceSetup.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/audio/AudioDeviceSetup.pb.h"
-                id="3WC8DGwf1" name="AudioDeviceSetup.pb.h" resource="0"/>
           <GROUP id="S7dfkDall" name="source">
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
                   id="7OGPlMMET" name="Runny.pb.cc" resource="0"/>
@@ -842,6 +840,12 @@
                   id="8TMikD5vJ" name="Stretch.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/stretch/Stretch.pb.h"
                   id="L15XqH9Cx" name="Stretch.pb.h" resource="0"/>
+          </GROUP>
+          <GROUP id="radaI23AO" name="util">
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/util/AudioDeviceSetup.pb.cc"
+                  id="GK7SiIVmn" name="AudioDeviceSetup.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/util/AudioDeviceSetup.pb.h"
+                  id="Cz2fPxbF0" name="AudioDeviceSetup.pb.h" resource="0"/>
           </GROUP>
         </GROUP>
         <GROUP id="w0cToJxUH" name="data">
@@ -964,7 +968,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="hmT4qNlBJ" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="6rDUWD0sb" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERYSOURCE__
 #define __REC_AUDIO_SOURCE_BUFFERYSOURCE__
 
-#include "rec/audio/CopySamples.h"
+#include "rec/audio/util/CopySamples.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/util/Math.h"
 

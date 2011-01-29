@@ -2,7 +2,7 @@
 #define __REC_GUI_AUDIOTHUMBNAIL__
 
 #include "rec/util/listener/Listener.h"
-#include "rec/audio/AudioFormatManager.h"
+#include "rec/audio/util/AudioFormatManager.h"
 
 namespace rec {
 namespace gui {

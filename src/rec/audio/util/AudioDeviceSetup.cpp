@@ -1,4 +1,4 @@
-#include "rec/audio/AudioDeviceSetup.h"
+#include "rec/audio/util/AudioDeviceSetup.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/data/persist/Persist.h"
 

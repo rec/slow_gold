@@ -144,13 +144,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\audio\AudioDeviceSetup.h"/>
-          <File RelativePath="..\..\..\..\src\rec\audio\AudioFormatManager.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\audio\AudioFormatManager.h"/>
-          <File RelativePath="..\..\..\..\src\rec\audio\Clear.h"/>
-          <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.cpp"/>
-          <File RelativePath="..\..\..\..\src\rec\audio\CopySamples.h"/>
           <Filter Name="format">
             <Filter Name="mpg123">
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
@@ -206,6 +199,15 @@
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler_test.cpp"/>
+          </Filter>
+          <Filter Name="util">
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioDeviceSetup.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioDeviceSetup.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioFormatManager.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\Clear.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
           </Filter>
         </Filter>
         <Filter Name="base">
@@ -584,8 +586,6 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\access\Access.pb.h"/>
           </Filter>
           <Filter Name="audio">
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\AudioDeviceSetup.pb.h"/>
             <Filter Name="source">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
@@ -593,6 +593,10 @@
             <Filter Name="stretch">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
+            </Filter>
+            <Filter Name="util">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\AudioDeviceSetup.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\AudioDeviceSetup.pb.h"/>
             </Filter>
           </Filter>
           <Filter Name="data">
