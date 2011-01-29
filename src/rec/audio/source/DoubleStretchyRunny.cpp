@@ -28,16 +28,15 @@ void DoubleStretchyRunny::setLoop(const StretchLoop& loop) {
   }
 
   const Stretch& stretch = loop.stretchy();
-  double timeRatio = timeScale(stretch);
   int64 position = 0;
   {
     ScopedLock l(lock_);
-    ratio_ *= (timeRatio / stretch::timeScale(stretch));
+    ratio_ *= (timeScale(stretch) / stretch::timeScale(stretch));
     loop_ = loop;
     position = nextRunnyPosition();
   }
 
-  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, stretch, timeRatio,
+  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, stretch,
                                      position, source.transfer()));
   if (runny)
     setNext(runny.transfer());

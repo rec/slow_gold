@@ -12,7 +12,7 @@ class Runny;
 class RunnyProto;
 
 Runny* makeStretchyRunny(const RunnyProto& desc, const Stretch& stretch,
-                         double timeRatio, int pos, PositionableAudioSource* s);
+                         int pos, PositionableAudioSource* s);
 
 }  // namespace source
 }  // namespace audio

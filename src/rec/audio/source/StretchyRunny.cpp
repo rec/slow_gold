@@ -8,9 +8,10 @@ namespace audio {
 namespace source {
 
 Runny* makeStretchyRunny(const RunnyProto& desc, const Stretch& stretch,
-                         double timeRatio, int pos, PositionableAudioSource* s) {
+                         int pos, PositionableAudioSource* s) {
   ptr<PositionableAudioSource> source(s);
   static const double DELTA = 0.00001;
+  double timeRatio = timeScale(stretch);
   if (!(stretch.passthrough_when_disabled() &&
         near(timeRatio, 1.0, DELTA) &&
         near(stretch::pitchScale(stretch), 1.0, DELTA))) {
