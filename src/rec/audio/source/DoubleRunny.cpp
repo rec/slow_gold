@@ -1,5 +1,5 @@
 #include "rec/audio/source/DoubleRunny.h"
-#include "rec/audio/source/Clear.h"
+#include "rec/audio/Clear.h"
 #include "rec/audio/source/Runny.h"
 
 namespace rec {
