@@ -1,5 +1,6 @@
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/DoubleRunnyBuffer.h"
+#include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Seggy.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/source/StretchyRunny.h"
@@ -21,8 +22,7 @@ namespace source {
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
-    : DoubleStretchy(file, desc), Thread("DoubleRunnyBuffer"),
-      //    : Thread("DoubleRunnyBuffer"), stretchy_(file, desc),
+    : Thread("DoubleRunnyBuffer"), stretchy_(file, desc),
       data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {
@@ -42,7 +42,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
   buffery_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
 
   StretchLoop loop(data_->get());
-  setLoop(loop, setLoopPosition(loop));
+  setLoop(loop, stretchy_.setLoopPosition(loop));
 
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
   changeLocker_->initialize(data_->get());
@@ -52,7 +52,11 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
 }
 
 DoubleRunnyBuffer::~DoubleRunnyBuffer() {
-  shutdown();
+  stretchy_.shutdown();
+}
+
+void DoubleRunnyBuffer::operator()(const StretchLoop& p) {
+  setLoop(p, stretchy_.setLoopPosition(p));
 }
 
 PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
@@ -60,7 +64,7 @@ PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
     return NULL;
 
   startThread();
-  int64 pos = getNextReadPosition();
+  int64 pos = stretchy_.getNextReadPosition();
   buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
   return new BufferSource(*buffery_->buffer());
 }
@@ -89,10 +93,10 @@ void DoubleRunnyBuffer::setLoop(const StretchLoop& loop, int pos) {
     return;
   }
 
-  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, loop.stretchy(),
+  ptr<Runny> runny(makeStretchyRunny(RunnyProto(), loop.stretchy(),
                                      pos, source.transfer()));
   if (runny)
-    setNext(runny.transfer());
+    stretchy_.setNext(runny.transfer());
 }
 
 }  // namespace source

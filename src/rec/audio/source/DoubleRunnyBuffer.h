@@ -11,8 +11,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleRunnyBuffer : public DoubleStretchy,
-                          public Thread,
+class DoubleRunnyBuffer : public Thread,
                           public Listener<const stretch::StretchLoop&> {
  public:
   typedef stretch::StretchLoop StretchLoop;
@@ -28,19 +27,19 @@ class DoubleRunnyBuffer : public DoubleStretchy,
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
   virtual int64 getTotalLength() const { return buffery_->getLength(); }
 
-  virtual void operator()(const StretchLoop& p) { setLoop(p, setLoopPosition(p)); }
-
+  virtual void operator()(const StretchLoop& p);
   bool empty() const { return empty_; }
 
   virtual void run();
   Data* data() { return data_; }
+  DoubleStretchy* doubleStretchy() { return &stretchy_; }
 
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
   void setLoop(const StretchLoop& loop, int pos);
 
-  // DoubleStretchy stretchy_;
+  DoubleStretchy stretchy_;
   ptr<FillableBuffer> buffery_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;
   Data* const data_;
