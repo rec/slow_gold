@@ -60,7 +60,7 @@ void DoubleStretchyRunny::setStretchy(const StretchLoop& loop) {
   }
 }
 
-void DoubleStretchyRunny::prepareNext(Runny* runny) {
+void DoubleStretchyRunny::prepareToPlay(Runny* runny) {
   runny->setNextReadPosition(nextRunnyPosition());
   ratio_ = 1.0;
   offset_ = 0.0;

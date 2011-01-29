@@ -18,7 +18,7 @@ class DoubleStretchyRunny : public DoubleRunny {
 
   ~DoubleStretchyRunny();
 
-  virtual void prepareNext(Runny* runny);
+  virtual void prepareToPlay(Runny* runny);
   void setStretchy(const StretchLoop& loop);
 
  protected:

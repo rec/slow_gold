@@ -25,7 +25,7 @@ void DoubleRunny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   {
     ScopedLock l(lock_);
     if (nextRunny_) {
-      prepareNext(nextRunny_.get());
+      prepareToPlay(nextRunny_.get());
       nextRunny_.swap(runny_);
       deleter.swap(nextRunny_);
     }
@@ -38,8 +38,6 @@ void DoubleRunny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
   position_ = mod(position_ + info.numSamples);
 }
-
-PositionableAudioSource* DoubleRunny::getSource() const { return runny_.get(); }
 
 void DoubleRunny::shutdown() {
   runny_.reset();
