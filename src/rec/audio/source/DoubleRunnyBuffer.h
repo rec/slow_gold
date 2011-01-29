@@ -38,6 +38,8 @@ class DoubleRunnyBuffer : public DoubleStretchy,
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
+  void setLoop(const StretchLoop& loop, int pos);
+
   // DoubleStretchy stretchy_;
   ptr<FillableBuffer> buffery_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;

@@ -1,5 +1,4 @@
 #include "rec/audio/source/DoubleStretchy.h"
-#include "rec/audio/source/StretchyRunny.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/source/Stretchy.h"
 #include "rec/util/file/VirtualFile.h"
@@ -26,19 +25,6 @@ int64 DoubleStretchy::setLoopPosition(const StretchLoop& loop) {
   ratio_ *= (timeScale(stretch) / stretch::timeScale(stretch));
   loop_ = loop;
   return nextRunnyPosition();
-}
-
-void DoubleStretchy::setLoop(const StretchLoop& loop, int pos) {
-  ptr<PositionableAudioSource> source(makeSource());
-  if (!source) {
-    LOG(ERROR) << "Couldn't make source";
-    return;
-  }
-
-  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, loop.stretchy(),
-                                     pos, source.transfer()));
-  if (runny)
-    setNext(runny.transfer());
 }
 
 void DoubleStretchy::prepareToPlay(Runny* runny) {

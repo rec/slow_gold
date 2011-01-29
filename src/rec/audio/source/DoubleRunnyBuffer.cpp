@@ -1,7 +1,8 @@
-#include "rec/audio/source/DoubleRunnyBuffer.h"
-#include "rec/audio/source/Snoopy.h"
-#include "rec/audio/source/Seggy.h"
 #include "rec/audio/source/BufferSource.h"
+#include "rec/audio/source/DoubleRunnyBuffer.h"
+#include "rec/audio/source/Seggy.h"
+#include "rec/audio/source/Snoopy.h"
+#include "rec/audio/source/StretchyRunny.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/util/thread/Trash.h"
 
@@ -79,6 +80,19 @@ void DoubleRunnyBuffer::run() {
   if (!threadShouldExit()) {
     cachedThumbnail_->writeThumbnail(true);
   }
+}
+
+void DoubleRunnyBuffer::setLoop(const StretchLoop& loop, int pos) {
+  ptr<PositionableAudioSource> source(makeSource());
+  if (!source) {
+    LOG(ERROR) << "Couldn't make source";
+    return;
+  }
+
+  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, loop.stretchy(),
+                                     pos, source.transfer()));
+  if (runny)
+    setNext(runny.transfer());
 }
 
 }  // namespace source
