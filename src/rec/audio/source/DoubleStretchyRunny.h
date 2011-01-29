@@ -11,7 +11,7 @@ namespace source {
 
 class DoubleStretchyRunny : public DoubleRunny {
  public:
-  typedef stretch::StretchyLoop StretchyLoop;
+  typedef stretch::StretchLoop StretchLoop;
 
   DoubleStretchyRunny(const VirtualFile& file,
                       const RunnyProto& desc = RunnyProto::default_instance());
@@ -19,11 +19,11 @@ class DoubleStretchyRunny : public DoubleRunny {
   ~DoubleStretchyRunny();
 
   virtual void prepareNext(Runny* runny);
-  void setStretchy(const StretchyLoop& loop);
+  void setStretchy(const StretchLoop& loop);
 
  protected:
   virtual PositionableAudioSource* makeSource() = 0;
-  StretchyLoop loop_;
+  StretchLoop loop_;
 
   int64 nextRunnyPosition() const;
 

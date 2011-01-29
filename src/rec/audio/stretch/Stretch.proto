@@ -34,7 +34,7 @@ message Stretch {
   optional uint32 thread_priority = 13   [default = 4];
 };
 
-message StretchyLoop {
+message StretchLoop {
   optional Stretch stretchy = 1;
   optional double begin = 2;
   optional double end = 3;

@@ -10,7 +10,7 @@ namespace audio {
 namespace source {
 
 using stretch::Stretch;
-using stretch::StretchyLoop;
+using stretch::StretchLoop;
 
 DoubleStretchyRunny::DoubleStretchyRunny(const VirtualFile& file,
                                          const RunnyProto& desc)
@@ -24,7 +24,7 @@ int64 DoubleStretchyRunny::nextRunnyPosition() const {
       getNextReadPosition();
 }
 
-void DoubleStretchyRunny::setStretchy(const StretchyLoop& loop) {
+void DoubleStretchyRunny::setStretchy(const StretchLoop& loop) {
   const Stretch& desc = loop.stretchy();
   double timeRatio = timeScale(desc);
   int64 position = 0;

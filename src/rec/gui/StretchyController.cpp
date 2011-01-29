@@ -30,7 +30,7 @@ void StretchyController::setData(UntypedData* data) {
   fineScale_.setData(data);
   disableButton_.setData(data);
 
-  audio::stretch::StretchyLoop proto;
+  audio::stretch::StretchLoop proto;
   bool enable = !(data && data->fill(&proto) && proto.stretchy().disabled());
   thread::callAsync(this, &StretchyController::enableSliders, enable);
 }

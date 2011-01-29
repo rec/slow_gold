@@ -35,10 +35,10 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
       return;
   }
 
-  persist::Data<StretchyLoop>* stretchy = NULL;
+  persist::Data<StretchLoop>* stretchy = NULL;
   thread_ptr<audio::source::DoubleRunnyBuffer> dr;
   if (!empty(file)) {
-    stretchy = persist::data<StretchyLoop>(file);
+    stretchy = persist::data<StretchLoop>(file);
     dr.reset(new audio::source::DoubleRunnyBuffer(file, stretchy));
   }
 

@@ -16,8 +16,6 @@ using namespace juce;
 using namespace rec::proto::arg;
 using namespace rec::widget::status::time;
 
-// using audio::stretch::StretchyLoop;
-
 namespace {
 
 Dial realTimeDial() {
@@ -49,7 +47,7 @@ TimeController::TimeController(AudioTransportSourcePlayer* ts)
   timesLayout_.addToLayout(&songTime_);
 }
 
-void TimeController::operator()(const StretchyLoop& stretchy) {
+void TimeController::operator()(const StretchLoop& stretchy) {
   songTime_.setTimeScale(1.0 / timeScale(stretchy.stretchy()));
 }
 

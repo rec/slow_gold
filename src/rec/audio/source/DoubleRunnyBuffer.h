@@ -13,10 +13,10 @@ namespace source {
 
 class DoubleRunnyBuffer : public DoubleStretchyRunny,
                           public Thread,
-                          public Listener<const stretch::StretchyLoop&> {
+                          public Listener<const stretch::StretchLoop&> {
  public:
-  typedef stretch::StretchyLoop StretchyLoop;
-  typedef persist::Data<StretchyLoop> Data;
+  typedef stretch::StretchLoop StretchLoop;
+  typedef persist::Data<StretchLoop> Data;
 
   DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                     const RunnyProto& desc = RunnyProto::default_instance());
@@ -28,7 +28,7 @@ class DoubleRunnyBuffer : public DoubleStretchyRunny,
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
   virtual int64 getTotalLength() const { return buffery_->getLength(); }
 
-  virtual void operator()(const StretchyLoop& p) { setStretchy(p); }
+  virtual void operator()(const StretchLoop& p) { setStretchy(p); }
 
   bool empty() const { return empty_; }
 
@@ -36,7 +36,7 @@ class DoubleRunnyBuffer : public DoubleStretchyRunny,
   Data* data() { return data_; }
 
  private:
-  typedef thread::ChangeLocker<StretchyLoop> ChangeLocker;
+  typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
   ptr<Buffery> buffery_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;
