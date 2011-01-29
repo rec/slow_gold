@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "rec/audio/source/Source.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/util/Math.h"
 
@@ -35,7 +34,7 @@ class Wrappy : public PositionableAudioSource {
   CriticalSection lock_;
 
   int64 position_;
-  ptr<Source> source_;
+  ptr<PositionableAudioSource> source_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);

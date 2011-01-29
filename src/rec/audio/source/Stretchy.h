@@ -20,7 +20,7 @@ class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
 
-  Stretchy(Source* s,
+  Stretchy(PositionableAudioSource* s,
            const Stretch& desc = Stretch::default_instance());
   ~Stretchy();
 

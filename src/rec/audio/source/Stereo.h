@@ -20,7 +20,7 @@ class Stereo : public Wrappy {
 
   enum Side { LEFT, RIGHT };
 
-  Stereo(Source* source) : Wrappy(source), type_(PASSTHROUGH), side_(LEFT) {}
+  Stereo(PositionableAudioSource* source) : Wrappy(source), type_(PASSTHROUGH), side_(LEFT) {}
 
   void setType(Type type);
   void setSide(Side side);

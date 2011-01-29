@@ -9,7 +9,7 @@ namespace source {
 
 using stretch::Stretch;
 
-Stretchy::Stretchy(Source* s, const Stretch& desc)
+Stretchy::Stretchy(PositionableAudioSource* s, const Stretch& desc)
     : Wrappy(s),
       description_(desc),
       buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),

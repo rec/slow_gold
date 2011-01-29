@@ -5,7 +5,7 @@
 
 #include <gtest/gtest.h>
 
-#include "rec/audio/source/Source.h"
+#include "rec/base/base.h"
 
 using namespace juce;
 
@@ -41,15 +41,15 @@ class Testy : public PositionableAudioSource {
 
   int64 position_;
 
-  static float expectNear(Source* s,
+  static float expectNear(PositionableAudioSource* s,
                           float delta,
                           int channels) {
     Testy t;
     return expectNear(s, &t, delta, channels);
   }
 
-  static float expectNear(Source* s0,
-                          Source* s1,
+  static float expectNear(PositionableAudioSource* s0,
+                          PositionableAudioSource* s1,
                           float delta,
                           int channels) {
     int64 length = std::min(s0->getTotalLength(), s1->getTotalLength());
