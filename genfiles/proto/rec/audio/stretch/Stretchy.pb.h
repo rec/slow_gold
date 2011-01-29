@@ -34,19 +34,19 @@ void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretchy_2eproto();
 void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretchy_2eproto();
 void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretchy_2eproto();
 
-class StretchyProto;
+class Stretch;
 class StretchyLoop;
 
 // ===================================================================
 
-class StretchyProto : public ::google::protobuf::Message {
+class Stretch : public ::google::protobuf::Message {
  public:
-  StretchyProto();
-  virtual ~StretchyProto();
+  Stretch();
+  virtual ~Stretch();
   
-  StretchyProto(const StretchyProto& from);
+  Stretch(const Stretch& from);
   
-  inline StretchyProto& operator=(const StretchyProto& from) {
+  inline Stretch& operator=(const Stretch& from) {
     CopyFrom(from);
     return *this;
   }
@@ -60,17 +60,17 @@ class StretchyProto : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const StretchyProto& default_instance();
+  static const Stretch& default_instance();
   
-  void Swap(StretchyProto* other);
+  void Swap(Stretch* other);
   
   // implements Message ----------------------------------------------
   
-  StretchyProto* New() const;
+  Stretch* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const StretchyProto& from);
-  void MergeFrom(const StretchyProto& from);
+  void CopyFrom(const Stretch& from);
+  void MergeFrom(const Stretch& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -205,7 +205,7 @@ class StretchyProto : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 thread_priority() const;
   inline void set_thread_priority(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.audio.stretch.StretchyProto)
+  // @@protoc_insertion_point(class_scope:rec.audio.stretch.Stretch)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -244,7 +244,7 @@ class StretchyProto : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static StretchyProto* default_instance_;
+  static Stretch* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -302,12 +302,12 @@ class StretchyLoop : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.stretch.StretchyProto stretchy = 1;
+  // optional .rec.audio.stretch.Stretch stretchy = 1;
   inline bool has_stretchy() const;
   inline void clear_stretchy();
   static const int kStretchyFieldNumber = 1;
-  inline const ::rec::audio::stretch::StretchyProto& stretchy() const;
-  inline ::rec::audio::stretch::StretchyProto* mutable_stretchy();
+  inline const ::rec::audio::stretch::Stretch& stretchy() const;
+  inline ::rec::audio::stretch::Stretch* mutable_stretchy();
   
   // optional double begin = 2;
   inline bool has_begin() const;
@@ -328,7 +328,7 @@ class StretchyLoop : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::audio::stretch::StretchyProto* stretchy_;
+  ::rec::audio::stretch::Stretch* stretchy_;
   double begin_;
   double end_;
   friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretchy_2eproto();
@@ -356,260 +356,260 @@ class StretchyLoop : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// StretchyProto
+// Stretch
 
 // optional bool disabled = 15 [default = false];
-inline bool StretchyProto::has_disabled() const {
+inline bool Stretch::has_disabled() const {
   return _has_bit(0);
 }
-inline void StretchyProto::clear_disabled() {
+inline void Stretch::clear_disabled() {
   disabled_ = false;
   _clear_bit(0);
 }
-inline bool StretchyProto::disabled() const {
+inline bool Stretch::disabled() const {
   return disabled_;
 }
-inline void StretchyProto::set_disabled(bool value) {
+inline void Stretch::set_disabled(bool value) {
   _set_bit(0);
   disabled_ = value;
 }
 
 // optional bool passthrough_when_disabled = 16 [default = true];
-inline bool StretchyProto::has_passthrough_when_disabled() const {
+inline bool Stretch::has_passthrough_when_disabled() const {
   return _has_bit(1);
 }
-inline void StretchyProto::clear_passthrough_when_disabled() {
+inline void Stretch::clear_passthrough_when_disabled() {
   passthrough_when_disabled_ = true;
   _clear_bit(1);
 }
-inline bool StretchyProto::passthrough_when_disabled() const {
+inline bool Stretch::passthrough_when_disabled() const {
   return passthrough_when_disabled_;
 }
-inline void StretchyProto::set_passthrough_when_disabled(bool value) {
+inline void Stretch::set_passthrough_when_disabled(bool value) {
   _set_bit(1);
   passthrough_when_disabled_ = value;
 }
 
 // optional double time_scale = 1 [default = 1];
-inline bool StretchyProto::has_time_scale() const {
+inline bool Stretch::has_time_scale() const {
   return _has_bit(2);
 }
-inline void StretchyProto::clear_time_scale() {
+inline void Stretch::clear_time_scale() {
   time_scale_ = 1;
   _clear_bit(2);
 }
-inline double StretchyProto::time_scale() const {
+inline double Stretch::time_scale() const {
   return time_scale_;
 }
-inline void StretchyProto::set_time_scale(double value) {
+inline void Stretch::set_time_scale(double value) {
   _set_bit(2);
   time_scale_ = value;
 }
 
 // optional double time_percent = 14 [default = 100];
-inline bool StretchyProto::has_time_percent() const {
+inline bool Stretch::has_time_percent() const {
   return _has_bit(3);
 }
-inline void StretchyProto::clear_time_percent() {
+inline void Stretch::clear_time_percent() {
   time_percent_ = 100;
   _clear_bit(3);
 }
-inline double StretchyProto::time_percent() const {
+inline double Stretch::time_percent() const {
   return time_percent_;
 }
-inline void StretchyProto::set_time_percent(double value) {
+inline void Stretch::set_time_percent(double value) {
   _set_bit(3);
   time_percent_ = value;
 }
 
 // optional double sample_rate = 2 [default = 44100];
-inline bool StretchyProto::has_sample_rate() const {
+inline bool Stretch::has_sample_rate() const {
   return _has_bit(4);
 }
-inline void StretchyProto::clear_sample_rate() {
+inline void Stretch::clear_sample_rate() {
   sample_rate_ = 44100;
   _clear_bit(4);
 }
-inline double StretchyProto::sample_rate() const {
+inline double Stretch::sample_rate() const {
   return sample_rate_;
 }
-inline void StretchyProto::set_sample_rate(double value) {
+inline void Stretch::set_sample_rate(double value) {
   _set_bit(4);
   sample_rate_ = value;
 }
 
 // optional uint32 channels = 3 [default = 2];
-inline bool StretchyProto::has_channels() const {
+inline bool Stretch::has_channels() const {
   return _has_bit(5);
 }
-inline void StretchyProto::clear_channels() {
+inline void Stretch::clear_channels() {
   channels_ = 2u;
   _clear_bit(5);
 }
-inline ::google::protobuf::uint32 StretchyProto::channels() const {
+inline ::google::protobuf::uint32 Stretch::channels() const {
   return channels_;
 }
-inline void StretchyProto::set_channels(::google::protobuf::uint32 value) {
+inline void Stretch::set_channels(::google::protobuf::uint32 value) {
   _set_bit(5);
   channels_ = value;
 }
 
 // optional double pitch_scale = 4 [default = 1];
-inline bool StretchyProto::has_pitch_scale() const {
+inline bool Stretch::has_pitch_scale() const {
   return _has_bit(6);
 }
-inline void StretchyProto::clear_pitch_scale() {
+inline void Stretch::clear_pitch_scale() {
   pitch_scale_ = 1;
   _clear_bit(6);
 }
-inline double StretchyProto::pitch_scale() const {
+inline double Stretch::pitch_scale() const {
   return pitch_scale_;
 }
-inline void StretchyProto::set_pitch_scale(double value) {
+inline void Stretch::set_pitch_scale(double value) {
   _set_bit(6);
   pitch_scale_ = value;
 }
 
 // optional double semitone_shift = 5 [default = 0];
-inline bool StretchyProto::has_semitone_shift() const {
+inline bool Stretch::has_semitone_shift() const {
   return _has_bit(7);
 }
-inline void StretchyProto::clear_semitone_shift() {
+inline void Stretch::clear_semitone_shift() {
   semitone_shift_ = 0;
   _clear_bit(7);
 }
-inline double StretchyProto::semitone_shift() const {
+inline double Stretch::semitone_shift() const {
   return semitone_shift_;
 }
-inline void StretchyProto::set_semitone_shift(double value) {
+inline void Stretch::set_semitone_shift(double value) {
   _set_bit(7);
   semitone_shift_ = value;
 }
 
 // optional double detune_cents = 6 [default = 0];
-inline bool StretchyProto::has_detune_cents() const {
+inline bool Stretch::has_detune_cents() const {
   return _has_bit(8);
 }
-inline void StretchyProto::clear_detune_cents() {
+inline void Stretch::clear_detune_cents() {
   detune_cents_ = 0;
   _clear_bit(8);
 }
-inline double StretchyProto::detune_cents() const {
+inline double Stretch::detune_cents() const {
   return detune_cents_;
 }
-inline void StretchyProto::set_detune_cents(double value) {
+inline void Stretch::set_detune_cents(double value) {
   _set_bit(8);
   detune_cents_ = value;
 }
 
 // optional uint32 bands = 7 [default = 2048];
-inline bool StretchyProto::has_bands() const {
+inline bool Stretch::has_bands() const {
   return _has_bit(9);
 }
-inline void StretchyProto::clear_bands() {
+inline void Stretch::clear_bands() {
   bands_ = 2048u;
   _clear_bit(9);
 }
-inline ::google::protobuf::uint32 StretchyProto::bands() const {
+inline ::google::protobuf::uint32 Stretch::bands() const {
   return bands_;
 }
-inline void StretchyProto::set_bands(::google::protobuf::uint32 value) {
+inline void Stretch::set_bands(::google::protobuf::uint32 value) {
   _set_bit(9);
   bands_ = value;
 }
 
 // optional uint32 filter_overlap = 8 [default = 1];
-inline bool StretchyProto::has_filter_overlap() const {
+inline bool Stretch::has_filter_overlap() const {
   return _has_bit(10);
 }
-inline void StretchyProto::clear_filter_overlap() {
+inline void Stretch::clear_filter_overlap() {
   filter_overlap_ = 1u;
   _clear_bit(10);
 }
-inline ::google::protobuf::uint32 StretchyProto::filter_overlap() const {
+inline ::google::protobuf::uint32 Stretch::filter_overlap() const {
   return filter_overlap_;
 }
-inline void StretchyProto::set_filter_overlap(::google::protobuf::uint32 value) {
+inline void Stretch::set_filter_overlap(::google::protobuf::uint32 value) {
   _set_bit(10);
   filter_overlap_ = value;
 }
 
 // optional uint32 chunk_size = 9 [default = 512];
-inline bool StretchyProto::has_chunk_size() const {
+inline bool Stretch::has_chunk_size() const {
   return _has_bit(11);
 }
-inline void StretchyProto::clear_chunk_size() {
+inline void Stretch::clear_chunk_size() {
   chunk_size_ = 512u;
   _clear_bit(11);
 }
-inline ::google::protobuf::uint32 StretchyProto::chunk_size() const {
+inline ::google::protobuf::uint32 Stretch::chunk_size() const {
   return chunk_size_;
 }
-inline void StretchyProto::set_chunk_size(::google::protobuf::uint32 value) {
+inline void Stretch::set_chunk_size(::google::protobuf::uint32 value) {
   _set_bit(11);
   chunk_size_ = value;
 }
 
 // optional uint32 prefill_size = 10 [default = 15000];
-inline bool StretchyProto::has_prefill_size() const {
+inline bool Stretch::has_prefill_size() const {
   return _has_bit(12);
 }
-inline void StretchyProto::clear_prefill_size() {
+inline void Stretch::clear_prefill_size() {
   prefill_size_ = 15000u;
   _clear_bit(12);
 }
-inline ::google::protobuf::uint32 StretchyProto::prefill_size() const {
+inline ::google::protobuf::uint32 Stretch::prefill_size() const {
   return prefill_size_;
 }
-inline void StretchyProto::set_prefill_size(::google::protobuf::uint32 value) {
+inline void Stretch::set_prefill_size(::google::protobuf::uint32 value) {
   _set_bit(12);
   prefill_size_ = value;
 }
 
 // optional uint32 next_buffer_fill_size = 11 [default = 15000];
-inline bool StretchyProto::has_next_buffer_fill_size() const {
+inline bool Stretch::has_next_buffer_fill_size() const {
   return _has_bit(13);
 }
-inline void StretchyProto::clear_next_buffer_fill_size() {
+inline void Stretch::clear_next_buffer_fill_size() {
   next_buffer_fill_size_ = 15000u;
   _clear_bit(13);
 }
-inline ::google::protobuf::uint32 StretchyProto::next_buffer_fill_size() const {
+inline ::google::protobuf::uint32 Stretch::next_buffer_fill_size() const {
   return next_buffer_fill_size_;
 }
-inline void StretchyProto::set_next_buffer_fill_size(::google::protobuf::uint32 value) {
+inline void Stretch::set_next_buffer_fill_size(::google::protobuf::uint32 value) {
   _set_bit(13);
   next_buffer_fill_size_ = value;
 }
 
 // optional int32 inactive_wait_time = 12 [default = -1];
-inline bool StretchyProto::has_inactive_wait_time() const {
+inline bool Stretch::has_inactive_wait_time() const {
   return _has_bit(14);
 }
-inline void StretchyProto::clear_inactive_wait_time() {
+inline void Stretch::clear_inactive_wait_time() {
   inactive_wait_time_ = -1;
   _clear_bit(14);
 }
-inline ::google::protobuf::int32 StretchyProto::inactive_wait_time() const {
+inline ::google::protobuf::int32 Stretch::inactive_wait_time() const {
   return inactive_wait_time_;
 }
-inline void StretchyProto::set_inactive_wait_time(::google::protobuf::int32 value) {
+inline void Stretch::set_inactive_wait_time(::google::protobuf::int32 value) {
   _set_bit(14);
   inactive_wait_time_ = value;
 }
 
 // optional uint32 thread_priority = 13 [default = 4];
-inline bool StretchyProto::has_thread_priority() const {
+inline bool Stretch::has_thread_priority() const {
   return _has_bit(15);
 }
-inline void StretchyProto::clear_thread_priority() {
+inline void Stretch::clear_thread_priority() {
   thread_priority_ = 4u;
   _clear_bit(15);
 }
-inline ::google::protobuf::uint32 StretchyProto::thread_priority() const {
+inline ::google::protobuf::uint32 Stretch::thread_priority() const {
   return thread_priority_;
 }
-inline void StretchyProto::set_thread_priority(::google::protobuf::uint32 value) {
+inline void Stretch::set_thread_priority(::google::protobuf::uint32 value) {
   _set_bit(15);
   thread_priority_ = value;
 }
@@ -618,20 +618,20 @@ inline void StretchyProto::set_thread_priority(::google::protobuf::uint32 value)
 
 // StretchyLoop
 
-// optional .rec.audio.stretch.StretchyProto stretchy = 1;
+// optional .rec.audio.stretch.Stretch stretchy = 1;
 inline bool StretchyLoop::has_stretchy() const {
   return _has_bit(0);
 }
 inline void StretchyLoop::clear_stretchy() {
-  if (stretchy_ != NULL) stretchy_->::rec::audio::stretch::StretchyProto::Clear();
+  if (stretchy_ != NULL) stretchy_->::rec::audio::stretch::Stretch::Clear();
   _clear_bit(0);
 }
-inline const ::rec::audio::stretch::StretchyProto& StretchyLoop::stretchy() const {
+inline const ::rec::audio::stretch::Stretch& StretchyLoop::stretchy() const {
   return stretchy_ != NULL ? *stretchy_ : *default_instance_->stretchy_;
 }
-inline ::rec::audio::stretch::StretchyProto* StretchyLoop::mutable_stretchy() {
+inline ::rec::audio::stretch::Stretch* StretchyLoop::mutable_stretchy() {
   _set_bit(0);
-  if (stretchy_ == NULL) stretchy_ = new ::rec::audio::stretch::StretchyProto;
+  if (stretchy_ == NULL) stretchy_ = new ::rec::audio::stretch::Stretch;
   return stretchy_;
 }
 

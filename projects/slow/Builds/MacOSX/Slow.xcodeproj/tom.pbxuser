@@ -263,8 +263,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 318019827;
-			PBXWorkspaceStateSaveDate = 318019827;
+			PBXPerProjectTemplateStateSaveDate = 318021681;
+			PBXWorkspaceStateSaveDate = 318021681;
 		};
 		perUserProjectItems = {
 			E23E45C612EF4FDD0080BD76 = E23E45C612EF4FDD0080BD76 /* PBXTextBookmark */;
@@ -353,6 +353,8 @@
 			E23E478E12F336110080BD76 = E23E478E12F336110080BD76 /* PBXTextBookmark */;
 			E23E479312F3362E0080BD76 = E23E479312F3362E0080BD76 /* PBXTextBookmark */;
 			E23E479612F336610080BD76 = E23E479612F336610080BD76 /* PBXTextBookmark */;
+			E23E48D612F49FF20080BD76 = E23E48D612F49FF20080BD76 /* PBXTextBookmark */;
+			E23E48D912F49FF80080BD76 = E23E48D912F49FF80080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3DD12EBF0AD00AAB106 = E288C3DD12EBF0AD00AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
@@ -1408,6 +1410,31 @@
 		rLoc = 1886;
 		rType = 0;
 		vrLen = 1886;
+		vrLoc = 0;
+	};
+	E23E48D512F49FF20080BD76 /* StretchyPlayer.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = StretchyPlayer.h;
+		path = ../../../../../rec/src/rec/slow/StretchyPlayer.h;
+		sourceTree = "<group>";
+	};
+	E23E48D612F49FF20080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'StretchyProto' in namespace 'rec::audio::stretch' does not name a type";
+		fRef = E23E48D512F49FF20080BD76 /* StretchyPlayer.h */;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	E23E48D912F49FF80080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E23E48D512F49FF20080BD76 /* StretchyPlayer.h */;
+		name = "StretchyPlayer.h: 18";
+		rLen = 0;
+		rLoc = 517;
+		rType = 0;
+		vrLen = 1994;
 		vrLoc = 0;
 	};
 	E2758BB212E2968800E37D3F /* Slow */ = {

@@ -1,7 +1,7 @@
 package rec.audio.stretch;
 
 // Describe how exactly to apply the timescaler to a sample.
-message StretchyProto {
+message Stretch {
   optional bool disabled = 15           [default = false];
   optional bool passthrough_when_disabled = 16 [default = true];
 
@@ -35,7 +35,7 @@ message StretchyProto {
 };
 
 message StretchyLoop {
-  optional StretchyProto stretchy = 1;
+  optional Stretch stretchy = 1;
   optional double begin = 2;
   optional double end = 3;
 };

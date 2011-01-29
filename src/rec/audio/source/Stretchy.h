@@ -14,14 +14,14 @@ namespace rec {
 namespace audio {
 namespace source {
 
-using stretch::StretchyProto;
+using stretch::Stretch;
 
 class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
 
   Stretchy(Source* s,
-           const StretchyProto& desc = StretchyProto::default_instance());
+           const Stretch& desc = Stretch::default_instance());
   ~Stretchy();
 
   virtual int64 getTotalLength() const;
@@ -32,7 +32,7 @@ class Stretchy : public Wrappy {
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
 
-  StretchyProto description_;
+  Stretch description_;
   int channels_;
   AudioSampleBuffer buffer_;
   AudioTimeScaler scaler_;

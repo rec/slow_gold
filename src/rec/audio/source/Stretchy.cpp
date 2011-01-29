@@ -7,9 +7,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-using stretch::StretchyProto;
+using stretch::Stretch;
 
-Stretchy::Stretchy(Source* s, const StretchyProto& desc)
+Stretchy::Stretchy(Source* s, const Stretch& desc)
     : Wrappy(s),
       description_(desc),
       buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),

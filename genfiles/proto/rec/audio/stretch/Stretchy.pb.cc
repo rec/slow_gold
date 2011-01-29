@@ -16,9 +16,9 @@ namespace stretch {
 
 namespace {
 
-const ::google::protobuf::Descriptor* StretchyProto_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Stretch_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  StretchyProto_reflection_ = NULL;
+  Stretch_reflection_ = NULL;
 const ::google::protobuf::Descriptor* StretchyLoop_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   StretchyLoop_reflection_ = NULL;
@@ -32,36 +32,36 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretchy_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/audio/stretch/Stretchy.proto");
   GOOGLE_CHECK(file != NULL);
-  StretchyProto_descriptor_ = file->message_type(0);
-  static const int StretchyProto_offsets_[16] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, disabled_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, passthrough_when_disabled_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, time_scale_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, time_percent_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, sample_rate_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, channels_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, pitch_scale_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, semitone_shift_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, detune_cents_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, bands_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, filter_overlap_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, chunk_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, prefill_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, next_buffer_fill_size_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, inactive_wait_time_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, thread_priority_),
+  Stretch_descriptor_ = file->message_type(0);
+  static const int Stretch_offsets_[16] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, disabled_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, passthrough_when_disabled_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_scale_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_percent_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, sample_rate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, channels_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_scale_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, semitone_shift_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, detune_cents_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, bands_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, filter_overlap_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, chunk_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, prefill_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, next_buffer_fill_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, inactive_wait_time_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, thread_priority_),
   };
-  StretchyProto_reflection_ =
+  Stretch_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      StretchyProto_descriptor_,
-      StretchyProto::default_instance_,
-      StretchyProto_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyProto, _unknown_fields_),
+      Stretch_descriptor_,
+      Stretch::default_instance_,
+      Stretch_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(StretchyProto));
+      sizeof(Stretch));
   StretchyLoop_descriptor_ = file->message_type(1);
   static const int StretchyLoop_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchyLoop, stretchy_),
@@ -92,7 +92,7 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    StretchyProto_descriptor_, &StretchyProto::default_instance());
+    Stretch_descriptor_, &Stretch::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     StretchyLoop_descriptor_, &StretchyLoop::default_instance());
 }
@@ -100,8 +100,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretchy_2eproto() {
-  delete StretchyProto::default_instance_;
-  delete StretchyProto_reflection_;
+  delete Stretch::default_instance_;
+  delete Stretch_reflection_;
   delete StretchyLoop::default_instance_;
   delete StretchyLoop_reflection_;
 }
@@ -114,26 +114,25 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretchy_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/audio/stretch/Stretchy.proto\022\021rec."
-    "audio.stretch\"\310\003\n\rStretchyProto\022\027\n\010disab"
-    "led\030\017 \001(\010:\005false\022\'\n\031passthrough_when_dis"
-    "abled\030\020 \001(\010:\004true\022\025\n\ntime_scale\030\001 \001(\001:\0011"
-    "\022\031\n\014time_percent\030\016 \001(\001:\003100\022\032\n\013sample_ra"
-    "te\030\002 \001(\001:\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013"
-    "pitch_scale\030\004 \001(\001:\0011\022\031\n\016semitone_shift\030\005"
-    " \001(\001:\0010\022\027\n\014detune_cents\030\006 \001(\001:\0010\022\023\n\005band"
-    "s\030\007 \001(\r:\0042048\022\031\n\016filter_overlap\030\010 \001(\r:\0011"
-    "\022\027\n\nchunk_size\030\t \001(\r:\003512\022\033\n\014prefill_siz"
-    "e\030\n \001(\r:\00515000\022$\n\025next_buffer_fill_size\030"
-    "\013 \001(\r:\00515000\022\036\n\022inactive_wait_time\030\014 \001(\005"
-    ":\002-1\022\032\n\017thread_priority\030\r \001(\r:\0014\"^\n\014Stre"
-    "tchyLoop\0222\n\010stretchy\030\001 \001(\0132 .rec.audio.s"
-    "tretch.StretchyProto\022\r\n\005begin\030\002 \001(\001\022\013\n\003e"
-    "nd\030\003 \001(\001", 608);
+    "audio.stretch\"\302\003\n\007Stretch\022\027\n\010disabled\030\017 "
+    "\001(\010:\005false\022\'\n\031passthrough_when_disabled\030"
+    "\020 \001(\010:\004true\022\025\n\ntime_scale\030\001 \001(\001:\0011\022\031\n\014ti"
+    "me_percent\030\016 \001(\001:\003100\022\032\n\013sample_rate\030\002 \001"
+    "(\001:\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_"
+    "scale\030\004 \001(\001:\0011\022\031\n\016semitone_shift\030\005 \001(\001:\001"
+    "0\022\027\n\014detune_cents\030\006 \001(\001:\0010\022\023\n\005bands\030\007 \001("
+    "\r:\0042048\022\031\n\016filter_overlap\030\010 \001(\r:\0011\022\027\n\nch"
+    "unk_size\030\t \001(\r:\003512\022\033\n\014prefill_size\030\n \001("
+    "\r:\00515000\022$\n\025next_buffer_fill_size\030\013 \001(\r:"
+    "\00515000\022\036\n\022inactive_wait_time\030\014 \001(\005:\002-1\022\032"
+    "\n\017thread_priority\030\r \001(\r:\0014\"X\n\014StretchyLo"
+    "op\022,\n\010stretchy\030\001 \001(\0132\032.rec.audio.stretch"
+    ".Stretch\022\r\n\005begin\030\002 \001(\001\022\013\n\003end\030\003 \001(\001", 596);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretchy.proto", &protobuf_RegisterTypes);
-  StretchyProto::default_instance_ = new StretchyProto();
+  Stretch::default_instance_ = new Stretch();
   StretchyLoop::default_instance_ = new StretchyLoop();
-  StretchyProto::default_instance_->InitAsDefaultInstance();
+  Stretch::default_instance_->InitAsDefaultInstance();
   StretchyLoop::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretchy_2eproto);
 }
@@ -149,39 +148,39 @@ struct StaticDescriptorInitializer_rec_2faudio_2fstretch_2fStretchy_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int StretchyProto::kDisabledFieldNumber;
-const int StretchyProto::kPassthroughWhenDisabledFieldNumber;
-const int StretchyProto::kTimeScaleFieldNumber;
-const int StretchyProto::kTimePercentFieldNumber;
-const int StretchyProto::kSampleRateFieldNumber;
-const int StretchyProto::kChannelsFieldNumber;
-const int StretchyProto::kPitchScaleFieldNumber;
-const int StretchyProto::kSemitoneShiftFieldNumber;
-const int StretchyProto::kDetuneCentsFieldNumber;
-const int StretchyProto::kBandsFieldNumber;
-const int StretchyProto::kFilterOverlapFieldNumber;
-const int StretchyProto::kChunkSizeFieldNumber;
-const int StretchyProto::kPrefillSizeFieldNumber;
-const int StretchyProto::kNextBufferFillSizeFieldNumber;
-const int StretchyProto::kInactiveWaitTimeFieldNumber;
-const int StretchyProto::kThreadPriorityFieldNumber;
+const int Stretch::kDisabledFieldNumber;
+const int Stretch::kPassthroughWhenDisabledFieldNumber;
+const int Stretch::kTimeScaleFieldNumber;
+const int Stretch::kTimePercentFieldNumber;
+const int Stretch::kSampleRateFieldNumber;
+const int Stretch::kChannelsFieldNumber;
+const int Stretch::kPitchScaleFieldNumber;
+const int Stretch::kSemitoneShiftFieldNumber;
+const int Stretch::kDetuneCentsFieldNumber;
+const int Stretch::kBandsFieldNumber;
+const int Stretch::kFilterOverlapFieldNumber;
+const int Stretch::kChunkSizeFieldNumber;
+const int Stretch::kPrefillSizeFieldNumber;
+const int Stretch::kNextBufferFillSizeFieldNumber;
+const int Stretch::kInactiveWaitTimeFieldNumber;
+const int Stretch::kThreadPriorityFieldNumber;
 #endif  // !_MSC_VER
 
-StretchyProto::StretchyProto()
+Stretch::Stretch()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void StretchyProto::InitAsDefaultInstance() {
+void Stretch::InitAsDefaultInstance() {
 }
 
-StretchyProto::StretchyProto(const StretchyProto& from)
+Stretch::Stretch(const Stretch& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void StretchyProto::SharedCtor() {
+void Stretch::SharedCtor() {
   _cached_size_ = 0;
   disabled_ = false;
   passthrough_when_disabled_ = true;
@@ -202,36 +201,36 @@ void StretchyProto::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-StretchyProto::~StretchyProto() {
+Stretch::~Stretch() {
   SharedDtor();
 }
 
-void StretchyProto::SharedDtor() {
+void Stretch::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void StretchyProto::SetCachedSize(int size) const {
+void Stretch::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* StretchyProto::descriptor() {
+const ::google::protobuf::Descriptor* Stretch::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return StretchyProto_descriptor_;
+  return Stretch_descriptor_;
 }
 
-const StretchyProto& StretchyProto::default_instance() {
+const Stretch& Stretch::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fstretch_2fStretchy_2eproto();  return *default_instance_;
 }
 
-StretchyProto* StretchyProto::default_instance_ = NULL;
+Stretch* Stretch::default_instance_ = NULL;
 
-StretchyProto* StretchyProto::New() const {
-  return new StretchyProto;
+Stretch* Stretch::New() const {
+  return new Stretch;
 }
 
-void StretchyProto::Clear() {
+void Stretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     disabled_ = false;
     passthrough_when_disabled_ = true;
@@ -256,7 +255,7 @@ void StretchyProto::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool StretchyProto::MergePartialFromCodedStream(
+bool Stretch::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -533,7 +532,7 @@ bool StretchyProto::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void StretchyProto::SerializeWithCachedSizes(
+void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional double time_scale = 1 [default = 1];
   if (_has_bit(2)) {
@@ -621,7 +620,7 @@ void StretchyProto::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* StretchyProto::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Stretch::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional double time_scale = 1 [default = 1];
   if (_has_bit(2)) {
@@ -710,7 +709,7 @@ void StretchyProto::SerializeWithCachedSizes(
   return target;
 }
 
-int StretchyProto::ByteSize() const {
+int Stretch::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -824,10 +823,10 @@ int StretchyProto::ByteSize() const {
   return total_size;
 }
 
-void StretchyProto::MergeFrom(const ::google::protobuf::Message& from) {
+void Stretch::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const StretchyProto* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const StretchyProto*>(
+  const Stretch* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Stretch*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -836,7 +835,7 @@ void StretchyProto::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void StretchyProto::MergeFrom(const StretchyProto& from) {
+void Stretch::MergeFrom(const Stretch& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -893,24 +892,24 @@ void StretchyProto::MergeFrom(const StretchyProto& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void StretchyProto::CopyFrom(const ::google::protobuf::Message& from) {
+void Stretch::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void StretchyProto::CopyFrom(const StretchyProto& from) {
+void Stretch::CopyFrom(const Stretch& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool StretchyProto::IsInitialized() const {
+bool Stretch::IsInitialized() const {
   
   return true;
 }
 
-void StretchyProto::Swap(StretchyProto* other) {
+void Stretch::Swap(Stretch* other) {
   if (other != this) {
     std::swap(disabled_, other->disabled_);
     std::swap(passthrough_when_disabled_, other->passthrough_when_disabled_);
@@ -934,11 +933,11 @@ void StretchyProto::Swap(StretchyProto* other) {
   }
 }
 
-::google::protobuf::Metadata StretchyProto::GetMetadata() const {
+::google::protobuf::Metadata Stretch::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = StretchyProto_descriptor_;
-  metadata.reflection = StretchyProto_reflection_;
+  metadata.descriptor = Stretch_descriptor_;
+  metadata.reflection = Stretch_reflection_;
   return metadata;
 }
 
@@ -957,7 +956,7 @@ StretchyLoop::StretchyLoop()
 }
 
 void StretchyLoop::InitAsDefaultInstance() {
-  stretchy_ = const_cast< ::rec::audio::stretch::StretchyProto*>(&::rec::audio::stretch::StretchyProto::default_instance());
+  stretchy_ = const_cast< ::rec::audio::stretch::Stretch*>(&::rec::audio::stretch::Stretch::default_instance());
 }
 
 StretchyLoop::StretchyLoop(const StretchyLoop& from)
@@ -1007,7 +1006,7 @@ StretchyLoop* StretchyLoop::New() const {
 void StretchyLoop::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (stretchy_ != NULL) stretchy_->::rec::audio::stretch::StretchyProto::Clear();
+      if (stretchy_ != NULL) stretchy_->::rec::audio::stretch::Stretch::Clear();
     }
     begin_ = 0;
     end_ = 0;
@@ -1022,7 +1021,7 @@ bool StretchyLoop::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.audio.stretch.StretchyProto stretchy = 1;
+      // optional .rec.audio.stretch.Stretch stretchy = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1085,7 +1084,7 @@ bool StretchyLoop::MergePartialFromCodedStream(
 
 void StretchyLoop::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.audio.stretch.StretchyProto stretchy = 1;
+  // optional .rec.audio.stretch.Stretch stretchy = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->stretchy(), output);
@@ -1109,7 +1108,7 @@ void StretchyLoop::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* StretchyLoop::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.audio.stretch.StretchyProto stretchy = 1;
+  // optional .rec.audio.stretch.Stretch stretchy = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1137,7 +1136,7 @@ int StretchyLoop::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.audio.stretch.StretchyProto stretchy = 1;
+    // optional .rec.audio.stretch.Stretch stretchy = 1;
     if (has_stretchy()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1182,7 +1181,7 @@ void StretchyLoop::MergeFrom(const StretchyLoop& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_stretchy()->::rec::audio::stretch::StretchyProto::MergeFrom(from.stretchy());
+      mutable_stretchy()->::rec::audio::stretch::Stretch::MergeFrom(from.stretchy());
     }
     if (from._has_bit(1)) {
       set_begin(from.begin());

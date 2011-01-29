@@ -459,6 +459,7 @@
 		92A5C0C1A1A7C496646ABE34 /* map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = map.cpp; path = ../../../../src/rec/data/yaml/src/map.cpp; sourceTree = SOURCE_ROOT; };
 		92E745048C0393295B0D8953 /* MainPage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainPage.cpp; path = ../../../../src/rec/slow/MainPage.cpp; sourceTree = SOURCE_ROOT; };
 		939418AECEA2AAD9ED6D5FDC /* Time.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Time.pb.cc; path = ../../../../genfiles/proto/rec/widget/status/Time.pb.cc; sourceTree = SOURCE_ROOT; };
+		93AE14C26C505C351BEBBAA3 /* Stretchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretchy.h; path = ../../../../src/rec/audio/stretch/Stretchy.h; sourceTree = SOURCE_ROOT; };
 		93BF2BCB183C30ABB83AB74A /* JuceLibraryCode.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode.mm; path = ../../JuceLibraryCode/JuceLibraryCode.mm; sourceTree = SOURCE_ROOT; };
 		93D59B968ECE8608A83355B1 /* Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Internal.h; path = ../../../../src/rec/data/yaml/Internal.h; sourceTree = SOURCE_ROOT; };
 		93EBC98B0C17E082E5E5CF66 /* directives.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = directives.h; path = ../../../../src/rec/data/yaml/src/directives.h; sourceTree = SOURCE_ROOT; };
@@ -679,6 +680,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0473E1CD0AA3EEA4E3DA5A0A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		048C7D5BC832EB5170569CD5 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,6 +794,7 @@
 		1E76CD59C8E60146B04575CD /* stretch */ = {
 			isa = PBXGroup;
 			children = (
+				93AE14C26C505C351BEBBAA3 /* Stretchy.h */,
 				543FB32AAC2BA01A3BEBC5EF /* TestHarness.h */,
 				0C4665D00CF1123246BA1B9C /* TimeScaler.cpp */,
 				8B233B1B711F488706E03080 /* TimeScaler.h */,
@@ -1410,20 +1426,6 @@
 			name = source;
 			sourceTree = "<group>";
 		};
-		D9C501694D9B63F187BFE215 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		E0715BED1B299348F9621C18 /* stretch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1601,7 +1603,7 @@
 				French,
 				German,
 			);
-			mainGroup = D9C501694D9B63F187BFE215 /* Source */;
+			mainGroup = 0473E1CD0AA3EEA4E3DA5A0A /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

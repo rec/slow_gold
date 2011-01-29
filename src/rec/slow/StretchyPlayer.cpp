@@ -65,5 +65,15 @@ void StretchyPlayer::operator()(const float& t) {
     LOG(ERROR) << "Failed to fill buffer.";
 }
 
+gui::CachedThumbnail* StretchyPlayer::cachedThumbnail() {
+  return doubleRunny_? doubleRunny_->cachedThumbnail() : NULL;
+}
+
+int StretchyPlayer::length() const {
+  return doubleRunny_ ? doubleRunny_->getTotalLength() : 0;
+}
+
+
+
 }  // namespace slow
 }  // namespace rec
