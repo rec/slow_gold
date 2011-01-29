@@ -28,7 +28,7 @@ class DoubleRunnyBuffer : public DoubleStretchy,
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
   virtual int64 getTotalLength() const { return buffery_->getLength(); }
 
-  virtual void operator()(const StretchLoop& p) { setLoop(p); }
+  virtual void operator()(const StretchLoop& p) { setLoop(p, setLoopPosition(p)); }
 
   bool empty() const { return empty_; }
 
@@ -38,6 +38,7 @@ class DoubleRunnyBuffer : public DoubleStretchy,
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
+  // DoubleStretchy stretchy_;
   ptr<FillableBuffer> buffery_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;
   Data* const data_;

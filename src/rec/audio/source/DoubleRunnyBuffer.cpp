@@ -21,6 +21,7 @@ namespace source {
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
     : DoubleStretchy(file, desc), Thread("DoubleRunnyBuffer"),
+      //    : Thread("DoubleRunnyBuffer"), stretchy_(file, desc),
       data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {
@@ -39,7 +40,9 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
   source.reset(new Seggy(SampleRange(0, len), source.transfer()));
   buffery_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
 
-  setLoop(data_->get());
+  StretchLoop loop(data_->get());
+  setLoop(loop, setLoopPosition(loop));
+
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
   changeLocker_->initialize(data_->get());
   data_->addListener(changeLocker_.get());

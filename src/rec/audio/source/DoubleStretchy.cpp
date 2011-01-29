@@ -20,24 +20,23 @@ int64 DoubleStretchy::nextRunnyPosition() const {
       getNextReadPosition();
 }
 
-void DoubleStretchy::setLoop(const StretchLoop& loop) {
+int64 DoubleStretchy::setLoopPosition(const StretchLoop& loop) {
+  ScopedLock l(lock_);
+  const Stretch& stretch = loop.stretchy();
+  ratio_ *= (timeScale(stretch) / stretch::timeScale(stretch));
+  loop_ = loop;
+  return nextRunnyPosition();
+}
+
+void DoubleStretchy::setLoop(const StretchLoop& loop, int pos) {
   ptr<PositionableAudioSource> source(makeSource());
   if (!source) {
     LOG(ERROR) << "Couldn't make source";
     return;
   }
 
-  const Stretch& stretch = loop.stretchy();
-  int64 position = 0;
-  {
-    ScopedLock l(lock_);
-    ratio_ *= (timeScale(stretch) / stretch::timeScale(stretch));
-    loop_ = loop;
-    position = nextRunnyPosition();
-  }
-
-  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, stretch,
-                                     position, source.transfer()));
+  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, loop.stretchy(),
+                                     pos, source.transfer()));
   if (runny)
     setNext(runny.transfer());
 }

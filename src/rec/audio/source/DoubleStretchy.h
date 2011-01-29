@@ -17,7 +17,8 @@ class DoubleStretchy : public DoubleRunny {
   ~DoubleStretchy();
 
   virtual void prepareToPlay(Runny* runny);
-  void setLoop(const StretchLoop& loop);
+  void setLoop(const StretchLoop& loop, int pos);
+  int64 setLoopPosition(const StretchLoop& loop);
 
  protected:
   virtual PositionableAudioSource* makeSource() = 0;
