@@ -23,6 +23,21 @@ int64 DoubleStretchyRunny::nextRunnyPosition() const {
       getNextReadPosition();
 }
 
+Runny* makeRunny(const RunnyProto& desc, int pos, PositionableAudioSource* source) {
+  ptr<Runny> runny(new Runny(source, desc));
+  runny->setNextReadPosition(pos);
+
+  Thread* thread = Thread::getCurrentThread();
+  while (!(shouldExit(thread) || runny->isFull()))
+    runny->fill();
+
+  if (shouldExit(thread))
+    return NULL;
+
+  runny->startThread();
+  return runny.transfer();
+}
+
 void DoubleStretchyRunny::setLoop(const StretchLoop& loop) {
   const Stretch& desc = loop.stretchy();
   double timeRatio = timeScale(desc);
@@ -47,17 +62,9 @@ void DoubleStretchyRunny::setLoop(const StretchLoop& loop) {
     source.reset(new Stretchy(source.transfer(), desc));
   }
 
-  ptr<Runny> runny(new Runny(source.transfer(), runnyDesc_));
-  runny->setNextReadPosition(position);
-
-  Thread* thread = Thread::getCurrentThread();
-  while (!(shouldExit(thread) || runny->isFull()))
-    runny->fill();
-
-  if (!shouldExit(thread)) {
-    runny->startThread();
+  ptr<Runny> runny(makeRunny(runnyDesc_, position, source.transfer()));
+  if (runny)
     setNext(runny.transfer());
-  }
 }
 
 void DoubleStretchyRunny::prepareToPlay(Runny* runny) {
