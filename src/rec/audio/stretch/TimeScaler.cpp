@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include "rec/audio/source/TimeScaler.h"
+#include "rec/audio/stretch/TimeScaler.h"
 
 #include "rec/audio/source/Stretchy.h"
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"

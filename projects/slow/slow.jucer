@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="vRcMTKjez" name="Slow">
+  <MAINGROUP id="wF5cnSEe7" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -125,6 +125,8 @@
                 name="Runny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Runny.h" id="AAgVplhqw"
                 name="Runny.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Seggy.h" id="mZqhhU0EI"
+                name="Seggy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Snoopy.h" id="5nWB8Mh78"
                 name="Snoopy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Source.h" id="H3Lf11Gqp"
@@ -137,18 +139,20 @@
                 name="Stretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="DaXZYkHwH"
                 name="Stretchy.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/TestHarness.h" id="6Mfnx1zUH"
-                name="TestHarness.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="8p2gEgkqs"
                 name="Testy.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/TimeScaler.cpp"
-                id="LeMB8lwle" name="TimeScaler.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/TimeScaler.h" id="uawi54eRa"
-                name="TimeScaler.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Wrappy.cpp" id="18wxfvUB3"
                 name="Wrappy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Wrappy.h" id="gnJ1mnrfw"
                 name="Wrappy.h" resource="0"/>
+        </GROUP>
+        <GROUP id="QHdS2Mfsg" name="stretch">
+          <FILE compile="0" file="../../src/rec/audio/stretch/TestHarness.h"
+                id="FH5NyO48J" name="TestHarness.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler.cpp"
+                id="4kbR48poD" name="TimeScaler.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/TimeScaler.h" id="SfOde5HvM"
+                name="TimeScaler.h" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="dtlJsxVnc" name="base">
@@ -954,7 +958,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="71twDqmGL" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="HOdH8nw3n" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

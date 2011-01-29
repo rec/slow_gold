@@ -3,8 +3,8 @@
 #include <gtest/gtest.h>
 
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
-#include "rec/audio/source/TestHarness.h"
-#include "rec/audio/source/TimeScaler.h"
+#include "rec/audio/stretch/TestHarness.h"
+#include "rec/audio/stretch/TimeScaler.h"
 #include "rec/audio/source/Stretchy.pb.h"
 
 using namespace juce;
