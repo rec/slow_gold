@@ -56,7 +56,7 @@ void DoubleStretchyRunny::setLoop(const StretchLoop& loop) {
 
   if (!shouldExit(thread)) {
     runny->startThread();
-    set(runny.transfer());
+    setNext(runny.transfer());
   }
 }
 

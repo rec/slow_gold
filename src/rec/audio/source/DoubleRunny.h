@@ -16,7 +16,7 @@ class DoubleRunny : public Wrappy {
 
   virtual void shutdown();
 
-  void set(Runny* next);
+  void setNext(Runny* next);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
  protected:

@@ -12,7 +12,7 @@ DoubleRunny::DoubleRunny(const RunnyProto& d)
 
 DoubleRunny::~DoubleRunny() {}
 
-void DoubleRunny::set(Runny* next) {
+void DoubleRunny::setNext(Runny* next) {
   thread_ptr<Runny> runny(next);
   {
     ScopedLock l(lock_);
