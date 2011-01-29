@@ -17,11 +17,9 @@ namespace rec {
 namespace slow {
 
 class MainPage;
+using namespace widget::status::time;
 
-typedef audio::source::StretchyLoop StretchyLoop;
-typedef widget::status::time::TextComponent TextComponent;
-typedef widget::status::time::DialComponent DialComponent;
-
+typedef audio::stretch::StretchyLoop StretchyLoop;
 
 class PlaybackController : public gui::Layout,
                            public Listener<const VirtualFile&>,

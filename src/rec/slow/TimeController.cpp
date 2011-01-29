@@ -1,6 +1,6 @@
 #include "rec/slow/TimeController.h"
 #include "rec/data/persist/Persist.h"
-#include "rec/audio/source/Stretchy.h"
+#include "rec/audio/stretch/Stretchy.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
@@ -9,23 +9,20 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/cd/Album.h"
 
-using namespace rec::proto::arg;
-
-using juce::Colours;
-using rec::gui::Colors;
-using rec::widget::status::time::Dial;
-using rec::widget::status::time::DialComponent;
-using rec::widget::status::time::Text;
-using rec::widget::status::time::TextComponent;
-
 namespace rec {
 namespace slow {
+
+using namespace juce;
+using namespace rec::proto::arg;
+using namespace rec::widget::status::time;
+
+// using audio::stretch::StretchyLoop;
 
 namespace {
 
 Dial realTimeDial() {
   Dial dial;
-  Colors* colors = dial.mutable_widget()->mutable_colors();
+  gui::Colors* colors = dial.mutable_widget()->mutable_colors();
   colors->add_color()->set_argb(Colours::white.getARGB());
   colors->add_color()->set_argb(Colours::green.getARGB());
   colors->add_color()->set_argb(Colours::red.getARGB());
@@ -52,7 +49,7 @@ TimeController::TimeController(AudioTransportSourcePlayer* ts)
   timesLayout_.addToLayout(&songTime_);
 }
 
-void TimeController::operator()(const audio::source::StretchyLoop& stretchy) {
+void TimeController::operator()(const StretchyLoop& stretchy) {
   songTime_.setTimeScale(1.0 / timeScale(stretchy.stretchy()));
 }
 

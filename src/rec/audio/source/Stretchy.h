@@ -8,15 +8,18 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/TimeScaler.h"
-#include "rec/audio/stretch/Stretchy.pb.h"
+#include "rec/audio/stretch/Stretchy.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
+using stretch::StretchyProto;
+
 class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
+
   Stretchy(Source* s,
            const StretchyProto& desc = StretchyProto::default_instance());
   ~Stretchy();
@@ -38,10 +41,6 @@ class Stretchy : public Wrappy {
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };
-
-double timeScale(const StretchyProto& d);
-double pitchScale(const StretchyProto& d);
-
 
 }  // namespace source
 }  // namespace audio

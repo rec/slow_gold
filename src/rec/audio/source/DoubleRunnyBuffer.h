@@ -13,8 +13,9 @@ namespace source {
 
 class DoubleRunnyBuffer : public DoubleStretchyRunny,
                           public Thread,
-                          public Listener<const StretchyLoop&> {
+                          public Listener<const stretch::StretchyLoop&> {
  public:
+  typedef stretch::StretchyLoop StretchyLoop;
   typedef persist::Data<StretchyLoop> Data;
 
   DoubleRunnyBuffer(const VirtualFile& file, Data* data,

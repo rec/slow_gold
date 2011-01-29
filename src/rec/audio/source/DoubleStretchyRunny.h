@@ -11,6 +11,8 @@ namespace source {
 
 class DoubleStretchyRunny : public DoubleRunny {
  public:
+  typedef stretch::StretchyLoop StretchyLoop;
+
   DoubleStretchyRunny(const VirtualFile& file,
                       const RunnyProto& desc = RunnyProto::default_instance());
 

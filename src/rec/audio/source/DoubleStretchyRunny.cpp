@@ -9,6 +9,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
+using stretch::StretchyProto;
+using stretch::StretchyLoop;
+
 DoubleStretchyRunny::DoubleStretchyRunny(const VirtualFile& file,
                                          const RunnyProto& desc)
     : DoubleRunny(desc), file_(file), ratio_(1.0), offset_(0.0) {

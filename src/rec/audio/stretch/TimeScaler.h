@@ -7,17 +7,11 @@ class AudioTimeScaler;
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 class StretchyProto;
 
-}  // namespace source
-
-
-namespace stretch {
-
-
-const char* Init(const source::StretchyProto &desc, AudioTimeScaler* s);
+const char* Init(const StretchyProto &desc, AudioTimeScaler* s);
 
 }  // namespace stretch
 }  // namespace audio

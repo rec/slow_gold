@@ -15,20 +15,19 @@ class AudioTransportSourcePlayer;
 
 class TimeController : public gui::Layout,
                        public Listener<float>,
-                       public Listener<const audio::source::StretchyLoop&>,
+                       public Listener<const audio::stretch::StretchyLoop&>,
                        public Listener<const SelectionRange&>,
                        public Listener<const ClockUpdate&>,
                        public Broadcaster<const ClockUpdate&> {
  public:
-  typedef persist::Data<audio::source::StretchyLoop> Data;
+  typedef audio::stretch::StretchyLoop StretchyLoop;
+  typedef persist::Data<StretchyLoop> Data;
 
   TimeController(AudioTransportSourcePlayer* transportSource);
 
   virtual void operator()(const ClockUpdate& up) { broadcast(up); }
-  virtual void operator()(const audio::source::StretchyLoop&);
-  virtual void operator()(float time) {
-    broadcast(ClockUpdate(time, -1));
-  }
+  virtual void operator()(const StretchyLoop&);
+  virtual void operator()(float t) { broadcast(ClockUpdate(t, -1)); }
 
   virtual void operator()(const SelectionRange&);
 

@@ -7,6 +7,8 @@ namespace rec {
 namespace audio {
 namespace source {
 
+using stretch::StretchyProto;
+
 Stretchy::Stretchy(Source* s, const StretchyProto& desc)
     : Wrappy(s),
       description_(desc),
@@ -77,17 +79,6 @@ int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
 
   int64 samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);
   return samples;
-}
-
-double timeScale(const StretchyProto& d) {
-  return d.disabled() ? 1.0 : (d.time_scale() * (100.0 / d.time_percent()));
-}
-
-double pitchScale(const StretchyProto& d) {
-  if (d.disabled())
-    return 1.0;
-  double detune = d.detune_cents() / 100.0 + d.semitone_shift() / 12.0;
-  return d.pitch_scale() * pow(2.0, detune);
 }
 
 }  // namespace source

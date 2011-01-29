@@ -31,9 +31,9 @@
 	};
 	06F33F6B9FE7F92A71438212 /* Stretchy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {553, 1482}}";
-			sepNavSelRange = "{459, 0}";
-			sepNavVisRange = "{0, 1710}";
+			sepNavIntBoundsRect = "{{0, 0}, {1004, 1105}}";
+			sepNavSelRange = "{141, 0}";
+			sepNavVisRange = "{0, 1919}";
 			sepNavWindowFrame = "{{800, -24}, {1063, 954}}";
 		};
 	};
@@ -377,6 +377,8 @@
 			E23A18E61276048900D30FE9 = E23A18E61276048900D30FE9 /* PBXTextBookmark */;
 			E23E47CB12F3620C0080BD76 = E23E47CB12F3620C0080BD76 /* PBXTextBookmark */;
 			E23E47D112F3625D0080BD76 = E23E47D112F3625D0080BD76 /* PBXTextBookmark */;
+			E23E488C12F49DFE0080BD76 /* XCBuildMessageTextBookmark */ = E23E488C12F49DFE0080BD76 /* XCBuildMessageTextBookmark */;
+			E23E48AE12F49EFB0080BD76 /* PBXTextBookmark */ = E23E48AE12F49EFB0080BD76 /* PBXTextBookmark */;
 			E26FD79F123EB1590088AD82 = E26FD79F123EB1590088AD82 /* PBXTextBookmark */;
 			E2714F39120B1A5A0045B28D = E2714F39120B1A5A0045B28D /* PBXTextBookmark */;
 			E2714F96120B41CF0045B28D = E2714F96120B41CF0045B28D /* PBXTextBookmark */;
@@ -544,11 +546,27 @@
 			sepNavVisRange = "{0, 531}";
 		};
 	};
+	775A4DE3E804282C1E73ACCE /* StretchyController.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
+			sepNavSelRange = "{1129, 0}";
+			sepNavVisRange = "{0, 1509}";
+			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
+		};
+	};
 	7CB9DFFCFBBA2C80E95079E8 /* Block.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {553, 896}}";
 			sepNavSelRange = "{622, 0}";
 			sepNavVisRange = "{0, 1238}";
+		};
+	};
+	81336808F099E9D1992BD3D7 /* TimeController.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
+			sepNavSelRange = "{102, 0}";
+			sepNavVisRange = "{0, 1658}";
+			sepNavWindowFrame = "{{317, 19}, {911, 1159}}";
 		};
 	};
 	814A6CF4BA6D13BBB915CDBD /* Stereo.cpp */ = {
@@ -1036,6 +1054,25 @@
 		rLoc = 424;
 		rType = 0;
 		vrLen = 737;
+		vrLoc = 0;
+	};
+	E23E488C12F49DFE0080BD76 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /Users/tom/Documents/development/rec/projects/tests/Builds/MacOSX/../../../../src/rec/slow/TimeController.cpp";
+		fRef = 81336808F099E9D1992BD3D7 /* TimeController.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E23E48AE12F49EFB0080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 81336808F099E9D1992BD3D7 /* TimeController.cpp */;
+		name = "TimeController.cpp: 3";
+		rLen = 0;
+		rLoc = 102;
+		rType = 0;
+		vrLen = 1658;
 		vrLoc = 0;
 	};
 	E26FD77D123E932E0088AD82 /* juce_String.cpp */ = {

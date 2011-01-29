@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E23E48AC12F49EFB0080BD76</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>TimeController.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E23E48AD12F49EFB0080BD76</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>TimeController.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E23E48AE12F49EFB0080BD76</string>
+						<key>history</key>
+						<array>
+							<string>E23E488C12F49DFE0080BD76</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {911, 1062}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>317 75 911 1103 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -592,8 +633,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E2714F3E120B1A5A0045B28D</string>
+		<string>E23E487412F49B9D0080BD76</string>
+		<string>E23E487512F49B9D0080BD76</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/tom/Documents/development/rec/projects/tests/Builds/MacOSX/tests.xcodeproj</string>
+		<string>E23E48AC12F49EFB0080BD76</string>
+		<string>E2714F3E120B1A5A0045B28D</string>
 	</array>
 	<key>WindowString</key>
 	<string>721 204 1127 974 0 0 1920 1178 </string>
@@ -617,7 +663,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>TimeController.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -634,6 +680,8 @@
 							<string>515pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -686,7 +734,7 @@
 			<key>WindowToolGUID</key>
 			<string>E2714F3E120B1A5A0045B28D</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -795,13 +843,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E23E484212F498EE0080BD76</string>
+				<string>E23E486D12F49B9D0080BD76</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E23E484312F498EE0080BD76</string>
-				<string>E23E484412F498EE0080BD76</string>
-				<string>E23E484512F498EE0080BD76</string>
-				<string>E23E484612F498EE0080BD76</string>
-				<string>E23E484712F498EE0080BD76</string>
+				<string>E23E486E12F49B9D0080BD76</string>
+				<string>E23E486F12F49B9D0080BD76</string>
+				<string>E23E487012F49B9D0080BD76</string>
+				<string>E23E487112F49B9D0080BD76</string>
+				<string>E23E487212F49B9D0080BD76</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -955,7 +1003,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E23E484812F498EE0080BD76</string>
+				<string>E23E487312F49B9D0080BD76</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

@@ -12,7 +12,7 @@
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 namespace {
 
@@ -113,22 +113,22 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretchy_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n rec/audio/stretch/Stretchy.proto\022\020rec."
-    "audio.source\"\310\003\n\rStretchyProto\022\027\n\010disabl"
-    "ed\030\017 \001(\010:\005false\022\'\n\031passthrough_when_disa"
-    "bled\030\020 \001(\010:\004true\022\025\n\ntime_scale\030\001 \001(\001:\0011\022"
-    "\031\n\014time_percent\030\016 \001(\001:\003100\022\032\n\013sample_rat"
-    "e\030\002 \001(\001:\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013p"
-    "itch_scale\030\004 \001(\001:\0011\022\031\n\016semitone_shift\030\005 "
-    "\001(\001:\0010\022\027\n\014detune_cents\030\006 \001(\001:\0010\022\023\n\005bands"
-    "\030\007 \001(\r:\0042048\022\031\n\016filter_overlap\030\010 \001(\r:\0011\022"
-    "\027\n\nchunk_size\030\t \001(\r:\003512\022\033\n\014prefill_size"
-    "\030\n \001(\r:\00515000\022$\n\025next_buffer_fill_size\030\013"
-    " \001(\r:\00515000\022\036\n\022inactive_wait_time\030\014 \001(\005:"
-    "\002-1\022\032\n\017thread_priority\030\r \001(\r:\0014\"]\n\014Stret"
-    "chyLoop\0221\n\010stretchy\030\001 \001(\0132\037.rec.audio.so"
-    "urce.StretchyProto\022\r\n\005begin\030\002 \001(\001\022\013\n\003end"
-    "\030\003 \001(\001", 606);
+    "\n rec/audio/stretch/Stretchy.proto\022\021rec."
+    "audio.stretch\"\310\003\n\rStretchyProto\022\027\n\010disab"
+    "led\030\017 \001(\010:\005false\022\'\n\031passthrough_when_dis"
+    "abled\030\020 \001(\010:\004true\022\025\n\ntime_scale\030\001 \001(\001:\0011"
+    "\022\031\n\014time_percent\030\016 \001(\001:\003100\022\032\n\013sample_ra"
+    "te\030\002 \001(\001:\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013"
+    "pitch_scale\030\004 \001(\001:\0011\022\031\n\016semitone_shift\030\005"
+    " \001(\001:\0010\022\027\n\014detune_cents\030\006 \001(\001:\0010\022\023\n\005band"
+    "s\030\007 \001(\r:\0042048\022\031\n\016filter_overlap\030\010 \001(\r:\0011"
+    "\022\027\n\nchunk_size\030\t \001(\r:\003512\022\033\n\014prefill_siz"
+    "e\030\n \001(\r:\00515000\022$\n\025next_buffer_fill_size\030"
+    "\013 \001(\r:\00515000\022\036\n\022inactive_wait_time\030\014 \001(\005"
+    ":\002-1\022\032\n\017thread_priority\030\r \001(\r:\0014\"^\n\014Stre"
+    "tchyLoop\0222\n\010stretchy\030\001 \001(\0132 .rec.audio.s"
+    "tretch.StretchyProto\022\r\n\005begin\030\002 \001(\001\022\013\n\003e"
+    "nd\030\003 \001(\001", 608);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretchy.proto", &protobuf_RegisterTypes);
   StretchyProto::default_instance_ = new StretchyProto();
@@ -957,7 +957,7 @@ StretchyLoop::StretchyLoop()
 }
 
 void StretchyLoop::InitAsDefaultInstance() {
-  stretchy_ = const_cast< ::rec::audio::source::StretchyProto*>(&::rec::audio::source::StretchyProto::default_instance());
+  stretchy_ = const_cast< ::rec::audio::stretch::StretchyProto*>(&::rec::audio::stretch::StretchyProto::default_instance());
 }
 
 StretchyLoop::StretchyLoop(const StretchyLoop& from)
@@ -1007,7 +1007,7 @@ StretchyLoop* StretchyLoop::New() const {
 void StretchyLoop::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (_has_bit(0)) {
-      if (stretchy_ != NULL) stretchy_->::rec::audio::source::StretchyProto::Clear();
+      if (stretchy_ != NULL) stretchy_->::rec::audio::stretch::StretchyProto::Clear();
     }
     begin_ = 0;
     end_ = 0;
@@ -1022,7 +1022,7 @@ bool StretchyLoop::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.audio.source.StretchyProto stretchy = 1;
+      // optional .rec.audio.stretch.StretchyProto stretchy = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1085,7 +1085,7 @@ bool StretchyLoop::MergePartialFromCodedStream(
 
 void StretchyLoop::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.audio.source.StretchyProto stretchy = 1;
+  // optional .rec.audio.stretch.StretchyProto stretchy = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->stretchy(), output);
@@ -1109,7 +1109,7 @@ void StretchyLoop::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* StretchyLoop::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.audio.source.StretchyProto stretchy = 1;
+  // optional .rec.audio.stretch.StretchyProto stretchy = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1137,7 +1137,7 @@ int StretchyLoop::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.audio.source.StretchyProto stretchy = 1;
+    // optional .rec.audio.stretch.StretchyProto stretchy = 1;
     if (has_stretchy()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1182,7 +1182,7 @@ void StretchyLoop::MergeFrom(const StretchyLoop& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      mutable_stretchy()->::rec::audio::source::StretchyProto::MergeFrom(from.stretchy());
+      mutable_stretchy()->::rec::audio::stretch::StretchyProto::MergeFrom(from.stretchy());
     }
     if (from._has_bit(1)) {
       set_begin(from.begin());
@@ -1233,7 +1233,7 @@ void StretchyLoop::Swap(StretchyLoop* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
 

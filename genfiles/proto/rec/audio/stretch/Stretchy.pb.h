@@ -27,7 +27,7 @@
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretchy_2eproto();
@@ -205,7 +205,7 @@ class StretchyProto : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 thread_priority() const;
   inline void set_thread_priority(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.audio.source.StretchyProto)
+  // @@protoc_insertion_point(class_scope:rec.audio.stretch.StretchyProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -302,12 +302,12 @@ class StretchyLoop : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.source.StretchyProto stretchy = 1;
+  // optional .rec.audio.stretch.StretchyProto stretchy = 1;
   inline bool has_stretchy() const;
   inline void clear_stretchy();
   static const int kStretchyFieldNumber = 1;
-  inline const ::rec::audio::source::StretchyProto& stretchy() const;
-  inline ::rec::audio::source::StretchyProto* mutable_stretchy();
+  inline const ::rec::audio::stretch::StretchyProto& stretchy() const;
+  inline ::rec::audio::stretch::StretchyProto* mutable_stretchy();
   
   // optional double begin = 2;
   inline bool has_begin() const;
@@ -323,12 +323,12 @@ class StretchyLoop : public ::google::protobuf::Message {
   inline double end() const;
   inline void set_end(double value);
   
-  // @@protoc_insertion_point(class_scope:rec.audio.source.StretchyLoop)
+  // @@protoc_insertion_point(class_scope:rec.audio.stretch.StretchyLoop)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::audio::source::StretchyProto* stretchy_;
+  ::rec::audio::stretch::StretchyProto* stretchy_;
   double begin_;
   double end_;
   friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretchy_2eproto();
@@ -618,20 +618,20 @@ inline void StretchyProto::set_thread_priority(::google::protobuf::uint32 value)
 
 // StretchyLoop
 
-// optional .rec.audio.source.StretchyProto stretchy = 1;
+// optional .rec.audio.stretch.StretchyProto stretchy = 1;
 inline bool StretchyLoop::has_stretchy() const {
   return _has_bit(0);
 }
 inline void StretchyLoop::clear_stretchy() {
-  if (stretchy_ != NULL) stretchy_->::rec::audio::source::StretchyProto::Clear();
+  if (stretchy_ != NULL) stretchy_->::rec::audio::stretch::StretchyProto::Clear();
   _clear_bit(0);
 }
-inline const ::rec::audio::source::StretchyProto& StretchyLoop::stretchy() const {
+inline const ::rec::audio::stretch::StretchyProto& StretchyLoop::stretchy() const {
   return stretchy_ != NULL ? *stretchy_ : *default_instance_->stretchy_;
 }
-inline ::rec::audio::source::StretchyProto* StretchyLoop::mutable_stretchy() {
+inline ::rec::audio::stretch::StretchyProto* StretchyLoop::mutable_stretchy() {
   _set_bit(0);
-  if (stretchy_ == NULL) stretchy_ = new ::rec::audio::source::StretchyProto;
+  if (stretchy_ == NULL) stretchy_ = new ::rec::audio::stretch::StretchyProto;
   return stretchy_;
 }
 
@@ -670,7 +670,7 @@ inline void StretchyLoop::set_end(double value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
 
