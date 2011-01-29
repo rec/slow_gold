@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHYRUNNY__
 
 #include "rec/audio/source/DoubleRunny.h"
-#include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/audio/source/Stretchy.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {
@@ -11,8 +11,6 @@ namespace source {
 
 class DoubleStretchyRunny : public DoubleRunny {
  public:
-  typedef stretch::StretchLoop StretchLoop;
-
   DoubleStretchyRunny(const VirtualFile& file,
                       const RunnyProto& desc = RunnyProto::default_instance());
 

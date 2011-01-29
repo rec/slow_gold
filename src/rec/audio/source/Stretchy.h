@@ -9,12 +9,14 @@
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/TimeScaler.h"
 #include "rec/audio/stretch/Stretch.h"
+#include "rec/audio/stretch/Stretch.pb.h"
+
+using rec::audio::stretch::Stretch;
+using rec::audio::stretch::StretchLoop;
 
 namespace rec {
 namespace audio {
 namespace source {
-
-using stretch::Stretch;
 
 class Stretchy : public Wrappy {
  public:

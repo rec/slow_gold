@@ -7,8 +7,6 @@ namespace rec {
 namespace audio {
 namespace source {
 
-using stretch::Stretch;
-
 Stretchy::Stretchy(PositionableAudioSource* s, const Stretch& desc)
     : Wrappy(s),
       description_(desc),
