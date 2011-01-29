@@ -11,8 +11,7 @@ namespace source {
 
 class DoubleStretchy : public DoubleRunny {
  public:
-  DoubleStretchy(const VirtualFile& file,
-                 const RunnyProto& desc = RunnyProto::default_instance());
+  DoubleStretchy(const VirtualFile& file, const RunnyProto& desc);
 
   ~DoubleStretchy();
 

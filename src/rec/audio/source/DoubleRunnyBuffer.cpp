@@ -23,7 +23,7 @@ namespace source {
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
     : Thread("DoubleRunnyBuffer"), stretchy_(file, desc),
-      data_(data), empty_(false) {
+      runnyDesc_(desc), data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(file).toCString();
@@ -93,7 +93,7 @@ void DoubleRunnyBuffer::setLoop(const StretchLoop& loop, int pos) {
     return;
   }
 
-  ptr<Runny> runny(makeStretchyRunny(RunnyProto(), loop.stretchy(),
+  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, loop.stretchy(),
                                      pos, source.transfer()));
   if (runny)
     stretchy_.setNext(runny.transfer());

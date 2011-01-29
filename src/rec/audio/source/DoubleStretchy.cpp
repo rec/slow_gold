@@ -7,8 +7,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-DoubleStretchy::DoubleStretchy(const VirtualFile& file,
-                               const RunnyProto& desc)
+DoubleStretchy::DoubleStretchy(const VirtualFile& file, const RunnyProto& desc)
     : DoubleRunny(desc), file_(file), ratio_(1.0), offset_(0.0) {
 }
 

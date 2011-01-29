@@ -40,6 +40,7 @@ class DoubleRunnyBuffer : public Thread,
   void setLoop(const StretchLoop& loop, int pos);
 
   DoubleStretchy stretchy_;
+  const RunnyProto runnyDesc_;
   ptr<FillableBuffer> buffery_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;
   Data* const data_;
