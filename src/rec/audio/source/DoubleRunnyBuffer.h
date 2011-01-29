@@ -24,7 +24,7 @@ class DoubleRunnyBuffer : public DoubleStretchy,
 
   bool fillFromPosition(int pos);
 
-  virtual PositionableAudioSource* makeSource();
+  PositionableAudioSource* makeSource();
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
   virtual int64 getTotalLength() const { return buffery_->getLength(); }
 
