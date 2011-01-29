@@ -3,7 +3,7 @@
 
 #include "rec/gui/SetterSlider.h"
 #include "rec/gui/Layout.h"
-#include "rec/audio/stretch/Stretchy.pb.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/SetterToggle.h"
 
 namespace rec {

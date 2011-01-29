@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_STRETCH_STRETCHY__
 #define __REC_AUDIO_STRETCH_STRETCHY__
 
-#include "rec/audio/stretch/Stretchy.pb.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 
 namespace rec {
 namespace audio {

@@ -3,7 +3,7 @@
 
 #include "rec/util/thread/ChangeLocker.h"
 #include "rec/audio/source/DoubleRunnyBuffer.h"
-#include "rec/audio/stretch/Stretchy.pb.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/util/listener/SetterListener.h"
 
 namespace rec {

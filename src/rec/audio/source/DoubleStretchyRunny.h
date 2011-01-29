@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_DOUBLESTRETCHYRUNNY__
 
 #include "rec/audio/source/DoubleRunny.h"
-#include "rec/audio/stretch/Stretchy.pb.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {

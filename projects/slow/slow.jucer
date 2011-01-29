@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="i01dTMsJD" name="Slow">
+  <MAINGROUP id="eJvkqObGJ" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -836,10 +836,10 @@
                   id="EL28ALTXm" name="Runny.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="4hRPAQTqq" name="stretch">
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/stretch/Stretchy.pb.cc"
-                  id="f7dORlDe1" name="Stretchy.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/stretch/Stretchy.pb.h"
-                  id="qrw4e93K2" name="Stretchy.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/stretch/Stretch.pb.cc"
+                  id="8TMikD5vJ" name="Stretch.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/stretch/Stretch.pb.h"
+                  id="L15XqH9Cx" name="Stretch.pb.h" resource="0"/>
           </GROUP>
         </GROUP>
         <GROUP id="w0cToJxUH" name="data">
@@ -962,7 +962,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="qq1CVERa0" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="n5UgxOu5x" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

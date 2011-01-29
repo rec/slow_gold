@@ -73,7 +73,5 @@ int StretchyPlayer::length() const {
   return doubleRunny_ ? doubleRunny_->getTotalLength() : 0;
 }
 
-
-
 }  // namespace slow
 }  // namespace rec
