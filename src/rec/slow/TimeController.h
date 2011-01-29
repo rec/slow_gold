@@ -1,13 +1,12 @@
 #ifndef __REC_SLOW_APP_TIMECONTROLLER__
 #define __REC_SLOW_APP_TIMECONTROLLER__
 
-#include "rec/audio/source/Stretchy.pb.h"
+#include "rec/audio/stretch/Stretchy.pb.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Layout.h"
 #include "rec/slow/AudioTransportSourcePlayer.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/widget/status/TimeAndLength.h"
-#include "rec/audio/source/Stretchy.pb.h"
 
 namespace rec {
 namespace slow {

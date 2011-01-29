@@ -5,7 +5,7 @@
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/TestHarness.h"
 #include "rec/audio/stretch/TimeScaler.h"
-#include "rec/audio/source/Stretchy.pb.h"
+#include "rec/audio/stretch/Stretchy.pb.h"
 
 using namespace juce;
 

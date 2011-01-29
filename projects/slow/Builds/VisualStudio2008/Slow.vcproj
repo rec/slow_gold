@@ -565,8 +565,10 @@
             <Filter Name="source">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stretchy.pb.h"/>
+            </Filter>
+            <Filter Name="stretch">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretchy.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretchy.pb.h"/>
             </Filter>
           </Filter>
           <Filter Name="data">
