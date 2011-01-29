@@ -42,7 +42,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
   buffery_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
 
   StretchLoop loop(data_->get());
-  setLoop(loop, stretchy_.setLoopPosition(loop));
+  setLoop(loop);
 
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
   changeLocker_->initialize(data_->get());
@@ -56,17 +56,7 @@ DoubleRunnyBuffer::~DoubleRunnyBuffer() {
 }
 
 void DoubleRunnyBuffer::operator()(const StretchLoop& p) {
-  setLoop(p, stretchy_.setLoopPosition(p));
-}
-
-PositionableAudioSource* DoubleRunnyBuffer::makeSource() {
-  if (threadShouldExit())
-    return NULL;
-
-  startThread();
-  int64 pos = stretchy_.getNextReadPosition();
-  buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
-  return new BufferSource(*buffery_->buffer());
+  setLoop(p);
 }
 
 bool DoubleRunnyBuffer::fillFromPosition(int pos) {
@@ -81,22 +71,23 @@ void DoubleRunnyBuffer::run() {
     else
       buffery_->fillNextBlock();
   }
-  if (!threadShouldExit()) {
+  if (!threadShouldExit())
     cachedThumbnail_->writeThumbnail(true);
-  }
 }
 
-void DoubleRunnyBuffer::setLoop(const StretchLoop& loop, int pos) {
-  ptr<PositionableAudioSource> source(makeSource());
-  if (!source) {
-    LOG(ERROR) << "Couldn't make source";
+void DoubleRunnyBuffer::setLoop(const StretchLoop& loop) {
+  int pos = stretchy_.setLoopPosition(loop);
+  if (threadShouldExit())
     return;
-  }
 
-  ptr<Runny> runny(makeStretchyRunny(runnyDesc_, loop.stretchy(),
-                                     pos, source.transfer()));
-  if (runny)
-    stretchy_.setNext(runny.transfer());
+  startThread();
+  int64 p = stretchy_.getNextReadPosition();
+  buffery_->waitUntilFilled(block::Block(p, p + READAHEAD));
+
+  if (!threadShouldExit())
+    stretchy_.setNext(makeStretchyRunny(runnyDesc_,
+                                        loop.stretchy(), pos,
+                                        new BufferSource(*buffery_->buffer())));
 }
 
 }  // namespace source

@@ -23,7 +23,6 @@ class DoubleRunnyBuffer : public Thread,
 
   bool fillFromPosition(int pos);
 
-  PositionableAudioSource* makeSource();
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
   virtual int64 getTotalLength() const { return buffery_->getLength(); }
 
@@ -37,7 +36,7 @@ class DoubleRunnyBuffer : public Thread,
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
-  void setLoop(const StretchLoop& loop, int pos);
+  void setLoop(const StretchLoop& loop);
 
   DoubleStretchy stretchy_;
   const RunnyProto runnyDesc_;
