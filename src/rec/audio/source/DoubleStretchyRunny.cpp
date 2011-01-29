@@ -3,7 +3,6 @@
 #include "rec/audio/source/Stretchy.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/ShouldExit.h"
-#include "rec/util/math.h"
 
 namespace rec {
 namespace audio {

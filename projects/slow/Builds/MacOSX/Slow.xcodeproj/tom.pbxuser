@@ -263,8 +263,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 318023255;
-			PBXWorkspaceStateSaveDate = 318023255;
+			PBXPerProjectTemplateStateSaveDate = 318023408;
+			PBXWorkspaceStateSaveDate = 318023408;
 		};
 		perUserProjectItems = {
 			E23E45C612EF4FDD0080BD76 = E23E45C612EF4FDD0080BD76 /* PBXTextBookmark */;
@@ -355,6 +355,15 @@
 			E23E479612F336610080BD76 = E23E479612F336610080BD76 /* PBXTextBookmark */;
 			E23E48D612F49FF20080BD76 = E23E48D612F49FF20080BD76 /* PBXTextBookmark */;
 			E23E48D912F49FF80080BD76 = E23E48D912F49FF80080BD76 /* PBXTextBookmark */;
+			E23E496E12F4AC5D0080BD76 /* XCBuildMessageTextBookmark */ = E23E496E12F4AC5D0080BD76 /* XCBuildMessageTextBookmark */;
+			E23E496F12F4AC5D0080BD76 /* PBXTextBookmark */ = E23E496F12F4AC5D0080BD76 /* PBXTextBookmark */;
+			E23E497212F4AC5D0080BD76 /* PBXTextBookmark */ = E23E497212F4AC5D0080BD76 /* PBXTextBookmark */;
+			E23E497312F4AC5D0080BD76 /* PBXTextBookmark */ = E23E497312F4AC5D0080BD76 /* PBXTextBookmark */;
+			E23E497412F4AC5D0080BD76 /* PBXTextBookmark */ = E23E497412F4AC5D0080BD76 /* PBXTextBookmark */;
+			E23E497712F4AC670080BD76 /* PBXTextBookmark */ = E23E497712F4AC670080BD76 /* PBXTextBookmark */;
+			E23E498312F4AC720080BD76 /* XCBuildMessageTextBookmark */ = E23E498312F4AC720080BD76 /* XCBuildMessageTextBookmark */;
+			E23E498412F4AC720080BD76 /* PBXTextBookmark */ = E23E498412F4AC720080BD76 /* PBXTextBookmark */;
+			E23E498712F4AC780080BD76 /* PBXTextBookmark */ = E23E498712F4AC780080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3DD12EBF0AD00AAB106 = E288C3DD12EBF0AD00AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
@@ -406,6 +415,13 @@
 			sepNavWindowFrame = "{{278, 19}, {911, 1159}}";
 		};
 	};
+	BBB468FF9DBECC53691C7410 /* Stretch.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 360}";
+		};
+	};
 	BEC3F96BDD2E98143AD9F8DF /* Operation.pb.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {595, 6604}}";
@@ -418,6 +434,14 @@
 			sepNavIntBoundsRect = "{{0, 0}, {532, 1030}}";
 			sepNavSelRange = "{826, 0}";
 			sepNavVisRange = "{0, 1091}";
+		};
+	};
+	CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {734, 806}}";
+			sepNavSelRange = "{500, 0}";
+			sepNavVisRange = "{0, 500}";
+			sepNavWindowFrame = "{{542, 19}, {911, 1159}}";
 		};
 	};
 	CB6457CC72AF09C1E1CB5733 /* Setter.cpp */ = {
@@ -900,7 +924,7 @@
 		ignoreCount = 0;
 		lineNumber = 23;
 		location = SlowBurn;
-		modificationTime = 317929116.434078;
+		modificationTime = 318024803.568297;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -918,7 +942,7 @@
 		ignoreCount = 0;
 		lineNumber = 65;
 		location = SlowBurn;
-		modificationTime = 317929116.434127;
+		modificationTime = 318024803.56836;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1060,7 +1084,7 @@
 		ignoreCount = 0;
 		lineNumber = 30;
 		location = SlowBurn;
-		modificationTime = 317929116.434138;
+		modificationTime = 318024803.568381;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1078,7 +1102,7 @@
 		ignoreCount = 0;
 		lineNumber = 432;
 		location = SlowBurn;
-		modificationTime = 317929116.434147;
+		modificationTime = 318024803.568396;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1230,7 +1254,7 @@
 		ignoreCount = 0;
 		lineNumber = 35;
 		location = SlowBurn;
-		modificationTime = 317929116.434158;
+		modificationTime = 318024803.568414;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1435,6 +1459,94 @@
 		rLoc = 517;
 		rType = 0;
 		vrLen = 1994;
+		vrLoc = 0;
+	};
+	E23E496E12F4AC5D0080BD76 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'pow' was not declared in this scope";
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	E23E496F12F4AC5D0080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 23";
+		rLen = 0;
+		rLoc = 500;
+		rType = 0;
+		vrLen = 500;
+		vrLoc = 0;
+	};
+	E23E497212F4AC5D0080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBB468FF9DBECC53691C7410 /* Stretch.h */;
+		name = "Stretch.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 360;
+		vrLoc = 0;
+	};
+	E23E497312F4AC5D0080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 15";
+		rLen = 45;
+		rLoc = 358;
+		rType = 0;
+		vrLen = 472;
+		vrLoc = 0;
+	};
+	E23E497412F4AC5D0080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 23";
+		rLen = 0;
+		rLoc = 500;
+		rType = 0;
+		vrLen = 500;
+		vrLoc = 0;
+	};
+	E23E497712F4AC670080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 23";
+		rLen = 0;
+		rLoc = 500;
+		rType = 0;
+		vrLen = 500;
+		vrLoc = 0;
+	};
+	E23E498312F4AC720080BD76 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'pow' was not declared in this scope";
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	E23E498412F4AC720080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 23";
+		rLen = 0;
+		rLoc = 500;
+		rType = 0;
+		vrLen = 500;
+		vrLoc = 0;
+	};
+	E23E498712F4AC780080BD76 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 23";
+		rLen = 0;
+		rLoc = 500;
+		rType = 0;
+		vrLen = 500;
 		vrLoc = 0;
 	};
 	E2758BB212E2968800E37D3F /* Slow */ = {
