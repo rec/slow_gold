@@ -1,6 +1,6 @@
 #include "rec/slow/TimeController.h"
 #include "rec/data/persist/Persist.h"
-#include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/stretch/Stretch.h"
 #include "rec/gui/StretchyController.h"
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"

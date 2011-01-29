@@ -8,7 +8,7 @@
 #include "rec/audio/source/Wrappy.h"
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/TimeScaler.h"
-#include "rec/audio/stretch/Stretchy.h"
+#include "rec/audio/stretch/Stretch.h"
 
 namespace rec {
 namespace audio {

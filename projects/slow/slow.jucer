@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="eJvkqObGJ" name="Slow">
+  <MAINGROUP id="KZfBqX4ps" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -147,8 +147,8 @@
                 name="Wrappy.h" resource="0"/>
         </GROUP>
         <GROUP id="QHdS2Mfsg" name="stretch">
-          <FILE compile="0" file="../../src/rec/audio/stretch/Stretchy.h" id="u9QdJF71F"
-                name="Stretchy.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/Stretch.h" id="HozJYxup7"
+                name="Stretch.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/TestHarness.h"
                 id="FH5NyO48J" name="TestHarness.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler.cpp"
@@ -962,7 +962,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="n5UgxOu5x" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="M86hJ2XFK" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
