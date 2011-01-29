@@ -9,12 +9,12 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleStretchyRunny : public DoubleRunny {
+class DoubleStretchy : public DoubleRunny {
  public:
-  DoubleStretchyRunny(const VirtualFile& file,
-                      const RunnyProto& desc = RunnyProto::default_instance());
+  DoubleStretchy(const VirtualFile& file,
+                 const RunnyProto& desc = RunnyProto::default_instance());
 
-  ~DoubleStretchyRunny();
+  ~DoubleStretchy();
 
   virtual void prepareToPlay(Runny* runny);
   void setLoop(const StretchLoop& loop);
@@ -30,9 +30,8 @@ class DoubleStretchyRunny : public DoubleRunny {
   double ratio_;
   double offset_;
 
-  DISALLOW_COPY_AND_ASSIGN(DoubleStretchyRunny);
+  DISALLOW_COPY_AND_ASSIGN(DoubleStretchy);
 };
-
 
 }  // namespace source
 }  // namespace audio

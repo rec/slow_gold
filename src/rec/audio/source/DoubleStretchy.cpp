@@ -1,4 +1,4 @@
-#include "rec/audio/source/DoubleStretchyRunny.h"
+#include "rec/audio/source/DoubleStretchy.h"
 #include "rec/audio/source/StretchyRunny.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/source/Stretchy.h"
@@ -8,19 +8,19 @@ namespace rec {
 namespace audio {
 namespace source {
 
-DoubleStretchyRunny::DoubleStretchyRunny(const VirtualFile& file,
+DoubleStretchy::DoubleStretchy(const VirtualFile& file,
                                          const RunnyProto& desc)
     : DoubleRunny(desc), file_(file), ratio_(1.0), offset_(0.0) {
 }
 
-DoubleStretchyRunny::~DoubleStretchyRunny() {}
+DoubleStretchy::~DoubleStretchy() {}
 
-int64 DoubleStretchyRunny::nextRunnyPosition() const {
+int64 DoubleStretchy::nextRunnyPosition() const {
   return runny_ ? (runny_->getNextReadPosition() * ratio_) :
       getNextReadPosition();
 }
 
-void DoubleStretchyRunny::setLoop(const StretchLoop& loop) {
+void DoubleStretchy::setLoop(const StretchLoop& loop) {
   ptr<PositionableAudioSource> source(makeSource());
   if (!source) {
     LOG(ERROR) << "Couldn't make source";
@@ -42,7 +42,7 @@ void DoubleStretchyRunny::setLoop(const StretchLoop& loop) {
     setNext(runny.transfer());
 }
 
-void DoubleStretchyRunny::prepareToPlay(Runny* runny) {
+void DoubleStretchy::prepareToPlay(Runny* runny) {
   runny->setNextReadPosition(nextRunnyPosition());
   ratio_ = 1.0;
   offset_ = 0.0;

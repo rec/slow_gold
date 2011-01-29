@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_DOUBLERUNNYBUFFER__
 
 #include "rec/audio/util/FillableBuffer.h"
-#include "rec/audio/source/DoubleStretchyRunny.h"
+#include "rec/audio/source/DoubleStretchy.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/CachedThumbnail.h"
 #include "rec/util/thread/ChangeLocker.h"
@@ -11,7 +11,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class DoubleRunnyBuffer : public DoubleStretchyRunny,
+class DoubleRunnyBuffer : public DoubleStretchy,
                           public Thread,
                           public Listener<const stretch::StretchLoop&> {
  public:
