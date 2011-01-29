@@ -23,7 +23,7 @@ int64 DoubleStretchyRunny::nextRunnyPosition() const {
       getNextReadPosition();
 }
 
-void DoubleStretchyRunny::setStretchy(const StretchLoop& loop) {
+void DoubleStretchyRunny::setLoop(const StretchLoop& loop) {
   const Stretch& desc = loop.stretchy();
   double timeRatio = timeScale(desc);
   int64 position = 0;

@@ -39,7 +39,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
   source.reset(new Seggy(SampleRange(0, len), source.transfer()));
   buffery_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
 
-  setStretchy(data_->get());
+  setLoop(data_->get());
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
   changeLocker_->initialize(data_->get());
   data_->addListener(changeLocker_.get());

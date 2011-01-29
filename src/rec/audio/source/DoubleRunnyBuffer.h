@@ -28,7 +28,7 @@ class DoubleRunnyBuffer : public DoubleStretchyRunny,
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
   virtual int64 getTotalLength() const { return buffery_->getLength(); }
 
-  virtual void operator()(const StretchLoop& p) { setStretchy(p); }
+  virtual void operator()(const StretchLoop& p) { setLoop(p); }
 
   bool empty() const { return empty_; }
 

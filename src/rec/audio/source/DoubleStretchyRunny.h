@@ -19,7 +19,7 @@ class DoubleStretchyRunny : public DoubleRunny {
   ~DoubleStretchyRunny();
 
   virtual void prepareToPlay(Runny* runny);
-  void setStretchy(const StretchLoop& loop);
+  void setLoop(const StretchLoop& loop);
 
  protected:
   virtual PositionableAudioSource* makeSource() = 0;
