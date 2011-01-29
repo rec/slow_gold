@@ -37,7 +37,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
     source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
 
   source.reset(new Seggy(SampleRange(0, len), source.transfer()));
-  buffery_.reset(new Buffery(source.transfer(), BLOCK_SIZE));
+  buffery_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
 
   setStretchy(data_->get());
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));

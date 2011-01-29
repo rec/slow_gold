@@ -1,4 +1,4 @@
-#include "rec/audio/source/Buffery.h"
+#include "rec/audio/util/FillableBuffer.h"
 #include "rec/audio/util/CopySamples.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Difference.h"
@@ -9,15 +9,14 @@ using namespace rec::util::listener;
 
 namespace rec {
 namespace audio {
-namespace source {
 
-Buffery::Buffery(PositionableAudioSource* source, int blockSize)
+FillableBuffer::FillableBuffer(PositionableAudioSource* source, int blockSize)
     : Filler(source->getTotalLength(), blockSize),
       buffer_(2, length_),
       source_(source) {
 }
 
-void Buffery::doFillNextBlock(const Block& b) {
+void FillableBuffer::doFillNextBlock(const Block& b) {
 	Block block = b;
   AudioSourceChannelInfo info;
   info.buffer = &buffer_;
@@ -34,6 +33,5 @@ void Buffery::doFillNextBlock(const Block& b) {
     source_.reset();
 }
 
-}  // namespace source
 }  // namespace audio
 }  // namespace rec

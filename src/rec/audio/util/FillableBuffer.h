@@ -6,11 +6,10 @@
 
 namespace rec {
 namespace audio {
-namespace source {
 
-class Buffery : public block::Filler, public Listener<int> {
+class FillableBuffer : public block::Filler, public Listener<int> {
  public:
-  Buffery(PositionableAudioSource* source, int blockSize);
+  FillableBuffer(PositionableAudioSource* source, int blockSize);
   AudioSampleBuffer* buffer() { return &buffer_; }
 
   virtual void operator()(int pos) { setPosition(pos); }
@@ -20,10 +19,9 @@ class Buffery : public block::Filler, public Listener<int> {
   AudioSampleBuffer buffer_;
   ptr<PositionableAudioSource> source_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Buffery);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(FillableBuffer);
 };
 
-}  // namespace source
 }  // namespace audio
 }  // namespace rec
 

@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_DOUBLERUNNYBUFFER__
 #define __REC_AUDIO_SOURCE_DOUBLERUNNYBUFFER__
 
-#include "rec/audio/source/Buffery.h"
+#include "rec/audio/util/FillableBuffer.h"
 #include "rec/audio/source/DoubleStretchyRunny.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/CachedThumbnail.h"
@@ -38,7 +38,7 @@ class DoubleRunnyBuffer : public DoubleStretchyRunny,
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
-  ptr<Buffery> buffery_;
+  ptr<FillableBuffer> buffery_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;
   Data* const data_;
   thread_ptr<ChangeLocker> changeLocker_;

@@ -165,8 +165,6 @@
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\Buffery.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.cpp"/>
@@ -178,7 +176,6 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Seggy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\Source.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
@@ -202,6 +199,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\util\Clear.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\FillableBuffer.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\FillableBuffer.h"/>
           </Filter>
         </Filter>
         <Filter Name="base">

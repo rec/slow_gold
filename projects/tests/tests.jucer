@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="7K1mJKEvL" name="tests">
+  <MAINGROUP id="HYgzcanqM" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -96,10 +96,6 @@
         <GROUP id="1CsM6ZONT" name="source">
           <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
                 id="movJPJktr" name="BufferSource.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Buffery.cpp" id="NZYl9Lrpy"
-                name="Buffery.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Buffery.h" id="XFI3VkEZu"
-                name="Buffery.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp"
                 id="mI61CtQ68" name="DoubleRunny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunny.h" id="ZbigF9cjr"
@@ -122,8 +118,6 @@
                 name="Seggy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Snoopy.h" id="7te4oiK2k"
                 name="Snoopy.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Source.h" id="fzqhLh7bf"
-                name="Source.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Stereo.cpp" id="96hUbHlR2"
                 name="Stereo.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Stereo.h" id="ds7F7YTe6"
@@ -172,6 +166,10 @@
                 name="CopySamples.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/CopySamples.h" id="oaBLQ2qvy"
                 name="CopySamples.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/FillableBuffer.cpp"
+                id="Ozzjob5y1" name="FillableBuffer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/FillableBuffer.h"
+                id="K4piO9oOZ" name="FillableBuffer.h" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="QydfDQiac" name="base">
@@ -1013,7 +1011,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="gY7KWahOd" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ydtuQ99pV" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
