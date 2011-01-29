@@ -7,9 +7,9 @@
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
-const char* Init(const StretchyProto &d, AudioTimeScaler* s) {
+const char* Init(const source::StretchyProto &d, AudioTimeScaler* s) {
   return s->Init(timeScale(d),
                  d.sample_rate(),
                  d.channels(),
@@ -18,6 +18,6 @@ const char* Init(const StretchyProto &d, AudioTimeScaler* s) {
                  d.filter_overlap()) ? "error" : NULL;
 }
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec

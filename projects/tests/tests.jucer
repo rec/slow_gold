@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="pN2PR7eXw" name="tests">
+  <MAINGROUP id="1YxEAt9kK" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -158,14 +158,14 @@
                 name="Wrappy.h" resource="0"/>
         </GROUP>
         <GROUP id="cEgX2guQg" name="stretch">
-          <FILE compile="1" file="../../src/rec/audio/stretch/AudioTimeScaler_test.cpp"
-                id="Qd2No5CDi" name="AudioTimeScaler_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/TestHarness.h"
                 id="JCQy8qWeM" name="TestHarness.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler.cpp"
                 id="10a3c27pv" name="TimeScaler.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/TimeScaler.h" id="kgHubmmi6"
                 name="TimeScaler.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler_test.cpp"
+                id="feQAjMOjR" name="TimeScaler_test.cpp" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="QydfDQiac" name="base">
@@ -1003,7 +1003,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="u6j2qWOvr" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="elMqZY1Vj" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

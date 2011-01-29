@@ -11,9 +11,15 @@ namespace source {
 
 class StretchyProto;
 
-const char* Init(const StretchyProto &desc, AudioTimeScaler* s);
-
 }  // namespace source
+
+
+namespace stretch {
+
+
+const char* Init(const source::StretchyProto &desc, AudioTimeScaler* s);
+
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
 

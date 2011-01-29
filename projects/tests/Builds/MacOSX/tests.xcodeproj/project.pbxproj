@@ -131,6 +131,7 @@
 		9170501552140154E4968517 /* MainPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E745048C0393295B0D8953 /* MainPage.cpp */; };
 		923C6B47D7886DD79AD28D3F /* RandomSelfInverseFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4C82FF75969E1EEB2BC48 /* RandomSelfInverseFunction.cpp */; };
 		93C377541305CF4335207B5B /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4553676E2F9B94A59AD572 /* CreateReader_test.cpp */; };
+		940334C0E5C118BE5E1DCBBB /* TimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEF1ECD3BB37F9B7C362F6F3 /* TimeScaler_test.cpp */; };
 		9493D6E82AC776F57553EA07 /* aliascontent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C707322122227D60F477C385 /* aliascontent.cpp */; };
 		94DAC10DBE4839B98AF59C6A /* DriveOptical.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9548AA03601A3FD6634ACF73 /* DriveOptical.svg.cpp */; };
 		96767F5BC7CE496DADE3DE44 /* Stretchy.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = F8AFC080FA9E378EBD7EE63E /* Stretchy.pb.cc */; };
@@ -173,7 +174,6 @@
 		D0B54C94093E3E2C39782341 /* Address.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD325C786A3B47020036BC48 /* Address.cpp */; };
 		D11FD4E915642040D3E49910 /* Wrappy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEA6FC8EECFABB82E8D9C715 /* Wrappy.cpp */; };
 		D18EE8FE91699AD36D0451DB /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AFCA5A278B2A59C0DAF279 /* Status.cpp */; };
-		D24C6DEE0E53271295BAF9F5 /* AudioTimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4CC29A64A95507F2FFFAAE9 /* AudioTimeScaler_test.cpp */; };
 		D3A5A8AFD0D1BADA746FAC82 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 942E7B2E41D48EB8180E2C24 /* tag.cpp */; };
 		D5F4485654494301D3908EB0 /* Buffery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDDAF24FC05699BD61EEF040 /* Buffery.cpp */; };
 		D62FF085927D5276526525FC /* Compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9922D141ABED4BFCD0C2DEBB /* Compare.cpp */; };
@@ -510,6 +510,7 @@
 		ACA053994BD54236C29612B3 /* DoubleStretchyRunny.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DoubleStretchyRunny.cpp; path = ../../../../src/rec/audio/source/DoubleStretchyRunny.cpp; sourceTree = SOURCE_ROOT; };
 		AD5E7EBBC368FA350F786EF4 /* AudioThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioThumbnail.h; path = ../../../../src/rec/gui/AudioThumbnail.h; sourceTree = SOURCE_ROOT; };
 		AE8699BBE169B69057EB9861 /* Setter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Setter.h; path = ../../../../src/rec/data/proto/Setter.h; sourceTree = SOURCE_ROOT; };
+		AEF1ECD3BB37F9B7C362F6F3 /* TimeScaler_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeScaler_test.cpp; path = ../../../../src/rec/audio/stretch/TimeScaler_test.cpp; sourceTree = SOURCE_ROOT; };
 		AF366A24E0BA1430BE1F9EEF /* Copier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copier.cpp; path = ../../../../src/rec/audio/format/mpg123/Copier.cpp; sourceTree = SOURCE_ROOT; };
 		AF8B23E95B35D367A802AC88 /* Callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback.h; path = ../../../../src/rec/util/thread/Callback.h; sourceTree = SOURCE_ROOT; };
 		B0B76BE195D5E66053F18393 /* CachedThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CachedThumbnail.h; path = ../../../../src/rec/gui/CachedThumbnail.h; sourceTree = SOURCE_ROOT; };
@@ -548,7 +549,6 @@
 		C3C211BF89FE0B0B7829316E /* CopySamples.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CopySamples.cpp; path = ../../../../src/rec/audio/CopySamples.cpp; sourceTree = SOURCE_ROOT; };
 		C4C31AE7826597185892B764 /* Shard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Shard.h; path = ../../../../src/rec/widget/tree/Shard.h; sourceTree = SOURCE_ROOT; };
 		C4CAE3D492075E9CB7A10B98 /* aliasmanager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aliasmanager.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/aliasmanager.h"; sourceTree = SOURCE_ROOT; };
-		C4CC29A64A95507F2FFFAAE9 /* AudioTimeScaler_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTimeScaler_test.cpp; path = ../../../../src/rec/audio/stretch/AudioTimeScaler_test.cpp; sourceTree = SOURCE_ROOT; };
 		C4ECA2AAA6022D779D9196AC /* Loops.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Loops.cpp; path = ../../../../src/rec/gui/Loops.cpp; sourceTree = SOURCE_ROOT; };
 		C6694C9647FDD4E1D4144139 /* MediaPlay.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaPlay.svg.cpp; path = ../../../../src/rec/gui/icon/MediaPlay.svg.cpp; sourceTree = SOURCE_ROOT; };
 		C707322122227D60F477C385 /* aliascontent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aliascontent.cpp; path = ../../../../src/rec/data/yaml/src/aliascontent.cpp; sourceTree = SOURCE_ROOT; };
@@ -680,6 +680,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0115DC2D51770F4E81CFFA3C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		048C7D5BC832EB5170569CD5 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,10 +793,10 @@
 		1E76CD59C8E60146B04575CD /* stretch */ = {
 			isa = PBXGroup;
 			children = (
-				C4CC29A64A95507F2FFFAAE9 /* AudioTimeScaler_test.cpp */,
 				543FB32AAC2BA01A3BEBC5EF /* TestHarness.h */,
 				0C4665D00CF1123246BA1B9C /* TimeScaler.cpp */,
 				8B233B1B711F488706E03080 /* TimeScaler.h */,
+				AEF1ECD3BB37F9B7C362F6F3 /* TimeScaler_test.cpp */,
 			);
 			name = stretch;
 			sourceTree = "<group>";
@@ -1412,20 +1426,6 @@
 			name = source;
 			sourceTree = "<group>";
 		};
-		DA5CD73AD84EA70E458A2DFC /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		E812E8C193A90FB1A45D026F /* slow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1594,7 +1594,7 @@
 				French,
 				German,
 			);
-			mainGroup = DA5CD73AD84EA70E458A2DFC /* Source */;
+			mainGroup = 0115DC2D51770F4E81CFFA3C /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1645,8 +1645,8 @@
 				21555A0B04D73375684B9245 /* Stretchy_test.cpp in Sources */,
 				71CEE4DAAA096CE38F5F5998 /* Testy_test.cpp in Sources */,
 				D11FD4E915642040D3E49910 /* Wrappy.cpp in Sources */,
-				D24C6DEE0E53271295BAF9F5 /* AudioTimeScaler_test.cpp in Sources */,
 				8847416333D1F36BB0BEE780 /* TimeScaler.cpp in Sources */,
+				940334C0E5C118BE5E1DCBBB /* TimeScaler_test.cpp in Sources */,
 				10BDB147197A841DD5FCDFC8 /* EventQueue.cpp in Sources */,
 				A48C820FA0A448415E918667 /* AppInstance.cpp in Sources */,
 				15546065C1A9AA5AA0C640B5 /* Copy.cpp in Sources */,

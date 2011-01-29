@@ -13,7 +13,7 @@ Stretchy::Stretchy(Source* s, const StretchyProto& desc)
       buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),
       outOffset_(desc.channels()) {
   // DLOG(INFO) << "Creating stretchy with: " << description_.DebugString();
-  Init(description_, &scaler_);
+  audio::stretch::Init(description_, &scaler_);
 }
 
 Stretchy::~Stretchy() {

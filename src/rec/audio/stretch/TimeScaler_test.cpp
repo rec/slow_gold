@@ -11,7 +11,7 @@ using namespace juce;
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 namespace {
 
@@ -19,8 +19,8 @@ float rampWave(int ramp, int scale) {
   return ((ramp + scale) % (2 * scale + 1) - scale) / float(scale);
 }
 
-void Init(AudioTimeScaler* scaler) {
-  StretchyProto desc;
+void doInit(AudioTimeScaler* scaler) {
+  source::StretchyProto desc;
   desc.set_channels(2);
   Init(desc, scaler);
 }
@@ -39,7 +39,7 @@ TEST(RecAudio, RampWave) {
 TEST(RecAudio, AudioTimeScalerInitialize) {
   {
     AudioTimeScaler scaler;
-    Init(&scaler);
+    doInit(&scaler);
 
     EXPECT_EQ(scaler.GetOutputBufferSize(512), 0);
     EXPECT_EQ(scaler.GetOutputBufferSize(512), 1024);
@@ -48,7 +48,7 @@ TEST(RecAudio, AudioTimeScalerInitialize) {
   }
   {
     AudioTimeScaler scaler;
-    Init(&scaler);
+    doInit(&scaler);
 
     EXPECT_EQ(scaler.GetInputBufferSize(512), 25600);
     EXPECT_EQ(scaler.GetInputBufferSize(512), 1024);
@@ -64,7 +64,7 @@ TEST(RecAudio, AudioTimeScaler) {
   float *outputSamples[] = { outputSamples1, outputSamples2 };
 
   AudioTimeScaler scaler;
-  Init(&scaler);
+  doInit(&scaler);
 
   int samplesOut = 0;
   int samplesIn = 0;
@@ -98,6 +98,6 @@ TEST(RecAudio, AudioTimeScaler) {
     DLOG(INFO) << "maxdiff " << maxDiff << std::endl;
 }
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
