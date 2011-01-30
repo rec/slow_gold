@@ -2,7 +2,8 @@
 #define __REC_AUDIO_SOURCE_DOUBLERUNNYBUFFER__
 
 #include "rec/audio/util/FillableBuffer.h"
-#include "rec/audio/source/DoubleStretchy.h"
+#include "rec/audio/source/DoubleRunny.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/CachedThumbnail.h"
 #include "rec/util/thread/ChangeLocker.h"
@@ -31,14 +32,14 @@ class DoubleRunnyBuffer : public Thread,
 
   virtual void run();
   Data* data() { return data_; }
-  DoubleStretchy* doubleStretchy() { return &stretchy_; }
+  DoubleRunny* doubleStretchy() { return &stretchy_; }
 
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
   void setLoop(const StretchLoop& loop);
 
-  DoubleStretchy stretchy_;
+  DoubleRunny stretchy_;
   const RunnyProto runnyDesc_;
   ptr<FillableBuffer> buffer_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;

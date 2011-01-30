@@ -21,7 +21,7 @@ namespace source {
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
-    : Thread("DoubleRunnyBuffer"), stretchy_(file, desc),
+    : Thread("DoubleRunnyBuffer"), stretchy_(desc),
       runnyDesc_(desc), data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {
@@ -74,7 +74,6 @@ void DoubleRunnyBuffer::run() {
 }
 
 void DoubleRunnyBuffer::setLoop(const StretchLoop& loop) {
-  stretchy_.setLoopPosition(loop);
   if (threadShouldExit())
     return;
 
