@@ -20,7 +20,7 @@ void DoubleStretchy::setLoopPosition(const StretchLoop& loop) {
   loop_ = loop;
 }
 
-void DoubleStretchy::prepareToPlay(Runny* runny) {
+void DoubleStretchy::prepareRunnyToPlay(Runny* runny) {
   runny->setNextReadPosition(getNextReadPosition());
   ratio_ = 1.0;
   offset_ = 0.0;

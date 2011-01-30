@@ -25,7 +25,7 @@ void DoubleRunny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   {
     ScopedLock l(lock_);
     if (nextRunny_) {
-      prepareToPlay(nextRunny_.get());
+      prepareRunnyToPlay(nextRunny_.get());
       nextRunny_.swap(runny_);
       deleter.swap(nextRunny_);
     }

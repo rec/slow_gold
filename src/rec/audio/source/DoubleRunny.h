@@ -20,7 +20,7 @@ class DoubleRunny : public Wrappy {
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
  protected:
-  virtual void prepareToPlay(Runny*) = 0;
+  virtual void prepareRunnyToPlay(Runny*) = 0;
   virtual PositionableAudioSource* getSource() const { return runny_.get(); }
 
   thread_ptr<Runny> runny_, nextRunny_;
