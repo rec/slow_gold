@@ -76,13 +76,13 @@ void DoubleRunnyBuffer::run() {
 }
 
 void DoubleRunnyBuffer::setLoop(const StretchLoop& loop) {
-  int pos = stretchy_.setLoopPosition(loop);
+  stretchy_.setLoopPosition(loop);
   if (threadShouldExit())
     return;
 
   startThread();
-  int64 p = stretchy_.getNextReadPosition();
-  buffery_->waitUntilFilled(block::Block(p, p + READAHEAD));
+  int64 pos = stretchy_.getNextReadPosition();
+  buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
 
   if (!threadShouldExit())
     stretchy_.setNext(makeStretchyRunny(runnyDesc_,

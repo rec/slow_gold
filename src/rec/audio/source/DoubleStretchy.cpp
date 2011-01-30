@@ -13,21 +13,15 @@ DoubleStretchy::DoubleStretchy(const VirtualFile& file, const RunnyProto& desc)
 
 DoubleStretchy::~DoubleStretchy() {}
 
-int64 DoubleStretchy::nextRunnyPosition() const {
-  return runny_ ? (runny_->getNextReadPosition() * ratio_) :
-      getNextReadPosition();
-}
-
-int64 DoubleStretchy::setLoopPosition(const StretchLoop& loop) {
+void DoubleStretchy::setLoopPosition(const StretchLoop& loop) {
   ScopedLock l(lock_);
   const Stretch& stretch = loop.stretchy();
   ratio_ *= (timeScale(stretch) / stretch::timeScale(stretch));
   loop_ = loop;
-  return nextRunnyPosition();
 }
 
 void DoubleStretchy::prepareToPlay(Runny* runny) {
-  runny->setNextReadPosition(nextRunnyPosition());
+  runny->setNextReadPosition(getNextReadPosition());
   ratio_ = 1.0;
   offset_ = 0.0;
 }
