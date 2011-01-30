@@ -12,7 +12,6 @@ namespace source {
 class DoubleStretchy : public DoubleRunny {
  public:
   DoubleStretchy(const VirtualFile& file, const RunnyProto& desc);
-
   ~DoubleStretchy();
 
   virtual void prepareRunnyToPlay(Runny* runny);

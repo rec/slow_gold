@@ -1,7 +1,6 @@
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/audio/source/Runny.pb.h"
-#include "rec/audio/source/Seggy.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/source/StretchyRunny.h"
 #include "rec/data/persist/Persist.h"
@@ -31,14 +30,13 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
     return;
   }
 
-  int len = source->getTotalLength();
   File shadow = getShadowFile(file, "thumbnail.stream");
+  int len = source->getTotalLength();
   cachedThumbnail_.reset(new CachedThumbnail(shadow, COMPRESSION, len));
 
   if (!cachedThumbnail_->isFull())
     source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
 
-  source.reset(new Seggy(SampleRange(0, len), source.transfer()));
   buffer_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
 
   StretchLoop loop(data_->get());

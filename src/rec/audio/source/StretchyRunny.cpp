@@ -1,5 +1,7 @@
 #include "rec/audio/source/StretchyRunny.h"
+
 #include "rec/audio/source/Runny.h"
+#include "rec/audio/source/Seggy.h"
 #include "rec/audio/source/Stretchy.h"
 #include "rec/util/ShouldExit.h"
 
@@ -9,8 +11,9 @@ namespace source {
 
 Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
                      int pos, PositionableAudioSource* s) {
-  const Stretch& stretch = loop.stretch();
   ptr<PositionableAudioSource> source(s);
+
+  const Stretch& stretch = loop.stretch();
   static const double DELTA = 0.00001;
   double timeRatio = timeScale(stretch);
   if (!(stretch.passthrough_when_disabled() &&
@@ -19,6 +22,8 @@ Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
     source.reset(new Stretchy(source.transfer(), stretch));
   }
 
+  int len = s->getTotalLength();
+  source.reset(new Seggy(SampleRange(0, len), source.transfer()));
   ptr<Runny> runny(new Runny(source.transfer(), desc));
   runny->setNextReadPosition(pos);
 
