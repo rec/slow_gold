@@ -22,8 +22,16 @@ Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
     source.reset(new Stretchy(source.transfer(), stretch));
   }
 
-  int len = s->getTotalLength();
-  source.reset(new Seggy(SampleRange(0, len), source.transfer()));
+  if (loop.has_loop()) {
+    // int len = s->getTotalLength();
+    int begin = static_cast<int>(loop.loop().begin() * 44100);
+    int end = static_cast<int>(loop.loop().end() * 44100);
+    if (end < 0.001)
+      end = s->getTotalLength();
+    source.reset(new Seggy(SampleRange(begin, end), source.transfer()));
+  } else {
+    DLOG(INFO) << "No loop";
+  }
   ptr<Runny> runny(new Runny(source.transfer(), desc));
   runny->setNextReadPosition(pos);
 

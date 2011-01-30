@@ -309,7 +309,7 @@
 							<real>316</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>935 135 877 1043 0 0 1920 1178 </string>
+						<string>802 135 877 1043 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -360,7 +360,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {539, 784}}</string>
 								<key>RubberWindowFrame</key>
-								<string>935 135 877 1043 0 0 1920 1178 </string>
+								<string>802 135 877 1043 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -380,7 +380,7 @@
 								<key>Frame</key>
 								<string>{{0, 789}, {539, 213}}</string>
 								<key>RubberWindowFrame</key>
-								<string>935 135 877 1043 0 0 1920 1178 </string>
+								<string>802 135 877 1043 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -544,11 +544,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E23E4C1912F60D110080BD76</string>
+		<string>E23E4C1D12F60D160080BD76</string>
+		<string>E23E4C1E12F60D160080BD76</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>E290FED3120A432900532309</string>
 		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 	</array>
 	<key>WindowString</key>
-	<string>935 135 877 1043 0 0 1920 1178 </string>
+	<string>802 135 877 1043 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -721,10 +726,10 @@
 									<key>Frame</key>
 									<string>{{0, 447}, {695, 600}}</string>
 									<key>RubberWindowFrame</key>
-									<string>633 76 1287 1088 0 0 1920 1178 </string>
+									<string>535 90 1287 1088 0 0 1920 1178 </string>
 								</dict>
 								<key>RubberWindowFrame</key>
-								<string>633 76 1287 1088 0 0 1920 1178 </string>
+								<string>535 90 1287 1088 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugSessionModule</string>
@@ -747,22 +752,22 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E23E4B2C12F4DA300080BD76</string>
+				<string>E23E4C1212F60D110080BD76</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E23E4B2D12F4DA300080BD76</string>
-				<string>E23E4B2E12F4DA300080BD76</string>
-				<string>E23E4B2F12F4DA300080BD76</string>
-				<string>E23E4B3012F4DA300080BD76</string>
-				<string>E23E4B3112F4DA300080BD76</string>
+				<string>E23E4C1312F60D110080BD76</string>
+				<string>E23E4C1412F60D110080BD76</string>
+				<string>E23E4C1512F60D110080BD76</string>
+				<string>E23E4C1612F60D110080BD76</string>
+				<string>E23E4C1712F60D110080BD76</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 			<key>WindowString</key>
-			<string>633 76 1287 1088 0 0 1920 1178 </string>
+			<string>535 90 1287 1088 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -872,8 +877,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -909,7 +912,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E23E4B3212F4DA300080BD76</string>
+				<string>E23E4C1812F60D110080BD76</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -919,7 +922,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -1171,8 +1174,8 @@
 			<true/>
 			<key>TableOfContents</key>
 			<array>
-				<string>E23E46A912EFB9D50080BD76</string>
-				<string>E23E46AA12EFB9D50080BD76</string>
+				<string>E23E4C1912F60D110080BD76</string>
+				<string>E23E4C1A12F60D110080BD76</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
 				<string>1CA1AED706398EBD00589147</string>
 			</array>
@@ -1181,9 +1184,9 @@
 			<key>WindowString</key>
 			<string>418 775 1229 384 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
-			<string>E23E46A912EFB9D50080BD76</string>
+			<string>E23E4C1912F60D110080BD76</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

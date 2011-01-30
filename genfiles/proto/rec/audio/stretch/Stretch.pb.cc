@@ -19,6 +19,9 @@ namespace {
 const ::google::protobuf::Descriptor* Stretch_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Stretch_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Loop_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Loop_reflection_ = NULL;
 const ::google::protobuf::Descriptor* StretchLoop_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   StretchLoop_reflection_ = NULL;
@@ -62,11 +65,26 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Stretch));
-  StretchLoop_descriptor_ = file->message_type(1);
-  static const int StretchLoop_offsets_[3] = {
+  Loop_descriptor_ = file->message_type(1);
+  static const int Loop_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, begin_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, end_),
+  };
+  Loop_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      Loop_descriptor_,
+      Loop::default_instance_,
+      Loop_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(Loop));
+  StretchLoop_descriptor_ = file->message_type(2);
+  static const int StretchLoop_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, stretch_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, begin_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, end_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, loop_),
   };
   StretchLoop_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -94,6 +112,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Stretch_descriptor_, &Stretch::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    Loop_descriptor_, &Loop::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     StretchLoop_descriptor_, &StretchLoop::default_instance());
 }
 
@@ -102,6 +122,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto() {
   delete Stretch::default_instance_;
   delete Stretch_reflection_;
+  delete Loop::default_instance_;
+  delete Loop_reflection_;
   delete StretchLoop::default_instance_;
   delete StretchLoop_reflection_;
 }
@@ -125,14 +147,17 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     "nk_size\030\t \001(\r:\003512\022\033\n\014prefill_size\030\n \001(\r"
     ":\00515000\022$\n\025next_buffer_fill_size\030\013 \001(\r:\005"
     "15000\022\036\n\022inactive_wait_time\030\014 \001(\005:\002-1\022\032\n"
-    "\017thread_priority\030\r \001(\r:\0014\"V\n\013StretchLoop"
-    "\022+\n\007stretch\030\001 \001(\0132\032.rec.audio.stretch.St"
-    "retch\022\r\n\005begin\030\002 \001(\001\022\013\n\003end\030\003 \001(\001", 593);
+    "\017thread_priority\030\r \001(\r:\0014\"\"\n\004Loop\022\r\n\005beg"
+    "in\030\001 \001(\001\022\013\n\003end\030\002 \001(\001\"a\n\013StretchLoop\022+\n\007"
+    "stretch\030\001 \001(\0132\032.rec.audio.stretch.Stretc"
+    "h\022%\n\004loop\030\002 \001(\0132\027.rec.audio.stretch.Loop", 640);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
+  Loop::default_instance_ = new Loop();
   StretchLoop::default_instance_ = new StretchLoop();
   Stretch::default_instance_->InitAsDefaultInstance();
+  Loop::default_instance_->InitAsDefaultInstance();
   StretchLoop::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto);
 }
@@ -945,9 +970,251 @@ void Stretch::Swap(Stretch* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int Loop::kBeginFieldNumber;
+const int Loop::kEndFieldNumber;
+#endif  // !_MSC_VER
+
+Loop::Loop()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void Loop::InitAsDefaultInstance() {
+}
+
+Loop::Loop(const Loop& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void Loop::SharedCtor() {
+  _cached_size_ = 0;
+  begin_ = 0;
+  end_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Loop::~Loop() {
+  SharedDtor();
+}
+
+void Loop::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void Loop::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Loop::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Loop_descriptor_;
+}
+
+const Loop& Loop::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();  return *default_instance_;
+}
+
+Loop* Loop::default_instance_ = NULL;
+
+Loop* Loop::New() const {
+  return new Loop;
+}
+
+void Loop::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    begin_ = 0;
+    end_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool Loop::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional double begin = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &begin_)));
+          _set_bit(0);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(17)) goto parse_end;
+        break;
+      }
+      
+      // optional double end = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_end:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, &end_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+      
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void Loop::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional double begin = 1;
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->begin(), output);
+  }
+  
+  // optional double end = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->end(), output);
+  }
+  
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* Loop::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional double begin = 1;
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->begin(), target);
+  }
+  
+  // optional double end = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->end(), target);
+  }
+  
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int Loop::ByteSize() const {
+  int total_size = 0;
+  
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional double begin = 1;
+    if (has_begin()) {
+      total_size += 1 + 8;
+    }
+    
+    // optional double end = 2;
+    if (has_end()) {
+      total_size += 1 + 8;
+    }
+    
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Loop::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const Loop* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Loop*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void Loop::MergeFrom(const Loop& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from._has_bit(0)) {
+      set_begin(from.begin());
+    }
+    if (from._has_bit(1)) {
+      set_end(from.end());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void Loop::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Loop::CopyFrom(const Loop& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Loop::IsInitialized() const {
+  
+  return true;
+}
+
+void Loop::Swap(Loop* other) {
+  if (other != this) {
+    std::swap(begin_, other->begin_);
+    std::swap(end_, other->end_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata Loop::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Loop_descriptor_;
+  metadata.reflection = Loop_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int StretchLoop::kStretchFieldNumber;
-const int StretchLoop::kBeginFieldNumber;
-const int StretchLoop::kEndFieldNumber;
+const int StretchLoop::kLoopFieldNumber;
 #endif  // !_MSC_VER
 
 StretchLoop::StretchLoop()
@@ -957,6 +1224,7 @@ StretchLoop::StretchLoop()
 
 void StretchLoop::InitAsDefaultInstance() {
   stretch_ = const_cast< ::rec::audio::stretch::Stretch*>(&::rec::audio::stretch::Stretch::default_instance());
+  loop_ = const_cast< ::rec::audio::stretch::Loop*>(&::rec::audio::stretch::Loop::default_instance());
 }
 
 StretchLoop::StretchLoop(const StretchLoop& from)
@@ -968,8 +1236,7 @@ StretchLoop::StretchLoop(const StretchLoop& from)
 void StretchLoop::SharedCtor() {
   _cached_size_ = 0;
   stretch_ = NULL;
-  begin_ = 0;
-  end_ = 0;
+  loop_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -980,6 +1247,7 @@ StretchLoop::~StretchLoop() {
 void StretchLoop::SharedDtor() {
   if (this != default_instance_) {
     delete stretch_;
+    delete loop_;
   }
 }
 
@@ -1008,8 +1276,9 @@ void StretchLoop::Clear() {
     if (_has_bit(0)) {
       if (stretch_ != NULL) stretch_->::rec::audio::stretch::Stretch::Clear();
     }
-    begin_ = 0;
-    end_ = 0;
+    if (_has_bit(1)) {
+      if (loop_ != NULL) loop_->::rec::audio::stretch::Loop::Clear();
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1030,35 +1299,17 @@ bool StretchLoop::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(17)) goto parse_begin;
+        if (input->ExpectTag(18)) goto parse_loop;
         break;
       }
       
-      // optional double begin = 2;
+      // optional .rec.audio.stretch.Loop loop = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_begin:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &begin_)));
-          _set_bit(1);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(25)) goto parse_end;
-        break;
-      }
-      
-      // optional double end = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_end:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &end_)));
-          _set_bit(2);
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_loop:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_loop()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1090,14 +1341,10 @@ void StretchLoop::SerializeWithCachedSizes(
       1, this->stretch(), output);
   }
   
-  // optional double begin = 2;
+  // optional .rec.audio.stretch.Loop loop = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->begin(), output);
-  }
-  
-  // optional double end = 3;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->end(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->loop(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1115,14 +1362,11 @@ void StretchLoop::SerializeWithCachedSizes(
         1, this->stretch(), target);
   }
   
-  // optional double begin = 2;
+  // optional .rec.audio.stretch.Loop loop = 2;
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->begin(), target);
-  }
-  
-  // optional double end = 3;
-  if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->end(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->loop(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1143,14 +1387,11 @@ int StretchLoop::ByteSize() const {
           this->stretch());
     }
     
-    // optional double begin = 2;
-    if (has_begin()) {
-      total_size += 1 + 8;
-    }
-    
-    // optional double end = 3;
-    if (has_end()) {
-      total_size += 1 + 8;
+    // optional .rec.audio.stretch.Loop loop = 2;
+    if (has_loop()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->loop());
     }
     
   }
@@ -1184,10 +1425,7 @@ void StretchLoop::MergeFrom(const StretchLoop& from) {
       mutable_stretch()->::rec::audio::stretch::Stretch::MergeFrom(from.stretch());
     }
     if (from._has_bit(1)) {
-      set_begin(from.begin());
-    }
-    if (from._has_bit(2)) {
-      set_end(from.end());
+      mutable_loop()->::rec::audio::stretch::Loop::MergeFrom(from.loop());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1213,8 +1451,7 @@ bool StretchLoop::IsInitialized() const {
 void StretchLoop::Swap(StretchLoop* other) {
   if (other != this) {
     std::swap(stretch_, other->stretch_);
-    std::swap(begin_, other->begin_);
-    std::swap(end_, other->end_);
+    std::swap(loop_, other->loop_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

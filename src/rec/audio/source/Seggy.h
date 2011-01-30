@@ -12,6 +12,7 @@ class Seggy : public Wrappy {
  public:
   Seggy(const SampleRange& r, PositionableAudioSource* s)
       : Wrappy(s), range_(r) {
+    DCHECK(range_.size());
   }
 
   virtual int64 getTotalLength() const { return range_.size(); }
@@ -19,7 +20,7 @@ class Seggy : public Wrappy {
   void setNextReadPosition(int64 p) {
     ScopedLock l(lock_);
     position_ = p;
-    source()->setNextReadPosition(p - range_.begin_);
+    source()->setNextReadPosition(p + range_.begin_);
   }
 
  private:

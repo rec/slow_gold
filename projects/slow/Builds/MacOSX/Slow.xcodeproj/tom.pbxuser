@@ -67,6 +67,13 @@
 			sepNavVisRange = "{0, 1524}";
 		};
 	};
+	1B080F750738F398054AB382 /* Wrappy.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {531, 1030}}";
+			sepNavSelRange = "{807, 0}";
+			sepNavVisRange = "{0, 924}";
+		};
+	};
 	20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {717, 2327}}";
@@ -88,6 +95,13 @@
 			sepNavSelRange = "{631, 0}";
 			sepNavVisRange = "{0, 1912}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
+		};
+	};
+	3E41776759EB3902574FA6D8 /* Runny.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {531, 1560}}";
+			sepNavSelRange = "{2471, 0}";
+			sepNavVisRange = "{857, 1889}";
 		};
 	};
 	43553262AA264130AEB57E8F /* Stretchy.cpp */ = {
@@ -195,6 +209,13 @@
 			sepNavVisRange = "{0, 890}";
 		};
 	};
+	94646382FAB21A45C282242D /* Math.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {531, 1030}}";
+			sepNavSelRange = "{824, 0}";
+			sepNavVisRange = "{0, 1080}";
+		};
+	};
 	965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {532, 1030}}";
@@ -207,11 +228,6 @@
 		activeExecutable = E2758BB212E2968800E37D3F /* Slow */;
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
-			E23E466E12EFA4390080BD76 /* CallAsync.h:23 */,
-			E23E467012EFA4640080BD76 /* Loops.cpp:65 */,
-			E23E468F12EFB1E20080BD76 /* AppInstance.cpp:30 */,
-			E23E469112EFB4810080BD76 /* juce_ListBox.cpp:432 */,
-			E23E46BD12F0CD940080BD76 /* AudioTransportSourcePlayer.cpp:35 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -970,42 +986,6 @@
 		vrLen = 1746;
 		vrLoc = 7745;
 	};
-	E23E466E12EFA4390080BD76 /* CallAsync.h:23 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = FB1B005E5ABE3ECE29CB8885 /* CallAsync.h */;
-		functionName = "callAsync(Callback* cb)";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 23;
-		location = SlowBurn;
-		modificationTime = 318107059.97534;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
-	};
-	E23E467012EFA4640080BD76 /* Loops.cpp:65 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 014EA5A1C140758DBA029118 /* Loops.cpp */;
-		functionName = "Loops::doSelect()";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 65;
-		location = SlowBurn;
-		modificationTime = 318107059.975405;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
-	};
 	E23E467712EFAF870080BD76 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 8B3AC2886ADA57FAE0F93512 /* LoopPoint.pb.h */;
@@ -1129,49 +1109,6 @@
 		rType = 0;
 		vrLen = 2025;
 		vrLoc = 0;
-	};
-	E23E468F12EFB1E20080BD76 /* AppInstance.cpp:30 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 0925F35EC7150773AA36E65C /* AppInstance.cpp */;
-		functionName = "AppInstance::needsUpdate(UntypedData* data)";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 30;
-		location = SlowBurn;
-		modificationTime = 318107059.975446;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
-	};
-	E23E469112EFB4810080BD76 /* juce_ListBox.cpp:432 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = E23E469212EFB4810080BD76 /* juce_ListBox.cpp */;
-		functionName = "ListBox::updateContent()";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 432;
-		location = SlowBurn;
-		modificationTime = 318107059.975477;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
-	};
-	E23E469212EFB4810080BD76 /* juce_ListBox.cpp */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.cpp.cpp;
-		name = juce_ListBox.cpp;
-		path = /Users/tom/Documents/development/juce/src/gui/components/controls/juce_ListBox.cpp;
-		sourceTree = "<absolute>";
 	};
 	E23E469412EFB65A0080BD76 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1299,24 +1236,6 @@
 		rType = 0;
 		vrLen = 1648;
 		vrLoc = 0;
-	};
-	E23E46BD12F0CD940080BD76 /* AudioTransportSourcePlayer.cpp:35 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */;
-		functionName = "AudioTransportSourcePlayer::update()";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 35;
-		location = SlowBurn;
-		modificationTime = 318107059.975515;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
 	};
 	E23E46C112F0CDD60080BD76 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1467,13 +1386,18 @@
 		name = Wrappy.h;
 		path = ../../../../../rec/src/rec/audio/source/Wrappy.h;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {531, 1030}}";
+			sepNavSelRange = "{678, 0}";
+			sepNavVisRange = "{0, 1349}";
+		};
 	};
 	E23E478E12F336110080BD76 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'rec::int64 rec::audio::source::Wrappy::position_' is private";
 		fRef = E23E478D12F336110080BD76 /* Wrappy.h */;
-		rLen = 1;
-		rLoc = 60;
+		rLen = 0;
+		rLoc = 48;
 		rType = 1;
 	};
 	E23E479312F3362E0080BD76 /* PBXTextBookmark */ = {
@@ -1481,9 +1405,9 @@
 		fRef = E23E478D12F336110080BD76 /* Wrappy.h */;
 		name = "Wrappy.h: 53";
 		rLen = 0;
-		rLoc = 1387;
+		rLoc = 1349;
 		rType = 0;
-		vrLen = 1788;
+		vrLen = 1349;
 		vrLoc = 0;
 	};
 	E23E479612F336610080BD76 /* PBXTextBookmark */ = {
@@ -1491,9 +1415,9 @@
 		fRef = E23E478D12F336110080BD76 /* Wrappy.h */;
 		name = "Wrappy.h: 78";
 		rLen = 0;
-		rLoc = 1886;
+		rLoc = 1349;
 		rType = 0;
-		vrLen = 1886;
+		vrLen = 1349;
 		vrLoc = 0;
 	};
 	E23E48D512F49FF20080BD76 /* StretchyPlayer.h */ = {

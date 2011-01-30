@@ -27,6 +27,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   player_.getTransport()->addListener(this);
   player_.getTransport()->addListener(controller_.timeController());
   waveform_.selectionBroadcaster()->addListener(controller_.timeController());
+  waveform_.selectionBroadcaster()->addListener(this);
 
   waveform_.addListener(this);
   waveform_.dropBroadcaster()->addListener(player_.fileListener());
@@ -130,7 +131,12 @@ void MainPage::operator()(const VirtualFile& file) {
   (*this)(0.0);
 }
 
-void MainPage::operator()(const SelectionRange& range) {
+void MainPage::operator()(const SelectionRange& sel) {
+  TimeRange range(sel);
+  audio::stretch::Loop loop;
+  loop.set_begin(range.begin_);
+  loop.set_end(range.end_);
+  DLOG(INFO) << "Here!";
 }
 
 void MainPage::clearTime() {

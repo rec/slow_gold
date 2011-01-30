@@ -35,6 +35,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
 void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
 
 class Stretch;
+class Loop;
 class StretchLoop;
 
 // ===================================================================
@@ -248,6 +249,103 @@ class Stretch : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class Loop : public ::google::protobuf::Message {
+ public:
+  Loop();
+  virtual ~Loop();
+  
+  Loop(const Loop& from);
+  
+  inline Loop& operator=(const Loop& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+  
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+  
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Loop& default_instance();
+  
+  void Swap(Loop* other);
+  
+  // implements Message ----------------------------------------------
+  
+  Loop* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Loop& from);
+  void MergeFrom(const Loop& from);
+  void Clear();
+  bool IsInitialized() const;
+  
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  
+  ::google::protobuf::Metadata GetMetadata() const;
+  
+  // nested types ----------------------------------------------------
+  
+  // accessors -------------------------------------------------------
+  
+  // optional double begin = 1;
+  inline bool has_begin() const;
+  inline void clear_begin();
+  static const int kBeginFieldNumber = 1;
+  inline double begin() const;
+  inline void set_begin(double value);
+  
+  // optional double end = 2;
+  inline bool has_end() const;
+  inline void clear_end();
+  static const int kEndFieldNumber = 2;
+  inline double end() const;
+  inline void set_end(double value);
+  
+  // @@protoc_insertion_point(class_scope:rec.audio.stretch.Loop)
+ private:
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+  mutable int _cached_size_;
+  
+  double begin_;
+  double end_;
+  friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
+  friend void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
+  friend void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
+  
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  
+  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
+  inline bool _has_bit(int index) const {
+    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
+  }
+  inline void _set_bit(int index) {
+    _has_bits_[index / 32] |= (1u << (index % 32));
+  }
+  inline void _clear_bit(int index) {
+    _has_bits_[index / 32] &= ~(1u << (index % 32));
+  }
+  
+  void InitAsDefaultInstance();
+  static Loop* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class StretchLoop : public ::google::protobuf::Message {
  public:
   StretchLoop();
@@ -309,19 +407,12 @@ class StretchLoop : public ::google::protobuf::Message {
   inline const ::rec::audio::stretch::Stretch& stretch() const;
   inline ::rec::audio::stretch::Stretch* mutable_stretch();
   
-  // optional double begin = 2;
-  inline bool has_begin() const;
-  inline void clear_begin();
-  static const int kBeginFieldNumber = 2;
-  inline double begin() const;
-  inline void set_begin(double value);
-  
-  // optional double end = 3;
-  inline bool has_end() const;
-  inline void clear_end();
-  static const int kEndFieldNumber = 3;
-  inline double end() const;
-  inline void set_end(double value);
+  // optional .rec.audio.stretch.Loop loop = 2;
+  inline bool has_loop() const;
+  inline void clear_loop();
+  static const int kLoopFieldNumber = 2;
+  inline const ::rec::audio::stretch::Loop& loop() const;
+  inline ::rec::audio::stretch::Loop* mutable_loop();
   
   // @@protoc_insertion_point(class_scope:rec.audio.stretch.StretchLoop)
  private:
@@ -329,13 +420,12 @@ class StretchLoop : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::audio::stretch::Stretch* stretch_;
-  double begin_;
-  double end_;
+  ::rec::audio::stretch::Loop* loop_;
   friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -616,6 +706,42 @@ inline void Stretch::set_thread_priority(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
+// Loop
+
+// optional double begin = 1;
+inline bool Loop::has_begin() const {
+  return _has_bit(0);
+}
+inline void Loop::clear_begin() {
+  begin_ = 0;
+  _clear_bit(0);
+}
+inline double Loop::begin() const {
+  return begin_;
+}
+inline void Loop::set_begin(double value) {
+  _set_bit(0);
+  begin_ = value;
+}
+
+// optional double end = 2;
+inline bool Loop::has_end() const {
+  return _has_bit(1);
+}
+inline void Loop::clear_end() {
+  end_ = 0;
+  _clear_bit(1);
+}
+inline double Loop::end() const {
+  return end_;
+}
+inline void Loop::set_end(double value) {
+  _set_bit(1);
+  end_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // StretchLoop
 
 // optional .rec.audio.stretch.Stretch stretch = 1;
@@ -635,36 +761,21 @@ inline ::rec::audio::stretch::Stretch* StretchLoop::mutable_stretch() {
   return stretch_;
 }
 
-// optional double begin = 2;
-inline bool StretchLoop::has_begin() const {
+// optional .rec.audio.stretch.Loop loop = 2;
+inline bool StretchLoop::has_loop() const {
   return _has_bit(1);
 }
-inline void StretchLoop::clear_begin() {
-  begin_ = 0;
+inline void StretchLoop::clear_loop() {
+  if (loop_ != NULL) loop_->::rec::audio::stretch::Loop::Clear();
   _clear_bit(1);
 }
-inline double StretchLoop::begin() const {
-  return begin_;
+inline const ::rec::audio::stretch::Loop& StretchLoop::loop() const {
+  return loop_ != NULL ? *loop_ : *default_instance_->loop_;
 }
-inline void StretchLoop::set_begin(double value) {
+inline ::rec::audio::stretch::Loop* StretchLoop::mutable_loop() {
   _set_bit(1);
-  begin_ = value;
-}
-
-// optional double end = 3;
-inline bool StretchLoop::has_end() const {
-  return _has_bit(2);
-}
-inline void StretchLoop::clear_end() {
-  end_ = 0;
-  _clear_bit(2);
-}
-inline double StretchLoop::end() const {
-  return end_;
-}
-inline void StretchLoop::set_end(double value) {
-  _set_bit(2);
-  end_ = value;
+  if (loop_ == NULL) loop_ = new ::rec::audio::stretch::Loop;
+  return loop_;
 }
 
 
