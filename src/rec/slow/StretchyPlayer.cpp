@@ -59,7 +59,7 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
 
 void StretchyPlayer::operator()(const float& t) {
   if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100 * t)))
-    transportSource_->setPosition(stretchy_->get().stretchy().time_scale() * t);
+    transportSource_->setPosition(stretchy_->get().stretch().time_scale() * t);
 
   else
     LOG(ERROR) << "Failed to fill buffer.";

@@ -15,7 +15,7 @@ DoubleStretchy::~DoubleStretchy() {}
 
 void DoubleStretchy::setLoopPosition(const StretchLoop& loop) {
   ScopedLock l(lock_);
-  const Stretch& stretch = loop.stretchy();
+  const Stretch& stretch = loop.stretch();
   ratio_ *= (timeScale(stretch) / stretch::timeScale(stretch));
   loop_ = loop;
 }

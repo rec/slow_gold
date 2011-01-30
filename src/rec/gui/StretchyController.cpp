@@ -5,11 +5,11 @@ namespace gui {
 
 StretchyController::StretchyController()
     : Layout("StretchyController", VERTICAL),
-      playbackSpeed_("Playback speed", Address("stretchy", "time_percent")),
-      pitchScale_("Transpose", Address("stretchy", "semitone_shift")),
-      fineScale_("Fine tuning", Address("stretchy", "detune_cents")),
+      playbackSpeed_("Playback speed", Address("stretch", "time_percent")),
+      pitchScale_("Transpose", Address("stretch", "semitone_shift")),
+      fineScale_("Fine tuning", Address("stretch", "detune_cents")),
       disableButton_("Disable pitch and time shifting",
-                     Address("stretchy", "disabled")) {
+                     Address("stretch", "disabled")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -31,7 +31,7 @@ void StretchyController::setData(UntypedData* data) {
   disableButton_.setData(data);
 
   audio::stretch::StretchLoop proto;
-  bool enable = !(data && data->fill(&proto) && proto.stretchy().disabled());
+  bool enable = !(data && data->fill(&proto) && proto.stretch().disabled());
   thread::callAsync(this, &StretchyController::enableSliders, enable);
 }
 

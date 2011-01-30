@@ -24,7 +24,7 @@ class DoubleRunnyBuffer : public Thread,
   bool fillFromPosition(int pos);
 
   gui::CachedThumbnail* cachedThumbnail() { return cachedThumbnail_.get(); }
-  virtual int64 getTotalLength() const { return buffery_->getLength(); }
+  virtual int64 getTotalLength() const { return buffer_->getLength(); }
 
   virtual void operator()(const StretchLoop& p);
   bool empty() const { return empty_; }
@@ -40,7 +40,7 @@ class DoubleRunnyBuffer : public Thread,
 
   DoubleStretchy stretchy_;
   const RunnyProto runnyDesc_;
-  ptr<FillableBuffer> buffery_;
+  ptr<FillableBuffer> buffer_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;
   Data* const data_;
   thread_ptr<ChangeLocker> changeLocker_;

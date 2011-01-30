@@ -35,7 +35,7 @@ message Stretch {
 };
 
 message StretchLoop {
-  optional Stretch stretchy = 1;
+  optional Stretch stretch = 1;
   optional double begin = 2;
   optional double end = 3;
 };

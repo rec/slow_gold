@@ -7,8 +7,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Runny* makeStretchyRunny(const RunnyProto& desc, const Stretch& stretch,
-                         int pos, PositionableAudioSource* s) {
+Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
+                     int pos, PositionableAudioSource* s) {
+  const Stretch& stretch = loop.stretch();
   ptr<PositionableAudioSource> source(s);
   static const double DELTA = 0.00001;
   double timeRatio = timeScale(stretch);

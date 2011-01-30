@@ -12,7 +12,7 @@ static const int THREAD_TIMEOUT = 2000;
 static const int SPIN_WAIT = 40;
 static const int BLOCK_SIZE = 1024;
 static const int READAHEAD = 20000;
-static const int BUFFERY_READAHEAD = 10000;
+static const int BUFFER_READAHEAD = 10000;
 
 using namespace rec::gui;
 
@@ -39,7 +39,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
     source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
 
   source.reset(new Seggy(SampleRange(0, len), source.transfer()));
-  buffery_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
+  buffer_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
 
   StretchLoop loop(data_->get());
   setLoop(loop);
@@ -60,16 +60,16 @@ void DoubleRunnyBuffer::operator()(const StretchLoop& p) {
 }
 
 bool DoubleRunnyBuffer::fillFromPosition(int pos) {
-  buffery_->setPosition(pos);
-  return buffery_->waitUntilFilled(block::Block(pos, pos + BUFFERY_READAHEAD));
+  buffer_->setPosition(pos);
+  return buffer_->waitUntilFilled(block::Block(pos, pos + BUFFER_READAHEAD));
 }
 
 void DoubleRunnyBuffer::run() {
-  while (!buffery_->isFull()) {
+  while (!buffer_->isFull()) {
     if (threadShouldExit())
       return;
     else
-      buffery_->fillNextBlock();
+      buffer_->fillNextBlock();
   }
   if (!threadShouldExit())
     cachedThumbnail_->writeThumbnail(true);
@@ -82,12 +82,12 @@ void DoubleRunnyBuffer::setLoop(const StretchLoop& loop) {
 
   startThread();
   int64 pos = stretchy_.getNextReadPosition();
-  buffery_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
+  buffer_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
 
-  if (!threadShouldExit())
-    stretchy_.setNext(makeStretchyRunny(runnyDesc_,
-                                        loop.stretchy(), pos,
-                                        new BufferSource(*buffery_->buffer())));
+  if (!threadShouldExit()) {
+    ptr<BufferSource> s(new BufferSource(*buffer_->buffer()));
+    stretchy_.setNextRunny(stretchyRunny(runnyDesc_, loop, pos, s.xfer()));
+  }
 }
 
 }  // namespace source

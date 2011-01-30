@@ -302,12 +302,12 @@ class StretchLoop : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.audio.stretch.Stretch stretchy = 1;
-  inline bool has_stretchy() const;
-  inline void clear_stretchy();
-  static const int kStretchyFieldNumber = 1;
-  inline const ::rec::audio::stretch::Stretch& stretchy() const;
-  inline ::rec::audio::stretch::Stretch* mutable_stretchy();
+  // optional .rec.audio.stretch.Stretch stretch = 1;
+  inline bool has_stretch() const;
+  inline void clear_stretch();
+  static const int kStretchFieldNumber = 1;
+  inline const ::rec::audio::stretch::Stretch& stretch() const;
+  inline ::rec::audio::stretch::Stretch* mutable_stretch();
   
   // optional double begin = 2;
   inline bool has_begin() const;
@@ -328,7 +328,7 @@ class StretchLoop : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::audio::stretch::Stretch* stretchy_;
+  ::rec::audio::stretch::Stretch* stretch_;
   double begin_;
   double end_;
   friend void  protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
@@ -618,21 +618,21 @@ inline void Stretch::set_thread_priority(::google::protobuf::uint32 value) {
 
 // StretchLoop
 
-// optional .rec.audio.stretch.Stretch stretchy = 1;
-inline bool StretchLoop::has_stretchy() const {
+// optional .rec.audio.stretch.Stretch stretch = 1;
+inline bool StretchLoop::has_stretch() const {
   return _has_bit(0);
 }
-inline void StretchLoop::clear_stretchy() {
-  if (stretchy_ != NULL) stretchy_->::rec::audio::stretch::Stretch::Clear();
+inline void StretchLoop::clear_stretch() {
+  if (stretch_ != NULL) stretch_->::rec::audio::stretch::Stretch::Clear();
   _clear_bit(0);
 }
-inline const ::rec::audio::stretch::Stretch& StretchLoop::stretchy() const {
-  return stretchy_ != NULL ? *stretchy_ : *default_instance_->stretchy_;
+inline const ::rec::audio::stretch::Stretch& StretchLoop::stretch() const {
+  return stretch_ != NULL ? *stretch_ : *default_instance_->stretch_;
 }
-inline ::rec::audio::stretch::Stretch* StretchLoop::mutable_stretchy() {
+inline ::rec::audio::stretch::Stretch* StretchLoop::mutable_stretch() {
   _set_bit(0);
-  if (stretchy_ == NULL) stretchy_ = new ::rec::audio::stretch::Stretch;
-  return stretchy_;
+  if (stretch_ == NULL) stretch_ = new ::rec::audio::stretch::Stretch;
+  return stretch_;
 }
 
 // optional double begin = 2;

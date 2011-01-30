@@ -48,7 +48,7 @@ void PlaybackController::setLayoutData() {
 void PlaybackController::operator()(const StretchLoop& desc) {
   thread::callAsync(&stretchyController_,
                     &gui::StretchyController::enableSliders,
-                    !desc.stretchy().disabled());
+                    !desc.stretch().disabled());
   timeController_(desc);
 }
 
