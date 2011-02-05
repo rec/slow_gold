@@ -16,7 +16,6 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
                        public Broadcaster<const VirtualFile&> {
  public:
   typedef audio::stretch::StretchLoop StretchLoop;
-  typedef audio::stretch::Stretch Stretch;
 
   explicit StretchyPlayer(AudioDeviceManager* deviceManager);
   virtual ~StretchyPlayer();

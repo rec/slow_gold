@@ -132,11 +132,15 @@ void MainPage::operator()(const VirtualFile& file) {
 }
 
 void MainPage::operator()(const SelectionRange& sel) {
-  TimeRange range(sel);
-  audio::stretch::Loop loop;
-  loop.set_begin(range.begin_);
-  loop.set_end(range.end_);
-  DLOG(INFO) << "Here!";
+  DLOG(INFO) << "SelectionRange";
+  if (persist::Data<StretchLoop>* data = player_.getStretchy()) {
+    TimeRange range(sel);
+    audio::stretch::Loop loop;
+    loop.set_begin(range.begin_);
+    loop.set_end(range.end_);
+
+    data->set("loop", Value(loop));
+  }
 }
 
 void MainPage::clearTime() {

@@ -29,6 +29,7 @@ Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
     if (end < 0.001)
       end = s->getTotalLength();
     source.reset(new Seggy(SampleRange(begin, end), source.transfer()));
+    DLOG(INFO) << "!!! LOOOP! " << loop.ShortDebugString();
   } else {
     DLOG(INFO) << "No loop";
   }
