@@ -159,9 +159,9 @@
 	};
 	5BED0EFFD46A27023555D6DA /* Cursor.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {530, 1092}}";
-			sepNavSelRange = "{1897, 0}";
-			sepNavVisRange = "{707, 1190}";
+			sepNavIntBoundsRect = "{{0, 0}, {1226, 1092}}";
+			sepNavSelRange = "{1268, 0}";
+			sepNavVisRange = "{1158, 739}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -232,9 +232,9 @@
 	};
 	965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {532, 1030}}";
-			sepNavSelRange = "{972, 0}";
-			sepNavVisRange = "{0, 1393}";
+			sepNavIntBoundsRect = "{{0, 0}, {558, 858}}";
+			sepNavSelRange = "{1043, 0}";
+			sepNavVisRange = "{0, 1327}";
 		};
 	};
 	998399C0F86735CBC8189E96 /* Project object */ = {
@@ -326,6 +326,12 @@
 			E2EDABFA12FE22FD00CFF0DC /* PBXTextBookmark */ = E2EDABFA12FE22FD00CFF0DC /* PBXTextBookmark */;
 			E2EDABFE12FE240000CFF0DC /* PBXTextBookmark */ = E2EDABFE12FE240000CFF0DC /* PBXTextBookmark */;
 			E2EDABFF12FE240000CFF0DC /* PBXTextBookmark */ = E2EDABFF12FE240000CFF0DC /* PBXTextBookmark */;
+			E2EDAC0612FF6AF300CFF0DC /* PBXTextBookmark */ = E2EDAC0612FF6AF300CFF0DC /* PBXTextBookmark */;
+			E2EDAC0712FF6AF300CFF0DC /* XCBuildMessageTextBookmark */ = E2EDAC0712FF6AF300CFF0DC /* XCBuildMessageTextBookmark */;
+			E2EDAC0812FF6AF300CFF0DC /* PBXTextBookmark */ = E2EDAC0812FF6AF300CFF0DC /* PBXTextBookmark */;
+			E2EDAC0912FF6AF300CFF0DC /* PBXTextBookmark */ = E2EDAC0912FF6AF300CFF0DC /* PBXTextBookmark */;
+			E2EDAC0D12FF6B5100CFF0DC /* PBXTextBookmark */ = E2EDAC0D12FF6B5100CFF0DC /* PBXTextBookmark */;
+			E2EDAC0E12FF6B5100CFF0DC /* PBXTextBookmark */ = E2EDAC0E12FF6B5100CFF0DC /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -637,11 +643,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 9E6BCD0364F3876E18407668 /* Seggy.h */;
 		functionName = "setNextReadPosition(int64 p)";
-		hitCount = 4;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 21;
 		location = SlowBurn;
-		modificationTime = 318644795.509976;
+		modificationTime = 318645491.296831;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -675,11 +681,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 516DD6179BB28DE93A3B09C2 /* StretchyRunny.cpp */;
 		functionName = "stretchyRunny(const RunnyProto& desc, const StretchLoop& loop, int pos, PositionableAudioSource* s)";
-		hitCount = 3;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 37;
 		location = SlowBurn;
-		modificationTime = 318645237.563627;
+		modificationTime = 318645491.297897;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -747,7 +753,7 @@
 		ignoreCount = 0;
 		lineNumber = 58;
 		location = SlowBurn;
-		modificationTime = 318645238.507758;
+		modificationTime = 318729025.568068;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -802,6 +808,65 @@
 		vrLoc = 707;
 	};
 	E2EDABFF12FE240000CFF0DC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9E6BCD0364F3876E18407668 /* Seggy.h */;
+		name = "Seggy.h: 23";
+		rLen = 0;
+		rLoc = 535;
+		rType = 0;
+		vrLen = 701;
+		vrLoc = 0;
+	};
+	E2EDAC0612FF6AF300CFF0DC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 84";
+		rLen = 0;
+		rLoc = 1897;
+		rType = 0;
+		vrLen = 1190;
+		vrLoc = 707;
+	};
+	E2EDAC0712FF6AF300CFF0DC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No 'void rec::slow::AudioTransportSourcePlayer::setOffset(double)' member function declared in class 'rec::slow::AudioTransportSourcePlayer'";
+		fRef = 965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 42;
+		rType = 1;
+	};
+	E2EDAC0812FF6AF300CFF0DC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */;
+		name = "AudioTransportSourcePlayer.cpp: 43";
+		rLen = 0;
+		rLoc = 1043;
+		rType = 0;
+		vrLen = 1279;
+		vrLoc = 0;
+	};
+	E2EDAC0912FF6AF300CFF0DC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9E6BCD0364F3876E18407668 /* Seggy.h */;
+		name = "Seggy.h: 23";
+		rLen = 0;
+		rLoc = 535;
+		rType = 0;
+		vrLen = 680;
+		vrLoc = 0;
+	};
+	E2EDAC0D12FF6B5100CFF0DC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */;
+		name = "AudioTransportSourcePlayer.cpp: 43";
+		rLen = 0;
+		rLoc = 1043;
+		rType = 0;
+		vrLen = 1327;
+		vrLoc = 0;
+	};
+	E2EDAC0E12FF6B5100CFF0DC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 9E6BCD0364F3876E18407668 /* Seggy.h */;
 		name = "Seggy.h: 23";

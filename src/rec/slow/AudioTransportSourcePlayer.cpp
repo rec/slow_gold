@@ -36,7 +36,7 @@ void AudioTransportSourcePlayer::update() {
   float time = getNextReadPosition() / 44100.0f;
   if (!Math<float>::near(time, lastTime_, 0.1)) {
     lastTime_ = time;
-    broadcast(time);
+    broadcast(time + offset_);
   }
 }
 

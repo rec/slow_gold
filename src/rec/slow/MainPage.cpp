@@ -138,6 +138,7 @@ void MainPage::operator()(const SelectionRange& sel) {
     audio::stretch::Loop loop;
     loop.set_begin(range.begin_);
     loop.set_end(range.end_);
+    player_.getTransport()->setOffset(range.begin_);
 
     data->set("loop", Value(loop));
   }
