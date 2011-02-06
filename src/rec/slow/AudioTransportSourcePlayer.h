@@ -26,6 +26,7 @@ class AudioTransportSourcePlayer
   void toggle() { setStart(!isPlaying()); }
   void setStart(bool isStart = true);
   void update();
+  void setOffset(double offset);
 
   Broadcaster<const AudioTransportSourcePlayer&>* changeBroadcaster() {
     return &changeBroadcaster_;
@@ -40,6 +41,7 @@ class AudioTransportSourcePlayer
   AudioDeviceManager* deviceManager_;
   Broadcaster<const AudioTransportSourcePlayer&> changeBroadcaster_;
   float lastTime_;
+  double offset_;
 
   DISALLOW_COPY_AND_ASSIGN(AudioTransportSourcePlayer);
 };

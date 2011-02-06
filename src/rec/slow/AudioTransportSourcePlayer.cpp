@@ -5,7 +5,10 @@ namespace rec {
 namespace slow {
 
 AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
-    : Thread("AudioTransportSourcePlayer"), deviceManager_(dm), lastTime_(-1.0) {
+    : Thread("AudioTransportSourcePlayer"),
+      deviceManager_(dm),
+      lastTime_(-1.0),
+      offset_(0.0) {
   deviceManager_->addAudioCallback(&player_);
   player_.setSource(this);
   addChangeListener(this);  // Listen to ourselves!
@@ -29,11 +32,17 @@ void AudioTransportSourcePlayer::setPosition(double newPosition) {
 }
 
 void AudioTransportSourcePlayer::update() {
+  ScopedLock l(lock_);
   float time = getNextReadPosition() / 44100.0f;
   if (!Math<float>::near(time, lastTime_, 0.1)) {
     lastTime_ = time;
     broadcast(time);
   }
+}
+
+void AudioTransportSourcePlayer::setOffset(double offset) {
+  ScopedLock l(lock_);
+  offset_ = offset;
 }
 
 void AudioTransportSourcePlayer::setStart(bool isStart) {
