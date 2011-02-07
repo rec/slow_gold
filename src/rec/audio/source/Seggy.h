@@ -3,6 +3,7 @@
 
 #include "rec/audio/source/Wrappy.h"
 #include "rec/util/Range.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace audio {
@@ -19,8 +20,9 @@ class Seggy : public Wrappy {
 
   void setNextReadPosition(int64 p) {
     ScopedLock l(lock_);
+    p = juce::jmax(p, 0LL);
     position_ = p;
-    source()->setNextReadPosition(p + range_.begin_);
+    source()->setNextReadPosition(juce::jmin(p + range_.begin_, range_.end_));
   }
 
  private:
