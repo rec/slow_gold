@@ -27,7 +27,7 @@ void AudioTransportSourcePlayer::clear() {
 }
 
 void AudioTransportSourcePlayer::setPosition(double newPosition) {
-  AudioTransportSource::setPosition(newPosition);
+  AudioTransportSource::setPosition(newPosition - offset_);
   update();
 }
 
