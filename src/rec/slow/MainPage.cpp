@@ -132,7 +132,6 @@ void MainPage::operator()(const VirtualFile& file) {
 }
 
 void MainPage::operator()(const SelectionRange& sel) {
-  DLOG(INFO) << "SelectionRange";
   if (persist::Data<StretchLoop>* data = player_.getStretchy()) {
     TimeRange range(sel);
     audio::stretch::Loop loop;

@@ -43,7 +43,6 @@ void AudioTransportSourcePlayer::update() {
 void AudioTransportSourcePlayer::setOffset(double offset) {
   ScopedLock l(lock_);
   offset_ = offset;
-  DLOG(INFO) << "! " << getLengthInSeconds();
 }
 
 void AudioTransportSourcePlayer::setStart(bool isStart) {
