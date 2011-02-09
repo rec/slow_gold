@@ -29,7 +29,9 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
   void setTime(double time) { timeLocker_->set(time); }
 
   Listener<const VirtualFile&>* fileListener() { return &fileListener_; }
-  AudioTransportSourcePlayer* getTransport() { return transportSource_.get(); }
+  AudioTransportSourcePlayer* getTransport() { 
+	  return transportSource_.get(); 
+  }
 
   persist::Data<StretchLoop>* getStretchy() { return stretchy_; }
   gui::CachedThumbnail* cachedThumbnail();

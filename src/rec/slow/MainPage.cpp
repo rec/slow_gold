@@ -70,7 +70,7 @@ bool MainPage::keyPressed(const juce::KeyPress& kp) {
 }
 
 void MainPage::addLoopPoint() {
-  loops_.addLoopPoint(player_.getTransport()->getCurrentPosition());
+  loops_.addLoopPoint(player_.getTransport()->getCurrentOffsetPosition());
   controller_.enableLoopPointButton(false);
 }
 

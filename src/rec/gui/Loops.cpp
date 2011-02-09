@@ -2,6 +2,7 @@
 
 #include "rec/gui/Loops.h"
 #include "rec/util/Defaulter.h"
+#include "rec/util/Range.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
@@ -112,11 +113,24 @@ struct CompareLoopPoints {
 void Loops::addLoopPoint(double time) {
   ScopedLock l(lock_);
   if (getData() && isNewLoopPoint(time)) {
+    int begin = 0, size = loopPoints_.selected_size(), end;
+    for (; begin < size && !loopPoints_.selected(begin); ++begin);
+    for (end = begin; end < size && loopPoints_.selected(end); ++end);
+    TimeRange selection((begin < size) ? loopPoints_.loop_point(begin).time() : length_,
+						(end < size) ? loopPoints_.loop_point(end).time() : length_);
+
     loopPoints_.add_loop_point()->set_time(time);
     std::sort(loopPoints_.mutable_loop_point()->begin(),
               loopPoints_.mutable_loop_point()->end(),
               CompareLoopPoints());
-    getData()->set(Address(), Value(loopPoints_));
+
+    loopPoints_.add_selected(false);
+    for (int i = 0; i < loopPoints_.selected_size(); ++i) {
+      double time = loopPoints_.loop_point(i).time();
+      loopPoints_.set_selected(i, time >= selection.begin_ && time < selection.end_);
+    }
+
+    getData()->set(Address(), loopPoints_);
   }
 }
 

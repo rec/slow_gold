@@ -26,6 +26,7 @@ class AudioTransportSourcePlayer : public Thread,
   void setStart(bool isStart = true);
   void update();
   void setOffset(double offset);
+  double getCurrentOffsetPosition() const { return getCurrentPosition() + offset_; }
 
   Broadcaster<const AudioTransportSourcePlayer&>* changeBroadcaster() {
     return &changeBroadcaster_;

@@ -27,6 +27,8 @@ void AudioTransportSourcePlayer::clear() {
 }
 
 void AudioTransportSourcePlayer::setPosition(double newPosition) {
+  if (isPlaying() && (newPosition < offset_ || newPosition >= offset_ + getLengthInSeconds()))
+    newPosition = offset_;
   AudioTransportSource::setPosition(newPosition - offset_);
   update();
 }
@@ -47,7 +49,12 @@ void AudioTransportSourcePlayer::setOffset(double offset) {
 
 void AudioTransportSourcePlayer::setStart(bool isStart) {
   if (isStart) {
+    double pos = getCurrentPosition();
+    // DLOG(INFO) << "POS! " << pos;
+    if (pos < offset_ || pos >= offset_ + getLengthInSeconds())
+      setPosition(offset_);
     startThread();
+
     AudioTransportSource::start();
   } else {
     AudioTransportSource::stop();

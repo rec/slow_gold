@@ -40,7 +40,6 @@ void Wrappy::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
   position_ = mod(position_ + info.numSamples);
 }
 
-
 }  // namespace source
 }  // namespace audio
 }  // namespace rec

@@ -32,6 +32,11 @@ class Value : public proto::Value {
   Value(sint64 x) { set_sint64_f(x); }
   Value(pmessage x) { set_message_f(x); }
   Value(penum x) { set_enum_f(x); }
+  Value(const Message& x) {
+    string s;
+    x.SerializeToString(&s);
+    set_message_f(s);
+  }
 
   template <typename T>
   T cast() const {
