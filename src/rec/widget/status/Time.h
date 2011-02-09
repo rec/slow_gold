@@ -13,7 +13,7 @@ namespace widget {
 namespace status {
 namespace time {
 
-const String formatTime(float time, bool flash = false, bool displayMs = true);
+const String formatTime(double time, bool flash = false, bool displayMs = true);
 
 class TextComponent : public gui::SimpleLabel,
                       public Listener<const ClockUpdate&> {
@@ -21,13 +21,13 @@ class TextComponent : public gui::SimpleLabel,
   explicit TextComponent(const Text& desc = Text::default_instance());
   virtual void operator()(const ClockUpdate& c);
 
-  float getTime() const { return time_; }
-  void setTime(float time);
+  double getTime() const { return time_; }
+  void setTime(double time);
   void redisplay();
 
  private:
   Text description_;
-  float time_;
+  double time_;
 
   DISALLOW_COPY_AND_ASSIGN(TextComponent);
 };
@@ -36,9 +36,9 @@ class TextComponent : public gui::SimpleLabel,
 class DialComponent : public Component,
                       public Listener<const ClockUpdate&> {
  public:
-  explicit DialComponent(const Dial& desc, float length = 0.0f, float time = 0.0f);
-  void setLength(float length);
-  void setTime(float time);
+  explicit DialComponent(const Dial& desc, double length = 0.0f, double time = 0.0f);
+  void setLength(double length);
+  void setTime(double time);
 
   virtual void operator()(const ClockUpdate& c) { c.update(this); }
   virtual void paint(juce::Graphics& g);
@@ -47,8 +47,8 @@ class DialComponent : public Component,
  private:
   CriticalSection lock_;
   Dial description_;
-  float length_;
-  float time_;
+  double length_;
+  double time_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
 };

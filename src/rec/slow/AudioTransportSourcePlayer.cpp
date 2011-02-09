@@ -33,8 +33,8 @@ void AudioTransportSourcePlayer::setPosition(double newPosition) {
 
 void AudioTransportSourcePlayer::update() {
   ScopedLock l(lock_);
-  float time = getNextReadPosition() / 44100.0f;
-  if (!Math<float>::near(time, lastTime_, 0.1)) {
+  double time = getNextReadPosition() / 44100.0f;
+  if (!Math<double>::near(time, lastTime_, 0.1)) {
     lastTime_ = time;
     broadcast(time + offset_);
   }

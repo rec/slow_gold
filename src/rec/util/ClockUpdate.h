@@ -7,10 +7,10 @@ namespace rec {
 namespace util {
 
 struct ClockUpdate {
-  float time_;
-  float length_;
+  double time_;
+  double length_;
 
-  ClockUpdate(float time, float length) : time_(time), length_(length) {}
+  ClockUpdate(double time, double length) : time_(time), length_(length) {}
   ClockUpdate() {}
 
   template <typename Type>

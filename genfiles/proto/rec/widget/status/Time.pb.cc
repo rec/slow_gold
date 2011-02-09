@@ -222,7 +222,7 @@ void protobuf_AddDesc_rec_2fwidget_2fstatus_2fTime_2eproto() {
     "Widget\022\017\n\007outline\030\002 \001(\r\022D\n\tdirection\030\003 \001"
     "(\0162&.rec.widget.status.time.Dial.Directi"
     "on:\tCLOCKWISE\022\031\n\021display_lap_count\030\004 \001(\010"
-    "\022\022\n\nzero_point\030\007 \001(\002\022\033\n\rempty_on_zero\030\010 "
+    "\022\022\n\nzero_point\030\007 \001(\001\022\033\n\rempty_on_zero\030\010 "
     "\001(\010:\004true\022\"\n\nfrom_color\030\t \001(\0132\016.rec.gui."
     "Color\022 \n\010to_color\030\n \001(\0132\016.rec.gui.Color\""
     "1\n\tDirection\022\r\n\tCLOCKWISE\020\001\022\025\n\021COUNTER_C"
@@ -1440,17 +1440,17 @@ bool Dial::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(61)) goto parse_zero_point;
+        if (input->ExpectTag(57)) goto parse_zero_point;
         break;
       }
       
-      // optional float zero_point = 7;
+      // optional double zero_point = 7;
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_zero_point:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &zero_point_)));
           _set_bit(4);
         } else {
@@ -1544,9 +1544,9 @@ void Dial::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->display_lap_count(), output);
   }
   
-  // optional float zero_point = 7;
+  // optional double zero_point = 7;
   if (_has_bit(4)) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->zero_point(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(7, this->zero_point(), output);
   }
   
   // optional bool empty_on_zero = 8 [default = true];
@@ -1597,9 +1597,9 @@ void Dial::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->display_lap_count(), target);
   }
   
-  // optional float zero_point = 7;
+  // optional double zero_point = 7;
   if (_has_bit(4)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->zero_point(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(7, this->zero_point(), target);
   }
   
   // optional bool empty_on_zero = 8 [default = true];
@@ -1657,9 +1657,9 @@ int Dial::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional float zero_point = 7;
+    // optional double zero_point = 7;
     if (has_zero_point()) {
-      total_size += 1 + 4;
+      total_size += 1 + 8;
     }
     
     // optional bool empty_on_zero = 8 [default = true];

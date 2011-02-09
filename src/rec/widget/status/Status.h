@@ -18,7 +18,7 @@ class Status : public juce::Component {
   explicit Status(const StatusDesc* desc);
 
   void paint(juce::Graphics& g);
-  void setTime(float time);
+  void setTime(double time);
 
  private:
   const StatusDesc* desc_;

@@ -21,7 +21,7 @@ namespace rec {
 namespace slow {
 
 class MainPage : public gui::Layout,
-                 public Listener<float>,
+                 public Listener<double>,
                  public Listener<const TimeAndMouseEvent&>,
                  public Listener<const SelectionRange&>,
                  public Listener<const VirtualFile&> {
@@ -33,7 +33,7 @@ class MainPage : public gui::Layout,
 
   virtual void operator()(const TimeAndMouseEvent&);
   virtual void operator()(const VirtualFile&);
-  virtual void operator()(float time);
+  virtual void operator()(double time);
   virtual void operator()(const SelectionRange&);
 
   void doOpen();

@@ -12,7 +12,7 @@ namespace slow {
 class AudioTransportSourcePlayer;
 
 class StretchyPlayer : public Listener<const VirtualFile&>,
-                       public Listener<const float&>,
+                       public Listener<const double&>,
                        public Broadcaster<const VirtualFile&> {
  public:
   typedef audio::stretch::StretchLoop StretchLoop;
@@ -24,9 +24,9 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
   virtual void operator()(const VirtualFile& file);
 
   // Callback when we're ready to actually jump to a new time.
-  virtual void operator()(const float& time);
+  virtual void operator()(const double& time);
 
-  void setTime(float time) { timeLocker_->set(time); }
+  void setTime(double time) { timeLocker_->set(time); }
 
   Listener<const VirtualFile&>* fileListener() { return &fileListener_; }
   AudioTransportSourcePlayer* getTransport() { return transportSource_.get(); }
@@ -36,7 +36,7 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
   int length() const;
 
  private:
-  typedef thread::ChangeLocker<float> TimeLocker;
+  typedef thread::ChangeLocker<double> TimeLocker;
   typedef thread::ChangeLocker<VirtualFile> FileLocker;
 
   thread_ptr<AudioTransportSourcePlayer> transportSource_;

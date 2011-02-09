@@ -517,12 +517,12 @@ class Dial : public ::google::protobuf::Message {
   inline bool display_lap_count() const;
   inline void set_display_lap_count(bool value);
   
-  // optional float zero_point = 7;
+  // optional double zero_point = 7;
   inline bool has_zero_point() const;
   inline void clear_zero_point();
   static const int kZeroPointFieldNumber = 7;
-  inline float zero_point() const;
-  inline void set_zero_point(float value);
+  inline double zero_point() const;
+  inline void set_zero_point(double value);
   
   // optional bool empty_on_zero = 8 [default = true];
   inline bool has_empty_on_zero() const;
@@ -554,7 +554,7 @@ class Dial : public ::google::protobuf::Message {
   ::google::protobuf::uint32 outline_;
   int direction_;
   bool display_lap_count_;
-  float zero_point_;
+  double zero_point_;
   bool empty_on_zero_;
   ::rec::gui::Color* from_color_;
   ::rec::gui::Color* to_color_;
@@ -1070,7 +1070,7 @@ inline void Dial::set_display_lap_count(bool value) {
   display_lap_count_ = value;
 }
 
-// optional float zero_point = 7;
+// optional double zero_point = 7;
 inline bool Dial::has_zero_point() const {
   return _has_bit(4);
 }
@@ -1078,10 +1078,10 @@ inline void Dial::clear_zero_point() {
   zero_point_ = 0;
   _clear_bit(4);
 }
-inline float Dial::zero_point() const {
+inline double Dial::zero_point() const {
   return zero_point_;
 }
-inline void Dial::set_zero_point(float value) {
+inline void Dial::set_zero_point(double value) {
   _set_bit(4);
   zero_point_ = value;
 }

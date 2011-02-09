@@ -6,11 +6,10 @@
 namespace rec {
 namespace slow {
 
-class AudioTransportSourcePlayer
-  : public Thread,
-    public AudioTransportSource,
-    public Broadcaster<float>,
-    public juce::ChangeListener {
+class AudioTransportSourcePlayer : public Thread,
+                                   public AudioTransportSource,
+                                   public Broadcaster<double>,
+                                   public juce::ChangeListener {
  public:
   static const int THREAD_WAIT = 40;
 
@@ -40,7 +39,7 @@ class AudioTransportSourcePlayer
   AudioSourcePlayer player_;
   AudioDeviceManager* deviceManager_;
   Broadcaster<const AudioTransportSourcePlayer&> changeBroadcaster_;
-  float lastTime_;
+  double lastTime_;
   double offset_;
 
   DISALLOW_COPY_AND_ASSIGN(AudioTransportSourcePlayer);

@@ -105,7 +105,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
-    ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, static_cast<float>(time)));
+    ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, time));
     setCursorBounds(c.get());
     cursors.insert(c.get());
     addAndMakeVisible(c.transfer());

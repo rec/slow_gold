@@ -46,7 +46,7 @@ const CursorStateColors& getStateColors() {
 
 }  // namespace
 
-Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
+Cursor::Cursor(const CursorProto& d, Waveform* waveform, double time)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d) {
@@ -54,7 +54,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, float time)
   setTime(time);
 }
 
-void Cursor::setTime(float time) {
+void Cursor::setTime(double time) {
   ScopedLock l(lock_);
   time_ = time;
   thread::runOnMessageThread(waveform_, &Waveform::setCursorBounds, this);
@@ -66,14 +66,14 @@ void Cursor::paint(Graphics& g) {
 
   juce::Rectangle<int> bounds = getLocalBounds();
 
-  float middle = bounds.getWidth() / 2.0f;
-  float margin = static_cast<float>(desc_.widget().margin());
-  float bottom = bounds.getHeight() - 2.0f * margin;
+  double middle = bounds.getWidth() / 2.0f;
+  double margin = static_cast<double>(desc_.widget().margin());
+  double bottom = bounds.getHeight() - 2.0f * margin;
 
   gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
 }
 
-float Cursor::getTime() const {
+double Cursor::getTime() const {
   ScopedLock l(lock_);
   return time_;
 }

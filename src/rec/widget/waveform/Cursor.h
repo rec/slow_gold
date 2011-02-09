@@ -13,16 +13,16 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public listener::Listener<float> {
+class Cursor : public Component, public listener::Listener<double> {
  public:
-  Cursor(const CursorProto& d, Waveform* waveform, float time);
+  Cursor(const CursorProto& d, Waveform* waveform, double time);
   virtual ~Cursor() {}
 
-  virtual void operator()(float t) { setTime(t); }
+  virtual void operator()(double t) { setTime(t); }
 
-  void setTime(float time);
+  void setTime(double time);
   void paint(Graphics& g);
-  float getTime() const;
+  double getTime() const;
 
   const CursorProto& desc() const { return desc_; }
 
@@ -30,7 +30,7 @@ class Cursor : public Component, public listener::Listener<float> {
   Waveform* const waveform_;
   CriticalSection lock_;
   const CursorProto desc_;
-  float time_;
+  double time_;
   juce::Rectangle<int> bounds_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Cursor);

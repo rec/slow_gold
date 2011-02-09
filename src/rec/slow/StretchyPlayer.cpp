@@ -57,7 +57,7 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
   broadcast(file);
 }
 
-void StretchyPlayer::operator()(const float& t) {
+void StretchyPlayer::operator()(const double& t) {
   if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100 * t)))
     transportSource_->setPosition(stretchy_->get().stretch().time_scale() * t);
 

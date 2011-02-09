@@ -14,7 +14,7 @@ namespace slow {
 class AudioTransportSourcePlayer;
 
 class TimeController : public gui::Layout,
-                       public Listener<float>,
+                       public Listener<double>,
                        public Listener<const audio::stretch::StretchLoop&>,
                        public Listener<const SelectionRange&>,
                        public Listener<const ClockUpdate&>,
@@ -27,7 +27,7 @@ class TimeController : public gui::Layout,
 
   virtual void operator()(const ClockUpdate& up) { broadcast(up); }
   virtual void operator()(const StretchLoop&);
-  virtual void operator()(float t) { broadcast(ClockUpdate(t, -1)); }
+  virtual void operator()(double t) { broadcast(ClockUpdate(t, -1)); }
 
   virtual void operator()(const SelectionRange&);
 

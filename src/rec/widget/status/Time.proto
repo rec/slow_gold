@@ -36,7 +36,7 @@ message Dial {
   optional uint32 outline = 2;
   optional Direction direction = 3 [default = CLOCKWISE];
   optional bool display_lap_count = 4;
-  optional float zero_point = 7;
+  optional double zero_point = 7;
   optional bool empty_on_zero = 8 [default = true];
 
   optional gui.Color from_color = 9;

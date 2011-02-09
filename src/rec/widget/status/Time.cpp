@@ -24,7 +24,7 @@ TextComponent::TextComponent(const Text& desc)
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
 }
 
-void TextComponent::setTime(float time) {
+void TextComponent::setTime(double time) {
   time_ = time;
   thread::callAsync(this, &TextComponent::redisplay);
 }
@@ -42,9 +42,9 @@ void TextComponent::redisplay() {
 #define snprintf _snprintf
 #endif
 
-const String formatTime(float time, bool flash, bool displayMs) {
+const String formatTime(double time, bool flash, bool displayMs) {
   int sec = static_cast<int>(time);
-  float fraction = time - sec;
+  double fraction = time - sec;
   int ms = static_cast<int>(1000 * fraction);
 
   int minutes = sec / 60;
@@ -64,7 +64,7 @@ const String formatTime(float time, bool flash, bool displayMs) {
   return buffer;
 }
 
-DialComponent::DialComponent(const Dial& desc, float length, float time)
+DialComponent::DialComponent(const Dial& desc, double length, double time)
     : Component(desc.widget().name().c_str()),
       description_(desc),
       length_(length),
@@ -72,17 +72,17 @@ DialComponent::DialComponent(const Dial& desc, float length, float time)
 }
 
 // Half a degree.
-static const float ALMOST_ZERO = 0.5 / 360.0;
+static const double ALMOST_ZERO = 0.5 / 360.0;
 
-static const float PI = 3.1415926536;
+static const double PI = 3.1415926536;
 
 void DialComponent::paint(Graphics& g) {
   ScopedLock l(lock_);
-  float timeRatio = Math<float>::near(length_, 0.0f, 0.001f) ? 0.0f : (time_ / length_);
+  double timeRatio = Math<double>::near(length_, 0.0f, 0.001f) ? 0.0f : (time_ / length_);
   Painter p(description_.widget(), &g);
   juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));
-  float zeroAngle = description_.zero_point() * 2.0 * PI;
-  float timeAngle = zeroAngle + timeRatio * 2.0 * PI;
+  double zeroAngle = description_.zero_point() * 2.0 * PI;
+  double timeAngle = zeroAngle + timeRatio * 2.0 * PI;
   if (p.colors().color_size() > 2) {
     g.setColour(p.colour(Painter::FOREGROUND).
                 interpolatedWith(p.colour(Painter::HIGHLIGHT), timeRatio));
@@ -96,13 +96,13 @@ void DialComponent::paint(Graphics& g) {
   g.fillPath(path);
 }
 
-void DialComponent::setTime(float time) {
+void DialComponent::setTime(double time) {
   ScopedLock l(lock_);
   time_ = time;
   thread::callAsync(this, &DialComponent::repaint);
 }
 
-void DialComponent::setLength(float length) {
+void DialComponent::setLength(double length) {
   ScopedLock l(lock_);
   length_ = length;
   thread::callAsync(this, &DialComponent::repaint);

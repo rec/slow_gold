@@ -40,7 +40,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   (*this)(0.0);
 }
 
-void MainPage::operator()(float time) {
+void MainPage::operator()(double time) {
   controller_.enableLoopPointButton(loops_.isNewLoopPoint(time));
 }
 
