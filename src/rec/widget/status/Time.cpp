@@ -65,7 +65,7 @@ const String formatTime(double time, bool flash, bool displayMs) {
 }
 
 DialComponent::DialComponent(const Dial& desc, double length, double time)
-    : Component(desc.widget().name().c_str()),
+    : gui::CuttableComponent(desc.widget().name().c_str()),
       description_(desc),
       length_(length),
       time_(time) {

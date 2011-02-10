@@ -3,18 +3,20 @@
 
 #include <vector>
 
-#include "rec/base/base.h"
 #include "rec/gui/Geometry.h"
+#include "rec/gui/CuttableComponent.h"
 
 namespace rec {
 namespace gui {
 
-class Layout : public Component {
+class Layout : public CuttableComponent {
  public:
   Layout(const String& name = String::empty,
          Orientation o = HORIZONTAL,
          bool resizeOther = true)
-      : Component(name), orientation_(o), resizeOtherDimension_(resizeOther) {
+      : CuttableComponent(name), 
+	    orientation_(o), 
+	    resizeOtherDimension_(resizeOther) {
   }
 
   void setOrientation(Orientation o) { orientation_ = o; }

@@ -50,7 +50,6 @@ void AudioTransportSourcePlayer::setOffset(double offset) {
 void AudioTransportSourcePlayer::setStart(bool isStart) {
   if (isStart) {
     double pos = getCurrentPosition();
-    // DLOG(INFO) << "POS! " << pos;
     if (pos < offset_ || pos >= offset_ + getLengthInSeconds())
       setPosition(offset_);
     startThread();

@@ -47,7 +47,7 @@ const CursorStateColors& getStateColors() {
 }  // namespace
 
 Cursor::Cursor(const CursorProto& d, Waveform* waveform, double time)
-    : Component("Cursor"),
+    : CuttableComponent("Cursor"),
       waveform_(waveform),
       desc_(d) {
   waveform_->addChildComponent(this);

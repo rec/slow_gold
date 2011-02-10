@@ -3,6 +3,7 @@
 
 #include <set>
 
+#include "rec/gui/CuttableComponent.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/widget/Painter.h"
@@ -13,7 +14,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public listener::Listener<double> {
+class Cursor : public CuttableComponent, public listener::Listener<double> {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, double time);
   virtual ~Cursor() {}

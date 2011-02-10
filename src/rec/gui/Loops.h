@@ -24,6 +24,7 @@ class Loops : public TableController {
   bool isNewLoopPoint(double t) const;
   void addLoopPoint(double time);
   virtual void selectedRowsChanged(int lastRowSelected);
+  virtual bool keyPressed(const juce::KeyPress& kp);
 
  private:
   double length_;

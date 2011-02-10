@@ -1,6 +1,7 @@
 #ifndef __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 #define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 
+#include "rec/gui/CuttableComponent.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/AudioSetupPage.h"

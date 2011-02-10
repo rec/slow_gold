@@ -134,5 +134,10 @@ void Loops::addLoopPoint(double time) {
   }
 }
 
+bool Loops::keyPressed(const juce::KeyPress& kp) {
+  DLOG(INFO) <<  "! " << int(kp.getTextCharacter());
+  return true;
+}
+
 }  // namespace gui
 }  // namespace rec

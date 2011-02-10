@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 
+#include "rec/gui/CuttableComponent.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/gui/SimpleLabel.h"
@@ -33,7 +34,7 @@ class TextComponent : public gui::SimpleLabel,
 };
 
 // TODO: must get updates for length!
-class DialComponent : public Component,
+class DialComponent : public gui::CuttableComponent,
                       public Listener<const ClockUpdate&> {
  public:
   explicit DialComponent(const Dial& desc, double length = 0.0f, double time = 0.0f);
@@ -42,7 +43,7 @@ class DialComponent : public Component,
 
   virtual void operator()(const ClockUpdate& c) { c.update(this); }
   virtual void paint(juce::Graphics& g);
-  virtual void repaint() { Component::repaint(); }
+  virtual void repaint() { gui::CuttableComponent::repaint(); }
 
  private:
   CriticalSection lock_;

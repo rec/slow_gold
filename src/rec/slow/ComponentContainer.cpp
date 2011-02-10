@@ -9,7 +9,78 @@
 namespace rec {
 namespace slow {
 
-ComponentContainer::ComponentContainer(MainPageComponent* c) : mainComponent_(c) {
+namespace {
+
+typedef void (ComponentContainer::*ComponentCommand)();
+
+ComponentCommand commands[ComponentContainer::LAST_MENU_ITEM] = {
+  NULL,
+  &ComponentContainer::open,
+  &ComponentContainer::close,
+  &ComponentContainer::cut,
+  &ComponentContainer::copy,
+  &ComponentContainer::paste,
+  &ComponentContainer::quit,
+  &ComponentContainer::eject,
+  &ComponentContainer::clearTree,
+  &ComponentContainer::clearTime,
+  &ComponentContainer::clearFile,
+  &ComponentContainer::audioPreferences,
+};
+
+}
+
+void ComponentContainer::open() {
+   mainComponent_->mainPage()->doOpen();
+}
+
+void ComponentContainer::close() {
+  mainComponent_->mainPage()->doClose();
+}
+
+void ComponentContainer::cut() {
+}
+
+void ComponentContainer::copy() {
+}
+
+void ComponentContainer::paste() {
+}
+
+void ComponentContainer::quit() {
+  JUCEApplication::getInstance()->systemRequestedQuit();
+}
+
+void ComponentContainer::eject() {
+  StringArray burners = AudioCDBurner::findAvailableDevices();
+  for (int i = 0; i < burners.size(); ++i) {
+    ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
+    DLOG(INFO) << "Burner " << burners[i].toCString();
+  }
+}
+
+void ComponentContainer::clearTree() {
+  persist::data<file::VirtualFileList>()->clear();
+}
+
+void ComponentContainer::clearTime() {
+  mainComponent_->mainPage()->clearTime();
+}
+
+void ComponentContainer::clearFile() {
+  persist::data<file::VirtualFile>()->clear();
+}
+
+void ComponentContainer::audioPreferences() {
+  juce::DialogWindow::showModalDialog("Set Audio Preferences",
+                                      mainComponent_->audioSetupPage(),
+                                      mainComponent_.get(),
+                                      Colours::white, true);
+}
+
+ComponentContainer::ComponentContainer(MainPageComponent* c) :
+    Component("ComponentContainer"),
+    mainComponent_(c) {
   addAndMakeVisible(c);
 }
 
@@ -42,6 +113,7 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
 
   } else if (menuName == "Edit") {
     menu.addItem(CUT, "Cut");
+    menu.addItem(COPY, "Copy");
     menu.addItem(PASTE, "Paste");
     menu.addItem(CLEAR_FILE, "Clear file");
     menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
@@ -52,54 +124,17 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
   return menu;
 }
 
-void ComponentContainer::quit() {
-  JUCEApplication::getInstance()->systemRequestedQuit();
-}
-
-void ComponentContainer::eject() {
-  StringArray burners = AudioCDBurner::findAvailableDevices();
-  for (int i = 0; i < burners.size(); ++i) {
-    ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
-    DLOG(INFO) << "Burner " << burners[i].toCString();
-  }
-}
-
 void ComponentContainer::menuItemSelected(int menuItemID, int topLevelMenuIndex) {
   thread::runInNewThread("doMenuSelected", 5,
                          this, &ComponentContainer::doMenuItemSelected,
                          menuItemID, topLevelMenuIndex);
 }
 
-void ComponentContainer::clearTree() {
-  persist::data<file::VirtualFileList>()->clear();
-}
-
-void ComponentContainer::clearFile() {
-  persist::data<file::VirtualFile>()->clear();
-}
-
-void ComponentContainer::audioPreferences() {
-  juce::DialogWindow::showModalDialog("Set Audio Preferences",
-                                      mainComponent_->audioSetupPage(),
-                                      mainComponent_.get(),
-                                      Colours::white, true);
-}
-
 void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
-  MainPage* mainPage = mainComponent_->mainPage();
-  switch (itemID) {
-    case OPEN:   mainPage->doOpen(); break;
-    case CLOSE:  mainPage->doClose(); break;
-    case CUT:    mainComponent_->cut(); break;
-    case PASTE:  mainComponent_->paste(); break;
-    case EJECT:  eject(); break;
-    case QUIT:   quit(); break;
-    case CLEAR_TREE: clearTree(); break;
-    case CLEAR_TIME: mainPage->clearTime(); break;
-    case CLEAR_FILE: clearFile(); break;
-    case AUDIO_PREFERENCES: thread::callAsync(this, &ComponentContainer::audioPreferences); break;
-    default:     mainComponent_->loadRecentFile(itemID - RECENT_FILES); break;
-  }
+  if (itemID < RECENT_FILES)
+    (this->*(commands[itemID]))();
+  else
+    mainComponent_->loadRecentFile(itemID - RECENT_FILES);
 }
 
 ApplicationCommandTarget* ComponentContainer::getNextCommandTarget() {
