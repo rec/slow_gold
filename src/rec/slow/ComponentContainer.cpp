@@ -29,6 +29,7 @@ ComponentCommand commands[ComponentContainer::LAST_MENU_ITEM] = {
   &ComponentContainer::clearTime,
   &ComponentContainer::clearFile,
   &ComponentContainer::audioPreferences,
+  &ComponentContainer::clearSelection,
 };
 
 }
@@ -84,6 +85,10 @@ void ComponentContainer::audioPreferences() {
                                       Colours::white, true);
 }
 
+void ComponentContainer::clearSelection() {
+  mainComponent_->mainPage()->clearSelection();
+}
+
 ComponentContainer::ComponentContainer(MainPageComponent* c) :
     Component("ComponentContainer"),
     mainComponent_(c) {
@@ -122,6 +127,7 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
     menu.addItem(COPY, "Copy", canCutOrCopy());
     menu.addItem(PASTE, "Paste", canPaste());
     menu.addItem(CLEAR_FILE, "Clear file");
+    menu.addItem(CLEAR_SELECTION, "Clear selection");
     menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
     menu.addItem(CLEAR_TREE, "Clear directory window");
     menu.addItem(AUDIO_PREFERENCES, "Set audio preferences...");

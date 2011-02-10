@@ -148,5 +148,9 @@ void MainPage::clearTime() {
     player_.getStretchy()->clear();
 }
 
+void MainPage::clearSelection() {
+  loops_.clearSelection();
+}
+
 }  // namespace slow
 }  // namespace rec

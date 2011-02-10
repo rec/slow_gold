@@ -202,5 +202,12 @@ bool Loops::keyPressed(const juce::KeyPress& kp) {
   return true;
 }
 
+void Loops::clearSelection() {
+  for (int i = 0; i < loopPoints_.selected_size(); ++i)
+    loopPoints_.set_selected(i, false);
+
+  getData()->set(Address(), loopPoints_);
+}
+
 }  // namespace gui
 }  // namespace rec

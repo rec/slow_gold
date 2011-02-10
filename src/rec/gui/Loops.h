@@ -31,6 +31,7 @@ class Loops : public TableController, public Cuttable {
   bool isNewLoopPoint(double t) const;
   void addLoopPoint(double time);
   TimeRange selectionRange() const;
+  void clearSelection();
 
   virtual void selectedRowsChanged(int lastRowSelected);
   virtual bool keyPressed(const juce::KeyPress& kp);

@@ -22,7 +22,8 @@ class ComponentContainer : public Component,
   virtual const StringArray getMenuBarNames();
 
   enum MenuItems { OPEN = 1, CLOSE, CUT, COPY, PASTE, QUIT, EJECT, CLEAR_TREE,
-                   CLEAR_TIME, CLEAR_FILE, AUDIO_PREFERENCES, RECENT_FILES,
+                   CLEAR_TIME, CLEAR_FILE, AUDIO_PREFERENCES, CLEAR_SELECTION,
+                   RECENT_FILES,                   // Must be last
                    LAST_MENU_ITEM };
 
   virtual const PopupMenu getMenuForIndex(int index, const String& name);
@@ -38,6 +39,7 @@ class ComponentContainer : public Component,
   void clearTime();
   void clearFile();
   void audioPreferences();
+  void clearSelection();
 
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex);
   void doMenuItemSelected(int menuItemID, int topLevelMenuIndex);
