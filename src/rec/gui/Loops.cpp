@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "rec/gui/Loops.h"
+#include "rec/data/yaml/Yaml.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Range.h"
 #include "rec/util/thread/CallAsync.h"
@@ -117,6 +118,28 @@ struct CompareLoopPoints {
   }
 };
 
+LoopPointList getSelected(const LoopPointList& loops, bool selected) {
+  LoopPointList result;
+
+  for (int i = 0; i < loops.selected_size(); ++i) {
+    if (loops.selected(i) == selected) {
+      result.add_selected(selected);
+      result.add_loop_point()->CopyFrom(loops.loop_point(i));
+    }
+  }
+  return result;
+}
+
+}
+
+string Loops::copy() const {
+  ScopedLock l(lock_);
+  return yaml::write(getSelected(loopPoints_, true));
+}
+
+void Loops::cut() {
+  ScopedLock l(lock_);
+  getData()->set(Address(), getSelected(loopPoints_, false));
 }
 
 void Loops::addLoopPoint(double time) {
@@ -144,7 +167,9 @@ void Loops::addLoopPoint(double time) {
 }
 
 bool Loops::keyPressed(const juce::KeyPress& kp) {
-  DLOG(INFO) <<  "! " << int(kp.getTextCharacter());
+  if (kp.getTextCharacter() == 127)
+    cut();
+
   return true;
 }
 
