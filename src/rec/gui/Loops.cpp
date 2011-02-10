@@ -139,17 +139,46 @@ string Loops::copy() const {
 
 void Loops::cut() {
   ScopedLock l(lock_);
-  getData()->set(Address(), getSelected(loopPoints_, false));
+  loopPoints_ = getSelected(loopPoints_, false);
+  getData()->set(Address(), loopPoints_);
+}
+
+TimeRange Loops::selectionRange() const {
+  int b = 0, size = loopPoints_.selected_size(), e;
+  for (; b < size && !loopPoints_.selected(b); ++b);
+  for (e = b; e < size && loopPoints_.selected(e); ++e);
+  return TimeRange((b < size) ? loopPoints_.loop_point(b).time() : length_,
+                   (e < size) ? loopPoints_.loop_point(e).time() : length_);
+}
+
+
+bool Loops::paste(const string& s) {
+  LoopPointList loops;
+  if (!yaml::read(s, &loops))
+    return false;
+
+  TimeRange selection = selectionRange();
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
+    loopPoints_.add_loop_point()->CopyFrom(loops.loop_point(i));
+    loopPoints_.add_selected(false);
+  }
+
+  std::sort(loopPoints_.mutable_loop_point()->begin(),
+            loopPoints_.mutable_loop_point()->end(),
+            CompareLoopPoints());
+
+  for (int i = 0; i < loopPoints_.selected_size(); ++i) {
+    double time = loopPoints_.loop_point(i).time();
+    loopPoints_.set_selected(i, time >= selection.begin_ && time < selection.end_);
+  }
+
+  return true;
 }
 
 void Loops::addLoopPoint(double time) {
   ScopedLock l(lock_);
   if (getData() && isNewLoopPoint(time)) {
-    int begin = 0, size = loopPoints_.selected_size(), end;
-    for (; begin < size && !loopPoints_.selected(begin); ++begin);
-    for (end = begin; end < size && loopPoints_.selected(end); ++end);
-    TimeRange selection((begin < size) ? loopPoints_.loop_point(begin).time() : length_,
-						(end < size) ? loopPoints_.loop_point(end).time() : length_);
+    TimeRange selection = selectionRange();
 
     loopPoints_.add_loop_point()->set_time(time);
     std::sort(loopPoints_.mutable_loop_point()->begin(),
