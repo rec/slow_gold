@@ -1,7 +1,7 @@
 #ifndef __REC_COMPONENT_CONTAINER
 #define __REC_COMPONENT_CONTAINER
 
-#include "rec/gui/CuttableComponent.h"
+#include "rec/base/base.h"
 
 using namespace juce;
 

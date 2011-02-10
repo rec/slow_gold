@@ -45,11 +45,12 @@ enum TableColumn_Properties {
   TableColumn_Properties_SORTABLE = 16,
   TableColumn_Properties_SORTED_FORWARDS = 32,
   TableColumn_Properties_SORTED_BACKWARDS = 64,
-  TableColumn_Properties_DEFAULT = 31
+  TableColumn_Properties_EDITABLE = 128,
+  TableColumn_Properties_DEFAULT = 159
 };
 bool TableColumn_Properties_IsValid(int value);
 const TableColumn_Properties TableColumn_Properties_Properties_MIN = TableColumn_Properties_VISIBLE;
-const TableColumn_Properties TableColumn_Properties_Properties_MAX = TableColumn_Properties_SORTED_BACKWARDS;
+const TableColumn_Properties TableColumn_Properties_Properties_MAX = TableColumn_Properties_DEFAULT;
 const int TableColumn_Properties_Properties_ARRAYSIZE = TableColumn_Properties_Properties_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* TableColumn_Properties_descriptor();
@@ -145,6 +146,7 @@ class TableColumn : public ::google::protobuf::Message {
   static const Properties SORTABLE = TableColumn_Properties_SORTABLE;
   static const Properties SORTED_FORWARDS = TableColumn_Properties_SORTED_FORWARDS;
   static const Properties SORTED_BACKWARDS = TableColumn_Properties_SORTED_BACKWARDS;
+  static const Properties EDITABLE = TableColumn_Properties_EDITABLE;
   static const Properties DEFAULT = TableColumn_Properties_DEFAULT;
   static inline bool Properties_IsValid(int value) {
     return TableColumn_Properties_IsValid(value);
@@ -476,7 +478,7 @@ inline bool TableColumn::has_property_flags() const {
   return _has_bit(4);
 }
 inline void TableColumn::clear_property_flags() {
-  property_flags_ = 31;
+  property_flags_ = 159;
   _clear_bit(4);
 }
 inline ::rec::gui::TableColumn_Properties TableColumn::property_flags() const {

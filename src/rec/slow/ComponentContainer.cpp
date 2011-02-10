@@ -1,10 +1,14 @@
 #include "rec/slow/ComponentContainer.h"
 
 #include "rec/gui/RecentFiles.h"
+#include "rec/gui/CuttableComponent.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/slow/MainPageComponent.h"
 #include "rec/slow/AudioSetupPage.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/gui/CutAndPaste.h"
+
+using namespace rec::gui;
 
 namespace rec {
 namespace slow {
@@ -39,12 +43,15 @@ void ComponentContainer::close() {
 }
 
 void ComponentContainer::cut() {
+  cutToClipboard();
 }
 
 void ComponentContainer::copy() {
+  copyToClipboard();
 }
 
 void ComponentContainer::paste() {
+  pasteFromClipboard();
 }
 
 void ComponentContainer::quit() {

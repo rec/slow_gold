@@ -15,12 +15,6 @@ class CuttableComponent : public Component {
   virtual string cut() { return ""; }
   virtual bool paste(const string&) const { return false; }
 
-  static CuttableComponent* make(Component* comp);
-
-  static bool cutToClipboard(Component* comp);
-  static bool copyToClipboard(Component* comp);
-  static bool pasteToClipboard(Component* comp);
-
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CuttableComponent);
 };

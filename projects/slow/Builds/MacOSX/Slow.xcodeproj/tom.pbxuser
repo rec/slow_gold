@@ -339,8 +339,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 319000755;
-			PBXWorkspaceStateSaveDate = 319000755;
+			PBXPerProjectTemplateStateSaveDate = 319004014;
+			PBXWorkspaceStateSaveDate = 319004014;
 		};
 		perUserProjectItems = {
 			E23E466912EFA3FF0080BD76 = E23E466912EFA3FF0080BD76 /* PBXTextBookmark */;
@@ -406,6 +406,9 @@
 			E29BBC4D1303882B0091D4CB = E29BBC4D1303882B0091D4CB /* PBXTextBookmark */;
 			E29BBC52130388670091D4CB = E29BBC52130388670091D4CB /* PBXTextBookmark */;
 			E29BBC55130388CD0091D4CB = E29BBC55130388CD0091D4CB /* PBXTextBookmark */;
+			E29BBCA213039CF90091D4CB = E29BBCA213039CF90091D4CB /* PBXTextBookmark */;
+			E29BBCA313039CF90091D4CB = E29BBCA313039CF90091D4CB /* PBXTextBookmark */;
+			E29BBCAF13039D580091D4CB = E29BBCAF13039D580091D4CB /* PBXTextBookmark */;
 			E2E28AE912E6457B004DE2DE = E2E28AE912E6457B004DE2DE /* PBXTextBookmark */;
 			E2E28B4D12E6886C004DE2DE = E2E28B4D12E6886C004DE2DE /* PBXTextBookmark */;
 			E2EDAC0612FF6AF300CFF0DC = E2EDAC0612FF6AF300CFF0DC /* PBXTextBookmark */;
@@ -492,10 +495,17 @@
 	};
 	C17D3427475E49968F84E838 /* ComponentContainer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 2015}}";
-			sepNavSelRange = "{4027, 0}";
-			sepNavVisRange = "{0, 1126}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 2171}}";
+			sepNavSelRange = "{4191, 0}";
+			sepNavVisRange = "{0, 1132}";
 			sepNavWindowFrame = "{{153, 339}, {750, 558}}";
+		};
+	};
+	C24187D27D942187F6F0613C /* ReadYaml.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 1742}}";
+			sepNavSelRange = "{4171, 0}";
+			sepNavVisRange = "{3672, 829}";
 		};
 	};
 	C652C007E4FFF0063CB89934 /* MainPageLayout.cpp */ = {
@@ -710,7 +720,7 @@
 		ignoreCount = 0;
 		lineNumber = 114;
 		location = SlowBurn;
-		modificationTime = 318999855.036123;
+		modificationTime = 319003787.5118951;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1151,7 +1161,7 @@
 		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
 		name = "ComponentContainer.cpp: 18";
 		rLen = 0;
-		rLoc = 410;
+		rLoc = 409;
 		rType = 0;
 		vrLen = 1189;
 		vrLoc = 0;
@@ -1161,7 +1171,7 @@
 		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
 		name = "ComponentContainer.cpp: 34";
 		rLen = 27;
-		rLoc = 803;
+		rLoc = 802;
 		rType = 0;
 		vrLen = 716;
 		vrLoc = 410;
@@ -1236,7 +1246,7 @@
 		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
 		name = "ComponentContainer.cpp: 33";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 764;
 		rType = 0;
 		vrLen = 775;
 		vrLoc = 410;
@@ -1246,7 +1256,7 @@
 		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
 		name = "ComponentContainer.cpp: 34";
 		rLen = 0;
-		rLoc = 842;
+		rLoc = 841;
 		rType = 0;
 		vrLen = 724;
 		vrLoc = 439;
@@ -1256,7 +1266,7 @@
 		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
 		name = "ComponentContainer.cpp: 18";
 		rLen = 0;
-		rLoc = 410;
+		rLoc = 409;
 		rType = 0;
 		vrLen = 1132;
 		vrLoc = 0;
@@ -1266,7 +1276,7 @@
 		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
 		name = "ComponentContainer.cpp: 18";
 		rLen = 0;
-		rLoc = 410;
+		rLoc = 409;
 		rType = 0;
 		vrLen = 1132;
 		vrLoc = 0;
@@ -1276,9 +1286,35 @@
 		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
 		name = "ComponentContainer.cpp: 146";
 		rLen = 0;
-		rLoc = 4027;
+		rLoc = 4026;
 		rType = 0;
 		vrLen = 1126;
+		vrLoc = 0;
+	};
+	E29BBCA213039CF90091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'SystemClipboard' has not been declared";
+		rLen = 1;
+		rLoc = 15;
+		rType = 1;
+	};
+	E29BBCA313039CF90091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "CuttableComponent.cpp: 56";
+		rLen = 0;
+		rLoc = 1139;
+		rType = 0;
+		vrLen = 1080;
+		vrLoc = 0;
+	};
+	E29BBCAF13039D580091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C17D3427475E49968F84E838 /* ComponentContainer.cpp */;
+		name = "ComponentContainer.cpp: 153";
+		rLen = 0;
+		rLoc = 4191;
+		rType = 0;
+		vrLen = 1132;
 		vrLoc = 0;
 	};
 	E2E28AE912E6457B004DE2DE /* PBXTextBookmark */ = {
