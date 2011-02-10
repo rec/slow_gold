@@ -95,6 +95,7 @@ void TableController::setData(UntypedData* data) {
     UntypedDataListener::setData(data);
     numRows_ = 0;
   }
+
   if (Message* msg = message_.get()) {
     if (data)
       data->copyTo(msg);
@@ -103,5 +104,6 @@ void TableController::setData(UntypedData* data) {
   }
   onDataChange();
 }
+
 }  // namespace gui
 }  // namespace rec

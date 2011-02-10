@@ -6,29 +6,29 @@ using juce::SystemClipboard;
 namespace rec {
 namespace gui {
 
-static CuttableComponent* make() {
+static Cuttable* make() {
   Component* comp = Component::getCurrentlyFocusedComponent();
 
   return comp && comp->getName().startsWith("cut-") ?
-    dynamic_cast<CuttableComponent*>(comp): NULL;
+    dynamic_cast<Cuttable*>(comp): NULL;
 }
 
 bool canCutOrCopy() {
-  if (CuttableComponent* cc = make())
+  if (Cuttable* cc = make())
     return cc->canCopy();
   else
     return false;
 }
 
 bool canPaste() {
-  if (CuttableComponent* cc = make())
+  if (Cuttable* cc = make())
     return cc->canCopy();
   else
     return false;
 }
 
 bool cutToClipboard() {
-  if (CuttableComponent* cc = make()) {
+  if (Cuttable* cc = make()) {
     if (cc->canCopy()) {
       SystemClipboard::copyTextToClipboard(cc->cut().c_str());
       return true;
@@ -40,7 +40,7 @@ bool cutToClipboard() {
 }
 
 bool copyToClipboard() {
-  if (CuttableComponent* cc = make()) {
+  if (Cuttable* cc = make()) {
     if (cc->canCopy()) {
       SystemClipboard::copyTextToClipboard(cc->copy().c_str());
       return true;
@@ -52,7 +52,7 @@ bool copyToClipboard() {
 }
 
 bool pasteFromClipboard() {
-  if (CuttableComponent* cc = make()) {
+  if (Cuttable* cc = make()) {
     cc->paste(SystemClipboard::getTextFromClipboard().toCString());
     return true;
   }
@@ -62,7 +62,7 @@ bool pasteFromClipboard() {
 }
 
 bool deleteKeepingClipboard() {
-  if (CuttableComponent* cc = make()) {
+  if (Cuttable* cc = make()) {
     if (cc->canCopy()) {
       cc->cut();
       return true;

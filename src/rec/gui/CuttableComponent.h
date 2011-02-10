@@ -6,18 +6,15 @@
 namespace rec {
 namespace gui {
 
-class CuttableComponent : public Component {
+class Cuttable  {
  public:
-  CuttableComponent(const String& name = String::empty) : Component("cut-" + name) {}
-
+  Cuttable() {}
+  virtual ~Cuttable() {}
   virtual bool canCopy() const { return false; }
   virtual bool canPaste() const { return false; }
   virtual string copy() const { return ""; }
   virtual string cut() { return ""; }
   virtual bool paste(const string&) const { return false; }
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(CuttableComponent);
 };
 
 }  // namespace gui

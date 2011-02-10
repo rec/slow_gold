@@ -1,7 +1,6 @@
 #include "rec/slow/ComponentContainer.h"
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/gui/CuttableComponent.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/slow/MainPageComponent.h"
 #include "rec/slow/AudioSetupPage.h"

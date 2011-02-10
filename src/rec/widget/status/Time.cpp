@@ -41,7 +41,7 @@ void TextComponent::redisplay() {
 
 
 DialComponent::DialComponent(const Dial& desc, double length, double time)
-    : gui::CuttableComponent(desc.widget().name().c_str()),
+    : Component(desc.widget().name().c_str()),
       description_(desc),
       length_(length),
       time_(time) {

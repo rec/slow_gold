@@ -3,7 +3,6 @@
 
 #include <set>
 
-#include "rec/gui/CuttableComponent.h"
 #include "rec/gui/LoopPoint.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
@@ -30,7 +29,7 @@ struct TimeAndMouseEvent {
 class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
                  public Listener<const juce::AudioThumbnail&>,
                  public DataListener<gui::LoopPointList>,
-                 public CuttableComponent {
+                 public Component {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
