@@ -1,10 +1,10 @@
-#ifndef __REC_GUI_CUTTABLECOMPONENT__
-#define __REC_GUI_CUTTABLECOMPONENT__
+#ifndef __REC_UTIL_CUTTABLECOMPONENT__
+#define __REC_UTIL_CUTTABLECOMPONENT__
 
 #include "rec/base/base.h"
 
 namespace rec {
-namespace gui {
+namespace util {
 
 class Cuttable  {
  public:
@@ -17,7 +17,7 @@ class Cuttable  {
   virtual bool paste(const string&) const { return false; }
 };
 
-}  // namespace gui
+}  // namespace util
 }  // namespace rec
 
-#endif  // __REC_GUI_CUTTABLECOMPONENT__
+#endif  // __REC_UTIL_CUTTABLECOMPONENT__

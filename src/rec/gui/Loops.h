@@ -4,11 +4,12 @@
 #include "rec/gui/LoopPoint.pb.h"
 #include "rec/gui/TableController.h"
 #include "rec/util/Math.h"
+#include "rec/util/Cuttable.h"
 
 namespace rec {
 namespace gui {
 
-class Loops : public TableController {
+class Loops : public TableController, public Cuttable {
  public:
   explicit Loops(const TableColumnList* desc = NULL);
   virtual ~Loops();

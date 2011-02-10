@@ -160,7 +160,9 @@ void Waveform::setCursorBounds(Cursor *cursor) const {
   int x = 0;
 
   if (!Math<double>::near(range.begin_, range.end_, 0.001))
-    x = static_cast<int>(width * (cursor->getTime() - range.begin_) / (range.end_ - range.begin_));
+    x = static_cast<int>(width * (cursor->getTime() - range.begin_) /
+                         (range.end_ - range.begin_));
+
   bounds.setWidth(displayWidth);
   bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);
 

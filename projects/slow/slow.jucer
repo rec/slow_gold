@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="D5SWQMPhA" name="Slow">
+  <MAINGROUP id="P2KmzUFE7" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -478,8 +478,6 @@
               name="CutAndPaste.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/CutAndPaste.h" id="zUykcmFXN"
               name="CutAndPaste.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/CuttableComponent.h" id="1JVJvUvmI"
-              name="CuttableComponent.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/DropTarget.h" id="Hi5Hqwwgd"
               name="DropTarget.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="oCD1iZDz7" name="Font.h"
@@ -678,6 +676,8 @@
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="Xx1K96mJm"
               name="Compare.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="VwgCDr4Ep"
+              name="Cuttable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="r1laIsTFq"
               name="Defaulter.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Defaulter.h" id="KPc16cdSD"
@@ -980,7 +980,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="dSqtSkFEc" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="LBkrD6jLa" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

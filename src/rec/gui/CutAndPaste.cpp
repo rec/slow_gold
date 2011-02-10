@@ -1,5 +1,5 @@
 #include "rec/gui/CutAndPaste.h"
-#include "rec/gui/CuttableComponent.h"
+#include "rec/util/Cuttable.h"
 
 using juce::SystemClipboard;
 
