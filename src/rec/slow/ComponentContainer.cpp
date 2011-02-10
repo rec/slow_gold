@@ -119,9 +119,9 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
     menu.addItem(QUIT, "Quit");
 
   } else if (menuName == "Edit") {
-    menu.addItem(CUT, "Cut");
-    menu.addItem(COPY, "Copy");
-    menu.addItem(PASTE, "Paste");
+    menu.addItem(CUT, "Cut", canCutOrCopy());
+    menu.addItem(COPY, "Copy", canCutOrCopy());
+    menu.addItem(PASTE, "Paste", canPaste());
     menu.addItem(CLEAR_FILE, "Clear file");
     menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
     menu.addItem(CLEAR_TREE, "Clear directory window");

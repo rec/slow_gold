@@ -11,6 +11,7 @@ class CuttableComponent : public Component {
   CuttableComponent(const String& name = String::empty) : Component("cut-" + name) {}
 
   virtual bool canCopy() const { return false; }
+  virtual bool canPaste() const { return false; }
   virtual string copy() const { return ""; }
   virtual string cut() { return ""; }
   virtual bool paste(const string&) const { return false; }

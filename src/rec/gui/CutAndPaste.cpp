@@ -13,6 +13,20 @@ static CuttableComponent* make() {
     dynamic_cast<CuttableComponent*>(comp): NULL;
 }
 
+bool canCutOrCopy() {
+  if (CuttableComponent* cc = make())
+    return cc->canCopy();
+  else
+    return false;
+}
+
+bool canPaste() {
+  if (CuttableComponent* cc = make())
+    return cc->canCopy();
+  else
+    return false;
+}
+
 bool cutToClipboard() {
   if (CuttableComponent* cc = make()) {
     if (cc->canCopy()) {
@@ -42,15 +56,23 @@ bool pasteFromClipboard() {
     cc->paste(SystemClipboard::getTextFromClipboard().toCString());
     return true;
   }
+
   juce::PlatformUtilities::beep();
   return false;
 }
 
-bool canCutOrCopy() {
-  if (CuttableComponent* cc = make())
-    return cc->canCopy();
+bool deleteKeepingClipboard() {
+  if (CuttableComponent* cc = make()) {
+    if (cc->canCopy()) {
+      cc->cut();
+      return true;
+    }
+  }
+
+  juce::PlatformUtilities::beep();
   return false;
 }
+
 
 }  // namespace gui
 }  // namespace rec

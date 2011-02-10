@@ -10,6 +10,8 @@ bool cutToClipboard();
 bool copyToClipboard();
 bool pasteFromClipboard();
 bool canCutOrCopy();
+bool canPaste();
+bool deleteKeepingClipboard();
 
 }  // namespace gui
 }  // namespace rec
