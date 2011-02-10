@@ -1,6 +1,7 @@
 #include <math.h>
 
 #include "rec/widget/status/Time.h"
+#include "rec/util/FormatTime.h"
 #include "rec/util/Math.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Geometry.h"
@@ -38,31 +39,6 @@ void TextComponent::redisplay() {
   setText(formatTime(time_, description_.separator().flash()), false);
 }
 
-#ifdef _WIN32
-#define snprintf _snprintf
-#endif
-
-const String formatTime(double time, bool flash, bool displayMs) {
-  int sec = static_cast<int>(time);
-  double fraction = time - sec;
-  int ms = static_cast<int>(1000 * fraction);
-
-  int minutes = sec / 60;
-  int hours = minutes / 60;
-  sec %= 60;
-
-  char buffer[64];
-  char ch = ':';
-  if (flash && (sec & 1))
-    ch = ' ';
-
-  if (displayMs)
-    snprintf(buffer, 64, "%02d:%02d%c%02d.%03d", hours, minutes, ch, sec, ms);
-  else
-    snprintf(buffer, 64, "%02d:%02d%c%02d", hours, minutes, ch, sec);
-
-  return buffer;
-}
 
 DialComponent::DialComponent(const Dial& desc, double length, double time)
     : gui::CuttableComponent(desc.widget().name().c_str()),

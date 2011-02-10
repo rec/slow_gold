@@ -1,8 +1,8 @@
 #include "rec/gui/TableController.h"
-#include "rec/widget/status/Time.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/data/proto/Setter.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/FormatTime.h"
 
 namespace rec {
 namespace gui {
@@ -59,7 +59,7 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
   switch (col.type()) {
    case TableColumn::STRING: return toString(value);
    case TableColumn::UINT32: return String(static_cast<uint32>(value));
-   case TableColumn::TIME: return widget::status::time::formatTime(value, false, false);
+   case TableColumn::TIME: return formatTime(value, false, true, false);
    case TableColumn::DOUBLE: return String(static_cast<double>(value));
 
    default: return "<unknown>";

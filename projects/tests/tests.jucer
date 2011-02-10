@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="IKXXyyhcP" name="tests">
+  <MAINGROUP id="m5wvKStZK" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -495,6 +495,8 @@
               name="Color.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Color.h" id="8c5n7LS8Q" name="Color.h"
               resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/CuttableComponent.h" id="2MGfIBqMD"
+              name="CuttableComponent.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/DropTarget.h" id="WvrqWset5"
               name="DropTarget.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="IJmPtaJbj" name="Font.h"
@@ -731,6 +733,10 @@
           <FILE compile="0" file="../../src/rec/util/file/VirtualFile.h" id="T3ZpDt5uU"
                 name="VirtualFile.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/util/FormatTime.cpp" id="2FfrfyS3c"
+              name="FormatTime.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/FormatTime.h" id="vLQ0cyews"
+              name="FormatTime.h" resource="0"/>
         <GROUP id="sU4e5LjIk" name="listener">
           <FILE compile="0" file="../../src/rec/util/listener/ChangeBroadcaster.h"
                 id="cWImQuoWA" name="ChangeBroadcaster.h" resource="0"/>
@@ -1015,7 +1021,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="NxbPixXdb" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="uxQPjAL9N" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

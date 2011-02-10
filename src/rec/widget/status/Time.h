@@ -14,8 +14,6 @@ namespace widget {
 namespace status {
 namespace time {
 
-const String formatTime(double time, bool flash = false, bool displayMs = true);
-
 class TextComponent : public gui::SimpleLabel,
                       public Listener<const ClockUpdate&> {
  public:
