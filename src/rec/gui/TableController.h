@@ -14,7 +14,8 @@ class TableController : public TableListBoxModel,
                         public TableListBox,
                         public UntypedAddressListener {
  public:
-  TableController(const TableColumnList& columns, const Address& address);
+  TableController(const TableColumnList& columns, const Address& address,
+                  const char* name = "TableController");
 
   virtual void fillHeader(TableHeaderComponent* headers);
   virtual int getNumRows();

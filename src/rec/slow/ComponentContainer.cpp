@@ -5,7 +5,7 @@
 #include "rec/slow/MainPageComponent.h"
 #include "rec/slow/AudioSetupPage.h"
 #include "rec/util/thread/MakeThread.h"
-#include "rec/gui/CutAndPaste.h"
+#include "rec/util/Cuttable.h"
 
 using namespace rec::gui;
 

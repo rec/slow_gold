@@ -13,9 +13,16 @@ class Cuttable  {
   virtual bool canCopy() const { return false; }
   virtual bool canPaste() const { return false; }
   virtual string copy() const { return ""; }
-  virtual string cut() { return ""; }
+  virtual void cut() {}
   virtual bool paste(const string&) const { return false; }
 };
+
+bool cutToClipboard();
+bool copyToClipboard();
+bool pasteFromClipboard();
+bool canCutOrCopy();
+bool canPaste();
+bool remove();
 
 }  // namespace util
 }  // namespace rec

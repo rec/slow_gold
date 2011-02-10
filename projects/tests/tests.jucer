@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="G04saAe09" name="tests">
+  <MAINGROUP id="UNLVHN4me" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -495,10 +495,6 @@
               name="Color.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Color.h" id="8c5n7LS8Q" name="Color.h"
               resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/CutAndPaste.cpp" id="nSYBOH1KX"
-              name="CutAndPaste.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/CutAndPaste.h" id="LQK0Ax5GL"
-              name="CutAndPaste.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/DropTarget.h" id="WvrqWset5"
               name="DropTarget.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="IJmPtaJbj" name="Font.h"
@@ -709,6 +705,8 @@
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="YN1Cfu2jM"
               name="Compare.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/Cuttable.cpp" id="9xYK1aL2B"
+              name="Cuttable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Cuttable.h" id="PMk9dholr"
               name="Cuttable.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Defaulter.cpp" id="Ahv6iYw38"
@@ -1025,7 +1023,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="OQOG70PgE" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="e4daU37Tc" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

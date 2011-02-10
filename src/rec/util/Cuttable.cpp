@@ -1,10 +1,9 @@
-#include "rec/gui/CutAndPaste.h"
 #include "rec/util/Cuttable.h"
 
 using juce::SystemClipboard;
 
 namespace rec {
-namespace gui {
+namespace util {
 
 static Cuttable* make() {
   Component* comp = Component::getCurrentlyFocusedComponent();
@@ -21,8 +20,12 @@ bool canCutOrCopy() {
 }
 
 bool canPaste() {
-  if (Cuttable* cc = make())
-    return cc->canCopy();
+  if (!SystemClipboard::getTextFromClipboard().length())
+    return false;
+
+  else if (Cuttable* cc = make())
+    return cc->canPaste();
+
   else
     return false;
 }
@@ -30,7 +33,8 @@ bool canPaste() {
 bool cutToClipboard() {
   if (Cuttable* cc = make()) {
     if (cc->canCopy()) {
-      SystemClipboard::copyTextToClipboard(cc->cut().c_str());
+      SystemClipboard::copyTextToClipboard(cc->copy().c_str());
+      cc->cut();
       return true;
     }
   }
@@ -53,7 +57,11 @@ bool copyToClipboard() {
 
 bool pasteFromClipboard() {
   if (Cuttable* cc = make()) {
-    cc->paste(SystemClipboard::getTextFromClipboard().toCString());
+    string s(SystemClipboard::getTextFromClipboard().toCString());
+    if (s.empty())
+      return false;
+
+    cc->paste(s);
     return true;
   }
 
@@ -61,7 +69,7 @@ bool pasteFromClipboard() {
   return false;
 }
 
-bool deleteKeepingClipboard() {
+bool remove() {
   if (Cuttable* cc = make()) {
     if (cc->canCopy()) {
       cc->cut();
@@ -73,6 +81,5 @@ bool deleteKeepingClipboard() {
   return false;
 }
 
-
-}  // namespace gui
+}  // namespace util
 }  // namespace rec

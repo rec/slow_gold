@@ -20,6 +20,8 @@ class Loops : public TableController, public Cuttable {
 
   virtual void onDataChange();
   void doSelect();
+  virtual bool canCopy() const;
+  virtual bool canPaste() const { return false; }
 
   void setLength(int len);
   bool isNewLoopPoint(double t) const;

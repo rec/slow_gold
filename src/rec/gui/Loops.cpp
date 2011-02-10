@@ -17,7 +17,7 @@ static Defaulter<TableColumnList> dflt(
 const double Loops::CLOSE = 0.5;
 
 Loops::Loops(const TableColumnList* desc)
-    : TableController(dflt.get(desc), Address("loop_point")), length_(0) {
+    : TableController(dflt.get(desc), Address("loop_point"), "cut-Loops"), length_(0) {
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
   message_.reset(&loopPoints_);
@@ -30,6 +30,15 @@ Loops::~Loops() {
 void Loops::setLength(int len) {
   ScopedLock l(lock_);
   length_ = len;
+}
+
+bool Loops::canCopy() const {
+  ScopedLock l(lock_);
+  for (int i = 0; i < loopPoints_.selected_size(); ++i) {
+    if (loopPoints_.selected(i))
+      return true;
+  }
+  return false;
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {

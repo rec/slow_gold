@@ -7,8 +7,9 @@
 namespace rec {
 namespace gui {
 
-TableController::TableController(const TableColumnList& c, const Address& address)
-    : TableListBox("TableController", this),
+TableController::TableController(const TableColumnList& c, const Address& address,
+                                 const char* name)
+    : TableListBox(name, this),
       UntypedAddressListener(Address()),
       columns_(c),
       address_(address),
