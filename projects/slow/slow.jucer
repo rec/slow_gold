@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="J1fajeo9L" name="Slow">
+  <MAINGROUP id="cq8gDtSoW" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -474,6 +474,8 @@
               name="Color.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Color.h" id="5qRhv4iG2" name="Color.h"
               resource="0"/>
+        <FILE compile="1" file="../../src/rec/gui/CuttableComponent.cpp" id="tBIIGuftU"
+              name="CuttableComponent.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/CuttableComponent.h" id="1JVJvUvmI"
               name="CuttableComponent.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/DropTarget.h" id="Hi5Hqwwgd"
@@ -976,7 +978,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="3fUV9w9XH" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="N4COimvF7" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

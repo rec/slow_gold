@@ -10,15 +10,12 @@ class CuttableComponent : public Component {
  public:
   CuttableComponent(const String& name = String::empty) : Component("cut-" + name) {}
 
-  static CuttableComponent* make(Component* comp) {
-    return comp->getName().startsWith("cut-") ?
-      dynamic_cast<CuttableComponent*>(comp): NULL;
-  }
-
   virtual bool canCopy() const { return false; }
   virtual string copy() const { return ""; }
   virtual string cut() { return ""; }
   virtual bool paste(const string&) const { return false; }
+
+  static CuttableComponent* make(Component* comp);
 
   static bool cutToClipboard(Component* comp);
   static bool copyToClipboard(Component* comp);

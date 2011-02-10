@@ -100,6 +100,7 @@
 		03FE0637A61E54758FC0CF3C = { isa = PBXBuildFile; fileRef = 78F73F6C8CE543B33B019CC7; };
 		5BAE2C12EC54B8CF62B65C4F = { isa = PBXBuildFile; fileRef = 34BCA68B9A13D1FC11F70CA5; };
 		78374D4D98DC795234406915 = { isa = PBXBuildFile; fileRef = B0E7E54BB1A5063AE0E24277; };
+		9F4E8C221BE6F30BBCB412DD = { isa = PBXBuildFile; fileRef = 6880F12C2CA44CF23F9C6BE1; };
 		B0F3E86D64EDE0012F8567F5 = { isa = PBXBuildFile; fileRef = 46A4EDF7B35B04FF4F84AD4B; };
 		4CFBB2F879C828F9DF6333C5 = { isa = PBXBuildFile; fileRef = F0C360A97FE89962AC7C13E8; };
 		42EF616419DC523AB5411725 = { isa = PBXBuildFile; fileRef = D9B1304D760EF4B8FAC83FD7; };
@@ -428,6 +429,7 @@
 		B0B76BE195D5E66053F18393 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CachedThumbnail.h; path = ../../../../src/rec/gui/CachedThumbnail.h; sourceTree = SOURCE_ROOT; };
 		B0E7E54BB1A5063AE0E24277 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = ../../../../src/rec/gui/Color.cpp; sourceTree = SOURCE_ROOT; };
 		DDF8779E8FFF1F33A0333FEB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.h; path = ../../../../src/rec/gui/Color.h; sourceTree = SOURCE_ROOT; };
+		6880F12C2CA44CF23F9C6BE1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CuttableComponent.cpp; path = ../../../../src/rec/gui/CuttableComponent.cpp; sourceTree = SOURCE_ROOT; };
 		CED7B90AD5B59709720A7CCF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CuttableComponent.h; path = ../../../../src/rec/gui/CuttableComponent.h; sourceTree = SOURCE_ROOT; };
 		A6062018D4A300EC20137C6F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DropTarget.h; path = ../../../../src/rec/gui/DropTarget.h; sourceTree = SOURCE_ROOT; };
 		7A94DAB9E0F42E2568A475F9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Font.h; path = ../../../../src/rec/gui/Font.h; sourceTree = SOURCE_ROOT; };
@@ -936,6 +938,7 @@
 				B0B76BE195D5E66053F18393,
 				B0E7E54BB1A5063AE0E24277,
 				DDF8779E8FFF1F33A0333FEB,
+				6880F12C2CA44CF23F9C6BE1,
 				CED7B90AD5B59709720A7CCF,
 				A6062018D4A300EC20137C6F,
 				7A94DAB9E0F42E2568A475F9,
@@ -1225,7 +1228,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		33D5CDB35874FD37DD7F7605 = { isa = PBXGroup; children = (
+		5CACD33ACD3E505E40FE4298 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1392,6 +1395,7 @@
 				03FE0637A61E54758FC0CF3C,
 				5BAE2C12EC54B8CF62B65C4F,
 				78374D4D98DC795234406915,
+				9F4E8C221BE6F30BBCB412DD,
 				B0F3E86D64EDE0012F8567F5,
 				4CFBB2F879C828F9DF6333C5,
 				42EF616419DC523AB5411725,
@@ -1508,7 +1512,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 33D5CDB35874FD37DD7F7605; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 5CACD33ACD3E505E40FE4298; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }
