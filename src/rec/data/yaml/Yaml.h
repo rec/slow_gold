@@ -7,7 +7,7 @@ namespace rec {
 namespace yaml {
 
 string write(const Message& from);
-void read(const string& from, Message* to);
+bool read(const string& from, Message* to);
 
 }  // namespace yaml
 }  // namespace rec

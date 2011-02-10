@@ -44,6 +44,7 @@ void doRead(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
   case FD::TYPE_ENUM:
     r.SetEnum(m, f, f->enum_type()->FindValueByName(str(n)));
     break;
+
   default: LOG(ERROR) << "Didn't understand type " << f->type(); break; }
 }
 
@@ -95,20 +96,42 @@ void operator>>(const YAML::Node& node, Message* to) {
 
 }  // namespace
 
-void read(const string& from, Message* to) {
+bool read(const string& from, Message* to) {
   std::istringstream s(from);
   YAML::Parser parser(s);
 
   YAML::Node node;
   if (!parser.GetNextDocument(node)) {
     LOG(ERROR) << "Didn't get any data";
-    return;
+    return false;
   }
 
-  node >> to;
+  for (YAML::Iterator i = node.begin(); i != node.end(); ++i) {
+    string name = str(i.first());
+    if (name == "type") {
+      string type;
+      i.second() >> type;
+      if (type != to->GetTypeName()) {
+        LOG(ERROR) << "Tried to unserialize " << to->GetTypeName()
+                   << " but found " << type;
+        return false;
+      }
 
-  if (parser.GetNextDocument(node))
+    } else if (name == "value") {
+      i.second() >> to;
+
+    } else {
+      LOG(ERROR) << "Unexpected field " << name;
+      return false;
+    }
+  }
+
+  if (parser.GetNextDocument(node)) {
     LOG(ERROR) << "More than one document in file";
+    return false;
+  }
+
+  return true;
 }
 
 }  // namespace yaml

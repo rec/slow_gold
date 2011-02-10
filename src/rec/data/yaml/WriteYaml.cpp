@@ -141,7 +141,10 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const Message& m) {
 
 string write(const Message& from) {
   YAML::Emitter out;
-  out << from;
+  out << YAML::BeginMap;
+  out << YAML::Key << "type" << YAML::Value << from.GetTypeName();
+  out << YAML::Key << "value" << YAML::Value << from;
+  out << YAML::EndMap;
   return out.c_str();
 }
 
