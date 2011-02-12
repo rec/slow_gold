@@ -91,11 +91,13 @@ void Waveform::paint(Graphics& g) {
 }
 
 int Waveform::timeToX(double t) const {
-  return static_cast<int>(getWidth() * (t - zoom_.begin()) / (zoom_.end() - zoom_.begin()));
+  TimeRange r = getTimeRange();
+  return static_cast<int>(getWidth() * (t - r.begin_)) / r.size();
 }
 
 double Waveform::xToTime(int x) const {
-  return zoom_.begin() + (x *  (zoom_.end() - zoom_.begin())) / getWidth();
+  TimeRange r = getTimeRange();
+  return r.begin_ + (x *  r.size()) / getWidth();
 }
 
 void Waveform::operator()(const juce::AudioThumbnail&) {
@@ -163,6 +165,7 @@ void Waveform::resized() {
 }
 
 TimeRange Waveform::getTimeRange() const {
+  ScopedLock l(lock_);
   return TimeRange(zoom_.begin(), zoom_.end());
 }
 
