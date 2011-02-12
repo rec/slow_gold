@@ -18,7 +18,10 @@ Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
 
 
 Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
-    : Component("Waveform"), desc_(d), thumbnail_(NULL), range_(0, 0),
+    : Component("Waveform"),
+      desc_(d),
+      thumbnail_(NULL),
+      range_(0, 0),
       zoomData_(this) {
   setName("Waveform");
 
@@ -99,6 +102,9 @@ void Waveform::setTimeRange(const TimeRange& bounds) {
 
 void Waveform::operator()(const juce::AudioThumbnail&) {
   thread::runOnMessageThread(this, &Waveform::repaint);
+}
+
+void Waveform::operator()(const ZoomProto&) {
 }
 
 void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {

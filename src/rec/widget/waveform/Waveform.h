@@ -48,7 +48,7 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
 
   virtual void operator()(const juce::AudioThumbnail&);
   virtual void operator()(const gui::LoopPointList&);
-  virtual void operator()(const ZoomProto&) {}
+  virtual void operator()(const ZoomProto&);
 
   virtual void paint(Graphics& g);
   virtual void repaint() { Component::repaint(); }
