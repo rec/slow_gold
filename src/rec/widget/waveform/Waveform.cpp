@@ -21,7 +21,6 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
     : Component("Waveform"),
       desc_(d),
       thumbnail_(NULL),
-      range_(0, 0),
       zoomData_(this) {
   setName("Waveform");
 
@@ -42,7 +41,6 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   {
     ScopedLock l(lock_);
     thumbnail_ = thumbnail;
-    setTimeRange(TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : 0));
     resized();
   }
   thread::runOnMessageThread(this, &Waveform::repaint);
@@ -93,22 +91,6 @@ void Waveform::paint(Graphics& g) {
   }
 }
 
-void Waveform::setTimeRange(const TimeRange& bounds) {
-  {
-    ScopedLock l(lock_);
-    range_ = bounds;
-#if 0
-    if (!zoom_.has_begin())
-      zoom_.set_begin(range_.begin_);
-
-    if (!zoom_.has_end())
-      zoom_.set_end(range_.end_);
-#endif
-  }
-
-  resized();
-}
-
 int Waveform::timeToX(double t) const {
   TimeRange range = getTimeRange();
   return static_cast<int>(getWidth() * (t - range.begin_) / range.size());
@@ -150,7 +132,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
       int j = i;
       for (; j < size && loopPoints.selected(j); ++j);
       double begin = loopPoints.loop_point(i).time();
-      double end = (j < size) ? loopPoints.loop_point(j).time() : range_.end_;
+      double end = (j < size) ? loopPoints.loop_point(j).time() : getTimeRange().end_;
       selection_.insert(TimeRange(begin, end));
       i = j;
     }
