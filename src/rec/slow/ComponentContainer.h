@@ -23,6 +23,7 @@ class ComponentContainer : public Component,
 
   enum MenuItems { OPEN = 1, CLOSE, CUT, COPY, PASTE, QUIT, EJECT, CLEAR_TREE,
                    CLEAR_TIME, CLEAR_FILE, AUDIO_PREFERENCES, CLEAR_SELECTION,
+                   CLEAR_LOOPS,
                    RECENT_FILES,                   // Must be last
                    LAST_MENU_ITEM };
 
@@ -40,6 +41,7 @@ class ComponentContainer : public Component,
   void clearFile();
   void audioPreferences();
   void clearSelection();
+  void clearLoops();
 
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex);
   void doMenuItemSelected(int menuItemID, int topLevelMenuIndex);

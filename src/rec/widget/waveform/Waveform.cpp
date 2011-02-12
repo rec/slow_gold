@@ -25,6 +25,7 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
 
   timeCursor_ = new Cursor(*timeCursor, this, 0.0f);
   addAndMakeVisible(timeCursor_);
+  // desc_.set_selection_frame_in_seconds(0);
 }
 
 Waveform::~Waveform() {
@@ -137,13 +138,15 @@ void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
       int j = i;
       for (; j < size && loopPoints.selected(j); ++j);
       double begin = loopPoints.loop_point(i).time();
-      double end = (j < size) ? loopPoints.loop_point(j).time() : zoom_.end();
+      double end = (j < size) ? loopPoints.loop_point(j).time() :
+        getTimeRange().end_;
       selection_.insert(TimeRange(begin, end));
       i = j;
     }
   }
   selectionBroadcaster_.broadcast(selection_);
 
+  layoutCursors();
   repaint();
 }
 
@@ -166,7 +169,24 @@ void Waveform::resized() {
 
 TimeRange Waveform::getTimeRange() const {
   ScopedLock l(lock_);
-  return TimeRange(zoom_.begin(), zoom_.end());
+  TimeRange r;
+  if (zoom_.zoom_to_selection() && !selection_.empty()) {
+    r.begin_ = selection_.begin()->begin_;
+    r.end_ = selection_.rbegin()->end_;
+    if (r.end_ == 0.0)
+      r.end_ = zoom_.end();
+
+    r.begin_ -= desc_.selection_frame_in_seconds();
+    r.end_ += desc_.selection_frame_in_seconds();
+
+    r.begin_ = juce::jmax(r.begin_, 0.0);
+    r.end_ = juce::jmin(r.end_, zoom_.end());
+  } else {
+    r.begin_ = zoom_.begin();
+    r.end_= zoom_.end();
+  }
+  // DLOG(INFO) << "! " << r.begin_ << ", " << r.end_;
+  return r;
 }
 
 void Waveform::setCursorBounds(Cursor *cursor) const {
@@ -174,7 +194,7 @@ void Waveform::setCursorBounds(Cursor *cursor) const {
   int displayWidth = cursor->desc().display_width();
   int x = 0;
 
-  if (!Math<double>::near(zoom_.begin(), zoom_.end(), 0.001))
+  if (!getTimeRange().size() < 0.001)
     x = timeToX(cursor->getTime());
 
   bounds.setWidth(displayWidth);

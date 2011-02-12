@@ -31,7 +31,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
       "rec/widget/waveform/Waveform.proto");
   GOOGLE_CHECK(file != NULL);
   WaveformProto_descriptor_ = file->message_type(0);
-  static const int WaveformProto_offsets_[10] = {
+  static const int WaveformProto_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, cursor_thickness_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, source_samples_per_thumbnail_sample_),
@@ -41,6 +41,7 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, subtic_height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, use_captions_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, tics_at_bottom_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, selection_frame_in_seconds_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WaveformProto, layout_),
   };
   WaveformProto_reflection_ =
@@ -92,7 +93,7 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "\n\"rec/widget/waveform/Waveform.proto\022\023re"
     "c.widget.waveform\032\023rec/gui/Color.proto\032\022"
     "rec/gui/Font.proto\032\027rec/widget/Widget.pr"
-    "oto\032\034rec/util/thread/Thread.proto\"\244\003\n\rWa"
+    "oto\032\034rec/util/thread/Thread.proto\"\313\003\n\rWa"
     "veformProto\022\"\n\006widget\030\001 \001(\0132\022.rec.widget"
     ".Widget\022\033\n\020cursor_thickness\030\002 \001(\r:\0011\0220\n#"
     "source_samples_per_thumbnail_sample\030\004 \001("
@@ -101,9 +102,10 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "adDescription\022\025\n\ntic_height\030\010 \001(\r:\0018\022\030\n\r"
     "subtic_height\030\t \001(\r:\0013\022\032\n\014use_captions\030\n"
     " \001(\010:\004true\022\034\n\016tics_at_bottom\030\013 \001(\010:\004true"
-    "\0229\n\006layout\030\014 \001(\0162).rec.widget.waveform.W"
-    "aveformProto.Layout\"#\n\006Layout\022\013\n\007STACKED"
-    "\020\001\022\014\n\010PARALLEL\020\002", 576);
+    "\022%\n\032selection_frame_in_seconds\030\014 \001(\r:\0015\022"
+    "9\n\006layout\030\r \001(\0162).rec.widget.waveform.Wa"
+    "veformProto.Layout\"#\n\006Layout\022\013\n\007STACKED\020"
+    "\001\022\014\n\010PARALLEL\020\002", 615);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Waveform.proto", &protobuf_RegisterTypes);
   WaveformProto::default_instance_ = new WaveformProto();
@@ -152,6 +154,7 @@ const int WaveformProto::kTicHeightFieldNumber;
 const int WaveformProto::kSubticHeightFieldNumber;
 const int WaveformProto::kUseCaptionsFieldNumber;
 const int WaveformProto::kTicsAtBottomFieldNumber;
+const int WaveformProto::kSelectionFrameInSecondsFieldNumber;
 const int WaveformProto::kLayoutFieldNumber;
 #endif  // !_MSC_VER
 
@@ -182,6 +185,7 @@ void WaveformProto::SharedCtor() {
   subtic_height_ = 3u;
   use_captions_ = true;
   tics_at_bottom_ = true;
+  selection_frame_in_seconds_ = 5u;
   layout_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -234,6 +238,7 @@ void WaveformProto::Clear() {
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     tics_at_bottom_ = true;
+    selection_frame_in_seconds_ = 5u;
     layout_ = 1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -381,12 +386,28 @@ bool WaveformProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(96)) goto parse_layout;
+        if (input->ExpectTag(96)) goto parse_selection_frame_in_seconds;
         break;
       }
       
-      // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+      // optional uint32 selection_frame_in_seconds = 12 [default = 5];
       case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_selection_frame_in_seconds:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &selection_frame_in_seconds_)));
+          _set_bit(9);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(104)) goto parse_layout;
+        break;
+      }
+      
+      // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
+      case 13: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_layout:
@@ -397,7 +418,7 @@ bool WaveformProto::MergePartialFromCodedStream(
           if (::rec::widget::waveform::WaveformProto_Layout_IsValid(value)) {
             set_layout(static_cast< ::rec::widget::waveform::WaveformProto_Layout >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(12, value);
+            mutable_unknown_fields()->AddVarint(13, value);
           }
         } else {
           goto handle_uninterpreted;
@@ -471,10 +492,15 @@ void WaveformProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(11, this->tics_at_bottom(), output);
   }
   
-  // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+  // optional uint32 selection_frame_in_seconds = 12 [default = 5];
   if (_has_bit(9)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->selection_frame_in_seconds(), output);
+  }
+  
+  // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
+  if (_has_bit(10)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      12, this->layout(), output);
+      13, this->layout(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -534,10 +560,15 @@ void WaveformProto::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(11, this->tics_at_bottom(), target);
   }
   
-  // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+  // optional uint32 selection_frame_in_seconds = 12 [default = 5];
   if (_has_bit(9)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->selection_frame_in_seconds(), target);
+  }
+  
+  // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
+  if (_has_bit(10)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      12, this->layout(), target);
+      13, this->layout(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -612,7 +643,14 @@ int WaveformProto::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+    // optional uint32 selection_frame_in_seconds = 12 [default = 5];
+    if (has_selection_frame_in_seconds()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->selection_frame_in_seconds());
+    }
+    
+    // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
     if (has_layout()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->layout());
@@ -675,6 +713,9 @@ void WaveformProto::MergeFrom(const WaveformProto& from) {
       set_tics_at_bottom(from.tics_at_bottom());
     }
     if (from._has_bit(9)) {
+      set_selection_frame_in_seconds(from.selection_frame_in_seconds());
+    }
+    if (from._has_bit(10)) {
       set_layout(from.layout());
     }
   }
@@ -709,6 +750,7 @@ void WaveformProto::Swap(WaveformProto* other) {
     std::swap(subtic_height_, other->subtic_height_);
     std::swap(use_captions_, other->use_captions_);
     std::swap(tics_at_bottom_, other->tics_at_bottom_);
+    std::swap(selection_frame_in_seconds_, other->selection_frame_in_seconds_);
     std::swap(layout_, other->layout_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

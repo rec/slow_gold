@@ -40,6 +40,7 @@ class MainPage : public gui::Layout,
   void doClose();
   void clearTime();
   void clearSelection();
+  void clearLoops();
 
   virtual bool keyPressed(const juce::KeyPress& kp);
   void addLoopPoint();

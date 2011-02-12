@@ -209,5 +209,11 @@ void Loops::clearSelection() {
   getData()->set(Address(), loopPoints_);
 }
 
+void Loops::clearLoops() {
+  loopPoints_.Clear();
+  getData()->set(Address(), loopPoints_);
+}
+
+
 }  // namespace gui
 }  // namespace rec

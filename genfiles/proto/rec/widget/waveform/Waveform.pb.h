@@ -202,10 +202,17 @@ class WaveformProto : public ::google::protobuf::Message {
   inline bool tics_at_bottom() const;
   inline void set_tics_at_bottom(bool value);
   
-  // optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
+  // optional uint32 selection_frame_in_seconds = 12 [default = 5];
+  inline bool has_selection_frame_in_seconds() const;
+  inline void clear_selection_frame_in_seconds();
+  static const int kSelectionFrameInSecondsFieldNumber = 12;
+  inline ::google::protobuf::uint32 selection_frame_in_seconds() const;
+  inline void set_selection_frame_in_seconds(::google::protobuf::uint32 value);
+  
+  // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
   inline bool has_layout() const;
   inline void clear_layout();
-  static const int kLayoutFieldNumber = 12;
+  static const int kLayoutFieldNumber = 13;
   inline ::rec::widget::waveform::WaveformProto_Layout layout() const;
   inline void set_layout(::rec::widget::waveform::WaveformProto_Layout value);
   
@@ -223,12 +230,13 @@ class WaveformProto : public ::google::protobuf::Message {
   ::google::protobuf::uint32 subtic_height_;
   bool use_captions_;
   bool tics_at_bottom_;
+  ::google::protobuf::uint32 selection_frame_in_seconds_;
   int layout_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -397,20 +405,36 @@ inline void WaveformProto::set_tics_at_bottom(bool value) {
   tics_at_bottom_ = value;
 }
 
-// optional .rec.widget.waveform.WaveformProto.Layout layout = 12;
-inline bool WaveformProto::has_layout() const {
+// optional uint32 selection_frame_in_seconds = 12 [default = 5];
+inline bool WaveformProto::has_selection_frame_in_seconds() const {
   return _has_bit(9);
+}
+inline void WaveformProto::clear_selection_frame_in_seconds() {
+  selection_frame_in_seconds_ = 5u;
+  _clear_bit(9);
+}
+inline ::google::protobuf::uint32 WaveformProto::selection_frame_in_seconds() const {
+  return selection_frame_in_seconds_;
+}
+inline void WaveformProto::set_selection_frame_in_seconds(::google::protobuf::uint32 value) {
+  _set_bit(9);
+  selection_frame_in_seconds_ = value;
+}
+
+// optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
+inline bool WaveformProto::has_layout() const {
+  return _has_bit(10);
 }
 inline void WaveformProto::clear_layout() {
   layout_ = 1;
-  _clear_bit(9);
+  _clear_bit(10);
 }
 inline ::rec::widget::waveform::WaveformProto_Layout WaveformProto::layout() const {
   return static_cast< ::rec::widget::waveform::WaveformProto_Layout >(layout_);
 }
 inline void WaveformProto::set_layout(::rec::widget::waveform::WaveformProto_Layout value) {
   GOOGLE_DCHECK(::rec::widget::waveform::WaveformProto_Layout_IsValid(value));
-  _set_bit(9);
+  _set_bit(10);
   layout_ = value;
 }
 

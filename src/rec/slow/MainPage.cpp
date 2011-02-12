@@ -160,5 +160,9 @@ void MainPage::clearSelection() {
   loops_.clearSelection();
 }
 
+void MainPage::clearLoops() {
+  loops_.clearLoops();
+}
+
 }  // namespace slow
 }  // namespace rec
