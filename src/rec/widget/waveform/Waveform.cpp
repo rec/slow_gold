@@ -96,7 +96,14 @@ void Waveform::setTimeRange(const TimeRange& bounds) {
   {
     ScopedLock l(lock_);
     range_ = bounds;
+
+    if (!zoom_.has_begin())
+      zoom_.set_begin(range_.begin_);
+
+    if (!zoom_.has_end())
+      zoom_.set_end(range_.end_);
   }
+
   resized();
 }
 

@@ -121,6 +121,7 @@ void MainPage::operator()(const VirtualFile& file) {
     if (gui::CachedThumbnail* thumb = player_.cachedThumbnail()) {
       waveform_.setAudioThumbnail(thumb->thumbnail());
       thumb->addListener(&waveform_);
+
     } else {
       LOG(ERROR) << "Can't get waveform for file " << file.ShortDebugString();
       return;
