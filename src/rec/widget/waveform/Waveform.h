@@ -93,6 +93,7 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   };
 
   ZoomData zoomData_;
+  ZoomProto zoom_;
 
   DISALLOW_COPY_AND_ASSIGN(Waveform);
 

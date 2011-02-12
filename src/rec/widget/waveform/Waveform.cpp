@@ -104,7 +104,9 @@ void Waveform::operator()(const juce::AudioThumbnail&) {
   thread::runOnMessageThread(this, &Waveform::repaint);
 }
 
-void Waveform::operator()(const ZoomProto&) {
+void Waveform::operator()(const ZoomProto& zp) {
+  ScopedLock l(lock_);
+  zoom_ = zp;
 }
 
 void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
