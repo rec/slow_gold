@@ -30,6 +30,7 @@ struct TimeAndMouseEvent {
 class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
                  public Listener<const juce::AudioThumbnail&>,
                  public DataListener<gui::LoopPointList>,
+                 public Listener<const ZoomProto&>,
                  public Component {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
@@ -47,6 +48,7 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
 
   virtual void operator()(const juce::AudioThumbnail&);
   virtual void operator()(const gui::LoopPointList&);
+  virtual void operator()(const ZoomProto&) {}
 
   virtual void paint(Graphics& g);
   virtual void repaint() { Component::repaint(); }
@@ -81,7 +83,13 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
 
   class ZoomData : public DataListener<ZoomProto> {
    public:
-    virtual void operator()(const ZoomProto&) {}
+    ZoomData(Waveform* waveform) : waveform_(waveform) {}
+    virtual void operator()(const ZoomProto& zoom) { (*waveform_)(zoom); }
+
+   private:
+    Waveform* const waveform_;
+
+    DISALLOW_COPY_ASSIGN_AND_EMPTY(ZoomData);
   };
 
   ZoomData zoomData_;

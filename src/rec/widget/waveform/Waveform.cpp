@@ -18,7 +18,8 @@ Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
 
 
 Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
-    : Component("Waveform"), desc_(d), thumbnail_(NULL), range_(0, 0) {
+    : Component("Waveform"), desc_(d), thumbnail_(NULL), range_(0, 0),
+      zoomData_(this) {
   setName("Waveform");
 
   timeCursor_ = new Cursor(*timeCursor, this, 0.0f);
