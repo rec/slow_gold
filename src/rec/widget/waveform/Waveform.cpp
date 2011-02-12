@@ -161,7 +161,9 @@ void Waveform::operator()(const gui::LoopPointList& loopPoints) {
 
 const TimeRange Waveform::getTimeRange() const {
   ScopedLock l(lock_);
-  return range_;
+  return TimeRange(zoom_.has_begin() ? zoom_.begin() : 0,
+                   zoom_.has_end() ? zoom_.end() :
+                   thumbnail_ ? thumbnail_->getTotalLength() : 0);
 }
 
 void Waveform::resized() {
