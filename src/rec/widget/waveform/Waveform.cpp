@@ -110,6 +110,8 @@ void Waveform::operator()(const ZoomProto& zp) {
   zoom_ = zp;
   if (!zoom_.has_end())
     zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
+
+  resized();
 }
 
 void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
@@ -146,8 +148,7 @@ void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
   }
   selectionBroadcaster_.broadcast(selection_);
 
-  layoutCursors();
-  repaint();
+  resized();
 }
 
 void Waveform::layoutCursors() {
@@ -170,7 +171,7 @@ void Waveform::resized() {
 TimeRange Waveform::getTimeRange() const {
   ScopedLock l(lock_);
   TimeRange r;
-  if (zoom_.zoom_to_selection() && !selection_.empty()) {
+  if (!zoom_.zoom_to_selection() && !selection_.empty()) {
     r.begin_ = selection_.begin()->begin_;
     r.end_ = selection_.rbegin()->end_;
     if (r.end_ == 0.0)
@@ -194,7 +195,7 @@ void Waveform::setCursorBounds(Cursor *cursor) const {
   int displayWidth = cursor->desc().display_width();
   int x = 0;
 
-  if (!getTimeRange().size() < 0.001)
+  if (getTimeRange().size() < 0.001)
     x = timeToX(cursor->getTime());
 
   bounds.setWidth(displayWidth);
