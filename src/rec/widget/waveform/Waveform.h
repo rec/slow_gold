@@ -63,8 +63,11 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
 
   DataListener<ZoomProto>* zoomData() { return &zoomData_; }
 
+  TimeRange getTimeRange() const;
+
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
+  void setSelection(const gui::LoopPointList&);
 
   int timeToX(double t) const;
   double xToTime(int x) const;

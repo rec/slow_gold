@@ -51,7 +51,7 @@ void Waveform::paint(Graphics& g) {
 
   if (thumbnail_) {
     SelectionRange::iterator i = selection_.begin();
-    TimeRange r(zoom_.begin(), zoom_.end());
+    TimeRange r = getTimeRange();
     const juce::Rectangle<int>& bounds = getLocalBounds();
     int channels = thumbnail_->getNumChannels();
 
@@ -123,6 +123,10 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   while (getNumChildComponents() > size + 1)
     delete removeChildComponent(1);
 
+  setSelection(loopPoints);
+}
+
+void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
   // Now set the selection range!
   selection_.clear();
   for (int i = 0, size = loopPoints.selected_size(); i < size; ) {
@@ -137,6 +141,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
     }
   }
   selectionBroadcaster_.broadcast(selection_);
+
   repaint();
 }
 
@@ -157,15 +162,17 @@ void Waveform::resized() {
   thread::runOnMessageThread(this, &Waveform::layoutCursors);
 }
 
+TimeRange Waveform::getTimeRange() const {
+  return TimeRange(zoom_.begin(), zoom_.end());
+}
+
 void Waveform::setCursorBounds(Cursor *cursor) const {
   juce::Rectangle<int> bounds = getLocalBounds();
-  int width = bounds.getWidth();
   int displayWidth = cursor->desc().display_width();
   int x = 0;
 
   if (!Math<double>::near(zoom_.begin(), zoom_.end(), 0.001))
-    x = static_cast<int>(width * (cursor->getTime() - zoom_.begin()) /
-                         (zoom_.end() - zoom_.begin()));
+    x = timeToX(cursor->getTime());
 
   bounds.setWidth(displayWidth);
   bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);
