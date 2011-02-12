@@ -16,7 +16,6 @@ Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
 
 }  // namespace
 
-
 Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
     : Component("Waveform"),
       desc_(d),
@@ -52,7 +51,7 @@ void Waveform::paint(Graphics& g) {
 
   if (thumbnail_) {
     SelectionRange::iterator i = selection_.begin();
-    Range<double> r = getTimeRange();
+    TimeRange r = getTimeRange();
     const juce::Rectangle<int>& bounds = getLocalBounds();
     int channels = thumbnail_->getNumChannels();
 
@@ -108,6 +107,8 @@ void Waveform::operator()(const juce::AudioThumbnail&) {
 void Waveform::operator()(const ZoomProto& zp) {
   ScopedLock l(lock_);
   zoom_ = zp;
+  if (!zoom_.has_end())
+    zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
 }
 
 void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
@@ -157,8 +158,12 @@ void Waveform::operator()(const gui::LoopPointList& loopPoints) {
 const TimeRange Waveform::getTimeRange() const {
   ScopedLock l(lock_);
   return TimeRange(zoom_.begin(),
+#if 1
+                   zoom_.end());
+#else
                    zoom_.has_end() ? zoom_.end() :
                    thumbnail_ ? thumbnail_->getTotalLength() : 0);
+#endif
 }
 
 void Waveform::resized() {

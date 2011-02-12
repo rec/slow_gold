@@ -112,7 +112,7 @@ void MainPage::operator()(const VirtualFile& file) {
     persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
     loops_.setData(listData);
     waveform_.setData(listData);
-    waveform_.zoomData()->setData(persist::data<ZoomProto>(file));
+
     if (listData->get().loop_point_size())
       listData->requestUpdate();
     else
@@ -130,7 +130,12 @@ void MainPage::operator()(const VirtualFile& file) {
 
     // Adjust the length of clients - fix this!
     (*(controller_.timeController()))(ClockUpdate(-1, player_.length() / 44100.0));
+
+    persist::Data<ZoomProto>* zoomData = persist::data<ZoomProto>(file);
+    waveform_.zoomData()->setData(zoomData);
+    zoomData->requestUpdate();
   }
+
   (*this)(0.0);
 }
 
