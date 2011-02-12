@@ -43,6 +43,7 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
     ScopedLock l(lock_);
     thumbnail_ = thumbnail;
     setTimeRange(TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : 0));
+    resized();
   }
   thread::runOnMessageThread(this, &Waveform::repaint);
 }
@@ -53,7 +54,7 @@ void Waveform::paint(Graphics& g) {
 
   if (thumbnail_) {
     SelectionRange::iterator i = selection_.begin();
-    Range<double> r = range_;
+    Range<double> r = getTimeRange();
     const juce::Rectangle<int>& bounds = getLocalBounds();
     int channels = thumbnail_->getNumChannels();
 
@@ -96,15 +97,25 @@ void Waveform::setTimeRange(const TimeRange& bounds) {
   {
     ScopedLock l(lock_);
     range_ = bounds;
-
+#if 0
     if (!zoom_.has_begin())
       zoom_.set_begin(range_.begin_);
 
     if (!zoom_.has_end())
       zoom_.set_end(range_.end_);
+#endif
   }
 
   resized();
+}
+
+
+int Waveform::timeToX(double t) const {
+  return static_cast<int>(getWidth() * (t - range_.begin_) / range_.size());
+}
+
+double Waveform::xToTime(int x) const {
+  return range_.begin_ + (x * range_.size()) / getWidth();
 }
 
 void Waveform::operator()(const juce::AudioThumbnail&) {

@@ -68,8 +68,8 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
 
-  int timeToX(double t) const { return static_cast<int>(getWidth() * (t - range_.begin_) / range_.size()); }
-  double xToTime(int x) const { return range_.begin_ + (x * range_.size()) / getWidth(); }
+  int timeToX(double t) const;
+  double xToTime(int x) const;
 
   void setCursorBounds(Cursor *cursor) const;
 
