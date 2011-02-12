@@ -22,7 +22,7 @@ class DataListener : public Reference<persist::Data<Proto> >,
 
   DataListener() {}
   virtual ~DataListener() {}
-  virtual void operator()(const Proto&) = 0;
+  virtual void operator()(const Proto& p) = 0;
 
   virtual void setData(Data* d) {
     if (this->getData())

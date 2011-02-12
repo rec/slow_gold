@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Y8ikwJPlt" name="Slow">
+  <MAINGROUP id="2yXoqBddZ" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -970,6 +970,10 @@
                   id="d1qzJZio9" name="Waveform.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/widget/waveform/Waveform.pb.h"
                   id="LupBweqnS" name="Waveform.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/widget/waveform/Zoom.pb.cc"
+                  id="vKgOiNO1r" name="Zoom.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/widget/waveform/Zoom.pb.h"
+                  id="9jswvhDUp" name="Zoom.pb.h" resource="0"/>
           </GROUP>
           <FILE compile="1" file="../../genfiles/proto/rec/widget/Widget.pb.cc"
                 id="zbffCKEd3" name="Widget.pb.cc" resource="0"/>
@@ -978,7 +982,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2bqJQ4Qnp" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="8B2PerWOe" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

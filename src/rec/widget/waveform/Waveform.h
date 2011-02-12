@@ -11,6 +11,7 @@
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
 #include "rec/widget/waveform/Waveform.pb.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
 namespace widget {
@@ -60,6 +61,8 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
     return &selectionBroadcaster_;
   }
 
+  DataListener<ZoomProto>* zoomData() { return &zoomData_; }
+
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
 
@@ -75,6 +78,13 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   SelectionRange selection_;
 
   Broadcaster<const SelectionRange&> selectionBroadcaster_;
+
+  class ZoomData : public DataListener<ZoomProto> {
+   public:
+    virtual void operator()(const ZoomProto&) {}
+  };
+
+  ZoomData zoomData_;
 
   DISALLOW_COPY_AND_ASSIGN(Waveform);
 

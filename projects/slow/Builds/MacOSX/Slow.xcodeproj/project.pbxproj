@@ -17,6 +17,7 @@
 		0B0B76BE195D5E66053F1839 /* Font.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9E51C20884951529E731C3DB /* Font.pb.cc */; };
 		0D069C21F383CCDC2C80474A /* AudioTimeScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38B70BAED12B8E287997D2D1 /* AudioTimeScaler.cpp */; };
 		0D1EDCADAF2E1D65C8E0B210 /* OpenFolder.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA13203CE7FA3CC60614A2B1 /* OpenFolder.svg.cpp */; };
+		0D8E4CF3EB1A9EA475015448 /* Zoom.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = CCF0364EA0F9BEDA55DFDCD6 /* Zoom.pb.cc */; };
 		0D991B89B84527E6125EE2C0 /* Format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74AE435539E9D7FAA617231 /* Format.cpp */; };
 		1007BCA6FB20F2F0A1D0980E /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D1808F156C23D6DD357F18A0 /* tag.cpp */; };
 		1381038DADCCAA8C8FD62178 /* Compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D684E449C62B83120D33CA37 /* Compare.cpp */; };
@@ -203,6 +204,7 @@
 		094D996558EFAF59A1576B7C /* Reader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Reader.cpp; path = ../../../../src/rec/audio/format/mpg123/Reader.cpp; sourceTree = SOURCE_ROOT; };
 		09581CBCAE04688E5BF551DA /* Difference.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Difference.cpp; path = ../../../../src/rec/util/block/Difference.cpp; sourceTree = SOURCE_ROOT; };
 		09ADDC180247E7330B182E97 /* DoubleStretchy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DoubleStretchy.cpp; path = ../../../../src/rec/audio/source/DoubleStretchy.cpp; sourceTree = SOURCE_ROOT; };
+		0A5354FA92A4F142C87E6CA7 /* Zoom.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Zoom.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Zoom.pb.h; sourceTree = SOURCE_ROOT; };
 		0A94607F858A9F183DA7A8C4 /* Address.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Address.cpp; path = ../../../../src/rec/data/proto/Address.cpp; sourceTree = SOURCE_ROOT; };
 		0BB612C1E8140A577AA1D70E /* MediaOptical.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaOptical.svg.cpp; path = ../../../../src/rec/gui/icon/MediaOptical.svg.cpp; sourceTree = SOURCE_ROOT; };
 		0D197FE8A0242E8680628E1F /* CachedThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CachedThumbnail.h; path = ../../../../src/rec/gui/CachedThumbnail.h; sourceTree = SOURCE_ROOT; };
@@ -535,6 +537,7 @@
 		CB7C9B12C73DC0B8E5A924BD /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = node.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/node.h"; sourceTree = SOURCE_ROOT; };
 		CB9E256CE63C3E1E094228AA /* StretchyPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StretchyPlayer.cpp; path = ../../../../src/rec/slow/StretchyPlayer.cpp; sourceTree = SOURCE_ROOT; };
 		CCA271DB22A58D8F8AC93371 /* Status.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Status.pb.cc; path = ../../../../genfiles/proto/rec/widget/status/Status.pb.cc; sourceTree = SOURCE_ROOT; };
+		CCF0364EA0F9BEDA55DFDCD6 /* Zoom.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Zoom.pb.cc; path = ../../../../genfiles/proto/rec/widget/waveform/Zoom.pb.cc; sourceTree = SOURCE_ROOT; };
 		CE957C0F0BE731F6B69CDF54 /* TimeController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeController.cpp; path = ../../../../src/rec/slow/TimeController.cpp; sourceTree = SOURCE_ROOT; };
 		CEA9E1E1B40C2427E5AAA688 /* DriveOptical.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DriveOptical.svg.h; path = ../../../../src/rec/gui/icon/DriveOptical.svg.h; sourceTree = SOURCE_ROOT; };
 		CEAC70FBD5AC5BD1D686C92A /* Stereo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stereo.cpp; path = ../../../../src/rec/audio/source/Stereo.cpp; sourceTree = SOURCE_ROOT; };
@@ -648,20 +651,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E47DA7877F05A55BE66CAEF /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		0E5561BA8F7A19892CFB3AED /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,6 +811,8 @@
 				04AB15391D23794AF24FE608 /* Cursor.pb.h */,
 				4E1360033BDA98769499B7F3 /* Waveform.pb.cc */,
 				E033F8E4A6AFD0EB33ADAF0A /* Waveform.pb.h */,
+				CCF0364EA0F9BEDA55DFDCD6 /* Zoom.pb.cc */,
+				0A5354FA92A4F142C87E6CA7 /* Zoom.pb.h */,
 			);
 			name = waveform;
 			sourceTree = "<group>";
@@ -1331,6 +1322,20 @@
 			name = tree;
 			sourceTree = "<group>";
 		};
+		C57F856FC182606C20827074 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		C7FA3BF37B26C59BB5AF647B /* persist */ = {
 			isa = PBXGroup;
 			children = (
@@ -1572,7 +1577,7 @@
 				French,
 				German,
 			);
-			mainGroup = 0E47DA7877F05A55BE66CAEF /* Source */;
+			mainGroup = C57F856FC182606C20827074 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1755,6 +1760,7 @@
 				AE27C4083FBF5C660DA8A6E7 /* Path.pb.cc in Sources */,
 				C8E008E8CE6A2AD351B4F07C /* Cursor.pb.cc in Sources */,
 				FC3B0F3F33B09BA2B896123B /* Waveform.pb.cc in Sources */,
+				0D8E4CF3EB1A9EA475015448 /* Zoom.pb.cc in Sources */,
 				363D79B5ADAA58C67379104E /* Widget.pb.cc in Sources */,
 				BBF9C52A8F10B7D04B5FBEC9 /* Main.cpp in Sources */,
 				2AA4AAE5B28A49DC57D7FB21 /* JuceLibraryCode.mm in Sources */,

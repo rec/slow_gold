@@ -198,6 +198,7 @@
 		61C5B10123710440D037BA6B = { isa = PBXBuildFile; fileRef = ED4485581AE5524BD831272D; };
 		8C8EF5F1B31CD2BD2443F5F0 = { isa = PBXBuildFile; fileRef = 6BAB324E859953C427557146; };
 		AFD90C382871438C9B2526BE = { isa = PBXBuildFile; fileRef = 01B15D0C109C40606728BB77; };
+		C02C49FCD0CC569E489058CB = { isa = PBXBuildFile; fileRef = 8F9E235785AA76B5286DE05A; };
 		F9DC76BE825C10A0460824C1 = { isa = PBXBuildFile; fileRef = D641415BAEDB629018E8EF6E; };
 		7E97C22274C16FBA1EEEB24C = { isa = PBXBuildFile; fileRef = C31D0F94D3029871E21D6EA7; };
 		ED4397EE973B01B63A66FFA5 = { isa = PBXBuildFile; fileRef = 93BF2BCB183C30ABB83AB74A; };
@@ -657,6 +658,8 @@
 		C749113202E53134D5DDEA9C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cursor.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Cursor.pb.h; sourceTree = SOURCE_ROOT; };
 		01B15D0C109C40606728BB77 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Waveform.pb.cc; path = ../../../../genfiles/proto/rec/widget/waveform/Waveform.pb.cc; sourceTree = SOURCE_ROOT; };
 		A3D1E4ED9B5098C5063BB38D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Waveform.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Waveform.pb.h; sourceTree = SOURCE_ROOT; };
+		8F9E235785AA76B5286DE05A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Zoom.pb.cc; path = ../../../../genfiles/proto/rec/widget/waveform/Zoom.pb.cc; sourceTree = SOURCE_ROOT; };
+		CDF141037766B93C9B0D702B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Zoom.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Zoom.pb.h; sourceTree = SOURCE_ROOT; };
 		D641415BAEDB629018E8EF6E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.pb.cc; path = ../../../../genfiles/proto/rec/widget/Widget.pb.cc; sourceTree = SOURCE_ROOT; };
 		8720EE31C563EFDCEF44911C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Widget.pb.h; path = ../../../../genfiles/proto/rec/widget/Widget.pb.h; sourceTree = SOURCE_ROOT; };
 		C31D0F94D3029871E21D6EA7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../Main.cpp; sourceTree = SOURCE_ROOT; };
@@ -1190,7 +1193,9 @@
 				6BAB324E859953C427557146,
 				C749113202E53134D5DDEA9C,
 				01B15D0C109C40606728BB77,
-				A3D1E4ED9B5098C5063BB38D ); name = waveform; sourceTree = "<group>"; };
+				A3D1E4ED9B5098C5063BB38D,
+				8F9E235785AA76B5286DE05A,
+				CDF141037766B93C9B0D702B ); name = waveform; sourceTree = "<group>"; };
 		865617D983052FBE0ADDDEDF = { isa = PBXGroup; children = (
 				E73EBBD9EF8D94598E4A9B7E,
 				CAA91BF370E5FED4E96B8793,
@@ -1228,7 +1233,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		6EBE5A3753220525DD1A50C2 = { isa = PBXGroup; children = (
+		FD93D65E316BABAC06147130 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1493,6 +1498,7 @@
 				61C5B10123710440D037BA6B,
 				8C8EF5F1B31CD2BD2443F5F0,
 				AFD90C382871438C9B2526BE,
+				C02C49FCD0CC569E489058CB,
 				F9DC76BE825C10A0460824C1,
 				7E97C22274C16FBA1EEEB24C,
 				ED4397EE973B01B63A66FFA5 ); runOnlyForDeploymentPostprocessing = 0; };
@@ -1512,7 +1518,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 6EBE5A3753220525DD1A50C2; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = FD93D65E316BABAC06147130; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

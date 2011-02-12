@@ -106,11 +106,13 @@ void MainPage::operator()(const VirtualFile& file) {
     waveform_.setAudioThumbnail(NULL);
     loops_.setData(NULL);
     waveform_.setData(NULL);
+    waveform_.zoomData()->setData(NULL);
 
   } else {
     persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
     loops_.setData(listData);
     waveform_.setData(listData);
+    waveform_.zoomData()->setData(persist::data<ZoomProto>(file));
     if (listData->get().loop_point_size())
       listData->requestUpdate();
     else
