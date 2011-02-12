@@ -1,0 +1,8 @@
+package rec.widget.waveform;
+
+message ZoomProto {
+  optional double begin = 1;
+  optional double end = 2;
+  optional bool zoom_to_selection = 3;
+  optional bool follow_cursor = 4;
+};
