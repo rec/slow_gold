@@ -109,13 +109,14 @@ void Waveform::setTimeRange(const TimeRange& bounds) {
   resized();
 }
 
-
 int Waveform::timeToX(double t) const {
-  return static_cast<int>(getWidth() * (t - range_.begin_) / range_.size());
+  TimeRange range = getTimeRange();
+  return static_cast<int>(getWidth() * (t - range.begin_) / range.size());
 }
 
 double Waveform::xToTime(int x) const {
-  return range_.begin_ + (x * range_.size()) / getWidth();
+  TimeRange range = getTimeRange();
+  return range.begin_ + (x * range.size()) / getWidth();
 }
 
 void Waveform::operator()(const juce::AudioThumbnail&) {
@@ -137,6 +138,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
     cursors.insert(c.get());
     addAndMakeVisible(c.transfer());
   }
+
   while (getNumChildComponents() > size + 1)
     delete removeChildComponent(1);
 
@@ -172,7 +174,7 @@ void Waveform::operator()(const gui::LoopPointList& loopPoints) {
 
 const TimeRange Waveform::getTimeRange() const {
   ScopedLock l(lock_);
-  return TimeRange(zoom_.has_begin() ? zoom_.begin() : 0,
+  return TimeRange(zoom_.begin(),
                    zoom_.has_end() ? zoom_.end() :
                    thumbnail_ ? thumbnail_->getTotalLength() : 0);
 }
