@@ -15,10 +15,10 @@ class DoubleStretchy : public DoubleRunny {
   ~DoubleStretchy();
 
   virtual void prepareRunnyToPlay(Runny* runny);
-  void setLoopPosition(const StretchLoop& loop);
+  void setLoopPosition(const stretch::StretchLoop& loop);
 
  protected:
-  StretchLoop loop_;
+  stretch::StretchLoop loop_;
 
  private:
   const VirtualFile file_;

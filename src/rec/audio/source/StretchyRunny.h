@@ -11,7 +11,8 @@ namespace source {
 class Runny;
 class RunnyProto;
 
-Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
+Runny* stretchyRunny(const RunnyProto& desc, 
+                     const stretch::StretchLoop& loop,
                      int pos, PositionableAudioSource* s);
 
 }  // namespace source
