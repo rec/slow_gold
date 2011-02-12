@@ -42,7 +42,6 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();
 
-  const TimeRange getTimeRange() const;
 	void addAllCursors(const gui::LoopPointList& loopPoints);
 
   virtual void operator()(const juce::AudioThumbnail&);

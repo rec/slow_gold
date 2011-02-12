@@ -51,7 +51,7 @@ void Waveform::paint(Graphics& g) {
 
   if (thumbnail_) {
     SelectionRange::iterator i = selection_.begin();
-    TimeRange r = getTimeRange();
+    TimeRange r(zoom_.begin(), zoom_.end());
     const juce::Rectangle<int>& bounds = getLocalBounds();
     int channels = thumbnail_->getNumChannels();
 
@@ -91,13 +91,11 @@ void Waveform::paint(Graphics& g) {
 }
 
 int Waveform::timeToX(double t) const {
-  TimeRange range = getTimeRange();
-  return static_cast<int>(getWidth() * (t - range.begin_) / range.size());
+  return static_cast<int>(getWidth() * (t - zoom_.begin()) / (zoom_.end() - zoom_.begin()));
 }
 
 double Waveform::xToTime(int x) const {
-  TimeRange range = getTimeRange();
-  return range.begin_ + (x * range.size()) / getWidth();
+  return zoom_.begin() + (x *  (zoom_.end() - zoom_.begin())) / getWidth();
 }
 
 void Waveform::operator()(const juce::AudioThumbnail&) {
@@ -133,7 +131,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
       int j = i;
       for (; j < size && loopPoints.selected(j); ++j);
       double begin = loopPoints.loop_point(i).time();
-      double end = (j < size) ? loopPoints.loop_point(j).time() : getTimeRange().end_;
+      double end = (j < size) ? loopPoints.loop_point(j).time() : zoom_.end();
       selection_.insert(TimeRange(begin, end));
       i = j;
     }
@@ -155,31 +153,19 @@ void Waveform::operator()(const gui::LoopPointList& loopPoints) {
   thread::callAsync(this, &Waveform::addAllCursors, loopPoints);
 }
 
-const TimeRange Waveform::getTimeRange() const {
-  ScopedLock l(lock_);
-  return TimeRange(zoom_.begin(),
-#if 1
-                   zoom_.end());
-#else
-                   zoom_.has_end() ? zoom_.end() :
-                   thumbnail_ ? thumbnail_->getTotalLength() : 0);
-#endif
-}
-
 void Waveform::resized() {
   thread::runOnMessageThread(this, &Waveform::layoutCursors);
 }
 
 void Waveform::setCursorBounds(Cursor *cursor) const {
-  TimeRange range = getTimeRange();
   juce::Rectangle<int> bounds = getLocalBounds();
   int width = bounds.getWidth();
   int displayWidth = cursor->desc().display_width();
   int x = 0;
 
-  if (!Math<double>::near(range.begin_, range.end_, 0.001))
-    x = static_cast<int>(width * (cursor->getTime() - range.begin_) /
-                         (range.end_ - range.begin_));
+  if (!Math<double>::near(zoom_.begin(), zoom_.end(), 0.001))
+    x = static_cast<int>(width * (cursor->getTime() - zoom_.begin()) /
+                         (zoom_.end() - zoom_.begin()));
 
   bounds.setWidth(displayWidth);
   bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);
