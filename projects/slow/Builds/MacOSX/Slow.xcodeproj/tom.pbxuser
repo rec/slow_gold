@@ -552,6 +552,10 @@
 			E29BBF55130A45E60091D4CB /* PBXTextBookmark */ = E29BBF55130A45E60091D4CB /* PBXTextBookmark */;
 			E29BBF56130A45E60091D4CB /* PBXTextBookmark */ = E29BBF56130A45E60091D4CB /* PBXTextBookmark */;
 			E29BBF5F130A46A10091D4CB /* PBXTextBookmark */ = E29BBF5F130A46A10091D4CB /* PBXTextBookmark */;
+			E29BBF63130A47FD0091D4CB /* XCBuildMessageTextBookmark */ = E29BBF63130A47FD0091D4CB /* XCBuildMessageTextBookmark */;
+			E29BBF64130A48070091D4CB /* PBXTextBookmark */ = E29BBF64130A48070091D4CB /* PBXTextBookmark */;
+			E29BBF67130A48070091D4CB /* PBXTextBookmark */ = E29BBF67130A48070091D4CB /* PBXTextBookmark */;
+			E29BBF68130A480E0091D4CB /* PBXTextBookmark */ = E29BBF68130A480E0091D4CB /* PBXTextBookmark */;
 			E2E28AE912E6457B004DE2DE = E2E28AE912E6457B004DE2DE /* PBXTextBookmark */;
 			E2E28B4D12E6886C004DE2DE = E2E28B4D12E6886C004DE2DE /* PBXTextBookmark */;
 			E2EDAC0612FF6AF300CFF0DC = E2EDAC0612FF6AF300CFF0DC /* PBXTextBookmark */;
@@ -2661,6 +2665,58 @@
 		vrLoc = 0;
 	};
 	E29BBF5F130A46A10091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 105";
+		rLen = 0;
+		rLoc = 2697;
+		rType = 0;
+		vrLen = 1368;
+		vrLoc = 254;
+	};
+	E29BBF62130A47FD0091D4CB /* Loops.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Loops.h;
+		path = ../../../../../rec/src/rec/gui/Loops.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 650}}";
+			sepNavSelRange = "{390, 0}";
+			sepNavVisRange = "{0, 906}";
+			sepNavWindowFrame = "{{84, 402}, {750, 558}}";
+		};
+	};
+	E29BBF63130A47FD0091D4CB /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected class-name before '{' token";
+		fRef = E29BBF62130A47FD0091D4CB /* Loops.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	E29BBF64130A48070091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 105";
+		rLen = 0;
+		rLoc = 2697;
+		rType = 0;
+		vrLen = 1368;
+		vrLoc = 254;
+	};
+	E29BBF67130A48070091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BBF62130A47FD0091D4CB /* Loops.h */;
+		name = "Loops.h: 15";
+		rLen = 0;
+		rLoc = 390;
+		rType = 0;
+		vrLen = 906;
+		vrLoc = 0;
+	};
+	E29BBF68130A480E0091D4CB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
 		name = "Cursor.cpp: 105";

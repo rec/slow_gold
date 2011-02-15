@@ -3,14 +3,17 @@
 
 #include "rec/gui/LoopPoint.pb.h"
 #include "rec/gui/TableController.h"
-#include "rec/util/Math.h"
 #include "rec/util/Cuttable.h"
+#include "rec/util/Math.h"
 #include "rec/util/Range.h"
+#include "rec/util/listener/Listener.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace gui {
 
-class Loops : public TableController, public Cuttable {
+class Loops : public TableController, public Cuttable,
+              public Listener<const widget::waveform::CursorTime&> {
  public:
   explicit Loops(const TableColumnList* desc = NULL);
   virtual ~Loops();
@@ -36,6 +39,7 @@ class Loops : public TableController, public Cuttable {
 
   virtual void selectedRowsChanged(int lastRowSelected);
   virtual bool keyPressed(const juce::KeyPress& kp);
+  virtual void operator()(const widget::waveform::CursorTime&);
 
  private:
   double length_;
