@@ -556,6 +556,17 @@
 			E29BBF64130A48070091D4CB /* PBXTextBookmark */ = E29BBF64130A48070091D4CB /* PBXTextBookmark */;
 			E29BBF67130A48070091D4CB /* PBXTextBookmark */ = E29BBF67130A48070091D4CB /* PBXTextBookmark */;
 			E29BBF68130A480E0091D4CB /* PBXTextBookmark */ = E29BBF68130A480E0091D4CB /* PBXTextBookmark */;
+			E29BBF6D130A48DF0091D4CB /* PBXTextBookmark */ = E29BBF6D130A48DF0091D4CB /* PBXTextBookmark */;
+			E29BBF6E130A48DF0091D4CB /* XCBuildMessageTextBookmark */ = E29BBF6E130A48DF0091D4CB /* XCBuildMessageTextBookmark */;
+			E29BBF70130A48DF0091D4CB /* PBXTextBookmark */ = E29BBF70130A48DF0091D4CB /* PBXTextBookmark */;
+			E29BBF71130A48DF0091D4CB /* PBXTextBookmark */ = E29BBF71130A48DF0091D4CB /* PBXTextBookmark */;
+			E29BBF72130A48DF0091D4CB /* PBXTextBookmark */ = E29BBF72130A48DF0091D4CB /* PBXTextBookmark */;
+			E29BBF73130A48DF0091D4CB /* PBXTextBookmark */ = E29BBF73130A48DF0091D4CB /* PBXTextBookmark */;
+			E29BBF74130A48DF0091D4CB /* PBXTextBookmark */ = E29BBF74130A48DF0091D4CB /* PBXTextBookmark */;
+			E29BBF75130A48DF0091D4CB /* XCBuildMessageTextBookmark */ = E29BBF75130A48DF0091D4CB /* XCBuildMessageTextBookmark */;
+			E29BBF77130A48DF0091D4CB /* PBXTextBookmark */ = E29BBF77130A48DF0091D4CB /* PBXTextBookmark */;
+			E29BBF78130A48E00091D4CB /* PBXTextBookmark */ = E29BBF78130A48E00091D4CB /* PBXTextBookmark */;
+			E29BBF7C130A493D0091D4CB /* PBXTextBookmark */ = E29BBF7C130A493D0091D4CB /* PBXTextBookmark */;
 			E2E28AE912E6457B004DE2DE = E2E28AE912E6457B004DE2DE /* PBXTextBookmark */;
 			E2E28B4D12E6886C004DE2DE = E2E28B4D12E6886C004DE2DE /* PBXTextBookmark */;
 			E2EDAC0612FF6AF300CFF0DC = E2EDAC0612FF6AF300CFF0DC /* PBXTextBookmark */;
@@ -2664,6 +2675,19 @@
 		vrLen = 724;
 		vrLoc = 0;
 	};
+	E29BBF5B130A46930091D4CB /* Waveform.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Waveform.h;
+		path = ../../../../../rec/src/rec/widget/waveform/Waveform.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 1482}}";
+			sepNavSelRange = "{266, 0}";
+			sepNavVisRange = "{0, 1207}";
+			sepNavWindowFrame = "{{61, 423}, {750, 558}}";
+		};
+	};
 	E29BBF5F130A46A10091D4CB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
@@ -2717,6 +2741,127 @@
 		vrLoc = 0;
 	};
 	E29BBF68130A480E0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 105";
+		rLen = 0;
+		rLoc = 2697;
+		rType = 0;
+		vrLen = 1368;
+		vrLoc = 254;
+	};
+	E29BBF6D130A48DF0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1061CA02BB8B9CB5FCB22775 /* DoubleRunnyBuffer.cpp */;
+		name = "DoubleRunnyBuffer.cpp: 72";
+		rLen = 0;
+		rLoc = 2147;
+		rType = 0;
+		vrLen = 1152;
+		vrLoc = 1407;
+	};
+	E29BBF6E130A48DF0091D4CB /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected ',' or '...' before '&' token";
+		fRef = E29BBF6F130A48DF0091D4CB /* Cursor.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 29;
+		rType = 1;
+	};
+	E29BBF6F130A48DF0091D4CB /* Cursor.h */ = {
+		isa = PBXFileReference;
+		name = Cursor.h;
+		path = ../../../../../rec/src/rec/widget/waveform/Cursor.h;
+		sourceTree = "<group>";
+	};
+	E29BBF70130A48DF0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 57BAD6CA05CE71056CAFCC77 /* Cursor.h */;
+		name = "Cursor.h: 58";
+		rLen = 0;
+		rLoc = 1377;
+		rType = 0;
+		vrLen = 1128;
+		vrLoc = 0;
+	};
+	E29BBF71130A48DF0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 105";
+		rLen = 0;
+		rLoc = 2661;
+		rType = 0;
+		vrLen = 1190;
+		vrLoc = 1471;
+	};
+	E29BBF72130A48DF0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20F428DEA148977B8CCBA4AC /* Waveform.cpp */;
+		name = "Waveform.cpp: 27";
+		rLen = 0;
+		rLoc = 690;
+		rType = 0;
+		vrLen = 1128;
+		vrLoc = 83;
+	};
+	E29BBF73130A48DF0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BBF4D130A455C0091D4CB /* Waveform.h */;
+		name = "Waveform.h: 112";
+		rLen = 0;
+		rLoc = 2939;
+		rType = 0;
+		vrLen = 1310;
+		vrLoc = 0;
+	};
+	E29BBF74130A48DF0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
+		name = "MainPage.cpp: 32";
+		rLen = 0;
+		rLoc = 955;
+		rType = 0;
+		vrLen = 1396;
+		vrLoc = 194;
+	};
+	E29BBF75130A48DF0091D4CB /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Rec/util/listener/Broadcaster.h: No such file or directory";
+		fRef = E29BBF76130A48DF0091D4CB /* Waveform.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 10;
+		rType = 1;
+	};
+	E29BBF76130A48DF0091D4CB /* Waveform.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Waveform.h;
+		path = ../../../../../rec/src/rec/widget/waveform/Waveform.h;
+		sourceTree = "<group>";
+	};
+	E29BBF77130A48DF0091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29BBF5B130A46930091D4CB /* Waveform.h */;
+		name = "Waveform.h: 11";
+		rLen = 0;
+		rLoc = 266;
+		rType = 0;
+		vrLen = 1207;
+		vrLoc = 0;
+	};
+	E29BBF78130A48E00091D4CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
+		name = "Cursor.cpp: 105";
+		rLen = 0;
+		rLoc = 2697;
+		rType = 0;
+		vrLen = 1269;
+		vrLoc = 254;
+	};
+	E29BBF7C130A493D0091D4CB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 5BED0EFFD46A27023555D6DA /* Cursor.cpp */;
 		name = "Cursor.cpp: 105";

@@ -28,6 +28,7 @@ class TableController : public TableListBoxModel,
   void set(const Value& v);
 
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
+  void repaint() { TableListBox::repaint(); }
 
  protected:
   // onDataChange() is called to update the GUI when the persistent data

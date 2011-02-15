@@ -84,10 +84,13 @@ void TableController::onDataChange() {
 
 void TableController::set(const Value& v) {
   ScopedLock l(lock_);
-  if (message_.get()->ParseFromString(v.message_f()))
+  if (message_.get()->ParseFromString(v.message_f())) {
     onDataChange();
-  else
+    thread::callAsync(this, &TableController::repaint);
+
+  } else {
     LOG(ERROR) << "Couldn't parse value: " << message_->DebugString();
+  }
 }
 
 void TableController::setData(UntypedData* data) {

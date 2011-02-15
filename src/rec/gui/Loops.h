@@ -12,7 +12,8 @@
 namespace rec {
 namespace gui {
 
-class Loops : public TableController, public Cuttable,
+class Loops : public TableController,
+              public Cuttable,
               public Listener<const widget::waveform::CursorTime&> {
  public:
   explicit Loops(const TableColumnList* desc = NULL);
@@ -36,6 +37,7 @@ class Loops : public TableController, public Cuttable,
   TimeRange selectionRange() const;
   void clearSelection();
   void clearLoops();
+  void repaint() { TableListBox::repaint(); }
 
   virtual void selectedRowsChanged(int lastRowSelected);
   virtual bool keyPressed(const juce::KeyPress& kp);

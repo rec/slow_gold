@@ -26,12 +26,15 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   player_.getTransport()->addListener(waveform_.timeCursor());
   player_.getTransport()->addListener(this);
   player_.getTransport()->addListener(controller_.timeController());
-  waveform_.selectionBroadcaster()->addListener(controller_.timeController());
-  waveform_.selectionBroadcaster()->addListener(this);
 
   waveform_.addListener(this);
+  waveform_.selectionBroadcaster()->addListener(controller_.timeController());
+  waveform_.selectionBroadcaster()->addListener(this);
+  waveform_.cursorTimeBroadcaster()->addListener(&loops_);
   waveform_.dropBroadcaster()->addListener(player_.fileListener());
+
   directory_->addListener(player_.fileListener());
+
   player_.addListener(this);
 
   directory_->startThread();
