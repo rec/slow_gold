@@ -12,8 +12,11 @@ void Stereo::setDesc(const StereoProto& desc) {
 }
 
 void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  source()->getNextAudioBlock(info);
   StereoProto::Type type = desc_.type();
+  DCHECK_GE(type, StereoProto::PASSTHROUGH);
+  DCHECK_LE(type, StereoProto::CENTER_ELIMINATION_MONO);
+
+  source()->getNextAudioBlock(info);
 
   if (type == StereoProto::PASSTHROUGH)
     return;
@@ -25,6 +28,8 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   AudioSampleBuffer& b = *info.buffer;
   int n = b.getNumSamples();
   StereoProto::Side side = desc_.side();
+  DCHECK_GE(side, StereoProto::LEFT);
+  DCHECK_LE(side, StereoProto::RIGHT);
 
   if (type == StereoProto::SINGLE) {
     b.copyFrom(StereoProto::RIGHT - side, 0, b, side, 0, n);
@@ -38,8 +43,10 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
     if (type == StereoProto::CENTER_ELIMINATION)
       b.addFrom(StereoProto::RIGHT - side, 0, b, side, 0, n, -1.0);
-    else
+
+    else if (type == StereoProto::CENTER_ELIMINATION_MONO)
       b.copyFrom(StereoProto::RIGHT - side, 0, b, side, 0, n);
+
   }
 }
 

@@ -2,6 +2,7 @@
 
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/source/Seggy.h"
+#include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Stretchy.h"
 #include "rec/util/ShouldExit.h"
 
@@ -23,6 +24,8 @@ Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
         near(stretch::pitchScale(stretch), 1.0, DELTA))) {
     source.reset(new Stretchy(source.transfer(), stretch));
   }
+
+  source.reset(new Stereo(source.transfer(), stretch.stereo()));
 
   if (loop.has_loop()) {
     // int len = s->getTotalLength();

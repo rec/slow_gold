@@ -53,10 +53,6 @@ DoubleRunnyBuffer::~DoubleRunnyBuffer() {
   stretchy_.shutdown();
 }
 
-void DoubleRunnyBuffer::operator()(const StretchLoop& p) {
-  setLoop(p);
-}
-
 bool DoubleRunnyBuffer::fillFromPosition(int pos) {
   buffer_->setPosition(pos);
   return buffer_->waitUntilFilled(block::Block(pos, pos + BUFFER_READAHEAD));
@@ -73,7 +69,7 @@ void DoubleRunnyBuffer::run() {
     cachedThumbnail_->writeThumbnail(true);
 }
 
-void DoubleRunnyBuffer::setLoop(const StretchLoop& loop) {
+void DoubleRunnyBuffer::operator()(const StretchLoop& loop) {
   if (threadShouldExit())
     return;
 

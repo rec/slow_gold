@@ -37,7 +37,7 @@ class DoubleRunnyBuffer : public Thread,
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
-  void setLoop(const StretchLoop& loop);
+  void setLoop(const StretchLoop& loop) { (*this)(loop); }
 
   DoubleRunny stretchy_;
   const RunnyProto runnyDesc_;
