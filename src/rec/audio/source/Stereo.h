@@ -1,8 +1,8 @@
 #ifndef __REC_AUDIO_SOURCE_STEREO__
 #define __REC_AUDIO_SOURCE_STEREO__
 
-#include "rec/base/base.h"
 #include "rec/audio/source/Wrappy.h"
+#include "rec/audio/source/Stereo.pb.h"
 
 namespace rec {
 namespace audio {
@@ -10,25 +10,16 @@ namespace source {
 
 class Stereo : public Wrappy {
  public:
-  enum Type {
-    PASSTHROUGH,
-    SINGLE,
-    INVERT,
-    CENTER_ELIMINATION,
-    CENTER_ELIMINATION_MONO
-  };
+  Stereo(PositionableAudioSource* source,
+         const StereoProto& desc = StereoProto::default_instance())
+      : Wrappy(source), desc_(desc) {
+  }
 
-  enum Side { LEFT, RIGHT };
-
-  Stereo(PositionableAudioSource* source) : Wrappy(source), type_(PASSTHROUGH), side_(LEFT) {}
-
-  void setType(Type type);
-  void setSide(Side side);
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
+  void setDesc(const StereoProto&);
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
  private:
-  Type type_;
-  Side side_;
+  StereoProto desc_;
   CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(Stereo);

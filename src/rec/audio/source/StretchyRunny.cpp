@@ -5,7 +5,7 @@
 #include "rec/audio/source/Stretchy.h"
 #include "rec/util/ShouldExit.h"
 
-using rec::audio::stretch::StretchLoop;
+using namespace rec::audio::stretch;
 
 namespace rec {
 namespace audio {

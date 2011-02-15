@@ -1,4 +1,5 @@
 #include "rec/widget/waveform/Waveform.h"
+
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
@@ -186,7 +187,7 @@ TimeRange Waveform::getTimeRange() const {
     r.begin_ = zoom_.begin();
     r.end_= zoom_.end();
   }
-  // DLOG(INFO) << "! " << r.begin_ << ", " << r.end_;
+
   return r;
 }
 

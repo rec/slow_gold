@@ -1,0 +1,19 @@
+package rec.audio.source;
+
+message StereoProto {
+  enum Side {
+    LEFT = 0;
+    RIGHT = 1;
+  };
+
+  enum Type {
+    PASSTHROUGH = 0;
+    SINGLE = 1;
+    INVERT = 2;
+    CENTER_ELIMINATION = 3;
+    CENTER_ELIMINATION_MONO = 3;
+  };
+
+  optional Type type = 1;
+  optional Side side = 2;
+};

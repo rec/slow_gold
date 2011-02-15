@@ -6,37 +6,40 @@ namespace rec {
 namespace audio {
 namespace source {
 
-void Stereo::setType(Type type) {
+void Stereo::setDesc(const StereoProto& desc) {
   ScopedLock l(lock_);
-  type_ = type;
-}
-
-void Stereo::setSide(Side side) {
-  ScopedLock l(lock_);
-  side_ = side;
+  desc_ = desc;
 }
 
 void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   source()->getNextAudioBlock(info);
-  if (type_ == PASSTHROUGH || info.buffer->getNumChannels() != 2)
+  StereoProto::Type type = desc_.type();
+
+  if (type == StereoProto::PASSTHROUGH)
     return;
+
+  DCHECK_NE(info.buffer->getNumChannels(), 2);
+  if (info.buffer->getNumChannels() != 2)
+    return ;
 
   AudioSampleBuffer& b = *info.buffer;
   int n = b.getNumSamples();
-  if (type_ == SINGLE) {
-    b.copyFrom(RIGHT - side_, 0, b, side_, 0, n);
+  StereoProto::Side side = desc_.side();
 
-  } else if (type_ == INVERT) {
-    b.applyGain(side_, 0, n, -1.0);
+  if (type == StereoProto::SINGLE) {
+    b.copyFrom(StereoProto::RIGHT - side, 0, b, side, 0, n);
+
+  } else if (type == StereoProto::INVERT) {
+    b.applyGain(side, 0, n, -1.0);
 
   } else {
-    b.addFrom(side_, 0, b, RIGHT - side_, 0, n, -1.0);
-    b.applyGain(side_, 0, n, 0.5);
+    b.addFrom(side, 0, b, StereoProto::RIGHT - side, 0, n, -1.0);
+    b.applyGain(side, 0, n, 0.5);
 
-    if (type_ == CENTER_ELIMINATION)
-      b.addFrom(RIGHT - side_, 0, b, side_, 0, n, -1.0);
+    if (type == StereoProto::CENTER_ELIMINATION)
+      b.addFrom(StereoProto::RIGHT - side, 0, b, side, 0, n, -1.0);
     else
-      b.copyFrom(RIGHT - side_, 0, b, side_, 0, n);
+      b.copyFrom(StereoProto::RIGHT - side, 0, b, side, 0, n);
   }
 }
 

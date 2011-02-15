@@ -65,11 +65,20 @@ void Cursor::paint(Graphics& g) {
   Painter p(desc_.widget(), &g);
 
   juce::Rectangle<int> bounds = getLocalBounds();
+  DLOG(INFO) << "bounds " << bounds.getX() << ", " << bounds.getY()
+             << ", " << bounds.getWidth()
+             << ", " << bounds.getHeight();
 
   double middle = bounds.getWidth() / 2.0f;
   double margin = static_cast<double>(desc_.widget().margin());
   double bottom = bounds.getHeight() - 2.0f * margin;
 
+#if 1
+  if (isMouseOverOrDragging())
+    p.setColor(Painter::HIGHLIGHT);
+#endif
+
+  g.setColour(juce::Colours::red);
   gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
 }
 

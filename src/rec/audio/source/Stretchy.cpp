@@ -3,6 +3,8 @@
 using namespace juce;
 using namespace google;
 
+using rec::audio::stretch::Stretch;
+
 namespace rec {
 namespace audio {
 namespace source {
@@ -18,15 +20,15 @@ Stretchy::Stretchy(PositionableAudioSource* s, const Stretch& desc)
 Stretchy::~Stretchy() {}
 
 int64 Stretchy::getTotalLength() const {
-  return source()->getTotalLength() * description_.time_scale();
+  return source()->getTotalLength() * timeScale(description_);
 }
 
 int64 Stretchy::getNextReadPosition() const {
-  return source()->getNextReadPosition() * description_.time_scale();
+  return source()->getNextReadPosition() * timeScale(description_);
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
-  source()->setNextReadPosition(position / description_.time_scale());
+  source()->setNextReadPosition(position / timeScale(description_));
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {

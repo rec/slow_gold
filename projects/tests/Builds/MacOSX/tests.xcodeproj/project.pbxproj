@@ -174,6 +174,7 @@
 		75B719C3233AD8BB35DF4F96 = { isa = PBXBuildFile; fileRef = 5BCBDE3E20ED6F95AE135DBA; };
 		C9454269C4879B0B326CBDF1 = { isa = PBXBuildFile; fileRef = BE611F67A9ACD509FB4DC5A6; };
 		7AAF5017443E60A17C538F10 = { isa = PBXBuildFile; fileRef = 00C4E097C1D4856FA6B4DAAF; };
+		2BC3C8761ACCCBE3EDB638A6 = { isa = PBXBuildFile; fileRef = 4B52C31ADA58A7C94608CBF3; };
 		1EB19D5916A5FDA64F21EA12 = { isa = PBXBuildFile; fileRef = 18AF5E1223699CB322A01CC3; };
 		85045BBE7B1CE56F6B1E3DCE = { isa = PBXBuildFile; fileRef = 30E5561BA8F7A19892CFB3AE; };
 		5FCEE20188FFBB69AB5EC1E1 = { isa = PBXBuildFile; fileRef = CB1E380AFB413104C18B62F2; };
@@ -610,6 +611,8 @@
 		9D4FAB153E39383D18014F1A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Access.pb.h; path = ../../../../genfiles/proto/rec/access/Access.pb.h; sourceTree = SOURCE_ROOT; };
 		00C4E097C1D4856FA6B4DAAF = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Runny.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Runny.pb.cc; sourceTree = SOURCE_ROOT; };
 		375C6917153C53EC6388B40B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Runny.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Runny.pb.h; sourceTree = SOURCE_ROOT; };
+		4B52C31ADA58A7C94608CBF3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stereo.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.cc; sourceTree = SOURCE_ROOT; };
+		E531336AB5D9F5BC891D55B8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stereo.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.h; sourceTree = SOURCE_ROOT; };
 		18AF5E1223699CB322A01CC3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.pb.cc; path = ../../../../genfiles/proto/rec/audio/stretch/Stretch.pb.cc; sourceTree = SOURCE_ROOT; };
 		14D7DC2CB1C86159ABABA72A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stretch.pb.h; path = ../../../../genfiles/proto/rec/audio/stretch/Stretch.pb.h; sourceTree = SOURCE_ROOT; };
 		30E5561BA8F7A19892CFB3AE = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioDeviceSetup.pb.cc; path = ../../../../genfiles/proto/rec/audio/util/AudioDeviceSetup.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -1124,7 +1127,9 @@
 				9D4FAB153E39383D18014F1A ); name = access; sourceTree = "<group>"; };
 		D9509965B6E9A96454A73683 = { isa = PBXGroup; children = (
 				00C4E097C1D4856FA6B4DAAF,
-				375C6917153C53EC6388B40B ); name = source; sourceTree = "<group>"; };
+				375C6917153C53EC6388B40B,
+				4B52C31ADA58A7C94608CBF3,
+				E531336AB5D9F5BC891D55B8 ); name = source; sourceTree = "<group>"; };
 		E0715BED1B299348F9621C18 = { isa = PBXGroup; children = (
 				18AF5E1223699CB322A01CC3,
 				14D7DC2CB1C86159ABABA72A ); name = stretch; sourceTree = "<group>"; };
@@ -1233,7 +1238,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		FD93D65E316BABAC06147130 = { isa = PBXGroup; children = (
+		E1BE105BD85CA458013993C0 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1474,6 +1479,7 @@
 				75B719C3233AD8BB35DF4F96,
 				C9454269C4879B0B326CBDF1,
 				7AAF5017443E60A17C538F10,
+				2BC3C8761ACCCBE3EDB638A6,
 				1EB19D5916A5FDA64F21EA12,
 				85045BBE7B1CE56F6B1E3DCE,
 				5FCEE20188FFBB69AB5EC1E1,
@@ -1518,7 +1524,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = FD93D65E316BABAC06147130; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = E1BE105BD85CA458013993C0; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

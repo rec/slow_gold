@@ -74,6 +74,7 @@
 		65190ED2519CF928A99C9072 /* nodebuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48EB8180E2C24EAFE50DFFB /* nodebuilder.cpp */; };
 		65769E1F73B8F7362FB764DB /* Panes.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 24A0BEC00ACCEC6FABBB97FA /* Panes.pb.cc */; };
 		665E882C78FA7B5A393713A5 /* MediaPlay.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02CB509D623C2C0701854DB6 /* MediaPlay.svg.cpp */; };
+		6825CB6D250B13081A172422 /* Stereo.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 88B4D611F5A7FFDF737AB770 /* Stereo.pb.cc */; };
 		68BCD40D12F9CB114D6B8C09 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7234162EF60CC8CA998882E9 /* NewHandle.cpp */; };
 		6B13905021E445BC6C92D69E /* Stretch.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 550152193EB8E4C95F11184F /* Stretch.pb.cc */; };
 		6B61D904114B0EF8CFE27749 /* sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBCA7FFD1DE92D807F41C69E /* sequence.cpp */; };
@@ -244,6 +245,7 @@
 		20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Waveform.cpp; path = ../../../../src/rec/widget/waveform/Waveform.cpp; sourceTree = SOURCE_ROOT; };
 		2156D158361076E91DD5D101 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2229918D7B3E59F708F34D9B /* AppDirectory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDirectory.h; path = ../../../../src/rec/data/persist/AppDirectory.h; sourceTree = SOURCE_ROOT; };
+		22934661D0184DD2B68F4124 /* Stereo.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stereo.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.h; sourceTree = SOURCE_ROOT; };
 		22E6A127E8EA05C450A50D59 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../../../../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
 		237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = SOURCE_ROOT; };
 		23A34552B919AAB64559DBDA /* Widget.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.pb.cc; path = ../../../../genfiles/proto/rec/widget/Widget.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -407,6 +409,7 @@
 		85339B7515CA2AACDB4BF810 /* UntypedDataListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedDataListener.h; path = ../../../../src/rec/util/listener/UntypedDataListener.h; sourceTree = SOURCE_ROOT; };
 		86CA505FA866779DAF3A7388 /* DoubleRunnyBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DoubleRunnyBuffer.h; path = ../../../../src/rec/audio/source/DoubleRunnyBuffer.h; sourceTree = SOURCE_ROOT; };
 		887A5A2C0E55D7C233AFDF29 /* hfft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hfft.h; path = ../../../../src/rec/audio/ammf_scaler/hfft.h; sourceTree = SOURCE_ROOT; };
+		88B4D611F5A7FFDF737AB770 /* Stereo.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stereo.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.cc; sourceTree = SOURCE_ROOT; };
 		88C80D4AC91778AF36BD5055 /* stream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stream.cpp; path = ../../../../src/rec/data/yaml/src/stream.cpp; sourceTree = SOURCE_ROOT; };
 		88CF7BFEBA41A31A25D4C87F /* RecWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RecWindow.cpp; path = ../../../../src/rec/slow/RecWindow.cpp; sourceTree = SOURCE_ROOT; };
 		88FDDC0F38B4605B01BD752F /* DedupeCDDB.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DedupeCDDB.cpp; path = ../../../../src/rec/util/cd/DedupeCDDB.cpp; sourceTree = SOURCE_ROOT; };
@@ -914,6 +917,20 @@
 			name = listener;
 			sourceTree = "<group>";
 		};
+		654D768BB345E74F4E4FDF94 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		6C6D775F12CEA14261B879BE /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,20 +1339,6 @@
 			name = tree;
 			sourceTree = "<group>";
 		};
-		C57F856FC182606C20827074 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		C7FA3BF37B26C59BB5AF647B /* persist */ = {
 			isa = PBXGroup;
 			children = (
@@ -1517,6 +1520,8 @@
 			children = (
 				5C25F39EEC13CD85D325D62B /* Runny.pb.cc */,
 				73BE6D1E208BAB0190FAA087 /* Runny.pb.h */,
+				88B4D611F5A7FFDF737AB770 /* Stereo.pb.cc */,
+				22934661D0184DD2B68F4124 /* Stereo.pb.h */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -1577,7 +1582,7 @@
 				French,
 				German,
 			);
-			mainGroup = C57F856FC182606C20827074 /* Source */;
+			mainGroup = 654D768BB345E74F4E4FDF94 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1736,6 +1741,7 @@
 				8288C37D4E9792C7A924D0BF /* Widget.cpp in Sources */,
 				06A75560DFD6D3116FDDB97D /* Access.pb.cc in Sources */,
 				B701640E5F7DB8B799C48B9C /* Runny.pb.cc in Sources */,
+				6825CB6D250B13081A172422 /* Stereo.pb.cc in Sources */,
 				6B13905021E445BC6C92D69E /* Stretch.pb.cc in Sources */,
 				C2766EB5965B2E85988F383A /* AudioDeviceSetup.pb.cc in Sources */,
 				AC20F608A33D038ED8CFBD6D /* Event.pb.cc in Sources */,

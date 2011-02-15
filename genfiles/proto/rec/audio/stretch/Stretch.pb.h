@@ -23,6 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
+#include "rec/audio/source/Stereo.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -107,6 +108,13 @@ class Stretch : public ::google::protobuf::Message {
   static const int kPassthroughWhenDisabledFieldNumber = 16;
   inline bool passthrough_when_disabled() const;
   inline void set_passthrough_when_disabled(bool value);
+  
+  // optional .rec.audio.source.StereoProto stereo = 17;
+  inline bool has_stereo() const;
+  inline void clear_stereo();
+  static const int kStereoFieldNumber = 17;
+  inline const ::rec::audio::source::StereoProto& stereo() const;
+  inline ::rec::audio::source::StereoProto* mutable_stereo();
   
   // optional double time_scale = 1 [default = 1];
   inline bool has_time_scale() const;
@@ -213,6 +221,7 @@ class Stretch : public ::google::protobuf::Message {
   
   bool disabled_;
   bool passthrough_when_disabled_;
+  ::rec::audio::source::StereoProto* stereo_;
   double time_scale_;
   double time_percent_;
   double sample_rate_;
@@ -231,7 +240,7 @@ class Stretch : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(16 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(17 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -480,227 +489,244 @@ inline void Stretch::set_passthrough_when_disabled(bool value) {
   passthrough_when_disabled_ = value;
 }
 
+// optional .rec.audio.source.StereoProto stereo = 17;
+inline bool Stretch::has_stereo() const {
+  return _has_bit(2);
+}
+inline void Stretch::clear_stereo() {
+  if (stereo_ != NULL) stereo_->::rec::audio::source::StereoProto::Clear();
+  _clear_bit(2);
+}
+inline const ::rec::audio::source::StereoProto& Stretch::stereo() const {
+  return stereo_ != NULL ? *stereo_ : *default_instance_->stereo_;
+}
+inline ::rec::audio::source::StereoProto* Stretch::mutable_stereo() {
+  _set_bit(2);
+  if (stereo_ == NULL) stereo_ = new ::rec::audio::source::StereoProto;
+  return stereo_;
+}
+
 // optional double time_scale = 1 [default = 1];
 inline bool Stretch::has_time_scale() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void Stretch::clear_time_scale() {
   time_scale_ = 1;
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline double Stretch::time_scale() const {
   return time_scale_;
 }
 inline void Stretch::set_time_scale(double value) {
-  _set_bit(2);
+  _set_bit(3);
   time_scale_ = value;
 }
 
 // optional double time_percent = 14 [default = 100];
 inline bool Stretch::has_time_percent() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Stretch::clear_time_percent() {
   time_percent_ = 100;
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline double Stretch::time_percent() const {
   return time_percent_;
 }
 inline void Stretch::set_time_percent(double value) {
-  _set_bit(3);
+  _set_bit(4);
   time_percent_ = value;
 }
 
 // optional double sample_rate = 2 [default = 44100];
 inline bool Stretch::has_sample_rate() const {
-  return _has_bit(4);
+  return _has_bit(5);
 }
 inline void Stretch::clear_sample_rate() {
   sample_rate_ = 44100;
-  _clear_bit(4);
+  _clear_bit(5);
 }
 inline double Stretch::sample_rate() const {
   return sample_rate_;
 }
 inline void Stretch::set_sample_rate(double value) {
-  _set_bit(4);
+  _set_bit(5);
   sample_rate_ = value;
 }
 
 // optional uint32 channels = 3 [default = 2];
 inline bool Stretch::has_channels() const {
-  return _has_bit(5);
+  return _has_bit(6);
 }
 inline void Stretch::clear_channels() {
   channels_ = 2u;
-  _clear_bit(5);
+  _clear_bit(6);
 }
 inline ::google::protobuf::uint32 Stretch::channels() const {
   return channels_;
 }
 inline void Stretch::set_channels(::google::protobuf::uint32 value) {
-  _set_bit(5);
+  _set_bit(6);
   channels_ = value;
 }
 
 // optional double pitch_scale = 4 [default = 1];
 inline bool Stretch::has_pitch_scale() const {
-  return _has_bit(6);
+  return _has_bit(7);
 }
 inline void Stretch::clear_pitch_scale() {
   pitch_scale_ = 1;
-  _clear_bit(6);
+  _clear_bit(7);
 }
 inline double Stretch::pitch_scale() const {
   return pitch_scale_;
 }
 inline void Stretch::set_pitch_scale(double value) {
-  _set_bit(6);
+  _set_bit(7);
   pitch_scale_ = value;
 }
 
 // optional double semitone_shift = 5 [default = 0];
 inline bool Stretch::has_semitone_shift() const {
-  return _has_bit(7);
+  return _has_bit(8);
 }
 inline void Stretch::clear_semitone_shift() {
   semitone_shift_ = 0;
-  _clear_bit(7);
+  _clear_bit(8);
 }
 inline double Stretch::semitone_shift() const {
   return semitone_shift_;
 }
 inline void Stretch::set_semitone_shift(double value) {
-  _set_bit(7);
+  _set_bit(8);
   semitone_shift_ = value;
 }
 
 // optional double detune_cents = 6 [default = 0];
 inline bool Stretch::has_detune_cents() const {
-  return _has_bit(8);
+  return _has_bit(9);
 }
 inline void Stretch::clear_detune_cents() {
   detune_cents_ = 0;
-  _clear_bit(8);
+  _clear_bit(9);
 }
 inline double Stretch::detune_cents() const {
   return detune_cents_;
 }
 inline void Stretch::set_detune_cents(double value) {
-  _set_bit(8);
+  _set_bit(9);
   detune_cents_ = value;
 }
 
 // optional uint32 bands = 7 [default = 2048];
 inline bool Stretch::has_bands() const {
-  return _has_bit(9);
+  return _has_bit(10);
 }
 inline void Stretch::clear_bands() {
   bands_ = 2048u;
-  _clear_bit(9);
+  _clear_bit(10);
 }
 inline ::google::protobuf::uint32 Stretch::bands() const {
   return bands_;
 }
 inline void Stretch::set_bands(::google::protobuf::uint32 value) {
-  _set_bit(9);
+  _set_bit(10);
   bands_ = value;
 }
 
 // optional uint32 filter_overlap = 8 [default = 1];
 inline bool Stretch::has_filter_overlap() const {
-  return _has_bit(10);
+  return _has_bit(11);
 }
 inline void Stretch::clear_filter_overlap() {
   filter_overlap_ = 1u;
-  _clear_bit(10);
+  _clear_bit(11);
 }
 inline ::google::protobuf::uint32 Stretch::filter_overlap() const {
   return filter_overlap_;
 }
 inline void Stretch::set_filter_overlap(::google::protobuf::uint32 value) {
-  _set_bit(10);
+  _set_bit(11);
   filter_overlap_ = value;
 }
 
 // optional uint32 chunk_size = 9 [default = 512];
 inline bool Stretch::has_chunk_size() const {
-  return _has_bit(11);
+  return _has_bit(12);
 }
 inline void Stretch::clear_chunk_size() {
   chunk_size_ = 512u;
-  _clear_bit(11);
+  _clear_bit(12);
 }
 inline ::google::protobuf::uint32 Stretch::chunk_size() const {
   return chunk_size_;
 }
 inline void Stretch::set_chunk_size(::google::protobuf::uint32 value) {
-  _set_bit(11);
+  _set_bit(12);
   chunk_size_ = value;
 }
 
 // optional uint32 prefill_size = 10 [default = 15000];
 inline bool Stretch::has_prefill_size() const {
-  return _has_bit(12);
+  return _has_bit(13);
 }
 inline void Stretch::clear_prefill_size() {
   prefill_size_ = 15000u;
-  _clear_bit(12);
+  _clear_bit(13);
 }
 inline ::google::protobuf::uint32 Stretch::prefill_size() const {
   return prefill_size_;
 }
 inline void Stretch::set_prefill_size(::google::protobuf::uint32 value) {
-  _set_bit(12);
+  _set_bit(13);
   prefill_size_ = value;
 }
 
 // optional uint32 next_buffer_fill_size = 11 [default = 15000];
 inline bool Stretch::has_next_buffer_fill_size() const {
-  return _has_bit(13);
+  return _has_bit(14);
 }
 inline void Stretch::clear_next_buffer_fill_size() {
   next_buffer_fill_size_ = 15000u;
-  _clear_bit(13);
+  _clear_bit(14);
 }
 inline ::google::protobuf::uint32 Stretch::next_buffer_fill_size() const {
   return next_buffer_fill_size_;
 }
 inline void Stretch::set_next_buffer_fill_size(::google::protobuf::uint32 value) {
-  _set_bit(13);
+  _set_bit(14);
   next_buffer_fill_size_ = value;
 }
 
 // optional int32 inactive_wait_time = 12 [default = -1];
 inline bool Stretch::has_inactive_wait_time() const {
-  return _has_bit(14);
+  return _has_bit(15);
 }
 inline void Stretch::clear_inactive_wait_time() {
   inactive_wait_time_ = -1;
-  _clear_bit(14);
+  _clear_bit(15);
 }
 inline ::google::protobuf::int32 Stretch::inactive_wait_time() const {
   return inactive_wait_time_;
 }
 inline void Stretch::set_inactive_wait_time(::google::protobuf::int32 value) {
-  _set_bit(14);
+  _set_bit(15);
   inactive_wait_time_ = value;
 }
 
 // optional uint32 thread_priority = 13 [default = 4];
 inline bool Stretch::has_thread_priority() const {
-  return _has_bit(15);
+  return _has_bit(16);
 }
 inline void Stretch::clear_thread_priority() {
   thread_priority_ = 4u;
-  _clear_bit(15);
+  _clear_bit(16);
 }
 inline ::google::protobuf::uint32 Stretch::thread_priority() const {
   return thread_priority_;
 }
 inline void Stretch::set_thread_priority(::google::protobuf::uint32 value) {
-  _set_bit(15);
+  _set_bit(16);
   thread_priority_ = value;
 }
 

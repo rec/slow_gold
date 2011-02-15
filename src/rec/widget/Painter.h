@@ -1,7 +1,6 @@
 #ifndef __REC_WIDGET_PAINTER__
 #define __REC_WIDGET_PAINTER__
 
-#include "rec/base/base.h"
 #include "rec/widget/Widget.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Font.h"
