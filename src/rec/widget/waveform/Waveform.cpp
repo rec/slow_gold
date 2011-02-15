@@ -121,7 +121,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
     ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, time));
-    setCursorBounds(c.get());
+    c->setCursorBounds(time);
     cursors.insert(c.get());
     addAndMakeVisible(c.transfer());
   }
@@ -155,8 +155,10 @@ void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
 void Waveform::layoutCursors() {
   for (int i = getNumChildComponents(); i > 0; --i) {
     Component* comp = getChildComponent(i - 1);
-    if (comp->getName() == "Cursor")
-      setCursorBounds(dynamic_cast<Cursor*>(comp));
+    if (comp->getName() == "Cursor") {
+      Cursor* c = dynamic_cast<Cursor*>(comp);
+      c->setCursorBounds(c->getTime());
+    }
   }
   repaint();
 }
@@ -189,20 +191,6 @@ TimeRange Waveform::getTimeRange() const {
   }
 
   return r;
-}
-
-void Waveform::setCursorBounds(Cursor *cursor) const {
-  juce::Rectangle<int> bounds = getLocalBounds();
-  int displayWidth = cursor->desc().display_width();
-  int x = 0;
-
-  if (getTimeRange().size() < 0.001)
-    x = timeToX(cursor->getTime());
-
-  bounds.setWidth(displayWidth);
-  bounds.setX(x - (displayWidth - cursor->desc().width()) / 2);
-
-  cursor->setBounds(bounds);
 }
 
 void Waveform::doClick(const juce::MouseEvent& e, int clickCount) {

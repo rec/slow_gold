@@ -25,6 +25,7 @@ class Cursor : public Component, public listener::Listener<double> {
   double getTime() const;
 
   const CursorProto& desc() const { return desc_; }
+  void setCursorBounds(double time);
 
  private:
   Waveform* const waveform_;

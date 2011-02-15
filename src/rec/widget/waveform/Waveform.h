@@ -72,8 +72,6 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   int timeToX(double t) const;
   double xToTime(int x) const;
 
-  void setCursorBounds(Cursor *cursor) const;
-
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   Cursor* timeCursor_;
