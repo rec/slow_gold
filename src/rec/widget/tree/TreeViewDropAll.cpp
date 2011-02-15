@@ -18,11 +18,11 @@ void TreeViewDropAll::paint(Graphics& g) {
   g.setFont(14.0f);
 
   static const int HEIGHT = 10;
-  g.drawFittedText("Drop directories and files here, or",
+  g.drawFittedText("This is your bookmarks area!  Drop directories and ",
                    0, 0, getWidth(), getHeight() - HEIGHT,
                    juce::Justification::centred, 0);
 
-  g.drawFittedText("double-click to add directories and files.",
+  g.drawFittedText("files here or double-click for a dialog.",
                    0, HEIGHT, getWidth(), getHeight(),
                    juce::Justification::centred, 0);
 }
