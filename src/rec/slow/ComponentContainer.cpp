@@ -132,20 +132,20 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
     menu.addItem(COPY, "Copy", canCutOrCopy());
     menu.addItem(PASTE, "Paste", canPaste());
     menu.addItem(CLEAR_FILE, "Clear file");
-    menu.addItem(CLEAR_SELECTION, "Clear selection");
+    menu.addItem(CLEAR_SELECTION, "Clear selection of loop points");
     menu.addItem(CLEAR_LOOPS, "Clear loops");
     menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
-    menu.addItem(CLEAR_TREE, "Clear directory window");
+    menu.addItem(CLEAR_TREE, "Clear bookmarks area");
     menu.addItem(AUDIO_PREFERENCES, "Set audio preferences...");
   }
 
   return menu;
 }
 
-void ComponentContainer::menuItemSelected(int menuItemID, int topLevelMenuIndex) {
-  thread::runInNewThread("doMenuSelected", 5,
+void ComponentContainer::menuItemSelected(int menuItemID, int menuIndex) {
+  thread::runInNewThread("ComponentContainer::doMenuSelected", 5,
                          this, &ComponentContainer::doMenuItemSelected,
-                         menuItemID, topLevelMenuIndex);
+                         menuItemID, menuIndex);
 }
 
 void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
