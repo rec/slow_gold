@@ -26,11 +26,16 @@ struct TimeAndMouseEvent {
   int clickCount_;
 };
 
+struct CursorTime {
+  int cursor_;
+  double time_;
+};
+
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
                  public Listener<const juce::AudioThumbnail&>,
-                 public DataListener<gui::LoopPointList>,
                  public Listener<const ZoomProto&>,
+                 public DataListener<gui::LoopPointList>,
                  public Component {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
@@ -61,8 +66,11 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
     return &selectionBroadcaster_;
   }
 
-  DataListener<ZoomProto>* zoomData() { return &zoomData_; }
+  Broadcaster<const CursorTime&>* cursorTimeBroadcaster() {
+    return &cursorTimeBroadcaster_;
+  }
 
+  DataListener<ZoomProto>* zoomData() { return &zoomData_; }
   TimeRange getTimeRange() const;
 
  private:
@@ -78,6 +86,7 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   SelectionRange selection_;
 
   Broadcaster<const SelectionRange&> selectionBroadcaster_;
+  Broadcaster<const CursorTime&> cursorTimeBroadcaster_;
 
   class ZoomData : public DataListener<ZoomProto> {
    public:

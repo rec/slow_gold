@@ -14,6 +14,7 @@ message CursorProto {
   optional Widget widget = 1;
   optional uint32 width = 2 [default = 1];
   optional uint32 display_width = 3 [default = 3];
-  optional Type type = 4 [default = PLAYBACK_POSITION];
-  optional gui.Line line = 5;
+  optional uint32 component_width = 4 [default = 7];
+  optional Type type = 5 [default = PLAYBACK_POSITION];
+  optional gui.Line line = 6;
 };

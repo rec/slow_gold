@@ -6,15 +6,12 @@ namespace rec {
 typedef juce::AsyncUpdater AsyncUpdater;
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioDeviceManager AudioDeviceManager;
-
 typedef juce::AudioFormatManager AudioFormatManager;
 typedef juce::AudioFormatReader AudioFormatReader;
 typedef juce::AudioFormatReaderSource AudioFormatReaderSource;
-
 typedef juce::AudioSampleBuffer AudioSampleBuffer;
 typedef juce::AudioSourceChannelInfo AudioSourceChannelInfo;
 typedef juce::AudioSourcePlayer AudioSourcePlayer;
-
 typedef juce::AudioTransportSource AudioTransportSource;
 
 typedef juce::CallbackMessage CallbackMessage;
@@ -29,11 +26,16 @@ typedef juce::FileDragAndDropTarget FileDragAndDropTarget;
 typedef juce::Font Font;
 
 typedef juce::Graphics Graphics;
+
 typedef juce::InputStream InputStream;
+
 typedef juce::Justification Justification;
 
 typedef juce::MemoryBlock MemoryBlock;
+typedef juce::MouseEvent MouseEvent;
+
 typedef juce::OutputStream OutputStream;
+
 typedef juce::PositionableAudioSource PositionableAudioSource;
 
 typedef juce::String String;

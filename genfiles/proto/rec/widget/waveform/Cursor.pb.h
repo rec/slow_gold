@@ -162,17 +162,24 @@ class CursorProto : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 display_width() const;
   inline void set_display_width(::google::protobuf::uint32 value);
   
-  // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+  // optional uint32 component_width = 4 [default = 7];
+  inline bool has_component_width() const;
+  inline void clear_component_width();
+  static const int kComponentWidthFieldNumber = 4;
+  inline ::google::protobuf::uint32 component_width() const;
+  inline void set_component_width(::google::protobuf::uint32 value);
+  
+  // optional .rec.widget.waveform.CursorProto.Type type = 5 [default = PLAYBACK_POSITION];
   inline bool has_type() const;
   inline void clear_type();
-  static const int kTypeFieldNumber = 4;
+  static const int kTypeFieldNumber = 5;
   inline ::rec::widget::waveform::CursorProto_Type type() const;
   inline void set_type(::rec::widget::waveform::CursorProto_Type value);
   
-  // optional .rec.gui.Line line = 5;
+  // optional .rec.gui.Line line = 6;
   inline bool has_line() const;
   inline void clear_line();
-  static const int kLineFieldNumber = 5;
+  static const int kLineFieldNumber = 6;
   inline const ::rec::gui::Line& line() const;
   inline ::rec::gui::Line* mutable_line();
   
@@ -184,13 +191,14 @@ class CursorProto : public ::google::protobuf::Message {
   ::rec::widget::Widget* widget_;
   ::google::protobuf::uint32 width_;
   ::google::protobuf::uint32 display_width_;
+  ::google::protobuf::uint32 component_width_;
   int type_;
   ::rec::gui::Line* line_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fCursor_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fCursor_2eproto();
   friend void protobuf_ShutdownFile_rec_2fwidget_2fwaveform_2fCursor_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -262,36 +270,52 @@ inline void CursorProto::set_display_width(::google::protobuf::uint32 value) {
   display_width_ = value;
 }
 
-// optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
-inline bool CursorProto::has_type() const {
+// optional uint32 component_width = 4 [default = 7];
+inline bool CursorProto::has_component_width() const {
   return _has_bit(3);
+}
+inline void CursorProto::clear_component_width() {
+  component_width_ = 7u;
+  _clear_bit(3);
+}
+inline ::google::protobuf::uint32 CursorProto::component_width() const {
+  return component_width_;
+}
+inline void CursorProto::set_component_width(::google::protobuf::uint32 value) {
+  _set_bit(3);
+  component_width_ = value;
+}
+
+// optional .rec.widget.waveform.CursorProto.Type type = 5 [default = PLAYBACK_POSITION];
+inline bool CursorProto::has_type() const {
+  return _has_bit(4);
 }
 inline void CursorProto::clear_type() {
   type_ = 1;
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline ::rec::widget::waveform::CursorProto_Type CursorProto::type() const {
   return static_cast< ::rec::widget::waveform::CursorProto_Type >(type_);
 }
 inline void CursorProto::set_type(::rec::widget::waveform::CursorProto_Type value) {
   GOOGLE_DCHECK(::rec::widget::waveform::CursorProto_Type_IsValid(value));
-  _set_bit(3);
+  _set_bit(4);
   type_ = value;
 }
 
-// optional .rec.gui.Line line = 5;
+// optional .rec.gui.Line line = 6;
 inline bool CursorProto::has_line() const {
-  return _has_bit(4);
+  return _has_bit(5);
 }
 inline void CursorProto::clear_line() {
   if (line_ != NULL) line_->::rec::gui::Line::Clear();
-  _clear_bit(4);
+  _clear_bit(5);
 }
 inline const ::rec::gui::Line& CursorProto::line() const {
   return line_ != NULL ? *line_ : *default_instance_->line_;
 }
 inline ::rec::gui::Line* CursorProto::mutable_line() {
-  _set_bit(4);
+  _set_bit(5);
   if (line_ == NULL) line_ = new ::rec::gui::Line;
   return line_;
 }

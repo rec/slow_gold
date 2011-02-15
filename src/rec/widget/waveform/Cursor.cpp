@@ -10,11 +10,15 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-Cursor::Cursor(const CursorProto& d, Waveform* waveform, double time)
+Cursor::Cursor(const CursorProto& d, Waveform* waveform, double time, int index)
     : Component("Cursor"),
       waveform_(waveform),
-      desc_(d) {
+      desc_(d),
+      index_(index),
+      dragging_(false) {
+  desc_.mutable_widget()->set_transparent(true);
   waveform_->addChildComponent(this);
+
   setTime(time);
   setRepaintsOnMouseActivity(true);
 }
@@ -32,14 +36,14 @@ void Cursor::setCursorBounds(double time) {
   ScopedLock l(lock_);
   time_ = time;
   juce::Rectangle<int> bounds = waveform_->getLocalBounds();
-  int displayWidth = desc().display_width();
+  int componentWidth = desc().component_width();
   int x = 0;
 
   if (waveform_->getTimeRange().size() > 0.001)
     x = waveform_->timeToX(time);
 
-  bounds.setWidth(displayWidth);
-  bounds.setX(x - (displayWidth - desc().width()) / 2);
+  bounds.setWidth(componentWidth);
+  bounds.setX(x - (componentWidth - desc().width()) / 2);
 
   setBounds(bounds);
 }
@@ -48,56 +52,52 @@ void Cursor::paint(Graphics& g) {
   ScopedLock l(lock_);
   Painter p(desc_.widget(), &g);
 
+  // TODO: some latent issue lurks in here, causing a pixel or two error for
+  // larger cursors.
   juce::Rectangle<int> bounds = getLocalBounds();
+  float displayWidth = desc().display_width();
+  float componentWidth = desc().component_width();
 
-  double middle = bounds.getWidth() / 2.0f;
-  double margin = static_cast<double>(desc_.widget().margin());
-  double bottom = bounds.getHeight() - 2.0f * margin;
+  float middle = componentWidth / 2.0f;
+  float top = static_cast<float>(desc_.widget().margin());
+  float height = bounds.getHeight() - 2.0f * top;
+  float offset = (componentWidth - displayWidth) / 2.0f;
 
-  if (isMouseOverOrDragging())
-    p.setColor(Painter::HIGHLIGHT);
+  p.setColor(Painter::BACKGROUND);
+  g.fillRect(offset, top, displayWidth, height);
 
-  gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
+  bool highlight = !isTimeCursor() && isMouseOverOrDragging();
+  p.setColor(highlight ? Painter::HIGHLIGHT : Painter::FOREGROUND);
+
+  gui::drawLine(g, desc_.line(), middle, top, middle, height);
 }
 
-#if 0
-namespace {
-
-typedef StateColors CursorStateColors[CursorProto::Type_ARRAYSIZE];
-
-const CursorStateColors& getStateColors() {
-  static CursorStateColors colors = {
-    {
-      makeColors(0x0, 0x0),  // NONE
-      makeColors(0x0, 0x0),  // DOWN
-      makeColors(0x0, 0x0),  // HOVERING
-    },  // NONE
-
-    {
-      makeColors(0x0, 0x0),  // NONE
-      makeColors(0x0, 0x0),  // DOWN
-      makeColors(0x0, 0x0),  // HOVERING
-    },  // PLAYBACK_POSITION
-
-    {
-      makeColors(0x0, 0x0),  // NONE
-      makeColors(0x0, 0x0),  // DOWN
-      makeColors(0x0, 0x0),  // HOVERING
-    },  // LOOP_START
-
-    {
-      makeColors(0x0, 0x0),  // NONE
-      makeColors(0x0, 0x0),  // DOWN
-      makeColors(0x0, 0x0),  // HOVERING
-    },  // LOOP_END
-  };
-
-  return colors;
+int Cursor::getDragX(const MouseEvent& e) const {
+  return getX() + e.x - mouseDragX_;
 }
 
-}  // namespace
+void Cursor::mouseDown(const MouseEvent& e) {
+  if (!isTimeCursor()) {
+    dragging_ = true;
+    mouseDragX_ = e.x;
+    dragX_ = getX();
+  }
+}
 
-#endif
+void Cursor::mouseDrag(const MouseEvent& e) {
+  if (dragging_)
+    setTopLeftPosition(getDragX(e), getY());
+}
+
+void Cursor::mouseUp(const MouseEvent& e) {
+  if (dragging_) {
+    dragging_ = false;
+    CursorTime ct;
+    ct.cursor_ = index_;
+    ct.time_ = waveform_->xToTime(getDragX(e) + desc().component_width() / 2);
+    waveform_->cursorTimeBroadcaster()->broadcast(ct);
+  }
+}
 
 }  // namespace waveform
 }  // namespace widget

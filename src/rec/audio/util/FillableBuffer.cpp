@@ -5,7 +5,6 @@
 #include "rec/util/block/MergeBlockSet.h"
 
 using namespace rec::util::block;
-using namespace rec::util::listener;
 
 namespace rec {
 namespace audio {

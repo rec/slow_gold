@@ -31,10 +31,11 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fCursor_2eproto() {
       "rec/widget/waveform/Cursor.proto");
   GOOGLE_CHECK(file != NULL);
   CursorProto_descriptor_ = file->message_type(0);
-  static const int CursorProto_offsets_[5] = {
+  static const int CursorProto_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, widget_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, display_width_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, component_width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CursorProto, line_),
   };
@@ -84,14 +85,14 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fCursor_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n rec/widget/waveform/Cursor.proto\022\023rec."
     "widget.waveform\032\027rec/widget/Widget.proto"
-    "\032\026rec/gui/Geometry.proto\"\211\002\n\013CursorProto"
+    "\032\026rec/gui/Geometry.proto\"\245\002\n\013CursorProto"
     "\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget\022\020\n\005"
     "width\030\002 \001(\r:\0011\022\030\n\rdisplay_width\030\003 \001(\r:\0013"
-    "\022F\n\004type\030\004 \001(\0162%.rec.widget.waveform.Cur"
-    "sorProto.Type:\021PLAYBACK_POSITION\022\033\n\004line"
-    "\030\005 \001(\0132\r.rec.gui.Line\"E\n\004Type\022\010\n\004NONE\020\000\022"
-    "\025\n\021PLAYBACK_POSITION\020\001\022\016\n\nLOOP_START\020\002\022\014"
-    "\n\010LOOP_END\020\003", 372);
+    "\022\032\n\017component_width\030\004 \001(\r:\0017\022F\n\004type\030\005 \001"
+    "(\0162%.rec.widget.waveform.CursorProto.Typ"
+    "e:\021PLAYBACK_POSITION\022\033\n\004line\030\006 \001(\0132\r.rec"
+    ".gui.Line\"E\n\004Type\022\010\n\004NONE\020\000\022\025\n\021PLAYBACK_"
+    "POSITION\020\001\022\016\n\nLOOP_START\020\002\022\014\n\010LOOP_END\020\003", 400);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Cursor.proto", &protobuf_RegisterTypes);
   CursorProto::default_instance_ = new CursorProto();
@@ -138,6 +139,7 @@ const int CursorProto::Type_ARRAYSIZE;
 const int CursorProto::kWidgetFieldNumber;
 const int CursorProto::kWidthFieldNumber;
 const int CursorProto::kDisplayWidthFieldNumber;
+const int CursorProto::kComponentWidthFieldNumber;
 const int CursorProto::kTypeFieldNumber;
 const int CursorProto::kLineFieldNumber;
 #endif  // !_MSC_VER
@@ -163,6 +165,7 @@ void CursorProto::SharedCtor() {
   widget_ = NULL;
   width_ = 1u;
   display_width_ = 3u;
+  component_width_ = 7u;
   type_ = 1;
   line_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -206,8 +209,9 @@ void CursorProto::Clear() {
     }
     width_ = 1u;
     display_width_ = 3u;
+    component_width_ = 7u;
     type_ = 1;
-    if (_has_bit(4)) {
+    if (_has_bit(5)) {
       if (line_ != NULL) line_->::rec::gui::Line::Clear();
     }
   }
@@ -262,12 +266,28 @@ bool CursorProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_type;
+        if (input->ExpectTag(32)) goto parse_component_width;
         break;
       }
       
-      // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+      // optional uint32 component_width = 4 [default = 7];
       case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_component_width:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &component_width_)));
+          _set_bit(3);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_type;
+        break;
+      }
+      
+      // optional .rec.widget.waveform.CursorProto.Type type = 5 [default = PLAYBACK_POSITION];
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_type:
@@ -278,17 +298,17 @@ bool CursorProto::MergePartialFromCodedStream(
           if (::rec::widget::waveform::CursorProto_Type_IsValid(value)) {
             set_type(static_cast< ::rec::widget::waveform::CursorProto_Type >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(4, value);
+            mutable_unknown_fields()->AddVarint(5, value);
           }
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_line;
+        if (input->ExpectTag(50)) goto parse_line;
         break;
       }
       
-      // optional .rec.gui.Line line = 5;
-      case 5: {
+      // optional .rec.gui.Line line = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_line:
@@ -335,16 +355,21 @@ void CursorProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->display_width(), output);
   }
   
-  // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+  // optional uint32 component_width = 4 [default = 7];
   if (_has_bit(3)) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->type(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->component_width(), output);
   }
   
-  // optional .rec.gui.Line line = 5;
+  // optional .rec.widget.waveform.CursorProto.Type type = 5 [default = PLAYBACK_POSITION];
   if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      5, this->type(), output);
+  }
+  
+  // optional .rec.gui.Line line = 6;
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->line(), output);
+      6, this->line(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -372,17 +397,22 @@ void CursorProto::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->display_width(), target);
   }
   
-  // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+  // optional uint32 component_width = 4 [default = 7];
   if (_has_bit(3)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->type(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->component_width(), target);
   }
   
-  // optional .rec.gui.Line line = 5;
+  // optional .rec.widget.waveform.CursorProto.Type type = 5 [default = PLAYBACK_POSITION];
   if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      5, this->type(), target);
+  }
+  
+  // optional .rec.gui.Line line = 6;
+  if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->line(), target);
+        6, this->line(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -417,13 +447,20 @@ int CursorProto::ByteSize() const {
           this->display_width());
     }
     
-    // optional .rec.widget.waveform.CursorProto.Type type = 4 [default = PLAYBACK_POSITION];
+    // optional uint32 component_width = 4 [default = 7];
+    if (has_component_width()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->component_width());
+    }
+    
+    // optional .rec.widget.waveform.CursorProto.Type type = 5 [default = PLAYBACK_POSITION];
     if (has_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
-    // optional .rec.gui.Line line = 5;
+    // optional .rec.gui.Line line = 6;
     if (has_line()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -467,9 +504,12 @@ void CursorProto::MergeFrom(const CursorProto& from) {
       set_display_width(from.display_width());
     }
     if (from._has_bit(3)) {
-      set_type(from.type());
+      set_component_width(from.component_width());
     }
     if (from._has_bit(4)) {
+      set_type(from.type());
+    }
+    if (from._has_bit(5)) {
       mutable_line()->::rec::gui::Line::MergeFrom(from.line());
     }
   }
@@ -498,6 +538,7 @@ void CursorProto::Swap(CursorProto* other) {
     std::swap(widget_, other->widget_);
     std::swap(width_, other->width_);
     std::swap(display_width_, other->display_width_);
+    std::swap(component_width_, other->component_width_);
     std::swap(type_, other->type_);
     std::swap(line_, other->line_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

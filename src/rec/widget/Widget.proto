@@ -29,4 +29,3 @@ message Widget {
   optional gui.Layer layer = 6;
   optional State state = 7;  // You might choose not to persist this.
 };
-

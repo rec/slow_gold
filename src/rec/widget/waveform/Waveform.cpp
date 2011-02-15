@@ -24,7 +24,7 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
       zoomData_(this) {
   setName("Waveform");
 
-  timeCursor_ = new Cursor(*timeCursor, this, 0.0f);
+  timeCursor_ = new Cursor(*timeCursor, this, 0.0f, -1);
   addAndMakeVisible(timeCursor_);
   // desc_.set_selection_frame_in_seconds(0);
 }
@@ -120,7 +120,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
-    ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, time));
+    ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, time, i));
     c->setCursorBounds(time);
     cursors.insert(c.get());
     addAndMakeVisible(c.transfer());
