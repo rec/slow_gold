@@ -16,6 +16,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, double time)
       desc_(d) {
   waveform_->addChildComponent(this);
   setTime(time);
+  setRepaintsOnMouseActivity(true);
 }
 
 void Cursor::setTime(double time) {
@@ -53,12 +54,9 @@ void Cursor::paint(Graphics& g) {
   double margin = static_cast<double>(desc_.widget().margin());
   double bottom = bounds.getHeight() - 2.0f * margin;
 
-#if 1
   if (isMouseOverOrDragging())
     p.setColor(Painter::HIGHLIGHT);
-#endif
 
-  // g.setColour(juce::Colours::red);
   gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
 }
 
