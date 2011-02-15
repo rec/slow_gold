@@ -37,7 +37,6 @@ class Loops : public TableController,
   TimeRange selectionRange() const;
   void clearSelection();
   void clearLoops();
-  void repaint() { TableListBox::repaint(); }
 
   virtual void selectedRowsChanged(int lastRowSelected);
   virtual bool keyPressed(const juce::KeyPress& kp);
