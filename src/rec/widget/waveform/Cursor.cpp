@@ -18,6 +18,14 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, double time)
   setTime(time);
 }
 
+void Cursor::setTime(double time) {
+  thread::runOnMessageThread(this, &Cursor::setCursorBounds, time);
+}
+
+double Cursor::getTime() const {
+  ScopedLock l(lock_);
+  return time_;
+}
 
 void Cursor::setCursorBounds(double time) {
   ScopedLock l(lock_);
@@ -26,17 +34,13 @@ void Cursor::setCursorBounds(double time) {
   int displayWidth = desc().display_width();
   int x = 0;
 
-  if (waveform_->getTimeRange().size() < 0.001)
-    x = waveform_->timeToX(getTime());
+  if (waveform_->getTimeRange().size() > 0.001)
+    x = waveform_->timeToX(time);
 
   bounds.setWidth(displayWidth);
   bounds.setX(x - (displayWidth - desc().width()) / 2);
 
   setBounds(bounds);
-}
-
-void Cursor::setTime(double time) {
-  thread::runOnMessageThread(this, &Cursor::setCursorBounds, time);
 }
 
 void Cursor::paint(Graphics& g) {
@@ -56,11 +60,6 @@ void Cursor::paint(Graphics& g) {
 
   // g.setColour(juce::Colours::red);
   gui::drawLine(g, desc_.line(), middle, margin, middle, bottom);
-}
-
-double Cursor::getTime() const {
-  ScopedLock l(lock_);
-  return time_;
 }
 
 #if 0

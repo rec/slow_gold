@@ -94,7 +94,7 @@ void Waveform::paint(Graphics& g) {
 
 int Waveform::timeToX(double t) const {
   TimeRange r = getTimeRange();
-  return static_cast<int>(getWidth() * (t - r.begin_)) / r.size();
+  return static_cast<int>(getWidth() * (t - r.begin_) / r.size());
 }
 
 double Waveform::xToTime(int x) const {
