@@ -17,13 +17,12 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   DCHECK_LE(type, StereoProto::CENTER_ELIMINATION_MONO);
 
   source()->getNextAudioBlock(info);
-
   if (type == StereoProto::PASSTHROUGH)
     return;
 
   DCHECK_NE(info.buffer->getNumChannels(), 2);
   if (info.buffer->getNumChannels() != 2)
-    return ;
+    return;
 
   AudioSampleBuffer& b = *info.buffer;
   int n = b.getNumSamples();

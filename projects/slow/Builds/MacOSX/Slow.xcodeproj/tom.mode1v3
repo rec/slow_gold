@@ -324,7 +324,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AudioTimeScaler.cpp</string>
+								<string>Stereo.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,7 +332,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AudioTimeScaler.cpp</string>
+										<string>Stereo.cpp</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>E29BBEC3130A1F9B0091D4CB</string>
 										<key>history</key>
 										<array>
 											<string>E2E28AE912E6457B004DE2DE</string>
@@ -363,6 +367,7 @@
 											<string>E29BBE3E1307446B0091D4CB</string>
 											<string>E29BBE43130744F00091D4CB</string>
 											<string>E29BBE811307DC3E0091D4CB</string>
+											<string>E29BBEC2130A1F9B0091D4CB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -560,10 +565,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E29BBEC4130A1F9B0091D4CB</string>
+		<string>E29BBEC5130A1F9B0091D4CB</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>E29BBEB1130A19590091D4CB</string>
 		<string>E290FED3120A432900532309</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
-		<string>E29BBEB1130A19590091D4CB</string>
 	</array>
 	<key>WindowString</key>
 	<string>3 59 1358 969 0 0 1680 1028 </string>
@@ -582,12 +590,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>DoubleRunnyBuffer.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -780,7 +790,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -890,8 +900,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -927,7 +935,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E29BBE1213066FC00091D4CB</string>
+				<string>E29BBEBD130A1F930091D4CB</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -937,7 +945,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -1201,7 +1209,7 @@
 			<key>WindowToolGUID</key>
 			<string>E29BBEB1130A19590091D4CB</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
