@@ -136,6 +136,8 @@ void MainPage::operator()(const VirtualFile& file) {
 
     persist::Data<ZoomProto>* zoomData = persist::data<ZoomProto>(file);
     waveform_.zoomData()->setData(zoomData);
+    controller_.stretchyController()->setZoom(zoomData);
+
     zoomData->requestUpdate();
   }
 

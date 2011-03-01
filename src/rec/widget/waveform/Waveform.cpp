@@ -174,7 +174,7 @@ void Waveform::resized() {
 TimeRange Waveform::getTimeRange() const {
   ScopedLock l(lock_);
   TimeRange r;
-  if (!zoom_.zoom_to_selection() && !selection_.empty()) {
+  if (zoom_.zoom_to_selection() && !selection_.empty()) {
     r.begin_ = selection_.begin()->begin_;
     r.end_ = selection_.rbegin()->end_;
     if (r.end_ == 0.0)

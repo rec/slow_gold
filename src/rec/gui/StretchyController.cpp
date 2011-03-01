@@ -9,7 +9,9 @@ StretchyController::StretchyController()
       pitchScale_("Transpose", Address("stretch", "semitone_shift")),
       fineScale_("Fine tuning", Address("stretch", "detune_cents")),
       disableButton_("Disable pitch and time shifting",
-                     Address("stretch", "disabled")) {
+                     Address("stretch", "disabled")),
+      zoomToSelectionButton_("Zoom to selection",
+                             Address("zoom_to_selection")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -22,6 +24,7 @@ StretchyController::StretchyController()
   addToLayout(&pitchScale_);
   addToLayout(&fineScale_);
   addToLayout(&disableButton_, 14);
+  addToLayout(&zoomToSelectionButton_, 14);
 }
 
 void StretchyController::setData(UntypedData* data) {
@@ -33,6 +36,10 @@ void StretchyController::setData(UntypedData* data) {
   audio::stretch::StretchLoop proto;
   bool enable = !(data && data->fill(&proto) && proto.stretch().disabled());
   thread::callAsync(this, &StretchyController::enableSliders, enable);
+}
+
+void StretchyController::setZoom(UntypedData* data) {
+  zoomToSelectionButton_.setData(data);
 }
 
 void StretchyController::enableSliders(bool enabled) {

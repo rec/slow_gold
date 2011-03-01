@@ -15,6 +15,7 @@ class StretchyController : public Layout {
   virtual bool isOpaque() const { return true; }
 
   void setData(UntypedData* data);
+  void setZoom(UntypedData* zoom);
   void enableSliders(bool enabled);
 
  private:
@@ -22,6 +23,7 @@ class StretchyController : public Layout {
   SetterSlider pitchScale_;
   SetterSlider fineScale_;
   gui::SetterToggle disableButton_;
+  gui::SetterToggle zoomToSelectionButton_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
 };

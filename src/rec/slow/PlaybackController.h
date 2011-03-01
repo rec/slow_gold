@@ -39,6 +39,7 @@ class PlaybackController : public gui::Layout,
 
   void enableLoopPointButton(bool e);
   TimeController* timeController() { return &timeController_; }
+  gui::StretchyController* stretchyController() { return &stretchyController_; }
 
  private:
   TimeController timeController_;
