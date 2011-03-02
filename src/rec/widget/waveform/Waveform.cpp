@@ -200,7 +200,6 @@ void Waveform::doClick(const juce::MouseEvent& e, int clickCount) {
   {
     ScopedLock l(lock_);
     event.time_ = xToTime(e.x);
-    event.modifierKeys_ = e.mods;
   }
 
   broadcast(event);

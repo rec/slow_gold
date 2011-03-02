@@ -101,10 +101,10 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
   if (zoomData_ && zoomData_->get().click_to_zoom())
     zoomIn(timeMouse);
 
-  else if (timeMouse.modifierKeys_.isCommandDown())
+  else if (timeMouse.mouseEvent_->mods.isCommandDown())
     zoomIn(timeMouse);
 
-  else if (timeMouse.modifierKeys_.isShiftDown())
+  else if (timeMouse.mouseEvent_->mods.isShiftDown())
     zoomOut();
 
   else if (timeMouse.clickCount_ > 1)
@@ -187,6 +187,18 @@ void MainPage::clearLoops() {
 }
 
 void MainPage::zoomIn(const TimeAndMouseEvent& timeMouse) {
+  if (zoomData_) {
+    ZoomProto zoom(zoomData_->get());
+    double begin = zoom.begin();
+    double end = zoom.end();
+    if (!end)
+      end = length_;
+    double size = end - begin;
+    double middle = timeMouse.time_;
+    zoom.set_begin(juce::jmax(0.0, middle - size / 4.0));
+    zoom.set_end(juce::jmin(middle + size + 4.0, length_));
+    zoomData_->set(Address(), zoom);
+  }
 }
 
 void MainPage::zoomOut() {
