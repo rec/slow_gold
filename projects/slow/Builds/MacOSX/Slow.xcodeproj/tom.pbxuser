@@ -360,8 +360,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 319946956;
-			PBXWorkspaceStateSaveDate = 319946956;
+			PBXPerProjectTemplateStateSaveDate = 320754493;
+			PBXWorkspaceStateSaveDate = 320754493;
 		};
 		perUserProjectItems = {
 			E23E466912EFA3FF0080BD76 = E23E466912EFA3FF0080BD76 /* PBXTextBookmark */;
@@ -395,11 +395,14 @@
 			E2EDAC7C12FF7EB700CFF0DC = E2EDAC7C12FF7EB700CFF0DC /* PBXTextBookmark */;
 			E2EDAC7D12FF7EB700CFF0DC = E2EDAC7D12FF7EB700CFF0DC /* PBXTextBookmark */;
 			E2EDACC912FF8D1D00CFF0DC = E2EDACC912FF8D1D00CFF0DC /* PBXTextBookmark */;
-			E2F73EA9131200D20044B72A /* PBXTextBookmark */ = E2F73EA9131200D20044B72A /* PBXTextBookmark */;
-			E2F73EB8131D495D0044B72A /* PBXTextBookmark */ = E2F73EB8131D495D0044B72A /* PBXTextBookmark */;
-			E2F73EB9131D495D0044B72A /* XCBuildMessageTextBookmark */ = E2F73EB9131D495D0044B72A /* XCBuildMessageTextBookmark */;
-			E2F73EBA131D495D0044B72A /* PBXTextBookmark */ = E2F73EBA131D495D0044B72A /* PBXTextBookmark */;
-			E2F73EC7131D49B40044B72A /* PBXTextBookmark */ = E2F73EC7131D49B40044B72A /* PBXTextBookmark */;
+			E2F73EA9131200D20044B72A = E2F73EA9131200D20044B72A /* PBXTextBookmark */;
+			E2F73EB8131D495D0044B72A = E2F73EB8131D495D0044B72A /* PBXTextBookmark */;
+			E2F73EB9131D495D0044B72A = E2F73EB9131D495D0044B72A /* PBXTextBookmark */;
+			E2F73EBA131D495D0044B72A = E2F73EBA131D495D0044B72A /* PBXTextBookmark */;
+			E2F73EC7131D49B40044B72A = E2F73EC7131D49B40044B72A /* PBXTextBookmark */;
+			E2F73ECC131D4A880044B72A = E2F73ECC131D4A880044B72A /* PBXTextBookmark */;
+			E2F73ECD131D4A880044B72A = E2F73ECD131D4A880044B72A /* PBXTextBookmark */;
+			E2F73ECE131D4A8C0044B72A = E2F73ECE131D4A8C0044B72A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -443,8 +446,8 @@
 	B4BC50DAF35370323BE4A74A /* StretchyController.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {959, 702}}";
-			sepNavSelRange = "{1754, 0}";
-			sepNavVisRange = "{0, 1676}";
+			sepNavSelRange = "{1753, 0}";
+			sepNavVisRange = "{161, 1593}";
 			sepNavWindowFrame = "{{278, 19}, {911, 1159}}";
 		};
 	};
@@ -948,11 +951,10 @@
 		vrLen = 1287;
 		vrLoc = 335;
 	};
-	E2F73EB9131D495D0044B72A /* XCBuildMessageTextBookmark */ = {
+	E2F73EB9131D495D0044B72A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "No 'void rec::gui::StretchyController::setZoom(rec::persist::UntypedData*)' member function declared in class 'rec::gui::StretchyController'";
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 40;
 		rType = 1;
@@ -976,6 +978,34 @@
 		rType = 0;
 		vrLen = 1676;
 		vrLoc = 0;
+	};
+	E2F73ECC131D4A880044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No 'void rec::gui::StretchyController::setZoom(rec::persist::UntypedData*)' member function declared in class 'rec::gui::StretchyController'";
+		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
+		rLen = 1;
+		rLoc = 40;
+		rType = 1;
+	};
+	E2F73ECD131D4A880044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 54";
+		rLen = 0;
+		rLoc = 1754;
+		rType = 0;
+		vrLen = 1603;
+		vrLoc = 0;
+	};
+	E2F73ECE131D4A8C0044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 53";
+		rLen = 0;
+		rLoc = 1753;
+		rType = 0;
+		vrLen = 1593;
+		vrLoc = 161;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {
 		uiCtxt = {

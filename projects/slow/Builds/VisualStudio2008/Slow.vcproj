@@ -385,6 +385,10 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreen.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreen.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\Icon.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\Icon.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.cpp"/>
@@ -494,6 +498,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\listener\ChangeBroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\DataListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\Rebroadcaster.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\UntypedAddressListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\UntypedDataListener.h"/>
@@ -555,6 +560,7 @@
           <Filter Name="waveform">
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
           </Filter>

@@ -44,6 +44,7 @@ class MainPage : public gui::Layout,
 
   virtual bool keyPressed(const juce::KeyPress& kp);
   void addLoopPoint();
+  void zoomOut();
 
  private:
   void addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo);

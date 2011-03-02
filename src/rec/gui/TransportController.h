@@ -34,6 +34,7 @@ class TransportController : public Layout,
   slow::MainPage* mainPage_;
   juce::DrawableButton startStopButton_;
   juce::DrawableButton addLoopPointButton_;
+  juce::DrawableButton zoomOutButton_;
   juce::Label filler_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TransportController);

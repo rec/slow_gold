@@ -110,6 +110,7 @@ void MainPage::operator()(const VirtualFile& file) {
     loops_.setData(NULL);
     waveform_.setData(NULL);
     waveform_.zoomData()->setData(NULL);
+    controller_.stretchyController()->setZoom(NULL);
 
   } else {
     persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
@@ -167,6 +168,9 @@ void MainPage::clearSelection() {
 
 void MainPage::clearLoops() {
   loops_.clearLoops();
+}
+
+void MainPage::zoomOut() {
 }
 
 }  // namespace slow

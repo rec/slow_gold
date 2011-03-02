@@ -106,6 +106,8 @@
 		197A5E71AA6269B821780B4D = { isa = PBXBuildFile; fileRef = 9E088CA0C9DD632C2CB176A0; };
 		BDB06654DEC92678A9ED0F0D = { isa = PBXBuildFile; fileRef = 013E8CE9CABFA286CF2F14A0; };
 		94DAC10DBE4839B98AF59C6A = { isa = PBXBuildFile; fileRef = 9548AA03601A3FD6634ACF73; };
+		F5190EBCAE0BEFBB205A376F = { isa = PBXBuildFile; fileRef = AB24CBF36D7B3C1B420A8F4F; };
+		C6BB211F2E765A70D9A0CEA3 = { isa = PBXBuildFile; fileRef = BB0D203EA3786F7928C0386F; };
 		AD0952C08D2C602829659BF5 = { isa = PBXBuildFile; fileRef = E7E2D052165BD779D8AE31B8; };
 		426438FDF82F8ECDD7C4235E = { isa = PBXBuildFile; fileRef = CE541EC9DDD5C2314E3FEB82; };
 		29FC75256DAB33440CC61729 = { isa = PBXBuildFile; fileRef = C6694C9647FDD4E1D4144139; };
@@ -169,6 +171,7 @@
 		DBDBF2ABA3EA2B0A22108D5C = { isa = PBXBuildFile; fileRef = 629515CBFD37B9281D1D1DEC; };
 		EEC79FB951F00A40E06DAC11 = { isa = PBXBuildFile; fileRef = B552AC06AE698C668E6993B1; };
 		3FD1BBE296D9E8B6B67F6A97 = { isa = PBXBuildFile; fileRef = 1E8BFBF8C92BDFFC08E3DA5E; };
+		98F1D9FCEDEF53EB0082B64D = { isa = PBXBuildFile; fileRef = FF18AC434964DCEDFBB90E01; };
 		72032AE9289C62D2949C8FD0 = { isa = PBXBuildFile; fileRef = D39324D786F94F655F5AA820; };
 		4526B075235859A17CB2E433 = { isa = PBXBuildFile; fileRef = 914EE70C26960421C5C688A6; };
 		75B719C3233AD8BB35DF4F96 = { isa = PBXBuildFile; fileRef = 5BCBDE3E20ED6F95AE135DBA; };
@@ -445,6 +448,10 @@
 		7E1E9DBE99772925353650C8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DriveHardDisk.svg.h; path = ../../../../src/rec/gui/icon/DriveHardDisk.svg.h; sourceTree = SOURCE_ROOT; };
 		9548AA03601A3FD6634ACF73 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DriveOptical.svg.cpp; path = ../../../../src/rec/gui/icon/DriveOptical.svg.cpp; sourceTree = SOURCE_ROOT; };
 		8247EEEAA9CEDC02B839AA0C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DriveOptical.svg.h; path = ../../../../src/rec/gui/icon/DriveOptical.svg.h; sourceTree = SOURCE_ROOT; };
+		AB24CBF36D7B3C1B420A8F4F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreen.svg.cpp; path = ../../../../src/rec/gui/icon/FullScreen.svg.cpp; sourceTree = SOURCE_ROOT; };
+		82DCB73BA224A32892B3634D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullScreen.svg.h; path = ../../../../src/rec/gui/icon/FullScreen.svg.h; sourceTree = SOURCE_ROOT; };
+		BB0D203EA3786F7928C0386F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreenRev.svg.cpp; path = ../../../../src/rec/gui/icon/FullScreenRev.svg.cpp; sourceTree = SOURCE_ROOT; };
+		299744138C592E1E9A54D6BF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullScreenRev.svg.h; path = ../../../../src/rec/gui/icon/FullScreenRev.svg.h; sourceTree = SOURCE_ROOT; };
 		E7E2D052165BD779D8AE31B8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Icon.cpp; path = ../../../../src/rec/gui/icon/Icon.cpp; sourceTree = SOURCE_ROOT; };
 		41B9915D4F8E02DC528A1A63 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Icon.h; path = ../../../../src/rec/gui/icon/Icon.h; sourceTree = SOURCE_ROOT; };
 		CE541EC9DDD5C2314E3FEB82 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaOptical.svg.cpp; path = ../../../../src/rec/gui/icon/MediaOptical.svg.cpp; sourceTree = SOURCE_ROOT; };
@@ -550,6 +557,7 @@
 		01AF79300E59F2858CBC8778 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChangeBroadcaster.h; path = ../../../../src/rec/util/listener/ChangeBroadcaster.h; sourceTree = SOURCE_ROOT; };
 		CDD8BC16A4EB518C9F4AA345 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataListener.h; path = ../../../../src/rec/util/listener/DataListener.h; sourceTree = SOURCE_ROOT; };
 		4D68739BF46B9EE2DD16BD85 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../../src/rec/util/listener/Listener.h; sourceTree = SOURCE_ROOT; };
+		3C67DB54F3234F5C22B6E3AB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Rebroadcaster.h; path = ../../../../src/rec/util/listener/Rebroadcaster.h; sourceTree = SOURCE_ROOT; };
 		6FA4419F13120E1D17A69831 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterListener.h; path = ../../../../src/rec/util/listener/SetterListener.h; sourceTree = SOURCE_ROOT; };
 		279965A845C275EB7FDBAA51 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedAddressListener.h; path = ../../../../src/rec/util/listener/UntypedAddressListener.h; sourceTree = SOURCE_ROOT; };
 		38D1987EFA8BD286AEDAFC93 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedDataListener.h; path = ../../../../src/rec/util/listener/UntypedDataListener.h; sourceTree = SOURCE_ROOT; };
@@ -602,6 +610,7 @@
 		77E6E021181A49C3C8422E7C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TreeViewDropAll.h; path = ../../../../src/rec/widget/tree/TreeViewDropAll.h; sourceTree = SOURCE_ROOT; };
 		1E8BFBF8C92BDFFC08E3DA5E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Cursor.cpp; path = ../../../../src/rec/widget/waveform/Cursor.cpp; sourceTree = SOURCE_ROOT; };
 		1A58D3C2EA8029EF3F3DD0FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cursor.h; path = ../../../../src/rec/widget/waveform/Cursor.h; sourceTree = SOURCE_ROOT; };
+		FF18AC434964DCEDFBB90E01 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CursorStates.cpp; path = ../../../../src/rec/widget/waveform/CursorStates.cpp; sourceTree = SOURCE_ROOT; };
 		D39324D786F94F655F5AA820 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Waveform.cpp; path = ../../../../src/rec/widget/waveform/Waveform.cpp; sourceTree = SOURCE_ROOT; };
 		5D9A9BA77199984B062E402C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Waveform.h; path = ../../../../src/rec/widget/waveform/Waveform.h; sourceTree = SOURCE_ROOT; };
 		914EE70C26960421C5C688A6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.cpp; path = ../../../../src/rec/widget/Widget.cpp; sourceTree = SOURCE_ROOT; };
@@ -920,6 +929,10 @@
 				7E1E9DBE99772925353650C8,
 				9548AA03601A3FD6634ACF73,
 				8247EEEAA9CEDC02B839AA0C,
+				AB24CBF36D7B3C1B420A8F4F,
+				82DCB73BA224A32892B3634D,
+				BB0D203EA3786F7928C0386F,
+				299744138C592E1E9A54D6BF,
 				E7E2D052165BD779D8AE31B8,
 				41B9915D4F8E02DC528A1A63,
 				CE541EC9DDD5C2314E3FEB82,
@@ -1026,6 +1039,7 @@
 				01AF79300E59F2858CBC8778,
 				CDD8BC16A4EB518C9F4AA345,
 				4D68739BF46B9EE2DD16BD85,
+				3C67DB54F3234F5C22B6E3AB,
 				6FA4419F13120E1D17A69831,
 				279965A845C275EB7FDBAA51,
 				38D1987EFA8BD286AEDAFC93 ); name = listener; sourceTree = "<group>"; };
@@ -1104,6 +1118,7 @@
 		CFCFBE224C4845D61F1480F8 = { isa = PBXGroup; children = (
 				1E8BFBF8C92BDFFC08E3DA5E,
 				1A58D3C2EA8029EF3F3DD0FB,
+				FF18AC434964DCEDFBB90E01,
 				D39324D786F94F655F5AA820,
 				5D9A9BA77199984B062E402C ); name = waveform; sourceTree = "<group>"; };
 		5AA1B34F00CD57CEBFF8DF24 = { isa = PBXGroup; children = (
@@ -1238,7 +1253,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		E1BE105BD85CA458013993C0 = { isa = PBXGroup; children = (
+		97B4DF07935D334BCB3B549F = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1411,6 +1426,8 @@
 				197A5E71AA6269B821780B4D,
 				BDB06654DEC92678A9ED0F0D,
 				94DAC10DBE4839B98AF59C6A,
+				F5190EBCAE0BEFBB205A376F,
+				C6BB211F2E765A70D9A0CEA3,
 				AD0952C08D2C602829659BF5,
 				426438FDF82F8ECDD7C4235E,
 				29FC75256DAB33440CC61729,
@@ -1474,6 +1491,7 @@
 				DBDBF2ABA3EA2B0A22108D5C,
 				EEC79FB951F00A40E06DAC11,
 				3FD1BBE296D9E8B6B67F6A97,
+				98F1D9FCEDEF53EB0082B64D,
 				72032AE9289C62D2949C8FD0,
 				4526B075235859A17CB2E433,
 				75B719C3233AD8BB35DF4F96,
@@ -1524,7 +1542,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = E1BE105BD85CA458013993C0; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 97B4DF07935D334BCB3B549F; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="8S2iN8Bs9" name="Slow">
+  <MAINGROUP id="9NJAaoblU" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -503,6 +503,14 @@
                 id="Ux11hgUjA" name="DriveOptical.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/DriveOptical.svg.h"
                 id="Q7t9ynvkO" name="DriveOptical.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/FullScreen.svg.cpp"
+                id="NI4RqBSs6" name="FullScreen.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/FullScreen.svg.h" id="g84vUcFCP"
+                name="FullScreen.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/FullScreenRev.svg.cpp"
+                id="3aGDWymc8" name="FullScreenRev.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/FullScreenRev.svg.h"
+                id="YTVhaYyh8" name="FullScreenRev.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/Icon.cpp" id="vc4L3qjL3"
                 name="Icon.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/Icon.h" id="FZtJlWAmK"
@@ -709,6 +717,8 @@
                 id="rVYaUoZFY" name="DataListener.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/Listener.h" id="I8Hf7ACje"
                 name="Listener.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/listener/Rebroadcaster.h"
+                id="ZEy9XRjzs" name="Rebroadcaster.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/SetterListener.h"
                 id="9Hs97sV24" name="SetterListener.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/UntypedAddressListener.h"
@@ -819,6 +829,8 @@
                 name="Cursor.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/Cursor.h" id="MH26QqZlY"
                 name="Cursor.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/waveform/CursorStates.cpp"
+                id="QkSskdlZC" name="CursorStates.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/waveform/Waveform.cpp"
                 id="y6U8Nuuod" name="Waveform.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/Waveform.h" id="qUWsqXQ0U"
@@ -986,7 +998,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="c84LFmZJK" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="KqSe4fQw5" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
