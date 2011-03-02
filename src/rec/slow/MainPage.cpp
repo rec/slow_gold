@@ -98,8 +98,18 @@ void MainPage::doClose() {
 }
 
 void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
-  if (timeMouse.clickCount_ > 1)
+  if (zoomData_ && zoomData_->get().click_to_zoom())
+    zoomIn(timeMouse);
+
+  else if (timeMouse.modifierKeys_.isCommandDown())
+    zoomIn(timeMouse);
+
+  else if (timeMouse.modifierKeys_.isShiftDown())
+    zoomOut();
+
+  else if (timeMouse.clickCount_ > 1)
     thread::callAsync(this, &MainPage::doOpen);
+
   else
     player_.setTime(timeMouse.time_);
 }
@@ -174,6 +184,9 @@ void MainPage::clearSelection() {
 
 void MainPage::clearLoops() {
   loops_.clearLoops();
+}
+
+void MainPage::zoomIn(const TimeAndMouseEvent& timeMouse) {
 }
 
 void MainPage::zoomOut() {

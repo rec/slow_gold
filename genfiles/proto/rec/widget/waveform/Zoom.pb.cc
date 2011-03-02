@@ -30,11 +30,12 @@ void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto() {
       "rec/widget/waveform/Zoom.proto");
   GOOGLE_CHECK(file != NULL);
   ZoomProto_descriptor_ = file->message_type(0);
-  static const int ZoomProto_offsets_[4] = {
+  static const int ZoomProto_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, begin_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, end_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, zoom_to_selection_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, follow_cursor_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ZoomProto, click_to_zoom_),
   };
   ZoomProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -78,9 +79,10 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fZoom_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\036rec/widget/waveform/Zoom.proto\022\023rec.wi"
-    "dget.waveform\"Y\n\tZoomProto\022\r\n\005begin\030\001 \001("
+    "dget.waveform\"p\n\tZoomProto\022\r\n\005begin\030\001 \001("
     "\001\022\013\n\003end\030\002 \001(\001\022\031\n\021zoom_to_selection\030\003 \001("
-    "\010\022\025\n\rfollow_cursor\030\004 \001(\010", 144);
+    "\010\022\025\n\rfollow_cursor\030\004 \001(\010\022\025\n\rclick_to_zoo"
+    "m\030\005 \001(\010", 167);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/widget/waveform/Zoom.proto", &protobuf_RegisterTypes);
   ZoomProto::default_instance_ = new ZoomProto();
@@ -103,6 +105,7 @@ const int ZoomProto::kBeginFieldNumber;
 const int ZoomProto::kEndFieldNumber;
 const int ZoomProto::kZoomToSelectionFieldNumber;
 const int ZoomProto::kFollowCursorFieldNumber;
+const int ZoomProto::kClickToZoomFieldNumber;
 #endif  // !_MSC_VER
 
 ZoomProto::ZoomProto()
@@ -125,6 +128,7 @@ void ZoomProto::SharedCtor() {
   end_ = 0;
   zoom_to_selection_ = false;
   follow_cursor_ = false;
+  click_to_zoom_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -163,6 +167,7 @@ void ZoomProto::Clear() {
     end_ = 0;
     zoom_to_selection_ = false;
     follow_cursor_ = false;
+    click_to_zoom_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -233,6 +238,22 @@ bool ZoomProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(40)) goto parse_click_to_zoom;
+        break;
+      }
+      
+      // optional bool click_to_zoom = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_click_to_zoom:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &click_to_zoom_)));
+          _set_bit(4);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -275,6 +296,11 @@ void ZoomProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->follow_cursor(), output);
   }
   
+  // optional bool click_to_zoom = 5;
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->click_to_zoom(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -301,6 +327,11 @@ void ZoomProto::SerializeWithCachedSizes(
   // optional bool follow_cursor = 4;
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->follow_cursor(), target);
+  }
+  
+  // optional bool click_to_zoom = 5;
+  if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->click_to_zoom(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -331,6 +362,11 @@ int ZoomProto::ByteSize() const {
     
     // optional bool follow_cursor = 4;
     if (has_follow_cursor()) {
+      total_size += 1 + 1;
+    }
+    
+    // optional bool click_to_zoom = 5;
+    if (has_click_to_zoom()) {
       total_size += 1 + 1;
     }
     
@@ -373,6 +409,9 @@ void ZoomProto::MergeFrom(const ZoomProto& from) {
     if (from._has_bit(3)) {
       set_follow_cursor(from.follow_cursor());
     }
+    if (from._has_bit(4)) {
+      set_click_to_zoom(from.click_to_zoom());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -400,6 +439,7 @@ void ZoomProto::Swap(ZoomProto* other) {
     std::swap(end_, other->end_);
     std::swap(zoom_to_selection_, other->zoom_to_selection_);
     std::swap(follow_cursor_, other->follow_cursor_);
+    std::swap(click_to_zoom_, other->click_to_zoom_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
