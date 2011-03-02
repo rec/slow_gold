@@ -66,8 +66,10 @@ static const int SAMPLE_RATE = 44100;
 bool MainPage::keyPressed(const juce::KeyPress& kp) {
   switch (kp.getTextCharacter()) {
     case ' ': player_.getTransport()->toggle(); return true;
+
     case 'x':
     case 'X': addLoopPoint(); return true;
+
     default: return false;
   }
 }
@@ -80,6 +82,7 @@ void MainPage::addLoopPoint() {
 void MainPage::doOpen() {
   if (openDialogOpen_)
     return;
+
   openDialogOpen_ = true;
   juce::FileChooser chooser("Please choose an audio file", File::nonexistent,
                             file::audioFilePatterns(), true);
@@ -111,6 +114,8 @@ void MainPage::operator()(const VirtualFile& file) {
     waveform_.setData(NULL);
     waveform_.zoomData()->setData(NULL);
     controller_.stretchyController()->setZoom(NULL);
+    length_ = 0;
+    zoomData_ = NULL;
 
   } else {
     persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
@@ -133,13 +138,14 @@ void MainPage::operator()(const VirtualFile& file) {
     gui::addRecentFile(file);
 
     // Adjust the length of clients - fix this!
-    (*(controller_.timeController()))(ClockUpdate(-1, player_.length() / 44100.0));
+    length_ = player_.length() / 44100.0;
+    (*(controller_.timeController()))(ClockUpdate(-1, length_));
 
-    persist::Data<ZoomProto>* zoomData = persist::data<ZoomProto>(file);
-    waveform_.zoomData()->setData(zoomData);
-    controller_.stretchyController()->setZoom(zoomData);
+    zoomData_ = persist::data<ZoomProto>(file);
+    waveform_.zoomData()->setData(zoomData_);
+    controller_.stretchyController()->setZoom(zoomData_);
 
-    zoomData->requestUpdate();
+    zoomData_->requestUpdate();
   }
 
   (*this)(0.0);
@@ -171,6 +177,18 @@ void MainPage::clearLoops() {
 }
 
 void MainPage::zoomOut() {
+  if (zoomData_) {
+    ZoomProto zoom(zoomData_->get());
+    double begin = zoom.begin();
+    double end = zoom.end();
+    if (!end)
+      end = length_;
+    double size = end - begin;
+    double middle = begin + (end - begin) / 2.0;
+    zoom.set_begin(juce::jmax(0.0, middle - size));
+    zoom.set_end(juce::jmin(middle + size, length_));
+    zoomData_->set(Address(), zoom);
+  }
 }
 
 }  // namespace slow

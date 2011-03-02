@@ -65,6 +65,8 @@ class MainPage : public gui::Layout,
   gui::Layout subpanel_;
 
   bool openDialogOpen_;
+  double length_;
+  persist::Data<ZoomProto>* zoomData_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };
