@@ -24,6 +24,7 @@ struct TimeAndMouseEvent {
   double time_;
   const juce::MouseEvent* mouseEvent_;
   int clickCount_;
+  juce::ModifierKeys modifierKeys_;
 };
 
 struct CursorTime {
