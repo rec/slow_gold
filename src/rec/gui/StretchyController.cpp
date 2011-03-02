@@ -11,7 +11,9 @@ StretchyController::StretchyController()
       disableButton_("Disable pitch and time shifting",
                      Address("stretch", "disabled")),
       zoomToSelectionButton_("Zoom to selection",
-                             Address("zoom_to_selection")) {
+                             Address("zoom_to_selection")),
+      clickToZoomButton_("Click to zoom",
+                         Address("click_to_zoom")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -25,6 +27,7 @@ StretchyController::StretchyController()
   addToLayout(&fineScale_);
   addToLayout(&disableButton_, 14);
   addToLayout(&zoomToSelectionButton_, 14);
+  addToLayout(&clickToZoomButton_, 14);
 }
 
 void StretchyController::setData(UntypedData* data) {
@@ -40,6 +43,7 @@ void StretchyController::setData(UntypedData* data) {
 
 void StretchyController::setZoom(UntypedData* data) {
   zoomToSelectionButton_.setData(data);
+  clickToZoomButton_.setData(data);
 }
 
 void StretchyController::enableSliders(bool enabled) {

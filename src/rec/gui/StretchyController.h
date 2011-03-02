@@ -24,6 +24,7 @@ class StretchyController : public Layout {
   SetterSlider fineScale_;
   gui::SetterToggle disableButton_;
   gui::SetterToggle zoomToSelectionButton_;
+  gui::SetterToggle clickToZoomButton_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
 };

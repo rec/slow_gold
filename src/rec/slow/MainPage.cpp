@@ -98,14 +98,14 @@ void MainPage::doClose() {
 }
 
 void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
-  if (zoomData_ && zoomData_->get().click_to_zoom())
+  if (timeMouse.mouseEvent_->mods.isShiftDown())
+    zoomOut();
+
+  else if (zoomData_ && zoomData_->get().click_to_zoom())
     zoomIn(timeMouse);
 
   else if (timeMouse.mouseEvent_->mods.isCommandDown())
     zoomIn(timeMouse);
-
-  else if (timeMouse.mouseEvent_->mods.isShiftDown())
-    zoomOut();
 
   else if (timeMouse.clickCount_ > 1)
     thread::callAsync(this, &MainPage::doOpen);
