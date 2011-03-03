@@ -3,6 +3,14 @@
 namespace rec {
 namespace gui {
 
+namespace {
+
+enum Sides {
+  STEREO = 1, LEFT_PLUS_RIGHT, LEFT, RIGHT
+};
+
+}  // namespace
+
 StretchyController::StretchyController()
     : Layout("StretchyController", VERTICAL),
       playbackSpeed_("Playback speed", Address("stretch", "time_percent")),
@@ -28,6 +36,16 @@ StretchyController::StretchyController()
   addToLayout(&disableButton_, 14);
   addToLayout(&zoomToSelectionButton_, 14);
   addToLayout(&clickToZoomButton_, 14);
+  stereoComboBox_.setEditableText(false);
+  stereoComboBox_.setJustificationType(Justification::centredLeft);
+  stereoComboBox_.setTextWhenNothingSelected("Stereo");
+  stereoComboBox_.setTextWhenNoChoicesAvailable("Stereo");
+  stereoComboBox_.addItem("Stereo", STEREO);
+  stereoComboBox_.addItem("Mono (Left + Right)", LEFT_PLUS_RIGHT);
+  stereoComboBox_.addItem("Mono (Left)", LEFT);
+  stereoComboBox_.addItem("Mono (Right)", RIGHT);
+  stereoComboBox_.addListener(this);
+  addToLayout(&stereoComboBox_, 14);
 }
 
 void StretchyController::setData(UntypedData* data) {

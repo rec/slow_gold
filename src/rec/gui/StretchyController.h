@@ -9,7 +9,7 @@
 namespace rec {
 namespace gui {
 
-class StretchyController : public Layout {
+class StretchyController : public Layout, public juce::ComboBox::Listener {
  public:
   StretchyController();
   virtual bool isOpaque() const { return true; }
@@ -17,6 +17,7 @@ class StretchyController : public Layout {
   void setData(UntypedData* data);
   void setZoom(UntypedData* zoom);
   void enableSliders(bool enabled);
+  virtual void comboBoxChanged(juce::ComboBox* comboBoxThatHasChanged) {}
 
  private:
   SetterSlider playbackSpeed_;
@@ -25,6 +26,7 @@ class StretchyController : public Layout {
   gui::SetterToggle disableButton_;
   gui::SetterToggle zoomToSelectionButton_;
   gui::SetterToggle clickToZoomButton_;
+  juce::ComboBox stereoComboBox_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
 };

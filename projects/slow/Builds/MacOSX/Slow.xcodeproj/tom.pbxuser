@@ -240,9 +240,9 @@
 	};
 	7EB2D2788D39D8ECB07FF879 /* TransportController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
-			sepNavSelRange = "{118, 0}";
-			sepNavVisRange = "{0, 1794}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 845}}";
+			sepNavSelRange = "{2310, 0}";
+			sepNavVisRange = "{0, 1765}";
 		};
 	};
 	86CA505FA866779DAF3A7388 /* DoubleRunnyBuffer.h */ = {
@@ -403,6 +403,8 @@
 			E2F73ECC131D4A880044B72A = E2F73ECC131D4A880044B72A /* PBXTextBookmark */;
 			E2F73ECD131D4A880044B72A = E2F73ECD131D4A880044B72A /* PBXTextBookmark */;
 			E2F73ECE131D4A8C0044B72A = E2F73ECE131D4A8C0044B72A /* PBXTextBookmark */;
+			E2F73F79131F72860044B72A /* XCBuildMessageTextBookmark */ = E2F73F79131F72860044B72A /* XCBuildMessageTextBookmark */;
+			E2F73F7A131F72860044B72A /* PBXTextBookmark */ = E2F73F7A131F72860044B72A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -445,9 +447,9 @@
 	};
 	B4BC50DAF35370323BE4A74A /* StretchyController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 702}}";
-			sepNavSelRange = "{1753, 0}";
-			sepNavVisRange = "{161, 1593}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 936}}";
+			sepNavSelRange = "{158, 0}";
+			sepNavVisRange = "{0, 1790}";
 			sepNavWindowFrame = "{{278, 19}, {911, 1159}}";
 		};
 	};
@@ -557,9 +559,9 @@
 	};
 	DF49580B9742DB4F887E85DF /* MainPage.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 2262}}";
-			sepNavSelRange = "{4107, 0}";
-			sepNavVisRange = "{2832, 1918}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 2951}}";
+			sepNavSelRange = "{6029, 0}";
+			sepNavVisRange = "{3827, 1269}";
 			sepNavWindowFrame = "{{15, 4}, {911, 1024}}";
 		};
 	};
@@ -736,7 +738,7 @@
 		fRef = DF49580B9742DB4F887E85DF /* MainPage.cpp */;
 		name = "MainPage.cpp: 165";
 		rLen = 0;
-		rLoc = 4618;
+		rLoc = 4617;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 2102;
@@ -956,7 +958,7 @@
 		comments = "No 'void rec::gui::StretchyController::setZoom(rec::persist::UntypedData*)' member function declared in class 'rec::gui::StretchyController'";
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		rLen = 1;
-		rLoc = 40;
+		rLoc = 42;
 		rType = 1;
 	};
 	E2F73EBA131D495D0044B72A /* PBXTextBookmark */ = {
@@ -964,7 +966,7 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 41";
 		rLen = 0;
-		rLoc = 1465;
+		rLoc = 1482;
 		rType = 0;
 		vrLen = 1690;
 		vrLoc = 0;
@@ -974,7 +976,7 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 54";
 		rLen = 0;
-		rLoc = 1754;
+		rLoc = 1771;
 		rType = 0;
 		vrLen = 1676;
 		vrLoc = 0;
@@ -984,7 +986,7 @@
 		comments = "No 'void rec::gui::StretchyController::setZoom(rec::persist::UntypedData*)' member function declared in class 'rec::gui::StretchyController'";
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		rLen = 1;
-		rLoc = 40;
+		rLoc = 42;
 		rType = 1;
 	};
 	E2F73ECD131D4A880044B72A /* PBXTextBookmark */ = {
@@ -992,7 +994,7 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 54";
 		rLen = 0;
-		rLoc = 1754;
+		rLoc = 1771;
 		rType = 0;
 		vrLen = 1603;
 		vrLoc = 0;
@@ -1002,10 +1004,29 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 53";
 		rLen = 0;
-		rLoc = 1753;
+		rLoc = 1770;
 		rType = 0;
 		vrLen = 1593;
 		vrLoc = 161;
+	};
+	E2F73F79131F72860044B72A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'FullScreenRev' has not been declared";
+		fRef = F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 12;
+		rType = 1;
+	};
+	E2F73F7A131F72860044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */;
+		name = "FullScreenRev.svg.cpp: 630";
+		rLen = 0;
+		rLoc = 25215;
+		rType = 0;
+		vrLen = 1965;
+		vrLoc = 0;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {
 		uiCtxt = {
@@ -1041,6 +1062,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {1226, 858}}";
 			sepNavSelRange = "{1478, 0}";
 			sepNavVisRange = "{861, 738}";
+		};
+	};
+	F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {971, 8203}}";
+			sepNavSelRange = "{25215, 0}";
+			sepNavVisRange = "{0, 1965}";
 		};
 	};
 	FB1B005E5ABE3ECE29CB8885 /* CallAsync.h */ = {
