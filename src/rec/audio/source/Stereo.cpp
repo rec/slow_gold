@@ -27,24 +27,34 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   AudioSampleBuffer& b = *info.buffer;
   int n = b.getNumSamples();
   StereoProto::Side side = desc_.side();
+  StereoProto::Side otherSide = static_cast<StereoProto::Side>(
+      StereoProto::RIGHT - side);
+
   DCHECK_GE(side, StereoProto::LEFT);
-  DCHECK_LE(side, StereoProto::RIGHT);
+  DCHECK_LE(side, StereoProto::LEFT_AND_RIGHT);
 
   if (type == StereoProto::SINGLE) {
-    b.copyFrom(StereoProto::RIGHT - side, 0, b, side, 0, n);
+    if (side == StereoProto::LEFT_AND_RIGHT) {
+      b.applyGain(StereoProto::RIGHT, 0, n, 0.5);
+      b.addFrom(StereoProto::RIGHT, 0, b, StereoProto::LEFT, 0, n, 0.5);
+      b.copyFrom(StereoProto::LEFT, 0, b, StereoProto::RIGHT, 0, n);
+
+    } else {
+      b.copyFrom(otherSide, 0, b, side, 0, n);
+    }
 
   } else if (type == StereoProto::INVERT) {
     b.applyGain(side, 0, n, -1.0);
 
   } else {
-    b.addFrom(side, 0, b, StereoProto::RIGHT - side, 0, n, -1.0);
+    b.addFrom(side, 0, b, otherSide, 0, n, -1.0);
     b.applyGain(side, 0, n, 0.5);
 
     if (type == StereoProto::CENTER_ELIMINATION)
-      b.addFrom(StereoProto::RIGHT - side, 0, b, side, 0, n, -1.0);
+      b.addFrom(otherSide, 0, b, side, 0, n, -1.0);
 
     else if (type == StereoProto::CENTER_ELIMINATION_MONO)
-      b.copyFrom(StereoProto::RIGHT - side, 0, b, side, 0, n);
+      b.copyFrom(otherSide, 0, b, side, 0, n);
 
   }
 }

@@ -4,6 +4,7 @@ message StereoProto {
   enum Side {
     LEFT = 0;
     RIGHT = 1;
+    LEFT_PLUS_RIGHT = 2;
   };
 
   enum Type {
