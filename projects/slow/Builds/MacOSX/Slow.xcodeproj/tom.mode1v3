@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -267,7 +265,7 @@
 							<array>
 								<string>0FB943DD0E03288A5FA029D3</string>
 								<string>75467D3DB26B8C553F2D3FE5</string>
-								<string>9A4ED57394A2394FF25AF65F</string>
+								<string>B83A607E0F3D6EDFFA33023A</string>
 								<string>3CB145F38275F0DC90995C8E</string>
 								<string>CD10F785B436A05D88DF293D</string>
 								<string>E89CD5E8F8F5E56D76A0DE49</string>
@@ -279,9 +277,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>41</integer>
-									<integer>40</integer>
-									<integer>36</integer>
+									<integer>29</integer>
+									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -317,12 +314,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>FullScreenRev.svg.cpp</string>
+								<string>StretchyController.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -330,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>FullScreenRev.svg.cpp</string>
+										<string>StretchyController.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E2F73F7A131F72860044B72A</string>
+										<string>E2F73FB3131F7A390044B72A</string>
 										<key>history</key>
 										<array>
 											<string>E2E28AE912E6457B004DE2DE</string>
@@ -367,8 +366,9 @@
 											<string>E29BBE811307DC3E0091D4CB</string>
 											<string>E29BBECA130A201E0091D4CB</string>
 											<string>E2F73EB8131D495D0044B72A</string>
-											<string>E2F73EB9131D495D0044B72A</string>
-											<string>E2F73F79131F72860044B72A</string>
+											<string>E2F73FAC131F79F90044B72A</string>
+											<string>E2F73FAD131F79F90044B72A</string>
+											<string>E2F73FAE131F79F90044B72A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -566,12 +566,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E2F73FB4131F7A390044B72A</string>
 		<string>E2F73F82131F72860044B72A</string>
 		<string>E2F73F83131F72860044B72A</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 		<string>E290FED3120A432900532309</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>322 59 1358 969 0 0 1680 1028 </string>
@@ -740,11 +741,11 @@
 									<key>DebugVariablesTableConfiguration</key>
 									<array>
 										<string>Name</string>
-										<real>333</real>
+										<real>189</real>
 										<string>Value</string>
-										<real>205</real>
+										<real>284</real>
 										<string>Summary</string>
-										<real>91</real>
+										<real>156</real>
 									</array>
 									<key>Frame</key>
 									<string>{{633, 0}, {654, 478}}</string>
@@ -790,7 +791,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

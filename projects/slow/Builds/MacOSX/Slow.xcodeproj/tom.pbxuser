@@ -308,6 +308,7 @@
 		activeExecutable = E2758BB212E2968800E37D3F /* Slow */;
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
+			E2F73FA8131F79F20044B72A /* StretchyController.cpp:65 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -405,6 +406,11 @@
 			E2F73ECE131D4A8C0044B72A = E2F73ECE131D4A8C0044B72A /* PBXTextBookmark */;
 			E2F73F79131F72860044B72A /* XCBuildMessageTextBookmark */ = E2F73F79131F72860044B72A /* XCBuildMessageTextBookmark */;
 			E2F73F7A131F72860044B72A /* PBXTextBookmark */ = E2F73F7A131F72860044B72A /* PBXTextBookmark */;
+			E2F73FAC131F79F90044B72A /* PBXTextBookmark */ = E2F73FAC131F79F90044B72A /* PBXTextBookmark */;
+			E2F73FAD131F79F90044B72A /* PBXTextBookmark */ = E2F73FAD131F79F90044B72A /* PBXTextBookmark */;
+			E2F73FAE131F79F90044B72A /* PBXTextBookmark */ = E2F73FAE131F79F90044B72A /* PBXTextBookmark */;
+			E2F73FAF131F79F90044B72A /* PBXTextBookmark */ = E2F73FAF131F79F90044B72A /* PBXTextBookmark */;
+			E2F73FB3131F7A390044B72A /* PBXTextBookmark */ = E2F73FB3131F7A390044B72A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -447,9 +453,9 @@
 	};
 	B4BC50DAF35370323BE4A74A /* StretchyController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 936}}";
-			sepNavSelRange = "{158, 0}";
-			sepNavVisRange = "{0, 1790}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 1053}}";
+			sepNavSelRange = "{2787, 0}";
+			sepNavVisRange = "{781, 1797}";
 			sepNavWindowFrame = "{{278, 19}, {911, 1159}}";
 		};
 	};
@@ -544,9 +550,9 @@
 	};
 	CEAC70FBD5AC5BD1D686C92A /* Stereo.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 715}}";
-			sepNavSelRange = "{1401, 0}";
-			sepNavVisRange = "{0, 1329}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 832}}";
+			sepNavSelRange = "{1706, 0}";
+			sepNavVisRange = "{0, 1328}";
 		};
 	};
 	CEC76BFA752BEE51DAD47E74 /* Loops.h */ = {
@@ -571,6 +577,11 @@
 		name = juce_Component.cpp;
 		path = /Users/tom/Documents/development/juce/src/gui/components/juce_Component.cpp;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1226, 39468}}";
+			sepNavSelRange = "{52573, 0}";
+			sepNavVisRange = "{51979, 812}";
+		};
 	};
 	E23E466912EFA3FF0080BD76 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -966,7 +977,7 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 41";
 		rLen = 0;
-		rLoc = 1482;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1690;
 		vrLoc = 0;
@@ -976,7 +987,7 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 54";
 		rLen = 0;
-		rLoc = 1771;
+		rLoc = 1774;
 		rType = 0;
 		vrLen = 1676;
 		vrLoc = 0;
@@ -994,7 +1005,7 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 54";
 		rLen = 0;
-		rLoc = 1771;
+		rLoc = 1774;
 		rType = 0;
 		vrLen = 1603;
 		vrLoc = 0;
@@ -1004,10 +1015,23 @@
 		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 53";
 		rLen = 0;
-		rLoc = 1770;
+		rLoc = 1773;
 		rType = 0;
 		vrLen = 1593;
 		vrLoc = 161;
+	};
+	E2F73F75131F72750044B72A /* StretchyController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = StretchyController.h;
+		path = ../../../../../rec/src/rec/gui/StretchyController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {959, 621}}";
+			sepNavSelRange = "{217, 0}";
+			sepNavVisRange = "{0, 977}";
+			sepNavWindowFrame = "{{15, 465}, {750, 558}}";
+		};
 	};
 	E2F73F79131F72860044B72A /* XCBuildMessageTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1027,6 +1051,74 @@
 		rType = 0;
 		vrLen = 1965;
 		vrLoc = 0;
+	};
+	E2F73FA8131F79F20044B72A /* StretchyController.cpp:65 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
+		functionName = "StretchyController::setData(UntypedData* data)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 65;
+		location = SlowBurn;
+		modificationTime = 320830008.470616;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E2F73FAC131F79F90044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */;
+		name = "FullScreenRev.svg.cpp: 630";
+		rLen = 0;
+		rLoc = 25215;
+		rType = 0;
+		vrLen = 1965;
+		vrLoc = 0;
+	};
+	E2F73FAD131F79F90044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2F73F75131F72750044B72A /* StretchyController.h */;
+		name = "StretchyController.h: 8";
+		rLen = 0;
+		rLoc = 217;
+		rType = 0;
+		vrLen = 977;
+		vrLoc = 0;
+	};
+	E2F73FAE131F79F90044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 43";
+		rLen = 45;
+		rLoc = 1533;
+		rType = 0;
+		vrLen = 1755;
+		vrLoc = 833;
+	};
+	E2F73FAF131F79F90044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 43";
+		rLen = 45;
+		rLoc = 1533;
+		rType = 0;
+		vrLen = 1804;
+		vrLoc = 781;
+	};
+	E2F73FB3131F7A390044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B4BC50DAF35370323BE4A74A /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 83";
+		rLen = 0;
+		rLoc = 2787;
+		rType = 0;
+		vrLen = 1797;
+		vrLoc = 781;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {
 		uiCtxt = {

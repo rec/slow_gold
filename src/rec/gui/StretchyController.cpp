@@ -57,6 +57,13 @@ void StretchyController::setData(UntypedData* data) {
   audio::stretch::StretchLoop proto;
   bool enable = !(data && data->fill(&proto) && proto.stretch().disabled());
   thread::callAsync(this, &StretchyController::enableSliders, enable);
+
+  Sides sides = STEREO;
+  if (data && proto.stretch().stereo().type())
+    sides = static_cast<Sides>(2 + proto.stretch().stereo().side());
+
+  thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
+                    static_cast<int>(sides), true);
 }
 
 void StretchyController::setZoom(UntypedData* data) {
