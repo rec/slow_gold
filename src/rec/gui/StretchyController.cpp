@@ -1,12 +1,15 @@
 #include "rec/gui/StretchyController.h"
 
+using rec::audio::source::StereoProto;
+using rec::audio::stretch::StretchLoop;
+
 namespace rec {
 namespace gui {
 
 namespace {
 
 enum Sides {
-  STEREO = 1, LEFT_PLUS_RIGHT, LEFT, RIGHT
+  STEREO = 1, LEFT, RIGHT, LEFT_PLUS_RIGHT
 };
 
 }  // namespace
@@ -59,12 +62,31 @@ void StretchyController::setData(UntypedData* data) {
   thread::callAsync(this, &StretchyController::enableSliders, enable);
 
   Sides sides = STEREO;
-  if (data && proto.stretch().stereo().type())
-    sides = static_cast<Sides>(2 + proto.stretch().stereo().side());
+  if (data) {
+    StretchLoop stretch;
+    if (data->fill(&stretch) && stretch.stretch().stereo().type())
+      sides = static_cast<Sides>(2 + stretch.stretch().stereo().side());
+  }
+
+  DLOG(INFO) << "sides! " << sides;
 
   thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
                     static_cast<int>(sides), true);
 }
+
+void StretchyController::comboBoxChanged(juce::ComboBox*) {
+  if (UntypedData* data = playbackSpeed_.getData()) {
+    Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
+    StereoProto stereo;
+    if (sides != STEREO) {
+      stereo.set_type(StereoProto::SINGLE);
+      stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
+    }
+    DLOG(INFO) << "stereo: " << stereo.DebugString();
+    data->set(Address("stretch", "stereo"), stereo);
+  }
+}
+
 
 void StretchyController::setZoom(UntypedData* data) {
   zoomToSelectionButton_.setData(data);

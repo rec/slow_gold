@@ -17,7 +17,7 @@ class StretchyController : public Layout, public juce::ComboBox::Listener {
   void setData(UntypedData* data);
   void setZoom(UntypedData* zoom);
   void enableSliders(bool enabled);
-  virtual void comboBoxChanged(juce::ComboBox* comboBoxThatHasChanged) {}
+  virtual void comboBoxChanged(juce::ComboBox*);
 
  private:
   SetterSlider playbackSpeed_;

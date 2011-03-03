@@ -20,7 +20,7 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   if (type == StereoProto::PASSTHROUGH)
     return;
 
-  DCHECK_NE(info.buffer->getNumChannels(), 2);
+  DCHECK_EQ(info.buffer->getNumChannels(), 2);
   if (info.buffer->getNumChannels() != 2)
     return;
 
