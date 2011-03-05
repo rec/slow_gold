@@ -101,6 +101,7 @@
 		830D13AF3D404CBF2A9E05E3 /* Partition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302A5AA90FB30F7613069965 /* Partition.cpp */; };
 		85434B2F5A11BDDAA9862628 /* GetProtoName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF96469ACEE305A4F37E36B /* GetProtoName.cpp */; };
 		858B869F6A6B0DABA31BAC20 /* SetterResizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 908C52E59BABA47A9B73B2CE /* SetterResizer.cpp */; };
+		8735558EA7A879E5A368F972 /* DialComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */; };
 		8896BEA319451F2CB4541F41 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8C10E13EA1C8B0DB22E914 /* CoreMIDI.framework */; };
 		895DC5EF8406600F0CD43F41 /* AudioCard.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2574908A37D188C9ED1F65 /* AudioCard.svg.cpp */; };
 		8A2380D3CA61B2BE65350DFD /* CDDBResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D87903F9957B99FEDB5DEC3 /* CDDBResponse.cpp */; };
@@ -395,6 +396,7 @@
 		7A9B20669D825CA83E79C2D7 /* Circular.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Circular.h; path = ../../../../src/rec/util/Circular.h; sourceTree = SOURCE_ROOT; };
 		7B2EF485D114357565803EDF /* Standard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Standard.h; path = ../../../../src/rec/base/Standard.h; sourceTree = SOURCE_ROOT; };
 		7BD93D3C80AA0E1600B3C057 /* Geometry.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.pb.h; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.h; sourceTree = SOURCE_ROOT; };
+		7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DialComponent.cpp; path = ../../../../src/rec/widget/status/DialComponent.cpp; sourceTree = SOURCE_ROOT; };
 		7C1C3B1D3C8D7B4A179CC63E /* scantoken.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scantoken.cpp; path = ../../../../src/rec/data/yaml/src/scantoken.cpp; sourceTree = SOURCE_ROOT; };
 		7C466902C345F9AEBF31BE2A /* AudioDeviceSetup.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioDeviceSetup.pb.cc; path = ../../../../genfiles/proto/rec/audio/util/AudioDeviceSetup.pb.cc; sourceTree = SOURCE_ROOT; };
 		7C9A57490A0E96391366751C /* Persist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Persist.h; path = ../../../../src/rec/data/persist/Persist.h; sourceTree = SOURCE_ROOT; };
@@ -485,6 +487,7 @@
 		AF72E645A6B088FAE68DE120 /* Value.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Value.pb.h; path = ../../../../genfiles/proto/rec/data/proto/Value.pb.h; sourceTree = SOURCE_ROOT; };
 		AF78CEE14C91E8CDBCD65D6D /* GetVolumes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GetVolumes.cpp; path = ../../../../src/rec/util/file/GetVolumes.cpp; sourceTree = SOURCE_ROOT; };
 		B02005F1FB534BCE69198D9E /* emitterstate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = emitterstate.h; path = ../../../../src/rec/data/yaml/src/emitterstate.h; sourceTree = SOURCE_ROOT; };
+		B02582F7B7419635D36CB407 /* DialComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DialComponent.h; path = ../../../../src/rec/widget/status/DialComponent.h; sourceTree = SOURCE_ROOT; };
 		B0B1100F2433A9B7908852F1 /* aliascontent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aliascontent.h; path = ../../../../src/rec/data/yaml/src/aliascontent.h; sourceTree = SOURCE_ROOT; };
 		B0C25ECDCA094453BE8092FD /* emitfromevents.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitfromevents.cpp; path = ../../../../src/rec/data/yaml/src/emitfromevents.cpp; sourceTree = SOURCE_ROOT; };
 		B0F53C78CB69B4446F97E4F5 /* scalar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scalar.cpp; path = ../../../../src/rec/data/yaml/src/scalar.cpp; sourceTree = SOURCE_ROOT; };
@@ -675,20 +678,6 @@
 				C492F238E0B137F11CB59D99 /* Widget.pb.h */,
 			);
 			name = widget;
-			sourceTree = "<group>";
-		};
-		0FB943DD0E03288A5FA029D3 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		13B7AF66DC71626F21BA5581 /* cd */ = {
@@ -921,6 +910,8 @@
 		5720D3EC4E580E9486B3ECDD /* status */ = {
 			isa = PBXGroup;
 			children = (
+				7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */,
+				B02582F7B7419635D36CB407 /* DialComponent.h */,
 				2501DE5143C9726EFD4CFEE5 /* Status.cpp */,
 				3F584718985459096DAAE18E /* Status.h */,
 				BC41A67CC51223ACB7177017 /* Time.cpp */,
@@ -1441,6 +1432,20 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
+		DEBF464C6F4CD8406111502C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -1597,7 +1602,7 @@
 				French,
 				German,
 			);
-			mainGroup = 0FB943DD0E03288A5FA029D3 /* Source */;
+			mainGroup = DEBF464C6F4CD8406111502C /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1746,6 +1751,7 @@
 				830D13AF3D404CBF2A9E05E3 /* Partition.cpp in Sources */,
 				DF9E7E4FE3D7B5EDB74379BB /* RandomSelfInverseFunction.cpp in Sources */,
 				B380D51FD7324CCF50D21514 /* Trash.cpp in Sources */,
+				8735558EA7A879E5A368F972 /* DialComponent.cpp in Sources */,
 				1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */,
 				39DFE93A7597923AEFEF928B /* Time.cpp in Sources */,
 				5B4FF2B8E059E57EB92EAC58 /* TimeAndLength.cpp in Sources */,

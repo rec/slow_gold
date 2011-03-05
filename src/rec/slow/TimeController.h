@@ -7,6 +7,7 @@
 #include "rec/slow/AudioTransportSourcePlayer.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/widget/status/TimeAndLength.h"
+#include "rec/widget/status/DialComponent.h"
 
 namespace rec {
 namespace slow {

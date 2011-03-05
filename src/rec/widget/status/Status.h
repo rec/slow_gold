@@ -5,7 +5,7 @@
 
 #include "rec/base/base.h"
 #include "rec/widget/status/Time.h"
-
+#include "rec/widget/status/DialComponent.h"
 
 namespace rec {
 namespace widget {

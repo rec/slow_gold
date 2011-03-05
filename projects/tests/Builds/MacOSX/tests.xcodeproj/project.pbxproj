@@ -163,6 +163,7 @@
 		923C6B47D7886DD79AD28D3F = { isa = PBXBuildFile; fileRef = 3CD4C82FF75969E1EEB2BC48; };
 		4C6B70DFDC08D472EBEE6A02 = { isa = PBXBuildFile; fileRef = F48DE7ABD54D82DA24B5C21C; };
 		772EC118BCF3F4BA24602997 = { isa = PBXBuildFile; fileRef = 96E603D0BD6251360BE74904; };
+		4AD352878C5A21CF76F70DF5 = { isa = PBXBuildFile; fileRef = 2FB0FBF82C2C2DA958F6E36A; };
 		D18EE8FE91699AD36D0451DB = { isa = PBXBuildFile; fileRef = E8AFCA5A278B2A59C0DAF279; };
 		FC7DD6326A584A14B37DA60F = { isa = PBXBuildFile; fileRef = 70EF9275AAD3EB968AA6849B; };
 		1FEDFFB1D50A9D588CBDA0DB = { isa = PBXBuildFile; fileRef = D3417F6AEFE69AE95E4F40FD; };
@@ -591,6 +592,8 @@
 		96E603D0BD6251360BE74904 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Trash.cpp; path = ../../../../src/rec/util/thread/Trash.cpp; sourceTree = SOURCE_ROOT; };
 		1B616F9D42BF5D01A142E8F0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Trash.h; path = ../../../../src/rec/util/thread/Trash.h; sourceTree = SOURCE_ROOT; };
 		1B532489B15B6DDC166C101C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Painter.h; path = ../../../../src/rec/widget/Painter.h; sourceTree = SOURCE_ROOT; };
+		2FB0FBF82C2C2DA958F6E36A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DialComponent.cpp; path = ../../../../src/rec/widget/status/DialComponent.cpp; sourceTree = SOURCE_ROOT; };
+		73C37FF09CF24E20A6FBC88A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DialComponent.h; path = ../../../../src/rec/widget/status/DialComponent.h; sourceTree = SOURCE_ROOT; };
 		E8AFCA5A278B2A59C0DAF279 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Status.cpp; path = ../../../../src/rec/widget/status/Status.cpp; sourceTree = SOURCE_ROOT; };
 		F2F633218D0501E33038F502 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.h; path = ../../../../src/rec/widget/status/Status.h; sourceTree = SOURCE_ROOT; };
 		70EF9275AAD3EB968AA6849B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Time.cpp; path = ../../../../src/rec/widget/status/Time.cpp; sourceTree = SOURCE_ROOT; };
@@ -1097,6 +1100,8 @@
 				32725F42BDBD52034C01DC96,
 				B453D2FEBD8785B3C4D5BBE8 ); name = util; sourceTree = "<group>"; };
 		98CC691210EA3127D211C23A = { isa = PBXGroup; children = (
+				2FB0FBF82C2C2DA958F6E36A,
+				73C37FF09CF24E20A6FBC88A,
 				E8AFCA5A278B2A59C0DAF279,
 				F2F633218D0501E33038F502,
 				70EF9275AAD3EB968AA6849B,
@@ -1253,7 +1258,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		97B4DF07935D334BCB3B549F = { isa = PBXGroup; children = (
+		770821DC66170AC682563FA5 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1483,6 +1488,7 @@
 				923C6B47D7886DD79AD28D3F,
 				4C6B70DFDC08D472EBEE6A02,
 				772EC118BCF3F4BA24602997,
+				4AD352878C5A21CF76F70DF5,
 				D18EE8FE91699AD36D0451DB,
 				FC7DD6326A584A14B37DA60F,
 				1FEDFFB1D50A9D588CBDA0DB,
@@ -1542,7 +1548,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 97B4DF07935D334BCB3B549F; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 770821DC66170AC682563FA5; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

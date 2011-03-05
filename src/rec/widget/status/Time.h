@@ -30,27 +30,6 @@ class TextComponent : public gui::SimpleLabel,
   DISALLOW_COPY_AND_ASSIGN(TextComponent);
 };
 
-// TODO: must get updates for length!
-class DialComponent : public Component,
-                      public Listener<const ClockUpdate&> {
- public:
-  explicit DialComponent(const Dial& desc, double length = 0.0f, double time = 0.0f);
-  void setLength(double length);
-  void setTime(double time);
-
-  virtual void operator()(const ClockUpdate& c) { c.update(this); }
-  virtual void paint(juce::Graphics& g);
-  virtual void repaint() { Component::repaint(); }
-
- private:
-  CriticalSection lock_;
-  Dial description_;
-  double length_;
-  double time_;
-
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
-};
-
 }  // namespace time
 }  // namespace status
 }  // namespace widget
