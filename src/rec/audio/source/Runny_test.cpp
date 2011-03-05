@@ -8,24 +8,29 @@ namespace audio {
 namespace source {
 
 TEST(RecAudio, Runny) {
+  static const int READ_OFFSET = 16;
+  static const int WRITE_OFFSET = 64;
+
   AudioSampleBuffer buffer(2, 128);
 
   AudioSourceChannelInfo info;
   info.buffer = &buffer;
   info.numSamples = 32;
-  info.startSample = 64;
+  info.startSample = WRITE_OFFSET;
 
   RunnyProto runnyProto;
+  // runnyProto.set_chunk_size(16);
   Runny runny(new Testy, runnyProto);
   runny.fillOnce();
 
-  static const int OFFSET = 16;
-  runny.setNextReadPosition(OFFSET);
+  runny.setNextReadPosition(READ_OFFSET);
   runny.getNextAudioBlock(info);
 
   for (int c = 0; c < 2; ++c) {
-    for (int i = 0; i < 32; ++i)
-      EXPECT_EQ(Testy::getSample(OFFSET + i), *buffer.getSampleData(c, 64 + i));
+    for (int i = 0; i < 32; ++i) {
+      EXPECT_EQ(Testy::getSample(READ_OFFSET + i),
+                *buffer.getSampleData(c, WRITE_OFFSET + i));
+    }
   }
 }
 
