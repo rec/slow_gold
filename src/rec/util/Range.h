@@ -45,7 +45,6 @@ typedef Range<double> TimeRange;
 typedef Range<int64> SampleRange;
 typedef TimeRange::Set SelectionRange;
 
-
 }  // namespace util
 }  // namespace rec
 

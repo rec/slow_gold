@@ -54,6 +54,7 @@ void TimeController::operator()(const StretchLoop& stretchLoop) {
 void TimeController::operator()(const SelectionRange& r) {
   realTime_(r);
   songTime_(r);
+  songDial_(r);
 }
 
 }  // namespace slow

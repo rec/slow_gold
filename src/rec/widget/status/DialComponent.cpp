@@ -61,6 +61,9 @@ void DialComponent::setLength(double length) {
   thread::callAsync(this, &DialComponent::repaint);
 }
 
+void DialComponent::operator()(const SelectionRange& c) {
+}
+
 }  // namespace time
 }  // namespace status
 }  // namespace widget
