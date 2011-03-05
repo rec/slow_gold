@@ -12,10 +12,12 @@ using proto::Operation;
 
 const static char RESULT[] =
   "---\n"
-  "command: APPEND\n"
-  "address: {field: [{index: 3}, {name: fred}]}\n"
+  "type: rec.proto.Operation\n"
   "value:\n"
-  "  - {uint32_f: 5}";
+  "  command: APPEND\n"
+  "  address: {field: [{index: 3}, {name: fred}]}\n"
+  "  value:\n"
+  "    - {uint32_f: 5}";
 
 TEST(Yaml, Write) {
   Operation op;
@@ -29,14 +31,15 @@ TEST(Yaml, Write) {
 
 TEST(Yaml, Read) {
   Operation op;
-  read(RESULT, &op);
+  ASSERT_TRUE(read(RESULT, &op));
 
   EXPECT_EQ(op.command(), Operation::APPEND);
+  ASSERT_EQ(op.address().field_size(), 2);
+  ASSERT_EQ(op.value_size(), 1);
   EXPECT_EQ(op.address().field(0).index(), 3);
   EXPECT_EQ(op.address().field(1).name(), "fred");
   EXPECT_EQ(op.value(0).uint32_f(), 5);
 }
-
 
 }  // namespace
 }  // namespace yaml

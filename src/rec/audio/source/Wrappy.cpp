@@ -28,9 +28,11 @@ void Wrappy::setSource(PositionableAudioSource* s) {
 }
 
 void Wrappy::setNextReadPosition(int64 p) {
+  {
+    ScopedLock l(lock_);
+    position_ = p;
+  }
   source()->setNextReadPosition(p);
-  ScopedLock l(lock_);
-  position_ = p;
 }
 
 void Wrappy::getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
