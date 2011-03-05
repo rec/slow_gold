@@ -39,8 +39,7 @@ void runTest(int numSamples, int chunkSize) {
         << "channel: " << c
         << ", sample: " << i
         << ", numSamples: " << numSamples
-        << ", chunkSize: " << chunkSize
-;
+        << ", chunkSize: " << chunkSize;
     }
   }
 }
@@ -48,11 +47,11 @@ void runTest(int numSamples, int chunkSize) {
 }
 
 TEST(RecAudio, Runny1) {
-  runTest(32, 64);
+  runTest(32, 24);
 }
 
 TEST(RecAudio, Runny2) {
-  runTest(32, 16);
+  runTest(32, 23);
 }
 
 }  // namespace source
