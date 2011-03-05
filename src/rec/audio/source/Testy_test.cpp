@@ -20,7 +20,7 @@ TEST(RecAudio, Testy) {
 
   for (int c = 0; c < 2; ++c) {
     for (int i = 0; i < 32; ++i)
-      EXPECT_EQ(*buffer.getSampleData(c, 64 + i), Testy::getSample(16 + i));
+      EXPECT_EQ(Testy::getSample(16 + i), *buffer.getSampleData(c, 64 + i));
   }
 }
 

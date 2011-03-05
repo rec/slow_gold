@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "rec/audio/source/Testy.h"
+#include "rec/audio/source/Runny.h"
 
 namespace rec {
 namespace audio {
@@ -14,13 +15,17 @@ TEST(RecAudio, Runny) {
   info.numSamples = 32;
   info.startSample = 64;
 
-  Testy testy;
-  testy.setNextReadPosition(16);
-  testy.getNextAudioBlock(info);
+  RunnyProto runnyProto;
+  Runny runny(new Testy, runnyProto);
+  runny.fillOnce();
+
+  static const int OFFSET = 16;
+  runny.setNextReadPosition(OFFSET);
+  runny.getNextAudioBlock(info);
 
   for (int c = 0; c < 2; ++c) {
     for (int i = 0; i < 32; ++i)
-      EXPECT_EQ(*buffer.getSampleData(c, 64 + i), Testy::getSample(16 + i));
+      EXPECT_EQ(Testy::getSample(OFFSET + i), *buffer.getSampleData(c, 64 + i));
   }
 }
 

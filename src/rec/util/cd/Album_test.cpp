@@ -1,3 +1,5 @@
+#ifdef BACK_IN_CIVILIZATION
+
 #include <gtest/gtest.h>
 
 #include "rec/base/ArraySize.h"
@@ -67,3 +69,5 @@ TEST(CD, Albums) {
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
+
+#endif
