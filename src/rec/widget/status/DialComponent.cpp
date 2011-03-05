@@ -26,7 +26,8 @@ DialComponent::DialComponent(const Dial& desc, double length, double time)
     : Component(desc.widget().name().c_str()),
       description_(desc),
       length_(length),
-      time_(time) {
+      time_(time),
+      range_(0.0, 0.0) {
 }
 
 void DialComponent::paint(Graphics& g) {
