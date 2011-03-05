@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_STATUS_TIMEANDLENGTH__
 #define __REC_WIDGET_STATUS_TIMEANDLENGTH__
 
-#include "rec/widget/status/Time.h"
+#include "rec/widget/status/TextComponent.h"
 #include "rec/gui/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/util/Range.h"

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "rec/widget/status/Time.h"
+#include "rec/widget/status/TextComponent.h"
 
 namespace rec {
 namespace widget {

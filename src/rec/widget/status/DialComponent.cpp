@@ -1,8 +1,6 @@
 #include <math.h>
 
 #include "rec/widget/status/DialComponent.h"
-
-#include "rec/widget/status/Time.h"
 #include "rec/util/Math.h"
 #include "rec/gui/Color.h"
 #include "rec/gui/Geometry.h"

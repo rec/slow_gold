@@ -382,8 +382,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 320991249;
-			PBXWorkspaceStateSaveDate = 320991249;
+			PBXPerProjectTemplateStateSaveDate = 320999324;
+			PBXWorkspaceStateSaveDate = 320999324;
 		};
 		perUserProjectItems = {
 			E23E466912EFA3FF0080BD76 = E23E466912EFA3FF0080BD76 /* PBXTextBookmark */;
@@ -483,9 +483,9 @@
 			E2F740521321E5BC0044B72A = E2F740521321E5BC0044B72A /* PBXTextBookmark */;
 			E2F740551321E63F0044B72A = E2F740551321E63F0044B72A /* PBXTextBookmark */;
 			E2F740561321E63F0044B72A = E2F740561321E63F0044B72A /* PBXTextBookmark */;
-			E2F7406A1321F0CA0044B72A /* XCBuildMessageTextBookmark */ = E2F7406A1321F0CA0044B72A /* XCBuildMessageTextBookmark */;
-			E2F7406B1321F0CA0044B72A /* PBXTextBookmark */ = E2F7406B1321F0CA0044B72A /* PBXTextBookmark */;
-			E2F7406E1321F0DE0044B72A /* PBXTextBookmark */ = E2F7406E1321F0DE0044B72A /* PBXTextBookmark */;
+			E2F7406A1321F0CA0044B72A = E2F7406A1321F0CA0044B72A /* PBXTextBookmark */;
+			E2F7406B1321F0CA0044B72A = E2F7406B1321F0CA0044B72A /* PBXTextBookmark */;
+			E2F7406E1321F0DE0044B72A = E2F7406E1321F0DE0044B72A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -546,14 +546,6 @@
 			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 360}";
-		};
-	};
-	BC41A67CC51223ACB7177017 /* Time.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 615}}";
-			sepNavSelRange = "{1061, 0}";
-			sepNavVisRange = "{0, 1061}";
-			sepNavWindowFrame = "{{176, 318}, {750, 558}}";
 		};
 	};
 	BEC3F96BDD2E98143AD9F8DF /* Operation.pb.h */ = {
@@ -1726,18 +1718,15 @@
 		vrLen = 1065;
 		vrLoc = 492;
 	};
-	E2F7406A1321F0CA0044B72A /* XCBuildMessageTextBookmark */ = {
+	E2F7406A1321F0CA0044B72A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'DialComponent' has not been declared";
-		fRef = BC41A67CC51223ACB7177017 /* Time.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 42;
 		rType = 1;
 	};
 	E2F7406B1321F0CA0044B72A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = BC41A67CC51223ACB7177017 /* Time.cpp */;
 		name = "Time.cpp: 42";
 		rLen = 0;
 		rLoc = 974;
@@ -1747,7 +1736,6 @@
 	};
 	E2F7406E1321F0DE0044B72A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = BC41A67CC51223ACB7177017 /* Time.cpp */;
 		name = "Time.cpp: 46";
 		rLen = 0;
 		rLoc = 1061;

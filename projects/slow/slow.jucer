@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="1NCFKMgBf" name="Slow">
+  <MAINGROUP id="HIQnNDRqC" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -795,10 +795,10 @@
                 name="Status.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/status/Status.h" id="sMvwMkNN6"
                 name="Status.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/status/Time.cpp" id="Nhk20QR5X"
-                name="Time.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/status/Time.h" id="AeRx4PxOo"
-                name="Time.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/widget/status/TextComponent.cpp"
+                id="M6zfE6Hav" name="TextComponent.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/status/TextComponent.h"
+                id="5eEpTEp65" name="TextComponent.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/status/TimeAndLength.cpp"
                 id="jqewdZ7w0" name="TimeAndLength.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/status/TimeAndLength.h"
@@ -1002,7 +1002,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="mz1toDuKP" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="QjUnekNQZ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
