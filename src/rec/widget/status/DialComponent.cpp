@@ -31,7 +31,9 @@ DialComponent::DialComponent(const Dial& desc, double length, double time)
 
 void DialComponent::paint(Graphics& g) {
   ScopedLock l(lock_);
-  double timeRatio = Math<double>::near(length_, 0.0f, 0.001f) ? 0.0f : (time_ / length_);
+  double length = juce::jmax(range_.size(), 0.001);
+  double timeRatio = Math<double>::near(length_, 0.0f, 0.001f) ? 0.0f :
+    ((time_ - range_.begin_) / length);
   Painter p(description_.widget(), &g);
   juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));
   double zeroAngle = description_.zero_point() * 2.0 * PI;
@@ -62,6 +64,9 @@ void DialComponent::setLength(double length) {
 }
 
 void DialComponent::operator()(const SelectionRange& c) {
+  ScopedLock l(lock_);
+  range_ = TimeRange(c);
+  thread::callAsync(this, &DialComponent::repaint);
 }
 
 }  // namespace time

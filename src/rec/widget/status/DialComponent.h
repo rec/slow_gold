@@ -30,6 +30,7 @@ class DialComponent : public Component,
   Dial description_;
   double length_;
   double time_;
+  TimeRange range_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
 };
