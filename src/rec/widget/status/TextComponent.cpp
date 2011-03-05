@@ -1,10 +1,5 @@
-#include <math.h>
-
 #include "rec/widget/status/TextComponent.h"
 #include "rec/util/FormatTime.h"
-#include "rec/util/Math.h"
-#include "rec/gui/Color.h"
-// #include "rec/gui/Geometry.h"
 #include "rec/widget/Painter.h"
 #include "rec/util/thread/CallAsync.h"
 
