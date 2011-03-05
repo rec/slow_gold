@@ -9,14 +9,13 @@ namespace source {
 
 namespace {
 
+const int CHANNELS = 2;
+const int BUFFER_SIZE = 128;
+
 const int READ_OFFSET = 16;
 const int WRITE_OFFSET = 64;
-const int NUM_SAMPLES = 32;
-const int BUFFER_SIZE = 128;
-const int CHUNK_SIZE = 16;
-const int CHANNELS = 2;
 
-void runTest(int numSamples) {
+void runTest(int numSamples, int chunkSize) {
   AudioSampleBuffer buffer(CHANNELS, BUFFER_SIZE);
 
   AudioSourceChannelInfo info;
@@ -25,7 +24,7 @@ void runTest(int numSamples) {
   info.startSample = WRITE_OFFSET;
 
   RunnyProto runnyProto;
-  runnyProto.set_chunk_size(CHUNK_SIZE);
+  runnyProto.set_chunk_size(chunkSize);
   Runny runny(new Testy, runnyProto);
   runny.fillOnce();
   runny.fillOnce();
@@ -40,6 +39,7 @@ void runTest(int numSamples) {
         << "channel: " << c
         << ", sample: " << i
         << ", numSamples: " << numSamples
+        << ", chunkSize: " << chunkSize
 ;
     }
   }
@@ -47,8 +47,12 @@ void runTest(int numSamples) {
 
 }
 
-TEST(RecAudio, Runny) {
-  runTest(NUM_SAMPLES);
+TEST(RecAudio, Runny1) {
+  runTest(32, 64);
+}
+
+TEST(RecAudio, Runny2) {
+  runTest(32, 16);
 }
 
 }  // namespace source
