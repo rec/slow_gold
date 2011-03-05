@@ -215,7 +215,10 @@ void Loops::clearLoops() {
 }
 
 void Loops::operator()(const widget::waveform::CursorTime& ct) {
-  getData()->set(Address("loop_point", ct.cursor_, "time"), ct.time_);
+  if (ct.cursor_ >= 0)
+    getData()->set(Address("loop_point", ct.cursor_, "time"), ct.time_);
+  else
+    timeBroadcaster_.broadcast(ct.time_);
 }
 
 }  // namespace gui

@@ -42,9 +42,12 @@ class Loops : public TableController,
   virtual bool keyPressed(const juce::KeyPress& kp);
   virtual void operator()(const widget::waveform::CursorTime&);
 
+  Broadcaster<double>* timeBroadcaster() { return &timeBroadcaster_; }
+
  private:
   double length_;
   LoopPointList loopPoints_;
+  Broadcaster<double> timeBroadcaster_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };

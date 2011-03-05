@@ -13,6 +13,7 @@ class AudioTransportSourcePlayer;
 
 class StretchyPlayer : public Listener<const VirtualFile&>,
                        public Listener<const double&>,
+                       public Listener<double>,
                        public Broadcaster<const VirtualFile&> {
  public:
   typedef audio::stretch::StretchLoop StretchLoop;
@@ -26,11 +27,14 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
   // Callback when we're ready to actually jump to a new time.
   virtual void operator()(const double& time);
 
+  // Callback to set the new time.
+  virtual void operator()(double time) { setTime(time); }
+
   void setTime(double time) { timeLocker_->set(time); }
 
   Listener<const VirtualFile&>* fileListener() { return &fileListener_; }
-  AudioTransportSourcePlayer* getTransport() { 
-	  return transportSource_.get(); 
+  AudioTransportSourcePlayer* getTransport() {
+	  return transportSource_.get();
   }
 
   persist::Data<StretchLoop>* getStretchy() { return stretchy_; }

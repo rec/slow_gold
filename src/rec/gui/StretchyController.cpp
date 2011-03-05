@@ -68,8 +68,6 @@ void StretchyController::setData(UntypedData* data) {
       sides = static_cast<Sides>(2 + stretch.stretch().stereo().side());
   }
 
-  DLOG(INFO) << "sides! " << sides;
-
   thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
                     static_cast<int>(sides), true);
 }
@@ -82,7 +80,6 @@ void StretchyController::comboBoxChanged(juce::ComboBox*) {
       stereo.set_type(StereoProto::SINGLE);
       stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
     }
-    DLOG(INFO) << "stereo: " << stereo.DebugString();
     data->set(Address("stretch", "stereo"), stereo);
   }
 }

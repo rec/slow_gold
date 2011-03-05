@@ -77,11 +77,9 @@ int Cursor::getDragX(const MouseEvent& e) const {
 }
 
 void Cursor::mouseDown(const MouseEvent& e) {
-  if (!isTimeCursor()) {
-    dragging_ = true;
-    mouseDragX_ = e.x;
-    dragX_ = getX();
-  }
+  dragging_ = true;
+  mouseDragX_ = e.x;
+  dragX_ = getX();
 }
 
 void Cursor::mouseDrag(const MouseEvent& e) {

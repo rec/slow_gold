@@ -36,6 +36,7 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
   directory_->addListener(player_.fileListener());
 
   player_.addListener(this);
+  loops_.timeBroadcaster()->addListener(&player_);
 
   directory_->startThread();
   persist::data<VirtualFile>()->requestUpdate();
