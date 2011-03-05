@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Zqu6AfR4V" name="tests">
+  <MAINGROUP id="eCR0LPqu3" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -114,6 +114,8 @@
                 name="Runny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Runny.h" id="WkdDpEVAB"
                 name="Runny.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/Runny_test.cpp"
+                id="t6SIJA1Bv" name="Runny_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Seggy.h" id="am783jWco"
                 name="Seggy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Snoopy.h" id="7te4oiK2k"
@@ -1047,7 +1049,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="hWhohpNSY" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="4YHtj2W2f" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

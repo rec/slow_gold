@@ -6,7 +6,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-TEST(RecAudio, Testy) {
+TEST(RecAudio, Runny) {
   AudioSampleBuffer buffer(2, 128);
 
   AudioSourceChannelInfo info;

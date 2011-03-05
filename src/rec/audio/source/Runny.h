@@ -11,6 +11,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
+// Runny is a thread-based pre-fetching PositionableAudioSource wrapper.
 class Runny : public Thread, public Wrappy {
  public:
   Runny(PositionableAudioSource* source,
