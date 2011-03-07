@@ -99,9 +99,9 @@
 	};
 	37878C28A1A8AF5FFC61D882 /* DoubleRunny.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1226, 481}}";
-			sepNavSelRange = "{536, 0}";
-			sepNavVisRange = "{0, 759}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 536}}";
+			sepNavSelRange = "{643, 0}";
+			sepNavVisRange = "{0, 846}";
 		};
 	};
 	38B70BAED12B8E287997D2D1 /* AudioTimeScaler.cpp */ = {
@@ -135,9 +135,9 @@
 	};
 	485652DE1AE04CB8F99A2A1E /* DoubleRunny.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1226, 650}}";
-			sepNavSelRange = "{731, 0}";
-			sepNavVisRange = "{330, 611}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 676}}";
+			sepNavSelRange = "{377, 0}";
+			sepNavVisRange = "{129, 894}";
 		};
 	};
 	49A868D7274F6A48731C0719 /* TimeScaler.cpp */ = {
@@ -419,6 +419,11 @@
 			E2F73FDB131F7DA50044B72A = E2F73FDB131F7DA50044B72A /* PBXTextBookmark */;
 			E2F741C31324DD8D0044B72A = E2F741C31324DD8D0044B72A /* PBXBookmark */;
 			E2F741C41324DD8D0044B72A = E2F741C41324DD8D0044B72A /* PBXTextBookmark */;
+			E2F741FA1324EC7B0044B72A /* PBXTextBookmark */ = E2F741FA1324EC7B0044B72A /* PBXTextBookmark */;
+			E2F741FB1324EC7B0044B72A /* PBXTextBookmark */ = E2F741FB1324EC7B0044B72A /* PBXTextBookmark */;
+			E2F741FC1324EC7B0044B72A /* PBXTextBookmark */ = E2F741FC1324EC7B0044B72A /* PBXTextBookmark */;
+			E2F741FF1324EC810044B72A /* XCBuildMessageTextBookmark */ = E2F741FF1324EC810044B72A /* XCBuildMessageTextBookmark */;
+			E2F742001324EC810044B72A /* PBXTextBookmark */ = E2F742001324EC810044B72A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -1070,6 +1075,52 @@
 		rType = 0;
 		vrLen = 1136;
 		vrLoc = 0;
+	};
+	E2F741FA1324EC7B0044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 485652DE1AE04CB8F99A2A1E /* DoubleRunny.cpp */;
+		name = "DoubleRunny.cpp: 30";
+		rLen = 0;
+		rLoc = 672;
+		rType = 0;
+		vrLen = 455;
+		vrLoc = 236;
+	};
+	E2F741FB1324EC7B0044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37878C28A1A8AF5FFC61D882 /* DoubleRunny.h */;
+		rLen = 0;
+		rLoc = 9223372036854775789;
+		rType = 0;
+	};
+	E2F741FC1324EC7B0044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 37878C28A1A8AF5FFC61D882 /* DoubleRunny.h */;
+		name = "DoubleRunny.h: 26";
+		rLen = 0;
+		rLoc = 643;
+		rType = 0;
+		vrLen = 846;
+		vrLoc = 0;
+	};
+	E2F741FF1324EC810044B72A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'rec::util::thread_ptr<juce::PositionableAudioSource>::swap(rec::util::thread_ptr<rec::audio::source::Runny>&)'";
+		fRef = 485652DE1AE04CB8F99A2A1E /* DoubleRunny.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	E2F742001324EC810044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 485652DE1AE04CB8F99A2A1E /* DoubleRunny.cpp */;
+		name = "DoubleRunny.cpp: 19";
+		rLen = 0;
+		rLoc = 377;
+		rType = 0;
+		vrLen = 894;
+		vrLoc = 129;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {
 		uiCtxt = {
