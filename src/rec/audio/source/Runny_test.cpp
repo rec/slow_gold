@@ -8,19 +8,24 @@ namespace rec {
 namespace audio {
 namespace source {
 
-void runTest(int numSamples, int chunkSize, int bufferSize) {
+namespace {
+
+const int CHUNK_SIZE = 16;
+const int NUM_SAMPLES = 32;
+const int BUFFER_SIZE = 24;
+
+}
+
+TEST(RecAudio, Runny1) {
   RunnyProto runnyProto;
-  runnyProto.set_chunk_size(chunkSize);
-  runnyProto.set_chunk_size(bufferSize);
+
+  runnyProto.set_chunk_size(CHUNK_SIZE);
+  runnyProto.set_chunk_size(BUFFER_SIZE);
 
   Runny runny(new Testy, runnyProto);
   runny.fillOnce();
   runny.fillOnce();
-  testSource(numSamples, &runny);
-}
-
-TEST(RecAudio, Runny1) {
-  runTest(32, 16, 24);
+  testSource(NUM_SAMPLES, &runny);
 }
 
 }  // namespace source
