@@ -18,7 +18,7 @@ class Wrappy : public PositionableAudioSource {
   virtual bool isLooping() const { return source()->isLooping(); }
   virtual void setLooping(bool looping) { source()->setLooping(looping); }
 
-  virtual void prepareToPlay(int s, double r) { source()->prepareToPlay(s, r);  }
+  virtual void prepareToPlay(int s, double r);
   virtual void releaseResources() { source()->releaseResources(); }
 
   int mod(int64 x) const { return util::mod(x, getTotalLength()); }
@@ -35,6 +35,8 @@ class Wrappy : public PositionableAudioSource {
 
   int64 position_;
   ptr<PositionableAudioSource> source_;
+
+  bool prepared_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Wrappy);

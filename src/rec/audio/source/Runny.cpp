@@ -94,7 +94,8 @@ void Runny::fillOnce() {
                          << ":" << filled_.filled() << ", " << this;
 #endif
 
-  source()->prepareToPlay(desc_.chunk_size(), 44100);
+  if (!prepared_)
+    prepareToPlay(desc_.chunk_size(), 44100);
 
   if (!threadShouldExit())
     source()->getNextAudioBlock(info);

@@ -10,13 +10,13 @@ namespace source {
 namespace {
 
 const int CHANNELS = 2;
-const int BUFFER_SIZE = 128;
+const int FULL_BUFFER_SIZE = 128;
 
 const int READ_OFFSET = 16;
 const int WRITE_OFFSET = 64;
 
-void runTest(int numSamples, int chunkSize) {
-  AudioSampleBuffer buffer(CHANNELS, BUFFER_SIZE);
+void runTest(int numSamples, int chunkSize, int bufferSize) {
+  AudioSampleBuffer buffer(CHANNELS, FULL_BUFFER_SIZE);
 
   AudioSourceChannelInfo info;
   info.buffer = &buffer;
@@ -25,6 +25,7 @@ void runTest(int numSamples, int chunkSize) {
 
   RunnyProto runnyProto;
   runnyProto.set_chunk_size(chunkSize);
+  runnyProto.set_chunk_size(bufferSize);
   Runny runny(new Testy, runnyProto);
   runny.fillOnce();
   runny.fillOnce();
@@ -47,11 +48,7 @@ void runTest(int numSamples, int chunkSize) {
 }
 
 TEST(RecAudio, Runny1) {
-  runTest(32, 24);
-}
-
-TEST(RecAudio, Runny2) {
-  runTest(32, 23);
+  runTest(32, 16, 24);
 }
 
 }  // namespace source

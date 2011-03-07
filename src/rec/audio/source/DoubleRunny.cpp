@@ -31,10 +31,12 @@ void DoubleRunny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     }
   }
 
-  if (runny_)
+  if (runny_) {
     runny_->getNextAudioBlock(info);
-  else
+  } else {
+    LOG(ERROR) << "No runny in DoubleRunny";
     clear(info);
+  }
 
   position_ = mod(position_ + info.numSamples);
 }
