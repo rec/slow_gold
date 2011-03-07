@@ -22,10 +22,10 @@ class DoubleRunny : public Wrappy {
  protected:
   virtual PositionableAudioSource* getSource() const { return runny_.get(); }
 
+ private:
   thread_ptr<Runny> runny_, nextRunny_;
   RunnyProto runnyDesc_;
 
- private:
   DISALLOW_COPY_AND_ASSIGN(DoubleRunny);
 };
 
