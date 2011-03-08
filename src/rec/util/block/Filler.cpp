@@ -37,10 +37,12 @@ void Filler::fillNextBlock() {
   }
 
   int numSamples = getSize(block);
-  if (numSamples > 0)
-    doFillNextBlock(block);
-  else
+  if (numSamples <= 0) {
     LOG(ERROR) << "Getting an empty block";
+    return;
+  }
+
+  doFillNextBlock(block);
 }
 
 bool Filler::waitUntilFilled(const Block& block, int waitTime, int maxTime) {
