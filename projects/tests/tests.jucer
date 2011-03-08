@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="G347YvJkQ" name="tests">
+  <MAINGROUP id="Fb3omDd9X" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -132,10 +132,10 @@
                 id="JIHUXD9fG" name="StretchyRunny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/StretchyRunny.h"
                 id="dW4aaU58T" name="StretchyRunny.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/TestSource.cpp"
-                id="On37xORfZ" name="TestSource.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/TestSource.h" id="NphtIUVhz"
-                name="TestSource.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/TestSource_test.cpp"
+                id="OYgIr7Fpk" name="TestSource_test.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/TestSource_test.h"
+                id="8wNTWxD4m" name="TestSource_test.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="4jKydRFeH"
                 name="Testy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Testy_test.cpp"
@@ -1051,7 +1051,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="UWw8HRvrj" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="p5lvoFWIt" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

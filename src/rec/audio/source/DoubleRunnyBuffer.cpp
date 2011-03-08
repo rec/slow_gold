@@ -45,6 +45,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
   changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
   changeLocker_->initialize(data_->get());
   data_->addListener(changeLocker_.get());
+
   changeLocker_->addListener(this);
   changeLocker_->startThread();
 }

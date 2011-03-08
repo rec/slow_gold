@@ -28,7 +28,7 @@ int64 Stretchy::getNextReadPosition() const {
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
-  source()->setNextReadPosition(position / timeScale(description_));
+  source()->setNextReadPosition(position / timeScale(description_));1
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {

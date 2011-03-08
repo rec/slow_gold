@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "rec/audio/source/TestSource.h"
+#include "rec/audio/source/TestSource_test.h"
 #include "rec/audio/source/Testy.h"
 
 namespace rec {
