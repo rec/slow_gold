@@ -28,15 +28,18 @@ class Filler {
  protected:
   virtual void doFillNextBlock(const Block& b) = 0;
 
+  // Called when the buffer is actually full.
+  virtual void onFilled() {}
+  CriticalSection lock_;
+
   const int length_;
   const int blockSize_;
 
   BlockSet filled_;
-  int position_;
-
-  CriticalSection lock_;
 
  private:
+  int position_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Filler);
 };
 
