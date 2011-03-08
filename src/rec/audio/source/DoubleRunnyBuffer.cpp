@@ -60,12 +60,9 @@ bool DoubleRunnyBuffer::fillFromPosition(int pos) {
 }
 
 void DoubleRunnyBuffer::run() {
-  while (!buffer_->isFull()) {
-    if (threadShouldExit())
-      return;
-    else
-      buffer_->fillNextBlock();
-  }
+  while (!(buffer_->isFull() || threadShouldExit()))
+    buffer_->fillNextBlock();
+
   if (!threadShouldExit())
     cachedThumbnail_->writeThumbnail(true);
 }
