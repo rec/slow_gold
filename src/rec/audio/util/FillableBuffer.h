@@ -15,6 +15,9 @@ class FillableBuffer : public block::Filler, public Listener<int> {
   virtual void operator()(int pos) { setPosition(pos); }
 	virtual void doFillNextBlock(const block::Block& block);
 
+ protected:
+  virtual void onFilled() { source_.reset(); }
+
  private:
   AudioSampleBuffer buffer_;
   ptr<PositionableAudioSource> source_;

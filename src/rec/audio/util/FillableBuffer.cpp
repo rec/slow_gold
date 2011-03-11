@@ -29,7 +29,7 @@ void FillableBuffer::doFillNextBlock(const Block& b) {
   ScopedLock l(lock_);
   merge(block, &filled_);
   if (isFull())
-    source_.reset();
+    onFilled();
 }
 
 }  // namespace audio

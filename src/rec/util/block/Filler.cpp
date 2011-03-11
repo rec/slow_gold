@@ -45,7 +45,7 @@ void Filler::fillNextBlock() {
   doFillNextBlock(block);
 }
 
-bool Filler::waitUntilFilled(const Block& block, int waitTime, int maxTime) {
+bool Filler::waitUntilFilled(const Block& block, int maxTime, int waitTime) {
   Thread* thread = Thread::getCurrentThread();
   for (int time = 0; !thread->threadShouldExit(); time += waitTime) {
     if (hasFilled(block))
@@ -55,6 +55,7 @@ bool Filler::waitUntilFilled(const Block& block, int waitTime, int maxTime) {
       LOG(ERROR) << "Waited for a long time, no data: " << time;
       return false;
     }
+
     if (waitTime > 0)
       thread->wait(waitTime);
   }

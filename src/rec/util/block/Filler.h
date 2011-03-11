@@ -22,8 +22,8 @@ class Filler {
   bool isFull() const;
   int getLength() const { return length_; }
 
-  bool waitUntilFilled(const Block& block, int waitTime = WAIT_TIME,
-                       int maxWaitTime = MAX_WAIT_TIME);
+  bool waitUntilFilled(const Block& block, int maxWaitTime = MAX_WAIT_TIME,
+                       int waitTime = WAIT_TIME);
 
  protected:
   virtual void doFillNextBlock(const Block& b) = 0;
