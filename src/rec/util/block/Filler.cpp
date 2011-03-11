@@ -55,7 +55,8 @@ bool Filler::waitUntilFilled(const Block& block, int waitTime, int maxTime) {
       LOG(ERROR) << "Waited for a long time, no data: " << time;
       return false;
     }
-    thread->wait(waitTime);
+    if (waitTime > 0)
+      thread->wait(waitTime);
   }
   return false;
 }
