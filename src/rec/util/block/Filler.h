@@ -12,7 +12,7 @@ class Filler {
   Filler(int len, int b) : length_(len), blockSize_(b), position_(0) {}
   virtual ~Filler() {}
 
-  static const int WAIT_TIME = 20;
+  static const int WAIT_TIME = 0;
   static const int MAX_WAIT_TIME = 7000;
 
   void setPosition(int position);
