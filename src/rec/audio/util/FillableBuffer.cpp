@@ -26,11 +26,6 @@ Block FillableBuffer::doFillNextBlock(const Block& b) {
   source_->setNextReadPosition(block.first);
   source_->getNextAudioBlock(info);
 
-  ScopedLock l(lock_);
-  merge(block, &filled_);
-  if (isFull())
-    onFilled();
-
   return block;
 }
 
