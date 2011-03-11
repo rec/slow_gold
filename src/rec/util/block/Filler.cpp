@@ -42,7 +42,12 @@ void Filler::fillNextBlock() {
     return;
   }
 
-  doFillNextBlock(block);
+  block = doFillNextBlock(block);
+
+  ScopedLock l(lock_);
+  merge(block, &filled_);
+  if (isFull())
+    onFilled();
 }
 
 bool Filler::waitUntilFilled(const Block& block, int maxTime, int waitTime) {
