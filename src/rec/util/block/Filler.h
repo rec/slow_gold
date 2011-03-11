@@ -26,7 +26,7 @@ class Filler {
                        int waitTime = WAIT_TIME);
 
  protected:
-  virtual Block doFillNextBlock(const Block& b) = 0;
+  virtual Size doFillNextBlock(const Block& b) = 0;
 
   // Called when the buffer is actually full.
   virtual void onFilled() {}

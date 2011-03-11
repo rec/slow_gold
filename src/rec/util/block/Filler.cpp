@@ -42,7 +42,7 @@ void Filler::fillNextBlock() {
     return;
   }
 
-  block = doFillNextBlock(block);
+  block.second = doFillNextBlock(block);
 
   ScopedLock l(lock_);
   merge(block, &filled_);

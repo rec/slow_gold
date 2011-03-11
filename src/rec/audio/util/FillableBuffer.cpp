@@ -15,18 +15,16 @@ FillableBuffer::FillableBuffer(PositionableAudioSource* source, int blockSize)
       source_(source) {
 }
 
-Block FillableBuffer::doFillNextBlock(const Block& b) {
-	Block block = b;
+block::Size FillableBuffer::doFillNextBlock(const Block& block) {
   AudioSourceChannelInfo info;
   info.buffer = &buffer_;
   info.startSample = block.first;
   info.numSamples = juce::jmin(getSize(block), static_cast<block::Size>(blockSize_));
-  block.second = block.first + info.numSamples;
 
   source_->setNextReadPosition(block.first);
   source_->getNextAudioBlock(info);
 
-  return block;
+  return block.first + info.numSamples;
 }
 
 }  // namespace audio

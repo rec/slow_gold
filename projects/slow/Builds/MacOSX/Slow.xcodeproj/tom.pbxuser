@@ -428,6 +428,8 @@
 			E2F7429D132A27CD0044B72A /* XCBuildMessageTextBookmark */ = E2F7429D132A27CD0044B72A /* XCBuildMessageTextBookmark */;
 			E2F7429E132A27CD0044B72A /* PBXTextBookmark */ = E2F7429E132A27CD0044B72A /* PBXTextBookmark */;
 			E2F742A1132A27CD0044B72A /* PBXTextBookmark */ = E2F742A1132A27CD0044B72A /* PBXTextBookmark */;
+			E2F742B5132A2B780044B72A /* PBXTextBookmark */ = E2F742B5132A2B780044B72A /* PBXTextBookmark */;
+			E2F742B6132A2B780044B72A /* PBXTextBookmark */ = E2F742B6132A2B780044B72A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -1133,8 +1135,8 @@
 		sourceTree = "<group>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
-			sepNavSelRange = "{455, 0}";
-			sepNavVisRange = "{0, 783}";
+			sepNavSelRange = "{782, 0}";
+			sepNavVisRange = "{0, 782}";
 		};
 	};
 	E2F7429A132A27BB0044B72A /* XCBuildMessageTextBookmark */ = {
@@ -1173,6 +1175,26 @@
 		rLoc = 455;
 		rType = 0;
 		vrLen = 783;
+		vrLoc = 0;
+	};
+	E2F742B5132A2B780044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
+		name = "Stretchy.cpp: 84";
+		rLen = 0;
+		rLoc = 2386;
+		rType = 0;
+		vrLen = 1274;
+		vrLoc = 0;
+	};
+	E2F742B6132A2B780044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2F74299132A27BB0044B72A /* FillableBuffer.h */;
+		name = "FillableBuffer.h: 32";
+		rLen = 0;
+		rLoc = 782;
+		rType = 0;
+		vrLen = 782;
 		vrLoc = 0;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {

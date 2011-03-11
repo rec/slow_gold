@@ -13,7 +13,7 @@ class FillableBuffer : public block::Filler, public Listener<int> {
   AudioSampleBuffer* buffer() { return &buffer_; }
 
   virtual void operator()(int pos) { setPosition(pos); }
-  virtual block::Block doFillNextBlock(const block::Block& block);
+  virtual block::Size doFillNextBlock(const block::Block& block);
 
  protected:
   virtual void onFilled() { source_.reset(); }
