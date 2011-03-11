@@ -127,9 +127,9 @@
 	};
 	43553262AA264130AEB57E8F /* Stretchy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 1222}}";
-			sepNavSelRange = "{1696, 0}";
-			sepNavVisRange = "{0, 2398}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 1118}}";
+			sepNavSelRange = "{2386, 0}";
+			sepNavVisRange = "{0, 1274}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -424,6 +424,10 @@
 			E2F741FC1324EC7B0044B72A = E2F741FC1324EC7B0044B72A /* PBXTextBookmark */;
 			E2F741FF1324EC810044B72A = E2F741FF1324EC810044B72A /* PBXTextBookmark */;
 			E2F742001324EC810044B72A = E2F742001324EC810044B72A /* PBXTextBookmark */;
+			E2F7429A132A27BB0044B72A /* XCBuildMessageTextBookmark */ = E2F7429A132A27BB0044B72A /* XCBuildMessageTextBookmark */;
+			E2F7429D132A27CD0044B72A /* XCBuildMessageTextBookmark */ = E2F7429D132A27CD0044B72A /* XCBuildMessageTextBookmark */;
+			E2F7429E132A27CD0044B72A /* PBXTextBookmark */ = E2F7429E132A27CD0044B72A /* PBXTextBookmark */;
+			E2F742A1132A27CD0044B72A /* PBXTextBookmark */ = E2F742A1132A27CD0044B72A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -1120,6 +1124,56 @@
 		rType = 0;
 		vrLen = 894;
 		vrLoc = 129;
+	};
+	E2F74299132A27BB0044B72A /* FillableBuffer.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = FillableBuffer.h;
+		path = ../../../../../rec/src/rec/audio/util/FillableBuffer.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{455, 0}";
+			sepNavVisRange = "{0, 783}";
+		};
+	};
+	E2F7429A132A27BB0044B72A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'Block' does not name a type";
+		fRef = E2F74299132A27BB0044B72A /* FillableBuffer.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 15;
+		rType = 1;
+	};
+	E2F7429D132A27CD0044B72A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected `;' before '}' token";
+		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 31;
+		rType = 1;
+	};
+	E2F7429E132A27CD0044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
+		name = "Stretchy.cpp: 84";
+		rLen = 0;
+		rLoc = 2386;
+		rType = 0;
+		vrLen = 1274;
+		vrLoc = 0;
+	};
+	E2F742A1132A27CD0044B72A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2F74299132A27BB0044B72A /* FillableBuffer.h */;
+		name = "FillableBuffer.h: 16";
+		rLen = 0;
+		rLoc = 455;
+		rType = 0;
+		vrLen = 783;
+		vrLoc = 0;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {
 		uiCtxt = {

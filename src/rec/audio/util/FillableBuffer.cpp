@@ -15,7 +15,7 @@ FillableBuffer::FillableBuffer(PositionableAudioSource* source, int blockSize)
       source_(source) {
 }
 
-void FillableBuffer::doFillNextBlock(const Block& b) {
+Block FillableBuffer::doFillNextBlock(const Block& b) {
 	Block block = b;
   AudioSourceChannelInfo info;
   info.buffer = &buffer_;
@@ -30,6 +30,8 @@ void FillableBuffer::doFillNextBlock(const Block& b) {
   merge(block, &filled_);
   if (isFull())
     onFilled();
+
+  return block;
 }
 
 }  // namespace audio
