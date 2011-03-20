@@ -8,11 +8,35 @@ using persist::getApp;
 using juce::URL;
 using juce::AlertWindow;
 
-GenericApplication::GenericApplication(const String& name, const String& v)
-    : name_(name), version_(v) {
+namespace {
+
+const String WOODSHED("http://www.worldwidewoodshed.com/update/");
+const URL VERSION_FILE(WOODSHED + "Version.html");
+const RelativeTime UPDATE(RelativeTime::days(1));
+
+File getUpdateFile() {
+  return getApp()->appDir().getChildFile("LastUpdate.txt");
 }
 
-String GenericApplication::majorVersion(const String& version) {
+bool isReadyForUpdate() {
+  File f = getUpdateFile();
+  if (f.exists())
+    f.create();
+
+  return (juce::Time::getCurrentTime() - f.getLastModificationTime()) > UPDATE;
+}
+
+String getVersion() {
+  LOG(INFO) << "update:  " << VERSION_FILE.toString(false).toCString();
+  String version = VERSION_FILE.readEntireTextStream();
+
+  if (!(version.length() && version[0] >= '0' && version[0] <= '9'))
+    version = "";
+
+  return version;
+}
+
+String majorVersion(const String& version) {
   String v(version);
 
   int i = v.indexOfChar(0, '.');
@@ -25,44 +49,14 @@ String GenericApplication::majorVersion(const String& version) {
   return v;
 }
 
-bool GenericApplication::checkForNewVersions() {
-  File f = getApp()->appDir().getChildFile("LastUpdate.txt");
-  if (f.exists())
-    f.create();
-
-  static const String WOODSHED("http://www.worldwidewoodshed.com/update/");
-  static const URL VERSION_FILE(WOODSHED + "Version.html");
-  static const RelativeTime UPDATE(RelativeTime::days(1));
-
-  if ((juce::Time::getCurrentTime() - f.getLastModificationTime()) < UPDATE)
-    return true;
-
-  LOG(INFO) << "update:  " << VERSION_FILE.toString(false).toCString();
-  String version = VERSION_FILE.readEntireTextStream();
-
-  if (!(version.length() && version[0] >= '0' && version[0] <= '9'))
-    version = "";
-
-  if (!version.length()) {
-    LOG(ERROR) << "No version file!";
-    return true;
-  }
-
-  String major = majorVersion(version);
-  int cmp = majorVersion(version).compare(majorVersion(version_));
-
-  if (cmp > 0)
-    LOG(ERROR) << "Future Version number! " << version_ << ", " << major;
-
-  if (cmp >= 0)
-    return true;
-
+bool downloadNewVersion(const String& name, const String& version) {
   AlertWindow dialog("Downloading a new version " + version,
                      "white", AlertWindow::WarningIcon, NULL);
   dialog.enterModalState();
-  bool ok = URL(WOODSHED + name_ + "." + version).launchInDefaultBrowser();
-  if (ok) {
-    f.setLastModificationTime(juce::Time::getCurrentTime());
+  bool loaded = URL(WOODSHED + name + "." + version).launchInDefaultBrowser();
+
+  if (loaded) {
+    getUpdateFile().setLastModificationTime(juce::Time::getCurrentTime());
   } else {
     AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                "Couldn't update to version " + version,
@@ -71,12 +65,42 @@ bool GenericApplication::checkForNewVersions() {
   }
   dialog.exitModalState(true);
 
-  return ok;
+  return loaded;
 }
+
+bool checkForNewVersions(const String& ver, const String& name) {
+  if (!isReadyForUpdate())
+    return true;
+
+  String version(getVersion());
+  if (!version.length()) {
+    LOG(ERROR) << "No version file!";
+    return true;
+  }
+
+  String major = majorVersion(version);
+  int cmp = major.compare(majorVersion(ver));
+
+  if (cmp > 0)
+    LOG(ERROR) << "Future Version number! " << ver << ", " << version;
+
+  if (cmp >= 0)
+    return true;
+
+  return downloadNewVersion(version, name);
+}
+
+
+}
+
+GenericApplication::GenericApplication(const String& name, const String& v)
+    : name_(name), version_(v) {
+}
+
 
 void GenericApplication::initialise(const String&) {
   persist::AppInstance::start(name_.toCString());
-  if (checkForNewVersions()) {
+  if (checkForNewVersions(version_, name_)) {
     LOG(INFO) << "Starting up " << getApplicationName()
               << ", version " << getApplicationVersion();
   } else {

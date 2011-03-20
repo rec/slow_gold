@@ -21,8 +21,6 @@ class GenericApplication : public juce::JUCEApplication {
 
   GenericApplication(const String& name, const String& version);
 
-  static String majorVersion(const String& version);
-  bool checkForNewVersions();
   virtual void initialise(const String&);
   virtual void shutdown();
 
