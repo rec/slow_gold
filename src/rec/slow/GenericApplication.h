@@ -10,43 +10,31 @@
 namespace rec {
 namespace slow {
 
+using juce::RelativeTime;
+
 class GenericApplication : public juce::JUCEApplication {
  public:
-
   static const int SAVE_PERIOD = 25;
   static const int PRIORITY = 4;
 
-  GenericApplication(const string& name, const string& version)
-      : name_(name), version_(version) {
-  }
-
   virtual ~GenericApplication() {}
 
-  virtual void initialise(const String&) {
-    LOG(INFO) << "Starting up " << getApplicationName()
-              << ", version " << getApplicationVersion();
+  GenericApplication(const String& name, const String& version);
 
-    persist::AppInstance::start(name_);
-  }
+  static String majorVersion(const String& version);
+  bool checkForNewVersions();
+  virtual void initialise(const String&);
+  virtual void shutdown();
 
-  virtual void shutdown() {
-    LOG(INFO) << "Shutting down";
-    util::thread::trash::waitForAllThreadsToExit(1000);
-    persist::AppInstance::stop();
-    // delete juce::MessageManager::getInstance();
-    gui::icon::deleteIcons();
-    LOG(INFO) << "Shut down finished.";
-  }
-
-  const String getApplicationName()    { return name_.c_str(); }
-  const String getApplicationVersion() { return version_.c_str(); }
+  const String getApplicationName()    { return name_; }
+  const String getApplicationVersion() { return version_; }
   bool moreThanOneInstanceAllowed()    { return false; }
 
   void anotherInstanceStarted (const String&) {}
 
  protected:
-  const string name_;
-  const string version_;
+  const String name_;
+  const String version_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="hXjIWrAtY" name="Slow">
+  <MAINGROUP id="do7LJBK0X" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -584,6 +584,8 @@
               name="TransportController.h" resource="0"/>
       </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
+        <FILE compile="0" file="../../src/rec/slow/Application.h" id="P1AyMQaaS"
+              name="Application.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="hAzbc8MNi"
               name="AudioSetupPage.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/AudioTransportSourcePlayer.cpp"
@@ -594,6 +596,8 @@
               id="9gleG55FS" name="ComponentContainer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/ComponentContainer.h" id="aFaWZuna8"
               name="ComponentContainer.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/GenericApplication.cpp"
+              id="AJZqPnbOp" name="GenericApplication.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/GenericApplication.h" id="ez7NOLO7q"
               name="GenericApplication.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/MainPage.cpp" id="Yb6XqQ9y0"
@@ -608,8 +612,6 @@
               id="fKG2nlV5Y" name="PlaybackController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/PlaybackController.h" id="ThQlmarFC"
               name="PlaybackController.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/RecApplication.h" id="6fdPd1AGi"
-              name="RecApplication.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/RecWindow.cpp" id="piuEPToZo"
               name="RecWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/RecWindow.h" id="GB8ENrMNY"
@@ -998,7 +1000,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="fzsPoz28w" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="NrACK857n" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

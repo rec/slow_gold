@@ -58,6 +58,8 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
 }
 
 void StretchyPlayer::operator()(const double& t) {
+  // This is only called when the user clicks in the window to set a new
+  // playback position.
   if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100 * t)))
     transportSource_->setPosition(stretchy_->get().stretch().time_scale() * t);
 

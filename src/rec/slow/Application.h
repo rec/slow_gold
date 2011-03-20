@@ -1,5 +1,5 @@
-#ifndef __REC_APP_RECAPPLICATION__
-#define __REC_APP_RECAPPLICATION__
+#ifndef __REC_APP_APPLICATION__
+#define __REC_APP_APPLICATION__
 
 #include "rec/slow/GenericApplication.h"
 #include "rec/slow/RecWindow.h"
@@ -10,7 +10,7 @@ namespace slow {
 
 class Application : public GenericApplication {
  public:
-  Application() : GenericApplication("SlowGold", "1.0") {}
+  Application() : GenericApplication("SlowGold", "0.1") {}
 
   virtual void initialise(const String& commandLine) {
     audio::format::mpg123::initializeOnce();
@@ -37,4 +37,4 @@ class Application : public GenericApplication {
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_APP_RECAPPLICATION__
+#endif  // __REC_APP_APPLICATION__

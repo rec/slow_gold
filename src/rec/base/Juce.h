@@ -21,6 +21,8 @@ typedef juce::CriticalSection CriticalSection;
 typedef juce::Colour Colour;
 typedef juce::Component Component;
 
+typedef juce::DocumentWindow DocumentWindow;
+
 typedef juce::File File;
 typedef juce::FileDragAndDropTarget FileDragAndDropTarget;
 typedef juce::Font Font;

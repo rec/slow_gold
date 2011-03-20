@@ -55,6 +55,11 @@ DoubleRunnyBuffer::~DoubleRunnyBuffer() {
 }
 
 bool DoubleRunnyBuffer::fillFromPosition(int pos) {
+  // This is only called when the user clicks in the window to set a new
+  // playback position.
+  if (!buffer_)
+    return false;
+    
   buffer_->setPosition(pos);
   return buffer_->waitUntilFilled(block::Block(pos, pos + BUFFER_READAHEAD));
 }

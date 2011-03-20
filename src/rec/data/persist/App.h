@@ -43,6 +43,7 @@ class App {
     File dd = File::getSpecialLocation(File::userApplicationDataDirectory);
     appDir_ = dd.getChildFile(COMPANY_NAME);
   }
+
   virtual void needsUpdate(UntypedData* data) = 0;
 
  private:
