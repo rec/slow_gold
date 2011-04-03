@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="do7LJBK0X" name="Slow">
+  <MAINGROUP id="tQFsai78m" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -205,6 +205,8 @@
         <GROUP id="p9GHA3VGt" name="persist">
           <FILE compile="0" file="../../src/rec/data/persist/App.h" id="bxaLWu80g"
                 name="App.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/AppDirectory.cpp"
+                id="AQmOxhbtJ" name="AppDirectory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/AppDirectory.h"
                 id="5tqUxj4Eq" name="AppDirectory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/AppInstance.cpp"
@@ -846,12 +848,6 @@
     </GROUP>
     <GROUP id="FPkEmrLol" name="proto">
       <GROUP id="DG22WKcgs" name="rec">
-        <GROUP id="poKQU4pTW" name="access">
-          <FILE compile="1" file="../../genfiles/proto/rec/access/Access.pb.cc"
-                id="v0HacCVjp" name="Access.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/access/Access.pb.h"
-                id="8PHIlIPCd" name="Access.pb.h" resource="0"/>
-        </GROUP>
         <GROUP id="6XFca2ef1" name="audio">
           <GROUP id="S7dfkDall" name="source">
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
@@ -1000,7 +996,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="NrACK857n" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="yywOfEhRb" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

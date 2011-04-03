@@ -10,12 +10,14 @@ namespace slow {
 
 class Application : public GenericApplication {
  public:
-  Application() : GenericApplication("SlowGold", "0.1") {}
+  Application() : GenericApplication("SlowGold", "0.3") {}
 
   virtual void initialise(const String& commandLine) {
     audio::format::mpg123::initializeOnce();
 
-    GenericApplication::initialise(commandLine);
+    if (!GenericApplication::initialize())
+      return;
+
     window_.reset(new RecWindow());
 
 #if JUCE_MAC

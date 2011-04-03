@@ -3,13 +3,21 @@
 
 #include "rec/base/base.h"
 
-
 namespace rec {
-namespace data {
-namespace persist {
+namespace util {
 
-}  // namespace persist
-}  // namespace data
+// Set the name of the application ("SlowGold").  Only call this once.
+void setApplicationName(const String&);
+const String& getApplicationName();
+
+// Get the root directory to store files.
+File getApplicationDirectory();
+
+inline File getApplicationFile(const String& child) {
+  return getApplicationDirectory().getChildFile(child);
+}
+
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_DATA_PERSIST_APPDIRECTORY__

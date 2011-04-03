@@ -239,6 +239,7 @@
           </Filter>
           <Filter Name="persist">
             <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.h"/>
@@ -597,10 +598,6 @@
       </Filter>
       <Filter Name="proto">
         <Filter Name="rec">
-          <Filter Name="access">
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\access\Access.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\access\Access.pb.h"/>
-          </Filter>
           <Filter Name="audio">
             <Filter Name="source">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>

@@ -4,6 +4,7 @@
 
 #include "rec/audio/util/AudioFormatManager.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/data/persist/AppDirectory.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/cd/Album.h"
@@ -57,7 +58,7 @@ const File getVirtual(const VirtualFile& v) {
 
 const File getShadowDirectory(const VirtualFile& vf) {
   String name = String(VirtualFile::Type_Name(vf.type()).c_str()).toLowerCase();
-  File f = persist::getApp()->appDir().getChildFile(name);
+  File f = getApplicationDirectory().getChildFile(name);
   return getFile(getFile(f, vf.name()), vf.path());
 }
 

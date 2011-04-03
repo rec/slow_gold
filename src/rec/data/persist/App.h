@@ -28,21 +28,12 @@ class App {
   virtual ~App() { stl::deleteMapPointers(&data_); }
 
   command::Manager* commandManager() { return commandManager_; }
-  const string& name() const { return name_; }
 
   template <typename Proto>
   Data<Proto>* data(const VirtualFile& file = VirtualFile::default_instance);
 
-  File appDir() const {
-    return appDir_.getChildFile(name_.c_str());
-  }
-
  protected:
-  explicit App(const string& name) : name_(name) {
-    static const char COMPANY_NAME[] = "World Wide Woodshed";
-    File dd = File::getSpecialLocation(File::userApplicationDataDirectory);
-    appDir_ = dd.getChildFile(COMPANY_NAME);
-  }
+  App() {}
 
   virtual void needsUpdate(UntypedData* data) = 0;
 
@@ -51,7 +42,6 @@ class App {
 
   DataMap data_;
   CriticalSection lock_;
-  const string name_;
   File appDir_;
   command::Manager* commandManager_;
 
@@ -60,7 +50,8 @@ class App {
 
 template <typename Proto>
 Data<Proto>* App::data(const VirtualFile& vf) {
-  File directory = empty(vf) ? appDir() : getShadowDirectory(vf);
+  File directory = empty(vf) ? getApplicationDirectory() :
+      getShadowDirectory(vf);
 
   string fileName = data::proto::getName<Proto>();
   string fileKey = directory.getFullPathName().toCString() + ("/" + fileName);

@@ -80,13 +80,13 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fStereo_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/audio/source/Stereo.proto\022\020rec.aud"
-    "io.source\"\210\002\n\013StereoProto\0220\n\004type\030\001 \001(\0162"
+    "io.source\"\211\002\n\013StereoProto\0220\n\004type\030\001 \001(\0162"
     "\".rec.audio.source.StereoProto.Type\0220\n\004s"
     "ide\030\002 \001(\0162\".rec.audio.source.StereoProto"
-    ".Side\"/\n\004Side\022\010\n\004LEFT\020\000\022\t\n\005RIGHT\020\001\022\022\n\016LE"
-    "FT_AND_RIGHT\020\002\"d\n\004Type\022\017\n\013PASSTHROUGH\020\000\022"
-    "\n\n\006SINGLE\020\001\022\n\n\006INVERT\020\002\022\026\n\022CENTER_ELIMIN"
-    "ATION\020\003\022\033\n\027CENTER_ELIMINATION_MONO\020\003", 316);
+    ".Side\"0\n\004Side\022\010\n\004LEFT\020\000\022\t\n\005RIGHT\020\001\022\023\n\017LE"
+    "FT_PLUS_RIGHT\020\002\"d\n\004Type\022\017\n\013PASSTHROUGH\020\000"
+    "\022\n\n\006SINGLE\020\001\022\n\n\006INVERT\020\002\022\026\n\022CENTER_ELIMI"
+    "NATION\020\003\022\033\n\027CENTER_ELIMINATION_MONO\020\003", 317);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Stereo.proto", &protobuf_RegisterTypes);
   StereoProto::default_instance_ = new StereoProto();
@@ -122,7 +122,7 @@ bool StereoProto_Side_IsValid(int value) {
 #ifndef _MSC_VER
 const StereoProto_Side StereoProto::LEFT;
 const StereoProto_Side StereoProto::RIGHT;
-const StereoProto_Side StereoProto::LEFT_AND_RIGHT;
+const StereoProto_Side StereoProto::LEFT_PLUS_RIGHT;
 const StereoProto_Side StereoProto::Side_MIN;
 const StereoProto_Side StereoProto::Side_MAX;
 const int StereoProto::Side_ARRAYSIZE;

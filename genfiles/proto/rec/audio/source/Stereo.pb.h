@@ -39,11 +39,11 @@ class StereoProto;
 enum StereoProto_Side {
   StereoProto_Side_LEFT = 0,
   StereoProto_Side_RIGHT = 1,
-  StereoProto_Side_LEFT_AND_RIGHT = 2
+  StereoProto_Side_LEFT_PLUS_RIGHT = 2
 };
 bool StereoProto_Side_IsValid(int value);
 const StereoProto_Side StereoProto_Side_Side_MIN = StereoProto_Side_LEFT;
-const StereoProto_Side StereoProto_Side_Side_MAX = StereoProto_Side_LEFT_AND_RIGHT;
+const StereoProto_Side StereoProto_Side_Side_MAX = StereoProto_Side_LEFT_PLUS_RIGHT;
 const int StereoProto_Side_Side_ARRAYSIZE = StereoProto_Side_Side_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* StereoProto_Side_descriptor();
@@ -135,7 +135,7 @@ class StereoProto : public ::google::protobuf::Message {
   typedef StereoProto_Side Side;
   static const Side LEFT = StereoProto_Side_LEFT;
   static const Side RIGHT = StereoProto_Side_RIGHT;
-  static const Side LEFT_AND_RIGHT = StereoProto_Side_LEFT_AND_RIGHT;
+  static const Side LEFT_PLUS_RIGHT = StereoProto_Side_LEFT_PLUS_RIGHT;
   static inline bool Side_IsValid(int value) {
     return StereoProto_Side_IsValid(value);
   }

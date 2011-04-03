@@ -1,4 +1,4 @@
- #include "rec/data/persist/AppInstance.h"
+#include "rec/data/persist/AppInstance.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/MakeThread.h"
@@ -6,9 +6,8 @@
 namespace rec {
 namespace persist {
 
-AppInstance::AppInstance(const string& appName)
-    : App(appName) {
-  DCHECK(appName.length());
+AppInstance::AppInstance()
+    : App() {
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
                                        this, &AppInstance::update));
   updateThread_->setPriority(UPDATE_PRIORITY);
@@ -83,13 +82,12 @@ bool AppInstance::write() {
   return true;
 }
 
-void AppInstance::start(const string& name) {
+void AppInstance::start() {
   CHECK(!instance_);
-  instance_ = new AppInstance(name);
+  instance_ = new AppInstance();
 }
 
 void AppInstance::stop() {
-  CHECK(instance_);
   delete instance_;
   instance_ = NULL;
 }

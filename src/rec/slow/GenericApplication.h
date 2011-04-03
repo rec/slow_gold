@@ -21,7 +21,7 @@ class GenericApplication : public juce::JUCEApplication {
 
   GenericApplication(const String& name, const String& version);
 
-  virtual void initialise(const String&);
+  virtual bool initialize();
   virtual void shutdown();
 
   const String getApplicationName()    { return name_; }
@@ -29,6 +29,8 @@ class GenericApplication : public juce::JUCEApplication {
   bool moreThanOneInstanceAllowed()    { return false; }
 
   void anotherInstanceStarted (const String&) {}
+
+  void terminateApp();
 
  protected:
   const String name_;

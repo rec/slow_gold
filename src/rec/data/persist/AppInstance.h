@@ -25,7 +25,7 @@ class AppInstance : public App {
   bool update();
   bool write();
 
-  static void start(const string& name);
+  static void start();
   static void stop();
 
   static AppInstance* getInstance() { return instance_; }
@@ -35,7 +35,7 @@ class AppInstance : public App {
 
 private:
   virtual ~AppInstance();
-  explicit AppInstance(const string& appName);
+  explicit AppInstance();
 
   CriticalSection lock_;
 
@@ -47,7 +47,7 @@ private:
 
   static AppInstance* instance_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(AppInstance);
+  DISALLOW_COPY_AND_ASSIGN(AppInstance);
 };
 
 }  // namespace persist

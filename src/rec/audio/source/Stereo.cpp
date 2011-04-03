@@ -31,10 +31,10 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       StereoProto::RIGHT - side);
 
   DCHECK_GE(side, StereoProto::LEFT);
-  DCHECK_LE(side, StereoProto::LEFT_AND_RIGHT);
+  DCHECK_LE(side, StereoProto::LEFT_PLUS_RIGHT);
 
   if (type == StereoProto::SINGLE) {
-    if (side == StereoProto::LEFT_AND_RIGHT) {
+    if (side == StereoProto::LEFT_PLUS_RIGHT) {
       b.applyGain(StereoProto::RIGHT, 0, n, 0.5);
       b.addFrom(StereoProto::RIGHT, 0, b, StereoProto::LEFT, 0, n, 0.5);
       b.copyFrom(StereoProto::LEFT, 0, b, StereoProto::RIGHT, 0, n);
