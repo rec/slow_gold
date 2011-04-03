@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="fWRZNLmEf" name="tests">
+  <MAINGROUP id="wLIfdwqUM" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -627,6 +627,10 @@
               id="IXA2k1Uls" name="ComponentContainer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/ComponentContainer.h" id="DUyB85nIn"
               name="ComponentContainer.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/DownloadVersion.cpp" id="RLDeZlwl5"
+              name="DownloadVersion.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/DownloadVersion.h" id="3XB2aEV4L"
+              name="DownloadVersion.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/GenericApplication.cpp"
               id="9Pk4AtwwX" name="GenericApplication.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/GenericApplication.h" id="pTWLwuawe"
@@ -1049,7 +1053,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="XhUJbluMS" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="JLSZONkRb" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

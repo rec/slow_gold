@@ -30,8 +30,6 @@ class GenericApplication : public juce::JUCEApplication {
 
   void anotherInstanceStarted (const String&) {}
 
-  void terminateApp();
-
  protected:
   const String name_;
   const String version_;

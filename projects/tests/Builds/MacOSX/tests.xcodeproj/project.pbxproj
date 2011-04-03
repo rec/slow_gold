@@ -128,6 +128,7 @@
 		E0FCD873F904173AAE9A7A07 = { isa = PBXBuildFile; fileRef = 3150DE7161FA80C6931E0CFD; };
 		82E108C6F350B0A8037EB89F = { isa = PBXBuildFile; fileRef = 5AF173EB066246DE8DDE4333; };
 		A0386E27371E9318A2E42F30 = { isa = PBXBuildFile; fileRef = 841B30203C1FF1806213FCBB; };
+		59ECFCB3AABBC24E97C853D4 = { isa = PBXBuildFile; fileRef = D64EA608CE5D59974038EE0E; };
 		CEBFBA255F831BE38015BBC7 = { isa = PBXBuildFile; fileRef = 1EE0ED50D5C879C12F9BEE78; };
 		9170501552140154E4968517 = { isa = PBXBuildFile; fileRef = 92E745048C0393295B0D8953; };
 		BB61FCAEA0E701F108FB2453 = { isa = PBXBuildFile; fileRef = 89F0CD00D8A1B8E11F47AEB8; };
@@ -502,6 +503,8 @@
 		278B2BB4E9FB9941C7E9D682 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioTransportSourcePlayer.h; path = ../../../../src/rec/slow/AudioTransportSourcePlayer.h; sourceTree = SOURCE_ROOT; };
 		841B30203C1FF1806213FCBB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ComponentContainer.cpp; path = ../../../../src/rec/slow/ComponentContainer.cpp; sourceTree = SOURCE_ROOT; };
 		776653641B3EF278117D82C0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ComponentContainer.h; path = ../../../../src/rec/slow/ComponentContainer.h; sourceTree = SOURCE_ROOT; };
+		D64EA608CE5D59974038EE0E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DownloadVersion.cpp; path = ../../../../src/rec/slow/DownloadVersion.cpp; sourceTree = SOURCE_ROOT; };
+		E71EB4AF25C1FC708993E3E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DownloadVersion.h; path = ../../../../src/rec/slow/DownloadVersion.h; sourceTree = SOURCE_ROOT; };
 		1EE0ED50D5C879C12F9BEE78 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GenericApplication.cpp; path = ../../../../src/rec/slow/GenericApplication.cpp; sourceTree = SOURCE_ROOT; };
 		72F1C4D75B983811BB11977B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GenericApplication.h; path = ../../../../src/rec/slow/GenericApplication.h; sourceTree = SOURCE_ROOT; };
 		92E745048C0393295B0D8953 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainPage.cpp; path = ../../../../src/rec/slow/MainPage.cpp; sourceTree = SOURCE_ROOT; };
@@ -999,6 +1002,8 @@
 				278B2BB4E9FB9941C7E9D682,
 				841B30203C1FF1806213FCBB,
 				776653641B3EF278117D82C0,
+				D64EA608CE5D59974038EE0E,
+				E71EB4AF25C1FC708993E3E0,
 				1EE0ED50D5C879C12F9BEE78,
 				72F1C4D75B983811BB11977B,
 				92E745048C0393295B0D8953,
@@ -1263,7 +1268,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		46864F888A436414AD06537C = { isa = PBXGroup; children = (
+		A70346B04BFDFA254A77B0A5 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1458,6 +1463,7 @@
 				E0FCD873F904173AAE9A7A07,
 				82E108C6F350B0A8037EB89F,
 				A0386E27371E9318A2E42F30,
+				59ECFCB3AABBC24E97C853D4,
 				CEBFBA255F831BE38015BBC7,
 				9170501552140154E4968517,
 				BB61FCAEA0E701F108FB2453,
@@ -1556,7 +1562,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 46864F888A436414AD06537C; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = A70346B04BFDFA254A77B0A5; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

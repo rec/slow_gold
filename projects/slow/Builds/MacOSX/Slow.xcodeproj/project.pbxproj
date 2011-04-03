@@ -110,6 +110,7 @@
 		910481C9C05D598DC755B363 /* NodeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF031A748C014EB2DB702E47 /* NodeItem.cpp */; };
 		93254821EF0C4ED680CD5017 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F760410F12BAAC9AA41EA8EF /* node.cpp */; };
 		93C023ED9377653751F86C3B /* scantag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A94CB517D27D8D7FF6ED83E /* scantag.cpp */; };
+		954DFFBBB5FA1A64C4395F41 /* DownloadVersion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13A0BA0FE9ACA1AD7DA9DA8A /* DownloadVersion.cpp */; };
 		9572BD2A620573A2C8416BE1 /* conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B336F1C1C2090670B7DA2C4 /* conversion.cpp */; };
 		958BF953FD793648E5A08528 /* Runny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E41776759EB3902574FA6D8 /* Runny.cpp */; };
 		95D6B90B41DEA8904A9F9350 /* StretchyPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB9E256CE63C3E1E094228AA /* StretchyPlayer.cpp */; };
@@ -222,6 +223,7 @@
 		112BF6DBBD45A6A2E313F714 /* aliasmanager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aliasmanager.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/aliasmanager.h"; sourceTree = SOURCE_ROOT; };
 		11F272B3B33A174E5803B08A /* iterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iterator.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/iterator.h"; sourceTree = SOURCE_ROOT; };
 		1212C9EC153DC9F8706CBE91 /* NodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NodeItem.h; path = ../../../../src/rec/widget/tree/NodeItem.h; sourceTree = SOURCE_ROOT; };
+		13A0BA0FE9ACA1AD7DA9DA8A /* DownloadVersion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DownloadVersion.cpp; path = ../../../../src/rec/slow/DownloadVersion.cpp; sourceTree = SOURCE_ROOT; };
 		13BDD945E532565AC5D254D1 /* RecentFiles.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RecentFiles.cpp; path = ../../../../src/rec/gui/RecentFiles.cpp; sourceTree = SOURCE_ROOT; };
 		1418DE18D16254F6952FBFF3 /* CreateReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateReader.h; path = ../../../../src/rec/audio/format/mpg123/CreateReader.h; sourceTree = SOURCE_ROOT; };
 		14711AE9A3E0D7BE84D46270 /* AudioDeviceSetup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioDeviceSetup.cpp; path = ../../../../src/rec/audio/util/AudioDeviceSetup.cpp; sourceTree = SOURCE_ROOT; };
@@ -254,6 +256,7 @@
 		237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = SOURCE_ROOT; };
 		23A34552B919AAB64559DBDA /* Widget.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.pb.cc; path = ../../../../genfiles/proto/rec/widget/Widget.pb.cc; sourceTree = SOURCE_ROOT; };
 		2444E35A22AA2F9F051F3D24 /* Icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Icon.cpp; path = ../../../../src/rec/gui/icon/Icon.cpp; sourceTree = SOURCE_ROOT; };
+		2470C8A6410F4485B604DF6C /* DownloadVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DownloadVersion.h; path = ../../../../src/rec/slow/DownloadVersion.h; sourceTree = SOURCE_ROOT; };
 		24A0BEC00ACCEC6FABBB97FA /* Panes.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Panes.pb.cc; path = ../../../../genfiles/proto/rec/widget/Panes.pb.cc; sourceTree = SOURCE_ROOT; };
 		2501DE5143C9726EFD4CFEE5 /* Status.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Status.cpp; path = ../../../../src/rec/widget/status/Status.cpp; sourceTree = SOURCE_ROOT; };
 		25087F3D677E7FF0B7C1D3ED /* null.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = null.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/null.h"; sourceTree = SOURCE_ROOT; };
@@ -1099,20 +1102,6 @@
 			name = util;
 			sourceTree = "<group>";
 		};
-		8C60A842C53113D1851943D7 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		901085F431F5837B0268703B /* ammf_scaler */ = {
 			isa = PBXGroup;
 			children = (
@@ -1150,6 +1139,8 @@
 				74EC2FBB043AD157F45AD2FE /* AudioTransportSourcePlayer.h */,
 				C17D3427475E49968F84E838 /* ComponentContainer.cpp */,
 				B4C8666B278C4A8E4EEF8E4C /* ComponentContainer.h */,
+				13A0BA0FE9ACA1AD7DA9DA8A /* DownloadVersion.cpp */,
+				2470C8A6410F4485B604DF6C /* DownloadVersion.h */,
 				5B42F157E007C1D75C0DDAF5 /* GenericApplication.cpp */,
 				BF53C7DE66E68027E87283F8 /* GenericApplication.h */,
 				DF49580B9742DB4F887E85DF /* MainPage.cpp */,
@@ -1241,6 +1232,20 @@
 				BD2139876A33E8ED24DAB9D9 /* EventQueue.h */,
 			);
 			name = commands;
+			sourceTree = "<group>";
+		};
+		AFF2E8B3965F43022E89D254 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		B24E02423E3085F760B972FF /* commands */ = {
@@ -1590,7 +1595,7 @@
 				French,
 				German,
 			);
-			mainGroup = 8C60A842C53113D1851943D7 /* Source */;
+			mainGroup = AFF2E8B3965F43022E89D254 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1712,6 +1717,7 @@
 				2D5EEB7A04536F40CB0B6683 /* TransportController.cpp in Sources */,
 				CF421BCD0EAF08BE20EFB40C /* AudioTransportSourcePlayer.cpp in Sources */,
 				ED9A722E425CEB2EDF552BBD /* ComponentContainer.cpp in Sources */,
+				954DFFBBB5FA1A64C4395F41 /* DownloadVersion.cpp in Sources */,
 				0B11CD2C6AD25309BD87B733 /* GenericApplication.cpp in Sources */,
 				DED2531C6E62596A11087193 /* MainPage.cpp in Sources */,
 				08C3FF95BB365907256C10DF /* MainPageLayout.cpp in Sources */,
