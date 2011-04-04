@@ -39,7 +39,6 @@ class GenericApplication : public juce::JUCEApplication {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
 };
 
-#if 0
 template <typename Window>
 class Application : public GenericApplication {
  public:
@@ -49,7 +48,6 @@ class Application : public GenericApplication {
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Application);
 };
-#endif
 
 }  // namespace slow
 }  // namespace rec
