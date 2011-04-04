@@ -7,6 +7,7 @@
 #include "rec/gui/Layout.h"
 #include "rec/gui/Loops.h"
 #include "rec/gui/SetterResizer.h"
+#include "rec/slow/Broadcasters.h"
 #include "rec/slow/PlaybackController.h"
 #include "rec/slow/StretchyPlayer.h"
 #include "rec/widget/tree/Root.h"
