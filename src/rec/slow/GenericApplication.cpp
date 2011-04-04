@@ -11,11 +11,11 @@ GenericApplication::GenericApplication(const String& name, const String& v)
     : name_(name), version_(v) {
 }
 
-bool GenericApplication::initialize() {
+void GenericApplication::initialise(const String&) {
   LOG(INFO) << "Initializing " << getApplicationName();
   if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();
-    return false;
+    return;
   }
 
   audio::format::mpg123::initializeOnce();
@@ -23,11 +23,9 @@ bool GenericApplication::initialize() {
   window_.reset(createWindow());
 
 #if JUCE_MAC
-    juce::MenuBarModel::setMacMainMenu(window_->getTarget());
-    window_->setMenuBar(NULL);
+  juce::MenuBarModel::setMacMainMenu(window_->getTarget());
+  window_->setMenuBar(NULL);
 #endif
-
-  return true;
 }
 
 void GenericApplication::shutdown() {

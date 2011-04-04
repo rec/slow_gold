@@ -20,7 +20,7 @@ class GenericApplication : public juce::JUCEApplication {
 
   GenericApplication(const String& name, const String& version);
 
-  virtual bool initialize();
+  virtual void initialise(const String& commandLine);
   virtual void shutdown();
   virtual TargetWindow* createWindow() const { return NULL; }  // = 0;
 
@@ -37,16 +37,6 @@ class GenericApplication : public juce::JUCEApplication {
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
-};
-
-template <typename Window>
-class Application : public GenericApplication {
- public:
-  Application(const String& n, const String& v) : GenericApplication(n, v) {}
-  virtual TargetWindow* createWindow() const { return new Window; }
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Application);
 };
 
 }  // namespace slow
