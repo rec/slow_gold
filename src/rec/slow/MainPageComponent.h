@@ -9,6 +9,8 @@
 namespace rec {
 namespace slow {
 
+// Poorly-defined class holding MainPage.
+// TODO: Merge this with MainPage.
 class MainPageComponent  : public Component {
  public:
   MainPageComponent() : mainPage_(&deviceManager_),

@@ -59,7 +59,7 @@ class Node : public juce::TreeViewItem,
   mutable String name_;
   const NodeDesc desc_;
   const VirtualFile volumeFile_;
-  Listeners listeners_;
+  ListenerSet listeners_;
   const juce::Drawable* icon_;
   const juce::Font font_;
 

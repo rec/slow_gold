@@ -7,9 +7,9 @@
 #include "rec/gui/Layout.h"
 #include "rec/gui/Loops.h"
 #include "rec/gui/SetterResizer.h"
-#include "rec/slow/Broadcasters.h"
 #include "rec/slow/PlaybackController.h"
 #include "rec/slow/StretchyPlayer.h"
+#include "rec/slow/Broadcasters.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 
@@ -69,6 +69,7 @@ class MainPage : public gui::Layout,
   bool openDialogOpen_;
   double length_;
   persist::Data<ZoomProto>* zoomData_;
+  Broadcasters broadcasters_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 };

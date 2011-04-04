@@ -14,8 +14,8 @@ template <typename Type> class Broadcaster;
 template <typename Type>
 class Listener {
  public:
-  typedef std::set<Broadcaster<Type>*> Broadcasters;
-  typedef typename Broadcasters::iterator iterator;
+  typedef std::set<Broadcaster<Type>*> BroadcasterSet;
+  typedef typename BroadcasterSet::iterator iterator;
 
   Listener() {}
   virtual ~Listener();
@@ -24,7 +24,7 @@ class Listener {
 
  private:
   CriticalSection listenerLock_;
-  Broadcasters broadcasters_;
+  BroadcasterSet broadcasters_;
 
   friend class Broadcaster<Type>;
   DISALLOW_COPY_AND_ASSIGN(Listener);
@@ -34,8 +34,8 @@ class Listener {
 template <typename Type>
 class Broadcaster {
  public:
-  typedef std::set<Listener<Type>*> Listeners;
-  typedef typename Listeners::iterator iterator;
+  typedef std::set<Listener<Type>*> ListenerSet;
+  typedef typename ListenerSet::iterator iterator;
 
   Broadcaster() {}
 
@@ -47,7 +47,7 @@ class Broadcaster {
 
  protected:
   CriticalSection lock_;
-  Listeners listeners_;
+  ListenerSet listeners_;
 
   DISALLOW_COPY_AND_ASSIGN(Broadcaster);
 };
@@ -55,7 +55,7 @@ class Broadcaster {
 template <typename Type>
 Listener<Type>::~Listener() {
   for (bool finished = false; !finished; ) {
-    Broadcasters toDelete;
+    BroadcasterSet toDelete;
     {
       ScopedLock l(listenerLock_);
       if (broadcasters_.empty()) {
