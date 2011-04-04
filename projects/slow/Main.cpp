@@ -7,9 +7,9 @@ namespace rec {
 namespace slow {
 namespace {
 
-class Application : public GenericApplication {
+class SlowApplication : public GenericApplication {
  public:
-  Application() : GenericApplication("SlowGold", "0.2") {}
+  SlowApplication() : GenericApplication("SlowGold", "0.2") {}
 
   virtual void initialise(const String& commandLine) {
     audio::format::mpg123::initializeOnce();
@@ -32,11 +32,11 @@ class Application : public GenericApplication {
 
  private:
   ptr<TargetWindow> window_;
-  DISALLOW_COPY_AND_ASSIGN(Application);
+  DISALLOW_COPY_AND_ASSIGN(SlowApplication);
 };
 
 }  // namespace
 }  // namespace slow
 }  // namespace rec
 
-START_JUCE_APPLICATION(rec::slow::Application)
+START_JUCE_APPLICATION(rec::slow::SlowApplication)

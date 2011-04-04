@@ -10,6 +10,7 @@ using persist::getApp;
 using juce::URL;
 using juce::AlertWindow;
 using juce::Time;
+using juce::RelativeTime;
 
 namespace {
 
