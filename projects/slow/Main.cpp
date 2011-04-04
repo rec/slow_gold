@@ -7,9 +7,9 @@ namespace rec {
 namespace slow {
 namespace {
 
-class SlowApplication : public GenericApplication {
+class SlowApplication : public Application<RecWindow> {
  public:
-  SlowApplication() : GenericApplication("SlowGold", "0.2") {}
+  SlowApplication() : Application<RecWindow>("SlowGold", "0.2") {}
 
   virtual void initialise(const String& commandLine) {
     audio::format::mpg123::initializeOnce();
