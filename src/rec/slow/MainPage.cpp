@@ -23,9 +23,10 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       openDialogOpen_(false) {
   doLayout();
 
-  player_.getTransport()->addListener(waveform_.timeCursor());
-  player_.getTransport()->addListener(this);
-  player_.getTransport()->addListener(controller_.timeController());
+  Broadcaster<double>* timeBroadcaster = player_.getTransport()->doubleBroadcaster();
+  timeBroadcaster->addListener(waveform_.timeCursor());
+  timeBroadcaster->addListener(this);
+  timeBroadcaster->addListener(controller_.timeController());
 
   waveform_.addListener(this);
   waveform_.selectionBroadcaster()->addListener(controller_.timeController());
@@ -148,7 +149,7 @@ void MainPage::operator()(const VirtualFile& file) {
     }
     gui::addRecentFile(file);
 
-    // Adjust the length of clients - fix this!
+    // Adjust the length of clients - neaten this up!
     length_ = player_.length() / 44100.0;
     (*(controller_.timeController()))(ClockUpdate(-1, length_));
 

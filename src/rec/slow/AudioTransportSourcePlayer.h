@@ -8,7 +8,6 @@ namespace slow {
 
 class AudioTransportSourcePlayer : public Thread,
                                    public AudioTransportSource,
-                                   public Broadcaster<double>,
                                    public juce::ChangeListener {
  public:
   static const int THREAD_WAIT = 10;
@@ -28,18 +27,22 @@ class AudioTransportSourcePlayer : public Thread,
   void setOffset(double offset);
   double getCurrentOffsetPosition() const { return getCurrentPosition() + offset_; }
 
+  Broadcaster<double>* doubleBroadcaster() { return &doubleBroadcaster_; }
   Broadcaster<const AudioTransportSourcePlayer&>* changeBroadcaster() {
     return &changeBroadcaster_;
   }
 
   virtual void changeListenerCallback(ChangeBroadcaster*) {
+    // Only triggered on start and stop.
     changeBroadcaster_.broadcast(*this);
   }
 
  private:
+  CriticalSection lock_;
   AudioSourcePlayer player_;
   AudioDeviceManager* deviceManager_;
   Broadcaster<const AudioTransportSourcePlayer&> changeBroadcaster_;
+  Broadcaster<double> doubleBroadcaster_;
   double lastTime_;
   double offset_;
 
