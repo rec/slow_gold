@@ -31,20 +31,49 @@ DialComponent::DialComponent(const Dial& desc, double length, double time)
 }
 
 void DialComponent::paint(Graphics& g) {
+#if 0
+  static int painted = 0;
+  if (!(++painted % 10))
+    std::cout << std::endl;
+  std::cout << ".";
+#endif
+
   ScopedLock l(lock_);
-  double length = juce::jmax(range_.size(), 0.001);
-  double timeRatio = Math<double>::near(length_, 0.0f, 0.001f) ? 0.0f :
-    ((time_ - range_.begin_) / length);
+  double length = range_.size();
+  if (length <= 0.01)
+    length = length_;
+
+  double timeRatio = (time_ - range_.begin_) / length;
+
   Painter p(description_.widget(), &g);
   juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));
   double zeroAngle = description_.zero_point() * 2.0 * PI;
   double timeAngle = zeroAngle + timeRatio * 2.0 * PI;
+
   if (p.colors().color_size() > 2) {
     g.setColour(p.colour(Painter::FOREGROUND).
                 interpolatedWith(p.colour(Painter::HIGHLIGHT), timeRatio));
   }
 
+  if (false)
+    return;
+
   Path path;
+#if 0
+  LOG(ERROR)
+    << "bounds.getX(): " << bounds.getX()
+    << ", bounds.getY()," << bounds.getY()
+    << ", bounds.getWidth(): " << bounds.getWidth()
+    << ", bounds.getHeight()," << bounds.getHeight()
+    << ", zeroAngle: " << zeroAngle
+    << ", timeAngle: " << timeAngle
+    << ", length_: " << length_
+    << ", length: " << length
+    << ", timeRatio: " << timeRatio
+    << ", range.begin_: " << range_.begin_
+    << ", range.end_: " << range_.end_;
+    ;
+#endif
   path.addPieSegment(bounds.getX(), bounds.getY(),
                      bounds.getWidth(), bounds.getHeight(),
                      zeroAngle, timeAngle, 0);
