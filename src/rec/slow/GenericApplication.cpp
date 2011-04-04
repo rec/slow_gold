@@ -9,20 +9,14 @@ GenericApplication::GenericApplication(const String& name, const String& v)
 }
 
 bool GenericApplication::initialize() {
-  LOG(INFO) << "initialize " << getApplicationName()
-            << ", version " << getApplicationVersion();
-  String newVersion;
-  bool noNewVersion = checkForNewMajorVersion(version_, name_, &newVersion);
-
-  if (noNewVersion) {
-    LOG(INFO) << "No new major version";
-    persist::AppInstance::start();
-  } else {
-    downloadNewVersion(name_, newVersion);
+  LOG(INFO) << "Initializing " << getApplicationName();
+  bool downloaded = downloadNewVersionIfNeeded(version_, name_);
+  if (downloaded)
     quit();
-  }
+  else
+    persist::AppInstance::start();
 
-  return noNewVersion;
+  return !downloaded;
 }
 
 void GenericApplication::shutdown() {
@@ -31,6 +25,7 @@ void GenericApplication::shutdown() {
   util::thread::trash::waitForAllThreadsToExit(1000);
   persist::AppInstance::stop();
   gui::icon::deleteIcons();
+
   LOG(INFO) << "Shut down finished.";
 }
 

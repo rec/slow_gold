@@ -71,22 +71,20 @@ String majorVersion(const String& version) {
   if (i >= 0) {
     int j = v.indexOfChar(i + 1, '.');
     if (j >= 0)
-      v = v.substring(j + 1);
+      v = v.substring(0, j);
   }
 
+	LOG(INFO) << "version: " << version << "v: " << v;
   return v;
 }
 
-}  // namespace
-
-
-bool downloadNewVersion(const String& name, const String& version) {
+bool downloadNewVersion(const String& appName, const String& version) {
   AlertWindow dialog("Downloading a new version " + version,
                      "white", AlertWindow::WarningIcon, NULL);
   dialog.enterModalState();
-  bool loaded = URL(WOODSHED + name + "." + version).launchInDefaultBrowser();
+  bool ok = URL(WOODSHED + appName + "." + version).launchInDefaultBrowser();
 
-  if (!loaded) {
+  if (!ok) {
     AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                "Couldn't update to version " + version,
                                "Couldn't update to version " + version,
@@ -94,18 +92,18 @@ bool downloadNewVersion(const String& name, const String& version) {
   }
   dialog.exitModalState(true);
 
-  return loaded;
+  return ok;
 }
 
 bool checkForNewMajorVersion(const String& current, const String& name,
                              String* version) {
   if (!isReadyForUpdate())
-    return true;
+    return false;
 
   (*version) = getVersion();
   if (!version->length()) {
     LOG(ERROR) << "No version file!";
-    return true;
+    return false;
   }
 
   int cmp = majorVersion(*version).compare(majorVersion(current));
@@ -118,6 +116,20 @@ bool checkForNewMajorVersion(const String& current, const String& name,
   return (cmp > 0);
 }
 
+}  // namespace
+
+bool downloadNewVersionIfNeeded(const String& version, const String& name) {
+  String newVersion;
+  bool isNew = checkForNewMajorVersion(version, name, &newVersion);
+
+  if (isNew)
+    downloadNewVersion(name, newVersion);
+  else
+    LOG(INFO) << "No new version needed.  this: "  << version
+              << " current: " << newVersion;
+
+  return isNew;
+}
 
 }  // namespace slow
 }  // namespace rec

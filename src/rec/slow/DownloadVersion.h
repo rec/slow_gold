@@ -6,9 +6,8 @@
 namespace rec {
 namespace slow {
 
-bool downloadNewVersion(const String& name, const String& version);
-bool checkForNewMajorVersion(const String& current, const String& name,
-                             String* version);
+// Returns true if a new version was downloaded.
+bool downloadNewVersionIfNeeded(const String& version, const String& name);
 
 }  // namespace slow
 }  // namespace rec

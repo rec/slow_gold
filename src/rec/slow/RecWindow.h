@@ -2,15 +2,18 @@
 #define __REC_WINDOW
 
 #include "rec/slow/ComponentContainer.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/slow/TargetWindow.h"
+// #include "rec/data/persist/Persist.h"
 
 using namespace juce;
 
 namespace rec {
 
+#if 0
 namespace gui {
 class Rectangle;
 }
+#endif
 
 namespace persist {
 template <typename T> class Data;
@@ -20,7 +23,7 @@ namespace slow {
 
 class AppLayout;
 
-class RecWindow  : public juce::DocumentWindow {
+class RecWindow  : public TargetWindow {
  public:
   RecWindow();
   ~RecWindow();

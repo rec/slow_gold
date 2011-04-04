@@ -9,7 +9,7 @@ namespace rec {
 namespace slow {
 
 RecWindow::RecWindow()
-    : DocumentWindow(T("SlowGold"), Colours::azure, DocumentWindow::allButtons, true),
+    : TargetWindow(T("SlowGold"), Colours::azure, DocumentWindow::allButtons, true),
       container_(new MainPageComponent),
       data_(persist::data<AppLayout>()) {
   AppLayout layout(data_->get());

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="hgUAIRx92" name="Slow">
+  <MAINGROUP id="G0yjucHdR" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -586,8 +586,6 @@
               name="TransportController.h" resource="0"/>
       </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
-        <FILE compile="0" file="../../src/rec/slow/Application.h" id="P1AyMQaaS"
-              name="Application.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="hAzbc8MNi"
               name="AudioSetupPage.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/AudioTransportSourcePlayer.cpp"
@@ -1000,7 +998,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="7UHhVat1W" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="CORx8RD93" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
