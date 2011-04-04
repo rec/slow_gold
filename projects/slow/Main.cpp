@@ -31,7 +31,6 @@ class SlowApplication : public GenericApplication {
   }
 
  private:
-  ptr<TargetWindow> window_;
   DISALLOW_COPY_AND_ASSIGN(SlowApplication);
 };
 
