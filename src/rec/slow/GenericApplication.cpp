@@ -1,4 +1,6 @@
 #include "rec/slow/GenericApplication.h"
+
+#include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/DownloadVersion.h"
 
 namespace rec {
@@ -10,13 +12,14 @@ GenericApplication::GenericApplication(const String& name, const String& v)
 
 bool GenericApplication::initialize() {
   LOG(INFO) << "Initializing " << getApplicationName();
-  bool downloaded = downloadNewVersionIfNeeded(version_, name_);
-  if (downloaded)
+  if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();
-  else
-    persist::AppInstance::start();
+    return false;
+  }
 
-  return !downloaded;
+  audio::format::mpg123::initializeOnce();
+  persist::AppInstance::start();
+  return true;
 }
 
 void GenericApplication::shutdown() {

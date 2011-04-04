@@ -1,4 +1,3 @@
-#include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/slow/GenericApplication.h"
 #include "rec/slow/RecWindow.h"
 #include "rec/slow/TargetWindow.h"
@@ -12,8 +11,6 @@ class SlowApplication : public Application<RecWindow> {
   SlowApplication() : Application<RecWindow>("SlowGold", "0.2") {}
 
   virtual void initialise(const String& commandLine) {
-    audio::format::mpg123::initializeOnce();
-
     if (!GenericApplication::initialize())
       return;
 
