@@ -22,6 +22,7 @@ bool GenericApplication::initialize() {
 void GenericApplication::shutdown() {
   LOG(INFO) << "Shutting down";
 
+  window_.reset();
   util::thread::trash::waitForAllThreadsToExit(1000);
   persist::AppInstance::stop();
   gui::icon::deleteIcons();

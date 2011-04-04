@@ -1,7 +1,7 @@
-#include "rec/slow/GenericApplication.h"
-#include "rec/slow/TargetWindow.h"
-#include "rec/slow/RecWindow.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
+#include "rec/slow/GenericApplication.h"
+#include "rec/slow/RecWindow.h"
+#include "rec/slow/TargetWindow.h"
 
 namespace rec {
 namespace slow {
@@ -23,11 +23,6 @@ class SlowApplication : public Application<RecWindow> {
     MenuBarModel::setMacMainMenu(window_->getTarget());
     window_->setMenuBar(NULL);
 #endif
-  }
-
-  virtual void shutdown() {
-    window_.reset();
-    GenericApplication::shutdown();
   }
 
  private:
