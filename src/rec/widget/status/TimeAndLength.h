@@ -30,7 +30,6 @@ class TimeAndLength : public gui::Layout,
   time::TextComponent length_, begin_, end_, time_;
   double timeScale_;
   double offset_;
-  ClockUpdate clockUpdate_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TimeAndLength);
 };

@@ -25,12 +25,20 @@ class DialComponent : public Component,
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
 
+  static const double PI;
+  static const double REDRAW_ANGLE;
+
  private:
+  void recomputeAngle();
+
   CriticalSection lock_;
   Dial description_;
   double length_;
   double time_;
   TimeRange range_;
+  double zeroAngle_;
+  double timeAngle_;
+  double timeRatio_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(DialComponent);
 };

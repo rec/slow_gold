@@ -22,6 +22,7 @@ class BufferSource : public PositionableAudioSource {
   virtual void setNextReadPosition(int64 p) {
     position_ = p;
   }
+  
   virtual int64 getNextReadPosition() const { return position_; };
   virtual int64 getTotalLength() const { return buffer_.getNumSamples();  }
   virtual bool isLooping() const { return looping_; }

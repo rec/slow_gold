@@ -17,6 +17,7 @@ struct ClockUpdate {
   void update(Type *t) const {
     if (time_ >= 0)
       t->setTime(time_);
+
     if (length_ >= 0)
       t->setLength(length_);
   }

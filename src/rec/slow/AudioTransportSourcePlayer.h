@@ -11,7 +11,7 @@ class AudioTransportSourcePlayer : public Thread,
                                    public Broadcaster<double>,
                                    public juce::ChangeListener {
  public:
-  static const int THREAD_WAIT = 40;
+  static const int THREAD_WAIT = 10;
 
   AudioTransportSourcePlayer(AudioDeviceManager* dm);
   virtual ~AudioTransportSourcePlayer();

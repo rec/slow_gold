@@ -84,9 +84,9 @@
 	};
 	1B080F750738F398054AB382 /* Wrappy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 598}}";
-			sepNavSelRange = "{856, 0}";
-			sepNavVisRange = "{37, 886}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 910}}";
+			sepNavSelRange = "{788, 0}";
+			sepNavVisRange = "{0, 1079}";
 		};
 	};
 	20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {
@@ -208,10 +208,17 @@
 	};
 	516DD6179BB28DE93A3B09C2 /* StretchyRunny.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 624}}";
-			sepNavSelRange = "{225, 0}";
-			sepNavVisRange = "{0, 1104}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 910}}";
+			sepNavSelRange = "{1263, 0}";
+			sepNavVisRange = "{0, 1580}";
 			sepNavWindowFrame = "{{38, 444}, {750, 558}}";
+		};
+	};
+	518CB236F32CEB1AAD485CF0 /* BufferSource.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {998, 675}}";
+			sepNavSelRange = "{657, 0}";
+			sepNavVisRange = "{0, 1261}";
 		};
 	};
 	5297515BDF1EDFD799739EEC /* Address.h */ = {
@@ -253,7 +260,7 @@
 	};
 	5B42F157E007C1D75C0DDAF5 /* GenericApplication.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 578}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 601}}";
 			sepNavSelRange = "{686, 0}";
 			sepNavVisRange = "{0, 1012}";
 			sepNavWindowFrame = "{{495, 172}, {1349, 935}}";
@@ -292,9 +299,9 @@
 	};
 	74EC2FBB043AD157F45AD2FE /* AudioTransportSourcePlayer.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {532, 1030}}";
-			sepNavSelRange = "{1217, 0}";
-			sepNavVisRange = "{0, 1217}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 910}}";
+			sepNavSelRange = "{455, 0}";
+			sepNavVisRange = "{0, 1446}";
 		};
 	};
 	769B124FE15AF19EA9AC2F81 /* Proto.cpp */ = {
@@ -307,9 +314,9 @@
 	};
 	7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {998, 1365}}";
-			sepNavSelRange = "{2081, 0}";
-			sepNavVisRange = "{897, 1550}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1222}}";
+			sepNavSelRange = "{562, 0}";
+			sepNavVisRange = "{0, 1967}";
 		};
 	};
 	7D9E9F3601F920D896BDF730 /* StretchyPlayer.h */ = {
@@ -350,9 +357,9 @@
 	};
 	8ACA76921FB9D6F80A87B902 /* Listener.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1226, 1755}}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 1755}}";
 			sepNavSelRange = "{1688, 0}";
-			sepNavVisRange = "{1256, 937}";
+			sepNavVisRange = "{869, 1854}";
 		};
 	};
 	8B3AC2886ADA57FAE0F93512 /* LoopPoint.pb.h */ = {
@@ -370,6 +377,13 @@
 			sepNavWindowFrame = "{{471, 199}, {750, 558}}";
 		};
 	};
+	8ED3F3DDA74D3491D4EF6750 /* TimeController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {603, 910}}";
+			sepNavSelRange = "{1069, 0}";
+			sepNavVisRange = "{0, 1571}";
+		};
+	};
 	94646382FAB21A45C282242D /* Math.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {531, 1030}}";
@@ -379,9 +393,9 @@
 	};
 	965386D221B09EF4AA3F3EBF /* AudioTransportSourcePlayer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1226, 897}}";
-			sepNavSelRange = "{580, 0}";
-			sepNavVisRange = "{304, 872}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 962}}";
+			sepNavSelRange = "{1139, 0}";
+			sepNavVisRange = "{0, 1743}";
 			sepNavWindowFrame = "{{107, 381}, {750, 558}}";
 		};
 	};
@@ -390,6 +404,7 @@
 		activeExecutable = E2758BB212E2968800E37D3F /* Slow */;
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
+			E22221EF134A680300298AE3 /* DialComponent.cpp:57 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -562,6 +577,45 @@
 			E2222190134A59E300298AE3 /* PBXTextBookmark */ = E2222190134A59E300298AE3 /* PBXTextBookmark */;
 			E2222193134A59F500298AE3 /* PBXTextBookmark */ = E2222193134A59F500298AE3 /* PBXTextBookmark */;
 			E2222195134A5A2100298AE3 /* PBXTextBookmark */ = E2222195134A5A2100298AE3 /* PBXTextBookmark */;
+			E22221A2134A5BA800298AE3 /* PBXTextBookmark */ = E22221A2134A5BA800298AE3 /* PBXTextBookmark */;
+			E22221A3134A5BA800298AE3 /* PBXTextBookmark */ = E22221A3134A5BA800298AE3 /* PBXTextBookmark */;
+			E22221A4134A5BA800298AE3 /* PBXTextBookmark */ = E22221A4134A5BA800298AE3 /* PBXTextBookmark */;
+			E22221A8134A5C1D00298AE3 /* PBXTextBookmark */ = E22221A8134A5C1D00298AE3 /* PBXTextBookmark */;
+			E22221AE134A5D2400298AE3 /* PBXTextBookmark */ = E22221AE134A5D2400298AE3 /* PBXTextBookmark */;
+			E22221BE134A65C300298AE3 /* PBXTextBookmark */ = E22221BE134A65C300298AE3 /* PBXTextBookmark */;
+			E22221C1134A65C300298AE3 /* PBXTextBookmark */ = E22221C1134A65C300298AE3 /* PBXTextBookmark */;
+			E22221C2134A65C300298AE3 /* PBXTextBookmark */ = E22221C2134A65C300298AE3 /* PBXTextBookmark */;
+			E22221C3134A65C300298AE3 /* PBXTextBookmark */ = E22221C3134A65C300298AE3 /* PBXTextBookmark */;
+			E22221C6134A65C300298AE3 /* PBXTextBookmark */ = E22221C6134A65C300298AE3 /* PBXTextBookmark */;
+			E22221C7134A65C300298AE3 /* PBXTextBookmark */ = E22221C7134A65C300298AE3 /* PBXTextBookmark */;
+			E22221C8134A65C300298AE3 /* PBXTextBookmark */ = E22221C8134A65C300298AE3 /* PBXTextBookmark */;
+			E22221C9134A663E00298AE3 /* PBXTextBookmark */ = E22221C9134A663E00298AE3 /* PBXTextBookmark */;
+			E22221CA134A663E00298AE3 /* PBXTextBookmark */ = E22221CA134A663E00298AE3 /* PBXTextBookmark */;
+			E22221CB134A663E00298AE3 /* PBXTextBookmark */ = E22221CB134A663E00298AE3 /* PBXTextBookmark */;
+			E22221D4134A668B00298AE3 /* PBXTextBookmark */ = E22221D4134A668B00298AE3 /* PBXTextBookmark */;
+			E22221D5134A668B00298AE3 /* PBXTextBookmark */ = E22221D5134A668B00298AE3 /* PBXTextBookmark */;
+			E22221D6134A668B00298AE3 /* PBXTextBookmark */ = E22221D6134A668B00298AE3 /* PBXTextBookmark */;
+			E22221DA134A66AE00298AE3 /* PBXTextBookmark */ = E22221DA134A66AE00298AE3 /* PBXTextBookmark */;
+			E22221DB134A66AE00298AE3 /* PBXTextBookmark */ = E22221DB134A66AE00298AE3 /* PBXTextBookmark */;
+			E22221DC134A66AE00298AE3 /* PBXTextBookmark */ = E22221DC134A66AE00298AE3 /* PBXTextBookmark */;
+			E22221E0134A66D300298AE3 /* PBXTextBookmark */ = E22221E0134A66D300298AE3 /* PBXTextBookmark */;
+			E22221E1134A66D300298AE3 /* PBXTextBookmark */ = E22221E1134A66D300298AE3 /* PBXTextBookmark */;
+			E22221E2134A66D300298AE3 /* PBXTextBookmark */ = E22221E2134A66D300298AE3 /* PBXTextBookmark */;
+			E22221E8134A670700298AE3 /* PBXTextBookmark */ = E22221E8134A670700298AE3 /* PBXTextBookmark */;
+			E22221E9134A670700298AE3 /* PBXTextBookmark */ = E22221E9134A670700298AE3 /* PBXTextBookmark */;
+			E22221EA134A670700298AE3 /* PBXTextBookmark */ = E22221EA134A670700298AE3 /* PBXTextBookmark */;
+			E22221EC134A67F000298AE3 /* PBXTextBookmark */ = E22221EC134A67F000298AE3 /* PBXTextBookmark */;
+			E22221ED134A67F000298AE3 /* PBXTextBookmark */ = E22221ED134A67F000298AE3 /* PBXTextBookmark */;
+			E22221EE134A67F000298AE3 /* PBXTextBookmark */ = E22221EE134A67F000298AE3 /* PBXTextBookmark */;
+			E22221F1134A680400298AE3 /* PBXTextBookmark */ = E22221F1134A680400298AE3 /* PBXTextBookmark */;
+			E22221F2134A680400298AE3 /* PBXTextBookmark */ = E22221F2134A680400298AE3 /* PBXTextBookmark */;
+			E22221F3134A680400298AE3 /* PBXTextBookmark */ = E22221F3134A680400298AE3 /* PBXTextBookmark */;
+			E22221F4134A686B00298AE3 /* PBXTextBookmark */ = E22221F4134A686B00298AE3 /* PBXTextBookmark */;
+			E22221F5134A686B00298AE3 /* PBXTextBookmark */ = E22221F5134A686B00298AE3 /* PBXTextBookmark */;
+			E22221F6134A686B00298AE3 /* PBXTextBookmark */ = E22221F6134A686B00298AE3 /* PBXTextBookmark */;
+			E22221F7134A688500298AE3 /* PBXTextBookmark */ = E22221F7134A688500298AE3 /* PBXTextBookmark */;
+			E22221F8134A688500298AE3 /* PBXTextBookmark */ = E22221F8134A688500298AE3 /* PBXTextBookmark */;
+			E22221F9134A688500298AE3 /* PBXTextBookmark */ = E22221F9134A688500298AE3 /* PBXTextBookmark */;
 			E22D57041335F95B00F9BF8F = E22D57041335F95B00F9BF8F /* PBXTextBookmark */;
 			E22D57051335F95B00F9BF8F = E22D57051335F95B00F9BF8F /* PBXBookmark */;
 			E23E466912EFA3FF0080BD76 = E23E466912EFA3FF0080BD76 /* PBXTextBookmark */;
@@ -621,9 +675,9 @@
 	};
 	9E6BCD0364F3876E18407668 /* Seggy.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {614, 685}}";
-			sepNavSelRange = "{1104, 0}";
-			sepNavVisRange = "{0, 1104}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 910}}";
+			sepNavSelRange = "{714, 0}";
+			sepNavVisRange = "{0, 863}";
 			sepNavWindowFrame = "{{84, 402}, {750, 558}}";
 		};
 	};
@@ -779,6 +833,13 @@
 			sepNavVisRange = "{5682, 815}";
 		};
 	};
+	D7AFB4FEC9E42FD07E756BC4 /* ClockUpdate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {603, 910}}";
+			sepNavSelRange = "{359, 0}";
+			sepNavVisRange = "{0, 522}";
+		};
+	};
 	D9313457B3248E7646270A4F /* MainPage.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {959, 1001}}";
@@ -795,9 +856,9 @@
 	};
 	DF49580B9742DB4F887E85DF /* MainPage.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 2899}}";
-			sepNavSelRange = "{1251, 0}";
-			sepNavVisRange = "{335, 1447}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 2899}}";
+			sepNavSelRange = "{4158, 0}";
+			sepNavVisRange = "{3324, 1983}";
 			sepNavWindowFrame = "{{15, 4}, {911, 1024}}";
 		};
 	};
@@ -1818,7 +1879,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 83";
 		rLen = 0;
-		rLoc = 2238;
+		rLoc = 2284;
 		rType = 0;
 		vrLen = 1463;
 		vrLoc = 468;
@@ -1828,7 +1889,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 83";
 		rLen = 0;
-		rLoc = 2238;
+		rLoc = 2284;
 		rType = 0;
 		vrLen = 1411;
 		vrLoc = 468;
@@ -1838,7 +1899,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 63";
 		rLen = 0;
-		rLoc = 1665;
+		rLoc = 1711;
 		rType = 0;
 		vrLen = 1460;
 		vrLoc = 468;
@@ -1848,7 +1909,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 63";
 		rLen = 0;
-		rLoc = 1665;
+		rLoc = 1711;
 		rType = 0;
 		vrLen = 1460;
 		vrLoc = 468;
@@ -1858,7 +1919,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 96";
 		rLen = 0;
-		rLoc = 2644;
+		rLoc = 2690;
 		rType = 0;
 		vrLen = 1516;
 		vrLoc = 544;
@@ -1868,7 +1929,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 39";
 		rLen = 0;
-		rLoc = 850;
+		rLoc = 901;
 		rType = 0;
 		vrLen = 1568;
 		vrLoc = 363;
@@ -1878,7 +1939,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 104";
 		rLen = 0;
-		rLoc = 2589;
+		rLoc = 2635;
 		rType = 0;
 		vrLen = 1559;
 		vrLoc = 429;
@@ -1888,7 +1949,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 104";
 		rLen = 0;
-		rLoc = 2589;
+		rLoc = 2635;
 		rType = 0;
 		vrLen = 1606;
 		vrLoc = 429;
@@ -1898,7 +1959,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 105";
 		rLen = 0;
-		rLoc = 2601;
+		rLoc = 2647;
 		rType = 0;
 		vrLen = 1579;
 		vrLoc = 469;
@@ -1908,7 +1969,7 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 107";
 		rLen = 0;
-		rLoc = 2614;
+		rLoc = 2660;
 		rType = 0;
 		vrLen = 1469;
 		vrLoc = 544;
@@ -1918,10 +1979,439 @@
 		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
 		name = "DialComponent.cpp: 82";
 		rLen = 0;
-		rLoc = 2081;
+		rLoc = 2127;
 		rType = 0;
 		vrLen = 1550;
 		vrLoc = 897;
+	};
+	E22221A2134A5BA800298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 82";
+		rLen = 0;
+		rLoc = 2127;
+		rType = 0;
+		vrLen = 1469;
+		vrLoc = 897;
+	};
+	E22221A3134A5BA800298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1258;
+		vrLoc = 0;
+	};
+	E22221A4134A5BA800298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1258;
+		vrLoc = 0;
+	};
+	E22221A8134A5C1D00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1258;
+		vrLoc = 0;
+	};
+	E22221AE134A5D2400298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221B6134A657400298AE3 /* DialComponent.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = DialComponent.h;
+		path = ../../../../../rec/src/rec/widget/status/DialComponent.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
+			sepNavSelRange = "{891, 79}";
+			sepNavVisRange = "{0, 1317}";
+		};
+	};
+	E22221BA134A658B00298AE3 /* DialComponent.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = DialComponent.h;
+		path = ../../../../../rec/src/rec/widget/status/DialComponent.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1023}}";
+			sepNavSelRange = "{1288, 0}";
+			sepNavVisRange = "{0, 1288}";
+		};
+	};
+	E22221BE134A65C300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221C1134A65C300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 24";
+		rLen = 0;
+		rLoc = 518;
+		rType = 0;
+		vrLen = 2038;
+		vrLoc = 0;
+	};
+	E22221C2134A65C300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 29";
+		rLen = 45;
+		rLoc = 891;
+		rType = 0;
+		vrLen = 1317;
+		vrLoc = 0;
+	};
+	E22221C3134A65C300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 39";
+		rLen = 0;
+		rLoc = 1086;
+		rType = 0;
+		vrLen = 1304;
+		vrLoc = 0;
+	};
+	E22221C6134A65C300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221B6134A657400298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 29";
+		rLen = 45;
+		rLoc = 891;
+		rType = 0;
+		vrLen = 1317;
+		vrLoc = 0;
+	};
+	E22221C7134A65C300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		rLen = 0;
+		rLoc = 9223372036854775853;
+		rType = 0;
+	};
+	E22221C8134A65C300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 24";
+		rLen = 0;
+		rLoc = 518;
+		rType = 0;
+		vrLen = 2031;
+		vrLoc = 0;
+	};
+	E22221C9134A663E00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221CA134A663E00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221CB134A663E00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 94";
+		rLen = 0;
+		rLoc = 2336;
+		rType = 0;
+		vrLen = 2056;
+		vrLoc = 0;
+	};
+	E22221D4134A668B00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221D5134A668B00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221D6134A668B00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 95";
+		rLen = 0;
+		rLoc = 2336;
+		rType = 0;
+		vrLen = 1969;
+		vrLoc = 0;
+	};
+	E22221DA134A66AE00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221DB134A66AE00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221DC134A66AE00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 95";
+		rLen = 0;
+		rLoc = 2332;
+		rType = 0;
+		vrLen = 1965;
+		vrLoc = 0;
+	};
+	E22221E0134A66D300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221E1134A66D300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221E2134A66D300298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 95";
+		rLen = 0;
+		rLoc = 2333;
+		rType = 0;
+		vrLen = 1966;
+		vrLoc = 0;
+	};
+	E22221E8134A670700298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221E9134A670700298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221EA134A670700298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 95";
+		rLen = 0;
+		rLoc = 2333;
+		rType = 0;
+		vrLen = 1966;
+		vrLoc = 0;
+	};
+	E22221EC134A67F000298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221ED134A67F000298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 95";
+		rLen = 0;
+		rLoc = 2333;
+		rType = 0;
+		vrLen = 1966;
+		vrLoc = 0;
+	};
+	E22221EE134A67F000298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221EF134A680300298AE3 /* DialComponent.cpp:57 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		functionName = "DialComponent::recomputeAngle()";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 57;
+		location = SlowBurn;
+		modificationTime = 323643494.221235;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E22221F1134A680400298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221F2134A680400298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 95";
+		rLen = 0;
+		rLoc = 2333;
+		rType = 0;
+		vrLen = 1966;
+		vrLoc = 0;
+	};
+	E22221F3134A680400298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221F4134A686B00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221F5134A686B00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 95";
+		rLen = 0;
+		rLoc = 2333;
+		rType = 0;
+		vrLen = 1966;
+		vrLoc = 0;
+	};
+	E22221F6134A686B00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E22221F7134A688500298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
+		name = "BufferSource.h: 25";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	E22221F8134A688500298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */;
+		name = "DialComponent.cpp: 24";
+		rLen = 0;
+		rLoc = 562;
+		rType = 0;
+		vrLen = 1967;
+		vrLoc = 0;
+	};
+	E22221F9134A688500298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E22221BA134A658B00298AE3 /* DialComponent.h */;
+		name = "DialComponent.h: 52";
+		rLen = 0;
+		rLoc = 1288;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
 	};
 	E22D57041335F95B00F9BF8F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
