@@ -20,9 +20,20 @@ TextComponent::TextComponent(const Text& desc)
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));
 }
 
+double TextComponent::getTime() const {
+  ScopedLock l(lock_);
+  return time_;
+}
+
 void TextComponent::setTime(double time) {
+  ScopedLock l(lock_);
   time_ = time;
-  thread::callAsync(this, &TextComponent::redisplay);
+
+  String timeDisplay = formatTime(time_, description_.separator().flash());
+  if (timeDisplay != timeDisplay_) {
+    timeDisplay_ = timeDisplay;
+    thread::callAsync(this, &TextComponent::redisplay);
+  }
 }
 
 void TextComponent::operator()(const ClockUpdate& c) {
@@ -31,7 +42,8 @@ void TextComponent::operator()(const ClockUpdate& c) {
 }
 
 void TextComponent::redisplay() {
-  setText(formatTime(time_, description_.separator().flash()), false);
+  ScopedLock l(lock_);
+  setText(timeDisplay_, false);
 }
 
 }  // namespace time

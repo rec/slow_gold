@@ -19,13 +19,15 @@ class TextComponent : public gui::SimpleLabel,
   explicit TextComponent(const Text& desc = Text::default_instance());
   virtual void operator()(const ClockUpdate& c);
 
-  double getTime() const { return time_; }
+  double getTime() const;
   void setTime(double time);
   void redisplay();
 
  private:
+  CriticalSection lock_;
   Text description_;
   double time_;
+  String timeDisplay_;
 
   DISALLOW_COPY_AND_ASSIGN(TextComponent);
 };
