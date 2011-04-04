@@ -19,13 +19,15 @@ class Runny : public Thread, public Wrappy {
 
   virtual ~Runny();
 
+  // Guarantees that the buffer is filled to the new read position, then sets
+  // that position - this might block.
   virtual void setNextReadPosition(int64 p);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
   // Try to pre-fill the lookahead buffer one slot.
   void fillOnce();
 
-  void fill();
+  // void fill();
 
   virtual void run();
 

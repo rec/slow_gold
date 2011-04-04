@@ -21,14 +21,17 @@ Runny::~Runny() {}
 void Runny::setNextReadPosition(int64 newPos) {
   {
     ScopedLock l(lock_);
+    LOG(INFO) << "setNextReadPosition " << newPos;
     // Check if the new position is within the current readahead buffer.
     int available = filled_.availableFrom(newPos);
     filled_.reset(newPos);
     if (available >= 0)
       filled_.fill(available);
   }
-  Wrappy::setNextReadPosition(newPos);
-  notify();
+  if (position_ != newPos) {
+    Wrappy::setNextReadPosition(newPos);
+    notify();
+  }
 }
 
 void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
@@ -38,17 +41,9 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
     ScopedLock l(lock_);
     begin = filled_.begin();
     ready = filled_.filled();
-#if 0
-    DLOG_EVERY_N(INFO, 64) << "-> * " << filled_.begin()
-                           << ":" << filled_.filled() << ", " << this;
-#endif
   }
 
   if (ready < info.numSamples) {
-    LOG_FIRST_N(INFO, 1) << "LIMITED: request:" << info.numSamples
-                         << " got:" << ready
-                         << " filled: " << filled_.filled()
-                         << " begin: " << filled_.begin();
     LOG(ERROR) << "clearing " << info.numSamples - ready
                << ", getting " << ready;
 
@@ -69,10 +64,12 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
   position_ = mod(position_ + i.numSamples);
 }
 
+#if 0
 void Runny::fill() {
   while (!(threadShouldExit() || isFull()))
     fillOnce();
 }
+#endif
 
 void Runny::fillOnce() {
   if (threadShouldExit())
@@ -89,11 +86,6 @@ void Runny::fillOnce() {
   if (!info.numSamples || threadShouldExit())
     return;  // No more to fill!
 
-#if 0
-  DLOG_EVERY_N(INFO, 64) << "* <- " << filled_.begin()
-                         << ":" << filled_.filled() << ", " << this;
-#endif
-
   if (!prepared_)
     prepareToPlay(desc_.chunk_size(), 44100);
 
@@ -108,9 +100,10 @@ void Runny::fillOnce() {
 
 void Runny::run() {
   while (!(threadShouldExit())) {
-    fill();
-    if (!threadShouldExit())
+    if (isFull())
       wait(desc_.thread().period());
+    else
+      fillOnce();
   }
 }
 

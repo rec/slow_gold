@@ -36,15 +36,14 @@ Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
     source.reset(new Seggy(SampleRange(begin, end), source.transfer()));
   }
   ptr<Runny> runny(new Runny(source.transfer(), desc));
-  runny->setNextReadPosition(pos);
-
-  Thread* thread = Thread::getCurrentThread();
-  while (!(shouldExit(thread) || runny->isFull()))
-    runny->fill();
-
-  if (shouldExit(thread))
+	if (shouldExit(Thread::getCurrentThread()))
     return NULL;
 
+  runny->setNextReadPosition(pos);
+
+	if (shouldExit(Thread::getCurrentThread()))
+    return NULL;
+    
   runny->startThread();
   return runny.transfer();
 }
