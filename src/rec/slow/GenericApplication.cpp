@@ -1,6 +1,7 @@
 #include "rec/slow/GenericApplication.h"
 
 #include "rec/audio/format/mpg123/Mpg123.h"
+#include "rec/slow/ComponentContainer.h"
 #include "rec/slow/DownloadVersion.h"
 
 namespace rec {
@@ -19,6 +20,13 @@ bool GenericApplication::initialize() {
 
   audio::format::mpg123::initializeOnce();
   persist::AppInstance::start();
+  window_.reset(createWindow());
+
+#if JUCE_MAC
+    juce::MenuBarModel::setMacMainMenu(window_->getTarget());
+    window_->setMenuBar(NULL);
+#endif
+
   return true;
 }
 

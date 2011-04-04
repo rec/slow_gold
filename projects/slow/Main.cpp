@@ -14,12 +14,6 @@ class SlowApplication : public Application<RecWindow> {
     if (!GenericApplication::initialize())
       return;
 
-    window_.reset(new RecWindow());
-
-#if JUCE_MAC
-    MenuBarModel::setMacMainMenu(window_->getTarget());
-    window_->setMenuBar(NULL);
-#endif
   }
 
  private:
