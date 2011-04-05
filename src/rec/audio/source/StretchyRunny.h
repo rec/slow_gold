@@ -8,12 +8,12 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Runny;
+class ThreadedSource;
 class RunnyProto;
 
-Runny* stretchyRunny(const RunnyProto& desc, 
-                     const stretch::StretchLoop& loop,
-                     int pos, PositionableAudioSource* s);
+ThreadedSource* stretchyRunny(const RunnyProto& desc,
+                              const stretch::StretchLoop& loop,
+                              int pos, PositionableAudioSource* s);
 
 }  // namespace source
 }  // namespace audio

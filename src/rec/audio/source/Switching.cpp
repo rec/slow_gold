@@ -1,4 +1,4 @@
-#include "rec/audio/source/DoubleRunny.h"
+#include "rec/audio/source/Switching.h"
 #include "rec/audio/util/Clear.h"
 #include "rec/audio/source/Runny.h"
 
@@ -6,22 +6,19 @@ namespace rec {
 namespace audio {
 namespace source {
 
-DoubleRunny::DoubleRunny(const RunnyProto& d)
-    : Wrappy(NULL) {
-}
+Switching::Switching() : Wrappy(NULL) {}
+Switching::~Switching() {}
 
-DoubleRunny::~DoubleRunny() {}
-
-void DoubleRunny::setNextRunny(Runny* next) {
-  thread_ptr<Runny> runny(next);
+void Switching::setNextRunny(ThreadedSource* next) {
+  thread_ptr<ThreadedSource> runny(next);
   {
     ScopedLock l(lock_);
     nextRunny_.swap(runny);
   }
 }
 
-void DoubleRunny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  thread_ptr<Runny> deleter;
+void Switching::getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  thread_ptr<ThreadedSource> deleter;
   {
     ScopedLock l(lock_);
     if (nextRunny_) {
@@ -34,14 +31,14 @@ void DoubleRunny::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   if (runny_) {
     runny_->getNextAudioBlock(info);
   } else {
-    LOG(ERROR) << "No runny in DoubleRunny";
+    LOG(ERROR) << "No runny in Switching";
     clear(info);
   }
 
   position_ = mod(position_ + info.numSamples);
 }
 
-void DoubleRunny::shutdown() {
+void Switching::shutdown() {
   runny_.reset();
   nextRunny_.reset();
 }

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="GjeF1f6gt" name="tests">
+  <MAINGROUP id="ftzQUjZlz" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -96,12 +96,6 @@
         <GROUP id="1CsM6ZONT" name="source">
           <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
                 id="movJPJktr" name="BufferSource.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp"
-                id="mI61CtQ68" name="DoubleRunny.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/DoubleRunny.h" id="ZbigF9cjr"
-                name="DoubleRunny.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny_test.cpp"
-                id="2RlMSjLio" name="DoubleRunny_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunnyBuffer.cpp"
                 id="Nla7QcCaM" name="DoubleRunnyBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
@@ -132,6 +126,12 @@
                 id="JIHUXD9fG" name="StretchyRunny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/StretchyRunny.h"
                 id="dW4aaU58T" name="StretchyRunny.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/Switching.cpp" id="dG2aXFyOL"
+                name="Switching.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Switching.h" id="e4q6HFNej"
+                name="Switching.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/Switching_test.cpp"
+                id="uB2CW5Nvv" name="Switching_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/TestSource_test.cpp"
                 id="OYgIr7Fpk" name="TestSource_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/TestSource_test.h"
@@ -140,6 +140,8 @@
                 name="Testy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Testy_test.cpp"
                 id="3UBIW8o76" name="Testy_test.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/ThreadedSource.h"
+                id="Q4T4bAe1X" name="ThreadedSource.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Wrappy.cpp" id="HeAXdStRD"
                 name="Wrappy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Wrappy.h" id="4dHWKsBD1"
@@ -615,12 +617,16 @@
               name="TransportController.h" resource="0"/>
       </GROUP>
       <GROUP id="vrHU7SxTi" name="slow">
+        <FILE compile="0" file="../../src/rec/slow/Application.h" id="otvAN92kU"
+              name="Application.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="W5xESeAC9"
               name="AudioSetupPage.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/AudioTransportSourcePlayer.cpp"
               id="eMtVKFU3O" name="AudioTransportSourcePlayer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AudioTransportSourcePlayer.h"
               id="WTZmf0ccw" name="AudioTransportSourcePlayer.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/Broadcasters.h" id="nBoBXexZ2"
+              name="Broadcasters.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/ComponentContainer.cpp"
               id="IXA2k1Uls" name="ComponentContainer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/ComponentContainer.h" id="DUyB85nIn"
@@ -653,6 +659,8 @@
               name="StretchyPlayer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/StretchyPlayer.h" id="C0Hk5gv70"
               name="StretchyPlayer.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/TargetWindow.h" id="buDU4LqQv"
+              name="TargetWindow.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/TimeController.cpp" id="vUkqSvvNv"
               name="TimeController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/TimeController.h" id="DDCsbrpBJ"
@@ -1051,7 +1059,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="g5vq18X98" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="PcHeGgGlc" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -12,8 +12,9 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
-                     int pos, PositionableAudioSource* s) {
+ThreadedSource* stretchyRunny(const RunnyProto& desc,
+                              const StretchLoop& loop,
+                              int pos, PositionableAudioSource* s) {
   ptr<PositionableAudioSource> source(s);
 
   const Stretch& stretch = loop.stretch();
@@ -35,7 +36,8 @@ Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
       end = s->getTotalLength();
     source.reset(new Seggy(SampleRange(begin, end), source.transfer()));
   }
-  ptr<Runny> runny(new Runny(source.transfer(), desc));
+
+  ptr<ThreadedSource> runny(new Runny(source.transfer(), desc));
 	if (shouldExit(Thread::getCurrentThread()))
     return NULL;
 
@@ -43,7 +45,7 @@ Runny* stretchyRunny(const RunnyProto& desc, const StretchLoop& loop,
 
 	if (shouldExit(Thread::getCurrentThread()))
     return NULL;
-    
+
   runny->startThread();
   return runny.transfer();
 }

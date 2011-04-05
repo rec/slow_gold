@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="G0yjucHdR" name="Slow">
+  <MAINGROUP id="sSqO6JlJV" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -89,10 +89,6 @@
         <GROUP id="ngaS8lhNw" name="source">
           <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
                 id="3N82QYAas" name="BufferSource.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/DoubleRunny.cpp"
-                id="iL3pgjU3f" name="DoubleRunny.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/DoubleRunny.h" id="8DYi8ImuJ"
-                name="DoubleRunny.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunnyBuffer.cpp"
                 id="Poj4Wc2yA" name="DoubleRunnyBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
@@ -119,8 +115,14 @@
                 id="ZshbxlQwn" name="StretchyRunny.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/StretchyRunny.h"
                 id="nCZZQj2lJ" name="StretchyRunny.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/Switching.cpp" id="3PxZqHElz"
+                name="Switching.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Switching.h" id="g7mX6SrWv"
+                name="Switching.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="8p2gEgkqs"
                 name="Testy.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/ThreadedSource.h"
+                id="8frgf0Wp4" name="ThreadedSource.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Wrappy.cpp" id="18wxfvUB3"
                 name="Wrappy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Wrappy.h" id="gnJ1mnrfw"
@@ -586,12 +588,16 @@
               name="TransportController.h" resource="0"/>
       </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
+        <FILE compile="0" file="../../src/rec/slow/Application.h" id="EAbXTeGIs"
+              name="Application.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="hAzbc8MNi"
               name="AudioSetupPage.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/AudioTransportSourcePlayer.cpp"
               id="9Y6Eu3dqC" name="AudioTransportSourcePlayer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AudioTransportSourcePlayer.h"
               id="WY0DyL59B" name="AudioTransportSourcePlayer.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/Broadcasters.h" id="UY13BIJ7L"
+              name="Broadcasters.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/ComponentContainer.cpp"
               id="9gleG55FS" name="ComponentContainer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/ComponentContainer.h" id="aFaWZuna8"
@@ -624,6 +630,8 @@
               name="StretchyPlayer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/StretchyPlayer.h" id="sQswHF388"
               name="StretchyPlayer.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/TargetWindow.h" id="6jbairGGi"
+              name="TargetWindow.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/TimeController.cpp" id="DtLOx6123"
               name="TimeController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/TimeController.h" id="4yzqIPMl2"
@@ -998,7 +1006,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="CORx8RD93" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="HTf4OoY8u" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

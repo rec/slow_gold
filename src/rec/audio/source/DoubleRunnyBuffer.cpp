@@ -21,7 +21,7 @@ namespace source {
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
-    : Thread("DoubleRunnyBuffer"), stretchy_(desc),
+    : Thread("DoubleRunnyBuffer"), 
       runnyDesc_(desc), data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {

@@ -8,7 +8,7 @@ namespace audio {
 namespace source {
 
 Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
-    : WrappyThread(source, "Runny"),
+    : ThreadedSource(source, "Runny"),
       buffer_(2, desc.buffer_size()),
       filled_(desc.buffer_size()),
       desc_(desc) {
@@ -27,7 +27,7 @@ void Runny::setNextReadPosition(int64 newPos) {
     if (available >= 0)
       filled_.fill(available);
   }
-  if (position_ != newPos) {
+  if (true || position_ != newPos) {
     Wrappy::setNextReadPosition(newPos);
     notify();
   }

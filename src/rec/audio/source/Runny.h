@@ -1,43 +1,27 @@
 #ifndef __REC_AUDIO_SOURCE_RUNNY__
 #define __REC_AUDIO_SOURCE_RUNNY__
 
-#include "rec/base/base.h"
-
-#include "rec/audio/source/Wrappy.h"
 #include "rec/audio/source/Runny.pb.h"
+#include "rec/audio/source/ThreadedSource.h"
 #include "rec/util/Circular.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class WrappyThread : public Wrappy, public Thread {
- public:
-  WrappyThread(PositionableAudioSource* source, const String& name)
-      : Wrappy(source), Thread(name) {
-  }
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(WrappyThread);
-};
-
 // Runny is a thread-based pre-fetching PositionableAudioSource wrapper.
-class Runny : public WrappyThread {
+class Runny : public ThreadedSource {
  public:
   Runny(PositionableAudioSource* source,
         const RunnyProto& d = RunnyProto::default_instance());
 
   virtual ~Runny();
 
-  // Guarantees that the buffer is filled to the new read position, then sets
-  // that position - this might block.
   virtual void setNextReadPosition(int64 p);
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
 
   // Try to pre-fill the lookahead buffer one slot.
   void fillOnce();
-
-  // void fill();
 
   virtual void run();
 

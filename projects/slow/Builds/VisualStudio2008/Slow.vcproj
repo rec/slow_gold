@@ -165,8 +165,6 @@
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.h"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
@@ -180,7 +178,10 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyRunny.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\StretchyRunny.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Switching.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Switching.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\ThreadedSource.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
           </Filter>
@@ -428,9 +429,11 @@
           <File RelativePath="..\..\..\..\src\rec\gui\TransportController.h"/>
         </Filter>
         <Filter Name="slow">
+          <File RelativePath="..\..\..\..\src\rec\slow\Application.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\AudioSetupPage.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\AudioTransportSourcePlayer.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\AudioTransportSourcePlayer.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Broadcasters.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\ComponentContainer.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\ComponentContainer.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\DownloadVersion.cpp"/>
@@ -447,6 +450,7 @@
           <File RelativePath="..\..\..\..\src\rec\slow\RecWindow.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\StretchyPlayer.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\StretchyPlayer.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\TargetWindow.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\TimeController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\TimeController.h"/>
         </Filter>
