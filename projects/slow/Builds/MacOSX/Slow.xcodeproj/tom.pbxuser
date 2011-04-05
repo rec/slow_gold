@@ -405,7 +405,6 @@
 		activeExecutable = E2758BB212E2968800E37D3F /* Slow */;
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
-			E22223B6134AB25B00298AE3 /* StretchyRunny.cpp:18 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -576,6 +575,7 @@
 			E22223C0134AB2E300298AE3 /* PBXTextBookmark */ = E22223C0134AB2E300298AE3 /* PBXTextBookmark */;
 			E22223C4134AB47600298AE3 /* PBXTextBookmark */ = E22223C4134AB47600298AE3 /* PBXTextBookmark */;
 			E22223C6134AB48D00298AE3 /* PBXTextBookmark */ = E22223C6134AB48D00298AE3 /* PBXTextBookmark */;
+			E22223C9134ABAD300298AE3 /* PBXTextBookmark */ = E22223C9134ABAD300298AE3 /* PBXTextBookmark */;
 			E22D57041335F95B00F9BF8F = E22D57041335F95B00F9BF8F /* PBXTextBookmark */;
 			E22D57051335F95B00F9BF8F = E22D57051335F95B00F9BF8F /* PBXBookmark */;
 			E23E466912EFA3FF0080BD76 = E23E466912EFA3FF0080BD76 /* PBXTextBookmark */;
@@ -2025,24 +2025,6 @@
 		vrLen = 1580;
 		vrLoc = 1066;
 	};
-	E22223B6134AB25B00298AE3 /* StretchyRunny.cpp:18 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 516DD6179BB28DE93A3B09C2 /* StretchyRunny.cpp */;
-		functionName = "stretchyRunny(const RunnyProto& desc, const StretchLoop& loop, int pos, PositionableAudioSource* s)";
-		hitCount = 1;
-		ignoreCount = 0;
-		lineNumber = 18;
-		location = SlowBurn;
-		modificationTime = 323662984.121573;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
-	};
 	E22223BB134AB26300298AE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 516DD6179BB28DE93A3B09C2 /* StretchyRunny.cpp */;
@@ -2084,6 +2066,16 @@
 		vrLoc = 45;
 	};
 	E22223C6134AB48D00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 516DD6179BB28DE93A3B09C2 /* StretchyRunny.cpp */;
+		name = "StretchyRunny.cpp: 36";
+		rLen = 0;
+		rLoc = 1174;
+		rType = 0;
+		vrLen = 1537;
+		vrLoc = 45;
+	};
+	E22223C9134ABAD300298AE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 516DD6179BB28DE93A3B09C2 /* StretchyRunny.cpp */;
 		name = "StretchyRunny.cpp: 36";

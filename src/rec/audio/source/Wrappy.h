@@ -25,7 +25,7 @@ class Wrappy : public PositionableAudioSource {
 
   virtual int64 getNextReadPosition() const;
   virtual PositionableAudioSource* source() const;
-  void setSource(PositionableAudioSource* s);
+  virtual void setSource(PositionableAudioSource* s);
   virtual void setNextReadPosition(int64 p);
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
