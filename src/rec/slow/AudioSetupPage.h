@@ -8,24 +8,21 @@ namespace slow {
 
 class AudioSetupPage  : public Component {
  public:
-  explicit AudioSetupPage(AudioDeviceManager& deviceManager)
-      : deviceManager_(deviceManager) {
-    deviceSelector_.reset(
-        new AudioDeviceSelectorComponent(deviceManager_,
-                                         0, 0, 2, 2, false, false, true, true));
-    addAndMakeVisible(deviceSelector_.get());
-    setSize(400, 200);
+  explicit AudioSetupPage(AudioDeviceManager& adm)
+      : deviceSelector_(adm, 0, 0, 2, 2, false, false, true, true) {
+    addAndMakeVisible(&deviceSelector_);
+    setSize(400, 300);
   }
 
   void paint(Graphics& g) { g.fillAll (Colours::lightgrey); }
 
   void resized() {
-    deviceSelector_->setBounds(8, 8, getWidth() - 16, getHeight() - 16);
+    deviceSelector_.setBounds(8, 8, getWidth() - 16, getHeight() - 16);
   }
 
  private:
-  AudioDeviceManager& deviceManager_;
-  ptr<AudioDeviceSelectorComponent> deviceSelector_;
+  AudioDeviceSelectorComponent deviceSelector_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioSetupPage);
 };
 

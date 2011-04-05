@@ -93,7 +93,7 @@ class RunnyProto : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional uint32 buffer_size = 1 [default = 512000];
+  // optional uint32 buffer_size = 1 [default = 256000];
   inline bool has_buffer_size() const;
   inline void clear_buffer_size();
   static const int kBufferSizeFieldNumber = 1;
@@ -149,12 +149,12 @@ class RunnyProto : public ::google::protobuf::Message {
 
 // RunnyProto
 
-// optional uint32 buffer_size = 1 [default = 512000];
+// optional uint32 buffer_size = 1 [default = 256000];
 inline bool RunnyProto::has_buffer_size() const {
   return _has_bit(0);
 }
 inline void RunnyProto::clear_buffer_size() {
-  buffer_size_ = 512000u;
+  buffer_size_ = 256000u;
   _clear_bit(0);
 }
 inline ::google::protobuf::uint32 RunnyProto::buffer_size() const {

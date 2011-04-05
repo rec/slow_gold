@@ -27,10 +27,8 @@ class Seggy : public Wrappy {
   }
 
 virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
-    Wrappy::getNextAudioBlock(info);
-
-    // TODO:  Why is this needed!?!
-    setNextReadPosition(position_);
+  setNextReadPosition(position_);
+  Wrappy::getNextAudioBlock(info);
 }
 
  private:

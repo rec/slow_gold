@@ -143,9 +143,8 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
 }
 
 void ComponentContainer::menuItemSelected(int menuItemID, int menuIndex) {
-  thread::runInNewThread("ComponentContainer::doMenuSelected", 5,
-                         this, &ComponentContainer::doMenuItemSelected,
-                         menuItemID, menuIndex);
+  thread::callAsync(this, &ComponentContainer::doMenuItemSelected,
+                    menuItemID, menuIndex);
 }
 
 void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
