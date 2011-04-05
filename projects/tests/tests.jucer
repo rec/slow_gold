@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="ftzQUjZlz" name="tests">
+  <MAINGROUP id="JbgQ4kMXr" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -493,6 +493,8 @@
         </GROUP>
       </GROUP>
       <GROUP id="3L8ZCKlmn" name="gui">
+        <FILE compile="0" file="../../src/rec/gui/AudioSetupPage.h" id="gQ3l968E5"
+              name="AudioSetupPage.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/AudioThumbnail.h" id="OJs3ZxZue"
               name="AudioThumbnail.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/CachedThumbnail.cpp" id="rYmUiiVGV"
@@ -619,8 +621,6 @@
       <GROUP id="vrHU7SxTi" name="slow">
         <FILE compile="0" file="../../src/rec/slow/Application.h" id="otvAN92kU"
               name="Application.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/AudioSetupPage.h" id="W5xESeAC9"
-              name="AudioSetupPage.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/AudioTransportSourcePlayer.cpp"
               id="eMtVKFU3O" name="AudioTransportSourcePlayer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/AudioTransportSourcePlayer.h"
@@ -1059,7 +1059,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="PcHeGgGlc" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="84lDRhFbv" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

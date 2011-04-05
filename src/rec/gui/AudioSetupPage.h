@@ -1,10 +1,10 @@
-#ifndef __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
-#define __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
+#ifndef __REC_GUI_AUDIOSETUPPAGE__
+#define __REC_GUI_AUDIOSETUPPAGE__
 
 #include "rec/base/base.h"
 
 namespace rec {
-namespace slow {
+namespace gui {
 
 class AudioSetupPage  : public Component {
  public:
@@ -26,7 +26,7 @@ class AudioSetupPage  : public Component {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioSetupPage);
 };
 
+}  // namespace gui
 }  // namespace rec
-}  // namespace slow
 
-#endif   // __JUCER_HEADER_AUDIODEMOSETUPPAGE_AUDIODEMOSETUPPAGE_244CE6A7__
+#endif   // __REC_GUI_AUDIOSETUPPAGE__

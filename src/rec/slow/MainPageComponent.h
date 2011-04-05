@@ -1,9 +1,9 @@
 #ifndef __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 #define __JUCER_HEADER_AUDIODEMOTABCOMPONENT_AUDIODEMOTABCOMPONENT_ED272280__
 
+#include "rec/gui/AudioSetupPage.h"
 #include "rec/gui/RecentFiles.h"
 #include "rec/slow/MainPage.h"
-#include "rec/slow/AudioSetupPage.h"
 #include "rec/audio/util/AudioDeviceSetup.h"
 
 namespace rec {
@@ -57,7 +57,7 @@ class MainPageComponent  : public Component {
   AudioDeviceManager deviceManager_;
 
   MainPage mainPage_;
-  AudioSetupPage audioSetupPage_;
+  gui::AudioSetupPage audioSetupPage_;
   persist::AudioDeviceSetupListener deviceListener_;
 
   DISALLOW_COPY_AND_ASSIGN(MainPageComponent);

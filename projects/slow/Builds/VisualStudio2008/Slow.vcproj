@@ -365,6 +365,7 @@
           </Filter>
         </Filter>
         <Filter Name="gui">
+          <File RelativePath="..\..\..\..\src\rec\gui\AudioSetupPage.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\AudioThumbnail.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\CachedThumbnail.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\CachedThumbnail.h"/>
@@ -430,7 +431,6 @@
         </Filter>
         <Filter Name="slow">
           <File RelativePath="..\..\..\..\src\rec\slow\Application.h"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\AudioSetupPage.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\AudioTransportSourcePlayer.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\AudioTransportSourcePlayer.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Broadcasters.h"/>

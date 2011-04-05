@@ -3,7 +3,6 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/slow/MainPageComponent.h"
-#include "rec/slow/AudioSetupPage.h"
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/Cuttable.h"
 
