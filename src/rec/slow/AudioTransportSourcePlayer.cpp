@@ -4,39 +4,47 @@
 namespace rec {
 namespace slow {
 
+static const double MINIMUM_BROADCAST_TIMECHANGE = 0.001;
+static const float SAMPLE_RATE = 44100.0f;
+
 AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
     : Thread("AudioTransportSourcePlayer"),
       deviceManager_(dm),
       lastTime_(-1.0),
       offset_(0.0) {
-  deviceManager_->addAudioCallback(&player_);
-  player_.setSource(this);
-  addChangeListener(this);  // Listen to ourselves!
+  deviceManager_->addAudioCallback(&audioSourcePlayer_);
+  audioSourcePlayer_.setSource(audioTransportSource());
+  audioTransportSource_.addChangeListener(this);
 }
 
 AudioTransportSourcePlayer::~AudioTransportSourcePlayer() {
   clear();
-  deviceManager_->removeAudioCallback(&player_);
-  player_.setSource(NULL);
+  deviceManager_->removeAudioCallback(&audioSourcePlayer_);
+  audioSourcePlayer_.setSource(NULL);
 }
 
 void AudioTransportSourcePlayer::clear() {
-  stop();
-  setSource(NULL);
+  audioTransportSource_.stop();
+  audioTransportSource_.setSource(NULL);
+
   signalThreadShouldExit();
 }
 
 void AudioTransportSourcePlayer::setPosition(double newPosition) {
-  if (isPlaying() && (newPosition < offset_ || newPosition >= offset_ + getLengthInSeconds()))
+  if (audioTransportSource_.isPlaying() &&
+      (newPosition < offset_ ||
+       newPosition >= offset_ + audioTransportSource_.getLengthInSeconds())) {
     newPosition = offset_;
-  AudioTransportSource::setPosition(newPosition - offset_);
-  update();
+  }
+
+  audioTransportSource_.setPosition(newPosition - offset_);
+  broadcastTimeIfChanged();
 }
 
-void AudioTransportSourcePlayer::update() {
+void AudioTransportSourcePlayer::broadcastTimeIfChanged() {
   ScopedLock l(lock_);
-  double time = getNextReadPosition() / 44100.0f;
-  if (!Math<double>::near(time, lastTime_, 0.1)) {
+  double time = audioTransportSource_.getNextReadPosition() / SAMPLE_RATE;
+  if (!Math<double>::near(time, lastTime_, MINIMUM_BROADCAST_TIMECHANGE)) {
     lastTime_ = time;
     doubleBroadcaster_.broadcast(time + offset_);
   }
@@ -49,20 +57,21 @@ void AudioTransportSourcePlayer::setOffset(double offset) {
 
 void AudioTransportSourcePlayer::setStart(bool isStart) {
   if (isStart) {
-    double pos = getCurrentPosition();
-    if (pos < offset_ || pos >= offset_ + getLengthInSeconds())
+    double pos = audioTransportSource_.getCurrentPosition();
+    if (pos <= offset_ || pos >= offset_ + audioTransportSource_.getLengthInSeconds())
       setPosition(offset_);
+
     startThread();
 
-    AudioTransportSource::start();
+    audioTransportSource_.start();
   } else {
-    AudioTransportSource::stop();
+    audioTransportSource_.stop();
   }
 }
 
 void AudioTransportSourcePlayer::run() {
   while (!threadShouldExit()) {
-    update();
+    broadcastTimeIfChanged();
     if (!threadShouldExit())
       wait(THREAD_WAIT);
   }

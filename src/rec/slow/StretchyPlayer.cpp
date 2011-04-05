@@ -21,7 +21,7 @@ StretchyPlayer::StretchyPlayer(AudioDeviceManager* deviceManager)
 
   fileLocker_->startThread();
   timeLocker_->startThread();
-  transportSource_->update();
+  transportSource_->broadcastTimeIfChanged();
 }
 
 StretchyPlayer::~StretchyPlayer() {
@@ -48,7 +48,7 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
     timeLocker_->initialize(0);
     transportSource_->clear();
     dr.swap(doubleRunny_);
-    transportSource_->setSource(doubleRunny_->doubleStretchy());
+    transportSource_->audioTransportSource()->setSource(doubleRunny_->doubleStretchy());
     stretchy_ = stretchy;
     if (stretchy_)
       stretchy_->requestUpdate();

@@ -21,7 +21,7 @@ Runny::~Runny() {}
 void Runny::setNextReadPosition(int64 newPos) {
   {
     ScopedLock l(lock_);
-    LOG(INFO) << "setNextReadPosition " << newPos;
+
     // Check if the new position is within the current readahead buffer.
     int available = filled_.availableFrom(newPos);
     filled_.reset(newPos);
@@ -63,13 +63,6 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
   filled_.consume(i.numSamples);
   position_ = mod(position_ + i.numSamples);
 }
-
-#if 0
-void Runny::fill() {
-  while (!(threadShouldExit() || isFull()))
-    fillOnce();
-}
-#endif
 
 void Runny::fillOnce() {
   if (threadShouldExit())
