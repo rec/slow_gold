@@ -11,8 +11,18 @@ namespace rec {
 namespace audio {
 namespace source {
 
+class WrappyThread : public Wrappy, public Thread {
+ public:
+  WrappyThread(PositionableAudioSource* source, const String& name)
+      : Wrappy(source), Thread(name) {
+  }
+
+ private:
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(WrappyThread);
+};
+
 // Runny is a thread-based pre-fetching PositionableAudioSource wrapper.
-class Runny : public Thread, public Wrappy {
+class Runny : public WrappyThread {
  public:
   Runny(PositionableAudioSource* source,
         const RunnyProto& d = RunnyProto::default_instance());

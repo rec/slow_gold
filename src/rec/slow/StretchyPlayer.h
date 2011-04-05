@@ -30,7 +30,10 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
   // Callback to set the new time.
   virtual void operator()(double time) { setTime(time); }
 
-  void setTime(double time) { timeLocker_->set(time); }
+  void setTime(double time) {
+    DLOG(INFO) << time;
+    timeLocker_->set(time);
+  }
 
   Listener<const VirtualFile&>* fileListener() { return &fileListener_; }
   AudioTransportSourcePlayer* getTransport() {

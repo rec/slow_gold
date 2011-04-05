@@ -197,48 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>E2222311134A90C300298AE3</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>AudioTransportSourcePlayer.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>E2222312134A90C300298AE3</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>AudioTransportSourcePlayer.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>E2222322134A93EF00298AE3</string>
-						<key>history</key>
-						<array>
-							<string>E2222309134A907D00298AE3</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {911, 1062}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>15 70 911 1103 0 0 1920 1178 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -270,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -358,8 +319,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -374,10 +333,6 @@
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
 										<string>DialComponent.cpp</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>E2222321134A93EF00298AE3</string>
 										<key>history</key>
 										<array>
 											<string>E2E28AE912E6457B004DE2DE</string>
@@ -440,14 +395,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1059, 710}}</string>
+								<string>{{0, 0}, {1059, 705}}</string>
 								<key>RubberWindowFrame</key>
 								<string>557 96 1358 969 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>710pt</string>
+							<string>705pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -460,14 +415,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 715}, {1059, 213}}</string>
+								<string>{{0, 710}, {1059, 218}}</string>
 								<key>RubberWindowFrame</key>
 								<string>557 96 1358 969 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>213pt</string>
+							<string>218pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -486,9 +441,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E222223C134A742C00298AE3</string>
+				<string>E222234B134A9BD300298AE3</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E222223D134A742C00298AE3</string>
+				<string>E222234C134A9BD300298AE3</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -626,15 +581,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E2222323134A93EF00298AE3</string>
-		<string>E2222247134A742C00298AE3</string>
-		<string>E2222248134A742C00298AE3</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>E22222F8134A8EB600298AE3</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
-		<string>E2222311134A90C300298AE3</string>
 		<string>E290FED3120A432900532309</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>557 96 1358 969 0 0 1920 1178 </string>
@@ -653,14 +602,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AudioTransportSourcePlayer.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -716,7 +663,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E290FED3120A432900532309</string>
-				<string>E222223E134A742C00298AE3</string>
+				<string>E222234D134A9BD300298AE3</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -729,7 +676,7 @@
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -838,13 +785,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>E222223F134A742C00298AE3</string>
+				<string>E222234E134A9BD300298AE3</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>E2222240134A742C00298AE3</string>
-				<string>E2222241134A742C00298AE3</string>
-				<string>E2222242134A742C00298AE3</string>
-				<string>E2222243134A742C00298AE3</string>
-				<string>E2222244134A742C00298AE3</string>
+				<string>E222234F134A9BD300298AE3</string>
+				<string>E2222350134A9BD300298AE3</string>
+				<string>E2222351134A9BD300298AE3</string>
+				<string>E2222352134A9BD300298AE3</string>
+				<string>E2222353134A9BD300298AE3</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

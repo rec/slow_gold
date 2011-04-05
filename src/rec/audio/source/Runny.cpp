@@ -8,11 +8,10 @@ namespace audio {
 namespace source {
 
 Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
-  : Thread("Runny"),
-    Wrappy(source),
-    buffer_(2, desc.buffer_size()),
-    filled_(desc.buffer_size()),
-    desc_(desc) {
+    : WrappyThread(source, "Runny"),
+      buffer_(2, desc.buffer_size()),
+      filled_(desc.buffer_size()),
+      desc_(desc) {
   setPriority(desc.thread().priority());
 }
 
