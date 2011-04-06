@@ -64,8 +64,8 @@ void Runny::fillOnce() {
   info.buffer = &buffer_;
   {
     ScopedLock l(lock_);
-    info.startSample = filled_.end();
-    info.numSamples = jmin(filled_.remainingBlock(), (int64)desc_.chunk_size());
+    int64 chunkSize = desc_.chunk_size();
+    block::fill(filled_.nextBlockToFill(chunkSize), &info);
   }
 
   if (!info.numSamples || threadShouldExit())

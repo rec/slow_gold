@@ -66,7 +66,8 @@ void Circular::consume(int64 amount) {
 
 Block Circular::nextBlockToFill(int64 maxBlockSize) const {
   int64 begin = end();
-  return Block(begin, std::min(bufferSize_, begin + maxBlockSize));
+  int64 size = std::min(maxBlockSize, bufferSize_ - filled_);
+  return Block(begin, std::min(bufferSize_, begin + size));
 }
 
 }  // namespace util
