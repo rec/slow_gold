@@ -14,8 +14,6 @@ class TestApplication : public GenericApplication {
   virtual ~TestApplication() {}
 
   virtual void initialise(const String& commandLine) {
-    GenericApplication::initialise(commandLine);
-
     const char* argv[] = {"test"};
     int argc = 1;
     testing::InitGoogleTest(&argc, (char**) argv);
