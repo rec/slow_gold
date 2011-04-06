@@ -20,17 +20,14 @@ struct Circular {
 
   int64 remainingBlock() const;
 
-  // How many samples are filled starting at begin?
-  int64 filledFrom(int64 begin) const;
-  int64 begin() const { return begin_; }
   void setBegin(int64 begin);
-
-  int64 end() const;
-
   int64 consume(int64 amount);
 
   int64 filled() const { return filled_; }
   int64 length() const { return bufferSize_; }
+
+  int64 begin() const { return begin_; }
+  int64 end() const;
 
  private:
   int64 filledPosition(int x) const;

@@ -52,17 +52,6 @@ int64 Circular::filledPosition(int x) const {
   return mod(begin_ + x, bufferSize_);
 }
 
-// How many samples are filled starting at begin?
-int64 Circular::filledFrom(int64 begin) const {
-  if (filled_ == bufferSize_)
-    return filled_;
-
-  if (begin <  begin_)
-    begin += bufferSize_;
-
-  return begin_ + filled_ - begin;
-}
-
 int64 Circular::consume(int64 amount) {
   begin_ = filledPosition(amount);
   if (amount > filled_) {
