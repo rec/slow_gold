@@ -14,23 +14,22 @@ Circular::Circular(int64 begin, int64 bufferSize) {
 
 void Circular::reset(int64 begin, int64 bufferSize) {
   begin_ = begin;
-  filled_ = 0;
+  available_ = 0;
   if (bufferSize >= 0)
     bufferSize_ = bufferSize;
 }
 
-bool Circular::fill(int64 delta) {
-  delta = std::min(delta, bufferSize_ - filled_);
-  filled_ += delta;
-  return filled_ < bufferSize_;
+void Circular::fill(int64 delta) {
+  delta = std::min(delta, bufferSize_ - available_);
+  available_ += delta;
 }
 
 int64 Circular::remainingBlock() const {
-  return bufferSize_ - std::max(filled_, end());
+  return bufferSize_ - std::max(available_, end());
 }
 
 int64 Circular::end() const {
-  return filledPosition(filled_);
+  return filledPosition(available_);
 }
 
 int64 Circular::filledPosition(int x) const {
@@ -39,18 +38,23 @@ int64 Circular::filledPosition(int x) const {
 
 // How many samples are available starting at begin?
 int64 Circular::availableFrom(int64 begin) const {
-  if (filled_ == bufferSize_)
-    return filled_;
+  if (available_ == bufferSize_)
+    return available_;
 
   if (begin <  begin_)
     begin += bufferSize_;
 
-  return begin_ + filled_ - begin;
+  return begin_ + available_ - begin;
 }
 
 int64 Circular::consume(int64 amount) {
   begin_ = filledPosition(amount);
-  filled_ = mod(filled_ - amount, bufferSize_);
+  if (amount > available_) {
+    LOG(ERROR) << "Tried to consume more than was available: "
+               << amount << ", " << available_;
+    amount = available_;
+  }
+  available_ -= amount;
   return amount;
 }
 

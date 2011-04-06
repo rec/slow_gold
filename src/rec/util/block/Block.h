@@ -45,6 +45,11 @@ inline BlockSet slice(const Block& b, int length) {
   return s;
 }
 
+inline void fill(const Block& block, AudioSourceChannelInfo* info) {
+  info->startSample = block.first;
+  info->numSamples = getSize(block);
+}
+
 }  // namespace block
 }  // namespace util
 }  // namespace rec
