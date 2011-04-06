@@ -26,7 +26,7 @@ bool Circular::fill(int64 delta) {
 }
 
 int64 Circular::remainingBlock() const {
-  return std::min(bufferSize_ - filled_, bufferSize_ - end());
+  return bufferSize_ - std::max(filled_, end());
 }
 
 int64 Circular::end() const {
