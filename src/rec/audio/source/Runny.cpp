@@ -20,17 +20,10 @@ Runny::~Runny() {}
 void Runny::setNextReadPosition(int64 newPos) {
   {
     ScopedLock l(lock_);
-
-    // Check if the new position is within the current readahead buffer.
-    int available = filled_.availableFrom(newPos);
-    filled_.reset(newPos);
-    if (available >= 0)
-      filled_.fill(available);
+    filled_.setBegin(newPos);
   }
-  if (true || position_ != newPos) {
-    Wrappy::setNextReadPosition(newPos);
-    notify();
-  }
+  Wrappy::setNextReadPosition(newPos);
+  notify();
 }
 
 void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {

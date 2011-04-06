@@ -16,25 +16,27 @@ struct Circular {
   void reset(int64 begin = 0, int64 length = -1);
 
   void fill(int64 delta);
-  bool isFull() const { return available_ == bufferSize_; }
+  bool isFull() const { return filled_ == bufferSize_; }
 
   int64 remainingBlock() const;
 
-  // How many samples are available starting at begin?
-  int64 availableFrom(int64 begin) const;
-  int begin() const { return begin_; }
+  // How many samples are filled starting at begin?
+  int64 filledFrom(int64 begin) const;
+  int64 begin() const { return begin_; }
+  void setBegin(int64 begin);
+
   int64 end() const;
 
   int64 consume(int64 amount);
 
-  int64 filled() const { return available_; }
+  int64 filled() const { return filled_; }
   int64 length() const { return bufferSize_; }
 
  private:
   int64 filledPosition(int x) const;
 
   int64 begin_;
-  int64 available_;  // Of this region within the buffer.
+  int64 filled_;  // Of this region within the buffer.
   int64 bufferSize_;
 };
 

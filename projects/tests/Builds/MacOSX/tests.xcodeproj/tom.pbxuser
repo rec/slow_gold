@@ -380,6 +380,10 @@
 			E212A33D12BAE9A800C1BEC3 = E212A33D12BAE9A800C1BEC3 /* PBXTextBookmark */;
 			E2222452134BED2C00298AE3 /* PBXBookmark */ = E2222452134BED2C00298AE3 /* PBXBookmark */;
 			E2222453134BED2C00298AE3 /* PBXTextBookmark */ = E2222453134BED2C00298AE3 /* PBXTextBookmark */;
+			E22224AC134BF80A00298AE3 /* PBXTextBookmark */ = E22224AC134BF80A00298AE3 /* PBXTextBookmark */;
+			E22224AD134BF80A00298AE3 /* PBXTextBookmark */ = E22224AD134BF80A00298AE3 /* PBXTextBookmark */;
+			E22224AE134BF80A00298AE3 /* XCBuildMessageTextBookmark */ = E22224AE134BF80A00298AE3 /* XCBuildMessageTextBookmark */;
+			E22224AF134BF80A00298AE3 /* PBXTextBookmark */ = E22224AF134BF80A00298AE3 /* PBXTextBookmark */;
 			E2226E0A1211B6380005044C = E2226E0A1211B6380005044C /* PBXTextBookmark */;
 			E229C67A120E1EA200E9EFC0 = E229C67A120E1EA200E9EFC0 /* PBXTextBookmark */;
 			E22EC51312A4B7AF00501884 = E22EC51312A4B7AF00501884 /* PBXTextBookmark */;
@@ -991,6 +995,45 @@
 		rType = 0;
 		vrLen = 708;
 		vrLoc = 0;
+	};
+	E22224AC134BF80A00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D038FC21D2B53D8B805B0280 /* Stereo.h */;
+		name = "Stereo.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 708;
+		vrLoc = 0;
+	};
+	E22224AD134BF80A00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1EE0ED50D5C879C12F9BEE78 /* GenericApplication.cpp */;
+		name = "GenericApplication.cpp: 26";
+		rLen = 0;
+		rLoc = 626;
+		rType = 0;
+		vrLen = 1012;
+		vrLoc = 0;
+	};
+	E22224AE134BF80A00298AE3 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'struct rec::util::Circular' has no member named 'remaining'";
+		fRef = 2187E86C895D175A456E11A7 /* Circular_test.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 21;
+		rType = 1;
+	};
+	E22224AF134BF80A00298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2187E86C895D175A456E11A7 /* Circular_test.cpp */;
+		name = "Circular_test.cpp: 22";
+		rLen = 0;
+		rLoc = 312;
+		rType = 0;
+		vrLen = 966;
+		vrLoc = 131;
 	};
 	E2226E0A1211B6380005044C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1707,9 +1750,9 @@
 	};
 	F1EF73603E9DF1EC2AEDBA5C /* Runny.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1313}}";
-			sepNavSelRange = "{672, 0}";
-			sepNavVisRange = "{0, 1844}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1365}}";
+			sepNavSelRange = "{928, 0}";
+			sepNavVisRange = "{134, 1872}";
 			sepNavWindowFrame = "{{15, 33}, {730, 1140}}";
 		};
 	};
