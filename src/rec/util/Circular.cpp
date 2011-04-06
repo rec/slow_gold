@@ -4,6 +4,8 @@
 namespace rec {
 namespace util {
 
+using block::Block;
+
 Circular::Circular(int64 bufferSize) {
   reset(0, bufferSize);
 }
@@ -52,7 +54,7 @@ int64 Circular::filledPosition(int x) const {
   return mod(begin_ + x, bufferSize_);
 }
 
-int64 Circular::consume(int64 amount) {
+void Circular::consume(int64 amount) {
   begin_ = filledPosition(amount);
   if (amount > filled_) {
     LOG(ERROR) << "Tried to consume more than was filled: "
@@ -60,7 +62,11 @@ int64 Circular::consume(int64 amount) {
     amount = filled_;
   }
   filled_ -= amount;
-  return amount;
+}
+
+Block Circular::nextBlockToFill(int64 maxBlockSize) const {
+  int64 begin = end();
+  return Block(begin, std::min(bufferSize_, begin + maxBlockSize));
 }
 
 }  // namespace util

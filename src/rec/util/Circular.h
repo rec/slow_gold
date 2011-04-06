@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_CIRCULAR__
 #define __REC_UTIL_CIRCULAR__
 
-#include "rec/base/base.h"
+#include "rec/util/block/Block.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -16,12 +16,15 @@ struct Circular {
   void reset(int64 begin = 0, int64 length = -1);
 
   void fill(int64 delta);
+  void consume(int64 amount);
+
   bool isFull() const { return filled_ == bufferSize_; }
 
   int64 remainingBlock() const;
 
+  block::Block nextBlockToFill(int64 maxBlockSize) const;
+
   void setBegin(int64 begin);
-  int64 consume(int64 amount);
 
   int64 filled() const { return filled_; }
   int64 length() const { return bufferSize_; }
