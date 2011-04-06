@@ -20,17 +20,13 @@ void Circular::reset(int64 begin, int64 bufferSize) {
 }
 
 bool Circular::fill(int64 delta) {
-  delta = std::min(delta, remaining());
+  delta = std::min(delta, bufferSize_ - filled_);
   filled_ += delta;
   return filled_ < bufferSize_;
 }
 
-int64 Circular::remaining() const {
-  return bufferSize_ - filled_;
-}
-
 int64 Circular::remainingBlock() const {
-  return std::min(remaining(), bufferSize_ - end());
+  return std::min(bufferSize_ - filled_, bufferSize_ - end());
 }
 
 int64 Circular::end() const {

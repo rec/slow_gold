@@ -25,7 +25,7 @@ class Runny : public ThreadedSource {
 
   virtual void run();
 
-  bool isFull() const { return !filled_.remaining(); }
+  bool isFull() const { return filled_.isFull(); }
 
   util::Circular getFilled() const { return filled_; }
 

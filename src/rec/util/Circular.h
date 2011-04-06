@@ -16,7 +16,9 @@ struct Circular {
   void reset(int64 begin = 0, int64 length = -1);
   bool fill(int64 delta);
 
-  int64 remaining() const;
+  bool isFull() const { return filled_ == bufferSize_; }
+
+  // int64 remaining() const;
   int64 remainingBlock() const;
 
   // How many samples are available starting at begin?
@@ -28,9 +30,6 @@ struct Circular {
 
   int64 filled() const { return filled_; }
   int64 length() const { return bufferSize_; }
-
-  // Return an index restricted to the circular buffer..
-  int64 restrict(int64 x) const { return mod(x, bufferSize_); }
 
  private:
   int64 filledPosition(int x) const;
