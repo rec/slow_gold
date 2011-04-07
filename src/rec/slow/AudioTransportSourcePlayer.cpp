@@ -30,7 +30,7 @@ void AudioTransportSourcePlayer::broadcastTimeIfChanged() {
   double time = audioTransportSource_.getNextReadPosition() / SAMPLE_RATE;
   if (!Math<double>::near(time, lastTime_, MINIMUM_BROADCAST_TIMECHANGE)) {
     lastTime_ = time;
-    doubleBroadcaster_.broadcast(time + offset_);
+    timeBroadcaster_.broadcast(time + offset_);
   }
 }
 

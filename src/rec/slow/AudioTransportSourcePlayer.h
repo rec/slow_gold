@@ -30,7 +30,8 @@ class AudioTransportSourcePlayer : public Thread,
     return audioTransportSource()->getCurrentPosition() + offset_;
   }
 
-  Broadcaster<double>* doubleBroadcaster() { return &doubleBroadcaster_; }
+  Broadcaster<double>* timeBroadcaster() { return &timeBroadcaster_; }
+
   Broadcaster<const AudioTransportSourcePlayer&>* changeBroadcaster() {
     return &changeBroadcaster_;
   }
@@ -49,7 +50,7 @@ class AudioTransportSourcePlayer : public Thread,
   AudioSourcePlayer audioSourcePlayer_;
   AudioDeviceManager* deviceManager_;
   Broadcaster<const AudioTransportSourcePlayer&> changeBroadcaster_;
-  Broadcaster<double> doubleBroadcaster_;
+  Broadcaster<double> timeBroadcaster_;
 
   double lastTime_;
   double offset_;
