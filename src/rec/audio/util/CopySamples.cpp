@@ -56,11 +56,13 @@ int copyCircularSamples(const AudioSampleBuffer& source,
   int length = source.getNumSamples();
   int nextFree = sourceStart % length;
 
+#if 0
   DLOG(INFO) << "copy " << info.numSamples
              << " from: " << &source <<  ":" << source.getNumSamples()
              << ", " << sourceStart
              << " to: " << info.buffer << ":" << info.buffer->getNumSamples()
              << ", " << info.startSample;
+#endif
   while (copied < dest.numSamples) {
     info.numSamples = std::min(length - nextFree, dest.numSamples - copied);
     copySamples(source, nextFree, info);

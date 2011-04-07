@@ -43,11 +43,11 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
 }
 
 DoubleRunnyBuffer::~DoubleRunnyBuffer() {
-  stretchy_.shutdown();
+  switching_.shutdown();
 }
 
 bool DoubleRunnyBuffer::waitUntilFilled(uint32 readahead) {
-  int64 p = stretchy_.getNextReadPosition();
+  int64 p = switching_.getNextReadPosition();
   return buffer_->waitUntilFilled(Block(p, p + readahead));
 }
 
@@ -75,12 +75,14 @@ void DoubleRunnyBuffer::operator()(const StretchLoop& loop) {
 
   {
     ScopedLock l(lock_);
+#if 0
     if (loop == stretchLoop_) {
       DLOG(INFO) << "Duplicate StretchLoop seen";
       return;
     }
-
     DLOG(INFO) << "New loop " << loop.DebugString();
+#endif
+
     stretchLoop_ = loop;
   }
   startThread();
@@ -88,8 +90,8 @@ void DoubleRunnyBuffer::operator()(const StretchLoop& loop) {
 
   if (!threadShouldExit()) {
     ptr<BufferSource> s(new BufferSource(*buffer_->buffer()));
-    int64 p = stretchy_.getNextReadPosition();
-    stretchy_.setNextRunny(stretchyRunny(runnyDesc_, loop, p, s.xfer()));
+    int64 p = switching_.getNextReadPosition();
+    switching_.setNextRunny(stretchyRunny(runnyDesc_, loop, p, s.xfer()));
   }
 }
 

@@ -12,6 +12,7 @@ const char COMPANY_NAME[] = "World Wide Woodshed";
 
 void setApplicationName(const String& name) {
   CHECK(!applicationName.length());
+  LOG(INFO) << "Application name: " << name;
   applicationName = name;
 }
 

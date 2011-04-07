@@ -25,7 +25,6 @@ void Switching::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
   if (nextRunny_) {
     DLOG(INFO) << "Switching!";
-    nextRunny_->setNextReadPosition(getNextReadPosition());
     nextRunny_.swap(runny_);
     deleter.swap(nextRunny_);
   }

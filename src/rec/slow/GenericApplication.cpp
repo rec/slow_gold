@@ -12,6 +12,7 @@ GenericApplication::GenericApplication(const String& name, const String& v)
 }
 
 void GenericApplication::initialise(const String&) {
+  setApplicationName(name_);
   LOG(INFO) << "Initializing " << getApplicationName();
   if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();

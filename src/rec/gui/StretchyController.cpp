@@ -64,7 +64,10 @@ void StretchyController::setData(UntypedData* data) {
   bool enable = !proto.stretch().disabled();
   thread::callAsync(this, &StretchyController::enableSliders, enable);
 
-  Sides sides = static_cast<Sides>(2 + proto.stretch().stereo().side());
+  Sides sides = STEREO;
+  if (proto.stretch().stereo().type())
+    sides = static_cast<Sides>(2 + proto.stretch().stereo().side());
+
   thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
                     static_cast<int>(sides), true);
 }
