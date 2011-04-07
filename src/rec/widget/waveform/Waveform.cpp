@@ -78,7 +78,7 @@ void Waveform::paint(Graphics& g) {
 
       } else {
         for (int i = 0; i < channels; ++i) {
-          p.setColor(selected ? channels - i : i + 1);
+          p.setColor(selected ? i + 1 : i + 1 + channels);
           thumbnail_->drawChannel(g, b, draw.begin_, draw.end_, i, 1.0f);
         }
       }
@@ -133,7 +133,6 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
 }
 
 void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
-  // Now set the selection range!
   selection_.clear();
   for (int i = 0, size = loopPoints.selected_size(); i < size; ) {
     for (; i < size && !loopPoints.selected(i); ++i);

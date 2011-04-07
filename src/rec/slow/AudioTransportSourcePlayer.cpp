@@ -17,6 +17,23 @@ AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
   audioTransportSource_.addChangeListener(this);
 }
 
+void AudioTransportSourcePlayer::run() {
+  while (!threadShouldExit()) {
+    broadcastTimeIfChanged();
+    if (!threadShouldExit())
+      wait(THREAD_WAIT);
+  }
+}
+
+void AudioTransportSourcePlayer::broadcastTimeIfChanged() {
+  ScopedLock l(lock_);
+  double time = audioTransportSource_.getNextReadPosition() / SAMPLE_RATE;
+  if (!Math<double>::near(time, lastTime_, MINIMUM_BROADCAST_TIMECHANGE)) {
+    lastTime_ = time;
+    doubleBroadcaster_.broadcast(time + offset_);
+  }
+}
+
 AudioTransportSourcePlayer::~AudioTransportSourcePlayer() {
   clear();
   deviceManager_->removeAudioCallback(&audioSourcePlayer_);
@@ -41,15 +58,6 @@ void AudioTransportSourcePlayer::setPosition(double newPosition) {
   broadcastTimeIfChanged();
 }
 
-void AudioTransportSourcePlayer::broadcastTimeIfChanged() {
-  ScopedLock l(lock_);
-  double time = audioTransportSource_.getNextReadPosition() / SAMPLE_RATE;
-  if (!Math<double>::near(time, lastTime_, MINIMUM_BROADCAST_TIMECHANGE)) {
-    lastTime_ = time;
-    doubleBroadcaster_.broadcast(time + offset_);
-  }
-}
-
 void AudioTransportSourcePlayer::setOffset(double offset) {
   ScopedLock l(lock_);
   offset_ = offset;
@@ -66,14 +74,6 @@ void AudioTransportSourcePlayer::setStart(bool isStart) {
     audioTransportSource_.start();
   } else {
     audioTransportSource_.stop();
-  }
-}
-
-void AudioTransportSourcePlayer::run() {
-  while (!threadShouldExit()) {
-    broadcastTimeIfChanged();
-    if (!threadShouldExit())
-      wait(THREAD_WAIT);
   }
 }
 

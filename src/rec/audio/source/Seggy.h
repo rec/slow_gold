@@ -14,20 +14,20 @@ class Seggy : public Wrappy {
   Seggy(const SampleRange& r, PositionableAudioSource* s)
       : Wrappy(s), range_(r) {
     DCHECK(range_.size());
+    position_ = -1;
+    setNextReadPosition(0);
   }
 
   virtual int64 getTotalLength() const { return range_.size(); }
 
-  void setNextReadPosition(int64 p) {
+  virtual void setNextReadPosition(int64 p) {
     ScopedLock l(lock_);
-    position_ = mod(juce::jmax(p, 0LL));
-    source()->setNextReadPosition(position_ + range_.begin_);
+    int64 newPosition = mod(juce::jmax(p, 0LL));
+    if (newPosition != position_) {
+      position_ = newPosition;
+      source()->setNextReadPosition(position_ + range_.begin_);
+    }
   }
-
-virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {
-  setNextReadPosition(position_);
-  Wrappy::getNextAudioBlock(info);
-}
 
  private:
   SampleRange range_;

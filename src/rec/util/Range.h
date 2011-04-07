@@ -41,8 +41,10 @@ struct Range {
   Type end_;
 };
 
+typedef int64 SampleTime;
+
 typedef Range<double> TimeRange;
-typedef Range<int64> SampleRange;
+typedef Range<SampleTime> SampleRange;
 typedef TimeRange::Set SelectionRange;
 
 }  // namespace util

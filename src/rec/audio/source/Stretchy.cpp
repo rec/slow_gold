@@ -13,22 +13,23 @@ Stretchy::Stretchy(PositionableAudioSource* s, const Stretch& desc)
     : Wrappy(s),
       description_(desc),
       buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),
-      outOffset_(desc.channels()) {
+      outOffset_(desc.channels()),
+      timeScale_(timeScale(description_)) {
   audio::stretch::Init(description_, &scaler_);
 }
 
 Stretchy::~Stretchy() {}
 
 int64 Stretchy::getTotalLength() const {
-  return source()->getTotalLength() * timeScale(description_);
+  return source()->getTotalLength() * timeScale_;
 }
 
 int64 Stretchy::getNextReadPosition() const {
-  return source()->getNextReadPosition() * timeScale(description_);
+  return source()->getNextReadPosition() * timeScale_;
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
-  source()->setNextReadPosition(position / timeScale(description_));
+  source()->setNextReadPosition(position / timeScale_);
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
@@ -36,9 +37,10 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = processOneChunk(i)) {
-      if (false && zeroCount) {
+      if (zeroCount) {
         LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
       }
+
       i.numSamples -= processed;
       i.startSample += processed;
       zeroCount = 0;

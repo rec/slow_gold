@@ -37,7 +37,9 @@ Colour get(unsigned int i) {
     Colours::white,
     Colours::lightblue,
     Colours::seagreen,
-    Colours::black
+    Colours::lightgrey,
+    Colours::darkgrey,
+    Colours::grey
   };
 
   static int SIZE = arraysize(DEFAULT_COLORS);
@@ -54,7 +56,10 @@ static Colors getDefaultInternal() {
     Colours::white,
     Colours::lightblue,
     Colours::seagreen,
-    Colours::black
+    Colours::seagreen,
+    Colours::lightgrey,
+    Colours::darkgrey,
+    Colours::grey
   };
 
   Colors colors;

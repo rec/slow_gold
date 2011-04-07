@@ -37,6 +37,7 @@ class Stretchy : public Wrappy {
   AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;
   CriticalSection lock_;
+  double timeScale_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };
