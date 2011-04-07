@@ -19,7 +19,7 @@ message Stretch {
 
   optional uint32 bands = 7             [default = 2048];
   optional uint32 filter_overlap = 8    [default = 1];
-  optional uint32 chunk_size = 9        [default = 512];
+  optional uint32 chunk_size = 9        [default = 1024];
 
   // How many samples must we prefill before we consider a buffer ready to go?
   optional uint32 prefill_size = 10     [default = 15000];

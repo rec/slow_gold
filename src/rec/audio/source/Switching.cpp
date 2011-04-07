@@ -19,13 +19,15 @@ void Switching::setNextRunny(ThreadedSource* next) {
 
 void Switching::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   thread_ptr<ThreadedSource> deleter;
-  {
-    ScopedLock l(lock_);
-    if (nextRunny_) {
-      nextRunny_->setNextReadPosition(getNextReadPosition());
-      nextRunny_.swap(runny_);
-      deleter.swap(nextRunny_);
-    }
+  ThreadedSource* runny;
+
+  ScopedLock l(lock_);
+
+  if (nextRunny_) {
+    DLOG(INFO) << "Switching!";
+    nextRunny_->setNextReadPosition(getNextReadPosition());
+    nextRunny_.swap(runny_);
+    deleter.swap(nextRunny_);
   }
 
   if (runny_) {
@@ -39,6 +41,8 @@ void Switching::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 }
 
 void Switching::shutdown() {
+  ScopedLock l(lock_);
+
   runny_.reset();
   nextRunny_.reset();
 }

@@ -179,7 +179,7 @@ class Stretch : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 filter_overlap() const;
   inline void set_filter_overlap(::google::protobuf::uint32 value);
   
-  // optional uint32 chunk_size = 9 [default = 512];
+  // optional uint32 chunk_size = 9 [default = 1024];
   inline bool has_chunk_size() const;
   inline void clear_chunk_size();
   static const int kChunkSizeFieldNumber = 9;
@@ -650,12 +650,12 @@ inline void Stretch::set_filter_overlap(::google::protobuf::uint32 value) {
   filter_overlap_ = value;
 }
 
-// optional uint32 chunk_size = 9 [default = 512];
+// optional uint32 chunk_size = 9 [default = 1024];
 inline bool Stretch::has_chunk_size() const {
   return _has_bit(12);
 }
 inline void Stretch::clear_chunk_size() {
-  chunk_size_ = 512u;
+  chunk_size_ = 1024u;
   _clear_bit(12);
 }
 inline ::google::protobuf::uint32 Stretch::chunk_size() const {

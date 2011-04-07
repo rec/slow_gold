@@ -20,10 +20,8 @@ class Seggy : public Wrappy {
 
   void setNextReadPosition(int64 p) {
     ScopedLock l(lock_);
-    p = juce::jmax(p, 0LL);
-    p = juce::jmin(p + range_.begin_, range_.end_) - range_.begin_;
-    position_ = p;
-    source()->setNextReadPosition(p + range_.begin_);
+    position_ = mod(juce::jmax(p, 0LL));
+    source()->setNextReadPosition(position_ + range_.begin_);
   }
 
 virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) {

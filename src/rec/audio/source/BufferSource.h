@@ -12,17 +12,20 @@ class BufferSource : public PositionableAudioSource {
  public:
   explicit BufferSource(const AudioSampleBuffer& buffer)
       : buffer_(buffer), position_(0), looping_(true) {
+    DLOG(INFO) << "BufferSource: " << &buffer_;
   }
 
   virtual void getNextAudioBlock (const AudioSourceChannelInfo& i) {
-    copyCircularSamples(buffer_, position_, i);
-    setNextReadPosition(mod(position_ + i.numSamples, getTotalLength()));
+    int p = copyCircularSamples(buffer_, position_, i);
+    int q = mod(position_ + i.numSamples, getTotalLength());
+    CHECK_EQ(p, q);
+    setNextReadPosition(q);
   }
 
   virtual void setNextReadPosition(int64 p) {
     position_ = p;
   }
-  
+
   virtual int64 getNextReadPosition() const { return position_; };
   virtual int64 getTotalLength() const { return buffer_.getNumSamples();  }
   virtual bool isLooping() const { return looping_; }

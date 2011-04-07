@@ -15,6 +15,7 @@ namespace source {
 ThreadedSource* stretchyRunny(const RunnyProto& desc,
                               const StretchLoop& loop,
                               int pos, PositionableAudioSource* s) {
+  // CHECK_GT(loop.loop().end(), 0.001);
   ptr<PositionableAudioSource> source(s);
 
   const Stretch& stretch = loop.stretch();

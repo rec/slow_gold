@@ -139,7 +139,7 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\361\003\n\007Stretch\022\027\n\010disabled\030\017 \001(\010:\005false"
+    "oto\"\362\003\n\007Stretch\022\027\n\010disabled\030\017 \001(\010:\005false"
     "\022\'\n\031passthrough_when_disabled\030\020 \001(\010:\004tru"
     "e\022-\n\006stereo\030\021 \001(\0132\035.rec.audio.source.Ste"
     "reoProto\022\025\n\ntime_scale\030\001 \001(\001:\0011\022\031\n\014time_"
@@ -147,14 +147,14 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     "\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_sca"
     "le\030\004 \001(\001:\0011\022\031\n\016semitone_shift\030\005 \001(\001:\0010\022\027"
     "\n\014detune_cents\030\006 \001(\001:\0010\022\023\n\005bands\030\007 \001(\r:\004"
-    "2048\022\031\n\016filter_overlap\030\010 \001(\r:\0011\022\027\n\nchunk"
-    "_size\030\t \001(\r:\003512\022\033\n\014prefill_size\030\n \001(\r:\005"
-    "15000\022$\n\025next_buffer_fill_size\030\013 \001(\r:\00515"
-    "000\022\036\n\022inactive_wait_time\030\014 \001(\005:\002-1\022\032\n\017t"
-    "hread_priority\030\r \001(\r:\0014\"\"\n\004Loop\022\r\n\005begin"
-    "\030\001 \001(\001\022\013\n\003end\030\002 \001(\001\"a\n\013StretchLoop\022+\n\007st"
-    "retch\030\001 \001(\0132\032.rec.audio.stretch.Stretch\022"
-    "%\n\004loop\030\002 \001(\0132\027.rec.audio.stretch.Loop", 718);
+    "2048\022\031\n\016filter_overlap\030\010 \001(\r:\0011\022\030\n\nchunk"
+    "_size\030\t \001(\r:\0041024\022\033\n\014prefill_size\030\n \001(\r:"
+    "\00515000\022$\n\025next_buffer_fill_size\030\013 \001(\r:\0051"
+    "5000\022\036\n\022inactive_wait_time\030\014 \001(\005:\002-1\022\032\n\017"
+    "thread_priority\030\r \001(\r:\0014\"\"\n\004Loop\022\r\n\005begi"
+    "n\030\001 \001(\001\022\013\n\003end\030\002 \001(\001\"a\n\013StretchLoop\022+\n\007s"
+    "tretch\030\001 \001(\0132\032.rec.audio.stretch.Stretch"
+    "\022%\n\004loop\030\002 \001(\0132\027.rec.audio.stretch.Loop", 719);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -225,7 +225,7 @@ void Stretch::SharedCtor() {
   detune_cents_ = 0;
   bands_ = 2048u;
   filter_overlap_ = 1u;
-  chunk_size_ = 512u;
+  chunk_size_ = 1024u;
   prefill_size_ = 15000u;
   next_buffer_fill_size_ = 15000u;
   inactive_wait_time_ = -1;
@@ -281,7 +281,7 @@ void Stretch::Clear() {
     detune_cents_ = 0;
     bands_ = 2048u;
     filter_overlap_ = 1u;
-    chunk_size_ = 512u;
+    chunk_size_ = 1024u;
     prefill_size_ = 15000u;
     next_buffer_fill_size_ = 15000u;
     inactive_wait_time_ = -1;
@@ -426,7 +426,7 @@ bool Stretch::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 chunk_size = 9 [default = 512];
+      // optional uint32 chunk_size = 9 [default = 1024];
       case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -626,7 +626,7 @@ void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->filter_overlap(), output);
   }
   
-  // optional uint32 chunk_size = 9 [default = 512];
+  // optional uint32 chunk_size = 9 [default = 1024];
   if (_has_bit(12)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->chunk_size(), output);
   }
@@ -720,7 +720,7 @@ void Stretch::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->filter_overlap(), target);
   }
   
-  // optional uint32 chunk_size = 9 [default = 512];
+  // optional uint32 chunk_size = 9 [default = 1024];
   if (_has_bit(12)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->chunk_size(), target);
   }
@@ -848,7 +848,7 @@ int Stretch::ByteSize() const {
           this->filter_overlap());
     }
     
-    // optional uint32 chunk_size = 9 [default = 512];
+    // optional uint32 chunk_size = 9 [default = 1024];
     if (has_chunk_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

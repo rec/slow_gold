@@ -93,14 +93,14 @@ class RunnyProto : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional uint32 buffer_size = 1 [default = 256000];
+  // optional uint32 buffer_size = 1 [default = 262144];
   inline bool has_buffer_size() const;
   inline void clear_buffer_size();
   static const int kBufferSizeFieldNumber = 1;
   inline ::google::protobuf::uint32 buffer_size() const;
   inline void set_buffer_size(::google::protobuf::uint32 value);
   
-  // optional uint32 chunk_size = 2 [default = 1024];
+  // optional uint32 chunk_size = 2 [default = 16384];
   inline bool has_chunk_size() const;
   inline void clear_chunk_size();
   static const int kChunkSizeFieldNumber = 2;
@@ -114,6 +114,34 @@ class RunnyProto : public ::google::protobuf::Message {
   inline const ::rec::util::thread::ThreadDescription& thread() const;
   inline ::rec::util::thread::ThreadDescription* mutable_thread();
   
+  // optional uint32 compression = 4 [default = 512];
+  inline bool has_compression() const;
+  inline void clear_compression();
+  static const int kCompressionFieldNumber = 4;
+  inline ::google::protobuf::uint32 compression() const;
+  inline void set_compression(::google::protobuf::uint32 value);
+  
+  // optional uint32 spin_wait = 6 [default = 40];
+  inline bool has_spin_wait() const;
+  inline void clear_spin_wait();
+  static const int kSpinWaitFieldNumber = 6;
+  inline ::google::protobuf::uint32 spin_wait() const;
+  inline void set_spin_wait(::google::protobuf::uint32 value);
+  
+  // optional uint32 readahead = 7 [default = 20000];
+  inline bool has_readahead() const;
+  inline void clear_readahead();
+  static const int kReadaheadFieldNumber = 7;
+  inline ::google::protobuf::uint32 readahead() const;
+  inline void set_readahead(::google::protobuf::uint32 value);
+  
+  // optional uint32 buffer_readahead = 8 [default = 10000];
+  inline bool has_buffer_readahead() const;
+  inline void clear_buffer_readahead();
+  static const int kBufferReadaheadFieldNumber = 8;
+  inline ::google::protobuf::uint32 buffer_readahead() const;
+  inline void set_buffer_readahead(::google::protobuf::uint32 value);
+  
   // @@protoc_insertion_point(class_scope:rec.audio.source.RunnyProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -122,11 +150,15 @@ class RunnyProto : public ::google::protobuf::Message {
   ::google::protobuf::uint32 buffer_size_;
   ::google::protobuf::uint32 chunk_size_;
   ::rec::util::thread::ThreadDescription* thread_;
+  ::google::protobuf::uint32 compression_;
+  ::google::protobuf::uint32 spin_wait_;
+  ::google::protobuf::uint32 readahead_;
+  ::google::protobuf::uint32 buffer_readahead_;
   friend void  protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2fsource_2fRunny_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2fsource_2fRunny_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -149,12 +181,12 @@ class RunnyProto : public ::google::protobuf::Message {
 
 // RunnyProto
 
-// optional uint32 buffer_size = 1 [default = 256000];
+// optional uint32 buffer_size = 1 [default = 262144];
 inline bool RunnyProto::has_buffer_size() const {
   return _has_bit(0);
 }
 inline void RunnyProto::clear_buffer_size() {
-  buffer_size_ = 256000u;
+  buffer_size_ = 262144u;
   _clear_bit(0);
 }
 inline ::google::protobuf::uint32 RunnyProto::buffer_size() const {
@@ -165,12 +197,12 @@ inline void RunnyProto::set_buffer_size(::google::protobuf::uint32 value) {
   buffer_size_ = value;
 }
 
-// optional uint32 chunk_size = 2 [default = 1024];
+// optional uint32 chunk_size = 2 [default = 16384];
 inline bool RunnyProto::has_chunk_size() const {
   return _has_bit(1);
 }
 inline void RunnyProto::clear_chunk_size() {
-  chunk_size_ = 1024u;
+  chunk_size_ = 16384u;
   _clear_bit(1);
 }
 inline ::google::protobuf::uint32 RunnyProto::chunk_size() const {
@@ -196,6 +228,70 @@ inline ::rec::util::thread::ThreadDescription* RunnyProto::mutable_thread() {
   _set_bit(2);
   if (thread_ == NULL) thread_ = new ::rec::util::thread::ThreadDescription;
   return thread_;
+}
+
+// optional uint32 compression = 4 [default = 512];
+inline bool RunnyProto::has_compression() const {
+  return _has_bit(3);
+}
+inline void RunnyProto::clear_compression() {
+  compression_ = 512u;
+  _clear_bit(3);
+}
+inline ::google::protobuf::uint32 RunnyProto::compression() const {
+  return compression_;
+}
+inline void RunnyProto::set_compression(::google::protobuf::uint32 value) {
+  _set_bit(3);
+  compression_ = value;
+}
+
+// optional uint32 spin_wait = 6 [default = 40];
+inline bool RunnyProto::has_spin_wait() const {
+  return _has_bit(4);
+}
+inline void RunnyProto::clear_spin_wait() {
+  spin_wait_ = 40u;
+  _clear_bit(4);
+}
+inline ::google::protobuf::uint32 RunnyProto::spin_wait() const {
+  return spin_wait_;
+}
+inline void RunnyProto::set_spin_wait(::google::protobuf::uint32 value) {
+  _set_bit(4);
+  spin_wait_ = value;
+}
+
+// optional uint32 readahead = 7 [default = 20000];
+inline bool RunnyProto::has_readahead() const {
+  return _has_bit(5);
+}
+inline void RunnyProto::clear_readahead() {
+  readahead_ = 20000u;
+  _clear_bit(5);
+}
+inline ::google::protobuf::uint32 RunnyProto::readahead() const {
+  return readahead_;
+}
+inline void RunnyProto::set_readahead(::google::protobuf::uint32 value) {
+  _set_bit(5);
+  readahead_ = value;
+}
+
+// optional uint32 buffer_readahead = 8 [default = 10000];
+inline bool RunnyProto::has_buffer_readahead() const {
+  return _has_bit(6);
+}
+inline void RunnyProto::clear_buffer_readahead() {
+  buffer_readahead_ = 10000u;
+  _clear_bit(6);
+}
+inline ::google::protobuf::uint32 RunnyProto::buffer_readahead() const {
+  return buffer_readahead_;
+}
+inline void RunnyProto::set_buffer_readahead(::google::protobuf::uint32 value) {
+  _set_bit(6);
+  buffer_readahead_ = value;
 }
 
 

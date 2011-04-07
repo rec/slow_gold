@@ -49,18 +49,6 @@ class TypedTyper : public Typer {
   DISALLOW_COPY_AND_ASSIGN(TypedTyper);
 };
 
-template <>
-inline bool TypedTyper<pmessage>::Equals(const rec::Message& m,
-                                         const Comparer& cmp) const {
-  return typer::equals(*msg_, m, field_, cmp);
-}
-
-template <>
-inline bool TypedTyper<pmessage>::Equals(const rec::Message& m, uint32 i,
-                                         const Comparer& cmp) const {
-  return typer::equals(*msg_, m, field_, i, cmp);
-}
-
 template <typename Type>
 bool TypedTyper<Type>::Equals(const Message& m, const Comparer& c) const {
   TypedTyper<Type> that(const_cast<Message*>(&m), field_);

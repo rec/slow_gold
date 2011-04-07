@@ -10,33 +10,27 @@ namespace util {
 // A region within a circular buffer of a fixed size.
 struct Circular {
  public:
-  explicit Circular(int64 length = 0);
-  explicit Circular(int64 begin, int64 length);
+  explicit Circular(int64 bufferSize = 0);
+  explicit Circular(int64 begin, int64 bufferSize);
 
-  void reset(int64 begin = 0, int64 length = -1);
+  void reset(int64 begin = 0, int64 bufferSize = -1);
 
   void fill(int64 delta);
   void consume(int64 amount);
 
   bool isFull() const { return filled_ == bufferSize_; }
 
-  int64 remainingBlock() const;
-
   block::Block nextBlockToFill(int64 maxBlockSize) const;
-
-  void setBegin(int64 begin);
-
-  int64 filled() const { return filled_; }
-  int64 length() const { return bufferSize_; }
-
-  int64 begin() const { return begin_; }
-  int64 end() const;
-
- private:
   int64 filledPosition(int x) const;
 
+  void setBegin(int64 begin);
+  
+  int64 begin() const { return begin_; }
+  int64 filled() const { return filled_; }
+
+ private:
   int64 begin_;
-  int64 filled_;  // Of this region within the buffer.
+  int64 filled_;
   int64 bufferSize_;
 };
 

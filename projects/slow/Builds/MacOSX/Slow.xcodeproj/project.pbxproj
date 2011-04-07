@@ -1220,15 +1220,7 @@
 			name = mpg123;
 			sourceTree = "<group>";
 		};
-		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B60B5B0B4126E0194BD469E9 /* Info.plist */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		ACCDC1EFB605B19CB2F49B54 /* Source */ = {
+		A41F0B4C50B3E55C442BE652 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				75467D3DB26B8C553F2D3FE5 /* rec */,
@@ -1240,6 +1232,14 @@
 				DBBED81D920B27CB9107C128 /* Products */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B60B5B0B4126E0194BD469E9 /* Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		AD49BFF6CB3EDFDE92D18FC7 /* commands */ = {
@@ -1601,7 +1601,7 @@
 				French,
 				German,
 			);
-			mainGroup = ACCDC1EFB605B19CB2F49B54 /* Source */;
+			mainGroup = A41F0B4C50B3E55C442BE652 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

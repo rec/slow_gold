@@ -4,16 +4,11 @@
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/source/StretchyRunny.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/util/thread/Trash.h"
 
-static const int COMPRESSION = 512;
-static const int THREAD_TIMEOUT = 2000;
-static const int SPIN_WAIT = 40;
-static const int BLOCK_SIZE = 1024;
-static const int READAHEAD = 20000;
-static const int BUFFER_READAHEAD = 10000;
-
 using namespace rec::gui;
+using namespace rec::util::block;
 
 namespace rec {
 namespace audio {
@@ -21,7 +16,7 @@ namespace source {
 
 DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
-    : Thread("DoubleRunnyBuffer"), 
+    : Thread("DoubleRunnyBuffer"),
       runnyDesc_(desc), data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {
@@ -32,17 +27,14 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
 
   File shadow = getShadowFile(file, "thumbnail.stream");
   int len = source->getTotalLength();
-  cachedThumbnail_.reset(new CachedThumbnail(shadow, COMPRESSION, len));
+  cachedThumbnail_.reset(new CachedThumbnail(shadow, desc.compression(), len));
 
   if (!cachedThumbnail_->isFull())
     source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
 
-  buffer_.reset(new FillableBuffer(source.transfer(), BLOCK_SIZE));
+  buffer_.reset(new FillableBuffer(source.transfer(), desc.chunk_size()));
 
-  StretchLoop loop(data_->get());
-  setLoop(loop);
-
-  changeLocker_.reset(new ChangeLocker(SPIN_WAIT));
+  changeLocker_.reset(new ChangeLocker(desc.spin_wait()));
   changeLocker_->initialize(data_->get());
   data_->addListener(changeLocker_.get());
 
@@ -54,14 +46,19 @@ DoubleRunnyBuffer::~DoubleRunnyBuffer() {
   stretchy_.shutdown();
 }
 
-bool DoubleRunnyBuffer::fillFromPosition(int pos) {
+bool DoubleRunnyBuffer::waitUntilFilled(uint32 readahead) {
+  int64 p = stretchy_.getNextReadPosition();
+  return buffer_->waitUntilFilled(Block(p, p + readahead));
+}
+
+bool DoubleRunnyBuffer::fillFromPosition(int p) {
   // This is only called when the user clicks in the window to set a new
   // playback position.
   if (!buffer_)
     return false;
-    
-  buffer_->setPosition(pos);
-  return buffer_->waitUntilFilled(block::Block(pos, pos + BUFFER_READAHEAD));
+
+  buffer_->setPosition(p);
+  return waitUntilFilled(runnyDesc_.buffer_readahead());
 }
 
 void DoubleRunnyBuffer::run() {
@@ -76,13 +73,23 @@ void DoubleRunnyBuffer::operator()(const StretchLoop& loop) {
   if (threadShouldExit())
     return;
 
+  {
+    ScopedLock l(lock_);
+    if (loop == stretchLoop_) {
+      DLOG(INFO) << "Duplicate StretchLoop seen";
+      return;
+    }
+
+    DLOG(INFO) << "New loop " << loop.DebugString();
+    stretchLoop_ = loop;
+  }
   startThread();
-  int64 pos = stretchy_.getNextReadPosition();
-  buffer_->waitUntilFilled(block::Block(pos, pos + READAHEAD));
+  waitUntilFilled(runnyDesc_.readahead());
 
   if (!threadShouldExit()) {
     ptr<BufferSource> s(new BufferSource(*buffer_->buffer()));
-    stretchy_.setNextRunny(stretchyRunny(runnyDesc_, loop, pos, s.xfer()));
+    int64 p = stretchy_.getNextReadPosition();
+    stretchy_.setNextRunny(stretchyRunny(runnyDesc_, loop, p, s.xfer()));
   }
 }
 

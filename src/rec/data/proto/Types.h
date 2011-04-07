@@ -49,6 +49,10 @@ struct pmessage {
 
   bool Parse(Message* m) { return m->ParseFromString(value_); }
 
+  bool operator==(const pmessage& that) const {
+    return this->value_ == that.value_;  // Hack but works.
+  }
+
   string value_;
 };
 

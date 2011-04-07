@@ -76,8 +76,8 @@ void protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/util/thread/Thread.proto\022\017rec.util"
-    ".thread\"=\n\021ThreadDescription\022\023\n\010priority"
-    "\030\001 \001(\r:\0015\022\023\n\006period\030\002 \001(\r:\003100", 110);
+    ".thread\"<\n\021ThreadDescription\022\023\n\010priority"
+    "\030\001 \001(\r:\0015\022\022\n\006period\030\002 \001(\r:\00250", 109);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/thread/Thread.proto", &protobuf_RegisterTypes);
   ThreadDescription::default_instance_ = new ThreadDescription();
@@ -117,7 +117,7 @@ ThreadDescription::ThreadDescription(const ThreadDescription& from)
 void ThreadDescription::SharedCtor() {
   _cached_size_ = 0;
   priority_ = 5u;
-  period_ = 100u;
+  period_ = 50u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -153,7 +153,7 @@ ThreadDescription* ThreadDescription::New() const {
 void ThreadDescription::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     priority_ = 5u;
-    period_ = 100u;
+    period_ = 50u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -180,7 +180,7 @@ bool ThreadDescription::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 period = 2 [default = 100];
+      // optional uint32 period = 2 [default = 50];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -219,7 +219,7 @@ void ThreadDescription::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->priority(), output);
   }
   
-  // optional uint32 period = 2 [default = 100];
+  // optional uint32 period = 2 [default = 50];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->period(), output);
   }
@@ -237,7 +237,7 @@ void ThreadDescription::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->priority(), target);
   }
   
-  // optional uint32 period = 2 [default = 100];
+  // optional uint32 period = 2 [default = 50];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->period(), target);
   }
@@ -260,7 +260,7 @@ int ThreadDescription::ByteSize() const {
           this->priority());
     }
     
-    // optional uint32 period = 2 [default = 100];
+    // optional uint32 period = 2 [default = 50];
     if (has_period()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

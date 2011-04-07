@@ -30,10 +30,14 @@ void protobuf_AssignDesc_rec_2faudio_2fsource_2fRunny_2eproto() {
       "rec/audio/source/Runny.proto");
   GOOGLE_CHECK(file != NULL);
   RunnyProto_descriptor_ = file->message_type(0);
-  static const int RunnyProto_offsets_[3] = {
+  static const int RunnyProto_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, buffer_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, chunk_size_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, thread_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, compression_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, spin_wait_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, readahead_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RunnyProto, buffer_readahead_),
   };
   RunnyProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -78,10 +82,13 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto() {
   ::rec::util::thread::protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/audio/source/Runny.proto\022\020rec.audi"
-    "o.source\032\034rec/util/thread/Thread.proto\"w"
-    "\n\nRunnyProto\022\033\n\013buffer_size\030\001 \001(\r:\00625600"
-    "0\022\030\n\nchunk_size\030\002 \001(\r:\0041024\0222\n\006thread\030\003 "
-    "\001(\0132\".rec.util.thread.ThreadDescription", 199);
+    "o.source\032\034rec/util/thread/Thread.proto\"\344"
+    "\001\n\nRunnyProto\022\033\n\013buffer_size\030\001 \001(\r:\0062621"
+    "44\022\031\n\nchunk_size\030\002 \001(\r:\00516384\0222\n\006thread\030"
+    "\003 \001(\0132\".rec.util.thread.ThreadDescriptio"
+    "n\022\030\n\013compression\030\004 \001(\r:\003512\022\025\n\tspin_wait"
+    "\030\006 \001(\r:\00240\022\030\n\treadahead\030\007 \001(\r:\00520000\022\037\n\020"
+    "buffer_readahead\030\010 \001(\r:\00510000", 309);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/source/Runny.proto", &protobuf_RegisterTypes);
   RunnyProto::default_instance_ = new RunnyProto();
@@ -103,6 +110,10 @@ struct StaticDescriptorInitializer_rec_2faudio_2fsource_2fRunny_2eproto {
 const int RunnyProto::kBufferSizeFieldNumber;
 const int RunnyProto::kChunkSizeFieldNumber;
 const int RunnyProto::kThreadFieldNumber;
+const int RunnyProto::kCompressionFieldNumber;
+const int RunnyProto::kSpinWaitFieldNumber;
+const int RunnyProto::kReadaheadFieldNumber;
+const int RunnyProto::kBufferReadaheadFieldNumber;
 #endif  // !_MSC_VER
 
 RunnyProto::RunnyProto()
@@ -122,9 +133,13 @@ RunnyProto::RunnyProto(const RunnyProto& from)
 
 void RunnyProto::SharedCtor() {
   _cached_size_ = 0;
-  buffer_size_ = 256000u;
-  chunk_size_ = 1024u;
+  buffer_size_ = 262144u;
+  chunk_size_ = 16384u;
   thread_ = NULL;
+  compression_ = 512u;
+  spin_wait_ = 40u;
+  readahead_ = 20000u;
+  buffer_readahead_ = 10000u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -160,11 +175,15 @@ RunnyProto* RunnyProto::New() const {
 
 void RunnyProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    buffer_size_ = 256000u;
-    chunk_size_ = 1024u;
+    buffer_size_ = 262144u;
+    chunk_size_ = 16384u;
     if (_has_bit(2)) {
       if (thread_ != NULL) thread_->::rec::util::thread::ThreadDescription::Clear();
     }
+    compression_ = 512u;
+    spin_wait_ = 40u;
+    readahead_ = 20000u;
+    buffer_readahead_ = 10000u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -176,7 +195,7 @@ bool RunnyProto::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint32 buffer_size = 1 [default = 256000];
+      // optional uint32 buffer_size = 1 [default = 262144];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -191,7 +210,7 @@ bool RunnyProto::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 chunk_size = 2 [default = 1024];
+      // optional uint32 chunk_size = 2 [default = 16384];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -217,6 +236,70 @@ bool RunnyProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(32)) goto parse_compression;
+        break;
+      }
+      
+      // optional uint32 compression = 4 [default = 512];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_compression:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &compression_)));
+          _set_bit(3);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_spin_wait;
+        break;
+      }
+      
+      // optional uint32 spin_wait = 6 [default = 40];
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_spin_wait:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &spin_wait_)));
+          _set_bit(4);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(56)) goto parse_readahead;
+        break;
+      }
+      
+      // optional uint32 readahead = 7 [default = 20000];
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_readahead:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &readahead_)));
+          _set_bit(5);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_buffer_readahead;
+        break;
+      }
+      
+      // optional uint32 buffer_readahead = 8 [default = 10000];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_buffer_readahead:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &buffer_readahead_)));
+          _set_bit(6);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -239,12 +322,12 @@ bool RunnyProto::MergePartialFromCodedStream(
 
 void RunnyProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint32 buffer_size = 1 [default = 256000];
+  // optional uint32 buffer_size = 1 [default = 262144];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->buffer_size(), output);
   }
   
-  // optional uint32 chunk_size = 2 [default = 1024];
+  // optional uint32 chunk_size = 2 [default = 16384];
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->chunk_size(), output);
   }
@@ -255,6 +338,26 @@ void RunnyProto::SerializeWithCachedSizes(
       3, this->thread(), output);
   }
   
+  // optional uint32 compression = 4 [default = 512];
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->compression(), output);
+  }
+  
+  // optional uint32 spin_wait = 6 [default = 40];
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->spin_wait(), output);
+  }
+  
+  // optional uint32 readahead = 7 [default = 20000];
+  if (_has_bit(5)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->readahead(), output);
+  }
+  
+  // optional uint32 buffer_readahead = 8 [default = 10000];
+  if (_has_bit(6)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->buffer_readahead(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -263,12 +366,12 @@ void RunnyProto::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* RunnyProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional uint32 buffer_size = 1 [default = 256000];
+  // optional uint32 buffer_size = 1 [default = 262144];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->buffer_size(), target);
   }
   
-  // optional uint32 chunk_size = 2 [default = 1024];
+  // optional uint32 chunk_size = 2 [default = 16384];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->chunk_size(), target);
   }
@@ -278,6 +381,26 @@ void RunnyProto::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->thread(), target);
+  }
+  
+  // optional uint32 compression = 4 [default = 512];
+  if (_has_bit(3)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->compression(), target);
+  }
+  
+  // optional uint32 spin_wait = 6 [default = 40];
+  if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->spin_wait(), target);
+  }
+  
+  // optional uint32 readahead = 7 [default = 20000];
+  if (_has_bit(5)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->readahead(), target);
+  }
+  
+  // optional uint32 buffer_readahead = 8 [default = 10000];
+  if (_has_bit(6)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->buffer_readahead(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -291,14 +414,14 @@ int RunnyProto::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint32 buffer_size = 1 [default = 256000];
+    // optional uint32 buffer_size = 1 [default = 262144];
     if (has_buffer_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->buffer_size());
     }
     
-    // optional uint32 chunk_size = 2 [default = 1024];
+    // optional uint32 chunk_size = 2 [default = 16384];
     if (has_chunk_size()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -310,6 +433,34 @@ int RunnyProto::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->thread());
+    }
+    
+    // optional uint32 compression = 4 [default = 512];
+    if (has_compression()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->compression());
+    }
+    
+    // optional uint32 spin_wait = 6 [default = 40];
+    if (has_spin_wait()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->spin_wait());
+    }
+    
+    // optional uint32 readahead = 7 [default = 20000];
+    if (has_readahead()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->readahead());
+    }
+    
+    // optional uint32 buffer_readahead = 8 [default = 10000];
+    if (has_buffer_readahead()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->buffer_readahead());
     }
     
   }
@@ -348,6 +499,18 @@ void RunnyProto::MergeFrom(const RunnyProto& from) {
     if (from._has_bit(2)) {
       mutable_thread()->::rec::util::thread::ThreadDescription::MergeFrom(from.thread());
     }
+    if (from._has_bit(3)) {
+      set_compression(from.compression());
+    }
+    if (from._has_bit(4)) {
+      set_spin_wait(from.spin_wait());
+    }
+    if (from._has_bit(5)) {
+      set_readahead(from.readahead());
+    }
+    if (from._has_bit(6)) {
+      set_buffer_readahead(from.buffer_readahead());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -374,6 +537,10 @@ void RunnyProto::Swap(RunnyProto* other) {
     std::swap(buffer_size_, other->buffer_size_);
     std::swap(chunk_size_, other->chunk_size_);
     std::swap(thread_, other->thread_);
+    std::swap(compression_, other->compression_);
+    std::swap(spin_wait_, other->spin_wait_);
+    std::swap(readahead_, other->readahead_);
+    std::swap(buffer_readahead_, other->buffer_readahead_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

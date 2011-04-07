@@ -126,6 +126,20 @@ void TypedTyper<pmessage>::Add(pmessage t) {
 }
 
 template <>
+inline bool TypedTyper<pmessage>::Equals(const rec::Message& m,
+                                         const Comparer& cmp) const {
+  // WRONG.
+  return typer::equals(*msg_, m, field_, cmp);
+}
+
+template <>
+inline bool TypedTyper<pmessage>::Equals(const rec::Message& m, uint32 i,
+                                         const Comparer& cmp) const {
+  // WRONG.
+  return typer::equals(*msg_, m, field_, i, cmp);
+}
+
+template <>
 penum TypedTyper<penum>::Get() const {
   return ref().GetEnum(*msg_, field_)->number();
 }

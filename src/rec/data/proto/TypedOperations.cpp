@@ -71,9 +71,9 @@ bool add(Message* m, const FieldDescriptor* f, const Value& v) {
   return true;
 }
 
-bool equals(const Message& m1, const Message& m2, const FieldDescriptor* f,
+bool equals(const Message& x, const Message& y, const FieldDescriptor* f,
             int i, const Comparer& cmp) {
-  return STyper(const_cast<Message*>(&m1), f)->Equals(m2, i, cmp);
+  return STyper(const_cast<Message*>(&x), f)->Equals(y, i, cmp);
 }
 
 bool equals(const Message& x, const Message& y, const FieldDescriptor* field,
@@ -85,9 +85,11 @@ bool equals(const Message& x, const Message& y, const FieldDescriptor* field,
   if (len != y.GetReflection()->FieldSize(y, field))
     return false;
 
-  for (int i = 0; i < len; ++i)
+  for (int i = 0; i < len; ++i) {
     if (!equals(x, y, field, i, cmp))
       return false;
+  }
+      
   return true;
 }
 

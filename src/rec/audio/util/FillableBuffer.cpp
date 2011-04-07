@@ -13,9 +13,12 @@ FillableBuffer::FillableBuffer(PositionableAudioSource* source, int blockSize)
     : Filler(source->getTotalLength(), blockSize),
       buffer_(2, length_),
       source_(source) {
+  DLOG(INFO) << "FillableBuffer: " << &buffer_;
 }
 
 block::Size FillableBuffer::doFillNextBlock(const Block& block) {
+  // DLOG(INFO) << "doFillNextBlock: " << block.first << ", " << getSize(block);
+
   AudioSourceChannelInfo info;
   info.buffer = &buffer_;
   info.startSample = block.first;

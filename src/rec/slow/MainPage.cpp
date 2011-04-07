@@ -166,12 +166,16 @@ void MainPage::operator()(const VirtualFile& file) {
 void MainPage::operator()(const SelectionRange& sel) {
   if (persist::Data<StretchLoop>* data = player_.getStretchy()) {
     TimeRange range(sel);
+    if (range.end_ < 0.0001)
+      range.end_ = length_;
+
     audio::stretch::Loop loop;
     loop.set_begin(range.begin_);
     loop.set_end(range.end_);
     player_.getTransport()->setOffset(range.begin_);
 
-    data->set("loop", Value(loop));
+    DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
+    data->set("loop", loop);
   }
 }
 
@@ -195,6 +199,7 @@ void MainPage::zoomIn(const TimeAndMouseEvent& timeMouse) {
     double end = zoom.end();
     if (!end)
       end = length_;
+
     double size = end - begin;
     double middle = timeMouse.time_;
     zoom.set_begin(juce::jmax(0.0, middle - size / 4.0));

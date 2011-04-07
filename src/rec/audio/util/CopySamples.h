@@ -15,7 +15,8 @@ void copySamples(const AudioSampleBuffer& source,
 
 int copyCircularSamples(const AudioSampleBuffer& source,
                         int sourceStart,
-                        const AudioSourceChannelInfo& dest);
+                        const AudioSourceChannelInfo& dest,
+                        int64 ready = -1);
 
 }  // namespace audio
 }  // namespace rec

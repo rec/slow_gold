@@ -13,11 +13,13 @@ Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
       filled_(desc.buffer_size()),
       desc_(desc) {
   setPriority(desc.thread().priority());
+  DLOG(INFO) << "Runny: " << &buffer_;
 }
 
 Runny::~Runny() {}
 
 void Runny::setNextReadPosition(int64 newPos) {
+	// Not called during playback, only when jumping to a new location.
   {
     ScopedLock l(lock_);
     filled_.setBegin(newPos);
@@ -35,18 +37,10 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
     ready = filled_.filled();
   }
 
-  if (ready < info.numSamples) {
-    LOG(ERROR) << "clearing " << info.numSamples - ready
-               << ", getting " << ready;
-
-    info.buffer->clear(info.startSample + ready, info.numSamples - ready);
-    info.numSamples = ready;
-  }
-
   if (threadShouldExit())
     return;
 
-  copyCircularSamples(buffer_, begin, info);
+  copyCircularSamples(buffer_, begin, info, ready);
 
   if (threadShouldExit())
     return;
@@ -54,6 +48,12 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
   ScopedLock l(lock_);
   filled_.consume(i.numSamples);
   position_ = mod(position_ + i.numSamples);
+#if 0
+  LOG(INFO) << "position: " << position_
+            << ", start:" << filled_.begin()
+            << ", filled: " << filled_.filled() << "\n";
+#endif
+  notify();  // We get less of an interleave if we omit this!
 }
 
 void Runny::fillOnce() {
@@ -61,11 +61,10 @@ void Runny::fillOnce() {
     return;
 
   AudioSourceChannelInfo info;
-  info.buffer = &buffer_;
   {
     ScopedLock l(lock_);
-    int64 chunkSize = desc_.chunk_size();
-    block::fill(filled_.nextBlockToFill(chunkSize), &info);
+    block::Block block = filled_.nextBlockToFill(desc_.chunk_size());
+    info = block::audioSourceChannelInfo(block, &buffer_);
   }
 
   if (!info.numSamples || threadShouldExit())
@@ -81,12 +80,19 @@ void Runny::fillOnce() {
     ScopedLock l(lock_);
     filled_.fill(info.numSamples);
   }
+
+#if 0
+  LOG(INFO) << "POSITION: " << position_
+            << ", START:" << filled_.begin()
+            << ", FILLED: " << filled_.filled() << "\n";
+#endif
 }
 
 void Runny::run() {
   while (!(threadShouldExit())) {
     if (isFull())
       wait(desc_.thread().period());
+
     else
       fillOnce();
   }

@@ -41,18 +41,34 @@ void copySamples(const AudioSampleBuffer& source,
 
 int copyCircularSamples(const AudioSampleBuffer& source,
                         int sourceStart,
-                        const AudioSourceChannelInfo& dest) {
-  AudioSourceChannelInfo block = dest;
+                        const AudioSourceChannelInfo& dest,
+                        int64 ready) {
+  AudioSourceChannelInfo info = dest;
+  if (ready != -1 && ready < info.numSamples) {
+    LOG(ERROR) << "clearing " << info.numSamples - ready
+               << ", getting " << ready;
+
+    info.buffer->clear(info.startSample + ready, info.numSamples - ready);
+    info.numSamples = ready;
+  }
+
   int copied = 0;
   int length = source.getNumSamples();
   int nextFree = sourceStart % length;
+
+  DLOG(INFO) << "copy " << info.numSamples
+             << " from: " << &source <<  ":" << source.getNumSamples()
+             << ", " << sourceStart
+             << " to: " << info.buffer << ":" << info.buffer->getNumSamples()
+             << ", " << info.startSample;
   while (copied < dest.numSamples) {
-    block.numSamples = std::min(length - nextFree, dest.numSamples - copied);
-    copySamples(source, nextFree, block);
-    copied += block.numSamples;
-    block.startSample = dest.startSample + copied;
-    nextFree = (nextFree + block.numSamples) % length;
+    info.numSamples = std::min(length - nextFree, dest.numSamples - copied);
+    copySamples(source, nextFree, info);
+    copied += info.numSamples;
+    info.startSample = dest.startSample + copied;
+    nextFree = (nextFree + info.numSamples) % length;
   }
+
   return nextFree;
 }
 

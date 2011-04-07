@@ -99,7 +99,7 @@ class ThreadDescription : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 priority() const;
   inline void set_priority(::google::protobuf::uint32 value);
   
-  // optional uint32 period = 2 [default = 100];
+  // optional uint32 period = 2 [default = 50];
   inline bool has_period() const;
   inline void clear_period();
   static const int kPeriodFieldNumber = 2;
@@ -156,12 +156,12 @@ inline void ThreadDescription::set_priority(::google::protobuf::uint32 value) {
   priority_ = value;
 }
 
-// optional uint32 period = 2 [default = 100];
+// optional uint32 period = 2 [default = 50];
 inline bool ThreadDescription::has_period() const {
   return _has_bit(1);
 }
 inline void ThreadDescription::clear_period() {
-  period_ = 100u;
+  period_ = 50u;
   _clear_bit(1);
 }
 inline ::google::protobuf::uint32 ThreadDescription::period() const {

@@ -34,13 +34,16 @@ class DoubleRunnyBuffer : public Thread,
   virtual void run();
   Data* data() { return data_; }
   Switching* doubleStretchy() { return &stretchy_; }
+  bool waitUntilFilled(uint32 readahead);
 
  private:
   typedef thread::ChangeLocker<StretchLoop> ChangeLocker;
 
   void setLoop(const StretchLoop& loop) { (*this)(loop); }
 
+  CriticalSection lock_;
   Switching stretchy_;
+  StretchLoop stretchLoop_;
   const RunnyProto runnyDesc_;
   ptr<FillableBuffer> buffer_;
   ptr<gui::CachedThumbnail> cachedThumbnail_;

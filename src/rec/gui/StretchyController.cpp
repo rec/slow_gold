@@ -58,16 +58,13 @@ void StretchyController::setData(UntypedData* data) {
   disableButton_.setData(data);
 
   audio::stretch::StretchLoop proto;
-  bool enable = !(data && data->fill(&proto) && proto.stretch().disabled());
+  if (!(data && data->fill(&proto)))
+    LOG(ERROR) << "No data or couldn't fill proto: " << data;
+
+  bool enable = !proto.stretch().disabled();
   thread::callAsync(this, &StretchyController::enableSliders, enable);
 
-  Sides sides = STEREO;
-  if (data) {
-    StretchLoop stretch;
-    if (data->fill(&stretch) && stretch.stretch().stereo().type())
-      sides = static_cast<Sides>(2 + stretch.stretch().stereo().side());
-  }
-
+  Sides sides = static_cast<Sides>(2 + proto.stretch().stereo().side());
   thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
                     static_cast<int>(sides), true);
 }
@@ -83,7 +80,6 @@ void StretchyController::comboBoxChanged(juce::ComboBox*) {
     data->set(Address("stretch", "stereo"), stereo);
   }
 }
-
 
 void StretchyController::setZoom(UntypedData* data) {
   zoomToSelectionButton_.setData(data);

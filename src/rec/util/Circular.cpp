@@ -30,10 +30,6 @@ void Circular::fill(int64 delta) {
   }
 }
 
-int64 Circular::remainingBlock() const {
-  return bufferSize_ - std::max(filled_, end());
-}
-
 void Circular::setBegin(int64 begin) {
   int64 delta = begin - begin_;
   if (delta < 0)
@@ -46,28 +42,24 @@ void Circular::setBegin(int64 begin) {
   begin_ = begin;
 }
 
-int64 Circular::end() const {
-  return filledPosition(filled_);
-}
-
-int64 Circular::filledPosition(int x) const {
-  return mod(begin_ + x, bufferSize_);
-}
-
 void Circular::consume(int64 amount) {
-  begin_ = filledPosition(amount);
   if (amount > filled_) {
     LOG(ERROR) << "Tried to consume more than was filled: "
                << amount << ", " << filled_;
     amount = filled_;
   }
+  begin_ = filledPosition(amount);
   filled_ -= amount;
 }
 
 Block Circular::nextBlockToFill(int64 maxBlockSize) const {
-  int64 begin = end();
+  int64 begin = filledPosition(filled_);
   int64 size = std::min(maxBlockSize, bufferSize_ - filled_);
   return Block(begin, std::min(bufferSize_, begin + size));
+}
+
+int64 Circular::filledPosition(int x) const {
+  return mod(begin_ + x, bufferSize_);
 }
 
 }  // namespace util
