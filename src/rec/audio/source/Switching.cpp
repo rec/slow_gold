@@ -19,8 +19,6 @@ void Switching::setNextRunny(ThreadedSource* next) {
 
 void Switching::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   thread_ptr<ThreadedSource> deleter;
-  ThreadedSource* runny;
-
   ScopedLock l(lock_);
 
   if (nextRunny_) {

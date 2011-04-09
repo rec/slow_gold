@@ -31,9 +31,8 @@ class Runny : public ThreadedSource {
 
  private:
   AudioSampleBuffer buffer_;
-  util::Circular filled_;
+  Circular filled_;
   const RunnyProto desc_;
-
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Runny);
 };
 

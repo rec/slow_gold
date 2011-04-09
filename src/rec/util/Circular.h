@@ -8,7 +8,7 @@ namespace rec {
 namespace util {
 
 // A region within a circular buffer of a fixed size.
-struct Circular {
+struct Circular { // : public Range<SampleTime> {
  public:
   explicit Circular(int64 bufferSize = 0);
   explicit Circular(int64 begin, int64 bufferSize);
@@ -24,7 +24,7 @@ struct Circular {
   int64 filledPosition(int x) const;
 
   void setBegin(int64 begin);
-  
+
   int64 begin() const { return begin_; }
   int64 filled() const { return filled_; }
 

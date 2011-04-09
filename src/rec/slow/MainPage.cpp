@@ -23,7 +23,8 @@ MainPage::MainPage(AudioDeviceManager* deviceManager)
       openDialogOpen_(false) {
   doLayout();
 
-  Broadcaster<double>* timeBroadcaster = player_.getTransport()->timeBroadcaster();
+  Broadcaster<double>* timeBroadcaster =
+      player_.getTransport()->timeBroadcaster();
   timeBroadcaster->addListener(waveform_.timeCursor());
   timeBroadcaster->addListener(this);
   timeBroadcaster->addListener(controller_.timeController());

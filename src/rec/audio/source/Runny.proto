@@ -10,6 +10,5 @@ message RunnyProto {
   optional uint32 spin_wait = 6 [default = 40];
   optional uint32 readahead = 7 [default = 20000];
   optional uint32 buffer_readahead = 8 [default = 10000];
-
 };
 

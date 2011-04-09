@@ -44,6 +44,7 @@ class MainPage : public gui::Layout,
   void clearLoops();
 
   virtual bool keyPressed(const juce::KeyPress& kp);
+
   void addLoopPoint();
   void zoomIn(const TimeAndMouseEvent& timeMouse);
   void zoomOut();

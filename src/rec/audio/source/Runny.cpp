@@ -10,7 +10,6 @@ namespace source {
 Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
     : ThreadedSource(source, "Runny"),
       buffer_(2, desc.buffer_size()),
-      filled_(desc.buffer_size()),
       desc_(desc) {
   setPriority(desc.thread().priority());
   DLOG(INFO) << "Runny: " << &buffer_;

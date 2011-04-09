@@ -10,8 +10,7 @@ static const float SAMPLE_RATE = 44100.0f;
 AudioTransportSourcePlayer::AudioTransportSourcePlayer(AudioDeviceManager* dm)
     : Thread("AudioTransportSourcePlayer"),
       deviceManager_(dm),
-      lastTime_(-1.0),
-      offset_(0.0) {
+      lastTime_(-1.0) {
   deviceManager_->addAudioCallback(&audioSourcePlayer_);
   audioSourcePlayer_.setSource(audioTransportSource());
   audioTransportSource_.addChangeListener(this);
@@ -30,7 +29,7 @@ void AudioTransportSourcePlayer::broadcastTimeIfChanged() {
   double time = audioTransportSource_.getNextReadPosition() / SAMPLE_RATE;
   if (!Math<double>::near(time, lastTime_, MINIMUM_BROADCAST_TIMECHANGE)) {
     lastTime_ = time;
-    timeBroadcaster_.broadcast(time + offset_);
+    timeBroadcaster_.broadcast(time);
   }
 }
 
@@ -48,13 +47,13 @@ void AudioTransportSourcePlayer::clear() {
 }
 
 void AudioTransportSourcePlayer::setPosition(double newPosition) {
-  if (audioTransportSource_.isPlaying() &&
-      (newPosition < offset_ ||
-       newPosition >= offset_ + audioTransportSource_.getLengthInSeconds())) {
-    newPosition = offset_;
+  if (// audioTransportSource_.isPlaying() &&
+      (newPosition < 0 ||
+       newPosition >= audioTransportSource_.getLengthInSeconds())) {
+    newPosition = 0;
   }
 
-  audioTransportSource_.setPosition(newPosition - offset_);
+  audioTransportSource_.setPosition(newPosition);
   broadcastTimeIfChanged();
 }
 

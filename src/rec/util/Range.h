@@ -21,6 +21,12 @@ struct Range {
 
   Type size() const { return end_ - begin_; }
 
+  bool contains(Type t) const {
+    return (begin_ != end_) && (begin_ < end_ ?
+                                (begin_ <= t) && (t < end_) :
+                                (begin_ <= t) || (t < end_));
+  }
+
   Type toY(Type x, Type ySize) const { return ySize * (x - begin_) / size(); }
   Type toX(Type y, Type ySize) const { return begin_ + (y * size()) / ySize; }
 
