@@ -33,6 +33,7 @@ TEST(Circular, Fill) {
   Circular<int> c(8);
   c.fill(4);
   EXPECT_TRUE(c == Circular<int>(0, 4, 8)) << c.begin_ << ", " << c.end_;
+  EXPECT_FALSE(c.isFull());
 }
 
 TEST(Circular, Middle) {
@@ -44,6 +45,7 @@ TEST(Circular, Consume) {
   c.consume(3);
 
   EXPECT_TRUE(c == Circular<int>(3, 4, 8)) << c.begin_ << ", " << c.end_;
+  EXPECT_FALSE(c.isFull());
 }
 
 TEST(Circular, End) {
@@ -54,6 +56,11 @@ TEST(Circular, FillAround) {
   Circular<int> c(3, 4, 8);
   c.fill(6);
   EXPECT_TRUE(c == Circular<int>(3, 10, 8)) << c.begin_ << ", " << c.end_;
+  EXPECT_FALSE(c.isFull());
+
+  c.fill(1);
+  EXPECT_TRUE(c == Circular<int>(3, 11, 8)) << c.begin_ << ", " << c.end_;
+  EXPECT_TRUE(c.isFull());
 }
 
 TEST(Circular, Around) {
@@ -65,6 +72,11 @@ TEST(Circular, ConsumeAround) {
   c.consume(5);
 
   EXPECT_TRUE(c == Circular<int>(0, 2, 8)) << c.begin_ << "," << c.end_;
+  EXPECT_FALSE(c.isFull());
+
+  c.consume(2);
+  EXPECT_TRUE(c == Circular<int>(2, 2, 8)) << c.begin_ << "," << c.end_;
+  EXPECT_FALSE(c.isFull());
 }
 
 TEST(Circular, Begin) {
