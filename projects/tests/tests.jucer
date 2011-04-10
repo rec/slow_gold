@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="6iZbXXJ4l" name="tests">
+  <MAINGROUP id="iwRXPg9vd" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -719,8 +719,6 @@
           <FILE compile="1" file="../../src/rec/util/cd/StripLines_test.cpp"
                 id="ylAaJUlV2" name="StripLines_test.cpp" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/util/Circular.cpp" id="2QsjC37Cl"
-              name="Circular.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Circular.h" id="vDoVwhEbc"
               name="Circular.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Circular_test.cpp" id="FkMClwrzR"
@@ -1059,7 +1057,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="YV2ttg9k0" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="LCDSkID0M" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

@@ -10,15 +10,19 @@ namespace util {
 
 template <typename Type>
 struct Range {
-  typedef std::set<Range> Set;
+  Type begin_;
+  Type end_;
 
-  Range() {}
+  Range() { clear(); }
   Range(Type b) : begin_(b), end_(b + 1) {}
   Range(Type b, Type e) : begin_(b), end_(e) {}
+
+  typedef std::set<Range> Set;
   Range(const Set& s) : begin_(s.empty() ? 0 : s.begin()->begin_),
                         end_(s.empty() ? 0 : s.rbegin()->end_) {
   }
 
+  void clear() { begin_ = end_ = 0; }
   Type size() const { return end_ - begin_; }
 
   bool contains(Type t) const {
@@ -38,13 +42,22 @@ struct Range {
     return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
   }
 
+  void boundedIncrement(Type count, Type capacity) {
+    begin_ += count;
+    if (begin_ > capacity) {
+      begin_ -= capacity;
+      if (end_ > capacity) {
+        end_ -= capacity;
+      } else {
+        LOG(ERROR) << begin_ << "," << end_ << "," << capacity;
+      }
+    }
+  }
+
   bool operator<=(const Range& x) const { return !(x < *this); }
   bool operator>(const Range& x) const { return x < *this; }
   bool operator>=(const Range& x) const { return x <= *this; }
   bool operator!=(const Range& x) const { return !(x == *this); }
-
-  Type begin_;
-  Type end_;
 };
 
 typedef int64 SampleTime;

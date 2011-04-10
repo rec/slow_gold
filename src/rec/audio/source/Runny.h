@@ -27,11 +27,11 @@ class Runny : public ThreadedSource {
 
   bool isFull() const { return filled_.isFull(); }
 
-  util::Circular getFilled() const { return filled_; }
+  Circular<SampleTime> getFilled() const { return filled_; }
 
  private:
   AudioSampleBuffer buffer_;
-  Circular filled_;
+  Circular<SampleTime> filled_;
   const RunnyProto desc_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Runny);
 };

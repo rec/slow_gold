@@ -1,3 +1,5 @@
+#if 0
+
 #include "rec/util/Circular.h"
 #include "rec/util/Math.h"
 
@@ -64,3 +66,4 @@ int64 Circular::filledPosition(int x) const {
 
 }  // namespace util
 }  // namespace rec
+#endif

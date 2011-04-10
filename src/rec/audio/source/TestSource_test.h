@@ -7,7 +7,10 @@ namespace rec {
 namespace audio {
 namespace source {
 
-void testSource(int numSamples, PositionableAudioSource* source);
+void testSource(PositionableAudioSource* source,
+                int numSamples = 32,
+                int readOffset = 0,
+                int writeOffset = 0);
 
 }  // namespace source
 }  // namespace audio

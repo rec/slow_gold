@@ -10,6 +10,7 @@ namespace source {
 Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
     : ThreadedSource(source, "Runny"),
       buffer_(2, desc.buffer_size()),
+      filled_(desc.buffer_size()),
       desc_(desc) {
   setPriority(desc.thread().priority());
   DLOG(INFO) << "Runny: " << &buffer_;
@@ -18,10 +19,9 @@ Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
 Runny::~Runny() {}
 
 void Runny::setNextReadPosition(int64 newPos) {
-	// Not called during playback, only when jumping to a new location.
   {
     ScopedLock l(lock_);
-    filled_.setBegin(newPos);
+    filled_.clear();
   }
   Wrappy::setNextReadPosition(newPos);
   notify();
@@ -32,8 +32,8 @@ void Runny::getNextAudioBlock(const AudioSourceChannelInfo& i) {
   int64 begin, ready;
   {
     ScopedLock l(lock_);
-    begin = filled_.begin();
-    ready = filled_.filled();
+    begin = filled_.begin_;
+    ready = filled_.size();
   }
 
   if (threadShouldExit())
@@ -62,8 +62,12 @@ void Runny::fillOnce() {
   AudioSourceChannelInfo info;
   {
     ScopedLock l(lock_);
-    block::Block block = filled_.nextBlockToFill(desc_.chunk_size());
-    info = block::audioSourceChannelInfo(block, &buffer_);
+    Range<SampleTime> fillable = filled_.fillable();
+    info.startSample = fillable.begin_;
+    info.numSamples = desc_.chunk_size();
+    if (fillable.size() < desc_.chunk_size())
+      info.numSamples = fillable.size();
+    info.buffer = &buffer_;
   }
 
   if (!info.numSamples || threadShouldExit())

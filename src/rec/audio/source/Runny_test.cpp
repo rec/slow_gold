@@ -11,8 +11,7 @@ namespace source {
 namespace {
 
 const int CHUNK_SIZE = 16;
-const int NUM_SAMPLES = 32;
-const int BUFFER_SIZE = 24;
+const int BUFFER_SIZE = 64;
 
 }
 
@@ -20,12 +19,12 @@ TEST(RecAudio, Runny1) {
   RunnyProto runnyProto;
 
   runnyProto.set_chunk_size(CHUNK_SIZE);
-  runnyProto.set_chunk_size(BUFFER_SIZE);
+  runnyProto.set_buffer_size(BUFFER_SIZE);
 
   Runny runny(new Testy, runnyProto);
   runny.fillOnce();
-  runny.fillOnce();
-  testSource(NUM_SAMPLES, &runny);
+
+  testSource(&runny);
 }
 
 }  // namespace source
