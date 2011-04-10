@@ -10,10 +10,9 @@ template <typename Type>
 struct Circular : public Range<Type> {
   Type capacity_;
 
-  Circular() {}
+  Circular() : capacity_(0) {}
   explicit Circular(Type c) : Range<Type>(0, 0), capacity_(c) {}
   Circular(Type b, Type e, Type c) : Range<Type>(b, e), capacity_(c) {}
-  // Circular(const Range<Type>& r, Type c) : Range<Type>(r), capacity_(c) {}
 
   void consume(Type count) {
     DCHECK_GE(count, 0);
