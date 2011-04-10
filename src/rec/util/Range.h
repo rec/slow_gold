@@ -44,9 +44,9 @@ struct Range {
 
   void boundedIncrement(Type count, Type capacity) {
     begin_ += count;
-    if (begin_ > capacity) {
+    if (begin_ >= capacity) {
       begin_ -= capacity;
-      if (end_ > capacity) {
+      if (end_ >= capacity) {
         end_ -= capacity;
       } else {
         LOG(ERROR) << begin_ << "," << end_ << "," << capacity;
