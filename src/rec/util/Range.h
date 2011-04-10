@@ -42,14 +42,26 @@ struct Range {
     return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
   }
 
-  void boundedIncrement(Type count, Type capacity) {
-    begin_ += count;
-    if (begin_ >= capacity) {
-      begin_ -= capacity;
-      if (end_ >= capacity) {
-        end_ -= capacity;
-      } else {
-        LOG(ERROR) << begin_ << "," << end_ << "," << capacity;
+  void fillOrConsume(Type count, Type capacity, bool isFill) {
+    DCHECK_GE(count, 0);
+
+    Type available = isFill ? (capacity - size()) : size();
+    if (count > available) {
+      LOG(ERROR) << "count=" << count << " > available=" << available;
+      count = available;
+    }
+
+    if (isFill) {
+      end_ += count;
+    } else {
+      begin_ += count;
+      if (begin_ >= capacity) {
+        begin_ -= capacity;
+        if (end_ >= capacity) {
+          end_ -= capacity;
+        } else {
+          LOG(ERROR) << begin_ << "," << end_ << "," << capacity;
+        }
       }
     }
   }

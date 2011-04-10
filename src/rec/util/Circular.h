@@ -14,28 +14,8 @@ struct Circular : public Range<Type> {
   explicit Circular(Type c) : Range<Type>(0, 0), capacity_(c) {}
   Circular(Type b, Type e, Type c) : Range<Type>(b, e), capacity_(c) {}
 
-  void consume(Type count) {
-    DCHECK_GE(count, 0);
-
-    Type available = this->size();
-    if (count > available) {
-      LOG(ERROR) << "count=" << count << " > available=" << available;
-      count = available;
-    }
-    boundedIncrement(count, capacity_);
-  }
-
-  void fill(Type count) {
-    DCHECK_GE(count, 0);
-
-    Type available = capacity_ - this->size();
-    if (count > available) {
-      LOG(ERROR) << "count=" << count << " > available=" << available;
-      count = available;
-    }
-    this->end_ += count;
-  }
-
+  void consume(Type count) { fillOrConsume(count, capacity_, false); }
+  void fill(Type count) { fillOrConsume(count, capacity_, true); }
   bool isFull() const { return this->size() == capacity_; }
 
   Range<Type> fillable() const {
