@@ -21,6 +21,7 @@ TEST(Circular, Fill) {
   Circular<int> c(8);
   c.fill(4);
   EXPECT_TRUE(c == Circular<int>(0, 4, 8));
+  EXPECT_TRUE(c.fillable() == Range<int>(4, 8));
 }
 
 }  // namespace util
