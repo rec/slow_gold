@@ -42,6 +42,28 @@ struct Range {
     return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
   }
 
+  Range<Type> inverse(Type capacity) const {
+    Range<Type> r((end_ < capacity) ? end_ : end_ - capacity, begin_);
+    if (r.begin_ >= capacity)
+      r.begin_ -= capacity;
+
+    if (r.begin_ > r.end_)
+      r.end_ += capacity;
+
+    return r;
+  }
+
+  vector<Range<Type> > split(Type capacity) {
+    vector<Range<Type> > ranges;
+    if (end_ <= capacity) {
+      ranges.push_back(*this);
+    } else {
+      ranges.push_back(Range<Type>(begin_, capacity));
+      ranges.push_back(Range<Type>(capacity, end_));
+    }
+    return ranges;
+  }
+
   void fillOrConsume(Type count, Type capacity, bool isFill) {
     DCHECK_GE(count, 0);
 
@@ -73,10 +95,12 @@ struct Range {
 };
 
 typedef int64 SampleTime;
+typedef double RealTime;
 
-typedef Range<double> TimeRange;
+// delete these next ones...
 typedef Range<SampleTime> SampleRange;
-typedef TimeRange::Set SelectionRange;
+typedef Range<RealTime> TimeRange;
+typedef Range<RealTime>::Set SelectionRange;
 
 }  // namespace util
 }  // namespace rec

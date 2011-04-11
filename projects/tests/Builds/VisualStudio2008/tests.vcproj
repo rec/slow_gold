@@ -144,6 +144,7 @@
             <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\audio\Audio.h"/>
           <Filter Name="format">
             <Filter Name="mpg123">
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
@@ -167,7 +168,10 @@
             </Filter>
           </Filter>
           <Filter Name="source">
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\CircularBuffer.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\CircularBuffer.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\DoubleRunnyBuffer.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
@@ -543,6 +547,7 @@
           <File RelativePath="..\..\..\..\src\rec\util\RandomSelfInverseFunction.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\RandomSelfInverseFunction_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Range.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Range_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Reference.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\ShouldExit.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>

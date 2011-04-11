@@ -16,17 +16,25 @@ struct Circular : public Range<Type> {
 
   void consume(Type count) { fillOrConsume(count, capacity_, false); }
   void fill(Type count) { fillOrConsume(count, capacity_, true); }
-  bool isFull() const { return this->size() == capacity_; }
+
+  Type toFill() const { return (capacity_ - this->size()); }
+  bool isFull() const { return !toFill(); }
+
+#if 1
+  Type wrap() const { 
+    return  (this->end_ < capacity_) ? this->end_ - capacity_ : 0; 
+  }
 
   Range<Type> fillable() const {
-    bool crossesZero = (this->end_ >= capacity_);
-    return Range<Type>(crossesZero ? (this->end_ - capacity_) : this->end_,
-                       crossesZero ? this->begin_ : capacity_);
+    return Range<Type>(wrap() ? (this->end_ - capacity_) : this->end_,
+                       wrap() ? this->begin_ : capacity_);
   }
 
   Range<Type> consumable() const {
     return Range<Type>(this->begin_, std::min(this->end_, capacity_));
   }
+
+#endif
 };
 
 }  // namespace util

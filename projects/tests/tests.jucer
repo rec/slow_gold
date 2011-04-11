@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="iwRXPg9vd" name="tests">
+  <MAINGROUP id="JSQaUbKz5" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -53,6 +53,8 @@
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMacros.h"
                 id="Gnoly3u4I" name="mfMacros.h" resource="0"/>
         </GROUP>
+        <FILE compile="0" file="../../src/rec/audio/Audio.h" id="r2zFxs9Dx"
+              name="Audio.h" resource="0"/>
         <GROUP id="rQ7dvnw6j" name="format">
           <GROUP id="IWZVR3lzP" name="mpg123">
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Copier.cpp"
@@ -94,8 +96,14 @@
           </GROUP>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
+          <FILE compile="1" file="../../src/rec/audio/source/BufferSource.cpp"
+                id="fEZOtR19P" name="BufferSource.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
                 id="movJPJktr" name="BufferSource.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/CircularBuffer.cpp"
+                id="i9NEDBbmw" name="CircularBuffer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/CircularBuffer.h"
+                id="YSn5a46dD" name="CircularBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunnyBuffer.cpp"
                 id="Nla7QcCaM" name="DoubleRunnyBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
@@ -805,6 +813,8 @@
               id="s9u2Oy5KL" name="RandomSelfInverseFunction_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="AvppXo9nU"
               name="Range.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/Range_test.cpp" id="V4d5qBnXr"
+              name="Range_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Reference.h" id="vZZYQTicG"
               name="Reference.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="CWUnE0wxb"
@@ -1057,7 +1067,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="LCDSkID0M" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="NSLMt4ZU7" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

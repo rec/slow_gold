@@ -1,6 +1,10 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERYSOURCE__
 #define __REC_AUDIO_SOURCE_BUFFERYSOURCE__
 
+// This is a class backed by a fixed-size Buffer representing, for example, a
+// track on disk or audio CD.
+
+#include "rec/audio/Audio.h"
 #include "rec/audio/util/CopySamples.h"
 #include "rec/util/Math.h"
 
@@ -10,21 +14,10 @@ namespace source {
 
 class BufferSource : public PositionableAudioSource {
  public:
-  explicit BufferSource(const AudioSampleBuffer& buffer)
-      : buffer_(buffer), position_(0), looping_(true) {
-    DLOG(INFO) << "BufferSource: " << &buffer_;
-  }
+  explicit BufferSource(const Buffer& buffer);
 
-  virtual void getNextAudioBlock (const AudioSourceChannelInfo& i) {
-    int p = copyCircularSamples(buffer_, position_, i);
-    int q = mod(position_ + i.numSamples, getTotalLength());
-    CHECK_EQ(p, q);
-    setNextReadPosition(q);
-  }
-
-  virtual void setNextReadPosition(int64 p) {
-    position_ = p;
-  }
+  virtual void getNextAudioBlock(const Info& i);
+  virtual void setNextReadPosition(int64 p);
 
   virtual int64 getNextReadPosition() const { return position_; };
   virtual int64 getTotalLength() const { return buffer_.getNumSamples();  }
@@ -35,7 +28,7 @@ class BufferSource : public PositionableAudioSource {
   virtual void releaseResources() {}
 
  private:
-  const AudioSampleBuffer& buffer_;
+  const Buffer& buffer_;
   int64 position_;
   bool looping_;
 

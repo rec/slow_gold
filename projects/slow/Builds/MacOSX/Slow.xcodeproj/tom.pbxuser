@@ -179,9 +179,9 @@
 	};
 	3E41776759EB3902574FA6D8 /* Runny.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1107, 1404}}";
-			sepNavSelRange = "{2446, 0}";
-			sepNavVisRange = "{0, 1418}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1339}}";
+			sepNavSelRange = "{866, 52}";
+			sepNavVisRange = "{0, 1871}";
 			sepNavWindowFrame = "{{603, 19}, {911, 1159}}";
 		};
 	};
@@ -444,6 +444,14 @@
 			sepNavVisRange = "{0, 1571}";
 		};
 	};
+	93244D9DAD841CF00B3E5AE0 /* BufferSource.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {998, 645}}";
+			sepNavSelRange = "{460, 0}";
+			sepNavVisRange = "{0, 839}";
+			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
+		};
+	};
 	94646382FAB21A45C282242D /* Math.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {531, 1030}}";
@@ -469,7 +477,6 @@
 			E222262C134D0A2C00298AE3 /* Locker.h:45 */,
 			E2222735134D591800298AE3 /* CopySamples.cpp:74 */,
 			E2222739134D597000298AE3 /* Wrappy.cpp:39 */,
-			E2222755134D5DF700298AE3 /* BufferSource.h:26 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -522,8 +529,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 324085721;
-			PBXWorkspaceStateSaveDate = 324085721;
+			PBXPerProjectTemplateStateSaveDate = 324256245;
+			PBXWorkspaceStateSaveDate = 324256245;
 		};
 		perUserProjectItems = {
 			E21C931213470162002E4462 = E21C931213470162002E4462 /* PBXTextBookmark */;
@@ -671,6 +678,10 @@
 			E22227EE1351237100298AE3 = E22227EE1351237100298AE3 /* PBXTextBookmark */;
 			E22227F31351267B00298AE3 = E22227F31351267B00298AE3 /* PBXTextBookmark */;
 			E22227F41351267B00298AE3 = E22227F41351267B00298AE3 /* PBXTextBookmark */;
+			E22229AD1353C22D00298AE3 /* XCBuildMessageTextBookmark */ = E22229AD1353C22D00298AE3 /* XCBuildMessageTextBookmark */;
+			E22229AE1353C23000298AE3 /* XCBuildMessageTextBookmark */ = E22229AE1353C23000298AE3 /* XCBuildMessageTextBookmark */;
+			E22229AF1353C23000298AE3 /* PBXTextBookmark */ = E22229AF1353C23000298AE3 /* PBXTextBookmark */;
+			E22229B41353C23000298AE3 /* PBXTextBookmark */ = E22229B41353C23000298AE3 /* PBXTextBookmark */;
 			E22D57041335F95B00F9BF8F = E22D57041335F95B00F9BF8F /* PBXTextBookmark */;
 			E22D57051335F95B00F9BF8F = E22D57051335F95B00F9BF8F /* PBXBookmark */;
 			E23E466912EFA3FF0080BD76 = E23E466912EFA3FF0080BD76 /* PBXTextBookmark */;
@@ -1538,7 +1549,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 62";
 		rLen = 0;
-		rLoc = 2140;
+		rLoc = 2134;
 		rType = 0;
 		vrLen = 2039;
 		vrLoc = 518;
@@ -1558,7 +1569,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 72";
 		rLen = 0;
-		rLoc = 2525;
+		rLoc = 2519;
 		rType = 0;
 		vrLen = 1628;
 		vrLoc = 949;
@@ -1568,7 +1579,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 72";
 		rLen = 0;
-		rLoc = 2525;
+		rLoc = 2519;
 		rType = 0;
 		vrLen = 1680;
 		vrLoc = 897;
@@ -1598,7 +1609,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 72";
 		rLen = 0;
-		rLoc = 2525;
+		rLoc = 2519;
 		rType = 0;
 		vrLen = 1680;
 		vrLoc = 897;
@@ -1628,7 +1639,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 83";
 		rLen = 0;
-		rLoc = 2866;
+		rLoc = 2860;
 		rType = 0;
 		vrLen = 1947;
 		vrLoc = 561;
@@ -1638,7 +1649,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 83";
 		rLen = 0;
-		rLoc = 2866;
+		rLoc = 2860;
 		rType = 0;
 		vrLen = 1937;
 		vrLoc = 852;
@@ -1668,7 +1679,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1698,7 +1709,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1728,7 +1739,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1758,7 +1769,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1788,7 +1799,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1836,7 +1847,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1874,7 +1885,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1894,7 +1905,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1914,7 +1925,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 83";
 		rLen = 0;
-		rLoc = 2866;
+		rLoc = 2860;
 		rType = 0;
 		vrLen = 2271;
 		vrLoc = 518;
@@ -1977,7 +1988,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -1997,7 +2008,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -2012,30 +2023,12 @@
 		vrLen = 1855;
 		vrLoc = 3751;
 	};
-	E2222755134D5DF700298AE3 /* BufferSource.h:26 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 518CB236F32CEB1AAD485CF0 /* BufferSource.h */;
-		functionName = "setNextReadPosition(int64 p)";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 26;
-		location = SlowBurn;
-		modificationTime = 324086667.891672;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
-	};
 	E2222759134D5EDF00298AE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 77";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 852;
@@ -2055,7 +2048,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 79";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1670;
 		vrLoc = 852;
@@ -2075,7 +2068,7 @@
 		fRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */;
 		name = "CopySamples.cpp: 79";
 		rLen = 0;
-		rLoc = 2564;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1692;
 		vrLoc = 852;
@@ -2378,9 +2371,9 @@
 		fRef = E22227CA1351227E00298AE3 /* Circular.h */;
 		name = "Circular.h: 35";
 		rLen = 0;
-		rLoc = 744;
+		rLoc = 746;
 		rType = 0;
-		vrLen = 1214;
+		vrLen = 1063;
 		vrLoc = 0;
 	};
 	E22227DA135122FE00298AE3 /* PBXTextBookmark */ = {
@@ -2433,9 +2426,9 @@
 		fRef = E22227CA1351227E00298AE3 /* Circular.h */;
 		name = "Circular.h: 44";
 		rLen = 0;
-		rLoc = 1118;
+		rLoc = 1063;
 		rType = 0;
-		vrLen = 1207;
+		vrLen = 1063;
 		vrLoc = 0;
 	};
 	E22227E71351236D00298AE3 /* PBXTextBookmark */ = {
@@ -2468,9 +2461,9 @@
 		fRef = E22227DD1351231600298AE3 /* Circular.h */;
 		name = "Circular.h: 52";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 1063;
 		rType = 0;
-		vrLen = 1217;
+		vrLen = 1063;
 		vrLoc = 0;
 	};
 	E22227EB1351237100298AE3 /* PBXTextBookmark */ = {
@@ -2512,6 +2505,44 @@
 		rType = 0;
 		vrLen = 1867;
 		vrLoc = 76;
+	};
+	E22229AD1353C22D00298AE3 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'copyCircularSamples' was not declared in this scope";
+		fRef = 3E41776759EB3902574FA6D8 /* Runny.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 41;
+		rType = 1;
+	};
+	E22229AE1353C23000298AE3 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Assignment of data-member 'juce::AudioSourceChannelInfo::numSamples' in read-only structure";
+		fRef = 93244D9DAD841CF00B3E5AE0 /* BufferSource.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 15;
+		rType = 1;
+	};
+	E22229AF1353C23000298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 93244D9DAD841CF00B3E5AE0 /* BufferSource.cpp */;
+		name = "BufferSource.cpp: 16";
+		rLen = 0;
+		rLoc = 460;
+		rType = 0;
+		vrLen = 839;
+		vrLoc = 0;
+	};
+	E22229B41353C23000298AE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3E41776759EB3902574FA6D8 /* Runny.cpp */;
+		name = "Runny.cpp: 42";
+		rLen = 52;
+		rLoc = 866;
+		rType = 0;
+		vrLen = 1871;
+		vrLoc = 0;
 	};
 	E22D57041335F95B00F9BF8F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

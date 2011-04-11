@@ -1,22 +1,24 @@
 #ifndef __REC_AUDIO_SOURCE_COPY__
 #define __REC_AUDIO_SOURCE_COPY__
 
-#include "rec/base/base.h"
-
-using namespace juce;
+#include "rec/audio/Audio.h"
 
 namespace rec {
 namespace audio {
 
-// Copy samples from one audio buffer to another.
-void copySamples(const AudioSampleBuffer& source,
-                 int sourceStart,
-                 const AudioSourceChannelInfo& destInfo);
+struct BufferTime {
+  Buffer* buffer_;
+  SampleTime time_;
 
-int copyCircularSamples(const AudioSampleBuffer& source,
-                        int sourceStart,
-                        const AudioSourceChannelInfo& dest,
-                        int64 ready = -1);
+  BufferTime(Buffer* b, SampleTime t) : buffer_(b), time_(t) {}
+  BufferTime() {}
+};
+
+// Returns the number of samples actually copied.
+SampleTime copy(const BufferTime& from, const BufferTime& to, SampleTime count);
+
+// Clear samples.
+void clear(const BufferTime& bt, SampleTime c);
 
 }  // namespace audio
 }  // namespace rec

@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="PNroA9kOB" name="Slow">
+  <MAINGROUP id="nq3XUOxNL" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="4pZJ2b7Aw" name="audio">
         <GROUP id="7suREeLUz" name="ammf_scaler">
@@ -52,6 +52,8 @@
           <FILE compile="0" file="../../src/rec/audio/ammf_scaler/mfMacros.h"
                 id="Zso8OqAIM" name="mfMacros.h" resource="0"/>
         </GROUP>
+        <FILE compile="0" file="../../src/rec/audio/Audio.h" id="JFomi2kXy"
+              name="Audio.h" resource="0"/>
         <GROUP id="rLQJfm3VY" name="format">
           <GROUP id="ddlQeMP1D" name="mpg123">
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Copier.cpp"
@@ -87,8 +89,14 @@
           </GROUP>
         </GROUP>
         <GROUP id="ngaS8lhNw" name="source">
+          <FILE compile="1" file="../../src/rec/audio/source/BufferSource.cpp"
+                id="3dlLIUOUd" name="BufferSource.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
                 id="3N82QYAas" name="BufferSource.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/CircularBuffer.cpp"
+                id="bxNFqc0OS" name="CircularBuffer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/CircularBuffer.h"
+                id="IB87E7du9" name="CircularBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/DoubleRunnyBuffer.cpp"
                 id="Poj4Wc2yA" name="DoubleRunnyBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
@@ -1004,7 +1012,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="f4oDWCAoR" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="y0gc2R0uR" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

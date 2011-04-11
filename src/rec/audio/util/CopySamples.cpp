@@ -3,76 +3,130 @@
 namespace rec {
 namespace audio {
 
-// Copy samples from one audio buffer to another.
-void copySamples(const AudioSampleBuffer& source,
-                 int sourceStart,
-                 const AudioSourceChannelInfo& destInfo) {
-  AudioSampleBuffer* dest = destInfo.buffer;
-  int destStart = destInfo.startSample;
-  int numSamples = destInfo.numSamples;
+namespace {
 
-  int sourceChannels = source.getNumChannels();
-  int destChannels = dest->getNumChannels();
+int channels(const BufferTime& bt) { return bt.buffer_->getNumChannels(); }
+SampleTime size(const BufferTime& bt) { return bt.buffer_->getNumSamples(); }
+SampleTime remaining(const BufferTime& b) { return size(b) - b.time_; }
 
-  if (sourceChannels == 1) {
-    float* samples = source.getSampleData(0, sourceStart);
-    for (int c = 0; c < destChannels; ++c)
-      dest->copyFrom(c, destStart, samples, numSamples);
+struct Copier {
+  Copier(const BufferTime& from, const BufferTime& to, SampleTime count)
+      : from_(from), to_(to), count_(count) {
+  }
 
-  } else if (destChannels == sourceChannels) {
-    for (int c = 0; c < destChannels; ++c)
-      dest->copyFrom(c, destStart, source, c, sourceStart, numSamples);
+  SampleTime copy() const {
+    for (int ch = 0; ch < channels(to_); ++ch)
+      copy(ch);
+    return count_;
+  }
 
-  } else {
-    for (int c = 0; c < destChannels; ++c) {
-      int c1 = (sourceChannels * c) / destChannels;
-      int c2 = (sourceChannels * (c + 1) - 1) / destChannels;
-      float* samples = source.getSampleData(c1, sourceStart);
+ private:
+  void copy(int ch) const {
+    if (channels(to_) == channels(from_))
+      copy(ch, ch);
+
+    else if (channels(from_) == 1)
+      copy(0, ch);
+
+    else
+      mix(ch, channels(from_));
+  }
+
+  void copy(int f, int t) const {
+    to_.buffer_->copyFrom(f, to_.time_, *from_.buffer_, t, from_.time_, count_);
+  }
+
+  void mix(int chanFrom, int chanTo) const {
+    SampleTime startFrom = from_.time_;
+    SampleTime startTo = to_.time_;
+    for (int c = 0; c < chanTo; ++c) {
+      // This probably isn't right.
+      int c1 = (chanFrom * c) / chanTo;
+      int c2 = (chanFrom * (c + 1) - 1) / chanTo;
+      float* fromSamp = from_.buffer_->getSampleData(c1, startFrom);
 
       if (c1 == c2) {
-        dest->copyFrom(c, destStart, samples, numSamples);
+        to_.buffer_->copyFrom(c, startTo, fromSamp, count_);
       } else {
-        dest->copyFrom(c, destStart, samples, numSamples, 0.5);
-        dest->addFrom(c, destStart, source, c2, sourceStart, numSamples, 0.5);
+        to_.buffer_->copyFrom(c, startTo, fromSamp, count_, 0.5);
+        to_.buffer_->addFrom(c, startTo, *from_.buffer_, c2, startFrom,
+                             count_, 0.5);
       }
     }
   }
+
+  const BufferTime from_;
+  const BufferTime to_;
+  const SampleTime count_;
+};
+
+SampleTime restrictCount(const BufferTime& bt, SampleTime count) {
+  SampleTime remains = bt.remaining();
+  if (count <= remains)
+    return count;
+
+  LOG(ERROR) << "count=" << count << " > remains=" << remains;
+  return remains;
 }
 
-int copyCircularSamples(const AudioSampleBuffer& source,
-                        int sourceStart,
-                        const AudioSourceChannelInfo& dest,
-                        int64 ready) {
-  AudioSourceChannelInfo info = dest;
-  if (ready != -1 && ready < info.numSamples) {
-    LOG(ERROR) << "clearing " << info.numSamples - ready
-               << ", getting " << ready;
+}  // namespace
 
-    info.buffer->clear(info.startSample + ready, info.numSamples - ready);
-    info.numSamples = ready;
-  }
-
-  int copied = 0;
-  int length = source.getNumSamples();
-  int nextFree = sourceStart % length;
+SampleTime copy(const BufferTime& from, const BufferTime& to, SampleTime cnt) {
+  return Copier(from, to, restrictCount(from, restrictCount(to, cnt))).copy();
+}
 
 #if 0
-  DLOG(INFO) << "copy " << info.numSamples
-             << " from: " << &source <<  ":" << source.getNumSamples()
-             << ", " << sourceStart
-             << " to: " << info.buffer << ":" << info.buffer->getNumSamples()
-             << ", " << info.startSample;
-#endif
-  while (copied < dest.numSamples) {
-    info.numSamples = std::min(length - nextFree, dest.numSamples - copied);
-    copySamples(source, nextFree, info);
-    copied += info.numSamples;
-    info.startSample = dest.startSample + copied;
-    nextFree = (nextFree + info.numSamples) % length;
-  }
+namespace {
 
-  return nextFree;
+SampleTime copy(bool copyFirstToSecond,
+                const BufferTime& x, const BufferTime& y, SampleTime c) {
+  return copyFirstToSecond ? copy(x, y, c) : copy(y, x, c);
 }
+
+BufferTime add(const BufferTime& bt, SampleTime d) {
+  return BufferTime(bt.buffer_, bt.time_ + d);
+}
+
+BufferTime reset(const BufferTime& bt, SampleTime t = 0.0) {
+  return BufferTime(bt.buffer_, t);
+}
+
+}  // namespace
+
+SampleTime copyCircular(const BufferTime& circ, SampleTime size,
+                        const BufferTime& reg, SampleTime count,
+                        bool toReg) {
+  SampleTime available = (size - circ.time_);
+  SampleTime n = std::min(available, count);
+  SampleTime copied = copy(toReg, circ, reg, n);
+  if (n < count)
+    copied += copy(toReg, reset(circ), add(reg, n), count - n);
+
+  if (copied < count) {
+    LOG(ERROR) << "copied=" << copied << " < count=" << count;
+    if (toReg || ) {
+      clear(reg.add(copied), count - copied);
+    } else {
+  }
+  return copied;
+}
+
+SampleTime copyFromCircular(const BufferTime& from, SampleTime fromSize,
+                            const BufferTime& to, SampleTime count) {
+  return copyCircular(from, fromSize, to, count, true);
+}
+
+SampleTime copyToCircular(const BufferTime& from, const BufferTime& to,
+                          SampleTime toSize, SampleTime count) {
+  return copyCircular(to, toSize, from, count, false);
+}
+
+void clear(const BufferTime& bt, SampleTime count) {
+  if (count > 0)
+    bt.buffer_->clear(bt.time_, count);
+}
+
+#endif
 
 }  // namespace audio
 }  // namespace rec
