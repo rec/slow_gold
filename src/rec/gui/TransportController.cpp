@@ -1,7 +1,5 @@
 #include "rec/gui/TransportController.h"
 
-#include "rec/slow/AudioTransportSourcePlayer.h"
-#include "rec/slow/MainPage.h"
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/icon/MediaPlay.svg.h"
@@ -10,15 +8,12 @@
 #include "rec/gui/icon/FullScreenRev.svg.h"
 #include "rec/util/thread/CallAsync.h"
 
+using namespace rec::audio::transport;
 namespace rec {
 namespace gui {
 
-TransportController::TransportController(
-   slow::AudioTransportSourcePlayer* transport,
-   slow::MainPage* mainPage)
+TransportController::TransportController()
     : Layout("TransportController", HORIZONTAL),
-      transport_(transport),
-      mainPage_(mainPage),
       startStopButton_("Start/stop", juce::DrawableButton::ImageFitted),
       addLoopPointButton_("Add loop point", juce::DrawableButton::ImageFitted),
       zoomOutButton_("Zoom Out", juce::DrawableButton::ImageFitted) {
@@ -46,22 +41,25 @@ TransportController::TransportController(
 
 void TransportController::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
-    transport_->toggle();
+    broadcast(TOGGLE_COMMAND);
 
   else if (button == &addLoopPointButton_)
-    mainPage_->addLoopPoint();
+    broadcast(ADD_LOOP_POINT_COMMAND);
 
   else if (button == &zoomOutButton_)
-    mainPage_->zoomOut();
+    broadcast(ZOOM_OUT_COMMAND);
+
+  else
+    LOG(ERROR) << "Unknown button " << button;
 }
 
-void TransportController::setButtonState() {
-  startStopButton_.setToggleState(transport_->audioTransportSource()->isPlaying(), false);
+void TransportController::setButtonState(audio::transport::State state) {
+  startStopButton_.setToggleState(state == audio::RUNNING, false);
   startStopButton_.repaint();
 }
 
-void TransportController::operator()(const slow::AudioTransportSourcePlayer& player) {
-  thread::callAsync(this, &TransportController::setButtonState);
+void TransportController::operator()(audio::transport::State state) {
+  thread::callAsync(this, &TransportController::setButtonState, state);
 }
 
 }  // namespace gui

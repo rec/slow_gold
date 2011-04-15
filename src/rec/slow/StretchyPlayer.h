@@ -13,12 +13,12 @@ class AudioTransportSourcePlayer;
 
 class StretchyPlayer : public Listener<const VirtualFile&>,
                        public Listener<const double&>,
-                       public Listener<double>,
-                       public Broadcaster<const VirtualFile&> {
+                       public Listener<double> { /* ,
+                       public Broadcaster<const VirtualFile&> { */
  public:
   typedef audio::stretch::StretchLoop StretchLoop;
 
-  explicit StretchyPlayer(AudioDeviceManager* deviceManager);
+  explicit StretchyPlayer(Instance* instance);
   virtual ~StretchyPlayer();
 
   // Callback when we get a new file.
@@ -35,12 +35,8 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
     timeLocker_->set(time);
   }
 
-  Listener<const VirtualFile&>* fileListener() { return &fileListener_; }
-  AudioTransportSourcePlayer* getTransport() {
-	  return transportSource_.get();
-  }
+  AudioTransportSourcePlayer* getTransport() { return transportSource_.get(); }
 
-  persist::Data<StretchLoop>* getStretchy() { return stretchy_; }
   gui::CachedThumbnail* cachedThumbnail();
   int length() const;
 
@@ -48,15 +44,13 @@ class StretchyPlayer : public Listener<const VirtualFile&>,
   typedef thread::ChangeLocker<double> TimeLocker;
   typedef thread::ChangeLocker<VirtualFile> FileLocker;
 
-  thread_ptr<AudioTransportSourcePlayer> transportSource_;
-
   CriticalSection lock_;
+  Instance* instance_;
   VirtualFile file_;
-  persist::Data<StretchLoop>* stretchy_;
+
   thread_ptr<TimeLocker> timeLocker_;
   thread_ptr<FileLocker> fileLocker_;
 
-  SetterListener<const VirtualFile&> fileListener_;
   thread_ptr<audio::source::DoubleRunnyBuffer> doubleRunny_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(StretchyPlayer);

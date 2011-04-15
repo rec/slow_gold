@@ -36,11 +36,6 @@ void TextComponent::setTime(double time) {
   }
 }
 
-void TextComponent::operator()(const ClockUpdate& c) {
-  if (c.time_ >= 0)
-    setTime(c.time_);
-}
-
 void TextComponent::redisplay() {
   ScopedLock l(lock_);
   setText(timeDisplay_, false);

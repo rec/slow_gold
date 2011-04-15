@@ -1,3 +1,4 @@
+#if 0
 #include "rec/audio/source/StretchyRunny.h"
 
 #include "rec/audio/source/Runny.h"
@@ -54,3 +55,4 @@ ThreadedSource* stretchyRunny(const RunnyProto& desc,
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
+#endif

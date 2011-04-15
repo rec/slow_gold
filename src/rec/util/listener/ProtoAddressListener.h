@@ -1,22 +1,22 @@
 #ifndef __REC_UTIL_LISTENER_UNTYPEDADDRESSLISTENER__
 #define __REC_UTIL_LISTENER_UNTYPEDADDRESSLISTENER__
 
-#include "rec/util/listener/UntypedDataListener.h"
+#include "rec/util/listener/ProtoListener.h"
 #include "rec/data/proto/Proto.h"
 
 namespace rec {
 namespace util {
 namespace listener {
 
-class UntypedAddressListener : public UntypedDataListener {
+class ProtoAddressListener : public ProtoListener {
  public:
   typedef proto::arg::Address Address;
   typedef proto::arg::Value Value;
   typedef persist::UntypedData UntypedData;
 
-  explicit UntypedAddressListener(const Address& a) : address_(a) {}
+  explicit ProtoAddressListener(const Address& a) : address_(a) {}
 
-  virtual ~UntypedAddressListener() {}
+  virtual ~ProtoAddressListener() {}
 
   virtual void operator()(const Message& message) {
     set(proto::getValue(address_, message));
@@ -41,7 +41,7 @@ class UntypedAddressListener : public UntypedDataListener {
  private:
   const Address address_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedAddressListener);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(ProtoAddressListener);
 };
 
 }  // namespace listener

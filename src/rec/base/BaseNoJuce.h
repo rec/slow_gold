@@ -56,14 +56,23 @@ using proto::arg::Address;
 using proto::arg::Setter;
 using proto::arg::Value;
 
+// Useful all over.
+
+typedef int64 SampleTime;
+typedef double RealTime;
+
 enum Orientation {HORIZONTAL, VERTICAL};
 
 inline Orientation inverse(Orientation o) {
   return (o == HORIZONTAL) ? VERTICAL : HORIZONTAL;
 }
 
-inline double samplesToTime(int samples, double sampleRate = 44100.0) {
-  return samples / sampleRate;
+inline RealTime samplesToTime(SampleTime samples, RealTime rate = 44100.0) {
+  return samples / rate;
+}
+
+inline SampleTime timeToSamples(RealTime time, double rate = 44100.0) {
+  return static_cast<SampleTime>(time * sampleRate);
 }
 
 }  // namespace rec

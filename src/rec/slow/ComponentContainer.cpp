@@ -1,77 +1,50 @@
 #include "rec/slow/ComponentContainer.h"
 
 #include "rec/gui/RecentFiles.h"
-#include "rec/util/file/VirtualFile.h"
-#include "rec/slow/MainPageComponent.h"
-#include "rec/util/thread/MakeThread.h"
+#include "rec/util/cd/Eject.h"
 #include "rec/util/Cuttable.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/MakeCallback.h"
 
 using namespace rec::gui;
+using namespace rec::command;
 
 namespace rec {
 namespace slow {
 
-namespace {
+ComponentContainer::ComponentContainer() : Component("ComponentContainer") {
+  addAndMakeVisible(&mainPage_);
 
-typedef void (ComponentContainer::*ComponentCommand)();
+  commandManager_.registerAllCommandsForTarget(&target_);
+  commandManager_.registerAllCommandsForTarget(JUCEApplication::getInstance());
+  addKeyListener(commandManager_.getKeyMappings());
 
-ComponentCommand commands[ComponentContainer::LAST_MENU_ITEM] = {
-  NULL,
-  &ComponentContainer::open,
-  &ComponentContainer::close,
-  &ComponentContainer::cut,
-  &ComponentContainer::copy,
-  &ComponentContainer::paste,
-  &ComponentContainer::quit,
-  &ComponentContainer::eject,
-  &ComponentContainer::clearTree,
-  &ComponentContainer::clearTime,
-  &ComponentContainer::clearFile,
-  &ComponentContainer::audioPreferences,
-  &ComponentContainer::clearSelection,
-  &ComponentContainer::clearLoops,
+  setContentComponent(this);
+  setMenuBar(this);
+
+  setApplicationCommandManagerToWatch(&commandManager_);
+  setUsingNativeTitleBar(true);
+  setVisible(true);
 };
 
-}
+ComponentContainer::~ComponentContainer() {
+#if JUCE_WIN32 || JUCE_LINUX
+  // deleteAndZero (taskbarIcon);
+#endif
 
-void ComponentContainer::open() {
-   mainComponent_->mainPage()->doOpen();
-}
+  // because we've set the content comp to be used as our menu bar model, we
+  // have to switch this off before deleting the content comp..
+  setMenuBar(NULL);
 
-void ComponentContainer::close() {
-  mainComponent_->mainPage()->doClose();
-}
-
-void ComponentContainer::cut() {
-  cutToClipboard();
-}
-
-void ComponentContainer::copy() {
-  copyToClipboard();
-}
-
-void ComponentContainer::paste() {
-  pasteFromClipboard();
-}
-
-void ComponentContainer::quit() {
-  JUCEApplication::getInstance()->systemRequestedQuit();
-}
-
-void ComponentContainer::eject() {
-  StringArray burners = AudioCDBurner::findAvailableDevices();
-  for (int i = 0; i < burners.size(); ++i) {
-    ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
-    DLOG(INFO) << "Burner " << burners[i].toCString();
-  }
+#if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
+  // Why isn't this in GenericApplication?
+  MenuBarModel::setMacMainMenu(NULL);
+#endif
 }
 
 void ComponentContainer::clearTree() {
   persist::data<file::VirtualFileList>()->clear();
-}
-
-void ComponentContainer::clearTime() {
-  mainComponent_->mainPage()->clearTime();
 }
 
 void ComponentContainer::clearFile() {
@@ -80,29 +53,13 @@ void ComponentContainer::clearFile() {
 
 void ComponentContainer::audioPreferences() {
   juce::DialogWindow::showModalDialog("Set Audio Preferences",
-                                      mainComponent_->audioSetupPage(),
-                                      mainComponent_.get(),
+                                      mainPage_.audioSetupPage(),
+                                      mainPage_.get(),
                                       Colours::white, true);
 }
 
-void ComponentContainer::clearSelection() {
-  mainComponent_->mainPage()->clearSelection();
-}
-
-void ComponentContainer::clearLoops() {
-  mainComponent_->mainPage()->clearLoops();
-}
-
-ComponentContainer::ComponentContainer(MainPageComponent* c) :
-    Component("ComponentContainer"),
-    mainComponent_(c) {
-  addAndMakeVisible(c);
-}
-
-ComponentContainer::~ComponentContainer() {}
-
 void ComponentContainer::resized() {
-  mainComponent_->setBounds(0, 0, getWidth(), getHeight());
+  mainComponent_.setBounds(0, 0, getWidth(), getHeight());
 }
 
 const StringArray ComponentContainer::getMenuBarNames() {
@@ -110,8 +67,12 @@ const StringArray ComponentContainer::getMenuBarNames() {
   return StringArray(names);
 }
 
+static const int RECENT_FILES_OFFSET = 1000;  // hack
+
 const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
                                                     const String& menuName) {
+  using rec::command::Command;
+
   PopupMenu menu;
   if (menuName == "File") {
     menu.addItem(OPEN, "Open...");
@@ -120,7 +81,7 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
     gui::RecentFiles recent = gui::getSortedRecentFiles();
     PopupMenu submenu;
     for (int i = 0; i < recent.file_size(); ++i)
-      submenu.addItem(RECENT_FILES + i, getFilename(recent.file(i).file()));
+      submenu.addItem(RECENT_FILES_OFFSET + i, getFilename(recent.file(i).file()));
 
     menu.addSubMenu("Open recent", submenu);
     menu.addItem(EJECT, "Eject all discs");
@@ -134,7 +95,7 @@ const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
     menu.addItem(CLEAR_SELECTION, "Clear selection of loop points");
     menu.addItem(CLEAR_LOOPS, "Clear loops");
     menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
-    menu.addItem(CLEAR_TREE, "Clear bookmarks area");
+    menu.addItem(TREE_CLEAR, "Clear bookmarks area");
     menu.addItem(AUDIO_PREFERENCES, "Set audio preferences...");
   }
 
@@ -147,15 +108,19 @@ void ComponentContainer::menuItemSelected(int menuItemID, int menuIndex) {
 }
 
 void ComponentContainer::doMenuItemSelected(int itemID, int topLevelMenuIndex) {
-  if (itemID < RECENT_FILES)
-    (this->*(commands[itemID]))();
-  else
-    mainComponent_->loadRecentFile(itemID - RECENT_FILES);
+  if (itemID < RECENT_FILES) {
+    Command::Type command = static_cast<Command:Type>(itemID);
+    if (!commandMap_.execute(command))
+      LOG(ERROR) << "Couldn't execute" << Command::Type_Name(command);
+  } else {
+    mainComponent_.loadRecentFile(itemID - RECENT_FILES);
+  }
 }
 
 ApplicationCommandTarget* ComponentContainer::getNextCommandTarget() {
   return findFirstTargetParentComponent();
 }
+
 
 }  // namespace slow
 }  // namespace rec

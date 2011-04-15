@@ -40,6 +40,7 @@ void TimeAndLength::setTimeScale(double s) {
 
 void TimeAndLength::operator()(const SelectionRange& s) {
   TimeRange range(s);
+
   begin_.setTime(range.begin_ + offset_);
   end_.setTime(range.end_ + offset_);
 }

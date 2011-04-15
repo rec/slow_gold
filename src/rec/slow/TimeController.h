@@ -12,37 +12,23 @@
 namespace rec {
 namespace slow {
 
-class AudioTransportSourcePlayer;
-
 class TimeController : public gui::Layout,
-                       public Listener<double>,
-                       public Listener<const audio::stretch::StretchLoop&>,
-                       public Listener<const SelectionRange&>,
-                       public Listener<const ClockUpdate&>,
-                       public Broadcaster<const ClockUpdate&> {
+                       public Listener<RealTime>,
+                       public Listener<const Range<RealTime>&>,
+                       public Listener<const audio::stretch::StretchLoop&> {
  public:
-  typedef audio::stretch::StretchLoop StretchLoop;
-  typedef persist::Data<StretchLoop> Data;
+  TimeController();
 
-  TimeController(AudioTransportSourcePlayer* transportSource);
-
-  virtual void operator()(const ClockUpdate& up) { broadcast(up); }
-  virtual void operator()(const StretchLoop&);
-  virtual void operator()(double t) { broadcast(ClockUpdate(t, -1)); }
-
-  virtual void operator()(const SelectionRange&);
+  virtual void operator()(const audio::stretch::StretchLoop&);
+  virtual void operator()(const Range<RealTime>&);
+  virtual void operator()(RealTime);
 
  private:
-  AudioTransportSourcePlayer* transportSource_;
-
-  Layout timesLayout_;
-
-  widget::status::time::DialComponent songDial_;
-
-  widget::status::TimeAndLength realTime_;
-  widget::status::TimeAndLength songTime_;
-
   CriticalSection lock_;
+  widget::status::time::DialComponent songDial_;
+  widget::status::time::TextComponent songTime_;
+
+  double timeScale_;
 
   DISALLOW_COPY_AND_ASSIGN(TimeController);
 };

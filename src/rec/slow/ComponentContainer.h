@@ -1,47 +1,25 @@
 #ifndef __REC_COMPONENT_CONTAINER
 #define __REC_COMPONENT_CONTAINER
 
-#include "rec/base/base.h"
+#include "rec/command/Command.h"
+#include "rec/slow/MainPage.h"
+#include "rec/slow/CommandTarget.h"
 
 using namespace juce;
 
 namespace rec {
 namespace slow {
 
-class MainPageComponent;
-class MainPage;
-
-class ComponentContainer : public Component,
-                           public MenuBarModel,
-                           public ApplicationCommandTarget {
+class ComponentContainer : public Component, public MenuBarModel {
  public:
-  ComponentContainer(MainPageComponent* c);
+  ComponentContainer();
   virtual ~ComponentContainer();
 
   virtual void resized();
-  virtual const StringArray getMenuBarNames();
 
-  enum MenuItems { OPEN = 1, CLOSE, CUT, COPY, PASTE, QUIT, EJECT, CLEAR_TREE,
-                   CLEAR_TIME, CLEAR_FILE, AUDIO_PREFERENCES, CLEAR_SELECTION,
-                   CLEAR_LOOPS,
-                   RECENT_FILES,                   // Must be last
-                   LAST_MENU_ITEM };
-
-  virtual const PopupMenu getMenuForIndex(int index, const String& name);
-
-  void open();
-  void close();
-  void cut();
-  void copy();
-  void paste();
-  void quit();
-  void eject();
   void clearTree();
-  void clearTime();
   void clearFile();
   void audioPreferences();
-  void clearSelection();
-  void clearLoops();
 
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex);
   void doMenuItemSelected(int menuItemID, int topLevelMenuIndex);
@@ -54,7 +32,9 @@ class ComponentContainer : public Component,
   virtual ApplicationCommandTarget* getNextCommandTarget();
 
  private:
-  ptr<MainPageComponent> mainComponent_;
+  MainPage mainPage_;
+  ApplicationCommandManager commandManager_;
+  SlowTarget target_;
 
   DISALLOW_COPY_AND_ASSIGN(ComponentContainer);
 };

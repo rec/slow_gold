@@ -10,7 +10,7 @@ namespace gui {
 TableController::TableController(const TableColumnList& c, const Address& address,
                                  const char* name)
     : TableListBox(name, this),
-      UntypedAddressListener(Address()),
+      ProtoAddressListener(Address()),
       columns_(c),
       address_(address),
       numRows_(0) {
@@ -96,7 +96,7 @@ void TableController::set(const Value& v) {
 void TableController::setData(UntypedData* data) {
   {
     ScopedLock l(lock_);
-    UntypedDataListener::setData(data);
+    ProtoListener::setData(data);
     numRows_ = 0;
   }
 

@@ -94,9 +94,6 @@ struct Range {
   bool operator!=(const Range& x) const { return !(x == *this); }
 };
 
-typedef int64 SampleTime;
-typedef double RealTime;
-
 // delete these next ones...
 typedef Range<SampleTime> SampleRange;
 typedef Range<RealTime> TimeRange;

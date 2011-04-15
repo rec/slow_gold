@@ -6,11 +6,10 @@ namespace source {
 
 BufferSource::BufferSource(const Buffer& buffer)
     : buffer_(buffer), position_(0), looping_(true) {
-  DLOG(INFO) << "BufferSource: " << &buffer_;
 }
 
 void BufferSource::getNextAudioBlock(const Info& i) {
-  BufferTime from(const_cast<Buffer*>(&buffer_), position_);  // Sorry...
+  BufferTime from(const_cast<Buffer*>(&buffer_), position_);
   BufferTime to(i.buffer, i.startSample);
 
   for (SampleTime toCopy = i.numSamples; toCopy > 0; ) {

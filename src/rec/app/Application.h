@@ -1,21 +1,27 @@
 #ifndef __REC_APP_APPLICATION__
 #define __REC_APP_APPLICATION__
 
-#include "rec/slow/GenericApplication.h"
-#include "rec/slow/TargetWindow.h"
+#include "rec/app/GenericApplication.h"
 
 namespace rec {
-namespace slow {
+namespace app {
 
 template <typename Window>
 class Application : public GenericApplication {
  public:
   Application(const String& n, const String& v) : GenericApplication(n, v) {}
-  virtual TargetWindow* createWindow() const { return new Window; }
+  virtual DocumentWindow* createWindow() const { return new Window; }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Application);
 };
+
+// START_REC_APPLICATION(CLASS, NAME, VERSION) wraps START_JUCE_APPLICATION.
+//  CLASS must derive from Appliction<SomeWindow>.
+//  NAME is the unquoted name of the application.
+//  VERSION is the quoted version number.
+// example:  START_REC_APPLICATION(SlowWindow, SlowGold, "0.2.23")
+//
 
 #define REC_APPLICATION_HELPER(NAME, CLASS, BASE_CLASS, VERSION)        \
   struct CLASS : public BASE_CLASS {                                    \
@@ -27,7 +33,7 @@ class Application : public GenericApplication {
   REC_APPLICATION_HELPER(NAME, NAME ## Application,                     \
                          rec::slow::Application<WINDOW_CLASS>, VERSION)
 
-}  // namespace slow
+}  // namespace app
 }  // namespace rec
 
 #endif  // __REC_APP_APPLICATION__

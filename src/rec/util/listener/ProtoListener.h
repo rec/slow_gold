@@ -9,27 +9,25 @@ namespace rec {
 namespace util {
 namespace listener {
 
-class UntypedDataListener : public Reference<persist::UntypedData>,
+class ProtoListener : public Reference<persist::UntypedData>,
                             public Listener<const Message&> {
  public:
-  typedef persist::UntypedData UntypedData;
-
-  UntypedDataListener() {}
-  virtual ~UntypedDataListener() {}
+  ProtoListener() {}
+  virtual ~ProtoListener() {}
   virtual void operator()(const Message&) = 0;
 
-  virtual void setData(UntypedData* d) {
+  virtual void setData(persist::UntypedData* d) {
     if (getData())
       getData()->messageBroadcaster()->removeListener(this);
 
-    Reference<UntypedData>::setData(d);
+    Reference<persist::UntypedData>::setData(d);
 
     if (getData())
       getData()->messageBroadcaster()->addListener(this);
   }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(UntypedDataListener);
+  DISALLOW_COPY_AND_ASSIGN(ProtoListener);
 };
 
 }  // namespace listener

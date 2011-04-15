@@ -1,10 +1,10 @@
 #include <google/protobuf/descriptor.h>
 
 #include "rec/slow/MainPage.h"
-
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
+#include "rec/widget/waveform/Zoom.h"
 
 using namespace juce;
 
@@ -14,40 +14,40 @@ using namespace rec::widget::waveform;
 namespace rec {
 namespace slow {
 
-MainPage::MainPage(AudioDeviceManager* deviceManager)
+MainPage::MainPage(Instance* instance) //
     : Layout("MainPage"),
-      player_(deviceManager),
-      directory_(new Root(widget::tree::NodeDesc())),
-      waveform_(WaveformProto()),
-      controller_(player_.getTransport(), this),
-      openDialogOpen_(false) {
+      instance_(instance),
+      stretchyPlayer_(instance_),
+      directoryTreeRoot_(new Root(widget::tree::NodeDesc())),
+      waveform_(instance_, WaveformProto()),
+      playbackController_(instance_, stretchyPlayer_.getTransport()),
+      openDialogOpen_(false),
+      audioSetupPage_(instance_->device_) {
   doLayout();
 
-  Broadcaster<double>* timeBroadcaster =
-      player_.getTransport()->timeBroadcaster();
-  timeBroadcaster->addListener(waveform_.timeCursor());
-  timeBroadcaster->addListener(this);
-  timeBroadcaster->addListener(controller_.timeController());
+  Broadcasters* broadcasters = instance_->broadcasters();
 
-  waveform_.addListener(this);
-  waveform_.selectionBroadcaster()->addListener(controller_.timeController());
-  waveform_.selectionBroadcaster()->addListener(this);
-  waveform_.cursorTimeBroadcaster()->addListener(&loops_);
-  waveform_.dropBroadcaster()->addListener(player_.fileListener());
+  broadcasters->realTime_->addListener(this);
+  broadcasters->timeAndMouseEvent_.addListener(this);
+  broadcasters->selectionRange_->addListener(this);
+  broadcasters->virtualFile->addListener(this);
 
-  directory_->addListener(player_.fileListener());
+  broadcasters->realTime_->addListener(waveform_.timeCursor());
+  broadcasters->realTime_->addListener(playbackController_.timeController());
+  broadcasters->selectionRange_->addListener(playbackController_.timeController());
+  broadcasters->cursorTime_->addListener(&loops_);
+  broadcasters->virtualFile->addListener(stretchyPlayer_.fileListener());
+  broadcasters_->realTimeBroadcaster_->addListener(&stretchyPlayer_);
 
-  player_.addListener(this);
-  loops_.timeBroadcaster()->addListener(&player_);
-
-  directory_->startThread();
-  persist::data<VirtualFile>()->requestUpdate();
+  directoryTreeRoot_->startThread();
+  if (persist::Data<VirtualFile>* d = instance_.data().virtualFile_)
+    d->requestUpdate();
 
   (*this)(0.0);
 }
 
 void MainPage::operator()(double time) {
-  controller_.enableLoopPointButton(loops_.isNewLoopPoint(time));
+  playbackController_.enableLoopPointButton(loops_.isNewLoopPoint(time));
 }
 
 void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
@@ -56,7 +56,7 @@ void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
 }
 
 MainPage::~MainPage() {
-  player_.getTransport()->clear();
+  // stretchyPlayer_.getTransport()->clear();
 }
 
 void MainPage::paint(Graphics& g) {
@@ -66,45 +66,16 @@ void MainPage::paint(Graphics& g) {
 static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100;
 
-bool MainPage::keyPressed(const juce::KeyPress& kp) {
-  switch (kp.getTextCharacter()) {
-    case ' ': player_.getTransport()->toggle(); return true;
-
-    case 'x':
-    case 'X': addLoopPoint(); return true;
-
-    default: return false;
-  }
-}
-
 void MainPage::addLoopPoint() {
-  loops_.addLoopPoint(player_.getTransport()->getCurrentOffsetPosition());
-  controller_.enableLoopPointButton(false);
-}
-
-void MainPage::doOpen() {
-  if (openDialogOpen_)
-    return;
-
-  openDialogOpen_ = true;
-  juce::FileChooser chooser("Please choose an audio file", File::nonexistent,
-                            file::audioFilePatterns(), true);
-
-  if (chooser.browseForFileToOpen())
-    (*player_.fileListener())(file::toVirtualFile(chooser.getResult()));
-
-  openDialogOpen_ = false;
-}
-
-void MainPage::doClose() {
-  (*player_.fileListener())(VirtualFile());
+  loops_.addLoopPoint(stretchyPlayer_.getTransport()->getCurrentOffsetPosition());
+  playbackController_.enableLoopPointButton(false);
 }
 
 void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
   if (timeMouse.mouseEvent_->mods.isShiftDown())
     zoomOut();
 
-  else if (zoomData_ && zoomData_->get().click_to_zoom())
+  else if (zoomProto() && zoomProto()->get().click_to_zoom())
     zoomIn(timeMouse);
 
   else if (timeMouse.mouseEvent_->mods.isCommandDown())
@@ -114,21 +85,16 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
     thread::callAsync(this, &MainPage::doOpen);
 
   else
-    player_.setTime(timeMouse.time_);
+    stretchyPlayer_.setTime(timeMouse.time_);
 }
 
 void MainPage::operator()(const VirtualFile& file) {
-  controller_.setData(player_.getStretchy());
-  controller_(file);
+  playbackController_(file);
 
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);
-    loops_.setData(NULL);
-    waveform_.setData(NULL);
-    waveform_.zoomData()->setData(NULL);
-    controller_.stretchyController()->setZoom(NULL);
+    instance_.clearData();
     length_ = 0;
-    zoomData_ = NULL;
 
   } else {
     persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
@@ -140,7 +106,7 @@ void MainPage::operator()(const VirtualFile& file) {
     else
       listData->append(Address("loop_point"), Value(LoopPoint()));
 
-    if (gui::CachedThumbnail* thumb = player_.cachedThumbnail()) {
+    if (gui::CachedThumbnail* thumb = stretchyPlayer_.cachedThumbnail()) {
       waveform_.setAudioThumbnail(thumb->thumbnail());
       thumb->addListener(&waveform_);
 
@@ -151,21 +117,17 @@ void MainPage::operator()(const VirtualFile& file) {
     gui::addRecentFile(file);
 
     // Adjust the length of clients - neaten this up!
-    length_ = player_.length() / 44100.0;
-    (*(controller_.timeController()))(ClockUpdate(-1, length_));
+    length_ = stretchyPlayer_.length() / 44100.0;
+    (*(playbackController_.timeController()))(ClockUpdate(-1, length_));
 
-    zoomData_ = persist::data<ZoomProto>(file);
-    waveform_.zoomData()->setData(zoomData_);
-    controller_.stretchyController()->setZoom(zoomData_);
-
-    zoomData_->requestUpdate();
+    zoomProto()->requestUpdate();
   }
 
   (*this)(0.0);
 }
 
 void MainPage::operator()(const SelectionRange& sel) {
-  if (persist::Data<StretchLoop>* data = player_.getStretchy()) {
+  if (persist::Data<StretchLoop>* data = stretchyPlayer_.getStretchy()) {
     TimeRange range(sel);
     if (range.end_ < 0.0001)
       range.end_ = length_;
@@ -173,7 +135,7 @@ void MainPage::operator()(const SelectionRange& sel) {
     audio::stretch::Loop loop;
     loop.set_begin(range.begin_);
     loop.set_end(range.end_);
-    player_.getTransport()->setOffset(range.begin_);
+    stretchyPlayer_.getTransport()->setOffset(range.begin_);
 
     DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
     data->set("loop", loop);
@@ -181,8 +143,8 @@ void MainPage::operator()(const SelectionRange& sel) {
 }
 
 void MainPage::clearTime() {
-  if (player_.getStretchy())
-    player_.getStretchy()->clear();
+  if (stretchyPlayer_.getStretchy())
+    stretchyPlayer_.getStretchy()->clear();
 }
 
 void MainPage::clearSelection() {
@@ -194,34 +156,36 @@ void MainPage::clearLoops() {
 }
 
 void MainPage::zoomIn(const TimeAndMouseEvent& timeMouse) {
-  if (zoomData_) {
-    ZoomProto zoom(zoomData_->get());
-    double begin = zoom.begin();
-    double end = zoom.end();
-    if (!end)
-      end = length_;
-
-    double size = end - begin;
-    double middle = timeMouse.time_;
-    zoom.set_begin(juce::jmax(0.0, middle - size / 4.0));
-    zoom.set_end(juce::jmin(middle + size + 4.0, length_));
-    zoomData_->set(Address(), zoom);
-  }
+  if (persist::Data<ZoomProto>* z = zoomProto())
+    z->set(Address(), waveform::zoomIn(*z, length_, timeMouse.time_));
 }
 
 void MainPage::zoomOut() {
-  if (zoomData_) {
-    ZoomProto zoom(zoomData_->get());
-    double begin = zoom.begin();
-    double end = zoom.end();
-    if (!end)
-      end = length_;
-    double size = end - begin;
-    double middle = begin + (end - begin) / 2.0;
-    zoom.set_begin(juce::jmax(0.0, middle - size));
-    zoom.set_end(juce::jmin(middle + size, length_));
-    zoomData_->set(Address(), zoom);
-  }
+  if (persist::Data<ZoomProto>* z = zoomProto())
+    z->set(Address(), waveform::zoomOut(*z, length_));
+}
+
+
+void MainPage::loadRecentFile(int menuItemId) {
+  gui::RecentFiles recent = gui::getSortedRecentFiles();
+  const VirtualFile& file = recent.file(menuItemId).file();
+  persist::data<VirtualFile>()->set(file);
+}
+
+void MainPage::cut() {
+#if 0
+  string s = yaml::write(prefs);
+  SystemClipboard::copyTextToClipboard(s.c_str());
+  DLOG(INFO) << s;
+#endif
+}
+
+void MainPage::paste() {
+#if 0
+  string s = SystemClipboard::getTextFromClipboard().toCString();
+  DLOG(INFO) << s;
+  yaml::read(s, &prefs);
+#endif
 }
 
 }  // namespace slow

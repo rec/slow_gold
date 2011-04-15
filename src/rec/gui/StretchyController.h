@@ -9,12 +9,14 @@
 namespace rec {
 namespace gui {
 
-class StretchyController : public Layout, public juce::ComboBox::Listener {
+class StretchyController : public Layout, public juce::ComboBox::Listener,
+                           public DataListener<StretchLoop> {
  public:
   StretchyController();
   virtual bool isOpaque() const { return true; }
 
-  void setData(UntypedData* data);
+  virtual void setData(persist::Data<StretchLoop>* data);
+
   void setZoom(UntypedData* zoom);
   void enableSliders(bool enabled);
   virtual void comboBoxChanged(juce::ComboBox*);

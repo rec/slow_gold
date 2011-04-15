@@ -4,7 +4,7 @@
 #include "rec/gui/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Geometry.h"
-#include "rec/util/listener/UntypedAddressListener.h"
+#include "rec/util/listener/ProtoAddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Range.h"
 
@@ -12,14 +12,14 @@ namespace rec {
 namespace gui {
 
 class SetterSlider : public Layout,
-                     public UntypedAddressListener,
+                     public ProtoAddressListener,
                      public juce::Slider::Listener {
  public:
   SetterSlider(const String& name, const Address& address,
                const String& caption = String::empty,
                const String& tip = String::empty)
       : Layout(name, HORIZONTAL, true),
-        UntypedAddressListener(address), slider_(name), caption_(caption) {
+        ProtoAddressListener(address), slider_(name), caption_(caption) {
     slider_.setSliderStyle(Slider::LinearHorizontal);
     slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 85, 16);
 

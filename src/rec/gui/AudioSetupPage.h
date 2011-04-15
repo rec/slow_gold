@@ -8,8 +8,8 @@ namespace gui {
 
 class AudioSetupPage  : public Component {
  public:
-  explicit AudioSetupPage(AudioDeviceManager& adm)
-      : deviceSelector_(adm, 0, 0, 2, 2, false, false, true, true) {
+  explicit AudioSetupPage(audio::Device* d)
+      : deviceSelector_(d->manager_, 0, 0, 2, 2, false, false, true, true) {
     addAndMakeVisible(&deviceSelector_);
     setSize(400, 300);
   }

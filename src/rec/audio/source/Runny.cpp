@@ -1,3 +1,4 @@
+#if 0
 #include "rec/audio/source/Runny.h"
 #include "rec/audio/util/CopySamples.h"
 
@@ -10,6 +11,7 @@ namespace source {
 Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
     : ThreadedSource(source, "Runny"),
       buffer_(2, desc.buffer_size()),
+      bufferSource_(&buffer_),
       filled_(desc.buffer_size()),
       desc_(desc) {
   setPriority(desc.thread().priority());
@@ -104,3 +106,4 @@ void Runny::run() {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
+#endif

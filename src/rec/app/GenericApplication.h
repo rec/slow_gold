@@ -6,10 +6,9 @@
 #include "rec/data/persist/AppInstance.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/gui/icon/Icon.h"
-#include "rec/slow/TargetWindow.h"
 
 namespace rec {
-namespace slow {
+namespace app {
 
 class GenericApplication : public juce::JUCEApplication {
  public:
@@ -22,7 +21,7 @@ class GenericApplication : public juce::JUCEApplication {
 
   virtual void initialise(const String& commandLine);
   virtual void shutdown();
-  virtual TargetWindow* createWindow() const { return NULL; }  // = 0;
+  virtual DocumentWindow* createWindow() const = 0;
 
   const String getApplicationName()    { return name_; }
   const String getApplicationVersion() { return version_; }
@@ -33,13 +32,13 @@ class GenericApplication : public juce::JUCEApplication {
  protected:
   const String name_;
   const String version_;
-  ptr<TargetWindow> window_;
+  ptr<DocumentWindow> window_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
 };
 
-}  // namespace slow
+}  // namespace app
 }  // namespace rec
 
 #endif  // __REC_JUCE_GENERIC_APPLICATION

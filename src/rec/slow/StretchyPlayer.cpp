@@ -9,11 +9,8 @@ namespace slow {
 static const int CHANGE_LOCKER_WAIT = 100;
 
 StretchyPlayer::StretchyPlayer(AudioDeviceManager* deviceManager)
-    : transportSource_(new AudioTransportSourcePlayer(deviceManager)),
-      stretchy_(NULL),
-      timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
-      fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)),
-      fileListener_(persist::data<VirtualFile>()) {
+    : timeLocker_(new TimeLocker(CHANGE_LOCKER_WAIT)),
+      fileLocker_(new FileLocker(CHANGE_LOCKER_WAIT)) {
   fileLocker_->addListener(this);
   timeLocker_->addListener(this);
 

@@ -22,6 +22,7 @@ typedef juce::Colour Colour;
 typedef juce::Component Component;
 
 typedef juce::DocumentWindow DocumentWindow;
+typedef juce::DrawableButton DrawableButton;
 
 typedef juce::File File;
 typedef juce::FileDragAndDropTarget FileDragAndDropTarget;

@@ -61,6 +61,20 @@ class BoolOwnedPointer : public Pointer<Operator*>,
   virtual bool operator()() { return (*(this->get()))(); }
 };
 
+template <typename Value>
+class FunctionValue {
+ public:
+  typedef void (*Function)(Value);
+  FunctionValue(Function f,  Value v) : function_(f), value_(v) {}
+  virtual ~FunctionValue() {}
+  virtual bool operator()() { return function_(value_); }
+
+ private:
+  Function function_;
+  Value value_;
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(FunctionValue);
+};
+
 }  // namespace callback
 }  // namespace thread
 

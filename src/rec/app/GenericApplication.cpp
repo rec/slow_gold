@@ -1,11 +1,11 @@
-#include "rec/slow/GenericApplication.h"
+#include "rec/app/GenericApplication.h"
 
 #include "rec/audio/format/mpg123/Mpg123.h"
-#include "rec/slow/ComponentContainer.h"
-#include "rec/slow/DownloadVersion.h"
+#include "rec/app/ComponentContainer.h"
+#include "rec/app/DownloadVersion.h"
 
 namespace rec {
-namespace slow {
+namespace app {
 
 GenericApplication::GenericApplication(const String& name, const String& v)
     : name_(name), version_(v) {
@@ -23,10 +23,14 @@ void GenericApplication::initialise(const String&) {
   persist::AppInstance::start();
   window_.reset(createWindow());
 
+#if TODO
 #if JUCE_MAC
+  // TODO: make sure this is in the right place.
   juce::MenuBarModel::setMacMainMenu(window_->getTarget());
   window_->setMenuBar(NULL);
 #endif
+#endif
+
 }
 
 void GenericApplication::shutdown() {
@@ -40,5 +44,5 @@ void GenericApplication::shutdown() {
   LOG(INFO) << "Shut down finished.";
 }
 
-}  // namespace slow
+}  // namespace app
 }  // namespace rec

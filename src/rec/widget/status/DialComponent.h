@@ -12,16 +12,14 @@ namespace status {
 namespace time {
 
 class DialComponent : public Component,
-                      public Listener<const ClockUpdate&>,
-                      public Listener<const SelectionRange&> {
+                      public Listener<RealTime>,
+                      public Listener<const Range<RealTime>&> {
  public:
-  explicit DialComponent(const Dial& desc, double length = 0.0f, double time = 0.0f);
+  explicit DialComponent(const Dial& desc);
 
-  void setLength(double length);
-  void setTime(double time);
+  virtual void operator()(const Range<RealTime>&);
+  virtual void operator()(RealTime);
 
-  virtual void operator()(const ClockUpdate& c) { c.update(this); }
-  virtual void operator()(const SelectionRange& c);
   virtual void paint(juce::Graphics& g);
   virtual void repaint() { Component::repaint(); }
 
@@ -33,9 +31,8 @@ class DialComponent : public Component,
 
   CriticalSection lock_;
   Dial description_;
-  double length_;
   double time_;
-  TimeRange range_;
+  Range<RealTime> range_;
   double zeroAngle_;
   double timeAngle_;
   double timeRatio_;

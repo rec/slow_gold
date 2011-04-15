@@ -3,7 +3,7 @@
 
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
-#include "rec/util/listener/UntypedAddressListener.h"
+#include "rec/util/listener/ProtoAddressListener.h"
 #include "rec/util/Reference.h"
 #include "rec/data/proto/Address.h"
 
@@ -12,7 +12,7 @@ namespace gui {
 
 class TableController : public TableListBoxModel,
                         public TableListBox,
-                        public UntypedAddressListener {
+                        public ProtoAddressListener {
  public:
   TableController(const TableColumnList& columns, const Address& address,
                   const char* name = "TableController");

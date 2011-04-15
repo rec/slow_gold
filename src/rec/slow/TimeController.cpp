@@ -30,31 +30,33 @@ Dial realTimeDial() {
 
 }  // namespace
 
-TimeController::TimeController(AudioTransportSourcePlayer* ts)
+TimeController::TimeController()
     : Layout("Time controls", VERTICAL),
-      transportSource_(ts),
       timesLayout_("Times", HORIZONTAL),
       songDial_(realTimeDial()),
-      realTime_("Real", Text()),
-      songTime_("Track", Text()) {
+      songTime_("Track", Text()),
+      timeScale_(1.0) {
   addListener(&songDial_);
-  addListener(&realTime_);
   addListener(&songTime_);
 
   addToLayout(&timesLayout_);
   addToLayout(&songDial_);
-  timesLayout_.addToLayout(&realTime_);
   timesLayout_.addToLayout(&songTime_);
 }
 
 void TimeController::operator()(const StretchLoop& stretchLoop) {
-  songTime_.setTimeScale(1.0 / timeScale(stretchLoop.stretch()));
+  ScopedLock l(lock_);
+  timeScale_ = timeScale(stretchLoop.stretch());
 }
 
-void TimeController::operator()(const SelectionRange& r) {
-  realTime_(r);
-  songTime_(r);
+void TimeController::operator()(const Range<RealTime>& r) {
   songDial_(r);
+}
+
+void TimeController::operator()(RealTime time) {
+  RealTime scaledTime = time / timeScale_;
+  songTime_(scaledTime);
+  songDial_(scaledTime);
 }
 
 }  // namespace slow

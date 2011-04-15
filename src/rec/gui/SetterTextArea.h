@@ -3,7 +3,7 @@
 
 #include "rec/gui/Layout.h"
 #include "rec/gui/SetterText.h"
-#include "rec/util/listener/UntypedAddressListener.h"
+#include "rec/util/listener/ProtoAddressListener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/STL.h"
 

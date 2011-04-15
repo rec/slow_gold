@@ -11,7 +11,7 @@
 #include "rec/util/listener/DataListener.h"
 #include "rec/slow/TimeController.h"
 #include "rec/slow/AppLayout.pb.h"
-#include "rec/slow/AudioTransportSourcePlayer.h"
+#include "rec/slow/Player.h"
 
 namespace rec {
 namespace slow {
@@ -28,7 +28,7 @@ class PlaybackController : public gui::Layout,
   typedef persist::Data<StretchLoop> Data;
   typedef gui::SetterResizer SetterResizer;
 
-  PlaybackController(AudioTransportSourcePlayer* transport, MainPage* mainPage);
+  PlaybackController(Player* player);
 
   void setLayoutData();
 
@@ -43,15 +43,15 @@ class PlaybackController : public gui::Layout,
 
  private:
   TimeController timeController_;
-  SetterResizer timeControllerResizer_;
-
   gui::SongData songData_;
-  SetterResizer songDataResizer_;
+  gui::StretchyController stretchyController_;
+  gui::TransportController transportController_;
 
   Layout panel_;
-  gui::StretchyController stretchyController_;
+
+  SetterResizer timeControllerResizer_;
+  SetterResizer songDataResizer_;
   SetterResizer stretchyResizer_;
-  gui::TransportController transportController_;
 
   DISALLOW_COPY_AND_ASSIGN(PlaybackController);
 };

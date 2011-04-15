@@ -1,9 +1,9 @@
 #ifndef __REC_SLOW_BROADCASTERS__
 #define __REC_SLOW_BROADCASTERS__
 
+#include "rec/audio/Audio.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/LoopPoint.pb.h"
-#include "rec/slow/AudioTransportSourcePlayer.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
@@ -14,7 +14,6 @@ namespace rec {
 namespace slow {
 
 struct Broadcasters {
-  Broadcaster<const AudioTransportSourcePlayer&> audioTransportSourcePlayer_;
   Broadcaster<const ClockUpdate&> clockUpdate_;
   Broadcaster<const SelectionRange&> selectionRange_;
   Broadcaster<const audio::stretch::StretchLoop&> stretchLoop_;
@@ -24,7 +23,9 @@ struct Broadcasters {
   Broadcaster<const widget::waveform::CursorTime&> cursorTime_;
   Broadcaster<const widget::waveform::TimeAndMouseEvent&> timeAndMouseEvent_;
   Broadcaster<const widget::waveform::ZoomProto&> zoomProto_;
-  Broadcaster<double> time_;
+
+  Broadcaster<RealTime> realTime_;
+  Broadcaster<TransportState> transportState_;
 };
 
 }  // namespace slow

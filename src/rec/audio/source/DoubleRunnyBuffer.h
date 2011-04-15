@@ -42,6 +42,7 @@ class DoubleRunnyBuffer : public Thread,
   void setLoop(const StretchLoop& loop) { (*this)(loop); }
 
   CriticalSection lock_;
+
   Switching switching_;
   StretchLoop stretchLoop_;
   const RunnyProto runnyDesc_;

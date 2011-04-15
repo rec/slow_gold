@@ -1,3 +1,4 @@
+#if 0
 #ifndef __REC_AUDIO_SOURCE_RUNNY__
 #define __REC_AUDIO_SOURCE_RUNNY__
 
@@ -31,6 +32,7 @@ class Runny : public ThreadedSource {
 
  private:
   AudioSampleBuffer buffer_;
+  BufferSource bufferSource_;
   Circular<SampleTime> filled_;
   const RunnyProto desc_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Runny);
@@ -41,3 +43,4 @@ class Runny : public ThreadedSource {
 }  // namespace rec
 
 #endif  // __REC_AUDIO_SOURCE_RUNNY__
+#endif

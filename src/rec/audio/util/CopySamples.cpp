@@ -61,7 +61,7 @@ struct Copier {
 };
 
 SampleTime restrictCount(const BufferTime& bt, SampleTime count) {
-  SampleTime remains = bt.remaining();
+  SampleTime remains = remaining(bt);
   if (count <= remains)
     return count;
 

@@ -1,10 +1,10 @@
-#include "rec/slow/DownloadVersion.h"
-#include "rec/slow/GenericApplication.h"
+#include "rec/app/DownloadVersion.h"
+#include "rec/app/GenericApplication.h"
 #include "rec/data/persist/AppDirectory.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
-namespace slow {
+namespace app {
 
 using persist::getApp;
 using juce::URL;
@@ -132,5 +132,5 @@ bool downloadNewVersionIfNeeded(const String& version, const String& name) {
   return isNew;
 }
 
-}  // namespace slow
+}  // namespace app
 }  // namespace rec

@@ -2,7 +2,6 @@
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
-#include "rec/audio/source/StretchyRunny.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/util/thread/Trash.h"

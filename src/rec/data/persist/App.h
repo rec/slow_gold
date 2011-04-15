@@ -29,10 +29,17 @@ class App {
 
   command::Manager* commandManager() { return commandManager_; }
 
-  template <typename Proto>
-  Data<Proto>* data(const VirtualFile& file = VirtualFile::default_instance);
+  template <typename Proto> Data<Proto>* data(const VirtualFile& vf) {
+    return data(getShadowDirectory(vf));
+  }
+
+  template <typename Proto> Data<Proto>* appData() {
+    return data(getApplicationDirectory());
+  }
 
  protected:
+  template <typename Proto> Data<Proto>* data(const File& directory);
+
   App() {}
 
   virtual void needsUpdate(UntypedData* data) = 0;
@@ -49,10 +56,7 @@ class App {
 };
 
 template <typename Proto>
-Data<Proto>* App::data(const VirtualFile& vf) {
-  File directory = empty(vf) ? getApplicationDirectory() :
-      getShadowDirectory(vf);
-
+Data<Proto>* App::data(const File& directory) {
   string fileName = data::proto::getName<Proto>();
   string fileKey = directory.getFullPathName().toCString() + ("/" + fileName);
   ScopedLock l(lock_);

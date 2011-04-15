@@ -30,17 +30,23 @@ class Listener {
   DISALLOW_COPY_AND_ASSIGN(Listener);
 };
 
+//
 // Broadcast updates of type Type to a set of Listener<Type>.
+//
 template <typename Type>
-class Broadcaster {
+class Broadcaster : public Listener<Type> {
  public:
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;
 
   Broadcaster() {}
-
   virtual ~Broadcaster();
+
   virtual void broadcast(Type x);
+
+#ifdef BROADCASTERS_ARE_LISTENERS
+  virtual void operator()(Type x) { broadcast(x); }
+#endif
 
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);

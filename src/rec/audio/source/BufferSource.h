@@ -1,8 +1,12 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERYSOURCE__
 #define __REC_AUDIO_SOURCE_BUFFERYSOURCE__
 
-// This is a class backed by a fixed-size Buffer representing, for example, a
-// track on disk or audio CD.
+// This is a Source backed by a fixed-size Buffer representing, for example, a
+// track on disk or audio CD.  The track wraps around the buffer automatically,
+// resulting in perhaps very many copies of a very small track.
+
+// It is up to the class controlling this class to make sure that the buffer is
+// filled in time and that it is correctly locked.
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/util/CopySamples.h"
@@ -12,7 +16,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class BufferSource : public PositionableAudioSource {
+class BufferSource : public Source {
  public:
   explicit BufferSource(const Buffer& buffer);
 
