@@ -9,7 +9,7 @@ namespace gui {
 class AppLayout;
 
 template <typename Proto>
-class SlowWindow : public DocumentWindow {
+class PersistentWindow : public DocumentWindow {
  public:
   PersistentWindow();
   ~PersistentWindow();

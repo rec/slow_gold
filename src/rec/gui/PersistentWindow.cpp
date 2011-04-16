@@ -1,21 +1,21 @@
-#include "rec/slow/SlowWindow.h"
+#include "rec/gui/PersistentWindow.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/gui/Geometry.h"
 
 using namespace juce;
 
 namespace rec {
-namespace app {
+namespace gui {
 
-SlowWindow::SlowWindow()
+PersistentWindow::PersistentWindow()
     : DocumentWindow("SlowGold", Colours::azure, DocumentWindow::allButtons,
                      true) {
   AppLayout layout(persist::data<AppLayout>());
   juce::Rectangle<int> bounds(300, 100, 800, 600);
   if (data->fileReadSuccess())
     bounds = gui::copy(layout.bounds());
-  else
-    data->set("bounds", Value(gui::copy(bounds)));
+  // else
+  //   data->set("bounds", Value(gui::copy(bounds)));
 
   bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
   bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
@@ -26,7 +26,7 @@ SlowWindow::SlowWindow()
   setResizeLimits(1, 1, 8192, 8192);
 }
 
-SlowWindow::~SlowWindow() {
+PersistentWindow::~PersistentWindow() {
   // This next comment might now be vacuous.
   // setting our content component to 0 will delete the current one, and
   // that will in turn delete all its child components. You don't always
@@ -37,23 +37,21 @@ SlowWindow::~SlowWindow() {
   setContentComponent(NULL, false);
 }
 
-void SlowWindow::resized() {
+void PersistentWindow::resized() {
   writeData();
   DocumentWindow::resized();
 }
 
-void SlowWindow::writeData() {
+void PersistentWindow::writeData() {
   persist::data<AppLayout>()->set("bounds", gui::copy(getBounds()));
 }
 
-void SlowWindow::moved() {
+void PersistentWindow::moved() {
   writeData();
   DocumentWindow::moved();
 }
 
-void SlowWindow::closeButtonPressed() {
+void PersistentWindow::closeButtonPressed() {
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
-}  // namespace app
-}  // namespace rec

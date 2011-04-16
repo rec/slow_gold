@@ -69,5 +69,9 @@ void PlaybackController::enableLoopPointButton(bool e) {
   }
 }
 
+void PlaybackController::operator()(RealTime time) {
+  // enableLoopPointButton(loops_.isNewLoopPoint(time));  // TODO
+}
+
 }  // namespace slow
 }  // namespace rec

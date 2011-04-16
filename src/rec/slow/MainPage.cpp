@@ -27,7 +27,6 @@ MainPage::MainPage(Instance* instance) //
 
   Broadcasters* broadcasters = instance_->broadcasters();
 
-  broadcasters->realTime_->addListener(this);
   broadcasters->timeAndMouseEvent_.addListener(this);
   broadcasters->selectionRange_->addListener(this);
   broadcasters->virtualFile->addListener(this);
@@ -44,10 +43,6 @@ MainPage::MainPage(Instance* instance) //
     d->requestUpdate();
 
   (*this)(0.0);
-}
-
-void MainPage::operator()(double time) {
-  playbackController_.enableLoopPointButton(loops_.isNewLoopPoint(time));
 }
 
 void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
@@ -81,8 +76,10 @@ void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
   else if (timeMouse.mouseEvent_->mods.isCommandDown())
     zoomIn(timeMouse);
 
+#ifdef TODO
   else if (timeMouse.clickCount_ > 1)
     thread::callAsync(this, &MainPage::doOpen);
+#endif
 
   else
     stretchyPlayer_.setTime(timeMouse.time_);

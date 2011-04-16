@@ -17,7 +17,7 @@ struct Instance {
   typedef audio::source::Player Player;
 
   explicit Instance(Listeners* l, Player* p) : listeners_(l), player_(p) {
-    player_->addListener(*listeners_);  TODO
+    player_->addListener(*listeners_);
   }
 
   Listeners* listeners_;

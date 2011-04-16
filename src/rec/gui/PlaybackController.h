@@ -16,14 +16,14 @@
 namespace rec {
 namespace slow {
 
-class MainPage;
 using namespace widget::status::time;
 
 typedef audio::stretch::StretchLoop StretchLoop;
 
 class PlaybackController : public gui::Layout,
                            public Listener<const VirtualFile&>,
-                           public DataListener<StretchLoop> {
+                           public DataListener<StretchLoop>,
+                           public Listener<RealTime> {
  public:
   typedef persist::Data<StretchLoop> Data;
   typedef gui::SetterResizer SetterResizer;
@@ -34,6 +34,7 @@ class PlaybackController : public gui::Layout,
 
   virtual void operator()(const VirtualFile&);
   virtual void operator()(const StretchLoop&);
+  virtual void operator()(RealTime);
 
   virtual void setData(Data* data);
 

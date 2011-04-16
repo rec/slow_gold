@@ -57,7 +57,6 @@ class MainPage : public gui::Layout,
   persist::Data<ZoomProto>* zoomProto() { return instance_->data().zoomProto_; }
 
   Instance* const instance_;
-  StretchyPlayer stretchyPlayer_;
 
   thread_ptr<widget::tree::Root> directoryTreeRoot_;
   Waveform waveform_;

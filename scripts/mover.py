@@ -8,6 +8,9 @@ def getRoot():
   # TODO
   return '/Users/tom/Documents/development/rec/src/'
 
+def getFile(path):
+  return path[-1].split('.')[0]
+
 def embed(begin, items, end):
   return begin + (end + begin).join(items) + end
 
@@ -18,9 +21,9 @@ class Mover(object):
 
   PATTERNS = {START: r'^namespace \w+ {', END: r'^}\s+// namespace \w+'}
   FUNCTIONS = [(lambda path: '__' + '_'.join(p.upper() for p in path[:-1])),
-               # (lambda path: '#include "%s/' % '/'.join(path[:-1])),
-               (lambda path: path[-1]),
-               ]
+               (lambda path: '#include "%s/%s.h"' % (
+                   '/'.join(path[:-1]), getFile(path))),
+               (lambda path: getFile(path))]
 
 
   def __init__(self, fr, to):
@@ -39,6 +42,7 @@ class Mover(object):
     self.replacements = [[f(self.fr), f(self.to)] for f in Mover.FUNCTIONS]
     self.namespace = [embed('namespace ', self.to[:-1], ' {\n'),
                       embed('}  // namespace ', self.to[:-1], '\n')]
+    print self.replacements
 
   def move(self):
     r = getRoot()
