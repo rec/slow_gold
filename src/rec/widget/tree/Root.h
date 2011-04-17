@@ -16,7 +16,7 @@ class Root : public Thread,
              public Listener<const VirtualFile&>,
              public juce::MouseListener {
  public:
-  explicit Root(const NodeDesc& desc);
+  explicit Root(const NodeDesc& desc = NodeDesc::default_instance());
   virtual ~Root() {}
 
   virtual void run();

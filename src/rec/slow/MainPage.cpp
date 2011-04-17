@@ -17,18 +17,16 @@ using namespace rec::widget::waveform;
 namespace rec {
 namespace slow {
 
-MainPage::MainPage(Instance* instance) //
-    : Layout("MainPage"),
-      instance_(instance),
+MainPage::MainPage(Instance* i) : Layout("MainPage"), instance_(i) {
   doLayout();
 }
+
+MainPage::~MainPage() {}
 
 void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
   r->reset(new SetterResizer(Address(addr), lo, lo->size()));
   (*r)->add();
 }
-
-MainPage::~MainPage() {}
 
 void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
@@ -103,7 +101,6 @@ void MainPage::doLayout() {
   resizer_[0]->setSetter(data);
   resizer_[1]->setSetter(data);
   loopResizer_->setSetter(data);
-  // controller_.setLayoutData();  // TODO
 }
 
 }  // namespace slow

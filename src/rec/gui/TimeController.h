@@ -12,10 +12,7 @@
 namespace rec {
 namespace gui {
 
-class TimeController : public Layout,
-                       public Listener<RealTime>,
-                       public Listener<const Range<RealTime>&>,
-                       public Listener<const audio::stretch::StretchLoop&> {
+class TimeController : public Layout {
  public:
   TimeController();
 
