@@ -16,14 +16,9 @@ namespace slow {
 ComponentContainer::ComponentContainer() : Component("ComponentContainer") {
   addAndMakeVisible(&mainPage_);
 
-  commandManager_.registerAllCommandsForTarget(&target_);
-  commandManager_.registerAllCommandsForTarget(JUCEApplication::getInstance());
-  addKeyListener(commandManager_.getKeyMappings());
-
   setContentComponent(this);
   setMenuBar(this);
 
-  setApplicationCommandManagerToWatch(&commandManager_);
   setUsingNativeTitleBar(true);
   setVisible(true);
 };
@@ -65,41 +60,6 @@ void ComponentContainer::resized() {
 const StringArray ComponentContainer::getMenuBarNames() {
   static const char* const names[] = {"File", "Edit", NULL};
   return StringArray(names);
-}
-
-static const int RECENT_FILES_OFFSET = 1000;  // hack
-
-const PopupMenu ComponentContainer::getMenuForIndex(int menuIndex,
-                                                    const String& menuName) {
-  using rec::command::Command;
-
-  PopupMenu menu;
-  if (menuName == "File") {
-    menu.addItem(OPEN, "Open...");
-    menu.addItem(CLOSE, "Close");
-
-    gui::RecentFiles recent = gui::getSortedRecentFiles();
-    PopupMenu submenu;
-    for (int i = 0; i < recent.file_size(); ++i)
-      submenu.addItem(RECENT_FILES_OFFSET + i, getFilename(recent.file(i).file()));
-
-    menu.addSubMenu("Open recent", submenu);
-    menu.addItem(EJECT, "Eject all discs");
-    menu.addItem(QUIT, "Quit");
-
-  } else if (menuName == "Edit") {
-    menu.addItem(CUT, "Cut", canCutOrCopy());
-    menu.addItem(COPY, "Copy", canCutOrCopy());
-    menu.addItem(PASTE, "Paste", canPaste());
-    menu.addItem(CLEAR_FILE, "Clear file");
-    menu.addItem(CLEAR_SELECTION, "Clear selection of loop points");
-    menu.addItem(CLEAR_LOOPS, "Clear loops");
-    menu.addItem(CLEAR_TIME, "Clear time and pitch shift to 1");
-    menu.addItem(TREE_CLEAR, "Clear bookmarks area");
-    menu.addItem(AUDIO_PREFERENCES, "Set audio preferences...");
-  }
-
-  return menu;
 }
 
 void ComponentContainer::menuItemSelected(int menuItemID, int menuIndex) {

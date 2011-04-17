@@ -39,15 +39,8 @@ class PlaybackController : public gui::Layout,
   virtual void setData(Data* data);
 
   void enableLoopPointButton(bool e);
-  TimeController* timeController() { return &timeController_; }
-  gui::StretchyController* stretchyController() { return &stretchyController_; }
 
  private:
-  TimeController timeController_;
-  gui::SongData songData_;
-  gui::StretchyController stretchyController_;
-  gui::TransportController transportController_;
-
   Layout panel_;
 
   SetterResizer timeControllerResizer_;

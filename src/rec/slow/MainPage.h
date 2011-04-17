@@ -41,7 +41,6 @@ class MainPage : public gui::Layout,
   void clearSelection();
   void clearLoops();
 
-  void addLoopPoint();
   void zoomIn(const TimeAndMouseEvent& timeMouse);
   void zoomOut();
 
@@ -58,11 +57,6 @@ class MainPage : public gui::Layout,
 
   Instance* const instance_;
 
-  thread_ptr<widget::tree::Root> directoryTreeRoot_;
-  Waveform waveform_;
-  gui::Loops loops_;
-  PlaybackController playbackController_;
-
   ptr<SetterResizer> resizer_[2];
   ptr<SetterResizer> loopResizer_;
 
@@ -70,8 +64,6 @@ class MainPage : public gui::Layout,
   gui::Layout subpanel_;
 
   double length_;
-
-  gui::AudioSetupPage audioSetupPage_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
 

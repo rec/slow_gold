@@ -3,9 +3,12 @@
 
 #include "rec/audio/Device.h"
 #include "rec/audio/source/Player.h"
-#include "rec/slow/Broadcasters.h"
+// #include "rec/slow/Broadcasters.h"
+#include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
+#include "rec/slow/Menus.h"
 #include "rec/slow/PersistentData.h"
+#include "rec/slow/Target.h"
 
 namespace rec {
 namespace app {
@@ -16,15 +19,19 @@ namespace app {
 struct Instance {
   typedef audio::source::Player Player;
 
-  explicit Instance(Listeners* l, Player* p) : listeners_(l), player_(p) {
-    player_->addListener(*listeners_);
+  explicit Instance(Player* p) : player_(p), components_(this), listeners_(this),
+                                 menus_(this) {
+    player_->addListener(listeners_.transportState_);
   }
 
-  Listeners* listeners_;
   Player* player_;
 
+  Components components_;
+  Listeners listeners_;
+  Target target_;
+  Menus menus_;
+  // Broadcasters broadcasters_;
   PersistentData data_;
-  Broadcasters broadcasters_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);
 };

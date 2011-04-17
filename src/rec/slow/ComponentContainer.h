@@ -33,7 +33,6 @@ class ComponentContainer : public Component, public MenuBarModel {
 
  private:
   MainPage mainPage_;
-  ApplicationCommandManager commandManager_;
   SlowTarget target_;
 
   DISALLOW_COPY_AND_ASSIGN(ComponentContainer);

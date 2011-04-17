@@ -6,16 +6,29 @@
 namespace rec {
 namespace slow {
 
-class Components {
- public:
-  Components() {}
-
-  void get() {
+struct Components {
+  Components() : directoryTreeRoot_(new Root(widget::tree::NodeDesc())) {
   }
 
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Components);
+  PlaybackController playbackController_;
+  TimeController timeController_;
+  Waveform waveform_;
+
+  gui::AudioSetupPage audioSetupPage_;
+  gui::Loops loops_;
+  gui::SongData songData_;
+  gui::StretchyController stretchyController_;
+  gui::TransportController transportController_;
+
+  thread_ptr<widget::tree::Root> directoryTreeRoot_;
 };
+
+      stretchyPlayer_(instance_),
+      directoryTreeRoot_(new Root(widget::tree::NodeDesc())),
+      waveform_(instance_, WaveformProto()),
+      playbackController_(instance_, stretchyPlayer_.getTransport()),
+      openDialogOpen_(false),
+      audioSetupPage_(instance_->device_) {
 
 }  // namespace slow
 }  // namespace rec

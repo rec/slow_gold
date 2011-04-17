@@ -1,4 +1,4 @@
-#include "rec/slow/TimeController.h"
+#include "rec/gui/TimeController.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/gui/StretchyController.h"
@@ -10,7 +10,7 @@
 #include "rec/util/cd/Album.h"
 
 namespace rec {
-namespace slow {
+namespace gui {
 
 using namespace juce;
 using namespace rec::proto::arg;
@@ -59,5 +59,3 @@ void TimeController::operator()(RealTime time) {
   songDial_(scaledTime);
 }
 
-}  // namespace slow
-}  // namespace rec

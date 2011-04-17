@@ -20,7 +20,8 @@ class Mover(object):
   END = 2
 
   PATTERNS = {START: r'^namespace \w+ {', END: r'^}\s+// namespace \w+'}
-  FUNCTIONS = [(lambda path: '__' + '_'.join(p.upper() for p in path[:-1])),
+  FUNCTIONS = [(lambda path: '__' + '_'.join(
+                   p.upper() for p in (path[:-1] + [getFile(path)]))),
                (lambda path: '#include "%s/%s.h"' % (
                    '/'.join(path[:-1]), getFile(path))),
                (lambda path: getFile(path))]
@@ -42,7 +43,6 @@ class Mover(object):
     self.replacements = [[f(self.fr), f(self.to)] for f in Mover.FUNCTIONS]
     self.namespace = [embed('namespace ', self.to[:-1], ' {\n'),
                       embed('}  // namespace ', self.to[:-1], '\n')]
-    print self.replacements
 
   def move(self):
     r = getRoot()

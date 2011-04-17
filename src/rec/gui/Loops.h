@@ -52,6 +52,7 @@ class Loops : public TableController,
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };
 
+
 }  // namespace gui
 }  // namespace rec
 

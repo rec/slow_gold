@@ -1,5 +1,5 @@
-#ifndef __REC_SLOW_APP_TIMECONTROLLER__
-#define __REC_SLOW_APP_TIMECONTROLLER__
+#ifndef __REC_GUI_APP_TIMECONTROLLER__
+#define __REC_GUI_APP_TIMECONTROLLER__
 
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
@@ -10,9 +10,9 @@
 #include "rec/widget/status/DialComponent.h"
 
 namespace rec {
-namespace slow {
+namespace gui {
 
-class TimeController : public gui::Layout,
+class TimeController : public Layout,
                        public Listener<RealTime>,
                        public Listener<const Range<RealTime>&>,
                        public Listener<const audio::stretch::StretchLoop&> {
@@ -33,7 +33,7 @@ class TimeController : public gui::Layout,
   DISALLOW_COPY_AND_ASSIGN(TimeController);
 };
 
-}  // namespace slow
 }  // namespace rec
+}  // namespace gui
 
-#endif  // __REC_SLOW_APP_TIMECONTROLLER__
+#endif  // __REC_GUI_APP_TIMECONTROLLER__
