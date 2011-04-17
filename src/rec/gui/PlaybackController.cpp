@@ -17,9 +17,9 @@ using rec::widget::status::time::TextComponent;
 namespace rec {
 namespace slow {
 
-PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport,
-                                       MainPage* mainPage)
+PlaybackController::PlaybackController(Instance* instance)
     : Layout("Main controls"),
+      instance_(instance),
       timeController_(transport),
       timeControllerResizer_(Address("clock_x"), this, 1),
       songDataResizer_(Address("songdata_x"), this, 3),
@@ -35,6 +35,8 @@ PlaybackController::PlaybackController(AudioTransportSourcePlayer* transport,
   panel_.addToLayout(&stretchyController_);
   stretchyResizer_.add(5);
   panel_.addToLayout(&transportController_);
+
+  setLayoutData();
 }
 
 void PlaybackController::setLayoutData() {
@@ -43,34 +45,6 @@ void PlaybackController::setLayoutData() {
   timeControllerResizer_.setSetter(data);
   songDataResizer_.setSetter(data);
   stretchyResizer_.setSetter(data);
-}
-
-void PlaybackController::operator()(const StretchLoop& desc) {
-  thread::callAsync(&stretchyController_,
-                    &gui::StretchyController::enableSliders,
-                    !desc.stretch().disabled());
-  timeController_(desc);
-}
-
-void PlaybackController::operator()(const VirtualFile& file) {
-  songData_.setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
-}
-
-void PlaybackController::setData(Data* data) {
-  DataListener<StretchLoop>::setData(data);
-  stretchyController_.setData(data);
-}
-
-void PlaybackController::enableLoopPointButton(bool e) {
-  if (e != transportController_.getLoopPointButtonEnabled()) {
-    thread::callAsync(&transportController_,
-                      &gui::TransportController::enableLoopPointButton,
-                      e);
-  }
-}
-
-void PlaybackController::operator()(RealTime time) {
-  // enableLoopPointButton(loops_.isNewLoopPoint(time));  // TODO
 }
 
 }  // namespace slow

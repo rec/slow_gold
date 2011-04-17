@@ -13,8 +13,7 @@ namespace rec {
 namespace gui {
 
 class Loops : public TableController,
-              public Cuttable,
-              public Listener<const widget::waveform::CursorTime&> {
+              public Cuttable {
  public:
   explicit Loops(const TableColumnList* desc = NULL);
   virtual ~Loops();
@@ -40,9 +39,6 @@ class Loops : public TableController,
 
   virtual void selectedRowsChanged(int lastRowSelected);
   virtual bool keyPressed(const juce::KeyPress& kp);
-  virtual void operator()(const widget::waveform::CursorTime&);
-
-  Broadcaster<double>* timeBroadcaster() { return &timeBroadcaster_; }
 
  private:
   double length_;

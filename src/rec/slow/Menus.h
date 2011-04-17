@@ -12,10 +12,12 @@ class Menus : public MenuBarModel {
 
   virtual const StringArray getMenuBarNames();
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& name);
-  virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex);
+  virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
 
  private:
-  void add(PopupMenu* m, CommandID command);
+  void add(PopupMenu* m, CommandID c) {
+    instance_->target_.addCommandItem(m, c);
+  }
 
   Instance* instance_;
 

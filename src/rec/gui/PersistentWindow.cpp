@@ -26,16 +26,7 @@ PersistentWindow::PersistentWindow()
   setResizeLimits(1, 1, 8192, 8192);
 }
 
-PersistentWindow::~PersistentWindow() {
-  // This next comment might now be vacuous.
-  // setting our content component to 0 will delete the current one, and
-  // that will in turn delete all its child components. You don't always
-  // have to do this explicitly, because the base class's destructor will
-  // also delete the content component, but in this case we need to
-  // make sure our content comp has gone away before deleting our command
-  // manager.
-  setContentComponent(NULL, false);
-}
+PersistentWindow::~PersistentWindow() {}
 
 void PersistentWindow::resized() {
   writeData();
@@ -49,9 +40,11 @@ void PersistentWindow::writeData() {
 void PersistentWindow::moved() {
   writeData();
   DocumentWindow::moved();
+  getContentComponent()->setBounds(getBounds());
 }
 
 void PersistentWindow::closeButtonPressed() {
+  // TODO.
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 

@@ -21,41 +21,16 @@ namespace rec {
 namespace slow {
 
 // MainPage contains StretchyPlayer, widget::tree::Root,
-class MainPage : public gui::Layout,
-                 public Listener<double>,
-                 public Listener<const TimeAndMouseEvent&>,
-                 public Listener<const SelectionRange&>,
-                 public Listener<const VirtualFile&> {
+class MainPage : public gui::Layout {
  public:
-  MainPage(Instance* instance);
+  MainPage();
   virtual ~MainPage();
 
   void paint(Graphics&);
 
-  virtual void operator()(const TimeAndMouseEvent&);
-  virtual void operator()(const VirtualFile&);
-  virtual void operator()(double time);
-  virtual void operator()(const SelectionRange&);
-
-  void clearTime();
-  void clearSelection();
-  void clearLoops();
-
-  void zoomIn(const TimeAndMouseEvent& timeMouse);
-  void zoomOut();
-
-  void loadRecentFile(int menuItemId);
-  void cut();
-  void paste();
-  gui::AudioSetupPage* audioSetupPage() { return &audioSetupPage_; }
-
  private:
   void addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo);
   void doLayout();
-
-  persist::Data<ZoomProto>* zoomProto() { return instance_->data().zoomProto_; }
-
-  Instance* const instance_;
 
   ptr<SetterResizer> resizer_[2];
   ptr<SetterResizer> loopResizer_;
@@ -66,8 +41,6 @@ class MainPage : public gui::Layout,
   double length_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
-
-  // DropTarget<Waveform, WaveformProto> waveform_;  // turn off dropping for now...
 };
 
 }  // namespace slow

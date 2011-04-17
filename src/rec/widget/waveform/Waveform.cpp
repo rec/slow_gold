@@ -17,14 +17,16 @@ Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
 
 }  // namespace
 
-Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
+Waveform::Waveform(Instance *instance, const WaveformProto& d,
+                   const CursorProto* timeCursor)
     : Component("Waveform"),
+      instance_(instance),
       desc_(d),
       thumbnail_(NULL),
       zoomData_(this) {
   setName("Waveform");
 
-  timeCursor_ = new Cursor(*timeCursor, this, 0.0f, -1);
+  timeCursor_ = new Cursor(instance_, *timeCursor, this, 0.0f, -1);
   addAndMakeVisible(timeCursor_);
   // desc_.set_selection_frame_in_seconds(0);
 }
@@ -102,25 +104,13 @@ double Waveform::xToTime(int x) const {
   return r.begin_ + (x *  r.size()) / getWidth();
 }
 
-void Waveform::operator()(const juce::AudioThumbnail&) {
-  thread::runOnMessageThread(this, &Waveform::repaint);
-}
-
-void Waveform::operator()(const ZoomProto& zp) {
-  ScopedLock l(lock_);
-  zoom_ = zp;
-  if (!zoom_.has_end())
-    zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
-
-  resized();
-}
-
 void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   CursorSet cursors;
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
-    ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, time, i));
+    ptr<Cursor> c(new Cursor(instance_, CursorProto::default_instance(),
+                             this, time, i));
     c->setCursorBounds(time);
     cursors.insert(c.get());
     addAndMakeVisible(c.transfer());
@@ -146,7 +136,7 @@ void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
       i = j;
     }
   }
-  selectionBroadcaster_.broadcast(selection_);
+  instance_->listeners_(selection_);
 
   resized();
 }
@@ -160,10 +150,6 @@ void Waveform::layoutCursors() {
     }
   }
   repaint();
-}
-
-void Waveform::operator()(const gui::LoopPointList& loopPoints) {
-  thread::callAsync(this, &Waveform::addAllCursors, loopPoints);
 }
 
 void Waveform::resized() {
@@ -201,7 +187,7 @@ void Waveform::doClick(const juce::MouseEvent& e, int clickCount) {
     event.time_ = xToTime(e.x);
   }
 
-  broadcast(event);
+  instance_->listeners_(event);
 }
 
 }  // namespace waveform

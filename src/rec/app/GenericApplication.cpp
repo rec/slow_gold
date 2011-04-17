@@ -23,7 +23,7 @@ void GenericApplication::initialise(const String&) {
   persist::AppInstance::start();
   window_.reset(createWindow());
 
-#if TODO
+#ifdef TODO
 #if JUCE_MAC
   // TODO: make sure this is in the right place.
   juce::MenuBarModel::setMacMainMenu(window_->getTarget());

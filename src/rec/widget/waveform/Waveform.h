@@ -32,13 +32,10 @@ struct CursorTime {
 };
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
-                 public Listener<const juce::AudioThumbnail&>,
-                 public Listener<const ZoomProto&>,
-                 public DataListener<gui::LoopPointList>,
-                 public Component {
+class Waveform : public Component {
  public:
-  Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
+  Waveform(Instance* instance,
+           const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
 
   static const CursorProto& defaultTimeCursor();
@@ -49,10 +46,6 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
 
 	void addAllCursors(const gui::LoopPointList& loopPoints);
 
-  virtual void operator()(const juce::AudioThumbnail&);
-  virtual void operator()(const gui::LoopPointList&);
-  virtual void operator()(const ZoomProto&);
-
   virtual void paint(Graphics& g);
   virtual void repaint() { Component::repaint(); }
 
@@ -62,15 +55,6 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();
 
-  Broadcaster<const SelectionRange&>* selectionBroadcaster() {
-    return &selectionBroadcaster_;
-  }
-
-  Broadcaster<const CursorTime&>* cursorTimeBroadcaster() {
-    return &cursorTimeBroadcaster_;
-  }
-
-  DataListener<ZoomProto>* zoomData() { return &zoomData_; }
   TimeRange getTimeRange() const;
 
  private:
@@ -80,26 +64,12 @@ class Waveform : public Broadcaster<const TimeAndMouseEvent&>,
   int timeToX(double t) const;
   double xToTime(int x) const;
 
+  Instance* instance_;
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   Cursor* timeCursor_;
   SelectionRange selection_;
 
-  Broadcaster<const SelectionRange&> selectionBroadcaster_;
-  Broadcaster<const CursorTime&> cursorTimeBroadcaster_;
-
-  class ZoomData : public DataListener<ZoomProto> {
-   public:
-    ZoomData(Waveform* waveform) : waveform_(waveform) {}
-    virtual void operator()(const ZoomProto& zoom) { (*waveform_)(zoom); }
-
-   private:
-    Waveform* const waveform_;
-
-    DISALLOW_COPY_ASSIGN_AND_EMPTY(ZoomData);
-  };
-
-  ZoomData zoomData_;
   ZoomProto zoom_;
 
   DISALLOW_COPY_AND_ASSIGN(Waveform);

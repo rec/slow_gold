@@ -20,12 +20,15 @@ struct CommandCallback;
 
 // An implementation of ApplicationCommandTargetManager that lets you register commands
 // with a callback.
-class TargetManager : public ApplicationCommandTargetManager {
+class TargetManager : public ApplicationCommandTarget {
  public:
   explicit TargetManager(Component* c = NULL);
   void addComponent(Component* c);
 
-  // ApplicationTargetManager virtual methods.
+  // ApplicationCommandTarget virtual methods.
+  virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
+  //  return findFirstTargetParentComponent();
+
   virtual void getAllCommands(Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
   virtual bool perform(const InvocationInfo&); // { return false; }
@@ -44,7 +47,6 @@ class TargetManager : public ApplicationCommandTargetManager {
   void addCommandItem(PopupMenu* menu, CommandID command) {
     menu->addCommandItem(commandManager_, command);
   }
-
 
  private:
   typedef std::hash_map<juce::CommandID, CommandCallback*> CommandMap;

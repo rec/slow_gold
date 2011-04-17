@@ -20,27 +20,12 @@ using namespace widget::status::time;
 
 typedef audio::stretch::StretchLoop StretchLoop;
 
-class PlaybackController : public gui::Layout,
-                           public Listener<const VirtualFile&>,
-                           public DataListener<StretchLoop>,
-                           public Listener<RealTime> {
+class PlaybackController {
  public:
-  typedef persist::Data<StretchLoop> Data;
-  typedef gui::SetterResizer SetterResizer;
-
-  PlaybackController(Player* player);
-
-  void setLayoutData();
-
-  virtual void operator()(const VirtualFile&);
-  virtual void operator()(const StretchLoop&);
-  virtual void operator()(RealTime);
-
-  virtual void setData(Data* data);
-
-  void enableLoopPointButton(bool e);
+  PlaybackController(Instance* instance);
 
  private:
+  Instance* instance_;
   Layout panel_;
 
   SetterResizer timeControllerResizer_;

@@ -10,8 +10,10 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-Cursor::Cursor(const CursorProto& d, Waveform* waveform, double time, int index)
+Cursor::Cursor(Instance* i, const CursorProto& d, Waveform* waveform,
+               double time, int index)
     : Component("Cursor"),
+      instance_(i),
       waveform_(waveform),
       desc_(d),
       index_(index),
@@ -93,7 +95,7 @@ void Cursor::mouseUp(const MouseEvent& e) {
     CursorTime ct;
     ct.cursor_ = index_;
     ct.time_ = waveform_->xToTime(getDragX(e) + desc().component_width() / 2);
-    waveform_->cursorTimeBroadcaster()->broadcast(ct);
+    instance_.listeners_(ct);
   }
 }
 

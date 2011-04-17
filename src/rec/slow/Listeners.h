@@ -160,6 +160,113 @@ void MainPage::paste() {
 static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100;
 
+void Waveform::operator()(const juce::AudioThumbnail&) {
+  thread::runOnMessageThread(this, &Waveform::repaint);
+}
+
+void Waveform::operator()(const ZoomProto& zp) {
+  ScopedLock l(lock_);
+  zoom_ = zp;
+  if (!zoom_.has_end())
+    zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
+
+  resized();
+}
+
+void Waveform::operator()(const gui::LoopPointList& loopPoints) {
+  thread::callAsync(this, &Waveform::addAllCursors, loopPoints);
+}
+
+  class ZoomData : public DataListener<ZoomProto> {
+   public:
+    ZoomData(Waveform* waveform) : waveform_(waveform) {}
+    virtual void operator()(const ZoomProto& zoom) { (*waveform_)(zoom); }
+
+   private:
+    Waveform* const waveform_;
+
+    DISALLOW_COPY_ASSIGN_AND_EMPTY(ZoomData);
+  };
+
+  ZoomData zoomData_;
+
+void PlaybackController::operator()(const StretchLoop& desc) {
+  thread::callAsync(&stretchyController_,
+                    &gui::StretchyController::enableSliders,
+                    !desc.stretch().disabled());
+  timeController_(desc);
+}
+
+void PlaybackController::operator()(const VirtualFile& file) {
+  songData_.setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
+}
+
+void PlaybackController::operator()(RealTime time) {
+  // enableLoopPointButton(loops_.isNewLoopPoint(time));  // TODO
+}
+
+
+void PlaybackController::enableLoopPointButton(bool e) {
+  if (e != transportController_.getLoopPointButtonEnabled()) {
+    thread::callAsync(&transportController_,
+                      &gui::TransportController::enableLoopPointButton,
+                      e);
+  }
+}
+
+void Loops::operator()(const widget::waveform::CursorTime& ct) {
+  if (ct.cursor_ >= 0)
+    getData()->set(Address("loop_point", ct.cursor_, "time"), ct.time_);
+  else
+    timeBroadcaster_.broadcast(ct.time_);
+}
+
+void StretchyPlayer::operator()(const VirtualFile& file) {
+  {
+    ScopedLock l(lock_);
+    if (file_ == file)
+      return;
+  }
+
+  persist::Data<StretchLoop>* stretchy = NULL;
+  thread_ptr<audio::source::DoubleRunnyBuffer> dr;
+  if (!empty(file)) {
+    stretchy = persist::data<StretchLoop>(file);
+    dr.reset(new audio::source::DoubleRunnyBuffer(file, stretchy));
+  }
+
+  {
+    ScopedLock l(lock_);
+    file_ = file;
+    timeLocker_->initialize(0);
+    transportSource_->clear();
+    dr.swap(doubleRunny_);
+    transportSource_->audioTransportSource()->setSource(doubleRunny_->doubleStretchy());
+    stretchy_ = stretchy;
+    if (stretchy_)
+      stretchy_->requestUpdate();
+  }
+
+  broadcast(file);
+}
+
+void StretchyPlayer::operator()(const double& t) {
+  // This is only called when the user clicks in the window to set a new
+  // playback position.
+  if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100 * t)))
+    transportSource_->setPosition(stretchy_->get().stretch().time_scale() * t);
+
+  else
+    LOG(ERROR) << "Failed to fill buffer.";
+}
+
+gui::CachedThumbnail* StretchyPlayer::cachedThumbnail() {
+  return doubleRunny_? doubleRunny_->cachedThumbnail() : NULL;
+}
+
+int StretchyPlayer::length() const {
+  return doubleRunny_ ? doubleRunny_->getTotalLength() : 0;
+}
 
 }  // namespace slow
 }  // namespace rec

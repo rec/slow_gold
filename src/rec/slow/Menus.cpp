@@ -20,7 +20,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& name) {
     add(&m, AUDIO_PREFERENCES);
     add(&m, TREE_CLEAR);
 
-#if 0
+#ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();
     PopupMenu submenu;
     for (int i = 0; i < recent.file_size(); ++i)
@@ -48,12 +48,6 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& name) {
   return menu;
 }
 
-void Menus::add(PopupMenu* m, CommandID command) {
-  instance_->target_.addCommandItem(m, command);
-}
-
-
-void Menus::menuItemSelected(int menuItemID, int topLevelMenuIndex) {
-  // Nothing here!
-}
+}  // namespace slow
+}  // namespace rec
 

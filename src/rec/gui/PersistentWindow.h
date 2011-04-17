@@ -8,7 +8,6 @@ namespace gui {
 
 class AppLayout;
 
-template <typename Proto>
 class PersistentWindow : public DocumentWindow {
  public:
   PersistentWindow();

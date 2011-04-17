@@ -39,7 +39,9 @@ void MainPage::doLayout() {
   AppLayout a = data->get();
 
   bool full[] = {a.full_directory(),  a.full_waveform(), a.full_controller()};
-  Component* comp[] = {directory_->treeView(), &waveform_, &controller_};
+  Component* comp[] = { instance_->components_.directory_->treeView(),
+                        &instance_->components_.waveform_,
+                        &instance_->components_.controller_};
   const char* address[] = {"directory_y", "waveform_y", NULL};
 
   static const int SIZE = arraysize(full);
@@ -82,7 +84,7 @@ void MainPage::doLayout() {
     }
     panel_.addToLayout(&subpanel_);
     addResizer(&loopResizer_, "loops_x", &panel_);
-    panel_.addToLayout(&loops_);
+    panel_.addToLayout(&instance_->components_.loops_);
 
   } else {
     for (int i = 0; i < SIZE; ++i) {
@@ -101,7 +103,7 @@ void MainPage::doLayout() {
   resizer_[0]->setSetter(data);
   resizer_[1]->setSetter(data);
   loopResizer_->setSetter(data);
-  controller_.setLayoutData();
+  // controller_.setLayoutData();  // TODO
 }
 
 }  // namespace slow

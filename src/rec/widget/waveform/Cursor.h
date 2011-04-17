@@ -13,14 +13,11 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component,
-               public Listener<double>,
-               public Broadcaster<const CursorTime&> {
+class Cursor : public Component {
  public:
-  Cursor(const CursorProto& d, Waveform* waveform, double time, int index);
+  Cursor(Instance* instance, const CursorProto& d, Waveform* waveform,
+         double time, int index);
   virtual ~Cursor() {}
-
-  virtual void operator()(double t) { setTime(t); }
 
   void setTime(double time);
   void paint(Graphics& g);
@@ -38,6 +35,7 @@ class Cursor : public Component,
  private:
   int getDragX(const MouseEvent& e) const;
 
+  Instance* instance_;
   Waveform* const waveform_;
   CriticalSection lock_;
   CursorProto desc_;

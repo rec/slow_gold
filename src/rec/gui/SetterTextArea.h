@@ -36,8 +36,12 @@ class SetterTextArea : public Layout,
     Reference<UntypedData>::setData(data);
     for (int i = 0; i < components_.size(); ++i)
       text(i)->setData(data);
+
+#ifdef TODO
     if (data)
       data->requestUpdate();
+#endif
+
   }
 
   void repaint() {

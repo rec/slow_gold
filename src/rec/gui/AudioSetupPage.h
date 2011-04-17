@@ -20,11 +20,17 @@ class AudioSetupPage  : public Component {
     deviceSelector_.setBounds(8, 8, getWidth() - 16, getHeight() - 16);
   }
 
+  void show(Component* comp) {
+    juce::DialogWindow::showModalDialog("Set Audio Preferences", this, comp,
+                                        Colours::white, true);
+  }
+
  private:
   AudioDeviceSelectorComponent deviceSelector_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(AudioSetupPage);
 };
+
 
 }  // namespace gui
 }  // namespace rec

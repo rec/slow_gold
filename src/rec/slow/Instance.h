@@ -19,13 +19,13 @@ namespace app {
 struct Instance {
   typedef audio::source::Player Player;
 
-  explicit Instance(Player* p) : player_(p), components_(this), listeners_(this),
-                                 menus_(this) {
+  explicit Instance() : player_(&device_), components_(this), listeners_(this),
+                        menus_(this) {
     player_->addListener(listeners_.transportState_);
   }
 
-  Player* player_;
-
+  Device device_;
+  Player player_;
   Components components_;
   Listeners listeners_;
   Target target_;

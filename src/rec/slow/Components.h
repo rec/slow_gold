@@ -6,10 +6,13 @@
 namespace rec {
 namespace slow {
 
+struct Instance;
+
 struct Components {
-  Components() : directoryTreeRoot_(new Root(widget::tree::NodeDesc())) {
+  Components(Instance* instance) : instance_(instance) {
   }
 
+  MainPage mainPage_;
   PlaybackController playbackController_;
   TimeController timeController_;
   Waveform waveform_;
@@ -21,14 +24,17 @@ struct Components {
   gui::TransportController transportController_;
 
   thread_ptr<widget::tree::Root> directoryTreeRoot_;
+
+  // DropTarget<Waveform, WaveformProto> waveform_;  // turn off dropping for now...
 };
 
-      stretchyPlayer_(instance_),
+#if 0
       directoryTreeRoot_(new Root(widget::tree::NodeDesc())),
       waveform_(instance_, WaveformProto()),
       playbackController_(instance_, stretchyPlayer_.getTransport()),
       openDialogOpen_(false),
       audioSetupPage_(instance_->device_) {
+#endif
 
 }  // namespace slow
 }  // namespace rec
