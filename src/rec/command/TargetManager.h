@@ -41,6 +41,10 @@ class TargetManager : public ApplicationCommandTargetManager {
            const ModifierKeys& modifiers = getDefaultMods(),
            int flags = 0);
 
+  void addCommandItem(PopupMenu* menu, CommandID command) {
+    menu->addCommandItem(commandManager_, command);
+  }
+
 
  private:
   typedef std::hash_map<juce::CommandID, CommandCallback*> CommandMap;
