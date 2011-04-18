@@ -1,60 +1,70 @@
 #!/usr/local/bin/python
 
+import glob
 import os
+import os.path
 import re
 import sys
 
-def getRoot():
-  # TODO
-  return '/Users/tom/Documents/development/rec/src/'
-
-def getFile(path):
-  return path[-1].split('.')[0]
-
-def embed(begin, items, end):
-  return begin + (end + begin).join(items) + end
 
 class Mover(object):
   NONE = 0
   START = 1
   END = 2
 
-  PATTERNS = {START: r'^namespace \w+ {', END: r'^}\s+// namespace \w+'}
-  FUNCTIONS = [(lambda path: '__' + '_'.join(
-                   p.upper() for p in (path[:-1] + [getFile(path)]))),
-               (lambda path: '#include "%s/%s.h"' % (
-                   '/'.join(path[:-1]), getFile(path))),
-               (lambda path: getFile(path))]
+  PATTERNS = {START: r'^namespace \w+ {',
+              END: r'^}\s+// namespace \w+'}
 
+  FUNCTIONS = [(lambda path: '__' + '_'.join(p.upper() for p in path)),
+               (lambda path: '#include "%s.h"' % '/'.join(path)),
+               (lambda path: path[-1])]
 
-  def __init__(self, fr, to):
-    def stripUp(s):
-      prefix = '../'
-      while s.startswith(prefix):
-        s = s[len(prefix):]
-      return ['rec'] + s.split('/')
+  def __init__(self, fromFile, toFile):
+    def path(s):
+      parts = os.path.abspath(s).split('/src/rec/')[1:]
+      if not parts:
+        raise ValueError(s)
+      parts = ['rec'] + parts[0].split('/')
+      parts[-1] = parts[-1].split('.')[0]
+      return parts
 
     self.state = Mover.NONE
-    self.fr = stripUp(fr)
-    self.to = stripUp(to)
-    if not self.to[-1]:
-      self.to[-1] = self.fr[-1]
+    fromFile = os.path.abspath(fromFile)
+    toFile = os.path.abspath(toFile)
 
-    self.replacements = [[f(self.fr), f(self.to)] for f in Mover.FUNCTIONS]
-    self.namespace = [embed('namespace ', self.to[:-1], ' {\n'),
-                      embed('}  // namespace ', self.to[:-1], '\n')]
+    if not os.path.exists(fromFile):
+      raise ValueError(fromFile + " doesn't exist!")
+
+    if os.path.isdir(fromFile):
+      raise ValueError(fromFile + " is a directory!")
+
+    self.fromFile = fromFile
+
+    if os.path.isdir(toFile):
+      toFile += ('/' + os.path.basename(fromFile))
+    self.toFile = toFile
+
+    fromPath = path(self.fromFile)
+    toPath = path(self.toFile)
+
+    func = Mover.FUNCTIONS
+    self.replacements = [[f(fromPath), f(toPath)] for f in func]
+
+    names = toPath[:-1]
+    def bed(begin, end='\n'):
+      return begin + (end + begin).join(names) + end
+
+    self.namespace = [bed('namespace ', ' {\n'), bed('}  // namespace ')]
 
   def move(self):
-    r = getRoot()
-    self.out = open(r + '/'.join(self.to), 'w')
-    ifname = r + '/'.join(self.fr)
-    infile = open(ifname, 'r')
-    for line in infile:
-      self.transition(self.toState(line))
-      self.process(line)
-    self.out.close()
-    infile.close()
-    os.remove(ifname)
+    with open(self.fromFile, 'r') as input:
+      with open(self.toFile, 'w') as output:
+        self.out = output
+        for line in input:
+          self.transition(self.toState(line))
+          self.process(line)
+
+    os.remove(self.fromFile)
 
   def transition(self, state):
     if self.state != state and self.state:
@@ -73,18 +83,23 @@ class Mover(object):
         line = re.sub(pat, repl, line)
       self.out.write(line)
 
-#def move(fr, to):
-#  Mover(fr, to).move()
-
 
 def move(args):
   to = args.pop()
+  files = []
+  for arg in args:
+    results = glob.glob(arg)
+    if results:
+      files.extend(results)
+    else:
+      print arg, "didn't match any files."
+
   if not args:
     print ('Usage: mover.py fromFile toFileOrDirectory\n'
            '       mover.py from [...from] toDirectory')
 
-  elif len(args) > 1 and not to.endswith('/'):
-    print 'Can only move multiple files to a directory'
+  elif len(args) > 1 and not os.path.isdir(to):
+     print 'Can only move multiple files to a directory:', to
 
   else:
     for a in args:

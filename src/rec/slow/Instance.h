@@ -24,14 +24,15 @@ struct Instance {
     player_->addListener(listeners_.transportState_);
   }
 
-  Device device_;
-  Player player_;
   Components components_;
+  Device device_;
   Listeners listeners_;
-  Target target_;
   Menus menus_;
-  // Broadcasters broadcasters_;
   PersistentData data_;
+  Player player_;
+  Target target_;
+
+  // Broadcasters broadcasters_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);
 };

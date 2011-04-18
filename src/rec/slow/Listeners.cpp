@@ -3,59 +3,34 @@
 namespace rec {
 namespace slow {
 
-void Listeners::operator()(const ClockUpdate&) {
+void Listeners::operator()(const juce::AudioThumbnail&) {
+  thread::runOnMessageThread(&instance_->components_.waveform_,
+                             &Waveform::repaint);
 }
 
-void Listeners::operator()(const SelectionRange&) {
+void Listeners::operator()(const ClockUpdate& x) {
 }
 
-void Listeners::operator()(const audio::stretch::StretchLoop&) {
+void Listeners::operator()(const SelectionRange& sel) {
+  if (persist::Data<StretchLoop>* data = stretchyPlayer_.getStretchy()) {
+    TimeRange range(sel);
+    if (range.end_ < 0.0001)
+      range.end_ = length_;
+
+    audio::stretch::Loop loop;
+    loop.set_begin(range.begin_);
+    loop.set_end(range.end_);
+    stretchyPlayer_.getTransport()->setOffset(range.begin_);
+
+    DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
+    data->set("loop", loop);
+  }
 }
 
-void Listeners::operator()(const file::VirtualFile&) {
+void Listeners::operator()(const audio::stretch::StretchLoop& x) {
 }
 
-void Listeners::operator()(const file::VirtualFileList&) {
-}
-
-void Listeners::operator()(const gui::LoopPointList&) {
-}
-
-void Listeners::operator()(const widget::waveform::CursorTime&) {
-}
-
-void Listeners::operator()(const widget::waveform::TimeAndMouseEvent&) {
-}
-
-void Listeners::operator()(const widget::waveform::ZoomProto&) {
-}
-
-void Listeners::operator()(RealTime) {
-}
-
-void Listeners::operator()(TransportState) {
-}
-
-void MainPage::operator()(const TimeAndMouseEvent& timeMouse) {
-  if (timeMouse.mouseEvent_->mods.isShiftDown())
-    zoomOut();
-
-  else if (zoomProto() && zoomProto()->get().click_to_zoom())
-    zoomIn(timeMouse);
-
-  else if (timeMouse.mouseEvent_->mods.isCommandDown())
-    zoomIn(timeMouse);
-
-#ifdef TODO
-  else if (timeMouse.clickCount_ > 1)
-    thread::callAsync(this, &MainPage::doOpen);
-#endif
-
-  else
-    stretchyPlayer_.setTime(timeMouse.time_);
-}
-
-void MainPage::operator()(const VirtualFile& file) {
+void Listeners::operator()(const file::VirtualFile& file) {
   playbackController_(file);
 
   if (empty(file)) {
@@ -93,22 +68,42 @@ void MainPage::operator()(const VirtualFile& file) {
   (*this)(0.0);
 }
 
-void MainPage::operator()(const SelectionRange& sel) {
-  if (persist::Data<StretchLoop>* data = stretchyPlayer_.getStretchy()) {
-    TimeRange range(sel);
-    if (range.end_ < 0.0001)
-      range.end_ = length_;
-
-    audio::stretch::Loop loop;
-    loop.set_begin(range.begin_);
-    loop.set_end(range.end_);
-    stretchyPlayer_.getTransport()->setOffset(range.begin_);
-
-    DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
-    data->set("loop", loop);
-  }
+void Listeners::operator()(const file::VirtualFileList& x) {
 }
 
+void Listeners::operator()(const gui::LoopPointList& x) {
+}
+
+void Listeners::operator()(const widget::waveform::CursorTime& x) {
+}
+
+void Listeners::operator()(const widget::waveform::TimeAndMouseEvent& x) {
+  if (timeMouse.mouseEvent_->mods.isShiftDown())
+    zoomOut();
+
+  else if (zoomProto() && zoomProto()->get().click_to_zoom())
+    zoomIn(timeMouse);
+
+  else if (timeMouse.mouseEvent_->mods.isCommandDown())
+    zoomIn(timeMouse);
+
+#ifdef TODO
+  else if (timeMouse.clickCount_ > 1)
+    thread::callAsync(this, &MainPage::doOpen);
+#endif
+
+  else
+    stretchyPlayer_.setTime(timeMouse.time_);
+}
+
+void Listeners::operator()(const widget::waveform::ZoomProto& x) {
+}
+
+void Listeners::operator()(RealTime x) {
+}
+
+void Listeners::operator()(TransportState x) {
+}
 
 void MainPage::clearTime() {
   if (stretchyPlayer_.getStretchy())
@@ -132,7 +127,6 @@ void MainPage::zoomOut() {
   if (persist::Data<ZoomProto>* z = zoomProto())
     z->set(Address(), waveform::zoomOut(*z, length_));
 }
-
 
 void MainPage::loadRecentFile(int menuItemId) {
   gui::RecentFiles recent = gui::getSortedRecentFiles();
@@ -158,10 +152,6 @@ void MainPage::paste() {
 
 static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100;
-
-void Waveform::operator()(const juce::AudioThumbnail&) {
-  thread::runOnMessageThread(this, &Waveform::repaint);
-}
 
 void Waveform::operator()(const ZoomProto& zp) {
   ScopedLock l(lock_);
