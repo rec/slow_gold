@@ -1,10 +1,11 @@
-#include "rec/gui/StretchyController.h"
+#include "rec/gui/audio/StretchyController.h"
 
 using rec::audio::source::StereoProto;
 using rec::audio::stretch::StretchLoop;
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 namespace {
 
@@ -95,6 +96,7 @@ void StretchyController::enableSliders(bool enabled) {
   fineScale_.setEnabled(enabled);
 }
 
-}  // namespace gui
 }  // namespace rec
+}  // namespace gui
+}  // namespace audio
 

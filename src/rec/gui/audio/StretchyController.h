@@ -1,5 +1,5 @@
-#ifndef __REC_GUI_STRETCHYCONTROLLER__
-#define __REC_GUI_STRETCHYCONTROLLER__
+#ifndef __REC_GUI_AUDIO_STRETCHYCONTROLLER__
+#define __REC_GUI_AUDIO_STRETCHYCONTROLLER__
 
 #include "rec/gui/SetterSlider.h"
 #include "rec/gui/Layout.h"
@@ -8,6 +8,7 @@
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 class StretchyController : public Layout, public juce::ComboBox::Listener,
                            public DataListener<StretchLoop> {
@@ -33,7 +34,8 @@ class StretchyController : public Layout, public juce::ComboBox::Listener,
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
 };
 
-}  // namespace gui
 }  // namespace rec
+}  // namespace gui
+}  // namespace audio
 
-#endif  // __REC_GUI_STRETCHYCONTROLLER__
+#endif  // __REC_GUI_AUDIO_STRETCHYCONTROLLER__

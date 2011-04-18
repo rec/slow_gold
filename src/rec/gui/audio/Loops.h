@@ -1,5 +1,5 @@
-#ifndef __REC_GUI_LOOPS__
-#define __REC_GUI_LOOPS__
+#ifndef __REC_GUI_AUDIO_LOOPS__
+#define __REC_GUI_AUDIO_LOOPS__
 
 #include "rec/gui/LoopPoint.pb.h"
 #include "rec/gui/TableController.h"
@@ -11,6 +11,7 @@
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 bool isNewLoopPoint(const LoopPointList& lp, RealTime t);
 
@@ -50,7 +51,8 @@ class Loops : public TableController, public Cuttable {
 };
 
 
-}  // namespace gui
 }  // namespace rec
+}  // namespace gui
+}  // namespace audio
 
-#endif  // __REC_GUI_LOOPS__
+#endif  // __REC_GUI_AUDIO_LOOPS__

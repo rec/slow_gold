@@ -7,7 +7,8 @@
 #include "rec/slow/TimeController.h"
 
 namespace rec {
-namespace slow {
+namespace gui {
+namespace audio {
 
 using namespace widget::status::time;
 
@@ -27,7 +28,8 @@ class PlaybackController : public Layout {
   DISALLOW_COPY_AND_ASSIGN(PlaybackController);
 };
 
-}  // namespace slow
 }  // namespace rec
+}  // namespace gui
+}  // namespace audio
 
 #endif  // __REC_SLOW_APP_PLAYBACKCONTROLLER__

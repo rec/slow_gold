@@ -1,4 +1,4 @@
-#include "rec/gui/TimeController.h"
+#include "rec/gui/audio/TimeController.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/gui/StretchyController.h"
@@ -11,6 +11,7 @@
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 using namespace juce;
 using namespace rec::proto::arg;

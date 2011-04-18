@@ -1,6 +1,6 @@
 #include <algorithm>
 
-#include "rec/gui/Loops.h"
+#include "rec/gui/audio/Loops.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Range.h"
@@ -8,6 +8,7 @@
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 static Defaulter<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { field { name: \"time\" } } } "
@@ -218,5 +219,3 @@ void Loops::clearLoops() {
   getData()->set(Address(), loopPoints_);
 }
 
-}  // namespace gui
-}  // namespace rec

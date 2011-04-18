@@ -1,5 +1,5 @@
-#ifndef __REC_GUI_TRANSPORTCONTROLLER__
-#define __REC_GUI_TRANSPORTCONTROLLER__
+#ifndef __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
+#define __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/Player.h"
@@ -8,6 +8,7 @@
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
@@ -36,7 +37,8 @@ class TransportController : public Layout,
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TransportController);
 };
 
-}  // namespace gui
 }  // namespace rec
+}  // namespace gui
+}  // namespace audio
 
-#endif  // __REC_GUI_TRANSPORTCONTROLLER__
+#endif  // __REC_GUI_AUDIO_TRANSPORTCONTROLLER__

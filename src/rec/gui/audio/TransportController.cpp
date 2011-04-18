@@ -1,4 +1,4 @@
-#include "rec/gui/TransportController.h"
+#include "rec/gui/audio/TransportController.h"
 
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
@@ -12,6 +12,7 @@
 using namespace rec::audio::transport;
 namespace rec {
 namespace gui {
+namespace audio {
 
 TransportController::TransportController()
     : Layout("TransportController", HORIZONTAL),
@@ -63,6 +64,7 @@ void TransportController::recalc() {
   addLoopPointButton_.setEnabled(isNewLoopPoint(loopPointList_, time_));
 }
 
-}  // namespace gui
 }  // namespace rec
+}  // namespace gui
+}  // namespace audio
 

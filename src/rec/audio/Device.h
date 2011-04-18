@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_UTIL_DEVICE__
 #define __REC_AUDIO_UTIL_DEVICE__
 
-#include "rec/gui/AudioSetupPage.h"
+#include "rec/gui/audio/SetupPage.h"
 #include "rec/audio/util/AudioDeviceSetup.h"
 
 namespace rec {
@@ -9,7 +9,7 @@ namespace audio {
 
 struct Device {
   AudioDeviceManager manager_;
-  gui::AudioSetupPage setupPage_;
+  gui::audio::SetupPage setupPage_;
   persist::AudioDeviceSetupListener setupListener_;
 
   Device() : setupPage_(manager_), setupListener_(&manager_) {}

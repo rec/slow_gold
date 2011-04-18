@@ -5,7 +5,8 @@
 using namespace rec::proto::arg;
 
 namespace rec {
-namespace slow {
+namespace gui {
+namespace audio {
 
 PlaybackController::PlaybackController(Instance* instance)
     : Layout("Main controls"),
@@ -32,5 +33,3 @@ PlaybackController::PlaybackController(Instance* instance)
   stretchyResizer_.setSetter(data);
 }
 
-}  // namespace slow
-}  // namespace rec

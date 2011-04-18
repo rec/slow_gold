@@ -1,4 +1,4 @@
-#include "rec/gui/CachedThumbnail.h"
+#include "rec/gui/audio/CachedThumbnail.h"
 
 #include "rec/util/thread/FileWriter.h"
 #include "rec/util/file/VirtualFile.h"
@@ -6,6 +6,7 @@
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 CachedThumbnail::CachedThumbnail(const File& file, int compression,
                                  int sampleLength)
@@ -46,5 +47,3 @@ void CachedThumbnail::writeThumbnail(bool deferred) {
   }
 }
 
-}  // namespace gui
-}  // namespace rec

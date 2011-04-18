@@ -11,6 +11,7 @@
 
 namespace rec {
 namespace gui {
+namespace audio {
 
 class TimeController : public Layout {
  public:
@@ -32,5 +33,6 @@ class TimeController : public Layout {
 
 }  // namespace rec
 }  // namespace gui
+}  // namespace audio
 
 #endif  // __REC_GUI_APP_TIMECONTROLLER__
