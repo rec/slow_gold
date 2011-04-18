@@ -13,26 +13,25 @@ namespace gui {
 // those buttons.
 class TransportController : public Layout,
                             public juce::ButtonListener,
-                            public Listener<transport::State>,
                             public Broadcaster<audio::transport::Commands> {
  public:
   TransportController();
   virtual void buttonClicked(juce::Button *button);
-  void setButtonState(audio::transport::Command command);
-  void operator()(transport::State state);
-
-  virtual void layout() { Layout::layout(); }
-
-  bool getLoopPointButtonEnabled() const { return addLoopPointButton_.isEnabled(); }
-  void enableLoopPointButton(bool e) { addLoopPointButton_.setEnabled(e); }
+  void setTransportState(audio::transport::State state);
+  void setTime(SampleTime time) { time_ = time; recalc(); }
+  void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
 
  private:
+  void recalc();
+
   audio::source::Player* player_;
   slow::MainPage* mainPage_;
   DrawableButton startStopButton_;
   DrawableButton addLoopPointButton_;
   DrawableButton zoomOutButton_;
   juce::Label filler_;
+  SampleTime time_;
+  LoopPointList loopPointList_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TransportController);
 };

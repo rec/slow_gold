@@ -100,14 +100,18 @@ void Loops::onDataChange() {
   thread::callAsync(this, &Loops::doSelect);
 }
 
-bool Loops::isNewLoopPoint(double t) const {
-  ScopedLock l(lock_);
-  for (int i = 0; i < loopPoints_.loop_point_size(); ++i) {
-    double t2 = loopPoints_.loop_point(i).time();
-    if (near(t, t2) || near(t + length_, t2) || near(t, t2 + length_))
+bool isNewLoopPoint(const LoopPointList& lp, RealTime t) {
+  for (int i = 0; i < lp.loop_point_size(); ++i) {
+    double t2 = lp.loop_point(i).time();
+    if (near(t, t2))
       return false;
   }
   return true;
+}
+
+bool Loops::isNewLoopPoint(double t) const {
+  ScopedLock l(lock_);
+  return isNewLoopPoint(loopPoints_, t);
 }
 
 namespace {

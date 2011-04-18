@@ -1,7 +1,15 @@
 #ifndef __REC_SLOW_COMPONENTS__
 #define __REC_SLOW_COMPONENTS__
 
-#include "rec/base/base.h"
+#include "rec/gui/DropTarget.h"
+#include "rec/gui/Loops.h"
+#include "rec/gui/SongData.h"
+#include "rec/gui/StretchyController.h"
+#include "rec/gui/TransportController.h"
+#include "rec/slow/MainPage.h"
+#include "rec/slow/PlaybackController.h"
+#include "rec/slow/TimeController.h"
+#include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
 namespace slow {
@@ -21,7 +29,7 @@ struct Components {
   gui::TransportController transportController_;
 
   thread_ptr<widget::tree::Root> directoryTreeRoot_;
-  // DropTarget<Waveform, WaveformProto> waveform_;  // turn off dropping for now...
+  DropTarget<Waveform, WaveformProto> waveform_;
 
   MainPage mainPage_;
 };

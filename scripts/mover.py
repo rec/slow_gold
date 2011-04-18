@@ -7,6 +7,10 @@ import re
 import sys
 
 
+def run(cmd):
+  # print '$', cmd
+  os.system(cmd)
+
 class Mover(object):
   NONE = 0
   START = 1
@@ -36,12 +40,16 @@ class Mover(object):
       raise ValueError(fromFile + " doesn't exist!")
 
     if os.path.isdir(fromFile):
-      raise ValueError(fromFile + " is a directory!")
+      raise ValueError(fromFile + ' is a directory!')
 
     self.fromFile = fromFile
 
     if os.path.isdir(toFile):
       toFile += ('/' + os.path.basename(fromFile))
+
+    if os.path.exists(toFile):
+      raise ValueError(toFile + ' already exists.')
+
     self.toFile = toFile
 
     fromPath = path(self.fromFile)
@@ -57,14 +65,19 @@ class Mover(object):
     self.namespace = [bed('namespace ', ' {\n'), bed('}  // namespace ')]
 
   def move(self):
-    with open(self.fromFile, 'r') as input:
+    tempFile = self.toFile + '.tmp'
+    run('git mv %s %s' % (self.fromFile, self.toFile))
+    if os.path.exists(self.fromFile):
+      run('mv -f %s %s' % (self.fromFile, self.toFile))
+
+    run('cp %s %s' % (self.toFile, tempFile))
+    with open(tempFile, 'r') as input:
       with open(self.toFile, 'w') as output:
         self.out = output
         for line in input:
           self.transition(self.toState(line))
           self.process(line)
-
-    os.remove(self.fromFile)
+    os.remove(tempFile)
 
   def transition(self, state):
     if self.state != state and self.state:

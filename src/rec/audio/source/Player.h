@@ -16,7 +16,7 @@ class Player : public Broadcaster<TransportState>, public juce::ChangeListener {
   Player(Device* d);
   virtual ~Player();
 
-  void setState(TransportState state = RUNNING);
+  void setTransportState(TransportState state = RUNNING);
 
   void setSource(Source* source);
   void broadcastState() { broadcast(state()); }

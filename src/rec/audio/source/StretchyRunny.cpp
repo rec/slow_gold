@@ -32,8 +32,8 @@ ThreadedSource* stretchyRunny(const RunnyProto& desc,
 
   if (loop.has_loop()) {
     // int len = s->getTotalLength();
-    int begin = static_cast<int>(loop.loop().begin() * 44100);
-    int end = static_cast<int>(loop.loop().end() * 44100);
+    int begin = static_cast<int>(timeToSamples(loop.loop().begin()));
+    int end = static_cast<int>(timeToSamples(loop.loop().end()));
     if (end < 0.001)
       end = s->getTotalLength();
     source.reset(new Seggy(SampleRange(begin, end), source.transfer()));

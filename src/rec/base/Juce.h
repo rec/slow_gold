@@ -12,7 +12,6 @@ typedef juce::AudioFormatReaderSource AudioFormatReaderSource;
 typedef juce::AudioSampleBuffer AudioSampleBuffer;
 typedef juce::AudioSourceChannelInfo AudioSourceChannelInfo;
 typedef juce::AudioSourcePlayer AudioSourcePlayer;
-typedef juce::AudioThumbnail AudioThumbnail;
 typedef juce::AudioTransportSource AudioTransportSource;
 
 typedef juce::CallbackMessage CallbackMessage;

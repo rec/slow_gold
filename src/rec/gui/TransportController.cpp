@@ -7,6 +7,7 @@
 #include "rec/gui/icon/FullScreen.svg.h"
 #include "rec/gui/icon/FullScreenRev.svg.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/gui/Loops.h"
 
 using namespace rec::audio::transport;
 namespace rec {
@@ -58,8 +59,8 @@ void TransportController::setButtonState(audio::transport::State state) {
   startStopButton_.repaint();
 }
 
-void TransportController::operator()(audio::transport::State state) {
-  thread::callAsync(this, &TransportController::setButtonState, state);
+void TransportController::recalc() {
+  addLoopPointButton_.setEnabled(isNewLoopPoint(loopPointList_, time_));
 }
 
 }  // namespace gui

@@ -12,8 +12,9 @@
 namespace rec {
 namespace gui {
 
-class Loops : public TableController,
-              public Cuttable {
+bool isNewLoopPoint(const LoopPointList& lp, RealTime t);
+
+class Loops : public TableController, public Cuttable {
  public:
   explicit Loops(const TableColumnList* desc = NULL);
   virtual ~Loops();
@@ -43,7 +44,7 @@ class Loops : public TableController,
  private:
   double length_;
   LoopPointList loopPoints_;
-  Broadcaster<double> timeBroadcaster_;
+  // Broadcaster<double> timeBroadcaster_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };

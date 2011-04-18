@@ -3,7 +3,7 @@
 
 #include "rec/audio/Device.h"
 #include "rec/audio/source/Player.h"
-// #include "rec/slow/Broadcasters.h"
+#include "rec/slow/Broadcasters.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Menus.h"
@@ -19,11 +19,9 @@ namespace app {
 struct Instance {
   typedef audio::source::Player Player;
 
-  explicit Instance() : player_(&device_), components_(this), listeners_(this),
-                        menus_(this) {
-    player_->addListener(listeners_.transportState_);
-  }
+  Instance();
 
+  Broadcasters broadcasters_;
   Components components_;
   Device device_;
   Listeners listeners_;
@@ -31,8 +29,7 @@ struct Instance {
   PersistentData data_;
   Player player_;
   Target target_;
-
-  // Broadcasters broadcasters_;
+  Threads threads_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);
 };

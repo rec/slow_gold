@@ -7,8 +7,7 @@ namespace rec {
 namespace gui {
 
 class CachedThumbnail
-  : public Listener<const AudioSourceChannelInfo&>,
-    public Broadcaster<const juce::AudioThumbnail&> {
+  : public Listener<const AudioSourceChannelInfo&>, public Broadcaster<bool&> {
  public:
   CachedThumbnail(const File& file, int compression, int sampleLength);
   virtual ~CachedThumbnail();
@@ -20,13 +19,13 @@ class CachedThumbnail
 
   void writeThumbnail(bool deferred);
 
-  bool isFull() const { return written_; }
+  bool isFull() const { return isFull_; }
 
  private:
   const File file_;
   juce::AudioThumbnail thumbnail_;
   juce::AudioThumbnailCache cache_;
-  bool written_;
+  bool isFull_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CachedThumbnail);
 };

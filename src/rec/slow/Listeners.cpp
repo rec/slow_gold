@@ -3,12 +3,20 @@
 namespace rec {
 namespace slow {
 
-void Listeners::operator()(const juce::AudioThumbnail&) {
-  thread::runOnMessageThread(&instance_->components_.waveform_,
-                             &Waveform::repaint);
+void Listeners::operator()(audio::Transport::State state) {
+  instance_->components_.transportController_.setTransportState(state);
+  instance_->player_.setTransportState(state);
 }
 
-void Listeners::operator()(const ClockUpdate& x) {
+void Listeners::operator()(SampleTime time) {
+  Components& c = instance_->components_;
+  c.timeController_.setTime(time);
+  c.waveform_.timeCursor()->setTime(time);
+  c.transportController_.setTime(time);
+}
+
+void Listeners::operator()(const juce::AudioThumbnail&) {
+  instance_->components_.waveform_.repaint();
 }
 
 void Listeners::operator()(const SelectionRange& sel) {
@@ -27,16 +35,12 @@ void Listeners::operator()(const SelectionRange& sel) {
   }
 }
 
-void Listeners::operator()(const audio::stretch::StretchLoop& x) {
-}
-
+// Contains fileio.
 void Listeners::operator()(const file::VirtualFile& file) {
-  playbackController_(file);
-
+  // instance_->components_.playbackController_(file); ??
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);
     instance_.clearData();
-    length_ = 0;
 
   } else {
     persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
@@ -56,7 +60,7 @@ void Listeners::operator()(const file::VirtualFile& file) {
       LOG(ERROR) << "Can't get waveform for file " << file.ShortDebugString();
       return;
     }
-    gui::addRecentFile(file);
+    // gui::addRecentFile(file);
 
     // Adjust the length of clients - neaten this up!
     length_ = stretchyPlayer_.length() / 44100.0;
@@ -67,6 +71,10 @@ void Listeners::operator()(const file::VirtualFile& file) {
 
   (*this)(0.0);
 }
+
+void Listeners::operator()(const audio::stretch::StretchLoop& x) {
+}
+
 
 void Listeners::operator()(const file::VirtualFileList& x) {
 }
@@ -100,9 +108,6 @@ void Listeners::operator()(const widget::waveform::ZoomProto& x) {
 }
 
 void Listeners::operator()(RealTime x) {
-}
-
-void Listeners::operator()(TransportState x) {
 }
 
 void MainPage::clearTime() {
@@ -261,6 +266,13 @@ void MainPage::addLoopPoint() {
   loops_.addLoopPoint(stretchyPlayer_.getTransport()->getCurrentOffsetPosition());
   playbackController_.enableLoopPointButton(false);
 }
+
+#ifdef TODO
+    double pos = transportSource_.getCurrentPosition();
+    if (pos <= offset_ || pos >= offset_ + transportSource_.getLengthInSeconds())
+      setPosition(offset_);
+#endif
+
 
 }  // namespace slow
 }  // namespace rec

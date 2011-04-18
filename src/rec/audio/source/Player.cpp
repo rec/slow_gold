@@ -22,18 +22,15 @@ Player::~Player() {
   sourcePlayer_.setSource(NULL);
 }
 
-void Player::setState(TransportState state) {
-  if (state == RUNNING) {
-    double pos = transportSource_.getCurrentPosition();
-    if (pos <= offset_ || pos >= offset_ + transportSource_.getLengthInSeconds())
-      setPosition(offset_);
+void Player::setTransportState(TransportState state) {
+  if (state != state()) {
+    if (state == RUNNING)
+      transportSource_.start();
+    else
+      transportSource_.stop();
 
-    transportSource_.start();
-  } else {
-    transportSource_.stop();
+    broadcastState();
   }
-
-  broadcastState();
 }
 
 void Player::setSource(Source* source) {
