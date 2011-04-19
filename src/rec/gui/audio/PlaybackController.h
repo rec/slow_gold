@@ -10,13 +10,13 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-using namespace widget::status::time;
-
-typedef audio::stretch::StretchLoop StretchLoop;
-
 class PlaybackController : public Layout {
  public:
-  PlaybackController();
+  typedef proto::arg::Address Address;
+  explicit PlaybackController(Instance* i,
+                              const Address& a = Address::default_instance());
+
+  void setSetter(persist::Setter* setter);
 
  private:
   Layout panel_;

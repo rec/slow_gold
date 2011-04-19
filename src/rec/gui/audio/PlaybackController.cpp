@@ -1,6 +1,5 @@
 #include "rec/slow/PlaybackController.h"
 #include "rec/data/persist/Persist.h"
-#include "rec/slow/AppLayout.pb.h"
 
 using namespace rec::proto::arg;
 
@@ -8,28 +7,26 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-PlaybackController::PlaybackController(Instance* instance)
+PlaybackController::PlaybackController(Instance* i, const Address& address)
     : Layout("Main controls"),
-      timeController_(transport),
-      timeControllerResizer_(Address("clock_x"), this, 1),
-      songDataResizer_(Address("songdata_x"), this, 3),
+      timeControllerResizer_(address + "clock_x", this, 1),
+      songDataResizer_(address + "songdata_x", this, 3),
       panel_("Main panel", VERTICAL),
-      stretchyResizer_(Address("stretchy_y"), &panel_, 1),
-      transportController_(transport, mainPage) {
-  addToLayout(&timeController_);
+      stretchyResizer_(address + "stretchy_y", &panel_, 1) {
+  addToLayout(&i->components_.timeController_);
   timeControllerResizer_.add(5);
-  addToLayout(&songData_);
+  addToLayout(&i->components_.songData_);
   songDataResizer_.add(5);
   addToLayout(&panel_);
 
-  panel_.addToLayout(&stretchyController_);
+  panel_.addToLayout(&i->components_.stretchyController_);
   stretchyResizer_.add(5);
-  panel_.addToLayout(&transportController_);
+  panel_.addToLayout(&i->components_.transportController_);
+}
 
-  persist::Data<AppLayout>* data = persist::data<AppLayout>();
-
-  timeControllerResizer_.setSetter(data);
-  songDataResizer_.setSetter(data);
-  stretchyResizer_.setSetter(data);
+void PlaybackController::setSetter(persist::Setter* setter) {
+  timeControllerResizer_.setSetter(setter);
+  songDataResizer_.setSetter(setter);
+  stretchyResizer_.setSetter(setter);
 }
 

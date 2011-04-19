@@ -7,16 +7,9 @@ using namespace juce;
 namespace rec {
 namespace gui {
 
-PersistentWindow::PersistentWindow()
-    : DocumentWindow("SlowGold", Colours::azure, DocumentWindow::allButtons,
-                     true) {
-  AppLayout layout(persist::data<AppLayout>());
-  juce::Rectangle<int> bounds(300, 100, 800, 600);
-  if (data->fileReadSuccess())
-    bounds = gui::copy(layout.bounds());
-  // else
-  //   data->set("bounds", Value(gui::copy(bounds)));
+PersistentWindow::~PersistentWindow() {}
 
+void PersistentWindow::setLimitedBounds(const Rect& bounds) {
   bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
   bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
   bounds.setX(juce::jmax(bounds.getX(), 10));
@@ -25,8 +18,6 @@ PersistentWindow::PersistentWindow()
   setResizable(true, false); // resizability is a property of ResizableWindow
   setResizeLimits(1, 1, 8192, 8192);
 }
-
-PersistentWindow::~PersistentWindow() {}
 
 void PersistentWindow::resized() {
   writeData();
