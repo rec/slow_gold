@@ -1,0 +1,8 @@
+import "rec/widget/Widget.proto";
+
+package {package};
+
+message {classname}Proto {{
+  optional Widget widget = 1;
+  optional uint32 data = 2           [default = 1];
+}};
