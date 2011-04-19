@@ -1,19 +1,14 @@
 #!/usr/bin/python
 
-import os
 import optparse
+import os
 import sys
+
+import split
 
 # DEFAULT_SUFFIXES = ['_test.cpp', '.h', '.cpp']
 DEFAULT_SUFFIXES = ['.h', '.cpp', '.proto']
 SUFFIXES = ['.svg.h', '.svg.cpp', '_test.cpp', '.h', '.cpp']
-
-
-def split_suffix(filename):
-  for s in SUFFIXES:
-    if filename.endswith(s):
-      return filename.split(s)[0], s
-
 
 def new_class(filename, **context):
   if not filename.startswith('/'):
@@ -26,7 +21,7 @@ def new_class(filename, **context):
   suffixes = DEFAULT_SUFFIXES
 
   if '.' in file_root:
-    file_root, suffix = split_suffix(file_root)
+    file_root, suffix = split.split_suffix(file_root, SUFFIXES)
     suffixes = [suffix]
     method_body = ' {\n  }'
 
@@ -156,41 +151,11 @@ message {classname}Proto {{
 """
 }
 
-
-DESIRED_LINE_SPLIT = 78
-MAX_LINE_SPLIT = 16380
-SPLITTERS = ' /;,'
-
-def maxSplit(s):
-  s = s[0 : DESIRED_LINE_SPLIT]
-  finds = [i for i in map(s.rfind, SPLITTERS) if i >= 0]
-
-  if finds:
-    return max(finds)
-
-  return -1
-
-
-def splitLargeLines(lines):
-  for i, l in enumerate(lines):
-    while len(l) > DESIRED_LINE_SPLIT:
-      loc = maxSplit(l)
-      if loc is -1:
-        break
-      yield l[0 : loc + 1] + '"\n  "'
-      l = l[loc + 1 : ]
-
-    if len(l) > MAX_LINE_SPLIT:
-      raise ValueError, "Couldn't split line " + str(i) + ' len ' + str(len(l))
-
-    yield l + '\n'
-
-
 def readSVGFile(f):
   svg = '"%s\\n"' % (open(f).read().replace('"', '\\"')
                      .replace('\n', '\\n"\n  "'))
 
-  return ''.join(splitLargeLines(svg.split('\n')))
+  return ''.join(split.splitLargeLines(svg.split('\n')))
 
 
 if __name__ == "__main__":
