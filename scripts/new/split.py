@@ -1,9 +1,5 @@
 #!/usr/bin/python
 
-import optparse
-import os
-import sys
-
 def split_suffix(filename, suffixes):
   for s in suffixes:
     if filename.endswith(s):

@@ -5,6 +5,7 @@ import os
 import sys
 
 import split
+import templates
 
 # DEFAULT_SUFFIXES = ['_test.cpp', '.h', '.cpp']
 DEFAULT_SUFFIXES = ['.h', '.cpp', '.proto']
@@ -46,110 +47,9 @@ def new_class(filename, **context):
     )
 
   for suffix in suffixes:
-    open(file_base + suffix, 'w').write(TEMPLATES[suffix].format(**context))
+    open(file_base + suffix, 'w').write(templates.TEMPLATES[suffix].format(**context))
     print 'Written %s%s' % (file_base, suffix)
 
-
-TEMPLATES = {
-  '.svg.h':
-"""#ifndef {guard}
-#define {guard}
-
-#include "JuceLibraryCode/JuceHeader.h"
-
-{namespace}
-
-struct {classname} {{
-  static juce::Drawable* {method}();
-}};
-
-{namespace_end}
-
-#endif  // {guard}
-""",
-
-  '.svg.cpp':
-"""#include "{header_file}"
-#include "rec/base/ArraySize.h"
-#include "rec/gui/icon/Icon.h"
-
-{namespace}
-
-using juce::Drawable;
-
-// Original command line: {cmd} {args}
-
-Drawable* {classname}::{method}() {{
-  static const char data[] = {svg};
-
-  static Drawable* d = createFromImageData(data, arraysize(data));
-  return d;
-}};
-
-{namespace_end}
-""",
-
-  '.h':
-"""#ifndef {guard}
-#define {guard}
-
-#include "rec/base/base.h"
-
-{namespace}
-
-class {classname} {{
- public:
-  {classname}() {{}}
-
-  void {method}(){method_body}
-
- private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY({classname});
-}};
-
-{namespace_end}
-
-#endif  // {guard}
-""",
-
-  '.cpp':
-"""#include "{header_file}"
-
-{namespace}
-
-void {classname}::{method}() {{
-}}
-
-{namespace_end}
-""",
-
-
-  '_test.cpp':
-"""#include <gtest/gtest.h>
-#include <glog/logging.h>
-
-#include "{header_file}"
-
-{namespace}
-namespace {{
-
-TEST({classname}, {method}) {{
-}}
-
-}}  // namespace
-{namespace_end}
-""",
-  '.proto':
-"""import "rec/widget/Widget.proto";
-
-package {package};
-
-message {classname}Proto {{
-  optional Widget widget = 1;
-  optional uint32 data = 2           [default = 1];
-}};
-"""
-}
 
 def readSVGFile(f):
   svg = '"%s\\n"' % (open(f).read().replace('"', '\\"')
@@ -162,6 +62,7 @@ if __name__ == "__main__":
   context = dict(
     cmd=sys.argv[0].split('/')[-1],
     args=' '.join(sys.argv[1:]))
+
   parser = optparse.OptionParser()
   parser.add_option('--svg', dest='svg')
 
