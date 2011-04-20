@@ -1,5 +1,8 @@
 #include "rec/slow/Listeners.h"
 
+using gui::audio::LoopPoint;
+using gui::audio::LoopPointList;
+
 namespace rec {
 namespace slow {
 

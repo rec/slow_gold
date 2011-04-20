@@ -1,6 +1,8 @@
 #ifndef __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
 #define __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
 
+#include "rec/audio/Audio.h"
+#include "rec/audio/Device.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
@@ -11,28 +13,28 @@ namespace source {
 // * AudioTransportSource
 // * AudioSourcePlayer
 
-class Player : public Broadcaster<TransportState>, public juce::ChangeListener {
+class Player : public Broadcaster<transport::State>, public juce::ChangeListener {
  public:
   Player(Device* d);
   virtual ~Player();
 
-  void setTransportState(TransportState state = RUNNING);
+  void setState(transport::State state = transport::RUNNING);
 
   void setSource(Source* source);
   void broadcastState() { broadcast(state()); }
-  void toggle() { setState(not(state())); }
+  void toggle() { setState(invert(state())); }
   SampleTime getNextReadPosition() const {
-    return transport_.getNextReadPosition();
+    return transportSource_.getNextReadPosition();
   }
 
-  TransportState state() const;
+  transport::State state() const;
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Device* device() { return device_; }
 
  private:
   CriticalSection lock_;
 
-  AudioTransportSource transport_;
+  AudioTransportSource transportSource_;
   AudioSourcePlayer player_;
   Device* device_;
   ptr<Source> source_;

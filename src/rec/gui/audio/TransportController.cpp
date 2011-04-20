@@ -7,7 +7,7 @@
 #include "rec/gui/icon/FullScreen.svg.h"
 #include "rec/gui/icon/FullScreenRev.svg.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/gui/Loops.h"
+#include "rec/gui/audio/Loops.h"
 
 using namespace rec::audio::transport;
 namespace rec {

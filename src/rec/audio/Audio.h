@@ -15,11 +15,6 @@ namespace transport {
 enum State {STOPPED, RUNNING};
 State invert(State s) { return s ? STOPPED : RUNNING; }
 
-// Bleh, where to put this?
-enum Commands {
-  TOGGLE_COMMAND, ADD_LOOP_POINT_COMMAND, ZOOM_OUT_COMMAND
-};
-
 }  // namespace transport
 
 }  // namespace audio

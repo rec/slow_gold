@@ -19,6 +19,7 @@ typedef juce::ChangeBroadcaster ChangeBroadcaster;
 typedef juce::ChangeListener ChangeListener;
 typedef juce::CriticalSection CriticalSection;
 typedef juce::Colour Colour;
+typedef juce::CommandID CommandID;
 typedef juce::Component Component;
 
 typedef juce::DocumentWindow DocumentWindow;
@@ -34,11 +35,13 @@ typedef juce::InputStream InputStream;
 
 typedef juce::Justification Justification;
 
+typedef juce::MenuBarModel MenuBarModel;
 typedef juce::MemoryBlock MemoryBlock;
 typedef juce::MouseEvent MouseEvent;
 
 typedef juce::OutputStream OutputStream;
 
+typedef juce::PopupMenu PopupMenu;
 typedef juce::PositionableAudioSource PositionableAudioSource;
 
 typedef juce::String String;

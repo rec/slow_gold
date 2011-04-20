@@ -1,4 +1,4 @@
-#include "rec/slow/PlaybackController.h"
+#include "rec/gui/audio/PlaybackController.h"
 #include "rec/data/persist/Persist.h"
 
 using namespace rec::proto::arg;

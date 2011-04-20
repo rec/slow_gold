@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_AUDIO_LOOPS__
 #define __REC_GUI_AUDIO_LOOPS__
 
-#include "rec/gui/LoopPoint.pb.h"
+#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/gui/TableController.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Math.h"

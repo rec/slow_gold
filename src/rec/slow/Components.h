@@ -2,10 +2,10 @@
 #define __REC_SLOW_COMPONENTS__
 
 #include "rec/gui/DropTarget.h"
-#include "rec/gui/Loops.h"
-#include "rec/gui/SongData.h"
-#include "rec/gui/StretchyController.h"
-#include "rec/gui/TransportController.h"
+#include "rec/gui/audio/Loops.h"
+#include "rec/gui/audio/SongData.h"
+#include "rec/gui/audio/StretchyController.h"
+#include "rec/gui/audio/TransportController.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
 #include "rec/slow/TimeController.h"
@@ -25,10 +25,10 @@ struct Components {
   TimeController timeController_;
   Waveform waveform_;
 
-  gui::Loops loops_;
-  gui::SongData songData_;
-  gui::StretchyController stretchyController_;
-  gui::TransportController transportController_;
+  gui::audio::Loops loops_;
+  gui::audio::SongData songData_;
+  gui::audio::StretchyController stretchyController_;
+  gui::audio::TransportController transportController_;
 
   thread_ptr<widget::tree::Root> directoryTreeRoot_;
   DropTarget<Waveform, WaveformProto> waveform_;

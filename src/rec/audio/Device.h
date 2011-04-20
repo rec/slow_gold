@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_UTIL_DEVICE__
-#define __REC_AUDIO_UTIL_DEVICE__
+#ifndef __REC_AUDIO_DEVICE2__
+#define __REC_AUDIO_DEVICE2__
 
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/audio/util/AudioDeviceSetup.h"
@@ -12,7 +12,7 @@ struct Device {
   gui::audio::SetupPage setupPage_;
   persist::AudioDeviceSetupListener setupListener_;
 
-  Device() : setupPage_(manager_), setupListener_(&manager_) {}
+  Device() : setupPage_(&manager_), setupListener_(&manager_) {}
 
  private:
   DISALLOW_COPY_AND_ASSIGN(Device);
@@ -21,4 +21,4 @@ struct Device {
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_DEVICE__
+#endif  // __REC_AUDIO_DEVICE__

@@ -4,6 +4,8 @@ namespace rec {
 namespace util {
 namespace cd {
 
+using juce::AudioCDBurner;
+
 void ejectAll() {
   StringArray burners = AudioCDBurner::findAvailableDevices();
   for (int i = 0; i < burners.size(); ++i) {

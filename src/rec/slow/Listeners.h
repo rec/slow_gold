@@ -3,9 +3,9 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/stretch/StretchLoop.h"
-#include "rec/file/VirtualFile.h"
-#include "rec/file/VirtualFileList.h"
-#include "rec/gui/LoopPointList.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/util/file/VirtualFileList.h"
+#include "rec/gui/audio/LoopPointList.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/Listener.h"
 #include "rec/util/Range.h"

@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/gui/LoopPoint.pb.h"
+#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
@@ -14,33 +14,31 @@
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
+
+namespace slow {
+class Instance;
+}
+
 namespace widget {
 namespace waveform {
 
 class Cursor;
 class CursorProto;
-
-struct TimeAndMouseEvent {
-  double time_;
-  const juce::MouseEvent* mouseEvent_;
-  int clickCount_;
-};
-
-struct CursorTime {
-  int cursor_;
-  double time_;
-};
+struct CursorTime;
+struct TimeAndMouseEvent;
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public Component {
+class Waveform : public Component,
+                 public Broadcaster<const CursorTime&>, {
+                 public Broadcaster<const SelectionRange&> {
  public:
-  Waveform(Instance* instance,
+  Waveform(slow::Instance* instance,
            const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
+  virtual ~Waveform();
 
   static const CursorProto& defaultTimeCursor();
 
-  virtual ~Waveform();
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();
 
@@ -63,6 +61,8 @@ class Waveform : public Component {
 
   int timeToX(double t) const;
   double xToTime(int x) const;
+
+  void cursorDragged(int index, int x);
 
   Instance* instance_;
   WaveformProto desc_;

@@ -1,6 +1,8 @@
 #ifndef __REC_COMMAND_COMMAND__
 #define __REC_COMMAND_COMMAND__
 
+#include "rec/base/base.h"
+
 namespace rec {
 namespace command {
 

@@ -1,11 +1,10 @@
 #include "rec/gui/audio/TimeController.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/audio/stretch/Stretch.h"
-#include "rec/gui/StretchyController.h"
+#include "rec/gui/audio/StretchyController.h"
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/Color.h"
-#include "rec/slow/AudioTransportSourcePlayer.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/cd/Album.h"
 

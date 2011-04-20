@@ -5,6 +5,7 @@
 #include "rec/gui/Layout.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/SetterToggle.h"
+#include "rec/util/listener/DataListener.h"
 
 namespace rec {
 namespace gui {

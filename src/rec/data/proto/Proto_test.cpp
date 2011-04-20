@@ -4,14 +4,14 @@
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/Defaulter.h"
-#include "rec/gui/LoopPoint.pb.h"
+#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/data/proto/Operation.pb.h"
 
 namespace rec {
 namespace proto {
 
 TEST(Proto, Apply) {
-  gui::LoopPointList loop_point;
+  gui::audio::LoopPointList loop_point;
   loop_point.add_loop_point()->set_time(23.5);
 
   Address address;

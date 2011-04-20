@@ -1,30 +1,24 @@
-#include "rec/slow/AudioTransportSourcePlayer.h"
+#include "rec/audio/source/Player.h"
+#include "rec/audio/Audio.h"
+#include "rec/audio/Device.h"
 #include "rec/util/Math.h"
 
 namespace rec {
-namespace slow {
+namespace audio {
+namespace source {
+
+using namespace rec::audio::transport;
 
 static const double MINIMUM_BROADCAST_TIMECHANGE = 0.001;
 static const float SAMPLE_RATE = 44100.0f;
 
-Player::Player(Device* d)
-    : Thread("Player"),
-      device_(d),
-      lastTime_(-1.0) {
-  device_->manager_.addAudioCallback(&sourcePlayer_);
-  sourcePlayer_.setSource(transportSource());
-  transportSource_.addChangeListener(this);
-}
+Player::Player(Device* d) : device_(d) {}
 
-Player::~Player() {
-  clear();
-  device_.manager_->removeAudioCallback(&sourcePlayer_);
-  sourcePlayer_.setSource(NULL);
-}
+Player::~Player() {}
 
-void Player::setTransportState(TransportState state) {
-  if (state != state()) {
-    if (state == RUNNING)
+void Player::setState(State s) {
+  if (s != state()) {
+    if (s == transport::RUNNING)
       transportSource_.start();
     else
       transportSource_.stop();
@@ -34,20 +28,22 @@ void Player::setTransportState(TransportState state) {
 }
 
 void Player::setSource(Source* source) {
+	DCHECK(false);
   // TODO: Do we need to prepare here?
   ptr<Source>s(source);
-  source_.swap(source);
-  transport_.setSource(source_);
+  source_.swap(s);
+  // transportSource_.setSource(source_);  // TODO
   source->releaseResources();
 }
 
-TransportState Player::state() const {
-  return transport_.isPlaying() : RUNNING : STOPPED;
+State Player::state() const {
+  return transportSource_.isPlaying() ? RUNNING : STOPPED;
 }
 
 void Player::changeListenerCallback(ChangeBroadcaster*) {
   broadcastState();
 }
 
-}  // namespace slow
+}  // namespace source
+}  // namespace audio
 }  // namespace rec

@@ -1,4 +1,6 @@
 #include "rec/gui/Dialog.h"
+#include "rec/util/file/Util.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace gui {
@@ -12,7 +14,7 @@ bool openDialogOpen = false;
 }  // namespace
 
 bool openVirtualFile(Listener<const VirtualFile&> *listener) {
-  ScopedLock l(lock_);
+  ScopedLock l(lock);
   if (openDialogOpen)
     return false;
 

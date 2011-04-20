@@ -2,11 +2,13 @@
 #include <glog/logging.h>
 #include <gtest/gtest.h>
 
-#include "rec/slow/GenericApplication.h"
+#include "rec/app/GenericApplication.h"
 
 namespace rec {
 namespace slow {
 namespace {
+
+using namespace rec::app;
 
 class TestApplication : public GenericApplication {
  public:
@@ -20,6 +22,8 @@ class TestApplication : public GenericApplication {
     setApplicationReturnValue(RUN_ALL_TESTS());
     quit();
   }
+  virtual DocumentWindow* createWindow() const { return NULL; }
+
 };
 
 }  // namespace

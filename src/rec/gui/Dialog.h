@@ -7,7 +7,7 @@ namespace rec {
 namespace gui {
 namespace dialog {
 
-void openVirtualFile(Listener<const VirtualFile&> *listener);
+bool openVirtualFile(Listener<const VirtualFile&> *listener);
 
 }  // namespace dialog
 }  // namespace gui

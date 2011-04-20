@@ -24,7 +24,7 @@ def new(files, context):
     with open(name + outSuffix, 'w') as out:
       data = template.format(**context)
       out.write(data)
-    print 'Written %s%s' % (name, outsuffix)
+    print 'Written %s%s' % (name, outSuffix)
 
 
 if __name__ == "__main__":

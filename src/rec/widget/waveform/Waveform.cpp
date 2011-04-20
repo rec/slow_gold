@@ -1,10 +1,12 @@
 #include "rec/widget/waveform/Waveform.h"
 
-#include "rec/widget/waveform/Cursor.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/widget/waveform/Cursor.h"
+#include "rec/widget/waveform/CursorTime.h"
+#include "rec/widget/waveform/TimeAndMouseEvent.h"
 
 namespace rec {
 namespace widget {
@@ -17,16 +19,14 @@ Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
 
 }  // namespace
 
-Waveform::Waveform(Instance *instance, const WaveformProto& d,
-                   const CursorProto* timeCursor)
+Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
     : Component("Waveform"),
-      instance_(instance),
       desc_(d),
       thumbnail_(NULL),
       zoomData_(this) {
   setName("Waveform");
 
-  timeCursor_ = new Cursor(instance_, *timeCursor, this, 0.0f, -1);
+  timeCursor_ = new Cursor(*timeCursor, this, 0.0f, -1);
   addAndMakeVisible(timeCursor_);
   // desc_.set_selection_frame_in_seconds(0);
 }
@@ -109,8 +109,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
-    ptr<Cursor> c(new Cursor(instance_, CursorProto::default_instance(),
-                             this, time, i));
+    ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, time, i));
     c->setCursorBounds(time);
     cursors.insert(c.get());
     addAndMakeVisible(c.transfer());
@@ -136,8 +135,7 @@ void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
       i = j;
     }
   }
-  instance_->listeners_(selection_);
-
+  broadcast(selection_);
   resized();
 }
 
@@ -188,6 +186,13 @@ void Waveform::doClick(const juce::MouseEvent& e, int clickCount) {
   }
 
   instance_->listeners_(event);
+}
+
+void Waveform::cursorDragged(int index, int x) {
+  CursorTime ct;
+  ct.cursor_ = index_;
+  ct.time_ = xToTime(x);
+  broadcast(ct);
 }
 
 }  // namespace waveform

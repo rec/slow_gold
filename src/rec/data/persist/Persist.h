@@ -28,9 +28,8 @@ const Proto get(const VirtualFile& f) {
 
 template <typename Proto>
 const Proto getApp() {
-  return appData<Proto>(f)->get();
+  return appData<Proto>()->get();
 }
-
 
 }  // namespace persist
 }  // namespace rec

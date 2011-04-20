@@ -24,8 +24,8 @@ Root::Root(const NodeDesc& desc)
     : Thread("tree::Root"), desc_(desc), addDialogOpen_(false) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
-  persist::data<VirtualFileList>()->addListener(this);
-  persist::data<VirtualFileList>()->requestUpdate();
+  persist::appData<VirtualFileList>()->addListener(this);
+  persist::appData<VirtualFileList>()->requestUpdate();
   tree_.addMouseListener(this, false);
 }
 

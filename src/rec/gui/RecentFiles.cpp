@@ -23,7 +23,7 @@ struct CompareRecentFiles {
 }  // namespace
 
 RecentFiles getSortedRecentFiles() {
-  RecentFiles rf = persist::get<RecentFiles>();
+  RecentFiles rf = persist::getApp<RecentFiles>();
   google::protobuf::RepeatedPtrField<RecentFile>* recent = rf.mutable_file();
   sort(recent->begin(), recent->end(), CompareRecentFiles());
 
@@ -32,7 +32,7 @@ RecentFiles getSortedRecentFiles() {
 
 void addRecentFile(const VirtualFile& f) {
   int64 timestamp = juce::Time::currentTimeMillis();
-  RecentFiles recent = persist::get<RecentFiles>();
+  RecentFiles recent = persist::getApp<RecentFiles>();
 
   int64 least = timestamp;
   int slot = 0;
@@ -57,9 +57,9 @@ void addRecentFile(const VirtualFile& f) {
   rec::proto::pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    persist::data<RecentFiles>()->append("file", msg);
+    persist::dataApp<RecentFiles>()->append("file", msg);
   else
-    persist::data<RecentFiles>()->set("file", slot, msg);
+    persist::dataApp<RecentFiles>()->set("file", slot, msg);
 }
 
 }  // namespace gui

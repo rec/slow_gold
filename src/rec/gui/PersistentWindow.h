@@ -2,6 +2,7 @@
 #define __REC_SLOW_SLOWWINDOW
 
 #include "rec/data/persist/Persist.h"
+#include "rec/gui/Geometry.h"
 
 namespace rec {
 namespace gui {
@@ -19,7 +20,7 @@ class PersistentWindow : public DocumentWindow {
   template <typename Proto>
   Rect computeBounds() {
     persist::Data<Proto>* data = persist::data<Proto>();
-    setLimitedBounds(data->fileReadSuccess() ? gui::copy(data->get().bounds()) :
+    setLimitedBounds(data->fileReadSuccess() ? copy(data->get().bounds()) :
                      Rect(300, 100, 800, 600));  // TODO!
   }
   void setLimitedBounds(const Rect& rect);

@@ -13,7 +13,6 @@ namespace waveform {
 Cursor::Cursor(Instance* i, const CursorProto& d, Waveform* waveform,
                double time, int index)
     : Component("Cursor"),
-      instance_(i),
       waveform_(waveform),
       desc_(d),
       index_(index),
@@ -92,10 +91,7 @@ void Cursor::mouseDrag(const MouseEvent& e) {
 void Cursor::mouseUp(const MouseEvent& e) {
   if (dragging_) {
     dragging_ = false;
-    CursorTime ct;
-    ct.cursor_ = index_;
-    ct.time_ = waveform_->xToTime(getDragX(e) + desc().component_width() / 2);
-    instance_.listeners_(ct);
+    waveform_.cursorDragged(index_, getDragX(e) + desc().component_width() / 2);
   }
 }
 

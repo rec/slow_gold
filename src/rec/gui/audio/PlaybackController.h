@@ -4,7 +4,7 @@
 #include "rec/gui/Layout.h"
 #include "rec/gui/SetterTextArea.h"
 #include "rec/gui/SongData.h"
-#include "rec/slow/TimeController.h"
+#include "rec/gui/audio/TimeController.h"
 
 namespace rec {
 namespace gui {

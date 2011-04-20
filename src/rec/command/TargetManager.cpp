@@ -1,4 +1,4 @@
-#include "rec/command/TargetManagerManager.h"
+#include "rec/command/TargetManager.h"
 
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"

@@ -9,7 +9,7 @@ TreeViewDropAll::TreeViewDropAll() : TreeViewDrop("Tree") {
 }
 
 void TreeViewDropAll::operator()(const VirtualFile& f) {
-  persist::data<file::VirtualFileList>()->append("file", f);
+  persist::appData<file::VirtualFileList>()->append("file", f);
 }
 
 void TreeViewDropAll::paint(Graphics& g) {

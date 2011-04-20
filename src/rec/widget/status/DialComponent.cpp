@@ -24,7 +24,7 @@ const double DialComponent::PI = 3.14159265358979323846264;
 const double DialComponent::REDRAW_ANGLE = 2.0 * DialComponent::PI * 0.001;
 const double SMALLEST_REAL_LENGTH = 0.01;
 
-DialComponent::DialComponent(const Dial& desc, double time)
+DialComponent::DialComponent(const Dial& desc)
     : Component(desc.widget().name().c_str()),
       description_(desc),
       time_(0),
@@ -34,7 +34,7 @@ DialComponent::DialComponent(const Dial& desc, double time)
       timeRatio_(0.0) {
 }
 
-void DialComponent:operator(RealTime time) {
+void DialComponent::operator()(RealTime time) {
   ScopedLock l(lock_);
   time_ = time;
   recomputeAngle();

@@ -3,7 +3,7 @@
 
 #include <map>
 
-#include "rec/base/STL.h"
+#include "rec/util/STL.h"
 
 namespace rec {
 namespace command {
@@ -29,7 +29,7 @@ class TargetManager : public ApplicationCommandTarget {
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
   //  return findFirstTargetParentComponent();
 
-  virtual void getAllCommands(Array<CommandID>&);
+  virtual void getAllCommands(juce::Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);
   virtual bool perform(const InvocationInfo&); // { return false; }
 

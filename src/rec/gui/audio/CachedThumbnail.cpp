@@ -11,7 +11,7 @@ namespace audio {
 CachedThumbnail::CachedThumbnail(const File& file, int compression,
                                  int sampleLength)
   : file_(file),
-    thumbnail_(compression, *audio::getAudioFormatManager(), cache_),
+    thumbnail_(compression, *rec::audio::getAudioFormatManager(), cache_),
     cache_(1),
     isFull_(false) {
   thumbnail_.reset(2, 44100.0f, sampleLength);  // TODO
@@ -46,4 +46,8 @@ void CachedThumbnail::writeThumbnail(bool deferred) {
     isFull_ = true;
   }
 }
+
+}  // namespace audio
+}  // namespace gui
+}  // namespace rec
 

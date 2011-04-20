@@ -2,7 +2,7 @@
 #define __REC_SLOW_SLOWTARGET__
 
 #include "rec/command/Command.pb.h"
-#include "rec/command/Instance.h"
+#include "rec/slow/Instance.h"
 #include "rec/command/TargetManager.h"
 
 namespace rec {
