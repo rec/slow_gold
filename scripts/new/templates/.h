@@ -7,9 +7,7 @@
 
 class {classname} {{
  public:
-  {classname}() {{}}
-
-  void {method}(){method_body}
+  {classname}();
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY({classname});

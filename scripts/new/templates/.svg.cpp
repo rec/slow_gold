@@ -8,7 +8,7 @@ using juce::Drawable;
 
 // Original command line: {cmd} {args}
 
-Drawable* {classname}::{method}() {{
+Drawable* {classname}::get() {{
   static const char data[] = {svg};
 
   static Drawable* d = createFromImageData(data, arraysize(data));

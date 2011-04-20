@@ -6,7 +6,7 @@
 {namespace}
 namespace {{
 
-TEST({classname}, {method}) {{
+TEST({classname}, All) {{
 }}
 
 }}  // namespace

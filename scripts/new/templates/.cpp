@@ -2,7 +2,7 @@
 
 {namespace}
 
-void {classname}::{method}() {{
+{classname}::{classname}() {{
 }}
 
 {namespace_end}
