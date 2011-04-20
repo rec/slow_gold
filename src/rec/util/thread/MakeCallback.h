@@ -16,10 +16,12 @@ Callback* makeCallback(Type o) {
   return new thread::callback::Pointer<Type>(o);
 }
 
+#if 0
 template <typename Value>
 Callback* makeCallback(void (*f)(Value),  Value v) {
   return new thread::callback::FunctionValue(f, v);
 }
+#endif
 
 template <typename Type, typename Method>
 Callback* makeCallback(Type* o, Method m) {

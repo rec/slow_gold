@@ -34,7 +34,7 @@ class Listener {
 // Broadcast updates of type Type to a set of Listener<Type>.
 //
 template <typename Type>
-class Broadcaster : public Listener<Type> {
+class Broadcaster {
  public:
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;

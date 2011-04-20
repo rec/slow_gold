@@ -72,7 +72,7 @@ inline RealTime samplesToTime(SampleTime samples, RealTime rate = 44100.0) {
 }
 
 inline SampleTime timeToSamples(RealTime time, double rate = 44100.0) {
-  return static_cast<SampleTime>(time * sampleRate);
+  return static_cast<SampleTime>(time * rate);
 }
 
 }  // namespace rec

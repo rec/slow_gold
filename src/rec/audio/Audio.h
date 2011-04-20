@@ -12,8 +12,8 @@ typedef PositionableAudioSource Source;
 
 namespace transport {
 
-enum {STOPPED, RUNNING} State;
-State not(State s) { return s ? STOPPED : RUNNING; }
+enum State {STOPPED, RUNNING};
+State invert(State s) { return s ? STOPPED : RUNNING; }
 
 // Bleh, where to put this?
 enum Commands {

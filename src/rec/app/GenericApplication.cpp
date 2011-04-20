@@ -1,7 +1,6 @@
 #include "rec/app/GenericApplication.h"
 
 #include "rec/audio/format/mpg123/Mpg123.h"
-#include "rec/app/ComponentContainer.h"
 #include "rec/app/DownloadVersion.h"
 
 namespace rec {

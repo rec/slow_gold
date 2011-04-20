@@ -14,7 +14,7 @@ ZoomProto zoomIn(const ZoomProto& z, int length, double time) {
   double size = end - begin;
   double middle = time;
   zoom.set_begin(juce::jmax(0.0, middle - size / 4.0));
-  zoom.set_end(juce::jmin(middle + size + 4.0, length));
+  zoom.set_end(juce::jmin(middle + size + 4.0, static_cast<double>(length)));
 
   return zoom;
 }
@@ -29,7 +29,7 @@ ZoomProto zoomOut(const ZoomProto& z, int length) {
   double size = end - begin;
   double middle = begin + (end - begin) / 2.0;
   zoom.set_begin(juce::jmax(0.0, middle - size));
-  zoom.set_end(juce::jmin(middle + size, length));
+  zoom.set_end(juce::jmin(middle + size, static_cast<double>(length)));
 
   return zoom;
 }
