@@ -44,5 +44,5 @@ message Command {
     ZOOM_OUT = 27;
   };
 
-  Type command = 1;
+  optional Type command = 1;
 };
