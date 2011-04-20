@@ -7,8 +7,7 @@
 #include "rec/gui/audio/TimeController.h"
 
 namespace rec {
-namespace gui {
-namespace audio {
+namespace slow {
 
 class PlaybackController : public Layout {
  public:
@@ -29,7 +28,6 @@ class PlaybackController : public Layout {
 };
 
 }  // namespace rec
-}  // namespace gui
-}  // namespace audio
+}  // namespace slow
 
 #endif  // __REC_SLOW_APP_PLAYBACKCONTROLLER__

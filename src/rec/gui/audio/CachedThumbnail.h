@@ -8,7 +8,7 @@ namespace gui {
 namespace audio {
 
 class CachedThumbnail
-  : public Listener<const AudioSourceChannelInfo&>, public Broadcaster<bool&> {
+  : public Listener<const AudioSourceChannelInfo&>, public Broadcaster<bool> {
  public:
   CachedThumbnail(const File& file, int compression, int sampleLength);
   virtual ~CachedThumbnail();

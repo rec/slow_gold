@@ -16,7 +16,7 @@ class TimeController : public Layout {
  public:
   TimeController();
 
-  virtual void operator()(const audio::stretch::StretchLoop&);
+  virtual void operator()(const rec::audio::stretch::StretchLoop&);
   virtual void operator()(const Range<RealTime>&);
   virtual void operator()(RealTime);
 

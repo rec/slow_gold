@@ -1,11 +1,11 @@
-#include "rec/gui/audio/PlaybackController.h"
+#include "rec/slow/PlaybackController.h"
+#include "rec/slow/Instance.h"
 #include "rec/data/persist/Persist.h"
 
 using namespace rec::proto::arg;
 
 namespace rec {
-namespace gui {
-namespace audio {
+namespace slow {
 
 PlaybackController::PlaybackController(Instance* i, const Address& address)
     : Layout("Main controls"),
@@ -29,4 +29,7 @@ void PlaybackController::setSetter(persist::Setter* setter) {
   songDataResizer_.setSetter(setter);
   stretchyResizer_.setSetter(setter);
 }
+
+}  // namespace slow
+}  // namespace rec
 

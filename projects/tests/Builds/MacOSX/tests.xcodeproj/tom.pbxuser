@@ -183,8 +183,8 @@
 	2D782EBC5CA2074B95B89C71 /* CachedThumbnail.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 702}}";
-			sepNavSelRange = "{1369, 0}";
-			sepNavVisRange = "{997, 414}";
+			sepNavSelRange = "{976, 19}";
+			sepNavVisRange = "{290, 1030}";
 		};
 	};
 	2FB0FBF82C2C2DA958F6E36A /* DialComponent.cpp */ = {
@@ -414,6 +414,12 @@
 			E21284DD135F9D52008DDE79 /* PBXTextBookmark */ = E21284DD135F9D52008DDE79 /* PBXTextBookmark */;
 			E21284E3135F9DA6008DDE79 /* PBXTextBookmark */ = E21284E3135F9DA6008DDE79 /* PBXTextBookmark */;
 			E21284E9135F9E1D008DDE79 /* PBXTextBookmark */ = E21284E9135F9E1D008DDE79 /* PBXTextBookmark */;
+			E21284F0135F9E76008DDE79 /* PBXTextBookmark */ = E21284F0135F9E76008DDE79 /* PBXTextBookmark */;
+			E21284F3135F9EE0008DDE79 /* PBXTextBookmark */ = E21284F3135F9EE0008DDE79 /* PBXTextBookmark */;
+			E21284F6135F9F37008DDE79 /* XCBuildMessageTextBookmark */ = E21284F6135F9F37008DDE79 /* XCBuildMessageTextBookmark */;
+			E21284F7135F9F3B008DDE79 /* PBXTextBookmark */ = E21284F7135F9F3B008DDE79 /* PBXTextBookmark */;
+			E21284FA135F9F3B008DDE79 /* PBXTextBookmark */ = E21284FA135F9F3B008DDE79 /* PBXTextBookmark */;
+			E2128502135FA10A008DDE79 /* PBXTextBookmark */ = E2128502135FA10A008DDE79 /* PBXTextBookmark */;
 			E212A2C512BAE57300C1BEC3 = E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */;
 			E212A33D12BAE9A800C1BEC3 = E212A33D12BAE9A800C1BEC3 /* PBXTextBookmark */;
 			E22224AD134BF80A00298AE3 = E22224AD134BF80A00298AE3 /* PBXTextBookmark */;
@@ -502,9 +508,10 @@
 	};
 	4F221C98E4AB220A6935055C /* PlaybackController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {928, 429}}";
-			sepNavSelRange = "{23, 0}";
-			sepNavVisRange = "{0, 643}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{726, 0}";
+			sepNavVisRange = "{0, 1002}";
+			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
 		};
 	};
 	5177F370FCF2CFB42FA17DC3 /* tests */ = {
@@ -556,6 +563,13 @@
 			sepNavSelRange = "{593, 0}";
 			sepNavVisRange = "{189, 1002}";
 			sepNavWindowFrame = "{{170, 40}, {866, 1138}}";
+		};
+	};
+	6011F232AEB57506156913E1 /* Command.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {928, 418}}";
+			sepNavSelRange = "{71, 72}";
+			sepNavVisRange = "{0, 491}";
 		};
 	};
 	6216BBEA314290A78F6562E0 /* GetVolumes.cpp */ = {
@@ -1009,6 +1023,14 @@
 			sepNavWindowFrame = "{{300, 88}, {819, 1021}}";
 		};
 	};
+	D71F16E298A19FA8576276F3 /* AudioDeviceSetup.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {928, 1248}}";
+			sepNavSelRange = "{2992, 0}";
+			sepNavVisRange = "{1088, 1055}";
+			sepNavWindowFrame = "{{38, 12}, {921, 1140}}";
+		};
+	};
 	D8B011CF05AE82F95C0D38EE /* TargetManager.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {862, 1092}}";
@@ -1232,6 +1254,78 @@
 		vrLoc = 0;
 	};
 	E21284E9135F9E1D008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 67C1CD8C11B5CA8FB5D5D89E /* Player.cpp */;
+		name = "Player.cpp: 35";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 1016;
+		vrLoc = 0;
+	};
+	E21284F0135F9E76008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 67C1CD8C11B5CA8FB5D5D89E /* Player.cpp */;
+		name = "Player.cpp: 35";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 1016;
+		vrLoc = 0;
+	};
+	E21284F3135F9EE0008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 67C1CD8C11B5CA8FB5D5D89E /* Player.cpp */;
+		name = "Player.cpp: 35";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 1016;
+		vrLoc = 0;
+	};
+	E21284F5135F9F37008DDE79 /* TimeController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TimeController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TimeController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{469, 0}";
+			sepNavVisRange = "{0, 898}";
+			sepNavWindowFrame = "{{556, 16}, {921, 1140}}";
+		};
+	};
+	E21284F6135F9F37008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected unqualified-id before '::' token";
+		fRef = E21284F5135F9F37008DDE79 /* TimeController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	E21284F7135F9F3B008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 67C1CD8C11B5CA8FB5D5D89E /* Player.cpp */;
+		name = "Player.cpp: 35";
+		rLen = 0;
+		rLoc = 719;
+		rType = 0;
+		vrLen = 1016;
+		vrLoc = 0;
+	};
+	E21284FA135F9F3B008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E21284F5135F9F37008DDE79 /* TimeController.h */;
+		name = "TimeController.h: 19";
+		rLen = 68;
+		rLoc = 432;
+		rType = 0;
+		vrLen = 893;
+		vrLoc = 0;
+	};
+	E2128502135FA10A008DDE79 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 67C1CD8C11B5CA8FB5D5D89E /* Player.cpp */;
 		name = "Player.cpp: 35";

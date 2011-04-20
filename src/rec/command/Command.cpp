@@ -3,10 +3,9 @@
 namespace rec {
 namespace command {
 
-ApplicationCommandInfo makeInfo(CommandID id, const String& name,
-                                const String& category, const String& desc,
-                                int flags, int key, const ModifierKeys& mod) {
-
+juce::ApplicationCommandInfo makeInfo(CommandID id, const String& name,
+                                      const String& category, const String& desc,
+                                      int flags, int key, const ModifierKeys& mod) {
   ApplicationCommandInfo i(id);
   i.setInfo(name, desc, category, flags);
   if (key)

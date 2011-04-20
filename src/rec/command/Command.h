@@ -6,8 +6,8 @@
 namespace rec {
 namespace command {
 
-ModifierKeys getDefaultMods() {
-  return ModifierKeys(
+juce::ModifierKeys getDefaultMods() {
+  return juce::ModifierKeys(juce::ModifierKeys::
 #if JUCE_MAC
 commandModifier
 #else

@@ -58,7 +58,7 @@ AudioDeviceSetupListener::AudioDeviceSetupListener(AudioDeviceManager* manager)
     : manager_(manager) {
   AudioDeviceSetup setup;
   bool readSuccessful = false;
-  AudioDeviceSetupProto proto = get<AudioDeviceSetupProto>();
+  AudioDeviceSetupProto proto = getApp<AudioDeviceSetupProto>();
   if (!proto.output_device_name().size()) {
     DLOG(INFO) << "Using default audio setup";
 
@@ -87,7 +87,7 @@ AudioDeviceSetupListener::~AudioDeviceSetupListener() {
 void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster* cb) {
   audio::AudioDeviceSetupProto setupProto;
   if (copy(*manager_, &setupProto)) {
-    data<AudioDeviceSetupProto>()->set(setupProto);
+    appData<AudioDeviceSetupProto>()->set(setupProto);
     DLOG(INFO) << "Audio setup changed";
   } else {
     LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";
