@@ -15,8 +15,7 @@ namespace waveform {
 
 class Cursor : public Component {
  public:
-  Cursor(Instance* instance, const CursorProto& d, Waveform* waveform,
-         double time, int index);
+  Cursor(const CursorProto& d, Waveform* waveform, double time, int index);
   virtual ~Cursor() {}
 
   void setTime(double time);
@@ -35,7 +34,6 @@ class Cursor : public Component {
  private:
   int getDragX(const MouseEvent& e) const;
 
-  Instance* instance_;
   Waveform* const waveform_;
   CriticalSection lock_;
   CursorProto desc_;

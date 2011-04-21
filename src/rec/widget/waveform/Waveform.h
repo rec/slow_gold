@@ -10,17 +10,10 @@
 #include "rec/util/listener/DataListener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
-#include "rec/widget/waveform/CursorTime.h"
-#include "rec/widget/waveform/TimeAndMouseEvent.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
-
-namespace slow {
-class Instance;
-}
-
 namespace widget {
 namespace waveform {
 
@@ -31,11 +24,11 @@ struct TimeAndMouseEvent;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
-                 public Broadcaster<const CursorTime&>, 
+                 public Broadcaster<const CursorTime&>,
+                 public Broadcaster<const TimeAndMouseEvent&>,
                  public Broadcaster<const SelectionRange&> {
  public:
-  Waveform(slow::Instance* instance,
-           const WaveformProto& desc = WaveformProto::default_instance(),
+  Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
   virtual ~Waveform();
 
@@ -44,7 +37,7 @@ class Waveform : public Component,
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();
 
-	void addAllCursors(const gui::LoopPointList& loopPoints);
+	void addAllCursors(const gui::audio::LoopPointList& loopPoints);
 
   virtual void paint(Graphics& g);
   virtual void repaint() { Component::repaint(); }
@@ -59,14 +52,13 @@ class Waveform : public Component,
 
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
-  void setSelection(const gui::LoopPointList&);
+  void setSelection(const gui::audio::LoopPointList&);
 
   int timeToX(double t) const;
   double xToTime(int x) const;
 
   void cursorDragged(int index, int x);
 
-  Instance* instance_;
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   Cursor* timeCursor_;

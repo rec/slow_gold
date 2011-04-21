@@ -8,6 +8,8 @@
 #include "rec/widget/waveform/CursorTime.h"
 #include "rec/widget/waveform/TimeAndMouseEvent.h"
 
+using namespace rec::gui::audio;
+
 namespace rec {
 namespace widget {
 namespace waveform {
@@ -22,8 +24,7 @@ Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
 Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
     : Component("Waveform"),
       desc_(d),
-      thumbnail_(NULL),
-      zoomData_(this) {
+      thumbnail_(NULL) {
   setName("Waveform");
 
   timeCursor_ = new Cursor(*timeCursor, this, 0.0f, -1);
@@ -42,7 +43,7 @@ const CursorProto& Waveform::defaultTimeCursor() {
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   {
-    ScopedLock l(lock_);
+    // ScopedLock l(lock_);
     thumbnail_ = thumbnail;
     resized();
   }
@@ -51,7 +52,7 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
 
 void Waveform::paint(Graphics& g) {
   Painter p(desc_.widget(), &g);
-  ScopedLock l(lock_);
+  // ScopedLock l(lock_);
 
   if (thumbnail_) {
     SelectionRange::iterator i = selection_.begin();
@@ -104,7 +105,7 @@ double Waveform::xToTime(int x) const {
   return r.begin_ + (x *  r.size()) / getWidth();
 }
 
-void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
+void Waveform::addAllCursors(const LoopPointList& loopPoints) {
   CursorSet cursors;
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
@@ -121,7 +122,7 @@ void Waveform::addAllCursors(const gui::LoopPointList& loopPoints) {
   setSelection(loopPoints);
 }
 
-void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
+void Waveform::setSelection(const LoopPointList& loopPoints) {
   selection_.clear();
   for (int i = 0, size = loopPoints.selected_size(); i < size; ) {
     for (; i < size && !loopPoints.selected(i); ++i);
@@ -135,7 +136,7 @@ void Waveform::setSelection(const gui::LoopPointList& loopPoints) {
       i = j;
     }
   }
-  broadcast(selection_);
+  Broadcaster<const SelectionRange&>::broadcast(selection_);
   resized();
 }
 
@@ -155,7 +156,7 @@ void Waveform::resized() {
 }
 
 TimeRange Waveform::getTimeRange() const {
-  ScopedLock l(lock_);
+  // ScopedLock l(lock_);
   TimeRange r;
   if (zoom_.zoom_to_selection() && !selection_.empty()) {
     r.begin_ = selection_.begin()->begin_;
@@ -181,18 +182,18 @@ void Waveform::doClick(const juce::MouseEvent& e, int clickCount) {
   event.mouseEvent_ = &e;
   event.clickCount_ = clickCount;
   {
-    ScopedLock l(lock_);
+//    ScopedLock l(lock_);
     event.time_ = xToTime(e.x);
   }
 
-  instance_->listeners_(event);
+  Broadcaster<const TimeAndMouseEvent&>::broadcast(event);
 }
 
 void Waveform::cursorDragged(int index, int x) {
   CursorTime ct;
-  ct.cursor_ = index_;
+  ct.cursor_ = index;
   ct.time_ = xToTime(x);
-  broadcast(ct);
+  Broadcaster<const CursorTime&>::broadcast(ct);
 }
 
 }  // namespace waveform

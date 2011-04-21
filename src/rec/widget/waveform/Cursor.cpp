@@ -10,8 +10,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-Cursor::Cursor(Instance* i, const CursorProto& d, Waveform* waveform,
-               double time, int index)
+Cursor::Cursor(const CursorProto& d, Waveform* waveform, double t, int index)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),
@@ -20,7 +19,7 @@ Cursor::Cursor(Instance* i, const CursorProto& d, Waveform* waveform,
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addChildComponent(this);
 
-  setTime(time);
+  setTime(t);
   setRepaintsOnMouseActivity(true);
 }
 
@@ -91,7 +90,8 @@ void Cursor::mouseDrag(const MouseEvent& e) {
 void Cursor::mouseUp(const MouseEvent& e) {
   if (dragging_) {
     dragging_ = false;
-    waveform_.cursorDragged(index_, getDragX(e) + desc().component_width() / 2);
+    int location = getDragX(e) + desc().component_width() / 2;
+    waveform_->cursorDragged(index_, location);
   }
 }
 
