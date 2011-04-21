@@ -39,7 +39,7 @@ void MainPage::doLayout(Instance* instance) {
   AppLayout a = data->get();
 
   bool full[] = {a.full_directory(),  a.full_waveform(), a.full_controller()};
-  Component* comp[] = { instance->components_.directoryTreeRoot_->treeView(),
+  Component* comp[] = { instance->components_.directoryTreeRoot_.treeView(),
                         &instance->components_.waveform_,
                         &instance->components_.playbackController_};
   const char* address[] = {"directory_y", "waveform_y", NULL};

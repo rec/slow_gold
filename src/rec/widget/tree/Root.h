@@ -48,7 +48,7 @@ class Root : public Thread,
   CriticalSection lock_;
   bool addDialogOpen_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Root);
+  DISALLOW_COPY_AND_ASSIGN(Root);
   JUCE_LEAK_DETECTOR(Root);
 };
 

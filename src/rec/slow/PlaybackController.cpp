@@ -15,12 +15,14 @@ PlaybackController::PlaybackController(Instance* i, const Address& address)
       stretchyResizer_(address + "stretchy_y", &panel_, 1) {
   addToLayout(&i->components_.timeController_);
   timeControllerResizer_.add(5);
+
   addToLayout(&i->components_.songData_);
   songDataResizer_.add(5);
-  addToLayout(&panel_);
 
+  addToLayout(&panel_);
   panel_.addToLayout(&i->components_.stretchyController_);
   stretchyResizer_.add(5);
+
   panel_.addToLayout(&i->components_.transportController_);
 }
 

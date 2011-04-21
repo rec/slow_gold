@@ -20,13 +20,13 @@ namespace slow {
 struct Instance;
 
 struct Components {
-  Components(Instance* i) : playbackController_(i),
-                            waveform_(widget::waveform::WaveformProto()),
-                            mainPage_(i) {
+  Components(Instance* i) 
+      : waveform_(widget::waveform::WaveformProto()), 
+        playbackController_(i), 
+        mainPage_(i) {
     playbackController_.setSetter(persist::appData<AppLayout>());
   }
 
-  PlaybackController playbackController_;
   gui::audio::TimeController timeController_;
 
   gui::audio::Loops loops_;
@@ -34,10 +34,11 @@ struct Components {
   gui::audio::StretchyController stretchyController_;
   gui::audio::TransportController transportController_;
 
-  thread_ptr<widget::tree::Root> directoryTreeRoot_;
+  widget::tree::Root directoryTreeRoot_;
   gui::DropTarget<widget::waveform::Waveform,
                   widget::waveform::WaveformProto> waveform_;
 
+  PlaybackController playbackController_;
   MainPage mainPage_;
 };
 
