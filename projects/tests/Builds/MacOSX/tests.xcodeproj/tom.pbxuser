@@ -492,6 +492,29 @@
 			E2128615135FE607008DDE79 /* PBXTextBookmark */ = E2128615135FE607008DDE79 /* PBXTextBookmark */;
 			E2128616135FE607008DDE79 /* XCBuildMessageTextBookmark */ = E2128616135FE607008DDE79 /* XCBuildMessageTextBookmark */;
 			E2128617135FE607008DDE79 /* PBXTextBookmark */ = E2128617135FE607008DDE79 /* PBXTextBookmark */;
+			E212861F135FFA30008DDE79 /* XCBuildMessageTextBookmark */ = E212861F135FFA30008DDE79 /* XCBuildMessageTextBookmark */;
+			E2128620135FFA51008DDE79 /* XCBuildMessageTextBookmark */ = E2128620135FFA51008DDE79 /* XCBuildMessageTextBookmark */;
+			E2128622135FFA51008DDE79 /* PBXTextBookmark */ = E2128622135FFA51008DDE79 /* PBXTextBookmark */;
+			E2128625135FFA51008DDE79 /* PBXTextBookmark */ = E2128625135FFA51008DDE79 /* PBXTextBookmark */;
+			E2128628135FFA51008DDE79 /* PBXTextBookmark */ = E2128628135FFA51008DDE79 /* PBXTextBookmark */;
+			E2128629135FFA51008DDE79 /* PBXTextBookmark */ = E2128629135FFA51008DDE79 /* PBXTextBookmark */;
+			E212862A135FFA51008DDE79 /* PBXTextBookmark */ = E212862A135FFA51008DDE79 /* PBXTextBookmark */;
+			E2128631135FFA84008DDE79 /* PBXTextBookmark */ = E2128631135FFA84008DDE79 /* PBXTextBookmark */;
+			E2128632135FFA84008DDE79 /* PBXTextBookmark */ = E2128632135FFA84008DDE79 /* PBXTextBookmark */;
+			E2128633135FFA84008DDE79 /* XCBuildMessageTextBookmark */ = E2128633135FFA84008DDE79 /* XCBuildMessageTextBookmark */;
+			E2128635135FFA84008DDE79 /* PBXTextBookmark */ = E2128635135FFA84008DDE79 /* PBXTextBookmark */;
+			E212863C135FFABA008DDE79 /* PBXTextBookmark */ = E212863C135FFABA008DDE79 /* PBXTextBookmark */;
+			E212863D135FFABA008DDE79 /* XCBuildMessageTextBookmark */ = E212863D135FFABA008DDE79 /* XCBuildMessageTextBookmark */;
+			E212863F135FFABA008DDE79 /* PBXTextBookmark */ = E212863F135FFABA008DDE79 /* PBXTextBookmark */;
+			E212864A135FFB09008DDE79 /* XCBuildMessageTextBookmark */ = E212864A135FFB09008DDE79 /* XCBuildMessageTextBookmark */;
+			E212864D135FFB34008DDE79 /* PBXTextBookmark */ = E212864D135FFB34008DDE79 /* PBXTextBookmark */;
+			E212864E135FFB34008DDE79 /* XCBuildMessageTextBookmark */ = E212864E135FFB34008DDE79 /* XCBuildMessageTextBookmark */;
+			E2128650135FFB34008DDE79 /* PBXTextBookmark */ = E2128650135FFB34008DDE79 /* PBXTextBookmark */;
+			E2128653135FFB34008DDE79 /* PBXTextBookmark */ = E2128653135FFB34008DDE79 /* PBXTextBookmark */;
+			E2128654135FFB34008DDE79 /* PBXTextBookmark */ = E2128654135FFB34008DDE79 /* PBXTextBookmark */;
+			E2128656135FFB5C008DDE79 /* PBXTextBookmark */ = E2128656135FFB5C008DDE79 /* PBXTextBookmark */;
+			E2128657135FFB5C008DDE79 /* PBXTextBookmark */ = E2128657135FFB5C008DDE79 /* PBXTextBookmark */;
+			E212865E135FFBB2008DDE79 /* PBXTextBookmark */ = E212865E135FFBB2008DDE79 /* PBXTextBookmark */;
 			E212A2C512BAE57300C1BEC3 = E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */;
 			E212A33D12BAE9A800C1BEC3 = E212A33D12BAE9A800C1BEC3 /* PBXTextBookmark */;
 			E22224AD134BF80A00298AE3 = E22224AD134BF80A00298AE3 /* PBXTextBookmark */;
@@ -685,9 +708,9 @@
 	6D109A489387D1C632F278A2 /* TransportController.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
-			sepNavSelRange = "{375, 0}";
-			sepNavVisRange = "{0, 2278}";
-			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
+			sepNavSelRange = "{1915, 0}";
+			sepNavVisRange = "{0, 2251}";
+			sepNavWindowFrame = "{{307, 12}, {921, 1140}}";
 		};
 	};
 	70CF36904FE490C80769CE5D /* EventQueue.h */ = {
@@ -2180,7 +2203,7 @@
 		fRef = E2128614135FE607008DDE79 /* TargetManager.h */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 41;
+		rLoc = 42;
 		rType = 1;
 	};
 	E2128614135FE607008DDE79 /* TargetManager.h */ = {
@@ -2223,6 +2246,359 @@
 		rType = 0;
 		vrLen = 87;
 		vrLoc = 1178;
+	};
+	E212861A135FF9E2008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{526, 0}";
+			sepNavVisRange = "{0, 1285}";
+		};
+	};
+	E212861E135FFA30008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{125, 0}";
+			sepNavVisRange = "{0, 1303}";
+		};
+	};
+	E212861F135FFA30008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'Commands' is not a member of 'rec::audio::transport'";
+		fRef = E212861E135FFA30008DDE79 /* TransportController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	E2128620135FFA51008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'Commands' is not a member of 'rec::audio::transport'";
+		fRef = E2128621135FFA51008DDE79 /* TransportController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	E2128621135FFA51008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{125, 0}";
+			sepNavVisRange = "{0, 1303}";
+			sepNavWindowFrame = "{{38, 12}, {921, 1140}}";
+		};
+	};
+	E2128622135FFA51008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212861E135FFA30008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 18";
+		rLen = 0;
+		rLoc = 606;
+		rType = 0;
+		vrLen = 1303;
+		vrLoc = 0;
+	};
+	E2128625135FFA51008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212861E135FFA30008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 4";
+		rLen = 0;
+		rLoc = 128;
+		rType = 0;
+		vrLen = 1303;
+		vrLoc = 0;
+	};
+	E2128628135FFA51008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212861A135FF9E2008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 17";
+		rLen = 0;
+		rLoc = 597;
+		rType = 0;
+		vrLen = 1285;
+		vrLoc = 0;
+	};
+	E2128629135FFA51008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6D109A489387D1C632F278A2 /* TransportController.cpp */;
+		name = "TransportController.cpp: 41";
+		rLen = 0;
+		rLoc = 1490;
+		rType = 0;
+		vrLen = 2279;
+		vrLoc = 0;
+	};
+	E212862A135FFA51008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6D109A489387D1C632F278A2 /* TransportController.cpp */;
+		name = "TransportController.cpp: 44";
+		rLen = 0;
+		rLoc = 1592;
+		rType = 0;
+		vrLen = 2186;
+		vrLoc = 0;
+	};
+	E212862B135FFA6B008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{573, 0}";
+			sepNavVisRange = "{0, 1303}";
+			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
+		};
+	};
+	E212862F135FFA72008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {928, 598}}";
+			sepNavSelRange = "{510, 67}";
+			sepNavVisRange = "{410, 201}";
+			sepNavWindowFrame = "{{38, 12}, {921, 1140}}";
+		};
+	};
+	E2128631135FFA84008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8B011CF05AE82F95C0D38EE /* TargetManager.cpp */;
+		name = "TargetManager.cpp: 45";
+		rLen = 0;
+		rLoc = 1244;
+		rType = 0;
+		vrLen = 87;
+		vrLoc = 1178;
+	};
+	E2128632135FFA84008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212862B135FFA6B008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 18";
+		rLen = 0;
+		rLoc = 606;
+		rType = 0;
+		vrLen = 201;
+		vrLoc = 407;
+	};
+	E2128633135FFA84008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'Command' is not a member of 'rec::command'";
+		fRef = E2128634135FFA84008DDE79 /* TransportController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	E2128634135FFA84008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {928, 598}}";
+			sepNavSelRange = "{510, 67}";
+			sepNavVisRange = "{410, 201}";
+		};
+	};
+	E2128635135FFA84008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212862F135FFA72008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 18";
+		rLen = 73;
+		rLoc = 550;
+		rType = 0;
+		vrLen = 201;
+		vrLoc = 410;
+	};
+	E212863A135FFA9F008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {928, 546}}";
+			sepNavSelRange = "{733, 0}";
+			sepNavVisRange = "{617, 208}";
+			sepNavWindowFrame = "{{450, 21}, {921, 1140}}";
+		};
+	};
+	E212863C135FFABA008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128634135FFA84008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 22";
+		rLen = 62;
+		rLoc = 709;
+		rType = 0;
+		vrLen = 275;
+		vrLoc = 586;
+	};
+	E212863D135FFABA008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'rec::gui::audio::transport' has not been declared";
+		fRef = E212863E135FFABA008DDE79 /* TransportController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 22;
+		rType = 1;
+	};
+	E212863E135FFABA008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+	};
+	E212863F135FFABA008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212863A135FFA9F008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 23";
+		rLen = 0;
+		rLoc = 739;
+		rType = 0;
+		vrLen = 208;
+		vrLoc = 617;
+	};
+	E2128644135FFAD3008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{935, 0}";
+			sepNavVisRange = "{0, 1288}";
+		};
+	};
+	E2128648135FFAEE008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {708, 612}}";
+			sepNavSelRange = "{935, 0}";
+			sepNavVisRange = "{0, 1282}";
+			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
+		};
+	};
+	E212864A135FFB09008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'TOGGLE_COMMAND' was not declared in this scope";
+		fRef = 6D109A489387D1C632F278A2 /* TransportController.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 43;
+		rType = 1;
+	};
+	E212864D135FFB34008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212863E135FFABA008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 23";
+		rLen = 0;
+		rLoc = 739;
+		rType = 0;
+		vrLen = 1351;
+		vrLoc = 0;
+	};
+	E212864E135FFB34008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'rec::gui::audio::source' has not been declared";
+		fRef = E212864F135FFB34008DDE79 /* TransportController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 29;
+		rType = 1;
+	};
+	E212864F135FFB34008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {708, 612}}";
+			sepNavSelRange = "{941, 0}";
+			sepNavVisRange = "{0, 1288}";
+		};
+	};
+	E2128650135FFB34008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128648135FFAEE008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1282;
+		vrLoc = 0;
+	};
+	E2128653135FFB34008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128644135FFAD3008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E2128654135FFB34008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6D109A489387D1C632F278A2 /* TransportController.cpp */;
+		name = "TransportController.cpp: 56";
+		rLen = 0;
+		rLoc = 1933;
+		rType = 0;
+		vrLen = 2237;
+		vrLoc = 0;
+	};
+	E2128656135FFB5C008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212864F135FFB34008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1282;
+		vrLoc = 0;
+	};
+	E2128657135FFB5C008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6D109A489387D1C632F278A2 /* TransportController.cpp */;
+		name = "TransportController.cpp: 44";
+		rLen = 0;
+		rLoc = 1641;
+		rType = 0;
+		vrLen = 2224;
+		vrLoc = 0;
+	};
+	E212865E135FFBB2008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212864F135FFB34008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
 	};
 	E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

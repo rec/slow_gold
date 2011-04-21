@@ -1,7 +1,9 @@
 #ifndef __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 #define __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 
+#include "rec/command/Command.pb.h"
 #include "rec/audio/Audio.h"
+#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/audio/source/Player.h"
 #include "rec/gui/Layout.h"
 #include "rec/util/listener/Listener.h"
@@ -14,19 +16,17 @@ namespace audio {
 // those buttons.
 class TransportController : public Layout,
                             public juce::ButtonListener,
-                            public Broadcaster<audio::transport::Commands> {
+                            public Broadcaster<command::Command::Type> {
  public:
   TransportController();
   virtual void buttonClicked(juce::Button *button);
-  void setTransportState(audio::transport::State state);
+  void setTransportState(rec::audio::transport::State state);
   void setTime(SampleTime time) { time_ = time; recalc(); }
   void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
 
  private:
   void recalc();
 
-  audio::source::Player* player_;
-  slow::MainPage* mainPage_;
   DrawableButton startStopButton_;
   DrawableButton addLoopPointButton_;
   DrawableButton zoomOutButton_;
@@ -34,7 +34,7 @@ class TransportController : public Layout,
   SampleTime time_;
   LoopPointList loopPointList_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TransportController);
+  DISALLOW_COPY_AND_ASSIGN(TransportController);
 };
 
 }  // namespace rec

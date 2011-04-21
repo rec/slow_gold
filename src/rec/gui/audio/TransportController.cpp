@@ -9,7 +9,6 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/gui/audio/Loops.h"
 
-using namespace rec::audio::transport;
 namespace rec {
 namespace gui {
 namespace audio {
@@ -38,25 +37,24 @@ TransportController::TransportController()
   addToLayout(&addLoopPointButton_, 30, 30, 30);
   addToLayout(&zoomOutButton_, 30, 30, 30);
   addToLayout(&filler_);
-  transport->changeBroadcaster()->addListener(this);
 }
 
 void TransportController::buttonClicked(juce::Button *button) {
   if (button == &startStopButton_)
-    broadcast(TOGGLE_COMMAND);
+    broadcast(command::Command::TOGGLE_START_STOP);
 
   else if (button == &addLoopPointButton_)
-    broadcast(ADD_LOOP_POINT_COMMAND);
+    broadcast(command::Command::ADD_LOOP_POINT);
 
   else if (button == &zoomOutButton_)
-    broadcast(ZOOM_OUT_COMMAND);
+    broadcast(command::Command::ZOOM_OUT);
 
   else
     LOG(ERROR) << "Unknown button " << button;
 }
 
-void TransportController::setButtonState(audio::transport::State state) {
-  startStopButton_.setToggleState(state == audio::RUNNING, false);
+void TransportController::setTransportState(rec::audio::transport::State state) {
+  startStopButton_.setToggleState(state == rec::audio::transport::RUNNING, false);
   startStopButton_.repaint();
 }
 
