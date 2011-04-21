@@ -37,6 +37,7 @@ typedef juce::Graphics Graphics;
 typedef juce::InputStream InputStream;
 typedef ApplicationCommandTarget::InvocationInfo InvocationInfo;
 
+typedef juce::JUCEApplication JUCEApplication;
 typedef juce::Justification Justification;
 
 typedef juce::MenuBarModel MenuBarModel;
