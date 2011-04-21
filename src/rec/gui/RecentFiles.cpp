@@ -57,9 +57,9 @@ void addRecentFile(const VirtualFile& f) {
   rec::proto::pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    persist::dataApp<RecentFiles>()->append("file", msg);
+    persist::appData<RecentFiles>()->append("file", msg);
   else
-    persist::dataApp<RecentFiles>()->set("file", slot, msg);
+    persist::appData<RecentFiles>()->set("file", slot, msg);
 }
 
 }  // namespace gui

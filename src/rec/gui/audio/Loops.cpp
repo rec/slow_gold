@@ -3,6 +3,7 @@
 #include "rec/gui/audio/Loops.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/util/Defaulter.h"
+#include "rec/util/Math.h"
 #include "rec/util/Range.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -101,10 +102,10 @@ void Loops::onDataChange() {
   thread::callAsync(this, &Loops::doSelect);
 }
 
-bool isNewLoopPoint(const LoopPointList& lp, RealTime t) {
+bool isNewLoopPointF(const LoopPointList& lp, RealTime t) {
   for (int i = 0; i < lp.loop_point_size(); ++i) {
-    double t2 = lp.loop_point(i).time();
-    if (near(t, t2))
+    RealTime t2 = lp.loop_point(i).time();
+    if (near(t, t2, Loops::CLOSE))
       return false;
   }
   return true;
@@ -112,7 +113,7 @@ bool isNewLoopPoint(const LoopPointList& lp, RealTime t) {
 
 bool Loops::isNewLoopPoint(double t) const {
   ScopedLock l(lock_);
-  return isNewLoopPoint(loopPoints_, t);
+  return isNewLoopPointF(loopPoints_, t);
 }
 
 namespace {
@@ -218,4 +219,10 @@ void Loops::clearLoops() {
   loopPoints_.Clear();
   getData()->set(Address(), loopPoints_);
 }
+
+}  // namespace audio
+}  // namespace gui
+}  // namespace rec
+
+
 
