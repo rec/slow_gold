@@ -8,10 +8,10 @@ namespace util {
 namespace cd {
 
 void writeSocket(Socket* sock, const String& s) {
-  int w = sock->write(s.toCString(), s.length());
+  // TODO: unneeded copy
+  int w = sock->write(str(s).c_str(), s.length());
   if (w != s.length()) {
-    throw Exception((String("Wrote ") + String(w) + " of " +
-                     String(s.length()) + " chars.").toCString());
+    throw Exception(string("Wrote ") + String(w) + " of " + String(s.length()) + " chars.");
   }
 }
 
@@ -21,20 +21,19 @@ String readSocket(Socket* sock, int timeout) {
 
   int error = sock->waitUntilReady(true, timeout);
   if (error <= 0)
-    throw Exception(string("Socket wait error ") + String(error).toCString());
+    throw Exception("Socket wait error " + error);
 
   int read = sock->read(buffer, BUFFER_SIZE, false);
   if (read <= 0)
-    throw Exception(string("Socket read error ") + String(read).toCString());
+    throw Exception("Socket read error " + read);
 
   return String(buffer, read);
 }
 
 void connect(Socket* s, const String& server, int port, int timeout) {
   if (!s->connect(server, port, timeout)) {
-    throw Exception("Couldn't open socket to " +
-                    string(server.toCString()) +
-                    ":" + string(String(port).toCString()));
+    throw Exception(str("Couldn't open socket to " +
+                    server + ":" + String(port)));
   }
 }
 

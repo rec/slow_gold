@@ -170,7 +170,7 @@ void MainPage::cut() {
 
 void MainPage::paste() {
 #if 0
-  string s = SystemClipboard::getTextFromClipboard().toCString();
+  string s = SystemClipboard::getTextFromClipboard();
   DLOG(INFO) << s;
   yaml::read(s, &prefs);
 #endif

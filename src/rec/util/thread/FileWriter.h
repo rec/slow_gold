@@ -13,7 +13,7 @@ class FileWriter : public Thread {
   MemoryBlock* memory() { return &memory_; }
 
   virtual void run() {
-    string file = file_.getFullPathName().toCString();
+    string file = str(file_.getFullPathName());
     if (!file_.getParentDirectory().createDirectory()) {
       LOG(ERROR) << "Can't make dir " << file;
 

@@ -28,13 +28,13 @@ TEST(StripLines, Complex) {
   String data("Hello, line 1\nline 2 \rline3\r\nline4\n\n\r\n");
   juce::StringArray lines;
   ASSERT_EQ(stripLines(&data, &lines), 6);
-  EXPECT_STREQ(lines[0].toCString(), "Hello, line 1");
-  EXPECT_STREQ(lines[1].toCString(), "line 2 ");
-  EXPECT_STREQ(lines[2].toCString(), "line3");
-  EXPECT_STREQ(lines[3].toCString(), "line4");
-  EXPECT_STREQ(lines[4].toCString(), "");
-  EXPECT_STREQ(lines[5].toCString(), "");
-  EXPECT_STREQ(data.toCString(), "");
+  EXPECT_STREQ(lines[0], "Hello, line 1");
+  EXPECT_STREQ(lines[1], "line 2 ");
+  EXPECT_STREQ(lines[2], "line3");
+  EXPECT_STREQ(lines[3], "line4");
+  EXPECT_STREQ(lines[4], "");
+  EXPECT_STREQ(lines[5], "");
+  EXPECT_STREQ(data, "");
 }
 
 TEST(splitLine, All) {

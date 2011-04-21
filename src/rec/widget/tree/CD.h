@@ -31,7 +31,7 @@ class CD : public Directory {
       if (!album.track_size()) {
         int audioTracks = cd::getAudioTrackCount(*reader);
         for (int i = 0; i < audioTracks; ++i)
-          tracks.push_back(String(i).toCString());
+          tracks.push_back(str(String(i)));
 
         name_ = "Unknown CD: ID = 0x" + cd::getCDKey(reader.get()).upToFirstOccurrenceOf("-", false, false);
 
@@ -53,7 +53,7 @@ class CD : public Directory {
     VirtualFile vf(volumeFile_);
     string* path = vf.add_path();
     for (uint32 i = 0; i < tracks.size(); ++i) {
-      *path = String(i).toCString();
+      *path = str(String(i));
       ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));
       node->addListener(this);
       thread::callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);

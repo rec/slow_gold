@@ -63,7 +63,7 @@ void addAlbumValue(const String& key, const string& v, Album* album) {
     *album->mutable_track(key.getTrailingIntValue())->mutable_track_title() += v;
 
   else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
-    LOG(ERROR) << "Unknown key " << key.toCString() << " '" << v << "'";
+    LOG(ERROR) << "Unknown key " << key << " '" << v << "'";
 }
 
 void fillAlbum(const StringArray& cds, int tracks, Album* album) {
@@ -75,11 +75,11 @@ void fillAlbum(const StringArray& cds, int tracks, Album* album) {
     if (line.length() && line[0] != '#') {
       int loc = line.indexOfChar('=');
       if (loc == -1) {
-        LOG(ERROR) << "Couldn't find = in line " << line.toCString();
+        LOG(ERROR) << "Couldn't find = in line " << line;
       } else {
         String value = line.substring(loc + 1);
         if (value.length() || !value.startsWith("EXT"))
-          addAlbumValue(line.substring(0, loc), value.toCString(), album);
+          addAlbumValue(line.substring(0, loc), str(value), album);
       }
     }
   }
@@ -150,7 +150,7 @@ Metadata getMetadata(const StringPairArray& metadata) {
   const StringArray& keys = metadata.getAllKeys();
   for (int i = 0; i < keys.size(); ++i) {
     const String& k = keys[i];
-    const string& v = metadata[k].toCString();
+    const string& v = str(metadata[k]);
 
     if (k < "TALB" || k > "TRCK") continue;
     else if (k == "TALB") t.set_album_title(v);

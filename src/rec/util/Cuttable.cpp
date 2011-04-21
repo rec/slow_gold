@@ -57,7 +57,7 @@ bool copyToClipboard() {
 
 bool pasteFromClipboard() {
   if (Cuttable* cc = make()) {
-    string s(SystemClipboard::getTextFromClipboard().toCString());
+    string s(str(SystemClipboard::getTextFromClipboard()));
     if (s.empty())
       return false;
 

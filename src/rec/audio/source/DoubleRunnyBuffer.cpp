@@ -21,7 +21,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
       runnyDesc_(desc), data_(data), empty_(false) {
   ptr<PositionableAudioSource> source(createSource(file));
   if (!source) {
-    LOG(ERROR) << "Unable to read file " << getFullDisplayName(file).toCString();
+    LOG(ERROR) << "Unable to read file " << getFullDisplayName(file);
     empty_ = true;
     return;
   }

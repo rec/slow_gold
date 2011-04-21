@@ -14,7 +14,7 @@ AudioCDReader* getAudioCDReader(const String& cdKey) {
   for (int i = 0; i < size; ++i) {
     ScopedPointer<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
     if (!reader)
-      LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
+      LOG(ERROR) << "Couldn't create reader for " << names[i];
     else if (reader->getCDDBId() == id)
       return reader.release();
   }

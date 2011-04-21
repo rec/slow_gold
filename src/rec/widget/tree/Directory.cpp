@@ -37,7 +37,7 @@ Node* Directory::createChildFile(const partition::Shard& shard) const {
 
   const File& f = (*children_)[shard.range_.begin_];
   VirtualFile vf(volumeFile_);
-  vf.add_path(f.getFileName().toCString());
+  vf.add_path(str(f.getFileName()));
   bool isDir = getFile(vf).isDirectory();
   return isDir ? new Directory(desc_, vf) : new Node(desc_, vf);
 }

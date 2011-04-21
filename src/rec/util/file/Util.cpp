@@ -46,7 +46,7 @@ bool isHidden(const File& file) {
   };
 
   static std::set<string> nameSet(names, names + arraysize(names));
-  string name = file.getFullPathName().toCString();
+  string name = str(file.getFullPathName());
 
 #if JUCE_MAC
   eraseVolumePrefix(&name);

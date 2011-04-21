@@ -22,7 +22,7 @@ bool assign(const Type& from, Type* to, bool readable) {
 
 // Copy using the one-argument copy() function.
 bool strcopy(const String& from, string* to, bool readable) {
-  *to = from.toCString();
+  *to = str(from);
   return true;
 }
 
@@ -89,8 +89,7 @@ bool file(const File &file, string *s, bool readable) {
 bool file(const string &from, File *to, bool readable) {
   try {
     if (!to->getParentDirectory().createDirectory()) {
-      LOG(ERROR) << "Couldn't create directory for "
-                 << to->getFullPathName().toCString();
+      LOG(ERROR) << "Couldn't create directory for " << to->getFullPathName();
       return false;
     }
 

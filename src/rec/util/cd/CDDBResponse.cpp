@@ -18,17 +18,17 @@ bool oneCDDBResponse(String* data, StringArray* lines) {
       const String& header = (*lines)[0];
       int status = header[0];
       if (status == '5')
-        throw Exception("CDDB Error: " + string(header.toCString()));
+        throw Exception("CDDB Error: " + str(header));
 
       if (status != '2')
-        throw Exception("unexpected response: " + string(header.toCString()));
+        throw Exception("unexpected response: " + str(header));
 
       int more = header[1];
       if (more == '0')
         return false;
 
       if (more != '1')
-        throw Exception("unexpected continuation: " + string(header.toCString()));
+        throw Exception("unexpected continuation: " + str(header));
     }
     if ((*lines)[lines->size() - 1] == ".")
       return false;
@@ -70,13 +70,12 @@ String getDiscId(Socket *s, const String& trackOffset ) {
   String req = "discid " + trackOffset;
   StringArray id = makeCDDBRequest(req, s);
   if (id.size() != 1)
-    throw Exception(string("No diskid ") + id.joinIntoString(", ").toCString() +
-                    string(" ") + req.toCString());
+    throw Exception(str("No diskid " + id.joinIntoString(", ") + " " + req));
 
   const String& response = id[0];
   static const char *const prefix = "200 Disc ID is ";
   if (!response.startsWith(prefix))
-    throw Exception("Unexpected response " + string(response.toCString()));
+    throw Exception(str("Unexpected response " + response));
 
   return response.substring(strlen(prefix));
 }
@@ -89,7 +88,7 @@ StringArray getCDData(Socket* sock, const String& line) {
   StringArray tokens;
   tokens.addTokens(line, true);
   if (tokens.size() < 2)
-    throw Exception(string("Bad CD data line ") + line.toCString());
+    throw Exception(str("Bad CD data line " + line));
 
   return makeCDDBRequest("cddb read " + tokens[0] + " " + tokens[1], sock);
 }

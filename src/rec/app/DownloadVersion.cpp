@@ -33,8 +33,8 @@ bool isReadyForUpdate() {
     if (lastUpdateFile.exists()) {
       Time last = lastUpdateFile.getLastModificationTime();
       Time now = juce::Time::getCurrentTime();
-      LOG(INFO) << "now: " << now.toString(true, true).toCString();
-      LOG(INFO) << "last: " << last.toString(true, true).toCString();
+      LOG(INFO) << "now: " << now.toString(true, true);
+      LOG(INFO) << "last: " << last.toString(true, true);
 
       lastUpdateFile.setLastModificationTime(Time::getCurrentTime());
       ready = (now - last) > UPDATE;
@@ -56,7 +56,7 @@ bool isReadyForUpdate() {
 }
 
 String getVersion() {
-  LOG(INFO) << "update:  " << VERSION_FILE.toString(false).toCString();
+  LOG(INFO) << "update:  " << VERSION_FILE.toString(false);
   String version = VERSION_FILE.readEntireTextStream();
 
   if (!(version.length() && version[0] >= '0' && version[0] <= '9'))

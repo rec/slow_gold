@@ -56,7 +56,7 @@ TEST(CD, Albums) {
     const Metadata& album = albums.album(i).album();
     std::cerr << "album " << album.album_title() << "\n";
     EXPECT_NE(album.album_title().find("Never For Ever"), -1);
-    // EXPECT_STREQ(album.album_title().toCString(), "Never For Ever");
+    // EXPECT_STREQ(album.album_title(), "Never For Ever");
     EXPECT_EQ(album.year(), "1980");
     EXPECT_EQ(album.artist(), "Kate Bush");
     EXPECT_EQ(albums.album(i).track_size(), trackCount);

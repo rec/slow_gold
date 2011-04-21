@@ -1,6 +1,8 @@
 #ifndef __REC_BASE_JUCE__
 #define __REC_BASE_JUCE__
 
+#include <iostream>
+
 namespace rec {
 
 typedef juce::ApplicationCommandInfo ApplicationCommandInfo;
@@ -69,6 +71,25 @@ typedef juce::TimeSliceClient TimeSliceClient;
 typedef juce::TreeView TreeView;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
+
+inline string str(const String& s) { return s.toCString(); }
+  // return s.toUTF8().getAddress();
+
+inline String str(const string& s) {
+  return String(s.c_str());
+}
+
+inline std::ostream& operator<<(std::ostream& os, const String& s) {
+  return os << str(s);
+}
+
+inline const string operator+(const String& s, const string& t) {
+  return str(s) + t;
+}
+
+inline const string operator+(const string& s, const String& t) {
+  return s + str(t);
+}
 
 }  // namespace rec
 

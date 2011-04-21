@@ -58,7 +58,7 @@ class App {
 template <typename Proto>
 Data<Proto>* App::fileData(const File& directory) {
   string fileName = data::proto::getName<Proto>();
-  string fileKey = directory.getFullPathName().toCString() + ("/" + fileName);
+  string fileKey = str(directory.getFullPathName()) + ("/" + fileName);
   ScopedLock l(lock_);
   DataMap::const_iterator i = data_.find(fileKey);
   if (i != data_.end())

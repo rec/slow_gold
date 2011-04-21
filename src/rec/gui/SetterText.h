@@ -53,7 +53,7 @@ class SetterText : public Layout,
 
  protected:
   virtual const Value get() const {
-    return string(editor_.getText().toCString());
+    return str(editor_.getText());
   }
 
   virtual void set(const Value& value) {

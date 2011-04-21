@@ -1,5 +1,6 @@
 #include "rec/command/TargetManager.h"
 
+#include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"
 
@@ -18,6 +19,10 @@ struct CommandCallback {
 TargetManager::TargetManager(Component* c) : lastInvocation_(0) {
   if (c)
     addComponent(c);
+}
+
+TargetManager:: ~TargetManager() {
+  stl::deleteMapPointers(&map_);
 }
 
 void TargetManager::registerAllCommandsForTarget() {

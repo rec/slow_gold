@@ -10,7 +10,7 @@ void ejectAll() {
   StringArray burners = AudioCDBurner::findAvailableDevices();
   for (int i = 0; i < burners.size(); ++i) {
     ptr<AudioCDBurner>(AudioCDBurner::openDevice(i))->openTray();
-    DLOG(INFO) << "Burner " << burners[i].toCString();
+    DLOG(INFO) << "Burner " << burners[i];
   }
 }
 

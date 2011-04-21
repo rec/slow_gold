@@ -17,6 +17,7 @@ struct CommandCallback;
 class TargetManager : public ApplicationCommandTarget {
  public:
   explicit TargetManager(Component* comp);
+  virtual ~TargetManager();
   void registerAllCommandsForTarget();
   void addComponent(Component* c);
 

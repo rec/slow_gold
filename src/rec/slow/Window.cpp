@@ -5,12 +5,18 @@
 namespace rec {
 namespace slow {
 
+#define OLD_JUCE 1
+
 Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
                                     DocumentWindow::allButtons, true),
                    instance_(new Instance()) {
   Component* mp = &instance_->components_.mainPage_;
   mp->setBounds(0, 0, 1, 1);
+#if OLD_JUCE
   setContentComponent(mp, true, true);
+#else
+  setContentOwned(mp, true);
+#endif
   computeBounds<AppLayout>();
   setMenuBar(&instance_->menus_);
   setUsingNativeTitleBar(true);
@@ -23,7 +29,11 @@ Window::~Window() {
   MenuBarModel::setMacMainMenu(NULL);
 #endif
   setMenuBar(NULL);
-  setContentComponent(NULL, false);
+#if OLD_JUCE
+  setContentComponent(NULL, false, true);
+#else
+  setContentOwned(NULL, false);
+#endif
 }
 
 }  // namespace slow

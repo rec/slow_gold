@@ -46,9 +46,9 @@ void UntypedData::readFromFile() const {
     fileReadSuccess_ = copy(*file_, message_);
 #if 0
     if (fileReadSuccess_)
-      DLOG(INFO) << "Opening data " << file_->getFullPathName().toCString();
+      DLOG(INFO) << "Opening data " << file_->getFullPathName();
     else
-      LOG(ERROR) << "New data " << file_->getFullPathName().toCString();
+      LOG(ERROR) << "New data " << file_->getFullPathName();
 #endif
     alreadyReadFromFile_ = true;
   }

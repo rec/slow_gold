@@ -27,6 +27,7 @@ Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
       "Replace the current selection with a copy of the clipboard.", 'v');
 
 #ifdef TODO
+  // Causes a run-time error!
   add(Command::QUIT, makeCallback(JUCEApplication::getInstance(),
                                   &JUCEApplication::systemRequestedQuit),
       "Quit", "File",

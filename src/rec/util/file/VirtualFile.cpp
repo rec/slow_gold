@@ -172,7 +172,7 @@ PositionableAudioSource* createSource(const VirtualFile& file) {
   if (reader)
     return new AudioFormatReaderSource(reader.transfer(), true);
   else
-    LOG(ERROR) << "No reader for " << getFullDisplayName(file).toCString();
+    LOG(ERROR) << "No reader for " << getFullDisplayName(file);
   return NULL;
 }
 
@@ -186,8 +186,8 @@ VirtualFile toVirtualFile(const File& file) {
 
   File f = file, p = file.getParentDirectory();
   for (; f != p; f = p, p = f.getParentDirectory())
-    vf.add_path(f.getFileName().toCString());
-  string lastName = f.getFileName().toCString();
+    vf.add_path(str(f.getFileName()));
+  string lastName = str(f.getFileName());
   if (lastName.size())
     vf.add_path(lastName);
 

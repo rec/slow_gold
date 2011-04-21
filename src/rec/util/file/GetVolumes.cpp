@@ -33,7 +33,7 @@ void addFileRoots(VirtualFileList* volumes) {
 
   for (int i = 0; i < roots.size(); ++i) {
     if (roots[i].isOnHardDisk() && roots[i].getLinkedTarget() == roots[i]) {
-      string s(roots[i].getFullPathName().toCString());
+      string s(str(roots[i].getFullPathName()));;
       eraseVolumePrefix(&s);
       add(VirtualFile::VOLUME, s, volumes);
     }
@@ -45,9 +45,9 @@ void addAudioCDs(VirtualFileList* volumes) {
   for (int i = 0; i < names.size(); ++i) {
     ptr<AudioCDReader> reader(AudioCDReader::createReaderForCD(i));
     if (reader && reader->getNumTracks())
-      add(VirtualFile::CD, cd::getCDKey(reader.get()).toCString(), volumes);
+      add(VirtualFile::CD, str(cd::getCDKey(reader.get())), volumes);
     else
-      LOG(ERROR) << "Couldn't create reader for " << names[i].toCString();
+      LOG(ERROR) << "Couldn't create reader for " << names[i];
   }
 }
 

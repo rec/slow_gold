@@ -21,7 +21,7 @@ CachedThumbnail::CachedThumbnail(const File& file, int compression,
       thumbnail_.loadFrom(*out);
       isFull_ = true;
     } else {
-      LOG(ERROR) << "Couldn't load from " << file_.getFullPathName().toCString();
+      LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
     }
   }
 }
