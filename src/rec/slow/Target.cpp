@@ -1,5 +1,6 @@
-#include "rec/gui/Dialog.h"
 #include "rec/slow/Target.h"
+#include "rec/gui/Dialog.h"
+#include "rec/slow/Instance.h"
 
 namespace rec {
 namespace slow {
@@ -57,6 +58,6 @@ Target::Target(Instance* i, MainPage* mp, ComponentContainer* cc) {
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
 
-  registerAllCommands();
+  registerAllCommandsForTarget();
 }
 

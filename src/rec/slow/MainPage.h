@@ -7,6 +7,11 @@
 #include "rec/gui/Layout.h"
 
 namespace rec {
+
+namespace gui {
+class SetterResizer;
+}
+
 namespace slow {
 
 class MainPage : public gui::Layout {
@@ -17,18 +22,18 @@ class MainPage : public gui::Layout {
   void paint(Graphics&);
 
  private:
-  void addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo);
+  void addResizer(ptr<gui::SetterResizer>* r, const char* addr, Layout* lo);
   void doLayout();
 
-  ptr<SetterResizer> resizer_[2];
-  ptr<SetterResizer> loopResizer_;
+  ptr<gui::SetterResizer> resizer_[2];
+  ptr<gui::SetterResizer> loopResizer_;
 
   gui::Layout panel_;
   gui::Layout subpanel_;
 
   double length_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(MainPage);
+  DISALLOW_COPY_AND_ASSIGN(MainPage);
 };
 
 }  // namespace slow

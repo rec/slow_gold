@@ -18,6 +18,9 @@ class StretchyController : public Layout, public juce::ComboBox::Listener,
   virtual bool isOpaque() const { return true; }
 
   virtual void setData(persist::Data<rec::audio::stretch::StretchLoop>* data);
+  virtual void operator()(const rec::audio::stretch::StretchLoop&) {
+    // TODO
+  }
 
   void setZoom(persist::UntypedData* zoom);
   void enableSliders(bool enabled);

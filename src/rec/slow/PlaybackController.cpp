@@ -9,9 +9,9 @@ namespace slow {
 
 PlaybackController::PlaybackController(Instance* i, const Address& address)
     : Layout("Main controls"),
+      panel_("Main panel", VERTICAL),
       timeControllerResizer_(address + "clock_x", this, 1),
       songDataResizer_(address + "songdata_x", this, 3),
-      panel_("Main panel", VERTICAL),
       stretchyResizer_(address + "stretchy_y", &panel_, 1) {
   addToLayout(&i->components_.timeController_);
   timeControllerResizer_.add(5);

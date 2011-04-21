@@ -25,7 +25,7 @@ struct Broadcasters {
   Broadcaster<const widget::waveform::TimeAndMouseEvent&> timeAndMouseEvent_;
   Broadcaster<const widget::waveform::ZoomProto&> zoomProto_;
 
-  Broadcaster<TransportState> transportState_;
+  Broadcaster<audio::transport::State> transportState_;
 };
 
 }  // namespace slow

@@ -2,16 +2,16 @@
 #define __REC_SLOW_LISTENERS__
 
 #include "rec/audio/Audio.h"
-#include "rec/audio/stretch/StretchLoop.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/util/file/VirtualFileList.h"
-#include "rec/gui/audio/LoopPointList.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/util/ClockUpdate.h"
-#include "rec/util/Listener.h"
+#include "rec/util/listener/Listener.h"
 #include "rec/util/Range.h"
 #include "rec/widget/waveform/CursorTime.h"
 #include "rec/widget/waveform/TimeAndMouseEvent.h"
-#include "rec/widget/waveform/ZoomProto.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
 namespace slow {
@@ -19,7 +19,7 @@ namespace slow {
 class ClockTick;
 
 class Listeners :
-    public Listener<const AudioThumbnail&>,
+    public Listener<const juce::AudioThumbnail&>,
     public Listener<const ClockTick&>,
     public Listener<const ClockUpdate&>,
     public Listener<const SelectionRange&>,
@@ -31,11 +31,12 @@ class Listeners :
     public Listener<const widget::waveform::TimeAndMouseEvent&>,
     public Listener<const widget::waveform::ZoomProto&>,
     public Listener<RealTime>,
-    public Listener<TransportState> {
+    public Listener<audio::transport::State> {
  public:
   explicit Listeners(Instance* i) : instance_(i) {}
 
   virtual void operator()(const ClockTick&);
+  virtual void operator()(const juce::AudioThumbnail&);
   virtual void operator()(const ClockUpdate&);
   virtual void operator()(const SelectionRange&);
   virtual void operator()(const audio::stretch::StretchLoop&);
@@ -46,7 +47,7 @@ class Listeners :
   virtual void operator()(const widget::waveform::TimeAndMouseEvent&);
   virtual void operator()(const widget::waveform::ZoomProto&);
   virtual void operator()(RealTime);
-  virtual void operator()(TransportState);
+  virtual void operator()(audio::transport::State);
 
   template <typename Type>
   void callAsync(Type t) {

@@ -2,7 +2,9 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/gui/RecentFiles.h"
+#include "rec/gui/SetterResizer.h"
 #include "rec/slow/AppLayout.pb.h"
+#include "rec/slow/Instance.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/MainPage.h"
 #include "rec/util/thread/CallAsync.h"
@@ -11,7 +13,7 @@
 
 using namespace juce;
 
-using namespace rec::audio::source;
+// using namespace rec::audio::source;
 using namespace rec::widget::waveform;
 
 namespace rec {

@@ -2,11 +2,12 @@
 #define __REC_SLOW_SLOWTARGET__
 
 #include "rec/command/Command.pb.h"
-#include "rec/slow/Instance.h"
 #include "rec/command/TargetManager.h"
 
 namespace rec {
 namespace slow {
+
+class Instance;
 
 class Target : public command::TargetManager {
  public:

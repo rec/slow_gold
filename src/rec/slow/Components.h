@@ -3,12 +3,15 @@
 
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/audio/Loops.h"
-#include "rec/gui/audio/SongData.h"
+#include "rec/gui/SongData.h"
 #include "rec/gui/audio/StretchyController.h"
+#include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
+#include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
-#include "rec/slow/TimeController.h"
+#include "rec/util/thread/Trash.h"
+#include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
 
 namespace rec {
@@ -18,20 +21,20 @@ struct Instance;
 
 struct Components {
   Components(Instance* i) : playbackController_(i), waveform_(i) {
-    playbackController_.setSetter(persist::data<AppLayout>());
+    playbackController_.setSetter(persist::appData<AppLayout>());
   }
 
   PlaybackController playbackController_;
-  TimeController timeController_;
-  Waveform waveform_;
+  gui::audio::TimeController timeController_;
 
   gui::audio::Loops loops_;
-  gui::audio::SongData songData_;
+  gui::SongData songData_;
   gui::audio::StretchyController stretchyController_;
   gui::audio::TransportController transportController_;
 
   thread_ptr<widget::tree::Root> directoryTreeRoot_;
-  DropTarget<Waveform, WaveformProto> waveform_;
+  gui::DropTarget<widget::waveform::Waveform,
+                  widget::waveform::WaveformProto> waveform_;
 
   MainPage mainPage_;
 };

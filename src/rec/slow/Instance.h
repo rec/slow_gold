@@ -11,7 +11,7 @@
 #include "rec/slow/Target.h"
 
 namespace rec {
-namespace app {
+namespace slow {
 
 // A single instance of Slow.  Right now there's only one per application but in
 // future there might be more than one.  This is where all the Broadcasters live
@@ -31,10 +31,10 @@ struct Instance {
   Target target_;
   Threads threads_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);
+  DISALLOW_COPY_AND_ASSIGN(Instance);
 };
 
-}  // namespace app
+}  // namespace slow
 }  // namespace rec
 
 #endif  // __REC_SLOW_INSTANCE__

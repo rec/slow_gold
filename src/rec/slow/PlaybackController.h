@@ -2,14 +2,16 @@
 #define __REC_SLOW_APP_PLAYBACKCONTROLLER__
 
 #include "rec/gui/Layout.h"
-#include "rec/gui/SetterTextArea.h"
+#include "rec/gui/SetterResizer.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/TimeController.h"
 
 namespace rec {
 namespace slow {
 
-class PlaybackController : public Layout {
+class Instance;
+
+class PlaybackController : public gui::Layout {
  public:
   typedef proto::arg::Address Address;
   explicit PlaybackController(Instance* i,
@@ -18,11 +20,11 @@ class PlaybackController : public Layout {
   void setSetter(persist::Setter* setter);
 
  private:
-  Layout panel_;
+  gui::Layout panel_;
 
-  SetterResizer timeControllerResizer_;
-  SetterResizer songDataResizer_;
-  SetterResizer stretchyResizer_;
+  gui::SetterResizer timeControllerResizer_;
+  gui::SetterResizer songDataResizer_;
+  gui::SetterResizer stretchyResizer_;
 
   DISALLOW_COPY_AND_ASSIGN(PlaybackController);
 };

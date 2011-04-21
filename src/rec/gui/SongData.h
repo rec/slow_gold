@@ -1,15 +1,16 @@
 #ifndef __REC_GUI_SONGDATA__
 #define __REC_GUI_SONGDATA__
 
-#include "rec/util/cd/Album.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/util/cd/Album.h"
+#include "rec/gui/SetterTextArea.h"
 
 namespace rec {
 namespace gui {
 
-class SongData : public gui::SetterTextArea {
+class SongData : public SetterTextArea {
  public:
-  SongData() : gui::SetterTextArea("SongData") {
+  SongData() : SetterTextArea("SongData") {
     using persist::Address;
 
     add("Track", Address("track_title"), "The name of the individual track.");
