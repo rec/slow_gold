@@ -2,31 +2,19 @@
 #define __REC_SLOW_WINDOW__
 
 #include "rec/gui/PersistentWindow.h"
-#include "rec/slow/Instance.h"
 
 namespace rec {
 namespace slow {
 
+class Instance;
+
 class Window : public gui::PersistentWindow {
  public:
-  Window() : PersistentWindow("SlowGold", juce::Colours::azure,
-                              DocumentWindow::allButtons, true) {
-    setContentComponent(&instance_.components_.mainPage_, true, true);
-    setMenuBar(&instance_.menus_);
-    setUsingNativeTitleBar(true);
-  }
-
-  ~Window() {
-#if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
-    // Why isn't this in GenericApplication?
-    MenuBarModel::setMacMainMenu(NULL);
-#endif
-    setMenuBar(NULL);
-    setContentComponent(NULL, false);
-  }
+  Window();
+  virtual ~Window();
 
  private:
-  Instance instance_;
+  ptr<Instance> instance_;
   DISALLOW_COPY_AND_ASSIGN(Window);
 };
 

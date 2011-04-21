@@ -26,10 +26,12 @@ Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.", 'v');
 
+#ifdef TODO
   add(Command::QUIT, makeCallback(JUCEApplication::getInstance(),
                                   &JUCEApplication::systemRequestedQuit),
       "Quit", "File",
       "Quit SlowGold", 'q');
+#endif
 
   using gui::audio::Loops;
   Loops* loops = &i->components_.loops_;
