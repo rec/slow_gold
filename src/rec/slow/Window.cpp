@@ -8,8 +8,10 @@ namespace slow {
 Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
                                     DocumentWindow::allButtons, true),
                    instance_(new Instance()) {
+  Component* mp = &instance_->components_.mainPage_;
+  mp->setBounds(0, 0, 1, 1);
+  setContentComponent(mp, true, true);
   computeBounds<AppLayout>();
-  setContentComponent(&instance_->components_.mainPage_, true, true);
   setMenuBar(&instance_->menus_);
   setUsingNativeTitleBar(true);
 }
