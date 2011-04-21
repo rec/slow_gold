@@ -1,15 +1,17 @@
 #ifndef __REC_SLOW_WINDOW__
 #define __REC_SLOW_WINDOW__
 
+#include "rec/gui/PersistentWindow.h"
 #include "rec/slow/Instance.h"
 
 namespace rec {
 namespace slow {
 
-class Window : public PersistentWindow {
+class Window : public gui::PersistentWindow {
  public:
-  Window() {
-    setContentComponent(instance_.components_.mainPage_, true, true);
+  Window() : PersistentWindow("SlowGold", juce::Colours::azure,
+                              DocumentWindow::allButtons, true) {
+    setContentComponent(&instance_.components_.mainPage_, true, true);
     setMenuBar(&instance_.menus_);
     setUsingNativeTitleBar(true);
   }

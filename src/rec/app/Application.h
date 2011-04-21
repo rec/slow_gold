@@ -31,7 +31,7 @@ class Application : public GenericApplication {
 
 #define START_REC_APPLICATION(WINDOW_CLASS, NAME, VERSION)              \
   REC_APPLICATION_HELPER(NAME, NAME ## Application,                     \
-                         rec::slow::Application<WINDOW_CLASS>, VERSION)
+                         rec::app::Application<WINDOW_CLASS>, VERSION)
 
 }  // namespace app
 }  // namespace rec

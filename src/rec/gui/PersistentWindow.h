@@ -1,5 +1,5 @@
-#ifndef __REC_SLOW_SLOWWINDOW
-#define __REC_SLOW_SLOWWINDOW
+#ifndef __REC_GUI_PERSISTENTWINDOW
+#define __REC_GUI_PERSISTENTWINDOW
 
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Geometry.h"
@@ -25,8 +25,6 @@ class PersistentWindow : public DocumentWindow {
   }
   void setLimitedBounds(const Rect& rect);
 
-  // TODO("SlowGold", Colours::azure, DocumentWindow::allButtons, true) {
-
   ~PersistentWindow();
 
   void closeButtonPressed();
@@ -47,4 +45,4 @@ class PersistentWindow : public DocumentWindow {
 }  // namespace gui
 }  // namespace rec
 
-#endif   // __REC_SLOW_SLOWWINDOW
+#endif   // __REC_GUI_PERSISTENTWINDOW
