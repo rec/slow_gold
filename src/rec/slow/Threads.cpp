@@ -10,12 +10,12 @@ static const int CLOCK_PERIOD = 10;
 
 Threads::Threads(Instance* i) :
     instance_(i),
-    clock_(makeLoop(CLOCK_PERIOD, "Clock", this, &Threads::clock)) {
-  clockUpdateThread_.startThread();
+    clock_(thread::makeLoop(CLOCK_PERIOD, "Clock", this, &Threads::clock)) {
+  clock_->startThread();
 }
 
 void Threads::clock() {
-  instance_->broadcasters_(instance_->player_.getNextReadPosition());
+  instance_->listeners_(instance_->player_.getNextReadPosition());
 }
 
 }  // namespace slow
