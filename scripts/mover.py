@@ -7,62 +7,66 @@ import re
 import sys
 
 
+def pathParts(s):
+  parts = os.path.abspath(s).split('/src/rec/')[1:]
+  if not parts:
+    raise ValueError(s)
+  parts = ['rec'] + parts[0].split('/')
+  parts[-1] = parts[-1].split('.')[0]
+  return parts
+
+
 def run(cmd):
   # print '$', cmd
   os.system(cmd)
 
+
 class Mover(object):
-  NONE = 0
+  NONE, START, BODY, END_NAME, END_GUARD, END = range(6)
+
   START = 1
   END = 2
 
-  PATTERNS = {START: r'^namespace \w+ {',
-              END: r'^}\s+// namespace \w+'}
+  BLANK_PATTERN = '^\s+$'
+  START_PATTERN = '^namespace \w+ {';
+  END_PATTERN =  r'^}\s+// namespace \w+'
+  GUARD_PATTERN =  r'^#endif\s+// __REC|'
 
   FUNCTIONS = [(lambda path: '__' + '_'.join(p.upper() for p in path)),
                (lambda path: '#include "%s.h"' % '/'.join(path)),
                (lambda path: path[-1])]
 
   def __init__(self, fromFile, toFile):
-    def path(s):
-      parts = os.path.abspath(s).split('/src/rec/')[1:]
-      if not parts:
-        raise ValueError(s)
-      parts = ['rec'] + parts[0].split('/')
-      parts[-1] = parts[-1].split('.')[0]
-      return parts
-
     self.state = Mover.NONE
-    fromFile = os.path.abspath(fromFile)
-    toFile = os.path.abspath(toFile)
+    self.fromFile, self.toFile = self.check(fromFile, toFile)
 
-    if not os.path.exists(fromFile):
-      raise ValueError(fromFile + " doesn't exist!")
-
-    if os.path.isdir(fromFile):
-      raise ValueError(fromFile + ' is a directory!')
-
-    self.fromFile = fromFile
-
-    if os.path.isdir(toFile):
-      toFile += ('/' + os.path.basename(fromFile))
-
-    if os.path.exists(toFile):
-      raise ValueError(toFile + ' already exists.')
-
-    self.toFile = toFile
-
-    fromPath = path(self.fromFile)
-    toPath = path(self.toFile)
-
-    func = Mover.FUNCTIONS
-    self.replacements = [[f(fromPath), f(toPath)] for f in func]
+    fromPath = pathParts(self.fromFile)
+    toPath = pathParts(self.toFile)
+    self.replacements = [[f(fromPath), f(toPath)] for f in Mover.FUNCTIONS]
 
     names = toPath[:-1]
     def bed(begin, end='\n'):
       return begin + (end + begin).join(names) + end
 
-    self.namespace = [bed('namespace ', ' {\n'), bed('}  // namespace ')]
+    self.namespaceStart = bed('namespace ', ' {\n')
+    self.namespaceEnd =  bed('}  // namespace ')
+
+  def check(self, f, t):
+    f, t = os.path.abspath(f), os.path.abspath(t)
+
+    if not os.path.exists(f):
+      raise ValueError(f + " doesn't exist!")
+
+    if os.path.isdir(f):
+      raise ValueError(f + ' is a directory!')
+
+    if os.path.isdir(t):
+      t += ('/' + os.path.basename(f))
+
+    if os.path.exists(t):
+      raise ValueError(t + ' already exists.')
+
+    return f,t
 
   def move(self):
     tempFile = self.toFile + '.tmp'
@@ -77,24 +81,58 @@ class Mover(object):
         for line in input:
           self.transition(self.toState(line))
           self.process(line)
+    self.transition(Mover.END)
     os.remove(tempFile)
 
+  def toState(self, line):
+    if re.match(Mover.BLANK_PATTERN, line):
+      return self.state
+
+    if self.state is Mover.NONE:
+      return re.match(Mover.START_PATTERN, line) and Mover.START or Mover.NONE
+
+    if self.state is Mover.START:
+      return re.match(Mover.START_PATTERN, line) and Mover.START or Mover.BODY
+
+    if re.match(Mover.END_PATTERN, line):
+      return Mover.END_PATTERN
+
+    if re.match(Mover.GUARD_PATTERN, line):
+      return Mover.END_GUARD
+
+    return Mover.BODY
+
   def transition(self, state):
-    if self.state != state and self.state:
-      self.out.write(self.namespace[self.state - 1])
+    if self.state != state:
+      if self.state is Mover.START:
+        self.out.write(self.namespaceStart)
+
+      if state is Mover.BODY:
+        if self.state is Mover.END_GUARD:
+          for x in self.endCache:
+            self.out.write(x)
+        self.endCache = []
+
+      if state is Mover.END_GUARD:
+        if self.state is Mover.END_GUARD:
+          raise ValueError('Two end guards!')
+        self.out.write(self.namespaceEnd)
+        # self.namespaceEnd = ''
+
+      if state is Mover.END:
+        if self.state is not Mover.BODY:
+          self.out.write(self.namespaceEnd)
+
     self.state = state
 
-  def toState(self, line):
-    for state, pat in Mover.PATTERNS.iteritems():
-      if re.match(pat, line):
-        return state
-    return Mover.NONE
-
   def process(self, line):
-    if self.state == Mover.NONE:
+    if self.state in [Mover.NONE, Mover.BODY, Mover.END_GUARD]:
       for pat, repl in self.replacements:
         line = re.sub(pat, repl, line)
       self.out.write(line)
+
+    elif self.state is Mover.END_NAME:
+      self.endCache.append(line)
 
 
 def move(args):

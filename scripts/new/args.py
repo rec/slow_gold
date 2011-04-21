@@ -40,18 +40,21 @@ def splitGroupArgs(args):
   files = []
   for a in args:
     file, suffix = splitGroup(a)
+
     if file:
       lastFile = file
       files.append(file)
 
     if suffix:
       lastSuffix = suffix
-      for f in files:
-        yield f, suffix
+      if files:
+        for f in files:
+          yield f, suffix
+        files = []
       else:
         if lastFile:
           yield lastFile, suffix
-      files = []
+        lastFile = None
 
   if files:
     if lastSuffix:
@@ -69,5 +72,5 @@ def parseArgs():
     context.update(svg=readSVGFile(options.svg),
                    svg_file=options.svg)
 
-  return splitGroupArgs(args), context
+  return list(splitGroupArgs(args)), context
 
