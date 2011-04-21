@@ -95,13 +95,11 @@ class Mover(object):
       return Mover.END_NAME
 
     if re.match(Mover.GUARD_PATTERN, line):
-      # print "!!!", line, "matches", Mover.GUARD_PATTERN
       return Mover.END_GUARD
 
     return Mover.BODY
 
   def transition(self, state, line):
-    # print "transition", state, line
     if self.state != state:
       if self.state is Mover.START:
         self.out.write(self.namespaceStart)
