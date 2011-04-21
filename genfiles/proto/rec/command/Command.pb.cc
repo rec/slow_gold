@@ -76,22 +76,23 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/command/Command.proto\022\013rec.command"
-    "\"\340\004\n\007Command\022*\n\007command\030\001 \001(\0162\031.rec.comm"
-    "and.Command.Type\"\250\004\n\004Type\022\010\n\004NONE\020\000\022\t\n\004Q"
+    "\"\207\005\n\007Command\022*\n\007command\030\001 \001(\0162\031.rec.comm"
+    "and.Command.Type\"\317\004\n\004Type\022\010\n\004NONE\020\000\022\t\n\004Q"
     "UIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n"
     "\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_A"
     "LL\020\207 \022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFE"
     "RENCES\020\002\022\t\n\005BEGIN\020\003\022\016\n\nCLEAR_FILE\020\004\022\017\n\013C"
-    "LEAR_LOOPS\020\005\022\024\n\020CLEAR_SAVED_DATA\020\006\022\016\n\nCL"
-    "EAR_TIME\020\007\022\016\n\nCLEAR_TREE\020\010\022\t\n\005CLOSE\020\t\022\t\n"
-    "\005EJECT\020\n\022\007\n\003END\020\013\022\023\n\017NEXT_LOOP_POINT\020\014\022\016"
-    "\n\nNUDGE_LEFT\020\r\022\017\n\013NUDGE_RIGHT\020\016\022\010\n\004OPEN\020"
-    "\017\022\027\n\023PREVIOUS_LOOP_POINT\020\020\022\020\n\014RECENT_FIL"
-    "ES\020\021\022\025\n\021TOGGLE_START_STOP\020\022\022\031\n\025TOGGLE_ST"
-    "RETCH_ENABLE\020\023\022\016\n\nTREE_CLOSE\020\024\022\r\n\tTREE_D"
-    "OWN\020\025\022\r\n\tTREE_LEFT\020\026\022\r\n\tTREE_OPEN\020\027\022\016\n\nT"
-    "REE_RIGHT\020\030\022\013\n\007TREE_UP\020\031\022\013\n\007ZOOM_IN\020\032\022\014\n"
-    "\010ZOOM_OUT\020\033", 651);
+    "LEAR_LOOPS\020\005\022\024\n\020CLEAR_SAVED_DATA\020\006\022\023\n\017CL"
+    "EAR_SELECTION\020\034\022\016\n\nCLEAR_TIME\020\007\022\016\n\nCLEAR"
+    "_TREE\020\010\022\t\n\005CLOSE\020\t\022\t\n\005EJECT\020\n\022\007\n\003END\020\013\022\023"
+    "\n\017NEXT_LOOP_POINT\020\014\022\016\n\nNUDGE_LEFT\020\r\022\017\n\013N"
+    "UDGE_RIGHT\020\016\022\010\n\004OPEN\020\017\022\027\n\023PREVIOUS_LOOP_"
+    "POINT\020\020\022\020\n\014RECENT_FILES\020\021\022\025\n\021TOGGLE_STAR"
+    "T_STOP\020\022\022\031\n\025TOGGLE_STRETCH_ENABLE\020\023\022\016\n\nT"
+    "REE_CLOSE\020\024\022\r\n\tTREE_DOWN\020\025\022\r\n\tTREE_LEFT\020"
+    "\026\022\r\n\tTREE_OPEN\020\027\022\016\n\nTREE_RIGHT\020\030\022\013\n\007TREE"
+    "_UP\020\031\022\013\n\007ZOOM_IN\020\032\022\014\n\010ZOOM_OUT\020\033\022\020\n\014LAST"
+    "_COMMAND\020\034", 690);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Command::default_instance_ = new Command();
@@ -143,6 +144,7 @@ bool Command_Type_IsValid(int value) {
     case 25:
     case 26:
     case 27:
+    case 28:
     case 4097:
     case 4098:
     case 4099:
@@ -171,6 +173,7 @@ const Command_Type Command::BEGIN;
 const Command_Type Command::CLEAR_FILE;
 const Command_Type Command::CLEAR_LOOPS;
 const Command_Type Command::CLEAR_SAVED_DATA;
+const Command_Type Command::CLEAR_SELECTION;
 const Command_Type Command::CLEAR_TIME;
 const Command_Type Command::CLEAR_TREE;
 const Command_Type Command::CLOSE;
@@ -192,6 +195,7 @@ const Command_Type Command::TREE_RIGHT;
 const Command_Type Command::TREE_UP;
 const Command_Type Command::ZOOM_IN;
 const Command_Type Command::ZOOM_OUT;
+const Command_Type Command::LAST_COMMAND;
 const Command_Type Command::Type_MIN;
 const Command_Type Command::Type_MAX;
 const int Command::Type_ARRAYSIZE;

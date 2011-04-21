@@ -50,6 +50,7 @@ enum Command_Type {
   Command_Type_CLEAR_FILE = 4,
   Command_Type_CLEAR_LOOPS = 5,
   Command_Type_CLEAR_SAVED_DATA = 6,
+  Command_Type_CLEAR_SELECTION = 28,
   Command_Type_CLEAR_TIME = 7,
   Command_Type_CLEAR_TREE = 8,
   Command_Type_CLOSE = 9,
@@ -70,7 +71,8 @@ enum Command_Type {
   Command_Type_TREE_RIGHT = 24,
   Command_Type_TREE_UP = 25,
   Command_Type_ZOOM_IN = 26,
-  Command_Type_ZOOM_OUT = 27
+  Command_Type_ZOOM_OUT = 27,
+  Command_Type_LAST_COMMAND = 28
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
@@ -156,6 +158,7 @@ class Command : public ::google::protobuf::Message {
   static const Type CLEAR_FILE = Command_Type_CLEAR_FILE;
   static const Type CLEAR_LOOPS = Command_Type_CLEAR_LOOPS;
   static const Type CLEAR_SAVED_DATA = Command_Type_CLEAR_SAVED_DATA;
+  static const Type CLEAR_SELECTION = Command_Type_CLEAR_SELECTION;
   static const Type CLEAR_TIME = Command_Type_CLEAR_TIME;
   static const Type CLEAR_TREE = Command_Type_CLEAR_TREE;
   static const Type CLOSE = Command_Type_CLOSE;
@@ -177,6 +180,7 @@ class Command : public ::google::protobuf::Message {
   static const Type TREE_UP = Command_Type_TREE_UP;
   static const Type ZOOM_IN = Command_Type_ZOOM_IN;
   static const Type ZOOM_OUT = Command_Type_ZOOM_OUT;
+  static const Type LAST_COMMAND = Command_Type_LAST_COMMAND;
   static inline bool Type_IsValid(int value) {
     return Command_Type_IsValid(value);
   }

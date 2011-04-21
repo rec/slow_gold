@@ -12,15 +12,15 @@ const StringArray Menus::getMenuBarNames() {
 }
 
 const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
-  typedef command::Command::Type Command;
+  typedef command::Command Command;
 
   PopupMenu m;
   if (menuName == "File") {
-    add(&m, command::Command::Type::OPEN);
+    add(&m, Command::OPEN);
     add(&m, Command::CLOSE);
     add(&m, Command::EJECT);
     add(&m, Command::AUDIO_PREFERENCES);
-    add(&m, Command::TREE_CLEAR);
+    add(&m, Command::CLEAR_TREE);
 
 #ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();
@@ -48,7 +48,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::CLEAR_TIME);
   }
 
-  return menu;
+  return m;
 }
 
 void Menus::add(PopupMenu* m, CommandID c) {

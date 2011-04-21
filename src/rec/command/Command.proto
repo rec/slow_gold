@@ -21,6 +21,7 @@ message Command {
     CLEAR_FILE = 4;
     CLEAR_LOOPS = 5;
     CLEAR_SAVED_DATA = 6;
+    CLEAR_SELECTION = 28;
     CLEAR_TIME = 7;
     CLEAR_TREE = 8;
     CLOSE = 9;
@@ -42,6 +43,8 @@ message Command {
     TREE_UP = 25;
     ZOOM_IN = 26;
     ZOOM_OUT = 27;
+
+    LAST_COMMAND = 28;
   };
 
   optional Type command = 1;
