@@ -20,7 +20,8 @@ namespace slow {
 struct Instance;
 
 struct Components {
-  Components(Instance* i) : playbackController_(i) {
+  Components(Instance* i) : playbackController_(i),
+                            waveform_(widget::waveform::WaveformProto()) {
     playbackController_.setSetter(persist::appData<AppLayout>());
   }
 

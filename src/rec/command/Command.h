@@ -2,6 +2,7 @@
 #define __REC_COMMAND_COMMAND__
 
 #include "rec/base/base.h"
+#include "rec/command/Command.pb.h"
 
 namespace rec {
 namespace command {

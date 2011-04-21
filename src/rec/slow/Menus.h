@@ -6,6 +6,8 @@
 namespace rec {
 namespace slow {
 
+class Instance;
+
 class Menus : public MenuBarModel {
  public:
   Menus(Instance* i) : instance_(i) {}
@@ -15,9 +17,7 @@ class Menus : public MenuBarModel {
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
 
  private:
-  void add(PopupMenu* m, CommandID c) {
-    instance_->target_.addCommandItem(m, c);
-  }
+  void add(PopupMenu* m, CommandID c);
 
   Instance* instance_;
 

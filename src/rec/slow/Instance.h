@@ -9,6 +9,7 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/PersistentData.h"
 #include "rec/slow/Target.h"
+#include "rec/slow/Threads.h"
 
 namespace rec {
 namespace slow {
@@ -23,7 +24,7 @@ struct Instance {
 
   Broadcasters broadcasters_;
   Components components_;
-  Device device_;
+  audio::Device device_;
   Listeners listeners_;
   Menus menus_;
   PersistentData data_;
