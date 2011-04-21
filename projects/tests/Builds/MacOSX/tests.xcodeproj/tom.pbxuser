@@ -150,6 +150,14 @@
 			sepNavWindowFrame = "{{587, 21}, {866, 1138}}";
 		};
 	};
+	236D9C97E6E0998AE7901021 /* PersistentWindow.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {928, 611}}";
+			sepNavSelRange = "{775, 0}";
+			sepNavVisRange = "{701, 129}";
+			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
+		};
+	};
 	25D21237DBCD70A56C17866D /* NewHandle.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {712, 806}}";
@@ -528,6 +536,13 @@
 			E2128686135FFCA6008DDE79 /* PBXTextBookmark */ = E2128686135FFCA6008DDE79 /* PBXTextBookmark */;
 			E2128696135FFD98008DDE79 /* PBXTextBookmark */ = E2128696135FFD98008DDE79 /* PBXTextBookmark */;
 			E2128697135FFD98008DDE79 /* PBXTextBookmark */ = E2128697135FFD98008DDE79 /* PBXTextBookmark */;
+			E21286A8135FFE2A008DDE79 /* PBXTextBookmark */ = E21286A8135FFE2A008DDE79 /* PBXTextBookmark */;
+			E21286A9135FFE2A008DDE79 /* XCBuildMessageTextBookmark */ = E21286A9135FFE2A008DDE79 /* XCBuildMessageTextBookmark */;
+			E21286AB135FFE2A008DDE79 /* PBXTextBookmark */ = E21286AB135FFE2A008DDE79 /* PBXTextBookmark */;
+			E21286AC135FFE2A008DDE79 /* PBXTextBookmark */ = E21286AC135FFE2A008DDE79 /* PBXTextBookmark */;
+			E21286AD135FFE2A008DDE79 /* XCBuildMessageTextBookmark */ = E21286AD135FFE2A008DDE79 /* XCBuildMessageTextBookmark */;
+			E21286AE135FFE2A008DDE79 /* PBXTextBookmark */ = E21286AE135FFE2A008DDE79 /* PBXTextBookmark */;
+			E21286AF135FFE2E008DDE79 /* PBXTextBookmark */ = E21286AF135FFE2E008DDE79 /* PBXTextBookmark */;
 			E212A2C512BAE57300C1BEC3 = E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */;
 			E212A33D12BAE9A800C1BEC3 = E212A33D12BAE9A800C1BEC3 /* PBXTextBookmark */;
 			E22224AD134BF80A00298AE3 = E22224AD134BF80A00298AE3 /* PBXTextBookmark */;
@@ -700,7 +715,7 @@
 			sepNavIntBoundsRect = "{{0, 0}, {862, 1261}}";
 			sepNavSelRange = "{1924, 0}";
 			sepNavVisRange = "{0, 2862}";
-			sepNavWindowFrame = "{{38, 12}, {921, 1140}}";
+			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
 		};
 	};
 	6504082AA4F2285A6A6E562D /* Difference_test.cpp */ = {
@@ -2783,6 +2798,80 @@
 		rLoc = 1924;
 		rType = 0;
 		vrLen = 2862;
+		vrLoc = 0;
+	};
+	E21286A8135FFE2A008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128660135FFBBF008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 37";
+		rLen = 0;
+		rLoc = 1138;
+		rType = 0;
+		vrLen = 128;
+		vrLoc = 1047;
+	};
+	E21286A9135FFE2A008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Candidate is: virtual void rec::gui::audio::StretchyController::setData(rec::persist::Data<rec::audio::stretch::StretchLoop>*)";
+		fRef = E21286AA135FFE2A008DDE79 /* StretchyController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 19;
+		rType = 1;
+	};
+	E21286AA135FFE2A008DDE79 /* StretchyController.h */ = {
+		isa = PBXFileReference;
+		name = StretchyController.h;
+		path = ../../../../../rec/src/rec/gui/audio/StretchyController.h;
+		sourceTree = "<group>";
+	};
+	E21286AB135FFE2A008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128675135FFC68008DDE79 /* StretchyController.h */;
+		name = "StretchyController.h: 20";
+		rLen = 79;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 174;
+		vrLoc = 516;
+	};
+	E21286AC135FFE2A008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6472001F107900B4292AFA73 /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 55";
+		rLen = 0;
+		rLoc = 2013;
+		rType = 0;
+		vrLen = 162;
+		vrLoc = 1884;
+	};
+	E21286AD135FFE2A008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'data()'";
+		fRef = 236D9C97E6E0998AE7901021 /* PersistentWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 29;
+		rType = 1;
+	};
+	E21286AE135FFE2A008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 236D9C97E6E0998AE7901021 /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 30";
+		rLen = 0;
+		rLoc = 775;
+		rType = 0;
+		vrLen = 129;
+		vrLoc = 701;
+	};
+	E21286AF135FFE2E008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128660135FFBBF008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1288;
 		vrLoc = 0;
 	};
 	E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */ = {

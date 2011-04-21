@@ -9,7 +9,8 @@ namespace gui {
 
 PersistentWindow::~PersistentWindow() {}
 
-void PersistentWindow::setLimitedBounds(const Rect& bounds) {
+void PersistentWindow::setLimitedBounds(const Rect& b) {
+  Rect bounds(b);
   bounds.setWidth(juce::jmax(bounds.getWidth(), 500));
   bounds.setHeight(juce::jmax(bounds.getHeight(), 500));
   bounds.setX(juce::jmax(bounds.getX(), 10));
@@ -25,7 +26,8 @@ void PersistentWindow::resized() {
 }
 
 void PersistentWindow::writeData() {
-  persist::data<AppLayout>()->set("bounds", gui::copy(getBounds()));
+  // TODO!
+  persist::appData<slow::AppLayout>()->set("bounds", gui::copy(getBounds()));
 }
 
 void PersistentWindow::moved() {
@@ -39,3 +41,5 @@ void PersistentWindow::closeButtonPressed() {
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 
+}  // namespace gui {
+}  // namespace rec {

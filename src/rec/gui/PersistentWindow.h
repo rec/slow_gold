@@ -18,7 +18,7 @@ class PersistentWindow : public DocumentWindow {
   typedef juce::Rectangle<int> Rect;
 
   template <typename Proto>
-  Rect computeBounds() {
+  void computeBounds() {
     persist::Data<Proto>* data = persist::data<Proto>();
     setLimitedBounds(data->fileReadSuccess() ? copy(data->get().bounds()) :
                      Rect(300, 100, 800, 600));  // TODO!
@@ -42,8 +42,6 @@ class PersistentWindow : public DocumentWindow {
 
   DISALLOW_COPY_AND_ASSIGN(PersistentWindow);
 };
-
-template <typename LayoutProto>
 
 
 }  // namespace gui
