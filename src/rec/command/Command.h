@@ -7,14 +7,12 @@
 namespace rec {
 namespace command {
 
-ModifierKeys getDefaultMods() {
-  return ModifierKeys(juce::ModifierKeys::
+inline ModifierKeys getDefaultMods() {
 #if JUCE_MAC
-commandModifier
+  return ModifierKeys(juce::ModifierKeys::commandModifier);
 #else
-ctrlModifier
+  return ModifierKeys(juce::ModifierKeys::ctrlModifier);
 #endif
-                      );
 }
 
 juce::ApplicationCommandInfo makeInfo(

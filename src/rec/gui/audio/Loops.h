@@ -13,7 +13,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-bool isNewLoopPoint(const LoopPointList& lp, RealTime t);
+bool isNewLoopPointTime(const LoopPointList& lp, RealTime t);
 
 class Loops : public TableController, public Cuttable {
  public:

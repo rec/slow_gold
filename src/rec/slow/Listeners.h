@@ -5,6 +5,7 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/listener/Listener.h"
@@ -17,6 +18,7 @@ namespace rec {
 namespace slow {
 
 class ClockTick;
+class Instance;
 
 class Listeners :
     public Listener<const juce::AudioThumbnail&>,

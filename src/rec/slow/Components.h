@@ -21,7 +21,8 @@ struct Instance;
 
 struct Components {
   Components(Instance* i) : playbackController_(i),
-                            waveform_(widget::waveform::WaveformProto()) {
+                            waveform_(widget::waveform::WaveformProto()),
+                            mainPage_(i) {
     playbackController_.setSetter(persist::appData<AppLayout>());
   }
 

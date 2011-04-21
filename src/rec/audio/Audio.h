@@ -13,7 +13,7 @@ typedef PositionableAudioSource Source;
 namespace transport {
 
 enum State {STOPPED, RUNNING};
-State invert(State s) { return s ? STOPPED : RUNNING; }
+inline State invert(State s) { return s ? STOPPED : RUNNING; }
 
 }  // namespace transport
 

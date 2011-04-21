@@ -19,14 +19,14 @@ using namespace rec::widget::waveform;
 namespace rec {
 namespace slow {
 
-MainPage::MainPage(Instance* i) : Layout("MainPage"), instance_(i) {
-  doLayout();
+MainPage::MainPage(Instance* i) : Layout("MainPage") {
+  doLayout(i);
 }
 
 MainPage::~MainPage() {}
 
-void MainPage::addResizer(ptr<SetterResizer>* r, const char* addr, Layout* lo) {
-  r->reset(new SetterResizer(Address(addr), lo, lo->size()));
+void MainPage::addResizer(ptr<gui::SetterResizer>* r, const char* addr, Layout* lo) {
+  r->reset(new gui::SetterResizer(Address(addr), lo, lo->size()));
   (*r)->add();
 }
 
@@ -34,14 +34,14 @@ void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
 }
 
-void MainPage::doLayout() {
-  persist::Data<AppLayout>* data = persist::data<AppLayout>();
+void MainPage::doLayout(Instance* instance) {
+  persist::Data<AppLayout>* data = persist::appData<AppLayout>();
   AppLayout a = data->get();
 
   bool full[] = {a.full_directory(),  a.full_waveform(), a.full_controller()};
-  Component* comp[] = { instance_->components_.directory_->treeView(),
-                        &instance_->components_.waveform_,
-                        &instance_->components_.controller_};
+  Component* comp[] = { instance->components_.directoryTreeRoot_->treeView(),
+                        &instance->components_.waveform_,
+                        &instance->components_.playbackController_};
   const char* address[] = {"directory_y", "waveform_y", NULL};
 
   static const int SIZE = arraysize(full);
@@ -62,7 +62,7 @@ void MainPage::doLayout() {
     }
     addToLayout(&panel_);
     addResizer(&loopResizer_, "loops_x", this);
-    addToLayout(&loops_);
+    addToLayout(&instance->components_.loops_);
 
   } else if (compound) {
     if (full[0]) {
@@ -84,7 +84,7 @@ void MainPage::doLayout() {
     }
     panel_.addToLayout(&subpanel_);
     addResizer(&loopResizer_, "loops_x", &panel_);
-    panel_.addToLayout(&instance_->components_.loops_);
+    panel_.addToLayout(&instance->components_.loops_);
 
   } else {
     for (int i = 0; i < SIZE; ++i) {
@@ -93,7 +93,7 @@ void MainPage::doLayout() {
       } else {
         panel_.addToLayout(comp[i]);
         addResizer(&loopResizer_, "loops_x", &panel_);
-        panel_.addToLayout(&loops_);
+        panel_.addToLayout(&instance->components_.loops_);
       }
       if (address[i])
         addResizer(&resizer_[i], address[i], this);

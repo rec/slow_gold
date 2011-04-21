@@ -1,12 +1,28 @@
-#ifdef TODO
-
 #include "rec/slow/Listeners.h"
-
-using gui::audio::LoopPoint;
-using gui::audio::LoopPointList;
 
 namespace rec {
 namespace slow {
+
+#ifndef TODO
+
+void Listeners::operator()(const ClockTick&) {}
+void Listeners::operator()(const juce::AudioThumbnail&) {}
+void Listeners::operator()(const ClockUpdate&) {}
+void Listeners::operator()(const SelectionRange&) {}
+void Listeners::operator()(const audio::stretch::StretchLoop&) {}
+void Listeners::operator()(const file::VirtualFile&) {}
+void Listeners::operator()(const file::VirtualFileList&) {}
+void Listeners::operator()(const gui::audio::LoopPointList&) {}
+void Listeners::operator()(const widget::waveform::CursorTime&) {}
+void Listeners::operator()(const widget::waveform::TimeAndMouseEvent&) {}
+void Listeners::operator()(const widget::waveform::ZoomProto&) {}
+void Listeners::operator()(RealTime) {}
+void Listeners::operator()(audio::transport::State) {}
+
+#else
+
+using gui::audio::LoopPoint;
+using gui::audio::LoopPointList;
 
 void Listeners::operator()(audio::Transport::State state) {
   instance_->components_.transportController_.setTransportState(state);
@@ -278,8 +294,8 @@ void MainPage::addLoopPoint() {
       setPosition(offset_);
 #endif
 
+#endif
 
 }  // namespace slow
 }  // namespace rec
 
-#endif

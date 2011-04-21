@@ -59,7 +59,7 @@ void TransportController::setTransportState(rec::audio::transport::State state) 
 }
 
 void TransportController::recalc() {
-  addLoopPointButton_.setEnabled(isNewLoopPoint(loopPointList_, time_));
+  addLoopPointButton_.setEnabled(isNewLoopPointTime(loopPointList_, time_));
 }
 
 }  // namespace rec

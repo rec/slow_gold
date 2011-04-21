@@ -14,16 +14,18 @@ class SetterResizer;
 
 namespace slow {
 
+class Instance;
+
 class MainPage : public gui::Layout {
  public:
-  MainPage();
+  explicit MainPage(Instance*);
   virtual ~MainPage();
 
   void paint(Graphics&);
 
  private:
   void addResizer(ptr<gui::SetterResizer>* r, const char* addr, Layout* lo);
-  void doLayout();
+  void doLayout(Instance*);
 
   ptr<gui::SetterResizer> resizer_[2];
   ptr<gui::SetterResizer> loopResizer_;
