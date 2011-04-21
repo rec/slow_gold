@@ -22,12 +22,13 @@ struct Circular : public Range<Type> {
 
 #if 1
   Type wrap() const { 
-    return  (this->end_ < capacity_) ? this->end_ - capacity_ : 0; 
+    return  (this->end_ > capacity_) ? this->end_ - capacity_ : 0; 
   }
 
   Range<Type> fillable() const {
-    return Range<Type>(wrap() ? (this->end_ - capacity_) : this->end_,
-                       wrap() ? this->begin_ : capacity_);
+    Type w = wrap();
+    return Range<Type>(w ? (this->end_ - capacity_) : this->end_,
+                       w ? this->begin_ : capacity_);
   }
 
   Range<Type> consumable() const {

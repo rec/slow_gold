@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_WINDOW__
 #define __REC_SLOW_WINDOW__
 
-#include "rec/base/base.h"
+#include "rec/slow/Instance.h"
 
 namespace rec {
 namespace slow {
@@ -25,7 +25,7 @@ class Window : public PersistentWindow {
 
  private:
   Instance instance_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Window);
+  DISALLOW_COPY_AND_ASSIGN(Window);
 };
 
 }  // namespace slow
