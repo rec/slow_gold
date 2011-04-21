@@ -24,13 +24,10 @@ def run(cmd):
 class Mover(object):
   NONE, START, BODY, END_NAME, END_GUARD, END = range(6)
 
-  START = 1
-  END = 2
-
   BLANK_PATTERN = '^\s+$'
   START_PATTERN = '^namespace \w+ {';
   END_PATTERN =  r'^}\s+// namespace \w+'
-  GUARD_PATTERN =  r'^#endif\s+// __REC|'
+  GUARD_PATTERN =  r'^#endif\s+// __REC'
 
   FUNCTIONS = [(lambda path: '__' + '_'.join(p.upper() for p in path)),
                (lambda path: '#include "%s.h"' % '/'.join(path)),
@@ -45,11 +42,11 @@ class Mover(object):
     self.replacements = [[f(fromPath), f(toPath)] for f in Mover.FUNCTIONS]
 
     names = toPath[:-1]
-    def bed(begin, end='\n'):
-      return begin + (end + begin).join(names) + end
+    def bed(names, begin, end='\n'):
+      return begin + (end + begin).join(names) + end + '\n'
 
-    self.namespaceStart = bed('namespace ', ' {\n')
-    self.namespaceEnd =  bed('}  // namespace ')
+    self.namespaceStart = bed(names, 'namespace ', ' {\n')
+    self.namespaceEnd =  bed(reversed(names), '}  // namespace ')
 
   def check(self, f, t):
     f, t = os.path.abspath(f), os.path.abspath(t)
@@ -79,9 +76,9 @@ class Mover(object):
       with open(self.toFile, 'w') as output:
         self.out = output
         for line in input:
-          self.transition(self.toState(line))
+          self.transition(self.toState(line), line)
           self.process(line)
-    self.transition(Mover.END)
+        self.transition(Mover.END, 'ENDENDEND')
     os.remove(tempFile)
 
   def toState(self, line):
@@ -95,14 +92,16 @@ class Mover(object):
       return re.match(Mover.START_PATTERN, line) and Mover.START or Mover.BODY
 
     if re.match(Mover.END_PATTERN, line):
-      return Mover.END_PATTERN
+      return Mover.END_NAME
 
     if re.match(Mover.GUARD_PATTERN, line):
+      # print "!!!", line, "matches", Mover.GUARD_PATTERN
       return Mover.END_GUARD
 
     return Mover.BODY
 
-  def transition(self, state):
+  def transition(self, state, line):
+    # print "transition", state, line
     if self.state != state:
       if self.state is Mover.START:
         self.out.write(self.namespaceStart)
@@ -117,11 +116,11 @@ class Mover(object):
         if self.state is Mover.END_GUARD:
           raise ValueError('Two end guards!')
         self.out.write(self.namespaceEnd)
-        # self.namespaceEnd = ''
+        self.namespaceEnd = ''
 
       if state is Mover.END:
-        if self.state is not Mover.BODY:
-          self.out.write(self.namespaceEnd)
+        self.out.write(self.namespaceEnd)
+        self.namespaceEnd = ''
 
     self.state = state
 
