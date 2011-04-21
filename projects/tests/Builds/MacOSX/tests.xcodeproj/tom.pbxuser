@@ -515,6 +515,17 @@
 			E2128656135FFB5C008DDE79 /* PBXTextBookmark */ = E2128656135FFB5C008DDE79 /* PBXTextBookmark */;
 			E2128657135FFB5C008DDE79 /* PBXTextBookmark */ = E2128657135FFB5C008DDE79 /* PBXTextBookmark */;
 			E212865E135FFBB2008DDE79 /* PBXTextBookmark */ = E212865E135FFBB2008DDE79 /* PBXTextBookmark */;
+			E212865F135FFBBF008DDE79 /* XCBuildMessageTextBookmark */ = E212865F135FFBBF008DDE79 /* XCBuildMessageTextBookmark */;
+			E2128661135FFBBF008DDE79 /* PBXTextBookmark */ = E2128661135FFBBF008DDE79 /* PBXTextBookmark */;
+			E2128662135FFBBF008DDE79 /* XCBuildMessageTextBookmark */ = E2128662135FFBBF008DDE79 /* XCBuildMessageTextBookmark */;
+			E2128663135FFBBF008DDE79 /* PBXTextBookmark */ = E2128663135FFBBF008DDE79 /* PBXTextBookmark */;
+			E2128667135FFBC9008DDE79 /* XCBuildMessageTextBookmark */ = E2128667135FFBC9008DDE79 /* XCBuildMessageTextBookmark */;
+			E2128668135FFBD2008DDE79 /* PBXTextBookmark */ = E2128668135FFBD2008DDE79 /* PBXTextBookmark */;
+			E212866B135FFBD2008DDE79 /* PBXTextBookmark */ = E212866B135FFBD2008DDE79 /* PBXTextBookmark */;
+			E2128681135FFCA6008DDE79 /* PBXTextBookmark */ = E2128681135FFCA6008DDE79 /* PBXTextBookmark */;
+			E2128684135FFCA6008DDE79 /* PBXTextBookmark */ = E2128684135FFCA6008DDE79 /* PBXTextBookmark */;
+			E2128685135FFCA6008DDE79 /* PBXTextBookmark */ = E2128685135FFCA6008DDE79 /* PBXTextBookmark */;
+			E2128686135FFCA6008DDE79 /* PBXTextBookmark */ = E2128686135FFCA6008DDE79 /* PBXTextBookmark */;
 			E212A2C512BAE57300C1BEC3 = E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */;
 			E212A33D12BAE9A800C1BEC3 = E212A33D12BAE9A800C1BEC3 /* PBXTextBookmark */;
 			E22224AD134BF80A00298AE3 = E22224AD134BF80A00298AE3 /* PBXTextBookmark */;
@@ -682,6 +693,14 @@
 			sepNavVisRange = "{0, 898}";
 		};
 	};
+	6472001F107900B4292AFA73 /* StretchyController.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1261}}";
+			sepNavSelRange = "{1924, 0}";
+			sepNavVisRange = "{0, 2862}";
+			sepNavWindowFrame = "{{38, 12}, {921, 1140}}";
+		};
+	};
 	6504082AA4F2285A6A6E562D /* Difference_test.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {553, 1547}}";
@@ -707,9 +726,9 @@
 	};
 	6D109A489387D1C632F278A2 /* TransportController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
-			sepNavSelRange = "{1915, 0}";
-			sepNavVisRange = "{0, 2251}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 923}}";
+			sepNavSelRange = "{1592, 52}";
+			sepNavVisRange = "{1493, 195}";
 			sepNavWindowFrame = "{{307, 12}, {921, 1140}}";
 		};
 	};
@@ -2598,6 +2617,145 @@
 		rLoc = 941;
 		rType = 0;
 		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E212865F135FFBBF008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'rec::gui::audio::TransportController::TransportController()' cannot be overloaded";
+		fRef = E2128660135FFBBF008DDE79 /* TransportController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 36;
+		rType = 1;
+	};
+	E2128660135FFBBF008DDE79 /* TransportController.h */ = {
+		isa = PBXFileReference;
+		name = TransportController.h;
+		path = ../../../../../rec/src/rec/gui/audio/TransportController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {708, 612}}";
+			sepNavSelRange = "{941, 0}";
+			sepNavVisRange = "{0, 1288}";
+		};
+	};
+	E2128661135FFBBF008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E212864F135FFB34008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 37";
+		rLen = 0;
+		rLoc = 1138;
+		rType = 0;
+		vrLen = 86;
+		vrLoc = 1084;
+	};
+	E2128662135FFBBF008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'rec::gui::audio::TransportController::broadcast(const rec::command::Command_Type&)'";
+		fRef = 6D109A489387D1C632F278A2 /* TransportController.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 43;
+		rType = 1;
+	};
+	E2128663135FFBBF008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6D109A489387D1C632F278A2 /* TransportController.cpp */;
+		name = "TransportController.cpp: 44";
+		rLen = 52;
+		rLoc = 1592;
+		rType = 0;
+		vrLen = 195;
+		vrLoc = 1493;
+	};
+	E2128666135FFBC9008DDE79 /* StretchyController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = StretchyController.h;
+		path = ../../../../../rec/src/rec/gui/audio/StretchyController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{468, 0}";
+			sepNavVisRange = "{0, 1160}";
+		};
+	};
+	E2128667135FFBC9008DDE79 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'StretchLoop' was not declared in this scope";
+		fRef = E2128666135FFBC9008DDE79 /* StretchyController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	E2128668135FFBD2008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128660135FFBBF008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E212866B135FFBD2008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128666135FFBC9008DDE79 /* StretchyController.h */;
+		name = "StretchyController.h: 13";
+		rLen = 0;
+		rLoc = 324;
+		rType = 0;
+		vrLen = 1139;
+		vrLoc = 0;
+	};
+	E2128675135FFC68008DDE79 /* StretchyController.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = StretchyController.h;
+		path = ../../../../../rec/src/rec/gui/audio/StretchyController.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {928, 559}}";
+			sepNavSelRange = "{566, 79}";
+			sepNavVisRange = "{516, 174}";
+		};
+	};
+	E2128681135FFCA6008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128660135FFBBF008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E2128684135FFCA6008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128675135FFC68008DDE79 /* StretchyController.h */;
+		name = "StretchyController.h: 20";
+		rLen = 79;
+		rLoc = 566;
+		rType = 0;
+		vrLen = 1190;
+		vrLoc = 0;
+	};
+	E2128685135FFCA6008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6472001F107900B4292AFA73 /* StretchyController.cpp */;
+		rLen = 0;
+		rLoc = 9223372036854775834;
+		rType = 0;
+	};
+	E2128686135FFCA6008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6472001F107900B4292AFA73 /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 55";
+		rLen = 0;
+		rLoc = 1924;
+		rType = 0;
+		vrLen = 2862;
 		vrLoc = 0;
 	};
 	E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */ = {

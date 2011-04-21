@@ -12,14 +12,14 @@ namespace gui {
 namespace audio {
 
 class StretchyController : public Layout, public juce::ComboBox::Listener,
-                           public DataListener<StretchLoop> {
+                           public DataListener<rec::audio::stretch::StretchLoop> {
  public:
   StretchyController();
   virtual bool isOpaque() const { return true; }
 
-  virtual void setData(persist::Data<StretchLoop>* data);
+  virtual void setData(persist::Data<rec::audio::stretch::StretchLoop>* data);
 
-  void setZoom(UntypedData* zoom);
+  void setZoom(persist::UntypedData* zoom);
   void enableSliders(bool enabled);
   virtual void comboBoxChanged(juce::ComboBox*);
 

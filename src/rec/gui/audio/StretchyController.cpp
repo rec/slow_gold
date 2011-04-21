@@ -52,13 +52,13 @@ StretchyController::StretchyController()
   addToLayout(&stereoComboBox_, 14);
 }
 
-void StretchyController::setData(UntypedData* data) {
+void StretchyController::setData(persist::Data<rec::audio::stretch::StretchLoop>* data) {
   playbackSpeed_.setData(data);
   pitchScale_.setData(data);
   fineScale_.setData(data);
   disableButton_.setData(data);
 
-  audio::stretch::StretchLoop proto;
+  rec::audio::stretch::StretchLoop proto;
   if (!(data && data->fill(&proto)))
     LOG(ERROR) << "No data or couldn't fill proto: " << data;
 
