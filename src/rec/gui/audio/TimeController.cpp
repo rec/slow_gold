@@ -32,19 +32,16 @@ Dial realTimeDial() {
 
 TimeController::TimeController()
     : Layout("Time controls", VERTICAL),
-      timesLayout_("Times", HORIZONTAL),
       songDial_(realTimeDial()),
-      songTime_("Track", Text()),
-      timeScale_(1.0) {
-  addListener(&songDial_);
-  addListener(&songTime_);
-
+      songTime_(Text()),
+      timeScale_(1.0), 
+      timesLayout_("Times", HORIZONTAL) {
   addToLayout(&timesLayout_);
   addToLayout(&songDial_);
   timesLayout_.addToLayout(&songTime_);
 }
 
-void TimeController::operator()(const StretchLoop& stretchLoop) {
+void TimeController::operator()(const rec::audio::stretch::StretchLoop& stretchLoop) {
   ScopedLock l(lock_);
   timeScale_ = timeScale(stretchLoop.stretch());
 }
@@ -59,3 +56,6 @@ void TimeController::operator()(RealTime time) {
   songDial_(scaledTime);
 }
 
+}  // namespace audio
+}  // namespace gui
+}  // namespace rec

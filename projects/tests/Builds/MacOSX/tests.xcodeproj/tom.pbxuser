@@ -85,9 +85,9 @@
 	};
 	11202D5C9B1F8979C234E717 /* TimeController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {928, 858}}";
-			sepNavSelRange = "{119, 46}";
-			sepNavVisRange = "{0, 522}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{1580, 0}";
+			sepNavVisRange = "{0, 1580}";
 			sepNavWindowFrame = "{{665, 4}, {921, 1140}}";
 		};
 	};
@@ -526,6 +526,8 @@
 			E2128684135FFCA6008DDE79 /* PBXTextBookmark */ = E2128684135FFCA6008DDE79 /* PBXTextBookmark */;
 			E2128685135FFCA6008DDE79 /* PBXTextBookmark */ = E2128685135FFCA6008DDE79 /* PBXTextBookmark */;
 			E2128686135FFCA6008DDE79 /* PBXTextBookmark */ = E2128686135FFCA6008DDE79 /* PBXTextBookmark */;
+			E2128696135FFD98008DDE79 /* PBXTextBookmark */ = E2128696135FFD98008DDE79 /* PBXTextBookmark */;
+			E2128697135FFD98008DDE79 /* PBXTextBookmark */ = E2128697135FFD98008DDE79 /* PBXTextBookmark */;
 			E212A2C512BAE57300C1BEC3 = E212A2C512BAE57300C1BEC3 /* PBXTextBookmark */;
 			E212A33D12BAE9A800C1BEC3 = E212A33D12BAE9A800C1BEC3 /* PBXTextBookmark */;
 			E22224AD134BF80A00298AE3 = E22224AD134BF80A00298AE3 /* PBXTextBookmark */;
@@ -1397,6 +1399,11 @@
 		name = TimeController.h;
 		path = ../../../../../rec/src/rec/gui/audio/TimeController.h;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavSelRange = "{551, 0}";
+			sepNavVisRange = "{0, 926}";
+		};
 	};
 	E21284F6135F9F37008DDE79 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2749,6 +2756,26 @@
 		rType = 0;
 	};
 	E2128686135FFCA6008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6472001F107900B4292AFA73 /* StretchyController.cpp */;
+		name = "StretchyController.cpp: 55";
+		rLen = 0;
+		rLoc = 1924;
+		rType = 0;
+		vrLen = 2862;
+		vrLoc = 0;
+	};
+	E2128696135FFD98008DDE79 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2128660135FFBBF008DDE79 /* TransportController.h */;
+		name = "TransportController.h: 30";
+		rLen = 0;
+		rLoc = 941;
+		rType = 0;
+		vrLen = 1288;
+		vrLoc = 0;
+	};
+	E2128697135FFD98008DDE79 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 6472001F107900B4292AFA73 /* StretchyController.cpp */;
 		name = "StretchyController.cpp: 55";

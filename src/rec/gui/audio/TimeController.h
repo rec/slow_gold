@@ -26,6 +26,7 @@ class TimeController : public Layout {
   widget::status::time::TextComponent songTime_;
 
   double timeScale_;
+  gui::Layout timesLayout_;
 
   DISALLOW_COPY_AND_ASSIGN(TimeController);
 };
