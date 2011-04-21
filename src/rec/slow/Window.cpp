@@ -14,6 +14,7 @@ Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
   computeBounds<AppLayout>();
   setMenuBar(&instance_->menus_);
   setUsingNativeTitleBar(true);
+  setVisible(true);
 }
 
 Window::~Window() {
