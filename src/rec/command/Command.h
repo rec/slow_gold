@@ -6,8 +6,8 @@
 namespace rec {
 namespace command {
 
-juce::ModifierKeys getDefaultMods() {
-  return juce::ModifierKeys(juce::ModifierKeys::
+ModifierKeys getDefaultMods() {
+  return ModifierKeys(juce::ModifierKeys::
 #if JUCE_MAC
 commandModifier
 #else
@@ -16,7 +16,7 @@ ctrlModifier
                       );
 }
 
-ApplicationCommandInfo makeInfo(
+juce::ApplicationCommandInfo makeInfo(
     CommandID id, const String& name,
     const String& category, const String& desc,
     int flags = 0, int keyCode = 0,

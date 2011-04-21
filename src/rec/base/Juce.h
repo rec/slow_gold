@@ -3,6 +3,7 @@
 
 namespace rec {
 
+typedef juce::ApplicationCommandInfo ApplicationCommandInfo;
 typedef juce::AsyncUpdater AsyncUpdater;
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioDeviceManager AudioDeviceManager;
@@ -37,6 +38,7 @@ typedef juce::Justification Justification;
 
 typedef juce::MenuBarModel MenuBarModel;
 typedef juce::MemoryBlock MemoryBlock;
+typedef juce::ModifierKeys ModifierKeys;
 typedef juce::MouseEvent MouseEvent;
 
 typedef juce::OutputStream OutputStream;

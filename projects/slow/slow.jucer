@@ -27,7 +27,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="xzsSeKczV" name="Slow">
+  <MAINGROUP id="PdSkcchKP" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -509,10 +509,6 @@
                 name="Loops.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/Loops.h" id="EdJMfn730"
                 name="Loops.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/audio/PlaybackController.cpp"
-                id="03MepaQi5" name="PlaybackController.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/audio/PlaybackController.h"
-                id="Pug1R9Xnb" name="PlaybackController.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/SetupPage.h" id="Zez8YPXCt"
                 name="SetupPage.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/StretchyController.cpp"
@@ -666,6 +662,10 @@
               name="Menus.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/PersistentData.h" id="WFZOGciTx"
               name="PersistentData.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/PlaybackController.cpp"
+              id="Vt82ndzvP" name="PlaybackController.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/PlaybackController.h" id="dTZYEJdyo"
+              name="PlaybackController.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Target.cpp" id="t6u9MtXsd"
               name="Target.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Target.h" id="Aj4eo3Y1O"
@@ -887,6 +887,10 @@
                 name="Cursor.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/waveform/CursorStates.cpp"
                 id="QkSskdlZC" name="CursorStates.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/waveform/CursorTime.h"
+                id="rTrgwGGhR" name="CursorTime.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/waveform/TimeAndMouseEvent.h"
+                id="dcAm9rVv4" name="TimeAndMouseEvent.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/waveform/Waveform.cpp"
                 id="y6U8Nuuod" name="Waveform.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/Waveform.h" id="qUWsqXQ0U"
@@ -1060,7 +1064,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="u76u59xqC" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="QT5S5drai" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

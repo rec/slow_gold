@@ -390,8 +390,6 @@
             <File RelativePath="..\..\..\..\src\rec\gui\audio\CachedThumbnail.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.h"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\audio\PlaybackController.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\audio\PlaybackController.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\SetupPage.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\StretchyController.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\StretchyController.h"/>
@@ -471,6 +469,8 @@
           <File RelativePath="..\..\..\..\src\rec\slow\Menus.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Menus.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\PersistentData.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Target.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Target.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Threads.cpp"/>
@@ -592,6 +592,8 @@
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\CursorTime.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\TimeAndMouseEvent.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
             <File RelativePath="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>

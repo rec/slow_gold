@@ -10,6 +10,8 @@
 #include "rec/util/listener/DataListener.h"
 #include "rec/widget/Painter.h"
 #include "rec/widget/waveform/Cursor.pb.h"
+#include "rec/widget/waveform/CursorTime.h"
+#include "rec/widget/waveform/TimeAndMouseEvent.h"
 #include "rec/widget/waveform/Waveform.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
@@ -29,7 +31,7 @@ struct TimeAndMouseEvent;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
-                 public Broadcaster<const CursorTime&>, {
+                 public Broadcaster<const CursorTime&>, 
                  public Broadcaster<const SelectionRange&> {
  public:
   Waveform(slow::Instance* instance,
