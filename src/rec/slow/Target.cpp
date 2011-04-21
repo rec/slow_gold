@@ -56,5 +56,7 @@ Target::Target(Instance* i, MainPage* mp, ComponentContainer* cc) {
                                       &ComponentContainer::audioPreferences),
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
+
+  registerAllCommands();
 }
 

@@ -6,32 +6,32 @@
 namespace rec {
 namespace command {
 
-namespace {
-
 struct CommandCallback {
-  CommandCallback(const ApplicationCommandInfo& info, thread::Callback* cb)
+  CommandCallback(const ApplicationCommandInfo& info, Callback* cb)
       : info_(info), callback_(cb) {
   }
 
   ApplicationCommandInfo info_;
-  ptr<thread::Callback> callback_;
+  ptr<Callback> callback_;
 };
 
-}
-
-TargetManager::TargetManager(Component* c) {
-  commandManager_.registerAllCommandsForTargetManager(&target_);
-  commandManager_.registerAllCommandsForTargetManager(JUCEApplication::getInstance());
+TargetManager::TargetManager(Component* c) : lastInvocation_(0) {
   if (c)
     addComponent(c);
 }
 
-void TargetManager::addComponent(Component* c)
-  c->addKeyListener(commandManager_.getKeyMappings());
-  c->setApplicationCommandManagerToWatch(&commandManager_);
+void TargetManager::registerAllCommandsForTarget() {
+  commandManager_.registerAllCommandsForTarget(this);
+  commandManager_.registerAllCommandsForTarget(
+      juce::JUCEApplication::getInstance());
 }
 
-void TargetManager::getAllCommands(Array<CommandID>& commands) {
+void TargetManager::addComponent(Component* c) {
+  c->addKeyListener(commandManager_.getKeyMappings());
+  // c->setApplicationCommandManagerToWatch(&commandManager_);  // TODO
+}
+
+void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
   commands.clear();
   for (CommandMap::const_iterator i = map_.begin(); i != map_.end(); ++i)
     commands.add(i->first);
@@ -42,7 +42,7 @@ void TargetManager::getCommandInfo(CommandID cmd, ApplicationCommandInfo& info) 
   if (i == map_.end())
     LOG(ERROR) << "Couldn't find command info";
   else
-    info = *(i->second->info_);
+    info = i->second->info_;
 }
 
 bool TargetManager::perform(const InvocationInfo& invocation) {
@@ -52,7 +52,7 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
     return false;
 
   lastInvocation_ = invocation;
-  *(i->second->callback_)();
+  (*(i->second->callback_))();
   return false;
 }
 
@@ -61,7 +61,7 @@ InvocationInfo TargetManager::lastInvocation() const {
   return lastInvocation_;
 }
 
-void TargetManager::add(thread::Callback* cb, const ApplicationCommandInfo& info) {
+void TargetManager::add(Callback* cb, const ApplicationCommandInfo& info) {
   CommandID id = info.commandID;
   CommandMap::const_iterator i = map_.find(id);
   if (i != map_.end()) {
@@ -72,13 +72,13 @@ void TargetManager::add(thread::Callback* cb, const ApplicationCommandInfo& info
   map_[id] = new CommandCallback(info, cb);
 }
 
-void TargetManager::add(CommandID id, thread::Callback* cb,
+void TargetManager::add(CommandID id, Callback* cb,
                         const String& name,
                         const String& category, const String& desc,
                         int keyCode,
                         const ModifierKeys& modifiers,
                         int flags) {
-  return add(cb, makeInfo(id, name, category, desc, flags, keyCode, modifiers));
+	add(cb, makeInfo(id, name, category, desc, flags, keyCode, modifiers));
 }
 
 }  // namespace command

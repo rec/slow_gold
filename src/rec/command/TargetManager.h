@@ -3,15 +3,9 @@
 
 #include <map>
 
+#include "rec/command/Command.h"
 #include "rec/util/STL.h"
-
-namespace rec {
-namespace command {
-
-class Callback
-
-}  // namespace rec
-}  // namespace command
+#include "rec/util/thread/Callback.h"
 
 namespace rec {
 namespace command {
@@ -23,6 +17,7 @@ struct CommandCallback;
 class TargetManager : public ApplicationCommandTarget {
  public:
   explicit TargetManager(Component* c = NULL);
+  void registerAllCommandsForTarget();
   void addComponent(Component* c);
 
   // ApplicationCommandTarget virtual methods.
@@ -35,9 +30,9 @@ class TargetManager : public ApplicationCommandTarget {
 
   InvocationInfo lastInvocation() const;
 
-  void add(thread::Callback* callback, const ApplicationCommandInfo& info);
+  void add(Callback* callback, const ApplicationCommandInfo& info);
 
-  void add(CommandID id, thread::Callback* cb,
+  void add(CommandID id, Callback* cb,
            const String& name,
            const String& category, const String& desc,
            int keyCode = 0,
@@ -45,11 +40,11 @@ class TargetManager : public ApplicationCommandTarget {
            int flags = 0);
 
   void addCommandItem(PopupMenu* menu, CommandID command) {
-    menu->addCommandItem(commandManager_, command);
+    menu->addCommandItem(&commandManager_, command);
   }
 
  private:
-  typedef std::hash_map<juce::CommandID, CommandCallback*> CommandMap;
+  typedef std::map<CommandID, CommandCallback*> CommandMap;
 
   CommandMap map_;
 

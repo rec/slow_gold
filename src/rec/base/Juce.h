@@ -4,6 +4,8 @@
 namespace rec {
 
 typedef juce::ApplicationCommandInfo ApplicationCommandInfo;
+typedef juce::ApplicationCommandManager ApplicationCommandManager;
+typedef juce::ApplicationCommandTarget ApplicationCommandTarget;
 typedef juce::AsyncUpdater AsyncUpdater;
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioDeviceManager AudioDeviceManager;
@@ -33,6 +35,7 @@ typedef juce::Font Font;
 typedef juce::Graphics Graphics;
 
 typedef juce::InputStream InputStream;
+typedef ApplicationCommandTarget::InvocationInfo InvocationInfo;
 
 typedef juce::Justification Justification;
 
