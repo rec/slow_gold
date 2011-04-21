@@ -5,7 +5,7 @@
 namespace rec {
 namespace slow {
 
-Target::Target(Instance* i, MainPage* mp, ComponentContainer* cc) {
+Target::Target(Instance* i) {
   using rec::command::Command;
   using thread::makeCallback;
 
@@ -35,28 +35,36 @@ Target::Target(Instance* i, MainPage* mp, ComponentContainer* cc) {
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
 
-  add(CLEAR_LOOPS, makeCallback(mp, &MainPage::clearLoops),
+  using gui::audio::Loops;
+  Loops* loops = &instance->components_.loop_
+
+  add(CLEAR_LOOPS, makeCallback(loops, &Loops::clearLoops),
       "Clear Loops", "Loop",
       "Get rid of all loop points");
 
-  add(CLEAR_SELECTION, makeCallback(mp, &MaoverinPage::clearSelection),
+  add(CLEAR_SELECTION, makeCallback(loops, &Loops::clearSelection),
       "Clear Selection", "Loop",
       "Unselect all the loop points");
-  add(CLEAR_TIME, makeCallback(mp, &MainPage::clearTime),
-      "Clear Time Stretch", "Loop",
-      "Clear all time and pitch shifting");
-  add(CLOSE, makeCallback(&persist::data<VirtualFile>(), VirtualFile()),
+
+
+  add(CLOSE, makeCallback(&persist::appData<VirtualFile>(), VirtualFile()),
       "Close", "File",
       "Close the current file", 'w');
 
-  Add(TREE_CLEAR, makeCallback(cc, &ComponentContainer::clearTree),
-      "Clear Workspace", "Loop",
-      "Remove all files and directories from the workspace area.");
-  // add(FILE_CLEAR, make, &ComponentContainer::clearFile);
+#ifdef TODO
   add(AUDIO_PREFERENCES, makeCallback(cc,
                                       &ComponentContainer::audioPreferences),
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
+
+  add(CLEAR_TIME, makeCallback(&instal, &MainPage::clearTime),
+      "Clear Time Stretch", "Loop",
+      "Clear all time and pitch shifting");
+  add(TREE_CLEAR, makeCallback(cc, &ComponentContainer::clearTree),
+      "Clear Workspace", "Loop",
+      "Remove all files and directories from the workspace area.");
+  // add(FILE_CLEAR, make, &ComponentContainer::clearFile);
+#endif
 
   registerAllCommandsForTarget();
 }

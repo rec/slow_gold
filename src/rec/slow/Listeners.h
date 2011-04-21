@@ -26,7 +26,7 @@ class Listeners :
     public Listener<const audio::stretch::StretchLoop&>,
     public Listener<const file::VirtualFile&>,
     public Listener<const file::VirtualFileList&>,
-    public Listener<const gui::LoopPointList&>,
+    public Listener<const gui::audio::LoopPointList&>,
     public Listener<const widget::waveform::CursorTime&>,
     public Listener<const widget::waveform::TimeAndMouseEvent&>,
     public Listener<const widget::waveform::ZoomProto&>,
@@ -42,7 +42,7 @@ class Listeners :
   virtual void operator()(const audio::stretch::StretchLoop&);
   virtual void operator()(const file::VirtualFile&);
   virtual void operator()(const file::VirtualFileList&);
-  virtual void operator()(const gui::LoopPointList&);
+  virtual void operator()(const gui::audio::LoopPointList&);
   virtual void operator()(const widget::waveform::CursorTime&);
   virtual void operator()(const widget::waveform::TimeAndMouseEvent&);
   virtual void operator()(const widget::waveform::ZoomProto&);

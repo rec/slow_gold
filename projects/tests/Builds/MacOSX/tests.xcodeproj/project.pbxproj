@@ -177,6 +177,7 @@
 		B76D5CBEE67D38F81713C401 /* simplekey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFAE0C5EEAA77965822ACE /* simplekey.cpp */; };
 		B7C20D85DC432ABBA9C5788B /* Equals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4DEAF714BB10D7F60D583A0 /* Equals.cpp */; };
 		B94CECCDBC6733A66786D64D /* Circular_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2187E86C895D175A456E11A7 /* Circular_test.cpp */; };
+		BAE52EC7BF141B9E995B88F4 /* PersistentData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 612D5047E580AB8E868A437E /* PersistentData.cpp */; };
 		BDB06654DEC92678A9ED0F0D /* DriveHardDisk.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 013E8CE9CABFA286CF2F14A0 /* DriveHardDisk.svg.cpp */; };
 		BE8779808D25ADED9AED510A /* Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814A6CF4BA6D13BBB915CDBD /* Stereo.cpp */; };
 		C02C49FCD0CC569E489058CB /* Zoom.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E235785AA76B5286DE05A /* Zoom.pb.cc */; };
@@ -405,6 +406,7 @@
 		6011F232AEB57506156913E1 /* Command.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Command.cpp; path = ../../../../src/rec/command/Command.cpp; sourceTree = SOURCE_ROOT; };
 		601A0CEA135280AABEB1EE98 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		607EC8A1334484238EFF45E9 /* ThickFolder.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThickFolder.svg.h; path = ../../../../src/rec/gui/icon/ThickFolder.svg.h; sourceTree = SOURCE_ROOT; };
+		612D5047E580AB8E868A437E /* PersistentData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PersistentData.cpp; path = ../../../../src/rec/slow/PersistentData.cpp; sourceTree = SOURCE_ROOT; };
 		61C4D8DC63DAB1F12F0F75A7 /* juce_AudioCDReader_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_AudioCDReader_test.cpp; path = ../../../../src/rec/util/cd/juce_AudioCDReader_test.cpp; sourceTree = SOURCE_ROOT; };
 		6216BBEA314290A78F6562E0 /* GetVolumes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GetVolumes.cpp; path = ../../../../src/rec/util/file/GetVolumes.cpp; sourceTree = SOURCE_ROOT; };
 		627EE466403F8400A722FC33 /* Range_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Range_test.cpp; path = ../../../../src/rec/util/Range_test.cpp; sourceTree = SOURCE_ROOT; };
@@ -1585,6 +1587,20 @@
 			name = source;
 			sourceTree = "<group>";
 		};
+		DC411569180D2EA9C16F37DE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		E0715BED1B299348F9621C18 /* stretch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1607,6 +1623,7 @@
 				9CDF2050A8E5466019B61EC3 /* MainPage.h */,
 				920B6CFC9380A160FC6C10C0 /* Menus.cpp */,
 				0E383591888722EAD407EB12 /* Menus.h */,
+				612D5047E580AB8E868A437E /* PersistentData.cpp */,
 				91BE20AC98A7E039F03DD778 /* PersistentData.h */,
 				D6081B32F779D971DC96EB48 /* PlaybackController.cpp */,
 				A87D1B89D1B89392B60E8047 /* PlaybackController.h */,
@@ -1617,20 +1634,6 @@
 				7C95D9444E105BB1AA124F94 /* Window.h */,
 			);
 			name = slow;
-			sourceTree = "<group>";
-		};
-		EB03375C890C560E088D2194 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		F06E991FF8183A25C8615C5C /* proto */ = {
@@ -1775,7 +1778,7 @@
 				French,
 				German,
 			);
-			mainGroup = EB03375C890C560E088D2194 /* Source */;
+			mainGroup = DC411569180D2EA9C16F37DE /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1922,6 +1925,7 @@
 				7935E1D993A21E715D8DCBC7 /* Listeners.cpp in Sources */,
 				9170501552140154E4968517 /* MainPage.cpp in Sources */,
 				153524F14713F301CE8BE6F3 /* Menus.cpp in Sources */,
+				BAE52EC7BF141B9E995B88F4 /* PersistentData.cpp in Sources */,
 				39BA8698CEE21F2CD6AAD2D3 /* PlaybackController.cpp in Sources */,
 				8F646B69B227AEF1414021F5 /* Target.cpp in Sources */,
 				DA01B6D70ACE7402AF866ACC /* Threads.cpp in Sources */,

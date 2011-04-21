@@ -11,7 +11,7 @@ class Instance;
 
 class Target : public command::TargetManager {
  public:
-  Target(Instance* instance, MainPage* mp, ComponentContainer* cc);
+  Target(Instance* instance);
   virtual ~Target() {}
 
  private:
