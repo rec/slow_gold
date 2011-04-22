@@ -21,6 +21,7 @@ struct Instance {
   typedef audio::source::Player Player;
 
   Instance();
+  ~Instance();
 
   Broadcasters broadcasters_;
   Components components_;

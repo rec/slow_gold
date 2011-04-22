@@ -11,11 +11,15 @@ class Instance;
 class Threads {
  public:
   explicit Threads(Instance* i);
+  ~Threads() { stop(); }
+
+  void stop();
   void clock();
 
  private:
   Instance* instance_;
   thread_ptr<Thread> clock_;
+  Thread* directory_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);
 };
