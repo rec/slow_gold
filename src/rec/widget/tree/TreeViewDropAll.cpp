@@ -4,13 +4,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-TreeViewDropAll::TreeViewDropAll() : TreeViewDrop("Tree") {
-  dropBroadcaster()->addListener(this);
-}
-
-void TreeViewDropAll::operator()(const VirtualFileList& f) {
-  // TOD: wrong!
-  // persist::appData<file::VirtualFileList>()->append("file", f);
+TreeViewDropAll::TreeViewDropAll() : TreeViewDropTarget("Tree") {
 }
 
 void TreeViewDropAll::paint(Graphics& g) {

@@ -21,7 +21,7 @@ class Root : public Thread,
 
   virtual void run();
   void mergeNewIntoOld(const util::file::VirtualFileList& volumes);
-  TreeView* treeView() { return &tree_; }
+  TreeViewDropAll* treeView() { return &tree_; }
 
   virtual void operator()(const VirtualFile&);
   virtual void operator()(const file::VirtualFileList&);

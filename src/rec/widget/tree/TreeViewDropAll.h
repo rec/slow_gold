@@ -9,12 +9,11 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-typedef gui::DropTarget<TreeView, String, gui::NullInterface> TreeViewDrop;
+typedef gui::DropTarget<TreeView, String, gui::NullInterface> TreeViewDropTarget;
 
-class TreeViewDropAll : public TreeViewDrop, public Listener<const VirtualFileList&> {
+class TreeViewDropAll : public TreeViewDropTarget {
  public:
   TreeViewDropAll();
-  virtual void operator()(const VirtualFileList& f);
   virtual void paint(Graphics& g);
 
   bool isInterestedInFileDrag(const StringArray& files);

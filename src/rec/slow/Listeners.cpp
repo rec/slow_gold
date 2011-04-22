@@ -5,7 +5,10 @@
 namespace rec {
 namespace slow {
 
-#ifndef TODO
+Listeners::Listeners(Instance* i) : instance_(i) {
+  instance_->player_.addListener(this);
+  instance_->components_.directoryTree_.treeView()->dropBroadcaster()->addListener(this);
+}
 
 void Listeners::operator()(const ClockTick&) {}
 void Listeners::operator()(const juce::AudioThumbnail&) {}
@@ -40,7 +43,7 @@ void Listeners::operator()(audio::transport::State state) {
   instance_->player_.setState(state);
 }
 
-#else
+#ifdef TODO
 
 using gui::audio::LoopPoint;
 using gui::audio::LoopPointList;

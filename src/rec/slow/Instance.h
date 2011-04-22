@@ -25,12 +25,12 @@ struct Instance {
   Broadcasters broadcasters_;
   Components components_;
   audio::Device device_;
-  Listeners listeners_;
   Menus menus_;
   PersistentData data_;
   Player player_;
   Target target_;
   Threads threads_;
+  Listeners listeners_;
 
   DISALLOW_COPY_AND_ASSIGN(Instance);
 };

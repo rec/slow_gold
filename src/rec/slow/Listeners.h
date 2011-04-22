@@ -35,7 +35,7 @@ class Listeners :
     public Listener<RealTime>,
     public Listener<audio::transport::State> {
  public:
-  explicit Listeners(Instance* i) : instance_(i) {}
+  explicit Listeners(Instance* i);
 
   virtual void operator()(const ClockTick&);
   virtual void operator()(const juce::AudioThumbnail&);
