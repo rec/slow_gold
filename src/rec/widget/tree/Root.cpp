@@ -67,9 +67,11 @@ void Root::doAdd() {
                             file::audioFilePatterns(), true);
 
   if (chooser.browseForMultipleFilesOrDirectories()) {
-    const juce::Array<File>& files = chooser.getResults();
-    for (int i = 0; i < files.size(); ++i)
-      tree_.dropBroadcaster()->broadcast(toVirtualFile(files[i]));
+    StringArray s;
+    juce::Array<File> results = chooser.getResults();
+    for (int i = 0; i < results.size(); ++i)
+      s.add(results[i].getFullPathName());
+    tree_.filesDropped(s, 0, 0);
   }
   addDialogOpen_ = false;
 }

@@ -33,10 +33,8 @@ class DropTarget : public Interface, public Parent {
 
   virtual void filesDropped(const StringArray& files, int, int) {
     setDraggingOver(false);
-    if (isInterestedInFileDrag(files)) {
-      for (int i = 0; i < files.size(); ++i)
-        broadcaster_.broadcast(file::toVirtualFile(File(files[i])));
-    }
+    if (isInterestedInFileDrag(files))
+      broadcaster_.broadcast(file::toVirtualFileList(files));
   }
 
   virtual void paintOverChildren(Graphics& g) {
@@ -49,7 +47,7 @@ class DropTarget : public Interface, public Parent {
   void repaint() { Parent::repaint(); }
   bool draggingOver() const { return draggingOver_; }
 
-  Broadcaster<const VirtualFile&>* dropBroadcaster() { return &broadcaster_; }
+  Broadcaster<const VirtualFileList&>* dropBroadcaster() { return &broadcaster_; }
 
  private:
   void setDraggingOver(bool d) {
@@ -59,7 +57,7 @@ class DropTarget : public Interface, public Parent {
     }
   }
 
-  listener::Broadcaster<const VirtualFile&> broadcaster_;
+  listener::Broadcaster<const VirtualFileList&> broadcaster_;
   bool draggingOver_;
 
  private:

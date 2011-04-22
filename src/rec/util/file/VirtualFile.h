@@ -33,6 +33,7 @@ bool empty(const VirtualFile& file);
 typedef persist::Data<VirtualFile> VirtualFileData;
 
 VirtualFile toVirtualFile(const File& file);
+VirtualFileList toVirtualFileList(const StringArray& file);
 
 void sort(VirtualFileList* volumes);
 

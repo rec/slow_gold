@@ -23,6 +23,7 @@ namespace listener {
 
 namespace file {
 class VirtualFile;
+class VirtualFileList;
 }
 
 }  // namespace util
@@ -50,6 +51,7 @@ using namespace util::listener;
 using namespace util;
 
 using util::file::VirtualFile;
+using util::file::VirtualFileList;
 using std::vector;
 using persist::UntypedData;
 using proto::arg::Address;

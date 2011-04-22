@@ -19,6 +19,7 @@ struct CommandCallback {
 TargetManager::TargetManager(Component* c) : lastInvocation_(0) {
   if (c)
     c->addKeyListener(commandManager_.getKeyMappings());
+  commandManager_.setFirstCommandTarget(this);
 }
 
 TargetManager:: ~TargetManager() {

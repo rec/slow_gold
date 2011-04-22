@@ -1,4 +1,6 @@
 #include "rec/slow/Listeners.h"
+#include "rec/data/persist/Persist.h"
+#include "rec/slow/Instance.h"
 
 namespace rec {
 namespace slow {
@@ -11,23 +13,37 @@ void Listeners::operator()(const ClockUpdate&) {}
 void Listeners::operator()(const SelectionRange&) {}
 void Listeners::operator()(const audio::stretch::StretchLoop&) {}
 void Listeners::operator()(const file::VirtualFile&) {}
-void Listeners::operator()(const file::VirtualFileList&) {}
+
+void Listeners::operator()(const file::VirtualFileList& newFileList) {
+  using file::getFile;
+
+  typedef std::set<string> FileSet;
+  FileSet existing;
+  VirtualFileList list(persist::getApp<file::VirtualFileList>());
+  for (int i = 0; i < list.file_size(); ++i)
+    existing.insert(str(getFile(list.file(i)).getFullPathName()));
+
+  for (int i = 0; i < newFileList.file_size(); ++i) {
+    if (existing.find(str(getFile(newFileList.file(i)).getFullPathName())) == existing.end())
+      persist::appData<file::VirtualFileList>()->append("file", newFileList.file(i));
+  }
+}
+
 void Listeners::operator()(const gui::audio::LoopPointList&) {}
 void Listeners::operator()(const widget::waveform::CursorTime&) {}
 void Listeners::operator()(const widget::waveform::TimeAndMouseEvent&) {}
 void Listeners::operator()(const widget::waveform::ZoomProto&) {}
 void Listeners::operator()(RealTime) {}
-void Listeners::operator()(audio::transport::State) {}
+
+void Listeners::operator()(audio::transport::State state) {
+  instance_->components_.transportController_.setTransportState(state);
+  instance_->player_.setState(state);
+}
 
 #else
 
 using gui::audio::LoopPoint;
 using gui::audio::LoopPointList;
-
-void Listeners::operator()(audio::Transport::State state) {
-  instance_->components_.transportController_.setTransportState(state);
-  instance_->player_.setTransportState(state);
-}
 
 void Listeners::operator()(SampleTime time) {
   Components& c = instance_->components_;
@@ -96,9 +112,6 @@ void Listeners::operator()(const file::VirtualFile& file) {
 void Listeners::operator()(const audio::stretch::StretchLoop& x) {
 }
 
-
-void Listeners::operator()(const file::VirtualFileList& x) {
-}
 
 void Listeners::operator()(const gui::LoopPointList& x) {
 }
