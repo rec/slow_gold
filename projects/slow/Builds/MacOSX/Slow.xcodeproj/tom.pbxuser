@@ -2,8 +2,8 @@
 {
 	00D5BC92C39C066E912830A4 /* AppDirectory.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {998, 640}}";
-			sepNavSelRange = "{620, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 686}}";
+			sepNavSelRange = "{540, 0}";
 			sepNavVisRange = "{0, 620}";
 		};
 	};
@@ -23,9 +23,9 @@
 	};
 	0925F35EC7150773AA36E65C /* AppInstance.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {649, 1339}}";
-			sepNavSelRange = "{1739, 0}";
-			sepNavVisRange = "{683, 1766}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 1339}}";
+			sepNavSelRange = "{2402, 0}";
+			sepNavVisRange = "{1364, 1085}";
 		};
 	};
 	093ABF0DCF3AA992BCBCAFB1 /* DataListener.h */ = {
@@ -47,7 +47,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1034, 1378}}";
 			sepNavSelRange = "{531, 0}";
-			sepNavVisRange = "{0, 1370}";
+			sepNavVisRange = "{0, 1427}";
 			sepNavWindowFrame = "{{245, 95}, {1093, 868}}";
 		};
 	};
@@ -184,6 +184,13 @@
 			sepNavVisRange = "{0, 657}";
 		};
 	};
+	350C32878B8796E199D10089 /* PersistentWindow.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {603, 686}}";
+			sepNavSelRange = "{574, 0}";
+			sepNavVisRange = "{0, 1159}";
+		};
+	};
 	38B70BAED12B8E287997D2D1 /* AudioTimeScaler.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1226, 14053}}";
@@ -223,9 +230,9 @@
 	};
 	4B9B092D1B3B397FC42C5713 /* ptr.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {509, 715}}";
-			sepNavSelRange = "{497, 0}";
-			sepNavVisRange = "{0, 936}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 689}}";
+			sepNavSelRange = "{455, 0}";
+			sepNavVisRange = "{0, 962}";
 		};
 	};
 	4BAED3C1B5F333D2DDB93FA4 /* StripLines.cpp */ = {
@@ -290,9 +297,9 @@
 	};
 	54C560475F61F8C6B3786C82 /* UntypedData.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {649, 1417}}";
-			sepNavSelRange = "{2040, 0}";
-			sepNavVisRange = "{704, 1652}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 1352}}";
+			sepNavSelRange = "{1067, 0}";
+			sepNavVisRange = "{307, 1307}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -320,9 +327,9 @@
 	};
 	5B77D7104B7E8EAEF12CF9B9 /* AppInstance.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
-			sepNavSelRange = "{789, 0}";
-			sepNavVisRange = "{0, 1106}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 754}}";
+			sepNavSelRange = "{587, 0}";
+			sepNavVisRange = "{0, 1022}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -336,9 +343,9 @@
 	};
 	60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {603, 686}}";
-			sepNavSelRange = "{906, 0}";
-			sepNavVisRange = "{0, 1119}";
+			sepNavIntBoundsRect = "{{0, 0}, {998, 624}}";
+			sepNavSelRange = "{1160, 0}";
+			sepNavVisRange = "{0, 1138}";
 		};
 	};
 	6266A3C0E643F3500F52D823 /* TypedTyper.h */ = {
@@ -350,9 +357,9 @@
 	};
 	64A9C59DD21EA05D3F57CFCB /* Copy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {998, 2600}}";
-			sepNavSelRange = "{2126, 0}";
-			sepNavVisRange = "{1446, 1324}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 2340}}";
+			sepNavSelRange = "{3517, 0}";
+			sepNavVisRange = "{1104, 1237}";
 		};
 	};
 	64D4B8897FB4DB97D75014C2 /* Address.pb.h */ = {
@@ -399,6 +406,13 @@
 			sepNavSelRange = "{2185, 0}";
 			sepNavVisRange = "{363, 1400}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
+		};
+	};
+	7C9A57490A0E96391366751C /* Persist.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {603, 686}}";
+			sepNavSelRange = "{304, 0}";
+			sepNavVisRange = "{0, 734}";
 		};
 	};
 	86CA505FA866779DAF3A7388 /* DoubleRunnyBuffer.h */ = {
@@ -450,6 +464,10 @@
 		activeExecutable = E2758BB212E2968800E37D3F /* Slow */;
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
 		breakpoints = (
+			E23DABC21360FA4300A52041 /* PersistentWindow.cpp:13 */,
+			E23DABCA1360FAA900A52041 /* PersistentWindow.h:22 */,
+			E23DABDB1360FB9700A52041 /* Window.cpp:20 */,
+			E23DABE413611CAA00A52041 /* App.h:60 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -561,6 +579,17 @@
 			E23DABB81360F41A00A52041 /* PBXTextBookmark */ = E23DABB81360F41A00A52041 /* PBXTextBookmark */;
 			E23DABB91360F41A00A52041 /* PBXTextBookmark */ = E23DABB91360F41A00A52041 /* PBXTextBookmark */;
 			E23DABBA1360F41A00A52041 /* PBXTextBookmark */ = E23DABBA1360F41A00A52041 /* PBXTextBookmark */;
+			E23DABBF1360F45900A52041 /* PBXTextBookmark */ = E23DABBF1360F45900A52041 /* PBXTextBookmark */;
+			E23DABC61360FA4800A52041 /* PBXTextBookmark */ = E23DABC61360FA4800A52041 /* PBXTextBookmark */;
+			E23DABC71360FA4800A52041 /* PBXTextBookmark */ = E23DABC71360FA4800A52041 /* PBXTextBookmark */;
+			E23DABC81360FA4800A52041 /* PBXTextBookmark */ = E23DABC81360FA4800A52041 /* PBXTextBookmark */;
+			E23DABCE1360FAB100A52041 /* PBXTextBookmark */ = E23DABCE1360FAB100A52041 /* PBXTextBookmark */;
+			E23DABD61360FB5E00A52041 /* PBXTextBookmark */ = E23DABD61360FB5E00A52041 /* PBXTextBookmark */;
+			E23DABD91360FB6400A52041 /* PBXTextBookmark */ = E23DABD91360FB6400A52041 /* PBXTextBookmark */;
+			E23DABDF1360FBA500A52041 /* PBXTextBookmark */ = E23DABDF1360FBA500A52041 /* PBXTextBookmark */;
+			E23DABE31360FBB700A52041 /* PBXTextBookmark */ = E23DABE31360FBB700A52041 /* PBXTextBookmark */;
+			E23DABE613611CAF00A52041 /* PBXTextBookmark */ = E23DABE613611CAF00A52041 /* PBXTextBookmark */;
+			E23DABE913611DC000A52041 /* PBXTextBookmark */ = E23DABE913611DC000A52041 /* PBXTextBookmark */;
 			E23E467712EFAF870080BD76 = E23E467712EFAF870080BD76 /* PBXTextBookmark */;
 			E23E4C4912F71DEB0080BD76 = E23E4C4912F71DEB0080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
@@ -637,7 +666,7 @@
 	};
 	AD730539B904BD2C42DA1F6E /* Command.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1034, 732}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 755}}";
 			sepNavSelRange = "{379, 0}";
 			sepNavVisRange = "{0, 491}";
 			sepNavWindowFrame = "{{314, 32}, {1093, 868}}";
@@ -716,9 +745,9 @@
 	};
 	C80A3AD45428327F447AFE21 /* Data.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {649, 1039}}";
-			sepNavSelRange = "{839, 0}";
-			sepNavVisRange = "{0, 1104}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 715}}";
+			sepNavSelRange = "{490, 0}";
+			sepNavVisRange = "{0, 1072}";
 		};
 	};
 	CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */ = {
@@ -794,17 +823,17 @@
 	};
 	DBCFFC0D921396EF7C62C497 /* Window.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1034, 732}}";
-			sepNavSelRange = "{978, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 686}}";
+			sepNavSelRange = "{514, 0}";
 			sepNavVisRange = "{0, 978}";
 			sepNavWindowFrame = "{{222, 116}, {1093, 868}}";
 		};
 	};
 	DC899BD7E18BE1EF7CDF5378 /* UntypedData.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {959, 1079}}";
-			sepNavSelRange = "{822, 0}";
-			sepNavVisRange = "{73, 1341}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 1079}}";
+			sepNavSelRange = "{762, 0}";
+			sepNavVisRange = "{0, 1466}";
 		};
 	};
 	DF49580B9742DB4F887E85DF /* MainPage.cpp */ = {
@@ -1018,9 +1047,10 @@
 		path = ../../../../../rec/src/rec/data/persist/App.h;
 		sourceTree = "<group>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1034, 1014}}";
-			sepNavSelRange = "{1167, 0}";
-			sepNavVisRange = "{376, 1360}";
+			sepNavIntBoundsRect = "{{0, 0}, {603, 1014}}";
+			sepNavSelRange = "{1005, 0}";
+			sepNavVisRange = "{424, 1347}";
+			sepNavWindowFrame = "{{245, 95}, {1093, 868}}";
 		};
 	};
 	E224C89B1360D87600F115A1 /* PBXTextBookmark */ = {
@@ -1078,7 +1108,8 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1034, 6656}}";
 			sepNavSelRange = "{18509, 0}";
-			sepNavVisRange = "{385, 2101}";
+			sepNavVisRange = "{385, 2244}";
+			sepNavWindowFrame = "{{268, 74}, {1093, 868}}";
 		};
 	};
 	E224C9461360E93800F115A1 /* PBXTextBookmark */ = {
@@ -1347,6 +1378,11 @@
 		name = juce_KeyPress.cpp;
 		path = /Users/tom/Documents/development/juce/src/gui/components/keyboard/juce_KeyPress.cpp;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {603, 3848}}";
+			sepNavSelRange = "{1670, 0}";
+			sepNavVisRange = "{1371, 1441}";
+		};
 	};
 	E23DABB61360F41A00A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1397,6 +1433,188 @@
 		rType = 0;
 		vrLen = 1360;
 		vrLoc = 376;
+	};
+	E23DABBF1360F45900A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E23DABB51360F41A00A52041 /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 42";
+		rLen = 41;
+		rLoc = 1471;
+		rType = 0;
+		vrLen = 1711;
+		vrLoc = 0;
+	};
+	E23DABC21360FA4300A52041 /* PersistentWindow.cpp:13 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		functionName = "PersistentWindow::setLimitedBounds(const Rect& b)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 13;
+		location = SlowBurn;
+		modificationTime = 325131711.815234;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E23DABC61360FA4800A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E23DABB51360F41A00A52041 /* juce_KeyPress.cpp */;
+		name = "juce_KeyPress.cpp: 42";
+		rLen = 41;
+		rLoc = 1471;
+		rType = 0;
+		vrLen = 1711;
+		vrLoc = 0;
+	};
+	E23DABC71360FA4800A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABC81360FA4800A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABCA1360FAA900A52041 /* PersistentWindow.h:22 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 350C32878B8796E199D10089 /* PersistentWindow.h */;
+		functionName = "computeBounds()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 22;
+		location = SlowBurn;
+		modificationTime = 325131711.81617;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E23DABCE1360FAB100A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABD61360FB5E00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABD91360FB6400A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABDB1360FB9700A52041 /* Window.cpp:20 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = DBCFFC0D921396EF7C62C497 /* Window.cpp */;
+		functionName = "Window::Window()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 20;
+		location = SlowBurn;
+		modificationTime = 325131711.816675;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E23DABDF1360FBA500A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABE31360FBB700A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABE413611CAA00A52041 /* App.h:60 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = E224C89A1360D87600F115A1 /* App.h */;
+		functionName = "App::fileData(const File& directory)";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 60;
+		location = SlowBurn;
+		modificationTime = 325131711.817203;
+		originalNumberOfMultipleMatches = 1;
+		state = 2;
+	};
+	E23DABE613611CAF00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 36";
+		rLen = 0;
+		rLoc = 906;
+		rType = 0;
+		vrLen = 1119;
+		vrLoc = 0;
+	};
+	E23DABE913611DC000A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 48";
+		rLen = 0;
+		rLoc = 1160;
+		rType = 0;
+		vrLen = 1138;
+		vrLoc = 0;
 	};
 	E23E45F412EF610D0080BD76 /* juce_Component.cpp */ = {
 		isa = PBXFileReference;

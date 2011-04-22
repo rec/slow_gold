@@ -13,7 +13,8 @@ class PersistentWindow : public DocumentWindow {
                    const Colour& bg,
                    int requiredButtons,
                    bool addToDesktop = true)
-      : DocumentWindow(name, bg, requiredButtons, addToDesktop) {
+      : DocumentWindow(name, bg, requiredButtons, addToDesktop),
+        boundsSet_(false) {
   }
   typedef juce::Rectangle<int> Rect;
 
@@ -37,6 +38,7 @@ class PersistentWindow : public DocumentWindow {
   void setSetter();
 
   persist::Setter* setter_;
+  bool boundsSet_;
 
   DISALLOW_COPY_AND_ASSIGN(PersistentWindow);
 };

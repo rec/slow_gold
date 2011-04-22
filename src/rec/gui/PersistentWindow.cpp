@@ -18,6 +18,7 @@ void PersistentWindow::setLimitedBounds(const Rect& b) {
   setBounds(bounds);
   setResizable(true, false); // resizability is a property of ResizableWindow
   setResizeLimits(1, 1, 8192, 8192);
+  boundsSet_ = true;
 }
 
 void PersistentWindow::resized() {
@@ -27,7 +28,8 @@ void PersistentWindow::resized() {
 
 void PersistentWindow::writeData() {
   // TODO!
-  persist::appData<slow::AppLayout>()->set("bounds", gui::copy(getBounds()));
+  if (boundsSet_)
+    persist::appData<slow::AppLayout>()->set("bounds", gui::copy(getBounds()));
 }
 
 void PersistentWindow::moved() {
