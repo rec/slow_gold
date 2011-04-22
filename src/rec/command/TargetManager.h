@@ -19,11 +19,13 @@ class TargetManager : public ApplicationCommandTarget {
   explicit TargetManager(Component* comp);
   virtual ~TargetManager();
   void registerAllCommandsForTarget();
-  void addComponent(Component* c);
+  void setApplicationCommandManagerToWatch(MenuBarModel* model) {
+    model->setApplicationCommandManagerToWatch(&commandManager_);
+  }
 
   // ApplicationCommandTarget virtual methods.
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
-  //  return findFirstTargetParentComponent();
+  //  return findFirstTargetParentComponent();  // TODO
 
   virtual void getAllCommands(juce::Array<CommandID>&);
   virtual void getCommandInfo(CommandID, ApplicationCommandInfo&);

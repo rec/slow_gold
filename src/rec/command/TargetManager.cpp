@@ -18,7 +18,7 @@ struct CommandCallback {
 
 TargetManager::TargetManager(Component* c) : lastInvocation_(0) {
   if (c)
-    addComponent(c);
+    c->addKeyListener(commandManager_.getKeyMappings());
 }
 
 TargetManager:: ~TargetManager() {
@@ -29,11 +29,6 @@ void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(this);
   commandManager_.registerAllCommandsForTarget(
       juce::JUCEApplication::getInstance());
-}
-
-void TargetManager::addComponent(Component* c) {
-  c->addKeyListener(commandManager_.getKeyMappings());
-  // c->setApplicationCommandManagerToWatch(&commandManager_);  // TODO
 }
 
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {

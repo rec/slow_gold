@@ -21,6 +21,12 @@ Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
   setMenuBar(&instance_->menus_);
   setUsingNativeTitleBar(true);
   setVisible(true);
+
+#if JUCE_MAC
+  // TODO: make sure this is in the right place.
+  juce::MenuBarModel::setMacMainMenu(&instance_->menus_);
+  setMenuBar(NULL);
+#endif
 }
 
 Window::~Window() {

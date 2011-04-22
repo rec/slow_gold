@@ -6,11 +6,11 @@
 namespace rec {
 namespace slow {
 
-class Instance;
+struct Instance;
 
 class Menus : public MenuBarModel {
  public:
-  Menus(Instance* i) : instance_(i) {}
+  Menus(Instance* i);
 
   virtual const StringArray getMenuBarNames();
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& name);

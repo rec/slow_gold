@@ -21,15 +21,6 @@ void GenericApplication::initialise(const String&) {
   audio::format::mpg123::initializeOnce();
   persist::AppInstance::start();
   window_.reset(createWindow());
-
-#ifdef TODO
-#if JUCE_MAC
-  // TODO: make sure this is in the right place.
-  juce::MenuBarModel::setMacMainMenu(window_->getTarget());
-  window_->setMenuBar(NULL);
-#endif
-#endif
-
 }
 
 void GenericApplication::shutdown() {

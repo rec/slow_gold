@@ -6,6 +6,10 @@
 namespace rec {
 namespace slow {
 
+Menus::Menus(Instance* i) : instance_(i) {
+  i->target_.setApplicationCommandManagerToWatch(this);
+}
+
 const StringArray Menus::getMenuBarNames() {
   static const char* NAMES[] = {"File", "Edit", "Loop"};
   return StringArray(NAMES, arraysize(NAMES));
