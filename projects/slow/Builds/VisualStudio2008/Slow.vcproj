@@ -236,6 +236,28 @@
           <File RelativePath="..\..\..\..\src\rec\base\string_piece.h"/>
           <File RelativePath="..\..\..\..\src\rec\base\types.h"/>
         </Filter>
+        <Filter Name="binary">
+          <File RelativePath="..\..\..\..\src\rec\binary\big-logo.png">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\src\rec\binary\logo.png">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+        </Filter>
         <Filter Name="command">
           <File RelativePath="..\..\..\..\src\rec\command\Command.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\Command.h"/>
@@ -710,7 +732,11 @@
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode.cpp"/>
+      <File RelativePath="icon.ico"/>
+      <File RelativePath="resources.rc"/>
     </Filter>
   </Files>
   <Globals/>

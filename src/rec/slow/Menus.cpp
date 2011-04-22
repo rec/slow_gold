@@ -7,7 +7,7 @@ namespace rec {
 namespace slow {
 
 Menus::Menus(Instance* i) : instance_(i) {
-  i->target_.setApplicationCommandManagerToWatch(this);
+  // i->target_.setApplicationCommandManagerToWatch(this); // TODO
 }
 
 const StringArray Menus::getMenuBarNames() {

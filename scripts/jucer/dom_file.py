@@ -25,7 +25,6 @@ class DomFile:
     self.dom = xml.dom.minidom.parse(open(filename))
     self.documentElement = self.dom.documentElement
 
-
   def create(self, xmlName, **attributes):
     """Create a new named XML element with a JUCER ID and attributes."""
 
@@ -38,7 +37,6 @@ class DomFile:
       element.setAttribute(k, v)
 
     return element
-
 
   def element(self, *tag_names):
     """Get an element in the DOM tree by a sequence of tag_names.  If there are

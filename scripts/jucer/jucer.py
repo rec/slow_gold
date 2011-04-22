@@ -12,7 +12,6 @@
 import dom_file
 import filetree
 
-
 class Jucer(dom_file.DomFile):
   def __init__(self, filename, is_test, root):
     dom_file.DomFile.__init__(self, filename)
@@ -20,11 +19,9 @@ class Jucer(dom_file.DomFile):
     self.root = root
     self.file_id_dict = {}
 
-
   def toxml(self):
     self.setMaingroup()
     return self.dom.toprettyxml()
-
 
   def setFileIdDict(self, n, path, depth=0):
     if path:
@@ -36,13 +33,11 @@ class Jucer(dom_file.DomFile):
       if hasattr(g, 'tagName') and g.tagName in ['GROUP', 'FILE']:
         self.setFileIdDict(g, path, depth + 1)
 
-
   def createFromDict(self, xmlName, path, **attributes):
     id = self.file_id_dict.get(path + '/' + attributes['name'], None)
     if id:
       attributes.update(id=id)
     return self.create(xmlName, **attributes)
-
 
   def setMaingroup(self):
     old = self.element('MAINGROUP')
@@ -58,26 +53,23 @@ class Jucer(dom_file.DomFile):
     maingroup.appendChild(self.createFile('Main.cpp', 'Main.cpp',
                                           name + '/Main.cpp'))
 
-
   def join(self, files, joiner=' '):
     return joiner.join(filter(self.accept, files))
-
 
   def createCPPFileGroup(self, parent, prefix, name, root, path):
     tree = filetree.filetree('%s/%s/%s' % (root, prefix, name), self.acceptCpp)
     parent.appendChild(self.createFileOrGroup(prefix, name, tree, path))
 
-
   def createFile(self, name, file, path):
-    compile = str(int(not file.endswith('.h')))
-    d = dict(name=name, resource='0', file=file, compile=compile)
+    isPNG = file.endswith('.png')
+    compile = str(int(not (file.endswith('.h') or isPNG)))
+    resource = str(int(isPNG))
+    d = dict(name=name, resource=resource, file=file, compile=compile)
     return self.createFromDict('FILE', path, **d)
-
 
   def createFileOrGroup(self, prefix, name, tree, path):
     if type(tree) is str:
       return self.createFile(name, '../../%s/%s' % (prefix, name), path)
-
     else:
       group = self.createFromDict('GROUP', path, name=name)
       if prefix:
@@ -91,14 +83,14 @@ class Jucer(dom_file.DomFile):
 
       return group
 
-
   def acceptCpp(self, s):
-    return (self.accept(s) and
-            ('.' + s).split('.')[-1] in ['h', 'cpp', 'cc', 'c'] and
+    r = (self.accept(s) and
+            ('.' + s).split('.')[-1] in ['h', 'cpp', 'cc', 'c', 'png'] and
             not (self.is_test and 'Main.c' in s) and
             'mfMath.h' not in s)
+    # print "acceptCpp", s, r
+    return r
   # TODO: is that second-last condition now irrelevant?
-
 
   def accept(self, s):
     return s and (self.is_test or not '_test.' in s)
