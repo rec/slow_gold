@@ -35,7 +35,6 @@ void PersistentWindow::writeData() {
 void PersistentWindow::moved() {
   writeData();
   DocumentWindow::moved();
-  getContentComponent()->setBounds(getBounds());
 }
 
 void PersistentWindow::closeButtonPressed() {
