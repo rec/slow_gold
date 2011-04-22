@@ -8,6 +8,7 @@ namespace slow {
 Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->player_.addListener(this);
   instance_->components_.directoryTree_.treeView()->dropBroadcaster()->addListener(this);
+  instance_->components_.waveform_.dropBroadcaster()->addListener(this);
 }
 
 void Listeners::operator()(const ClockTick&) {}
@@ -15,20 +16,70 @@ void Listeners::operator()(const juce::AudioThumbnail&) {}
 void Listeners::operator()(const ClockUpdate&) {}
 void Listeners::operator()(const SelectionRange&) {}
 void Listeners::operator()(const audio::stretch::StretchLoop&) {}
-void Listeners::operator()(const file::VirtualFile&) {}
 
-void Listeners::operator()(const file::VirtualFileList& newFileList) {
-  using file::getFile;
+void Listeners::operator()(const file::VirtualFileList&) {}
+void Listeners::operator()(const file::VirtualFile& file) {
+#if 0
+  if (true)
+    return;
 
-  typedef std::set<string> FileSet;
-  FileSet existing;
-  VirtualFileList list(persist::getApp<file::VirtualFileList>());
-  for (int i = 0; i < list.file_size(); ++i)
-    existing.insert(str(getFile(list.file(i)).getFullPathName()));
+  // instance_->components_.playbackController_(file); ??
+  if (empty(file)) {
+    waveform_.setAudioThumbnail(NULL);
+    instance_.clearData();
 
-  for (int i = 0; i < newFileList.file_size(); ++i) {
-    if (existing.find(str(getFile(newFileList.file(i)).getFullPathName())) == existing.end())
-      persist::appData<file::VirtualFileList>()->append("file", newFileList.file(i));
+  } else {
+    persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
+    loops_.setData(listData);
+    waveform_.setData(listData);
+
+    if (listData->get().loop_point_size())
+      listData->requestUpdate();
+    else
+      listData->append(Address("loop_point"), Value(LoopPoint()));
+
+    if (gui::CachedThumbnail* thumb = stretchyPlayer_.cachedThumbnail()) {
+      waveform_.setAudioThumbnail(thumb->thumbnail());
+      thumb->addListener(&waveform_);
+
+    } else {
+      LOG(ERROR) << "Can't get waveform for file " << file.ShortDebugString();
+      return;
+    }
+    // gui::addRecentFile(file);
+
+    // Adjust the length of clients - neaten this up!
+    length_ = stretchyPlayer_.length() / 44100.0;
+    (*(playbackController_.timeController()))(ClockUpdate(-1, length_));
+
+    zoomProto()->requestUpdate();
+  }
+
+  (*this)(0.0);
+#endif
+}
+
+void Listeners::operator()(const gui::DropFiles& dropFiles) {
+  const file::VirtualFileList& files = dropFiles.files_;
+  if (dropFiles.target_ == &instance_->components_.waveform_) {
+    if (files.file_size() >= 1)
+      (*this)(files.file(0));
+
+    LOG_IF(ERROR, files.file_size() != 1);
+
+  } else if (dropFiles.target_ == instance_->components_.directoryTree_.treeView()) {
+    using file::getFile;
+
+    typedef std::set<string> FileSet;
+    FileSet existing;
+    VirtualFileList list(persist::getApp<file::VirtualFileList>());
+    for (int i = 0; i < list.file_size(); ++i)
+      existing.insert(str(getFile(list.file(i)).getFullPathName()));
+
+    for (int i = 0; i < files.file_size(); ++i) {
+      if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
+        persist::appData<file::VirtualFileList>()->append("file", files.file(i));
+    }
   }
 }
 
@@ -73,43 +124,6 @@ void Listeners::operator()(const SelectionRange& sel) {
     DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
     data->set("loop", loop);
   }
-}
-
-// Contains fileio.
-void Listeners::operator()(const file::VirtualFile& file) {
-  // instance_->components_.playbackController_(file); ??
-  if (empty(file)) {
-    waveform_.setAudioThumbnail(NULL);
-    instance_.clearData();
-
-  } else {
-    persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
-    loops_.setData(listData);
-    waveform_.setData(listData);
-
-    if (listData->get().loop_point_size())
-      listData->requestUpdate();
-    else
-      listData->append(Address("loop_point"), Value(LoopPoint()));
-
-    if (gui::CachedThumbnail* thumb = stretchyPlayer_.cachedThumbnail()) {
-      waveform_.setAudioThumbnail(thumb->thumbnail());
-      thumb->addListener(&waveform_);
-
-    } else {
-      LOG(ERROR) << "Can't get waveform for file " << file.ShortDebugString();
-      return;
-    }
-    // gui::addRecentFile(file);
-
-    // Adjust the length of clients - neaten this up!
-    length_ = stretchyPlayer_.length() / 44100.0;
-    (*(playbackController_.timeController()))(ClockUpdate(-1, length_));
-
-    zoomProto()->requestUpdate();
-  }
-
-  (*this)(0.0);
 }
 
 void Listeners::operator()(const audio::stretch::StretchLoop& x) {

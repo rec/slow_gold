@@ -3,13 +3,13 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/util/file/VirtualFile.h"
-#include "rec/util/file/VirtualFile.h"
-#include "rec/util/thread/CallAsync.h"
+#include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/util/ClockUpdate.h"
-#include "rec/util/listener/Listener.h"
 #include "rec/util/Range.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/util/listener/Listener.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/CursorTime.h"
 #include "rec/widget/waveform/TimeAndMouseEvent.h"
 #include "rec/widget/waveform/Zoom.pb.h"
@@ -28,6 +28,7 @@ class Listeners :
     public Listener<const audio::stretch::StretchLoop&>,
     public Listener<const file::VirtualFile&>,
     public Listener<const file::VirtualFileList&>,
+    public Listener<const gui::DropFiles&>,
     public Listener<const gui::audio::LoopPointList&>,
     public Listener<const widget::waveform::CursorTime&>,
     public Listener<const widget::waveform::TimeAndMouseEvent&>,
@@ -44,6 +45,7 @@ class Listeners :
   virtual void operator()(const audio::stretch::StretchLoop&);
   virtual void operator()(const file::VirtualFile&);
   virtual void operator()(const file::VirtualFileList&);
+  virtual void operator()(const gui::DropFiles&);
   virtual void operator()(const gui::audio::LoopPointList&);
   virtual void operator()(const widget::waveform::CursorTime&);
   virtual void operator()(const widget::waveform::TimeAndMouseEvent&);

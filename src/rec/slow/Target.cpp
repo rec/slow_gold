@@ -18,6 +18,11 @@ Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
       "Cut", "Edit",
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
+#ifdef TODO
+  add(Command::OPEN, makeCallback(&gui::dialog::openVirtualFile, i->listeners_),
+      "Open...", "File",
+      "Open dialog to select a new audio file for looping.", 'o');
+#endif
   add(Command::EJECT, makeCallback(&cd::ejectAll),
       "Eject All", "File",
       "Eject all CDs and DVDs");
@@ -25,14 +30,6 @@ Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
   add(Command::PASTE, makeCallback(&pasteFromClipboard),
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.", 'v');
-
-#ifdef TODO
-  // Causes a run-time error!
-  add(Command::QUIT, makeCallback(JUCEApplication::getInstance(),
-                                  &JUCEApplication::systemRequestedQuit),
-      "Quit", "File",
-      "Quit SlowGold", 'q');
-#endif
 
   using gui::audio::Loops;
   Loops* loops = &i->components_.loops_;
@@ -45,12 +42,9 @@ Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
       "Clear Selection", "Loop",
       "Unselect all the loop points");
 
-#ifdef TODO
-  add(Command::OPEN, makeCallback(&gui::dialog::openVirtualFile,
-                                  persist::appData<VirtualFile>()),
-      "Open...", "File",
-      "Open dialog to select a new audio file for looping.", 'o');
+  registerAllCommandsForTarget();
 
+#ifdef TODO
   add(Command::CLOSE, makeCallback(persist::appData<VirtualFile>(), VirtualFile()),
       "Close", "File",
       "Close the current file", 'w');
@@ -69,7 +63,14 @@ Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
   // add(Command::FILE_CLEAR, make, &ComponentContainer::clearFile);
 #endif
 
-  registerAllCommandsForTarget();
+#ifdef TODO
+  // Causes a run-time error!
+  add(Command::QUIT, makeCallback(JUCEApplication::getInstance(),
+                                  &JUCEApplication::systemRequestedQuit),
+      "Quit", "File",
+      "Quit SlowGold", 'q');
+#endif
+
 }
 
 }  // namespace slow
