@@ -48,7 +48,6 @@ TEST(CD, Albums) {
   for (int i = 0; i < arraysize(trackLengths); ++i)
     offsets.add(trackLengths[i]);
 
-  AlbumList albums;
   EXPECT_EQ(String(""), fillAlbums(offsets, &albums));
   EXPECT_EQ(1, albums.album_size());
 

@@ -20,9 +20,6 @@ void Listeners::operator()(const audio::stretch::StretchLoop&) {}
 void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const file::VirtualFile& file) {
 #if 0
-  if (true)
-    return;
-
   // instance_->components_.playbackController_(file); ??
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);

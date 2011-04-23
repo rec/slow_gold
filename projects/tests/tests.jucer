@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="BaZ5Mysia" name="tests">
+  <MAINGROUP id="A4LF0ToQf" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -567,6 +567,8 @@
               name="Dialog.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Dialog.h" id="1HUdwQjFe"
               name="Dialog.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/DropFiles.h" id="ySl8DNbeP"
+              name="DropFiles.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/DropTarget.h" id="WvrqWset5"
               name="DropTarget.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Font.h" id="IJmPtaJbj" name="Font.h"
@@ -920,6 +922,8 @@
                 id="rGRQyPB2P" name="TimeAndLength.h" resource="0"/>
         </GROUP>
         <GROUP id="XG8GOIIwK" name="tree">
+          <FILE compile="1" file="../../src/rec/widget/tree/CD.cpp" id="nGhIZHggI"
+                name="CD.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/tree/CD.h" id="KyKiGIOHd"
                 name="CD.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/tree/Directory.cpp" id="arAeWRc77"
@@ -1129,7 +1133,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="dR6OTdOKw" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="NxsvuETor" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
