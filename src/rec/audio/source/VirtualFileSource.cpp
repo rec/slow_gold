@@ -11,16 +11,17 @@ namespace source {
 
 namespace {
 
-AudioFormatReader* createReader(const VirtualFile& file) {
+typedef persist::Data<cd::Metadata> Data;
+
+AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
   cd::Metadata metadata;
   ptr<AudioFormatReader> reader;
   persist::Data<cd::Metadata>* data = persist::data<cd::Metadata>(file);
-  bool needsRead = !data->fileReadSuccess();
+  bool fileRead = data->fileReadSuccess();
 
   if (file.type() == VirtualFile::CD) {
     if (!file.path_size()) {
-      LOG(ERROR) << "Can't create track for root CD volume for "
-                 << file.DebugString();
+      LOG(ERROR) << "Can't create track for " << file.DebugString();
       return NULL;
     }
 
@@ -28,9 +29,9 @@ AudioFormatReader* createReader(const VirtualFile& file) {
     String filename = file.name().c_str();
     reader.reset(cd::createCDTrackReader(filename, track));
 
-    if (needsRead) {
+    if (!fileRead) {
       ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
-      metadata = getTrack(cd::getAlbum(file, cdr->getTrackOffsets()), track);
+      metadata = getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
     }
   } else {
     reader.reset(audio::getAudioFormatManager()->createReaderFor(getFile(file)));
@@ -39,11 +40,11 @@ AudioFormatReader* createReader(const VirtualFile& file) {
       return NULL;
     }
 
-    if (needsRead)
+    if (!fileRead)
       metadata = cd::getMetadata(reader->metadataValues);
   }
 
-  if (needsRead && (metadata != cd::Metadata::default_instance()))
+  if (!fileRead && (metadata != cd::Metadata::default_instance()))
     data->set(metadata);
 
   return reader.transfer();
@@ -52,11 +53,11 @@ AudioFormatReader* createReader(const VirtualFile& file) {
 }  // namespace
 
 PositionableAudioSource* virtualFileSource(const VirtualFile& file) {
-  ptr<AudioFormatReader> reader(createReader(file));
+  ptr<AudioFormatReader> reader(createReaderAndLoadMetadata(file));
   if (reader)
     return new AudioFormatReaderSource(reader.transfer(), true);
-  else
-    LOG(ERROR) << "No reader for " << getFullDisplayName(file);
+
+  LOG(ERROR) << "No reader for " << getFullDisplayName(file);
   return NULL;
 }
 

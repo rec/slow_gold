@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="0uPdRPkum" name="tests">
+  <MAINGROUP id="HbYrIV5MJ" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -1065,6 +1065,12 @@
           <FILE compile="0" file="../../genfiles/proto/rec/gui/TableColumn.pb.h"
                 id="KRxNfzXnd" name="TableColumn.pb.h" resource="0"/>
         </GROUP>
+        <GROUP id="GmPdFLzzj" name="music">
+          <FILE compile="1" file="../../genfiles/proto/rec/music/Metadata.pb.cc"
+                id="Mbpa14z8Y" name="Metadata.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/music/Metadata.pb.h"
+                id="69h32Ax9U" name="Metadata.pb.h" resource="0"/>
+        </GROUP>
         <GROUP id="zdICogwiF" name="slow">
           <FILE compile="1" file="../../genfiles/proto/rec/slow/AppLayout.pb.cc"
                 id="5Jt2v5gSl" name="AppLayout.pb.cc" resource="0"/>
@@ -1072,12 +1078,6 @@
                 id="UtdxuYqQ8" name="AppLayout.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="OOoCyKoQN" name="util">
-          <GROUP id="wLh3fE8p2" name="cd">
-            <FILE compile="1" file="../../genfiles/proto/rec/util/cd/Album.pb.cc"
-                  id="GxVNC0FSC" name="Album.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/util/cd/Album.pb.h"
-                  id="EKWPGYD7f" name="Album.pb.h" resource="0"/>
-          </GROUP>
           <GROUP id="kCdXLpIlx" name="file">
             <FILE compile="1" file="../../genfiles/proto/rec/util/file/VirtualFile.pb.cc"
                   id="TCmlimlt1" name="VirtualFile.pb.cc" resource="0"/>
@@ -1137,7 +1137,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="l8t3DXJa1" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="49wk4JcEm" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

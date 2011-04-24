@@ -712,15 +712,15 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
           </Filter>
+          <Filter Name="music">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
+          </Filter>
           <Filter Name="slow">
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
           </Filter>
           <Filter Name="util">
-            <Filter Name="cd">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\cd\Album.pb.h"/>
-            </Filter>
             <Filter Name="file">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>

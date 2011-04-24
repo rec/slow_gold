@@ -1,7 +1,6 @@
 #include "rec/util/cd/Album.h"
 
 #include "rec/data/persist/Copy.h"
-#include "rec/util/cd/Album.pb.h"
 #include "rec/util/cd/CDDBResponse.h"
 #include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/cd/Socket.h"
@@ -45,8 +44,8 @@ void splitTracks(Album* album) {
   }
 }
 
-void addAlbumValue(const String& key, const string& v, Album* album) {
-  Metadata* data = album->mutable_album();
+void addAlbumValue(const String& key, const string& v, Album* a) {
+  Metadata* data = a->mutable_album();
   if (key == "DISCID")
     data->set_discid(v);
 
@@ -60,7 +59,7 @@ void addAlbumValue(const String& key, const string& v, Album* album) {
     *data->mutable_album_title() += v;
 
   else if (key.startsWith("TTITLE"))
-    *album->mutable_track(key.getTrailingIntValue())->mutable_track_title() += v;
+    *a->mutable_track(key.getTrailingIntValue())->mutable_track_title() += v;
 
   else if (!(key.startsWith("EXT") || key == "PLAYORDER"))
     LOG(ERROR) << "Unknown key " << key << " '" << v << "'";
@@ -114,6 +113,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
     readCDDBResponse(&sock);
     makeCDDBRequest("cddb hello anonymous localhost slowgold 1.0", &sock);
     makeCDDBRequest("proto 6", &sock);
+
     fillAlbumList(&sock, off, albums);
     return "";
   } catch (Exception& e) {
@@ -121,7 +121,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   }
 }
 
-Album getAlbum(const VirtualFile& file, const TrackOffsets& off) {
+Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
   Album album;
   File shadow = getShadowFile(file, "album");
   if (!persist::copy(shadow, &album)) {
@@ -158,7 +158,7 @@ Metadata getMetadata(const StringPairArray& metadata) {
     else if (k == "TDRC") t.set_year(v);
     else if (k == "TIT2") t.set_track_title(v);
     else if (k == "TPE1") t.set_artist(v);
-    else if (k == "TPE2") t.set_artist(v);  // difference?!
+    else if (k == "TPE2") t.set_artist(v);  // TODO: difference?!
     else if (k == "TRCK") t.set_track_number(v);
   }
   return t;

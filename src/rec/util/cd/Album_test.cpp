@@ -4,7 +4,7 @@
 
 #include "rec/base/ArraySize.h"
 #include "rec/util/cd/Album.h"
-#include "rec/util/cd/Album.pb.h"
+#include "rec/music/Metadata.pb.h"
 
 namespace rec {
 namespace util {

@@ -25,6 +25,10 @@ class SongData : public SetterTextArea {
         editor()->setMultiLine(true, true);
   }
 
+  void setFile(const VirtualFile& file) {
+    setData(empty(file) ? NULL : persist::data<cd::Metadata>(file));
+  }
+
  private:
   DISALLOW_COPY_AND_ASSIGN(SongData);
 };

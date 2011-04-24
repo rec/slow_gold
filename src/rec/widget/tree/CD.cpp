@@ -12,7 +12,7 @@ void CD::computeChildren() {
   ptr<AudioCDReader> reader(cd::getAudioCDReader(cdKey.c_str()));
   if (reader) {
     cd::TrackOffsets trackOffsets = reader->getTrackOffsets();
-    cd::Album album = cd::getAlbum(volumeFile_, trackOffsets);
+    cd::Album album = cd::getCachedAlbum(volumeFile_, trackOffsets);
     if (!album.track_size()) {
       int audioTracks = cd::getAudioTrackCount(*reader);
       for (int i = 0; i < audioTracks; ++i)
