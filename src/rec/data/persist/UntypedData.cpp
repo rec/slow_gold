@@ -40,6 +40,16 @@ UntypedData::UntypedData(const File& file, Message* message, App* app)
       fileReadSuccess_(false) {
 }
 
+Message* UntypedData::clone() const {
+  ScopedLock l(lock_);
+  if (message_) {
+    ptr<Message> m(message_->New());
+    copyTo(m.get());
+    return m.transfer();
+  }
+  return NULL;
+}
+
 void UntypedData::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {

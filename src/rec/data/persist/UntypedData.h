@@ -49,6 +49,8 @@ class UntypedData : public Setter {
     return true;
   }
 
+  Message* clone() const;
+
  protected:
   virtual void onDataChange() = 0;
   virtual string getTypeName() const = 0;

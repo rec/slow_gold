@@ -10,7 +10,7 @@ namespace util {
 namespace listener {
 
 class ProtoListener : public Reference<persist::UntypedData>,
-                            public Listener<const Message&> {
+                      public Listener<const Message&> {
  public:
   ProtoListener() {}
   virtual ~ProtoListener() {}
@@ -22,8 +22,11 @@ class ProtoListener : public Reference<persist::UntypedData>,
 
     Reference<persist::UntypedData>::setData(d);
 
-    if (getData())
-      getData()->messageBroadcaster()->addListener(this);
+    if (d) {
+      d->messageBroadcaster()->addListener(this);
+      ptr<Message> m(d->clone());
+      (*this)(*m);
+    }
   }
 
  private:

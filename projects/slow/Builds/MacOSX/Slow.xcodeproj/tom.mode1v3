@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E23DB1701364E92C00A52041</string>
+						<string>E23DB18B1364ED7A00A52041</string>
 						<key>history</key>
 						<array>
 							<string>E23DB16F1364E92C00A52041</string>
@@ -270,8 +270,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -356,12 +354,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>VirtualFileSource.cpp</string>
+								<string>Listeners.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -369,18 +369,17 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>VirtualFileSource.cpp</string>
+										<string>Listeners.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E23DB16E1364E92C00A52041</string>
+										<string>E23DB18A1364ED7A00A52041</string>
 										<key>history</key>
 										<array>
 											<string>E2E28AE912E6457B004DE2DE</string>
 											<string>E288C2BC12EB70A400AAB106</string>
 											<string>E288C3E012EBF0AD00AAB106</string>
 											<string>E23E467712EFAF870080BD76</string>
-											<string>E23E4C4912F71DEB0080BD76</string>
 											<string>E2EDAC2C12FF74BF00CFF0DC</string>
 											<string>E2EDAC7712FF7EB700CFF0DC</string>
 											<string>E2EDAC7912FF7EB700CFF0DC</string>
@@ -400,7 +399,6 @@
 											<string>E2F73FD1131F7CCC0044B72A</string>
 											<string>E2F73FD2131F7CCC0044B72A</string>
 											<string>E2F73FD6131F7DA50044B72A</string>
-											<string>E2F73FD7131F7DA50044B72A</string>
 											<string>E2F73FD9131F7DA50044B72A</string>
 											<string>E2F73FDA131F7DA50044B72A</string>
 											<string>E22D57041335F95B00F9BF8F</string>
@@ -439,12 +437,20 @@
 											<string>E23DAEA213620A4B00A52041</string>
 											<string>E23DAEA613620A8800A52041</string>
 											<string>E23DAEC913620CB400A52041</string>
-											<string>E23DAED413620D6000A52041</string>
 											<string>E23DAED513620D6000A52041</string>
 											<string>E23DAED613620D6000A52041</string>
 											<string>E23DAED713620D6000A52041</string>
-											<string>E23DAF591363343500A52041</string>
-											<string>E23DB0C41364E0C200A52041</string>
+											<string>E23DB1791364ED4C00A52041</string>
+											<string>E23DB17B1364ED4C00A52041</string>
+											<string>E23DB17C1364ED4C00A52041</string>
+											<string>E23DB17D1364ED4C00A52041</string>
+											<string>E23DB17E1364ED4C00A52041</string>
+											<string>E23DB17F1364ED4C00A52041</string>
+											<string>E23DB1801364ED4C00A52041</string>
+											<string>E23DB1811364ED4C00A52041</string>
+											<string>E23DB1831364ED4C00A52041</string>
+											<string>E23DB1881364ED7A00A52041</string>
+											<string>E23DB1891364ED7A00A52041</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -642,14 +648,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E23DB16B1364E90C00A52041</string>
+		<string>E23DB1871364ED4C00A52041</string>
 		<string>E23DB1561364E49200A52041</string>
 		<string>E23DB1571364E49200A52041</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
-		<string>E290FED3120A432900532309</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>E23DB1681364E90C00A52041</string>
+		<string>E290FED3120A432900532309</string>
+		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>483 204 1358 969 0 0 1920 1178 </string>
@@ -673,7 +679,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Album.cpp</string>
+								<string>ProtoListener.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -682,7 +688,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1168, 454}}</string>
 								<key>RubberWindowFrame</key>
-								<string>752 155 1168 1023 0 0 1920 1178 </string>
+								<string>772 154 1168 1023 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -708,7 +714,7 @@
 								<key>Frame</key>
 								<string>{{0, 459}, {1168, 523}}</string>
 								<key>RubberWindowFrame</key>
-								<string>752 155 1168 1023 0 0 1920 1178 </string>
+								<string>772 154 1168 1023 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -740,7 +746,7 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>752 155 1168 1023 0 0 1920 1178 </string>
+			<string>772 154 1168 1023 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
