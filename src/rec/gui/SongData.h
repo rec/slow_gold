@@ -2,7 +2,7 @@
 #define __REC_GUI_SONGDATA__
 
 #include "rec/data/persist/Persist.h"
-#include "rec/util/cd/Metadata.h"
+#include "rec/music/Metadata.h"
 #include "rec/gui/SetterTextArea.h"
 
 namespace rec {

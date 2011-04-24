@@ -6,7 +6,7 @@
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/util/cd/Metadata.h"
+#include "rec/music/Metadata.h"
 
 namespace rec {
 namespace gui {

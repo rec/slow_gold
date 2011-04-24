@@ -482,6 +482,10 @@
           <File RelativePath="..\..\..\..\src\rec\gui\TableController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\TableController.h"/>
         </Filter>
+        <Filter Name="music">
+          <File RelativePath="..\..\..\..\src\rec\music\Metadata.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\music\Metadata.h"/>
+        </Filter>
         <Filter Name="slow">
           <File RelativePath="..\..\..\..\src\rec\slow\Broadcasters.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Components.h"/>
@@ -515,6 +519,8 @@
             <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
           </Filter>
           <Filter Name="cd">
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDReader.cpp"/>
@@ -523,8 +529,6 @@
             <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\Eject.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\Eject.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\Metadata.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\util\cd\Metadata.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>

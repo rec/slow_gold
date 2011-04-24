@@ -1,6 +1,5 @@
 #include "rec/util/cd/StripLines.h"
 
-
 using namespace juce;
 
 namespace rec {

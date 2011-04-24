@@ -1,14 +1,12 @@
-#include "rec/util/cd/Metadata.h"
-
-#include "rec/base/ArraySize.h"
 #include "rec/data/persist/Copy.h"
-#include "rec/music/Metadata.pb.h"
-#include "rec/util/Exception.h"
+#include "rec/util/cd/Album.h"
 #include "rec/util/cd/CDDBResponse.h"
-#include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/cd/Socket.h"
 #include "rec/util/cd/StripLines.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/base/ArraySize.h"
+#include "rec/util/cd/DedupeCDDB.h"
+#include "rec/util/Exception.h"
 
 using namespace rec::music;
 
@@ -101,6 +99,22 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
 
 }  // namespace
 
+Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
+  Album album;
+  File shadow = getShadowFile(file, "album");
+  if (!persist::copy(shadow, &album)) {
+    AlbumList albums;
+    String error = fillAlbums(off, &albums);
+    if (!error.length() && albums.album_size()) {
+      album = albums.album(0);
+      if (!persist::copy(album, &shadow))
+        LOG(ERROR) << "Couldn't save CDDB information";
+    }
+  }
+
+  return album;
+}
+
 #define DEFAULT_USER        "anonymous"
 #define DEFAULT_HOST        "localhost"
 #define DEFAULT_SERVER      "freedb.org"
@@ -124,50 +138,7 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   }
 }
 
-Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
-  Album album;
-  File shadow = getShadowFile(file, "album");
-  if (!persist::copy(shadow, &album)) {
-    AlbumList albums;
-    String error = fillAlbums(off, &albums);
-    if (!error.length() && albums.album_size()) {
-      album = albums.album(0);
-      if (!persist::copy(album, &shadow))
-        LOG(ERROR) << "Couldn't save CDDB information";
-    }
-  }
-
-  return album;
-}
-
-Metadata getTrack(const Album& album, int i) {
-  Metadata track = album.album();
-  if (i >= 0 && i < album.track_size())
-    track.MergeFrom(album.track(i));
-
-  return track;
-}
-
-Metadata getMetadata(const StringPairArray& metadata) {
-  Metadata t;
-  const StringArray& keys = metadata.getAllKeys();
-  for (int i = 0; i < keys.size(); ++i) {
-    const String& k = keys[i];
-    const string& v = str(metadata[k]);
-
-    if (k < "TALB" || k > "TRCK") continue;
-    else if (k == "TALB") t.set_album_title(v);
-    else if (k == "TCON") t.set_genre(v);
-    else if (k == "TDRC") t.set_year(v);
-    else if (k == "TIT2") t.set_track_title(v);
-    else if (k == "TPE1") t.set_artist(v);
-    else if (k == "TPE2") t.set_artist(v);  // TODO: difference?!
-    else if (k == "TRCK") t.set_track_number(v);
-  }
-  return t;
-}
 
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
-

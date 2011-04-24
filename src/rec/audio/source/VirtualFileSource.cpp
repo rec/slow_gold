@@ -1,7 +1,8 @@
 #include "rec/audio/source/VirtualFileSource.h"
 #include "rec/util/cd/CDReader.h"
+#include "rec/util/cd/Album.h"
 #include "rec/audio/util/AudioFormatManager.h"
-#include "rec/util/cd/Metadata.h"
+#include "rec/music/Metadata.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 
@@ -31,7 +32,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
 
     if (!fileRead) {
       ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
-      metadata = cd::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
+      metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
     }
   } else {
     reader.reset(audio::getAudioFormatManager()->createReaderFor(getFile(file)));
@@ -41,7 +42,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
     }
 
     if (!fileRead)
-      metadata = cd::getMetadata(reader->metadataValues);
+      metadata = music::getMetadata(reader->metadataValues);
   }
 
   if (!fileRead && (metadata != music::Metadata::default_instance()))

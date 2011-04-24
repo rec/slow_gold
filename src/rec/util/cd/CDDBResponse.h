@@ -1,9 +1,9 @@
 #ifndef __REC_UTIL_CD_CDDBRESPONSE__
 #define __REC_UTIL_CD_CDDBRESPONSE__
 
+#include "rec/util/cd/Album.h"
 #include "rec/util/cd/Socket.h"
-#include "rec/util/cd/Metadata.h"
-
+#include "rec/music/Metadata.h"
 
 namespace rec {
 namespace util {

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="2pvXaNi3A" name="Slow">
+  <MAINGROUP id="YGkGX8qAe" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -652,6 +652,12 @@
         <FILE compile="0" file="../../src/rec/gui/TableController.h" id="CCCo1SuGl"
               name="TableController.h" resource="0"/>
       </GROUP>
+      <GROUP id="dFkKT5FsZ" name="music">
+        <FILE compile="1" file="../../src/rec/music/Metadata.cpp" id="4PuGQMbp5"
+              name="Metadata.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/music/Metadata.h" id="38ZhXrr14"
+              name="Metadata.h" resource="0"/>
+      </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
         <FILE compile="0" file="../../src/rec/slow/Broadcasters.h" id="UY13BIJ7L"
               name="Broadcasters.h" resource="0"/>
@@ -712,6 +718,10 @@
                 name="MergeBlockSet.h" resource="0"/>
         </GROUP>
         <GROUP id="dG7mPPWGD" name="cd">
+          <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="UZNRhQi5L"
+                name="Album.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/Album.h" id="RfOGjYsBi"
+                name="Album.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/CDDBResponse.cpp" id="YEZ0XZWuq"
                 name="CDDBResponse.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/CDDBResponse.h" id="8ccpOQwJV"
@@ -728,10 +738,6 @@
                 name="Eject.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/Eject.h" id="H53x1qiXa"
                 name="Eject.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/cd/Metadata.cpp" id="tVFQLpmza"
-                name="Metadata.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/cd/Metadata.h" id="FCuXw388R"
-                name="Metadata.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/Socket.cpp" id="EZXbc6qCc"
                 name="Socket.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/Socket.h" id="qADCNPkcH"
@@ -1083,7 +1089,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="eCwzA0RYp" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="gnaMha1bD" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

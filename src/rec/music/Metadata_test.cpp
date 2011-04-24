@@ -7,8 +7,7 @@
 #include "rec/music/Metadata.pb.h"
 
 namespace rec {
-namespace util {
-namespace cd {
+namespace music {
 
 TEST(CD, Albums) {
   static const int SPF = 44100 / 75;
@@ -66,7 +65,6 @@ TEST(CD, Albums) {
 }
 
 #endif
-}  // namespace cd
-}  // namespace util
+}  // namespace music
 }  // namespace rec
 

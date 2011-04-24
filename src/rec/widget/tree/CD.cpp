@@ -1,4 +1,5 @@
 #include "rec/widget/tree/CD.h"
+#include "rec/util/cd/Album.h"
 
 namespace rec {
 namespace widget {
