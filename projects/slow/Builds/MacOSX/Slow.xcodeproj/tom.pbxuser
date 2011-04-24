@@ -969,6 +969,9 @@
 			E23DB14C1364E49200A52041 /* PBXTextBookmark */ = E23DB14C1364E49200A52041 /* PBXTextBookmark */;
 			E23DB14D1364E49200A52041 /* PBXTextBookmark */ = E23DB14D1364E49200A52041 /* PBXTextBookmark */;
 			E23DB14E1364E49200A52041 /* PBXTextBookmark */ = E23DB14E1364E49200A52041 /* PBXTextBookmark */;
+			E23DB15A1364E67500A52041 /* PBXTextBookmark */ = E23DB15A1364E67500A52041 /* PBXTextBookmark */;
+			E23DB15B1364E67500A52041 /* PBXTextBookmark */ = E23DB15B1364E67500A52041 /* PBXTextBookmark */;
+			E23DB15C1364E67500A52041 /* PBXTextBookmark */ = E23DB15C1364E67500A52041 /* PBXTextBookmark */;
 			E23E467712EFAF870080BD76 = E23E467712EFAF870080BD76 /* PBXTextBookmark */;
 			E23E4C4912F71DEB0080BD76 = E23E4C4912F71DEB0080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
@@ -3153,7 +3156,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 325379195.643676;
+		modificationTime = 325379222.88134;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -5138,6 +5141,36 @@
 		vrLoc = 0;
 	};
 	E23DB14E1364E49200A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 238AE7F10139B817BED1A910 /* VirtualFileSource.cpp */;
+		name = "VirtualFileSource.cpp: 3";
+		rLen = 0;
+		rLoc = 109;
+		rType = 0;
+		vrLen = 1817;
+		vrLoc = 0;
+	};
+	E23DB15A1364E67500A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 238AE7F10139B817BED1A910 /* VirtualFileSource.cpp */;
+		name = "VirtualFileSource.cpp: 35";
+		rLen = 0;
+		rLoc = 1070;
+		rType = 0;
+		vrLen = 1373;
+		vrLoc = 379;
+	};
+	E23DB15B1364E67500A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 490604E738E7F7E49FABE411 /* Metadata.cpp */;
+		name = "Metadata.cpp: 38";
+		rLen = 0;
+		rLoc = 960;
+		rType = 0;
+		vrLen = 960;
+		vrLoc = 0;
+	};
+	E23DB15C1364E67500A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 238AE7F10139B817BED1A910 /* VirtualFileSource.cpp */;
 		name = "VirtualFileSource.cpp: 3";

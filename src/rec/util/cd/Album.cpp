@@ -1,12 +1,12 @@
-#include "rec/data/persist/Copy.h"
 #include "rec/util/cd/Album.h"
+#include "rec/base/ArraySize.h"
+#include "rec/data/persist/Copy.h"
+#include "rec/util/Exception.h"
 #include "rec/util/cd/CDDBResponse.h"
+#include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/cd/Socket.h"
 #include "rec/util/cd/StripLines.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/base/ArraySize.h"
-#include "rec/util/cd/DedupeCDDB.h"
-#include "rec/util/Exception.h"
 
 using namespace rec::music;
 
@@ -97,24 +97,6 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   }
 }
 
-}  // namespace
-
-Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
-  Album album;
-  File shadow = getShadowFile(file, "album");
-  if (!persist::copy(shadow, &album)) {
-    AlbumList albums;
-    String error = fillAlbums(off, &albums);
-    if (!error.length() && albums.album_size()) {
-      album = albums.album(0);
-      if (!persist::copy(album, &shadow))
-        LOG(ERROR) << "Couldn't save CDDB information";
-    }
-  }
-
-  return album;
-}
-
 #define DEFAULT_USER        "anonymous"
 #define DEFAULT_HOST        "localhost"
 #define DEFAULT_SERVER      "freedb.org"
@@ -138,6 +120,23 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
   }
 }
 
+}  // namespace
+
+Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
+  Album album;
+  File shadow = getShadowFile(file, "album");
+  if (!persist::copy(shadow, &album)) {
+    AlbumList albums;
+    String error = fillAlbums(off, &albums);
+    if (!error.length() && albums.album_size()) {
+      album = albums.album(0);
+      if (!persist::copy(album, &shadow))
+        LOG(ERROR) << "Couldn't save CDDB information";
+    }
+  }
+
+  return album;
+}
 
 }  // namespace cd
 }  // namespace util

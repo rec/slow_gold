@@ -11,7 +11,6 @@ namespace cd {
 typedef juce::Array<int> TrackOffsets;
 
 music::Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off);
-String fillAlbums(const TrackOffsets& off, music::AlbumList* albums);
 
 }  // namespace cd
 }  // namespace util
