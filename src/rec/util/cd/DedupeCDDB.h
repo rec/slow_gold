@@ -4,25 +4,23 @@
 #include "rec/base/base.h"
 
 namespace rec {
-namespace util {
-namespace cd {
 
+namespace music {
 class Album;
 class AlbumList;
 class Metadata;
+}
+
+namespace util {
+namespace cd {
 
 string normalize(const string& s);
 
 bool similar(const string& x, const string& y);
-bool similarTrack(const Metadata& x, const Metadata& y);
-bool similar(const Album& x, const Album& y);
+bool similarTrack(const music::Metadata& x, const music::Metadata& y);
+bool similar(const music::Album& x, const music::Album& y);
 
-void addIfNotSimilar(AlbumList* albums, const Album& album);
-
-#if 0
-// Remove any albums that are similar to another album in the list.
-void dedupeAlbums(AlbumList* albums);
-#endif
+void addIfNotSimilar(music::AlbumList* albums, const music::Album& album);
 
 }  // namespace cd
 }  // namespace util

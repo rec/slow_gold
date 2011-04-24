@@ -1,6 +1,8 @@
 #include "rec/util/cd/DedupeCDDB.h"
 #include "rec/music/Metadata.pb.h"
 
+using namespace rec::music;
+
 namespace rec {
 namespace util {
 namespace cd {
@@ -45,11 +47,11 @@ bool similar(const string& x, const string& y) {
   return normalize(x) == normalize(y);
 }
 
-bool similarTrack(const Metadata& x, const Metadata& y) {
+bool similarTrack(const music::Metadata& x, const music::Metadata& y) {
   return similar(x.track_title(), y.track_title());
 }
 
-void addIfNotSimilar(AlbumList* albums, const Album& album) {
+void addIfNotSimilar(music::AlbumList* albums, const music::Album& album) {
   for (int i = 0; i < albums->album_size(); ++i) {
     if (similar(album, albums->album(i)))
       return;

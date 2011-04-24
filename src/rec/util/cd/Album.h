@@ -10,11 +10,11 @@ namespace cd {
 
 typedef juce::Array<int> TrackOffsets;
 
-Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off);
-String fillAlbums(const TrackOffsets& off, AlbumList* albums);
+music::Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off);
+String fillAlbums(const TrackOffsets& off, music::AlbumList* albums);
 
-Metadata getTrack(const Album& album, int i);
-Metadata getMetadata(const StringPairArray& metadata);
+music::Metadata getTrack(const music::Album& album, int i);
+music::Metadata getMetadata(const StringPairArray& metadata);
 
 }  // namespace cd
 }  // namespace util

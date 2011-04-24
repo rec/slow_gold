@@ -1,13 +1,16 @@
 #include "rec/util/cd/Album.h"
 
+#include "rec/base/ArraySize.h"
 #include "rec/data/persist/Copy.h"
+#include "rec/music/Metadata.pb.h"
+#include "rec/util/Exception.h"
 #include "rec/util/cd/CDDBResponse.h"
 #include "rec/util/cd/DedupeCDDB.h"
 #include "rec/util/cd/Socket.h"
 #include "rec/util/cd/StripLines.h"
-#include "rec/util/Exception.h"
-#include "rec/base/ArraySize.h"
 #include "rec/util/file/VirtualFile.h"
+
+using namespace rec::music;
 
 namespace rec {
 namespace util {

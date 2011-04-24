@@ -11,12 +11,12 @@ namespace source {
 
 namespace {
 
-typedef persist::Data<cd::Metadata> Data;
+typedef persist::Data<music::Metadata> Data;
 
 AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
-  cd::Metadata metadata;
+  music::Metadata metadata;
   ptr<AudioFormatReader> reader;
-  persist::Data<cd::Metadata>* data = persist::data<cd::Metadata>(file);
+  persist::Data<music::Metadata>* data = persist::data<music::Metadata>(file);
   bool fileRead = data->fileReadSuccess();
 
   if (file.type() == VirtualFile::CD) {
@@ -31,7 +31,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
 
     if (!fileRead) {
       ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
-      metadata = getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
+      metadata = cd::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
     }
   } else {
     reader.reset(audio::getAudioFormatManager()->createReaderFor(getFile(file)));
@@ -44,7 +44,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
       metadata = cd::getMetadata(reader->metadataValues);
   }
 
-  if (!fileRead && (metadata != cd::Metadata::default_instance()))
+  if (!fileRead && (metadata != music::Metadata::default_instance()))
     data->set(metadata);
 
   return reader.transfer();
