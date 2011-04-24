@@ -1,7 +1,7 @@
 #include "rec/audio/source/VirtualFileSource.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/audio/util/AudioFormatManager.h"
-#include "rec/util/cd/Album.h"
+#include "rec/util/cd/Metadata.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 

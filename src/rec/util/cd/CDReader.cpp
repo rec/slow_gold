@@ -1,5 +1,5 @@
 #include "rec/util/cd/CDReader.h"
-#include "rec/util/cd/Album.h"
+#include "rec/util/cd/Metadata.h"
 
 using namespace juce;
 

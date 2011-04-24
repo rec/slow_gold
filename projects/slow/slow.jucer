@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="wqWK4OFlm" name="Slow">
+  <MAINGROUP id="2pvXaNi3A" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -712,10 +712,6 @@
                 name="MergeBlockSet.h" resource="0"/>
         </GROUP>
         <GROUP id="dG7mPPWGD" name="cd">
-          <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="CGJXYJ5gn"
-                name="Album.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/cd/Album.h" id="xTPPAgNQb"
-                name="Album.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/CDDBResponse.cpp" id="YEZ0XZWuq"
                 name="CDDBResponse.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/CDDBResponse.h" id="8ccpOQwJV"
@@ -732,6 +728,10 @@
                 name="Eject.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/Eject.h" id="H53x1qiXa"
                 name="Eject.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/cd/Metadata.cpp" id="tVFQLpmza"
+                name="Metadata.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/cd/Metadata.h" id="FCuXw388R"
+                name="Metadata.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/Socket.cpp" id="EZXbc6qCc"
                 name="Socket.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/Socket.h" id="qADCNPkcH"
@@ -1083,7 +1083,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="jwRDHo4PD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="eCwzA0RYp" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

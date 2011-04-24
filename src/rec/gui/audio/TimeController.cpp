@@ -6,7 +6,7 @@
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/util/cd/Album.h"
+#include "rec/util/cd/Metadata.h"
 
 namespace rec {
 namespace gui {
@@ -34,7 +34,7 @@ TimeController::TimeController()
     : Layout("Time controls", VERTICAL),
       songDial_(realTimeDial()),
       songTime_(Text()),
-      timeScale_(1.0), 
+      timeScale_(1.0),
       timesLayout_("Times", HORIZONTAL) {
   addToLayout(&timesLayout_);
   addToLayout(&songDial_);

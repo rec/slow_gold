@@ -30,8 +30,7 @@ class Mover(object):
   GUARD_PATTERN =  r'^#endif\s+// __REC'
 
   FUNCTIONS = [(lambda path: '__' + '_'.join(p.upper() for p in path)),
-               (lambda path: '#include "%s.h"' % '/'.join(path)),
-               (lambda path: path[-1])]
+               (lambda path: '#include "%s.h"' % '/'.join(path))]
 
   def __init__(self, fromFile, toFile):
     self.state = Mover.NONE

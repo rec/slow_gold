@@ -1,5 +1,5 @@
-#ifndef __REC_UTIL_CD_ALBUM__
-#define __REC_UTIL_CD_ALBUM__
+#ifndef __REC_UTIL_CD_METADATA__
+#define __REC_UTIL_CD_METADATA__
 
 #include "rec/base/base.h"
 #include "rec/music/Metadata.pb.h"
@@ -20,4 +20,4 @@ music::Metadata getMetadata(const StringPairArray& metadata);
 }  // namespace util
 }  // namespace rec
 
-#endif  // __REC_UTIL_CD_ALBUM__
+#endif  // __REC_UTIL_CD_METADATA__

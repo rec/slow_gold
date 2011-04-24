@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_TREE_CD__
 #define __REC_WIDGET_TREE_CD__
 
-#include "rec/util/cd/Album.h"
+#include "rec/util/cd/Metadata.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/tree/Directory.h"

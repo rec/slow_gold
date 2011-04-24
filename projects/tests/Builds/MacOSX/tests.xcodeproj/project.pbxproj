@@ -151,13 +151,13 @@
 		8AD2BDAFA77ADC9F37A1A9CE = { isa = PBXBuildFile; fileRef = F6D649D9BDE044C40867B790; };
 		0D295FB7E331C2EE5E9D8BA8 = { isa = PBXBuildFile; fileRef = BF9EF8CFCCC5B80E9D67A369; };
 		276E55523C5A1CC9CE4A6324 = { isa = PBXBuildFile; fileRef = 62FE3729520998304E4B05FB; };
-		A3C9632D628EC690BC5CBF40 = { isa = PBXBuildFile; fileRef = A1BCE3B18EBF23B2D0A0D547; };
-		22BB6191BB1C64C530D67E08 = { isa = PBXBuildFile; fileRef = 9FCDF4A7BFCA75A4A6363CA7; };
 		3DC17CDCBF126A9838C41171 = { isa = PBXBuildFile; fileRef = C0158D487E08617AB044E246; };
 		7A14290CD31F67B5D583D7CD = { isa = PBXBuildFile; fileRef = 001936E563CDC34B4A3F590B; };
 		04FDFA1D2DCD96A08BF1F493 = { isa = PBXBuildFile; fileRef = 4B9BC9081D652846D44C89A3; };
 		ACC4E4A014ACA046609DF770 = { isa = PBXBuildFile; fileRef = C4AE357F91BF32E24B397097; };
 		FC67CA29E5691CE9BC040905 = { isa = PBXBuildFile; fileRef = 61C4D8DC63DAB1F12F0F75A7; };
+		AC362DEFBDE96D4211E697F4 = { isa = PBXBuildFile; fileRef = AC61F668DDE3F3CC0C58309E; };
+		6BB87835114975FBB2F60E9F = { isa = PBXBuildFile; fileRef = E06A27806F1BD4E82866C6B7; };
 		7A2A41F9534AC7E2EBC9394C = { isa = PBXBuildFile; fileRef = EF29019C12DDD6936102FB6A; };
 		1A0210D6669DDFAB64D15C5B = { isa = PBXBuildFile; fileRef = 0F4CD0CA9AB5FBCCA0483328; };
 		E2B363FBB7B42859CABFB838 = { isa = PBXBuildFile; fileRef = 008AD80E3040443C031D32BB; };
@@ -570,9 +570,6 @@
 		BF9EF8CFCCC5B80E9D67A369 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet.cpp; path = ../../../../src/rec/util/block/MergeBlockSet.cpp; sourceTree = SOURCE_ROOT; };
 		4F9D41ECC224C42CEA84BBFB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MergeBlockSet.h; path = ../../../../src/rec/util/block/MergeBlockSet.h; sourceTree = SOURCE_ROOT; };
 		62FE3729520998304E4B05FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet_test.cpp; path = ../../../../src/rec/util/block/MergeBlockSet_test.cpp; sourceTree = SOURCE_ROOT; };
-		A1BCE3B18EBF23B2D0A0D547 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Album.cpp; path = ../../../../src/rec/util/cd/Album.cpp; sourceTree = SOURCE_ROOT; };
-		A23A1C060A0E10F1A34D53D4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Album.h; path = ../../../../src/rec/util/cd/Album.h; sourceTree = SOURCE_ROOT; };
-		9FCDF4A7BFCA75A4A6363CA7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Album_test.cpp; path = ../../../../src/rec/util/cd/Album_test.cpp; sourceTree = SOURCE_ROOT; };
 		C0158D487E08617AB044E246 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CDDBResponse.cpp; path = ../../../../src/rec/util/cd/CDDBResponse.cpp; sourceTree = SOURCE_ROOT; };
 		E3D98A2FC27286C826B6BEA6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDDBResponse.h; path = ../../../../src/rec/util/cd/CDDBResponse.h; sourceTree = SOURCE_ROOT; };
 		001936E563CDC34B4A3F590B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CDReader.cpp; path = ../../../../src/rec/util/cd/CDReader.cpp; sourceTree = SOURCE_ROOT; };
@@ -582,6 +579,9 @@
 		C4AE357F91BF32E24B397097 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Eject.cpp; path = ../../../../src/rec/util/cd/Eject.cpp; sourceTree = SOURCE_ROOT; };
 		9EF4C0F1C0C8D2FD092BCC3C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Eject.h; path = ../../../../src/rec/util/cd/Eject.h; sourceTree = SOURCE_ROOT; };
 		61C4D8DC63DAB1F12F0F75A7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_AudioCDReader_test.cpp; path = ../../../../src/rec/util/cd/juce_AudioCDReader_test.cpp; sourceTree = SOURCE_ROOT; };
+		AC61F668DDE3F3CC0C58309E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Metadata.cpp; path = ../../../../src/rec/util/cd/Metadata.cpp; sourceTree = SOURCE_ROOT; };
+		DC4A1C0B2613C3BFB23E971E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Metadata.h; path = ../../../../src/rec/util/cd/Metadata.h; sourceTree = SOURCE_ROOT; };
+		E06A27806F1BD4E82866C6B7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Metadata_test.cpp; path = ../../../../src/rec/util/cd/Metadata_test.cpp; sourceTree = SOURCE_ROOT; };
 		EF29019C12DDD6936102FB6A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../../../../src/rec/util/cd/Socket.cpp; sourceTree = SOURCE_ROOT; };
 		B8993407F39788D148173C7A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Socket.h; path = ../../../../src/rec/util/cd/Socket.h; sourceTree = SOURCE_ROOT; };
 		0F4CD0CA9AB5FBCCA0483328 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = StripLines.cpp; path = ../../../../src/rec/util/cd/StripLines.cpp; sourceTree = SOURCE_ROOT; };
@@ -1114,9 +1114,6 @@
 				4F9D41ECC224C42CEA84BBFB,
 				62FE3729520998304E4B05FB ); name = block; sourceTree = "<group>"; };
 		D38EE9E418866F383499BCA7 = { isa = PBXGroup; children = (
-				A1BCE3B18EBF23B2D0A0D547,
-				A23A1C060A0E10F1A34D53D4,
-				9FCDF4A7BFCA75A4A6363CA7,
 				C0158D487E08617AB044E246,
 				E3D98A2FC27286C826B6BEA6,
 				001936E563CDC34B4A3F590B,
@@ -1126,6 +1123,9 @@
 				C4AE357F91BF32E24B397097,
 				9EF4C0F1C0C8D2FD092BCC3C,
 				61C4D8DC63DAB1F12F0F75A7,
+				AC61F668DDE3F3CC0C58309E,
+				DC4A1C0B2613C3BFB23E971E,
+				E06A27806F1BD4E82866C6B7,
 				EF29019C12DDD6936102FB6A,
 				B8993407F39788D148173C7A,
 				0F4CD0CA9AB5FBCCA0483328,
@@ -1371,7 +1371,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		D16A10A05F80F70D276E08BD = { isa = PBXGroup; children = (
+		CD085E7714567F3F26AC9E55 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1589,13 +1589,13 @@
 				8AD2BDAFA77ADC9F37A1A9CE,
 				0D295FB7E331C2EE5E9D8BA8,
 				276E55523C5A1CC9CE4A6324,
-				A3C9632D628EC690BC5CBF40,
-				22BB6191BB1C64C530D67E08,
 				3DC17CDCBF126A9838C41171,
 				7A14290CD31F67B5D583D7CD,
 				04FDFA1D2DCD96A08BF1F493,
 				ACC4E4A014ACA046609DF770,
 				FC67CA29E5691CE9BC040905,
+				AC362DEFBDE96D4211E697F4,
+				6BB87835114975FBB2F60E9F,
 				7A2A41F9534AC7E2EBC9394C,
 				1A0210D6669DDFAB64D15C5B,
 				E2B363FBB7B42859CABFB838,
@@ -1680,7 +1680,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = D16A10A05F80F70D276E08BD; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = CD085E7714567F3F26AC9E55; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

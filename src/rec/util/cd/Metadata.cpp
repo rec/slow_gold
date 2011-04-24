@@ -1,4 +1,4 @@
-#include "rec/util/cd/Album.h"
+#include "rec/util/cd/Metadata.h"
 
 #include "rec/base/ArraySize.h"
 #include "rec/data/persist/Copy.h"
@@ -170,3 +170,4 @@ Metadata getMetadata(const StringPairArray& metadata) {
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
+

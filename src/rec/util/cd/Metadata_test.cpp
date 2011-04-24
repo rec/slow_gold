@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 #include "rec/base/ArraySize.h"
-#include "rec/util/cd/Album.h"
+#include "rec/util/cd/Metadata.h"
 #include "rec/music/Metadata.pb.h"
 
 namespace rec {
@@ -65,8 +65,8 @@ TEST(CD, Albums) {
   }
 }
 
+#endif
 }  // namespace cd
 }  // namespace util
 }  // namespace rec
 
-#endif
