@@ -47,6 +47,7 @@
 		C09D93D2F56FB2044B0EC0C7 = { isa = PBXBuildFile; fileRef = 2EE394613A03BE523AE83C66; };
 		6743DEC4655789A24DCE5DD6 = { isa = PBXBuildFile; fileRef = 869B5A77595B2654324AA3E2; };
 		71CEE4DAAA096CE38F5F5998 = { isa = PBXBuildFile; fileRef = AB9D04AEA1CE5852DAF463B6; };
+		A376447505EE7104C41199CD = { isa = PBXBuildFile; fileRef = E628D3FAF6EA70F19160BD94; };
 		D11FD4E915642040D3E49910 = { isa = PBXBuildFile; fileRef = DEA6FC8EECFABB82E8D9C715; };
 		CD7530A54FA2C9D4D1C11EDB = { isa = PBXBuildFile; fileRef = 8EA89FF00267CDD0F6DE562D; };
 		8847416333D1F36BB0BEE780 = { isa = PBXBuildFile; fileRef = 0C4665D00CF1123246BA1B9C; };
@@ -301,6 +302,8 @@
 		8928B81AB5D0CEAA99AF0C2C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Testy.h; path = ../../../../src/rec/audio/source/Testy.h; sourceTree = SOURCE_ROOT; };
 		AB9D04AEA1CE5852DAF463B6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Testy_test.cpp; path = ../../../../src/rec/audio/source/Testy_test.cpp; sourceTree = SOURCE_ROOT; };
 		BD0D25402E59F2EDFF89DDB6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThreadedSource.h; path = ../../../../src/rec/audio/source/ThreadedSource.h; sourceTree = SOURCE_ROOT; };
+		E628D3FAF6EA70F19160BD94 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualFileSource.cpp; path = ../../../../src/rec/audio/source/VirtualFileSource.cpp; sourceTree = SOURCE_ROOT; };
+		E652C1DA8FDDDD2C3924D710 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualFileSource.h; path = ../../../../src/rec/audio/source/VirtualFileSource.h; sourceTree = SOURCE_ROOT; };
 		DEA6FC8EECFABB82E8D9C715 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Wrappy.cpp; path = ../../../../src/rec/audio/source/Wrappy.cpp; sourceTree = SOURCE_ROOT; };
 		1B79815371777CE7111956DA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Wrappy.h; path = ../../../../src/rec/audio/source/Wrappy.h; sourceTree = SOURCE_ROOT; };
 		8EA89FF00267CDD0F6DE562D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = SOURCE_ROOT; };
@@ -807,6 +810,8 @@
 				8928B81AB5D0CEAA99AF0C2C,
 				AB9D04AEA1CE5852DAF463B6,
 				BD0D25402E59F2EDFF89DDB6,
+				E628D3FAF6EA70F19160BD94,
+				E652C1DA8FDDDD2C3924D710,
 				DEA6FC8EECFABB82E8D9C715,
 				1B79815371777CE7111956DA ); name = source; sourceTree = "<group>"; };
 		1E76CD59C8E60146B04575CD = { isa = PBXGroup; children = (
@@ -1366,7 +1371,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		D302AC21CEBF95DEE68A3441 = { isa = PBXGroup; children = (
+		EED68CF8754DD319844FF2B7 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1480,6 +1485,7 @@
 				C09D93D2F56FB2044B0EC0C7,
 				6743DEC4655789A24DCE5DD6,
 				71CEE4DAAA096CE38F5F5998,
+				A376447505EE7104C41199CD,
 				D11FD4E915642040D3E49910,
 				CD7530A54FA2C9D4D1C11EDB,
 				8847416333D1F36BB0BEE780,
@@ -1674,7 +1680,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = D302AC21CEBF95DEE68A3441; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = EED68CF8754DD319844FF2B7; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

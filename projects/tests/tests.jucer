@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="A4LF0ToQf" name="tests">
+  <MAINGROUP id="0uPdRPkum" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -168,6 +168,10 @@
                 id="3UBIW8o76" name="Testy_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/ThreadedSource.h"
                 id="Q4T4bAe1X" name="ThreadedSource.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/source/VirtualFileSource.cpp"
+                id="Teilnw1RD" name="VirtualFileSource.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/VirtualFileSource.h"
+                id="E9S1q5qA8" name="VirtualFileSource.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Wrappy.cpp" id="HeAXdStRD"
                 name="Wrappy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Wrappy.h" id="4dHWKsBD1"
@@ -1133,7 +1137,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="NxsvuETor" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="l8t3DXJa1" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

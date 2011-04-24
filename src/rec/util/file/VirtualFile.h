@@ -26,8 +26,6 @@ const String getDisplayName(const VirtualFile& file);
 const String getFullDisplayName(const VirtualFile& file);
 
 bool compare(const VirtualFile& x, const VirtualFile& y);
-
-PositionableAudioSource* createSource(const VirtualFile& file);
 bool empty(const VirtualFile& file);
 
 typedef persist::Data<VirtualFile> VirtualFileData;

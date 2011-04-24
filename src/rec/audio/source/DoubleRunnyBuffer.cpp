@@ -4,6 +4,7 @@
 #include "rec/audio/source/DoubleRunnyBuffer.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
+#include "rec/audio/source/VirtualFileSource.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/util/thread/Trash.h"
@@ -19,7 +20,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
                                      const RunnyProto& desc)
     : Thread("DoubleRunnyBuffer"),
       runnyDesc_(desc), data_(data), empty_(false) {
-  ptr<PositionableAudioSource> source(createSource(file));
+  ptr<PositionableAudioSource> source(virtualFileSource(file));
   if (!source) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(file);
     empty_ = true;

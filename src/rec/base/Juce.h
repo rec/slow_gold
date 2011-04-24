@@ -5,6 +5,8 @@
 
 namespace rec {
 
+// I ony want to bring in some subset of the Juce namespace here...
+//
 typedef juce::ApplicationCommandInfo ApplicationCommandInfo;
 typedef juce::ApplicationCommandManager ApplicationCommandManager;
 typedef juce::ApplicationCommandTarget ApplicationCommandTarget;
@@ -73,8 +75,11 @@ typedef juce::TreeView TreeView;
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
 inline string str(const String& s) {
-  // return s.toUTF8().getAddress();
+#ifdef NEW_JUCE
+  return s.toUTF8().getAddress();
+#else
   return s.toCString();
+#endif
 }
 
 inline String str(const string& s) {
