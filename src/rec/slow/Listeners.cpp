@@ -1,9 +1,12 @@
 #include "rec/slow/Listeners.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/slow/Instance.h"
+#include "rec/audio/source/VirtualFileSource.h"
 
 namespace rec {
 namespace slow {
+
+using audio::source::virtualFileSource;
 
 Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->player_.addListener(this);
@@ -18,10 +21,14 @@ void Listeners::operator()(const SelectionRange&) {}
 void Listeners::operator()(const audio::stretch::StretchLoop&) {}
 
 void Listeners::operator()(const file::VirtualFileList&) {}
-void Listeners::operator()(const file::VirtualFile& file) {
-  instance_->components_.songData_.setFile(file);
-
+void Listeners::operator()(const file::VirtualFile& f) {
+  ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
+  instance_->components_.songData_.setFile(f);
 #if 0
+  if (source)
+
+  }
+
   if (empty(file)) {
     waveform_.setAudioThumbnail(NULL);
     instance_.clearData();
