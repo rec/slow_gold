@@ -1,9 +1,7 @@
 #ifndef __REC_SLOW_INSTANCE__
 #define __REC_SLOW_INSTANCE__
 
-#include "rec/audio/Device.h"
 #include "rec/audio/source/Player.h"
-#include "rec/slow/Broadcasters.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Menus.h"
@@ -14,7 +12,6 @@
 namespace rec {
 namespace slow {
 
-class Broadcasters;
 class Components;
 class audio::Device;
 class Menus;
