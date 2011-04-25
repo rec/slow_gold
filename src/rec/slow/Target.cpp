@@ -6,7 +6,7 @@
 namespace rec {
 namespace slow {
 
-Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
+Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_) {
   typedef rec::command::Command Command;
   using thread::makeCallback;
 
@@ -32,7 +32,7 @@ Target::Target(Instance* i) : TargetManager(&i->components_.mainPage_) {
       "Replace the current selection with a copy of the clipboard.", 'v');
 
   using gui::audio::Loops;
-  Loops* loops = &i->components_.loops_;
+  Loops* loops = &i->components_->loops_;
 
   add(Command::CLEAR_LOOPS, makeCallback(loops, &Loops::clearLoops),
       "Clear Loops", "Loop",

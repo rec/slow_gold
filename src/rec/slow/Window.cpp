@@ -10,7 +10,7 @@ namespace slow {
 Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
                                     DocumentWindow::allButtons, true),
                    instance_(new Instance()) {
-  Component* mp = &instance_->components_.mainPage_;
+  Component* mp = &instance_->components_->mainPage_;
   mp->setBounds(0, 0, 1, 1);
 #if OLD_JUCE
   setContentComponent(mp, true, true);
@@ -18,13 +18,13 @@ Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
   setContentOwned(mp, true);
 #endif
   computeBounds<AppLayout>();
-  setMenuBar(&instance_->menus_);
+  setMenuBar(instance_->menus_.get());
   setUsingNativeTitleBar(true);
   setVisible(true);
 
 #if JUCE_MAC
   // TODO: make sure this is in the right place.
-  juce::MenuBarModel::setMacMainMenu(&instance_->menus_);
+  juce::MenuBarModel::setMacMainMenu(instance_->menus_.get());
   setMenuBar(NULL);
 #endif
 }

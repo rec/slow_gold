@@ -9,9 +9,9 @@ namespace slow {
 using audio::source::virtualFileSource;
 
 Listeners::Listeners(Instance* i) : instance_(i) {
-  instance_->player_.addListener(this);
-  instance_->components_.directoryTree_.treeView()->dropBroadcaster()->addListener(this);
-  instance_->components_.waveform_.dropBroadcaster()->addListener(this);
+  instance_->player_->addListener(this);
+  instance_->components_->directoryTree_.treeView()->dropBroadcaster()->addListener(this);
+  instance_->components_->waveform_.dropBroadcaster()->addListener(this);
 }
 
 void Listeners::operator()(const ClockTick&) {}
@@ -23,7 +23,7 @@ void Listeners::operator()(const audio::stretch::StretchLoop&) {}
 void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const file::VirtualFile& f) {
   ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
-  instance_->components_.songData_.setFile(f);
+  instance_->components_->songData_.setFile(f);
 #if 0
   if (source)
 
@@ -66,13 +66,13 @@ void Listeners::operator()(const file::VirtualFile& f) {
 
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
-  if (dropFiles.target_ == &instance_->components_.waveform_) {
+  if (dropFiles.target_ == &instance_->components_->waveform_) {
     if (files.file_size() >= 1)
       (*this)(files.file(0));
 
     LOG_IF(ERROR, files.file_size() != 1);
 
-  } else if (dropFiles.target_ == instance_->components_.directoryTree_.treeView()) {
+  } else if (dropFiles.target_ == instance_->components_->directoryTree_.treeView()) {
     using file::getFile;
 
     typedef std::set<string> FileSet;
@@ -95,8 +95,8 @@ void Listeners::operator()(const widget::waveform::ZoomProto&) {}
 void Listeners::operator()(RealTime) {}
 
 void Listeners::operator()(audio::transport::State state) {
-  instance_->components_.transportController_.setTransportState(state);
-  instance_->player_.setState(state);
+  instance_->components_->transportController_.setTransportState(state);
+  instance_->player_->setState(state);
 }
 
 #ifdef TODO
@@ -112,7 +112,7 @@ void Listeners::operator()(SampleTime time) {
 }
 
 void Listeners::operator()(const juce::AudioThumbnail&) {
-  instance_->components_.waveform_.repaint();
+  instance_->components_->waveform_.repaint();
 }
 
 void Listeners::operator()(const SelectionRange& sel) {

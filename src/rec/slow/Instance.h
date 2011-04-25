@@ -14,6 +14,16 @@
 namespace rec {
 namespace slow {
 
+class Broadcasters;
+class Components;
+class audio::Device;
+class Menus;
+class PersistentData;
+class Player;
+class Target;
+class Threads;
+class Listeners;
+
 // A single instance of Slow.  Right now there's only one per application but in
 // future there might be more than one.  This is where all the Broadcasters live
 // and all the file and stretch setting persistent data, too.
@@ -23,15 +33,15 @@ struct Instance {
   Instance();
   ~Instance();
 
-  Broadcasters broadcasters_;
-  Components components_;
-  audio::Device device_;
-  Menus menus_;
-  PersistentData data_;
-  Player player_;
-  Target target_;
-  Threads threads_;
-  Listeners listeners_;
+  // ptr<Broadcasters> broadcasters_;
+  ptr<Components> components_;
+  ptr<audio::Device> device_;
+  ptr<Menus> menus_;
+  ptr<PersistentData> data_;
+  ptr<Player> player_;
+  ptr<Target> target_;
+  ptr<Listeners> listeners_;
+  ptr<Threads> threads_;
 
   DISALLOW_COPY_AND_ASSIGN(Instance);
 };

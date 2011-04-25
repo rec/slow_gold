@@ -1,6 +1,7 @@
 
 cd "$ROOT/rec/src"
 find . \( -name \*.h -or -name \*.cpp \) | xargs etags
+echo "TAGS table written."
 exit -1
 
 
@@ -13,4 +14,3 @@ fi
 source "rec/scripts/platform/platform.sh"
 
 find rec/src \( -name \*.h -or -name \*.cpp \) | xargs etags > rec/TAGS
-echo "done."

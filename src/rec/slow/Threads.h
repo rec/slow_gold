@@ -14,13 +14,14 @@ class Threads {
 
   explicit Threads(Instance* i);
   ~Threads();
+  void startAll();
   void stop();
-
-  typedef void (*InstanceFunction)(Instance*);
-  void start(InstanceFunction f, const String& name, int waitTime = LOOP_TIME);
 
  private:
   typedef std::vector<Thread*> ThreadList;
+  typedef void (*InstanceFunction)(Instance*);
+
+  void start(InstanceFunction f, const String& name, int waitTime = LOOP_TIME);
 
   Instance* instance_;
   ThreadList threads_;

@@ -56,7 +56,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 }
 
 void Menus::add(PopupMenu* m, CommandID c) {
-  instance_->target_.addCommandItem(m, c);
+  instance_->target_->addCommandItem(m, c);
 }
 
 }  // namespace slow

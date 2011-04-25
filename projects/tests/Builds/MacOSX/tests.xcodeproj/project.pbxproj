@@ -153,6 +153,7 @@
 		8AD2BDAFA77ADC9F37A1A9CE = { isa = PBXBuildFile; fileRef = F6D649D9BDE044C40867B790; };
 		0D295FB7E331C2EE5E9D8BA8 = { isa = PBXBuildFile; fileRef = BF9EF8CFCCC5B80E9D67A369; };
 		276E55523C5A1CC9CE4A6324 = { isa = PBXBuildFile; fileRef = 62FE3729520998304E4B05FB; };
+		FF22A5D2F0B1A84A97B21F6E = { isa = PBXBuildFile; fileRef = 44CFFC07104F70DE8A523088; };
 		A3C9632D628EC690BC5CBF40 = { isa = PBXBuildFile; fileRef = A1BCE3B18EBF23B2D0A0D547; };
 		3DC17CDCBF126A9838C41171 = { isa = PBXBuildFile; fileRef = C0158D487E08617AB044E246; };
 		7A14290CD31F67B5D583D7CD = { isa = PBXBuildFile; fileRef = 001936E563CDC34B4A3F590B; };
@@ -574,6 +575,8 @@
 		BF9EF8CFCCC5B80E9D67A369 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet.cpp; path = ../../../../src/rec/util/block/MergeBlockSet.cpp; sourceTree = SOURCE_ROOT; };
 		4F9D41ECC224C42CEA84BBFB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MergeBlockSet.h; path = ../../../../src/rec/util/block/MergeBlockSet.h; sourceTree = SOURCE_ROOT; };
 		62FE3729520998304E4B05FB = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MergeBlockSet_test.cpp; path = ../../../../src/rec/util/block/MergeBlockSet_test.cpp; sourceTree = SOURCE_ROOT; };
+		7989C7F22040C6AADA42EE86 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback.h; path = ../../../../src/rec/util/Callback.h; sourceTree = SOURCE_ROOT; };
+		44CFFC07104F70DE8A523088 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Callback_test.cpp; path = ../../../../src/rec/util/Callback_test.cpp; sourceTree = SOURCE_ROOT; };
 		A1BCE3B18EBF23B2D0A0D547 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Album.cpp; path = ../../../../src/rec/util/cd/Album.cpp; sourceTree = SOURCE_ROOT; };
 		A23A1C060A0E10F1A34D53D4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Album.h; path = ../../../../src/rec/util/cd/Album.h; sourceTree = SOURCE_ROOT; };
 		C0158D487E08617AB044E246 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CDDBResponse.cpp; path = ../../../../src/rec/util/cd/CDDBResponse.cpp; sourceTree = SOURCE_ROOT; };
@@ -1175,6 +1178,8 @@
 				1B616F9D42BF5D01A142E8F0 ); name = thread; sourceTree = "<group>"; };
 		C784F054F688F5001559ECFF = { isa = PBXGroup; children = (
 				8808B15786F96517E16315AA,
+				7989C7F22040C6AADA42EE86,
+				44CFFC07104F70DE8A523088,
 				D38EE9E418866F383499BCA7,
 				3E391C6E723404920108C65B,
 				2187E86C895D175A456E11A7,
@@ -1378,7 +1383,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		0A7FD4D68A3B0F220A01CDD0 = { isa = PBXGroup; children = (
+		814D44E02A02829A0AABF848 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1598,6 +1603,7 @@
 				8AD2BDAFA77ADC9F37A1A9CE,
 				0D295FB7E331C2EE5E9D8BA8,
 				276E55523C5A1CC9CE4A6324,
+				FF22A5D2F0B1A84A97B21F6E,
 				A3C9632D628EC690BC5CBF40,
 				3DC17CDCBF126A9838C41171,
 				7A14290CD31F67B5D583D7CD,
@@ -1688,7 +1694,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 0A7FD4D68A3B0F220A01CDD0; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 814D44E02A02829A0AABF848; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

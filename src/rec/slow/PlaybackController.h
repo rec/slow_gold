@@ -9,12 +9,12 @@
 namespace rec {
 namespace slow {
 
-class Instance;
+class Components;
 
 class PlaybackController : public gui::Layout {
  public:
   typedef proto::arg::Address Address;
-  explicit PlaybackController(Instance* i,
+  explicit PlaybackController(Components* i,
                               const Address& a = Address::default_instance());
 
   void setSetter(persist::Setter* setter);

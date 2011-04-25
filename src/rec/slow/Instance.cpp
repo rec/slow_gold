@@ -4,13 +4,21 @@
 namespace rec {
 namespace slow {
 
-Instance::Instance() : components_(this), menus_(this), player_(&device_),
-                       target_(this), threads_(this), listeners_(this) {
+Instance::Instance()
+  : components_(new Components(this)),
+    device_(new audio::Device()),
+    menus_(new Menus(this)),
+    data_(new PersistentData()),
+    player_(new Player(device_.get())),
+    target_(new Target(this)),
+    listeners_(new Listeners(this)),
+    threads_(new Threads(this)) {
+  threads_->startAll();
 }
 
 
 Instance::~Instance() {
-  threads_.stop();
+  threads_->stop();
 }
 
 }  // namespace slow

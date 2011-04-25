@@ -10,14 +10,16 @@ namespace slow {
 
 static const int THREAD_STOP_PERIOD = 5000;
 
-void clock(Instance* i) { i->listeners_(i->player_.getNextReadPosition()); }
-void browser(Instance* i) { i->components_.directoryTree_.checkVolumes(); }
+void clock(Instance* i) { (*i->listeners_)(i->player_->getNextReadPosition()); }
+void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
 void fetch(Instance* i) {}
 void parameter(Instance* i) {}
 void persist(Instance* i) {}
 void pitch(Instance* i) {}
 
-Threads::Threads(Instance* i) : instance_(i) {
+Threads::Threads(Instance* i) : instance_(i) {}
+
+void Threads::startAll() {
   start(&clock, "Clock");
   start(&browser, "Browser", 1000);
   start(&fetch, "Fetch");

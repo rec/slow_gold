@@ -4,7 +4,7 @@
 #include "rec/gui/RecentFiles.h"
 #include "rec/gui/SetterResizer.h"
 #include "rec/slow/AppLayout.pb.h"
-#include "rec/slow/Instance.h"
+#include "rec/slow/Components.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/MainPage.h"
 #include "rec/util/thread/CallAsync.h"
@@ -19,8 +19,8 @@ using namespace rec::widget::waveform;
 namespace rec {
 namespace slow {
 
-MainPage::MainPage(Instance* i) : Layout("MainPage") {
-  doLayout(i);
+MainPage::MainPage(Components* comp) : Layout("MainPage") {
+  doLayout(comp);
 }
 
 MainPage::~MainPage() {}
@@ -34,14 +34,14 @@ void MainPage::paint(Graphics& g) {
   g.fillAll(Colours::lightgrey);
 }
 
-void MainPage::doLayout(Instance* instance) {
+void MainPage::doLayout(Components* components) {
   persist::Data<AppLayout>* data = persist::appData<AppLayout>();
   AppLayout a = data->get();
 
   bool full[] = {a.full_directory(),  a.full_waveform(), a.full_controller()};
-  Component* comp[] = { instance->components_.directoryTree_.treeView(),
-                        &instance->components_.waveform_,
-                        &instance->components_.playbackController_};
+  Component* comp[] = { components->directoryTree_.treeView(),
+                        &components->waveform_,
+                        &components->playbackController_};
   const char* address[] = {"directory_y", "waveform_y", NULL};
 
   static const int SIZE = arraysize(full);
@@ -62,7 +62,7 @@ void MainPage::doLayout(Instance* instance) {
     }
     addToLayout(&panel_);
     addResizer(&loopResizer_, "loops_x", this);
-    addToLayout(&instance->components_.loops_);
+    addToLayout(&components->loops_);
 
   } else if (compound) {
     if (full[0]) {
@@ -84,7 +84,7 @@ void MainPage::doLayout(Instance* instance) {
     }
     panel_.addToLayout(&subpanel_);
     addResizer(&loopResizer_, "loops_x", &panel_);
-    panel_.addToLayout(&instance->components_.loops_);
+    panel_.addToLayout(&components->loops_);
 
   } else {
     for (int i = 0; i < SIZE; ++i) {
@@ -93,7 +93,7 @@ void MainPage::doLayout(Instance* instance) {
       } else {
         panel_.addToLayout(comp[i]);
         addResizer(&loopResizer_, "loops_x", &panel_);
-        panel_.addToLayout(&instance->components_.loops_);
+        panel_.addToLayout(&components->loops_);
       }
       if (address[i])
         addResizer(&resizer_[i], address[i], this);
