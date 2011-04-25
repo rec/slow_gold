@@ -10,8 +10,7 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-class Root : public Thread,
-             public Broadcaster<const VirtualFile&>,
+class Root : public Broadcaster<const VirtualFile&>,
              public Listener<const file::VirtualFileList&>,
              public Listener<const VirtualFile&>,
              public juce::MouseListener {
@@ -19,7 +18,7 @@ class Root : public Thread,
   explicit Root(const NodeDesc& desc = NodeDesc::default_instance());
   virtual ~Root() {}
 
-  virtual void run();
+  void checkVolumes();
   void mergeNewIntoOld(const util::file::VirtualFileList& volumes);
   TreeViewDropAll* treeView() { return &tree_; }
 

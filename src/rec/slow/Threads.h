@@ -10,21 +10,20 @@ class Instance;
 
 class Threads {
  public:
-  explicit Threads(Instance* i);
-  ~Threads() { stop(); }
+  static const int LOOP_TIME = 100;
 
+  explicit Threads(Instance* i);
+  ~Threads();
   void stop();
 
-  void clock();
-  void newFile(const VirtualFile& file);
-
-  const Thread* newFile() const { return newFile_.get(); }
+  typedef void (*InstanceFunction)(Instance*);
+  void start(InstanceFunction f, const String& name, int waitTime = LOOP_TIME);
 
  private:
+  typedef std::vector<Thread*> ThreadList;
+
   Instance* instance_;
-  ptr<Thread> clock_;
-  ptr<Thread> newFile_;
-  Thread* directory_;  // TODO
+  ThreadList threads_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);
 };

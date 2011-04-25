@@ -1,32 +1,46 @@
 #include "rec/slow/Threads.h"
 #include "rec/slow/Instance.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/Callback.h"
+#include "rec/util/STL.h"
 
 
 namespace rec {
 namespace slow {
 
-static const int CLOCK_PERIOD = 10;
+static const int THREAD_STOP_PERIOD = 5000;
 
-Threads::Threads(Instance* i) :
-    instance_(i),
-    clock_(thread::makeLoop(CLOCK_PERIOD, "Clock", this, &Threads::clock)),
-//    newFile_(thread::makeLoop(CLOCK_PERIOD, "NewFile", this, &Threads::newFile)),
-    directory_(&instance_->components_.directoryTree_) {
-  clock_->startThread();
-  directory_->startThread();
+void clock(Instance* i) { i->listeners_(i->player_.getNextReadPosition()); }
+void browser(Instance* i) { i->components_.directoryTree_.checkVolumes(); }
+void fetch(Instance* i) {}
+void parameter(Instance* i) {}
+void persist(Instance* i) {}
+void pitch(Instance* i) {}
+
+Threads::Threads(Instance* i) : instance_(i) {
+  start(&clock, "Clock");
+  start(&browser, "Browser", 1000);
+  start(&fetch, "Fetch");
+  start(&parameter, "Parameter");
+  start(&persist, "Persist");
+  start(&pitch, "Pitch");
 }
 
-void Threads::clock() {
-  instance_->listeners_(instance_->player_.getNextReadPosition());
+Threads::~Threads() {
+  stop();
+  stl::deletePointers(&threads_);
 }
 
 void Threads::stop() {
-  directory_->stopThread(5000);
-  clock_->stopThread(5000);
+  for (int i = 0; i < threads_.size(); ++i)
+    threads_[i]->stopThread(THREAD_STOP_PERIOD);
 }
 
-void Threads::newFile(const VirtualFile& file) {
+void Threads::start(InstanceFunction f, const String& name, int wait) {
+  ptr<Callback> cb(makePointer(f, instance_));
+  Thread* t(thread::makeLoop(wait, name, cb.transfer()));
+  threads_.push_back(t);
+  t->startThread();
 }
 
 }  // namespace slow

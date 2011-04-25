@@ -20,8 +20,7 @@ using namespace rec::gui;
 
 static const int ROOT_WAIT_TIME = 1000;
 
-Root::Root(const NodeDesc& desc)
-    : Thread("tree::Root"), desc_(desc), addDialogOpen_(false) {
+Root::Root(const NodeDesc& desc) : desc_(desc), addDialogOpen_(false) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   persist::appData<VirtualFileList>()->addListener(this);
@@ -29,20 +28,11 @@ Root::Root(const NodeDesc& desc)
   tree_.addMouseListener(this, false);
 }
 
-void Root::run() {
-  while (!threadShouldExit()) {
-    VirtualFileList volumes;
-    {
-      ScopedLock l(lock_);
-      volumes = volumes_;
-    }
-
-    fillVolumes(&volumes);
-    if (!threadShouldExit()) {
-      thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
-      wait(ROOT_WAIT_TIME);
-    }
-  }
+void Root::checkVolumes() {
+  ScopedLock l(lock_);
+  VirtualFileList volumes(volumes_);
+  fillVolumes(&volumes);
+  thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
 }
 
 void Root::operator()(const VirtualFile& file) {
@@ -52,7 +42,7 @@ void Root::operator()(const VirtualFile& file) {
 void Root::operator()(const VirtualFileList& volumes) {
   ScopedLock l(lock_);
   volumes_ = volumes;
-  notify();
+  // notify();  // TODO!
 }
 
 void Root::mouseDoubleClick(const juce::MouseEvent&) {

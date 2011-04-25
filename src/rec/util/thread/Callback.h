@@ -61,24 +61,31 @@ class BoolOwnedPointer : public Pointer<Operator*>,
   virtual bool operator()() { return (*(this->get()))(); }
 };
 
-template <typename Value>
-class FunctionValue {
+template <typename Operator, typename Value>
+class OperatorValue : public Callback {
  public:
-  typedef void (*Function)(Value);
-  FunctionValue(Function f,  Value v) : function_(f), value_(v) {}
-  virtual ~FunctionValue() {}
-  virtual bool operator()() { return function_(value_); }
+  OperatorValue(Operator f,  Value v) : function_(f), value_(v) {}
+  virtual ~OperatorValue() {}
+  virtual bool operator()() { function_(value_); return true; }
 
  private:
-  Function function_;
+  Operator function_;
   Value value_;
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(FunctionValue);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(OperatorValue);
 };
 
 }  // namespace callback
 }  // namespace thread
 
 typedef thread::callback::Callback Callback;
+
+template <typename Operator>
+Callback* makePointer(Operator op) { return new thread::callback::Pointer<Operator>(op); }
+
+template <typename Operator, typename Value>
+Callback* makePointer(Operator op, Value v) {
+  return new thread::callback::OperatorValue<Operator, Value>(op, v);
+}
 
 }  // namespace util
 }  // namespace rec
