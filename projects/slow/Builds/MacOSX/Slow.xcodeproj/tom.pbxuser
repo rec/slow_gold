@@ -1174,6 +1174,8 @@
 			E23DB2FD1365DDDD00A52041 /* XCBuildMessageTextBookmark */ = E23DB2FD1365DDDD00A52041 /* XCBuildMessageTextBookmark */;
 			E23DB2FF1365DDDD00A52041 /* PBXTextBookmark */ = E23DB2FF1365DDDD00A52041 /* PBXTextBookmark */;
 			E23DB3001365DDDD00A52041 /* PBXTextBookmark */ = E23DB3001365DDDD00A52041 /* PBXTextBookmark */;
+			E23DB3031365DE6F00A52041 /* PBXTextBookmark */ = E23DB3031365DE6F00A52041 /* PBXTextBookmark */;
+			E23DB3041365DE6F00A52041 /* PBXTextBookmark */ = E23DB3041365DE6F00A52041 /* PBXTextBookmark */;
 			E23E467712EFAF870080BD76 = E23E467712EFAF870080BD76 /* PBXTextBookmark */;
 			E23E4C4912F71DEB0080BD76 = E23E4C4912F71DEB0080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
@@ -7184,14 +7186,20 @@
 		fRef = E23DB2FE1365DDDD00A52041 /* Listeners.h */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 52;
+		rLoc = 53;
 		rType = 1;
 	};
 	E23DB2FE1365DDDD00A52041 /* Listeners.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = Listeners.h;
 		path = ../../../../../rec/src/rec/slow/Listeners.h;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 962}}";
+			sepNavSelRange = "{2624, 0}";
+			sepNavVisRange = "{0, 2286}";
+		};
 	};
 	E23DB2FF1365DDDD00A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -7211,6 +7219,26 @@
 		rLoc = 2632;
 		rType = 0;
 		vrLen = 1433;
+		vrLoc = 0;
+	};
+	E23DB3031365DE6F00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E23DB2FE1365DDDD00A52041 /* Listeners.h */;
+		name = "Listeners.h: 78";
+		rLen = 0;
+		rLoc = 2624;
+		rType = 0;
+		vrLen = 1631;
+		vrLoc = 916;
+	};
+	E23DB3041365DE6F00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E23DB2FE1365DDDD00A52041 /* Listeners.h */;
+		name = "Listeners.h: 78";
+		rLen = 0;
+		rLoc = 2624;
+		rType = 0;
+		vrLen = 2286;
 		vrLoc = 0;
 	};
 	E23E45F412EF610D0080BD76 /* juce_Component.cpp */ = {

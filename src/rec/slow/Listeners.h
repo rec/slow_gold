@@ -8,35 +8,17 @@
 
 namespace rec {
 
-namespace audio {
-namespace stretch {
-class StretchLoop;
-}  // namespace stretch
-}  // namespace audio
+namespace audio { namespace stretch { class StretchLoop; }}
+namespace gui { class DropFiles; }
+namespace gui { namespace audio { class LoopPointList; }}
 
-namespace gui {
-class DropFiles;
-namespace audio {
-class LoopPointList;
-}  // namespace audio
-}  // namespace gui
+namespace util { class ClockUpdate; }
+namespace util { namespace file { class VirtualFile; }}
+namespace util { namespace file { class VirtualFileList; }}
 
-namespace util {
-class ClockUpdate;
-
-namespace file {
-class VirtualFile;
-class VirtualFileList;
-}  // namespace file
-}  // namespace util
-
-namespace widget {
-namespace waveform {
-class CursorTime;
-class TimeAndMouseEvent;
-class ZoomProto;
-}  // namespace waveform
-}  // namespace widget
+namespace widget { namespace waveform { class CursorTime; }}
+namespace widget { namespace waveform { class TimeAndMouseEvent; }}
+namespace widget { namespace waveform { class ZoomProto; }}
 
 namespace slow {
 
