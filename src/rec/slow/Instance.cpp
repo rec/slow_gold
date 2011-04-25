@@ -2,6 +2,8 @@
 
 #include "rec/audio/Device.h"
 #include "rec/audio/source/Player.h"
+#include "rec/slow/Menus.h"
+#include "rec/slow/PersistentData.h"
 #include "rec/slow/Threads.h"
 #include "rec/slow/Target.h"
 

@@ -1,6 +1,7 @@
 #include "rec/slow/Window.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Menus.h"
 
 namespace rec {
 namespace slow {
