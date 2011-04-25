@@ -39,7 +39,7 @@ class SetterSlider : public Layout,
   }
 
  protected:
-  virtual const Value get() const {
+  virtual const Value getDisplayValue() const {
     return slider_.getValue();
   }
 
@@ -47,7 +47,7 @@ class SetterSlider : public Layout,
     slider_.setValue(value, false);
   }
 
-  virtual void set(const Value& value) {
+  virtual void setDisplayValue(const Value& value) {
     if (value.has_double_f())
       thread::callAsync(this, &SetterSlider::setValue, value.double_f());
   }

@@ -52,11 +52,11 @@ class SetterText : public Layout,
   virtual void textEditorFocusLost (TextEditor& editor) {}
 
  protected:
-  virtual const Value get() const {
+  virtual const Value getDisplayValue() const {
     return str(editor_.getText());
   }
 
-  virtual void set(const Value& value) {
+  virtual void setDisplayValue(const Value& value) {
     if (value.has_string_f()) {
       thread::callAsync(&editor_, &TextEditor::setText,
                         String(value.string_f().c_str()), false);

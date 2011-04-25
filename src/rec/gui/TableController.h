@@ -24,8 +24,8 @@ class TableController : public TableListBoxModel,
 
   virtual void setData(UntypedData* data);
 
-  const Value get() const;
-  void set(const Value& v);
+  const Value getDisplayValue() const;
+  void setDisplayValue(const Value& v);
 
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
   void repaint() { TableListBox::repaint(); }

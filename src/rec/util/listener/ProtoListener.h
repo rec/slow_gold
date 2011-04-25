@@ -24,8 +24,7 @@ class ProtoListener : public Reference<persist::UntypedData>,
 
     if (data) {
       data->messageBroadcaster()->addListener(this);
-      ptr<Message> m(data->clone());
-      (*this)(*m);
+      (*this)(*ptr<Message>(data->clone()));
     }
   }
 

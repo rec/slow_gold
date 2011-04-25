@@ -19,7 +19,7 @@ class ProtoAddressListener : public ProtoListener {
   virtual ~ProtoAddressListener() {}
 
   virtual void operator()(const Message& message) {
-    set(proto::getValue(address_, message));
+    setDisplayValue(proto::getValue(address_, message));
   }
 
   virtual const Address& address() const { return address_; }
@@ -29,14 +29,14 @@ class ProtoAddressListener : public ProtoListener {
   // to update the persistent data.
   virtual void updatePersistentData() {
     if (this->getData())
-      this->getData()->set(address_, get());
+      this->getData()->set(address_, getDisplayValue());
   }
 
   // Gets the data from the "view".
-  virtual const Value get() const = 0;
+  virtual const Value getDisplayValue() const = 0;
 
   // Set the "view" data.
-  virtual void set(const Value&) = 0;
+  virtual void setDisplayValue(const Value&) = 0;
 
  private:
   const Address address_;

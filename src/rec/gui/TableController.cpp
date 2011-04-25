@@ -67,7 +67,7 @@ String TableController::displayText(const TableColumn& col, const Value& value) 
   }
 }
 
-const Value TableController::get() const {
+const Value TableController::getDisplayValue() const {
   ScopedLock l(lock_);
   Value value;
   message_->SerializeToString(value.mutable_message_f());
@@ -82,7 +82,7 @@ void TableController::onDataChange() {
   thread::callAsync(this, &TableListBox::updateContent);
 }
 
-void TableController::set(const Value& v) {
+void TableController::setDisplayValue(const Value& v) {
   ScopedLock l(lock_);
   if (message_.get()->ParseFromString(v.message_f())) {
     onDataChange();
@@ -96,7 +96,7 @@ void TableController::set(const Value& v) {
 void TableController::setData(UntypedData* data) {
   {
     ScopedLock l(lock_);
-    ProtoListener::setData(data);
+    ProtoAddressListener::setData(data);
     numRows_ = 0;
   }
 
