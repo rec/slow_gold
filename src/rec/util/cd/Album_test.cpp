@@ -1,13 +1,15 @@
-#ifdef BACK_IN_CIVILIZATION
-
 #include <gtest/gtest.h>
 
 #include "rec/base/ArraySize.h"
-#include "rec/util/cd/Metadata.h"
-#include "rec/music/Metadata.pb.h"
+#include "rec/util/cd/Album.h"
 
 namespace rec {
-namespace music {
+namespace util {
+namespace cd {
+
+using namespace rec::music;
+
+extern String fillAlbums(const TrackOffsets& off, AlbumList* albums);
 
 TEST(CD, Albums) {
   static const int SPF = 44100 / 75;
@@ -46,7 +48,7 @@ TEST(CD, Albums) {
   TrackOffsets offsets;
   for (int i = 0; i < arraysize(trackLengths); ++i)
     offsets.add(trackLengths[i]);
-
+  AlbumList albums;
   EXPECT_EQ(String(""), fillAlbums(offsets, &albums));
   EXPECT_EQ(1, albums.album_size());
 
@@ -64,7 +66,7 @@ TEST(CD, Albums) {
   }
 }
 
-#endif
-}  // namespace music
+}  // namespace cd
+}  // namespace util
 }  // namespace rec
 

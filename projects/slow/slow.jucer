@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="E53gwWkIc" name="Slow">
+  <MAINGROUP id="TfHoh5lHJ" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -715,8 +715,6 @@
           <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="3KLkh5Mjs"
                 name="MergeBlockSet.h" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/util/Callback.h" id="hRdi7nS81"
-              name="Callback.h" resource="0"/>
         <GROUP id="dG7mPPWGD" name="cd">
           <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="UZNRhQi5L"
                 name="Album.cpp" resource="0"/>
@@ -1089,7 +1087,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="bTMbYUlYN" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="56hIIeRfm" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

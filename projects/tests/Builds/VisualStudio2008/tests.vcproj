@@ -499,7 +499,6 @@
         <Filter Name="music">
           <File RelativePath="..\..\..\..\src\rec\music\Metadata.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\music\Metadata.h"/>
-          <File RelativePath="..\..\..\..\src\rec\music\Metadata_test.cpp"/>
         </Filter>
         <Filter Name="slow">
           <File RelativePath="..\..\..\..\src\rec\slow\Components.h"/>
@@ -534,11 +533,10 @@
             <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet_test.cpp"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\util\Callback.h"/>
-          <File RelativePath="..\..\..\..\src\rec\util\Callback_test.cpp"/>
           <Filter Name="cd">
             <File RelativePath="..\..\..\..\src\rec\util\cd\Album.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\Album.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\cd\CDReader.cpp"/>

@@ -97,6 +97,8 @@ void fillAlbumList(Socket* sock, const TrackOffsets& off, AlbumList* albums) {
   }
 }
 
+}  // namespace
+
 #define DEFAULT_USER        "anonymous"
 #define DEFAULT_HOST        "localhost"
 #define DEFAULT_SERVER      "freedb.org"
@@ -119,8 +121,6 @@ String fillAlbums(const TrackOffsets& off, AlbumList* albums) {
     return e.what();
   }
 }
-
-}  // namespace
 
 Album getCachedAlbum(const VirtualFile& file, const TrackOffsets& off) {
   Album album;

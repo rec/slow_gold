@@ -14,7 +14,12 @@ static const int THREAD_STOP_PERIOD = 5000;
 void clock(Instance* i) { (*i->listeners_)(i->player_->getNextReadPosition()); }
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
 void fetch(Instance* i) {}
-void parameter(Instance* i) {}
+
+void parameter(Instance* i) {
+  ScopedLock l(*i->threads_->lock());
+
+}
+
 void persist(Instance* i) {}
 void pitch(Instance* i) {}
 

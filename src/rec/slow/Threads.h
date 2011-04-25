@@ -16,6 +16,7 @@ class Threads {
   ~Threads();
   void startAll();
   void stop();
+  CriticalSection* lock() { return &lock_; }
 
  private:
   typedef std::vector<Thread*> ThreadList;
@@ -25,6 +26,7 @@ class Threads {
 
   Instance* instance_;
   ThreadList threads_;
+  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);
 };

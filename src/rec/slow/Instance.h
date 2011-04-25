@@ -35,7 +35,6 @@ struct Instance {
   Instance();
   ~Instance();
 
-  // ptr<Broadcasters> broadcasters_;
   ptr<Components> components_;
   ptr<audio::Device> device_;
   ptr<Menus> menus_;
@@ -44,7 +43,6 @@ struct Instance {
   ptr<Player> player_;
   ptr<Target> target_;
   ptr<Listeners> listeners_;
-
   ptr<Threads> threads_;
 
   DISALLOW_COPY_AND_ASSIGN(Instance);

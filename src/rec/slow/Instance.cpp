@@ -26,7 +26,6 @@ Instance::Instance()
   threads_->startAll();
 }
 
-
 Instance::~Instance() {
   threads_->stop();
 }
