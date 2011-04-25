@@ -2,6 +2,7 @@
 
 #include "rec/audio/Device.h"
 #include "rec/slow/Threads.h"
+#include "rec/slow/Target.h"
 
 namespace rec {
 namespace slow {

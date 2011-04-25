@@ -1,7 +1,8 @@
 #include "rec/slow/Menus.h"
 #include "rec/base/ArraySize.h"
-#include "rec/slow/Instance.h"
 #include "rec/command/Command.pb.h"
+#include "rec/slow/Instance.h"
+#include "rec/slow/Target.h"
 
 namespace rec {
 namespace slow {
