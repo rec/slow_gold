@@ -32,6 +32,7 @@ void Listeners::operator()(const audio::stretch::StretchLoop&) {}
 
 void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const file::VirtualFile& f) {
+  DLOG(INFO) << "Receiving file " << f.DebugString();
   ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
   instance_->components_->songData_.setFile(f);
 #if 0
