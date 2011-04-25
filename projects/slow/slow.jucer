@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="a6BkLYprM" name="Slow">
+  <MAINGROUP id="DRxjsgfDc" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -794,8 +794,6 @@
                 id="HueGoMQcI" name="ProtoAddressListener.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/ProtoListener.h"
                 id="MZBVBqeWL" name="ProtoListener.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/listener/Rebroadcaster.h"
-                id="ZEy9XRjzs" name="Rebroadcaster.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/listener/SetterListener.h"
                 id="9Hs97sV24" name="SetterListener.h" resource="0"/>
         </GROUP>
@@ -819,8 +817,6 @@
               id="CvzURvOBy" name="RandomSelfInverseFunction.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="Z58jWDkgr"
               name="Range.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/Reference.h" id="33KkZbQsu"
-              name="Reference.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="zW6PdHEBr"
               name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="OrwebqVEp" name="STL.h"
@@ -1087,7 +1083,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="cZTAHu4xu" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="5zGR7TpOi" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

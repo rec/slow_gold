@@ -2,7 +2,6 @@
 #define __REC_UTIL_LISTENER_DATALISTENER__
 
 #include "rec/util/listener/Listener.h"
-// #include "rec/util/Reference.h"
 #include "rec/data/persist/Data.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/data/persist/App.h"

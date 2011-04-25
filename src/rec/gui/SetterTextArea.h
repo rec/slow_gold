@@ -10,8 +10,7 @@
 namespace rec {
 namespace gui {
 
-class SetterTextArea : public Layout,
-                       public Reference<persist::UntypedData> {
+class SetterTextArea : public Layout {
  public:
   typedef persist::UntypedData UntypedData;
   typedef proto::arg::Address Address;
@@ -32,8 +31,7 @@ class SetterTextArea : public Layout,
     return text;
   }
 
-  virtual void setData(UntypedData* data) {
-    Reference<UntypedData>::setData(data);
+  void setData(UntypedData* data) {
     for (int i = 0; i < components_.size(); ++i)
       text(i)->setData(data);
 

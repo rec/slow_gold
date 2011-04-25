@@ -1,7 +1,6 @@
 #ifndef __REC_UTIL_LISTENER_UNTYPEDDATALISTENER__
 #define __REC_UTIL_LISTENER_UNTYPEDDATALISTENER__
 
-#include "rec/util/Reference.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/data/persist/UntypedData.h"
 
@@ -9,26 +8,29 @@ namespace rec {
 namespace util {
 namespace listener {
 
-class ProtoListener : public Reference<persist::UntypedData>,
-                      public Listener<const Message&> {
+class ProtoListener : public Listener<const Message&> {
  public:
-  ProtoListener() {}
+  ProtoListener() : data_(NULL) {}
   virtual ~ProtoListener() {}
   virtual void operator()(const Message&) = 0;
 
-  virtual void setData(persist::UntypedData* data) {
-    if (getData())
-      getData()->messageBroadcaster()->removeListener(this);
+  void setData(persist::UntypedData* data) {
+    if (data_)
+      data_->messageBroadcaster()->removeListener(this);
 
-    Reference<persist::UntypedData>::setData(data);
+    data_ = data;
 
-    if (data) {
-      data->messageBroadcaster()->addListener(this);
-      (*this)(*ptr<Message>(data->clone()));
+    if (data_) {
+      data_->messageBroadcaster()->addListener(this);
+      (*this)(*ptr<Message>(data_->clone()));
     }
   }
 
+  persist::UntypedData* getData() { return data_; }
+
  private:
+  persist::UntypedData* data_;
+
   DISALLOW_COPY_AND_ASSIGN(ProtoListener);
 };
 

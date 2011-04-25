@@ -4,7 +4,6 @@
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
 #include "rec/util/listener/ProtoAddressListener.h"
-#include "rec/util/Reference.h"
 #include "rec/data/proto/Address.h"
 
 namespace rec {
