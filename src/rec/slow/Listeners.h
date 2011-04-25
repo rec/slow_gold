@@ -2,17 +2,11 @@
 #define __REC_SLOW_LISTENERS__
 
 #include "rec/audio/Audio.h"
-#include "rec/gui/DropFiles.h"
 #include "rec/util/Range.h"
-#include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/widget/waveform/CursorTime.h"
-#include "rec/widget/waveform/TimeAndMouseEvent.h"
-#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
-
 
 namespace audio {
 namespace stretch {
@@ -21,6 +15,7 @@ class StretchLoop;
 }  // namespace audio
 
 namespace gui {
+class DropFiles;
 namespace audio {
 class LoopPointList;
 }  // namespace audio

@@ -2,10 +2,15 @@
 #include "rec/audio/source/VirtualFileSource.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/util/ClockUpdate.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/widget/waveform/CursorTime.h"
+#include "rec/widget/waveform/TimeAndMouseEvent.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
 namespace slow {
