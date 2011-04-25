@@ -164,6 +164,7 @@
 		C634C1A6B2B814A56413954A /* Filler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33384CC0D93E8CDA25D8B31D /* Filler.cpp */; };
 		C653BA4552E6838DFA4F8722 /* parserstate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AC0C5B89073B0A55BF23A3 /* parserstate.cpp */; };
 		C697E5D0AEF066978AFEB743 /* Listeners.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */; };
+		C6BBAF39E5746857D58C587E /* Parameters.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 475ACA3A032459ED1EE3F7CD /* Parameters.pb.cc */; };
 		C8E008E8CE6A2AD351B4F07C /* Cursor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = A80D354590E89BEA54C67DC2 /* Cursor.pb.cc */; };
 		CA269D42B0B82AB2D9B0950F /* Copier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC987E2C0BF96C46EB809A6B /* Copier.cpp */; };
 		CAB70C8EA6C74910D7DAC49A /* iterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 908B46BCECCDD21AC4BFD400 /* iterator.cpp */; };
@@ -284,6 +285,7 @@
 		2555FF7A2228B1C8DF7362A9 /* Field.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Field.cpp; path = ../../../../src/rec/data/proto/Field.cpp; sourceTree = SOURCE_ROOT; };
 		2580689E20F60E2A6AC7E3BF /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = base.h; path = ../../../../src/rec/base/base.h; sourceTree = SOURCE_ROOT; };
 		259B12EC8439B0BB5AD2F045 /* emitterstate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = emitterstate.cpp; path = ../../../../src/rec/data/yaml/src/emitterstate.cpp; sourceTree = SOURCE_ROOT; };
+		25E5D4BECB6B86C69E24CACB /* Parameters.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Parameters.pb.h; path = ../../../../genfiles/proto/rec/slow/Parameters.pb.h; sourceTree = SOURCE_ROOT; };
 		26133345915C4CCE17392B53 /* AudioInputMicrophone.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioInputMicrophone.svg.cpp; path = ../../../../src/rec/gui/icon/AudioInputMicrophone.svg.cpp; sourceTree = SOURCE_ROOT; };
 		267FDA334582B865EEBE01CF /* ostream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ostream.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/ostream.h"; sourceTree = SOURCE_ROOT; };
 		26D1DC812760DFF9CE61461D /* TypedTyper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TypedTyper.cpp; path = ../../../../src/rec/data/proto/TypedTyper.cpp; sourceTree = SOURCE_ROOT; };
@@ -338,6 +340,7 @@
 		456CC2B861F310B678D32ACA /* Threads.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Threads.h; path = ../../../../src/rec/slow/Threads.h; sourceTree = SOURCE_ROOT; };
 		45FB2B839FCCC1B6BEB1169F /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Util.h; path = ../../../../src/rec/util/file/Util.h; sourceTree = SOURCE_ROOT; };
 		464EA4B358DDCB3C3454B6F0 /* exp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exp.h; path = ../../../../src/rec/data/yaml/src/exp.h; sourceTree = SOURCE_ROOT; };
+		475ACA3A032459ED1EE3F7CD /* Parameters.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Parameters.pb.cc; path = ../../../../genfiles/proto/rec/slow/Parameters.pb.cc; sourceTree = SOURCE_ROOT; };
 		476D36E5A3E2B1015B7858EB /* CursorTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CursorTime.h; path = ../../../../src/rec/widget/waveform/CursorTime.h; sourceTree = SOURCE_ROOT; };
 		47888134A55B6D5DFCA5120D /* exceptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exceptions.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/exceptions.h"; sourceTree = SOURCE_ROOT; };
 		490604E738E7F7E49FABE411 /* Metadata.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Metadata.cpp; path = ../../../../src/rec/music/Metadata.cpp; sourceTree = SOURCE_ROOT; };
@@ -1243,6 +1246,20 @@
 			name = binary;
 			sourceTree = "<group>";
 		};
+		9571EBFAAD39E47DE12A1027 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		95CAB6E99E96CEDA0BFB8ED1 /* slow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1534,20 +1551,6 @@
 			name = format;
 			sourceTree = "<group>";
 		};
-		D81C3D9A00EB89E162C6BA39 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		DB617A20D9C265267D2D5AE8 /* file */ = {
 			isa = PBXGroup;
 			children = (
@@ -1648,6 +1651,8 @@
 			children = (
 				F8ECB7C9B12C73DC0B8E5A92 /* AppLayout.pb.cc */,
 				5FF7BDF011D9B98F78C7E9EE /* AppLayout.pb.h */,
+				475ACA3A032459ED1EE3F7CD /* Parameters.pb.cc */,
+				25E5D4BECB6B86C69E24CACB /* Parameters.pb.h */,
 			);
 			name = slow;
 			sourceTree = "<group>";
@@ -1741,7 +1746,7 @@
 				French,
 				German,
 			);
-			mainGroup = D81C3D9A00EB89E162C6BA39 /* Source */;
+			mainGroup = 9571EBFAAD39E47DE12A1027 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1936,6 +1941,7 @@
 				E641768CA04431D8080CE959 /* TableColumn.pb.cc in Sources */,
 				28313C23AD0356F73EA369DB /* Metadata.pb.cc in Sources */,
 				621DF87924B6CAD97FBB1BAB /* AppLayout.pb.cc in Sources */,
+				C6BBAF39E5746857D58C587E /* Parameters.pb.cc in Sources */,
 				3A99510C7063E152D6EBF52F /* VirtualFile.pb.cc in Sources */,
 				BB38E1A91947F2A14CB23DD5 /* Thread.pb.cc in Sources */,
 				65769E1F73B8F7362FB764DB /* Panes.pb.cc in Sources */,
