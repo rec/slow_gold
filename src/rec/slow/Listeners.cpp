@@ -1,7 +1,9 @@
 #include "rec/slow/Listeners.h"
-#include "rec/data/persist/Persist.h"
-#include "rec/slow/Instance.h"
 #include "rec/audio/source/VirtualFileSource.h"
+#include "rec/data/persist/Persist.h"
+#include "rec/slow/Components.h"
+#include "rec/slow/Instance.h"
+#include "rec/util/ClockUpdate.h"
 
 namespace rec {
 namespace slow {
@@ -10,7 +12,8 @@ using audio::source::virtualFileSource;
 
 Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->player_->addListener(this);
-  instance_->components_->directoryTree_.treeView()->dropBroadcaster()->addListener(this);
+  instance_->components_->directoryTree_.treeView()->dropBroadcaster()->
+    addListener(this);
   instance_->components_->waveform_.dropBroadcaster()->addListener(this);
 }
 

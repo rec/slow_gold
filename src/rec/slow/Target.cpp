@@ -1,5 +1,6 @@
 #include "rec/slow/Target.h"
 #include "rec/gui/Dialog.h"
+#include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/util/cd/Eject.h"
 

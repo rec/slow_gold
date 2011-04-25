@@ -1,4 +1,5 @@
 #include "rec/slow/Threads.h"
+#include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
 #include "rec/util/thread/MakeThread.h"

@@ -5,7 +5,6 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
-#include "rec/util/ClockUpdate.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
@@ -15,6 +14,11 @@
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
+
+namespace util {
+class ClockUpdate;
+}
+
 namespace slow {
 
 class ClockTick;

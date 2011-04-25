@@ -1,13 +1,23 @@
 #ifndef __REC_SLOW_INSTANCE__
 #define __REC_SLOW_INSTANCE__
 
-#include "rec/slow/Components.h"
+#include "rec/base/base.h"
 
 namespace rec {
+namespace audio {
+
+class Device;
+
+namespace source {
+
+class Player;
+
+}   // namespace source
+}   // namespace audio
+
 namespace slow {
 
 class Components;
-class audio::Device;
 class Menus;
 class PersistentData;
 class Player;
