@@ -14,12 +14,17 @@ class Threads {
   ~Threads() { stop(); }
 
   void stop();
+
   void clock();
+  void newFile(const VirtualFile& file);
+
+  const Thread* newFile() const { return newFile_.get(); }
 
  private:
   Instance* instance_;
-  thread_ptr<Thread> clock_;
-  Thread* directory_;
+  ptr<Thread> clock_;
+  ptr<Thread> newFile_;
+  Thread* directory_;  // TODO
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);
 };
