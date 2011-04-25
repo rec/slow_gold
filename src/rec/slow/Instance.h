@@ -2,7 +2,6 @@
 #define __REC_SLOW_INSTANCE__
 
 #include "rec/slow/Components.h"
-#include "rec/slow/Listeners.h"
 
 namespace rec {
 namespace slow {
