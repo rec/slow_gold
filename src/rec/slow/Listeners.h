@@ -3,7 +3,6 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/gui/DropFiles.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
@@ -14,17 +13,35 @@
 
 namespace rec {
 
+
 namespace audio {
 namespace stretch {
 class StretchLoop;
 }  // namespace stretch
 }  // namespace audio
 
+namespace gui {
+namespace audio {
+class LoopPointList;
+}  // namespace audio
+}  // namespace gui
+
 namespace util {
 class ClockUpdate;
-}
 
+namespace file {
+class VirtualFile;
+class VirtualFileList;
+}  // namespace file
+}  // namespace util
 
+namespace widget {
+namespace waveform {
+class CursorTime;
+class TimeAndMouseEvent;
+class ZoomProto;
+}  // namespace waveform
+}  // namespace widget
 
 namespace slow {
 

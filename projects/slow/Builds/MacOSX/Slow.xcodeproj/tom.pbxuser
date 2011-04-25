@@ -1166,6 +1166,8 @@
 			E23DB2C61365DAC400A52041 = E23DB2C61365DAC400A52041 /* PBXTextBookmark */;
 			E23DB2C71365DAC500A52041 = E23DB2C71365DAC500A52041 /* PBXTextBookmark */;
 			E23DB2C81365DAC700A52041 = E23DB2C81365DAC700A52041 /* PBXTextBookmark */;
+			E23DB2E01365DD0300A52041 /* XCBuildMessageTextBookmark */ = E23DB2E01365DD0300A52041 /* XCBuildMessageTextBookmark */;
+			E23DB2E51365DD4A00A52041 /* PBXTextBookmark */ = E23DB2E51365DD4A00A52041 /* PBXTextBookmark */;
 			E23E467712EFAF870080BD76 = E23E467712EFAF870080BD76 /* PBXTextBookmark */;
 			E23E4C4912F71DEB0080BD76 = E23E4C4912F71DEB0080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
@@ -3358,7 +3360,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 325442397.462666;
+		modificationTime = 325442596.061058;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -5439,7 +5441,7 @@
 		ignoreCount = 0;
 		lineNumber = 25;
 		location = SlowBurn;
-		modificationTime = 325442396.379599;
+		modificationTime = 325442596.060907;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -7096,6 +7098,37 @@
 		rType = 0;
 		vrLen = 1114;
 		vrLoc = 41518;
+	};
+	E23DB2DF1365DD0300A52041 /* Listeners.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Listeners.h;
+		path = ../../../../../rec/src/rec/slow/Listeners.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 1404}}";
+			sepNavSelRange = "{62, 0}";
+			sepNavVisRange = "{0, 1357}";
+		};
+	};
+	E23DB2E01365DD0300A52041 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "ISO C++ forbids declaration of 'type name' with no type";
+		fRef = E23DB2DF1365DD0300A52041 /* Listeners.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 59;
+		rType = 1;
+	};
+	E23DB2E51365DD4A00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E23DB2DF1365DD0300A52041 /* Listeners.h */;
+		name = "Listeners.h: 3";
+		rLen = 0;
+		rLoc = 62;
+		rType = 0;
+		vrLen = 1357;
+		vrLoc = 0;
 	};
 	E23E45F412EF610D0080BD76 /* juce_Component.cpp */ = {
 		isa = PBXFileReference;
