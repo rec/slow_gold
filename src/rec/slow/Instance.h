@@ -19,6 +19,7 @@ namespace slow {
 
 class Components;
 class Menus;
+class Parameters;
 class PersistentData;
 class Player;
 class Target;
@@ -39,9 +40,11 @@ struct Instance {
   ptr<audio::Device> device_;
   ptr<Menus> menus_;
   ptr<PersistentData> data_;
+  ptr<Parameters> parameters_;
   ptr<Player> player_;
   ptr<Target> target_;
   ptr<Listeners> listeners_;
+
   ptr<Threads> threads_;
 
   DISALLOW_COPY_AND_ASSIGN(Instance);

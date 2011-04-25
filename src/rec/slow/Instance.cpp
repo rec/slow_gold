@@ -6,6 +6,7 @@
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/PersistentData.h"
+#include "rec/slow/Parameters.pb.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 
@@ -17,6 +18,7 @@ Instance::Instance()
     device_(new audio::Device()),
     menus_(new Menus(this)),
     data_(new PersistentData()),
+    parameters_(new Parameters()),
     player_(new Player(device_.get())),
     target_(new Target(this)),
     listeners_(new Listeners(this)),

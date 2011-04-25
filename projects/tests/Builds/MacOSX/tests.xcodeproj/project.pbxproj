@@ -180,6 +180,7 @@
 		923C6B47D7886DD79AD28D3F = { isa = PBXBuildFile; fileRef = 3CD4C82FF75969E1EEB2BC48; };
 		4C6B70DFDC08D472EBEE6A02 = { isa = PBXBuildFile; fileRef = F48DE7ABD54D82DA24B5C21C; };
 		CDD5E152F314B4FE16886659 = { isa = PBXBuildFile; fileRef = 627EE466403F8400A722FC33; };
+		D23F4059DF5FA99BA89F1809 = { isa = PBXBuildFile; fileRef = A2D6F166F0026928F817652E; };
 		772EC118BCF3F4BA24602997 = { isa = PBXBuildFile; fileRef = 96E603D0BD6251360BE74904; };
 		4AD352878C5A21CF76F70DF5 = { isa = PBXBuildFile; fileRef = 2FB0FBF82C2C2DA958F6E36A; };
 		D18EE8FE91699AD36D0451DB = { isa = PBXBuildFile; fileRef = E8AFCA5A278B2A59C0DAF279; };
@@ -640,6 +641,7 @@
 		41ED8B36DFCD6568AC934DC6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback0.h; path = ../../../../src/rec/util/thread/Callback0.h; sourceTree = SOURCE_ROOT; };
 		A79C9E10CEA15BEA9BB45997 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback1.h; path = ../../../../src/rec/util/thread/Callback1.h; sourceTree = SOURCE_ROOT; };
 		0D4AB1FABE84325C7AD55458 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback2.h; path = ../../../../src/rec/util/thread/Callback2.h; sourceTree = SOURCE_ROOT; };
+		A2D6F166F0026928F817652E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeLocker.cpp; path = ../../../../src/rec/util/thread/ChangeLocker.cpp; sourceTree = SOURCE_ROOT; };
 		65F68F114A562B77C29DC4EE = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChangeLocker.h; path = ../../../../src/rec/util/thread/ChangeLocker.h; sourceTree = SOURCE_ROOT; };
 		690DF480F28494DA31939D57 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FileWriter.h; path = ../../../../src/rec/util/thread/FileWriter.h; sourceTree = SOURCE_ROOT; };
 		D744BF1BDCB421359E2801A2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Locker.h; path = ../../../../src/rec/util/thread/Locker.h; sourceTree = SOURCE_ROOT; };
@@ -1164,6 +1166,7 @@
 				41ED8B36DFCD6568AC934DC6,
 				A79C9E10CEA15BEA9BB45997,
 				0D4AB1FABE84325C7AD55458,
+				A2D6F166F0026928F817652E,
 				65F68F114A562B77C29DC4EE,
 				690DF480F28494DA31939D57,
 				D744BF1BDCB421359E2801A2,
@@ -1380,7 +1383,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		EBEF7C57F6018598A99BA724 = { isa = PBXGroup; children = (
+		0B65A9BD24446019CF97A69E = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1627,6 +1630,7 @@
 				923C6B47D7886DD79AD28D3F,
 				4C6B70DFDC08D472EBEE6A02,
 				CDD5E152F314B4FE16886659,
+				D23F4059DF5FA99BA89F1809,
 				772EC118BCF3F4BA24602997,
 				4AD352878C5A21CF76F70DF5,
 				D18EE8FE91699AD36D0451DB,
@@ -1692,7 +1696,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = EBEF7C57F6018598A99BA724; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 0B65A9BD24446019CF97A69E; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

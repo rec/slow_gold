@@ -25,6 +25,7 @@
 		1D16409C247D863166E92FCD /* Address.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A94607F858A9F183DA7A8C4 /* Address.cpp */; };
 		1E71E8E130A37866F055849D /* Wrappy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B080F750738F398054AB382 /* Wrappy.cpp */; };
 		1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2501DE5143C9726EFD4CFEE5 /* Status.cpp */; };
+		1F915450FAAEE1B1D5001486 /* ChangeLocker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF38045D0B50B14E257961AB /* ChangeLocker.cpp */; };
 		218748B1BC795061B48B383C /* ReadYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C24187D27D942187F6F0613C /* ReadYaml.cpp */; };
 		2763C9DE251CBC17CCF86649 /* Threads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DB281D6B07E576E7AD90BBB /* Threads.cpp */; };
 		28313C23AD0356F73EA369DB /* Metadata.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EE6286AFB3490202975C86E4 /* Metadata.pb.cc */; };
@@ -666,6 +667,7 @@
 		EE6286AFB3490202975C86E4 /* Metadata.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Metadata.pb.cc; path = ../../../../genfiles/proto/rec/music/Metadata.pb.cc; sourceTree = SOURCE_ROOT; };
 		EE9B2F0E255D6807D0BF5F50 /* Album.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Album.h; path = ../../../../src/rec/util/cd/Album.h; sourceTree = SOURCE_ROOT; };
 		EF031A748C014EB2DB702E47 /* NodeItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NodeItem.cpp; path = ../../../../src/rec/widget/tree/NodeItem.cpp; sourceTree = SOURCE_ROOT; };
+		EF38045D0B50B14E257961AB /* ChangeLocker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeLocker.cpp; path = ../../../../src/rec/util/thread/ChangeLocker.cpp; sourceTree = SOURCE_ROOT; };
 		F0F634962FF9D366FEDA2C67 /* SetterResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterResizer.h; path = ../../../../src/rec/gui/SetterResizer.h; sourceTree = SOURCE_ROOT; };
 		F1335001F80FFEFC3CFE99B6 /* Defaulter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Defaulter.cpp; path = ../../../../src/rec/util/Defaulter.cpp; sourceTree = SOURCE_ROOT; };
 		F14164686ED978124289D67F /* SetterSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterSlider.h; path = ../../../../src/rec/gui/SetterSlider.h; sourceTree = SOURCE_ROOT; };
@@ -825,6 +827,7 @@
 				9E4F8F3EEA1CBD8ED9044943 /* Callback0.h */,
 				E4FEA117EAFF93F0B8254514 /* Callback1.h */,
 				4AACC4F1D9D38A72A74750D5 /* Callback2.h */,
+				EF38045D0B50B14E257961AB /* ChangeLocker.cpp */,
 				A25892186595739DFF0EC06A /* ChangeLocker.h */,
 				A66F07870DC3DCE06E0489D3 /* FileWriter.h */,
 				14A6B202F703695BCB99FD2E /* Locker.h */,
@@ -1011,6 +1014,20 @@
 				AC0554963E514633441794AD /* SetterListener.h */,
 			);
 			name = listener;
+			sourceTree = "<group>";
+		};
+		6624D294580853F51A116D8A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		6C6D775F12CEA14261B879BE /* proto */ = {
@@ -1244,20 +1261,6 @@
 				E71522A9A2DF7722B5252C16 /* logo.png */,
 			);
 			name = binary;
-			sourceTree = "<group>";
-		};
-		9571EBFAAD39E47DE12A1027 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		95CAB6E99E96CEDA0BFB8ED1 /* slow */ = {
@@ -1746,7 +1749,7 @@
 				French,
 				German,
 			);
-			mainGroup = 9571EBFAAD39E47DE12A1027 /* Source */;
+			mainGroup = 6624D294580853F51A116D8A /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1908,6 +1911,7 @@
 				7001EB3EA2FBA0EB3B4928F7 /* Convertors.cpp in Sources */,
 				830D13AF3D404CBF2A9E05E3 /* Partition.cpp in Sources */,
 				DF9E7E4FE3D7B5EDB74379BB /* RandomSelfInverseFunction.cpp in Sources */,
+				1F915450FAAEE1B1D5001486 /* ChangeLocker.cpp in Sources */,
 				B380D51FD7324CCF50D21514 /* Trash.cpp in Sources */,
 				8735558EA7A879E5A368F972 /* DialComponent.cpp in Sources */,
 				1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */,
