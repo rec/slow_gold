@@ -1,5 +1,6 @@
 #include "rec/slow/Listeners.h"
 #include "rec/audio/source/VirtualFileSource.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"

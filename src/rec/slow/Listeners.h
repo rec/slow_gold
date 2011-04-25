@@ -2,7 +2,6 @@
 #define __REC_SLOW_LISTENERS__
 
 #include "rec/audio/Audio.h"
-#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/util/Range.h"
@@ -15,9 +14,17 @@
 
 namespace rec {
 
+namespace audio {
+namespace stretch {
+class StretchLoop;
+}  // namespace stretch
+}  // namespace audio
+
 namespace util {
 class ClockUpdate;
 }
+
+
 
 namespace slow {
 
