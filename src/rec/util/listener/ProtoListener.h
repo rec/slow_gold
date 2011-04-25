@@ -16,15 +16,15 @@ class ProtoListener : public Reference<persist::UntypedData>,
   virtual ~ProtoListener() {}
   virtual void operator()(const Message&) = 0;
 
-  virtual void setData(persist::UntypedData* d) {
+  virtual void setData(persist::UntypedData* data) {
     if (getData())
       getData()->messageBroadcaster()->removeListener(this);
 
-    Reference<persist::UntypedData>::setData(d);
+    Reference<persist::UntypedData>::setData(data);
 
-    if (d) {
-      d->messageBroadcaster()->addListener(this);
-      ptr<Message> m(d->clone());
+    if (data) {
+      data->messageBroadcaster()->addListener(this);
+      ptr<Message> m(data->clone());
       (*this)(*m);
     }
   }

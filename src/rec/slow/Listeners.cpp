@@ -22,6 +22,7 @@ Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->components_->directoryTree_.treeView()->dropBroadcaster()->
     addListener(this);
   instance_->components_->waveform_.dropBroadcaster()->addListener(this);
+  persist::appData<VirtualFile>()->addListener(this);
 }
 
 void Listeners::operator()(const ClockTick&) {}
@@ -33,6 +34,7 @@ void Listeners::operator()(const audio::stretch::StretchLoop&) {}
 void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const file::VirtualFile& f) {
   DLOG(INFO) << "Receiving file " << f.DebugString();
+  DLOG(INFO) << juce::MessageManager::getInstance()->isThisTheMessageThread();
   ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
   instance_->components_->songData_.setFile(f);
 #if 0
@@ -79,7 +81,7 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &instance_->components_->waveform_) {
     if (files.file_size() >= 1)
-      (*this)(files.file(0));
+		  persist::appData<VirtualFile>()->set(files.file(0));
 
     LOG_IF(ERROR, files.file_size() != 1);
 

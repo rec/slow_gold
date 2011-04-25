@@ -30,17 +30,19 @@ class Mover(object):
   GUARD_PATTERN =  r'^#endif\s+// __REC'
 
   FUNCTIONS = [(lambda path: '__' + '_'.join(p.upper() for p in path)),
-               (lambda path: '#include "%s.h"' % '/'.join(path))]
+               (lambda path: '#include "%s.h"' % '/'.join(path)),
+               (lambda path: r'\b%s\b' % path[-1]),
+               ]
 
   def __init__(self, fromFile, toFile):
     self.state = Mover.NONE
     self.fromFile, self.toFile = self.check(fromFile, toFile)
 
-    fromPath = pathParts(self.fromFile)
-    toPath = pathParts(self.toFile)
-    self.replacements = [[f(fromPath), f(toPath)] for f in Mover.FUNCTIONS]
+    fp = pathParts(self.fromFile)
+    tp = pathParts(self.toFile)
+    names = tp[:-1]
+    self.reps = [[f(fp), f(tp).replace(r'\b', '')] for f in Mover.FUNCTIONS]
 
-    names = toPath[:-1]
     def bed(names, begin, end='\n'):
       return begin + (end + begin).join(names) + end + '\n'
 
@@ -123,7 +125,7 @@ class Mover(object):
 
   def process(self, line):
     if self.state in [Mover.NONE, Mover.BODY, Mover.END_GUARD]:
-      for pat, repl in self.replacements:
+      for pat, repl in self.reps:
         line = re.sub(pat, repl, line)
       self.out.write(line)
 

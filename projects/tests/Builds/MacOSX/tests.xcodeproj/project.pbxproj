@@ -613,7 +613,6 @@
 		2E162BE9D8F12D44F77421CF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualFile.h; path = ../../../../src/rec/util/file/VirtualFile.h; sourceTree = SOURCE_ROOT; };
 		6C48804C3C144AAC8E64BE49 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FormatTime.cpp; path = ../../../../src/rec/util/FormatTime.cpp; sourceTree = SOURCE_ROOT; };
 		9A255EB07F05A3F0BE5B1727 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FormatTime.h; path = ../../../../src/rec/util/FormatTime.h; sourceTree = SOURCE_ROOT; };
-		01AF79300E59F2858CBC8778 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChangeBroadcaster.h; path = ../../../../src/rec/util/listener/ChangeBroadcaster.h; sourceTree = SOURCE_ROOT; };
 		CDD8BC16A4EB518C9F4AA345 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DataListener.h; path = ../../../../src/rec/util/listener/DataListener.h; sourceTree = SOURCE_ROOT; };
 		4D68739BF46B9EE2DD16BD85 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../../src/rec/util/listener/Listener.h; sourceTree = SOURCE_ROOT; };
 		C3CB88E6672265C009FAACAA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProtoAddressListener.h; path = ../../../../src/rec/util/listener/ProtoAddressListener.h; sourceTree = SOURCE_ROOT; };
@@ -1147,7 +1146,6 @@
 				02AEB950A360B0C907C699D8,
 				2E162BE9D8F12D44F77421CF ); name = file; sourceTree = "<group>"; };
 		477492534AEC3954B100FD89 = { isa = PBXGroup; children = (
-				01AF79300E59F2858CBC8778,
 				CDD8BC16A4EB518C9F4AA345,
 				4D68739BF46B9EE2DD16BD85,
 				C3CB88E6672265C009FAACAA,
@@ -1381,7 +1379,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		B3FB2848A10F7FF7CD5883B5 = { isa = PBXGroup; children = (
+		FBE3F5F44929EF272026D0FC = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1692,7 +1690,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = B3FB2848A10F7FF7CD5883B5; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = FBE3F5F44929EF272026D0FC; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }
