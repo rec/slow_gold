@@ -7,7 +7,6 @@
 #include "rec/slow/Menus.h"
 #include "rec/slow/PersistentData.h"
 #include "rec/slow/Target.h"
-#include "rec/slow/Threads.h"
 
 namespace rec {
 namespace slow {

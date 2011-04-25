@@ -1,6 +1,7 @@
 #include "rec/slow/Instance.h"
 
 #include "rec/audio/Device.h"
+#include "rec/slow/Threads.h"
 
 namespace rec {
 namespace slow {
