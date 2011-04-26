@@ -18,6 +18,7 @@ void setVirtualFile(Instance* i, const VirtualFile& f, const StretchLoop& s) {
     return;
   }
   i->components_->songData_.setFile(f);
+
 }
 
 void setStretch(Instance* i, const VirtualFile& f, const StretchLoop& s) {

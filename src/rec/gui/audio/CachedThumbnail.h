@@ -18,15 +18,15 @@ class CachedThumbnail
   // Update the thumbnail here.
   virtual void operator()(const AudioSourceChannelInfo& info);
 
-  void writeThumbnail(bool deferred);
+  void writeThumbnail();
 
-  bool isFull() const { return isFull_; }
+  bool isFull() const { return cacheWritten_; }
 
  private:
   const File file_;
   juce::AudioThumbnail thumbnail_;
   juce::AudioThumbnailCache cache_;
-  bool isFull_;
+  bool cacheWritten_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CachedThumbnail);
 };

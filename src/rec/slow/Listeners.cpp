@@ -34,7 +34,7 @@ void Listeners::operator()(const file::VirtualFile& f) {
   DLOG(INFO) << "Receiving file " << f.DebugString();
   DLOG(INFO) << juce::MessageManager::getInstance()->isThisTheMessageThread();
   // ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
-  instance_->components_->songData_.setFile(f);
+  // instance_->components_->songData_.setFile(f);
 #if 0
   if (source)
 

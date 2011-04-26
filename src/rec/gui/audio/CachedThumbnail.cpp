@@ -8,18 +8,17 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-CachedThumbnail::CachedThumbnail(const File& file, int compression,
-                                 int sampleLength)
+CachedThumbnail::CachedThumbnail(const File& file, int compression, int length)
   : file_(file),
     thumbnail_(compression, *rec::audio::getAudioFormatManager(), cache_),
     cache_(1),
-    isFull_(false) {
-  thumbnail_.reset(2, 44100.0f, sampleLength);  // TODO
+    cacheWritten_(false) {
+  thumbnail_.reset(2, 44100.0f, length);  // TODO: hard-coded 44k?
   if (file_.exists()) {
     ptr<juce::FileInputStream> out(file_.createInputStream());
     if (out) {
       thumbnail_.loadFrom(*out);
-      isFull_ = true;
+      cacheWritten_ = true;
     } else {
       LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
     }
@@ -33,17 +32,18 @@ void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
   broadcast(true);
 }
 
-void CachedThumbnail::writeThumbnail(bool deferred) {
-  if (!isFull_) {
+void CachedThumbnail::writeThumbnail() {
+  if (!cacheWritten_) {
+    cacheWritten_ = true;
+
+    ptr<juce::FileOutputStream> out(file_.createOutputStream());
+    thumbnail_.saveTo(*out);
+#if 0
     thread_ptr<thread::FileWriter> writer(new thread::FileWriter(file_));
     juce::MemoryOutputStream mos(*writer->memory(), false);
     thumbnail_.saveTo(mos);
-    if (deferred)
-      writer.transfer()->startThread();
-    else
-      writer->run();
-
-    isFull_ = true;
+    writer->run();
+#endif
   }
 }
 
