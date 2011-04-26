@@ -5,7 +5,7 @@
 #include "rec/util/thread/MakeThread.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/STL.h"
-#include "rec/slow/ParameterThread.h"
+#include "rec/slow/ThreadData.h"
 
 namespace rec {
 namespace slow {
@@ -24,8 +24,7 @@ void fetch(Instance* i) {}
 void persist(Instance* i) {}
 void pitch(Instance* i) {}
 
-Threads::Threads(Instance* i) : instance_(i),
-                                parameterUpdater_(new ParameterUpdater()) {
+Threads::Threads(Instance* i) : instance_(i), data_(new ThreadData()) {
 }
 
 void Threads::startAll() {
@@ -36,7 +35,7 @@ void Threads::startAll() {
   start(&persist, "Persist");
   start(&pitch, "Pitch");
 
-  parameterUpdater_->file()->set(persist::getApp<VirtualFile>());
+  data_->file()->set(persist::getApp<VirtualFile>());
 }
 
 Threads::~Threads() {

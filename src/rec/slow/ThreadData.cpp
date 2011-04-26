@@ -1,4 +1,4 @@
-#include "rec/slow/ParameterThread.h"
+#include "rec/slow/ThreadData.h"
 #include "rec/audio/util/FileBuffer.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/slow/Components.h"
@@ -13,11 +13,13 @@ using namespace rec::audio::stretch;
 using namespace rec::audio::util;
 
 void setVirtualFile(Instance* i, const VirtualFile& f, const StretchLoop& s) {
-  FileBuffer buffer(f);
-  if (!buffer.buffer()) {
+  ptr<FileBuffer> buffer(new FileBuffer(f));
+  if (!buffer->buffer()) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
+  } else {
     return;
   }
+
   i->components_->songData_.setFile(f);
 }
 
@@ -26,18 +28,19 @@ void setStretch(Instance* i, const VirtualFile& f, const StretchLoop& s) {
 }
 
 void updateParameters(Instance* i) {
-  ParameterUpdater* updater = i->threads_->updater();
+  ThreadData* threadData = i->threads_->data();
   VirtualFile file;
-  if (updater->file()->readAndClearChanged(&file)) {
+  if (threadData->file()->readAndClearChanged(&file)) {
     StretchLoop loop = persist::get<StretchLoop>(file);
-    updater->stretch()->initialize(loop);
+    threadData->stretch()->initialize(loop);
     setVirtualFile(i, file, loop);
   } else {
     StretchLoop stretch;
-    if (updater->stretch()->readAndClearChanged(&stretch))
+    if (threadData->stretch()->readAndClearChanged(&stretch))
       setStretch(i, file, stretch);
   }
 }
 
 }  // namespace slow
 }  // namespace rec
+

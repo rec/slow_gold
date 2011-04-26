@@ -9,6 +9,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
+// TODO: use util::Switcher or delete.
 class Switching : public Wrappy {
  public:
   Switching();

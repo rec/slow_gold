@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="RBRYWLlr9" name="Slow">
+  <MAINGROUP id="FSzgdqPBr" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -681,10 +681,6 @@
               name="Menus.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Menus.h" id="koFtD2Rkv"
               name="Menus.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/ParameterThread.cpp" id="QAan7ap6y"
-              name="ParameterThread.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/ParameterThread.h" id="kSunFFqua"
-              name="ParameterThread.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/PersistentData.cpp" id="7hkbxM5fD"
               name="PersistentData.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/PersistentData.h" id="WFZOGciTx"
@@ -697,6 +693,10 @@
               name="Target.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Target.h" id="Aj4eo3Y1O"
               name="Target.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/ThreadData.cpp" id="pCbXCSZrw"
+              name="ThreadData.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/ThreadData.h" id="TxZSo8GAB"
+              name="ThreadData.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Threads.cpp" id="ypoui9HF1"
               name="Threads.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Threads.h" id="0GpWTknsl"
@@ -827,6 +827,8 @@
               name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="OrwebqVEp" name="STL.h"
               resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Switcher.h" id="W10h4RGo8"
+              name="Switcher.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/TestData.h" id="DgQ1cDJB0"
               name="TestData.h" resource="0"/>
         <GROUP id="gonimSYKx" name="thread">
@@ -1095,7 +1097,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="k5j61g7T4" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="isIxH35UG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

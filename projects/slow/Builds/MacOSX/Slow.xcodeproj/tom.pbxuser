@@ -373,14 +373,6 @@
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
-	5E02C9493C9BF6CE9A4959E9 /* ParameterThread.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1107, 559}}";
-			sepNavSelRange = "{689, 0}";
-			sepNavVisRange = "{0, 1165}";
-			sepNavWindowFrame = "{{137, 35}, {1324, 878}}";
-		};
-	};
 	60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {603, 686}}";
@@ -445,14 +437,6 @@
 			sepNavSelRange = "{1271, 0}";
 			sepNavVisRange = "{473, 1097}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
-		};
-	};
-	7ADA32A377F15F61B22988FE /* CachedThumbnail.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1034, 755}}";
-			sepNavSelRange = "{763, 0}";
-			sepNavVisRange = "{0, 1399}";
-			sepNavWindowFrame = "{{61, 263}, {1093, 868}}";
 		};
 	};
 	7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */ = {
@@ -593,8 +577,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 325531899;
-			PBXWorkspaceStateSaveDate = 325531899;
+			PBXPerProjectTemplateStateSaveDate = 325534725;
+			PBXWorkspaceStateSaveDate = 325534725;
 		};
 		perUserProjectItems = {
 			E21C931213470162002E4462 = E21C931213470162002E4462 /* PBXTextBookmark */;
@@ -1404,7 +1388,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libSystem.B.dylib;
-		modificationTime = 325532916.880624;
+		modificationTime = 325535010.126677;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 		symbolName = malloc_error_break;
@@ -1423,7 +1407,7 @@
 		ignoreCount = 0;
 		lineNumber = 25;
 		location = SlowBurn;
-		modificationTime = 325532915.612612;
+		modificationTime = 325535008.762055;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1585,7 +1569,7 @@
 		ignoreCount = 0;
 		lineNumber = 37;
 		location = SlowBurn;
-		modificationTime = 325532915.61266;
+		modificationTime = 325535008.762077;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1634,7 +1618,6 @@
 	};
 	E23DB5631366567800A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 5E02C9493C9BF6CE9A4959E9 /* ParameterThread.cpp */;
 		name = "ParameterThread.cpp: 3";
 		rLen = 0;
 		rLoc = 165;
@@ -1644,7 +1627,6 @@
 	};
 	E23DB5641366567800A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 5E02C9493C9BF6CE9A4959E9 /* ParameterThread.cpp */;
 		name = "ParameterThread.cpp: 2";
 		rLen = 0;
 		rLoc = 64;
@@ -1665,7 +1647,6 @@
 	E23DB56E1366572200A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Lvalue required as unary '&' operand";
-		fRef = 5E02C9493C9BF6CE9A4959E9 /* ParameterThread.cpp */;
 		rLen = 1;
 		rLoc = 27;
 		rType = 1;
@@ -1682,7 +1663,6 @@
 	};
 	E23DB5721366574200A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 5E02C9493C9BF6CE9A4959E9 /* ParameterThread.cpp */;
 		name = "ParameterThread.cpp: 5";
 		rLen = 0;
 		rLoc = 223;
@@ -1743,9 +1723,9 @@
 		fRef = 8DB281D6B07E576E7AD90BBB /* Threads.cpp */;
 		name = "Threads.cpp: 39";
 		rLen = 0;
-		rLoc = 1090;
+		rLoc = 1078;
 		rType = 0;
-		vrLen = 1523;
+		vrLen = 1510;
 		vrLoc = 0;
 	};
 	E23DB5A013665E5900A52041 /* PBXTextBookmark */ = {
@@ -1781,14 +1761,12 @@
 	E23DB5A513665E6200A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Within this context";
-		fRef = 5E02C9493C9BF6CE9A4959E9 /* ParameterThread.cpp */;
 		rLen = 1;
 		rLoc = 29;
 		rType = 1;
 	};
 	E23DB5A613665E6200A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 5E02C9493C9BF6CE9A4959E9 /* ParameterThread.cpp */;
 		name = "ParameterThread.cpp: 31";
 		rLen = 0;
 		rLoc = 914;
@@ -1811,9 +1789,9 @@
 		fRef = 8DB281D6B07E576E7AD90BBB /* Threads.cpp */;
 		name = "Threads.cpp: 39";
 		rLen = 0;
-		rLoc = 1090;
+		rLoc = 1078;
 		rType = 0;
-		vrLen = 1523;
+		vrLen = 1510;
 		vrLoc = 0;
 	};
 	E23DB5A913665E6400A52041 /* PBXTextBookmark */ = {
@@ -1841,9 +1819,9 @@
 		fRef = 8DB281D6B07E576E7AD90BBB /* Threads.cpp */;
 		name = "Threads.cpp: 39";
 		rLen = 0;
-		rLoc = 1090;
+		rLoc = 1078;
 		rType = 0;
-		vrLen = 1523;
+		vrLen = 1510;
 		vrLoc = 0;
 	};
 	E23DB5B3136716F900A52041 /* PBXTextBookmark */ = {
@@ -1871,9 +1849,9 @@
 		fRef = 8DB281D6B07E576E7AD90BBB /* Threads.cpp */;
 		name = "Threads.cpp: 39";
 		rLen = 0;
-		rLoc = 1090;
+		rLoc = 1078;
 		rType = 0;
-		vrLen = 1523;
+		vrLen = 1510;
 		vrLoc = 0;
 	};
 	E23DB5B81367171B00A52041 /* PBXTextBookmark */ = {
