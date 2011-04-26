@@ -2,6 +2,7 @@
 #include "rec/audio/source/VirtualFileSource.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/Components.h"

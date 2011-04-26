@@ -1,3 +1,4 @@
+#if 0
 #include "rec/util/thread/ChangeLocker.h"
 
 namespace rec {
@@ -9,3 +10,4 @@ template class ChangeLocker<int>;
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
+#endif

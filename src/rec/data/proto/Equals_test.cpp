@@ -3,38 +3,55 @@
 
 #include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/slow/Parameters.pb.h"
 
 namespace rec {
 namespace proto {
 namespace {
 
-TEST(Equals, get) {
-  VirtualFile vf, vf2;
-  EXPECT_TRUE(equals(vf, vf));
+TEST(Equals, VirtualFile) {
+  VirtualFile x, y;
+  EXPECT_TRUE(equals(x, x));
 
-  vf2.set_type(VirtualFile::CD);
-  EXPECT_FALSE(equals(vf, vf2));
+  y.set_type(VirtualFile::CD);
+  EXPECT_FALSE(equals(x, y));
 
-  vf.CopyFrom(vf2);
-  EXPECT_TRUE(equals(vf, vf));
+  x.CopyFrom(y);
+  EXPECT_TRUE(equals(x, x));
 
-  vf2.add_path();
-  EXPECT_FALSE(equals(vf, vf2));
+  y.add_path();
+  EXPECT_FALSE(equals(x, y));
 
-  vf.add_path();
-  EXPECT_TRUE(equals(vf, vf2));
+  x.add_path();
+  EXPECT_TRUE(equals(x, y));
 
-  vf.add_path();
-  EXPECT_FALSE(equals(vf, vf2));
+  x.add_path();
+  EXPECT_FALSE(equals(x, y));
 
-  vf2.add_path();
-  EXPECT_TRUE(equals(vf, vf2));
+  y.add_path();
+  EXPECT_TRUE(equals(x, y));
 
-  *vf.mutable_path(0) = "hello";
-  EXPECT_FALSE(equals(vf, vf2));
+  *x.mutable_path(0) = "hello";
+  EXPECT_FALSE(equals(x, y));
 
-  *vf2.mutable_path(0) = "hello";
-  EXPECT_TRUE(equals(vf, vf2));
+  *y.mutable_path(0) = "hello";
+  EXPECT_TRUE(equals(x, y));
+}
+
+TEST(Equals, Parameters) {
+  slow::Parameters x, y;
+  EXPECT_TRUE(equals(x, y));
+
+  x.mutable_file()->set_type(VirtualFile::NONE);
+  EXPECT_FALSE(equals(x, y));
+
+  x.mutable_file()->clear_type();
+  EXPECT_TRUE(equals(x, y));
+  EXPECT_EQ(x.file().type(), VirtualFile::NONE);
+
+  x.mutable_stretch()->mutable_stretch()->set_disabled(true);
+  EXPECT_FALSE(equals(x, y));
+
 }
 
 }  // namespace
