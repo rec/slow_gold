@@ -56,6 +56,7 @@ typedef juce::PositionableAudioSource PositionableAudioSource;
 
 typedef juce::String String;
 typedef juce::ScopedLock ScopedLock;
+typedef juce::ScopedUnlock ScopedUnlock;
 typedef juce::Slider Slider;
 typedef juce::StreamingSocket Socket;
 typedef juce::StringArray StringArray;

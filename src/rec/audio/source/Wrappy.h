@@ -21,7 +21,7 @@ class Wrappy : public PositionableAudioSource {
   virtual void prepareToPlay(int s, double r);
   virtual void releaseResources() { source()->releaseResources(); }
 
-  int mod(int64 x) const { return util::mod(x, getTotalLength()); }
+  int mod(int64 x) const { return rec::util::mod(x, getTotalLength()); }
 
   virtual int64 getNextReadPosition() const;
   virtual PositionableAudioSource* source() const;

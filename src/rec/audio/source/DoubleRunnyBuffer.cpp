@@ -27,14 +27,6 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
     return;
   }
 
-  File shadow = getShadowFile(file, "thumbnail.stream");
-  int len = source->getTotalLength();
-  cachedThumbnail_.reset(new CachedThumbnail(shadow, desc.compression(), len));
-
-  if (!cachedThumbnail_->isFull())
-    source.reset(Snoopy::add(source.transfer(), cachedThumbnail_.get()));
-
-  buffer_.reset(new FillableBuffer(source.transfer(), desc.chunk_size()));
 
   changeLocker_.reset(new ChangeLocker(desc.spin_wait()));
   changeLocker_->initialize(data_->get());

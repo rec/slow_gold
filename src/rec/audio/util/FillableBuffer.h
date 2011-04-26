@@ -2,17 +2,18 @@
 #define __REC_AUDIO_SOURCE_BUFFERY__
 
 #include "rec/util/listener/Listener.h"
-#include "rec/util/block/Filler.h"
+#include "rec/util/block/Fillable.h"
 
 namespace rec {
 namespace audio {
+namespace util {
 
-class FillableBuffer : public block::Filler, public Listener<int> {
+class FillableBuffer : public block::Fillable {  // , public Listener<int> {
  public:
   FillableBuffer(PositionableAudioSource* source, int blockSize);
   AudioSampleBuffer* buffer() { return &buffer_; }
 
-  virtual void operator()(int pos) { setPosition(pos); }
+  // virtual void operator()(int pos) { setPosition(pos); }
   virtual block::Size doFillNextBlock(const block::Block& block);
 
  protected:
@@ -25,6 +26,7 @@ class FillableBuffer : public block::Filler, public Listener<int> {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(FillableBuffer);
 };
 
+}  // namespace util
 }  // namespace audio
 }  // namespace rec
 

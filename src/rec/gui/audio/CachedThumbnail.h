@@ -20,7 +20,7 @@ class CachedThumbnail
 
   void writeThumbnail();
 
-  bool isFull() const { return cacheWritten_; }
+  bool cacheWritten() const { return cacheWritten_; }
 
  private:
   const File file_;

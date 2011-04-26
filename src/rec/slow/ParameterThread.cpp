@@ -1,5 +1,5 @@
 #include "rec/slow/ParameterThread.h"
-#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
+#include "rec/audio/util/FileBuffer.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
@@ -8,17 +8,17 @@
 namespace rec {
 namespace slow {
 
-using namespace rec::audio::stretch;
 using namespace rec::audio::source;
+using namespace rec::audio::stretch;
+using namespace rec::audio::util;
 
 void setVirtualFile(Instance* i, const VirtualFile& f, const StretchLoop& s) {
-  ptr<PositionableAudioSource> source(createSourceAndLoadMetadata(f));
-  if (!source) {
+  FileBuffer buffer(f);
+  if (!buffer.buffer()) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
     return;
   }
   i->components_->songData_.setFile(f);
-
 }
 
 void setStretch(Instance* i, const VirtualFile& f, const StretchLoop& s) {

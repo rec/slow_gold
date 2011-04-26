@@ -1,4 +1,4 @@
-#include "rec/util/block/Filler.h"
+#include "rec/util/block/Fillable.h"
 
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/MergeBlockSet.h"
@@ -7,12 +7,12 @@ namespace rec {
 namespace util {
 namespace block {
 
-void Filler::setPosition(int position) {
+void Fillable::setPosition(int position) {
   ScopedLock l(lock_);
   position_ = position;
 }
 
-bool Filler::hasFilled(const Block& b) const {
+bool Fillable::hasFilled(const Block& b) const {
   ScopedLock l(lock_);
   if (isFull())
     return true;
@@ -24,39 +24,40 @@ bool Filler::hasFilled(const Block& b) const {
     hasFilled(Block(0, b.second - length_));
 }
 
-bool Filler::isFull() const {
+bool Fillable::isFull() const {
   ScopedLock l(lock_);
   return (fullTo(filled_) == length_);
 }
 
-void Filler::fillNextBlock() {
-  Block block;
-  {
-    ScopedLock l(lock_);
-    block = firstEmptyBlockAfter(filled_, position_, length_);
-  }
-
-  int numSamples = getSize(block);
-  if (numSamples <= 0) {
-    LOG(ERROR) << "Getting an empty block";
-    return;
-  }
-
-  block.second = doFillNextBlock(block);
-
+void Fillable::fillNextBlock() {
   ScopedLock l(lock_);
+  if (isFull())
+    return;
+
+  Block block = firstEmptyBlockAfter(filled_, position_, length_);
+  {
+    ScopedUnlock u(lock_);
+    int numSamples = getSize(block);
+    if (numSamples <= 0) {
+      LOG(ERROR) << "Getting an empty block";
+      return;
+    }
+    block.second = doFillNextBlock(block);
+  }
+
   merge(block, &filled_);
   if (isFull())
     onFilled();
 }
 
-bool Filler::waitUntilFilled(const Block& block, int maxTime, int waitTime) {
+bool waitUntilFilled(const Fillable& filler, const Block& block,
+                     int maxWaitTime, int waitTime) {
   Thread* thread = Thread::getCurrentThread();
   for (int time = 0; !thread->threadShouldExit(); time += waitTime) {
-    if (hasFilled(block))
+    if (filler.hasFilled(block))
       return true;
 
-    if (time > maxTime) {
+    if (time > maxWaitTime) {
       LOG(ERROR) << "Waited for a long time, no data: " << time;
       return false;
     }
@@ -70,3 +71,4 @@ bool Filler::waitUntilFilled(const Block& block, int maxTime, int waitTime) {
 }  // namespace block
 }  // namespace util
 }  // namespace rec
+
