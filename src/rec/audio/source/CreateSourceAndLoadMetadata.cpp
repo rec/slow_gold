@@ -1,4 +1,4 @@
-#include "rec/audio/source/VirtualFileSource.h"
+#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/cd/Album.h"
 #include "rec/audio/util/AudioFormatManager.h"
@@ -53,7 +53,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
 
 }  // namespace
 
-PositionableAudioSource* virtualFileSource(const VirtualFile& file) {
+PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
   ptr<AudioFormatReader> reader(createReaderAndLoadMetadata(file));
   if (reader)
     return new AudioFormatReaderSource(reader.transfer(), true);
@@ -65,3 +65,4 @@ PositionableAudioSource* virtualFileSource(const VirtualFile& file) {
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
+

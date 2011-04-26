@@ -7,7 +7,7 @@ namespace rec {
 namespace slow {
 
 class Instance;
-struct ThreadData;
+struct ParameterUpdater;
 
 class Threads {
  public:
@@ -18,7 +18,7 @@ class Threads {
   void startAll();
   void stop();
   CriticalSection* lock() { return &lock_; }
-  ThreadData* data() { return threadData_.get(); }
+  ParameterUpdater* updater() { return parameterUpdater_.get(); }
 
  private:
   typedef std::vector<Thread*> ThreadList;
@@ -29,7 +29,7 @@ class Threads {
   Instance* instance_;
   ThreadList threads_;
   CriticalSection lock_;
-  ptr<ThreadData> threadData_;
+  ptr<ParameterUpdater> parameterUpdater_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);
 };
