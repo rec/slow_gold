@@ -11,8 +11,8 @@ class Switcher {
  public:
   Switcher() {}
 
-  Type* getCurrent() { return current_.get(); }
-  Type* getNext() { return next_.get(); }
+  Type* current() { return current_.get(); }
+  Type* next() { return next_.get(); }
 
   void setNext(Type* n) {
     if (!next_)

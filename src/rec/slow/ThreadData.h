@@ -11,20 +11,15 @@
 namespace rec {
 namespace slow {
 
-class ThreadData : public Listener<const VirtualFile&>,
-                         public Listener<const audio::stretch::StretchLoop&> {
- public:
+struct ThreadData : public Listener<const VirtualFile&>,
+                    public Listener<const audio::stretch::StretchLoop&> {
   typedef audio::stretch::StretchLoop StretchLoop;
 
   ThreadData() : fileLocker_(&lock_), stretchLocker_(&lock_) {}
 
-  thread::Locker<VirtualFile>* file() { return &fileLocker_; }
-  thread::Locker<StretchLoop>* stretch() { return &stretchLocker_; }
-
   virtual void operator()(const VirtualFile& vf) { fileLocker_.set(vf); }
   virtual void operator()(const StretchLoop& sl) { stretchLocker_.set(sl); }
 
- private:
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<StretchLoop> stretchLocker_;
 

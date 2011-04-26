@@ -14,13 +14,15 @@ using namespace rec::audio::util;
 
 void setVirtualFile(Instance* i, const VirtualFile& f, const StretchLoop& s) {
   ptr<FileBuffer> buffer(new FileBuffer(f));
-  if (!buffer->buffer()) {
+  ThreadData* threadData = i->threads_->data();
+  if (!buffer->buffer())
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
-  } else {
-    return;
-  }
 
-  i->components_->songData_.setFile(f);
+  else if (threadData->fileBuffer_.next())
+    LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
+
+  else
+	  i->components_->songData_.setFile(f);
 }
 
 void setStretch(Instance* i, const VirtualFile& f, const StretchLoop& s) {
@@ -30,13 +32,13 @@ void setStretch(Instance* i, const VirtualFile& f, const StretchLoop& s) {
 void updateParameters(Instance* i) {
   ThreadData* threadData = i->threads_->data();
   VirtualFile file;
-  if (threadData->file()->readAndClearChanged(&file)) {
+  if (threadData->fileLocker_.readAndClearChanged(&file)) {
     StretchLoop loop = persist::get<StretchLoop>(file);
-    threadData->stretch()->initialize(loop);
+    threadData->stretchLocker_.initialize(loop);
     setVirtualFile(i, file, loop);
   } else {
     StretchLoop stretch;
-    if (threadData->stretch()->readAndClearChanged(&stretch))
+    if (threadData->stretchLocker_.readAndClearChanged(&stretch))
       setStretch(i, file, stretch);
   }
 }

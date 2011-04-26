@@ -35,7 +35,7 @@ void Threads::startAll() {
   start(&persist, "Persist");
   start(&pitch, "Pitch");
 
-  data_->file()->set(persist::getApp<VirtualFile>());
+  data_->fileLocker_.set(persist::getApp<VirtualFile>());
 }
 
 Threads::~Threads() {
