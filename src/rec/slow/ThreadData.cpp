@@ -15,7 +15,7 @@ using namespace rec::audio::util;
 void setVirtualFile(Instance* i, const VirtualFile& f, const StretchLoop& s) {
   ptr<FileBuffer> buffer(new FileBuffer(f));
   ThreadData* threadData = i->threads_->data();
-  if (!buffer->buffer())
+  if (!buffer->buffer_)
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
 
   else if (threadData->fileBuffer_.next())

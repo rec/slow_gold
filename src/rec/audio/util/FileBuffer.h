@@ -10,19 +10,15 @@ namespace rec {
 namespace audio {
 namespace util {
 
-class FileBuffer {
- public:
+struct FileBuffer {
   typedef source::RunnyProto RunnyProto;
 
   FileBuffer(const VirtualFile& file,
              const RunnyProto& desc = RunnyProto::default_instance());
 
-  CachedThumbnail* thumbnail() { return thumbnail_.get(); }
-  FillableBuffer* buffer() { return buffer_.get(); }
-
- private:
   ptr<CachedThumbnail> thumbnail_;
   ptr<FillableBuffer> buffer_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(FileBuffer);
 };
 
