@@ -35,6 +35,8 @@ void Threads::startAll() {
   start(&updateParameters, "Parameter");
   start(&persist, "Persist");
   start(&pitch, "Pitch");
+
+  parameterUpdater_->file()->set(persist::getApp<VirtualFile>());
 }
 
 Threads::~Threads() {

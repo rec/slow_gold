@@ -21,7 +21,6 @@ Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->components_->directoryTree_.treeView()->dropBroadcaster()->
     addListener(this);
   instance_->components_->waveform_.dropBroadcaster()->addListener(this);
-  persist::appData<VirtualFile>()->addListener(this);
 }
 
 void Listeners::operator()(const ClockTick&) {}

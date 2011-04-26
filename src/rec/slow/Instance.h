@@ -3,25 +3,16 @@
 
 #include "rec/base/base.h"
 
+namespace rec { namespace audio { class Device; }}
+namespace rec { namespace audio { namespace source { class Player; }}}
+
 namespace rec {
-namespace audio {
-
-class Device;
-
-namespace source {
-
-class Player;
-
-}   // namespace source
-}   // namespace audio
-
 namespace slow {
 
 class Components;
 class Menus;
 class Parameters;
 class PersistentData;
-class Player;
 class Target;
 class Threads;
 class Listeners;
@@ -30,8 +21,6 @@ class Listeners;
 // future there might be more than one.  This is where all the Broadcasters live
 // and all the file and stretch setting persistent data, too.
 struct Instance {
-  typedef audio::source::Player Player;
-
   Instance();
   ~Instance();
 
@@ -40,7 +29,7 @@ struct Instance {
   ptr<Menus> menus_;
   ptr<PersistentData> data_;
   ptr<Parameters> parameters_;
-  ptr<Player> player_;
+  ptr<audio::source::Player> player_;
   ptr<Target> target_;
   ptr<Listeners> listeners_;
   ptr<Threads> threads_;

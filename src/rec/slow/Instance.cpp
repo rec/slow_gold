@@ -19,7 +19,7 @@ Instance::Instance()
     menus_(new Menus(this)),
     data_(new PersistentData()),
     parameters_(new Parameters()),
-    player_(new Player(device_.get())),
+    player_(new audio::source::Player(device_.get())),
     target_(new Target(this)),
     listeners_(new Listeners(this)),
     threads_(new Threads(this)) {
