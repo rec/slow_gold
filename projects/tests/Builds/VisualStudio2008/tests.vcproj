@@ -223,6 +223,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\util\AudioDeviceSetup.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\AudioFormatManager.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CachedThumbnail.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\Clear.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
@@ -426,8 +428,6 @@
         </Filter>
         <Filter Name="gui">
           <Filter Name="audio">
-            <File RelativePath="..\..\..\..\src\rec\gui\audio\CachedThumbnail.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\audio\CachedThumbnail.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\SetupPage.h"/>

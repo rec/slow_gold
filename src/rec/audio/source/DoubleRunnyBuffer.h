@@ -1,12 +1,12 @@
 #ifndef __REC_AUDIO_SOURCE_DOUBLERUNNYBUFFER__
 #define __REC_AUDIO_SOURCE_DOUBLERUNNYBUFFER__
 
-#include "rec/audio/util/FillableBuffer.h"
-#include "rec/audio/source/Switching.h"
 #include "rec/audio/source/Runny.pb.h"
+#include "rec/audio/source/Switching.h"
 #include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/audio/util/CachedThumbnail.h"
+#include "rec/audio/util/FillableBuffer.h"
 #include "rec/data/persist/Persist.h"
-#include "rec/gui/CachedThumbnail.h"
 #include "rec/util/thread/ChangeLocker.h"
 
 namespace rec {
