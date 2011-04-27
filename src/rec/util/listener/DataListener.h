@@ -10,7 +10,7 @@ namespace rec {
 namespace util {
 namespace listener {
 
-// DataListener listens to changes in peristent data.
+// DataListener listens to changes in persistent data.
 
 template <typename Proto>
 class DataListener : public Listener<const Proto&> {
