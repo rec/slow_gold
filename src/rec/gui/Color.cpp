@@ -32,39 +32,34 @@ Colour makeColour(const Color& color) {
   return Colour(makeARGB(color));
 }
 
-Colour get(unsigned int i) {
-  static Colour DEFAULT_COLORS[] = {
+static std::pair<Colour*, Colour*> getColours() {
+  static Colour COLORS[] = {
     Colours::white,
     Colours::lightblue,
     Colours::seagreen,
-    Colours::lightgrey,
-    Colours::darkgrey,
-    Colours::grey
+    juce::Colour(0xffd3d3d3),
+    juce::Colour(0xff809090),
+    // Colours::grey,
+    // Colours::blue, //grey
   };
+  return std::make_pair(COLORS, COLORS + arraysize(COLORS));
+}
 
-  static int SIZE = arraysize(DEFAULT_COLORS);
-  if (i < SIZE)
-    return DEFAULT_COLORS[i];
+Colour get(unsigned int i) {
+  std::pair<Colour*, Colour*> colours = getColours();
+  if (i < colours.second - colours.first)
+    return colours.first[i];
 
   LOG(ERROR) << "Couldn't get color " << i;
-  return DEFAULT_COLORS[arraysize(DEFAULT_COLORS) - 1];
+  return colours.second[-1];
 };
 
 
 static Colors getDefaultInternal() {
-  static Colour DEFAULT_COLORS[] = {
-    Colours::white,
-    Colours::lightblue,
-    Colours::seagreen,
-    Colours::seagreen,
-    Colours::lightgrey,
-    Colours::darkgrey,
-    Colours::grey
-  };
-
   Colors colors;
-  for (int i = 0; i < arraysize(DEFAULT_COLORS); ++i)
-    colors.add_color()->set_argb(DEFAULT_COLORS[i].getARGB());
+  std::pair<Colour*, Colour*> colours = getColours();
+  for (Colour* c = colours.first; c != colours.second; ++c)
+    colors.add_color()->set_argb(c->getARGB());
   return colors;
 };
 

@@ -36,6 +36,7 @@ void Root::checkVolumes() {
 }
 
 void Root::operator()(const VirtualFile& file) {
+  DLOG(INFO) << "Root::(VirtualFile)";
 	broadcast(file);
 }
 
