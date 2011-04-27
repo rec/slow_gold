@@ -29,7 +29,7 @@ void PersistentWindow::resized() {
 void PersistentWindow::writeData() {
   // TODO!
   if (boundsSet_)
-    persist::appData<slow::AppLayout>()->set("bounds", gui::copy(getBounds()));
+    persist::setter<slow::AppLayout>()->set("bounds", gui::copy(getBounds()));
 }
 
 void PersistentWindow::moved() {

@@ -33,7 +33,7 @@ class App {
     return fileData<Proto>(getShadowDirectory(vf));
   }
 
-  template <typename Proto> Data<Proto>* appData() {
+  template <typename Proto> Data<Proto>* setter() {
     return fileData<Proto>(getApplicationDirectory());
   }
 

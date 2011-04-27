@@ -18,7 +18,7 @@ struct ThreadData : public Listener<const VirtualFile&>,
 
   ThreadData() : fileLocker_(&lock_), stretchLocker_(&lock_),
                  fetchThread_(NULL) {
-    persist::appData<VirtualFile>()->addListener(this);
+    persist::setter<VirtualFile>()->addListener(this);
   }
 
   thread::Locker<VirtualFile> fileLocker_;

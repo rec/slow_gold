@@ -46,7 +46,7 @@ Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_) {
   registerAllCommandsForTarget();
 
 #ifdef TODO
-  add(Command::CLOSE, makeCallback(persist::appData<VirtualFile>(), VirtualFile()),
+  add(Command::CLOSE, makeCallback(persist::setter<VirtualFile>(), VirtualFile()),
       "Close", "File",
       "Close the current file", 'w');
 

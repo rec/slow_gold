@@ -35,7 +35,7 @@ void MainPage::paint(Graphics& g) {
 }
 
 void MainPage::doLayout(Components* components) {
-  persist::Data<AppLayout>* data = persist::appData<AppLayout>();
+  persist::Data<AppLayout>* data = persist::setter<AppLayout>();
   AppLayout a = data->get();
 
   bool full[] = {a.full_directory(),  a.full_waveform(), a.full_controller()};

@@ -42,7 +42,7 @@ void Listeners::operator()(const audio::stretch::Stretch&) {}
 
 void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const file::VirtualFile& f) {
-  // persist::appData<VirtualFile>()->set(f);
+  // persist::setter<VirtualFile>()->set(f);
   // ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
   // instance_->components_->songData_.setFile(f);
 #if 0
@@ -55,7 +55,7 @@ void Listeners::operator()(const file::VirtualFile& f) {
     instance_.clearData();
 
   } else {
-    persist::Data<LoopPointList>* listData = persist::data<LoopPointList>(file);
+    persist::Data<LoopPointList>* listData = persist::setter<LoopPointList>(file);
     loops_.setData(listData);
     waveform_.setData(listData);
 
@@ -89,7 +89,7 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &instance_->components_->waveform_) {
     if (files.file_size() >= 1)
-		  persist::appData<VirtualFile>()->set(files.file(0));
+		  persist::setter<VirtualFile>()->set(files.file(0));
 
     LOG_IF(ERROR, files.file_size() != 1);
 
@@ -98,13 +98,13 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 
     typedef std::set<string> FileSet;
     FileSet existing;
-    VirtualFileList list(persist::getApp<file::VirtualFileList>());
+    VirtualFileList list(persist::get<file::VirtualFileList>());
     for (int i = 0; i < list.file_size(); ++i)
       existing.insert(str(getFile(list.file(i)).getFullPathName()));
 
     for (int i = 0; i < files.file_size(); ++i) {
       if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        persist::appData<file::VirtualFileList>()->append("file", files.file(i));
+        persist::setter<file::VirtualFileList>()->append("file", files.file(i));
     }
   }
 }
@@ -213,7 +213,7 @@ void MainPage::zoomOut() {
 void MainPage::loadRecentFile(int menuItemId) {
   gui::RecentFiles recent = gui::getSortedRecentFiles();
   const VirtualFile& file = recent.file(menuItemId).file();
-  persist::data<VirtualFile>()->set(file);
+  persist::setter<VirtualFile>()->set(file);
 }
 
 void MainPage::cut() {
@@ -298,7 +298,7 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
   persist::Data<Stretch>* stretchy = NULL;
   thread_ptr<audio::source::DoubleRunnyBuffer> dr;
   if (!empty(file)) {
-    stretchy = persist::data<Stretch>(file);
+    stretchy = persist::setter<Stretch>(file);
     dr.reset(new audio::source::DoubleRunnyBuffer(file, stretchy));
   }
 

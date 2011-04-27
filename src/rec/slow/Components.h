@@ -24,7 +24,7 @@ struct Components {
       : waveform_(widget::waveform::WaveformProto()),
         playbackController_(this),
         mainPage_(this) {
-    playbackController_.setSetter(persist::appData<AppLayout>());
+    playbackController_.setSetter(persist::setter<AppLayout>());
   }
 
   gui::audio::TimeController timeController_;

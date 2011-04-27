@@ -20,7 +20,7 @@ class PersistentWindow : public DocumentWindow {
 
   template <typename Proto>
   void computeBounds() {
-    persist::Data<Proto>* data = persist::appData<Proto>();
+    persist::Data<Proto>* data = persist::setter<Proto>();
     setLimitedBounds(data->fileReadSuccess() ? copy(data->get().bounds()) :
                      Rect(300, 100, 800, 600));  // TODO!
   }

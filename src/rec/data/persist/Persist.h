@@ -21,37 +21,24 @@ bool get(Proto* proto, const VirtualFile& f = noFile()) {
 }
 
 template <typename Proto>
-void set(const Proto& proto, const VirtualFile& f = noFile()) {
-  setter<Proto>(f)->set(proto);
-}
-
-// Deprecated from here down.
-template <typename Proto>
-Data<Proto>* data(const VirtualFile& f) {
-  return setter<Proto>(f);
-}
-
-template <typename Proto>
-Data<Proto>* appData() {
-  return getApp()->appData<Proto>();
-}
-
-template <typename Proto>
-Data<Proto>* data(const VirtualFile* f) {
-  return f ? getApp()->data<Proto>(*f) : NULL;
-}
-
-template <typename Proto>
-const Proto get(const VirtualFile& f) {
+const Proto get(const VirtualFile& f = noFile()) {
   Proto p;
   get<Proto>(&p);
   return p;
 }
 
 template <typename Proto>
-const Proto getApp() {
-  return appData<Proto>()->get();
+void set(const Proto& proto, const VirtualFile& f = noFile()) {
+  setter<Proto>(f)->set(proto);
 }
+
+#if 0
+// Deprecated from here down.
+template <typename Proto>
+Data<Proto>* data(const VirtualFile& f) {
+  return setter<Proto>(f);
+}
+#endif
 
 }  // namespace persist
 }  // namespace rec

@@ -25,7 +25,7 @@ void fetch(Instance* i) {
   Switcher<FileBuffer>* switcher = &i->threads_->data()->fileBuffer_;
   switcher->switchIfNext();
   FileBuffer* buffer = switcher->current();
-  if (!buffer || !buffer->buffer_ || buffer->buffer_->isFull()) 
+  if (!buffer || !buffer->buffer_ || buffer->buffer_->isFull())
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
   else
     buffer->buffer_->fillNextBlock();
@@ -45,7 +45,7 @@ void Threads::startAll() {
   start(&persist, "Persist");
   start(&pitch, "Pitch");
 
-  data_->fileLocker_.set(persist::getApp<VirtualFile>());
+  data_->fileLocker_.set(persist::get<VirtualFile>());
 }
 
 Threads::~Threads() {

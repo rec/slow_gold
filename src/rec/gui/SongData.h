@@ -26,7 +26,7 @@ class SongData : public SetterTextArea {
   }
 
   void setFile(const VirtualFile& file) {
-    setData(empty(file) ? NULL : persist::data<music::Metadata>(file));
+    setData(empty(file) ? NULL : persist::setter<music::Metadata>(file));
   }
 
  private:
