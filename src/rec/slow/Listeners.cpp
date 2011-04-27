@@ -38,7 +38,7 @@ void Listeners::operator()(juce::AudioThumbnail* thumb) {
 void Listeners::operator()(const ClockTick&) {}
 void Listeners::operator()(const ClockUpdate&) {}
 void Listeners::operator()(const SelectionRange&) {}
-void Listeners::operator()(const audio::stretch::StretchLoop&) {}
+void Listeners::operator()(const audio::stretch::Stretch&) {}
 
 void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const file::VirtualFile& f) {
@@ -137,7 +137,7 @@ void Listeners::operator()(const juce::AudioThumbnail&) {
 }
 
 void Listeners::operator()(const SelectionRange& sel) {
-  if (persist::Data<StretchLoop>* data = stretchyPlayer_.getStretchy()) {
+  if (persist::Data<Stretch>* data = stretchyPlayer_.getStretchy()) {
     TimeRange range(sel);
     if (range.end_ < 0.0001)
       range.end_ = length_;
@@ -152,7 +152,7 @@ void Listeners::operator()(const SelectionRange& sel) {
   }
 }
 
-void Listeners::operator()(const audio::stretch::StretchLoop& x) {
+void Listeners::operator()(const audio::stretch::Stretch& x) {
 }
 
 
@@ -261,7 +261,7 @@ void Waveform::operator()(const gui::LoopPointList& loopPoints) {
 
   ZoomData zoomData_;
 
-void PlaybackController::operator()(const StretchLoop& desc) {
+void PlaybackController::operator()(const Stretch& desc) {
   thread::callAsync(&stretchyController_,
                     &gui::StretchyController::enableSliders,
                     !desc.stretch().disabled());
@@ -295,10 +295,10 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
       return;
   }
 
-  persist::Data<StretchLoop>* stretchy = NULL;
+  persist::Data<Stretch>* stretchy = NULL;
   thread_ptr<audio::source::DoubleRunnyBuffer> dr;
   if (!empty(file)) {
-    stretchy = persist::data<StretchLoop>(file);
+    stretchy = persist::data<Stretch>(file);
     dr.reset(new audio::source::DoubleRunnyBuffer(file, stretchy));
   }
 

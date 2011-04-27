@@ -80,5 +80,4 @@ inline SampleTime timeToSamples(RealTime time, double rate = 44100.0) {
 class None {};
 
 }  // namespace rec
-
 #endif  // __REC_BASE_BASENOJUCE__

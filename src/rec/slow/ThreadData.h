@@ -13,8 +13,8 @@ namespace rec {
 namespace slow {
 
 struct ThreadData : public Listener<const VirtualFile&>,
-                    public Listener<const audio::stretch::StretchLoop&> {
-  typedef audio::stretch::StretchLoop StretchLoop;
+                    public Listener<const audio::stretch::Stretch&> {
+  typedef audio::stretch::Stretch Stretch;
 
   ThreadData() : fileLocker_(&lock_), stretchLocker_(&lock_),
                  fetchThread_(NULL) {
@@ -22,7 +22,7 @@ struct ThreadData : public Listener<const VirtualFile&>,
   }
 
   thread::Locker<VirtualFile> fileLocker_;
-  thread::Locker<StretchLoop> stretchLocker_;
+  thread::Locker<Stretch> stretchLocker_;
 
   Switcher<audio::util::FileBuffer> fileBuffer_;
   Thread* fetchThread_;
@@ -31,7 +31,7 @@ struct ThreadData : public Listener<const VirtualFile&>,
   virtual void operator()(const VirtualFile& vf) {
     fileLocker_.set(vf);
   }
-  virtual void operator()(const StretchLoop& sl) { stretchLocker_.set(sl); }
+  virtual void operator()(const Stretch& sl) { stretchLocker_.set(sl); }
 
   DISALLOW_COPY_AND_ASSIGN(ThreadData);
 };

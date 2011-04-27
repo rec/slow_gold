@@ -5,5 +5,5 @@ package rec.slow;
 
 message Parameters {
   optional util.file.VirtualFile file = 1;
-  optional audio.stretch.StretchLoop stretch = 2 ;
+  optional audio.stretch.Stretch stretch = 2 ;
 };

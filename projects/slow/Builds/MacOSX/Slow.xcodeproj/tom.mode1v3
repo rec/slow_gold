@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E23DB893136892C900A52041</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>ThreadData.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E23DB894136892C900A52041</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>ThreadData.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E23DB8B31368940700A52041</string>
+						<key>history</key>
+						<array>
+							<string>E23DB89C1368933E00A52041</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1324, 781}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>932 267 1324 822 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -321,7 +362,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Waveform.cpp</string>
+								<string>Waveform.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +370,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Waveform.cpp</string>
+										<string>Waveform.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E23DB85A1368739000A52041</string>
+										<string>E23DB8B21368940700A52041</string>
 										<key>history</key>
 										<array>
 											<string>E2E28AE912E6457B004DE2DE</string>
@@ -409,7 +450,8 @@
 											<string>E23DB7B91367945B00A52041</string>
 											<string>E23DB83913686FE100A52041</string>
 											<string>E23DB8421368706700A52041</string>
-											<string>E23DB84B1368720A00A52041</string>
+											<string>E23DB87813688B2E00A52041</string>
+											<string>E23DB87913688B2E00A52041</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -607,14 +649,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E23DB85B1368739000A52041</string>
+		<string>E23DB8B41368940700A52041</string>
 		<string>E23DB75E1367533F00A52041</string>
 		<string>E23DB7421367513300A52041</string>
 		<string>E23DB7431367513300A52041</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>E290FED3120A432900532309</string>
 		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>E23DB893136892C900A52041</string>
+		<string>E290FED3120A432900532309</string>
 	</array>
 	<key>WindowString</key>
 	<string>462 192 1397 986 0 0 1920 1178 </string>
@@ -633,14 +676,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Waveform.cpp</string>
+								<string>Persist.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -657,6 +698,8 @@
 							<string>567pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -709,7 +752,7 @@
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -992,7 +1035,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

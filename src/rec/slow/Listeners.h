@@ -8,7 +8,7 @@
 
 namespace rec {
 
-namespace audio { namespace stretch { class StretchLoop; }}
+namespace audio { namespace stretch { class Stretch; }}
 namespace gui { class DropFiles; }
 namespace gui { namespace audio { class LoopPointList; }}
 
@@ -39,7 +39,7 @@ class Listeners : public Listener<None>,
   void operator()(juce::AudioThumbnail*);
   void operator()(const ClockUpdate&);
   void operator()(const SelectionRange&);
-  void operator()(const audio::stretch::StretchLoop&);
+  void operator()(const audio::stretch::Stretch&);
   void operator()(const file::VirtualFile&);
   void operator()(const file::VirtualFileList&);
   void operator()(const gui::audio::LoopPointList&);

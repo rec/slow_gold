@@ -52,6 +52,9 @@ const File getVirtual(const VirtualFile& v) {
 }
 
 const File getShadowDirectory(const VirtualFile& vf) {
+  if (empty(vf))
+    return getApplicationDirectory();
+
   String name = String(VirtualFile::Type_Name(vf.type()).c_str()).toLowerCase();
   File f = getApplicationDirectory().getChildFile(name);
   return getFile(getFile(f, vf.name()), vf.path());
