@@ -174,6 +174,9 @@ TimeRange Waveform::getTimeRange() const {
     r.end_= zoom_.end();
   }
 
+  if (r.size() < 0.01)
+    r = TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : 0.01);
+
   return r;
 }
 
