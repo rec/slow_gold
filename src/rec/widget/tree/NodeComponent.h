@@ -10,14 +10,9 @@ namespace tree {
 class NodeComponent : public juce::Component {
  public:
   NodeComponent(Node* n) : Component(n->name()), node_(n), clicked_(false) {}
-
-  virtual void paint(juce::Graphics& g) { node_->paint(g); }
-
+  virtual void paint(juce::Graphics& g)           { node_->paint(g); }
   virtual void mouseDown(const juce::MouseEvent&) { node_->setClicked(true); }
-
-  virtual void mouseUp(const juce::MouseEvent&) {
-    node_->setClicked(false);
-  }
+  virtual void mouseUp(const juce::MouseEvent&)   { node_->setClicked(false); }
 
  private:
   Node* node_;

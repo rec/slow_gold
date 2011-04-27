@@ -26,6 +26,7 @@ class ClockTick;
 class Instance;
 
 class Listeners : public Listener<None>,
+                  //                   public Listener<const VirtualFile&>,
                   public Listener<const gui::DropFiles&>,
                   public Listener<audio::transport::State> {
  public:
@@ -40,7 +41,7 @@ class Listeners : public Listener<None>,
   void operator()(const ClockUpdate&);
   void operator()(const SelectionRange&);
   void operator()(const audio::stretch::Stretch&);
-  void operator()(const file::VirtualFile&);
+  // void operator()(const file::VirtualFile&);
   void operator()(const file::VirtualFileList&);
   void operator()(const gui::audio::LoopPointList&);
   void operator()(const widget::waveform::CursorTime&);

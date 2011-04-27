@@ -13,13 +13,16 @@ namespace persist {
 class App;
 
 template <typename Proto>
-class Data : public UntypedData, public Broadcaster<const Proto&> {
+class Data : public UntypedData, public Broadcaster<const Proto&>,
+             public Listener<const Proto&> {
  public:
   // Get a consistent snapshot of the current value.
   Proto get() const {
     ScopedLock l(UntypedData::lock_);
     return proto_;
   }
+
+  virtual void operator()(const Proto& p) { set(p); }
 
   virtual string getTypeName() const { return proto_.GetTypeName(); }
 

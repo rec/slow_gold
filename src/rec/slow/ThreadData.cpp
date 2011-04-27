@@ -30,10 +30,13 @@ void setVirtualFile(Instance* i, const VirtualFile& f) {
 
   buffer->thumbnail_->addListener(i->listeners_.get());
   (*i->listeners_)(buffer->thumbnail_->thumbnail());
+
   switcher->setNext(buffer.transfer());
+
   i->threads_->data()->fetchThread_->notify();
+  threadData->stretchLocker_.set(persist::get<Stretch>(f));
+
   i->components_->songData_.setFile(f);
-  // TODO persist::getData<
 }
 
 void setStretch(Instance* i, const VirtualFile& f, const Stretch& s) {
@@ -43,7 +46,6 @@ void updateParameters(Instance* i) {
   ThreadData* threadData = i->threads_->data();
   VirtualFile file;
   if (threadData->fileLocker_.readAndClearChanged(&file)) {
-    threadData->stretchLocker_.set(persist::get<Stretch>(file));
     setVirtualFile(i, file);
   } else {
     Stretch stretch;

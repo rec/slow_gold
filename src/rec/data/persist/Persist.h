@@ -14,31 +14,14 @@ Data<Proto>* setter(const VirtualFile& f = noFile()) {
 }
 
 template <typename Proto>
-bool get(Proto* proto, const VirtualFile& f = noFile()) {
-  Data<Proto>* data = setter<Proto>(f);
-  *proto = data->get();
-  return data->fileReadSuccess();
-}
-
-template <typename Proto>
 const Proto get(const VirtualFile& f = noFile()) {
-  Proto p;
-  get<Proto>(&p);
-  return p;
+  return setter<Proto>(f)->get();
 }
 
 template <typename Proto>
 void set(const Proto& proto, const VirtualFile& f = noFile()) {
   setter<Proto>(f)->set(proto);
 }
-
-#if 0
-// Deprecated from here down.
-template <typename Proto>
-Data<Proto>* data(const VirtualFile& f) {
-  return setter<Proto>(f);
-}
-#endif
 
 }  // namespace persist
 }  // namespace rec

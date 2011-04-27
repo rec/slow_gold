@@ -21,9 +21,10 @@ namespace slow {
 
 Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->player_->addListener(this);
-  instance_->components_->directoryTree_.treeView()->dropBroadcaster()->
-    addListener(this);
   instance_->components_->waveform_.dropBroadcaster()->addListener(this);
+  widget::tree::Root* root = &instance_->components_->directoryTree_;
+  root->treeView()->dropBroadcaster()->addListener(this);
+  root->addListener(persist::setter<VirtualFile>());
 }
 
 void Listeners::operator()(None) {
@@ -35,17 +36,55 @@ void Listeners::operator()(juce::AudioThumbnail* thumb) {
   instance_->components_->waveform_.setAudioThumbnail(thumb);
 }
 
+void Listeners::operator()(const gui::DropFiles& dropFiles) {
+  const file::VirtualFileList& files = dropFiles.files_;
+  if (dropFiles.target_ == &instance_->components_->waveform_) {
+    if (files.file_size() >= 1)
+      persist::set(files.file(0));
+
+    LOG_IF(ERROR, files.file_size() != 1);
+
+  } else if (dropFiles.target_ == instance_->components_->directoryTree_.treeView()) {
+    using file::getFile;
+
+    typedef std::set<string> FileSet;
+    FileSet existing;
+    VirtualFileList list(persist::get<file::VirtualFileList>());
+    for (int i = 0; i < list.file_size(); ++i)
+      existing.insert(str(getFile(list.file(i)).getFullPathName()));
+
+    for (int i = 0; i < files.file_size(); ++i) {
+      if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
+        persist::setter<file::VirtualFileList>()->append("file", files.file(i));
+    }
+  }
+}
+
 void Listeners::operator()(const ClockTick&) {}
 void Listeners::operator()(const ClockUpdate&) {}
 void Listeners::operator()(const SelectionRange&) {}
 void Listeners::operator()(const audio::stretch::Stretch&) {}
 
 void Listeners::operator()(const file::VirtualFileList&) {}
+void Listeners::operator()(const gui::audio::LoopPointList&) {}
+void Listeners::operator()(const widget::waveform::CursorTime&) {}
+void Listeners::operator()(const widget::waveform::TimeAndMouseEvent&) {}
+void Listeners::operator()(const widget::waveform::ZoomProto&) {}
+void Listeners::operator()(RealTime) {}
+
+void Listeners::operator()(audio::transport::State state) {
+  instance_->components_->transportController_.setTransportState(state);
+  instance_->player_->setState(state);
+}
+
+#ifdef TODO
+
+
+#if 0
 void Listeners::operator()(const file::VirtualFile& f) {
-  // persist::setter<VirtualFile>()->set(f);
+  persist::setter<VirtualFile>()->set(f);
   // ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
   // instance_->components_->songData_.setFile(f);
-#if 0
   if (source)
 
   }
@@ -85,42 +124,6 @@ void Listeners::operator()(const file::VirtualFile& f) {
 #endif
 }
 
-void Listeners::operator()(const gui::DropFiles& dropFiles) {
-  const file::VirtualFileList& files = dropFiles.files_;
-  if (dropFiles.target_ == &instance_->components_->waveform_) {
-    if (files.file_size() >= 1)
-		  persist::setter<VirtualFile>()->set(files.file(0));
-
-    LOG_IF(ERROR, files.file_size() != 1);
-
-  } else if (dropFiles.target_ == instance_->components_->directoryTree_.treeView()) {
-    using file::getFile;
-
-    typedef std::set<string> FileSet;
-    FileSet existing;
-    VirtualFileList list(persist::get<file::VirtualFileList>());
-    for (int i = 0; i < list.file_size(); ++i)
-      existing.insert(str(getFile(list.file(i)).getFullPathName()));
-
-    for (int i = 0; i < files.file_size(); ++i) {
-      if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        persist::setter<file::VirtualFileList>()->append("file", files.file(i));
-    }
-  }
-}
-
-void Listeners::operator()(const gui::audio::LoopPointList&) {}
-void Listeners::operator()(const widget::waveform::CursorTime&) {}
-void Listeners::operator()(const widget::waveform::TimeAndMouseEvent&) {}
-void Listeners::operator()(const widget::waveform::ZoomProto&) {}
-void Listeners::operator()(RealTime) {}
-
-void Listeners::operator()(audio::transport::State state) {
-  instance_->components_->transportController_.setTransportState(state);
-  instance_->player_->setState(state);
-}
-
-#ifdef TODO
 
 using gui::audio::LoopPoint;
 using gui::audio::LoopPointList;
