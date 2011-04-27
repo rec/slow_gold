@@ -25,11 +25,13 @@ CachedThumbnail::CachedThumbnail(const File& file, int compression, int length)
   }
 }
 
-CachedThumbnail::~CachedThumbnail() {}
+ CachedThumbnail::~CachedThumbnail() {}
 
 void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
   thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
-  broadcast(true);
+  broadcast();
+  if (thumbnail_.isFullyLoaded())
+    writeThumbnail();
 }
 
 void CachedThumbnail::writeThumbnail() {

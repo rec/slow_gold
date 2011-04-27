@@ -24,7 +24,8 @@ class Threads {
   typedef std::vector<Thread*> ThreadList;
   typedef void (*InstanceFunction)(Instance*);
 
-  void start(InstanceFunction f, const String& name, int waitTime = LOOP_TIME);
+  Thread* start(InstanceFunction f, const String& name,
+                int waitTime = LOOP_TIME);
 
   Instance* instance_;
   ThreadList threads_;

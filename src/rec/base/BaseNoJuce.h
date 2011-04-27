@@ -77,6 +77,8 @@ inline SampleTime timeToSamples(RealTime time, double rate = 44100.0) {
   return static_cast<SampleTime>(time * rate);
 }
 
+class None {};
+
 }  // namespace rec
 
 #endif  // __REC_BASE_BASENOJUCE__

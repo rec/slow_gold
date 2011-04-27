@@ -51,14 +51,11 @@ bool isReadyForUpdate() {
   else
     mustUpdateFile.deleteFile();
 
-  LOG(INFO) << "isReadyForUpdate: " << ready;
   return ready;
 }
 
 String getVersion() {
-  LOG(INFO) << "update:  " << VERSION_FILE.toString(false);
   String version = VERSION_FILE.readEntireTextStream();
-
   if (!(version.length() && version[0] >= '0' && version[0] <= '9'))
     version = "";
 
@@ -74,8 +71,6 @@ String majorVersion(const String& version) {
     if (j >= 0)
       v = v.substring(0, j);
   }
-
-	LOG(INFO) << "version: " << version << "v: " << v;
   return v;
 }
 

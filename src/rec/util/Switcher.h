@@ -15,12 +15,16 @@ class Switcher {
   Type* next() { return next_.get(); }
 
   void setNext(Type* n) {
-    if (!next_)
-      next_ = n;
+    if (next_) {
+      LOG(ERROR) << "Tried to set next before switch";
+      delete n;
+    } else {
+      next_.reset(n);
+    }
   }
 
-  void switchToNext() {
-    if (!next_) {
+  void switchIfNext() {
+    if (next_) {
       current_.swap(next_);
       next_.reset();
     }

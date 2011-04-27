@@ -7,8 +7,8 @@ namespace rec {
 namespace audio {
 namespace util {
 
-class CachedThumbnail
-  : public Listener<const AudioSourceChannelInfo&>, public Broadcaster<bool> {
+class CachedThumbnail : public Listener<const AudioSourceChannelInfo&>,
+                        public Broadcaster<None> {
  public:
   CachedThumbnail(const File& file, int compression, int sampleLength);
   virtual ~CachedThumbnail();

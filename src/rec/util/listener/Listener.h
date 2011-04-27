@@ -43,6 +43,7 @@ class Broadcaster {
   virtual ~Broadcaster();
 
   virtual void broadcast(Type x);
+  void broadcast() { broadcast(Type()); }
 
 #ifdef BROADCASTERS_ARE_LISTENERS
   virtual void operator()(Type x) { broadcast(x); }

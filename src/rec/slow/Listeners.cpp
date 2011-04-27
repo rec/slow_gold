@@ -7,8 +7,11 @@
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Threads.h"
+#include "rec/slow/ThreadData.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/CursorTime.h"
 #include "rec/widget/waveform/TimeAndMouseEvent.h"
 #include "rec/widget/waveform/Zoom.pb.h"
@@ -23,16 +26,23 @@ Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->components_->waveform_.dropBroadcaster()->addListener(this);
 }
 
+void Listeners::operator()(None) {
+  thread::callAsync(&instance_->components_->waveform_,
+                    &widget::waveform::Waveform::repaint);
+}
+
+void Listeners::operator()(juce::AudioThumbnail* thumb) {
+  instance_->components_->waveform_.setAudioThumbnail(thumb);
+}
+
 void Listeners::operator()(const ClockTick&) {}
-void Listeners::operator()(const juce::AudioThumbnail&) {}
 void Listeners::operator()(const ClockUpdate&) {}
 void Listeners::operator()(const SelectionRange&) {}
 void Listeners::operator()(const audio::stretch::StretchLoop&) {}
 
 void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const file::VirtualFile& f) {
-  DLOG(INFO) << "Receiving file " << f.DebugString();
-  DLOG(INFO) << juce::MessageManager::getInstance()->isThisTheMessageThread();
+  // persist::appData<VirtualFile>()->set(f);
   // ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
   // instance_->components_->songData_.setFile(f);
 #if 0

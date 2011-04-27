@@ -25,38 +25,29 @@ namespace slow {
 class ClockTick;
 class Instance;
 
-class Listeners :
-    public Listener<const juce::AudioThumbnail&>,
-    public Listener<const ClockTick&>,
-    public Listener<const ClockUpdate&>,
-    public Listener<const SelectionRange&>,
-    public Listener<const audio::stretch::StretchLoop&>,
-    public Listener<const file::VirtualFile&>,
-    public Listener<const file::VirtualFileList&>,
-    public Listener<const gui::DropFiles&>,
-    public Listener<const gui::audio::LoopPointList&>,
-    public Listener<const widget::waveform::CursorTime&>,
-    public Listener<const widget::waveform::TimeAndMouseEvent&>,
-    public Listener<const widget::waveform::ZoomProto&>,
-    public Listener<RealTime>,
-    public Listener<audio::transport::State> {
+class Listeners : public Listener<None>,
+                  public Listener<const gui::DropFiles&>,
+                  public Listener<audio::transport::State> {
  public:
   explicit Listeners(Instance* i);
 
-  virtual void operator()(const ClockTick&);
-  virtual void operator()(const juce::AudioThumbnail&);
-  virtual void operator()(const ClockUpdate&);
-  virtual void operator()(const SelectionRange&);
-  virtual void operator()(const audio::stretch::StretchLoop&);
-  virtual void operator()(const file::VirtualFile&);
-  virtual void operator()(const file::VirtualFileList&);
-  virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const gui::audio::LoopPointList&);
-  virtual void operator()(const widget::waveform::CursorTime&);
-  virtual void operator()(const widget::waveform::TimeAndMouseEvent&);
-  virtual void operator()(const widget::waveform::ZoomProto&);
-  virtual void operator()(RealTime);
   virtual void operator()(audio::transport::State);
+  virtual void operator()(const gui::DropFiles&);
+  virtual void operator()(None);
+
+  void operator()(const ClockTick&);
+  void operator()(juce::AudioThumbnail*);
+  void operator()(const ClockUpdate&);
+  void operator()(const SelectionRange&);
+  void operator()(const audio::stretch::StretchLoop&);
+  void operator()(const file::VirtualFile&);
+  void operator()(const file::VirtualFileList&);
+  void operator()(const gui::audio::LoopPointList&);
+  void operator()(const widget::waveform::CursorTime&);
+  void operator()(const widget::waveform::TimeAndMouseEvent&);
+  void operator()(const widget::waveform::ZoomProto&);
+  void operator()(SampleTime) {}
+  void operator()(RealTime);
 
   template <typename Type>
   void callAsync(Type t) {

@@ -11,15 +11,25 @@ namespace rec {
 namespace slow {
 
 using namespace rec::audio::stretch;
+using namespace rec::audio::util;
 using namespace rec::util::thread;
 
 static const int PARAMETER_WAIT = 100;
-
 static const int THREAD_STOP_PERIOD = 5000;
 
 void clock(Instance* i) { (*i->listeners_)(i->player_->getNextReadPosition()); }
+
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
-void fetch(Instance* i) {}
+
+void fetch(Instance* i) {
+  Switcher<FileBuffer>* switcher = &i->threads_->data()->fileBuffer_;
+  switcher->switchIfNext();
+  FileBuffer* buffer = switcher->current();
+  if (!buffer || !buffer->buffer_ || buffer->buffer_->isFull()) 
+    Thread::getCurrentThread()->wait(PARAMETER_WAIT);
+  else
+    buffer->buffer_->fillNextBlock();
+}
 
 void persist(Instance* i) {}
 void pitch(Instance* i) {}
@@ -30,7 +40,7 @@ Threads::Threads(Instance* i) : instance_(i), data_(new ThreadData()) {
 void Threads::startAll() {
   start(&clock, "Clock");
   start(&browser, "Browser", 1000);
-  start(&fetch, "Fetch");
+  data_->fetchThread_ = start(&fetch, "Fetch", 10);
   start(&updateParameters, "Parameter");
   start(&persist, "Persist");
   start(&pitch, "Pitch");
@@ -48,11 +58,12 @@ void Threads::stop() {
     threads_[i]->stopThread(THREAD_STOP_PERIOD);
 }
 
-void Threads::start(InstanceFunction f, const String& name, int wait) {
+Thread* Threads::start(InstanceFunction f, const String& name, int wait) {
   ptr<Callback> cb(makePointer(f, instance_));
   Thread* t(thread::makeLoop(wait, name, cb.transfer()));
   threads_.push_back(t);
   t->startThread();
+  return t;
 }
 
 }  // namespace slow

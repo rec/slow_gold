@@ -3,6 +3,7 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Listeners.h"
 #include "rec/slow/Threads.h"
 
 namespace rec {
@@ -13,16 +14,30 @@ using namespace rec::audio::stretch;
 using namespace rec::audio::util;
 
 void setVirtualFile(Instance* i, const VirtualFile& f, const StretchLoop& s) {
+  DLOG(INFO) << "SetVirtualFile";
   ptr<FileBuffer> buffer(new FileBuffer(f));
   ThreadData* threadData = i->threads_->data();
-  if (!buffer->buffer_)
+  if (!buffer->buffer_) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
+    return;
+  }
 
-  else if (threadData->fileBuffer_.next())
+  Switcher<FileBuffer>* switcher = &threadData->fileBuffer_;
+  if (switcher->next()) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
+    return;
+  }
 
+  buffer->thumbnail_->addListener(i->listeners_.get());
+  (*i->listeners_)(buffer->thumbnail_->thumbnail());
+  switcher->setNext(buffer.transfer());
+  if (Thread* thread = i->threads_->data()->fetchThread_)
+    thread->notify();
   else
-	  i->components_->songData_.setFile(f);
+    LOG(ERROR) << "No fetch thread";
+
+
+  i->components_->songData_.setFile(f);
 }
 
 void setStretch(Instance* i, const VirtualFile& f, const StretchLoop& s) {
