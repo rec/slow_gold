@@ -100,10 +100,10 @@ void protobuf_AddDesc_rec_2fgui_2faudio_2fLoopPoint_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/gui/audio/LoopPoint.proto\022\rrec.gui"
-    ".audio\"6\n\tLoopPoint\022\014\n\004time\030\001 \001(\001\022\014\n\004nam"
-    "e\030\002 \001(\t\022\r\n\005notes\030\003 \001(\t\"O\n\rLoopPointList\022"
-    ",\n\nloop_point\030\001 \003(\0132\030.rec.gui.audio.Loop"
-    "Point\022\020\n\010selected\030\002 \003(\010", 183);
+    ".audio\"9\n\tLoopPoint\022\017\n\004time\030\001 \001(\001:\0010\022\014\n\004"
+    "name\030\002 \001(\t\022\r\n\005notes\030\003 \001(\t\"O\n\rLoopPointLi"
+    "st\022,\n\nloop_point\030\001 \003(\0132\030.rec.gui.audio.L"
+    "oopPoint\022\020\n\010selected\030\002 \003(\010", 186);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/audio/LoopPoint.proto", &protobuf_RegisterTypes);
   LoopPoint::default_instance_ = new LoopPoint();
@@ -212,7 +212,7 @@ bool LoopPoint::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional double time = 1;
+      // optional double time = 1 [default = 0];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
@@ -279,7 +279,7 @@ bool LoopPoint::MergePartialFromCodedStream(
 
 void LoopPoint::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional double time = 1;
+  // optional double time = 1 [default = 0];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->time(), output);
   }
@@ -310,7 +310,7 @@ void LoopPoint::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoopPoint::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional double time = 1;
+  // optional double time = 1 [default = 0];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->time(), target);
   }
@@ -346,7 +346,7 @@ int LoopPoint::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional double time = 1;
+    // optional double time = 1 [default = 0];
     if (has_time()) {
       total_size += 1 + 8;
     }

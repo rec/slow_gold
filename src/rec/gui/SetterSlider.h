@@ -15,42 +15,18 @@ class SetterSlider : public Layout,
                      public ProtoAddressListener,
                      public juce::Slider::Listener {
  public:
-  SetterSlider(const String& name, const Address& address,
+  SetterSlider(const String& name,
+               const Address& address,
                const String& caption = String::empty,
-               const String& tip = String::empty)
-      : Layout(name, HORIZONTAL, true),
-        ProtoAddressListener(address), slider_(name), caption_(caption) {
-    slider_.setSliderStyle(Slider::LinearHorizontal);
-    slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 85, 16);
-
-    const String& cap = caption.length() ? caption : name;
-    slider_.setTooltip(tip.length() ? tip : cap);
-    slider_.addListener(this);
-
-    caption_.setText(cap, false);
-    addToLayout(&caption_, 100);
-    addToLayout(&slider_, 0, -1.0, -1.0);
-  }
-
+               const String& tip = String::empty);
   Slider* slider() { return &slider_; }
 
-  virtual void sliderValueChanged (Slider* slider) {
-    this->updatePersistentData();
-  }
+  virtual void sliderValueChanged(Slider*) { updatePersistentData(); }
 
  protected:
-  virtual const Value getDisplayValue() const {
-    return slider_.getValue();
-  }
-
-  void setValue(double value) {
-    slider_.setValue(value, false);
-  }
-
-  virtual void setDisplayValue(const Value& value) {
-    if (value.has_double_f())
-      thread::callAsync(this, &SetterSlider::setValue, value.double_f());
-  }
+  virtual const Value getDisplayValue() const { return slider_.getValue(); }
+  void setValue(double value) { slider_.setValue(value, false); }
+  virtual void setDisplayValue(const Value& value);
 
   Slider slider_;
   SimpleLabel caption_;

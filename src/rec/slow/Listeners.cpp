@@ -19,19 +19,22 @@
 namespace rec {
 namespace slow {
 
+using namespace rec::audio::source;
+using namespace rec::audio::stretch;
+using namespace rec::audio::util;
+using namespace rec::widget::tree;
+using namespace rec::widget::waveform;
+using namespace rec::gui::audio;
+
 Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->player_->addListener(this);
   instance_->components_->waveform_.dropBroadcaster()->addListener(this);
-  widget::tree::Root* root = &instance_->components_->directoryTree_;
+  Root* root = &instance_->components_->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);
   root->addListener(persist::setter<VirtualFile>());
 }
 
 void Listeners::operator()(const VirtualFile& f) {
-  using namespace rec::audio::source;
-  using namespace rec::audio::stretch;
-  using namespace rec::audio::util;
-
   ptr<FileBuffer> buffer(new FileBuffer(f));
   ThreadData* threadData = instance_->threads_->data();
   if (!buffer->buffer_) {
@@ -50,15 +53,17 @@ void Listeners::operator()(const VirtualFile& f) {
   switcher->setNext(buffer.transfer());
 
   instance_->threads_->data()->fetchThread_->notify();
+  threadData->stretchLocker_.listenTo(persist::setter<Stretch>(f));
+  threadData->loopLocker_.listenTo(persist::setter<LoopPointList>(f));
+
   threadData->stretchLocker_.set(persist::get<Stretch>(f));
-  threadData->loopLocker_.set(persist::get<gui::audio::LoopPointList>(f));
+  threadData->loopLocker_.set(persist::get<LoopPointList>(f));
 
   instance_->components_->songData_.setFile(f);
 }
 
 void Listeners::operator()(None) {
-  thread::callAsync(&instance_->components_->waveform_,
-                    &widget::waveform::Waveform::repaint);
+  thread::callAsync(&instance_->components_->waveform_, &Waveform::repaint);
 }
 
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
@@ -85,14 +90,28 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
   }
 }
 
+void Listeners::operator()(const Stretch& x) {
+  DLOG(INFO) << "Stretch!";
+}
+
+void Listeners::operator()(const LoopPointList& loops) {
+  DLOG(INFO) << "LoopPointList";
+  if (!loops.loop_point_size()) {
+    LoopPointList loop;
+    loop.add_loop_point();
+    persist::set(loop, persist::get<VirtualFile>());
+  } else {
+    DLOG(INFO) << "LoopPointList 2";
+
+  }
+}
+
 void Listeners::operator()(const ClockTick&) {}
 void Listeners::operator()(const ClockUpdate&) {}
-void Listeners::operator()(const audio::stretch::Stretch&) {}
 
-void Listeners::operator()(const gui::audio::LoopPointList&) {}
-void Listeners::operator()(const widget::waveform::CursorTime&) {}
-void Listeners::operator()(const widget::waveform::TimeAndMouseEvent&) {}
-void Listeners::operator()(const widget::waveform::ZoomProto&) {}
+void Listeners::operator()(const CursorTime&) {}
+void Listeners::operator()(const TimeAndMouseEvent&) {}
+void Listeners::operator()(const ZoomProto&) {}
 void Listeners::operator()(RealTime) {}
 
 void Listeners::operator()(audio::transport::State state) {
@@ -147,10 +166,6 @@ void Listeners::operator()(const file::VirtualFile& f) {
 #endif
 }
 
-
-using gui::audio::LoopPoint;
-using gui::audio::LoopPointList;
-
 void Listeners::operator()(SampleTime time) {
   Components& c = instance_->components_;
   c.timeController_.setTime(time);
@@ -176,13 +191,6 @@ void Listeners::operator()(const SelectionRange& sel) {
     DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
     data->set("loop", loop);
   }
-}
-
-void Listeners::operator()(const audio::stretch::Stretch& x) {
-}
-
-
-void Listeners::operator()(const gui::LoopPointList& x) {
 }
 
 void Listeners::operator()(const widget::waveform::CursorTime& x) {

@@ -8,45 +8,22 @@ namespace util {
 namespace thread {
 
 template <typename Data>
-class Locker {
+class Locker: public Listener<const Data&> {
  public:
-  Locker(CriticalSection* lock) : lock_(lock), changed_(false) {}
+  Locker(CriticalSection* l) : lock_(l), broadcaster_(NULL), changed_(false) {}
+
   virtual ~Locker() {}
 
-  virtual void initialize(const Data& data) {
-    ScopedLock l(*lock_);
-    data_ = data;
-    changed_ = false;
-  }
+  virtual void operator()(const Data& data) { set(data); }
 
-  virtual void change() {
-    ScopedLock l(*lock_);
-    changed_ = true;
-    onChange();
-  }
+  void listenTo(Broadcaster<const Data&>* b) {
+    if (broadcaster_)
+      broadcaster_->removeListener(this);
 
-  virtual void set(const Data& data) {
-    ScopedLock l(*lock_);
-    data_ = data;
-    change();
-  }
+    broadcaster_ = b;
 
-  const Data get() const {
-    ScopedLock l(*lock_);
-    return data_;
-  }
-
-  bool isChanged() const {
-    ScopedLock l(*lock_);
-    return changed_;
-  }
-
-  bool readAndClearChanged(Data* data) {
-    ScopedLock l(*lock_);
-    *data = data_;
-    bool c = changed_;
-    changed_ = false;
-    return c;
+    if (broadcaster_)
+      broadcaster_->addListener(this);
   }
 
   void broadcastIfChanged(Listener<const Data&>* listener) {
@@ -61,11 +38,19 @@ class Locker {
     (*listener)(data);
   }
 
+  virtual void set(const Data& data) {
+    ScopedLock l(*lock_);
+    data_ = data;
+    changed_ = true;
+    onChange();
+  }
+
  protected:
   virtual void onChange() {}
 
  private:
   CriticalSection* lock_;
+  Broadcaster<const Data&>* broadcaster_;
 
   Data data_;
   bool changed_;

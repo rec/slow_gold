@@ -93,7 +93,7 @@ class LoopPoint : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional double time = 1;
+  // optional double time = 1 [default = 0];
   inline bool has_time() const;
   inline void clear_time();
   static const int kTimeFieldNumber = 1;
@@ -264,7 +264,7 @@ class LoopPointList : public ::google::protobuf::Message {
 
 // LoopPoint
 
-// optional double time = 1;
+// optional double time = 1 [default = 0];
 inline bool LoopPoint::has_time() const {
   return _has_bit(0);
 }

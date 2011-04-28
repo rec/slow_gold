@@ -39,20 +39,19 @@ class Broadcaster {
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;
 
-  Broadcaster(bool broadcastOnAdd = false) : broadcastOnAdd_(broadcastOnAdd) {}
+  Broadcaster() {}
   virtual ~Broadcaster();
 
   virtual void broadcast(Type x);
   virtual void broadcast() { broadcast(broadcastValue()); }
 
-  virtual void addListener(Listener<Type>* listener);
+  virtual void addListener(Listener<Type>* listener, bool update = false);
   virtual void removeListener(Listener<Type>* listener);
   virtual const Type broadcastValue() const { return Type(); }
 
  protected:
   CriticalSection lock_;
   ListenerSet listeners_;
-  const bool broadcastOnAdd_;
 
   DISALLOW_COPY_AND_ASSIGN(Broadcaster);
 };
@@ -90,7 +89,7 @@ Broadcaster<Type>::~Broadcaster() {
 }
 
 template <typename Type>
-void Broadcaster<Type>::addListener(Listener<Type>* listener) {
+void Broadcaster<Type>::addListener(Listener<Type>* listener, bool update) {
   ScopedLock l(lock_);
   listeners_.insert(listener);
 
@@ -100,7 +99,7 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener) {
     listener->broadcasters_.insert(this);
   }
 
-  if (broadcastOnAdd_)
+  if (update)
     (*listener)(broadcastValue());
 }
 

@@ -67,7 +67,6 @@ void Root::doAdd() {
   addDialogOpen_ = false;
 }
 
-
 void Root::mergeNewIntoOld(const file::VirtualFileList& volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
     const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : NULL;

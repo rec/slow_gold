@@ -26,23 +26,23 @@ class ClockTick;
 class Instance;
 
 class Listeners : public Listener<None>,
+                  public Listener<audio::transport::State>,
                   public Listener<const VirtualFile&>,
                   public Listener<const audio::stretch::Stretch&>,
-                  public Listener<const gui::audio::LoopPointList&>,
                   public Listener<const gui::DropFiles&>,
-                  public Listener<audio::transport::State> {
+                  public Listener<const gui::audio::LoopPointList&> {
  public:
   explicit Listeners(Instance* i);
 
-  virtual void operator()(audio::transport::State);
-  virtual void operator()(const gui::DropFiles&);
   virtual void operator()(None);
+  virtual void operator()(audio::transport::State);
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const file::VirtualFile&);
+  virtual void operator()(const gui::DropFiles&);
+  virtual void operator()(const gui::audio::LoopPointList&);
 
   void operator()(const ClockTick&);
   void operator()(const ClockUpdate&);
-  void operator()(const gui::audio::LoopPointList&);
   void operator()(const widget::waveform::CursorTime&);
   void operator()(const widget::waveform::TimeAndMouseEvent&);
   void operator()(const widget::waveform::ZoomProto&);

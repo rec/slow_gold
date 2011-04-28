@@ -45,7 +45,6 @@ class Loops : public TableController, public Cuttable {
  private:
   double length_;
   LoopPointList loopPoints_;
-  // Broadcaster<double> timeBroadcaster_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };

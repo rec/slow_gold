@@ -49,7 +49,7 @@ TEST(Equals, Parameters) {
   EXPECT_TRUE(equals(x, y));
   EXPECT_EQ(x.file().type(), VirtualFile::NONE);
 
-  x.mutable_stretch()->mutable_stretch()->set_disabled(true);
+  x.mutable_stretch()->set_disabled(true);
   EXPECT_FALSE(equals(x, y));
 
 }
