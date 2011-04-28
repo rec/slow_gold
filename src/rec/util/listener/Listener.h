@@ -45,10 +45,6 @@ class Broadcaster {
   virtual void broadcast(Type x);
   void broadcast() { broadcast(Type()); }
 
-#ifdef BROADCASTERS_ARE_LISTENERS
-  virtual void operator()(Type x) { broadcast(x); }
-#endif
-
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);
 

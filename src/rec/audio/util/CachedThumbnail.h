@@ -8,12 +8,13 @@ namespace audio {
 namespace util {
 
 class CachedThumbnail : public Listener<const AudioSourceChannelInfo&>,
-                        public Broadcaster<None> {
+                        public Broadcaster<juce::AudioThumbnail*> {
  public:
   CachedThumbnail(const File& file, int compression, int sampleLength);
   virtual ~CachedThumbnail();
 
   juce::AudioThumbnail* thumbnail() { return &thumbnail_; }
+  virtual void addListener(Listener<juce::AudioThumbnail*>*);
 
   // Update the thumbnail here.
   virtual void operator()(const AudioSourceChannelInfo& info);

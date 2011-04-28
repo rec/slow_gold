@@ -32,7 +32,6 @@ void Listeners::operator()(const VirtualFile& f) {
   using namespace rec::audio::stretch;
   using namespace rec::audio::util;
 
-  DLOG(INFO) << "SetVirtualFile";
   ptr<FileBuffer> buffer(new FileBuffer(f));
   ThreadData* threadData = instance_->threads_->data();
   if (!buffer->buffer_) {
@@ -46,8 +45,7 @@ void Listeners::operator()(const VirtualFile& f) {
     return;
   }
 
-  buffer->thumbnail_->addListener(instance_->listeners_.get());
-  (*instance_->listeners_)(buffer->thumbnail_->thumbnail());
+  buffer->thumbnail_->addListener(&instance_->components_->waveform_);
 
   switcher->setNext(buffer.transfer());
 

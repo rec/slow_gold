@@ -44,8 +44,10 @@ const CursorProto& Waveform::defaultTimeCursor() {
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   {
     // ScopedLock l(lock_);
-    thumbnail_ = thumbnail;
-    resized();
+    if (thumbnail_ != thumbnail) {
+      thumbnail_ = thumbnail;
+      resized();
+    }
   }
   thread::runOnMessageThread(this, &Waveform::repaint);
 }

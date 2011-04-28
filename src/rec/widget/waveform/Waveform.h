@@ -24,6 +24,7 @@ struct TimeAndMouseEvent;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
+                 public Listener<juce::AudioThumbnail*>,
                  public Broadcaster<const CursorTime&>,
                  public Broadcaster<const TimeAndMouseEvent&>,
                  public Broadcaster<const SelectionRange&> {
@@ -41,6 +42,9 @@ class Waveform : public Component,
 
   virtual void paint(Graphics& g);
   virtual void repaint() { Component::repaint(); }
+  virtual void operator()(juce::AudioThumbnail* t) {
+    setAudioThumbnail(t);
+  }
 
   void mouseDoubleClick(const juce::MouseEvent& e) { doClick(e, 2); }
   void mouseUp(const juce::MouseEvent& e) { doClick(e, 1); }
