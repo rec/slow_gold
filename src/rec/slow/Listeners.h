@@ -39,7 +39,6 @@ class Listeners : public Listener<None>,
   virtual void operator()(None);
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const file::VirtualFile&);
-  virtual void operator()(juce::AudioThumbnail*);
 
   void operator()(const ClockTick&);
   void operator()(const ClockUpdate&);

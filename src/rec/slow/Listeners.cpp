@@ -61,10 +61,6 @@ void Listeners::operator()(None) {
                     &widget::waveform::Waveform::repaint);
 }
 
-void Listeners::operator()(juce::AudioThumbnail* thumb) {
-  instance_->components_->waveform_.setAudioThumbnail(thumb);
-}
-
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &instance_->components_->waveform_) {

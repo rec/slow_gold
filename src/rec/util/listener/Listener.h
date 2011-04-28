@@ -39,18 +39,20 @@ class Broadcaster {
   typedef std::set<Listener<Type>*> ListenerSet;
   typedef typename ListenerSet::iterator iterator;
 
-  Broadcaster() {}
+  Broadcaster(bool broadcastOnAdd = false) : broadcastOnAdd_(broadcastOnAdd) {}
   virtual ~Broadcaster();
 
   virtual void broadcast(Type x);
-  void broadcast() { broadcast(Type()); }
+  virtual void broadcast() { broadcast(broadcastValue()); }
 
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);
+  virtual const Type broadcastValue() const { return Type(); }
 
  protected:
   CriticalSection lock_;
   ListenerSet listeners_;
+  const bool broadcastOnAdd_;
 
   DISALLOW_COPY_AND_ASSIGN(Broadcaster);
 };
@@ -89,25 +91,17 @@ Broadcaster<Type>::~Broadcaster() {
 
 template <typename Type>
 void Broadcaster<Type>::addListener(Listener<Type>* listener) {
-  // addListener and removeListener calls might be going on at the same time,
-  // and there's a faint possibility that they might interleave for the same
-  // listener and broadcaster, so we loop here until that hasn't happened,
-  // just to be extra-cautious.
-  for (bool finished = false; !finished; ) {
-    {
-      ScopedLock l(lock_);
-      listeners_.insert(listener);
-    }
+  ScopedLock l(lock_);
+  listeners_.insert(listener);
 
-    {
-      ScopedLock l(listener->listenerLock_);
-      listener->broadcasters_.insert(this);
-    }
-
-    ScopedLock l(lock_);
-    if (listeners_.find(listener) != listeners_.end())
-      finished = true;  // Good, no one else called removeListener.
+  {
+    ScopedUnlock u(lock_);
+    ScopedLock l(listener->listenerLock_);
+    listener->broadcasters_.insert(this);
   }
+
+  if (broadcastOnAdd_)
+    (*listener)(broadcastValue());
 }
 
 template <typename Type>

@@ -914,6 +914,7 @@
 			E23DB9A51369C3D900A52041 /* PBXTextBookmark */ = E23DB9A51369C3D900A52041 /* PBXTextBookmark */;
 			E23DB9A61369C3D900A52041 /* PBXTextBookmark */ = E23DB9A61369C3D900A52041 /* PBXTextBookmark */;
 			E23DB9AA1369C43100A52041 /* PBXTextBookmark */ = E23DB9AA1369C43100A52041 /* PBXTextBookmark */;
+			E23DB9AC1369C47900A52041 /* PBXTextBookmark */ = E23DB9AC1369C47900A52041 /* PBXTextBookmark */;
 			E23E467712EFAF870080BD76 = E23E467712EFAF870080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
@@ -4083,6 +4084,16 @@
 		vrLen = 1433;
 		vrLoc = 223;
 	};
+	E23DB9AC1369C47900A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F19CED8216CA52A31FE6F5F8 /* CachedThumbnail.cpp */;
+		name = "CachedThumbnail.cpp: 35";
+		rLen = 0;
+		rLoc = 999;
+		rType = 0;
+		vrLen = 1434;
+		vrLoc = 223;
+	};
 	E23E45F412EF610D0080BD76 /* juce_Component.cpp */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.cpp.cpp;
@@ -4470,7 +4481,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1037, 793}}";
 			sepNavSelRange = "{999, 0}";
-			sepNavVisRange = "{223, 1433}";
+			sepNavVisRange = "{223, 1434}";
 		};
 	};
 	F1B4BFFDC9B8D47CBBDA8F3D /* TreeViewDropAll.cpp */ = {
@@ -4545,9 +4556,9 @@
 	};
 	FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {761, 5018}}";
-			sepNavSelRange = "{1583, 0}";
-			sepNavVisRange = "{32, 2057}";
+			sepNavIntBoundsRect = "{{0, 0}, {1107, 4862}}";
+			sepNavSelRange = "{10788, 0}";
+			sepNavVisRange = "{403, 1485}";
 			sepNavWindowFrame = "{{153, 169}, {1324, 878}}";
 		};
 	};
