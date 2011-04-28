@@ -37,7 +37,7 @@ class STyper : public ptr<Typer> {
  public:
   STyper(Message* m, const FieldDescriptor* f) {
     FieldDescriptor::Type t = f ? f->type() : FieldDescriptor::TYPE_MESSAGE;
-    this->reset(TYPE_LIST[t]->clone(m, f));
+    reset(TYPE_LIST[t]->clone(m, f));
   }
 
  private:
@@ -89,7 +89,7 @@ bool equals(const Message& x, const Message& y, const FieldDescriptor* field,
     if (!equals(x, y, field, i, cmp))
       return false;
   }
-      
+
   return true;
 }
 

@@ -13,9 +13,7 @@ class SetterToggle : public juce::ToggleButton,
   SetterToggle(const String& name, const Address& address)
       : juce::ToggleButton(name), ProtoListener(address) {}
 
-  virtual void clicked() {
-    this->updatePersistentData();
-  }
+  virtual void clicked() { updatePersistentData(); }
 
  protected:
   virtual const Value getDisplayValue() const { return getToggleState(); }

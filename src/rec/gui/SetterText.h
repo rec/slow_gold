@@ -44,12 +44,10 @@ class SetterText : public Layout,
 
   TextEditor* editor() { return &editor_; }
 
-  virtual void textEditorTextChanged (TextEditor& editor) {
-    this->updatePersistentData();
-  }
-  virtual void textEditorReturnKeyPressed (TextEditor& editor) {}
-  virtual void textEditorEscapeKeyPressed (TextEditor& editor) {}
-  virtual void textEditorFocusLost (TextEditor& editor) {}
+  virtual void textEditorTextChanged(TextEditor&) { updatePersistentData(); }
+  virtual void textEditorReturnKeyPressed(TextEditor& editor) {}
+  virtual void textEditorEscapeKeyPressed(TextEditor& editor) {}
+  virtual void textEditorFocusLost(TextEditor& editor) {}
 
  protected:
   virtual const Value getDisplayValue() const {

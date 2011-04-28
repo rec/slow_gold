@@ -27,7 +27,7 @@ class DataListener : public Listener<const Proto&> {
       data_ = d;
 
       if (data_)
-        this->data_->addListener(this);
+        data_->addListener(this);
     }
   }
 
