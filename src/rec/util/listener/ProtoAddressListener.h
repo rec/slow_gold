@@ -15,7 +15,6 @@ class ProtoAddressListener : public ProtoListener {
   typedef persist::UntypedData UntypedData;
 
   explicit ProtoAddressListener(const Address& a) : address_(a) {}
-
   virtual ~ProtoAddressListener() {}
 
   virtual void operator()(const Message& message) {
@@ -28,6 +27,7 @@ class ProtoAddressListener : public ProtoListener {
   // onChange is called when the local copy of the data is changed by the GUI,
   // to update the persistent data.
   virtual void updatePersistentData() {
+    DLOG(INFO) << "updatePersistentData";
     if (this->getData())
       this->getData()->set(address_, getDisplayValue());
   }

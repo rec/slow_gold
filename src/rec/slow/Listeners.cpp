@@ -49,12 +49,14 @@ void Listeners::operator()(const VirtualFile& f) {
   }
 
   buffer->thumbnail_->addListener(&instance_->components_->waveform_);
-
   switcher->setNext(buffer.transfer());
-
   instance_->threads_->data()->fetchThread_->notify();
+
+  persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);
+  instance_->components_->loops_.setData(setter);
+
   threadData->stretchLocker_.listenTo(persist::setter<Stretch>(f));
-  threadData->loopLocker_.listenTo(persist::setter<LoopPointList>(f));
+  threadData->loopLocker_.listenTo(setter);
 
   threadData->stretchLocker_.set(persist::get<Stretch>(f));
   threadData->loopLocker_.set(persist::get<LoopPointList>(f));
@@ -91,18 +93,18 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void Listeners::operator()(const Stretch& x) {
-  DLOG(INFO) << "Stretch!";
 }
 
 void Listeners::operator()(const LoopPointList& loops) {
-  DLOG(INFO) << "LoopPointList";
+  DLOG(INFO) << "LoopPoint!!";
   if (!loops.loop_point_size()) {
     LoopPointList loop;
     loop.add_loop_point();
     persist::set(loop, persist::get<VirtualFile>());
   } else {
-    DLOG(INFO) << "LoopPointList 2";
-
+    instance_->components_->loops_.setData(persist::setter<LoopPointList>());
+    thread::callAsync(&instance_->components_->waveform_,
+                      &Waveform::addAllCursors, loops);
   }
 }
 
@@ -279,7 +281,6 @@ void Waveform::operator()(const ZoomProto& zp) {
 }
 
 void Waveform::operator()(const gui::LoopPointList& loopPoints) {
-  thread::callAsync(this, &Waveform::addAllCursors, loopPoints);
 }
 
   class ZoomData : public DataListener<ZoomProto> {

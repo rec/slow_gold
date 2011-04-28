@@ -33,6 +33,7 @@ class Loops : public TableController, public Cuttable {
   virtual void cut();
 
   void setLength(int len);
+  void setLoopPoints(const LoopPointList& points);
   bool isNewLoopPoint(double t) const;
   void addLoopPoint(double time);
   TimeRange selectionRange() const;

@@ -97,7 +97,10 @@ void Loops::doSelect() {
 }
 
 void Loops::onDataChange() {
-  getData()->fill(&loopPoints_);
+  {
+    ScopedLock l(lock_);
+    getData()->fill(&loopPoints_);
+  }
   TableController::onDataChange();
   thread::callAsync(this, &Loops::doSelect);
 }

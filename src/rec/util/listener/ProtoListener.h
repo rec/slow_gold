@@ -14,18 +14,7 @@ class ProtoListener : public Listener<const Message&> {
   virtual ~ProtoListener() {}
   virtual void operator()(const Message&) = 0;
 
-  void setData(persist::UntypedData* data) {
-    if (data_)
-      data_->messageBroadcaster()->removeListener(this);
-
-    data_ = data;
-
-    if (data_) {
-      data_->messageBroadcaster()->addListener(this);
-      (*this)(*ptr<Message>(data_->clone()));
-    }
-  }
-
+  void setData(persist::UntypedData* data);
   persist::UntypedData* getData() { return data_; }
 
  private:
