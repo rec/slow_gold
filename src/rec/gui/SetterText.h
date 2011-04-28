@@ -3,14 +3,14 @@
 
 #include "rec/gui/Layout.h"
 #include "rec/gui/SimpleLabel.h"
-#include "rec/util/listener/ProtoAddressListener.h"
+#include "rec/util/listener/ProtoListener.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
 
 class SetterText : public Layout,
-                   public ProtoAddressListener,
+                   public ProtoListener,
                    public TextEditor::Listener {
  public:
   typedef proto::arg::Address Address;
@@ -20,7 +20,7 @@ class SetterText : public Layout,
              const String& tip = String::empty,
              const String& caption = String::empty)
       : Layout(name, HORIZONTAL),
-        ProtoAddressListener(address),
+        ProtoListener(address),
         caption_(caption + ".caption"),
         editor_(name + ".editor") {
     const String& cap = caption.length() ? caption : name;

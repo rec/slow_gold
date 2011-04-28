@@ -3,7 +3,7 @@
 
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
-#include "rec/util/listener/ProtoAddressListener.h"
+#include "rec/util/listener/ProtoListener.h"
 #include "rec/data/proto/Address.h"
 
 namespace rec {
@@ -11,7 +11,7 @@ namespace gui {
 
 class TableController : public TableListBoxModel,
                         public TableListBox,
-                        public ProtoAddressListener {
+                        public ProtoListener {
  public:
   TableController(const TableColumnList& columns, const Address& address,
                   const char* name = "TableController");

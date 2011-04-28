@@ -6,7 +6,7 @@ namespace gui {
 SetterSlider::SetterSlider(const String& name, const Address& address,
                            const String& caption, const String& tip)
     : Layout(name, HORIZONTAL, true),
-      ProtoAddressListener(address), slider_(name), caption_(caption) {
+      ProtoListener(address), slider_(name), caption_(caption) {
   slider_.setSliderStyle(Slider::LinearHorizontal);
   slider_.setTextBoxStyle(Slider::TextBoxLeft, false, 85, 16);
 

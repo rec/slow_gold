@@ -4,7 +4,7 @@
 #include "rec/gui/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Geometry.h"
-#include "rec/util/listener/ProtoAddressListener.h"
+#include "rec/util/listener/ProtoListener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Range.h"
 
@@ -12,7 +12,7 @@ namespace rec {
 namespace gui {
 
 class SetterSlider : public Layout,
-                     public ProtoAddressListener,
+                     public ProtoListener,
                      public juce::Slider::Listener {
  public:
   SetterSlider(const String& name,

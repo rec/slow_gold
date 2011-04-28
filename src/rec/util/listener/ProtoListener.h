@@ -10,14 +10,29 @@ namespace listener {
 
 class ProtoListener : public Listener<const Message&> {
  public:
-  ProtoListener() : data_(NULL) {}
+  typedef proto::arg::Address Address;
+  ProtoListener(const Address& a) : address_(a), data_(NULL) {}
+
   virtual ~ProtoListener() {}
-  virtual void operator()(const Message&) = 0;
+  virtual void operator()(const Message&);
+  virtual const Address& address() const { return address_; }
 
   void setData(persist::UntypedData* data);
   persist::UntypedData* getData() { return data_; }
 
+ protected:
+  // onChange is called when the local copy of the data is changed by the GUI,
+  // to update the persistent data.
+  virtual void updatePersistentData();
+
+  // Gets the data from the "view".
+  virtual const Value getDisplayValue() const = 0;
+
+  // Set the "view" data.
+  virtual void setDisplayValue(const Value&) = 0;
+
  private:
+  const Address address_;
   persist::UntypedData* data_;
 
   DISALLOW_COPY_AND_ASSIGN(ProtoListener);
