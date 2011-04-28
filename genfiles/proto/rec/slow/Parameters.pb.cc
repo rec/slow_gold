@@ -78,10 +78,10 @@ void protobuf_AddDesc_rec_2fslow_2fParameters_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/slow/Parameters.proto\022\010rec.slow\032\037r"
     "ec/util/file/VirtualFile.proto\032\037rec/audi"
-    "o/stretch/Stretch.proto\"g\n\nParameters\022(\n"
+    "o/stretch/Stretch.proto\"c\n\nParameters\022(\n"
     "\004file\030\001 \001(\0132\032.rec.util.file.VirtualFile\022"
-    "/\n\007stretch\030\002 \001(\0132\036.rec.audio.stretch.Str"
-    "etchLoop", 208);
+    "+\n\007stretch\030\002 \001(\0132\032.rec.audio.stretch.Str"
+    "etch", 204);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/slow/Parameters.proto", &protobuf_RegisterTypes);
   Parameters::default_instance_ = new Parameters();
@@ -111,7 +111,7 @@ Parameters::Parameters()
 
 void Parameters::InitAsDefaultInstance() {
   file_ = const_cast< ::rec::util::file::VirtualFile*>(&::rec::util::file::VirtualFile::default_instance());
-  stretch_ = const_cast< ::rec::audio::stretch::StretchLoop*>(&::rec::audio::stretch::StretchLoop::default_instance());
+  stretch_ = const_cast< ::rec::audio::stretch::Stretch*>(&::rec::audio::stretch::Stretch::default_instance());
 }
 
 Parameters::Parameters(const Parameters& from)
@@ -164,7 +164,7 @@ void Parameters::Clear() {
       if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
     }
     if (_has_bit(1)) {
-      if (stretch_ != NULL) stretch_->::rec::audio::stretch::StretchLoop::Clear();
+      if (stretch_ != NULL) stretch_->::rec::audio::stretch::Stretch::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -190,7 +190,7 @@ bool Parameters::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.audio.stretch.StretchLoop stretch = 2;
+      // optional .rec.audio.stretch.Stretch stretch = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -228,7 +228,7 @@ void Parameters::SerializeWithCachedSizes(
       1, this->file(), output);
   }
   
-  // optional .rec.audio.stretch.StretchLoop stretch = 2;
+  // optional .rec.audio.stretch.Stretch stretch = 2;
   if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->stretch(), output);
@@ -249,7 +249,7 @@ void Parameters::SerializeWithCachedSizes(
         1, this->file(), target);
   }
   
-  // optional .rec.audio.stretch.StretchLoop stretch = 2;
+  // optional .rec.audio.stretch.Stretch stretch = 2;
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -274,7 +274,7 @@ int Parameters::ByteSize() const {
           this->file());
     }
     
-    // optional .rec.audio.stretch.StretchLoop stretch = 2;
+    // optional .rec.audio.stretch.Stretch stretch = 2;
     if (has_stretch()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -312,7 +312,7 @@ void Parameters::MergeFrom(const Parameters& from) {
       mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
     }
     if (from._has_bit(1)) {
-      mutable_stretch()->::rec::audio::stretch::StretchLoop::MergeFrom(from.stretch());
+      mutable_stretch()->::rec::audio::stretch::Stretch::MergeFrom(from.stretch());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());

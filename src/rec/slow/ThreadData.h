@@ -13,12 +13,14 @@
 namespace rec {
 namespace slow {
 
+class Instance;
+
 struct ThreadData : public Listener<const VirtualFile&>,
                     public Listener<const audio::stretch::Stretch&>,
                     public Listener<const rec::gui::audio::LoopPointList&> {
   typedef audio::stretch::Stretch Stretch;
   typedef gui::audio::LoopPointList LoopPointList;
-  
+
   ThreadData() : fileLocker_(&lock_), stretchLocker_(&lock_), loopLocker_(&lock_),
                  fetchThread_(NULL) {
     persist::setter<VirtualFile>()->addListener(this);
@@ -32,19 +34,12 @@ struct ThreadData : public Listener<const VirtualFile&>,
   Thread* fetchThread_;
   CriticalSection lock_;
 
-  virtual void operator()(const VirtualFile& vf) {
-    fileLocker_.set(vf);
-  }
+  virtual void operator()(const VirtualFile& vf) { fileLocker_.set(vf); }
   virtual void operator()(const Stretch& sl) { stretchLocker_.set(sl); }
-  virtual void operator()(const LoopPointList& lpl) {
-    loopLocker_.set(lpl); }
+  virtual void operator()(const LoopPointList& lpl) { loopLocker_.set(lpl); }
 
   DISALLOW_COPY_AND_ASSIGN(ThreadData);
 };
-
-class Instance;
-
-void updateParameters(Instance* i);
 
 }  // namespace slow
 }  // namespace rec

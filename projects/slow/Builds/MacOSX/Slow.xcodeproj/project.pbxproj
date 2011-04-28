@@ -36,7 +36,6 @@
 		2E88ECDC0A679340104F7E72 /* emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C0EC2293E1A986C6D3AB5 /* emitter.cpp */; };
 		3120E6FD8F1D5014F940B34F /* CopySamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */; };
 		317B11B3BA4927C15DCB23EC /* FullScreen.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E886CEFA88CA84316F7B7BCB /* FullScreen.svg.cpp */; };
-		32373B8A16ADFC7C6ED09AE3 /* ThreadData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5482B97F9D0E51E676AF2F0 /* ThreadData.cpp */; };
 		3491D4EF6750E33BDB2003C8 /* Setter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB6457CC72AF09C1E1CB5733 /* Setter.cpp */; };
 		34BC3F74E6EE2A5B6F71E20E /* StretchyController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1D414163BB858DA469CE6F0 /* StretchyController.cpp */; };
 		363D79B5ADAA58C67379104E /* Widget.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 23A34552B919AAB64559DBDA /* Widget.pb.cc */; };
@@ -648,7 +647,6 @@
 		E3E0E3D2E6892BDAA5F575EA /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../../../src/rec/app/Application.h; sourceTree = SOURCE_ROOT; };
 		E4FEA117EAFF93F0B8254514 /* Callback1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback1.h; path = ../../../../src/rec/util/thread/Callback1.h; sourceTree = SOURCE_ROOT; };
 		E504F6A5707F3F672DB52BA8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E5482B97F9D0E51E676AF2F0 /* ThreadData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadData.cpp; path = ../../../../src/rec/slow/ThreadData.cpp; sourceTree = SOURCE_ROOT; };
 		E585B8FE6268F83666D15E6B /* Node.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Node.pb.cc; path = ../../../../genfiles/proto/rec/widget/tree/Node.pb.cc; sourceTree = SOURCE_ROOT; };
 		E5B719E9D5CCE228BF21B8A8 /* CDReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDReader.h; path = ../../../../src/rec/util/cd/CDReader.h; sourceTree = SOURCE_ROOT; };
 		E5DF2E80ED07DBB8E37F8CC3 /* PlaybackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaybackController.h; path = ../../../../src/rec/slow/PlaybackController.h; sourceTree = SOURCE_ROOT; };
@@ -756,6 +754,20 @@
 			name = widget;
 			sourceTree = "<group>";
 		};
+		1105101DF93087D5D92D2C40 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		13B7AF66DC71626F21BA5581 /* cd */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,20 +869,6 @@
 				6B783EE1E33F655A24E51C4C /* VirtualFile.h */,
 			);
 			name = file;
-			sourceTree = "<group>";
-		};
-		2B6936D8E84EAA3D0A7991EA /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		2CA4CEC7799F5D0A577935BE /* base */ = {
@@ -1289,7 +1287,6 @@
 				E5DF2E80ED07DBB8E37F8CC3 /* PlaybackController.h */,
 				B821697666437A71BDF9E1EE /* Target.cpp */,
 				118AC7625B4C42CD4D22AE13 /* Target.h */,
-				E5482B97F9D0E51E676AF2F0 /* ThreadData.cpp */,
 				BD53BECA359FB8702B7E95F8 /* ThreadData.h */,
 				8DB281D6B07E576E7AD90BBB /* Threads.cpp */,
 				456CC2B861F310B678D32ACA /* Threads.h */,
@@ -1759,7 +1756,7 @@
 				French,
 				German,
 			);
-			mainGroup = 2B6936D8E84EAA3D0A7991EA /* Source */;
+			mainGroup = 1105101DF93087D5D92D2C40 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1900,7 +1897,6 @@
 				F74722BEDA6363B3C5CC8470 /* PersistentData.cpp in Sources */,
 				761C899FD9316742F31BCD5F /* PlaybackController.cpp in Sources */,
 				CCC67F60CD76F6077EB11D72 /* Target.cpp in Sources */,
-				32373B8A16ADFC7C6ED09AE3 /* ThreadData.cpp in Sources */,
 				2763C9DE251CBC17CCF86649 /* Threads.cpp in Sources */,
 				86F1CBF91CF6DF0055CE3FD7 /* Window.cpp in Sources */,
 				59AA35AA1E931C53CFD26709 /* Difference.cpp in Sources */,

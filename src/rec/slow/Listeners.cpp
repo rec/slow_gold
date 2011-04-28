@@ -27,6 +27,37 @@ Listeners::Listeners(Instance* i) : instance_(i) {
   root->addListener(persist::setter<VirtualFile>());
 }
 
+void Listeners::operator()(const VirtualFile& f) {
+  using namespace rec::audio::source;
+  using namespace rec::audio::stretch;
+  using namespace rec::audio::util;
+
+  DLOG(INFO) << "SetVirtualFile";
+  ptr<FileBuffer> buffer(new FileBuffer(f));
+  ThreadData* threadData = instance_->threads_->data();
+  if (!buffer->buffer_) {
+    LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
+    return;
+  }
+
+  Switcher<FileBuffer>* switcher = &threadData->fileBuffer_;
+  if (switcher->next()) {
+    LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
+    return;
+  }
+
+  buffer->thumbnail_->addListener(instance_->listeners_.get());
+  (*instance_->listeners_)(buffer->thumbnail_->thumbnail());
+
+  switcher->setNext(buffer.transfer());
+
+  instance_->threads_->data()->fetchThread_->notify();
+  threadData->stretchLocker_.set(persist::get<Stretch>(f));
+  threadData->loopLocker_.set(persist::get<gui::audio::LoopPointList>(f));
+
+  instance_->components_->songData_.setFile(f);
+}
+
 void Listeners::operator()(None) {
   thread::callAsync(&instance_->components_->waveform_,
                     &widget::waveform::Waveform::repaint);
@@ -62,10 +93,8 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 
 void Listeners::operator()(const ClockTick&) {}
 void Listeners::operator()(const ClockUpdate&) {}
-void Listeners::operator()(const SelectionRange&) {}
 void Listeners::operator()(const audio::stretch::Stretch&) {}
 
-void Listeners::operator()(const file::VirtualFileList&) {}
 void Listeners::operator()(const gui::audio::LoopPointList&) {}
 void Listeners::operator()(const widget::waveform::CursorTime&) {}
 void Listeners::operator()(const widget::waveform::TimeAndMouseEvent&) {}

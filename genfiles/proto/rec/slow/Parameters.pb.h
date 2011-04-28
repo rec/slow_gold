@@ -100,12 +100,12 @@ class Parameters : public ::google::protobuf::Message {
   inline const ::rec::util::file::VirtualFile& file() const;
   inline ::rec::util::file::VirtualFile* mutable_file();
   
-  // optional .rec.audio.stretch.StretchLoop stretch = 2;
+  // optional .rec.audio.stretch.Stretch stretch = 2;
   inline bool has_stretch() const;
   inline void clear_stretch();
   static const int kStretchFieldNumber = 2;
-  inline const ::rec::audio::stretch::StretchLoop& stretch() const;
-  inline ::rec::audio::stretch::StretchLoop* mutable_stretch();
+  inline const ::rec::audio::stretch::Stretch& stretch() const;
+  inline ::rec::audio::stretch::Stretch* mutable_stretch();
   
   // @@protoc_insertion_point(class_scope:rec.slow.Parameters)
  private:
@@ -113,7 +113,7 @@ class Parameters : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::rec::util::file::VirtualFile* file_;
-  ::rec::audio::stretch::StretchLoop* stretch_;
+  ::rec::audio::stretch::Stretch* stretch_;
   friend void  protobuf_AddDesc_rec_2fslow_2fParameters_2eproto();
   friend void protobuf_AssignDesc_rec_2fslow_2fParameters_2eproto();
   friend void protobuf_ShutdownFile_rec_2fslow_2fParameters_2eproto();
@@ -158,20 +158,20 @@ inline ::rec::util::file::VirtualFile* Parameters::mutable_file() {
   return file_;
 }
 
-// optional .rec.audio.stretch.StretchLoop stretch = 2;
+// optional .rec.audio.stretch.Stretch stretch = 2;
 inline bool Parameters::has_stretch() const {
   return _has_bit(1);
 }
 inline void Parameters::clear_stretch() {
-  if (stretch_ != NULL) stretch_->::rec::audio::stretch::StretchLoop::Clear();
+  if (stretch_ != NULL) stretch_->::rec::audio::stretch::Stretch::Clear();
   _clear_bit(1);
 }
-inline const ::rec::audio::stretch::StretchLoop& Parameters::stretch() const {
+inline const ::rec::audio::stretch::Stretch& Parameters::stretch() const {
   return stretch_ != NULL ? *stretch_ : *default_instance_->stretch_;
 }
-inline ::rec::audio::stretch::StretchLoop* Parameters::mutable_stretch() {
+inline ::rec::audio::stretch::Stretch* Parameters::mutable_stretch() {
   _set_bit(1);
-  if (stretch_ == NULL) stretch_ = new ::rec::audio::stretch::StretchLoop;
+  if (stretch_ == NULL) stretch_ = new ::rec::audio::stretch::Stretch;
   return stretch_;
 }
 

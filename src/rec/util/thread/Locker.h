@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_THREAD_LOCKER__
 #define __REC_UTIL_THREAD_LOCKER__
 
-#include "rec/base/base.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace util {
@@ -47,6 +47,18 @@ class Locker {
     bool c = changed_;
     changed_ = false;
     return c;
+  }
+
+  void broadcastIfChanged(Listener<const Data&>* listener) {
+    Data data;
+    {
+      ScopedLock l(*lock_);
+      if (!changed_)
+        return;
+      data = data_;
+      changed_ = false;
+    }
+    (*listener)(data);
   }
 
  protected:

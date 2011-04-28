@@ -1,11 +1,14 @@
 #include "rec/slow/Threads.h"
+#include "rec/audio/util/FileBuffer.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
-#include "rec/util/thread/MakeThread.h"
-#include "rec/util/thread/Callback.h"
-#include "rec/util/STL.h"
 #include "rec/slow/ThreadData.h"
+#include "rec/slow/Threads.h"
+#include "rec/util/STL.h"
+#include "rec/util/thread/Callback.h"
+#include "rec/util/thread/MakeThread.h"
 
 namespace rec {
 namespace slow {
@@ -33,6 +36,13 @@ void fetch(Instance* i) {
 
 void persist(Instance* i) {}
 void pitch(Instance* i) {}
+
+void updateParameters(Instance* i) {
+  ThreadData* threadData = i->threads_->data();
+  threadData->fileLocker_.broadcastIfChanged(i->listeners_.get());
+  threadData->stretchLocker_.broadcastIfChanged(i->listeners_.get());
+  threadData->loopLocker_.broadcastIfChanged(i->listeners_.get());
+}
 
 Threads::Threads(Instance* i) : instance_(i), data_(new ThreadData()) {
 }
