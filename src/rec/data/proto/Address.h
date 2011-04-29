@@ -11,11 +11,11 @@ namespace arg {
 // TODO: fix this name one way or the other.
 
 struct Address : public proto::Address {
-  struct Field : public proto::Address::Field {
+  struct Field : public proto::Address::Part {
     Field(const string& s) { set_name(s); }
     Field(const char* s) { set_name(s); }
     Field(int i) { set_index(i); }
-    Field(const proto::Address::Field& field) { CopyFrom(field); }
+    Field(const proto::Address::Part& field) { CopyFrom(field); }
   };
 
   typedef const Field& P;

@@ -18,9 +18,9 @@ namespace {
 const ::google::protobuf::Descriptor* Address_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Address_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Address_Field_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Address_Part_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Address_Field_reflection_ = NULL;
+  Address_Part_reflection_ = NULL;
 
 }  // namespace
 
@@ -46,22 +46,22 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Address));
-  Address_Field_descriptor_ = Address_descriptor_->nested_type(0);
-  static const int Address_Field_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Field, index_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Field, name_),
+  Address_Part_descriptor_ = Address_descriptor_->nested_type(0);
+  static const int Address_Part_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Part, index_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Part, name_),
   };
-  Address_Field_reflection_ =
+  Address_Part_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Address_Field_descriptor_,
-      Address_Field::default_instance_,
-      Address_Field_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Field, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Field, _unknown_fields_),
+      Address_Part_descriptor_,
+      Address_Part::default_instance_,
+      Address_Part_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Part, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address_Part, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Address_Field));
+      sizeof(Address_Part));
 }
 
 namespace {
@@ -77,7 +77,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Address_descriptor_, &Address::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Address_Field_descriptor_, &Address_Field::default_instance());
+    Address_Part_descriptor_, &Address_Part::default_instance());
 }
 
 }  // namespace
@@ -85,8 +85,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto() {
   delete Address::default_instance_;
   delete Address_reflection_;
-  delete Address_Field::default_instance_;
-  delete Address_Field_reflection_;
+  delete Address_Part::default_instance_;
+  delete Address_Part_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
@@ -97,15 +97,15 @@ void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/data/proto/Address.proto\022\trec.prot"
-    "o\"X\n\007Address\022\'\n\005field\030\001 \003(\0132\030.rec.proto."
-    "Address.Field\032$\n\005Field\022\r\n\005index\030\001 \001(\005\022\014\n"
-    "\004name\030\002 \001(\t", 131);
+    "o\"V\n\007Address\022&\n\005field\030\001 \003(\0132\027.rec.proto."
+    "Address.Part\032#\n\004Part\022\r\n\005index\030\001 \001(\005\022\014\n\004n"
+    "ame\030\002 \001(\t", 129);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/proto/Address.proto", &protobuf_RegisterTypes);
   Address::default_instance_ = new Address();
-  Address_Field::default_instance_ = new Address_Field();
+  Address_Part::default_instance_ = new Address_Part();
   Address::default_instance_->InitAsDefaultInstance();
-  Address_Field::default_instance_->InitAsDefaultInstance();
+  Address_Part::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto);
 }
 
@@ -119,38 +119,38 @@ struct StaticDescriptorInitializer_rec_2fdata_2fproto_2fAddress_2eproto {
 
 // ===================================================================
 
-const ::std::string Address_Field::_default_name_;
+const ::std::string Address_Part::_default_name_;
 #ifndef _MSC_VER
-const int Address_Field::kIndexFieldNumber;
-const int Address_Field::kNameFieldNumber;
+const int Address_Part::kIndexFieldNumber;
+const int Address_Part::kNameFieldNumber;
 #endif  // !_MSC_VER
 
-Address_Field::Address_Field()
+Address_Part::Address_Part()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Address_Field::InitAsDefaultInstance() {
+void Address_Part::InitAsDefaultInstance() {
 }
 
-Address_Field::Address_Field(const Address_Field& from)
+Address_Part::Address_Part(const Address_Part& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Address_Field::SharedCtor() {
+void Address_Part::SharedCtor() {
   _cached_size_ = 0;
   index_ = 0;
   name_ = const_cast< ::std::string*>(&_default_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Address_Field::~Address_Field() {
+Address_Part::~Address_Part() {
   SharedDtor();
 }
 
-void Address_Field::SharedDtor() {
+void Address_Part::SharedDtor() {
   if (name_ != &_default_name_) {
     delete name_;
   }
@@ -158,27 +158,27 @@ void Address_Field::SharedDtor() {
   }
 }
 
-void Address_Field::SetCachedSize(int size) const {
+void Address_Part::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Address_Field::descriptor() {
+const ::google::protobuf::Descriptor* Address_Part::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Address_Field_descriptor_;
+  return Address_Part_descriptor_;
 }
 
-const Address_Field& Address_Field::default_instance() {
+const Address_Part& Address_Part::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();  return *default_instance_;
 }
 
-Address_Field* Address_Field::default_instance_ = NULL;
+Address_Part* Address_Part::default_instance_ = NULL;
 
-Address_Field* Address_Field::New() const {
-  return new Address_Field;
+Address_Part* Address_Part::New() const {
+  return new Address_Part;
 }
 
-void Address_Field::Clear() {
+void Address_Part::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     index_ = 0;
     if (_has_bit(1)) {
@@ -191,7 +191,7 @@ void Address_Field::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool Address_Field::MergePartialFromCodedStream(
+bool Address_Part::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -245,7 +245,7 @@ bool Address_Field::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Address_Field::SerializeWithCachedSizes(
+void Address_Part::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional int32 index = 1;
   if (_has_bit(0)) {
@@ -267,7 +267,7 @@ void Address_Field::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* Address_Field::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* Address_Part::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional int32 index = 1;
   if (_has_bit(0)) {
@@ -291,7 +291,7 @@ void Address_Field::SerializeWithCachedSizes(
   return target;
 }
 
-int Address_Field::ByteSize() const {
+int Address_Part::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -321,10 +321,10 @@ int Address_Field::ByteSize() const {
   return total_size;
 }
 
-void Address_Field::MergeFrom(const ::google::protobuf::Message& from) {
+void Address_Part::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Address_Field* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Address_Field*>(
+  const Address_Part* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const Address_Part*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -333,7 +333,7 @@ void Address_Field::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Address_Field::MergeFrom(const Address_Field& from) {
+void Address_Part::MergeFrom(const Address_Part& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -346,24 +346,24 @@ void Address_Field::MergeFrom(const Address_Field& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Address_Field::CopyFrom(const ::google::protobuf::Message& from) {
+void Address_Part::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Address_Field::CopyFrom(const Address_Field& from) {
+void Address_Part::CopyFrom(const Address_Part& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Address_Field::IsInitialized() const {
+bool Address_Part::IsInitialized() const {
   
   return true;
 }
 
-void Address_Field::Swap(Address_Field* other) {
+void Address_Part::Swap(Address_Part* other) {
   if (other != this) {
     std::swap(index_, other->index_);
     std::swap(name_, other->name_);
@@ -373,11 +373,11 @@ void Address_Field::Swap(Address_Field* other) {
   }
 }
 
-::google::protobuf::Metadata Address_Field::GetMetadata() const {
+::google::protobuf::Metadata Address_Part::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Address_Field_descriptor_;
-  metadata.reflection = Address_Field_reflection_;
+  metadata.descriptor = Address_Part_descriptor_;
+  metadata.reflection = Address_Part_reflection_;
   return metadata;
 }
 
@@ -448,7 +448,7 @@ bool Address::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.proto.Address.Field field = 1;
+      // repeated .rec.proto.Address.Part field = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -481,7 +481,7 @@ bool Address::MergePartialFromCodedStream(
 
 void Address::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.proto.Address.Field field = 1;
+  // repeated .rec.proto.Address.Part field = 1;
   for (int i = 0; i < this->field_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->field(i), output);
@@ -495,7 +495,7 @@ void Address::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Address::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.proto.Address.Field field = 1;
+  // repeated .rec.proto.Address.Part field = 1;
   for (int i = 0; i < this->field_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -512,7 +512,7 @@ void Address::SerializeWithCachedSizes(
 int Address::ByteSize() const {
   int total_size = 0;
   
-  // repeated .rec.proto.Address.Field field = 1;
+  // repeated .rec.proto.Address.Part field = 1;
   total_size += 1 * this->field_size();
   for (int i = 0; i < this->field_size(); i++) {
     total_size +=

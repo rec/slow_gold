@@ -3,10 +3,10 @@ package rec.proto;
 // TODO: change the name of Field to something better and call this just "Field".
 
 message Address {
-  message Field {
+  message Part {
     optional int32 index = 1;
     optional string name = 2;
   };
 
-  repeated Field field = 1;
+  repeated Part field = 1;
 };

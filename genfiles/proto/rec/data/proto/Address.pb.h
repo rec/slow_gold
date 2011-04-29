@@ -34,18 +34,18 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
 void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
 
 class Address;
-class Address_Field;
+class Address_Part;
 
 // ===================================================================
 
-class Address_Field : public ::google::protobuf::Message {
+class Address_Part : public ::google::protobuf::Message {
  public:
-  Address_Field();
-  virtual ~Address_Field();
+  Address_Part();
+  virtual ~Address_Part();
   
-  Address_Field(const Address_Field& from);
+  Address_Part(const Address_Part& from);
   
-  inline Address_Field& operator=(const Address_Field& from) {
+  inline Address_Part& operator=(const Address_Part& from) {
     CopyFrom(from);
     return *this;
   }
@@ -59,17 +59,17 @@ class Address_Field : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Address_Field& default_instance();
+  static const Address_Part& default_instance();
   
-  void Swap(Address_Field* other);
+  void Swap(Address_Part* other);
   
   // implements Message ----------------------------------------------
   
-  Address_Field* New() const;
+  Address_Part* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Address_Field& from);
-  void MergeFrom(const Address_Field& from);
+  void CopyFrom(const Address_Part& from);
+  void MergeFrom(const Address_Part& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -109,7 +109,7 @@ class Address_Field : public ::google::protobuf::Message {
   inline void set_name(const char* value, size_t size);
   inline ::std::string* mutable_name();
   
-  // @@protoc_insertion_point(class_scope:rec.proto.Address.Field)
+  // @@protoc_insertion_point(class_scope:rec.proto.Address.Part)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -135,7 +135,7 @@ class Address_Field : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Address_Field* default_instance_;
+  static Address_Part* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -191,20 +191,20 @@ class Address : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef Address_Field Field;
+  typedef Address_Part Part;
   
   // accessors -------------------------------------------------------
   
-  // repeated .rec.proto.Address.Field field = 1;
+  // repeated .rec.proto.Address.Part field = 1;
   inline int field_size() const;
   inline void clear_field();
   static const int kFieldFieldNumber = 1;
-  inline const ::rec::proto::Address_Field& field(int index) const;
-  inline ::rec::proto::Address_Field* mutable_field(int index);
-  inline ::rec::proto::Address_Field* add_field();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Field >&
+  inline const ::rec::proto::Address_Part& field(int index) const;
+  inline ::rec::proto::Address_Part* mutable_field(int index);
+  inline ::rec::proto::Address_Part* add_field();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >&
       field() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Field >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >*
       mutable_field();
   
   // @@protoc_insertion_point(class_scope:rec.proto.Address)
@@ -212,7 +212,7 @@ class Address : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Field > field_;
+  ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part > field_;
   friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
@@ -238,59 +238,59 @@ class Address : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// Address_Field
+// Address_Part
 
 // optional int32 index = 1;
-inline bool Address_Field::has_index() const {
+inline bool Address_Part::has_index() const {
   return _has_bit(0);
 }
-inline void Address_Field::clear_index() {
+inline void Address_Part::clear_index() {
   index_ = 0;
   _clear_bit(0);
 }
-inline ::google::protobuf::int32 Address_Field::index() const {
+inline ::google::protobuf::int32 Address_Part::index() const {
   return index_;
 }
-inline void Address_Field::set_index(::google::protobuf::int32 value) {
+inline void Address_Part::set_index(::google::protobuf::int32 value) {
   _set_bit(0);
   index_ = value;
 }
 
 // optional string name = 2;
-inline bool Address_Field::has_name() const {
+inline bool Address_Part::has_name() const {
   return _has_bit(1);
 }
-inline void Address_Field::clear_name() {
+inline void Address_Part::clear_name() {
   if (name_ != &_default_name_) {
     name_->clear();
   }
   _clear_bit(1);
 }
-inline const ::std::string& Address_Field::name() const {
+inline const ::std::string& Address_Part::name() const {
   return *name_;
 }
-inline void Address_Field::set_name(const ::std::string& value) {
+inline void Address_Part::set_name(const ::std::string& value) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Address_Field::set_name(const char* value) {
+inline void Address_Part::set_name(const char* value) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Address_Field::set_name(const char* value, size_t size) {
+inline void Address_Part::set_name(const char* value, size_t size) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Address_Field::mutable_name() {
+inline ::std::string* Address_Part::mutable_name() {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
@@ -302,27 +302,27 @@ inline ::std::string* Address_Field::mutable_name() {
 
 // Address
 
-// repeated .rec.proto.Address.Field field = 1;
+// repeated .rec.proto.Address.Part field = 1;
 inline int Address::field_size() const {
   return field_.size();
 }
 inline void Address::clear_field() {
   field_.Clear();
 }
-inline const ::rec::proto::Address_Field& Address::field(int index) const {
+inline const ::rec::proto::Address_Part& Address::field(int index) const {
   return field_.Get(index);
 }
-inline ::rec::proto::Address_Field* Address::mutable_field(int index) {
+inline ::rec::proto::Address_Part* Address::mutable_field(int index) {
   return field_.Mutable(index);
 }
-inline ::rec::proto::Address_Field* Address::add_field() {
+inline ::rec::proto::Address_Part* Address::add_field() {
   return field_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Field >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >&
 Address::field() const {
   return field_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Field >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >*
 Address::mutable_field() {
   return &field_;
 }
