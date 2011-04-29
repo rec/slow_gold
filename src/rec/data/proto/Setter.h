@@ -1,14 +1,14 @@
 #ifndef __REC_PROTO_SETTER__
 #define __REC_PROTO_SETTER__
 
-#include "rec/data/Operable.h"
+#include "rec/data/Persistent.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace proto {
 namespace arg {
 
-class Setter : public Listener<Operation*>, public data::Operable {
+class Setter : public Listener<Operation*>, public data::Persistent {
  public:
   Setter() {}
 
