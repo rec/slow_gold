@@ -8,5 +8,5 @@ message Address {
     optional string name = 2;
   };
 
-  repeated Part field = 1;
+  repeated Part part = 1;
 };

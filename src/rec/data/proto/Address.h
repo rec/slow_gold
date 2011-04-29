@@ -8,18 +8,16 @@ namespace rec {
 namespace proto {
 namespace arg {
 
-// TODO: fix this name one way or the other.
-
 struct Address : public proto::Address {
-  struct Field : public proto::Address::Part {
-    Field(const string& s) { set_name(s); }
-    Field(const char* s) { set_name(s); }
-    Field(int i) { set_index(i); }
-    Field(const proto::Address::Part& field) { CopyFrom(field); }
+  struct Part : public proto::Address::Part {
+    Part(const string& s) { set_name(s); }
+    Part(const char* s) { set_name(s); }
+    Part(int i) { set_index(i); }
+    Part(const proto::Address::Part& field) { CopyFrom(field); }
   };
 
-  typedef const Field& P;
-  void p(P x) { add_field()->CopyFrom(x); }
+  typedef const Part& P;
+  void p(P x) { add_part()->CopyFrom(x); }
 
   Address() {}
   Address(P a) { p(a); }

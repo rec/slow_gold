@@ -33,7 +33,7 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
   GOOGLE_CHECK(file != NULL);
   Address_descriptor_ = file->message_type(0);
   static const int Address_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address, field_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Address, part_),
   };
   Address_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -97,9 +97,9 @@ void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/data/proto/Address.proto\022\trec.prot"
-    "o\"V\n\007Address\022&\n\005field\030\001 \003(\0132\027.rec.proto."
-    "Address.Part\032#\n\004Part\022\r\n\005index\030\001 \001(\005\022\014\n\004n"
-    "ame\030\002 \001(\t", 129);
+    "o\"U\n\007Address\022%\n\004part\030\001 \003(\0132\027.rec.proto.A"
+    "ddress.Part\032#\n\004Part\022\r\n\005index\030\001 \001(\005\022\014\n\004na"
+    "me\030\002 \001(\t", 128);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/proto/Address.proto", &protobuf_RegisterTypes);
   Address::default_instance_ = new Address();
@@ -385,7 +385,7 @@ void Address_Part::Swap(Address_Part* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int Address::kFieldFieldNumber;
+const int Address::kPartFieldNumber;
 #endif  // !_MSC_VER
 
 Address::Address()
@@ -437,7 +437,7 @@ Address* Address::New() const {
 }
 
 void Address::Clear() {
-  field_.Clear();
+  part_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -448,17 +448,17 @@ bool Address::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.proto.Address.Part field = 1;
+      // repeated .rec.proto.Address.Part part = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_field:
+         parse_part:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_field()));
+                input, add_part()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(10)) goto parse_field;
+        if (input->ExpectTag(10)) goto parse_part;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -481,10 +481,10 @@ bool Address::MergePartialFromCodedStream(
 
 void Address::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.proto.Address.Part field = 1;
-  for (int i = 0; i < this->field_size(); i++) {
+  // repeated .rec.proto.Address.Part part = 1;
+  for (int i = 0; i < this->part_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->field(i), output);
+      1, this->part(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -495,11 +495,11 @@ void Address::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Address::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.proto.Address.Part field = 1;
-  for (int i = 0; i < this->field_size(); i++) {
+  // repeated .rec.proto.Address.Part part = 1;
+  for (int i = 0; i < this->part_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->field(i), target);
+        1, this->part(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -512,12 +512,12 @@ void Address::SerializeWithCachedSizes(
 int Address::ByteSize() const {
   int total_size = 0;
   
-  // repeated .rec.proto.Address.Part field = 1;
-  total_size += 1 * this->field_size();
-  for (int i = 0; i < this->field_size(); i++) {
+  // repeated .rec.proto.Address.Part part = 1;
+  total_size += 1 * this->part_size();
+  for (int i = 0; i < this->part_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->field(i));
+        this->part(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -545,7 +545,7 @@ void Address::MergeFrom(const ::google::protobuf::Message& from) {
 
 void Address::MergeFrom(const Address& from) {
   GOOGLE_CHECK_NE(&from, this);
-  field_.MergeFrom(from.field_);
+  part_.MergeFrom(from.part_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -568,7 +568,7 @@ bool Address::IsInitialized() const {
 
 void Address::Swap(Address* other) {
   if (other != this) {
-    field_.Swap(&other->field_);
+    part_.Swap(&other->part_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

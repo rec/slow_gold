@@ -7,7 +7,7 @@ namespace rec {
 namespace proto {
 
 class Address;
-class Address_Field;
+class Address_Part;
 class Operation;
 class Value;
 
@@ -21,7 +21,7 @@ class Field : public MessageField {
                                      operation_(NULL) {
   }
 
-  bool dereference(const Address_Field& part);
+  bool dereference(const Address_Part& part);
   Operation* apply(const Operation& op);
 
   bool copyFrom(const Value& value);

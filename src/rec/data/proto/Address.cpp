@@ -11,13 +11,13 @@ const Address operator+(const Address& x, const Address& y) {
 
 const Address operator+(const Address& x, int i) {
   Address result = x;
-  result.add_field()->set_index(i);
+  result.add_part()->set_index(i);
   return result;
 }
 
 const Address operator+(const Address& x, const string& name) {
   Address result = x;
-  result.add_field()->set_name(name);
+  result.add_part()->set_name(name);
   return result;
 }
 

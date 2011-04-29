@@ -29,7 +29,7 @@ class Setter : public Listener<Operation*> {
   void swap(const Address& address, int s1, int s2);
 
   typedef Address A;
-  typedef const A::Field& P;
+  typedef const A::Part& P;
   typedef const Value& V;
   typedef const Message& M;
 

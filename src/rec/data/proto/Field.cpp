@@ -12,8 +12,8 @@ namespace proto {
 
 Field* Field::makeField(const Address& address, const Message& msg) {
   ptr<Field> field(new Field(const_cast<Message*>(&msg)));
-  for (int i = 0; i < address.field_size(); ++i) {
-    if (!field->dereference(address.field(i))) {
+  for (int i = 0; i < address.part_size(); ++i) {
+    if (!field->dereference(address.part(i))) {
       LOG(ERROR) << "Couldn't get field from address:\n"
                  << address.DebugString()
                  << "\nMessage:\n" << msg.DebugString();
@@ -23,7 +23,7 @@ Field* Field::makeField(const Address& address, const Message& msg) {
   return field.transfer();
 }
 
-bool Field::dereference(const proto::Address::Field& afield) {
+bool Field::dereference(const proto::Address::Part& afield) {
   if (field_) {
     const Reflection& r = *message_->GetReflection();
     if (type_ == INDEXED) {
@@ -179,7 +179,7 @@ bool Field::doRemove(int toRemove) {
   f.field_ = field_;
   f.type_ = type_;
   f.repeatCount_ = repeatCount_;
-  f.dereference(arg::Address::Field(0));
+  f.dereference(arg::Address::Part(0));
   if (toRemove < 0)
     toRemove = f.repeatCount_;
 

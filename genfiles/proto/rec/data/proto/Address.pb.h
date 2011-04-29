@@ -195,24 +195,24 @@ class Address : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // repeated .rec.proto.Address.Part field = 1;
-  inline int field_size() const;
-  inline void clear_field();
-  static const int kFieldFieldNumber = 1;
-  inline const ::rec::proto::Address_Part& field(int index) const;
-  inline ::rec::proto::Address_Part* mutable_field(int index);
-  inline ::rec::proto::Address_Part* add_field();
+  // repeated .rec.proto.Address.Part part = 1;
+  inline int part_size() const;
+  inline void clear_part();
+  static const int kPartFieldNumber = 1;
+  inline const ::rec::proto::Address_Part& part(int index) const;
+  inline ::rec::proto::Address_Part* mutable_part(int index);
+  inline ::rec::proto::Address_Part* add_part();
   inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >&
-      field() const;
+      part() const;
   inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >*
-      mutable_field();
+      mutable_part();
   
   // @@protoc_insertion_point(class_scope:rec.proto.Address)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part > field_;
+  ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part > part_;
   friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
@@ -302,29 +302,29 @@ inline ::std::string* Address_Part::mutable_name() {
 
 // Address
 
-// repeated .rec.proto.Address.Part field = 1;
-inline int Address::field_size() const {
-  return field_.size();
+// repeated .rec.proto.Address.Part part = 1;
+inline int Address::part_size() const {
+  return part_.size();
 }
-inline void Address::clear_field() {
-  field_.Clear();
+inline void Address::clear_part() {
+  part_.Clear();
 }
-inline const ::rec::proto::Address_Part& Address::field(int index) const {
-  return field_.Get(index);
+inline const ::rec::proto::Address_Part& Address::part(int index) const {
+  return part_.Get(index);
 }
-inline ::rec::proto::Address_Part* Address::mutable_field(int index) {
-  return field_.Mutable(index);
+inline ::rec::proto::Address_Part* Address::mutable_part(int index) {
+  return part_.Mutable(index);
 }
-inline ::rec::proto::Address_Part* Address::add_field() {
-  return field_.Add();
+inline ::rec::proto::Address_Part* Address::add_part() {
+  return part_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >&
-Address::field() const {
-  return field_;
+Address::part() const {
+  return part_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >*
-Address::mutable_field() {
-  return &field_;
+Address::mutable_part() {
+  return &part_;
 }
 
 
