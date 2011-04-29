@@ -8,6 +8,8 @@ namespace rec {
 namespace util {
 namespace listener {
 
+// A ProtoListener has a view, a local copy of a persistent protocol buffer.
+//
 class ProtoListener : public Listener<const Message&> {
  public:
   typedef proto::arg::Address Address;
@@ -21,14 +23,14 @@ class ProtoListener : public Listener<const Message&> {
   persist::UntypedData* getData() { return data_; }
 
  protected:
-  // onChange is called when the local copy of the data is changed by the GUI,
+  // onChange is called when the local view of the data is changed by the GUI,
   // to update the persistent data.
   virtual void updatePersistentData();
 
-  // Gets the data from the "view".
+  // Gets the data from the view.
   virtual const Value getDisplayValue() const = 0;
 
-  // Set the "view" data.
+  // Set the view data.
   virtual void setDisplayValue(const Value&) = 0;
 
  private:

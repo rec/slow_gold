@@ -1,6 +1,7 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/GenericApplication.h"
 #include "rec/data/persist/AppDirectory.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 
 namespace rec {

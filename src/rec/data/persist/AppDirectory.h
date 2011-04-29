@@ -6,7 +6,7 @@
 namespace rec {
 namespace util {
 
-// Set the name of the application ("SlowGold").  Only call this once.
+// Set the name of the application ("SlowGold").  You may only call this once.
 void setApplicationName(const String&);
 const String& getApplicationName();
 

@@ -23,11 +23,10 @@ class GenericApplication : public juce::JUCEApplication {
   virtual void shutdown();
   virtual DocumentWindow* createWindow() const = 0;
 
-  const String getApplicationName()    { return name_; }
-  const String getApplicationVersion() { return version_; }
-  bool moreThanOneInstanceAllowed()    { return false; }
-
-  void anotherInstanceStarted (const String&) {}
+  virtual const String getApplicationName()    { return name_; }
+  virtual const String getApplicationVersion() { return version_; }
+  virtual bool moreThanOneInstanceAllowed()    { return false; }
+  virtual void anotherInstanceStarted(const String&) {}
 
  protected:
   const String name_;

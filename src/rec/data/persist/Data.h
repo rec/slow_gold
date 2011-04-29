@@ -26,9 +26,7 @@ class Data : public UntypedData, public Broadcaster<const Proto&>,
 
   virtual string getTypeName() const { return proto_.GetTypeName(); }
 
-  virtual ~Data() {
-    DLOG(INFO) << "Deleting data: " << getTypeName();
-  }
+  virtual ~Data() {}
 
  protected:
   virtual void onDataChange() {

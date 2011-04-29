@@ -12,7 +12,7 @@ GenericApplication::GenericApplication(const String& name, const String& v)
 
 void GenericApplication::initialise(const String&) {
   setApplicationName(name_);
-  LOG(INFO) << "Initializing " << getApplicationName();
+  LOG(INFO) << name_ << ": initialise starting...";
   if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();
     return;
@@ -21,17 +21,18 @@ void GenericApplication::initialise(const String&) {
   audio::format::mpg123::initializeOnce();
   persist::AppInstance::start();
   window_.reset(createWindow());
+  LOG(INFO) << name_ << ": initialise finished.";
 }
 
 void GenericApplication::shutdown() {
-  LOG(INFO) << "Shutting down";
+  LOG(INFO) << name_ << ": shutdown starting...";
 
   window_.reset();
   util::thread::trash::waitForAllThreadsToExit(1000);
   persist::AppInstance::stop();
   gui::icon::deleteIcons();
 
-  LOG(INFO) << "Shut down finished.";
+  LOG(INFO) << name_ << ": shutdown finished.";
 }
 
 }  // namespace app

@@ -72,9 +72,7 @@ AudioDeviceSetupListener::AudioDeviceSetupListener(AudioDeviceManager* manager)
       LOG(ERROR) << "Couldn't setAudioDeviceSetup, error " << err;
   }
 
-  if (readSuccessful)
-    DLOG(INFO) << "Read from file.";
-  else
+  if (!readSuccessful)
     manager->initialise(0, 2, 0, true, String::empty, 0);
 
   manager->addChangeListener(this);
@@ -87,7 +85,7 @@ AudioDeviceSetupListener::~AudioDeviceSetupListener() {
 void AudioDeviceSetupListener::changeListenerCallback(ChangeBroadcaster* cb) {
   audio::AudioDeviceSetupProto setupProto;
   if (copy(*manager_, &setupProto)) {
-    setter<AudioDeviceSetupProto>()->set(setupProto);
+    persist::set(setupProto);
     DLOG(INFO) << "Audio setup changed";
   } else {
     LOG(ERROR) << "Unable to copy AudioDeviceSetupProto";

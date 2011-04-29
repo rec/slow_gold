@@ -22,7 +22,6 @@ void ProtoListener::operator()(const Message& m) {
 }
 
 void ProtoListener::updatePersistentData() {
-  DLOG(INFO) << "updatePersistentData";
   if (getData())
     getData()->set(address_, getDisplayValue());
 }

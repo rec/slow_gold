@@ -96,13 +96,13 @@ void Listeners::operator()(const Stretch& x) {
 }
 
 void Listeners::operator()(const LoopPointList& loops) {
-  DLOG(INFO) << "LoopPoint!!";
   if (!loops.loop_point_size()) {
     LoopPointList loop;
     loop.add_loop_point();
+    loop.add_selected(true);
     persist::set(loop, persist::get<VirtualFile>());
   } else {
-    instance_->components_->loops_.setData(persist::setter<LoopPointList>());
+    instance_->components_->loops_.setData(persist::setter<LoopPointList>(persist::get<VirtualFile>()));
     thread::callAsync(&instance_->components_->waveform_,
                       &Waveform::addAllCursors, loops);
   }
