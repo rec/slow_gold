@@ -1,32 +1,30 @@
 #ifndef __REC_PROTO_SETTER__
 #define __REC_PROTO_SETTER__
 
-#include "rec/base/base.h"
-#include "rec/data/proto/Address.h"
-#include "rec/data/proto/Value.h"
+#include "rec/data/Operable.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace proto {
 namespace arg {
 
-class Setter : public Listener<Operation*> {
+class Setter : public Listener<Operation*>, public data::Operable {
  public:
   Setter() {}
 
   virtual void operator()(OperationList*) = 0;
-  virtual const Value getValue(const Address& address) const = 0;
-  virtual bool hasValue(const Address& address) const = 0;
-  virtual int getSize(const Address& address) const = 0;
-  virtual void copyTo(Message* message) const = 0;
+  virtual const Value getValue(const Address&) const = 0;
+  virtual bool hasValue(const Address&) const = 0;
+  virtual int getSize(const Address&) const = 0;
+  virtual void copyTo(Message*) const = 0;
 
-  void operator()(Operation*);
+  virtual void operator()(Operation*);
 
-  void append(const Address& address, const Value& value);
-  void clear(const Address& address);
-  void remove(const Address& address, int itemsToRemove);
-  void set(const Address& address, const Value& value);
-  void swap(const Address& address, int s1, int s2);
+  void append(const Address&, const Value& value);
+  void clear(const Address&);
+  void remove(const Address&, int itemsToRemove);
+  void set(const Address&, const Value&);
+  void swap(const Address&, int index1, int index2);
 
   typedef Address A;
   typedef const A::Part& P;
