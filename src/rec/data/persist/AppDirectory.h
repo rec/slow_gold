@@ -13,10 +13,6 @@ const String& getApplicationName();
 // Get the root directory to store files.
 File getApplicationDirectory();
 
-inline File getApplicationFile(const String& child) {
-  return getApplicationDirectory().getChildFile(child);
-}
-
 }  // namespace util
 }  // namespace rec
 
