@@ -11,6 +11,7 @@ namespace data {
 typedef proto::Operation Operation;
 typedef proto::OperationList OperationList;
 typedef proto::arg::Address Address;
+typedef proto::arg::Value Value;
 
 }  // namespace data
 }  // namespace rec

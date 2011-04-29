@@ -93,7 +93,7 @@ void TableController::setDisplayValue(const Value& v) {
   }
 }
 
-void TableController::setData(UntypedData* data) {
+void TableController::setData(persist::UntypedData* data) {
   {
     ScopedLock l(lock_);
     ProtoListener::setData(data);

@@ -53,7 +53,8 @@ using namespace util;
 using util::file::VirtualFile;
 using util::file::VirtualFileList;
 using std::vector;
-using persist::UntypedData;
+
+// TODO: remove these.
 using proto::arg::Address;
 using proto::arg::Setter;
 using proto::arg::Value;
