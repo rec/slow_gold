@@ -4,6 +4,13 @@ namespace rec {
 namespace proto {
 namespace arg {
 
+void Setter::operator()(Operation* oper) {
+  ptr<Operation> op(oper);
+  ptr<OperationList> list(new OperationList);
+  list->add_operation()->CopyFrom(*op);
+  (*this)(list.transfer());
+}
+
 namespace {
 
 typedef Operation::Command Command;
@@ -35,13 +42,6 @@ Operation* swapOp(const Address& a, int s, int t) {
 }
 
 }  // namespace
-
-void Setter::operator()(Operation* oper) {
-  ptr<Operation> op(oper);
-  ptr<OperationList> list(new OperationList);
-  list->add_operation()->CopyFrom(*op);
-  (*this)(list.transfer());
-}
 
 void Setter::append(const Address& address, const Value& value) {
   (*this)(valueOp(Operation::APPEND, address, value));

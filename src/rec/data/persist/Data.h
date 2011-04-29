@@ -13,7 +13,8 @@ namespace persist {
 class App;
 
 template <typename Proto>
-class Data : public UntypedData, public Broadcaster<const Proto&>,
+class Data : public UntypedData,
+             public Broadcaster<const Proto&>,
              public Listener<const Proto&> {
  public:
   // Get a consistent snapshot of the current value.

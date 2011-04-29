@@ -14,19 +14,19 @@ class Setter : public Listener<Operation*> {
  public:
   Setter() {}
 
-  void operator()(Operation*);
   virtual void operator()(OperationList*) = 0;
+  virtual const Value getValue(const Address& address) const = 0;
+  virtual bool hasValue(const Address& address) const = 0;
+  virtual int getSize(const Address& address) const = 0;
+  virtual void copyTo(Message* message) const = 0;
+
+  void operator()(Operation*);
 
   void append(const Address& address, const Value& value);
   void clear(const Address& address);
   void remove(const Address& address, int itemsToRemove);
   void set(const Address& address, const Value& value);
   void swap(const Address& address, int s1, int s2);
-
-  virtual const Value getValue(const Address& address) const = 0;
-  virtual bool hasValue(const Address& address) const = 0;
-  virtual int getSize(const Address& address) const = 0;
-  virtual void copyTo(Message* message) const = 0;
 
   typedef Address A;
   typedef const A::Field& P;
