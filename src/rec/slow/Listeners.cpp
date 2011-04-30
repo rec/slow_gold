@@ -28,24 +28,24 @@ using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
 using namespace rec::gui::audio;
 
-Listeners::Listeners(Instance* i) : instance_(i) {
-  instance_->player_->addListener(this);
+Listeners::Listeners(Instance* i) : HasInstance(i) {
+  player()->addListener(this);
 
-  Waveform* waveform = &instance_->components_->waveform_;
+  Waveform* waveform = &components()->waveform_;
   waveform->dropBroadcaster()->addListener(this);
   waveform->addMouseListener(this, true);
 
-  Root* root = &instance_->components_->directoryTree_;
+  Root* root = &components()->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);
   root->addListener(persist::setter<VirtualFile>());
 
-  persist::setter<VirtualFileList>()->addListener(&instance_->components_->directoryTree_);
+  persist::setter<VirtualFileList>()->addListener(&components()->directoryTree_);
   // persist::setter<VirtualFileList>()->requestUpdate();
 }
 
 void Listeners::operator()(const VirtualFile& f) {
   ptr<FileBuffer> buffer(new FileBuffer(f));
-  ThreadData* threadData = instance_->threads_->data();
+  ThreadData* threadData = threads()->data();
   if (!buffer->buffer_) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
     return;
@@ -57,12 +57,12 @@ void Listeners::operator()(const VirtualFile& f) {
     return;
   }
 
-  buffer->thumbnail_->addListener(&instance_->components_->waveform_);
+  buffer->thumbnail_->addListener(&components()->waveform_);
   switcher->setNext(buffer.transfer());
-  instance_->threads_->data()->fetchThread_->notify();
+  threads()->data()->fetchThread_->notify();
 
   persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);
-  instance_->components_->loops_.setData(setter);
+  components()->loops_.setData(setter);
 
   threadData->stretchLocker_.listenTo(persist::setter<Stretch>(f));
   threadData->loopLocker_.listenTo(setter);
@@ -70,22 +70,22 @@ void Listeners::operator()(const VirtualFile& f) {
   threadData->stretchLocker_.set(persist::get<Stretch>(f));
   threadData->loopLocker_.set(persist::get<LoopPointList>(f));
 
-  instance_->components_->songData_.setFile(f);
+  components()->songData_.setFile(f);
 }
 
 void Listeners::operator()(None) {
-  thread::callAsync(&instance_->components_->waveform_, &Waveform::repaint);
+  thread::callAsync(&components()->waveform_, &Waveform::repaint);
 }
 
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
-  if (dropFiles.target_ == &instance_->components_->waveform_) {
+  if (dropFiles.target_ == &components()->waveform_) {
     if (files.file_size() >= 1)
       persist::set(files.file(0));
 
     LOG_IF(ERROR, files.file_size() != 1);
 
-  } else if (dropFiles.target_ == instance_->components_->directoryTree_.treeView()) {
+  } else if (dropFiles.target_ == components()->directoryTree_.treeView()) {
     using file::getFile;
 
     typedef std::set<string> FileSet;
@@ -111,10 +111,9 @@ void Listeners::operator()(const LoopPointList& loops) {
     loop.add_selected(true);
     persist::set(loop, persist::get<VirtualFile>());
   } else {
-    instance_->components_->loops_.setData(persist::setter<LoopPointList>(
+    components()->loops_.setData(persist::setter<LoopPointList>(
         persist::get<VirtualFile>()));  // TODO
-    thread::callAsync(&instance_->components_->waveform_,
-                      &Waveform::addAllCursors, loops);
+    thread::callAsync(&components()->waveform_, &Waveform::addAllCursors, loops);
   }
 }
 
@@ -137,8 +136,8 @@ void Listeners::operator()(const ZoomProto&) {}
 void Listeners::operator()(RealTime) {}
 
 void Listeners::operator()(audio::transport::State state) {
-  instance_->components_->transportController_.setTransportState(state);
-  instance_->player_->setState(state);
+  components()->transportController_.setTransportState(state);
+  player()->setState(state);
 }
 
 #ifdef TODO
@@ -148,7 +147,7 @@ void Listeners::operator()(audio::transport::State state) {
 void Listeners::operator()(const file::VirtualFile& f) {
   persist::setter<VirtualFile>()->set(f);
   // ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
-  // instance_->components_->songData_.setFile(f);
+  // components()->songData_.setFile(f);
   if (source)
 
   }
@@ -196,7 +195,7 @@ void Listeners::operator()(SampleTime time) {
 }
 
 void Listeners::operator()(const juce::AudioThumbnail&) {
-  instance_->components_->waveform_.repaint();
+  components()->waveform_.repaint();
 }
 
 void Listeners::operator()(const SelectionRange& sel) {

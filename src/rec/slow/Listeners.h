@@ -2,6 +2,7 @@
 #define __REC_SLOW_LISTENERS__
 
 #include "rec/audio/Audio.h"
+#include "rec/slow/HasInstance.h"
 #include "rec/util/Range.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/CallAsync.h"
@@ -31,7 +32,8 @@ class Listeners : public Listener<None>,
                   public Listener<const audio::stretch::Stretch&>,
                   public Listener<const gui::DropFiles&>,
                   public Listener<const gui::audio::LoopPointList&>,
-                  juce::MouseListener {
+                  public juce::MouseListener,
+                  public HasInstance {
  public:
   explicit Listeners(Instance* i);
 

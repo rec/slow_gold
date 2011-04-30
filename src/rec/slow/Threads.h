@@ -1,15 +1,15 @@
 #ifndef __REC_SLOW_THREADS__
 #define __REC_SLOW_THREADS__
 
+#include "rec/slow/HasInstance.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
 namespace slow {
 
-class Instance;
 struct ThreadData;
 
-class Threads {
+class Threads : public HasInstance {
  public:
   static const int LOOP_TIME = 100;
 

@@ -44,7 +44,7 @@ void updateParameters(Instance* i) {
   threadData->loopLocker_.broadcastIfChanged(i->listeners_.get());
 }
 
-Threads::Threads(Instance* i) : instance_(i), data_(new ThreadData()) {
+Threads::Threads(Instance* i) : HasInstance(i), data_(new ThreadData()) {
 }
 
 void Threads::startAll() {
