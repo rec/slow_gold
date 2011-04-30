@@ -11,13 +11,13 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace proto {
+namespace data {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Value_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* ValueProto_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Value_reflection_ = NULL;
+  ValueProto_reflection_ = NULL;
 
 }  // namespace
 
@@ -28,38 +28,38 @@ void protobuf_AssignDesc_rec_2fdata_2fproto_2fValue_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "rec/data/proto/Value.proto");
   GOOGLE_CHECK(file != NULL);
-  Value_descriptor_ = file->message_type(0);
-  static const int Value_offsets_[18] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, double_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, float_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, int64_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, uint64_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, int32_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, fixed64_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, fixed32_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, bool_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, string_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, group_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, message_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, bytes_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, uint32_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, enum_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, sfixed32_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, sfixed64_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, sint32_f_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, sint64_f_),
+  ValueProto_descriptor_ = file->message_type(0);
+  static const int ValueProto_offsets_[18] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, double_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, float_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, int64_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, uint64_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, int32_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, fixed64_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, fixed32_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, bool_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, string_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, group_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, message_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, bytes_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, uint32_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, enum_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, sfixed32_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, sfixed64_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, sint32_f_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, sint64_f_),
   };
-  Value_reflection_ =
+  ValueProto_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Value_descriptor_,
-      Value::default_instance_,
-      Value_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Value, _unknown_fields_),
+      ValueProto_descriptor_,
+      ValueProto::default_instance_,
+      ValueProto_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ValueProto, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Value));
+      sizeof(ValueProto));
 }
 
 namespace {
@@ -73,14 +73,14 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Value_descriptor_, &Value::default_instance());
+    ValueProto_descriptor_, &ValueProto::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_rec_2fdata_2fproto_2fValue_2eproto() {
-  delete Value::default_instance_;
-  delete Value_reflection_;
+  delete ValueProto::default_instance_;
+  delete ValueProto_reflection_;
 }
 
 void protobuf_AddDesc_rec_2fdata_2fproto_2fValue_2eproto() {
@@ -90,20 +90,20 @@ void protobuf_AddDesc_rec_2fdata_2fproto_2fValue_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\032rec/data/proto/Value.proto\022\trec.proto\""
-    "\311\002\n\005Value\022\020\n\010double_f\030\001 \001(\001\022\017\n\007float_f\030\002"
-    " \001(\002\022\017\n\007int64_f\030\003 \001(\003\022\020\n\010uint64_f\030\004 \001(\004\022"
-    "\017\n\007int32_f\030\005 \001(\005\022\021\n\tfixed64_f\030\006 \001(\006\022\021\n\tf"
-    "ixed32_f\030\007 \001(\007\022\016\n\006bool_f\030\010 \001(\010\022\020\n\010string"
-    "_f\030\t \001(\t\022\017\n\007group_f\030\n \001(\014\022\021\n\tmessage_f\030\013"
-    " \001(\014\022\017\n\007bytes_f\030\014 \001(\014\022\020\n\010uint32_f\030\r \001(\r\022"
-    "\016\n\006enum_f\030\016 \001(\005\022\022\n\nsfixed32_f\030\017 \001(\017\022\022\n\ns"
-    "fixed64_f\030\020 \001(\020\022\020\n\010sint32_f\030\021 \001(\021\022\020\n\010sin"
-    "t64_f\030\022 \001(\022", 371);
+    "\n\032rec/data/proto/Value.proto\022\010rec.data\"\316"
+    "\002\n\nValueProto\022\020\n\010double_f\030\001 \001(\001\022\017\n\007float"
+    "_f\030\002 \001(\002\022\017\n\007int64_f\030\003 \001(\003\022\020\n\010uint64_f\030\004 "
+    "\001(\004\022\017\n\007int32_f\030\005 \001(\005\022\021\n\tfixed64_f\030\006 \001(\006\022"
+    "\021\n\tfixed32_f\030\007 \001(\007\022\016\n\006bool_f\030\010 \001(\010\022\020\n\010st"
+    "ring_f\030\t \001(\t\022\017\n\007group_f\030\n \001(\014\022\021\n\tmessage"
+    "_f\030\013 \001(\014\022\017\n\007bytes_f\030\014 \001(\014\022\020\n\010uint32_f\030\r "
+    "\001(\r\022\016\n\006enum_f\030\016 \001(\005\022\022\n\nsfixed32_f\030\017 \001(\017\022"
+    "\022\n\nsfixed64_f\030\020 \001(\020\022\020\n\010sint32_f\030\021 \001(\021\022\020\n"
+    "\010sint64_f\030\022 \001(\022", 375);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/proto/Value.proto", &protobuf_RegisterTypes);
-  Value::default_instance_ = new Value();
-  Value::default_instance_->InitAsDefaultInstance();
+  ValueProto::default_instance_ = new ValueProto();
+  ValueProto::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2fdata_2fproto_2fValue_2eproto);
 }
 
@@ -117,46 +117,46 @@ struct StaticDescriptorInitializer_rec_2fdata_2fproto_2fValue_2eproto {
 
 // ===================================================================
 
-const ::std::string Value::_default_string_f_;
-const ::std::string Value::_default_group_f_;
-const ::std::string Value::_default_message_f_;
-const ::std::string Value::_default_bytes_f_;
+const ::std::string ValueProto::_default_string_f_;
+const ::std::string ValueProto::_default_group_f_;
+const ::std::string ValueProto::_default_message_f_;
+const ::std::string ValueProto::_default_bytes_f_;
 #ifndef _MSC_VER
-const int Value::kDoubleFFieldNumber;
-const int Value::kFloatFFieldNumber;
-const int Value::kInt64FFieldNumber;
-const int Value::kUint64FFieldNumber;
-const int Value::kInt32FFieldNumber;
-const int Value::kFixed64FFieldNumber;
-const int Value::kFixed32FFieldNumber;
-const int Value::kBoolFFieldNumber;
-const int Value::kStringFFieldNumber;
-const int Value::kGroupFFieldNumber;
-const int Value::kMessageFFieldNumber;
-const int Value::kBytesFFieldNumber;
-const int Value::kUint32FFieldNumber;
-const int Value::kEnumFFieldNumber;
-const int Value::kSfixed32FFieldNumber;
-const int Value::kSfixed64FFieldNumber;
-const int Value::kSint32FFieldNumber;
-const int Value::kSint64FFieldNumber;
+const int ValueProto::kDoubleFFieldNumber;
+const int ValueProto::kFloatFFieldNumber;
+const int ValueProto::kInt64FFieldNumber;
+const int ValueProto::kUint64FFieldNumber;
+const int ValueProto::kInt32FFieldNumber;
+const int ValueProto::kFixed64FFieldNumber;
+const int ValueProto::kFixed32FFieldNumber;
+const int ValueProto::kBoolFFieldNumber;
+const int ValueProto::kStringFFieldNumber;
+const int ValueProto::kGroupFFieldNumber;
+const int ValueProto::kMessageFFieldNumber;
+const int ValueProto::kBytesFFieldNumber;
+const int ValueProto::kUint32FFieldNumber;
+const int ValueProto::kEnumFFieldNumber;
+const int ValueProto::kSfixed32FFieldNumber;
+const int ValueProto::kSfixed64FFieldNumber;
+const int ValueProto::kSint32FFieldNumber;
+const int ValueProto::kSint64FFieldNumber;
 #endif  // !_MSC_VER
 
-Value::Value()
+ValueProto::ValueProto()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void Value::InitAsDefaultInstance() {
+void ValueProto::InitAsDefaultInstance() {
 }
 
-Value::Value(const Value& from)
+ValueProto::ValueProto(const ValueProto& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void Value::SharedCtor() {
+void ValueProto::SharedCtor() {
   _cached_size_ = 0;
   double_f_ = 0;
   float_f_ = 0;
@@ -179,11 +179,11 @@ void Value::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Value::~Value() {
+ValueProto::~ValueProto() {
   SharedDtor();
 }
 
-void Value::SharedDtor() {
+void ValueProto::SharedDtor() {
   if (string_f_ != &_default_string_f_) {
     delete string_f_;
   }
@@ -200,27 +200,27 @@ void Value::SharedDtor() {
   }
 }
 
-void Value::SetCachedSize(int size) const {
+void ValueProto::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Value::descriptor() {
+const ::google::protobuf::Descriptor* ValueProto::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Value_descriptor_;
+  return ValueProto_descriptor_;
 }
 
-const Value& Value::default_instance() {
+const ValueProto& ValueProto::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_rec_2fdata_2fproto_2fValue_2eproto();  return *default_instance_;
 }
 
-Value* Value::default_instance_ = NULL;
+ValueProto* ValueProto::default_instance_ = NULL;
 
-Value* Value::New() const {
-  return new Value;
+ValueProto* ValueProto::New() const {
+  return new ValueProto;
 }
 
-void Value::Clear() {
+void ValueProto::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     double_f_ = 0;
     float_f_ = 0;
@@ -265,7 +265,7 @@ void Value::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool Value::MergePartialFromCodedStream(
+bool ValueProto::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -569,7 +569,7 @@ bool Value::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void Value::SerializeWithCachedSizes(
+void ValueProto::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional double double_f = 1;
   if (_has_bit(0)) {
@@ -674,7 +674,7 @@ void Value::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* Value::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* ValueProto::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional double double_f = 1;
   if (_has_bit(0)) {
@@ -784,7 +784,7 @@ void Value::SerializeWithCachedSizes(
   return target;
 }
 
-int Value::ByteSize() const {
+int ValueProto::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -916,10 +916,10 @@ int Value::ByteSize() const {
   return total_size;
 }
 
-void Value::MergeFrom(const ::google::protobuf::Message& from) {
+void ValueProto::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Value* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Value*>(
+  const ValueProto* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ValueProto*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -928,7 +928,7 @@ void Value::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Value::MergeFrom(const Value& from) {
+void ValueProto::MergeFrom(const ValueProto& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
@@ -993,24 +993,24 @@ void Value::MergeFrom(const Value& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Value::CopyFrom(const ::google::protobuf::Message& from) {
+void ValueProto::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Value::CopyFrom(const Value& from) {
+void ValueProto::CopyFrom(const ValueProto& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Value::IsInitialized() const {
+bool ValueProto::IsInitialized() const {
   
   return true;
 }
 
-void Value::Swap(Value* other) {
+void ValueProto::Swap(ValueProto* other) {
   if (other != this) {
     std::swap(double_f_, other->double_f_);
     std::swap(float_f_, other->float_f_);
@@ -1036,18 +1036,18 @@ void Value::Swap(Value* other) {
   }
 }
 
-::google::protobuf::Metadata Value::GetMetadata() const {
+::google::protobuf::Metadata ValueProto::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Value_descriptor_;
-  metadata.reflection = Value_reflection_;
+  metadata.descriptor = ValueProto_descriptor_;
+  metadata.reflection = ValueProto_reflection_;
   return metadata;
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 // @@protoc_insertion_point(global_scope)

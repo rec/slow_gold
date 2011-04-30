@@ -1,4 +1,7 @@
 #include "rec/gui/PersistentWindow.h"
+#include "rec/data/Address.h"
+#include "rec/data/Value.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/gui/Geometry.h"
 
@@ -29,7 +32,7 @@ void PersistentWindow::resized() {
 void PersistentWindow::writeData() {
   // TODO!
   if (boundsSet_)
-    persist::setter<slow::AppLayout>()->set("bounds", gui::copy(getBounds()));
+    persist::set(Address("bounds"), gui::copy(getBounds()));
 }
 
 void PersistentWindow::moved() {

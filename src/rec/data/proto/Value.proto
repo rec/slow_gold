@@ -1,6 +1,6 @@
-package rec.proto;
+package rec.data;
 
-message Value {
+message ValueProto {
   // These field numbers are the same as the constants in FieldDescriptorProto.
   optional double double_f = 1;
   optional float float_f = 2;

@@ -14,7 +14,7 @@ class FieldDescriptor;
 using google::protobuf::FieldDescriptor;
 
 namespace rec {
-namespace proto {
+namespace data {
 
 struct MessageField {
   MessageField() {}
@@ -29,7 +29,7 @@ struct MessageField {
   const FieldDescriptor* field_;
 };
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_DATA_PROTO_MESSAGEFIELD__

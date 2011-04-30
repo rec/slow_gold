@@ -26,26 +26,26 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace proto {
+namespace data {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
 void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
 void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
 
-class Address;
-class Address_Part;
+class AddressProto;
+class AddressProto_Part;
 
 // ===================================================================
 
-class Address_Part : public ::google::protobuf::Message {
+class AddressProto_Part : public ::google::protobuf::Message {
  public:
-  Address_Part();
-  virtual ~Address_Part();
+  AddressProto_Part();
+  virtual ~AddressProto_Part();
   
-  Address_Part(const Address_Part& from);
+  AddressProto_Part(const AddressProto_Part& from);
   
-  inline Address_Part& operator=(const Address_Part& from) {
+  inline AddressProto_Part& operator=(const AddressProto_Part& from) {
     CopyFrom(from);
     return *this;
   }
@@ -59,17 +59,17 @@ class Address_Part : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Address_Part& default_instance();
+  static const AddressProto_Part& default_instance();
   
-  void Swap(Address_Part* other);
+  void Swap(AddressProto_Part* other);
   
   // implements Message ----------------------------------------------
   
-  Address_Part* New() const;
+  AddressProto_Part* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Address_Part& from);
-  void MergeFrom(const Address_Part& from);
+  void CopyFrom(const AddressProto_Part& from);
+  void MergeFrom(const AddressProto_Part& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -109,7 +109,7 @@ class Address_Part : public ::google::protobuf::Message {
   inline void set_name(const char* value, size_t size);
   inline ::std::string* mutable_name();
   
-  // @@protoc_insertion_point(class_scope:rec.proto.Address.Part)
+  // @@protoc_insertion_point(class_scope:rec.data.AddressProto.Part)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -135,18 +135,18 @@ class Address_Part : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Address_Part* default_instance_;
+  static AddressProto_Part* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class Address : public ::google::protobuf::Message {
+class AddressProto : public ::google::protobuf::Message {
  public:
-  Address();
-  virtual ~Address();
+  AddressProto();
+  virtual ~AddressProto();
   
-  Address(const Address& from);
+  AddressProto(const AddressProto& from);
   
-  inline Address& operator=(const Address& from) {
+  inline AddressProto& operator=(const AddressProto& from) {
     CopyFrom(from);
     return *this;
   }
@@ -160,17 +160,17 @@ class Address : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Address& default_instance();
+  static const AddressProto& default_instance();
   
-  void Swap(Address* other);
+  void Swap(AddressProto* other);
   
   // implements Message ----------------------------------------------
   
-  Address* New() const;
+  AddressProto* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Address& from);
-  void MergeFrom(const Address& from);
+  void CopyFrom(const AddressProto& from);
+  void MergeFrom(const AddressProto& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -191,28 +191,28 @@ class Address : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef Address_Part Part;
+  typedef AddressProto_Part Part;
   
   // accessors -------------------------------------------------------
   
-  // repeated .rec.proto.Address.Part part = 1;
+  // repeated .rec.data.AddressProto.Part part = 1;
   inline int part_size() const;
   inline void clear_part();
   static const int kPartFieldNumber = 1;
-  inline const ::rec::proto::Address_Part& part(int index) const;
-  inline ::rec::proto::Address_Part* mutable_part(int index);
-  inline ::rec::proto::Address_Part* add_part();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >&
+  inline const ::rec::data::AddressProto_Part& part(int index) const;
+  inline ::rec::data::AddressProto_Part* mutable_part(int index);
+  inline ::rec::data::AddressProto_Part* add_part();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part >&
       part() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part >*
       mutable_part();
   
-  // @@protoc_insertion_point(class_scope:rec.proto.Address)
+  // @@protoc_insertion_point(class_scope:rec.data.AddressProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part > part_;
+  ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part > part_;
   friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fproto_2fAddress_2eproto();
@@ -231,66 +231,66 @@ class Address : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Address* default_instance_;
+  static AddressProto* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
 
-// Address_Part
+// AddressProto_Part
 
 // optional int32 index = 1;
-inline bool Address_Part::has_index() const {
+inline bool AddressProto_Part::has_index() const {
   return _has_bit(0);
 }
-inline void Address_Part::clear_index() {
+inline void AddressProto_Part::clear_index() {
   index_ = 0;
   _clear_bit(0);
 }
-inline ::google::protobuf::int32 Address_Part::index() const {
+inline ::google::protobuf::int32 AddressProto_Part::index() const {
   return index_;
 }
-inline void Address_Part::set_index(::google::protobuf::int32 value) {
+inline void AddressProto_Part::set_index(::google::protobuf::int32 value) {
   _set_bit(0);
   index_ = value;
 }
 
 // optional string name = 2;
-inline bool Address_Part::has_name() const {
+inline bool AddressProto_Part::has_name() const {
   return _has_bit(1);
 }
-inline void Address_Part::clear_name() {
+inline void AddressProto_Part::clear_name() {
   if (name_ != &_default_name_) {
     name_->clear();
   }
   _clear_bit(1);
 }
-inline const ::std::string& Address_Part::name() const {
+inline const ::std::string& AddressProto_Part::name() const {
   return *name_;
 }
-inline void Address_Part::set_name(const ::std::string& value) {
+inline void AddressProto_Part::set_name(const ::std::string& value) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Address_Part::set_name(const char* value) {
+inline void AddressProto_Part::set_name(const char* value) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void Address_Part::set_name(const char* value, size_t size) {
+inline void AddressProto_Part::set_name(const char* value, size_t size) {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
   }
   name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Address_Part::mutable_name() {
+inline ::std::string* AddressProto_Part::mutable_name() {
   _set_bit(1);
   if (name_ == &_default_name_) {
     name_ = new ::std::string;
@@ -300,37 +300,37 @@ inline ::std::string* Address_Part::mutable_name() {
 
 // -------------------------------------------------------------------
 
-// Address
+// AddressProto
 
-// repeated .rec.proto.Address.Part part = 1;
-inline int Address::part_size() const {
+// repeated .rec.data.AddressProto.Part part = 1;
+inline int AddressProto::part_size() const {
   return part_.size();
 }
-inline void Address::clear_part() {
+inline void AddressProto::clear_part() {
   part_.Clear();
 }
-inline const ::rec::proto::Address_Part& Address::part(int index) const {
+inline const ::rec::data::AddressProto_Part& AddressProto::part(int index) const {
   return part_.Get(index);
 }
-inline ::rec::proto::Address_Part* Address::mutable_part(int index) {
+inline ::rec::data::AddressProto_Part* AddressProto::mutable_part(int index) {
   return part_.Mutable(index);
 }
-inline ::rec::proto::Address_Part* Address::add_part() {
+inline ::rec::data::AddressProto_Part* AddressProto::add_part() {
   return part_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >&
-Address::part() const {
+inline const ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part >&
+AddressProto::part() const {
   return part_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Address_Part >*
-Address::mutable_part() {
+inline ::google::protobuf::RepeatedPtrField< ::rec::data::AddressProto_Part >*
+AddressProto::mutable_part() {
   return &part_;
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #ifndef SWIG

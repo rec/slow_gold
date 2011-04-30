@@ -2,6 +2,7 @@
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/data/Data.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
@@ -87,7 +88,7 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 
     for (int i = 0; i < files.file_size(); ++i) {
       if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        persist::setter<file::VirtualFileList>()->append("file", files.file(i));
+        data::append(persist::setter<file::VirtualFileList>(), Address("file"), files.file(i));
     }
   }
 }

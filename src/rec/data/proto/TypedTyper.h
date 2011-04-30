@@ -17,7 +17,7 @@ class TypedTyper : public Typer {
   TypedTyper(Message* m, const FieldDescriptor* f) : Typer(m, f) {}
 
   static Type copy(const Value& v);
-  static void copy(Type t, Value* v);
+  static void copy(Type t, ValueProto* v);
 
   // These functions have the same name as the corresponding roots of the
   // google::protobuf methods.
@@ -35,8 +35,8 @@ class TypedTyper : public Typer {
 
   virtual void copyFrom(const Value& v)            { Set(copy(v));  }
   virtual void copyFrom(uint32 i, const Value& v)  { SetRepeated(i, copy(v)); }
-  virtual void copyTo(Value* v) const              { copy(Get(), v); }
-  virtual void copyTo(uint32 i, Value* v) const    { copy(GetRepeated(i), v); }
+  virtual void copyTo(ValueProto* v) const         { copy(Get(), v); }
+  virtual void copyTo(uint32 i, ValueProto* v) const { copy(GetRepeated(i), v); }
   virtual void add(const Value& v)                 { Add(copy(v)); }
   virtual void clear()                             { Clear(); }
 

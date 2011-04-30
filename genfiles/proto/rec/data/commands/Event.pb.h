@@ -23,7 +23,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
-#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/Operation.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -270,16 +270,16 @@ class Event : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source >*
       mutable_source();
   
-  // repeated .rec.proto.Operation operation = 3;
+  // repeated .rec.data.Operation operation = 3;
   inline int operation_size() const;
   inline void clear_operation();
   static const int kOperationFieldNumber = 3;
-  inline const ::rec::proto::Operation& operation(int index) const;
-  inline ::rec::proto::Operation* mutable_operation(int index);
-  inline ::rec::proto::Operation* add_operation();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >&
+  inline const ::rec::data::Operation& operation(int index) const;
+  inline ::rec::data::Operation* mutable_operation(int index);
+  inline ::rec::data::Operation* add_operation();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >&
       operation() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
       mutable_operation();
   
   // @@protoc_insertion_point(class_scope:rec.data.commands.Event)
@@ -289,7 +289,7 @@ class Event : public ::google::protobuf::Message {
   
   ::google::protobuf::uint64 timestamp_;
   ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source > source_;
-  ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation > operation_;
+  ::google::protobuf::RepeatedPtrField< ::rec::data::Operation > operation_;
   friend void  protobuf_AddDesc_rec_2fdata_2fcommands_2fEvent_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fcommands_2fEvent_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fcommands_2fEvent_2eproto();
@@ -420,27 +420,27 @@ Event::mutable_source() {
   return &source_;
 }
 
-// repeated .rec.proto.Operation operation = 3;
+// repeated .rec.data.Operation operation = 3;
 inline int Event::operation_size() const {
   return operation_.size();
 }
 inline void Event::clear_operation() {
   operation_.Clear();
 }
-inline const ::rec::proto::Operation& Event::operation(int index) const {
+inline const ::rec::data::Operation& Event::operation(int index) const {
   return operation_.Get(index);
 }
-inline ::rec::proto::Operation* Event::mutable_operation(int index) {
+inline ::rec::data::Operation* Event::mutable_operation(int index) {
   return operation_.Mutable(index);
 }
-inline ::rec::proto::Operation* Event::add_operation() {
+inline ::rec::data::Operation* Event::add_operation() {
   return operation_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >&
 Event::operation() const {
   return operation_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::proto::Operation >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
 Event::mutable_operation() {
   return &operation_;
 }

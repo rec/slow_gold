@@ -271,11 +271,14 @@
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.h"/>
         </Filter>
         <Filter Name="data">
+          <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
           <Filter Name="commands">
             <File RelativePath="..\..\..\..\src\rec\data\commands\CommandManager.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\commands\EventQueue.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\commands\EventQueue.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\data\Data.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\Data.h"/>
           <Filter Name="persist">
             <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.cpp"/>
@@ -292,7 +295,6 @@
           </Filter>
           <Filter Name="proto">
             <File RelativePath="..\..\..\..\src\rec\data\proto\Address.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\data\proto\Address.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Comparer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.h"/>
@@ -307,18 +309,16 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\MessageField.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.h"/>
-            <File RelativePath="..\..\..\..\src\rec\data\proto\Setter.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\data\proto\Setter.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\TypedOperations.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\TypedOperations.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\TypedTyper.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\TypedTyper.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Typer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Types.h"/>
-            <File RelativePath="..\..\..\..\src\rec\data\proto\Value.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\data\proto\Value.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\ZeroCopy.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\data\Value.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\Value.h"/>
           <Filter Name="yaml">
             <Filter Name="include">
               <Filter Name="yaml-cpp">
@@ -664,11 +664,11 @@
               <File RelativePath="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.h"/>
             </Filter>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h"/>
             <Filter Name="proto">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.h"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Operation.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Operation.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.h"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.cc"/>

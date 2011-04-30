@@ -37,7 +37,7 @@ class PersistentWindow : public DocumentWindow {
   void writeData();
   void setSetter();
 
-  persist::Setter* setter_;
+  data::Data* data_;
   bool boundsSet_;
 
   DISALLOW_COPY_AND_ASSIGN(PersistentWindow);

@@ -4,7 +4,7 @@
 #if 0
 
 #include "rec/base/base.h"
-#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/Operation.pb.h"
 #include "rec/data/proto/Proto.h"
 
 namespace rec {

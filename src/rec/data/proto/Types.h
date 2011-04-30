@@ -4,14 +4,12 @@
 #include <string>
 
 #include "rec/base/BaseNoJuce.h"
-#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/Operation.pb.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
 typedef Operation::Command Command;
-using google::protobuf::FieldDescriptor;
-using google::protobuf::Reflection;
 
 typedef uint32 Tag;
 
@@ -55,6 +53,12 @@ struct pmessage {
 
   string value_;
 };
+
+}  // namespace data
+
+namespace proto {
+
+typedef data::ValueProto ValueProto;
 
 }  // namespace proto
 }  // namespace rec

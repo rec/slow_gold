@@ -1,9 +1,9 @@
-#include "rec/data/proto/Value.h"
+#include "rec/data/Value.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
-String toString(const Value& value) {
+String toString(const ValueProto& value) {
   if (value.has_double_f()) return String(value.double_f());
   if (value.has_float_f()) return String(value.float_f());
   if (value.has_int64_f()) return String(value.int64_f());
@@ -25,5 +25,6 @@ String toString(const Value& value) {
   return String::empty;
 }
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
+

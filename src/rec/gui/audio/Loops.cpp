@@ -149,7 +149,7 @@ string Loops::copy() const {
 void Loops::cut() {
   ScopedLock l(lock_);
   loopPoints_ = getSelected(loopPoints_, false);
-  getData()->set(Address(), loopPoints_);
+ 	data::set(getData(), Address(), loopPoints_);
 }
 
 TimeRange Loops::selectionRange() const {
@@ -200,7 +200,7 @@ void Loops::addLoopPoint(double time) {
       loopPoints_.set_selected(i, time >= selection.begin_ && time < selection.end_);
     }
 
-    getData()->set(Address(), loopPoints_);
+    data::set(getData(), Address(), loopPoints_);
   }
 }
 
@@ -215,12 +215,12 @@ void Loops::clearSelection() {
   for (int i = 0; i < loopPoints_.selected_size(); ++i)
     loopPoints_.set_selected(i, false);
 
-  getData()->set(Address(), loopPoints_);
+  data::set(getData(), Address(), loopPoints_);
 }
 
 void Loops::clearLoops() {
   loopPoints_.Clear();
-  getData()->set(Address(), loopPoints_);
+  data::set(getData(), Address(), loopPoints_);
 }
 
 }  // namespace audio

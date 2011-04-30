@@ -12,9 +12,6 @@ namespace gui {
 
 class SetterTextArea : public Layout {
  public:
-  typedef persist::UntypedData UntypedData;
-  typedef proto::arg::Address Address;
-
   SetterTextArea(const String& name = String::empty)
       : Layout(name, VERTICAL) {
   }
@@ -31,7 +28,7 @@ class SetterTextArea : public Layout {
     return text;
   }
 
-  void setData(UntypedData* data) {
+  void setData(data::UntypedData* data) {
     for (int i = 0; i < components_.size(); ++i)
       text(i)->setData(data);
 

@@ -3,30 +3,28 @@
 
 #include "rec/data/proto/Comparer.h"
 
-namespace google {
-namespace protobuf {
+namespace google { namespace protobuf {  class FieldDescriptor; }}
 
-class FieldDescriptor;
-
-}  // namespace protobuf
-}  // namespace google
-
-using google::protobuf::FieldDescriptor;
 
 namespace rec {
+
+namespace data { namespace proto { class Address; }}
+namespace data { namespace proto { class Value; }}
+
 namespace proto {
-
-class Value;
-
 namespace typer {
 
-bool copyTo(const Message& m, const FieldDescriptor* f, Value* v);
-bool copyTo(const Message& m, const FieldDescriptor* f, uint32 i, Value* v);
+typedef google::protobuf::FieldDescriptor FieldDescriptor;
 
-bool copyFrom(Message* m, const FieldDescriptor* f, const Value& v);
-bool copyFrom(Message* m, const FieldDescriptor* f, uint32 i, const Value& v);
+bool copyTo(const Message& m, const FieldDescriptor* f, data::ValueProto* v);
+bool copyTo(const Message& m, const FieldDescriptor* f, uint32 i,
+            data::ValueProto* v);
 
-bool add(Message* m, const FieldDescriptor* f, const Value& v);
+bool copyFrom(Message* m, const FieldDescriptor* f, const data::Value& v);
+bool copyFrom(Message* m, const FieldDescriptor* f, uint32 i,
+              const data::Value& v);
+
+bool add(Message* m, const FieldDescriptor* f, const data::Value& v);
 
 bool equals(const Message& m1, const Message& m2, const FieldDescriptor* f,
             const Comparer& c = Comparer());

@@ -5,7 +5,7 @@
 #include "rec/data/proto/Proto.h"
 #include "rec/util/Defaulter.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
-#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/Operation.pb.h"
 
 namespace rec {
 namespace proto {

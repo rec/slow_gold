@@ -5,15 +5,15 @@
 #include "rec/data/proto/Address.pb.h"
 
 namespace rec {
-namespace proto {
-namespace arg {
+namespace data {
 
-struct Address : public proto::Address {
-  struct Part : public proto::Address::Part {
+class Address : public AddressProto {
+ public:
+  struct Part : public AddressProto::Part {
     Part(const string& s) { set_name(s); }
     Part(const char* s) { set_name(s); }
     Part(int i) { set_index(i); }
-    Part(const proto::Address::Part& field) { CopyFrom(field); }
+    Part(const AddressProto::Part& field) { CopyFrom(field); }
   };
 
   typedef const Part& P;
@@ -27,16 +27,14 @@ struct Address : public proto::Address {
   Address(P a, P b, P c, P d, P e) { p(a); p(b); p(c); p(d); p(e); }
   Address(P a, P b, P c, P d, P e, P f) { p(a); p(b); p(c); p(d); p(e); p(f); }
 
-  Address(const proto::Address a) : proto::Address(a) {}
+  Address(const AddressProto& a) : AddressProto(a) {}
 };
-
-}  // namespace arg
 
 const Address operator+(const Address& x, const Address& y);
 const Address operator+(const Address& x, int i);
 const Address operator+(const Address& x, const string& name);
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PROTO_ADDRESS__

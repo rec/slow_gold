@@ -1,7 +1,7 @@
-#include "rec/data/proto/Address.h"
+#include "rec/data/Address.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
 const Address operator+(const Address& x, const Address& y) {
   Address result = x;
@@ -21,5 +21,5 @@ const Address operator+(const Address& x, const string& name) {
   return result;
 }
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec

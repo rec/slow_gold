@@ -13,11 +13,10 @@ class Components;
 
 class PlaybackController : public gui::Layout {
  public:
-  typedef proto::arg::Address Address;
   explicit PlaybackController(Components* i,
                               const Address& a = Address::default_instance());
 
-  void setSetter(persist::Setter* setter);
+  void setSetter(data::Data* setter);
 
  private:
   gui::Layout panel_;

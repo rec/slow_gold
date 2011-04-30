@@ -1,11 +1,14 @@
 #include <google/protobuf/descriptor.h>
 
+#include "rec/data/Value.h"
 #include "rec/data/proto/TypedTyper.h"
 #include "rec/data/proto/Equals.h"
 
 namespace rec {
 namespace proto {
 namespace typer {
+
+using namespace rec::data;
 
 // TYPE is the actual type we are returning: a primitive type or one of the two
 // wrapper types pmessage and penum.  We only need one other name, the name that
@@ -23,7 +26,7 @@ namespace typer {
     return v.LOWER ## _f();                                             \
   }                                                                     \
                                                                         \
-  template <> void TypedTyper<TYPE>::copy(TYPE t, Value* v) {           \
+  template <> void TypedTyper<TYPE>::copy(TYPE t, ValueProto* v) {      \
     v->set_ ## LOWER ## _f(t);                                          \
   }                                                                     \
                                                                         \
@@ -61,8 +64,7 @@ namespace typer {
   METHODS_COMMON_TO_ALL(TYPE, TYPE, UPPER)     \
   METHODS_COMMON_TO_MOST(TYPE, CAP)            \
 
-
-#undef STRING
+#undef TYPE_BOOL
 
 SIMPLE_INSTANTIATION(double, Double, DOUBLE)
 SIMPLE_INSTANTIATION(float, Float, FLOAT)

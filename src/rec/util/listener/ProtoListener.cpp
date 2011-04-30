@@ -1,11 +1,14 @@
 #include "rec/util/listener/ProtoListener.h"
+#include "rec/data/Data.h"
 #include "rec/data/proto/Proto.h"
 
 namespace rec {
 namespace util {
 namespace listener {
 
-void ProtoListener::setData(persist::UntypedData* data) {
+using namespace rec::data;
+
+void ProtoListener::setData(UntypedData* data) {
   if (data_)
     data_->messageBroadcaster()->removeListener(this);
 
@@ -18,12 +21,12 @@ void ProtoListener::setData(persist::UntypedData* data) {
 }
 
 void ProtoListener::operator()(const Message& m) {
-  setDisplayValue(proto::getValue(address_, m));
+  setDisplayValue(getValue(address_, m));
 }
 
 void ProtoListener::updatePersistentData() {
-  if (getData())
-    getData()->set(address_, getDisplayValue());
+  if (data::Data* d = getData())
+    data::set(d, address_, getDisplayValue());
 }
 
 }  // namespace listener

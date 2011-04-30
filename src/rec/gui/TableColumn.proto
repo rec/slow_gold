@@ -31,7 +31,7 @@ message TableColumn {
   optional uint32 maximum_width = 3 [default = 80];
 
   optional Properties property_flags = 4 [default = DEFAULT];
-  optional proto.Address address = 5;
+  optional data.AddressProto address = 5;
   optional Type type = 6;
 };
 

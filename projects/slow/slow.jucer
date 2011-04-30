@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="JvEiukQSI" name="Slow">
+  <MAINGROUP id="O08XgW4kZ" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -251,6 +251,8 @@
               name="TargetManager.h" resource="0"/>
       </GROUP>
       <GROUP id="ZP5k1CoN4" name="data">
+        <FILE compile="0" file="../../src/rec/data/Address.h" id="NJIaplMw8"
+              name="Address.h" resource="0"/>
         <GROUP id="fwVFL6tS6" name="commands">
           <FILE compile="0" file="../../src/rec/data/commands/CommandManager.h"
                 id="A3wzYMpUw" name="CommandManager.h" resource="0"/>
@@ -259,6 +261,10 @@
           <FILE compile="0" file="../../src/rec/data/commands/EventQueue.h" id="N1DG4kbLn"
                 name="EventQueue.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/data/Data.cpp" id="emRwrpc3v"
+              name="Data.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/Data.h" id="nYVm95Owa" name="Data.h"
+              resource="0"/>
         <GROUP id="p9GHA3VGt" name="persist">
           <FILE compile="0" file="../../src/rec/data/persist/App.h" id="bxaLWu80g"
                 name="App.h" resource="0"/>
@@ -288,8 +294,6 @@
         <GROUP id="PN3hOtUWb" name="proto">
           <FILE compile="1" file="../../src/rec/data/proto/Address.cpp" id="0owWEXXTQ"
                 name="Address.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Address.h" id="MRclQKXYU"
-                name="Address.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="gwnHCpawk"
                 name="Comparer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Equals.cpp" id="FK0YavQaT"
@@ -318,10 +322,6 @@
                 name="Proto.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Proto.h" id="jSEnFuyDZ"
                 name="Proto.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Setter.cpp" id="kYFdaaS8N"
-                name="Setter.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Setter.h" id="ZKh1zGYvZ"
-                name="Setter.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/TypedOperations.cpp"
                 id="0gL8RLabv" name="TypedOperations.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/TypedOperations.h"
@@ -334,13 +334,13 @@
                 name="Typer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="c3l9MHuGe"
                 name="Types.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Value.cpp" id="EnBgz4ZUw"
-                name="Value.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Value.h" id="naALeTqNU"
-                name="Value.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/ZeroCopy.h" id="Ca2xhRmdL"
                 name="ZeroCopy.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/data/Value.cpp" id="wsbKo3sDY"
+              name="Value.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/Value.h" id="OYk91aaAT"
+              name="Value.h" resource="0"/>
         <GROUP id="dMCdOs6of" name="yaml">
           <GROUP id="pZbjWbiGv" name="include">
             <GROUP id="ZIOCIAo8B" name="yaml-cpp">
@@ -974,15 +974,15 @@
             <FILE compile="0" file="../../genfiles/proto/rec/data/commands/Event.pb.h"
                   id="4ylFdLV2f" name="Event.pb.h" resource="0"/>
           </GROUP>
+          <FILE compile="1" file="../../genfiles/proto/rec/data/Operation.pb.cc"
+                id="lCIPg60Gg" name="Operation.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/data/Operation.pb.h"
+                id="ttbu6ReZ3" name="Operation.pb.h" resource="0"/>
           <GROUP id="espDWO5sL" name="proto">
             <FILE compile="1" file="../../genfiles/proto/rec/data/proto/Address.pb.cc"
                   id="OeE8TCAqq" name="Address.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/data/proto/Address.pb.h"
                   id="gzWpPyofq" name="Address.pb.h" resource="0"/>
-            <FILE compile="1" file="../../genfiles/proto/rec/data/proto/Operation.pb.cc"
-                  id="8U8iNI8jd" name="Operation.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/data/proto/Operation.pb.h"
-                  id="v9zQMRggT" name="Operation.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/data/proto/TestData.pb.cc"
                   id="J2GI092fm" name="TestData.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/data/proto/TestData.pb.h"
@@ -1097,7 +1097,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="irDZTmA8k" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Si2BOfFBU" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

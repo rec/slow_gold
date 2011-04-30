@@ -6,13 +6,11 @@
 #include "rec/data/proto/Types.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
-String toString(const Value& value);
+String toString(const ValueProto& value);
 
-namespace arg {
-
-class Value : public proto::Value {
+class Value : public ValueProto {
  public:
   Value() {}
   Value(double x) { set_double_f(x); }
@@ -37,6 +35,7 @@ class Value : public proto::Value {
     x.SerializeToString(&s);
     set_message_f(s);
   }
+  Value(const ValueProto& x) : ValueProto(x) {}
 
   template <typename T>
   T cast() const {
@@ -68,11 +67,9 @@ class Value : public proto::Value {
   operator penum() const { return enum_f(); }
   operator pmessage() const { return message_f(); }
 
-  Value(const proto::Value v) : proto::Value(v) {}
 };
 
-}  // namespace arg
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PROTO_VALUE__

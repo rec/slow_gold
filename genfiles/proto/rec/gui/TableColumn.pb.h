@@ -235,12 +235,12 @@ class TableColumn : public ::google::protobuf::Message {
   inline ::rec::gui::TableColumn_Properties property_flags() const;
   inline void set_property_flags(::rec::gui::TableColumn_Properties value);
   
-  // optional .rec.proto.Address address = 5;
+  // optional .rec.data.AddressProto address = 5;
   inline bool has_address() const;
   inline void clear_address();
   static const int kAddressFieldNumber = 5;
-  inline const ::rec::proto::Address& address() const;
-  inline ::rec::proto::Address* mutable_address();
+  inline const ::rec::data::AddressProto& address() const;
+  inline ::rec::data::AddressProto* mutable_address();
   
   // optional .rec.gui.TableColumn.Type type = 6;
   inline bool has_type() const;
@@ -260,7 +260,7 @@ class TableColumn : public ::google::protobuf::Message {
   ::google::protobuf::uint32 minimum_width_;
   ::google::protobuf::uint32 maximum_width_;
   int property_flags_;
-  ::rec::proto::Address* address_;
+  ::rec::data::AddressProto* address_;
   int type_;
   friend void  protobuf_AddDesc_rec_2fgui_2fTableColumn_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fTableColumn_2eproto();
@@ -490,20 +490,20 @@ inline void TableColumn::set_property_flags(::rec::gui::TableColumn_Properties v
   property_flags_ = value;
 }
 
-// optional .rec.proto.Address address = 5;
+// optional .rec.data.AddressProto address = 5;
 inline bool TableColumn::has_address() const {
   return _has_bit(5);
 }
 inline void TableColumn::clear_address() {
-  if (address_ != NULL) address_->::rec::proto::Address::Clear();
+  if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
   _clear_bit(5);
 }
-inline const ::rec::proto::Address& TableColumn::address() const {
+inline const ::rec::data::AddressProto& TableColumn::address() const {
   return address_ != NULL ? *address_ : *default_instance_->address_;
 }
-inline ::rec::proto::Address* TableColumn::mutable_address() {
+inline ::rec::data::AddressProto* TableColumn::mutable_address() {
   _set_bit(5);
-  if (address_ == NULL) address_ = new ::rec::proto::Address;
+  if (address_ == NULL) address_ = new ::rec::data::AddressProto;
   return address_;
 }
 

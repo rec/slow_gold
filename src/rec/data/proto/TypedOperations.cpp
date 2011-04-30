@@ -10,6 +10,8 @@ namespace rec {
 namespace proto {
 namespace typer {
 
+using namespace rec::data;
+
 namespace {
 
 const Typer* const TYPE_LIST[FieldDescriptor::MAX_TYPE] = {
@@ -46,12 +48,12 @@ class STyper : public ptr<Typer> {
 
 } // namespace
 
-bool copyTo(const Message& m, const FieldDescriptor* f, Value* v) {
+bool copyTo(const Message& m, const FieldDescriptor* f, ValueProto* v) {
   STyper(const_cast<Message*>(&m), f)->copyTo(v);
   return true;
 }
 
-bool copyTo(const Message& m, const FieldDescriptor* f, uint32 i, Value* v) {
+bool copyTo(const Message& m, const FieldDescriptor* f, uint32 i, ValueProto* v) {
   STyper(const_cast<Message*>(&m), f)->copyTo(i, v);
   return true;
 }

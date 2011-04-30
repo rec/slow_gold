@@ -2,6 +2,8 @@
 
 #include "rec/gui/RecentFiles.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/data/Address.h"
+#include "rec/data/Value.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 
@@ -54,12 +56,12 @@ void addRecentFile(const VirtualFile& f) {
   r.set_timestamp(timestamp);
   r.mutable_file()->CopyFrom(f);
 
-  rec::proto::pmessage msg(r);
+  data::pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    persist::setter<RecentFiles>()->append("file", msg);
+    data::append(persist::setter<RecentFiles>(), "file", msg);
   else
-    persist::setter<RecentFiles>()->set("file", slot, msg);
+    data::set(persist::setter<RecentFiles>(), "file", slot, msg);
 }
 
 }  // namespace gui

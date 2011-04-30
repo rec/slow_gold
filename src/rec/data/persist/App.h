@@ -2,6 +2,7 @@
 #define __REC_PERSIST_APPBASE__
 
 #include "rec/base/base.h"
+#include "rec/data/Data.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/GetProtoName.h"
@@ -19,11 +20,9 @@ namespace persist {
 
 App* getApp();
 
-class UntypedData;
-
 class App {
  public:
-  typedef std::map<string, UntypedData*> DataMap;
+  typedef std::map<string, data::Data*> DataMap;
 
   virtual ~App() { stl::deleteMapPointers(&data_); }
 
@@ -40,12 +39,13 @@ class App {
  protected:
   App() {}
 
-  template <typename Proto> Data<Proto>* fileData(const File& directory);
+  template <typename Proto>
+  persist::Data<Proto>* fileData(const File& directory);
 
-  virtual void needsUpdate(UntypedData* data) = 0;
+  virtual void needsUpdate(data::UntypedData* data) = 0;
 
  private:
-  friend class UntypedData;
+  friend class data::UntypedData;
 
   DataMap data_;
   CriticalSection lock_;
@@ -62,10 +62,10 @@ Data<Proto>* App::fileData(const File& directory) {
   ScopedLock l(lock_);
   DataMap::const_iterator i = data_.find(fileKey);
   if (i != data_.end())
-    return static_cast<Data<Proto>*>(i->second);
+    return static_cast<persist::Data<Proto>*>(i->second);
 
   File file = directory.getChildFile(fileName.c_str());
-  Data<Proto>* data = new Data<Proto>(file, this);
+  persist::Data<Proto>* data = new Data<Proto>(file, this);
   data->readFromFile();
   data_[fileKey] = data;
   return data;

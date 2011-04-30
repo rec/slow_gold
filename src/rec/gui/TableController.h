@@ -4,7 +4,7 @@
 #include "rec/base/Base.h"
 #include "rec/gui/TableColumn.pb.h"
 #include "rec/util/listener/ProtoListener.h"
-#include "rec/data/proto/Address.h"
+#include "rec/data/Address.h"
 
 namespace rec {
 namespace gui {
@@ -21,7 +21,7 @@ class TableController : public TableListBoxModel,
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
 
-  virtual void setData(persist::UntypedData* data);
+  virtual void setData(data::UntypedData* data);
 
   const Value getDisplayValue() const;
   void setDisplayValue(const Value& v);

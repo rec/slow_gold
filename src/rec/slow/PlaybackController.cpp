@@ -2,8 +2,6 @@
 #include "rec/slow/Components.h"
 #include "rec/data/persist/Persist.h"
 
-using namespace rec::proto::arg;
-
 namespace rec {
 namespace slow {
 
@@ -26,7 +24,7 @@ PlaybackController::PlaybackController(Components* comp, const Address& address)
   panel_.addToLayout(&comp->transportController_);
 }
 
-void PlaybackController::setSetter(persist::Setter* setter) {
+void PlaybackController::setSetter(data::Data* setter) {
   timeControllerResizer_.setSetter(setter);
   songDataResizer_.setSetter(setter);
   stretchyResizer_.setSetter(setter);

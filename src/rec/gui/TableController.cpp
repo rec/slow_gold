@@ -1,6 +1,6 @@
 #include "rec/gui/TableController.h"
 #include "rec/data/proto/Proto.h"
-#include "rec/data/proto/Setter.h"
+#include "rec/data/Data.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/FormatTime.h"
 
@@ -52,7 +52,7 @@ void TableController::paintCell(Graphics& g,
   }
   const TableColumn& column = columns_.column(columnId - 1);
   Address row = (address_ + rowNumber) + column.address();
-  String t = displayText(column, proto::getValue(row, *message_));
+  String t = displayText(column, data::getValue(row, *message_));
   g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
 }
 
@@ -77,7 +77,7 @@ const Value TableController::getDisplayValue() const {
 void TableController::onDataChange() {
   {
     ScopedLock l(lock_);
-    numRows_ = proto::getSize(address_, *message_);
+    numRows_ = data::getSize(address_, *message_);
   }
   thread::callAsync(this, &TableListBox::updateContent);
 }
@@ -93,7 +93,7 @@ void TableController::setDisplayValue(const Value& v) {
   }
 }
 
-void TableController::setData(persist::UntypedData* data) {
+void TableController::setData(data::UntypedData* data) {
   {
     ScopedLock l(lock_);
     ProtoListener::setData(data);

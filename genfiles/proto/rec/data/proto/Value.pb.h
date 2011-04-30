@@ -26,25 +26,25 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace proto {
+namespace data {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fdata_2fproto_2fValue_2eproto();
 void protobuf_AssignDesc_rec_2fdata_2fproto_2fValue_2eproto();
 void protobuf_ShutdownFile_rec_2fdata_2fproto_2fValue_2eproto();
 
-class Value;
+class ValueProto;
 
 // ===================================================================
 
-class Value : public ::google::protobuf::Message {
+class ValueProto : public ::google::protobuf::Message {
  public:
-  Value();
-  virtual ~Value();
+  ValueProto();
+  virtual ~ValueProto();
   
-  Value(const Value& from);
+  ValueProto(const ValueProto& from);
   
-  inline Value& operator=(const Value& from) {
+  inline ValueProto& operator=(const ValueProto& from) {
     CopyFrom(from);
     return *this;
   }
@@ -58,17 +58,17 @@ class Value : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Value& default_instance();
+  static const ValueProto& default_instance();
   
-  void Swap(Value* other);
+  void Swap(ValueProto* other);
   
   // implements Message ----------------------------------------------
   
-  Value* New() const;
+  ValueProto* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Value& from);
-  void MergeFrom(const Value& from);
+  void CopyFrom(const ValueProto& from);
+  void MergeFrom(const ValueProto& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -229,7 +229,7 @@ class Value : public ::google::protobuf::Message {
   inline ::google::protobuf::int64 sint64_f() const;
   inline void set_sint64_f(::google::protobuf::int64 value);
   
-  // @@protoc_insertion_point(class_scope:rec.proto.Value)
+  // @@protoc_insertion_point(class_scope:rec.data.ValueProto)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -274,178 +274,178 @@ class Value : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static Value* default_instance_;
+  static ValueProto* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
 
-// Value
+// ValueProto
 
 // optional double double_f = 1;
-inline bool Value::has_double_f() const {
+inline bool ValueProto::has_double_f() const {
   return _has_bit(0);
 }
-inline void Value::clear_double_f() {
+inline void ValueProto::clear_double_f() {
   double_f_ = 0;
   _clear_bit(0);
 }
-inline double Value::double_f() const {
+inline double ValueProto::double_f() const {
   return double_f_;
 }
-inline void Value::set_double_f(double value) {
+inline void ValueProto::set_double_f(double value) {
   _set_bit(0);
   double_f_ = value;
 }
 
 // optional float float_f = 2;
-inline bool Value::has_float_f() const {
+inline bool ValueProto::has_float_f() const {
   return _has_bit(1);
 }
-inline void Value::clear_float_f() {
+inline void ValueProto::clear_float_f() {
   float_f_ = 0;
   _clear_bit(1);
 }
-inline float Value::float_f() const {
+inline float ValueProto::float_f() const {
   return float_f_;
 }
-inline void Value::set_float_f(float value) {
+inline void ValueProto::set_float_f(float value) {
   _set_bit(1);
   float_f_ = value;
 }
 
 // optional int64 int64_f = 3;
-inline bool Value::has_int64_f() const {
+inline bool ValueProto::has_int64_f() const {
   return _has_bit(2);
 }
-inline void Value::clear_int64_f() {
+inline void ValueProto::clear_int64_f() {
   int64_f_ = GOOGLE_LONGLONG(0);
   _clear_bit(2);
 }
-inline ::google::protobuf::int64 Value::int64_f() const {
+inline ::google::protobuf::int64 ValueProto::int64_f() const {
   return int64_f_;
 }
-inline void Value::set_int64_f(::google::protobuf::int64 value) {
+inline void ValueProto::set_int64_f(::google::protobuf::int64 value) {
   _set_bit(2);
   int64_f_ = value;
 }
 
 // optional uint64 uint64_f = 4;
-inline bool Value::has_uint64_f() const {
+inline bool ValueProto::has_uint64_f() const {
   return _has_bit(3);
 }
-inline void Value::clear_uint64_f() {
+inline void ValueProto::clear_uint64_f() {
   uint64_f_ = GOOGLE_ULONGLONG(0);
   _clear_bit(3);
 }
-inline ::google::protobuf::uint64 Value::uint64_f() const {
+inline ::google::protobuf::uint64 ValueProto::uint64_f() const {
   return uint64_f_;
 }
-inline void Value::set_uint64_f(::google::protobuf::uint64 value) {
+inline void ValueProto::set_uint64_f(::google::protobuf::uint64 value) {
   _set_bit(3);
   uint64_f_ = value;
 }
 
 // optional int32 int32_f = 5;
-inline bool Value::has_int32_f() const {
+inline bool ValueProto::has_int32_f() const {
   return _has_bit(4);
 }
-inline void Value::clear_int32_f() {
+inline void ValueProto::clear_int32_f() {
   int32_f_ = 0;
   _clear_bit(4);
 }
-inline ::google::protobuf::int32 Value::int32_f() const {
+inline ::google::protobuf::int32 ValueProto::int32_f() const {
   return int32_f_;
 }
-inline void Value::set_int32_f(::google::protobuf::int32 value) {
+inline void ValueProto::set_int32_f(::google::protobuf::int32 value) {
   _set_bit(4);
   int32_f_ = value;
 }
 
 // optional fixed64 fixed64_f = 6;
-inline bool Value::has_fixed64_f() const {
+inline bool ValueProto::has_fixed64_f() const {
   return _has_bit(5);
 }
-inline void Value::clear_fixed64_f() {
+inline void ValueProto::clear_fixed64_f() {
   fixed64_f_ = GOOGLE_ULONGLONG(0);
   _clear_bit(5);
 }
-inline ::google::protobuf::uint64 Value::fixed64_f() const {
+inline ::google::protobuf::uint64 ValueProto::fixed64_f() const {
   return fixed64_f_;
 }
-inline void Value::set_fixed64_f(::google::protobuf::uint64 value) {
+inline void ValueProto::set_fixed64_f(::google::protobuf::uint64 value) {
   _set_bit(5);
   fixed64_f_ = value;
 }
 
 // optional fixed32 fixed32_f = 7;
-inline bool Value::has_fixed32_f() const {
+inline bool ValueProto::has_fixed32_f() const {
   return _has_bit(6);
 }
-inline void Value::clear_fixed32_f() {
+inline void ValueProto::clear_fixed32_f() {
   fixed32_f_ = 0u;
   _clear_bit(6);
 }
-inline ::google::protobuf::uint32 Value::fixed32_f() const {
+inline ::google::protobuf::uint32 ValueProto::fixed32_f() const {
   return fixed32_f_;
 }
-inline void Value::set_fixed32_f(::google::protobuf::uint32 value) {
+inline void ValueProto::set_fixed32_f(::google::protobuf::uint32 value) {
   _set_bit(6);
   fixed32_f_ = value;
 }
 
 // optional bool bool_f = 8;
-inline bool Value::has_bool_f() const {
+inline bool ValueProto::has_bool_f() const {
   return _has_bit(7);
 }
-inline void Value::clear_bool_f() {
+inline void ValueProto::clear_bool_f() {
   bool_f_ = false;
   _clear_bit(7);
 }
-inline bool Value::bool_f() const {
+inline bool ValueProto::bool_f() const {
   return bool_f_;
 }
-inline void Value::set_bool_f(bool value) {
+inline void ValueProto::set_bool_f(bool value) {
   _set_bit(7);
   bool_f_ = value;
 }
 
 // optional string string_f = 9;
-inline bool Value::has_string_f() const {
+inline bool ValueProto::has_string_f() const {
   return _has_bit(8);
 }
-inline void Value::clear_string_f() {
+inline void ValueProto::clear_string_f() {
   if (string_f_ != &_default_string_f_) {
     string_f_->clear();
   }
   _clear_bit(8);
 }
-inline const ::std::string& Value::string_f() const {
+inline const ::std::string& ValueProto::string_f() const {
   return *string_f_;
 }
-inline void Value::set_string_f(const ::std::string& value) {
+inline void ValueProto::set_string_f(const ::std::string& value) {
   _set_bit(8);
   if (string_f_ == &_default_string_f_) {
     string_f_ = new ::std::string;
   }
   string_f_->assign(value);
 }
-inline void Value::set_string_f(const char* value) {
+inline void ValueProto::set_string_f(const char* value) {
   _set_bit(8);
   if (string_f_ == &_default_string_f_) {
     string_f_ = new ::std::string;
   }
   string_f_->assign(value);
 }
-inline void Value::set_string_f(const char* value, size_t size) {
+inline void ValueProto::set_string_f(const char* value, size_t size) {
   _set_bit(8);
   if (string_f_ == &_default_string_f_) {
     string_f_ = new ::std::string;
   }
   string_f_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Value::mutable_string_f() {
+inline ::std::string* ValueProto::mutable_string_f() {
   _set_bit(8);
   if (string_f_ == &_default_string_f_) {
     string_f_ = new ::std::string;
@@ -454,40 +454,40 @@ inline ::std::string* Value::mutable_string_f() {
 }
 
 // optional bytes group_f = 10;
-inline bool Value::has_group_f() const {
+inline bool ValueProto::has_group_f() const {
   return _has_bit(9);
 }
-inline void Value::clear_group_f() {
+inline void ValueProto::clear_group_f() {
   if (group_f_ != &_default_group_f_) {
     group_f_->clear();
   }
   _clear_bit(9);
 }
-inline const ::std::string& Value::group_f() const {
+inline const ::std::string& ValueProto::group_f() const {
   return *group_f_;
 }
-inline void Value::set_group_f(const ::std::string& value) {
+inline void ValueProto::set_group_f(const ::std::string& value) {
   _set_bit(9);
   if (group_f_ == &_default_group_f_) {
     group_f_ = new ::std::string;
   }
   group_f_->assign(value);
 }
-inline void Value::set_group_f(const char* value) {
+inline void ValueProto::set_group_f(const char* value) {
   _set_bit(9);
   if (group_f_ == &_default_group_f_) {
     group_f_ = new ::std::string;
   }
   group_f_->assign(value);
 }
-inline void Value::set_group_f(const void* value, size_t size) {
+inline void ValueProto::set_group_f(const void* value, size_t size) {
   _set_bit(9);
   if (group_f_ == &_default_group_f_) {
     group_f_ = new ::std::string;
   }
   group_f_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Value::mutable_group_f() {
+inline ::std::string* ValueProto::mutable_group_f() {
   _set_bit(9);
   if (group_f_ == &_default_group_f_) {
     group_f_ = new ::std::string;
@@ -496,40 +496,40 @@ inline ::std::string* Value::mutable_group_f() {
 }
 
 // optional bytes message_f = 11;
-inline bool Value::has_message_f() const {
+inline bool ValueProto::has_message_f() const {
   return _has_bit(10);
 }
-inline void Value::clear_message_f() {
+inline void ValueProto::clear_message_f() {
   if (message_f_ != &_default_message_f_) {
     message_f_->clear();
   }
   _clear_bit(10);
 }
-inline const ::std::string& Value::message_f() const {
+inline const ::std::string& ValueProto::message_f() const {
   return *message_f_;
 }
-inline void Value::set_message_f(const ::std::string& value) {
+inline void ValueProto::set_message_f(const ::std::string& value) {
   _set_bit(10);
   if (message_f_ == &_default_message_f_) {
     message_f_ = new ::std::string;
   }
   message_f_->assign(value);
 }
-inline void Value::set_message_f(const char* value) {
+inline void ValueProto::set_message_f(const char* value) {
   _set_bit(10);
   if (message_f_ == &_default_message_f_) {
     message_f_ = new ::std::string;
   }
   message_f_->assign(value);
 }
-inline void Value::set_message_f(const void* value, size_t size) {
+inline void ValueProto::set_message_f(const void* value, size_t size) {
   _set_bit(10);
   if (message_f_ == &_default_message_f_) {
     message_f_ = new ::std::string;
   }
   message_f_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Value::mutable_message_f() {
+inline ::std::string* ValueProto::mutable_message_f() {
   _set_bit(10);
   if (message_f_ == &_default_message_f_) {
     message_f_ = new ::std::string;
@@ -538,40 +538,40 @@ inline ::std::string* Value::mutable_message_f() {
 }
 
 // optional bytes bytes_f = 12;
-inline bool Value::has_bytes_f() const {
+inline bool ValueProto::has_bytes_f() const {
   return _has_bit(11);
 }
-inline void Value::clear_bytes_f() {
+inline void ValueProto::clear_bytes_f() {
   if (bytes_f_ != &_default_bytes_f_) {
     bytes_f_->clear();
   }
   _clear_bit(11);
 }
-inline const ::std::string& Value::bytes_f() const {
+inline const ::std::string& ValueProto::bytes_f() const {
   return *bytes_f_;
 }
-inline void Value::set_bytes_f(const ::std::string& value) {
+inline void ValueProto::set_bytes_f(const ::std::string& value) {
   _set_bit(11);
   if (bytes_f_ == &_default_bytes_f_) {
     bytes_f_ = new ::std::string;
   }
   bytes_f_->assign(value);
 }
-inline void Value::set_bytes_f(const char* value) {
+inline void ValueProto::set_bytes_f(const char* value) {
   _set_bit(11);
   if (bytes_f_ == &_default_bytes_f_) {
     bytes_f_ = new ::std::string;
   }
   bytes_f_->assign(value);
 }
-inline void Value::set_bytes_f(const void* value, size_t size) {
+inline void ValueProto::set_bytes_f(const void* value, size_t size) {
   _set_bit(11);
   if (bytes_f_ == &_default_bytes_f_) {
     bytes_f_ = new ::std::string;
   }
   bytes_f_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* Value::mutable_bytes_f() {
+inline ::std::string* ValueProto::mutable_bytes_f() {
   _set_bit(11);
   if (bytes_f_ == &_default_bytes_f_) {
     bytes_f_ = new ::std::string;
@@ -580,97 +580,97 @@ inline ::std::string* Value::mutable_bytes_f() {
 }
 
 // optional uint32 uint32_f = 13;
-inline bool Value::has_uint32_f() const {
+inline bool ValueProto::has_uint32_f() const {
   return _has_bit(12);
 }
-inline void Value::clear_uint32_f() {
+inline void ValueProto::clear_uint32_f() {
   uint32_f_ = 0u;
   _clear_bit(12);
 }
-inline ::google::protobuf::uint32 Value::uint32_f() const {
+inline ::google::protobuf::uint32 ValueProto::uint32_f() const {
   return uint32_f_;
 }
-inline void Value::set_uint32_f(::google::protobuf::uint32 value) {
+inline void ValueProto::set_uint32_f(::google::protobuf::uint32 value) {
   _set_bit(12);
   uint32_f_ = value;
 }
 
 // optional int32 enum_f = 14;
-inline bool Value::has_enum_f() const {
+inline bool ValueProto::has_enum_f() const {
   return _has_bit(13);
 }
-inline void Value::clear_enum_f() {
+inline void ValueProto::clear_enum_f() {
   enum_f_ = 0;
   _clear_bit(13);
 }
-inline ::google::protobuf::int32 Value::enum_f() const {
+inline ::google::protobuf::int32 ValueProto::enum_f() const {
   return enum_f_;
 }
-inline void Value::set_enum_f(::google::protobuf::int32 value) {
+inline void ValueProto::set_enum_f(::google::protobuf::int32 value) {
   _set_bit(13);
   enum_f_ = value;
 }
 
 // optional sfixed32 sfixed32_f = 15;
-inline bool Value::has_sfixed32_f() const {
+inline bool ValueProto::has_sfixed32_f() const {
   return _has_bit(14);
 }
-inline void Value::clear_sfixed32_f() {
+inline void ValueProto::clear_sfixed32_f() {
   sfixed32_f_ = 0;
   _clear_bit(14);
 }
-inline ::google::protobuf::int32 Value::sfixed32_f() const {
+inline ::google::protobuf::int32 ValueProto::sfixed32_f() const {
   return sfixed32_f_;
 }
-inline void Value::set_sfixed32_f(::google::protobuf::int32 value) {
+inline void ValueProto::set_sfixed32_f(::google::protobuf::int32 value) {
   _set_bit(14);
   sfixed32_f_ = value;
 }
 
 // optional sfixed64 sfixed64_f = 16;
-inline bool Value::has_sfixed64_f() const {
+inline bool ValueProto::has_sfixed64_f() const {
   return _has_bit(15);
 }
-inline void Value::clear_sfixed64_f() {
+inline void ValueProto::clear_sfixed64_f() {
   sfixed64_f_ = GOOGLE_LONGLONG(0);
   _clear_bit(15);
 }
-inline ::google::protobuf::int64 Value::sfixed64_f() const {
+inline ::google::protobuf::int64 ValueProto::sfixed64_f() const {
   return sfixed64_f_;
 }
-inline void Value::set_sfixed64_f(::google::protobuf::int64 value) {
+inline void ValueProto::set_sfixed64_f(::google::protobuf::int64 value) {
   _set_bit(15);
   sfixed64_f_ = value;
 }
 
 // optional sint32 sint32_f = 17;
-inline bool Value::has_sint32_f() const {
+inline bool ValueProto::has_sint32_f() const {
   return _has_bit(16);
 }
-inline void Value::clear_sint32_f() {
+inline void ValueProto::clear_sint32_f() {
   sint32_f_ = 0;
   _clear_bit(16);
 }
-inline ::google::protobuf::int32 Value::sint32_f() const {
+inline ::google::protobuf::int32 ValueProto::sint32_f() const {
   return sint32_f_;
 }
-inline void Value::set_sint32_f(::google::protobuf::int32 value) {
+inline void ValueProto::set_sint32_f(::google::protobuf::int32 value) {
   _set_bit(16);
   sint32_f_ = value;
 }
 
 // optional sint64 sint64_f = 18;
-inline bool Value::has_sint64_f() const {
+inline bool ValueProto::has_sint64_f() const {
   return _has_bit(17);
 }
-inline void Value::clear_sint64_f() {
+inline void ValueProto::clear_sint64_f() {
   sint64_f_ = GOOGLE_LONGLONG(0);
   _clear_bit(17);
 }
-inline ::google::protobuf::int64 Value::sint64_f() const {
+inline ::google::protobuf::int64 ValueProto::sint64_f() const {
   return sint64_f_;
 }
-inline void Value::set_sint64_f(::google::protobuf::int64 value) {
+inline void ValueProto::set_sint64_f(::google::protobuf::int64 value) {
   _set_bit(17);
   sint64_f_ = value;
 }
@@ -678,7 +678,7 @@ inline void Value::set_sint64_f(::google::protobuf::int64 value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #ifndef SWIG

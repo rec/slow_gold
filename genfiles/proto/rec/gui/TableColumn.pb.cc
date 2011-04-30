@@ -104,23 +104,23 @@ void protobuf_AddDesc_rec_2fgui_2fTableColumn_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::proto::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
+  ::rec::data::protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/gui/TableColumn.proto\022\007rec.gui\032\034re"
-    "c/data/proto/Address.proto\"\326\003\n\013TableColu"
+    "c/data/proto/Address.proto\"\332\003\n\013TableColu"
     "mn\022\014\n\004name\030\007 \001(\t\022\021\n\005width\030\001 \001(\r:\00280\022\031\n\rm"
     "inimum_width\030\002 \001(\r:\00280\022\031\n\rmaximum_width\030"
     "\003 \001(\r:\00280\022@\n\016property_flags\030\004 \001(\0162\037.rec."
-    "gui.TableColumn.Properties:\007DEFAULT\022#\n\007a"
-    "ddress\030\005 \001(\0132\022.rec.proto.Address\022\'\n\004type"
-    "\030\006 \001(\0162\031.rec.gui.TableColumn.Type\"\251\001\n\nPr"
-    "operties\022\013\n\007VISIBLE\020\001\022\r\n\tRESIZABLE\020\002\022\r\n\t"
-    "DRAGGABLE\020\004\022\032\n\026APPEARS_ON_COLUMN_MENU\020\010\022"
-    "\014\n\010SORTABLE\020\020\022\023\n\017SORTED_FORWARDS\020 \022\024\n\020SO"
-    "RTED_BACKWARDS\020@\022\r\n\010EDITABLE\020\200\001\022\014\n\007DEFAU"
-    "LT\020\237\001\"4\n\004Type\022\n\n\006STRING\020\001\022\010\n\004TIME\020\002\022\n\n\006U"
-    "INT32\020\003\022\n\n\006DOUBLE\020\004\"7\n\017TableColumnList\022$"
-    "\n\006column\030\001 \003(\0132\024.rec.gui.TableColumn", 596);
+    "gui.TableColumn.Properties:\007DEFAULT\022\'\n\007a"
+    "ddress\030\005 \001(\0132\026.rec.data.AddressProto\022\'\n\004"
+    "type\030\006 \001(\0162\031.rec.gui.TableColumn.Type\"\251\001"
+    "\n\nProperties\022\013\n\007VISIBLE\020\001\022\r\n\tRESIZABLE\020\002"
+    "\022\r\n\tDRAGGABLE\020\004\022\032\n\026APPEARS_ON_COLUMN_MEN"
+    "U\020\010\022\014\n\010SORTABLE\020\020\022\023\n\017SORTED_FORWARDS\020 \022\024"
+    "\n\020SORTED_BACKWARDS\020@\022\r\n\010EDITABLE\020\200\001\022\014\n\007D"
+    "EFAULT\020\237\001\"4\n\004Type\022\n\n\006STRING\020\001\022\010\n\004TIME\020\002\022"
+    "\n\n\006UINT32\020\003\022\n\n\006DOUBLE\020\004\"7\n\017TableColumnLi"
+    "st\022$\n\006column\030\001 \003(\0132\024.rec.gui.TableColumn", 600);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/TableColumn.proto", &protobuf_RegisterTypes);
   TableColumn::default_instance_ = new TableColumn();
@@ -217,7 +217,7 @@ TableColumn::TableColumn()
 }
 
 void TableColumn::InitAsDefaultInstance() {
-  address_ = const_cast< ::rec::proto::Address*>(&::rec::proto::Address::default_instance());
+  address_ = const_cast< ::rec::data::AddressProto*>(&::rec::data::AddressProto::default_instance());
 }
 
 TableColumn::TableColumn(const TableColumn& from)
@@ -283,7 +283,7 @@ void TableColumn::Clear() {
     maximum_width_ = 80u;
     property_flags_ = 159;
     if (_has_bit(5)) {
-      if (address_ != NULL) address_->::rec::proto::Address::Clear();
+      if (address_ != NULL) address_->::rec::data::AddressProto::Clear();
     }
     type_ = 1;
   }
@@ -365,7 +365,7 @@ bool TableColumn::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.proto.Address address = 5;
+      // optional .rec.data.AddressProto address = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -456,7 +456,7 @@ void TableColumn::SerializeWithCachedSizes(
       4, this->property_flags(), output);
   }
   
-  // optional .rec.proto.Address address = 5;
+  // optional .rec.data.AddressProto address = 5;
   if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, this->address(), output);
@@ -506,7 +506,7 @@ void TableColumn::SerializeWithCachedSizes(
       4, this->property_flags(), target);
   }
   
-  // optional .rec.proto.Address address = 5;
+  // optional .rec.data.AddressProto address = 5;
   if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -574,7 +574,7 @@ int TableColumn::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->property_flags());
     }
     
-    // optional .rec.proto.Address address = 5;
+    // optional .rec.data.AddressProto address = 5;
     if (has_address()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -630,7 +630,7 @@ void TableColumn::MergeFrom(const TableColumn& from) {
       set_property_flags(from.property_flags());
     }
     if (from._has_bit(5)) {
-      mutable_address()->::rec::proto::Address::MergeFrom(from.address());
+      mutable_address()->::rec::data::AddressProto::MergeFrom(from.address());
     }
     if (from._has_bit(6)) {
       set_type(from.type());

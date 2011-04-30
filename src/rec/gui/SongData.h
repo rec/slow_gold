@@ -11,8 +11,6 @@ namespace gui {
 class SongData : public SetterTextArea {
  public:
   SongData() : SetterTextArea("SongData") {
-    using persist::Address;
-
     add("Track", Address("track_title"), "The name of the individual track.");
     add("Album", Address("album_title"),
         "The name of the album this track is from, if any.");

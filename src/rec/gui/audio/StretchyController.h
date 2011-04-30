@@ -22,7 +22,7 @@ class StretchyController : public Layout, public juce::ComboBox::Listener,
     // TODO
   }
 
-  void setZoom(persist::UntypedData* zoom);
+  void setZoom(data::UntypedData* zoom);
   void enableSliders(bool enabled);
   virtual void comboBoxChanged(juce::ComboBox*);
 

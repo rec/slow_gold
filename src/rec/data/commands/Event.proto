@@ -1,6 +1,6 @@
 package rec.data.commands;
 
-import "rec/data/proto/Operation.proto";
+import "rec/data/Operation.proto";
 
 message Source {
   enum Type {
@@ -24,5 +24,5 @@ message Source {
 message Event {
   optional uint64 timestamp = 1;
   repeated Source source = 2;
-  repeated rec.proto.Operation operation = 3;
+  repeated Operation operation = 3;
 };

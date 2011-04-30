@@ -7,9 +7,10 @@
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
-namespace persist {
 
-class UntypedData;
+namespace data { class UntypedData; }
+
+namespace persist {
 
 class AppInstance : public App {
  public:
@@ -20,7 +21,7 @@ class AppInstance : public App {
   static const int WRITE_PERIOD = 100;
 
   // A piece of data got new information!
-  virtual void needsUpdate(UntypedData* data);
+  virtual void needsUpdate(data::UntypedData* data);
 
   bool update();
   bool write();
@@ -30,7 +31,7 @@ class AppInstance : public App {
 
   static AppInstance* getInstance() { return instance_; }
 
-  typedef std::set<UntypedData*> DataSet;
+  typedef std::set<data::UntypedData*> DataSet;
   bool running() const;
 
 private:

@@ -1,9 +1,9 @@
 #include "rec/data/proto/Field.h"
-#include "rec/data/proto/Value.h"
+#include "rec/data/Value.h"
 #include "rec/data/proto/Proto.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
 namespace {
 
@@ -14,8 +14,8 @@ struct ProtoAddress {
       : field_(Field::makeField(a, p)) {
   }
 
-  arg::Value getValue() const {
-    arg::Value value;
+  Value getValue() const {
+    Value value;
     if (field_)
       field_->copyTo(&value);
 
@@ -37,7 +37,7 @@ struct ProtoAddress {
 
 }  // namespace
 
-arg::Value getValue(const Address& a, const Message& m) {
+Value getValue(const Address& a, const Message& m) {
   return ProtoAddress(m, a).getValue();
 }
 
@@ -62,5 +62,5 @@ OperationList* applyOperations(const OperationList& list, Message* m) {
   return result.transfer();
 }
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec

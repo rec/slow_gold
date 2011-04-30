@@ -1,4 +1,5 @@
 #include "rec/gui/SetterResizer.h"
+#include "rec/data/Value.h"
 
 namespace rec {
 namespace gui {
@@ -25,7 +26,7 @@ void SetterResizer::set(int distance) {
   hasBeenMoved();
 }
 
-void SetterResizer::setSetter(persist::Setter* setter) {
+void SetterResizer::setSetter(data::Data* setter) {
   setter_ = setter;
   int size = setter_->getValue(address_).uint32_f();
   thread::callAsync(this, &SetterResizer::set, size);
@@ -33,7 +34,7 @@ void SetterResizer::setSetter(persist::Setter* setter) {
 
 void SetterResizer::moved() {
   if (setter_)
-    setter_->set(address_, static_cast<uint32>(get()));
+    data::set(setter_, address_, static_cast<uint32>(get()));
 }
 
 void SetterResizer::paint(Graphics& g) {

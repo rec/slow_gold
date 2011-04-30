@@ -4,27 +4,24 @@
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
-#include "rec/data/proto/Setter.h"
+#include "rec/data/Data.h"
 
 namespace rec {
-namespace persist {
-
-using rec::proto::Operation;
-using rec::proto::OperationList;
+namespace data {
 
 bool UntypedData::hasValue(const Address& address) const {
   ScopedLock l(lock_);
-  return proto::hasValue(address, *message_);
+  return data::hasValue(address, *message_);
 }
 
 const Value UntypedData::getValue(const Address& address) const {
   ScopedLock l(lock_);
-  return proto::getValue(address, *message_);
+  return data::getValue(address, *message_);
 }
 
 int UntypedData::getSize(const Address& address) const {
   ScopedLock l(lock_);
-  return proto::getSize(address, *message_);
+  return data::getSize(address, *message_);
 }
 
 void UntypedData::copyTo(Message* message) const {
@@ -32,7 +29,7 @@ void UntypedData::copyTo(Message* message) const {
   message->CopyFrom(*message_);
 }
 
-UntypedData::UntypedData(const File& file, Message* message, App* app)
+UntypedData::UntypedData(const File& file, Message* message, persist::App* app)
     : file_(new File(file)),
       message_(message),
       app_(app),
@@ -53,7 +50,7 @@ Message* UntypedData::clone() const {
 void UntypedData::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
-    fileReadSuccess_ = copy(*file_, message_);
+    fileReadSuccess_ = persist::copy(*file_, message_);
 #if 0
     if (fileReadSuccess_)
       DLOG(INFO) << "Opening data " << file_->getFullPathName();
@@ -111,8 +108,8 @@ void UntypedData::writeToFile() const {
     msg->CopyFrom(*message_);
   }
 
-  copy(*msg, const_cast<File*>(file_.get()));
+  persist::copy(*msg, const_cast<File*>(file_.get()));
 }
 
-}  // namespace persist
+}  // namespace data
 }  // namespace rec

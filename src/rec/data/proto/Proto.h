@@ -2,23 +2,21 @@
 #define __REC_PROTO_PROTO
 
 #include "rec/base/base.h"
-#include "rec/data/proto/Address.h"
-#include "rec/data/proto/Value.h"
+#include "rec/data/Address.h"
+#include "rec/data/Value.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
-class Operation;
+data::OperationList* applyOperations(const data::OperationList& operations, Message* msg);
 
-OperationList* applyOperations(const OperationList& operations, Message* msg);
-
-arg::Value getValue(const Address& address, const Message& msg);
+data::Value getValue(const data::Address& address, const Message& msg);
 
 bool hasValue(const Address& address, const Message& msg);
 
 int getSize(const Address& address, const Message& msg);
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PROTO_PROTO

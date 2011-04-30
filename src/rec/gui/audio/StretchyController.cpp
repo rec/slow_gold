@@ -74,18 +74,18 @@ void StretchyController::setData(persist::Data<rec::audio::stretch::StretchLoop>
 }
 
 void StretchyController::comboBoxChanged(juce::ComboBox*) {
-  if (persist::UntypedData* data = playbackSpeed_.getData()) {
+  if (data::UntypedData* data = playbackSpeed_.getData()) {
     Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
     StereoProto stereo;
     if (sides != STEREO) {
       stereo.set_type(StereoProto::SINGLE);
       stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
     }
-    data->set(Address("stretch", "stereo"), stereo);
+    data::set(data, Address("stretch", "stereo"), stereo);
   }
 }
 
-void StretchyController::setZoom(persist::UntypedData* data) {
+void StretchyController::setZoom(data::UntypedData* data) {
   zoomToSelectionButton_.setData(data);
   clickToZoomButton_.setData(data);
 }

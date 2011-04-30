@@ -2,27 +2,24 @@
 #define __REC_PERSIST_UNTYPEDDATA__
 
 #include "rec/base/base.h"
-#include "rec/data/proto/Setter.h"
+#include "rec/data/Data.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
-namespace persist {
 
-class App;
-class AppInstance;
+namespace persist { class App; }
+namespace persist { class AppInstance; }
 
-typedef proto::arg::Setter Setter;
-typedef proto::arg::Value Value;
-typedef proto::arg::Address Address;
+namespace data {
 
-class UntypedData : public Setter {
+class UntypedData : public data::Data {
  public:
   virtual ~UntypedData();
 
   // Change the data with an OperationList.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
-  virtual void operator()(proto::OperationList* op);
+  virtual void operator()(OperationList* op);
 
   // Request an update to this data in a different thread.
   void requestUpdate();
@@ -58,12 +55,12 @@ class UntypedData : public Setter {
   // Update the clients in this thread.
   void update();
 
-  UntypedData(const File& file, Message* message, App* app);
+  UntypedData(const File& file, Message* message, persist::App* app);
   void readFromFile() const;
 
   void writeToFile() const;
 
-  typedef std::vector<proto::OperationList*> OperationQueue;
+  typedef std::vector<data::OperationList*> OperationQueue;
 
   OperationQueue queue_;
   OperationQueue undo_;
@@ -71,10 +68,10 @@ class UntypedData : public Setter {
   ptr<File> file_;
   mutable Message* message_;
 
-  App* app_;
+  persist::App* app_;
   CriticalSection lock_;
 
-  friend class AppInstance;
+  friend class persist::AppInstance;
 
  private:
   mutable bool alreadyReadFromFile_;
@@ -84,7 +81,7 @@ class UntypedData : public Setter {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedData);
 };
 
-}  // namespace persist
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PERSIST_UNTYPEDDATA__

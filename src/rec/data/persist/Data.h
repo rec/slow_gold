@@ -13,7 +13,7 @@ namespace persist {
 class App;
 
 template <typename Proto>
-class Data : public UntypedData,
+class Data : public data::UntypedData,
              public Broadcaster<const Proto&>,
              public Listener<const Proto&> {
  public:

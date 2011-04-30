@@ -2,13 +2,13 @@
 
 #include "rec/data/yaml/Yaml.h"
 
-#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/Operation.pb.h"
 
 namespace rec {
 namespace yaml {
 namespace {
 
-using proto::Operation;
+using data::Operation;
 
 const static char RESULT[] =
   "---\n"

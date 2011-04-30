@@ -1,6 +1,7 @@
 #ifndef __REC_GUI_SETTERTEXT__
 #define __REC_GUI_SETTERTEXT__
 
+#include "rec/data/Value.h"
 #include "rec/gui/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/util/listener/ProtoListener.h"
@@ -13,9 +14,6 @@ class SetterText : public Layout,
                    public ProtoListener,
                    public TextEditor::Listener {
  public:
-  typedef proto::arg::Address Address;
-  typedef proto::arg::Value Value;
-
   SetterText(const String& name, const Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty)

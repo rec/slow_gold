@@ -6,8 +6,9 @@
 namespace rec {
 namespace persist {
 
-AppInstance::AppInstance()
-    : App() {
+using data::UntypedData;
+
+AppInstance::AppInstance() : App() {
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
                                        this, &AppInstance::update));
   updateThread_->setPriority(UPDATE_PRIORITY);

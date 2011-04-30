@@ -10,37 +10,17 @@
 #include "rec/base/ptr.h"
 #include "rec/base/types.h"
 
-namespace google {
-namespace protobuf {
-class Message;
-}
-}
+namespace google { namespace protobuf { class Message; }}
 
 namespace rec {
-namespace util {
-namespace listener {
-}
 
-namespace file {
-class VirtualFile;
-class VirtualFileList;
-}
+namespace util { namespace listener {}}
+namespace util { namespace file { class VirtualFile; }}
+namespace util { namespace file { class VirtualFileList; }}
 
-}  // namespace util
-
-namespace proto {
-namespace arg {
-
-struct Address;
-class Setter;
-class Value;
-
-}  // namespace arg
-}  // namespace proto
-
-namespace persist {
-class UntypedData;
-}
+namespace data { class Address; }
+namespace data { class Data; }
+namespace data { class Value; }
 
 typedef std::string string;
 typedef unsigned int uint;
@@ -54,10 +34,9 @@ using util::file::VirtualFile;
 using util::file::VirtualFileList;
 using std::vector;
 
-// TODO: remove these.
-using proto::arg::Address;
-using proto::arg::Setter;
-using proto::arg::Value;
+using data::Data;
+using data::Address;
+using data::Value;
 
 // Useful all over.
 

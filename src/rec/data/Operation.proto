@@ -1,4 +1,4 @@
-package rec.proto;
+package rec.data;
 
 import "rec/data/proto/Address.proto";
 import "rec/data/proto/Value.proto";
@@ -14,8 +14,8 @@ message Operation {
   };
 
   optional Command command = 1;
-  optional Address address = 2;
-  repeated Value value = 3;
+  optional AddressProto address = 2;
+  repeated ValueProto value = 3;
 
   // Number of entries to remove from the end.
   optional uint32 remove = 4 [default = 1];

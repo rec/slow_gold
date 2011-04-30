@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "rec/data/proto/LogFile.h"
-#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/Operation.pb.h"
 
 namespace rec {
 namespace proto {

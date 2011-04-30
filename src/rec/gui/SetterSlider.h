@@ -1,6 +1,7 @@
 #ifndef __REC_GUI_SETTERSLIDER__
 #define __REC_GUI_SETTERSLIDER__
 
+#include "rec/data/Value.h"
 #include "rec/gui/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/gui/Geometry.h"

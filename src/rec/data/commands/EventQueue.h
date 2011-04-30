@@ -5,16 +5,7 @@
 
 #include "rec/base/base.h"
 
-namespace rec {
-namespace proto {
-namespace logfile {
-
-class Output;
-
-}  // namespace proto
-}  // namespace logfile
-}  // namespace rec
-
+namespace rec { namespace proto { namespace logfile { class Output; }}}
 
 namespace rec {
 namespace data {

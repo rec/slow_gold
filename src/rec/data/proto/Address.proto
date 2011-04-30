@@ -1,8 +1,6 @@
-package rec.proto;
+package rec.data;
 
-// TODO: change the name of Field to something better and call this just "Field".
-
-message Address {
+message AddressProto {
   message Part {
     optional int32 index = 1;
     optional string name = 2;

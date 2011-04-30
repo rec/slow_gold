@@ -101,17 +101,17 @@ void protobuf_AddDesc_rec_2fdata_2fcommands_2fEvent_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::rec::proto::protobuf_AddDesc_rec_2fdata_2fproto_2fOperation_2eproto();
+  ::rec::data::protobuf_AddDesc_rec_2fdata_2fOperation_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/data/commands/Event.proto\022\021rec.dat"
-    "a.commands\032\036rec/data/proto/Operation.pro"
-    "to\"\230\001\n\006Source\022,\n\004type\030\001 \001(\0162\036.rec.data.c"
-    "ommands.Source.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rmo"
-    "difier_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010K"
-    "EYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"n\n"
-    "\005Event\022\021\n\ttimestamp\030\001 \001(\004\022)\n\006source\030\002 \003("
-    "\0132\031.rec.data.commands.Source\022\'\n\toperatio"
-    "n\030\003 \003(\0132\024.rec.proto.Operation", 349);
+    "a.commands\032\030rec/data/Operation.proto\"\230\001\n"
+    "\006Source\022,\n\004type\030\001 \001(\0162\036.rec.data.command"
+    "s.Source.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rmodifier"
+    "_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010KEYBOAR"
+    "D\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"m\n\005Event"
+    "\022\021\n\ttimestamp\030\001 \001(\004\022)\n\006source\030\002 \003(\0132\031.re"
+    "c.data.commands.Source\022&\n\toperation\030\003 \003("
+    "\0132\023.rec.data.Operation", 342);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/commands/Event.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -558,7 +558,7 @@ bool Event::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated .rec.proto.Operation operation = 3;
+      // repeated .rec.data.Operation operation = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -602,7 +602,7 @@ void Event::SerializeWithCachedSizes(
       2, this->source(i), output);
   }
   
-  // repeated .rec.proto.Operation operation = 3;
+  // repeated .rec.data.Operation operation = 3;
   for (int i = 0; i < this->operation_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->operation(i), output);
@@ -628,7 +628,7 @@ void Event::SerializeWithCachedSizes(
         2, this->source(i), target);
   }
   
-  // repeated .rec.proto.Operation operation = 3;
+  // repeated .rec.data.Operation operation = 3;
   for (int i = 0; i < this->operation_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -662,7 +662,7 @@ int Event::ByteSize() const {
         this->source(i));
   }
   
-  // repeated .rec.proto.Operation operation = 3;
+  // repeated .rec.data.Operation operation = 3;
   total_size += 1 * this->operation_size();
   for (int i = 0; i < this->operation_size(); i++) {
     total_size +=

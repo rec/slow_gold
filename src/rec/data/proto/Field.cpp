@@ -1,14 +1,18 @@
 #include <google/protobuf/descriptor.h>
 
 #include "rec/data/proto/Field.h"
-#include "rec/data/proto/Address.h"
-#include "rec/data/proto/Operation.pb.h"
+#include "rec/data/Address.h"
+#include "rec/data/Operation.pb.h"
+#include "rec/data/Value.h"
 #include "rec/data/proto/TypedOperations.h"
 #include "rec/data/proto/Types.h"
 #include "rec/data/proto/Value.pb.h"
 
 namespace rec {
-namespace proto {
+namespace data {
+
+using namespace rec::proto;
+using namespace google::protobuf;
 
 Field* Field::makeField(const Address& address, const Message& msg) {
   ptr<Field> field(new Field(const_cast<Message*>(&msg)));
@@ -23,7 +27,7 @@ Field* Field::makeField(const Address& address, const Message& msg) {
   return field.transfer();
 }
 
-bool Field::dereference(const proto::Address::Part& afield) {
+bool Field::dereference(const Address::Part& afield) {
   if (field_) {
     const Reflection& r = *message_->GetReflection();
     if (type_ == INDEXED) {
@@ -54,7 +58,7 @@ bool Field::dereference(const proto::Address::Part& afield) {
       return true;
 
     } else {
-      message_ = r.MutableMessage(message_, field_);    
+      message_ = r.MutableMessage(message_, field_);
       index_ = -1;
     }
   }
@@ -101,7 +105,7 @@ bool Field::copyFrom(const Value& value) {
     typer::copyFrom(message_, field_, index_, value);
 }
 
-bool Field::copyTo(Value* value) const {
+bool Field::copyTo(ValueProto* value) const {
   if (!field_) {
     value->set_message_f(pmessage(*message_));
     return true;
@@ -179,7 +183,7 @@ bool Field::doRemove(int toRemove) {
   f.field_ = field_;
   f.type_ = type_;
   f.repeatCount_ = repeatCount_;
-  f.dereference(arg::Address::Part(0));
+  f.dereference(Address::Part(0));
   if (toRemove < 0)
     toRemove = f.repeatCount_;
 
@@ -243,5 +247,5 @@ bool Field::swapRepeated() {
   return inRange;
 }
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec

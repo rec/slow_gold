@@ -17,8 +17,8 @@ typedef persist::Data<music::Metadata> Data;
 AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
   music::Metadata metadata;
   ptr<AudioFormatReader> reader;
-  persist::Data<music::Metadata>* data = persist::setter<music::Metadata>(file);
-  bool fileRead = data->fileReadSuccess();
+  persist::Data<music::Metadata>* d = persist::setter<music::Metadata>(file);
+  bool fileRead = d->fileReadSuccess();
 
   if (file.type() == VirtualFile::CD) {
     if (!file.path_size()) {
@@ -46,7 +46,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
   }
 
   if (!fileRead && (metadata != music::Metadata::default_instance()))
-    data->set(metadata);
+    data::set(d, metadata);
 
   return reader.transfer();
 }

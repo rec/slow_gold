@@ -13,7 +13,6 @@ namespace gui {
 namespace audio {
 
 using namespace juce;
-using namespace rec::proto::arg;
 using namespace rec::widget::status::time;
 
 namespace {

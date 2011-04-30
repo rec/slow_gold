@@ -1,15 +1,12 @@
 #ifndef __REC_PROTO_FIELD__
 #define __REC_PROTO_FIELD__
 
+#include "rec/data/Data.h"
+#include "rec/data/Address.h"
 #include "rec/data/proto/MessageField.h"
 
 namespace rec {
-namespace proto {
-
-class Address;
-class Address_Part;
-class Operation;
-class Value;
+namespace data {
 
 class Field : public MessageField {
  public:
@@ -21,12 +18,12 @@ class Field : public MessageField {
                                      operation_(NULL) {
   }
 
-  bool dereference(const Address_Part& part);
+  bool dereference(const Address::Part& part);
   Operation* apply(const Operation& op);
 
   bool copyFrom(const Value& value);
   bool addFrom(const Value& value);
-  bool copyTo(Value* value) const;
+  bool copyTo(ValueProto* value) const;
 
  private:
   enum Type {
@@ -60,7 +57,7 @@ class Field : public MessageField {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Field);
 };
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PROTO_FIELD__

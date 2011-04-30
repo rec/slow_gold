@@ -2,6 +2,7 @@
 #define __REC_DATA_PERSIST_PERSIST__
 
 #include "rec/data/persist/App.h"
+#include "rec/data/Data.h"
 
 namespace rec {
 namespace persist {
@@ -20,7 +21,12 @@ const Proto get(const VirtualFile& f = noFile()) {
 
 template <typename Proto>
 void set(const Proto& proto, const VirtualFile& f = noFile()) {
-  setter<Proto>(f)->set(proto);
+  data::set(setter<Proto>(f), proto);
+}
+
+template <typename Proto>
+void set(const Address& a, const Proto& p, const VirtualFile& f = noFile()) {
+  data::set(setter<Proto>(f), a, p);
 }
 
 }  // namespace persist
