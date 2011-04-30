@@ -1,4 +1,5 @@
 #include "rec/audio/source/Player.h"
+#include "rec/audio/source/Empty.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/Device.h"
 #include "rec/util/Math.h"
@@ -12,7 +13,9 @@ using namespace rec::audio::transport;
 static const double MINIMUM_BROADCAST_TIMECHANGE = 0.001;
 static const float SAMPLE_RATE = 44100.0f;
 
-Player::Player(Device* d) : device_(d) {}
+Player::Player(Device* d) : device_(d) {
+  setSource(new Empty);
+}
 
 Player::~Player() {}
 
@@ -28,11 +31,10 @@ void Player::setState(State s) {
 }
 
 void Player::setSource(Source* source) {
-	DCHECK(false);
   // TODO: Do we need to prepare here?
   ptr<Source>s(source);
   source_.swap(s);
-  // transportSource_.setSource(source_);  // TODO
+  transportSource_.setSource(source_.get());  // TODO
   source->releaseResources();
 }
 

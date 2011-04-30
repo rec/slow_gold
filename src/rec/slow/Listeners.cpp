@@ -76,9 +76,18 @@ void Listeners::operator()(const VirtualFile& f) {
   components()->songData_.setFile(f);
 }
 
+static void toggle(Instance* i) { i->player_->toggle(); }
+
 void Listeners::operator()(command::Command::Type t) {
-  DLOG(INFO) << "Here!";
+  DLOG(INFO) << "Command " << command::Command::Type_Name(t);
+  if (t == command::Command::ADD_LOOP_POINT) {
+
+  } else if (t == command::Command::TOGGLE_START_STOP) {
+    threads()->start(&toggle, "start/stop");
+  }
 }
+
+void Listeners::operator()(RealTime) {}
 
 void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
@@ -156,10 +165,10 @@ void Listeners::operator()(const ClockUpdate&) {}
 void Listeners::operator()(const CursorTime&) {}
 void Listeners::operator()(const TimeAndMouseEvent&) {}
 void Listeners::operator()(const ZoomProto&) {}
-void Listeners::operator()(RealTime) {}
 
 void Listeners::operator()(audio::transport::State state) {
-  components()->transportController_.setTransportState(state);
+  thread::callAsync(&components()->transportController_, 
+                    &TransportController::setTransportState, state);
   player()->setState(state);
 }
 

@@ -3,11 +3,14 @@
 
 #include "rec/slow/HasInstance.h"
 #include "rec/util/thread/Trash.h"
+#include "rec/util/thread/Callback.h"
 
 namespace rec {
 namespace slow {
 
 struct ThreadData;
+
+typedef void (*InstanceFunction)(Instance*);
 
 class Threads : public HasInstance {
  public:
@@ -20,12 +23,15 @@ class Threads : public HasInstance {
   CriticalSection* lock() { return &lock_; }
   ThreadData* data() { return data_.get(); }
 
+  void clean();
+
+  // waitTime >= means run and wait in a loop.
+  // waitTime 0 means run once.
+  // waitTime < 0 means run and wait forever (till a notify).
+  Thread* start(InstanceFunction f, const String& name, int waitTime = 0);
+
  private:
   typedef std::vector<Thread*> ThreadList;
-  typedef void (*InstanceFunction)(Instance*);
-
-  Thread* start(InstanceFunction f, const String& name,
-                int waitTime = LOOP_TIME);
 
   ThreadList threads_;
   CriticalSection lock_;

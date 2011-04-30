@@ -11,13 +11,13 @@ namespace callback {
 
 class Thread : public juce::Thread, public OwnedPointer<Callback> {
  public:
-  Thread(const String& name, Callback* r, int waitTime = -1)
+  Thread(const String& name, Callback* r, int waitTime = 0)
       : juce::Thread(name), OwnedPointer<Callback>(r), waitTime_(waitTime) {
   }
 
   virtual void run() {
     while (!threadShouldExit() && (*this)()) {
-      if (waitTime_ < 0)
+      if (!waitTime_)
         break;
 
       if (!threadShouldExit())

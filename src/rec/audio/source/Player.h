@@ -34,10 +34,10 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
  private:
   CriticalSection lock_;
 
+  ptr<Source> source_;
   AudioTransportSource transportSource_;
   AudioSourcePlayer player_;
   Device* device_;
-  ptr<Source> source_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

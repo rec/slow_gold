@@ -51,12 +51,12 @@ Threads::Threads(Instance* i) : HasInstance(i), data_(new ThreadData()) {
 }
 
 void Threads::startAll() {
-  start(&clock, "Clock");
+  start(&clock, "Clock", 100);
   start(&browser, "Browser", 1000);
   data_->fetchThread_ = start(&fetch, "Fetch", 10);
-  start(&updateParameters, "Parameter");
-  start(&persist, "Persist");
-  start(&pitch, "Pitch");
+  start(&updateParameters, "Parameter", 100);
+  start(&persist, "Persist", 100);
+  start(&pitch, "Pitch", 100);
 
   data_->fileLocker_.set(persist::get<VirtualFile>());
 }
@@ -71,13 +71,26 @@ void Threads::stop() {
     threads_[i]->stopThread(THREAD_STOP_PERIOD);
 }
 
+void Threads::clean() {
+  ScopedLock l(lock_);
+  for (int i = 0; i < threads_.size(); ++i) {
+    if (!threads_[i]->isThreadRunning()) {
+      delete threads_[i];
+      threads_[i] = threads_.back();
+      threads_.pop_back();
+    }
+  }
+}
+
 Thread* Threads::start(InstanceFunction f, const String& name, int wait) {
-  VLOG(1) << "Starting thread " << name;
+  clean();
+
   ptr<Callback> cb(makePointer(f, instance_));
-  Thread* t(thread::makeLoop(wait, name, cb.transfer()));
-  threads_.push_back(t);
+  ptr<Thread> t(thread::makeLoop(wait, name, cb.transfer()));
+
+  threads_.push_back(t.get());
   t->startThread();
-  return t;
+  return t.transfer();
 }
 
 }  // namespace slow

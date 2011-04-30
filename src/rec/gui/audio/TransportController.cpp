@@ -54,6 +54,7 @@ void TransportController::buttonClicked(juce::Button *button) {
 }
 
 void TransportController::setTransportState(rec::audio::transport::State state) {
+  DLOG(INFO) << "setTransportState " << state;
   startStopButton_.setToggleState(state == rec::audio::transport::RUNNING, false);
   startStopButton_.repaint();
 }
