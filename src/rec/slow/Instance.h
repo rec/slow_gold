@@ -27,12 +27,13 @@ struct Instance {
   ptr<Components> components_;
   ptr<audio::Device> device_;
   ptr<Menus> menus_;  // TODO:  move into "Target"
-  // ptr<PersistentData> data_;  // TODO:  delete this?
-  ptr<Parameters> parameters_;
   ptr<audio::source::Player> player_;
   ptr<Target> target_;  // TODO: rename to "Commands".
   ptr<Listeners> listeners_;
   ptr<Threads> threads_;
+
+  // ptr<PersistentData> data_;  // TODO:  delete this?
+  // ptr<Parameters> parameters_;
 
   DISALLOW_COPY_AND_ASSIGN(Instance);
 };

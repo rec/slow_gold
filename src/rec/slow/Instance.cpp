@@ -18,7 +18,7 @@ Instance::Instance()
     device_(new audio::Device()),
     menus_(new Menus(this)),
     // data_(new PersistentData()),
-    parameters_(new Parameters()),
+    // parameters_(new Parameters()),
     player_(new audio::source::Player(device_.get())),
     target_(new Target(this)),
     listeners_(new Listeners(this)),

@@ -23,8 +23,6 @@ static const int ROOT_WAIT_TIME = 1000;
 Root::Root(const NodeDesc& desc) : desc_(desc), addDialogOpen_(false) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
-  persist::setter<VirtualFileList>()->addListener(this);
-  persist::setter<VirtualFileList>()->requestUpdate();
   tree_.addMouseListener(this, false);
 }
 

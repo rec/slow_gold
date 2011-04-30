@@ -30,6 +30,7 @@ using namespace rec::gui::audio;
 
 Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->player_->addListener(this);
+
   Waveform* waveform = &instance_->components_->waveform_;
   waveform->dropBroadcaster()->addListener(this);
   waveform->addMouseListener(this, true);
@@ -37,6 +38,9 @@ Listeners::Listeners(Instance* i) : instance_(i) {
   Root* root = &instance_->components_->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);
   root->addListener(persist::setter<VirtualFile>());
+
+  persist::setter<VirtualFileList>()->addListener(&instance_->components_->directoryTree_);
+  // persist::setter<VirtualFileList>()->requestUpdate();
 }
 
 void Listeners::operator()(const VirtualFile& f) {
