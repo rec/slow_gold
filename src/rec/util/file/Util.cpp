@@ -59,14 +59,15 @@ bool isAudio(const File& file) {
   return
     file.hasFileExtension("aiff") ||
     file.hasFileExtension("flac") ||
-    file.hasFileExtension("m4a") ||
+    //    file.hasFileExtension("m4a") ||  // TODO
     file.hasFileExtension("mp3") ||
     file.hasFileExtension("ogg") ||
     file.hasFileExtension("wav");
 }
 
 String audioFilePatterns() {
-  return "*.aiff;*.flac;*.m4a;*.mp3;*.ogg;*.wav";
+  //  return "*.aiff;*.flac;*.m4a;*.mp3;*.ogg;*.wav";
+  return "*.aiff;*.flac;*.mp3;*.ogg;*.wav";
 }
 
 bool isAudioOrDirectory(const File& file) {

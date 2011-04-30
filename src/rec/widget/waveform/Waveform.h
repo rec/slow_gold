@@ -50,13 +50,13 @@ class Waveform : public Component,
   void layoutCursors();
 
   TimeRange getTimeRange() const;
+  double xToTime(int x) const;
 
  private:
   void doClick(const juce::MouseEvent& e, int clickCount);
   void setSelection(const gui::audio::LoopPointList&);
 
   int timeToX(double t) const;
-  double xToTime(int x) const;
 
   void cursorDragged(int index, int x);
 

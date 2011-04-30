@@ -54,11 +54,13 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
 }  // namespace
 
 PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
-  ptr<AudioFormatReader> reader(createReaderAndLoadMetadata(file));
-  if (reader)
-    return new AudioFormatReaderSource(reader.transfer(), true);
+  if (!empty(file)) {
+    ptr<AudioFormatReader> reader(createReaderAndLoadMetadata(file));
+    if (reader)
+      return new AudioFormatReaderSource(reader.transfer(), true);
 
-  LOG(ERROR) << "No reader for " << getFullDisplayName(file);
+    LOG(ERROR) << "No reader for " << getFullDisplayName(file);
+  }
   return NULL;
 }
 

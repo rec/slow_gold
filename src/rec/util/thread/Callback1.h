@@ -42,7 +42,7 @@ class CallbackFunc1 : public Callback {
   CallbackFunc1(Functor f, Value v) : functor_(f), value_(v) {
   }
 
-  virtual bool operator()() { functor_(value_); return true; }
+  virtual bool operator()() { (*functor_)(value_); return true; }
 
  private:
   Functor functor_;

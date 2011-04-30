@@ -14,6 +14,7 @@
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/CursorTime.h"
 #include "rec/widget/waveform/TimeAndMouseEvent.h"
 #include "rec/widget/waveform/Zoom.pb.h"
@@ -39,8 +40,10 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
   root->treeView()->dropBroadcaster()->addListener(this);
   root->addListener(persist::setter<VirtualFile>());
 
-  persist::setter<VirtualFileList>()->addListener(&components()->directoryTree_);
-  // persist::setter<VirtualFileList>()->requestUpdate();
+  persist::setter<VirtualFileList>()->addListener(root);
+  (*root)(persist::get<VirtualFileList>());
+
+  components()->transportController_.addListener(this);
 }
 
 void Listeners::operator()(const VirtualFile& f) {
@@ -71,6 +74,10 @@ void Listeners::operator()(const VirtualFile& f) {
   threadData->loopLocker_.set(persist::get<LoopPointList>(f));
 
   components()->songData_.setFile(f);
+}
+
+void Listeners::operator()(command::Command::Type t) {
+  DLOG(INFO) << "Here!";
 }
 
 void Listeners::operator()(None) {
@@ -124,7 +131,23 @@ void Listeners::mouseDoubleClick(const MouseEvent& e) {
     DLOG(INFO) << "Opened a new file!";
 }
 
+void Listeners::mouseDrag(const MouseEvent& e) {
+  Waveform* waveform = &components()->waveform_;
+  waveform->timeCursor()->setTime(waveform->xToTime(e.x));
+}
+
 void Listeners::mouseUp(const MouseEvent& e) {
+  mouseDrag(e);
+
+#ifdef TODO
+  if (e.mods.isShiftDown())
+    zoomOut();
+  else if (zoomProto() && zoomProto()->get().click_to_zoom())
+    zoomIn(timeMouse);
+
+  else if (timeMouse.mouseEvent_->mods.isCommandDown())
+    zoomIn(timeMouse);
+#endif
 }
 
 void Listeners::operator()(const ClockTick&) {}
@@ -217,22 +240,7 @@ void Listeners::operator()(const widget::waveform::CursorTime& x) {
 }
 
 void Listeners::operator()(const widget::waveform::TimeAndMouseEvent& x) {
-  if (timeMouse.mouseEvent_->mods.isShiftDown())
-    zoomOut();
 
-  else if (zoomProto() && zoomProto()->get().click_to_zoom())
-    zoomIn(timeMouse);
-
-  else if (timeMouse.mouseEvent_->mods.isCommandDown())
-    zoomIn(timeMouse);
-
-#ifdef TODO
-  else if (timeMouse.clickCount_ > 1)
-    thread::callAsync(this, &MainPage::doOpen);
-#endif
-
-  else
-    stretchyPlayer_.setTime(timeMouse.time_);
 }
 
 void Listeners::operator()(const widget::waveform::ZoomProto& x) {

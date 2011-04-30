@@ -2,6 +2,7 @@
 #define __REC_SLOW_LISTENERS__
 
 #include "rec/audio/Audio.h"
+#include "rec/command/Command.pb.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Range.h"
 #include "rec/util/listener/Listener.h"
@@ -28,6 +29,7 @@ class Instance;
 
 class Listeners : public Listener<None>,
                   public Listener<audio::transport::State>,
+                  public Listener<command::Command::Type>,
                   public Listener<const VirtualFile&>,
                   public Listener<const audio::stretch::Stretch&>,
                   public Listener<const gui::DropFiles&>,
@@ -39,6 +41,7 @@ class Listeners : public Listener<None>,
 
   virtual void operator()(None);
   virtual void operator()(audio::transport::State);
+  virtual void operator()(command::Command::Type);
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const file::VirtualFile&);
   virtual void operator()(const gui::DropFiles&);
@@ -61,6 +64,7 @@ class Listeners : public Listener<None>,
 
   void mouseDoubleClick(const MouseEvent& e);
   void mouseUp(const MouseEvent& e);
+  void mouseDrag(const MouseEvent& e);
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Listeners);
 };

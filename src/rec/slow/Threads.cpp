@@ -72,7 +72,7 @@ void Threads::stop() {
 }
 
 Thread* Threads::start(InstanceFunction f, const String& name, int wait) {
-  DLOG(INFO) << "Starting thread " << name;
+  VLOG(1) << "Starting thread " << name;
   ptr<Callback> cb(makePointer(f, instance_));
   Thread* t(thread::makeLoop(wait, name, cb.transfer()));
   threads_.push_back(t);

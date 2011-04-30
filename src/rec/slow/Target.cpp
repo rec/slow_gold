@@ -24,12 +24,10 @@ void Target::addCommands() {
       "Cut", "Edit",
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
-#if 1
   using thread::functionCallback;
   add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile, listeners()),
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
-#endif
 
   add(Command::EJECT, makeCallback(&cd::ejectAll),
       "Eject All", "File",
@@ -50,13 +48,12 @@ void Target::addCommands() {
       "Clear Selection", "Loop",
       "Unselect all the loop points");
 
-  registerAllCommandsForTarget();
-
-#ifdef TODO
-  add(Command::CLOSE, makeCallback(persist::setter<VirtualFile>(), VirtualFile()),
+  add(Command::CLOSE, functionCallback(persist::setter<VirtualFile>(),
+                                       VirtualFile()),
       "Close", "File",
       "Close the current file", 'w');
 
+#ifdef TODO
   add(Command::AUDIO_PREFERENCES, makeCallback(cc,
                                       &ComponentContainer::audioPreferences),
       "Audio Preferences...", "File",
@@ -79,6 +76,7 @@ void Target::addCommands() {
       "Quit SlowGold", 'q');
 #endif
 
+  registerAllCommandsForTarget();
 }
 
 }  // namespace slow
