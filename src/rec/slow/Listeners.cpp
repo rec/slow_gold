@@ -118,7 +118,7 @@ void Listeners::operator()(const LoopPointList& loops) {
 }
 
 void Listeners::mouseDoubleClick(const MouseEvent& e) {
-  if (!instance_->target_->invokeDirectly(command::Command::OPEN))
+  if (!target()->invokeDirectly(command::Command::OPEN))
     LOG(ERROR) << "Unable to start open dialog";
   else
     DLOG(INFO) << "Opened a new file!";
@@ -188,10 +188,9 @@ void Listeners::operator()(const file::VirtualFile& f) {
 }
 
 void Listeners::operator()(SampleTime time) {
-  Components& c = instance_->components_;
-  c.timeController_.setTime(time);
-  c.waveform_.timeCursor()->setTime(time);
-  c.transportController_.setTime(time);
+  components().timeController_.setTime(time);
+  components().waveform_.timeCursor()->setTime(time);
+  components().transportController_.setTime(time);
 }
 
 void Listeners::operator()(const juce::AudioThumbnail&) {

@@ -11,7 +11,7 @@ namespace callback {
 class CallbackMessage : public juce::CallbackMessage,
                         public OwnedPointer<Callback> {
  public:
-  CallbackMessage(Callback* r = NULL) : OwnedPointer<Callback>(r) {}
+  CallbackMessage(Callback* r) : OwnedPointer<Callback>(r) {}
   virtual void messageCallback() {
   	(*this)();
   }

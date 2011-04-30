@@ -70,8 +70,6 @@ typedef juce::TableListBox TableListBox;
 typedef juce::TableListBoxModel TableListBoxModel;
 typedef juce::TextEditor TextEditor;
 typedef juce::Thread Thread;
-typedef juce::TimeSliceThread TimeSliceThread;
-typedef juce::TimeSliceClient TimeSliceClient;
 typedef juce::TreeView TreeView;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;

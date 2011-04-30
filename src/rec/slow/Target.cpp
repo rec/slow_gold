@@ -8,10 +8,13 @@
 namespace rec {
 namespace slow {
 
-Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_) {
+Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_),
+                              HasInstance(i) {
+}
+
+void Target::addCommands() {
   typedef rec::command::Command Command;
   using thread::makeCallback;
-  using thread::functionCallback;
 
   add(Command::COPY, makeCallback(&copyToClipboard),
       "Copy", "Edit",
@@ -21,9 +24,12 @@ Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_) {
       "Cut", "Edit",
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
-  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile, i->listeners_.get()),
+#if 1
+  using thread::functionCallback;
+  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile, listeners()),
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
+#endif
 
   add(Command::EJECT, makeCallback(&cd::ejectAll),
       "Eject All", "File",
@@ -34,7 +40,7 @@ Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_) {
       "Replace the current selection with a copy of the clipboard.", 'v');
 
   using gui::audio::Loops;
-  Loops* loops = &i->components_->loops_;
+  Loops* loops = &components()->loops_;
 
   add(Command::CLEAR_LOOPS, makeCallback(loops, &Loops::clearLoops),
       "Clear Loops", "Loop",

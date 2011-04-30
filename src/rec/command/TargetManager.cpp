@@ -54,7 +54,7 @@ bool TargetManager::perform(const InvocationInfo& invocation) {
 
   lastInvocation_ = invocation;
   (*(i->second->callback_))();
-  return false;
+  return true;
 }
 
 InvocationInfo TargetManager::lastInvocation() const {

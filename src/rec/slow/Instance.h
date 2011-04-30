@@ -11,8 +11,6 @@ namespace slow {
 
 class Components;
 class Menus;
-class Parameters;
-class PersistentData;
 class Target;
 class Threads;
 class Listeners;
@@ -31,9 +29,6 @@ struct Instance {
   ptr<Target> target_;  // TODO: rename to "Commands".
   ptr<Listeners> listeners_;
   ptr<Threads> threads_;
-
-  // ptr<PersistentData> data_;  // TODO:  delete this?
-  // ptr<Parameters> parameters_;
 
   DISALLOW_COPY_AND_ASSIGN(Instance);
 };

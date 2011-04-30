@@ -9,8 +9,7 @@ namespace util {
 namespace thread {
 namespace callback {
 
-class Thread : public juce::Thread,
-               public OwnedPointer<Callback> {
+class Thread : public juce::Thread, public OwnedPointer<Callback> {
  public:
   Thread(const String& name, Callback* r, int waitTime = -1)
       : juce::Thread(name), OwnedPointer<Callback>(r), waitTime_(waitTime) {

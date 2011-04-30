@@ -1,14 +1,14 @@
 #ifndef __REC_SLOW_MENUS__
 #define __REC_SLOW_MENUS__
 
-#include "rec/base/base.h"
+#include "rec/slow/HasInstance.h"
 
 namespace rec {
 namespace slow {
 
 struct Instance;
 
-class Menus : public MenuBarModel {
+class Menus : public MenuBarModel, public HasInstance {
  public:
   Menus(Instance* i);
 
@@ -18,8 +18,6 @@ class Menus : public MenuBarModel {
 
  private:
   void add(PopupMenu* m, CommandID c);
-
-  Instance* instance_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Menus);
 };

@@ -20,7 +20,10 @@ using namespace rec::util::thread;
 static const int PARAMETER_WAIT = 100;
 static const int THREAD_STOP_PERIOD = 5000;
 
-void clock(Instance* i) { (*i->listeners_)(i->player_->getNextReadPosition()); }
+void clock(Instance* i) {
+  // TODO
+  // (*i->listeners_)(i->player_->getNextReadPosition());
+}
 
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
 
@@ -69,6 +72,7 @@ void Threads::stop() {
 }
 
 Thread* Threads::start(InstanceFunction f, const String& name, int wait) {
+  DLOG(INFO) << "Starting thread " << name;
   ptr<Callback> cb(makePointer(f, instance_));
   Thread* t(thread::makeLoop(wait, name, cb.transfer()));
   threads_.push_back(t);

@@ -7,7 +7,7 @@
 namespace rec {
 namespace slow {
 
-Menus::Menus(Instance* i) : instance_(i) {
+Menus::Menus(Instance* i) : HasInstance(i) {
   // i->target_.setApplicationCommandManagerToWatch(this); // TODO
 }
 
@@ -57,7 +57,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 }
 
 void Menus::add(PopupMenu* m, CommandID c) {
-  instance_->target_->addCommandItem(m, c);
+  target()->addCommandItem(m, c);
 }
 
 }  // namespace slow

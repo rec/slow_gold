@@ -62,9 +62,6 @@ class Listeners : public Listener<None>,
   void mouseDoubleClick(const MouseEvent& e);
   void mouseUp(const MouseEvent& e);
 
- private:
-  Instance* instance_;
-
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Listeners);
 };
 

@@ -27,7 +27,6 @@ class Threads : public HasInstance {
   Thread* start(InstanceFunction f, const String& name,
                 int waitTime = LOOP_TIME);
 
-  Instance* instance_;
   ThreadList threads_;
   CriticalSection lock_;
   ptr<ThreadData> data_;
