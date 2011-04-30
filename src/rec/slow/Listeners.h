@@ -30,7 +30,8 @@ class Listeners : public Listener<None>,
                   public Listener<const VirtualFile&>,
                   public Listener<const audio::stretch::Stretch&>,
                   public Listener<const gui::DropFiles&>,
-                  public Listener<const gui::audio::LoopPointList&> {
+                  public Listener<const gui::audio::LoopPointList&>,
+                  juce::MouseListener {
  public:
   explicit Listeners(Instance* i);
 
@@ -55,6 +56,9 @@ class Listeners : public Listener<None>,
     Member m = &Listeners::operator();
     thread::callAsync(this, m, t);
   }
+
+  void mouseDoubleClick(const MouseEvent& e);
+  void mouseUp(const MouseEvent& e);
 
  private:
   Instance* instance_;

@@ -8,6 +8,7 @@
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/slow/ThreadData.h"
 #include "rec/util/ClockUpdate.h"
@@ -29,7 +30,10 @@ using namespace rec::gui::audio;
 
 Listeners::Listeners(Instance* i) : instance_(i) {
   instance_->player_->addListener(this);
-  instance_->components_->waveform_.dropBroadcaster()->addListener(this);
+  Waveform* waveform = &instance_->components_->waveform_;
+  waveform->dropBroadcaster()->addListener(this);
+  waveform->addMouseListener(this, true);
+
   Root* root = &instance_->components_->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);
   root->addListener(persist::setter<VirtualFile>());
@@ -103,10 +107,21 @@ void Listeners::operator()(const LoopPointList& loops) {
     loop.add_selected(true);
     persist::set(loop, persist::get<VirtualFile>());
   } else {
-    instance_->components_->loops_.setData(persist::setter<LoopPointList>(persist::get<VirtualFile>()));
+    instance_->components_->loops_.setData(persist::setter<LoopPointList>(
+        persist::get<VirtualFile>()));  // TODO
     thread::callAsync(&instance_->components_->waveform_,
                       &Waveform::addAllCursors, loops);
   }
+}
+
+void Listeners::mouseDoubleClick(const MouseEvent& e) {
+  if (!instance_->target_->invokeDirectly(command::Command::OPEN))
+    LOG(ERROR) << "Unable to start open dialog";
+  else
+    DLOG(INFO) << "Opened a new file!";
+}
+
+void Listeners::mouseUp(const MouseEvent& e) {
 }
 
 void Listeners::operator()(const ClockTick&) {}

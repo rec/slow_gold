@@ -19,6 +19,9 @@ namespace slow {
 
 struct Instance;
 
+typedef gui::DropTarget<widget::waveform::Waveform,
+                        widget::waveform::WaveformProto> Waveform;
+
 struct Components {
   Components(Instance* i)
       : waveform_(widget::waveform::WaveformProto()),
@@ -35,8 +38,7 @@ struct Components {
   gui::audio::TransportController transportController_;
 
   widget::tree::Root directoryTree_;
-  gui::DropTarget<widget::waveform::Waveform,
-                  widget::waveform::WaveformProto> waveform_;
+  Waveform waveform_;
 
   PlaybackController playbackController_;
   MainPage mainPage_;

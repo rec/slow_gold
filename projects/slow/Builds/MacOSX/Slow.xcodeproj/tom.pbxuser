@@ -423,9 +423,9 @@
 	};
 	60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1005, 907}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1107, 650}}";
 			sepNavSelRange = "{889, 0}";
-			sepNavVisRange = "{0, 1188}";
+			sepNavVisRange = "{713, 475}";
 			sepNavWindowFrame = "{{179, 94}, {1064, 1020}}";
 		};
 	};
@@ -1326,6 +1326,14 @@
 			E23DBFD6136B98D300A52041 /* XCBuildMessageTextBookmark */ = E23DBFD6136B98D300A52041 /* XCBuildMessageTextBookmark */;
 			E23DBFDF136B991300A52041 /* PBXTextBookmark */ = E23DBFDF136B991300A52041 /* PBXTextBookmark */;
 			E23DBFE2136B991300A52041 /* PBXTextBookmark */ = E23DBFE2136B991300A52041 /* PBXTextBookmark */;
+			E23DBFEB136C671C00A52041 /* PBXTextBookmark */ = E23DBFEB136C671C00A52041 /* PBXTextBookmark */;
+			E23DBFEC136C671C00A52041 /* XCBuildMessageTextBookmark */ = E23DBFEC136C671C00A52041 /* XCBuildMessageTextBookmark */;
+			E23DBFED136C671C00A52041 /* PBXTextBookmark */ = E23DBFED136C671C00A52041 /* PBXTextBookmark */;
+			E23DBFF0136C673D00A52041 /* PBXTextBookmark */ = E23DBFF0136C673D00A52041 /* PBXTextBookmark */;
+			E23DBFF1136C69EF00A52041 /* PBXTextBookmark */ = E23DBFF1136C69EF00A52041 /* PBXTextBookmark */;
+			E23DBFF4136C6A3A00A52041 /* PBXTextBookmark */ = E23DBFF4136C6A3A00A52041 /* PBXTextBookmark */;
+			E23DBFF5136C6A5000A52041 /* PBXTextBookmark */ = E23DBFF5136C6A5000A52041 /* PBXTextBookmark */;
+			E23DBFF8136C6A7400A52041 /* PBXTextBookmark */ = E23DBFF8136C6A7400A52041 /* PBXTextBookmark */;
 			E23E467712EFAF870080BD76 = E23E467712EFAF870080BD76 /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
@@ -1950,7 +1958,7 @@
 		fRef = 08EC26B703176ED915C61158 /* TargetManager.h */;
 		name = "TargetManager.h: 46";
 		rLen = 0;
-		rLoc = 1452;
+		rLoc = 1459;
 		rType = 0;
 		vrLen = 1090;
 		vrLoc = 714;
@@ -2215,6 +2223,11 @@
 		name = Listeners.h;
 		path = ../../../../../rec/src/rec/slow/Listeners.h;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1265, 884}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1999}";
+		};
 	};
 	E23DB34A1365F2F500A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2252,7 +2265,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9857;
+		rLoc = 9860;
 		rType = 0;
 		vrLen = 1180;
 		vrLoc = 0;
@@ -2290,7 +2303,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9857;
+		rLoc = 9860;
 		rType = 0;
 		vrLen = 2113;
 		vrLoc = 0;
@@ -2307,7 +2320,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9857;
+		rLoc = 9860;
 		rType = 0;
 		vrLen = 1180;
 		vrLoc = 0;
@@ -2326,7 +2339,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9857;
+		rLoc = 9860;
 		rType = 0;
 		vrLen = 2113;
 		vrLoc = 0;
@@ -2336,7 +2349,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9857;
+		rLoc = 9860;
 		rType = 0;
 		vrLen = 1113;
 		vrLoc = 0;
@@ -2346,7 +2359,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9857;
+		rLoc = 9860;
 		rType = 0;
 		vrLen = 2058;
 		vrLoc = 0;
@@ -2364,7 +2377,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 1125;
 		vrLoc = 0;
@@ -2384,7 +2397,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 2059;
 		vrLoc = 0;
@@ -2430,7 +2443,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 1125;
 		vrLoc = 0;
@@ -2450,7 +2463,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 2059;
 		vrLoc = 0;
@@ -2460,7 +2473,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 1125;
 		vrLoc = 0;
@@ -2480,7 +2493,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 2059;
 		vrLoc = 0;
@@ -2490,7 +2503,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 1125;
 		vrLoc = 0;
@@ -2510,7 +2523,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 344";
 		rLen = 0;
-		rLoc = 9803;
+		rLoc = 9806;
 		rType = 0;
 		vrLen = 2059;
 		vrLoc = 0;
@@ -2705,7 +2718,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9782;
+		rLoc = 9785;
 		rType = 0;
 		vrLen = 1382;
 		vrLoc = 309;
@@ -2715,7 +2728,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 345";
 		rLen = 0;
-		rLoc = 9782;
+		rLoc = 9785;
 		rType = 0;
 		vrLen = 1382;
 		vrLoc = 309;
@@ -4060,7 +4073,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 101";
 		rLen = 80;
-		rLoc = 3189;
+		rLoc = 3192;
 		rType = 0;
 		vrLen = 1531;
 		vrLoc = 2580;
@@ -4266,7 +4279,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 357";
 		rLen = 0;
-		rLoc = 10125;
+		rLoc = 10128;
 		rType = 0;
 		vrLen = 1926;
 		vrLoc = 32;
@@ -4276,7 +4289,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 48";
 		rLen = 0;
-		rLoc = 1941;
+		rLoc = 1944;
 		rType = 0;
 		vrLen = 2002;
 		vrLoc = 403;
@@ -4286,7 +4299,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 357";
 		rLen = 0;
-		rLoc = 10125;
+		rLoc = 10128;
 		rType = 0;
 		vrLen = 1649;
 		vrLoc = 132;
@@ -4296,7 +4309,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 357";
 		rLen = 0;
-		rLoc = 10125;
+		rLoc = 10128;
 		rType = 0;
 		vrLen = 2059;
 		vrLoc = 476;
@@ -4306,7 +4319,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 357";
 		rLen = 0;
-		rLoc = 10125;
+		rLoc = 10128;
 		rType = 0;
 		vrLen = 1649;
 		vrLoc = 132;
@@ -4333,7 +4346,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 382";
 		rLen = 0;
-		rLoc = 10841;
+		rLoc = 10844;
 		rType = 0;
 		vrLen = 1956;
 		vrLoc = 340;
@@ -4359,7 +4372,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 385";
 		rLen = 0;
-		rLoc = 10841;
+		rLoc = 10844;
 		rType = 0;
 		vrLen = 1744;
 		vrLoc = 340;
@@ -4369,7 +4382,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 51";
 		rLen = 0;
-		rLoc = 1829;
+		rLoc = 1832;
 		rType = 0;
 		vrLen = 1992;
 		vrLoc = 276;
@@ -4379,7 +4392,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 384";
 		rLen = 0;
-		rLoc = 10841;
+		rLoc = 10844;
 		rType = 0;
 		vrLen = 1703;
 		vrLoc = 236;
@@ -4389,7 +4402,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 384";
 		rLen = 0;
-		rLoc = 10841;
+		rLoc = 10844;
 		rType = 0;
 		vrLen = 1980;
 		vrLoc = 170;
@@ -4427,7 +4440,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 64";
 		rLen = 58;
-		rLoc = 2184;
+		rLoc = 2187;
 		rType = 0;
 		vrLen = 1406;
 		vrLoc = 685;
@@ -4437,7 +4450,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 384";
 		rLen = 0;
-		rLoc = 10841;
+		rLoc = 10844;
 		rType = 0;
 		vrLen = 1700;
 		vrLoc = 236;
@@ -4776,7 +4789,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 99";
 		rLen = 0;
-		rLoc = 3284;
+		rLoc = 3287;
 		rType = 0;
 		vrLen = 1694;
 		vrLoc = 1654;
@@ -4841,7 +4854,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 388";
 		rLen = 0;
-		rLoc = 11126;
+		rLoc = 11129;
 		rType = 0;
 		vrLen = 1645;
 		vrLoc = 2138;
@@ -4851,7 +4864,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 389";
 		rLen = 0;
-		rLoc = 11151;
+		rLoc = 11154;
 		rType = 0;
 		vrLen = 1775;
 		vrLoc = 1671;
@@ -4861,7 +4874,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 389";
 		rLen = 0;
-		rLoc = 11151;
+		rLoc = 11154;
 		rType = 0;
 		vrLen = 1680;
 		vrLoc = 1389;
@@ -4879,7 +4892,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 389";
 		rLen = 0;
-		rLoc = 11151;
+		rLoc = 11154;
 		rType = 0;
 		vrLen = 1914;
 		vrLoc = 0;
@@ -4889,7 +4902,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 389";
 		rLen = 0;
-		rLoc = 11151;
+		rLoc = 11154;
 		rType = 0;
 		vrLen = 1851;
 		vrLoc = 1389;
@@ -4985,7 +4998,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 389";
 		rLen = 0;
-		rLoc = 11180;
+		rLoc = 11183;
 		rType = 0;
 		vrLen = 1943;
 		vrLoc = 2288;
@@ -7679,7 +7692,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 90";
 		rLen = 0;
-		rLoc = 3207;
+		rLoc = 3210;
 		rType = 0;
 		vrLen = 1993;
 		vrLoc = 2252;
@@ -7699,7 +7712,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 90";
 		rLen = 0;
-		rLoc = 3257;
+		rLoc = 3260;
 		rType = 0;
 		vrLen = 1993;
 		vrLoc = 2252;
@@ -7728,7 +7741,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 91";
 		rLen = 96;
-		rLoc = 3186;
+		rLoc = 3189;
 		rType = 0;
 		vrLen = 1998;
 		vrLoc = 2280;
@@ -7796,7 +7809,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 91";
 		rLen = 0;
-		rLoc = 3257;
+		rLoc = 3260;
 		rType = 0;
 		vrLen = 1999;
 		vrLoc = 2280;
@@ -7964,7 +7977,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 91";
 		rLen = 0;
-		rLoc = 3257;
+		rLoc = 3260;
 		rType = 0;
 		vrLen = 1063;
 		vrLoc = 2842;
@@ -8238,7 +8251,7 @@
 		fRef = FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */;
 		name = "Listeners.cpp: 91";
 		rLen = 0;
-		rLoc = 3257;
+		rLoc = 3260;
 		rType = 0;
 		vrLen = 1063;
 		vrLoc = 2842;
@@ -8360,6 +8373,85 @@
 		rLoc = 889;
 		rType = 0;
 		vrLen = 1188;
+		vrLoc = 0;
+	};
+	E23DBFEB136C671C00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 115";
+		rLen = 52;
+		rLoc = 3045;
+		rType = 0;
+		vrLen = 694;
+		vrLoc = 2620;
+	};
+	E23DBFEC136C671C00A52041 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'set(rec::data::Address, rec::gui::Rectangle)'";
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 34;
+		rType = 1;
+	};
+	E23DBFED136C671C00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */;
+		name = "PersistentWindow.cpp: 35";
+		rLen = 0;
+		rLoc = 889;
+		rType = 0;
+		vrLen = 475;
+		vrLoc = 713;
+	};
+	E23DBFF0136C673D00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 32";
+		rLen = 54;
+		rLoc = 894;
+		rType = 0;
+		vrLen = 1456;
+		vrLoc = 0;
+	};
+	E23DBFF1136C69EF00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 32";
+		rLen = 54;
+		rLoc = 894;
+		rType = 0;
+		vrLen = 1456;
+		vrLoc = 0;
+	};
+	E23DBFF4136C6A3A00A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 32";
+		rLen = 54;
+		rLoc = 894;
+		rType = 0;
+		vrLen = 1456;
+		vrLoc = 0;
+	};
+	E23DBFF5136C6A5000A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 32";
+		rLen = 54;
+		rLoc = 894;
+		rType = 0;
+		vrLen = 1456;
+		vrLoc = 0;
+	};
+	E23DBFF8136C6A7400A52041 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2555FF7A2228B1C8DF7362A9 /* Field.cpp */;
+		name = "Field.cpp: 32";
+		rLen = 54;
+		rLoc = 894;
+		rType = 0;
+		vrLen = 1456;
 		vrLoc = 0;
 	};
 	E23E45F412EF610D0080BD76 /* juce_Component.cpp */ = {
@@ -8832,9 +8924,9 @@
 	};
 	FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1107, 4797}}";
-			sepNavSelRange = "{3257, 0}";
-			sepNavVisRange = "{2842, 1063}";
+			sepNavIntBoundsRect = "{{0, 0}, {1265, 4914}}";
+			sepNavSelRange = "{4305, 49}";
+			sepNavVisRange = "{3455, 1780}";
 			sepNavWindowFrame = "{{103, 254}, {1324, 878}}";
 		};
 	};

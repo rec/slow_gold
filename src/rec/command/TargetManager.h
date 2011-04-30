@@ -23,6 +23,10 @@ class TargetManager : public ApplicationCommandTarget {
     model->setApplicationCommandManagerToWatch(&commandManager_);
   }
 
+  bool invokeDirectly(CommandID commandID, bool asynchronously = false) {
+    return commandManager_.invokeDirectly(commandID, asynchronously);
+  }
+
   // ApplicationCommandTarget virtual methods.
   virtual ApplicationCommandTarget* getNextCommandTarget() { return NULL; }
   //  return findFirstTargetParentComponent();  // TODO

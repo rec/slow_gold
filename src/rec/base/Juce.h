@@ -48,6 +48,7 @@ typedef juce::MenuBarModel MenuBarModel;
 typedef juce::MemoryBlock MemoryBlock;
 typedef juce::ModifierKeys ModifierKeys;
 typedef juce::MouseEvent MouseEvent;
+typedef juce::MouseListener MouseListener;
 
 typedef juce::OutputStream OutputStream;
 
