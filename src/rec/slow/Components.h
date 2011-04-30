@@ -23,10 +23,9 @@ typedef gui::DropTarget<widget::waveform::Waveform,
                         widget::waveform::WaveformProto> Waveform;
 
 struct Components {
-  Components(Instance* i)
-      : waveform_(widget::waveform::WaveformProto()),
-        playbackController_(this),
-        mainPage_(this) {
+  Components() : waveform_(widget::waveform::WaveformProto()),
+                 playbackController_(this),
+                 mainPage_(this) {
     playbackController_.setSetter(persist::setter<AppLayout>());
   }
 

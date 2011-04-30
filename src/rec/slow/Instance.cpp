@@ -14,7 +14,7 @@ namespace rec {
 namespace slow {
 
 Instance::Instance()
-  : components_(new Components(this)),
+  : components_(new Components()),
     device_(new audio::Device()),
     menus_(new Menus(this)),
     // data_(new PersistentData()),
