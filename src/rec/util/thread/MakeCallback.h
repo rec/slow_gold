@@ -4,6 +4,7 @@
 #include "rec/util/thread/Callback0.h"
 #include "rec/util/thread/Callback1.h"
 #include "rec/util/thread/Callback2.h"
+#include "rec/util/thread/Pointer.h"
 
 namespace rec {
 namespace util {
@@ -21,6 +22,11 @@ Callback* makeCallback(Type* o, Method m) {
   return new thread::callback::Callback0<Type, Method>(o, m);
 }
 
+template <typename Function, typename Value>
+Callback* functionCallback(Function f, Value v) {
+  return new thread::callback::CallbackFunc1<Function, Value>(f, v);
+}
+
 template <typename Type, typename Method, typename Value>
 Callback* makeCallback(Type* o, Method m, Value v) {
   return new thread::callback::Callback1<Type, Method, Value>(o, m, v);
@@ -33,7 +39,7 @@ Callback* makeCallback(Type* o, Method m, V1 v1, V2 v2) {
 
 
 // Callbacks for methods that return something that can cast to a bool.
-
+#if 0
 template <typename Type>
 Callback* makeCallbackBool(Type o) {
   return new thread::callback::PointerBool<Type>(o);
@@ -53,7 +59,7 @@ template <typename Type, typename Method, typename V1, typename V2>
 Callback* makeCallbackBool(Type* o, Method m, V1 v1, V2 v2) {
   return new thread::callback::CallbackBool2<Type, Method, V1, V2>(o, m, v1, v2);
 }
-
+#endif
 }  // namespace thread
 }  // namespace util
 }  // namespace rec

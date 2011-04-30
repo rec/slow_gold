@@ -21,7 +21,7 @@ void PersistentWindow::setLimitedBounds(const Rect& b) {
   setBounds(bounds);
   setResizable(true, false); // resizability is a property of ResizableWindow
   setResizeLimits(1, 1, 8192, 8192);
-  boundsSet_ = true;
+  okToSaveLayout_ = true;
 }
 
 void PersistentWindow::resized() {
@@ -30,9 +30,8 @@ void PersistentWindow::resized() {
 }
 
 void PersistentWindow::writeData() {
-  // TODO!
-  if (boundsSet_)
-    persist::set(Address("bounds"), gui::copy(getBounds()));
+  if (okToSaveLayout_)
+    data::set(data_, "bounds", gui::copy(getBounds()));
 }
 
 void PersistentWindow::moved() {
@@ -41,7 +40,6 @@ void PersistentWindow::moved() {
 }
 
 void PersistentWindow::closeButtonPressed() {
-  // TODO.
   JUCEApplication::getInstance()->systemRequestedQuit();
 }
 

@@ -33,7 +33,6 @@ void set(Data* d, const Address::Part& a, const Value& v);
 void set(Data* d, const Address::Part& a,
          const Address::Part& b, const Value& v);
 
-
 void append(Data*, const Value& v);
 void append(Data*, const Message& m);
 void append(Data*, const Address&, const Value& value);

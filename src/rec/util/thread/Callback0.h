@@ -22,18 +22,6 @@ class Callback0 : public Callback {
   Method method_;
 };
 
-template <typename Type, typename Method>
-class CallbackBool0 : public Callback {
- public:
-  CallbackBool0(Type* o, Method m) : object_(o), method_(m) {}
-
-  virtual bool operator()() { return (object_->*method_)(); }
-
- private:
-  Type* object_;
-  Method method_;
-};
-
 }  // namespace callback
 }  // namespace thread
 }  // namespace util

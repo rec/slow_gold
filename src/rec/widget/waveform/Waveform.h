@@ -46,9 +46,6 @@ class Waveform : public Component,
     setAudioThumbnail(t);
   }
 
-  void mouseDoubleClick(const juce::MouseEvent& e) { doClick(e, 2); }
-  void mouseUp(const juce::MouseEvent& e) { doClick(e, 1); }
-
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();
 

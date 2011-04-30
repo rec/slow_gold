@@ -182,18 +182,6 @@ TimeRange Waveform::getTimeRange() const {
   return r;
 }
 
-void Waveform::doClick(const juce::MouseEvent& e, int clickCount) {
-  TimeAndMouseEvent event;
-  event.mouseEvent_ = &e;
-  event.clickCount_ = clickCount;
-  {
-//    ScopedLock l(lock_);
-    event.time_ = xToTime(e.x);
-  }
-
-  Broadcaster<const TimeAndMouseEvent&>::broadcast(event);
-}
-
 void Waveform::cursorDragged(int index, int x) {
   CursorTime ct;
   ct.cursor_ = index;

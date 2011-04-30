@@ -2,6 +2,7 @@
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Listeners.h"
 #include "rec/util/cd/Eject.h"
 
 namespace rec {
@@ -10,6 +11,7 @@ namespace slow {
 Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_) {
   typedef rec::command::Command Command;
   using thread::makeCallback;
+  using thread::functionCallback;
 
   add(Command::COPY, makeCallback(&copyToClipboard),
       "Copy", "Edit",
@@ -19,11 +21,10 @@ Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_) {
       "Cut", "Edit",
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
-#ifdef TODO
-  add(Command::OPEN, makeCallback(&gui::dialog::openVirtualFile, i->listeners_),
+  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile, i->listeners_.get()),
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
-#endif
+
   add(Command::EJECT, makeCallback(&cd::ejectAll),
       "Eject All", "File",
       "Eject all CDs and DVDs");

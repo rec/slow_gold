@@ -36,6 +36,18 @@ class CallbackBool1 : public Callback {
   Value value_;
 };
 
+template <typename Functor, typename Value>
+class CallbackFunc1 : public Callback {
+ public:
+  CallbackFunc1(Functor f, Value v) : functor_(f), value_(v) {}
+
+  virtual bool operator()() { functor_(value_); return true; }
+
+ private:
+  Functor functor_;
+  Value value_;
+};
+
 }  // namespace callback
 }  // namespace thread
 }  // namespace util

@@ -14,13 +14,14 @@ class PersistentWindow : public DocumentWindow {
                    int requiredButtons,
                    bool addToDesktop = true)
       : DocumentWindow(name, bg, requiredButtons, addToDesktop),
-        boundsSet_(false) {
+        data_(NULL), okToSaveLayout_(false) {
   }
   typedef juce::Rectangle<int> Rect;
 
   template <typename Proto>
   void computeBounds() {
     persist::Data<Proto>* data = persist::setter<Proto>();
+    data_ = data;
     setLimitedBounds(data->fileReadSuccess() ? copy(data->get().bounds()) :
                      Rect(300, 100, 800, 600));  // TODO!
   }
@@ -35,10 +36,9 @@ class PersistentWindow : public DocumentWindow {
 
  private:
   void writeData();
-  void setSetter();
 
   data::Data* data_;
-  bool boundsSet_;
+  bool okToSaveLayout_;
 
   DISALLOW_COPY_AND_ASSIGN(PersistentWindow);
 };
