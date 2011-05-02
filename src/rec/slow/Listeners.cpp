@@ -45,16 +45,14 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
   components()->transportController_.addListener(this);
 }
 
-static void toggle(Instance* i) { i->player_->toggle(); }
-
 void Listeners::operator()(command::Command::Type t) {
-  DLOG(INFO) << "Command " << command::Command::Type_Name(t);
-  if (t == command::Command::ADD_LOOP_POINT) {
-
-  } else if (t == command::Command::TOGGLE_START_STOP) {
-    threads()->start(&toggle, "start/stop");
-  }
+  if (!target()->invokeDirectly(t))
+    LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
 }
+
+void Listeners::operator()(const Stretch& x) {
+}
+
 
 void Listeners::operator()(RealTime) {}
 
@@ -84,9 +82,6 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
         data::append(persist::setter<file::VirtualFileList>(), Address("file"), files.file(i));
     }
   }
-}
-
-void Listeners::operator()(const Stretch& x) {
 }
 
 void Listeners::operator()(const LoopPointList& loops) {
@@ -198,7 +193,7 @@ void Listeners::operator()(const juce::AudioThumbnail&) {
   components()->waveform_.repaint();
 }
 
-void Listeners::operator()(const TimeSelection& sel) {
+void Listeners::operator()(const audio::TimeSelection& sel) {
   if (persist::Data<Stretch>* data = stretchyPlayer_.getStretchy()) {
     TimeRange range(sel);
     if (range.end_ < 0.0001)

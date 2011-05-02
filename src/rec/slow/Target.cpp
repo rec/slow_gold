@@ -4,6 +4,7 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Model.h"
+#include "rec/audio/source/Player.h"
 #include "rec/util/cd/Eject.h"
 
 namespace rec {
@@ -26,7 +27,7 @@ void Target::addCommands() {
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
   using thread::functionCallback;
-  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile, 
+  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile,
       model()->fileLocker()),
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
@@ -38,6 +39,11 @@ void Target::addCommands() {
   add(Command::PASTE, makeCallback(&pasteFromClipboard),
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.", 'v');
+
+  add(Command::TOGGLE_START_STOP, makeCallback(player(), 
+      &audio::source::Player::toggle),
+      "Toggle Start/Stop", "Transport",
+      "Start or pause", ' ');
 
   using gui::audio::Loops;
   Loops* loops = &components()->loops_;

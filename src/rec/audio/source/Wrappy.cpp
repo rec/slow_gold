@@ -1,4 +1,6 @@
 #include "rec/audio/source/Wrappy.h"
+#include "rec/audio/source/Empty.h"
+#include "rec/util/Math.h"
 
 namespace rec {
 namespace audio {
@@ -6,6 +8,10 @@ namespace source {
 
 Wrappy::Wrappy(PositionableAudioSource* s) : position_(0), prepared_(false) {
   setSource(s);
+}
+
+SampleTime Wrappy::mod(SampleTime x) const {
+  return util::mod(x, getTotalLength());
 }
 
 SampleTime Wrappy::getNextReadPosition() const {

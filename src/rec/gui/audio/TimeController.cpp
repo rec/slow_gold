@@ -49,8 +49,8 @@ void TimeController::operator()(const Range<RealTime>& r) {
   songDial_(r);
 }
 
-void TimeController::operator()(RealTime time) {
-  RealTime scaledTime = time / timeScale_;
+void TimeController::operator()(SampleTime time) {
+  RealTime scaledTime = (44100.0 * time) / timeScale_;
   songTime_(scaledTime);
   songDial_(scaledTime);
 }

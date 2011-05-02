@@ -1,6 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_EMPTY__
 #define __REC_AUDIO_SOURCE_EMPTY__
 
+#include "rec/audio/Audio.h"
 #include "rec/audio/util/Clear.h"
 
 namespace rec {

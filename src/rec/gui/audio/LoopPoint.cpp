@@ -2,10 +2,11 @@
 #include "rec/gui/audio/LoopPoint.pb.h"
 
 namespace rec {
-namespace gui {
 namespace audio {
 
-SampleSelection getTimeSelection(const LoopPointList& list, double scale) {
+using namespace rec::gui::audio;
+
+SampleSelection getTimeSelection(const gui::audio::LoopPointList& list, double scale) {
   SampleSelection selection;
   for (int i = 0, j, size = list.loop_point_size(); i < size; ) {
     for (; i < size && !list.selected(i); ++i);
@@ -21,5 +22,4 @@ SampleSelection getTimeSelection(const LoopPointList& list, double scale) {
 
 
 }  // namespace audio
-}  // namespace gui
 }  // namespace rec

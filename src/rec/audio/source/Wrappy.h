@@ -3,8 +3,7 @@
 
 #include <vector>
 
-#include "rec/audio/source/Empty.h"
-#include "rec/util/Math.h"
+#include "rec/audio/Audio.h"
 
 namespace rec {
 namespace audio {
@@ -21,7 +20,7 @@ class Wrappy : public PositionableAudioSource {
   virtual void prepareToPlay(int s, double r);
   virtual void releaseResources() { source()->releaseResources(); }
 
-  int mod(SampleTime x) const { return rec::util::mod(x, getTotalLength()); }
+  SampleTime mod(SampleTime x) const;
 
   virtual SampleTime getNextReadPosition() const;
   virtual void setNextReadPosition(SampleTime p);
