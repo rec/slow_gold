@@ -14,10 +14,10 @@ Model::Model(Instance* i) : HasInstance(i),
                             stretchLocker_(&lock_),
                             loopLocker_(&lock_),
                             fetchThread_(NULL) {
-  persist::setter<VirtualFile>()->addListener(this);
+  persist::setter<VirtualFile>()->addListener(&fileLocker_);
 }
 
-void Model::setVirtualFile(const VirtualFile& f) {
+void Model::operator()(const VirtualFile& f) {
   if (fileBuffer_.next()) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
     return;

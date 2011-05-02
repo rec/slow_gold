@@ -45,10 +45,6 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
   components()->transportController_.addListener(this);
 }
 
-void Listeners::operator()(const VirtualFile& f) {
-  model()->setVirtualFile(f);
-}
-
 static void toggle(Instance* i) { i->player_->toggle(); }
 
 void Listeners::operator()(command::Command::Type t) {

@@ -3,6 +3,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
+#include "rec/slow/Model.h"
 #include "rec/util/cd/Eject.h"
 
 namespace rec {
@@ -25,7 +26,8 @@ void Target::addCommands() {
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
   using thread::functionCallback;
-  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile, listeners()),
+  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile, 
+      model()->fileLocker()),
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
 

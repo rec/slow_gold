@@ -30,7 +30,6 @@ class Instance;
 class Listeners : public Listener<None>,
                   public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
-                  public Listener<const VirtualFile&>,
                   public Listener<const audio::stretch::Stretch&>,
                   public Listener<const gui::DropFiles&>,
                   public Listener<const gui::audio::LoopPointList&>,
@@ -43,7 +42,6 @@ class Listeners : public Listener<None>,
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
   virtual void operator()(const audio::stretch::Stretch&);
-  virtual void operator()(const file::VirtualFile&);
   virtual void operator()(const gui::DropFiles&);
   virtual void operator()(const gui::audio::LoopPointList&);
 

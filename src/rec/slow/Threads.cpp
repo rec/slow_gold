@@ -41,7 +41,7 @@ void pitch(Instance* i) {}
 
 void updateParameters(Instance* i) {
   Model* model = i->model_.get();
-  model->fileLocker_.broadcastIfChanged(i->listeners_.get());
+  model->fileLocker_.broadcastIfChanged(model); // TODO
   model->stretchLocker_.broadcastIfChanged(i->listeners_.get());
   model->loopLocker_.broadcastIfChanged(i->listeners_.get());
 }
