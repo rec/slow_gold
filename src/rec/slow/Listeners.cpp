@@ -48,9 +48,9 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
 }
 
 void Listeners::operator()(const VirtualFile& f) {
-  ptr<FileBuffer> buffer(new FileBuffer(f));
+  ptr<FileBuffer> buf(new FileBuffer(f));
   ThreadData* threadData = threads()->data();
-  if (!buffer->buffer_) {
+  if (!buf->buffer_) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
     return;
   }
@@ -61,9 +61,9 @@ void Listeners::operator()(const VirtualFile& f) {
     return;
   }
 
-  buffer->thumbnail_->addListener(&components()->waveform_);
-  player()->setSource(new BufferSource(*buffer->buffer_->buffer()));
-  switcher->setNext(buffer.transfer());
+  buf->thumbnail_->addListener(&components()->waveform_);
+  player()->setSource(new BufferSource(*buf->buffer_->buffer()));
+  switcher->setNext(buf.transfer());
   threads()->data()->fetchThread_->notify();
 
   persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);

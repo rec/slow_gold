@@ -12,8 +12,6 @@ class Selection : public Wrappy {
  public:
   Selection(PositionableAudioSource* source) : Wrappy(source) {}
 
-  virtual SampleTime getTotalLength() const;
-
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
   virtual bool isLooping() const { return true; }

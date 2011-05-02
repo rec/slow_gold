@@ -5,6 +5,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
+#if 0
 SampleTime Selection::getTotalLength() const {
   SampleTime time = 0;
   SampleSelection::const_iterator i;
@@ -12,6 +13,7 @@ SampleTime Selection::getTotalLength() const {
     time += i->size();
   return time;
 }
+#endif
 
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
   if (selection_.empty()) {
