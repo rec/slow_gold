@@ -28,11 +28,13 @@ class Threads : public HasInstance {
   // waitTime 0 means run once.
   // waitTime < 0 means run and wait forever (till a notify).
   Thread* start(InstanceFunction f, const String& name, int waitTime = 0);
+  Thread* fetchThread() { return fetchThread_; }
 
  private:
   typedef std::vector<Thread*> ThreadList;
 
   ThreadList threads_;
+  Thread* fetchThread_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);

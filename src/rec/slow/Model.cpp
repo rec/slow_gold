@@ -1,6 +1,8 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/source/BufferSource.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/Listeners.h"
+#include "rec/slow/Threads.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 
 namespace rec {
@@ -12,8 +14,7 @@ using namespace rec::audio::source;
 Model::Model(Instance* i) : HasInstance(i),
                             fileLocker_(&lock_),
                             stretchLocker_(&lock_),
-                            loopLocker_(&lock_),
-                            fetchThread_(NULL) {
+                            loopLocker_(&lock_) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
 }
 
@@ -32,7 +33,7 @@ void Model::operator()(const VirtualFile& f) {
   buf->thumbnail_->addListener(&components()->waveform_);
   player()->setSource(new BufferSource(*buf->buffer_->buffer()));
   fileBuffer_.setNext(buf.transfer());
-  fetchThread_->notify();
+  threads()->fetchThread()->notify();
 
   persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);
   components()->loops_.setData(setter);
@@ -44,6 +45,12 @@ void Model::operator()(const VirtualFile& f) {
   loopLocker_.set(persist::get<LoopPointList>(f));
 
   components()->songData_.setFile(f);
+}
+
+void Model::checkChanged() {
+  fileLocker_.broadcastIfChanged(this); // TODO
+  stretchLocker_.broadcastIfChanged(listeners());
+  loopLocker_.broadcastIfChanged(listeners());
 }
 
 }  // namespace slow

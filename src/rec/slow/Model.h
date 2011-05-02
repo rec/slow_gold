@@ -25,16 +25,19 @@ class Model : public Listener<const VirtualFile&>,
   explicit Model(Instance* i);
   virtual ~Model() {}
 
+  Listener<const VirtualFile&>* fileLocker() { return &fileLocker_; }
+
+  virtual void operator()(const VirtualFile& vf);
+  void checkChanged();
+  Switcher<audio::util::FileBuffer>* fileBuffer() { return &fileBuffer_; }
+
+ private:
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<LoopPointList> loopLocker_;
 
   Switcher<audio::util::FileBuffer> fileBuffer_;
-  Thread* fetchThread_;
   CriticalSection lock_;
-  Listener<const VirtualFile&>* fileLocker() { return &fileLocker_; }
-
-  virtual void operator()(const VirtualFile& vf);
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
 };
