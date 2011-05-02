@@ -50,8 +50,7 @@ class Listeners : public Listener<None>,
   void operator()(const widget::waveform::CursorTime&);
   void operator()(const widget::waveform::TimeAndMouseEvent&);
   void operator()(const widget::waveform::ZoomProto&);
-  void operator()(SampleTime) {}
-  void operator()(RealTime);
+  void operator()(SampleTime);
 
   template <typename Type>
   void callAsync(Type t) {

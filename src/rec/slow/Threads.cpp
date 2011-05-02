@@ -20,10 +20,6 @@ using namespace rec::util::thread;
 static const int PARAMETER_WAIT = 100;
 static const int THREAD_STOP_PERIOD = 5000;
 
-void clock(Instance* i) {
-  (*i->listeners_)(i->player_->getNextReadPosition());
-}
-
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
 
 void fetch(Instance* i) {
@@ -46,7 +42,6 @@ void updateParameters(Instance* i) {
 Threads::Threads(Instance* i) : HasInstance(i), fetchThread_(NULL) {}
 
 void Threads::startAll() {
-  start(&clock, "Clock", 100);
   start(&browser, "Browser", 1000);
 	fetchThread_ = start(&fetch, "Fetch", 10);
   start(&updateParameters, "Parameter", 100);
@@ -78,11 +73,13 @@ void Threads::clean() {
 }
 
 Thread* Threads::start(InstanceFunction f, const String& name, int wait) {
+  return start(makePointer(f, instance_), name, wait);
+}
+
+Thread* Threads::start(Callback* cb, const String& name, int wait) {
   clean();
 
-  ptr<Callback> cb(makePointer(f, instance_));
-  ptr<Thread> t(thread::makeLoop(wait, name, cb.transfer()));
-
+  ptr<Thread> t(thread::makeLoop(wait, name, cb));
   threads_.push_back(t.get());
   t->startThread();
   return t.transfer();

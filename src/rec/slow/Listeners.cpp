@@ -13,6 +13,7 @@
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
+#include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/CursorTime.h"
 #include "rec/widget/waveform/TimeAndMouseEvent.h"
@@ -55,8 +56,6 @@ void Listeners::operator()(command::Command::Type t) {
 void Listeners::operator()(const Stretch& x) {
 }
 
-
-void Listeners::operator()(RealTime) {}
 
 void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
@@ -106,11 +105,20 @@ void Listeners::mouseDoubleClick(const MouseEvent& e) {
     DLOG(INFO) << "Opened a new file!";
 }
 
+void Listeners::operator()(SampleTime time) {
+  LOG(INFO) << "New time in a new thread!";
+  Waveform* waveform = &components()->waveform_;
+  waveform->timeCursor()->setListeningToClock(true);
+}
+
 void Listeners::mouseDrag(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
   waveform->timeCursor()->setListeningToClock(false);
+
   RealTime time = waveform->xToTime(e.x);
   waveform->timeCursor()->setTime(time);
+
+  threads()->start(thread::functionCallback(this, time), "SetTime", 0);
 }
 
 void Listeners::mouseUp(const MouseEvent& e) {

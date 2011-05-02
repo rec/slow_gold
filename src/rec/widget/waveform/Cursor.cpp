@@ -17,7 +17,7 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, double t, int index)
       desc_(d),
       index_(index),
       dragging_(false),
-      listeningToClock_(false) {
+      listeningToClock_(true) {
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addChildComponent(this);
 

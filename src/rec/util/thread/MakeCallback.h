@@ -27,6 +27,11 @@ Callback* functionCallback(Function f, Value v) {
   return new thread::callback::CallbackFunc1<Function, Value>(f, v);
 }
 
+template <typename Function, typename V1, typename V2>
+Callback* functionCallback(Function f, V1 v1, V2 v2) {
+  return new thread::callback::CallbackFunc1<Function, Value>(f, v1, v2);
+}
+
 template <typename Type, typename Method, typename Value>
 Callback* makeCallback(Type* o, Method m, Value v) {
   return new thread::callback::Callback1<Type, Method, Value>(o, m, v);

@@ -24,6 +24,22 @@ class Callback2 : public Callback {
   V2 v2_;
 };
 
+template <typename Functor, typename V1, typename V2>
+class CallbackFunc2 : public Callback {
+ public:
+  CallbackFunc2(Functor f, V1 v1, V2 v2) : functor_(f), v1_(v1), v2_(v2) {
+  }
+
+  virtual bool operator()() { (*functor_)(v1_, v2_); return true; }
+
+ private:
+  Functor functor_;
+  V1 v1_;
+  V2 v2_;
+};
+
+#if 0
+
 template <typename Type, typename Method, typename V1, typename V2>
 class CallbackBool2 : public Callback {
  public:
@@ -37,6 +53,8 @@ class CallbackBool2 : public Callback {
   V1 v1_;
   V2 v2_;
 };
+
+#endif
 
 }  // namespace callback
 }  // namespace thread
