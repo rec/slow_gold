@@ -40,10 +40,10 @@ void persist(Instance* i) {}
 void pitch(Instance* i) {}
 
 void updateParameters(Instance* i) {
-  Model* threadData = i->threads_->data();
-  threadData->fileLocker_.broadcastIfChanged(i->listeners_.get());
-  threadData->stretchLocker_.broadcastIfChanged(i->listeners_.get());
-  threadData->loopLocker_.broadcastIfChanged(i->listeners_.get());
+  Model* model = i->threads_->data();
+  model->fileLocker_.broadcastIfChanged(i->listeners_.get());
+  model->stretchLocker_.broadcastIfChanged(i->listeners_.get());
+  model->loopLocker_.broadcastIfChanged(i->listeners_.get());
 }
 
 Threads::Threads(Instance* i) : HasInstance(i), data_(new Model()) {}

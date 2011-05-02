@@ -25,6 +25,7 @@ Instance::Instance()
 }
 
 Instance::~Instance() {
+  player_->setState(audio::transport::STOPPED);
   threads_->stop();
 }
 

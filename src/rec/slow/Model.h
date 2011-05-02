@@ -20,9 +20,9 @@ struct Model : public Listener<const VirtualFile&> {
   typedef gui::audio::LoopPointList LoopPointList;
 
   Model() : fileLocker_(&lock_),
-                 stretchLocker_(&lock_),
-                 loopLocker_(&lock_),
-                 fetchThread_(NULL) {
+            stretchLocker_(&lock_),
+            loopLocker_(&lock_),
+            fetchThread_(NULL) {
     persist::setter<VirtualFile>()->addListener(this);
   }
 

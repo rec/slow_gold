@@ -2,16 +2,16 @@
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/data/persist/Persist.h"
 #include "rec/data/Data.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/DropFiles.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
-#include "rec/slow/Model.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
@@ -49,13 +49,13 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
 
 void Listeners::operator()(const VirtualFile& f) {
   ptr<FileBuffer> buf(new FileBuffer(f));
-  Model* threadData = threads()->data();
+  Model* model = threads()->data();
   if (!buf->buffer_) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
     return;
   }
 
-  Switcher<FileBuffer>* switcher = &threadData->fileBuffer_;
+  Switcher<FileBuffer>* switcher = &model->fileBuffer_;
   if (switcher->next()) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
     return;
@@ -69,11 +69,11 @@ void Listeners::operator()(const VirtualFile& f) {
   persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);
   components()->loops_.setData(setter);
 
-  threadData->stretchLocker_.listenTo(persist::setter<Stretch>(f));
-  threadData->loopLocker_.listenTo(setter);
+  model->stretchLocker_.listenTo(persist::setter<Stretch>(f));
+  model->loopLocker_.listenTo(setter);
 
-  threadData->stretchLocker_.set(persist::get<Stretch>(f));
-  threadData->loopLocker_.set(persist::get<LoopPointList>(f));
+  model->stretchLocker_.set(persist::get<Stretch>(f));
+  model->loopLocker_.set(persist::get<LoopPointList>(f));
 
   components()->songData_.setFile(f);
 }
