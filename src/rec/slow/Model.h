@@ -1,5 +1,5 @@
-#ifndef __REC_SLOW_THREADDATA__
-#define __REC_SLOW_THREADDATA__
+#ifndef __REC_SLOW_MODEL__
+#define __REC_SLOW_MODEL__
 
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/Locker.h"
@@ -15,13 +15,13 @@ namespace slow {
 
 class Instance;
 
-struct ThreadData : public Listener<const VirtualFile&>,
-                    public Listener<const audio::stretch::Stretch&>,
-                    public Listener<const rec::gui::audio::LoopPointList&> {
+struct Model : public Listener<const VirtualFile&> {
   typedef audio::stretch::Stretch Stretch;
   typedef gui::audio::LoopPointList LoopPointList;
 
-  ThreadData() : fileLocker_(&lock_), stretchLocker_(&lock_), loopLocker_(&lock_),
+  Model() : fileLocker_(&lock_),
+                 stretchLocker_(&lock_),
+                 loopLocker_(&lock_),
                  fetchThread_(NULL) {
     persist::setter<VirtualFile>()->addListener(this);
   }
@@ -35,13 +35,11 @@ struct ThreadData : public Listener<const VirtualFile&>,
   CriticalSection lock_;
 
   virtual void operator()(const VirtualFile& vf) { fileLocker_.set(vf); }
-  virtual void operator()(const Stretch& sl) { stretchLocker_.set(sl); }
-  virtual void operator()(const LoopPointList& lpl) { loopLocker_.set(lpl); }
 
-  DISALLOW_COPY_AND_ASSIGN(ThreadData);
+  DISALLOW_COPY_AND_ASSIGN(Model);
 };
 
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_SLOW_THREADDATA__
+#endif  // __REC_SLOW_MODEL__

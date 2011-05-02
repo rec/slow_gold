@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="fXx66FGRl" name="Slow">
+  <MAINGROUP id="WdmmobJOq" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -158,6 +158,8 @@
                 name="Testy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/ThreadedSource.h"
                 id="8frgf0Wp4" name="ThreadedSource.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Timey.h" id="IAWMXHnFD"
+                name="Timey.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Wrappy.cpp" id="18wxfvUB3"
                 name="Wrappy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Wrappy.h" id="gnJ1mnrfw"
@@ -693,6 +695,8 @@
               name="Menus.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Menus.h" id="koFtD2Rkv"
               name="Menus.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/Model.h" id="GLxdJMNzX"
+              name="Model.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/PersistentData.cpp" id="7hkbxM5fD"
               name="PersistentData.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/PersistentData.h" id="WFZOGciTx"
@@ -705,8 +709,6 @@
               name="Target.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Target.h" id="Aj4eo3Y1O"
               name="Target.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/ThreadData.h" id="TxZSo8GAB"
-              name="ThreadData.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Threads.cpp" id="ypoui9HF1"
               name="Threads.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Threads.h" id="0GpWTknsl"
@@ -1042,10 +1044,6 @@
                 id="iUH4tvjwQ" name="AppLayout.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/slow/AppLayout.pb.h"
                 id="AWQTbz7ns" name="AppLayout.pb.h" resource="0"/>
-          <FILE compile="1" file="../../genfiles/proto/rec/slow/Parameters.pb.cc"
-                id="2vRutMmnh" name="Parameters.pb.cc" resource="0"/>
-          <FILE compile="0" file="../../genfiles/proto/rec/slow/Parameters.pb.h"
-                id="QV5xU9lrM" name="Parameters.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="lW8Z1QAu7" name="util">
           <GROUP id="AJBkSj4Oe" name="file">
@@ -1107,7 +1105,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="yThUlhncW" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="RDv6KF9dR" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

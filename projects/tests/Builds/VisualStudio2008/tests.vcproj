@@ -209,6 +209,7 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Testy_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\ThreadedSource.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Timey.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
           </Filter>
@@ -519,13 +520,13 @@
           <File RelativePath="..\..\..\..\src\rec\slow\MainPage.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Menus.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Menus.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Model.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\PersistentData.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\PersistentData.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Target.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Target.h"/>
-          <File RelativePath="..\..\..\..\src\rec\slow\ThreadData.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Threads.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Threads.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Window.cpp"/>
@@ -731,8 +732,6 @@
           <Filter Name="slow">
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\Parameters.pb.cc"/>
-            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\Parameters.pb.h"/>
           </Filter>
           <Filter Name="util">
             <Filter Name="file">

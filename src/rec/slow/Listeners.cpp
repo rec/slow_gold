@@ -11,7 +11,7 @@
 #include "rec/slow/Instance.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
-#include "rec/slow/ThreadData.h"
+#include "rec/slow/Model.h"
 #include "rec/util/ClockUpdate.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
@@ -49,7 +49,7 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
 
 void Listeners::operator()(const VirtualFile& f) {
   ptr<FileBuffer> buf(new FileBuffer(f));
-  ThreadData* threadData = threads()->data();
+  Model* threadData = threads()->data();
   if (!buf->buffer_) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
     return;

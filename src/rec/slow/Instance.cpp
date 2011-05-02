@@ -6,7 +6,6 @@
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/PersistentData.h"
-#include "rec/slow/Parameters.pb.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 
