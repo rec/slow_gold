@@ -23,6 +23,7 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   void setSource(Source* source);
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
+
   SampleTime getNextReadPosition() const {
     return transportSource_.getNextReadPosition();
   }

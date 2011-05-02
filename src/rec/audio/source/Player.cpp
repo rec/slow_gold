@@ -1,4 +1,5 @@
 #include "rec/audio/source/Player.h"
+#include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/Device.h"
@@ -13,7 +14,24 @@ using namespace rec::audio::transport;
 static const double MINIMUM_BROADCAST_TIMECHANGE = 0.001;
 static const float SAMPLE_RATE = 44100.0f;
 
+class TimeMarker : public Empty {
+ public:
+  TimeMarker() : offset_(0) {}
+  int64 getTotalLength() const { return 0x1000000; }
+  virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
+    Empty::getNextAudioBlock(i);
+    offset_ += i.numSamples;
+    DLOG(INFO) << offset_;
+  }
+
+ private:
+  int64 offset_;
+};
+
+
 Player::Player(Device* d) : device_(d) {
+  player_.setSource(&transportSource_);
+  device_->manager_.addAudioCallback(&player_);
   setSource(new Empty);
 }
 

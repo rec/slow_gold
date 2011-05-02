@@ -1,4 +1,5 @@
 #include "rec/slow/Listeners.h"
+#include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
@@ -61,6 +62,7 @@ void Listeners::operator()(const VirtualFile& f) {
   }
 
   buffer->thumbnail_->addListener(&components()->waveform_);
+  player()->setSource(new BufferSource(*buffer->buffer_->buffer()));
   switcher->setNext(buffer.transfer());
   threads()->data()->fetchThread_->notify();
 
@@ -167,7 +169,7 @@ void Listeners::operator()(const TimeAndMouseEvent&) {}
 void Listeners::operator()(const ZoomProto&) {}
 
 void Listeners::operator()(audio::transport::State state) {
-  thread::callAsync(&components()->transportController_, 
+  thread::callAsync(&components()->transportController_,
                     &TransportController::setTransportState, state);
   player()->setState(state);
 }
@@ -229,7 +231,7 @@ void Listeners::operator()(const juce::AudioThumbnail&) {
   components()->waveform_.repaint();
 }
 
-void Listeners::operator()(const SelectionRange& sel) {
+void Listeners::operator()(const TimeSelection& sel) {
   if (persist::Data<Stretch>* data = stretchyPlayer_.getStretchy()) {
     TimeRange range(sel);
     if (range.end_ < 0.0001)

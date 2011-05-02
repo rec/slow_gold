@@ -57,7 +57,7 @@ void Waveform::paint(Graphics& g) {
   // ScopedLock l(lock_);
 
   if (thumbnail_) {
-    SelectionRange::iterator i = selection_.begin();
+    TimeSelection::iterator i = selection_.begin();
     TimeRange r = getTimeRange();
     const juce::Rectangle<int>& bounds = getLocalBounds();
     int channels = thumbnail_->getNumChannels();
@@ -138,7 +138,7 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
       i = j;
     }
   }
-  Broadcaster<const SelectionRange&>::broadcast(selection_);
+  Broadcaster<const TimeSelection&>::broadcast(selection_);
   resized();
 }
 

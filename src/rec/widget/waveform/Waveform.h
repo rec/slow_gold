@@ -27,7 +27,7 @@ class Waveform : public Component,
                  public Listener<juce::AudioThumbnail*>,
                  public Broadcaster<const CursorTime&>,
                  public Broadcaster<const TimeAndMouseEvent&>,
-                 public Broadcaster<const SelectionRange&> {
+                 public Broadcaster<const TimeSelection&> {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
@@ -63,7 +63,7 @@ class Waveform : public Component,
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   Cursor* timeCursor_;
-  SelectionRange selection_;
+  TimeSelection selection_;
 
   ZoomProto zoom_;
 

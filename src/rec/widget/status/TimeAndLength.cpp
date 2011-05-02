@@ -38,7 +38,7 @@ void TimeAndLength::setTimeScale(double s) {
   timeScale_ = s;
 }
 
-void TimeAndLength::operator()(const SelectionRange& s) {
+void TimeAndLength::operator()(const TimeSelection& s) {
   TimeRange range(s);
 
   begin_.setTime(range.begin_ + offset_);

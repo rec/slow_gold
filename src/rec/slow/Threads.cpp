@@ -21,8 +21,7 @@ static const int PARAMETER_WAIT = 100;
 static const int THREAD_STOP_PERIOD = 5000;
 
 void clock(Instance* i) {
-  // TODO
-  // (*i->listeners_)(i->player_->getNextReadPosition());
+  (*i->listeners_)(i->player_->getNextReadPosition());
 }
 
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
@@ -47,8 +46,7 @@ void updateParameters(Instance* i) {
   threadData->loopLocker_.broadcastIfChanged(i->listeners_.get());
 }
 
-Threads::Threads(Instance* i) : HasInstance(i), data_(new ThreadData()) {
-}
+Threads::Threads(Instance* i) : HasInstance(i), data_(new ThreadData()) {}
 
 void Threads::startAll() {
   start(&clock, "Clock", 100);

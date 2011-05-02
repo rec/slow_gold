@@ -12,7 +12,7 @@ namespace status {
 
 class TimeAndLength : public gui::Layout,
                       public Listener<const ClockUpdate&>,
-                      public Listener<const SelectionRange&> {
+                      public Listener<const TimeSelection&> {
  public:
   TimeAndLength(const String& label,
                 const time::Text& desc = time::Text::default_instance());
@@ -20,7 +20,7 @@ class TimeAndLength : public gui::Layout,
   void setTimeScale(double s);
 
   virtual void operator()(const ClockUpdate&);
-  virtual void operator()(const SelectionRange&);
+  virtual void operator()(const TimeSelection&);
 
   void setOffset(double o) { offset_ = o; }
 

@@ -191,6 +191,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Runny_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Seggy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Selection.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Selection.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
@@ -428,6 +430,9 @@
         </Filter>
         <Filter Name="gui">
           <Filter Name="audio">
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\SetupPage.h"/>
@@ -505,6 +510,7 @@
         </Filter>
         <Filter Name="slow">
           <File RelativePath="..\..\..\..\src\rec\slow\Components.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\HasInstance.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Instance.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Instance.h"/>
           <File RelativePath="..\..\..\..\src\rec\slow\Listeners.cpp"/>
@@ -617,7 +623,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.h"/>
-            <File RelativePath="..\..\..\..\src\rec\util\thread\TimeSliceClient.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Pointer.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.h"/>
           </Filter>

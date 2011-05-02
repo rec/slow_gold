@@ -34,12 +34,17 @@ struct Range {
   Type toY(Type x, Type ySize) const { return ySize * (x - begin_) / size(); }
   Type toX(Type y, Type ySize) const { return begin_ + (y * size()) / ySize; }
 
-  bool operator==(const Range& x) const {
-    return begin_ == x.begin_ && end_ == x.end_;
-  }
-
   bool operator<(const Range& x) const {
     return begin_ < x.begin_ || (begin_ == x.begin_ && end_ < x.end_);
+  }
+
+  bool operator<=(const Range& x) const { return !(x < *this); }
+  bool operator>(const Range& x) const { return x < *this; }
+  bool operator>=(const Range& x) const { return x <= *this; }
+  bool operator!=(const Range& x) const { return !(x == *this); }
+
+  bool operator==(const Range& x) const {
+    return begin_ == x.begin_ && end_ == x.end_;
   }
 
   Range<Type> inverse(Type capacity) const {
@@ -88,16 +93,14 @@ struct Range {
     }
   }
 
-  bool operator<=(const Range& x) const { return !(x < *this); }
-  bool operator>(const Range& x) const { return x < *this; }
-  bool operator>=(const Range& x) const { return x <= *this; }
-  bool operator!=(const Range& x) const { return !(x == *this); }
 };
+
+typedef Range<RealTime>::Set TimeSelection;
+typedef Range<SampleTime>::Set SampleSelection;
 
 // delete these next ones...
 typedef Range<SampleTime> SampleRange;
 typedef Range<RealTime> TimeRange;
-typedef Range<RealTime>::Set SelectionRange;
 
 }  // namespace util
 }  // namespace rec

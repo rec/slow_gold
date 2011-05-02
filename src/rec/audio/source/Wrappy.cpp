@@ -8,7 +8,7 @@ Wrappy::Wrappy(PositionableAudioSource* s) : position_(0), prepared_(false) {
   setSource(s);
 }
 
-int64 Wrappy::getNextReadPosition() const {
+SampleTime Wrappy::getNextReadPosition() const {
   ScopedLock l(lock_);
   return position_;
 }
@@ -34,7 +34,7 @@ void Wrappy::prepareToPlay(int s, double r) {
   prepared_ = true;
 }
 
-void Wrappy::setNextReadPosition(int64 p) {
+void Wrappy::setNextReadPosition(SampleTime p) {
   {
     ScopedLock l(lock_);
     position_ = p;
