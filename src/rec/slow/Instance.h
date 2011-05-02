@@ -11,6 +11,7 @@ namespace slow {
 
 class Components;
 class Menus;
+class Model;
 class Target;
 class Threads;
 class Listeners;
@@ -25,6 +26,7 @@ struct Instance {
   ptr<Components> components_;
   ptr<audio::Device> device_;
   ptr<Menus> menus_;  // TODO:  move into "Target"
+  ptr<Model> model_;
   ptr<audio::source::Player> player_;
   ptr<Target> target_;  // TODO: rename to "Commands".
   ptr<Listeners> listeners_;

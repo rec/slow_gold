@@ -1,28 +1,30 @@
 #ifndef __REC_SLOW_MODEL__
 #define __REC_SLOW_MODEL__
 
-#include "rec/util/listener/Listener.h"
-#include "rec/util/thread/Locker.h"
-#include "rec/util/Switcher.h"
-#include "rec/util/file/VirtualFile.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/util/FileBuffer.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/slow/HasInstance.h"
+#include "rec/util/Switcher.h"
+#include "rec/util/file/VirtualFile.h"
+#include "rec/util/listener/Listener.h"
+#include "rec/util/thread/Locker.h"
 
 namespace rec {
 namespace slow {
 
 class Instance;
 
-struct Model : public Listener<const VirtualFile&> {
+struct Model : public Listener<const VirtualFile&>, public HasInstance {
   typedef audio::stretch::Stretch Stretch;
   typedef gui::audio::LoopPointList LoopPointList;
 
-  Model() : fileLocker_(&lock_),
-            stretchLocker_(&lock_),
-            loopLocker_(&lock_),
-            fetchThread_(NULL) {
+  explicit Model(Instance* i) : HasInstance(i),
+                                fileLocker_(&lock_),
+                                stretchLocker_(&lock_),
+                                loopLocker_(&lock_),
+                                fetchThread_(NULL) {
     persist::setter<VirtualFile>()->addListener(this);
   }
 

@@ -5,7 +5,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Menus.h"
-#include "rec/slow/PersistentData.h"
+#include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 
@@ -16,6 +16,7 @@ Instance::Instance()
   : components_(new Components),
     device_(new audio::Device),
     menus_(new Menus(this)),
+    model_(new Model(this)),
     player_(new audio::source::Player(device_.get())),
     target_(new Target(this)),
     listeners_(new Listeners(this)),

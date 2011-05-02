@@ -46,7 +46,7 @@ void updateParameters(Instance* i) {
   model->loopLocker_.broadcastIfChanged(i->listeners_.get());
 }
 
-Threads::Threads(Instance* i) : HasInstance(i), data_(new Model()) {}
+Threads::Threads(Instance* i) : HasInstance(i), data_(new Model(i)) {}
 
 void Threads::startAll() {
   start(&clock, "Clock", 100);
