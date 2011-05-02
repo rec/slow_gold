@@ -41,6 +41,7 @@
 		317B11B3BA4927C15DCB23EC /* FullScreen.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E886CEFA88CA84316F7B7BCB /* FullScreen.svg.cpp */; };
 		34BC3F74E6EE2A5B6F71E20E /* StretchyController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1D414163BB858DA469CE6F0 /* StretchyController.cpp */; };
 		363D79B5ADAA58C67379104E /* Widget.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 23A34552B919AAB64559DBDA /* Widget.pb.cc */; };
+		378367ED856F4DD6E44800C9 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2301BC0B61B96190C49537F0 /* Model.cpp */; };
 		397316D1569FE9AB2FD2DAF9 /* BufferSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93244D9DAD841CF00B3E5AE0 /* BufferSource.cpp */; };
 		3A99510C7063E152D6EBF52F /* VirtualFile.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = FE546CAE7BB75B8A3CC7F052 /* VirtualFile.pb.cc */; };
 		3B29A2A06C3F52661DDE989D /* TreeViewDropAll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1B4BFFDC9B8D47CBBDA8F3D /* TreeViewDropAll.cpp */; };
@@ -282,6 +283,7 @@
 		2229918D7B3E59F708F34D9B /* AppDirectory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDirectory.h; path = ../../../../src/rec/data/persist/AppDirectory.h; sourceTree = SOURCE_ROOT; };
 		22934661D0184DD2B68F4124 /* Stereo.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stereo.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.h; sourceTree = SOURCE_ROOT; };
 		22E6A127E8EA05C450A50D59 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../../../../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
+		2301BC0B61B96190C49537F0 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = ../../../../src/rec/slow/Model.cpp; sourceTree = SOURCE_ROOT; };
 		237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = SOURCE_ROOT; };
 		23A34552B919AAB64559DBDA /* Widget.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.pb.cc; path = ../../../../genfiles/proto/rec/widget/Widget.pb.cc; sourceTree = SOURCE_ROOT; };
 		2444E35A22AA2F9F051F3D24 /* Icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Icon.cpp; path = ../../../../src/rec/gui/icon/Icon.cpp; sourceTree = SOURCE_ROOT; };
@@ -760,20 +762,6 @@
 				C492F238E0B137F11CB59D99 /* Widget.pb.h */,
 			);
 			name = widget;
-			sourceTree = "<group>";
-		};
-		11BE12E10F276E940C110F87 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		13B7AF66DC71626F21BA5581 /* cd */ = {
@@ -1292,6 +1280,7 @@
 				D9313457B3248E7646270A4F /* MainPage.h */,
 				DF6D7FF3BEDFF97629DE1B4D /* Menus.cpp */,
 				4B9A499893D67AF00178E79E /* Menus.h */,
+				2301BC0B61B96190C49537F0 /* Model.cpp */,
 				BAD66B0BC466522CD4C5F133 /* Model.h */,
 				AE8F534EF0DEE3A4B3FB4FFA /* PersistentData.cpp */,
 				DE102493A3E6284F2DAED3F4 /* PersistentData.h */,
@@ -1370,6 +1359,20 @@
 				E2C740403C2F59F23E594A24 /* LoopPoint.pb.h */,
 			);
 			name = audio;
+			sourceTree = "<group>";
+		};
+		A9BFFCFC42A9A3930210924B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
@@ -1769,7 +1772,7 @@
 				French,
 				German,
 			);
-			mainGroup = 11BE12E10F276E940C110F87 /* Source */;
+			mainGroup = A9BFFCFC42A9A3930210924B /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1910,6 +1913,7 @@
 				C697E5D0AEF066978AFEB743 /* Listeners.cpp in Sources */,
 				DED2531C6E62596A11087193 /* MainPage.cpp in Sources */,
 				529737F862523B27EBFCD27F /* Menus.cpp in Sources */,
+				378367ED856F4DD6E44800C9 /* Model.cpp in Sources */,
 				F74722BEDA6363B3C5CC8470 /* PersistentData.cpp in Sources */,
 				761C899FD9316742F31BCD5F /* PlaybackController.cpp in Sources */,
 				CCC67F60CD76F6077EB11D72 /* Target.cpp in Sources */,

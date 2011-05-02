@@ -16,17 +16,14 @@ namespace slow {
 
 class Instance;
 
-struct Model : public Listener<const VirtualFile&>, public HasInstance {
+class Model : public Listener<const VirtualFile&>, public HasInstance {
+ public:
   typedef audio::stretch::Stretch Stretch;
   typedef gui::audio::LoopPointList LoopPointList;
 
-  explicit Model(Instance* i) : HasInstance(i),
-                                fileLocker_(&lock_),
-                                stretchLocker_(&lock_),
-                                loopLocker_(&lock_),
-                                fetchThread_(NULL) {
-    persist::setter<VirtualFile>()->addListener(this);
-  }
+  explicit Model(Instance* i);
+
+  void setVirtualFile(const VirtualFile&);
 
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<Stretch> stretchLocker_;
@@ -38,7 +35,7 @@ struct Model : public Listener<const VirtualFile&>, public HasInstance {
 
   virtual void operator()(const VirtualFile& vf) { fileLocker_.set(vf); }
 
-  DISALLOW_COPY_AND_ASSIGN(Model);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
 };
 
 }  // namespace slow

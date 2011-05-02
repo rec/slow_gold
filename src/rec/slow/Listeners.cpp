@@ -1,6 +1,4 @@
 #include "rec/slow/Listeners.h"
-#include "rec/audio/source/BufferSource.h"
-#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/Data.h"
 #include "rec/data/persist/Persist.h"
@@ -48,34 +46,7 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
 }
 
 void Listeners::operator()(const VirtualFile& f) {
-  ptr<FileBuffer> buf(new FileBuffer(f));
-  Model* mod = model();
-  if (!buf->buffer_) {
-    LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
-    return;
-  }
-
-  Switcher<FileBuffer>* switcher = &mod->fileBuffer_;
-  if (switcher->next()) {
-    LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
-    return;
-  }
-
-  buf->thumbnail_->addListener(&components()->waveform_);
-  player()->setSource(new BufferSource(*buf->buffer_->buffer()));
-  switcher->setNext(buf.transfer());
-  mod->fetchThread_->notify();
-
-  persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);
-  components()->loops_.setData(setter);
-
-  mod->stretchLocker_.listenTo(persist::setter<Stretch>(f));
-  mod->loopLocker_.listenTo(setter);
-
-  mod->stretchLocker_.set(persist::get<Stretch>(f));
-  mod->loopLocker_.set(persist::get<LoopPointList>(f));
-
-  components()->songData_.setFile(f);
+  model()->setVirtualFile(f);
 }
 
 static void toggle(Instance* i) { i->player_->toggle(); }
