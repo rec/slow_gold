@@ -24,7 +24,7 @@ class FileWriter : public Thread {
       ::ptr<OutputStream> out(file_.createOutputStream());
       if (out) {
         (*out) << memory_;
-        DLOG(INFO) << "Saved to file " << file;
+        VLOG(1) << "Saved to file " << file;
       } else {
         LOG(ERROR) << "Can't create file " << file;
       }

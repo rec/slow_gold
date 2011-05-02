@@ -51,12 +51,11 @@ void UntypedData::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
     fileReadSuccess_ = persist::copy(*file_, message_);
-#if 0
     if (fileReadSuccess_)
-      DLOG(INFO) << "Opening data " << file_->getFullPathName();
+      VLOG(1) << "Opening data " << file_->getFullPathName();
     else
-      LOG(ERROR) << "New data " << file_->getFullPathName();
-#endif
+      VLOG(1) << "New data " << file_->getFullPathName();
+      
     alreadyReadFromFile_ = true;
   }
 }

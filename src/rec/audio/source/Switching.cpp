@@ -22,7 +22,7 @@ void Switching::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   ScopedLock l(lock_);
 
   if (nextRunny_) {
-    DLOG(INFO) << "Switching!";
+    VLOG(1) << "Switching to next player";
     nextRunny_.swap(runny_);
     deleter.swap(nextRunny_);
   }

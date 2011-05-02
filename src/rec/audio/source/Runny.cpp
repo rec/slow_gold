@@ -15,7 +15,6 @@ Runny::Runny(PositionableAudioSource* source, const RunnyProto& desc)
       filled_(desc.buffer_size()),
       desc_(desc) {
   setPriority(desc.thread().priority());
-  DLOG(INFO) << "Runny: " << &buffer_;
 }
 
 Runny::~Runny() {}
