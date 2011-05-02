@@ -3,6 +3,7 @@
 
 #include <set>
 
+#include "rec/audio/Audio.h"
 #include "rec/gui/Geometry.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/widget/Painter.h"
@@ -13,7 +14,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component {
+class Cursor : public Component, public Listener<SampleTime> {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, double time, int index);
   virtual ~Cursor() {}
@@ -26,6 +27,8 @@ class Cursor : public Component {
 
   const CursorProto& desc() const { return desc_; }
   void setCursorBounds(double time);
+
+  virtual void operator()(SampleTime t) { setTime(rec::audio::samplesToTime(t)); }
 
   virtual void mouseDown(const MouseEvent& e);
   virtual void mouseDrag(const MouseEvent& e);

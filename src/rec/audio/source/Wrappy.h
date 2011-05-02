@@ -11,7 +11,7 @@ namespace source {
 
 class Wrappy : public PositionableAudioSource {
  public:
-  explicit Wrappy(PositionableAudioSource* s);
+  explicit Wrappy(PositionableAudioSource* s = NULL);
   virtual SampleTime getTotalLength() const { return source()->getTotalLength(); }
 
   virtual bool isLooping() const { return source()->isLooping(); }
@@ -28,6 +28,7 @@ class Wrappy : public PositionableAudioSource {
 
   virtual PositionableAudioSource* source() const;
   virtual void setSource(PositionableAudioSource* s);
+  void swap(ptr<PositionableAudioSource>* other) { source_.swap(*other); }
 
  protected:
   virtual PositionableAudioSource* getSource() const { return source_.get(); }

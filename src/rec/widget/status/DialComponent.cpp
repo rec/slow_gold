@@ -47,6 +47,7 @@ void DialComponent::operator()(const Range<RealTime>& r) {
 }
 
 void DialComponent::recomputeAngle() {
+  return;  // TODO
   double length = range_.size();
   #if 0
   // TODO: take care of this.

@@ -1,12 +1,13 @@
 #include "rec/gui/audio/TimeController.h"
-#include "rec/data/persist/Persist.h"
+#include "rec/audio/Audio.h"
 #include "rec/audio/stretch/Stretch.h"
+#include "rec/data/persist/Persist.h"
+#include "rec/gui/Color.h"
 #include "rec/gui/audio/StretchyController.h"
 #include "rec/gui/icon/MediaPlaybackStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
-#include "rec/gui/Color.h"
-#include "rec/util/thread/CallAsync.h"
 #include "rec/music/Metadata.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
@@ -50,7 +51,7 @@ void TimeController::operator()(const Range<RealTime>& r) {
 }
 
 void TimeController::operator()(SampleTime time) {
-  RealTime scaledTime = (44100.0 * time) / timeScale_;
+  RealTime scaledTime = rec::audio::samplesToTime(time) / timeScale_;
   songTime_(scaledTime);
   songDial_(scaledTime);
 }

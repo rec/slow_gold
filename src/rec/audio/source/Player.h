@@ -2,6 +2,7 @@
 #define __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
 
 #include "rec/audio/Audio.h"
+#include "rec/audio/source/Timey.h"
 #include "rec/audio/Device.h"
 #include "rec/util/listener/Listener.h"
 
@@ -31,7 +32,7 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   transport::State state() const;
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Device* device() { return device_; }
-  Broadcaster<SampleTime>* timeBroadcaster() { return timeBroadcaster_; }
+  Broadcaster<SampleTime>* timeBroadcaster() { return &timer_; }
 
  private:
   CriticalSection lock_;
@@ -40,7 +41,7 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   AudioTransportSource transportSource_;
   AudioSourcePlayer player_;
   Device* device_;
-  Broadcaster<SampleTime>* timeBroadcaster_;
+  Timey timer_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

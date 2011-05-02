@@ -10,7 +10,7 @@ namespace source {
 
 class Timey : public Wrappy, public Broadcaster<SampleTime> {
  public:
-  explicit Timey(PositionableAudioSource* s) : Wrappy(s) {}
+  explicit Timey(PositionableAudioSource* s = NULL) : Wrappy(s) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);
@@ -23,7 +23,7 @@ class Timey : public Wrappy, public Broadcaster<SampleTime> {
   }
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Timey);
+  DISALLOW_COPY_AND_ASSIGN(Timey);
 };
 
 }  // namespace source

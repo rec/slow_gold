@@ -43,6 +43,9 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
   (*root)(persist::get<VirtualFileList>());
 
   components()->transportController_.addListener(this);
+  DLOG(INFO) << player()->timeBroadcaster();
+  player()->timeBroadcaster()->addListener(&components()->timeController_);
+  player()->timeBroadcaster()->addListener(waveform->timeCursor());
 }
 
 void Listeners::operator()(command::Command::Type t) {

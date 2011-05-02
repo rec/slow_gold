@@ -15,6 +15,7 @@ using namespace rec::audio::transport;
 Player::Player(Device* d) : device_(d) {
   player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
+  transportSource_.setSource(&timer_);
   setSource(new Empty);
 }
 
@@ -32,15 +33,17 @@ void Player::setState(State s) {
 }
 
 void Player::setSource(Source* source) {
-  Timey* timey = source ? new Timey(source) : NULL;
-  timeBroadcaster_ = timey;
+  ptr<Source> s(source);
+  timer_.swap(&s);
 
   // TODO: Do we need to prepare here?
-  ptr<Source> s(timey);
-  source_.swap(s);
-  transportSource_.setSource(source_.get());  // TODO
+  if (source)
+    timer_.setNextReadPosition(source->getNextReadPosition());
+
   if (s)
     s->releaseResources();
+
+  s.transfer();
 }
 
 State Player::state() const {
