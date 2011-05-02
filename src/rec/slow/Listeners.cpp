@@ -108,7 +108,9 @@ void Listeners::mouseDoubleClick(const MouseEvent& e) {
 
 void Listeners::mouseDrag(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
-  waveform->timeCursor()->setTime(waveform->xToTime(e.x));
+  waveform->timeCursor()->setListeningToClock(false);
+  RealTime time = waveform->xToTime(e.x);
+  waveform->timeCursor()->setTime(time);
 }
 
 void Listeners::mouseUp(const MouseEvent& e) {

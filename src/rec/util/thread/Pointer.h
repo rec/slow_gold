@@ -35,8 +35,6 @@ class OwnedPointer : public Pointer<Operator*> {
 }  // namespace callback
 }  // namespace thread
 
-typedef thread::callback::Callback Callback;
-
 template <typename Operator>
 Callback* makePointer(Operator op) {
   return new thread::callback::Pointer<Operator>(op);

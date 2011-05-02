@@ -1,4 +1,5 @@
 #include "rec/widget/waveform/Cursor.h"
+#include "rec/audio/Audio.h"
 #include "rec/gui/Geometry.h"
 #include "rec/gui/Color.h"
 #include "rec/util/thread/CallAsync.h"
@@ -15,7 +16,8 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, double t, int index)
       waveform_(waveform),
       desc_(d),
       index_(index),
-      dragging_(false) {
+      dragging_(false),
+      listeningToClock_(false) {
   desc_.mutable_widget()->set_transparent(true);
   waveform_->addChildComponent(this);
 
@@ -23,8 +25,12 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, double t, int index)
   setRepaintsOnMouseActivity(true);
 }
 
-void Cursor::setTime(double time) {
+void Cursor::setTime(RealTime time) {
   thread::runOnMessageThread(this, &Cursor::setCursorBounds, time);
+}
+
+void Cursor::setTime(SampleTime time) {
+  setTime(rec::audio::samplesToTime(time));
 }
 
 double Cursor::getTime() const {
@@ -32,8 +38,20 @@ double Cursor::getTime() const {
   return time_;
 }
 
+void Cursor::setListeningToClock(bool listening) {
+  ScopedLock l(lock_);
+  listeningToClock_ = listening;
+}
+
+void Cursor::operator()(SampleTime t) {
+  ScopedLock l(lock_);
+  if (listeningToClock_)
+    setTime(t);
+}
+
 void Cursor::setCursorBounds(double time) {
   ScopedLock l(lock_);
+
   time_ = time;
   juce::Rectangle<int> bounds = waveform_->getLocalBounds();
   int componentWidth = desc().component_width();

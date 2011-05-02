@@ -19,7 +19,8 @@ class Cursor : public Component, public Listener<SampleTime> {
   Cursor(const CursorProto& d, Waveform* waveform, double time, int index);
   virtual ~Cursor() {}
 
-  void setTime(double time);
+  void setTime(RealTime time);
+  void setTime(SampleTime time);
   void paint(Graphics& g);
   double getTime() const;
 
@@ -28,11 +29,12 @@ class Cursor : public Component, public Listener<SampleTime> {
   const CursorProto& desc() const { return desc_; }
   void setCursorBounds(double time);
 
-  virtual void operator()(SampleTime t) { setTime(rec::audio::samplesToTime(t)); }
+  virtual void operator()(SampleTime t);
 
   virtual void mouseDown(const MouseEvent& e);
   virtual void mouseDrag(const MouseEvent& e);
   virtual void mouseUp(const MouseEvent& e);
+  void setListeningToClock(bool listening);
 
  private:
   int getDragX(const MouseEvent& e) const;
@@ -46,6 +48,7 @@ class Cursor : public Component, public Listener<SampleTime> {
   bool dragging_;
   int dragX_;
   int mouseDragX_;
+  bool listeningToClock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Cursor);
 };

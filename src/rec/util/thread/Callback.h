@@ -17,9 +17,10 @@ class Callback {
 
 }  // namespace callback
 }  // namespace thread
+
+typedef thread::callback::Callback Callback;
+
 }  // namespace util
 }  // namespace rec
-
-#include "Pointer.h"
 
 #endif  // __REC_THREAD_CALLBACK__
