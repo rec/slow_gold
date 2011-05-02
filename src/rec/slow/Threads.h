@@ -21,7 +21,6 @@ class Threads : public HasInstance {
   void startAll();
   void stop();
   CriticalSection* lock() { return &lock_; }
-  Model* data() { return data_.get(); }
 
   void clean();
 
@@ -35,7 +34,6 @@ class Threads : public HasInstance {
 
   ThreadList threads_;
   CriticalSection lock_;
-  ptr<Model> data_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);
 };

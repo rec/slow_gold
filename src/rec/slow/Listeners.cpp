@@ -49,13 +49,13 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
 
 void Listeners::operator()(const VirtualFile& f) {
   ptr<FileBuffer> buf(new FileBuffer(f));
-  Model* model = threads()->data();
+  Model* mod = model();
   if (!buf->buffer_) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
     return;
   }
 
-  Switcher<FileBuffer>* switcher = &model->fileBuffer_;
+  Switcher<FileBuffer>* switcher = &mod->fileBuffer_;
   if (switcher->next()) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
     return;
@@ -64,16 +64,16 @@ void Listeners::operator()(const VirtualFile& f) {
   buf->thumbnail_->addListener(&components()->waveform_);
   player()->setSource(new BufferSource(*buf->buffer_->buffer()));
   switcher->setNext(buf.transfer());
-  threads()->data()->fetchThread_->notify();
+  mod->fetchThread_->notify();
 
   persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);
   components()->loops_.setData(setter);
 
-  model->stretchLocker_.listenTo(persist::setter<Stretch>(f));
-  model->loopLocker_.listenTo(setter);
+  mod->stretchLocker_.listenTo(persist::setter<Stretch>(f));
+  mod->loopLocker_.listenTo(setter);
 
-  model->stretchLocker_.set(persist::get<Stretch>(f));
-  model->loopLocker_.set(persist::get<LoopPointList>(f));
+  mod->stretchLocker_.set(persist::get<Stretch>(f));
+  mod->loopLocker_.set(persist::get<LoopPointList>(f));
 
   components()->songData_.setFile(f);
 }

@@ -12,6 +12,7 @@ class HasInstance {
 
   Components* components() { return instance_->components_.get(); }
   Listeners* listeners() { return instance_->listeners_.get(); }
+  Model* model() { return instance_->model_.get(); }
   Target* target() { return instance_->target_.get(); }
   Threads* threads() { return instance_->threads_.get(); }
   audio::source::Player* player() { return instance_->player_.get(); }

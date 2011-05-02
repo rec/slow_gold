@@ -27,7 +27,7 @@ void clock(Instance* i) {
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
 
 void fetch(Instance* i) {
-  Switcher<FileBuffer>* switcher = &i->threads_->data()->fileBuffer_;
+  Switcher<FileBuffer>* switcher = &i->model_->fileBuffer_;
   switcher->switchIfNext();
   FileBuffer* buffer = switcher->current();
   if (!buffer || !buffer->buffer_ || buffer->buffer_->isFull())
@@ -40,23 +40,23 @@ void persist(Instance* i) {}
 void pitch(Instance* i) {}
 
 void updateParameters(Instance* i) {
-  Model* model = i->threads_->data();
+  Model* model = i->model_.get();
   model->fileLocker_.broadcastIfChanged(i->listeners_.get());
   model->stretchLocker_.broadcastIfChanged(i->listeners_.get());
   model->loopLocker_.broadcastIfChanged(i->listeners_.get());
 }
 
-Threads::Threads(Instance* i) : HasInstance(i), data_(new Model(i)) {}
+Threads::Threads(Instance* i) : HasInstance(i) {}
 
 void Threads::startAll() {
   start(&clock, "Clock", 100);
   start(&browser, "Browser", 1000);
-  data_->fetchThread_ = start(&fetch, "Fetch", 10);
+	model()->fetchThread_ = start(&fetch, "Fetch", 10);
   start(&updateParameters, "Parameter", 100);
   start(&persist, "Persist", 100);
   start(&pitch, "Pitch", 100);
 
-  data_->fileLocker_.set(persist::get<VirtualFile>());
+  model()->fileLocker_.set(persist::get<VirtualFile>());
 }
 
 Threads::~Threads() {
