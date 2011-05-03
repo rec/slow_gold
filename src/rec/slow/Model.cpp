@@ -56,6 +56,7 @@ void Model::operator()(const VirtualFile& f) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
     return;
   }
+  player()->setState(audio::transport::STOPPED);
 
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 

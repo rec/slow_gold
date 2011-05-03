@@ -12,9 +12,9 @@ namespace gui {
 namespace audio {
 
 static Defaulter<TableColumnList> dflt(
-"column { type: TIME name: \"Time\" address { field { name: \"time\" } } } "
-"column { type: STRING name: \"Name\" address { field { name: \"name\" } } } "
-"column { type: STRING name: \"Notes\" address { field { name: \"notes\" } } } "
+"column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
+"column { type: STRING name: \"Name\" address { part { name: \"name\" } } } "
+"column { type: STRING name: \"Notes\" address { part { name: \"notes\" } } } "
 );
 
 const double Loops::CLOSE = 0.5;

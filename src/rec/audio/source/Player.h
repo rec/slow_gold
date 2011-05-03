@@ -25,6 +25,7 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
+  SampleTime getNextReadPosition() { return timer_->getNextReadPosition(); }
   void setNextReadPosition(SampleTime t) { timer_->setNextReadPosition(t); }
   transport::State state() const;
   virtual void changeListenerCallback(ChangeBroadcaster*);

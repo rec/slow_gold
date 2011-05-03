@@ -1,4 +1,5 @@
 #include "rec/slow/Target.h"
+#include "rec/audio/Audio.h"
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
@@ -9,6 +10,18 @@
 
 namespace rec {
 namespace slow {
+
+namespace {
+
+void addLoopPoint(Instance* i) {
+  i->components_->loops_.addLoopPoint(
+      audio::samplesToTime(i->player_->getNextReadPosition()));
+  // playbackC  // TODOontroller_.enableLoopPointButton(false);  // TODO
+}
+
+
+}  // namespace
+
 
 Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_),
                               HasInstance(i) {
@@ -32,6 +45,11 @@ void Target::addCommands() {
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
 
+  add(Command::CLOSE, functionCallback(persist::setter<VirtualFile>(),
+                                       VirtualFile()),
+      "Close", "File",
+      "Close the current file", 'w');
+
   add(Command::EJECT, makeCallback(&cd::ejectAll),
       "Eject All", "File",
       "Eject all CDs and DVDs");
@@ -40,7 +58,12 @@ void Target::addCommands() {
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.", 'v');
 
-  add(Command::TOGGLE_START_STOP, makeCallback(player(), 
+
+  add(Command::ADD_LOOP_POINT, functionCallback(&addLoopPoint, instance_),
+      "Add Loop Point", "Transport",
+      "Add a loop point at the current time.");
+
+  add(Command::TOGGLE_START_STOP, makeCallback(player(),
       &audio::source::Player::toggle),
       "Toggle Start/Stop", "Transport",
       "Start or pause", ' ');
@@ -55,11 +78,6 @@ void Target::addCommands() {
   add(Command::CLEAR_SELECTION, makeCallback(loops, &Loops::clearSelection),
       "Clear Selection", "Loop",
       "Unselect all the loop points");
-
-  add(Command::CLOSE, functionCallback(persist::setter<VirtualFile>(),
-                                       VirtualFile()),
-      "Close", "File",
-      "Close the current file", 'w');
 
 #ifdef TODO
   add(Command::AUDIO_PREFERENCES, makeCallback(cc,

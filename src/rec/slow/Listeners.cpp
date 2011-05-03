@@ -56,7 +56,6 @@ void Listeners::operator()(command::Command::Type t) {
 void Listeners::operator()(const Stretch& x) {
 }
 
-
 void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
 }
@@ -151,59 +150,10 @@ void Listeners::operator()(audio::transport::State state) {
 
 #ifdef TODO
 
-
-#if 0
-void Listeners::operator()(const file::VirtualFile& f) {
-  persist::setter<VirtualFile>()->set(f);
-  // ptr<PositionableAudioSource> source(empty(f) ? NULL : virtualFileSource(f));
-  // components()->songData_.setFile(f);
-  if (source)
-
-  }
-
-  if (empty(file)) {
-    waveform_.setAudioThumbnail(NULL);
-    instance_.clearData();
-
-  } else {
-    persist::Data<LoopPointList>* listData = persist::setter<LoopPointList>(file);
-    loops_.setData(listData);
-    waveform_.setData(listData);
-
-    if (listData->get().loop_point_size())
-      listData->requestUpdate();
-    else
-      listData->append(Address("loop_point"), Value(LoopPoint()));
-
-    if (gui::CachedThumbnail* thumb = stretchyPlayer_.cachedThumbnail()) {
-      waveform_.setAudioThumbnail(thumb->thumbnail());
-      thumb->addListener(&waveform_);
-
-    } else {
-      LOG(ERROR) << "Can't get waveform for file " << file.ShortDebugString();
-      return;
-    }
-    // gui::addRecentFile(file);
-
-    // Adjust the length of clients - neaten this up!
-    length_ = stretchyPlayer_.length() / 44100.0;
-    (*(playbackController_.timeController()))(ClockUpdate(-1, length_));
-
-    zoomProto()->requestUpdate();
-  }
-
-  (*this)(0.0);
-#endif
-}
-
 void Listeners::operator()(SampleTime time) {
   components().timeController_.setTime(time);
   components().waveform_.timeCursor()->setTime(time);
   components().transportController_.setTime(time);
-}
-
-void Listeners::operator()(const juce::AudioThumbnail&) {
-  components()->waveform_.repaint();
 }
 
 void Listeners::operator()(const audio::TimeSelection& sel) {
@@ -220,19 +170,6 @@ void Listeners::operator()(const audio::TimeSelection& sel) {
     DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
     data->set("loop", loop);
   }
-}
-
-void Listeners::operator()(const widget::waveform::CursorTime& x) {
-}
-
-void Listeners::operator()(const widget::waveform::TimeAndMouseEvent& x) {
-
-}
-
-void Listeners::operator()(const widget::waveform::ZoomProto& x) {
-}
-
-void Listeners::operator()(RealTime x) {
 }
 
 void MainPage::clearTime() {
@@ -316,9 +253,8 @@ void PlaybackController::operator()(const Stretch& desc) {
 }
 
 void PlaybackController::operator()(RealTime time) {
-  // enableLoopPointButton(loops_.isNewLoopPoint(time));  // TODO
+  enableLoopPointButton(loops_.isNewLoopPoint(time));  // TODO
 }
-
 
 void PlaybackController::enableLoopPointButton(bool e) {
   if (e != transportController_.getLoopPointButtonEnabled()) {
@@ -380,11 +316,6 @@ gui::CachedThumbnail* StretchyPlayer::cachedThumbnail() {
 
 int StretchyPlayer::length() const {
   return doubleRunny_ ? doubleRunny_->getTotalLength() : 0;
-}
-
-void MainPage::addLoopPoint() {
-  loops_.addLoopPoint(stretchyPlayer_.getTransport()->getCurrentOffsetPosition());
-  playbackController_.enableLoopPointButton(false);
 }
 
 #ifdef TODO
