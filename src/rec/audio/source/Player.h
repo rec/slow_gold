@@ -25,11 +25,11 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
-  void setNextReadPosition(SampleTime t) { timer_.setNextReadPosition(t); }
+  void setNextReadPosition(SampleTime t) { timer_->setNextReadPosition(t); }
   transport::State state() const;
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Device* device() { return device_; }
-  Broadcaster<SampleTime>* timeBroadcaster() { return &timer_; }
+  Broadcaster<SampleTime>* timeBroadcaster() { return timer_.get(); }
 
  private:
   CriticalSection lock_;
@@ -37,7 +37,7 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   AudioTransportSource transportSource_;
   AudioSourcePlayer player_;
   Device* device_;
-  Timey timer_;
+  ptr<Timey> timer_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

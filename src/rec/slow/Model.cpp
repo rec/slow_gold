@@ -52,6 +52,9 @@ void Model::setNextPosition(SampleTime pos) {
       nextPosition_ = -1;
     } else {
       nextPosition_ = pos;
+      FileBuffer* buffer = fileBuffer_.current();
+      if (buffer && buffer->buffer_)
+        buffer->buffer_->setPosition(pos);
       return;
     }
   }
