@@ -24,8 +24,8 @@ Model::Model(Instance* i) : HasInstance(i),
 }
 
 void Model::fillOnce() {
-  fileBuffer_.switchIfNext();
-  ThumbnailBuffer* buffer = fileBuffer_.current();
+  thumbnailBuffer_.switchIfNext();
+  ThumbnailBuffer* buffer = thumbnailBuffer_.current();
   if (!buffer || buffer->isFull()) {
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
   } else {
@@ -36,7 +36,7 @@ void Model::fillOnce() {
 }
 
 bool Model::hasNextPosition(SampleTime pos) {
-  ThumbnailBuffer* buffer = fileBuffer_.current();
+  ThumbnailBuffer* buffer = thumbnailBuffer_.current();
   if (!buffer)
     return true;
 
@@ -52,7 +52,7 @@ void Model::setNextPosition(SampleTime pos) {
       nextPosition_ = -1;
     } else {
       nextPosition_ = pos;
-      ThumbnailBuffer* buffer = fileBuffer_.current();
+      ThumbnailBuffer* buffer = thumbnailBuffer_.current();
       if (buffer)
         buffer->setPosition(pos);
       return;
@@ -62,7 +62,7 @@ void Model::setNextPosition(SampleTime pos) {
 }
 
 void Model::operator()(const VirtualFile& f) {
-  if (fileBuffer_.next()) {
+  if (thumbnailBuffer_.next()) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
     return;
   }
@@ -71,7 +71,7 @@ void Model::operator()(const VirtualFile& f) {
 
   buffer->thumbnail()->addListener(&components()->waveform_);
   player()->setSource(new BufferSource(*buffer->buffer()));
-  fileBuffer_.setNext(buffer.transfer());
+  thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
 
   persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);

@@ -31,7 +31,7 @@ class Model : public Listener<const VirtualFile&>,
   void checkChanged();
   void fillOnce();
   void setNextPosition(SampleTime p);
-  Switcher<audio::util::ThumbnailBuffer>* fileBuffer() { return &fileBuffer_; }
+  Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
 
  private:
   bool hasNextPosition(SampleTime t);
@@ -41,7 +41,7 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<LoopPointList> loopLocker_;
   SampleTime nextPosition_;
 
-  Switcher<audio::util::ThumbnailBuffer> fileBuffer_;
+  Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
