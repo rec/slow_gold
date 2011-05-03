@@ -1,5 +1,5 @@
 #include "rec/slow/Threads.h"
-#include "rec/audio/util/FileBuffer.h"
+//#include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"

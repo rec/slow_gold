@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_UTIL_FILEBUFFER__
-#define __REC_AUDIO_UTIL_FILEBUFFER__
+#ifndef __REC_AUDIO_UTIL_THUMBNAILBUFFER__
+#define __REC_AUDIO_UTIL_THUMBNAILBUFFER__
 
 #include "rec/audio/util/FillableBuffer.h"
 
@@ -9,20 +9,20 @@ namespace util {
 
 class CachedThumbnail;
 
-class FileBuffer : public FillableBuffer {
+class ThumbnailBuffer : public FillableBuffer {
  public:
-  FileBuffer(const VirtualFile& file);
-  virtual ~FileBuffer();
+  ThumbnailBuffer(const VirtualFile& file);
+  virtual ~ThumbnailBuffer();
   CachedThumbnail* thumbnail() { return thumbnail_.get(); }
 
  private:
   ptr<CachedThumbnail> thumbnail_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(FileBuffer);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(ThumbnailBuffer);
 };
 
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_FILEBUFFER__
+#endif  // __REC_AUDIO_UTIL_THUMBNAILBUFFER__

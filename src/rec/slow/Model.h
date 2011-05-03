@@ -2,7 +2,7 @@
 #define __REC_SLOW_MODEL__
 
 #include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/audio/util/FileBuffer.h"
+#include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/HasInstance.h"
@@ -31,7 +31,7 @@ class Model : public Listener<const VirtualFile&>,
   void checkChanged();
   void fillOnce();
   void setNextPosition(SampleTime p);
-  Switcher<audio::util::FileBuffer>* fileBuffer() { return &fileBuffer_; }
+  Switcher<audio::util::ThumbnailBuffer>* fileBuffer() { return &fileBuffer_; }
 
  private:
   bool hasNextPosition(SampleTime t);
@@ -41,7 +41,7 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<LoopPointList> loopLocker_;
   SampleTime nextPosition_;
 
-  Switcher<audio::util::FileBuffer> fileBuffer_;
+  Switcher<audio::util::ThumbnailBuffer> fileBuffer_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);

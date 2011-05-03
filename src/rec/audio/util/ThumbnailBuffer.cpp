@@ -1,4 +1,4 @@
-#include "rec/audio/util/FileBuffer.h"
+#include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
@@ -9,9 +9,9 @@ namespace rec {
 namespace audio {
 namespace util {
 
-FileBuffer::~FileBuffer() {}
+ThumbnailBuffer::~ThumbnailBuffer() {}
 
-FileBuffer::FileBuffer(const VirtualFile& f) {
+ThumbnailBuffer::ThumbnailBuffer(const VirtualFile& f) {
   ptr<PositionableAudioSource> source(source::createSourceAndLoadMetadata(f));
   if (!source) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
@@ -30,3 +30,4 @@ FileBuffer::FileBuffer(const VirtualFile& f) {
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
+

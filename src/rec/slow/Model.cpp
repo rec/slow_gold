@@ -25,7 +25,7 @@ Model::Model(Instance* i) : HasInstance(i),
 
 void Model::fillOnce() {
   fileBuffer_.switchIfNext();
-  FileBuffer* buffer = fileBuffer_.current();
+  ThumbnailBuffer* buffer = fileBuffer_.current();
   if (!buffer || buffer->isFull()) {
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
   } else {
@@ -36,7 +36,7 @@ void Model::fillOnce() {
 }
 
 bool Model::hasNextPosition(SampleTime pos) {
-  FileBuffer* buffer = fileBuffer_.current();
+  ThumbnailBuffer* buffer = fileBuffer_.current();
   if (!buffer)
     return true;
 
@@ -52,7 +52,7 @@ void Model::setNextPosition(SampleTime pos) {
       nextPosition_ = -1;
     } else {
       nextPosition_ = pos;
-      FileBuffer* buffer = fileBuffer_.current();
+      ThumbnailBuffer* buffer = fileBuffer_.current();
       if (buffer)
         buffer->setPosition(pos);
       return;
@@ -67,7 +67,7 @@ void Model::operator()(const VirtualFile& f) {
     return;
   }
 
-  ptr<FileBuffer> buffer(new FileBuffer(f));
+  ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
   buffer->thumbnail()->addListener(&components()->waveform_);
   player()->setSource(new BufferSource(*buffer->buffer()));

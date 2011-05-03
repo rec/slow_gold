@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="kF8VJGLt7" name="tests">
+  <MAINGROUP id="DaKPLEPVY" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -216,14 +216,14 @@
                 name="CopySamples.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/CopySamples.h" id="oaBLQ2qvy"
                 name="CopySamples.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/util/FileBuffer.cpp" id="OlyJIb0HJ"
-                name="FileBuffer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/FileBuffer.h" id="xss9aDEEc"
-                name="FileBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/FillableBuffer.cpp"
                 id="Ozzjob5y1" name="FillableBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/FillableBuffer.h"
                 id="K4piO9oOZ" name="FillableBuffer.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/ThumbnailBuffer.cpp"
+                id="0BxQFhM4B" name="ThumbnailBuffer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/ThumbnailBuffer.h"
+                id="7I0vQKcNj" name="ThumbnailBuffer.h" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="QydfDQiac" name="base">
@@ -1163,7 +1163,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="xTWKBA6G2" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ZrQIfFtuc" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
