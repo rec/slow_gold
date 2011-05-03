@@ -19,8 +19,10 @@ static Defaulter<TableColumnList> dflt(
 
 const double Loops::CLOSE = 0.5;
 
-Loops::Loops(const TableColumnList* desc)
-    : TableController(dflt.get(desc), Address("loop_point"), "cut-Loops"), length_(0) {
+Loops::Loops(const TableColumnList* desc, bool dis)
+    : TableController(dflt.get(desc), Address("loop_point"), "cut-Loops"),
+      length_(0),
+      allowDiscontinuousSelections_(dis) {
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
   message_.reset(&loopPoints_);
@@ -45,33 +47,31 @@ bool Loops::canCopy() const {
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
-  juce::Range<int> range;
-  int numRanges;
+  juce::SparseSet<int> selected;
   {
     ScopedLock l(lock_);
-    const juce::SparseSet<int> selected = getSelectedRows();
-
-    range = selected.getTotalRange();
-    numRanges = selected.getNumRanges();
+    selected = getSelectedRows();
   }
 
-  if (numRanges > 1) {
-    selectRangeOfRows(range.getStart(), range.getEnd());
-
-  } else {
-    {
-      ScopedLock l(lock_);
-      for (int i = 0; i < loopPoints_.selected_size(); ++i)
-        loopPoints_.set_selected(i, false);
-
-      while (loopPoints_.selected_size() < loopPoints_.loop_point_size())
-        loopPoints_.add_selected(false);
-
-      for (int i = range.getStart(); i < range.getEnd(); ++i)
-        loopPoints_.set_selected(i, true);
+  if (!allowDiscontinuousSelections_) {
+    if (selected.getNumRanges() > 1) {
+      juce::Range<int> range = selected.getTotalRange();
+      selectRangeOfRows(range.getStart(), range.getEnd());
+      return;
     }
-    updatePersistentData();
   }
+  {
+    ScopedLock l(lock_);
+    int i = 0;
+    for (; i < loopPoints_.loop_point_size(); ++i) {
+      bool contains = selected.contains(i);
+      if (i < loopPoints_.selected_size())
+        loopPoints_.set_selected(i, contains);
+      else
+        loopPoints_.add_selected(contains);
+    }
+  }
+  updatePersistentData();
 }
 
 static void print(const string& name, const juce::SparseSet<int>& ss) {

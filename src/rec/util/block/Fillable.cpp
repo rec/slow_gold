@@ -8,10 +8,10 @@ namespace util {
 namespace block {
 
 void Fillable::setPosition(int64 position) {
-  DCHECK_GE(position, 0);
+  DCHECK_GE(position, 0);  // TODO: why did this fire once?
   
   ScopedLock l(lock_);
-  position_ = juce::jmax(position, 0);
+  position_ = juce::jmax(position, 0LL);
 }
 
 void Fillable::setLength(int64 length) {

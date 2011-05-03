@@ -17,7 +17,8 @@ bool isNewLoopPointTime(const LoopPointList& lp, RealTime t);
 
 class Loops : public TableController, public Cuttable {
  public:
-  explicit Loops(const TableColumnList* desc = NULL);
+  explicit Loops(const TableColumnList* desc = NULL,
+                 bool allowDiscontinuousSelections = true);
   virtual ~Loops();
 
   static const double CLOSE;
@@ -46,6 +47,7 @@ class Loops : public TableController, public Cuttable {
  private:
   double length_;
   LoopPointList loopPoints_;
+  const bool allowDiscontinuousSelections_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };
