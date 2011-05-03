@@ -1,17 +1,16 @@
 #ifndef __REC_GUI_AUDIO_LOOPPOINT__
 #define __REC_GUI_AUDIO_LOOPPOINT__
 
-#include "rec/util/Range.h"
+#include "rec/util/block/Block.h"
 #include "rec/audio/Audio.h"
 
 namespace rec {
-
 namespace gui { namespace audio { class LoopPointList; }}
-
 
 namespace audio {
 
-SampleSelection getTimeSelection(const gui::audio::LoopPointList&, RealTime length,
+block::BlockSet getTimeSelection(const gui::audio::LoopPointList&,
+                                 RealTime length,
                                  double scale = 1.0);
 
 }  // namespace audio

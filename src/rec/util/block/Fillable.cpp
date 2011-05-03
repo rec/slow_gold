@@ -9,14 +9,25 @@ namespace block {
 
 void Fillable::setPosition(int64 position) {
   DCHECK_GE(position, 0);  // TODO: why did this fire once?
-  
+
   ScopedLock l(lock_);
   position_ = juce::jmax(position, 0LL);
+  DLOG(INFO) << position_;
 }
 
 void Fillable::setLength(int64 length) {
   ScopedLock l(lock_);
   length_ = length;
+}
+
+int64 Fillable::length() {
+  ScopedLock l(lock_);
+  return length_;
+}
+
+int64 Fillable::position() const {
+  ScopedLock l(lock_);
+  return position_;
 }
 
 bool Fillable::hasFilled(const Block& b) const {

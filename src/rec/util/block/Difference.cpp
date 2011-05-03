@@ -30,6 +30,15 @@ BlockSet difference(const BlockSet& s, const Block& block) {
   return diff;
 }
 
+// TODO: this is quadratic
+BlockSet difference(const BlockSet& set, const BlockSet& set2) {
+  BlockSet result = set;
+  for (BlockSet::const_iterator i = set2.begin(); i != set2.end(); ++i)
+    result = difference(set, *i);
+
+  return result;
+}
+
 Block firstEmptyBlockAfter(const BlockSet& s, int pos, int length) {
   BlockSet diff = difference(s, Block(pos, length));
   if (diff.empty())

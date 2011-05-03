@@ -6,14 +6,16 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Threads.h"
+#include "rec/util/block/Difference.h"
 
 namespace rec {
 namespace slow {
 
 using namespace rec::audio::util;
 using namespace rec::audio::source;
+using namespace rec::util::block;
 
-static const int PARAMETER_WAIT = 100;
+static const int PARAMETER_WAIT = 1000;
 static const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
@@ -31,16 +33,29 @@ void Model::fillOnce() {
   ThumbnailBuffer* buffer = thumbnailBuffer_.current();
   if (!buffer || buffer->isFull()) {
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
-  } else {
-    LoopPointList list(loopLocker_.get());
-    if (nextPosition_ == -1) {
-      // Find the first moment after "time" that needs to be filled.
-    }
-
-    buffer->fillNextBlock();
-    if (nextPosition_ != -1)
-      setNextPosition(nextPosition_);
+    return;
   }
+  if (nextPosition_ == -1) {
+    // Find the first moment in the selection after "time" that needs to be filled.
+    BlockSet selection = audio::getTimeSelection(loopLocker_.get(),
+                                                 buffer->length());
+    BlockSet toFill = difference(selection, buffer->filled());
+    if (!toFill.empty()) {
+      for (BlockSet::iterator i = toFill.begin(); ; ++i) {
+        if (i == toFill.end())
+          buffer->setPosition(toFill.begin()->first);
+        else if (i->second > time_)
+          buffer->setPosition(i->first);
+        else
+          continue;
+        break;
+      }
+    }
+  }
+
+  buffer->fillNextBlock();
+  if (nextPosition_ != -1)
+    setNextPosition(nextPosition_);
 }
 
 void Model::setNextPosition(SampleTime pos) {

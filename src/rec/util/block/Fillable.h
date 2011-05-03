@@ -16,11 +16,14 @@ class Fillable {
   static const int MAX_WAIT_TIME = 7000;
 
   void setPosition(int64 position);
+  int64 position() const;
   void setLength(int64 length);
+  int64 length();
 
   void fillNextBlock();
   bool isFull() const;
   bool hasFilled(const Block& b) const;
+  BlockSet filled() const { ScopedLock l(lock_); return filled_; }
 
  protected:
   virtual Size doFillNextBlock(const Block& b) = 0;

@@ -50,8 +50,10 @@ Threads::~Threads() {
 }
 
 void Threads::stop() {
-  for (int i = 0; i < threads_.size(); ++i)
+  for (int i = 0; i < threads_.size(); ++i) {
+    DLOG(INFO) << "Stopping thread " << threads_[i]->getThreadName();
     threads_[i]->stopThread(THREAD_STOP_PERIOD);
+  }
 }
 
 void Threads::clean() {
