@@ -7,7 +7,7 @@ namespace rec {
 namespace util {
 namespace block {
 
-void Fillable::setPosition(int position) {
+void Fillable::setPosition(int64 position) {
   ScopedLock l(lock_);
   position_ = position;
 }
@@ -49,26 +49,6 @@ void Fillable::fillNextBlock() {
   if (isFull())
     onFilled();
 }
-
-#if 0
-bool waitUntilFilled(const Fillable& filler, const Block& block,
-                     int maxWaitTime, int waitTime) {
-  Thread* thread = Thread::getCurrentThread();
-  for (int time = 0; !thread->threadShouldExit(); time += waitTime) {
-    if (filler.hasFilled(block))
-      return true;
-
-    if (time > maxWaitTime) {
-      LOG(ERROR) << "Waited for a long time, no data: " << time;
-      return false;
-    }
-
-    if (waitTime > 0)
-      thread->wait(waitTime);
-  }
-  return false;
-}
-#endif
 
 }  // namespace block
 }  // namespace util

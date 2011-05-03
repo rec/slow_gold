@@ -8,12 +8,11 @@ namespace rec {
 namespace audio {
 namespace util {
 
-class FillableBuffer : public block::Fillable {  // , public Listener<int> {
+class FillableBuffer : public block::Fillable {
  public:
   FillableBuffer(PositionableAudioSource* source, int blockSize);
   AudioSampleBuffer* buffer() { return &buffer_; }
 
-  // virtual void operator()(int pos) { setPosition(pos); }
   virtual block::Size doFillNextBlock(const block::Block& block);
 
  protected:
