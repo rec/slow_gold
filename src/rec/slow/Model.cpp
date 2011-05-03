@@ -29,7 +29,8 @@ void Model::fillOnce() {
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
   } else {
     buffer->buffer_->fillNextBlock();
-    setNextPosition(nextPosition_);
+    if (nextPosition_ != -1)
+      setNextPosition(nextPosition_);
   }
 }
 
@@ -39,7 +40,9 @@ bool Model::hasNextPosition(SampleTime pos) {
     return true;
 
   block::Block b(pos, pos + PRELOAD_SIZE);
-  return buffer->buffer_->hasFilled(b);
+  bool result = buffer->buffer_->hasFilled(b);
+  DLOG(INFO) << pos << ", " << result;
+  return result;
 }
 
 void Model::setNextPosition(SampleTime pos) {

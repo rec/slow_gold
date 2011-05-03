@@ -109,6 +109,7 @@ void Listeners::operator()(SampleTime time) {
   LOG(INFO) << "New time in a new thread!";
   Waveform* waveform = &components()->waveform_;
   waveform->timeCursor()->setListeningToClock(true);
+  player()->setNextReadPosition(time);
 }
 
 void Listeners::mouseDrag(const MouseEvent& e) {
@@ -117,8 +118,7 @@ void Listeners::mouseDrag(const MouseEvent& e) {
 
   RealTime time = waveform->xToTime(e.x);
   waveform->timeCursor()->setTime(time);
-
-  threads()->start(thread::functionCallback(this, time), "SetTime", 0);
+  model()->setNextPosition(audio::timeToSamples(time));
 }
 
 void Listeners::mouseUp(const MouseEvent& e) {
