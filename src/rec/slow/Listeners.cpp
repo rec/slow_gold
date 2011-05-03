@@ -106,7 +106,6 @@ void Listeners::mouseDoubleClick(const MouseEvent& e) {
 }
 
 void Listeners::operator()(SampleTime time) {
-  LOG(INFO) << "New time in a new thread!";
   Waveform* waveform = &components()->waveform_;
   waveform->timeCursor()->setListeningToClock(true);
   player()->setNextReadPosition(time);

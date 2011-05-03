@@ -41,7 +41,6 @@ bool Model::hasNextPosition(SampleTime pos) {
 
   block::Block b(pos, pos + PRELOAD_SIZE);
   bool result = buffer->buffer_->hasFilled(b);
-  DLOG(INFO) << pos << ", " << result;
   return result;
 }
 
