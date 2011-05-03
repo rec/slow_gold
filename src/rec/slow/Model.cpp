@@ -13,7 +13,7 @@ using namespace rec::audio::util;
 using namespace rec::audio::source;
 
 static const int PARAMETER_WAIT = 100;
-static const int PRELOAD_SIZE = 10000;
+static const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
                             fileLocker_(&lock_),
@@ -35,24 +35,14 @@ void Model::fillOnce() {
   }
 }
 
-bool Model::hasNextPosition(SampleTime pos) {
-  ThumbnailBuffer* buffer = thumbnailBuffer_.current();
-  if (!buffer)
-    return true;
-
-  block::Block b(pos, pos + PRELOAD_SIZE);
-  bool result = buffer->hasFilled(b);
-  return result;
-}
-
 void Model::setNextPosition(SampleTime pos) {
   {
     ScopedLock l(lock_);
-    if (hasNextPosition(pos)) {
+    ThumbnailBuffer* buffer = thumbnailBuffer_.current();
+    if (!buffer || buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
       nextPosition_ = -1;
     } else {
       nextPosition_ = pos;
-      ThumbnailBuffer* buffer = thumbnailBuffer_.current();
       if (buffer)
         buffer->setPosition(pos);
       return;

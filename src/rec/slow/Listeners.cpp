@@ -121,17 +121,19 @@ void Listeners::mouseDrag(const MouseEvent& e) {
 }
 
 void Listeners::mouseUp(const MouseEvent& e) {
-  mouseDrag(e);
-
 #ifdef TODO
   if (e.mods.isShiftDown())
     zoomOut();
+
   else if (zoomProto() && zoomProto()->get().click_to_zoom())
     zoomIn(timeMouse);
 
   else if (timeMouse.mouseEvent_->mods.isCommandDown())
     zoomIn(timeMouse);
+
+  else
 #endif
+  mouseDrag(e);
 }
 
 void Listeners::operator()(const ClockTick&) {}
