@@ -2,6 +2,7 @@
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/util/CachedThumbnail.h"
+#include "rec/gui/audio/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Threads.h"
@@ -19,8 +20,10 @@ Model::Model(Instance* i) : HasInstance(i),
                             fileLocker_(&lock_),
                             stretchLocker_(&lock_),
                             loopLocker_(&lock_),
+                            time_(0),
                             nextPosition_(-1) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
+  player()->timeBroadcaster()->addListener(this);
 }
 
 void Model::fillOnce() {
@@ -29,6 +32,11 @@ void Model::fillOnce() {
   if (!buffer || buffer->isFull()) {
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
   } else {
+    LoopPointList list(loopLocker_.get());
+    if (nextPosition_ == -1) {
+      // Find the first moment after "time" that needs to be filled.
+    }
+
     buffer->fillNextBlock();
     if (nextPosition_ != -1)
       setNextPosition(nextPosition_);

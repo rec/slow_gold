@@ -25,9 +25,9 @@ struct Instance {
 
   ptr<Components> components_;
   ptr<audio::Device> device_;
-  ptr<Menus> menus_;  // TODO:  move into "Target"
-  ptr<Model> model_;
   ptr<audio::source::Player> player_;
+  ptr<Model> model_;
+  ptr<Menus> menus_;  // TODO:  move into "Target"
   ptr<Target> target_;  // TODO: rename to "Commands".
   ptr<Listeners> listeners_;
   ptr<Threads> threads_;

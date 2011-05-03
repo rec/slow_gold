@@ -11,7 +11,6 @@ template <typename Data>
 class Locker: public Listener<const Data&> {
  public:
   Locker(CriticalSection* l) : lock_(l), broadcaster_(NULL), changed_(false) {}
-
   virtual ~Locker() {}
 
   virtual void operator()(const Data& data) { set(data); }
@@ -43,6 +42,11 @@ class Locker: public Listener<const Data&> {
     data_ = data;
     changed_ = true;
     onChange();
+  }
+
+  virtual const Data get() {
+    ScopedLock l(*lock_);
+    return data_;
   }
 
  protected:

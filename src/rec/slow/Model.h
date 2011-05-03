@@ -17,6 +17,7 @@ namespace slow {
 class Instance;
 
 class Model : public Listener<const VirtualFile&>,
+              public Listener<SampleTime>,
               public HasInstance {
  public:
   typedef audio::stretch::Stretch Stretch;
@@ -28,6 +29,7 @@ class Model : public Listener<const VirtualFile&>,
   Listener<const VirtualFile&>* fileLocker() { return &fileLocker_; }
 
   virtual void operator()(const VirtualFile& vf);
+  virtual void operator()(SampleTime t) { ScopedLock l(lock_); time_ = t; }
   void checkChanged();
   void fillOnce();
   void setNextPosition(SampleTime p);
@@ -39,6 +41,8 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<LoopPointList> loopLocker_;
+
+  SampleTime time_;
   SampleTime nextPosition_;
 
   Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;
