@@ -50,6 +50,7 @@ void Fillable::fillNextBlock() {
     onFilled();
 }
 
+#if 0
 bool waitUntilFilled(const Fillable& filler, const Block& block,
                      int maxWaitTime, int waitTime) {
   Thread* thread = Thread::getCurrentThread();
@@ -67,6 +68,7 @@ bool waitUntilFilled(const Fillable& filler, const Block& block,
   }
   return false;
 }
+#endif
 
 }  // namespace block
 }  // namespace util

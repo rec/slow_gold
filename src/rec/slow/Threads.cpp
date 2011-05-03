@@ -17,19 +17,12 @@ using namespace rec::audio::stretch;
 using namespace rec::audio::util;
 using namespace rec::util::thread;
 
-static const int PARAMETER_WAIT = 100;
 static const int THREAD_STOP_PERIOD = 5000;
 
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
 
 void fetch(Instance* i) {
-  Switcher<FileBuffer>* switcher = i->model_->fileBuffer();
-  switcher->switchIfNext();
-  FileBuffer* buffer = switcher->current();
-  if (!buffer || !buffer->buffer_ || buffer->buffer_->isFull())
-    Thread::getCurrentThread()->wait(PARAMETER_WAIT);
-  else
-    buffer->buffer_->fillNextBlock();
+  i->model_->fillOnce();
 }
 
 void persist(Instance* i) {}

@@ -11,11 +11,48 @@ namespace slow {
 using namespace rec::audio::util;
 using namespace rec::audio::source;
 
+static const int PARAMETER_WAIT = 100;
+static const int PRELOAD_SIZE = 10000;
+
 Model::Model(Instance* i) : HasInstance(i),
                             fileLocker_(&lock_),
                             stretchLocker_(&lock_),
-                            loopLocker_(&lock_) {
+                            loopLocker_(&lock_),
+                            nextPosition_(-1) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
+}
+
+void Model::fillOnce() {
+  fileBuffer_.switchIfNext();
+  FileBuffer* buffer = fileBuffer_.current();
+  if (!buffer || !buffer->buffer_ || buffer->buffer_->isFull()) {
+    Thread::getCurrentThread()->wait(PARAMETER_WAIT);
+  } else {
+    buffer->buffer_->fillNextBlock();
+    setNextPosition(nextPosition_);
+  }
+}
+
+bool Model::hasNextPosition(SampleTime pos) {
+  FileBuffer* buffer = fileBuffer_.current();
+  if (!buffer || !buffer->buffer_)
+    return true;
+
+  block::Block b(pos, pos + PRELOAD_SIZE);
+  return buffer->buffer_->hasFilled(b);
+}
+
+void Model::setNextPosition(SampleTime pos) {
+  {
+    ScopedLock l(lock_);
+    if (hasNextPosition(pos)) {
+      nextPosition_ = -1;
+    } else {
+      nextPosition_ = pos;
+      return;
+    }
+  }
+  (*listeners())(pos);
 }
 
 void Model::operator()(const VirtualFile& f) {

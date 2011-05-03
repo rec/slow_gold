@@ -16,10 +16,10 @@ class Fillable {
   static const int MAX_WAIT_TIME = 7000;
 
   void setPosition(int position);
-  bool hasFilled(const Block& b) const;
 
   void fillNextBlock();
   bool isFull() const;
+  bool hasFilled(const Block& b) const;
 
   const int length_;
   const int blockSize_;
@@ -39,10 +39,11 @@ class Fillable {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Fillable);
 };
 
+#if 0
 bool waitUntilFilled(const Fillable&, const Block& block,
                      int maxWaitTime = Fillable::MAX_WAIT_TIME,
                      int waitTime = Fillable::WAIT_TIME);
-
+#endif
 
 }  // namespace block
 }  // namespace util

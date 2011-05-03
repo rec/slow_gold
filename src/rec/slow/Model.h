@@ -29,12 +29,17 @@ class Model : public Listener<const VirtualFile&>,
 
   virtual void operator()(const VirtualFile& vf);
   void checkChanged();
+  void fillOnce();
+  void setNextPosition(SampleTime p);
   Switcher<audio::util::FileBuffer>* fileBuffer() { return &fileBuffer_; }
 
  private:
+  bool hasNextPosition(SampleTime t);
+
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<LoopPointList> loopLocker_;
+  SampleTime nextPosition_;
 
   Switcher<audio::util::FileBuffer> fileBuffer_;
   CriticalSection lock_;
