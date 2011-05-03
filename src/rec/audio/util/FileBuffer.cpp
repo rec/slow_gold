@@ -1,12 +1,17 @@
 #include "rec/audio/util/FileBuffer.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
+#include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
+#include "rec/audio/util/CachedThumbnail.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace audio {
 namespace util {
 
-FileBuffer::FileBuffer(const VirtualFile& f, const RunnyProto& desc) {
+FileBuffer::~FileBuffer() {}
+
+FileBuffer::FileBuffer(const VirtualFile& f) {
   ptr<PositionableAudioSource> source(source::createSourceAndLoadMetadata(f));
   if (!source) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
@@ -14,12 +19,12 @@ FileBuffer::FileBuffer(const VirtualFile& f, const RunnyProto& desc) {
   }
   File shadow = getShadowFile(f, "thumbnail.stream");
   int len = source->getTotalLength();
-  RunnyProto d;
+  static source::RunnyProto d;
   thumbnail_.reset(new CachedThumbnail(shadow, d.compression(), len));
   if (!thumbnail_->cacheWritten())
     source.reset(source::Snoopy::add(source.transfer(), thumbnail_.get()));
 
-  buffer_.reset(new FillableBuffer(source.transfer(), d.chunk_size()));
+  setSource(source.transfer(), d.chunk_size());
 }
 
 }  // namespace util

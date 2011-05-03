@@ -9,19 +9,18 @@ namespace block {
 
 class Fillable {
  public:
-  Fillable(int64 len, int64 b) : blockSize_(b), length_(len), position_(0) {}
+  Fillable(int64 len = 0) : length_(len), position_(0) {}
   virtual ~Fillable() {}
 
   static const int WAIT_TIME = 0;
   static const int MAX_WAIT_TIME = 7000;
 
   void setPosition(int64 position);
+  void setLength(int64 length);
 
   void fillNextBlock();
   bool isFull() const;
   bool hasFilled(const Block& b) const;
-
-  const int64 blockSize_;
 
  protected:
   virtual Size doFillNextBlock(const Block& b) = 0;
@@ -36,7 +35,7 @@ class Fillable {
  private:
   int64 position_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Fillable);
+  DISALLOW_COPY_AND_ASSIGN(Fillable);
 };
 
 }  // namespace block

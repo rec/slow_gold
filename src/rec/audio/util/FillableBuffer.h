@@ -10,19 +10,21 @@ namespace util {
 
 class FillableBuffer : public block::Fillable {
  public:
-  FillableBuffer(PositionableAudioSource* source, int blockSize);
-  AudioSampleBuffer* buffer() { return &buffer_; }
-
+  FillableBuffer() {}
+  void setSource(PositionableAudioSource* source, int blockSize);
   virtual block::Size doFillNextBlock(const block::Block& block);
+
+  AudioSampleBuffer* buffer() { return buffer_.get(); }
 
  protected:
   virtual void onFilled() { source_.reset(); }
 
  private:
-  AudioSampleBuffer buffer_;
+  ptr<AudioSampleBuffer> buffer_;
   ptr<PositionableAudioSource> source_;
+  int64 blockSize_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(FillableBuffer);
+  DISALLOW_COPY_AND_ASSIGN(FillableBuffer);
 };
 
 }  // namespace util

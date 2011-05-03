@@ -1,23 +1,22 @@
 #ifndef __REC_AUDIO_UTIL_FILEBUFFER__
 #define __REC_AUDIO_UTIL_FILEBUFFER__
 
-#include "rec/audio/source/Runny.pb.h"
-#include "rec/audio/util/CachedThumbnail.h"
 #include "rec/audio/util/FillableBuffer.h"
-#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 namespace audio {
 namespace util {
 
-struct FileBuffer {
-  typedef source::RunnyProto RunnyProto;
+class CachedThumbnail;
 
-  FileBuffer(const VirtualFile& file,
-             const RunnyProto& desc = RunnyProto::default_instance());
+class FileBuffer : public FillableBuffer {
+ public:
+  FileBuffer(const VirtualFile& file);
+  virtual ~FileBuffer();
+  CachedThumbnail* thumbnail() { return thumbnail_.get(); }
 
+ private:
   ptr<CachedThumbnail> thumbnail_;
-  ptr<FillableBuffer> buffer_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(FileBuffer);
 };

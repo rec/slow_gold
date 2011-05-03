@@ -12,6 +12,11 @@ void Fillable::setPosition(int64 position) {
   position_ = position;
 }
 
+void Fillable::setLength(int64 length) {
+  ScopedLock l(lock_);
+  length_ = length;
+}
+
 bool Fillable::hasFilled(const Block& b) const {
   ScopedLock l(lock_);
   if (isFull())

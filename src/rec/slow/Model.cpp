@@ -1,9 +1,10 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/source/BufferSource.h"
+#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
+#include "rec/audio/util/CachedThumbnail.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Threads.h"
-#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 
 namespace rec {
 namespace slow {
@@ -25,10 +26,10 @@ Model::Model(Instance* i) : HasInstance(i),
 void Model::fillOnce() {
   fileBuffer_.switchIfNext();
   FileBuffer* buffer = fileBuffer_.current();
-  if (!buffer || !buffer->buffer_ || buffer->buffer_->isFull()) {
+  if (!buffer || buffer->isFull()) {
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
   } else {
-    buffer->buffer_->fillNextBlock();
+    buffer->fillNextBlock();
     if (nextPosition_ != -1)
       setNextPosition(nextPosition_);
   }
@@ -36,11 +37,11 @@ void Model::fillOnce() {
 
 bool Model::hasNextPosition(SampleTime pos) {
   FileBuffer* buffer = fileBuffer_.current();
-  if (!buffer || !buffer->buffer_)
+  if (!buffer)
     return true;
 
   block::Block b(pos, pos + PRELOAD_SIZE);
-  bool result = buffer->buffer_->hasFilled(b);
+  bool result = buffer->hasFilled(b);
   return result;
 }
 
@@ -52,8 +53,8 @@ void Model::setNextPosition(SampleTime pos) {
     } else {
       nextPosition_ = pos;
       FileBuffer* buffer = fileBuffer_.current();
-      if (buffer && buffer->buffer_)
-        buffer->buffer_->setPosition(pos);
+      if (buffer)
+        buffer->setPosition(pos);
       return;
     }
   }
@@ -66,15 +67,11 @@ void Model::operator()(const VirtualFile& f) {
     return;
   }
 
-  ptr<FileBuffer> buf(new FileBuffer(f));
-  if (!buf->buffer_) {
-    LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
-    return;
-  }
+  ptr<FileBuffer> buffer(new FileBuffer(f));
 
-  buf->thumbnail_->addListener(&components()->waveform_);
-  player()->setSource(new BufferSource(*buf->buffer_->buffer()));
-  fileBuffer_.setNext(buf.transfer());
+  buffer->thumbnail()->addListener(&components()->waveform_);
+  player()->setSource(new BufferSource(*buffer->buffer()));
+  fileBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
 
   persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);

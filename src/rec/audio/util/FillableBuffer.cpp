@@ -10,15 +10,16 @@ namespace rec {
 namespace audio {
 namespace util {
 
-FillableBuffer::FillableBuffer(PositionableAudioSource* source, int blockSize)
-    : Fillable(source->getTotalLength(), blockSize),
-      buffer_(2, length_),
-      source_(source) {
+void FillableBuffer::setSource(PositionableAudioSource* source, int blockSize) {
+  setLength(source->getTotalLength());
+  buffer_.reset(new AudioSampleBuffer(2, length_));
+  source_.reset(source);
+  blockSize_ = blockSize;
 }
 
 block::Size FillableBuffer::doFillNextBlock(const Block& block) {
   AudioSourceChannelInfo info;
-  info.buffer = &buffer_;
+  info.buffer = buffer_.get();
   info.startSample = block.first;
   info.numSamples = juce::jmin(getSize(block), static_cast<block::Size>(blockSize_));
 
