@@ -11,7 +11,8 @@ namespace audio {
 
 block::BlockSet getTimeSelection(const gui::audio::LoopPointList&,
                                  RealTime length,
-                                 double scale = 1.0);
+                                 double scale = 1.0,
+                                 bool emptyMeansAll = true);
 
 }  // namespace audio
 }  // namespace rec

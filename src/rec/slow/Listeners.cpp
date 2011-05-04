@@ -4,7 +4,7 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/DropFiles.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/gui/audio/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Model.h"
@@ -93,7 +93,10 @@ void Listeners::operator()(const LoopPointList& loops) {
   } else {
     components()->loops_.setData(persist::setter<LoopPointList>(
         persist::get<VirtualFile>()));  // TODO
-    thread::callAsync(&components()->waveform_, &Waveform::addAllCursors, loops);
+    thread::callAsync(&components()->waveform_, &Waveform::addAllCursors,
+                      loops);
+    model()->selectionSource()->setSelection(audio::getTimeSelection(
+      loops, model()->selectionSource()->getTotalLength()));
   }
 }
 

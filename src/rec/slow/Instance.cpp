@@ -15,9 +15,9 @@ namespace slow {
 Instance::Instance()
   : components_(new Components),
     device_(new audio::Device),
-    menus_(new Menus(this)),
-    model_(new Model(this)),
     player_(new audio::source::Player(device_.get())),
+    model_(new Model(this)),
+    menus_(new Menus(this)),
     target_(new Target(this)),
     listeners_(new Listeners(this)),
     threads_(new Threads(this)) {

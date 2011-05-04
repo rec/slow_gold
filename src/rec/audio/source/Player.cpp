@@ -34,7 +34,6 @@ void Player::setState(State s) {
   }
 }
 
-
 void Player::setSource(Source* source) {
   ptr<Source> s(source);
   timer_->swap(&s);

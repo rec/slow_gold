@@ -5,18 +5,16 @@ namespace rec {
 namespace audio {
 namespace source {
 
-#if 0
-SampleTime Selection::getTotalLength() const {
-  SampleTime time = 0;
-  SampleSelection::const_iterator i;
-  for (i = selection_.begin(); i != selection_.end(); ++i)
-    time += i->size();
-  return time;
-}
-#endif
+using namespace rec::util::block;
 
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
-  if (selection_.empty()) {
+  BlockSet selection;
+  {
+    ScopedLock l(lock_);
+    selection = selection_;
+  }
+
+  if (selection.empty()) {
     LOG(ERROR) << "Tried to play an empty selection";
     clear(audioInfo);
     return;
@@ -24,20 +22,25 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
 
   AudioSourceChannelInfo info = audioInfo;
   int64 toCopy = info.numSamples;
-  for (SampleSelection::iterator i = selection_.begin(); toCopy > 0; ++i) {
-    if (i == selection_.end())
-      i = selection_.begin();
-
-    if (i->end_ > position_) {
-      if (i->begin_ > position_)
-        setNextReadPosition(i->begin_);
-      info.numSamples = juce::jmin(toCopy, i->end_ - position_);
+  for (BlockSet::iterator i = selection.begin(); toCopy > 0; ++i) {
+    bool isEnd = (i == selection.end());
+    if (isEnd || i->second > position_) {
+      if (isEnd)
+        i = selection.begin();
+      if (isEnd || i->first > position_)
+        setNextReadPosition(i->first);
+      info.numSamples = juce::jmin(toCopy, i->second - position_);
       Wrappy::getNextAudioBlock(info);
 
       info.startSample += info.numSamples;
       toCopy -= info.numSamples;
     }
   }
+}
+
+void Selection::setSelection(const BlockSet& s) {
+  ScopedLock l(lock_);
+  selection_ = s;
 }
 
 }  // namespace source

@@ -1,6 +1,7 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
+#include "rec/audio/source/Selection.h"
 #include "rec/audio/util/CachedThumbnail.h"
 #include "rec/gui/audio/LoopPoint.h"
 #include "rec/slow/Components.h"
@@ -23,7 +24,8 @@ Model::Model(Instance* i) : HasInstance(i),
                             stretchLocker_(&lock_),
                             loopLocker_(&lock_),
                             time_(0),
-                            nextPosition_(-1) {
+                            nextPosition_(-1),
+                            selectionSource_(NULL) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
 }
@@ -35,11 +37,14 @@ void Model::fillOnce() {
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
     return;
   }
+
   if (nextPosition_ == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet selection = audio::getTimeSelection(loopLocker_.get(),
                                                  buffer->length());
     BlockSet toFill = difference(selection, buffer->filled());
+    // DLOG_EVERY_N(INFO, 4) << selection << ", " << buffer->filled()
+    // << ", " << toFill;
     if (!toFill.empty()) {
       for (BlockSet::iterator i = toFill.begin(); ; ++i) {
         if (i == toFill.end())
@@ -84,7 +89,8 @@ void Model::operator()(const VirtualFile& f) {
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
   buffer->thumbnail()->addListener(&components()->waveform_);
-  player()->setSource(new BufferSource(*buffer->buffer()));
+  selectionSource_ = new Selection(new BufferSource(*buffer->buffer()));
+  player()->setSource(selectionSource_);
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
 
@@ -95,7 +101,10 @@ void Model::operator()(const VirtualFile& f) {
   loopLocker_.listenTo(setter);
 
   stretchLocker_.set(persist::get<Stretch>(f));
-  loopLocker_.set(persist::get<LoopPointList>(f));
+  LoopPointList list = persist::get<LoopPointList>(f);
+  loopLocker_.set(list);
+  selectionSource_->setSelection(audio::getTimeSelection(
+      list, selectionSource_->getTotalLength()));
 
   components()->songData_.setFile(f);
 }

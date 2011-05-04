@@ -3,7 +3,7 @@
 
 #include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/Equals.h"
-#include "rec/slow/Parameters.pb.h"
+// #include "rec/slow/Parameters.pb.h"
 
 namespace rec {
 namespace proto {
@@ -38,6 +38,7 @@ TEST(Equals, VirtualFile) {
   EXPECT_TRUE(equals(x, y));
 }
 
+#if 0
 TEST(Equals, Parameters) {
   slow::Parameters x, y;
   EXPECT_TRUE(equals(x, y));
@@ -51,8 +52,8 @@ TEST(Equals, Parameters) {
 
   x.mutable_stretch()->set_disabled(true);
   EXPECT_FALSE(equals(x, y));
-
 }
+#endif
 
 }  // namespace
 }  // namespace proto

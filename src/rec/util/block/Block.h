@@ -26,8 +26,16 @@ inline Size getSize(const Block& b) {
   return b.second - b.first;
 }
 
+inline bool contains(const Block& b, Size x) {
+  return (x >= b.first) && (x < b.second);
+}
+
+inline bool intersects(const Block& x, const Block& y) {
+  return contains(x, y.first) || contains(y, x.first);
+}
+
 inline bool isBlock(const BlockSet& set, const Block& block) {
-  return set.size() == 1 && *set.begin() == block;
+  return (set.size() == 1) && (*set.begin() == block);
 }
 
 inline int fullTo(const BlockSet& set) {
@@ -53,6 +61,24 @@ inline AudioSourceChannelInfo audioSourceChannelInfo(
   info.numSamples = getSize(block);
   info.buffer = buf;
   return info;
+}
+
+inline std::ostream& operator<<(std::ostream& os, const Block& b) {
+  return os << "(" << b.first << ", " << b.second << ")";
+}
+
+inline std::ostream& operator<<(std::ostream& os, const BlockSet& b) {
+  os << "{";
+  for (BlockSet::const_iterator i = b.begin(); i != b.end(); ++i)
+    os << *i << ", ";
+  return os << "}";
+}
+
+inline std::ostream& operator<<(std::ostream& os, const BlockList& b) {
+  os << "[";
+  for (BlockList::const_iterator i = b.begin(); i != b.end(); ++i)
+    os << *i << ", ";
+  return os << "]";
 }
 
 }  // namespace block

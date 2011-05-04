@@ -5,10 +5,14 @@ namespace rec {
 namespace util {
 namespace block {
 
-BlockSet difference(const BlockSet& s, const Block& block) {
+namespace {
+typedef BlockSet::const_iterator iterator;
+}
+
+BlockSet difference(const Block& block, const BlockSet& s) {
   BlockSet diff;
   Block b = block;
-  BlockSet::const_iterator i;
+  iterator i;
   for (i = s.begin(); i != s.end() && b.second > i->first; ++i) {
     if (b.first < i->second) {
       if (b.first < i->first) {
@@ -30,19 +34,27 @@ BlockSet difference(const BlockSet& s, const Block& block) {
   return diff;
 }
 
-// TODO: this is quadratic
-BlockSet difference(const BlockSet& set, const BlockSet& set2) {
-  BlockSet result = set;
-  for (BlockSet::const_iterator i = set2.begin(); i != set2.end(); ++i)
-    result = difference(set, *i);
+BlockSet difference(const BlockSet& x, const BlockSet& y) {
+  BlockSet result;
+  for (iterator i = x.begin(), j = y.begin(); i != x.end(); ++i) {
+    for (; j != y.end() && j->second <= i->first; ++j);
+    Block b = *i;
+    for (; j != y.end() && j->first < i->second; ++j) {
+      if (i->first < j->first)
+        result.insert(Block(b.first, j->first));
+      b.first = j->second;
+    }
+    if (getSize(b))
+      result.insert(b);
+  }
 
   return result;
 }
 
 Block firstEmptyBlockAfter(const BlockSet& s, int pos, int length) {
-  BlockSet diff = difference(s, Block(pos, length));
+  BlockSet diff = difference(Block(pos, length), s);
   if (diff.empty())
-    diff = difference(s, Block(0, pos));
+    diff = difference(Block(0, pos), s);
 
   return diff.empty() ? Block(pos, pos) : *diff.begin();
 }

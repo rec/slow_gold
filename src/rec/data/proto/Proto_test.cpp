@@ -15,9 +15,9 @@ TEST(Proto, Apply) {
   loop_point.add_loop_point()->set_time(23.5);
 
   Address address;
-  ASSERT_TRUE(fillFromDefault("field { name: \"loop_point\" } "
-                              "field { index: 0 } "
-                              "field { name: \"time\"}", &address));
+  ASSERT_TRUE(fillFromDefault("part { name: \"loop_point\" } "
+                              "part { index: 0 } "
+                              "part { name: \"time\"}", &address));
   Value v = getValue(address, loop_point);
   EXPECT_TRUE(v.has_double_f());
   EXPECT_EQ(v.double_f(), 23.5);

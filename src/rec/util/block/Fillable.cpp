@@ -12,7 +12,6 @@ void Fillable::setPosition(int64 position) {
 
   ScopedLock l(lock_);
   position_ = juce::jmax(position, 0LL);
-  DLOG(INFO) << position_;
 }
 
 void Fillable::setLength(int64 length) {
@@ -36,7 +35,7 @@ bool Fillable::hasFilled(const Block& b) const {
     return true;
 
   if (b.second <= length_)
-    return difference(filled_, b).empty();
+    return difference(b, filled_).empty();
 
   return hasFilled(Block(b.first, length_)) &&
     hasFilled(Block(0, b.second - length_));

@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_SELECTION__
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/util/Range.h"
+#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace audio {
@@ -17,10 +17,11 @@ class Selection : public Wrappy {
   virtual bool isLooping() const { return true; }
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
-  void setSelection(const SampleSelection& s) { selection_ = s; }
+  void setSelection(const block::BlockSet& s);
 
  private:
-  SampleSelection selection_;
+  CriticalSection lock_;
+  block::BlockSet selection_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Selection);
 };

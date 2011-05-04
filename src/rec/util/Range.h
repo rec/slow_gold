@@ -96,7 +96,6 @@ struct Range {
 };
 
 typedef Range<RealTime>::Set TimeSelection;
-typedef Range<SampleTime>::Set SampleSelection;
 
 // delete these next ones...
 typedef Range<SampleTime> SampleRange;
