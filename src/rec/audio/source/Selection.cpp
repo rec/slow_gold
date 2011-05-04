@@ -1,5 +1,6 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/Clear.h"
+#include "rec/util/block/FillSeries.h"
 
 namespace rec {
 namespace audio {
@@ -21,20 +22,13 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
   }
 
   AudioSourceChannelInfo info = audioInfo;
-  int64 toCopy = info.numSamples;
-  for (BlockSet::iterator i = selection.begin(); toCopy > 0; ++i) {
-    bool isEnd = (i == selection.end());
-    if (isEnd || i->second > position_) {
-      if (isEnd)
-        i = selection.begin();
-      if (isEnd || i->first > position_)
-        setNextReadPosition(i->first);
-      info.numSamples = juce::jmin(toCopy, i->second - position_);
-      Wrappy::getNextAudioBlock(info);
-
-      info.startSample += info.numSamples;
-      toCopy -= info.numSamples;
-    }
+  BlockList blocks = fillSeries(selection_, position_, info.numSamples);
+  
+  for (BlockList::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
+    setNextReadPosition(i->first);
+    info.numSamples = getSize(*i);
+    Wrappy::getNextAudioBlock(info);
+    info.startSample += info.numSamples;
   }
 }
 
