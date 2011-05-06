@@ -31,14 +31,7 @@ class Cursor : public Component, public Listener<SampleTime> {
 
   virtual void operator()(SampleTime t);
 
-  virtual void mouseDown(const MouseEvent& e);
-  virtual void mouseDrag(const MouseEvent& e);
-  virtual void mouseUp(const MouseEvent& e);
-  void setListeningToClock(bool listening);
-
  private:
-  int getDragX(const MouseEvent& e) const;
-
   Waveform* const waveform_;
   CriticalSection lock_;
   CursorProto desc_;

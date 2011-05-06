@@ -13,21 +13,33 @@ bool openDialogOpen = false;
 
 }  // namespace
 
-bool openVirtualFile(Listener<const VirtualFile&> *listener) {
-  ScopedLock l(lock);
-  if (openDialogOpen)
-    return false;
+bool openVirtualFile(Listener<const VirtualFileList&>* listener,
+                     const String& title,
+                     const String& patterns,
+                     FileChooserFunction function,
+                     const File& initial) {
+  {
+    ScopedLock l(lock);
+    if (openDialogOpen)
+      return false;
+    else
+      openDialogOpen = true;
+  }
 
-  openDialogOpen = true;
-  juce::FileChooser chooser("Please choose an audio file", File::nonexistent,
-                            file::audioFilePatterns(), true);
-  bool result = chooser.browseForFileToOpen();
+  juce::FileChooser chooser(title, initial, patterns, true);
+  bool result = (*function)(&chooser);
 
   if (result)
-    (*listener)(file::toVirtualFile(chooser.getResult()));
+    (*listener)(file::toVirtualFileList(chooser.getResults()));
 
+  ScopedLock l(lock);
   openDialogOpen = false;
   return result;
+}
+
+bool openOneFile(Listener<const VirtualFileList&>* listener) {
+  return openVirtualFile(listener, "Please choose an audio file",
+                         file::audioFilePatterns());
 }
 
 }  // namespace dialog

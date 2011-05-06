@@ -160,6 +160,7 @@
 		BA6C761172B85D1727591E29 /* MediaPlaybackStop.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43818744A9AA0BE6E19C4BC2 /* MediaPlaybackStop.svg.cpp */; };
 		BB38E1A91947F2A14CB23DD5 /* Thread.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 60B269B7648EBE79896F7F54 /* Thread.pb.cc */; };
 		BBF9C52A8F10B7D04B5FBEC9 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 107F029BEE50E0870F8E5A13 /* Main.cpp */; };
+		BD5CA4278112CC284444DC0F /* MouseListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6437EA4743EB96A16805A5AB /* MouseListener.cpp */; };
 		BD6A11F62CD0E7AB15538090 /* PersistentWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60CFAF9F013EE1A014011CAD /* PersistentWindow.cpp */; };
 		BE652DE043DBBAF8C10E8B5C /* Waveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20F428DEA148977B8CCBA4AC /* Waveform.cpp */; };
 		BE79494A818EF83F52A4C7B3 /* MediaPlaybackStart.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 081A751E2C05C9587B067F69 /* MediaPlaybackStart.svg.cpp */; };
@@ -220,6 +221,7 @@
 		01C37FE36244605E462404AC /* Path.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Path.pb.h; path = ../../../../genfiles/proto/rec/widget/tree/Path.pb.h; sourceTree = SOURCE_ROOT; };
 		0213FFD4245BB245B6D8D6C8 /* AudioFormatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioFormatManager.h; path = ../../../../src/rec/audio/util/AudioFormatManager.h; sourceTree = SOURCE_ROOT; };
 		02CB509D623C2C0701854DB6 /* MediaPlay.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaPlay.svg.cpp; path = ../../../../src/rec/gui/icon/MediaPlay.svg.cpp; sourceTree = SOURCE_ROOT; };
+		03A191D871215D359ABB8E1D /* MouseListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MouseListener.h; path = ../../../../src/rec/slow/MouseListener.h; sourceTree = SOURCE_ROOT; };
 		0427817BE96AB563EE085457 /* HasData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HasData.h; path = ../../../../src/rec/data/persist/HasData.h; sourceTree = SOURCE_ROOT; };
 		046936284D70C57621E8BF01 /* aliascontent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aliascontent.cpp; path = ../../../../src/rec/data/yaml/src/aliascontent.cpp; sourceTree = SOURCE_ROOT; };
 		04AB15391D23794AF24FE608 /* Cursor.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cursor.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Cursor.pb.h; sourceTree = SOURCE_ROOT; };
@@ -404,6 +406,7 @@
 		6266A3C0E643F3500F52D823 /* TypedTyper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedTyper.h; path = ../../../../src/rec/data/proto/TypedTyper.h; sourceTree = SOURCE_ROOT; };
 		62F619D5C3EA76A01C0392A7 /* singledocparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = singledocparser.cpp; path = ../../../../src/rec/data/yaml/src/singledocparser.cpp; sourceTree = SOURCE_ROOT; };
 		637D0C2816C60515CC7F125B /* mark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mark.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/mark.h"; sourceTree = SOURCE_ROOT; };
+		6437EA4743EB96A16805A5AB /* MouseListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MouseListener.cpp; path = ../../../../src/rec/slow/MouseListener.cpp; sourceTree = SOURCE_ROOT; };
 		64A9C59DD21EA05D3F57CFCB /* Copy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copy.cpp; path = ../../../../src/rec/data/persist/Copy.cpp; sourceTree = SOURCE_ROOT; };
 		64BFF1D1BA32E73BE2DF932C /* GetVolumes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GetVolumes.h; path = ../../../../src/rec/util/file/GetVolumes.h; sourceTree = SOURCE_ROOT; };
 		64D4B8897FB4DB97D75014C2 /* Address.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Address.pb.h; path = ../../../../genfiles/proto/rec/data/proto/Address.pb.h; sourceTree = SOURCE_ROOT; };
@@ -1285,6 +1288,8 @@
 				4B9A499893D67AF00178E79E /* Menus.h */,
 				2301BC0B61B96190C49537F0 /* Model.cpp */,
 				BAD66B0BC466522CD4C5F133 /* Model.h */,
+				6437EA4743EB96A16805A5AB /* MouseListener.cpp */,
+				03A191D871215D359ABB8E1D /* MouseListener.h */,
 				AE8F534EF0DEE3A4B3FB4FFA /* PersistentData.cpp */,
 				DE102493A3E6284F2DAED3F4 /* PersistentData.h */,
 				237A2F2912C72197F907D7C4 /* PlaybackController.cpp */,
@@ -1427,6 +1432,20 @@
 			name = gui;
 			sourceTree = "<group>";
 		};
+		BA0A94AE395A3F0A799861E5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		BAAC9AA41EA8EF3F7202FD8A /* command */ = {
 			isa = PBXGroup;
 			children = (
@@ -1563,20 +1582,6 @@
 				9E1E2AE5A931E7821542F53D /* mpg123 */,
 			);
 			name = format;
-			sourceTree = "<group>";
-		};
-		D799E314CC1BC0A36BBB67D5 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		DB617A20D9C265267D2D5AE8 /* file */ = {
@@ -1777,7 +1782,7 @@
 				French,
 				German,
 			);
-			mainGroup = D799E314CC1BC0A36BBB67D5 /* Source */;
+			mainGroup = BA0A94AE395A3F0A799861E5 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1919,6 +1924,7 @@
 				DED2531C6E62596A11087193 /* MainPage.cpp in Sources */,
 				529737F862523B27EBFCD27F /* Menus.cpp in Sources */,
 				378367ED856F4DD6E44800C9 /* Model.cpp in Sources */,
+				BD5CA4278112CC284444DC0F /* MouseListener.cpp in Sources */,
 				F74722BEDA6363B3C5CC8470 /* PersistentData.cpp in Sources */,
 				761C899FD9316742F31BCD5F /* PlaybackController.cpp in Sources */,
 				CCC67F60CD76F6077EB11D72 /* Target.cpp in Sources */,

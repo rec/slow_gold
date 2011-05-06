@@ -7,7 +7,19 @@ namespace rec {
 namespace gui {
 namespace dialog {
 
-bool openVirtualFile(Listener<const VirtualFile&> *listener);
+typedef bool (*FileChooserFunction)(FileChooser*);
+
+inline bool browseForFileToOpen(FileChooser* fc) {
+  return fc->browseForFileToOpen();
+}
+
+bool openVirtualFile(Listener<const VirtualFileList&>* listener,
+                     const String& title,
+                     const String& patterns,
+                     FileChooserFunction function = &browseForFileToOpen,
+                     const File& initial = File::nonexistent);
+
+bool openOneFile(Listener<const VirtualFileList&>* listener);
 
 }  // namespace dialog
 }  // namespace gui

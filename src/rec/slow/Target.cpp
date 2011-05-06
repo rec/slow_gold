@@ -16,7 +16,7 @@ namespace {
 void addLoopPoint(Instance* i) {
   i->components_->loops_.addLoopPoint(
       audio::samplesToTime(i->player_->getNextReadPosition()));
-  // playbackC  // TODOontroller_.enableLoopPointButton(false);  // TODO
+  // playbackController_.enableLoopPointButton(false);  // TODO
 }
 
 
@@ -40,8 +40,8 @@ void Target::addCommands() {
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
   using thread::functionCallback;
-  add(Command::OPEN, functionCallback(&gui::dialog::openVirtualFile,
-      model()->fileLocker()),
+  add(Command::OPEN, functionCallback(&gui::dialog::openOneFile,
+                                      listeners()),
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
 

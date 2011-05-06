@@ -38,11 +38,6 @@ double Cursor::getTime() const {
   return time_;
 }
 
-void Cursor::setListeningToClock(bool listening) {
-  ScopedLock l(lock_);
-  listeningToClock_ = listening;
-}
-
 void Cursor::operator()(SampleTime t) {
   ScopedLock l(lock_);
   if (listeningToClock_)
@@ -88,29 +83,6 @@ void Cursor::paint(Graphics& g) {
   p.setColor(highlight ? Painter::HIGHLIGHT : Painter::FOREGROUND);
 
   gui::drawLine(g, desc_.line(), middle, top, middle, height);
-}
-
-int Cursor::getDragX(const MouseEvent& e) const {
-  return getX() + e.x - mouseDragX_;
-}
-
-void Cursor::mouseDown(const MouseEvent& e) {
-  dragging_ = true;
-  mouseDragX_ = e.x;
-  dragX_ = getX();
-}
-
-void Cursor::mouseDrag(const MouseEvent& e) {
-  if (dragging_)
-    setTopLeftPosition(getDragX(e), getY());
-}
-
-void Cursor::mouseUp(const MouseEvent& e) {
-  if (dragging_) {
-    dragging_ = false;
-    int location = getDragX(e) + desc().component_width() / 2;
-    waveform_->cursorDragged(index_, location);
-  }
 }
 
 }  // namespace waveform

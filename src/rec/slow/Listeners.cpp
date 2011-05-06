@@ -8,6 +8,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Model.h"
+#include "rec/slow/MouseListener.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/ClockUpdate.h"
@@ -29,12 +30,13 @@ using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
 using namespace rec::gui::audio;
 
-Listeners::Listeners(Instance* i) : HasInstance(i) {
+Listeners::Listeners(Instance* i)
+  	: HasInstance(i), mouseListener_(new slow::MouseListener(i)) {
   player()->addListener(this);
 
   Waveform* waveform = &components()->waveform_;
   waveform->dropBroadcaster()->addListener(this);
-  waveform->addMouseListener(this, true);
+  waveform->addMouseListener(mouseListener_.get(), true);
 
   Root* root = &components()->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);
@@ -46,6 +48,12 @@ Listeners::Listeners(Instance* i) : HasInstance(i) {
   components()->transportController_.addListener(this);
   player()->timeBroadcaster()->addListener(&components()->timeController_);
   player()->timeBroadcaster()->addListener(waveform->timeCursor());
+}
+
+void Listeners::operator()(SampleTime time) {
+  Waveform* waveform = &components()->waveform_;
+  // waveform->timeCursor()->setListeningToClock(true); TODO
+  player()->setNextReadPosition(time);
 }
 
 void Listeners::operator()(command::Command::Type t) {
@@ -84,6 +92,13 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
   }
 }
 
+void Listeners::operator()(const VirtualFileList& list) {
+  if (list.file_size() != 1)
+    LOG(ERROR) << "file size=" << list.file_size();
+  else
+    model()->fileLocker()->set(list.file(0));
+}
+
 void Listeners::operator()(const LoopPointList& loops) {
   if (!loops.loop_point_size()) {
     LoopPointList loop;
@@ -98,44 +113,6 @@ void Listeners::operator()(const LoopPointList& loops) {
     model()->selectionSource()->setSelection(audio::getTimeSelection(
       loops, model()->selectionSource()->getTotalLength()));
   }
-}
-
-void Listeners::mouseDoubleClick(const MouseEvent& e) {
-  if (!target()->invokeDirectly(command::Command::OPEN))
-    LOG(ERROR) << "Unable to start open dialog";
-  else
-    DLOG(INFO) << "Opened a new file!";
-}
-
-void Listeners::operator()(SampleTime time) {
-  Waveform* waveform = &components()->waveform_;
-  waveform->timeCursor()->setListeningToClock(true);
-  player()->setNextReadPosition(time);
-}
-
-void Listeners::mouseDrag(const MouseEvent& e) {
-  Waveform* waveform = &components()->waveform_;
-  waveform->timeCursor()->setListeningToClock(false);
-
-  RealTime time = waveform->xToTime(e.x);
-  waveform->timeCursor()->setTime(time);
-  model()->setNextPosition(audio::timeToSamples(time));
-}
-
-void Listeners::mouseUp(const MouseEvent& e) {
-#ifdef TODO
-  if (e.mods.isShiftDown())
-    zoomOut();
-
-  else if (zoomProto() && zoomProto()->get().click_to_zoom())
-    zoomIn(timeMouse);
-
-  else if (timeMouse.mouseEvent_->mods.isCommandDown())
-    zoomIn(timeMouse);
-
-  else
-#endif
-  mouseDrag(e);
 }
 
 void Listeners::operator()(const ClockTick&) {}

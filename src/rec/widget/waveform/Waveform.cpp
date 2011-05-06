@@ -27,9 +27,14 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
       thumbnail_(NULL) {
   setName("Waveform");
 
-  timeCursor_ = new Cursor(*timeCursor, this, 0.0f, -1);
-  addAndMakeVisible(timeCursor_);
-  // desc_.set_selection_frame_in_seconds(0);
+  timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
+  // desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?
+}
+
+Cursor* Waveform::newCursor(const CursorProto& d, double time, int index) {
+	Cursor* cursor = new Cursor(d, this, time, index);
+  addAndMakeVisible(cursor);
+  return cursor;
 }
 
 Waveform::~Waveform() {
@@ -112,7 +117,7 @@ void Waveform::addAllCursors(const LoopPointList& loopPoints) {
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
-    ptr<Cursor> c(new Cursor(CursorProto::default_instance(), this, time, i));
+    ptr<Cursor> c(newCursor(CursorProto::default_instance(), time, i));
     c->setCursorBounds(time);
     cursors.insert(c.get());
     addAndMakeVisible(c.transfer());
@@ -180,13 +185,6 @@ TimeRange Waveform::getTimeRange() const {
     r = TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : 0.01);
 
   return r;
-}
-
-void Waveform::cursorDragged(int index, int x) {
-  CursorTime ct;
-  ct.cursor_ = index;
-  ct.time_ = xToTime(x);
-  Broadcaster<const CursorTime&>::broadcast(ct);
 }
 
 }  // namespace waveform

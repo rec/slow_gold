@@ -53,6 +53,7 @@ class Waveform : public Component,
   double xToTime(int x) const;
 
  private:
+  Cursor* newCursor(const CursorProto& d, double time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);
   void setSelection(const gui::audio::LoopPointList&);
 

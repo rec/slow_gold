@@ -27,7 +27,7 @@ class Model : public Listener<const VirtualFile&>,
   explicit Model(Instance* i);
   virtual ~Model() {}
 
-  Listener<const VirtualFile&>* fileLocker() { return &fileLocker_; }
+  thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
 
   virtual void operator()(const VirtualFile& vf);
   virtual void operator()(SampleTime t) { ScopedLock l(lock_); time_ = t; }

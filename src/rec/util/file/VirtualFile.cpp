@@ -158,12 +158,22 @@ VirtualFile toVirtualFile(const File& file) {
   return vf;
 }
 
-VirtualFileList toVirtualFileList(const StringArray& infiles) {
+template <typename Collection>
+VirtualFileList toVirtualFileListHelper(const Collection& infiles) {
   VirtualFileList files;
   for (int i = 0; i < infiles.size(); ++i)
-    files.add_file()->CopyFrom(file::toVirtualFile(File(infiles[i])));
+    files.add_file()->CopyFrom(file::toVirtualFile(infiles[i]));
   return files;
 }
+
+VirtualFileList toVirtualFileList(const StringArray& files) {
+  return toVirtualFileListHelper(files);
+}
+
+VirtualFileList toVirtualFileList(const juce::Array<File>& files) {
+  return toVirtualFileListHelper(files);
+}
+
 
 void sort(VirtualFileList* v) {
   std::sort(v->mutable_file()->begin(), v->mutable_file()->end(), compare);

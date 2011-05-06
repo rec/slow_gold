@@ -28,6 +28,7 @@ class ClockTick;
 class Instance;
 
 class Listeners : public Listener<None>,
+                  public Listener<const VirtualFileList&>,
                   public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
                   public Listener<const audio::stretch::Stretch&>,
@@ -39,6 +40,7 @@ class Listeners : public Listener<None>,
   explicit Listeners(Instance* i);
 
   virtual void operator()(None);
+  virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
   virtual void operator()(const audio::stretch::Stretch&);
@@ -59,9 +61,8 @@ class Listeners : public Listener<None>,
     thread::callAsync(this, m, t);
   }
 
-  void mouseDoubleClick(const MouseEvent& e);
-  void mouseUp(const MouseEvent& e);
-  void mouseDrag(const MouseEvent& e);
+ private:
+  ptr<MouseListener> mouseListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Listeners);
 };

@@ -33,6 +33,7 @@ typedef juce::DocumentWindow DocumentWindow;
 typedef juce::DrawableButton DrawableButton;
 
 typedef juce::File File;
+typedef juce::FileChooser FileChooser;
 typedef juce::FileDragAndDropTarget FileDragAndDropTarget;
 typedef juce::Font Font;
 
