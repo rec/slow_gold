@@ -32,7 +32,7 @@ DoubleRunnyBuffer::DoubleRunnyBuffer(const VirtualFile& file, Data* data,
   changeLocker_->initialize(data_->get());
   data_->addListener(changeLocker_.get());
 
-  changeLocker_->addListener(this);
+  listenTo(&changeLocker_);
   changeLocker_->startThread();
 }
 

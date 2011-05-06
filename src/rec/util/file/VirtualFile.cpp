@@ -149,7 +149,7 @@ VirtualFile toVirtualFile(const File& file) {
     vf.mutable_path()->RemoveLast();
   }
 
-  // TODO: CD things here.
+  // TODO: CD things here (what does this mean?)
 #endif
 
   for (int i = 0; i < vf.path_size() / 2; ++i)
@@ -173,7 +173,6 @@ VirtualFileList toVirtualFileList(const StringArray& files) {
 VirtualFileList toVirtualFileList(const juce::Array<File>& files) {
   return toVirtualFileListHelper(files);
 }
-
 
 void sort(VirtualFileList* v) {
   std::sort(v->mutable_file()->begin(), v->mutable_file()->end(), compare);

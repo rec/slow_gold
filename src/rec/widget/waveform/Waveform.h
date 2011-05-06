@@ -20,12 +20,14 @@ namespace waveform {
 class Cursor;
 class CursorProto;
 struct CursorTime;
+struct MouseWheelEvent;
 struct TimeAndMouseEvent;
 
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public Component,
                  public Listener<juce::AudioThumbnail*>,
                  public Broadcaster<const CursorTime&>,
+                 public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&>,
                  public Broadcaster<const TimeSelection&> {
  public:
@@ -51,6 +53,8 @@ class Waveform : public Component,
 
   TimeRange getTimeRange() const;
   double xToTime(int x) const;
+
+  virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
 
  private:
   Cursor* newCursor(const CursorProto& d, double time, int index);

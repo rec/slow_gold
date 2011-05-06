@@ -36,7 +36,6 @@ Listeners::Listeners(Instance* i)
 
   Waveform* waveform = &components()->waveform_;
   waveform->dropBroadcaster()->addListener(this);
-  waveform->addMouseListener(mouseListener_.get(), true);
 
   Root* root = &components()->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);

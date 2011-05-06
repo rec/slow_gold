@@ -6,6 +6,7 @@
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/CursorTime.h"
+#include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/TimeAndMouseEvent.h"
 
 using namespace rec::gui::audio;
@@ -185,6 +186,14 @@ TimeRange Waveform::getTimeRange() const {
     r = TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : 0.01);
 
   return r;
+}
+
+void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncrement) {
+  MouseWheelEvent we;
+  we.event_ = &e;
+  we.xIncrement_ = xIncrement;
+  we.yIncrement_ = yIncrement;
+  Broadcaster<const MouseWheelEvent&>::broadcast(we);
 }
 
 }  // namespace waveform
