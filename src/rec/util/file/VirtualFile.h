@@ -31,7 +31,7 @@ bool empty(const VirtualFile& file);
 typedef persist::Data<VirtualFile> VirtualFileData;
 
 VirtualFile toVirtualFile(const File& file);
-VirtualFile toVirtualFile(const String& s) { return toVirtualFile(File(s)); }
+inline VirtualFile toVirtualFile(const String& s) { return toVirtualFile(File(s)); }
 VirtualFileList toVirtualFileList(const StringArray& file);
 VirtualFileList toVirtualFileList(const juce::Array<File>& files);
 
