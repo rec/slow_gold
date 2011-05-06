@@ -30,6 +30,19 @@ inline bool contains(const Block& b, Size x) {
   return (x >= b.first) && (x < b.second);
 }
 
+template <typename Container>
+bool contains(const Container& c, Size x) {
+  for (typename Container::const_iterator i = c.begin(); i != c.end(); ++i) {
+    if (contains(*i, x))
+      return true;
+  }
+
+  return false;
+}
+#if 0
+inline bool contains(const BlockSet& bs, Size x) { return containsC(bs, x); }
+inline bool contains(const BlockList& bs, Size x) { return containsC(bs, x); }
+#endif
 inline bool intersects(const Block& x, const Block& y) {
   return contains(x, y.first) || contains(y, x.first);
 }

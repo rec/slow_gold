@@ -26,7 +26,7 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
     : Component("Waveform"),
       desc_(d),
       thumbnail_(NULL) {
-  setName("Waveform");
+  setName("Waveform");  // TODO:  delete?
 
   timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
   // desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?

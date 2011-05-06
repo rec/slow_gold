@@ -26,9 +26,9 @@ namespace slow {
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 using namespace rec::audio::util;
+using namespace rec::gui::audio;
 using namespace rec::widget::tree;
 using namespace rec::widget::waveform;
-using namespace rec::gui::audio;
 
 Listeners::Listeners(Instance* i)
   	: HasInstance(i), mouseListener_(new slow::MouseListener(i)) {

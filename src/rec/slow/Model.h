@@ -8,6 +8,7 @@
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/util/Switcher.h"
+#include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/Locker.h"
@@ -37,6 +38,9 @@ class Model : public Listener<const VirtualFile&>,
   Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
   audio::source::Selection* selectionSource() { return selectionSource_; }
 
+  // const block::BlockSet getTimeSelection() const;  TODO: delete?
+  SampleTime length() const { return selectionSource_->getTotalLength(); }
+
  private:
   bool hasNextPosition(SampleTime t);
 
@@ -47,6 +51,7 @@ class Model : public Listener<const VirtualFile&>,
   SampleTime time_;
   SampleTime nextPosition_;
   audio::source::Selection* selectionSource_;
+  block::BlockSet timeSelection_;
 
   Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;
   CriticalSection lock_;

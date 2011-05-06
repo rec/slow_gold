@@ -63,9 +63,19 @@ void Model::fillOnce() {
     setNextPosition(nextPosition_);
 }
 
+#if 0
+const block::BlockSet Model::getTimeSelection() const {
+  ScopedLock l(lock_);
+  return timeSelection_;
+}
+#endif
+
 void Model::setNextPosition(SampleTime pos) {
   {
     ScopedLock l(lock_);
+    if (!block::contains(timeSelection_, pos))
+      return;
+
     ThumbnailBuffer* buffer = thumbnailBuffer_.current();
     if (!buffer || buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
       nextPosition_ = -1;
@@ -76,6 +86,7 @@ void Model::setNextPosition(SampleTime pos) {
       return;
     }
   }
+
   (*listeners())(pos);
 }
 
@@ -103,8 +114,8 @@ void Model::operator()(const VirtualFile& f) {
   stretchLocker_.set(persist::get<Stretch>(f));
   LoopPointList list = persist::get<LoopPointList>(f);
   loopLocker_.set(list);
-  selectionSource_->setSelection(audio::getTimeSelection(
-      list, selectionSource_->getTotalLength()));
+  timeSelection_ = audio::getTimeSelection(list, length());
+  selectionSource_->setSelection(timeSelection_);
 
   components()->songData_.setFile(f);
 }

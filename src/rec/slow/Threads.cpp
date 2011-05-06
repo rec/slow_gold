@@ -20,17 +20,12 @@ using namespace rec::util::thread;
 static const int THREAD_STOP_PERIOD = 5000;
 
 void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
-
-void fetch(Instance* i) {
-  i->model_->fillOnce();
-}
+void fetch(Instance* i) { i->model_->fillOnce(); }
+void updateParameters(Instance* i) { i->model_->checkChanged(); }
 
 void persist(Instance* i) {}
 void pitch(Instance* i) {}
 
-void updateParameters(Instance* i) {
-  i->model_->checkChanged();
-}
 
 Threads::Threads(Instance* i) : HasInstance(i), fetchThread_(NULL) {}
 
@@ -38,8 +33,8 @@ void Threads::startAll() {
   start(&browser, "Browser", 1000);
 	fetchThread_ = start(&fetch, "Fetch", 10);
   start(&updateParameters, "Parameter", 100);
-  start(&persist, "Persist", 100);
-  start(&pitch, "Pitch", 100);
+  // start(&persist, "Persist", 100);
+  // start(&pitch, "Pitch", 100);
 
   (*model()->fileLocker())(persist::get<VirtualFile>());
 }
@@ -51,7 +46,7 @@ Threads::~Threads() {
 
 void Threads::stop() {
   for (int i = 0; i < threads_.size(); ++i) {
-    DLOG(INFO) << "Stopping thread " << threads_[i]->getThreadName();
+    VLOG(1) << "Stopping thread " << threads_[i]->getThreadName();
     threads_[i]->stopThread(THREAD_STOP_PERIOD);
   }
 }
