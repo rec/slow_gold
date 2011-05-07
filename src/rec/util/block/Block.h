@@ -39,10 +39,7 @@ bool contains(const Container& c, Size x) {
 
   return false;
 }
-#if 0
-inline bool contains(const BlockSet& bs, Size x) { return containsC(bs, x); }
-inline bool contains(const BlockList& bs, Size x) { return containsC(bs, x); }
-#endif
+
 inline bool intersects(const Block& x, const Block& y) {
   return contains(x, y.first) || contains(y, x.first);
 }
@@ -76,22 +73,34 @@ inline AudioSourceChannelInfo audioSourceChannelInfo(
   return info;
 }
 
-inline std::ostream& operator<<(std::ostream& os, const Block& b) {
+inline std::ostream& print(std::ostream& os, const Block& b) {
   return os << "(" << b.first << ", " << b.second << ")";
 }
 
-inline std::ostream& operator<<(std::ostream& os, const BlockSet& b) {
+inline std::ostream& print(std::ostream& os, const BlockSet& b) {
   os << "{";
   for (BlockSet::const_iterator i = b.begin(); i != b.end(); ++i)
-    os << *i << ", ";
+    print(os, *i) << ", ";
   return os << "}";
 }
 
-inline std::ostream& operator<<(std::ostream& os, const BlockList& b) {
+inline std::ostream& print(std::ostream& os, const BlockList& b) {
   os << "[";
   for (BlockList::const_iterator i = b.begin(); i != b.end(); ++i)
-    os << *i << ", ";
+    print(os, *i) << ", ";
   return os << "]";
+}
+
+inline std::ostream& operator<<(std::ostream& os, const Block& b) {
+  return print(os, b);
+}
+
+inline std::ostream& operator<<(std::ostream& os, const BlockSet& b) {
+  return print(os, b);
+}
+
+inline std::ostream& operator<<(std::ostream& os, const BlockList& b) {
+  return print(os, b);
 }
 
 }  // namespace block

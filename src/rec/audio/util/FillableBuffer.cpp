@@ -1,6 +1,7 @@
 #include "rec/audio/util/FillableBuffer.h"
 #include "rec/audio/util/CopySamples.h"
 #include "rec/util/Math.h"
+#include "rec/util/block/Block.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/MergeBlockSet.h"
 
@@ -25,6 +26,7 @@ block::Size FillableBuffer::doFillNextBlock(const Block& block) {
 
   source_->setNextReadPosition(block.first);
   source_->getNextAudioBlock(info);
+  // print(print(LOG(INFO), block) << "  |   ", filled()) << " -> " << position();
 
   return block.first + info.numSamples;
 }

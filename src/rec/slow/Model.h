@@ -28,29 +28,29 @@ class Model : public Listener<const VirtualFile&>,
   explicit Model(Instance* i);
   virtual ~Model() {}
 
+  virtual void operator()(const VirtualFile& vf);
+  virtual void operator()(SampleTime t) { ScopedLock l(lock_); time_ = t; }
+
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
 
-  virtual void operator()(const VirtualFile& vf);
   void setLoopPointList(const gui::audio::LoopPointList& vf);
-  virtual void operator()(SampleTime t) { ScopedLock l(lock_); time_ = t; }
   void checkChanged();
   void fillOnce();
-  void setNextPosition(SampleTime p);
+  void setTriggerTime(SampleTime p);
   Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
   audio::source::Selection* selectionSource() { return selectionSource_; }
 
-  // const block::BlockSet getTimeSelection() const;  TODO: delete?
   SampleTime length() const { return selectionSource_->getTotalLength(); }
 
  private:
-  bool hasNextPosition(SampleTime t);
+  bool hasTriggerTime(SampleTime t);
 
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<LoopPointList> loopLocker_;
 
   SampleTime time_;
-  SampleTime nextPosition_;
+  SampleTime triggerTime_;
   audio::source::Selection* selectionSource_;
   block::BlockSet timeSelection_;
 

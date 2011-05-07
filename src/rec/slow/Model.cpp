@@ -8,6 +8,7 @@
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/block/Difference.h"
+#include "rec/util/block/FillSeries.h"
 
 namespace rec {
 namespace slow {
@@ -24,7 +25,7 @@ Model::Model(Instance* i) : HasInstance(i),
                             stretchLocker_(&lock_),
                             loopLocker_(&lock_),
                             time_(0),
-                            nextPosition_(-1),
+                            triggerTime_(-1),
                             selectionSource_(NULL) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
@@ -38,32 +39,22 @@ void Model::fillOnce() {
     return;
   }
 
-  if (nextPosition_ == -1) {
+  if (triggerTime_ == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
-    BlockSet selection = audio::getTimeSelection(loopLocker_.get(),
-                                                 buffer->length());
-    BlockSet toFill = difference(selection, buffer->filled());
+    BlockSet fill = difference(timeSelection_, buffer->filled());
+    BlockList fillList = fillSeries(fill, time_, length());
     // DLOG_EVERY_N(INFO, 4) << selection << ", " << buffer->filled()
     // << ", " << toFill;
-    if (!toFill.empty()) {
-      for (BlockSet::iterator i = toFill.begin(); ; ++i) {
-        if (i == toFill.end())
-          buffer->setPosition(toFill.begin()->first);
-        else if (i->second > time_)
-          buffer->setPosition(i->first);
-        else
-          continue;
-        break;
-      }
-    }
+    if (!fillList.empty()) 
+      buffer->setPosition(fillList.begin()->first);
   }
 
   buffer->fillNextBlock();
-  if (nextPosition_ != -1)
-    setNextPosition(nextPosition_);
+  if (triggerTime_ != -1)
+    setTriggerTime(triggerTime_);
 }
 
-void Model::setNextPosition(SampleTime pos) {
+void Model::setTriggerTime(SampleTime pos) {
   {
     ScopedLock l(lock_);
     if (!block::contains(timeSelection_, pos)) {
@@ -73,9 +64,9 @@ void Model::setNextPosition(SampleTime pos) {
 
     ThumbnailBuffer* buffer = thumbnailBuffer_.current();
     if (!buffer || buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
-      nextPosition_ = -1;
+      triggerTime_ = -1;
     } else {
-      nextPosition_ = pos;
+      triggerTime_ = pos;
       if (buffer)
         buffer->setPosition(pos);
       return;

@@ -22,7 +22,7 @@ MouseListener::MouseListener(Instance* i) : HasInstance(i) {
 void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
   if (e.eventComponent == waveform)
-    model()->setNextPosition(timeToSamples(waveform->xToTime(e.x)));
+    model()->setTriggerTime(timeToSamples(waveform->xToTime(e.x)));
 }
 
 void MouseListener::mouseDrag(const MouseEvent& e) {
@@ -30,7 +30,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 
   Waveform* waveform = &components()->waveform_;
   if (e.eventComponent == waveform->timeCursor())
-    model()->setNextPosition(timeToSamples(waveform->xToTime(e.x)));
+    model()->setTriggerTime(timeToSamples(waveform->xToTime(e.x)));
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {
