@@ -63,18 +63,13 @@ void Model::fillOnce() {
     setNextPosition(nextPosition_);
 }
 
-#if 0
-const block::BlockSet Model::getTimeSelection() const {
-  ScopedLock l(lock_);
-  return timeSelection_;
-}
-#endif
-
 void Model::setNextPosition(SampleTime pos) {
   {
     ScopedLock l(lock_);
-    if (!block::contains(timeSelection_, pos))
+    if (!block::contains(timeSelection_, pos)) {
+      DLOG(INFO) << "Click outside selection";
       return;
+    }
 
     ThumbnailBuffer* buffer = thumbnailBuffer_.current();
     if (!buffer || buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
@@ -88,6 +83,11 @@ void Model::setNextPosition(SampleTime pos) {
   }
 
   (*listeners())(pos);
+}
+
+void Model::setLoopPointList(const LoopPointList& loops) {
+  timeSelection_ = audio::getTimeSelection(loops, length());
+  selectionSource_->setSelection(timeSelection_);
 }
 
 void Model::operator()(const VirtualFile& f) {
@@ -112,11 +112,7 @@ void Model::operator()(const VirtualFile& f) {
   loopLocker_.listenTo(setter);
 
   stretchLocker_.set(persist::get<Stretch>(f));
-  LoopPointList list = persist::get<LoopPointList>(f);
-  loopLocker_.set(list);
-  timeSelection_ = audio::getTimeSelection(list, length());
-  selectionSource_->setSelection(timeSelection_);
-
+  loopLocker_.set(persist::get<LoopPointList>(f));
   components()->songData_.setFile(f);
 }
 
@@ -125,6 +121,13 @@ void Model::checkChanged() {
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(listeners());
 }
+
+#if 0
+const block::BlockSet Model::getTimeSelection() const {
+  ScopedLock l(lock_);
+  return timeSelection_;
+}
+#endif
 
 }  // namespace slow
 }  // namespace rec

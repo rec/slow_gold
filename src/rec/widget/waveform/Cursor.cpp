@@ -75,12 +75,11 @@ void Cursor::paint(Graphics& g) {
   float top = static_cast<float>(desc_.widget().margin());
   float height = bounds.getHeight() - 2.0f * top;
   float offset = (componentWidth - displayWidth) / 2.0f;
-
-  p.setColor(Painter::BACKGROUND);
-  g.fillRect(offset, top, displayWidth, height);
-
   bool highlight = !isTimeCursor() && isMouseOverOrDragging();
-  p.setColor(highlight ? Painter::HIGHLIGHT : Painter::FOREGROUND);
+
+  p.setColor(highlight ?  Painter::HIGHLIGHT : Painter::BACKGROUND);
+  g.fillRect(offset, top, displayWidth, height);
+  p.setColor(highlight ? Painter::BACKGROUND : Painter::FOREGROUND);
 
   gui::drawLine(g, desc_.line(), middle, top, middle, height);
 }

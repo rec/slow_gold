@@ -109,8 +109,7 @@ void Listeners::operator()(const LoopPointList& loops) {
         persist::get<VirtualFile>()));  // TODO
     thread::callAsync(&components()->waveform_, &Waveform::addAllCursors,
                       loops);
-    model()->selectionSource()->setSelection(audio::getTimeSelection(
-      loops, model()->selectionSource()->getTotalLength()));
+    model()->setLoopPointList(loops);
   }
 }
 
