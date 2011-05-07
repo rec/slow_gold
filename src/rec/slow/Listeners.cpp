@@ -113,13 +113,6 @@ void Listeners::operator()(const LoopPointList& loops) {
   }
 }
 
-void Listeners::operator()(const ClockTick&) {}
-void Listeners::operator()(const ClockUpdate&) {}
-
-void Listeners::operator()(const CursorTime&) {}
-void Listeners::operator()(const TimeAndMouseEvent&) {}
-void Listeners::operator()(const ZoomProto&) {}
-
 void Listeners::operator()(audio::transport::State state) {
   thread::callAsync(&components()->transportController_,
                     &TransportController::setTransportState, state);
@@ -127,41 +120,6 @@ void Listeners::operator()(audio::transport::State state) {
 }
 
 #ifdef TODO
-
-void Listeners::operator()(SampleTime time) {
-  components().timeController_.setTime(time);
-  components().waveform_.timeCursor()->setTime(time);
-  components().transportController_.setTime(time);
-}
-
-void Listeners::operator()(const audio::TimeSelection& sel) {
-  if (persist::Data<Stretch>* data = stretchyPlayer_.getStretchy()) {
-    TimeRange range(sel);
-    if (range.end_ < 0.0001)
-      range.end_ = length_;
-
-    audio::stretch::Loop loop;
-    loop.set_begin(range.begin_);
-    loop.set_end(range.end_);
-    stretchyPlayer_.getTransport()->setOffset(range.begin_);
-
-    DLOG(INFO) << "operator(): " << range.begin_ << ":" << range.end_;
-    data->set("loop", loop);
-  }
-}
-
-void MainPage::clearTime() {
-  if (stretchyPlayer_.getStretchy())
-    stretchyPlayer_.getStretchy()->clear();
-}
-
-void MainPage::clearSelection() {
-  loops_.clearSelection();
-}
-
-void MainPage::clearLoops() {
-  loops_.clearLoops();
-}
 
 void MainPage::zoomIn(const TimeAndMouseEvent& timeMouse) {
   if (persist::Data<ZoomProto>* z = zoomProto())

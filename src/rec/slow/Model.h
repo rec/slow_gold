@@ -34,6 +34,7 @@ class Model : public Listener<const VirtualFile&>,
   virtual void operator()(SampleTime t) { ScopedLock l(lock_); time_ = t; }
 
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
+  thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
 
   void setLoopPointList(const gui::audio::LoopPointList& vf);
   void checkChanged();

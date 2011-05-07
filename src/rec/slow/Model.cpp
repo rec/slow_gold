@@ -121,7 +121,7 @@ void Model::checkChanged() {
   fileLocker_.broadcastIfChanged(this); // TODO
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(listeners());
-  // zoomLocker_.broadcastIfChanged(listeners());  TODO
+  zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }
 
 #if 0
