@@ -45,7 +45,7 @@ void Model::fillOnce() {
     BlockList fillList = fillSeries(fill, time_, length());
     // DLOG_EVERY_N(INFO, 4) << selection << ", " << buffer->filled()
     // << ", " << toFill;
-    if (!fillList.empty()) 
+    if (!fillList.empty())
       buffer->setPosition(fillList.begin()->first);
   }
 
@@ -79,6 +79,15 @@ void Model::setTriggerTime(SampleTime pos) {
 void Model::setLoopPointList(const LoopPointList& loops) {
   timeSelection_ = audio::getTimeSelection(loops, length());
   selectionSource_->setSelection(timeSelection_);
+  BlockSet::const_iterator i = timeSelection_.begin();
+  for (; i != timeSelection_.end(); ++i) {
+    if (time_ < i->second) {
+      if (time_ < i->first)
+        setTriggerTime(i->first);
+      return;
+    }
+  }
+  setTriggerTime(timeSelection_.begin()->first);
 }
 
 void Model::operator()(const VirtualFile& f) {
