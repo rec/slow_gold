@@ -3,6 +3,7 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Menus.h"
+#include "rec/slow/Slow.h"
 
 namespace rec {
 namespace slow {

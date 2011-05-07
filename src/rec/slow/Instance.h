@@ -1,10 +1,7 @@
 #ifndef __REC_SLOW_INSTANCE__
 #define __REC_SLOW_INSTANCE__
 
-#include "rec/base/base.h"
-
-namespace rec { namespace audio { class Device; }}
-namespace rec { namespace audio { namespace source { class Player; }}}
+#include "rec/slow/Slow.h"
 
 namespace rec {
 namespace slow {
@@ -24,8 +21,8 @@ struct Instance {
   ~Instance();
 
   ptr<Components> components_;
-  ptr<audio::Device> device_;
-  ptr<audio::source::Player> player_;
+  ptr<Device> device_;
+  ptr<Player> player_;
   ptr<Model> model_;
   ptr<Menus> menus_;  // TODO:  move into "Target"
   ptr<Target> target_;  // TODO: rename to "Commands".

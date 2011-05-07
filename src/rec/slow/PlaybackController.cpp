@@ -1,6 +1,7 @@
 #include "rec/slow/PlaybackController.h"
-#include "rec/slow/Components.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/slow/Components.h"
+#include "rec/slow/Slow.h"
 
 namespace rec {
 namespace slow {

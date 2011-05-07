@@ -10,6 +10,7 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
+#include "rec/slow/Slow.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -19,11 +20,10 @@ namespace slow {
 
 struct Instance;
 
-typedef gui::DropTarget<widget::waveform::Waveform,
-                        widget::waveform::WaveformProto> Waveform;
+typedef gui::DropTarget<Waveform, WaveformProto> WaveformComp;
 
 struct Components {
-  Components() : waveform_(widget::waveform::WaveformProto()),
+  Components() : waveform_(WaveformProto()),
                  playbackController_(this),
                  mainPage_(this) {
     playbackController_.setSetter(persist::setter<AppLayout>());
@@ -37,7 +37,7 @@ struct Components {
   gui::audio::TransportController transportController_;
 
   widget::tree::Root directoryTree_;
-  Waveform waveform_;
+  WaveformComp waveform_;
 
   PlaybackController playbackController_;
   MainPage mainPage_;

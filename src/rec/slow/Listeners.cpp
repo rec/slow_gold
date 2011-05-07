@@ -34,7 +34,7 @@ Listeners::Listeners(Instance* i)
   	: HasInstance(i), mouseListener_(new slow::MouseListener(i)) {
   player()->addListener(this);
 
-  Waveform* waveform = &components()->waveform_;
+  WaveformComp* waveform = &components()->waveform_;
   waveform->dropBroadcaster()->addListener(this);
 
   Root* root = &components()->directoryTree_;
@@ -50,7 +50,7 @@ Listeners::Listeners(Instance* i)
 }
 
 void Listeners::operator()(SampleTime time) {
-  Waveform* waveform = &components()->waveform_;
+  // Waveform* waveform = &components()->waveform_;
   // waveform->timeCursor()->setListeningToClock(true); TODO
   player()->setNextReadPosition(time);
 }

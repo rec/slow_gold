@@ -5,6 +5,7 @@
 #include "rec/gui/SetterResizer.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/Slow.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/MainPage.h"
 #include "rec/util/thread/CallAsync.h"

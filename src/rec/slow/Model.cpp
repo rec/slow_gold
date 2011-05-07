@@ -24,6 +24,7 @@ Model::Model(Instance* i) : HasInstance(i),
                             fileLocker_(&lock_),
                             stretchLocker_(&lock_),
                             loopLocker_(&lock_),
+                            zoomLocker_(&lock_),
                             time_(0),
                             triggerTime_(-1),
                             selectionSource_(NULL) {
@@ -120,6 +121,7 @@ void Model::checkChanged() {
   fileLocker_.broadcastIfChanged(this); // TODO
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(listeners());
+  // zoomLocker_.broadcastIfChanged(listeners());  TODO
 }
 
 #if 0

@@ -12,6 +12,8 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/Locker.h"
+#include "rec/slow/Components.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
 namespace slow {
@@ -48,6 +50,7 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<LoopPointList> loopLocker_;
+  thread::Locker<ZoomProto> zoomLocker_;
 
   SampleTime time_;
   SampleTime triggerTime_;
