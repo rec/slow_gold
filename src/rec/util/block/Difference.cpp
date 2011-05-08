@@ -13,7 +13,7 @@ BlockSet difference(const Block& block, const BlockSet& s) {
   BlockSet diff;
   Block b = block;
   iterator i;
-  for (i = s.begin(); i != s.end() && b.second > i->first; ++i) {
+  for (i = s.begin(); i != s.end() && getSize(b) && b.second > i->first; ++i) {
     if (b.first < i->second) {
       if (b.first < i->first) {
         diff.insert(Block(b.first, i->first));
@@ -22,7 +22,7 @@ BlockSet difference(const Block& block, const BlockSet& s) {
 
       if (b.second > i->first) {
         if (b.second <= i->second)
-          b.second = i->first;
+          b.second = i->second;
       }
       b.first = i->second;
     }
@@ -44,7 +44,7 @@ BlockSet difference(const BlockSet& x, const BlockSet& y) {
         result.insert(Block(b.first, j->first));
       b.first = j->second;
     }
-    if (getSize(b))
+    if (getSize(b) > 0)
       result.insert(b);
   }
 

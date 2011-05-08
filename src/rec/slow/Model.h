@@ -35,8 +35,7 @@ class Model : public Listener<const VirtualFile&>,
 
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
   thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
-  void zoomOut();
-  void zoomIn(RealTime time);
+  void zoom(RealTime time, double k);
 
   void setLoopPointList(const gui::audio::LoopPointList& vf);
   void checkChanged();

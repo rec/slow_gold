@@ -49,6 +49,30 @@ TEST(Difference, Biggest) {
   EXPECT_TRUE(*++i == Block(20, 30));
 }
 
+TEST(Difference, BugInCode) {
+  Block b[] = {Block(0, 87)};
+  BlockSet set(b, b + arraysize(b));
+
+  BlockSet diff = difference(Block(0, 86), set);
+  EXPECT_EQ(diff.size(), 0);
+  LOG(ERROR) << diff;
+}
+
+TEST(Difference, BugInCode2) {
+  Block b[] = {Block(0, 86458368)};
+  BlockSet set1(b, b + arraysize(b));
+
+  Block b2[] = {Block(0, 86453757)};
+  BlockSet set2(b2, b2 + arraysize(b2));
+
+  BlockSet diff = difference(set1, set2);
+  EXPECT_EQ(diff.size(), 1);
+  EXPECT_TRUE(*(diff.begin()) == Block(86453757, 86458368));
+
+  diff = difference(set2, set1);
+  EXPECT_EQ(diff.size(), 0);
+}
+
 TEST(Different, Sets) {
   Block a[] = {Block(86453757, 148095673)};
   Block b[] = {Block(86453757, 99413501),

@@ -45,6 +45,7 @@ void Model::fillOnce() {
   if (triggerTime_ == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(timeSelection_, buffer->filled());
+    print(print(print(DLOG(INFO), timeSelection_) << " !", buffer->filled()) << ", ", fill);
     BlockList fillList = fillSeries(fill, time_, length());
     // DLOG_EVERY_N(INFO, 4) << selection << ", " << buffer->filled()
     // << ", " << toFill;
@@ -79,14 +80,9 @@ void Model::setTriggerTime(SampleTime pos) {
   (*listeners())(pos);
 }
 
-void Model::zoomIn(RealTime time) {
-  ZoomProto z(widget::waveform::zoomIn(zoomLocker_.get(), realLength(), time));
+void Model::zoom(RealTime time, double k) {
+  ZoomProto z(widget::waveform::zoom(zoomLocker_.get(), realLength(), time, k));
   persist::set<ZoomProto>(z, file_);
-}
-
-void Model::zoomOut() {
-  ZoomProto zoom(widget::waveform::zoomOut(zoomLocker_.get(), realLength()));
-  persist::set<ZoomProto>(zoom, file_);
 }
 
 void Model::setLoopPointList(const LoopPointList& loops) {

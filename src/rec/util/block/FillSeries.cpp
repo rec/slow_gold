@@ -18,7 +18,7 @@ BlockList fillSeries(const BlockSet& selection, Size position, Size length) {
         position = std::max(position, i->first);
       }
       Size size = std::min(length, i->second - position);
-      DCHECK(size);
+      DCHECK(size > 0);
       result.push_back(makeBlock(position, position + size));
       length -= size;
     }

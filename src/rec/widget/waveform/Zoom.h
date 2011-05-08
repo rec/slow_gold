@@ -8,8 +8,9 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-ZoomProto zoomIn(const ZoomProto& z, RealTime length, RealTime time);
-ZoomProto zoomOut(const ZoomProto& z, RealTime length);
+// The factor of k indicates how much wider or narrower the displayed area will
+// be after the zoom.
+ZoomProto zoom(const ZoomProto& z, RealTime length, RealTime time, double k);
 
 }  // namespace waveform
 }  // namespace widget

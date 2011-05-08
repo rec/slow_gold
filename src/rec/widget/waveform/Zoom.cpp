@@ -4,32 +4,19 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-ZoomProto zoomIn(const ZoomProto& z, RealTime length, RealTime time) {
+ZoomProto zoom(const ZoomProto& z, RealTime length, RealTime t, double k) {
   ZoomProto zoom(z);
-  RealTime begin = zoom.begin();
-  RealTime end = zoom.end();
-  if (!end)
-    end = length;  // TODO:  delete these?
+  RealTime b = zoom.begin();
+  RealTime e = zoom.end();
+  if (!e)
+    e = length;  // TODO:  delete these?
 
-  RealTime size = end - begin;
-  RealTime middle = time;
-  zoom.set_begin(juce::jmax(0.0, middle - size / 4.0));
-  zoom.set_end(juce::jmin(middle + size / 4.0, length));
-
-  return zoom;
-}
-
-ZoomProto zoomOut(const ZoomProto& z, RealTime length) {
-  ZoomProto zoom(z);
-  RealTime begin = zoom.begin();
-  RealTime end = zoom.end();
-  if (!end)
-    end = length;
-
-  RealTime size = end - begin;
-  RealTime middle = begin + (end - begin) / 2.0;
-  zoom.set_begin(juce::jmax(0.0, middle - size));
-  zoom.set_end(juce::jmin(middle + size, length));
+  zoom.set_begin(std::max(0.0, k * b + (1.0 - k) * t));
+  zoom.set_end(std::min(length, k * e + (1.0 - k) * t));
+  if (zoom.end() < 0) {
+    LOG(ERROR) << "Bad zoom: " << zoom.end();
+    zoom.set_end(length);
+  }
 
   return zoom;
 }

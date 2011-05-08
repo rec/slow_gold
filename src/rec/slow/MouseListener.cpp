@@ -1,3 +1,5 @@
+#include <math.h>
+
 #include "rec/slow/MouseListener.h"
 #include "rec/audio/Audio.h"
 #include "rec/slow/Components.h"
@@ -20,11 +22,20 @@ MouseListener::MouseListener(Instance* i) : HasInstance(i) {
   listenTo(&components()->waveform_);
 }
 
+static double const MAX_WHEEL = 0.50;
+static double const RATIO = 4.0;
+
+static double zoomFunction(double increment) {
+  return pow(RATIO, increment / MAX_WHEEL);
+}
+
 void MouseListener::operator()(const MouseWheelEvent& e) {
-  if (e.yIncrement_ > 0)
-    model()->zoomIn(components()->waveform_.xToTime(e.event_->x));
-  else
-    model()->zoomOut();
+  Waveform* waveform = &components()->waveform_;
+  if (e.event_->eventComponent == waveform) {
+
+    model()->zoom(waveform->xToTime(e.event_->x),
+                  zoomFunction(e.yIncrement_));
+  }
 }
 
 void MouseListener::mouseDown(const MouseEvent& e) {
