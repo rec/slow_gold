@@ -18,7 +18,7 @@ CachedThumbnail::CachedThumbnail(const File& file, int compression, int length)
     ptr<juce::FileInputStream> out(file_.createInputStream());
     if (out) {
       thumbnail_.loadFrom(*out);
-      cacheWritten_ = true;
+      cacheWritten_ = thumbnail_.isFullyLoaded();
     } else {
       LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
     }
@@ -30,7 +30,9 @@ void CachedThumbnail::addListener(Listener<juce::AudioThumbnail*>* listener) {
   (*listener)(&thumbnail_);
 }
 
-CachedThumbnail::~CachedThumbnail() {}
+CachedThumbnail::~CachedThumbnail() {
+  writeThumbnail();
+}
 
 void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
   thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
