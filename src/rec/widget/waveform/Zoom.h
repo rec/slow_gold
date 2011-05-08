@@ -8,8 +8,8 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-ZoomProto zoomIn(const ZoomProto& z, int length, double time);
-ZoomProto zoomOut(const ZoomProto& z, int length);
+ZoomProto zoomIn(const ZoomProto& z, RealTime length, RealTime time);
+ZoomProto zoomOut(const ZoomProto& z, RealTime length);
 
 }  // namespace waveform
 }  // namespace widget

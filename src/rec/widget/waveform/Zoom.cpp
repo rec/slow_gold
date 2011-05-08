@@ -4,32 +4,32 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-ZoomProto zoomIn(const ZoomProto& z, int length, double time) {
+ZoomProto zoomIn(const ZoomProto& z, RealTime length, RealTime time) {
   ZoomProto zoom(z);
-  double begin = zoom.begin();
-  double end = zoom.end();
+  RealTime begin = zoom.begin();
+  RealTime end = zoom.end();
   if (!end)
-    end = length;
+    end = length;  // TODO:  delete these?
 
-  double size = end - begin;
-  double middle = time;
+  RealTime size = end - begin;
+  RealTime middle = time;
   zoom.set_begin(juce::jmax(0.0, middle - size / 4.0));
-  zoom.set_end(juce::jmin(middle + size + 4.0, static_cast<double>(length)));
+  zoom.set_end(juce::jmin(middle + size / 4.0, length));
 
   return zoom;
 }
 
-ZoomProto zoomOut(const ZoomProto& z, int length) {
+ZoomProto zoomOut(const ZoomProto& z, RealTime length) {
   ZoomProto zoom(z);
-  double begin = zoom.begin();
-  double end = zoom.end();
-
+  RealTime begin = zoom.begin();
+  RealTime end = zoom.end();
   if (!end)
     end = length;
-  double size = end - begin;
-  double middle = begin + (end - begin) / 2.0;
+
+  RealTime size = end - begin;
+  RealTime middle = begin + (end - begin) / 2.0;
   zoom.set_begin(juce::jmax(0.0, middle - size));
-  zoom.set_end(juce::jmin(middle + size, static_cast<double>(length)));
+  zoom.set_end(juce::jmin(middle + size, length));
 
   return zoom;
 }

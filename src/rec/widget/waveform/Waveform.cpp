@@ -148,6 +148,15 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
   resized();
 }
 
+void Waveform::operator()(const ZoomProto& zp) {
+  ScopedLock l(lock_);
+  zoom_ = zp;
+  if (!zoom_.has_end())  // TODO:  get length properly.
+    zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
+
+  resized();
+}
+
 void Waveform::layoutCursors() {
   for (int i = getNumChildComponents(); i > 0; --i) {
     Component* comp = getChildComponent(i - 1);

@@ -35,6 +35,8 @@ class Model : public Listener<const VirtualFile&>,
 
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
   thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
+  void zoomOut();
+  void zoomIn(RealTime time);
 
   void setLoopPointList(const gui::audio::LoopPointList& vf);
   void checkChanged();
@@ -44,9 +46,12 @@ class Model : public Listener<const VirtualFile&>,
   audio::source::Selection* selectionSource() { return selectionSource_; }
 
   SampleTime length() const { return selectionSource_->getTotalLength(); }
+  RealTime realLength() const { return audio::samplesToTime(length()); }
 
  private:
   bool hasTriggerTime(SampleTime t);
+
+  VirtualFile file_;
 
   thread::Locker<VirtualFile> fileLocker_;
   thread::Locker<Stretch> stretchLocker_;

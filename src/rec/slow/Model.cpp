@@ -9,6 +9,7 @@
 #include "rec/slow/Threads.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/FillSeries.h"
+#include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
 namespace slow {
@@ -16,6 +17,7 @@ namespace slow {
 using namespace rec::audio::util;
 using namespace rec::audio::source;
 using namespace rec::util::block;
+using namespace rec::widget::waveform;
 
 static const int PARAMETER_WAIT = 1000;
 static const int PRELOAD = 10000;
@@ -77,6 +79,16 @@ void Model::setTriggerTime(SampleTime pos) {
   (*listeners())(pos);
 }
 
+void Model::zoomIn(RealTime time) {
+  ZoomProto z(widget::waveform::zoomIn(zoomLocker_.get(), realLength(), time));
+  persist::set<ZoomProto>(z, file_);
+}
+
+void Model::zoomOut() {
+  ZoomProto zoom(widget::waveform::zoomOut(zoomLocker_.get(), realLength()));
+  persist::set<ZoomProto>(zoom, file_);
+}
+
 void Model::setLoopPointList(const LoopPointList& loops) {
   timeSelection_ = audio::getTimeSelection(loops, length());
   selectionSource_->setSelection(timeSelection_);
@@ -96,6 +108,7 @@ void Model::operator()(const VirtualFile& f) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
     return;
   }
+  file_ = f;
   player()->setState(audio::transport::STOPPED);
 
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
@@ -110,6 +123,7 @@ void Model::operator()(const VirtualFile& f) {
   components()->loops_.setData(setter);
 
   stretchLocker_.listenTo(persist::setter<Stretch>(f));
+  zoomLocker_.listenTo(persist::setter<ZoomProto>(f));
   loopLocker_.listenTo(setter);
 
   stretchLocker_.set(persist::get<Stretch>(f));

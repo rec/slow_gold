@@ -46,10 +46,7 @@ class Waveform : public Component,
   virtual void paint(Graphics& g);
   virtual void repaint() { Component::repaint(); }
   virtual void operator()(juce::AudioThumbnail* t) { setAudioThumbnail(t); }
-  virtual void operator()(const ZoomProto& p) {
-    ScopedLock l(lock_);
-    zoom_ = p;
-  }
+  virtual void operator()(const ZoomProto& p);
 
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();

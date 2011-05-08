@@ -121,16 +121,6 @@ void Listeners::operator()(audio::transport::State state) {
 
 #ifdef TODO
 
-void MainPage::zoomIn(const TimeAndMouseEvent& timeMouse) {
-  if (persist::Data<ZoomProto>* z = zoomProto())
-    z->set(Address(), waveform::zoomIn(*z, length_, timeMouse.time_));
-}
-
-void MainPage::zoomOut() {
-  if (persist::Data<ZoomProto>* z = zoomProto())
-    z->set(Address(), waveform::zoomOut(*z, length_));
-}
-
 void MainPage::loadRecentFile(int menuItemId) {
   gui::RecentFiles recent = gui::getSortedRecentFiles();
   const VirtualFile& file = recent.file(menuItemId).file();
@@ -156,38 +146,6 @@ void MainPage::paste() {
 static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100;
 
-void Waveform::operator()(const ZoomProto& zp) {
-  ScopedLock l(lock_);
-  zoom_ = zp;
-  if (!zoom_.has_end())
-    zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
-
-  resized();
-}
-
-void Waveform::operator()(const gui::LoopPointList& loopPoints) {
-}
-
-  class ZoomData : public DataListener<ZoomProto> {
-   public:
-    ZoomData(Waveform* waveform) : waveform_(waveform) {}
-    virtual void operator()(const ZoomProto& zoom) { (*waveform_)(zoom); }
-
-   private:
-    Waveform* const waveform_;
-
-    DISALLOW_COPY_ASSIGN_AND_EMPTY(ZoomData);
-  };
-
-  ZoomData zoomData_;
-
-void PlaybackController::operator()(const Stretch& desc) {
-  thread::callAsync(&stretchyController_,
-                    &gui::StretchyController::enableSliders,
-                    !desc.stretch().disabled());
-  timeController_(desc);
-}
-
 void PlaybackController::operator()(RealTime time) {
   enableLoopPointButton(loops_.isNewLoopPoint(time));  // TODO
 }
@@ -198,13 +156,6 @@ void PlaybackController::enableLoopPointButton(bool e) {
                       &gui::TransportController::enableLoopPointButton,
                       e);
   }
-}
-
-void Loops::operator()(const widget::waveform::CursorTime& ct) {
-  if (ct.cursor_ >= 0)
-    getData()->set(Address("loop_point", ct.cursor_, "time"), ct.time_);
-  else
-    timeBroadcaster_.broadcast(ct.time_);
 }
 
 void StretchyPlayer::operator()(const VirtualFile& file) {
@@ -235,30 +186,6 @@ void StretchyPlayer::operator()(const VirtualFile& file) {
 
   broadcast(file);
 }
-
-void StretchyPlayer::operator()(const double& t) {
-  // This is only called when the user clicks in the window to set a new
-  // playback position.
-  if (stretchy_ && (!doubleRunny_ || doubleRunny_->fillFromPosition(44100 * t)))
-    transportSource_->setPosition(stretchy_->get().stretch().time_scale() * t);
-
-  else
-    LOG(ERROR) << "Failed to fill buffer.";
-}
-
-gui::CachedThumbnail* StretchyPlayer::cachedThumbnail() {
-  return doubleRunny_? doubleRunny_->cachedThumbnail() : NULL;
-}
-
-int StretchyPlayer::length() const {
-  return doubleRunny_ ? doubleRunny_->getTotalLength() : 0;
-}
-
-#ifdef TODO
-    double pos = transportSource_.getCurrentPosition();
-    if (pos <= offset_ || pos >= offset_ + transportSource_.getLengthInSeconds())
-      setPosition(offset_);
-#endif
 
 #endif
 

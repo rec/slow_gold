@@ -3,9 +3,10 @@
 #include "rec/slow/Components.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
+#include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
 #include "rec/widget/waveform/Waveform.h"
-#include "rec/widget/waveform/Cursor.h"
+#include "rec/widget/waveform/Zoom.h"
 
 namespace rec {
 namespace slow {
@@ -17,6 +18,13 @@ using namespace rec::util::block;
 MouseListener::MouseListener(Instance* i) : HasInstance(i) {
   components()->waveform_.addMouseListener(this, true);
   listenTo(&components()->waveform_);
+}
+
+void MouseListener::operator()(const MouseWheelEvent& e) {
+  if (e.yIncrement_ > 0)
+    model()->zoomIn(components()->waveform_.xToTime(e.event_->x));
+  else
+    model()->zoomOut();
 }
 
 void MouseListener::mouseDown(const MouseEvent& e) {
@@ -56,11 +64,14 @@ void MouseListener::mouseDoubleClick(const MouseEvent& e) {
     DLOG(INFO) << "Opened a new file!";
 }
 
-void MouseListener::operator()(const MouseWheelEvent& e) {
-  DLOG(INFO) << "Here: " << e.xIncrement_ << ", " << e.yIncrement_;
-}
-
 #ifdef TODO
+
+void PlaybackController::operator()(const Stretch& desc) {
+  thread::callAsync(&stretchyController_,
+                    &gui::StretchyController::enableSliders,
+                    !desc.stretch().disabled());
+  timeController_(desc);
+}
 
 int Cursor::getDragX(const MouseEvent& e) const {
   return getX() + e.x - mouseDragX_;
