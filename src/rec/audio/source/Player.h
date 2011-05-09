@@ -7,12 +7,13 @@
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
+namespace audio { class Device; }
+
 namespace audio {
 namespace source {
 
-// Player is a non-GUI element with:
-// * AudioTransportSource
-// * AudioSourcePlayer
+class Buffered;
+class Timey;
 
 class Player : public Broadcaster<transport::State>, public juce::ChangeListener {
  public:
@@ -21,16 +22,21 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
 
   void setState(transport::State state = transport::RUNNING);
 
+  // Source must be pre-prepared.
   void setSource(Source* source);
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
   SampleTime getNextReadPosition() { return timer_->getNextReadPosition(); }
   void setNextReadPosition(SampleTime t) { timer_->setNextReadPosition(t); }
+
   transport::State state() const;
-  virtual void changeListenerCallback(ChangeBroadcaster*);
   Device* device() { return device_; }
-  Broadcaster<SampleTime>* timeBroadcaster() { return timer_.get(); }
+  Broadcaster<SampleTime>* timeBroadcaster() { return timer_; }
+  virtual void changeListenerCallback(ChangeBroadcaster*);
+  Buffered* buffered() { return buffered_; }
+
+  static const int BUFFER_SIZE = 2048;
 
  private:
   CriticalSection lock_;
@@ -38,7 +44,8 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   AudioTransportSource transportSource_;
   AudioSourcePlayer player_;
   Device* device_;
-  ptr<Timey> timer_;
+  Timey* timer_;
+  Buffered* buffered_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

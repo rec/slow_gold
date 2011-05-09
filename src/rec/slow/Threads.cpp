@@ -1,6 +1,6 @@
 #include "rec/slow/Threads.h"
-//#include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/audio/source/Buffered.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
@@ -13,33 +13,16 @@
 namespace rec {
 namespace slow {
 
+using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 using namespace rec::audio::util;
 using namespace rec::util::thread;
 
 static const int THREAD_STOP_PERIOD = 5000;
+static const int BUFFER_FILL_CHUNK = Player::BUFFER_SIZE / 2;
 
-void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
-void fetch(Instance* i) { i->model_->fillOnce(); }
-void updateParameters(Instance* i) { i->model_->checkChanged(); }
-
-void buffer(Instance* i) {
-}
-
-void pitch(Instance* i) {}
-
-
-Threads::Threads(Instance* i) : HasInstance(i), fetchThread_(NULL) {}
-
-void Threads::startAll() {
-  start(&browser, "Browser", 1000);
-	fetchThread_ = start(&fetch, "Fetch", 10);
-  start(&updateParameters, "Parameter", 100);
-  start(&buffer, "Buffer", 20);
-  // start(&pitch, "Pitch", 100);
-
-  (*model()->fileLocker())(persist::get<VirtualFile>());
-}
+Threads::Threads(Instance* i) : HasInstance(i),
+                                fetchThread_(NULL), bufferThread_(NULL) {}
 
 Threads::~Threads() {
   stop();
@@ -75,6 +58,37 @@ Thread* Threads::start(Callback* cb, const String& name, int wait) {
   threads_.push_back(t.get());
   t->startThread();
   return t.transfer();
+}
+
+namespace {
+
+void browser(Instance* i) {
+  i->components_->directoryTree_.checkVolumes();
+}
+
+void fetch(Instance* i) {
+  i->model_->fillOnce();
+}
+
+void updateParameters(Instance* i) {
+  i->model_->checkChanged();
+}
+
+void buffer(Instance* i) {
+  while (i->player_->buffered()->fillBuffer(BUFFER_FILL_CHUNK))
+    Thread::yield();
+}
+
+}  // namespace
+
+void Threads::startAll() {
+  start(&browser, "Browser", 1000);
+	fetchThread_ = start(&fetch, "Fetch", 10);
+  start(&updateParameters, "Parameter", 100);
+  player()->buffered()->setNotifyThread(start(&buffer, "Buffer", 10));
+  // start(&pitch, "Pitch", 100);
+
+  (*model()->fileLocker())(persist::get<VirtualFile>());
 }
 
 }  // namespace slow

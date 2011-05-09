@@ -11,7 +11,8 @@ Buffered::Buffered(Source* source, SampleTime size)
     : source_(source),
       buffer_(2, size),
       circular_(size),
-      notifyThread_(NULL) {
+      notifyThread_(NULL),
+      nextEnd_(0) {
   setBuffer(&buffer_);
 }
 

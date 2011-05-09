@@ -11,7 +11,8 @@ Wrappy::Wrappy(PositionableAudioSource* s) : position_(0), prepared_(false) {
 }
 
 SampleTime Wrappy::mod(SampleTime x) const {
-  return util::mod(x, getTotalLength());
+  SampleTime length = getTotalLength();
+  return length ? util::mod(x, length) : 0;
 }
 
 SampleTime Wrappy::getNextReadPosition() const {

@@ -30,12 +30,14 @@ class Threads : public HasInstance {
   Thread* start(InstanceFunction f, const String& name, int waitTime = 0);
   Thread* start(Callback* cb, const String& name, int waitTime = 0);
   Thread* fetchThread() { return fetchThread_; }
+  Thread* bufferThread() { return bufferThread_; }
 
  private:
   typedef std::vector<Thread*> ThreadList;
 
   ThreadList threads_;
   Thread* fetchThread_;
+  Thread* bufferThread_;
   CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Threads);

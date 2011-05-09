@@ -24,6 +24,7 @@ class Buffered : public BufferSource {
   bool fillBuffer(SampleTime chunkSize);
 
   void setNotifyThread(Thread* t) { notifyThread_ = t; }
+  Thread* notifyThread() { return notifyThread_; }
   void notify() { if (notifyThread_) notifyThread_->notify(); }
   void setSource(Source* source, SampleTime offset);
 
