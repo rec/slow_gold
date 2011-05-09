@@ -18,13 +18,14 @@ namespace source {
 
 class BufferSource : public Source {
  public:
-  explicit BufferSource(const Buffer& buffer);
+  BufferSource(const Buffer* buffer = NULL);
+  void setBuffer(const Buffer* b) { buffer_ = b; }
 
   virtual void getNextAudioBlock(const Info& i);
   virtual void setNextReadPosition(int64 p);
 
   virtual int64 getNextReadPosition() const { return position_; };
-  virtual int64 getTotalLength() const { return buffer_.getNumSamples();  }
+  virtual int64 getTotalLength() const { return buffer_->getNumSamples();  }
   virtual bool isLooping() const { return looping_; }
   virtual void setLooping (bool shouldLoop) { looping_ = shouldLoop; }
 
@@ -32,11 +33,11 @@ class BufferSource : public Source {
   virtual void releaseResources() {}
 
  private:
-  const Buffer& buffer_;
+  const Buffer* buffer_;
   int64 position_;
   bool looping_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(BufferSource);
+  DISALLOW_COPY_AND_ASSIGN(BufferSource);
 };
 
 }  // namespace source

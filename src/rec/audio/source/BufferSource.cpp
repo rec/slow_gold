@@ -4,12 +4,12 @@ namespace rec {
 namespace audio {
 namespace source {
 
-BufferSource::BufferSource(const Buffer& buffer)
-    : buffer_(buffer), position_(0), looping_(true) {
+BufferSource::BufferSource(const Buffer* b)
+    : buffer_(b), position_(0), looping_(true) {
 }
 
 void BufferSource::getNextAudioBlock(const Info& i) {
-  BufferTime from(const_cast<Buffer*>(&buffer_), position_);
+  BufferTime from(const_cast<Buffer*>(buffer_), position_);
   BufferTime to(i.buffer, i.startSample);
 
   for (SampleTime toCopy = i.numSamples; toCopy > 0; ) {

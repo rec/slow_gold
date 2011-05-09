@@ -23,7 +23,9 @@ void browser(Instance* i) { i->components_->directoryTree_.checkVolumes(); }
 void fetch(Instance* i) { i->model_->fillOnce(); }
 void updateParameters(Instance* i) { i->model_->checkChanged(); }
 
-void persist(Instance* i) {}
+void buffer(Instance* i) {
+}
+
 void pitch(Instance* i) {}
 
 
@@ -33,7 +35,7 @@ void Threads::startAll() {
   start(&browser, "Browser", 1000);
 	fetchThread_ = start(&fetch, "Fetch", 10);
   start(&updateParameters, "Parameter", 100);
-  // start(&persist, "Persist", 100);
+  start(&buffer, "Buffer", 20);
   // start(&pitch, "Pitch", 100);
 
   (*model()->fileLocker())(persist::get<VirtualFile>());

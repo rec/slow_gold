@@ -14,15 +14,15 @@ struct Circular : public Range<Type> {
   explicit Circular(Type c) : Range<Type>(0, 0), capacity_(c) {}
   Circular(Type b, Type e, Type c) : Range<Type>(b, e), capacity_(c) {}
 
-  void consume(Type count) { fillOrConsume(count, capacity_, false); }
-  void fill(Type count) { fillOrConsume(count, capacity_, true); }
+  void consume(Type count) { fillOrConsume(count, false); }
+  void fill(Type count) { fillOrConsume(count, true); }
 
   Type toFill() const { return (capacity_ - this->size()); }
   bool isFull() const { return !toFill(); }
 
 #if 1
-  Type wrap() const { 
-    return  (this->end_ > capacity_) ? this->end_ - capacity_ : 0; 
+  Type wrap() const {
+    return  (this->end_ > capacity_) ? this->end_ - capacity_ : 0;
   }
 
   Range<Type> fillable() const {
@@ -36,6 +36,31 @@ struct Circular : public Range<Type> {
   }
 
 #endif
+
+  void fillOrConsume(Type count, bool isFill) {
+    DCHECK_GE(count, 0);
+
+    Type available = isFill ? (capacity_ - this->size()) : this->size();
+    if (count > available) {
+      LOG(ERROR) << "count=" << count << " > available=" << available;
+      count = available;
+    }
+
+    if (isFill) {
+      this->end_ += count;
+    } else {
+      this->begin_ += count;
+      if (this->begin_ >= capacity_) {
+        this->begin_ -= capacity_;
+        if (this->end_ >= capacity_) {
+          this->end_ -= capacity_;
+        } else {
+          LOG(ERROR) << this->begin_ << "," << this->end_ << "," << capacity_;
+        }
+      }
+    }
+  }
+
 };
 
 }  // namespace util

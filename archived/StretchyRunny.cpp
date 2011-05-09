@@ -19,16 +19,6 @@ ThreadedSource* stretchyRunny(const RunnyProto& desc,
   // CHECK_GT(loop.loop().end(), 0.001);
   ptr<PositionableAudioSource> source(s);
 
-  const Stretch& stretch = loop.stretch();
-  static const double DELTA = 0.00001;
-  double timeRatio = timeScale(stretch);
-  if (!(stretch.passthrough_when_disabled() &&
-        near(timeRatio, 1.0, DELTA) &&
-        near(stretch::pitchScale(stretch), 1.0, DELTA))) {
-    source.reset(new Stretchy(source.transfer(), stretch));
-  }
-
-  source.reset(new Stereo(source.transfer(), stretch.stereo()));
 
   if (loop.has_loop()) {
     // int len = s->getTotalLength();

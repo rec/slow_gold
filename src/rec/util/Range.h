@@ -68,31 +68,6 @@ struct Range {
     }
     return ranges;
   }
-
-  void fillOrConsume(Type count, Type capacity, bool isFill) {
-    DCHECK_GE(count, 0);
-
-    Type available = isFill ? (capacity - size()) : size();
-    if (count > available) {
-      LOG(ERROR) << "count=" << count << " > available=" << available;
-      count = available;
-    }
-
-    if (isFill) {
-      end_ += count;
-    } else {
-      begin_ += count;
-      if (begin_ >= capacity) {
-        begin_ -= capacity;
-        if (end_ >= capacity) {
-          end_ -= capacity;
-        } else {
-          LOG(ERROR) << begin_ << "," << end_ << "," << capacity;
-        }
-      }
-    }
-  }
-
 };
 
 typedef Range<RealTime>::Set TimeSelection;

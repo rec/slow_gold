@@ -110,7 +110,7 @@ void Model::operator()(const VirtualFile& f) {
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
   buffer->thumbnail()->addListener(&components()->waveform_);
-  selectionSource_ = new Selection(new BufferSource(*buffer->buffer()));
+  selectionSource_ = new Selection(new BufferSource(buffer->buffer()));
   player()->setSource(selectionSource_);
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
@@ -125,6 +125,19 @@ void Model::operator()(const VirtualFile& f) {
   stretchLocker_.set(persist::get<Stretch>(f));
   loopLocker_.set(persist::get<LoopPointList>(f));
   components()->songData_.setFile(f);
+
+#ifdef TODO
+  const Stretch& stretch = loop.stretch();
+  static const double DELTA = 0.00001;
+  double timeRatio = timeScale(stretch);
+  if (!(stretch.passthrough_when_disabled() &&
+        near(timeRatio, 1.0, DELTA) &&
+        near(stretch::pitchScale(stretch), 1.0, DELTA))) {
+    source.reset(new Stretchy(source.transfer(), stretch));
+  }
+
+  source.reset(new Stereo(source.transfer(), stretch.stereo()));
+#endif
 }
 
 void Model::checkChanged() {

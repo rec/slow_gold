@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="NmmrjBvnm" name="tests">
+  <MAINGROUP id="FLPrKypsJ" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -110,6 +110,10 @@
           </GROUP>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
+          <FILE compile="1" file="../../src/rec/audio/source/Buffered.cpp" id="JJ6k4IjLE"
+                name="Buffered.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/Buffered.h" id="Tfi6DZssN"
+                name="Buffered.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/BufferSource.cpp"
                 id="fEZOtR19P" name="BufferSource.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
@@ -122,20 +126,12 @@
                 id="Fwv6GchDP" name="CreateSourceAndLoadMetadata.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/CreateSourceAndLoadMetadata.h"
                 id="b3QZjjZet" name="CreateSourceAndLoadMetadata.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/DoubleRunnyBuffer.cpp"
-                id="Nla7QcCaM" name="DoubleRunnyBuffer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/DoubleRunnyBuffer.h"
-                id="f0hsu9MJo" name="DoubleRunnyBuffer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="Ok5da1Dyg"
                 name="Empty.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Player.cpp" id="AAwfYTGI7"
                 name="Player.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Player.h" id="wrc63BAb2"
                 name="Player.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Runny.cpp" id="pO9kyeUMd"
-                name="Runny.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Runny.h" id="WkdDpEVAB"
-                name="Runny.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Runny_test.cpp"
                 id="t6SIJA1Bv" name="Runny_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Seggy.h" id="am783jWco"
@@ -156,16 +152,6 @@
                 name="Stretchy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Stretchy_test.cpp"
                 id="F9pVjTzFM" name="Stretchy_test.cpp" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/StretchyRunny.cpp"
-                id="JIHUXD9fG" name="StretchyRunny.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/StretchyRunny.h"
-                id="dW4aaU58T" name="StretchyRunny.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Switching.cpp" id="dG2aXFyOL"
-                name="Switching.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Switching.h" id="e4q6HFNej"
-                name="Switching.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Switching_test.cpp"
-                id="uB2CW5Nvv" name="Switching_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/TestSource_test.cpp"
                 id="OYgIr7Fpk" name="TestSource_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/TestSource_test.h"
@@ -741,6 +727,8 @@
               id="5Cdg3CmFq" name="PlaybackController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/PlaybackController.h" id="S5oFU8QHv"
               name="PlaybackController.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/Slow.h" id="BbsTdmCSv" name="Slow.h"
+              resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Target.cpp" id="SsyocmwFt"
               name="Target.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Target.h" id="p6tN9hJHF"
@@ -996,6 +984,8 @@
                 id="kH5xE6zkU" name="CursorStates.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/CursorTime.h"
                 id="Unidky0dE" name="CursorTime.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/widget/waveform/MouseWheelEvent.h"
+                id="rd8YRemUy" name="MouseWheelEvent.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/TimeAndMouseEvent.h"
                 id="yknXgHXIr" name="TimeAndMouseEvent.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/waveform/Waveform.cpp"
@@ -1173,7 +1163,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="xRpfXv4i4" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="B6kHrUReM" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
