@@ -45,10 +45,7 @@ void Model::fillOnce() {
   if (triggerTime_ == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(timeSelection_, buffer->filled());
-    print(print(print(DLOG(INFO), timeSelection_) << " !", buffer->filled()) << ", ", fill);
     BlockList fillList = fillSeries(fill, time_, length());
-    // DLOG_EVERY_N(INFO, 4) << selection << ", " << buffer->filled()
-    // << ", " << toFill;
     if (!fillList.empty())
       buffer->setPosition(fillList.begin()->first);
   }

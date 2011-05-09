@@ -16,7 +16,9 @@ class Buffered : public BufferSource {
   // The source must already have been prepared.
   Buffered(Source* source, SampleTime size);
 
-  virtual ~Buffered() {}
+  virtual ~Buffered() {
+    DLOG(INFO) << "DELETED!";
+  }
   virtual void getNextAudioBlock(const Info& info);
 
   // Try to pre-fill the lookahead buffer one slot.

@@ -17,12 +17,14 @@ Player::Player(Device* d) : device_(d) {
   player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
   timer_ = new Timey;
-  buffered_ = new Buffered(timer_, BUFFER_SIZE);
-  transportSource_.setSource(buffered_);
+  buffered_.reset(new Buffered(timer_, BUFFER_SIZE));
+  transportSource_.setSource(buffered_.get());
   setSource(new Empty);
 }
 
-Player::~Player() {}
+Player::~Player() {
+  transportSource_.setSource(NULL);
+}
 
 void Player::setState(State s) {
   if (s != state()) {
