@@ -13,22 +13,29 @@ namespace source {
 // Buffered is a thread-based pre-fetching PositionableAudioSource wrapper.
 class Buffered : public BufferSource {
  public:
-  Buffered(PositionableAudioSource* source, SampleTime size);
+  // The source must already have been prepared.
+  Buffered(Source* source, SampleTime size);
 
   virtual ~Buffered() {}
-  virtual void getNextAudioBlock(const AudioSourceChannelInfo& info);
+  virtual void getNextAudioBlock(const Info& info);
 
   // Try to pre-fill the lookahead buffer one slot.
-  void fillOnce(SampleTime chunkSize);
+  // Return true if some new bytes were filled, false if the buffer was full.
+  bool fillBuffer(SampleTime chunkSize);
 
-  bool isFull() const { ScopedLock l(lock_); return circular_.isFull(); }
+  void setNotifyThread(Thread* t) { notifyThread_ = t; }
+  void notify() { if (notifyThread_) notifyThread_->notify(); }
+  void setSource(Source* source, SampleTime offset);
 
  private:
   ptr<Source> source_;
-  AudioSampleBuffer buffer_;
+  Buffer buffer_;
   Circular<SampleTime> circular_;
   CriticalSection lock_;
-  bool prepared_;
+  Thread* notifyThread_;
+
+  ptr<Source> nextSource_;
+  SampleTime nextEnd_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Buffered);
 };

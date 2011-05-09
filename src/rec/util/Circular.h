@@ -20,10 +20,11 @@ struct Circular : public Range<Type> {
   Type toFill() const { return (capacity_ - this->size()); }
   bool isFull() const { return !toFill(); }
 
-#if 1
-  Type wrap() const {
-    return  (this->end_ > capacity_) ? this->end_ - capacity_ : 0;
+  Type wrap(Type index) const {
+    return  (index > capacity_) ? index - capacity_ : 0;
   }
+
+  Type wrap() const { return wrap(this->end_); }
 
   Range<Type> fillable() const {
     Type w = wrap();
@@ -34,8 +35,6 @@ struct Circular : public Range<Type> {
   Range<Type> consumable() const {
     return Range<Type>(this->begin_, std::min(this->end_, capacity_));
   }
-
-#endif
 
   void fillOrConsume(Type count, bool isFill) {
     DCHECK_GE(count, 0);

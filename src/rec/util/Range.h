@@ -24,6 +24,7 @@ struct Range {
 
   void clear() { begin_ = end_ = 0; }
   Type size() const { return end_ - begin_; }
+  bool empty() const { return !size(); }
 
   bool contains(Type t) const {
     return (begin_ != end_) && (begin_ < end_ ?
