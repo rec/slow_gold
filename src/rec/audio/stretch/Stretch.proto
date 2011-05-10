@@ -7,8 +7,6 @@ message Stretch {
   optional bool disabled = 15           [default = false];
   optional bool passthrough_when_disabled = 16 [default = true];
 
-  optional source.StereoProto stereo = 17;
-
   optional double time_scale = 1        [default = 1.0];
   optional double time_percent = 14     [default = 100.0];
   optional double sample_rate = 2       [default = 44100.0];

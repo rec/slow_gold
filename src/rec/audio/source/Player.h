@@ -13,9 +13,12 @@ namespace audio {
 namespace source {
 
 class Buffered;
+class Stereo;
+class StereoProto;
 class Timey;
 
-class Player : public Broadcaster<transport::State>, public juce::ChangeListener {
+class Player : public Broadcaster<transport::State>,
+               public juce::ChangeListener {
  public:
   Player(Device* d);
   virtual ~Player();
@@ -34,7 +37,8 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   Device* device() { return device_; }
   Broadcaster<SampleTime>* timeBroadcaster() { return timer_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
-  Buffered* buffered() { return buffered_.get(); }
+  Buffered* buffered() { return buffered_; }
+  void setStereoProto(const StereoProto&);
 
   static const int BUFFER_SIZE = 2048;
 
@@ -45,7 +49,8 @@ class Player : public Broadcaster<transport::State>, public juce::ChangeListener
   AudioSourcePlayer player_;
   Device* device_;
   Timey* timer_;
-  ptr<Buffered> buffered_;
+  Buffered* buffered_;
+  ptr<Stereo> stereo_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

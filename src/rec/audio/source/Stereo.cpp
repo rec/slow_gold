@@ -6,13 +6,18 @@ namespace rec {
 namespace audio {
 namespace source {
 
-void Stereo::setDesc(const StereoProto& desc) {
+void Stereo::setStereo(const StereoProto& desc) {
   ScopedLock l(lock_);
   desc_ = desc;
 }
 
 void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  StereoProto::Type type = desc_.type();
+  StereoProto desc;
+  {
+    ScopedLock l(lock_);
+    desc = desc_;
+  }
+  StereoProto::Type type = desc.type();
   DCHECK_GE(type, StereoProto::PASSTHROUGH);
   DCHECK_LE(type, StereoProto::CENTER_ELIMINATION_MONO);
 
@@ -26,7 +31,7 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
   AudioSampleBuffer& b = *info.buffer;
   int n = b.getNumSamples();
-  StereoProto::Side side = desc_.side();
+  StereoProto::Side side = desc.side();
   StereoProto::Side otherSide = static_cast<StereoProto::Side>(
       StereoProto::RIGHT - side);
 

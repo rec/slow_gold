@@ -15,7 +15,7 @@ class Stereo : public Wrappy {
       : Wrappy(source), desc_(desc) {
   }
 
-  void setDesc(const StereoProto&);
+  void setStereo(const StereoProto&);
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
 
  private:

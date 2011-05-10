@@ -4,6 +4,7 @@
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/Buffered.h"
 #include "rec/audio/source/Empty.h"
+#include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timey.h"
 #include "rec/util/Math.h"
 
@@ -17,8 +18,9 @@ Player::Player(Device* d) : device_(d) {
   player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
   timer_ = new Timey;
-  buffered_.reset(new Buffered(timer_, BUFFER_SIZE));
-  transportSource_.setSource(buffered_.get());
+  buffered_ = new Buffered(timer_, BUFFER_SIZE);
+  stereo_.reset(new Stereo(buffered_));
+  transportSource_.setSource(stereo_.get());
   setSource(new Empty);
 }
 
@@ -58,6 +60,10 @@ State Player::state() const {
 
 void Player::changeListenerCallback(ChangeBroadcaster*) {
   broadcastState();
+}
+
+void Player::setStereoProto(const StereoProto& s) {
+  stereo_->setStereo(s);
 }
 
 }  // namespace source
