@@ -31,7 +31,7 @@ void CachedThumbnail::addListener(Listener<juce::AudioThumbnail*>* listener) {
 }
 
 CachedThumbnail::~CachedThumbnail() {
-  writeThumbnail();
+  // writeThumbnail();
 }
 
 void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
