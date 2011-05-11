@@ -29,7 +29,7 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
   setName("Waveform");  // TODO:  delete?
 
   timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
-  // desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?
+  desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?
 }
 
 Cursor* Waveform::newCursor(const CursorProto& d, double time, int index) {
@@ -104,13 +104,15 @@ void Waveform::paint(Graphics& g) {
 }
 
 int Waveform::timeToX(double t) const {
-  TimeRange r = getTimeRange();
-  return static_cast<int>(getWidth() * (t - r.begin_) / r.size());
+  return static_cast<int>((t - getTimeRange().begin_) / pixelsPerSecond());
 }
 
 double Waveform::xToTime(int x) const {
-  TimeRange r = getTimeRange();
-  return r.begin_ + (x *  r.size()) / getWidth();
+  return getTimeRange().begin_ + x * pixelsPerSecond();
+}
+
+double Waveform::pixelsPerSecond() const {
+  return getTimeRange().size() / getWidth();
 }
 
 void Waveform::addAllCursors(const LoopPointList& loopPoints) {

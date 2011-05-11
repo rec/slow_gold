@@ -17,7 +17,8 @@ using namespace rec::audio;
 using namespace rec::widget::waveform;
 using namespace rec::util::block;
 
-MouseListener::MouseListener(Instance* i) : HasInstance(i) {
+MouseListener::MouseListener(Instance* i)
+    : HasInstance(i), waveformDragStart_(0) {
   components()->waveform_.addMouseListener(this, true);
   listenTo(&components()->waveform_);
 }
@@ -41,16 +42,35 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
 
 void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
-  if (e.eventComponent == waveform)
-    model()->setTriggerTime(timeToSamples(waveform->xToTime(e.x)));
+  RealTime time = waveform->xToTime(e.x);
+  if (e.eventComponent == waveform) {
+    if (e.mods.isShiftDown())
+      waveformDragStart_ = model()->zoomLocker()->get().begin();
+    else
+      model()->setTriggerTime(timeToSamples(time));
+    // TODO: check to make sure they don't change shift during the drag...
+  }
 }
 
 void MouseListener::mouseDrag(const MouseEvent& e) {
-  mouseDown(e);
-
   Waveform* waveform = &components()->waveform_;
-  if (e.eventComponent == waveform->timeCursor())
+  RealTime time = waveform->xToTime(e.x);
+  if (e.eventComponent == waveform) {
+    if (e.mods.isShiftDown()) {
+      RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
+      ZoomProto zoom(model()->zoomLocker()->get());
+      RealTime end = zoom.has_end() ? zoom.end() : model()->realLength();
+      RealTime size = end - zoom.begin();
+      zoom.set_begin(waveformDragStart_ - dt);
+      zoom.set_end(zoom.begin() + size);
+      model()->zoomLocker()->set(zoom);
+
+    } else {
+      model()->setTriggerTime(timeToSamples(time));
+    }
+  } else if (e.eventComponent == waveform->timeCursor()) {
     model()->setTriggerTime(timeToSamples(waveform->xToTime(e.x)));
+  }
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {

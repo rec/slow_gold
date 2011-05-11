@@ -53,6 +53,7 @@ class Waveform : public Component,
 
   TimeRange getTimeRange() const;
   double xToTime(int x) const;
+  double pixelsPerSecond() const;
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
 

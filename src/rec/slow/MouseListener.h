@@ -22,6 +22,8 @@ class MouseListener : public juce::MouseListener, public HasInstance,
   virtual void operator()(const widget::waveform::MouseWheelEvent& e);
 
  private:
+  RealTime waveformDragStart_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MouseListener);
 };
 
