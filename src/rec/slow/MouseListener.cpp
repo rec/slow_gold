@@ -44,9 +44,10 @@ void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
   RealTime time = waveform->xToTime(e.x);
   if (e.eventComponent == waveform) {
-    if (e.mods.isShiftDown())
+    if (e.mods.isShiftDown()) {
       waveformDragStart_ = model()->zoomLocker()->get().begin();
-    else
+      DLOG(INFO) << "waveformDragStart_=" << waveformDragStart_;
+    } else
       model()->setTriggerTime(timeToSamples(time));
     // TODO: check to make sure they don't change shift during the drag...
   }
@@ -64,7 +65,6 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       zoom.set_begin(waveformDragStart_ - dt);
       zoom.set_end(zoom.begin() + size);
       model()->zoomLocker()->set(zoom);
-
     } else {
       model()->setTriggerTime(timeToSamples(time));
     }

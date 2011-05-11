@@ -104,15 +104,15 @@ void Waveform::paint(Graphics& g) {
 }
 
 int Waveform::timeToX(double t) const {
-  return static_cast<int>((t - getTimeRange().begin_) / pixelsPerSecond());
+  return static_cast<int>((t - getTimeRange().begin_) * pixelsPerSecond());
 }
 
 double Waveform::xToTime(int x) const {
-  return getTimeRange().begin_ + x * pixelsPerSecond();
+  return getTimeRange().begin_ + x / pixelsPerSecond();
 }
 
 double Waveform::pixelsPerSecond() const {
-  return getTimeRange().size() / getWidth();
+  return getWidth() / getTimeRange().size();
 }
 
 void Waveform::addAllCursors(const LoopPointList& loopPoints) {
