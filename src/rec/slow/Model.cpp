@@ -150,8 +150,11 @@ void Model::operator()(const VirtualFile& f) {
 
 void Model::checkChanged() {
   fileLocker_.broadcastIfChanged(this); // TODO
+
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(listeners());
+  stereoLocker_.broadcastIfChanged(listeners());
+  // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }
 

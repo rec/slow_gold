@@ -11,6 +11,7 @@
 namespace rec {
 
 namespace audio { namespace stretch { class Stretch; }}
+namespace audio { namespace source { class StereoProto; }}
 namespace gui { class DropFiles; }
 namespace gui { namespace audio { class LoopPointList; }}
 
@@ -32,6 +33,7 @@ class Listeners : public Listener<None>,
                   public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
                   public Listener<const audio::stretch::Stretch&>,
+                  public Listener<const audio::source::StereoProto&>,
                   public Listener<const gui::DropFiles&>,
                   public Listener<const gui::audio::LoopPointList&>,
                   public juce::MouseListener,
@@ -43,6 +45,7 @@ class Listeners : public Listener<None>,
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
+  virtual void operator()(const audio::source::StereoProto&);
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const gui::DropFiles&);
   virtual void operator()(const gui::audio::LoopPointList&);
