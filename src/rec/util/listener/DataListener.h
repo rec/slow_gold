@@ -33,9 +33,10 @@ class DataListener : public Listener<const Proto&> {
     }
   }
 
- private:
+ protected:
   persist::Data<Proto>* data_;
 
+ private:
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
 

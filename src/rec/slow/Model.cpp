@@ -3,6 +3,7 @@
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/CachedThumbnail.h"
+#include "rec/data/persist/Data.h"
 #include "rec/gui/audio/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
@@ -16,6 +17,7 @@ namespace slow {
 
 using namespace rec::audio::util;
 using namespace rec::audio::source;
+using namespace rec::music;
 using namespace rec::util::block;
 using namespace rec::widget::waveform;
 
@@ -24,8 +26,10 @@ static const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
                             fileLocker_(&lock_),
-                            stretchLocker_(&lock_),
                             loopLocker_(&lock_),
+                            metadataLocker_(&lock_),
+                            stereoLocker_(&lock_),
+                            stretchLocker_(&lock_),
                             zoomLocker_(&lock_),
                             time_(0),
                             triggerTime_(-1),
@@ -96,6 +100,18 @@ void Model::setLoopPointList(const LoopPointList& loops) {
   setTriggerTime(timeSelection_.begin()->first);
 }
 
+namespace {
+
+template <typename Proto>
+persist::Data<Proto>* updateLocker(thread::Locker<Proto>* locker, const VirtualFile& file) {
+  persist::Data<Proto>* s = persist::setter<Proto>(file);
+  locker->listenTo(s);
+  locker->set(s->get());
+  return s;
+}
+
+}  // namespace
+
 void Model::operator()(const VirtualFile& f) {
   if (thumbnailBuffer_.next()) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
@@ -112,16 +128,11 @@ void Model::operator()(const VirtualFile& f) {
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
 
-  persist::Data<LoopPointList>* setter = persist::setter<LoopPointList>(f);
-  components()->loops_.setData(setter);
-
-  stretchLocker_.listenTo(persist::setter<Stretch>(f));
-  zoomLocker_.listenTo(persist::setter<ZoomProto>(f));
-  loopLocker_.listenTo(setter);
-
-  stretchLocker_.set(persist::get<Stretch>(f));
-  loopLocker_.set(persist::get<LoopPointList>(f));
-  components()->songData_.setFile(f);
+  components()->loops_.setData(updateLocker(&loopLocker_, f));
+  components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
+  components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
+  components()->songData_.setData(updateLocker(&metadataLocker_, f));
+  updateLocker(&zoomLocker_, f);
 
 #ifdef TODO
   const Stretch& stretch = loop.stretch();

@@ -18,7 +18,8 @@ class StretchyController : public Layout, public juce::ComboBox::Listener,
   StretchyController();
   virtual bool isOpaque() const { return true; }
 
-  virtual void setData(persist::Data<rec::audio::stretch::Stretch>* data);
+  virtual void setData(persist::Data<rec::audio::stretch::Stretch>*);
+  virtual void setData(persist::Data<rec::audio::source::StereoProto>*);
   virtual void operator()(const rec::audio::stretch::Stretch&);
   virtual void operator()(const rec::audio::source::StereoProto&);
 
@@ -34,7 +35,6 @@ class StretchyController : public Layout, public juce::ComboBox::Listener,
   gui::SetterToggle zoomToSelectionButton_;
   gui::SetterToggle clickToZoomButton_;
   juce::ComboBox stereoComboBox_;
-  persist::Data<rec::audio::source::StereoProto>* stereoData_;
 
   DISALLOW_COPY_AND_ASSIGN(StretchyController);
 };

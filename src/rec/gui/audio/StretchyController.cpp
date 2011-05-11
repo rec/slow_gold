@@ -25,8 +25,7 @@ StretchyController::StretchyController()
       zoomToSelectionButton_("Zoom to selection",
                              Address("zoom_to_selection")),
       clickToZoomButton_("Click to zoom",
-                         Address("click_to_zoom")),
-      stereoData_(NULL) {
+                         Address("click_to_zoom")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -75,15 +74,19 @@ void StretchyController::setData(persist::Data<Stretch>* data) {
   DataListener<Stretch>::setData(data);
 }
 
+void StretchyController::setData(persist::Data<StereoProto>* data) {
+  DataListener<StereoProto>::setData(data);
+}
+
 void StretchyController::comboBoxChanged(juce::ComboBox*) {
-  if (stereoData_) {
+  if (DataListener<StereoProto>::data_) {
     Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
     StereoProto stereo;
     if (sides != STEREO) {
       stereo.set_type(StereoProto::SINGLE);
       stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
     }
-    data::set(stereoData_, stereo);
+    data::set(DataListener<StereoProto>::data_, stereo);
   }
 }
 

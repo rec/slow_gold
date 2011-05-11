@@ -23,14 +23,14 @@ class ProtoListener : public Listener<const Message&> {
   data::UntypedData* getData() { return data_; }
 
  protected:
-  // onChange is called when the local view of the data is changed by the GUI,
-  // to update the persistent data.
+  // updatePersistentData is called when the local view of the data is changed
+  // by the GUI, to update the persistent data.
   virtual void updatePersistentData();
 
   // Gets the data from the view.
   virtual const data::Value getDisplayValue() const = 0;
 
-  // Set the view data.
+  // Set the view data when the persistent value has changed.
   virtual void setDisplayValue(const data::Value&) = 0;
 
  private:

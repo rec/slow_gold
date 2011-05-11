@@ -3,10 +3,12 @@
 
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/source/Selection.h"
+#include "rec/audio/source/Stereo.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/slow/HasInstance.h"
+#include "rec/music/Metadata.pb.h"
 #include "rec/util/Switcher.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
@@ -24,8 +26,11 @@ class Model : public Listener<const VirtualFile&>,
               public Listener<SampleTime>,
               public HasInstance {
  public:
+  typedef audio::source::StereoProto StereoProto;
   typedef audio::stretch::Stretch Stretch;
+  typedef music::Metadata Metadata;
   typedef gui::audio::LoopPointList LoopPointList;
+  typedef widget::waveform::ZoomProto ZoomProto;
 
   explicit Model(Instance* i);
   virtual ~Model() {}
@@ -50,11 +55,15 @@ class Model : public Listener<const VirtualFile&>,
  private:
   bool hasTriggerTime(SampleTime t);
 
-  VirtualFile file_;
+  CriticalSection lock_;
 
   thread::Locker<VirtualFile> fileLocker_;
-  thread::Locker<Stretch> stretchLocker_;
+  VirtualFile file_;
+
   thread::Locker<LoopPointList> loopLocker_;
+  thread::Locker<Metadata> metadataLocker_;
+  thread::Locker<StereoProto> stereoLocker_;
+  thread::Locker<Stretch> stretchLocker_;
   thread::Locker<ZoomProto> zoomLocker_;
 
   SampleTime time_;
@@ -63,7 +72,6 @@ class Model : public Listener<const VirtualFile&>,
   block::BlockSet timeSelection_;
 
   Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;
-  CriticalSection lock_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
 };
