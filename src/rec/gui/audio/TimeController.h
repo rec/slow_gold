@@ -17,7 +17,7 @@ class TimeController : public Layout, public Listener<SampleTime> {
   TimeController();
   virtual ~TimeController() {}
 
-  virtual void operator()(const rec::audio::stretch::StretchLoop&);
+  virtual void operator()(const rec::audio::stretch::Stretch&);
   virtual void operator()(const Range<RealTime>&);
   virtual void operator()(SampleTime);
 

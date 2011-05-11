@@ -1,7 +1,7 @@
 #include "rec/gui/audio/StretchyController.h"
 
-using rec::audio::source::StereoProto;
-using rec::audio::stretch::StretchLoop;
+using namespace rec::audio::source;
+using namespace rec::audio::stretch;
 
 namespace rec {
 namespace gui {
@@ -25,7 +25,8 @@ StretchyController::StretchyController()
       zoomToSelectionButton_("Zoom to selection",
                              Address("zoom_to_selection")),
       clickToZoomButton_("Click to zoom",
-                         Address("click_to_zoom")) {
+                         Address("click_to_zoom")),
+      stereoData_(NULL) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -52,36 +53,37 @@ StretchyController::StretchyController()
   addToLayout(&stereoComboBox_, 14);
 }
 
-void StretchyController::setData(persist::Data<rec::audio::stretch::StretchLoop>* data) {
-  playbackSpeed_.setData(data);
-  pitchScale_.setData(data);
-  fineScale_.setData(data);
-  disableButton_.setData(data);
+void StretchyController::operator()(const Stretch& s) {
+  thread::callAsync(this, &StretchyController::enableSliders, s.disabled());
+}
 
-  rec::audio::stretch::StretchLoop proto;
-  if (!(data && data->fill(&proto)))
-    LOG(ERROR) << "No data or couldn't fill proto: " << data;
-
-  bool enable = !proto.stretch().disabled();
-  thread::callAsync(this, &StretchyController::enableSliders, enable);
-
+void StretchyController::operator()(const StereoProto& stereo) {
   Sides sides = STEREO;
-  if (proto.stretch().stereo().type())
-    sides = static_cast<Sides>(2 + proto.stretch().stereo().side());
+  if (stereo.type())
+    sides = static_cast<Sides>(2 + stereo.side());
 
   thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
                     static_cast<int>(sides), true);
 }
 
+void StretchyController::setData(persist::Data<Stretch>* data) {
+  playbackSpeed_.setData(data);
+  pitchScale_.setData(data);
+  fineScale_.setData(data);
+  disableButton_.setData(data);
+
+  DataListener<Stretch>::setData(data);
+}
+
 void StretchyController::comboBoxChanged(juce::ComboBox*) {
-  if (data::UntypedData* data = playbackSpeed_.getData()) {
+  if (stereoData_) {
     Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
     StereoProto stereo;
     if (sides != STEREO) {
       stereo.set_type(StereoProto::SINGLE);
       stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
     }
-    data::set(data, Address("stretch", "stereo"), stereo);
+    data::set(stereoData_, stereo);
   }
 }
 

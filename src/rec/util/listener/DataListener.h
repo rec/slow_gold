@@ -26,8 +26,10 @@ class DataListener : public Listener<const Proto&> {
 
       data_ = d;
 
-      if (data_)
+      if (data_) {
         listenTo(data_);
+        (*this)(data_->get());  // TODO:  is this OK?
+      }
     }
   }
 

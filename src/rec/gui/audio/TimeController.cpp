@@ -15,6 +15,7 @@ namespace audio {
 
 using namespace juce;
 using namespace rec::widget::status::time;
+using namespace rec::audio::stretch;
 
 namespace {
 
@@ -41,9 +42,9 @@ TimeController::TimeController()
   timesLayout_.addToLayout(&songTime_);
 }
 
-void TimeController::operator()(const rec::audio::stretch::StretchLoop& stretchLoop) {
+void TimeController::operator()(const Stretch& stretch) {
   ScopedLock l(lock_);
-  timeScale_ = timeScale(stretchLoop.stretch());
+  timeScale_ = timeScale(stretch);
 }
 
 void TimeController::operator()(const Range<RealTime>& r) {
