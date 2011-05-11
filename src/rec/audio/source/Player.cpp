@@ -4,6 +4,7 @@
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/Buffered.h"
 #include "rec/audio/source/Empty.h"
+#include "rec/audio/source/Selection.h"
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timer.h"
 #include "rec/util/Math.h"
@@ -18,7 +19,8 @@ Player::Player(Device* d) : device_(d) {
   player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
   timer_ = new Timer;
-  stereo_ = new Stereo(timer_);
+  selection_ = new Selection(timer_);
+  stereo_ = new Stereo(selection_);
   buffered_ = new Buffered(stereo_, BUFFER_SIZE);
   source_.reset(buffered_);
 
@@ -67,6 +69,10 @@ void Player::changeListenerCallback(ChangeBroadcaster*) {
 
 void Player::setStereoProto(const StereoProto& s) {
   stereo_->setStereo(s);
+}
+
+void Player::setSelection(const block::BlockSet& s) {
+  selection_->setSelection(s);
 }
 
 }  // namespace source

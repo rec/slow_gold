@@ -5,6 +5,7 @@
 #include "rec/audio/source/Timer.h"
 #include "rec/audio/Device.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace audio { class Device; }
@@ -13,6 +14,7 @@ namespace audio {
 namespace source {
 
 class Buffered;
+class Selection;
 class Stereo;
 class StereoProto;
 class Timey;
@@ -39,6 +41,10 @@ class Player : public Broadcaster<transport::State>,
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Buffered* buffered() { return buffered_; }
   void setStereoProto(const StereoProto&);
+  void setSelection(const block::BlockSet& s);
+
+  SampleTime length() const { return timer_->getTotalLength(); }
+  RealTime realLength() const { return audio::samplesToTime(length()); }
 
   static const int BUFFER_SIZE = 2048;
 
@@ -48,10 +54,13 @@ class Player : public Broadcaster<transport::State>,
   AudioTransportSource transportSource_;
   AudioSourcePlayer player_;
   Device* device_;
-  Timer* timer_;
-  Buffered* buffered_;
-  Stereo* stereo_;
+
   ptr<Source> source_;
+
+  Timer* timer_;
+  Selection* selection_;
+  Stereo* stereo_;
+  Buffered* buffered_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

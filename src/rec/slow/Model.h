@@ -47,10 +47,9 @@ class Model : public Listener<const VirtualFile&>,
   void fillOnce();
   void setTriggerTime(SampleTime p);
   Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
-  audio::source::Selection* selectionSource() { return selectionSource_; }
 
-  SampleTime length() const { return selectionSource_->getTotalLength(); }
-  RealTime realLength() const { return audio::samplesToTime(length()); }
+  // SampleTime length() const { return selectionSource_->getTotalLength(); }
+  // RealTime realLength() const { return audio::samplesToTime(length()); }
 
  private:
   bool hasTriggerTime(SampleTime t);
@@ -68,7 +67,6 @@ class Model : public Listener<const VirtualFile&>,
 
   SampleTime time_;
   SampleTime triggerTime_;
-  audio::source::Selection* selectionSource_;
   block::BlockSet timeSelection_;
 
   Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;

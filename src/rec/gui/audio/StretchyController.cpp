@@ -17,15 +17,12 @@ enum Sides {
 
 StretchyController::StretchyController()
     : Layout("StretchyController", VERTICAL),
-      playbackSpeed_("Playback speed", Address("stretch", "time_percent")),
-      pitchScale_("Transpose", Address("stretch", "semitone_shift")),
-      fineScale_("Fine tuning", Address("stretch", "detune_cents")),
-      disableButton_("Disable pitch and time shifting",
-                     Address("stretch", "disabled")),
-      zoomToSelectionButton_("Zoom to selection",
-                             Address("zoom_to_selection")),
-      clickToZoomButton_("Click to zoom",
-                         Address("click_to_zoom")) {
+      playbackSpeed_("Playback speed", Address("time_percent")),
+      pitchScale_("Transpose", Address("semitone_shift")),
+      fineScale_("Fine tuning", Address("detune_cents")),
+      disableButton_("Disable pitch and time shifting", Address("disabled")),
+      zoomToSelectionButton_("Zoom to selection", Address("zoom_to_selection")),
+      clickToZoomButton_("Click to zoom", Address("click_to_zoom")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);

@@ -18,8 +18,9 @@ class Selection : public Wrappy {
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
   void setSelection(const block::BlockSet& s);
+
   const block::BlockSet& selection() const {
-    DCHECK(!selection_.empty());
+    // DCHECK(!selection_.empty());
     return selection_;
   }
 

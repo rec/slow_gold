@@ -60,7 +60,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     if (e.mods.isShiftDown()) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       ZoomProto zoom(model()->zoomLocker()->get());
-      RealTime end = zoom.has_end() ? zoom.end() : model()->realLength();
+      RealTime end = zoom.has_end() ? zoom.end() : player()->realLength();
       RealTime size = end - zoom.begin();
       zoom.set_begin(waveformDragStart_ - dt);
       zoom.set_end(zoom.begin() + size);

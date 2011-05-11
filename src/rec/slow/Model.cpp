@@ -32,8 +32,7 @@ Model::Model(Instance* i) : HasInstance(i),
                             stretchLocker_(&lock_),
                             zoomLocker_(&lock_),
                             time_(0),
-                            triggerTime_(-1),
-                            selectionSource_(NULL) {
+                            triggerTime_(-1) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
 }
@@ -49,7 +48,7 @@ void Model::fillOnce() {
   if (triggerTime_ == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(timeSelection_, buffer->filled());
-    BlockList fillList = fillSeries(fill, time_, length());
+    BlockList fillList = fillSeries(fill, time_, player()->length());
     if (!fillList.empty())
       buffer->setPosition(fillList.begin()->first);
   }
@@ -82,13 +81,13 @@ void Model::setTriggerTime(SampleTime pos) {
 }
 
 void Model::zoom(RealTime time, double k) {
-  ZoomProto z(widget::waveform::zoom(zoomLocker_.get(), realLength(), time, k));
+  ZoomProto z(widget::waveform::zoom(zoomLocker_.get(), player()->realLength(), time, k));
   persist::set<ZoomProto>(z, file_);
 }
 
 void Model::setLoopPointList(const LoopPointList& loops) {
-  timeSelection_ = audio::getTimeSelection(loops, length());
-  selectionSource_->setSelection(timeSelection_);
+  timeSelection_ = audio::getTimeSelection(loops, player()->length());
+  player()->setSelection(timeSelection_);
   BlockSet::const_iterator i = timeSelection_.begin();
   for (; i != timeSelection_.end(); ++i) {
     if (time_ < i->second) {
@@ -130,8 +129,7 @@ void Model::operator()(const VirtualFile& f) {
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
   buffer->thumbnail()->addListener(&components()->waveform_);
-  selectionSource_ = new Selection(new BufferSource(buffer->buffer()));
-  player()->setSource(selectionSource_);
+  player()->setSource(new BufferSource(buffer->buffer()));
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
 
