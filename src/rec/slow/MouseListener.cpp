@@ -26,15 +26,16 @@ static double const MAX_WHEEL = 0.50;
 static double const RATIO = 4.0;
 
 static double zoomFunction(double increment) {
-  return pow(RATIO, increment / MAX_WHEEL);
+  return pow(RATIO, -increment / MAX_WHEEL);
 }
 
 void MouseListener::operator()(const MouseWheelEvent& e) {
   Waveform* waveform = &components()->waveform_;
   if (e.event_->eventComponent == waveform) {
-
+    const juce::ModifierKeys& k = e.event_->mods;
+    double scale = k.isAltDown() ? 0.1 : k.isCommandDown() ? 2.0 : 1;
     model()->zoom(waveform->xToTime(e.event_->x),
-                  zoomFunction(e.yIncrement_));
+                  zoomFunction(scale * e.yIncrement_));
   }
 }
 
