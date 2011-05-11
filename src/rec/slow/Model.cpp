@@ -119,6 +119,13 @@ void Model::operator()(const VirtualFile& f) {
   }
   file_ = f;
   player()->setState(audio::transport::STOPPED);
+  player()->timeBroadcaster()->broadcast(0);
+
+  components()->loops_.setData(updateLocker(&loopLocker_, f));
+  components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
+  components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
+  components()->songData_.setData(updateLocker(&metadataLocker_, f));
+  updateLocker(&zoomLocker_, f);
 
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
@@ -127,12 +134,6 @@ void Model::operator()(const VirtualFile& f) {
   player()->setSource(selectionSource_);
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
-
-  components()->loops_.setData(updateLocker(&loopLocker_, f));
-  components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
-  components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
-  components()->songData_.setData(updateLocker(&metadataLocker_, f));
-  updateLocker(&zoomLocker_, f);
 
 #ifdef TODO
   const Stretch& stretch = loop.stretch();

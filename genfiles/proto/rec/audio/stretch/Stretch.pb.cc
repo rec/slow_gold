@@ -19,12 +19,6 @@ namespace {
 const ::google::protobuf::Descriptor* Stretch_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Stretch_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Loop_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Loop_reflection_ = NULL;
-const ::google::protobuf::Descriptor* StretchLoop_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  StretchLoop_reflection_ = NULL;
 
 }  // namespace
 
@@ -36,10 +30,9 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
       "rec/audio/stretch/Stretch.proto");
   GOOGLE_CHECK(file != NULL);
   Stretch_descriptor_ = file->message_type(0);
-  static const int Stretch_offsets_[17] = {
+  static const int Stretch_offsets_[16] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, passthrough_when_disabled_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, stereo_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_scale_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_percent_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, sample_rate_),
@@ -66,38 +59,6 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Stretch));
-  Loop_descriptor_ = file->message_type(1);
-  static const int Loop_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, begin_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, end_),
-  };
-  Loop_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Loop_descriptor_,
-      Loop::default_instance_,
-      Loop_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Loop, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Loop));
-  StretchLoop_descriptor_ = file->message_type(2);
-  static const int StretchLoop_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, stretch_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, loop_),
-  };
-  StretchLoop_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      StretchLoop_descriptor_,
-      StretchLoop::default_instance_,
-      StretchLoop_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StretchLoop, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(StretchLoop));
 }
 
 namespace {
@@ -112,10 +73,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Stretch_descriptor_, &Stretch::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Loop_descriptor_, &Loop::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    StretchLoop_descriptor_, &StretchLoop::default_instance());
 }
 
 }  // namespace
@@ -123,10 +80,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto() {
   delete Stretch::default_instance_;
   delete Stretch_reflection_;
-  delete Loop::default_instance_;
-  delete Loop_reflection_;
-  delete StretchLoop::default_instance_;
-  delete StretchLoop_reflection_;
 }
 
 void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
@@ -139,30 +92,22 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\362\003\n\007Stretch\022\027\n\010disabled\030\017 \001(\010:\005false"
+    "oto\"\303\003\n\007Stretch\022\027\n\010disabled\030\017 \001(\010:\005false"
     "\022\'\n\031passthrough_when_disabled\030\020 \001(\010:\004tru"
-    "e\022-\n\006stereo\030\021 \001(\0132\035.rec.audio.source.Ste"
-    "reoProto\022\025\n\ntime_scale\030\001 \001(\001:\0011\022\031\n\014time_"
-    "percent\030\016 \001(\001:\003100\022\032\n\013sample_rate\030\002 \001(\001:"
-    "\00544100\022\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_sca"
-    "le\030\004 \001(\001:\0011\022\031\n\016semitone_shift\030\005 \001(\001:\0010\022\027"
-    "\n\014detune_cents\030\006 \001(\001:\0010\022\023\n\005bands\030\007 \001(\r:\004"
-    "2048\022\031\n\016filter_overlap\030\010 \001(\r:\0011\022\030\n\nchunk"
-    "_size\030\t \001(\r:\0041024\022\033\n\014prefill_size\030\n \001(\r:"
-    "\00515000\022$\n\025next_buffer_fill_size\030\013 \001(\r:\0051"
-    "5000\022\036\n\022inactive_wait_time\030\014 \001(\005:\002-1\022\032\n\017"
-    "thread_priority\030\r \001(\r:\0014\"\"\n\004Loop\022\r\n\005begi"
-    "n\030\001 \001(\001\022\013\n\003end\030\002 \001(\001\"a\n\013StretchLoop\022+\n\007s"
-    "tretch\030\001 \001(\0132\032.rec.audio.stretch.Stretch"
-    "\022%\n\004loop\030\002 \001(\0132\027.rec.audio.stretch.Loop", 719);
+    "e\022\025\n\ntime_scale\030\001 \001(\001:\0011\022\031\n\014time_percent"
+    "\030\016 \001(\001:\003100\022\032\n\013sample_rate\030\002 \001(\001:\00544100\022"
+    "\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 \001("
+    "\001:\0011\022\031\n\016semitone_shift\030\005 \001(\001:\0010\022\027\n\014detun"
+    "e_cents\030\006 \001(\001:\0010\022\023\n\005bands\030\007 \001(\r:\0042048\022\031\n"
+    "\016filter_overlap\030\010 \001(\r:\0011\022\030\n\nchunk_size\030\t"
+    " \001(\r:\0041024\022\033\n\014prefill_size\030\n \001(\r:\00515000\022"
+    "$\n\025next_buffer_fill_size\030\013 \001(\r:\00515000\022\036\n"
+    "\022inactive_wait_time\030\014 \001(\005:\002-1\022\032\n\017thread_"
+    "priority\030\r \001(\r:\0014", 537);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
-  Loop::default_instance_ = new Loop();
-  StretchLoop::default_instance_ = new StretchLoop();
   Stretch::default_instance_->InitAsDefaultInstance();
-  Loop::default_instance_->InitAsDefaultInstance();
-  StretchLoop::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto);
 }
 
@@ -179,7 +124,6 @@ struct StaticDescriptorInitializer_rec_2faudio_2fstretch_2fStretch_2eproto {
 #ifndef _MSC_VER
 const int Stretch::kDisabledFieldNumber;
 const int Stretch::kPassthroughWhenDisabledFieldNumber;
-const int Stretch::kStereoFieldNumber;
 const int Stretch::kTimeScaleFieldNumber;
 const int Stretch::kTimePercentFieldNumber;
 const int Stretch::kSampleRateFieldNumber;
@@ -202,7 +146,6 @@ Stretch::Stretch()
 }
 
 void Stretch::InitAsDefaultInstance() {
-  stereo_ = const_cast< ::rec::audio::source::StereoProto*>(&::rec::audio::source::StereoProto::default_instance());
 }
 
 Stretch::Stretch(const Stretch& from)
@@ -215,7 +158,6 @@ void Stretch::SharedCtor() {
   _cached_size_ = 0;
   disabled_ = false;
   passthrough_when_disabled_ = true;
-  stereo_ = NULL;
   time_scale_ = 1;
   time_percent_ = 100;
   sample_rate_ = 44100;
@@ -239,7 +181,6 @@ Stretch::~Stretch() {
 
 void Stretch::SharedDtor() {
   if (this != default_instance_) {
-    delete stereo_;
   }
 }
 
@@ -267,17 +208,14 @@ void Stretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     disabled_ = false;
     passthrough_when_disabled_ = true;
-    if (_has_bit(2)) {
-      if (stereo_ != NULL) stereo_->::rec::audio::source::StereoProto::Clear();
-    }
     time_scale_ = 1;
     time_percent_ = 100;
     sample_rate_ = 44100;
     channels_ = 2u;
     pitch_scale_ = 1;
+    semitone_shift_ = 0;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    semitone_shift_ = 0;
     detune_cents_ = 0;
     bands_ = 2048u;
     filter_overlap_ = 1u;
@@ -285,8 +223,6 @@ void Stretch::Clear() {
     prefill_size_ = 15000u;
     next_buffer_fill_size_ = 15000u;
     inactive_wait_time_ = -1;
-  }
-  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     thread_priority_ = 4u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -306,7 +242,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &time_scale_)));
-          _set_bit(3);
+          _set_bit(2);
         } else {
           goto handle_uninterpreted;
         }
@@ -322,7 +258,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &sample_rate_)));
-          _set_bit(5);
+          _set_bit(4);
         } else {
           goto handle_uninterpreted;
         }
@@ -338,7 +274,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &channels_)));
-          _set_bit(6);
+          _set_bit(5);
         } else {
           goto handle_uninterpreted;
         }
@@ -354,7 +290,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &pitch_scale_)));
-          _set_bit(7);
+          _set_bit(6);
         } else {
           goto handle_uninterpreted;
         }
@@ -370,7 +306,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &semitone_shift_)));
-          _set_bit(8);
+          _set_bit(7);
         } else {
           goto handle_uninterpreted;
         }
@@ -386,7 +322,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &detune_cents_)));
-          _set_bit(9);
+          _set_bit(8);
         } else {
           goto handle_uninterpreted;
         }
@@ -402,7 +338,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &bands_)));
-          _set_bit(10);
+          _set_bit(9);
         } else {
           goto handle_uninterpreted;
         }
@@ -418,7 +354,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &filter_overlap_)));
-          _set_bit(11);
+          _set_bit(10);
         } else {
           goto handle_uninterpreted;
         }
@@ -434,7 +370,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &chunk_size_)));
-          _set_bit(12);
+          _set_bit(11);
         } else {
           goto handle_uninterpreted;
         }
@@ -450,7 +386,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &prefill_size_)));
-          _set_bit(13);
+          _set_bit(12);
         } else {
           goto handle_uninterpreted;
         }
@@ -466,7 +402,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &next_buffer_fill_size_)));
-          _set_bit(14);
+          _set_bit(13);
         } else {
           goto handle_uninterpreted;
         }
@@ -482,7 +418,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &inactive_wait_time_)));
-          _set_bit(15);
+          _set_bit(14);
         } else {
           goto handle_uninterpreted;
         }
@@ -498,7 +434,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &thread_priority_)));
-          _set_bit(16);
+          _set_bit(15);
         } else {
           goto handle_uninterpreted;
         }
@@ -514,7 +450,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &time_percent_)));
-          _set_bit(4);
+          _set_bit(3);
         } else {
           goto handle_uninterpreted;
         }
@@ -550,20 +486,6 @@ bool Stretch::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(138)) goto parse_stereo;
-        break;
-      }
-      
-      // optional .rec.audio.source.StereoProto stereo = 17;
-      case 17: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_stereo:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_stereo()));
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -587,72 +509,72 @@ bool Stretch::MergePartialFromCodedStream(
 void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional double time_scale = 1 [default = 1];
-  if (_has_bit(3)) {
+  if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->time_scale(), output);
   }
   
   // optional double sample_rate = 2 [default = 44100];
-  if (_has_bit(5)) {
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->sample_rate(), output);
   }
   
   // optional uint32 channels = 3 [default = 2];
-  if (_has_bit(6)) {
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->channels(), output);
   }
   
   // optional double pitch_scale = 4 [default = 1];
-  if (_has_bit(7)) {
+  if (_has_bit(6)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->pitch_scale(), output);
   }
   
   // optional double semitone_shift = 5 [default = 0];
-  if (_has_bit(8)) {
+  if (_has_bit(7)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->semitone_shift(), output);
   }
   
   // optional double detune_cents = 6 [default = 0];
-  if (_has_bit(9)) {
+  if (_has_bit(8)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(6, this->detune_cents(), output);
   }
   
   // optional uint32 bands = 7 [default = 2048];
-  if (_has_bit(10)) {
+  if (_has_bit(9)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->bands(), output);
   }
   
   // optional uint32 filter_overlap = 8 [default = 1];
-  if (_has_bit(11)) {
+  if (_has_bit(10)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->filter_overlap(), output);
   }
   
   // optional uint32 chunk_size = 9 [default = 1024];
-  if (_has_bit(12)) {
+  if (_has_bit(11)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->chunk_size(), output);
   }
   
   // optional uint32 prefill_size = 10 [default = 15000];
-  if (_has_bit(13)) {
+  if (_has_bit(12)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->prefill_size(), output);
   }
   
   // optional uint32 next_buffer_fill_size = 11 [default = 15000];
-  if (_has_bit(14)) {
+  if (_has_bit(13)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->next_buffer_fill_size(), output);
   }
   
   // optional int32 inactive_wait_time = 12 [default = -1];
-  if (_has_bit(15)) {
+  if (_has_bit(14)) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->inactive_wait_time(), output);
   }
   
   // optional uint32 thread_priority = 13 [default = 4];
-  if (_has_bit(16)) {
+  if (_has_bit(15)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(13, this->thread_priority(), output);
   }
   
   // optional double time_percent = 14 [default = 100];
-  if (_has_bit(4)) {
+  if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(14, this->time_percent(), output);
   }
   
@@ -666,12 +588,6 @@ void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(16, this->passthrough_when_disabled(), output);
   }
   
-  // optional .rec.audio.source.StereoProto stereo = 17;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      17, this->stereo(), output);
-  }
-  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -681,72 +597,72 @@ void Stretch::SerializeWithCachedSizes(
 ::google::protobuf::uint8* Stretch::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional double time_scale = 1 [default = 1];
-  if (_has_bit(3)) {
+  if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->time_scale(), target);
   }
   
   // optional double sample_rate = 2 [default = 44100];
-  if (_has_bit(5)) {
+  if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->sample_rate(), target);
   }
   
   // optional uint32 channels = 3 [default = 2];
-  if (_has_bit(6)) {
+  if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->channels(), target);
   }
   
   // optional double pitch_scale = 4 [default = 1];
-  if (_has_bit(7)) {
+  if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->pitch_scale(), target);
   }
   
   // optional double semitone_shift = 5 [default = 0];
-  if (_has_bit(8)) {
+  if (_has_bit(7)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->semitone_shift(), target);
   }
   
   // optional double detune_cents = 6 [default = 0];
-  if (_has_bit(9)) {
+  if (_has_bit(8)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(6, this->detune_cents(), target);
   }
   
   // optional uint32 bands = 7 [default = 2048];
-  if (_has_bit(10)) {
+  if (_has_bit(9)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->bands(), target);
   }
   
   // optional uint32 filter_overlap = 8 [default = 1];
-  if (_has_bit(11)) {
+  if (_has_bit(10)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->filter_overlap(), target);
   }
   
   // optional uint32 chunk_size = 9 [default = 1024];
-  if (_has_bit(12)) {
+  if (_has_bit(11)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->chunk_size(), target);
   }
   
   // optional uint32 prefill_size = 10 [default = 15000];
-  if (_has_bit(13)) {
+  if (_has_bit(12)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->prefill_size(), target);
   }
   
   // optional uint32 next_buffer_fill_size = 11 [default = 15000];
-  if (_has_bit(14)) {
+  if (_has_bit(13)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->next_buffer_fill_size(), target);
   }
   
   // optional int32 inactive_wait_time = 12 [default = -1];
-  if (_has_bit(15)) {
+  if (_has_bit(14)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->inactive_wait_time(), target);
   }
   
   // optional uint32 thread_priority = 13 [default = 4];
-  if (_has_bit(16)) {
+  if (_has_bit(15)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(13, this->thread_priority(), target);
   }
   
   // optional double time_percent = 14 [default = 100];
-  if (_has_bit(4)) {
+  if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(14, this->time_percent(), target);
   }
   
@@ -758,13 +674,6 @@ void Stretch::SerializeWithCachedSizes(
   // optional bool passthrough_when_disabled = 16 [default = true];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(16, this->passthrough_when_disabled(), target);
-  }
-  
-  // optional .rec.audio.source.StereoProto stereo = 17;
-  if (_has_bit(2)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        17, this->stereo(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -786,13 +695,6 @@ int Stretch::ByteSize() const {
     // optional bool passthrough_when_disabled = 16 [default = true];
     if (has_passthrough_when_disabled()) {
       total_size += 2 + 1;
-    }
-    
-    // optional .rec.audio.source.StereoProto stereo = 17;
-    if (has_stereo()) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->stereo());
     }
     
     // optional double time_scale = 1 [default = 1];
@@ -822,13 +724,13 @@ int Stretch::ByteSize() const {
       total_size += 1 + 8;
     }
     
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional double semitone_shift = 5 [default = 0];
     if (has_semitone_shift()) {
       total_size += 1 + 8;
     }
     
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional double detune_cents = 6 [default = 0];
     if (has_detune_cents()) {
       total_size += 1 + 8;
@@ -876,8 +778,6 @@ int Stretch::ByteSize() const {
           this->inactive_wait_time());
     }
     
-  }
-  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional uint32 thread_priority = 13 [default = 4];
     if (has_thread_priority()) {
       total_size += 1 +
@@ -919,52 +819,47 @@ void Stretch::MergeFrom(const Stretch& from) {
       set_passthrough_when_disabled(from.passthrough_when_disabled());
     }
     if (from._has_bit(2)) {
-      mutable_stereo()->::rec::audio::source::StereoProto::MergeFrom(from.stereo());
-    }
-    if (from._has_bit(3)) {
       set_time_scale(from.time_scale());
     }
-    if (from._has_bit(4)) {
+    if (from._has_bit(3)) {
       set_time_percent(from.time_percent());
     }
-    if (from._has_bit(5)) {
+    if (from._has_bit(4)) {
       set_sample_rate(from.sample_rate());
     }
-    if (from._has_bit(6)) {
+    if (from._has_bit(5)) {
       set_channels(from.channels());
     }
-    if (from._has_bit(7)) {
+    if (from._has_bit(6)) {
       set_pitch_scale(from.pitch_scale());
+    }
+    if (from._has_bit(7)) {
+      set_semitone_shift(from.semitone_shift());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from._has_bit(8)) {
-      set_semitone_shift(from.semitone_shift());
-    }
-    if (from._has_bit(9)) {
       set_detune_cents(from.detune_cents());
     }
-    if (from._has_bit(10)) {
+    if (from._has_bit(9)) {
       set_bands(from.bands());
     }
-    if (from._has_bit(11)) {
+    if (from._has_bit(10)) {
       set_filter_overlap(from.filter_overlap());
     }
-    if (from._has_bit(12)) {
+    if (from._has_bit(11)) {
       set_chunk_size(from.chunk_size());
     }
-    if (from._has_bit(13)) {
+    if (from._has_bit(12)) {
       set_prefill_size(from.prefill_size());
     }
-    if (from._has_bit(14)) {
+    if (from._has_bit(13)) {
       set_next_buffer_fill_size(from.next_buffer_fill_size());
     }
-    if (from._has_bit(15)) {
+    if (from._has_bit(14)) {
       set_inactive_wait_time(from.inactive_wait_time());
     }
-  }
-  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
-    if (from._has_bit(16)) {
+    if (from._has_bit(15)) {
       set_thread_priority(from.thread_priority());
     }
   }
@@ -992,7 +887,6 @@ void Stretch::Swap(Stretch* other) {
   if (other != this) {
     std::swap(disabled_, other->disabled_);
     std::swap(passthrough_when_disabled_, other->passthrough_when_disabled_);
-    std::swap(stereo_, other->stereo_);
     std::swap(time_scale_, other->time_scale_);
     std::swap(time_percent_, other->time_percent_);
     std::swap(sample_rate_, other->sample_rate_);
@@ -1018,506 +912,6 @@ void Stretch::Swap(Stretch* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = Stretch_descriptor_;
   metadata.reflection = Stretch_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Loop::kBeginFieldNumber;
-const int Loop::kEndFieldNumber;
-#endif  // !_MSC_VER
-
-Loop::Loop()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Loop::InitAsDefaultInstance() {
-}
-
-Loop::Loop(const Loop& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Loop::SharedCtor() {
-  _cached_size_ = 0;
-  begin_ = 0;
-  end_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Loop::~Loop() {
-  SharedDtor();
-}
-
-void Loop::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Loop::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Loop::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Loop_descriptor_;
-}
-
-const Loop& Loop::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();  return *default_instance_;
-}
-
-Loop* Loop::default_instance_ = NULL;
-
-Loop* Loop::New() const {
-  return new Loop;
-}
-
-void Loop::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    begin_ = 0;
-    end_ = 0;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Loop::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional double begin = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &begin_)));
-          _set_bit(0);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(17)) goto parse_end;
-        break;
-      }
-      
-      // optional double end = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_end:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &end_)));
-          _set_bit(1);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Loop::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional double begin = 1;
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->begin(), output);
-  }
-  
-  // optional double end = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->end(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Loop::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional double begin = 1;
-  if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->begin(), target);
-  }
-  
-  // optional double end = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->end(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Loop::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional double begin = 1;
-    if (has_begin()) {
-      total_size += 1 + 8;
-    }
-    
-    // optional double end = 2;
-    if (has_end()) {
-      total_size += 1 + 8;
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Loop::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Loop* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Loop*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Loop::MergeFrom(const Loop& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      set_begin(from.begin());
-    }
-    if (from._has_bit(1)) {
-      set_end(from.end());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Loop::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Loop::CopyFrom(const Loop& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Loop::IsInitialized() const {
-  
-  return true;
-}
-
-void Loop::Swap(Loop* other) {
-  if (other != this) {
-    std::swap(begin_, other->begin_);
-    std::swap(end_, other->end_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Loop::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Loop_descriptor_;
-  metadata.reflection = Loop_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int StretchLoop::kStretchFieldNumber;
-const int StretchLoop::kLoopFieldNumber;
-#endif  // !_MSC_VER
-
-StretchLoop::StretchLoop()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void StretchLoop::InitAsDefaultInstance() {
-  stretch_ = const_cast< ::rec::audio::stretch::Stretch*>(&::rec::audio::stretch::Stretch::default_instance());
-  loop_ = const_cast< ::rec::audio::stretch::Loop*>(&::rec::audio::stretch::Loop::default_instance());
-}
-
-StretchLoop::StretchLoop(const StretchLoop& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void StretchLoop::SharedCtor() {
-  _cached_size_ = 0;
-  stretch_ = NULL;
-  loop_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-StretchLoop::~StretchLoop() {
-  SharedDtor();
-}
-
-void StretchLoop::SharedDtor() {
-  if (this != default_instance_) {
-    delete stretch_;
-    delete loop_;
-  }
-}
-
-void StretchLoop::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* StretchLoop::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return StretchLoop_descriptor_;
-}
-
-const StretchLoop& StretchLoop::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto();  return *default_instance_;
-}
-
-StretchLoop* StretchLoop::default_instance_ = NULL;
-
-StretchLoop* StretchLoop::New() const {
-  return new StretchLoop;
-}
-
-void StretchLoop::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (_has_bit(0)) {
-      if (stretch_ != NULL) stretch_->::rec::audio::stretch::Stretch::Clear();
-    }
-    if (_has_bit(1)) {
-      if (loop_ != NULL) loop_->::rec::audio::stretch::Loop::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool StretchLoop::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.audio.stretch.Stretch stretch = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_stretch()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_loop;
-        break;
-      }
-      
-      // optional .rec.audio.stretch.Loop loop = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_loop:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_loop()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void StretchLoop::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.audio.stretch.Stretch stretch = 1;
-  if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->stretch(), output);
-  }
-  
-  // optional .rec.audio.stretch.Loop loop = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->loop(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* StretchLoop::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional .rec.audio.stretch.Stretch stretch = 1;
-  if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->stretch(), target);
-  }
-  
-  // optional .rec.audio.stretch.Loop loop = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->loop(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int StretchLoop::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.audio.stretch.Stretch stretch = 1;
-    if (has_stretch()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->stretch());
-    }
-    
-    // optional .rec.audio.stretch.Loop loop = 2;
-    if (has_loop()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->loop());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void StretchLoop::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const StretchLoop* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const StretchLoop*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void StretchLoop::MergeFrom(const StretchLoop& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
-      mutable_stretch()->::rec::audio::stretch::Stretch::MergeFrom(from.stretch());
-    }
-    if (from._has_bit(1)) {
-      mutable_loop()->::rec::audio::stretch::Loop::MergeFrom(from.loop());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void StretchLoop::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void StretchLoop::CopyFrom(const StretchLoop& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool StretchLoop::IsInitialized() const {
-  
-  return true;
-}
-
-void StretchLoop::Swap(StretchLoop* other) {
-  if (other != this) {
-    std::swap(stretch_, other->stretch_);
-    std::swap(loop_, other->loop_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata StretchLoop::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = StretchLoop_descriptor_;
-  metadata.reflection = StretchLoop_reflection_;
   return metadata;
 }
 

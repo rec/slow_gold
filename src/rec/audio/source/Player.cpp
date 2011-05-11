@@ -5,7 +5,7 @@
 #include "rec/audio/source/Buffered.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Stereo.h"
-#include "rec/audio/source/Timey.h"
+#include "rec/audio/source/Timer.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -17,10 +17,13 @@ using namespace rec::audio::transport;
 Player::Player(Device* d) : device_(d) {
   player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
-  timer_ = new Timey;
-  buffered_ = new Buffered(timer_, BUFFER_SIZE);
-  stereo_.reset(new Stereo(buffered_));
-  transportSource_.setSource(stereo_.get());
+  timer_ = new Timer;
+  stereo_ = new Stereo(timer_);
+  buffered_ = new Buffered(stereo_, BUFFER_SIZE);
+  source_.reset(buffered_);
+
+  transportSource_.setSource(source_.get());
+
   setSource(new Empty);
 }
 
