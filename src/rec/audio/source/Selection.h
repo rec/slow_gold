@@ -18,6 +18,13 @@ class Selection : public Wrappy {
   virtual void setLooping(bool looping) { DCHECK(looping); }
 
   void setSelection(const block::BlockSet& s);
+  const block::BlockSet& selection() const {
+    DCHECK(!selection_.empty());
+    return selection_;
+  }
+
+  // Move the clock backward, taking into account the segments.
+  void moveBackward(SampleTime dt);
 
  private:
   CriticalSection lock_;

@@ -9,21 +9,10 @@ namespace source {
 using namespace rec::util::block;
 
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
-  BlockSet selection;
-  {
-    ScopedLock l(lock_);
-    selection = selection_;
-  }
-
-  if (selection.empty()) {
-    LOG(ERROR) << "Tried to play an empty selection";
-    clear(audioInfo);
-    return;
-  }
-
+  BlockSet sel = selection();
   AudioSourceChannelInfo info = audioInfo;
-  BlockList blocks = fillSeries(selection_, position_, info.numSamples);
-  
+  BlockList blocks = fillSeries(sel, position_, info.numSamples);
+
   for (BlockList::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
     setNextReadPosition(i->first);
     info.numSamples = getSize(*i);
@@ -35,6 +24,27 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
 void Selection::setSelection(const BlockSet& s) {
   ScopedLock l(lock_);
   selection_ = s;
+}
+
+void Selection::moveBackward(SampleTime dt) {
+  ScopedLock l(lock_);
+  BlockSet sel = selection();
+  BlockSet::const_iterator i = sel.begin();
+  for (; i != sel.end() && i->second <= position_; ++i);
+  if (i == sel.end())
+    --i;
+
+  for (; dt > 0; --i) {
+    position_ = std::min(position_, i->second);
+    SampleTime moved = std::min(position_ - i->first, dt);
+    DCHECK(moved);
+    dt -= moved;
+    position_ -= moved;
+    if (dt > 0 && i == sel.begin()) {
+      i = sel.end();
+      position_ = getTotalLength();
+    }
+  }
 }
 
 }  // namespace source
