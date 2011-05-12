@@ -157,6 +157,11 @@ void Model::checkChanged() {
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }
 
+void Model::toggleSelectionSegment(RealTime time) {
+  //  LoopPointList loops(stretchLocker_.get());
+  // if (!loops.lo
+}
+
 #if 0
 const block::BlockSet Model::getTimeSelection() const {
   ScopedLock l(lock_);

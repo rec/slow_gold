@@ -95,6 +95,8 @@ void Waveform::paint(Graphics& g) {
       }
       r.begin_ = draw.end_;
     }
+    drawGrid(r);
+    drawCaptions(r);
 
   } else {
     g.setFont(14.0f);
@@ -205,6 +207,13 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
   we.xIncrement_ = xIncrement;
   we.yIncrement_ = yIncrement;
   Broadcaster<const MouseWheelEvent&>::broadcast(we);
+}
+
+void Waveform::drawGrid(const TimeRange& r) {
+
+}
+
+void Waveform::drawCaptions(const TimeRange& r) {
 }
 
 }  // namespace waveform

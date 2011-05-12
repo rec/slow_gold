@@ -47,9 +47,7 @@ class Model : public Listener<const VirtualFile&>,
   void fillOnce();
   void setTriggerTime(SampleTime p);
   Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
-
-  // SampleTime length() const { return selectionSource_->getTotalLength(); }
-  // RealTime realLength() const { return audio::samplesToTime(length()); }
+  void toggleSelectionSegment(RealTime time);
 
  private:
   bool hasTriggerTime(SampleTime t);

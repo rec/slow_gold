@@ -58,6 +58,9 @@ class Waveform : public Component,
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
 
  private:
+  void drawGrid(const TimeRange&);
+  void drawCaptions(const TimeRange&);
+
   Cursor* newCursor(const CursorProto& d, double time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);
   void setSelection(const gui::audio::LoopPointList&);
