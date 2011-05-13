@@ -28,7 +28,7 @@ void TimeAndLength::operator()(const ClockUpdate& c) {
 }
 
 void TimeAndLength::setTimeScale(double s) {
-  s = juce::jmax(s, 0.001);
+  s = juce::jmax(s, SMALLEST_TIME);
   double scale = s / timeScale_;
   time_.setTime(scale * time_.getTime());
   length_.setTime(scale * length_.getTime());

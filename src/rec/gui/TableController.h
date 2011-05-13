@@ -17,22 +17,21 @@ class TableController : public TableListBoxModel,
                   const char* name = "TableController");
 
   virtual void fillHeader(TableHeaderComponent* headers);
-  virtual int getNumRows();
+  virtual int getNumRows() = 0;
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
 
   virtual void setData(data::UntypedData* data);
 
-  const Value getDisplayValue() const;
-  void setDisplayValue(const Value& v);
+  virtual const Value getDisplayValue() const;
+  virtual void setDisplayValue(const Value& v);
 
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
-  void repaint() { TableListBox::repaint(); }
+
+  void updateAndRepaint() { update(); repaint(); }
 
  protected:
-  // onDataChange() is called to update the GUI when the persistent data
-  // underlying this GUI component changes
-  virtual void onDataChange();
+  virtual void update() { updateContent(); }
 
   static String displayText(const TableColumn& col, const Value& value);
 
@@ -41,7 +40,6 @@ class TableController : public TableListBoxModel,
   CriticalSection lock_;
 
   Address address_;
-  int numRows_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TableController);

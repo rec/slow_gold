@@ -23,10 +23,13 @@ class Loops : public TableController, public Cuttable {
 
   static const double CLOSE;
 
+  int getNumRows() {
+    ScopedLock l(lock_);
+    return loopPoints_->loop_point_size();
+  }
+
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
 
-  virtual void onDataChange();
-  void doSelect();
   virtual bool canCopy() const;
   virtual bool canPaste() const { return true; }
   virtual string copy() const;
@@ -44,9 +47,12 @@ class Loops : public TableController, public Cuttable {
   virtual void selectedRowsChanged(int lastRowSelected);
   virtual bool keyPressed(const juce::KeyPress& kp);
 
+ protected:
+  virtual void update();
+
  private:
   double length_;
-  LoopPointList loopPoints_;
+  LoopPointList* loopPoints_;
   const bool allowDiscontinuousSelections_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);

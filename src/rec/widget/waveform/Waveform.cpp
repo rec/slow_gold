@@ -197,8 +197,8 @@ TimeRange Waveform::getTimeRange() const {
     r.end_= zoom_.end();
   }
 
-  if (r.size() < 0.01)
-    r = TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : 0.01);
+  if (r.size() < SMALLEST_TIME)
+    r = TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : SMALLEST_TIME);
 
   return r;
 }
@@ -213,7 +213,7 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
 
 void Waveform::drawGrid(Graphics& g, const TimeRange& r) {
   RealTime width = r.size();
-  if (width < 0.001)
+  if (width < SMALLEST_TIME)
     return;
   RealTime units = pow(10.0, floor(log10(width)));
 

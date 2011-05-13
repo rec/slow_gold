@@ -52,7 +52,7 @@ void Cursor::setCursorBounds(double time) {
   int componentWidth = desc().component_width();
   int x = 0;
 
-  if (waveform_->getTimeRange().size() > 0.001)
+  if (waveform_->getTimeRange().size() > SMALLEST_TIME)
     x = waveform_->timeToX(time);
 
   bounds.setWidth(componentWidth);

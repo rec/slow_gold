@@ -30,7 +30,8 @@ class ProtoListener : public Listener<const Message&> {
   // Gets the data from the view.
   virtual const data::Value getDisplayValue() const = 0;
 
-  // Set the view data when the persistent value has changed.
+  // Set the view data when the persistent value has changed to update the local
+  // data.
   virtual void setDisplayValue(const data::Value&) = 0;
 
  private:

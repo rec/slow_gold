@@ -51,6 +51,8 @@ class None {};
 typedef int64 SampleTime;
 typedef double RealTime;
 
+static const double SMALLEST_TIME = 0.005;
+
 }  // namespace rec
 
 #endif  // __REC_BASE_BASENOJUCE__

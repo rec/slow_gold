@@ -122,11 +122,20 @@ void Model::operator()(const VirtualFile& f) {
   player()->timeBroadcaster()->broadcast(0);
   player()->setSource(new Empty);
 
-  components()->loops_.setData(updateLocker(&loopLocker_, f));
+  persist::Data<LoopPointList>* loopData = updateLocker(&loopLocker_, f);
+  components()->loops_.setData(loopData);
   components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
   components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
   updateLocker(&zoomLocker_, f);
+
+  LoopPointList loop = loopData->get();
+  if (!loop.loop_point_size()) {
+    loop.add_loop_point();
+    if (!loop.selected_size())
+      loop.add_selected(true);
+    data::set(loopData, loop);
+  }
 
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
@@ -163,13 +172,6 @@ void Model::toggleSelectionSegment(RealTime time) {
   //  LoopPointList loops(stretchLocker_.get());
   // if (!loops.lo
 }
-
-#if 0
-const block::BlockSet Model::getTimeSelection() const {
-  ScopedLock l(lock_);
-  return timeSelection_;
-}
-#endif
 
 }  // namespace slow
 }  // namespace rec

@@ -12,8 +12,7 @@ TableController::TableController(const TableColumnList& c, const Address& addres
     : TableListBox(name, this),
       ProtoListener(Address()),
       columns_(c),
-      address_(address),
-      numRows_(0) {
+      address_(address) {
 }
 
 void TableController::fillHeader(TableHeaderComponent* headers) {
@@ -23,11 +22,6 @@ void TableController::fillHeader(TableHeaderComponent* headers) {
     headers->addColumn(col.name().c_str(), i + 1, col.width(), col.minimum_width(),
                        col.maximum_width(), col.property_flags());
   }
-}
-
-int TableController::getNumRows() {
-  ScopedLock l(lock_);
-  return numRows_;
 }
 
 void TableController::paintRowBackground(Graphics& g,
@@ -74,20 +68,10 @@ const Value TableController::getDisplayValue() const {
   return value;
 }
 
-void TableController::onDataChange() {
-  {
-    ScopedLock l(lock_);
-    numRows_ = data::getSize(address_, *message_);
-  }
-  thread::callAsync(this, &TableListBox::updateContent);
-}
-
 void TableController::setDisplayValue(const Value& v) {
   ScopedLock l(lock_);
   if (message_.get()->ParseFromString(v.message_f())) {
-    onDataChange();
-    thread::callAsync(this, &TableController::repaint);
-
+    thread::callAsync(this, &TableController::updateAndRepaint);
   } else {
     LOG(ERROR) << "Couldn't parse value: " << message_->DebugString();
   }
@@ -97,7 +81,6 @@ void TableController::setData(data::UntypedData* data) {
   {
     ScopedLock l(lock_);
     ProtoListener::setData(data);
-    numRows_ = 0;
   }
 
   if (Message* msg = message_.get()) {
@@ -106,7 +89,6 @@ void TableController::setData(data::UntypedData* data) {
     else
       msg->Clear();
   }
-  onDataChange();
 }
 
 }  // namespace gui
