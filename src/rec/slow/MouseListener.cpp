@@ -62,14 +62,20 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     if (e.mods.isShiftDown()) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       ZoomProto zoom(model()->zoomLocker()->get());
-      RealTime end = zoom.has_end() ? zoom.end() : player()->realLength();
+      RealTime length = player()->realLength();
+      RealTime end = zoom.has_end() ? zoom.end() : length;
       RealTime size = end - zoom.begin();
-      zoom.set_begin(waveformDragStart_ - dt);
+      RealTime begin = std::max(waveformDragStart_ - dt, 0.0);
+      RealTime e2 = std::min(length, begin + size);
+      zoom.set_begin(e2 - size);
+      zoom.set_end(end);
+
       zoom.set_end(zoom.begin() + size);
       model()->zoomLocker()->set(zoom);
     } else {
       model()->setTriggerTime(timeToSamples(time));
     }
+
   } else if (e.eventComponent == waveform->timeCursor()) {
     model()->setTriggerTime(timeToSamples(waveform->xToTime(e.x)));
   }

@@ -252,7 +252,7 @@ void Waveform::drawGrid(Graphics& g, const TimeRange& r) {
     static const int HEIGHT = 10;
     static const int PAD = 4;
     g.setColour(juce::Colours::black);
-    g.drawText(s, x - WIDTH / 2, h - PAD - HEIGHT, WIDTH, HEIGHT,
+    g.drawText(s, i ? x - WIDTH / 2 : x - WIDTH / 4, h - PAD - HEIGHT, WIDTH, HEIGHT,
                Justification::centred, true);
   }
 }
