@@ -1,6 +1,7 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
+#include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/CachedThumbnail.h"
 #include "rec/data/persist/Data.h"
@@ -119,6 +120,7 @@ void Model::operator()(const VirtualFile& f) {
   file_ = f;
   player()->setState(audio::transport::STOPPED);
   player()->timeBroadcaster()->broadcast(0);
+  player()->setSource(new Empty);
 
   components()->loops_.setData(updateLocker(&loopLocker_, f));
   components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
