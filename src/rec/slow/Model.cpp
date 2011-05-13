@@ -11,6 +11,7 @@
 #include "rec/slow/Threads.h"
 #include "rec/util/block/Difference.h"
 #include "rec/util/block/FillSeries.h"
+#include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/Zoom.h"
 
 namespace rec {

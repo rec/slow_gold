@@ -77,7 +77,11 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     }
 
   } else if (e.eventComponent == waveform->timeCursor()) {
-    model()->setTriggerTime(timeToSamples(waveform->xToTime(e.x)));
+    Cursor* timeCursor = waveform->timeCursor();
+    timeCursor->setListeningToClock(false);
+    RealTime time = waveform->xToTime(e.x + timeCursor->getX());
+    timeCursor->setTime(time);
+    model()->setTriggerTime(timeToSamples(time));
   }
 }
 
@@ -94,6 +98,9 @@ void MouseListener::mouseUp(const MouseEvent& e) {
 
   else
 #endif
+  Cursor* timeCursor = components()->waveform_.timeCursor();
+  if (timeCursor == e.eventComponent)
+    timeCursor->setListeningToClock(true);
   // mouseDrag(e);
 }
 
