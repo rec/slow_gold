@@ -94,7 +94,7 @@ void MouseListener::mouseUp(const MouseEvent& e) {
 
   else
 #endif
-  mouseDrag(e);
+  // mouseDrag(e);
 }
 
 void MouseListener::mouseDoubleClick(const MouseEvent& e) {
