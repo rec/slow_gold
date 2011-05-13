@@ -33,6 +33,14 @@ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
+SampleTime Player::getNextReadPosition() {
+  return selection_->getNextReadPosition();
+}
+
+void Player::setNextReadPosition(SampleTime t) {
+  selection_->setNextReadPosition(t);
+}
+
 void Player::setState(State s) {
   if (s != state()) {
     if (s == transport::RUNNING)

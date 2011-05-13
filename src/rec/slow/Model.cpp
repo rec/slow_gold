@@ -62,20 +62,22 @@ void Model::fillOnce() {
 void Model::setTriggerTime(SampleTime pos) {
   {
     ScopedLock l(lock_);
+    block::print(DLOG(INFO), timeSelection_);
     if (!block::contains(timeSelection_, pos)) {
       DLOG(INFO) << "Click outside selection";
       return;
     }
 
     ThumbnailBuffer* buffer = thumbnailBuffer_.current();
-    if (!buffer || buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
+    if (!buffer) {
       triggerTime_ = -1;
-    } else {
-      triggerTime_ = pos;
-      if (buffer)
-        buffer->setPosition(pos);
       return;
     }
+    triggerTime_ = pos;
+    if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD)))
+      return;
+    buffer->setPosition(pos);
+    triggerTime_ = -1;
   }
 
   (*listeners())(pos);

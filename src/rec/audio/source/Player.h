@@ -32,8 +32,8 @@ class Player : public Broadcaster<transport::State>,
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
-  SampleTime getNextReadPosition() { return timer_->getNextReadPosition(); }
-  void setNextReadPosition(SampleTime t) { timer_->setNextReadPosition(t); }
+  SampleTime getNextReadPosition();
+  void setNextReadPosition(SampleTime t);
 
   transport::State state() const;
   Device* device() { return device_; }
