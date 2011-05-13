@@ -86,7 +86,7 @@ void protobuf_AddDesc_rec_2faudio_2fsource_2fRunny_2eproto() {
     "\001\n\nRunnyProto\022\033\n\013buffer_size\030\001 \001(\r:\0062621"
     "44\022\031\n\nchunk_size\030\002 \001(\r:\00516384\0222\n\006thread\030"
     "\003 \001(\0132\".rec.util.thread.ThreadDescriptio"
-    "n\022\030\n\013compression\030\004 \001(\r:\003512\022\025\n\tspin_wait"
+    "n\022\030\n\013compression\030\004 \001(\r:\003128\022\025\n\tspin_wait"
     "\030\006 \001(\r:\00240\022\030\n\treadahead\030\007 \001(\r:\00520000\022\037\n\020"
     "buffer_readahead\030\010 \001(\r:\00510000", 309);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -136,7 +136,7 @@ void RunnyProto::SharedCtor() {
   buffer_size_ = 262144u;
   chunk_size_ = 16384u;
   thread_ = NULL;
-  compression_ = 512u;
+  compression_ = 128u;
   spin_wait_ = 40u;
   readahead_ = 20000u;
   buffer_readahead_ = 10000u;
@@ -180,7 +180,7 @@ void RunnyProto::Clear() {
     if (_has_bit(2)) {
       if (thread_ != NULL) thread_->::rec::util::thread::ThreadDescription::Clear();
     }
-    compression_ = 512u;
+    compression_ = 128u;
     spin_wait_ = 40u;
     readahead_ = 20000u;
     buffer_readahead_ = 10000u;
@@ -240,7 +240,7 @@ bool RunnyProto::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 compression = 4 [default = 512];
+      // optional uint32 compression = 4 [default = 128];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -338,7 +338,7 @@ void RunnyProto::SerializeWithCachedSizes(
       3, this->thread(), output);
   }
   
-  // optional uint32 compression = 4 [default = 512];
+  // optional uint32 compression = 4 [default = 128];
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->compression(), output);
   }
@@ -383,7 +383,7 @@ void RunnyProto::SerializeWithCachedSizes(
         3, this->thread(), target);
   }
   
-  // optional uint32 compression = 4 [default = 512];
+  // optional uint32 compression = 4 [default = 128];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->compression(), target);
   }
@@ -435,7 +435,7 @@ int RunnyProto::ByteSize() const {
           this->thread());
     }
     
-    // optional uint32 compression = 4 [default = 512];
+    // optional uint32 compression = 4 [default = 128];
     if (has_compression()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
