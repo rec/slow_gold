@@ -6,9 +6,10 @@
 namespace rec {
 namespace util {
 
-const String formatTime(double time, bool flash = false,
-                        bool displayMs = true,
-                        bool displayHours = false);
+const String formatTime(RealTime time, bool flash = false,
+                        bool displayHours = false,
+                        bool leadingZeros = true,
+                        int decimals = 3);
 
 }  // namespace util
 }  // namespace rec

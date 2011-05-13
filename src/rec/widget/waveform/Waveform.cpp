@@ -2,6 +2,7 @@
 
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
+#include "rec/util/FormatTime.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -64,7 +65,8 @@ void Waveform::paint(Graphics& g) {
 
   if (thumbnail_) {
     TimeSelection::iterator i = selection_.begin();
-    TimeRange r = getTimeRange();
+    TimeRange range = getTimeRange();
+    TimeRange r = range;
     const juce::Rectangle<int>& bounds = getLocalBounds();
     int channels = thumbnail_->getNumChannels();
 
@@ -95,8 +97,8 @@ void Waveform::paint(Graphics& g) {
       }
       r.begin_ = draw.end_;
     }
-    drawGrid(r);
-    drawCaptions(r);
+    drawGrid(g, range);
+    // drawCaptions(range);
 
   } else {
     g.setFont(14.0f);
@@ -209,12 +211,52 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
   Broadcaster<const MouseWheelEvent&>::broadcast(we);
 }
 
-void Waveform::drawGrid(const TimeRange& r) {
+void Waveform::drawGrid(Graphics& g, const TimeRange& r) {
+  RealTime width = r.size();
+  if (width < 0.001)
+    return;
+  RealTime units = pow(10.0, floor(log10(width)));
 
+  int b = ceil(r.begin_ / units), e = r.end_ / units, diff = e - b;
+
+  if (diff <= 2)
+    units /= 2.0;
+  else if (diff > 15)
+    units *= 5.0;
+
+  if (units > 10.0)
+    units *= 1.2;
+
+  b = ceil(r.begin_ / units);
+  e = floor(r.end_ / units);
+  int h = getHeight();
+  int decimals = 0;
+  if (units < 0.01)
+    decimals = 3;
+  else if (units < 0.1)
+    decimals = 2;
+  else if (units < 1)
+    decimals = 1;
+  // DLOG(INFO) << "decimals " << decimals;
+
+  g.setFont(10);
+
+  for (int i = b - 1; i <= e + 1; ++i) {
+    RealTime time = i * units;
+    int x = timeToX(time);
+    g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
+    g.drawVerticalLine(x, 0, h);
+    String s = formatTime(time, false, false, false, decimals);
+    // DLOG(INFO) << s;
+    static const int WIDTH = 50;
+    static const int HEIGHT = 10;
+    static const int PAD = 4;
+    g.setColour(juce::Colours::black);
+    g.drawText(s, x - WIDTH / 2, h - PAD - HEIGHT, WIDTH, HEIGHT,
+               Justification::centred, true);
+  }
 }
 
-void Waveform::drawCaptions(const TimeRange& r) {
-}
 
 }  // namespace waveform
 }  // namespace widget

@@ -7,14 +7,14 @@ namespace util {
 #define snprintf _snprintf
 #endif
 
-const String formatTime(double time, bool flash, bool displayMs, bool displayHours) {
+const String formatTime(double time, bool flash, bool displayHours, bool leadingZeros, int decimals) {
   int sec = static_cast<int>(time);
   double fraction = time - sec;
-  int ms = static_cast<int>(1000 * fraction);
 
   int minutes = sec / 60;
   int hours = minutes / 60;
   sec %= 60;
+  double sf = sec + fraction;
 
   char buffer[64];
   char ch = ':';
@@ -22,16 +22,15 @@ const String formatTime(double time, bool flash, bool displayMs, bool displayHou
     ch = ' ';
 
   if (displayHours) {
-    if (displayMs)
-      snprintf(buffer, 64, "%02d:%02d%c%02d.%03d", hours, minutes, ch, sec, ms);
-    else
-      snprintf(buffer, 64, "%02d:%02d%c%02d", hours, minutes, ch, sec);
+    snprintf(buffer, 64, "%02d:%02d%c%02.*f", hours, minutes, ch, decimals, sf);
   } else {
     minutes += 60 * hours;
-    if (displayMs)
-      snprintf(buffer, 64, "%03d%c%02d.%03d", minutes, ch, sec, ms);
-    else
-      snprintf(buffer, 64, "%03d%c%02d", minutes, ch, sec);
+    const char* zero = (sec < 10 && decimals)  ? "0" : "";
+    if (leadingZeros) {
+      snprintf(buffer, 64, "%03d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+    } else {
+      snprintf(buffer, 64, "%d%c%s%02.*f", minutes, ch, zero, decimals, sf);
+    }
   }
 
   return buffer;
