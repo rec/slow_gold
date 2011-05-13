@@ -32,6 +32,7 @@ class Cursor : public Component, public Listener<SampleTime> {
   virtual void operator()(SampleTime t);
 
   void setListeningToClock(bool b) { listeningToClock_ = b; }
+  int index() { return index_; }
 
  private:
   Waveform* const waveform_;

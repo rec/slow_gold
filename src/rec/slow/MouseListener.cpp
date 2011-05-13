@@ -42,14 +42,17 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
 
 void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
-  RealTime time = waveform->xToTime(e.x);
   if (e.eventComponent == waveform) {
+    RealTime time = waveform->xToTime(e.x);
     if (e.mods.isShiftDown())
       waveformDragStart_ = model()->zoomLocker()->get().begin();
+
     else if (e.mods.isAltDown())
       components()->loops_.addLoopPoint(time);
+
     else if (e.mods.isCommandDown())
       model()->toggleSelectionSegment(time);
+
     else
       model()->setTriggerTime(timeToSamples(time));
 
@@ -59,8 +62,8 @@ void MouseListener::mouseDown(const MouseEvent& e) {
 
 void MouseListener::mouseDrag(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
-  RealTime time = waveform->xToTime(e.x);
   if (e.eventComponent == waveform) {
+    RealTime time = waveform->xToTime(e.x);
     if (e.mods.isShiftDown()) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       ZoomProto zoom(model()->zoomLocker()->get());
@@ -78,12 +81,12 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       model()->setTriggerTime(timeToSamples(time));
     }
 
-  } else if (e.eventComponent == waveform->timeCursor()) {
-    Cursor* timeCursor = waveform->timeCursor();
-    timeCursor->setListeningToClock(false);
-    RealTime time = waveform->xToTime(e.x + timeCursor->getX());
-    timeCursor->setTime(time);
-    model()->setTriggerTime(timeToSamples(time));
+  } else if (e.eventComponent->getName() == "Cursor") {
+    Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
+    RealTime time = waveform->xToTime(e.x + cursor->getX());
+    cursor->setListeningToClock(false);
+    cursor->setTime(time);
+    model()->setCursorTime(cursor->index(), time);
   }
 }
 

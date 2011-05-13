@@ -118,18 +118,22 @@ double Waveform::pixelsPerSecond() const {
 }
 
 void Waveform::addAllCursors(const LoopPointList& loopPoints) {
-  CursorSet cursors;
   int size = loopPoints.loop_point_size();
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
-    ptr<Cursor> c(newCursor(CursorProto::default_instance(), time, i));
+    bool needsNew = (i >= getNumChildComponents() - 1);
+    Cursor* c;
+    if (needsNew) {
+      c = newCursor(CursorProto::default_instance(), time, i);
+    } else {
+      Component* comp = getChildComponent(i + 1);
+      c = dynamic_cast<Cursor*>(comp);
+    }
     c->setCursorBounds(time);
-    cursors.insert(c.get());
-    addAndMakeVisible(c.transfer());
   }
 
   while (getNumChildComponents() > size + 1)
-    delete removeChildComponent(1);
+    delete removeChildComponent(size + 1);
 
   setSelection(loopPoints);
 }
@@ -235,7 +239,6 @@ void Waveform::drawGrid(Graphics& g, const TimeRange& r) {
     decimals = 2;
   else if (units < 1)
     decimals = 1;
-  // DLOG(INFO) << "decimals " << decimals;
 
   g.setFont(10);
 
@@ -245,7 +248,6 @@ void Waveform::drawGrid(Graphics& g, const TimeRange& r) {
     g.setColour(juce::Colours::lightgreen.withAlpha(0.8f));
     g.drawVerticalLine(x, 0, h);
     String s = formatTime(time, false, false, false, decimals);
-    // DLOG(INFO) << s;
     static const int WIDTH = 50;
     static const int HEIGHT = 10;
     static const int PAD = 4;

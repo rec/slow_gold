@@ -48,6 +48,7 @@ class Model : public Listener<const VirtualFile&>,
   void setTriggerTime(SampleTime p);
   Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
   void toggleSelectionSegment(RealTime time);
+  void setCursorTime(int index, RealTime time);
 
  private:
   bool hasTriggerTime(SampleTime t);
@@ -68,6 +69,7 @@ class Model : public Listener<const VirtualFile&>,
   block::BlockSet timeSelection_;
 
   Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;
+  persist::Data<LoopPointList>* loopData_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
 };

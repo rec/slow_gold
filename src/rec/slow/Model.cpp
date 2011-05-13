@@ -34,7 +34,8 @@ Model::Model(Instance* i) : HasInstance(i),
                             stretchLocker_(&lock_),
                             zoomLocker_(&lock_),
                             time_(0),
-                            triggerTime_(-1) {
+                            triggerTime_(-1),
+                            loopData_(NULL) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
 }
@@ -125,8 +126,8 @@ void Model::operator()(const VirtualFile& f) {
   player()->timeBroadcaster()->broadcast(0);
   player()->setSource(new Empty);
 
-  persist::Data<LoopPointList>* loopData = updateLocker(&loopLocker_, f);
-  components()->loops_.setData(loopData);
+  loopData_ = updateLocker(&loopLocker_, f);
+  components()->loops_.setData(loopData_);
   components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
   components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
@@ -135,12 +136,12 @@ void Model::operator()(const VirtualFile& f) {
   if (empty(f))
     return;
 
-  LoopPointList loop = loopData->get();
+  LoopPointList loop = loopData_->get();
   if (!loop.loop_point_size()) {
     loop.add_loop_point();
     if (!loop.selected_size())
       loop.add_selected(true);
-    data::set(loopData, loop);
+    data::set(loopData_, loop);
   }
 
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
@@ -177,6 +178,17 @@ void Model::checkChanged() {
 void Model::toggleSelectionSegment(RealTime time) {
   //  LoopPointList loops(stretchLocker_.get());
   // if (!loops.lo
+}
+
+void Model::setCursorTime(int index, RealTime time) {
+  if (index < 0) {
+    setTriggerTime(audio::timeToSamples(time));
+  } else {
+    LoopPointList loops = loopLocker_.get();
+    loops.mutable_loop_point(index)->set_time(time);
+
+    data::set(loopData_, loops);
+  }
 }
 
 }  // namespace slow
