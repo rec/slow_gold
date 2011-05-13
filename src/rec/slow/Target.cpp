@@ -14,14 +14,11 @@ namespace slow {
 namespace {
 
 void addLoopPoint(Instance* i) {
-  i->components_->loops_.addLoopPoint(
-      audio::samplesToTime(i->player_->getNextReadPosition()));
+  i->components_->loops_.addLoopPoint(i->player_->getTime());
   // playbackController_.enableLoopPointButton(false);  // TODO
 }
 
-
 }  // namespace
-
 
 Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_),
                               HasInstance(i) {

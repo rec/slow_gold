@@ -11,13 +11,10 @@
 #include "rec/slow/MouseListener.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
-#include "rec/util/ClockUpdate.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Cursor.h"
-#include "rec/widget/waveform/CursorTime.h"
-#include "rec/widget/waveform/TimeAndMouseEvent.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {
@@ -50,8 +47,6 @@ Listeners::Listeners(Instance* i)
 }
 
 void Listeners::operator()(SampleTime time) {
-  // Waveform* waveform = &components()->waveform_;
-  // waveform->timeCursor()->setListeningToClock(true); TODO
   player()->setNextReadPosition(time);
 }
 

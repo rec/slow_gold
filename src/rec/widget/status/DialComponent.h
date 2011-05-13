@@ -2,7 +2,6 @@
 #define __REC_WIDGET_STATUS_DIALCOMPONENT__
 
 #include "rec/util/listener/Listener.h"
-#include "rec/util/ClockUpdate.h"
 #include "rec/util/Range.h"
 #include "rec/widget/status/Time.pb.h"
 

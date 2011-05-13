@@ -46,6 +46,8 @@ void MouseListener::mouseDown(const MouseEvent& e) {
   if (e.eventComponent == waveform) {
     if (e.mods.isShiftDown())
       waveformDragStart_ = model()->zoomLocker()->get().begin();
+    else if (e.mods.isAltDown())
+      components()->loops_.addLoopPoint(time);
     else if (e.mods.isCommandDown())
       model()->toggleSelectionSegment(time);
     else
@@ -119,37 +121,6 @@ void PlaybackController::operator()(const Stretch& desc) {
                     !desc.stretch().disabled());
   timeController_(desc);
 }
-
-int Cursor::getDragX(const MouseEvent& e) const {
-  return getX() + e.x - mouseDragX_;
-}
-
-void Cursor::mouseDown(const MouseEvent& e) {
-  dragging_ = true;
-  mouseDragX_ = e.x;
-  dragX_ = getX();
-}
-
-void Cursor::mouseDrag(const MouseEvent& e) {
-  if (dragging_)
-    setTopLeftPosition(getDragX(e), getY());
-}
-
-void Cursor::mouseUp(const MouseEvent& e) {
-  if (dragging_) {
-    dragging_ = false;
-    int location = getDragX(e) + desc().component_width() / 2;
-    waveform_->cursorDragged(index_, location);
-  }
-}
-
-void Waveform::cursorDragged(int index, int x) {
-  CursorTime ct;
-  ct.cursor_ = index;
-  ct.time_ = xToTime(x);
-  Broadcaster<const CursorTime&>::broadcast(ct);
-}
-
 
 #endif
 }  // namespace slow

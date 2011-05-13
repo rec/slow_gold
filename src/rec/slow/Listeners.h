@@ -15,12 +15,9 @@ namespace audio { namespace source { class StereoProto; }}
 namespace gui { class DropFiles; }
 namespace gui { namespace audio { class LoopPointList; }}
 
-// namespace util { class ClockUpdate; }
 namespace util { namespace file { class VirtualFile; }}
 namespace util { namespace file { class VirtualFileList; }}
 
-// namespace widget { namespace waveform { class CursorTime; }}
-// namespace widget { namespace waveform { class TimeAndMouseEvent; }}
 namespace widget { namespace waveform { class ZoomProto; }}
 
 namespace slow {
@@ -50,10 +47,6 @@ class Listeners : public Listener<None>,
   virtual void operator()(const gui::DropFiles&);
   virtual void operator()(const gui::audio::LoopPointList&);
 
-  //  void operator()(const ClockUpdate&);
-  //  void operator()(const widget::waveform::CursorTime&);
-  //  void operator()(const widget::waveform::TimeAndMouseEvent&);
-  //  void operator()(const widget::waveform::ZoomProto&);
   void operator()(SampleTime);
 
   template <typename Type>

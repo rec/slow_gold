@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 #include "rec/util/listener/Listener.h"
-#include "rec/util/ClockUpdate.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/widget/status/Time.pb.h"
 

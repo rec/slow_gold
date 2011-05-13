@@ -6,9 +6,7 @@
 #include "rec/util/STL.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/waveform/Cursor.h"
-#include "rec/widget/waveform/CursorTime.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
-#include "rec/widget/waveform/TimeAndMouseEvent.h"
 
 using namespace rec::gui::audio;
 

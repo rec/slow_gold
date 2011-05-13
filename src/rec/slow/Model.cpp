@@ -63,7 +63,6 @@ void Model::fillOnce() {
 void Model::setTriggerTime(SampleTime pos) {
   {
     ScopedLock l(lock_);
-    block::print(DLOG(INFO), timeSelection_);
     if (!block::contains(timeSelection_, pos)) {
       DLOG(INFO) << "Click outside selection";
       return;
@@ -75,9 +74,10 @@ void Model::setTriggerTime(SampleTime pos) {
       return;
     }
     triggerTime_ = pos;
-    if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD)))
+    if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
+      buffer->setPosition(pos);
       return;
-    buffer->setPosition(pos);
+    }
     triggerTime_ = -1;
   }
 
@@ -131,6 +131,9 @@ void Model::operator()(const VirtualFile& f) {
   components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
   updateLocker(&zoomLocker_, f);
+
+  if (empty(f))
+    return;
 
   LoopPointList loop = loopData->get();
   if (!loop.loop_point_size()) {

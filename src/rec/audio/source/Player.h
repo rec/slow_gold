@@ -34,6 +34,7 @@ class Player : public Broadcaster<transport::State>,
 
   SampleTime getNextReadPosition();
   void setNextReadPosition(SampleTime t);
+  RealTime getTime() { return samplesToTime(getNextReadPosition()); }
 
   transport::State state() const;
   Device* device() { return device_; }

@@ -19,7 +19,6 @@ namespace waveform {
 
 class Cursor;
 class CursorProto;
-struct CursorTime;
 struct MouseWheelEvent;
 struct TimeAndMouseEvent;
 
@@ -27,7 +26,6 @@ struct TimeAndMouseEvent;
 class Waveform : public Component,
                  public Listener<juce::AudioThumbnail*>,
                  public Listener<const ZoomProto&>,
-                 public Broadcaster<const CursorTime&>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&>,
                  public Broadcaster<const TimeSelection&> {

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="vDorkqh3L" name="tests">
+  <MAINGROUP id="sREM08d2d" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -809,8 +809,6 @@
               name="Circular.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Circular_test.cpp" id="FkMClwrzR"
               name="Circular_test.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/util/ClockUpdate.h" id="rHKBtr7yA"
-              name="ClockUpdate.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Compare.cpp" id="ZqeNWyuPb"
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="YN1Cfu2jM"
@@ -982,12 +980,8 @@
                 name="Cursor.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/waveform/CursorStates.cpp"
                 id="kH5xE6zkU" name="CursorStates.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/waveform/CursorTime.h"
-                id="Unidky0dE" name="CursorTime.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/MouseWheelEvent.h"
                 id="rd8YRemUy" name="MouseWheelEvent.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/waveform/TimeAndMouseEvent.h"
-                id="yknXgHXIr" name="TimeAndMouseEvent.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/widget/waveform/Waveform.cpp"
                 id="AEh4kOOuB" name="Waveform.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/waveform/Waveform.h" id="GxygR1ziw"
@@ -1163,7 +1157,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="6n0y4ETXL" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="VSzCvleqN" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

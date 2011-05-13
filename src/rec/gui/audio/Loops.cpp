@@ -80,7 +80,7 @@ void Loops::update() {
     if (sel == getSelectedRows())
       return;
   }
-  print("update", sel);
+  // print("update", sel);
   setSelectedRows(sel, false);
 
   TableController::update();
@@ -190,7 +190,7 @@ void Loops::addLoopPoint(double time) {
       loopPoints_->set_selected(i, time >= selection.begin_ && time < selection.end_);
     }
 
-    data::set(getData(), Address(), loopPoints_);
+    data::set(getData(), *loopPoints_);
   }
 }
 
