@@ -7,6 +7,7 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timer.h"
+#include "rec/audio/source/Stretchy.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -16,21 +17,23 @@ namespace source {
 using namespace rec::audio::transport;
 using namespace rec::audio::stretch;
 
-Player::Player(Device* d) : device_(d) {
+Player::Player(Device* d)
+    : device_(d), stretchy_(NULL), stereo_(NULL), buffered_(NULL) {
   player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
   timer_ = new Timer;
   selection_ = new Selection(timer_);
+  stretchy_ = NULL;
   stereo_ = new Stereo(selection_);
   buffered_ = new Buffered(stereo_, BUFFER_SIZE);
   source_.reset(buffered_);
 
   transportSource_.setSource(source_.get());
 
-  setSource(new Empty);
+  clearSource();
 }
 
-Player::~Player() {
+ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
@@ -56,6 +59,16 @@ void Player::setState(State s) {
 void Player::setSource(Source* source, const stretch::Stretch& stretch) {
   ptr<Source> s(source);
   timer_->swap(&s);
+
+  static const double DELTA = 0.00001;
+  double timeRatio = timeScale(stretch);
+  if (stretch.passthrough_when_disabled() &&
+      near(timeRatio, 1.0, DELTA) &&
+      near(stretch::pitchScale(stretch), 1.0, DELTA)) {
+  } else {
+
+  }
+
 
 #if 0
   if (source)  // TODO: is this even needed
@@ -86,6 +99,11 @@ void Player::setStereoProto(const StereoProto& s) {
 void Player::setSelection(const block::BlockSet& s) {
   selection_->setSelection(s);
 }
+
+void Player::clearSource() {
+  setSource(new Empty, Stretch());
+}
+
 
 }  // namespace source
 }  // namespace audio

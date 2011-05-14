@@ -9,31 +9,51 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Stretchy::Stretchy(PositionableAudioSource* s, const Stretch& desc)
-    : Wrappy(s),
-      description_(desc),
-      buffer_(desc.channels(), SAMPLE_BUFFER_INITIAL_SIZE),
-      outOffset_(desc.channels()),
-      timeScale_(timeScale(description_)) {
-  audio::stretch::Init(description_, &scaler_);
+Stretchy::Stretchy(PositionableAudioSource* s) : Wrappy(s), initialized_(false) {
 }
 
 Stretchy::~Stretchy() {}
 
 int64 Stretchy::getTotalLength() const {
+  ScopedLock l(lock_);
   return source()->getTotalLength() * timeScale_;
 }
 
 int64 Stretchy::getNextReadPosition() const {
+  ScopedLock l(lock_);
   return source()->getNextReadPosition() * timeScale_;
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
+  ScopedLock l(lock_);
   source()->setNextReadPosition(position / timeScale_);
 }
 
+void Stretchy::setStretch(const stretch::Stretch& s) {
+  ScopedLock l(lock_);
+  stretch_ = s;
+  initialized_ = false;
+}
+
+void Stretchy::initialize() {
+  ScopedLock l(lock_);
+  if (initialized_)
+    return;
+
+  channels_ = stretch_.channels();
+  if (!buffer_ || buffer_->getNumChannels() != channels_)
+    buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_INITIAL_SIZE));
+  outOffset_.resize(channels_);
+  timeScale_ = timeScale(stretch_);
+  audio::stretch::Init(stretch_, &scaler_);
+  initialized_ = true;
+}
+
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  CHECK_EQ(info.buffer->getNumChannels(), description_.channels());
+  ScopedLock l(lock_);
+  initialize();
+
+  DCHECK_EQ(info.buffer->getNumChannels(), channels_);
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = processOneChunk(i)) {
@@ -62,18 +82,18 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
 int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   int64 inSampleCount = scaler_.GetInputBufferSize(info.numSamples) / 2;
-  buffer_.setSize(description_.channels(), inSampleCount, false, false, true);
+  buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
 
   AudioSourceChannelInfo i;
   i.startSample = 0;
   i.numSamples = inSampleCount;
-  i.buffer = &buffer_;
+  i.buffer = buffer_.get();
   source()->getNextAudioBlock(i);
 
-  for (int c = 0; c < description_.channels(); ++c)
+  for (int c = 0; c < channels_; ++c)
     outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
 
-  float** ins = buffer_.getArrayOfChannels();
+  float** ins = buffer_->getArrayOfChannels();
   float** outs = &outOffset_.front();
 
   int64 samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);

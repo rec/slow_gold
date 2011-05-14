@@ -19,8 +19,14 @@ class Buffered;
 class Selection;
 class Stereo;
 class StereoProto;
+class Stretchy;
 class Timey;
 
+
+// Plays an original master source!
+// Player has the following source chain:
+//   source -> timer -> selection ( -> stretchy) -> stereo_ -> buffered_
+// where the stretchy component will be NULL if no stretch has been requested.
 class Player : public Broadcaster<transport::State>,
                public juce::ChangeListener {
  public:
@@ -48,8 +54,8 @@ class Player : public Broadcaster<transport::State>,
   SampleTime length() const { return timer_->getTotalLength(); }
   RealTime realLength() const { return audio::samplesToTime(length()); }
   void clearSource();
-  void setSource(Source*, const stretch::Stretch& s =
-                 stretch::Stretch::default_instance());
+
+  void setSource(Source*, const stretch::Stretch& s);
   void setStretch(const stretch::Stretch&);
 
   static const int BUFFER_SIZE = 2048;
@@ -65,6 +71,7 @@ class Player : public Broadcaster<transport::State>,
 
   Timer* timer_;
   Selection* selection_;
+  Stretchy* stretchy_;
   Stereo* stereo_;
   Buffered* buffered_;
 

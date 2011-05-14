@@ -124,7 +124,7 @@ void Model::operator()(const VirtualFile& f) {
   file_ = f;
   player()->setState(audio::transport::STOPPED);
   player()->timeBroadcaster()->broadcast(0);
-  player()->setSource(new Empty);
+  player()->clearSource();
 
   loopData_ = updateLocker(&loopLocker_, f);
   components()->loops_.setData(loopData_);
@@ -147,7 +147,7 @@ void Model::operator()(const VirtualFile& f) {
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
   buffer->thumbnail()->addListener(&components()->waveform_);
-  player()->setSource(new BufferSource(buffer->buffer()));
+  player()->setSource(new BufferSource(buffer->buffer()), stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
 

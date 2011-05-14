@@ -19,25 +19,28 @@ class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
 
-  Stretchy(PositionableAudioSource* s,
-           const stretch::Stretch& desc = stretch::Stretch::default_instance());
+  Stretchy(PositionableAudioSource* s);
   ~Stretchy();
+
+  void setStretch(const stretch::Stretch&);
 
   virtual int64 getTotalLength() const;
   virtual void setNextReadPosition(int64 position);
   virtual int64 getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
+  void initialize();
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
 
-  stretch::Stretch description_;
+  stretch::Stretch stretch_;
   int channels_;
-  AudioSampleBuffer buffer_;
+  ptr<AudioSampleBuffer> buffer_;
   AudioTimeScaler scaler_;
   std::vector<float*> outOffset_;
   CriticalSection lock_;
   double timeScale_;
+  bool initialized_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };

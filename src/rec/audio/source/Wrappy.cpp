@@ -34,6 +34,16 @@ void Wrappy::setSource(PositionableAudioSource* s) {
   source_.reset(s);
 }
 
+PositionableAudioSource* Wrappy::getSource() const {
+  ScopedLock l(lock_);
+  return source_.get();
+}
+
+void Wrappy::swap(ptr<PositionableAudioSource>* other) {
+  ScopedLock l(lock_);
+  source_.swap(*other);
+}
+
 void Wrappy::prepareToPlay(int s, double r) {
   source()->prepareToPlay(s, r);
 

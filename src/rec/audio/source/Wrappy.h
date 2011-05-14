@@ -28,10 +28,10 @@ class Wrappy : public PositionableAudioSource {
 
   virtual PositionableAudioSource* source() const;
   virtual void setSource(PositionableAudioSource* s);
-  void swap(ptr<PositionableAudioSource>* other) { source_.swap(*other); }
+  void swap(ptr<PositionableAudioSource>* other);
 
  protected:
-  virtual PositionableAudioSource* getSource() const { return source_.get(); }
+  virtual PositionableAudioSource* getSource() const;
   CriticalSection lock_;
 
   SampleTime position_;
