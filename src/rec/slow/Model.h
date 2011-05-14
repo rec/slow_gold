@@ -50,6 +50,8 @@ class Model : public Listener<const VirtualFile&>,
   void toggleSelectionSegment(RealTime time);
   void setCursorTime(int index, RealTime time);
 
+  const LoopPointList loopPointList() { return loopLocker_.get(); }
+
  private:
   bool hasTriggerTime(SampleTime t);
 

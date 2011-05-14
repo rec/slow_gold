@@ -14,6 +14,7 @@ namespace rec {
 namespace slow {
 
 using namespace rec::audio;
+using namespace rec::gui::audio;
 using namespace rec::widget::waveform;
 using namespace rec::util::block;
 
@@ -57,6 +58,16 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       model()->setTriggerTime(timeToSamples(time));
 
     // TODO: check to make sure they don't change shift during the drag...
+
+  } else if (e.eventComponent->getName() == "Cursor") {
+    Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
+    int i = cursor->index();
+    if (i >= 0) {
+      LoopPointList loops = model()->loopPointList();
+      cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0.0;
+      cursorDrag_.end_ = (i < loops.loop_point_size() - 1) ?
+        loops.loop_point(i + 1).time() : player()->realLength();
+    }
   }
 }
 
@@ -83,10 +94,10 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 
   } else if (e.eventComponent->getName() == "Cursor") {
     Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
-    RealTime time = waveform->xToTime(e.x + cursor->getX());
+    RealTime t = cursorDrag_.restrict(waveform->xToTime(e.x + cursor->getX()));
     cursor->setListeningToClock(false);
-    cursor->setTime(time);
-    model()->setCursorTime(cursor->index(), time);
+    cursor->setTime(t);
+    model()->setCursorTime(cursor->index(), t);
   }
 }
 

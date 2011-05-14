@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_MOUSELISTENER__
 #define __REC_SLOW_MOUSELISTENER__
 
+#include "rec/util/Range.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/slow/HasInstance.h"
 
@@ -23,6 +24,7 @@ class MouseListener : public juce::MouseListener, public HasInstance,
 
  private:
   RealTime waveformDragStart_;
+  Range<RealTime> cursorDrag_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MouseListener);
 };

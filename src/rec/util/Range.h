@@ -32,6 +32,10 @@ struct Range {
                                 (begin_ <= t) || (t < end_));
   }
 
+  Type restrict(Type x) const {
+    return (x < begin_) ? begin_ : (x > end_) ? end_ : x;
+  }
+
   Type toY(Type x, Type ySize) const { return ySize * (x - begin_) / size(); }
   Type toX(Type y, Type ySize) const { return begin_ + (y * size()) / ySize; }
 
