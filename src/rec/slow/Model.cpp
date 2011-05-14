@@ -150,7 +150,8 @@ void Model::operator()(const VirtualFile& f) {
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
 
   buffer->thumbnail()->addListener(&components()->waveform_);
-  player()->setSource(new BufferSource(buffer->buffer()), stretchLocker_.get());
+  player()->setSource(new BufferSource(buffer->buffer()));
+  player()->setStretch(stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
   player()->setNextReadPosition(0);
