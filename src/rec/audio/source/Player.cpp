@@ -14,6 +14,7 @@ namespace audio {
 namespace source {
 
 using namespace rec::audio::transport;
+using namespace rec::audio::stretch;
 
 Player::Player(Device* d) : device_(d) {
   player_.setSource(&transportSource_);
@@ -52,7 +53,7 @@ void Player::setState(State s) {
   }
 }
 
-void Player::setSource(Source* source) {
+void Player::setSource(Source* source, const stretch::Stretch& stretch) {
   ptr<Source> s(source);
   timer_->swap(&s);
 
@@ -65,6 +66,9 @@ void Player::setSource(Source* source) {
     s->releaseResources();
 
   s.transfer();
+}
+
+void Player::setStretch(const Stretch& stretch) {
 }
 
 State Player::state() const {

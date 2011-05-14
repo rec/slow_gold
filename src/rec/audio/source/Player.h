@@ -2,6 +2,7 @@
 #define __REC_SLOW_APP_TRANSPORTSOURCEPLAYER__
 
 #include "rec/audio/Audio.h"
+#include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/source/Timer.h"
 #include "rec/audio/Device.h"
 #include "rec/util/listener/Listener.h"
@@ -9,6 +10,7 @@
 
 namespace rec {
 namespace audio { class Device; }
+namespace audio { namespace stretch { class Stretch; }}
 
 namespace audio {
 namespace source {
@@ -28,7 +30,6 @@ class Player : public Broadcaster<transport::State>,
   void setState(transport::State state = transport::RUNNING);
 
   // Source must be pre-prepared.
-  void setSource(Source* source);
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
@@ -46,6 +47,10 @@ class Player : public Broadcaster<transport::State>,
 
   SampleTime length() const { return timer_->getTotalLength(); }
   RealTime realLength() const { return audio::samplesToTime(length()); }
+  void clearSource();
+  void setSource(Source*, const stretch::Stretch& s =
+                 stretch::Stretch::default_instance());
+  void setStretch(const stretch::Stretch&);
 
   static const int BUFFER_SIZE = 2048;
 
