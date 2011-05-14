@@ -44,6 +44,9 @@ void Model::fillOnce() {
   thumbnailBuffer_.switchIfNext();
   ThumbnailBuffer* buffer = thumbnailBuffer_.current();
   if (!buffer || buffer->isFull()) {
+    if (buffer)
+      buffer->writeThumbnail();
+
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
     return;
   }
@@ -150,6 +153,7 @@ void Model::operator()(const VirtualFile& f) {
   player()->setSource(new BufferSource(buffer->buffer()), stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
+  player()->setNextReadPosition(0);
 
 #ifdef TODO
   const Stretch& stretch = loop.stretch();

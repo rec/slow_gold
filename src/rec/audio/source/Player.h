@@ -4,6 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/source/Timer.h"
+#include "rec/audio/source/Level.h"
 #include "rec/audio/Device.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/block/Block.h"
@@ -16,12 +17,10 @@ namespace audio {
 namespace source {
 
 class Buffered;
-class Level;
 class Selection;
 class Stereo;
 class StereoProto;
 class Stretchy;
-class Timey;
 
 // Plays an original master source!
 // Player has the following source chain:
@@ -46,6 +45,7 @@ class Player : public Broadcaster<transport::State>,
   transport::State state() const;
   Device* device() { return device_; }
   Broadcaster<SampleTime>* timeBroadcaster() { return timer_; }
+  Broadcaster<const vector<double>&>* levelBroadcaster() { return level_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Buffered* buffered() { return buffered_; }
   void setStereoProto(const StereoProto&);

@@ -76,11 +76,13 @@ void Target::addCommands() {
       "Clear Selection", "Loop",
       "Unselect all the loop points");
 
-#ifdef TODO
-  add(Command::AUDIO_PREFERENCES, makeCallback(cc,
-                                      &ComponentContainer::audioPreferences),
+  add(Command::AUDIO_PREFERENCES, makeCallback(&device()->setupPage_,
+                                               &gui::audio::SetupPage::show,
+                                               &components()->mainPage_),
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
+
+#ifdef TODO
 
   add(Command::CLEAR_TIME, makeCallback(&instal, &MainPage::clearTime),
       "Clear Time Stretch", "Loop",

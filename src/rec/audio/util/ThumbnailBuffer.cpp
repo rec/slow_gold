@@ -27,6 +27,9 @@ ThumbnailBuffer::ThumbnailBuffer(const VirtualFile& f) {
   setSource(source.transfer(), d.chunk_size());
 }
 
+void ThumbnailBuffer::writeThumbnail() { thumbnail_->writeThumbnail(); }
+
+
 }  // namespace util
 }  // namespace audio
 }  // namespace rec

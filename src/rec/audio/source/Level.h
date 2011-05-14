@@ -17,7 +17,7 @@ class Level : public Wrappy, public Broadcaster<const vector<double>&> {
     Wrappy::getNextAudioBlock(i);
 
     int channels = i.buffer->getNumChannels();
-    vector<double> result(channels);
+    vector<double> result(channels, 0.0);
     for (int c = 0; c < channels; ++c)
       result[c] = i.buffer->getRMSLevel(c, i.startSample, i.numSamples);
     broadcast(result);

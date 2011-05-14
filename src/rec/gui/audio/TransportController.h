@@ -24,6 +24,7 @@ class TransportController : public Layout,
   void setTransportState(rec::audio::transport::State state);
   void setTime(SampleTime time) { time_ = time; recalc(); }
   void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
+  listener::Listener<const vector<double>&>* levelListener() { return &levelMeter_; }
 
  private:
   void recalc();

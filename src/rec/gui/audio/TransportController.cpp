@@ -36,7 +36,8 @@ TransportController::TransportController()
   addToLayout(&startStopButton_, 30, 30, 30);
   addToLayout(&addLoopPointButton_, 30, 30, 30);
   addToLayout(&zoomOutButton_, 30, 30, 30);
-  addToLayout(&filler_);
+  addToLayout(&levelMeter_);
+  // addToLayout(&filler_);
 }
 
 void TransportController::buttonClicked(juce::Button *button) {
