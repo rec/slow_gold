@@ -1,11 +1,12 @@
 #ifndef __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 #define __REC_GUI_AUDIO_TRANSPORTCONTROLLER__
 
-#include "rec/command/Command.pb.h"
 #include "rec/audio/Audio.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/audio/source/Player.h"
+#include "rec/command/Command.pb.h"
 #include "rec/gui/Layout.h"
+#include "rec/gui/audio/LevelMeter.h"
+#include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
@@ -30,6 +31,8 @@ class TransportController : public Layout,
   DrawableButton startStopButton_;
   DrawableButton addLoopPointButton_;
   DrawableButton zoomOutButton_;
+  gui::audio::LevelMeter levelMeter_;
+
   juce::Label filler_;
   SampleTime time_;
   LoopPointList loopPointList_;

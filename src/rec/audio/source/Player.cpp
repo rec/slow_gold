@@ -4,6 +4,7 @@
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/Buffered.h"
 #include "rec/audio/source/Empty.h"
+#include "rec/audio/source/Level.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timer.h"
@@ -25,7 +26,8 @@ Player::Player(Device* d)
   selection_ = new Selection(timer_);
   stretchy_ = NULL;
   stereo_ = new Stereo(selection_);
-  buffered_ = new Buffered(stereo_, BUFFER_SIZE);
+  level_ = new Level(stereo_);
+  buffered_ = new Buffered(level_, BUFFER_SIZE);
   source_.reset(buffered_);
 
   transportSource_.setSource(source_.get());

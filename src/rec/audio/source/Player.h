@@ -16,16 +16,16 @@ namespace audio {
 namespace source {
 
 class Buffered;
+class Level;
 class Selection;
 class Stereo;
 class StereoProto;
 class Stretchy;
 class Timey;
 
-
 // Plays an original master source!
 // Player has the following source chain:
-//   source -> timer -> selection ( -> stretchy) -> stereo_ -> buffered_
+//   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public Broadcaster<transport::State>,
                public juce::ChangeListener {
@@ -73,6 +73,7 @@ class Player : public Broadcaster<transport::State>,
   Selection* selection_;
   Stretchy* stretchy_;
   Stereo* stereo_;
+  Level* level_;
   Buffered* buffered_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
