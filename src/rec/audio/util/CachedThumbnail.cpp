@@ -37,13 +37,22 @@ CachedThumbnail::~CachedThumbnail() {
 void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
   thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
   broadcast(&thumbnail_);
+  if (thumbnail_.isFullyLoaded())
+    writeThumbnail();
 }
 
 void CachedThumbnail::writeThumbnail() {
   if (!cacheWritten_) {
     cacheWritten_ = true;
+
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
     thumbnail_.saveTo(*out);
+#if 0
+    thread_ptr<thread::FileWriter> writer(new thread::FileWriter(file_));
+    juce::MemoryOutputStream mos(*writer->memory(), false);
+    thumbnail_.saveTo(mos);
+    writer->run();
+#endif
   }
 }
 

@@ -634,7 +634,6 @@
 			9ED9F777074117C95C13794F /* Slow */,
 		);
 		breakpoints = (
-			E2312983137F1DA6001A5CF5 /* Level.h:23 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -687,8 +686,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 327100967;
-			PBXWorkspaceStateSaveDate = 327100967;
+			PBXPerProjectTemplateStateSaveDate = 327089922;
+			PBXWorkspaceStateSaveDate = 327089922;
 		};
 		perUserProjectItems = {
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
@@ -920,9 +919,9 @@
 	};
 	AA72AD4FBEC619DC6F63742F /* TransportController.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {953, 897}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1053}";
+			sepNavIntBoundsRect = "{{0, 0}, {1005, 897}}";
+			sepNavSelRange = "{681, 70}";
+			sepNavVisRange = "{0, 2232}";
 			sepNavWindowFrame = "{{84, 90}, {1064, 1020}}";
 		};
 	};
@@ -1408,10 +1407,11 @@
 		isa = PBXBookmark;
 		fRef = B02582F7B7419635D36CB407 /* DialComponent.h */;
 	};
-	E23128DE137EFF93001A5CF5 /* PBXTextBookmark */ = {
+	E23128DE137EFF93001A5CF5 /* XCBuildMessageTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'class std::vector<float*, std::allocator<float*> >' has no member named 'set_size'";
 		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 45;
 		rType = 1;
@@ -2172,7 +2172,7 @@
 		fRef = C24AA3CBE4A2AC3E9411426F /* Player.h */;
 		name = "Player.h: 25";
 		rLen = 0;
-		rLoc = 677;
+		rLoc = 667;
 		rType = 0;
 		vrLen = 1200;
 		vrLoc = 0;
@@ -2604,13 +2604,19 @@
 		name = Player.h;
 		path = ../../../../../rec/src/rec/audio/source/Player.h;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1005, 1027}}";
+			sepNavSelRange = "{1866, 0}";
+			sepNavVisRange = "{0, 1906}";
+			sepNavWindowFrame = "{{502, 9}, {1064, 1020}}";
+		};
 	};
 	E2A5B55C137E1F3B007A9A98 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "ISO C++ forbids declaration of 'Stretchy' with no type";
 		fRef = E2A5B55B137E1F3B007A9A98 /* Player.h */;
 		rLen = 1;
-		rLoc = 67;
+		rLoc = 68;
 		rType = 1;
 	};
 	E2A5B565137ED323007A9A98 /* PBXTextBookmark */ = {
@@ -2628,7 +2634,7 @@
 		fRef = C24AA3CBE4A2AC3E9411426F /* Player.h */;
 		name = "Player.h: 69";
 		rLen = 0;
-		rLoc = 1876;
+		rLoc = 1866;
 		rType = 0;
 		vrLen = 1906;
 		vrLoc = 0;
@@ -2890,9 +2896,9 @@
 	};
 	F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1005, 907}}";
-			sepNavSelRange = "{969, 0}";
-			sepNavVisRange = "{0, 1086}";
+			sepNavIntBoundsRect = "{{0, 0}, {959, 1019}}";
+			sepNavSelRange = "{713, 0}";
+			sepNavVisRange = "{0, 1011}";
 		};
 	};
 	F2ECE0E4F6D7892339BAD1D1 /* DownloadVersion.cpp */ = {

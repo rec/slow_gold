@@ -14,7 +14,6 @@ class ThumbnailBuffer : public FillableBuffer {
   ThumbnailBuffer(const VirtualFile& file);
   virtual ~ThumbnailBuffer();
   CachedThumbnail* thumbnail() { return thumbnail_.get(); }
-  void writeThumbnail();
 
  private:
   ptr<CachedThumbnail> thumbnail_;

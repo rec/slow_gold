@@ -44,9 +44,6 @@ Listeners::Listeners(Instance* i)
   components()->transportController_.addListener(this);
   player()->timeBroadcaster()->addListener(&components()->timeController_);
   player()->timeBroadcaster()->addListener(waveform->timeCursor());
-
-  player()->levelBroadcaster()->addListener(components()->transportController_.
-                                            levelListener());
 }
 
 void Listeners::operator()(SampleTime time) {

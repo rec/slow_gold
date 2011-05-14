@@ -114,7 +114,7 @@ class RunnyProto : public ::google::protobuf::Message {
   inline const ::rec::util::thread::ThreadDescription& thread() const;
   inline ::rec::util::thread::ThreadDescription* mutable_thread();
   
-  // optional uint32 compression = 4 [default = 512];
+  // optional uint32 compression = 4 [default = 2048];
   inline bool has_compression() const;
   inline void clear_compression();
   static const int kCompressionFieldNumber = 4;
@@ -230,12 +230,12 @@ inline ::rec::util::thread::ThreadDescription* RunnyProto::mutable_thread() {
   return thread_;
 }
 
-// optional uint32 compression = 4 [default = 512];
+// optional uint32 compression = 4 [default = 2048];
 inline bool RunnyProto::has_compression() const {
   return _has_bit(3);
 }
 inline void RunnyProto::clear_compression() {
-  compression_ = 512u;
+  compression_ = 2048u;
   _clear_bit(3);
 }
 inline ::google::protobuf::uint32 RunnyProto::compression() const {
