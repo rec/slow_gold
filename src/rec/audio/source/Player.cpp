@@ -24,8 +24,8 @@ Player::Player(Device* d)
   device_->manager_.addAudioCallback(&player_);
   timer_ = new Timer;
   selection_ = new Selection(timer_);
-  stretchy_ = NULL;
-  stereo_ = new Stereo(selection_);
+  stretchy_ = new Stretchy(selection_);
+  stereo_ = new Stereo(stretchy_);
   level_ = new Level(stereo_);
   buffered_ = new Buffered(level_, BUFFER_SIZE);
   source_.reset(buffered_);
