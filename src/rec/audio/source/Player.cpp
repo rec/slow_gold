@@ -58,9 +58,25 @@ void Player::setState(State s) {
   }
 }
 
-void Player::setSource(Source* source) {
+void Player::setSource(Source* source, const stretch::Stretch& stretch) {
   ptr<Source> s(source);
   timer_->swap(&s);
+
+  static const double DELTA = 0.00001;
+  double timeRatio = timeScale(stretch);
+  if (stretch.passthrough_when_disabled() &&
+      near(timeRatio, 1.0, DELTA) &&
+      near(stretch::pitchScale(stretch), 1.0, DELTA)) {
+  } else {
+
+  }
+
+
+#if 0
+  if (source)  // TODO: is this even needed
+    timer_->setNextReadPosition(source->getNextReadPosition());
+#endif
+
   if (s)
     s->releaseResources();
 
@@ -68,7 +84,6 @@ void Player::setSource(Source* source) {
 }
 
 void Player::setStretch(const Stretch& stretch) {
-  stretchy_->setStretch(stretch);
 }
 
 State Player::state() const {
@@ -88,7 +103,7 @@ void Player::setSelection(const block::BlockSet& s) {
 }
 
 void Player::clearSource() {
-  setSource(new Empty);
+  setSource(new Empty, Stretch());
 }
 
 

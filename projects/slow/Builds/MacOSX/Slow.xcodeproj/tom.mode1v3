@@ -325,7 +325,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LevelMeter.h</string>
+								<string>Level.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -333,11 +333,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LevelMeter.h</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>E2312A17137F439B001A5CF5</string>
+										<string>Level.h</string>
 										<key>history</key>
 										<array>
 											<string>E288C2BC12EB70A400AAB106</string>
@@ -430,7 +426,6 @@
 											<string>E2A5B3CB137DB9B8007A9A98</string>
 											<string>E2A5B417137DCA64007A9A98</string>
 											<string>E2312987137F1DB0001A5CF5</string>
-											<string>E2312A15137F439B001A5CF5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -628,10 +623,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E2312A18137F439B001A5CF5</string>
-		<string>E2312A19137F439B001A5CF5</string>
-		<string>E2312A1A137F439B001A5CF5</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>E290FED3120A432900532309</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/tom/Documents/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
@@ -659,7 +650,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Model.cpp</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -676,8 +667,6 @@
 							<string>374pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -761,8 +750,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {505, 599}}</string>
-											<string>{{0, 599}, {505, 347}}</string>
+											<string>{{0, 0}, {635, 605}}</string>
+											<string>{{0, 605}, {635, 341}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -777,8 +766,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {505, 946}}</string>
-											<string>{{505, 0}, {817, 946}}</string>
+											<string>{{0, 0}, {635, 946}}</string>
+											<string>{{635, 0}, {687, 946}}</string>
 										</array>
 									</dict>
 								</dict>
@@ -810,15 +799,15 @@
 										<string>Value</string>
 										<real>90</real>
 										<string>Summary</string>
-										<real>80</real>
+										<real>187</real>
 									</array>
 									<key>Frame</key>
-									<string>{{0, 599}, {505, 347}}</string>
+									<string>{{0, 605}, {635, 341}}</string>
 									<key>RubberWindowFrame</key>
-									<string>168 173 1322 987 0 0 1920 1178 </string>
+									<string>478 163 1322 987 0 0 1920 1178 </string>
 								</dict>
 								<key>RubberWindowFrame</key>
-								<string>168 173 1322 987 0 0 1920 1178 </string>
+								<string>478 163 1322 987 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugSessionModule</string>
@@ -852,11 +841,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 			<key>WindowString</key>
-			<string>168 173 1322 987 0 0 1920 1178 </string>
+			<string>478 163 1322 987 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1001,7 +990,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E2312A12137F4394001A5CF5</string>
+				<string>E2312989137F1DB0001A5CF5</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -1011,7 +1000,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

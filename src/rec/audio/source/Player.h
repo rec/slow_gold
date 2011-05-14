@@ -55,7 +55,7 @@ class Player : public Broadcaster<transport::State>,
   RealTime realLength() const { return audio::samplesToTime(length()); }
   void clearSource();
 
-  void setSource(Source*);
+  void setSource(Source*, const stretch::Stretch& s);
   void setStretch(const stretch::Stretch&);
 
   static const int BUFFER_SIZE = 2048;
