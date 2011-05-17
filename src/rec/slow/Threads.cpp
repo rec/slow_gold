@@ -9,6 +9,7 @@
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/widget/tree/Directory.h"
 
 namespace rec {
 namespace slow {
@@ -79,13 +80,20 @@ void buffer(Instance* i) {
     Thread::yield();
 }
 
+void directory(Instance* i) {
+  while (widget::tree::Directory::computeBackgroundChildren())
+    Thread::yield();
+}
+
 }  // namespace
 
 void Threads::startAll() {
   start(&browser, "Browser", 1000);
 	fetchThread_ = start(&fetch, "Fetch", 10);
-  start(&updateParameters, "Parameter", 100);
+  start(&updateParameters, "Parameter", 97);
   player()->buffered()->setNotifyThread(start(&buffer, "Buffer", 10));
+  start(&directory, "Directory", 101);
+
   // start(&pitch, "Pitch", 100);
 
   (*model()->fileLocker())(persist::get<VirtualFile>());

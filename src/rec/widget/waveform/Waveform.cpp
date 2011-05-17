@@ -156,6 +156,10 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
   resized();
 }
 
+void Waveform::operator()(const LoopPointList& loops) {
+  thread::callAsync(this, &Waveform::addAllCursors, loops);
+}
+
 void Waveform::operator()(const ZoomProto& zp) {
   ScopedLock l(lock_);
   zoom_ = zp;

@@ -19,6 +19,7 @@ namespace slow {
 
 using namespace rec::audio::util;
 using namespace rec::audio::source;
+using namespace rec::gui::audio;
 using namespace rec::music;
 using namespace rec::util::block;
 using namespace rec::widget::waveform;
@@ -44,6 +45,9 @@ void Model::fillOnce() {
   thumbnailBuffer_.switchIfNext();
   ThumbnailBuffer* buffer = thumbnailBuffer_.current();
   if (!buffer || buffer->isFull()) {
+    if (buffer)
+      buffer->writeThumbnail();
+
     Thread::getCurrentThread()->wait(PARAMETER_WAIT);
     return;
   }
@@ -133,7 +137,7 @@ void Model::operator()(const VirtualFile& f) {
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
   updateLocker(&zoomLocker_, f);
 
-  if (empty(f))
+  if (empty())
     return;
 
   LoopPointList loop = loopData_->get();
@@ -142,42 +146,43 @@ void Model::operator()(const VirtualFile& f) {
     if (!loop.selected_size())
       loop.add_selected(true);
     data::set(loopData_, loop);
+    loopLocker_.set(loop);
   }
 
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
+  if (!buffer->thumbnail()) {
+    LOG(ERROR) << "File " << f.DebugString() << " doesn't exist";
+    return;
+  }
 
   buffer->thumbnail()->addListener(&components()->waveform_);
   player()->setSource(new BufferSource(buffer->buffer()), stretchLocker_.get());
+  player()->setStretch(stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
-
-#ifdef TODO
-  const Stretch& stretch = loop.stretch();
-  static const double DELTA = 0.00001;
-  double timeRatio = timeScale(stretch);
-  if (!(stretch.passthrough_when_disabled() &&
-        near(timeRatio, 1.0, DELTA) &&
-        near(stretch::pitchScale(stretch), 1.0, DELTA))) {
-    source.reset(new Stretchy(source.transfer(), stretch));
-  }
-
-  source.reset(new Stereo(source.transfer(), stretch.stereo()));
-#endif
+  player()->setNextReadPosition(0);
+  (*components()->transportController_.levelListener())(vector<double>());
 }
+
 
 void Model::checkChanged() {
   fileLocker_.broadcastIfChanged(this); // TODO
 
   stretchLocker_.broadcastIfChanged(listeners());
-  loopLocker_.broadcastIfChanged(listeners());
+  loopLocker_.broadcastIfChanged(&components()->waveform_);
   stereoLocker_.broadcastIfChanged(listeners());
   // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }
 
 void Model::toggleSelectionSegment(RealTime time) {
-  //  LoopPointList loops(stretchLocker_.get());
-  // if (!loops.lo
+  ScopedLock l(lock_);
+  gui::audio::LoopPointList loops(loopLocker_.get());
+
+  int i = 0, size = loops.loop_point_size();
+  for (; i < size && loops.loop_point(i).time() <= time; ++i);
+  loops.set_selected(i - 1, !loops.selected(i - 1));
+  persist::set(loops, file_);
 }
 
 void Model::setCursorTime(int index, RealTime time) {

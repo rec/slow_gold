@@ -39,6 +39,7 @@ class Painter {
 
   const gui::Colors& colors() const { return colors_; }
   const Colour colour(int i) const { return gui::color::get(colors_, i); }
+  void fillAll(ColorNames n) { graphics_->fillAll(colour(n)); }
 
   void setColor(int i) const { graphics_->setColour(colour(i)); }
 

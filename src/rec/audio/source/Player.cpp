@@ -24,8 +24,8 @@ Player::Player(Device* d)
   device_->manager_.addAudioCallback(&player_);
   timer_ = new Timer;
   selection_ = new Selection(timer_);
-  stretchy_ = NULL;
-  stereo_ = new Stereo(selection_);
+  stretchy_ = new Stretchy(selection_);
+  stereo_ = new Stereo(stretchy_);
   level_ = new Level(stereo_);
   buffered_ = new Buffered(level_, BUFFER_SIZE);
   source_.reset(buffered_);
@@ -62,16 +62,6 @@ void Player::setSource(Source* source, const stretch::Stretch& stretch) {
   ptr<Source> s(source);
   timer_->swap(&s);
 
-  static const double DELTA = 0.00001;
-  double timeRatio = timeScale(stretch);
-  if (stretch.passthrough_when_disabled() &&
-      near(timeRatio, 1.0, DELTA) &&
-      near(stretch::pitchScale(stretch), 1.0, DELTA)) {
-  } else {
-
-  }
-
-
 #if 0
   if (source)  // TODO: is this even needed
     timer_->setNextReadPosition(source->getNextReadPosition());
@@ -84,6 +74,8 @@ void Player::setSource(Source* source, const stretch::Stretch& stretch) {
 }
 
 void Player::setStretch(const Stretch& stretch) {
+  if (stretchy_)
+    stretchy_->setStretch(stretch);
 }
 
 State Player::state() const {

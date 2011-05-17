@@ -17,8 +17,10 @@ class Listeners;
 // future there might be more than one.  This is where all the Broadcasters live
 // and all the file and stretch setting persistent data, too.
 struct Instance {
-  Instance();
+  explicit Instance(DocumentWindow* window);
   ~Instance();
+
+  DocumentWindow* window_;
 
   ptr<Components> components_;
   ptr<Device> device_;
@@ -29,7 +31,7 @@ struct Instance {
   ptr<Listeners> listeners_;
   ptr<Threads> threads_;
 
-  DISALLOW_COPY_AND_ASSIGN(Instance);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Instance);
 };
 
 }  // namespace slow

@@ -9,14 +9,22 @@ namespace tree {
 
 class NodeComponent : public juce::Component {
  public:
-  NodeComponent(Node* n) : Component(n->name()), node_(n), clicked_(false) {}
+  NodeComponent(Node* n) : Component(n->name()), node_(n) {}
   virtual void paint(juce::Graphics& g)           { node_->paint(g); }
-  virtual void mouseDown(const juce::MouseEvent&) { node_->setClicked(true); }
-  virtual void mouseUp(const juce::MouseEvent&)   { node_->setClicked(false); }
+  virtual void mouseDown(const juce::MouseEvent& e) {
+    if (!node_->isDirectory()) 
+      node_->setSelected(true, true);
+    
+    node_->itemClicked(e);
+  }
+
+  virtual void mouseUp(const juce::MouseEvent&)   {
+    if (!node_->isDirectory())
+      node_->setSelected(false, true);
+  }
 
  private:
   Node* node_;
-  bool clicked_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(NodeComponent);
 };
 

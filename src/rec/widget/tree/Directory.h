@@ -22,16 +22,14 @@ class Directory : public Node, public Listener<const VirtualFile&> {
   virtual void computeChildren();
   virtual void partition();
 
-  virtual void itemClicked() {
-    setOpen(!isOpen());
-  }
-
   virtual void itemOpennessChanged(bool isNowOpen);
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
 
-  virtual int minPartition() const { return 24; }
+  virtual void itemClicked(const MouseEvent& e);
+  virtual int minPartition() const { return 64; }
   virtual void operator()(const VirtualFile& file) { broadcast(file); }
+  static bool computeBackgroundChildren();
 
  protected:
   void addChildFile(Node* node);
@@ -46,10 +44,12 @@ class Directory : public Node, public Listener<const VirtualFile&> {
 
   Node* createChildFile(const partition::Shard& shard) const;
 
-  thread_ptr<Thread> thread_;
   ptr<FileArray> childrenDeleter_;
   CriticalSection lock_;
   bool isOpen_;
+  bool childrenRequested_;
+  static NodeSet processingChildren_;
+  static CriticalSection processingLock_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Directory);

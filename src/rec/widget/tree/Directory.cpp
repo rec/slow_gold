@@ -18,16 +18,22 @@ namespace tree {
 Directory::Directory(const NodeDesc& d, const VirtualFile& vf)
     : Node(d, vf),
       children_(NULL),
-      isOpen_(false) {
+      isOpen_(false),
+      childrenRequested_(false) {
 }
 
 void Directory::requestPartition() {
-  ScopedLock l(lock_);
-  if (!thread_) {
-    setProcessing(true);
-    thread_.reset(makeThread("LargeDirectory", this, &Directory::computeChildren));
-    thread_->setPriority(desc_.thread_priority());
-    thread_->startThread();
+  ScopedLock l(processingLock_);
+  if (!childrenRequested_) {
+    processingChildren_.insert(this);
+    childrenRequested_ = true;
+  }
+}
+
+void Directory::itemClicked(const MouseEvent& e) {
+  if (!(getParentItem() || !getParentItem()->getParentItem())) {
+    topSelection_ = !topSelection_;
+    repaintItem();
   }
 }
 
@@ -43,7 +49,7 @@ Node* Directory::createChildFile(const partition::Shard& shard) const {
 }
 
 void Directory::computeChildren() {
-  File f = getFile(volumeFile_);
+ File f = getFile(volumeFile_);
   if (f.isDirectory()) {
     resetChildren();
     file::sortedChildren(f, children_);
@@ -83,12 +89,33 @@ void Directory::itemOpennessChanged(bool isOpen) {
   if (!isOpen)
     return;
 
-  if (!thread_) {
+  if (!childrenRequested_) {
     requestPartition();
   } else {
     for (int i = 0; i < getNumSubItems(); ++i)
       ((Node*) getSubItem(i))->requestPartition();
   }
+}
+
+Directory::NodeSet Directory::processingChildren_;
+CriticalSection Directory::processingLock_;
+
+bool Directory::computeBackgroundChildren() {
+  Node* node;
+  bool result;
+  {
+    ScopedLock l(processingLock_);
+    NodeSet::const_iterator i = processingChildren_.begin();
+    if (i == processingChildren_.end())
+      return false;
+
+    node = *i;
+    processingChildren_.erase(i);
+    result = processingChildren_.empty();
+  }
+  node->computeChildren();
+
+  return result;
 }
 
 }  // namespace tree

@@ -1,4 +1,6 @@
 #include "rec/audio/source/Stretchy.h"
+#include "rec/audio/stretch/Stretch.h"
+#include "rec/util/Math.h"
 
 using namespace juce;
 using namespace google;
@@ -40,18 +42,32 @@ void Stretchy::initialize() {
   if (initialized_)
     return;
 
+  initialized_ = true;
+  static const double DELTA = 0.00001;
+  double timeRatio = stretch::timeScale(stretch_);
+  bypass_ = stretch_.passthrough_when_disabled() &&
+    near(timeRatio, 1.0, DELTA) &&
+    near(stretch::pitchScale(stretch_), 1.0, DELTA);
+  if (bypass_) {
+    DLOG(INFO) << "bypass";
+    return;
+  }
+
   channels_ = stretch_.channels();
   if (!buffer_ || buffer_->getNumChannels() != channels_)
     buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_INITIAL_SIZE));
   outOffset_.resize(channels_);
   timeScale_ = timeScale(stretch_);
   audio::stretch::Init(stretch_, &scaler_);
-  initialized_ = true;
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   ScopedLock l(lock_);
   initialize();
+  if (bypass_) {
+    Wrappy::getNextAudioBlock(info);
+    return;
+  }
 
   DCHECK_EQ(info.buffer->getNumChannels(), channels_);
   int zeroCount = 0;

@@ -50,7 +50,7 @@ StretchyController::StretchyController()
 }
 
 void StretchyController::operator()(const Stretch& s) {
-  thread::callAsync(this, &StretchyController::enableSliders, s.disabled());
+  thread::callAsync(this, &StretchyController::enableSliders, !s.disabled());
 }
 
 void StretchyController::operator()(const StereoProto& stereo) {

@@ -15,7 +15,6 @@ class CD : public Directory {
   CD(const NodeDesc& d, const VirtualFile& vf) : Directory(d, vf) {}
 
   virtual int minPartition() const { return 100; }
-  virtual void itemClicked() { Node::itemClicked(); }
   virtual void computeChildren();
 
  private:

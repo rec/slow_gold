@@ -10,18 +10,24 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
       volumeFile_(vf),
       icon_(gui::icon::getIcon(d.icon())),
       font_(gui::getFont(desc_.widget().font())),
-      processing_(false),
-      clicked_(false) {
+      topSelection_(false),
+      processing_(false) {
   if (name)
     name_ = name;
 }
 
 void Node::paint(juce::Graphics& g) const {
+  ScopedLock l(lock_);
   Painter p(desc_.widget(), &g);
   if (icon_)
     icon_->draw(g, 1.0);
-  p.setColor(clicked_ ? Painter::BORDER :
-             (processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT));
+
+  if (topSelection_) {
+    g.setColour(juce::Colours::black);
+  } else {
+    p.setColor(isSelected() ? Painter::BORDER :
+               processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT);
+  }
   g.drawSingleLineText(name(), desc_.widget().margin(),
                        static_cast<int>(font_.getAscent() + desc_.widget().margin()));
 }
@@ -33,16 +39,7 @@ const String Node::name() const {
   return name_;
 }
 
-void Node::setClicked(bool clicked) {
-  bool mouseUp = (!clicked && clicked_);
-  clicked_ = clicked;
-  thread::callAsync(this, &TreeViewItem::repaintItem);
-
-  if (mouseUp)
-    itemClicked();
-}
-
-void Node::itemClicked() {
+void Node::itemClicked(const MouseEvent& e) {
   broadcast(volumeFile_);
 }
 

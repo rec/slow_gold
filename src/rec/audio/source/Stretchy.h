@@ -41,6 +41,7 @@ class Stretchy : public Wrappy {
   CriticalSection lock_;
   double timeScale_;
   bool initialized_;
+  bool bypass_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
 };

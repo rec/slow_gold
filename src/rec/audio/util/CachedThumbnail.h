@@ -20,7 +20,6 @@ class CachedThumbnail : public Listener<const AudioSourceChannelInfo&>,
   virtual void operator()(const AudioSourceChannelInfo& info);
 
   void writeThumbnail();
-
   bool cacheWritten() const { return cacheWritten_; }
 
  private:

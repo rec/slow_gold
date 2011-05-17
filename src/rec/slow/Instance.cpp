@@ -12,15 +12,16 @@
 namespace rec {
 namespace slow {
 
-Instance::Instance()
-  : components_(new Components),
-    device_(new audio::Device),
-    player_(new audio::source::Player(device_.get())),
-    model_(new Model(this)),
-    menus_(new Menus(this)),
-    target_(new Target(this)),
-    listeners_(new Listeners(this)),
-    threads_(new Threads(this)) {
+Instance::Instance(DocumentWindow* window)
+    : window_(window),
+      components_(new Components),
+      device_(new audio::Device),
+      player_(new audio::source::Player(device_.get())),
+      model_(new Model(this)),
+      menus_(new Menus(this)),
+      target_(new Target(this)),
+      listeners_(new Listeners(this)),
+      threads_(new Threads(this)) {
   target_->addCommands();
   threads_->startAll();
 }

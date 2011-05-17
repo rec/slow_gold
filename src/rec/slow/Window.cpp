@@ -12,7 +12,7 @@ namespace slow {
 
 Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
                                     DocumentWindow::allButtons, true),
-                   instance_(new Instance()) {
+                   instance_(new Instance(this)) {
   Component* mp = &instance_->components_->mainPage_;
   mp->setBounds(0, 0, 1, 1);
 #if OLD_JUCE

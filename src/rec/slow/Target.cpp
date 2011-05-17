@@ -20,9 +20,7 @@ void addLoopPoint(Instance* i) {
 
 }  // namespace
 
-Target::Target(Instance* i) : TargetManager(&i->components_->mainPage_),
-                              HasInstance(i) {
-}
+Target::Target(Instance* i) : TargetManager(i->window_), HasInstance(i) {}
 
 void Target::addCommands() {
   typedef rec::command::Command Command;
@@ -73,14 +71,16 @@ void Target::addCommands() {
       "Get rid of all loop points");
 
   add(Command::CLEAR_SELECTION, makeCallback(loops, &Loops::clearSelection),
-      "Clear Selection", "Loop",
+      "Select None", "Loop",
       "Unselect all the loop points");
 
-#ifdef TODO
-  add(Command::AUDIO_PREFERENCES, makeCallback(cc,
-                                      &ComponentContainer::audioPreferences),
+  add(Command::AUDIO_PREFERENCES, makeCallback(&device()->setupPage_,
+                                               &gui::audio::SetupPage::show,
+                                               &components()->mainPage_),
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
+
+#ifdef TODO
 
   add(Command::CLEAR_TIME, makeCallback(&instal, &MainPage::clearTime),
       "Clear Time Stretch", "Loop",

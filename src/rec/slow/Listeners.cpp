@@ -44,6 +44,9 @@ Listeners::Listeners(Instance* i)
   components()->transportController_.addListener(this);
   player()->timeBroadcaster()->addListener(&components()->timeController_);
   player()->timeBroadcaster()->addListener(waveform->timeCursor());
+
+  player()->levelBroadcaster()->addListener(components()->transportController_.
+                                            levelListener());
 }
 
 void Listeners::operator()(SampleTime time) {
@@ -56,6 +59,7 @@ void Listeners::operator()(command::Command::Type t) {
 }
 
 void Listeners::operator()(const Stretch& x) {
+  player()->setStretch(x);
 }
 
 void Listeners::operator()(const StereoProto& x) {
@@ -95,21 +99,6 @@ void Listeners::operator()(const VirtualFileList& list) {
     LOG(ERROR) << "file size=" << list.file_size();
   else
     model()->fileLocker()->set(list.file(0));
-}
-
-void Listeners::operator()(const LoopPointList& loops) {
-  if (!loops.loop_point_size()) {
-    LoopPointList loop;
-    loop.add_loop_point();
-    loop.add_selected(true);
-    persist::set(loop, persist::get<VirtualFile>());
-  } else {
-    components()->loops_.setData(persist::setter<LoopPointList>(
-        persist::get<VirtualFile>()));  // TODO
-    thread::callAsync(&components()->waveform_, &Waveform::addAllCursors,
-                      loops);
-    model()->setLoopPointList(loops);
-  }
 }
 
 void Listeners::operator()(audio::transport::State state) {
@@ -155,35 +144,6 @@ void PlaybackController::enableLoopPointButton(bool e) {
                       &gui::TransportController::enableLoopPointButton,
                       e);
   }
-}
-
-void StretchyPlayer::operator()(const VirtualFile& file) {
-  {
-    ScopedLock l(lock_);
-    if (file_ == file)
-      return;
-  }
-
-  persist::Data<Stretch>* stretchy = NULL;
-  thread_ptr<audio::source::DoubleRunnyBuffer> dr;
-  if (!empty(file)) {
-    stretchy = persist::setter<Stretch>(file);
-    dr.reset(new audio::source::DoubleRunnyBuffer(file, stretchy));
-  }
-
-  {
-    ScopedLock l(lock_);
-    file_ = file;
-    timeLocker_->initialize(0);
-    transportSource_->clear();
-    dr.swap(doubleRunny_);
-    transportSource_->audioTransportSource()->setSource(doubleRunny_->doubleStretchy());
-    stretchy_ = stretchy;
-    if (stretchy_)
-      stretchy_->requestUpdate();
-  }
-
-  broadcast(file);
 }
 
 #endif

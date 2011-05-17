@@ -32,7 +32,6 @@ class Listeners : public Listener<None>,
                   public Listener<const audio::stretch::Stretch&>,
                   public Listener<const audio::source::StereoProto&>,
                   public Listener<const gui::DropFiles&>,
-                  public Listener<const gui::audio::LoopPointList&>,
                   public juce::MouseListener,
                   public HasInstance {
  public:
@@ -45,7 +44,6 @@ class Listeners : public Listener<None>,
   virtual void operator()(const audio::source::StereoProto&);
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const gui::DropFiles&);
-  virtual void operator()(const gui::audio::LoopPointList&);
 
   void operator()(SampleTime);
 

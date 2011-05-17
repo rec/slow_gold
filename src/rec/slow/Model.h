@@ -51,6 +51,8 @@ class Model : public Listener<const VirtualFile&>,
   void setCursorTime(int index, RealTime time);
 
   const LoopPointList loopPointList() { return loopLocker_.get(); }
+  const VirtualFile file() const { ScopedLock l(lock_); return file_; }
+  bool empty() const { return file::empty(file()); }
 
  private:
   bool hasTriggerTime(SampleTime t);
