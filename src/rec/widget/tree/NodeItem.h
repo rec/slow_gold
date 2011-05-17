@@ -47,7 +47,8 @@ class Node : public juce::TreeViewItem,
   const VirtualFile& volumeFile() const { return volumeFile_; }
   VirtualFile::Type type() const { return volumeFile_.type(); }
   virtual void computeChildren() {}
-  bool topSelection() const { return topSelection_; }
+  bool topSelection() const { return topSelection_ && topLevel_; }
+  void setTopLevel(bool lev = true) { topLevel_ = lev; }
 
  protected:
   void setProcessing(bool p) {
@@ -62,6 +63,7 @@ class Node : public juce::TreeViewItem,
   const juce::Drawable* icon_;
   const juce::Font font_;
   bool topSelection_;
+  bool topLevel_;
 
  private:
   bool processing_;

@@ -85,6 +85,16 @@ void directory(Instance* i) {
     Thread::yield();
 }
 
+
+static Component* lastComp = NULL;
+void focus(Instance*) {
+  Component* c = Component::getCurrentlyFocusedComponent();
+  if (c != lastComp) {
+    DLOG(INFO) << (c ? c->getName() : String()) << ": " << c;
+    lastComp = c;
+  }
+}
+
 }  // namespace
 
 void Threads::startAll() {
@@ -93,6 +103,7 @@ void Threads::startAll() {
   start(&updateParameters, "Parameter", 97);
   player()->buffered()->setNotifyThread(start(&buffer, "Buffer", 10));
   start(&directory, "Directory", 101);
+  start(&focus, "Focus", 10);
 
   // start(&pitch, "Pitch", 100);
 

@@ -30,13 +30,6 @@ void Directory::requestPartition() {
   }
 }
 
-void Directory::itemClicked(const MouseEvent& e) {
-  if (!(getParentItem() || !getParentItem()->getParentItem())) {
-    topSelection_ = !topSelection_;
-    repaintItem();
-  }
-}
-
 Node* Directory::createChildFile(const partition::Shard& shard) const {
   if (shard.range_.size() > 1)
     return new Shard(desc(), volumeFile(), shard, children_);

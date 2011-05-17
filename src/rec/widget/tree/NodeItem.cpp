@@ -11,6 +11,7 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
       icon_(gui::icon::getIcon(d.icon())),
       font_(gui::getFont(desc_.widget().font())),
       topSelection_(false),
+      topLevel_(false),
       processing_(false) {
   if (name)
     name_ = name;
@@ -40,7 +41,13 @@ const String Node::name() const {
 }
 
 void Node::itemClicked(const MouseEvent& e) {
-  broadcast(volumeFile_);
+  if (!isDirectory())
+    broadcast(volumeFile_);
+
+  if (!getParentItem() || !getParentItem()->getParentItem()) {
+    topSelection_ = !topSelection_;
+    repaintItem();
+  }
 }
 
 const String Node::computeName() const {

@@ -26,7 +26,6 @@ class Directory : public Node, public Listener<const VirtualFile&> {
   virtual void requestPartition();
   virtual bool isDirectory() const { return true; }
 
-  virtual void itemClicked(const MouseEvent& e);
   virtual int minPartition() const { return 64; }
   virtual void operator()(const VirtualFile& file) { broadcast(file); }
   static bool computeBackgroundChildren();

@@ -8,7 +8,9 @@ namespace util {
 static Cuttable* make() {
   Component* comp = Component::getCurrentlyFocusedComponent();
 
-  return comp && comp->getName().startsWith("cut-") ?
+  return comp
+    // && comp->getName().startsWith("cut-")
+    ?
     dynamic_cast<Cuttable*>(comp): NULL;
 }
 
