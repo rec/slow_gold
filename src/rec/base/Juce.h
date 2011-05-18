@@ -87,6 +87,10 @@ inline String str(const string& s) {
   return String(s.c_str());
 }
 
+inline string str(const File& f) {
+  return str(f.getFullPathName());
+}
+
 inline std::ostream& operator<<(std::ostream& os, const String& s) {
   return os << str(s);
 }

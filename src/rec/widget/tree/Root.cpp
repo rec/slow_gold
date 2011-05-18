@@ -47,27 +47,22 @@ void Root::checkVolumes() {
 
   if (opennessRead_) {
     ptr<XmlElement> openness(tree_.getOpennessState(true));
-    if (openness && !openness->writeToFile(getOpennessFile(), ""))
-      LOG(ERROR) << "Couldn't write opennenss file";
+    if (!(openness && openness->writeToFile(getOpennessFile(), "")))
+      LOG(ERROR) << "Couldn't write opennens file";
+  } else {
+    thread::callAsync(this, &Root::readOpenness);
   }
 }
 
 void Root::readOpenness() {
-  if (!opennessRead_) {
-    DLOG(INFO) << "readOpenness";
-    ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
-    if (openness) {
-      try {
-        tree_.restoreOpennessState(*openness);
-      } catch (...) {
-        DLOG(ERROR) << "Coudn't reopen openness state";
-      }
-    } else {
-      DLOG(ERROR) << "Couldn't find openness file "
-                  << str(getOpennessFile().getFullPathName());
-    }
-    opennessRead_ = true;
-  }
+  ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
+  if (openness)
+    tree_.restoreOpennessState(*openness);
+  else
+    DLOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
+  opennessRead_ = true;
+
+  // TODO: this doesn't restore openneess past the first level...!
 }
 
 void Root::operator()(const VirtualFile& file) {
@@ -87,6 +82,7 @@ void Root::mouseDoubleClick(const juce::MouseEvent&) {
 void Root::doAdd() {
   if (addDialogOpen_)
     return;
+
   addDialogOpen_ = true;
   juce::FileChooser chooser("Please choose files or directories to add", File::nonexistent,
                             file::audioFilePatterns(), true);

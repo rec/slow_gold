@@ -16,6 +16,7 @@ class Root : public Broadcaster<const VirtualFile&>,
              public juce::MouseListener {
  public:
   explicit Root(const NodeDesc& desc = NodeDesc::default_instance());
+
   virtual ~Root() {}
 
   void checkVolumes();
