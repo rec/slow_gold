@@ -23,6 +23,7 @@ namespace slow {
 class Instance;
 
 class Model : public Listener<const VirtualFile&>,
+              public Listener<const gui::audio::LoopPointList&>,
               public Listener<SampleTime>,
               public HasInstance {
  public:
@@ -42,7 +43,7 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
   void zoom(RealTime time, double k);
 
-  void setLoopPointList(const gui::audio::LoopPointList& vf);
+  virtual void operator()(const gui::audio::LoopPointList&);
   void checkChanged();
   void fillOnce();
   void setTriggerTime(SampleTime p);

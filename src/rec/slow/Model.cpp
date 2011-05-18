@@ -94,10 +94,11 @@ void Model::zoom(RealTime time, double k) {
   persist::set<ZoomProto>(z, file_);
 }
 
-void Model::setLoopPointList(const LoopPointList& loops) {
+void Model::operator()(const LoopPointList& loops) {
   timeSelection_ = audio::getTimeSelection(loops, player()->length());
   player()->setSelection(timeSelection_);
   BlockSet::const_iterator i = timeSelection_.begin();
+  components()->waveform_(loops);
   for (; i != timeSelection_.end(); ++i) {
     if (time_ < i->second) {
       if (time_ < i->first)
@@ -169,7 +170,7 @@ void Model::checkChanged() {
   fileLocker_.broadcastIfChanged(this); // TODO
 
   stretchLocker_.broadcastIfChanged(listeners());
-  loopLocker_.broadcastIfChanged(&components()->waveform_);
+  loopLocker_.broadcastIfChanged(this);
   stereoLocker_.broadcastIfChanged(listeners());
   // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
