@@ -12,7 +12,8 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
       font_(gui::getFont(desc_.widget().font())),
       topSelection_(false),
       topLevel_(false),
-      processing_(false) {
+      processing_(false),
+      clicked_(false) {
   if (name)
     name_ = name;
 }
@@ -23,10 +24,10 @@ void Node::paint(juce::Graphics& g) const {
   if (icon_)
     icon_->draw(g, 1.0);
 
-  if (topSelection_) {
+  if (isSelected()) {
     g.setColour(juce::Colours::black);
   } else {
-    p.setColor(isSelected() ? Painter::BORDER :
+    p.setColor(clicked_ ? Painter::BORDER :
                processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT);
   }
   g.drawSingleLineText(name(), desc_.widget().margin(),
@@ -41,13 +42,20 @@ const String Node::name() const {
 }
 
 void Node::itemClicked(const MouseEvent& e) {
-  if (!isDirectory())
-    broadcast(volumeFile_);
+  if (juce::ModifierKeys::getCurrentModifiers().isAnyMouseButtonDown()) {
+    if (!isDirectory()) {
+      clicked_ = true;
+      broadcast(volumeFile_);
+    }
 
-  if (!getParentItem() || !getParentItem()->getParentItem()) {
-    topSelection_ = !topSelection_;
-    repaintItem();
+    if (!getParentItem() || !getParentItem()->getParentItem()) {
+      bool selected = !isSelected();
+      setSelected(selected, selected && !e.mods.isShiftDown());
+    }
+  } else {
+    clicked_ = false;
   }
+  repaintItem();
 }
 
 const String Node::computeName() const {

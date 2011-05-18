@@ -16,7 +16,7 @@ class Cuttable  {
   virtual string copy() const { return ""; }
   virtual void cut() {}
   virtual bool paste(const string&) const { return false; }
-  const string& name() const { return ""; }
+  const string name() const { return ""; }
 };
 
 bool cutToClipboard();

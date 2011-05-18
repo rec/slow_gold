@@ -67,6 +67,7 @@ class Node : public juce::TreeViewItem,
 
  private:
   bool processing_;
+  bool clicked_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
   JUCE_LEAK_DETECTOR(Node);
