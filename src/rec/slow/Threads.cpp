@@ -81,10 +81,8 @@ void buffer(Instance* i) {
 }
 
 void directory(Instance* i) {
-  while (widget::tree::Directory::computeBackgroundChildren())
+  while (i->components_->directoryTree_.run())
     Thread::yield();
-  thread::callAsync(&i->components_->directoryTree_,
-                    &widget::tree::Root::readOpenness);
 }
 
 static Component* lastComp = NULL;

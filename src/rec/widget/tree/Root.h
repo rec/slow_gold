@@ -28,6 +28,8 @@ class Root : public Broadcaster<const VirtualFile&>,
   void doAdd();
   void readOpenness();
 
+  bool run();  // Update files in a background thread.
+
  private:
   void update();
   void addVolume(const VirtualFile& volume, int insertAt);

@@ -133,6 +133,14 @@ void Root::addVolume(const VirtualFile& volume, int insertAt) {
   directory.transfer()->requestPartition();
 }
 
+bool Root::run() {
+  return widget::tree::Directory::computeBackgroundChildren();
+#if 0
+  thread::callAsync(&i->components_->directoryTree_,
+                    &widget::tree::Root::readOpenness);
+#endif
+}
+
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec
