@@ -20,7 +20,8 @@ class TreeViewDropAll : public TreeViewDropTarget, public Cuttable {
   bool isInterestedInFileDrag(const StringArray& files);
 
   virtual bool canCopy() const;
-  virtual bool canPaste() const;
+  virtual bool canCut() const { return canCopy(); }
+  virtual bool canPaste() const { return true; }
   virtual string copy() const;
   virtual void cut();
   virtual bool paste(const string&) const;

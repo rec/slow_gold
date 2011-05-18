@@ -44,7 +44,8 @@ class Node : public juce::TreeViewItem,
 
   bool alreadyVisited() const;
 
-  const VirtualFile& volumeFile() const { return volumeFile_; }
+  const VirtualFile& file() const { return volumeFile_; }
+  const VirtualFile& volumeFile() const { return volumeFile_; }  // TODO
   VirtualFile::Type type() const { return volumeFile_.type(); }
   virtual void computeChildren() {}
   bool topSelection() const { return topSelection_ && topLevel_; }

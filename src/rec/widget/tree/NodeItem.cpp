@@ -48,7 +48,7 @@ void Node::itemClicked(const MouseEvent& e) {
       broadcast(volumeFile_);
     }
 
-    if (!getParentItem() || !getParentItem()->getParentItem()) {
+    if (!(getParentItem() && getParentItem()->getParentItem())) {
       bool selected = !isSelected();
       setSelected(selected, selected && !e.mods.isShiftDown());
     }

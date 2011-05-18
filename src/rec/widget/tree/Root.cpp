@@ -56,13 +56,13 @@ void Root::checkVolumes() {
 
 void Root::readOpenness() {
   ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
-  if (openness)
+  if (openness) {
     tree_.restoreOpennessState(*openness);
-  else
+    // TODO: this doesn't restore openness past the first level...!
+  } else {
     DLOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
+  }
   opennessRead_ = true;
-
-  // TODO: this doesn't restore openneess past the first level...!
 }
 
 void Root::operator()(const VirtualFile& file) {
