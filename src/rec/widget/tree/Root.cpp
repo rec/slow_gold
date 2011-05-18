@@ -2,6 +2,7 @@
 
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Color.h"
+#include "rec/data/persist/AppDirectory.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Trash.h"
@@ -20,10 +21,22 @@ using namespace rec::gui;
 
 static const int ROOT_WAIT_TIME = 1000;
 
-Root::Root(const NodeDesc& desc) : desc_(desc), addDialogOpen_(false) {
+static File getOpennessFile() {
+  return getApplicationDirectory().getChildFile("Tree.xml");
+}
+
+Root::Root(const NodeDesc& desc) : desc_(desc),
+                                   addDialogOpen_(false),
+                                   opennessRead_(false) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   tree_.addMouseListener(this, false);
+  tree_.setRootItem(&root_);
+  tree_.setRootItemVisible(false);
+
+  persist::Data<VirtualFileList>* setter = persist::setter<VirtualFileList>();
+  setter->addListener(this);
+  volumes_ = setter->get();
 }
 
 void Root::checkVolumes() {
@@ -31,6 +44,30 @@ void Root::checkVolumes() {
   VirtualFileList volumes(volumes_);
   fillVolumes(&volumes);
   thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
+
+  if (opennessRead_) {
+    ptr<XmlElement> openness(tree_.getOpennessState(true));
+    if (openness && !openness->writeToFile(getOpennessFile(), ""))
+      LOG(ERROR) << "Couldn't write opennenss file";
+  }
+}
+
+void Root::readOpenness() {
+  if (!opennessRead_) {
+    DLOG(INFO) << "readOpenness";
+    ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
+    if (openness) {
+      try {
+        tree_.restoreOpennessState(*openness);
+      } catch (...) {
+        DLOG(ERROR) << "Coudn't reopen openness state";
+      }
+    } else {
+      DLOG(ERROR) << "Couldn't find openness file "
+                  << str(getOpennessFile().getFullPathName());
+    }
+    opennessRead_ = true;
+  }
 }
 
 void Root::operator()(const VirtualFile& file) {
@@ -79,9 +116,6 @@ void Root::mergeNewIntoOld(const file::VirtualFileList& volumes) {
     else  // They're the same!
       j++;
   }
-
-  tree_.setRootItem(&root_);
-  tree_.setRootItemVisible(false);
 }
 
 void Root::addVolume(const VirtualFile& volume, int insertAt) {

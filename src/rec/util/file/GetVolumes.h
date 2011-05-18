@@ -10,7 +10,6 @@ namespace rec {
 namespace util {
 namespace file {
 
-VirtualFileList getVolumes();
 void fillVolumes(VirtualFileList* volumes);
 
 }  // namespace file

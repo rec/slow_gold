@@ -26,7 +26,7 @@ class Node : public juce::TreeViewItem,
   virtual void requestPartition() {}
 
   virtual bool mightContainSubItems() { return isDirectory(); }
-  virtual const String getUniqueName() { return name(); }
+  virtual const String getUniqueName() const { return name(); }
   virtual int getItemWidth() const;
   virtual int getItemHeight() const;
   virtual juce::Component* createItemComponent();

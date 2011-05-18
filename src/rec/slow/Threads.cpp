@@ -83,8 +83,9 @@ void buffer(Instance* i) {
 void directory(Instance* i) {
   while (widget::tree::Directory::computeBackgroundChildren())
     Thread::yield();
+  thread::callAsync(&i->components_->directoryTree_,
+                    &widget::tree::Root::readOpenness);
 }
-
 
 static Component* lastComp = NULL;
 void focus(Instance*) {
@@ -103,8 +104,7 @@ void Threads::startAll() {
   start(&updateParameters, "Parameter", 97);
   player()->buffered()->setNotifyThread(start(&buffer, "Buffer", 10));
   start(&directory, "Directory", 101);
-  start(&focus, "Focus", 10);
-
+  // start(&focus, "Focus", 10);
   // start(&pitch, "Pitch", 100);
 
   (*model()->fileLocker())(persist::get<VirtualFile>());

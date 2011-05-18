@@ -5,6 +5,9 @@
 namespace rec {
 namespace util {
 namespace file {
+
+VirtualFileList getVolumes();
+
 namespace {
 
 TEST(GetVolumes, get) {

@@ -1,5 +1,6 @@
 #include "rec/widget/waveform/Waveform.h"
 
+#include "rec/gui/Focusable.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
 #include "rec/util/FormatTime.h"
@@ -29,6 +30,7 @@ Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
 
   timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
   desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?
+  setWantsKeyboardFocus(true);
 }
 
 Cursor* Waveform::newCursor(const CursorProto& d, double time, int index) {
@@ -96,13 +98,14 @@ void Waveform::paint(Graphics& g) {
       r.begin_ = draw.end_;
     }
     drawGrid(g, range);
-    // drawCaptions(range);
 
   } else {
     g.setFont(14.0f);
     g.drawFittedText("Drop a file here or double-click to open a new file",
                      0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
   }
+
+  gui::paintFocus(g, this);
 }
 
 int Waveform::timeToX(double t) const {

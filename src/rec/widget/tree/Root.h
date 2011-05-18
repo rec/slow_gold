@@ -26,6 +26,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   virtual void operator()(const file::VirtualFileList&);
   virtual void mouseDoubleClick(const juce::MouseEvent& e);
   void doAdd();
+  void readOpenness();
 
  private:
   void update();
@@ -36,6 +37,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   class TreeViewItem : public juce::TreeViewItem {
    public:
     bool mightContainSubItems() { return true; }
+    virtual const String getUniqueName() const { return "root"; }
   };
 
   NodeDesc desc_;
@@ -46,6 +48,7 @@ class Root : public Broadcaster<const VirtualFile&>,
 
   CriticalSection lock_;
   bool addDialogOpen_;
+  bool opennessRead_;
 
   DISALLOW_COPY_AND_ASSIGN(Root);
   JUCE_LEAK_DETECTOR(Root);

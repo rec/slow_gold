@@ -56,6 +56,8 @@ class Waveform : public Component,
   double pixelsPerSecond() const;
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
+  virtual void focusGained(FocusChangeType) { repaint(); }
+  virtual void focusLost(FocusChangeType) { repaint(); }
 
  private:
   void drawGrid(Graphics& g, const TimeRange&);

@@ -38,9 +38,6 @@ Listeners::Listeners(Instance* i)
   root->treeView()->dropBroadcaster()->addListener(this);
   root->addListener(persist::setter<VirtualFile>());
 
-  persist::setter<VirtualFileList>()->addListener(root);
-  (*root)(persist::get<VirtualFileList>());
-
   components()->transportController_.addListener(this);
   player()->timeBroadcaster()->addListener(&components()->timeController_);
   player()->timeBroadcaster()->addListener(waveform->timeCursor());
