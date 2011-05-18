@@ -10,23 +10,21 @@ class Cuttable  {
  public:
   Cuttable() {}
   virtual ~Cuttable() {}
+  bool cutToClipboard();
+  bool copyToClipboard();
+  bool pasteFromClipboard();
+  bool remove();
 
   virtual bool canCopy() const { return false; }
   virtual bool canPaste() const { return false; }
+  virtual bool canCut() const { return false; }
   virtual string copy() const { return ""; }
   virtual void cut() {}
   virtual bool paste(const string&) const { return false; }
-  const string name() const { return ""; }
+  virtual const string cuttableName() const { return ""; }
+
+  static Cuttable* current();
 };
-
-bool cutToClipboard();
-bool copyToClipboard();
-bool pasteFromClipboard();
-bool canCutOrCopy();
-bool canPaste();
-bool remove();
-
-String cuttableName();
 
 }  // namespace util
 }  // namespace rec

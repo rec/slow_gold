@@ -41,7 +41,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   NodeDesc desc_;
   TreeViewItem root_;
 
-  TreeViewDropAll tree_;
+  TreeViewDropAll tree_;  // This is our actual Component!
   file::VirtualFileList volumes_;
 
   CriticalSection lock_;

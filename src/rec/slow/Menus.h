@@ -17,8 +17,6 @@ class Menus : public MenuBarModel, public HasInstance {
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
 
  private:
-  void add(PopupMenu* m, CommandID c);
-
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Menus);
 };
 

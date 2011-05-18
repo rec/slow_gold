@@ -82,6 +82,11 @@ void TargetManager::add(CommandID id, Callback* cb,
 	add(cb, makeInfo(id, name, category, desc, flags, keyCode, modifiers));
 }
 
+ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
+  CommandMap::iterator i = map_.find(command);
+  return i == map_.end() ? NULL : &i->second->info_;
+}
+
 }  // namespace command
 }  // namespace rec
 

@@ -30,6 +30,26 @@ bool TreeViewDropAll::isInterestedInFileDrag(const StringArray& files) {
   return false;
 }
 
+bool TreeViewDropAll::canCopy() const {
+  return false;
+}
+
+bool TreeViewDropAll::canPaste() const {
+  return false;
+}
+
+string TreeViewDropAll::copy() const {
+  return "";
+}
+
+void TreeViewDropAll::cut() {
+}
+
+bool TreeViewDropAll::paste(const string&) const {
+  return false;
+}
+
+
 }  // namespace tree
 }  // namespace widget
 }  // namespace rec

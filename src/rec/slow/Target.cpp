@@ -13,10 +13,14 @@ namespace slow {
 
 namespace {
 
+// TODO: move this somewhere nicer.
 void addLoopPoint(Instance* i) {
   i->components_->loops_.addLoopPoint(i->player_->getTime());
-  // playbackController_.enableLoopPointButton(false);  // TODO
 }
+
+void copyToClipboard() { Cuttable::current()->copyToClipboard(); }
+void cutToClipboard() { Cuttable::current()->cutToClipboard(); }
+void pasteFromClipboard() { Cuttable::current()->pasteFromClipboard(); }
 
 }  // namespace
 

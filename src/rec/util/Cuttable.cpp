@@ -5,78 +5,55 @@ using juce::SystemClipboard;
 namespace rec {
 namespace util {
 
-static Cuttable* make() {
-  Component* comp = Component::getCurrentlyFocusedComponent();
+Cuttable* Cuttable::current() {
+  Component* c = Component::getCurrentlyFocusedComponent();
+  if (Cuttable* cuttable = dynamic_cast<Cuttable*>(c))
+    return cuttable;
 
-  return comp
-    // && comp->getName().startsWith("cut-")
-    ?
-    dynamic_cast<Cuttable*>(comp): NULL;
+  static Cuttable cuttable;
+  return &cuttable;
 }
 
-bool canCutOrCopy() {
-  if (Cuttable* cc = make())
-    return cc->canCopy();
-  else
+bool Cuttable::cutToClipboard() {
+  if (!canCut()) {
+    juce::PlatformUtilities::beep();
     return false;
-}
-
-bool canPaste() {
-  if (!SystemClipboard::getTextFromClipboard().length())
-    return false;
-
-  else if (Cuttable* cc = make())
-    return cc->canPaste();
-
-  else
-    return false;
-}
-
-bool cutToClipboard() {
-  if (Cuttable* cc = make()) {
-    if (cc->canCopy()) {
-      SystemClipboard::copyTextToClipboard(cc->copy().c_str());
-      cc->cut();
-      return true;
-    }
   }
 
-  juce::PlatformUtilities::beep();
-  return false;
+  SystemClipboard::copyTextToClipboard(copy().c_str());
+  cut();
+  return true;
 }
 
-bool copyToClipboard() {
-  if (Cuttable* cc = make()) {
-    if (cc->canCopy()) {
-      SystemClipboard::copyTextToClipboard(cc->copy().c_str());
-      return true;
-    }
+bool Cuttable::copyToClipboard() {
+  if (!canCopy()) {
+    juce::PlatformUtilities::beep();
+    return false;
+  }
+  SystemClipboard::copyTextToClipboard(copy().c_str());
+  return true;
+}
+
+bool Cuttable::pasteFromClipboard() {
+  if (!canPaste()) {
+    juce::PlatformUtilities::beep();
+    return false;
   }
 
-  juce::PlatformUtilities::beep();
-  return false;
+  string s(str(SystemClipboard::getTextFromClipboard()));
+  if (s.empty()) {
+    juce::PlatformUtilities::beep();
+    return false;
+  }
+
+  paste(s);
+  return true;
 }
 
-bool pasteFromClipboard() {
-  if (Cuttable* cc = make()) {
-    string s(str(SystemClipboard::getTextFromClipboard()));
-    if (s.empty())
-      return false;
-
-    cc->paste(s);
+bool Cuttable::remove() {
+  if (canCut()) {
+    cut();
     return true;
-  }
-
-  juce::PlatformUtilities::beep();
-  return false;
-}
-
-bool remove() {
-  if (Cuttable* cc = make()) {
-    if (cc->canCopy()) {
-      cc->cut();
-      return true;
-    }
   }
 
   juce::PlatformUtilities::beep();

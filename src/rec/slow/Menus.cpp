@@ -3,13 +3,12 @@
 #include "rec/command/Command.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Target.h"
+#include "rec/util/Cuttable.h"
 
 namespace rec {
 namespace slow {
 
-Menus::Menus(Instance* i) : HasInstance(i) {
-  // i->target_.setApplicationCommandManagerToWatch(this); // TODO
-}
+Menus::Menus(Instance* i) : HasInstance(i) {}
 
 const StringArray Menus::getMenuBarNames() {
   static const char* NAMES[] = {"File", "Edit", "Loop"};
@@ -21,11 +20,11 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 
   PopupMenu m;
   if (menuName == "File") {
-    add(&m, Command::OPEN);
-    add(&m, Command::CLOSE);
-    add(&m, Command::EJECT);
-    add(&m, Command::AUDIO_PREFERENCES);
-    add(&m, Command::CLEAR_TREE);
+    target()->addCommandItem(&m, Command::OPEN);
+    target()->addCommandItem(&m, Command::CLOSE);
+    target()->addCommandItem(&m, Command::EJECT);
+    target()->addCommandItem(&m, Command::AUDIO_PREFERENCES);
+    target()->addCommandItem(&m, Command::CLEAR_TREE);
 
 #ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();
@@ -39,25 +38,32 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 #endif
 
 #if !JUCE_MAC
-    add(&m, QUIT);
+    target()->addCommandItem(&m, QUIT);
 #endif
 
   } else if (menuName == "Edit") {
-    add(&m, Command::CUT);
-    add(&m, Command::COPY);
-    add(&m, Command::PASTE);
+    Cuttable* cuttable = Cuttable::current();
+    String name = str(cuttable->cuttableName());
+    if (name.length()) {
+      target()->addCommandItem(&m, Command::CUT, cuttable->canCut(),
+                               "Cut from " + name);
+      target()->addCommandItem(&m, Command::COPY, cuttable->canCopy(),
+                               "Copy from " + name);
+      target()->addCommandItem(&m, Command::PASTE, cuttable->canPaste(),
+                               "Paste to " + name);
+    } else {
+      target()->addCommandItem(&m, Command::CUT, cuttable->canCut());
+      target()->addCommandItem(&m, Command::COPY, cuttable->canCopy());
+      target()->addCommandItem(&m, Command::PASTE, cuttable->canPaste());
+    }
 
   } else if (menuName == "Loop") {
-    add(&m, Command::CLEAR_SELECTION);
-    add(&m, Command::CLEAR_LOOPS);
-    add(&m, Command::CLEAR_TIME);
+    target()->addCommandItem(&m, Command::CLEAR_SELECTION);
+    target()->addCommandItem(&m, Command::CLEAR_LOOPS);
+    target()->addCommandItem(&m, Command::CLEAR_TIME);
   }
 
   return m;
-}
-
-void Menus::add(PopupMenu* m, CommandID c) {
-  target()->addCommandItem(m, c);
 }
 
 }  // namespace slow

@@ -50,6 +50,19 @@ class TargetManager : public ApplicationCommandTarget {
     menu->addCommandItem(&commandManager_, command);
   }
 
+  void addCommandItem(PopupMenu* menu, CommandID command,
+                      bool isActive,
+                      const String& name = String::empty) {
+    if (ApplicationCommandInfo* info = getInfo(command)) {
+      if (name.length())
+        info->shortName = name;
+      info->setActive(isActive);
+      addCommandItem(menu, command);
+    }
+  }
+
+  ApplicationCommandInfo* getInfo(CommandID command);
+
  private:
   typedef std::map<CommandID, CommandCallback*> CommandMap;
 
