@@ -39,15 +39,19 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   virtual void cut();
 
   void setLength(int len);
-  void setLoopPoints(const LoopPointList& points);
-  bool isNewLoopPoint(double t) const;
-  void addLoopPoint(double time);
+  bool isNewLoopPoint(RealTime t) const;
+  void addLoopPoint(RealTime time);
+  void addLoopPoints(const LoopPointList& loops);
   TimeRange selectionRange() const;
   void clearSelection();
   void clearLoops();
 
+  void paint(Graphics& g) {
+    component::Focusable<TableController>::paint(g);
+    DLOG(INFO) << "Here! " << loopPoints_->DebugString();
+  }
+
   virtual void selectedRowsChanged(int lastRowSelected);
-  // virtual bool keyPressed(const juce::KeyPress& kp);
 
   const string cuttableName() const { return "Loops"; }
 

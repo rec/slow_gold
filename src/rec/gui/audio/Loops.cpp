@@ -69,6 +69,7 @@ static void print(const string& name, const juce::SparseSet<int>& ss) {
 }
 
 void Loops::update() {
+  bool selectionChanged;
   juce::SparseSet<int> sel;
   {
     ScopedLock l(lock_);
@@ -77,11 +78,11 @@ void Loops::update() {
         sel.addRange(juce::Range<int>(i, i + 1));
     }
 
-    if (sel == getSelectedRows())
-      return;
+    selectionChanged = (sel != getSelectedRows());
   }
   // print("update", sel);
-  setSelectedRows(sel, false);
+  if (selectionChanged)
+    setSelectedRows(sel, false);
 
   TableController::update();
 }
@@ -150,15 +151,14 @@ TimeRange Loops::selectionRange() const {
                    (e < size) ? loopPoints_->loop_point(e).time() : length_);
 }
 
-bool Loops::paste(const string& s) {
-  LoopPointList loops;
-  if (!yaml::read(s, &loops))
-    return false;
-
+void Loops::addLoopPoints(const LoopPointList& loops) {
+  ScopedLock l(lock_);
   TimeRange selection = selectionRange();
   for (int i = 0; i < loops.loop_point_size(); ++i) {
-    loopPoints_->add_loop_point()->CopyFrom(loops.loop_point(i));
-    loopPoints_->add_selected(false);
+    if (isNewLoopPoint(loops.loop_point(i).time())) {
+      loopPoints_->add_loop_point()->CopyFrom(loops.loop_point(i));
+      loopPoints_->add_selected(false);
+    }
   }
 
   std::sort(loopPoints_->mutable_loop_point()->begin(),
@@ -171,36 +171,23 @@ bool Loops::paste(const string& s) {
   }
 
  	data::set(getData(), Address(), *loopPoints_);
-  return true;
+  updateAndRepaint();
+}
+
+bool Loops::paste(const string& s) {
+  LoopPointList loops;
+  if (yaml::read(s, &loops)) {
+    addLoopPoints(loops);
+    return true;
+  }
+  return false;
 }
 
 void Loops::addLoopPoint(double time) {
-  ScopedLock l(lock_);
-  if (getData() && isNewLoopPoint(time)) {
-    TimeRange selection = selectionRange();
-
-    loopPoints_->add_loop_point()->set_time(time);
-    std::sort(loopPoints_->mutable_loop_point()->begin(),
-              loopPoints_->mutable_loop_point()->end(),
-              CompareLoopPoints());
-
-    loopPoints_->add_selected(false);
-    for (int i = 0; i < loopPoints_->selected_size(); ++i) {
-      double time = loopPoints_->loop_point(i).time();
-      loopPoints_->set_selected(i, time >= selection.begin_ && time < selection.end_);
-    }
-
-    data::set(getData(), *loopPoints_);
-  }
+  LoopPointList loops;
+  loops.add_loop_point()->set_time(time);
+  addLoopPoints(loops);
 }
-#if 0
-bool Loops::keyPressed(const juce::KeyPress& kp) {
-  if (kp.getTextCharacter() == 127)
-    cut();
-
-  return false;
-}
-#endif
 
 void Loops::clearSelection() {
   for (int i = 0; i < loopPoints_->selected_size(); ++i)
@@ -213,16 +200,6 @@ void Loops::clearLoops() {
   loopPoints_->Clear();
   data::set(getData(), Address(), loopPoints_);
 }
-
-#if 0
-  if (!allowDiscontinuousSelections_) {
-    if (selected.getNumRanges() > 1) {
-      juce::Range<int> range = selected.getTotalRange();
-      selectRangeOfRows(range.getStart(), range.getEnd());
-      return;
-    }
-  }
-#endif
 
 }  // namespace audio
 }  // namespace gui
