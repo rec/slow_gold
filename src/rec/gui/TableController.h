@@ -13,7 +13,9 @@ class TableController : public TableListBoxModel,
                         public TableListBox,
                         public ProtoListener {
  public:
-  TableController(const TableColumnList& columns, const Address& address,
+  TableController();
+
+  void initialize(const TableColumnList& columns, const Address& address,
                   const char* name = "TableController");
 
   virtual void fillHeader(TableHeaderComponent* headers);
@@ -36,13 +38,13 @@ class TableController : public TableListBoxModel,
   static String displayText(const TableColumn& col, const Value& value);
 
   ptr<Message> message_;
-  const TableColumnList columns_;
+  TableColumnList columns_;
   CriticalSection lock_;
 
   Address address_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(TableController);
+  DISALLOW_COPY_AND_ASSIGN(TableController);
 };
 
 }  // namespace gui

@@ -7,12 +7,15 @@
 namespace rec {
 namespace gui {
 
-TableController::TableController(const TableColumnList& c, const Address& address,
-                                 const char* name)
-    : TableListBox(name, this),
-      ProtoListener(Address()),
-      columns_(c),
-      address_(address) {
+TableController::TableController() : TableListBox("", this),
+                                     ProtoListener(Address()) {
+}
+
+void TableController::initialize(const TableColumnList& c, const Address& address,
+                                 const char* name) {
+  columns_ = c;
+  address_ = address;
+  setName(name);
 }
 
 void TableController::fillHeader(TableHeaderComponent* headers) {

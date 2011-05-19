@@ -21,9 +21,9 @@ static Defaulter<TableColumnList> dflt(
 const double Loops::CLOSE = 0.5;
 
 Loops::Loops(const TableColumnList* desc, bool dis)
-    : TableController(dflt.get(desc), Address("loop_point"), "cut-Loops"),
-      length_(0),
+    : length_(0),
       allowDiscontinuousSelections_(dis) {
+  initialize(dflt.get(desc), Address("loop_point"), "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
   loopPoints_ = new LoopPointList;

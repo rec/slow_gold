@@ -3,6 +3,7 @@
 
 #include "rec/gui/audio/LoopPoint.pb.h"
 #include "rec/gui/TableController.h"
+#include "rec/gui/component/Focusable.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
@@ -15,7 +16,7 @@ namespace audio {
 
 bool isNewLoopPointTime(const LoopPointList& lp, RealTime t);
 
-class Loops : public TableController, public Cuttable {
+class Loops : public component::Focusable<TableController>, public Cuttable {
  public:
   explicit Loops(const TableColumnList* desc = NULL,
                  bool allowDiscontinuousSelections = true);
