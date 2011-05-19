@@ -762,6 +762,15 @@
 			E24978361384BFF00031535C /* PBXTextBookmark */ = E24978361384BFF00031535C /* PBXTextBookmark */;
 			E249783B1384C17B0031535C /* PBXTextBookmark */ = E249783B1384C17B0031535C /* PBXTextBookmark */;
 			E249783C1384C17B0031535C /* PBXTextBookmark */ = E249783C1384C17B0031535C /* PBXTextBookmark */;
+			E249784A1384C4640031535C /* PBXTextBookmark */ = E249784A1384C4640031535C /* PBXTextBookmark */;
+			E249785A1384C4CC0031535C /* XCBuildMessageTextBookmark */ = E249785A1384C4CC0031535C /* XCBuildMessageTextBookmark */;
+			E249785B1384C4DE0031535C /* PBXTextBookmark */ = E249785B1384C4DE0031535C /* PBXTextBookmark */;
+			E249785E1384C4DE0031535C /* PBXTextBookmark */ = E249785E1384C4DE0031535C /* PBXTextBookmark */;
+			E24978611384C4EF0031535C /* PBXTextBookmark */ = E24978611384C4EF0031535C /* PBXTextBookmark */;
+			E24978621384C4EF0031535C /* PBXTextBookmark */ = E24978621384C4EF0031535C /* PBXTextBookmark */;
+			E24978651384C5070031535C /* PBXTextBookmark */ = E24978651384C5070031535C /* PBXTextBookmark */;
+			E24978661384C5070031535C /* PBXTextBookmark */ = E24978661384C5070031535C /* PBXTextBookmark */;
+			E249786C1384C5580031535C /* PBXTextBookmark */ = E249786C1384C5580031535C /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
 			E29BBB7713022F250091D4CB = E29BBB7713022F250091D4CB /* PBXTextBookmark */;
@@ -1546,7 +1555,7 @@
 		fRef = F51A3D3B106A417ACE152E58 /* SongData.h */;
 		name = "SongData.h: 29";
 		rLen = 0;
-		rLoc = 951;
+		rLoc = 989;
 		rType = 0;
 		vrLen = 1182;
 		vrLoc = 0;
@@ -1948,6 +1957,108 @@
 		vrLen = 1278;
 		vrLoc = 1479;
 	};
+	E249784A1384C4640031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F67837B1F913F0981A51B001 /* Loops.cpp */;
+		name = "Loops.cpp: 84";
+		rLen = 0;
+		rLoc = 2192;
+		rType = 0;
+		vrLen = 1349;
+		vrLoc = 1479;
+	};
+	E24978591384C4CC0031535C /* SongData.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = SongData.h;
+		path = ../../../../../rec/src/rec/gui/SongData.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 823}}";
+			sepNavSelRange = "{1402, 0}";
+			sepNavVisRange = "{0, 1556}";
+			sepNavWindowFrame = "{{282, 28}, {1385, 959}}";
+		};
+	};
+	E249785A1384C4CC0031535C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "At this point in file";
+		fRef = E24978591384C4CC0031535C /* SongData.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 36;
+		rType = 1;
+	};
+	E249785B1384C4DE0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F67837B1F913F0981A51B001 /* Loops.cpp */;
+		name = "Loops.cpp: 84";
+		rLen = 0;
+		rLoc = 2192;
+		rType = 0;
+		vrLen = 1349;
+		vrLoc = 1479;
+	};
+	E249785E1384C4DE0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24978591384C4CC0031535C /* SongData.h */;
+		name = "SongData.h: 37";
+		rLen = 0;
+		rLoc = 1402;
+		rType = 0;
+		vrLen = 1574;
+		vrLoc = 0;
+	};
+	E24978611384C4EF0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F67837B1F913F0981A51B001 /* Loops.cpp */;
+		name = "Loops.cpp: 84";
+		rLen = 0;
+		rLoc = 2192;
+		rType = 0;
+		vrLen = 1349;
+		vrLoc = 1479;
+	};
+	E24978621384C4EF0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24978591384C4CC0031535C /* SongData.h */;
+		name = "SongData.h: 36";
+		rLen = 0;
+		rLoc = 1347;
+		rType = 0;
+		vrLen = 1575;
+		vrLoc = 0;
+	};
+	E24978651384C5070031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F67837B1F913F0981A51B001 /* Loops.cpp */;
+		name = "Loops.cpp: 84";
+		rLen = 0;
+		rLoc = 2192;
+		rType = 0;
+		vrLen = 1278;
+		vrLoc = 1479;
+	};
+	E24978661384C5070031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24978591384C4CC0031535C /* SongData.h */;
+		name = "SongData.h: 39";
+		rLen = 0;
+		rLoc = 1347;
+		rType = 0;
+		vrLen = 1589;
+		vrLoc = 0;
+	};
+	E249786C1384C5580031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F67837B1F913F0981A51B001 /* Loops.cpp */;
+		name = "Loops.cpp: 84";
+		rLen = 0;
+		rLoc = 2192;
+		rType = 0;
+		vrLen = 1278;
+		vrLoc = 1479;
+	};
 	E2758BB212E2968800E37D3F /* Slow */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -2328,9 +2439,9 @@
 		fRef = E2E8DA1413848BEF00394CAB /* Focusable.h */;
 		name = "Focusable.h: 37";
 		rLen = 0;
-		rLoc = 952;
+		rLoc = 942;
 		rType = 0;
-		vrLen = 953;
+		vrLen = 942;
 		vrLoc = 0;
 	};
 	E2E8DA7713849A8300394CAB /* PBXTextBookmark */ = {

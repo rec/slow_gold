@@ -13,7 +13,7 @@ namespace gui {
 class SetterTextArea : public Layout {
  public:
   SetterTextArea(const String& name = String::empty)
-      : Layout(name, VERTICAL) {
+      : Layout(name, VERTICAL), data_(NULL) {
   }
 
   ~SetterTextArea() { stl::deletePointers(&components_); }
@@ -29,6 +29,7 @@ class SetterTextArea : public Layout {
   }
 
   void setData(data::UntypedData* data) {
+    data_ = data;
     for (int i = 0; i < components_.size(); ++i)
       text(i)->setData(data);
 
@@ -36,16 +37,17 @@ class SetterTextArea : public Layout {
     if (data)
       data->requestUpdate();
 #endif
-
   }
 
   void repaint() {
     Layout::repaint();
   }
 
+ protected:
+  data::UntypedData* data_;
 
  private:
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterTextArea);
+  DISALLOW_COPY_AND_ASSIGN(SetterTextArea);
 };
 
 }  // namespace gui

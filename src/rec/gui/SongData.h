@@ -2,15 +2,19 @@
 #define __REC_GUI_SONGDATA__
 
 #include "rec/data/persist/Persist.h"
-#include "rec/music/Metadata.h"
+#include "rec/data/yaml/Yaml.h"
 #include "rec/gui/SetterTextArea.h"
+#include "rec/music/Metadata.h"
+#include "rec/util/Cuttable.h"
+#include "rec/gui/component/Focusable.h"
 
 namespace rec {
 namespace gui {
 
-class SongData : public SetterTextArea {
+class SongData : public component::Focusable<SetterTextArea>, public Cuttable {
  public:
-  SongData() : SetterTextArea("SongData") {
+  SongData() {
+    setName("SongData");
     add("Track", Address("track_title"), "The name of the individual track.");
     add("Album", Address("album_title"),
         "The name of the album this track is from, if any.");
@@ -22,6 +26,16 @@ class SongData : public SetterTextArea {
     add("Notes", Address("notes"), "Put whatever you like here")->
         editor()->setMultiLine(true, true);
   }
+
+  virtual bool canCopy() const { return true; }
+  virtual bool canCut() const { return false; }
+  virtual bool canPaste() const { return false; }
+  virtual bool paste(const string&) { return false; }
+  virtual const string cuttableName() const { return "SongData"; }
+  virtual string copy() const {
+    return yaml::write(*ptr<Message>(data_->clone()));
+  }
+  virtual void cut() {}
 
  private:
   DISALLOW_COPY_AND_ASSIGN(SongData);
