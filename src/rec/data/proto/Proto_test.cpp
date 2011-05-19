@@ -4,7 +4,7 @@
 #include "rec/data/proto/Field.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/Defaulter.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/util/LoopPoint.pb.h"
 #include "rec/data/Operation.pb.h"
 
 namespace rec {

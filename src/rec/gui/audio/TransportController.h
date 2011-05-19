@@ -6,7 +6,7 @@
 #include "rec/command/Command.pb.h"
 #include "rec/gui/Layout.h"
 #include "rec/gui/audio/LevelMeter.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/util/LoopPoint.pb.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {

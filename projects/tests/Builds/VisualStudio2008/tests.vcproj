@@ -426,9 +426,6 @@
         <Filter Name="gui">
           <Filter Name="audio">
             <File RelativePath="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint.h"/>
-            <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint_test.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\SetupPage.h"/>
@@ -597,6 +594,9 @@
             <File RelativePath="..\..\..\..\src\rec\util\listener\ProtoListener.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\LoopPoint_test.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
           <File RelativePath="..\..\..\..\src\rec\util\Mathy_test.cpp"/>
           <Filter Name="partition">
@@ -713,10 +713,6 @@
             </Filter>
           </Filter>
           <Filter Name="gui">
-            <Filter Name="audio">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\audio\LoopPoint.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\audio\LoopPoint.pb.h"/>
-            </Filter>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc"/>
@@ -741,6 +737,8 @@
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
             </Filter>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
             <Filter Name="thread">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h"/>

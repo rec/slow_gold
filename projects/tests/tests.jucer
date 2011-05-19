@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="6tQZZXu5Z" name="tests">
+  <MAINGROUP id="XciU6Uvki" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -544,12 +544,6 @@
         <GROUP id="Q6pTAUS7q" name="audio">
           <FILE compile="0" file="../../src/rec/gui/audio/LevelMeter.h" id="Wezsuk5A5"
                 name="LevelMeter.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/audio/LoopPoint.cpp" id="b2oCsA4RW"
-                name="LoopPoint.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/audio/LoopPoint.h" id="82iMWBbIw"
-                name="LoopPoint.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/audio/LoopPoint_test.cpp"
-                id="52ln1t2xh" name="LoopPoint_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/Loops.cpp" id="e53DJlxln"
                 name="Loops.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/Loops.h" id="IDjX13hK1"
@@ -867,6 +861,12 @@
           <FILE compile="0" file="../../src/rec/util/listener/SetterListener.h"
                 id="8PCgooEfK" name="SetterListener.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/util/LoopPoint.cpp" id="4o8CKvV5R"
+              name="LoopPoint.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/LoopPoint.h" id="HZL1e8R2x"
+              name="LoopPoint.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/util/LoopPoint_test.cpp" id="YjwxlRtmE"
+              name="LoopPoint_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="KJ9D4bgfF" name="Math.h"
               resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Mathy_test.cpp" id="DQdrq9q65"
@@ -1066,12 +1066,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="wnA7W209k" name="gui">
-          <GROUP id="gJjgc9pLj" name="audio">
-            <FILE compile="1" file="../../genfiles/proto/rec/gui/audio/LoopPoint.pb.cc"
-                  id="VfH65zeuV" name="LoopPoint.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/gui/audio/LoopPoint.pb.h"
-                  id="br3o9jrAG" name="LoopPoint.pb.h" resource="0"/>
-          </GROUP>
           <FILE compile="1" file="../../genfiles/proto/rec/gui/Color.pb.cc" id="AVVmJqPAt"
                 name="Color.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/gui/Color.pb.h" id="nBUgxnfea"
@@ -1112,6 +1106,10 @@
             <FILE compile="0" file="../../genfiles/proto/rec/util/file/VirtualFile.pb.h"
                   id="8cExbKMvV" name="VirtualFile.pb.h" resource="0"/>
           </GROUP>
+          <FILE compile="1" file="../../genfiles/proto/rec/util/LoopPoint.pb.cc"
+                id="qOrjgSaa9" name="LoopPoint.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/util/LoopPoint.pb.h"
+                id="vPnTsT1SM" name="LoopPoint.pb.h" resource="0"/>
           <GROUP id="boJapF56x" name="thread">
             <FILE compile="1" file="../../genfiles/proto/rec/util/thread/Thread.pb.cc"
                   id="68eC0Vh2j" name="Thread.pb.cc" resource="0"/>
@@ -1165,7 +1163,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2q6wcuzCh" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="TjdHY3cNY" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

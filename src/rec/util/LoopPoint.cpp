@@ -1,6 +1,6 @@
 #include "rec/audio/Audio.h"
-#include "rec/gui/audio/LoopPoint.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/util/LoopPoint.h"
+#include "rec/util/LoopPoint.pb.h"
 
 namespace rec {
 namespace audio {

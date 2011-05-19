@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/util/LoopPoint.pb.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"

@@ -19,7 +19,6 @@
 		0D991B89B84527E6125EE2C0 /* Format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E74AE435539E9D7FAA617231 /* Format.cpp */; };
 		0E1F743AD2D8CFFD7243F769 /* Operation.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 81920ACF526B1320CA42D59F /* Operation.pb.cc */; };
 		1007BCA6FB20F2F0A1D0980E /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D1808F156C23D6DD357F18A0 /* tag.cpp */; };
-		11264A01F503BA159FA819B8 /* LoopPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B0E65C5265DABDDB91797C0 /* LoopPoint.cpp */; };
 		1381038DADCCAA8C8FD62178 /* Compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D684E449C62B83120D33CA37 /* Compare.cpp */; };
 		14E97BB2A16D0746F24DF90A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76A1D10AA9A54C30E972106B /* CoreAudio.framework */; };
 		184D05A2CE3863105F8279D8 /* Root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFF718C20886014E3A7E0968 /* Root.cpp */; };
@@ -121,6 +120,7 @@
 		93254821EF0C4ED680CD5017 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F760410F12BAAC9AA41EA8EF /* node.cpp */; };
 		9362E2C00662145E66F79A31 /* Instance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1094736653D336F4F086F88A /* Instance.cpp */; };
 		93C023ED9377653751F86C3B /* scantag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A94CB517D27D8D7FF6ED83E /* scantag.cpp */; };
+		9532238011D029FABB1252F9 /* LoopPoint.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = F7F540A7941849524CECE203 /* LoopPoint.pb.cc */; };
 		9572BD2A620573A2C8416BE1 /* conversion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B336F1C1C2090670B7DA2C4 /* conversion.cpp */; };
 		965D9EBABDDADEDD8E21A424 /* regex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4132813AF6EC06285C2AF89 /* regex.cpp */; };
 		97FB7094BC6C411643657C15 /* Metadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490604E738E7F7E49FABE411 /* Metadata.cpp */; };
@@ -134,7 +134,6 @@
 		9F22219D9B58CCDB27743396 /* Cuttable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F657F03DB48DCBA241C62 /* Cuttable.cpp */; };
 		A0235C55CB96F0EA9CE3173D /* exp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9330B3B0AD7956CA53DF2DA /* exp.cpp */; };
 		A29DBD694D6B4EF3C2AEA925 /* Color.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = BA9058D896BB8B07D8A4ABAC /* Color.pb.cc */; };
-		A2DB7F5BACFFB4A0626B9CA7 /* LoopPoint.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = D36A7D35A7B7D7D944D458CC /* LoopPoint.pb.cc */; };
 		A411FEC1D81103E0E33A5955 /* content.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5AE3FEEEB1792709D630FB7 /* content.cpp */; };
 		A449A75BAE696198F89C5828 /* RecentFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BDD945E532565AC5D254D1 /* RecentFiles.cpp */; };
 		A6A81076F64793BFD383A03B /* SetterSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E2EFC91E0F1C2F786FC7D29 /* SetterSlider.cpp */; };
@@ -178,6 +177,7 @@
 		D48DF312F83E7715FE0C63E0 /* Address.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = CFC39A2BB09083C350DEF61E /* Address.pb.cc */; };
 		D4E81B2C18D947D6A8A83BDF /* ThinFolder.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C57184B3DEADC988014F31F /* ThinFolder.svg.cpp */; };
 		D5588DD503032541C064C9F3 /* Fillable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 666A9AD30210CE49D3B59703 /* Fillable.cpp */; };
+		D62B26EC9F06F41ED502815A /* LoopPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C08F978939B04D301BF2363 /* LoopPoint.cpp */; };
 		DD5494C5A35EAD035B033266 /* Buffered.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C409FB99A93AB62CC0BC9D6B /* Buffered.cpp */; };
 		DD6985CA056B15D42BDB7DAD /* TransportController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA72AD4FBEC619DC6F63742F /* TransportController.cpp */; };
 		DEAEFE04F74B928AD873ECDB /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD3D0F303A37C8661D7DA7 /* hfft.c */; };
@@ -248,6 +248,7 @@
 		118AC7625B4C42CD4D22AE13 /* Target.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../../../../src/rec/slow/Target.h; sourceTree = SOURCE_ROOT; };
 		11F272B3B33A174E5803B08A /* iterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iterator.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/iterator.h"; sourceTree = SOURCE_ROOT; };
 		1212C9EC153DC9F8706CBE91 /* NodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NodeItem.h; path = ../../../../src/rec/widget/tree/NodeItem.h; sourceTree = SOURCE_ROOT; };
+		13040F6823E68C849C5EACD6 /* LoopPoint.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopPoint.pb.h; path = ../../../../genfiles/proto/rec/util/LoopPoint.pb.h; sourceTree = SOURCE_ROOT; };
 		13BDD945E532565AC5D254D1 /* RecentFiles.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RecentFiles.cpp; path = ../../../../src/rec/gui/RecentFiles.cpp; sourceTree = SOURCE_ROOT; };
 		1418DE18D16254F6952FBFF3 /* CreateReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateReader.h; path = ../../../../src/rec/audio/format/mpg123/CreateReader.h; sourceTree = SOURCE_ROOT; };
 		14711AE9A3E0D7BE84D46270 /* AudioDeviceSetup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioDeviceSetup.cpp; path = ../../../../src/rec/audio/util/AudioDeviceSetup.cpp; sourceTree = SOURCE_ROOT; };
@@ -301,6 +302,7 @@
 		2AA30A35048462A804B6F008 /* MediaPlaybackStart.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaPlaybackStart.svg.h; path = ../../../../src/rec/gui/icon/MediaPlaybackStart.svg.h; sourceTree = SOURCE_ROOT; };
 		2B8B15833E2B2EB99E74F7E6 /* Socket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../../../../src/rec/util/cd/Socket.cpp; sourceTree = SOURCE_ROOT; };
 		2BE1B62BFE8CD89FA1E8535C /* InsertSorted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InsertSorted.h; path = ../../../../src/rec/data/proto/InsertSorted.h; sourceTree = SOURCE_ROOT; };
+		2C08F978939B04D301BF2363 /* LoopPoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.cpp; path = ../../../../src/rec/util/LoopPoint.cpp; sourceTree = SOURCE_ROOT; };
 		2C47467844A9E7B586180211 /* Command.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.h; path = ../../../../src/rec/command/Command.h; sourceTree = SOURCE_ROOT; };
 		2D204227EFF09D7429C25730 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Types.h; path = ../../../../src/rec/data/proto/Types.h; sourceTree = SOURCE_ROOT; };
 		2D7F8C76B45B4920420D8C83 /* TableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableController.h; path = ../../../../src/rec/gui/TableController.h; sourceTree = SOURCE_ROOT; };
@@ -437,7 +439,6 @@
 		7A6CA6FB61B33BDDB0880203 /* Font.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Font.pb.h; path = ../../../../genfiles/proto/rec/gui/Font.pb.h; sourceTree = SOURCE_ROOT; };
 		7A9B20669D825CA83E79C2D7 /* Circular.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Circular.h; path = ../../../../src/rec/util/Circular.h; sourceTree = SOURCE_ROOT; };
 		7ACCDDE1865D383FC89B7790 /* TransportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TransportController.h; path = ../../../../src/rec/gui/audio/TransportController.h; sourceTree = SOURCE_ROOT; };
-		7B0E65C5265DABDDB91797C0 /* LoopPoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.cpp; path = ../../../../src/rec/gui/audio/LoopPoint.cpp; sourceTree = SOURCE_ROOT; };
 		7B2EF485D114357565803EDF /* Standard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Standard.h; path = ../../../../src/rec/base/Standard.h; sourceTree = SOURCE_ROOT; };
 		7B9F375E4D9D9D9A827002A8 /* Value.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.cpp; path = ../../../../src/rec/data/Value.cpp; sourceTree = SOURCE_ROOT; };
 		7BD93D3C80AA0E1600B3C057 /* Geometry.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.pb.h; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.h; sourceTree = SOURCE_ROOT; };
@@ -458,6 +459,7 @@
 		844678D4140796E169612E30 /* stlemitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stlemitter.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/stlemitter.h"; sourceTree = SOURCE_ROOT; };
 		8461982A2C7F0F020AF2556D /* Compare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Compare.h; path = ../../../../src/rec/util/Compare.h; sourceTree = SOURCE_ROOT; };
 		8594A7FA601295B88EDD89DA /* Operation.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Operation.pb.h; path = ../../../../genfiles/proto/rec/data/Operation.pb.h; sourceTree = SOURCE_ROOT; };
+		86AAE2258AE68C6045F5A400 /* LoopPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopPoint.h; path = ../../../../src/rec/util/LoopPoint.h; sourceTree = SOURCE_ROOT; };
 		887A5A2C0E55D7C233AFDF29 /* hfft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = hfft.h; path = ../../../../src/rec/audio/ammf_scaler/hfft.h; sourceTree = SOURCE_ROOT; };
 		88B4D611F5A7FFDF737AB770 /* Stereo.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stereo.pb.cc; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.cc; sourceTree = SOURCE_ROOT; };
 		88C80D4AC91778AF36BD5055 /* stream.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stream.cpp; path = ../../../../src/rec/data/yaml/src/stream.cpp; sourceTree = SOURCE_ROOT; };
@@ -597,7 +599,6 @@
 		C9C96C1946F71E0A3A0BF053 /* TimeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeController.h; path = ../../../../src/rec/gui/audio/TimeController.h; sourceTree = SOURCE_ROOT; };
 		CA13203CE7FA3CC60614A2B1 /* OpenFolder.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OpenFolder.svg.cpp; path = ../../../../src/rec/gui/icon/OpenFolder.svg.cpp; sourceTree = SOURCE_ROOT; };
 		CA2DE924115B666BAB28C5B2 /* build_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = build_config.h; path = ../../../../src/rec/base/build_config.h; sourceTree = SOURCE_ROOT; };
-		CA9B85B0686B3F907BD61695 /* LoopPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopPoint.h; path = ../../../../src/rec/gui/audio/LoopPoint.h; sourceTree = SOURCE_ROOT; };
 		CAE8D88900F297660FC6704C /* CachedThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CachedThumbnail.h; path = ../../../../src/rec/audio/util/CachedThumbnail.h; sourceTree = SOURCE_ROOT; };
 		CAF9EB9F768AFDE3B830FBA2 /* Dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Dialog.h; path = ../../../../src/rec/gui/Dialog.h; sourceTree = SOURCE_ROOT; };
 		CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = SOURCE_ROOT; };
@@ -620,7 +621,6 @@
 		D2AAAD0A8B6877EC8FBBBBFF /* DriveOptical.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DriveOptical.svg.cpp; path = ../../../../src/rec/gui/icon/DriveOptical.svg.cpp; sourceTree = SOURCE_ROOT; };
 		D3095941488411CA120D4BE7 /* Convertors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Convertors.cpp; path = ../../../../src/rec/util/partition/Convertors.cpp; sourceTree = SOURCE_ROOT; };
 		D34816C7D8A0A95C38583580 /* Trash.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Trash.cpp; path = ../../../../src/rec/util/thread/Trash.cpp; sourceTree = SOURCE_ROOT; };
-		D36A7D35A7B7D7D944D458CC /* LoopPoint.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.pb.cc; path = ../../../../genfiles/proto/rec/gui/audio/LoopPoint.pb.cc; sourceTree = SOURCE_ROOT; };
 		D427FD0910FEA6098B36B56B /* SlowBurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlowBurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48DDECB9F35916340C9E1FE /* Value.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Value.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/Value.pb.cc; sourceTree = SOURCE_ROOT; };
 		D48EB8180E2C24EAFE50DFFB /* nodebuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = nodebuilder.cpp; path = ../../../../src/rec/data/yaml/src/nodebuilder.cpp; sourceTree = SOURCE_ROOT; };
@@ -650,7 +650,6 @@
 		DF6D7FF3BEDFF97629DE1B4D /* Menus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Menus.cpp; path = ../../../../src/rec/slow/Menus.cpp; sourceTree = SOURCE_ROOT; };
 		E033F8E4A6AFD0EB33ADAF0A /* Waveform.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Waveform.pb.h; path = ../../../../genfiles/proto/rec/widget/waveform/Waveform.pb.h; sourceTree = SOURCE_ROOT; };
 		E130A37866F055849D468F2C /* Equals.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Equals.cpp; path = ../../../../src/rec/data/proto/Equals.cpp; sourceTree = SOURCE_ROOT; };
-		E2C740403C2F59F23E594A24 /* LoopPoint.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopPoint.pb.h; path = ../../../../genfiles/proto/rec/gui/audio/LoopPoint.pb.h; sourceTree = SOURCE_ROOT; };
 		E3682300FFF148F25D8468EC /* DropTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DropTarget.h; path = ../../../../src/rec/gui/DropTarget.h; sourceTree = SOURCE_ROOT; };
 		E3AE05DBC426A63DC00E081B /* SetterTextArea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterTextArea.h; path = ../../../../src/rec/gui/SetterTextArea.h; sourceTree = SOURCE_ROOT; };
 		E3E0E3D2E6892BDAA5F575EA /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../../../src/rec/app/Application.h; sourceTree = SOURCE_ROOT; };
@@ -698,6 +697,7 @@
 		F65C4CB259A46E182713FBB7 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = SOURCE_ROOT; };
 		F67837B1F913F0981A51B001 /* Loops.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Loops.cpp; path = ../../../../src/rec/gui/audio/Loops.cpp; sourceTree = SOURCE_ROOT; };
 		F760410F12BAAC9AA41EA8EF /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = node.cpp; path = ../../../../src/rec/data/yaml/src/node.cpp; sourceTree = SOURCE_ROOT; };
+		F7F540A7941849524CECE203 /* LoopPoint.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.pb.cc; path = ../../../../genfiles/proto/rec/util/LoopPoint.pb.cc; sourceTree = SOURCE_ROOT; };
 		F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreenRev.svg.cpp; path = ../../../../src/rec/gui/icon/FullScreenRev.svg.cpp; sourceTree = SOURCE_ROOT; };
 		F8ECB7C9B12C73DC0B8E5A92 /* AppLayout.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppLayout.pb.cc; path = ../../../../genfiles/proto/rec/slow/AppLayout.pb.cc; sourceTree = SOURCE_ROOT; };
 		F993E1ABE1FFE4422FCE9A47 /* AudioFormatManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioFormatManager.cpp; path = ../../../../src/rec/audio/util/AudioFormatManager.cpp; sourceTree = SOURCE_ROOT; };
@@ -893,6 +893,8 @@
 			isa = PBXGroup;
 			children = (
 				DB617A20D9C265267D2D5AE8 /* file */,
+				F7F540A7941849524CECE203 /* LoopPoint.pb.cc */,
+				13040F6823E68C849C5EACD6 /* LoopPoint.pb.h */,
 				DC7D3E3DC4C1423FA0C5B41C /* thread */,
 			);
 			name = util;
@@ -901,7 +903,6 @@
 		32C418FD0E799C090FF00C62 /* gui */ = {
 			isa = PBXGroup;
 			children = (
-				A25CE716DDE7B12C50F0CB96 /* audio */,
 				BA9058D896BB8B07D8A4ABAC /* Color.pb.cc */,
 				3E62D9B9243FA97172878F88 /* Color.pb.h */,
 				9E51C20884951529E731C3DB /* Font.pb.cc */,
@@ -1031,6 +1032,20 @@
 				AC0554963E514633441794AD /* SetterListener.h */,
 			);
 			name = listener;
+			sourceTree = "<group>";
+		};
+		60E1CC6F0F4462CAC4F82D14 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		6C6D775F12CEA14261B879BE /* proto */ = {
@@ -1192,8 +1207,6 @@
 			isa = PBXGroup;
 			children = (
 				4EE93F16961D80D9A2E3A93F /* LevelMeter.h */,
-				7B0E65C5265DABDDB91797C0 /* LoopPoint.cpp */,
-				CA9B85B0686B3F907BD61695 /* LoopPoint.h */,
 				F67837B1F913F0981A51B001 /* Loops.cpp */,
 				EE4960DCA7DDB83A987643D8 /* Loops.h */,
 				4B69500EF0E82B03B56C8B32 /* SetupPage.h */,
@@ -1325,6 +1338,8 @@
 				A9BA8343576382C2BBC6AAC5 /* FormatTime.cpp */,
 				D68751B79A54FB06EBCC03A4 /* FormatTime.h */,
 				5D1F4F92A994BC6BD5FD32DE /* listener */,
+				2C08F978939B04D301BF2363 /* LoopPoint.cpp */,
+				86AAE2258AE68C6045F5A400 /* LoopPoint.h */,
 				94646382FAB21A45C282242D /* Math.h */,
 				FCA5A278B2A59C0DAF27922C /* partition */,
 				0D679A62D1AD15621CFE411C /* PointerList.h */,
@@ -1360,29 +1375,6 @@
 				22E6A127E8EA05C450A50D59 /* Tags.h */,
 			);
 			name = mpg123;
-			sourceTree = "<group>";
-		};
-		A1E13F3F329B4F79AF9036CB /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
-		A25CE716DDE7B12C50F0CB96 /* audio */ = {
-			isa = PBXGroup;
-			children = (
-				D36A7D35A7B7D7D944D458CC /* LoopPoint.pb.cc */,
-				E2C740403C2F59F23E594A24 /* LoopPoint.pb.h */,
-			);
-			name = audio;
 			sourceTree = "<group>";
 		};
 		AC0A55CC5C6219AB36B5C26B /* Resources */ = {
@@ -1779,7 +1771,7 @@
 				French,
 				German,
 			);
-			mainGroup = A1E13F3F329B4F79AF9036CB /* Source */;
+			mainGroup = 60E1CC6F0F4462CAC4F82D14 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1883,7 +1875,6 @@
 				28A0CDF6B7F4478930892A40 /* stream.cpp in Sources */,
 				1007BCA6FB20F2F0A1D0980E /* tag.cpp in Sources */,
 				46CFA0BFEBD851A9AA33EE35 /* WriteYaml.cpp in Sources */,
-				11264A01F503BA159FA819B8 /* LoopPoint.cpp in Sources */,
 				B6FEEDC6E6F581A35B76E048 /* Loops.cpp in Sources */,
 				34BC3F74E6EE2A5B6F71E20E /* StretchyController.cpp in Sources */,
 				3EA87DB1ABDC51AF61DC4B34 /* TimeController.cpp in Sources */,
@@ -1943,6 +1934,7 @@
 				7FE0BC330B130293FA5FCD14 /* VirtualFile.cpp in Sources */,
 				8FD591086EC144B6977B181F /* FormatTime.cpp in Sources */,
 				6155A94CCBC96387FAF83846 /* ProtoListener.cpp in Sources */,
+				D62B26EC9F06F41ED502815A /* LoopPoint.cpp in Sources */,
 				7001EB3EA2FBA0EB3B4928F7 /* Convertors.cpp in Sources */,
 				830D13AF3D404CBF2A9E05E3 /* Partition.cpp in Sources */,
 				DF9E7E4FE3D7B5EDB74379BB /* RandomSelfInverseFunction.cpp in Sources */,
@@ -1972,7 +1964,6 @@
 				D48DF312F83E7715FE0C63E0 /* Address.pb.cc in Sources */,
 				541F10A925B2EF3C24636585 /* TestData.pb.cc in Sources */,
 				42190C094E7147AEC5AB08CB /* Value.pb.cc in Sources */,
-				A2DB7F5BACFFB4A0626B9CA7 /* LoopPoint.pb.cc in Sources */,
 				A29DBD694D6B4EF3C2AEA925 /* Color.pb.cc in Sources */,
 				0B0B76BE195D5E66053F1839 /* Font.pb.cc in Sources */,
 				096F0DFCE5D4AF2684975D66 /* Geometry.pb.cc in Sources */,
@@ -1981,6 +1972,7 @@
 				28313C23AD0356F73EA369DB /* Metadata.pb.cc in Sources */,
 				621DF87924B6CAD97FBB1BAB /* AppLayout.pb.cc in Sources */,
 				3A99510C7063E152D6EBF52F /* VirtualFile.pb.cc in Sources */,
+				9532238011D029FABB1252F9 /* LoopPoint.pb.cc in Sources */,
 				BB38E1A91947F2A14CB23DD5 /* Thread.pb.cc in Sources */,
 				65769E1F73B8F7362FB764DB /* Panes.pb.cc in Sources */,
 				EEB0407468B4645D5199D632 /* Status.pb.cc in Sources */,

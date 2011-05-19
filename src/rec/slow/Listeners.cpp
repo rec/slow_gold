@@ -4,7 +4,7 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/gui/DropFiles.h"
-#include "rec/gui/audio/LoopPoint.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Model.h"

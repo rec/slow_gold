@@ -3,7 +3,7 @@
 
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/data/persist/Persist.h"
-#include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/util/LoopPoint.pb.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {

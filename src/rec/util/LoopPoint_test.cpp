@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <glog/logging.h>
 
-#include "rec/gui/audio/LoopPoint.h"
+#include "rec/util/LoopPoint.h"
 
 namespace rec {
 namespace gui {

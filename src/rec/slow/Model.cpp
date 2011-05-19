@@ -5,7 +5,7 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/CachedThumbnail.h"
 #include "rec/data/persist/Data.h"
-#include "rec/gui/audio/LoopPoint.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Threads.h"
