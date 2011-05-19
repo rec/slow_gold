@@ -14,11 +14,15 @@
 
 namespace rec {
 namespace audio {
+
+namespace util { class FillableBuffer; }
+
 namespace source {
 
 class BufferSource : public Source {
  public:
   BufferSource(const Buffer* buffer = NULL);
+  BufferSource(const util::FillableBuffer& buffer);
   void setBuffer(const Buffer* b) { buffer_ = b; }
 
   virtual void getNextAudioBlock(const Info& i);

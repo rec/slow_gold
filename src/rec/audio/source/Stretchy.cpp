@@ -50,6 +50,7 @@ void Stretchy::initialize() {
     near(stretch::pitchScale(stretch_), 1.0, DELTA);
   if (bypass_) {
     DLOG(INFO) << "bypass";
+    timeScale_ = 1.0;
     return;
   }
 

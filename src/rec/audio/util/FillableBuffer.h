@@ -6,6 +6,9 @@
 
 namespace rec {
 namespace audio {
+
+namespace source { class BufferSource; }
+
 namespace util {
 
 class FillableBuffer : public block::Fillable {
@@ -13,8 +16,6 @@ class FillableBuffer : public block::Fillable {
   FillableBuffer() {}
   void setSource(PositionableAudioSource* source, int blockSize);
   virtual block::Size doFillNextBlock(const block::Block& block);
-
-  AudioSampleBuffer* buffer() { return buffer_.get(); }
 
  protected:
   virtual void onFilled() { source_.reset(); }
@@ -25,6 +26,8 @@ class FillableBuffer : public block::Fillable {
   int64 blockSize_;
 
   DISALLOW_COPY_AND_ASSIGN(FillableBuffer);
+
+  friend class audio::source::BufferSource;
 };
 
 }  // namespace util
