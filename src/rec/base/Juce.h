@@ -75,6 +75,8 @@ typedef juce::TreeView TreeView;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
+#define NEW_JUCE
+
 inline string str(const String& s) {
 #ifdef NEW_JUCE
   return s.toUTF8().getAddress();
