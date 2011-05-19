@@ -5,14 +5,6 @@ namespace rec {
 namespace audio {
 namespace source {
 
-BufferSource::BufferSource(const Buffer* b)
-    : buffer_(b), position_(0), looping_(true) {
-}
-
-BufferSource::BufferSource(const util::FillableBuffer& b)
-    : buffer_(b.buffer_.get()), position_(0), looping_(true) {
-}
-
 void BufferSource::getNextAudioBlock(const Info& i) {
   BufferTime from(const_cast<Buffer*>(buffer_), position_);
   BufferTime to(i.buffer, i.startSample);
@@ -27,10 +19,6 @@ void BufferSource::getNextAudioBlock(const Info& i) {
     setNextReadPosition(position_ + t);
     from.time_ = position_;
   }
-}
-
-void BufferSource::setNextReadPosition(int64 p) {
-  position_ = mod(p, getTotalLength());
 }
 
 }  // namespace source

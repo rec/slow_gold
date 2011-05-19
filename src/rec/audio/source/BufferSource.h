@@ -10,6 +10,7 @@
 
 #include "rec/audio/Audio.h"
 #include "rec/audio/util/CopySamples.h"
+#include "rec/audio/util/FillableBuffer.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -19,27 +20,38 @@ namespace util { class FillableBuffer; }
 
 namespace source {
 
-class BufferSource : public Source {
+class BaseBufferSource : public Source {
  public:
-  BufferSource(const Buffer* buffer = NULL);
-  BufferSource(const util::FillableBuffer& buffer);
-  void setBuffer(const Buffer* b) { buffer_ = b; }
+  virtual void getNextAudioBlock(const Info& i) = 0;
+  virtual int64 getTotalLength() const = 0;
 
-  virtual void getNextAudioBlock(const Info& i);
-  virtual void setNextReadPosition(int64 p);
+  virtual void setNextReadPosition(int64 p) {
+    position_ = mod(p, getTotalLength());
+  }
 
   virtual int64 getNextReadPosition() const { return position_; };
-  virtual int64 getTotalLength() const { return buffer_->getNumSamples();  }
   virtual bool isLooping() const { return looping_; }
   virtual void setLooping (bool shouldLoop) { looping_ = shouldLoop; }
 
   virtual void prepareToPlay(int s, double r) {}
   virtual void releaseResources() {}
 
- private:
-  const Buffer* buffer_;
+ protected:
   int64 position_;
   bool looping_;
+};
+
+class BufferSource : public BaseBufferSource {
+ public:
+  BufferSource(const Buffer* b = NULL) : buffer_(b) {}
+  BufferSource(const util::FillableBuffer& b) : buffer_(b.buffer_.get()) {}
+  void setBuffer(const Buffer* b) { buffer_ = b; }
+
+  virtual void getNextAudioBlock(const Info& i);
+  virtual int64 getTotalLength() const { return buffer_->getNumSamples();  }
+
+ private:
+  const Buffer* buffer_;
 
   DISALLOW_COPY_AND_ASSIGN(BufferSource);
 };
