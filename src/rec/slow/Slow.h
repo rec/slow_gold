@@ -20,8 +20,6 @@ typedef widget::waveform::Waveform Waveform;
 typedef widget::waveform::WaveformProto WaveformProto;
 typedef widget::waveform::ZoomProto ZoomProto;
 
-// typedef gui::DropTarget<Waveform, WaveformProto> WaveformDrop;
-
 }  // namespace slow
 }  // namespace rec
 

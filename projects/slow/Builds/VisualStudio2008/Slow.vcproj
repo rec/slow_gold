@@ -182,6 +182,7 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Level.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Player.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Player.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Seggy.h"/>
@@ -411,6 +412,7 @@
         </Filter>
         <Filter Name="gui">
           <Filter Name="audio">
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\LoopPoint.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
@@ -425,6 +427,9 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Color.h"/>
+          <Filter Name="component">
+            <File RelativePath="..\..\..\..\src\rec\gui\component\Focusable.h"/>
+          </Filter>
           <File RelativePath="..\..\..\..\src\rec\gui\Dialog.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\Dialog.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\DropFiles.h"/>

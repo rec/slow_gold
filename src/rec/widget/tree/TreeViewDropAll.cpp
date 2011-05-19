@@ -1,13 +1,15 @@
 #include "rec/widget/tree/TreeViewDropAll.h"
 #include "rec/widget/tree/NodeItem.h"
-#include "rec/gui/Focusable.h"
+#include "rec/gui/component/Focusable.h"
 #include "rec/data/yaml/Yaml.h"
 
 namespace rec {
 namespace widget {
 namespace tree {
 
-TreeViewDropAll::TreeViewDropAll() : TreeViewDropTarget("Tree") {}
+TreeViewDropAll::TreeViewDropAll() {
+  setName("Tree");
+}
 
 void TreeViewDropAll::paint(Graphics& g) {
   TreeView::paint(g);
@@ -22,7 +24,7 @@ void TreeViewDropAll::paint(Graphics& g) {
   g.drawFittedText("files here or double-click for a dialog.",
                    0, HEIGHT, getWidth(), getHeight(),
                    juce::Justification::centred, 0);
-  gui::paintFocus(g, this);
+  paintFocus(g);
 }
 
 bool TreeViewDropAll::isInterestedInFileDrag(const StringArray& files) {

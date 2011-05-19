@@ -1,6 +1,5 @@
 #include "rec/widget/waveform/Waveform.h"
 
-#include "rec/gui/Focusable.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
 #include "rec/util/FormatTime.h"
@@ -23,13 +22,13 @@ Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
 }  // namespace
 
 Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
-    : Component("Waveform"),
-      desc_(d),
+    : desc_(d),
       thumbnail_(NULL) {
-  setName("Waveform");  // TODO:  delete?
+  setName("Waveform");
 
   timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
   desc_.set_selection_frame_in_seconds(0);  // TODO: what's this?
+
   setWantsKeyboardFocus(true);
 }
 
@@ -104,8 +103,7 @@ void Waveform::paint(Graphics& g) {
     g.drawFittedText("Drop a file here or double-click to open a new file",
                      0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
   }
-
-  gui::paintFocus(g, this);
+  paintFocus(g);
 }
 
 int Waveform::timeToX(double t) const {

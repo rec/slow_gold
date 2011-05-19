@@ -3,6 +3,7 @@
 
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/DropTarget.h"
+#include "rec/gui/component/Focusable.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/listener/Listener.h"
 
@@ -10,9 +11,10 @@ namespace rec {
 namespace widget {
 namespace tree {
 
-typedef gui::DropTarget<TreeView, String, gui::NullInterface> TreeViewDropTarget;
+typedef gui::DropTarget<TreeView, gui::NullInterface> TreeViewDropTarget;
+typedef gui::component::Focusable<TreeViewDropTarget> FocusableTarget;
 
-class TreeViewDropAll : public TreeViewDropTarget, public Cuttable {
+class TreeViewDropAll : public FocusableTarget, public Cuttable {
  public:
   TreeViewDropAll();
   virtual void paint(Graphics& g);

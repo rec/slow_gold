@@ -20,12 +20,10 @@ namespace slow {
 
 struct Instance;
 
-typedef gui::DropTarget<Waveform, WaveformProto> WaveformComp;
+typedef gui::DropTarget<Waveform> WaveformComp;
 
 struct Components {
-  Components() : waveform_(WaveformProto()),
-                 playbackController_(this),
-                 mainPage_(this) {
+  Components() : playbackController_(this), mainPage_(this) {
     playbackController_.setSetter(persist::setter<AppLayout>());
   }
 

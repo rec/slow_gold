@@ -12,12 +12,10 @@ namespace gui {
 
 struct NullInterface {};
 
-template <typename Parent,
-          typename Init = String,
-          typename Interface = FileDragAndDropTarget>
+template <typename Parent, class Interface = FileDragAndDropTarget>
 class DropTarget : public Interface, public Parent {
  public:
-  DropTarget(const Init& init) : Parent(init), draggingOver_(false) {}
+  DropTarget() : draggingOver_(false) {}
   virtual ~DropTarget() {}
 
   virtual bool isInterestedInFileDrag(const StringArray& files) {

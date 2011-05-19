@@ -4,6 +4,7 @@
 #include <set>
 
 #include "rec/gui/audio/LoopPoint.pb.h"
+#include "rec/gui/component/Focusable.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
@@ -23,7 +24,7 @@ struct MouseWheelEvent;
 struct TimeAndMouseEvent;
 
 // This handles waveform display of a juce::AudioThumbnail.
-class Waveform : public Component,
+class Waveform : public gui::component::Focusable<Component>,
                  public Listener<juce::AudioThumbnail*>,
                  public Listener<const gui::audio::LoopPointList&>,
                  public Listener<const ZoomProto&>,
@@ -56,8 +57,6 @@ class Waveform : public Component,
   double pixelsPerSecond() const;
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
-  virtual void focusGained(FocusChangeType) { repaint(); }
-  virtual void focusLost(FocusChangeType) { repaint(); }
 
  private:
   void drawGrid(Graphics& g, const TimeRange&);
