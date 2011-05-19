@@ -6,24 +6,27 @@
 namespace rec {
 namespace util {
 
+bool cutToClipboard();
+bool copyToClipboard();
+bool pasteFromClipboard();
+bool cutNoClipboard();
+bool canCopy();
+bool canCut();
+bool canPaste();
+const string cuttableName();
+
 class Cuttable  {
  public:
   Cuttable() {}
   virtual ~Cuttable() {}
-  bool cutToClipboard();
-  bool copyToClipboard();
-  bool pasteFromClipboard();
-  bool remove();
 
-  virtual bool canCopy() const { return false; }
-  virtual bool canPaste() const { return false; }
-  virtual bool canCut() const { return false; }
-  virtual string copy() const { return ""; }
-  virtual void cut() {}
-  virtual bool paste(const string&) const { return false; }
-  virtual const string cuttableName() const { return ""; }
-
-  static Cuttable* current();
+  virtual bool canCopy() const = 0;
+  virtual bool canCut() const = 0;
+  virtual bool canPaste() const = 0;
+  virtual bool paste(const string&) = 0;
+  virtual const string cuttableName() const = 0;
+  virtual string copy() const = 0;
+  virtual void cut() = 0;
 };
 
 }  // namespace util

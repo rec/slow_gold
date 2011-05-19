@@ -33,6 +33,7 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
 
   virtual bool canCopy() const;
   virtual bool canPaste() const { return true; }
+  virtual bool canCut() const { return canCopy(); }
   virtual string copy() const;
   virtual bool paste(const string&);
   virtual void cut();
@@ -46,7 +47,9 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   void clearLoops();
 
   virtual void selectedRowsChanged(int lastRowSelected);
-  virtual bool keyPressed(const juce::KeyPress& kp);
+  // virtual bool keyPressed(const juce::KeyPress& kp);
+
+  const string cuttableName() const { return "Loops"; }
 
  protected:
   virtual void update();

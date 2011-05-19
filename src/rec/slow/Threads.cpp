@@ -102,7 +102,7 @@ void Threads::startAll() {
   start(&updateParameters, "Parameter", 97);
   player()->buffered()->setNotifyThread(start(&buffer, "Buffer", 10));
   start(&directory, "Directory", 101);
-  start(&focus, "Focus", 10);
+  // start(&focus, "Focus", 10);
   // start(&pitch, "Pitch", 100);
 
   (*model()->fileLocker())(persist::get<VirtualFile>());

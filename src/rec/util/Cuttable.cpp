@@ -5,37 +5,58 @@ using juce::SystemClipboard;
 namespace rec {
 namespace util {
 
-Cuttable* Cuttable::current() {
+namespace {
+
+class EmptyCuttable : public Cuttable {
+ public:
+  virtual bool canCopy() const { return false; }
+  virtual bool canCut() const { return false; }
+  virtual bool canPaste() const { return false; }
+  virtual bool paste(const string&) { return false;  }
+  virtual const string cuttableName() const { return ""; }
+  virtual string copy() const { return ""; }
+  virtual void cut() {}
+};
+
+Cuttable* current() {
   Component* c = Component::getCurrentlyFocusedComponent();
   if (Cuttable* cuttable = dynamic_cast<Cuttable*>(c))
     return cuttable;
 
-  static Cuttable cuttable;
-  return &cuttable;
+  static EmptyCuttable empty;
+  return &empty;
 }
 
-bool Cuttable::cutToClipboard() {
-  if (!canCut()) {
+}  // namespace
+
+bool cutToClipboard() {
+  Cuttable* c = current();
+  DLOG(INFO) << "cutToClipboard " << c->cuttableName();
+  if (!c->canCut()) {
     juce::PlatformUtilities::beep();
     return false;
   }
 
-  SystemClipboard::copyTextToClipboard(copy().c_str());
-  cut();
+  SystemClipboard::copyTextToClipboard(c->copy().c_str());
+  c->cut();
   return true;
 }
 
-bool Cuttable::copyToClipboard() {
-  if (!canCopy()) {
+bool copyToClipboard() {
+  Cuttable* c = current();
+  DLOG(INFO) << "copyToClipboard " << c->cuttableName();
+  if (!c->canCopy()) {
     juce::PlatformUtilities::beep();
     return false;
   }
-  SystemClipboard::copyTextToClipboard(copy().c_str());
+  SystemClipboard::copyTextToClipboard(c->copy().c_str());
   return true;
 }
 
-bool Cuttable::pasteFromClipboard() {
-  if (!canPaste()) {
+bool pasteFromClipboard() {
+  Cuttable* c = current();
+  DLOG(INFO) << "pasteFromClipboard " << c->cuttableName();
+  if (!c->canPaste()) {
     juce::PlatformUtilities::beep();
     return false;
   }
@@ -46,19 +67,27 @@ bool Cuttable::pasteFromClipboard() {
     return false;
   }
 
-  paste(s);
+  c->paste(s);
   return true;
 }
 
-bool Cuttable::remove() {
-  if (canCut()) {
-    cut();
+bool cutNoClipboard() {
+  Cuttable* c = current();
+  DLOG(INFO) << "cutNoClipboard " << c->cuttableName();
+  if (c->canCut()) {
+    c->cut();
     return true;
   }
 
   juce::PlatformUtilities::beep();
   return false;
 }
+
+bool canCopy() { return current()->canCopy(); }
+bool canCut() { return current()->canCut(); }
+bool canPaste() { return current()->canPaste(); }
+
+const string cuttableName() { return current()->cuttableName(); }
 
 }  // namespace util
 }  // namespace rec

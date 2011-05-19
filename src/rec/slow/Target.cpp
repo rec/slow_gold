@@ -18,10 +18,6 @@ void addLoopPoint(Instance* i) {
   i->components_->loops_.addLoopPoint(i->player_->getTime());
 }
 
-void copyToClipboard() { Cuttable::current()->copyToClipboard(); }
-void cutToClipboard() { Cuttable::current()->cutToClipboard(); }
-void pasteFromClipboard() { Cuttable::current()->pasteFromClipboard(); }
-
 }  // namespace
 
 Target::Target(Instance* i) : TargetManager(i->window_), HasInstance(i) {}

@@ -150,7 +150,6 @@ TimeRange Loops::selectionRange() const {
                    (e < size) ? loopPoints_->loop_point(e).time() : length_);
 }
 
-
 bool Loops::paste(const string& s) {
   LoopPointList loops;
   if (!yaml::read(s, &loops))
@@ -171,6 +170,7 @@ bool Loops::paste(const string& s) {
     loopPoints_->set_selected(i, time >= selection.begin_ && time < selection.end_);
   }
 
+ 	data::set(getData(), Address(), *loopPoints_);
   return true;
 }
 
@@ -193,13 +193,14 @@ void Loops::addLoopPoint(double time) {
     data::set(getData(), *loopPoints_);
   }
 }
-
+#if 0
 bool Loops::keyPressed(const juce::KeyPress& kp) {
   if (kp.getTextCharacter() == 127)
     cut();
 
-  return true;
+  return false;
 }
+#endif
 
 void Loops::clearSelection() {
   for (int i = 0; i < loopPoints_->selected_size(); ++i)

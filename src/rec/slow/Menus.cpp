@@ -42,19 +42,18 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 #endif
 
   } else if (menuName == "Edit") {
-    Cuttable* cuttable = Cuttable::current();
-    String name = str(cuttable->cuttableName());
-    if (name.length()) {
-      target()->addCommandItem(&m, Command::CUT, cuttable->canCut(),
+    String name = str(cuttableName());
+    if (false && name.length()) {
+      target()->addCommandItem(&m, Command::CUT, canCut(),
                                "Cut from " + name);
-      target()->addCommandItem(&m, Command::COPY, cuttable->canCopy(),
+      target()->addCommandItem(&m, Command::COPY, canCopy(),
                                "Copy from " + name);
-      target()->addCommandItem(&m, Command::PASTE, cuttable->canPaste(),
+      target()->addCommandItem(&m, Command::PASTE, canPaste(),
                                "Paste to " + name);
     } else {
-      target()->addCommandItem(&m, Command::CUT, cuttable->canCut());
-      target()->addCommandItem(&m, Command::COPY, cuttable->canCopy());
-      target()->addCommandItem(&m, Command::PASTE, cuttable->canPaste());
+      target()->addCommandItem(&m, Command::CUT, canCut());
+      target()->addCommandItem(&m, Command::COPY, canCopy());
+      target()->addCommandItem(&m, Command::PASTE, canPaste());
     }
 
   } else if (menuName == "Loop") {

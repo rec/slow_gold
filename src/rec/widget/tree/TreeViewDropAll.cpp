@@ -67,7 +67,7 @@ void TreeViewDropAll::cut() {
   persist::set(getSelected(getRootItem(), false));
 }
 
-bool TreeViewDropAll::paste(const string& s) const {
+bool TreeViewDropAll::paste(const string& s) {
   VirtualFileList files;
   bool read = yaml::read(s, &files);
   if (read) {

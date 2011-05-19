@@ -26,7 +26,7 @@ class TreeViewDropAll : public FocusableTarget, public Cuttable {
   virtual bool canPaste() const { return true; }
   virtual string copy() const;
   virtual void cut();
-  virtual bool paste(const string&) const;
+  virtual bool paste(const string&);
   const string cuttableName() const { return "File Browser"; }
 
  private:
