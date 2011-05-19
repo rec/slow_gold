@@ -14,8 +14,10 @@ namespace audio {
 
 static Defaulter<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
+#if 0
 "column { type: STRING name: \"Name\" address { part { name: \"name\" } } } "
 "column { type: STRING name: \"Notes\" address { part { name: \"notes\" } } } "
+#endif
 );
 
 const double Loops::CLOSE = 0.5;
@@ -38,22 +40,16 @@ void Loops::setLength(int len) {
 }
 
 void Loops::selectedRowsChanged(int lastRowSelected) {
-  juce::SparseSet<int> selected;
   bool changed = false;
   {
     ScopedLock l(lock_);
-    selected = getSelectedRows();
-    int i = 0;
-    for (; i < loopPoints_->loop_point_size(); ++i) {
+    juce::SparseSet<int> selected(getSelectedRows());
+    for (int i = 0; i < loopPoints_->loop_point_size(); ++i) {
+      LoopPoint* lp = loopPoints_->mutable_loop_point(i);
       bool contains = selected.contains(i);
-      if (i < loopPoints_->selected_size()) {
-        if (loopPoints_->selected(i) != contains) {
-          loopPoints_->set_selected(i, contains);
+      if (lp->selected() != contains) {
+          lp->set_selected(contains);
           changed = true;
-        }
-      } else {
-        loopPoints_->add_selected(contains);
-        changed = true;
       }
     }
   }
@@ -73,8 +69,8 @@ void Loops::update() {
   juce::SparseSet<int> sel;
   {
     ScopedLock l(lock_);
-    for (int i = 0; i < loopPoints_->selected_size(); ++i) {
-      if (loopPoints_->selected(i))
+    for (int i = 0; i < loopPoints_->loop_point_size(); ++i) {
+      if (loopPoints_->loop_point(i).selected())
         sel.addRange(juce::Range<int>(i, i + 1));
     }
 
@@ -112,11 +108,9 @@ struct CompareLoopPoints {
 LoopPointList getSelected(const LoopPointList& loops, bool selected) {
   LoopPointList result;
 
-  for (int i = 0; i < loops.selected_size(); ++i) {
-    if (loops.selected(i) == selected) {
-      result.add_selected(selected);
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
+    if (loops.loop_point(i).selected() == selected)
       result.add_loop_point()->CopyFrom(loops.loop_point(i));
-    }
   }
   return result;
 }
@@ -130,11 +124,7 @@ string Loops::copy() const {
 
 bool Loops::canCopy() const {
   ScopedLock l(lock_);
-  for (int i = 0; i < loopPoints_->selected_size(); ++i) {
-    if (loopPoints_->selected(i))
-      return true;
-  }
-  return false;
+  return getSelected(*loopPoints_, true).loop_point_size();
 }
 
 void Loops::cut() {
@@ -144,9 +134,9 @@ void Loops::cut() {
 }
 
 TimeRange Loops::selectionRange() const {
-  int b = 0, size = loopPoints_->selected_size(), e;
-  for (; b < size && !loopPoints_->selected(b); ++b);
-  for (e = b; e < size && loopPoints_->selected(e); ++e);
+  int b = 0, size = loopPoints_->loop_point_size(), e;
+  for (; b < size && !loopPoints_->loop_point(b).selected(); ++b);
+  for (e = b; e < size && loopPoints_->loop_point(e).selected(); ++e);
   return TimeRange((b < size) ? loopPoints_->loop_point(b).time() : length_,
                    (e < size) ? loopPoints_->loop_point(e).time() : length_);
 }
@@ -155,19 +145,18 @@ void Loops::addLoopPoints(const LoopPointList& loops) {
   ScopedLock l(lock_);
   TimeRange selection = selectionRange();
   for (int i = 0; i < loops.loop_point_size(); ++i) {
-    if (isNewLoopPoint(loops.loop_point(i).time())) {
+    if (isNewLoopPoint(loops.loop_point(i).time()))
       loopPoints_->add_loop_point()->CopyFrom(loops.loop_point(i));
-      loopPoints_->add_selected(false);
-    }
   }
 
   std::sort(loopPoints_->mutable_loop_point()->begin(),
             loopPoints_->mutable_loop_point()->end(),
             CompareLoopPoints());
 
-  for (int i = 0; i < loopPoints_->selected_size(); ++i) {
+  for (int i = 0; i < loopPoints_->loop_point_size(); ++i) {
     double time = loopPoints_->loop_point(i).time();
-    loopPoints_->set_selected(i, time >= selection.begin_ && time < selection.end_);
+    loopPoints_->mutable_loop_point(i)->set_selected(time >= selection.begin_ &&
+                                                     time < selection.end_);
   }
 
  	data::set(getData(), Address(), *loopPoints_);
@@ -190,8 +179,8 @@ void Loops::addLoopPoint(double time) {
 }
 
 void Loops::clearSelection() {
-  for (int i = 0; i < loopPoints_->selected_size(); ++i)
-    loopPoints_->set_selected(i, false);
+  for (int i = 0; i < loopPoints_->loop_point_size(); ++i)
+    loopPoints_->mutable_loop_point(i)->set_selected(false);
 
   data::set(getData(), Address(), loopPoints_);
 }

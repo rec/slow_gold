@@ -10,8 +10,8 @@ block::BlockSet getTimeSelection(const LoopPointList& list,
                                  bool emptyMeansAll) {
   block::BlockSet sel;
   for (int i = 0, j, size = list.loop_point_size(); i < size; ) {
-    for (; i < size && !list.selected(i); ++i);
-    for (j = i; j < size && list.selected(j); ++j);
+    for (; i < size && !list.loop_point(i).selected(); ++i);
+    for (j = i; j < size && list.loop_point(j).selected(); ++j);
     if (j != i) {
       RealTime begin = scale * list.loop_point(i).time();
       RealTime end = scale * (j < size ? list.loop_point(j).time() : length);

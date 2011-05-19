@@ -32,10 +32,9 @@ void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto() {
       "rec/util/LoopPoint.proto");
   GOOGLE_CHECK(file != NULL);
   LoopPoint_descriptor_ = file->message_type(0);
-  static const int LoopPoint_offsets_[3] = {
+  static const int LoopPoint_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPoint, time_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPoint, name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPoint, notes_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPoint, selected_),
   };
   LoopPoint_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -49,9 +48,8 @@ void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoopPoint));
   LoopPointList_descriptor_ = file->message_type(1);
-  static const int LoopPointList_offsets_[2] = {
+  static const int LoopPointList_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPointList, loop_point_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoopPointList, selected_),
   };
   LoopPointList_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -98,11 +96,10 @@ void protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/util/LoopPoint.proto\022\010rec.util\"9\n\t"
-    "LoopPoint\022\017\n\004time\030\001 \001(\001:\0010\022\014\n\004name\030\002 \001(\t"
-    "\022\r\n\005notes\030\003 \001(\t\"J\n\rLoopPointList\022\'\n\nloop"
-    "_point\030\001 \003(\0132\023.rec.util.LoopPoint\022\020\n\010sel"
-    "ected\030\002 \003(\010", 171);
+    "\n\030rec/util/LoopPoint.proto\022\010rec.util\".\n\t"
+    "LoopPoint\022\017\n\004time\030\001 \001(\001:\0010\022\020\n\010selected\030\002"
+    " \001(\010\"8\n\rLoopPointList\022\'\n\nloop_point\030\001 \003("
+    "\0132\023.rec.util.LoopPoint", 142);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/LoopPoint.proto", &protobuf_RegisterTypes);
   LoopPoint::default_instance_ = new LoopPoint();
@@ -122,12 +119,9 @@ struct StaticDescriptorInitializer_rec_2futil_2fLoopPoint_2eproto {
 
 // ===================================================================
 
-const ::std::string LoopPoint::_default_name_;
-const ::std::string LoopPoint::_default_notes_;
 #ifndef _MSC_VER
 const int LoopPoint::kTimeFieldNumber;
-const int LoopPoint::kNameFieldNumber;
-const int LoopPoint::kNotesFieldNumber;
+const int LoopPoint::kSelectedFieldNumber;
 #endif  // !_MSC_VER
 
 LoopPoint::LoopPoint()
@@ -147,8 +141,7 @@ LoopPoint::LoopPoint(const LoopPoint& from)
 void LoopPoint::SharedCtor() {
   _cached_size_ = 0;
   time_ = 0;
-  name_ = const_cast< ::std::string*>(&_default_name_);
-  notes_ = const_cast< ::std::string*>(&_default_notes_);
+  selected_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -157,12 +150,6 @@ LoopPoint::~LoopPoint() {
 }
 
 void LoopPoint::SharedDtor() {
-  if (name_ != &_default_name_) {
-    delete name_;
-  }
-  if (notes_ != &_default_notes_) {
-    delete notes_;
-  }
   if (this != default_instance_) {
   }
 }
@@ -190,16 +177,7 @@ LoopPoint* LoopPoint::New() const {
 void LoopPoint::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     time_ = 0;
-    if (_has_bit(1)) {
-      if (name_ != &_default_name_) {
-        name_->clear();
-      }
-    }
-    if (_has_bit(2)) {
-      if (notes_ != &_default_notes_) {
-        notes_->clear();
-      }
-    }
+    selected_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -222,37 +200,19 @@ bool LoopPoint::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_name;
+        if (input->ExpectTag(16)) goto parse_selected;
         break;
       }
       
-      // optional string name = 2;
+      // optional bool selected = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_notes;
-        break;
-      }
-      
-      // optional string notes = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_notes:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_notes()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->notes().data(), this->notes().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_selected:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &selected_)));
+          _set_bit(1);
         } else {
           goto handle_uninterpreted;
         }
@@ -283,22 +243,9 @@ void LoopPoint::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->time(), output);
   }
   
-  // optional string name = 2;
+  // optional bool selected = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
-  }
-  
-  // optional string notes = 3;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->notes().data(), this->notes().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->notes(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->selected(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -314,24 +261,9 @@ void LoopPoint::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->time(), target);
   }
   
-  // optional string name = 2;
+  // optional bool selected = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
-  }
-  
-  // optional string notes = 3;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->notes().data(), this->notes().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->notes(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->selected(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -350,18 +282,9 @@ int LoopPoint::ByteSize() const {
       total_size += 1 + 8;
     }
     
-    // optional string name = 2;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-    
-    // optional string notes = 3;
-    if (has_notes()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->notes());
+    // optional bool selected = 2;
+    if (has_selected()) {
+      total_size += 1 + 1;
     }
     
   }
@@ -395,10 +318,7 @@ void LoopPoint::MergeFrom(const LoopPoint& from) {
       set_time(from.time());
     }
     if (from._has_bit(1)) {
-      set_name(from.name());
-    }
-    if (from._has_bit(2)) {
-      set_notes(from.notes());
+      set_selected(from.selected());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -424,8 +344,7 @@ bool LoopPoint::IsInitialized() const {
 void LoopPoint::Swap(LoopPoint* other) {
   if (other != this) {
     std::swap(time_, other->time_);
-    std::swap(name_, other->name_);
-    std::swap(notes_, other->notes_);
+    std::swap(selected_, other->selected_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -445,7 +364,6 @@ void LoopPoint::Swap(LoopPoint* other) {
 
 #ifndef _MSC_VER
 const int LoopPointList::kLoopPointFieldNumber;
-const int LoopPointList::kSelectedFieldNumber;
 #endif  // !_MSC_VER
 
 LoopPointList::LoopPointList()
@@ -498,7 +416,6 @@ LoopPointList* LoopPointList::New() const {
 
 void LoopPointList::Clear() {
   loop_point_.Clear();
-  selected_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -520,28 +437,6 @@ bool LoopPointList::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(10)) goto parse_loop_point;
-        if (input->ExpectTag(16)) goto parse_selected;
-        break;
-      }
-      
-      // repeated bool selected = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_selected:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 1, 16, input, this->mutable_selected())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, this->mutable_selected())));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_selected;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -570,12 +465,6 @@ void LoopPointList::SerializeWithCachedSizes(
       1, this->loop_point(i), output);
   }
   
-  // repeated bool selected = 2;
-  for (int i = 0; i < this->selected_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(
-      2, this->selected(i), output);
-  }
-  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -589,12 +478,6 @@ void LoopPointList::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->loop_point(i), target);
-  }
-  
-  // repeated bool selected = 2;
-  for (int i = 0; i < this->selected_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteBoolToArray(2, this->selected(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -613,13 +496,6 @@ int LoopPointList::ByteSize() const {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->loop_point(i));
-  }
-  
-  // repeated bool selected = 2;
-  {
-    int data_size = 0;
-    data_size = 1 * this->selected_size();
-    total_size += 1 * this->selected_size() + data_size;
   }
   
   if (!unknown_fields().empty()) {
@@ -648,7 +524,6 @@ void LoopPointList::MergeFrom(const ::google::protobuf::Message& from) {
 void LoopPointList::MergeFrom(const LoopPointList& from) {
   GOOGLE_CHECK_NE(&from, this);
   loop_point_.MergeFrom(from.loop_point_);
-  selected_.MergeFrom(from.selected_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -672,7 +547,6 @@ bool LoopPointList::IsInitialized() const {
 void LoopPointList::Swap(LoopPointList* other) {
   if (other != this) {
     loop_point_.Swap(&other->loop_point_);
-    selected_.Swap(&other->selected_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

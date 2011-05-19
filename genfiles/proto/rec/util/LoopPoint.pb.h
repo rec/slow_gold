@@ -99,25 +99,12 @@ class LoopPoint : public ::google::protobuf::Message {
   inline double time() const;
   inline void set_time(double value);
   
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  
-  // optional string notes = 3;
-  inline bool has_notes() const;
-  inline void clear_notes();
-  static const int kNotesFieldNumber = 3;
-  inline const ::std::string& notes() const;
-  inline void set_notes(const ::std::string& value);
-  inline void set_notes(const char* value);
-  inline void set_notes(const char* value, size_t size);
-  inline ::std::string* mutable_notes();
+  // optional bool selected = 2;
+  inline bool has_selected() const;
+  inline void clear_selected();
+  static const int kSelectedFieldNumber = 2;
+  inline bool selected() const;
+  inline void set_selected(bool value);
   
   // @@protoc_insertion_point(class_scope:rec.util.LoopPoint)
  private:
@@ -125,15 +112,12 @@ class LoopPoint : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   double time_;
-  ::std::string* name_;
-  static const ::std::string _default_name_;
-  ::std::string* notes_;
-  static const ::std::string _default_notes_;
+  bool selected_;
   friend void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fLoopPoint_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -217,30 +201,17 @@ class LoopPointList : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >*
       mutable_loop_point();
   
-  // repeated bool selected = 2;
-  inline int selected_size() const;
-  inline void clear_selected();
-  static const int kSelectedFieldNumber = 2;
-  inline bool selected(int index) const;
-  inline void set_selected(int index, bool value);
-  inline void add_selected(bool value);
-  inline const ::google::protobuf::RepeatedField< bool >&
-      selected() const;
-  inline ::google::protobuf::RepeatedField< bool >*
-      mutable_selected();
-  
   // @@protoc_insertion_point(class_scope:rec.util.LoopPointList)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint > loop_point_;
-  ::google::protobuf::RepeatedField< bool > selected_;
   friend void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fLoopPoint_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -279,88 +250,20 @@ inline void LoopPoint::set_time(double value) {
   time_ = value;
 }
 
-// optional string name = 2;
-inline bool LoopPoint::has_name() const {
+// optional bool selected = 2;
+inline bool LoopPoint::has_selected() const {
   return _has_bit(1);
 }
-inline void LoopPoint::clear_name() {
-  if (name_ != &_default_name_) {
-    name_->clear();
-  }
+inline void LoopPoint::clear_selected() {
+  selected_ = false;
   _clear_bit(1);
 }
-inline const ::std::string& LoopPoint::name() const {
-  return *name_;
+inline bool LoopPoint::selected() const {
+  return selected_;
 }
-inline void LoopPoint::set_name(const ::std::string& value) {
+inline void LoopPoint::set_selected(bool value) {
   _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void LoopPoint::set_name(const char* value) {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void LoopPoint::set_name(const char* value, size_t size) {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* LoopPoint::mutable_name() {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-
-// optional string notes = 3;
-inline bool LoopPoint::has_notes() const {
-  return _has_bit(2);
-}
-inline void LoopPoint::clear_notes() {
-  if (notes_ != &_default_notes_) {
-    notes_->clear();
-  }
-  _clear_bit(2);
-}
-inline const ::std::string& LoopPoint::notes() const {
-  return *notes_;
-}
-inline void LoopPoint::set_notes(const ::std::string& value) {
-  _set_bit(2);
-  if (notes_ == &_default_notes_) {
-    notes_ = new ::std::string;
-  }
-  notes_->assign(value);
-}
-inline void LoopPoint::set_notes(const char* value) {
-  _set_bit(2);
-  if (notes_ == &_default_notes_) {
-    notes_ = new ::std::string;
-  }
-  notes_->assign(value);
-}
-inline void LoopPoint::set_notes(const char* value, size_t size) {
-  _set_bit(2);
-  if (notes_ == &_default_notes_) {
-    notes_ = new ::std::string;
-  }
-  notes_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* LoopPoint::mutable_notes() {
-  _set_bit(2);
-  if (notes_ == &_default_notes_) {
-    notes_ = new ::std::string;
-  }
-  return notes_;
+  selected_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -390,31 +293,6 @@ LoopPointList::loop_point() const {
 inline ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >*
 LoopPointList::mutable_loop_point() {
   return &loop_point_;
-}
-
-// repeated bool selected = 2;
-inline int LoopPointList::selected_size() const {
-  return selected_.size();
-}
-inline void LoopPointList::clear_selected() {
-  selected_.Clear();
-}
-inline bool LoopPointList::selected(int index) const {
-  return selected_.Get(index);
-}
-inline void LoopPointList::set_selected(int index, bool value) {
-  selected_.Set(index, value);
-}
-inline void LoopPointList::add_selected(bool value) {
-  selected_.Add(value);
-}
-inline const ::google::protobuf::RepeatedField< bool >&
-LoopPointList::selected() const {
-  return selected_;
-}
-inline ::google::protobuf::RepeatedField< bool >*
-LoopPointList::mutable_selected() {
-  return &selected_;
 }
 
 

@@ -143,9 +143,7 @@ void Model::operator()(const VirtualFile& f) {
 
   LoopPointList loop = loopData_->get();
   if (!loop.loop_point_size()) {
-    loop.add_loop_point();
-    if (!loop.selected_size())
-      loop.add_selected(true);
+    loop.add_loop_point()->set_selected(true);
     data::set(loopData_, loop);
     loopLocker_.set(loop);
   }
@@ -182,7 +180,8 @@ void Model::toggleSelectionSegment(RealTime time) {
 
   int i = 0, size = loops.loop_point_size();
   for (; i < size && loops.loop_point(i).time() <= time; ++i);
-  loops.set_selected(i - 1, !loops.selected(i - 1));
+  LoopPoint* lp = loops.mutable_loop_point(i - 1);
+  lp->set_selected(!lp->selected());
   persist::set(loops, file_);
 }
 

@@ -139,11 +139,11 @@ void Waveform::addAllCursors(const LoopPointList& loopPoints) {
 
 void Waveform::setSelection(const LoopPointList& loopPoints) {
   selection_.clear();
-  for (int i = 0, size = loopPoints.selected_size(); i < size; ) {
-    for (; i < size && !loopPoints.selected(i); ++i);
+  for (int i = 0, size = loopPoints.loop_point_size(); i < size; ) {
+    for (; i < size && !loopPoints.loop_point(i).selected(); ++i);
     if (i < size) {
       int j = i;
-      for (; j < size && loopPoints.selected(j); ++j);
+      for (; j < size && loopPoints.loop_point(j).selected(); ++j);
       double begin = loopPoints.loop_point(i).time();
       double end = (j < size) ? loopPoints.loop_point(j).time() :
         getTimeRange().end_;
