@@ -1,4 +1,4 @@
-package rec.gui.audio;
+package rec.util;
 
 message LoopPoint {
   optional double time = 1 [default = 0.0];

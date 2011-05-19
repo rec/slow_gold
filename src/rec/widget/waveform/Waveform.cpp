@@ -8,8 +8,6 @@
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
 
-using namespace rec::gui::audio;
-
 namespace rec {
 namespace widget {
 namespace waveform {

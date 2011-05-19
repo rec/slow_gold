@@ -11,8 +11,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace gui {
-namespace audio {
+namespace util {
 
 namespace {
 
@@ -99,11 +98,11 @@ void protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\030rec/util/LoopPoint.proto\022\rrec.gui.audi"
-    "o\"9\n\tLoopPoint\022\017\n\004time\030\001 \001(\001:\0010\022\014\n\004name\030"
-    "\002 \001(\t\022\r\n\005notes\030\003 \001(\t\"O\n\rLoopPointList\022,\n"
-    "\nloop_point\030\001 \003(\0132\030.rec.gui.audio.LoopPo"
-    "int\022\020\n\010selected\030\002 \003(\010", 181);
+    "\n\030rec/util/LoopPoint.proto\022\010rec.util\"9\n\t"
+    "LoopPoint\022\017\n\004time\030\001 \001(\001:\0010\022\014\n\004name\030\002 \001(\t"
+    "\022\r\n\005notes\030\003 \001(\t\"J\n\rLoopPointList\022\'\n\nloop"
+    "_point\030\001 \003(\0132\023.rec.util.LoopPoint\022\020\n\010sel"
+    "ected\030\002 \003(\010", 171);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/LoopPoint.proto", &protobuf_RegisterTypes);
   LoopPoint::default_instance_ = new LoopPoint();
@@ -510,7 +509,7 @@ bool LoopPointList::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .rec.gui.audio.LoopPoint loop_point = 1;
+      // repeated .rec.util.LoopPoint loop_point = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -565,7 +564,7 @@ bool LoopPointList::MergePartialFromCodedStream(
 
 void LoopPointList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // repeated .rec.gui.audio.LoopPoint loop_point = 1;
+  // repeated .rec.util.LoopPoint loop_point = 1;
   for (int i = 0; i < this->loop_point_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->loop_point(i), output);
@@ -585,7 +584,7 @@ void LoopPointList::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoopPointList::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // repeated .rec.gui.audio.LoopPoint loop_point = 1;
+  // repeated .rec.util.LoopPoint loop_point = 1;
   for (int i = 0; i < this->loop_point_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -608,7 +607,7 @@ void LoopPointList::SerializeWithCachedSizes(
 int LoopPointList::ByteSize() const {
   int total_size = 0;
   
-  // repeated .rec.gui.audio.LoopPoint loop_point = 1;
+  // repeated .rec.util.LoopPoint loop_point = 1;
   total_size += 1 * this->loop_point_size();
   for (int i = 0; i < this->loop_point_size(); i++) {
     total_size +=
@@ -691,8 +690,7 @@ void LoopPointList::Swap(LoopPointList* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace audio
-}  // namespace gui
+}  // namespace util
 }  // namespace rec
 
 // @@protoc_insertion_point(global_scope)

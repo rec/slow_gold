@@ -10,7 +10,7 @@ namespace rec {
 namespace slow {
 
 struct PersistentData {
-  persist::Data<gui::audio::LoopPointList>* loopPointList_;
+  persist::Data<LoopPointList>* loopPointList_;
   persist::Data<audio::stretch::Stretch>* stretch_;
   persist::Data<widget::waveform::ZoomProto>* zoomProto_;
 

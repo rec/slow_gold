@@ -11,7 +11,7 @@ namespace rec {
 namespace proto {
 
 TEST(Proto, Apply) {
-  gui::audio::LoopPointList loop_point;
+  LoopPointList loop_point;
   loop_point.add_loop_point()->set_time(23.5);
 
   Address address;

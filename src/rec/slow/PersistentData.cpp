@@ -9,7 +9,7 @@ PersistentData::PersistentData()
 
 void PersistentData::setFile(const VirtualFile* file) {
   if (file && !empty(*file)) {
-    loopPointList_ = persist::setter<gui::audio::LoopPointList>(*file);
+    loopPointList_ = persist::setter<LoopPointList>(*file);
     stretch_ = persist::setter<audio::stretch::Stretch>(*file);
     zoomProto_ = persist::setter<widget::waveform::ZoomProto>(*file);
   } else {

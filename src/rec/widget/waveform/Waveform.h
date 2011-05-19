@@ -26,7 +26,7 @@ struct TimeAndMouseEvent;
 // This handles waveform display of a juce::AudioThumbnail.
 class Waveform : public gui::component::Focusable<Component>,
                  public Listener<juce::AudioThumbnail*>,
-                 public Listener<const gui::audio::LoopPointList&>,
+                 public Listener<const LoopPointList&>,
                  public Listener<const ZoomProto&>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&>,
@@ -41,12 +41,12 @@ class Waveform : public gui::component::Focusable<Component>,
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();
 
- 	void addAllCursors(const gui::audio::LoopPointList&);
+ 	void addAllCursors(const LoopPointList&);
 
   virtual void paint(Graphics&);
   virtual void repaint() { Component::repaint(); }
   virtual void operator()(juce::AudioThumbnail* t) { setAudioThumbnail(t); }
-  virtual void operator()(const gui::audio::LoopPointList&);
+  virtual void operator()(const LoopPointList&);
   virtual void operator()(const ZoomProto&);
 
   Cursor* timeCursor() { return timeCursor_; }
@@ -63,7 +63,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
   Cursor* newCursor(const CursorProto& d, double time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);
-  void setSelection(const gui::audio::LoopPointList&);
+  void setSelection(const LoopPointList&);
 
   int timeToX(double t) const;
 

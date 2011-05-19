@@ -5,9 +5,7 @@
 namespace rec {
 namespace audio {
 
-using namespace rec::gui::audio;
-
-block::BlockSet getTimeSelection(const gui::audio::LoopPointList& list,
+block::BlockSet getTimeSelection(const LoopPointList& list,
                                  RealTime length, double scale,
                                  bool emptyMeansAll) {
   block::BlockSet sel;

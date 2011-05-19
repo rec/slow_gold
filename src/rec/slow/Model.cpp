@@ -178,7 +178,7 @@ void Model::checkChanged() {
 
 void Model::toggleSelectionSegment(RealTime time) {
   ScopedLock l(lock_);
-  gui::audio::LoopPointList loops(loopLocker_.get());
+  LoopPointList loops(loopLocker_.get());
 
   int i = 0, size = loops.loop_point_size();
   for (; i < size && loops.loop_point(i).time() <= time; ++i);

@@ -5,11 +5,11 @@
 #include "rec/audio/Audio.h"
 
 namespace rec {
-namespace gui { namespace audio { class LoopPointList; }}
+namespace util { class LoopPointList; }
 
 namespace audio {
 
-block::BlockSet getTimeSelection(const gui::audio::LoopPointList&,
+block::BlockSet getTimeSelection(const LoopPointList&,
                                  RealTime length,
                                  double scale = 1.0,
                                  bool emptyMeansAll = true);

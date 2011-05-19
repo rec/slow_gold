@@ -26,8 +26,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace rec {
-namespace gui {
-namespace audio {
+namespace util {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
@@ -120,7 +119,7 @@ class LoopPoint : public ::google::protobuf::Message {
   inline void set_notes(const char* value, size_t size);
   inline ::std::string* mutable_notes();
   
-  // @@protoc_insertion_point(class_scope:rec.gui.audio.LoopPoint)
+  // @@protoc_insertion_point(class_scope:rec.util.LoopPoint)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -206,16 +205,16 @@ class LoopPointList : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // repeated .rec.gui.audio.LoopPoint loop_point = 1;
+  // repeated .rec.util.LoopPoint loop_point = 1;
   inline int loop_point_size() const;
   inline void clear_loop_point();
   static const int kLoopPointFieldNumber = 1;
-  inline const ::rec::gui::audio::LoopPoint& loop_point(int index) const;
-  inline ::rec::gui::audio::LoopPoint* mutable_loop_point(int index);
-  inline ::rec::gui::audio::LoopPoint* add_loop_point();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::audio::LoopPoint >&
+  inline const ::rec::util::LoopPoint& loop_point(int index) const;
+  inline ::rec::util::LoopPoint* mutable_loop_point(int index);
+  inline ::rec::util::LoopPoint* add_loop_point();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >&
       loop_point() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::gui::audio::LoopPoint >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >*
       mutable_loop_point();
   
   // repeated bool selected = 2;
@@ -230,12 +229,12 @@ class LoopPointList : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedField< bool >*
       mutable_selected();
   
-  // @@protoc_insertion_point(class_scope:rec.gui.audio.LoopPointList)
+  // @@protoc_insertion_point(class_scope:rec.util.LoopPointList)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::RepeatedPtrField< ::rec::gui::audio::LoopPoint > loop_point_;
+  ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint > loop_point_;
   ::google::protobuf::RepeatedField< bool > selected_;
   friend void  protobuf_AddDesc_rec_2futil_2fLoopPoint_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fLoopPoint_2eproto();
@@ -368,27 +367,27 @@ inline ::std::string* LoopPoint::mutable_notes() {
 
 // LoopPointList
 
-// repeated .rec.gui.audio.LoopPoint loop_point = 1;
+// repeated .rec.util.LoopPoint loop_point = 1;
 inline int LoopPointList::loop_point_size() const {
   return loop_point_.size();
 }
 inline void LoopPointList::clear_loop_point() {
   loop_point_.Clear();
 }
-inline const ::rec::gui::audio::LoopPoint& LoopPointList::loop_point(int index) const {
+inline const ::rec::util::LoopPoint& LoopPointList::loop_point(int index) const {
   return loop_point_.Get(index);
 }
-inline ::rec::gui::audio::LoopPoint* LoopPointList::mutable_loop_point(int index) {
+inline ::rec::util::LoopPoint* LoopPointList::mutable_loop_point(int index) {
   return loop_point_.Mutable(index);
 }
-inline ::rec::gui::audio::LoopPoint* LoopPointList::add_loop_point() {
+inline ::rec::util::LoopPoint* LoopPointList::add_loop_point() {
   return loop_point_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::gui::audio::LoopPoint >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >&
 LoopPointList::loop_point() const {
   return loop_point_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::gui::audio::LoopPoint >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::util::LoopPoint >*
 LoopPointList::mutable_loop_point() {
   return &loop_point_;
 }
@@ -421,8 +420,7 @@ LoopPointList::mutable_selected() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace audio
-}  // namespace gui
+}  // namespace util
 }  // namespace rec
 
 #ifndef SWIG
