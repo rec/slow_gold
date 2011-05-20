@@ -25,6 +25,18 @@ inline SampleTime timeToSamples(RealTime time, double rate = 44100.0) {
   return static_cast<SampleTime>(time * rate);
 }
 
+static const float HALF_RANGE = 32768.0f;
+static const float FULL_RANGE = (2.0f * HALF_RANGE - 1.0f);
+
+inline void convertSample(short from, float* to) {
+  *to = (from + HALF_RANGE) / FULL_RANGE * 2.0f - 1.0f;
+}
+
+inline void convertSample(float from, short* to) {
+  float f = FULL_RANGE * (1.0f + from) / 2.0f - HALF_RANGE;
+  *to = std::min(floorf(f), HALF_RANGE - 1.0f);
+}
+
 }  // namespace audio
 }  // namespace rec
 

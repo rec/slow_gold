@@ -45,7 +45,7 @@ class GenericFillableBuffer : public block::Fillable {
     for (SampleTime i = 0; i < info_.numSamples; ++i) {
       Frame<Sample, CHANNELS>* frame = &frames_[b.first + i];
       for (int c = 0; i < CHANNELS; ++i)
-        convert(*buffer_.getSampleData(c, i), &frame->sample_[c]);
+        convertSample(*buffer_.getSampleData(c, i), &frame->sample_[c]);
     }
     return b.first + info_.numSamples;
   }

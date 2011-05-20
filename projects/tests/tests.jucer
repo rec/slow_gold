@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="XciU6Uvki" name="tests">
+  <MAINGROUP id="Kpck9fE6b" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -67,6 +67,8 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/audio/Audio.h" id="r2zFxs9Dx"
               name="Audio.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/audio/Audio_test.cpp" id="XUuBhN6VA"
+              name="Audio_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/audio/Device.h" id="mN2com2oL"
               name="Device.h" resource="0"/>
         <GROUP id="rQ7dvnw6j" name="format">
@@ -128,6 +130,8 @@
                 id="b3QZjjZet" name="CreateSourceAndLoadMetadata.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="Ok5da1Dyg"
                 name="Empty.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/GenericBufferSource.h"
+                id="6FiPOdald" name="GenericBufferSource.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Level.h" id="5COsYa4AA"
                 name="Level.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Player.cpp" id="AAwfYTGI7"
@@ -208,6 +212,10 @@
                 id="Ozzjob5y1" name="FillableBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/FillableBuffer.h"
                 id="K4piO9oOZ" name="FillableBuffer.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/Frame.h" id="GMsLwIKz2"
+                name="Frame.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/GenericFillableBuffer.h"
+                id="6fsaQ0IJ8" name="GenericFillableBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ThumbnailBuffer.cpp"
                 id="0BxQFhM4B" name="ThumbnailBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ThumbnailBuffer.h"
@@ -1163,7 +1171,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="TjdHY3cNY" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="lMcGwmcsP" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

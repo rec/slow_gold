@@ -20,7 +20,7 @@ class GenericBufferSource : public BaseBufferSource {
     for (SampleTime i = 0; i <  info.numSamples; ++i) {
       const util::Frame<Sample, CHANNELS>& frame = buffer_.frames()[position_];
       for (int c = 0; c < CHANNELS; ++c)
-        util::convert(frame.sample_[c], info.buffer->getSampleData(c, i));
+        convertSample(frame.sample_[c], info.buffer->getSampleData(c, i));
 
       setNextReadPosition(position_ + 1);
     }
