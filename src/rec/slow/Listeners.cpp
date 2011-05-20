@@ -112,22 +112,6 @@ void MainPage::loadRecentFile(int menuItemId) {
   persist::setter<VirtualFile>()->set(file);
 }
 
-void MainPage::cut() {
-#if 0
-  string s = yaml::write(prefs);
-  SystemClipboard::copyTextToClipboard(s.c_str());
-  DLOG(INFO) << s;
-#endif
-}
-
-void MainPage::paste() {
-#if 0
-  string s = SystemClipboard::getTextFromClipboard();
-  DLOG(INFO) << s;
-  yaml::read(s, &prefs);
-#endif
-}
-
 static const int BLOCKSIZE = 1024;
 static const int SAMPLE_RATE = 44100;
 

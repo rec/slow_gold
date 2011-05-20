@@ -49,7 +49,6 @@ void Stretchy::initialize() {
     near(timeRatio, 1.0, DELTA) &&
     near(stretch::pitchScale(stretch_), 1.0, DELTA);
   if (bypass_) {
-    DLOG(INFO) << "bypass";
     timeScale_ = 1.0;
     return;
   }

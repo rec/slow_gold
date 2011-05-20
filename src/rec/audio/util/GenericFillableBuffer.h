@@ -45,12 +45,9 @@ class GenericFillableBuffer : public block::Fillable {
     // Now copy it to our frame buffer.
     for (SampleTime i = 0; i < info_.numSamples; ++i) {
       Frame<Sample, CHANNELS>* frame = &frames_[b.first + i];
-      // LOG_FIRST_N(INFO, 100) << "Frame: " << frame << ", " << CHANNELS;
-      // DCHECK(CHANNELS);
       for (int c = 0; c < CHANNELS; ++c)
         convertSample(*buffer_.getSampleData(c, i), &frame->sample_[c]);
     }
-    LOG_FIRST_N(INFO, 100) << b.first + info_.numSamples;
     return b.first + info_.numSamples;
   }
 

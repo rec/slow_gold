@@ -27,7 +27,6 @@ class GenericBufferSource : public BaseBufferSource {
       }
 
       setNextReadPosition(position_ + 1);
-      LOG_FIRST_N(INFO, 100) << position_;
     }
   }
 

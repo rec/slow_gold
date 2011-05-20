@@ -58,8 +58,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       model()->setTriggerTime(timeToSamples(time));
 
     waveform->grabKeyboardFocus();
-    LOG(INFO) << "repainting waveform";
-    waveform->repaint();
+    waveform->repaint();  // TODO: can remove now?
     // TODO: check to make sure they don't change shift during the drag...
 
   } else if (e.eventComponent->getName() == "Cursor") {

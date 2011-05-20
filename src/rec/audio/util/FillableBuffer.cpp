@@ -26,7 +26,6 @@ block::Size FillableBuffer::doFillNextBlock(const Block& block) {
 
   source_->setNextReadPosition(block.first);
   source_->getNextAudioBlock(info);
-  // print(print(LOG(INFO), block) << "  |   ", filled()) << " -> " << position();
 
   return block.first + info.numSamples;
 }

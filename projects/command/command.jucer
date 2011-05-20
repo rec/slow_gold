@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.tests"
+<JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.command"
               defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
               id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_big"
-              jucerVersion="23.0.0" name="tests" pluginAUExportPrefix="TestsAU"
-              pluginAUViewClass="TestsAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}"
-              pluginCode="Abcd" pluginDesc="Tests" pluginEditorRequiresKeys="0"
+              jucerVersion="23.0.0" name="command" pluginAUExportPrefix="CommandAU"
+              pluginAUViewClass="CommandAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}"
+              pluginCode="Abcd" pluginDesc="Command" pluginEditorRequiresKeys="0"
               pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
-              pluginName="Tests" pluginProducesMidiOut="0" pluginRTASCategory=""
+              pluginName="Command" pluginProducesMidiOut="0" pluginRTASCategory=""
               pluginSilenceInIsSilenceOut="0" pluginTailLength="0" pluginWantsMidiIn="0"
               projectType="consoleapp" version="1.0.0">
   <EXPORTFORMATS>
@@ -23,12 +23,12 @@
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="${__JUCE_INCLUDES}"
                    isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK"
-                   osxSDK="10.5 SDK" targetName="SlowBurn"/>
+                   osxSDK="10.5 SDK" targetName="Command"/>
     <CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="${__JUCE_INCLUDES}"
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
-                   osxSDK="10.5 SDK" targetName="SlowBurn"/>
+                   osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="2WR0qhC90" name="tests">
+  <MAINGROUP id="H1JKeH2kW" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -67,8 +67,6 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/audio/Audio.h" id="r2zFxs9Dx"
               name="Audio.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/audio/Audio_test.cpp" id="XUuBhN6VA"
-              name="Audio_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/audio/Device.h" id="mN2com2oL"
               name="Device.h" resource="0"/>
         <GROUP id="rQ7dvnw6j" name="format">
@@ -77,14 +75,10 @@
                   id="haMx7lJFq" name="Copier.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Copier.h"
                   id="T0nZw7vGp" name="Copier.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/audio/format/mpg123/Copier_test.cpp"
-                  id="w20ztIIN2" name="Copier_test.cpp" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/CreateReader.cpp"
                   id="K5Zk9wwni" name="CreateReader.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/CreateReader.h"
                   id="sCc63pv3p" name="CreateReader.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/audio/format/mpg123/CreateReader_test.cpp"
-                  id="JPQjQWWGB" name="CreateReader_test.cpp" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Format.cpp"
                   id="IUbZ7RtrK" name="Format.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Format.h"
@@ -103,8 +97,6 @@
                   id="umhQOfDGd" name="Reader.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Reader.h"
                   id="T1EHRM0qG" name="Reader.h" resource="0"/>
-            <FILE compile="1" file="../../src/rec/audio/format/mpg123/Reader_test.cpp"
-                  id="zcEIWXQTz" name="Reader_test.cpp" resource="0"/>
             <FILE compile="1" file="../../src/rec/audio/format/mpg123/Tags.cpp"
                   id="qzhi9BCiW" name="Tags.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Tags.h" id="2a3v3r24w"
@@ -138,8 +130,6 @@
                 name="Player.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Player.h" id="wrc63BAb2"
                 name="Player.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Runny_test.cpp"
-                id="t6SIJA1Bv" name="Runny_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Seggy.h" id="am783jWco"
                 name="Seggy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Selection.cpp" id="MzmcDZtfN"
@@ -156,16 +146,8 @@
                 name="Stretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Stretchy.h" id="w796jfcuh"
                 name="Stretchy.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Stretchy_test.cpp"
-                id="F9pVjTzFM" name="Stretchy_test.cpp" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/TestSource_test.cpp"
-                id="OYgIr7Fpk" name="TestSource_test.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/TestSource_test.h"
-                id="8wNTWxD4m" name="TestSource_test.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Testy.h" id="4jKydRFeH"
                 name="Testy.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/Testy_test.cpp"
-                id="3UBIW8o76" name="Testy_test.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/ThreadedSource.h"
                 id="Q4T4bAe1X" name="ThreadedSource.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Timer.h" id="UzXCIcic5"
@@ -186,8 +168,6 @@
                 id="10a3c27pv" name="TimeScaler.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/TimeScaler.h" id="kgHubmmi6"
                 name="TimeScaler.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/stretch/TimeScaler_test.cpp"
-                id="feQAjMOjR" name="TimeScaler_test.cpp" resource="0"/>
         </GROUP>
         <GROUP id="fumtZB0fL" name="util">
           <FILE compile="1" file="../../src/rec/audio/util/AudioDeviceSetup.cpp"
@@ -322,8 +302,6 @@
                 name="Equals.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Equals.h" id="ub1DiK193"
                 name="Equals.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Equals_test.cpp" id="e1lVtsMuD"
-                name="Equals_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Field.cpp" id="tTSr9KxVV"
                 name="Field.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Field.h" id="OdL6hyBoE"
@@ -338,8 +316,6 @@
                 name="LogFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/LogFile.h" id="TaGxDpyrt"
                 name="LogFile.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/LogFile_test.cpp"
-                id="JsKpM2UwI" name="LogFile_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/MessageField.cpp"
                 id="aloewkcgM" name="MessageField.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/MessageField.h" id="PDSZAqEnP"
@@ -348,8 +324,6 @@
                 name="Proto.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Proto.h" id="MR5rlmeJj"
                 name="Proto.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Proto_test.cpp" id="IqQ3U54Kh"
-                name="Proto_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/TypedOperations.cpp"
                 id="Uogi9MBXS" name="TypedOperations.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/TypedOperations.h"
@@ -544,8 +518,6 @@
                 name="WriteYaml.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/yaml/Yaml.h" id="FZMN714q0"
                 name="Yaml.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/yaml/Yaml_test.cpp" id="Wf5q7INkm"
-                name="Yaml_test.cpp" resource="0"/>
         </GROUP>
       </GROUP>
       <GROUP id="3L8ZCKlmn" name="gui">
@@ -760,8 +732,6 @@
                 name="Difference.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/Difference.h" id="y3RHr8lkg"
                 name="Difference.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/Difference_test.cpp"
-                id="ufMVYNWGd" name="Difference_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/block/Fillable.cpp" id="FNrsWKdzp"
                 name="Fillable.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/Fillable.h" id="tHkfWb0sx"
@@ -770,22 +740,16 @@
                 name="FillSeries.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/FillSeries.h" id="4F10LFLSZ"
                 name="FillSeries.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/FillSeries_test.cpp"
-                id="cMUkY0SMB" name="FillSeries_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet.cpp"
                 id="DTWTP5nhz" name="MergeBlockSet.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/block/MergeBlockSet.h" id="2rrYy3A6j"
                 name="MergeBlockSet.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/block/MergeBlockSet_test.cpp"
-                id="VqE7k1HH0" name="MergeBlockSet_test.cpp" resource="0"/>
         </GROUP>
         <GROUP id="ypwGwignU" name="cd">
           <FILE compile="1" file="../../src/rec/util/cd/Album.cpp" id="Prl3FR8UY"
                 name="Album.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/Album.h" id="p4DwtXwm2"
                 name="Album.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/cd/Album_test.cpp" id="Kt1bAvSjq"
-                name="Album_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/CDDBResponse.cpp" id="pMqWNfT1I"
                 name="CDDBResponse.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/CDDBResponse.h" id="OPSfck5IY"
@@ -802,8 +766,6 @@
                 name="Eject.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/Eject.h" id="ZwR3XI8wn"
                 name="Eject.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/cd/juce_AudioCDReader_test.cpp"
-                id="Gph9vNOFV" name="juce_AudioCDReader_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/cd/Socket.cpp" id="H6PYHNl0x"
                 name="Socket.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/Socket.h" id="7ZyU8TPYZ"
@@ -812,13 +774,9 @@
                 name="StripLines.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/cd/StripLines.h" id="HGyKuBODW"
                 name="StripLines.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/cd/StripLines_test.cpp"
-                id="ylAaJUlV2" name="StripLines_test.cpp" resource="0"/>
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/Circular.h" id="vDoVwhEbc"
               name="Circular.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/Circular_test.cpp" id="FkMClwrzR"
-              name="Circular_test.cpp" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/Compare.cpp" id="ZqeNWyuPb"
               name="Compare.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Compare.h" id="YN1Cfu2jM"
@@ -833,8 +791,6 @@
               name="Defaulter.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/DelegateToList.h" id="SLwfq1Ca5"
               name="DelegateToList.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/DelegateToList_test.cpp"
-              id="xi8jc91Fm" name="DelegateToList_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Exception.h" id="GwXdj5T2H"
               name="Exception.h" resource="0"/>
         <GROUP id="vdeBh9S9U" name="file">
@@ -842,8 +798,6 @@
                 name="GetVolumes.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/GetVolumes.h" id="sCgGUoz4Z"
                 name="GetVolumes.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/file/GetVolumes_test.cpp"
-                id="0cv0HEogw" name="GetVolumes_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/Util.cpp" id="nCDq027rf"
                 name="Util.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/Util.h" id="EbLeye5vp"
@@ -873,12 +827,8 @@
               name="LoopPoint.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/LoopPoint.h" id="HZL1e8R2x"
               name="LoopPoint.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/LoopPoint_test.cpp" id="YjwxlRtmE"
-              name="LoopPoint_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Math.h" id="KJ9D4bgfF" name="Math.h"
               resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/Mathy_test.cpp" id="DQdrq9q65"
-              name="Mathy_test.cpp" resource="0"/>
         <GROUP id="rJ0QA20g1" name="partition">
           <FILE compile="1" file="../../src/rec/util/partition/Convertors.cpp"
                 id="bcKnVjwM4" name="Convertors.cpp" resource="0"/>
@@ -888,8 +838,6 @@
                 id="HNETqPM7T" name="Partition.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/partition/Partition.h" id="BrTzh3AJ2"
                 name="Partition.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/partition/Partition_test.cpp"
-                id="rXvhr55dq" name="Partition_test.cpp" resource="0"/>
         </GROUP>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="mAw0zFgKm"
               name="PointerList.h" resource="0"/>
@@ -897,12 +845,8 @@
               id="Yp4dJp6J8" name="RandomSelfInverseFunction.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/RandomSelfInverseFunction.h"
               id="Ioq7Pxbpg" name="RandomSelfInverseFunction.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction_test.cpp"
-              id="s9u2Oy5KL" name="RandomSelfInverseFunction_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Range.h" id="AvppXo9nU"
               name="Range.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/util/Range_test.cpp" id="V4d5qBnXr"
-              name="Range_test.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/ShouldExit.h" id="CWUnE0wxb"
               name="ShouldExit.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/STL.h" id="Km8Ts3LYZ" name="STL.h"
@@ -1011,8 +955,6 @@
               name="Widget.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/widget/Widget.h" id="PHTmHvr5H"
               name="Widget.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/widget/Widget_test.cpp" id="9d7h9UzQM"
-              name="Widget_test.cpp" resource="0"/>
       </GROUP>
     </GROUP>
     <GROUP id="fjjrgv6pf" name="proto">
@@ -1171,7 +1113,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="EBAiYtWjb" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="3t1bHE4Ek" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

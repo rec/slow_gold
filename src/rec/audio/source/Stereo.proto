@@ -12,7 +12,7 @@ message StereoProto {
     SINGLE = 1;
     INVERT = 2;
     CENTER_ELIMINATION = 3;
-    CENTER_ELIMINATION_MONO = 3;
+    CENTER_ELIMINATION_MONO = 4;
   };
 
   optional Type type = 1;

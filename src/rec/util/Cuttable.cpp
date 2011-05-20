@@ -31,7 +31,6 @@ Cuttable* current() {
 
 bool cutToClipboard() {
   Cuttable* c = current();
-  DLOG(INFO) << "cutToClipboard " << c->cuttableName();
   if (!c->canCut()) {
     juce::PlatformUtilities::beep();
     return false;
@@ -44,7 +43,6 @@ bool cutToClipboard() {
 
 bool copyToClipboard() {
   Cuttable* c = current();
-  DLOG(INFO) << "copyToClipboard " << c->cuttableName();
   if (!c->canCopy()) {
     juce::PlatformUtilities::beep();
     return false;
@@ -55,7 +53,6 @@ bool copyToClipboard() {
 
 bool pasteFromClipboard() {
   Cuttable* c = current();
-  DLOG(INFO) << "pasteFromClipboard " << c->cuttableName();
   if (!c->canPaste()) {
     juce::PlatformUtilities::beep();
     return false;
@@ -73,7 +70,6 @@ bool pasteFromClipboard() {
 
 bool cutNoClipboard() {
   Cuttable* c = current();
-  DLOG(INFO) << "cutNoClipboard " << c->cuttableName();
   if (c->canCut()) {
     c->cut();
     return true;

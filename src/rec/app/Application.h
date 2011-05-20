@@ -9,7 +9,9 @@ namespace app {
 template <typename Window>
 class Application : public GenericApplication {
  public:
-  Application(const String& n, const String& v) : GenericApplication(n, v) {}
+  Application(const String& n, const String& v) : GenericApplication(n, v) {
+    google::InitGoogleLogging(str(n).c_str());
+  }
   virtual DocumentWindow* createWindow() const { return new Window; }
 
  private:
