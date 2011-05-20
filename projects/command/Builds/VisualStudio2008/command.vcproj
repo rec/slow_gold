@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VisualStudioProject ProjectType="Visual C++"
+                     Version="9.00"
+                     Name="command"
+                     ProjectGUID="{C255C884-234F-3670-35DA-3E75DDB03BB3}"
+                     TargetFrameworkVersion="131072">
+  <Platforms>
+    <Platform Name="Win32"/>
+  </Platforms>
+  <ToolFiles/>
+  <Configurations>
+    <Configuration Name="Debug|Win32"
+                   OutputDirectory=".\Debug"
+                   IntermediateDirectory=".\Debug"
+                   ConfigurationType="1"
+                   UseOfMFC="0"
+                   ATLMinimizesCRunTimeLibraryUsage="false"
+                   CharacterSet="2">
+      <Tool Name="VCPreBuildEventTool"/>
+      <Tool Name="VCCustomBuildTool"/>
+      <Tool Name="VCXMLDataGeneratorTool"/>
+      <Tool Name="VCWebServiceProxyGeneratorTool"/>
+      <Tool Name="VCMIDLTool"
+            PreprocessorDefinitions="_DEBUG"
+            MkTypLibCompatible="true"
+            SuppressStartupBanner="true"
+            TargetEnvironment="1"
+            TypeLibraryName=".\Debug\Command.tlb"
+            HeaderFileName=""/>
+      <Tool Name="VCCLCompilerTool"
+            Optimization="0"
+            BufferSecurityCheck=""
+            DebugInformationFormat="4"
+            AdditionalIncludeDirectories="${__JUCE_INCLUDES}"
+            PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
+            RuntimeLibrary="1"
+            RuntimeTypeInfo="true"
+            UsePrecompiledHeader="0"
+            PrecompiledHeaderFile=".\Debug\Command.pch"
+            AssemblerListingLocation=".\Debug\"
+            ObjectFile=".\Debug\"
+            ProgramDataBaseFileName=".\Debug\"
+            WarningLevel="4"
+            SuppressStartupBanner="true"/>
+      <Tool Name="VCManagedResourceCompilerTool"/>
+      <Tool Name="VCResourceCompilerTool"
+            PreprocessorDefinitions="_DEBUG"/>
+      <Tool Name="VCPreLinkEventTool"/>
+      <Tool Name="VCLinkerTool"
+            OutputFile=".\Debug\Command.exe"
+            SuppressStartupBanner="true"
+            IgnoreDefaultLibraryNames="libcmt.lib, msvcrt.lib"
+            GenerateDebugInformation="true"
+            ProgramDatabaseFile=".\Debug\Command.pdb"
+            SubSystem="1"
+            TargetMachine="1"
+            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\${__JUCE_INCLUDES} libgflags-${__JUCE_INCLUDES}.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\${__JUCE_INCLUDES} libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\${__JUCE_INCLUDES} libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\${__JUCE_INCLUDES} libprotobuf.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\${__JUCE_INCLUDES} libgtest.lib libgtest_main.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+      <Tool Name="VCALinkTool"/>
+      <Tool Name="VCManifestTool"/>
+      <Tool Name="VCXDCMakeTool"/>
+      <Tool Name="VCBscMakeTool"
+            SuppressStartupBanner="true"
+            OutputFile=".\Debug\Command.bsc"/>
+      <Tool Name="VCFxCopTool"/>
+      <Tool Name="VCAppVerifierTool"/>
+      <Tool Name="VCPostBuildEventTool"/>
+    </Configuration>
+    <Configuration Name="Release|Win32"
+                   OutputDirectory=".\Release"
+                   IntermediateDirectory=".\Release"
+                   ConfigurationType="1"
+                   UseOfMFC="0"
+                   ATLMinimizesCRunTimeLibraryUsage="false"
+                   CharacterSet="2"
+                   WholeProgramOptimization="1">
+      <Tool Name="VCPreBuildEventTool"/>
+      <Tool Name="VCCustomBuildTool"/>
+      <Tool Name="VCXMLDataGeneratorTool"/>
+      <Tool Name="VCWebServiceProxyGeneratorTool"/>
+      <Tool Name="VCMIDLTool"
+            PreprocessorDefinitions="NDEBUG"
+            MkTypLibCompatible="true"
+            SuppressStartupBanner="true"
+            TargetEnvironment="1"
+            TypeLibraryName=".\Release\Command.tlb"
+            HeaderFileName=""/>
+      <Tool Name="VCCLCompilerTool"
+            Optimization="3"
+            InlineFunctionExpansion="1"
+            StringPooling="true"
+            AdditionalIncludeDirectories="${__JUCE_INCLUDES}"
+            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
+            RuntimeLibrary="0"
+            RuntimeTypeInfo="true"
+            UsePrecompiledHeader="0"
+            PrecompiledHeaderFile=".\Release\Command.pch"
+            AssemblerListingLocation=".\Release\"
+            ObjectFile=".\Release\"
+            ProgramDataBaseFileName=".\Release\"
+            WarningLevel="4"
+            SuppressStartupBanner="true"/>
+      <Tool Name="VCManagedResourceCompilerTool"/>
+      <Tool Name="VCResourceCompilerTool"
+            PreprocessorDefinitions="NDEBUG"/>
+      <Tool Name="VCPreLinkEventTool"/>
+      <Tool Name="VCLinkerTool"
+            OutputFile=".\Release\Command.exe"
+            SuppressStartupBanner="true"
+            IgnoreDefaultLibraryNames=""
+            GenerateDebugInformation="false"
+            ProgramDatabaseFile=".\Release\Command.pdb"
+            SubSystem="1"
+            GenerateManifest="false"
+            OptimizeReferences="2"
+            EnableCOMDATFolding="2"
+            TargetMachine="1"
+            AdditionalOptions="/LIBPATH:..\\..\\..\\..\\..\\gflags\\${__JUCE_INCLUDES} libgflags-${__JUCE_INCLUDES}.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\${__JUCE_INCLUDES} libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\${__JUCE_INCLUDES} libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\${__JUCE_INCLUDES} libprotobuf.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\${__JUCE_INCLUDES} libgtest.lib libgtest_main.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd"/>
+      <Tool Name="VCALinkTool"/>
+      <Tool Name="VCManifestTool"/>
+      <Tool Name="VCXDCMakeTool"/>
+      <Tool Name="VCBscMakeTool"
+            SuppressStartupBanner="true"
+            OutputFile=".\Release\Command.bsc"/>
+      <Tool Name="VCFxCopTool"/>
+      <Tool Name="VCAppVerifierTool"/>
+      <Tool Name="VCPostBuildEventTool"/>
+    </Configuration>
+  </Configurations>
+  <References/>
+  <Files>
+    <Filter Name="command">
+      <Filter Name="rec">
+        <Filter Name="app">
+          <File RelativePath="..\..\..\..\src\rec\app\Application.h"/>
+          <File RelativePath="..\..\..\..\src\rec\app\DownloadVersion.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\app\DownloadVersion.h"/>
+          <File RelativePath="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\app\GenericApplication.h"/>
+        </Filter>
+        <Filter Name="audio">
+          <Filter Name="ammf_scaler">
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\hfft.c"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\hfft.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.c"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\audio\Audio.h"/>
+          <File RelativePath="..\..\..\..\src\rec\audio\Device.h"/>
+          <Filter Name="format">
+            <Filter Name="mpg123">
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Format.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Format.h"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Manager.h"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.h"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.h"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Reader.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Reader.h"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.h"/>
+            </Filter>
+          </Filter>
+          <Filter Name="source">
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Buffered.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Buffered.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\BufferSource.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\CircularBuffer.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\CircularBuffer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\GenericBufferSource.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Level.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Player.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Player.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Seggy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Selection.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Selection.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Stereo.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Testy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\ThreadedSource.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Timer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
+          </Filter>
+          <Filter Name="stretch">
+            <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\stretch\TestHarness.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\stretch\TimeScaler.h"/>
+          </Filter>
+          <Filter Name="util">
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioDeviceSetup.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioDeviceSetup.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\AudioFormatManager.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CachedThumbnail.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CachedThumbnail.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\Clear.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\FillableBuffer.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\FillableBuffer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\Frame.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\GenericFillableBuffer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h"/>
+          </Filter>
+        </Filter>
+        <Filter Name="base">
+          <File RelativePath="..\..\..\..\src\rec\base\ArraySize.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\base.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\BaseNoJuce.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\basictypes.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\build_config.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Cast.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\CompileAssert.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\disallow.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Juce.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Leaks.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\port.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\ptr.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\scoped_array.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\Standard.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\string_piece.h"/>
+          <File RelativePath="..\..\..\..\src\rec\base\types.h"/>
+        </Filter>
+        <Filter Name="binary">
+          <File RelativePath="..\..\..\..\src\rec\binary\big-logo.png">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+          <File RelativePath="..\..\..\..\src\rec\binary\logo.png">
+            <FileConfiguration Name="Debug|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+            <FileConfiguration Name="Release|Win32"
+                               ExcludedFromBuild="true">
+              <Tool Name="VCCLCompilerTool"/>
+            </FileConfiguration>
+          </File>
+        </Filter>
+        <Filter Name="command">
+          <File RelativePath="..\..\..\..\src\rec\command\Command.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\command\Command.h"/>
+          <File RelativePath="..\..\..\..\src\rec\command\TargetManager.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\command\TargetManager.h"/>
+        </Filter>
+        <Filter Name="data">
+          <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
+          <Filter Name="commands">
+            <File RelativePath="..\..\..\..\src\rec\data\commands\CommandManager.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\commands\EventQueue.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\commands\EventQueue.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\data\Data.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\Data.h"/>
+          <Filter Name="persist">
+            <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\Data.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\HasData.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\Persist.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.h"/>
+          </Filter>
+          <Filter Name="proto">
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Address.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Comparer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Field.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Field.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\GetProtoName.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\GetProtoName.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\InsertSorted.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\LogFile.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\LogFile.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\MessageField.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\MessageField.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\TypedOperations.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\TypedOperations.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\TypedTyper.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\TypedTyper.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Typer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\Types.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\ZeroCopy.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\data\Value.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\Value.h"/>
+          <Filter Name="yaml">
+            <Filter Name="include">
+              <Filter Name="yaml-cpp">
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\aliasmanager.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\anchor.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\conversion.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitfromevents.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitter.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emittermanip.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\eventhandler.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\exceptions.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\iterator.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\mark.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\node.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeimpl.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeproperties.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodereadimpl.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeutil.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\noncopyable.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\null.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\ostream.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\parser.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlemitter.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlnode.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\traits.h"/>
+                <File RelativePath="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\yaml.h"/>
+              </Filter>
+            </Filter>
+            <File RelativePath="..\..\..\..\src\rec\data\yaml\Internal.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\yaml\ReadYaml.cpp"/>
+            <Filter Name="src">
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\aliascontent.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\aliascontent.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\aliasmanager.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\collectionstack.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\content.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\content.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\conversion.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\directives.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\directives.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\emitfromevents.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\emitter.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\emitterstate.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\emitterstate.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\emitterutils.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\emitterutils.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\exp.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\exp.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\indentation.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\iterator.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\iterpriv.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\ltnode.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\map.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\map.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\node.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\nodebuilder.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\nodebuilder.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\null.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\ostream.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\parser.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\parserstate.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\parserstate.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\ptr_stack.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\regex.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\regex.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\regeximpl.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scalar.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scalar.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scanner.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scanner.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scanscalar.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scanscalar.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scantag.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scantag.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\scantoken.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\sequence.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\sequence.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\setting.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\simplekey.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\singledocparser.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\singledocparser.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\stream.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\stream.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\streamcharsource.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\stringsource.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\tag.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\tag.h"/>
+              <File RelativePath="..\..\..\..\src\rec\data\yaml\src\token.h"/>
+            </Filter>
+            <File RelativePath="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\data\yaml\Yaml.h"/>
+          </Filter>
+        </Filter>
+        <Filter Name="gui">
+          <Filter Name="audio">
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\SetupPage.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\StretchyController.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\StretchyController.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\TimeController.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\TimeController.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\TransportController.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\TransportController.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\gui\Color.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Color.h"/>
+          <Filter Name="component">
+            <File RelativePath="..\..\..\..\src\rec\gui\component\Focusable.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\gui\Dialog.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Dialog.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\DropFiles.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\DropTarget.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Font.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Geometry.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\Geometry.h"/>
+          <Filter Name="icon">
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreen.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreen.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\Icon.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\Icon.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\gui\Layout.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterLayout.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterSlider.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterSlider.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterText.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SetterToggle.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SimpleLabel.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\SongData.h"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\TableController.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\gui\TableController.h"/>
+        </Filter>
+        <Filter Name="music">
+          <File RelativePath="..\..\..\..\src\rec\music\Metadata.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\music\Metadata.h"/>
+        </Filter>
+        <Filter Name="slow">
+          <File RelativePath="..\..\..\..\src\rec\slow\Components.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\HasInstance.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Instance.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Instance.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Listeners.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Listeners.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MainPage.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MainPage.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Menus.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Menus.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Model.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Model.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MouseListener.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\MouseListener.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PersistentData.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PersistentData.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\PlaybackController.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Slow.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Target.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Target.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Threads.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Threads.h"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Window.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\slow\Window.h"/>
+        </Filter>
+        <Filter Name="util">
+          <Filter Name="block">
+            <File RelativePath="..\..\..\..\src\rec\util\block\Block.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Difference.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Difference.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Fillable.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\Fillable.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\FillSeries.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\FillSeries.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
+          </Filter>
+          <Filter Name="cd">
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Album.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDReader.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\CDReader.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\DedupeCDDB.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Eject.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Eject.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\Socket.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\cd\StripLines.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\Circular.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Compare.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Compare.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Cuttable.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Cuttable.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Defaulter.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Defaulter.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\DelegateToList.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Exception.h"/>
+          <Filter Name="file">
+            <File RelativePath="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\Util.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\Util.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\VirtualFile.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\FormatTime.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\FormatTime.h"/>
+          <Filter Name="listener">
+            <File RelativePath="..\..\..\..\src\rec\util\listener\DataListener.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\Listener.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\ProtoListener.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\ProtoListener.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\LoopPoint.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Math.h"/>
+          <Filter Name="partition">
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Convertors.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\partition\Partition.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\PointerList.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\RandomSelfInverseFunction.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Range.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\ShouldExit.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\STL.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Switcher.h"/>
+          <File RelativePath="..\..\..\..\src\rec\util\TestData.h"/>
+          <Filter Name="thread">
+            <File RelativePath="..\..\..\..\src\rec\util\thread\CallAsync.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback0.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback1.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Callback2.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\ChangeLocker.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\ChangeLocker.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Pointer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.h"/>
+          </Filter>
+        </Filter>
+        <Filter Name="widget">
+          <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
+          <Filter Name="status">
+            <File RelativePath="..\..\..\..\src\rec\widget\status\DialComponent.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\DialComponent.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\Status.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\Status.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\TextComponent.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\TextComponent.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\TimeAndLength.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\status\TimeAndLength.h"/>
+          </Filter>
+          <Filter Name="tree">
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\CD.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\CD.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\Directory.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeComponent.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\NodeItem.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\Root.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\Root.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\Shard.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.h"/>
+          </Filter>
+          <Filter Name="waveform">
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Cursor.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\widget\waveform\Zoom.h"/>
+          </Filter>
+          <File RelativePath="..\..\..\..\src\rec\widget\Widget.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\widget\Widget.h"/>
+        </Filter>
+      </Filter>
+      <Filter Name="proto">
+        <Filter Name="rec">
+          <Filter Name="audio">
+            <Filter Name="source">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h"/>
+            </Filter>
+            <Filter Name="stretch">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
+            </Filter>
+            <Filter Name="util">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\AudioDeviceSetup.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\AudioDeviceSetup.pb.h"/>
+            </Filter>
+          </Filter>
+          <Filter Name="command">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\command\Command.pb.h"/>
+          </Filter>
+          <Filter Name="data">
+            <Filter Name="commands">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.h"/>
+            </Filter>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h"/>
+            <Filter Name="proto">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.h"/>
+            </Filter>
+          </Filter>
+          <Filter Name="gui">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
+          </Filter>
+          <Filter Name="music">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
+          </Filter>
+          <Filter Name="slow">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
+          </Filter>
+          <Filter Name="util">
+            <Filter Name="file">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
+            </Filter>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
+            <Filter Name="thread">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h"/>
+            </Filter>
+          </Filter>
+          <Filter Name="widget">
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h"/>
+            <Filter Name="status">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.h"/>
+            </Filter>
+            <Filter Name="tree">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h"/>
+            </Filter>
+            <Filter Name="waveform">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.h"/>
+            </Filter>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h"/>
+          </Filter>
+        </Filter>
+      </Filter>
+      <File RelativePath="..\..\Main.cpp"/>
+    </Filter>
+    <Filter Name="Juce Library Code">
+      <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
+      <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode.cpp"/>
+    </Filter>
+  </Files>
+  <Globals/>
+</VisualStudioProject>

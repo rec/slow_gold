@@ -35,7 +35,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
       metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
     }
   } else {
-    reader.reset(audio::getAudioFormatManager()->createReaderFor(getFile(file)));
+    reader.reset(audio::createReader(file));
     if (!reader) {
       LOG(ERROR) << "Couldn't create reader for file " << file.ShortDebugString();
       return NULL;
