@@ -13,7 +13,7 @@ namespace source { class BufferSource; }
 namespace util {
 
 // Stores two 16-bit samples in each word!
-template <typename Sample = short, int CHANNELS = 2>
+template <typename Sample, int CHANNELS>
 class GenericFillableBuffer : public block::Fillable {
  public:
   static const int DEFAULT_BLOCK_SIZE = 4096;
@@ -23,6 +23,7 @@ class GenericFillableBuffer : public block::Fillable {
     info_.buffer = &buffer_;
     info_.startSample = 0;
   }
+  virtual ~GenericFillableBuffer() {}
 
   void setBlockSize(SampleTime s) {
     buffer_.setSize(CHANNELS, s);
@@ -44,9 +45,12 @@ class GenericFillableBuffer : public block::Fillable {
     // Now copy it to our frame buffer.
     for (SampleTime i = 0; i < info_.numSamples; ++i) {
       Frame<Sample, CHANNELS>* frame = &frames_[b.first + i];
-      for (int c = 0; i < CHANNELS; ++i)
+      // LOG_FIRST_N(INFO, 100) << "Frame: " << frame << ", " << CHANNELS;
+      // DCHECK(CHANNELS);
+      for (int c = 0; c < CHANNELS; ++c)
         convertSample(*buffer_.getSampleData(c, i), &frame->sample_[c]);
     }
+    LOG_FIRST_N(INFO, 100) << b.first + info_.numSamples;
     return b.first + info_.numSamples;
   }
 

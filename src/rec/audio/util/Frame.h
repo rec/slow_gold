@@ -7,14 +7,14 @@ namespace rec {
 namespace audio {
 namespace util {
 
-template <typename Sample = short, int CHANNELS = 2>
+template <typename Sample, int CHANNELS>
 struct Frame  {
   Sample sample_[CHANNELS];
 };
 
 // template <typename From, typename To> void convert(From f, To* t) { *t = f; }
 
-template <typename Sample = short, int CHANNELS = 2>
+template <typename Sample, int CHANNELS>
 struct Frames : public vector< Frame<Sample, CHANNELS> > {
   typedef vector< Frame<Sample, CHANNELS> > super;
 

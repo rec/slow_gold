@@ -46,11 +46,6 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   void clearSelection();
   void clearLoops();
 
-  void paint(Graphics& g) {
-    component::Focusable<TableController>::paint(g);
-    DLOG(INFO) << "Here! " << loopPoints_->DebugString();
-  }
-
   virtual void selectedRowsChanged(int lastRowSelected);
 
   const string cuttableName() const { return "Loops"; }

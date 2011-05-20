@@ -159,7 +159,7 @@ void Model::operator()(const VirtualFile& f) {
 #ifdef OLD
   player()->setSource(new BufferSource(*buffer), stretchLocker_.get());
 #else
-  player()->setSource(new GenericBufferSource<>(*buffer), stretchLocker_.get());
+  player()->setSource(new GenericBufferSource<short, 2>(*buffer), stretchLocker_.get());
 #endif
   player()->setStretch(stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());

@@ -9,20 +9,25 @@ namespace rec {
 namespace audio {
 namespace source {
 
-template <typename Sample = short, int CHANNELS = 2>
+template <typename Sample, int CHANNELS>
 class GenericBufferSource : public BaseBufferSource {
  public:
   typedef util::GenericFillableBuffer<Sample, CHANNELS> FillableBuffer;
 
   explicit GenericBufferSource(const FillableBuffer& b) : buffer_(b) {}
+  virtual ~GenericBufferSource() {}
 
   virtual void getNextAudioBlock(const Info& info) {
     for (SampleTime i = 0; i <  info.numSamples; ++i) {
       const util::Frame<Sample, CHANNELS>& frame = buffer_.frames()[position_];
-      for (int c = 0; c < CHANNELS; ++c)
-        convertSample(frame.sample_[c], info.buffer->getSampleData(c, i));
+      for (int c = 0; c < CHANNELS; ++c) {
+        float* samplePtr = info.buffer->getSampleData(c, i + info.startSample);
+        short sample = frame.sample_[c];
+        convertSample(sample, samplePtr);
+      }
 
       setNextReadPosition(position_ + 1);
+      LOG_FIRST_N(INFO, 100) << position_;
     }
   }
 

@@ -13,7 +13,7 @@ class CachedThumbnail;
 #ifdef OLD
 class ThumbnailBuffer : public FillableBuffer {
 #else
-class ThumbnailBuffer : public GenericFillableBuffer<> {
+class ThumbnailBuffer : public GenericFillableBuffer<short, 2> {
 #endif
  public:
   ThumbnailBuffer(const VirtualFile& file);
