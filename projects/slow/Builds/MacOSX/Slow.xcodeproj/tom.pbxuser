@@ -620,9 +620,9 @@
 	};
 	93244D9DAD841CF00B3E5AE0 /* BufferSource.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavIntBoundsRect = "{{0, 0}, {953, 351}}";
 			sepNavSelRange = "{141, 0}";
-			sepNavVisRange = "{0, 623}";
+			sepNavVisRange = "{0, 558}";
 			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
 		};
 	};
@@ -800,6 +800,7 @@
 			E24979231385DBA10031535C /* PBXTextBookmark */ = E24979231385DBA10031535C /* PBXTextBookmark */;
 			E24979241385DBA10031535C /* PBXTextBookmark */ = E24979241385DBA10031535C /* PBXTextBookmark */;
 			E24979291385DC970031535C /* PBXTextBookmark */ = E24979291385DC970031535C /* PBXTextBookmark */;
+			E249796A1385EF060031535C /* PBXTextBookmark */ = E249796A1385EF060031535C /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
 			E29BBB7713022F250091D4CB = E29BBB7713022F250091D4CB /* PBXTextBookmark */;
@@ -2327,7 +2328,7 @@
 		path = ../../../../../rec/src/rec/audio/source/BufferSource.h;
 		sourceTree = "<group>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {862, 1027}}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1004}}";
 			sepNavSelRange = "{1813, 0}";
 			sepNavVisRange = "{0, 1813}";
 		};
@@ -2362,6 +2363,16 @@
 		vrLoc = 0;
 	};
 	E24979291385DC970031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E249796A1385EF060031535C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
 		name = "BufferSource.h: 64";

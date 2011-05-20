@@ -2,16 +2,34 @@
 #define __REC_AUDIO_SOURCE_GENERICBUFFERSOURCE__
 
 #include "rec/audio/source/BufferSource.h"
+#include "rec/audio/util/GenericFillableBuffer.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
-class GenericBufferSource : public BufferSource {
+template <typename Sample = short, int CHANNELS = 2>
+class GenericBufferSource : public BaseBufferSource {
  public:
-  GenericBufferSource();
+  typedef util::GenericFillableBuffer<Sample, CHANNELS> FillableBuffer;
+
+  explicit GenericBufferSource(const FillableBuffer& b) : buffer_(b) {}
+
+  virtual void getNextAudioBlock(const Info& info) {
+    SampleTime time = info.startSample;
+    for (SampleTime i = 0; i <  info.numSamples; ++i) {
+      util::Frame<Sample, CHANNELS>* frame = (*buffer_.frames())[position_];
+      for (int c = 0; c < CHANNELS; ++c)
+        convert(frame[c], buffer_.getSampleData(c, i));
+
+      setNextReadPosition(position_ + 1);
+    }
+  }
+
+  virtual int64 getTotalLength() const { return buffer_.length(); }
 
  private:
+  const FillableBuffer& buffer_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericBufferSource);
 };
 

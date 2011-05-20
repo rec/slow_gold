@@ -19,7 +19,7 @@ class GenericFillableBuffer : public block::Fillable {
   static const int DEFAULT_BLOCK_SIZE = 4096;
 
   GenericFillableBuffer(SampleTime s = DEFAULT_BLOCK_SIZE)
-      : frames_(NULL), buffer(CHANNELS, s) {
+      : frames_(NULL), buffer_(CHANNELS, s) {
     info_.buffer = &buffer_;
     info_.startSample = 0;
   }
@@ -35,34 +35,34 @@ class GenericFillableBuffer : public block::Fillable {
     source_.reset(source);
   }
 
-  virtual block::Size doFillNextBlock(const Block& block) {
+  virtual block::Size doFillNextBlock(const block::Block& b) {
     AudioSourceChannelInfo info;
-    int blockSize = static_cast<int>(getSize(block));
+    int blockSize = static_cast<int>(block::getSize(b));
     info.numSamples = juce::jmin(blockSize, buffer_.getNumSamples());
-    source_->setNextReadPosition(block.first);
+    source_->setNextReadPosition(b.first);
     source_->getNextAudioBlock(info);
 
     // Now copy it to our frame buffer.
     for (SampleTime i = 0; i < info.numSamples; ++i) {
-      Frame* frame = &frames_[block.first + i];
-      for (int c = 0; i < CHANNELS; ++i) {
-        convert(*buffer_.getSampleData(c, i), &(*frame)[c]
+      Frame<Sample, CHANNELS>* frame = &frames_[b.first + i];
+      for (int c = 0; i < CHANNELS; ++i)
+        convert(*buffer_.getSampleData(c, i), &(*frame)[c]);
     }
-    return block.first + info.numSamples;
+    return b.first + info.numSamples;
   }
+
+  Frames<Sample, CHANNELS>* frames() { return &frames_; }
 
  protected:
   virtual void onFilled() { source_.reset(); }
 
  private:
-  Frames<Sample, CHANNELS> frames_
+  Frames<Sample, CHANNELS> frames_;
   ptr<PositionableAudioSource> source_;
   AudioSampleBuffer buffer_;
   AudioSourceChannelInfo info_;
 
   DISALLOW_COPY_AND_ASSIGN(GenericFillableBuffer);
-
-  friend class audio::source::BufferSource;
 };
 
 }  // namespace util

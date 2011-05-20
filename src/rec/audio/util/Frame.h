@@ -14,12 +14,15 @@ struct Frame  {
 
 template <typename From, typename To> void convert(From f, To* t) { *t = f; }
 
-inline void convert(float from, short* to) {
-  static const double NEG_RANGE = 32768.0;
-  static const double FULL_RANGE = 2.0 * NEG_RANGE - 2;
+static const double NEG_RANGE = 32768.0;
+static const double FULL_RANGE = 2.0 * NEG_RANGE - 2;
 
-  double normal = (1.0 + from) / 2.0;
-  *to = static_cast<short>(FULL_RANGE * normal - NEG_RANGE);
+inline void convert(float from, short* to) {
+  *to = static_cast<short>(FULL_RANGE * (1.0 + from) / 2.0 - NEG_RANGE);
+}
+
+inline void convert(short from, float* to) {
+  *to = 2.0 * (from + NEG_RANGE) / FULL_RANGE - 1.0;
 }
 
 template <typename Sample = short, int CHANNELS = 2>
@@ -28,16 +31,16 @@ struct Frames : public vector< Frame<Sample, CHANNELS> > {
 
   Frames() {}
   Frames(SampleTime n) : super(n) {}
-  Frames(SampleTime n, const Frame& f) : super(n, f) {}
+  Frames(SampleTime n, const Frame<Sample, CHANNELS>& f) : super(n, f) {}
 
   template <typename Sample2>
   void copyFrom(SampleTime nsamples, SampleTime beginTo, SampleTime beginFrom,
-                const Frames<Sample2, CHANNELS2>& from) {
+                const Frames<Sample2, CHANNELS>& from) {
     nsamples = std::min(nsamples, this->size() - beginTo);
     nsamples = std::min(nsamples, from->size() - beginFrom);
 
     for (int i = 0; i < nsamples; ++i)
-      convert(from[i + endTo], &(*this)[i + beginTo])
+      convert(from[i + beginTo], &(*this)[i + beginTo]);
   }
 
   template <typename Iter> Frames(Iter b, Iter e) : super(b, e) {}
