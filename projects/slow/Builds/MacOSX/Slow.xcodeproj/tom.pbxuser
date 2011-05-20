@@ -197,10 +197,10 @@
 	};
 	2301BC0B61B96190C49537F0 /* Model.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {953, 2587}}";
-			sepNavSelRange = "{4676, 72}";
-			sepNavVisRange = "{4382, 690}";
-			sepNavWindowFrame = "{{295, 116}, {1064, 1020}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1005, 2652}}";
+			sepNavSelRange = "{4862, 0}";
+			sepNavVisRange = "{3289, 2077}";
+			sepNavWindowFrame = "{{108, 107}, {1064, 1020}}";
 		};
 	};
 	237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {
@@ -621,7 +621,7 @@
 	93244D9DAD841CF00B3E5AE0 /* BufferSource.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {953, 351}}";
-			sepNavSelRange = "{141, 0}";
+			sepNavSelRange = "{218, 0}";
 			sepNavVisRange = "{0, 558}";
 			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
 		};
@@ -801,6 +801,26 @@
 			E24979241385DBA10031535C /* PBXTextBookmark */ = E24979241385DBA10031535C /* PBXTextBookmark */;
 			E24979291385DC970031535C /* PBXTextBookmark */ = E24979291385DC970031535C /* PBXTextBookmark */;
 			E249796A1385EF060031535C /* PBXTextBookmark */ = E249796A1385EF060031535C /* PBXTextBookmark */;
+			E24979721386033B0031535C /* PBXTextBookmark */ = E24979721386033B0031535C /* PBXTextBookmark */;
+			E249797D138613640031535C /* PBXTextBookmark */ = E249797D138613640031535C /* PBXTextBookmark */;
+			E249797E1386153A0031535C /* XCBuildMessageTextBookmark */ = E249797E1386153A0031535C /* XCBuildMessageTextBookmark */;
+			E2497980138615460031535C /* XCBuildMessageTextBookmark */ = E2497980138615460031535C /* XCBuildMessageTextBookmark */;
+			E24979831386156D0031535C /* XCBuildMessageTextBookmark */ = E24979831386156D0031535C /* XCBuildMessageTextBookmark */;
+			E2497989138615BE0031535C /* XCBuildMessageTextBookmark */ = E2497989138615BE0031535C /* XCBuildMessageTextBookmark */;
+			E249798E138615EE0031535C /* PBXTextBookmark */ = E249798E138615EE0031535C /* PBXTextBookmark */;
+			E2497991138615EE0031535C /* PBXTextBookmark */ = E2497991138615EE0031535C /* PBXTextBookmark */;
+			E2497994138615EE0031535C /* PBXTextBookmark */ = E2497994138615EE0031535C /* PBXTextBookmark */;
+			E2497997138615EE0031535C /* PBXTextBookmark */ = E2497997138615EE0031535C /* PBXTextBookmark */;
+			E2497998138615EE0031535C /* PBXTextBookmark */ = E2497998138615EE0031535C /* PBXTextBookmark */;
+			E24979AE13861B310031535C /* XCBuildMessageTextBookmark */ = E24979AE13861B310031535C /* XCBuildMessageTextBookmark */;
+			E24979B113861B3A0031535C /* PBXTextBookmark */ = E24979B113861B3A0031535C /* PBXTextBookmark */;
+			E24979B213861B3A0031535C /* PBXTextBookmark */ = E24979B213861B3A0031535C /* PBXTextBookmark */;
+			E24979B913861B790031535C /* PBXTextBookmark */ = E24979B913861B790031535C /* PBXTextBookmark */;
+			E24979BE13861B860031535C /* XCBuildMessageTextBookmark */ = E24979BE13861B860031535C /* XCBuildMessageTextBookmark */;
+			E24979C313861BB80031535C /* PBXTextBookmark */ = E24979C313861BB80031535C /* PBXTextBookmark */;
+			E24979C413861BB80031535C /* PBXTextBookmark */ = E24979C413861BB80031535C /* PBXTextBookmark */;
+			E24979DB13861C570031535C /* PBXTextBookmark */ = E24979DB13861C570031535C /* PBXTextBookmark */;
+			E24979E813861CE40031535C /* PBXTextBookmark */ = E24979E813861CE40031535C /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
 			E29BBB7713022F250091D4CB = E29BBB7713022F250091D4CB /* PBXTextBookmark */;
@@ -1780,6 +1800,11 @@
 		name = juce_AudioSampleBuffer.cpp;
 		path = /Users/tom/Documents/development/juce/src/audio/dsp/juce_AudioSampleBuffer.cpp;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {547, 8385}}";
+			sepNavSelRange = "{19433, 0}";
+			sepNavVisRange = "{18179, 2377}";
+		};
 	};
 	E23DC48D136CF20200A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2198,7 +2223,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 184";
 		rLen = 0;
-		rLoc = 5637;
+		rLoc = 5742;
 		rType = 0;
 		vrLen = 2263;
 		vrLoc = 3665;
@@ -2237,7 +2262,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 178";
 		rLen = 0;
-		rLoc = 5415;
+		rLoc = 5520;
 		rType = 0;
 		vrLen = 2300;
 		vrLoc = 3665;
@@ -2373,6 +2398,249 @@
 		vrLoc = 0;
 	};
 	E249796A1385EF060031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E24979721386033B0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E249797D138613640031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E249797E1386153A0031535C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'rec::audio::util::ThumbnailBuffer::setSource(juce::PositionableAudioSource*, google::protobuf::uint32)'";
+		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 26;
+		rType = 1;
+	};
+	E249797F138615460031535C /* GenericFillableBuffer.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = GenericFillableBuffer.h;
+		path = ../../../../../rec/src/rec/audio/util/GenericFillableBuffer.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 949}}";
+			sepNavSelRange = "{893, 0}";
+			sepNavVisRange = "{0, 1871}";
+		};
+	};
+	E2497980138615460031535C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'struct rec::audio::util::Frames<short int, 2>' has no member named 'set_size'";
+		fRef = E249797F138615460031535C /* GenericFillableBuffer.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 33;
+		rType = 1;
+	};
+	E24979831386156D0031535C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'rec::audio::source::BufferSource::BufferSource(rec::audio::util::ThumbnailBuffer&)'";
+		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 162;
+		rType = 1;
+	};
+	E2497988138615BE0031535C /* GenericBufferSource.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = GenericBufferSource.h;
+		path = ../../../../../rec/src/rec/audio/source/GenericBufferSource.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 846}}";
+			sepNavSelRange = "{798, 0}";
+			sepNavVisRange = "{0, 1181}";
+		};
+	};
+	E2497989138615BE0031535C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Passing 'const rec::audio::util::GenericFillableBuffer<short int, 2>' as 'this' argument of 'rec::audio::util::Frames<Sample, CHANNELS>* rec::audio::util::GenericFillableBuffer<Sample, CHANNELS>::frames() [with Sample = short int, int CHANNELS = 2]' discards qualifiers";
+		fRef = E2497988138615BE0031535C /* GenericBufferSource.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 20;
+		rType = 1;
+	};
+	E249798E138615EE0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2497988138615BE0031535C /* GenericBufferSource.h */;
+		name = "GenericBufferSource.h: 23";
+		rLen = 0;
+		rLoc = 795;
+		rType = 0;
+		vrLen = 1181;
+		vrLoc = 0;
+	};
+	E2497991138615EE0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
+		name = "Model.cpp: 162";
+		rLen = 0;
+		rLoc = 4862;
+		rType = 0;
+		vrLen = 2077;
+		vrLoc = 3289;
+	};
+	E2497994138615EE0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E249797F138615460031535C /* GenericFillableBuffer.h */;
+		name = "GenericFillableBuffer.h: 34";
+		rLen = 0;
+		rLoc = 893;
+		rType = 0;
+		vrLen = 1871;
+		vrLoc = 0;
+	};
+	E2497997138615EE0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
+		name = "ThumbnailBuffer.cpp: 28";
+		rLen = 0;
+		rLoc = 929;
+		rType = 0;
+		vrLen = 1086;
+		vrLoc = 0;
+	};
+	E2497998138615EE0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E24979AD13861B310031535C /* GenericBufferSource.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = GenericBufferSource.h;
+		path = ../../../../../rec/src/rec/audio/source/GenericBufferSource.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 846}}";
+			sepNavSelRange = "{692, 83}";
+			sepNavVisRange = "{0, 1220}";
+		};
+	};
+	E24979AE13861B310031535C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Passing 'const rec::audio::util::GenericFillableBuffer<short int, 2>' as 'this' argument of 'rec::audio::util::Frames<Sample, CHANNELS>* rec::audio::util::GenericFillableBuffer<Sample, CHANNELS>::frames() [with Sample = short int, int CHANNELS = 2]' discards qualifiers";
+		fRef = E24979AD13861B310031535C /* GenericBufferSource.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 20;
+		rType = 1;
+	};
+	E24979B113861B3A0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979AD13861B310031535C /* GenericBufferSource.h */;
+		name = "GenericBufferSource.h: 22";
+		rLen = 80;
+		rLoc = 652;
+		rType = 0;
+		vrLen = 1220;
+		vrLoc = 0;
+	};
+	E24979B213861B3A0031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E24979B913861B790031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E24979BD13861B860031535C /* GenericFillableBuffer.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = GenericFillableBuffer.h;
+		path = ../../../../../rec/src/rec/audio/util/GenericFillableBuffer.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 949}}";
+			sepNavSelRange = "{1487, 0}";
+			sepNavVisRange = "{0, 1880}";
+			sepNavWindowFrame = "{{245, 4}, {1385, 959}}";
+		};
+	};
+	E24979BE13861B860031535C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No match for 'operator[]' in '* frame[c]'";
+		fRef = E24979BD13861B860031535C /* GenericFillableBuffer.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 47;
+		rType = 1;
+	};
+	E24979C313861BB80031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979BD13861B860031535C /* GenericFillableBuffer.h */;
+		name = "GenericFillableBuffer.h: 49";
+		rLen = 0;
+		rLoc = 1457;
+		rType = 0;
+		vrLen = 1880;
+		vrLoc = 0;
+	};
+	E24979C413861BB80031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E24979DB13861C570031535C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
+		name = "BufferSource.h: 64";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1813;
+		vrLoc = 0;
+	};
+	E24979E813861CE40031535C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E24979211385DB8E0031535C /* BufferSource.h */;
 		name = "BufferSource.h: 64";
@@ -2733,7 +3001,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 202";
 		rLen = 0;
-		rLoc = 6042;
+		rLoc = 6147;
 		rType = 0;
 		vrLen = 1569;
 		vrLoc = 1750;
@@ -3024,9 +3292,10 @@
 	};
 	F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {759, 929}}";
-			sepNavSelRange = "{411, 0}";
-			sepNavVisRange = "{0, 1086}";
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 846}}";
+			sepNavSelRange = "{1027, 22}";
+			sepNavVisRange = "{0, 1070}";
+			sepNavWindowFrame = "{{107, 130}, {1385, 959}}";
 		};
 	};
 	F2ECE0E4F6D7892339BAD1D1 /* DownloadVersion.cpp */ = {

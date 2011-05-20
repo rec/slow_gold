@@ -19,7 +19,7 @@ void Fillable::setLength(int64 length) {
   length_ = length;
 }
 
-int64 Fillable::length() {
+int64 Fillable::length() const {
   ScopedLock l(lock_);
   return length_;
 }

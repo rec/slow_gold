@@ -18,7 +18,7 @@ class Fillable {
   void setPosition(int64 position);
   int64 position() const;
   void setLength(int64 length);
-  int64 length();
+  int64 length() const;
 
   void fillNextBlock();
   bool isFull() const;

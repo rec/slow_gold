@@ -31,27 +31,26 @@ class GenericFillableBuffer : public block::Fillable {
   void setSource(PositionableAudioSource* source) {
     SampleTime size = source->getTotalLength();
     setLength(size);
-    frames_.set_size(size);
+    frames_.resize(size);
     source_.reset(source);
   }
 
   virtual block::Size doFillNextBlock(const block::Block& b) {
-    AudioSourceChannelInfo info;
     int blockSize = static_cast<int>(block::getSize(b));
-    info.numSamples = juce::jmin(blockSize, buffer_.getNumSamples());
+    info_.numSamples = juce::jmin(blockSize, buffer_.getNumSamples());
     source_->setNextReadPosition(b.first);
-    source_->getNextAudioBlock(info);
+    source_->getNextAudioBlock(info_);
 
     // Now copy it to our frame buffer.
-    for (SampleTime i = 0; i < info.numSamples; ++i) {
+    for (SampleTime i = 0; i < info_.numSamples; ++i) {
       Frame<Sample, CHANNELS>* frame = &frames_[b.first + i];
       for (int c = 0; i < CHANNELS; ++i)
-        convert(*buffer_.getSampleData(c, i), &(*frame)[c]);
+        convert(*buffer_.getSampleData(c, i), &frame->sample_[c]);
     }
-    return b.first + info.numSamples;
+    return b.first + info_.numSamples;
   }
 
-  Frames<Sample, CHANNELS>* frames() { return &frames_; }
+  const Frames<Sample, CHANNELS>& frames() const { return frames_; }
 
  protected:
   virtual void onFilled() { source_.reset(); }

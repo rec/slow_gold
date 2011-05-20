@@ -156,7 +156,11 @@ void Model::operator()(const VirtualFile& f) {
   }
 
   buffer->thumbnail()->addListener(&components()->waveform_);
+#ifdef OLD
   player()->setSource(new BufferSource(*buffer), stretchLocker_.get());
+#else
+  player()->setSource(new GenericBufferSource<>(*buffer), stretchLocker_.get());
+#endif
   player()->setStretch(stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();

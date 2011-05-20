@@ -1,6 +1,7 @@
 #ifndef __REC_AUDIO_UTIL_THUMBNAILBUFFER__
 #define __REC_AUDIO_UTIL_THUMBNAILBUFFER__
 
+#include "rec/audio/util/GenericFillableBuffer.h"
 #include "rec/audio/util/FillableBuffer.h"
 
 namespace rec {
@@ -9,7 +10,11 @@ namespace util {
 
 class CachedThumbnail;
 
+#ifdef OLD
 class ThumbnailBuffer : public FillableBuffer {
+#else
+class ThumbnailBuffer : public GenericFillableBuffer<> {
+#endif
  public:
   ThumbnailBuffer(const VirtualFile& file);
   virtual ~ThumbnailBuffer();

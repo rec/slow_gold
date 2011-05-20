@@ -18,10 +18,18 @@ static const double NEG_RANGE = 32768.0;
 static const double FULL_RANGE = 2.0 * NEG_RANGE - 2;
 
 inline void convert(float from, short* to) {
+  *to = static_cast<short>(FULL_RANGE * (1.0f + from) / 2.0f - NEG_RANGE);
+}
+
+inline void convert(double from, short* to) {
   *to = static_cast<short>(FULL_RANGE * (1.0 + from) / 2.0 - NEG_RANGE);
 }
 
 inline void convert(short from, float* to) {
+  *to = 2.0f * (from + NEG_RANGE) / FULL_RANGE - 1.0f;
+}
+
+inline void convert(short from, double* to) {
   *to = 2.0 * (from + NEG_RANGE) / FULL_RANGE - 1.0;
 }
 

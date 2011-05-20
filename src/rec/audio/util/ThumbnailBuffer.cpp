@@ -24,7 +24,7 @@ ThumbnailBuffer::ThumbnailBuffer(const VirtualFile& f) {
   if (!thumbnail_->cacheWritten())
     source.reset(source::Snoopy::add(source.transfer(), thumbnail_.get()));
 
-  setSource(source.transfer(), d.chunk_size());
+  setSource(source.transfer());
 }
 
 void ThumbnailBuffer::writeThumbnail() { thumbnail_->writeThumbnail(); }
