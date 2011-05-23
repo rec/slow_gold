@@ -1205,20 +1205,6 @@
 			name = tree;
 			sourceTree = "<group>";
 		};
-		84724E8C5B8E53AFAF7C5299 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		8544BE6615D289B0A6A6EA8E /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1407,6 +1393,20 @@
 				865617D983052FBE0ADDDEDF /* widget */,
 			);
 			name = rec;
+			sourceTree = "<group>";
+		};
+		AE28F7290CBB17131AD8ABCE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		B453D2FEBD8785B3C4D5BBE8 /* thread */ = {
@@ -1771,7 +1771,7 @@
 				French,
 				German,
 			);
-			mainGroup = 84724E8C5B8E53AFAF7C5299 /* Source */;
+			mainGroup = AE28F7290CBB17131AD8ABCE /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

@@ -11,7 +11,7 @@ static void set(mpg123_text* text, int size, StringPairArray* data) {
   for (mpg123_text* t = text; t != text + size; ++t) {
     String name(t->id, 4);
     for (; (*data)[name] != ""; name += "+");
-    data->set(name, String(t->text.p, t->text.fill));
+    data->set(name, String::fromUTF8(t->text.p, t->text.fill));
   }
 }
 

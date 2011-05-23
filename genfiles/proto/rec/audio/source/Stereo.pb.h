@@ -59,13 +59,13 @@ inline bool StereoProto_Side_Parse(
 enum StereoProto_Type {
   StereoProto_Type_PASSTHROUGH = 0,
   StereoProto_Type_SINGLE = 1,
-  StereoProto_Type_INVERT = 2,
+  StereoProto_Type_FLIP = 2,
   StereoProto_Type_CENTER_ELIMINATION = 3,
-  StereoProto_Type_CENTER_ELIMINATION_MONO = 3
+  StereoProto_Type_CENTER_ELIMINATION_MONO = 4
 };
 bool StereoProto_Type_IsValid(int value);
 const StereoProto_Type StereoProto_Type_Type_MIN = StereoProto_Type_PASSTHROUGH;
-const StereoProto_Type StereoProto_Type_Type_MAX = StereoProto_Type_CENTER_ELIMINATION;
+const StereoProto_Type StereoProto_Type_Type_MAX = StereoProto_Type_CENTER_ELIMINATION_MONO;
 const int StereoProto_Type_Type_ARRAYSIZE = StereoProto_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* StereoProto_Type_descriptor();
@@ -160,7 +160,7 @@ class StereoProto : public ::google::protobuf::Message {
   typedef StereoProto_Type Type;
   static const Type PASSTHROUGH = StereoProto_Type_PASSTHROUGH;
   static const Type SINGLE = StereoProto_Type_SINGLE;
-  static const Type INVERT = StereoProto_Type_INVERT;
+  static const Type FLIP = StereoProto_Type_FLIP;
   static const Type CENTER_ELIMINATION = StereoProto_Type_CENTER_ELIMINATION;
   static const Type CENTER_ELIMINATION_MONO = StereoProto_Type_CENTER_ELIMINATION_MONO;
   static inline bool Type_IsValid(int value) {

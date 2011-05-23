@@ -48,10 +48,12 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       b.copyFrom(otherSide, 0, b, side, 0, n);
     }
 
-  } else if (type == StereoProto::INVERT) {
+  } else if (type == StereoProto::FLIP) {
     b.applyGain(side, 0, n, -1.0);
 
   } else {
+    side = StereoProto::LEFT;
+    otherSide = StereoProto::RIGHT;
     b.addFrom(side, 0, b, otherSide, 0, n, -1.0);
     b.applyGain(side, 0, n, 0.5);
 

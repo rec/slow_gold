@@ -13,9 +13,11 @@ typedef juce::ApplicationCommandTarget ApplicationCommandTarget;
 typedef juce::AsyncUpdater AsyncUpdater;
 typedef juce::AudioCDReader AudioCDReader;
 typedef juce::AudioDeviceManager AudioDeviceManager;
+typedef juce::AudioFormat AudioFormat;
 typedef juce::AudioFormatManager AudioFormatManager;
 typedef juce::AudioFormatReader AudioFormatReader;
 typedef juce::AudioFormatReaderSource AudioFormatReaderSource;
+typedef juce::AudioFormatWriter AudioFormatWriter;
 typedef juce::AudioSampleBuffer AudioSampleBuffer;
 typedef juce::AudioSourceChannelInfo AudioSourceChannelInfo;
 typedef juce::AudioSourcePlayer AudioSourcePlayer;
@@ -75,18 +77,12 @@ typedef juce::TreeView TreeView;
 
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
-#define NEW_JUCE
-
 inline string str(const String& s) {
-#ifdef NEW_JUCE
   return s.toUTF8().getAddress();
-#else
-  return s.toCString();
-#endif
 }
 
 inline String str(const string& s) {
-  return String(s.c_str());
+  return String::fromUTF8(s.c_str());
 }
 
 inline string str(const File& f) {

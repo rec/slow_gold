@@ -1,37 +1,90 @@
 #include <gflags/gflags.h>
 
-#include "rec/base/base.h"
 #include "rec/audio/util/AudioFormatManager.h"
+#include "rec/audio/source/Stereo.h"
 
-DEFINE_bool(mono, false, "Add a processor to convert the sound to mono.");
-DEFINE_string(input, "/Users/tom/iTunes/The Dave Brubeck Trio/Distinctive Rhythm Instrumentals_ 24 Classic Original Recordings/17 Perfidia.mp3", "file to read");
-DEFINE_string(output, "./Perfidia.wav", "file to write");
-
+DEFINE_string(stereo, "stereo", "Select from: stereo, mono, left, right, flip, "
+              "elim, elim-mono");
 
 namespace rec {
 namespace audio {
+namespace source {
 
-int my_main(int argc, char** argv) {
+static const String ROOT = "/Users/tom/Documents/development/sound-tests/TakeFive";
+
+StereoProto makeStereo(StereoProto::Type t = StereoProto::PASSTHROUGH,
+                       StereoProto::Side s = StereoProto::LEFT_PLUS_RIGHT) {
+  StereoProto p;
+  p.set_side(s);
+  p.set_type(t);
+  return p;
+}
+
+StereoProto makeStereo(const string& stereo) {
+  if (stereo == "stereo")
+    return makeStereo();
+  else if (stereo == "mono")
+    return makeStereo(StereoProto::SINGLE);
+  else if (stereo == "left")
+    return makeStereo(StereoProto::SINGLE, StereoProto::LEFT);
+  else if (stereo == "right")
+    return makeStereo(StereoProto::SINGLE, StereoProto::RIGHT);
+  else if (stereo == "flip")
+    return makeStereo(StereoProto::FLIP);
+  else if (stereo == "elim")
+    return makeStereo(StereoProto::CENTER_ELIMINATION);
+  else if (stereo == "elim-mono")
+    return makeStereo(StereoProto::CENTER_ELIMINATION_MONO);
+  CHECK(false) << "--stereo was " << stereo;
+  return makeStereo();
+}
+
+
+void copyFile(const File& in, const File& out) {
+  CHECK(in.exists()) << "File " << str(in) << " doesn't exist";
+  ptr<AudioFormatReader> reader(createReader(in));
+
+  if (out.exists())
+    out.deleteFile();
+
+  String ext = out.getFileExtension();
+  AudioFormat* fmt = getAudioFormatManager()->findFormatForFileExtension(ext);
+  CHECK(fmt) << "Couldn't find format for extension " << str(ext);
+
+  ptr<AudioFormatWriter> writer(
+      fmt->createWriterFor(out.createOutputStream(),
+                           reader->sampleRate,
+                           reader->numChannels,
+                           reader->bitsPerSample,
+                           StringPairArray(),
+                           0));
+
+  CHECK(writer) << "Couldn't create writer for " << str(out);
+  ptr<PositionableAudioSource> src(new AudioFormatReaderSource(reader.get(), false));
+  StereoProto st;
+  if (FLAGS_stereo == "mono") {
+    st.set_type(source::StereoProto::SINGLE);
+    st.set_type(source::StereoProto::SINGLE);
+  }
+  src.reset(new Stereo(src.transfer(), makeStereo("elim")));  // FLAGS_stereo)));
+  writer->writeFromAudioSource(*src, src->getTotalLength(), 4096);
+}
+
+int main(int argc, char** argv) {
+  FLAGS_logtostderr = true;
   google::ParseCommandLineFlags(&argc, &argv, true);
-  DLOG(INFO) << FLAGS_input << ", " << FLAGS_output;
-  ptr<AudioFormatReader> reader(createReader(FLAGS_input));
-  File out(str(FLAGS_output));
-  juce::AudioFormat* format = getAudioFormatManager()->
-    findFormatForFileExtension(out.getFileExtension());
-  CHECK(format);
-  ptr<juce::AudioFormatWriter> writer(
-      format->createWriterFor(out.createOutputStream(),
-                              reader->sampleRate,
-                              reader->numChannels,
-                              reader->bitsPerSample,
-                              StringPairArray(),
-                              0));
-  CHECK(writer);
-  writer->writeFromAudioReader(*reader, 0, -1);
+  if (argc == 1)
+    copyFile(File(ROOT + ".mp3"), File(ROOT + ".out.wav"));
+  else if (argc == 2)
+    copyFile(File(argv[1]), File(ROOT + ".out.wav"));
+  else
+    copyFile(File(argv[1]), File(argv[2]));
+
   return 0;
 }
 
+}  // namespace source
 }  // namespace audio
 }  // namespace rec
 
-int main(int argc, char** argv) { rec::audio::my_main(argc, argv); }
+int main(int argc, char** argv) { return rec::audio::source::main(argc, argv); }

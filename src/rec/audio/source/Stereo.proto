@@ -10,7 +10,7 @@ message StereoProto {
   enum Type {
     PASSTHROUGH = 0;
     SINGLE = 1;
-    INVERT = 2;
+    FLIP = 2;
     CENTER_ELIMINATION = 3;
     CENTER_ELIMINATION_MONO = 4;
   };

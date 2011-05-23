@@ -13,11 +13,7 @@ int stripLines(String* data, StringArray* lines) {
 }
 
 bool stripLine(String* data, StringArray* lines) {
-#ifdef NEW_JUCE
   const juce_wchar* begin = data->toWideCharPointer();
-#else
-  const juce_wchar* begin = *data;
-#endif
   for (const juce_wchar* i = begin; *i; ++i) {
     const juce_wchar* end = NULL;
     if (*i == '\n')
