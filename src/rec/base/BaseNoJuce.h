@@ -46,6 +46,8 @@ inline Orientation inverse(Orientation o) {
   return (o == HORIZONTAL) ? VERTICAL : HORIZONTAL;
 }
 
+enum Endianness { LITTLE_END, BIG_END };
+
 class None {};
 
 typedef int64 SampleTime;
