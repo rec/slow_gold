@@ -2,13 +2,20 @@
 
 #include "rec/audio/util/AudioFormatManager.h"
 #include "rec/audio/source/Stereo.h"
+#include "rec/audio/source/Stretchy.h"
 
 DEFINE_string(stereo, "stereo", "Select from: stereo, mono, left, right, flip, "
               "elim, elim-mono");
 
+DEFINE_double(time_percent, 100.0, "Percent to speed up or slow down time");
+DEFINE_int32(semitone_shift, 0, "Semitones to shift the result");
+DEFINE_int32(cents_shift, 0, "cents to shift the result");
+
 namespace rec {
 namespace audio {
 namespace source {
+
+using namespace rec::audio::stretch;
 
 static const String ROOT = "/Users/tom/Documents/development/sound-tests/TakeFive";
 
@@ -39,6 +46,14 @@ StereoProto makeStereo(const string& stereo) {
   return makeStereo();
 }
 
+Stretch makeStretch() {
+  Stretch s;
+  s.set_time_percent(FLAGS_time_percent);
+  s.set_semitone_shift(FLAGS_semitone_shift);
+  s.set_detune_cents(FLAGS_cents_shift);
+
+  return s;
+}
 
 void copyFile(const File& in, const File& out) {
   CHECK(in.exists()) << "File " << str(in) << " doesn't exist";
@@ -61,12 +76,14 @@ void copyFile(const File& in, const File& out) {
 
   CHECK(writer) << "Couldn't create writer for " << str(out);
   ptr<PositionableAudioSource> src(new AudioFormatReaderSource(reader.get(), false));
-  StereoProto st;
-  if (FLAGS_stereo == "mono") {
-    st.set_type(source::StereoProto::SINGLE);
-    st.set_type(source::StereoProto::SINGLE);
+  src.reset(new Stereo(src.transfer(), makeStereo(FLAGS_stereo)));
+  
+  if (true) {
+  Stretchy *stretchy = new Stretchy(src.transfer());
+  stretchy->setStretch(makeStretch());
+  stretchy->initialize();
+  src.reset(stretchy);
   }
-  src.reset(new Stereo(src.transfer(), makeStereo("elim")));  // FLAGS_stereo)));
   writer->writeFromAudioSource(*src, src->getTotalLength(), 4096);
 }
 

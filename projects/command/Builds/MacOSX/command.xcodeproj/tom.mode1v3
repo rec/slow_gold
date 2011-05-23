@@ -197,48 +197,7 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>E25258641389D54C00ADFC5B</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>Main.cpp</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>E25258651389D54C00ADFC5B</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>Main.cpp</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>E25258861389DDAE00ADFC5B</string>
-						<key>history</key>
-						<array>
-							<string>E252585D1389D50800ADFC5B</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {1385, 862}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>15 270 1385 903 0 0 1920 1178 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -270,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -347,6 +304,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -364,7 +323,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E25258851389DDAE00ADFC5B</string>
+										<string>E25258AA1389E99E00ADFC5B</string>
 										<key>history</key>
 										<array>
 											<string>E25256841387043E00ADFC5B</string>
@@ -568,13 +527,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E25258AB1389E99E00ADFC5B</string>
 		<string>E252586E1389D54C00ADFC5B</string>
 		<string>E252586F1389D54C00ADFC5B</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/tom/Documents/development/rec/projects/command/Builds/MacOSX/command.xcodeproj</string>
 		<string>E252564D1387015400ADFC5B</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>E25258641389D54C00ADFC5B</string>
+		<string>/Users/tom/Documents/development/rec/projects/command/Builds/MacOSX/command.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>124 59 1237 1119 0 0 1920 1178 </string>
@@ -607,14 +566,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1183, 205}}</string>
+								<string>{{0, 0}, {1183, 563}}</string>
 								<key>RubberWindowFrame</key>
 								<string>574 263 1183 855 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>205pt</string>
+							<string>563pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -631,14 +590,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 210}, {1183, 604}}</string>
+								<string>{{0, 568}, {1183, 246}}</string>
 								<key>RubberWindowFrame</key>
 								<string>574 263 1183 855 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>604pt</string>
+							<string>246pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -745,9 +704,9 @@
 										<string>Name</string>
 										<real>120</real>
 										<string>Value</string>
-										<real>85</real>
+										<real>297</real>
 										<string>Summary</string>
-										<real>298</real>
+										<real>86</real>
 									</array>
 									<key>Frame</key>
 									<string>{{0, 332}, {528, 434}}</string>
@@ -903,6 +862,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -948,7 +909,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
