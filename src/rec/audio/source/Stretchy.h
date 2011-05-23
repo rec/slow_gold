@@ -36,7 +36,7 @@ class Stretchy : public Wrappy {
   stretch::Stretch stretch_;
   int channels_;
   ptr<AudioSampleBuffer> buffer_;
-  AudioTimeScaler scaler_;
+  ptr<AudioTimeScaler> scaler_;
   std::vector<float*> outOffset_;
   CriticalSection lock_;
   double timeScale_;

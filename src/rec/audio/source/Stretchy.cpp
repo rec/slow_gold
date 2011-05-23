@@ -1,4 +1,5 @@
 #include "rec/audio/source/Stretchy.h"
+#include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/util/Math.h"
 
@@ -22,22 +23,26 @@ int64 Stretchy::getTotalLength() const {
 }
 
 int64 Stretchy::getNextReadPosition() const {
+  DLOG(INFO) << "getNextReadPosition";
   ScopedLock l(lock_);
   return source()->getNextReadPosition() * timeScale_;
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
+  DLOG(INFO) << "setNextReadPosition";
   ScopedLock l(lock_);
   source()->setNextReadPosition(position / timeScale_);
 }
 
 void Stretchy::setStretch(const stretch::Stretch& s) {
+  DLOG(INFO) << "setStretch";
   ScopedLock l(lock_);
   stretch_ = s;
   initialized_ = false;
 }
 
 void Stretchy::initialize() {
+  DLOG(INFO) << "initialize";
   ScopedLock l(lock_);
   if (initialized_)
     return;
@@ -58,13 +63,19 @@ void Stretchy::initialize() {
     buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_INITIAL_SIZE));
   outOffset_.resize(channels_);
   timeScale_ = timeScale(stretch_);
-  audio::stretch::Init(stretch_, &scaler_);
+  scaler_.reset(new AudioTimeScaler);
+  audio::stretch::Init(stretch_, scaler_.get());
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  ScopedLock l(lock_);
-  initialize();
-  if (bypass_) {
+  DLOG(INFO) << "getNextAudioBlock";
+  bool bypass;
+  {
+    ScopedLock l(lock_);
+    initialize();
+    bypass_ = bypass;
+  }
+  if (bypass) {
     Wrappy::getNextAudioBlock(info);
     return;
   }
@@ -80,24 +91,14 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       i.numSamples -= processed;
       i.startSample += processed;
       zeroCount = 0;
-
-    } else if (zeroCount > 10) {
-      LOG_FIRST_N(ERROR, 20)
-        << "0 samples " << zeroCount << " times in a row,"
-        << " asked for " << i.numSamples
-        << " from " << info.numSamples
-        << "next read " << getNextReadPosition()
-        << "next read source " << source()->getNextReadPosition();
-      return;
-
     } else {
-      ++zeroCount;
+      CHECK_LT(++zeroCount, 10);
     }
   }
 }
 
 int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
-  int64 inSampleCount = scaler_.GetInputBufferSize(info.numSamples) / 2;
+  int64 inSampleCount = scaler_->GetInputBufferSize(info.numSamples) / 2;
   buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
 
   AudioSourceChannelInfo i;
@@ -112,7 +113,7 @@ int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   float** ins = buffer_->getArrayOfChannels();
   float** outs = &outOffset_.front();
 
-  int64 samples = scaler_.Process(ins, outs, inSampleCount, info.numSamples);
+  int64 samples = scaler_->Process(ins, outs, inSampleCount, info.numSamples);
   return samples;
 }
 

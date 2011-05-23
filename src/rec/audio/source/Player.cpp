@@ -58,14 +58,9 @@ void Player::setState(State s) {
   }
 }
 
-void Player::setSource(Source* source, const stretch::Stretch& stretch) {
+void Player::setSource(Source* source) {
   ptr<Source> s(source);
   timer_->swap(&s);
-
-#if 0
-  if (source)  // TODO: is this even needed
-    timer_->setNextReadPosition(source->getNextReadPosition());
-#endif
 
   if (s)
     s->releaseResources();
@@ -74,8 +69,7 @@ void Player::setSource(Source* source, const stretch::Stretch& stretch) {
 }
 
 void Player::setStretch(const Stretch& stretch) {
-  if (stretchy_)
-    stretchy_->setStretch(stretch);
+  stretchy_->setStretch(stretch);
 }
 
 State Player::state() const {
@@ -95,7 +89,7 @@ void Player::setSelection(const block::BlockSet& s) {
 }
 
 void Player::clearSource() {
-  setSource(new Empty, Stretch());
+  setSource(new Empty);
 }
 
 
