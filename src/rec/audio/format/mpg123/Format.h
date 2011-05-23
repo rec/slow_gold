@@ -13,7 +13,7 @@ namespace mpg123 {
 class Format : public juce::AudioFormat {
  public:
   Format();
-  ~Format();
+  virtual ~Format();
 
   virtual juce::AudioFormatReader* createReaderFor(juce::InputStream* source,
                                                    bool deleteStreamOnFail);

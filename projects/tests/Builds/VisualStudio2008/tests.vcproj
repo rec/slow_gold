@@ -175,6 +175,10 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
               <File RelativePath="..\..\..\..\src\rec\audio\format\mpg123\Tags.h"/>
             </Filter>
+            <Filter Name="raw">
+              <File RelativePath="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp"/>
+              <File RelativePath="..\..\..\..\src\rec\audio\format\raw\RawFormat.h"/>
+            </Filter>
           </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffered.cpp"/>

@@ -46,56 +46,73 @@ StereoProto makeStereo(const string& stereo) {
   return makeStereo();
 }
 
-Stretch makeStretch() {
+Stretch makeStretch(double timePercent, double semitone, double cents) {
   Stretch s;
-  s.set_time_percent(FLAGS_time_percent);
-  s.set_semitone_shift(FLAGS_semitone_shift);
-  s.set_detune_cents(FLAGS_cents_shift);
+  s.set_time_percent(timePercent);
+  s.set_semitone_shift(semitone);
+  s.set_detune_cents(cents);
 
   return s;
 }
 
-void copyFile(const File& in, const File& out) {
+void copyFileOnce(const File& in,
+                  int timePercent, int semitone = 0) {
   CHECK(in.exists()) << "File " << str(in) << " doesn't exist";
   ptr<AudioFormatReader> reader(createReader(in));
+
+  String root = in.getFileNameWithoutExtension();
+  root += ("-t" + String(timePercent));
+  if (semitone > 0)
+    root += ("p+" + String(semitone));
+  else if (semitone < 0)
+    root += ("p" + String(semitone));
+
+  File out = in.getParentDirectory().getChildFile(root + ".wav");
 
   if (out.exists())
     out.deleteFile();
 
-  String ext = out.getFileExtension();
-  AudioFormat* fmt = getAudioFormatManager()->findFormatForFileExtension(ext);
-  CHECK(fmt) << "Couldn't find format for extension " << str(ext);
+  AudioFormat* f = getAudioFormatManager()->findFormatForFileExtension(".wav");
+  CHECK(f) << "Couldn't find format for extension .wav";
 
+  OutputStream* stream = out.createOutputStream();
+  CHECK(stream) << "Couldn't create file " << str(out);
   ptr<AudioFormatWriter> writer(
-      fmt->createWriterFor(out.createOutputStream(),
-                           reader->sampleRate,
-                           reader->numChannels,
-                           reader->bitsPerSample,
-                           StringPairArray(),
-                           0));
+      f->createWriterFor(stream,
+                         reader->sampleRate,
+                         reader->numChannels,
+                         reader->bitsPerSample,
+                         StringPairArray(),
+                         0));
 
   CHECK(writer) << "Couldn't create writer for " << str(out);
   ptr<PositionableAudioSource> src(new AudioFormatReaderSource(reader.get(), false));
   src.reset(new Stereo(src.transfer(), makeStereo(FLAGS_stereo)));
-  
-  if (true) {
+
   Stretchy *stretchy = new Stretchy(src.transfer());
-  stretchy->setStretch(makeStretch());
+  stretchy->setStretch(makeStretch(timePercent, semitone, 0.0));
   stretchy->initialize();
   src.reset(stretchy);
-  }
   writer->writeFromAudioSource(*src, src->getTotalLength(), 4096);
+}
+
+
+void copyFile(const File& in) {
+  copyFileOnce(in, 50);
+  copyFileOnce(in, 75);
+  copyFileOnce(in, 100);
+  copyFileOnce(in, 125);
+  copyFileOnce(in, 150);
 }
 
 int main(int argc, char** argv) {
   FLAGS_logtostderr = true;
   google::ParseCommandLineFlags(&argc, &argv, true);
   if (argc == 1)
-    copyFile(File(ROOT + ".mp3"), File(ROOT + ".out.wav"));
-  else if (argc == 2)
-    copyFile(File(argv[1]), File(ROOT + ".out.wav"));
+    copyFile(File(ROOT + ".wav"));
   else
-    copyFile(File(argv[1]), File(argv[2]));
+    copyFile(File(argv[1]))
+    ;
 
   return 0;
 }

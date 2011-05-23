@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="MJxSZvUPR" name="Slow">
+  <MAINGROUP id="G7YriPYNw" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -101,6 +101,12 @@
                   id="P8oMiXrYt" name="Tags.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/mpg123/Tags.h" id="eIBReN2cS"
                   name="Tags.h" resource="0"/>
+          </GROUP>
+          <GROUP id="kyK3yaSVl" name="raw">
+            <FILE compile="1" file="../../src/rec/audio/format/raw/RawFormat.cpp"
+                  id="A2H0RIzNc" name="RawFormat.cpp" resource="0"/>
+            <FILE compile="0" file="../../src/rec/audio/format/raw/RawFormat.h"
+                  id="v6gPxmRqh" name="RawFormat.h" resource="0"/>
           </GROUP>
         </GROUP>
         <GROUP id="ngaS8lhNw" name="source">
@@ -1113,7 +1119,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="0XG5H2Vl3" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="xBhp4RukJ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
