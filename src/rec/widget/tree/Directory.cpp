@@ -88,6 +88,9 @@ void Directory::itemOpennessChanged(bool isOpen) {
     for (int i = 0; i < getNumSubItems(); ++i)
       ((Node*) getSubItem(i))->requestPartition();
   }
+
+  getVisitedFile().create();
+  repaintItem();
 }
 
 Directory::NodeSet Directory::processingChildren_;

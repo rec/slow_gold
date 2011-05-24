@@ -42,8 +42,6 @@ class Node : public juce::TreeViewItem,
 
   const gui::Rectangle bounds() const;
 
-  bool alreadyVisited() const;
-
   const VirtualFile& file() const { return volumeFile_; }
   const VirtualFile& volumeFile() const { return volumeFile_; }  // TODO
   VirtualFile::Type type() const { return volumeFile_.type(); }
@@ -52,6 +50,8 @@ class Node : public juce::TreeViewItem,
   void setTopLevel(bool lev = true) { topLevel_ = lev; }
 
  protected:
+  File getVisitedFile() const;
+
   void setProcessing(bool p) {
     processing_ = p;
     thread::callAsync(this, &TreeViewItem::repaintItem);
@@ -69,6 +69,8 @@ class Node : public juce::TreeViewItem,
  private:
   bool processing_;
   bool clicked_;
+
+  ColorName getColor() const;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Node);
   JUCE_LEAK_DETECTOR(Node);

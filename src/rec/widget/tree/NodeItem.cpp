@@ -18,20 +18,33 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
     name_ = name;
 }
 
+
+ColorName Node::getColor() const {
+  if (isSelected())
+    return BLACK;
+
+  if (clicked_)
+    return BORDER;
+
+  if (processing_)
+    return FOREGROUND;
+
+  if (getVisitedFile().exists())
+    return HIGHLIGHT;
+
+  return REGULAR;
+}
+
 void Node::paint(juce::Graphics& g) const {
   ScopedLock l(lock_);
   Painter p(desc_.widget(), &g);
   if (icon_)
     icon_->draw(g, 1.0);
 
-  if (isSelected()) {
-    g.setColour(juce::Colours::black);
-  } else {
-    p.setColor(clicked_ ? Painter::BORDER :
-               processing_ ? Painter::FOREGROUND : Painter::HIGHLIGHT);
-  }
+  p.setColor(getColor());
   g.drawSingleLineText(name(), desc_.widget().margin(),
-                       static_cast<int>(font_.getAscent() + desc_.widget().margin()));
+                       static_cast<int>(font_.getAscent() +
+                                        desc_.widget().margin()));
 }
 
 const String Node::name() const {
@@ -42,19 +55,22 @@ const String Node::name() const {
 }
 
 void Node::itemClicked(const MouseEvent& e) {
-  if (juce::ModifierKeys::getCurrentModifiers().isAnyMouseButtonDown()) {
-    if (!isDirectory()) {
-      clicked_ = true;
-      broadcast(volumeFile_);
-    }
-
-    if (!(getParentItem() && getParentItem()->getParentItem())) {
-      bool selected = !isSelected();
-      setSelected(selected, selected && !e.mods.isShiftDown());
-    }
-  } else {
+  if (!juce::ModifierKeys::getCurrentModifiers().isAnyMouseButtonDown()) {
     clicked_ = false;
+
+  } else if (e.mods.isShiftDown()) {
+    if (!(getParentItem() && getParentItem()->getParentItem()))
+      setSelected(!isSelected(), false);
+
+  } else if (isDirectory()) {
+    setOpen(!isOpen());
+
+  } else {
+    clicked_ = true;
+    broadcast(volumeFile_);
+    getVisitedFile().create();
   }
+
   repaintItem();
 }
 
@@ -74,12 +90,14 @@ int Node::getItemHeight() const {
   return font_.getHeight() + 2 * desc_.widget().margin();
 }
 
-bool Node::alreadyVisited() const {
-  return getShadowDirectory(volumeFile_).exists();
-}
-
 juce::Component* Node::createItemComponent() {
   return new NodeComponent(this);
+}
+
+static const char* const VISITED_FILE = "Visited.touch";
+
+File Node::getVisitedFile() const {
+  return getShadowDirectory(volumeFile_).getChildFile(VISITED_FILE);
 }
 
 }  // namespace tree

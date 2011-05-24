@@ -8,16 +8,20 @@
 namespace rec {
 namespace widget {
 
+enum ColorName {
+  BACKGROUND,
+  FOREGROUND,
+  HIGHLIGHT,
+  BORDER,
+  MIDGROUND,
+  SPECIAL,
+  BLACK,
+  REGULAR,
+};
+
 class Painter {
  public:
   // TODO: move this enum to Color.proto.
-  enum ColorNames {
-    BACKGROUND,
-    FOREGROUND,
-    HIGHLIGHT,
-    BORDER,
-  };
-
   Painter(const Widget& widget, juce::Graphics* g,
           const StateColors* stateColors = NULL)
       : widget_(widget),
@@ -39,11 +43,11 @@ class Painter {
 
   const gui::Colors& colors() const { return colors_; }
   const Colour colour(int i) const { return gui::color::get(colors_, i); }
-  void fillAll(ColorNames n) { graphics_->fillAll(colour(n)); }
+  void fillAll(ColorName n) { graphics_->fillAll(colour(n)); }
 
   void setColor(int i) const { graphics_->setColour(colour(i)); }
 
-  void setColor(ColorNames n) const { setColor((int)n); }
+  void setColor(ColorName n) const { setColor((int)n); }
 
   juce::Rectangle<int> getBounds(juce::Component* c) const {
     return c->getLocalBounds().reduced(margin_, margin_);

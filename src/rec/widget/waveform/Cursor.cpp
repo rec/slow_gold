@@ -77,9 +77,9 @@ void Cursor::paint(Graphics& g) {
   float offset = (componentWidth - displayWidth) / 2.0f;
   bool highlight = !isTimeCursor() && isMouseOverOrDragging();
 
-  p.setColor(highlight ?  Painter::HIGHLIGHT : Painter::BACKGROUND);
+  p.setColor(highlight ?  HIGHLIGHT : BACKGROUND);
   g.fillRect(offset, top, displayWidth, height);
-  p.setColor(highlight ? Painter::BACKGROUND : Painter::FOREGROUND);
+  p.setColor(highlight ? BACKGROUND : FOREGROUND);
 
   gui::drawLine(g, desc_.line(), middle, top, middle, height);
 }

@@ -73,8 +73,8 @@ void DialComponent::paint(Graphics& g) {
   juce::Rectangle<int> bounds = gui::centerSquare(p.getBounds(this));
 
   if (p.colors().color_size() > 2) {
-    g.setColour(p.colour(Painter::FOREGROUND).
-                interpolatedWith(p.colour(Painter::HIGHLIGHT), timeRatio_));
+    g.setColour(p.colour(FOREGROUND).
+                interpolatedWith(p.colour(HIGHLIGHT), timeRatio_));
   }
 
   Path path;

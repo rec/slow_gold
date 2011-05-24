@@ -1,7 +1,11 @@
+#include <gflags/gflags.h>
+
 #include "rec/app/GenericApplication.h"
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/app/DownloadVersion.h"
+
+DECLARE_bool(logtostderr);
 
 namespace rec {
 namespace app {
@@ -11,6 +15,7 @@ GenericApplication::GenericApplication(const String& name, const String& v)
 }
 
 void GenericApplication::initialise(const String&) {
+  FLAGS_logtostderr = true;
   setApplicationName(name_);
   LOG(INFO) << name_ << ": initialise starting...";
   if (downloadNewVersionIfNeeded(version_, name_)) {

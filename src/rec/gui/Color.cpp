@@ -39,6 +39,9 @@ static std::pair<Colour*, Colour*> getColours() {
     Colours::seagreen,
     juce::Colour(0xffd3d3d3),
     juce::Colour(0xff809090),
+    juce::Colours::red,
+    juce::Colours::black,
+    juce::Colour(0xff607070),
     // Colours::grey,
     // Colours::blue, //grey
   };
