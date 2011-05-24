@@ -33,7 +33,7 @@ inline const juce::Font getFont(const FontDesc& font) {
 
   String name;
   if (font.has_name())
-    name = font.name().c_str();
+    name = str(font.name());
 
   else if (font.type() == FontDesc::SANS_SERIF)
     name = juce::Font::getDefaultSansSerifFontName();

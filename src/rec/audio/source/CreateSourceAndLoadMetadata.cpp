@@ -27,7 +27,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
     }
 
     int track = String(file.path(0).c_str()).getIntValue();
-    String filename = file.name().c_str();
+    String filename = str(file.name());
     reader.reset(cd::createCDTrackReader(filename, track));
 
     if (!fileRead) {

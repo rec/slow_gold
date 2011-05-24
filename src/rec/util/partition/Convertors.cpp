@@ -26,11 +26,11 @@ template <> const String get(const Array<File>& files, int i) {
 }
 
 template <> const String get(const vector<string>& files, int i) {
-  return files[i].c_str();
+  return str(files[i]);
 }
 
 String getName(const File& f) { return f.getFileName();  }
-String getName(const string& v) { return v.c_str(); }
+String getName(const string& v) { return str(v); }
 
 }  // namespace util
 }  // namespace rec

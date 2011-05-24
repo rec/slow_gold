@@ -36,7 +36,7 @@ bool cutToClipboard() {
     return false;
   }
 
-  SystemClipboard::copyTextToClipboard(c->copy().c_str());
+  SystemClipboard::copyTextToClipboard(str(c->copy()));
   c->cut();
   return true;
 }
@@ -47,7 +47,7 @@ bool copyToClipboard() {
     juce::PlatformUtilities::beep();
     return false;
   }
-  SystemClipboard::copyTextToClipboard(c->copy().c_str());
+  SystemClipboard::copyTextToClipboard(str(c->copy()));
   return true;
 }
 

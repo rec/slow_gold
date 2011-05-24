@@ -55,7 +55,7 @@ class SetterText : public Layout,
   virtual void setDisplayValue(const Value& value) {
     if (value.has_string_f()) {
       thread::callAsync(&editor_, &TextEditor::setText,
-                        String(value.string_f().c_str()), false);
+                        str(value.string_f()), false);
       util::thread::callAsync(this, &SetterText::repaint);
     }
   }

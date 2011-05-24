@@ -14,7 +14,7 @@ namespace status {
 namespace time {
 
 TextComponent::TextComponent(const Text& desc)
-    : gui::SimpleLabel(desc.widget().name().c_str()),
+    : gui::SimpleLabel(str(desc.widget().name())),
       description_(desc) {
   setJustificationType(juce::Justification::centred);
   setFont(Font(juce::Font::getDefaultMonospacedFontName(), 20, Font::plain));

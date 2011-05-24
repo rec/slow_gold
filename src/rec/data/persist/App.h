@@ -64,7 +64,7 @@ Data<Proto>* App::fileData(const File& directory) {
   if (i != data_.end())
     return static_cast<persist::Data<Proto>*>(i->second);
 
-  File file = directory.getChildFile(fileName.c_str());
+  File file = directory.getChildFile(str(fileName));
   persist::Data<Proto>* data = new Data<Proto>(file, this);
   data->readFromFile();
   data_[fileKey] = data;

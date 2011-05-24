@@ -10,7 +10,7 @@ void CD::computeChildren() {
   std::vector<string> tracks;
 
   const string& cdKey = volumeFile_.name();
-  ptr<AudioCDReader> reader(cd::getAudioCDReader(cdKey.c_str()));
+  ptr<AudioCDReader> reader(cd::getAudioCDReader(str(cdKey)));
   if (reader) {
     cd::TrackOffsets trackOffsets = reader->getTrackOffsets();
     music::Album album = cd::getCachedAlbum(volumeFile_, trackOffsets);
@@ -23,7 +23,7 @@ void CD::computeChildren() {
 
     } else {
       const music::Metadata& data = album.album();
-      name_ = (data.album_title() + " / " + data.artist()).c_str();
+      name_ = str(data.album_title() + " / " + data.artist());
       for (int i = 0; i < album.track_size(); ++i) {
         const music::Metadata& track = album.track(i);
         tracks.push_back(track.artist().empty() ? track.track_title() :
@@ -40,7 +40,7 @@ void CD::computeChildren() {
   string* path = vf.add_path();
   for (uint32 i = 0; i < tracks.size(); ++i) {
     *path = str(String(i));
-    ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));
+    ptr<Node> node(new Node(desc_, vf, tracks[i].c_str()));  // TODO
     listenTo(node.get());
     thread::callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);
   }

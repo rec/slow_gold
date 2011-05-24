@@ -1,8 +1,11 @@
 .DS_Store
+TAGS
+
 *.pyc
 *.pyo
 *~
-TAGS
+*.mode1v3
+*.pbxuser
 
 projects/*/Builds/MacOSX/build
 !projects/*/Builds/VisualStudio2008/Slow.*

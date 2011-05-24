@@ -22,7 +22,7 @@ void TableController::fillHeader(TableHeaderComponent* headers) {
   ScopedLock l(lock_);
   for (int i = 0; i < columns_.column_size(); ++i)  {
     const TableColumn& col = columns_.column(i);
-    headers->addColumn(col.name().c_str(), i + 1, col.width(), col.minimum_width(),
+    headers->addColumn(str(col.name()), i + 1, col.width(), col.minimum_width(),
                        col.maximum_width(), col.property_flags());
   }
 }

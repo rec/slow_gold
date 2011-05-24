@@ -15,14 +15,14 @@ namespace file {
 namespace {
 
 const File getFile(const File& f, const string& path) {
-  return f.getChildFile(path.c_str());
+  return f.getChildFile(str(path));
 }
 
 typedef google::protobuf::RepeatedPtrField<string> Path;
 
 const File getFile(File f, const Path& path) {
   for (int i = 0; i < path.size(); ++i)
-    f = getFile(f, path.Get(i).c_str());
+    f = getFile(f, path.Get(i));
 
   return f;
 }
@@ -40,7 +40,7 @@ const File getVirtual(const VirtualFile& v) {
   }
 
   if (v.type() == VirtualFile::VOLUME)
-    return File(v.name().c_str());
+    return File(str(v.name()));
 
   if (v.type() == VirtualFile::USER) {
     DCHECK_EQ(v.name(), "");
@@ -55,7 +55,7 @@ const File getShadowDirectory(const VirtualFile& vf) {
   if (empty(vf))
     return getApplicationDirectory();
 
-  String name = String(VirtualFile::Type_Name(vf.type()).c_str()).toLowerCase();
+  String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
   File f = getApplicationDirectory().getChildFile(name);
   return getFile(getFile(f, vf.name()), vf.path());
 }
@@ -65,13 +65,13 @@ const File getFile(const VirtualFile& file) {
 }
 
 const String getFilename(const VirtualFile& file) {
-  return file.path_size() ? file.path().end()[-1].c_str() : "<none>";
+  return file.path_size() ? str(file.path().end()[-1]) : String("<none>");
 }
 
 const String getDisplayName(const VirtualFile& file) {
   VirtualFile::Type type = file.type();
   if (int size = file.path_size())
-    return file.path(size - 1).c_str();
+    return str(file.path(size - 1));
 
   if (type == VirtualFile::MUSIC)
     return "<Music>";
@@ -82,7 +82,7 @@ const String getDisplayName(const VirtualFile& file) {
   if (type == VirtualFile::VOLUME || type == VirtualFile::CD) {
     string name = file.name();
     eraseVolumePrefix(&name, false);
-    return name.empty() ? "<Root>" : name.c_str();
+    return name.empty() ? String("<Root>") : str(name);
   }
 
   return "<Unknown Virtual>";
@@ -91,7 +91,7 @@ const String getDisplayName(const VirtualFile& file) {
 const String getFullDisplayName(const VirtualFile& file) {
   String result = getDisplayName(file) + ":";
   for (int i = 0; i < file.path_size(); ++i)
-    result += (file.path(i) + "/").c_str();
+    result += str(file.path(i) + "/");
   return result;
 }
 

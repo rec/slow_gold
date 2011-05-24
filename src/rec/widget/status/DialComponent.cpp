@@ -25,7 +25,7 @@ const double DialComponent::REDRAW_ANGLE = 2.0 * DialComponent::PI * 0.001;
 const double SMALLEST_REAL_LENGTH = 0.01;
 
 DialComponent::DialComponent(const Dial& desc)
-    : Component(desc.widget().name().c_str()),
+    : Component(str(desc.widget().name())),
       description_(desc),
       time_(0),
       range_(0.0, 0.0),

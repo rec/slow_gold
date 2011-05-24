@@ -8,7 +8,7 @@ namespace gui {
 namespace color {
 
 uint32 nameToARGB(const string& name, const juce::Colour& dflt) {
-  return juce::Colours::findColourForName(name.c_str(), dflt).getARGB();
+  return juce::Colours::findColourForName(str(name), dflt).getARGB();
 }
 
 uint32 makeARGB(const Color& c) {

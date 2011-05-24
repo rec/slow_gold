@@ -28,7 +28,7 @@ bool strcopy(const String& from, string* to, bool readable) {
 
 // Copy using the one-argument copy() function.
 bool strcopy(const string& from, String* to, bool readable) {
-  *to = from.c_str();
+  *to = str(from);
   return true;
 }
 
