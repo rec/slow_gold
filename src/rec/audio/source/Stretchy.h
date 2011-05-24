@@ -6,10 +6,11 @@
 #include <vector>
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/stretch/TimeScaler.h"
+
+class AudioTimeScaler;
 
 namespace rec {
 namespace audio {

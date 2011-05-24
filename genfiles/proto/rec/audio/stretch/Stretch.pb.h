@@ -93,7 +93,7 @@ class Stretch : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional bool disabled = 15 [default = false];
+  // optional bool disabled = 15 [default = true];
   inline bool has_disabled() const;
   inline void clear_disabled();
   static const int kDisabledFieldNumber = 15;
@@ -253,12 +253,12 @@ class Stretch : public ::google::protobuf::Message {
 
 // Stretch
 
-// optional bool disabled = 15 [default = false];
+// optional bool disabled = 15 [default = true];
 inline bool Stretch::has_disabled() const {
   return _has_bit(0);
 }
 inline void Stretch::clear_disabled() {
-  disabled_ = false;
+  disabled_ = true;
   _clear_bit(0);
 }
 inline bool Stretch::disabled() const {

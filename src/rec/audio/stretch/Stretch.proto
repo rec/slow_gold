@@ -4,7 +4,7 @@ import "rec/audio/source/Stereo.proto";
 
 // Describe how exactly to apply the timescaler to a sample.
 message Stretch {
-  optional bool disabled = 15           [default = false];
+  optional bool disabled = 15           [default = true];
   optional bool passthrough_when_disabled = 16 [default = true];
 
   optional double time_scale = 1        [default = 1.0];

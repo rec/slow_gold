@@ -92,18 +92,18 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\303\003\n\007Stretch\022\027\n\010disabled\030\017 \001(\010:\005false"
-    "\022\'\n\031passthrough_when_disabled\030\020 \001(\010:\004tru"
-    "e\022\025\n\ntime_scale\030\001 \001(\001:\0011\022\031\n\014time_percent"
-    "\030\016 \001(\001:\003100\022\032\n\013sample_rate\030\002 \001(\001:\00544100\022"
-    "\023\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 \001("
-    "\001:\0011\022\031\n\016semitone_shift\030\005 \001(\001:\0010\022\027\n\014detun"
-    "e_cents\030\006 \001(\001:\0010\022\023\n\005bands\030\007 \001(\r:\0042048\022\031\n"
-    "\016filter_overlap\030\010 \001(\r:\0011\022\030\n\nchunk_size\030\t"
-    " \001(\r:\0041024\022\033\n\014prefill_size\030\n \001(\r:\00515000\022"
-    "$\n\025next_buffer_fill_size\030\013 \001(\r:\00515000\022\036\n"
-    "\022inactive_wait_time\030\014 \001(\005:\002-1\022\032\n\017thread_"
-    "priority\030\r \001(\r:\0014", 537);
+    "oto\"\302\003\n\007Stretch\022\026\n\010disabled\030\017 \001(\010:\004true\022"
+    "\'\n\031passthrough_when_disabled\030\020 \001(\010:\004true"
+    "\022\025\n\ntime_scale\030\001 \001(\001:\0011\022\031\n\014time_percent\030"
+    "\016 \001(\001:\003100\022\032\n\013sample_rate\030\002 \001(\001:\00544100\022\023"
+    "\n\010channels\030\003 \001(\r:\0012\022\026\n\013pitch_scale\030\004 \001(\001"
+    ":\0011\022\031\n\016semitone_shift\030\005 \001(\001:\0010\022\027\n\014detune"
+    "_cents\030\006 \001(\001:\0010\022\023\n\005bands\030\007 \001(\r:\0042048\022\031\n\016"
+    "filter_overlap\030\010 \001(\r:\0011\022\030\n\nchunk_size\030\t "
+    "\001(\r:\0041024\022\033\n\014prefill_size\030\n \001(\r:\00515000\022$"
+    "\n\025next_buffer_fill_size\030\013 \001(\r:\00515000\022\036\n\022"
+    "inactive_wait_time\030\014 \001(\005:\002-1\022\032\n\017thread_p"
+    "riority\030\r \001(\r:\0014", 536);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -156,7 +156,7 @@ Stretch::Stretch(const Stretch& from)
 
 void Stretch::SharedCtor() {
   _cached_size_ = 0;
-  disabled_ = false;
+  disabled_ = true;
   passthrough_when_disabled_ = true;
   time_scale_ = 1;
   time_percent_ = 100;
@@ -206,7 +206,7 @@ Stretch* Stretch::New() const {
 
 void Stretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    disabled_ = false;
+    disabled_ = true;
     passthrough_when_disabled_ = true;
     time_scale_ = 1;
     time_percent_ = 100;
@@ -458,7 +458,7 @@ bool Stretch::MergePartialFromCodedStream(
         break;
       }
       
-      // optional bool disabled = 15 [default = false];
+      // optional bool disabled = 15 [default = true];
       case 15: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -578,7 +578,7 @@ void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(14, this->time_percent(), output);
   }
   
-  // optional bool disabled = 15 [default = false];
+  // optional bool disabled = 15 [default = true];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(15, this->disabled(), output);
   }
@@ -666,7 +666,7 @@ void Stretch::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(14, this->time_percent(), target);
   }
   
-  // optional bool disabled = 15 [default = false];
+  // optional bool disabled = 15 [default = true];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(15, this->disabled(), target);
   }
@@ -687,7 +687,7 @@ int Stretch::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional bool disabled = 15 [default = false];
+    // optional bool disabled = 15 [default = true];
     if (has_disabled()) {
       total_size += 1 + 1;
     }

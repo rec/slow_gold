@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="QrF2QgiIt" name="tests">
+  <MAINGROUP id="2rJH0n91R" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -115,6 +115,10 @@
                   id="smARCclHB" name="RawFormat.cpp" resource="0"/>
             <FILE compile="0" file="../../src/rec/audio/format/raw/RawFormat.h"
                   id="ZD5ELpKYV" name="RawFormat.h" resource="0"/>
+            <FILE compile="0" file="../../src/rec/audio/format/raw/RawFormatReader.h"
+                  id="lN3FTWKqr" name="RawFormatReader.h" resource="0"/>
+            <FILE compile="0" file="../../src/rec/audio/format/raw/RawFormatWriter.h"
+                  id="xtRgN7LVy" name="RawFormatWriter.h" resource="0"/>
           </GROUP>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
@@ -1177,7 +1181,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="NVdIO4wuD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ywfZ12F7Z" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

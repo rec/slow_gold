@@ -78,7 +78,7 @@ typedef juce::TreeView TreeView;
 typedef juce::AudioDeviceManager::AudioDeviceSetup AudioDeviceSetup;
 
 inline string str(const String& s) {
-  return s.toUTF8().getAddress();
+  return string(s.toUTF8());
 }
 
 inline String str(const string& s) {
