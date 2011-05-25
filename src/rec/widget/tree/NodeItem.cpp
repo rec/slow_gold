@@ -1,5 +1,6 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/widget/tree/NodeComponent.h"
+#include "rec/music/CleanName.h"
 
 namespace rec {
 namespace widget {
@@ -17,8 +18,7 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
   if (name)
     name_ = name;
 }
-
-
+\
 ColorName Node::getColor() const {
   if (isSelected())
     return BLACK;
@@ -74,8 +74,13 @@ void Node::itemClicked(const MouseEvent& e) {
   repaintItem();
 }
 
+
+
 const String Node::computeName() const {
-  return getDisplayName(volumeFile_);
+  String name = getDisplayName(volumeFile_);
+  if (!isDirectory())
+    name = music::cleanName(name);
+  return name;
 }
 
 const gui::Rectangle Node::bounds() const {

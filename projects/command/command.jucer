@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="buxClSPRn" name="command">
+  <MAINGROUP id="oKg6hD4S0" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -677,6 +677,10 @@
               name="TableController.h" resource="0"/>
       </GROUP>
       <GROUP id="VgkTN17nN" name="music">
+        <FILE compile="1" file="../../src/rec/music/CleanName.cpp" id="2rnmRh0qJ"
+              name="CleanName.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/music/CleanName.h" id="uH78vEvmD"
+              name="CleanName.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/music/Metadata.cpp" id="0l8nQyAI4"
               name="Metadata.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/music/Metadata.h" id="tTsQRGYV2"
@@ -1123,7 +1127,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="0pK5v4eeg" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="nO8KukYSW" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
