@@ -53,6 +53,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   CriticalSection lock_;
   bool addDialogOpen_;
   bool opennessRead_;
+  bool opennessStarted_;
 
   DISALLOW_COPY_AND_ASSIGN(Root);
   JUCE_LEAK_DETECTOR(Root);

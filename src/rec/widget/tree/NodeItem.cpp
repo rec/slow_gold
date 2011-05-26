@@ -74,8 +74,6 @@ void Node::itemClicked(const MouseEvent& e) {
   repaintItem();
 }
 
-
-
 const String Node::computeName() const {
   String name = getDisplayName(volumeFile_);
   if (!isDirectory())

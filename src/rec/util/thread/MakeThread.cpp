@@ -1,3 +1,4 @@
+#if 0
 #include "rec/util/thread/MakeThread.h"
 
 namespace rec {
@@ -52,3 +53,4 @@ Thread* makeLoop(int waitTime, const String& name, Callback* cb) {
 }  // namespace thread
 }  // namespace util
 }  // namespace rec
+#endif

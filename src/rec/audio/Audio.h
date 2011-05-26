@@ -32,12 +32,12 @@ static const float FULL_RANGE = (2.0f * HALF_RANGE - 1.0f);
 inline void convertSample(const float& from, short* to) {
   float f = FULL_RANGE * (1.0f + from) / 2.0f - HALF_RANGE;
   *to = std::min(floorf(f), HALF_RANGE - 1.0f);
-  LOG_FIRST_N(INFO, 100) << from << " --->> " << *to << " (" << to << ")";
+  //  LOG_FIRST_N(INFO, 100) << from << " --->> " << *to << " (" << to << ")";
 }
 
 inline void convertSample(const short& from, float* to) {
   *to = (from + HALF_RANGE) / FULL_RANGE * 2.0f - 1.0f;
-  LOG_FIRST_N(INFO, 100) << from << " (" << &from << ") <<--- " << *to;
+  // LOG_FIRST_N(INFO, 100) << from << " (" << &from << ") <<--- " << *to;
 }
 
 #else

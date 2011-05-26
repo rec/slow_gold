@@ -45,6 +45,7 @@ Node* Directory::createChildFile(const partition::Shard& shard) const {
 void Directory::computeChildren() {
   if (childrenStarted_)
     return;
+
   childrenStarted_ = true;
 
   File f = getFile(volumeFile_);
@@ -53,6 +54,7 @@ void Directory::computeChildren() {
     file::sortedChildren(f, children_);
     range_.begin_ = 0;
     range_.end_ = children_->size();
+
     partition();
   }
   setProcessing(false);
@@ -68,7 +70,8 @@ void Directory::partition() {
     if (isOpen_)
       node->requestChildren();
 
-    callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);
+    juce::MessageManagerLock lock_;
+    addSubItem(node.transfer(), -1);
   }
 }
 

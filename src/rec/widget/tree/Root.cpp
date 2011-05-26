@@ -22,12 +22,13 @@ using namespace rec::gui;
 static const int ROOT_WAIT_TIME = 1000;
 
 static File getOpennessFile() {
-  return getApplicationDirectory().getChildFile("Tree.xml");
+  return getApplicationDirectory().getChildFile("TreeOpenness.xml");
 }
 
 Root::Root(const NodeDesc& desc) : desc_(desc),
                                    addDialogOpen_(false),
-                                   opennessRead_(false) {
+                                   opennessRead_(false),
+                                   opennessStarted_(false) {
   const Colors& colors = desc_.widget().colors();
   tree_.setColour(juce::TreeView::backgroundColourId, color::get(colors, 1));
   tree_.addMouseListener(this, false);
@@ -37,7 +38,6 @@ Root::Root(const NodeDesc& desc) : desc_(desc),
   persist::Data<VirtualFileList>* setter = persist::setter<VirtualFileList>();
   setter->addListener(this);
   volumes_ = setter->get();
-  readOpenness();
 }
 
 void Root::checkVolumes() {
@@ -47,9 +47,10 @@ void Root::checkVolumes() {
   thread::callAsync(this, &Root::mergeNewIntoOld, volumes);
 
   if (opennessRead_) {
+    // TODO: only do this when the openness is actually changed!
     ptr<XmlElement> openness(tree_.getOpennessState(true));
     if (!(openness && openness->writeToFile(getOpennessFile(), "")))
-      LOG(ERROR) << "Couldn't write opennens file";
+      LOG(ERROR) << "Couldn't write openness file";
   } else {
     thread::callAsync(this, &Root::readOpenness);
   }
@@ -72,14 +73,17 @@ void restoreOpenness(Node* node, const XmlElement& xml) {
 }
 
 void Root::readOpenness() {
+  if (opennessStarted_)
+    return;
+  opennessStarted_ = true;
   ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
   if (openness) {
     restoreOpenness(&root_, *openness);
     tree_.restoreOpennessState(*openness);
-    opennessRead_ = true;
   } else {
-    DLOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
+    LOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
   }
+  opennessRead_ = true;
 }
 
 void Root::operator()(const VirtualFile& file) {
