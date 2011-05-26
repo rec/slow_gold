@@ -54,15 +54,31 @@ void Root::checkVolumes() {
   }
 }
 
+void restoreOpenness(Node* node, const XmlElement& xml) {
+  node->computeChildren();
+  node->setOpen(true);
+  forEachXmlChildElement(xml, child) {
+    if (child->getTagName() == "OPEN") {
+      const String& id = child->getStringAttribute("id");
+      int i = 0, n = node->getNumSubItems();
+      for (; i < n && node->getSubItem(i)->getUniqueName() != id; ++i);
+      if (i < n)
+        restoreOpenness(dynamic_cast<Node*>(node->getSubItem(i)), *child);
+      else
+        LOG(ERROR) << "Didn't find id " << id;
+    }
+  }
+}
+
 void Root::readOpenness() {
   ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
   if (openness) {
+    restoreOpenness(&root_, *openness);
     tree_.restoreOpennessState(*openness);
-    // TODO: this doesn't restore openness past the first level...!
+    opennessRead_ = true;
   } else {
     DLOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
   }
-  opennessRead_ = true;
 }
 
 void Root::operator()(const VirtualFile& file) {
@@ -126,15 +142,11 @@ void Root::addVolume(const VirtualFile& volume, int insertAt) {
 
   directory->addListener(this);
   root_.addSubItem(directory.get(), insertAt);
-  directory.transfer()->requestPartition();
+  directory.transfer()->requestChildren();
 }
 
 bool Root::run() {
-  return widget::tree::Directory::computeBackgroundChildren();
-#if 0
-  thread::callAsync(&i->components_->directoryTree_,
-                    &widget::tree::Root::readOpenness);
-#endif
+  return widget::tree::Directory::computeChildrenInBackground();
 }
 
 }  // namespace tree

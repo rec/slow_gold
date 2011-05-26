@@ -23,18 +23,19 @@ class Directory : public Node, public Listener<const VirtualFile&> {
   virtual void partition();
 
   virtual void itemOpennessChanged(bool isNowOpen);
-  virtual void requestPartition();
+  virtual void requestChildren();
   virtual bool isDirectory() const { return true; }
 
   virtual int minPartition() const { return 64; }
   virtual void operator()(const VirtualFile& file) { broadcast(file); }
-  static bool computeBackgroundChildren();
+  static bool computeChildrenInBackground();
 
  protected:
   void addChildFile(Node* node);
   void resetChildren();
   static String getPrefix(const File& f, int letters);
 
+  // TODO:  change this choice of data structure.
   FileArray *children_;
   Range<int> range_;
 
@@ -47,6 +48,7 @@ class Directory : public Node, public Listener<const VirtualFile&> {
   CriticalSection lock_;
   bool isOpen_;
   bool childrenRequested_;
+  bool childrenStarted_;
   static NodeSet processingChildren_;
   static CriticalSection processingLock_;
 

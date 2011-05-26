@@ -37,14 +37,15 @@ class Root : public Broadcaster<const VirtualFile&>,
   Node* getNode(int i) { return (Node*) root_.getSubItem(i); }
   int getNumNodes() const { return root_.getNumSubItems(); }
 
-  class TreeViewItem : public juce::TreeViewItem {
+  class RootNode : public Node {
    public:
-    bool mightContainSubItems() { return true; }
+    RootNode() : Node(NodeDesc(), VirtualFile()) {}
+    virtual bool mightContainSubItems() { return true; }
     virtual const String getUniqueName() const { return "root"; }
   };
 
   NodeDesc desc_;
-  TreeViewItem root_;
+  RootNode root_;
 
   TreeViewDropAll tree_;  // This is our actual Component!
   file::VirtualFileList volumes_;

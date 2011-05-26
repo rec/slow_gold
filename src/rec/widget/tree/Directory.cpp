@@ -19,10 +19,11 @@ Directory::Directory(const NodeDesc& d, const VirtualFile& vf)
     : Node(d, vf),
       children_(NULL),
       isOpen_(false),
-      childrenRequested_(false) {
+      childrenRequested_(false),
+      childrenStarted_(false) {
 }
 
-void Directory::requestPartition() {
+void Directory::requestChildren() {
   ScopedLock l(processingLock_);
   if (!childrenRequested_) {
     processingChildren_.insert(this);
@@ -42,7 +43,11 @@ Node* Directory::createChildFile(const partition::Shard& shard) const {
 }
 
 void Directory::computeChildren() {
- File f = getFile(volumeFile_);
+  if (childrenStarted_)
+    return;
+  childrenStarted_ = true;
+
+  File f = getFile(volumeFile_);
   if (f.isDirectory()) {
     resetChildren();
     file::sortedChildren(f, children_);
@@ -61,7 +66,7 @@ void Directory::partition() {
     ptr<Node> node(createChildFile(shards[i]));
     listenTo(node.get());
     if (isOpen_)
-      node->requestPartition();
+      node->requestChildren();
 
     callAsync(this, &TreeViewItem::addSubItem, node.transfer(), -1);
   }
@@ -82,13 +87,7 @@ void Directory::itemOpennessChanged(bool isOpen) {
   if (!isOpen)
     return;
 
-  if (!childrenRequested_) {
-    requestPartition();
-  } else {
-    for (int i = 0; i < getNumSubItems(); ++i)
-      ((Node*) getSubItem(i))->requestPartition();
-  }
-
+  requestChildren();
   getVisitedFile().create();
   repaintItem();
 }
@@ -96,7 +95,7 @@ void Directory::itemOpennessChanged(bool isOpen) {
 Directory::NodeSet Directory::processingChildren_;
 CriticalSection Directory::processingLock_;
 
-bool Directory::computeBackgroundChildren() {
+bool Directory::computeChildrenInBackground() {
   Node* node;
   bool result;
   {

@@ -18,7 +18,7 @@ Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
   if (name)
     name_ = name;
 }
-\
+
 ColorName Node::getColor() const {
   if (isSelected())
     return BLACK;

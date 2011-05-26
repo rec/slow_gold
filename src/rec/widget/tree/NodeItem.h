@@ -23,7 +23,7 @@ class Node : public juce::TreeViewItem,
  public:
   Node(const NodeDesc& d, const VirtualFile& vf, const char* name = NULL);
 
-  virtual void requestPartition() {}
+  virtual void requestChildren() {}
 
   virtual bool mightContainSubItems() { return isDirectory(); }
   virtual const String getUniqueName() const { return name(); }

@@ -20,7 +20,7 @@ class Shard : public Directory {
 
   const String computeName() const { return shard_.name_; }
 
-  virtual void requestPartition() {}
+  virtual void requestChildren() {}
   virtual void computeChildren() {}
 
  private:
