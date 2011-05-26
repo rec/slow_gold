@@ -37,6 +37,7 @@ Root::Root(const NodeDesc& desc) : desc_(desc),
   persist::Data<VirtualFileList>* setter = persist::setter<VirtualFileList>();
   setter->addListener(this);
   volumes_ = setter->get();
+  readOpenness();
 }
 
 void Root::checkVolumes() {
