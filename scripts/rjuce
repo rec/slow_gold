@@ -1,7 +1,9 @@
 "$ROOT/rec/scripts/jucer/build_jucer_files.py" && \
+ cp -p "$ROOT/rec/art/icons/SampleIconMac.icns" "$ROOT/rec/projects/slow/Builds/MacOSX/Icon.icns" &&\
+ cp -p "$ROOT/rec/art/icons/SampleIconWindows.ico" "$ROOT/rec/projects/slow/Builds/VisualStudio2008/icon.ico" &&\
  rjucer tests &&\
  rjucer slow &&\
  rjucer command &&\
- cp -p $ROOT/rec/art/icons/SampleIconMac.icns ~/Documents/development/rec/projects/slow/Builds/MacOSX/Icon.icns &&\
- cp -p $ROOT/rec/art/icons/SampleIconWindows.ico ~/Documents/development/rec/projects/slow/Builds/VisualStudio2008/icon.ico
+ cp -p "$ROOT/rec/art/icons/SampleIconMac.icns" "$ROOT/rec/projects/slow/Builds/MacOSX/Icon.icns" &&\
+ cp -p "$ROOT/rec/art/icons/SampleIconWindows.ico" "$ROOT/rec/projects/slow/Builds/VisualStudio2008/icon.ico"
 
