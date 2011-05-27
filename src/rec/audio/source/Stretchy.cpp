@@ -24,19 +24,19 @@ int64 Stretchy::getTotalLength() const {
 }
 
 int64 Stretchy::getNextReadPosition() const {
-  DLOG(INFO) << "getNextReadPosition";
+  // DLOG(INFO) << "getNextReadPosition";
   ScopedLock l(lock_);
   return source()->getNextReadPosition() * timeScale_;
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
-  DLOG(INFO) << "setNextReadPosition";
+  // DLOG(INFO) << "setNextReadPosition";
   ScopedLock l(lock_);
   source()->setNextReadPosition(position / timeScale_);
 }
 
 void Stretchy::setStretch(const stretch::Stretch& s) {
-  DLOG(INFO) << "setStretch";
+  // DLOG(INFO) << "setStretch";
   ScopedLock l(lock_);
   stretch_ = s;
   initialized_ = false;
@@ -46,7 +46,7 @@ void Stretchy::initialize() {
   ScopedLock l(lock_);
   if (initialized_)
     return;
-  DLOG(INFO) << "initialize";
+  // DLOG(INFO) << "initialize";
 
   static const double DELTA = 0.00001;
   double timeRatio = stretch::timeScale(stretch_);
@@ -56,7 +56,7 @@ void Stretchy::initialize() {
   channels_ = stretch_.channels();
   if (bypass_) {
     timeScale_ = 1.0;
-    DLOG(INFO) << "bypass";
+    // DLOG(INFO) << "bypass";
     return;
   }
 
@@ -70,7 +70,7 @@ void Stretchy::initialize() {
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  DLOG(INFO) << "getNextAudioBlock";
+  // DLOG(INFO) << "getNextAudioBlock";
   bool bypass;
   {
     ScopedLock l(lock_);

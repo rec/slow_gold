@@ -10,7 +10,7 @@ namespace util {
 
 class CachedThumbnail;
 
-#ifdef OLD
+#ifndef NEW
 class ThumbnailBuffer : public FillableBuffer {
 #else
 class ThumbnailBuffer : public GenericFillableBuffer<short, 2> {

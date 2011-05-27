@@ -13,9 +13,13 @@ namespace util {
 
 class FillableBuffer : public block::Fillable {
  public:
-  FillableBuffer() {}
-  void setSource(PositionableAudioSource* source, int blockSize);
+  static const int DEFAULT_BLOCK_SIZE = 4096;
+
+  FillableBuffer() : blockSize_(DEFAULT_BLOCK_SIZE) {}
+  void setSource(PositionableAudioSource* source);
+
   virtual block::Size doFillNextBlock(const block::Block& block);
+  void setBlockSize(SampleTime b) { blockSize_ = b; }
 
  protected:
   virtual void onFilled() { source_.reset(); }

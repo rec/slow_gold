@@ -11,11 +11,10 @@ namespace rec {
 namespace audio {
 namespace util {
 
-void FillableBuffer::setSource(PositionableAudioSource* source, int blockSize) {
+void FillableBuffer::setSource(PositionableAudioSource* source) {
   setLength(source->getTotalLength());
   buffer_.reset(new AudioSampleBuffer(2, length_));
   source_.reset(source);
-  blockSize_ = blockSize;
 }
 
 block::Size FillableBuffer::doFillNextBlock(const Block& block) {

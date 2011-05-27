@@ -30,6 +30,8 @@ class GenericFillableBuffer : public block::Fillable {
   }
 
   void setSource(PositionableAudioSource* source) {
+    ScopedLock l(lock_);
+
     SampleTime size = source->getTotalLength();
     setLength(size);
     frames_.resize(size);
@@ -37,6 +39,7 @@ class GenericFillableBuffer : public block::Fillable {
   }
 
   virtual block::Size doFillNextBlock(const block::Block& b) {
+    ScopedLock l(lock_);
     int blockSize = static_cast<int>(block::getSize(b));
     info_.numSamples = juce::jmin(blockSize, buffer_.getNumSamples());
     source_->setNextReadPosition(b.first);
@@ -54,13 +57,16 @@ class GenericFillableBuffer : public block::Fillable {
   const Frames<Sample, CHANNELS>& frames() const { return frames_; }
 
  protected:
-  virtual void onFilled() { source_.reset(); }
+  // TODO:  re-enable this?
+  // virtual void onFilled() { source_.reset(); }
 
  private:
   Frames<Sample, CHANNELS> frames_;
   ptr<PositionableAudioSource> source_;
   AudioSampleBuffer buffer_;
   AudioSourceChannelInfo info_;
+
+  CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(GenericFillableBuffer);
 };
