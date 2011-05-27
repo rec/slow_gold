@@ -19,7 +19,6 @@ namespace widget {
 namespace tree {
 
 class Node : public juce::TreeViewItem,
-             //              public Broadcaster<None>,
              public Broadcaster<const VirtualFile&> {
  public:
   Node(const NodeDesc& d, const VirtualFile& vf, const char* name = NULL);
@@ -43,9 +42,9 @@ class Node : public juce::TreeViewItem,
 
   const gui::Rectangle bounds() const;
 
-  const VirtualFile& file() const { return volumeFile_; }
-  const VirtualFile& volumeFile() const { return volumeFile_; }  // TODO
-  VirtualFile::Type type() const { return volumeFile_.type(); }
+  const VirtualFile& file() const { return virtualFile_; }
+  const VirtualFile& virtualFile() const { return virtualFile_; }  // TODO
+  VirtualFile::Type type() const { return virtualFile_.type(); }
   virtual void computeChildren() {}
   bool topSelection() const { return topSelection_ && topLevel_; }
   void setTopLevel(bool lev = true) { topLevel_ = lev; }
@@ -60,7 +59,7 @@ class Node : public juce::TreeViewItem,
 
   mutable String name_;
   const NodeDesc desc_;
-  const VirtualFile volumeFile_;
+  const VirtualFile virtualFile_;
   ListenerSet listeners_;
   const juce::Drawable* icon_;
   const juce::Font font_;
@@ -70,6 +69,8 @@ class Node : public juce::TreeViewItem,
  private:
   bool processing_;
   bool clicked_;
+
+  bool isCurrent() const;
 
   ColorName getColor() const;
 

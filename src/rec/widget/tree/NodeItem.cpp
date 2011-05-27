@@ -1,6 +1,8 @@
 #include "rec/widget/tree/NodeItem.h"
-#include "rec/widget/tree/NodeComponent.h"
+#include "rec/data/persist/Persist.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/music/CleanName.h"
+#include "rec/widget/tree/NodeComponent.h"
 
 namespace rec {
 namespace widget {
@@ -8,7 +10,7 @@ namespace tree {
 
 Node::Node(const NodeDesc& d, const VirtualFile& vf, const char* name)
     : desc_(d),
-      volumeFile_(vf),
+      virtualFile_(vf),
       icon_(gui::icon::getIcon(d.icon())),
       font_(gui::getFont(desc_.widget().font())),
       topSelection_(false),
@@ -28,6 +30,9 @@ ColorName Node::getColor() const {
 
   if (processing_)
     return FOREGROUND;
+
+  if (isCurrent())
+    return SPECIAL;
 
   if (getVisitedFile().exists())
     return HIGHLIGHT;
@@ -67,7 +72,7 @@ void Node::itemClicked(const MouseEvent& e) {
 
   } else {
     clicked_ = true;
-    broadcast(volumeFile_);
+    broadcast(virtualFile_);
     getVisitedFile().create();
   }
 
@@ -75,7 +80,7 @@ void Node::itemClicked(const MouseEvent& e) {
 }
 
 const String Node::computeName() const {
-  String name = getDisplayName(volumeFile_);
+  String name = getDisplayName(virtualFile_);
   if (!isDirectory())
     name = music::cleanName(name);
   return name;
@@ -100,7 +105,11 @@ juce::Component* Node::createItemComponent() {
 static const char* const VISITED_FILE = "Visited.touch";
 
 File Node::getVisitedFile() const {
-  return getShadowDirectory(volumeFile_).getChildFile(VISITED_FILE);
+  return getShadowDirectory(virtualFile_).getChildFile(VISITED_FILE);
+}
+
+bool Node::isCurrent() const {
+  return (virtualFile_ == persist::get<VirtualFile>());
 }
 
 }  // namespace tree

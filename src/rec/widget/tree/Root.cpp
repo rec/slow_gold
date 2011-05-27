@@ -122,7 +122,7 @@ void Root::mergeNewIntoOld(const file::VirtualFileList& volumes) {
   for (int i = 0, j = 0; i < volumes.file_size() || j < getNumNodes(); ++i) {
     const VirtualFile* v1 = (i < volumes.file_size()) ? &volumes.file(i) : NULL;
     const Node* n = (j < getNumNodes()) ? getNode(j) : NULL;
-    const VirtualFile* v2 = n ? &(n->volumeFile()) : NULL;
+    const VirtualFile* v2 = n ? &(n->virtualFile()) : NULL;
 
     if (!v1)
       root_.removeSubItem(j);
