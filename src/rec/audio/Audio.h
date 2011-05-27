@@ -28,30 +28,17 @@ inline SampleTime timeToSamples(RealTime time, double rate = 44100.0) {
 static const float HALF_RANGE = 32768.0f;
 static const float FULL_RANGE = (2.0f * HALF_RANGE - 1.0f);
 
-#if 1
+inline void convertSample(const short& from, float* to) {
+  *to = (from + HALF_RANGE) / FULL_RANGE * 2.0f - 1.0f;
+  LOG_FIRST_N(INFO, 100) << from << " (" << &from << ") <<--- " << *to;
+}
+
 inline void convertSample(const float& from, short* to) {
   float f = FULL_RANGE * (1.0f + from) / 2.0f - HALF_RANGE;
   *to = std::min(floorf(f), HALF_RANGE - 1.0f);
   LOG_FIRST_N(INFO, 100) << from << " --->> " << *to << " (" << to << ")";
 }
 
-inline void convertSample(const short& from, float* to) {
-  *to = (from + HALF_RANGE) / FULL_RANGE * 2.0f - 1.0f;
-  LOG_FIRST_N(INFO, 100) << from << " (" << &from << ") <<--- " << *to;
-}
-
-#else
-inline void convertSample(short from, float* to) {
-  *to = (from + HALF_RANGE) / FULL_RANGE * 2.0f - 1.0f;
-  LOG_FIRST_N(INFO, 100) << from << " <<--- " << *to;
-}
-
-inline void convertSample(float from, short* to) {
-  float f = FULL_RANGE * (1.0f + from) / 2.0f - HALF_RANGE;
-  *to = std::min(floorf(f), HALF_RANGE - 1.0f);
-  LOG_FIRST_N(INFO, 100) << from << " --->> " << *to;
-}
-#endif
 }  // namespace audio
 }  // namespace rec
 

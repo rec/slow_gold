@@ -96,6 +96,10 @@ void Root::operator()(const VirtualFileList& volumes) {
   // notify();  // TODO!
 }
 
+void Root::refreshNode(const VirtualFile& f) {
+  root_.refreshNode(f);
+}
+
 void Root::mouseDoubleClick(const juce::MouseEvent&) {
   thread::callAsync(this, &Root::doAdd);
 }

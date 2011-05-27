@@ -127,6 +127,7 @@ void Model::operator()(const VirtualFile& f) {
     LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
     return;
   }
+  components()->directoryTree_.refreshNode(file_);
   file_ = f;
   player()->setState(audio::transport::STOPPED);
   player()->timeBroadcaster()->broadcast(0);

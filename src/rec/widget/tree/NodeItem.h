@@ -32,6 +32,7 @@ class Node : public juce::TreeViewItem,
   virtual juce::Component* createItemComponent();
   virtual void itemClicked(const MouseEvent& e);
   virtual bool isDirectory() const { return false; }
+  void refreshNode(const VirtualFile&);
 
   const String name() const;
   virtual const String computeName() const;

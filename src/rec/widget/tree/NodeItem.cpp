@@ -79,6 +79,20 @@ void Node::itemClicked(const MouseEvent& e) {
   repaintItem();
 }
 
+void Node::refreshNode(const VirtualFile& f) {
+  if (virtualFile_ == f) {
+    juce::MessageManagerLock lock_;
+    repaintItem();
+  } else {
+    for (int i = 0; i < getNumSubItems(); ++i) {
+      if (Node* node = dynamic_cast<Node*>(getSubItem(i)))
+        node->refreshNode(f);
+      else
+        LOG(ERROR) << "Found a non-Node node!";
+    }
+  }
+}
+
 const String Node::computeName() const {
   String name = getDisplayName(virtualFile_);
   if (!isDirectory())

@@ -30,6 +30,7 @@ class Root : public Broadcaster<const VirtualFile&>,
   void readOpenness();
 
   bool run();  // Update files in a background thread.
+  void refreshNode(const VirtualFile&);
 
  private:
   void update();
