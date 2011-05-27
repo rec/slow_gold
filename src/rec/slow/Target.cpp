@@ -40,19 +40,18 @@ void Target::addCommands() {
       "Open...", "File",
       "Open dialog to select a new audio file for looping.", 'o');
 
-  add(Command::CLOSE, functionCallback(persist::setter<VirtualFile>(),
-                                       VirtualFile()),
+  add(Command::CLOSE_FILE, functionCallback(persist::setter<VirtualFile>(),
+                                            VirtualFile()),
       "Close", "File",
       "Close the current file", 'w');
 
-  add(Command::EJECT, makeCallback(&cd::ejectAll),
+  add(Command::EJECT_CDS, makeCallback(&cd::ejectAll),
       "Eject All", "File",
       "Eject all CDs and DVDs");
 
   add(Command::PASTE, makeCallback(&pasteFromClipboard),
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.", 'v');
-
 
   add(Command::ADD_LOOP_POINT, functionCallback(&addLoopPoint, instance_),
       "Add Loop Point", "Transport",

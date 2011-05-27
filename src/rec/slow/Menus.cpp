@@ -21,10 +21,10 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
   PopupMenu m;
   if (menuName == "File") {
     target()->addCommandItem(&m, Command::OPEN);
-    target()->addCommandItem(&m, Command::CLOSE);
-    target()->addCommandItem(&m, Command::EJECT);
+    target()->addCommandItem(&m, Command::CLOSE_FILE);
+    target()->addCommandItem(&m, Command::EJECT_CDS);
     target()->addCommandItem(&m, Command::AUDIO_PREFERENCES);
-    target()->addCommandItem(&m, Command::CLEAR_TREE);
+    target()->addCommandItem(&m, Command::CLEAR_BROWSER);
 
 #ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();
@@ -57,9 +57,8 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     }
 
   } else if (menuName == "Loop") {
-    target()->addCommandItem(&m, Command::CLEAR_SELECTION);
+    // target()->addCommandItem(&m, Command::CLEAR_SELECTION);
     target()->addCommandItem(&m, Command::CLEAR_LOOPS);
-    target()->addCommandItem(&m, Command::CLEAR_TIME);
   }
 
   return m;
