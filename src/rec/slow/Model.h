@@ -40,6 +40,8 @@ class Model : public Listener<const VirtualFile&>,
 
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
   thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
+  thread::Locker<LoopPointList>* loopLocker() { return &loopLocker_; }
+
   void zoom(RealTime time, double k);
 
   virtual void operator()(const LoopPointList&);

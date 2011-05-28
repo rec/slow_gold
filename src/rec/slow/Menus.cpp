@@ -16,15 +16,14 @@ const StringArray Menus::getMenuBarNames() {
 }
 
 const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
-  typedef command::Command Command;
-
+  using command::Command;
   PopupMenu m;
   if (menuName == "File") {
     target()->addCommandItem(&m, Command::OPEN);
     target()->addCommandItem(&m, Command::CLOSE_FILE);
     target()->addCommandItem(&m, Command::EJECT_CDS);
     target()->addCommandItem(&m, Command::AUDIO_PREFERENCES);
-    target()->addCommandItem(&m, Command::CLEAR_BROWSER);
+    target()->addCommandItem(&m, Command::CLEAR_NAVIGATOR);
 
 #ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();
@@ -42,19 +41,9 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 #endif
 
   } else if (menuName == "Edit") {
-    String name = str(cuttableName());
-    if (false && name.length()) {
-      target()->addCommandItem(&m, Command::CUT, canCut(),
-                               "Cut from " + name);
-      target()->addCommandItem(&m, Command::COPY, canCopy(),
-                               "Copy from " + name);
-      target()->addCommandItem(&m, Command::PASTE, canPaste(),
-                               "Paste to " + name);
-    } else {
-      target()->addCommandItem(&m, Command::CUT, canCut());
-      target()->addCommandItem(&m, Command::COPY, canCopy());
-      target()->addCommandItem(&m, Command::PASTE, canPaste());
-    }
+    target()->addCommandItem(&m, Command::CUT, canCut());
+    target()->addCommandItem(&m, Command::COPY, canCopy());
+    target()->addCommandItem(&m, Command::PASTE, canPaste());
 
   } else if (menuName == "Loop") {
     // target()->addCommandItem(&m, Command::CLEAR_SELECTION);

@@ -7,7 +7,7 @@ message Command {
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
-    DEL = 0x1002;  //!
+    DEL = 0x1002;
     CUT = 0x1003;
     COPY = 0x1004;
     PASTE = 0x1005;
@@ -17,23 +17,23 @@ message Command {
     // Defined by rec.
     ADD_LOOP_POINT = 1;
     AUDIO_PREFERENCES = 2;
-    CLEAR_BROWSER = 3;
+    CLEAR_NAVIGATOR = 3;
     CLEAR_LOOPS = 4;
     CLEAR_SAVED_FILE_DATA = 5;
     CLEAR_SELECTION = 17;
     CLOSE_FILE = 6;
     EJECT_CDS = 7;
+    INVERT_LOOP_SELECTION = 19;
     JUMP_TO_NEXT_LOOP_POINT = 8;
     JUMP_TO_PREVIOUS_LOOP_POINT = 9;
     JUMP_TO_START = 10;
+    KEYBOARD_MAPPINGS = 18;
     NUDGE_BEGIN_LEFT = 11;
     NUDGE_BEGIN_RIGHT = 12;
     NUDGE_END_LEFT = 13;
     NUDGE_END_RIGHT = 14;
     OPEN = 15;
     RECENT_FILES = 16;
-
-    // 18, 19
 
     SELECT_ONLY_0 = 20;
     SELECT_ONLY_1 = 21;
@@ -65,8 +65,22 @@ message Command {
     TREE_OPEN = 45;
     TREE_RIGHT = 46;
     TREE_UP = 47;
-    ZOOM_IN = 48;
-    ZOOM_OUT = 49;
+
+    // 48, 49
+
+    UNSELECT_ONLY_0 = 50;
+    UNSELECT_ONLY_1 = 51;
+    UNSELECT_ONLY_2 = 52;
+    UNSELECT_ONLY_3 = 53;
+    UNSELECT_ONLY_4 = 54;
+    UNSELECT_ONLY_5 = 55;
+    UNSELECT_ONLY_6 = 56;
+    UNSELECT_ONLY_7 = 57;
+    UNSELECT_ONLY_8 = 58;
+    UNSELECT_ONLY_9 = 59;
+
+    ZOOM_IN = 60;
+    ZOOM_OUT = 61;
 
     LAST_COMMAND = 49;
   };

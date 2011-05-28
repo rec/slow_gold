@@ -63,7 +63,7 @@ Thread* Threads::start(Callback* cb, const String& name, int wait) {
 
 namespace {
 
-void browser(Instance* i) {
+void navigator(Instance* i) {
   i->components_->directoryTree_.checkVolumes();
 }
 
@@ -97,7 +97,7 @@ void focus(Instance*) {
 }  // namespace
 
 void Threads::startAll() {
-  start(&browser, "Browser", 1000);
+  start(&navigator, "Navigator", 1000);
 	fetchThread_ = start(&fetch, "Fetch", 10);
   start(&updateParameters, "Parameter", 97);
   player()->buffered()->setNotifyThread(start(&buffer, "Buffer", 10));
