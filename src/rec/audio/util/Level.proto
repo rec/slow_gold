@@ -1,0 +1,7 @@
+package rec.audio;
+
+message Level {
+  optional float level = 1 [default = 1.0];
+  optional bool mute = 2;
+  optional bool dim = 3;
+};
