@@ -51,7 +51,11 @@ enum Command_Type {
   Command_Type_CLEAR_SAVED_FILE_DATA = 5,
   Command_Type_CLEAR_SELECTION = 17,
   Command_Type_CLOSE_FILE = 6,
+  Command_Type_CONTRACT_FROM_NEXT_LOOP_POINT = 75,
+  Command_Type_CONTRACT_FROM_PREVIOUS_LOOP_POINT = 76,
   Command_Type_EJECT_CDS = 7,
+  Command_Type_EXTEND_TO_NEXT_LOOP_POINT = 73,
+  Command_Type_EXTEND_TO_PREVIOUS_LOOP_POINT = 74,
   Command_Type_INVERT_LOOP_SELECTION = 19,
   Command_Type_JUMP_TO_NEXT_LOOP_POINT = 8,
   Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT = 9,
@@ -116,7 +120,7 @@ enum Command_Type {
   Command_Type_UNSELECT_9 = 69,
   Command_Type_ZOOM_IN = 70,
   Command_Type_ZOOM_OUT = 71,
-  Command_Type_LAST_COMMAND = 72
+  Command_Type_LAST_COMMAND = 76
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
@@ -203,7 +207,11 @@ class Command : public ::google::protobuf::Message {
   static const Type CLEAR_SAVED_FILE_DATA = Command_Type_CLEAR_SAVED_FILE_DATA;
   static const Type CLEAR_SELECTION = Command_Type_CLEAR_SELECTION;
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
+  static const Type CONTRACT_FROM_NEXT_LOOP_POINT = Command_Type_CONTRACT_FROM_NEXT_LOOP_POINT;
+  static const Type CONTRACT_FROM_PREVIOUS_LOOP_POINT = Command_Type_CONTRACT_FROM_PREVIOUS_LOOP_POINT;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
+  static const Type EXTEND_TO_NEXT_LOOP_POINT = Command_Type_EXTEND_TO_NEXT_LOOP_POINT;
+  static const Type EXTEND_TO_PREVIOUS_LOOP_POINT = Command_Type_EXTEND_TO_PREVIOUS_LOOP_POINT;
   static const Type INVERT_LOOP_SELECTION = Command_Type_INVERT_LOOP_SELECTION;
   static const Type JUMP_TO_NEXT_LOOP_POINT = Command_Type_JUMP_TO_NEXT_LOOP_POINT;
   static const Type JUMP_TO_PREVIOUS_LOOP_POINT = Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT;

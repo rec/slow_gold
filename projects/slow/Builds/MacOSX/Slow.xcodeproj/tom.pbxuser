@@ -765,6 +765,12 @@
 			E21976961392E225003CC739 = E21976961392E225003CC739 /* PBXTextBookmark */;
 			E21976A01392E3FF003CC739 = E21976A01392E3FF003CC739 /* PBXTextBookmark */;
 			E21976A11392E3FF003CC739 = E21976A11392E3FF003CC739 /* PBXTextBookmark */;
+			E21976BB1392E742003CC739 /* XCBuildMessageTextBookmark */ = E21976BB1392E742003CC739 /* XCBuildMessageTextBookmark */;
+			E21976BE1392E777003CC739 /* XCBuildMessageTextBookmark */ = E21976BE1392E777003CC739 /* XCBuildMessageTextBookmark */;
+			E21976BF1392E777003CC739 /* PBXTextBookmark */ = E21976BF1392E777003CC739 /* PBXTextBookmark */;
+			E21976C21392E777003CC739 /* PBXTextBookmark */ = E21976C21392E777003CC739 /* PBXTextBookmark */;
+			E21976C51392E7F6003CC739 /* PBXTextBookmark */ = E21976C51392E7F6003CC739 /* PBXTextBookmark */;
+			E21976C61392E7F6003CC739 /* PBXTextBookmark */ = E21976C61392E7F6003CC739 /* PBXTextBookmark */;
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
 			E2221EE61347159100298AE3 = E2221EE61347159100298AE3 /* PBXTextBookmark */;
 			E2221FE0134829B900298AE3 = E2221FE0134829B900298AE3 /* PBXTextBookmark */;
@@ -1052,9 +1058,9 @@
 	};
 	B821697666437A71BDF9E1EE /* Target.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1034, 2418}}";
-			sepNavSelRange = "{5370, 0}";
-			sepNavVisRange = "{248, 1806}";
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 4420}}";
+			sepNavSelRange = "{10460, 0}";
+			sepNavVisRange = "{7650, 1605}";
 			sepNavWindowFrame = "{{353, 246}, {1093, 868}}";
 		};
 	};
@@ -1518,6 +1524,64 @@
 		rType = 0;
 		vrLen = 1806;
 		vrLoc = 248;
+	};
+	E21976BB1392E742003CC739 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'UNSELECT_ONLY_0' is not a member of 'rec::command::Command'";
+		fRef = B821697666437A71BDF9E1EE /* Target.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 246;
+		rType = 1;
+	};
+	E21976BE1392E777003CC739 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'CONTRACT_FROM_NEXT_LOOP_POINT' is not a member of 'rec::command::Command'";
+		fRef = B821697666437A71BDF9E1EE /* Target.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 90;
+		rType = 1;
+	};
+	E21976BF1392E777003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B821697666437A71BDF9E1EE /* Target.cpp */;
+		name = "Target.cpp: 302";
+		rLen = 0;
+		rLoc = 10410;
+		rType = 0;
+		vrLen = 2999;
+		vrLoc = 1839;
+	};
+	E21976C21392E777003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B821697666437A71BDF9E1EE /* Target.cpp */;
+		name = "Target.cpp: 302";
+		rLen = 0;
+		rLoc = 10410;
+		rType = 0;
+		vrLen = 2039;
+		vrLoc = 7767;
+	};
+	E21976C51392E7F6003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B821697666437A71BDF9E1EE /* Target.cpp */;
+		name = "Target.cpp: 352";
+		rLen = 0;
+		rLoc = 10460;
+		rType = 0;
+		vrLen = 2597;
+		vrLoc = 2074;
+	};
+	E21976C61392E7F6003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B821697666437A71BDF9E1EE /* Target.cpp */;
+		name = "Target.cpp: 352";
+		rLen = 0;
+		rLoc = 10460;
+		rType = 0;
+		vrLen = 1605;
+		vrLoc = 7650;
 	};
 	E2221EE51347159100298AE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

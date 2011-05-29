@@ -22,6 +22,7 @@ using thread::functionCallback;
 namespace {
 
 void clearNavigator() { persist::set(VirtualFileList()); }
+void doNothing() {}
 
 }  // namespace
 
@@ -87,6 +88,14 @@ void Target::addCommands() {
       "Close", "File",
       "Close the current file", 'w');
 
+  add(Command::CONTRACT_FROM_NEXT_LOOP_POINT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
   add(Command::EJECT_CDS, functionCallback(&cd::ejectAll),
       "Eject All", "File",
       "Eject all CDs and DVDs");
@@ -95,75 +104,227 @@ void Target::addCommands() {
       "Invert Selection", "Loops",
       "Unselect everything selected and vice-versa.");
 
-  // JUMP_TO_NEXT_LOOP_POINT
-  // JUMP_TO_PREVIOUS_LOOP_POINT
-  // JUMP_TO_START
-  // KEYBOARD_MAPPINGS
-  // NUDGE_BEGIN_LEFT
-  // NUDGE_BEGIN_RIGHT
-  // NUDGE_END_LEFT
-  // NUDGE_END_RIGHT
-  // NUDGE_VOLUME_DOWN
-  // NUDGE_VOLUME_UP
+  add(Command::EXTEND_TO_NEXT_LOOP_POINT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
 
-#if 0
-  add(Command::, functionCallback(&),
-      "", "",
-      "");
-#endif
+  add(Command::EXTEND_TO_PREVIOUS_LOOP_POINT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::JUMP_TO_NEXT_LOOP_POINT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::JUMP_TO_PREVIOUS_LOOP_POINT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::JUMP_TO_START, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::KEYBOARD_MAPPINGS, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::NUDGE_BEGIN_LEFT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::NUDGE_BEGIN_RIGHT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::NUDGE_END_LEFT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::NUDGE_END_RIGHT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::NUDGE_VOLUME_DOWN, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::NUDGE_VOLUME_UP, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
   add(Command::OPEN, functionCallback(&gui::dialog::openOneFile,
                                       listeners()),
       "Open...", "File",
       "Open a dialog to select a new audio file for looping.", 'o');
 
-  // RECENT_FILES
-  // SELECT_ONLY_0
-  // SELECT_ONLY_1
-  // SELECT_ONLY_2
-  // SELECT_ONLY_3
-  // SELECT_ONLY_4
-  // SELECT_ONLY_5
-  // SELECT_ONLY_6
-  // SELECT_ONLY_7
-  // SELECT_ONLY_8
-  // SELECT_ONLY_9
-  // TOGGLE_0
-  // TOGGLE_1
-  // TOGGLE_2
-  // TOGGLE_3
-  // TOGGLE_4
-  // TOGGLE_5
-  // TOGGLE_6
-  // TOGGLE_7
-  // TOGGLE_8
-  // TOGGLE_9
+  add(Command::RECENT_FILES, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
 
-  // TOGGLE_WHOLE_SONG_LOOP
+  add(Command::SELECT_ONLY_0, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_1, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_2, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_3, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_4, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_5, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_6, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_7, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_8, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::SELECT_ONLY_9, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_0, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_1, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_2, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_3, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_4, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_5, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_6, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_7, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_8, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_9, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TOGGLE_WHOLE_SONG_LOOP, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
 
   add(Command::TOGGLE_START_STOP, methodCallback(player(),
       &audio::source::Player::toggle),
       "Toggle Start/Stop", "Transport",
       "Start or pause", ' ');
 
-  // TOGGLE_STRETCH_ENABLE
-  // TREE_CLOSE
-  // TREE_DOWN
-  // TREE_LEFT
-  // TREE_OPEN
-  // TREE_RIGHT
-  // TREE_UP
-  // UNSELECT_ONLY_0
-  // UNSELECT_ONLY_1
-  // UNSELECT_ONLY_2
-  // UNSELECT_ONLY_3
-  // UNSELECT_ONLY_4
-  // UNSELECT_ONLY_5
-  // UNSELECT_ONLY_6
-  // UNSELECT_ONLY_7
-  // UNSELECT_ONLY_8
-  // UNSELECT_ONLY_9
-  // ZOOM_IN
-  // ZOOM_OUT
+  add(Command::TOGGLE_STRETCH_ENABLE, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TREE_CLOSE, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TREE_DOWN, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TREE_LEFT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TREE_OPEN, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TREE_RIGHT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::TREE_UP, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_0, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_1, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_2, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_3, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_4, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_5, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_6, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_7, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_8, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::UNSELECT_9, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::ZOOM_IN, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
+
+  add(Command::ZOOM_OUT, functionCallback(&doNothing),
+      "Name", "Category",
+      "Documentation");
 
 #ifdef TODO
 
