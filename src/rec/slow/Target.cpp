@@ -22,7 +22,6 @@ using thread::functionCallback;
 namespace {
 
 void clearNavigator() { persist::set(VirtualFileList()); }
-void doNothing(Instance*) {}
 
 void jumpToNextLoopPoint(Instance* i) {
 }
@@ -82,36 +81,6 @@ void treeRight(Instance* i) {
 }
 
 void treeUp(Instance* i) {
-}
-
-void Unselect0(Instance* i) {
-}
-
-void Unselect1(Instance* i) {
-}
-
-void Unselect2(Instance* i) {
-}
-
-void Unselect3(Instance* i) {
-}
-
-void Unselect4(Instance* i) {
-}
-
-void Unselect5(Instance* i) {
-}
-
-void Unselect6(Instance* i) {
-}
-
-void Unselect7(Instance* i) {
-}
-
-void Unselect8(Instance* i) {
-}
-
-void Unselect9(Instance* i) {
 }
 
 void zoomIn(Instance* i) {
@@ -419,52 +388,52 @@ void Target::addCommands() {
       "Documentation");
 
   add(Command::UNSELECT_0,
-      functionCallback(&Unselect0, instance_),
+      functionCallback(&unselectItem, instance_, 0),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_1,
-      functionCallback(&Unselect1, instance_),
+      functionCallback(&unselectItem, instance_, 1),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_2,
-      functionCallback(&Unselect2, instance_),
+      functionCallback(&unselectItem, instance_, 2),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_3,
-      functionCallback(&Unselect3, instance_),
+      functionCallback(&unselectItem, instance_, 3),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_4,
-      functionCallback(&Unselect4, instance_),
+      functionCallback(&unselectItem, instance_, 4),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_5,
-      functionCallback(&Unselect5, instance_),
+      functionCallback(&unselectItem, instance_, 5),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_6,
-      functionCallback(&Unselect6, instance_),
+      functionCallback(&unselectItem, instance_, 6),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_7,
-      functionCallback(&Unselect7, instance_),
+      functionCallback(&unselectItem, instance_, 7),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_8,
-      functionCallback(&Unselect8, instance_),
+      functionCallback(&unselectItem, instance_, 8),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_9,
-      functionCallback(&Unselect9, instance_),
+      functionCallback(&unselectItem, instance_, 9),
       "NAME", "Category",
       "Documentation");
 
