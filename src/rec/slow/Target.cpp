@@ -10,12 +10,13 @@
 #include "rec/audio/source/Player.h"
 #include "rec/util/cd/Eject.h"
 #include "rec/util/Math.h"
+#include "rec/util/thread/FunctionCallback.h"
 
 namespace rec {
 namespace slow {
 
 using rec::command::Command;
-using thread::makeCallback;
+using thread::methodCallback;
 using thread::functionCallback;
 
 namespace {
@@ -31,19 +32,19 @@ void Target::addCommands() {
   Loops* loops = &components()->loops_;
 
   // Defined by Juce.
-  add(Command::DEL, makeCallback(&cutNoClipboard),
+  add(Command::DEL, functionCallback(cutNoClipboard),
       "Delete", "Edit",
       "Delete the current selection without changing the clipboard.", 'x');
 
-  add(Command::CUT, makeCallback(&cutToClipboard),
+  add(Command::CUT, functionCallback(&cutToClipboard),
       "Cut", "Edit",
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
-  add(Command::COPY, makeCallback(&copyToClipboard),
+  add(Command::COPY, functionCallback(&copyToClipboard),
       "Copy", "Edit",
       "Copy the current selection to the clipboard.", 'c');
 
-  add(Command::PASTE, makeCallback(&pasteFromClipboard),
+  add(Command::PASTE, functionCallback(&pasteFromClipboard),
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.", 'v');
 
@@ -62,21 +63,22 @@ void Target::addCommands() {
       "Add Loop Point", "Transport",
       "Add a loop point at the current time.");
 
-  add(Command::AUDIO_PREFERENCES, makeCallback(&device()->setupPage_,
+  add(Command::AUDIO_PREFERENCES, methodCallback(&device()->setupPage_,
                                                &gui::audio::SetupPage::show,
                                                &components()->mainPage_),
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
 
-  add(Command::CLEAR_NAVIGATOR, makeCallback(&clearNavigator),
+  add(Command::CLEAR_NAVIGATOR, functionCallback(&clearNavigator),
       "Clear Navigator", "Navigator", "Clear all files and directories from "
       "the navigator pane.");
-  add(Command::CLEAR_LOOPS, makeCallback(loops, &Loops::clearLoops),
+
+  add(Command::CLEAR_LOOPS, methodCallback(loops, &Loops::clearLoops),
       "Clear Loops", "Loop",
       "Delete all loop points");
 
   // TODO:  this needs to move to the new metaphor...!
-  add(Command::CLEAR_SELECTION, makeCallback(loops, &Loops::clearSelection),
+  add(Command::CLEAR_SELECTION, methodCallback(loops, &Loops::clearSelection),
       "Select None", "Loop",
       "Unselect all the loop points");
 
@@ -85,11 +87,14 @@ void Target::addCommands() {
       "Close", "File",
       "Close the current file", 'w');
 
-  add(Command::EJECT_CDS, makeCallback(&cd::ejectAll),
+  add(Command::EJECT_CDS, functionCallback(&cd::ejectAll),
       "Eject All", "File",
       "Eject all CDs and DVDs");
 
-  // INVERT_LOOP_SELECTION
+  add(Command::INVERT_LOOP_SELECTION, functionCallback(selectInvert, instance_),
+      "Invert Selection", "Loops",
+      "Unselect everything selected and vice-versa.");
+
   // JUMP_TO_NEXT_LOOP_POINT
   // JUMP_TO_PREVIOUS_LOOP_POINT
   // JUMP_TO_START
@@ -101,6 +106,11 @@ void Target::addCommands() {
   // NUDGE_VOLUME_DOWN
   // NUDGE_VOLUME_UP
 
+#if 0
+  add(Command::, functionCallback(&),
+      "", "",
+      "");
+#endif
   add(Command::OPEN, functionCallback(&gui::dialog::openOneFile,
                                       listeners()),
       "Open...", "File",
@@ -130,7 +140,7 @@ void Target::addCommands() {
 
   // TOGGLE_WHOLE_SONG_LOOP
 
-  add(Command::TOGGLE_START_STOP, makeCallback(player(),
+  add(Command::TOGGLE_START_STOP, methodCallback(player(),
       &audio::source::Player::toggle),
       "Toggle Start/Stop", "Transport",
       "Start or pause", ' ');
@@ -157,16 +167,16 @@ void Target::addCommands() {
 
 #ifdef TODO
 
-  add(Command::CLEAR_TIME, makeCallback(&instal, &MainPage::clearTime),
+  add(Command::CLEAR_TIME, methodCallback(&instal, &MainPage::clearTime),
       "Clear Time Stretch", "Loop",
       "Clear all time and pitch shifting");
-  add(Command::TREE_CLEAR, makeCallback(cc, &ComponentContainer::clearTree),
+  add(Command::TREE_CLEAR, methodCallback(cc, &ComponentContainer::clearTree),
       "Clear Workspace", "Loop",
       "Remove all files and directories from the workspace area.");
   // add(Command::FILE_CLEAR, make, &ComponentContainer::clearFile);
 
   // Causes a run-time error!
-  add(Command::QUIT, makeCallback(JUCEApplication::getInstance(),
+  add(Command::QUIT, methodCallback(JUCEApplication::getInstance(),
                                   &JUCEApplication::systemRequestedQuit),
       "Quit", "File",
       "Quit SlowGold", 'q');

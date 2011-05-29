@@ -48,17 +48,17 @@ callback::Thread* makeThread(const String& name, Type o) {
 
 template <typename Type, typename Method>
 callback::Thread* makeThread(const String& name, Type* o, Method m) {
-  return new callback::Thread(name, makeCallback<Type, Method>(o, m));
+  return new callback::Thread(name, methodCallback<Type, Method>(o, m));
 }
 
 template <typename Type, typename Method, typename Value>
 callback::Thread* makeThread(const String& name, Type* o, Method m, Value v) {
-  return new callback::Thread(name, makeCallback<Type, Method, Value>(o, m, v));
+  return new callback::Thread(name, methodCallback<Type, Method, Value>(o, m, v));
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
 callback::Thread* makeThread(const String& name, Type* o, Method m, V1 v1, V2 v2) {
-  return new callback::Thread(name, makeCallback<Type, Method, V1, V2>(o, m, v1, v2));
+  return new callback::Thread(name, methodCallback<Type, Method, V1, V2>(o, m, v1, v2));
 }
 
 inline callback::Thread* makeLoop(int waitTime, const String& name, Callback* cb) {
@@ -72,17 +72,17 @@ callback::Thread* makeLoop(int t, const String& name, Type o) {
 
 template <typename Type, typename Method>
 callback::Thread* makeLoop(int t, const String& name, Type* o, Method m) {
-  return new callback::Thread(name, makeCallback<Type, Method>(o, m), t);
+  return new callback::Thread(name, methodCallback<Type, Method>(o, m), t);
 }
 
 template <typename Type, typename Method, typename Value>
 callback::Thread* makeLoop(int t, const String& name, Type* o, Method m, Value v) {
-  return new callback::Thread(name, makeCallback<Type, Method, Value>(o, m, v), t);
+  return new callback::Thread(name, methodCallback<Type, Method, Value>(o, m, v), t);
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
 callback::Thread* makeLoop(int t, const String& name, Type* o, Method m, V1 v1, V2 v2) {
-  return new callback::Thread(name, makeCallback<Type, Method, V1, V2>(o, m, v1, v2), t);
+  return new callback::Thread(name, methodCallback<Type, Method, V1, V2>(o, m, v1, v2), t);
 }
 
 inline callback::Thread* runInNewThread(const String& n, int p, Callback* cb) {
@@ -100,17 +100,17 @@ callback::Thread* runInNewThread(const String& n, int p, Type o) {
 
 template <typename Type, typename Method>
 callback::Thread* runInNewThread(const String& n, int p, Type* o, Method m) {
-  return runInNewThread(n, p, makeCallback<Type, Method>(o, m));
+  return runInNewThread(n, p, methodCallback<Type, Method>(o, m));
 }
 
 template <typename Type, typename Method, typename Value>
 callback::Thread* runInNewThread(const String& n, int p, Type* o, Method m, Value v) {
-  return runInNewThread(n, p, makeCallback<Type, Method, Value>(o, m, v));
+  return runInNewThread(n, p, methodCallback<Type, Method, Value>(o, m, v));
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
 callback::Thread* runInNewThread(const String& n, int p, Type* o, Method m, V1 v1, V2 v2) {
-  return runInNewThread(n, p, makeCallback<Type, Method, V1, V2>(o, m, v1, v2));
+  return runInNewThread(n, p, methodCallback<Type, Method, V1, V2>(o, m, v1, v2));
 }
 
 }  // namespace thread

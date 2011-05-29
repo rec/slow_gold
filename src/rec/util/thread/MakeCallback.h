@@ -14,32 +14,22 @@ namespace thread {
 
 template <typename Type>
 Callback* makeCallback(Type o) {
-  return new thread::callback::Pointer<Type>(o);
+  return new callback::Pointer<Type>(o);
 }
 
 template <typename Type, typename Method>
-Callback* makeCallback(Type* o, Method m) {
-  return new thread::callback::Callback0<Type, Method>(o, m);
-}
-
-template <typename Function, typename Value>
-Callback* functionCallback(Function f, Value v) {
-  return new thread::callback::CallbackFunc1<Function, Value>(f, v);
-}
-
-template <typename Function, typename V1, typename V2>
-Callback* functionCallback(Function f, V1 v1, V2 v2) {
-  return new thread::callback::CallbackFunc1<Function, Value>(f, v1, v2);
+Callback* methodCallback(Type* o, Method m) {
+  return new callback::Callback0<Type, Method>(o, m);
 }
 
 template <typename Type, typename Method, typename Value>
-Callback* makeCallback(Type* o, Method m, Value v) {
-  return new thread::callback::Callback1<Type, Method, Value>(o, m, v);
+Callback* methodCallback(Type* o, Method m, Value v) {
+  return new callback::Callback1<Type, Method, Value>(o, m, v);
 }
 
 template <typename Type, typename Method, typename V1, typename V2>
-Callback* makeCallback(Type* o, Method m, V1 v1, V2 v2) {
-  return new thread::callback::Callback2<Type, Method, V1, V2>(o, m, v1, v2);
+Callback* methodCallback(Type* o, Method m, V1 v1, V2 v2) {
+  return new callback::Callback2<Type, Method, V1, V2>(o, m, v1, v2);
 }
 
 }  // namespace thread
