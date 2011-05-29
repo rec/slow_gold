@@ -23,13 +23,18 @@ namespace {
 
 void clearNavigator() { persist::set(VirtualFileList()); }
 
-void jumpToNextLoopPoint(Instance* i) {
-}
 
-void jumpToPreviousLoopPoint(Instance* i) {
+void jumpToLoopPoint(Instance* i, int offset) {
+  LoopPointList loops(i->model_->loopPointList());
+  SampleTime time = i->player_->getNextReadPosition();
+  int j = 0, size = loops.loop_point_size();
+  for (; j < size && time >= loops.loop_point(j).time(); ++j);
+  j = std::min(size - 1, std::max(0, j + offset));
+  i->model_->setTriggerTime(loops.loop_point(j).time());
 }
 
 void jumpToStart(Instance* i) {
+  i->model_->setTriggerTime(0);
 }
 
 void keyboardMappings(Instance* i) {
@@ -183,12 +188,12 @@ void Target::addCommands() {
       "Enable the segment before the first one.");
 
   add(Command::JUMP_TO_NEXT_LOOP_POINT,
-      functionCallback(&jumpToNextLoopPoint, instance_),
+      functionCallback(&jumpToLoopPoint, instance_, 1),
       "NAME", "Category",
       "Documentation");
 
   add(Command::JUMP_TO_PREVIOUS_LOOP_POINT,
-      functionCallback(&jumpToPreviousLoopPoint, instance_),
+      functionCallback(&jumpToLoopPoint, instance_, -1),
       "NAME", "Category",
       "Documentation");
 
