@@ -57,36 +57,6 @@ void nudgeVolumeUp(Instance* i) {
 void recentFiles(Instance* i) {
 }
 
-void selectOnly0(Instance* i) {
-}
-
-void selectOnly1(Instance* i) {
-}
-
-void selectOnly2(Instance* i) {
-}
-
-void selectOnly3(Instance* i) {
-}
-
-void selectOnly4(Instance* i) {
-}
-
-void selectOnly5(Instance* i) {
-}
-
-void selectOnly6(Instance* i) {
-}
-
-void selectOnly7(Instance* i) {
-}
-
-void selectOnly8(Instance* i) {
-}
-
-void selectOnly9(Instance* i) {
-}
-
 void Toggle0(Instance* i) {
 }
 
@@ -329,57 +299,57 @@ void Target::addCommands() {
       "Open a dialog to select a new audio file for looping.", 'o');
 
   add(Command::RECENT_FILES,
-      functionCallback(&recentFiles, instance_),
+      functionCallback(recentFiles, instance_),
       "NAME", "Category",
       "Documentation");
-
+      
   add(Command::SELECT_ONLY_0,
-      functionCallback(&selectOnly0, instance_),
+      functionCallback(selectItemOnly, instance_, 0),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_1,
-      functionCallback(&selectOnly1, instance_),
+      functionCallback(&selectItemOnly, instance_, 1),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_2,
-      functionCallback(&selectOnly2, instance_),
+      functionCallback(&selectItemOnly, instance_, 2),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_3,
-      functionCallback(&selectOnly3, instance_),
+      functionCallback(&selectItemOnly, instance_, 3),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_4,
-      functionCallback(&selectOnly4, instance_),
+      functionCallback(&selectItemOnly, instance_, 4),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_5,
-      functionCallback(&selectOnly5, instance_),
+      functionCallback(&selectItemOnly, instance_, 5),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_6,
-      functionCallback(&selectOnly6, instance_),
+      functionCallback(&selectItemOnly, instance_, 6),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_7,
-      functionCallback(&selectOnly7, instance_),
+      functionCallback(&selectItemOnly, instance_, 7),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_8,
-      functionCallback(&selectOnly8, instance_),
+      functionCallback(&selectItemOnly, instance_, 8),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_9,
-      functionCallback(&selectOnly9, instance_),
+      functionCallback(&selectItemOnly, instance_, 9),
       "NAME", "Category",
       "Documentation");
 

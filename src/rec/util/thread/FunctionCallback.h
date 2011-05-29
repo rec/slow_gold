@@ -19,7 +19,7 @@ Callback* functionCallback(Function f, Value v) {
 
 template <typename Function, typename V1, typename V2>
 Callback* functionCallback(Function f, V1 v1, V2 v2) {
-  return new callback::CallbackFunc1<Function, Value>(f, v1, v2);
+  return new callback::CallbackFunc2<Function, V1, V2>(f, v1, v2);
 }
 
 }  // namespace thread
