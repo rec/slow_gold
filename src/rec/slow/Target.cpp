@@ -1,5 +1,6 @@
 #include "rec/slow/Target.h"
 #include "rec/audio/Audio.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
@@ -18,6 +19,8 @@ using thread::makeCallback;
 using thread::functionCallback;
 
 namespace {
+
+void clearNavigator() { persist::set(VirtualFileList()); }
 
 }  // namespace
 
@@ -65,12 +68,14 @@ void Target::addCommands() {
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
 
-  // CLEAR_NAVIGATOR
-
+  add(Command::CLEAR_NAVIGATOR, makeCallback(&clearNavigator),
+      "Clear Navigator", "Navigator", "Clear all files and directories from "
+      "the navigator pane.");
   add(Command::CLEAR_LOOPS, makeCallback(loops, &Loops::clearLoops),
       "Clear Loops", "Loop",
-      "Get rid of all loop points");
+      "Delete all loop points");
 
+  // TODO:  this needs to move to the new metaphor...!
   add(Command::CLEAR_SELECTION, makeCallback(loops, &Loops::clearSelection),
       "Select None", "Loop",
       "Unselect all the loop points");
@@ -93,6 +98,8 @@ void Target::addCommands() {
   // NUDGE_BEGIN_RIGHT
   // NUDGE_END_LEFT
   // NUDGE_END_RIGHT
+  // NUDGE_VOLUME_DOWN
+  // NUDGE_VOLUME_UP
 
   add(Command::OPEN, functionCallback(&gui::dialog::openOneFile,
                                       listeners()),
@@ -120,6 +127,8 @@ void Target::addCommands() {
   // TOGGLE_7
   // TOGGLE_8
   // TOGGLE_9
+
+  // TOGGLE_WHOLE_SONG_LOOP
 
   add(Command::TOGGLE_START_STOP, makeCallback(player(),
       &audio::source::Player::toggle),
