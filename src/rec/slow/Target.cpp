@@ -57,36 +57,6 @@ void nudgeVolumeUp(Instance* i) {
 void recentFiles(Instance* i) {
 }
 
-void Toggle0(Instance* i) {
-}
-
-void Toggle1(Instance* i) {
-}
-
-void Toggle2(Instance* i) {
-}
-
-void Toggle3(Instance* i) {
-}
-
-void Toggle4(Instance* i) {
-}
-
-void Toggle5(Instance* i) {
-}
-
-void Toggle6(Instance* i) {
-}
-
-void Toggle7(Instance* i) {
-}
-
-void Toggle8(Instance* i) {
-}
-
-void Toggle9(Instance* i) {
-}
-
 void toggleWholeSongLoop(Instance* i) {
 }
 
@@ -302,7 +272,7 @@ void Target::addCommands() {
       functionCallback(recentFiles, instance_),
       "NAME", "Category",
       "Documentation");
-      
+
   add(Command::SELECT_ONLY_0,
       functionCallback(selectItemOnly, instance_, 0),
       "NAME", "Category",
@@ -354,52 +324,52 @@ void Target::addCommands() {
       "Documentation");
 
   add(Command::TOGGLE_0,
-      functionCallback(&Toggle0, instance_),
+      functionCallback(&toggleItem, instance_, 0),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_1,
-      functionCallback(&Toggle1, instance_),
+      functionCallback(&toggleItem, instance_, 1),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_2,
-      functionCallback(&Toggle2, instance_),
+      functionCallback(&toggleItem, instance_, 2),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_3,
-      functionCallback(&Toggle3, instance_),
+      functionCallback(&toggleItem, instance_, 3),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_4,
-      functionCallback(&Toggle4, instance_),
+      functionCallback(&toggleItem, instance_, 4),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_5,
-      functionCallback(&Toggle5, instance_),
+      functionCallback(&toggleItem, instance_, 5),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_6,
-      functionCallback(&Toggle6, instance_),
+      functionCallback(&toggleItem, instance_, 6),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_7,
-      functionCallback(&Toggle7, instance_),
+      functionCallback(&toggleItem, instance_, 7),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_8,
-      functionCallback(&Toggle8, instance_),
+      functionCallback(&toggleItem, instance_, 8),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_9,
-      functionCallback(&Toggle9, instance_),
+      functionCallback(&toggleItem, instance_, 9),
       "NAME", "Category",
       "Documentation");
 
