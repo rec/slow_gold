@@ -24,6 +24,162 @@ namespace {
 void clearNavigator() { persist::set(VirtualFileList()); }
 void doNothing(Instance*) {}
 
+void jumpToNextLoopPoint(Instance* i) {
+}
+
+void jumpToPreviousLoopPoint(Instance* i) {
+}
+
+void jumpToStart(Instance* i) {
+}
+
+void keyboardMappings(Instance* i) {
+}
+
+void nudgeBeginLeft(Instance* i) {
+}
+
+void nudgeBeginRight(Instance* i) {
+}
+
+void nudgeEndLeft(Instance* i) {
+}
+
+void nudgeEndRight(Instance* i) {
+}
+
+void nudgeVolumeDown(Instance* i) {
+}
+
+void nudgeVolumeUp(Instance* i) {
+}
+
+void recentFiles(Instance* i) {
+}
+
+void selectOnly0(Instance* i) {
+}
+
+void selectOnly1(Instance* i) {
+}
+
+void selectOnly2(Instance* i) {
+}
+
+void selectOnly3(Instance* i) {
+}
+
+void selectOnly4(Instance* i) {
+}
+
+void selectOnly5(Instance* i) {
+}
+
+void selectOnly6(Instance* i) {
+}
+
+void selectOnly7(Instance* i) {
+}
+
+void selectOnly8(Instance* i) {
+}
+
+void selectOnly9(Instance* i) {
+}
+
+void Toggle0(Instance* i) {
+}
+
+void Toggle1(Instance* i) {
+}
+
+void Toggle2(Instance* i) {
+}
+
+void Toggle3(Instance* i) {
+}
+
+void Toggle4(Instance* i) {
+}
+
+void Toggle5(Instance* i) {
+}
+
+void Toggle6(Instance* i) {
+}
+
+void Toggle7(Instance* i) {
+}
+
+void Toggle8(Instance* i) {
+}
+
+void Toggle9(Instance* i) {
+}
+
+void toggleWholeSongLoop(Instance* i) {
+}
+
+void toggleStartStop(Instance* i) {
+}
+
+void toggleStretchEnable(Instance* i) {
+}
+
+void treeClose(Instance* i) {
+}
+
+void treeDown(Instance* i) {
+}
+
+void treeLeft(Instance* i) {
+}
+
+void treeOpen(Instance* i) {
+}
+
+void treeRight(Instance* i) {
+}
+
+void treeUp(Instance* i) {
+}
+
+void Unselect0(Instance* i) {
+}
+
+void Unselect1(Instance* i) {
+}
+
+void Unselect2(Instance* i) {
+}
+
+void Unselect3(Instance* i) {
+}
+
+void Unselect4(Instance* i) {
+}
+
+void Unselect5(Instance* i) {
+}
+
+void Unselect6(Instance* i) {
+}
+
+void Unselect7(Instance* i) {
+}
+
+void Unselect8(Instance* i) {
+}
+
+void Unselect9(Instance* i) {
+}
+
+void zoomIn(Instance* i) {
+}
+
+void zoomOut(Instance* i) {
+}
+
 }  // namespace
 
 Target::Target(Instance* i) : TargetManager(i->window_), HasInstance(i) {}
@@ -118,52 +274,52 @@ void Target::addCommands() {
       "Enable the segment before the first one.");
 
   add(Command::JUMP_TO_NEXT_LOOP_POINT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&jumpToNextLoopPoint, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::JUMP_TO_PREVIOUS_LOOP_POINT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&jumpToPreviousLoopPoint, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::JUMP_TO_START,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&jumpToStart, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::KEYBOARD_MAPPINGS,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&keyboardMappings, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::NUDGE_BEGIN_LEFT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&nudgeBeginLeft, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::NUDGE_BEGIN_RIGHT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&nudgeBeginRight, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::NUDGE_END_LEFT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&nudgeEndLeft, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::NUDGE_END_RIGHT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&nudgeEndRight, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::NUDGE_VOLUME_DOWN,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&nudgeVolumeDown, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::NUDGE_VOLUME_UP,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&nudgeVolumeUp, instance_),
       "NAME", "Category",
       "Documentation");
 
@@ -173,212 +329,212 @@ void Target::addCommands() {
       "Open a dialog to select a new audio file for looping.", 'o');
 
   add(Command::RECENT_FILES,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&recentFiles, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_0,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly0, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_1,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly1, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_2,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly2, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_3,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly3, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_4,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly4, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_5,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly5, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_6,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly6, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_7,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly7, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_8,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly8, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::SELECT_ONLY_9,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&selectOnly9, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_0,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle0, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_1,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle1, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_2,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle2, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_3,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle3, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_4,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle4, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_5,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle5, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_6,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle6, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_7,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle7, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_8,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle8, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_9,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Toggle9, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_WHOLE_SONG_LOOP,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&toggleWholeSongLoop, instance_),
       "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_START_STOP, methodCallback(player(),
-      &audio::source::Player::toggle),
+  add(Command::TOGGLE_START_STOP,
+      methodCallback(player(), &audio::source::Player::toggle),
       "Toggle Start/Stop", "Transport",
       "Start or pause", ' ');
 
   add(Command::TOGGLE_STRETCH_ENABLE,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&toggleStretchEnable, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TREE_CLOSE,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&treeClose, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TREE_DOWN,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&treeDown, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TREE_LEFT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&treeLeft, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TREE_OPEN,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&treeOpen, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TREE_RIGHT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&treeRight, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::TREE_UP,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&treeUp, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_0,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect0, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_1,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect1, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_2,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect2, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_3,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect3, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_4,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect4, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_5,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect5, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_6,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect6, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_7,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect7, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_8,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect8, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::UNSELECT_9,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&Unselect9, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::ZOOM_IN,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&zoomIn, instance_),
       "NAME", "Category",
       "Documentation");
 
   add(Command::ZOOM_OUT,
-      functionCallback(&doNothing, instance_),
+      functionCallback(&zoomOut, instance_),
       "NAME", "Category",
       "Documentation");
 
