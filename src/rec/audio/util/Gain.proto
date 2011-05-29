@@ -1,7 +1,8 @@
 package rec.audio;
 
-message Level {
+message Gain {
   optional float level = 1 [default = 1.0];
   optional bool mute = 2;
   optional bool dim = 3;
+  optional float dim_level = 4 [default = 0.3];
 };

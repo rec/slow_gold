@@ -9,6 +9,7 @@
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/source/Timer.h"
 #include "rec/audio/source/Stretchy.h"
+#include "rec/audio/util/Gain.h"
 #include "rec/util/Math.h"
 
 namespace rec {
@@ -35,7 +36,7 @@ Player::Player(Device* d)
   clearSource();
 }
 
- Player::~Player() {
+Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
@@ -92,6 +93,9 @@ void Player::clearSource() {
   setSource(new Empty);
 }
 
+void Player::setGain(const Gain& gain) {
+  player_.setGain(getGain(gain));
+}
 
 }  // namespace source
 }  // namespace audio

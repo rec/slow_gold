@@ -12,6 +12,7 @@
 namespace rec {
 namespace audio { class Device; }
 namespace audio { namespace stretch { class Stretch; }}
+namespace audio { class Gain; }
 
 namespace audio {
 namespace source {
@@ -49,7 +50,8 @@ class Player : public Broadcaster<transport::State>,
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Buffered* buffered() { return buffered_; }
   void setStereoProto(const StereoProto&);
-  void setSelection(const block::BlockSet& s);
+  void setSelection(const block::BlockSet&);
+  void setGain(const Gain&);
 
   SampleTime length() const { return timer_->getTotalLength(); }
   RealTime realLength() const { return audio::samplesToTime(length()); }

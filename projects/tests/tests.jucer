@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="J78aFxzLe" name="tests">
+  <MAINGROUP id="RxIbN7uKH" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -224,6 +224,10 @@
                 id="K4piO9oOZ" name="FillableBuffer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Frame.h" id="GMsLwIKz2"
                 name="Frame.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/Gain.cpp" id="eqiXSlZIX"
+                name="Gain.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/Gain.h" id="We5f1lfmt"
+                name="Gain.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/GenericFillableBuffer.h"
                 id="6fsaQ0IJ8" name="GenericFillableBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ThumbnailBuffer.cpp"
@@ -1059,10 +1063,10 @@
                   id="qESRGk15D" name="AudioDeviceSetup.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/util/AudioDeviceSetup.pb.h"
                   id="JD7ceXlha" name="AudioDeviceSetup.pb.h" resource="0"/>
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/util/Level.pb.cc"
-                  id="B40mviosM" name="Level.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/util/Level.pb.h"
-                  id="M6lZVNNcE" name="Level.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/util/Gain.pb.cc"
+                  id="5X4ALw39w" name="Gain.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/util/Gain.pb.h"
+                  id="xjBTKC8TZ" name="Gain.pb.h" resource="0"/>
           </GROUP>
         </GROUP>
         <GROUP id="G3ykOcAxq" name="command">
@@ -1195,7 +1199,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="5m9yceyZU" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="wWEaMBW5H" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

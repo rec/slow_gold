@@ -226,6 +226,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\util\FillableBuffer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\FillableBuffer.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\Frame.h"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\util\Gain.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\GenericFillableBuffer.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h"/>
@@ -676,8 +678,8 @@
             <Filter Name="util">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\AudioDeviceSetup.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\AudioDeviceSetup.pb.h"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\Level.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\Level.pb.h"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h"/>
             </Filter>
           </Filter>
           <Filter Name="command">
