@@ -22,7 +22,7 @@ using thread::functionCallback;
 namespace {
 
 void clearNavigator() { persist::set(VirtualFileList()); }
-void doNothing() {}
+void doNothing(Instance*) {}
 
 }  // namespace
 
@@ -37,15 +37,15 @@ void Target::addCommands() {
       "Delete", "Edit",
       "Delete the current selection without changing the clipboard.", 'x');
 
-  add(Command::CUT, functionCallback(&cutToClipboard),
+  add(Command::CUT, functionCallback(cutToClipboard),
       "Cut", "Edit",
       "Copy the current selection to the clipboard and clear the selection.", 'x');
 
-  add(Command::COPY, functionCallback(&copyToClipboard),
+  add(Command::COPY, functionCallback(copyToClipboard),
       "Copy", "Edit",
       "Copy the current selection to the clipboard.", 'c');
 
-  add(Command::PASTE, functionCallback(&pasteFromClipboard),
+  add(Command::PASTE, functionCallback(pasteFromClipboard),
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.", 'v');
 
@@ -65,8 +65,8 @@ void Target::addCommands() {
       "Add a loop point at the current time.");
 
   add(Command::AUDIO_PREFERENCES, methodCallback(&device()->setupPage_,
-                                               &gui::audio::SetupPage::show,
-                                               &components()->mainPage_),
+                                                 &gui::audio::SetupPage::show,
+                                                 &components()->mainPage_),
       "Audio Preferences...", "File",
       "Open the Audio Preferences pane.", ';');
 
@@ -88,68 +88,83 @@ void Target::addCommands() {
       "Close", "File",
       "Close the current file", 'w');
 
-  add(Command::CONTRACT_FROM_NEXT_LOOP_POINT, functionCallback(&doNothing),
-      "Name", "Category",
-      "Documentation");
+  add(Command::CONTRACT_FROM_NEXT_LOOP_POINT,
+      functionCallback(&retractEnd, instance_),
+      "Disable last segment", "Loops",
+      "Disable the last loop segment");
 
-  add(Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT, functionCallback(&doNothing),
-      "Name", "Category",
-      "Documentation");
+  add(Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT,
+      functionCallback(&retractBegin, instance_),
+      "Disable first segment", "Loops",
+      "Disable the first loop segment");
 
   add(Command::EJECT_CDS, functionCallback(&cd::ejectAll),
       "Eject All", "File",
       "Eject all CDs and DVDs");
 
-  add(Command::INVERT_LOOP_SELECTION, functionCallback(selectInvert, instance_),
+  add(Command::INVERT_LOOP_SELECTION,
+      functionCallback(selectInvert, instance_),
       "Invert Selection", "Loops",
       "Unselect everything selected and vice-versa.");
 
-  add(Command::EXTEND_TO_NEXT_LOOP_POINT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::EXTEND_TO_NEXT_LOOP_POINT,
+      functionCallback(&extendEnd, instance_),
+      "Enable next loop segment", "Loops",
+      "Enable the next segment in order.");
+
+  add(Command::EXTEND_TO_PREVIOUS_LOOP_POINT,
+      functionCallback(&extendBegin, instance_),
+      "Extend previous loop segment", "Loops",
+      "Enable the segment before the first one.");
+
+  add(Command::JUMP_TO_NEXT_LOOP_POINT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::EXTEND_TO_PREVIOUS_LOOP_POINT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::JUMP_TO_PREVIOUS_LOOP_POINT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::JUMP_TO_NEXT_LOOP_POINT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::JUMP_TO_START,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::JUMP_TO_PREVIOUS_LOOP_POINT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::KEYBOARD_MAPPINGS,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::JUMP_TO_START, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::NUDGE_BEGIN_LEFT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::KEYBOARD_MAPPINGS, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::NUDGE_BEGIN_RIGHT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::NUDGE_BEGIN_LEFT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::NUDGE_END_LEFT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::NUDGE_BEGIN_RIGHT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::NUDGE_END_RIGHT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::NUDGE_END_LEFT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::NUDGE_VOLUME_DOWN,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::NUDGE_END_RIGHT, functionCallback(&doNothing),
-      "Name", "Category",
-      "Documentation");
-
-  add(Command::NUDGE_VOLUME_DOWN, functionCallback(&doNothing),
-      "Name", "Category",
-      "Documentation");
-
-  add(Command::NUDGE_VOLUME_UP, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::NUDGE_VOLUME_UP,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
   add(Command::OPEN, functionCallback(&gui::dialog::openOneFile,
@@ -157,92 +172,114 @@ void Target::addCommands() {
       "Open...", "File",
       "Open a dialog to select a new audio file for looping.", 'o');
 
-  add(Command::RECENT_FILES, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::RECENT_FILES,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_0, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_0,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_1, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_1,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_2, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_2,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_3, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_3,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_4, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_4,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_5, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_5,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_6, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_6,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_7, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_7,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_8, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_8,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::SELECT_ONLY_9, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::SELECT_ONLY_9,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_0, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_0,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_1, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_1,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_2, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_2,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_3, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_3,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_4, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_4,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_5, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_5,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_6, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_6,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_7, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_7,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_8, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_8,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_9, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_9,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TOGGLE_WHOLE_SONG_LOOP, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_WHOLE_SONG_LOOP,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
   add(Command::TOGGLE_START_STOP, methodCallback(player(),
@@ -250,80 +287,99 @@ void Target::addCommands() {
       "Toggle Start/Stop", "Transport",
       "Start or pause", ' ');
 
-  add(Command::TOGGLE_STRETCH_ENABLE, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TOGGLE_STRETCH_ENABLE,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TREE_CLOSE, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TREE_CLOSE,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TREE_DOWN, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TREE_DOWN,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TREE_LEFT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TREE_LEFT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TREE_OPEN, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TREE_OPEN,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TREE_RIGHT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TREE_RIGHT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::TREE_UP, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::TREE_UP,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_0, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_0,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_1, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_1,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_2, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_2,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_3, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_3,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_4, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_4,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_5, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_5,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_6, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_6,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_7, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_7,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_8, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_8,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::UNSELECT_9, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::UNSELECT_9,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::ZOOM_IN, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::ZOOM_IN,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
-  add(Command::ZOOM_OUT, functionCallback(&doNothing),
-      "Name", "Category",
+  add(Command::ZOOM_OUT,
+      functionCallback(&doNothing, instance_),
+      "NAME", "Category",
       "Documentation");
 
 #ifdef TODO
