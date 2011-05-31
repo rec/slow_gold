@@ -8,12 +8,13 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class LevelMeter : public Component, public Listener<const vector<double>&> {
+class LevelMeter : public Component, 
+                   public Listener<const LevelVector&> {
  public:
   LevelMeter(bool horizontal = true, bool rms = true)
       : horizontal_(horizontal), rms_(rms) {}
 
-  virtual void operator()(const vector<double>& levels) {
+  virtual void operator()(const LevelVector& levels) {
     ScopedLock l(lock_);
     levels_ = levels;
     for (int i = 0; i < levels_.size(); ++i) {
@@ -56,7 +57,7 @@ class LevelMeter : public Component, public Listener<const vector<double>&> {
 
  private:
   CriticalSection lock_;
-  vector<double> levels_;
+  LevelVector levels_;
   bool horizontal_;
   bool rms_;
 

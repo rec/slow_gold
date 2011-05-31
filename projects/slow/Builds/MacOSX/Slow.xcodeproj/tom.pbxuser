@@ -739,8 +739,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 328405260;
-			PBXWorkspaceStateSaveDate = 328405260;
+			PBXPerProjectTemplateStateSaveDate = 328553880;
+			PBXWorkspaceStateSaveDate = 328553880;
 		};
 		perUserProjectItems = {
 			E21976631392DDEE003CC739 = E21976631392DDEE003CC739 /* PBXTextBookmark */;
@@ -793,12 +793,14 @@
 			E219770413930A18003CC739 = E219770413930A18003CC739 /* PBXTextBookmark */;
 			E219770913930A49003CC739 = E219770913930A49003CC739 /* PBXTextBookmark */;
 			E219770A13930A49003CC739 = E219770A13930A49003CC739 /* PBXTextBookmark */;
-			E219774E13931159003CC739 /* XCBuildMessageTextBookmark */ = E219774E13931159003CC739 /* XCBuildMessageTextBookmark */;
-			E219775E139311A2003CC739 /* PBXTextBookmark */ = E219775E139311A2003CC739 /* PBXTextBookmark */;
-			E219775F139311A2003CC739 /* PBXTextBookmark */ = E219775F139311A2003CC739 /* PBXTextBookmark */;
-			E219776C1393121C003CC739 /* XCBuildMessageTextBookmark */ = E219776C1393121C003CC739 /* XCBuildMessageTextBookmark */;
-			E219777113931238003CC739 /* PBXTextBookmark */ = E219777113931238003CC739 /* PBXTextBookmark */;
-			E219777213931238003CC739 /* PBXTextBookmark */ = E219777213931238003CC739 /* PBXTextBookmark */;
+			E219774E13931159003CC739 = E219774E13931159003CC739 /* PBXTextBookmark */;
+			E219775E139311A2003CC739 = E219775E139311A2003CC739 /* PBXTextBookmark */;
+			E219775F139311A2003CC739 = E219775F139311A2003CC739 /* PBXTextBookmark */;
+			E219776C1393121C003CC739 = E219776C1393121C003CC739 /* PBXTextBookmark */;
+			E219777113931238003CC739 = E219777113931238003CC739 /* PBXTextBookmark */;
+			E219777213931238003CC739 = E219777213931238003CC739 /* PBXTextBookmark */;
+			E219778313956BAC003CC739 /* XCBuildMessageTextBookmark */ = E219778313956BAC003CC739 /* XCBuildMessageTextBookmark */;
+			E219778813956BC0003CC739 /* PBXTextBookmark */ = E219778813956BC0003CC739 /* PBXTextBookmark */;
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
 			E2221EE61347159100298AE3 = E2221EE61347159100298AE3 /* PBXTextBookmark */;
 			E2221FE0134829B900298AE3 = E2221FE0134829B900298AE3 /* PBXTextBookmark */;
@@ -1825,17 +1827,11 @@
 		name = Player.h;
 		path = ../../../../../rec/src/rec/audio/source/Player.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1326, 1079}}";
-			sepNavSelRange = "{2470, 0}";
-			sepNavVisRange = "{95, 2050}";
-		};
 	};
-	E219774E13931159003CC739 /* XCBuildMessageTextBookmark */ = {
+	E219774E13931159003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected ',' or '...' before '&' token";
 		fRef = E219774D13931159003CC739 /* Player.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 53;
 		rType = 1;
@@ -1860,11 +1856,10 @@
 		vrLen = 2064;
 		vrLoc = 124;
 	};
-	E219776C1393121C003CC739 /* XCBuildMessageTextBookmark */ = {
+	E219776C1393121C003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected unqualified-id before '&' token";
 		fRef = A433D0832C0312A5D246D41A /* Player.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 95;
 		rType = 1;
@@ -1888,6 +1883,37 @@
 		rType = 0;
 		vrLen = 2050;
 		vrLoc = 95;
+	};
+	E219778213956BAC003CC739 /* LevelMeter.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = LevelMeter.h;
+		path = ../../../../../rec/src/rec/gui/audio/LevelMeter.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 936}}";
+			sepNavSelRange = "{154, 0}";
+			sepNavVisRange = "{0, 1613}";
+		};
+	};
+	E219778313956BAC003CC739 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "ISO C++ forbids declaration of 'type name' with no type";
+		fRef = E219778213956BAC003CC739 /* LevelMeter.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 11;
+		rType = 1;
+	};
+	E219778813956BC0003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E219778213956BAC003CC739 /* LevelMeter.h */;
+		name = "LevelMeter.h: 6";
+		rLen = 0;
+		rLoc = 154;
+		rType = 0;
+		vrLen = 1613;
+		vrLoc = 0;
 	};
 	E2221EE51347159100298AE3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

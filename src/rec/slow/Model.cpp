@@ -166,7 +166,7 @@ void Model::operator()(const VirtualFile& f) {
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
   player()->setNextReadPosition(0);
-  (*components()->transportController_.levelListener())(vector<double>());
+  (*components()->transportController_.levelListener())(LevelVector());
 }
 
 
