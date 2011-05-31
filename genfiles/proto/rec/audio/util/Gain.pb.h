@@ -98,6 +98,13 @@ class Gain : public ::google::protobuf::Message {
   inline float level() const;
   inline void set_level(float value);
   
+  // optional float gain = 5 [default = 0];
+  inline bool has_gain() const;
+  inline void clear_gain();
+  static const int kGainFieldNumber = 5;
+  inline float gain() const;
+  inline void set_gain(float value);
+  
   // optional bool mute = 2;
   inline bool has_mute() const;
   inline void clear_mute();
@@ -125,6 +132,7 @@ class Gain : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   float level_;
+  float gain_;
   bool mute_;
   bool dim_;
   float dim_level_;
@@ -132,7 +140,7 @@ class Gain : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2faudio_2futil_2fGain_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2futil_2fGain_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -171,51 +179,67 @@ inline void Gain::set_level(float value) {
   level_ = value;
 }
 
+// optional float gain = 5 [default = 0];
+inline bool Gain::has_gain() const {
+  return _has_bit(1);
+}
+inline void Gain::clear_gain() {
+  gain_ = 0;
+  _clear_bit(1);
+}
+inline float Gain::gain() const {
+  return gain_;
+}
+inline void Gain::set_gain(float value) {
+  _set_bit(1);
+  gain_ = value;
+}
+
 // optional bool mute = 2;
 inline bool Gain::has_mute() const {
-  return _has_bit(1);
+  return _has_bit(2);
 }
 inline void Gain::clear_mute() {
   mute_ = false;
-  _clear_bit(1);
+  _clear_bit(2);
 }
 inline bool Gain::mute() const {
   return mute_;
 }
 inline void Gain::set_mute(bool value) {
-  _set_bit(1);
+  _set_bit(2);
   mute_ = value;
 }
 
 // optional bool dim = 3;
 inline bool Gain::has_dim() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void Gain::clear_dim() {
   dim_ = false;
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline bool Gain::dim() const {
   return dim_;
 }
 inline void Gain::set_dim(bool value) {
-  _set_bit(2);
+  _set_bit(3);
   dim_ = value;
 }
 
 // optional float dim_level = 4 [default = 0.3];
 inline bool Gain::has_dim_level() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Gain::clear_dim_level() {
   dim_level_ = 0.3f;
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline float Gain::dim_level() const {
   return dim_level_;
 }
 inline void Gain::set_dim_level(float value) {
-  _set_bit(3);
+  _set_bit(4);
   dim_level_ = value;
 }
 

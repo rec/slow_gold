@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="V2D811LYi" name="Slow">
+  <MAINGROUP id="oYfGa0gU9" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -534,6 +534,10 @@
       </GROUP>
       <GROUP id="qetBKuVaN" name="gui">
         <GROUP id="lKLxI6b8U" name="audio">
+          <FILE compile="1" file="../../src/rec/gui/audio/GainController.cpp"
+                id="YUrXlrglS" name="GainController.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/audio/GainController.h" id="28ygUHNhW"
+                name="GainController.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/LevelMeter.cpp" id="C0HxR90M5"
                 name="LevelMeter.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/LevelMeter.h" id="PtkpTBopw"
@@ -1143,7 +1147,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ZyGAgIeO1" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="qjkfJyH1y" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

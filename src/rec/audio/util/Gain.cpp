@@ -1,3 +1,5 @@
+#include <math.h>
+
 #include "rec/audio/util/Gain.h"
 
 namespace rec {
@@ -10,7 +12,7 @@ float getGain(const audio::Gain& gain) {
   if (gain.dim())
     return gain.dim_level();
 
-  return gain.level();
+  return powf(10.0f, gain.gain() / 20.0f) * gain.level();
 }
 
 }  // namespace audio
