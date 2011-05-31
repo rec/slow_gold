@@ -20,7 +20,7 @@ StretchyController::StretchyController()
       playbackSpeed_("Playback speed", Address("time_percent")),
       pitchScale_("Transpose", Address("semitone_shift")),
       fineScale_("Fine tuning", Address("detune_cents")),
-      disableButton_("Disable pitch and time shifting", Address("disabled")),
+      disableButton_("Disable time shifting", Address("time_disabled")),
       zoomToSelectionButton_("Zoom to selection", Address("zoom_to_selection")),
       clickToZoomButton_("Click to zoom", Address("click_to_zoom")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
@@ -50,7 +50,7 @@ StretchyController::StretchyController()
 }
 
 void StretchyController::operator()(const Stretch& s) {
-  thread::callAsync(this, &StretchyController::enableSliders, !s.disabled());
+  thread::callAsync(this, &StretchyController::enableSliders, !s.time_disabled());
 }
 
 void StretchyController::operator()(const StereoProto& stereo) {
@@ -94,8 +94,8 @@ void StretchyController::setZoom(data::UntypedData* data) {
 
 void StretchyController::enableSliders(bool enabled) {
   playbackSpeed_.setEnabled(enabled);
-  pitchScale_.setEnabled(enabled);
-  fineScale_.setEnabled(enabled);
+  // pitchScale_.setEnabled(enabled);
+  // fineScale_.setEnabled(enabled);
 }
 
 }  // namespace rec

@@ -739,8 +739,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 328559833;
-			PBXWorkspaceStateSaveDate = 328559833;
+			PBXPerProjectTemplateStateSaveDate = 328562502;
+			PBXWorkspaceStateSaveDate = 328562502;
 		};
 		perUserProjectItems = {
 			E21976631392DDEE003CC739 = E21976631392DDEE003CC739 /* PBXTextBookmark */;
@@ -801,8 +801,12 @@
 			E219777213931238003CC739 = E219777213931238003CC739 /* PBXTextBookmark */;
 			E219778313956BAC003CC739 = E219778313956BAC003CC739 /* PBXTextBookmark */;
 			E219778813956BC0003CC739 = E219778813956BC0003CC739 /* PBXTextBookmark */;
-			E21977B413957151003CC739 /* XCBuildMessageTextBookmark */ = E21977B413957151003CC739 /* XCBuildMessageTextBookmark */;
-			E21977B513957151003CC739 /* PBXTextBookmark */ = E21977B513957151003CC739 /* PBXTextBookmark */;
+			E21977B413957151003CC739 = E21977B413957151003CC739 /* PBXTextBookmark */;
+			E21977B513957151003CC739 = E21977B513957151003CC739 /* PBXTextBookmark */;
+			E21977E313957646003CC739 = E21977E313957646003CC739 /* PBXTextBookmark */;
+			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
+			E21977E513957654003CC739 = E21977E513957654003CC739 /* PBXTextBookmark */;
+			E21977EA13957654003CC739 = E21977EA13957654003CC739 /* PBXTextBookmark */;
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
 			E2221EE61347159100298AE3 = E2221EE61347159100298AE3 /* PBXTextBookmark */;
 			E2221FE0134829B900298AE3 = E2221FE0134829B900298AE3 /* PBXTextBookmark */;
@@ -1212,9 +1216,9 @@
 	};
 	CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {734, 806}}";
-			sepNavSelRange = "{500, 0}";
-			sepNavVisRange = "{0, 500}";
+			sepNavIntBoundsRect = "{{0, 0}, {852, 1046}}";
+			sepNavSelRange = "{183, 3}";
+			sepNavVisRange = "{0, 528}";
 			sepNavWindowFrame = "{{542, 19}, {911, 1159}}";
 		};
 	};
@@ -1911,11 +1915,10 @@
 		vrLen = 866;
 		vrLoc = 0;
 	};
-	E21977B413957151003CC739 /* XCBuildMessageTextBookmark */ = {
+	E21977B413957151003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Cannot allocate an object of abstract type 'rec::slow::Listeners'";
 		fRef = 1094736653D336F4F086F88A /* Instance.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 22;
 		rType = 1;
@@ -1928,6 +1931,42 @@
 		rLoc = 601;
 		rType = 0;
 		vrLen = 865;
+		vrLoc = 0;
+	};
+	E21977E313957646003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'const class rec::audio::stretch::Stretch' has no member named 'disabled'";
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		rLen = 1;
+		rLoc = 9;
+		rType = 1;
+	};
+	E21977E413957654003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'const class rec::audio::stretch::Stretch' has no member named 'disabled'";
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		rLen = 1;
+		rLoc = 9;
+		rType = 1;
+	};
+	E21977E513957654003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 10";
+		rLen = 53;
+		rLoc = 160;
+		rType = 0;
+		vrLen = 528;
+		vrLoc = 0;
+	};
+	E21977EA13957654003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */;
+		name = "Stretch.cpp: 10";
+		rLen = 3;
+		rLoc = 183;
+		rType = 0;
+		vrLen = 528;
 		vrLoc = 0;
 	};
 	E2221EE51347159100298AE3 /* PBXTextBookmark */ = {
@@ -2944,7 +2983,7 @@
 		ignoreCount = 0;
 		lineNumber = 38;
 		location = SlowBurn;
-		modificationTime = 328560975.30381;
+		modificationTime = 328561740.717173;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2992,7 +3031,7 @@
 		ignoreCount = 0;
 		lineNumber = 17;
 		location = SlowBurn;
-		modificationTime = 328560975.303846;
+		modificationTime = 328561740.717191;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3381,7 +3420,7 @@
 		ignoreCount = 0;
 		lineNumber = 67;
 		location = SlowBurn;
-		modificationTime = 328560975.303708;
+		modificationTime = 328561740.717136;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};

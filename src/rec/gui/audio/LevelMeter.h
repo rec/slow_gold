@@ -11,7 +11,7 @@ namespace audio {
 class LevelMeter : public Component,
                    public Listener<const LevelVector&> {
  public:
-  LevelMeter(bool horizontal = true, bool rms = true);
+  LevelMeter(bool horizontal = true, bool rms = true, int margin = 2);
 
   virtual void operator()(const LevelVector& levels);
   virtual void repaint() { Component::repaint(); }
@@ -27,6 +27,7 @@ class LevelMeter : public Component,
   bool horizontal_;
   bool rms_;
   float gain_;
+  int margin_;
 
   DISALLOW_COPY_AND_ASSIGN(LevelMeter);
 };
