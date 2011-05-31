@@ -10,6 +10,8 @@
 
 namespace rec {
 
+namespace audio { class Gain; }
+
 namespace audio { namespace stretch { class Stretch; }}
 namespace audio { namespace source { class StereoProto; }}
 
@@ -30,6 +32,7 @@ class Listeners : public Listener<None>,
                   public Listener<const VirtualFileList&>,
                   public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
+                  public Listener<const audio::Gain&>,
                   public Listener<const audio::stretch::Stretch&>,
                   public Listener<const audio::source::StereoProto&>,
                   public Listener<const gui::DropFiles&>,
@@ -42,6 +45,7 @@ class Listeners : public Listener<None>,
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
+  virtual void operator()(const audio::Gain&);
   virtual void operator()(const audio::source::StereoProto&);
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const gui::DropFiles&);

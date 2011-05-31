@@ -52,6 +52,7 @@ class Player : public Broadcaster<transport::State>,
   void setStereoProto(const StereoProto&);
   void setSelection(const block::BlockSet&);
   void setGain(const Gain&);
+  void setGain(float);
 
   SampleTime length() const { return timer_->getTotalLength(); }
   RealTime realLength() const { return audio::samplesToTime(length()); }

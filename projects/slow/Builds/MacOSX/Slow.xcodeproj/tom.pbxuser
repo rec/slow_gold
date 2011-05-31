@@ -84,9 +84,9 @@
 	};
 	1094736653D336F4F086F88A /* Instance.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1005, 907}}";
-			sepNavSelRange = "{484, 0}";
-			sepNavVisRange = "{0, 804}";
+			sepNavIntBoundsRect = "{{0, 0}, {877, 767}}";
+			sepNavSelRange = "{601, 39}";
+			sepNavVisRange = "{0, 865}";
 			sepNavWindowFrame = "{{15, 153}, {1064, 1020}}";
 		};
 	};
@@ -557,10 +557,10 @@
 	};
 	7498431A4AC7D447E24AE3A4 /* Listeners.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1107, 962}}";
-			sepNavSelRange = "{2446, 0}";
-			sepNavVisRange = "{0, 1159}";
-			sepNavWindowFrame = "{{107, 221}, {1093, 868}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1265, 897}}";
+			sepNavSelRange = "{1040, 0}";
+			sepNavVisRange = "{0, 1976}";
+			sepNavWindowFrame = "{{247, 300}, {1324, 878}}";
 		};
 	};
 	769B124FE15AF19EA9AC2F81 /* Proto.cpp */ = {
@@ -739,8 +739,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 328553880;
-			PBXWorkspaceStateSaveDate = 328553880;
+			PBXPerProjectTemplateStateSaveDate = 328559833;
+			PBXWorkspaceStateSaveDate = 328559833;
 		};
 		perUserProjectItems = {
 			E21976631392DDEE003CC739 = E21976631392DDEE003CC739 /* PBXTextBookmark */;
@@ -799,8 +799,10 @@
 			E219776C1393121C003CC739 = E219776C1393121C003CC739 /* PBXTextBookmark */;
 			E219777113931238003CC739 = E219777113931238003CC739 /* PBXTextBookmark */;
 			E219777213931238003CC739 = E219777213931238003CC739 /* PBXTextBookmark */;
-			E219778313956BAC003CC739 /* XCBuildMessageTextBookmark */ = E219778313956BAC003CC739 /* XCBuildMessageTextBookmark */;
-			E219778813956BC0003CC739 /* PBXTextBookmark */ = E219778813956BC0003CC739 /* PBXTextBookmark */;
+			E219778313956BAC003CC739 = E219778313956BAC003CC739 /* PBXTextBookmark */;
+			E219778813956BC0003CC739 = E219778813956BC0003CC739 /* PBXTextBookmark */;
+			E21977B413957151003CC739 /* XCBuildMessageTextBookmark */ = E21977B413957151003CC739 /* XCBuildMessageTextBookmark */;
+			E21977B513957151003CC739 /* PBXTextBookmark */ = E21977B513957151003CC739 /* PBXTextBookmark */;
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
 			E2221EE61347159100298AE3 = E2221EE61347159100298AE3 /* PBXTextBookmark */;
 			E2221FE0134829B900298AE3 = E2221FE0134829B900298AE3 /* PBXTextBookmark */;
@@ -1890,17 +1892,11 @@
 		name = LevelMeter.h;
 		path = ../../../../../rec/src/rec/gui/audio/LevelMeter.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 936}}";
-			sepNavSelRange = "{154, 0}";
-			sepNavVisRange = "{0, 1613}";
-		};
 	};
-	E219778313956BAC003CC739 /* XCBuildMessageTextBookmark */ = {
+	E219778313956BAC003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "ISO C++ forbids declaration of 'type name' with no type";
 		fRef = E219778213956BAC003CC739 /* LevelMeter.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 11;
 		rType = 1;
@@ -1912,7 +1908,26 @@
 		rLen = 0;
 		rLoc = 154;
 		rType = 0;
-		vrLen = 1613;
+		vrLen = 866;
+		vrLoc = 0;
+	};
+	E21977B413957151003CC739 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Cannot allocate an object of abstract type 'rec::slow::Listeners'";
+		fRef = 1094736653D336F4F086F88A /* Instance.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 22;
+		rType = 1;
+	};
+	E21977B513957151003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1094736653D336F4F086F88A /* Instance.cpp */;
+		name = "Instance.cpp: 23";
+		rLen = 39;
+		rLoc = 601;
+		rType = 0;
+		vrLen = 865;
 		vrLoc = 0;
 	};
 	E2221EE51347159100298AE3 /* PBXTextBookmark */ = {
@@ -2929,7 +2944,7 @@
 		ignoreCount = 0;
 		lineNumber = 38;
 		location = SlowBurn;
-		modificationTime = 328403527.288387;
+		modificationTime = 328560975.30381;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2977,7 +2992,7 @@
 		ignoreCount = 0;
 		lineNumber = 17;
 		location = SlowBurn;
-		modificationTime = 328403527.288402;
+		modificationTime = 328560975.303846;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3366,7 +3381,7 @@
 		ignoreCount = 0;
 		lineNumber = 67;
 		location = SlowBurn;
-		modificationTime = 328403527.2883469;
+		modificationTime = 328560975.303708;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3723,9 +3738,9 @@
 	};
 	FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {721, 1677}}";
-			sepNavSelRange = "{1917, 0}";
-			sepNavVisRange = "{1007, 2204}";
+			sepNavIntBoundsRect = "{{0, 0}, {1265, 1807}}";
+			sepNavSelRange = "{2170, 51}";
+			sepNavVisRange = "{1008, 1971}";
 			sepNavWindowFrame = "{{247, 300}, {1324, 878}}";
 		};
 	};

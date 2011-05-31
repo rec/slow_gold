@@ -25,6 +25,7 @@ class TransportController : public Layout,
   void setTime(SampleTime time) { time_ = time; recalc(); }
   void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
+  gui::audio::LevelMeter* levelMeter() { return &levelMeter_; }
 
  private:
   void recalc();

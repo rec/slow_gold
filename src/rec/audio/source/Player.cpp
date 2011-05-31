@@ -94,7 +94,11 @@ void Player::clearSource() {
 }
 
 void Player::setGain(const Gain& gain) {
-  player_.setGain(getGain(gain));
+  setGain(getGain(gain));
+}
+
+void Player::setGain(float gain) {
+  player_.setGain(gain);
 }
 
 }  // namespace source

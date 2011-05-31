@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="D2tuq6rAn" name="command">
+  <MAINGROUP id="3cmjNOGRr" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -534,6 +534,8 @@
       </GROUP>
       <GROUP id="3L8ZCKlmn" name="gui">
         <GROUP id="Q6pTAUS7q" name="audio">
+          <FILE compile="1" file="../../src/rec/gui/audio/LevelMeter.cpp" id="GdzSBVLYv"
+                name="LevelMeter.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/LevelMeter.h" id="Wezsuk5A5"
                 name="LevelMeter.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/Loops.cpp" id="e53DJlxln"
@@ -1141,7 +1143,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2YubTpT8U" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="n4DWd6UGV" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
