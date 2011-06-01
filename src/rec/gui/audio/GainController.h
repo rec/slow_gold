@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_AUDIO_GAINCONTROLLER__
 #define __REC_GUI_AUDIO_GAINCONTROLLER__
 
-#include "rec/gui/SetterSlider.h"
+#include "rec/gui/DataSlider.h"
 #include "rec/gui/Layout.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/audio/stretch/Stretch.pb.h"

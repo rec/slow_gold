@@ -67,6 +67,8 @@ class Value : public ValueProto {
   operator penum() const { return enum_f(); }
   operator pmessage() const { return message_f(); }
 
+  template <typename T> bool has() const;
+  template <typename T> T get() const;
 };
 
 }  // namespace data

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="YvEcuah1m" name="command">
+  <MAINGROUP id="1okyCObPn" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -569,6 +569,10 @@
           <FILE compile="0" file="../../src/rec/gui/component/Focusable.h" id="SwAjMbl0w"
                 name="Focusable.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/gui/DataSlider.cpp" id="f4QjCkvSM"
+              name="DataSlider.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/gui/DataSlider.h" id="blyLEhs6r"
+              name="DataSlider.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/DetentSlider.h" id="pcSRzcW85"
               name="DetentSlider.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/Dialog.cpp" id="86ALkOKDI"
@@ -667,8 +671,6 @@
               name="SetterResizer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="CdQM9fV1F"
               name="SetterResizer.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/SetterSlider.h" id="uQfr8LK9j"
-              name="SetterSlider.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterText.h" id="HijpG7Y7z"
               name="SetterText.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterTextArea.h" id="uFKu07ojF"
@@ -1147,7 +1149,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="j7yorgeLG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="UpMJfaFLd" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

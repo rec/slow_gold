@@ -1,7 +1,7 @@
 #ifndef __REC_GUI_AUDIO_STRETCHYCONTROLLER__
 #define __REC_GUI_AUDIO_STRETCHYCONTROLLER__
 
-#include "rec/gui/SetterSlider.h"
+#include "rec/gui/DataSlider.h"
 #include "rec/gui/Layout.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/SetterToggle.h"
@@ -28,9 +28,9 @@ class StretchyController : public Layout, public juce::ComboBox::Listener,
   virtual void comboBoxChanged(juce::ComboBox*);
 
  private:
-  SetterSlider playbackSpeed_;
-  SetterSlider pitchScale_;
-  SetterSlider fineScale_;
+  DataSlider<double> playbackSpeed_;
+  DataSlider<double> pitchScale_;
+  DataSlider<double> fineScale_;
   gui::SetterToggle disableButton_;
   gui::SetterToggle zoomToSelectionButton_;
   gui::SetterToggle clickToZoomButton_;
