@@ -7,10 +7,11 @@ namespace audio {
 
 GainController::GainController()
     : Layout("GainController", VERTICAL),
-      level_("Output gain", Address("gain")),
-      muteButton_("Mute sound", Address("mute")),
-      dimButton_("Dim sound without muting", Address("dim")) {
+      level_("Gain", Address("gain")),
+      muteButton_("Mute", Address("mute")),
+      dimButton_("Dim", Address("dim")) {
   level_.slider()->setRange(-60.0, +18.0, 0.1);
+  level_.slider()->setDetent(0.0);
   addToLayout(&level_);
   addToLayout(&muteButton_, 14);
   addToLayout(&dimButton_, 14);

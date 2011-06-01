@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="oYfGa0gU9" name="Slow">
+  <MAINGROUP id="hxasF31fS" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -569,6 +569,8 @@
           <FILE compile="0" file="../../src/rec/gui/component/Focusable.h" id="Cys9ygo1Q"
                 name="Focusable.h" resource="0"/>
         </GROUP>
+        <FILE compile="0" file="../../src/rec/gui/DetentSlider.h" id="ZmiGplpzB"
+              name="DetentSlider.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/Dialog.cpp" id="0CNImlR0U"
               name="Dialog.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/Dialog.h" id="0ekjBzG2P"
@@ -665,8 +667,6 @@
               name="SetterResizer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="8xNw3SJgL"
               name="SetterResizer.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/gui/SetterSlider.cpp" id="aGuBSEOQF"
-              name="SetterSlider.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterSlider.h" id="bhKchXauN"
               name="SetterSlider.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterText.h" id="u3h9kXxF8"
@@ -1147,7 +1147,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="qjkfJyH1y" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="1LB2ombtF" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

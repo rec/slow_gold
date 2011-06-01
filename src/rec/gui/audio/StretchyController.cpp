@@ -27,6 +27,10 @@ StretchyController::StretchyController()
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
 
+  playbackSpeed_.slider()->setDetent(100.0);
+  pitchScale_.slider()->setDetent(0.0);
+  fineScale_.slider()->setDetent(0.0);
+
   playbackSpeed_.slider()->setTextValueSuffix("%");
   pitchScale_.slider()->setTextValueSuffix(" semitones");
   fineScale_.slider()->setTextValueSuffix(" cents");

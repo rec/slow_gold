@@ -3,6 +3,7 @@
 
 #include "rec/gui/SetterSlider.h"
 #include "rec/gui/Layout.h"
+#include "rec/audio/util/Gain.h"
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/gui/SetterToggle.h"
 #include "rec/util/listener/DataListener.h"
@@ -24,7 +25,7 @@ class GainController : public Layout, public DataListener<rec::audio::Gain> {
   virtual void operator()(const rec::audio::Gain&);
 
  private:
-  SetterSlider level_;
+  DataSlider<float> level_;
   gui::SetterToggle muteButton_;
   gui::SetterToggle dimButton_;
 

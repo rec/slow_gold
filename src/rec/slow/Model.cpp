@@ -6,6 +6,7 @@
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/CachedThumbnail.h"
 #include "rec/data/persist/Data.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
@@ -138,6 +139,8 @@ void Model::operator()(const VirtualFile& f) {
   components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
   components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
+  components()->transportController_.gainController()->setData(
+      persist::setter<rec::audio::Gain>(f));
   updateLocker(&zoomLocker_, f);
 
   if (empty())

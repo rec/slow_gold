@@ -5,6 +5,7 @@
 #include "rec/audio/source/Player.h"
 #include "rec/command/Command.pb.h"
 #include "rec/gui/Layout.h"
+#include "rec/gui/audio/GainController.h"
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/util/listener/Listener.h"
@@ -12,6 +13,7 @@
 namespace rec {
 namespace gui {
 namespace audio {
+
 
 // A GUI component with three drawable buttons that broadcasts commands from
 // those buttons.
@@ -25,7 +27,8 @@ class TransportController : public Layout,
   void setTime(SampleTime time) { time_ = time; recalc(); }
   void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
-  gui::audio::LevelMeter* levelMeter() { return &levelMeter_; }
+  LevelMeter* levelMeter() { return &levelMeter_; }
+  GainController* gainController() { return &gainController_; }
 
  private:
   void recalc();
@@ -33,7 +36,8 @@ class TransportController : public Layout,
   DrawableButton startStopButton_;
   DrawableButton addLoopPointButton_;
   DrawableButton zoomOutButton_;
-  gui::audio::LevelMeter levelMeter_;
+  GainController gainController_;
+  LevelMeter levelMeter_;
 
   juce::Label filler_;
   SampleTime time_;
