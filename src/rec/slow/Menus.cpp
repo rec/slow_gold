@@ -22,8 +22,9 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     target()->addCommandItem(&m, Command::OPEN);
     target()->addCommandItem(&m, Command::CLOSE_FILE);
     target()->addCommandItem(&m, Command::EJECT_CDS);
-    target()->addCommandItem(&m, Command::AUDIO_PREFERENCES);
     target()->addCommandItem(&m, Command::CLEAR_NAVIGATOR);
+    target()->addCommandItem(&m, Command::AUDIO_PREFERENCES);
+    target()->addCommandItem(&m, Command::KEYBOARD_MAPPINGS);
 
 #ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();
@@ -48,6 +49,18 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
   } else if (menuName == "Loop") {
     // target()->addCommandItem(&m, Command::CLEAR_SELECTION);
     target()->addCommandItem(&m, Command::CLEAR_LOOPS);
+    target()->addCommandItem(&m, Command::SELECT_ALL);
+    target()->addCommandItem(&m, Command::DESELECT_ALL);
+    target()->addCommandItem(&m, Command::ADD_LOOP_POINT);
+    target()->addCommandItem(&m, Command::CLEAR_SELECTION);
+    target()->addCommandItem(&m, Command::CONTRACT_FROM_NEXT_LOOP_POINT);
+    target()->addCommandItem(&m, Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT);
+    target()->addCommandItem(&m, Command::INVERT_LOOP_SELECTION);
+    target()->addCommandItem(&m, Command::EXTEND_TO_NEXT_LOOP_POINT);
+    target()->addCommandItem(&m, Command::EXTEND_TO_PREVIOUS_LOOP_POINT);
+    target()->addCommandItem(&m, Command::JUMP_TO_NEXT_LOOP_POINT);
+    target()->addCommandItem(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT);
+    target()->addCommandItem(&m, Command::JUMP_TO_START);
   }
 
   return m;

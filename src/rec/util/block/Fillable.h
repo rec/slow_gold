@@ -15,7 +15,7 @@ class Fillable {
   static const int WAIT_TIME = 0;
   static const int MAX_WAIT_TIME = 7000;
 
-  void setPosition(int64 position);
+  void setNextFillPosition(int64 position);
   int64 position() const;
   void setLength(int64 length);
   int64 length() const;

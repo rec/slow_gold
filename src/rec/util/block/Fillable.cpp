@@ -7,7 +7,7 @@ namespace rec {
 namespace util {
 namespace block {
 
-void Fillable::setPosition(int64 position) {
+void Fillable::setNextFillPosition(int64 position) {
   DCHECK_GE(position, 0);  // TODO: why did this fire once?
 
   ScopedLock l(lock_);

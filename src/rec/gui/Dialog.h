@@ -6,8 +6,17 @@
 namespace rec {
 namespace gui {
 
-bool tryToTakeDialogFlag();
-void replaceDialogFlag();
+class DialogLocker {
+ public:
+  DialogLocker();
+  ~DialogLocker();
+  bool isLocked() const { return locked_; }
+
+ private:
+  bool locked_;
+
+  DISALLOW_COPY_AND_ASSIGN(DialogLocker);
+};
 
 namespace dialog {
 

@@ -12,20 +12,15 @@ bool openDialogOpen = false;
 
 }  // namespace
 
-
-bool tryToTakeDialogFlag() {
+DialogLocker::DialogLocker() {
   ScopedLock l(lock);
-  if (openDialogOpen)
-    return false;
-
+  locked_ = !openDialogOpen;
   openDialogOpen = true;
-  return true;
 }
 
-void replaceDialogFlag() {
-  ScopedLock l(lock);
-  DCHECK(openDialogOpen);
-  openDialogOpen = false;
+DialogLocker::~DialogLocker() {
+  if (locked_)
+    openDialogOpen = false;
 }
 
 namespace dialog {
@@ -35,7 +30,8 @@ bool openVirtualFile(Listener<const VirtualFileList&>* listener,
                      const String& patterns,
                      FileChooserFunction function,
                      const File& initial) {
-  if (!tryToTakeDialogFlag())
+  DialogLocker l;
+  if (!l.isLocked())
     return false;
 
   juce::FileChooser chooser(title, initial, patterns, true);
@@ -44,7 +40,6 @@ bool openVirtualFile(Listener<const VirtualFileList&>* listener,
   if (result)
     (*listener)(file::toVirtualFileList(chooser.getResults()));
 
-  replaceDialogFlag();
   return result;
 }
 

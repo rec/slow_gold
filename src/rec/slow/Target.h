@@ -15,7 +15,6 @@ class Target : public command::TargetManager, public HasInstance {
   Target(Instance* instance);
   void addCommands();
   virtual ~Target() {}
-  bool tryToOpenKeyboardDialog();
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Target);

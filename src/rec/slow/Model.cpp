@@ -37,7 +37,7 @@ Model::Model(Instance* i) : HasInstance(i),
                             stretchLocker_(&lock_),
                             zoomLocker_(&lock_),
                             time_(0),
-                            triggerTime_(-1),
+                            triggerPosition_(-1),
                             loopData_(NULL) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
@@ -54,38 +54,42 @@ void Model::fillOnce() {
     return;
   }
 
-  if (triggerTime_ == -1) {
+  if (triggerPosition_ == -1) {
     // Find the first moment in the selection after "time" that needs to be filled.
     BlockSet fill = difference(timeSelection_, buffer->filled());
     BlockList fillList = fillSeries(fill, time_, player()->length());
     if (!fillList.empty())
-      buffer->setPosition(fillList.begin()->first);
+      buffer->setNextFillPosition(fillList.begin()->first);
   }
 
   buffer->fillNextBlock();
-  if (triggerTime_ != -1)
-    setTriggerTime(triggerTime_);
+  if (triggerPosition_ != -1)
+    jumpToSamplePosition(triggerPosition_);
 }
 
-void Model::setTriggerTime(SampleTime pos) {
+void Model::jumpToTime(RealTime t) {
+  jumpToSamplePosition(audio::timeToSamples(t));
+}
+
+void Model::jumpToSamplePosition(SampleTime pos) {
   {
     ScopedLock l(lock_);
     if (!block::contains(timeSelection_, pos)) {
-      DLOG(INFO) << "Click outside selection";
+      DLOG(INFO) << "Tried to jump to position outside selection " << pos;
       return;
     }
 
     ThumbnailBuffer* buffer = thumbnailBuffer_.current();
     if (!buffer) {
-      triggerTime_ = -1;
+      triggerPosition_ = -1;
       return;
     }
-    triggerTime_ = pos;
+    triggerPosition_ = pos;
     if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
-      buffer->setPosition(pos);
+      buffer->setNextFillPosition(pos);
       return;
     }
-    triggerTime_ = -1;
+    triggerPosition_ = -1;
   }
 
   (*listeners())(pos);
@@ -105,11 +109,11 @@ void Model::operator()(const LoopPointList& loops) {
   for (; i != timeSelection_.end(); ++i) {
     if (time_ < i->second) {
       if (time_ < i->first)
-        setTriggerTime(i->first);
+        jumpToSamplePosition(i->first);
       return;
     }
   }
-  setTriggerTime(timeSelection_.begin()->first);
+  jumpToSamplePosition(timeSelection_.begin()->first);
 }
 
 namespace {
@@ -153,7 +157,7 @@ void Model::operator()(const VirtualFile& f) {
     data::set(loopData_, loop);
   }
 
-  
+
   loopLocker_.set(loop);
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
   if (!buffer->thumbnail()) {
@@ -199,7 +203,7 @@ void Model::toggleSelectionSegment(RealTime time) {
 
 void Model::setCursorTime(int index, RealTime time) {
   if (index < 0) {
-    setTriggerTime(audio::timeToSamples(time));
+    jumpToSamplePosition(audio::timeToSamples(time));
   } else {
     LoopPointList loops = loopLocker_.get();
     loops.mutable_loop_point(index)->set_time(time);

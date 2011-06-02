@@ -55,7 +55,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       model()->toggleSelectionSegment(time);
 
     else
-      model()->setTriggerTime(timeToSamples(time));
+      model()->jumpToTime(time);
 
     waveform->grabKeyboardFocus();
     waveform->repaint();  // TODO: can remove now?
@@ -91,7 +91,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       zoom.set_end(zoom.begin() + size);
       model()->zoomLocker()->set(zoom);
     } else {
-      model()->setTriggerTime(timeToSamples(time));
+      model()->jumpToSamplePosition(timeToSamples(time));
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {

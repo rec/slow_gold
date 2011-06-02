@@ -24,7 +24,7 @@ class Instance;
 
 class Model : public Listener<const VirtualFile&>,
               public Listener<const LoopPointList&>,
-              public Listener<SampleTime>,
+              public Listener<SamplePosition>,
               public HasInstance {
  public:
   typedef audio::source::StereoProto StereoProto;
@@ -36,7 +36,7 @@ class Model : public Listener<const VirtualFile&>,
   virtual ~Model() {}
 
   virtual void operator()(const VirtualFile& vf);
-  virtual void operator()(SampleTime t) { ScopedLock l(lock_); time_ = t; }
+  virtual void operator()(SamplePosition t) { ScopedLock l(lock_); time_ = t; }
   virtual void operator()(const LoopPointList&);
 
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
@@ -47,7 +47,8 @@ class Model : public Listener<const VirtualFile&>,
 
   void checkChanged();
   void fillOnce();
-  void setTriggerTime(SampleTime p);
+  void jumpToSamplePosition(SamplePosition p);
+  void jumpToTime(RealTime t);
   Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
   void toggleSelectionSegment(RealTime time);
   void setCursorTime(int index, RealTime time);
@@ -55,10 +56,9 @@ class Model : public Listener<const VirtualFile&>,
   const LoopPointList loopPointList() { return loopLocker_.get(); }
   const VirtualFile file() const { ScopedLock l(lock_); return file_; }
   bool empty() const { return file::empty(file()); }
+  const block::BlockSet& timeSelection() const { return timeSelection_; }
 
  private:
-  bool hasTriggerTime(SampleTime t);
-
   CriticalSection lock_;
 
   thread::Locker<VirtualFile> fileLocker_;
@@ -70,8 +70,8 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<ZoomProto> zoomLocker_;
 
-  SampleTime time_;
-  SampleTime triggerTime_;
+  SamplePosition time_;
+  SamplePosition triggerPosition_;
   block::BlockSet timeSelection_;
 
   Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;
