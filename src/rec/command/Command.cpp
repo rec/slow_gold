@@ -11,6 +11,9 @@ juce::ApplicationCommandInfo makeInfo(CommandID id, const String& name,
   if (key)
     i.addDefaultKeypress(key, mod);
 
+  if (category == "(None)")
+    i.flags |= ApplicationCommandInfo::hiddenFromKeyEditor;
+
   return i;
 }
 

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="zsBIugWeL" name="Slow">
+  <MAINGROUP id="g7GnA5bN5" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -182,10 +182,6 @@
                 name="TimeScaler.h" resource="0"/>
         </GROUP>
         <GROUP id="ysbTVga8D" name="util">
-          <FILE compile="1" file="../../src/rec/audio/util/AudioDeviceSetup.cpp"
-                id="VvztAK2rx" name="AudioDeviceSetup.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/AudioDeviceSetup.h"
-                id="pSjs2WMsb" name="AudioDeviceSetup.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/AudioFormatManager.cpp"
                 id="jpiVAjYNq" name="AudioFormatManager.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/AudioFormatManager.h"
@@ -1015,10 +1011,6 @@
                   id="L15XqH9Cx" name="Stretch.pb.h" resource="0"/>
           </GROUP>
           <GROUP id="radaI23AO" name="util">
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/util/AudioDeviceSetup.pb.cc"
-                  id="GK7SiIVmn" name="AudioDeviceSetup.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/util/AudioDeviceSetup.pb.h"
-                  id="Cz2fPxbF0" name="AudioDeviceSetup.pb.h" resource="0"/>
             <FILE compile="1" file="../../genfiles/proto/rec/audio/util/Gain.pb.cc"
                   id="YsaXlCoBL" name="Gain.pb.cc" resource="0"/>
             <FILE compile="0" file="../../genfiles/proto/rec/audio/util/Gain.pb.h"
@@ -1155,7 +1147,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Gm1H1XBp0" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="gouYI5VcH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

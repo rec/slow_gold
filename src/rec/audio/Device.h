@@ -2,18 +2,16 @@
 #define __REC_AUDIO_DEVICE2__
 
 #include "rec/gui/audio/SetupPage.h"
-#include "rec/audio/util/AudioDeviceSetup.h"
 
 namespace rec {
 namespace audio {
 
 class Device {
  public:
-  Device() : setupPage_(this), setupListener_(&manager_) { loadState(); }
+  Device() : setupPage_(this) { loadState();  }
 
   AudioDeviceManager manager_;
   gui::audio::SetupPage setupPage_;
-  persist::AudioDeviceSetupListener setupListener_;
 
   void saveState();
 

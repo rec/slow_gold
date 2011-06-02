@@ -127,14 +127,6 @@
 			sepNavWindowFrame = "{{197, 123}, {1064, 1020}}";
 		};
 	};
-	14711AE9A3E0D7BE84D46270 /* AudioDeviceSetup.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1265, 1261}}";
-			sepNavSelRange = "{2988, 0}";
-			sepNavVisRange = "{987, 1881}";
-			sepNavWindowFrame = "{{339, 246}, {1324, 878}}";
-		};
-	};
 	14A6B202F703695BCB99FD2E /* Locker.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {477, 931}}";
@@ -773,8 +765,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 328723952;
-			PBXWorkspaceStateSaveDate = 328723952;
+			PBXPerProjectTemplateStateSaveDate = 328724620;
+			PBXWorkspaceStateSaveDate = 328724620;
 		};
 		perUserProjectItems = {
 			E21976631392DDEE003CC739 = E21976631392DDEE003CC739 /* PBXTextBookmark */;
@@ -939,12 +931,14 @@
 			E2197AD51397E4C3003CC739 = E2197AD51397E4C3003CC739 /* PBXTextBookmark */;
 			E2197AD81397E4C3003CC739 = E2197AD81397E4C3003CC739 /* PBXTextBookmark */;
 			E2197AD91397E4C3003CC739 = E2197AD91397E4C3003CC739 /* PBXTextBookmark */;
-			E2197AF61397EE1C003CC739 /* XCBuildMessageTextBookmark */ = E2197AF61397EE1C003CC739 /* XCBuildMessageTextBookmark */;
-			E2197B031397EE7C003CC739 /* XCBuildMessageTextBookmark */ = E2197B031397EE7C003CC739 /* XCBuildMessageTextBookmark */;
-			E2197B061397EE8F003CC739 /* XCBuildMessageTextBookmark */ = E2197B061397EE8F003CC739 /* XCBuildMessageTextBookmark */;
-			E2197B071397EE8F003CC739 /* PBXTextBookmark */ = E2197B071397EE8F003CC739 /* PBXTextBookmark */;
-			E2197B0A1397EE8F003CC739 /* PBXTextBookmark */ = E2197B0A1397EE8F003CC739 /* PBXTextBookmark */;
-			E2197B0D1397EE8F003CC739 /* PBXTextBookmark */ = E2197B0D1397EE8F003CC739 /* PBXTextBookmark */;
+			E2197AF61397EE1C003CC739 = E2197AF61397EE1C003CC739 /* PBXTextBookmark */;
+			E2197B031397EE7C003CC739 = E2197B031397EE7C003CC739 /* PBXTextBookmark */;
+			E2197B061397EE8F003CC739 = E2197B061397EE8F003CC739 /* PBXTextBookmark */;
+			E2197B071397EE8F003CC739 = E2197B071397EE8F003CC739 /* PBXTextBookmark */;
+			E2197B0A1397EE8F003CC739 = E2197B0A1397EE8F003CC739 /* PBXTextBookmark */;
+			E2197B0D1397EE8F003CC739 = E2197B0D1397EE8F003CC739 /* PBXTextBookmark */;
+			E2197B281397EF4F003CC739 = E2197B281397EF4F003CC739 /* PBXTextBookmark */;
+			E2197B2B1397EF5D003CC739 = E2197B2B1397EF5D003CC739 /* PBXTextBookmark */;
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
 			E2221EE61347159100298AE3 = E2221EE61347159100298AE3 /* PBXTextBookmark */;
 			E2221FE0134829B900298AE3 = E2221FE0134829B900298AE3 /* PBXTextBookmark */;
@@ -3120,29 +3114,26 @@
 		vrLen = 1521;
 		vrLoc = 220;
 	};
-	E2197AF61397EE1C003CC739 /* XCBuildMessageTextBookmark */ = {
+	E2197AF61397EE1C003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Rec/util/AppDirectory.h: No such file or directory";
 		fRef = 3A4C8425168239B436624D29 /* Device.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 1;
 		rType = 1;
 	};
-	E2197B031397EE7C003CC739 /* XCBuildMessageTextBookmark */ = {
+	E2197B031397EE7C003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Invalid use of incomplete type 'struct rec::audio::Device'";
 		fRef = 0794123A52B9E82A9F7EA1DA /* SetupPage.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 8;
 		rType = 1;
 	};
-	E2197B061397EE8F003CC739 /* XCBuildMessageTextBookmark */ = {
+	E2197B061397EE8F003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Rec/util/AppDirectory.h: No such file or directory";
 		fRef = 3A4C8425168239B436624D29 /* Device.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 1;
 		rType = 1;
@@ -3175,6 +3166,31 @@
 		rLoc = 679;
 		rType = 0;
 		vrLen = 786;
+		vrLoc = 0;
+	};
+	E2197B271397EF4F003CC739 /* Device.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Device.h;
+		path = ../../../../../rec/src/rec/audio/Device.h;
+		sourceTree = "<group>";
+	};
+	E2197B281397EF4F003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Rec/audio/util/AudioDeviceSetup.h: No such file or directory";
+		fRef = E2197B271397EF4F003CC739 /* Device.h */;
+		rLen = 1;
+		rLoc = 4;
+		rType = 1;
+	};
+	E2197B2B1397EF5D003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2197B271397EF4F003CC739 /* Device.h */;
+		name = "Device.h: 5";
+		rLen = 0;
+		rLoc = 98;
+		rType = 0;
+		vrLen = 520;
 		vrLoc = 0;
 	};
 	E2221EE51347159100298AE3 /* PBXTextBookmark */ = {
