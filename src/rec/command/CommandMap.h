@@ -1,14 +1,13 @@
-#ifndef __REC_AUDIO_MIDI_COMMANDMAP__
-#define __REC_AUDIO_MIDI_COMMANDMAP__
+#ifndef __REC_COMMAND_COMMANDMAP__
+#define __REC_COMMAND_COMMANDMAP__
 
 #include <map>
 
-#include "rec/audio/midi/CommandMap.pb.h"
+#include "rec/command/CommandMap.pb.h"
 #include "rec/base/base.h"
 
 namespace rec {
-namespace audio {
-namespace midi {
+namespace command {
 
 class CommandMap {
  public:
@@ -20,8 +19,10 @@ class CommandMap {
   void initialize(const CommandMapProto&);
   const CommandMapProto getProto() const;
 
-  Command getCommand(const Key&);
-  string getKey(Command);
+  Command getCommand(const Key&) const;
+  const Key getKey(Command) const;
+
+  bool invoke(const Key&, ApplicationCommandManager*, bool async = false) const;
 
  private:
   typedef std::map<Key, Command> KeyToCommand;
@@ -33,8 +34,7 @@ class CommandMap {
   DISALLOW_COPY_AND_ASSIGN(CommandMap);
 };
 
-}  // namespace midi
-}  // namespace audio
+}  // namespace command
 }  // namespace rec
 
-#endif  // __REC_AUDIO_MIDI_COMMANDMAP__
+#endif  // __REC_COMMAND_COMMANDMAP__

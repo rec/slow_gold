@@ -73,14 +73,6 @@
 			sepNavWindowFrame = "{{38, 132}, {1064, 1020}}";
 		};
 	};
-	0D1AE8A03FFC1B5DAD065211 /* CommandMap.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 857}}";
-			sepNavSelRange = "{591, 0}";
-			sepNavVisRange = "{0, 858}";
-			sepNavWindowFrame = "{{130, 98}, {1198, 970}}";
-		};
-	};
 	0D87903F9957B99FEDB5DEC3 /* CDDBResponse.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1107, 1404}}";
@@ -780,8 +772,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 328738577;
-			PBXWorkspaceStateSaveDate = 328738577;
+			PBXPerProjectTemplateStateSaveDate = 328742022;
+			PBXWorkspaceStateSaveDate = 328742022;
 		};
 		perUserProjectItems = {
 			E21976631392DDEE003CC739 = E21976631392DDEE003CC739 /* PBXTextBookmark */;
@@ -986,8 +978,8 @@
 			E2197C5813982378003CC739 = E2197C5813982378003CC739 /* PBXTextBookmark */;
 			E2197C5B13982384003CC739 = E2197C5B13982384003CC739 /* PBXTextBookmark */;
 			E2197C5C13982707003CC739 = E2197C5C13982707003CC739 /* PBXTextBookmark */;
-			E2197C691398273C003CC739 /* XCBuildMessageTextBookmark */ = E2197C691398273C003CC739 /* XCBuildMessageTextBookmark */;
-			E2197C6C1398274D003CC739 /* PBXTextBookmark */ = E2197C6C1398274D003CC739 /* PBXTextBookmark */;
+			E2197C691398273C003CC739 = E2197C691398273C003CC739 /* PBXTextBookmark */;
+			E2197C6C1398274D003CC739 = E2197C6C1398274D003CC739 /* PBXTextBookmark */;
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
 			E2221EE61347159100298AE3 = E2221EE61347159100298AE3 /* PBXTextBookmark */;
 			E2221FE0134829B900298AE3 = E2221FE0134829B900298AE3 /* PBXTextBookmark */;
@@ -3579,17 +3571,11 @@
 		name = CommandMap.h;
 		path = ../../../../../rec/src/rec/audio/midi/CommandMap.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 857}}";
-			sepNavSelRange = "{399, 0}";
-			sepNavVisRange = "{0, 613}";
-		};
 	};
-	E2197C691398273C003CC739 /* XCBuildMessageTextBookmark */ = {
+	E2197C691398273C003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected ',' or '...' before '&' token";
 		fRef = E2197C681398273C003CC739 /* CommandMap.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 19;
 		rType = 1;

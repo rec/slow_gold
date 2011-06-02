@@ -1,8 +1,7 @@
-#include "rec/audio/midi/CommandMap.h"
+#include "rec/command/CommandMap.h"
 
 namespace rec {
-namespace audio {
-namespace midi {
+namespace command {
 
 void CommandMap::initialize(const CommandMapProto& commands) {
   toCommand_.clear();
@@ -25,16 +24,25 @@ const CommandMapProto CommandMap::getProto() const {
   return commands;
 }
 
-command::Command::Type CommandMap::getCommand(const string& key) {
+
+bool CommandMap::invoke(const Key& key, ApplicationCommandManager* acm,
+                        bool async) const {
+  if (CommandID id = getCommand(key))
+    return acm->invokeDirectly(id, async);
+  else
+    return false;
+}
+
+command::Command::Type CommandMap::getCommand(const string& key) const {
   KeyToCommand::const_iterator i = toCommand_.find(key);
   return (i == toCommand_.end()) ? command::Command::NONE : i->second;
 }
 
-string CommandMap::getKey(Command c) {
+const CommandMap::Key CommandMap::getKey(Command c) const {
   CommandToKey::const_iterator i = toKey_.find(c);
   return (i == toKey_.end()) ? "" : i->second;
 }
 
-}  // namespace midi
-}  // namespace audio
+}  // namespace command
 }  // namespace rec
+

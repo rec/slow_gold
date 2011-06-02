@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="H7Q4pD7Pm" name="tests">
+  <MAINGROUP id="Mj6mpRjCS" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -122,12 +122,6 @@
             <FILE compile="0" file="../../src/rec/audio/format/raw/RawFormatWriter.h"
                   id="xtRgN7LVy" name="RawFormatWriter.h" resource="0"/>
           </GROUP>
-        </GROUP>
-        <GROUP id="NYvESMidh" name="midi">
-          <FILE compile="1" file="../../src/rec/audio/midi/CommandMap.cpp" id="MpBKSSFJQ"
-                name="CommandMap.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/midi/CommandMap.h" id="w9Dz9l0nx"
-                name="CommandMap.h" resource="0"/>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
           <FILE compile="1" file="../../src/rec/audio/source/Buffered.cpp" id="JJ6k4IjLE"
@@ -285,6 +279,10 @@
               name="Command.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="gHdH724jT"
               name="Command.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/CommandMap.cpp" id="seYXgSha1"
+              name="CommandMap.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandMap.h" id="fGg4aRlJ1"
+              name="CommandMap.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/TargetManager.cpp" id="Ff5kQc9Zz"
               name="TargetManager.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="wkipqIlwq"
@@ -1062,12 +1060,6 @@
     <GROUP id="fjjrgv6pf" name="proto">
       <GROUP id="k3I3TFpRY" name="rec">
         <GROUP id="RWXdw5RuA" name="audio">
-          <GROUP id="VD3s5ORAg" name="midi">
-            <FILE compile="1" file="../../genfiles/proto/rec/audio/midi/CommandMap.pb.cc"
-                  id="wkHTATBEg" name="CommandMap.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/audio/midi/CommandMap.pb.h"
-                  id="6EWMjLQ7r" name="CommandMap.pb.h" resource="0"/>
-          </GROUP>
           <GROUP id="LaLhoIKxe" name="source">
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
                   id="aEJPeVALd" name="Runny.pb.cc" resource="0"/>
@@ -1096,6 +1088,10 @@
                 id="Yh4WOA9XQ" name="Command.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/command/Command.pb.h"
                 id="YRpZmisdc" name="Command.pb.h" resource="0"/>
+          <FILE compile="1" file="../../genfiles/proto/rec/command/CommandMap.pb.cc"
+                id="A0xcslQGO" name="CommandMap.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/command/CommandMap.pb.h"
+                id="vPf2sa64f" name="CommandMap.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="OJ6PRjMj4" name="data">
           <GROUP id="iUsTRyCON" name="commands">
@@ -1221,7 +1217,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="fulULwtTN" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="jRt9JY1NJ" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

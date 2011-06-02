@@ -183,10 +183,6 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h"/>
             </Filter>
           </Filter>
-          <Filter Name="midi">
-            <File RelativePath="..\..\..\..\src\rec\audio\midi\CommandMap.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\midi\CommandMap.h"/>
-          </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffered.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffered.h"/>
@@ -289,6 +285,8 @@
         <Filter Name="command">
           <File RelativePath="..\..\..\..\src\rec\command\Command.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\Command.h"/>
+          <File RelativePath="..\..\..\..\src\rec\command\CommandMap.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\command\CommandMap.h"/>
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.h"/>
         </Filter>
@@ -705,10 +703,6 @@
       <Filter Name="proto">
         <Filter Name="rec">
           <Filter Name="audio">
-            <Filter Name="midi">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\midi\CommandMap.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\midi\CommandMap.pb.h"/>
-            </Filter>
             <Filter Name="source">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
@@ -727,6 +721,8 @@
           <Filter Name="command">
             <File RelativePath="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\command\Command.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h"/>
           </Filter>
           <Filter Name="data">
             <Filter Name="commands">
