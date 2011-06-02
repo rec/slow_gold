@@ -62,6 +62,7 @@ class TargetManager : public ApplicationCommandTarget {
   }
 
   ApplicationCommandInfo* getInfo(CommandID command);
+  ApplicationCommandManager* commandManager() { return &commandManager_; }
 
  private:
   typedef std::map<CommandID, CommandCallback*> CommandMap;

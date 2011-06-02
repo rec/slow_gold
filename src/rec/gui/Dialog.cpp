@@ -4,7 +4,6 @@
 
 namespace rec {
 namespace gui {
-namespace dialog {
 
 namespace {
 
@@ -13,18 +12,31 @@ bool openDialogOpen = false;
 
 }  // namespace
 
+
+bool tryToTakeDialogFlag() {
+  ScopedLock l(lock);
+  if (openDialogOpen)
+    return false;
+
+  openDialogOpen = true;
+  return true;
+}
+
+void replaceDialogFlag() {
+  ScopedLock l(lock);
+  DCHECK(openDialogOpen);
+  openDialogOpen = false;
+}
+
+namespace dialog {
+
 bool openVirtualFile(Listener<const VirtualFileList&>* listener,
                      const String& title,
                      const String& patterns,
                      FileChooserFunction function,
                      const File& initial) {
-  {
-    ScopedLock l(lock);
-    if (openDialogOpen)
-      return false;
-    else
-      openDialogOpen = true;
-  }
+  if (!tryToTakeDialogFlag())
+    return false;
 
   juce::FileChooser chooser(title, initial, patterns, true);
   bool result = (*function)(&chooser);
@@ -32,8 +44,7 @@ bool openVirtualFile(Listener<const VirtualFileList&>* listener,
   if (result)
     (*listener)(file::toVirtualFileList(chooser.getResults()));
 
-  ScopedLock l(lock);
-  openDialogOpen = false;
+  replaceDialogFlag();
   return result;
 }
 

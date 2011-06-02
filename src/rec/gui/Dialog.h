@@ -5,6 +5,10 @@
 
 namespace rec {
 namespace gui {
+
+bool tryToTakeDialogFlag();
+void replaceDialogFlag();
+
 namespace dialog {
 
 typedef bool (*FileChooserFunction)(FileChooser*);

@@ -38,6 +38,11 @@ void jumpToStart(Instance* i) {
 }
 
 void keyboardMappings(Instance* i) {
+  if (!gui::tryToTakeDialogFlag())
+    return;  // TODO beep
+
+  juce::KeyMappingEditorComponent comp(
+      *i->target_->commandManager()->getKeyMappings(), true);
 }
 
 void nudgeBeginLeft(Instance* i) {
@@ -189,18 +194,18 @@ void Target::addCommands() {
 
   add(Command::JUMP_TO_NEXT_LOOP_POINT,
       functionCallback(&jumpToLoopPoint, instance_, 1),
-      "NAME", "Category",
-      "Documentation");
+      "Next Loop Point", "Loops",
+      "Immediately jump to the next loop point in the selected region.");
 
   add(Command::JUMP_TO_PREVIOUS_LOOP_POINT,
       functionCallback(&jumpToLoopPoint, instance_, -1),
-      "NAME", "Category",
-      "Documentation");
+      "Previous Loop Point", "Loops",
+      "Immediately jump to the previous loop point in the selected region.");
 
   add(Command::JUMP_TO_START,
       functionCallback(&jumpToStart, instance_),
-      "NAME", "Category",
-      "Documentation");
+      "Start", "Loops",
+      "Jump to the beginning of the selected region.");
 
   add(Command::KEYBOARD_MAPPINGS,
       functionCallback(&keyboardMappings, instance_),
