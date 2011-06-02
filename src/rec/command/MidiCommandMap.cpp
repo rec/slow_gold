@@ -9,19 +9,20 @@ MidiCommandMap::MidiCommandMap(ApplicationCommandManager* m)
 
 void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
                                                const juce::MidiMessage& msg) {
+  Listener<const juce::MidiMessage&>* listener;
   {
     ScopedLock l(lock_);
-    if (listener_) {
-      (*listener_)(msg);
-      listener_ = NULL;
-      return;
-    }
+    listener = listener_;
+    listener_ = NULL;
 
-    if (!enable_)
+    if (!(enable_ || listener))
       return;
   }
 
-  invoke(str(msg), manager_);
+  if (listener)
+    (*listener)(msg);
+  else
+    invoke(str(msg), manager_);
 }
 
 void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {

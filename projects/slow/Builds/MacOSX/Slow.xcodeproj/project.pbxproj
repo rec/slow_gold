@@ -87,6 +87,7 @@
 		665E882C78FA7B5A393713A5 /* MediaPlay.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02CB509D623C2C0701854DB6 /* MediaPlay.svg.cpp */; };
 		6825CB6D250B13081A172422 /* Stereo.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 88B4D611F5A7FFDF737AB770 /* Stereo.pb.cc */; };
 		68BCD40D12F9CB114D6B8C09 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7234162EF60CC8CA998882E9 /* NewHandle.cpp */; };
+		6AC79F4E2D3821CB41BBE1BD /* CommandMapEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EFBD9C1E867D030D3E94759E /* CommandMapEditor.cpp */; };
 		6B13905021E445BC6C92D69E /* Stretch.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 550152193EB8E4C95F11184F /* Stretch.pb.cc */; };
 		6B61D904114B0EF8CFE27749 /* sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBCA7FFD1DE92D807F41C69E /* sequence.cpp */; };
 		6C1035DC3DC9EADB94DF3840 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F65C4CB259A46E182713FBB7 /* Icon.icns */; };
@@ -274,6 +275,7 @@
 		19727BD54A818B4854AF7D90 /* NewHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NewHandle.h; path = ../../../../src/rec/audio/format/mpg123/NewHandle.h; sourceTree = SOURCE_ROOT; };
 		1979816DF949A8823A94FB0E /* Switcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Switcher.h; path = ../../../../src/rec/util/Switcher.h; sourceTree = SOURCE_ROOT; };
 		1A5A7B859A4E6759DDA42B68 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.h; path = ../../../../src/rec/gui/Color.h; sourceTree = SOURCE_ROOT; };
+		1AD1890D0EDC519D1C19A9A4 /* CommandMapEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapEditor.h; path = ../../../../src/rec/command/CommandMapEditor.h; sourceTree = SOURCE_ROOT; };
 		1B080F750738F398054AB382 /* Wrappy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Wrappy.cpp; path = ../../../../src/rec/audio/source/Wrappy.cpp; sourceTree = SOURCE_ROOT; };
 		1B1F0106A9EC87AA901E1C47 /* Partition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Partition.h; path = ../../../../src/rec/util/partition/Partition.h; sourceTree = SOURCE_ROOT; };
 		1BF9C582AC5218EE5D68FFB2 /* stringsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stringsource.h; path = ../../../../src/rec/data/yaml/src/stringsource.h; sourceTree = SOURCE_ROOT; };
@@ -718,6 +720,7 @@
 		EE9B2F0E255D6807D0BF5F50 /* Album.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Album.h; path = ../../../../src/rec/util/cd/Album.h; sourceTree = SOURCE_ROOT; };
 		EF031A748C014EB2DB702E47 /* NodeItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NodeItem.cpp; path = ../../../../src/rec/widget/tree/NodeItem.cpp; sourceTree = SOURCE_ROOT; };
 		EF38045D0B50B14E257961AB /* ChangeLocker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ChangeLocker.cpp; path = ../../../../src/rec/util/thread/ChangeLocker.cpp; sourceTree = SOURCE_ROOT; };
+		EFBD9C1E867D030D3E94759E /* CommandMapEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandMapEditor.cpp; path = ../../../../src/rec/command/CommandMapEditor.cpp; sourceTree = SOURCE_ROOT; };
 		F0F634962FF9D366FEDA2C67 /* SetterResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetterResizer.h; path = ../../../../src/rec/gui/SetterResizer.h; sourceTree = SOURCE_ROOT; };
 		F1335001F80FFEFC3CFE99B6 /* Defaulter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Defaulter.cpp; path = ../../../../src/rec/util/Defaulter.cpp; sourceTree = SOURCE_ROOT; };
 		F16503031E9F3F5A5B7A2A1C /* regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = regex.h; path = ../../../../src/rec/data/yaml/src/regex.h; sourceTree = SOURCE_ROOT; };
@@ -784,6 +787,8 @@
 				2C47467844A9E7B586180211 /* Command.h */,
 				FFF230D4A35A649A85225963 /* CommandMap.cpp */,
 				52980FA054F32E23587EF8E5 /* CommandMap.h */,
+				EFBD9C1E867D030D3E94759E /* CommandMapEditor.cpp */,
+				1AD1890D0EDC519D1C19A9A4 /* CommandMapEditor.h */,
 				391633390332083DDF87CA52 /* MidiCommandMap.cpp */,
 				C1833F4722CC6F3A521CFD28 /* MidiCommandMap.h */,
 				151215C620EDDA1F897E346B /* TargetManager.cpp */,
@@ -804,6 +809,20 @@
 				C492F238E0B137F11CB59D99 /* Widget.pb.h */,
 			);
 			name = widget;
+			sourceTree = "<group>";
+		};
+		12BFEBE59B5778054E0BFA26 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		13B7AF66DC71626F21BA5581 /* cd */ = {
@@ -1450,20 +1469,6 @@
 			name = commands;
 			sourceTree = "<group>";
 		};
-		B4F0772895C5CDC11ABFFFC3 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		B83A607E0F3D6EDFFA33023A /* gui */ = {
 			isa = PBXGroup;
 			children = (
@@ -1845,7 +1850,7 @@
 				French,
 				German,
 			);
-			mainGroup = B4F0772895C5CDC11ABFFFC3 /* Source */;
+			mainGroup = 12BFEBE59B5778054E0BFA26 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1904,6 +1909,7 @@
 				08879D3DFDD1B955E8E15916 /* ThumbnailBuffer.cpp in Sources */,
 				DFE15ADADC2892B207145668 /* Command.cpp in Sources */,
 				465275DF2F6A3A76C24B6A2D /* CommandMap.cpp in Sources */,
+				6AC79F4E2D3821CB41BBE1BD /* CommandMapEditor.cpp in Sources */,
 				95AD6B80625D9F5D34BAE6E2 /* MidiCommandMap.cpp in Sources */,
 				E47F4C5221BE498D2AB1D4A4 /* TargetManager.cpp in Sources */,
 				5D1FB44E34B9DC33026DCB45 /* EventQueue.cpp in Sources */,

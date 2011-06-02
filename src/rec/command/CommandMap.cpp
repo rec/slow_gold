@@ -3,8 +3,9 @@
 namespace rec {
 namespace command {
 
-void CommandMap::initialize(const CommandMapProto& commands) {
+void CommandMap::operator()(const CommandMapProto& commands) {
   toCommand_.clear();
+  toKey_.clear();
   for (int i = 0; i < commands.entry_size(); ++i) {
     const CommandMapEntry& entry = commands.entry(i);
     toCommand_[entry.key()] = entry.command();

@@ -4,12 +4,12 @@
 #include <map>
 
 #include "rec/command/CommandMap.pb.h"
-#include "rec/base/base.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace command {
 
-class CommandMap {
+class CommandMap : public Listener<const CommandMapProto&> {
  public:
   typedef command::Command::Type Command;
   typedef string Key;
@@ -17,7 +17,7 @@ class CommandMap {
   CommandMap() {}
   virtual ~CommandMap() {}
 
-  void initialize(const CommandMapProto&);
+  void operator()(const CommandMapProto&);
   const CommandMapProto getProto() const;
 
   Command getCommand(const Key&) const;

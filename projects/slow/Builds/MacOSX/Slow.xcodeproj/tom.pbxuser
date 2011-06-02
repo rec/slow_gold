@@ -286,10 +286,10 @@
 	};
 	391633390332083DDF87CA52 /* MidiCommandMap.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {877, 670}}";
-			sepNavSelRange = "{779, 0}";
-			sepNavVisRange = "{0, 779}";
-			sepNavWindowFrame = "{{333, -277}, {1198, 970}}";
+			sepNavIntBoundsRect = "{{0, 0}, {877, 663}}";
+			sepNavSelRange = "{415, 26}";
+			sepNavVisRange = "{0, 846}";
+			sepNavWindowFrame = "{{333, 4}, {1198, 970}}";
 		};
 	};
 	3A3D01EA1C2D03B913EE02E3 /* Snoopy.h */ = {
@@ -780,8 +780,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 328743289;
-			PBXWorkspaceStateSaveDate = 328743289;
+			PBXPerProjectTemplateStateSaveDate = 328744943;
+			PBXWorkspaceStateSaveDate = 328744943;
 		};
 		perUserProjectItems = {
 			E21976631392DDEE003CC739 = E21976631392DDEE003CC739 /* PBXTextBookmark */;
@@ -988,18 +988,22 @@
 			E2197C5C13982707003CC739 = E2197C5C13982707003CC739 /* PBXTextBookmark */;
 			E2197C691398273C003CC739 = E2197C691398273C003CC739 /* PBXTextBookmark */;
 			E2197C6C1398274D003CC739 = E2197C6C1398274D003CC739 /* PBXTextBookmark */;
-			E2197CA113983A8D003CC739 /* XCBuildMessageTextBookmark */ = E2197CA113983A8D003CC739 /* XCBuildMessageTextBookmark */;
-			E2197CA813983AC6003CC739 /* XCBuildMessageTextBookmark */ = E2197CA813983AC6003CC739 /* XCBuildMessageTextBookmark */;
-			E2197CA913983AC6003CC739 /* PBXTextBookmark */ = E2197CA913983AC6003CC739 /* PBXTextBookmark */;
-			E2197CAC13983AC6003CC739 /* PBXTextBookmark */ = E2197CAC13983AC6003CC739 /* PBXTextBookmark */;
-			E2197CAF13983AC6003CC739 /* PBXTextBookmark */ = E2197CAF13983AC6003CC739 /* PBXTextBookmark */;
-			E2197CB013983AC6003CC739 /* PBXTextBookmark */ = E2197CB013983AC6003CC739 /* PBXTextBookmark */;
-			E2197CB113983AC6003CC739 /* PBXTextBookmark */ = E2197CB113983AC6003CC739 /* PBXTextBookmark */;
-			E2197CB313983B37003CC739 /* XCBuildMessageTextBookmark */ = E2197CB313983B37003CC739 /* XCBuildMessageTextBookmark */;
-			E2197CB613983B5D003CC739 /* PBXTextBookmark */ = E2197CB613983B5D003CC739 /* PBXTextBookmark */;
-			E2197CB713983B5D003CC739 /* PBXTextBookmark */ = E2197CB713983B5D003CC739 /* PBXTextBookmark */;
-			E2197CB813983B5D003CC739 /* PBXTextBookmark */ = E2197CB813983B5D003CC739 /* PBXTextBookmark */;
-			E2197CB913983BBB003CC739 /* PBXTextBookmark */ = E2197CB913983BBB003CC739 /* PBXTextBookmark */;
+			E2197CA113983A8D003CC739 = E2197CA113983A8D003CC739 /* PBXTextBookmark */;
+			E2197CA813983AC6003CC739 = E2197CA813983AC6003CC739 /* PBXTextBookmark */;
+			E2197CA913983AC6003CC739 = E2197CA913983AC6003CC739 /* PBXTextBookmark */;
+			E2197CAC13983AC6003CC739 = E2197CAC13983AC6003CC739 /* PBXTextBookmark */;
+			E2197CAF13983AC6003CC739 = E2197CAF13983AC6003CC739 /* PBXTextBookmark */;
+			E2197CB013983AC6003CC739 = E2197CB013983AC6003CC739 /* PBXTextBookmark */;
+			E2197CB113983AC6003CC739 = E2197CB113983AC6003CC739 /* PBXTextBookmark */;
+			E2197CB313983B37003CC739 = E2197CB313983B37003CC739 /* PBXTextBookmark */;
+			E2197CB613983B5D003CC739 = E2197CB613983B5D003CC739 /* PBXTextBookmark */;
+			E2197CB713983B5D003CC739 = E2197CB713983B5D003CC739 /* PBXTextBookmark */;
+			E2197CB813983B5D003CC739 = E2197CB813983B5D003CC739 /* PBXTextBookmark */;
+			E2197CB913983BBB003CC739 = E2197CB913983BBB003CC739 /* PBXTextBookmark */;
+			E2197CCB13983FCD003CC739 = E2197CCB13983FCD003CC739 /* PBXTextBookmark */;
+			E2197CCC13983FDA003CC739 = E2197CCC13983FDA003CC739 /* PBXTextBookmark */;
+			E2197CCD13983FDA003CC739 = E2197CCD13983FDA003CC739 /* PBXTextBookmark */;
+			E2197CD013983FDA003CC739 = E2197CD013983FDA003CC739 /* PBXTextBookmark */;
 			E2221EE51347159100298AE3 = E2221EE51347159100298AE3 /* PBXTextBookmark */;
 			E2221EE61347159100298AE3 = E2221EE61347159100298AE3 /* PBXTextBookmark */;
 			E2221FE0134829B900298AE3 = E2221FE0134829B900298AE3 /* PBXTextBookmark */;
@@ -3616,11 +3620,6 @@
 		name = MidiCommandMap.h;
 		path = ../../../../../rec/src/rec/command/MidiCommandMap.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 857}}";
-			sepNavSelRange = "{372, 0}";
-			sepNavVisRange = "{0, 794}";
-		};
 	};
 	E2197CA013983A8D003CC739 /* Juce.h */ = {
 		isa = PBXFileReference;
@@ -3628,26 +3627,19 @@
 		name = Juce.h;
 		path = ../../../../../rec/src/rec/base/Juce.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 1469}}";
-			sepNavSelRange = "{3405, 0}";
-			sepNavVisRange = "{1639, 1885}";
-		};
 	};
-	E2197CA113983A8D003CC739 /* XCBuildMessageTextBookmark */ = {
+	E2197CA113983A8D003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "ISO C++ forbids declaration of 'str' with no type";
 		fRef = E2197CA013983A8D003CC739 /* Juce.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 104;
 		rType = 1;
 	};
-	E2197CA813983AC6003CC739 /* XCBuildMessageTextBookmark */ = {
+	E2197CA813983AC6003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Call of overloaded 'basic_string(juce::uint8*, int)' is ambiguous";
 		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 23;
 		rType = 1;
@@ -3657,7 +3649,7 @@
 		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
 		name = "MidiCommandMap.cpp: 39";
 		rLen = 0;
-		rLoc = 779;
+		rLoc = 778;
 		rType = 0;
 		vrLen = 779;
 		vrLoc = 0;
@@ -3686,7 +3678,7 @@
 		isa = PBXTextBookmark;
 		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
 		rLen = 0;
-		rLoc = 9223372036854775815;
+		rLoc = 846;
 		rType = 0;
 	};
 	E2197CB113983AC6003CC739 /* PBXTextBookmark */ = {
@@ -3694,7 +3686,7 @@
 		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
 		name = "MidiCommandMap.cpp: 39";
 		rLen = 0;
-		rLoc = 779;
+		rLoc = 778;
 		rType = 0;
 		vrLen = 779;
 		vrLoc = 0;
@@ -3705,18 +3697,11 @@
 		name = Juce.h;
 		path = ../../../../../rec/src/rec/base/Juce.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 1469}}";
-			sepNavSelRange = "{3406, 0}";
-			sepNavVisRange = "{1639, 1891}";
-			sepNavWindowFrame = "{{211, 208}, {1198, 970}}";
-		};
 	};
-	E2197CB313983B37003CC739 /* XCBuildMessageTextBookmark */ = {
+	E2197CB313983B37003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Invalid const_cast from type 'juce::uint8*' to type 'const char*'";
 		fRef = E2197CB213983B37003CC739 /* Juce.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 105;
 		rType = 1;
@@ -3726,7 +3711,7 @@
 		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
 		name = "MidiCommandMap.cpp: 39";
 		rLen = 0;
-		rLoc = 779;
+		rLoc = 778;
 		rType = 0;
 		vrLen = 779;
 		vrLoc = 0;
@@ -3746,7 +3731,7 @@
 		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
 		name = "MidiCommandMap.cpp: 26";
 		rLen = 0;
-		rLoc = 527;
+		rLoc = 526;
 		rType = 0;
 		vrLen = 779;
 		vrLoc = 0;
@@ -3756,9 +3741,43 @@
 		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
 		name = "MidiCommandMap.cpp: 39";
 		rLen = 0;
-		rLoc = 779;
+		rLoc = 778;
 		rType = 0;
 		vrLen = 779;
+		vrLoc = 0;
+	};
+	E2197CCB13983FCD003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "../../../core/juce_StandardHeader.h: No such file or directory";
+		rLen = 1;
+		rLoc = 25;
+		rType = 1;
+	};
+	E2197CCC13983FDA003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected primary-expression before '=' token";
+		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	E2197CCD13983FDA003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 391633390332083DDF87CA52 /* MidiCommandMap.cpp */;
+		name = "MidiCommandMap.cpp: 15";
+		rLen = 26;
+		rLoc = 415;
+		rType = 0;
+		vrLen = 846;
+		vrLoc = 0;
+	};
+	E2197CD013983FDA003CC739 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		name = "CommandMapEditor.cpp: 27";
+		rLen = 0;
+		rLoc = 1153;
+		rType = 0;
+		vrLen = 2541;
 		vrLoc = 0;
 	};
 	E2221EE51347159100298AE3 /* PBXTextBookmark */ = {
