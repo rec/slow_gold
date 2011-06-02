@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="1okyCObPn" name="command">
+  <MAINGROUP id="ut65s6L2f" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -67,6 +67,8 @@
         </GROUP>
         <FILE compile="0" file="../../src/rec/audio/Audio.h" id="r2zFxs9Dx"
               name="Audio.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/audio/Device.cpp" id="53GIPvoOp"
+              name="Device.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/audio/Device.h" id="mN2com2oL"
               name="Device.h" resource="0"/>
         <GROUP id="rQ7dvnw6j" name="format">
@@ -546,6 +548,8 @@
                 name="Loops.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/Loops.h" id="IDjX13hK1"
                 name="Loops.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/audio/SetupPage.cpp" id="H1tbc820I"
+                name="SetupPage.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/SetupPage.h" id="qYhYyhF3Z"
                 name="SetupPage.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/StretchyController.cpp"
@@ -910,6 +914,8 @@
                 name="MakeThread.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeThread.h" id="5yyjFvbRj"
                 name="MakeThread.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/thread/MultiLocker.h" id="d8ZK9YB7y"
+                name="MultiLocker.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Pointer.h" id="uVj3YHBmh"
                 name="Pointer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/thread/Trash.cpp" id="oTiWeeBRf"
@@ -1149,7 +1155,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="UpMJfaFLd" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="JohNpcq8p" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

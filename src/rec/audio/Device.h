@@ -7,14 +7,19 @@
 namespace rec {
 namespace audio {
 
-struct Device {
+class Device {
+ public:
+  Device() : setupPage_(this), setupListener_(&manager_) { loadState(); }
+
   AudioDeviceManager manager_;
   gui::audio::SetupPage setupPage_;
   persist::AudioDeviceSetupListener setupListener_;
 
-  Device() : setupPage_(&manager_), setupListener_(&manager_) {}
+  void saveState();
 
  private:
+  void loadState();
+
   DISALLOW_COPY_AND_ASSIGN(Device);
 };
 

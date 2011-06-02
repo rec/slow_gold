@@ -1,33 +1,26 @@
 #ifndef __REC_GUI_AUDIO_SETUPPAGE__
 #define __REC_GUI_AUDIO_SETUPPAGE__
 
-#include "rec/base/base.h"
+#include "rec/base/Base.h"
 
 namespace rec {
+
+namespace audio { class Device; }
+
 namespace gui {
 namespace audio {
 
 class SetupPage  : public Component {
  public:
-  explicit SetupPage(AudioDeviceManager* manager)
-      : deviceSelector_(*manager, 0, 0, 2, 2, false, false, true, true) {
-    addAndMakeVisible(&deviceSelector_);
-    setSize(400, 300);
-  }
+  explicit SetupPage(rec::audio::Device* device);
+  void paint(Graphics& g);
 
-  void paint(Graphics& g) { g.fillAll(juce::Colours::lightgrey); }
-
-  void resized() {
-    deviceSelector_.setBounds(8, 8, getWidth() - 16, getHeight() - 16);
-  }
-
-  void show(Component* comp) {
-    juce::DialogWindow::showModalDialog("Set Audio Preferences", this, comp,
-                                        juce::Colours::white, true);
-  }
+  void resized();
+  void show(Component* comp);
 
  private:
   juce::AudioDeviceSelectorComponent deviceSelector_;
+  rec::audio::Device* device_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetupPage);
 };

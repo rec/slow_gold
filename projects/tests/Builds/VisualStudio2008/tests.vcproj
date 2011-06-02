@@ -153,6 +153,7 @@
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\audio\Audio.h"/>
           <File RelativePath="..\..\..\..\src\rec\audio\Audio_test.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\audio\Device.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\audio\Device.h"/>
           <Filter Name="format">
             <Filter Name="mpg123">
@@ -442,6 +443,7 @@
             <File RelativePath="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\Loops.h"/>
+            <File RelativePath="..\..\..\..\src\rec\gui\audio\SetupPage.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\SetupPage.h"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\StretchyController.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\audio\StretchyController.h"/>
@@ -649,6 +651,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\MultiLocker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Pointer.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.h"/>
