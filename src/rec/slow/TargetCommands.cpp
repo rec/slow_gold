@@ -28,6 +28,7 @@ void jumpToLoopPoint(Instance* i, int offset) {
     j = 0;
   else if (j < 0)
     j = size - 1;
+
   SampleTime pos = audio::timeToSamples(loops.loop_point(j).time());
   i->model_->jumpToSamplePosition(pos);
 }
@@ -49,6 +50,7 @@ void keyboardMappings(Instance* i) {
   int res = juce::DialogWindow::showModalDialog("Select keyboard mappings",
                                                 &comp, NULL, juce::Colours::white,
                                                 true, true, true);
+  i->target_->saveKeyboardBindings();
 }
 
 void nudgeBeginLeft(Instance* i) {

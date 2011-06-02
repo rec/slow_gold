@@ -4,12 +4,8 @@
 namespace rec {
 namespace audio {
 
-namespace {
-
-File getDeviceFile() {
+static File getDeviceFile() {
   return getApplicationDirectory().getChildFile("AudioDevice.xml");
-}
-
 }
 
 void Device::loadState() {

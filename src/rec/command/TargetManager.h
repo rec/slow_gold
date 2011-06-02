@@ -63,9 +63,12 @@ class TargetManager : public ApplicationCommandTarget {
 
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
+  void saveKeyboardBindings();
 
  private:
   typedef std::map<CommandID, CommandCallback*> CommandMap;
+
+  void loadKeyboardBindings();
 
   CommandMap map_;
 

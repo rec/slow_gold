@@ -1,5 +1,6 @@
 #include "rec/command/TargetManager.h"
 
+#include "rec/data/persist/AppDirectory.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"
@@ -30,6 +31,7 @@ void TargetManager::registerAllCommandsForTarget() {
   commandManager_.registerAllCommandsForTarget(this);
   commandManager_.registerAllCommandsForTarget(
       juce::JUCEApplication::getInstance());
+  loadKeyboardBindings();
 }
 
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
@@ -85,6 +87,26 @@ void TargetManager::add(CommandID id, Callback* cb,
 ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
   CommandMap::iterator i = map_.find(command);
   return i == map_.end() ? NULL : &i->second->info_;
+}
+
+static File getKeyboardFile() {
+  return getApplicationDirectory().getChildFile("Keyboard.xml");
+}
+
+void TargetManager::saveKeyboardBindings() {
+  ptr<juce::XmlElement> state(commandManager_.getKeyMappings()->createXml(false));
+  if (state) {
+    if (!state->writeToFile(getKeyboardFile(), ""))
+      LOG(ERROR) << "Couldn't write device statea file";
+  }
+}
+
+void TargetManager::loadKeyboardBindings() {
+  File f = getKeyboardFile();
+  if (f.exists()) {
+    ptr<juce::XmlElement> state(juce::XmlDocument::parse(f));
+    commandManager_.getKeyMappings()->restoreFromXml(*state);
+  }
 }
 
 }  // namespace command
