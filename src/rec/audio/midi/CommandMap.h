@@ -13,15 +13,22 @@ namespace midi {
 class CommandMap {
  public:
   typedef command::Command::Type Command;
+  typedef string Key;
+
   CommandMap() {}
 
   void initialize(const CommandMapProto&);
   const CommandMapProto getProto() const;
-  Command getCommand(const string&);
+
+  Command getCommand(const Key&);
+  string getKey(Command);
 
  private:
-  typedef std::map<string, Command> Map;
-  Map map_;
+  typedef std::map<Key, Command> KeyToCommand;
+  typedef std::map<Command, Key> CommandToKey;
+
+  KeyToCommand toCommand_;
+  CommandToKey toKey_;
 
   DISALLOW_COPY_AND_ASSIGN(CommandMap);
 };

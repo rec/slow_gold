@@ -5,16 +5,18 @@ namespace audio {
 namespace midi {
 
 void CommandMap::initialize(const CommandMapProto& commands) {
-  map_.clear();
+  toCommand_.clear();
   for (int i = 0; i < commands.entry_size(); ++i) {
     const CommandMapEntry& entry = commands.entry(i);
-    map_[entry.key()] = entry.command();
+    toCommand_[entry.key()] = entry.command();
+    toKey_[entry.command()] = entry.key();
   }
 }
 
 const CommandMapProto CommandMap::getProto() const {
   CommandMapProto commands;
-  for (Map::const_iterator i = map_.begin(); i != map_.end(); ++i) {
+  for (KeyToCommand::const_iterator i = toCommand_.begin();
+       i != toCommand_.end(); ++i) {
     CommandMapEntry* entry = commands.add_entry();
     entry->set_key(i->first);
     entry->set_command(i->second);
@@ -24,8 +26,13 @@ const CommandMapProto CommandMap::getProto() const {
 }
 
 command::Command::Type CommandMap::getCommand(const string& key) {
-  Map::const_iterator i = map_.find(key);
-  return (i == map_.end()) ? command::Command::NONE : i->second;
+  KeyToCommand::const_iterator i = toCommand_.find(key);
+  return (i == toCommand_.end()) ? command::Command::NONE : i->second;
+}
+
+string CommandMap::getKey(Command c) {
+  CommandToKey::const_iterator i = toKey_.find(c);
+  return (i == toKey_.end()) ? "" : i->second;
 }
 
 }  // namespace midi
