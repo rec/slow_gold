@@ -149,6 +149,7 @@
 		AC3E0E20F4B9B4EB4A899380 /* SetupPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0794123A52B9E82A9F7EA1DA /* SetupPage.cpp */; };
 		AE27C4083FBF5C660DA8A6E7 /* Path.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3AA6895F2524AA5105A313A9 /* Path.pb.cc */; };
 		AFCDF97159BDEB010EB39F4B /* RawFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF897E1EB88C2E3554AD77D4 /* RawFormat.cpp */; };
+		B19EC95562A9E9EDC3E9B1A9 /* TargetCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB2991A2C29742DDAAB08F1C /* TargetCommands.cpp */; };
 		B380D51FD7324CCF50D21514 /* Trash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D34816C7D8A0A95C38583580 /* Trash.cpp */; };
 		B481FE69869D9059F2F92847 /* TypedOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FA66E5FB9B5B3F17B3464F /* TypedOperations.cpp */; };
 		B57AE2042E2BEFD14A5E1D23 /* UntypedData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54C560475F61F8C6B3786C82 /* UntypedData.cpp */; };
@@ -625,6 +626,7 @@
 		CAF9EB9F768AFDE3B830FBA2 /* Dialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Dialog.h; path = ../../../../src/rec/gui/Dialog.h; sourceTree = SOURCE_ROOT; };
 		CB0AA2F72DB615F5234F52A9 /* Stretch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Stretch.cpp; path = ../../../../src/rec/audio/stretch/Stretch.cpp; sourceTree = SOURCE_ROOT; };
 		CB7C9B12C73DC0B8E5A924BD /* node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = node.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/node.h"; sourceTree = SOURCE_ROOT; };
+		CC6254C0A3794F4EC47B2FCD /* TargetCommands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TargetCommands.h; path = ../../../../src/rec/slow/TargetCommands.h; sourceTree = SOURCE_ROOT; };
 		CCA271DB22A58D8F8AC93371 /* Status.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Status.pb.cc; path = ../../../../genfiles/proto/rec/widget/status/Status.pb.cc; sourceTree = SOURCE_ROOT; };
 		CCE18BB06F55F9AA77C8E849 /* Metadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Metadata.h; path = ../../../../src/rec/music/Metadata.h; sourceTree = SOURCE_ROOT; };
 		CCF0364EA0F9BEDA55DFDCD6 /* Zoom.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Zoom.pb.cc; path = ../../../../genfiles/proto/rec/widget/waveform/Zoom.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -661,6 +663,7 @@
 		DA0B702A5C4F367EC9B12DEE /* stlnode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stlnode.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/stlnode.h"; sourceTree = SOURCE_ROOT; };
 		DA567D215C489B60F454D735 /* Typer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typer.h; path = ../../../../src/rec/data/proto/Typer.h; sourceTree = SOURCE_ROOT; };
 		DA5F5B60FDA1ACB637AB7B18 /* EventQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EventQueue.cpp; path = ../../../../src/rec/data/commands/EventQueue.cpp; sourceTree = SOURCE_ROOT; };
+		DB2991A2C29742DDAAB08F1C /* TargetCommands.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TargetCommands.cpp; path = ../../../../src/rec/slow/TargetCommands.cpp; sourceTree = SOURCE_ROOT; };
 		DB55D4F8EB171A13369DB8B8 /* Eject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Eject.h; path = ../../../../src/rec/util/cd/Eject.h; sourceTree = SOURCE_ROOT; };
 		DBCFFC0D921396EF7C62C497 /* Window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = ../../../../src/rec/slow/Window.cpp; sourceTree = SOURCE_ROOT; };
 		DBFAB3FB75875EA3528083FC /* DropFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DropFiles.h; path = ../../../../src/rec/gui/DropFiles.h; sourceTree = SOURCE_ROOT; };
@@ -883,20 +886,7 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
-		23BA494E83EED5906543C5B0 /* file */ = {
-			isa = PBXGroup;
-			children = (
-				AF78CEE14C91E8CDBCD65D6D /* GetVolumes.cpp */,
-				64BFF1D1BA32E73BE2DF932C /* GetVolumes.h */,
-				6F5F60E255EC320E15627F4B /* Util.cpp */,
-				45FB2B839FCCC1B6BEB1169F /* Util.h */,
-				4F00CD57CEBFF8DF24388554 /* VirtualFile.cpp */,
-				6B783EE1E33F655A24E51C4C /* VirtualFile.h */,
-			);
-			name = file;
-			sourceTree = "<group>";
-		};
-		2711230F1448B1FA2326162F /* Source */ = {
+		22580D52C01F01A91A1B8D9F /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				75467D3DB26B8C553F2D3FE5 /* rec */,
@@ -908,6 +898,19 @@
 				DBBED81D920B27CB9107C128 /* Products */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		23BA494E83EED5906543C5B0 /* file */ = {
+			isa = PBXGroup;
+			children = (
+				AF78CEE14C91E8CDBCD65D6D /* GetVolumes.cpp */,
+				64BFF1D1BA32E73BE2DF932C /* GetVolumes.h */,
+				6F5F60E255EC320E15627F4B /* Util.cpp */,
+				45FB2B839FCCC1B6BEB1169F /* Util.h */,
+				4F00CD57CEBFF8DF24388554 /* VirtualFile.cpp */,
+				6B783EE1E33F655A24E51C4C /* VirtualFile.h */,
+			);
+			name = file;
 			sourceTree = "<group>";
 		};
 		2CA4CEC7799F5D0A577935BE /* base */ = {
@@ -1353,6 +1356,8 @@
 				532BBC72B904CBC019C97896 /* Slow.h */,
 				B821697666437A71BDF9E1EE /* Target.cpp */,
 				118AC7625B4C42CD4D22AE13 /* Target.h */,
+				DB2991A2C29742DDAAB08F1C /* TargetCommands.cpp */,
+				CC6254C0A3794F4EC47B2FCD /* TargetCommands.h */,
 				8DB281D6B07E576E7AD90BBB /* Threads.cpp */,
 				456CC2B861F310B678D32ACA /* Threads.h */,
 				DBCFFC0D921396EF7C62C497 /* Window.cpp */,
@@ -1825,7 +1830,7 @@
 				French,
 				German,
 			);
-			mainGroup = 2711230F1448B1FA2326162F /* Source */;
+			mainGroup = 22580D52C01F01A91A1B8D9F /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1974,6 +1979,7 @@
 				761C899FD9316742F31BCD5F /* PlaybackController.cpp in Sources */,
 				2F45A6BF1DD1D5E6198C71B3 /* Selections.cpp in Sources */,
 				CCC67F60CD76F6077EB11D72 /* Target.cpp in Sources */,
+				B19EC95562A9E9EDC3E9B1A9 /* TargetCommands.cpp in Sources */,
 				2763C9DE251CBC17CCF86649 /* Threads.cpp in Sources */,
 				86F1CBF91CF6DF0055CE3FD7 /* Window.cpp in Sources */,
 				59AA35AA1E931C53CFD26709 /* Difference.cpp in Sources */,
