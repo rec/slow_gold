@@ -15,6 +15,7 @@ class CommandMap {
   typedef string Key;
 
   CommandMap() {}
+  virtual ~CommandMap() {}
 
   void initialize(const CommandMapProto&);
   const CommandMapProto getProto() const;

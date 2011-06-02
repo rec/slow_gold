@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="guXjUaSi9" name="command">
+  <MAINGROUP id="S4gVtLaZZ" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -263,6 +263,10 @@
               name="CommandMap.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandMap.h" id="HJ220JgL0"
               name="CommandMap.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/MidiCommandMap.cpp" id="KwxxLyl1k"
+              name="MidiCommandMap.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/MidiCommandMap.h" id="66lUGegFJ"
+              name="MidiCommandMap.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/TargetManager.cpp" id="Ff5kQc9Zz"
               name="TargetManager.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="wkipqIlwq"
@@ -1159,7 +1163,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="QlXwRWwsq" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ov8mrhbdc" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

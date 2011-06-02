@@ -49,6 +49,7 @@ typedef juce::Justification Justification;
 
 typedef juce::MenuBarModel MenuBarModel;
 typedef juce::MemoryBlock MemoryBlock;
+typedef juce::MidiMessage MidiMessage;
 typedef juce::ModifierKeys ModifierKeys;
 typedef juce::MouseEvent MouseEvent;
 typedef juce::MouseListener MouseListener;
@@ -99,6 +100,11 @@ inline const string operator+(const String& s, const string& t) {
 
 inline const string operator+(const string& s, const String& t) {
   return s + str(t);
+}
+
+inline const string str(const MidiMessage& msg) {
+  return string(reinterpret_cast<const char*>(msg.getRawData()),
+                msg.getRawDataSize());
 }
 
 }  // namespace rec
