@@ -37,6 +37,7 @@ class Model : public Listener<const VirtualFile&>,
 
   virtual void operator()(const VirtualFile& vf);
   virtual void operator()(SampleTime t) { ScopedLock l(lock_); time_ = t; }
+  virtual void operator()(const LoopPointList&);
 
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
   thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
@@ -44,7 +45,6 @@ class Model : public Listener<const VirtualFile&>,
 
   void zoom(RealTime time, double k);
 
-  virtual void operator()(const LoopPointList&);
   void checkChanged();
   void fillOnce();
   void setTriggerTime(SampleTime p);

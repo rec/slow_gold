@@ -101,6 +101,7 @@ void Model::operator()(const LoopPointList& loops) {
   player()->setSelection(timeSelection_);
   BlockSet::const_iterator i = timeSelection_.begin();
   components()->waveform_(loops);
+  components()->loops_(loops);
   for (; i != timeSelection_.end(); ++i) {
     if (time_ < i->second) {
       if (time_ < i->first)
@@ -150,9 +151,10 @@ void Model::operator()(const VirtualFile& f) {
   if (!loop.loop_point_size()) {
     loop.add_loop_point()->set_selected(true);
     data::set(loopData_, loop);
-    loopLocker_.set(loop);
   }
 
+  
+  loopLocker_.set(loop);
   ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
   if (!buffer->thumbnail()) {
     LOG(ERROR) << "File " << f.DebugString() << " doesn't exist";
@@ -165,6 +167,7 @@ void Model::operator()(const VirtualFile& f) {
 #else
   player()->setSource(new GenericBufferSource<short, 2>(*buffer));
 #endif
+
   // player()->setStretch(stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
