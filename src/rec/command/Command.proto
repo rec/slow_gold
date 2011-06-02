@@ -20,7 +20,6 @@ message Command {
     CLEAR_NAVIGATOR = 3;
     CLEAR_LOOPS = 4;
     CLEAR_SAVED_FILE_DATA = 5;
-    CLEAR_SELECTION = 17;
     CLOSE_FILE = 6;
     CONTRACT_FROM_NEXT_LOOP_POINT = 75;
     CONTRACT_FROM_PREVIOUS_LOOP_POINT = 76;
@@ -98,7 +97,7 @@ message Command {
     ZOOM_IN = 70;
     ZOOM_OUT = 71;
 
-    LAST_COMMAND = 76;
+    LAST_COMMAND = 76;  // Also:  17
   };
 
   optional Type command = 1;

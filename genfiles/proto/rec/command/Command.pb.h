@@ -49,7 +49,6 @@ enum Command_Type {
   Command_Type_CLEAR_NAVIGATOR = 3,
   Command_Type_CLEAR_LOOPS = 4,
   Command_Type_CLEAR_SAVED_FILE_DATA = 5,
-  Command_Type_CLEAR_SELECTION = 17,
   Command_Type_CLOSE_FILE = 6,
   Command_Type_CONTRACT_FROM_NEXT_LOOP_POINT = 75,
   Command_Type_CONTRACT_FROM_PREVIOUS_LOOP_POINT = 76,
@@ -205,7 +204,6 @@ class Command : public ::google::protobuf::Message {
   static const Type CLEAR_NAVIGATOR = Command_Type_CLEAR_NAVIGATOR;
   static const Type CLEAR_LOOPS = Command_Type_CLEAR_LOOPS;
   static const Type CLEAR_SAVED_FILE_DATA = Command_Type_CLEAR_SAVED_FILE_DATA;
-  static const Type CLEAR_SELECTION = Command_Type_CLEAR_SELECTION;
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
   static const Type CONTRACT_FROM_NEXT_LOOP_POINT = Command_Type_CONTRACT_FROM_NEXT_LOOP_POINT;
   static const Type CONTRACT_FROM_PREVIOUS_LOOP_POINT = Command_Type_CONTRACT_FROM_PREVIOUS_LOOP_POINT;

@@ -45,7 +45,7 @@ void keyboardMappings(Instance* i) {
   juce::KeyMappingEditorComponent comp(
       *i->target_->commandManager()->getKeyMappings(), true);
 
-  comp.setBounds(0, 0, 1000, 1000);
+  comp.setBounds(0, 0, 500, 1000);
 
   int res = juce::DialogWindow::showModalDialog("Select keyboard mappings",
                                                 &comp, NULL, juce::Colours::white,

@@ -1,6 +1,5 @@
 #include "rec/slow/Menus.h"
 #include "rec/base/ArraySize.h"
-#include "rec/command/Command.pb.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
@@ -11,20 +10,35 @@ namespace slow {
 Menus::Menus(Instance* i) : HasInstance(i) {}
 
 const StringArray Menus::getMenuBarNames() {
-  static const char* NAMES[] = {"File", "Edit", "Loop"};
+  static const char* NAMES[] = {"File", "Edit", "Transport", "Loops", "Selection"};
   return StringArray(NAMES, arraysize(NAMES));
+}
+
+void Menus::add(PopupMenu* menu, command::Command::Type command, bool enable) {
+  target()->addCommandItem(menu, command, enable);
+}
+
+static void addTenSubitems(Menus* menus, PopupMenu* menu,
+                           command::Command::Type command, const String& name) {
+  PopupMenu sub;
+  for (int i = 0; i < 10; ++i)
+    menus->add(&sub, static_cast<command::Command::Type>(command + i));
+  menu->addSubMenu(name, sub);
 }
 
 const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
   using command::Command;
   PopupMenu m;
   if (menuName == "File") {
-    target()->addCommandItem(&m, Command::OPEN);
-    target()->addCommandItem(&m, Command::CLOSE_FILE);
-    target()->addCommandItem(&m, Command::EJECT_CDS);
-    target()->addCommandItem(&m, Command::CLEAR_NAVIGATOR);
-    target()->addCommandItem(&m, Command::AUDIO_PREFERENCES);
-    target()->addCommandItem(&m, Command::KEYBOARD_MAPPINGS);
+    add(&m, Command::OPEN);
+    add(&m, Command::CLOSE_FILE);
+    add(&m, Command::EJECT_CDS);
+
+    m.addSeparator();
+
+    // add(&m, Command::CLEAR_NAVIGATOR);
+    add(&m, Command::AUDIO_PREFERENCES);
+    add(&m, Command::KEYBOARD_MAPPINGS);
 
 #ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();
@@ -38,29 +52,34 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 #endif
 
 #if !JUCE_MAC
-    target()->addCommandItem(&m, QUIT);
+    add(&m, QUIT);
 #endif
 
   } else if (menuName == "Edit") {
-    target()->addCommandItem(&m, Command::CUT, canCut());
-    target()->addCommandItem(&m, Command::COPY, canCopy());
-    target()->addCommandItem(&m, Command::PASTE, canPaste());
+    add(&m, Command::CUT, canCut());
+    add(&m, Command::COPY, canCopy());
+    add(&m, Command::PASTE, canPaste());
 
-  } else if (menuName == "Loop") {
-    // target()->addCommandItem(&m, Command::CLEAR_SELECTION);
-    target()->addCommandItem(&m, Command::CLEAR_LOOPS);
-    target()->addCommandItem(&m, Command::SELECT_ALL);
-    target()->addCommandItem(&m, Command::DESELECT_ALL);
-    target()->addCommandItem(&m, Command::ADD_LOOP_POINT);
-    target()->addCommandItem(&m, Command::CLEAR_SELECTION);
-    target()->addCommandItem(&m, Command::CONTRACT_FROM_NEXT_LOOP_POINT);
-    target()->addCommandItem(&m, Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT);
-    target()->addCommandItem(&m, Command::INVERT_LOOP_SELECTION);
-    target()->addCommandItem(&m, Command::EXTEND_TO_NEXT_LOOP_POINT);
-    target()->addCommandItem(&m, Command::EXTEND_TO_PREVIOUS_LOOP_POINT);
-    target()->addCommandItem(&m, Command::JUMP_TO_NEXT_LOOP_POINT);
-    target()->addCommandItem(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT);
-    target()->addCommandItem(&m, Command::JUMP_TO_START);
+  } else if (menuName == "Selection") {
+    add(&m, Command::SELECT_ALL);
+    add(&m, Command::DESELECT_ALL);
+    add(&m, Command::INVERT_LOOP_SELECTION);
+    add(&m, Command::CONTRACT_FROM_NEXT_LOOP_POINT);
+    add(&m, Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT);
+    add(&m, Command::EXTEND_TO_NEXT_LOOP_POINT);
+    add(&m, Command::EXTEND_TO_PREVIOUS_LOOP_POINT);
+    addTenSubitems(this, &m, Command::SELECT_ONLY_0, "Select Only...");
+    addTenSubitems(this, &m, Command::TOGGLE_0, "Toggle...");
+    addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");
+
+  } else if (menuName == "Transport") {
+    add(&m, Command::JUMP_TO_START);
+    add(&m, Command::JUMP_TO_NEXT_LOOP_POINT);
+    add(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT);
+
+  } else if (menuName == "Loops") {
+    add(&m, Command::CLEAR_LOOPS);
+    add(&m, Command::ADD_LOOP_POINT);
   }
 
   return m;
