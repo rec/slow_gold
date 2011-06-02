@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="uT7f9tltE" name="tests">
+  <MAINGROUP id="H7Q4pD7Pm" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -122,6 +122,12 @@
             <FILE compile="0" file="../../src/rec/audio/format/raw/RawFormatWriter.h"
                   id="xtRgN7LVy" name="RawFormatWriter.h" resource="0"/>
           </GROUP>
+        </GROUP>
+        <GROUP id="NYvESMidh" name="midi">
+          <FILE compile="1" file="../../src/rec/audio/midi/CommandMap.cpp" id="MpBKSSFJQ"
+                name="CommandMap.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/midi/CommandMap.h" id="w9Dz9l0nx"
+                name="CommandMap.h" resource="0"/>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
           <FILE compile="1" file="../../src/rec/audio/source/Buffered.cpp" id="JJ6k4IjLE"
@@ -1056,6 +1062,12 @@
     <GROUP id="fjjrgv6pf" name="proto">
       <GROUP id="k3I3TFpRY" name="rec">
         <GROUP id="RWXdw5RuA" name="audio">
+          <GROUP id="VD3s5ORAg" name="midi">
+            <FILE compile="1" file="../../genfiles/proto/rec/audio/midi/CommandMap.pb.cc"
+                  id="wkHTATBEg" name="CommandMap.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/audio/midi/CommandMap.pb.h"
+                  id="6EWMjLQ7r" name="CommandMap.pb.h" resource="0"/>
+          </GROUP>
           <GROUP id="LaLhoIKxe" name="source">
             <FILE compile="1" file="../../genfiles/proto/rec/audio/source/Runny.pb.cc"
                   id="aEJPeVALd" name="Runny.pb.cc" resource="0"/>
@@ -1209,7 +1221,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Vj8J2Yzso" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="fulULwtTN" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

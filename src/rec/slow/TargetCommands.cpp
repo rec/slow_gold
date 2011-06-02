@@ -47,9 +47,9 @@ void keyboardMappings(Instance* i) {
 
   comp.setBounds(0, 0, 500, 1000);
 
-  int res = juce::DialogWindow::showModalDialog("Select keyboard mappings",
-                                                &comp, NULL, juce::Colours::white,
-                                                true, true, true);
+  juce::DialogWindow::showModalDialog("Select keyboard mappings",
+                                      &comp, NULL, juce::Colours::white,
+                                      true, true, true);
   i->target_->saveKeyboardBindings();
 }
 

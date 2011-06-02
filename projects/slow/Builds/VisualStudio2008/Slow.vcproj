@@ -179,6 +179,10 @@
               <File RelativePath="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h"/>
             </Filter>
           </Filter>
+          <Filter Name="midi">
+            <File RelativePath="..\..\..\..\src\rec\audio\midi\CommandMap.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\midi\CommandMap.h"/>
+          </Filter>
           <Filter Name="source">
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffered.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Buffered.h"/>
@@ -672,6 +676,10 @@
       <Filter Name="proto">
         <Filter Name="rec">
           <Filter Name="audio">
+            <Filter Name="midi">
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\midi\CommandMap.pb.cc"/>
+              <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\midi\CommandMap.pb.h"/>
+            </Filter>
             <Filter Name="source">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>

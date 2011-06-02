@@ -92,7 +92,7 @@ bool downloadNewVersion(const String& appName, const String& version) {
   return ok;
 }
 
-bool checkForNewMajorVersion(const String& current, const String& name,
+bool checkForNewMajorVersion(const String& current, const String&,
                              String* version) {
   if (!isReadyForUpdate())
     return false;

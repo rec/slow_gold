@@ -57,12 +57,14 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
     updatePersistentData();
 }
 
+#if 0
 static void print(const string& name, const juce::SparseSet<int>& ss) {
   std::cout << name;
   for (int i = 0; i < ss.size(); ++i)
     std::cout << ", " << ss[i];
   std::cout << std::endl;
 }
+#endif
 
 void Loops::update() {
   bool selectionChanged;

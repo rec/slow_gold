@@ -1,0 +1,12 @@
+import "rec/command/Command.proto";
+
+package rec.audio.midi;
+
+message CommandMapEntry {
+  optional bytes key = 1;
+  optional command.Command.Type command = 2;
+};
+
+message CommandMapProto {
+  repeated CommandMapEntry entry = 1;
+};
