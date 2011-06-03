@@ -12,16 +12,16 @@ class CommandMapTopLevelItem   : public TreeViewItem,
                                  public ButtonListener
 {
 public:
-    CommandMapTopLevelItem (CommandMapEditor& owner_)
+    explicit CommandMapTopLevelItem (CommandMapEditor& owner_)
         : owner (owner_)
     {
         setLinesDrawnForSubItems (false);
-        // owner.getMappings().addChangeListener (this);
+        owner.getChangeBroadcaster().addChangeListener (this);
     }
 
     ~CommandMapTopLevelItem()
     {
-        // owner.getMappings().removeChangeListener (this);
+        owner.getChangeBroadcaster().removeChangeListener (this);
     }
 
     bool mightContainSubItems()             { return true; }
@@ -44,7 +44,7 @@ public:
                     ++count;
 
             if (count > 0)
-                addSubItem (createCategoryItem(categories[i]));
+                addSubItem (new CommandMapCategoryItem(owner, categories[i]));
         }
     }
 
@@ -53,9 +53,6 @@ public:
         // if (result != 0 && owner != nullptr)
         //     owner->getMappings().resetToDefaultMappings();
     }
-    
-    virtual CommandMapCategoryItem* createCategoryItem(const String&) = 0;
-    // new CommandMapCategoryItem (owner, categories[i])
 
     void buttonClicked (Button*)
     {
@@ -68,7 +65,7 @@ public:
                                       ModalCallbackFunction::forComponent (resetToDefaultsCallback, &owner));
     }
 
-private:
+protected:
     CommandMapEditor& owner;
 };
 

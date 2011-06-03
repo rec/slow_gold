@@ -9,13 +9,14 @@ namespace rec {
 namespace command {
 
 //==============================================================================
-CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager)
-    : commandManager(manager), resetButton (TRANS ("reset to defaults"))
+CommandMapEditor::CommandMapEditor(ApplicationCommandManager& manager,
+                                   ChangeBroadcaster& b)
+    : commandManager(manager), broadcaster(b), resetButton (TRANS ("reset to defaults"))
 {
 }
 
 void CommandMapEditor::initialize(const bool showResetToDefaultButton) {
-    treeItem = createTreeItem();
+    treeItem = new CommandMapTopLevelItem(*this);
 
     if (showResetToDefaultButton)
     {

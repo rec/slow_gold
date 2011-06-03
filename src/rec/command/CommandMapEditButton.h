@@ -9,12 +9,13 @@ namespace command {
 class CommandMapEditButton  : public Button
 {
 public:
-    CommandMapEditButton(const CommandID commandID_,
+  CommandMapEditButton(CommandMapEditor& owner_, const CommandID commandID_,
                const String& keyName,
                const int keyNum_)
         : Button (keyName),
           commandID (commandID_),
-          keyNum (keyNum_)
+          keyNum (keyNum_),
+          owner(owner_)
     {
         setWantsKeyboardFocus (false);
         setTriggeredOnMouseDown (keyNum >= 0);
@@ -22,6 +23,9 @@ public:
         setTooltip (keyNum_ < 0 ? TRANS("adds a new key-mapping")
                                 : TRANS("click to change this key-mapping"));
     }
+
+    void addCommand() { owner.addButton(this); }
+    void removeCommand() { owner.removeButton(this); }
 
     void paintButton (Graphics& g, bool /*isOver*/, bool /*isDown*/)
     {
@@ -41,11 +45,6 @@ public:
             }
         }
     }
-
-    virtual void addCommand() = 0;
-    virtual void removeCommand() = 0;
-    // case 1: button->assignNewKey(); break;
-    // case 2: button->owner.getMappings().removeKeyPress (button->commandID, button->keyNum); break;
 
     void clicked()
     {
@@ -80,9 +79,15 @@ public:
     }
 
 
-private:
     const CommandID commandID;
     const int keyNum;
+
+    CommandEntryWindow* getCommandEntryWindow() { return currentCommandEntryWindow; }
+    void setCommandEntryWindow(CommandEntryWindow* window = nullptr) { currentCommandEntryWindow = window; }
+    CommandMapEditor& getOwner() { return owner; }
+
+private:
+    CommandMapEditor& owner;
     ScopedPointer<CommandEntryWindow> currentCommandEntryWindow;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapEditButton);

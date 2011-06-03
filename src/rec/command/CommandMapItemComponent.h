@@ -1,7 +1,7 @@
 #ifndef __REC_COMMAND_COMMANDMAPITEMCOMPONENT__
 #define __REC_COMMAND_COMMANDMAPITEMCOMPONENT__
 
-#include "rec/base/base.h"
+#include "rec/command/CommandMapEditor.h"
 
 namespace rec {
 namespace command {
@@ -9,14 +9,13 @@ namespace command {
 class CommandMapItemComponent  : public Component
 {
 public:
-    CommandMapItemComponent(ApplicationCommandManager& manager_, const CommandID commandID_)
-        : commandManager(manager_), commandID (commandID_)
+    CommandMapItemComponent(CommandMapEditor& owner_, const CommandID commandID_)
+        : owner(owner_), commandID (commandID_)
     {
         setInterceptsMouseClicks (false, true);
 
-        #if 0
+        #ifdef TODO
         const bool isReadOnly = owner.isCommandReadOnly (commandID);
-
         const Array <KeyPress> keyPresses (owner.getMappings().getKeyPressesAssignedToCommand (commandID));
         for (int i = 0; i < jmin ((int) maxNumAssignments, keyPresses.size()); ++i)
             addKeyPressButton (owner.getDescriptionForKeyPress (keyPresses.getReference (i)), i, isReadOnly);
@@ -27,23 +26,20 @@ public:
 
     void addKeyPressButton (const String& desc, const int index, const bool isReadOnly)
     {
-        CommandMapEditButton* const b = makeButton(desc, index);
+        CommandMapEditButton* const b = new CommandMapEditButton(owner, commandID, desc, index);
         buttons.add (b);
 
         b->setEnabled (! isReadOnly);
         b->setVisible (buttons.size() <= (int) maxNumAssignments);
         addChildComponent (b);
     }
-    
-    virtual CommandMapEditButton* makeButton(const String& desc, const int index) = 0;
-    // new CommandMapEditButton(commandID, desc, index)
 
     void paint (Graphics& g)
     {
         g.setFont (getHeight() * 0.7f);
         g.setColour (findColour (CommandMapEditor::textColourId));
 
-        g.drawFittedText (commandManager.getNameOfCommand (commandID),
+        g.drawFittedText (owner.getCommandManager().getNameOfCommand (commandID),
                           4, 0, jmax (40, getChildComponent (0)->getX() - 5), getHeight(),
                           Justification::centredLeft, true);
     }
@@ -63,7 +59,7 @@ public:
     }
 
 private:
-    ApplicationCommandManager& commandManager;
+    CommandMapEditor& owner;
     OwnedArray<CommandMapEditButton> buttons;
     const CommandID commandID;
 

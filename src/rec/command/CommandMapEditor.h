@@ -22,9 +22,13 @@ public:
         @param showResetToDefaultButton     if true, then at the bottom of the list, the
                                             component will include a 'reset to defaults' button.
     */
-    CommandMapEditor(ApplicationCommandManager& commandManager);
+  CommandMapEditor(ApplicationCommandManager& commandManager,
+                   ChangeBroadcaster& broadcaster);
 
     void initialize(bool showResetToDefaultButton);
+
+    virtual void addButton(CommandMapEditButton* button) = 0;
+    virtual void removeButton(CommandMapEditButton* button) = 0;
 
     /** Destructor. */
     virtual ~CommandMapEditor();
@@ -54,6 +58,8 @@ public:
     virtual bool isCommandReadOnly (CommandID commandID);
 
     ApplicationCommandManager& getCommandManager() { return commandManager; }
+
+    ChangeBroadcaster& getChangeBroadcaster() { return broadcaster; }
 
     /** This can be overridden to let you change the format of the string used
         to describe a keypress.
@@ -87,17 +93,12 @@ public:
     /** @internal */
     void resized();
 
-    virtual CommandMapTopLevelItem* createTreeItem() = 0;
-    // new TopLevelItem (*this);
-
-private:
+protected:
     ApplicationCommandManager& commandManager;
+    ChangeBroadcaster& broadcaster;
     TreeView tree;
     TextButton resetButton;
 
-    friend class TopLevelItem;
-    friend class OwnedArray <CommandMapEditButton>;
-    friend class ScopedPointer<CommandMapTopLevelItem>;
     ScopedPointer<CommandMapTopLevelItem> treeItem;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapEditor);

@@ -16,6 +16,11 @@ public:
     {
     }
 
+    virtual CommandMapEditorMappingItem* createItemComponent(CommandID cmd) const
+    {
+        return new CommandMapEditorMappingItem(owner, cmd);
+    }
+
     const String getUniqueName() const          { return categoryName + "_cat"; }
     bool mightContainSubItems()                 { return true; }
     int getItemHeight() const                   { return 28; }
@@ -50,10 +55,6 @@ public:
             clearSubItems();
         }
     }
-
-protected:
-    virtual CommandMapEditorMappingItem* createItemComponent(CommandID) const = 0;
-    // return new CommandMapItemComponent (owner, commands[i]);
 
 private:
     CommandMapEditor& owner;

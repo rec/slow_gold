@@ -19,8 +19,10 @@ public:
     bool mightContainSubItems()                 { return false; }
     int getItemHeight() const                   { return 20; }
 
-    virtual Component* createItemComponent() = 0;
-    // return new CommandMapItemComponent (owner, commandID);
+    Component* createItemComponent()
+    {
+        return new CommandMapItemComponent(owner, commandID);
+    }
 
 private:
     CommandMapEditor& owner;
