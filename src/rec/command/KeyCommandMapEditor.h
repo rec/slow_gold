@@ -20,6 +20,9 @@ public:
     virtual void addButton(CommandMapEditButton* button);
     virtual void removeButton(CommandMapEditButton* button);
     void setNewKey (CommandMapEditButton* button, const KeyPress& newKey, bool dontAskUser);
+    virtual void addChildren(CommandMapItemComponent* comp);
+
+    static const int MAX_NUM_ASSIGNMENTS = 3;
 
 private:
     KeyPressMappingSet& mappings;

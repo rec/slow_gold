@@ -1,4 +1,5 @@
 #include "rec/command/KeyCommandMapEditor.h"
+#include "rec/command/CommandMapItemComponent.h"
 
 namespace rec {
 namespace command {
@@ -60,9 +61,17 @@ void KeyCommandMapEditor::addButton(CommandMapEditButton* button)
 
 void KeyCommandMapEditor::removeButton(CommandMapEditButton* button)
 {
-    // TODO
+    getMappings().removeKeyPress(button->commandID, button->keyNum);
 }
 
+
+void KeyCommandMapEditor::addChildren(CommandMapItemComponent* comp) {
+  const bool isReadOnly = isCommandReadOnly(comp->commandID);
+  const Array <KeyPress> keyPresses (getMappings().getKeyPressesAssignedToCommand (comp->commandID));
+  for (int i = 0; i < jmin ((int) MAX_NUM_ASSIGNMENTS, keyPresses.size()); ++i)
+    comp->addKeyPressButton (getDescriptionForKeyPress (keyPresses.getReference (i)), i, isReadOnly);
+  comp->addKeyPressButton (String::empty, -1, isReadOnly);
+}
 
 static void assignNewKeyCallback (int result, CommandMapEditButton* button, KeyPress newKey)
 {

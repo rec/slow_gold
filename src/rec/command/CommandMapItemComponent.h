@@ -10,18 +10,11 @@ class CommandMapItemComponent  : public Component
 {
 public:
     CommandMapItemComponent(CommandMapEditor& owner_, const CommandID commandID_)
-        : owner(owner_), commandID (commandID_)
+        : commandID (commandID_), owner(owner_)
     {
         setInterceptsMouseClicks (false, true);
 
-        #ifdef TODO
-        const bool isReadOnly = owner.isCommandReadOnly (commandID);
-        const Array <KeyPress> keyPresses (owner.getMappings().getKeyPressesAssignedToCommand (commandID));
-        for (int i = 0; i < jmin ((int) maxNumAssignments, keyPresses.size()); ++i)
-            addKeyPressButton (owner.getDescriptionForKeyPress (keyPresses.getReference (i)), i, isReadOnly);
-        addKeyPressButton (String::empty, -1, isReadOnly);
-        #endif
-
+        owner.addChildren(this);
     }
 
     void addKeyPressButton (const String& desc, const int index, const bool isReadOnly)
@@ -58,10 +51,11 @@ public:
         }
     }
 
+    const CommandID commandID;
+
 private:
     CommandMapEditor& owner;
     OwnedArray<CommandMapEditButton> buttons;
-    const CommandID commandID;
 
     enum { maxNumAssignments = 3 };
 

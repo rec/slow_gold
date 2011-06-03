@@ -1,5 +1,6 @@
 #include "rec/slow/TargetCommands.h"
 #include "rec/audio/Audio.h"
+#include "rec/command/KeyCommandMapEditor.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Components.h"
@@ -42,8 +43,14 @@ void keyboardMappings(Instance* i) {
   if (!l.isLocked())
     return;  // TODO beep
 
+#if 0
   juce::KeyMappingEditorComponent comp(
       *i->target_->commandManager()->getKeyMappings(), true);
+#else
+  command::KeyCommandMapEditor comp(*i->target_->commandManager()->getKeyMappings());
+  comp.initialize(true);
+
+#endif
 
   comp.setBounds(0, 0, 500, 1000);
 

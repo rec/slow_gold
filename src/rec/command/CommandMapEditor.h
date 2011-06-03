@@ -10,6 +10,7 @@ namespace command {
 
 class CommandMapEditButton;
 class CommandMapTopLevelItem;
+class CommandMapItemComponent;
 
 class JUCE_API  CommandMapEditor  : public Component
 {
@@ -29,6 +30,7 @@ public:
 
     virtual void addButton(CommandMapEditButton* button) = 0;
     virtual void removeButton(CommandMapEditButton* button) = 0;
+    virtual void addChildren(CommandMapItemComponent* comp) = 0;
 
     /** Destructor. */
     virtual ~CommandMapEditor();
@@ -58,8 +60,8 @@ public:
     virtual bool isCommandReadOnly (CommandID commandID);
 
     ApplicationCommandManager& getCommandManager() { return commandManager; }
-
     ChangeBroadcaster& getChangeBroadcaster() { return broadcaster; }
+
 
     /** This can be overridden to let you change the format of the string used
         to describe a keypress.
