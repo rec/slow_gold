@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="BSRnJ1L8C" name="tests">
+  <MAINGROUP id="JAJFcIn7n" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -279,14 +279,26 @@
               name="Command.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="gHdH724jT"
               name="Command.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandEntryWindow.h"
+              id="MJeDFIePk" name="CommandEntryWindow.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandMap.cpp" id="seYXgSha1"
               name="CommandMap.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandMap.h" id="fGg4aRlJ1"
               name="CommandMap.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandMapCategoryItem.h"
+              id="nil4LAS89" name="CommandMapCategoryItem.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandMapEditButton.h"
+              id="bsphWGHV3" name="CommandMapEditButton.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandMapEditor.cpp"
               id="mbSSWTzVS" name="CommandMapEditor.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandMapEditor.h" id="F257i63c6"
               name="CommandMapEditor.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandMapEditorMappingItem.h"
+              id="tk4yR4cn6" name="CommandMapEditorMappingItem.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandMapItemComponent.h"
+              id="8lvApsgcN" name="CommandMapItemComponent.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/CommandMapTopLevelItem.h"
+              id="z120estFR" name="CommandMapTopLevelItem.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/MidiCommandMap.cpp" id="WXuqJMnp2"
               name="MidiCommandMap.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/MidiCommandMap.h" id="KkPjzmVIe"
@@ -1225,7 +1237,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="AZXnK5itL" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="QMiLYXI6N" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

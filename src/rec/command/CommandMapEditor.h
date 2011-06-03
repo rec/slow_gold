@@ -8,6 +8,9 @@ using namespace juce;
 namespace rec {
 namespace command {
 
+class CommandMapEditButton;
+class CommandMapTopLevelItem;
+
 class JUCE_API  CommandMapEditor  : public Component
 {
 public:
@@ -19,8 +22,9 @@ public:
         @param showResetToDefaultButton     if true, then at the bottom of the list, the
                                             component will include a 'reset to defaults' button.
     */
-    CommandMapEditor (KeyPressMappingSet& mappingSet,
-                               bool showResetToDefaultButton);
+    CommandMapEditor(ApplicationCommandManager& commandManager);
+
+    void initialize(bool showResetToDefaultButton);
 
     /** Destructor. */
     virtual ~CommandMapEditor();
@@ -33,10 +37,6 @@ public:
     */
     void setColours (const Colour& mainBackground,
                      const Colour& textColour);
-
-    /** Returns the KeyPressMappingSet that this component is acting upon. */
-    KeyPressMappingSet& getMappings() const noexcept                { return mappings; }
-
 
     //==============================================================================
     /** Can be overridden if some commands need to be excluded from the list.
@@ -53,6 +53,8 @@ public:
     */
     virtual bool isCommandReadOnly (CommandID commandID);
 
+    ApplicationCommandManager& getCommandManager() { return commandManager; }
+
     /** This can be overridden to let you change the format of the string used
         to describe a keypress.
 
@@ -61,7 +63,7 @@ public:
         method, be sure to let the base class's method handle keys you're not
         interested in.
     */
-    virtual const String getDescriptionForKeyPress (const KeyPress& key);
+    // virtual const String getDescriptionForKeyPress (const KeyPress& key);
 
     //==============================================================================
     /** A set of colour IDs to use to change the colour of various aspects of the editor.
@@ -85,21 +87,18 @@ public:
     /** @internal */
     void resized();
 
+    virtual CommandMapTopLevelItem* createTreeItem() = 0;
+    // new TopLevelItem (*this);
+
 private:
-    //==============================================================================
-    KeyPressMappingSet& mappings;
+    ApplicationCommandManager& commandManager;
     TreeView tree;
     TextButton resetButton;
 
-    class TopLevelItem;
-    class ChangeKeyButton;
-    class MappingItem;
-    class CategoryItem;
-    class ItemComponent;
     friend class TopLevelItem;
-    friend class OwnedArray <ChangeKeyButton>;
-    friend class ScopedPointer<TopLevelItem>;
-    ScopedPointer<TopLevelItem> treeItem;
+    friend class OwnedArray <CommandMapEditButton>;
+    friend class ScopedPointer<CommandMapTopLevelItem>;
+    ScopedPointer<CommandMapTopLevelItem> treeItem;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandMapEditor);
 };

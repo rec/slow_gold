@@ -335,10 +335,16 @@
 		AAB32EA297812F1C88B42099 = { isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../src/rec/binary/logo.png; sourceTree = SOURCE_ROOT; };
 		6011F232AEB57506156913E1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Command.cpp; path = ../../../../src/rec/command/Command.cpp; sourceTree = SOURCE_ROOT; };
 		E0E53271295BAF9F59A71694 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.h; path = ../../../../src/rec/command/Command.h; sourceTree = SOURCE_ROOT; };
+		D28A4026108A3C2DFD6EF4B1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandEntryWindow.h; path = ../../../../src/rec/command/CommandEntryWindow.h; sourceTree = SOURCE_ROOT; };
 		B2903DED871B1C7458B15DE7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandMap.cpp; path = ../../../../src/rec/command/CommandMap.cpp; sourceTree = SOURCE_ROOT; };
 		1536FCA839A4D61D2B0DFC68 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMap.h; path = ../../../../src/rec/command/CommandMap.h; sourceTree = SOURCE_ROOT; };
+		2CED6EA8AFC8B4F0BF601DC6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapCategoryItem.h; path = ../../../../src/rec/command/CommandMapCategoryItem.h; sourceTree = SOURCE_ROOT; };
+		55F824757A23895CAD9C5DD8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapEditButton.h; path = ../../../../src/rec/command/CommandMapEditButton.h; sourceTree = SOURCE_ROOT; };
 		A25B99177B2FBBF801238912 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandMapEditor.cpp; path = ../../../../src/rec/command/CommandMapEditor.cpp; sourceTree = SOURCE_ROOT; };
 		DD7F7605E38D1987EFA8BD28 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapEditor.h; path = ../../../../src/rec/command/CommandMapEditor.h; sourceTree = SOURCE_ROOT; };
+		1AF415F7C3FFF0AFC9DC53E7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapEditorMappingItem.h; path = ../../../../src/rec/command/CommandMapEditorMappingItem.h; sourceTree = SOURCE_ROOT; };
+		31E016B6035D915B77D7104B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapItemComponent.h; path = ../../../../src/rec/command/CommandMapItemComponent.h; sourceTree = SOURCE_ROOT; };
+		BA9F7F8A18C5F8802A0DBEBE = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapTopLevelItem.h; path = ../../../../src/rec/command/CommandMapTopLevelItem.h; sourceTree = SOURCE_ROOT; };
 		FCB43F31E7E3B027B216DED6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiCommandMap.cpp; path = ../../../../src/rec/command/MidiCommandMap.cpp; sourceTree = SOURCE_ROOT; };
 		84212C5F177E272426ABF2BC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiCommandMap.h; path = ../../../../src/rec/command/MidiCommandMap.h; sourceTree = SOURCE_ROOT; };
 		D8B011CF05AE82F95C0D38EE = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TargetManager.cpp; path = ../../../../src/rec/command/TargetManager.cpp; sourceTree = SOURCE_ROOT; };
@@ -871,10 +877,16 @@
 		543C5B0340FB0EC80BA50D65 = { isa = PBXGroup; children = (
 				6011F232AEB57506156913E1,
 				E0E53271295BAF9F59A71694,
+				D28A4026108A3C2DFD6EF4B1,
 				B2903DED871B1C7458B15DE7,
 				1536FCA839A4D61D2B0DFC68,
+				2CED6EA8AFC8B4F0BF601DC6,
+				55F824757A23895CAD9C5DD8,
 				A25B99177B2FBBF801238912,
 				DD7F7605E38D1987EFA8BD28,
+				1AF415F7C3FFF0AFC9DC53E7,
+				31E016B6035D915B77D7104B,
+				BA9F7F8A18C5F8802A0DBEBE,
 				FCB43F31E7E3B027B216DED6,
 				84212C5F177E272426ABF2BC,
 				D8B011CF05AE82F95C0D38EE,
@@ -1395,7 +1407,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		F8ED92725923AD3B5E3BD9B0 = { isa = PBXGroup; children = (
+		A16EE6B075F84A9F7E094D23 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1698,7 +1710,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = F8ED92725923AD3B5E3BD9B0; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = A16EE6B075F84A9F7E094D23; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }
