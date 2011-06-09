@@ -41,6 +41,10 @@ KeyCommandMapEditor::KeyCommandMapEditor(KeyPressMappingSet& mappingSet)
 {
 }
 
+CommandEntryWindow* KeyCommandMapEditor::newWindow() {
+  return new KeyCommandEntryWindow(*this);
+}
+
 void keyChosen (int result, CommandMapEditButton* button)
 {
     KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(button->getCommandEntryWindow());
@@ -69,8 +73,8 @@ void KeyCommandMapEditor::addChildren(CommandMapItemComponent* comp) {
   const bool isReadOnly = isCommandReadOnly(comp->commandID);
   const Array <KeyPress> keyPresses (getMappings().getKeyPressesAssignedToCommand (comp->commandID));
   for (int i = 0; i < jmin ((int) MAX_NUM_ASSIGNMENTS, keyPresses.size()); ++i)
-    comp->addKeyPressButton (getDescriptionForKeyPress (keyPresses.getReference (i)), i, isReadOnly);
-  comp->addKeyPressButton (String::empty, -1, isReadOnly);
+    comp->addButton (getDescriptionForKeyPress (keyPresses.getReference (i)), i, isReadOnly);
+  comp->addButton (String::empty, -1, isReadOnly);
 }
 
 static void assignNewKeyCallback (int result, CommandMapEditButton* button, KeyPress newKey)

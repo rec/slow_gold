@@ -9,21 +9,21 @@ namespace rec {
 namespace command {
 
 class MidiCommandMapEditor : public CommandMapEditor {
-public:
-    MidiCommandMapEditor(ApplicationCommandManager&,
-                         MidiCommandMap&,
-                         ChangeBroadcaster&);
+ public:
+  MidiCommandMapEditor(ApplicationCommandManager&,
+                       MidiCommandMap&,
+                       ChangeBroadcaster&);
 
-    virtual void addButton(CommandMapEditButton* button);
-    virtual void removeButton(CommandMapEditButton* button);
-    virtual void addChildren(CommandMapItemComponent* comp);
+  virtual void addButton(CommandMapEditButton* button);
+  virtual void removeButton(CommandMapEditButton* button);
+  virtual void addChildren(CommandMapItemComponent* comp);
 
-    MidiCommandMap& getMappings() { return mappings; }
+  MidiCommandMap& getMappings() const { return mappings; }
 
-    static const int MAX_NUM_ASSIGNMENTS = 3;
+  static const int MAX_NUM_ASSIGNMENTS = 3;
 
-private:
-    MidiCommandMap& mappings;;
+ private:
+  MidiCommandMap& mappings;
 };
 
 }  // namespace command

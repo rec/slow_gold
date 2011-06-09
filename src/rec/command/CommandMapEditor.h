@@ -11,6 +11,7 @@ namespace command {
 class CommandMapEditButton;
 class CommandMapTopLevelItem;
 class CommandMapItemComponent;
+class CommandEntryWindow;
 
 class JUCE_API  CommandMapEditor  : public Component
 {
@@ -31,6 +32,7 @@ public:
     virtual void addButton(CommandMapEditButton* button) = 0;
     virtual void removeButton(CommandMapEditButton* button) = 0;
     virtual void addChildren(CommandMapItemComponent* comp) = 0;
+    virtual CommandEntryWindow* newWindow() = 0;
 
     /** Destructor. */
     virtual ~CommandMapEditor();

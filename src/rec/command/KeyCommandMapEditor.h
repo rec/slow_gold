@@ -4,6 +4,7 @@
 #include "rec/command/CommandMapEditor.h"
 #include "rec/command/CommandMapEditButton.h"
 #include "rec/command/CommandMapEditorMappingItem.h"
+#include "rec/command/GenericCommandMapEditor.h"
 
 namespace rec {
 namespace command {
@@ -21,6 +22,7 @@ public:
     virtual void removeButton(CommandMapEditButton* button);
     void setNewKey (CommandMapEditButton* button, const KeyPress& newKey, bool dontAskUser);
     virtual void addChildren(CommandMapItemComponent* comp);
+    virtual CommandEntryWindow* newWindow();
 
     static const int MAX_NUM_ASSIGNMENTS = 3;
 

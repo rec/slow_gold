@@ -17,7 +17,7 @@ class CommandMap : public Listener<const CommandMapProto&> {
   CommandMap() {}
   virtual ~CommandMap() {}
 
-  void operator()(const CommandMapProto&);
+  virtual void operator()(const CommandMapProto&);
   const CommandMapProto getProto() const;
 
   Command getCommand(const Key&) const;

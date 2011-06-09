@@ -17,7 +17,7 @@ public:
         owner.addChildren(this);
     }
 
-    void addKeyPressButton (const String& desc, const int index, const bool isReadOnly)
+    void addButton (const String& desc, const int index, const bool isReadOnly)
     {
         CommandMapEditButton* const b = new CommandMapEditButton(owner, commandID, desc, index);
         buttons.add (b);
