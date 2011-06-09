@@ -1,7 +1,7 @@
 #ifndef __REC_BASE_SAMPLEPOSITION__
 #define __REC_BASE_SAMPLEPOSITION__
 
-#include "rec/base/base.h"
+#include "rec/base/RealTime.h"
 
 namespace rec {
 

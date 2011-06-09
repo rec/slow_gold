@@ -1,6 +1,7 @@
 #ifndef __REC_SLOW_MOUSELISTENER__
 #define __REC_SLOW_MOUSELISTENER__
 
+#include "rec/base/RealTime.h"
 #include "rec/util/Range.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/slow/HasInstance.h"

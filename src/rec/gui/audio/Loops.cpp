@@ -1,5 +1,6 @@
 #include <algorithm>
 
+#include "rec/base/RealTime.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/data/proto/Equals.h"
@@ -135,17 +136,17 @@ void Loops::cut() {
  	data::set(getData(), Address(), *loopPoints_);
 }
 
-TimeRange Loops::selectionRange() const {
+Range<RealTime> Loops::selectionRange() const {
   int b = 0, size = loopPoints_->loop_point_size(), e;
   for (; b < size && !loopPoints_->loop_point(b).selected(); ++b);
   for (e = b; e < size && loopPoints_->loop_point(e).selected(); ++e);
-  return TimeRange((b < size) ? loopPoints_->loop_point(b).time() : length_,
+  return Range<RealTime>((b < size) ? loopPoints_->loop_point(b).time() : length_,
                    (e < size) ? loopPoints_->loop_point(e).time() : length_);
 }
 
 void Loops::addLoopPoints(const LoopPointList& loops) {
   ScopedLock l(lock_);
-  TimeRange selection = selectionRange();
+  Range<RealTime> selection = selectionRange();
   for (int i = 0; i < loops.loop_point_size(); ++i) {
     if (isNewLoopPoint(loops.loop_point(i).time()))
       loopPoints_->add_loop_point()->CopyFrom(loops.loop_point(i));

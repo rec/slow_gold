@@ -1,6 +1,7 @@
 #ifndef __REC_WIDGET_STATUS_DIALCOMPONENT__
 #define __REC_WIDGET_STATUS_DIALCOMPONENT__
 
+#include "rec/base/RealTime.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/Range.h"
 #include "rec/widget/status/Time.pb.h"

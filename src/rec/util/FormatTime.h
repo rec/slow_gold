@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_FORMATTIME__
 #define __REC_UTIL_FORMATTIME__
 
-#include "rec/base/base.h"
+#include "rec/base/RealTime.h"
 
 namespace rec {
 namespace util {

@@ -75,11 +75,6 @@ struct Range {
   }
 };
 
-typedef Range<RealTime>::Set TimeSelection;
-
-// delete these next ones...
-typedef Range<RealTime> TimeRange;
-
 }  // namespace util
 }  // namespace rec
 

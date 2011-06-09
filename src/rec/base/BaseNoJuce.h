@@ -50,8 +50,6 @@ enum Endianness { LITTLE_END, BIG_END };
 
 class None {};
 
-typedef double RealTime;
-
 static const double SMALLEST_TIME = 0.005;
 
 typedef vector<float> LevelVector;

@@ -42,7 +42,7 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   bool isNewLoopPoint(RealTime t) const;
   void addLoopPoint(RealTime time);
   void addLoopPoints(const LoopPointList& loops);
-  TimeRange selectionRange() const;
+  Range<RealTime> selectionRange() const;
   void clearSelection();
   void clearLoops();
 

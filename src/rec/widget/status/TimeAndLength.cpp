@@ -39,7 +39,7 @@ void TimeAndLength::setTimeScale(double s) {
 }
 
 void TimeAndLength::operator()(const TimeSelection& s) {
-  TimeRange range(s);
+  Range<RealTime> range(s);
 
   begin_.setTime(range.begin_ + offset_);
   end_.setTime(range.end_ + offset_);

@@ -1,7 +1,7 @@
 #ifndef __REC_WIDGET_WAVEFORM_ZOOM__
 #define __REC_WIDGET_WAVEFORM_ZOOM__
 
-#include "rec/base/base.h"
+#include "rec/base/RealTime.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
 namespace rec {

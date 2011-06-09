@@ -3,6 +3,7 @@
 
 #include <set>
 
+#include "rec/base/RealTime.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/util/Range.h"
@@ -52,14 +53,14 @@ class Waveform : public gui::component::Focusable<Component>,
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();
 
-  TimeRange getTimeRange() const;
+  Range<RealTime> getTimeRange() const;
   double xToTime(int x) const;
   double pixelsPerSecond() const;
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
 
  private:
-  void drawGrid(Graphics& g, const TimeRange&);
+  void drawGrid(Graphics& g, const Range<RealTime>&);
 
   Cursor* newCursor(const CursorProto& d, double time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);

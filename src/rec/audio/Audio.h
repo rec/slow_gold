@@ -1,6 +1,7 @@
 #ifndef __REC_AUDIO_AUDIO__
 #define __REC_AUDIO_AUDIO__
 
+#include "rec/base/RealTime.h"
 #include "rec/base/SamplePosition.h"
 #include "rec/util/Range.h"
 

@@ -1,6 +1,7 @@
 #include "rec/widget/waveform/Waveform.h"
 
 #include "rec/util/Defaulter.h"
+#include "rec/util/Range.h"
 #include "rec/util/Math.h"
 #include "rec/util/FormatTime.h"
 #include "rec/util/STL.h"
@@ -62,8 +63,8 @@ void Waveform::paint(Graphics& g) {
 
   if (thumbnail_) {
     TimeSelection::iterator i = selection_.begin();
-    TimeRange range = getTimeRange();
-    TimeRange r = range;
+    Range<RealTime> range = getTimeRange();
+    Range<RealTime> r = range;
     const juce::Rectangle<int>& bounds = getLocalBounds();
     int channels = thumbnail_->getNumChannels();
 
@@ -147,7 +148,7 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
       double begin = loopPoints.loop_point(i).time();
       double end = (j < size) ? loopPoints.loop_point(j).time() :
         getTimeRange().end_;
-      selection_.insert(TimeRange(begin, end));
+      selection_.insert(Range<RealTime>(begin, end));
       i = j;
     }
   }
@@ -183,9 +184,9 @@ void Waveform::resized() {
   thread::runOnMessageThread(this, &Waveform::layoutCursors);
 }
 
-TimeRange Waveform::getTimeRange() const {
+Range<RealTime> Waveform::getTimeRange() const {
   // ScopedLock l(lock_);
-  TimeRange r;
+  Range<RealTime> r;
   if (zoom_.zoom_to_selection() && !selection_.empty()) {
     r.begin_ = selection_.begin()->begin_;
     r.end_ = selection_.rbegin()->end_;
@@ -203,7 +204,7 @@ TimeRange Waveform::getTimeRange() const {
   }
 
   if (r.size() < SMALLEST_TIME)
-    r = TimeRange(0, thumbnail_ ? thumbnail_->getTotalLength() : SMALLEST_TIME);
+    r = Range<RealTime>(0, thumbnail_ ? thumbnail_->getTotalLength() : SMALLEST_TIME);
 
   return r;
 }
@@ -216,7 +217,7 @@ void Waveform::mouseWheelMove(const MouseEvent& e, float xIncrement, float yIncr
   Broadcaster<const MouseWheelEvent&>::broadcast(we);
 }
 
-void Waveform::drawGrid(Graphics& g, const TimeRange& r) {
+void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
   RealTime width = r.size();
   if (width < SMALLEST_TIME)
     return;
