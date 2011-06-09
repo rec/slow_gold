@@ -33,8 +33,8 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommandMap_2eproto() {
   GOOGLE_CHECK(file != NULL);
   CommandMapEntry_descriptor_ = file->message_type(0);
   static const int CommandMapEntry_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, key_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandMapEntry, key_),
   };
   CommandMapEntry_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -99,8 +99,8 @@ void protobuf_AddDesc_rec_2fcommand_2fCommandMap_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/command/CommandMap.proto\022\013rec.comm"
     "and\032\031rec/command/Command.proto\"J\n\017Comman"
-    "dMapEntry\022\013\n\003key\030\001 \001(\014\022*\n\007command\030\002 \001(\0162"
-    "\031.rec.command.Command.Type\">\n\017CommandMap"
+    "dMapEntry\022*\n\007command\030\001 \001(\0162\031.rec.command"
+    ".Command.Type\022\013\n\003key\030\002 \003(\014\">\n\017CommandMap"
     "Proto\022+\n\005entry\030\001 \003(\0132\034.rec.command.Comma"
     "ndMapEntry", 210);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -122,10 +122,9 @@ struct StaticDescriptorInitializer_rec_2fcommand_2fCommandMap_2eproto {
 
 // ===================================================================
 
-const ::std::string CommandMapEntry::_default_key_;
 #ifndef _MSC_VER
-const int CommandMapEntry::kKeyFieldNumber;
 const int CommandMapEntry::kCommandFieldNumber;
+const int CommandMapEntry::kKeyFieldNumber;
 #endif  // !_MSC_VER
 
 CommandMapEntry::CommandMapEntry()
@@ -144,7 +143,6 @@ CommandMapEntry::CommandMapEntry(const CommandMapEntry& from)
 
 void CommandMapEntry::SharedCtor() {
   _cached_size_ = 0;
-  key_ = const_cast< ::std::string*>(&_default_key_);
   command_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -154,9 +152,6 @@ CommandMapEntry::~CommandMapEntry() {
 }
 
 void CommandMapEntry::SharedDtor() {
-  if (key_ != &_default_key_) {
-    delete key_;
-  }
   if (this != default_instance_) {
   }
 }
@@ -183,13 +178,9 @@ CommandMapEntry* CommandMapEntry::New() const {
 
 void CommandMapEntry::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (_has_bit(0)) {
-      if (key_ != &_default_key_) {
-        key_->clear();
-      }
-    }
     command_ = 0;
   }
+  key_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -200,24 +191,10 @@ bool CommandMapEntry::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bytes key = 1;
+      // optional .rec.command.Command.Type command = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_key()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_command;
-        break;
-      }
-      
-      // optional .rec.command.Command.Type command = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_command:
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
@@ -225,11 +202,26 @@ bool CommandMapEntry::MergePartialFromCodedStream(
           if (::rec::command::Command_Type_IsValid(value)) {
             set_command(static_cast< ::rec::command::Command_Type >(value));
           } else {
-            mutable_unknown_fields()->AddVarint(2, value);
+            mutable_unknown_fields()->AddVarint(1, value);
           }
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(18)) goto parse_key;
+        break;
+      }
+      
+      // repeated bytes key = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_key:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->add_key()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_key;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -252,16 +244,16 @@ bool CommandMapEntry::MergePartialFromCodedStream(
 
 void CommandMapEntry::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional bytes key = 1;
+  // optional .rec.command.Command.Type command = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      1, this->key(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->command(), output);
   }
   
-  // optional .rec.command.Command.Type command = 2;
-  if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->command(), output);
+  // repeated bytes key = 2;
+  for (int i = 0; i < this->key_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      2, this->key(i), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -272,17 +264,16 @@ void CommandMapEntry::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* CommandMapEntry::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional bytes key = 1;
+  // optional .rec.command.Command.Type command = 1;
   if (_has_bit(0)) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->key(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->command(), target);
   }
   
-  // optional .rec.command.Command.Type command = 2;
-  if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->command(), target);
+  // repeated bytes key = 2;
+  for (int i = 0; i < this->key_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteBytesToArray(2, this->key(i), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -296,20 +287,20 @@ int CommandMapEntry::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional bytes key = 1;
-    if (has_key()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->key());
-    }
-    
-    // optional .rec.command.Command.Type command = 2;
+    // optional .rec.command.Command.Type command = 1;
     if (has_command()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->command());
     }
     
   }
+  // repeated bytes key = 2;
+  total_size += 1 * this->key_size();
+  for (int i = 0; i < this->key_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::BytesSize(
+      this->key(i));
+  }
+  
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -335,11 +326,9 @@ void CommandMapEntry::MergeFrom(const ::google::protobuf::Message& from) {
 
 void CommandMapEntry::MergeFrom(const CommandMapEntry& from) {
   GOOGLE_CHECK_NE(&from, this);
+  key_.MergeFrom(from.key_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      set_key(from.key());
-    }
-    if (from._has_bit(1)) {
       set_command(from.command());
     }
   }
@@ -365,8 +354,8 @@ bool CommandMapEntry::IsInitialized() const {
 
 void CommandMapEntry::Swap(CommandMapEntry* other) {
   if (other != this) {
-    std::swap(key_, other->key_);
     std::swap(command_, other->command_);
+    key_.Swap(&other->key_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

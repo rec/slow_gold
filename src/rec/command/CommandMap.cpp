@@ -5,21 +5,28 @@ namespace command {
 
 void CommandMap::operator()(const CommandMapProto& commands) {
   toCommand_.clear();
-  toKey_.clear();
+  toKeys_.clear();
   for (int i = 0; i < commands.entry_size(); ++i) {
     const CommandMapEntry& entry = commands.entry(i);
-    toCommand_[entry.key()] = entry.command();
-    toKey_[entry.command()] = entry.key();
+    Command command = entry.command();
+    for (int j = 0; j < entry.key_size(); ++j) {
+      const Key& key = entry.key(j);
+      toCommand_[key] = command;
+      toKeys_.insert(std::make_pair(command, key));
+    }
   }
 }
 
 const CommandMapProto CommandMap::getProto() const {
   CommandMapProto commands;
-  for (KeyToCommand::const_iterator i = toCommand_.begin();
-       i != toCommand_.end(); ++i) {
-    CommandMapEntry* entry = commands.add_entry();
-    entry->set_key(i->first);
-    entry->set_command(i->second);
+  CommandMapEntry* entry = NULL;
+  CommandToKeys::const_iterator i;
+  for (i = toKeys_.begin(); i != toKeys_.end(); ++i) {
+    if (!entry || entry->command() != i->first) {
+      entry = commands.add_entry();
+      entry->set_command(i->first);
+    }
+    entry->add_key(i->second);
   }
 
   return commands;
@@ -39,9 +46,16 @@ command::Command::Type CommandMap::getCommand(const string& key) const {
   return (i == toCommand_.end()) ? command::Command::NONE : i->second;
 }
 
-const CommandMap::Key CommandMap::getKey(Command c) const {
-  CommandToKey::const_iterator i = toKey_.find(c);
-  return (i == toKey_.end()) ? "" : i->second;
+const vector<CommandMap::Key> CommandMap::getKeys(Command c) const {
+  typedef CommandToKeys::const_iterator const_iterator;
+  typedef std::pair<const_iterator, const_iterator> IteratorPair;
+  IteratorPair range(toKeys_.equal_range(c));
+
+  vector<CommandMap::Key> keys;
+  for (const_iterator i = range.first; i != range.second; ++i)
+    keys.push_back(i->second);
+
+  return keys;
 }
 
 }  // namespace command

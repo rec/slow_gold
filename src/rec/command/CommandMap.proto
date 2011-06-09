@@ -3,8 +3,8 @@ import "rec/command/Command.proto";
 package rec.command;
 
 message CommandMapEntry {
-  optional bytes key = 1;
-  optional Command.Type command = 2;
+  optional Command.Type command = 1;
+  repeated bytes key = 2;
 };
 
 message CommandMapProto {

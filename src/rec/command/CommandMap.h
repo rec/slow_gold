@@ -21,16 +21,16 @@ class CommandMap : public Listener<const CommandMapProto&> {
   const CommandMapProto getProto() const;
 
   Command getCommand(const Key&) const;
-  const Key getKey(Command) const;
+  const vector<Key> getKeys(Command) const;
 
   bool invoke(const Key&, ApplicationCommandManager*, bool async = false) const;
 
  private:
   typedef std::map<Key, Command> KeyToCommand;
-  typedef std::map<Command, Key> CommandToKey;
+  typedef std::multimap<Command, Key> CommandToKeys;
 
   KeyToCommand toCommand_;
-  CommandToKey toKey_;
+  CommandToKeys toKeys_;
 
   DISALLOW_COPY_AND_ASSIGN(CommandMap);
 };
