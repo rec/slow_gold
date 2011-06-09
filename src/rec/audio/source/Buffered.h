@@ -4,6 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/Wrappy.h"
+#include "rec/base/SamplePosition.h"
 #include "rec/util/Circular.h"
 
 namespace rec {

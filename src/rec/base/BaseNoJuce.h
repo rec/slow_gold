@@ -58,6 +58,4 @@ typedef vector<float> LevelVector;
 
 }  // namespace rec
 
-#include "rec/base/SamplePosition.h"
-
 #endif  // __REC_BASE_BASENOJUCE__

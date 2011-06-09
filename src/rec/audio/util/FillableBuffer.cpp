@@ -1,5 +1,6 @@
 #include "rec/audio/util/FillableBuffer.h"
 #include "rec/audio/util/CopySamples.h"
+#include "rec/base/SamplePosition.h"
 #include "rec/util/Math.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/block/Difference.h"

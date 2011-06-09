@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_UTIL_FRAME__
 #define __REC_AUDIO_UTIL_FRAME__
 
-#include "rec/base/base.h"
+#include "rec/base/SamplePosition.h"
 
 namespace rec {
 namespace audio {

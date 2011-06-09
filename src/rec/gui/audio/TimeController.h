@@ -2,6 +2,7 @@
 #define __REC_GUI_APP_TIMECONTROLLER__
 
 #include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/base/SamplePosition.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Layout.h"
 #include "rec/widget/status/DialComponent.h"

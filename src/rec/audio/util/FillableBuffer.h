@@ -1,6 +1,7 @@
 #ifndef __REC_AUDIO_SOURCE_BUFFERY__
 #define __REC_AUDIO_SOURCE_BUFFERY__
 
+#include "rec/base/SamplePosition.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/block/Fillable.h"
 
