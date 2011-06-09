@@ -10,7 +10,7 @@ void BufferSource::getNextAudioBlock(const Info& i) {
   BufferTime to(i.buffer, i.startSample);
 
   for (SamplePosition toCopy = i.numSamples; toCopy > 0; ) {
-    SamplePosition t = std::min(getTotalLength() - position_, toCopy);
+    SamplePosition t = std::min<int64>(getTotalLength() - position_, toCopy);
 
     copy(from, to, t);
     toCopy -= t;

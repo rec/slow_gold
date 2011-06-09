@@ -35,8 +35,8 @@ void Selection::moveBackward(SamplePosition dt) {
     --i;
 
   for (; dt > 0; --i) {
-    position_ = std::min(position_, i->second);
-    SamplePosition moved = std::min(position_ - i->first, dt);
+    position_ = std::min<int64>(position_, i->second);
+    SamplePosition moved = std::min<int64>(position_ - i->first, dt);
     DCHECK(moved);
     dt -= moved;
     position_ -= moved;

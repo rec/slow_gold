@@ -50,7 +50,6 @@ enum Endianness { LITTLE_END, BIG_END };
 
 class None {};
 
-typedef int64 SamplePosition;
 typedef double RealTime;
 
 static const double SMALLEST_TIME = 0.005;
@@ -58,5 +57,7 @@ static const double SMALLEST_TIME = 0.005;
 typedef vector<float> LevelVector;
 
 }  // namespace rec
+
+#include "rec/base/SamplePosition.h"
 
 #endif  // __REC_BASE_BASENOJUCE__

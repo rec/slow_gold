@@ -21,15 +21,15 @@ struct Circular : public Range<Type> {
   bool isFull() const { return !toFill(); }
 
   Type wrap(Type index) const {
-    return  (index > capacity_) ? index - capacity_ : 0;
+    return  (index > capacity_) ? index - capacity_ : SamplePosition();
   }
 
   Type wrap() const { return wrap(this->end_); }
 
   Range<Type> fillable() const {
     Type w = wrap();
-    return Range<Type>(w ? (this->end_ - capacity_) : this->end_,
-                       w ? this->begin_ : capacity_);
+    return Range<Type>(w ? SamplePosition(this->end_ - capacity_) : this->end_,
+                       w ? this->begin_ : SamplePosition(capacity_));
   }
 
   Range<Type> consumable() const {
