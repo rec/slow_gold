@@ -11,14 +11,14 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class TimeController : public Layout, public Listener<SampleTime> {
+class TimeController : public Layout, public Listener<SamplePosition> {
  public:
   TimeController();
   virtual ~TimeController() {}
 
   virtual void operator()(const rec::audio::stretch::Stretch&);
   virtual void operator()(const Range<RealTime>&);
-  virtual void operator()(SampleTime);
+  virtual void operator()(SamplePosition);
 
  private:
   CriticalSection lock_;

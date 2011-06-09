@@ -29,7 +29,7 @@ void Cursor::setTime(RealTime time) {
   thread::runOnMessageThread(this, &Cursor::setCursorBounds, time);
 }
 
-void Cursor::setTime(SampleTime time) {
+void Cursor::setTime(SamplePosition time) {
   setTime(rec::audio::samplesToTime(time));
 }
 
@@ -38,7 +38,7 @@ double Cursor::getTime() const {
   return time_;
 }
 
-void Cursor::operator()(SampleTime t) {
+void Cursor::operator()(SamplePosition t) {
   ScopedLock l(lock_);
   if (listeningToClock_)
     setTime(t);

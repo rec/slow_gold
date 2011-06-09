@@ -47,7 +47,7 @@ Listeners::Listeners(Instance* i)
                                             levelListener());
 }
 
-void Listeners::operator()(SampleTime time) {
+void Listeners::operator()(SamplePosition time) {
   player()->setNextReadPosition(time);
 }
 

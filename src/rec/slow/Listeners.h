@@ -50,7 +50,7 @@ class Listeners : public Listener<None>,
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const gui::DropFiles&);
 
-  void operator()(SampleTime);
+  void operator()(SamplePosition);
 
   template <typename Type>
   void callAsync(Type t) {

@@ -50,7 +50,6 @@ enum Endianness { LITTLE_END, BIG_END };
 
 class None {};
 
-typedef int64 SampleTime;  // TODO: DEPRECATED
 typedef int64 SamplePosition;
 typedef double RealTime;
 

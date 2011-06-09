@@ -19,7 +19,7 @@ class FillableBuffer : public block::Fillable {
   void setSource(PositionableAudioSource* source);
 
   virtual block::Size doFillNextBlock(const block::Block& block);
-  void setBlockSize(SampleTime b) { blockSize_ = b; }
+  void setBlockSize(SamplePosition b) { blockSize_ = b; }
 
  protected:
   virtual void onFilled() { source_.reset(); }

@@ -17,12 +17,12 @@ inline State invert(State s) { return s ? STOPPED : RUNNING; }
 
 }  // namespace transport
 
-inline RealTime samplesToTime(SampleTime samples, RealTime rate = 44100.0) {
+inline RealTime samplesToTime(SamplePosition samples, RealTime rate = 44100.0) {
   return samples / rate;
 }
 
-inline SampleTime timeToSamples(RealTime time, double rate = 44100.0) {
-  return static_cast<SampleTime>(time * rate);
+inline SamplePosition timeToSamples(RealTime time, double rate = 44100.0) {
+  return static_cast<SamplePosition>(time * rate);
 }
 
 static const float HALF_RANGE = 32768.0f;

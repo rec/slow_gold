@@ -12,7 +12,7 @@ namespace source {
 class Wrappy : public PositionableAudioSource {
  public:
   explicit Wrappy(PositionableAudioSource* s = NULL);
-  virtual SampleTime getTotalLength() const { return source()->getTotalLength(); }
+  virtual SamplePosition getTotalLength() const { return source()->getTotalLength(); }
 
   virtual bool isLooping() const { return source()->isLooping(); }
   virtual void setLooping(bool looping) { source()->setLooping(looping); }
@@ -20,10 +20,10 @@ class Wrappy : public PositionableAudioSource {
   virtual void prepareToPlay(int s, double r);
   virtual void releaseResources() { source()->releaseResources(); }
 
-  SampleTime mod(SampleTime x) const;
+  SamplePosition mod(SamplePosition x) const;
 
-  virtual SampleTime getNextReadPosition() const;
-  virtual void setNextReadPosition(SampleTime p);
+  virtual SamplePosition getNextReadPosition() const;
+  virtual void setNextReadPosition(SamplePosition p);
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
 
   virtual PositionableAudioSource* source() const;
@@ -34,7 +34,7 @@ class Wrappy : public PositionableAudioSource {
   virtual PositionableAudioSource* getSource() const;
   CriticalSection lock_;
 
-  SampleTime position_;
+  SamplePosition position_;
   ptr<PositionableAudioSource> source_;
 
   bool prepared_;

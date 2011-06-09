@@ -39,13 +39,13 @@ class Player : public Broadcaster<transport::State>,
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
-  SampleTime getNextReadPosition();
-  void setNextReadPosition(SampleTime t);
+  SamplePosition getNextReadPosition();
+  void setNextReadPosition(SamplePosition t);
   RealTime getTime() { return samplesToTime(getNextReadPosition()); }
 
   transport::State state() const;
   Device* device() { return device_; }
-  Broadcaster<SampleTime>* timeBroadcaster() { return timer_; }
+  Broadcaster<SamplePosition>* timeBroadcaster() { return timer_; }
   Broadcaster<const LevelVector&>* levelBroadcaster() { return level_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Buffered* buffered() { return buffered_; }
@@ -54,7 +54,7 @@ class Player : public Broadcaster<transport::State>,
   void setGain(const Gain&);
   void setGain(float);
 
-  SampleTime length() const { return timer_->getTotalLength(); }
+  SamplePosition length() const { return timer_->getTotalLength(); }
   RealTime realLength() const { return audio::samplesToTime(length()); }
   void clearSource();
 

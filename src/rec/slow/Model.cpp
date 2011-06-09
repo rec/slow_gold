@@ -71,7 +71,7 @@ void Model::jumpToTime(RealTime t) {
   jumpToSamplePosition(audio::timeToSamples(t));
 }
 
-void Model::jumpToSamplePosition(SampleTime pos) {
+void Model::jumpToSamplePosition(SamplePosition pos) {
   {
     ScopedLock l(lock_);
     if (!block::contains(timeSelection_, pos)) {

@@ -14,13 +14,13 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public Listener<SampleTime> {
+class Cursor : public Component, public Listener<SamplePosition> {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, double time, int index);
   virtual ~Cursor() {}
 
   void setTime(RealTime time);
-  void setTime(SampleTime time);
+  void setTime(SamplePosition time);
   void paint(Graphics& g);
   double getTime() const;
 
@@ -29,7 +29,7 @@ class Cursor : public Component, public Listener<SampleTime> {
   const CursorProto& desc() const { return desc_; }
   void setCursorBounds(double time);
 
-  virtual void operator()(SampleTime t);
+  virtual void operator()(SamplePosition t);
 
   void setListeningToClock(bool b) { listeningToClock_ = b; }
   int index() { return index_; }

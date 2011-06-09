@@ -7,7 +7,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Buffered::Buffered(Source* source, SampleTime size)
+Buffered::Buffered(Source* source, SamplePosition size)
     : source_(source),
       buffer_(2, size),
       circular_(size),
@@ -26,16 +26,16 @@ void Buffered::getNextAudioBlock(const Info& i) {
   notify();
 }
 
-bool Buffered::fillBuffer(SampleTime size) {
+bool Buffered::fillBuffer(SamplePosition size) {
   ptr<Source> trash;
-  Range<SampleTime> fillable;
+  Range<SamplePosition> fillable;
   {
     ScopedLock l(lock_);
     if (nextSource_) {
       nextSource_.swap(source_);
       nextSource_.swap(trash);
 
-      SampleTime e = nextEnd_;
+      SamplePosition e = nextEnd_;
       if (e > circular_.size())
         e -= circular_.size();
 
@@ -61,7 +61,7 @@ bool Buffered::fillBuffer(SampleTime size) {
   return true;
 }
 
-void Buffered::setSource(Source* source, SampleTime offset) {
+void Buffered::setSource(Source* source, SamplePosition offset) {
   ptr<Source> src(source);
   {
     ScopedLock l(lock_);

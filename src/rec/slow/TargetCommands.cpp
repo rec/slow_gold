@@ -21,7 +21,7 @@ void clearNavigator() { persist::set(VirtualFileList()); }
 
 void jumpToLoopPoint(Instance* i, int offset) {
   LoopPointList loops(i->model_->loopPointList());
-  SampleTime time = i->player_->getNextReadPosition();
+  SamplePosition time = i->player_->getNextReadPosition();
   int j = 0, size = loops.loop_point_size();
   for (; j < size && time >= loops.loop_point(j).time(); ++j);
   j += offset;
@@ -30,7 +30,7 @@ void jumpToLoopPoint(Instance* i, int offset) {
   else if (j < 0)
     j = size - 1;
 
-  SampleTime pos = audio::timeToSamples(loops.loop_point(j).time());
+  SamplePosition pos = audio::timeToSamples(loops.loop_point(j).time());
   i->model_->jumpToSamplePosition(pos);
 }
 

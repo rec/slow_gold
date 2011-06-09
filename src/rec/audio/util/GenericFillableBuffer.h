@@ -18,21 +18,21 @@ class GenericFillableBuffer : public block::Fillable {
  public:
   static const int DEFAULT_BLOCK_SIZE = 4096;
 
-  GenericFillableBuffer(SampleTime s = DEFAULT_BLOCK_SIZE)
+  GenericFillableBuffer(SamplePosition s = DEFAULT_BLOCK_SIZE)
       : frames_(NULL), buffer_(CHANNELS, s) {
     info_.buffer = &buffer_;
     info_.startSample = 0;
   }
   virtual ~GenericFillableBuffer() {}
 
-  void setBlockSize(SampleTime s) {
+  void setBlockSize(SamplePosition s) {
     buffer_.setSize(CHANNELS, s);
   }
 
   void setSource(PositionableAudioSource* source) {
     ScopedLock l(lock_);
 
-    SampleTime size = source->getTotalLength();
+    SamplePosition size = source->getTotalLength();
     setLength(size);
     frames_.resize(size);
     source_.reset(source);
@@ -46,7 +46,7 @@ class GenericFillableBuffer : public block::Fillable {
     source_->getNextAudioBlock(info_);
 
     // Now copy it to our frame buffer.
-    for (SampleTime i = 0; i < info_.numSamples; ++i) {
+    for (SamplePosition i = 0; i < info_.numSamples; ++i) {
       Frame<Sample, CHANNELS>* frame = &frames_[b.first + i];
       for (int c = 0; c < CHANNELS; ++c)
         convertSample(*buffer_.getSampleData(c, i), &frame->sample_[c]);

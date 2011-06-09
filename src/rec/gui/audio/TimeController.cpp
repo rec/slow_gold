@@ -51,7 +51,7 @@ void TimeController::operator()(const Range<RealTime>& r) {
   songDial_(r);
 }
 
-void TimeController::operator()(SampleTime time) {
+void TimeController::operator()(SamplePosition time) {
   RealTime scaledTime = rec::audio::samplesToTime(time) / timeScale_;
   songTime_(scaledTime);
   songDial_(scaledTime);

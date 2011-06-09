@@ -6,15 +6,15 @@ namespace audio {
 namespace {
 
 int channels(const BufferTime& bt) { return bt.buffer_->getNumChannels(); }
-SampleTime size(const BufferTime& bt) { return bt.buffer_->getNumSamples(); }
-SampleTime remaining(const BufferTime& b) { return size(b) - b.time_; }
+SamplePosition size(const BufferTime& bt) { return bt.buffer_->getNumSamples(); }
+SamplePosition remaining(const BufferTime& b) { return size(b) - b.time_; }
 
 struct Copier {
-  Copier(const BufferTime& from, const BufferTime& to, SampleTime count)
+  Copier(const BufferTime& from, const BufferTime& to, SamplePosition count)
       : from_(from), to_(to), count_(count) {
   }
 
-  SampleTime copy() const {
+  SamplePosition copy() const {
     for (int ch = 0; ch < channels(to_); ++ch)
       copy(ch);
     return count_;
@@ -37,8 +37,8 @@ struct Copier {
   }
 
   void mix(int chanFrom, int chanTo) const {
-    SampleTime startFrom = from_.time_;
-    SampleTime startTo = to_.time_;
+    SamplePosition startFrom = from_.time_;
+    SamplePosition startTo = to_.time_;
     for (int c = 0; c < chanTo; ++c) {
       // This probably isn't right.
       int c1 = (chanFrom * c) / chanTo;
@@ -57,11 +57,11 @@ struct Copier {
 
   const BufferTime from_;
   const BufferTime to_;
-  const SampleTime count_;
+  const SamplePosition count_;
 };
 
-SampleTime restrictCount(const BufferTime& bt, SampleTime count) {
-  SampleTime remains = remaining(bt);
+SamplePosition restrictCount(const BufferTime& bt, SamplePosition count) {
+  SamplePosition remains = remaining(bt);
   if (count <= remains)
     return count;
 
@@ -71,34 +71,34 @@ SampleTime restrictCount(const BufferTime& bt, SampleTime count) {
 
 }  // namespace
 
-SampleTime copy(const BufferTime& from, const BufferTime& to, SampleTime cnt) {
+SamplePosition copy(const BufferTime& from, const BufferTime& to, SamplePosition cnt) {
   return Copier(from, to, restrictCount(from, restrictCount(to, cnt))).copy();
 }
 
 #if 0
 namespace {
 
-SampleTime copy(bool copyFirstToSecond,
-                const BufferTime& x, const BufferTime& y, SampleTime c) {
+SamplePosition copy(bool copyFirstToSecond,
+                const BufferTime& x, const BufferTime& y, SamplePosition c) {
   return copyFirstToSecond ? copy(x, y, c) : copy(y, x, c);
 }
 
-BufferTime add(const BufferTime& bt, SampleTime d) {
+BufferTime add(const BufferTime& bt, SamplePosition d) {
   return BufferTime(bt.buffer_, bt.time_ + d);
 }
 
-BufferTime reset(const BufferTime& bt, SampleTime t = 0.0) {
+BufferTime reset(const BufferTime& bt, SamplePosition t = 0.0) {
   return BufferTime(bt.buffer_, t);
 }
 
 }  // namespace
 
-SampleTime copyCircular(const BufferTime& circ, SampleTime size,
-                        const BufferTime& reg, SampleTime count,
+SamplePosition copyCircular(const BufferTime& circ, SamplePosition size,
+                        const BufferTime& reg, SamplePosition count,
                         bool toReg) {
-  SampleTime available = (size - circ.time_);
-  SampleTime n = std::min(available, count);
-  SampleTime copied = copy(toReg, circ, reg, n);
+  SamplePosition available = (size - circ.time_);
+  SamplePosition n = std::min(available, count);
+  SamplePosition copied = copy(toReg, circ, reg, n);
   if (n < count)
     copied += copy(toReg, reset(circ), add(reg, n), count - n);
 
@@ -111,17 +111,17 @@ SampleTime copyCircular(const BufferTime& circ, SampleTime size,
   return copied;
 }
 
-SampleTime copyFromCircular(const BufferTime& from, SampleTime fromSize,
-                            const BufferTime& to, SampleTime count) {
+SamplePosition copyFromCircular(const BufferTime& from, SamplePosition fromSize,
+                            const BufferTime& to, SamplePosition count) {
   return copyCircular(from, fromSize, to, count, true);
 }
 
-SampleTime copyToCircular(const BufferTime& from, const BufferTime& to,
-                          SampleTime toSize, SampleTime count) {
+SamplePosition copyToCircular(const BufferTime& from, const BufferTime& to,
+                          SamplePosition toSize, SamplePosition count) {
   return copyCircular(to, toSize, from, count, false);
 }
 
-void clear(const BufferTime& bt, SampleTime count) {
+void clear(const BufferTime& bt, SamplePosition count) {
   if (count > 0)
     bt.buffer_->clear(bt.time_, count);
 }

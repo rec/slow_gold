@@ -19,11 +19,11 @@ struct Frames : public vector< Frame<Sample, CHANNELS> > {
   typedef vector< Frame<Sample, CHANNELS> > super;
 
   Frames() {}
-  Frames(SampleTime n) : super(n) {}
-  Frames(SampleTime n, const Frame<Sample, CHANNELS>& f) : super(n, f) {}
+  Frames(SamplePosition n) : super(n) {}
+  Frames(SamplePosition n, const Frame<Sample, CHANNELS>& f) : super(n, f) {}
 
   template <typename Sample2>
-  void copyFrom(SampleTime nsamples, SampleTime beginTo, SampleTime beginFrom,
+  void copyFrom(SamplePosition nsamples, SamplePosition beginTo, SamplePosition beginFrom,
                 const Frames<Sample2, CHANNELS>& from) {
     nsamples = std::min(nsamples, this->size() - beginTo);
     nsamples = std::min(nsamples, from->size() - beginFrom);

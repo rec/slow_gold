@@ -24,7 +24,7 @@ class TransportController : public Layout,
   TransportController();
   virtual void buttonClicked(juce::Button *button);
   void setTransportState(rec::audio::transport::State state);
-  void setTime(SampleTime time) { time_ = time; recalc(); }
+  void setTime(SamplePosition time) { time_ = time; recalc(); }
   void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
   LevelMeter* levelMeter() { return &levelMeter_; }
@@ -40,7 +40,7 @@ class TransportController : public Layout,
   LevelMeter levelMeter_;
 
   juce::Label filler_;
-  SampleTime time_;
+  SamplePosition time_;
   LoopPointList loopPointList_;
 
   DISALLOW_COPY_AND_ASSIGN(TransportController);

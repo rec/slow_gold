@@ -12,14 +12,14 @@ class CircularBuffer {
  public:
   CircularBuffer(Buffer* b) : filled_(b->getNumSamples()), buffer_(b) {}
 
-  SampleTime fillFrom(const BufferTime&, SampleTime);
-  SampleTime consumeTo(const BufferTime&, SampleTime);
+  SamplePosition fillFrom(const BufferTime&, SamplePosition);
+  SamplePosition consumeTo(const BufferTime&, SamplePosition);
 
  private:
   CriticalSection lock_;
 
   AudioSampleBuffer* buffer_;
-  Circular<SampleTime> filled_;
+  Circular<SamplePosition> filled_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(CircularBuffer);
 };

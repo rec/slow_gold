@@ -14,29 +14,29 @@ namespace source {
 class Buffered : public BufferSource {
  public:
   // The source must already have been prepared.
-  Buffered(Source* source, SampleTime size);
+  Buffered(Source* source, SamplePosition size);
 
   virtual ~Buffered() {}
   virtual void getNextAudioBlock(const Info& info);
 
   // Try to pre-fill the lookahead buffer one slot.
   // Return true if some new bytes were filled, false if the buffer was full.
-  bool fillBuffer(SampleTime chunkSize);
+  bool fillBuffer(SamplePosition chunkSize);
 
   void setNotifyThread(Thread* t) { notifyThread_ = t; }
   Thread* notifyThread() { return notifyThread_; }
   void notify() { if (notifyThread_) notifyThread_->notify(); }
-  void setSource(Source* source, SampleTime offset);
+  void setSource(Source* source, SamplePosition offset);
 
  private:
   ptr<Source> source_;
   Buffer buffer_;
-  Circular<SampleTime> circular_;
+  Circular<SamplePosition> circular_;
   CriticalSection lock_;
   Thread* notifyThread_;
 
   ptr<Source> nextSource_;
-  SampleTime nextEnd_;
+  SamplePosition nextEnd_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Buffered);
 };

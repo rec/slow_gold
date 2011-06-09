@@ -40,11 +40,11 @@ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
-SampleTime Player::getNextReadPosition() {
+SamplePosition Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
 }
 
-void Player::setNextReadPosition(SampleTime t) {
+void Player::setNextReadPosition(SamplePosition t) {
   selection_->setNextReadPosition(t);
 }
 

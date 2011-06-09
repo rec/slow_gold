@@ -8,7 +8,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Timer : public Wrappy, public Broadcaster<SampleTime> {
+class Timer : public Wrappy, public Broadcaster<SamplePosition> {
  public:
   explicit Timer(PositionableAudioSource* s = NULL) : Wrappy(s) {}
 
@@ -17,7 +17,7 @@ class Timer : public Wrappy, public Broadcaster<SampleTime> {
     broadcast(position_);
   }
 
-  virtual void setNextReadPosition(SampleTime time) {
+  virtual void setNextReadPosition(SamplePosition time) {
     Wrappy::setNextReadPosition(time);
     broadcast(time);
   }
