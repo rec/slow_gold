@@ -16,7 +16,7 @@ namespace waveform {
 
 class Cursor : public Component, public Listener<SamplePosition> {
  public:
-  Cursor(const CursorProto& d, Waveform* waveform, double time, int index);
+  Cursor(const CursorProto& d, Waveform* waveform, RealTime time, int index);
   virtual ~Cursor() {}
 
   void setTime(RealTime time);
@@ -38,7 +38,7 @@ class Cursor : public Component, public Listener<SamplePosition> {
   Waveform* const waveform_;
   CriticalSection lock_;
   CursorProto desc_;
-  double time_;
+  RealTime time_;
   const int index_;
   juce::Rectangle<int> bounds_;
   bool dragging_;

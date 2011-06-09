@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="0I1HwaziL" name="Slow">
+  <MAINGROUP id="MVy9BBEXm" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -239,6 +239,12 @@
               resource="0"/>
         <FILE compile="0" file="../../src/rec/base/ptr.h" id="gq0I7POg0" name="ptr.h"
               resource="0"/>
+        <FILE compile="1" file="../../src/rec/base/RealTime.cpp" id="GKJM8hCLX"
+              name="RealTime.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/RealTime.h" id="VHTE7HimI"
+              name="RealTime.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/SamplePosition.h" id="DbxvANbTz"
+              name="SamplePosition.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="yNTNVHuSJ"
               name="scoped_array.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/Standard.h" id="axJgbJQ8Q"
@@ -287,6 +293,10 @@
               name="MidiCommandMap.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/MidiCommandMap.h" id="WGW2O4Oxe"
               name="MidiCommandMap.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/MidiCommandMapEditor.cpp"
+              id="225AG8jjM" name="MidiCommandMapEditor.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/MidiCommandMapEditor.h"
+              id="b3Vkgg5ef" name="MidiCommandMapEditor.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/TargetManager.cpp" id="nfE1AINWI"
               name="TargetManager.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/TargetManager.h" id="WW30iAqz4"
@@ -1183,7 +1193,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="WcJgUh3nC" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="GPfesJHlg" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

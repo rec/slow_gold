@@ -68,7 +68,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       LoopPointList loops = model()->loopPointList();
       cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0.0;
       cursorDrag_.end_ = (i < loops.loop_point_size() - 1) ?
-        loops.loop_point(i + 1).time() : player()->realLength();
+        RealTime(loops.loop_point(i + 1).time()) : player()->realLength();
     }
   }
 }
@@ -81,9 +81,9 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       ZoomProto zoom(model()->zoomLocker()->get());
       RealTime length = player()->realLength();
-      RealTime end = zoom.has_end() ? zoom.end() : length;
+      RealTime end = zoom.has_end() ? RealTime(zoom.end()) : length;
       RealTime size = end - zoom.begin();
-      RealTime begin = std::max(waveformDragStart_ - dt, 0.0);
+      RealTime begin = std::max<double>(waveformDragStart_ - dt, 0.0);
       RealTime e2 = std::min(length, begin + size);
       zoom.set_begin(e2 - size);
       zoom.set_end(end);

@@ -71,7 +71,7 @@ void Waveform::paint(Graphics& g) {
     while (r.size() > 0.0) {
       for (; i != selection_.end() && i->end_ <= r.begin_; ++i);
       bool selected = (i != selection_.end() && r.begin_ >= i->begin_);
-      Range<double> draw = r;
+      Range<RealTime> draw = r;
       if (selected)
         draw.end_ = i->end_;
 
@@ -145,8 +145,8 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
     if (i < size) {
       int j = i;
       for (; j < size && loopPoints.loop_point(j).selected(); ++j);
-      double begin = loopPoints.loop_point(i).time();
-      double end = (j < size) ? loopPoints.loop_point(j).time() :
+      RealTime begin = loopPoints.loop_point(i).time();
+      RealTime end = (j < size) ? RealTime(loopPoints.loop_point(j).time()) :
         getTimeRange().end_;
       selection_.insert(Range<RealTime>(begin, end));
       i = j;
@@ -196,8 +196,8 @@ Range<RealTime> Waveform::getTimeRange() const {
     r.begin_ -= desc_.selection_frame_in_seconds();
     r.end_ += desc_.selection_frame_in_seconds();
 
-    r.begin_ = juce::jmax(r.begin_, 0.0);
-    r.end_ = juce::jmin(r.end_, zoom_.end());
+    r.begin_ = std::max<RealTime>(r.begin_, 0.0);
+    r.end_ = std::min<RealTime>(r.end_, zoom_.end());
   } else {
     r.begin_ = zoom_.begin();
     r.end_= zoom_.end();

@@ -14,7 +14,7 @@ block::BlockSet getTimeSelection(const LoopPointList& list,
     for (j = i; j < size && list.loop_point(j).selected(); ++j);
     if (j != i) {
       RealTime begin = scale * list.loop_point(i).time();
-      RealTime end = scale * (j < size ? list.loop_point(j).time() : length);
+      RealTime end = scale * (j < size ? RealTime(list.loop_point(j).time()) : length);
       sel.insert(block::makeBlock(timeToSamples(begin), timeToSamples(end)));
     }
     i = j;

@@ -202,12 +202,12 @@ class WaveformProto : public ::google::protobuf::Message {
   inline bool tics_at_bottom() const;
   inline void set_tics_at_bottom(bool value);
   
-  // optional uint32 selection_frame_in_seconds = 12 [default = 5];
+  // optional double selection_frame_in_seconds = 12 [default = 5];
   inline bool has_selection_frame_in_seconds() const;
   inline void clear_selection_frame_in_seconds();
   static const int kSelectionFrameInSecondsFieldNumber = 12;
-  inline ::google::protobuf::uint32 selection_frame_in_seconds() const;
-  inline void set_selection_frame_in_seconds(::google::protobuf::uint32 value);
+  inline double selection_frame_in_seconds() const;
+  inline void set_selection_frame_in_seconds(double value);
   
   // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
   inline bool has_layout() const;
@@ -230,7 +230,7 @@ class WaveformProto : public ::google::protobuf::Message {
   ::google::protobuf::uint32 subtic_height_;
   bool use_captions_;
   bool tics_at_bottom_;
-  ::google::protobuf::uint32 selection_frame_in_seconds_;
+  double selection_frame_in_seconds_;
   int layout_;
   friend void  protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
   friend void protobuf_AssignDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto();
@@ -405,18 +405,18 @@ inline void WaveformProto::set_tics_at_bottom(bool value) {
   tics_at_bottom_ = value;
 }
 
-// optional uint32 selection_frame_in_seconds = 12 [default = 5];
+// optional double selection_frame_in_seconds = 12 [default = 5];
 inline bool WaveformProto::has_selection_frame_in_seconds() const {
   return _has_bit(9);
 }
 inline void WaveformProto::clear_selection_frame_in_seconds() {
-  selection_frame_in_seconds_ = 5u;
+  selection_frame_in_seconds_ = 5;
   _clear_bit(9);
 }
-inline ::google::protobuf::uint32 WaveformProto::selection_frame_in_seconds() const {
+inline double WaveformProto::selection_frame_in_seconds() const {
   return selection_frame_in_seconds_;
 }
-inline void WaveformProto::set_selection_frame_in_seconds(::google::protobuf::uint32 value) {
+inline void WaveformProto::set_selection_frame_in_seconds(double value) {
   _set_bit(9);
   selection_frame_in_seconds_ = value;
 }

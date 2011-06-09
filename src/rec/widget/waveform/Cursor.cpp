@@ -11,7 +11,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-Cursor::Cursor(const CursorProto& d, Waveform* waveform, double t, int index)
+Cursor::Cursor(const CursorProto& d, Waveform* waveform, RealTime t, int index)
     : Component("Cursor"),
       waveform_(waveform),
       desc_(d),

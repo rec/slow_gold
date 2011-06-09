@@ -7,9 +7,9 @@ namespace util {
 #define snprintf _snprintf
 #endif
 
-const String formatTime(double time, bool flash, bool displayHours, bool leadingZeros, int decimals) {
-  int sec = static_cast<int>(time);
-  double fraction = time - sec;
+const String formatTime(RealTime time, bool flash, bool displayHours, bool leadingZeros, int decimals) {
+  int sec = static_cast<int>(time.time_);
+  double fraction = time - sec * 1.0;
 
   int minutes = sec / 60;
   int hours = minutes / 60;

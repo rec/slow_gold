@@ -13,7 +13,7 @@ ZoomProto zoom(const ZoomProto& z, RealTime length, RealTime t, double k) {
 
   if (k >= 1.0 || k * (e - b) >= SMALLEST_TIME) {
     zoom.set_begin(std::max(0.0, k * b + (1.0 - k) * t));
-    zoom.set_end(std::min(length, k * e + (1.0 - k) * t));
+    zoom.set_end(std::min<double>(length, k * e + (1.0 - k) * t));
     if (zoom.end() < 0) {
       LOG(ERROR) << "Bad zoom: " << zoom.end();
       zoom.set_end(length);

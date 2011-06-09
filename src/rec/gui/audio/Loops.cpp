@@ -89,13 +89,13 @@ void Loops::update() {
 bool isNewLoopPointTime(const LoopPointList& lp, RealTime t) {
   for (int i = 0; i < lp.loop_point_size(); ++i) {
     RealTime t2 = lp.loop_point(i).time();
-    if (near(t, t2, Loops::CLOSE))
+    if (near<double>(t, t2, Loops::CLOSE))
       return false;
   }
   return true;
 }
 
-bool Loops::isNewLoopPoint(double t) const {
+bool Loops::isNewLoopPoint(RealTime t) const {
   ScopedLock l(lock_);
   return isNewLoopPointTime(*loopPoints_, t);
 }
@@ -175,7 +175,7 @@ bool Loops::paste(const string& s) {
   return false;
 }
 
-void Loops::addLoopPoint(double time) {
+void Loops::addLoopPoint(RealTime time) {
   LoopPointList loops;
   loops.add_loop_point()->set_time(time);
   addLoopPoints(loops);

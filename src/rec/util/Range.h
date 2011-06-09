@@ -18,8 +18,8 @@ struct Range {
   Range(Type b, Type e) : begin_(b), end_(e) {}
 
   typedef std::set<Range> Set;
-  Range(const Set& s) : begin_(s.empty() ? 0 : s.begin()->begin_),
-                        end_(s.empty() ? 0 : s.rbegin()->end_) {
+  Range(const Set& s) : begin_(s.empty() ? Type(0) : s.begin()->begin_),
+                        end_(s.empty() ? Type(0) : s.rbegin()->end_) {
   }
 
   void clear() { begin_ = end_ = 0; }

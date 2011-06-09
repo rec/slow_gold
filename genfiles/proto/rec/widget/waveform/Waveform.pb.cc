@@ -102,7 +102,7 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fWaveform_2eproto() {
     "adDescription\022\025\n\ntic_height\030\010 \001(\r:\0018\022\030\n\r"
     "subtic_height\030\t \001(\r:\0013\022\032\n\014use_captions\030\n"
     " \001(\010:\004true\022\034\n\016tics_at_bottom\030\013 \001(\010:\004true"
-    "\022%\n\032selection_frame_in_seconds\030\014 \001(\r:\0015\022"
+    "\022%\n\032selection_frame_in_seconds\030\014 \001(\001:\0015\022"
     "9\n\006layout\030\r \001(\0162).rec.widget.waveform.Wa"
     "veformProto.Layout\"#\n\006Layout\022\013\n\007STACKED\020"
     "\001\022\014\n\010PARALLEL\020\002", 615);
@@ -185,7 +185,7 @@ void WaveformProto::SharedCtor() {
   subtic_height_ = 3u;
   use_captions_ = true;
   tics_at_bottom_ = true;
-  selection_frame_in_seconds_ = 5u;
+  selection_frame_in_seconds_ = 5;
   layout_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -238,7 +238,7 @@ void WaveformProto::Clear() {
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     tics_at_bottom_ = true;
-    selection_frame_in_seconds_ = 5u;
+    selection_frame_in_seconds_ = 5;
     layout_ = 1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -386,17 +386,17 @@ bool WaveformProto::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(96)) goto parse_selection_frame_in_seconds;
+        if (input->ExpectTag(97)) goto parse_selection_frame_in_seconds;
         break;
       }
       
-      // optional uint32 selection_frame_in_seconds = 12 [default = 5];
+      // optional double selection_frame_in_seconds = 12 [default = 5];
       case 12: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_selection_frame_in_seconds:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &selection_frame_in_seconds_)));
           _set_bit(9);
         } else {
@@ -492,9 +492,9 @@ void WaveformProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(11, this->tics_at_bottom(), output);
   }
   
-  // optional uint32 selection_frame_in_seconds = 12 [default = 5];
+  // optional double selection_frame_in_seconds = 12 [default = 5];
   if (_has_bit(9)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->selection_frame_in_seconds(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(12, this->selection_frame_in_seconds(), output);
   }
   
   // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
@@ -560,9 +560,9 @@ void WaveformProto::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(11, this->tics_at_bottom(), target);
   }
   
-  // optional uint32 selection_frame_in_seconds = 12 [default = 5];
+  // optional double selection_frame_in_seconds = 12 [default = 5];
   if (_has_bit(9)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->selection_frame_in_seconds(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(12, this->selection_frame_in_seconds(), target);
   }
   
   // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
@@ -643,11 +643,9 @@ int WaveformProto::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional uint32 selection_frame_in_seconds = 12 [default = 5];
+    // optional double selection_frame_in_seconds = 12 [default = 5];
     if (has_selection_frame_in_seconds()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->selection_frame_in_seconds());
+      total_size += 1 + 8;
     }
     
     // optional .rec.widget.waveform.WaveformProto.Layout layout = 13;
