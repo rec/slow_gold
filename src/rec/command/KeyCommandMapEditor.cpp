@@ -4,9 +4,11 @@
 namespace rec {
 namespace command {
 
+namespace {
+
 class KeyCommandEntryWindow : public CommandEntryWindow {
  public:
-    KeyCommandEntryWindow(KeyCommandMapEditor& owner_)
+    KeyCommandEntryWindow(GenericCommandMapEditor<KeyPressMappingSet, KeyPress>& owner_)
         : CommandEntryWindow("Please press a key combination now..."), owner(owner_)
     {
     }
@@ -14,7 +16,7 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
     bool keyPressed (const KeyPress& key)
     {
         lastPress = key;
-        String message (TRANS("Key: ") + owner.getDescriptionForKeyPress (key));
+        String message (TRANS("Key: ") + owner.getDescriptionForKey (key));
 
         const CommandID previousCommand = owner.getMappings().findCommandForKeyPress (key);
 
@@ -32,20 +34,58 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
     }
 
     KeyPress lastPress;
-    KeyCommandMapEditor& owner;
+    GenericCommandMapEditor<KeyPressMappingSet, KeyPress>& owner;
 };
 
-KeyCommandMapEditor::KeyCommandMapEditor(KeyPressMappingSet& mappingSet)
-    : CommandMapEditor(*mappingSet.getCommandManager(), mappingSet),
-      mappings(mappingSet)
-{
+}  // namespace
+
+template <>
+const String GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::getDescription(const KeyPress& key) {
+  return key.getTextDescription();
 }
 
-CommandEntryWindow* KeyCommandMapEditor::newWindow() {
+template <>
+void GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::removeKey(CommandID command, int keyNum) {
+  mappings.removeKeyPress(command, keyNum);
+}
+
+template <>
+ApplicationCommandManager& GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::commandManager(KeyPressMappingSet& mappings) {
+  return *mappings.getCommandManager();
+}
+
+template <>
+const Array<KeyPress> GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::getKeys(CommandID cmd) {
+  return mappings.getKeyPressesAssignedToCommand(cmd);
+}
+
+template <>
+bool GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::isValid(const KeyPress& key) {
+  return key.isValid();
+}
+
+template <>
+CommandID GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::getCommand(const KeyPress& key) {
+  return mappings.findCommandForKeyPress (key);
+}
+
+template <>
+void GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::removeKey(const KeyPress& key) {
+  mappings.removeKeyPress (key);
+}
+
+template <>
+void GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::addKey(CommandID cmd, const KeyPress& key, int keyIndex) {
+  mappings.addKeyPress(cmd, key, keyIndex);
+}
+
+template <>
+CommandEntryWindow* GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::newWindow() {
   return new KeyCommandEntryWindow(*this);
 }
 
-void keyChosen (int result, CommandMapEditButton* button)
+template <>
+void GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::keyChosen (int result, CommandMapEditButton* button)
 {
     KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(button->getCommandEntryWindow());
     if (result != 0 && button != nullptr && window != nullptr)
@@ -57,64 +97,12 @@ void keyChosen (int result, CommandMapEditButton* button)
     button->setCommandEntryWindow();
 }
 
-void KeyCommandMapEditor::addButton(CommandMapEditButton* button)
-{
-    button->setCommandEntryWindow(new KeyCommandEntryWindow(*this));
-    button->getCommandEntryWindow()->enterModalState (true, ModalCallbackFunction::forComponent(keyChosen, button));
-}
-
-void KeyCommandMapEditor::removeButton(CommandMapEditButton* button)
-{
-    getMappings().removeKeyPress(button->commandID, button->keyNum);
-}
-
-
-void KeyCommandMapEditor::addChildren(CommandMapItemComponent* comp) {
-  const bool isReadOnly = isCommandReadOnly(comp->commandID);
-  const Array <KeyPress> keyPresses (getMappings().getKeyPressesAssignedToCommand (comp->commandID));
-  for (int i = 0; i < jmin ((int) MAX_NUM_ASSIGNMENTS, keyPresses.size()); ++i)
-    comp->addButton (getDescriptionForKeyPress (keyPresses.getReference (i)), i, isReadOnly);
-  comp->addButton (String::empty, -1, isReadOnly);
-}
-
-static void assignNewKeyCallback (int result, CommandMapEditButton* button, KeyPress newKey)
-{
+template <>
+void GenericCommandMapEditor<KeyPressMappingSet, KeyPress>::assignNewKeyCallback(int result, CommandMapEditButton* button, KeyPress key) {
      if (result != 0 && button != nullptr) {
-         KeyCommandMapEditor* editor = dynamic_cast<KeyCommandMapEditor*>(&button->getOwner());
-         editor->setNewKey (button, newKey, true);
+         GenericCommandMapEditor<KeyPressMappingSet, KeyPress>* editor = dynamic_cast<GenericCommandMapEditor<KeyPressMappingSet, KeyPress>*>(&button->getOwner());
+         editor->setNewKey (button, key, true);
      }
-}
-
-
-void KeyCommandMapEditor::setNewKey (CommandMapEditButton* button, const KeyPress& newKey, bool dontAskUser)
-{
-    if (newKey.isValid())
-    {
-        const CommandID previousCommand = getMappings().findCommandForKeyPress (newKey);
-
-        if (previousCommand == 0 || dontAskUser)
-        {
-            getMappings().removeKeyPress (newKey);
-
-            if (button->keyNum >= 0)
-                getMappings().removeKeyPress (button->commandID, button->keyNum);
-
-            getMappings().addKeyPress (button->commandID, newKey, button->keyNum);
-        }
-        else
-        {
-            AlertWindow::showOkCancelBox (AlertWindow::WarningIcon,
-                                          TRANS("Change key-mapping"),
-                                          TRANS("This key is already assigned to the command \"")
-                                            + getMappings().getCommandManager()->getNameOfCommand (previousCommand)
-                                            + TRANS("\"\n\nDo you want to re-assign it to this new command instead?"),
-                                          TRANS("Re-assign"),
-                                          TRANS("Cancel"),
-                                          this,
-                                          ModalCallbackFunction::forComponent (assignNewKeyCallback,
-                                                                               button, KeyPress (newKey)));
-        }
-    }
 }
 
 }  // namespace command

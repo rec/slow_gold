@@ -9,26 +9,7 @@
 namespace rec {
 namespace command {
 
-class KeyCommandMapEditor : public CommandMapEditor {
-public:
-    KeyCommandMapEditor(KeyPressMappingSet& mappingSet);
-    KeyPressMappingSet& getMappings() { return mappings; }
-
-    const String getDescriptionForKeyPress (const KeyPress& key) {
-       return key.getTextDescription();
-    }
-
-    virtual void addButton(CommandMapEditButton* button);
-    virtual void removeButton(CommandMapEditButton* button);
-    void setNewKey (CommandMapEditButton* button, const KeyPress& newKey, bool dontAskUser);
-    virtual void addChildren(CommandMapItemComponent* comp);
-    virtual CommandEntryWindow* newWindow();
-
-    static const int MAX_NUM_ASSIGNMENTS = 3;
-
-private:
-    KeyPressMappingSet& mappings;
-};
+typedef GenericCommandMapEditor<KeyPressMappingSet, KeyPress> KeyCommandMapEditor;
 
 }  // namespace command
 }  // namespace rec

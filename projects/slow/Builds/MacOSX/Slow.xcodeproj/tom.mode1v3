@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E20D9D5713A149270012EB86</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>KeyCommandMapEditor.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E20D9D5813A149270012EB86</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>KeyCommandMapEditor.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E20D9D6D13A14A6B0012EB86</string>
+						<key>history</key>
+						<array>
+							<string>E20D9D4813A1481A0012EB86</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1198, 873}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>355 254 1198 914 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -331,7 +372,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E20D9D0313A12D7D0012EB86</string>
+										<string>E20D9D6C13A14A6B0012EB86</string>
 										<key>history</key>
 										<array>
 											<string>E288C2BC12EB70A400AAB106</string>
@@ -626,9 +667,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>E20D9D2313A144FD0012EB86</string>
+		<string>E20D9D2413A144FD0012EB86</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>E290FED3120A432900532309</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>E20D9D5713A149270012EB86</string>
+		<string>E290FED3120A432900532309</string>
 	</array>
 	<key>WindowString</key>
 	<string>478 76 1237 1102 0 0 1920 1178 </string>
@@ -652,21 +697,21 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TargetCommands.cpp</string>
+								<string>KeyCommandMapEditor.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1466, 450}}</string>
+								<string>{{0, 0}, {1466, 278}}</string>
 								<key>RubberWindowFrame</key>
-								<string>407 172 1466 1004 0 0 1920 1178 </string>
+								<string>539 174 1466 1004 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>450pt</string>
+							<string>278pt</string>
 						</dict>
 						<dict>
 							<key>BecomeActive</key>
@@ -685,14 +730,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 455}, {1466, 508}}</string>
+								<string>{{0, 283}, {1466, 680}}</string>
 								<key>RubberWindowFrame</key>
-								<string>407 172 1466 1004 0 0 1920 1178 </string>
+								<string>539 174 1466 1004 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>508pt</string>
+							<string>680pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -719,7 +764,7 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>407 172 1466 1004 0 0 1920 1178 </string>
+			<string>539 174 1466 1004 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
@@ -994,7 +1039,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>E202E92013A09C88000D0601</string>
+				<string>E20D9D2213A144FD0012EB86</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

@@ -12,17 +12,52 @@ template <typename MappingSet, typename Key>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
   // You must implement these separately for any actual instantiation of this class.
-  static void getDescription(const Key&);   // return key.getTextDescription();
+  static const String getDescription(const Key&);
   static void keyChosen(int result, CommandMapEditButton*);
-  static void removeKey(MappingSet&, CommandID, int keyNum);
-  static ApplicationCommandManager& getCommandManager(MappingSet&);
-  static const Array <Key> getKeys(MappingSet&, CommandID);
-  // getMappings().getKeyPressesAssignedToCommand(comp->commandID));
+  static ApplicationCommandManager& commandManager(MappingSet&);
+  static void assignNewKeyCallback(int result, CommandMapEditButton*, Key);
+  static bool isValid(const Key&);
 
-  //   return *mappingSet.getCommandManager();
+  CommandID getCommand(const Key&);
+  void removeKey(const Key&);
+  void addKey(CommandID, const Key&, int keyIndex);
+  void removeKey(CommandID, int keyNum);
+  const Array <Key> getKeys(CommandID);
+  CommandEntryWindow* newWindow();
 
-  GenericCommandMapEditor(MappingSet& m) 
-    : CommandMapEditor(getCommandManager(m), m), mappings(m) {
+  void setNewKey (CommandMapEditButton* button, const KeyPress& newKey, bool dontAskUser)
+  {
+      if (isValid(newKey))
+      {
+        const CommandID previousCommand = getCommand(newKey);
+
+          if (previousCommand == 0 || dontAskUser)
+          {
+              removeKey (newKey);
+
+              if (button->keyNum >= 0)
+                removeKey (button->commandID, button->keyNum);
+
+              addKey(button->commandID, newKey, button->keyNum);
+          }
+          else
+          {
+              AlertWindow::showOkCancelBox (AlertWindow::WarningIcon,
+                                            TRANS("Change key-mapping"),
+                                            TRANS("This key is already assigned to the command \"")
+                                              + getMappings().getCommandManager()->getNameOfCommand (previousCommand)
+                                              + TRANS("\"\n\nDo you want to re-assign it to this new command instead?"),
+                                            TRANS("Re-assign"),
+                                            TRANS("Cancel"),
+                                            this,
+                                            ModalCallbackFunction::forComponent (GenericCommandMapEditor<MappingSet, Key>::assignNewKeyCallback,
+                                                                                 button, KeyPress (newKey)));
+          }
+      }
+  }
+
+  GenericCommandMapEditor(MappingSet& m)
+    : CommandMapEditor(commandManager(m), m), mappings(m) {
   }
 
   MappingSet& getMappings() { return mappings; }
@@ -38,13 +73,13 @@ class GenericCommandMapEditor : public CommandMapEditor {
   }
 
   virtual void removeButton(CommandMapEditButton* button) {
-    removeKey(getMappings(), button->commandID, button->keyNum);
+    removeKey(button->commandID, button->keyNum);
   }
 
-  // void setNewKey (CommandMapEditButton* button, const Key& newKey, bool dontAskUser);
   virtual void addChildren(CommandMapItemComponent* comp) {
-    const bool isReadOnly = isCommandReadOnly(comp->commandID);
-    const Array<Key> keys(getKeys(getMappings()));
+    CommandID command = comp->commandID;
+    const bool isReadOnly = isCommandReadOnly(command);
+    const Array<Key> keys(getKeys(command));
     for (int i = 0; i < jmin ((int) MAX_NUM_ASSIGNMENTS, keys.size()); ++i)
       comp->addButton (getDescriptionForKey (keys.getReference (i)), i, isReadOnly);
     comp->addButton (String::empty, -1, isReadOnly);
