@@ -44,12 +44,12 @@ void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
   mappings.removeKey(str(key));
 }
 
-#if 0
-
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key, int keyIndex) {
-  mappings.addMidiMessage(cmd, key, keyIndex);
+  mappings.add(str(key), static_cast<Command::Type>(cmd));  // TODO:  do we need this location for when we replace things?!
 }
+
+#if 0
 
 template <>
 void MidiCommandMapEditor::keyChosen (int result, CommandMapEditButton* button)

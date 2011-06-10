@@ -9,12 +9,14 @@ void CommandMap::operator()(const CommandMapProto& commands) {
   for (int i = 0; i < commands.entry_size(); ++i) {
     const CommandMapEntry& entry = commands.entry(i);
     Command command = entry.command();
-    for (int j = 0; j < entry.key_size(); ++j) {
-      const Key& key = entry.key(j);
-      toCommand_[key] = command;
-      toKeys_.insert(std::make_pair(command, key));
-    }
+    for (int j = 0; j < entry.key_size(); ++j)
+      add(entry.key(j), command);
   }
+}
+
+void CommandMap::add(const Key& key, Command command) {
+  toCommand_[key] = command;
+  toKeys_.insert(std::make_pair(command, key));
 }
 
 const CommandMapProto CommandMap::getProto() const {
