@@ -47,7 +47,8 @@ void keyboardMappings(Instance* i) {
   juce::KeyMappingEditorComponent comp(
       *i->target_->commandManager()->getKeyMappings(), true);
 #else
-  command::KeyCommandMapEditor comp(*i->target_->commandManager()->getKeyMappings());
+  ApplicationCommandManager* manager = i->target_->commandManager();
+  command::KeyCommandMapEditor comp(*manager, *manager->getKeyMappings());
   comp.initialize(true);
 
 #endif

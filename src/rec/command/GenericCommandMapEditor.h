@@ -56,8 +56,8 @@ class GenericCommandMapEditor : public CommandMapEditor {
       }
   }
 
-  GenericCommandMapEditor(MappingSet& m)
-    : CommandMapEditor(commandManager(m), m), mappings(m) {
+  GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet& m)
+    : CommandMapEditor(manager, m), mappings(m) {
   }
 
   MappingSet& getMappings() { return mappings; }
