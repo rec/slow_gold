@@ -1,12 +1,15 @@
 #include "rec/command/MidiCommandMapEditor.h"
-#if 0
+#include "rec/command/MidiName.h"
+
 namespace rec {
 namespace command {
 
 template <>
 const String MidiCommandMapEditor::getDescription(const MidiMessage& key) {
-  return key.getTextDescription();
+  return midiName(key);
 }
+
+#if 0
 
 template <>
 void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
@@ -69,7 +72,8 @@ void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton
      }
 }
 
+#endif
+
 }  // namespace command
 }  // namespace rec
 
-#endif

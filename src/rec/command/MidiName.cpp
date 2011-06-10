@@ -21,7 +21,7 @@ String midiName(const MidiMessage& m) {
     return midiNoteName(m) + " off";
 
   if (m.isProgramChange())
-    return "pc " + String(m.programChangeNumber());
+    return "pc " + String(m.getProgramChangeNumber());
 
   if (m.isController()) {
     return MidiMessage::getControllerName(m.getControllerNumber()) +
