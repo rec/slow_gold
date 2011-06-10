@@ -34,12 +34,12 @@ const Array<MidiMessage> MidiCommandMapEditor::getKeys(CommandID cmd) {
   return result;
 }
 
-#if 0
-
 template <>
 CommandID MidiCommandMapEditor::getCommand(const MidiMessage& key) {
-  return mappings.findCommandForMidiMessage (key);
+  return static_cast<CommandID>(mappings.getCommand(str(key)));
 }
+
+#if 0
 
 template <>
 void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
