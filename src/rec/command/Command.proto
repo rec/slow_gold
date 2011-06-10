@@ -31,6 +31,7 @@ message Command {
     JUMP_TO_PREVIOUS_LOOP_POINT = 9;
     JUMP_TO_START = 10;
     KEYBOARD_MAPPINGS = 18;
+    MIDI_MAPPINGS = 17;
     NUDGE_BEGIN_LEFT = 11;
     NUDGE_BEGIN_RIGHT = 12;
     NUDGE_END_LEFT = 13;
@@ -97,7 +98,7 @@ message Command {
     ZOOM_IN = 70;
     ZOOM_OUT = 71;
 
-    LAST_COMMAND = 76;  // Also:  17
+    LAST_COMMAND = 76;
   };
 
   optional Type command = 1;

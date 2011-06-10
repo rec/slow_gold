@@ -60,6 +60,7 @@ enum Command_Type {
   Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT = 9,
   Command_Type_JUMP_TO_START = 10,
   Command_Type_KEYBOARD_MAPPINGS = 18,
+  Command_Type_MIDI_MAPPINGS = 17,
   Command_Type_NUDGE_BEGIN_LEFT = 11,
   Command_Type_NUDGE_BEGIN_RIGHT = 12,
   Command_Type_NUDGE_END_LEFT = 13,
@@ -215,6 +216,7 @@ class Command : public ::google::protobuf::Message {
   static const Type JUMP_TO_PREVIOUS_LOOP_POINT = Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT;
   static const Type JUMP_TO_START = Command_Type_JUMP_TO_START;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
+  static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
   static const Type NUDGE_BEGIN_LEFT = Command_Type_NUDGE_BEGIN_LEFT;
   static const Type NUDGE_BEGIN_RIGHT = Command_Type_NUDGE_BEGIN_RIGHT;
   static const Type NUDGE_END_LEFT = Command_Type_NUDGE_END_LEFT;
