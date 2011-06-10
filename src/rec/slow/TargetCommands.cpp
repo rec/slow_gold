@@ -61,6 +61,9 @@ void keyboardMappings(Instance* i) {
   i->target_->saveKeyboardBindings();
 }
 
+void midiMappings(Instance* i) {
+}
+
 void nudgeBeginLeft(Instance* i) {
 }
 

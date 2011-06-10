@@ -20,10 +20,6 @@ using rec::command::Command;
 using thread::methodCallback;
 using thread::functionCallback;
 
-namespace {
-
-}  // namespace
-
 Target::Target(Instance* i) : TargetManager(i->window_), HasInstance(i) {}
 
 void Target::addCommands() {
@@ -131,6 +127,11 @@ void Target::addCommands() {
       functionCallback(&keyboardMappings, instance_),
       "Edit Keyboard Mappings...", "File",
       "Edit keyboard mappings for commands.");
+
+  add(Command::MIDI_MAPPINGS,
+      functionCallback(&midiMappings, instance_),
+      "Edit Midi Mappings...", "File",
+      "Edit midi mappings for commands.");
 
   add(Command::NUDGE_BEGIN_LEFT,
       functionCallback(&nudgeBeginLeft, instance_),

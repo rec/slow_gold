@@ -12,6 +12,7 @@ void clearNavigator();
 void jumpToLoopPoint(Instance* i, int offset);
 void jumpToStart(Instance* i);
 void keyboardMappings(Instance* i);
+void midiMappings(Instance* i);
 void nudgeBeginLeft(Instance* i);
 void nudgeBeginRight(Instance* i);
 void nudgeEndLeft(Instance* i);
