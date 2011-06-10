@@ -22,8 +22,6 @@ class MidiCommandMap : public CommandMap, public juce::MidiInputCallback {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(MidiCommandMap);
 };
 
-
-
 }  // namespace command
 }  // namespace rec
 
