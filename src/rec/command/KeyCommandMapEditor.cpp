@@ -50,11 +50,6 @@ void KeyCommandMapEditor::removeKey(CommandID command, int keyNum) {
 }
 
 template <>
-ApplicationCommandManager& KeyCommandMapEditor::commandManager(KeyPressMappingSet& mappings) {
-  return *mappings.getCommandManager();
-}
-
-template <>
 const Array<KeyPress> KeyCommandMapEditor::getKeys(CommandID cmd) {
   return mappings.getKeyPressesAssignedToCommand(cmd);
 }

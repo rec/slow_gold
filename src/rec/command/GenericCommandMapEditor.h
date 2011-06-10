@@ -14,7 +14,6 @@ class GenericCommandMapEditor : public CommandMapEditor {
   // You must implement these separately for any actual instantiation of this class.
   static const String getDescription(const Key&);
   static void keyChosen(int result, CommandMapEditButton*);
-  static ApplicationCommandManager& commandManager(MappingSet&);
   static void assignNewKeyCallback(int result, CommandMapEditButton*, Key);
   static bool isValid(const Key&);
 

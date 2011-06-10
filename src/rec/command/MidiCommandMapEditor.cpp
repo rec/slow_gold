@@ -14,21 +14,16 @@ void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
   mappings.removeMessage(static_cast<Command::Type>(command), keyNum);
 }
 
-#if 0
-
 template <>
-ApplicationCommandManager& MidiCommandMapEditor::commandManager(MidiMessageMappingSet& mappings) {
-  return *mappings.getCommandManager();
+bool MidiCommandMapEditor::isValid(const MidiMessage& key) {
+  return true;
 }
+
+#if 0
 
 template <>
 const Array<MidiMessage> MidiCommandMapEditor::getKeys(CommandID cmd) {
   return mappings.getMidiMessageesAssignedToCommand(cmd);
-}
-
-template <>
-bool MidiCommandMapEditor::isValid(const MidiMessage& key) {
-  return true;
 }
 
 template <>

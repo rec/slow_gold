@@ -234,9 +234,9 @@
 	};
 	24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {877, 1079}}";
-			sepNavSelRange = "{2096, 0}";
-			sepNavVisRange = "{0, 1047}";
+			sepNavIntBoundsRect = "{{0, 0}, {877, 1014}}";
+			sepNavSelRange = "{1942, 0}";
+			sepNavVisRange = "{0, 1044}";
 			sepNavWindowFrame = "{{15, 203}, {1198, 970}}";
 		};
 	};
@@ -867,6 +867,7 @@
 			E20D9DAA13A1B03A0012EB86 /* XCBuildMessageTextBookmark */ = E20D9DAA13A1B03A0012EB86 /* XCBuildMessageTextBookmark */;
 			E20D9DB313A1B0B40012EB86 /* PBXTextBookmark */ = E20D9DB313A1B0B40012EB86 /* PBXTextBookmark */;
 			E20D9DB613A1B0B40012EB86 /* PBXTextBookmark */ = E20D9DB613A1B0B40012EB86 /* PBXTextBookmark */;
+			E20D9DBC13A1B8D90012EB86 /* PBXTextBookmark */ = E20D9DBC13A1B8D90012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
 			E21978761395D1B1003CC739 = E21978761395D1B1003CC739 /* PBXTextBookmark */;
 			E2197A6813974BDC003CC739 = E2197A6813974BDC003CC739 /* PBXTextBookmark */;
@@ -1362,9 +1363,9 @@
 	};
 	E03947192768A9887417203C /* KeyCommandMapEditor.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 1430}}";
-			sepNavSelRange = "{2912, 0}";
-			sepNavVisRange = "{1125, 1787}";
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 1365}}";
+			sepNavSelRange = "{1256, 0}";
+			sepNavVisRange = "{989, 1773}";
 			sepNavWindowFrame = "{{355, 198}, {1198, 970}}";
 		};
 	};
@@ -1557,7 +1558,7 @@
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
 		name = "KeyCommandMapEditor.cpp: 110";
 		rLen = 0;
-		rLoc = 3429;
+		rLoc = 2762;
 		rType = 0;
 		vrLen = 1666;
 		vrLoc = 0;
@@ -1566,8 +1567,8 @@
 		isa = PBXTextBookmark;
 		comments = "Invalid initialization of non-const reference of type 'rec::ApplicationCommandManager&' from a temporary of type 'juce::ApplicationCommandManager*'";
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
-		rLen = 1;
-		rLoc = 53;
+		rLen = 0;
+		rLoc = 51;
 		rType = 1;
 	};
 	E20D9D4413A147690012EB86 /* PBXTextBookmark */ = {
@@ -1585,9 +1586,9 @@
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
 		name = "KeyCommandMapEditor.cpp: 101";
 		rLen = 0;
-		rLoc = 3109;
+		rLoc = 2762;
 		rType = 0;
-		vrLen = 2055;
+		vrLen = 1567;
 		vrLoc = 1345;
 	};
 	E20D9D4813A1481A0012EB86 /* PBXTextBookmark */ = {
@@ -1595,7 +1596,7 @@
 		comments = "No member function 'assignNewKeyCallback' declared in 'rec::command::<unnamed>::KeyCommandEntryWindow'";
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
 		rLen = 1;
-		rLoc = 100;
+		rLoc = 95;
 		rType = 1;
 	};
 	E20D9D5113A149220012EB86 /* GenericCommandMapEditor.h */ = {
@@ -1638,9 +1639,9 @@
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
 		name = "KeyCommandMapEditor.cpp: 104";
 		rLen = 0;
-		rLoc = 3366;
+		rLoc = 2762;
 		rType = 0;
-		vrLen = 2200;
+		vrLen = 1683;
 		vrLoc = 1229;
 	};
 	E20D9D6C13A14A6B0012EB86 /* PBXTextBookmark */ = {
@@ -1658,9 +1659,9 @@
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
 		name = "KeyCommandMapEditor.cpp: 110";
 		rLen = 0;
-		rLoc = 3422;
+		rLoc = 2762;
 		rType = 0;
-		vrLen = 2193;
+		vrLen = 1683;
 		vrLoc = 1229;
 	};
 	E20D9D7413A156050012EB86 /* PBXTextBookmark */ = {
@@ -1678,9 +1679,9 @@
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
 		name = "KeyCommandMapEditor.cpp: 110";
 		rLen = 0;
-		rLoc = 3388;
+		rLoc = 2762;
 		rType = 0;
-		vrLen = 2193;
+		vrLen = 1717;
 		vrLoc = 1195;
 	};
 	E20D9D7813A1562B0012EB86 /* PBXTextBookmark */ = {
@@ -1698,7 +1699,7 @@
 		fRef = E03947192768A9887417203C /* KeyCommandMapEditor.cpp */;
 		name = "KeyCommandMapEditor.cpp: 110";
 		rLen = 0;
-		rLoc = 2912;
+		rLoc = 2762;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 1125;
@@ -1750,6 +1751,16 @@
 		rType = 0;
 		vrLen = 1491;
 		vrLoc = 698;
+	};
+	E20D9DBC13A1B8D90012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 75";
+		rLen = 0;
+		rLoc = 1942;
+		rType = 0;
+		vrLen = 1044;
+		vrLoc = 0;
 	};
 	E21977E413957654003CC739 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
