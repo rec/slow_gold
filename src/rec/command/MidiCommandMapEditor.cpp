@@ -24,12 +24,17 @@ CommandEntryWindow* MidiCommandMapEditor::newWindow() {
   return new CommandEntryWindow("Waiting for a MIDI message");
 }
 
-#if 0
-
 template <>
 const Array<MidiMessage> MidiCommandMapEditor::getKeys(CommandID cmd) {
-  return mappings.getMidiMessageesAssignedToCommand(cmd);
+  Array<MidiMessage> result;
+  const vector<string> keys = mappings.getKeys(static_cast<Command::Type>(cmd));
+  for (vector<string>::const_iterator i = keys.begin(); i != keys.end(); ++i)
+    result.add(MidiMessage(i->data(), i->size()));
+
+  return result;
 }
+
+#if 0
 
 template <>
 CommandID MidiCommandMapEditor::getCommand(const MidiMessage& key) {
