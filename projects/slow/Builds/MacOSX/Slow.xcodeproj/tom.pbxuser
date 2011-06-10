@@ -234,9 +234,9 @@
 	};
 	24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 1027}}";
-			sepNavSelRange = "{1367, 0}";
-			sepNavVisRange = "{0, 1872}";
+			sepNavIntBoundsRect = "{{0, 0}, {877, 1651}}";
+			sepNavSelRange = "{3300, 0}";
+			sepNavVisRange = "{0, 1224}";
 			sepNavWindowFrame = "{{15, 203}, {1198, 970}}";
 		};
 	};
@@ -896,6 +896,14 @@
 			E20D9DFE13A1DD960012EB86 /* PBXTextBookmark */ = E20D9DFE13A1DD960012EB86 /* PBXTextBookmark */;
 			E20D9E0713A1DE330012EB86 /* PBXTextBookmark */ = E20D9E0713A1DE330012EB86 /* PBXTextBookmark */;
 			E20D9E0813A1DE330012EB86 /* PBXTextBookmark */ = E20D9E0813A1DE330012EB86 /* PBXTextBookmark */;
+			E20D9E0D13A2ADBC0012EB86 /* XCBuildMessageTextBookmark */ = E20D9E0D13A2ADBC0012EB86 /* XCBuildMessageTextBookmark */;
+			E20D9E0E13A2ADCC0012EB86 /* PBXTextBookmark */ = E20D9E0E13A2ADCC0012EB86 /* PBXTextBookmark */;
+			E20D9E1113A2ADCC0012EB86 /* PBXTextBookmark */ = E20D9E1113A2ADCC0012EB86 /* PBXTextBookmark */;
+			E20D9E1F13A2AEB70012EB86 /* PBXTextBookmark */ = E20D9E1F13A2AEB70012EB86 /* PBXTextBookmark */;
+			E20D9E2313A2AF400012EB86 /* XCBuildMessageTextBookmark */ = E20D9E2313A2AF400012EB86 /* XCBuildMessageTextBookmark */;
+			E20D9E2813A2AFA30012EB86 /* PBXTextBookmark */ = E20D9E2813A2AFA30012EB86 /* PBXTextBookmark */;
+			E20D9E2B13A2AFA30012EB86 /* PBXTextBookmark */ = E20D9E2B13A2AFA30012EB86 /* PBXTextBookmark */;
+			E20D9E3A13A2B0220012EB86 /* PBXTextBookmark */ = E20D9E3A13A2B0220012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
 			E21978761395D1B1003CC739 = E21978761395D1B1003CC739 /* PBXTextBookmark */;
 			E2197A6813974BDC003CC739 = E2197A6813974BDC003CC739 /* PBXTextBookmark */;
@@ -1639,7 +1647,7 @@
 		comments = "No matching function for call to 'juce::ModalCallbackFunction::forComponent(void ()(int, rec::command::CommandMapEditButton*, const juce::KeyPress&), rec::command::CommandMapEditButton*&, juce::KeyPress)'";
 		fRef = E20D9D5113A149220012EB86 /* GenericCommandMapEditor.h */;
 		rLen = 1;
-		rLoc = 44;
+		rLoc = 48;
 		rType = 1;
 	};
 	E20D9D5313A149270012EB86 /* PBXTextBookmark */ = {
@@ -1657,7 +1665,7 @@
 		fRef = E20D9D5113A149220012EB86 /* GenericCommandMapEditor.h */;
 		name = "GenericCommandMapEditor.h: 47";
 		rLen = 70;
-		rLoc = 1454;
+		rLoc = 1586;
 		rType = 0;
 		vrLen = 2595;
 		vrLoc = 0;
@@ -1746,7 +1754,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2200;
+		rLoc = 2326;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 0;
@@ -1765,7 +1773,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2200;
+		rLoc = 2326;
 		rType = 0;
 		vrLen = 1047;
 		vrLoc = 0;
@@ -1785,7 +1793,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 75";
 		rLen = 0;
-		rLoc = 2046;
+		rLoc = 2172;
 		rType = 0;
 		vrLen = 1044;
 		vrLoc = 0;
@@ -1795,7 +1803,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 70";
 		rLen = 0;
-		rLoc = 1932;
+		rLoc = 2058;
 		rType = 0;
 		vrLen = 1044;
 		vrLoc = 0;
@@ -1805,7 +1813,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 75";
 		rLen = 0;
-		rLoc = 2066;
+		rLoc = 2192;
 		rType = 0;
 		vrLen = 1027;
 		vrLoc = 0;
@@ -1815,7 +1823,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2231;
+		rLoc = 2357;
 		rType = 0;
 		vrLen = 1112;
 		vrLoc = 0;
@@ -1825,7 +1833,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2243;
+		rLoc = 2369;
 		rType = 0;
 		vrLen = 1124;
 		vrLoc = 0;
@@ -1835,7 +1843,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2244;
+		rLoc = 2370;
 		rType = 0;
 		vrLen = 1125;
 		vrLoc = 0;
@@ -1854,7 +1862,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2247;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1213;
 		vrLoc = 0;
@@ -1875,7 +1883,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 48;
+		rLoc = 51;
 		rType = 1;
 	};
 	E20D9DF013A1BFEF0012EB86 /* PBXTextBookmark */ = {
@@ -1883,7 +1891,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2247;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1213;
 		vrLoc = 0;
@@ -1893,7 +1901,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 49";
 		rLen = 0;
-		rLoc = 1367;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 1872;
 		vrLoc = 0;
@@ -1913,7 +1921,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2247;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1213;
 		vrLoc = 0;
@@ -1923,7 +1931,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 49";
 		rLen = 0;
-		rLoc = 1367;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 1872;
 		vrLoc = 0;
@@ -1943,7 +1951,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2247;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1213;
 		vrLoc = 0;
@@ -1953,7 +1961,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 49";
 		rLen = 0;
-		rLoc = 1367;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 1872;
 		vrLoc = 0;
@@ -1973,7 +1981,7 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 80";
 		rLen = 0;
-		rLoc = 2247;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1213;
 		vrLoc = 0;
@@ -1983,9 +1991,99 @@
 		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
 		name = "MidiCommandMapEditor.cpp: 49";
 		rLen = 0;
-		rLoc = 1367;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 1872;
+		vrLoc = 0;
+	};
+	E20D9E0D13A2ADBC0012EB86 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Cannot convert 'rec::command::MidiCommandMap' to 'rec::command::MidiCommandMap*' in initialization";
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 17;
+		rType = 1;
+	};
+	E20D9E0E13A2ADCC0012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 118";
+		rLen = 0;
+		rLoc = 3300;
+		rType = 0;
+		vrLen = 1123;
+		vrLoc = 0;
+	};
+	E20D9E1113A2ADCC0012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 17";
+		rLen = 0;
+		rLoc = 504;
+		rType = 0;
+		vrLen = 1608;
+		vrLoc = 0;
+	};
+	E20D9E1F13A2AEB70012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 121";
+		rLen = 0;
+		rLoc = 3300;
+		rType = 0;
+		vrLen = 1211;
+		vrLoc = 0;
+	};
+	E20D9E2213A2AF400012EB86 /* GenericCommandMapEditor.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = GenericCommandMapEditor.h;
+		path = ../../../../../rec/src/rec/command/GenericCommandMapEditor.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 1209}}";
+			sepNavSelRange = "{520, 0}";
+			sepNavVisRange = "{96, 2571}";
+		};
+	};
+	E20D9E2313A2AF400012EB86 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'class rec::command::MidiCommandMap' has no member named 'getCommandManager'";
+		fRef = E20D9E2213A2AF400012EB86 /* GenericCommandMapEditor.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 47;
+		rType = 1;
+	};
+	E20D9E2813A2AFA30012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 121";
+		rLen = 0;
+		rLoc = 3300;
+		rType = 0;
+		vrLen = 1211;
+		vrLoc = 0;
+	};
+	E20D9E2B13A2AFA30012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20D9E2213A2AF400012EB86 /* GenericCommandMapEditor.h */;
+		name = "GenericCommandMapEditor.h: 18";
+		rLen = 0;
+		rLoc = 520;
+		rType = 0;
+		vrLen = 2571;
+		vrLoc = 96;
+	};
+	E20D9E3A13A2B0220012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 121";
+		rLen = 0;
+		rLoc = 3300;
+		rType = 0;
+		vrLen = 1224;
 		vrLoc = 0;
 	};
 	E21977E413957654003CC739 /* PBXTextBookmark */ = {
@@ -3237,9 +3335,9 @@
 	};
 	FFF230D4A35A649A85225963 /* CommandMap.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 1261}}";
-			sepNavSelRange = "{2502, 0}";
-			sepNavVisRange = "{893, 1814}";
+			sepNavIntBoundsRect = "{{0, 0}, {1405, 1287}}";
+			sepNavSelRange = "{2707, 0}";
+			sepNavVisRange = "{0, 592}";
 			sepNavWindowFrame = "{{61, 161}, {1198, 970}}";
 		};
 	};

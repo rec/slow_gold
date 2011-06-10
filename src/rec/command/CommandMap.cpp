@@ -57,7 +57,7 @@ const vector<CommandMap::Key>& CommandMap::getKeys(Command c) const {
   return (i != toKeys_.end()) ? i->second : empty;
 }
 
-void CommandMap::removeMessage(Command c, int keyIndex) {
+void CommandMap::removeCommand(Command c, int keyIndex) {
   typedef CommandToKeys::iterator iterator;
   iterator i = toKeys_.find(c);
   if (i == toKeys_.end()) {

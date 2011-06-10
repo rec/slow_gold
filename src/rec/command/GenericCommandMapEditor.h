@@ -11,6 +11,10 @@ namespace command {
 template <typename MappingSet, typename Key>
 class GenericCommandMapEditor : public CommandMapEditor {
  public:
+  GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet& m)
+    : CommandMapEditor(manager, m), mappings(m) {
+  }
+
   // You must implement these separately for any actual instantiation of this class.
   static const String getDescription(const Key&);
   static void keyChosen(int result, CommandMapEditButton*);
@@ -24,7 +28,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   const Array <Key> getKeys(CommandID);
   CommandEntryWindow* newWindow();
 
-  void setNewKey (CommandMapEditButton* button, const KeyPress& newKey, bool dontAskUser)
+  void setNewKey (CommandMapEditButton* button, const Key& newKey, bool dontAskUser)
   {
       if (isValid(newKey))
       {
@@ -44,19 +48,15 @@ class GenericCommandMapEditor : public CommandMapEditor {
               AlertWindow::showOkCancelBox (AlertWindow::WarningIcon,
                                             TRANS("Change key-mapping"),
                                             TRANS("This key is already assigned to the command \"")
-                                              + getMappings().getCommandManager()->getNameOfCommand (previousCommand)
+                                              + commandManager.getNameOfCommand (previousCommand)
                                               + TRANS("\"\n\nDo you want to re-assign it to this new command instead?"),
                                             TRANS("Re-assign"),
                                             TRANS("Cancel"),
                                             this,
                                             ModalCallbackFunction::forComponent (GenericCommandMapEditor<MappingSet, Key>::assignNewKeyCallback,
-                                                                                 button, KeyPress (newKey)));
+                                                                                 button, Key (newKey)));
           }
       }
-  }
-
-  GenericCommandMapEditor(ApplicationCommandManager& manager, MappingSet& m)
-    : CommandMapEditor(manager, m), mappings(m) {
   }
 
   MappingSet& getMappings() { return mappings; }
@@ -68,7 +68,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   virtual void addButton(CommandMapEditButton* b) {
     CommandEntryWindow* w = newWindow();
     b->setCommandEntryWindow(w);
-    w->enterModalState (true, ModalCallbackFunction::forComponent(keyChosen, b));
+    w->enterModalState(true, ModalCallbackFunction::forComponent(keyChosen, b));
   }
 
   virtual void removeButton(CommandMapEditButton* button) {

@@ -1,8 +1,50 @@
 #include "rec/command/MidiCommandMapEditor.h"
+
+#include "rec/audio/Device.h"
 #include "rec/command/MidiName.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace command {
+
+namespace {
+
+class MidiCommandEntryWindow : public CommandEntryWindow,
+                               public Listener<const MidiMessage&> {
+ public:
+  explicit MidiCommandEntryWindow(MidiCommandMapEditor* owner)
+      : CommandEntryWindow("Waiting for a MIDI note, program change or controller..."),
+        owner_(owner),
+        mappings_(&owner->getMappings()) {
+    mappings_->requestOneMessage(this);
+  }
+
+  virtual ~MidiCommandEntryWindow() {
+    if (lastMidi_.isActiveSense())
+      mappings_->requestOneMessage(NULL);
+  }
+
+  virtual void operator()(const MidiMessage& msg) {
+    if (!(msg.isNoteOn() || msg.isProgramChange() || msg.isController())) {
+      mappings_->requestOneMessage(this);
+    } else {
+      lastMidi_ = msg;
+      exitModalState(0);
+    }
+  }
+
+  const MidiMessage& lastMidi() { return lastMidi_; }
+	MidiCommandMapEditor* owner() { return owner_; }
+  
+ private:
+  MidiMessage lastMidi_;
+  MidiCommandMapEditor* owner_;
+  MidiCommandMap* mappings_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(MidiCommandEntryWindow);
+};
+
+}  // namespace
 
 template <>
 const String MidiCommandMapEditor::getDescription(const MidiMessage& key) {
@@ -11,7 +53,7 @@ const String MidiCommandMapEditor::getDescription(const MidiMessage& key) {
 
 template <>
 void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
-  mappings.removeMessage(static_cast<Command::Type>(command), keyNum);
+  mappings.removeCommand(static_cast<Command::Type>(command), keyNum);
 }
 
 template <>
@@ -21,7 +63,7 @@ bool MidiCommandMapEditor::isValid(const MidiMessage& key) {
 
 template <>
 CommandEntryWindow* MidiCommandMapEditor::newWindow() {
-  return new CommandEntryWindow("Waiting for a MIDI message");
+  return new MidiCommandEntryWindow(this);
 }
 
 template <>
@@ -46,23 +88,21 @@ void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
 
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key, int keyIndex) {
-  mappings.add(str(key), static_cast<Command::Type>(cmd));  // TODO:  do we need this location for when we replace things?!
+  mappings.add(str(key), static_cast<Command::Type>(cmd), keyIndex);
 }
 
-#if 0
-
 template <>
-void MidiCommandMapEditor::keyChosen (int result, CommandMapEditButton* button)
+void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button)
 {
-    KeyCommandEntryWindow* window = dynamic_cast<KeyCommandEntryWindow*>(button->getCommandEntryWindow());
-    if (result != 0 && button != nullptr && window != nullptr)
-    {
+    MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(button->getCommandEntryWindow());
+    if (result != 0 && button != nullptr && window != nullptr) {
         window->setVisible (false);
-        window->owner.setNewKey (button, window->lastPress, false);
+        window->owner()->setNewKey (button, window->lastMidi(), false);
     }
 
     button->setCommandEntryWindow();
 }
+
 
 template <>
 void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton* button, MidiMessage key) {
@@ -72,6 +112,7 @@ void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton
      }
 }
 
+#if 0
 #endif
 
 }  // namespace command
