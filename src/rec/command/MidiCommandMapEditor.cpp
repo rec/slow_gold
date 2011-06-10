@@ -19,6 +19,11 @@ bool MidiCommandMapEditor::isValid(const MidiMessage& key) {
   return true;
 }
 
+template <>
+CommandEntryWindow* MidiCommandMapEditor::newWindow() {
+  return new CommandEntryWindow("Waiting for a MIDI message");
+}
+
 #if 0
 
 template <>
@@ -39,11 +44,6 @@ void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key, int keyIndex) {
   mappings.addMidiMessage(cmd, key, keyIndex);
-}
-
-template <>
-CommandEntryWindow* MidiCommandMapEditor::newWindow() {
-  return new KeyCommandEntryWindow(*this);
 }
 
 template <>

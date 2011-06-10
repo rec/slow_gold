@@ -235,8 +235,8 @@
 	24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {877, 1014}}";
-			sepNavSelRange = "{1942, 0}";
-			sepNavVisRange = "{0, 1044}";
+			sepNavSelRange = "{1962, 0}";
+			sepNavVisRange = "{0, 1027}";
 			sepNavWindowFrame = "{{15, 203}, {1198, 970}}";
 		};
 	};
@@ -868,6 +868,8 @@
 			E20D9DB313A1B0B40012EB86 /* PBXTextBookmark */ = E20D9DB313A1B0B40012EB86 /* PBXTextBookmark */;
 			E20D9DB613A1B0B40012EB86 /* PBXTextBookmark */ = E20D9DB613A1B0B40012EB86 /* PBXTextBookmark */;
 			E20D9DBC13A1B8D90012EB86 /* PBXTextBookmark */ = E20D9DBC13A1B8D90012EB86 /* PBXTextBookmark */;
+			E20D9DC113A1BA920012EB86 /* PBXTextBookmark */ = E20D9DC113A1BA920012EB86 /* PBXTextBookmark */;
+			E20D9DC513A1BAC10012EB86 /* PBXTextBookmark */ = E20D9DC513A1BAC10012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
 			E21978761395D1B1003CC739 = E21978761395D1B1003CC739 /* PBXTextBookmark */;
 			E2197A6813974BDC003CC739 = E2197A6813974BDC003CC739 /* PBXTextBookmark */;
@@ -1611,7 +1613,7 @@
 		comments = "No matching function for call to 'juce::ModalCallbackFunction::forComponent(void ()(int, rec::command::CommandMapEditButton*, const juce::KeyPress&), rec::command::CommandMapEditButton*&, juce::KeyPress)'";
 		fRef = E20D9D5113A149220012EB86 /* GenericCommandMapEditor.h */;
 		rLen = 1;
-		rLoc = 46;
+		rLoc = 44;
 		rType = 1;
 	};
 	E20D9D5313A149270012EB86 /* PBXTextBookmark */ = {
@@ -1629,7 +1631,7 @@
 		fRef = E20D9D5113A149220012EB86 /* GenericCommandMapEditor.h */;
 		name = "GenericCommandMapEditor.h: 47";
 		rLen = 70;
-		rLoc = 1501;
+		rLoc = 1454;
 		rType = 0;
 		vrLen = 2595;
 		vrLoc = 0;
@@ -1760,6 +1762,26 @@
 		rLoc = 1942;
 		rType = 0;
 		vrLen = 1044;
+		vrLoc = 0;
+	};
+	E20D9DC113A1BA920012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 70";
+		rLen = 0;
+		rLoc = 1828;
+		rType = 0;
+		vrLen = 1044;
+		vrLoc = 0;
+	};
+	E20D9DC513A1BAC10012EB86 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */;
+		name = "MidiCommandMapEditor.cpp: 75";
+		rLen = 0;
+		rLoc = 1962;
+		rType = 0;
+		vrLen = 1027;
 		vrLoc = 0;
 	};
 	E21977E413957654003CC739 /* PBXTextBookmark */ = {
