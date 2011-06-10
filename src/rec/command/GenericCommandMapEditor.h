@@ -88,7 +88,7 @@ class GenericCommandMapEditor : public CommandMapEditor {
   static const int MAX_NUM_ASSIGNMENTS = 3;
 
  private:
-  KeyPressMappingSet& mappings;
+  MappingSet& mappings;
 };
 
 }  // namespace command

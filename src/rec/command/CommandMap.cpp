@@ -58,6 +58,21 @@ const vector<CommandMap::Key> CommandMap::getKeys(Command c) const {
   return keys;
 }
 
-}  // namespace command
+void CommandMap::removeMessage(Command c, int keyIndex) {
+  typedef CommandToKeys::iterator iterator;
+  typedef std::pair<iterator, iterator> IteratorPair;
+  iterator i = toKeys_.lower_bound(c);
+  for (int j = 0; j < keyIndex && i != toKeys_.end(); ++i, ++j);
+  if (i == toKeys_.end()) {
+    LOG(ERROR) << "Couldn't remove message";
+    return;
+  }
+
+  toCommand_.erase(i->second);
+  toKeys_.erase(i);
+}
+
+
+}  // namespacec command
 }  // namespace rec
 

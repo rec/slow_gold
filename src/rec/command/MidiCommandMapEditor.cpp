@@ -9,12 +9,12 @@ const String MidiCommandMapEditor::getDescription(const MidiMessage& key) {
   return midiName(key);
 }
 
-#if 0
-
 template <>
 void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
-  mappings.removeMidiMessage(command, keyNum);
+  mappings.removeMessage(static_cast<Command::Type>(command), keyNum);
 }
+
+#if 0
 
 template <>
 ApplicationCommandManager& MidiCommandMapEditor::commandManager(MidiMessageMappingSet& mappings) {
