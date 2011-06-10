@@ -39,12 +39,12 @@ CommandID MidiCommandMapEditor::getCommand(const MidiMessage& key) {
   return static_cast<CommandID>(mappings.getCommand(str(key)));
 }
 
-#if 0
-
 template <>
 void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
-  mappings.removeMidiMessage (key);
+  mappings.removeKey(str(key));
 }
+
+#if 0
 
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key, int keyIndex) {

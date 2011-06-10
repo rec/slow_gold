@@ -60,7 +60,6 @@ const vector<CommandMap::Key> CommandMap::getKeys(Command c) const {
 
 void CommandMap::removeMessage(Command c, int keyIndex) {
   typedef CommandToKeys::iterator iterator;
-  typedef std::pair<iterator, iterator> IteratorPair;
   iterator i = toKeys_.lower_bound(c);
   for (int j = 0; j < keyIndex && i != toKeys_.end(); ++i, ++j);
   if (i == toKeys_.end()) {
@@ -72,6 +71,20 @@ void CommandMap::removeMessage(Command c, int keyIndex) {
   toKeys_.erase(i);
 }
 
+void CommandMap::removeKey(const Key& key) {
+  typedef CommandToKeys::iterator iterator;
+  if (Command c = getCommand(key)) {
+    toCommand_.erase(key);
+    iterator i = toKeys_.lower_bound(c);
+    for (; i != toKeys_.end() && i->second != key; ++i);
+    if (i != toKeys_.end())
+      toKeys_.erase(i);
+    else
+      LOG(ERROR) << "1: Couldn't remove key " << key;
+  } else {
+    LOG(ERROR) << "2: Couldn't remove key " << key;
+  }
+}
 
 }  // namespacec command
 }  // namespace rec
