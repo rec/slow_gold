@@ -15,11 +15,13 @@ Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
                    instance_(new Instance(this)) {
   Component* mp = &instance_->components_->mainPage_;
   mp->setBounds(0, 0, 1, 1);
+
 #ifdef OLD_JUCE
   setContentComponent(mp, true, true);
 #else
   setContentOwned(mp, true);
 #endif
+
   computeBounds<AppLayout>();
   setMenuBar(instance_->menus_.get());
   setUsingNativeTitleBar(true);
@@ -38,11 +40,13 @@ Window::~Window() {
   MenuBarModel::setMacMainMenu(NULL);
 #endif
   setMenuBar(NULL);
+
 #ifdef OLD_JUCE
   setContentComponent(NULL, false, true);
 #else
   setContentOwned(NULL, false);
 #endif
+
 }
 
 }  // namespace slow

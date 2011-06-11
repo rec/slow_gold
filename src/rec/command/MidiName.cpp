@@ -15,7 +15,7 @@ String midiName(const MidiMessage& m) {
     return "sysex";
 
   if (m.isNoteOn())
-    return midiNoteName(m) + " on";
+    return midiNoteName(m);
 
   if (m.isNoteOff())
     return midiNoteName(m) + " off";

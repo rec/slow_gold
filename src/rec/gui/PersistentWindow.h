@@ -24,9 +24,9 @@ class PersistentWindow : public DocumentWindow {
     data_ = data;
     setLimitedBounds(data->fileReadSuccess() ? copy(data->get().bounds()) :
                      Rect(300, 100, 800, 600));  // TODO!
+    setFullScreen(data->get().full_screen());
   }
   void setLimitedBounds(const Rect& rect);
-
   ~PersistentWindow();
 
   void closeButtonPressed();

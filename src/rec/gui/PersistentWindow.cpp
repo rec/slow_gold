@@ -5,10 +5,12 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/gui/Geometry.h"
 
-using namespace juce;
-
 namespace rec {
 namespace gui {
+
+using namespace juce;
+using slow::AppLayout;
+
 
 PersistentWindow::~PersistentWindow() {}
 
@@ -30,8 +32,20 @@ void PersistentWindow::resized() {
 }
 
 void PersistentWindow::writeData() {
-  if (okToSaveLayout_)
-    data::set(data_, "bounds", gui::copy(getBounds()));
+  if (okToSaveLayout_) {
+    AppLayout layout(persist::get<AppLayout>());
+    juce::Rectangle<int> bounds = getBounds();
+    bool full = isFullScreen() || (getScreenBounds() == getParentMonitorArea());
+#if 0
+    DLOG(INFO) << str(getScreenBounds().toString())
+               << ", "
+               << str(getParentMonitorArea().toString());
+#endif
+    layout.set_full_screen(full);
+    if (!full)
+      *layout.mutable_bounds() = gui::copy(getBounds());
+    persist::set(layout);
+  }
 }
 
 void PersistentWindow::moved() {
