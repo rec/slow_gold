@@ -5,6 +5,7 @@ import "rec/gui/Geometry.proto";
 message AppLayout {
   optional gui.Rectangle bounds = 1;
   optional bool full_screen = 11;
+  optional bool compact = 12;
 
   optional uint32 directory_y = 2 [default = 175];
   optional uint32 waveform_y = 3 [default = 350];

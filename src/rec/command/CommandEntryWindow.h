@@ -27,9 +27,8 @@ public:
         grabKeyboardFocus();
     }
 
-private:
-
-    JUCE_DECLARE_NON_COPYABLE (CommandEntryWindow);
+ private:
+  JUCE_DECLARE_NON_COPYABLE (CommandEntryWindow);
 };
 
 }  // namespace command

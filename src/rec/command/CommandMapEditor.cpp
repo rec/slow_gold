@@ -82,12 +82,5 @@ bool CommandMapEditor::isCommandReadOnly (const CommandID commandID)
     return ci != nullptr && (ci->flags & ApplicationCommandInfo::readOnlyInKeyEditor) != 0;
 }
 
-#if 0
-const String CommandMapEditor::getDescriptionForKeyPress (const KeyPress& key)
-{
-    return key.getTextDescription();
-}
-#endif
-
 }  // namespace command
 }  // namespace rec

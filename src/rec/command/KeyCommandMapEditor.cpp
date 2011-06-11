@@ -15,29 +15,24 @@ class KeyCommandEntryWindow : public CommandEntryWindow {
 
     bool keyPressed (const KeyPress& key)
     {
-        lastPress = key;
-        String message (TRANS("Key: ") + owner.getDescriptionForKey (key));
-
-        const CommandID previousCommand = owner.getMappings().findCommandForKeyPress (key);
-
-        if (previousCommand != 0)
-            message << "\n\n" << TRANS("(Currently assigned to \"")
-                    << owner.getCommandManager().getNameOfCommand (previousCommand) << "\")";
-
-        setMessage (message);
+        lastKey_ = key;
+        setMessage(owner.getKeyMessage(key));
         return true;
     }
-
+#if 0
     bool keyStateChanged (bool)
     {
         return true;
     }
-
-    KeyPress lastPress;
+#endif
+    KeyPress lastKey_;
     KeyCommandMapEditor& owner;
 };
 
 }  // namespace
+
+template <>
+const String KeyCommandMapEditor::name() { return "Key"; }
 
 template <>
 const String KeyCommandMapEditor::getDescription(const KeyPress& key) {
@@ -86,7 +81,7 @@ void KeyCommandMapEditor::keyChosen (int result, CommandMapEditButton* button)
     if (result != 0 && button != nullptr && window != nullptr)
     {
         window->setVisible (false);
-        window->owner.setNewKey (button, window->lastPress, false);
+        window->owner.setNewKey (button, window->lastKey_, false);
     }
 
     button->setCommandEntryWindow();

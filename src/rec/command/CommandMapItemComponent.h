@@ -19,6 +19,7 @@ public:
 
     void addButton (const String& desc, const int index, const bool isReadOnly)
     {
+        DLOG(INFO) << str(desc);
         CommandMapEditButton* const b = new CommandMapEditButton(owner, commandID, desc, index);
         buttons.add (b);
 

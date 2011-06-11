@@ -17,9 +17,10 @@ class GenericCommandMapEditor : public CommandMapEditor {
 
   // You must implement these separately for any actual instantiation of this class.
   static const String getDescription(const Key&);
-  static void keyChosen(int result, CommandMapEditButton*);
-  static void assignNewKeyCallback(int result, CommandMapEditButton*, Key);
   static bool isValid(const Key&);
+  static const String name();
+  static void assignNewKeyCallback(int result, CommandMapEditButton*, Key);
+  static void keyChosen(int result, CommandMapEditButton*);
 
   CommandID getCommand(const Key&);
   void removeKey(const Key&);
@@ -27,6 +28,17 @@ class GenericCommandMapEditor : public CommandMapEditor {
   void removeKey(CommandID, int keyNum);
   const Array <Key> getKeys(CommandID);
   CommandEntryWindow* newWindow();
+
+  const String getKeyMessage(const Key& key) {
+    String message(name() + ": " + getDescription(key));
+    const CommandID previousCommand = getCommand(key);
+
+    if (previousCommand) {
+      message << "\n\n" << TRANS("(Currently assigned to \"")
+              << getCommandManager().getNameOfCommand(previousCommand) << "\")";
+    }
+    return message;
+  }
 
   void setNewKey (CommandMapEditButton* button, const Key& newKey, bool dontAskUser)
   {

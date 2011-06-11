@@ -16,28 +16,27 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
       : CommandEntryWindow("Waiting for a MIDI note, program change or controller..."),
         owner_(owner),
         mappings_(&owner->getMappings()) {
+    listen(this);
+  }
+
+  void listen(bool on) { mappings_->requestOneMessage(on ? this : NULL); }
+
+  virtual ~MidiCommandEntryWindow() { listen(false); }
+
+  virtual void operator()(const MidiMessage& msg) {
+    if (msg.isNoteOn() || msg.isProgramChange() || msg.isController()) {
+      lastKey_ = msg;
+      MessageManagerLock l;
+      setMessage(owner_->getKeyMessage(msg));
+    }
+
     mappings_->requestOneMessage(this);
   }
 
-  virtual ~MidiCommandEntryWindow() {
-    if (lastMidi_.isActiveSense())
-      mappings_->requestOneMessage(NULL);
-  }
-
-  virtual void operator()(const MidiMessage& msg) {
-    if (!(msg.isNoteOn() || msg.isProgramChange() || msg.isController())) {
-      mappings_->requestOneMessage(this);
-    } else {
-      lastMidi_ = msg;
-      exitModalState(1);
-    }
-  }
-
-  const MidiMessage& lastMidi() { return lastMidi_; }
 	MidiCommandMapEditor* owner() { return owner_; }
+  MidiMessage lastKey_;
 
  private:
-  MidiMessage lastMidi_;
   MidiCommandMapEditor* owner_;
   MidiCommandMap* mappings_;
 
@@ -47,6 +46,11 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
 }  // namespace
 
 template <>
+const String MidiCommandMapEditor::name() {
+  return "Midi";
+}
+
+template <>
 const String MidiCommandMapEditor::getDescription(const MidiMessage& key) {
   return midiName(key);
 }
@@ -54,6 +58,7 @@ const String MidiCommandMapEditor::getDescription(const MidiMessage& key) {
 template <>
 void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
   mappings.removeCommand(static_cast<Command::Type>(command), keyNum);
+  mappings.sendChangeMessage();
 }
 
 template <>
@@ -84,11 +89,13 @@ CommandID MidiCommandMapEditor::getCommand(const MidiMessage& key) {
 template <>
 void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
   mappings.removeKey(str(key));
+  mappings.sendChangeMessage();
 }
 
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key, int keyIndex) {
   mappings.add(str(key), static_cast<Command::Type>(cmd), keyIndex);
+  mappings.sendChangeMessage();
 }
 
 template <>
@@ -97,8 +104,10 @@ void MidiCommandMapEditor::keyChosen(int result, CommandMapEditButton* button)
     MidiCommandEntryWindow* window = dynamic_cast<MidiCommandEntryWindow*>(button->getCommandEntryWindow());
     if (result != 0 && button != nullptr && window != nullptr) {
         window->setVisible (false);
-        window->owner()->setNewKey (button, window->lastMidi(), false);
+        window->owner()->setNewKey (button, window->lastKey_, false);
     }
+    if (window)
+      window->listen(false);
 
     button->setCommandEntryWindow();
 }
@@ -111,9 +120,6 @@ void MidiCommandMapEditor::assignNewKeyCallback(int result, CommandMapEditButton
          editor->setNewKey (button, key, true);
      }
 }
-
-#if 0
-#endif
 
 }  // namespace command
 }  // namespace rec
