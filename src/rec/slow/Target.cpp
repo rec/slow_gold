@@ -1,5 +1,8 @@
 #include "rec/slow/Target.h"
+
+#include "rec/audio/source/Player.h"
 #include "rec/audio/Audio.h"
+#include "rec/command/MidiCommandMapEditor.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Components.h"
@@ -8,7 +11,6 @@
 #include "rec/slow/Model.h"
 #include "rec/slow/Selections.h"
 #include "rec/slow/TargetCommands.h"
-#include "rec/audio/source/Player.h"
 #include "rec/util/cd/Eject.h"
 #include "rec/util/Math.h"
 #include "rec/util/thread/FunctionCallback.h"
@@ -16,11 +18,23 @@
 namespace rec {
 namespace slow {
 
+namespace {
+}
+
 using rec::command::Command;
 using thread::methodCallback;
 using thread::functionCallback;
 
-Target::Target(Instance* i) : TargetManager(i->window_), HasInstance(i) {}
+Target::Target(Instance* i)
+    : TargetManager(i->window_), HasInstance(i),
+      midiCommandMap_(new command::MidiCommandMap(commandManager())) {
+  device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
+  (*midiCommandMap_)(persist::get<command::CommandMapProto>());
+}
+
+Target::~Target() {
+  device()->manager_.removeMidiInputCallback("", midiCommandMap_.get());
+}
 
 void Target::addCommands() {
   using gui::audio::Loops;

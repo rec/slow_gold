@@ -39,6 +39,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     // add(&m, Command::CLEAR_NAVIGATOR);
     add(&m, Command::AUDIO_PREFERENCES);
     add(&m, Command::KEYBOARD_MAPPINGS);
+    add(&m, Command::MIDI_MAPPINGS);
 
 #ifdef RECENT_FILES_ENABLED
     gui::RecentFiles recent = gui::getSortedRecentFiles();

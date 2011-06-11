@@ -16,6 +16,10 @@ void CommandMap::operator()(const CommandMapProto& commands) {
 
 void CommandMap::add(const Key& key, Command command, int index) {
   // TODO:  check for dupes?
+  if (toCommand_.find(key) != toCommand_.end()) {
+    PlatformUtilities::beep();
+    return;
+  }
   toCommand_[key] = command;
   if (index == -1)
     toKeys_[command].push_back(key);
@@ -87,7 +91,7 @@ void CommandMap::removeKey(const Key& key) {
     }
     LOG(ERROR) << "Couldn't erase key " << key;
   } else {
-    LOG(ERROR) << "Couldn't find key " << key;
+    // LOG(ERROR) << "Couldn't find key " << key;
   }
 }
 

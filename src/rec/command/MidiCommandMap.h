@@ -6,12 +6,15 @@
 namespace rec {
 namespace command {
 
-class MidiCommandMap : public CommandMap, public juce::MidiInputCallback {
+class MidiCommandMap : public CommandMap,
+                       public juce::MidiInputCallback,
+                       public ChangeBroadcaster {
  public:
   MidiCommandMap(ApplicationCommandManager* m);
   virtual void handleIncomingMidiMessage(juce::MidiInput*, const juce::MidiMessage&);
   void requestOneMessage(Listener<const juce::MidiMessage&>* lst);
   void setEnable(bool e);
+  virtual void changeListenerCallback (ChangeBroadcaster*) {}
 
  private:
   CriticalSection lock_;

@@ -29,13 +29,13 @@ class MidiCommandEntryWindow : public CommandEntryWindow,
       mappings_->requestOneMessage(this);
     } else {
       lastMidi_ = msg;
-      exitModalState(0);
+      exitModalState(1);
     }
   }
 
   const MidiMessage& lastMidi() { return lastMidi_; }
 	MidiCommandMapEditor* owner() { return owner_; }
-  
+
  private:
   MidiMessage lastMidi_;
   MidiCommandMapEditor* owner_;

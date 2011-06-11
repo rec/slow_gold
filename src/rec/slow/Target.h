@@ -6,17 +6,24 @@
 #include "rec/command/TargetManager.h"
 
 namespace rec {
+
+namespace command { class MidiCommandMap; }
+
 namespace slow {
 
 class Instance;
 
 class Target : public command::TargetManager, public HasInstance {
  public:
-  Target(Instance* instance);
+  explicit Target(Instance* instance);
+  virtual ~Target();
+
   void addCommands();
-  virtual ~Target() {}
+  command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
 
  private:
+  ptr<command::MidiCommandMap> midiCommandMap_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Target);
 };
 

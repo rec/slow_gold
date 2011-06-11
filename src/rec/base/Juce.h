@@ -58,6 +58,7 @@ typedef juce::OutputStream OutputStream;
 
 typedef juce::PopupMenu PopupMenu;
 typedef juce::PositionableAudioSource PositionableAudioSource;
+typedef juce::PlatformUtilities PlatformUtilities;
 
 typedef juce::String String;
 typedef juce::ScopedLock ScopedLock;

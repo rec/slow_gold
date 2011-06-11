@@ -1,6 +1,7 @@
 #include "rec/slow/TargetCommands.h"
 #include "rec/audio/Audio.h"
 #include "rec/command/KeyCommandMapEditor.h"
+#include "rec/command/MidiCommandMapEditor.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Components.h"
@@ -40,19 +41,14 @@ void jumpToStart(Instance* i) {
 
 void keyboardMappings(Instance* i) {
   gui::DialogLocker l;
-  if (!l.isLocked())
-    return;  // TODO beep
+  if (!l.isLocked()) {
+    PlatformUtilities::beep();
+    return;
+  }
 
-#if 0
-  juce::KeyMappingEditorComponent comp(
-      *i->target_->commandManager()->getKeyMappings(), true);
-#else
   ApplicationCommandManager* manager = i->target_->commandManager();
   command::KeyCommandMapEditor comp(*manager, *manager->getKeyMappings());
   comp.initialize(true);
-
-#endif
-
   comp.setBounds(0, 0, 500, 1000);
 
   juce::DialogWindow::showModalDialog("Select keyboard mappings",
@@ -62,6 +58,21 @@ void keyboardMappings(Instance* i) {
 }
 
 void midiMappings(Instance* i) {
+  gui::DialogLocker l;
+  if (!l.isLocked()) {
+    PlatformUtilities::beep();
+    return;
+  }
+
+  ApplicationCommandManager* manager = i->target_->commandManager();
+  command::MidiCommandMapEditor comp(*manager, *i->target_->midiCommandMap());
+  comp.initialize(true);
+  comp.setBounds(0, 0, 500, 1000);
+
+  juce::DialogWindow::showModalDialog("Select MIDI mappings",
+                                      &comp, NULL, juce::Colours::white,
+                                      true, true, true);
+  persist::set(i->target_->midiCommandMap()->getProto());
 }
 
 void nudgeBeginLeft(Instance* i) {

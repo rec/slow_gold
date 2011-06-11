@@ -18,6 +18,7 @@ class TargetManager : public ApplicationCommandTarget {
  public:
   explicit TargetManager(Component* comp);
   virtual ~TargetManager();
+
   void registerAllCommandsForTarget();
   void setApplicationCommandManagerToWatch(MenuBarModel* model) {
     model->setApplicationCommandManagerToWatch(&commandManager_);
