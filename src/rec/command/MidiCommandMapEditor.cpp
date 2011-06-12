@@ -83,18 +83,18 @@ const Array<MidiMessage> MidiCommandMapEditor::getKeys(CommandID cmd) {
 
 template <>
 CommandID MidiCommandMapEditor::getCommand(const MidiMessage& key) {
-  return static_cast<CommandID>(mappings.getCommand(str(key)));
+  return static_cast<CommandID>(mappings.getCommand(mappings.toBytes(key)));
 }
 
 template <>
 void MidiCommandMapEditor::removeKey(const MidiMessage& key) {
-  mappings.removeKey(str(key));
+  mappings.removeKey(mappings.toBytes(key));
   mappings.sendChangeMessage();
 }
 
 template <>
 void MidiCommandMapEditor::addKey(CommandID cmd, const MidiMessage& key, int keyIndex) {
-  mappings.add(str(key), static_cast<Command::Type>(cmd), keyIndex);
+  mappings.add(mappings.toBytes(key), static_cast<Command::Type>(cmd), keyIndex);
   mappings.sendChangeMessage();
 }
 

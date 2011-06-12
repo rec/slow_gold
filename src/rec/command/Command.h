@@ -19,7 +19,7 @@ ApplicationCommandInfo makeInfo(
     CommandID id, const String& name,
     const String& category, const String& desc,
     int flags = 0, int keyCode = 0,
-    const ModifierKeys& mod = ModifierKeys(getDefaultMods()));
+    const ModifierKeys& mod = ModifierKeys());
 
 }  // namespace command
 }  // namespace rec

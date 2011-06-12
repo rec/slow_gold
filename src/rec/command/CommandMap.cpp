@@ -31,11 +31,13 @@ const CommandMapProto CommandMap::getProto() const {
   CommandMapProto commands;
   CommandToKeys::const_iterator i;
   for (i = toKeys_.begin(); i != toKeys_.end(); ++i) {
-    CommandMapEntry* entry = commands.add_entry();
-    entry->set_command(i->first);
-    vector<Key>::const_iterator j;
-    for (j = i->second.begin(); j != i->second.end(); ++j)
-      entry->add_key(*j);
+    if (!i->second.empty()) {
+      CommandMapEntry* entry = commands.add_entry();
+      entry->set_command(i->first);
+      vector<Key>::const_iterator j;
+      for (j = i->second.begin(); j != i->second.end(); ++j)
+        entry->add_key(*j);
+    }
   }
 
   return commands;
@@ -44,13 +46,21 @@ const CommandMapProto CommandMap::getProto() const {
 
 bool CommandMap::invoke(const Key& key, ApplicationCommandManager* acm,
                         bool async) const {
-  if (CommandID id = getCommand(key))
+  if (CommandID id = getCommand(key)) {
+    juce::MessageManagerLock l;
     return acm->invokeDirectly(id, async);
-  else
+  } else {
     return false;
+  }
 }
 
 command::Command::Type CommandMap::getCommand(const string& key) const {
+  DLOG(INFO) << key << ", " << int(key[0]) << ", " << int(key[1]) << ", " << int(key[2]);
+  for (KeyToCommand::const_iterator i = toCommand_.begin(); i != toCommand_.end(); ++i) {
+    DLOG(INFO) << i->first << ", " << i->second;
+    const string& k = i->first;
+    DLOG(INFO) << "s: " << k << ", " << int(k[0]) << ", " << int(k[1]) << ", " << int(k[2]);
+  }
   KeyToCommand::const_iterator i = toCommand_.find(key);
   return (i == toCommand_.end()) ? command::Command::NONE : i->second;
 }
@@ -91,10 +101,10 @@ void CommandMap::removeKey(const Key& key) {
     }
     LOG(ERROR) << "Couldn't erase key " << key;
   } else {
-    // LOG(ERROR) << "Couldn't find key " << key;
+    LOG(ERROR) << "Couldn't find key " << key;
   }
 }
 
-}  // namespacec command
+}  // namespace command
 }  // namespace rec
 

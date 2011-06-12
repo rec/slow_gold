@@ -77,11 +77,8 @@ void TargetManager::add(Callback* cb, const ApplicationCommandInfo& info) {
 
 void TargetManager::add(CommandID id, Callback* cb,
                         const String& name,
-                        const String& category, const String& desc,
-                        int keyCode,
-                        const ModifierKeys& modifiers,
-                        int flags) {
-	add(cb, makeInfo(id, name, category, desc, flags, keyCode, modifiers));
+                        const String& category, const String& desc) {
+	add(cb, makeInfo(id, name, category, desc));
 }
 
 ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {

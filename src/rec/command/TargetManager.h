@@ -38,18 +38,9 @@ class TargetManager : public ApplicationCommandTarget {
 
   InvocationInfo lastInvocation() const;
 
-  void add(Callback* callback, const ApplicationCommandInfo& info);
-
   void add(CommandID id, Callback* cb,
            const String& name,
-           const String& category, const String& desc,
-           int keyCode = 0,
-           const ModifierKeys& modifiers = getDefaultMods(),
-           int flags = 0);
-
-  void addCommandItem(PopupMenu* menu, CommandID command) {
-    menu->addCommandItem(&commandManager_, command);
-  }
+           const String& category, const String& desc);
 
   void addCommandItem(PopupMenu* menu, CommandID command,
                       bool isActive,
@@ -67,7 +58,12 @@ class TargetManager : public ApplicationCommandTarget {
   void saveKeyboardBindings();
 
  private:
+  void addCommandItem(PopupMenu* menu, CommandID command) {
+    menu->addCommandItem(&commandManager_, command);
+  }
+
   typedef std::map<CommandID, CommandCallback*> CommandMap;
+  void add(Callback* callback, const ApplicationCommandInfo& info);
 
   void loadKeyboardBindings();
 

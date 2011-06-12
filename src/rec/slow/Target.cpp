@@ -47,24 +47,23 @@ void Target::addCommands() {
 
   add(Command::CUT, functionCallback(cutToClipboard),
       "Cut", "Edit",
-      "Copy the current selection to the clipboard and clear the selection.",
-      'x');
+      "Copy the current selection to the clipboard and clear the selection.");
 
   add(Command::COPY, functionCallback(copyToClipboard),
       "Copy", "Edit",
-      "Copy the current selection to the clipboard.", 'c');
+      "Copy the current selection to the clipboard.");
 
   add(Command::PASTE, functionCallback(pasteFromClipboard),
       "Paste", "Edit",
-      "Replace the current selection with a copy of the clipboard.", 'v');
+      "Replace the current selection with a copy of the clipboard.");
 
   add(Command::SELECT_ALL, functionCallback(selectAll, instance_),
       "Select All", "Selection",
-      "Select all of the file", 'a');
+      "Select all of the file");
 
   add(Command::DESELECT_ALL, functionCallback(selectNone, instance_),
       "Select None", "Selection",
-      "Select none of the file", 'd');
+      "Select none of the file");
 
   //
   // REC commands!
@@ -77,7 +76,7 @@ void Target::addCommands() {
                                                  &gui::audio::SetupPage::show,
                                                  &components()->mainPage_),
       "Audio Preferences...", "File",
-      "Open the Audio Preferences pane.", ';');
+      "Open the Audio Preferences pane.");
 
   add(Command::CLEAR_NAVIGATOR, functionCallback(&clearNavigator),
       "Clear Navigator", "File",
@@ -91,7 +90,7 @@ void Target::addCommands() {
   add(Command::CLOSE_FILE, functionCallback(persist::setter<VirtualFile>(),
                                             VirtualFile()),
       "Close", "File",
-      "Close the current file", 'w');
+      "Close the current file");
 
   add(Command::CONTRACT_FROM_NEXT_LOOP_POINT,
       functionCallback(&retractEnd, instance_),
@@ -105,12 +104,12 @@ void Target::addCommands() {
 
   add(Command::EJECT_CDS, functionCallback(&cd::ejectAll),
       "Eject All", "File",
-      "Eject all CDs and DVDs", 'e');
+      "Eject all CDs and DVDs");
 
   add(Command::INVERT_LOOP_SELECTION,
       functionCallback(selectInvert, instance_),
       "Invert Selection", "Selection",
-      "Unselect everything selected and vice-versa.", 'i');
+      "Unselect everything selected and vice-versa.");
 
   add(Command::EXTEND_TO_NEXT_LOOP_POINT,
       functionCallback(&extendEnd, instance_),
@@ -180,7 +179,7 @@ void Target::addCommands() {
   add(Command::OPEN, functionCallback(&gui::dialog::openOneFile,
                                       listeners()),
       "Open...", "File",
-      "Open a dialog to select a new audio file for looping.", 'o');
+      "Open a dialog to select a new audio file for looping.");
 
   add(Command::RECENT_FILES,
       functionCallback(recentFiles, instance_),
@@ -189,102 +188,102 @@ void Target::addCommands() {
 
   add(Command::SELECT_ONLY_0,
       functionCallback(selectItemOnly, instance_, 0),
-      "Select Only Loop 1", "Selection",
+      "Select Only Loop 1", "Select Only",
       "Select loop 1 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_1,
       functionCallback(&selectItemOnly, instance_, 1),
-      "Select Only Loop 2", "Selection",
+      "Select Only Loop 2", "Select Only",
       "Select loop 2 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_2,
       functionCallback(&selectItemOnly, instance_, 2),
-      "Select Only Loop 3", "Selection",
+      "Select Only Loop 3", "Select Only",
       "Select loop 3 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_3,
       functionCallback(&selectItemOnly, instance_, 3),
-      "Select Only Loop 4", "Selection",
+      "Select Only Loop 4", "Select Only",
       "Select loop 4 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_4,
       functionCallback(&selectItemOnly, instance_, 4),
-      "Select Only Loop 5", "Selection",
+      "Select Only Loop 5", "Select Only",
       "Select loop 5 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_5,
       functionCallback(&selectItemOnly, instance_, 5),
-      "Select Only Loop 6", "Selection",
+      "Select Only Loop 6", "Select Only",
       "Select loop 6 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_6,
       functionCallback(&selectItemOnly, instance_, 6),
-      "Select Only Loop 7", "Selection",
+      "Select Only Loop 7", "Select Only",
       "Select loop 7 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_7,
       functionCallback(&selectItemOnly, instance_, 7),
-      "Select Only Loop 8", "Selection",
+      "Select Only Loop 8", "Select Only",
       "Select loop 8 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_8,
       functionCallback(&selectItemOnly, instance_, 8),
-      "Select Only Loop 9", "Selection",
+      "Select Only Loop 9", "Select Only",
       "Select loop 9 and unselect all other loops.");
 
   add(Command::SELECT_ONLY_9,
       functionCallback(&selectItemOnly, instance_, 9),
-      "Select Only Loop 10", "Selection",
+      "Select Only Loop 10", "Select Only",
       "Select loop 10 and unselect all other loops.");
 
   add(Command::TOGGLE_0,
       functionCallback(&toggleItem, instance_, 0),
-      "Toggle Loop 1", "Selection",
+      "Toggle Loop 1", "Select Toggle",
       "Toggle loop 1 between selected and unselected");
 
   add(Command::TOGGLE_1,
       functionCallback(&toggleItem, instance_, 1),
-      "Toggle Loop 2", "Selection",
+      "Toggle Loop 2", "Select Toggle",
       "Toggle loop 2 between selected and unselected");
 
   add(Command::TOGGLE_2,
       functionCallback(&toggleItem, instance_, 2),
-      "Toggle Loop 3", "Selection",
+      "Toggle Loop 3", "Select Toggle",
       "Toggle loop 3 between selected and unselected");
 
   add(Command::TOGGLE_3,
       functionCallback(&toggleItem, instance_, 3),
-      "Toggle Loop 4", "Selection",
+      "Toggle Loop 4", "Select Toggle",
       "Toggle loop 4 between selected and unselected");
 
   add(Command::TOGGLE_4,
       functionCallback(&toggleItem, instance_, 4),
-      "Toggle Loop 5", "Selection",
+      "Toggle Loop 5", "Select Toggle",
       "Toggle loop 5 between selected and unselected");
 
   add(Command::TOGGLE_5,
       functionCallback(&toggleItem, instance_, 5),
-      "Toggle Loop 6", "Selection",
+      "Toggle Loop 6", "Select Toggle",
       "Toggle loop 6 between selected and unselected");
 
   add(Command::TOGGLE_6,
       functionCallback(&toggleItem, instance_, 6),
-      "Toggle Loop 7", "Selection",
+      "Toggle Loop 7", "Select Toggle",
       "Toggle loop 7 between selected and unselected");
 
   add(Command::TOGGLE_7,
       functionCallback(&toggleItem, instance_, 7),
-      "Toggle Loop 8", "Selection",
+      "Toggle Loop 8", "Select Toggle",
       "Toggle loop 8 between selected and unselected");
 
   add(Command::TOGGLE_8,
       functionCallback(&toggleItem, instance_, 8),
-      "Toggle Loop 9", "Selection",
+      "Toggle Loop 9", "Select Toggle",
       "Toggle loop 9 between selected and unselected");
 
   add(Command::TOGGLE_9,
       functionCallback(&toggleItem, instance_, 9),
-      "Toggle Loop 10", "Selection",
+      "Toggle Loop 10", "Select Toggle",
       "Toggle loop 10 between selected and unselected");
 
   add(Command::TOGGLE_WHOLE_SONG_LOOP,
@@ -295,7 +294,7 @@ void Target::addCommands() {
   add(Command::TOGGLE_START_STOP,
       methodCallback(player(), &audio::source::Player::toggle),
       "Toggle Start/Stop", "Transport",
-      "Start or pause", ' ');
+      "Start or pause");
 
   add(Command::TOGGLE_STRETCH_ENABLE,
       functionCallback(&toggleStretchEnable, instance_),
@@ -334,52 +333,52 @@ void Target::addCommands() {
 
   add(Command::UNSELECT_0,
       functionCallback(&unselectItem, instance_, 0),
-      "Unselect Loop 1", "Selection",
+      "Unselect Loop 1", "Unselect",
       "Unselect loop 1 only");
 
   add(Command::UNSELECT_1,
       functionCallback(&unselectItem, instance_, 1),
-      "Unselect Loop 2", "Selection",
+      "Unselect Loop 2", "Unselect",
       "Unselect loop 2 only");
 
   add(Command::UNSELECT_2,
       functionCallback(&unselectItem, instance_, 2),
-      "Unselect Loop 3", "Selection",
+      "Unselect Loop 3", "Unselect",
       "Unselect loop 3 only");
 
   add(Command::UNSELECT_3,
       functionCallback(&unselectItem, instance_, 3),
-      "Unselect Loop 4", "Selection",
+      "Unselect Loop 4", "Unselect",
       "Unselect loop 4 only");
 
   add(Command::UNSELECT_4,
       functionCallback(&unselectItem, instance_, 4),
-      "Unselect Loop 5", "Selection",
+      "Unselect Loop 5", "Unselect",
       "Unselect loop 5 only");
 
   add(Command::UNSELECT_5,
       functionCallback(&unselectItem, instance_, 5),
-      "Unselect Loop 6", "Selection",
+      "Unselect Loop 6", "Unselect",
       "Unselect loop 6 only");
 
   add(Command::UNSELECT_6,
       functionCallback(&unselectItem, instance_, 6),
-      "Unselect Loop 7", "Selection",
+      "Unselect Loop 7", "Unselect",
       "Unselect loop 7 only");
 
   add(Command::UNSELECT_7,
       functionCallback(&unselectItem, instance_, 7),
-      "Unselect Loop 8", "Selection",
+      "Unselect Loop 8", "Unselect",
       "Unselect loop 8 only");
 
   add(Command::UNSELECT_8,
       functionCallback(&unselectItem, instance_, 8),
-      "Unselect Loop 9", "Selection",
+      "Unselect Loop 9", "Unselect",
       "Unselect loop 9 only");
 
   add(Command::UNSELECT_9,
       functionCallback(&unselectItem, instance_, 9),
-      "Unselect Loop 10", "Selection",
+      "Unselect Loop 10", "Unselect",
       "Unselect loop 10 only");
 
   add(Command::ZOOM_IN,
@@ -397,7 +396,7 @@ void Target::addCommands() {
   add(Command::QUIT, methodCallback(JUCEApplication::getInstance(),
                                   &JUCEApplication::systemRequestedQuit),
       "Quit", "File",
-      "Quit SlowGold", 'q');
+      "Quit SlowGold");
 #endif
 
   registerAllCommandsForTarget();

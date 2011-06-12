@@ -15,14 +15,14 @@ void MidiCommandMap::handleIncomingMidiMessage(juce::MidiInput*,
     listener = listener_;
     listener_ = NULL;
 
-    if (!(enable_ || listener))
-      return;
+    // if (!(enable_ || listener))
+      // return;
   }
 
   if (listener)
     (*listener)(msg);
   else
-    invoke(str(msg), manager_);
+    invoke(toBytes(msg), manager_, true);
 }
 
 void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {
@@ -33,6 +33,17 @@ void MidiCommandMap::requestOneMessage(Listener<const juce::MidiMessage&>* lt) {
 void MidiCommandMap::setEnable(bool e) {
   ScopedLock l(lock_);
   enable_ = e;
+}
+
+const string MidiCommandMap::toBytes(const MidiMessage& msg) {
+  string r = str(msg);
+  if (msg.isNoteOn())
+    r[2] = 127;
+
+  if (msg.isController())
+    r[2] = (r[2] < 64) ? 0 : 127;
+
+  return r;
 }
 
 }  // namespace command

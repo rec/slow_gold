@@ -15,6 +15,7 @@ class MidiCommandMap : public CommandMap,
   void requestOneMessage(Listener<const juce::MidiMessage&>* lst);
   void setEnable(bool e);
   virtual void changeListenerCallback (ChangeBroadcaster*) {}
+  const string toBytes(const MidiMessage& msg);
 
  private:
   CriticalSection lock_;
