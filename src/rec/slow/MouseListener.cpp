@@ -125,8 +125,12 @@ void MouseListener::mouseUp(const MouseEvent& e) {
 void MouseListener::mouseDoubleClick(const MouseEvent& e) {
   if (!target()->invokeDirectly(command::Command::OPEN))
     LOG(ERROR) << "Unable to start open dialog";
+
+#if 0
   else
     DLOG(INFO) << "Opened a new file!";
+#endif
+
 }
 
 #ifdef TODO

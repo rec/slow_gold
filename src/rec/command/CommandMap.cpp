@@ -55,12 +55,6 @@ bool CommandMap::invoke(const Key& key, ApplicationCommandManager* acm,
 }
 
 command::Command::Type CommandMap::getCommand(const string& key) const {
-  DLOG(INFO) << key << ", " << int(key[0]) << ", " << int(key[1]) << ", " << int(key[2]);
-  for (KeyToCommand::const_iterator i = toCommand_.begin(); i != toCommand_.end(); ++i) {
-    DLOG(INFO) << i->first << ", " << i->second;
-    const string& k = i->first;
-    DLOG(INFO) << "s: " << k << ", " << int(k[0]) << ", " << int(k[1]) << ", " << int(k[2]);
-  }
   KeyToCommand::const_iterator i = toCommand_.find(key);
   return (i == toCommand_.end()) ? command::Command::NONE : i->second;
 }

@@ -88,10 +88,8 @@ void directory(Instance* i) {
 static Component* lastComp = NULL;
 void focus(Instance*) {
   Component* c = Component::getCurrentlyFocusedComponent();
-  if (c != lastComp) {
-    DLOG(INFO) << (c ? c->getName() : String()) << ": " << c;
+  if (c != lastComp)
     lastComp = c;
-  }
 }
 
 }  // namespace
