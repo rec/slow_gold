@@ -91,19 +91,19 @@ class Gain : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional float level = 1 [default = 1];
+  // optional double level = 1 [default = 1];
   inline bool has_level() const;
   inline void clear_level();
   static const int kLevelFieldNumber = 1;
-  inline float level() const;
-  inline void set_level(float value);
+  inline double level() const;
+  inline void set_level(double value);
   
-  // optional float gain = 5 [default = 0];
+  // optional double gain = 5 [default = 0];
   inline bool has_gain() const;
   inline void clear_gain();
   static const int kGainFieldNumber = 5;
-  inline float gain() const;
-  inline void set_gain(float value);
+  inline double gain() const;
+  inline void set_gain(double value);
   
   // optional bool mute = 2;
   inline bool has_mute() const;
@@ -119,23 +119,23 @@ class Gain : public ::google::protobuf::Message {
   inline bool dim() const;
   inline void set_dim(bool value);
   
-  // optional float dim_level = 4 [default = 0.3];
+  // optional double dim_level = 4 [default = 0.2];
   inline bool has_dim_level() const;
   inline void clear_dim_level();
   static const int kDimLevelFieldNumber = 4;
-  inline float dim_level() const;
-  inline void set_dim_level(float value);
+  inline double dim_level() const;
+  inline void set_dim_level(double value);
   
   // @@protoc_insertion_point(class_scope:rec.audio.Gain)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  float level_;
-  float gain_;
+  double level_;
+  double gain_;
   bool mute_;
   bool dim_;
-  float dim_level_;
+  double dim_level_;
   friend void  protobuf_AddDesc_rec_2faudio_2futil_2fGain_2eproto();
   friend void protobuf_AssignDesc_rec_2faudio_2futil_2fGain_2eproto();
   friend void protobuf_ShutdownFile_rec_2faudio_2futil_2fGain_2eproto();
@@ -163,7 +163,7 @@ class Gain : public ::google::protobuf::Message {
 
 // Gain
 
-// optional float level = 1 [default = 1];
+// optional double level = 1 [default = 1];
 inline bool Gain::has_level() const {
   return _has_bit(0);
 }
@@ -171,15 +171,15 @@ inline void Gain::clear_level() {
   level_ = 1;
   _clear_bit(0);
 }
-inline float Gain::level() const {
+inline double Gain::level() const {
   return level_;
 }
-inline void Gain::set_level(float value) {
+inline void Gain::set_level(double value) {
   _set_bit(0);
   level_ = value;
 }
 
-// optional float gain = 5 [default = 0];
+// optional double gain = 5 [default = 0];
 inline bool Gain::has_gain() const {
   return _has_bit(1);
 }
@@ -187,10 +187,10 @@ inline void Gain::clear_gain() {
   gain_ = 0;
   _clear_bit(1);
 }
-inline float Gain::gain() const {
+inline double Gain::gain() const {
   return gain_;
 }
-inline void Gain::set_gain(float value) {
+inline void Gain::set_gain(double value) {
   _set_bit(1);
   gain_ = value;
 }
@@ -227,18 +227,18 @@ inline void Gain::set_dim(bool value) {
   dim_ = value;
 }
 
-// optional float dim_level = 4 [default = 0.3];
+// optional double dim_level = 4 [default = 0.2];
 inline bool Gain::has_dim_level() const {
   return _has_bit(4);
 }
 inline void Gain::clear_dim_level() {
-  dim_level_ = 0.3f;
+  dim_level_ = 0.2;
   _clear_bit(4);
 }
-inline float Gain::dim_level() const {
+inline double Gain::dim_level() const {
   return dim_level_;
 }
-inline void Gain::set_dim_level(float value) {
+inline void Gain::set_dim_level(double value) {
   _set_bit(4);
   dim_level_ = value;
 }

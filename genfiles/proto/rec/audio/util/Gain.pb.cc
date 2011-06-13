@@ -78,9 +78,9 @@ void protobuf_AddDesc_rec_2faudio_2futil_2fGain_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/audio/util/Gain.proto\022\trec.audio\"\\"
-    "\n\004Gain\022\020\n\005level\030\001 \001(\002:\0011\022\017\n\004gain\030\005 \001(\002:\001"
+    "\n\004Gain\022\020\n\005level\030\001 \001(\001:\0011\022\017\n\004gain\030\005 \001(\001:\001"
     "0\022\014\n\004mute\030\002 \001(\010\022\013\n\003dim\030\003 \001(\010\022\026\n\tdim_leve"
-    "l\030\004 \001(\002:\0030.3", 132);
+    "l\030\004 \001(\001:\0030.2", 132);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/util/Gain.proto", &protobuf_RegisterTypes);
   Gain::default_instance_ = new Gain();
@@ -126,7 +126,7 @@ void Gain::SharedCtor() {
   gain_ = 0;
   mute_ = false;
   dim_ = false;
-  dim_level_ = 0.3f;
+  dim_level_ = 0.2;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -165,7 +165,7 @@ void Gain::Clear() {
     gain_ = 0;
     mute_ = false;
     dim_ = false;
-    dim_level_ = 0.3f;
+    dim_level_ = 0.2;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -177,12 +177,12 @@ bool Gain::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional float level = 1 [default = 1];
+      // optional double level = 1 [default = 1];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &level_)));
           _set_bit(0);
         } else {
@@ -220,33 +220,33 @@ bool Gain::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(37)) goto parse_dim_level;
+        if (input->ExpectTag(33)) goto parse_dim_level;
         break;
       }
       
-      // optional float dim_level = 4 [default = 0.3];
+      // optional double dim_level = 4 [default = 0.2];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_dim_level:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &dim_level_)));
           _set_bit(4);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(45)) goto parse_gain;
+        if (input->ExpectTag(41)) goto parse_gain;
         break;
       }
       
-      // optional float gain = 5 [default = 0];
+      // optional double gain = 5 [default = 0];
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_gain:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &gain_)));
           _set_bit(1);
         } else {
@@ -274,9 +274,9 @@ bool Gain::MergePartialFromCodedStream(
 
 void Gain::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional float level = 1 [default = 1];
+  // optional double level = 1 [default = 1];
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->level(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->level(), output);
   }
   
   // optional bool mute = 2;
@@ -289,14 +289,14 @@ void Gain::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->dim(), output);
   }
   
-  // optional float dim_level = 4 [default = 0.3];
+  // optional double dim_level = 4 [default = 0.2];
   if (_has_bit(4)) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->dim_level(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->dim_level(), output);
   }
   
-  // optional float gain = 5 [default = 0];
+  // optional double gain = 5 [default = 0];
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->gain(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->gain(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -307,9 +307,9 @@ void Gain::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Gain::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional float level = 1 [default = 1];
+  // optional double level = 1 [default = 1];
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->level(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->level(), target);
   }
   
   // optional bool mute = 2;
@@ -322,14 +322,14 @@ void Gain::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->dim(), target);
   }
   
-  // optional float dim_level = 4 [default = 0.3];
+  // optional double dim_level = 4 [default = 0.2];
   if (_has_bit(4)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->dim_level(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->dim_level(), target);
   }
   
-  // optional float gain = 5 [default = 0];
+  // optional double gain = 5 [default = 0];
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->gain(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->gain(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -343,14 +343,14 @@ int Gain::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional float level = 1 [default = 1];
+    // optional double level = 1 [default = 1];
     if (has_level()) {
-      total_size += 1 + 4;
+      total_size += 1 + 8;
     }
     
-    // optional float gain = 5 [default = 0];
+    // optional double gain = 5 [default = 0];
     if (has_gain()) {
-      total_size += 1 + 4;
+      total_size += 1 + 8;
     }
     
     // optional bool mute = 2;
@@ -363,9 +363,9 @@ int Gain::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // optional float dim_level = 4 [default = 0.3];
+    // optional double dim_level = 4 [default = 0.2];
     if (has_dim_level()) {
-      total_size += 1 + 4;
+      total_size += 1 + 8;
     }
     
   }

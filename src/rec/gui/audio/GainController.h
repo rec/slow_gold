@@ -25,7 +25,7 @@ class GainController : public Layout, public DataListener<rec::audio::Gain> {
   virtual void operator()(const rec::audio::Gain&);
 
  private:
-  DataSlider<float> level_;
+  DataSlider<double> level_;
   gui::SetterToggle muteButton_;
   gui::SetterToggle dimButton_;
 

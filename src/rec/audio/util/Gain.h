@@ -7,7 +7,7 @@
 namespace rec {
 namespace audio {
 
-float getGain(const audio::Gain&);
+double getGain(const audio::Gain&);
 
 }  // namespace audio
 }  // namespace rec

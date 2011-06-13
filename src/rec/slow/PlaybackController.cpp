@@ -19,7 +19,7 @@ PlaybackController::PlaybackController(Components* comp, const Address& address)
   songDataResizer_.add(5);
 
   addToLayout(&panel_);
-  panel_.addToLayout(&comp->stretchyController_);
+  panel_.addToLayout(&comp->playerController_);
   stretchyResizer_.add(5);
 
   panel_.addToLayout(&comp->transportController_);

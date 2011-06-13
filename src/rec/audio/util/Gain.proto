@@ -1,9 +1,9 @@
 package rec.audio;
 
 message Gain {
-  optional float level = 1 [default = 1.0];  // Amplitude ratio.
-  optional float gain = 5 [default = 0.0];  // In decibels.
+  optional double level = 1 [default = 1.0];  // Amplitude ratio.
+  optional double gain = 5 [default = 0.0];  // In decibels.
   optional bool mute = 2;
   optional bool dim = 3;
-  optional float dim_level = 4 [default = 0.3];  // Amplitude ratio.
+  optional double dim_level = 4 [default = 0.2];  // Amplitude ratio.
 };

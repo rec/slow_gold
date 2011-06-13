@@ -5,14 +5,14 @@
 namespace rec {
 namespace audio {
 
-float getGain(const audio::Gain& gain) {
+double getGain(const audio::Gain& gain) {
   if (gain.mute())
-    return 0.0f;
+    return 0.0;
 
   if (gain.dim())
     return gain.dim_level();
 
-  return powf(10.0f, gain.gain() / 20.0f) * gain.level();
+  return powf(10.0, gain.gain() / 20.0) * gain.level();
 }
 
 }  // namespace audio

@@ -31,7 +31,7 @@ struct Components {
 
   gui::audio::Loops loops_;
   gui::SongData songData_;
-  gui::audio::PlayerController stretchyController_;
+  gui::audio::PlayerController playerController_;
   gui::audio::TransportController transportController_;
 
   widget::tree::Root directoryTree_;

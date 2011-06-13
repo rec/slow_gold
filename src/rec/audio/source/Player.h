@@ -5,7 +5,9 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/source/Timer.h"
 #include "rec/audio/source/Level.h"
+#include "rec/audio/util/Gain.h"
 #include "rec/audio/Device.h"
+#include "rec/util/listener/DataListener.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/block/Block.h"
 
@@ -28,6 +30,7 @@ class Stretchy;
 //   -> timer -> selection ( -> stretchy) -> stereo_ -> level_ -> buffered_ ->
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public Broadcaster<transport::State>,
+               public DataListener<Gain>,
                public juce::ChangeListener {
  public:
   Player(Device* d);
@@ -51,8 +54,10 @@ class Player : public Broadcaster<transport::State>,
   Buffered* buffered() { return buffered_; }
   void setStereoProto(const StereoProto&);
   void setSelection(const block::BlockSet&);
+
+  virtual void operator()(const Gain& p) { setGain(p); }
   void setGain(const Gain&);
-  void setGain(float);
+  void setGain(double);
 
   SamplePosition length() const { return timer_->getTotalLength(); }
   RealTime realLength() const { return audio::samplesToTime(length()); }

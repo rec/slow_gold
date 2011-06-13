@@ -31,6 +31,7 @@ static const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
                             fileLocker_(&lock_),
+                            gainLocker_(&lock_),
                             loopLocker_(&lock_),
                             metadataLocker_(&lock_),
                             stereoLocker_(&lock_),
@@ -141,8 +142,9 @@ void Model::operator()(const VirtualFile& f) {
 
   loopData_ = updateLocker(&loopLocker_, f);
   components()->loops_.setData(loopData_);
-  components()->stretchyController_.setData(updateLocker(&stereoLocker_, f));
-  components()->stretchyController_.setData(updateLocker(&stretchLocker_, f));
+  player()->setData(updateLocker(&gainLocker_, f));
+  components()->playerController_.setData(updateLocker(&stereoLocker_, f));
+  components()->playerController_.setData(updateLocker(&stretchLocker_, f));
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
   components()->transportController_.gainController()->setData(
       persist::setter<rec::audio::Gain>(f));
@@ -186,6 +188,7 @@ void Model::checkChanged() {
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(this);
   stereoLocker_.broadcastIfChanged(listeners());
+  ///gainLocker_.broadcastIfChanged(listeners());
   // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }

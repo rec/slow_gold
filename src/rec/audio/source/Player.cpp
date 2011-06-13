@@ -97,7 +97,7 @@ void Player::setGain(const Gain& gain) {
   setGain(getGain(gain));
 }
 
-void Player::setGain(float gain) {
+void Player::setGain(double gain) {
   player_.setGain(gain);
 }
 

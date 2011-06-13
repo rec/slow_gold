@@ -4,6 +4,7 @@
 #include "rec/audio/stretch/Stretch.pb.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/source/Stereo.h"
+#include "rec/audio/util/Gain.h"
 #include "rec/audio/util/ThumbnailBuffer.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/util/LoopPoint.pb.h"
@@ -27,6 +28,7 @@ class Model : public Listener<const VirtualFile&>,
               public Listener<SamplePosition>,
               public HasInstance {
  public:
+  typedef audio::Gain Gain;
   typedef audio::source::StereoProto StereoProto;
   typedef audio::stretch::Stretch Stretch;
   typedef music::Metadata Metadata;
@@ -64,6 +66,7 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<VirtualFile> fileLocker_;
   VirtualFile file_;
 
+  thread::Locker<Gain> gainLocker_;
   thread::Locker<LoopPointList> loopLocker_;
   thread::Locker<Metadata> metadataLocker_;
   thread::Locker<StereoProto> stereoLocker_;
