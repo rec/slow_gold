@@ -1,5 +1,5 @@
-#ifndef __REC_GUI_AUDIO_STRETCHYCONTROLLER__
-#define __REC_GUI_AUDIO_STRETCHYCONTROLLER__
+#ifndef __REC_GUI_AUDIO_PLAYERCONTROLLER__
+#define __REC_GUI_AUDIO_PLAYERCONTROLLER__
 
 #include "rec/gui/DataSlider.h"
 #include "rec/gui/Layout.h"
@@ -11,11 +11,11 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class StretchyController : public Layout, public juce::ComboBox::Listener,
+class PlayerController : public Layout, public juce::ComboBox::Listener,
                            public DataListener<rec::audio::source::StereoProto>,
                            public DataListener<rec::audio::stretch::Stretch> {
  public:
-  StretchyController();
+  PlayerController();
   virtual bool isOpaque() const { return true; }
 
   virtual void setData(persist::Data<rec::audio::stretch::Stretch>*);
@@ -36,11 +36,11 @@ class StretchyController : public Layout, public juce::ComboBox::Listener,
   gui::SetterToggle clickToZoomButton_;
   juce::ComboBox stereoComboBox_;
 
-  DISALLOW_COPY_AND_ASSIGN(StretchyController);
+  DISALLOW_COPY_AND_ASSIGN(PlayerController);
 };
 
-}  // namespace rec
-}  // namespace gui
 }  // namespace audio
+}  // namespace gui
+}  // namespace rec
 
-#endif  // __REC_GUI_AUDIO_STRETCHYCONTROLLER__
+#endif  // __REC_GUI_AUDIO_PLAYERCONTROLLER__

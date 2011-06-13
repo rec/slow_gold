@@ -31,9 +31,8 @@ void PersistentWindow::resized() {
   DocumentWindow::resized();
 }
 
-bool PersistentWindow::isFullScreen() const {
-  return DocumentWindow::isFullScreen() ||
-    (getScreenBounds() == getPeer()->getFrameSize().subtractedFrom(
+bool PersistentWindow::isFullScreenSize() const {
+  return (getScreenBounds() == getPeer()->getFrameSize().subtractedFrom(
         getParentMonitorArea()));
 }
 
@@ -41,16 +40,19 @@ void PersistentWindow::writeData() {
   if (okToSaveLayout_) {
     AppLayout layout(persist::get<AppLayout>());
     juce::Rectangle<int> bounds = getBounds();
-    bool full = isFullScreen();
+
 #if 0
+    bool full = isFullScreenSize();
+    if (!full && isFullScreen())
+      setFullScreen(false);
     DLOG(INFO) << str(getScreenBounds().toString())
                << ", "
                << str(getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea()).toString())
                << ", "
                << str(getParentMonitorArea().toString());
-#endif
     layout.set_full_screen(full);
     if (!full)
+#endif
       *layout.mutable_bounds() = gui::copy(getBounds());
     persist::set(layout);
   }

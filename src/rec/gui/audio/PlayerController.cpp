@@ -1,4 +1,4 @@
-#include "rec/gui/audio/StretchyController.h"
+#include "rec/gui/audio/PlayerController.h"
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
@@ -15,8 +15,8 @@ enum Sides {
 
 }  // namespace
 
-StretchyController::StretchyController()
-    : Layout("StretchyController", VERTICAL),
+PlayerController::PlayerController()
+    : Layout("PlayerController", VERTICAL),
       playbackSpeed_("Playback speed", Address("time_percent")),
       pitchScale_("Transpose", Address("semitone_shift")),
       fineScale_("Fine tuning", Address("detune_cents")),
@@ -53,11 +53,11 @@ StretchyController::StretchyController()
   addToLayout(&stereoComboBox_, 14);
 }
 
-void StretchyController::operator()(const Stretch& s) {
-  thread::callAsync(this, &StretchyController::enableSliders, !s.time_disabled());
+void PlayerController::operator()(const Stretch& s) {
+  thread::callAsync(this, &PlayerController::enableSliders, !s.time_disabled());
 }
 
-void StretchyController::operator()(const StereoProto& stereo) {
+void PlayerController::operator()(const StereoProto& stereo) {
   Sides sides = STEREO;
   if (stereo.type())
     sides = static_cast<Sides>(2 + stereo.side());
@@ -66,7 +66,7 @@ void StretchyController::operator()(const StereoProto& stereo) {
                     static_cast<int>(sides), true);
 }
 
-void StretchyController::setData(persist::Data<Stretch>* data) {
+void PlayerController::setData(persist::Data<Stretch>* data) {
   playbackSpeed_.setData(data);
   pitchScale_.setData(data);
   fineScale_.setData(data);
@@ -75,11 +75,11 @@ void StretchyController::setData(persist::Data<Stretch>* data) {
   DataListener<Stretch>::setData(data);
 }
 
-void StretchyController::setData(persist::Data<StereoProto>* data) {
+void PlayerController::setData(persist::Data<StereoProto>* data) {
   DataListener<StereoProto>::setData(data);
 }
 
-void StretchyController::comboBoxChanged(juce::ComboBox*) {
+void PlayerController::comboBoxChanged(juce::ComboBox*) {
   if (DataListener<StereoProto>::data_) {
     Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
     StereoProto stereo;
@@ -91,18 +91,18 @@ void StretchyController::comboBoxChanged(juce::ComboBox*) {
   }
 }
 
-void StretchyController::setZoom(data::UntypedData* data) {
+void PlayerController::setZoom(data::UntypedData* data) {
   zoomToSelectionButton_.setData(data);
   clickToZoomButton_.setData(data);
 }
 
-void StretchyController::enableSliders(bool enabled) {
+void PlayerController::enableSliders(bool enabled) {
   playbackSpeed_.setEnabled(enabled);
   // pitchScale_.setEnabled(enabled);
   // fineScale_.setEnabled(enabled);
 }
 
-}  // namespace rec
-}  // namespace gui
 }  // namespace audio
+}  // namespace gui
+}  // namespace rec
 

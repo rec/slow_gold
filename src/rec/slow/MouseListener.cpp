@@ -137,7 +137,7 @@ void MouseListener::mouseDoubleClick(const MouseEvent& e) {
 
 void PlaybackController::operator()(const Stretch& desc) {
   thread::callAsync(&stretchyController_,
-                    &gui::StretchyController::enableSliders,
+                    &gui::PlayerController::enableSliders,
                     !desc.stretch().disabled());
   timeController_(desc);
 }

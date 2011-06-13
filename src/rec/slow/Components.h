@@ -4,7 +4,7 @@
 #include "rec/gui/DropTarget.h"
 #include "rec/gui/audio/Loops.h"
 #include "rec/gui/SongData.h"
-#include "rec/gui/audio/StretchyController.h"
+#include "rec/gui/audio/PlayerController.h"
 #include "rec/gui/audio/TimeController.h"
 #include "rec/gui/audio/TransportController.h"
 #include "rec/slow/AppLayout.pb.h"
@@ -31,7 +31,7 @@ struct Components {
 
   gui::audio::Loops loops_;
   gui::SongData songData_;
-  gui::audio::StretchyController stretchyController_;
+  gui::audio::PlayerController stretchyController_;
   gui::audio::TransportController transportController_;
 
   widget::tree::Root directoryTree_;
