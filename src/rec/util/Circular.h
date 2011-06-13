@@ -21,15 +21,19 @@ struct Circular : public Range<Type> {
   bool isFull() const { return !toFill(); }
 
   Type wrap(Type index) const {
+#ifdef TODO
     return  (index > capacity_) ? index - capacity_ : SamplePosition();
+#else
+    return  (index > capacity_) ? index - capacity_ : Type();
+#endif
   }
 
   Type wrap() const { return wrap(this->end_); }
 
   Range<Type> fillable() const {
     Type w = wrap();
-    return Range<Type>(w ? SamplePosition(this->end_ - capacity_) : this->end_,
-                       w ? this->begin_ : SamplePosition(capacity_));
+    return Range<Type>(w ? Type(this->end_ - capacity_) : this->end_,
+                       w ? this->begin_ : Type(capacity_));
   }
 
   Range<Type> consumable() const {
@@ -40,10 +44,8 @@ struct Circular : public Range<Type> {
     DCHECK_GE(count, 0);
 
     Type available = isFill ? (capacity_ - this->size()) : this->size();
-    if (count > available) {
-      LOG(ERROR) << "count=" << count << " > available=" << available;
+    if (count > available)
       count = available;
-    }
 
     if (isFill) {
       this->end_ += count;

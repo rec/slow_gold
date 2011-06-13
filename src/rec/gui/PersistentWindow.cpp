@@ -31,13 +31,21 @@ void PersistentWindow::resized() {
   DocumentWindow::resized();
 }
 
+bool PersistentWindow::isFullScreen() const {
+  return DocumentWindow::isFullScreen() ||
+    (getScreenBounds() == getPeer()->getFrameSize().subtractedFrom(
+        getParentMonitorArea()));
+}
+
 void PersistentWindow::writeData() {
   if (okToSaveLayout_) {
     AppLayout layout(persist::get<AppLayout>());
     juce::Rectangle<int> bounds = getBounds();
-    bool full = isFullScreen() || (getScreenBounds() == getParentMonitorArea());
+    bool full = isFullScreen();
 #if 0
     DLOG(INFO) << str(getScreenBounds().toString())
+               << ", "
+               << str(getPeer()->getFrameSize().subtractedFrom(getParentMonitorArea()).toString())
                << ", "
                << str(getParentMonitorArea().toString());
 #endif

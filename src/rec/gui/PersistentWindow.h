@@ -29,6 +29,9 @@ class PersistentWindow : public DocumentWindow {
   void setLimitedBounds(const Rect& rect);
   ~PersistentWindow();
 
+  // SHADOWS non-virtual parent method...
+  bool isFullScreen() const;
+
   void closeButtonPressed();
 
   virtual void resized();
