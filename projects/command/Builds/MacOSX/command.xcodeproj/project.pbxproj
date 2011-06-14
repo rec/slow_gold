@@ -105,7 +105,6 @@
 		EC4EB9FFACB5FF6303173EC4 = { isa = PBXBuildFile; fileRef = 3B66FA43BEC82099194C54D8; };
 		D3A5A8AFD0D1BADA746FAC82 = { isa = PBXBuildFile; fileRef = 942E7B2E41D48EB8180E2C24; };
 		096D9DB8C08A19837DC2F2B8 = { isa = PBXBuildFile; fileRef = 7555AAA03CF0439E105899A8; };
-		CE1DB2B34125C3F5F3759E02 = { isa = PBXBuildFile; fileRef = 4E18411EF596544BD938AE5A; };
 		16D05B0CB822FCFC556A8E45 = { isa = PBXBuildFile; fileRef = 559D8FABCC9B428B7B4B8C3E; };
 		698CE9CFCBA6399D2E05E4CB = { isa = PBXBuildFile; fileRef = A91634BADED4A882FDE0B485; };
 		DDF7E71E066071FDDC5F8DD7 = { isa = PBXBuildFile; fileRef = 0C54FB12147BE176B4307B9A; };
@@ -488,8 +487,6 @@
 		65748ED9F6A47C633AA45FA7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = token.h; path = ../../../../src/rec/data/yaml/src/token.h; sourceTree = SOURCE_ROOT; };
 		7555AAA03CF0439E105899A8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = WriteYaml.cpp; path = ../../../../src/rec/data/yaml/WriteYaml.cpp; sourceTree = SOURCE_ROOT; };
 		8AC3E5A7FB15D9774012C40A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Yaml.h; path = ../../../../src/rec/data/yaml/Yaml.h; sourceTree = SOURCE_ROOT; };
-		4E18411EF596544BD938AE5A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GainController.cpp; path = ../../../../src/rec/gui/audio/GainController.cpp; sourceTree = SOURCE_ROOT; };
-		39DEFBC002FC32A531046913 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GainController.h; path = ../../../../src/rec/gui/audio/GainController.h; sourceTree = SOURCE_ROOT; };
 		559D8FABCC9B428B7B4B8C3E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LevelMeter.cpp; path = ../../../../src/rec/gui/audio/LevelMeter.cpp; sourceTree = SOURCE_ROOT; };
 		01872B2F8BCE38C37572ADC2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LevelMeter.h; path = ../../../../src/rec/gui/audio/LevelMeter.h; sourceTree = SOURCE_ROOT; };
 		A91634BADED4A882FDE0B485 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Loops.cpp; path = ../../../../src/rec/gui/audio/Loops.cpp; sourceTree = SOURCE_ROOT; };
@@ -1055,8 +1052,6 @@
 				1914D64C56BD4383BC8A6C44,
 				9D13522C94A0F37D4ABBF46C ); name = data; sourceTree = "<group>"; };
 		4332FB3F2F642B664F47A1BA = { isa = PBXGroup; children = (
-				4E18411EF596544BD938AE5A,
-				39DEFBC002FC32A531046913,
 				559D8FABCC9B428B7B4B8C3E,
 				01872B2F8BCE38C37572ADC2,
 				A91634BADED4A882FDE0B485,
@@ -1431,7 +1426,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		B04A2BCA607EE88BDDC58DBA = { isa = PBXGroup; children = (
+		606FF0AEE09EE5F00C263C36 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1603,7 +1598,6 @@
 				EC4EB9FFACB5FF6303173EC4,
 				D3A5A8AFD0D1BADA746FAC82,
 				096D9DB8C08A19837DC2F2B8,
-				CE1DB2B34125C3F5F3759E02,
 				16D05B0CB822FCFC556A8E45,
 				698CE9CFCBA6399D2E05E4CB,
 				DDF7E71E066071FDDC5F8DD7,
@@ -1738,7 +1732,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = B04A2BCA607EE88BDDC58DBA; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 606FF0AEE09EE5F00C263C36; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }
