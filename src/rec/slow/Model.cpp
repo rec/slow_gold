@@ -146,7 +146,7 @@ void Model::operator()(const VirtualFile& f) {
   components()->playerController_.setData(updateLocker(&stereoLocker_, f));
   components()->playerController_.setData(updateLocker(&stretchLocker_, f));
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
-  components()->transportController_.gainController()->setData(
+  components()->playerController_.gainController()->setData(
       persist::setter<rec::audio::Gain>(f));
   updateLocker(&zoomLocker_, f);
 
@@ -178,7 +178,7 @@ void Model::operator()(const VirtualFile& f) {
   thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fetchThread()->notify();
   player()->setNextReadPosition(0);
-  (*components()->transportController_.levelListener())(LevelVector());
+  (*components()->playerController_.levelListener())(LevelVector());
 }
 
 

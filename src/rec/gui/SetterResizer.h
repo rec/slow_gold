@@ -4,7 +4,7 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/data/Address.h"
 #include "rec/util/thread/CallAsync.h"
-#include "rec/gui/Layout.h"
+#include "rec/gui/layout/Layout.h"
 
 namespace rec {
 namespace gui {

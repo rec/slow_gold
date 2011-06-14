@@ -3,7 +3,7 @@
 
 #include "rec/data/Value.h"
 #include "rec/gui/DetentSlider.h"
-#include "rec/gui/Layout.h"
+#include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/util/listener/ProtoListener.h"
 

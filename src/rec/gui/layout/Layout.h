@@ -1,5 +1,5 @@
-#ifndef __REC_GUI_LAYOUT__
-#define __REC_GUI_LAYOUT__
+#ifndef __REC_GUI_LAYOUT_LAYOUT__
+#define __REC_GUI_LAYOUT_LAYOUT__
 
 #include <vector>
 
@@ -58,4 +58,4 @@ class Layout : public Component {
 }  // namespace gui
 }  // namespace rec
 
-#endif  // __REC_GUI_LAYOUT__
+#endif  // __REC_GUI_LAYOUT_LAYOUT__

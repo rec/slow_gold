@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="7foQdmLb2" name="command">
+  <MAINGROUP id="RQGmUhiWe" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -699,8 +699,10 @@
           <FILE compile="0" file="../../src/rec/gui/icon/ThinFolder.svg.h" id="hDGSqB9Gk"
                 name="ThinFolder.svg.h" resource="0"/>
         </GROUP>
-        <FILE compile="0" file="../../src/rec/gui/Layout.h" id="qdG78ZSvr"
-              name="Layout.h" resource="0"/>
+        <GROUP id="3T2NlTISq" name="layout">
+          <FILE compile="0" file="../../src/rec/gui/layout/Layout.h" id="P18V7TjRQ"
+                name="Layout.h" resource="0"/>
+        </GROUP>
         <FILE compile="1" file="../../src/rec/gui/PersistentWindow.cpp" id="PR8wFUH9a"
               name="PersistentWindow.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/PersistentWindow.h" id="foLwagcFZ"
@@ -709,8 +711,6 @@
               name="RecentFiles.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/RecentFiles.h" id="GVwhlEC2q"
               name="RecentFiles.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/gui/SetterLayout.h" id="NAbnaslpv"
-              name="SetterLayout.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/gui/SetterResizer.cpp" id="mxJp5OvfN"
               name="SetterResizer.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/gui/SetterResizer.h" id="CdQM9fV1F"
@@ -1199,7 +1199,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Lkzkn7LlH" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="KcU1QdqMT" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"

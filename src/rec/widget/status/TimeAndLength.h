@@ -2,7 +2,7 @@
 #define __REC_WIDGET_STATUS_TIMEANDLENGTH__
 
 #include "rec/widget/status/TextComponent.h"
-#include "rec/gui/Layout.h"
+#include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/util/Range.h"
 
@@ -11,7 +11,6 @@ namespace widget {
 namespace status {
 
 class TimeAndLength : public gui::Layout,
-//                      public Listener<const ClockUpdate&>,
                       public Listener<const TimeSelection&> {
  public:
   TimeAndLength(const String& label,
@@ -19,7 +18,6 @@ class TimeAndLength : public gui::Layout,
 
   void setTimeScale(double s);
 
-  // virtual void operator()(const ClockUpdate&);
   virtual void operator()(const TimeSelection&);
 
   void setOffset(double o) { offset_ = o; }

@@ -1,10 +1,12 @@
 #ifndef __REC_GUI_AUDIO_PLAYERCONTROLLER__
 #define __REC_GUI_AUDIO_PLAYERCONTROLLER__
 
-#include "rec/gui/DataSlider.h"
-#include "rec/gui/Layout.h"
 #include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/gui/DataSlider.h"
 #include "rec/gui/SetterToggle.h"
+#include "rec/gui/audio/GainController.h"
+#include "rec/gui/audio/LevelMeter.h"
+#include "rec/gui/layout/Layout.h"
 #include "rec/util/listener/DataListener.h"
 
 namespace rec {
@@ -27,14 +29,23 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   void enableSliders(bool enabled);
   virtual void comboBoxChanged(juce::ComboBox*);
 
+  listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
+  LevelMeter* levelMeter() { return &levelMeter_; }
+  GainController* gainController() { return &gainController_; }
+
  private:
   DataSlider<double> playbackSpeed_;
   DataSlider<double> pitchScale_;
   DataSlider<double> fineScale_;
+
   gui::SetterToggle disableButton_;
   gui::SetterToggle zoomToSelectionButton_;
   gui::SetterToggle clickToZoomButton_;
+
   juce::ComboBox stereoComboBox_;
+
+  GainController gainController_;
+  LevelMeter levelMeter_;
 
   DISALLOW_COPY_AND_ASSIGN(PlayerController);
 };

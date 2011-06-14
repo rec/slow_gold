@@ -38,6 +38,10 @@ PlayerController::PlayerController()
   addToLayout(&playbackSpeed_);
   addToLayout(&pitchScale_);
   addToLayout(&fineScale_);
+
+  addToLayout(&gainController_);
+  addToLayout(&levelMeter_);
+
   addToLayout(&disableButton_, 14);
   addToLayout(&zoomToSelectionButton_, 14);
   addToLayout(&clickToZoomButton_, 14);

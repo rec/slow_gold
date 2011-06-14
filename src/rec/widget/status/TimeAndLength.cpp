@@ -18,15 +18,7 @@ TimeAndLength::TimeAndLength(const String& label, const time::Text& desc)
   addToLayout(&end_);
   addToLayout(&time_);
 }
-#if 0
-void TimeAndLength::operator()(const ClockUpdate& c) {
-  if (c.time_ >= 0)
-    time_.setTime(c.time_ * timeScale_);
 
-  if (c.length_ >= 0)
-    length_.setTime(c.length_ * timeScale_);
-}
-#endif
 void TimeAndLength::setTimeScale(double s) {
   s = juce::jmax(s, SMALLEST_TIME);
   double scale = s / timeScale_;

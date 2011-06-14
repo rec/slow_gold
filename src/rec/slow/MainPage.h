@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 
-#include "rec/gui/Layout.h"
+#include "rec/gui/layout/Layout.h"
 
 namespace rec {
 

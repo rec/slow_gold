@@ -507,12 +507,13 @@
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.h"/>
           </Filter>
-          <File RelativePath="..\..\..\..\src\rec\gui\Layout.h"/>
+          <Filter Name="layout">
+            <File RelativePath="..\..\..\..\src\rec\gui\layout\Layout.h"/>
+          </Filter>
           <File RelativePath="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\RecentFiles.h"/>
-          <File RelativePath="..\..\..\..\src\rec\gui\SetterLayout.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterResizer.h"/>
           <File RelativePath="..\..\..\..\src\rec\gui\SetterText.h"/>

@@ -1,7 +1,7 @@
 #ifndef __REC_SLOW_APP_PLAYBACKCONTROLLER__
 #define __REC_SLOW_APP_PLAYBACKCONTROLLER__
 
-#include "rec/gui/Layout.h"
+#include "rec/gui/layout/Layout.h"
 #include "rec/gui/SetterResizer.h"
 #include "rec/gui/SongData.h"
 #include "rec/gui/audio/TimeController.h"

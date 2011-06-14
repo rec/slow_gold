@@ -2,7 +2,7 @@
 #define __REC_GUI_SETTERTEXT__
 
 #include "rec/data/Value.h"
-#include "rec/gui/Layout.h"
+#include "rec/gui/layout/Layout.h"
 #include "rec/gui/SimpleLabel.h"
 #include "rec/util/listener/ProtoListener.h"
 #include "rec/util/thread/CallAsync.h"

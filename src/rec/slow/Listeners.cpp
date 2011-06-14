@@ -43,7 +43,7 @@ Listeners::Listeners(Instance* i)
   player()->timeBroadcaster()->addListener(&components()->timeController_);
   player()->timeBroadcaster()->addListener(waveform->timeCursor());
 
-  player()->levelBroadcaster()->addListener(components()->transportController_.
+  player()->levelBroadcaster()->addListener(components()->playerController_.
                                             levelListener());
 }
 
@@ -71,7 +71,7 @@ void Listeners::operator()(None) {
 void Listeners::operator()(const audio::Gain& g) {
   float gain = audio::getGain(g);
   player()->setGain(gain);
-  components()->transportController_.levelMeter()->setGain(gain);
+  components()->playerController_.levelMeter()->setGain(gain);
 }
 
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
