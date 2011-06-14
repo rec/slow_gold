@@ -49,7 +49,7 @@ class Player : public Broadcaster<transport::State>,
   transport::State state() const;
   Device* device() { return device_; }
   Broadcaster<SamplePosition>* timeBroadcaster() { return timer_; }
-  Broadcaster<const LevelVector&>* levelBroadcaster() { return level_; }
+  Level* level() { return level_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Buffered* buffered() { return buffered_; }
   void setStereoProto(const StereoProto&);

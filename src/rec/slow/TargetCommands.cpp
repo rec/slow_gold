@@ -24,13 +24,13 @@ void clearNavigator() { persist::set(VirtualFileList()); }
 
 void dimVolumeToggle(Instance* i) {
   audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
-  gain.set_dim(gain.dim());
+  gain.set_dim(!gain.dim());
   persist::set(gain, i->model_->file());
 }
 
 void muteVolumeToggle(Instance* i) {
   audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
-  gain.set_mute(gain.mute());
+  gain.set_mute(!gain.mute());
   persist::set(gain, i->model_->file());
 }
 

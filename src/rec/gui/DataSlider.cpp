@@ -20,7 +20,7 @@ DataSlider<Type>::DataSlider(const String& name, const Address& address,
   slider_.addListener(this);
 
   caption_.setText(cap, false);
-  addToLayout(&caption_, 100);
+  addToLayout(&caption_, 45);
   addToLayout(&slider_, 0, -1.0, -1.0);
 }
 

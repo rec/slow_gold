@@ -9,16 +9,17 @@ namespace rec {
 namespace audio {
 namespace source {
 
-class Level : public Wrappy, public Broadcaster<const LevelVector&> {
+class Level : public Wrappy,
+              public Broadcaster<const LevelVector&> {
  public:
   explicit Level(Source* s = NULL) : Wrappy(s) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);
 
-    int channels = i.buffer->getNumChannels();
-    LevelVector result(channels, 0.0);
-    for (int c = 0; c < channels; ++c)
+    channels_ = i.buffer->getNumChannels();
+    LevelVector result(channels_, 0.0);
+    for (int c = 0; c < channels_; ++c)
       result[c] = getLevel(i, c);
 
     broadcast(result);
@@ -28,7 +29,13 @@ class Level : public Wrappy, public Broadcaster<const LevelVector&> {
     return info.buffer->getRMSLevel(channel, info.startSample, info.numSamples);
   }
 
+  void clear() {
+    broadcast(LevelVector(channels_, 0.0));
+  }
+
  private:
+  int channels_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Level);
 };
 

@@ -187,7 +187,7 @@ void Model::checkChanged() {
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(this);
   stereoLocker_.broadcastIfChanged(listeners());
-  ///gainLocker_.broadcastIfChanged(listeners());
+  gainLocker_.broadcastIfChanged(listeners());
   // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }

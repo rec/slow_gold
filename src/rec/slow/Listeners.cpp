@@ -43,8 +43,7 @@ Listeners::Listeners(Instance* i)
   player()->timeBroadcaster()->addListener(&components()->timeController_);
   player()->timeBroadcaster()->addListener(waveform->timeCursor());
 
-  player()->levelBroadcaster()->addListener(components()->playerController_.
-                                            levelListener());
+  player()->level()->addListener(components()->playerController_.levelListener());
 }
 
 void Listeners::operator()(SamplePosition time) {
@@ -109,6 +108,7 @@ void Listeners::operator()(audio::transport::State state) {
   thread::callAsync(&components()->transportController_,
                     &TransportController::setTransportState, state);
   player()->setState(state);
+  player()->level()->clear();
 }
 
 #ifdef TODO
