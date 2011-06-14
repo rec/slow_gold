@@ -17,17 +17,15 @@ enum Sides {
 
 PlayerController::PlayerController()
     : Layout("PlayerController", VERTICAL),
-      playbackSpeed_("Playback speed", Address("time_percent")),
-      pitchScale_("Transpose", Address("semitone_shift")),
-      fineScale_("Fine tuning", Address("detune_cents")),
+      playbackSpeed_("Speed", Address("time_percent")),
+      pitchScale_("Pitch", Address("semitone_shift")),
+      fineScale_("Tune", Address("detune_cents")),
       level_("Gain", Address("gain")),
-      disableButton_("Disable time shifting", Address("time_disabled")),
+      disableButton_("Disable speed", Address("time_disabled")),
       zoomToSelectionButton_("Zoom to selection", Address("zoom_to_selection")),
       clickToZoomButton_("Click to zoom", Address("click_to_zoom")),
       muteButton_("Mute", Address("mute")),
       dimButton_("Dim", Address("dim")) {
-  addToLayout(&level_);
-
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
   pitchScale_.slider()->setRange(-7.0, 7.0, 0.5);
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
@@ -46,14 +44,15 @@ PlayerController::PlayerController()
   addToLayout(&playbackSpeed_);
   addToLayout(&pitchScale_);
   addToLayout(&fineScale_);
-  addToLayout(&levelMeter_);
   addToLayout(&level_);
+  addToLayout(&levelMeter_);
 
   addToLayout(&muteButton_, 14);
   addToLayout(&dimButton_, 14);
   addToLayout(&disableButton_, 14);
   addToLayout(&zoomToSelectionButton_, 14);
   addToLayout(&clickToZoomButton_, 14);
+
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
   stereoComboBox_.setTextWhenNothingSelected("Stereo");
