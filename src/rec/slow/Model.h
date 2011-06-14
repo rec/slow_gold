@@ -41,6 +41,7 @@ class Model : public Listener<const VirtualFile&>,
   virtual void operator()(SamplePosition t) { ScopedLock l(lock_); time_ = t; }
   virtual void operator()(const LoopPointList&);
 
+  thread::Locker<Gain>* gainLocker() { return &gainLocker_; }
   thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
   thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
   thread::Locker<LoopPointList>* loopLocker() { return &loopLocker_; }

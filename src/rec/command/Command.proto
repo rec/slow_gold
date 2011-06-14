@@ -23,6 +23,7 @@ message Command {
     CLOSE_FILE = 6;
     CONTRACT_FROM_NEXT_LOOP_POINT = 75;
     CONTRACT_FROM_PREVIOUS_LOOP_POINT = 76;
+    DIM_VOLUME_TOGGLE = 77;
     EJECT_CDS = 7;
     EXTEND_TO_NEXT_LOOP_POINT = 73;
     EXTEND_TO_PREVIOUS_LOOP_POINT = 74;
@@ -32,6 +33,7 @@ message Command {
     JUMP_TO_START = 10;
     KEYBOARD_MAPPINGS = 18;
     MIDI_MAPPINGS = 17;
+    MUTE_VOLUME_TOGGLE = 78;
     NUDGE_BEGIN_LEFT = 11;
     NUDGE_BEGIN_RIGHT = 12;
     NUDGE_END_LEFT = 13;
@@ -40,6 +42,7 @@ message Command {
     NUDGE_VOLUME_UP = 72;
     OPEN = 15;
     RECENT_FILES = 16;
+    RESET_GAIN_TO_UNITY = 79;
 
     SELECT_0 = 20;
     SELECT_1 = 21;
@@ -98,7 +101,7 @@ message Command {
     ZOOM_IN = 70;
     ZOOM_OUT = 71;
 
-    LAST_COMMAND = 76;
+    LAST_COMMAND = 79;
   };
 
   optional Type command = 1;

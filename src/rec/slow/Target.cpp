@@ -75,7 +75,7 @@ void Target::addCommands() {
   add(Command::AUDIO_PREFERENCES, methodCallback(&device()->setupPage_,
                                                  &gui::audio::SetupPage::show,
                                                  &components()->mainPage_),
-      "Audio Preferences...", "File",
+      "Audio Preferences...", "Audio",
       "Open the Audio Preferences pane.");
 
   add(Command::CLEAR_NAVIGATOR, functionCallback(&clearNavigator),
@@ -101,6 +101,11 @@ void Target::addCommands() {
       functionCallback(&retractBegin, instance_),
       "Shrink From Start", "Selection",
       "Disable the first loop segment");
+
+  add(Command::DIM_VOLUME_TOGGLE,
+      functionCallback(&dimVolumeToggle, instance_),
+      "Toggle audio dim", "Audio",
+      "Toggle audio dim on and off.");
 
   add(Command::EJECT_CDS, functionCallback(&cd::ejectAll),
       "Eject All", "File",
@@ -146,6 +151,11 @@ void Target::addCommands() {
       "Edit Midi Mappings...", "File",
       "Edit midi mappings for commands.");
 
+  add(Command::MUTE_VOLUME_TOGGLE,
+      functionCallback(&muteVolumeToggle, instance_),
+      "Toggle audio mute", "Audio",
+      "Toggle audio mute on and off.");
+
   add(Command::NUDGE_BEGIN_LEFT,
       functionCallback(&nudgeBeginLeft, instance_),
       "NAME", "(None)",
@@ -168,18 +178,23 @@ void Target::addCommands() {
 
   add(Command::NUDGE_VOLUME_DOWN,
       functionCallback(&nudgeVolumeDown, instance_),
-      "NAME", "(None)",
-      "Documentation");
+      "Nudge gain down", "Audio",
+      "Nudge gain down by 2dB");
 
   add(Command::NUDGE_VOLUME_UP,
       functionCallback(&nudgeVolumeUp, instance_),
-      "NAME", "(None)",
-      "Documentation");
+      "Nudge gain up", "Audio",
+      "Nudge gain up by 2dB");
 
   add(Command::OPEN, functionCallback(&gui::dialog::openOneFile,
                                       listeners()),
       "Open...", "File",
       "Open a dialog to select a new audio file for looping.");
+
+  add(Command::RESET_GAIN_TO_UNITY,
+      functionCallback(resetGainToUnity, instance_),
+      "Reset level", "Audio",
+      "Reset audio level to 0 dB");
 
   add(Command::RECENT_FILES,
       functionCallback(recentFiles, instance_),

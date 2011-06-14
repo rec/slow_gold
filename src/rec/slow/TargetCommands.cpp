@@ -1,5 +1,6 @@
 #include "rec/slow/TargetCommands.h"
 #include "rec/audio/Audio.h"
+#include "rec/audio/util/Gain.h"
 #include "rec/command/KeyCommandMapEditor.h"
 #include "rec/command/MidiCommandMapEditor.h"
 #include "rec/data/persist/Persist.h"
@@ -19,6 +20,42 @@ namespace rec {
 namespace slow {
 
 void clearNavigator() { persist::set(VirtualFileList()); }
+
+
+void dimVolumeToggle(Instance* i) {
+  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  gain.set_dim(gain.dim());
+  persist::set(gain, i->model_->file());
+}
+
+void muteVolumeToggle(Instance* i) {
+  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  gain.set_mute(gain.mute());
+  persist::set(gain, i->model_->file());
+}
+
+void nudgeVolumeDown(Instance* i) {
+  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  if (!(gain.dim() || gain.mute())) {
+    gain.set_level(gain.level() - 2);
+    persist::set(gain, i->model_->file());
+  }
+}
+
+void nudgeVolumeUp(Instance* i) {
+  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  if (!(gain.dim() || gain.mute())) {
+    gain.set_level(gain.level() + 2);
+    persist::set(gain, i->model_->file());
+  }
+}
+
+void resetGainToUnity(Instance* i) {
+  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  gain.set_level(0);
+  persist::set(gain, i->model_->file());
+}
+
 
 void jumpToLoopPoint(Instance* i, int offset) {
   LoopPointList loops(i->model_->loopPointList());
@@ -85,12 +122,6 @@ void nudgeEndLeft(Instance* i) {
 }
 
 void nudgeEndRight(Instance* i) {
-}
-
-void nudgeVolumeDown(Instance* i) {
-}
-
-void nudgeVolumeUp(Instance* i) {
 }
 
 void recentFiles(Instance* i) {

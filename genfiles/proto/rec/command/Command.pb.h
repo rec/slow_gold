@@ -52,6 +52,7 @@ enum Command_Type {
   Command_Type_CLOSE_FILE = 6,
   Command_Type_CONTRACT_FROM_NEXT_LOOP_POINT = 75,
   Command_Type_CONTRACT_FROM_PREVIOUS_LOOP_POINT = 76,
+  Command_Type_DIM_VOLUME_TOGGLE = 77,
   Command_Type_EJECT_CDS = 7,
   Command_Type_EXTEND_TO_NEXT_LOOP_POINT = 73,
   Command_Type_EXTEND_TO_PREVIOUS_LOOP_POINT = 74,
@@ -61,6 +62,7 @@ enum Command_Type {
   Command_Type_JUMP_TO_START = 10,
   Command_Type_KEYBOARD_MAPPINGS = 18,
   Command_Type_MIDI_MAPPINGS = 17,
+  Command_Type_MUTE_VOLUME_TOGGLE = 78,
   Command_Type_NUDGE_BEGIN_LEFT = 11,
   Command_Type_NUDGE_BEGIN_RIGHT = 12,
   Command_Type_NUDGE_END_LEFT = 13,
@@ -69,6 +71,7 @@ enum Command_Type {
   Command_Type_NUDGE_VOLUME_UP = 72,
   Command_Type_OPEN = 15,
   Command_Type_RECENT_FILES = 16,
+  Command_Type_RESET_GAIN_TO_UNITY = 79,
   Command_Type_SELECT_0 = 20,
   Command_Type_SELECT_1 = 21,
   Command_Type_SELECT_2 = 22,
@@ -120,7 +123,7 @@ enum Command_Type {
   Command_Type_UNSELECT_9 = 69,
   Command_Type_ZOOM_IN = 70,
   Command_Type_ZOOM_OUT = 71,
-  Command_Type_LAST_COMMAND = 76
+  Command_Type_LAST_COMMAND = 79
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
@@ -208,6 +211,7 @@ class Command : public ::google::protobuf::Message {
   static const Type CLOSE_FILE = Command_Type_CLOSE_FILE;
   static const Type CONTRACT_FROM_NEXT_LOOP_POINT = Command_Type_CONTRACT_FROM_NEXT_LOOP_POINT;
   static const Type CONTRACT_FROM_PREVIOUS_LOOP_POINT = Command_Type_CONTRACT_FROM_PREVIOUS_LOOP_POINT;
+  static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
   static const Type EXTEND_TO_NEXT_LOOP_POINT = Command_Type_EXTEND_TO_NEXT_LOOP_POINT;
   static const Type EXTEND_TO_PREVIOUS_LOOP_POINT = Command_Type_EXTEND_TO_PREVIOUS_LOOP_POINT;
@@ -217,6 +221,7 @@ class Command : public ::google::protobuf::Message {
   static const Type JUMP_TO_START = Command_Type_JUMP_TO_START;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
   static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
+  static const Type MUTE_VOLUME_TOGGLE = Command_Type_MUTE_VOLUME_TOGGLE;
   static const Type NUDGE_BEGIN_LEFT = Command_Type_NUDGE_BEGIN_LEFT;
   static const Type NUDGE_BEGIN_RIGHT = Command_Type_NUDGE_BEGIN_RIGHT;
   static const Type NUDGE_END_LEFT = Command_Type_NUDGE_END_LEFT;
@@ -225,6 +230,7 @@ class Command : public ::google::protobuf::Message {
   static const Type NUDGE_VOLUME_UP = Command_Type_NUDGE_VOLUME_UP;
   static const Type OPEN = Command_Type_OPEN;
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
+  static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
   static const Type SELECT_0 = Command_Type_SELECT_0;
   static const Type SELECT_1 = Command_Type_SELECT_1;
   static const Type SELECT_2 = Command_Type_SELECT_2;

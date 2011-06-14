@@ -10,7 +10,8 @@ namespace slow {
 Menus::Menus(Instance* i) : HasInstance(i) {}
 
 const StringArray Menus::getMenuBarNames() {
-  static const char* NAMES[] = {"File", "Edit", "Transport", "Loops", "Selection"};
+  static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Loops",
+                                "Selection"};
   return StringArray(NAMES, arraysize(NAMES));
 }
 
@@ -37,7 +38,6 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     m.addSeparator();
 
     // add(&m, Command::CLEAR_NAVIGATOR);
-    add(&m, Command::AUDIO_PREFERENCES);
     add(&m, Command::KEYBOARD_MAPPINGS);
     add(&m, Command::MIDI_MAPPINGS);
 
@@ -60,6 +60,16 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::CUT, canCut());
     add(&m, Command::COPY, canCopy());
     add(&m, Command::PASTE, canPaste());
+
+  } else if (menuName == "Audio") {
+    add(&m, Command::MUTE_VOLUME_TOGGLE);
+    add(&m, Command::DIM_VOLUME_TOGGLE);
+    add(&m, Command::NUDGE_VOLUME_UP);
+    add(&m, Command::NUDGE_VOLUME_DOWN);
+    add(&m, Command::RESET_GAIN_TO_UNITY);
+
+    m.addSeparator();
+    add(&m, Command::AUDIO_PREFERENCES);
 
   } else if (menuName == "Selection") {
     PopupMenu selMenu;
