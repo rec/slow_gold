@@ -9,6 +9,23 @@ namespace {
 
 CriticalSection lock;
 bool openDialogOpen = false;
+Component* modal = NULL;
+
+class ModalKiller : public juce::DeletedAtShutdown {
+ public:
+  ModalKiller() {}
+  virtual ~ModalKiller() {
+    if (modal) {
+      modal->exitModalState(0);
+      Thread::sleep(1000);
+      DLOG(INFO) << "here";
+      delete modal;
+      modal = NULL;
+    }
+  }
+};
+
+ModalKiller* modalKiller = NULL;
 
 }  // namespace
 
@@ -16,11 +33,21 @@ DialogLocker::DialogLocker() {
   ScopedLock l(lock);
   locked_ = !openDialogOpen;
   openDialogOpen = true;
+  if (!modalKiller)
+    modalKiller = new ModalKiller;
 }
 
 DialogLocker::~DialogLocker() {
-  if (locked_)
+  ScopedLock l(lock);
+  if (locked_) {
     openDialogOpen = false;
+    modal = NULL;
+  }
+}
+
+void DialogLocker::setModalComponent(Component* c) {
+  if (locked_)
+    modal = c;
 }
 
 namespace dialog {
@@ -46,6 +73,12 @@ bool openVirtualFile(Listener<const VirtualFileList&>* listener,
 bool openOneFile(Listener<const VirtualFileList&>* listener) {
   return openVirtualFile(listener, "Please choose an audio file",
                          file::audioFilePatterns());
+}
+
+
+void shutdownDialog() {
+  delete modal;
+  modal = NULL;
 }
 
 }  // namespace dialog

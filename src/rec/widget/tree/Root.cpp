@@ -79,7 +79,7 @@ void Root::readOpenness() {
   ptr<XmlElement> openness(juce::XmlDocument::parse(getOpennessFile()));
   if (openness) {
     restoreOpenness(&root_, *openness);
-    tree_.restoreOpennessState(*openness);
+    tree_.restoreOpennessState(*openness, true);
   } else {
     LOG(ERROR) << "Couldn't find openness file " << str(getOpennessFile());
   }

@@ -4,6 +4,7 @@
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/app/DownloadVersion.h"
+#include "rec/gui/Dialog.h"
 
 DECLARE_bool(logtostderr);
 
@@ -32,6 +33,7 @@ void GenericApplication::initialise(const String&) {
 void GenericApplication::shutdown() {
   LOG(INFO) << name_ << ": shutdown starting...";
 
+  gui::dialog::shutdownDialog();
   window_.reset();
   util::thread::trash::waitForAllThreadsToExit(1000);
   persist::AppInstance::stop();

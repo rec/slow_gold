@@ -11,6 +11,7 @@ class DialogLocker {
   DialogLocker();
   ~DialogLocker();
   bool isLocked() const { return locked_; }
+  void setModalComponent(Component* c);
 
  private:
   bool locked_;
@@ -33,6 +34,8 @@ bool openVirtualFile(Listener<const VirtualFileList&>* listener,
                      const File& initial = File::nonexistent);
 
 bool openOneFile(Listener<const VirtualFileList&>* listener);
+
+void shutdownDialog();
 
 }  // namespace dialog
 }  // namespace gui

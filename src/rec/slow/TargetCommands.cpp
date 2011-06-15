@@ -37,7 +37,7 @@ void muteVolumeToggle(Instance* i) {
 void nudgeVolumeDown(Instance* i) {
   audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
   if (!(gain.dim() || gain.mute())) {
-    gain.set_level(gain.level() - 2);
+    gain.set_gain(gain.gain() - 1.0);
     persist::set(gain, i->model_->file());
   }
 }
@@ -45,7 +45,7 @@ void nudgeVolumeDown(Instance* i) {
 void nudgeVolumeUp(Instance* i) {
   audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
   if (!(gain.dim() || gain.mute())) {
-    gain.set_level(gain.level() + 2);
+    gain.set_gain(gain.gain() + 1.0);
     persist::set(gain, i->model_->file());
   }
 }
@@ -88,9 +88,11 @@ void keyboardMappings(Instance* i) {
   comp.initialize(true);
   comp.setBounds(0, 0, 500, 1000);
 
+  l.setModalComponent(&comp);
   juce::DialogWindow::showModalDialog("Select keyboard mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
+  DLOG(INFO) << "Here!";
   i->target_->saveKeyboardBindings();
 }
 
@@ -106,9 +108,11 @@ void midiMappings(Instance* i) {
   comp.initialize(true);
   comp.setBounds(0, 0, 500, 1000);
 
+  l.setModalComponent(&comp);
   juce::DialogWindow::showModalDialog("Select MIDI mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
+  DLOG(INFO) << "Here 2!";
   persist::set(i->target_->midiCommandMap()->getProto());
 }
 

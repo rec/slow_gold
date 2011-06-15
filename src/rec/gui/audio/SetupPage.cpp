@@ -1,5 +1,6 @@
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/audio/Device.h"
+#include "rec/gui/Dialog.h"
 
 namespace rec {
 namespace gui {
@@ -19,6 +20,11 @@ void SetupPage::resized() {
 }
 
 void SetupPage::show(Component* comp) {
+  DialogLocker locker;
+  if (!locker.isLocked())
+    return;
+
+  locker.setModalComponent(comp);
   juce::DialogWindow::showModalDialog("Set Audio Preferences", this, comp,
                                       juce::Colours::white, true);
 
