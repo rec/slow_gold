@@ -61,6 +61,9 @@ bool Buffered::fillBuffer(SamplePosition size) {
   return true;
 }
 
+#if 0
+  oid setSource(Source* source, SamplePosition offset);
+
 void Buffered::setSource(Source* source, SamplePosition offset) {
   ptr<Source> src(source);
   {
@@ -70,6 +73,7 @@ void Buffered::setSource(Source* source, SamplePosition offset) {
   }
   DCHECK(!src.get());
 }
+#endif
 
 }  // namespace source
 }  // namespace audio

@@ -29,7 +29,6 @@ class Buffered : public BufferSource {
   void setNotifyThread(Thread* t) { notifyThread_ = t; }
   Thread* notifyThread() { return notifyThread_; }
   void notify() { if (notifyThread_) notifyThread_->notify(); }
-  void setSource(Source* source, SamplePosition offset);
 
  private:
   ptr<Source> source_;
