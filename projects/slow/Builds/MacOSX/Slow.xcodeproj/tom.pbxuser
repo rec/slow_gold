@@ -933,6 +933,12 @@
 			E2636D5313A927E90020FE2B /* PBXTextBookmark */ = E2636D5313A927E90020FE2B /* PBXTextBookmark */;
 			E2636D5613A928010020FE2B /* PBXTextBookmark */ = E2636D5613A928010020FE2B /* PBXTextBookmark */;
 			E2636D5713A928010020FE2B /* PBXTextBookmark */ = E2636D5713A928010020FE2B /* PBXTextBookmark */;
+			E2636DA213A973020020FE2B /* XCBuildMessageTextBookmark */ = E2636DA213A973020020FE2B /* XCBuildMessageTextBookmark */;
+			E2636DA313A973120020FE2B /* PBXTextBookmark */ = E2636DA313A973120020FE2B /* PBXTextBookmark */;
+			E2636DA613A973120020FE2B /* PBXTextBookmark */ = E2636DA613A973120020FE2B /* PBXTextBookmark */;
+			E2636DA713A973120020FE2B /* PBXTextBookmark */ = E2636DA713A973120020FE2B /* PBXTextBookmark */;
+			E2636DAC13A973460020FE2B /* PBXTextBookmark */ = E2636DAC13A973460020FE2B /* PBXTextBookmark */;
+			E2636DAD13A973460020FE2B /* PBXTextBookmark */ = E2636DAD13A973460020FE2B /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
 			E29BBB7713022F250091D4CB = E29BBB7713022F250091D4CB /* PBXTextBookmark */;
@@ -1981,6 +1987,78 @@
 		vrLen = 2439;
 		vrLoc = 1856138;
 	};
+	E2636DA113A973020020FE2B /* Circular.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Circular.h;
+		path = ../../../../../rec/src/rec/util/Circular.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 910}}";
+			sepNavSelRange = "{1354, 0}";
+			sepNavVisRange = "{0, 1757}";
+			sepNavWindowFrame = "{{61, 161}, {1198, 970}}";
+		};
+	};
+	E2636DA213A973020020FE2B /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected unqualified-id before '}' token";
+		fRef = E2636DA113A973020020FE2B /* Circular.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 66;
+		rType = 1;
+	};
+	E2636DA313A973120020FE2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFF718C20886014E3A7E0968 /* Root.cpp */;
+		name = "Root.cpp: 82";
+		rLen = 0;
+		rLoc = 2537;
+		rType = 0;
+		vrLen = 1980;
+		vrLoc = 1093;
+	};
+	E2636DA613A973120020FE2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2636DA113A973020020FE2B /* Circular.h */;
+		name = "Circular.h: 46";
+		rLen = 0;
+		rLoc = 1385;
+		rType = 0;
+		vrLen = 1717;
+		vrLoc = 0;
+	};
+	E2636DA713A973120020FE2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2636D4C13A927E80020FE2B /* juce_amalgamated.h */;
+		name = "juce_amalgamated.h: 55776";
+		rLen = 40;
+		rLoc = 1857250;
+		rType = 0;
+		vrLen = 2501;
+		vrLoc = 1856138;
+	};
+	E2636DAC13A973460020FE2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BFF718C20886014E3A7E0968 /* Root.cpp */;
+		name = "Root.cpp: 82";
+		rLen = 0;
+		rLoc = 2537;
+		rType = 0;
+		vrLen = 1937;
+		vrLoc = 1093;
+	};
+	E2636DAD13A973460020FE2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2636D4C13A927E80020FE2B /* juce_amalgamated.h */;
+		name = "juce_amalgamated.h: 55776";
+		rLen = 40;
+		rLoc = 1857250;
+		rType = 0;
+		vrLen = 2439;
+		vrLoc = 1856138;
+	};
 	E26D8E33295793C7AA1A57DC /* Selections.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {581, 1612}}";
@@ -2317,7 +2395,7 @@
 		ignoreCount = 0;
 		lineNumber = 60;
 		location = SlowBurn;
-		modificationTime = 329852926.891593;
+		modificationTime = 329872195.787338;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2335,7 +2413,7 @@
 		ignoreCount = 0;
 		lineNumber = 50;
 		location = SlowBurn;
-		modificationTime = 329852926.891632;
+		modificationTime = 329872195.787367;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2353,7 +2431,7 @@
 		ignoreCount = 0;
 		lineNumber = 38;
 		location = SlowBurn;
-		modificationTime = 329852926.891641;
+		modificationTime = 329872195.787379;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2371,7 +2449,7 @@
 		ignoreCount = 0;
 		lineNumber = 18;
 		location = SlowBurn;
-		modificationTime = 329852926.891656;
+		modificationTime = 329872195.787389;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2406,7 +2484,7 @@
 		ignoreCount = 0;
 		lineNumber = 95;
 		location = SlowBurn;
-		modificationTime = 329852926.891665;
+		modificationTime = 329872195.787401;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -2424,7 +2502,7 @@
 		ignoreCount = 0;
 		lineNumber = 115;
 		location = SlowBurn;
-		modificationTime = 329852926.891673;
+		modificationTime = 329872195.78741;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
