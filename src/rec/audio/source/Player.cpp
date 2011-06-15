@@ -28,7 +28,7 @@ Player::Player(Device* d)
   stretchy_ = new Stretchy(selection_);
   stereo_ = new Stereo(stretchy_);
   level_ = new Level(stereo_);
-  buffered_ = new Buffered(level_, BUFFER_SIZE);
+  buffered_ = new Buffered(level_);
   source_.reset(buffered_);
 
   transportSource_.setSource(source_.get());

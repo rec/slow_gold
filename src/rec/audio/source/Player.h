@@ -66,8 +66,6 @@ class Player : public Broadcaster<transport::State>,
   void setSource(Source*);
   void setStretch(const stretch::Stretch&);
 
-  static const int BUFFER_SIZE = 2048;
-
  private:
   CriticalSection lock_;
 

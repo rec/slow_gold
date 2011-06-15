@@ -14,8 +14,10 @@ namespace source {
 // Buffered is a thread-based pre-fetching PositionableAudioSource wrapper.
 class Buffered : public BufferSource {
  public:
+  static const int BUFFER_SIZE = 2048;
+
   // The source must already have been prepared.
-  Buffered(Source* source, SamplePosition size);
+  Buffered(Source* source, SamplePosition size = BUFFER_SIZE);
 
   virtual ~Buffered() {}
   virtual void getNextAudioBlock(const Info& info);
