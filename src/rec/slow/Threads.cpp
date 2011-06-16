@@ -9,6 +9,7 @@
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/Looper.h"
 #include "rec/widget/tree/Directory.h"
 
 namespace rec {
@@ -52,13 +53,22 @@ Thread* Threads::start(InstanceFunction f, const String& name, int wait) {
   return start(makePointer(f, instance_), name, wait);
 }
 
+Thread* Threads::start(InstanceLoop f, const String& name, int prio) {
+  return start(thread::makeLooper(name, f, instance_), prio);
+}
+
+Thread* Threads::start(Thread* thread, int priority) {
+  if (priority)
+    thread->setPriority(priority);
+  threads_.push_back(thread);
+  thread->startThread();
+  return thread;
+}
+
+
 Thread* Threads::start(Callback* cb, const String& name, int wait) {
   clean();
-
-  ptr<Thread> t(thread::makeLoop(wait, name, cb));
-  threads_.push_back(t.get());
-  t->startThread();
-  return t.transfer();
+  return start(thread::makeLoop(wait, name, cb));
 }
 
 namespace {

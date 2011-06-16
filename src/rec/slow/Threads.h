@@ -2,7 +2,7 @@
 #define __REC_SLOW_THREADS__
 
 #include "rec/slow/HasInstance.h"
-#include "rec/util/thread/Trash.h"
+#include "rec/util/thread/Looper.h"
 #include "rec/util/thread/Callback.h"
 
 namespace rec {
@@ -11,6 +11,7 @@ namespace slow {
 struct Model;
 
 typedef void (*InstanceFunction)(Instance*);
+typedef thread::Result (*InstanceLoop)(Instance*);
 
 class Threads : public HasInstance {
  public:
@@ -24,10 +25,13 @@ class Threads : public HasInstance {
 
   void clean();
 
+  Thread* start(Thread*, int priority = 0);
+
   // waitTime >= means run and wait in a loop.
   // waitTime 0 means run once.
   // waitTime < 0 means run and wait forever (till a notify).
   Thread* start(InstanceFunction f, const String& name, int waitTime = 0);
+  Thread* start(InstanceLoop f, const String& name, int priority = 0);
   Thread* start(Callback* cb, const String& name, int waitTime = 0);
   Thread* fetchThread() { return fetchThread_; }
   Thread* bufferThread() { return bufferThread_; }
