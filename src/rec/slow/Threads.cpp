@@ -9,7 +9,6 @@
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/util/thread/MakeThread.h"
-#include "rec/util/thread/Looper.h"
 #include "rec/widget/tree/Directory.h"
 
 namespace rec {
@@ -24,7 +23,7 @@ static const int THREAD_STOP_PERIOD = 5000;
 static const int BUFFER_FILL_CHUNK = 256;
 
 Threads::Threads(Instance* i) : HasInstance(i),
-                                fetchThread_(NULL), bufferThread_(NULL) {}
+                                fillThread_(NULL), bufferThread_(NULL) {}
 
 Threads::~Threads() {
   stop();
@@ -49,69 +48,62 @@ void Threads::clean() {
   }
 }
 
-Thread* Threads::start(InstanceFunction f, const String& name, int wait) {
-  return start(makePointer(f, instance_), name, wait);
-}
-
-Thread* Threads::start(InstanceLoop f, const String& name, int prio) {
-  return start(thread::makeLooper(name, f, instance_), prio);
-}
-
-Thread* Threads::start(Thread* thread, int priority) {
-  if (priority)
-    thread->setPriority(priority);
-  threads_.push_back(thread);
-  thread->startThread();
-  return thread;
-}
-
-
-Thread* Threads::start(Callback* cb, const String& name, int wait) {
-  clean();
-  return start(thread::makeLoop(wait, name, cb));
-}
-
 namespace {
 
-void navigator(Instance* i) {
+struct Period {
+  enum Enum {
+    BUFFER = 39,
+    DIRECTORY = 1000,
+    FILL = 40,
+    NAVIGATOR = 1001,
+    PARAMETER = 41
+  };
+};
+
+
+struct Priority {
+  enum Enum {
+    BUFFER = 4,
+    DIRECTORY = 2,
+    FILL = 3,
+    NAVIGATOR = 2,
+    PARAMETER = 5
+  };
+};
+
+int navigator(Instance* i) {
   i->components_->directoryTree_.checkVolumes();
+  return Period::NAVIGATOR;
 }
 
-void fetch(Instance* i) {
-  i->model_->fillOnce();
+thread::Result fill(Instance* i) {
+  return i->model_->fillOnce();
 }
 
-void updateParameters(Instance* i) {
+int updateParameters(Instance* i) {
   i->model_->checkChanged();
+  return Period::PARAMETER;
 }
 
-void buffer(Instance* i) {
-  while (i->player_->buffered()->fillBuffer(BUFFER_FILL_CHUNK))
-    Thread::yield();
+thread::Result buffer(Instance* i) {
+  return i->player_->buffered()->fillBuffer(BUFFER_FILL_CHUNK) ?
+    thread::YIELD : static_cast<thread::Result>(Period::BUFFER);
 }
 
-void directory(Instance* i) {
-  while (i->components_->directoryTree_.run())
-    Thread::yield();
-}
-
-static Component* lastComp = NULL;
-void focus(Instance*) {
-  Component* c = Component::getCurrentlyFocusedComponent();
-  if (c != lastComp)
-    lastComp = c;
+thread::Result directory(Instance* i) {
+  return i->components_->directoryTree_.run() ? 
+    thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
 }
 
 }  // namespace
 
 void Threads::startAll() {
-  start(&navigator, "Navigator", 1000);
-	fetchThread_ = start(&fetch, "Fetch", 10);
-  start(&updateParameters, "Parameter", 97);
-  player()->buffered()->setNotifyThread(start(&buffer, "Buffer", 10));
-  start(&directory, "Directory", 101);
-  // start(&focus, "Focus", 10);
-  // start(&pitch, "Pitch", 100);
+  start(&navigator, "Navigator", Priority::NAVIGATOR);
+  fillThread_ = start(&fill, "Fill", Priority::FILL);
+  bufferThread_ = start(&buffer, "Buffer", Priority::BUFFER);
+  player()->buffered()->setNotifyThread(bufferThread_);
+  start(&updateParameters, "Parameter", Priority::PARAMETER);
+  start(&directory, "directory", Priority::DIRECTORY);
 
   (*model()->fileLocker())(persist::get<VirtualFile>());
 }

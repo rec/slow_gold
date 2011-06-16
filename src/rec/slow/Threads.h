@@ -25,22 +25,24 @@ class Threads : public HasInstance {
 
   void clean();
 
-  Thread* start(Thread*, int priority = 0);
-
-  // waitTime >= means run and wait in a loop.
-  // waitTime 0 means run once.
-  // waitTime < 0 means run and wait forever (till a notify).
-  Thread* start(InstanceFunction f, const String& name, int waitTime = 0);
-  Thread* start(InstanceLoop f, const String& name, int priority = 0);
-  Thread* start(Callback* cb, const String& name, int waitTime = 0);
-  Thread* fetchThread() { return fetchThread_; }
+  Thread* fillThread() { return fillThread_; }
   Thread* bufferThread() { return bufferThread_; }
+
+  template <typename Operator>
+  Thread* start(Operator op, const String& name, int priority = 0) {
+    Thread* thread = thread::makeLooper(name, op, instance_);
+    if (priority)
+      thread->setPriority(priority);
+    thread->startThread();
+    threads_.push_back(thread);
+    return thread;
+  }
 
  private:
   typedef std::vector<Thread*> ThreadList;
 
   ThreadList threads_;
-  Thread* fetchThread_;
+  Thread* fillThread_;
   Thread* bufferThread_;
   CriticalSection lock_;
 

@@ -15,6 +15,7 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/Locker.h"
+#include "rec/util/thread/Result.h"
 #include "rec/slow/Components.h"
 #include "rec/widget/waveform/Zoom.pb.h"
 
@@ -49,7 +50,7 @@ class Model : public Listener<const VirtualFile&>,
   void zoom(RealTime time, double k);
 
   void checkChanged();
-  void fillOnce();
+  thread::Result fillOnce();
   void jumpToSamplePosition(SamplePosition p);
   void jumpToTime(RealTime t);
   Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }

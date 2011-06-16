@@ -44,15 +44,14 @@ Model::Model(Instance* i) : HasInstance(i),
   player()->timeBroadcaster()->addListener(this);
 }
 
-void Model::fillOnce() {
+thread::Result Model::fillOnce() {
   thumbnailBuffer_.switchIfNext();
   ThumbnailBuffer* buffer = thumbnailBuffer_.current();
   if (!buffer || buffer->isFull()) {
     if (buffer)
       buffer->writeThumbnail();
 
-    Thread::getCurrentThread()->wait(PARAMETER_WAIT);
-    return;
+    return static_cast<thread::Result>(PARAMETER_WAIT);
   }
 
   if (triggerPosition_ == -1) {
@@ -66,6 +65,7 @@ void Model::fillOnce() {
   buffer->fillNextBlock();
   if (triggerPosition_ != -1)
     jumpToSamplePosition(triggerPosition_);
+  return thread::YIELD;
 }
 
 void Model::jumpToTime(RealTime t) {
@@ -168,7 +168,7 @@ void Model::operator()(const VirtualFile& f) {
 
   buffer->thumbnail()->addListener(&components()->waveform_);
 #ifndef NEW
-  player()->setSource(new BufferSource(*buffer), stretchLocker_.get(), 
+  player()->setSource(new BufferSource(*buffer), stretchLocker_.get(),
                       timeSelection_);
 #else
   player()->setSource(new GenericBufferSource<short, 2>(*buffer));
@@ -176,7 +176,7 @@ void Model::operator()(const VirtualFile& f) {
 
   // player()->setStretch(stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
-  threads()->fetchThread()->notify();
+  threads()->fillThread()->notify();
   player()->setNextReadPosition(0);
   (*components()->playerController_.levelListener())(LevelVector());
 }

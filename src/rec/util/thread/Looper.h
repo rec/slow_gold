@@ -1,18 +1,11 @@
 #ifndef __REC_UTIL_THREAD_LOOPER__
 #define __REC_UTIL_THREAD_LOOPER__
 
-#include "rec/base/base.h"
+#include "rec/util/thread/Result.h"
 
 namespace rec {
 namespace util {
 namespace thread {
-
-enum Result {
-  CONTINUE = -4,
-  YIELD = -3,
-  DONE = -2,
-  WAIT = -1  // Everything from -1 on is a wait.
-};
 
 template <typename Operator, typename Instance>
 class Looper : public Thread {
@@ -32,7 +25,7 @@ class Looper : public Thread {
   }
 
  private:
-  Operator op_;
+  Operator const op_;
   Instance const instance_;
 
   DISALLOW_COPY_AND_ASSIGN(Looper);
