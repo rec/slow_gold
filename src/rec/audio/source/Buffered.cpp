@@ -29,9 +29,11 @@ void Buffered::getNextAudioBlock(const Info& i) {
 bool Buffered::fillBuffer(SamplePosition size) {
   ptr<Source> trash;
   Range<SamplePosition> fillable;
+  // DLOG(INFO) << "here!";
   {
     ScopedLock l(lock_);
     if (nextSource_) {
+      //      DLOG(INFO) << "new source";
       nextSource_.swap(source_);
       nextSource_.swap(trash);
 
@@ -49,7 +51,6 @@ bool Buffered::fillBuffer(SamplePosition size) {
   info.buffer = &buffer_;
   info.startSample = fillable.begin_;
   info.numSamples = juce::jmin(size, fillable.size());
-
   if (info.numSamples <= 0) {
     DCHECK_EQ(info.numSamples, 0);
     return false;
@@ -58,6 +59,11 @@ bool Buffered::fillBuffer(SamplePosition size) {
 
   ScopedLock l(lock_);
   circular_.fill(size);
+#if 1
+  DLOG(INFO) << "startSample: " << info.startSample
+             << " numSamples: " << info.numSamples
+             << " circular: " << circular_.toFill();
+#endif
   return true;
 }
 

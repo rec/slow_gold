@@ -23,13 +23,13 @@ Player::Player(Device* d)
     : device_(d), stretchy_(NULL), stereo_(NULL), buffered_(NULL) {
   player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
-  timer_ = new Timer;
-  selection_ = new Selection(timer_);
+  selection_ = new Selection(new Empty());
   stretchy_ = new Stretchy(selection_);
   stereo_ = new Stereo(stretchy_);
-  level_ = new Level(stereo_);
-  buffered_ = new Buffered(level_);
-  source_.reset(buffered_);
+  buffered_ = new Buffered(stereo_);
+  timer_ = new Timer(buffered_);
+  level_ = new Level(timer_);
+  source_.reset(level_);
 
   transportSource_.setSource(source_.get());
 
@@ -59,14 +59,18 @@ void Player::setState(State s) {
   }
 }
 
-void Player::setSource(Source* source) {
-  ptr<Source> s(source);
-  timer_->swap(&s);
+void Player::setSource(Source* source, const Stretch& stretch,
+                       const block::BlockSet& selection) {
+  selection_ = new Selection(source);
+  selection_->setSelection(selection);
+  stretchy_ = new Stretchy(selection_);
+  stretchy_->setStretch(stretch);
+  ptr<Source> trash(stretchy_);
+  stereo_->swap(&trash);
 
-  if (s)
-    s->releaseResources();
-
-  s.transfer();
+  if (trash)
+    trash->releaseResources();
+  // trash.transfer();  TODO
 }
 
 void Player::setStretch(const Stretch& stretch) {
@@ -90,7 +94,7 @@ void Player::setSelection(const block::BlockSet& s) {
 }
 
 void Player::clearSource() {
-  setSource(new Empty);
+  setSource(new Empty, Stretch(), block::BlockSet());
 }
 
 void Player::setGain(const Gain& gain) {

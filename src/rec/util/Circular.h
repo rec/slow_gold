@@ -41,9 +41,8 @@ struct Circular : public Range<Type> {
 
     Type available = isFill ? (capacity_ - this->size()) : this->size();
     if (count > available) {
-      DLOG(ERROR) << "count: " << count 
-                  << "available: " << available
-                  << "isFill: " << isFill;
+      if (!isFill)
+        DCHECK_LE(count, available);
       count = available;
     }
 

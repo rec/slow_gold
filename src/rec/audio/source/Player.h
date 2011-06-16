@@ -62,9 +62,9 @@ class Player : public Broadcaster<transport::State>,
   SamplePosition length() const { return timer_->getTotalLength(); }
   RealTime realLength() const { return audio::samplesToTime(length()); }
   void clearSource();
-
-  void setSource(Source*);
   void setStretch(const stretch::Stretch&);
+  void setSource(Source*, const stretch::Stretch&,
+                 const block::BlockSet& selection);
 
  private:
   CriticalSection lock_;
@@ -75,12 +75,12 @@ class Player : public Broadcaster<transport::State>,
 
   ptr<Source> source_;
 
-  Timer* timer_;
   Selection* selection_;
   Stretchy* stretchy_;
   Stereo* stereo_;
-  Level* level_;
   Buffered* buffered_;
+  Level* level_;
+  Timer* timer_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

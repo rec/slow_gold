@@ -168,7 +168,8 @@ void Model::operator()(const VirtualFile& f) {
 
   buffer->thumbnail()->addListener(&components()->waveform_);
 #ifndef NEW
-  player()->setSource(new BufferSource(*buffer));
+  player()->setSource(new BufferSource(*buffer), stretchLocker_.get(), 
+                      timeSelection_);
 #else
   player()->setSource(new GenericBufferSource<short, 2>(*buffer));
 #endif
