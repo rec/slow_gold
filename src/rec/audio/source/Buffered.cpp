@@ -23,13 +23,16 @@ void Buffered::getNextAudioBlock(const Info& i) {
   }
 
   BufferSource::getNextAudioBlock(i);
+#if 0
+  DLOG(INFO) << " <- circular: " << circular_.toFill();
+#endif
   notify();
 }
 
 bool Buffered::fillBuffer(SamplePosition size) {
   ptr<Source> trash;
   Range<SamplePosition> fillable;
-  // DLOG(INFO) << "here!";
+  DLOG(INFO) << "here!";
   {
     ScopedLock l(lock_);
     if (nextSource_) {
@@ -53,17 +56,20 @@ bool Buffered::fillBuffer(SamplePosition size) {
   info.numSamples = juce::jmin(size, fillable.size());
   if (info.numSamples <= 0) {
     DCHECK_EQ(info.numSamples, 0);
+    DLOG(INFO) << "out! " << fillable.begin_ << ", " << fillable.end_
+               << " circ! " << circular_.begin_ << ", " << circular_.end_;
     return false;
   }
   source_->getNextAudioBlock(info);
 
   ScopedLock l(lock_);
   circular_.fill(size);
-#if 1
-  DLOG(INFO) << "startSample: " << info.startSample
-             << " numSamples: " << info.numSamples
-             << " circular: " << circular_.toFill();
-#endif
+#if 0
+  DLOG(INFO) << " -> circular: " << circular_.toFill()
+             << " startSample: " << info.startSample
+             << " numSamples: " << info.numSamples;
+
+             #endif
   return true;
 }
 

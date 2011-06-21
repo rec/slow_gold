@@ -14,6 +14,36 @@ struct Circular : public Range<Type> {
   explicit Circular(Type c) : Range<Type>(0, 0), capacity_(c) {}
   Circular(Type b, Type e, Type c) : Range<Type>(b, e), capacity_(c) {}
 
+  void consume(Type count) {
+    Type available = this->size();
+    if (count > available) {
+      DLOG(ERROR) << "count: " << count << ", available: " << available;
+      count = available;
+    }
+    this->begin_ += count;
+    if (this->begin_ >= capacity_) {
+      this->begin_ -= capacity_;
+      if (this->end_ >= capacity_)
+        this->end_ -= capacity_;
+      else
+        DLOG(ERROR) << "!" << this->begin_ << ", " << this->end_;
+    }
+  }
+
+  void fill(Type count) {
+    Type available = capacity_ - this->size();
+    if (count > available) {
+      DLOG(ERROR) << "count: " << count << ", available: " << available;
+      count = available;
+    }
+    this->end_ += count;
+  }
+
+  Range<Type> fillable() const {
+    return Range<Type>(this->begin_, std::min(this->end_, capacity_));
+  }
+
+#if 0
   void consume(Type count) { fillOrConsume(count, false); }
   void fill(Type count) { fillOrConsume(count, true); }
 
@@ -49,6 +79,8 @@ struct Circular : public Range<Type> {
     if (isFill) {
       this->end_ += count;
     } else {
+      if (this->end_ >= capacity_)
+        this->end_ -= capacity_;
       this->begin_ += count;
       if (this->begin_ >= capacity_) {
         this->begin_ -= capacity_;
@@ -59,7 +91,7 @@ struct Circular : public Range<Type> {
       }
     }
   }
-
+#endif
 };
 
 }  // namespace util

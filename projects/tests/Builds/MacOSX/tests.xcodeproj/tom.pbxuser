@@ -425,8 +425,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 329631590;
-			PBXWorkspaceStateSaveDate = 329631590;
+			PBXPerProjectTemplateStateSaveDate = 329969370;
+			PBXWorkspaceStateSaveDate = 329969370;
 		};
 		perUserProjectItems = {
 			E2011D58120E3931007A2F47 /* PBXTextBookmark */ = E2011D58120E3931007A2F47 /* PBXTextBookmark */;
@@ -454,7 +454,6 @@
 			E22EC5C212A4D97300501884 /* PBXTextBookmark */ = E22EC5C212A4D97300501884 /* PBXTextBookmark */;
 			E23128EF137F001B001A5CF5 /* PBXTextBookmark */ = E23128EF137F001B001A5CF5 /* PBXTextBookmark */;
 			E231290C137F01AE001A5CF5 /* PBXTextBookmark */ = E231290C137F01AE001A5CF5 /* PBXTextBookmark */;
-			E2360710138E2AF500B2D5B5 /* PBXTextBookmark */ = E2360710138E2AF500B2D5B5 /* PBXTextBookmark */;
 			E23A18E61276048900D30FE9 /* PBXTextBookmark */ = E23A18E61276048900D30FE9 /* PBXTextBookmark */;
 			E23DB4AD1366170700A52041 /* PBXTextBookmark */ = E23DB4AD1366170700A52041 /* PBXTextBookmark */;
 			E23DB5FB136730DA00A52041 /* PBXTextBookmark */ = E23DB5FB136730DA00A52041 /* PBXTextBookmark */;
@@ -464,6 +463,7 @@
 			E2497A821386CF800031535C /* PBXTextBookmark */ = E2497A821386CF800031535C /* PBXTextBookmark */;
 			E2497A851386CF800031535C /* PBXTextBookmark */ = E2497A851386CF800031535C /* PBXTextBookmark */;
 			E2497A861386CF800031535C /* PBXTextBookmark */ = E2497A861386CF800031535C /* PBXTextBookmark */;
+			E2636F4813AC1EAD0020FE2B /* PBXTextBookmark */ = E2636F4813AC1EAD0020FE2B /* PBXTextBookmark */;
 			E26FD79F123EB1590088AD82 /* PBXTextBookmark */ = E26FD79F123EB1590088AD82 /* PBXTextBookmark */;
 			E2714F39120B1A5A0045B28D /* PBXTextBookmark */ = E2714F39120B1A5A0045B28D /* PBXTextBookmark */;
 			E2714F96120B41CF0045B28D /* PBXTextBookmark */ = E2714F96120B41CF0045B28D /* PBXTextBookmark */;
@@ -504,7 +504,6 @@
 			E2C1BF1C12470533008F69C6 /* PBXTextBookmark */ = E2C1BF1C12470533008F69C6 /* PBXTextBookmark */;
 			E2C1BF1E12470533008F69C6 /* PBXTextBookmark */ = E2C1BF1E12470533008F69C6 /* PBXTextBookmark */;
 			E2C3B89213A57B4900C844CA /* PBXTextBookmark */ = E2C3B89213A57B4900C844CA /* PBXTextBookmark */;
-			E2C3B89313A57B4900C844CA /* PBXTextBookmark */ = E2C3B89313A57B4900C844CA /* PBXTextBookmark */;
 			E2D23663125156D90097B7F0 /* PBXTextBookmark */ = E2D23663125156D90097B7F0 /* PBXTextBookmark */;
 			E2D236A912515E960097B7F0 /* PBXTextBookmark */ = E2D236A912515E960097B7F0 /* PBXTextBookmark */;
 			E2D366FD1218684400031AE4 /* PBXTextBookmark */ = E2D366FD1218684400031AE4 /* PBXTextBookmark */;
@@ -1146,7 +1145,7 @@
 	};
 	DC1EAD50FB7F2176A18F4A6D /* Audio_test.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {708, 527}}";
+			sepNavIntBoundsRect = "{{0, 0}, {708, 509}}";
 			sepNavSelRange = "{216, 0}";
 			sepNavVisRange = "{0, 347}";
 		};
@@ -1426,16 +1425,6 @@
 		vrLen = 376;
 		vrLoc = 0;
 	};
-	E2360710138E2AF500B2D5B5 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 629515CBFD37B9281D1D1DEC /* Root.cpp */;
-		name = "Root.cpp: 159";
-		rLen = 0;
-		rLoc = 4621;
-		rType = 0;
-		vrLen = 1226;
-		vrLoc = 34;
-	};
 	E23A18E61276048900D30FE9 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E2BF313E120BC19200000834 /* juce_File.cpp */;
@@ -1529,6 +1518,16 @@
 		rLoc = 759;
 		rType = 0;
 		vrLen = 1025;
+		vrLoc = 0;
+	};
+	E2636F4813AC1EAD0020FE2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DC1EAD50FB7F2176A18F4A6D /* Audio_test.cpp */;
+		name = "Audio_test.cpp: 13";
+		rLen = 0;
+		rLoc = 216;
+		rType = 0;
+		vrLen = 347;
 		vrLoc = 0;
 	};
 	E26FD77D123E932E0088AD82 /* juce_String.cpp */ = {
@@ -2021,21 +2020,6 @@
 		vrLen = 347;
 		vrLoc = 0;
 	};
-	E2C3B89313A57B4900C844CA /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		comments = "'SamplePosition' was not declared in this scope";
-		fRef = E2C3B89413A57B4900C844CA /* Circular.h */;
-		rLen = 1;
-		rLoc = 31;
-		rType = 1;
-	};
-	E2C3B89413A57B4900C844CA /* Circular.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = Circular.h;
-		path = ../../../../../rec/src/rec/util/Circular.h;
-		sourceTree = "<group>";
-	};
 	E2C3B90813A5A8C000C844CA /* PersistentWindow.cpp:45 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
@@ -2050,7 +2034,7 @@
 		ignoreCount = 0;
 		lineNumber = 45;
 		location = SlowBurn;
-		modificationTime = 329624607.048014;
+		modificationTime = 330040121.200109;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};

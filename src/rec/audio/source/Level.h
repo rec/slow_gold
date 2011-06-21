@@ -12,7 +12,7 @@ namespace source {
 class Level : public Wrappy,
               public Broadcaster<const LevelVector&> {
  public:
-  explicit Level(Source* s = NULL) : Wrappy(s) {}
+  explicit Level(Source* s = NULL) : Wrappy(s), channels_(2) {}
 
   virtual void getNextAudioBlock(const AudioSourceChannelInfo& i) {
     Wrappy::getNextAudioBlock(i);

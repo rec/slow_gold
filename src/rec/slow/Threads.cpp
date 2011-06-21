@@ -65,7 +65,7 @@ struct Priority {
   enum Enum {
     BUFFER = 4,
     DIRECTORY = 2,
-    FILL = 3,
+    FILL = 4,
     NAVIGATOR = 2,
     PARAMETER = 5
   };
@@ -91,7 +91,7 @@ thread::Result buffer(Instance* i) {
 }
 
 thread::Result directory(Instance* i) {
-  return i->components_->directoryTree_.run() ? 
+  return i->components_->directoryTree_.run() ?
     thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
 }
 

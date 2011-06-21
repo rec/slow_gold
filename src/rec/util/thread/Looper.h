@@ -14,6 +14,7 @@ class Looper : public Thread {
 
   virtual void run() {
     while (!threadShouldExit()) {
+      // LOG(INFO) << str(getThreadName());
       Result r = static_cast<Result>(op_(instance_));
       switch (r) {
        case CONTINUE:  break;
