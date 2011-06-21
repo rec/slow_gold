@@ -30,21 +30,20 @@ struct Circular : public Range<Type> {
       else
         DLOG(ERROR) << "!" << this->begin_ << ", " << this->end_;
     }
-    
-    if (!this->size()) 
+
+    if (!this->size())
       this->begin_ = this->end_ = 0;
   }
 
-  void fill(Type count) {
-    this->end_ += std::min(count, capacity_ - this->size());
-    DLOG(INFO) << this->end_;
-  }
+  void fill(Type count) { this->end_ += std::min(count, fillable()); }
+  Type fillable() const { return capacity_ - this->size(); }
 
-  Range<Type> fillable() const {
-    Range<Type> r = this->reversed();
-    if (r.size() <= 0)
-      r.end_ = capacity_;
-    return r;
+  Range<Type> fillableBlock() const {
+    Type b = this->end_;
+    if (b >= capacity_)
+      b -= capacity_;
+    Type e = std::min(b + fillable(), capacity_);
+    return Range<Type>(b, e);
   }
 };
 

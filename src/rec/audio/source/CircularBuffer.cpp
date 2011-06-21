@@ -32,7 +32,7 @@ SamplePosition CircularBuffer::fillFrom(const BufferTime& from) {
 
 
 SamplePosition CircularBuffer::fillOrConsume(const BufferTime& other,
-                                         SamplePosition numSamples, bool isFill) {
+                                             SamplePosition numSamples, bool isFill) {
   if (SamplePosition wraps = std::max(filled_.end_ - filled_.capacity_, 0))
 
 
@@ -65,8 +65,6 @@ SamplePosition CircularBuffer::fillOrConsume(const BufferTime& other,
 
   return num;
 }
-
-S
 
 SamplePosition CircularBuffer::consumeTo(const Info& to) {
   SamplePosition num = std::min(filled_.toConsume(), from.numSamples);

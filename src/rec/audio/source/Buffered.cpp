@@ -40,6 +40,7 @@ bool Buffered::fillBuffer(SamplePosition size) {
       nextSource_.swap(source_);
       nextSource_.swap(trash);
 
+      // TODO: what's this??
       SamplePosition e = nextEnd_;
       if (e > circular_.size())
         e -= circular_.size();
@@ -71,23 +72,9 @@ bool Buffered::fillBuffer(SamplePosition size) {
              << " startSample: " << info.startSample
              << " numSamples: " << info.numSamples;
 
-             #endif
+#endif
   return true;
 }
-
-#if 0
-  oid setSource(Source* source, SamplePosition offset);
-
-void Buffered::setSource(Source* source, SamplePosition offset) {
-  ptr<Source> src(source);
-  {
-    ScopedLock l(lock_);
-    nextSource_.swap(src);
-    nextEnd_ = circular_.begin_ + offset;
-  }
-  DCHECK(!src.get());
-}
-#endif
 
 }  // namespace source
 }  // namespace audio
