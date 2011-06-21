@@ -27,6 +27,12 @@ TEST(Circular, Fill) {
   Circular<int> c(8);
   c.fill(3);
   EXPECT_TRUE(c.fillable() == Range<int>(3, 8));
+
+  c.fill(3);
+  EXPECT_TRUE(c.fillable() == Range<int>(6, 8));
+
+  c.fill(3);
+  EXPECT_TRUE(c.fillable() == Range<int>(8, 8));
 }
 
 
