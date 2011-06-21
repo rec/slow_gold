@@ -23,6 +23,12 @@ TEST(Circular, Fillable3) {
   EXPECT_TRUE(Circular<int>(4, 0, 8).fillable() == Range<int>(0, 4));
 }
 
+TEST(Circular, Fill) {
+  Circular<int> c(8);
+  c.fill(3);
+  EXPECT_TRUE(c.fillable() == Range<int>(3, 8));
+}
+
 
 
 #if 0
