@@ -70,6 +70,18 @@ TEST(Circular, Fill) {
   c.consume(2);
   EXPECT_EQ(c.size(), 1);
   EXPECT_TRUE(c.fillableBlock() == Range<int>(4, 8));
+
+  c.fill(2);
+  EXPECT_EQ(c.size(), 3);
+  EXPECT_TRUE(c.fillableBlock() == Range<int>(6, 8));
+
+  c.consume(2);
+  EXPECT_EQ(c.size(), 1);
+  EXPECT_TRUE(c.fillableBlock() == Range<int>(6, 8));
+
+  c.fill(2);
+  EXPECT_EQ(c.size(), 3);
+  EXPECT_TRUE(c.fillableBlock() == Range<int>(0, 5));
 }
 
 }  // namespace
