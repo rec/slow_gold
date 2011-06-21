@@ -11,20 +11,21 @@ TEST(Circular, Constructor) {
   EXPECT_TRUE(Circular<int>(8) == Circular<int>(0, 0, 8));
 }
 
-TEST(Circular, Fill) {
-  Range<int> fill = Circular<int>(8).fillable() ;
-  EXPECT_TRUE(fill == Range<int>(0, 8)) 
-    << str(fill.toString());
+TEST(Circular, Fillable) {
+  EXPECT_TRUE(Circular<int>(8).fillable() == Range<int>(0, 8));
 }
+
+TEST(Circular, Fillable2) {
+  EXPECT_TRUE(Circular<int>(0, 4, 8).fillable() == Range<int>(4, 8));
+}
+
+TEST(Circular, Fillable3) {
+  EXPECT_TRUE(Circular<int>(4, 0, 8).fillable() == Range<int>(0, 4));
+}
+
+
 
 #if 0
-
-
-TEST(Circular, Empty) {
-  testCircular(Circular<int>(8), Range<int>(0, 8), Range<int>(0, 0));
-}
-
-
 TEST(Circular, Middle) {
   testCircular(Circular<int>(0, 4, 8), Range<int>(4, 8), Range<int>(0, 4));
 }
