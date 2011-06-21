@@ -52,6 +52,8 @@ struct Range {
     return begin_ == x.begin_ && end_ == x.end_;
   }
 
+  Range<Type> reversed() const { return Range<Type>(end_, begin_); }
+
   Range<Type> inverse(Type capacity) const {
     Range<Type> r((end_ < capacity) ? end_ : end_ - capacity, begin_);
     if (r.begin_ >= capacity)
@@ -72,6 +74,10 @@ struct Range {
       ranges.push_back(Range<Type>(capacity, end_));
     }
     return ranges;
+  }
+
+  const String toString() const {
+    return String(begin_) + "-" + String(end_);
   }
 };
 

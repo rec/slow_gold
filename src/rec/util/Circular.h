@@ -18,8 +18,10 @@ struct Circular : public Range<Type> {
     Type available = this->size();
     if (count > available) {
       DLOG(ERROR) << "count: " << count << ", available: " << available;
+      DCHECK_LE(count, available);
       count = available;
     }
+
     this->begin_ += count;
     if (this->begin_ >= capacity_) {
       this->begin_ -= capacity_;
@@ -28,70 +30,22 @@ struct Circular : public Range<Type> {
       else
         DLOG(ERROR) << "!" << this->begin_ << ", " << this->end_;
     }
+    
+    if (!this->size()) 
+      this->begin_ = this->end_ = 0;
   }
 
   void fill(Type count) {
-    Type available = capacity_ - this->size();
-    if (count > available) {
-      DLOG(ERROR) << "count: " << count << ", available: " << available;
-      count = available;
-    }
-    this->end_ += count;
+    this->end_ += std::min(count, capacity_ - this->size());
+    DLOG(INFO) << this->end_;
   }
 
   Range<Type> fillable() const {
-    return Range<Type>(this->begin_, std::min(this->end_, capacity_));
+    Range<Type> r = this->reversed();
+    if (r.size() <= 0)
+      r.end_ = capacity_;
+    return r;
   }
-
-#if 0
-  void consume(Type count) { fillOrConsume(count, false); }
-  void fill(Type count) { fillOrConsume(count, true); }
-
-  Type toFill() const { return (capacity_ - this->size()); }
-  bool isFull() const { return !toFill(); }
-
-  Type wrap(Type index) const {
-    return  (index > capacity_) ? index - capacity_ : Type();
-  }
-
-  Type wrap() const { return wrap(this->end_); }
-
-  Range<Type> fillable() const {
-    Type w = wrap();
-    return Range<Type>(w ? Type(this->end_ - capacity_) : this->end_,
-                       w ? this->begin_ : Type(capacity_));
-  }
-
-  Range<Type> consumable() const {
-    return Range<Type>(this->begin_, std::min(this->end_, capacity_));
-  }
-
-  void fillOrConsume(Type count, bool isFill) {
-    DCHECK_GE(count, 0);
-
-    Type available = isFill ? (capacity_ - this->size()) : this->size();
-    if (count > available) {
-      if (!isFill)
-        DCHECK_LE(count, available);
-      count = available;
-    }
-
-    if (isFill) {
-      this->end_ += count;
-    } else {
-      if (this->end_ >= capacity_)
-        this->end_ -= capacity_;
-      this->begin_ += count;
-      if (this->begin_ >= capacity_) {
-        this->begin_ -= capacity_;
-        if (this->end_ >= capacity_)
-          this->end_ -= capacity_;
-        else
-          LOG(ERROR) << this->begin_ << "," << this->end_ << "," << capacity_;
-      }
-    }
-  }
-#endif
 };
 
 }  // namespace util

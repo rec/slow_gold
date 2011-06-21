@@ -55,7 +55,6 @@ TEST(Difference, BugInCode) {
 
   BlockSet diff = difference(Block(0, 86), set);
   EXPECT_EQ(diff.size(), 0);
-  LOG(ERROR) << diff;
 }
 
 TEST(Difference, BugInCode2) {

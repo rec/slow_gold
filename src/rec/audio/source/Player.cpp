@@ -33,7 +33,7 @@ Player::Player(Device* d)
 
   transportSource_.setSource(source_.get());
 
-  clearSource();
+  // clearSource();
 }
 
 Player::~Player() {
@@ -61,6 +61,7 @@ void Player::setState(State s) {
 
 void Player::setSource(Source* source, const Stretch& stretch,
                        const block::BlockSet& selection) {
+  if (true) return;
   selection_ = new Selection(source);
   selection_->setSelection(selection);
   stretchy_ = new Stretchy(selection_);
