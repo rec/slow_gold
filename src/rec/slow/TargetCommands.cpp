@@ -92,7 +92,6 @@ void keyboardMappings(Instance* i) {
   juce::DialogWindow::showModalDialog("Select keyboard mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
-  DLOG(INFO) << "Here!";
   i->target_->saveKeyboardBindings();
 }
 

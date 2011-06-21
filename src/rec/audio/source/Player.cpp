@@ -21,17 +21,17 @@ using namespace rec::audio::stretch;
 
 Player::Player(Device* d)
     : device_(d), stretchy_(NULL), stereo_(NULL), buffered_(NULL) {
-  player_.setSource(&transportSource_);
   device_->manager_.addAudioCallback(&player_);
   selection_ = new Selection(new Empty());
   stretchy_ = new Stretchy(selection_);
-  stereo_ = new Stereo(stretchy_);
-  buffered_ = new Buffered(stereo_);
-  timer_ = new Timer(buffered_);
+  stereo_ = new Stereo(selection_);
+  // buffered_ = new Buffered(stereo_);
+  timer_ = new Timer(stereo_); // buffered_);
   level_ = new Level(timer_);
   source_.reset(level_);
 
   transportSource_.setSource(source_.get());
+  player_.setSource(&transportSource_);
 
   // clearSource();
 }
@@ -61,7 +61,6 @@ void Player::setState(State s) {
 
 void Player::setSource(Source* source, const Stretch& stretch,
                        const block::BlockSet& selection) {
-  if (true) return;
   selection_ = new Selection(source);
   selection_->setSelection(selection);
   stretchy_ = new Stretchy(selection_);
@@ -75,7 +74,8 @@ void Player::setSource(Source* source, const Stretch& stretch,
 }
 
 void Player::setStretch(const Stretch& stretch) {
-  stretchy_->setStretch(stretch);
+  if (stretchy_)
+    stretchy_->setStretch(stretch);
 }
 
 State Player::state() const {

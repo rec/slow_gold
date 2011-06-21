@@ -86,8 +86,11 @@ int updateParameters(Instance* i) {
 }
 
 thread::Result buffer(Instance* i) {
-  return i->player_->buffered()->fillBuffer(BUFFER_FILL_CHUNK) ?
-    thread::YIELD : static_cast<thread::Result>(Period::BUFFER);
+  if (Buffered* b = i->player_->buffered()) {
+    return b->fillBuffer(BUFFER_FILL_CHUNK) ?
+      thread::YIELD : static_cast<thread::Result>(Period::BUFFER);
+  }
+  return static_cast<thread::Result>(1000);  // Should never get here!
 }
 
 thread::Result directory(Instance* i) {
@@ -101,7 +104,8 @@ void Threads::startAll() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
   fillThread_ = start(&fill, "Fill", Priority::FILL);
   bufferThread_ = start(&buffer, "Buffer", Priority::BUFFER);
-  player()->buffered()->setNotifyThread(bufferThread_);
+  if (Buffered* b = player()->buffered())
+    b->setNotifyThread(bufferThread_);
   start(&updateParameters, "Parameter", Priority::PARAMETER);
   start(&directory, "directory", Priority::DIRECTORY);
 
