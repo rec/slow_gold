@@ -15,8 +15,8 @@ namespace source {
 Stretchy::Stretchy(PositionableAudioSource* s)
     : Wrappy(s),
       scaler_(new AudioTimeScaler),
-      initialized_(false),
-      timeScale_(1.0) {
+      timeScale_(1.0),
+      initialized_(false) {
 }
 
 Stretchy::~Stretchy() {}
@@ -48,9 +48,10 @@ void Stretchy::initialize() {
     return;
 
   static const double DELTA = 0.00001;
-  double timeRatio = stretch::timeScale(stretch_);
+  timeScale_ = stretch::timeScale(stretch_);
+  DLOG(INFO) << timeScale_;
   bypass_ = stretch_.passthrough_when_disabled() &&
-    near(timeRatio, 1.0, DELTA) &&
+    near(timeScale_, 1.0, DELTA) &&
     near(stretch::pitchScale(stretch_), 1.0, DELTA);
   channels_ = stretch_.channels();
   if (bypass_) {
@@ -60,8 +61,8 @@ void Stretchy::initialize() {
 
   if (!buffer_ || buffer_->getNumChannels() != channels_)
     buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_INITIAL_SIZE));
+
   outOffset_.resize(channels_);
-  timeScale_ = timeScale(stretch_);
   scaler_.reset(new AudioTimeScaler);
   audio::stretch::Init(stretch_, scaler_.get());
   initialized_ = true;

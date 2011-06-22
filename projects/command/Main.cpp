@@ -17,7 +17,8 @@ namespace source {
 
 using namespace rec::audio::stretch;
 
-static const String ROOT = "/Users/tom/Documents/development/sound-tests/TakeFive";
+static const String ROOT = "/Users/tom/Documents/development/sound-tests"
+                           "/results/TakeFive";
 
 StereoProto makeStereo(StereoProto::Type t = StereoProto::PASSTHROUGH,
                        StereoProto::Side s = StereoProto::LEFT_PLUS_RIGHT) {
@@ -96,13 +97,26 @@ void copyFileOnce(const File& in,
   writer->writeFromAudioSource(*src, src->getTotalLength(), 4096);
 }
 
+void copyFile(const File& in, bool time = false) {
+  if (time) {
+    copyFileOnce(in, 50);
+    copyFileOnce(in, 75);
+    copyFileOnce(in, 100);
+    copyFileOnce(in, 125);
+    copyFileOnce(in, 150);
+  } else {
+    copyFileOnce(in, 100, -5);
 
-void copyFile(const File& in) {
-  copyFileOnce(in, 50);
-  copyFileOnce(in, 75);
-  copyFileOnce(in, 100);
-  copyFileOnce(in, 125);
-  copyFileOnce(in, 150);
+#if 0
+    copyFileOnce(in, 100, -1);
+    copyFileOnce(in, 100, -3);
+    copyFileOnce(in, 100, -5);
+
+    copyFileOnce(in, 100, 1);
+    copyFileOnce(in, 100, 3);
+    copyFileOnce(in, 100, 5);
+#endif
+  }
 }
 
 int main(int argc, char** argv) {
@@ -111,8 +125,7 @@ int main(int argc, char** argv) {
   if (argc == 1)
     copyFile(File(ROOT + ".wav"));
   else
-    copyFile(File(argv[1]))
-    ;
+    copyFile(File(argv[1]));
 
   return 0;
 }

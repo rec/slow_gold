@@ -641,11 +641,13 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\FunctionCallback.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Locker.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Looper.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MakeThread.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\MultiLocker.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Pointer.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\thread\Result.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.h"/>
           </Filter>
@@ -757,6 +759,8 @@
             </Filter>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h"/>
             <Filter Name="thread">
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>
               <File RelativePath="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h"/>

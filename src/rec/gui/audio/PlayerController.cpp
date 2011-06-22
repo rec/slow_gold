@@ -23,7 +23,6 @@ PlayerController::PlayerController()
       level_("Gain", Address("gain")),
       disableButton_("Disable speed", Address("time_disabled")),
       zoomToSelectionButton_("Zoom to selection", Address("zoom_to_selection")),
-      clickToZoomButton_("Click to zoom", Address("click_to_zoom")),
       muteButton_("Mute", Address("mute")),
       dimButton_("Dim", Address("dim")) {
   playbackSpeed_.slider()->setRange(0, 200.0, 1.0);
@@ -51,7 +50,7 @@ PlayerController::PlayerController()
   addToLayout(&dimButton_, 14);
   addToLayout(&disableButton_, 14);
   addToLayout(&zoomToSelectionButton_, 14);
-  addToLayout(&clickToZoomButton_, 14);
+  zoomToSelectionButton_.setEnabled(false);
 
   stereoComboBox_.setEditableText(false);
   stereoComboBox_.setJustificationType(Justification::centredLeft);
@@ -62,20 +61,22 @@ PlayerController::PlayerController()
   stereoComboBox_.addItem("Mono (Left)", LEFT);
   stereoComboBox_.addItem("Mono (Right)", RIGHT);
   stereoComboBox_.addListener(this);
+
   addToLayout(&stereoComboBox_, 14);
-}
 
-void PlayerController::operator()(const Stretch& s) {
-  thread::callAsync(this, &PlayerController::enableSliders, !s.time_disabled());
-}
+  modeComboBox_.setEditableText(false);
+  modeComboBox_.setJustificationType(Justification::centredLeft);
+  modeComboBox_.setTextWhenNothingSelected("Mode");
+  modeComboBox_.setTextWhenNoChoicesAvailable("Mode");
 
-void PlayerController::operator()(const StereoProto& stereo) {
-  Sides sides = STEREO;
-  if (stereo.type())
-    sides = static_cast<Sides>(2 + stereo.side());
+  modeComboBox_.addItem("Drag", Mode::DRAG);
+  modeComboBox_.addItem("Draw loop points", Mode::DRAW_LOOP_POINTS);
+  modeComboBox_.addItem("Jump to time", Mode::SET_TIME);
+  modeComboBox_.addItem("Toggle segment selection", Mode::TOGGLE_SELECTION);
+  modeComboBox_.addItem("Zoom in", Mode::ZOOM_IN);
+  modeComboBox_.addItem("Zoom out", Mode::ZOOM_OUT);
 
-  thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
-                    static_cast<int>(sides), true);
+  addToLayout(&modeComboBox_, 14);
 }
 
 void PlayerController::setData(persist::Data<Stretch>* data) {
@@ -87,20 +88,21 @@ void PlayerController::setData(persist::Data<Stretch>* data) {
   DataListener<Stretch>::setData(data);
 }
 
+void PlayerController::operator()(const Stretch& s) {
+  thread::callAsync(this, &PlayerController::enableSliders, !s.time_disabled());
+}
+
 void PlayerController::setData(persist::Data<StereoProto>* data) {
   DataListener<StereoProto>::setData(data);
 }
 
-void PlayerController::comboBoxChanged(juce::ComboBox*) {
-  if (DataListener<StereoProto>::data_) {
-    Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
-    StereoProto stereo;
-    if (sides != STEREO) {
-      stereo.set_type(StereoProto::SINGLE);
-      stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
-    }
-    data::set(DataListener<StereoProto>::data_, stereo);
-  }
+void PlayerController::operator()(const StereoProto& stereo) {
+  Sides sides = STEREO;
+  if (stereo.type())
+    sides = static_cast<Sides>(2 + stereo.side());
+
+  thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
+                    static_cast<int>(sides), true);
 }
 
 void PlayerController::setData(persist::Data<rec::audio::Gain>* data) {
@@ -120,17 +122,43 @@ void PlayerController::operator()(const rec::audio::Gain& gain) {
   dimButton_.setEnabled(!mute || dim);
 }
 
+void PlayerController::setData(persist::Data<Mode>* data) {
+  DataListener<Mode>::setData(data);
+}
+
+void PlayerController::operator()(const Mode& mode) {
+  juce::MessageManagerLock l;
+  modeComboBox_.setSelectedId(mode.click(), true);
+}
+
+void PlayerController::comboBoxChanged(juce::ComboBox* box) {
+  if (box == &stereoComboBox_) {
+    if (DataListener<StereoProto>::data_) {
+      Sides sides = static_cast<Sides>(stereoComboBox_.getSelectedId());
+      StereoProto stereo;
+      if (sides != STEREO) {
+        stereo.set_type(StereoProto::SINGLE);
+        stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
+      }
+      data::set(DataListener<StereoProto>::data_, stereo);
+    }
+
+  } else if (box == &modeComboBox_) {
+    if (DataListener<Mode>::data_) {
+      Mode mode;
+      mode.set_click(static_cast<Mode::Click>(modeComboBox_.getSelectedId()));
+      data::set(DataListener<Mode>::data_, mode);
+    }
+  }
+}
+
 void PlayerController::setZoom(data::UntypedData* data) {
   zoomToSelectionButton_.setData(data);
-  clickToZoomButton_.setData(data);
 }
 
 void PlayerController::enableSliders(bool enabled) {
   playbackSpeed_.setEnabled(enabled);
-  // pitchScale_.setEnabled(enabled);
-  // fineScale_.setEnabled(enabled);
 }
-
 
 }  // namespace audio
 }  // namespace gui

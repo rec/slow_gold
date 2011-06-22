@@ -24,20 +24,29 @@ MouseListener::MouseListener(Instance* i)
   listenTo(&components()->waveform_);
 }
 
-static double const MAX_WHEEL = 0.50;
-static double const RATIO = 4.0;
+static const double WHEEL_RATIO = 0.50;
+static const double POWER = 4.0;
+static const double SMALL_RATIO = 0.1;
+static const double BIG_RATIO = 2.0;
 
 static double zoomFunction(double increment) {
-  return pow(RATIO, -increment / MAX_WHEEL);
+  return pow(POWER, -increment);
 }
+
+static void zoom(Model* model, RealTime time, double increment,
+                 bool isSmall = false, bool isBig = false) {
+  double scale = isSmall ? SMALL_RATIO : isBig ? BIG_RATIO : 1.0;
+  model->zoom(time, zoomFunction(scale * increment));
+}
+
 
 void MouseListener::operator()(const MouseWheelEvent& e) {
   Waveform* waveform = &components()->waveform_;
   if (e.event_->eventComponent == waveform) {
     const juce::ModifierKeys& k = e.event_->mods;
-    double scale = k.isAltDown() ? 0.1 : k.isCommandDown() ? 2.0 : 1;
-    model()->zoom(waveform->xToTime(e.event_->x),
-                  zoomFunction(scale * e.yIncrement_));
+    RealTime time = waveform->xToTime(e.event_->x);
+    double increment = e.yIncrement_ * WHEEL_RATIO;
+    zoom(model(), time, increment, k.isAltDown(), k.isCommandDown());
   }
 }
 
@@ -119,6 +128,7 @@ void MouseListener::mouseUp(const MouseEvent& e) {
   Cursor* timeCursor = components()->waveform_.timeCursor();
   if (timeCursor == e.eventComponent)
     timeCursor->setListeningToClock(true);
+
   // mouseDrag(e);
 }
 
@@ -133,15 +143,5 @@ void MouseListener::mouseDoubleClick(const MouseEvent& e) {
 
 }
 
-#ifdef TODO
-
-void PlaybackController::operator()(const Stretch& desc) {
-  thread::callAsync(&playerController_,
-                    &gui::PlayerController::enableSliders,
-                    !desc.stretch().disabled());
-  timeController_(desc);
-}
-
-#endif
 }  // namespace slow
 }  // namespace rec

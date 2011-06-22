@@ -34,6 +34,7 @@ Model::Model(Instance* i) : HasInstance(i),
                             gainLocker_(&lock_),
                             loopLocker_(&lock_),
                             metadataLocker_(&lock_),
+                            modeLocker_(&lock_),
                             stereoLocker_(&lock_),
                             stretchLocker_(&lock_),
                             zoomLocker_(&lock_),
@@ -143,6 +144,7 @@ void Model::operator()(const VirtualFile& f) {
   loopData_ = updateLocker(&loopLocker_, f);
   components()->loops_.setData(loopData_);
   player()->setData(updateLocker(&gainLocker_, f));
+  components()->playerController_.setData(updateLocker(&modeLocker_, f));
   components()->playerController_.setData(updateLocker(&stereoLocker_, f));
   components()->playerController_.setData(updateLocker(&stretchLocker_, f));
   components()->songData_.setData(updateLocker(&metadataLocker_, f));

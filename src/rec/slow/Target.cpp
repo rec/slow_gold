@@ -406,14 +406,6 @@ void Target::addCommands() {
       "NAME", "(None)",
       "Documentation");
 
-#ifdef TODO
-  // Causes a run-time error!
-  add(Command::QUIT, methodCallback(JUCEApplication::getInstance(),
-                                  &JUCEApplication::systemRequestedQuit),
-      "Quit", "File",
-      "Quit SlowGold");
-#endif
-
   registerAllCommandsForTarget();
 }
 

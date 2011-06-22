@@ -10,6 +10,7 @@
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/slow/HasInstance.h"
 #include "rec/music/Metadata.pb.h"
+#include "rec/util/Mode.pb.h"
 #include "rec/util/Switcher.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
@@ -47,7 +48,10 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
   thread::Locker<LoopPointList>* loopLocker() { return &loopLocker_; }
 
+  const Mode mode() { return modeLocker_.get(); }
+
   void zoom(RealTime time, double k);
+  void zoom(double k);
 
   void checkChanged();
   thread::Result fillOnce();
@@ -71,6 +75,7 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<Gain> gainLocker_;
   thread::Locker<LoopPointList> loopLocker_;
   thread::Locker<Metadata> metadataLocker_;
+  thread::Locker<Mode> modeLocker_;
   thread::Locker<StereoProto> stereoLocker_;
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<ZoomProto> zoomLocker_;

@@ -1,0 +1,16 @@
+package rec.util;
+
+message Mode {
+  enum Click {
+    NONE = 0;
+
+    DRAG = 1;
+    DRAW_LOOP_POINTS = 2;
+    SET_TIME = 3;
+    TOGGLE_SELECTION = 4;
+    ZOOM_IN = 5;
+    ZOOM_OUT = 6;
+  };
+
+  optional Click click = 1 [default = SET_TIME];
+};
