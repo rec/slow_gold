@@ -13,6 +13,7 @@
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/Mode.pb.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -46,6 +47,9 @@ Listeners::Listeners(Instance* i)
   player()->level()->addListener(components()->playerController_.levelListener());
 }
 
+Listeners::~Listeners() {}
+
+
 void Listeners::operator()(SamplePosition time) {
   player()->setNextReadPosition(time);
 }
@@ -65,6 +69,10 @@ void Listeners::operator()(const StereoProto& x) {
 
 void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
+}
+
+void Listeners::operator()(const Mode& mode) {
+  mouseListener_->setMode(mode);
 }
 
 void Listeners::operator()(const audio::Gain& g) {

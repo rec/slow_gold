@@ -18,6 +18,7 @@ namespace audio { namespace source { class StereoProto; }}
 namespace gui { class DropFiles; }
 
 namespace util { class LoopPointList; }
+namespace util { class Mode; }
 namespace util { namespace file { class VirtualFile; }}
 namespace util { namespace file { class VirtualFileList; }}
 
@@ -25,13 +26,14 @@ namespace widget { namespace waveform { class ZoomProto; }}
 
 namespace slow {
 
-// class ClockTick;  // kill this class?
 class Instance;
+class MouseListener;
 
 class Listeners : public Listener<None>,
                   public Listener<const VirtualFileList&>,
                   public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
+                  public Listener<const Mode&>,
                   public Listener<const audio::Gain&>,
                   public Listener<const audio::stretch::Stretch&>,
                   public Listener<const audio::source::StereoProto&>,
@@ -40,11 +42,13 @@ class Listeners : public Listener<None>,
                   public HasInstance {
  public:
   explicit Listeners(Instance* i);
+  virtual ~Listeners();
 
   virtual void operator()(None);
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
+  virtual void operator()(const Mode&);
   virtual void operator()(const audio::Gain&);
   virtual void operator()(const audio::source::StereoProto&);
   virtual void operator()(const audio::stretch::Stretch&);
@@ -60,7 +64,7 @@ class Listeners : public Listener<None>,
   }
 
  private:
-  ptr<MouseListener> mouseListener_;
+  ptr<slow::MouseListener> mouseListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Listeners);
 };
