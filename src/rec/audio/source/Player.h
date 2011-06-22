@@ -49,7 +49,7 @@ class Player : public Broadcaster<transport::State>,
   transport::State state() const;
   Device* device() { return device_; }
   Broadcaster<SamplePosition>* timeBroadcaster() { return timer_; }
-  Level* level() { return level_; }
+  Level* level() { return &level_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Buffered* buffered() { return buffered_; }
   void setStereoProto(const StereoProto&);
@@ -64,7 +64,7 @@ class Player : public Broadcaster<transport::State>,
   void clearSource();
   void setStretch(const stretch::Stretch&);
   void setSource(Source*, const stretch::Stretch&,
-                 const block::BlockSet& selection);
+                 const StereoProto&, const block::BlockSet& selection);
 
  private:
   CriticalSection lock_;
@@ -75,12 +75,12 @@ class Player : public Broadcaster<transport::State>,
 
   ptr<Source> source_;
 
+  Timer* timer_;
   Selection* selection_;
   Stretchy* stretchy_;
   Stereo* stereo_;
   Buffered* buffered_;
-  Level* level_;
-  Timer* timer_;
+  Level level_;
 
   DISALLOW_COPY_AND_ASSIGN(Player);
 };

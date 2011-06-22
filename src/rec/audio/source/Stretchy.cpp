@@ -13,7 +13,10 @@ namespace audio {
 namespace source {
 
 Stretchy::Stretchy(PositionableAudioSource* s)
-    : Wrappy(s), scaler_(new AudioTimeScaler), initialized_(false) {
+    : Wrappy(s),
+      scaler_(new AudioTimeScaler),
+      initialized_(false),
+      timeScale_(1.0) {
 }
 
 Stretchy::~Stretchy() {}

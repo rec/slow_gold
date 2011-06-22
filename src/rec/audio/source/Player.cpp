@@ -20,20 +20,22 @@ using namespace rec::audio::transport;
 using namespace rec::audio::stretch;
 
 Player::Player(Device* d)
-    : device_(d), stretchy_(NULL), stereo_(NULL), buffered_(NULL) {
+    : device_(d), timer_(NULL), stretchy_(NULL), stereo_(NULL), buffered_(NULL) {
   device_->manager_.addAudioCallback(&player_);
-  selection_ = new Selection(new Empty());
+  timer_ = new Timer();
+  selection_ = new Selection(timer_);
   stretchy_ = new Stretchy(selection_);
-  stereo_ = new Stereo(selection_);
-  // buffered_ = new Buffered(stereo_);
-  timer_ = new Timer(stereo_); // buffered_);
-  level_ = new Level(timer_);
-  source_.reset(level_);
+  stretchy_->initialize();
+  stereo_ = new Stereo(stretchy_);
 
-  transportSource_.setSource(source_.get());
+  static const bool IS_BUFFERED = false;
+  if (IS_BUFFERED)
+    level_.setSource(buffered_ = new Buffered(stereo_));
+  else
+    level_.setSource(stereo_);
+
+  transportSource_.setSource(&level_);
   player_.setSource(&transportSource_);
-
-  // clearSource();
 }
 
 Player::~Player() {
@@ -60,17 +62,14 @@ void Player::setState(State s) {
 }
 
 void Player::setSource(Source* source, const Stretch& stretch,
+                       const StereoProto& stereo,
                        const block::BlockSet& selection) {
-  selection_ = new Selection(source);
-  selection_->setSelection(selection);
-  stretchy_ = new Stretchy(selection_);
-  stretchy_->setStretch(stretch);
-  ptr<Source> trash(stretchy_);
-  stereo_->swap(&trash);
+  ptr<Source> s(source);
 
-  if (trash)
-    trash->releaseResources();
-  // trash.transfer();  TODO
+  timer_->swap(&s);
+  selection_->setSelection(selection);
+  stretchy_->setStretch(stretch);
+  stretchy_->initialize();
 }
 
 void Player::setStretch(const Stretch& stretch) {
@@ -95,7 +94,7 @@ void Player::setSelection(const block::BlockSet& s) {
 }
 
 void Player::clearSource() {
-  setSource(new Empty, Stretch(), block::BlockSet());
+  setSource(new Empty, Stretch(), StereoProto(), block::BlockSet());
 }
 
 void Player::setGain(const Gain& gain) {
