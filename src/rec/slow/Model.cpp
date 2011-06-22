@@ -171,7 +171,9 @@ void Model::operator()(const VirtualFile& f) {
   player()->setSource(new BufferSource(*buffer), stretchLocker_.get(),
                       stereoLocker_.get(), timeSelection_);
 #else
-  player()->setSource(new GenericBufferSource<short, 2>(*buffer));
+  player()->setSource(new GenericBufferSource<short, 2>(*buffer),
+                      stretchLocker_.get(),
+                      stereoLocker_.get(), timeSelection_);
 #endif
 
   // player()->setStretch(stretchLocker_.get());

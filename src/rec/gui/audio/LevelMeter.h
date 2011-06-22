@@ -16,7 +16,7 @@ class LevelMeter : public Component,
   virtual void operator()(const LevelVector& levels);
   virtual void repaint() { Component::repaint(); }
 
-  static const float SCALE_UP_METER = 1.0f;
+  static const float SCALE_UP_METER = 2.0f;
 
   virtual void paint(Graphics& g);
   void setGain(float g) { ScopedLock l(lock_); gain_ = g; }
