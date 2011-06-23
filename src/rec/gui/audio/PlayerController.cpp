@@ -3,6 +3,8 @@
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 
+static const bool DISABLE_SHIFTS = true;
+
 namespace rec {
 namespace gui {
 namespace audio {
@@ -45,6 +47,10 @@ PlayerController::PlayerController()
   addToLayout(&fineScale_);
   addToLayout(&level_);
   addToLayout(&levelMeter_);
+
+  pitchScale_.setEnabled(DISABLE_SHIFTS);
+  fineScale_.setEnabled(DISABLE_SHIFTS);
+  disableButton_.setEnabled(DISABLE_SHIFTS);
 
   addToLayout(&muteButton_, 14);
   addToLayout(&dimButton_, 14);
@@ -158,7 +164,7 @@ void PlayerController::setZoom(data::UntypedData* data) {
 }
 
 void PlayerController::enableSliders(bool enabled) {
-  playbackSpeed_.setEnabled(enabled);
+  playbackSpeed_.setEnabled(enabled && false);
 }
 
 }  // namespace audio
