@@ -17,7 +17,7 @@ class Timer : public Wrappy, public Broadcaster<SamplePosition> {
     broadcast(position_);
   }
 
-  virtual void setNextReadPosition(SamplePosition time) {
+  virtual void setNextReadPosition(int64 time) {
     Wrappy::setNextReadPosition(time);
     broadcast(time);
   }

@@ -27,6 +27,8 @@ class MouseListener : public juce::MouseListener, public HasInstance,
   virtual void setMode(const Mode& m) { mode_ = m; }
 
  private:
+  Mode::Action getClickAction(const MouseEvent&);
+
   RealTime waveformDragStart_;
   Range<RealTime> cursorDrag_;
   Mode mode_;

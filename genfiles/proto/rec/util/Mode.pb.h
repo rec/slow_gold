@@ -35,29 +35,29 @@ void protobuf_ShutdownFile_rec_2futil_2fMode_2eproto();
 
 class Mode;
 
-enum Mode_Click {
-  Mode_Click_NONE = 0,
-  Mode_Click_DRAG = 1,
-  Mode_Click_DRAW_LOOP_POINTS = 2,
-  Mode_Click_SET_TIME = 3,
-  Mode_Click_TOGGLE_SELECTION = 4,
-  Mode_Click_ZOOM_IN = 5,
-  Mode_Click_ZOOM_OUT = 6
+enum Mode_Action {
+  Mode_Action_NONE = 0,
+  Mode_Action_DRAG = 1,
+  Mode_Action_DRAW_LOOP_POINTS = 2,
+  Mode_Action_SET_TIME = 3,
+  Mode_Action_TOGGLE_SELECTION = 4,
+  Mode_Action_ZOOM_IN = 5,
+  Mode_Action_ZOOM_OUT = 6
 };
-bool Mode_Click_IsValid(int value);
-const Mode_Click Mode_Click_Click_MIN = Mode_Click_NONE;
-const Mode_Click Mode_Click_Click_MAX = Mode_Click_ZOOM_OUT;
-const int Mode_Click_Click_ARRAYSIZE = Mode_Click_Click_MAX + 1;
+bool Mode_Action_IsValid(int value);
+const Mode_Action Mode_Action_Action_MIN = Mode_Action_NONE;
+const Mode_Action Mode_Action_Action_MAX = Mode_Action_ZOOM_OUT;
+const int Mode_Action_Action_ARRAYSIZE = Mode_Action_Action_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Mode_Click_descriptor();
-inline const ::std::string& Mode_Click_Name(Mode_Click value) {
+const ::google::protobuf::EnumDescriptor* Mode_Action_descriptor();
+inline const ::std::string& Mode_Action_Name(Mode_Action value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Mode_Click_descriptor(), value);
+    Mode_Action_descriptor(), value);
 }
-inline bool Mode_Click_Parse(
-    const ::std::string& name, Mode_Click* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Mode_Click>(
-    Mode_Click_descriptor(), name, value);
+inline bool Mode_Action_Parse(
+    const ::std::string& name, Mode_Action* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Mode_Action>(
+    Mode_Action_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -113,43 +113,43 @@ class Mode : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef Mode_Click Click;
-  static const Click NONE = Mode_Click_NONE;
-  static const Click DRAG = Mode_Click_DRAG;
-  static const Click DRAW_LOOP_POINTS = Mode_Click_DRAW_LOOP_POINTS;
-  static const Click SET_TIME = Mode_Click_SET_TIME;
-  static const Click TOGGLE_SELECTION = Mode_Click_TOGGLE_SELECTION;
-  static const Click ZOOM_IN = Mode_Click_ZOOM_IN;
-  static const Click ZOOM_OUT = Mode_Click_ZOOM_OUT;
-  static inline bool Click_IsValid(int value) {
-    return Mode_Click_IsValid(value);
+  typedef Mode_Action Action;
+  static const Action NONE = Mode_Action_NONE;
+  static const Action DRAG = Mode_Action_DRAG;
+  static const Action DRAW_LOOP_POINTS = Mode_Action_DRAW_LOOP_POINTS;
+  static const Action SET_TIME = Mode_Action_SET_TIME;
+  static const Action TOGGLE_SELECTION = Mode_Action_TOGGLE_SELECTION;
+  static const Action ZOOM_IN = Mode_Action_ZOOM_IN;
+  static const Action ZOOM_OUT = Mode_Action_ZOOM_OUT;
+  static inline bool Action_IsValid(int value) {
+    return Mode_Action_IsValid(value);
   }
-  static const Click Click_MIN =
-    Mode_Click_Click_MIN;
-  static const Click Click_MAX =
-    Mode_Click_Click_MAX;
-  static const int Click_ARRAYSIZE =
-    Mode_Click_Click_ARRAYSIZE;
+  static const Action Action_MIN =
+    Mode_Action_Action_MIN;
+  static const Action Action_MAX =
+    Mode_Action_Action_MAX;
+  static const int Action_ARRAYSIZE =
+    Mode_Action_Action_ARRAYSIZE;
   static inline const ::google::protobuf::EnumDescriptor*
-  Click_descriptor() {
-    return Mode_Click_descriptor();
+  Action_descriptor() {
+    return Mode_Action_descriptor();
   }
-  static inline const ::std::string& Click_Name(Click value) {
-    return Mode_Click_Name(value);
+  static inline const ::std::string& Action_Name(Action value) {
+    return Mode_Action_Name(value);
   }
-  static inline bool Click_Parse(const ::std::string& name,
-      Click* value) {
-    return Mode_Click_Parse(name, value);
+  static inline bool Action_Parse(const ::std::string& name,
+      Action* value) {
+    return Mode_Action_Parse(name, value);
   }
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.util.Mode.Click click = 1 [default = SET_TIME];
+  // optional .rec.util.Mode.Action click = 1 [default = SET_TIME];
   inline bool has_click() const;
   inline void clear_click();
   static const int kClickFieldNumber = 1;
-  inline ::rec::util::Mode_Click click() const;
-  inline void set_click(::rec::util::Mode_Click value);
+  inline ::rec::util::Mode_Action click() const;
+  inline void set_click(::rec::util::Mode_Action value);
   
   // @@protoc_insertion_point(class_scope:rec.util.Mode)
  private:
@@ -184,7 +184,7 @@ class Mode : public ::google::protobuf::Message {
 
 // Mode
 
-// optional .rec.util.Mode.Click click = 1 [default = SET_TIME];
+// optional .rec.util.Mode.Action click = 1 [default = SET_TIME];
 inline bool Mode::has_click() const {
   return _has_bit(0);
 }
@@ -192,11 +192,11 @@ inline void Mode::clear_click() {
   click_ = 3;
   _clear_bit(0);
 }
-inline ::rec::util::Mode_Click Mode::click() const {
-  return static_cast< ::rec::util::Mode_Click >(click_);
+inline ::rec::util::Mode_Action Mode::click() const {
+  return static_cast< ::rec::util::Mode_Action >(click_);
 }
-inline void Mode::set_click(::rec::util::Mode_Click value) {
-  GOOGLE_DCHECK(::rec::util::Mode_Click_IsValid(value));
+inline void Mode::set_click(::rec::util::Mode_Action value) {
+  GOOGLE_DCHECK(::rec::util::Mode_Action_IsValid(value));
   _set_bit(0);
   click_ = value;
 }
@@ -212,8 +212,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::util::Mode_Click>() {
-  return ::rec::util::Mode_Click_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::util::Mode_Action>() {
+  return ::rec::util::Mode_Action_descriptor();
 }
 
 }  // namespace google

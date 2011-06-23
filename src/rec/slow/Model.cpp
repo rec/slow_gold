@@ -82,14 +82,13 @@ void Model::jumpToSamplePosition(SamplePosition pos) {
     }
 
     ThumbnailBuffer* buffer = thumbnailBuffer_.current();
-    if (!buffer) {
-      triggerPosition_ = -1;
-      return;
-    }
-    triggerPosition_ = pos;
-    if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
-      buffer->setNextFillPosition(pos);
-      return;
+    if (buffer) {
+      triggerPosition_ = pos;
+      if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
+        buffer->setNextFillPosition(pos);
+        if (player()->state())
+          return;
+      }
     }
     triggerPosition_ = -1;
   }
@@ -193,6 +192,7 @@ void Model::checkChanged() {
   loopLocker_.broadcastIfChanged(this);
   stereoLocker_.broadcastIfChanged(listeners());
   gainLocker_.broadcastIfChanged(listeners());
+  modeLocker_.broadcastIfChanged(listeners());
   // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }

@@ -75,6 +75,7 @@ PlayerController::PlayerController()
   modeComboBox_.addItem("Toggle segment selection", Mode::TOGGLE_SELECTION);
   modeComboBox_.addItem("Zoom in", Mode::ZOOM_IN);
   modeComboBox_.addItem("Zoom out", Mode::ZOOM_OUT);
+  modeComboBox_.addListener(this);
 
   addToLayout(&modeComboBox_, 14);
 }
@@ -146,7 +147,7 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
   } else if (box == &modeComboBox_) {
     if (DataListener<Mode>::data_) {
       Mode mode;
-      mode.set_click(static_cast<Mode::Click>(modeComboBox_.getSelectedId()));
+      mode.set_click(static_cast<Mode::Action>(modeComboBox_.getSelectedId()));
       data::set(DataListener<Mode>::data_, mode);
     }
   }

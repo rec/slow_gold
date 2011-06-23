@@ -18,7 +18,7 @@ namespace {
 const ::google::protobuf::Descriptor* Mode_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Mode_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* Mode_Click_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* Mode_Action_descriptor_ = NULL;
 
 }  // namespace
 
@@ -44,7 +44,7 @@ void protobuf_AssignDesc_rec_2futil_2fMode_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Mode));
-  Mode_Click_descriptor_ = Mode_descriptor_->enum_type(0);
+  Mode_Action_descriptor_ = Mode_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -75,12 +75,12 @@ void protobuf_AddDesc_rec_2futil_2fMode_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\023rec/util/Mode.proto\022\010rec.util\"\247\001\n\004Mode"
-    "\022-\n\005click\030\001 \001(\0162\024.rec.util.Mode.Click:\010S"
-    "ET_TIME\"p\n\005Click\022\010\n\004NONE\020\000\022\010\n\004DRAG\020\001\022\024\n\020"
-    "DRAW_LOOP_POINTS\020\002\022\014\n\010SET_TIME\020\003\022\024\n\020TOGG"
-    "LE_SELECTION\020\004\022\013\n\007ZOOM_IN\020\005\022\014\n\010ZOOM_OUT\020"
-    "\006", 201);
+    "\n\023rec/util/Mode.proto\022\010rec.util\"\251\001\n\004Mode"
+    "\022.\n\005click\030\001 \001(\0162\025.rec.util.Mode.Action:\010"
+    "SET_TIME\"q\n\006Action\022\010\n\004NONE\020\000\022\010\n\004DRAG\020\001\022\024"
+    "\n\020DRAW_LOOP_POINTS\020\002\022\014\n\010SET_TIME\020\003\022\024\n\020TO"
+    "GGLE_SELECTION\020\004\022\013\n\007ZOOM_IN\020\005\022\014\n\010ZOOM_OU"
+    "T\020\006", 203);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/Mode.proto", &protobuf_RegisterTypes);
   Mode::default_instance_ = new Mode();
@@ -98,11 +98,11 @@ struct StaticDescriptorInitializer_rec_2futil_2fMode_2eproto {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* Mode_Click_descriptor() {
+const ::google::protobuf::EnumDescriptor* Mode_Action_descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Mode_Click_descriptor_;
+  return Mode_Action_descriptor_;
 }
-bool Mode_Click_IsValid(int value) {
+bool Mode_Action_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
@@ -118,16 +118,16 @@ bool Mode_Click_IsValid(int value) {
 }
 
 #ifndef _MSC_VER
-const Mode_Click Mode::NONE;
-const Mode_Click Mode::DRAG;
-const Mode_Click Mode::DRAW_LOOP_POINTS;
-const Mode_Click Mode::SET_TIME;
-const Mode_Click Mode::TOGGLE_SELECTION;
-const Mode_Click Mode::ZOOM_IN;
-const Mode_Click Mode::ZOOM_OUT;
-const Mode_Click Mode::Click_MIN;
-const Mode_Click Mode::Click_MAX;
-const int Mode::Click_ARRAYSIZE;
+const Mode_Action Mode::NONE;
+const Mode_Action Mode::DRAG;
+const Mode_Action Mode::DRAW_LOOP_POINTS;
+const Mode_Action Mode::SET_TIME;
+const Mode_Action Mode::TOGGLE_SELECTION;
+const Mode_Action Mode::ZOOM_IN;
+const Mode_Action Mode::ZOOM_OUT;
+const Mode_Action Mode::Action_MIN;
+const Mode_Action Mode::Action_MAX;
+const int Mode::Action_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int Mode::kClickFieldNumber;
@@ -196,7 +196,7 @@ bool Mode::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.util.Mode.Click click = 1 [default = SET_TIME];
+      // optional .rec.util.Mode.Action click = 1 [default = SET_TIME];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -204,8 +204,8 @@ bool Mode::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::util::Mode_Click_IsValid(value)) {
-            set_click(static_cast< ::rec::util::Mode_Click >(value));
+          if (::rec::util::Mode_Action_IsValid(value)) {
+            set_click(static_cast< ::rec::util::Mode_Action >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -234,7 +234,7 @@ bool Mode::MergePartialFromCodedStream(
 
 void Mode::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.util.Mode.Click click = 1 [default = SET_TIME];
+  // optional .rec.util.Mode.Action click = 1 [default = SET_TIME];
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->click(), output);
@@ -248,7 +248,7 @@ void Mode::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Mode::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.util.Mode.Click click = 1 [default = SET_TIME];
+  // optional .rec.util.Mode.Action click = 1 [default = SET_TIME];
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->click(), target);
@@ -265,7 +265,7 @@ int Mode::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.util.Mode.Click click = 1 [default = SET_TIME];
+    // optional .rec.util.Mode.Action click = 1 [default = SET_TIME];
     if (has_click()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->click());

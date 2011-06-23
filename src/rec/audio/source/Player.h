@@ -43,7 +43,7 @@ class Player : public Broadcaster<transport::State>,
   void toggle() { setState(invert(state())); }
 
   SamplePosition getNextReadPosition();
-  void setNextReadPosition(SamplePosition t);
+  void setNextReadPosition(int64 t);
   RealTime getTime() { return samplesToTime(getNextReadPosition()); }
 
   transport::State state() const;

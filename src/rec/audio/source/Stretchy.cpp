@@ -49,7 +49,6 @@ void Stretchy::initialize() {
 
   static const double DELTA = 0.00001;
   timeScale_ = stretch::timeScale(stretch_);
-  DLOG(INFO) << timeScale_;
   bypass_ = stretch_.passthrough_when_disabled() &&
     near(timeScale_, 1.0, DELTA) &&
     near(stretch::pitchScale(stretch_), 1.0, DELTA);

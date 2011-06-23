@@ -46,7 +46,7 @@ SamplePosition Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
 }
 
-void Player::setNextReadPosition(SamplePosition t) {
+void Player::setNextReadPosition(int64 t) {
   selection_->setNextReadPosition(t);
 }
 

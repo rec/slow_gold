@@ -24,47 +24,89 @@ MouseListener::MouseListener(Instance* i)
   listenTo(&components()->waveform_);
 }
 
-static const double WHEEL_RATIO = 0.50;
+
+namespace {
+
+static const double WHEEL_RATIO = 1.0;
 static const double POWER = 4.0;
 static const double SMALL_RATIO = 0.1;
 static const double BIG_RATIO = 2.0;
+static const double ZOOM_INCREMENT = 0.3;
 
-static double zoomFunction(double increment) {
+double zoomFunction(double increment) {
   return pow(POWER, -increment);
 }
 
-static void zoom(Model* model, RealTime time, double increment,
-                 bool isSmall = false, bool isBig = false) {
-  double scale = isSmall ? SMALL_RATIO : isBig ? BIG_RATIO : 1.0;
-  model->zoom(time, zoomFunction(scale * increment));
+void zoom(Model* model, const MouseEvent& e, RealTime time, double increment) {
+  const juce::ModifierKeys& k = e.mods;
+  double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
+  model->zoom(time, zoomFunction(s * increment));
 }
 
+}  // namespace
 
 void MouseListener::operator()(const MouseWheelEvent& e) {
   Waveform* waveform = &components()->waveform_;
   if (e.event_->eventComponent == waveform) {
-    const juce::ModifierKeys& k = e.event_->mods;
-    RealTime time = waveform->xToTime(e.event_->x);
-    double increment = e.yIncrement_ * WHEEL_RATIO;
-    zoom(model(), time, increment, k.isAltDown(), k.isCommandDown());
+    double time = waveform->xToTime(e.event_->x);
+    double inc = (e.xIncrement_ + e.yIncrement_) * WHEEL_RATIO;
+    zoom(model(), *e.event_, time, inc);
   }
+}
+
+Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
+  juce::ModifierKeys k = e.mods;
+
+  bool alt = k.isAltDown();
+  bool cmd = k.isCommandDown();
+  bool rightMenu = k.isPopupMenu();  // Right click or ctrl click.
+  bool shift = k.isShiftDown();
+  bool none = !(alt || cmd || rightMenu || shift);
+
+  Mode::Action modeAction = mode_.click();
+  if (none)
+    return modeAction;
+
+  if (modeAction == Mode::ZOOM_OUT)
+    return shift ? Mode::ZOOM_IN : Mode::ZOOM_OUT;
+
+  if (cmd || modeAction == Mode::ZOOM_IN)
+    return shift ? Mode::ZOOM_OUT : Mode::ZOOM_IN;
+
+  Mode::Action clickAction =
+    alt ? Mode::TOGGLE_SELECTION :
+    rightMenu ? Mode::DRAW_LOOP_POINTS :
+    Mode::DRAG;
+
+  return (clickAction == modeAction) ? Mode::SET_TIME : clickAction;
 }
 
 void MouseListener::mouseDown(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
   if (e.eventComponent == waveform) {
     RealTime time = waveform->xToTime(e.x);
-    if (e.mods.isShiftDown())
+    Mode::Action action = getClickAction(e);
+    // DLOG(INFO) << "Action: " << Mode::Action_Name(action);
+    if (action == Mode::DRAG)
       waveformDragStart_ = model()->zoomLocker()->get().begin();
 
-    else if (e.mods.isAltDown())
+    else if (action == Mode::DRAW_LOOP_POINTS)
       components()->loops_.addLoopPoint(time);
 
-    else if (e.mods.isCommandDown())
+    else if (action == Mode::TOGGLE_SELECTION)
       model()->toggleSelectionSegment(time);
 
-    else
+    else if (action == Mode::SET_TIME)
       model()->jumpToTime(time);
+
+    else if (action == Mode::ZOOM_IN)
+      zoom(model(), e, time, ZOOM_INCREMENT);
+
+    else if (action == Mode::ZOOM_OUT)
+      zoom(model(), e, time, -ZOOM_INCREMENT);
+
+    else
+      DCHECK(false);
 
     waveform->grabKeyboardFocus();
     waveform->repaint();  // TODO: can remove now?
@@ -85,8 +127,8 @@ void MouseListener::mouseDown(const MouseEvent& e) {
 void MouseListener::mouseDrag(const MouseEvent& e) {
   Waveform* waveform = &components()->waveform_;
   if (e.eventComponent == waveform) {
-    RealTime time = waveform->xToTime(e.x);
-    if (e.mods.isShiftDown()) {
+    Mode::Action action = getClickAction(e);
+    if (action == Mode::DRAG) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       ZoomProto zoom(model()->zoomLocker()->get());
       RealTime length = player()->realLength();
@@ -99,8 +141,6 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 
       zoom.set_end(zoom.begin() + size);
       model()->zoomLocker()->set(zoom);
-    } else {
-      model()->jumpToSamplePosition(timeToSamples(time));
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {
@@ -113,7 +153,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {
-#ifdef TODO
+#ifdef DEAD
   if (e.mods.isShiftDown())
     zoomOut();
 
@@ -133,10 +173,10 @@ void MouseListener::mouseUp(const MouseEvent& e) {
 }
 
 void MouseListener::mouseDoubleClick(const MouseEvent& e) {
+#if 0
   if (!target()->invokeDirectly(command::Command::OPEN))
     LOG(ERROR) << "Unable to start open dialog";
 
-#if 0
   else
     DLOG(INFO) << "Opened a new file!";
 #endif
