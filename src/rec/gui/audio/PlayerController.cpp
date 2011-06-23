@@ -3,7 +3,7 @@
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 
-static const bool DISABLE_SHIFTS = true;
+static const bool ENABLE_SHIFTS = false;
 
 namespace rec {
 namespace gui {
@@ -48,9 +48,9 @@ PlayerController::PlayerController()
   addToLayout(&level_);
   addToLayout(&levelMeter_);
 
-  pitchScale_.setEnabled(DISABLE_SHIFTS);
-  fineScale_.setEnabled(DISABLE_SHIFTS);
-  disableButton_.setEnabled(DISABLE_SHIFTS);
+  pitchScale_.setEnabled(ENABLE_SHIFTS);
+  fineScale_.setEnabled(ENABLE_SHIFTS);
+  disableButton_.setEnabled(ENABLE_SHIFTS);
 
   addToLayout(&muteButton_, 14);
   addToLayout(&dimButton_, 14);
