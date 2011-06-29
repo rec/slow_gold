@@ -19,21 +19,6 @@
 namespace rec {
 namespace slow {
 
-void clearNavigator() { persist::set(VirtualFileList()); }
-
-
-void dimVolumeToggle(Instance* i) {
-  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
-  gain.set_dim(!gain.dim());
-  persist::set(gain, i->model_->file());
-}
-
-void muteVolumeToggle(Instance* i) {
-  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
-  gain.set_mute(!gain.mute());
-  persist::set(gain, i->model_->file());
-}
-
 void nudgeVolumeDown(Instance* i) {
   audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
   if (!(gain.dim() || gain.mute())) {
@@ -50,30 +35,26 @@ void nudgeVolumeUp(Instance* i) {
   }
 }
 
-void resetGainToUnity(Instance* i) {
+// Fix everything above here.
+
+void clearNavigator() { persist::set(VirtualFileList()); }
+
+void dimVolumeToggle(Instance* i) {
   audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
-  gain.set_level(0);
+  gain.set_dim(!gain.dim());
   persist::set(gain, i->model_->file());
 }
 
-
-void jumpToLoopPoint(Instance* i, int offset) {
-  LoopPointList loops(i->model_->loopPointList());
-  SamplePosition time = i->player_->getNextReadPosition();
-  int j = 0, size = loops.loop_point_size();
-  for (; j < size && time >= loops.loop_point(j).time(); ++j);
-  j += offset;
-  if (j >= size)
-    j = 0;
-  else if (j < 0)
-    j = size - 1;
-
-  SamplePosition pos = audio::timeToSamples(loops.loop_point(j).time());
-  i->model_->jumpToSamplePosition(pos);
+void muteVolumeToggle(Instance* i) {
+  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  gain.set_mute(!gain.mute());
+  persist::set(gain, i->model_->file());
 }
 
-void jumpToStart(Instance* i) {
- i->model_->jumpToSamplePosition(i->model_->timeSelection().begin()->first);
+void resetGainToUnity(Instance* i) {
+  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  gain.set_gain(0);
+  persist::set(gain, i->model_->file());
 }
 
 void keyboardMappings(Instance* i) {
@@ -115,6 +96,7 @@ void midiMappings(Instance* i) {
   persist::set(i->target_->midiCommandMap()->getProto());
 }
 
+
 void nudgeBeginLeft(Instance* i) {
 }
 
@@ -128,12 +110,6 @@ void nudgeEndRight(Instance* i) {
 }
 
 void recentFiles(Instance* i) {
-}
-
-void toggleWholeSongLoop(Instance* i) {
-}
-
-void toggleStartStop(Instance* i) {
 }
 
 void toggleStretchEnable(Instance* i) {

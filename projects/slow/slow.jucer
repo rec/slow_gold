@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="AWl3Rp0vl" name="Slow">
+  <MAINGROUP id="TtImH0BYc" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -749,6 +749,10 @@
               name="Listeners.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Listeners.h" id="pXQhQUBxt"
               name="Listeners.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/LoopsTimeAndSelection.cpp"
+              id="guGgoiHup" name="LoopsTimeAndSelection.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/LoopsTimeAndSelection.h"
+              id="b56eyq0U3" name="LoopsTimeAndSelection.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/MainPage.cpp" id="Yb6XqQ9y0"
               name="MainPage.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/MainPage.h" id="zfK7drYod"
@@ -1203,16 +1207,16 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="vtxeoufRv" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="vjdJlAw3k" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
-               JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSOUND="default"
-               JUCE_ENABLE_REPAINT_DEBUGGING="default" JUCE_FORCE_DEBUG="default"
-               JUCE_LOG_ASSERTIONS="default" JUCE_ONLY_BUILD_CORE_LIBRARY="default"
-               JUCE_OPENGL="default" JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default"
-               JUCE_QUICKTIME="default" JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default"
-               JUCE_USE_CDBURNER="enabled" JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default"
-               JUCE_USE_OGGVORBIS="default" JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default"
-               JUCE_USE_XRENDER="default" JUCE_USE_XSHM="default" JUCE_WASAPI="default"
-               JUCE_WEB_BROWSER="default" JUCE_DIRECTSHOW="default" JUCE_MEDIAFOUNDATION="default"/>
+               JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
+               JUCE_DIRECTSOUND="default" JUCE_ENABLE_REPAINT_DEBUGGING="default"
+               JUCE_FORCE_DEBUG="default" JUCE_LOG_ASSERTIONS="default" JUCE_MEDIAFOUNDATION="default"
+               JUCE_ONLY_BUILD_CORE_LIBRARY="default" JUCE_OPENGL="default"
+               JUCE_PLUGINHOST_AU="default" JUCE_PLUGINHOST_VST="default" JUCE_QUICKTIME="default"
+               JUCE_SUPPORT_CARBON="default" JUCE_USE_CAMERA="default" JUCE_USE_CDBURNER="enabled"
+               JUCE_USE_CDREADER="enabled" JUCE_USE_FLAC="default" JUCE_USE_OGGVORBIS="default"
+               JUCE_USE_XCURSOR="default" JUCE_USE_XINERAMA="default" JUCE_USE_XRENDER="default"
+               JUCE_USE_XSHM="default" JUCE_WASAPI="default" JUCE_WEB_BROWSER="default"/>
 </JUCERPROJECT>

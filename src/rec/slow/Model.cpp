@@ -198,6 +198,7 @@ void Model::checkChanged() {
 }
 
 void Model::toggleSelectionSegment(RealTime time) {
+  // TODO: unify with LoopsAndTime.
   ScopedLock l(lock_);
   LoopPointList loops(loopLocker_.get());
 

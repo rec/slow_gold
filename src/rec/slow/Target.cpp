@@ -126,17 +126,22 @@ void Target::addCommands() {
       "Extend Beginning", "Selection",
       "Enable the segment before the first one.");
 
-  add(Command::JUMP_TO_NEXT_LOOP_POINT,
-      functionCallback(&jumpToLoopPoint, instance_, 1),
+  add(Command::JUMP_TO_NEXT_LOOP_POINT_AND_SELECT,
+      functionCallback(&jumpToNextLoopPoint, instance_),
       "Jump To Next", "Transport",
       "Immediately jump to the next loop point in the selected region.");
 
-  add(Command::JUMP_TO_PREVIOUS_LOOP_POINT,
-      functionCallback(&jumpToLoopPoint, instance_, -1),
+  add(Command::JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT,
+      functionCallback(&jumpToPreviousLoopPoint, instance_),
       "Jump To Previous", "Transport",
       "Immediately jump to the previous loop point in the selected region.");
 
-  add(Command::JUMP_TO_START,
+  add(Command::JUMP_TO_END_AND_SELECT,
+      functionCallback(&jumpToStart, instance_),
+      "Jump To Start", "Transport",
+      "Jump to the beginning of the selected region.");
+
+  add(Command::JUMP_TO_START_AND_SELECT,
       functionCallback(&jumpToStart, instance_),
       "Jump To Start", "Transport",
       "Jump to the beginning of the selected region.");

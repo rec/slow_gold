@@ -11,6 +11,7 @@
 #include "rec/slow/HasInstance.h"
 #include "rec/music/Metadata.pb.h"
 #include "rec/util/Mode.pb.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/Switcher.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
@@ -36,6 +37,8 @@ class Model : public Listener<const VirtualFile&>,
   typedef music::Metadata Metadata;
   typedef widget::waveform::ZoomProto ZoomProto;
 
+  typedef audio::util::ThumbnailBuffer ThumbnailBuffer;
+
   explicit Model(Instance* i);
   virtual ~Model() {}
 
@@ -57,14 +60,14 @@ class Model : public Listener<const VirtualFile&>,
   thread::Result fillOnce();
   void jumpToSamplePosition(SamplePosition p);
   void jumpToTime(RealTime t);
-  Switcher<audio::util::ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
+  Switcher<ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
   void toggleSelectionSegment(RealTime time);
   void setCursorTime(int index, RealTime time);
 
   const LoopPointList loopPointList() { return loopLocker_.get(); }
   const VirtualFile file() const { ScopedLock l(lock_); return file_; }
   bool empty() const { return file::empty(file()); }
-  const block::BlockSet& timeSelection() const { return timeSelection_; }
+  const SampleSelection& timeSelection() const { return timeSelection_; }
 
  private:
   CriticalSection lock_;
@@ -82,9 +85,9 @@ class Model : public Listener<const VirtualFile&>,
 
   SamplePosition time_;
   SamplePosition triggerPosition_;
-  block::BlockSet timeSelection_;
+  SampleSelection timeSelection_;
 
-  Switcher<audio::util::ThumbnailBuffer> thumbnailBuffer_;
+  Switcher<ThumbnailBuffer> thumbnailBuffer_;
   persist::Data<LoopPointList>* loopData_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);

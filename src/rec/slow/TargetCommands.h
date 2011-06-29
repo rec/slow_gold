@@ -9,10 +9,7 @@ namespace slow {
 class Instance;
 
 void clearNavigator();
-
 void dimVolumeToggle(Instance*);
-void jumpToLoopPoint(Instance*, int offset);
-void jumpToStart(Instance*);
 void keyboardMappings(Instance*);
 void midiMappings(Instance*);
 void muteVolumeToggle(Instance*);
@@ -25,7 +22,6 @@ void nudgeVolumeUp(Instance*);
 void recentFiles(Instance*);
 void resetGainToUnity(Instance*);
 void toggleWholeSongLoop(Instance*);
-void toggleStartStop(Instance*);
 void toggleStretchEnable(Instance*);
 void treeClose(Instance*);
 void treeDown(Instance*);

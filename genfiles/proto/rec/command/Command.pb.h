@@ -57,9 +57,13 @@ enum Command_Type {
   Command_Type_EXTEND_TO_NEXT_LOOP_POINT = 73,
   Command_Type_EXTEND_TO_PREVIOUS_LOOP_POINT = 74,
   Command_Type_INVERT_LOOP_SELECTION = 19,
-  Command_Type_JUMP_TO_NEXT_LOOP_POINT = 8,
-  Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT = 9,
-  Command_Type_JUMP_TO_START = 10,
+  Command_Type_JUMP_TO_NEXT_LOOP_POINT_AND_SELECT = 8,
+  Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT = 9,
+  Command_Type_JUMP_TO_START_AND_SELECT = 10,
+  Command_Type_JUMP_TO_END_AND_SELECT = 87,
+  Command_Type_JUMP_TO_NEXT_LOOP_POINT_IN_SELECTION = 80,
+  Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT_IN_SELECTION = 81,
+  Command_Type_JUMP_TO_START_OF_SELECTION = 82,
   Command_Type_KEYBOARD_MAPPINGS = 18,
   Command_Type_MIDI_MAPPINGS = 17,
   Command_Type_MUTE_VOLUME_TOGGLE = 78,
@@ -92,6 +96,10 @@ enum Command_Type {
   Command_Type_SELECT_ONLY_7 = 37,
   Command_Type_SELECT_ONLY_8 = 38,
   Command_Type_SELECT_ONLY_9 = 39,
+  Command_Type_SELECT_FIRST_ONLY = 83,
+  Command_Type_SELECT_LAST_ONLY = 84,
+  Command_Type_SELECT_NEXT_ONLY = 85,
+  Command_Type_SELECT_PREVIOUS_ONLY = 86,
   Command_Type_TOGGLE_0 = 40,
   Command_Type_TOGGLE_1 = 41,
   Command_Type_TOGGLE_2 = 42,
@@ -123,7 +131,7 @@ enum Command_Type {
   Command_Type_UNSELECT_9 = 69,
   Command_Type_ZOOM_IN = 70,
   Command_Type_ZOOM_OUT = 71,
-  Command_Type_LAST_COMMAND = 79
+  Command_Type_LAST_COMMAND = 87
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
@@ -216,9 +224,13 @@ class Command : public ::google::protobuf::Message {
   static const Type EXTEND_TO_NEXT_LOOP_POINT = Command_Type_EXTEND_TO_NEXT_LOOP_POINT;
   static const Type EXTEND_TO_PREVIOUS_LOOP_POINT = Command_Type_EXTEND_TO_PREVIOUS_LOOP_POINT;
   static const Type INVERT_LOOP_SELECTION = Command_Type_INVERT_LOOP_SELECTION;
-  static const Type JUMP_TO_NEXT_LOOP_POINT = Command_Type_JUMP_TO_NEXT_LOOP_POINT;
-  static const Type JUMP_TO_PREVIOUS_LOOP_POINT = Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT;
-  static const Type JUMP_TO_START = Command_Type_JUMP_TO_START;
+  static const Type JUMP_TO_NEXT_LOOP_POINT_AND_SELECT = Command_Type_JUMP_TO_NEXT_LOOP_POINT_AND_SELECT;
+  static const Type JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT = Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT;
+  static const Type JUMP_TO_START_AND_SELECT = Command_Type_JUMP_TO_START_AND_SELECT;
+  static const Type JUMP_TO_END_AND_SELECT = Command_Type_JUMP_TO_END_AND_SELECT;
+  static const Type JUMP_TO_NEXT_LOOP_POINT_IN_SELECTION = Command_Type_JUMP_TO_NEXT_LOOP_POINT_IN_SELECTION;
+  static const Type JUMP_TO_PREVIOUS_LOOP_POINT_IN_SELECTION = Command_Type_JUMP_TO_PREVIOUS_LOOP_POINT_IN_SELECTION;
+  static const Type JUMP_TO_START_OF_SELECTION = Command_Type_JUMP_TO_START_OF_SELECTION;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
   static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
   static const Type MUTE_VOLUME_TOGGLE = Command_Type_MUTE_VOLUME_TOGGLE;
@@ -251,6 +263,10 @@ class Command : public ::google::protobuf::Message {
   static const Type SELECT_ONLY_7 = Command_Type_SELECT_ONLY_7;
   static const Type SELECT_ONLY_8 = Command_Type_SELECT_ONLY_8;
   static const Type SELECT_ONLY_9 = Command_Type_SELECT_ONLY_9;
+  static const Type SELECT_FIRST_ONLY = Command_Type_SELECT_FIRST_ONLY;
+  static const Type SELECT_LAST_ONLY = Command_Type_SELECT_LAST_ONLY;
+  static const Type SELECT_NEXT_ONLY = Command_Type_SELECT_NEXT_ONLY;
+  static const Type SELECT_PREVIOUS_ONLY = Command_Type_SELECT_PREVIOUS_ONLY;
   static const Type TOGGLE_0 = Command_Type_TOGGLE_0;
   static const Type TOGGLE_1 = Command_Type_TOGGLE_1;
   static const Type TOGGLE_2 = Command_Type_TOGGLE_2;

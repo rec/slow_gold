@@ -26,6 +26,14 @@ void selectItemOnly(Instance*, int);
 void unselectItem(Instance*, int);
 void toggleItem(Instance*, int);
 
+void toggleWholeSongLoop(Instance*);
+void jumpToNextLoopPoint(Instance*);
+void jumpToPreviousLoopPoint(Instance*);
+void jumpToStart(Instance*);
+void jumpToNextLoopPointInSelection(Instance*);
+void jumpToPreviousLoopPointInSelection(Instance*);
+void jumpToStartOfSelection(Instance*);
+
 }  // namespace slow
 }  // namespace rec
 

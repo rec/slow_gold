@@ -5,10 +5,11 @@
 namespace rec {
 namespace audio {
 
-block::BlockSet getTimeSelection(const LoopPointList& list,
-                                 RealTime length, double scale,
-                                 bool emptyMeansAll) {
-  block::BlockSet sel;
+const SampleSelection getTimeSelection(const LoopPointList& list,
+                                       RealTime length,
+                                       double scale,
+                                       bool emptyMeansAll) {
+  SampleSelection sel;
   for (int i = 0, j, size = list.loop_point_size(); i < size; ) {
     for (; i < size && !list.loop_point(i).selected(); ++i);
     for (j = i; j < size && list.loop_point(j).selected(); ++j);
@@ -23,7 +24,6 @@ block::BlockSet getTimeSelection(const LoopPointList& list,
     sel.insert(block::makeBlock(0, timeToSamples(length)));
   return sel;
 }
-
 
 }  // namespace audio
 }  // namespace rec

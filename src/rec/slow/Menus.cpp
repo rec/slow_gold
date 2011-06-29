@@ -89,9 +89,9 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");
 
   } else if (menuName == "Transport") {
-    add(&m, Command::JUMP_TO_START);
-    add(&m, Command::JUMP_TO_NEXT_LOOP_POINT);
-    add(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT);
+    add(&m, Command::JUMP_TO_START_OF_SELECTION);
+    add(&m, Command::JUMP_TO_NEXT_LOOP_POINT_IN_SELECTION);
+    add(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT_IN_SELECTION);
 
   } else if (menuName == "Loops") {
     add(&m, Command::CLEAR_LOOPS);

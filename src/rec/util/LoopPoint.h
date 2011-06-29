@@ -5,14 +5,19 @@
 #include "rec/audio/Audio.h"
 
 namespace rec {
-namespace util { class LoopPointList; }
+namespace util {
+
+class LoopPointList;
+typedef block::BlockSet SampleSelection;
+
+}
 
 namespace audio {
 
-block::BlockSet getTimeSelection(const LoopPointList&,
-                                 RealTime length,
-                                 double scale = 1.0,
-                                 bool emptyMeansAll = true);
+const SampleSelection getTimeSelection(const LoopPointList&,
+                                       RealTime length,
+                                       double scale = 1.0,
+                                       bool emptyMeansAll = true);
 
 }  // namespace audio
 }  // namespace rec
