@@ -181,13 +181,6 @@ void Loops::addLoopPoint(RealTime time) {
   addLoopPoints(loops);
 }
 
-void Loops::clearSelection() {
-  for (int i = 0; i < loopPoints_->loop_point_size(); ++i)
-    loopPoints_->mutable_loop_point(i)->set_selected(false);
-
-  data::set(getData(), Address(), loopPoints_);
-}
-
 void Loops::clearLoops() {
   loopPoints_->Clear();
   data::set(getData(), Address(), loopPoints_);

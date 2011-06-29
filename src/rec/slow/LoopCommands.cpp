@@ -10,106 +10,87 @@ namespace slow {
 
 namespace {
 
-typedef LoopSnapshot::Map Map;
-
-int getContainingSegment(const LoopSnapshot& snapshot) {
-  const LoopPointList& loops = snapshot.loops_;
-  for (int i = 1; ; ++i) {
-    if (i >= loops.loop_point_size() || snapshot.time_ < loops.loop_point(i).time())
-      return i - 1;
-  }
-}
-
-int getSelectionCount(const LoopPointList& loops) {
-  int c = 0, size = loops.loop_point_size();
-  for (int i = 0; i < size; ++i) {
-    if (loops.loop_point(i).selected())
-      c++;
-  }
-  return c ? c : size;
-}
-
-bool toggleWholeSongLoop(LoopSnapshot* snapshot) {
-  LoopPointList& loops = snapshot->loops_;
-  int size = loops.loop_point_size();
-  if (size == 1)
-    return false;
-
-  int segment = getContainingSegment(*snapshot);
-  bool selectAll = (getSelectionCount(snapshot->loops_) == 1);
-  for (int i = 0; i < size; ++i)
-    loops.mutable_loop_point(i)->set_selected(selectAll || i == segment);
-
+bool clearLoops(LoopSnapshot* s) {
+  s->loops_.Clear();
   return true;
 }
 
-bool clearLoops(LoopSnapshot* snapshot) {
+template <typename Operator>
+bool apply(Operator op, LoopSnapshot* s) {
+  LoopPointList* loops = &s->loops_;
+  for (int i = 0; i < loops->loop_point_size(); ++i) {
+    LoopPoint* lp = loops->mutable_loop_point(i);
+    lp->set_selected((*op)(lp->selected(), i, s));
+  }
+  return true;
+}
+
+bool selectAllOp(bool, int, LoopSnapshot*) { return true; }
+bool deselectAllOp(bool, int, LoopSnapshot*) { return false; }
+bool selectInvOp(bool s, int, LoopSnapshot*) { return !s; }
+bool selectFirstOp(bool, int i, LoopSnapshot*) { return !i; }
+bool selectLastOp(bool, int i, LoopSnapshot* s) { return i != s->loopSize_; }
+bool selectNextOp(bool, int i, LoopSnapshot* s) { return i == s->next_; }
+bool selectPreviousOp(bool, int i, LoopSnapshot* s) { return i == s->next_; }
+
+bool toggleWholeOp(bool, int i, LoopSnapshot* s) {
+  return (s->selectionCount_ == 1) || (i == s->segment_);
+}
+
+bool deselectAll(LoopSnapshot* s) { return apply(selectAllOp, s); }
+bool selectAll(LoopSnapshot* s) { return apply(deselectAllOp, s); }
+bool invertLoopSelection(LoopSnapshot* s) { return apply(selectInvOp, s); }
+bool toggleWholeSongLoop(LoopSnapshot* s) { return apply(toggleWholeOp, s); }
+bool selectFirstOnly(LoopSnapshot* s) { return apply(selectFirstOp, s); }
+bool selectLastOnly(LoopSnapshot* s) { return apply(selectLastOp, s); }
+bool selectNextOnly(LoopSnapshot* s) { return apply(selectNextOp, s); }
+bool selectPreviousOnly(LoopSnapshot* s) { return apply(selectPreviousOp, s); }
+
+bool contractFromNextLoopPoint(LoopSnapshot* s) {
   return false;
 }
 
-bool contractFromNextLoopPoint(LoopSnapshot* snapshot) {
+bool contractFromPreviousLoopPoint(LoopSnapshot* s) {
   return false;
 }
 
-bool contractFromPreviousLoopPoint(LoopSnapshot* snapshot) {
+bool extendToNextLoopPoint(LoopSnapshot* s) {
   return false;
 }
 
-bool extendToNextLoopPoint(LoopSnapshot* snapshot) {
+bool extendToPreviousLoopPoint(LoopSnapshot* s) {
   return false;
 }
 
-bool extendToPreviousLoopPoint(LoopSnapshot* snapshot) {
+bool jumpToEndAndSelect(LoopSnapshot* s) {
   return false;
 }
 
-bool invertLoopSelection(LoopSnapshot* snapshot) {
+bool jumpToNextLoopPointAndSelect(LoopSnapshot* s) {
   return false;
 }
 
-bool jumpToEndAndSelect(LoopSnapshot* snapshot) {
+bool jumpToNextLoopPointInSelection(LoopSnapshot* s) {
   return false;
 }
 
-bool jumpToNextLoopPointAndSelect(LoopSnapshot* snapshot) {
+bool jumpToPreviousLoopPointAndSelect(LoopSnapshot* s) {
   return false;
 }
 
-bool jumpToNextLoopPointInSelection(LoopSnapshot* snapshot) {
+bool jumpToPreviousLoopPointInSelection(LoopSnapshot* s) {
   return false;
 }
 
-bool jumpToPreviousLoopPointAndSelect(LoopSnapshot* snapshot) {
+bool jumpToStartAndSelect(LoopSnapshot* s) {
   return false;
 }
 
-bool jumpToPreviousLoopPointInSelection(LoopSnapshot* snapshot) {
+bool jumpToStartOfSelection(LoopSnapshot* s) {
   return false;
 }
 
-bool jumpToStartAndSelect(LoopSnapshot* snapshot) {
-  return false;
-}
-
-bool jumpToStartOfSelection(LoopSnapshot* snapshot) {
-  return false;
-}
-
-bool selectFirstOnly(LoopSnapshot* snapshot) {
-  return false;
-}
-
-bool selectLastOnly(LoopSnapshot* snapshot) {
-  return false;
-}
-
-bool selectNextOnly(LoopSnapshot* snapshot) {
-  return false;
-}
-
-bool selectPreviousOnly(LoopSnapshot* snapshot) {
-  return false;
-}
+typedef LoopSnapshot::Map Map;
 
 const Map& getLoopMap() {
   static const Map::value_type values[] = {
@@ -119,6 +100,8 @@ const Map& getLoopMap() {
               &contractFromNextLoopPoint),
     make_pair(Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT,
               &contractFromPreviousLoopPoint),
+    make_pair(Command::DESELECT_ALL,
+              &deselectAll),
     make_pair(Command::EXTEND_TO_NEXT_LOOP_POINT,
               &extendToNextLoopPoint),
     make_pair(Command::EXTEND_TO_PREVIOUS_LOOP_POINT,
@@ -139,6 +122,8 @@ const Map& getLoopMap() {
               &jumpToStartAndSelect),
     make_pair(Command::JUMP_TO_START_OF_SELECTION,
               &jumpToStartOfSelection),
+    make_pair(Command::SELECT_ALL,
+              &selectAll),
     make_pair(Command::SELECT_FIRST_ONLY,
               &selectFirstOnly),
     make_pair(Command::SELECT_LAST_ONLY,
@@ -156,7 +141,6 @@ const Map& getLoopMap() {
 }
 
 }  // namespace
-
 
 bool executeLoopCommand(Command::Type command, Instance* instance) {
   return LoopSnapshot(instance).execute(command, getLoopMap());

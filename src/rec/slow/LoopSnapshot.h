@@ -19,6 +19,11 @@ struct LoopSnapshot {
   LoopPointList loops_;
   SamplePosition time_;
   SampleSelection selection_;
+  int loopSize_;
+  int selectionCount_;
+  int segment_;
+  int next_;
+  int previous_;
 
   typedef bool (*Function)(LoopSnapshot*);
   typedef command::Command::Type Command;
