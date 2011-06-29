@@ -81,6 +81,13 @@
 			sepNavWindowFrame = "{{245, 95}, {1093, 868}}";
 		};
 	};
+	0E735A0D3C040525F106AFB9 /* LoopSnapshot.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {777, 705}}";
+			sepNavSelRange = "{464, 0}";
+			sepNavVisRange = "{0, 699}";
+		};
+	};
 	107F029BEE50E0870F8E5A13 /* Main.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1107, 530}}";
@@ -312,6 +319,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {1043, 637}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 1302}";
+		};
+	};
+	3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {777, 2210}}";
+			sepNavSelRange = "{4311, 0}";
+			sepNavVisRange = "{0, 1311}";
 		};
 	};
 	350C32878B8796E199D10089 /* PersistentWindow.h */ = {
@@ -565,6 +579,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {495, 618}}";
 			sepNavSelRange = "{113, 61}";
 			sepNavVisRange = "{0, 955}";
+		};
+	};
+	5E34B583CA3C7CE242635FA0 /* LoopSnapshot.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {777, 705}}";
+			sepNavSelRange = "{117, 0}";
+			sepNavVisRange = "{0, 640}";
 		};
 	};
 	5ED1168880CCFD011384A06B /* MakeThread.cpp */ = {
@@ -823,14 +844,6 @@
 			sepNavWindowFrame = "{{15, 33}, {921, 1140}}";
 		};
 	};
-	935D25A6E44CEB67BF5B50AC /* LoopsTimeAndSelection.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1047, 858}}";
-			sepNavSelRange = "{82, 0}";
-			sepNavVisRange = "{0, 1114}";
-			sepNavWindowFrame = "{{61, 313}, {836, 818}}";
-		};
-	};
 	94646382FAB21A45C282242D /* Math.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {959, 1019}}";
@@ -900,8 +913,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 331011930;
-			PBXWorkspaceStateSaveDate = 331011930;
+			PBXPerProjectTemplateStateSaveDate = 331060162;
+			PBXWorkspaceStateSaveDate = 331060162;
 		};
 		perUserProjectItems = {
 			E202E8EC13A07D6A000D0601 = E202E8EC13A07D6A000D0601 /* PBXTextBookmark */;
@@ -955,16 +968,26 @@
 			E264814B13B90D6500CBE60D = E264814B13B90D6500CBE60D /* PBXTextBookmark */;
 			E264817013B9584700CBE60D = E264817013B9584700CBE60D /* PBXTextBookmark */;
 			E264817113B9584700CBE60D = E264817113B9584700CBE60D /* PBXTextBookmark */;
-			E26481A813BAD79800CBE60D /* XCBuildMessageTextBookmark */ = E26481A813BAD79800CBE60D /* XCBuildMessageTextBookmark */;
-			E26481AD13BAD7A100CBE60D /* PBXTextBookmark */ = E26481AD13BAD7A100CBE60D /* PBXTextBookmark */;
-			E26481B213BAD7C900CBE60D /* XCBuildMessageTextBookmark */ = E26481B213BAD7C900CBE60D /* XCBuildMessageTextBookmark */;
-			E26481B513BAD7CD00CBE60D /* PBXTextBookmark */ = E26481B513BAD7CD00CBE60D /* PBXTextBookmark */;
-			E26481C613BAD82D00CBE60D /* XCBuildMessageTextBookmark */ = E26481C613BAD82D00CBE60D /* XCBuildMessageTextBookmark */;
-			E26481C913BAD83400CBE60D /* PBXTextBookmark */ = E26481C913BAD83400CBE60D /* PBXTextBookmark */;
-			E26481CA13BAD83C00CBE60D /* PBXTextBookmark */ = E26481CA13BAD83C00CBE60D /* PBXTextBookmark */;
-			E26481CB13BAD87800CBE60D /* XCBuildMessageTextBookmark */ = E26481CB13BAD87800CBE60D /* XCBuildMessageTextBookmark */;
-			E26481D013BAD8DB00CBE60D /* PBXTextBookmark */ = E26481D013BAD8DB00CBE60D /* PBXTextBookmark */;
-			E26481D113BAD8DB00CBE60D /* PBXTextBookmark */ = E26481D113BAD8DB00CBE60D /* PBXTextBookmark */;
+			E26481A813BAD79800CBE60D = E26481A813BAD79800CBE60D /* PBXTextBookmark */;
+			E26481AD13BAD7A100CBE60D = E26481AD13BAD7A100CBE60D /* PBXTextBookmark */;
+			E26481B213BAD7C900CBE60D = E26481B213BAD7C900CBE60D /* PBXTextBookmark */;
+			E26481B513BAD7CD00CBE60D = E26481B513BAD7CD00CBE60D /* PBXTextBookmark */;
+			E26481C613BAD82D00CBE60D = E26481C613BAD82D00CBE60D /* PBXTextBookmark */;
+			E26481C913BAD83400CBE60D = E26481C913BAD83400CBE60D /* PBXTextBookmark */;
+			E26481CA13BAD83C00CBE60D = E26481CA13BAD83C00CBE60D /* PBXTextBookmark */;
+			E26481CB13BAD87800CBE60D = E26481CB13BAD87800CBE60D /* PBXTextBookmark */;
+			E26481D013BAD8DB00CBE60D = E26481D013BAD8DB00CBE60D /* PBXTextBookmark */;
+			E26481D113BAD8DB00CBE60D = E26481D113BAD8DB00CBE60D /* PBXTextBookmark */;
+			E26481E813BB96E000CBE60D /* XCBuildMessageTextBookmark */ = E26481E813BB96E000CBE60D /* XCBuildMessageTextBookmark */;
+			E26481F313BB973C00CBE60D /* XCBuildMessageTextBookmark */ = E26481F313BB973C00CBE60D /* XCBuildMessageTextBookmark */;
+			E26481F413BB973C00CBE60D /* PBXTextBookmark */ = E26481F413BB973C00CBE60D /* PBXTextBookmark */;
+			E26481F713BB973C00CBE60D /* PBXTextBookmark */ = E26481F713BB973C00CBE60D /* PBXTextBookmark */;
+			E26481FA13BB973C00CBE60D /* PBXTextBookmark */ = E26481FA13BB973C00CBE60D /* PBXTextBookmark */;
+			E26481FB13BB973C00CBE60D /* PBXTextBookmark */ = E26481FB13BB973C00CBE60D /* PBXTextBookmark */;
+			E26481FC13BB973C00CBE60D /* PBXTextBookmark */ = E26481FC13BB973C00CBE60D /* PBXTextBookmark */;
+			E26481FF13BB977900CBE60D /* PBXTextBookmark */ = E26481FF13BB977900CBE60D /* PBXTextBookmark */;
+			E264820013BB977900CBE60D /* PBXTextBookmark */ = E264820013BB977900CBE60D /* PBXTextBookmark */;
+			E264820113BB977900CBE60D /* PBXTextBookmark */ = E264820113BB977900CBE60D /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
 			E28A395A13B2A2AE00E69D5C = E28A395A13B2A2AE00E69D5C /* PBXTextBookmark */;
@@ -2033,18 +2056,11 @@
 		name = Model.h;
 		path = ../../../../../rec/src/rec/slow/Model.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {777, 1287}}";
-			sepNavSelRange = "{451, 0}";
-			sepNavVisRange = "{0, 1814}";
-			sepNavWindowFrame = "{{15, 355}, {836, 818}}";
-		};
 	};
-	E26481A813BAD79800CBE60D /* XCBuildMessageTextBookmark */ = {
+	E26481A813BAD79800CBE60D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "ISO C++ forbids declaration of 'SampleSelection' with no type";
 		fRef = E26481A713BAD79800CBE60D /* Model.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 69;
 		rType = 1;
@@ -2065,17 +2081,11 @@
 		name = Model.h;
 		path = ../../../../../rec/src/rec/slow/Model.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {777, 1300}}";
-			sepNavSelRange = "{2455, 0}";
-			sepNavVisRange = "{0, 1814}";
-		};
 	};
-	E26481B213BAD7C900CBE60D /* XCBuildMessageTextBookmark */ = {
+	E26481B213BAD7C900CBE60D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "ISO C++ forbids declaration of 'SampleSelection' with no type";
 		fRef = E26481B113BAD7C900CBE60D /* Model.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 69;
 		rType = 1;
@@ -2090,11 +2100,10 @@
 		vrLen = 1814;
 		vrLoc = 0;
 	};
-	E26481C613BAD82D00CBE60D /* XCBuildMessageTextBookmark */ = {
+	E26481C613BAD82D00CBE60D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'JUMP_TO_NEXT_LOOP_POINT' is not a member of 'rec::command::Command'";
 		fRef = B821697666437A71BDF9E1EE /* Target.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 128;
 		rType = 1;
@@ -2119,11 +2128,10 @@
 		vrLen = 2096;
 		vrLoc = 3288;
 	};
-	E26481CB13BAD87800CBE60D /* XCBuildMessageTextBookmark */ = {
+	E26481CB13BAD87800CBE60D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "No matching function for call to 'std::set<rec::util::Range<rec::RealTime>, std::less<rec::util::Range<rec::RealTime> >, std::allocator<rec::util::Range<rec::RealTime> > >::set(const std::set<std::pair<long long int, long long int>, std::less<std::pair<long long int, long long int> >, std::allocator<std::pair<long long int, long long int> > >&)'";
 		fRef = E26D8E33295793C7AA1A57DC /* Selections.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 100;
 		rType = 1;
@@ -2147,6 +2155,101 @@
 		rType = 0;
 		vrLen = 2157;
 		vrLoc = 3188;
+	};
+	E26481E813BB96E000CBE60D /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Non-member function 'int rec::slow::<unnamed>::getContainingSegment(const rec::slow::LoopSnapshot&)' cannot have cv-qualifier";
+		fRef = 3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	E26481F313BB973C00CBE60D /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Rec/util/Arraysize.h: No such file or directory";
+		fRef = 3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 2;
+		rType = 1;
+	};
+	E26481F413BB973C00CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */;
+		name = "LoopCommands.cpp: 3";
+		rLen = 0;
+		rLoc = 88;
+		rType = 0;
+		vrLen = 1551;
+		vrLoc = 0;
+	};
+	E26481F713BB973C00CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */;
+		name = "LoopCommands.cpp: 18";
+		rLen = 0;
+		rLoc = 420;
+		rType = 0;
+		vrLen = 1319;
+		vrLoc = 0;
+	};
+	E26481FA13BB973C00CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 0E735A0D3C040525F106AFB9 /* LoopSnapshot.cpp */;
+		name = "LoopSnapshot.cpp: 18";
+		rLen = 0;
+		rLoc = 464;
+		rType = 0;
+		vrLen = 699;
+		vrLoc = 0;
+	};
+	E26481FB13BB973C00CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5E34B583CA3C7CE242635FA0 /* LoopSnapshot.h */;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+		rType = 0;
+	};
+	E26481FC13BB973C00CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5E34B583CA3C7CE242635FA0 /* LoopSnapshot.h */;
+		name = "LoopSnapshot.h: 7";
+		rLen = 0;
+		rLoc = 117;
+		rType = 0;
+		vrLen = 640;
+		vrLoc = 0;
+	};
+	E26481FF13BB977900CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */;
+		name = "LoopCommands.cpp: 167";
+		rLen = 0;
+		rLoc = 4311;
+		rType = 0;
+		vrLen = 1531;
+		vrLoc = 0;
+	};
+	E264820013BB977900CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */;
+		name = "LoopCommands.cpp: 167";
+		rLen = 0;
+		rLoc = 4311;
+		rType = 0;
+		vrLen = 1311;
+		vrLoc = 0;
+	};
+	E264820113BB977900CBE60D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5E34B583CA3C7CE242635FA0 /* LoopSnapshot.h */;
+		name = "LoopSnapshot.h: 7";
+		rLen = 0;
+		rLoc = 117;
+		rType = 0;
+		vrLen = 640;
+		vrLoc = 0;
 	};
 	E26D8E33295793C7AA1A57DC /* Selections.cpp */ = {
 		uiCtxt = {

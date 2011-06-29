@@ -1,8 +1,9 @@
 #ifndef __REC_GUI_AUDIO_LOOPPOINT__
 #define __REC_GUI_AUDIO_LOOPPOINT__
 
-#include "rec/util/block/Block.h"
 #include "rec/audio/Audio.h"
+#include "rec/util/LoopPoint.pb.h"
+#include "rec/util/block/Block.h"
 
 namespace rec {
 namespace util {

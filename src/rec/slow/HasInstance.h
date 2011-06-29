@@ -8,7 +8,7 @@ namespace slow {
 
 class HasInstance {
  public:
-  HasInstance(Instance* i) : instance_(i) {}
+  explicit HasInstance(Instance* i = NULL) : instance_(i) {}
 
   Components* components() { return instance_->components_.get(); }
   Listeners* listeners() { return instance_->listeners_.get(); }
@@ -20,6 +20,8 @@ class HasInstance {
 
  protected:
   Instance* instance_;
+
+  DISALLOW_COPY_AND_ASSIGN(HasInstance);
 };
 
 }  // namespace slow
