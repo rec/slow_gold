@@ -16,7 +16,7 @@ bool clearLoops(LoopSnapshot* s) {
 }
 
 template <typename Operator>
-bool apply(Operator op, LoopSnapshot* s) {
+bool applySelected(Operator op, LoopSnapshot* s) {
   LoopPointList* loops = &s->loops_;
   for (int i = 0; i < loops->loop_point_size(); ++i) {
     LoopPoint* lp = loops->mutable_loop_point(i);
@@ -25,26 +25,22 @@ bool apply(Operator op, LoopSnapshot* s) {
   return true;
 }
 
-bool selectAllOp(bool, int, LoopSnapshot*) { return true; }
-bool deselectAllOp(bool, int, LoopSnapshot*) { return false; }
-bool selectInvOp(bool s, int, LoopSnapshot*) { return !s; }
-bool selectFirstOp(bool, int i, LoopSnapshot*) { return !i; }
-bool selectLastOp(bool, int i, LoopSnapshot* s) { return i != s->loopSize_; }
-bool selectNextOp(bool, int i, LoopSnapshot* s) { return i == s->next_; }
-bool selectPreviousOp(bool, int i, LoopSnapshot* s) { return i == s->next_; }
+#define SELECTION_OP(NAME, RESULT) \
+  bool NAME ## Op(bool selected, int segment, LoopSnapshot* snapshot) { \
+    return RESULT;                                                      \
+  }                                                                     \
+  bool NAME(LoopSnapshot* s) { return applySelected(NAME ## Op, s); }
 
-bool toggleWholeOp(bool, int i, LoopSnapshot* s) {
-  return (s->selectionCount_ == 1) || (i == s->segment_);
-}
 
-bool deselectAll(LoopSnapshot* s) { return apply(selectAllOp, s); }
-bool selectAll(LoopSnapshot* s) { return apply(deselectAllOp, s); }
-bool invertLoopSelection(LoopSnapshot* s) { return apply(selectInvOp, s); }
-bool toggleWholeSongLoop(LoopSnapshot* s) { return apply(toggleWholeOp, s); }
-bool selectFirstOnly(LoopSnapshot* s) { return apply(selectFirstOp, s); }
-bool selectLastOnly(LoopSnapshot* s) { return apply(selectLastOp, s); }
-bool selectNextOnly(LoopSnapshot* s) { return apply(selectNextOp, s); }
-bool selectPreviousOnly(LoopSnapshot* s) { return apply(selectPreviousOp, s); }
+SELECTION_OP(selectAll, true)
+SELECTION_OP(deselectAll, false)
+SELECTION_OP(invertLoopSelection, !selected)
+SELECTION_OP(selectFirstOnly, !segment)
+SELECTION_OP(selectLastOnly, segment != snapshot->loopSize_)
+SELECTION_OP(selectNextOnly, segment == snapshot->next_)
+SELECTION_OP(selectPreviousOnly, segment == snapshot->next_)
+SELECTION_OP(toggleWholeSongLoop,
+             (snapshot->selectionCount_ == 1) || (segment == snapshot->segment_))
 
 bool contractFromNextLoopPoint(LoopSnapshot* s) {
   return false;
