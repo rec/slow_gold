@@ -40,8 +40,6 @@ void Target::add(CommandID c, const String& name,
       name, category, desc);
 }
 
-
-
 void Target::addCommands() {
   using gui::audio::Loops;
   using rec::command::Command;
@@ -118,7 +116,6 @@ void Target::addCommands() {
       "Eject all CDs and DVDs");
 
   add(Command::INVERT_LOOP_SELECTION,
-      functionCallback(selectInvert, instance_),
       "Invert Selection", "Selection",
       "Unselect everything selected and vice-versa.");
 
@@ -133,24 +130,20 @@ void Target::addCommands() {
       "Enable the segment before the first one.");
 
   add(Command::JUMP_TO_NEXT_LOOP_POINT_AND_SELECT,
-      functionCallback(&jumpToNextLoopPoint, instance_),
       "Jump To Next", "Transport",
-      "Immediately jump to the next loop point in the selected region.");
+      "Immediately jump to the next loop point and select it.");
 
   add(Command::JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT,
-      functionCallback(&jumpToPreviousLoopPoint, instance_),
       "Jump To Previous", "Transport",
-      "Immediately jump to the previous loop point in the selected region.");
+      "Immediately jump to the previous segment and select it.");
 
   add(Command::JUMP_TO_END_AND_SELECT,
-      functionCallback(&jumpToStart, instance_),
       "Jump To Start", "Transport",
-      "Jump to the beginning of the selected region.");
+      "Jump to the first loop and select it.");
 
   add(Command::JUMP_TO_START_AND_SELECT,
-      functionCallback(&jumpToStart, instance_),
       "Jump To Start", "Transport",
-      "Jump to the beginning of the selected region.");
+      "Jump to the last segment and select it.");
 
   add(Command::KEYBOARD_MAPPINGS,
       functionCallback(&keyboardMappings, instance_),

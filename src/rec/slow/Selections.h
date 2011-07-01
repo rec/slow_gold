@@ -9,9 +9,6 @@ namespace slow {
 class Instance;
 
 void addLoopPoint(Instance*);
-void selectAll(Instance*);
-void selectNone(Instance*);
-void selectInvert(Instance*);
 
 void extendEnd(Instance*);
 void retractEnd(Instance*);

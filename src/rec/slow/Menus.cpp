@@ -84,14 +84,15 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&sizeMenu, Command::EXTEND_TO_NEXT_LOOP_POINT);
     add(&sizeMenu, Command::EXTEND_TO_PREVIOUS_LOOP_POINT);
     m.addSubMenu("Grow/Shrink", sizeMenu);
+
     addTenSubitems(this, &m, Command::SELECT_ONLY_0, "Select Only...");
     addTenSubitems(this, &m, Command::TOGGLE_0, "Toggle...");
     addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");
 
   } else if (menuName == "Transport") {
-    add(&m, Command::JUMP_TO_START_OF_SELECTION);
-    add(&m, Command::JUMP_TO_NEXT_LOOP_POINT_IN_SELECTION);
-    add(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT_IN_SELECTION);
+    add(&m, Command::JUMP_TO_START_AND_SELECT);
+    add(&m, Command::JUMP_TO_NEXT_LOOP_POINT_AND_SELECT);
+    add(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT);
 
   } else if (menuName == "Loops") {
     add(&m, Command::CLEAR_LOOPS);

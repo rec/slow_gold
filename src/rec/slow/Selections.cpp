@@ -23,15 +23,6 @@ void applyEach(Operator op, LoopPointList* loops) {
   }
 }
 
-bool selectAll1(bool, int) { return true; }
-void selectAll2(LoopPointList* lpl) { applyEach(&selectAll1, lpl); }
-
-bool selectNone1(bool, int) { return false; }
-void selectNone2(LoopPointList* lpl) { applyEach(&selectNone1, lpl); }
-
-bool selectInvert1(bool s, int) { return !s; }
-void selectInvert2(LoopPointList* lpl) { applyEach(&selectInvert1, lpl); }
-
 enum Setting {SET, RESET, TOGGLE, ONLY};
 
 struct Selecter {
@@ -117,7 +108,7 @@ class LoopsAndTime {
     bool selectAll = (selectionCount == 1);
     for (int i = 0; i < size; ++i)
       loops_.mutable_loop_point(i)->set_selected(selectAll || i == segment_);
-      
+
     setData();
   }
 
@@ -153,9 +144,6 @@ void addLoopPoint(Instance* i) {
   i->components_->loops_.addLoopPoint(i->player_->getTime());
 }
 
-void selectAll(Instance* i) { apply(&selectAll2, i); }
-void selectNone(Instance* i) { apply(&selectNone2, i); }
-void selectInvert(Instance* i) { apply(&selectInvert2, i); }
 
 void extendEnd(Instance* i) { apply(&extendEndL, i); }
 void retractEnd(Instance* i) { apply(&retractEndL, i); }
