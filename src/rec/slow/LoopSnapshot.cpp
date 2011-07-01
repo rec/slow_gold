@@ -6,31 +6,48 @@
 namespace rec {
 namespace slow {
 
+#if 0
+static int findUnselected(int loc, const LoopSnapshot* ls, int delta) {
+  DCHECK(delta);
+  int i = loc;
+  while (true) {
+    if (!ls->loops_.loop_point(i).selected())
+      return i;
+    i = ls->limit(i + delta);
+    if (i == loc)
+      return -1;
+  }
+}
+#endif
+
+int getSelectionCount(const LoopPointList& loops) {
+  int count;
+  for (int i = 0; i < loops.loop_point_size(); ++i) {
+    if (loops.loop_point(i).selected())
+      ++count;
+  }
+  return count;
+}
+
+int getSegment(const LoopPointList& loops, RealTime time) {
+  for (int i = 1; i < loops.loop_point_size(); ++i) {
+    if (time < loops.loop_point(i).time())
+      return i - 1;
+  }
+  return 0;
+}
+
 LoopSnapshot::LoopSnapshot(Instance* i)
   : instance_(i),
     loops_(i->model_->loopPointList()),
     time_(i->player_->getNextReadPosition()),
     selection_(i->model_->timeSelection()),
     loopSize_(loops_.loop_point_size()),
-    selectionCount_(0),
-    segment_(-1) {
-
-  for (int i = 0; loopSize_; ++i) {
-    const LoopPoint& point = loops_.loop_point(i);
-    if (time_ < point.time() && segment_ < 0)
-      segment_ = i - 1;
-    if (point.selected())
-      selectionCount_++;
-  }
-  if (!selectionCount_)
-    selectionCount_ = loopSize_ -1;
-
-  next_ = segment_ + 1;
-  if (next_ >= loopSize_)
-    next_ = 0;
-  previous_ = segment_ - 1;
-  if (previous_ < 0)
-    previous_ = loopSize_ - 1;
+    selectionCount_(getSelectionCount(loops_)),
+    segment_(getSegment(loops_, time_)),
+    previous_(limit(segment_ - 1)),
+    next_(limit(segment_ + 1)),
+    last_(loopSize_ - 1) {
 }
 
 bool LoopSnapshot::execute(command::Command::Type cmd, const Map& snapMap) {
