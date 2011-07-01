@@ -75,6 +75,7 @@ bool clearLoops(LoopSnapshot* s) {
 typedef LoopSnapshot::Map Map;
 
 const Map& getLoopMap() {
+  using rec::command::Command;
   static const Map::value_type values[] = {
     make_pair(Command::CLEAR_LOOPS,
               &clearLoops),
@@ -112,7 +113,7 @@ const Map& getLoopMap() {
 
 }  // namespace
 
-bool executeLoopCommand(Command::Type command, Instance* instance) {
+bool executeLoopCommand(Instance* instance, Command command) {
   return LoopSnapshot(instance).execute(command, getLoopMap());
 }
 

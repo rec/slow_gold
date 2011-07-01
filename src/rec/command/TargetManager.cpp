@@ -34,6 +34,17 @@ void TargetManager::registerAllCommandsForTarget() {
   loadKeyboardBindings();
 }
 
+void TargetManager::addCommandItem(PopupMenu* menu, CommandID command,
+                                   bool isActive,
+                                   const String& name) {
+  if (ApplicationCommandInfo* info = getInfo(command)) {
+    if (name.length())
+      info->shortName = name;
+    info->setActive(isActive);
+    addCommandItem(menu, command);
+  }
+}
+
 void TargetManager::getAllCommands(juce::Array<CommandID>& commands) {
   commands.clear();
   for (CommandMap::const_iterator i = map_.begin(); i != map_.end(); ++i)
@@ -64,7 +75,8 @@ InvocationInfo TargetManager::lastInvocation() const {
   return lastInvocation_;
 }
 
-void TargetManager::add(Callback* cb, const ApplicationCommandInfo& info) {
+void TargetManager::addCallback(Callback* cb, 
+                                const ApplicationCommandInfo& info) {
   CommandID id = info.commandID;
   CommandMap::const_iterator i = map_.find(id);
   if (i != map_.end()) {
@@ -75,10 +87,10 @@ void TargetManager::add(Callback* cb, const ApplicationCommandInfo& info) {
   map_[id] = new CommandCallback(info, cb);
 }
 
-void TargetManager::add(CommandID id, Callback* cb,
-                        const String& name,
-                        const String& category, const String& desc) {
-	add(cb, makeInfo(id, name, category, desc));
+void TargetManager::addCallback(CommandID id, Callback* cb,
+                                const String& name,
+                                const String& category, const String& desc) {
+	addCallback(cb, makeInfo(id, name, category, desc));
 }
 
 ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {

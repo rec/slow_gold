@@ -1,27 +1,24 @@
 #include "rec/slow/Target.h"
 
-#include "rec/audio/source/Player.h"
 #include "rec/audio/Audio.h"
+#include "rec/audio/source/Player.h"
 #include "rec/command/MidiCommandMapEditor.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Dialog.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
+#include "rec/slow/LoopCommands.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Selections.h"
 #include "rec/slow/TargetCommands.h"
-#include "rec/util/cd/Eject.h"
 #include "rec/util/Math.h"
+#include "rec/util/cd/Eject.h"
 #include "rec/util/thread/FunctionCallback.h"
 
 namespace rec {
 namespace slow {
 
-namespace {
-}
-
-using rec::command::Command;
 using thread::methodCallback;
 using thread::functionCallback;
 
@@ -36,9 +33,18 @@ Target::~Target() {
   device()->manager_.removeMidiInputCallback("", midiCommandMap_.get());
 }
 
+void Target::add(CommandID c, const String& name,
+                 const String& category, const String& desc) {
+  add(c,
+      functionCallback(&executeLoopCommand, instance_, static_cast<Command>(c)),
+      name, category, desc);
+}
+
+
+
 void Target::addCommands() {
   using gui::audio::Loops;
-  Loops* loops = &components()->loops_;
+  using rec::command::Command;
 
   // Defined by Juce.
   add(Command::DEL, functionCallback(cutNoClipboard),
@@ -57,11 +63,11 @@ void Target::addCommands() {
       "Paste", "Edit",
       "Replace the current selection with a copy of the clipboard.");
 
-  add(Command::SELECT_ALL, functionCallback(selectAll, instance_),
+  add(Command::SELECT_ALL,
       "Select All", "Selection",
       "Select all of the file");
 
-  add(Command::DESELECT_ALL, functionCallback(selectNone, instance_),
+  add(Command::DESELECT_ALL,
       "Select None", "Selection",
       "Select none of the file");
 
@@ -83,7 +89,7 @@ void Target::addCommands() {
       "Clear all files and directories from "
       "the navigator pane.");
 
-  add(Command::CLEAR_LOOPS, methodCallback(loops, &Loops::clearLoops),
+  add(Command::CLEAR_LOOPS,
       "Clear Loops", "Loops",
       "Delete all loop points");
 

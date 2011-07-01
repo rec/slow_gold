@@ -2,7 +2,7 @@
 #define __REC_SLOW_MENUS__
 
 #include "rec/slow/HasInstance.h"
-#include "rec/command/Command.pb.h"
+#include "rec/slow/LoopCommands.h"
 
 namespace rec {
 namespace slow {
@@ -16,7 +16,7 @@ class Menus : public MenuBarModel, public HasInstance {
   virtual const StringArray getMenuBarNames();
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& name);
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
-  void add(PopupMenu*, command::Command::Type, bool enable = true);
+  void add(PopupMenu*, Command, bool enable = true);
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Menus);

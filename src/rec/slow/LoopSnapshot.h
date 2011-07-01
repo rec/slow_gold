@@ -3,8 +3,8 @@
 
 #include <map>
 
+#include "rec/slow/LoopCommands.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/command/Command.pb.h"
 
 namespace rec {
 namespace slow {
@@ -29,7 +29,6 @@ struct LoopSnapshot {
   int last_;
 
   typedef bool (*Function)(LoopSnapshot*);
-  typedef command::Command::Type Command;
   typedef std::map<Command, LoopSnapshot::Function> Map;
 
   bool execute(Command, const Map&);

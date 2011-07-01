@@ -38,20 +38,13 @@ class TargetManager : public ApplicationCommandTarget {
 
   InvocationInfo lastInvocation() const;
 
-  void add(CommandID id, Callback* cb,
-           const String& name,
-           const String& category, const String& desc);
+  void addCallback(CommandID id, Callback* cb,
+                   const String& name,
+                   const String& category, const String& desc);
 
   void addCommandItem(PopupMenu* menu, CommandID command,
                       bool isActive,
-                      const String& name = String::empty) {
-    if (ApplicationCommandInfo* info = getInfo(command)) {
-      if (name.length())
-        info->shortName = name;
-      info->setActive(isActive);
-      addCommandItem(menu, command);
-    }
-  }
+                      const String& name = String::empty);
 
   ApplicationCommandInfo* getInfo(CommandID command);
   ApplicationCommandManager* commandManager() { return &commandManager_; }
@@ -63,7 +56,7 @@ class TargetManager : public ApplicationCommandTarget {
   }
 
   typedef std::map<CommandID, CommandCallback*> CommandMap;
-  void add(Callback* callback, const ApplicationCommandInfo& info);
+  void addCallback(Callback* callback, const ApplicationCommandInfo& info);
 
   void loadKeyboardBindings();
 

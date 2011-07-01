@@ -4,6 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/command/Command.pb.h"
 #include "rec/slow/HasInstance.h"
+#include "rec/slow/LoopCommands.h"
 #include "rec/util/Range.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/CallAsync.h"
@@ -32,7 +33,7 @@ class MouseListener;
 class Listeners : public Listener<None>,
                   public Listener<const VirtualFileList&>,
                   public Listener<audio::transport::State>,
-                  public Listener<command::Command::Type>,
+                  public Listener<Command>,
                   public Listener<const Mode&>,
                   public Listener<const audio::Gain&>,
                   public Listener<const audio::stretch::Stretch&>,
@@ -47,7 +48,7 @@ class Listeners : public Listener<None>,
   virtual void operator()(None);
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
-  virtual void operator()(command::Command::Type);
+  virtual void operator()(Command);
   virtual void operator()(const Mode&);
   virtual void operator()(const audio::Gain&);
   virtual void operator()(const audio::source::StereoProto&);

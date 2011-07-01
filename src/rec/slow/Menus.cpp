@@ -15,15 +15,15 @@ const StringArray Menus::getMenuBarNames() {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void Menus::add(PopupMenu* menu, command::Command::Type command, bool enable) {
+void Menus::add(PopupMenu* menu, Command command, bool enable) {
   target()->addCommandItem(menu, command, enable);
 }
 
 static void addTenSubitems(Menus* menus, PopupMenu* menu,
-                           command::Command::Type command, const String& name) {
+                           Command command, const String& name) {
   PopupMenu sub;
   for (int i = 0; i < 10; ++i)
-    menus->add(&sub, static_cast<command::Command::Type>(command + i));
+    menus->add(&sub, static_cast<Command>(command + i));
   menu->addSubMenu(name, sub);
 }
 

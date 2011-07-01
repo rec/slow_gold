@@ -43,7 +43,6 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   void addLoopPoint(RealTime time);
   void addLoopPoints(const LoopPointList& loops);
   Range<RealTime> selectionRange() const;
-  void clearLoops();
 
   virtual void selectedRowsChanged(int lastRowSelected);
 

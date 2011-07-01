@@ -7,6 +7,7 @@
 #include "rec/gui/DropFiles.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/LoopCommands.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/MouseListener.h"
@@ -54,7 +55,7 @@ void Listeners::operator()(SamplePosition time) {
   player()->setNextReadPosition(time);
 }
 
-void Listeners::operator()(command::Command::Type t) {
+void Listeners::operator()(Command t) {
   if (!target()->invokeDirectly(t))
     LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
 }

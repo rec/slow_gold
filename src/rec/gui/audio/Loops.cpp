@@ -181,11 +181,6 @@ void Loops::addLoopPoint(RealTime time) {
   addLoopPoints(loops);
 }
 
-void Loops::clearLoops() {
-  loopPoints_->Clear();
-  data::set(getData(), Address(), loopPoints_);
-}
-
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec

@@ -50,7 +50,7 @@ LoopSnapshot::LoopSnapshot(Instance* i)
     last_(loopSize_ - 1) {
 }
 
-bool LoopSnapshot::execute(command::Command::Type cmd, const Map& snapMap) {
+bool LoopSnapshot::execute(Command cmd, const Map& snapMap) {
   LoopSnapshot::Map::const_iterator i = snapMap.find(cmd);
 
   bool success = (i != snapMap.end() && (*(i->second))(this));

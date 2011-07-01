@@ -21,6 +21,15 @@ class Target : public command::TargetManager, public HasInstance {
   void addCommands();
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
 
+  void add(CommandID id, const String& name,
+           const String& category, const String& desc);
+
+  void add(CommandID id, Callback* cb,
+           const String& name,
+           const String& category, const String& desc) {
+    addCallback(id, cb, name, category, desc);
+  }
+
  private:
   ptr<command::MidiCommandMap> midiCommandMap_;
 
