@@ -7,7 +7,6 @@
 #include "rec/gui/DropFiles.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/slow/Components.h"
-#include "rec/slow/LoopCommands.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/MouseListener.h"
