@@ -72,25 +72,16 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::AUDIO_PREFERENCES);
 
   } else if (menuName == "Select") {
+    add(&m, Command::SELECT_ALL);
+    add(&m, Command::DESELECT_ALL);
+    add(&m, Command::INVERT_LOOP_SELECTION);
+
     PopupMenu selMenu;
-    add(&selMenu, Command::SELECT_ALL);
-    add(&selMenu, Command::DESELECT_ALL);
-    add(&selMenu, Command::INVERT_LOOP_SELECTION);
-    m.addSubMenu("Select", selMenu);
-
-#ifdef EXTEND_CONTRACT
-    PopupMenu sizeMenu;
-    add(&sizeMenu, Command::CONTRACT_FROM_NEXT_LOOP_POINT);
-    add(&sizeMenu, Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT);
-    add(&sizeMenu, Command::EXTEND_TO_NEXT_LOOP_POINT);
-    add(&sizeMenu, Command::EXTEND_TO_PREVIOUS_LOOP_POINT);
-    m.addSubMenu("Grow/Shrink", sizeMenu);
-#endif
-
     addTenSubitems(this, &m, Command::SELECT_0, "Select...");
     addTenSubitems(this, &m, Command::SELECT_ONLY_0, "Select Only...");
     addTenSubitems(this, &m, Command::TOGGLE_0, "Toggle...");
     addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");
+    // m.addSubMenu("Select", selMenu);
 
   } else if (menuName == "Transport") {
     add(&m, Command::JUMP_TO_0);
