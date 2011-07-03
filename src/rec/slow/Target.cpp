@@ -23,8 +23,9 @@ using thread::methodCallback;
 using thread::functionCallback;
 
 Target::Target(Instance* i)
-    : TargetManager(i->window_), HasInstance(i),
-      midiCommandMap_(new command::MidiCommandMap(commandManager())) {
+    : HasInstance(i),
+      targetManager_(i->window_),
+      midiCommandMap_(new command::MidiCommandMap(targetManager_.commandManager())) {
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   (*midiCommandMap_)(persist::get<command::CommandMapProto>());
 }
@@ -459,7 +460,7 @@ void Target::addCommands() {
       "NAME", "(None)",
       "Documentation");
 
-  registerAllCommandsForTarget();
+  targetManager()->registerAllCommandsForTarget();
 }
 
 }  // namespace slow

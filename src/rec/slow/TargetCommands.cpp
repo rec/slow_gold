@@ -64,7 +64,7 @@ void keyboardMappings(Instance* i) {
     return;
   }
 
-  ApplicationCommandManager* manager = i->target_->commandManager();
+  ApplicationCommandManager* manager = i->target_->targetManager()->commandManager();
   command::KeyCommandMapEditor comp(*manager, *manager->getKeyMappings());
   comp.initialize(true);
   comp.setBounds(0, 0, 500, 1000);
@@ -73,7 +73,7 @@ void keyboardMappings(Instance* i) {
   juce::DialogWindow::showModalDialog("Select keyboard mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
-  i->target_->saveKeyboardBindings();
+  i->target_->targetManager()->saveKeyboardBindings();
 }
 
 void midiMappings(Instance* i) {
@@ -83,7 +83,7 @@ void midiMappings(Instance* i) {
     return;
   }
 
-  ApplicationCommandManager* manager = i->target_->commandManager();
+  ApplicationCommandManager* manager = i->target_->targetManager()->commandManager();
   command::MidiCommandMapEditor comp(*manager, *i->target_->midiCommandMap());
   comp.initialize(true);
   comp.setBounds(0, 0, 500, 1000);

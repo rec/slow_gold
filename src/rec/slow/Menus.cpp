@@ -16,7 +16,7 @@ const StringArray Menus::getMenuBarNames() {
 }
 
 void Menus::add(PopupMenu* menu, Command command, bool enable) {
-  target()->addCommandItem(menu, command, enable);
+  target()->targetManager()->addCommandItem(menu, command, enable);
 }
 
 static void addTenSubitems(Menus* menus, PopupMenu* menu,

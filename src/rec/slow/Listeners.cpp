@@ -55,7 +55,7 @@ void Listeners::operator()(SamplePosition time) {
 }
 
 void Listeners::operator()(Command t) {
-  if (!target()->invokeDirectly(t))
+  if (!target()->targetManager()->invokeDirectly(t))
     LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
 }
 

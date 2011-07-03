@@ -13,7 +13,7 @@ namespace slow {
 
 class Instance;
 
-class Target : public command::TargetManager, public HasInstance {
+class Target : public HasInstance {
  public:
   explicit Target(Instance* instance);
   virtual ~Target();
@@ -27,10 +27,13 @@ class Target : public command::TargetManager, public HasInstance {
   void add(CommandID id, Callback* cb,
            const String& name,
            const String& category, const String& desc) {
-    addCallback(id, cb, name, category, desc);
+    targetManager_.addCallback(id, cb, name, category, desc);
   }
 
+  command::TargetManager* targetManager() { return &targetManager_; }
+
  private:
+  command::TargetManager targetManager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Target);
