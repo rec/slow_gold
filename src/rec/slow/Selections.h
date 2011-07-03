@@ -10,26 +10,17 @@ class Instance;
 
 void addLoopPoint(Instance*);
 
+#ifdef EXTEND_CONTRACT
 void extendEnd(Instance*);
 void retractEnd(Instance*);
 void extendBegin(Instance*);
 void retractBegin(Instance*);
+#endif
 
-void selectNextOnly(Instance*);
-void selectPreviousOnly(Instance*);
-
-void selectItem(Instance*, int);
-void selectItemOnly(Instance*, int);
-void unselectItem(Instance*, int);
-void toggleItem(Instance*, int);
-
-void toggleWholeSongLoop(Instance*);
-void jumpToNextLoopPoint(Instance*);
-void jumpToPreviousLoopPoint(Instance*);
-void jumpToStart(Instance*);
 void jumpToNextLoopPointInSelection(Instance*);
 void jumpToPreviousLoopPointInSelection(Instance*);
 void jumpToStartOfSelection(Instance*);
+void jumpToEndOfSelection(Instance*);
 
 }  // namespace slow
 }  // namespace rec
