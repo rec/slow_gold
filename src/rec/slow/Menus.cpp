@@ -15,8 +15,8 @@ const StringArray Menus::getMenuBarNames() {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void Menus::add(PopupMenu* menu, Command command, bool enable) {
-  target()->targetManager()->addCommandItem(menu, command, enable);
+void Menus::add(PopupMenu* menu, Command command, bool enable, const String& name) {
+  target()->targetManager()->addCommandItem(menu, command, enable, name);
 }
 
 static void addTenSubitems(Menus* menus, PopupMenu* menu,
@@ -75,6 +75,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::SELECT_ALL);
     add(&m, Command::DESELECT_ALL);
     add(&m, Command::INVERT_LOOP_SELECTION);
+    add(&m, Command::TOGGLE_WHOLE_SONG_LOOP);
 
     PopupMenu selMenu;
     addTenSubitems(this, &m, Command::SELECT_0, "Select...");
@@ -84,7 +85,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     // m.addSubMenu("Select", selMenu);
 
   } else if (menuName == "Transport") {
-    add(&m, Command::JUMP_TO_0);
+    add(&m, Command::JUMP_TO_0, true, "Jump to first segment");
     add(&m, Command::JUMP_TO_PREVIOUS_SEGMENT);
     add(&m, Command::JUMP_TO_NEXT_SEGMENT);
     add(&m, Command::JUMP_TO_LAST_SEGMENT);

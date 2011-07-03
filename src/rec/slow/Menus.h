@@ -16,7 +16,8 @@ class Menus : public MenuBarModel, public HasInstance {
   virtual const StringArray getMenuBarNames();
   virtual const PopupMenu getMenuForIndex(int menuIndex, const String& name);
   virtual void menuItemSelected(int menuItemID, int topLevelMenuIndex) {}
-  void add(PopupMenu*, Command, bool enable = true);
+  void add(PopupMenu*, Command, bool enable = true,
+           const String& name = String::empty);
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Menus);

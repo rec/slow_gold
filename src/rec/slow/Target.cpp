@@ -367,8 +367,8 @@ void Target::addCommands() {
       "Toggle loop 10 between selected and unselected");
 
   add(Command::TOGGLE_WHOLE_SONG_LOOP,
-      "NAME", "(None)",
-      "Documentation");
+      "Toggle Whole Loop Selection", "Selection",
+      "Toggle selection between the current segment and the whole song.");
 
   add(Command::TOGGLE_START_STOP,
       methodCallback(player(), &audio::source::Player::toggle),
