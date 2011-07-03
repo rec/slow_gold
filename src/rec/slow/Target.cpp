@@ -255,6 +255,56 @@ void Target::addCommands() {
       "Select Only Loop 10", "Select Only",
       "Select loop 10 and unselect all other loops.");
 
+  add(Command::SELECT_0,
+      functionCallback(selectItem, instance_, 0),
+      "Select Loop 1", "Select",
+      "Select loop 1.");
+
+  add(Command::SELECT_1,
+      functionCallback(&selectItem, instance_, 1),
+      "Select Loop 2", "Select",
+      "Select loop 2.");
+
+  add(Command::SELECT_2,
+      functionCallback(&selectItem, instance_, 2),
+      "Select Loop 3", "Select",
+      "Select loop 3.");
+
+  add(Command::SELECT_3,
+      functionCallback(&selectItem, instance_, 3),
+      "Select Loop 4", "Select",
+      "Select loop 4.");
+
+  add(Command::SELECT_4,
+      functionCallback(&selectItem, instance_, 4),
+      "Select Loop 5", "Select",
+      "Select loop 5.");
+
+  add(Command::SELECT_5,
+      functionCallback(&selectItem, instance_, 5),
+      "Select Loop 6", "Select",
+      "Select loop 6.");
+
+  add(Command::SELECT_6,
+      functionCallback(&selectItem, instance_, 6),
+      "Select Loop 7", "Select",
+      "Select loop 7.");
+
+  add(Command::SELECT_7,
+      functionCallback(&selectItem, instance_, 7),
+      "Select Loop 8", "Select",
+      "Select loop 8.");
+
+  add(Command::SELECT_8,
+      functionCallback(&selectItem, instance_, 8),
+      "Select Loop 9", "Select",
+      "Select loop 9.");
+
+  add(Command::SELECT_9,
+      functionCallback(&selectItem, instance_, 9),
+      "Select Loop 10", "Select",
+      "Select loop 10.");
+
   add(Command::TOGGLE_0,
       functionCallback(&toggleItem, instance_, 0),
       "Toggle Loop 1", "Select Toggle",

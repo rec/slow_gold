@@ -19,7 +19,6 @@ class MouseListener : public juce::MouseListener, public HasInstance,
  public:
   MouseListener(Instance* i);
 
-  virtual void mouseDoubleClick(const MouseEvent&);
   virtual void mouseDown(const MouseEvent&);
   virtual void mouseDrag(const MouseEvent&);
   virtual void mouseUp(const MouseEvent&);

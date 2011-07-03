@@ -11,7 +11,7 @@ Menus::Menus(Instance* i) : HasInstance(i) {}
 
 const StringArray Menus::getMenuBarNames() {
   static const char* NAMES[] = {"File", "Edit", "Audio", "Transport", "Loops",
-                                "Selection"};
+                                "Select"};
   return StringArray(NAMES, arraysize(NAMES));
 }
 
@@ -71,7 +71,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     m.addSeparator();
     add(&m, Command::AUDIO_PREFERENCES);
 
-  } else if (menuName == "Selection") {
+  } else if (menuName == "Select") {
     PopupMenu selMenu;
     add(&selMenu, Command::SELECT_ALL);
     add(&selMenu, Command::DESELECT_ALL);
@@ -85,6 +85,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&sizeMenu, Command::EXTEND_TO_PREVIOUS_LOOP_POINT);
     m.addSubMenu("Grow/Shrink", sizeMenu);
 
+    addTenSubitems(this, &m, Command::SELECT_0, "Select...");
     addTenSubitems(this, &m, Command::SELECT_ONLY_0, "Select Only...");
     addTenSubitems(this, &m, Command::TOGGLE_0, "Toggle...");
     addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");

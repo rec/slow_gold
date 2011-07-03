@@ -59,9 +59,9 @@ Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
 
   bool alt = k.isAltDown();
   bool cmd = k.isCommandDown();
-  bool rightMenu = k.isPopupMenu();  // Right click or ctrl click.
+  bool right = k.isPopupMenu();  // Right click or ctrl click.
   bool shift = k.isShiftDown();
-  bool none = !(alt || cmd || rightMenu || shift);
+  bool none = !(alt || cmd || right || shift);
 
   Mode::Action modeAction = mode_.click();
   if (none)
@@ -73,12 +73,7 @@ Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
   if (cmd || modeAction == Mode::ZOOM_IN)
     return shift ? Mode::ZOOM_OUT : Mode::ZOOM_IN;
 
-  Mode::Action clickAction =
-    alt ? Mode::TOGGLE_SELECTION :
-    rightMenu ? Mode::DRAW_LOOP_POINTS :
-    Mode::DRAG;
-
-  return (clickAction == modeAction) ? Mode::SET_TIME : clickAction;
+  return right ? Mode::DRAW_LOOP_POINTS : (shift ? Mode::DRAG : Mode::SET_TIME);
 }
 
 void MouseListener::mouseDown(const MouseEvent& e) {
@@ -153,34 +148,11 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
 }
 
 void MouseListener::mouseUp(const MouseEvent& e) {
-#ifdef DEAD
-  if (e.mods.isShiftDown())
-    zoomOut();
-
-  else if (zoomProto() && zoomProto()->get().click_to_zoom())
-    zoomIn(timeMouse);
-
-  else if (timeMouse.mouseEvent_->mods.isCommandDown())
-    zoomIn(timeMouse);
-
-  else
-#endif
   Cursor* timeCursor = components()->waveform_.timeCursor();
   if (timeCursor == e.eventComponent)
     timeCursor->setListeningToClock(true);
 
   // mouseDrag(e);
-}
-
-void MouseListener::mouseDoubleClick(const MouseEvent& e) {
-#if 0
-  if (!target()->invokeDirectly(command::Command::OPEN))
-    LOG(ERROR) << "Unable to start open dialog";
-
-  else
-    DLOG(INFO) << "Opened a new file!";
-#endif
-
 }
 
 }  // namespace slow
