@@ -96,6 +96,7 @@ void Target::addCommands() {
       "Close", "File",
       "Close the current file");
 
+#ifdef EXTEND_CONTRACT
   add(Command::CONTRACT_FROM_NEXT_LOOP_POINT,
       functionCallback(&retractEnd, instance_),
       "Shrink From End", "Selection",
@@ -105,6 +106,7 @@ void Target::addCommands() {
       functionCallback(&retractBegin, instance_),
       "Shrink From Start", "Selection",
       "Disable the first loop segment");
+#endif
 
   add(Command::DIM_VOLUME_TOGGLE,
       functionCallback(&dimVolumeToggle, instance_),
@@ -119,6 +121,7 @@ void Target::addCommands() {
       "Invert Selection", "Selection",
       "Unselect everything selected and vice-versa.");
 
+#ifdef EXTEND_CONTRACT
   add(Command::EXTEND_TO_NEXT_LOOP_POINT,
       functionCallback(&extendEnd, instance_),
       "Extend End", "Selection",
@@ -128,20 +131,21 @@ void Target::addCommands() {
       functionCallback(&extendBegin, instance_),
       "Extend Beginning", "Selection",
       "Enable the segment before the first one.");
+#endif
 
-  add(Command::JUMP_TO_NEXT_LOOP_POINT_AND_SELECT,
+  add(Command::JUMP_TO_NEXT_SEGMENT,
       "Jump To Next", "Transport",
       "Immediately jump to the next loop point and select it.");
 
-  add(Command::JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT,
+  add(Command::JUMP_TO_PREVIOUS_SEGMENT,
       "Jump To Previous", "Transport",
       "Immediately jump to the previous segment and select it.");
 
-  add(Command::JUMP_TO_END_AND_SELECT,
+  add(Command::JUMP_TO_LAST_SEGMENT,
       "Jump To Start", "Transport",
       "Jump to the first loop and select it.");
 
-  add(Command::JUMP_TO_START_AND_SELECT,
+  add(Command::JUMP_TO_0,
       "Jump To Start", "Transport",
       "Jump to the last segment and select it.");
 

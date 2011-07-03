@@ -78,12 +78,14 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&selMenu, Command::INVERT_LOOP_SELECTION);
     m.addSubMenu("Select", selMenu);
 
+#ifdef EXTEND_CONTRACT
     PopupMenu sizeMenu;
     add(&sizeMenu, Command::CONTRACT_FROM_NEXT_LOOP_POINT);
     add(&sizeMenu, Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT);
     add(&sizeMenu, Command::EXTEND_TO_NEXT_LOOP_POINT);
     add(&sizeMenu, Command::EXTEND_TO_PREVIOUS_LOOP_POINT);
     m.addSubMenu("Grow/Shrink", sizeMenu);
+#endif
 
     addTenSubitems(this, &m, Command::SELECT_0, "Select...");
     addTenSubitems(this, &m, Command::SELECT_ONLY_0, "Select Only...");
@@ -91,9 +93,12 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");
 
   } else if (menuName == "Transport") {
-    add(&m, Command::JUMP_TO_START_AND_SELECT);
-    add(&m, Command::JUMP_TO_NEXT_LOOP_POINT_AND_SELECT);
-    add(&m, Command::JUMP_TO_PREVIOUS_LOOP_POINT_AND_SELECT);
+    add(&m, Command::JUMP_TO_0);
+    add(&m, Command::JUMP_TO_PREVIOUS_SEGMENT);
+    add(&m, Command::JUMP_TO_NEXT_SEGMENT);
+    add(&m, Command::JUMP_TO_LAST_SEGMENT);
+
+    addTenSubitems(this, &m, Command::JUMP_TO_0, "Jump to...");
 
   } else if (menuName == "Loops") {
     add(&m, Command::CLEAR_LOOPS);
