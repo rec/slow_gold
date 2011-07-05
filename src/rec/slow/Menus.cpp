@@ -85,7 +85,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     // m.addSubMenu("Select", selMenu);
 
   } else if (menuName == "Transport") {
-    add(&m, Command::JUMP_TO_0, true, "Jump to first segment");
+    add(&m, Command::JUMP_TO_0);
     add(&m, Command::JUMP_TO_PREVIOUS_SEGMENT);
     add(&m, Command::JUMP_TO_NEXT_SEGMENT);
     add(&m, Command::JUMP_TO_LAST_SEGMENT);

@@ -38,6 +38,7 @@
 		2E88ECDC0A679340104F7E72 /* emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C0EC2293E1A986C6D3AB5 /* emitter.cpp */; };
 		2F45A6BF1DD1D5E6198C71B3 /* Selections.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E26D8E33295793C7AA1A57DC /* Selections.cpp */; };
 		3029200114F2DFE3817CC8C3 /* Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB154D91AA095E5EA860F06 /* Data.cpp */; };
+		304DCFACC5A9A62B9A6D1C70 /* Binary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A811D385289DCA4AC99130 /* Binary.cpp */; };
 		3120E6FD8F1D5014F940B34F /* CopySamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FECB97806A1682B673C45FC4 /* CopySamples.cpp */; };
 		317B11B3BA4927C15DCB23EC /* FullScreen.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E886CEFA88CA84316F7B7BCB /* FullScreen.svg.cpp */; };
 		363D79B5ADAA58C67379104E /* Widget.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 23A34552B919AAB64559DBDA /* Widget.pb.cc */; };
@@ -593,6 +594,7 @@
 		AF72E645A6B088FAE68DE120 /* Value.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Value.pb.h; path = ../../../../genfiles/proto/rec/data/proto/Value.pb.h; sourceTree = SOURCE_ROOT; };
 		AF78CEE14C91E8CDBCD65D6D /* GetVolumes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GetVolumes.cpp; path = ../../../../src/rec/util/file/GetVolumes.cpp; sourceTree = SOURCE_ROOT; };
 		AF897E1EB88C2E3554AD77D4 /* RawFormat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RawFormat.cpp; path = ../../../../src/rec/audio/format/raw/RawFormat.cpp; sourceTree = SOURCE_ROOT; };
+		AF996D82D3883CC59EB2D34C /* Binary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Binary.h; path = ../../../../src/rec/data/Binary.h; sourceTree = SOURCE_ROOT; };
 		B02005F1FB534BCE69198D9E /* emitterstate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = emitterstate.h; path = ../../../../src/rec/data/yaml/src/emitterstate.h; sourceTree = SOURCE_ROOT; };
 		B02582F7B7419635D36CB407 /* DialComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DialComponent.h; path = ../../../../src/rec/widget/status/DialComponent.h; sourceTree = SOURCE_ROOT; };
 		B0B1100F2433A9B7908852F1 /* aliascontent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aliascontent.h; path = ../../../../src/rec/data/yaml/src/aliascontent.h; sourceTree = SOURCE_ROOT; };
@@ -749,6 +751,7 @@
 		F1335001F80FFEFC3CFE99B6 /* Defaulter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Defaulter.cpp; path = ../../../../src/rec/util/Defaulter.cpp; sourceTree = SOURCE_ROOT; };
 		F16503031E9F3F5A5B7A2A1C /* regex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = regex.h; path = ../../../../src/rec/data/yaml/src/regex.h; sourceTree = SOURCE_ROOT; };
 		F19CED8216CA52A31FE6F5F8 /* CachedThumbnail.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CachedThumbnail.cpp; path = ../../../../src/rec/audio/util/CachedThumbnail.cpp; sourceTree = SOURCE_ROOT; };
+		F1A811D385289DCA4AC99130 /* Binary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Binary.cpp; path = ../../../../src/rec/data/Binary.cpp; sourceTree = SOURCE_ROOT; };
 		F1B4BFFDC9B8D47CBBDA8F3D /* TreeViewDropAll.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TreeViewDropAll.cpp; path = ../../../../src/rec/widget/tree/TreeViewDropAll.cpp; sourceTree = SOURCE_ROOT; };
 		F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ThumbnailBuffer.cpp; path = ../../../../src/rec/audio/util/ThumbnailBuffer.cpp; sourceTree = SOURCE_ROOT; };
 		F2DD887229813BBBE31D2619 /* MediaOptical.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaOptical.svg.h; path = ../../../../src/rec/gui/icon/MediaOptical.svg.h; sourceTree = SOURCE_ROOT; };
@@ -1355,6 +1358,8 @@
 			isa = PBXGroup;
 			children = (
 				7DCBA95B187EAB0F0DD94B55 /* Address.h */,
+				F1A811D385289DCA4AC99130 /* Binary.cpp */,
+				AF996D82D3883CC59EB2D34C /* Binary.h */,
 				AD49BFF6CB3EDFDE92D18FC7 /* commands */,
 				ECB154D91AA095E5EA860F06 /* Data.cpp */,
 				3D0B4149DC5933133201708F /* Data.h */,
@@ -1713,6 +1718,20 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
+		E5402901EF7F0E1777C0DC3A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -1856,20 +1875,6 @@
 			name = raw;
 			sourceTree = "<group>";
 		};
-		FED196602026EF91937A0E1F /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1906,7 +1911,7 @@
 				French,
 				German,
 			);
-			mainGroup = FED196602026EF91937A0E1F /* Source */;
+			mainGroup = E5402901EF7F0E1777C0DC3A /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1972,6 +1977,7 @@
 				5F26F1BE112E634A817E0EA5 /* MidiCommandMapEditor.cpp in Sources */,
 				D068CEF33488FFC3D8C0392C /* MidiName.cpp in Sources */,
 				E47F4C5221BE498D2AB1D4A4 /* TargetManager.cpp in Sources */,
+				304DCFACC5A9A62B9A6D1C70 /* Binary.cpp in Sources */,
 				5D1FB44E34B9DC33026DCB45 /* EventQueue.cpp in Sources */,
 				3029200114F2DFE3817CC8C3 /* Data.cpp in Sources */,
 				C17D5ADAD968B71FD1EEFA4A /* AppDirectory.cpp in Sources */,

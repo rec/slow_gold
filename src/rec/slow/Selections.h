@@ -10,13 +10,6 @@ class Instance;
 
 void addLoopPoint(Instance*);
 
-#ifdef EXTEND_CONTRACT
-void extendEnd(Instance*);
-void retractEnd(Instance*);
-void extendBegin(Instance*);
-void retractBegin(Instance*);
-#endif
-
 void jumpToNextLoopPointInSelection(Instance*);
 void jumpToPreviousLoopPointInSelection(Instance*);
 void jumpToStartOfSelection(Instance*);

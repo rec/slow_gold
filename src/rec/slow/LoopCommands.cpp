@@ -146,8 +146,8 @@ const Map& getLoopMap() {
     make_pair(Command::JUMP_TO_8, &jumpTo8),
     make_pair(Command::JUMP_TO_9, &jumpTo9),
 
-    make_pair(Command::JUMP_TO_PREVIOUS_SEGMENT, jumpToLastSegment),
-    make_pair(Command::JUMP_TO_NEXT_SEGMENT, jumpToLastSegment),
+    make_pair(Command::JUMP_TO_PREVIOUS_SEGMENT, jumpToPreviousSegment),
+    make_pair(Command::JUMP_TO_NEXT_SEGMENT, jumpToNextSegment),
     make_pair(Command::JUMP_TO_LAST_SEGMENT, &jumpToLastSegment),
 
     make_pair(Command::SELECT_ALL, &selectAll),
