@@ -5,9 +5,6 @@
 
 {namespace}
 
-// Automatically generated on {timestamp}
-// from {sourcefile}
-
 {datatype}* {classname}::create() {{
   static const char data[] = {data};
   return data::create<{datatype}>(data, arraysize(data));

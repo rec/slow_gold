@@ -10,13 +10,12 @@ GROUPS = groups.getGroups()
 USAGE = """\
 Usage:
 
-  new [--svg=<svg-file>] <group> [...<group>] <name>
+  new <type> <filename>
 
 where
-  <svg-file> is a path to an SVG file.
-  <group> is one of %s
+  <type> is one of %s
+  <filename> is a path to the new file name base
 
-The --svg flag is only required if one of the groups is svg.
 """ % ', '.join(GROUPS)
 
 def usageError():
