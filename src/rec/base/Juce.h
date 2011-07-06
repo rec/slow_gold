@@ -32,6 +32,7 @@ typedef juce::CommandID CommandID;
 typedef juce::Component Component;
 
 typedef juce::DocumentWindow DocumentWindow;
+typedef juce::Drawable Drawable;
 typedef juce::DrawableButton DrawableButton;
 
 typedef juce::File File;

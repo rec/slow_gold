@@ -1,15 +1,13 @@
 #include "rec/gui/icon/OpenFolder.svg.h"
+
 #include "rec/base/ArraySize.h"
+#include "rec/data/Binary.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
-using juce::Drawable;
-
-// Original command line: new_class.py --svg=/Users/tom/Downloads/BlueSphere-SVG-snapshot-Nov-29-2002/folder_open.svg OpenFolder
-
-Drawable* OpenFolder::get() {
+juce::Drawable* OpenFolder::create() {
   static const char data[] = "<?xml version=\"1.0\" standalone=\"no\"?>\n"
   "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\"\n"
   "\"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\"\n"
@@ -481,9 +479,7 @@ Drawable* OpenFolder::get() {
   "</svg>\n"
   "\n"
 ;
-
-  static Drawable* d = Drawable::createFromImageData(data, arraysize(data));
-  return d;
+  return data::create<juce::Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

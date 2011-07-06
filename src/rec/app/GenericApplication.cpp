@@ -37,7 +37,6 @@ void GenericApplication::shutdown() {
   window_.reset();
   util::thread::trash::waitForAllThreadsToExit(1000);
   persist::AppInstance::stop();
-  gui::icon::deleteIcons();
 
   LOG(INFO) << name_ << ": shutdown finished.";
 }

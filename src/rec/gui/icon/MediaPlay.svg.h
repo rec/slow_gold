@@ -1,14 +1,14 @@
 #ifndef __REC_GUI_ICON_MEDIAPLAY__
 #define __REC_GUI_ICON_MEDIAPLAY__
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
 struct MediaPlay {
-  static juce::Drawable* get();
+  static juce::Drawable* create();
 };
 
 }  // namespace icon

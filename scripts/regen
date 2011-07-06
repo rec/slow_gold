@@ -1,3 +1,4 @@
+(cd $ROOT/rec && make -s) &&\
 source "$ROOT/rec/scripts/rproto" &&\
  "$ROOT/rec/scripts/rjuce" &&\
  "$ROOT/rec/scripts/rtags"

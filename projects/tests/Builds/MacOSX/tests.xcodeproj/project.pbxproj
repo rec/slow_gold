@@ -137,7 +137,6 @@
 		94DAC10DBE4839B98AF59C6A = { isa = PBXBuildFile; fileRef = 9548AA03601A3FD6634ACF73; };
 		F5190EBCAE0BEFBB205A376F = { isa = PBXBuildFile; fileRef = AB24CBF36D7B3C1B420A8F4F; };
 		C6BB211F2E765A70D9A0CEA3 = { isa = PBXBuildFile; fileRef = BB0D203EA3786F7928C0386F; };
-		AD0952C08D2C602829659BF5 = { isa = PBXBuildFile; fileRef = E7E2D052165BD779D8AE31B8; };
 		426438FDF82F8ECDD7C4235E = { isa = PBXBuildFile; fileRef = CE541EC9DDD5C2314E3FEB82; };
 		29FC75256DAB33440CC61729 = { isa = PBXBuildFile; fileRef = C6694C9647FDD4E1D4144139; };
 		61183643664FA0292533DB37 = { isa = PBXBuildFile; fileRef = CCB8721601C671324F9583ED; };
@@ -576,8 +575,6 @@
 		82DCB73BA224A32892B3634D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullScreen.svg.h; path = ../../../../src/rec/gui/icon/FullScreen.svg.h; sourceTree = SOURCE_ROOT; };
 		BB0D203EA3786F7928C0386F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreenRev.svg.cpp; path = ../../../../src/rec/gui/icon/FullScreenRev.svg.cpp; sourceTree = SOURCE_ROOT; };
 		299744138C592E1E9A54D6BF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullScreenRev.svg.h; path = ../../../../src/rec/gui/icon/FullScreenRev.svg.h; sourceTree = SOURCE_ROOT; };
-		E7E2D052165BD779D8AE31B8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Icon.cpp; path = ../../../../src/rec/gui/icon/Icon.cpp; sourceTree = SOURCE_ROOT; };
-		41B9915D4F8E02DC528A1A63 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Icon.h; path = ../../../../src/rec/gui/icon/Icon.h; sourceTree = SOURCE_ROOT; };
 		CE541EC9DDD5C2314E3FEB82 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaOptical.svg.cpp; path = ../../../../src/rec/gui/icon/MediaOptical.svg.cpp; sourceTree = SOURCE_ROOT; };
 		B57B757A0E32F3A5B6AB2A9D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaOptical.svg.h; path = ../../../../src/rec/gui/icon/MediaOptical.svg.h; sourceTree = SOURCE_ROOT; };
 		C6694C9647FDD4E1D4144139 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaPlay.svg.cpp; path = ../../../../src/rec/gui/icon/MediaPlay.svg.cpp; sourceTree = SOURCE_ROOT; };
@@ -1171,8 +1168,6 @@
 				82DCB73BA224A32892B3634D,
 				BB0D203EA3786F7928C0386F,
 				299744138C592E1E9A54D6BF,
-				E7E2D052165BD779D8AE31B8,
-				41B9915D4F8E02DC528A1A63,
 				CE541EC9DDD5C2314E3FEB82,
 				B57B757A0E32F3A5B6AB2A9D,
 				C6694C9647FDD4E1D4144139,
@@ -1539,7 +1534,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		A11AE5C8528C76DEBEB6DCE6 = { isa = PBXGroup; children = (
+		988BC0ED8F172B51E5338E52 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1743,7 +1738,6 @@
 				94DAC10DBE4839B98AF59C6A,
 				F5190EBCAE0BEFBB205A376F,
 				C6BB211F2E765A70D9A0CEA3,
-				AD0952C08D2C602829659BF5,
 				426438FDF82F8ECDD7C4235E,
 				29FC75256DAB33440CC61729,
 				61183643664FA0292533DB37,
@@ -1878,7 +1872,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = A11AE5C8528C76DEBEB6DCE6; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 988BC0ED8F172B51E5338E52; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

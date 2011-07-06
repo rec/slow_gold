@@ -5,7 +5,6 @@
 
 #include "rec/base/base.h"
 #include "rec/gui/Font.h"
-#include "rec/gui/icon/Icon.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/widget/Painter.h"

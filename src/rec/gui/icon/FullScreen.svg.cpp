@@ -1,16 +1,13 @@
 #include "rec/gui/icon/FullScreen.svg.h"
+
 #include "rec/base/ArraySize.h"
-#include "rec/gui/icon/Icon.h"
+#include "rec/data/Binary.h"
 
 namespace rec {
 namespace gui {
 namespace icon {
 
-using juce::Drawable;
-
-// Original command line: new_class.py --svg=/Users/tom/Downloads/tango-icon-theme-0.8.90/scalable/actions/view-fullscreen.svg FullScreen
-
-Drawable* FullScreen::get() {
+juce::Drawable* FullScreen::create() {
   static const char data[] = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
   "<!-- Created with Inkscape (http://www.inkscape.org/) -->\n"
   "<svg\n"
@@ -619,9 +616,7 @@ Drawable* FullScreen::get() {
   "</svg>\n"
   "\n"
 ;
-
-  static Drawable* d = createFromImageData(data, arraysize(data));
-  return d;
+  return data::create<juce::Drawable>(data, arraysize(data));
 };
 
 }  // namespace icon

@@ -223,7 +223,6 @@
 		F4CF5FB501CB800D4485B08D /* simplekey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B741A1046929FF8F92F3264A /* simplekey.cpp */; };
 		F74722BEDA6363B3C5CC8470 /* PersistentData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE8F534EF0DEE3A4B3FB4FFA /* PersistentData.cpp */; };
 		FA117A5CE9187E9ED64FFB79 /* DriveHardDisk.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E909FE0D5FEEA9CFC90002C /* DriveHardDisk.svg.cpp */; };
-		FA6A55C7A87AA83E46D69771 /* Icon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2444E35A22AA2F9F051F3D24 /* Icon.cpp */; };
 		FBE97C77A873F503C75E4D86 /* Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAC70FBD5AC5BD1D686C92A /* Stereo.cpp */; };
 		FC3B0F3F33B09BA2B896123B /* Waveform.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4E1360033BDA98769499B7F3 /* Waveform.pb.cc */; };
 		FD55EC648F3B38175CF75372 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9316F0EECFA95C056CF5A9C7 /* Geometry.cpp */; };
@@ -308,7 +307,6 @@
 		2301BC0B61B96190C49537F0 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = ../../../../src/rec/slow/Model.cpp; sourceTree = SOURCE_ROOT; };
 		237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = SOURCE_ROOT; };
 		23A34552B919AAB64559DBDA /* Widget.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.pb.cc; path = ../../../../genfiles/proto/rec/widget/Widget.pb.cc; sourceTree = SOURCE_ROOT; };
-		2444E35A22AA2F9F051F3D24 /* Icon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Icon.cpp; path = ../../../../src/rec/gui/icon/Icon.cpp; sourceTree = SOURCE_ROOT; };
 		24A0BEC00ACCEC6FABBB97FA /* Panes.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Panes.pb.cc; path = ../../../../genfiles/proto/rec/widget/Panes.pb.cc; sourceTree = SOURCE_ROOT; };
 		24B40A4F47342BE02C32A2B1 /* MidiCommandMapEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiCommandMapEditor.cpp; path = ../../../../src/rec/command/MidiCommandMapEditor.cpp; sourceTree = SOURCE_ROOT; };
 		24E9F944DA376C7B677F2FAF /* DataSlider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DataSlider.cpp; path = ../../../../src/rec/gui/DataSlider.cpp; sourceTree = SOURCE_ROOT; };
@@ -526,7 +524,6 @@
 		8CFF54E3DD620C3217F5A777 /* MergeBlockSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MergeBlockSet.h; path = ../../../../src/rec/util/block/MergeBlockSet.h; sourceTree = SOURCE_ROOT; };
 		8DAA57F3E79B33281472FABE /* HasInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HasInstance.h; path = ../../../../src/rec/slow/HasInstance.h; sourceTree = SOURCE_ROOT; };
 		8DB281D6B07E576E7AD90BBB /* Threads.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Threads.cpp; path = ../../../../src/rec/slow/Threads.cpp; sourceTree = SOURCE_ROOT; };
-		8E1AA5446BCD4AF28FFB06EF /* Icon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Icon.h; path = ../../../../src/rec/gui/icon/Icon.h; sourceTree = SOURCE_ROOT; };
 		9036B14EDA4AEA94881F5659 /* nodeutil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nodeutil.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/nodeutil.h"; sourceTree = SOURCE_ROOT; };
 		908B46BCECCDD21AC4BFD400 /* iterator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = iterator.cpp; path = ../../../../src/rec/data/yaml/src/iterator.cpp; sourceTree = SOURCE_ROOT; };
 		908C52E59BABA47A9B73B2CE /* SetterResizer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SetterResizer.cpp; path = ../../../../src/rec/gui/SetterResizer.cpp; sourceTree = SOURCE_ROOT; };
@@ -901,8 +898,6 @@
 				CF4EBB22CD72FB3ECF246FC9 /* FullScreen.svg.h */,
 				F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */,
 				66F9571A97A86624C7C6C23B /* FullScreenRev.svg.h */,
-				2444E35A22AA2F9F051F3D24 /* Icon.cpp */,
-				8E1AA5446BCD4AF28FFB06EF /* Icon.h */,
 				0BB612C1E8140A577AA1D70E /* MediaOptical.svg.cpp */,
 				F2DD887229813BBBE31D2619 /* MediaOptical.svg.h */,
 				02CB509D623C2C0701854DB6 /* MediaPlay.svg.cpp */,
@@ -1432,6 +1427,20 @@
 			name = slow;
 			sourceTree = "<group>";
 		};
+		96F7BE6357A47A5B6EC4F9B2 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		9A4ED57394A2394FF25AF65F /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1718,20 +1727,6 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
-		E5402901EF7F0E1777C0DC3A /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -1911,7 +1906,7 @@
 				French,
 				German,
 			);
-			mainGroup = E5402901EF7F0E1777C0DC3A /* Source */;
+			mainGroup = 96F7BE6357A47A5B6EC4F9B2 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -2042,7 +2037,6 @@
 				D13CD404C98771CFB76688E6 /* DriveOptical.svg.cpp in Sources */,
 				317B11B3BA4927C15DCB23EC /* FullScreen.svg.cpp in Sources */,
 				031D341649B4A296F511CA2F /* FullScreenRev.svg.cpp in Sources */,
-				FA6A55C7A87AA83E46D69771 /* Icon.cpp in Sources */,
 				9EC64CF5036DD6D204352FDB /* MediaOptical.svg.cpp in Sources */,
 				665E882C78FA7B5A393713A5 /* MediaPlay.svg.cpp in Sources */,
 				BE79494A818EF83F52A4C7B3 /* MediaPlaybackStart.svg.cpp in Sources */,

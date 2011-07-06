@@ -5,7 +5,6 @@
 
 #include "rec/data/persist/AppInstance.h"
 #include "rec/util/thread/Trash.h"
-#include "rec/gui/icon/Icon.h"
 
 namespace rec {
 namespace app {

@@ -21,17 +21,20 @@ TransportController::TransportController()
   startStopButton_.setClickingTogglesState(true);
   startStopButton_.addListener(this);
 
-  startStopButton_.setImages(icon::MediaPlaybackStart::get(),
-                             NULL, NULL, NULL,
-                             icon::MediaPlaybackStop::get());
+  startStopButton_.setImages(
+      ptr<Drawable>(icon::MediaPlaybackStart::create()).get(),
+      NULL, NULL, NULL,
+      ptr<Drawable>(icon::MediaPlaybackStop::create()).get());
 
   addLoopPointButton_.addListener(this);
-  addLoopPointButton_.setImages(icon::MediaPlay::get(), NULL,
-                                icon::MediaRecord::get());
+  addLoopPointButton_.setImages(
+      ptr<Drawable>(icon::MediaPlay::create()).get(), NULL,
+      ptr<Drawable>(icon::MediaRecord::create()).get());
 
   zoomOutButton_.addListener(this);
-  zoomOutButton_.setImages(icon::FullScreen::get(), NULL,
-                           icon::FullScreenRev::get());
+  zoomOutButton_.setImages(ptr<Drawable>(icon::FullScreen::create()).get(),
+                           NULL,
+                           ptr<Drawable>(icon::FullScreenRev::create()).get());
 
   addToLayout(&startStopButton_, 30, 30, 30);
   addToLayout(&addLoopPointButton_, 30, 30, 30);
