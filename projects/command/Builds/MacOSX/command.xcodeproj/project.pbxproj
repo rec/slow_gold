@@ -53,6 +53,7 @@
 		838F57D3C1DA4AACDAA36AEC = { isa = PBXBuildFile; fileRef = 6011F232AEB57506156913E1; };
 		F9F071E7041BE250A5DA6EB1 = { isa = PBXBuildFile; fileRef = B2903DED871B1C7458B15DE7; };
 		1D658B4612F9D9B5244AE531 = { isa = PBXBuildFile; fileRef = A25B99177B2FBBF801238912; };
+		4BF664639F2371F8172259E8 = { isa = PBXBuildFile; fileRef = AD83689542B76CC15A719157; };
 		55BA6C0BFEC9CFD878759EBA = { isa = PBXBuildFile; fileRef = A3D833121C1A616248A634B0; };
 		594B6788570E47370748FA75 = { isa = PBXBuildFile; fileRef = FCB43F31E7E3B027B216DED6; };
 		02C4FDB7F6DF1B24540D1229 = { isa = PBXBuildFile; fileRef = D84207482BF6E3DAFFC1B635; };
@@ -355,6 +356,8 @@
 		31E016B6035D915B77D7104B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapItemComponent.h; path = ../../../../src/rec/command/CommandMapItemComponent.h; sourceTree = SOURCE_ROOT; };
 		BA9F7F8A18C5F8802A0DBEBE = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapTopLevelItem.h; path = ../../../../src/rec/command/CommandMapTopLevelItem.h; sourceTree = SOURCE_ROOT; };
 		F31BCFBB886591D963DEE0F6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GenericCommandMapEditor.h; path = ../../../../src/rec/command/GenericCommandMapEditor.h; sourceTree = SOURCE_ROOT; };
+		AD83689542B76CC15A719157 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Keyboard.xml.cpp; path = ../../../../src/rec/command/Keyboard.xml.cpp; sourceTree = SOURCE_ROOT; };
+		E59C9637AB13A6974452363E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Keyboard.xml.h; path = ../../../../src/rec/command/Keyboard.xml.h; sourceTree = SOURCE_ROOT; };
 		A3D833121C1A616248A634B0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KeyCommandMapEditor.cpp; path = ../../../../src/rec/command/KeyCommandMapEditor.cpp; sourceTree = SOURCE_ROOT; };
 		E9F3653A96B15779CFA7391F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyCommandMapEditor.h; path = ../../../../src/rec/command/KeyCommandMapEditor.h; sourceTree = SOURCE_ROOT; };
 		FCB43F31E7E3B027B216DED6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiCommandMap.cpp; path = ../../../../src/rec/command/MidiCommandMap.cpp; sourceTree = SOURCE_ROOT; };
@@ -912,6 +915,8 @@
 				31E016B6035D915B77D7104B,
 				BA9F7F8A18C5F8802A0DBEBE,
 				F31BCFBB886591D963DEE0F6,
+				AD83689542B76CC15A719157,
+				E59C9637AB13A6974452363E,
 				A3D833121C1A616248A634B0,
 				E9F3653A96B15779CFA7391F,
 				FCB43F31E7E3B027B216DED6,
@@ -1445,7 +1450,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		F211C1914C8B87FCEEA5B50A = { isa = PBXGroup; children = (
+		6FADFD5D9E956662D607ED73 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1565,6 +1570,7 @@
 				838F57D3C1DA4AACDAA36AEC,
 				F9F071E7041BE250A5DA6EB1,
 				1D658B4612F9D9B5244AE531,
+				4BF664639F2371F8172259E8,
 				55BA6C0BFEC9CFD878759EBA,
 				594B6788570E47370748FA75,
 				02C4FDB7F6DF1B24540D1229,
@@ -1754,7 +1760,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = F211C1914C8B87FCEEA5B50A; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 6FADFD5D9E956662D607ED73; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="HkqhB9hGW" name="Slow">
+  <MAINGROUP id="HTJeZVEoO" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -287,6 +287,10 @@
               id="4SobnDju2" name="CommandMapTopLevelItem.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/GenericCommandMapEditor.h"
               id="TUT3bp3xc" name="GenericCommandMapEditor.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/command/Keyboard.xml.cpp" id="QYsctokX9"
+              name="Keyboard.xml.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/command/Keyboard.xml.h" id="JN5pqzCIU"
+              name="Keyboard.xml.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/KeyCommandMapEditor.cpp"
               id="QBgNiNtTD" name="KeyCommandMapEditor.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/KeyCommandMapEditor.h"
@@ -1211,7 +1215,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="IYI39ShtS" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="uJomERA20" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

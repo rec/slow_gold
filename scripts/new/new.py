@@ -39,7 +39,9 @@ def usageError(fail=True, error=None):
     raise ValueError
 
 def convertToCCode(data):
-  data = '"%s\\n"' % (data.replace('"', '\\"') .replace('\n', '\\n"\n  "'))
+  data = '"%s\\n"' % (data.replace(chr(13), '').
+                      replace('"', '\\"').
+                      replace('\n', '\\n"\n  "'))
   return ''.join(split.splitLargeLines(data.split('\n')))
 
 def readDataFile(f):

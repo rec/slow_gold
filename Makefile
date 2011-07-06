@@ -1,6 +1,10 @@
+new := ~/Documents/development/rec/scripts/new/new.py
+
 icons := $(wildcard src/rec/gui/icon/*.svg)
 icon_code := $(patsubst %.svg, %.svg.cpp, $(icons))
-new := ~/Documents/development/rec/scripts/new/new.py
+
+binaries := $(wildcard src/rec/command/*.xml)
+binary_code := $(patsubst %.xml, %.xml.cpp, $(binaries))
 
 %.svg.cpp:: %.svg
 	$(new) svg $*
@@ -10,6 +14,7 @@ new := ~/Documents/development/rec/scripts/new/new.py
 
 all:
 	make $(icon_code)
+	make $(binary_code)
 
 clean:
 	rm $(icon_code)

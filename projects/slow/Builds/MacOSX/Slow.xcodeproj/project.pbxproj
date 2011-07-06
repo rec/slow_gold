@@ -119,6 +119,7 @@
 		86F1CBF91CF6DF0055CE3FD7 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBCFFC0D921396EF7C62C497 /* Window.cpp */; };
 		8735558EA7A879E5A368F972 /* DialComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */; };
 		8751C4C402D9D84B93C77213 /* FillSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D64E4517C63D1D001A1F33E2 /* FillSeries.cpp */; };
+		8768786ABA62B90E44935464 /* Keyboard.xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9E57C9C6DF6B4E787E39CD4 /* Keyboard.xml.cpp */; };
 		8896BEA319451F2CB4541F41 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8C10E13EA1C8B0DB22E914 /* CoreMIDI.framework */; };
 		895DC5EF8406600F0CD43F41 /* AudioCard.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D2574908A37D188C9ED1F65 /* AudioCard.svg.cpp */; };
 		8A2380D3CA61B2BE65350DFD /* CDDBResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D87903F9957B99FEDB5DEC3 /* CDDBResponse.cpp */; };
@@ -304,6 +305,7 @@
 		2229918D7B3E59F708F34D9B /* AppDirectory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDirectory.h; path = ../../../../src/rec/data/persist/AppDirectory.h; sourceTree = SOURCE_ROOT; };
 		22934661D0184DD2B68F4124 /* Stereo.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Stereo.pb.h; path = ../../../../genfiles/proto/rec/audio/source/Stereo.pb.h; sourceTree = SOURCE_ROOT; };
 		22E6A127E8EA05C450A50D59 /* Tags.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tags.h; path = ../../../../src/rec/audio/format/mpg123/Tags.h; sourceTree = SOURCE_ROOT; };
+		22FEA93EB662FEBD61C331BA /* Keyboard.xml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Keyboard.xml.h; path = ../../../../src/rec/command/Keyboard.xml.h; sourceTree = SOURCE_ROOT; };
 		2301BC0B61B96190C49537F0 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = ../../../../src/rec/slow/Model.cpp; sourceTree = SOURCE_ROOT; };
 		237A2F2912C72197F907D7C4 /* PlaybackController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = SOURCE_ROOT; };
 		23A34552B919AAB64559DBDA /* Widget.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget.pb.cc; path = ../../../../genfiles/proto/rec/widget/Widget.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -767,6 +769,7 @@
 		F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreenRev.svg.cpp; path = ../../../../src/rec/gui/icon/FullScreenRev.svg.cpp; sourceTree = SOURCE_ROOT; };
 		F8ECB7C9B12C73DC0B8E5A92 /* AppLayout.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppLayout.pb.cc; path = ../../../../genfiles/proto/rec/slow/AppLayout.pb.cc; sourceTree = SOURCE_ROOT; };
 		F993E1ABE1FFE4422FCE9A47 /* AudioFormatManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioFormatManager.cpp; path = ../../../../src/rec/audio/util/AudioFormatManager.cpp; sourceTree = SOURCE_ROOT; };
+		F9E57C9C6DF6B4E787E39CD4 /* Keyboard.xml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Keyboard.xml.cpp; path = ../../../../src/rec/command/Keyboard.xml.cpp; sourceTree = SOURCE_ROOT; };
 		FA6F394749974A022CFAC932 /* ThreadedSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThreadedSource.h; path = ../../../../src/rec/audio/source/ThreadedSource.h; sourceTree = SOURCE_ROOT; };
 		FB1B005E5ABE3ECE29CB8885 /* CallAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CallAsync.h; path = ../../../../src/rec/util/thread/CallAsync.h; sourceTree = SOURCE_ROOT; };
 		FB726C645ED1095FC2EE2BA1 /* Listeners.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Listeners.cpp; path = ../../../../src/rec/slow/Listeners.cpp; sourceTree = SOURCE_ROOT; };
@@ -823,6 +826,8 @@
 				7D4229BD2EACD961A4480CC7 /* CommandMapItemComponent.h */,
 				F6F17282331340A6477EB93B /* CommandMapTopLevelItem.h */,
 				3F7DC2B293A3D9FF904FDC73 /* GenericCommandMapEditor.h */,
+				F9E57C9C6DF6B4E787E39CD4 /* Keyboard.xml.cpp */,
+				22FEA93EB662FEBD61C331BA /* Keyboard.xml.h */,
 				E03947192768A9887417203C /* KeyCommandMapEditor.cpp */,
 				26556932B10F9F8FFC18359B /* KeyCommandMapEditor.h */,
 				391633390332083DDF87CA52 /* MidiCommandMap.cpp */,
@@ -1427,20 +1432,6 @@
 			name = slow;
 			sourceTree = "<group>";
 		};
-		96F7BE6357A47A5B6EC4F9B2 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		9A4ED57394A2394FF25AF65F /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1614,6 +1605,20 @@
 				0E5561BA8F7A19892CFB3AED /* widget */,
 			);
 			name = rec;
+			sourceTree = "<group>";
+		};
+		C2D54A6C34DF5BD9CCE305BD /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 		C538D90412B6270966BA1C60 /* tree */ = {
@@ -1906,7 +1911,7 @@
 				French,
 				German,
 			);
-			mainGroup = 96F7BE6357A47A5B6EC4F9B2 /* Source */;
+			mainGroup = C2D54A6C34DF5BD9CCE305BD /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1967,6 +1972,7 @@
 				DFE15ADADC2892B207145668 /* Command.cpp in Sources */,
 				465275DF2F6A3A76C24B6A2D /* CommandMap.cpp in Sources */,
 				6AC79F4E2D3821CB41BBE1BD /* CommandMapEditor.cpp in Sources */,
+				8768786ABA62B90E44935464 /* Keyboard.xml.cpp in Sources */,
 				921C7F02091807EE95E69A36 /* KeyCommandMapEditor.cpp in Sources */,
 				95AD6B80625D9F5D34BAE6E2 /* MidiCommandMap.cpp in Sources */,
 				5F26F1BE112E634A817E0EA5 /* MidiCommandMapEditor.cpp in Sources */,
