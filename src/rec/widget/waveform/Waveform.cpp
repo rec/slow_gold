@@ -59,7 +59,7 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
 
 void Waveform::paint(Graphics& g) {
   Painter p(desc_.widget(), &g);
-  // ScopedLock l(lock_);
+  ScopedLock l(lock_);
 
   if (thumbnail_) {
     TimeSelection::iterator i = selection_.begin();

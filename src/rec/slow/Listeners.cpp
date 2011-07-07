@@ -71,8 +71,25 @@ void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
 }
 
+const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
+  using rec::util::Mode;
+  using namespace juce;
+  using juce::MouseCursor;
+  switch (mode.click()) {
+    case Mode::DRAG:              return MouseCursor::DraggingHandCursor;
+    case Mode::DRAW_LOOP_POINTS:  return MouseCursor::IBeamCursor;
+    case Mode::SET_TIME:          return MouseCursor::CrosshairCursor;
+    case Mode::TOGGLE_SELECTION:  return MouseCursor::PointingHandCursor;
+    case Mode::ZOOM_IN:
+    case Mode::ZOOM_OUT:          return MouseCursor::UpDownLeftRightResizeCursor;
+    default:                      return MouseCursor::NormalCursor;
+  }
+}
+
+
 void Listeners::operator()(const Mode& mode) {
   mouseListener_->setMode(mode);
+  components()->waveform_.setMouseCursor(getCursor(mode));
 }
 
 void Listeners::operator()(const audio::Gain& g) {
