@@ -123,6 +123,7 @@ JUMP_OP(jumpToPreviousSegment, snapshot->previous_)
 
 bool clearLoops(LoopSnapshot* s) {
   s->loops_.Clear();
+  s->loops_.add_loop_point();
   return true;
 }
 

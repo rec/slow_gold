@@ -72,8 +72,6 @@ void Listeners::operator()(None) {
 }
 
 const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
-  using rec::util::Mode;
-  using namespace juce;
   using juce::MouseCursor;
   switch (mode.click()) {
     case Mode::DRAG:              return MouseCursor::DraggingHandCursor;
@@ -85,7 +83,6 @@ const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
     default:                      return MouseCursor::NormalCursor;
   }
 }
-
 
 void Listeners::operator()(const Mode& mode) {
   mouseListener_->setMode(mode);

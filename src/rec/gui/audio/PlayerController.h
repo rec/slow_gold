@@ -6,6 +6,7 @@
 #include "rec/gui/SetterToggle.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/gui/audio/LevelMeter.h"
+#include "rec/gui/audio/ModeSelector.h"
 #include "rec/gui/layout/Layout.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/util/Mode.pb.h"
@@ -15,7 +16,6 @@ namespace gui {
 namespace audio {
 
 class PlayerController : public Layout, public juce::ComboBox::Listener,
-                         public DataListener<Mode>,
                          public DataListener<rec::audio::Gain>,
                          public DataListener<rec::audio::source::StereoProto>,
                          public DataListener<rec::audio::stretch::Stretch> {
@@ -24,9 +24,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   virtual ~PlayerController() {}
 
   virtual bool isOpaque() const { return true; }
-
-  virtual void setData(persist::Data<Mode>*);
-  virtual void operator()(const Mode&);
 
   virtual void setData(persist::Data<rec::audio::stretch::Stretch>*);
   virtual void operator()(const rec::audio::stretch::Stretch&);
@@ -43,6 +40,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
 
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
   LevelMeter* levelMeter() { return &levelMeter_; }
+  ModeSelector* modeSelector() { return &modeSelector_; }
 
  private:
   DataSlider<double> playbackSpeed_;
@@ -59,7 +57,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   gui::SetterToggle dimButton_;
 
   juce::ComboBox stereoComboBox_;
-  juce::ComboBox modeComboBox_;
+  ModeSelector modeSelector_;
 
   DISALLOW_COPY_AND_ASSIGN(PlayerController);
 };

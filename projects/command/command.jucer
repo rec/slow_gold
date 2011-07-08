@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Adskw0ld8" name="command">
+  <MAINGROUP id="SVRNosEFR" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -592,6 +592,10 @@
                 name="Loops.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/Loops.h" id="IDjX13hK1"
                 name="Loops.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/audio/ModeSelector.cpp" id="HiExRwbHt"
+                name="ModeSelector.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/audio/ModeSelector.h" id="dO4es3D8Z"
+                name="ModeSelector.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/audio/PlayerController.cpp"
                 id="9lC88lovk" name="PlayerController.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/audio/PlayerController.h"
@@ -650,6 +654,14 @@
                 id="PZIErdx7h" name="AudioXGeneric.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/AudioXGeneric.svg.h"
                 id="yIPPRm9Yc" name="AudioXGeneric.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/Crosshairs.svg.cpp"
+                id="Q2AHSDOK5" name="Crosshairs.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/Crosshairs.svg.h" id="uoB7II2PF"
+                name="Crosshairs.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/DraggingHand.svg.cpp"
+                id="EH6zIsq42" name="DraggingHand.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/DraggingHand.svg.h"
+                id="gGZN0QniD" name="DraggingHand.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/DriveHardDisk.svg.cpp"
                 id="fCIVeRbRg" name="DriveHardDisk.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/DriveHardDisk.svg.h"
@@ -690,6 +702,14 @@
                 id="4motCqz4o" name="OpenFolder.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/OpenFolder.svg.h" id="LNPCGbipx"
                 name="OpenFolder.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/Pencil.svg.cpp" id="fxuI6Unz7"
+                name="Pencil.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/Pencil.svg.h" id="7i7Cg4TBO"
+                name="Pencil.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/PointingHand.svg.cpp"
+                id="8Uoedajuw" name="PointingHand.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/PointingHand.svg.h"
+                id="8EaooGFJH" name="PointingHand.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/ThickFolder.svg.cpp"
                 id="UOOCoJUJ8" name="ThickFolder.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/ThickFolder.svg.h" id="LnOmGzE3j"
@@ -698,6 +718,10 @@
                 id="Vvx7gFqzi" name="ThinFolder.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/ThinFolder.svg.h" id="hDGSqB9Gk"
                 name="ThinFolder.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/ZoomIn.svg.cpp" id="7lrPWp4ps"
+                name="ZoomIn.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/ZoomIn.svg.h" id="KuxKye0KC"
+                name="ZoomIn.svg.h" resource="0"/>
         </GROUP>
         <GROUP id="3T2NlTISq" name="layout">
           <FILE compile="0" file="../../src/rec/gui/layout/Layout.h" id="P18V7TjRQ"
@@ -1215,7 +1239,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="rEndEllPD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="1ft2x4k1Z" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

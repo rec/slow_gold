@@ -97,18 +97,6 @@ void Target::addCommands() {
       "Close", "File",
       "Close the current file");
 
-#ifdef EXTEND_CONTRACT
-  add(Command::CONTRACT_FROM_NEXT_LOOP_POINT,
-      functionCallback(&retractEnd, instance_),
-      "Shrink From End", "Selection",
-      "Disable the last loop segment");
-
-  add(Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT,
-      functionCallback(&retractBegin, instance_),
-      "Shrink From Start", "Selection",
-      "Disable the first loop segment");
-#endif
-
   add(Command::DIM_VOLUME_TOGGLE,
       functionCallback(&dimVolumeToggle, instance_),
       "Toggle audio dim", "Audio",
@@ -121,18 +109,6 @@ void Target::addCommands() {
   add(Command::INVERT_LOOP_SELECTION,
       "Invert Selection", "Selection",
       "Unselect everything selected and vice-versa.");
-
-#ifdef EXTEND_CONTRACT
-  add(Command::EXTEND_TO_NEXT_LOOP_POINT,
-      functionCallback(&extendEnd, instance_),
-      "Extend End", "Selection",
-      "Enable the next segment in order.");
-
-  add(Command::EXTEND_TO_PREVIOUS_LOOP_POINT,
-      functionCallback(&extendBegin, instance_),
-      "Extend Beginning", "Selection",
-      "Enable the segment before the first one.");
-#endif
 
   add(Command::JUMP_TO_NEXT_SEGMENT,
       "Jump To Next", "Transport",

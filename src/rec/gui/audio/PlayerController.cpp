@@ -69,21 +69,7 @@ PlayerController::PlayerController()
   stereoComboBox_.addListener(this);
 
   addToLayout(&stereoComboBox_, 14);
-
-  modeComboBox_.setEditableText(false);
-  modeComboBox_.setJustificationType(Justification::centredLeft);
-  modeComboBox_.setTextWhenNothingSelected("Mode");
-  modeComboBox_.setTextWhenNoChoicesAvailable("Mode");
-
-  modeComboBox_.addItem("Drag", Mode::DRAG);
-  modeComboBox_.addItem("Draw loop points", Mode::DRAW_LOOP_POINTS);
-  modeComboBox_.addItem("Jump to time", Mode::SET_TIME);
-  modeComboBox_.addItem("Toggle segment selection", Mode::TOGGLE_SELECTION);
-  modeComboBox_.addItem("Zoom in", Mode::ZOOM_IN);
-  modeComboBox_.addItem("Zoom out", Mode::ZOOM_OUT);
-  modeComboBox_.addListener(this);
-
-  addToLayout(&modeComboBox_, 14);
+  addToLayout(&modeSelector_, 14);
 }
 
 void PlayerController::setData(persist::Data<Stretch>* data) {
@@ -129,15 +115,6 @@ void PlayerController::operator()(const rec::audio::Gain& gain) {
   dimButton_.setEnabled(!mute || dim);
 }
 
-void PlayerController::setData(persist::Data<Mode>* data) {
-  DataListener<Mode>::setData(data);
-}
-
-void PlayerController::operator()(const Mode& mode) {
-  juce::MessageManagerLock l;
-  modeComboBox_.setSelectedId(mode.click(), true);
-}
-
 void PlayerController::comboBoxChanged(juce::ComboBox* box) {
   if (box == &stereoComboBox_) {
     if (DataListener<StereoProto>::data_) {
@@ -148,13 +125,6 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
         stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
       }
       data::set(DataListener<StereoProto>::data_, stereo);
-    }
-
-  } else if (box == &modeComboBox_) {
-    if (DataListener<Mode>::data_) {
-      Mode mode;
-      mode.set_click(static_cast<Mode::Action>(modeComboBox_.getSelectedId()));
-      data::set(DataListener<Mode>::data_, mode);
     }
   }
 }

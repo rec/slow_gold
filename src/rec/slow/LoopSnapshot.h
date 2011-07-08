@@ -35,6 +35,8 @@ struct LoopSnapshot {
 
   // Limit x to [0, loopSize_).
   int limit(int x) {
+  	if (!loopSize_)
+      return 0;
     for (; x >= loopSize_; x -= loopSize_);
     for (; x < 0; x += loopSize_);
     return x;
