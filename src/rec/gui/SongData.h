@@ -13,7 +13,8 @@ namespace gui {
 
 class SongData : public component::Focusable<SetterTextArea>, public Cuttable {
  public:
-  SongData() {
+  explicit SongData(ApplicationCommandManager* manager)
+      : component::Focusable<SetterTextArea>(manager) {
     setName("SongData");
     add("Track", Address("track_title"), "The name of the individual track.");
     add("Album", Address("album_title"),

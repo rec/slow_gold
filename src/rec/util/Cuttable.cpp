@@ -79,7 +79,9 @@ bool cutNoClipboard() {
   return false;
 }
 
-bool canCopy() { return current()->canCopy(); }
+bool canCopy() { 
+  return current()->canCopy(); 
+}
 bool canCut() { return current()->canCut(); }
 bool canPaste() { return current()->canPaste(); }
 

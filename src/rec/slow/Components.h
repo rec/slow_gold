@@ -10,7 +10,9 @@
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/MainPage.h"
 #include "rec/slow/PlaybackController.h"
+#include "rec/slow/Instance.h"
 #include "rec/slow/Slow.h"
+#include "rec/slow/Target.h"
 #include "rec/util/thread/Trash.h"
 #include "rec/widget/tree/Root.h"
 #include "rec/widget/waveform/Waveform.h"
@@ -18,15 +20,21 @@
 namespace rec {
 namespace slow {
 
-struct Instance;
-
 typedef gui::DropTarget<Waveform> WaveformComp;
 
 struct Components {
-  Components() : playbackController_(this), mainPage_(this) {
+  Components(Instance* instance)
+    : manager_(instance->target_->targetManager()->commandManager()),
+      loops_(manager_),
+      songData_(manager_),
+      directoryTree_(manager_),
+      playbackController_(this),
+      mainPage_(this) {
     playbackController_.setSetter(persist::setter<AppLayout>());
+    waveform_.setManager(manager_);
   }
 
+  ApplicationCommandManager* manager_;
   gui::audio::TimeController timeController_;
 
   gui::audio::Loops loops_;

@@ -18,7 +18,8 @@ bool isNewLoopPointTime(const LoopPointList& lp, RealTime t);
 
 class Loops : public component::Focusable<TableController>, public Cuttable {
  public:
-  explicit Loops(const TableColumnList* desc = NULL,
+  explicit Loops(ApplicationCommandManager* manager,
+                 const TableColumnList* desc = NULL,
                  bool allowDiscontinuousSelections = true);
   virtual ~Loops();
 

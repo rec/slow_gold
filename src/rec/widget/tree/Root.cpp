@@ -25,7 +25,9 @@ static File getOpennessFile() {
   return getApplicationDirectory().getChildFile("TreeOpenness.xml");
 }
 
-Root::Root(const NodeDesc& desc) : desc_(desc),
+Root::Root(ApplicationCommandManager* manager,
+           const NodeDesc& desc) : desc_(desc),
+                                   tree_(manager),
                                    addDialogOpen_(false),
                                    opennessRead_(false),
                                    opennessStarted_(false) {

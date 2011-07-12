@@ -23,8 +23,10 @@ static Defaulter<TableColumnList> dflt(
 
 const double Loops::CLOSE = 0.5;
 
-Loops::Loops(const TableColumnList* desc, bool dis)
-    : length_(0),
+Loops::Loops(ApplicationCommandManager* manager,
+             const TableColumnList* desc, bool dis)
+    : component::Focusable<TableController>(manager),
+      length_(0),
       allowDiscontinuousSelections_(dis) {
   initialize(dflt.get(desc), Address("loop_point"), "Loops");
   fillHeader(&getHeader());

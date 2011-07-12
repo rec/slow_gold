@@ -16,7 +16,7 @@ typedef gui::component::Focusable<TreeViewDropTarget> FocusableTarget;
 
 class TreeViewDropAll : public FocusableTarget, public Cuttable {
  public:
-  TreeViewDropAll();
+  explicit TreeViewDropAll(ApplicationCommandManager* manager);
   virtual void paint(Graphics& g);
 
   bool isInterestedInFileDrag(const StringArray& files);
@@ -30,7 +30,7 @@ class TreeViewDropAll : public FocusableTarget, public Cuttable {
   const string cuttableName() const { return "Navigator"; }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(TreeViewDropAll);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(TreeViewDropAll);
 };
 
 }  // namespace tree

@@ -14,7 +14,7 @@ namespace slow {
 
 Instance::Instance(DocumentWindow* window)
     : window_(window),
-      components_(new Components),
+      components_(new Components(this)),
       device_(new audio::Device),
       player_(new audio::source::Player(device_.get())),
       model_(new Model(this)),

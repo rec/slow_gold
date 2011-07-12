@@ -10,10 +10,21 @@ namespace component {
 template <typename Type = Component>
 class Focusable : public Type {
  public:
-  Focusable() {}
-  virtual ~Focusable() { this->setWantsKeyboardFocus(true); }
-  virtual void focusGained(Component::FocusChangeType) { this->repaint(); }
-  virtual void focusLost(Component::FocusChangeType) { this->repaint(); }
+  explicit Focusable(ApplicationCommandManager* m = NULL) : manager_(m) {
+    this->setWantsKeyboardFocus(true);
+  }
+
+  void setManager(ApplicationCommandManager* m) { manager_ = m; }
+  virtual ~Focusable() {}
+
+  virtual void focusGained(Component::FocusChangeType) {
+    if (manager_)
+      manager_->commandStatusChanged();
+
+    this->repaint();
+  }
+  virtual void focusLost(Component::FocusChangeType t) { focusGained(t); }
+
   virtual void paintFocus(Graphics& g) {
     if (this->hasKeyboardFocus(true) || Component::getCurrentlyFocusedComponent() == this) {
       g.setColour(juce::Colours::red.withAlpha(0.8f));
@@ -24,6 +35,8 @@ class Focusable : public Type {
   virtual void paintOverChildren(Graphics& g) { paintFocus(g); }
 
  private:
+  ApplicationCommandManager* manager_;
+
   DISALLOW_COPY_AND_ASSIGN(Focusable);
 };
 
