@@ -67,12 +67,13 @@ enum Command_Type {
   Command_Type_JUMP_TO_7 = 97,
   Command_Type_JUMP_TO_8 = 98,
   Command_Type_JUMP_TO_9 = 99,
+  Command_Type_JUMP_TO_FIRST_SEGMENT = 87,
   Command_Type_JUMP_TO_PREVIOUS_SEGMENT = 8,
   Command_Type_JUMP_TO_NEXT_SEGMENT = 9,
   Command_Type_JUMP_TO_LAST_SEGMENT = 10,
-  Command_Type_JUMP_TO_NEXT_SELECTED_SEGMENT = 80,
-  Command_Type_JUMP_TO_PREVIOUS_SELECTED_SEGMENT = 81,
   Command_Type_JUMP_TO_FIRST_SELECTED_SEGMENT = 82,
+  Command_Type_JUMP_TO_PREVIOUS_SELECTED_SEGMENT = 81,
+  Command_Type_JUMP_TO_NEXT_SELECTED_SEGMENT = 80,
   Command_Type_JUMP_TO_LAST_SELECTED_SEGMENT = 88,
   Command_Type_KEYBOARD_MAPPINGS = 18,
   Command_Type_MIDI_MAPPINGS = 17,
@@ -106,6 +107,7 @@ enum Command_Type {
   Command_Type_SELECT_ONLY_7 = 37,
   Command_Type_SELECT_ONLY_8 = 38,
   Command_Type_SELECT_ONLY_9 = 39,
+  Command_Type_SELECT_FIRST_SEGMENT_ONLY = 83,
   Command_Type_SELECT_LAST_SEGMENT_ONLY = 84,
   Command_Type_SELECT_NEXT_SEGMENT_ONLY = 85,
   Command_Type_SELECT_PREVIOUS_SEGMENT_ONLY = 86,
@@ -243,12 +245,13 @@ class Command : public ::google::protobuf::Message {
   static const Type JUMP_TO_7 = Command_Type_JUMP_TO_7;
   static const Type JUMP_TO_8 = Command_Type_JUMP_TO_8;
   static const Type JUMP_TO_9 = Command_Type_JUMP_TO_9;
+  static const Type JUMP_TO_FIRST_SEGMENT = Command_Type_JUMP_TO_FIRST_SEGMENT;
   static const Type JUMP_TO_PREVIOUS_SEGMENT = Command_Type_JUMP_TO_PREVIOUS_SEGMENT;
   static const Type JUMP_TO_NEXT_SEGMENT = Command_Type_JUMP_TO_NEXT_SEGMENT;
   static const Type JUMP_TO_LAST_SEGMENT = Command_Type_JUMP_TO_LAST_SEGMENT;
-  static const Type JUMP_TO_NEXT_SELECTED_SEGMENT = Command_Type_JUMP_TO_NEXT_SELECTED_SEGMENT;
-  static const Type JUMP_TO_PREVIOUS_SELECTED_SEGMENT = Command_Type_JUMP_TO_PREVIOUS_SELECTED_SEGMENT;
   static const Type JUMP_TO_FIRST_SELECTED_SEGMENT = Command_Type_JUMP_TO_FIRST_SELECTED_SEGMENT;
+  static const Type JUMP_TO_PREVIOUS_SELECTED_SEGMENT = Command_Type_JUMP_TO_PREVIOUS_SELECTED_SEGMENT;
+  static const Type JUMP_TO_NEXT_SELECTED_SEGMENT = Command_Type_JUMP_TO_NEXT_SELECTED_SEGMENT;
   static const Type JUMP_TO_LAST_SELECTED_SEGMENT = Command_Type_JUMP_TO_LAST_SELECTED_SEGMENT;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
   static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
@@ -282,6 +285,7 @@ class Command : public ::google::protobuf::Message {
   static const Type SELECT_ONLY_7 = Command_Type_SELECT_ONLY_7;
   static const Type SELECT_ONLY_8 = Command_Type_SELECT_ONLY_8;
   static const Type SELECT_ONLY_9 = Command_Type_SELECT_ONLY_9;
+  static const Type SELECT_FIRST_SEGMENT_ONLY = Command_Type_SELECT_FIRST_SEGMENT_ONLY;
   static const Type SELECT_LAST_SEGMENT_ONLY = Command_Type_SELECT_LAST_SEGMENT_ONLY;
   static const Type SELECT_NEXT_SEGMENT_ONLY = Command_Type_SELECT_NEXT_SEGMENT_ONLY;
   static const Type SELECT_PREVIOUS_SEGMENT_ONLY = Command_Type_SELECT_PREVIOUS_SEGMENT_ONLY;

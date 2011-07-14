@@ -22,7 +22,6 @@ bool applySelected(Operator op, LoopSnapshot* s) {
   return true;
 }
 
-
 #define _OP(NAME, RESULT)                                               \
   bool NAME ## Op(bool selected, int segment, LoopSnapshot* snapshot) { \
     return RESULT;                                                      \
@@ -106,6 +105,7 @@ SELECTION_OP(selectLast, selected || segment != snapshot->last_)
 SELECTION_OP(selectNext, selected || segment == snapshot->next_)
 SELECTION_OP(selectPrevious, selected || segment == snapshot->previous_)
 
+// NOT WORKING!
 JUMP_OP(jumpTo0, 0)
 JUMP_OP(jumpTo1, 1)
 JUMP_OP(jumpTo2, 2)
@@ -121,6 +121,11 @@ JUMP_OP(jumpToLastSegment, snapshot->last_)
 JUMP_OP(jumpToNextSegment, snapshot->next_)
 JUMP_OP(jumpToPreviousSegment, snapshot->previous_)
 
+bool jumpToFirstSelectedSegment(LoopSnapshot* ls) { return true; }
+bool jumpToPreviousSelectedSegment(LoopSnapshot* ls) { return true; }
+bool jumpToNextSelectedSegment(LoopSnapshot* ls) { return true; }
+bool jumpToLastSelectedSegment(LoopSnapshot* ls) { return true; }
+
 bool clearLoops(LoopSnapshot* s) {
   s->loops_.Clear();
   s->loops_.add_loop_point();
@@ -132,76 +137,81 @@ typedef LoopSnapshot::Map Map;
 const Map& getLoopMap() {
   using rec::command::Command;
   static const Map::value_type values[] = {
-    make_pair(Command::CLEAR_LOOPS, &clearLoops),
-    make_pair(Command::DESELECT_ALL, &deselectAll),
-    make_pair(Command::INVERT_LOOP_SELECTION, &invertLoopSelection),
+    make_pair(Command::CLEAR_LOOPS, clearLoops),
+    make_pair(Command::DESELECT_ALL, deselectAll),
+    make_pair(Command::INVERT_LOOP_SELECTION, invertLoopSelection),
 
-    make_pair(Command::JUMP_TO_0, &jumpTo0),
-    make_pair(Command::JUMP_TO_1, &jumpTo1),
-    make_pair(Command::JUMP_TO_2, &jumpTo2),
-    make_pair(Command::JUMP_TO_3, &jumpTo3),
-    make_pair(Command::JUMP_TO_4, &jumpTo4),
-    make_pair(Command::JUMP_TO_5, &jumpTo5),
-    make_pair(Command::JUMP_TO_6, &jumpTo6),
-    make_pair(Command::JUMP_TO_7, &jumpTo7),
-    make_pair(Command::JUMP_TO_8, &jumpTo8),
-    make_pair(Command::JUMP_TO_9, &jumpTo9),
+    make_pair(Command::JUMP_TO_0, jumpTo0),
+    make_pair(Command::JUMP_TO_1, jumpTo1),
+    make_pair(Command::JUMP_TO_2, jumpTo2),
+    make_pair(Command::JUMP_TO_3, jumpTo3),
+    make_pair(Command::JUMP_TO_4, jumpTo4),
+    make_pair(Command::JUMP_TO_5, jumpTo5),
+    make_pair(Command::JUMP_TO_6, jumpTo6),
+    make_pair(Command::JUMP_TO_7, jumpTo7),
+    make_pair(Command::JUMP_TO_8, jumpTo8),
+    make_pair(Command::JUMP_TO_9, jumpTo9),
 
     make_pair(Command::JUMP_TO_PREVIOUS_SEGMENT, jumpToPreviousSegment),
     make_pair(Command::JUMP_TO_NEXT_SEGMENT, jumpToNextSegment),
-    make_pair(Command::JUMP_TO_LAST_SEGMENT, &jumpToLastSegment),
+    make_pair(Command::JUMP_TO_LAST_SEGMENT, jumpToLastSegment),
 
-    make_pair(Command::SELECT_ALL, &selectAll),
+    make_pair(Command::JUMP_TO_FIRST_SELECTED_SEGMENT, jumpToFirstSelectedSegment),
+    make_pair(Command::JUMP_TO_PREVIOUS_SELECTED_SEGMENT, jumpToPreviousSelectedSegment),
+    make_pair(Command::JUMP_TO_NEXT_SELECTED_SEGMENT, jumpToNextSelectedSegment),
+    make_pair(Command::JUMP_TO_LAST_SELECTED_SEGMENT, jumpToLastSelectedSegment),
 
-    make_pair(Command::SELECT_ONLY_0, &selectOnly0),
-    make_pair(Command::SELECT_ONLY_1, &selectOnly1),
-    make_pair(Command::SELECT_ONLY_2, &selectOnly2),
-    make_pair(Command::SELECT_ONLY_3, &selectOnly3),
-    make_pair(Command::SELECT_ONLY_4, &selectOnly4),
-    make_pair(Command::SELECT_ONLY_5, &selectOnly5),
-    make_pair(Command::SELECT_ONLY_6, &selectOnly6),
-    make_pair(Command::SELECT_ONLY_7, &selectOnly7),
-    make_pair(Command::SELECT_ONLY_8, &selectOnly8),
-    make_pair(Command::SELECT_ONLY_9, &selectOnly9),
+    make_pair(Command::SELECT_ALL, selectAll),
 
-    make_pair(Command::SELECT_0, &select0),
-    make_pair(Command::SELECT_1, &select1),
-    make_pair(Command::SELECT_2, &select2),
-    make_pair(Command::SELECT_3, &select3),
-    make_pair(Command::SELECT_4, &select4),
-    make_pair(Command::SELECT_5, &select5),
-    make_pair(Command::SELECT_6, &select6),
-    make_pair(Command::SELECT_7, &select7),
-    make_pair(Command::SELECT_8, &select8),
-    make_pair(Command::SELECT_9, &select9),
+    make_pair(Command::SELECT_ONLY_0, selectOnly0),
+    make_pair(Command::SELECT_ONLY_1, selectOnly1),
+    make_pair(Command::SELECT_ONLY_2, selectOnly2),
+    make_pair(Command::SELECT_ONLY_3, selectOnly3),
+    make_pair(Command::SELECT_ONLY_4, selectOnly4),
+    make_pair(Command::SELECT_ONLY_5, selectOnly5),
+    make_pair(Command::SELECT_ONLY_6, selectOnly6),
+    make_pair(Command::SELECT_ONLY_7, selectOnly7),
+    make_pair(Command::SELECT_ONLY_8, selectOnly8),
+    make_pair(Command::SELECT_ONLY_9, selectOnly9),
 
-    make_pair(Command::SELECT_NEXT_SEGMENT_ONLY, &selectNextOnly),
-    make_pair(Command::SELECT_PREVIOUS_SEGMENT_ONLY, &selectPreviousOnly),
-    make_pair(Command::SELECT_LAST_SEGMENT_ONLY, &selectLastOnly),
+    make_pair(Command::SELECT_0, select0),
+    make_pair(Command::SELECT_1, select1),
+    make_pair(Command::SELECT_2, select2),
+    make_pair(Command::SELECT_3, select3),
+    make_pair(Command::SELECT_4, select4),
+    make_pair(Command::SELECT_5, select5),
+    make_pair(Command::SELECT_6, select6),
+    make_pair(Command::SELECT_7, select7),
+    make_pair(Command::SELECT_8, select8),
+    make_pair(Command::SELECT_9, select9),
 
-    make_pair(Command::TOGGLE_0, &toggle0),
-    make_pair(Command::TOGGLE_1, &toggle1),
-    make_pair(Command::TOGGLE_2, &toggle2),
-    make_pair(Command::TOGGLE_3, &toggle3),
-    make_pair(Command::TOGGLE_4, &toggle4),
-    make_pair(Command::TOGGLE_5, &toggle5),
-    make_pair(Command::TOGGLE_6, &toggle6),
-    make_pair(Command::TOGGLE_7, &toggle7),
-    make_pair(Command::TOGGLE_8, &toggle8),
-    make_pair(Command::TOGGLE_9, &toggle9),
+    make_pair(Command::SELECT_NEXT_SEGMENT_ONLY, selectNextOnly),
+    make_pair(Command::SELECT_PREVIOUS_SEGMENT_ONLY, selectPreviousOnly),
+    make_pair(Command::SELECT_LAST_SEGMENT_ONLY, selectLastOnly),
 
-    make_pair(Command::TOGGLE_WHOLE_SONG_LOOP, &toggleWholeSongLoop),
+    make_pair(Command::TOGGLE_0, toggle0),
+    make_pair(Command::TOGGLE_1, toggle1),
+    make_pair(Command::TOGGLE_2, toggle2),
+    make_pair(Command::TOGGLE_3, toggle3),
+    make_pair(Command::TOGGLE_4, toggle4),
+    make_pair(Command::TOGGLE_5, toggle5),
+    make_pair(Command::TOGGLE_6, toggle6),
+    make_pair(Command::TOGGLE_7, toggle7),
+    make_pair(Command::TOGGLE_8, toggle8),
+    make_pair(Command::TOGGLE_9, toggle9),
 
-    make_pair(Command::UNSELECT_0, &unselect0),
-    make_pair(Command::UNSELECT_1, &unselect1),
-    make_pair(Command::UNSELECT_2, &unselect2),
-    make_pair(Command::UNSELECT_3, &unselect3),
-    make_pair(Command::UNSELECT_4, &unselect4),
-    make_pair(Command::UNSELECT_5, &unselect5),
-    make_pair(Command::UNSELECT_6, &unselect6),
-    make_pair(Command::UNSELECT_7, &unselect7),
-    make_pair(Command::UNSELECT_8, &unselect8),
-    make_pair(Command::UNSELECT_9, &unselect9),
+    make_pair(Command::TOGGLE_WHOLE_SONG_LOOP, toggleWholeSongLoop),
+
+    make_pair(Command::UNSELECT_0, unselect0),
+    make_pair(Command::UNSELECT_1, unselect1),
+    make_pair(Command::UNSELECT_2, unselect2),
+    make_pair(Command::UNSELECT_3, unselect3),
+    make_pair(Command::UNSELECT_4, unselect4),
+    make_pair(Command::UNSELECT_5, unselect5),
+    make_pair(Command::UNSELECT_6, unselect6),
+    make_pair(Command::UNSELECT_7, unselect7),
+    make_pair(Command::UNSELECT_8, unselect8),
+    make_pair(Command::UNSELECT_9, unselect9),
   };
 
   static const Map map(values, values + arraysize(values));

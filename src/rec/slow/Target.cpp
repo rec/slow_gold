@@ -110,17 +110,40 @@ void Target::addCommands() {
       "Invert Selection", "Selection",
       "Unselect everything selected and vice-versa.");
 
+
+  add(Command::JUMP_TO_FIRST_SELECTED_SEGMENT,
+      "Jump To First Selected Segment", "Transport",
+      "Jump to the start of the first segment.");
+
+  add(Command::JUMP_TO_NEXT_SELECTED_SEGMENT,
+      "Jump To Next Selected Segment", "Transport",
+      "Jump to the next segment and select it.");
+
+  add(Command::JUMP_TO_PREVIOUS_SELECTED_SEGMENT,
+      "Jump To Previous Selected Segment", "Transport",
+      "Jump to the previous segment and select it.");
+
+  add(Command::JUMP_TO_LAST_SELECTED_SEGMENT,
+      "Jump To Last Selected Segment", "Transport",
+      "Jump to the last segment in the selection.");
+
+
+  add(Command::JUMP_TO_FIRST_SEGMENT,
+      "Jump To First Segment", "Transport",
+      "Jump to the start of the first segment.");
+
   add(Command::JUMP_TO_NEXT_SEGMENT,
-      "Jump To Next", "Transport",
-      "Immediately jump to the next loop point and select it.");
+      "Jump To Next Segment", "Transport",
+      "Jump to the next segment and select it.");
 
   add(Command::JUMP_TO_PREVIOUS_SEGMENT,
-      "Jump To Previous", "Transport",
-      "Immediately jump to the previous segment and select it.");
+      "Jump To Previous Segment", "Transport",
+      "Jump to the previous segment and select it.");
 
   add(Command::JUMP_TO_LAST_SEGMENT,
-      "Jump To Start", "Transport",
-      "Jump to the first loop and select it.");
+      "Jump To Last Segment", "Transport",
+      "Jump to the last segment and select it.");
+
 
   add(Command::JUMP_TO_0,
       "Jump To Segment 0", "Transport",
@@ -223,127 +246,127 @@ void Target::addCommands() {
       "Documentation");
 
   add(Command::SELECT_ONLY_0,
-      "Select Only Loop 1", "Select Only",
-      "Select loop 1 and unselect all other loops.");
+      "Select Only Segment 1", "Select Only",
+      "Select segment 1 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_1,
-      "Select Only Loop 2", "Select Only",
-      "Select loop 2 and unselect all other loops.");
+      "Select Only Segment 2", "Select Only",
+      "Select segment 2 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_2,
-      "Select Only Loop 3", "Select Only",
-      "Select loop 3 and unselect all other loops.");
+      "Select Only Segment 3", "Select Only",
+      "Select segment 3 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_3,
-      "Select Only Loop 4", "Select Only",
-      "Select loop 4 and unselect all other loops.");
+      "Select Only Segment 4", "Select Only",
+      "Select segment 4 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_4,
-      "Select Only Loop 5", "Select Only",
-      "Select loop 5 and unselect all other loops.");
+      "Select Only Segment 5", "Select Only",
+      "Select segment 5 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_5,
-      "Select Only Loop 6", "Select Only",
-      "Select loop 6 and unselect all other loops.");
+      "Select Only Segment 6", "Select Only",
+      "Select segment 6 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_6,
-      "Select Only Loop 7", "Select Only",
-      "Select loop 7 and unselect all other loops.");
+      "Select Only Segment 7", "Select Only",
+      "Select segment 7 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_7,
-      "Select Only Loop 8", "Select Only",
-      "Select loop 8 and unselect all other loops.");
+      "Select Only Segment 8", "Select Only",
+      "Select segment 8 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_8,
-      "Select Only Loop 9", "Select Only",
-      "Select loop 9 and unselect all other loops.");
+      "Select Only Segment 9", "Select Only",
+      "Select segment 9 and unselect all other segments.");
 
   add(Command::SELECT_ONLY_9,
-      "Select Only Loop 10", "Select Only",
-      "Select loop 10 and unselect all other loops.");
+      "Select Only Segment 10", "Select Only",
+      "Select segment 10 and unselect all other segments.");
 
   add(Command::SELECT_0,
-      "Select Loop 1", "Select",
-      "Select loop 1.");
+      "Select Segment 1", "Select",
+      "Select segment 1.");
 
   add(Command::SELECT_1,
-      "Select Loop 2", "Select",
-      "Select loop 2.");
+      "Select Segment 2", "Select",
+      "Select segment 2.");
 
   add(Command::SELECT_2,
-      "Select Loop 3", "Select",
-      "Select loop 3.");
+      "Select Segment 3", "Select",
+      "Select segment 3.");
 
   add(Command::SELECT_3,
-      "Select Loop 4", "Select",
-      "Select loop 4.");
+      "Select Segment 4", "Select",
+      "Select segment 4.");
 
   add(Command::SELECT_4,
-      "Select Loop 5", "Select",
-      "Select loop 5.");
+      "Select Segment 5", "Select",
+      "Select segment 5.");
 
   add(Command::SELECT_5,
-      "Select Loop 6", "Select",
-      "Select loop 6.");
+      "Select Segment 6", "Select",
+      "Select segment 6.");
 
   add(Command::SELECT_6,
-      "Select Loop 7", "Select",
-      "Select loop 7.");
+      "Select Segment 7", "Select",
+      "Select segment 7.");
 
   add(Command::SELECT_7,
-      "Select Loop 8", "Select",
-      "Select loop 8.");
+      "Select Segment 8", "Select",
+      "Select segment 8.");
 
   add(Command::SELECT_8,
-      "Select Loop 9", "Select",
-      "Select loop 9.");
+      "Select Segment 9", "Select",
+      "Select segment 9.");
 
   add(Command::SELECT_9,
-      "Select Loop 10", "Select",
-      "Select loop 10.");
+      "Select Segment 10", "Select",
+      "Select segment 10.");
 
   add(Command::TOGGLE_0,
-      "Toggle Loop 1", "Select Toggle",
-      "Toggle loop 1 between selected and unselected");
+      "Toggle Segment 1", "Select Toggle",
+      "Toggle segment 1 between selected and unselected");
 
   add(Command::TOGGLE_1,
-      "Toggle Loop 2", "Select Toggle",
-      "Toggle loop 2 between selected and unselected");
+      "Toggle Segment 2", "Select Toggle",
+      "Toggle segment 2 between selected and unselected");
 
   add(Command::TOGGLE_2,
-      "Toggle Loop 3", "Select Toggle",
-      "Toggle loop 3 between selected and unselected");
+      "Toggle Segment 3", "Select Toggle",
+      "Toggle segment 3 between selected and unselected");
 
   add(Command::TOGGLE_3,
-      "Toggle Loop 4", "Select Toggle",
-      "Toggle loop 4 between selected and unselected");
+      "Toggle Segment 4", "Select Toggle",
+      "Toggle segment 4 between selected and unselected");
 
   add(Command::TOGGLE_4,
-      "Toggle Loop 5", "Select Toggle",
-      "Toggle loop 5 between selected and unselected");
+      "Toggle Segment 5", "Select Toggle",
+      "Toggle segment 5 between selected and unselected");
 
   add(Command::TOGGLE_5,
-      "Toggle Loop 6", "Select Toggle",
-      "Toggle loop 6 between selected and unselected");
+      "Toggle Segment 6", "Select Toggle",
+      "Toggle segment 6 between selected and unselected");
 
   add(Command::TOGGLE_6,
-      "Toggle Loop 7", "Select Toggle",
-      "Toggle loop 7 between selected and unselected");
+      "Toggle Segment 7", "Select Toggle",
+      "Toggle segment 7 between selected and unselected");
 
   add(Command::TOGGLE_7,
-      "Toggle Loop 8", "Select Toggle",
-      "Toggle loop 8 between selected and unselected");
+      "Toggle Segment 8", "Select Toggle",
+      "Toggle segment 8 between selected and unselected");
 
   add(Command::TOGGLE_8,
-      "Toggle Loop 9", "Select Toggle",
-      "Toggle loop 9 between selected and unselected");
+      "Toggle Segment 9", "Select Toggle",
+      "Toggle segment 9 between selected and unselected");
 
   add(Command::TOGGLE_9,
-      "Toggle Loop 10", "Select Toggle",
-      "Toggle loop 10 between selected and unselected");
+      "Toggle Segment 10", "Select Toggle",
+      "Toggle segment 10 between selected and unselected");
 
   add(Command::TOGGLE_WHOLE_SONG_LOOP,
-      "Toggle Whole Loop Selection", "Selection",
+      "Toggle Whole Segment Selection", "Selection",
       "Toggle selection between the current segment and the whole song.");
 
   add(Command::TOGGLE_START_STOP,
@@ -387,44 +410,44 @@ void Target::addCommands() {
       "Documentation");
 
   add(Command::UNSELECT_0,
-      "Unselect Loop 1", "Unselect",
-      "Unselect loop 1 only");
+      "Unselect Segment 1", "Unselect",
+      "Unselect segment 1");
 
   add(Command::UNSELECT_1,
-      "Unselect Loop 2", "Unselect",
-      "Unselect loop 2 only");
+      "Unselect Segment 2", "Unselect",
+      "Unselect segment 2");
 
   add(Command::UNSELECT_2,
-      "Unselect Loop 3", "Unselect",
-      "Unselect loop 3 only");
+      "Unselect Segment 3", "Unselect",
+      "Unselect segment 3");
 
   add(Command::UNSELECT_3,
-      "Unselect Loop 4", "Unselect",
-      "Unselect loop 4 only");
+      "Unselect Segment 4", "Unselect",
+      "Unselect segment 4");
 
   add(Command::UNSELECT_4,
-      "Unselect Loop 5", "Unselect",
-      "Unselect loop 5 only");
+      "Unselect Segment 5", "Unselect",
+      "Unselect segment 5");
 
   add(Command::UNSELECT_5,
-      "Unselect Loop 6", "Unselect",
-      "Unselect loop 6 only");
+      "Unselect Segment 6", "Unselect",
+      "Unselect segment 6");
 
   add(Command::UNSELECT_6,
-      "Unselect Loop 7", "Unselect",
-      "Unselect loop 7 only");
+      "Unselect Segment 7", "Unselect",
+      "Unselect segment 7");
 
   add(Command::UNSELECT_7,
-      "Unselect Loop 8", "Unselect",
-      "Unselect loop 8 only");
+      "Unselect Segment 8", "Unselect",
+      "Unselect segment 8");
 
   add(Command::UNSELECT_8,
-      "Unselect Loop 9", "Unselect",
-      "Unselect loop 9 only");
+      "Unselect Segment 9", "Unselect",
+      "Unselect segment 9");
 
   add(Command::UNSELECT_9,
-      "Unselect Loop 10", "Unselect",
-      "Unselect loop 10 only");
+      "Unselect Segment 10", "Unselect",
+      "Unselect segment 10");
 
   add(Command::ZOOM_IN,
       functionCallback(&zoomIn, instance_),

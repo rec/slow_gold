@@ -7,6 +7,8 @@ namespace rec {
 namespace gui {
 namespace component {
 
+#define FOCUS_BUG_FIXED false
+
 template <typename Type = Component>
 class Focusable : public Type {
  public:
@@ -14,11 +16,14 @@ class Focusable : public Type {
     this->setWantsKeyboardFocus(true);
   }
 
-  void setManager(ApplicationCommandManager* m) { manager_ = m; }
+  void setManager(ApplicationCommandManager* m) {
+  	manager_ = m;
+  }
+
   virtual ~Focusable() {}
 
   virtual void focusGained(Component::FocusChangeType) {
-    if (manager_)
+    if (FOCUS_BUG_FIXED && manager_)
       manager_->commandStatusChanged();
 
     this->repaint();
