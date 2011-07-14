@@ -85,14 +85,22 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::CLEAR_LOOPS);
     add(&m, Command::ADD_LOOP_POINT);
 
-    add(&m, Command::JUMP_TO_0);
+    m.addSeparator();
+
+    add(&m, Command::JUMP_TO_FIRST_SEGMENT);
     add(&m, Command::JUMP_TO_PREVIOUS_SEGMENT);
     add(&m, Command::JUMP_TO_NEXT_SEGMENT);
     add(&m, Command::JUMP_TO_LAST_SEGMENT);
 
+    m.addSeparator();
+
+    add(&m, Command::JUMP_TO_FIRST_SELECTED_SEGMENT);
+    add(&m, Command::JUMP_TO_PREVIOUS_SELECTED_SEGMENT);
+    add(&m, Command::JUMP_TO_NEXT_SELECTED_SEGMENT);
+    add(&m, Command::JUMP_TO_LAST_SELECTED_SEGMENT);
+
     addTenSubitems(this, &m, Command::JUMP_TO_0, "Jump to...");
 
-  } else if (menuName == "Loops") {
   }
 
   return m;
