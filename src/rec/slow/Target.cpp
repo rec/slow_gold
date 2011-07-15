@@ -110,7 +110,6 @@ void Target::addCommands() {
       "Invert Selection", "Selection",
       "Unselect everything selected and vice-versa.");
 
-
   add(Command::JUMP_TO_FIRST_SELECTED_SEGMENT,
       "Jump To First Selected Segment", "Transport",
       "Jump to the start of the first segment.");
@@ -244,6 +243,24 @@ void Target::addCommands() {
       functionCallback(recentFiles, instance_),
       "NAME", "(None)",
       "Documentation");
+
+
+  add(Command::SELECT_FIRST_SEGMENT_ONLY,
+      "Select Only First Segment 1", "Select Only",
+      "Select the first segment and unselect all other segments.");
+
+  add(Command::SELECT_PREVIOUS_SEGMENT_ONLY,
+      "Select Only Previous Segment 1", "Select Only",
+      "Select the previous segment and unselect all other segments.");
+
+  add(Command::SELECT_NEXT_SEGMENT_ONLY,
+      "Select Only Next Segment 1", "Select Only",
+      "Select the next segment and unselect all other segments.");
+
+  add(Command::SELECT_LAST_SEGMENT_ONLY,
+      "Select Only Last Segment 1", "Select Only",
+      "Select the last segment and unselect all other segments.");
+
 
   add(Command::SELECT_ONLY_0,
       "Select Only Segment 1", "Select Only",

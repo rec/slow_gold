@@ -29,9 +29,9 @@ struct LoopSnapshot {
   int last_;
 
   typedef bool (*Function)(LoopSnapshot*);
-  typedef std::map<Command, LoopSnapshot::Function> Map;
+  typedef std::map<command::Command::Type, LoopSnapshot::Function> Map;
 
-  bool execute(Command, const Map&);
+  bool execute(command::Command::Type, const Map&);
 
   // Limit x to [0, loopSize_).
   int limit(int x) {

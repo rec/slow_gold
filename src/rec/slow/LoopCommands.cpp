@@ -1,7 +1,10 @@
+#include <map>
+
 #include "rec/slow/LoopCommands.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/LoopSnapshot.h"
+#include "rec/util/Math.h"
 #include "rec/base/Arraysize.h"
 
 using namespace std;
@@ -10,218 +13,144 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
-namespace {
+namespace applier {
 
-template <typename Operator>
-bool applySelected(Operator op, LoopSnapshot* s) {
-  LoopPointList* loops = &s->loops_;
+// We repeat "first" to make it easy to have uniform menus.
+enum Position { FIRST = -5, PREVIOUS = -4, CURRENT = -3, NEXT = -2, LAST = -1, ZERO = 0 };
+
+typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
+typedef bool (*LoopFunction)(LoopSnapshot*, Position);
+typedef std::pair<SelectorFunction, LoopFunction> CommandFunction;
+
+typedef std::map<Command::Type, CommandFunction> CommandMap;
+
+int getPosition(Position pos, int segment, int size) {
+  int p =
+    (pos == FIRST) ? 0 :
+    (pos == PREVIOUS) ? segment - 1 :
+    (pos == CURRENT) ? segment :
+    (pos == NEXT) ? segment + 1 :
+    (pos == LAST) ? size - 1 :
+    static_cast<int>(pos);
+  return mod(p, size);
+}
+
+bool select(SelectorFunction f, LoopSnapshot* snap, Position pos) {
+  int size = snap->loops_.loop_point_size();
+  int p = getPosition(pos, snap->segment_, size);
+
+  LoopPointList* loops = &snap->loops_;
+  bool allSelected = (snap->selectionCount_ == size);
+
   for (int i = 0; i < loops->loop_point_size(); ++i) {
     LoopPoint* lp = loops->mutable_loop_point(i);
-    lp->set_selected((*op)(lp->selected(), i, s));
+    lp->set_selected(f(i, p, lp->selected(), allSelected));
   }
   return true;
 }
 
-#define _OP(NAME, RESULT)                                               \
-  bool NAME ## Op(bool selected, int segment, LoopSnapshot* snapshot) { \
-    return RESULT;                                                      \
+bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) {
+  Command::Type command = c;
+  Position pos = CURRENT;
+  if (command >= Command::BANK_START || command < Command::BANK_END) {
+    command = static_cast<Command::Type>(Command::BANK_SIZE * 
+                                         (command / Command::BANK_SIZE));
+    pos = static_cast<Position>(command - c - PREVIOUS);
   }
 
-#define SELECTION_OP(NAME, RESULT)                                      \
-  _OP(NAME, RESULT)                                                     \
-                                                                        \
-  bool NAME(LoopSnapshot* s) { return applySelected(NAME ## Op, s); }
+  CommandMap::const_iterator i = map.find(command);
+  if (i == map.end())
+    return false;
 
-#define JUMP_SELECT_OP(NAME, RESULT, JUMP_SEGMENT)                      \
-  _OP(NAME, RESULT)                                                     \
-                                                                        \
-  bool NAME(LoopSnapshot* snapshot) {                                   \
-    bool result = applySelected(NAME ## Op, snapshot);                  \
-    RealTime time = snapshot->loops_.loop_point(JUMP_SEGMENT).time();   \
-    snapshot->instance_->model_->jumpToTime(time);                      \
-    return result;                                                      \
+  LoopSnapshot snap(instance);
+  return select(i->second.first, &snap, pos) && i->second.second(&snap, pos);
+}
+
+bool selectAll(int, int, bool, bool) { return true; }
+bool deselectAll(int, int, bool, bool) { return false; }
+bool invertLoopSelection(int, int, bool sel, bool) { return !sel; }
+bool noSelector(int, int, bool sel, bool) { return sel; }
+bool toggleWholeSongLoop(int i, int p, bool, bool al) { return !al || i == p; }
+
+bool selectAdd(int index, int pos, bool sel, bool) { return sel || index == pos; }
+bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
+bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
+bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
+
+bool noFunction(LoopSnapshot*, Position) { return true; }
+
+void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
+  RealTime time = snapshot->loops_.loop_point(segment).time();
+  snapshot->instance_->model_->jumpToTime(time);
+}
+
+bool jump(LoopSnapshot* snap, Position pos) {
+  setTimeFromSegment(snap, getPosition(pos, snap->segment_,
+                                       snap->loops_.loop_point_size()));
+  return true;
+}
+
+bool jumpSelected(LoopSnapshot* snap, Position pos) {
+  vector<int> selected;
+  size_t segmentInSelection = -1;
+  for (int i = 0; i < snap->loops_.loop_point_size(); ++i) {
+    if (!snap->selectionCount_ || snap->loops_.loop_point(i).selected()) {
+      if (i == snap->segment_) {
+        DCHECK_EQ(segmentInSelection, -1);
+        segmentInSelection = selected.size();
+      }
+      selected.push_back(i);
+    }
   }
 
-#define JUMP_OP(NAME, JUMP_SEGMENT)                                     \
-  JUMP_SELECT_OP(NAME, selected || segment == JUMP_SEGMENT, JUMP_SEGMENT)
+  DCHECK_NE(segmentInSelection, -1);
 
-SELECTION_OP(selectAll, true)
-SELECTION_OP(deselectAll, false)
-SELECTION_OP(invertLoopSelection, !selected)
+  if (pos == FIRST)
+    segmentInSelection = 0;
+  else if (pos == PREVIOUS)
+    segmentInSelection--;
+  else if (pos == NEXT)
+    segmentInSelection++;
+  else if (pos == LAST)
+    segmentInSelection = selected.size() - 1;
+  else if (pos != CURRENT)
+    segmentInSelection = static_cast<int>(pos);
 
-SELECTION_OP(selectOnly0, segment == 0)
-SELECTION_OP(selectOnly1, segment == 1)
-SELECTION_OP(selectOnly2, segment == 2)
-SELECTION_OP(selectOnly3, segment == 3)
-SELECTION_OP(selectOnly4, segment == 4)
-SELECTION_OP(selectOnly5, segment == 5)
-SELECTION_OP(selectOnly6, segment == 6)
-SELECTION_OP(selectOnly7, segment == 7)
-SELECTION_OP(selectOnly8, segment == 8)
-SELECTION_OP(selectOnly9, segment == 9)
+  setTimeFromSegment(snap, selected[mod(segmentInSelection, selected.size())]);
+  return true;
+}
 
-SELECTION_OP(select0, selected || segment == 0)
-SELECTION_OP(select1, selected || segment == 1)
-SELECTION_OP(select2, selected || segment == 2)
-SELECTION_OP(select3, selected || segment == 3)
-SELECTION_OP(select4, selected || segment == 4)
-SELECTION_OP(select5, selected || segment == 5)
-SELECTION_OP(select6, selected || segment == 6)
-SELECTION_OP(select7, selected || segment == 7)
-SELECTION_OP(select8, selected || segment == 8)
-SELECTION_OP(select9, selected || segment == 9)
-
-SELECTION_OP(toggle0, (segment == 0) ? !selected : selected)
-SELECTION_OP(toggle1, (segment == 1) ? !selected : selected)
-SELECTION_OP(toggle2, (segment == 2) ? !selected : selected)
-SELECTION_OP(toggle3, (segment == 3) ? !selected : selected)
-SELECTION_OP(toggle4, (segment == 4) ? !selected : selected)
-SELECTION_OP(toggle5, (segment == 5) ? !selected : selected)
-SELECTION_OP(toggle6, (segment == 6) ? !selected : selected)
-SELECTION_OP(toggle7, (segment == 7) ? !selected : selected)
-SELECTION_OP(toggle8, (segment == 8) ? !selected : selected)
-SELECTION_OP(toggle9, (segment == 9) ? !selected : selected)
-
-SELECTION_OP(selectNextOnly, segment == snapshot->next_)
-SELECTION_OP(selectPreviousOnly, segment == snapshot->previous_)
-SELECTION_OP(selectLastOnly, segment == snapshot->last_)
-
-SELECTION_OP(toggleWholeSongLoop,
-             (snapshot->selectionCount_ == 1) || (segment == snapshot->segment_))
-
-SELECTION_OP(unselect0, (segment != 0) && selected)
-SELECTION_OP(unselect1, (segment != 1) && selected)
-SELECTION_OP(unselect2, (segment != 2) && selected)
-SELECTION_OP(unselect3, (segment != 3) && selected)
-SELECTION_OP(unselect4, (segment != 4) && selected)
-SELECTION_OP(unselect5, (segment != 5) && selected)
-SELECTION_OP(unselect6, (segment != 6) && selected)
-SELECTION_OP(unselect7, (segment != 7) && selected)
-SELECTION_OP(unselect8, (segment != 8) && selected)
-SELECTION_OP(unselect9, (segment != 9) && selected)
-
-SELECTION_OP(selectFirst, selected || !segment)
-SELECTION_OP(selectLast, selected || segment != snapshot->last_)
-SELECTION_OP(selectNext, selected || segment == snapshot->next_)
-SELECTION_OP(selectPrevious, selected || segment == snapshot->previous_)
-
-// NOT WORKING!
-JUMP_OP(jumpTo0, 0)
-JUMP_OP(jumpTo1, 1)
-JUMP_OP(jumpTo2, 2)
-JUMP_OP(jumpTo3, 3)
-JUMP_OP(jumpTo4, 4)
-JUMP_OP(jumpTo5, 5)
-JUMP_OP(jumpTo6, 6)
-JUMP_OP(jumpTo7, 7)
-JUMP_OP(jumpTo8, 8)
-JUMP_OP(jumpTo9, 9)
-
-JUMP_OP(jumpToLastSegment, snapshot->last_)
-JUMP_OP(jumpToNextSegment, snapshot->next_)
-JUMP_OP(jumpToPreviousSegment, snapshot->previous_)
-
-bool jumpToFirstSelectedSegment(LoopSnapshot* ls) { return true; }
-bool jumpToPreviousSelectedSegment(LoopSnapshot* ls) { return true; }
-bool jumpToNextSelectedSegment(LoopSnapshot* ls) { return true; }
-bool jumpToLastSelectedSegment(LoopSnapshot* ls) { return true; }
-
-bool clearLoops(LoopSnapshot* s) {
+bool clearLoops(LoopSnapshot* s, Position pos) {
   s->loops_.Clear();
   s->loops_.add_loop_point();
   return true;
 }
 
-typedef LoopSnapshot::Map Map;
+CommandFunction make(SelectorFunction f) { return make_pair(f, noFunction); }
 
-const Map& getLoopMap() {
-  using rec::command::Command;
-  static const Map::value_type values[] = {
-    make_pair(Command::CLEAR_LOOPS, clearLoops),
-    make_pair(Command::DESELECT_ALL, deselectAll),
-    make_pair(Command::INVERT_LOOP_SELECTION, invertLoopSelection),
+CommandMap makeMap() {
+  CommandMap m;
+  m[Command::SELECT_ALL] = make(selectAll);
+  m[Command::DESELECT_ALL] = make(deselectAll);
+  m[Command::INVERT_LOOP_SELECTION] = make(invertLoopSelection);
+  m[Command::CLEAR_LOOPS] = std::make_pair(noSelector, clearLoops);
+  m[Command::SELECT] = make(selectAdd);
+  m[Command::SELECT_ONLY] = make(selectOnly);
+  m[Command::TOGGLE] = make(toggle);
+  m[Command::UNSELECT] = make(unselect);
+  m[Command::JUMP] = std::make_pair(selectAdd, jump);
+  m[Command::JUMP_SELECTED] = std::make_pair(noSelector, jumpSelected);
+  m[Command::TOGGLE_WHOLE_SONG_LOOP] = make(toggleWholeSongLoop);
 
-    make_pair(Command::JUMP_TO_0, jumpTo0),
-    make_pair(Command::JUMP_TO_1, jumpTo1),
-    make_pair(Command::JUMP_TO_2, jumpTo2),
-    make_pair(Command::JUMP_TO_3, jumpTo3),
-    make_pair(Command::JUMP_TO_4, jumpTo4),
-    make_pair(Command::JUMP_TO_5, jumpTo5),
-    make_pair(Command::JUMP_TO_6, jumpTo6),
-    make_pair(Command::JUMP_TO_7, jumpTo7),
-    make_pair(Command::JUMP_TO_8, jumpTo8),
-    make_pair(Command::JUMP_TO_9, jumpTo9),
-
-    make_pair(Command::JUMP_TO_PREVIOUS_SEGMENT, jumpToPreviousSegment),
-    make_pair(Command::JUMP_TO_NEXT_SEGMENT, jumpToNextSegment),
-    make_pair(Command::JUMP_TO_LAST_SEGMENT, jumpToLastSegment),
-
-    make_pair(Command::JUMP_TO_FIRST_SELECTED_SEGMENT, jumpToFirstSelectedSegment),
-    make_pair(Command::JUMP_TO_PREVIOUS_SELECTED_SEGMENT, jumpToPreviousSelectedSegment),
-    make_pair(Command::JUMP_TO_NEXT_SELECTED_SEGMENT, jumpToNextSelectedSegment),
-    make_pair(Command::JUMP_TO_LAST_SELECTED_SEGMENT, jumpToLastSelectedSegment),
-
-    make_pair(Command::SELECT_ALL, selectAll),
-
-    make_pair(Command::SELECT_ONLY_0, selectOnly0),
-    make_pair(Command::SELECT_ONLY_1, selectOnly1),
-    make_pair(Command::SELECT_ONLY_2, selectOnly2),
-    make_pair(Command::SELECT_ONLY_3, selectOnly3),
-    make_pair(Command::SELECT_ONLY_4, selectOnly4),
-    make_pair(Command::SELECT_ONLY_5, selectOnly5),
-    make_pair(Command::SELECT_ONLY_6, selectOnly6),
-    make_pair(Command::SELECT_ONLY_7, selectOnly7),
-    make_pair(Command::SELECT_ONLY_8, selectOnly8),
-    make_pair(Command::SELECT_ONLY_9, selectOnly9),
-
-    make_pair(Command::SELECT_0, select0),
-    make_pair(Command::SELECT_1, select1),
-    make_pair(Command::SELECT_2, select2),
-    make_pair(Command::SELECT_3, select3),
-    make_pair(Command::SELECT_4, select4),
-    make_pair(Command::SELECT_5, select5),
-    make_pair(Command::SELECT_6, select6),
-    make_pair(Command::SELECT_7, select7),
-    make_pair(Command::SELECT_8, select8),
-    make_pair(Command::SELECT_9, select9),
-
-    make_pair(Command::SELECT_NEXT_SEGMENT_ONLY, selectNextOnly),
-    make_pair(Command::SELECT_PREVIOUS_SEGMENT_ONLY, selectPreviousOnly),
-    make_pair(Command::SELECT_LAST_SEGMENT_ONLY, selectLastOnly),
-
-    make_pair(Command::TOGGLE_0, toggle0),
-    make_pair(Command::TOGGLE_1, toggle1),
-    make_pair(Command::TOGGLE_2, toggle2),
-    make_pair(Command::TOGGLE_3, toggle3),
-    make_pair(Command::TOGGLE_4, toggle4),
-    make_pair(Command::TOGGLE_5, toggle5),
-    make_pair(Command::TOGGLE_6, toggle6),
-    make_pair(Command::TOGGLE_7, toggle7),
-    make_pair(Command::TOGGLE_8, toggle8),
-    make_pair(Command::TOGGLE_9, toggle9),
-
-    make_pair(Command::TOGGLE_WHOLE_SONG_LOOP, toggleWholeSongLoop),
-
-    make_pair(Command::UNSELECT_0, unselect0),
-    make_pair(Command::UNSELECT_1, unselect1),
-    make_pair(Command::UNSELECT_2, unselect2),
-    make_pair(Command::UNSELECT_3, unselect3),
-    make_pair(Command::UNSELECT_4, unselect4),
-    make_pair(Command::UNSELECT_5, unselect5),
-    make_pair(Command::UNSELECT_6, unselect6),
-    make_pair(Command::UNSELECT_7, unselect7),
-    make_pair(Command::UNSELECT_8, unselect8),
-    make_pair(Command::UNSELECT_9, unselect9),
-  };
-
-  static const Map map(values, values + arraysize(values));
-  return map;
+  return m;
 }
 
-}  // namespace
 
-bool executeLoopCommand(Instance* instance, Command command) {
-  return LoopSnapshot(instance).execute(command, getLoopMap());
+}  // namespace applier
+
+bool executeLoopCommand(Instance* instance, Command::Type command) {
+  static applier::CommandMap map = applier::makeMap();
+  return applier::executeCommand(instance, command, map);
 }
 
 }  // namespace slow

@@ -68,6 +68,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::RESET_GAIN_TO_UNITY);
 
     m.addSeparator();
+
     add(&m, Command::AUDIO_PREFERENCES);
 
   } else if (menuName == "Select") {
@@ -76,14 +77,24 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::INVERT_LOOP_SELECTION);
     add(&m, Command::TOGGLE_WHOLE_SONG_LOOP);
 
+    m.addSeparator();
+
+    add(&m, Command::SELECT_FIRST_SEGMENT_ONLY);
+    add(&m, Command::SELECT_PREVIOUS_SEGMENT_ONLY);
+    add(&m, Command::SELECT_NEXT_SEGMENT_ONLY);
+    add(&m, Command::SELECT_LAST_SEGMENT_ONLY);
+
+    m.addSeparator();
+
     addTenSubitems(this, &m, Command::SELECT_0, "Select...");
     addTenSubitems(this, &m, Command::SELECT_ONLY_0, "Select Only...");
     addTenSubitems(this, &m, Command::TOGGLE_0, "Toggle...");
     addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");
 
   } else if (menuName == "Transport") {
-    add(&m, Command::CLEAR_LOOPS);
+    add(&m, Command::TOGGLE_START_STOP);
     add(&m, Command::ADD_LOOP_POINT);
+    add(&m, Command::CLEAR_LOOPS);
 
     m.addSeparator();
 
@@ -99,8 +110,9 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
     add(&m, Command::JUMP_TO_NEXT_SELECTED_SEGMENT);
     add(&m, Command::JUMP_TO_LAST_SELECTED_SEGMENT);
 
-    addTenSubitems(this, &m, Command::JUMP_TO_0, "Jump to...");
+    m.addSeparator();
 
+    addTenSubitems(this, &m, Command::JUMP_TO_0, "Jump to...");
   }
 
   return m;

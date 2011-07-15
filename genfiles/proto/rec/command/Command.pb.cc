@@ -76,59 +76,31 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/command/Command.proto\022\013rec.command"
-    "\"\300\020\n\007Command\022*\n\007command\030\001 \001(\0162\031.rec.comm"
-    "and.Command.Type\"\210\020\n\004Type\022\010\n\004NONE\020\000\022\t\n\004Q"
+    "\"\300\007\n\007Command\022*\n\007command\030\001 \001(\0162\031.rec.comm"
+    "and.Command.Type\"\210\007\n\004Type\022\010\n\004NONE\020\000\022\t\n\004Q"
     "UIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n"
     "\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_A"
     "LL\020\207 \022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFE"
     "RENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR_L"
     "OOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLO"
-    "SE_FILE\020\006\022!\n\035CONTRACT_FROM_NEXT_LOOP_POI"
-    "NT\020K\022%\n!CONTRACT_FROM_PREVIOUS_LOOP_POIN"
-    "T\020L\022\025\n\021DIM_VOLUME_TOGGLE\020M\022\r\n\tEJECT_CDS\020"
-    "\007\022\035\n\031EXTEND_TO_NEXT_LOOP_POINT\020I\022!\n\035EXTE"
-    "ND_TO_PREVIOUS_LOOP_POINT\020J\022\031\n\025INVERT_LO"
-    "OP_SELECTION\020\023\022\r\n\tJUMP_TO_0\020Z\022\r\n\tJUMP_TO"
-    "_1\020[\022\r\n\tJUMP_TO_2\020\\\022\r\n\tJUMP_TO_3\020]\022\r\n\tJU"
-    "MP_TO_4\020^\022\r\n\tJUMP_TO_5\020_\022\r\n\tJUMP_TO_6\020`\022"
-    "\r\n\tJUMP_TO_7\020a\022\r\n\tJUMP_TO_8\020b\022\r\n\tJUMP_TO"
-    "_9\020c\022\031\n\025JUMP_TO_FIRST_SEGMENT\020W\022\034\n\030JUMP_"
-    "TO_PREVIOUS_SEGMENT\020\010\022\030\n\024JUMP_TO_NEXT_SE"
-    "GMENT\020\t\022\030\n\024JUMP_TO_LAST_SEGMENT\020\n\022\"\n\036JUM"
-    "P_TO_FIRST_SELECTED_SEGMENT\020R\022%\n!JUMP_TO"
-    "_PREVIOUS_SELECTED_SEGMENT\020Q\022!\n\035JUMP_TO_"
-    "NEXT_SELECTED_SEGMENT\020P\022!\n\035JUMP_TO_LAST_"
-    "SELECTED_SEGMENT\020X\022\025\n\021KEYBOARD_MAPPINGS\020"
-    "\022\022\021\n\rMIDI_MAPPINGS\020\021\022\026\n\022MUTE_VOLUME_TOGG"
-    "LE\020N\022\024\n\020NUDGE_BEGIN_LEFT\020\013\022\025\n\021NUDGE_BEGI"
-    "N_RIGHT\020\014\022\022\n\016NUDGE_END_LEFT\020\r\022\023\n\017NUDGE_E"
-    "ND_RIGHT\020\016\022\025\n\021NUDGE_VOLUME_DOWN\020;\022\023\n\017NUD"
-    "GE_VOLUME_UP\020H\022\010\n\004OPEN\020\017\022\020\n\014RECENT_FILES"
-    "\020\020\022\027\n\023RESET_GAIN_TO_UNITY\020O\022\014\n\010SELECT_0\020"
-    "\024\022\014\n\010SELECT_1\020\025\022\014\n\010SELECT_2\020\026\022\014\n\010SELECT_"
-    "3\020\027\022\014\n\010SELECT_4\020\030\022\014\n\010SELECT_5\020\031\022\014\n\010SELEC"
-    "T_6\020\032\022\014\n\010SELECT_7\020\033\022\014\n\010SELECT_8\020\034\022\014\n\010SEL"
-    "ECT_9\020\035\022\021\n\rSELECT_ONLY_0\020\036\022\021\n\rSELECT_ONL"
-    "Y_1\020\037\022\021\n\rSELECT_ONLY_2\020 \022\021\n\rSELECT_ONLY_"
-    "3\020!\022\021\n\rSELECT_ONLY_4\020\"\022\021\n\rSELECT_ONLY_5\020"
-    "#\022\021\n\rSELECT_ONLY_6\020$\022\021\n\rSELECT_ONLY_7\020%\022"
-    "\021\n\rSELECT_ONLY_8\020&\022\021\n\rSELECT_ONLY_9\020\'\022\035\n"
-    "\031SELECT_FIRST_SEGMENT_ONLY\020S\022\034\n\030SELECT_L"
-    "AST_SEGMENT_ONLY\020T\022\034\n\030SELECT_NEXT_SEGMEN"
-    "T_ONLY\020U\022 \n\034SELECT_PREVIOUS_SEGMENT_ONLY"
-    "\020V\022\014\n\010TOGGLE_0\020(\022\014\n\010TOGGLE_1\020)\022\014\n\010TOGGLE"
-    "_2\020*\022\014\n\010TOGGLE_3\020+\022\014\n\010TOGGLE_4\020,\022\014\n\010TOGG"
-    "LE_5\020-\022\014\n\010TOGGLE_6\020.\022\014\n\010TOGGLE_7\020/\022\014\n\010TO"
-    "GGLE_8\0200\022\014\n\010TOGGLE_9\0201\022\032\n\026TOGGLE_WHOLE_S"
-    "ONG_LOOP\020:\022\025\n\021TOGGLE_START_STOP\0202\022\031\n\025TOG"
-    "GLE_STRETCH_ENABLE\0203\022\016\n\nTREE_CLOSE\0204\022\r\n\t"
-    "TREE_DOWN\0205\022\r\n\tTREE_LEFT\0206\022\r\n\tTREE_OPEN\020"
-    "7\022\016\n\nTREE_RIGHT\0208\022\013\n\007TREE_UP\0209\022\016\n\nUNSELE"
-    "CT_0\020<\022\016\n\nUNSELECT_1\020=\022\016\n\nUNSELECT_2\020>\022\016"
-    "\n\nUNSELECT_3\020?\022\016\n\nUNSELECT_4\020@\022\016\n\nUNSELE"
-    "CT_5\020A\022\016\n\nUNSELECT_6\020B\022\016\n\nUNSELECT_7\020C\022\016"
-    "\n\nUNSELECT_8\020D\022\016\n\nUNSELECT_9\020E\022\013\n\007ZOOM_I"
-    "N\020F\022\014\n\010ZOOM_OUT\020G\022\020\n\014LAST_COMMAND\020c", 2155);
+    "SE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020M\022\r\n\tEJEC"
+    "T_CDS\020\007\022\031\n\025INVERT_LOOP_SELECTION\020\023\022\025\n\021KE"
+    "YBOARD_MAPPINGS\020\022\022\021\n\rMIDI_MAPPINGS\020\021\022\026\n\022"
+    "MUTE_VOLUME_TOGGLE\020N\022\024\n\020NUDGE_BEGIN_LEFT"
+    "\020\013\022\025\n\021NUDGE_BEGIN_RIGHT\020\014\022\022\n\016NUDGE_END_L"
+    "EFT\020\r\022\023\n\017NUDGE_END_RIGHT\020\016\022\025\n\021NUDGE_VOLU"
+    "ME_DOWN\020;\022\023\n\017NUDGE_VOLUME_UP\020H\022\010\n\004OPEN\020\017"
+    "\022\020\n\014RECENT_FILES\020\020\022\027\n\023RESET_GAIN_TO_UNIT"
+    "Y\020O\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020:\022\025\n\021TOGGL"
+    "E_START_STOP\0202\022\031\n\025TOGGLE_STRETCH_ENABLE\020"
+    "3\022\016\n\nTREE_CLOSE\0204\022\r\n\tTREE_DOWN\0205\022\r\n\tTREE"
+    "_LEFT\0206\022\r\n\tTREE_OPEN\0207\022\016\n\nTREE_RIGHT\0208\022\013"
+    "\n\007TREE_UP\0209\022\013\n\007ZOOM_IN\020F\022\014\n\010ZOOM_OUT\020G\022\014"
+    "\n\006SELECT\020\300\204=\022\021\n\013SELECT_ONLY\020\340\221C\022\014\n\006TOGGL"
+    "E\020\200\237I\022\016\n\010UNSELECT\020\240\254O\022\n\n\004JUMP\020\300\271U\022\023\n\rJUM"
+    "P_SELECTED\020\340\306[\022\020\n\nBANK_START\020\300\204=\022\016\n\010BANK"
+    "_END\020\200\324a\022\017\n\tBANK_SIZE\020\240\215\006\022\020\n\014LAST_COMMAN"
+    "D\020c", 1003);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Command::default_instance_ = new Command();
@@ -160,9 +132,6 @@ bool Command_Type_IsValid(int value) {
     case 5:
     case 6:
     case 7:
-    case 8:
-    case 9:
-    case 10:
     case 11:
     case 12:
     case 13:
@@ -172,36 +141,6 @@ bool Command_Type_IsValid(int value) {
     case 17:
     case 18:
     case 19:
-    case 20:
-    case 21:
-    case 22:
-    case 23:
-    case 24:
-    case 25:
-    case 26:
-    case 27:
-    case 28:
-    case 29:
-    case 30:
-    case 31:
-    case 32:
-    case 33:
-    case 34:
-    case 35:
-    case 36:
-    case 37:
-    case 38:
-    case 39:
-    case 40:
-    case 41:
-    case 42:
-    case 43:
-    case 44:
-    case 45:
-    case 46:
-    case 47:
-    case 48:
-    case 49:
     case 50:
     case 51:
     case 52:
@@ -212,44 +151,12 @@ bool Command_Type_IsValid(int value) {
     case 57:
     case 58:
     case 59:
-    case 60:
-    case 61:
-    case 62:
-    case 63:
-    case 64:
-    case 65:
-    case 66:
-    case 67:
-    case 68:
-    case 69:
     case 70:
     case 71:
     case 72:
-    case 73:
-    case 74:
-    case 75:
-    case 76:
     case 77:
     case 78:
     case 79:
-    case 80:
-    case 81:
-    case 82:
-    case 83:
-    case 84:
-    case 85:
-    case 86:
-    case 87:
-    case 88:
-    case 90:
-    case 91:
-    case 92:
-    case 93:
-    case 94:
-    case 95:
-    case 96:
-    case 97:
-    case 98:
     case 99:
     case 4097:
     case 4098:
@@ -258,6 +165,14 @@ bool Command_Type_IsValid(int value) {
     case 4101:
     case 4102:
     case 4103:
+    case 100000:
+    case 1000000:
+    case 1100000:
+    case 1200000:
+    case 1300000:
+    case 1400000:
+    case 1500000:
+    case 1600000:
       return true;
     default:
       return false;
@@ -279,31 +194,9 @@ const Command_Type Command::CLEAR_NAVIGATOR;
 const Command_Type Command::CLEAR_LOOPS;
 const Command_Type Command::CLEAR_SAVED_FILE_DATA;
 const Command_Type Command::CLOSE_FILE;
-const Command_Type Command::CONTRACT_FROM_NEXT_LOOP_POINT;
-const Command_Type Command::CONTRACT_FROM_PREVIOUS_LOOP_POINT;
 const Command_Type Command::DIM_VOLUME_TOGGLE;
 const Command_Type Command::EJECT_CDS;
-const Command_Type Command::EXTEND_TO_NEXT_LOOP_POINT;
-const Command_Type Command::EXTEND_TO_PREVIOUS_LOOP_POINT;
 const Command_Type Command::INVERT_LOOP_SELECTION;
-const Command_Type Command::JUMP_TO_0;
-const Command_Type Command::JUMP_TO_1;
-const Command_Type Command::JUMP_TO_2;
-const Command_Type Command::JUMP_TO_3;
-const Command_Type Command::JUMP_TO_4;
-const Command_Type Command::JUMP_TO_5;
-const Command_Type Command::JUMP_TO_6;
-const Command_Type Command::JUMP_TO_7;
-const Command_Type Command::JUMP_TO_8;
-const Command_Type Command::JUMP_TO_9;
-const Command_Type Command::JUMP_TO_FIRST_SEGMENT;
-const Command_Type Command::JUMP_TO_PREVIOUS_SEGMENT;
-const Command_Type Command::JUMP_TO_NEXT_SEGMENT;
-const Command_Type Command::JUMP_TO_LAST_SEGMENT;
-const Command_Type Command::JUMP_TO_FIRST_SELECTED_SEGMENT;
-const Command_Type Command::JUMP_TO_PREVIOUS_SELECTED_SEGMENT;
-const Command_Type Command::JUMP_TO_NEXT_SELECTED_SEGMENT;
-const Command_Type Command::JUMP_TO_LAST_SELECTED_SEGMENT;
 const Command_Type Command::KEYBOARD_MAPPINGS;
 const Command_Type Command::MIDI_MAPPINGS;
 const Command_Type Command::MUTE_VOLUME_TOGGLE;
@@ -316,40 +209,6 @@ const Command_Type Command::NUDGE_VOLUME_UP;
 const Command_Type Command::OPEN;
 const Command_Type Command::RECENT_FILES;
 const Command_Type Command::RESET_GAIN_TO_UNITY;
-const Command_Type Command::SELECT_0;
-const Command_Type Command::SELECT_1;
-const Command_Type Command::SELECT_2;
-const Command_Type Command::SELECT_3;
-const Command_Type Command::SELECT_4;
-const Command_Type Command::SELECT_5;
-const Command_Type Command::SELECT_6;
-const Command_Type Command::SELECT_7;
-const Command_Type Command::SELECT_8;
-const Command_Type Command::SELECT_9;
-const Command_Type Command::SELECT_ONLY_0;
-const Command_Type Command::SELECT_ONLY_1;
-const Command_Type Command::SELECT_ONLY_2;
-const Command_Type Command::SELECT_ONLY_3;
-const Command_Type Command::SELECT_ONLY_4;
-const Command_Type Command::SELECT_ONLY_5;
-const Command_Type Command::SELECT_ONLY_6;
-const Command_Type Command::SELECT_ONLY_7;
-const Command_Type Command::SELECT_ONLY_8;
-const Command_Type Command::SELECT_ONLY_9;
-const Command_Type Command::SELECT_FIRST_SEGMENT_ONLY;
-const Command_Type Command::SELECT_LAST_SEGMENT_ONLY;
-const Command_Type Command::SELECT_NEXT_SEGMENT_ONLY;
-const Command_Type Command::SELECT_PREVIOUS_SEGMENT_ONLY;
-const Command_Type Command::TOGGLE_0;
-const Command_Type Command::TOGGLE_1;
-const Command_Type Command::TOGGLE_2;
-const Command_Type Command::TOGGLE_3;
-const Command_Type Command::TOGGLE_4;
-const Command_Type Command::TOGGLE_5;
-const Command_Type Command::TOGGLE_6;
-const Command_Type Command::TOGGLE_7;
-const Command_Type Command::TOGGLE_8;
-const Command_Type Command::TOGGLE_9;
 const Command_Type Command::TOGGLE_WHOLE_SONG_LOOP;
 const Command_Type Command::TOGGLE_START_STOP;
 const Command_Type Command::TOGGLE_STRETCH_ENABLE;
@@ -359,18 +218,17 @@ const Command_Type Command::TREE_LEFT;
 const Command_Type Command::TREE_OPEN;
 const Command_Type Command::TREE_RIGHT;
 const Command_Type Command::TREE_UP;
-const Command_Type Command::UNSELECT_0;
-const Command_Type Command::UNSELECT_1;
-const Command_Type Command::UNSELECT_2;
-const Command_Type Command::UNSELECT_3;
-const Command_Type Command::UNSELECT_4;
-const Command_Type Command::UNSELECT_5;
-const Command_Type Command::UNSELECT_6;
-const Command_Type Command::UNSELECT_7;
-const Command_Type Command::UNSELECT_8;
-const Command_Type Command::UNSELECT_9;
 const Command_Type Command::ZOOM_IN;
 const Command_Type Command::ZOOM_OUT;
+const Command_Type Command::SELECT;
+const Command_Type Command::SELECT_ONLY;
+const Command_Type Command::TOGGLE;
+const Command_Type Command::UNSELECT;
+const Command_Type Command::JUMP;
+const Command_Type Command::JUMP_SELECTED;
+const Command_Type Command::BANK_START;
+const Command_Type Command::BANK_END;
+const Command_Type Command::BANK_SIZE;
 const Command_Type Command::LAST_COMMAND;
 const Command_Type Command::Type_MIN;
 const Command_Type Command::Type_MAX;

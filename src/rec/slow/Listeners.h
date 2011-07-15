@@ -33,7 +33,7 @@ class MouseListener;
 class Listeners : public Listener<None>,
                   public Listener<const VirtualFileList&>,
                   public Listener<audio::transport::State>,
-                  public Listener<Command>,
+                  public Listener<command::Command::Type>,
                   public Listener<const Mode&>,
                   public Listener<const audio::Gain&>,
                   public Listener<const audio::stretch::Stretch&>,
@@ -48,7 +48,7 @@ class Listeners : public Listener<None>,
   virtual void operator()(None);
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
-  virtual void operator()(Command);
+  virtual void operator()(command::Command::Type);
   virtual void operator()(const Mode&);
   virtual void operator()(const audio::Gain&);
   virtual void operator()(const audio::source::StereoProto&);

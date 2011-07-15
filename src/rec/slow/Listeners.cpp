@@ -54,7 +54,7 @@ void Listeners::operator()(SamplePosition time) {
   player()->setNextReadPosition(time);
 }
 
-void Listeners::operator()(Command t) {
+void Listeners::operator()(command::Command::Type t) {
   if (!target()->targetManager()->invokeDirectly(t))
     LOG(ERROR) << "Failed to invoke " << command::Command::Type_Name(t);
 }

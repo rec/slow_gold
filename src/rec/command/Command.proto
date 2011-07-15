@@ -14,7 +14,6 @@ message Command {
     SELECT_ALL = 0x1006;
     DESELECT_ALL = 0x1007;
 
-    // Defined by rec.
     ADD_LOOP_POINT = 1;
     AUDIO_PREFERENCES = 2;
     CLEAR_NAVIGATOR = 3;
@@ -22,37 +21,10 @@ message Command {
     CLEAR_SAVED_FILE_DATA = 5;
     CLOSE_FILE = 6;
 
-    CONTRACT_FROM_NEXT_LOOP_POINT = 75;  // Delete?
-    CONTRACT_FROM_PREVIOUS_LOOP_POINT = 76;  // Delete?
-
     DIM_VOLUME_TOGGLE = 77;
     EJECT_CDS = 7;
 
-    EXTEND_TO_NEXT_LOOP_POINT = 73;  // Delete?
-    EXTEND_TO_PREVIOUS_LOOP_POINT = 74;  // Delete?
-
     INVERT_LOOP_SELECTION = 19;
-
-    JUMP_TO_0 = 90;
-    JUMP_TO_1 = 91;
-    JUMP_TO_2 = 92;
-    JUMP_TO_3 = 93;
-    JUMP_TO_4 = 94;
-    JUMP_TO_5 = 95;
-    JUMP_TO_6 = 96;
-    JUMP_TO_7 = 97;
-    JUMP_TO_8 = 98;
-    JUMP_TO_9 = 99;
-
-    JUMP_TO_FIRST_SEGMENT = 87;
-    JUMP_TO_PREVIOUS_SEGMENT = 8;
-    JUMP_TO_NEXT_SEGMENT = 9;
-    JUMP_TO_LAST_SEGMENT = 10;
-
-    JUMP_TO_FIRST_SELECTED_SEGMENT = 82;
-    JUMP_TO_PREVIOUS_SELECTED_SEGMENT = 81;
-    JUMP_TO_NEXT_SELECTED_SEGMENT = 80;
-    JUMP_TO_LAST_SELECTED_SEGMENT = 88;
 
     KEYBOARD_MAPPINGS = 18;
     MIDI_MAPPINGS = 17;
@@ -71,44 +43,6 @@ message Command {
     RECENT_FILES = 16;
     RESET_GAIN_TO_UNITY = 79;
 
-    SELECT_0 = 20;
-    SELECT_1 = 21;
-    SELECT_2 = 22;
-    SELECT_3 = 23;
-    SELECT_4 = 24;
-    SELECT_5 = 25;
-    SELECT_6 = 26;
-    SELECT_7 = 27;
-    SELECT_8 = 28;
-    SELECT_9 = 29;
-
-    SELECT_ONLY_0 = 30;
-    SELECT_ONLY_1 = 31;
-    SELECT_ONLY_2 = 32;
-    SELECT_ONLY_3 = 33;
-    SELECT_ONLY_4 = 34;
-    SELECT_ONLY_5 = 35;
-    SELECT_ONLY_6 = 36;
-    SELECT_ONLY_7 = 37;
-    SELECT_ONLY_8 = 38;
-    SELECT_ONLY_9 = 39;
-
-    SELECT_FIRST_SEGMENT_ONLY = 83;
-    SELECT_LAST_SEGMENT_ONLY = 84;
-    SELECT_NEXT_SEGMENT_ONLY = 85;
-    SELECT_PREVIOUS_SEGMENT_ONLY = 86;
-
-    TOGGLE_0 = 40;
-    TOGGLE_1 = 41;
-    TOGGLE_2 = 42;
-    TOGGLE_3 = 43;
-    TOGGLE_4 = 44;
-    TOGGLE_5 = 45;
-    TOGGLE_6 = 46;
-    TOGGLE_7 = 47;
-    TOGGLE_8 = 48;
-    TOGGLE_9 = 49;
-
     TOGGLE_WHOLE_SONG_LOOP = 58;
     TOGGLE_START_STOP = 50;
     TOGGLE_STRETCH_ENABLE = 51;
@@ -120,19 +54,20 @@ message Command {
     TREE_RIGHT = 56;
     TREE_UP = 57;
 
-    UNSELECT_0 = 60;
-    UNSELECT_1 = 61;
-    UNSELECT_2 = 62;
-    UNSELECT_3 = 63;
-    UNSELECT_4 = 64;
-    UNSELECT_5 = 65;
-    UNSELECT_6 = 66;
-    UNSELECT_7 = 67;
-    UNSELECT_8 = 68;
-    UNSELECT_9 = 69;
-
     ZOOM_IN = 70;
     ZOOM_OUT = 71;
+
+    // Banks of 100,000 starting at 1,000,000 (and going back to 995).
+    SELECT = 1000000;
+    SELECT_ONLY = 1100000;
+    TOGGLE = 1200000;
+    UNSELECT = 1300000;
+    JUMP = 1400000;
+    JUMP_SELECTED  = 1500000;
+
+    BANK_START = 1000000;
+    BANK_END = 1600000;
+    BANK_SIZE = 100000;
 
     LAST_COMMAND = 99;  // 89 is free.
   };

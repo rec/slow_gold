@@ -6,11 +6,9 @@
 namespace rec {
 namespace slow {
 
-typedef command::Command::Type Command;
-
 class Instance;
 
-bool executeLoopCommand(Instance*, Command);
+bool executeLoopCommand(Instance*, command::Command::Type);
 
 }  // namespace slow
 }  // namespace rec
