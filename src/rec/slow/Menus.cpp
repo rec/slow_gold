@@ -4,6 +4,8 @@
 #include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
 
+using namespace rec::command;
+
 namespace rec {
 namespace slow {
 
@@ -14,15 +16,15 @@ const StringArray Menus::getMenuBarNames() {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void Menus::add(PopupMenu* menu, Command command, bool enable, const String& name) {
+void Menus::add(PopupMenu* menu, Command::Type command, bool enable, const String& name) {
   target()->targetManager()->addCommandItem(menu, command, enable, name);
 }
 
 static void addTenSubitems(Menus* menus, PopupMenu* menu,
-                           Command command, const String& name) {
+                           Command::Type command, const String& name) {
   PopupMenu sub;
   for (int i = 0; i < 10; ++i)
-    menus->add(&sub, static_cast<Command>(command + i));
+    menus->add(&sub, static_cast<Command::Type>(command + i));
   menu->addSubMenu(name, sub);
 }
 

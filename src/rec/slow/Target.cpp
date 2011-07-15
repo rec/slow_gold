@@ -21,6 +21,7 @@ namespace slow {
 
 using thread::methodCallback;
 using thread::functionCallback;
+using command::Command;
 
 Target::Target(Instance* i)
     : HasInstance(i),
@@ -37,7 +38,7 @@ Target::~Target() {
 void Target::add(CommandID c, const String& name,
                  const String& category, const String& desc) {
   add(c,
-      functionCallback(&executeLoopCommand, instance_, static_cast<Command>(c)),
+      functionCallback(&executeLoopCommand, instance_, static_cast<Command::Type>(c)),
       name, category, desc);
 }
 

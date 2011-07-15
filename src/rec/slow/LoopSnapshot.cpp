@@ -44,24 +44,8 @@ LoopSnapshot::LoopSnapshot(Instance* i)
     selection_(i->model_->timeSelection()),
     loopSize_(loops_.loop_point_size()),
     selectionCount_(getSelectionCount(loops_)),
-    segment_(getSegment(loops_, time_)),
-    previous_(limit(segment_ - 1)),
-    next_(limit(segment_ + 1)),
-    last_(loopSize_ - 1) {
+    segment_(getSegment(loops_, time_)) {
 }
-
-bool LoopSnapshot::execute(Command cmd, const Map& snapMap) {
-  LoopSnapshot::Map::const_iterator i = snapMap.find(cmd);
-
-  bool success = (i != snapMap.end() && (*(i->second))(this));
-  if (success)
-    persist::set(loops_, instance_->model_->file());
-  else
-    PlatformUtilities::beep();
-
-  return success;
-}
-
 
 }  // namespace slow
 }  // namespace rec

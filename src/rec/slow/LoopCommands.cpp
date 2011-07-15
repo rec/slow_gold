@@ -53,7 +53,7 @@ bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) 
   Command::Type command = c;
   Position pos = CURRENT;
   if (command >= Command::BANK_START || command < Command::BANK_END) {
-    command = static_cast<Command::Type>(Command::BANK_SIZE * 
+    command = static_cast<Command::Type>(Command::BANK_SIZE *
                                          (command / Command::BANK_SIZE));
     pos = static_cast<Position>(command - c - PREVIOUS);
   }
@@ -62,8 +62,13 @@ bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) 
   if (i == map.end())
     return false;
 
-  LoopSnapshot snap(instance);
-  return select(i->second.first, &snap, pos) && i->second.second(&snap, pos);
+  LoopSnapshot s(instance);
+  bool success = select(i->second.first, &s, pos) && i->second.second(&s, pos);
+  if (success)
+    persist::set(s.loops_, instance->model_->file());
+  else
+    PlatformUtilities::beep();
+  return success;
 }
 
 bool selectAll(int, int, bool, bool) { return true; }
@@ -85,38 +90,26 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
 }
 
 bool jump(LoopSnapshot* snap, Position pos) {
-  setTimeFromSegment(snap, getPosition(pos, snap->segment_,
-                                       snap->loops_.loop_point_size()));
+  int p = getPosition(pos, snap->segment_, snap->loops_.loop_point_size());
+  setTimeFromSegment(snap, p);
   return true;
 }
 
 bool jumpSelected(LoopSnapshot* snap, Position pos) {
   vector<int> selected;
-  size_t segmentInSelection = -1;
+  size_t s = -100;
   for (int i = 0; i < snap->loops_.loop_point_size(); ++i) {
     if (!snap->selectionCount_ || snap->loops_.loop_point(i).selected()) {
       if (i == snap->segment_) {
-        DCHECK_EQ(segmentInSelection, -1);
-        segmentInSelection = selected.size();
+        DCHECK_EQ(s, -1);
+        s = selected.size();
       }
       selected.push_back(i);
     }
   }
 
-  DCHECK_NE(segmentInSelection, -1);
-
-  if (pos == FIRST)
-    segmentInSelection = 0;
-  else if (pos == PREVIOUS)
-    segmentInSelection--;
-  else if (pos == NEXT)
-    segmentInSelection++;
-  else if (pos == LAST)
-    segmentInSelection = selected.size() - 1;
-  else if (pos != CURRENT)
-    segmentInSelection = static_cast<int>(pos);
-
-  setTimeFromSegment(snap, selected[mod(segmentInSelection, selected.size())]);
+  DCHECK_NE(s, -100);
+  setTimeFromSegment(snap, selected[getPosition(pos, s, selected.size())]);
   return true;
 }
 
@@ -127,20 +120,22 @@ bool clearLoops(LoopSnapshot* s, Position pos) {
 }
 
 CommandFunction make(SelectorFunction f) { return make_pair(f, noFunction); }
+CommandFunction make(LoopFunction f) { return make_pair(noSelector, f); }
 
 CommandMap makeMap() {
   CommandMap m;
   m[Command::SELECT_ALL] = make(selectAll);
   m[Command::DESELECT_ALL] = make(deselectAll);
   m[Command::INVERT_LOOP_SELECTION] = make(invertLoopSelection);
-  m[Command::CLEAR_LOOPS] = std::make_pair(noSelector, clearLoops);
+  m[Command::CLEAR_LOOPS] = make(clearLoops);
   m[Command::SELECT] = make(selectAdd);
   m[Command::SELECT_ONLY] = make(selectOnly);
   m[Command::TOGGLE] = make(toggle);
   m[Command::UNSELECT] = make(unselect);
   m[Command::JUMP] = std::make_pair(selectAdd, jump);
-  m[Command::JUMP_SELECTED] = std::make_pair(noSelector, jumpSelected);
+  m[Command::JUMP_SELECTED] = make(jumpSelected);
   m[Command::TOGGLE_WHOLE_SONG_LOOP] = make(toggleWholeSongLoop);
+  m[Command::CLEAR_LOOPS] = make(clearLoops);
 
   return m;
 }

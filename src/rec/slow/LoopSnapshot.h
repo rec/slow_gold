@@ -24,15 +24,11 @@ struct LoopSnapshot {
   int selectionCount_;
 
   int segment_;
-  int previous_;
-  int next_;
-  int last_;
 
   typedef bool (*Function)(LoopSnapshot*);
   typedef std::map<command::Command::Type, LoopSnapshot::Function> Map;
 
-  bool execute(command::Command::Type, const Map&);
-
+#if 0
   // Limit x to [0, loopSize_).
   int limit(int x) {
   	if (!loopSize_)
@@ -41,6 +37,7 @@ struct LoopSnapshot {
     for (; x < 0; x += loopSize_);
     return x;
   }
+#endif
 };
 
 }  // namespace slow
