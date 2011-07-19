@@ -162,7 +162,7 @@ class CursorProto : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 display_width() const;
   inline void set_display_width(::google::protobuf::uint32 value);
   
-  // optional uint32 component_width = 4 [default = 7];
+  // optional uint32 component_width = 4 [default = 9];
   inline bool has_component_width() const;
   inline void clear_component_width();
   static const int kComponentWidthFieldNumber = 4;
@@ -270,12 +270,12 @@ inline void CursorProto::set_display_width(::google::protobuf::uint32 value) {
   display_width_ = value;
 }
 
-// optional uint32 component_width = 4 [default = 7];
+// optional uint32 component_width = 4 [default = 9];
 inline bool CursorProto::has_component_width() const {
   return _has_bit(3);
 }
 inline void CursorProto::clear_component_width() {
-  component_width_ = 7u;
+  component_width_ = 9u;
   _clear_bit(3);
 }
 inline ::google::protobuf::uint32 CursorProto::component_width() const {

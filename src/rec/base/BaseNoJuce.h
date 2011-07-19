@@ -33,6 +33,7 @@ using namespace util;
 using util::file::VirtualFile;
 using util::file::VirtualFileList;
 using std::vector;
+using std::pair;
 
 using data::Data;
 using data::Address;

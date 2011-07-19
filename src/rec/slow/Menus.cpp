@@ -1,6 +1,7 @@
 #include "rec/slow/Menus.h"
 #include "rec/base/ArraySize.h"
 #include "rec/slow/Instance.h"
+#include "rec/slow/Position.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Cuttable.h"
 
@@ -16,15 +17,22 @@ const StringArray Menus::getMenuBarNames() {
   return StringArray(NAMES, arraysize(NAMES));
 }
 
-void Menus::add(PopupMenu* menu, Command::Type command, bool enable, const String& name) {
+void Menus::add(PopupMenu* menu, Command::Type command, bool enable,
+                const String& name) {
   target()->targetManager()->addCommandItem(menu, command, enable, name);
 }
 
-static void addTenSubitems(Menus* menus, PopupMenu* menu,
-                           Command::Type command, const String& name) {
+static void addBank(Menus* menus, PopupMenu* menu,
+                    Command::Type command, const String& name) {
   PopupMenu sub;
-  for (int i = 0; i < 10; ++i)
+  for (int i = 0; i <= LAST - FIRST; ++i)
     menus->add(&sub, static_cast<Command::Type>(command + i));
+
+  sub.addSeparator();
+
+  for (int i = 0; i != SLOT_COUNT; ++i)
+    menus->add(&sub, static_cast<Command::Type>(command + LAST - FIRST + i + 1));
+
   menu->addSubMenu(name, sub);
 }
 
@@ -81,17 +89,10 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 
     m.addSeparator();
 
-    add(&m, Command::SELECT_FIRST_SEGMENT_ONLY);
-    add(&m, Command::SELECT_PREVIOUS_SEGMENT_ONLY);
-    add(&m, Command::SELECT_NEXT_SEGMENT_ONLY);
-    add(&m, Command::SELECT_LAST_SEGMENT_ONLY);
-
-    m.addSeparator();
-
-    addTenSubitems(this, &m, Command::SELECT_0, "Select...");
-    addTenSubitems(this, &m, Command::SELECT_ONLY_0, "Select Only...");
-    addTenSubitems(this, &m, Command::TOGGLE_0, "Toggle...");
-    addTenSubitems(this, &m, Command::UNSELECT_0, "Unselect...");
+    addBank(this, &m, Command::SELECT, "Select...");
+    addBank(this, &m, Command::SELECT_ONLY, "Select Only...");
+    addBank(this, &m, Command::TOGGLE, "Toggle...");
+    addBank(this, &m, Command::UNSELECT, "Unselect...");
 
   } else if (menuName == "Transport") {
     add(&m, Command::TOGGLE_START_STOP);
@@ -100,21 +101,8 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 
     m.addSeparator();
 
-    add(&m, Command::JUMP_TO_FIRST_SEGMENT);
-    add(&m, Command::JUMP_TO_PREVIOUS_SEGMENT);
-    add(&m, Command::JUMP_TO_NEXT_SEGMENT);
-    add(&m, Command::JUMP_TO_LAST_SEGMENT);
-
-    m.addSeparator();
-
-    add(&m, Command::JUMP_TO_FIRST_SELECTED_SEGMENT);
-    add(&m, Command::JUMP_TO_PREVIOUS_SELECTED_SEGMENT);
-    add(&m, Command::JUMP_TO_NEXT_SELECTED_SEGMENT);
-    add(&m, Command::JUMP_TO_LAST_SELECTED_SEGMENT);
-
-    m.addSeparator();
-
-    addTenSubitems(this, &m, Command::JUMP_TO_0, "Jump to...");
+    addBank(this, &m, Command::JUMP, "Jump To...");
+    addBank(this, &m, Command::JUMP_SELECTED, "Jump To Selected...");
   }
 
   return m;

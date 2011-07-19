@@ -154,6 +154,7 @@
 		70FAA02F75C4740227D3D083 = { isa = PBXBuildFile; fileRef = 17D5E740289D4E8B3BA4B93F; };
 		BAE52EC7BF141B9E995B88F4 = { isa = PBXBuildFile; fileRef = 612D5047E580AB8E868A437E; };
 		39BA8698CEE21F2CD6AAD2D3 = { isa = PBXBuildFile; fileRef = D6081B32F779D971DC96EB48; };
+		E2186D616D7CC77FB7E66F86 = { isa = PBXBuildFile; fileRef = 6F9CC0E4BB615C248F06B6A0; };
 		E2E393B802828DD0EC1A7637 = { isa = PBXBuildFile; fileRef = A6FB7B3C0E195BA17DA96C60; };
 		8F646B69B227AEF1414021F5 = { isa = PBXBuildFile; fileRef = 7BCF567F5AF4325C8088E562; };
 		753CB65E475A91D79678B52D = { isa = PBXBuildFile; fileRef = 9EC78DBAB7580AB78D4F8490; };
@@ -608,6 +609,8 @@
 		91BE20AC98A7E039F03DD778 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PersistentData.h; path = ../../../../src/rec/slow/PersistentData.h; sourceTree = SOURCE_ROOT; };
 		D6081B32F779D971DC96EB48 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackController.cpp; path = ../../../../src/rec/slow/PlaybackController.cpp; sourceTree = SOURCE_ROOT; };
 		A87D1B89D1B89392B60E8047 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaybackController.h; path = ../../../../src/rec/slow/PlaybackController.h; sourceTree = SOURCE_ROOT; };
+		6F9CC0E4BB615C248F06B6A0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Position.cpp; path = ../../../../src/rec/slow/Position.cpp; sourceTree = SOURCE_ROOT; };
+		0D056429BFE8BFF4132F1C0D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Position.h; path = ../../../../src/rec/slow/Position.h; sourceTree = SOURCE_ROOT; };
 		A6FB7B3C0E195BA17DA96C60 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Selections.cpp; path = ../../../../src/rec/slow/Selections.cpp; sourceTree = SOURCE_ROOT; };
 		4E0A67A079DF1D40C238F587 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Selections.h; path = ../../../../src/rec/slow/Selections.h; sourceTree = SOURCE_ROOT; };
 		16B9A87BAEB573AAFC588C19 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Slow.h; path = ../../../../src/rec/slow/Slow.h; sourceTree = SOURCE_ROOT; };
@@ -1205,6 +1208,8 @@
 				91BE20AC98A7E039F03DD778,
 				D6081B32F779D971DC96EB48,
 				A87D1B89D1B89392B60E8047,
+				6F9CC0E4BB615C248F06B6A0,
+				0D056429BFE8BFF4132F1C0D,
 				A6FB7B3C0E195BA17DA96C60,
 				4E0A67A079DF1D40C238F587,
 				16B9A87BAEB573AAFC588C19,
@@ -1480,7 +1485,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		3B7498A27F6DF32D6E51680A = { isa = PBXGroup; children = (
+		CC1B502D8B9CC22571054758 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1701,6 +1706,7 @@
 				70FAA02F75C4740227D3D083,
 				BAE52EC7BF141B9E995B88F4,
 				39BA8698CEE21F2CD6AAD2D3,
+				E2186D616D7CC77FB7E66F86,
 				E2E393B802828DD0EC1A7637,
 				8F646B69B227AEF1414021F5,
 				753CB65E475A91D79678B52D,
@@ -1796,7 +1802,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 3B7498A27F6DF32D6E51680A; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = CC1B502D8B9CC22571054758; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

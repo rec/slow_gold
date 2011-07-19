@@ -88,7 +88,7 @@ void protobuf_AddDesc_rec_2fwidget_2fwaveform_2fCursor_2eproto() {
     "\032\026rec/gui/Geometry.proto\"\245\002\n\013CursorProto"
     "\022\"\n\006widget\030\001 \001(\0132\022.rec.widget.Widget\022\020\n\005"
     "width\030\002 \001(\r:\0011\022\030\n\rdisplay_width\030\003 \001(\r:\0013"
-    "\022\032\n\017component_width\030\004 \001(\r:\0017\022F\n\004type\030\005 \001"
+    "\022\032\n\017component_width\030\004 \001(\r:\0019\022F\n\004type\030\005 \001"
     "(\0162%.rec.widget.waveform.CursorProto.Typ"
     "e:\021PLAYBACK_POSITION\022\033\n\004line\030\006 \001(\0132\r.rec"
     ".gui.Line\"E\n\004Type\022\010\n\004NONE\020\000\022\025\n\021PLAYBACK_"
@@ -165,7 +165,7 @@ void CursorProto::SharedCtor() {
   widget_ = NULL;
   width_ = 1u;
   display_width_ = 3u;
-  component_width_ = 7u;
+  component_width_ = 9u;
   type_ = 1;
   line_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -209,7 +209,7 @@ void CursorProto::Clear() {
     }
     width_ = 1u;
     display_width_ = 3u;
-    component_width_ = 7u;
+    component_width_ = 9u;
     type_ = 1;
     if (_has_bit(5)) {
       if (line_ != NULL) line_->::rec::gui::Line::Clear();
@@ -270,7 +270,7 @@ bool CursorProto::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 component_width = 4 [default = 7];
+      // optional uint32 component_width = 4 [default = 9];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -355,7 +355,7 @@ void CursorProto::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->display_width(), output);
   }
   
-  // optional uint32 component_width = 4 [default = 7];
+  // optional uint32 component_width = 4 [default = 9];
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->component_width(), output);
   }
@@ -397,7 +397,7 @@ void CursorProto::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->display_width(), target);
   }
   
-  // optional uint32 component_width = 4 [default = 7];
+  // optional uint32 component_width = 4 [default = 9];
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->component_width(), target);
   }
@@ -447,7 +447,7 @@ int CursorProto::ByteSize() const {
           this->display_width());
     }
     
-    // optional uint32 component_width = 4 [default = 7];
+    // optional uint32 component_width = 4 [default = 9];
     if (has_component_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(

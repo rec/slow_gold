@@ -15,8 +15,15 @@ namespace waveform {
 
 namespace {
 
-Def<CursorProto> timeDesc("widget {colors {color: {name: \"pink\"}}}");
-Def<CursorProto> defaultDesc("widget {colors {color: {name: \"yellow\"}}}");
+Def<CursorProto> timeDesc(
+"widget {colors {color: {name: \"pink\"}}}\n"
+"line {thickness: 2.0}"
+);
+
+Def<CursorProto> defaultDesc(
+"widget {colors {color: {name: \"yellow\"}}}\n"
+"line {thickness: 2.0}"
+);
 
 }  // namespace
 

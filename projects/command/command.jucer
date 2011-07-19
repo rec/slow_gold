@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="guHTvYnE4" name="command">
+  <MAINGROUP id="9gq7Tf1Oe" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -809,6 +809,10 @@
               id="5Cdg3CmFq" name="PlaybackController.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/PlaybackController.h" id="S5oFU8QHv"
               name="PlaybackController.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/Position.cpp" id="8shoaUTs2"
+              name="Position.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/Position.h" id="Yuq7JMSqm"
+              name="Position.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Selections.cpp" id="0adFhWKpJ"
               name="Selections.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Selections.h" id="MGk0cgBUV"
@@ -1239,7 +1243,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="XMZUQFq1m" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="S12l3EXPb" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -30,6 +30,12 @@ class Target : public HasInstance {
     targetManager_.addCallback(id, cb, name, category, desc);
   }
 
+
+  void addBank(command::Command::Type cmd, const String& menu,
+               const String& desc, const String& cat);
+
+  void addBankCommands();
+
   command::TargetManager* targetManager() { return &targetManager_; }
 
  private:

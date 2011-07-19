@@ -63,9 +63,9 @@ struct Period {
 
 struct Priority {
   enum Enum {
-    BUFFER = 4,
-    DIRECTORY = 2,
-    FILL = 4,
+    BUFFER = 3,
+    DIRECTORY = 3,
+    FILL = 5,
     NAVIGATOR = 2,
     PARAMETER = 5
   };

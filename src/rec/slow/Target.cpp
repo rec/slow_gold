@@ -10,18 +10,19 @@
 #include "rec/slow/Listeners.h"
 #include "rec/slow/LoopCommands.h"
 #include "rec/slow/Model.h"
+#include "rec/slow/Position.h"
 #include "rec/slow/Selections.h"
 #include "rec/slow/TargetCommands.h"
 #include "rec/util/Math.h"
 #include "rec/util/cd/Eject.h"
 #include "rec/util/thread/FunctionCallback.h"
 
+using rec::thread::methodCallback;
+using rec::thread::functionCallback;
+using rec::command::Command;
+
 namespace rec {
 namespace slow {
-
-using thread::methodCallback;
-using thread::functionCallback;
-using command::Command;
 
 Target::Target(Instance* i)
     : HasInstance(i),
@@ -42,9 +43,55 @@ void Target::add(CommandID c, const String& name,
       name, category, desc);
 }
 
+namespace {
+
+const char* LOWER[] = {" the first", " the previous", " the current",
+                       " the next", " the last"};
+const char* CAP[] = {" First", " Previous", " Current", " Next", " Last"};
+
+}  // namespace
+
+void Target::addBank(Command::Type command, const String& menu,
+                     const String& desc, const String& cat) {
+  CommandID c = command;
+  for (int i = 0; i <= LAST - FIRST; ++i, ++c) {
+    add(c, String::formatted(menu, CAP[i], ""), cat,
+        String::formatted(desc, LOWER[i], ""));
+  }
+
+  for (int i = 0; i < SLOT_COUNT; ++i, ++c) {
+    String n = " " + String(i + 1);
+    const char* ns = n.toUTF8();
+    add(c, String::formatted(menu, "", ns), cat,
+    	  String::formatted(desc, "", ns));
+  }
+}
+
+void Target::addBankCommands() {
+  addBank(Command::JUMP_SELECTED, "Jump To%s Selected Segment%s",
+          "Jump to the start of%s selected segment%s", "Transport");
+
+  addBank(Command::JUMP, "Jump To%s Segment%s",
+          "Jump to the start of%s segment%s", "Transport");
+
+  addBank(Command::SELECT_ONLY, "Select%s Segment%s Only",
+          "Select%s segment%s only", "Transport");
+
+  addBank(Command::SELECT, "Select%s Segment%s",
+          "Select%s segment%s", "Transport");
+
+  addBank(Command::TOGGLE, "Toggle%s Segment%s Selection",
+          "Toggle%s segment%s between selected and unselected", "Transport");
+
+  addBank(Command::UNSELECT, "Unselect%s Segment%s",
+          "Unselect%s segment%s", "Transport");
+}
+
 void Target::addCommands() {
   using gui::audio::Loops;
   using rec::command::Command;
+
+	addBankCommands();
 
   // Defined by Juce.
   add(Command::DEL, functionCallback(cutNoClipboard),
@@ -111,80 +158,6 @@ void Target::addCommands() {
       "Invert Selection", "Selection",
       "Unselect everything selected and vice-versa.");
 
-  add(Command::JUMP_TO_FIRST_SELECTED_SEGMENT,
-      "Jump To First Selected Segment", "Transport",
-      "Jump to the start of the first segment.");
-
-  add(Command::JUMP_TO_NEXT_SELECTED_SEGMENT,
-      "Jump To Next Selected Segment", "Transport",
-      "Jump to the next segment and select it.");
-
-  add(Command::JUMP_TO_PREVIOUS_SELECTED_SEGMENT,
-      "Jump To Previous Selected Segment", "Transport",
-      "Jump to the previous segment and select it.");
-
-  add(Command::JUMP_TO_LAST_SELECTED_SEGMENT,
-      "Jump To Last Selected Segment", "Transport",
-      "Jump to the last segment in the selection.");
-
-
-  add(Command::JUMP_TO_FIRST_SEGMENT,
-      "Jump To First Segment", "Transport",
-      "Jump to the start of the first segment.");
-
-  add(Command::JUMP_TO_NEXT_SEGMENT,
-      "Jump To Next Segment", "Transport",
-      "Jump to the next segment and select it.");
-
-  add(Command::JUMP_TO_PREVIOUS_SEGMENT,
-      "Jump To Previous Segment", "Transport",
-      "Jump to the previous segment and select it.");
-
-  add(Command::JUMP_TO_LAST_SEGMENT,
-      "Jump To Last Segment", "Transport",
-      "Jump to the last segment and select it.");
-
-
-  add(Command::JUMP_TO_0,
-      "Jump To Segment 0", "Transport",
-      "Jump to segment 0 and select it.");
-
-  add(Command::JUMP_TO_1,
-      "Jump To Segment 1", "Transport",
-      "Jump to segment 1 and select it.");
-
-  add(Command::JUMP_TO_2,
-      "Jump To Segment 2", "Transport",
-      "Jump to segment 2 and select it.");
-
-  add(Command::JUMP_TO_3,
-      "Jump To Segment 3", "Transport",
-      "Jump to segment 3 and select it.");
-
-  add(Command::JUMP_TO_4,
-      "Jump To Segment 4", "Transport",
-      "Jump to segment 4 and select it.");
-
-  add(Command::JUMP_TO_5,
-      "Jump To Segment 5", "Transport",
-      "Jump to segment 5 and select it.");
-
-  add(Command::JUMP_TO_6,
-      "Jump To Segment 6", "Transport",
-      "Jump to segment 6 and select it.");
-
-  add(Command::JUMP_TO_7,
-      "Jump To Segment 7", "Transport",
-      "Jump to segment 7 and select it.");
-
-  add(Command::JUMP_TO_8,
-      "Jump To Segment 8", "Transport",
-      "Jump to segment 8 and select it.");
-
-  add(Command::JUMP_TO_9,
-      "Jump To Segment 9", "Transport",
-      "Jump to segment 9 and select it.");
-
   add(Command::KEYBOARD_MAPPINGS,
       functionCallback(&keyboardMappings, instance_),
       "Edit Keyboard Mappings...", "File",
@@ -246,143 +219,6 @@ void Target::addCommands() {
       "Documentation");
 
 
-  add(Command::SELECT_FIRST_SEGMENT_ONLY,
-      "Select Only First Segment 1", "Select Only",
-      "Select the first segment and unselect all other segments.");
-
-  add(Command::SELECT_PREVIOUS_SEGMENT_ONLY,
-      "Select Only Previous Segment 1", "Select Only",
-      "Select the previous segment and unselect all other segments.");
-
-  add(Command::SELECT_NEXT_SEGMENT_ONLY,
-      "Select Only Next Segment 1", "Select Only",
-      "Select the next segment and unselect all other segments.");
-
-  add(Command::SELECT_LAST_SEGMENT_ONLY,
-      "Select Only Last Segment 1", "Select Only",
-      "Select the last segment and unselect all other segments.");
-
-
-  add(Command::SELECT_ONLY_0,
-      "Select Only Segment 1", "Select Only",
-      "Select segment 1 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_1,
-      "Select Only Segment 2", "Select Only",
-      "Select segment 2 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_2,
-      "Select Only Segment 3", "Select Only",
-      "Select segment 3 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_3,
-      "Select Only Segment 4", "Select Only",
-      "Select segment 4 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_4,
-      "Select Only Segment 5", "Select Only",
-      "Select segment 5 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_5,
-      "Select Only Segment 6", "Select Only",
-      "Select segment 6 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_6,
-      "Select Only Segment 7", "Select Only",
-      "Select segment 7 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_7,
-      "Select Only Segment 8", "Select Only",
-      "Select segment 8 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_8,
-      "Select Only Segment 9", "Select Only",
-      "Select segment 9 and unselect all other segments.");
-
-  add(Command::SELECT_ONLY_9,
-      "Select Only Segment 10", "Select Only",
-      "Select segment 10 and unselect all other segments.");
-
-  add(Command::SELECT_0,
-      "Select Segment 1", "Select",
-      "Select segment 1.");
-
-  add(Command::SELECT_1,
-      "Select Segment 2", "Select",
-      "Select segment 2.");
-
-  add(Command::SELECT_2,
-      "Select Segment 3", "Select",
-      "Select segment 3.");
-
-  add(Command::SELECT_3,
-      "Select Segment 4", "Select",
-      "Select segment 4.");
-
-  add(Command::SELECT_4,
-      "Select Segment 5", "Select",
-      "Select segment 5.");
-
-  add(Command::SELECT_5,
-      "Select Segment 6", "Select",
-      "Select segment 6.");
-
-  add(Command::SELECT_6,
-      "Select Segment 7", "Select",
-      "Select segment 7.");
-
-  add(Command::SELECT_7,
-      "Select Segment 8", "Select",
-      "Select segment 8.");
-
-  add(Command::SELECT_8,
-      "Select Segment 9", "Select",
-      "Select segment 9.");
-
-  add(Command::SELECT_9,
-      "Select Segment 10", "Select",
-      "Select segment 10.");
-
-  add(Command::TOGGLE_0,
-      "Toggle Segment 1", "Select Toggle",
-      "Toggle segment 1 between selected and unselected");
-
-  add(Command::TOGGLE_1,
-      "Toggle Segment 2", "Select Toggle",
-      "Toggle segment 2 between selected and unselected");
-
-  add(Command::TOGGLE_2,
-      "Toggle Segment 3", "Select Toggle",
-      "Toggle segment 3 between selected and unselected");
-
-  add(Command::TOGGLE_3,
-      "Toggle Segment 4", "Select Toggle",
-      "Toggle segment 4 between selected and unselected");
-
-  add(Command::TOGGLE_4,
-      "Toggle Segment 5", "Select Toggle",
-      "Toggle segment 5 between selected and unselected");
-
-  add(Command::TOGGLE_5,
-      "Toggle Segment 6", "Select Toggle",
-      "Toggle segment 6 between selected and unselected");
-
-  add(Command::TOGGLE_6,
-      "Toggle Segment 7", "Select Toggle",
-      "Toggle segment 7 between selected and unselected");
-
-  add(Command::TOGGLE_7,
-      "Toggle Segment 8", "Select Toggle",
-      "Toggle segment 8 between selected and unselected");
-
-  add(Command::TOGGLE_8,
-      "Toggle Segment 9", "Select Toggle",
-      "Toggle segment 9 between selected and unselected");
-
-  add(Command::TOGGLE_9,
-      "Toggle Segment 10", "Select Toggle",
-      "Toggle segment 10 between selected and unselected");
-
   add(Command::TOGGLE_WHOLE_SONG_LOOP,
       "Toggle Whole Segment Selection", "Selection",
       "Toggle selection between the current segment and the whole song.");
@@ -426,46 +262,6 @@ void Target::addCommands() {
       functionCallback(&treeUp, instance_),
       "NAME", "(None)",
       "Documentation");
-
-  add(Command::UNSELECT_0,
-      "Unselect Segment 1", "Unselect",
-      "Unselect segment 1");
-
-  add(Command::UNSELECT_1,
-      "Unselect Segment 2", "Unselect",
-      "Unselect segment 2");
-
-  add(Command::UNSELECT_2,
-      "Unselect Segment 3", "Unselect",
-      "Unselect segment 3");
-
-  add(Command::UNSELECT_3,
-      "Unselect Segment 4", "Unselect",
-      "Unselect segment 4");
-
-  add(Command::UNSELECT_4,
-      "Unselect Segment 5", "Unselect",
-      "Unselect segment 5");
-
-  add(Command::UNSELECT_5,
-      "Unselect Segment 6", "Unselect",
-      "Unselect segment 6");
-
-  add(Command::UNSELECT_6,
-      "Unselect Segment 7", "Unselect",
-      "Unselect segment 7");
-
-  add(Command::UNSELECT_7,
-      "Unselect Segment 8", "Unselect",
-      "Unselect segment 8");
-
-  add(Command::UNSELECT_8,
-      "Unselect Segment 9", "Unselect",
-      "Unselect segment 9");
-
-  add(Command::UNSELECT_9,
-      "Unselect Segment 10", "Unselect",
-      "Unselect segment 10");
 
   add(Command::ZOOM_IN,
       functionCallback(&zoomIn, instance_),

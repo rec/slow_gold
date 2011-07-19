@@ -10,7 +10,9 @@ namespace rec {
 namespace audio {
 namespace util {
 
-ThumbnailBuffer::~ThumbnailBuffer() {}
+ThumbnailBuffer::~ThumbnailBuffer() {
+  DLOG(ERROR) << "Deleting thumbnail buffer";
+}
 
 ThumbnailBuffer::ThumbnailBuffer(const VirtualFile& f) {
   ptr<PositionableAudioSource> source(source::createSourceAndLoadMetadata(f));
