@@ -20,25 +20,25 @@ namespace util {
 class CachedThumbnail;
 
 #ifdef COMPACT_BUFFERS
-
-typedef GenericFillableBuffer<short, 2> ThumbnailBufferParent;
-
+  typedef GenericFillableBuffer<short, 2> ThumbnailFillableBuffer;
 #else
-
-typedef FillableBuffer ThumbnailBufferParent;
-
+  typedef FillableBuffer ThumbnailFillableBuffer;
 #endif
 
-
-class ThumbnailBuffer : public ThumbnailBufferParent {
+class ThumbnailBuffer {
  public:
   ThumbnailBuffer(const VirtualFile& file);
   virtual ~ThumbnailBuffer();
   CachedThumbnail* thumbnail() { return thumbnail_.get(); }
   void writeThumbnail();
 
+  ThumbnailFillableBuffer *buffer() { return &buffer_; }
+
  private:
+  PositionableAudioSource* makeSource(const VirtualFile& file);
+
   ptr<CachedThumbnail> thumbnail_;
+  ThumbnailFillableBuffer buffer_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(ThumbnailBuffer);
 };

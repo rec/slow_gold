@@ -16,8 +16,9 @@ class FillableBuffer : public block::Fillable {
  public:
   static const int DEFAULT_BLOCK_SIZE = 4096;
 
-  FillableBuffer() : blockSize_(DEFAULT_BLOCK_SIZE) {}
-  void setSource(PositionableAudioSource* source);
+  FillableBuffer(PositionableAudioSource* s) : blockSize_(DEFAULT_BLOCK_SIZE) {
+    setSource(s);
+  }
 
   virtual block::Size doFillNextBlock(const block::Block& block);
   void setBlockSize(SamplePosition b) { blockSize_ = b; }
@@ -26,6 +27,8 @@ class FillableBuffer : public block::Fillable {
   virtual void onFilled() { source_.reset(); }
 
  private:
+  void setSource(PositionableAudioSource* source);
+
   ptr<AudioSampleBuffer> buffer_;
   ptr<PositionableAudioSource> source_;
   int64 blockSize_;

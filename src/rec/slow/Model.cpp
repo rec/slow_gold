@@ -47,10 +47,11 @@ Model::Model(Instance* i) : HasInstance(i),
 
 thread::Result Model::fillOnce() {
   thumbnailBuffer_.switchIfNext();
-  ThumbnailBuffer* buffer = thumbnailBuffer_.current();
+  ThumbnailBuffer* thumb = thumbnailBuffer_.current();
+  ThumbnailFillableBuffer* buffer = thumb->buffer();
   if (!buffer || buffer->isFull()) {
     if (buffer)
-      buffer->writeThumbnail();
+      thumb->writeThumbnail();
 
     return static_cast<thread::Result>(PARAMETER_WAIT);
   }
@@ -81,8 +82,9 @@ void Model::jumpToSamplePosition(SamplePosition pos) {
       return;
     }
 
-    ThumbnailBuffer* buffer = thumbnailBuffer_.current();
-    if (buffer) {
+    ThumbnailBuffer* thumb = thumbnailBuffer_.current();
+    if (thumb) {
+      ThumbnailFillableBuffer* buffer = thumb->buffer();
       triggerPosition_ = pos;
       if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
         buffer->setNextFillPosition(pos);
@@ -168,14 +170,8 @@ void Model::operator()(const VirtualFile& f) {
   }
 
   buffer->thumbnail()->addListener(&components()->waveform_);
-#ifndef NEW
-  player()->setSource(new BufferSource(*buffer), stretchLocker_.get(),
+  player()->setSource(new BufferSource(*buffer->buffer()), stretchLocker_.get(),
                       stereoLocker_.get(), timeSelection_);
-#else
-  player()->setSource(new GenericBufferSource<short, 2>(*buffer),
-                      stretchLocker_.get(),
-                      stereoLocker_.get(), timeSelection_);
-#endif
 
   // player()->setStretch(stretchLocker_.get());
   thumbnailBuffer_.setNext(buffer.transfer());
