@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="HJeKxgZNq" name="command">
+  <MAINGROUP id="bzkt5Ymgz" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -134,8 +134,8 @@
                 id="b3QZjjZet" name="CreateSourceAndLoadMetadata.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="Ok5da1Dyg"
                 name="Empty.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/GenericBufferSource.h"
-                id="6FiPOdald" name="GenericBufferSource.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/source/FrameSource.h" id="DTUW1ossE"
+                name="FrameSource.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Level.h" id="5COsYa4AA"
                 name="Level.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/Player.cpp" id="AAwfYTGI7"
@@ -202,6 +202,10 @@
                 id="Ozzjob5y1" name="FillableBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/FillableBuffer.h"
                 id="K4piO9oOZ" name="FillableBuffer.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/FillableFrameBuffer.cpp"
+                id="s2E0kS4Ym" name="FillableFrameBuffer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/FillableFrameBuffer.h"
+                id="fTL6z1ekA" name="FillableFrameBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/Frame.cpp" id="LtNkH41Dx"
                 name="Frame.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Frame.h" id="GMsLwIKz2"
@@ -210,10 +214,6 @@
                 name="Gain.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Gain.h" id="uL3ztCxOr"
                 name="Gain.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/util/GenericFillableBuffer.cpp"
-                id="a0nehLmnR" name="GenericFillableBuffer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/GenericFillableBuffer.h"
-                id="6fsaQ0IJ8" name="GenericFillableBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ThumbnailBuffer.cpp"
                 id="0BxQFhM4B" name="ThumbnailBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ThumbnailBuffer.h"
@@ -1249,7 +1249,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="WII3qtUQG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="11MRF2hum" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

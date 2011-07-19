@@ -1,5 +1,5 @@
-#ifndef __REC_AUDIO_UTIL_GENERIC_FILLABLE_BUFFER__
-#define __REC_AUDIO_UTIL_GENERIC_FILLABLE_BUFFER__
+#ifndef __REC_AUDIO_UTIL_FILLABLE_FRAME_BUFFER__
+#define __REC_AUDIO_UTIL_FILLABLE_FRAME_BUFFER__
 
 #include "rec/base/SamplePosition.h"
 #include "rec/audio/util/Frame.h"
@@ -11,12 +11,12 @@ namespace audio {
 namespace util {
 
 template <typename Sample, int CHANNELS>
-class GenericFillableBuffer : public block::Fillable {
+class FillableFrameBuffer : public block::Fillable {
  public:
   const static int BLOCK_SIZE = 4096;
 
-  GenericFillableBuffer(int blockSize = BLOCK_SIZE);
-  virtual ~GenericFillableBuffer() {}
+  FillableFrameBuffer(int blockSize = BLOCK_SIZE);
+  virtual ~FillableFrameBuffer() {}
 
   bool setReader(AudioFormatReader* reader);
   virtual block::Size doFillNextBlock(const block::Block& b);
@@ -34,12 +34,11 @@ class GenericFillableBuffer : public block::Fillable {
   vector<int> buffer_[CHANNELS];
   int* bufferPointers_[CHANNELS];
 
-  DISALLOW_COPY_AND_ASSIGN(GenericFillableBuffer);
+  DISALLOW_COPY_AND_ASSIGN(FillableFrameBuffer);
 };
-
 
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_UTIL_GENERIC_FILLABLE_BUFFER__
+#endif  // __REC_AUDIO_UTIL_FILLABLE_FRAME_BUFFER__

@@ -1,19 +1,10 @@
 #ifndef __REC_AUDIO_UTIL_THUMBNAILBUFFER__
 #define __REC_AUDIO_UTIL_THUMBNAILBUFFER__
 
-// #define COMPACT_BUFFERS
+#define COMPACT_BUFFERS
 
 #include "rec/audio/util/Frame.h"
-#include "rec/audio/util/GenericFillableBuffer.h"
-
-#ifdef COMPACT_BUFFERS
-
-
-#else
-
-#include "rec/audio/util/FillableBuffer.h"
-
-#endif
+#include "rec/audio/util/FillableFrameBuffer.h"
 
 namespace rec {
 namespace audio {
@@ -22,27 +13,26 @@ namespace util {
 class CachedThumbnail;
 
 #ifdef COMPACT_BUFFERS
-  typedef GenericFillableBuffer<short, 2> ThumbnailFillableBuffer;
+  typedef FillableFrameBuffer<short, 2> ThumbnailFillableBuffer;
 #else
   typedef FillableBuffer ThumbnailFillableBuffer;
 #endif
 
 class ThumbnailBuffer {
  public:
-  ThumbnailBuffer(const VirtualFile& file);
+  ThumbnailBuffer();
   virtual ~ThumbnailBuffer();
   CachedThumbnail* thumbnail() { return thumbnail_.get(); }
   void writeThumbnail();
 
   ThumbnailFillableBuffer *buffer() { return &buffer_; }
+  void setReader(const VirtualFile& file);
 
  private:
-  PositionableAudioSource* makeSource(const VirtualFile& file);
-
   ptr<CachedThumbnail> thumbnail_;
   ThumbnailFillableBuffer buffer_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(ThumbnailBuffer);
+  DISALLOW_COPY_AND_ASSIGN(ThumbnailBuffer);
 };
 
 }  // namespace util

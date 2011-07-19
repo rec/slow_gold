@@ -46,10 +46,10 @@ bool Fillable::isFull() const {
   return (fullTo(filled_) == length_);
 }
 
-void Fillable::fillNextBlock() {
+int64 Fillable::fillNextBlock() {
   ScopedLock l(lock_);
   if (isFull())
-    return;
+    return 0;
 
   Block block = firstEmptyBlockAfter(filled_, position_, length_);
   {
@@ -57,18 +57,20 @@ void Fillable::fillNextBlock() {
     int numSamples = getSize(block);
     if (numSamples <= 0) {
       LOG(ERROR) << "Getting an empty block";
-      return;
+      return 0;
     }
-    block.second = block.first + doFillNextBlock(block);
-    if (!getSize(block)) {
-      LOG(ERROR) << "Couldn't fill block";
-      return;
+
+    if (int64 size = doFillNextBlock(block)) {
+      block.second = block.first + size;
+      merge(block, &filled_);
+      if (isFull())
+        onFilled();
+      return size;
     }
   }
 
-  merge(block, &filled_);
-  if (isFull())
-    onFilled();
+  LOG(ERROR) << "Couldn't fill block";
+  return 0;
 }
 
 }  // namespace block

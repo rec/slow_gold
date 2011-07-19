@@ -1,30 +1,30 @@
-#ifndef __REC_AUDIO_SOURCE_GENERICBUFFERSOURCE__
-#define __REC_AUDIO_SOURCE_GENERICBUFFERSOURCE__
+#ifndef __REC_AUDIO_SOURCE_FRAMESOURCE__
+#define __REC_AUDIO_SOURCE_FRAMESOURCE__
 
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/util/Frame.h"
-#include "rec/audio/util/GenericFillableBuffer.h"
 
 namespace rec {
 namespace audio {
 namespace source {
 
 template <typename Sample, int CHANNELS>
-class GenericBufferSource : public SourceWithPosition {
+class FrameSource : public SourceWithPosition {
  public:
-  explicit GenericBufferSource(const Frames<Sample, CHANNELS>& b) : buffer_(b) {}
-  virtual ~GenericBufferSource() {}
+  explicit FrameSource(const Frames<Sample, CHANNELS>& b) : buffer_(b) {}
+  virtual ~FrameSource() {}
 
   virtual void getNextAudioBlock(const Info& info) {
     Info i = info;
     while (i.numSamples > 0) {
       SamplePosition copied = buffer_.getAudioBlock(i, position_);
       if (!copied) {
-        LOG(DFATAL) << "No samples copied!";
+        LOG(ERROR) << "No samples copied!";
+        DCHECK(copied);
         return;
       }
       i.numSamples -= copied;
-      i.sampleOffset += copied;
+      i.startSample += copied;
       setNextReadPosition(position_ + copied);
     }
   }
@@ -34,11 +34,11 @@ class GenericBufferSource : public SourceWithPosition {
  private:
   const Frames<Sample, CHANNELS>& buffer_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericBufferSource);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(FrameSource);
 };
 
 }  // namespace source
 }  // namespace audio
 }  // namespace rec
 
-#endif  // __REC_AUDIO_SOURCE_GENERICBUFFERSOURCE__
+#endif  // __REC_AUDIO_SOURCE_FRAMESOURCE__

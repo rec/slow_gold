@@ -1,9 +1,10 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/source/BufferSource.h"
-// #include "rec/audio/source/GenericBufferSource.h"
+#include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Selection.h"
+#include "rec/audio/util/Frame.h"
 #include "rec/audio/util/CachedThumbnail.h"
 #include "rec/data/persist/Data.h"
 #include "rec/data/persist/Persist.h"
@@ -43,16 +44,14 @@ Model::Model(Instance* i) : HasInstance(i),
                             loopData_(NULL) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
+  thumbnailBuffer_.thumbnail()->addListener(&components()->waveform_);
 }
 
 thread::Result Model::fillOnce() {
-  thumbnailBuffer_.switchIfNext();
-  ThumbnailBuffer* thumb = thumbnailBuffer_.current();
-  ThumbnailFillableBuffer* buffer = thumb->buffer();
-  if (!buffer || buffer->isFull()) {
-    if (buffer)
-      thumb->writeThumbnail();
-
+  ScopedLock l(lock_);
+  ThumbnailFillableBuffer* buffer = thumbnailBuffer_.buffer();
+  if (buffer && buffer->isFull()) {
+    thumbnailBuffer_.writeThumbnail();
     return static_cast<thread::Result>(PARAMETER_WAIT);
   }
 
@@ -82,15 +81,12 @@ void Model::jumpToSamplePosition(SamplePosition pos) {
       return;
     }
 
-    ThumbnailBuffer* thumb = thumbnailBuffer_.current();
-    if (thumb) {
-      ThumbnailFillableBuffer* buffer = thumb->buffer();
-      triggerPosition_ = pos;
-      if (!buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
-        buffer->setNextFillPosition(pos);
-        if (player()->state())
-          return;
-      }
+    ThumbnailFillableBuffer* buffer = thumbnailBuffer_.buffer();
+    triggerPosition_ = pos;
+    if (buffer && !buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
+      buffer->setNextFillPosition(pos);
+      if (player()->state())
+        return;
     }
     triggerPosition_ = -1;
   }
@@ -122,7 +118,8 @@ void Model::operator()(const LoopPointList& loops) {
 namespace {
 
 template <typename Proto>
-persist::Data<Proto>* updateLocker(thread::Locker<Proto>* locker, const VirtualFile& file) {
+persist::Data<Proto>* updateLocker(thread::Locker<Proto>* locker,
+                                   const VirtualFile& file) {
   persist::Data<Proto>* s = persist::setter<Proto>(file);
   locker->listenTo(s);
   locker->set(s->get());
@@ -132,15 +129,15 @@ persist::Data<Proto>* updateLocker(thread::Locker<Proto>* locker, const VirtualF
 }  // namespace
 
 void Model::operator()(const VirtualFile& f) {
-  if (thumbnailBuffer_.next()) {
-    LOG(ERROR) << "Already reading file " << getFullDisplayName(f);
-    return;
-  }
-  components()->directoryTree_.refreshNode(file_);
-  file_ = f;
   player()->setState(audio::transport::STOPPED);
   player()->timeBroadcaster()->broadcast(0);
   player()->clearSource();
+
+  ScopedLock l(lock_);
+
+  thumbnailBuffer_.setReader(f);
+  components()->directoryTree_.refreshNode(file_);
+  file_ = f;
 
   loopData_ = updateLocker(&loopLocker_, f);
   components()->loops_.setData(loopData_);
@@ -161,20 +158,18 @@ void Model::operator()(const VirtualFile& f) {
     data::set(loopData_, loop);
   }
 
-
   loopLocker_.set(loop);
-  ptr<ThumbnailBuffer> buffer(new ThumbnailBuffer(f));
-  if (!buffer->thumbnail()) {
-    LOG(ERROR) << "File " << f.DebugString() << " doesn't exist";
-    return;
-  }
 
-  buffer->thumbnail()->addListener(&components()->waveform_);
+#ifdef COMPACT_BUFFERS
+  const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
+  PositionableAudioSource* s = new FrameSource<short, 2>(frames);
+  player()->setSource(s, stretchLocker_.get(),
+                      stereoLocker_.get(), timeSelection_);
+#else
   player()->setSource(new BufferSource(*buffer->buffer()), stretchLocker_.get(),
                       stereoLocker_.get(), timeSelection_);
-
+#endif
   // player()->setStretch(stretchLocker_.get());
-  thumbnailBuffer_.setNext(buffer.transfer());
   threads()->fillThread()->notify();
   player()->setNextReadPosition(0);
   (*components()->playerController_.levelListener())(LevelVector());

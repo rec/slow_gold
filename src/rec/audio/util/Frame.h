@@ -7,19 +7,25 @@
 namespace rec {
 namespace audio {
 
+
+template <typename Sample, int CHANNELS>
+struct Frame {
+  Sample sample_[CHANNELS];
+};
+
 template <typename Sample, int CHANNELS>
 class Frames {
  public:
-  struct Frame {
-    Sample sample_[CHANNELS];
-  };
+  typedef Frame<Sample, CHANNELS> Frame;
 
   Frames() : length_(0), frames_(NULL) {}
   ~Frames() { free(frames_); }
 
   bool setLength(SamplePosition length);
-  SamplePosition getAudioBlock(const Info& info, SamplePosition offset);
+  SamplePosition getAudioBlock(const Info& info, SamplePosition offset) const;
+
   Frame* frames() { return frames_; }
+  SamplePosition length() const { return length_; }
 
  private:
   SamplePosition length_;

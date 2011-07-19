@@ -20,7 +20,7 @@ class Fillable {
   void setLength(int64 length);
   int64 length() const;
 
-  void fillNextBlock();
+  int64 fillNextBlock();
   bool isFull() const;
   bool hasFilled(const Block& b) const;
   BlockSet filled() const { ScopedLock l(lock_); return filled_; }

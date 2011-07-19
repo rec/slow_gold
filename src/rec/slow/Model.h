@@ -12,7 +12,6 @@
 #include "rec/music/Metadata.pb.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/LoopPoint.h"
-#include "rec/util/Switcher.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
@@ -86,7 +85,7 @@ class Model : public Listener<const VirtualFile&>,
   SamplePosition triggerPosition_;
   SampleSelection timeSelection_;
 
-  Switcher<ThumbnailBuffer> thumbnailBuffer_;
+  ThumbnailBuffer thumbnailBuffer_;
   persist::Data<LoopPointList>* loopData_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);

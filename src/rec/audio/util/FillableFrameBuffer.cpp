@@ -1,11 +1,11 @@
-#include "rec/audio/util/GenericFillableBuffer.h"
+#include "rec/audio/util/FillableFrameBuffer.h"
 
 namespace rec {
 namespace audio {
 namespace util {
 
 template <typename Sample, int CHANNELS>
-GenericFillableBuffer<Sample, CHANNELS>::GenericFillableBuffer(int blockSize)
+FillableFrameBuffer<Sample, CHANNELS>::FillableFrameBuffer(int blockSize)
     : blockSize_(blockSize) {
   for (int i = 0; i < CHANNELS; ++i) {
     buffer_[i].resize(blockSize);
@@ -13,9 +13,9 @@ GenericFillableBuffer<Sample, CHANNELS>::GenericFillableBuffer(int blockSize)
   }
 }
 
-
 template <typename Sample, int CHANNELS>
-bool GenericFillableBuffer<Sample, CHANNELS>::setReader(AudioFormatReader* reader) {
+bool FillableFrameBuffer<Sample, CHANNELS>::setReader(
+    AudioFormatReader* reader) {
   ScopedLock l(lock_);
 
   SamplePosition size = reader->lengthInSamples;
@@ -29,7 +29,8 @@ bool GenericFillableBuffer<Sample, CHANNELS>::setReader(AudioFormatReader* reade
 }
 
 template <typename Sample, int CHANNELS>
-block::Size GenericFillableBuffer<Sample, CHANNELS>::doFillNextBlock(const block::Block& b) {
+block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
+    const block::Block& b) {
   ScopedLock l(lock_);
 
   if (!reader_) {
@@ -52,8 +53,9 @@ block::Size GenericFillableBuffer<Sample, CHANNELS>::doFillNextBlock(const block
   return size;
 }
 
-template class GenericFillableBuffer<int16, 2>;
+template class FillableFrameBuffer<short, 2>;
 
 }  // namespace util
 }  // namespace audio
 }  // namespace rec
+
