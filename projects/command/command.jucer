@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="9gq7Tf1Oe" name="command">
+  <MAINGROUP id="HJeKxgZNq" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -192,6 +192,8 @@
                 id="Hxu6gkrry" name="CachedThumbnail.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Clear.h" id="BGkZlpa3Q"
                 name="Clear.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/util/ConvertSample.h" id="jdtOpUO74"
+                name="ConvertSample.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/CopySamples.cpp" id="ohVQN4KPe"
                 name="CopySamples.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/CopySamples.h" id="oaBLQ2qvy"
@@ -200,12 +202,16 @@
                 id="Ozzjob5y1" name="FillableBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/FillableBuffer.h"
                 id="K4piO9oOZ" name="FillableBuffer.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/Frame.cpp" id="LtNkH41Dx"
+                name="Frame.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Frame.h" id="GMsLwIKz2"
                 name="Frame.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/Gain.cpp" id="t65afpGo8"
                 name="Gain.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Gain.h" id="uL3ztCxOr"
                 name="Gain.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/GenericFillableBuffer.cpp"
+                id="a0nehLmnR" name="GenericFillableBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/GenericFillableBuffer.h"
                 id="6fsaQ0IJ8" name="GenericFillableBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/ThumbnailBuffer.cpp"
@@ -1243,7 +1249,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="S12l3EXPb" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="WII3qtUQG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

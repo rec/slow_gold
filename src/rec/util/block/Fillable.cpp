@@ -60,7 +60,7 @@ void Fillable::fillNextBlock() {
       return;
     }
     block.second = block.first + doFillNextBlock(block);
-    if (!block.size()) {
+    if (!getSize(block)) {
       LOG(ERROR) << "Couldn't fill block";
       return;
     }

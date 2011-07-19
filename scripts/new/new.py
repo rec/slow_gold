@@ -10,6 +10,7 @@ ROOT = '/Users/tom/Documents/development/rec/scripts/new/templates/'
 GROUPS = {
   'h': dict(files=['.h']),
   'class': dict(files=['.cpp', '.h']),
+  'cpp': dict(files=['.cpp']),
   'test': dict(files=['.cpp', '.h', '_test.cpp']),
   'svg': dict(files=['.data.h', '.data.cpp'],
               filetype='svg',

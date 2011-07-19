@@ -20,7 +20,7 @@ namespace util { class FillableBuffer; }
 
 namespace source {
 
-class BaseBufferSource : public Source {
+class SourceWithPosition : public Source {
  public:
   virtual void getNextAudioBlock(const Info& i) = 0;
   virtual int64 getTotalLength() const = 0;
@@ -41,7 +41,7 @@ class BaseBufferSource : public Source {
   bool looping_;
 };
 
-class BufferSource : public BaseBufferSource {
+class BufferSource : public SourceWithPosition {
  public:
   BufferSource(const Buffer* b = NULL) : buffer_(b) {}
   BufferSource(const util::FillableBuffer& b) : buffer_(b.buffer_.get()) {}

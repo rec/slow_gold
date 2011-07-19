@@ -10,30 +10,30 @@ namespace audio {
 namespace source {
 
 template <typename Sample, int CHANNELS>
-class GenericBufferSource : public BaseBufferSource {
+class GenericBufferSource : public SourceWithPosition {
  public:
-  typedef util::GenericFillableBuffer<Sample, CHANNELS> FillableBuffer;
-
-  explicit GenericBufferSource(const FillableBuffer& b) : buffer_(b) {}
+  explicit GenericBufferSource(const Frames<Sample, CHANNELS>& b) : buffer_(b) {}
   virtual ~GenericBufferSource() {}
 
   virtual void getNextAudioBlock(const Info& info) {
-    for (SamplePosition i = 0; i <  info.numSamples; ++i) {
-      const util::Frame<Sample, CHANNELS>& frame = buffer_.frames()[position_];
-      for (int c = 0; c < CHANNELS; ++c) {
-        float* samplePtr = info.buffer->getSampleData(c, i + info.startSample);
-        short sample = frame.sample_[c];
-        convertSample(sample, samplePtr);
+    Info i = info;
+    while (i.numSamples > 0) {
+      SamplePosition copied = buffer_.getAudioBlock(i, position_);
+      if (!copied) {
+        LOG(DFATAL) << "No samples copied!";
+        return;
       }
-
-      setNextReadPosition(position_ + 1);
+      i.numSamples -= copied;
+      i.sampleOffset += copied;
+      setNextReadPosition(position_ + copied);
     }
   }
 
   virtual int64 getTotalLength() const { return buffer_.length(); }
 
  private:
-  const FillableBuffer& buffer_;
+  const Frames<Sample, CHANNELS>& buffer_;
+
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericBufferSource);
 };
 

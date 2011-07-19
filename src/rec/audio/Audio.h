@@ -49,7 +49,7 @@ typedef struct int24 {
   int24() {}
 
   operator int() const { return value_; }
-  operator=(int value) { value_ = value; }
+  int24& operator=(int value) { value_ = value; return *this; }
 };
 
 }  // namespace audio
