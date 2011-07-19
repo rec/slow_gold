@@ -22,6 +22,7 @@ class ThumbnailBuffer {
  public:
   ThumbnailBuffer();
   virtual ~ThumbnailBuffer();
+
   CachedThumbnail* thumbnail() { return thumbnail_.get(); }
   void writeThumbnail();
 

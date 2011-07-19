@@ -87,6 +87,7 @@ class Model : public Listener<const VirtualFile&>,
 
   ThumbnailBuffer thumbnailBuffer_;
   persist::Data<LoopPointList>* loopData_;
+  AudioSampleBuffer updateBuffer_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
 };

@@ -21,8 +21,6 @@ void ThumbnailBuffer::setReader(const VirtualFile& f) {
     int len = reader->lengthInSamples;
     static source::RunnyProto d;
     thumbnail_.reset(new CachedThumbnail(shadow, d.compression(), len));
-    if (!thumbnail_->cacheWritten())
-      reader.reset(source::Snoopy::add(reader.transfer(), thumbnail_.get()));
   } else {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
   }

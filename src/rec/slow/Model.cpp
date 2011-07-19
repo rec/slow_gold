@@ -41,7 +41,8 @@ Model::Model(Instance* i) : HasInstance(i),
                             zoomLocker_(&lock_),
                             time_(0),
                             triggerPosition_(-1),
-                            loopData_(NULL) {
+                            loopData_(NULL),
+                            updateBuffer_(2, 1024) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
   thumbnailBuffer_.thumbnail()->addListener(&components()->waveform_);
@@ -63,9 +64,25 @@ thread::Result Model::fillOnce() {
       buffer->setNextFillPosition(fillList.begin()->first);
   }
 
-  buffer->fillNextBlock();
   if (triggerPosition_ != -1)
     jumpToSamplePosition(triggerPosition_);
+
+  int64 pos = buffer->position();
+  int64 filled = buffer->fillNextBlock();
+
+  if (CachedThumbnail* th = thumbnailBuffer_.thumbnail()) {
+    if (!th->cacheWritten()) {
+      AudioSourceChannelInfo info;
+      info.numSamples = filled;
+      info.buffer = &updateBuffer_;
+      updateBuffer_.setSize(2, filled, false, false, true);
+      FrameSource<short, 2> src(thumbnailBuffer_.buffer()->frames());
+      src.setNextReadPosition(pos);
+      src.getNextAudioBlock(info);
+      (*thumbnailBuffer_.thumbnail())(info);
+    }
+  }
+
   return thread::YIELD;
 }
 
