@@ -7,6 +7,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
+AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file);
 PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file);
 
 }  // namespace source

@@ -5,7 +5,7 @@
 
 namespace rec {
 
-class SamplePosition;
+struct SamplePosition;
 
 struct RealTime {
   RealTime() : time_(0) {}

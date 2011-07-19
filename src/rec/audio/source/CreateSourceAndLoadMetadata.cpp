@@ -14,6 +14,8 @@ namespace {
 
 typedef persist::Data<music::Metadata> Data;
 
+}  // namespace
+
 AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
   music::Metadata metadata;
   ptr<AudioFormatReader> reader;
@@ -51,16 +53,14 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
   return reader.transfer();
 }
 
-}  // namespace
-
 PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
   if (!empty(file)) {
     ptr<AudioFormatReader> reader(createReaderAndLoadMetadata(file));
     if (reader)
       return new AudioFormatReaderSource(reader.transfer(), true);
-
     LOG(ERROR) << "No reader for " << getFullDisplayName(file);
   }
+
   return NULL;
 }
 

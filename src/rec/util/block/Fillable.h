@@ -24,6 +24,7 @@ class Fillable {
   bool isFull() const;
   bool hasFilled(const Block& b) const;
   BlockSet filled() const { ScopedLock l(lock_); return filled_; }
+  void clear() { filled_.clear(); }
 
  protected:
   virtual Size doFillNextBlock(const Block& b) = 0;

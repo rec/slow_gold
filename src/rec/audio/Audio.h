@@ -41,6 +41,17 @@ inline void convertSample(const float& from, short* to) {
   // LOG_FIRST_N(INFO, 100) << from << " --->> " << *to << " (" << to << ")";
 }
 
+// A class to represent 24-bit integers.
+typedef struct int24 {
+  int value_;
+
+  int24(int value) : value_(value) {}
+  int24() {}
+
+  operator int() const { return value_; }
+  operator=(int value) { value_ = value; }
+};
+
 }  // namespace audio
 }  // namespace rec
 

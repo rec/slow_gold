@@ -3,9 +3,11 @@
 
 // #define COMPACT_BUFFERS
 
+#include "rec/audio/util/Frame.h"
+#include "rec/audio/util/GenericFillableBuffer.h"
+
 #ifdef COMPACT_BUFFERS
 
-#include "rec/audio/util/GenericFillableBuffer.h"
 
 #else
 

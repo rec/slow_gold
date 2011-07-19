@@ -60,7 +60,6 @@ class Model : public Listener<const VirtualFile&>,
   thread::Result fillOnce();
   void jumpToSamplePosition(SamplePosition p);
   void jumpToTime(RealTime t);
-  Switcher<ThumbnailBuffer>* thumbnailBuffer() { return &thumbnailBuffer_; }
   void toggleSelectionSegment(RealTime time);
   void setCursorTime(int index, RealTime time);
 

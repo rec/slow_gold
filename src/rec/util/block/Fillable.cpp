@@ -59,7 +59,11 @@ void Fillable::fillNextBlock() {
       LOG(ERROR) << "Getting an empty block";
       return;
     }
-    block.second = doFillNextBlock(block);
+    block.second = block.first + doFillNextBlock(block);
+    if (!block.size()) {
+      LOG(ERROR) << "Couldn't fill block";
+      return;
+    }
   }
 
   merge(block, &filled_);

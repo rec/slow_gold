@@ -1,75 +1,90 @@
 #ifndef __REC_AUDIO_UTIL_GENERIC_FILLABLE_BUFFER__
 #define __REC_AUDIO_UTIL_GENERIC_FILLABLE_BUFFER__
 
-#include "rec/util/listener/Listener.h"
-#include "rec/util/block/Fillable.h"
+#include "rec/base/SamplePosition.h"
 #include "rec/audio/util/Frame.h"
+#include "rec/util/block/Fillable.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace audio {
-
-namespace source { class BufferSource; }
-
 namespace util {
 
-// Stores two 16-bit samples in each word!
 template <typename Sample, int CHANNELS>
 class GenericFillableBuffer : public block::Fillable {
  public:
-  static const int DEFAULT_BLOCK_SIZE = 4096;
+  const static int BLOCK_SIZE = 4096;
 
-  GenericFillableBuffer(SamplePosition s = DEFAULT_BLOCK_SIZE)
-      : frames_(NULL), buffer_(CHANNELS, s) {
-    info_.buffer = &buffer_;
-    info_.startSample = 0;
+  GenericFillableBuffer(int blockSize = BLOCK_SIZE) : blockSize_(blockSize) {
+    for (int i = 0; i < CHANNELS; ++i) {
+      buffer_[i].set_size(blockSize);
+      bufferPointers_[i] = &buffer_[i][0];
+    }
   }
+
   virtual ~GenericFillableBuffer() {}
 
-  void setBlockSize(SamplePosition s) {
-    buffer_.setSize(CHANNELS, s);
-  }
-
-  void setSource(PositionableAudioSource* source) {
-    ScopedLock l(lock_);
-
-    SamplePosition size = source->getTotalLength();
-    setLength(size);
-    frames_.resize(size);
-    source_.reset(source);
-  }
-
-  virtual block::Size doFillNextBlock(const block::Block& b) {
-    ScopedLock l(lock_);
-    int blockSize = static_cast<int>(block::getSize(b));
-    info_.numSamples = juce::jmin(blockSize, buffer_.getNumSamples());
-    source_->setNextReadPosition(b.first);
-    source_->getNextAudioBlock(info_);
-
-    // Now copy it to our frame buffer.
-    for (SamplePosition i = 0; i < info_.numSamples; ++i) {
-      Frame<Sample, CHANNELS>* frame = &frames_[b.first + i];
-      for (int c = 0; c < CHANNELS; ++c)
-        convertSample(*buffer_.getSampleData(c, i), &frame->sample_[c]);
-    }
-    return b.first + info_.numSamples;
-  }
-
+  bool setReader(AudioFormatReader* reader);
+  virtual block::Size doFillNextBlock(const block::Block& b);
   const Frames<Sample, CHANNELS>& frames() const { return frames_; }
 
  protected:
-  // TODO:  re-enable this?
-  // virtual void onFilled() { source_.reset(); }
+  virtual void onFilled() { source_.reset(); }
 
  private:
-  Frames<Sample, CHANNELS> frames_;
-  ptr<PositionableAudioSource> source_;
-  AudioSampleBuffer buffer_;
-  AudioSourceChannelInfo info_;
+  void setBlockSize(SamplePosition s) { buffer_.setSize(CHANNELS, s); }
 
   CriticalSection lock_;
 
+  const SamplePosition blockSize_;
+  Frames<Sample, CHANNELS> frames_;
+  ptr<AudioFormatReader> reader_;
+  vector<int> buffer_[CHANNELS];
+  int* bufferPointers_[CHANNELS];
+
   DISALLOW_COPY_AND_ASSIGN(GenericFillableBuffer);
 };
+
+
+// Implementation
+//
+
+template <typename Sample, int CHANNELS>
+bool GenericFillableBuffer::setReader(AudioFormatReader* reader) {
+  ScopedLock l(lock_);
+
+  SamplePosition size = source->getTotalLength();
+  if (!frames_.realloc(size))
+    return false;
+
+  setLength(size);
+  reader_.reset(reader);
+  filled_.clear();
+  return true;
+}
+
+template <typename Sample, int CHANNELS>
+block::Size Generic::doFillNextBlock(const block::Block& b) {
+  ScopedLock l(lock_);
+
+  if (!reader_) {
+    LOG(ERROR) << "No reader!";
+    return 0;
+  }
+
+  SamplePosition size = std::min(block::getSize(b), blockSize_);
+  if (!reader->read(bufferPointers_, CHANNELS, b.begin, size, false)) {
+    LOG(ERROR) << "Reader failed to read!";
+    return 0;
+  }
+
+  for (int i = 0; i < size; ++i) {
+    for (int c = 0; c < CHANNELS; ++c)
+      copySample(bufferPointers_[c][i], frames_.frame()[i] + c);
+  }
+
+  return size;
+}
 
 }  // namespace util
 }  // namespace audio
