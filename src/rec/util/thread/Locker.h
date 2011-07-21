@@ -53,7 +53,7 @@ class Locker: public Listener<const Data&> {
   virtual void onChange() {}
 
  private:
-  CriticalSection* lock_;
+  CriticalSection* lock_;  // Obsolete, this whole class shouldn't lock anyway.
   Broadcaster<const Data&>* broadcaster_;
 
   Data data_;

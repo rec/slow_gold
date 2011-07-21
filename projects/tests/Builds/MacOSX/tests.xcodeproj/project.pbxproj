@@ -54,6 +54,7 @@
 		940334C0E5C118BE5E1DCBBB = { isa = PBXBuildFile; fileRef = AEF1ECD3BB37F9B7C362F6F3; };
 		A9B7D8CFCBF22D21B041A5FD = { isa = PBXBuildFile; fileRef = BC31EEA4D6A09C2CF25DAEDB; };
 		5D4D4674A0F2AAAEDE174654 = { isa = PBXBuildFile; fileRef = B53BD98BFA7B0A8DE275097B; };
+		8E828698792BC5DB5C73738E = { isa = PBXBuildFile; fileRef = 6D0C47387BFADE3830B2E8F6; };
 		F4CED3F664DE08FEDCDFC7D3 = { isa = PBXBuildFile; fileRef = B16984894FC73AA046536348; };
 		C6B30BADE42C339FBFE9B82C = { isa = PBXBuildFile; fileRef = 18874986A38F4E2E898C8CA8; };
 		44543472E0B355CC71A98294 = { isa = PBXBuildFile; fileRef = DDE92C556187932B314953E2; };
@@ -360,6 +361,7 @@
 		B53BD98BFA7B0A8DE275097B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CachedThumbnail.cpp; path = ../../../../src/rec/audio/util/CachedThumbnail.cpp; sourceTree = SOURCE_ROOT; };
 		8D87D581E5B34F40D25584C0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CachedThumbnail.h; path = ../../../../src/rec/audio/util/CachedThumbnail.h; sourceTree = SOURCE_ROOT; };
 		4A4471124D2AF269E1020925 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Clear.h; path = ../../../../src/rec/audio/util/Clear.h; sourceTree = SOURCE_ROOT; };
+		6D0C47387BFADE3830B2E8F6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ConvertSample.cpp; path = ../../../../src/rec/audio/util/ConvertSample.cpp; sourceTree = SOURCE_ROOT; };
 		514438A1E61C8A10B4D30888 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConvertSample.h; path = ../../../../src/rec/audio/util/ConvertSample.h; sourceTree = SOURCE_ROOT; };
 		B16984894FC73AA046536348 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CopySamples.cpp; path = ../../../../src/rec/audio/util/CopySamples.cpp; sourceTree = SOURCE_ROOT; };
 		324A7C457BA9409B99291156 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CopySamples.h; path = ../../../../src/rec/audio/util/CopySamples.h; sourceTree = SOURCE_ROOT; };
@@ -953,6 +955,7 @@
 				B53BD98BFA7B0A8DE275097B,
 				8D87D581E5B34F40D25584C0,
 				4A4471124D2AF269E1020925,
+				6D0C47387BFADE3830B2E8F6,
 				514438A1E61C8A10B4D30888,
 				B16984894FC73AA046536348,
 				324A7C457BA9409B99291156,
@@ -1582,7 +1585,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		1BDEB10A29B7EA45FE750623 = { isa = PBXGroup; children = (
+		D27CAC4F311104B213FF25E4 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1703,6 +1706,7 @@
 				940334C0E5C118BE5E1DCBBB,
 				A9B7D8CFCBF22D21B041A5FD,
 				5D4D4674A0F2AAAEDE174654,
+				8E828698792BC5DB5C73738E,
 				F4CED3F664DE08FEDCDFC7D3,
 				C6B30BADE42C339FBFE9B82C,
 				44543472E0B355CC71A98294,
@@ -1930,7 +1934,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 1BDEB10A29B7EA45FE750623; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = D27CAC4F311104B213FF25E4; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

@@ -1,4 +1,5 @@
 #include "rec/audio/util/FillableFrameBuffer.h"
+#include "rec/audio/util/ConvertSample.h"
 
 namespace rec {
 namespace audio {
@@ -44,11 +45,31 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
     return 0;
   }
 
-  typename Frames<Sample, CHANNELS>::Frame* frame = frames_.frames();
+  typename Frames<Sample, CHANNELS>::Frame* frame = frames_.frames() + b.first;
+
+#if 0
+  int32 max = std::numeric_limits<int32>::min();
+  int32 min = std::numeric_limits<int32>::max();
+  DLOG(INFO) << "? min: " << min << ", max: " << max;
+#endif
+
   for (int i = 0; i < size; ++i, ++frame) {
-    for (int c = 0; c < CHANNELS; ++c)
-      convertSample(bufferPointers_[c][i], &frame->sample_[c]);
+    for (int c = 0; c < CHANNELS; ++c) {
+      int32 sample = bufferPointers_[c][i];
+      convertSample<int32, Sample>(sample, &frame->sample_[c]);
+#if 0
+      max = std::max(sample, max);
+      min = std::min(sample, min);
+      DLOG_EVERY_N(INFO, 3000) << double(sample) / std::numeric_limits<int32>::max() << ", " << frame->sample_[c];
+#endif
+    }
   }
+
+#if 0
+  DLOG(INFO) << "min: " << min << ", max: " << max;
+  double m = std::numeric_limits<int32>::max();
+  DLOG(INFO) << "min: " << min / m << ", max: " << max / m;
+#endif
 
   return size;
 }

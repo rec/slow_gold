@@ -103,11 +103,13 @@ thread::Result directory(Instance* i) {
 void Threads::startAll() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
   fillThread_ = start(&fill, "Fill", Priority::FILL);
+
   bufferThread_ = start(&buffer, "Buffer", Priority::BUFFER);
   if (Buffered* b = player()->buffered())
     b->setNotifyThread(bufferThread_);
+
   start(&updateParameters, "Parameter", Priority::PARAMETER);
-  start(&directory, "directory", Priority::DIRECTORY);
+  start(&directory, "Directory", Priority::DIRECTORY);
 
   (*model()->fileLocker())(persist::get<VirtualFile>());
 }

@@ -26,7 +26,7 @@ class SourceWithPosition : public Source {
   virtual int64 getTotalLength() const = 0;
 
   virtual void setNextReadPosition(int64 p) {
-    position_ = mod(p, getTotalLength());
+    position_ = mod(p, std::max(1LL, getTotalLength()));
   }
 
   virtual int64 getNextReadPosition() const { return position_; };

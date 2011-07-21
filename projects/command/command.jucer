@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="bzkt5Ymgz" name="command">
+  <MAINGROUP id="Q0kgeAnxw" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -192,6 +192,8 @@
                 id="Hxu6gkrry" name="CachedThumbnail.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/Clear.h" id="BGkZlpa3Q"
                 name="Clear.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/util/ConvertSample.cpp"
+                id="ozFAsPXAe" name="ConvertSample.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/ConvertSample.h" id="jdtOpUO74"
                 name="ConvertSample.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/CopySamples.cpp" id="ohVQN4KPe"
@@ -1249,7 +1251,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="11MRF2hum" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="PQB4IHMlO" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

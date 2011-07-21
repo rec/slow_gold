@@ -8,21 +8,73 @@ namespace rec {
 namespace util {
 namespace thread {
 
+class LockerBase {
+ public:
+  LockerBase() : changed_(false) {}
+  virtual ~LockerBase() {}
+
+  void broadcastIfChanged() {
+    if (changed_)
+      broadcastData();
+    changed_ = false;
+  }
+
+  virtual void broadcastData() = 0;
+  virtual void update(const VirtualFile&) = 0;
+
+ protected:
+  bool changed_;
+};
+
+template <typename Proto>
+class ProtoLocker: public LockerBase,
+                   public Listener<const Proto&>,
+                   public Broadcaster<const Proto&> {
+ public:
+  ProtoLocker() : data_(NULL) {}
+  virtual ~ProtoLocker() {}
+
+  virtual void operator()(const Proto& proto) { set(proto); }
+  virtual void broadcastData() { broadcast(proto_); }
+
+  void set(const Proto& d) { proto_ = proto; changed_ = true; }
+  const Proto get() { return proto_; }
+
+  virtual void update(const VirtualFile& file) {
+    if (data_)
+      data_->removeListener(this);
+
+    data_ = persist::setter<Proto>(file);
+
+    if (data_)
+      data_->addListener(this);
+  }
+
+ private:
+  Proto proto_;
+  persist::Data<Proto>* data_;
+
+  DISALLOW_COPY_AND_ASSIGN(ProtoLocker);
+};
+
+void ProtoLocker<VirtualFile>::update(const VirtualFile&) {}  // Do nothing.
+
 class MultiLocker {
  public:
   MultiLocker() {}
   ~MultiLocker() { stl::deleteMapPointers(&map_); }
 
-  void broadcastIfSet() {
+  void broadcastIfChanged() {
     ScopedLock l(lock_);
     for (LockerMap::iterator i = map_.begin(); i != map_.end(); ++i)
-      i->second->broadcastIfSet();
+      i->second->broadcastIfChanged();
   }
 
-  template <typename Proto>
-  void listenTo(Broadcaster<const Proto&>* b) {
+  void update(const VirtualFile& file) {
     ScopedLock l(lock_);
-    getLocker<Proto>()->listenTo(b);
+    file_ = file;
+    for (LockerMap::iterator i = map_.begin(); i != map_.end(); ++i)
+      i->second->update(file);
   }
 
   template <typename Proto>
@@ -38,25 +90,35 @@ class MultiLocker {
   }
 
   template <typename Proto>
-  persist::Data<Proto>* update(const VirtualFile& file) {
-    persist::Data<Proto>* data = persist::setter<Proto>(file);
-    Locker<Proto>* locker = getLocker<Proto>();
-    locker->listenTo(data);
-    (*locker)(data->get());
-
-    return data;
+  void set(const Proto& proto) const {
+    ScopedLock l(lock_);
+    getLocker<Proto>()->set(proto);
   }
 
  protected:
   template <typename Proto>
-  Locker<Proto>* getLocker() const {
-    return stl::getOrCreate< Locker<Proto> >(&map_, Proto().GetTypeName());
+  ProtoLocker<Proto>* getLocker() const {
+    typedef ProtoLocker<Proto> Locker;
+    const string& protoName = Proto().GetTypeName();
+
+    ScopedLock l(lock_);
+    LockerMap::iterator i = map_.find(protoName);
+    if (i == map_.end())
+      return dynamic_cast<Locker>(i->second);
+
+    Locker* locker = new Locker();
+    locker->update(file);
+    map_[protoName] = locker;
+
+    return locker;
   }
 
  private:
   typedef std::map<string, LockerBase*> LockerMap;
-  mutable LockerMap map_;
+
   CriticalSection lock_;
+  VirtualFile file_;
+  mutable LockerMap map_;
 
   DISALLOW_COPY_AND_ASSIGN(MultiLocker);
 };

@@ -45,7 +45,6 @@ Model::Model(Instance* i) : HasInstance(i),
                             updateBuffer_(2, 1024) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
-  thumbnailBuffer_.thumbnail()->addListener(&components()->waveform_);
 }
 
 thread::Result Model::fillOnce() {
@@ -71,10 +70,12 @@ thread::Result Model::fillOnce() {
   int64 filled = buffer->fillNextBlock();
 
   if (CachedThumbnail* th = thumbnailBuffer_.thumbnail()) {
+    components()->waveform_(th->thumbnail());
     if (!th->cacheWritten()) {
       AudioSourceChannelInfo info;
       info.numSamples = filled;
       info.buffer = &updateBuffer_;
+      info.startSample = 0;
       updateBuffer_.setSize(2, filled, false, false, true);
       FrameSource<short, 2> src(thumbnailBuffer_.buffer()->frames());
       src.setNextReadPosition(pos);
@@ -117,19 +118,24 @@ void Model::zoom(RealTime time, double k) {
 }
 
 void Model::operator()(const LoopPointList& loops) {
-  timeSelection_ = audio::getTimeSelection(loops, player()->length());
-  player()->setSelection(timeSelection_);
-  BlockSet::const_iterator i = timeSelection_.begin();
   components()->waveform_(loops);
   components()->loops_(loops);
-  for (; i != timeSelection_.end(); ++i) {
-    if (time_ < i->second) {
-      if (time_ < i->first)
-        jumpToSamplePosition(i->first);
-      return;
+
+  timeSelection_ = audio::getTimeSelection(loops, player()->length());
+  player()->setSelection(timeSelection_);
+  if (timeSelection_.empty()) {
+    DLOG(ERROR) << "Empty selection";
+  } else {
+    BlockSet::const_iterator i = timeSelection_.begin();
+    for (; i != timeSelection_.end(); ++i) {
+      if (time_ < i->second) {
+        if (time_ < i->first)
+          jumpToSamplePosition(i->first);
+        return;
+      }
     }
+    jumpToSamplePosition(timeSelection_.begin()->first);
   }
-  jumpToSamplePosition(timeSelection_.begin()->first);
 }
 
 namespace {
@@ -179,9 +185,12 @@ void Model::operator()(const VirtualFile& f) {
 
 #ifdef COMPACT_BUFFERS
   const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
+  // DLOG(INFO) << &frames;
   PositionableAudioSource* s = new FrameSource<short, 2>(frames);
+
   player()->setSource(s, stretchLocker_.get(),
                       stereoLocker_.get(), timeSelection_);
+
 #else
   player()->setSource(new BufferSource(*buffer->buffer()), stretchLocker_.get(),
                       stereoLocker_.get(), timeSelection_);

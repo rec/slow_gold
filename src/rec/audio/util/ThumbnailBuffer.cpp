@@ -18,9 +18,9 @@ void ThumbnailBuffer::setReader(const VirtualFile& f) {
   ptr<AudioFormatReader> reader(source::createReaderAndLoadMetadata(f));
   if (reader) {
     File shadow = getShadowFile(f, "thumbnail.stream");
-    int len = reader->lengthInSamples;
     static source::RunnyProto d;
-    thumbnail_.reset(new CachedThumbnail(shadow, d.compression(), len));
+    thumbnail_.reset(new CachedThumbnail(shadow, d.compression(), reader->lengthInSamples));
+    buffer_.setReader(reader.transfer());
   } else {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
   }
@@ -29,7 +29,10 @@ void ThumbnailBuffer::setReader(const VirtualFile& f) {
 ThumbnailBuffer::ThumbnailBuffer() {}
 
 void ThumbnailBuffer::writeThumbnail() {
-  thumbnail_->writeThumbnail();
+  if (thumbnail_)
+    thumbnail_->writeThumbnail();
+  else
+    LOG(ERROR) << "Writing an empty thumbnail";
 }
 
 }  // namespace util
