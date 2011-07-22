@@ -11,7 +11,6 @@
 #include "rec/slow/LoopCommands.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Position.h"
-#include "rec/slow/Selections.h"
 #include "rec/slow/TargetCommands.h"
 #include "rec/util/Math.h"
 #include "rec/util/cd/Eject.h"
@@ -23,6 +22,15 @@ using rec::command::Command;
 
 namespace rec {
 namespace slow {
+
+namespace {
+
+// TODO: move out of here.
+void addLoopPoint(Instance* i) {
+  i->components_->loops_.addLoopPoint(i->player_->getTime());
+}
+
+}
 
 Target::Target(Instance* i)
     : HasInstance(i),

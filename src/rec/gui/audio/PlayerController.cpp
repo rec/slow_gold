@@ -2,6 +2,7 @@
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
+using rec::audio::Gain;
 
 static const bool ENABLE_SHIFTS = false;
 
@@ -75,7 +76,8 @@ PlayerController::PlayerController()
 }
 
 void PlayerController::onDataChange(const Stretch& s) {
-  thread::callAsync(this, &PlayerController::enableSliders, !s.time_disabled());
+  juce::MessageManagerLock l;
+  enableSliders(!s.time_disabled());
 }
 
 void PlayerController::onDataChange(const StereoProto& stereo) {
@@ -94,6 +96,18 @@ void PlayerController::onDataChange(const rec::audio::Gain& gain) {
   level_.slider()->setEnabled(!(mute || dim));
   muteButton_.setEnabled(mute || !dim);
   dimButton_.setEnabled(!mute || dim);
+}
+
+void PlayerController::setData(persist::Data<Stretch>* d) {
+  DataListener<Stretch>::setData(d);
+  playbackSpeed_.setData(d);
+  pitchScale_.setData(d);
+  fineScale_.setData(d);
+}
+
+void PlayerController::setData(persist::Data<Gain>* d) {
+  DataListener<Gain>::setData(d);
+  level_.setData(d);
 }
 
 void PlayerController::comboBoxChanged(juce::ComboBox* box) {

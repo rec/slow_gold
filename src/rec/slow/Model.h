@@ -62,8 +62,6 @@ class Model : public Listener<const VirtualFile&>,
   bool empty() const { return file::empty(file()); }
   const SampleSelection& timeSelection() const { return timeSelection_; }
 
-  thread::Locker<LoopPointList>* loopLocker() { return &loopLocker_; }
-
  private:
   CriticalSection lock_;
 

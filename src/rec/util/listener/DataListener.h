@@ -42,7 +42,7 @@ class DataListener : public Listener<const Proto&>,
     return proto_;
   }
 
- private:
+ protected:
   virtual void setData(persist::Data<Proto>* d) {
     if (data_ != d) {
       if (data_)
@@ -52,7 +52,7 @@ class DataListener : public Listener<const Proto&>,
 
       if (data_) {
         data_->addListener(this);
-        (*this)(data_->get());  // TODO:  is this OK?
+        (*this)(data_->get());
       }
     }
   }
