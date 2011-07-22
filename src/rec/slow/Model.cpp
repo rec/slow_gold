@@ -30,7 +30,6 @@ static const int PARAMETER_WAIT = 1000;
 static const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
-                            fileLocker_(&lock_),
                             gainLocker_(&lock_),
                             loopLocker_(&lock_),
                             metadataLocker_(&lock_),
@@ -41,7 +40,6 @@ Model::Model(Instance* i) : HasInstance(i),
                             triggerPosition_(-1),
                             loopData_(NULL),
                             updateBuffer_(2, 1024) {
-  // persist::setter<VirtualFile>()->addListener(&fileLocker_);
   persist::setter<VirtualFile>()->addListener(this);
 
   player()->timeBroadcaster()->addListener(this);
@@ -201,15 +199,10 @@ void Model::operator()(const LoopPointList& loops) {
   }
 }
 
-
 void Model::checkChanged() {
-  // fileLocker_.broadcastIfChanged(this); // TODO
-
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(this);
   stereoLocker_.broadcastIfChanged(listeners());
-  gainLocker_.broadcastIfChanged(listeners());
-  // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }
 

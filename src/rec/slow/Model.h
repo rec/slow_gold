@@ -63,7 +63,6 @@ class Model : public Listener<const VirtualFile&>,
  private:
   CriticalSection lock_;
 
-  thread::Locker<VirtualFile> fileLocker_;
   VirtualFile file_;
 
   thread::Locker<Gain> gainLocker_;

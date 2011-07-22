@@ -1,6 +1,5 @@
 #include "rec/slow/Listeners.h"
 #include "rec/audio/stretch/Stretch.pb.h"
-#include "rec/audio/util/Gain.h"
 #include "rec/data/Data.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
@@ -13,7 +12,6 @@
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 #include "rec/util/file/VirtualFile.h"
-#include "rec/util/Mode.pb.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/MakeCallback.h"
 #include "rec/widget/waveform/Cursor.h"
@@ -68,12 +66,6 @@ void Listeners::operator()(const StereoProto& x) {
 
 void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
-}
-
-void Listeners::operator()(const audio::Gain& g) {
-  float gain = audio::getGain(g);
-  player()->setGain(gain);
-  components()->playerController_.levelMeter()->setGain(gain);
 }
 
 void Listeners::operator()(const gui::DropFiles& dropFiles) {
