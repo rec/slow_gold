@@ -6,6 +6,7 @@
 #include "rec/base/RealTime.h"
 #include "rec/util/LoopPoint.pb.h"
 #include "rec/gui/component/Focusable.h"
+#include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
@@ -29,6 +30,7 @@ class Waveform : public gui::component::Focusable<Component>,
                  public Listener<juce::AudioThumbnail*>,
                  public Listener<const LoopPointList&>,
                  public DataListener<ZoomProto>,
+                 public DataListener<Mode>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&>,
                  public Broadcaster<const TimeSelection&> {
@@ -49,6 +51,7 @@ class Waveform : public gui::component::Focusable<Component>,
   virtual void operator()(juce::AudioThumbnail* t) { setAudioThumbnail(t); }
   virtual void operator()(const LoopPointList&);
   virtual void onDataChange(const ZoomProto&);
+  virtual void onDataChange(const Mode&);
 
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();

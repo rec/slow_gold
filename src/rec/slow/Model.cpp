@@ -34,7 +34,6 @@ Model::Model(Instance* i) : HasInstance(i),
                             gainLocker_(&lock_),
                             loopLocker_(&lock_),
                             metadataLocker_(&lock_),
-                            modeLocker_(&lock_),
                             stereoLocker_(&lock_),
                             stretchLocker_(&lock_),
                             zoomLocker_(&lock_),
@@ -85,7 +84,6 @@ void Model::operator()(const VirtualFile& f) {
   loopData_ = updateLocker(&loopLocker_, f);
   components()->loops_.setData(loopData_);
   updateLocker(&gainLocker_, f);
-  updateLocker(&modeLocker_, f);
   updateLocker(&stereoLocker_, f);
   updateLocker(&stretchLocker_, f);
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
@@ -211,7 +209,6 @@ void Model::checkChanged() {
   loopLocker_.broadcastIfChanged(this);
   stereoLocker_.broadcastIfChanged(listeners());
   gainLocker_.broadcastIfChanged(listeners());
-  modeLocker_.broadcastIfChanged(listeners());
   // metadataLocker_.broadcastIfChanged(&components()->songData_);
   zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }

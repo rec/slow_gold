@@ -175,6 +175,24 @@ void Waveform::onDataChange(const ZoomProto& zp) {
   resized();
 }
 
+const juce::MouseCursor::StandardCursorType getCursor(const Mode& mode) {
+  using juce::MouseCursor;
+  switch (mode.click()) {
+    case Mode::DRAG:              return MouseCursor::DraggingHandCursor;
+    case Mode::DRAW_LOOP_POINTS:  return MouseCursor::IBeamCursor;
+    case Mode::SET_TIME:          return MouseCursor::CrosshairCursor;
+    case Mode::TOGGLE_SELECTION:  return MouseCursor::PointingHandCursor;
+    case Mode::ZOOM_IN:
+    case Mode::ZOOM_OUT:          return MouseCursor::UpDownLeftRightResizeCursor;
+    default:                      return MouseCursor::NormalCursor;
+  }
+}
+
+void Waveform::onDataChange(const Mode& mode) {
+  ScopedLock l(lock_);
+  setMouseCursor(getCursor(mode));
+}
+
 void Waveform::layoutCursors() {
   ScopedLock l(lock_);
   for (int i = getNumChildComponents(); i > 0; --i) {

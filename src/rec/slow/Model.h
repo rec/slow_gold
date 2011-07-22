@@ -69,7 +69,6 @@ class Model : public Listener<const VirtualFile&>,
   thread::Locker<Gain> gainLocker_;
   thread::Locker<LoopPointList> loopLocker_;
   thread::Locker<Metadata> metadataLocker_;
-  thread::Locker<Mode> modeLocker_;
   thread::Locker<StereoProto> stereoLocker_;
   thread::Locker<Stretch> stretchLocker_;
   thread::Locker<ZoomProto> zoomLocker_;
