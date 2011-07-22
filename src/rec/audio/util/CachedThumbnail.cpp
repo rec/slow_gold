@@ -34,15 +34,12 @@ void CachedThumbnail::setFile(const File& file, int length) {
   }
 }
 
-
 void CachedThumbnail::addListener(Listener<juce::AudioThumbnail*>* listener) {
   Broadcaster<juce::AudioThumbnail*>::addListener(listener);
   (*listener)(thumbnail_.get());
 }
 
-CachedThumbnail::~CachedThumbnail() {
-  // writeThumbnail();
-}
+CachedThumbnail::~CachedThumbnail() {}
 
 void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
   thumbnail_->addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);

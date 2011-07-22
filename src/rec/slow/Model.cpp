@@ -80,7 +80,7 @@ thread::Result Model::fillOnce() {
       FrameSource<short, 2> src(thumbnailBuffer_.buffer()->frames());
       src.setNextReadPosition(pos);
       src.getNextAudioBlock(info);
-      (*thumbnailBuffer_.thumbnail())(info);
+      (*th)(info);
     }
   }
 

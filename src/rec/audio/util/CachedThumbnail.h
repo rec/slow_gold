@@ -15,7 +15,6 @@ class CachedThumbnail : public Listener<const AudioSourceChannelInfo&>,
 
   void setFile(const File& file, int sampleLength);
 
-  juce::AudioThumbnail* thumbnail() { return thumbnail_.get(); }
   virtual void addListener(Listener<juce::AudioThumbnail*>*);
 
   // Update the thumbnail here.
@@ -23,6 +22,7 @@ class CachedThumbnail : public Listener<const AudioSourceChannelInfo&>,
 
   void writeThumbnail();
   bool cacheWritten() const { return cacheWritten_; }
+  juce::AudioThumbnail* thumbnail() { return thumbnail_.get(); }
 
  private:
   File file_;
