@@ -166,7 +166,13 @@ void Model::operator()(const VirtualFile& f) {
       waveform->setAudioThumbnail(NULL);
       return;
     }
-    waveform->setAudioThumbnail(thumbnailBuffer_.thumbnail()->thumbnail());
+    CachedThumbnail* th = thumbnailBuffer_.thumbnail();
+    if (th) {
+      waveform->setAudioThumbnail(th->thumbnail());
+      th->addListener(waveform);
+    } else {
+      waveform->setAudioThumbnail(NULL);
+    }    
   }
   components()->directoryTree_.refreshNode(file_);
   file_ = f;
