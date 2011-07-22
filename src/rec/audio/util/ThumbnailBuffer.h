@@ -34,7 +34,6 @@ class ThumbnailBuffer : public Listener<const AudioSourceChannelInfo&>,
 
  private:
   File file_;
-
   juce::AudioThumbnailCache cache_;
   bool cacheWritten_;
   juce::AudioThumbnail thumbnail_;

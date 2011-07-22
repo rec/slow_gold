@@ -47,6 +47,72 @@ Model::Model(Instance* i) : HasInstance(i),
   thumbnailBuffer_.addListener(&components()->waveform_);
 }
 
+namespace {
+
+template <typename Proto>
+persist::Data<Proto>* updateLocker(thread::Locker<Proto>* locker,
+                                   const VirtualFile& file) {
+  persist::Data<Proto>* s = persist::setter<Proto>(file);
+  locker->listenTo(s);
+  locker->set(s->get());
+  return s;
+}
+
+}  // namespace
+
+void Model::operator()(const VirtualFile& f) {
+  player()->setState(audio::transport::STOPPED);
+  player()->timeBroadcaster()->broadcast(0);
+  player()->clearSource();
+
+  ScopedLock l(lock_);
+  {
+    Waveform* waveform = &components()->waveform_;
+    ScopedLock l(*waveform->lock());
+    if (!thumbnailBuffer_.setReader(f)) {
+      LOG(ERROR) << "Couldn't set reader for "
+                 << getFullDisplayName(f);
+      waveform->setAudioThumbnail(NULL);
+      return;
+    }
+    waveform->setAudioThumbnail(thumbnailBuffer_.thumbnail());
+  }
+  components()->directoryTree_.refreshNode(file_);
+  file_ = f;
+
+  loopData_ = updateLocker(&loopLocker_, f);
+  components()->loops_.setData(loopData_);
+  player()->setData(updateLocker(&gainLocker_, f));
+  components()->playerController_.modeSelector()->setData(updateLocker(&modeLocker_, f));
+  components()->playerController_.setData(updateLocker(&stereoLocker_, f));
+  components()->playerController_.setData(updateLocker(&stretchLocker_, f));
+  components()->songData_.setData(updateLocker(&metadataLocker_, f));
+  components()->playerController_.setData(persist::setter<rec::audio::Gain>(f));
+  updateLocker(&zoomLocker_, f);
+
+  if (empty())
+    return;
+
+  LoopPointList loop = loopData_->get();
+  if (!loop.loop_point_size()) {
+    loop.add_loop_point()->set_selected(true);
+    data::set(loopData_, loop);
+  }
+
+  loopLocker_.set(loop);
+
+  const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
+  PositionableAudioSource* s = new FrameSource<short, 2>(frames);
+
+  player()->setSource(s, stretchLocker_.get(),
+                      stereoLocker_.get(), timeSelection_);
+
+  // player()->setStretch(stretchLocker_.get());
+  threads()->fillThread()->notify();
+  player()->setNextReadPosition(0);
+  (*components()->playerController_.levelListener())(LevelVector());
+}
+
 thread::Result Model::fillOnce() {
   ScopedLock l(lock_);
   ThumbnailFillableBuffer* buffer = thumbnailBuffer_.buffer();
@@ -134,72 +200,6 @@ void Model::operator()(const LoopPointList& loops) {
     }
     jumpToSamplePosition(timeSelection_.begin()->first);
   }
-}
-
-namespace {
-
-template <typename Proto>
-persist::Data<Proto>* updateLocker(thread::Locker<Proto>* locker,
-                                   const VirtualFile& file) {
-  persist::Data<Proto>* s = persist::setter<Proto>(file);
-  locker->listenTo(s);
-  locker->set(s->get());
-  return s;
-}
-
-}  // namespace
-
-void Model::operator()(const VirtualFile& f) {
-  player()->setState(audio::transport::STOPPED);
-  player()->timeBroadcaster()->broadcast(0);
-  player()->clearSource();
-
-  ScopedLock l(lock_);
-  {
-    Waveform* waveform = &components()->waveform_;
-    ScopedLock l(*waveform->lock());
-    if (!thumbnailBuffer_.setReader(f)) {
-      LOG(ERROR) << "Couldn't set reader for "
-                 << getFullDisplayName(f);
-      waveform->setAudioThumbnail(NULL);
-      return;
-    }
-    waveform->setAudioThumbnail(thumbnailBuffer_.thumbnail());
-  }
-  components()->directoryTree_.refreshNode(file_);
-  file_ = f;
-
-  loopData_ = updateLocker(&loopLocker_, f);
-  components()->loops_.setData(loopData_);
-  player()->setData(updateLocker(&gainLocker_, f));
-  components()->playerController_.modeSelector()->setData(updateLocker(&modeLocker_, f));
-  components()->playerController_.setData(updateLocker(&stereoLocker_, f));
-  components()->playerController_.setData(updateLocker(&stretchLocker_, f));
-  components()->songData_.setData(updateLocker(&metadataLocker_, f));
-  components()->playerController_.setData(persist::setter<rec::audio::Gain>(f));
-  updateLocker(&zoomLocker_, f);
-
-  if (empty())
-    return;
-
-  LoopPointList loop = loopData_->get();
-  if (!loop.loop_point_size()) {
-    loop.add_loop_point()->set_selected(true);
-    data::set(loopData_, loop);
-  }
-
-  loopLocker_.set(loop);
-
-  const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
-  PositionableAudioSource* s = new FrameSource<short, 2>(frames);
-
-  player()->setSource(s, stretchLocker_.get(),
-                      stereoLocker_.get(), timeSelection_);
-
-  // player()->setStretch(stretchLocker_.get());
-  threads()->fillThread()->notify();
-  player()->setNextReadPosition(0);
-  (*components()->playerController_.levelListener())(LevelVector());
 }
 
 

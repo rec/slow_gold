@@ -45,11 +45,6 @@ class Model : public Listener<const VirtualFile&>,
   virtual void operator()(SamplePosition t) { ScopedLock l(lock_); time_ = t; }
   virtual void operator()(const LoopPointList&);
 
-  thread::Locker<Gain>* gainLocker() { return &gainLocker_; }
-  thread::Locker<VirtualFile>* fileLocker() { return &fileLocker_; }
-  thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
-  thread::Locker<LoopPointList>* loopLocker() { return &loopLocker_; }
-
   const Mode mode() { return modeLocker_.get(); }
 
   void zoom(RealTime time, double k);
@@ -66,6 +61,10 @@ class Model : public Listener<const VirtualFile&>,
   const VirtualFile file() const { ScopedLock l(lock_); return file_; }
   bool empty() const { return file::empty(file()); }
   const SampleSelection& timeSelection() const { return timeSelection_; }
+
+  thread::Locker<Gain>* gainLocker() { return &gainLocker_; }
+  thread::Locker<ZoomProto>* zoomLocker() { return &zoomLocker_; }
+  thread::Locker<LoopPointList>* loopLocker() { return &loopLocker_; }
 
  private:
   CriticalSection lock_;

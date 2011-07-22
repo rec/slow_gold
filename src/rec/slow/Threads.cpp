@@ -110,8 +110,6 @@ void Threads::startAll() {
 
   start(&updateParameters, "Parameter", Priority::PARAMETER);
   start(&directory, "Directory", Priority::DIRECTORY);
-
-  (*model()->fileLocker())(persist::get<VirtualFile>());
 }
 
 }  // namespace slow

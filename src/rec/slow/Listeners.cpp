@@ -120,10 +120,10 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 }
 
 void Listeners::operator()(const VirtualFileList& list) {
-  if (list.file_size() != 1)
+  if (list.file_size() < 1)
     LOG(ERROR) << "file size=" << list.file_size();
   else
-    model()->fileLocker()->set(list.file(0));
+    persist::set(list.file(0));
 }
 
 void Listeners::operator()(audio::transport::State state) {

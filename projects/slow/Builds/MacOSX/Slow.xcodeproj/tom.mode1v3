@@ -202,25 +202,25 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>E263557113D9EE3B002B0191</string>
+				<string>E26355A513D9F13F002B0191</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>ThumbnailBuffer.h</string>
+				<string>Listeners.h</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>E263557213D9EE3B002B0191</string>
+						<string>E26355A613D9F13F002B0191</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>ThumbnailBuffer.h</string>
+						<string>Listeners.h</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>E263558B13D9EF38002B0191</string>
+						<string>E26355C513D9F313002B0191</string>
 						<key>history</key>
 						<array>
-							<string>E263557313D9EE3B002B0191</string>
-							<string>E263557413D9EE3B002B0191</string>
+							<string>E26355A713D9F13F002B0191</string>
+							<string>E26355A813D9F13F002B0191</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -236,7 +236,7 @@
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>61 241 1119 890 0 0 1920 1178 </string>
+				<string>686 241 1119 890 0 0 1920 1178 </string>
 			</dict>
 		</dict>
 	</array>
@@ -372,7 +372,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E263558A13D9EF38002B0191</string>
+										<string>E26355C413D9F313002B0191</string>
 										<key>history</key>
 										<array>
 											<string>E288C2BC12EB70A400AAB106</string>
@@ -678,13 +678,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E263558C13D9EF38002B0191</string>
+		<string>E26355C613D9F313002B0191</string>
 		<string>E263557E13D9EE3B002B0191</string>
 		<string>E263557F13D9EE3B002B0191</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
-		<string>E263557113D9EE3B002B0191</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>E26355A513D9F13F002B0191</string>
 		<string>E290FED3120A432900532309</string>
 	</array>
 	<key>WindowString</key>
@@ -711,7 +711,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ThumbnailBuffer.cpp</string>
+								<string>Threads.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -906,7 +906,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1016,6 +1016,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1028,7 +1030,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1069, 998}}</string>
 								<key>RubberWindowFrame</key>
-								<string>964 61 1069 1039 0 0 1920 1178 </string>
+								<string>663 139 1069 1039 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -1057,11 +1059,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>964 61 1069 1039 0 0 1920 1178 </string>
+			<string>663 139 1069 1039 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

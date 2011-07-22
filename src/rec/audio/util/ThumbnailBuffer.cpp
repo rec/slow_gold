@@ -29,6 +29,7 @@ void ThumbnailBuffer::addListener(Listener<juce::AudioThumbnail*>* listener) {
 }
 
 void ThumbnailBuffer::operator()(const AudioSourceChannelInfo& i) {
+  LOG_FIRST_N(INFO, 20) << "here!";
   thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
   broadcast(&thumbnail_);
 }
@@ -36,7 +37,7 @@ void ThumbnailBuffer::operator()(const AudioSourceChannelInfo& i) {
 void ThumbnailBuffer::writeThumbnail() {
   if (!thumbnail_.getTotalLength()) {
     DLOG(ERROR) << "writing empty cache";
-    
+
   } else if (!cacheWritten_) {
     cacheWritten_ = true;
     ptr<juce::FileOutputStream> out(file_.createOutputStream());

@@ -24,6 +24,7 @@ Instance::Instance(DocumentWindow* window)
       threads_(new Threads(this)) {
   target_->addCommands();
   threads_->startAll();
+  (*model_)(persist::get<VirtualFile>());
 }
 
 Instance::~Instance() {
