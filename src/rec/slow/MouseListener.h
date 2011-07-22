@@ -28,7 +28,7 @@ class MouseListener : public HasInstance,
   virtual void mouseUp(const MouseEvent&);
   virtual void operator()(const widget::waveform::MouseWheelEvent&);
   virtual void setMode(const Mode& m) { mode_ = m; }
-  virtual void operator()(const ZoomProto&) {}
+  virtual void onDataChange(const ZoomProto&) {}
 
  private:
   Mode::Action getClickAction(const MouseEvent&);

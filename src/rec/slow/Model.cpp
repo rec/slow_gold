@@ -84,12 +84,11 @@ void Model::operator()(const VirtualFile& f) {
 
   loopData_ = updateLocker(&loopLocker_, f);
   components()->loops_.setData(loopData_);
-  player()->setData(updateLocker(&gainLocker_, f));
-  components()->playerController_.modeSelector()->setData(updateLocker(&modeLocker_, f));
-  components()->playerController_.setData(updateLocker(&stereoLocker_, f));
-  components()->playerController_.setData(updateLocker(&stretchLocker_, f));
+  updateLocker(&gainLocker_, f);
+  updateLocker(&modeLocker_, f);
+  updateLocker(&stereoLocker_, f);
+  updateLocker(&stretchLocker_, f);
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
-  components()->playerController_.setData(persist::setter<rec::audio::Gain>(f));
   updateLocker(&zoomLocker_, f);
 
   if (empty())

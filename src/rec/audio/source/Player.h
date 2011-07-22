@@ -55,7 +55,7 @@ class Player : public Broadcaster<transport::State>,
   void setStereoProto(const StereoProto&);
   void setSelection(const block::BlockSet&);
 
-  virtual void operator()(const Gain& p) { setGain(p); }
+  virtual void onDataChange(const Gain& p) { setGain(p); }
   void setGain(const Gain&);
   void setGain(double);
 

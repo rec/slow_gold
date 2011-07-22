@@ -48,7 +48,7 @@ class Waveform : public gui::component::Focusable<Component>,
   virtual void repaint() { Component::repaint(); }
   virtual void operator()(juce::AudioThumbnail* t) { setAudioThumbnail(t); }
   virtual void operator()(const LoopPointList&);
-  virtual void operator()(const ZoomProto&);
+  virtual void onDataChange(const ZoomProto&);
 
   Cursor* timeCursor() { return timeCursor_; }
   void layoutCursors();

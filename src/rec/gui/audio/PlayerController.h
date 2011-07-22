@@ -25,14 +25,9 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
 
   virtual bool isOpaque() const { return true; }
 
-  virtual void setData(persist::Data<rec::audio::stretch::Stretch>*);
-  virtual void operator()(const rec::audio::stretch::Stretch&);
-
-  virtual void setData(persist::Data<rec::audio::source::StereoProto>*);
-  virtual void operator()(const rec::audio::source::StereoProto&);
-
-  virtual void setData(persist::Data<rec::audio::Gain>*);
-  virtual void operator()(const rec::audio::Gain&);
+  virtual void onDataChange(const rec::audio::stretch::Stretch&);
+  virtual void onDataChange(const rec::audio::source::StereoProto&);
+  virtual void onDataChange(const rec::audio::Gain&);
 
   void setZoom(data::UntypedData* zoom);
   void enableSliders(bool enabled);

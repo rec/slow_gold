@@ -11,7 +11,8 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-class ModeSelector : public Layout, public juce::Button::Listener,
+class ModeSelector : public Layout,
+                     public juce::Button::Listener,
                      public DataListener<Mode> {
  public:
   ModeSelector();
@@ -20,7 +21,7 @@ class ModeSelector : public Layout, public juce::Button::Listener,
   virtual void buttonClicked(juce::Button* button);
   virtual bool isOpaque() const { return true; }
 
-  virtual void operator()(const Mode&);
+  virtual void onDataChange(const Mode&);
   DrawableButton* getButton(const Mode::Action&);
 
  private:

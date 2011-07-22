@@ -29,9 +29,20 @@ class DataListener : public Listener<const Proto&>,
     setData(persist::setter<Proto>(file));
   }
 
-  virtual void operator()(const Proto&) = 0;
+  virtual void operator()(const Proto& p) {
+    {
+      ScopedLock l(lock_);
+      proto_ = p;
+    }
+    onDataChange(p);
+  }
 
-// private:
+  const Proto get() const {
+    ScopedLock l(lock_);
+    return proto_;
+  }
+
+ private:
   virtual void setData(persist::Data<Proto>* d) {
     if (data_ != d) {
       if (data_)
@@ -47,10 +58,13 @@ class DataListener : public Listener<const Proto&>,
   }
 
  protected:
+  virtual void onDataChange(const Proto&) = 0;
+
+  CriticalSection lock_;
   persist::Data<Proto>* data_;
+  Proto proto_;
 
  private:
-
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
 

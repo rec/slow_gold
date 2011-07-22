@@ -74,24 +74,11 @@ PlayerController::PlayerController()
   addToLayout(&levelMeter_);
 }
 
-void PlayerController::setData(persist::Data<Stretch>* data) {
-  playbackSpeed_.setData(data);
-  pitchScale_.setData(data);
-  fineScale_.setData(data);
-  disableButton_.setData(data);
-
-  DataListener<Stretch>::setData(data);
-}
-
-void PlayerController::operator()(const Stretch& s) {
+void PlayerController::onDataChange(const Stretch& s) {
   thread::callAsync(this, &PlayerController::enableSliders, !s.time_disabled());
 }
 
-void PlayerController::setData(persist::Data<StereoProto>* data) {
-  DataListener<StereoProto>::setData(data);
-}
-
-void PlayerController::operator()(const StereoProto& stereo) {
+void PlayerController::onDataChange(const StereoProto& stereo) {
   Sides sides = STEREO;
   if (stereo.type())
     sides = static_cast<Sides>(2 + stereo.side());
@@ -100,15 +87,7 @@ void PlayerController::operator()(const StereoProto& stereo) {
                     static_cast<int>(sides), true);
 }
 
-void PlayerController::setData(persist::Data<rec::audio::Gain>* data) {
-  muteButton_.setData(data);
-  dimButton_.setData(data);
-  level_.setData(data);
-
-  DataListener<rec::audio::Gain>::setData(data);
-}
-
-void PlayerController::operator()(const rec::audio::Gain& gain) {
+void PlayerController::onDataChange(const rec::audio::Gain& gain) {
   juce::MessageManagerLock mml;
   bool mute = gain.mute();
   bool dim = gain.dim();
