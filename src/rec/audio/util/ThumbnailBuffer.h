@@ -30,14 +30,14 @@ class ThumbnailBuffer : public Listener<const AudioSourceChannelInfo&>,
 
   void writeThumbnail();
   bool cacheWritten() const { return cacheWritten_; }
-  juce::AudioThumbnail* thumbnail() { return thumbnail_.get(); }
+  juce::AudioThumbnail* thumbnail() { return &thumbnail_; }
 
  private:
   File file_;
 
-  ptr<juce::AudioThumbnail> thumbnail_;
   juce::AudioThumbnailCache cache_;
   bool cacheWritten_;
+  juce::AudioThumbnail thumbnail_;
 
   FillableFrameBuffer<short, 2> buffer_;
 
