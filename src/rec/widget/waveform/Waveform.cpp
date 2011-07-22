@@ -55,13 +55,12 @@ const CursorProto& Waveform::defaultTimeCursor() {
 
 void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
   {
-    // ScopedLock l(lock_);
-    if (thumbnail_ != thumbnail) {
-      thumbnail_ = thumbnail;
-      resized();
-    }
+    ScopedLock l(lock_);
+    if (thumbnail_ == thumbnail)
+      return;
+    thumbnail_ = thumbnail;
   }
-  thread::runOnMessageThread(this, &Waveform::repaint);
+  resized();
 }
 
 void Waveform::paint(Graphics& g) {
@@ -177,6 +176,7 @@ void Waveform::operator()(const ZoomProto& zp) {
 }
 
 void Waveform::layoutCursors() {
+  ScopedLock l(lock_);
   for (int i = getNumChildComponents(); i > 0; --i) {
     Component* comp = getChildComponent(i - 1);
     if (comp->getName() == "Cursor") {
@@ -188,11 +188,12 @@ void Waveform::layoutCursors() {
 }
 
 void Waveform::resized() {
+  thread::runOnMessageThread(this, &Waveform::repaint);
   thread::runOnMessageThread(this, &Waveform::layoutCursors);
 }
 
 Range<RealTime> Waveform::getTimeRange() const {
-  // ScopedLock l(lock_);
+  ScopedLock l(lock_);
   Range<RealTime> r;
   if (zoom_.zoom_to_selection() && !selection_.empty()) {
     r.begin_ = selection_.begin()->begin_;

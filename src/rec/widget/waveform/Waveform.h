@@ -58,6 +58,7 @@ class Waveform : public gui::component::Focusable<Component>,
   double pixelsPerSecond() const;
 
   virtual void mouseWheelMove(const MouseEvent& e, float incX, float incY);
+  CriticalSection* lock() { return &lock_; }
 
  private:
   void drawGrid(Graphics& g, const Range<RealTime>&);
@@ -65,9 +66,7 @@ class Waveform : public gui::component::Focusable<Component>,
   Cursor* newCursor(const CursorProto& d, double time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);
   void setSelection(const LoopPointList&);
-
   int timeToX(double t) const;
-
   void cursorDragged(int index, int x);
 
   CriticalSection lock_;

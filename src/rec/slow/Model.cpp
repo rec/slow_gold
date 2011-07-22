@@ -157,11 +157,16 @@ void Model::operator()(const VirtualFile& f) {
   player()->clearSource();
 
   ScopedLock l(lock_);
-
-  if (!thumbnailBuffer_.setReader(f)) {
-    LOG(ERROR) << "Couldn't set reader for " 
-               << getFullDisplayName(f);
-    return;
+  {
+    Waveform* waveform = &components()->waveform_;
+    ScopedLock l(*waveform->lock());
+    if (!thumbnailBuffer_.setReader(f)) {
+      LOG(ERROR) << "Couldn't set reader for "
+                 << getFullDisplayName(f);
+      waveform->setAudioThumbnail(NULL);
+      return;
+    }
+    waveform->setAudioThumbnail(thumbnailBuffer_.thumbnail()->thumbnail());
   }
   components()->directoryTree_.refreshNode(file_);
   file_ = f;
