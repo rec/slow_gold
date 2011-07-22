@@ -42,21 +42,9 @@ PlayerController::PlayerController()
   fineScale_.slider()->setTextValueSuffix(" cents");
   level_.slider()->setTextValueSuffix(" dB");
 
-  static const int SLIDER_HEIGHT = 18;
-  addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
-  addToLayout(&pitchScale_, SLIDER_HEIGHT);
-  addToLayout(&fineScale_, SLIDER_HEIGHT);
-  addToLayout(&level_, SLIDER_HEIGHT);
-  addToLayout(&levelMeter_, 18);
-
   pitchScale_.setEnabled(ENABLE_SHIFTS);
   fineScale_.setEnabled(ENABLE_SHIFTS);
   disableButton_.setEnabled(ENABLE_SHIFTS);
-
-  addToLayout(&muteButton_, 14);
-  addToLayout(&dimButton_, 14);
-  addToLayout(&disableButton_, 14);
-  addToLayout(&zoomToSelectionButton_, 14);
   zoomToSelectionButton_.setEnabled(false);
 
   stereoComboBox_.setEditableText(false);
@@ -69,8 +57,21 @@ PlayerController::PlayerController()
   stereoComboBox_.addItem("Mono (Right)", RIGHT);
   stereoComboBox_.addListener(this);
 
-  addToLayout(&stereoComboBox_, 14);
-  addToLayout(&modeSelector_, 20);
+  addToLayout(&modeSelector_, 24);
+  addToLayout(&stereoComboBox_, 18);
+
+  static const int SLIDER_HEIGHT = 18;
+  addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
+  addToLayout(&pitchScale_, SLIDER_HEIGHT);
+  addToLayout(&fineScale_, SLIDER_HEIGHT);
+
+  addToLayout(&muteButton_, 14);
+  addToLayout(&dimButton_, 14);
+  addToLayout(&disableButton_, 14);
+  addToLayout(&zoomToSelectionButton_, 14);
+
+  addToLayout(&level_, SLIDER_HEIGHT);
+  addToLayout(&levelMeter_);
 }
 
 void PlayerController::setData(persist::Data<Stretch>* data) {
