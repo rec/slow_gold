@@ -19,6 +19,7 @@ namespace slow {
 class MouseListener : public HasInstance,
                       public juce::MouseListener,
                       public DataListener<ZoomProto>,
+                      public DataListener<Mode>,
                       public Listener<const widget::waveform::MouseWheelEvent&> {
  public:
   MouseListener(Instance* i);
@@ -29,6 +30,7 @@ class MouseListener : public HasInstance,
   virtual void operator()(const widget::waveform::MouseWheelEvent&);
   virtual void setMode(const Mode& m) { mode_ = m; }
   virtual void onDataChange(const ZoomProto&) {}
+  virtual void onDataChange(const Mode& m) { setMode(m); }
 
  private:
   Mode::Action getClickAction(const MouseEvent&);

@@ -45,8 +45,6 @@ class Model : public Listener<const VirtualFile&>,
   virtual void operator()(SamplePosition t) { ScopedLock l(lock_); time_ = t; }
   virtual void operator()(const LoopPointList&);
 
-  const Mode mode() { return modeLocker_.get(); }
-
   void zoom(RealTime time, double k);
   void zoom(double k);
 

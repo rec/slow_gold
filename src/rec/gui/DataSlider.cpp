@@ -1,7 +1,6 @@
 #include "rec/gui/DataSlider.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/Range.h"
-// #include "rec/gui/Geometry.h"
 
 namespace rec {
 namespace gui {
@@ -28,10 +27,6 @@ template <typename Type>
 void DataSlider<Type>::setDisplayValue(const Value& value) {
   juce::MessageManagerLock l;
   setValue(value.get<Type>());
-#if 0
-  if (value.has<Type>())
-    thread::callAsync(this, &DataSlider<Type>::setValue, value.get<Type>());
-#endif
 }
 
 template class DataSlider<float>;

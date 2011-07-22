@@ -49,10 +49,6 @@ Listeners::Listeners(Instance* i)
 
 Listeners::~Listeners() {}
 
-void Listeners::startOffMouseListener(const VirtualFile& f) {
-  mouseListener_->setFile(f);
-}
-
 void Listeners::operator()(SamplePosition time) {
   player()->setNextReadPosition(time);
 }

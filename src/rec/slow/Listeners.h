@@ -7,7 +7,6 @@
 #include "rec/slow/LoopCommands.h"
 #include "rec/util/Range.h"
 #include "rec/util/listener/Listener.h"
-#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 
@@ -45,8 +44,6 @@ class Listeners : public Listener<None>,
   explicit Listeners(Instance* i);
   virtual ~Listeners();
 
-  void startOffMouseListener(const VirtualFile&);
-
   virtual void operator()(None);
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
@@ -58,13 +55,6 @@ class Listeners : public Listener<None>,
   virtual void operator()(const gui::DropFiles&);
 
   void operator()(SamplePosition);
-
-  template <typename Type>
-  void callAsync(Type t) {
-    typedef void (Listeners::*Member)(Type);
-    Member m = &Listeners::operator();
-    thread::callAsync(this, m, t);
-  }
 
  private:
   ptr<slow::MouseListener> mouseListener_;
