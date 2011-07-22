@@ -14,16 +14,16 @@ ThumbnailBuffer::~ThumbnailBuffer() {
   DLOG(ERROR) << "Deleting thumbnail buffer";
 }
 
-void ThumbnailBuffer::setReader(const VirtualFile& f) {
+bool ThumbnailBuffer::setReader(const VirtualFile& f) {
   ptr<AudioFormatReader> reader(source::createReaderAndLoadMetadata(f));
   if (reader) {
     File shadow = getShadowFile(f, "thumbnail.stream");
     static source::RunnyProto d;
     thumbnail_.reset(new CachedThumbnail(shadow, d.compression(), reader->lengthInSamples));
-    buffer_.setReader(reader.transfer());
-  } else {
+  } else if (!file::empty(f)) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
   }
+  return buffer_.setReader(reader.transfer());
 }
 
 ThumbnailBuffer::ThumbnailBuffer() {}

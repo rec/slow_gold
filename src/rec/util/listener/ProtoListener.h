@@ -11,7 +11,8 @@ namespace listener {
 
 // A ProtoListener has a view, a local copy of a persistent protocol buffer.
 //
-class ProtoListener : public Listener<const Message&> {
+class ProtoListener : public Listener<const Message&>,
+                      public Listener<data::UntypedData*> {
  public:
   ProtoListener(const data::Address& a) : address_(a), data_(NULL) {}
 
@@ -21,6 +22,7 @@ class ProtoListener : public Listener<const Message&> {
 
   void setData(data::UntypedData* data);
   data::UntypedData* getData() { return data_; }
+  virtual void operator()(data::UntypedData* data) { setData(data); }
 
  protected:
   // updatePersistentData is called when the local view of the data is changed

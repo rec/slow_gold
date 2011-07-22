@@ -15,7 +15,7 @@ void ProtoListener::setData(UntypedData* data) {
   data_ = data;
 
   if (data_) {
-    listenTo(data_->messageBroadcaster());
+    data_->messageBroadcaster()->addListener(this);
     (*this)(*ptr<Message>(data_->clone()));
   }
 }

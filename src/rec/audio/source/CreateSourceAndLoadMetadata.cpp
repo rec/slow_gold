@@ -17,6 +17,9 @@ typedef persist::Data<music::Metadata> Data;
 }  // namespace
 
 AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
+  if (file::empty(file))
+    return NULL;
+
   music::Metadata metadata;
   ptr<AudioFormatReader> reader;
   persist::Data<music::Metadata>* d = persist::setter<music::Metadata>(file);

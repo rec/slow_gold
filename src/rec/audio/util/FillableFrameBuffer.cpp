@@ -18,6 +18,10 @@ template <typename Sample, int CHANNELS>
 bool FillableFrameBuffer<Sample, CHANNELS>::setReader(
     AudioFormatReader* reader) {
   ScopedLock l(lock_);
+  if (!reader) {
+    reader_.reset();
+    return true;
+  }
 
   SamplePosition size = reader->lengthInSamples;
   if (!frames_.setLength(size))

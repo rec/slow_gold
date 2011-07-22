@@ -158,7 +158,11 @@ void Model::operator()(const VirtualFile& f) {
 
   ScopedLock l(lock_);
 
-  thumbnailBuffer_.setReader(f);
+  if (!thumbnailBuffer_.setReader(f)) {
+    LOG(ERROR) << "Couldn't set reader for " 
+               << getFullDisplayName(f);
+    return;
+  }
   components()->directoryTree_.refreshNode(file_);
   file_ = f;
 

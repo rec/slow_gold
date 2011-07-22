@@ -27,7 +27,7 @@ class ThumbnailBuffer {
   void writeThumbnail();
 
   ThumbnailFillableBuffer *buffer() { return &buffer_; }
-  void setReader(const VirtualFile& file);
+  bool setReader(const VirtualFile& file);
 
  private:
   ptr<CachedThumbnail> thumbnail_;

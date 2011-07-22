@@ -188,9 +188,9 @@
 	};
 	1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1047, 1001}}";
-			sepNavSelRange = "{1612, 0}";
-			sepNavVisRange = "{706, 1419}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 1144}}";
+			sepNavSelRange = "{615, 0}";
+			sepNavVisRange = "{288, 1834}";
 			sepNavWindowFrame = "{{511, 152}, {1119, 946}}";
 		};
 	};
@@ -233,9 +233,9 @@
 	};
 	2301BC0B61B96190C49537F0 /* Model.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1005, 3042}}";
-			sepNavSelRange = "{7661, 0}";
-			sepNavVisRange = "{603, 2440}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 3185}}";
+			sepNavSelRange = "{4965, 0}";
+			sepNavVisRange = "{4045, 2250}";
 			sepNavWindowFrame = "{{519, 158}, {1064, 1020}}";
 		};
 	};
@@ -346,9 +346,9 @@
 	};
 	37DC5207DA013FE5BC18B4DA /* ProtoListener.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {998, 505}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 663}}";
 			sepNavSelRange = "{553, 0}";
-			sepNavVisRange = "{0, 943}";
+			sepNavVisRange = "{0, 1384}";
 		};
 	};
 	38B70BAED12B8E287997D2D1 /* AudioTimeScaler.cpp */ = {
@@ -450,9 +450,9 @@
 	};
 	4F00CD57CEBFF8DF24388554 /* VirtualFile.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {721, 2379}}";
-			sepNavSelRange = "{520, 0}";
-			sepNavVisRange = "{0, 1466}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 2431}}";
+			sepNavSelRange = "{1414, 0}";
+			sepNavVisRange = "{0, 1726}";
 			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
 		};
 	};
@@ -511,9 +511,9 @@
 	};
 	5659F0DB5EE3B89347D37A0D /* CreateSourceAndLoadMetadata.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1110, 923}}";
-			sepNavSelRange = "{1591, 0}";
-			sepNavVisRange = "{275, 1721}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 988}}";
+			sepNavSelRange = "{1111, 0}";
+			sepNavVisRange = "{0, 1999}";
 			sepNavWindowFrame = "{{179, 141}, {1015, 937}}";
 		};
 	};
@@ -751,10 +751,10 @@
 	};
 	7968D536350B0BEB60FC2FD1 /* ThumbnailBuffer.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {850, 958}}";
-			sepNavSelRange = "{246, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 940}}";
+			sepNavSelRange = "{657, 0}";
 			sepNavVisRange = "{0, 935}";
-			sepNavWindowFrame = "{{695, 152}, {1385, 959}}";
+			sepNavWindowFrame = "{{522, 192}, {1385, 959}}";
 		};
 	};
 	7A0C1AE7900A7E07C1CA124E /* Selection.cpp */ = {
@@ -902,7 +902,6 @@
 		breakpoints = (
 			E26353C613D7E879002B0191 /* FrameSource.h:18 */,
 			E263540D13D8048D002B0191 /* Model.cpp:81 */,
-			E263542013D8B54A002B0191 /* Model.cpp:162 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -1389,6 +1388,9 @@
 			E263546213D8BC13002B0191 /* XCBuildMessageTextBookmark */ = E263546213D8BC13002B0191 /* XCBuildMessageTextBookmark */;
 			E263546313D8BC13002B0191 /* PBXTextBookmark */ = E263546313D8BC13002B0191 /* PBXTextBookmark */;
 			E263546A13D8BC7B002B0191 /* PBXTextBookmark */ = E263546A13D8BC7B002B0191 /* PBXTextBookmark */;
+			E263549913D91286002B0191 /* PBXTextBookmark */ = E263549913D91286002B0191 /* PBXTextBookmark */;
+			E263549C13D912B3002B0191 /* PBXTextBookmark */ = E263549C13D912B3002B0191 /* PBXTextBookmark */;
+			E263549D13D91357002B0191 /* PBXTextBookmark */ = E263549D13D91357002B0191 /* PBXTextBookmark */;
 			E264817013B9584700CBE60D = E264817013B9584700CBE60D /* PBXTextBookmark */;
 			E288C2BC12EB70A400AAB106 = E288C2BC12EB70A400AAB106 /* PBXTextBookmark */;
 			E288C3E012EBF0AD00AAB106 = E288C3E012EBF0AD00AAB106 /* PBXTextBookmark */;
@@ -1550,7 +1552,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {857, 1794}}";
 			sepNavSelRange = "{2887, 0}";
-			sepNavVisRange = "{0, 971}";
+			sepNavVisRange = "{0, 1055}";
 			sepNavWindowFrame = "{{222, 38}, {1119, 946}}";
 		};
 	};
@@ -1651,9 +1653,9 @@
 	};
 	BAD66B0BC466522CD4C5F133 /* Model.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1047, 1300}}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 1287}}";
 			sepNavSelRange = "{2419, 0}";
-			sepNavVisRange = "{992, 1982}";
+			sepNavVisRange = "{731, 2290}";
 			sepNavWindowFrame = "{{110, 158}, {1064, 1020}}";
 		};
 	};
@@ -4237,7 +4239,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E263511213D54B5D002B0191 /* PBXTextBookmark */ = {
@@ -4335,10 +4337,10 @@
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 33";
-		rLen = 32;
-		rLoc = 1195;
+		rLen = 0;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E263519013D61B0C002B0191 /* PBXTextBookmark */ = {
@@ -4346,7 +4348,7 @@
 		comments = "Instantiated from here";
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		rLen = 0;
-		rLoc = 219;
+		rLoc = 223;
 		rType = 1;
 	};
 	E263519113D61B0F002B0191 /* GenericBufferSource.h */ = {
@@ -4389,7 +4391,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 225";
 		rLen = 0;
-		rLoc = 7038;
+		rLoc = 7148;
 		rType = 0;
 		vrLen = 1755;
 		vrLoc = 5066;
@@ -4398,10 +4400,10 @@
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 33";
-		rLen = 32;
-		rLoc = 1195;
+		rLen = 0;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E263519E13D61B87002B0191 /* GenericBufferSource.h */ = {
@@ -4443,10 +4445,10 @@
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 33";
-		rLen = 32;
-		rLoc = 1195;
+		rLen = 0;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E26351A513D61BA5002B0191 /* PBXTextBookmark */ = {
@@ -4481,10 +4483,10 @@
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 33";
-		rLen = 32;
-		rLoc = 1195;
+		rLen = 0;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E26351B413D62D20002B0191 /* PBXTextBookmark */ = {
@@ -4510,9 +4512,9 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 34";
 		rLen = 0;
-		rLoc = 1225;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E26351B913D62D38002B0191 /* PBXTextBookmark */ = {
@@ -4540,9 +4542,9 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 45";
 		rLen = 0;
-		rLoc = 1261;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E26351BE13D6306C002B0191 /* PBXTextBookmark */ = {
@@ -4560,7 +4562,7 @@
 		comments = "No matching function for call to 'rec::audio::source::Snoopy::add(juce::AudioFormatReader*, rec::audio::util::CachedThumbnail*)'";
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		rLen = 1;
-		rLoc = 24;
+		rLoc = 23;
 		rType = 1;
 	};
 	E26351C813D6334E002B0191 /* PBXTextBookmark */ = {
@@ -4578,9 +4580,9 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 41";
 		rLen = 0;
-		rLoc = 1261;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E26351CC13D6334E002B0191 /* PBXTextBookmark */ = {
@@ -4588,7 +4590,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 217";
 		rLen = 0;
-		rLoc = 7038;
+		rLoc = 7148;
 		rType = 0;
 		vrLen = 2455;
 		vrLoc = 0;
@@ -4626,9 +4628,9 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 41";
 		rLen = 0;
-		rLoc = 1261;
+		rLoc = 1172;
 		rType = 0;
-		vrLen = 1163;
+		vrLen = 1146;
 		vrLoc = 0;
 	};
 	E263520A13D6393A002B0191 /* PBXTextBookmark */ = {
@@ -4636,7 +4638,7 @@
 		comments = "'Frames' was not declared in this scope";
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		rLen = 1;
-		rLoc = 169;
+		rLoc = 173;
 		rType = 1;
 	};
 	E263520B13D6393D002B0191 /* PBXTextBookmark */ = {
@@ -4644,17 +4646,17 @@
 		comments = "No matching function for call to 'rec::audio::source::Snoopy::add(juce::AudioFormatReader*, rec::audio::util::CachedThumbnail*)'";
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		rLen = 1;
-		rLoc = 24;
+		rLoc = 23;
 		rType = 1;
 	};
 	E263520C13D6393D002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 25";
-		rLen = 78;
-		rLoc = 844;
+		rLen = 125;
+		rLoc = 823;
 		rType = 0;
-		vrLen = 985;
+		vrLen = 968;
 		vrLoc = 178;
 	};
 	E263520F13D6393D002B0191 /* PBXTextBookmark */ = {
@@ -4662,7 +4664,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 163";
 		rLen = 79;
-		rLoc = 5371;
+		rLoc = 5481;
 		rType = 0;
 		vrLen = 2362;
 		vrLoc = 3771;
@@ -4672,17 +4674,17 @@
 		comments = "Expected primary-expression before 'short'";
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		rLen = 1;
-		rLoc = 169;
+		rLoc = 173;
 		rType = 1;
 	};
 	E263521313D6395B002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 25";
-		rLen = 78;
-		rLoc = 844;
+		rLen = 125;
+		rLoc = 823;
 		rType = 0;
-		vrLen = 985;
+		vrLen = 968;
 		vrLoc = 178;
 	};
 	E263521613D6395B002B0191 /* PBXTextBookmark */ = {
@@ -4690,7 +4692,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 164";
 		rLen = 0;
-		rLoc = 5422;
+		rLoc = 5532;
 		rType = 0;
 		vrLen = 2486;
 		vrLoc = 4095;
@@ -4700,17 +4702,17 @@
 		comments = "'Frames' was not declared in this scope";
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		rLen = 1;
-		rLoc = 169;
+		rLoc = 173;
 		rType = 1;
 	};
 	E263521F13D639A0002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 25";
-		rLen = 78;
-		rLoc = 844;
+		rLen = 125;
+		rLoc = 823;
 		rType = 0;
-		vrLen = 985;
+		vrLen = 968;
 		vrLoc = 178;
 	};
 	E263522013D639A0002B0191 /* PBXTextBookmark */ = {
@@ -4718,7 +4720,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 164";
 		rLen = 0;
-		rLoc = 5392;
+		rLoc = 5502;
 		rType = 0;
 		vrLen = 2336;
 		vrLoc = 4054;
@@ -4728,17 +4730,17 @@
 		comments = "Base operand of '->' has non-pointer type 'const rec::audio::Frames<short int, 2>'";
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		rLen = 1;
-		rLoc = 169;
+		rLoc = 173;
 		rType = 1;
 	};
 	E263523013D63A91002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 25";
-		rLen = 78;
-		rLoc = 844;
+		rLen = 125;
+		rLoc = 823;
 		rType = 0;
-		vrLen = 985;
+		vrLen = 968;
 		vrLoc = 178;
 	};
 	E263523113D63A91002B0191 /* PBXTextBookmark */ = {
@@ -4746,7 +4748,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 165";
 		rLen = 0;
-		rLoc = 5513;
+		rLoc = 5623;
 		rType = 0;
 		vrLen = 2347;
 		vrLoc = 4054;
@@ -4756,7 +4758,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 39";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 102;
@@ -4766,7 +4768,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 39";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 102;
@@ -4776,7 +4778,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 39";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 102;
@@ -4786,7 +4788,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 39";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 102;
@@ -4796,7 +4798,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 102;
@@ -4806,7 +4808,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 978;
 		vrLoc = 102;
@@ -4816,7 +4818,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 102;
@@ -4826,7 +4828,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 102;
@@ -4836,7 +4838,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 102;
@@ -4846,7 +4848,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1000;
 		vrLoc = 102;
@@ -4856,7 +4858,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4866,7 +4868,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4876,7 +4878,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4886,7 +4888,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4896,7 +4898,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4906,7 +4908,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4916,7 +4918,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4926,7 +4928,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4936,7 +4938,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4946,7 +4948,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4956,7 +4958,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4966,7 +4968,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4976,7 +4978,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -4986,7 +4988,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5003,7 +5005,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5050,7 +5052,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5060,7 +5062,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5070,7 +5072,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 163";
 		rLen = 0;
-		rLoc = 5297;
+		rLoc = 5407;
 		rType = 0;
 		vrLen = 1993;
 		vrLoc = 2407;
@@ -5080,7 +5082,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 163";
 		rLen = 0;
-		rLoc = 5297;
+		rLoc = 5407;
 		rType = 0;
 		vrLen = 1992;
 		vrLoc = 2407;
@@ -5090,7 +5092,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5100,7 +5102,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 163";
 		rLen = 0;
-		rLoc = 5297;
+		rLoc = 5407;
 		rType = 0;
 		vrLen = 1992;
 		vrLoc = 2407;
@@ -5109,10 +5111,10 @@
 		isa = PBXTextBookmark;
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 25";
-		rLen = 78;
-		rLoc = 844;
+		rLen = 125;
+		rLoc = 823;
 		rType = 0;
-		vrLen = 830;
+		vrLen = 813;
 		vrLoc = 333;
 	};
 	E263532713D77C77002B0191 /* PBXTextBookmark */ = {
@@ -5120,7 +5122,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 163";
 		rLen = 0;
-		rLoc = 5297;
+		rLoc = 5407;
 		rType = 0;
 		vrLen = 1661;
 		vrLoc = 4996;
@@ -5173,7 +5175,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5183,7 +5185,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 168";
 		rLen = 0;
-		rLoc = 5297;
+		rLoc = 5407;
 		rType = 0;
 		vrLen = 2021;
 		vrLoc = 2407;
@@ -5193,7 +5195,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5203,7 +5205,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 240";
 		rLen = 0;
-		rLoc = 7611;
+		rLoc = 7721;
 		rType = 0;
 		vrLen = 2099;
 		vrLoc = 2030;
@@ -5213,7 +5215,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1123;
 		vrLoc = 0;
@@ -5223,7 +5225,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 240";
 		rLen = 0;
-		rLoc = 7611;
+		rLoc = 7721;
 		rType = 0;
 		vrLen = 2099;
 		vrLoc = 2030;
@@ -5233,7 +5235,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5243,7 +5245,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 240";
 		rLen = 0;
-		rLoc = 7611;
+		rLoc = 7721;
 		rType = 0;
 		vrLen = 2099;
 		vrLoc = 2030;
@@ -5263,7 +5265,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5273,7 +5275,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 241";
 		rLen = 0;
-		rLoc = 7611;
+		rLoc = 7721;
 		rType = 0;
 		vrLen = 2140;
 		vrLoc = 3677;
@@ -5283,7 +5285,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5313,7 +5315,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5333,7 +5335,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5353,7 +5355,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5373,7 +5375,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5393,7 +5395,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5413,7 +5415,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 42";
 		rLen = 0;
-		rLoc = 1146;
+		rLoc = 1172;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -5423,7 +5425,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 34";
 		rLen = 0;
-		rLoc = 882;
+		rLoc = 941;
 		rType = 0;
 		vrLen = 1124;
 		vrLoc = 360;
@@ -5540,7 +5542,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "Line:42";
 		rLen = 1;
-		rLoc = 42;
+		rLoc = 46;
 		rType = 1;
 	};
 	E263538513D7AD92002B0191 /* PBXTextBookmark */ = {
@@ -5658,7 +5660,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 42";
 		rLen = 73;
-		rLoc = 1040;
+		rLoc = 1099;
 		rType = 0;
 		vrLen = 1353;
 		vrLoc = 0;
@@ -5668,7 +5670,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 42";
 		rLen = 73;
-		rLoc = 1040;
+		rLoc = 1099;
 		rType = 0;
 		vrLen = 1545;
 		vrLoc = 0;
@@ -5688,7 +5690,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 43";
 		rLen = 73;
-		rLoc = 1040;
+		rLoc = 1099;
 		rType = 0;
 		vrLen = 1396;
 		vrLoc = 0;
@@ -5723,7 +5725,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 43";
 		rLen = 73;
-		rLoc = 1040;
+		rLoc = 1099;
 		rType = 0;
 		vrLen = 1331;
 		vrLoc = 0;
@@ -5753,7 +5755,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 43";
 		rLen = 73;
-		rLoc = 1040;
+		rLoc = 1099;
 		rType = 0;
 		vrLen = 1331;
 		vrLoc = 0;
@@ -5783,7 +5785,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 43";
 		rLen = 73;
-		rLoc = 1040;
+		rLoc = 1099;
 		rType = 0;
 		vrLen = 1401;
 		vrLoc = 0;
@@ -5822,7 +5824,7 @@
 		ignoreCount = 0;
 		lineNumber = 18;
 		location = SlowBurn;
-		modificationTime = 332971128.744115;
+		modificationTime = 332993206.467616;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -5831,7 +5833,7 @@
 		fRef = 1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */;
 		name = "FillableFrameBuffer.cpp: 64";
 		rLen = 0;
-		rLoc = 1534;
+		rLoc = 1593;
 		rType = 0;
 		vrLen = 1330;
 		vrLoc = 0;
@@ -5901,7 +5903,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 242";
 		rLen = 0;
-		rLoc = 7636;
+		rLoc = 7746;
 		rType = 0;
 		vrLen = 2382;
 		vrLoc = 750;
@@ -5921,7 +5923,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 243";
 		rLen = 0;
-		rLoc = 7660;
+		rLoc = 7749;
 		rType = 0;
 		vrLen = 2354;
 		vrLoc = 716;
@@ -5941,7 +5943,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 242";
 		rLen = 0;
-		rLoc = 7636;
+		rLoc = 7746;
 		rType = 0;
 		vrLen = 2347;
 		vrLoc = 698;
@@ -6026,7 +6028,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 242";
 		rLen = 0;
-		rLoc = 7636;
+		rLoc = 7746;
 		rType = 0;
 		vrLen = 2347;
 		vrLoc = 698;
@@ -6055,7 +6057,7 @@
 		ignoreCount = 0;
 		lineNumber = 81;
 		location = SlowBurn;
-		modificationTime = 332971128.744181;
+		modificationTime = 332993206.467687;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -6084,7 +6086,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 242";
 		rLen = 0;
-		rLoc = 7636;
+		rLoc = 7746;
 		rType = 0;
 		vrLen = 2385;
 		vrLoc = 698;
@@ -6121,7 +6123,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 242";
 		rLen = 0;
-		rLoc = 7636;
+		rLoc = 7746;
 		rType = 0;
 		vrLen = 2347;
 		vrLoc = 698;
@@ -6141,7 +6143,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 242";
 		rLen = 0;
-		rLoc = 7636;
+		rLoc = 7746;
 		rType = 0;
 		vrLen = 2385;
 		vrLoc = 698;
@@ -6161,28 +6163,10 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 243";
 		rLen = 0;
-		rLoc = 7661;
+		rLoc = 7749;
 		rType = 0;
 		vrLen = 2430;
 		vrLoc = 603;
-	};
-	E263542013D8B54A002B0191 /* Model.cpp:162 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 2301BC0B61B96190C49537F0 /* Model.cpp */;
-		functionName = "Model::operator()(const VirtualFile& f)";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 162;
-		location = SlowBurn;
-		modificationTime = 332971128.744267;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
 	};
 	E263542413D8B552002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -6219,7 +6203,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 243";
 		rLen = 0;
-		rLoc = 7661;
+		rLoc = 7749;
 		rType = 0;
 		vrLen = 2430;
 		vrLoc = 603;
@@ -6246,7 +6230,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 32";
 		rLen = 0;
-		rLoc = 989;
+		rLoc = 1015;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -6256,7 +6240,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 243";
 		rLen = 0;
-		rLoc = 7661;
+		rLoc = 7749;
 		rType = 0;
 		vrLen = 2440;
 		vrLoc = 603;
@@ -6266,7 +6250,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 32";
 		rLen = 0;
-		rLoc = 989;
+		rLoc = 1015;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -6276,7 +6260,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 243";
 		rLen = 0;
-		rLoc = 7661;
+		rLoc = 7749;
 		rType = 0;
 		vrLen = 2440;
 		vrLoc = 603;
@@ -6286,7 +6270,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 32";
 		rLen = 0;
-		rLoc = 989;
+		rLoc = 1015;
 		rType = 0;
 		vrLen = 1146;
 		vrLoc = 0;
@@ -6296,7 +6280,7 @@
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 243";
 		rLen = 0;
-		rLoc = 7661;
+		rLoc = 7749;
 		rType = 0;
 		vrLen = 2440;
 		vrLoc = 603;
@@ -6328,6 +6312,36 @@
 		rLoc = 2887;
 		rType = 0;
 		vrLen = 971;
+		vrLoc = 0;
+	};
+	E263549913D91286002B0191 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AA6E5A2F8739265E6D23D462 /* ConvertSample.cpp */;
+		name = "ConvertSample.cpp: 136";
+		rLen = 0;
+		rLoc = 2887;
+		rType = 0;
+		vrLen = 1055;
+		vrLoc = 0;
+	};
+	E263549C13D912B3002B0191 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AA6E5A2F8739265E6D23D462 /* ConvertSample.cpp */;
+		name = "ConvertSample.cpp: 136";
+		rLen = 0;
+		rLoc = 2887;
+		rType = 0;
+		vrLen = 1055;
+		vrLoc = 0;
+	};
+	E263549D13D91357002B0191 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AA6E5A2F8739265E6D23D462 /* ConvertSample.cpp */;
+		name = "ConvertSample.cpp: 136";
+		rLen = 0;
+		rLoc = 2887;
+		rType = 0;
+		vrLen = 1055;
 		vrLoc = 0;
 	};
 	E264817013B9584700CBE60D /* PBXTextBookmark */ = {
@@ -7041,9 +7055,9 @@
 	};
 	F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {857, 673}}";
-			sepNavSelRange = "{989, 0}";
-			sepNavVisRange = "{0, 1146}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 940}}";
+			sepNavSelRange = "{877, 0}";
+			sepNavVisRange = "{0, 1172}";
 			sepNavWindowFrame = "{{382, 200}, {1385, 959}}";
 		};
 	};
@@ -7107,9 +7121,9 @@
 	};
 	F993E1ABE1FFE4422FCE9A47 /* AudioFormatManager.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {761, 772}}";
-			sepNavSelRange = "{476, 0}";
-			sepNavVisRange = "{0, 521}";
+			sepNavIntBoundsRect = "{{0, 0}, {572, 940}}";
+			sepNavSelRange = "{739, 0}";
+			sepNavVisRange = "{0, 985}";
 		};
 	};
 	FB1B005E5ABE3ECE29CB8885 /* CallAsync.h */ = {
@@ -7144,9 +7158,9 @@
 	};
 	FDEBE5CFEE05645C9B37A633 /* ProtoListener.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {877, 747}}";
-			sepNavSelRange = "{485, 42}";
-			sepNavVisRange = "{0, 724}";
+			sepNavIntBoundsRect = "{{0, 0}, {1047, 589}}";
+			sepNavSelRange = "{390, 0}";
+			sepNavVisRange = "{0, 733}";
 			sepNavWindowFrame = "{{130, 48}, {1064, 1020}}";
 		};
 	};
