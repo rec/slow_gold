@@ -42,11 +42,12 @@ PlayerController::PlayerController()
   fineScale_.slider()->setTextValueSuffix(" cents");
   level_.slider()->setTextValueSuffix(" dB");
 
-  addToLayout(&playbackSpeed_);
-  addToLayout(&pitchScale_);
-  addToLayout(&fineScale_);
-  addToLayout(&level_);
-  addToLayout(&levelMeter_);
+  static const int SLIDER_HEIGHT = 18;
+  addToLayout(&playbackSpeed_, SLIDER_HEIGHT);
+  addToLayout(&pitchScale_, SLIDER_HEIGHT);
+  addToLayout(&fineScale_, SLIDER_HEIGHT);
+  addToLayout(&level_, SLIDER_HEIGHT);
+  addToLayout(&levelMeter_, 18);
 
   pitchScale_.setEnabled(ENABLE_SHIFTS);
   fineScale_.setEnabled(ENABLE_SHIFTS);
@@ -69,7 +70,7 @@ PlayerController::PlayerController()
   stereoComboBox_.addListener(this);
 
   addToLayout(&stereoComboBox_, 14);
-  addToLayout(&modeSelector_, 30);
+  addToLayout(&modeSelector_, 20);
 }
 
 void PlayerController::setData(persist::Data<Stretch>* data) {
