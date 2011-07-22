@@ -11,12 +11,17 @@ namespace audio {
 namespace util {
 
 CachedThumbnail::CachedThumbnail(const File& file, int compression, int length)
-  : file_(file),
-    thumbnail_(new AudioThumbnail(compression,
-                                  *rec::audio::getAudioFormatManager(),
-                                  cache_)),
+  : compression_(compression),
     cache_(1),
     cacheWritten_(false) {
+  setFile(file, length);
+}
+
+void CachedThumbnail::setFile(const File& file, int length) {
+  file_ = file;
+  thumbnail_.reset(new AudioThumbnail(compression_,
+                                      *rec::audio::getAudioFormatManager(),
+                                      cache_));
   thumbnail_->reset(2, 44100.0f, length);  // TODO: hard-coded 44k?
   if (file_.exists()) {
     ptr<juce::FileInputStream> out(file_.createInputStream());
@@ -28,6 +33,7 @@ CachedThumbnail::CachedThumbnail(const File& file, int compression, int length)
     }
   }
 }
+
 
 void CachedThumbnail::addListener(Listener<juce::AudioThumbnail*>* listener) {
   Broadcaster<juce::AudioThumbnail*>::addListener(listener);
