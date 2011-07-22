@@ -2,23 +2,60 @@
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
+#include "rec/audio/util/AudioFormatManager.h"
 #include "rec/base/SamplePosition.h"
 #include "rec/util/file/VirtualFile.h"
+
+using namespace juce;
 
 namespace rec {
 namespace audio {
 namespace util {
 
-static const int COMPRESSION = source::RunnyProto().compression();
+using rec::audio::source::RunnyProto;
 
-ThumbnailBuffer::ThumbnailBuffer() : CachedThumbnail(COMPRESSION) {}
+ThumbnailBuffer::ThumbnailBuffer() : cache_(1), cacheWritten_(false) {}
 ThumbnailBuffer::~ThumbnailBuffer() {}
+
+void ThumbnailBuffer::addListener(Listener<juce::AudioThumbnail*>* listener) {
+  Broadcaster<juce::AudioThumbnail*>::addListener(listener);
+  (*listener)(thumbnail_.get());
+}
+
+void ThumbnailBuffer::operator()(const AudioSourceChannelInfo& i) {
+  thumbnail_->addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
+  broadcast(thumbnail_.get());
+}
+
+void ThumbnailBuffer::writeThumbnail() {
+  if (!thumbnail_) {
+    DLOG(ERROR) << "writing empty thumbnail";
+  } else if (!cacheWritten_) {
+    cacheWritten_ = true;
+    ptr<juce::FileOutputStream> out(file_.createOutputStream());
+    thumbnail_->saveTo(*out);
+  }
+}
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f) {
   ptr<AudioFormatReader> reader(source::createReaderAndLoadMetadata(f));
   if (reader) {
-    File shadow = getShadowFile(f, "thumbnail.stream");
-    setFile(shadow, reader->lengthInSamples);
+    file_ = getShadowFile(f, "thumbnail.stream");
+
+    static const int COMPRESSION = RunnyProto::default_instance().compression();
+    thumbnail_.reset(new AudioThumbnail(COMPRESSION,
+                                      *rec::audio::getAudioFormatManager(),
+                                      cache_));
+    thumbnail_->reset(2, 44100.0f, reader->lengthInSamples);  // TODO: hard-coded 44k?
+    if (file_.exists()) {
+      ptr<juce::FileInputStream> out(file_.createInputStream());
+      if (out) {
+        thumbnail_->loadFrom(*out);
+        cacheWritten_ = thumbnail_->isFullyLoaded();
+      } else {
+        LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
+      }
+    }
   } else if (!file::empty(f)) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
   }

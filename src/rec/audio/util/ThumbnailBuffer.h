@@ -1,7 +1,6 @@
 #ifndef __REC_AUDIO_UTIL_THUMBNAILBUFFER__
 #define __REC_AUDIO_UTIL_THUMBNAILBUFFER__
 
-#include "rec/audio/util/CachedThumbnail.h"
 #include "rec/audio/util/Frame.h"
 #include "rec/audio/util/FillableFrameBuffer.h"
 
@@ -13,15 +12,33 @@ class CachedThumbnail;
 
 typedef FillableFrameBuffer<short, 2> ThumbnailFillableBuffer;
 
-class ThumbnailBuffer : public CachedThumbnail {
+class ThumbnailBuffer : public Listener<const AudioSourceChannelInfo&>,
+                        public Broadcaster<juce::AudioThumbnail*> {
  public:
   ThumbnailBuffer();
   virtual ~ThumbnailBuffer();
 
   ThumbnailFillableBuffer *buffer() { return &buffer_; }
+
   bool setReader(const VirtualFile& file);
+  void setFile(const File& file, int sampleLength);
+
+  virtual void addListener(Listener<juce::AudioThumbnail*>*);
+
+  // Update the thumbnail here.
+  virtual void operator()(const AudioSourceChannelInfo& info);
+
+  void writeThumbnail();
+  bool cacheWritten() const { return cacheWritten_; }
+  juce::AudioThumbnail* thumbnail() { return thumbnail_.get(); }
 
  private:
+  File file_;
+
+  ptr<juce::AudioThumbnail> thumbnail_;
+  juce::AudioThumbnailCache cache_;
+  bool cacheWritten_;
+
   FillableFrameBuffer<short, 2> buffer_;
 
   DISALLOW_COPY_AND_ASSIGN(ThumbnailBuffer);
