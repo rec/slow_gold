@@ -44,7 +44,9 @@ void CachedThumbnail::operator()(const AudioSourceChannelInfo& i) {
 }
 
 void CachedThumbnail::writeThumbnail() {
-  if (!cacheWritten_) {
+  if (!thumbnail_) {
+    DLOG(ERROR) << "writing empty thumbnail";
+  } else if (!cacheWritten_) {
     cacheWritten_ = true;
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
     thumbnail_->saveTo(*out);

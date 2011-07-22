@@ -45,6 +45,7 @@ Model::Model(Instance* i) : HasInstance(i),
                             updateBuffer_(2, 1024) {
   persist::setter<VirtualFile>()->addListener(&fileLocker_);
   player()->timeBroadcaster()->addListener(this);
+  thumbnailBuffer_.addListener(&components()->waveform_);
 }
 
 thread::Result Model::fillOnce() {
@@ -69,19 +70,17 @@ thread::Result Model::fillOnce() {
   int64 pos = buffer->position();
   int64 filled = buffer->fillNextBlock();
 
-  if (CachedThumbnail* th = thumbnailBuffer_.thumbnail()) {
-    components()->waveform_(th->thumbnail());
-    if (!th->cacheWritten()) {
-      AudioSourceChannelInfo info;
-      info.numSamples = filled;
-      info.buffer = &updateBuffer_;
-      info.startSample = 0;
-      updateBuffer_.setSize(2, filled, false, false, true);
-      FrameSource<short, 2> src(thumbnailBuffer_.buffer()->frames());
-      src.setNextReadPosition(pos);
-      src.getNextAudioBlock(info);
-      (*th)(info);
-    }
+  components()->waveform_(thumbnailBuffer_.thumbnail());
+  if (!thumbnailBuffer_.cacheWritten()) {
+    AudioSourceChannelInfo info;
+    info.numSamples = filled;
+    info.buffer = &updateBuffer_;
+    info.startSample = 0;
+    updateBuffer_.setSize(2, filled, false, false, true);
+    FrameSource<short, 2> src(thumbnailBuffer_.buffer()->frames());
+    src.setNextReadPosition(pos);
+    src.getNextAudioBlock(info);
+    thumbnailBuffer_(info);
   }
 
   return thread::YIELD;
@@ -166,13 +165,7 @@ void Model::operator()(const VirtualFile& f) {
       waveform->setAudioThumbnail(NULL);
       return;
     }
-    CachedThumbnail* th = thumbnailBuffer_.thumbnail();
-    if (th) {
-      waveform->setAudioThumbnail(th->thumbnail());
-      th->addListener(waveform);
-    } else {
-      waveform->setAudioThumbnail(NULL);
-    }    
+    waveform->setAudioThumbnail(thumbnailBuffer_.thumbnail());
   }
   components()->directoryTree_.refreshNode(file_);
   file_ = f;
@@ -198,18 +191,12 @@ void Model::operator()(const VirtualFile& f) {
 
   loopLocker_.set(loop);
 
-#ifdef COMPACT_BUFFERS
   const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
-  // DLOG(INFO) << &frames;
   PositionableAudioSource* s = new FrameSource<short, 2>(frames);
 
   player()->setSource(s, stretchLocker_.get(),
                       stereoLocker_.get(), timeSelection_);
 
-#else
-  player()->setSource(new BufferSource(*buffer->buffer()), stretchLocker_.get(),
-                      stereoLocker_.get(), timeSelection_);
-#endif
   // player()->setStretch(stretchLocker_.get());
   threads()->fillThread()->notify();
   player()->setNextReadPosition(0);
