@@ -5,6 +5,8 @@
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/listener/DataListener.h"
+#include "rec/widget/waveform/Zoom.pb.h"
 #include "rec/slow/HasInstance.h"
 
 namespace rec {
@@ -14,7 +16,9 @@ namespace widget { namespace waveform { class MouseWheelEvent; }}
 
 namespace slow {
 
-class MouseListener : public juce::MouseListener, public HasInstance,
+class MouseListener : public HasInstance,
+                      public juce::MouseListener,
+                      public DataListener<ZoomProto>,
                       public Listener<const widget::waveform::MouseWheelEvent&> {
  public:
   MouseListener(Instance* i);
@@ -24,6 +28,7 @@ class MouseListener : public juce::MouseListener, public HasInstance,
   virtual void mouseUp(const MouseEvent&);
   virtual void operator()(const widget::waveform::MouseWheelEvent&);
   virtual void setMode(const Mode& m) { mode_ = m; }
+  virtual void operator()(const ZoomProto&) {}
 
  private:
   Mode::Action getClickAction(const MouseEvent&);

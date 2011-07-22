@@ -45,6 +45,8 @@ class Listeners : public Listener<None>,
   explicit Listeners(Instance* i);
   virtual ~Listeners();
 
+  void startOffMouseListener(const VirtualFile&);
+
   virtual void operator()(None);
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);

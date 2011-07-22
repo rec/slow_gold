@@ -5,6 +5,7 @@
 #include "rec/data/persist/Data.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/data/persist/App.h"
+#include "rec/data/persist/Persist.h"
 
 namespace rec {
 namespace util {
@@ -13,12 +14,24 @@ namespace listener {
 // DataListener listens to changes in persistent data.
 
 template <typename Proto>
-class DataListener : public Listener<const Proto&> {
+class DataListener : public Listener<const Proto&>,
+                     public Listener<const VirtualFile&> {
  public:
-  DataListener() : data_(NULL) {}
-  virtual ~DataListener() { setData(NULL); }
-  virtual void operator()(const Proto& p) = 0;
+  DataListener() : data_(NULL) {
+    persist::setter<VirtualFile>()->addListener(this);
+  }
 
+  virtual ~DataListener() { setData(NULL); }
+
+  virtual void operator()(const VirtualFile& f) { setFile(f); }
+  virtual void setFile(const VirtualFile& file) {
+    LOG(INFO) << "setFile " << Proto::default_instance().GetTypeName();
+    setData(persist::setter<Proto>(file));
+  }
+
+  virtual void operator()(const Proto&) = 0;
+
+// private:
   virtual void setData(persist::Data<Proto>* d) {
     if (data_ != d) {
       if (data_)
@@ -27,7 +40,7 @@ class DataListener : public Listener<const Proto&> {
       data_ = d;
 
       if (data_) {
-        listenTo(data_);
+        data_->addListener(this);
         (*this)(data_->get());  // TODO:  is this OK?
       }
     }
@@ -37,6 +50,7 @@ class DataListener : public Listener<const Proto&> {
   persist::Data<Proto>* data_;
 
  private:
+
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
 

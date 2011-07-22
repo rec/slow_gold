@@ -42,7 +42,9 @@ Model::Model(Instance* i) : HasInstance(i),
                             triggerPosition_(-1),
                             loopData_(NULL),
                             updateBuffer_(2, 1024) {
-  persist::setter<VirtualFile>()->addListener(&fileLocker_);
+  // persist::setter<VirtualFile>()->addListener(&fileLocker_);
+  persist::setter<VirtualFile>()->addListener(this);
+
   player()->timeBroadcaster()->addListener(this);
   thumbnailBuffer_.addListener(&components()->waveform_);
 }
@@ -204,7 +206,7 @@ void Model::operator()(const LoopPointList& loops) {
 
 
 void Model::checkChanged() {
-  fileLocker_.broadcastIfChanged(this); // TODO
+  // fileLocker_.broadcastIfChanged(this); // TODO
 
   stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(this);

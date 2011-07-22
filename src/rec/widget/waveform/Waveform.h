@@ -28,7 +28,7 @@ struct TimeAndMouseEvent;
 class Waveform : public gui::component::Focusable<Component>,
                  public Listener<juce::AudioThumbnail*>,
                  public Listener<const LoopPointList&>,
-                 public Listener<const ZoomProto&>,
+                 public DataListener<ZoomProto>,
                  public Broadcaster<const MouseWheelEvent&>,
                  public Broadcaster<const TimeAndMouseEvent&>,
                  public Broadcaster<const TimeSelection&> {

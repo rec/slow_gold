@@ -29,7 +29,6 @@ void ThumbnailBuffer::addListener(Listener<juce::AudioThumbnail*>* listener) {
 }
 
 void ThumbnailBuffer::operator()(const AudioSourceChannelInfo& i) {
-  LOG_FIRST_N(INFO, 20) << "here!";
   thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
   broadcast(&thumbnail_);
 }

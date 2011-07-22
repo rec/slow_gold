@@ -21,9 +21,9 @@ using namespace rec::util::block;
 MouseListener::MouseListener(Instance* i)
     : HasInstance(i), waveformDragStart_(0) {
   components()->waveform_.addMouseListener(this, true);
-  listenTo(&components()->waveform_);
+  Broadcaster<const MouseWheelEvent&> *w = &components()->waveform_;
+  w->addListener(this);
 }
-
 
 namespace {
 
@@ -38,6 +38,7 @@ double zoomFunction(double increment) {
 }
 
 void zoom(Model* model, const MouseEvent& e, RealTime time, double increment) {
+  DLOG(INFO) << "here!";
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
   model->zoom(time, zoomFunction(s * increment));
@@ -53,6 +54,7 @@ void MouseListener::operator()(const MouseWheelEvent& e) {
     zoom(model(), *e.event_, time, inc);
   }
 }
+
 
 Mode::Action MouseListener::getClickAction(const MouseEvent& e) {
   juce::ModifierKeys k = e.mods;
@@ -83,7 +85,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
     Mode::Action action = getClickAction(e);
     // DLOG(INFO) << "Action: " << Mode::Action_Name(action);
     if (action == Mode::DRAG)
-      waveformDragStart_ = model()->zoomLocker()->get().begin();
+      waveformDragStart_ = data_->get().begin();
 
     else if (action == Mode::DRAW_LOOP_POINTS)
       components()->loops_.addLoopPoint(time);
@@ -125,7 +127,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     Mode::Action action = getClickAction(e);
     if (action == Mode::DRAG) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
-      ZoomProto zoom(model()->zoomLocker()->get());
+      ZoomProto zoom(data_->get());
       RealTime length = player()->realLength();
       RealTime end = zoom.has_end() ? RealTime(zoom.end()) : length;
       RealTime size = end - zoom.begin();
@@ -135,7 +137,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       zoom.set_end(end);
 
       zoom.set_end(zoom.begin() + size);
-      model()->zoomLocker()->set(zoom);
+      data::set(data_, zoom);
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {
