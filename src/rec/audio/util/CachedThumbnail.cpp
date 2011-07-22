@@ -10,11 +10,8 @@ namespace rec {
 namespace audio {
 namespace util {
 
-CachedThumbnail::CachedThumbnail(const File& file, int compression, int length)
-  : compression_(compression),
-    cache_(1),
-    cacheWritten_(false) {
-  setFile(file, length);
+CachedThumbnail::CachedThumbnail(int c)
+    : compression_(c), cache_(1), cacheWritten_(false) {
 }
 
 void CachedThumbnail::setFile(const File& file, int length) {

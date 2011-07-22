@@ -19,7 +19,8 @@ bool ThumbnailBuffer::setReader(const VirtualFile& f) {
   if (reader) {
     File shadow = getShadowFile(f, "thumbnail.stream");
     static source::RunnyProto d;
-    thumbnail_.reset(new CachedThumbnail(shadow, d.compression(), reader->lengthInSamples));
+    thumbnail_.reset(new CachedThumbnail(d.compression()));
+    thumbnail_->setFile(shadow, reader->lengthInSamples);
   } else if (!file::empty(f)) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
   }
