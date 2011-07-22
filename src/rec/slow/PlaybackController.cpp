@@ -22,7 +22,7 @@ PlaybackController::PlaybackController(Components* comp, const Address& address)
   panel_.addToLayout(&comp->playerController_);
   stretchyResizer_.add(5);
 
-  panel_.addToLayout(&comp->transportController_);
+  panel_.addToLayout(&comp->transportController_, 24);
 }
 
 void PlaybackController::setSetter(data::Data* setter) {

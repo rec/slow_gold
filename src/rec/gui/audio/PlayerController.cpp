@@ -69,7 +69,7 @@ PlayerController::PlayerController()
   stereoComboBox_.addListener(this);
 
   addToLayout(&stereoComboBox_, 14);
-  addToLayout(&modeSelector_, 40);
+  addToLayout(&modeSelector_, 30);
 }
 
 void PlayerController::setData(persist::Data<Stretch>* data) {
