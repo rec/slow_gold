@@ -30,12 +30,8 @@ static const int PARAMETER_WAIT = 1000;
 static const int PRELOAD = 10000;
 
 Model::Model(Instance* i) : HasInstance(i),
-                            gainLocker_(&lock_),
                             loopLocker_(&lock_),
                             metadataLocker_(&lock_),
-                            stereoLocker_(&lock_),
-                            stretchLocker_(&lock_),
-                            zoomLocker_(&lock_),
                             time_(0),
                             triggerPosition_(-1),
                             loopData_(NULL),
@@ -81,11 +77,7 @@ void Model::operator()(const VirtualFile& f) {
 
   loopData_ = updateLocker(&loopLocker_, f);
   components()->loops_.setData(loopData_);
-  updateLocker(&gainLocker_, f);
-  updateLocker(&stereoLocker_, f);
-  updateLocker(&stretchLocker_, f);
   components()->songData_.setData(updateLocker(&metadataLocker_, f));
-  updateLocker(&zoomLocker_, f);
 
   if (empty())
     return;
@@ -101,8 +93,8 @@ void Model::operator()(const VirtualFile& f) {
   const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
   PositionableAudioSource* s = new FrameSource<short, 2>(frames);
 
-  player()->setSource(s, stretchLocker_.get(),
-                      stereoLocker_.get(), timeSelection_);
+  player()->setSource(s, persist::get<Stretch>(f),
+                      persist::get<StereoProto>(f), timeSelection_);
 
   // player()->setStretch(stretchLocker_.get());
   threads()->fillThread()->notify();
@@ -174,8 +166,9 @@ void Model::jumpToSamplePosition(SamplePosition pos) {
 }
 
 void Model::zoom(RealTime time, double k) {
-  ZoomProto z(widget::waveform::zoom(zoomLocker_.get(), player()->realLength(), time, k));
-  persist::set<ZoomProto>(z, file_);
+  ZoomProto z(widget::waveform::zoom(persist::get<ZoomProto>(file_),
+                                     player()->realLength(), time, k));
+  persist::set(z, file_);
 }
 
 void Model::operator()(const LoopPointList& loops) {
@@ -200,10 +193,7 @@ void Model::operator()(const LoopPointList& loops) {
 }
 
 void Model::checkChanged() {
-  stretchLocker_.broadcastIfChanged(listeners());
   loopLocker_.broadcastIfChanged(this);
-  stereoLocker_.broadcastIfChanged(listeners());
-  zoomLocker_.broadcastIfChanged(&components()->waveform_);
 }
 
 void Model::toggleSelectionSegment(RealTime time) {

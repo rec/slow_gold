@@ -31,6 +31,7 @@ class Stretchy;
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public Broadcaster<transport::State>,
                public DataListener<Gain>,
+               public DataListener<StereoProto>,
                public juce::ChangeListener {
  public:
   Player(Device* d);
@@ -56,6 +57,7 @@ class Player : public Broadcaster<transport::State>,
   void setSelection(const block::BlockSet&);
 
   virtual void onDataChange(const Gain& p) { setGain(p); }
+  virtual void onDataChange(const StereoProto& p) { setStereoProto(p); }
   void setGain(const Gain&);
   void setGain(double);
 
