@@ -55,7 +55,7 @@ class Model : public Listener<const VirtualFile&>,
   void jumpToTime(RealTime t);
   void setCursorTime(int index, RealTime time);
 
-  const LoopPointList loopPointList() { return loopLocker_.get(); }
+  // const LoopPointList loopPointList() { return loopLocker_.get(); }
   const VirtualFile file() const { ScopedLock l(lock_); return file_; }
   bool empty() const { return file::empty(file()); }
   const SampleSelection& timeSelection() const { return timeSelection_; }
@@ -65,7 +65,7 @@ class Model : public Listener<const VirtualFile&>,
 
   VirtualFile file_;
 
-  thread::Locker<LoopPointList> loopLocker_;
+  //thread::Locker<LoopPointList> loopLocker_;
   thread::Locker<Metadata> metadataLocker_;
 
   SamplePosition time_;

@@ -47,7 +47,7 @@ class LoopListenerImpl : public DataListener<LoopPointList> {
 }
 
 Model::Model(Instance* i) : HasInstance(i),
-                            loopLocker_(&lock_),
+                            //                            loopLocker_(&lock_),
                             metadataLocker_(&lock_),
                             time_(0),
                             triggerPosition_(-1),
@@ -92,20 +92,19 @@ void Model::operator()(const VirtualFile& f) {
   components()->directoryTree_.refreshNode(file_);
   file_ = f;
 
-  loopData_ = updateLocker(&loopLocker_, f);
-  components()->loops_.setUntypedData(loopData_);
+  // loopData_ = updateLocker(&loopLocker_, f);
+  // components()->loops_.setUntypedData(loopData_);
   components()->songData_.setUntypedData(updateLocker(&metadataLocker_, f));
 
   if (empty())
     return;
 
-  LoopPointList loop = loopData_->get();
+  LoopPointList loop = persist::get<LoopPointList>(f);
   if (!loop.loop_point_size()) {
     loop.add_loop_point()->set_selected(true);
-    data::set(loopData_, loop);
   }
-
-  loopLocker_.set(loop);
+  persist::set(loop, f);
+  // loopLocker_.set(loop);
 
   const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
   PositionableAudioSource* s = new FrameSource<short, 2>(frames);
@@ -189,6 +188,7 @@ void Model::zoom(RealTime time, double k) {
 }
 
 void Model::operator()(const LoopPointList& loops) {
+  DLOG(INFO) << "HERE!";
   timeSelection_ = audio::getTimeSelection(loops, player()->length());
   player()->setSelection(timeSelection_);
   if (timeSelection_.empty()) {
@@ -214,9 +214,8 @@ void Model::setCursorTime(int index, RealTime time) {
   if (index < 0) {
     jumpToSamplePosition(audio::timeToSamples(time));
   } else {
-    LoopPointList loops = loopLocker_.get();
+    LoopPointList loops(persist::get<LoopPointList>(file()));
     loops.mutable_loop_point(index)->set_time(time);
-
     data::set(loopData_, loops);
   }
 }

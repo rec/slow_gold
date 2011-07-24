@@ -24,13 +24,8 @@ Instance::Instance(DocumentWindow* window)
       threads_(new Threads(this)) {
   target_->addCommands();
   threads_->startAll();
-#if 0
-  VirtualFile file = persist::get<VirtualFile>();
-  listeners_->startOffMouseListener(file);
-  (*model_)(file);
-#else
+
   persist::set(persist::get<VirtualFile>());
-#endif
 }
 
 Instance::~Instance() {

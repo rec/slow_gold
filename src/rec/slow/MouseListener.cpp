@@ -114,7 +114,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
     Cursor* cursor = dynamic_cast<Cursor*>(e.eventComponent);
     int i = cursor->index();
     if (i >= 0) {
-      LoopPointList loops = model()->loopPointList();
+      LoopPointList loops = persist::get<LoopPointList>(model()->file());
       cursorDrag_.begin_ = i ? loops.loop_point(i - 1).time() : 0.0;
       cursorDrag_.end_ = (i < loops.loop_point_size() - 1) ?
         RealTime(loops.loop_point(i + 1).time()) : player()->realLength();
