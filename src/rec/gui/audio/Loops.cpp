@@ -24,7 +24,16 @@ static Defaulter<TableColumnList> dflt(
 class LoopPointDataListener : public DataListener<LoopPointList> {
  public:
   explicit LoopPointDataListener(Loops* loops) : loops_(loops) {}
-  virtual void onDataChange(const LoopPointList& p) { loops_->setLoopPoints(p); }
+
+  virtual void onDataChange(const LoopPointList& p) {
+    DLOG(INFO) << "LoopPointDataListener";
+    loops_->setLoopPoints(p);
+  }
+
+  virtual void setData(persist::Data<LoopPointList>* d) {
+    DataListener<LoopPointList>::setData(d);
+    loops_->setUntypedData(d);
+  }
 
  private:
   Loops* loops_;

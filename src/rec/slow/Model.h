@@ -52,7 +52,6 @@ class Model : public Listener<const VirtualFile&>,
   thread::Result fillOnce();
   void jumpToSamplePosition(SamplePosition p);
   void jumpToTime(RealTime t);
-  void toggleSelectionSegment(RealTime time);
   void setCursorTime(int index, RealTime time);
 
   const LoopPointList loopPointList() { return loopLocker_.get(); }

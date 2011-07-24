@@ -51,7 +51,7 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   virtual void selectedRowsChanged(int lastRowSelected);
 
   const string cuttableName() const { return "Loops"; }
-  DataListener<LoopPointList>* dataListener();
+  //  DataListener<LoopPointList>* dataListener();
 
  protected:
   virtual void update();

@@ -4,6 +4,7 @@
 #include "rec/audio/Audio.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Model.h"
+#include "rec/slow/LoopCommands.h"
 #include "rec/slow/Target.h"
 #include "rec/widget/waveform/Cursor.h"
 #include "rec/widget/waveform/MouseWheelEvent.h"
@@ -91,7 +92,7 @@ void MouseListener::mouseDown(const MouseEvent& e) {
       components()->loops_.addLoopPoint(time);
 
     else if (action == Mode::TOGGLE_SELECTION)
-      model()->toggleSelectionSegment(time);
+      toggleSelectionSegment(model()->file(), time);
 
     else if (action == Mode::SET_TIME)
       model()->jumpToTime(time);

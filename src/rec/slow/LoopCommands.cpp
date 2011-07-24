@@ -2,6 +2,7 @@
 
 #include "rec/slow/LoopCommands.h"
 #include "rec/base/Arraysize.h"
+#include "rec/data/persist/Data.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/LoopSnapshot.h"
 #include "rec/slow/Model.h"
@@ -128,6 +129,16 @@ CommandMap makeMap() {
 bool executeLoopCommand(Instance* instance, Command::Type command) {
   static applier::CommandMap map = applier::makeMap();
   return applier::executeCommand(instance, command, map);
+}
+
+void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
+  LoopPointList loops(persist::get<LoopPointList>(file));
+
+  int i = 0, size = loops.loop_point_size();
+  for (; i < size && loops.loop_point(i).time() <= time; ++i);
+  LoopPoint* lp = loops.mutable_loop_point(i - 1);
+  lp->set_selected(!lp->selected());
+  persist::set(loops, file);
 }
 
 }  // namespace slow

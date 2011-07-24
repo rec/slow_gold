@@ -196,18 +196,6 @@ void Model::checkChanged() {
   loopLocker_.broadcastIfChanged(this);
 }
 
-void Model::toggleSelectionSegment(RealTime time) {
-  // TODO: unify with LoopsAndTime.
-  ScopedLock l(lock_);
-  LoopPointList loops(loopLocker_.get());
-
-  int i = 0, size = loops.loop_point_size();
-  for (; i < size && loops.loop_point(i).time() <= time; ++i);
-  LoopPoint* lp = loops.mutable_loop_point(i - 1);
-  lp->set_selected(!lp->selected());
-  persist::set(loops, file_);
-}
-
 void Model::setCursorTime(int index, RealTime time) {
   if (index < 0) {
     jumpToSamplePosition(audio::timeToSamples(time));
