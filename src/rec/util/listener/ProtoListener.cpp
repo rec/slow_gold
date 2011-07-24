@@ -9,14 +9,14 @@ namespace listener {
 using namespace rec::data;
 
 void ProtoListener::setData(UntypedData* data) {
-  if (data_)
-    data_->messageBroadcaster()->removeListener(this);
+  if (untypedData_)
+    untypedData_->messageBroadcaster()->removeListener(this);
 
-  data_ = data;
+  untypedData_ = data;
 
-  if (data_) {
-    data_->messageBroadcaster()->addListener(this);
-    (*this)(*ptr<Message>(data_->clone()));
+  if (untypedData_) {
+    untypedData_->messageBroadcaster()->addListener(this);
+    (*this)(*ptr<Message>(untypedData_->clone()));
   }
 }
 

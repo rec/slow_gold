@@ -14,14 +14,14 @@ namespace listener {
 class ProtoListener : public Listener<const Message&>,
                       public Listener<data::UntypedData*> {
  public:
-  ProtoListener(const data::Address& a) : address_(a), data_(NULL) {}
+  ProtoListener(const data::Address& a) : address_(a), untypedData_(NULL) {}
 
   virtual ~ProtoListener() {}
   virtual void operator()(const Message&);
   virtual const data::Address& address() const { return address_; }
 
   void setData(data::UntypedData* data);
-  data::UntypedData* getData() { return data_; }
+  data::UntypedData* getData() { return untypedData_; }
   virtual void operator()(data::UntypedData* data) { setData(data); }
 
  protected:
@@ -38,7 +38,7 @@ class ProtoListener : public Listener<const Message&>,
 
  private:
   const data::Address address_;
-  data::UntypedData* data_;
+  data::UntypedData* untypedData_;
 
   DISALLOW_COPY_AND_ASSIGN(ProtoListener);
 };

@@ -3,6 +3,7 @@
 
 #include "rec/util/listener/Listener.h"
 #include "rec/data/persist/Data.h"
+#include "rec/data/proto/Equals.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Persist.h"
@@ -17,15 +18,13 @@ template <typename Proto>
 class DataListener : public Listener<const Proto&>,
                      public Listener<const VirtualFile&> {
  public:
-  DataListener();
-
+  DataListener(bool filterDupes = true);
   virtual ~DataListener() { setData(NULL); }
+
   virtual void operator()(const VirtualFile& f) { setFile(f); }
   virtual void setFile(const VirtualFile& file);
-
   virtual void operator()(const Proto& p);
-
-  const Proto get() const;
+  virtual const Proto get() const;
 
  protected:
   virtual void setData(persist::Data<Proto>* d);
@@ -36,13 +35,14 @@ class DataListener : public Listener<const Proto&>,
   CriticalSection lock_;
   persist::Data<Proto>* data_;
   Proto proto_;
+  const bool filterDupes_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
 
 template <typename Proto>
-DataListener<Proto>::DataListener() : data_(NULL) {
+DataListener<Proto>::DataListener(bool f) : data_(NULL), filterDupes_(f) {
   persist::setter<VirtualFile>()->addListener(this);
 }
 
@@ -56,6 +56,8 @@ template <typename Proto>
 void DataListener<Proto>::operator()(const Proto& p) {
   {
     ScopedLock l(lock_);
+    if (filterDupes_ && proto::equals(proto_, p))
+      return;
     proto_ = p;
   }
   onDataChange(p);
