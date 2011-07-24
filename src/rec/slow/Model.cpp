@@ -47,7 +47,6 @@ class LoopListenerImpl : public DataListener<LoopPointList> {
 }
 
 Model::Model(Instance* i) : HasInstance(i),
-                            //                            loopLocker_(&lock_),
                             metadataLocker_(&lock_),
                             time_(0),
                             triggerPosition_(-1),

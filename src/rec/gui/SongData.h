@@ -4,14 +4,17 @@
 #include "rec/data/persist/Persist.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/gui/SetterTextArea.h"
+#include "rec/gui/component/Focusable.h"
 #include "rec/music/Metadata.h"
 #include "rec/util/Cuttable.h"
-#include "rec/gui/component/Focusable.h"
+#include "rec/util/listener/DataListener.h"
 
 namespace rec {
 namespace gui {
 
-class SongData : public component::Focusable<SetterTextArea>, public Cuttable {
+class SongData : public component::Focusable<SetterTextArea>,
+                 public Cuttable,
+                 public DataListener<music::Metadata> {
  public:
   explicit SongData(ApplicationCommandManager* manager)
       : component::Focusable<SetterTextArea>(manager) {
@@ -37,6 +40,12 @@ class SongData : public component::Focusable<SetterTextArea>, public Cuttable {
     return yaml::write(*ptr<Message>(untypedData_->clone()));
   }
   virtual void cut() {}
+
+  virtual void onDataChange(const music::Metadata&) {}
+  virtual void setData(persist::Data< music::Metadata>* d) {
+    DataListener<music::Metadata>::setData(d);
+    setUntypedData(d);
+  }
 
  private:
   DISALLOW_COPY_AND_ASSIGN(SongData);

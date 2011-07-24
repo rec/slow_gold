@@ -28,13 +28,13 @@ class SetterTextArea : public Layout {
     return text;
   }
 
-  void setUntypedData(data::UntypedData* data) {
+  virtual void setUntypedData(data::UntypedData* data) {
     untypedData_ = data;
     for (int i = 0; i < components_.size(); ++i)
       text(i)->setUntypedData(data);
   }
 
-  void repaint() {
+  virtual void repaint() {  // TODO: remove this?
     Layout::repaint();
   }
 
