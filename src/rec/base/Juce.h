@@ -50,6 +50,7 @@ typedef juce::Justification Justification;
 
 typedef juce::MenuBarModel MenuBarModel;
 typedef juce::MemoryBlock MemoryBlock;
+typedef juce::MessageManagerLock MessageManagerLock;
 typedef juce::MidiMessage MidiMessage;
 typedef juce::ModifierKeys ModifierKeys;
 typedef juce::MouseEvent MouseEvent;

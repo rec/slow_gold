@@ -47,7 +47,7 @@ const CommandMapProto CommandMap::getProto() const {
 bool CommandMap::invoke(const Key& key, ApplicationCommandManager* acm,
                         bool async) const {
   if (CommandID id = getCommand(key)) {
-    juce::MessageManagerLock l;
+    MessageManagerLock l;
     return acm->invokeDirectly(id, async);
   } else {
     return false;

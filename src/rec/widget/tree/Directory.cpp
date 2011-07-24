@@ -70,7 +70,7 @@ void Directory::partition() {
     if (isOpen_)
       node->requestChildren();
 
-    juce::MessageManagerLock lock_;
+    MessageManagerLock lock_;
     addSubItem(node.transfer(), -1);
   }
 }

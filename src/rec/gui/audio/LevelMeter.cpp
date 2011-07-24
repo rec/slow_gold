@@ -1,5 +1,5 @@
 #include "rec/gui/audio/LevelMeter.h"
-
+#include "rec/util/thread/CallAsync.h"
 namespace rec {
 namespace gui {
 namespace audio {
@@ -9,14 +9,16 @@ LevelMeter::LevelMeter(bool horiz, bool rms, int margin)
 }
 
 void LevelMeter::operator()(const LevelVector& levels) {
-  ScopedLock l(lock_);
-  levels_ = levels;
-  for (int i = 0; i < levels_.size(); ++i) {
-    // DCHECK(!std::isinf(levels_[i]));
-    if (std::isinf(levels_[i]))
-      levels_[i] = 1.0;
-    else if (std::isnan(levels_[i]))
-      levels_[i] = 0.0;
+  {
+    ScopedLock l(lock_);
+    levels_ = levels;
+    for (int i = 0; i < levels_.size(); ++i) {
+      // DCHECK(!std::isinf(levels_[i]));
+      if (std::isinf(levels_[i]))
+        levels_[i] = 1.0;
+      else if (std::isnan(levels_[i]))
+        levels_[i] = 0.0;
+    }
   }
   thread::callAsync(this, &LevelMeter::repaint);
 }

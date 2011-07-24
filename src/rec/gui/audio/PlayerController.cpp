@@ -76,7 +76,7 @@ PlayerController::PlayerController()
 }
 
 void PlayerController::onDataChange(const Stretch& s) {
-  juce::MessageManagerLock l;
+  MessageManagerLock l;
   enableSliders(!s.time_disabled());
 }
 
@@ -90,7 +90,7 @@ void PlayerController::onDataChange(const StereoProto& stereo) {
 }
 
 void PlayerController::onDataChange(const rec::audio::Gain& gain) {
-  juce::MessageManagerLock mml;
+  MessageManagerLock mml;
   bool mute = gain.mute();
   bool dim = gain.dim();
   level_.slider()->setEnabled(!(mute || dim));

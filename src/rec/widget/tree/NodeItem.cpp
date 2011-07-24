@@ -81,7 +81,7 @@ void Node::itemClicked(const MouseEvent& e) {
 
 void Node::refreshNode(const VirtualFile& f) {
   if (virtualFile_ == f) {
-    juce::MessageManagerLock lock_;
+    MessageManagerLock lock_;
     repaintItem();
   } else {
     for (int i = 0; i < getNumSubItems(); ++i) {

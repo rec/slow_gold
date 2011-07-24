@@ -25,7 +25,7 @@ DataSlider<Type>::DataSlider(const String& name, const Address& address,
 
 template <typename Type>
 void DataSlider<Type>::setDisplayValue(const Value& value) {
-  juce::MessageManagerLock l;
+  MessageManagerLock l;
   setValue(value.get<Type>());
 }
 

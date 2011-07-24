@@ -163,7 +163,8 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
 }
 
 void Waveform::operator()(const LoopPointList& loops) {
-  thread::callAsync(this, &Waveform::addAllCursors, loops);
+  MessageManagerLock l;
+  addAllCursors(loops);
 }
 
 void Waveform::onDataChange(const ZoomProto& zp) {
@@ -206,8 +207,9 @@ void Waveform::layoutCursors() {
 }
 
 void Waveform::resized() {
-  thread::runOnMessageThread(this, &Waveform::repaint);
-  thread::runOnMessageThread(this, &Waveform::layoutCursors);
+  MessageManagerLock l;
+  repaint();
+  layoutCursors();
 }
 
 Range<RealTime> Waveform::getTimeRange() const {

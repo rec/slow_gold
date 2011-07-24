@@ -2,7 +2,6 @@
 #define __REC_GUI_AUDIO_LEVELMETER__
 
 #include "rec/util/listener/Listener.h"
-#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace gui {
