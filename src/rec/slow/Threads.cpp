@@ -80,11 +80,6 @@ thread::Result fill(Instance* i) {
   return i->model_->fillOnce();
 }
 
-int updateParameters(Instance* i) {
-  i->model_->checkChanged();
-  return Period::PARAMETER;
-}
-
 thread::Result buffer(Instance* i) {
   if (Buffered* b = i->player_->buffered()) {
     return b->fillBuffer(BUFFER_FILL_CHUNK) ?
@@ -108,7 +103,6 @@ void Threads::startAll() {
   if (Buffered* b = player()->buffered())
     b->setNotifyThread(bufferThread_);
 
-  start(&updateParameters, "Parameter", Priority::PARAMETER);
   start(&directory, "Directory", Priority::DIRECTORY);
 }
 

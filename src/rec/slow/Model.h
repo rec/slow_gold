@@ -49,7 +49,6 @@ class Model : public Listener<const VirtualFile&>,
   void zoom(RealTime time, double k);
   void zoom(double k);
 
-  void checkChanged();
   thread::Result fillOnce();
   void jumpToSamplePosition(SamplePosition p);
   void jumpToTime(RealTime t);
@@ -65,7 +64,6 @@ class Model : public Listener<const VirtualFile&>,
 
   VirtualFile file_;
 
-  //thread::Locker<LoopPointList> loopLocker_;
   thread::Locker<Metadata> metadataLocker_;
 
   SamplePosition time_;

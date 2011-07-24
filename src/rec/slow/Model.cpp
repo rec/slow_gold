@@ -92,8 +92,6 @@ void Model::operator()(const VirtualFile& f) {
   components()->directoryTree_.refreshNode(file_);
   file_ = f;
 
-  // loopData_ = updateLocker(&loopLocker_, f);
-  // components()->loops_.setUntypedData(loopData_);
   components()->songData_.setUntypedData(updateLocker(&metadataLocker_, f));
 
   if (empty())
@@ -104,7 +102,6 @@ void Model::operator()(const VirtualFile& f) {
     loop.add_loop_point()->set_selected(true);
   }
   persist::set(loop, f);
-  // loopLocker_.set(loop);
 
   const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
   PositionableAudioSource* s = new FrameSource<short, 2>(frames);
@@ -112,7 +109,6 @@ void Model::operator()(const VirtualFile& f) {
   player()->setSource(s, persist::get<Stretch>(f),
                       persist::get<StereoProto>(f), timeSelection_);
 
-  // player()->setStretch(stretchLocker_.get());
   threads()->fillThread()->notify();
   player()->setNextReadPosition(0);
   (*components()->playerController_.levelListener())(LevelVector());
@@ -204,10 +200,6 @@ void Model::operator()(const LoopPointList& loops) {
     }
     jumpToSamplePosition(timeSelection_.begin()->first);
   }
-}
-
-void Model::checkChanged() {
-  // loopLocker_.broadcastIfChanged(this);
 }
 
 void Model::setCursorTime(int index, RealTime time) {
