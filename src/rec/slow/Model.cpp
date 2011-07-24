@@ -29,15 +29,32 @@ using namespace rec::widget::waveform;
 static const int PARAMETER_WAIT = 1000;
 static const int PRELOAD = 10000;
 
+namespace {
+
+class LoopListenerImpl : public DataListener<LoopPointList> {
+ public:
+  explicit LoopListenerImpl(Model* model) : model_(model) {}
+  virtual void onDataChange(const LoopPointList& p) {
+    (*model_)(p);
+  }
+
+ private:
+  Model* const model_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(LoopListenerImpl);
+};
+
+}
+
 Model::Model(Instance* i) : HasInstance(i),
                             loopLocker_(&lock_),
                             metadataLocker_(&lock_),
                             time_(0),
                             triggerPosition_(-1),
                             loopData_(NULL),
-                            updateBuffer_(2, 1024) {
+                            updateBuffer_(2, 1024),
+                            loopListener_(new LoopListenerImpl(this)) {
   persist::setter<VirtualFile>()->addListener(this);
-
   player()->timeBroadcaster()->addListener(this);
   thumbnailBuffer_.addListener(&components()->waveform_);
 }
@@ -190,7 +207,7 @@ void Model::operator()(const LoopPointList& loops) {
 }
 
 void Model::checkChanged() {
-  loopLocker_.broadcastIfChanged(this);
+  // loopLocker_.broadcastIfChanged(this);
 }
 
 void Model::setCursorTime(int index, RealTime time) {

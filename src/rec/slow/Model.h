@@ -14,6 +14,7 @@
 #include "rec/util/LoopPoint.h"
 #include "rec/util/block/Block.h"
 #include "rec/util/file/VirtualFile.h"
+#include "rec/util/listener/DataListener.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/thread/Locker.h"
 #include "rec/util/thread/Result.h"
@@ -25,8 +26,8 @@ namespace slow {
 
 class Instance;
 
+
 class Model : public Listener<const VirtualFile&>,
-              public Listener<const LoopPointList&>,
               public Listener<SamplePosition>,
               public HasInstance {
  public:
@@ -74,6 +75,8 @@ class Model : public Listener<const VirtualFile&>,
   ThumbnailBuffer thumbnailBuffer_;
   persist::Data<LoopPointList>* loopData_;
   AudioSampleBuffer updateBuffer_;
+  typedef DataListener<LoopPointList> LoopListener;
+  ptr<LoopListener> loopListener_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Model);
 };
