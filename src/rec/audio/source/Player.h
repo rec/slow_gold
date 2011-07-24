@@ -7,6 +7,7 @@
 #include "rec/audio/source/Level.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/audio/Device.h"
+#include "rec/util/LoopPoint.pb.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/block/Block.h"
@@ -53,12 +54,11 @@ class Player : public Broadcaster<transport::State>,
   Level* level() { return &level_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
   Buffered* buffered() { return buffered_; }
-  void setStereoProto(const StereoProto&);
   void setSelection(const block::BlockSet&);
 
-  virtual void onDataChange(const Gain& p) { setGain(p); }
-  virtual void onDataChange(const StereoProto& p) { setStereoProto(p); }
-  void setGain(const Gain&);
+  virtual void onDataChange(const Gain& p);
+  virtual void onDataChange(const StereoProto& p);
+
   void setGain(double);
 
   SamplePosition length() const { return timer_->getTotalLength(); }

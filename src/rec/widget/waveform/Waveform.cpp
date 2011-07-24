@@ -162,7 +162,7 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
   resized();
 }
 
-void Waveform::operator()(const LoopPointList& loops) {
+void Waveform::onDataChange(const LoopPointList& loops) {
   MessageManagerLock l;
   addAllCursors(loops);
 }

@@ -31,7 +31,6 @@ class Listeners : public Listener<None>,
                   public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
                   public Listener<const audio::stretch::Stretch&>,
-                  public Listener<const audio::source::StereoProto&>,
                   public Listener<const gui::DropFiles&>,
                   public juce::MouseListener,
                   public HasInstance {
@@ -43,7 +42,6 @@ class Listeners : public Listener<None>,
   virtual void operator()(const VirtualFileList&);
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
-  virtual void operator()(const audio::source::StereoProto&);
   virtual void operator()(const audio::stretch::Stretch&);
   virtual void operator()(const gui::DropFiles&);
 

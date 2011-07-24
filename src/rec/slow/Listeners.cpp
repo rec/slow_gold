@@ -60,10 +60,6 @@ void Listeners::operator()(const Stretch& x) {
   player()->setStretch(x);
 }
 
-void Listeners::operator()(const StereoProto& x) {
-  player()->setStereoProto(x);
-}
-
 void Listeners::operator()(None) {
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
 }

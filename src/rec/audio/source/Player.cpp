@@ -85,7 +85,7 @@ void Player::changeListenerCallback(ChangeBroadcaster*) {
   broadcastState();
 }
 
-void Player::setStereoProto(const StereoProto& s) {
+void Player::onDataChange(const StereoProto& s) {
   stereo_->setStereo(s);
 }
 
@@ -97,7 +97,7 @@ void Player::clearSource() {
   setSource(new Empty, Stretch(), StereoProto(), block::BlockSet());
 }
 
-void Player::setGain(const Gain& gain) {
+void Player::onDataChange(const Gain& gain) {
   setGain(getGain(gain));
 }
 

@@ -172,9 +172,6 @@ void Model::zoom(RealTime time, double k) {
 }
 
 void Model::operator()(const LoopPointList& loops) {
-  components()->waveform_(loops);
-  components()->loops_(loops);
-
   timeSelection_ = audio::getTimeSelection(loops, player()->length());
   player()->setSelection(timeSelection_);
   if (timeSelection_.empty()) {
