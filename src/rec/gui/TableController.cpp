@@ -80,10 +80,10 @@ void TableController::setDisplayValue(const Value& v) {
   }
 }
 
-void TableController::setData(data::UntypedData* data) {
+void TableController::setUntypedData(data::UntypedData* data) {
   {
     ScopedLock l(lock_);
-    ProtoListener::setData(data);
+    ProtoListener::setUntypedData(data);
   }
 
   if (Message* msg = message_.get()) {

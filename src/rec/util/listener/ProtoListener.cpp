@@ -8,7 +8,7 @@ namespace listener {
 
 using namespace rec::data;
 
-void ProtoListener::setData(UntypedData* data) {
+void ProtoListener::setUntypedData(UntypedData* data) {
   if (untypedData_)
     untypedData_->messageBroadcaster()->removeListener(this);
 

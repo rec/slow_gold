@@ -23,7 +23,7 @@ class TableController : public TableListBoxModel,
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
 
-  virtual void setData(data::UntypedData* data);
+  virtual void setUntypedData(data::UntypedData* data);
 
   virtual const Value getDisplayValue() const;
   virtual void setDisplayValue(const Value& v);

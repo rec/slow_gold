@@ -34,7 +34,7 @@ class SongData : public component::Focusable<SetterTextArea>, public Cuttable {
   virtual bool paste(const string&) { return false; }
   virtual const string cuttableName() const { return "SongData"; }
   virtual string copy() const {
-    return yaml::write(*ptr<Message>(data_->clone()));
+    return yaml::write(*ptr<Message>(untypedData_->clone()));
   }
   virtual void cut() {}
 

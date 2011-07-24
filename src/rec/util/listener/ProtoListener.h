@@ -20,9 +20,9 @@ class ProtoListener : public Listener<const Message&>,
   virtual void operator()(const Message&);
   virtual const data::Address& address() const { return address_; }
 
-  void setData(data::UntypedData* data);
+  void setUntypedData(data::UntypedData* data);
   data::UntypedData* getData() { return untypedData_; }
-  virtual void operator()(data::UntypedData* data) { setData(data); }
+  virtual void operator()(data::UntypedData* data) { setUntypedData(data); }
 
  protected:
   // updatePersistentData is called when the local view of the data is changed

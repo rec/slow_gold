@@ -76,8 +76,8 @@ void Model::operator()(const VirtualFile& f) {
   file_ = f;
 
   loopData_ = updateLocker(&loopLocker_, f);
-  components()->loops_.setData(loopData_);
-  components()->songData_.setData(updateLocker(&metadataLocker_, f));
+  components()->loops_.setUntypedData(loopData_);
+  components()->songData_.setUntypedData(updateLocker(&metadataLocker_, f));
 
   if (empty())
     return;

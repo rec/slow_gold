@@ -100,14 +100,14 @@ void PlayerController::onDataChange(const rec::audio::Gain& gain) {
 
 void PlayerController::setData(persist::Data<Stretch>* d) {
   DataListener<Stretch>::setData(d);
-  playbackSpeed_.setData(d);
-  pitchScale_.setData(d);
-  fineScale_.setData(d);
+  playbackSpeed_.setUntypedData(d);
+  pitchScale_.setUntypedData(d);
+  fineScale_.setUntypedData(d);
 }
 
 void PlayerController::setData(persist::Data<Gain>* d) {
   DataListener<Gain>::setData(d);
-  level_.setData(d);
+  level_.setUntypedData(d);
 }
 
 void PlayerController::comboBoxChanged(juce::ComboBox* box) {
@@ -125,7 +125,7 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
 }
 
 void PlayerController::setZoom(data::UntypedData* data) {
-  zoomToSelectionButton_.setData(data);
+  zoomToSelectionButton_.setUntypedData(data);
 }
 
 void PlayerController::enableSliders(bool enabled) {
