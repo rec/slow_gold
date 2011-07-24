@@ -21,7 +21,7 @@ class ProtoListener : public Listener<const Message&>,
   virtual const data::Address& address() const { return address_; }
 
   void setUntypedData(data::UntypedData* data);
-  data::UntypedData* getData() { return untypedData_; }
+  data::UntypedData* getUntypedData() { return untypedData_; }
   virtual void operator()(data::UntypedData* data) { setUntypedData(data); }
 
  protected:

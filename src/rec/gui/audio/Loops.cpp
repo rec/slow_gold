@@ -21,13 +21,24 @@ static Defaulter<TableColumnList> dflt(
 #endif
 );
 
+class LoopPointDataListener : public DataListener<LoopPointList> {
+ public:
+  explicit LoopPointDataListener(Loops* loops) : loops_(loops) {}
+  virtual void onDataChange(const LoopPointList& p) { loops_->setLoopPoints(p); }
+
+ private:
+  Loops* loops_;
+
+  DISALLOW_COPY_AND_ASSIGN(LoopPointDataListener);
+};
+
 const double Loops::CLOSE = 0.5;
 
 Loops::Loops(ApplicationCommandManager* manager,
-             const TableColumnList* desc, bool dis)
+             const TableColumnList* desc)
     : component::Focusable<TableController>(manager),
       length_(0),
-      allowDiscontinuousSelections_(dis) {
+      dataListener_(new LoopPointDataListener(this)) {
   initialize(dflt.get(desc), Address("loop_point"), "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
@@ -59,15 +70,6 @@ void Loops::selectedRowsChanged(int lastRowSelected) {
   if (changed)
     updatePersistentData();
 }
-
-#if 0
-static void print(const string& name, const juce::SparseSet<int>& ss) {
-  std::cout << name;
-  for (int i = 0; i < ss.size(); ++i)
-    std::cout << ", " << ss[i];
-  std::cout << std::endl;
-}
-#endif
 
 void Loops::update() {
   bool selectionChanged;
@@ -135,7 +137,7 @@ bool Loops::canCopy() const {
 void Loops::cut() {
   ScopedLock l(lock_);
   *loopPoints_ = getSelected(*loopPoints_, false);
- 	data::set(getData(), Address(), *loopPoints_);
+ 	data::set(getUntypedData(), Address(), *loopPoints_);
 }
 
 Range<RealTime> Loops::selectionRange() const {
@@ -164,7 +166,7 @@ void Loops::addLoopPoints(const LoopPointList& loops) {
                                                      time < selection.end_);
   }
 
- 	data::set(getData(), Address(), *loopPoints_);
+ 	data::set(getUntypedData(), Address(), *loopPoints_);
   updateAndRepaint();
 }
 
@@ -182,6 +184,16 @@ void Loops::addLoopPoint(RealTime time) {
   loops.add_loop_point()->set_time(time);
   addLoopPoints(loops);
 }
+
+
+#if 0
+static void print(const string& name, const juce::SparseSet<int>& ss) {
+  std::cout << name;
+  for (int i = 0; i < ss.size(); ++i)
+    std::cout << ", " << ss[i];
+  std::cout << std::endl;
+}
+#endif
 
 }  // namespace audio
 }  // namespace gui

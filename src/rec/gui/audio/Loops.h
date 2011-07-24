@@ -2,6 +2,7 @@
 #define __REC_GUI_AUDIO_LOOPS__
 
 #include "rec/util/LoopPoint.pb.h"
+#include "rec/util/listener/DataListener.h"
 #include "rec/gui/TableController.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/util/Cuttable.h"
@@ -16,11 +17,12 @@ namespace audio {
 
 bool isNewLoopPointTime(const LoopPointList& lp, RealTime t);
 
+class LoopPointDataListener;
+
 class Loops : public component::Focusable<TableController>, public Cuttable {
  public:
   explicit Loops(ApplicationCommandManager* manager,
-                 const TableColumnList* desc = NULL,
-                 bool allowDiscontinuousSelections = true);
+                 const TableColumnList* desc = NULL);
   virtual ~Loops();
 
   static const double CLOSE;
@@ -43,11 +45,13 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
   bool isNewLoopPoint(RealTime t) const;
   void addLoopPoint(RealTime time);
   void addLoopPoints(const LoopPointList& loops);
+  void setLoopPoints(const LoopPointList& loops) { *loopPoints_ = loops; }
   Range<RealTime> selectionRange() const;
 
   virtual void selectedRowsChanged(int lastRowSelected);
 
   const string cuttableName() const { return "Loops"; }
+  DataListener<LoopPointList>* dataListener();
 
  protected:
   virtual void update();
@@ -55,7 +59,7 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
  private:
   double length_;
   LoopPointList* loopPoints_;
-  const bool allowDiscontinuousSelections_;
+  ptr<LoopPointDataListener> dataListener_;
 
   DISALLOW_COPY_AND_ASSIGN(Loops);
 };
