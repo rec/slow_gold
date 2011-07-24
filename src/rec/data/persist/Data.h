@@ -4,6 +4,7 @@
 #include <set>
 #include "rec/base/base.h"
 #include "rec/data/persist/UntypedData.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/data/proto/GetProtoName.h"
 
@@ -23,7 +24,9 @@ class Data : public data::UntypedData,
     return proto_;
   }
 
-  virtual void operator()(const Proto& p) { set(p); }
+  virtual void operator()(const Proto& p) {
+    DCHECK(false);
+  }
 
   virtual string getTypeName() const { return proto_.GetTypeName(); }
 
@@ -49,6 +52,7 @@ class Data : public data::UntypedData,
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Data);
 };
+
 
 }  // namespace persist
 }  // namespace rec

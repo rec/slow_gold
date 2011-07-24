@@ -54,7 +54,7 @@ void PersistentWindow::writeData() {
     if (!full)
 #endif
       *layout.mutable_bounds() = gui::copy(getBounds());
-    persist::set(layout);
+    persist::setGlobal(layout);
   }
 }
 

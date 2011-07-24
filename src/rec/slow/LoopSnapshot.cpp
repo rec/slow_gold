@@ -41,7 +41,8 @@ LoopSnapshot::LoopSnapshot(Instance* i)
   : instance_(i),
     loops_(persist::get<LoopPointList>(i->model_->file())),
     time_(i->player_->getNextReadPosition()),
-    selection_(i->model_->timeSelection()),
+    length_(i->player_->length()),
+    selection_(audio::getTimeSelection(loops_, length_)),
     loopSize_(loops_.loop_point_size()),
     selectionCount_(getSelectionCount(loops_)),
     segment_(getSegment(loops_, time_)) {

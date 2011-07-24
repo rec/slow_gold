@@ -25,7 +25,7 @@ Instance::Instance(DocumentWindow* window)
   target_->addCommands();
   threads_->startAll();
 
-  persist::set(persist::get<VirtualFile>());
+  persist::setGlobal(persist::get<VirtualFile>());
 }
 
 Instance::~Instance() {

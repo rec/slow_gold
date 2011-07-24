@@ -18,6 +18,8 @@ struct LoopSnapshot {
   Instance* instance_;
   LoopPointList loops_;
   SamplePosition time_;
+  SamplePosition length_;
+  
   SampleSelection selection_;
 
   int loopSize_;

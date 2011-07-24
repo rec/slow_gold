@@ -20,8 +20,13 @@ const Proto get(const VirtualFile& f = noFile()) {
 }
 
 template <typename Proto>
-void set(const Proto& proto, const VirtualFile& f = noFile()) {
+void set(const Proto& proto, const VirtualFile& f) {
   data::set(setter<Proto>(f), proto);
+}
+
+template <typename Proto>
+void setGlobal(const Proto& proto) {
+  set(proto, noFile());
 }
 
 template <typename Proto>

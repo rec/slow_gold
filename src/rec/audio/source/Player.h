@@ -7,7 +7,7 @@
 #include "rec/audio/source/Level.h"
 #include "rec/audio/util/Gain.h"
 #include "rec/audio/Device.h"
-#include "rec/util/LoopPoint.pb.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/util/listener/Listener.h"
 #include "rec/util/block/Block.h"
@@ -32,6 +32,7 @@ class Stretchy;
 // where the stretchy component will be NULL if no stretch has been requested.
 class Player : public Broadcaster<transport::State>,
                public DataListener<Gain>,
+               public DataListener<LoopPointList>,
                public DataListener<StereoProto>,
                public juce::ChangeListener {
  public:
@@ -56,8 +57,9 @@ class Player : public Broadcaster<transport::State>,
   Buffered* buffered() { return buffered_; }
   void setSelection(const block::BlockSet&);
 
-  virtual void onDataChange(const Gain& p);
-  virtual void onDataChange(const StereoProto& p);
+  virtual void onDataChange(const Gain&);
+  virtual void onDataChange(const StereoProto&);
+  virtual void onDataChange(const LoopPointList&);
 
   void setGain(double);
 

@@ -16,7 +16,6 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/DataListener.h"
 #include "rec/util/listener/Listener.h"
-#include "rec/util/thread/Locker.h"
 #include "rec/util/thread/Result.h"
 #include "rec/slow/Components.h"
 #include "rec/widget/waveform/Zoom.pb.h"
@@ -25,7 +24,6 @@ namespace rec {
 namespace slow {
 
 class Instance;
-
 
 class Model : public Listener<const VirtualFile&>,
               public Listener<SamplePosition>,
@@ -50,28 +48,22 @@ class Model : public Listener<const VirtualFile&>,
   void zoom(double k);
 
   thread::Result fillOnce();
-  void jumpToSamplePosition(SamplePosition p);
-  void jumpToTime(RealTime t);
+  void jumpToTime(SamplePosition);
   void setCursorTime(int index, RealTime time);
 
-  // const LoopPointList loopPointList() { return loopLocker_.get(); }
   const VirtualFile file() const { ScopedLock l(lock_); return file_; }
   bool empty() const { return file::empty(file()); }
-  const SampleSelection& timeSelection() const { return timeSelection_; }
 
  private:
   CriticalSection lock_;
 
   VirtualFile file_;
 
-  thread::Locker<Metadata> metadataLocker_;
-
   SamplePosition time_;
   SamplePosition triggerPosition_;
   SampleSelection timeSelection_;
-
   ThumbnailBuffer thumbnailBuffer_;
-  persist::Data<LoopPointList>* loopData_;
+
   AudioSampleBuffer updateBuffer_;
   typedef DataListener<LoopPointList> LoopListener;
   ptr<LoopListener> loopListener_;

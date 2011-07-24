@@ -93,6 +93,11 @@ void Player::setSelection(const block::BlockSet& s) {
   selection_->setSelection(s);
 }
 
+void Player::onDataChange(const LoopPointList& lpl) {
+  setSelection(audio::getTimeSelection(lpl, length()));
+}
+
+
 void Player::clearSource() {
   setSource(new Empty, Stretch(), StereoProto(), block::BlockSet());
 }

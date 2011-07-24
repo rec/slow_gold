@@ -137,7 +137,7 @@ void Waveform::addAllCursors(const LoopPointList& loopPoints) {
       Component* comp = getChildComponent(i + 1);
       c = dynamic_cast<Cursor*>(comp);
     }
-    c->setCursorBounds(time);
+    c->setCursorBounds(time, getLocalBounds());
   }
 
   while (getNumChildComponents() > size + 1)
@@ -203,7 +203,7 @@ void Waveform::layoutCursors() {
       Component* comp = getChildComponent(i - 1);
       if (comp->getName() == "Cursor") {
         Cursor* c = dynamic_cast<Cursor*>(comp);
-        c->setCursorBounds(c->getTime());
+        c->setCursorBounds(c->getTime(), getLocalBounds());
       }
     }
   }

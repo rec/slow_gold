@@ -27,7 +27,7 @@ class Cursor : public Component, public Listener<SamplePosition> {
   bool isTimeCursor() const { return this == waveform_->timeCursor(); }
 
   const CursorProto& desc() const { return desc_; }
-  void setCursorBounds(double time);
+  void setCursorBounds(double time, const juce::Rectangle<int>& waveformBounds);
 
   virtual void operator()(SamplePosition t);
 

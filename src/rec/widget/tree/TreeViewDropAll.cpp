@@ -65,7 +65,7 @@ string TreeViewDropAll::copy() const {
 }
 
 void TreeViewDropAll::cut() {
-  persist::set(getSelected(getRootItem(), false));
+  persist::setGlobal(getSelected(getRootItem(), false));
 }
 
 bool TreeViewDropAll::paste(const string& s) {
@@ -73,7 +73,7 @@ bool TreeViewDropAll::paste(const string& s) {
   bool read = yaml::read(s, &files);
   if (read) {
     files.MergeFrom(persist::get<VirtualFileList>());
-    persist::set(files);
+    persist::setGlobal(files);
   }
   return read;
 }

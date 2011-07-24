@@ -34,9 +34,7 @@ void nudgeVolumeUp(Instance* i) {
   }
 }
 
-// Fix everything above here.
-
-void clearNavigator() { persist::set(VirtualFileList()); }
+void clearNavigator() { persist::setGlobal(VirtualFileList()); }
 
 void dimVolumeToggle(Instance* i) {
   audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
@@ -91,8 +89,7 @@ void midiMappings(Instance* i) {
   juce::DialogWindow::showModalDialog("Select MIDI mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
-  DLOG(INFO) << "Here 2!";
-  persist::set(i->target_->midiCommandMap()->getProto());
+  persist::setGlobal(i->target_->midiCommandMap()->getProto());
 }
 
 

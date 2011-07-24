@@ -26,7 +26,8 @@ Cursor::Cursor(const CursorProto& d, Waveform* waveform, RealTime t, int index)
 }
 
 void Cursor::setTime(RealTime time) {
-  thread::runOnMessageThread(this, &Cursor::setCursorBounds, time);
+  thread::runOnMessageThread(this, &Cursor::setCursorBounds, time,
+                             waveform_->getLocalBounds());
 }
 
 void Cursor::setTime(SamplePosition time) {
@@ -44,30 +45,35 @@ void Cursor::operator()(SamplePosition t) {
     setTime(t);
 }
 
-void Cursor::setCursorBounds(double time) {
-  ScopedLock l(lock_);
-
-  time_ = time;
-  juce::Rectangle<int> bounds = waveform_->getLocalBounds();
+void Cursor::setCursorBounds(double time,
+                             const juce::Rectangle<int>& waveformBounds) {
+  juce::Rectangle<int> bounds = waveformBounds;                            
   int componentWidth = desc().component_width();
   int x = 0;
 
   if (waveform_->getTimeRange().size() > SMALLEST_TIME)
     x = waveform_->timeToX(time);
 
+
   bounds.setWidth(componentWidth);
   bounds.setX(x - (componentWidth - desc().width()) / 2);
 
+  ScopedLock l(lock_);
   setBounds(bounds);
+  time_ = time;
 }
 
 void Cursor::paint(Graphics& g) {
-  ScopedLock l(lock_);
+  juce::Rectangle<int> bounds;
+  {
+    ScopedLock l(lock_);
+    bounds = getLocalBounds();
+  }
+
   Painter p(desc_.widget(), &g);
 
   // TODO: some latent issue lurks in here, causing a pixel or two error for
   // larger cursors.
-  juce::Rectangle<int> bounds = getLocalBounds();
   float displayWidth = desc().display_width();
   float componentWidth = desc().component_width();
 
@@ -77,10 +83,12 @@ void Cursor::paint(Graphics& g) {
   float offset = (componentWidth - displayWidth) / 2.0f;
   bool highlight = !isTimeCursor() && isMouseOverOrDragging();
 
+  ScopedLock l(lock_);
+
   p.setColor(highlight ? HIGHLIGHT : BACKGROUND);
   g.fillRect(offset, top, displayWidth, height);
-  p.setColor(highlight ? BACKGROUND : FOREGROUND);
 
+  p.setColor(highlight ? BACKGROUND : FOREGROUND);
   gui::drawLine(g, desc_.line(), middle, top, middle, height);
 }
 

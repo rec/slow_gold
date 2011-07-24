@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Nc5ruWmcc" name="command">
+  <MAINGROUP id="Y0YlAKAmg" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -350,6 +350,8 @@
                 name="Copy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Copy.h" id="PNey4aH2q"
                 name="Copy.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/Data.cpp" id="G3HyzkRTq"
+                name="Data.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Data.h" id="RsGKM6i7V"
                 name="Data.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Persist.h" id="TcNAHUJck"
@@ -978,16 +980,10 @@
                 name="Callback1.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Callback2.h" id="NhzTuEwoa"
                 name="Callback2.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/thread/ChangeLocker.cpp"
-                id="0QLY56rZy" name="ChangeLocker.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/ChangeLocker.h" id="p0Y8Bp7Bd"
-                name="ChangeLocker.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FileWriter.h" id="LFYAtItik"
                 name="FileWriter.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/FunctionCallback.h"
                 id="JmqUxjaB9" name="FunctionCallback.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/Locker.h" id="XhghJviRV"
-                name="Locker.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Looper.h" id="HufwQj1yp"
                 name="Looper.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeCallback.h" id="7LJRF8aMZ"
@@ -996,8 +992,6 @@
                 name="MakeThread.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeThread.h" id="5yyjFvbRj"
                 name="MakeThread.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/util/thread/MultiLocker.h" id="d8ZK9YB7y"
-                name="MultiLocker.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Pointer.h" id="uVj3YHBmh"
                 name="Pointer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Result.h" id="o3E0Kqis9"
@@ -1243,7 +1237,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="XBGUWbNCR" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="jtNAGZV59" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
