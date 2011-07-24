@@ -64,49 +64,51 @@ void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
 }
 
 void Waveform::paint(Graphics& g) {
-  Painter p(desc_.widget(), &g);
-  ScopedLock l(lock_);
+  {
+    Painter p(desc_.widget(), &g);
+    ScopedLock l(lock_);
 
-  if (thumbnail_) {
-    TimeSelection::iterator i = selection_.begin();
-    Range<RealTime> range = getTimeRange();
-    Range<RealTime> r = range;
-    const juce::Rectangle<int>& bounds = getLocalBounds();
-    int channels = thumbnail_->getNumChannels();
+    if (thumbnail_) {
+      TimeSelection::iterator i = selection_.begin();
+      Range<RealTime> range = getTimeRange();
+      Range<RealTime> r = range;
+      const juce::Rectangle<int>& bounds = getLocalBounds();
+      int channels = thumbnail_->getNumChannels();
 
-    while (r.size() > 0.0) {
-      for (; i != selection_.end() && i->end_ <= r.begin_; ++i);
-      bool selected = (i != selection_.end() && r.begin_ >= i->begin_);
-      Range<RealTime> draw = r;
-      if (selected)
-        draw.end_ = i->end_;
+      while (r.size() > 0.0) {
+        for (; i != selection_.end() && i->end_ <= r.begin_; ++i);
+        bool selected = (i != selection_.end() && r.begin_ >= i->begin_);
+        Range<RealTime> draw = r;
+        if (selected)
+          draw.end_ = i->end_;
 
-      else if (i != selection_.end())
-        draw.end_ = i->begin_;
+        else if (i != selection_.end())
+          draw.end_ = i->begin_;
 
-      int x1 = timeToX(draw.begin_);
-      int x2 = timeToX(draw.end_);
+        int x1 = timeToX(draw.begin_);
+        int x2 = timeToX(draw.end_);
 
-      juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
+        juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
-      if (desc_.layout() == WaveformProto::PARALLEL) {
-        p.setColor(1 + 2 * selected);
-        thumbnail_->drawChannels(g, b, draw.begin_, draw.end_, 1.0f);
+        if (desc_.layout() == WaveformProto::PARALLEL) {
+          p.setColor(1 + 2 * selected);
+          thumbnail_->drawChannels(g, b, draw.begin_, draw.end_, 1.0f);
 
-      } else {
-        for (int i = 0; i < channels; ++i) {
-          p.setColor(selected ? i + 1 : i + 1 + channels);
-          thumbnail_->drawChannel(g, b, draw.begin_, draw.end_, i, 1.0f);
+        } else {
+          for (int i = 0; i < channels; ++i) {
+            p.setColor(selected ? i + 1 : i + 1 + channels);
+            thumbnail_->drawChannel(g, b, draw.begin_, draw.end_, i, 1.0f);
+          }
         }
+        r.begin_ = draw.end_;
       }
-      r.begin_ = draw.end_;
-    }
-    drawGrid(g, range);
+      drawGrid(g, range);
 
-  } else {
-    g.setFont(14.0f);
-    g.drawFittedText("Drop a file here or double-click to open a new file",
-                     0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
+    } else {
+      g.setFont(14.0f);
+      g.drawFittedText("Drop a file here or double-click to open a new file",
+                       0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
+    }
   }
   paintFocus(g);
 }
@@ -195,12 +197,14 @@ void Waveform::onDataChange(const Mode& mode) {
 }
 
 void Waveform::layoutCursors() {
-  ScopedLock l(lock_);
-  for (int i = getNumChildComponents(); i > 0; --i) {
-    Component* comp = getChildComponent(i - 1);
-    if (comp->getName() == "Cursor") {
-      Cursor* c = dynamic_cast<Cursor*>(comp);
-      c->setCursorBounds(c->getTime());
+  {
+    ScopedLock l(lock_);
+    for (int i = getNumChildComponents(); i > 0; --i) {
+      Component* comp = getChildComponent(i - 1);
+      if (comp->getName() == "Cursor") {
+        Cursor* c = dynamic_cast<Cursor*>(comp);
+        c->setCursorBounds(c->getTime());
+      }
     }
   }
   repaint();

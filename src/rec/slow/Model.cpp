@@ -91,7 +91,7 @@ void Model::operator()(const VirtualFile& f) {
   components()->directoryTree_.refreshNode(file_);
   file_ = f;
 
-  components()->songData_.setUntypedData(updateLocker(&metadataLocker_, f));
+  // components()->songData_.setUntypedData(updateLocker(&metadataLocker_, f));
 
   if (empty())
     return;
