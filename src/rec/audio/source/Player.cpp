@@ -79,7 +79,10 @@ void Player::setSelection(const block::BlockSet& s) {
 }
 
 void Player::onDataChange(const LoopPointList& lpl) {
-  setSelection(audio::getTimeSelection(lpl));
+  if (lpl.loop_point_size() < 2)
+    DLOG(INFO) << "empty LoopPointList " << lpl.loop_point_size();
+  else
+    setSelection(audio::getTimeSelection(lpl));
 }
 
 void Player::clear() {

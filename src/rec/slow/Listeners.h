@@ -27,6 +27,7 @@ class Instance;
 class MouseListener;
 
 class Listeners : public Listener<None>,
+                  public Listener<const VirtualFile&>,
                   public Listener<const VirtualFileList&>,
                   public Listener<audio::transport::State>,
                   public Listener<command::Command::Type>,
@@ -40,6 +41,7 @@ class Listeners : public Listener<None>,
 
   virtual void operator()(None);
   virtual void operator()(const VirtualFileList&);
+  virtual void operator()(const VirtualFile&);
   virtual void operator()(audio::transport::State);
   virtual void operator()(command::Command::Type);
   virtual void operator()(const audio::stretch::Stretch&);

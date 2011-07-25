@@ -18,7 +18,7 @@ template <typename Proto>
 class DataListener : public Listener<const Proto&>,
                      public Listener<const VirtualFile&> {
  public:
-  DataListener(bool filterDupes = true);
+  DataListener(bool filterDupes = false);
   virtual ~DataListener() { setData(NULL); }
 
   virtual void operator()(const VirtualFile& f) { setFile(f); }
@@ -48,7 +48,10 @@ DataListener<Proto>::DataListener(bool f) : data_(NULL), filterDupes_(f) {
 
 template <typename Proto>
 void DataListener<Proto>::setFile(const VirtualFile& file) {
-  LOG(INFO) << "setFile " << Proto::default_instance().GetTypeName();
+  string s = Proto::default_instance().GetTypeName();
+  // LOG(INFO) << "setFile " << s;
+  if (s == "rec.util.LoopPointList")
+    LOG(INFO) << "LoopPointList: " << persist::setter<Proto>(file)->get().ShortDebugString();
   setData(persist::setter<Proto>(file));
 }
 

@@ -10,6 +10,7 @@ const SampleSelection getTimeSelection(const LoopPointList& list,
                                        bool emptyMeansAll) {
   SampleSelection sel;
   int size = list.loop_point_size() - 1;
+  DCHECK_GE(size, 1);
   for (int i = 0, j; i < size; ++i) {
     for (; i < size && !list.loop_point(i).selected(); ++i);
     for (j = i; j < size && list.loop_point(j).selected(); ++j);
