@@ -60,10 +60,12 @@ Model::Model(Instance* i) : HasInstance(i),
 }
 
 void Model::setFile(const VirtualFile& f) {
+  DLOG(INFO) << "setFile " << getFullDisplayName(f);
   player()->clear();
   components()->playerController_.clearLevels();
   components()->directoryTree_.refreshNode(file_);
 
+	ScopedLock l(lock_);
   VirtualFile oldFile = file_;
   file_ = f;
 
@@ -72,19 +74,21 @@ void Model::setFile(const VirtualFile& f) {
     return;
   }
 
-  if (empty())
-    return;
+  if (!empty()) {
+    components()->directoryTree_.refreshNode(file_);
 
-  components()->directoryTree_.refreshNode(file_);
+    LoopPointList loop = persist::get<LoopPointList>(f);
+    if (!loop.loop_point_size()) {
+      loop.add_loop_point()->set_selected(true);
+      RealTime time = thumbnailBuffer_.buffer()->length();
+      loop.add_loop_point()->set_time(time);
+    }
 
-  LoopPointList loop = persist::get<LoopPointList>(f);
-  if (!loop.loop_point_size()) {
-    loop.add_loop_point()->set_selected(true);
-    loop.add_loop_point()->set_time(thumbnailBuffer_.buffer()->length());
+    persist::set(loop, f);
+    threads()->fillThread()->notify();
   }
 
-  persist::set(loop, f);
-  threads()->fillThread()->notify();
+  persist::setGlobal(f);
 }
 
 thread::Result Model::fillOnce() {

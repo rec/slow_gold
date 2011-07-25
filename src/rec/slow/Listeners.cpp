@@ -68,7 +68,7 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
   const file::VirtualFileList& files = dropFiles.files_;
   if (dropFiles.target_ == &components()->waveform_) {
     if (files.file_size() >= 1)
-      persist::setGlobal(files.file(0));
+      model()->setFile(files.file(0));
 
     LOG_IF(ERROR, files.file_size() != 1);
 
@@ -92,7 +92,7 @@ void Listeners::operator()(const VirtualFileList& list) {
   if (list.file_size() < 1)
     LOG(ERROR) << "file size=" << list.file_size();
   else
-    persist::setGlobal(list.file(0));
+    model()->setFile(list.file(0));
 }
 
 void Listeners::operator()(audio::transport::State state) {

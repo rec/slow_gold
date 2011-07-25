@@ -34,17 +34,21 @@ void ThumbnailBuffer::operator()(const AudioSourceChannelInfo& i) {
 }
 
 void ThumbnailBuffer::writeThumbnail() {
+  if (cacheWritten_)
+    return;
+
+  cacheWritten_ = true;
   if (!thumbnail_.getTotalLength()) {
     DLOG(ERROR) << "writing empty cache";
 
   } else if (!cacheWritten_) {
-    cacheWritten_ = true;
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
     thumbnail_.saveTo(*out);
   }
 }
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f) {
+  DLOG(INFO) << "setReader";
   ptr<AudioFormatReader> reader(source::createReaderAndLoadMetadata(f));
   if (reader) {
     file_ = getShadowFile(f, "thumbnail.stream");
