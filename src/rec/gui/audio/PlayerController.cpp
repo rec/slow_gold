@@ -132,6 +132,10 @@ void PlayerController::enableSliders(bool enabled) {
   playbackSpeed_.setEnabled(enabled && false);
 }
 
+void PlayerController::clearLevels() {
+  levelMeter_(LevelVector());
+}
+
 }  // namespace audio
 }  // namespace gui
 }  // namespace rec

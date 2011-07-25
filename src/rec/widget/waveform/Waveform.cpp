@@ -126,7 +126,7 @@ double Waveform::pixelsPerSecond() const {
 }
 
 void Waveform::addAllCursors(const LoopPointList& loopPoints) {
-  int size = loopPoints.loop_point_size();
+  int size = loopPoints.loop_point_size() - 1;
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
     bool needsNew = (i >= getNumChildComponents() - 1);
@@ -148,7 +148,7 @@ void Waveform::addAllCursors(const LoopPointList& loopPoints) {
 
 void Waveform::setSelection(const LoopPointList& loopPoints) {
   selection_.clear();
-  for (int i = 0, size = loopPoints.loop_point_size(); i < size; ) {
+  for (int i = 0, size = loopPoints.loop_point_size() - 1; i < size; ) {
     for (; i < size && !loopPoints.loop_point(i).selected(); ++i);
     if (i < size) {
       int j = i;

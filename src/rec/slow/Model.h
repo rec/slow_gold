@@ -25,8 +25,7 @@ namespace slow {
 
 class Instance;
 
-class Model : public Listener<const VirtualFile&>,
-              public Listener<SamplePosition>,
+class Model : public Listener<SamplePosition>,
               public HasInstance {
  public:
   typedef audio::Gain Gain;
@@ -40,7 +39,7 @@ class Model : public Listener<const VirtualFile&>,
   explicit Model(Instance* i);
   virtual ~Model() {}
 
-  virtual void operator()(const VirtualFile& vf);
+  virtual void setFile(const VirtualFile& vf);
   virtual void operator()(SamplePosition t) { ScopedLock l(lock_); time_ = t; }
   virtual void operator()(const LoopPointList&);
 

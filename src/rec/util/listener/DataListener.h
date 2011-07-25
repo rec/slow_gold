@@ -43,7 +43,7 @@ class DataListener : public Listener<const Proto&>,
 
 template <typename Proto>
 DataListener<Proto>::DataListener(bool f) : data_(NULL), filterDupes_(f) {
-  persist::setter<VirtualFile>()->addListener(this);
+  persist::setterGlobal<VirtualFile>()->addListener(this);
 }
 
 template <typename Proto>

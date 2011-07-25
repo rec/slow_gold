@@ -37,6 +37,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   virtual void comboBoxChanged(juce::ComboBox*);
 
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
+  void clearLevels();
   LevelMeter* levelMeter() { return &levelMeter_; }
   ModeSelector* modeSelector() { return &modeSelector_; }
 

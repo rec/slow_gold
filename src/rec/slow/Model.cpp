@@ -1,4 +1,5 @@
 #include "rec/slow/Model.h"
+#include "rec/audio/Audio.h"
 #include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
@@ -51,58 +52,45 @@ Model::Model(Instance* i) : HasInstance(i),
                             triggerPosition_(-1),
                             updateBuffer_(2, 1024),
                             loopListener_(new LoopListenerImpl(this)) {
-  persist::setter<VirtualFile>()->addListener(this);
+  audio::Source *s = new FrameSource<short, 2>(thumbnailBuffer_.buffer()->frames());
+  player()->setSource(s);
   player()->timeBroadcaster()->addListener(this);
   thumbnailBuffer_.addListener(&components()->waveform_);
+  components()->waveform_.setAudioThumbnail(thumbnailBuffer_.thumbnail());
 }
 
-void Model::operator()(const VirtualFile& f) {
-  player()->setState(audio::transport::STOPPED);
-  player()->timeBroadcaster()->broadcast(0);
-  player()->clearSource();
-
-  ScopedLock l(lock_);
-  {
-    Waveform* waveform = &components()->waveform_;
-    ScopedLock l(*waveform->lock());
-    if (!thumbnailBuffer_.setReader(f)) {
-      LOG(ERROR) << "Couldn't set reader for "
-                 << getFullDisplayName(f);
-      waveform->setAudioThumbnail(NULL);
-      return;
-    }
-    waveform->setAudioThumbnail(thumbnailBuffer_.thumbnail());
-  }
+void Model::setFile(const VirtualFile& f) {
+  player()->clear();
+  components()->playerController_.clearLevels();
   components()->directoryTree_.refreshNode(file_);
+
+  VirtualFile oldFile = file_;
   file_ = f;
+
+  if (!thumbnailBuffer_.setReader(file_)) {
+    LOG(ERROR) << "Couldn't set reader for " << getFullDisplayName(f);
+    return;
+  }
 
   if (empty())
     return;
 
-  components()->directoryTree_.refreshNode(f);
+  components()->directoryTree_.refreshNode(file_);
 
   LoopPointList loop = persist::get<LoopPointList>(f);
   if (!loop.loop_point_size()) {
     loop.add_loop_point()->set_selected(true);
+    loop.add_loop_point()->set_time(thumbnailBuffer_.buffer()->length());
   }
+
   persist::set(loop, f);
-  (*this)(loop);
-
-  const audio::Frames<short, 2>& frames = thumbnailBuffer_.buffer()->frames();
-  PositionableAudioSource* s = new FrameSource<short, 2>(frames);
-
-  player()->setSource(s, persist::get<Stretch>(f),
-                      persist::get<StereoProto>(f), timeSelection_);
-
   threads()->fillThread()->notify();
-  player()->setNextReadPosition(0);
-  (*components()->playerController_.levelListener())(LevelVector());
 }
 
 thread::Result Model::fillOnce() {
   {
     ScopedLock l(lock_);
-    ThumbnailFillableBuffer* buffer = thumbnailBuffer_.buffer();
+    FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
     if (buffer && buffer->isFull()) {
       thumbnailBuffer_.writeThumbnail();
       return static_cast<thread::Result>(PARAMETER_WAIT);
@@ -153,7 +141,7 @@ void Model::jumpToTime(SamplePosition pos) {
       return;
     }
 
-    ThumbnailFillableBuffer* buffer = thumbnailBuffer_.buffer();
+    FillableFrameBuffer<short, 2>* buffer = thumbnailBuffer_.buffer();
     triggerPosition_ = pos;
     if (buffer && !buffer->hasFilled(block::Block(pos, pos + PRELOAD))) {
       buffer->setNextFillPosition(pos);
@@ -167,8 +155,8 @@ void Model::jumpToTime(SamplePosition pos) {
 }
 
 void Model::operator()(const LoopPointList& loops) {
-  DLOG(INFO) << loops.DebugString();
-  timeSelection_ = audio::getTimeSelection(loops, player()->length());
+  DLOG(INFO) << loops.DebugString() << ", " << player()->length();
+  timeSelection_ = audio::getTimeSelection(loops);
   if (timeSelection_.empty()) {
     DLOG(ERROR) << "Empty selection";
   } else {

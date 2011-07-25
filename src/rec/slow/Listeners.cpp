@@ -36,7 +36,7 @@ Listeners::Listeners(Instance* i)
 
   Root* root = &components()->directoryTree_;
   root->treeView()->dropBroadcaster()->addListener(this);
-  root->addListener(persist::setter<VirtualFile>());
+  root->addListener(persist::setterGlobal<VirtualFile>());
 
   components()->transportController_.addListener(this);
   player()->timeBroadcaster()->addListener(&components()->timeController_);
@@ -77,13 +77,13 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 
     typedef std::set<string> FileSet;
     FileSet existing;
-    VirtualFileList list(persist::get<file::VirtualFileList>());
+    VirtualFileList list(persist::getGlobal<file::VirtualFileList>());
     for (int i = 0; i < list.file_size(); ++i)
       existing.insert(str(getFile(list.file(i)).getFullPathName()));
 
     for (int i = 0; i < files.file_size(); ++i) {
       if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        data::append(persist::setter<file::VirtualFileList>(), Address("file"), files.file(i));
+        data::append(persist::setterGlobal<file::VirtualFileList>(), Address("file"), files.file(i));
     }
   }
 }

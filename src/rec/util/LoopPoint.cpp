@@ -6,24 +6,22 @@ namespace rec {
 namespace audio {
 
 const SampleSelection getTimeSelection(const LoopPointList& list,
-                                       RealTime length,
                                        double scale,
                                        bool emptyMeansAll) {
   SampleSelection sel;
-  if (length) {
-    for (int i = 0, j, size = list.loop_point_size(); i < size; ) {
-      for (; i < size && !list.loop_point(i).selected(); ++i);
-      for (j = i; j < size && list.loop_point(j).selected(); ++j);
-      if (j != i) {
-        RealTime begin = scale * list.loop_point(i).time();
-        RealTime end = scale * (j < size ? RealTime(list.loop_point(j).time()) : length);
-        sel.insert(block::makeBlock(timeToSamples(begin), timeToSamples(end)));
-      }
-      i = j;
+  int size = list.loop_point_size() - 1;
+  for (int i = 0, j; i < size; ++i) {
+    for (; i < size && !list.loop_point(i).selected(); ++i);
+    for (j = i; j < size && list.loop_point(j).selected(); ++j);
+    if (j != i) {
+      RealTime begin = scale * list.loop_point(i).time();
+      RealTime end = scale * list.loop_point(j).time();
+      sel.insert(block::makeBlock(timeToSamples(begin), timeToSamples(end)));
     }
-    if (emptyMeansAll && sel.empty())
-      sel.insert(block::makeBlock(0, timeToSamples(length)));
+    i = j;
   }
+  if (emptyMeansAll && sel.empty())
+    sel.insert(block::makeBlock(0, timeToSamples(list.loop_point(size).time())));
 
   return sel;
 }

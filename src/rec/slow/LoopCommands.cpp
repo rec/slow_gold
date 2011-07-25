@@ -24,13 +24,13 @@ typedef std::pair<SelectorFunction, LoopFunction> CommandFunction;
 typedef std::map<Command::Type, CommandFunction> CommandMap;
 
 bool select(SelectorFunction f, LoopSnapshot* snap, Position pos) {
-  int size = snap->loops_.loop_point_size();
+  LoopPointList* loops = &snap->loops_;
+  int size = loops->loop_point_size() - 1;
   int p = positionToIndex(pos, snap->segment_, size);
 
-  LoopPointList* loops = &snap->loops_;
   bool allSelected = (snap->selectionCount_ == size);
 
-  for (int i = 0; i < loops->loop_point_size(); ++i) {
+  for (int i = 0; i < size; ++i) {
     LoopPoint* lp = loops->mutable_loop_point(i);
     lp->set_selected(f(i, p, lp->selected(), allSelected));
   }
@@ -74,7 +74,8 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
 }
 
 bool jump(LoopSnapshot* snap, Position pos) {
-  int p = positionToIndex(pos, snap->segment_, snap->loops_.loop_point_size());
+  int size = snap->loops_.loop_point_size() - 1;
+  int p = positionToIndex(pos, snap->segment_, size);
   setTimeFromSegment(snap, p);
   return true;
 }
@@ -82,7 +83,7 @@ bool jump(LoopSnapshot* snap, Position pos) {
 bool jumpSelected(LoopSnapshot* snap, Position pos) {
   vector<int> selected;
   size_t s = -100;
-  for (int i = 0; i < snap->loops_.loop_point_size(); ++i) {
+  for (int i = 0; i < snap->loops_.loop_point_size() - 1; ++i) {
     if (!snap->selectionCount_ || snap->loops_.loop_point(i).selected()) {
       if (i == snap->segment_) {
         DCHECK_EQ(s, -1);

@@ -37,7 +37,7 @@ Target::Target(Instance* i)
       targetManager_(i->window_),
       midiCommandMap_(new command::MidiCommandMap(targetManager_.commandManager())) {
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
-  (*midiCommandMap_)(persist::get<command::CommandMapProto>());
+  (*midiCommandMap_)(persist::getGlobal<command::CommandMapProto>());
 }
 
 Target::~Target() {
@@ -148,8 +148,7 @@ void Target::addCommands() {
       "Clear Loops", "Loops",
       "Delete all loop points");
 
-  add(Command::CLOSE_FILE, functionCallback(persist::setter<VirtualFile>(),
-                                            VirtualFile()),
+  add(Command::CLOSE_FILE, methodCallback(model(), &Model::setFile, VirtualFile()),
       "Close", "File",
       "Close the current file");
 

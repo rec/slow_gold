@@ -1,8 +1,6 @@
 #include "rec/audio/source/Player.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/Device.h"
-#include "rec/audio/source/BufferSource.h"
-#include "rec/audio/source/Buffered.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Level.h"
 #include "rec/audio/source/Selection.h"
@@ -20,19 +18,14 @@ using namespace rec::audio::transport;
 using namespace rec::audio::stretch;
 
 Player::Player(Device* d)
-    : device_(d), timer_(NULL), stretchy_(NULL), stereo_(NULL), buffered_(NULL) {
-  device_->manager_.addAudioCallback(&player_);
-  timer_ = new Timer();
-  selection_ = new Selection(timer_);
-  stretchy_ = new Stretchy(selection_);
+  : device_(d),
+    timer_(new Timer()),
+    selection_(new Selection(timer_)),
+    stretchy_(new Stretchy(selection_)),
+    stereo_(new Stereo(stretchy_)) {
   stretchy_->initialize();
-  stereo_ = new Stereo(stretchy_);
-
-  static const bool IS_BUFFERED = false;
-  if (IS_BUFFERED)
-    level_.setSource(buffered_ = new Buffered(stereo_));
-  else
-    level_.setSource(stereo_);
+  level_.setSource(stereo_);
+  device_->manager_.addAudioCallback(&player_);
 
   transportSource_.setSource(&level_);
   player_.setSource(&transportSource_);
@@ -61,20 +54,12 @@ void Player::setState(State s) {
   }
 }
 
-void Player::setSource(Source* source, const Stretch& stretch,
-                       const StereoProto& stereo,
-                       const block::BlockSet& selection) {
-  ptr<Source> s(source);
-
-  timer_->swap(&s);
-  selection_->setSelection(selection);
-  stretchy_->setStretch(stretch);
-  stretchy_->initialize();
+void Player::setSource(Source* source) {
+  timer_->setSource(source);
 }
 
 void Player::setStretch(const Stretch& stretch) {
-  if (stretchy_)
-    stretchy_->setStretch(stretch);
+  stretchy_->setStretch(stretch);
 }
 
 State Player::state() const {
@@ -94,12 +79,13 @@ void Player::setSelection(const block::BlockSet& s) {
 }
 
 void Player::onDataChange(const LoopPointList& lpl) {
-  setSelection(audio::getTimeSelection(lpl, length()));
+  setSelection(audio::getTimeSelection(lpl));
 }
 
-
-void Player::clearSource() {
-  setSource(new Empty, Stretch(), StereoProto(), block::BlockSet());
+void Player::clear() {
+  setState(audio::transport::STOPPED);
+  timeBroadcaster()->broadcast(0);
+  setSource(new Empty);
 }
 
 void Player::onDataChange(const Gain& gain) {

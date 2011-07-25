@@ -124,8 +124,8 @@ struct CompareLoopPoints {
 LoopPointList getSelected(const LoopPointList& loops, bool selected) {
   LoopPointList result;
 
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
-    if (loops.loop_point(i).selected() == selected)
+  for (int i = 0, size = loops.loop_point_size(); i < size; ++i) {
+    if (loops.loop_point(i).selected() == selected || i == size - 1)
       result.add_loop_point()->CopyFrom(loops.loop_point(i));
   }
   return result;
@@ -150,11 +150,11 @@ void Loops::cut() {
 }
 
 Range<RealTime> Loops::selectionRange() const {
-  int b = 0, size = loopPoints_->loop_point_size(), e;
+  int b = 0, size = loopPoints_->loop_point_size() - 1, e;
   for (; b < size && !loopPoints_->loop_point(b).selected(); ++b);
   for (e = b; e < size && loopPoints_->loop_point(e).selected(); ++e);
-  return Range<RealTime>((b < size) ? loopPoints_->loop_point(b).time() : length_,
-                   (e < size) ? loopPoints_->loop_point(e).time() : length_);
+  return Range<RealTime>(loopPoints_->loop_point(b).time(),
+                         loopPoints_->loop_point(e).time());
 }
 
 void Loops::addLoopPoints(const LoopPointList& loops) {
@@ -169,7 +169,7 @@ void Loops::addLoopPoints(const LoopPointList& loops) {
             loopPoints_->mutable_loop_point()->end(),
             CompareLoopPoints());
 
-  for (int i = 0; i < loopPoints_->loop_point_size(); ++i) {
+  for (int i = 0; i < loopPoints_->loop_point_size() - 1; ++i) {
     double time = loopPoints_->loop_point(i).time();
     loopPoints_->mutable_loop_point(i)->set_selected(time >= selection.begin_ &&
                                                      time < selection.end_);

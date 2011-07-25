@@ -72,7 +72,7 @@ bool TreeViewDropAll::paste(const string& s) {
   VirtualFileList files;
   bool read = yaml::read(s, &files);
   if (read) {
-    files.MergeFrom(persist::get<VirtualFileList>());
+    files.MergeFrom(persist::getGlobal<VirtualFileList>());
     persist::setGlobal(files);
   }
   return read;

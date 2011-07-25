@@ -10,15 +10,13 @@ namespace util {
 
 class CachedThumbnail;
 
-typedef FillableFrameBuffer<short, 2> ThumbnailFillableBuffer;
-
 class ThumbnailBuffer : public Listener<const AudioSourceChannelInfo&>,
                         public Broadcaster<juce::AudioThumbnail*> {
  public:
   ThumbnailBuffer();
   virtual ~ThumbnailBuffer();
 
-  ThumbnailFillableBuffer *buffer() { return &buffer_; }
+  FillableFrameBuffer<short, 2> *buffer() { return &buffer_; }
 
   bool setReader(const VirtualFile& file);
   void setFile(const File& file, int sampleLength);

@@ -8,7 +8,6 @@
 namespace rec {
 namespace util {
 
-class LoopPointList;
 typedef block::BlockSet SampleSelection;
 
 }
@@ -16,7 +15,6 @@ typedef block::BlockSet SampleSelection;
 namespace audio {
 
 const SampleSelection getTimeSelection(const LoopPointList&,
-                                       RealTime length,
                                        double scale = 1.0,
                                        bool emptyMeansAll = true);
 

@@ -22,7 +22,7 @@ static int findUnselected(int loc, const LoopSnapshot* ls, int delta) {
 
 int getSelectionCount(const LoopPointList& loops) {
   int count;
-  for (int i = 0; i < loops.loop_point_size(); ++i) {
+  for (int i = 0; i < loops.loop_point_size() - 1; ++i) {
     if (loops.loop_point(i).selected())
       ++count;
   }
@@ -30,7 +30,7 @@ int getSelectionCount(const LoopPointList& loops) {
 }
 
 int getSegment(const LoopPointList& loops, RealTime time) {
-  for (int i = 1; i < loops.loop_point_size(); ++i) {
+  for (int i = 1; i < loops.loop_point_size() - 1; ++i) {
     if (time < loops.loop_point(i).time())
       return i - 1;
   }
@@ -43,7 +43,6 @@ LoopSnapshot::LoopSnapshot(Instance* i)
     time_(i->player_->getNextReadPosition()),
     length_(i->player_->length()),
     selection_(audio::getTimeSelection(loops_, length_)),
-    loopSize_(loops_.loop_point_size()),
     selectionCount_(getSelectionCount(loops_)),
     segment_(getSegment(loops_, time_)) {
 }
