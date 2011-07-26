@@ -10,8 +10,7 @@ namespace util {
 
 class CachedThumbnail;
 
-class ThumbnailBuffer : public Listener<const AudioSourceChannelInfo&>,
-                        public Broadcaster<juce::AudioThumbnail*> {
+class ThumbnailBuffer {
  public:
   ThumbnailBuffer();
   virtual ~ThumbnailBuffer();
@@ -21,10 +20,7 @@ class ThumbnailBuffer : public Listener<const AudioSourceChannelInfo&>,
   bool setReader(const VirtualFile& file);
   void setFile(const File& file, int sampleLength);
 
-  virtual void addListener(Listener<juce::AudioThumbnail*>*);
-
-  // Update the thumbnail here.
-  virtual void operator()(const AudioSourceChannelInfo& info);
+  void addBlock(SamplePosition pos, const AudioSourceChannelInfo& info);
 
   void writeThumbnail();
   bool cacheWritten() const { return cacheWritten_; }

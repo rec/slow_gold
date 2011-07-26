@@ -23,14 +23,9 @@ ThumbnailBuffer::ThumbnailBuffer()
 }
 ThumbnailBuffer::~ThumbnailBuffer() {}
 
-void ThumbnailBuffer::addListener(Listener<juce::AudioThumbnail*>* listener) {
-  Broadcaster<juce::AudioThumbnail*>::addListener(listener);
-  (*listener)(&thumbnail_);
-}
-
-void ThumbnailBuffer::operator()(const AudioSourceChannelInfo& i) {
-  thumbnail_.addBlock(i.startSample, *i.buffer, i.startSample, i.numSamples);
-  broadcast(&thumbnail_);
+void ThumbnailBuffer::addBlock(SamplePosition pos,
+                               const AudioSourceChannelInfo& i) {
+  thumbnail_.addBlock(pos, *i.buffer, i.startSample, i.numSamples);
 }
 
 void ThumbnailBuffer::writeThumbnail() {
@@ -61,6 +56,8 @@ bool ThumbnailBuffer::setReader(const VirtualFile& f) {
       } else {
         LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
       }
+    } else {
+      cacheWritten_ = false;
     }
   } else if (!file::empty(f)) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);

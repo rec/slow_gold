@@ -55,7 +55,6 @@ Model::Model(Instance* i) : HasInstance(i),
   audio::Source *s = new FrameSource<short, 2>(thumbnailBuffer_.buffer()->frames());
   player()->setSource(s);
   player()->timeBroadcaster()->addListener(this);
-  thumbnailBuffer_.addListener(&components()->waveform_);
   components()->waveform_.setAudioThumbnail(thumbnailBuffer_.thumbnail());
 }
 
@@ -122,14 +121,15 @@ thread::Result Model::fillOnce() {
       info.buffer = &updateBuffer_;
       info.startSample = 0;
       updateBuffer_.setSize(2, filled, false, false, true);
-      FrameSource<short, 2> src(thumbnailBuffer_.buffer()->frames());
+      FrameSource<short, 2> src(buffer->frames());
       src.setNextReadPosition(pos);
       src.getNextAudioBlock(info);
-      thumbnailBuffer_(info);
+      thumbnailBuffer_.addBlock(pos, info);
     }
   }
 
-  components()->waveform_(thumbnailBuffer_.thumbnail());
+  MessageManagerLock l;
+  components()->waveform_.repaint();
   return thread::YIELD;
 }
 
