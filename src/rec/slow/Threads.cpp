@@ -1,6 +1,5 @@
 #include "rec/slow/Threads.h"
 #include "rec/data/persist/Persist.h"
-#include "rec/audio/source/Buffered.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
@@ -80,35 +79,16 @@ thread::Result fill(Instance* i) {
   return i->model_->fillOnce();
 }
 
-#if 0
-thread::Result buffer(Instance* i) {
-  if (Buffered* b = i->player_->buffered()) {
-    return b->fillBuffer(BUFFER_FILL_CHUNK) ?
-      thread::YIELD : static_cast<thread::Result>(Period::BUFFER);
-  }
-  return static_cast<thread::Result>(1000);  // Should never get here!
-}
-#endif
-
 thread::Result directory(Instance* i) {
   return i->components_->directoryTree_.run() ?
     thread::YIELD : static_cast<thread::Result>(Period::DIRECTORY);
 }
-
 
 }  // namespace
 
 void Threads::startAll() {
   start(&navigator, "Navigator", Priority::NAVIGATOR);
   fillThread_ = start(&fill, "Fill", Priority::FILL);
-
-  //bufferThread_ = start(&buffer, "Buffer", Priority::BUFFER);
-
-#if 0
-  if (Buffered* b = player()->buffered())
-    b->setNotifyThread(bufferThread_);
-#endif
-
   start(&directory, "Directory", Priority::DIRECTORY);
 }
 

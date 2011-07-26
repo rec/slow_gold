@@ -1,6 +1,5 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/Audio.h"
-#include "rec/audio/source/BufferSource.h"
 #include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/source/Empty.h"
@@ -107,6 +106,7 @@ thread::Result Model::fillOnce() {
       return static_cast<thread::Result>(PARAMETER_WAIT);
     }
 
+    bool empty = false;
     if (triggerPosition_ == -1) {
       // Find the first moment in the selection after "time" that needs to be filled.
       BlockSet fill = difference(timeSelection_, buffer->filled());
@@ -119,6 +119,11 @@ thread::Result Model::fillOnce() {
 #endif
         if (!fillList.empty())
           buffer->setNextFillPosition(fillList.begin()->first);
+        else
+          empty = true;
+
+      } else {
+        empty = true;
       }
     }
 
@@ -137,6 +142,8 @@ thread::Result Model::fillOnce() {
     updateSource_.setNextReadPosition(pos);
     updateSource_.getNextAudioBlock(updateInfo_);
     thumbnailBuffer_.addBlock(pos, updateInfo_);
+    DLOG(INFO) << (empty ? "true" : "false") << ", " << filled << ", " << pos
+               << " length: " << player()->length();
   }
 
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
