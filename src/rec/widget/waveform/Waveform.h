@@ -61,6 +61,7 @@ class Waveform : public gui::component::Focusable<Component>,
 
  private:
   void drawGrid(Graphics& g, const Range<RealTime>&);
+  void adjustCursors(const LoopPointList&);
 
   Cursor* newCursor(const CursorProto& d, double time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);

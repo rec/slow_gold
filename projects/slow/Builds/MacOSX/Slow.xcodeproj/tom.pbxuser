@@ -211,9 +211,9 @@
 	};
 	20F428DEA148977B8CCBA4AC /* Waveform.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {620, 3822}}";
-			sepNavSelRange = "{8237, 0}";
-			sepNavVisRange = "{3833, 2159}";
+			sepNavIntBoundsRect = "{{0, 0}, {620, 4004}}";
+			sepNavSelRange = "{3469, 0}";
+			sepNavVisRange = "{2999, 2052}";
 			sepNavWindowFrame = "{{895, 4}, {911, 1024}}";
 		};
 	};
@@ -443,8 +443,8 @@
 	};
 	4B9B092D1B3B397FC42C5713 /* ptr.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {620, 907}}";
-			sepNavSelRange = "{413, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {620, 932}}";
+			sepNavSelRange = "{338, 0}";
 			sepNavVisRange = "{0, 962}";
 			sepNavWindowFrame = "{{15, 227}, {1119, 946}}";
 		};
@@ -535,7 +535,7 @@
 	};
 	576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {620, 907}}";
+			sepNavIntBoundsRect = "{{0, 0}, {620, 932}}";
 			sepNavSelRange = "{880, 0}";
 			sepNavVisRange = "{0, 1077}";
 			sepNavWindowFrame = "{{61, 239}, {726, 892}}";
@@ -851,8 +851,8 @@
 	8ACA76921FB9D6F80A87B902 /* Listener.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {620, 1742}}";
-			sepNavSelRange = "{1917, 0}";
-			sepNavVisRange = "{950, 1749}";
+			sepNavSelRange = "{2529, 0}";
+			sepNavVisRange = "{1044, 1724}";
 		};
 	};
 	8C1F657F03DB48DCBA241C62 /* Cuttable.cpp */ = {
@@ -1114,6 +1114,7 @@
 			E28D7F1713DF369A00B58F44 /* PBXTextBookmark */ = E28D7F1713DF369A00B58F44 /* PBXTextBookmark */;
 			E28D7F2613DF389500B58F44 /* PBXTextBookmark */ = E28D7F2613DF389500B58F44 /* PBXTextBookmark */;
 			E28D7F2813DF391E00B58F44 /* PBXTextBookmark */ = E28D7F2813DF391E00B58F44 /* PBXTextBookmark */;
+			E28D7F3813DF3D1F00B58F44 /* PBXTextBookmark */ = E28D7F3813DF3D1F00B58F44 /* PBXTextBookmark */;
 			E29BBB7713022F250091D4CB = E29BBB7713022F250091D4CB /* PBXTextBookmark */;
 			E29BBBD81302D1C00091D4CB = E29BBBD81302D1C00091D4CB /* PBXTextBookmark */;
 			E29BBC39130387BF0091D4CB = E29BBC39130387BF0091D4CB /* PBXTextBookmark */;
@@ -1557,7 +1558,7 @@
 	};
 	DBCFFC0D921396EF7C62C497 /* Window.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {620, 907}}";
+			sepNavIntBoundsRect = "{{0, 0}, {620, 932}}";
 			sepNavSelRange = "{1193, 0}";
 			sepNavVisRange = "{0, 1237}";
 			sepNavWindowFrame = "{{197, 70}, {1093, 868}}";
@@ -1915,6 +1916,11 @@
 		name = juce_posix_SharedCode.h;
 		path = /Users/tom/Documents/development/juce/src/native/common/juce_posix_SharedCode.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {620, 11518}}";
+			sepNavSelRange = "{1878, 0}";
+			sepNavVisRange = "{0, 2321}";
+		};
 	};
 	E23DAEA613620A8800A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2219,6 +2225,11 @@
 		name = Waveform.h;
 		path = ../../../../../rec/src/rec/widget/waveform/Waveform.h;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {620, 1131}}";
+			sepNavSelRange = "{2038, 0}";
+			sepNavVisRange = "{285, 2214}";
+		};
 	};
 	E26354AB13D92E97002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2268,9 +2279,9 @@
 		path = /development/rec/src/rec/util/listener/DataListener.h;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {620, 1183}}";
+			sepNavIntBoundsRect = "{{0, 0}, {620, 1261}}";
 			sepNavSelRange = "{1832, 0}";
-			sepNavVisRange = "{0, 1950}";
+			sepNavVisRange = "{603, 1679}";
 		};
 	};
 	E263564813D9FFEF002B0191 /* PBXTextBookmark */ = {
@@ -2308,7 +2319,7 @@
 		fRef = 20F428DEA148977B8CCBA4AC /* Waveform.cpp */;
 		name = "Waveform.cpp: 170";
 		rLen = 23;
-		rLoc = 4647;
+		rLoc = 4778;
 		rType = 0;
 		vrLen = 1494;
 		vrLoc = 3857;
@@ -2365,15 +2376,20 @@
 		name = Model.h;
 		path = ../../../../../rec/src/rec/slow/Model.h;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {620, 1001}}";
+			sepNavSelRange = "{1160, 0}";
+			sepNavVisRange = "{0, 2017}";
+		};
 	};
 	E263597413DCCF57002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E263593B13DCC6AA002B0191 /* Model.h */;
 		name = "Model.h: 78";
 		rLen = 0;
-		rLoc = 2143;
+		rLoc = 2089;
 		rType = 0;
-		vrLen = 1338;
+		vrLen = 1315;
 		vrLoc = 774;
 	};
 	E26359E513DCD3FA002B0191 /* PBXTextBookmark */ = {
@@ -2577,6 +2593,11 @@
 		name = juce_amalgamated.h;
 		path = /development/juce.tip/juce_amalgamated.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {620, 911924}}";
+			sepNavSelRange = "{215157, 0}";
+			sepNavVisRange = "{213979, 1942}";
+		};
 	};
 	E28A3A5013B2CFBF00E69D5C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -3138,11 +3159,11 @@
 		delayBeforeContinue = 0;
 		fileReference = E28D7F2013DF371600B58F44 /* juce_TimeSliceThread.cpp */;
 		functionName = "TimeSliceThread::TimeSliceThread (const String& threadName)";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 34;
 		location = SlowBurn;
-		modificationTime = 333396247.832611;
+		modificationTime = 333397276.963135;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -3169,6 +3190,16 @@
 		vrLoc = 2652;
 	};
 	E28D7F2813DF391E00B58F44 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
+		name = "Model.cpp: 131";
+		rLen = 0;
+		rLoc = 3950;
+		rType = 0;
+		vrLen = 1326;
+		vrLoc = 2652;
+	};
+	E28D7F3813DF3D1F00B58F44 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 2301BC0B61B96190C49537F0 /* Model.cpp */;
 		name = "Model.cpp: 131";

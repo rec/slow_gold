@@ -127,7 +127,10 @@ double Waveform::pixelsPerSecond() const {
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
   setSelection(loopPoints);
+  thread::callAsync(this, &Waveform::adjustCursors, loopPoints);
+}
 
+void Waveform::adjustCursors(const LoopPointList& loopPoints) {
   MessageManagerLock l;
   int size = loopPoints.loop_point_size() - 1;
   for (int i = 0; i < size; ++i) {
