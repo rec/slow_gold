@@ -68,7 +68,6 @@ class Model : public Listener<SamplePosition>,
   AudioSourceChannelInfo updateInfo_;
   audio::source::FrameSource<short, 2> updateSource_;
 
-
   typedef DataListener<LoopPointList> LoopListener;
   ptr<LoopListener> loopListener_;
 
