@@ -32,8 +32,6 @@
 		B27EBFCD27FB717E0ADB37A8 = { isa = PBXBuildFile; fileRef = CCDB866E3DA1673374E660F0; };
 		5EE17EFB5D024B7A68216B23 = { isa = PBXBuildFile; fileRef = 8166FF808E8658C257C6C730; };
 		626BF57A4D7EA3FCD14293CF = { isa = PBXBuildFile; fileRef = 52277B179D4EE61F274B7B67; };
-		80E291CD881F65ED2E9146EA = { isa = PBXBuildFile; fileRef = 87A7E8A19EEB7E06A34BA1EE; };
-		FC1113DA3B519195F261EF7C = { isa = PBXBuildFile; fileRef = 56C24A969235D4DAEECD5E64; };
 		A7AAB893483E931E9184C1DB = { isa = PBXBuildFile; fileRef = B8A175AD5D831891E0D75F8A; };
 		92D1CFEC55DA142548FCADFA = { isa = PBXBuildFile; fileRef = 19F8FDE43394608E1A618F81; };
 		A0E733722FD2CC64BE8D9BFF = { isa = PBXBuildFile; fileRef = 67C1CD8C11B5CA8FB5D5D89E; };
@@ -46,7 +44,6 @@
 		A9B7D8CFCBF22D21B041A5FD = { isa = PBXBuildFile; fileRef = BC31EEA4D6A09C2CF25DAEDB; };
 		8E828698792BC5DB5C73738E = { isa = PBXBuildFile; fileRef = 6D0C47387BFADE3830B2E8F6; };
 		F4CED3F664DE08FEDCDFC7D3 = { isa = PBXBuildFile; fileRef = B16984894FC73AA046536348; };
-		C6B30BADE42C339FBFE9B82C = { isa = PBXBuildFile; fileRef = 18874986A38F4E2E898C8CA8; };
 		44543472E0B355CC71A98294 = { isa = PBXBuildFile; fileRef = DDE92C556187932B314953E2; };
 		65346D4D67C963833A1D951F = { isa = PBXBuildFile; fileRef = 2A89E47D9F69C5EB900A00ED; };
 		3CF04C17E38334C1207A48FC = { isa = PBXBuildFile; fileRef = 0379091AB5331ADBDA826BF6; };
@@ -282,10 +279,6 @@
 		37EDC13651206DF88B235062 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RawFormat.h; path = ../../../../src/rec/audio/format/raw/RawFormat.h; sourceTree = SOURCE_ROOT; };
 		972EEC5EC48D758FCF5313E0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RawFormatReader.h; path = ../../../../src/rec/audio/format/raw/RawFormatReader.h; sourceTree = SOURCE_ROOT; };
 		478A714ECE2BE08E23AAE1DB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RawFormatWriter.h; path = ../../../../src/rec/audio/format/raw/RawFormatWriter.h; sourceTree = SOURCE_ROOT; };
-		87A7E8A19EEB7E06A34BA1EE = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Buffered.cpp; path = ../../../../src/rec/audio/source/Buffered.cpp; sourceTree = SOURCE_ROOT; };
-		351D17CEB6EB8B941963C5A9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Buffered.h; path = ../../../../src/rec/audio/source/Buffered.h; sourceTree = SOURCE_ROOT; };
-		56C24A969235D4DAEECD5E64 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BufferSource.cpp; path = ../../../../src/rec/audio/source/BufferSource.cpp; sourceTree = SOURCE_ROOT; };
-		142ABF3FD8EEA3F570D75074 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BufferSource.h; path = ../../../../src/rec/audio/source/BufferSource.h; sourceTree = SOURCE_ROOT; };
 		B8A175AD5D831891E0D75F8A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CircularBuffer.cpp; path = ../../../../src/rec/audio/source/CircularBuffer.cpp; sourceTree = SOURCE_ROOT; };
 		4DAFA7531A0D2D342F7C656A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CircularBuffer.h; path = ../../../../src/rec/audio/source/CircularBuffer.h; sourceTree = SOURCE_ROOT; };
 		19F8FDE43394608E1A618F81 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CreateSourceAndLoadMetadata.cpp; path = ../../../../src/rec/audio/source/CreateSourceAndLoadMetadata.cpp; sourceTree = SOURCE_ROOT; };
@@ -320,8 +313,6 @@
 		514438A1E61C8A10B4D30888 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConvertSample.h; path = ../../../../src/rec/audio/util/ConvertSample.h; sourceTree = SOURCE_ROOT; };
 		B16984894FC73AA046536348 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CopySamples.cpp; path = ../../../../src/rec/audio/util/CopySamples.cpp; sourceTree = SOURCE_ROOT; };
 		324A7C457BA9409B99291156 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CopySamples.h; path = ../../../../src/rec/audio/util/CopySamples.h; sourceTree = SOURCE_ROOT; };
-		18874986A38F4E2E898C8CA8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FillableBuffer.cpp; path = ../../../../src/rec/audio/util/FillableBuffer.cpp; sourceTree = SOURCE_ROOT; };
-		3014F87D2861CF4B2912AECE = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FillableBuffer.h; path = ../../../../src/rec/audio/util/FillableBuffer.h; sourceTree = SOURCE_ROOT; };
 		DDE92C556187932B314953E2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FillableFrameBuffer.cpp; path = ../../../../src/rec/audio/util/FillableFrameBuffer.cpp; sourceTree = SOURCE_ROOT; };
 		21F20EEAC4F4E4AB390E55FF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FillableFrameBuffer.h; path = ../../../../src/rec/audio/util/FillableFrameBuffer.h; sourceTree = SOURCE_ROOT; };
 		2A89E47D9F69C5EB900A00ED = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Frame.cpp; path = ../../../../src/rec/audio/util/Frame.cpp; sourceTree = SOURCE_ROOT; };
@@ -834,10 +825,6 @@
 				D287643C2B926FA27A435A83,
 				FB885AFE5150C6CC2AACC1C2 ); name = format; sourceTree = "<group>"; };
 		12C79CBAB1FF5B6488CACDD4 = { isa = PBXGroup; children = (
-				87A7E8A19EEB7E06A34BA1EE,
-				351D17CEB6EB8B941963C5A9,
-				56C24A969235D4DAEECD5E64,
-				142ABF3FD8EEA3F570D75074,
 				B8A175AD5D831891E0D75F8A,
 				4DAFA7531A0D2D342F7C656A,
 				19F8FDE43394608E1A618F81,
@@ -874,8 +861,6 @@
 				514438A1E61C8A10B4D30888,
 				B16984894FC73AA046536348,
 				324A7C457BA9409B99291156,
-				18874986A38F4E2E898C8CA8,
-				3014F87D2861CF4B2912AECE,
 				DDE92C556187932B314953E2,
 				21F20EEAC4F4E4AB390E55FF,
 				2A89E47D9F69C5EB900A00ED,
@@ -1470,7 +1455,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		99E88ABDEBE339B74AAA1190 = { isa = PBXGroup; children = (
+		47C25C29FE679BAF8B4D4CC8 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1569,8 +1554,6 @@
 				B27EBFCD27FB717E0ADB37A8,
 				5EE17EFB5D024B7A68216B23,
 				626BF57A4D7EA3FCD14293CF,
-				80E291CD881F65ED2E9146EA,
-				FC1113DA3B519195F261EF7C,
 				A7AAB893483E931E9184C1DB,
 				92D1CFEC55DA142548FCADFA,
 				A0E733722FD2CC64BE8D9BFF,
@@ -1583,7 +1566,6 @@
 				A9B7D8CFCBF22D21B041A5FD,
 				8E828698792BC5DB5C73738E,
 				F4CED3F664DE08FEDCDFC7D3,
-				C6B30BADE42C339FBFE9B82C,
 				44543472E0B355CC71A98294,
 				65346D4D67C963833A1D951F,
 				3CF04C17E38334C1207A48FC,
@@ -1786,7 +1768,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 99E88ABDEBE339B74AAA1190; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 47C25C29FE679BAF8B4D4CC8; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

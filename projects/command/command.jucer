@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="da6ssc4b4" name="command">
+  <MAINGROUP id="RMNe8P5Zw" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -116,14 +116,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
-          <FILE compile="1" file="../../src/rec/audio/source/Buffered.cpp" id="JJ6k4IjLE"
-                name="Buffered.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/Buffered.h" id="Tfi6DZssN"
-                name="Buffered.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/source/BufferSource.cpp"
-                id="fEZOtR19P" name="BufferSource.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/BufferSource.h"
-                id="movJPJktr" name="BufferSource.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/source/CircularBuffer.cpp"
                 id="i9NEDBbmw" name="CircularBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/CircularBuffer.h"
@@ -196,10 +188,6 @@
                 name="CopySamples.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/CopySamples.h" id="oaBLQ2qvy"
                 name="CopySamples.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/audio/util/FillableBuffer.cpp"
-                id="Ozzjob5y1" name="FillableBuffer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/util/FillableBuffer.h"
-                id="K4piO9oOZ" name="FillableBuffer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/util/FillableFrameBuffer.cpp"
                 id="s2E0kS4Ym" name="FillableFrameBuffer.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/util/FillableFrameBuffer.h"
@@ -1229,7 +1217,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="xnJYme8gn" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Ff9ez4y31" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

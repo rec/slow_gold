@@ -65,6 +65,10 @@ int64 Fillable::fillNextBlock() {
       merge(block, &filled_);
       if (isFull())
         onFilled();
+      position_ += size;
+      if (position_ > length_)
+        position_ -= length_;
+
       return size;
     }
   }
