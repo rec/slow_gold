@@ -7,8 +7,9 @@ namespace rec {
 namespace util {
 namespace block {
 
-// Return a list of blocks from BlockSet that fill the size of block,
-// starting at or after the start of block.
+// Return a list of blocks from BlockSet with a total length length,
+// starting at or after position;
+BlockList wrapSeries(const BlockSet& selection, Size position, Size length);
 BlockList fillSeries(const BlockSet& selection, Size position, Size length);
 
 }  // namespace block

@@ -11,7 +11,7 @@ using namespace rec::util::block;
 void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo) {
   BlockSet sel = selection();
   AudioSourceChannelInfo info = audioInfo;
-  BlockList blocks = fillSeries(sel, position_, info.numSamples);
+  BlockList blocks = wrapSeries(sel, position_, info.numSamples);
 
   for (BlockList::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
     setNextReadPosition(i->first);

@@ -4,35 +4,40 @@ namespace rec {
 namespace util {
 namespace block {
 
-BlockList fillSeries(const BlockSet& selection, Size position, Size length) {
-  BlockList result;
-  if (!selection.empty()) {
-    BlockSet::iterator i = selection.begin();
-    for (; i != selection.end() && (i->second <= position); ++i);
+namespace {
 
-    for (; length > 0; ++i) {
-      if (i == selection.end()) {
-        i = selection.begin();
-        position = i->first;
+BlockList fill(const BlockSet& sel, Size pos, Size len, bool wrap) {
+  BlockList result;
+  if (len && !sel.empty()) {
+    BlockSet::iterator i = sel.begin();
+    for (; i != sel.end() && (i->second <= pos); ++i);
+
+    for (int j = 0; len > 0 && (wrap || j < sel.size()); ++i, ++j) {
+      if (i == sel.end()) {
+        i = sel.begin();
+        pos = i->first;
       } else {
-        position = std::max(position, i->first);
+        pos = std::max(pos, i->first);
       }
-      Size size = std::min(length, i->second - position);
-      if (size <= 0) {
-        // DLOG_FIRST_N(ERROR, 4) << "Empty origin!";
-        /*
-				for (BlockSet::iterator i = selection.begin(); i != selection.end(); ++i)
-          DLOG(INFO) <<
-          */
-        DLOG(INFO) << selection;
-        DCHECK(false);
+      Size size = std::min(len, i->second - pos);
+      DCHECK(size > 0) << sel;
+      if (size <= 0)
         break;
-      }
-      result.push_back(makeBlock(position, position + size));
-      length -= size;
+      result.push_back(makeBlock(pos, pos + size));
+      len -= size;
     }
   }
   return result;
+}
+
+}  // namespace
+
+BlockList wrapSeries(const BlockSet& sel, Size pos, Size len) {
+  return fill(sel, pos, len, true);
+}
+
+BlockList fillSeries(const BlockSet& sel, Size pos, Size len) {
+  return fill(sel, pos, len, false);
 }
 
 }  // namespace block

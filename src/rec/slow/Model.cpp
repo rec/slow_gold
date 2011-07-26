@@ -51,11 +51,14 @@ Model::Model(Instance* i) : HasInstance(i),
                             time_(0),
                             triggerPosition_(-1),
                             updateBuffer_(2, 1024),
+                            updateSource_(thumbnailBuffer_.buffer()->frames()),
                             loopListener_(new LoopListenerImpl(this)) {
   audio::Source *s = new FrameSource<short, 2>(thumbnailBuffer_.buffer()->frames());
   player()->setSource(s);
   player()->timeBroadcaster()->addListener(this);
   components()->waveform_.setAudioThumbnail(thumbnailBuffer_.thumbnail());
+  updateInfo_.buffer = &updateBuffer_;
+  updateInfo_.startSample = 0;
 }
 
 void Model::setFile(const VirtualFile& f) {
@@ -107,9 +110,16 @@ thread::Result Model::fillOnce() {
     if (triggerPosition_ == -1) {
       // Find the first moment in the selection after "time" that needs to be filled.
       BlockSet fill = difference(timeSelection_, buffer->filled());
-      BlockList fillList = fillSeries(fill, time_, player()->length());
-      if (!fillList.empty())
-        buffer->setNextFillPosition(fillList.begin()->first);
+      if (!fill.empty()) {
+        BlockList fillList = fillSeries(fill, time_, player()->length());
+#if 0
+        DLOG(INFO) << "fill: " << fill  << " time: " << time_
+                   << " length: " << player()->length()
+                   << ", fillList: " << fillList;
+#endif
+        if (!fillList.empty())
+          buffer->setNextFillPosition(fillList.begin()->first);
+      }
     }
 
     if (triggerPosition_ != -1)
@@ -117,18 +127,16 @@ thread::Result Model::fillOnce() {
 
     int64 pos = buffer->position();
     int64 filled = buffer->fillNextBlock();
+    DCHECK(filled);
 
-    if (!thumbnailBuffer_.cacheWritten()) {
-      AudioSourceChannelInfo info;
-      info.numSamples = filled;
-      info.buffer = &updateBuffer_;
-      info.startSample = 0;
-      updateBuffer_.setSize(2, filled, false, false, true);
-      FrameSource<short, 2> src(buffer->frames());
-      src.setNextReadPosition(pos);
-      src.getNextAudioBlock(info);
-      thumbnailBuffer_.addBlock(pos, info);
-    }
+    if (thumbnailBuffer_.cacheWritten())
+      LOG(ERROR) << "Cache already written?";
+
+    updateInfo_.numSamples = filled;
+    updateBuffer_.setSize(2, filled, false, false, true);
+    updateSource_.setNextReadPosition(pos);
+    updateSource_.getNextAudioBlock(updateInfo_);
+    thumbnailBuffer_.addBlock(pos, updateInfo_);
   }
 
   thread::callAsync(&components()->waveform_, &Waveform::repaint);

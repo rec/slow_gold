@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "rec/audio/Audio.h"
+#include "rec/audio/util/ConvertSample.h"
 
 namespace rec {
 namespace audio {

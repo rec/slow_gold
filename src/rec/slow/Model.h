@@ -2,6 +2,7 @@
 #define __REC_SLOW_MODEL__
 
 #include "rec/audio/stretch/Stretch.pb.h"
+#include "rec/audio/source/FrameSource.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/source/Stereo.h"
 #include "rec/audio/util/Gain.h"
@@ -64,6 +65,10 @@ class Model : public Listener<SamplePosition>,
   ThumbnailBuffer thumbnailBuffer_;
 
   AudioSampleBuffer updateBuffer_;
+  AudioSourceChannelInfo updateInfo_;
+  audio::source::FrameSource<short, 2> updateSource_;
+
+
   typedef DataListener<LoopPointList> LoopListener;
   ptr<LoopListener> loopListener_;
 
