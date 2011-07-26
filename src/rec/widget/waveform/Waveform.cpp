@@ -125,7 +125,10 @@ double Waveform::pixelsPerSecond() const {
   return getWidth() / getTimeRange().size();
 }
 
-void Waveform::addAllCursors(const LoopPointList& loopPoints) {
+void Waveform::onDataChange(const LoopPointList& loopPoints) {
+  setSelection(loopPoints);
+
+  MessageManagerLock l;
   int size = loopPoints.loop_point_size() - 1;
   for (int i = 0; i < size; ++i) {
     double time = loopPoints.loop_point(i).time();
@@ -142,12 +145,10 @@ void Waveform::addAllCursors(const LoopPointList& loopPoints) {
 
   while (getNumChildComponents() > size + 1)
     delete removeChildComponent(size + 1);
-
-  setSelection(loopPoints);
 }
 
 void Waveform::setSelection(const LoopPointList& loopPoints) {
-  selection_.clear();
+  TimeSelection selection;
   for (int i = 0, size = loopPoints.loop_point_size() - 1; i < size; ) {
     for (; i < size && !loopPoints.loop_point(i).selected(); ++i);
     if (i < size) {
@@ -156,24 +157,25 @@ void Waveform::setSelection(const LoopPointList& loopPoints) {
       RealTime begin = loopPoints.loop_point(i).time();
       RealTime end = (j < size) ? RealTime(loopPoints.loop_point(j).time()) :
         getTimeRange().end_;
-      selection_.insert(Range<RealTime>(begin, end));
+      selection.insert(Range<RealTime>(begin, end));
       i = j;
     }
   }
-  Broadcaster<const TimeSelection&>::broadcast(selection_);
+  Broadcaster<const TimeSelection&>::broadcast(selection);
+  {
+    ScopedLock l(lock_);
+    selection_ = selection;
+  }
   resized();
 }
 
-void Waveform::onDataChange(const LoopPointList& loops) {
-  MessageManagerLock l;
-  addAllCursors(loops);
-}
-
 void Waveform::onDataChange(const ZoomProto& zp) {
-  ScopedLock l(lock_);
-  zoom_ = zp;
-  if (!zoom_.has_end())  // TODO:  get length properly.
-    zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
+  {
+    ScopedLock l(lock_);
+    zoom_ = zp;
+    if (!zoom_.has_end())  // TODO:  get length properly.
+      zoom_.set_end(thumbnail_ ? thumbnail_->getTotalLength() : 0);
+  }
 
   resized();
 }

@@ -43,8 +43,6 @@ class Waveform : public gui::component::Focusable<Component>,
   void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
   virtual void resized();
 
- 	void addAllCursors(const LoopPointList&);
-
   virtual void paint(Graphics&);
   virtual void repaint() { Component::repaint(); }
   virtual void onDataChange(const LoopPointList&);
