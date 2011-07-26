@@ -87,7 +87,7 @@ void Player::onDataChange(const LoopPointList& lpl) {
 
 void Player::clear() {
   setState(audio::transport::STOPPED);
-  timeBroadcaster()->broadcast(0);
+  timer_->setNextReadPosition(0);
 }
 
 void Player::onDataChange(const Gain& gain) {
