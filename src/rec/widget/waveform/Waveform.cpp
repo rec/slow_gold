@@ -92,15 +92,14 @@ void Waveform::paint(Graphics& g) {
 
         juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
+        RealTime first = draw.first, second = draw.second;
         if (desc_.layout() == WaveformProto::PARALLEL) {
           p.setColor(1 + 2 * selected);
-          thumbnail_->drawChannels(g, b, RealTime(draw.first), RealTime(draw.second), 1.0f);
-
+          thumbnail_->drawChannels(g, b, first, second, 1.0f);
         } else {
           for (int i = 0; i < channels; ++i) {
             p.setColor(selected ? i + 1 : i + 1 + channels);
-            thumbnail_->drawChannel(g, b, RealTime(draw.first),
-                                    RealTime(draw.second), i, 1.0f);
+            thumbnail_->drawChannel(g, b, first, second, i, 1.0f);
           }
         }
         r.first = draw.second;
