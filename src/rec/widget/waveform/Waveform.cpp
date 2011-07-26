@@ -29,7 +29,8 @@ Def<CursorProto> defaultDesc(
 
 Waveform::Waveform(const WaveformProto& d, const CursorProto* timeCursor)
     : desc_(d),
-      thumbnail_(NULL) {
+      thumbnail_(NULL),
+      empty_(true) {
   setName("Waveform");
 
   timeCursor_ = newCursor(*timeCursor, 0.0f, -1);
@@ -53,14 +54,9 @@ const CursorProto& Waveform::defaultTimeCursor() {
   return timeDesc.get();
 }
 
-void Waveform::setAudioThumbnail(juce::AudioThumbnail* thumbnail) {
-  {
-    ScopedLock l(lock_);
-    if (thumbnail_ == thumbnail)
-      return;
-    thumbnail_ = thumbnail;
-  }
-  resized();
+void Waveform::setEmpty(bool empty) {
+  ScopedLock l(lock_);
+  empty_ = empty;
 }
 
 void Waveform::paint(Graphics& g) {
@@ -68,52 +64,54 @@ void Waveform::paint(Graphics& g) {
     Painter p(desc_.widget(), &g);
     ScopedLock l(lock_);
 
-    if (thumbnail_) {
-      TimeSelection::iterator i = selection_.begin();
+    if (empty_) {
+      g.setFont(14.0f);
+      g.drawFittedText("Drop a file here or double-click to open a new file",
+                       0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
+    } else {
+      SampleSelection::iterator i = selection_.begin();
       Range<RealTime> range = getTimeRange();
-      Range<RealTime> r = range;
+      block::Block r;
+      r.first = SamplePosition(range.begin_);
+      r.second = SamplePosition(range.end_);
       const juce::Rectangle<int>& bounds = getLocalBounds();
       int channels = thumbnail_->getNumChannels();
 
-      while (r.size() > 0.0) {
-        for (; i != selection_.end() && i->end_ <= r.begin_; ++i);
-        bool selected = (i != selection_.end() && r.begin_ >= i->begin_);
-        Range<RealTime> draw = r;
+      while (block::getSize(r) > 0) {
+        for (; i != selection_.end() && i->second <= r.first; ++i);
+        bool selected = (i != selection_.end() && r.first >= i->first);
+        block::Block draw = r;
         if (selected)
-          draw.end_ = i->end_;
+          draw.second = i->second;
 
         else if (i != selection_.end())
-          draw.end_ = i->begin_;
+          draw.second = i->first;
 
-        int x1 = timeToX(draw.begin_);
-        int x2 = timeToX(draw.end_);
+        int x1 = timeToX(draw.first);
+        int x2 = timeToX(draw.second);
 
         juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
         if (desc_.layout() == WaveformProto::PARALLEL) {
           p.setColor(1 + 2 * selected);
-          thumbnail_->drawChannels(g, b, draw.begin_, draw.end_, 1.0f);
+          thumbnail_->drawChannels(g, b, RealTime(draw.first), RealTime(draw.second), 1.0f);
 
         } else {
           for (int i = 0; i < channels; ++i) {
             p.setColor(selected ? i + 1 : i + 1 + channels);
-            thumbnail_->drawChannel(g, b, draw.begin_, draw.end_, i, 1.0f);
+            thumbnail_->drawChannel(g, b, RealTime(draw.first),
+                                    RealTime(draw.second), i, 1.0f);
           }
         }
-        r.begin_ = draw.end_;
+        r.first = draw.second;
       }
       drawGrid(g, range);
-
-    } else {
-      g.setFont(14.0f);
-      g.drawFittedText("Drop a file here or double-click to open a new file",
-                       0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
     }
   }
   paintFocus(g);
 }
 
-int Waveform::timeToX(double t) const {
+int Waveform::timeToX(RealTime t) const {
   return static_cast<int>((t - getTimeRange().begin_) * pixelsPerSecond());
 }
 
@@ -126,7 +124,13 @@ double Waveform::pixelsPerSecond() const {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
-  setSelection(loopPoints);
+  SampleSelection selection = audio::getTimeSelection(loopPoints);
+  {
+    ScopedLock l(lock_);
+    selection_ = selection;
+  }
+
+  resized();
   thread::callAsync(this, &Waveform::adjustCursors, loopPoints);
 }
 
@@ -148,28 +152,6 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
 
   while (getNumChildComponents() > size + 1)
     delete removeChildComponent(size + 1);
-}
-
-void Waveform::setSelection(const LoopPointList& loopPoints) {
-  TimeSelection selection;
-  for (int i = 0, size = loopPoints.loop_point_size() - 1; i < size; ) {
-    for (; i < size && !loopPoints.loop_point(i).selected(); ++i);
-    if (i < size) {
-      int j = i;
-      for (; j < size && loopPoints.loop_point(j).selected(); ++j);
-      RealTime begin = loopPoints.loop_point(i).time();
-      RealTime end = (j < size) ? RealTime(loopPoints.loop_point(j).time()) :
-        getTimeRange().end_;
-      selection.insert(Range<RealTime>(begin, end));
-      i = j;
-    }
-  }
-  Broadcaster<const TimeSelection&>::broadcast(selection);
-  {
-    ScopedLock l(lock_);
-    selection_ = selection;
-  }
-  resized();
 }
 
 void Waveform::onDataChange(const ZoomProto& zp) {
@@ -225,8 +207,8 @@ Range<RealTime> Waveform::getTimeRange() const {
   ScopedLock l(lock_);
   Range<RealTime> r;
   if (zoom_.zoom_to_selection() && !selection_.empty()) {
-    r.begin_ = selection_.begin()->begin_;
-    r.end_ = selection_.rbegin()->end_;
+    r.begin_ = selection_.begin()->first;
+    r.end_ = selection_.rbegin()->second;
     if (r.end_ == 0.0)
       r.end_ = zoom_.end();
 

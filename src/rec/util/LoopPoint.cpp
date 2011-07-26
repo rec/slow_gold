@@ -10,20 +10,20 @@ const SampleSelection getTimeSelection(const LoopPointList& list,
                                        bool emptyMeansAll) {
   SampleSelection sel;
   int size = list.loop_point_size() - 1;
-  DCHECK_GE(size, 1);
-  for (int i = 0, j; i < size; ++i) {
-    for (; i < size && !list.loop_point(i).selected(); ++i);
-    for (j = i; j < size && list.loop_point(j).selected(); ++j);
-    if (j != i) {
-      RealTime begin = scale * list.loop_point(i).time();
-      RealTime end = scale * list.loop_point(j).time();
-      sel.insert(block::makeBlock(timeToSamples(begin), timeToSamples(end)));
+  if (size > 0) {
+    for (int i = 0, j; i < size; ++i) {
+      for (; i < size && !list.loop_point(i).selected(); ++i);
+      for (j = i; j < size && list.loop_point(j).selected(); ++j);
+      if (j != i) {
+        RealTime begin = scale * list.loop_point(i).time();
+        RealTime end = scale * list.loop_point(j).time();
+        sel.insert(block::makeBlock(timeToSamples(begin), timeToSamples(end)));
+      }
+      i = j;
     }
-    i = j;
+    if (emptyMeansAll && sel.empty())
+      sel.insert(block::makeBlock(0, timeToSamples(list.loop_point(size).time())));
   }
-  if (emptyMeansAll && sel.empty())
-    sel.insert(block::makeBlock(0, timeToSamples(list.loop_point(size).time())));
-
   return sel;
 }
 

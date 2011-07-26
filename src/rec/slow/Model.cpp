@@ -73,7 +73,10 @@ void Model::setFile(const VirtualFile& f) {
     return;
   }
 
-  if (empty()) {
+  bool isEmpty = empty();
+  components()->waveform_.setEmpty(isEmpty);
+
+  if (isEmpty) {
     DLOG(INFO) << "Setting empty file";
   } else {
     components()->directoryTree_.refreshNode(file_);

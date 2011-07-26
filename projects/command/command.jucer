@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="36pJmViVo" name="command">
+  <MAINGROUP id="da6ssc4b4" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -1014,10 +1014,6 @@
                 id="NmGwMrgcW" name="TextComponent.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/widget/status/TextComponent.h"
                 id="e5jIhEvhC" name="TextComponent.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/widget/status/TimeAndLength.cpp"
-                id="NybPPs9y0" name="TimeAndLength.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/widget/status/TimeAndLength.h"
-                id="rGRQyPB2P" name="TimeAndLength.h" resource="0"/>
         </GROUP>
         <GROUP id="XG8GOIIwK" name="tree">
           <FILE compile="1" file="../../src/rec/widget/tree/CD.cpp" id="nGhIZHggI"
@@ -1233,7 +1229,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2A23vIjB9" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="xnJYme8gn" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

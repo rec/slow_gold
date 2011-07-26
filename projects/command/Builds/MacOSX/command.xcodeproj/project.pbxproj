@@ -189,7 +189,6 @@
 		4AD352878C5A21CF76F70DF5 = { isa = PBXBuildFile; fileRef = 2FB0FBF82C2C2DA958F6E36A; };
 		D18EE8FE91699AD36D0451DB = { isa = PBXBuildFile; fileRef = E8AFCA5A278B2A59C0DAF279; };
 		7A6203C6C96C7EB26DDCF215 = { isa = PBXBuildFile; fileRef = 85AE0BD79E763F231E853450; };
-		1FEDFFB1D50A9D588CBDA0DB = { isa = PBXBuildFile; fileRef = D3417F6AEFE69AE95E4F40FD; };
 		B1FA49E8A7385A0D38F80061 = { isa = PBXBuildFile; fileRef = A642C96790588FB36D86DFA2; };
 		DE27E463096DDB61A53E84F5 = { isa = PBXBuildFile; fileRef = 720829C42D8CAF7201143C7D; };
 		45A28EC2B51E01789AF4B7E7 = { isa = PBXBuildFile; fileRef = A3A1077D61C2F6ACAE0E33CB; };
@@ -703,8 +702,6 @@
 		F2F633218D0501E33038F502 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Status.h; path = ../../../../src/rec/widget/status/Status.h; sourceTree = SOURCE_ROOT; };
 		85AE0BD79E763F231E853450 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TextComponent.cpp; path = ../../../../src/rec/widget/status/TextComponent.cpp; sourceTree = SOURCE_ROOT; };
 		0877D7D02670C8ADC83D18EA = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TextComponent.h; path = ../../../../src/rec/widget/status/TextComponent.h; sourceTree = SOURCE_ROOT; };
-		D3417F6AEFE69AE95E4F40FD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeAndLength.cpp; path = ../../../../src/rec/widget/status/TimeAndLength.cpp; sourceTree = SOURCE_ROOT; };
-		0E7E550D7500CB5FA7EB0E57 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimeAndLength.h; path = ../../../../src/rec/widget/status/TimeAndLength.h; sourceTree = SOURCE_ROOT; };
 		A642C96790588FB36D86DFA2 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CD.cpp; path = ../../../../src/rec/widget/tree/CD.cpp; sourceTree = SOURCE_ROOT; };
 		65A054813D2B283271BF921F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CD.h; path = ../../../../src/rec/widget/tree/CD.h; sourceTree = SOURCE_ROOT; };
 		720829C42D8CAF7201143C7D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Directory.cpp; path = ../../../../src/rec/widget/tree/Directory.cpp; sourceTree = SOURCE_ROOT; };
@@ -1309,9 +1306,7 @@
 				E8AFCA5A278B2A59C0DAF279,
 				F2F633218D0501E33038F502,
 				85AE0BD79E763F231E853450,
-				0877D7D02670C8ADC83D18EA,
-				D3417F6AEFE69AE95E4F40FD,
-				0E7E550D7500CB5FA7EB0E57 ); name = status; sourceTree = "<group>"; };
+				0877D7D02670C8ADC83D18EA ); name = status; sourceTree = "<group>"; };
 		D1F82D4C0733D9FF7A9D4B69 = { isa = PBXGroup; children = (
 				A642C96790588FB36D86DFA2,
 				65A054813D2B283271BF921F,
@@ -1475,7 +1470,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		55EDDB9C481C21E22DB068D6 = { isa = PBXGroup; children = (
+		99E88ABDEBE339B74AAA1190 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1731,7 +1726,6 @@
 				4AD352878C5A21CF76F70DF5,
 				D18EE8FE91699AD36D0451DB,
 				7A6203C6C96C7EB26DDCF215,
-				1FEDFFB1D50A9D588CBDA0DB,
 				B1FA49E8A7385A0D38F80061,
 				DE27E463096DDB61A53E84F5,
 				45A28EC2B51E01789AF4B7E7,
@@ -1792,7 +1786,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 55EDDB9C481C21E22DB068D6; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 99E88ABDEBE339B74AAA1190; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

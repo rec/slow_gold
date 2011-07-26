@@ -31,9 +31,6 @@ struct RealTime {
   operator double() const { return time_; }
 };
 
-typedef Range<RealTime>::Set TimeSelection;
-
-
 }  // namespace rec
 
 #endif  // __REC_BASE_REALTIME__

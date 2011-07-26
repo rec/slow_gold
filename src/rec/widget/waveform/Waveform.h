@@ -4,7 +4,7 @@
 #include <set>
 
 #include "rec/base/RealTime.h"
-#include "rec/util/LoopPoint.pb.h"
+#include "rec/util/LoopPoint.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/util/Mode.pb.h"
 #include "rec/util/Range.h"
@@ -31,8 +31,8 @@ class Waveform : public gui::component::Focusable<Component>,
                  public DataListener<ZoomProto>,
                  public DataListener<Mode>,
                  public Broadcaster<const MouseWheelEvent&>,
-                 public Broadcaster<const TimeAndMouseEvent&>,
-                 public Broadcaster<const TimeSelection&> {
+                 public Broadcaster<const TimeAndMouseEvent&>
+                 /*public Broadcaster<const TimeSelection&>*/ {
  public:
   Waveform(const WaveformProto& desc = WaveformProto::default_instance(),
            const CursorProto* cursor = &defaultTimeCursor());
@@ -40,8 +40,9 @@ class Waveform : public gui::component::Focusable<Component>,
 
   static const CursorProto& defaultTimeCursor();
 
-  void setAudioThumbnail(juce::AudioThumbnail* thumbnail);
+  void setAudioThumbnail(juce::AudioThumbnail* t) { thumbnail_ = t; }
   virtual void resized();
+  void setEmpty(bool empty);
 
   virtual void paint(Graphics&);
   virtual void repaint() { Component::repaint(); }
@@ -65,17 +66,17 @@ class Waveform : public gui::component::Focusable<Component>,
 
   Cursor* newCursor(const CursorProto& d, double time, int index);
   void doClick(const juce::MouseEvent& e, int clickCount);
-  void setSelection(const LoopPointList&);
-  int timeToX(double t) const;
+  int timeToX(RealTime t) const;
   void cursorDragged(int index, int x);
 
   CriticalSection lock_;
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   Cursor* timeCursor_;
-  TimeSelection selection_;
+  SampleSelection selection_;
 
   ZoomProto zoom_;
+  bool empty_;
 
   DISALLOW_COPY_AND_ASSIGN(Waveform);
 
