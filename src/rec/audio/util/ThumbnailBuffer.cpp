@@ -35,8 +35,7 @@ void ThumbnailBuffer::writeThumbnail() {
   cacheWritten_ = true;
   if (!thumbnail_.getTotalLength()) {
     DLOG(ERROR) << "writing empty cache";
-
-  } else if (!cacheWritten_) {
+  } else {
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
     thumbnail_.saveTo(*out);
   }
