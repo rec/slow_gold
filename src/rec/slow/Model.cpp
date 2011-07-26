@@ -128,8 +128,7 @@ thread::Result Model::fillOnce() {
     }
   }
 
-  MessageManagerLock l;
-  components()->waveform_.repaint();
+  thread::callAsync(&components()->waveform_, &Waveform::repaint);
   return thread::YIELD;
 }
 
