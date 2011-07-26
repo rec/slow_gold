@@ -26,7 +26,6 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
   explicit LoopPointDataListener(Loops* loops) : loops_(loops) {}
 
   virtual void onDataChange(const LoopPointList& p) {
-    DLOG(INFO) << "LoopPointDataListener";
     loops_->setLoopPoints(p);
   }
 

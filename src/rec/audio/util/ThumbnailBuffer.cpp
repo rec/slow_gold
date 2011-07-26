@@ -48,7 +48,6 @@ void ThumbnailBuffer::writeThumbnail() {
 }
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f) {
-  DLOG(INFO) << "setReader";
   ptr<AudioFormatReader> reader(source::createReaderAndLoadMetadata(f));
   if (reader) {
     file_ = getShadowFile(f, "thumbnail.stream");

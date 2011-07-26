@@ -60,7 +60,7 @@ Model::Model(Instance* i) : HasInstance(i),
 }
 
 void Model::setFile(const VirtualFile& f) {
-  DLOG(INFO) << "setFile: " << f.ShortDebugString();
+  // DLOG(INFO) << "setFile: " << f.ShortDebugString();
   player()->clear();
   components()->playerController_.clearLevels();
   components()->directoryTree_.refreshNode(file_);
@@ -164,7 +164,7 @@ void Model::operator()(const LoopPointList& loops) {
   if (empty())
     return;
 
-  DLOG(INFO) << loops.ShortDebugString();
+  // DLOG(INFO) << loops.ShortDebugString();
   timeSelection_ = audio::getTimeSelection(loops);
   if (timeSelection_.empty()) {
     DLOG(ERROR) << "Empty selection";

@@ -27,9 +27,9 @@ class Loops : public component::Focusable<TableController>, public Cuttable {
 
   static const double CLOSE;
 
-  int getNumRows() {
+  virtual int getNumRows() {
     ScopedLock l(lock_);
-    return loopPoints_->loop_point_size();
+    return std::max(0, loopPoints_->loop_point_size() - 1);
   }
 
   double near(double x, double y) const { return util::near(x, y, CLOSE); }
