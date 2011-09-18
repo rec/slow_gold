@@ -45,11 +45,9 @@ class Broadcaster {
   virtual ~Broadcaster();
 
   virtual void broadcast(Type x);
-  virtual void broadcast() { broadcast(broadcastValue()); }
 
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);
-  virtual const Type broadcastValue() const { return Type(); }
 
  protected:
   CriticalSection lock_;
