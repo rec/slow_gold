@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -6,7 +8,6 @@ namespace gui {
 namespace audio {
 
 const float LevelMeter::SCALE_UP_METER = 2.0f;
-
 
 LevelMeter::LevelMeter(bool horiz, bool rms, int margin)
     : horizontal_(horiz), rms_(rms), gain_(1.0f), margin_(margin) {
