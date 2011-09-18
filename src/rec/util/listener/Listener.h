@@ -47,7 +47,7 @@ class Broadcaster {
   virtual void broadcast(Type x);
   virtual void broadcast() { broadcast(broadcastValue()); }
 
-  virtual void addListener(Listener<Type>* listener, bool update = false);
+  virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);
   virtual const Type broadcastValue() const { return Type(); }
 
@@ -91,7 +91,7 @@ Broadcaster<Type>::~Broadcaster() {
 }
 
 template <typename Type>
-void Broadcaster<Type>::addListener(Listener<Type>* listener, bool update) {
+void Broadcaster<Type>::addListener(Listener<Type>* listener) {
   ScopedLock l(lock_);
   listeners_.insert(listener);
 
@@ -100,9 +100,6 @@ void Broadcaster<Type>::addListener(Listener<Type>* listener, bool update) {
     ScopedLock l(listener->listenerLock_);
     listener->broadcasters_.insert(this);
   }
-
-  if (update)
-    (*listener)(broadcastValue());
 }
 
 template <typename Type>
