@@ -29,13 +29,13 @@ struct Copy {
 
     if (destChannels == 1 && sourceChannels == 2) {
       Out *o = out[0] + destOffset;
-      for (size_t s = 0; s < sourceSize; ++s)
+      for (int s = 0; s < sourceSize; ++s)
         o[s] = average(get(in, s, 0, 2), get(in, s, 1, 2));
 
     } else {
-      for (size_t c = 0; c < destChannels; ++c) {
+      for (int c = 0; c < destChannels; ++c) {
         Out *o = out[c] + destOffset;
-        for (size_t s = 0; s < sourceSize; ++s)
+        for (int s = 0; s < sourceSize; ++s)
           o[s] = get(in, s, c, sourceChannels);
       }
     }

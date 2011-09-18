@@ -43,6 +43,10 @@ class RawFormatReader : public AudioFormatReader {
           s = (endian_ ? input->readShortBigEndian() : input->readShort()) * 65536;
         else if (bitsPerSample == 32)
           s = (endian_ ? input->readIntBigEndian() : input->readInt()) * 65536;
+        else {
+          DCHECK(false) << "Unknown bits per sample " << bitsPerSample;
+          s = 0;
+        }
 
         destSamples[c][i + startSampleInFile] = s;
       }
