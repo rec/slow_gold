@@ -47,7 +47,7 @@ void DialComponent::operator()(const Range<RealTime>& r) {
 }
 
 void DialComponent::recomputeAngle() {
-  return;  // TODO
+#ifdef TODO
   double length = range_.size();
   #if 0
   // TODO: take care of this.
@@ -65,6 +65,7 @@ void DialComponent::recomputeAngle() {
     timeAngle_ = timeAngle;
     thread::callAsync(this, &DialComponent::repaint);
   }
+#endif
 }
 
 void DialComponent::paint(Graphics& g) {
