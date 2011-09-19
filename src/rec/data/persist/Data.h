@@ -24,7 +24,7 @@ class Data : public data::UntypedData,
     return proto_;
   }
 
-  virtual void operator()(const Proto& p) {
+  virtual void operator()(const Proto&) {
     DCHECK(false);
   }
 
