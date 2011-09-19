@@ -7,7 +7,7 @@ namespace rec {
 namespace gui {
 namespace component {
 
-#define FOCUS_BUG_FIXED false
+//#define FOCUS_BUG_FIXED false
 
 template <typename Type = Component>
 class Focusable : public Type {
@@ -23,8 +23,11 @@ class Focusable : public Type {
   virtual ~Focusable() {}
 
   virtual void focusGained(Component::FocusChangeType) {
-    if (FOCUS_BUG_FIXED && manager_)
+
+#ifdef FOCUS_BUG_FIXED
+    if (manager_)
       manager_->commandStatusChanged();
+#endif
 
     this->repaint();
   }
