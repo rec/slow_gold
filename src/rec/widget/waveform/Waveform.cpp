@@ -241,7 +241,9 @@ void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
     return;
   RealTime units = pow(10.0, floor(log10(width)));
 
-  int b = ceil(r.begin_ / units), e = r.end_ / units, diff = e - b;
+  int b = static_cast<int>(ceil(r.begin_ / units));
+  int e = static_cast<int>(r.end_ / units);
+  int diff = e - b;
 
   if (diff <= 2)
     units /= 2.0;
@@ -251,8 +253,8 @@ void Waveform::drawGrid(Graphics& g, const Range<RealTime>& r) {
   if (units > 10.0)
     units *= 1.2;
 
-  b = ceil(r.begin_ / units);
-  e = floor(r.end_ / units);
+  b = static_cast<int>(ceil(r.begin_ / units));
+  e = static_cast<int>(floor(r.end_ / units));
   int h = getHeight();
   int decimals = 0;
   if (units < 0.01)
