@@ -24,11 +24,12 @@ class RawFormatReader : public AudioFormatReader {
 
   virtual bool readSamples(int** destSamples,
                            int numDestChannels,
-                           int startOffsetInDestBuffer,
+                           int startOffsetInDestBuffer,  // TODO:  Why isn't this used?
                            int64 startSampleInFile,
                            int numSamples) {
     if (numDestChannels > numChannels)
       numDestChannels = numChannels;
+
     if (lengthInSamples < 0) {
       frameSize_ = (numChannels * bitsPerSample / 8);
       lengthInSamples = input->getTotalLength() / frameSize_;
