@@ -20,7 +20,7 @@ inline State invert(State s) { return s ? STOPPED : RUNNING; }
 }  // namespace transport
 
 inline RealTime samplesToTime(SamplePosition samples) {
-  return RealTime(samples.position_);
+  return RealTime(samples);
 }
 
 inline SamplePosition timeToSamples(RealTime time) {

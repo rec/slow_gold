@@ -990,6 +990,12 @@
 			E23DC766136F65B600A52041 = E23DC766136F65B600A52041 /* PBXTextBookmark */;
 			E23E467712EFAF870080BD76 = E23E467712EFAF870080BD76 /* PBXTextBookmark */;
 			E25A996A13CCCC1B00479F97 = E25A996A13CCCC1B00479F97 /* PBXTextBookmark */;
+			E25C0AF71428A51C00985DD4 /* XCBuildMessageTextBookmark */ = E25C0AF71428A51C00985DD4 /* XCBuildMessageTextBookmark */;
+			E25C0AF91428A52500985DD4 /* XCBuildMessageTextBookmark */ = E25C0AF91428A52500985DD4 /* XCBuildMessageTextBookmark */;
+			E25C0AFA1428A55100985DD4 /* XCBuildMessageTextBookmark */ = E25C0AFA1428A55100985DD4 /* XCBuildMessageTextBookmark */;
+			E25C0AFB1428A55100985DD4 /* PBXTextBookmark */ = E25C0AFB1428A55100985DD4 /* PBXTextBookmark */;
+			E25C0AFE1428A55100985DD4 /* PBXTextBookmark */ = E25C0AFE1428A55100985DD4 /* PBXTextBookmark */;
+			E25C0B011428A55100985DD4 /* PBXTextBookmark */ = E25C0B011428A55100985DD4 /* PBXTextBookmark */;
 			E2634EDA13CFA03D002B0191 = E2634EDA13CFA03D002B0191 /* PBXTextBookmark */;
 			E2634FE813D0F203002B0191 = E2634FE813D0F203002B0191 /* PBXTextBookmark */;
 			E2634FE913D0F203002B0191 = E2634FE913D0F203002B0191 /* PBXTextBookmark */;
@@ -1136,9 +1142,9 @@
 	};
 	A433D0832C0312A5D246D41A /* Player.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1047, 1352}}";
-			sepNavSelRange = "{2094, 0}";
-			sepNavVisRange = "{1282, 978}";
+			sepNavIntBoundsRect = "{{0, 0}, {762, 1352}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1209, 1116}";
 			sepNavWindowFrame = "{{63, 286}, {836, 818}}";
 		};
 	};
@@ -1571,9 +1577,9 @@
 		fRef = C3BABA804C594DF88A50B485 /* Audio.h */;
 		name = "Audio.h: 28";
 		rLen = 0;
-		rLoc = 627;
+		rLoc = 637;
 		rType = 0;
-		vrLen = 1246;
+		vrLen = 704;
 		vrLoc = 0;
 	};
 	E2221EE51347159100298AE3 /* PBXTextBookmark */ = {
@@ -1910,6 +1916,87 @@
 		rType = 0;
 		vrLen = 711;
 		vrLoc = 1142;
+	};
+	E25C0AF61428A51C00985DD4 /* SamplePosition.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = SamplePosition.h;
+		path = ../../../../../rec/src/rec/base/SamplePosition.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1290, 807}}";
+			sepNavSelRange = "{1313, 19}";
+			sepNavVisRange = "{0, 1396}";
+		};
+	};
+	E25C0AF71428A51C00985DD4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'rec::int64 rec::SamplePosition::position_' is private";
+		fRef = E25C0AF61428A51C00985DD4 /* SamplePosition.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 33;
+		rType = 1;
+	};
+	E25C0AF81428A52500985DD4 /* Audio.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Audio.h;
+		path = ../../../../../rec/src/rec/audio/Audio.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1290, 807}}";
+			sepNavSelRange = "{547, 0}";
+			sepNavVisRange = "{0, 714}";
+		};
+	};
+	E25C0AF91428A52500985DD4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Within this context";
+		fRef = E25C0AF81428A52500985DD4 /* Audio.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 22;
+		rType = 1;
+	};
+	E25C0AFA1428A55100985DD4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /development/rec/projects/slow/Builds/MacOSX/../../../../src/rec/audio/source/Player.cpp";
+		fRef = A433D0832C0312A5D246D41A /* Player.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	E25C0AFB1428A55100985DD4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A433D0832C0312A5D246D41A /* Player.cpp */;
+		name = "Player.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1116;
+		vrLoc = 1209;
+	};
+	E25C0AFE1428A55100985DD4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25C0AF81428A52500985DD4 /* Audio.h */;
+		name = "Audio.h: 23";
+		rLen = 0;
+		rLoc = 547;
+		rType = 0;
+		vrLen = 714;
+		vrLoc = 0;
+	};
+	E25C0B011428A55100985DD4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E25C0AF61428A51C00985DD4 /* SamplePosition.h */;
+		name = "SamplePosition.h: 34";
+		rLen = 19;
+		rLoc = 1313;
+		rType = 0;
+		vrLen = 1396;
+		vrLoc = 0;
 	};
 	E2634EDA13CFA03D002B0191 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

@@ -28,8 +28,10 @@ struct SamplePosition {
   const SamplePosition operator+(int64 p) { return position_ + p; }
   const SamplePosition operator-(int64 p) { return position_ - p; }
 
-  int64 position_;
   operator int64() const { return position_; }
+
+ private:
+  int64 position_;
 };
 
 }  // namespace rec
