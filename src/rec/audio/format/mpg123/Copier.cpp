@@ -16,14 +16,14 @@ int average(int x, int y) { return int((x + (long)y)/ 2); }
 
 template <typename In, typename Out>
 struct Copy {
-  static Out get(In* in, size_t pos, int channel, int channels) {
+  static Out get(In* in, int64 pos, int channel, int channels) {
     return cast(in[pos * channels + channel % channels]);
   }
 
   static Out cast(In in) { return Out(in); }
 
-  static void copy(int** destSamples, int destChannels, int destOffset,
-                   void* source, int sourceChannels, size_t sourceSize) {
+  static void copy(int** destSamples, int destChannels, int64 destOffset,
+                   void* source, int sourceChannels, int64 sourceSize) {
     Out** out = (Out**) destSamples;
     In* in = (In*) source;
 

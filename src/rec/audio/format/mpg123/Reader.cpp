@@ -30,7 +30,7 @@ Reader::~Reader() {
 
 bool Reader::readSamples(int** dest, int destChannels, int destOffset,
                          int64 startSampleInFile, int numSamples) {
-  if (mpg123_seek(mh_, startSampleInFile, SEEK_SET) < 0)
+  if (mpg123_seek(mh_, static_cast<size_t>(startSampleInFile), SEEK_SET) < 0)
     return false;
 
   int64 bytesPerSample = this->bitsPerSample / 8;
