@@ -95,7 +95,7 @@ void Player::onDataChange(const Gain& gain) {
 }
 
 void Player::setGain(double gain) {
-  player_.setGain(gain);
+  player_.setGain(static_cast<float>(gain));
 }
 
 }  // namespace source
