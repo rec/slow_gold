@@ -11,6 +11,7 @@ struct SamplePosition {
   SamplePosition(int p) : position_(p) {}
   SamplePosition(RealTime time) : position_(static_cast<int64>(44100 * time)) {}
   SamplePosition(float time) : position_(static_cast<int64>(44100 * time)) {}
+  SamplePosition(double time) : position_(static_cast<int64>(44100 * time)) {}
 
   SamplePosition& operator++() { ++position_; return *this; }
   SamplePosition& operator--() { --position_; return *this; }

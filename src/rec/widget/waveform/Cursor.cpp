@@ -31,7 +31,7 @@ void Cursor::setTime(RealTime time) {
 }
 
 void Cursor::setTime(SamplePosition time) {
-  setTime(rec::audio::samplesToTime(time));
+  setTime(RealTime(time));
 }
 
 double Cursor::getTime() const {
@@ -47,7 +47,7 @@ void Cursor::operator()(SamplePosition t) {
 
 void Cursor::setCursorBounds(double time,
                              const juce::Rectangle<int>& waveformBounds) {
-  juce::Rectangle<int> bounds = waveformBounds;                            
+  juce::Rectangle<int> bounds = waveformBounds;
   int componentWidth = desc().component_width();
   int x = 0;
 

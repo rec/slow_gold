@@ -19,14 +19,6 @@ inline State invert(State s) { return s ? STOPPED : RUNNING; }
 
 }  // namespace transport
 
-inline RealTime samplesToTime(SamplePosition samples) {
-  return RealTime(samples);
-}
-
-inline SamplePosition timeToSamples(RealTime time) {
-  return SamplePosition(time);
-}
-
 }  // namespace audio
 }  // namespace rec
 

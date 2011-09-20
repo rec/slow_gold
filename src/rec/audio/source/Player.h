@@ -45,7 +45,7 @@ class Player : public Broadcaster<transport::State>,
 
   SamplePosition getNextReadPosition();
   void setNextReadPosition(int64 t);
-  RealTime getTime() { return samplesToTime(getNextReadPosition()); }
+  RealTime getTime() { return getNextReadPosition(); }
 
   transport::State state() const;
   Device* device() { return device_; }
@@ -60,12 +60,12 @@ class Player : public Broadcaster<transport::State>,
   void setGain(double);
 
   SamplePosition length() const { return timer_->getTotalLength(); }
-  RealTime realLength() const { return audio::samplesToTime(length()); }
+  RealTime realLength() const { return length(); }
   void clear();
   void setStretch(const stretch::Stretch&);
   void setSource(Source*);
   void setSelection(const block::BlockSet& s);
-  
+
  private:
   CriticalSection lock_;
 

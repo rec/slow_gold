@@ -17,12 +17,12 @@ const SampleSelection getTimeSelection(const LoopPointList& list,
       if (j != i) {
         RealTime begin = scale * list.loop_point(i).time();
         RealTime end = scale * list.loop_point(j).time();
-        sel.insert(block::makeBlock(timeToSamples(begin), timeToSamples(end)));
+        sel.insert(block::makeBlock(SamplePosition(begin), SamplePosition(end)));
       }
       i = j;
     }
     if (emptyMeansAll && sel.empty())
-      sel.insert(block::makeBlock(0, timeToSamples(list.loop_point(size).time())));
+      sel.insert(block::makeBlock(0, SamplePosition(list.loop_point(size).time())));
   }
   return sel;
 }

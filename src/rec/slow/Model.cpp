@@ -200,7 +200,7 @@ void Model::operator()(const LoopPointList& loops) {
 
 void Model::setCursorTime(int index, RealTime time) {
   if (index < 0) {
-    jumpToTime(audio::timeToSamples(time));
+    jumpToTime(time);
   } else {
   	VirtualFile f = file();
     LoopPointList loops(persist::get<LoopPointList>(f));
