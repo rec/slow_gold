@@ -48,7 +48,7 @@ inline bool isBlock(const BlockSet& set, const Block& block) {
   return (set.size() == 1) && (*set.begin() == block);
 }
 
-inline int fullTo(const BlockSet& set) {
+inline Size fullTo(const BlockSet& set) {
   return (set.empty() || set.begin()->first) ? 0 : set.begin()->second;
 }
 
@@ -67,8 +67,8 @@ inline AudioSourceChannelInfo audioSourceChannelInfo(
     const Block& block,
     AudioSampleBuffer* buf = NULL) {
   AudioSourceChannelInfo info;
-  info.startSample = block.first;
-  info.numSamples = getSize(block);
+  info.startSample = static_cast<int>(block.first);  // TODO: bug Jules about this!
+  info.numSamples = static_cast<int>(getSize(block));
   info.buffer = buf;
   return info;
 }

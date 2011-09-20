@@ -16,9 +16,9 @@ class Empty : public PositionableAudioSource {
   virtual void setNextReadPosition(int64) {}
 
   virtual bool isLooping() const { return false; }
-  virtual void setLooping(bool looping) {}
+  virtual void setLooping(bool /* looping */) {}
 
-  virtual void prepareToPlay(int s, double r) {}
+  virtual void prepareToPlay(int, double) {}
   virtual void releaseResources() {}
 };
 
