@@ -20,7 +20,6 @@ class Cursor : public Component, public Listener<SamplePosition> {
   virtual ~Cursor() {}
 
   void setTime(RealTime time);
-  void setTime(SamplePosition time);
   void paint(Graphics& g);
   double getTime() const;
 

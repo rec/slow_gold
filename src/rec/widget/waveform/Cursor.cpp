@@ -30,10 +30,6 @@ void Cursor::setTime(RealTime time) {
                              waveform_->getLocalBounds());
 }
 
-void Cursor::setTime(SamplePosition time) {
-  setTime(RealTime(time));
-}
-
 double Cursor::getTime() const {
   ScopedLock l(lock_);
   return time_;
