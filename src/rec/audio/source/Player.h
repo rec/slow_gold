@@ -60,7 +60,6 @@ class Player : public Broadcaster<transport::State>,
   void setGain(double);
 
   SamplePosition length() const { return timer_->getTotalLength(); }
-  RealTime realLength() const { return length(); }
   void clear();
   void setStretch(const stretch::Stretch&);
   void setSource(Source*);

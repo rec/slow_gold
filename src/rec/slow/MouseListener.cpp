@@ -128,7 +128,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
     if (action == Mode::DRAG) {
       RealTime dt = e.getDistanceFromDragStartX() / waveform->pixelsPerSecond();
       ZoomProto zoom(DataListener<ZoomProto>::data_->get());
-      RealTime length = player()->realLength();
+      RealTime length = player()->length();
       RealTime end = zoom.has_end() ? RealTime(zoom.end()) : length;
       RealTime size = end - zoom.begin();
       RealTime begin = std::max<double>(waveformDragStart_ - dt, 0.0);

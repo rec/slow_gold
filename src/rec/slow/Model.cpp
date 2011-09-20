@@ -152,7 +152,7 @@ thread::Result Model::fillOnce() {
 
 void Model::zoom(RealTime time, double k) {
   ZoomProto z(widget::waveform::zoom(persist::get<ZoomProto>(file_),
-                                     player()->realLength(), time, k));
+                                     player()->length(), time, k));
   persist::set(z, file_);
 }
 
