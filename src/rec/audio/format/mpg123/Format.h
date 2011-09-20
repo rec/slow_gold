@@ -18,12 +18,12 @@ class Format : public juce::AudioFormat {
   virtual juce::AudioFormatReader* createReaderFor(juce::InputStream* source,
                                                    bool deleteStreamOnFail);
 
-  virtual juce::AudioFormatWriter* createWriterFor(juce::OutputStream* output,
-                                                   double sampleRateToUse,
-                                                   unsigned int numChannels,
-                                                   int bitsPerSample,
-                                                   const StringPairArray& meta,
-                                                   int quality) {
+  virtual juce::AudioFormatWriter* createWriterFor(juce::OutputStream* /* output */,
+                                                   double /* sampleRateToUse */,
+                                                   unsigned int /* numChannels */,
+                                                   int /* bitsPerSample */,
+                                                   const StringPairArray& /* meta */,
+                                                   int /* quality */) {
     return NULL;
   }
 
