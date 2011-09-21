@@ -62,7 +62,7 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 #endif
 
 #if !JUCE_MAC
-    add(&m, QUIT);
+    add(&m, Command::QUIT);
 #endif
 
   } else if (menuName == "Edit") {

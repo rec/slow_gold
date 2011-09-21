@@ -1,4 +1,5 @@
 #include <cmath>
+#include "rec/util/Math.h"
 
 #include "rec/gui/audio/LevelMeter.h"
 #include "rec/util/thread/CallAsync.h"
@@ -19,9 +20,9 @@ void LevelMeter::operator()(const LevelVector& levels) {
     levels_ = levels;
     for (int i = 0; i < levels_.size(); ++i) {
       // DCHECK(!std::isinf(levels_[i]));
-      if (std::isinf(levels_[i]))
+      if (rec::util::isinf(levels_[i]))
         levels_[i] = 1.0;
-      else if (std::isnan(levels_[i]))
+      else if (rec::util::isnan(levels_[i]))
         levels_[i] = 0.0;
     }
   }
