@@ -104,15 +104,15 @@ bool clearLoops(LoopSnapshot* s, Position pos) {
   return true;
 }
 
-CommandFunction make(SelectorFunction f) { return make_pair(f, (LoopFunction)noFunction); }
-CommandFunction make(LoopFunction f) { return make_pair((SelectorFunction)noSelector, f); }
+CommandFunction make(SelectorFunction f) { return make_pair(f, &noFunction); }
+CommandFunction make(LoopFunction f) { return make_pair(&noSelector, f); }
 
 CommandMap makeMap() {
   CommandMap m;
   m[Command::CLEAR_LOOPS] = make(clearLoops);
   m[Command::DESELECT_ALL] = make(deselectAll);
   m[Command::INVERT_LOOP_SELECTION] = make(invertLoopSelection);
-  m[Command::JUMP] = std::make_pair((SelectorFunction)selectAdd, (LoopFunction)jump);
+  m[Command::JUMP] = std::make_pair(&selectAdd, &jump);
   m[Command::JUMP_SELECTED] = make(jumpSelected);
   m[Command::SELECT] = make(selectAdd);
   m[Command::SELECT_ALL] = make(selectAll);
