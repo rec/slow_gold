@@ -44,7 +44,9 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
   }
 
   SamplePosition size = std::min(block::getSize(b), blockSize_);
-  if (!reader_->read(bufferPointers_, CHANNELS, b.first, size, false)) {
+  // TODO: bug Jules
+  if (!reader_->read(bufferPointers_, CHANNELS, static_cast<int>(b.first), size,
+                     false)) {
     LOG(ERROR) << "Reader failed to read!";
     return 0;
   }
