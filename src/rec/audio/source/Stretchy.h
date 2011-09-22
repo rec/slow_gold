@@ -33,6 +33,7 @@ class Stretchy : public Wrappy {
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
+  int64 scale(int64 x) const { return static_cast<int64>(timeScale_ * x); }
 
   stretch::Stretch stretch_;
   int channels_;

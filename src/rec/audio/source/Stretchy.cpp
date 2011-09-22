@@ -23,17 +23,17 @@ Stretchy::~Stretchy() {}
 
 int64 Stretchy::getTotalLength() const {
   ScopedLock l(lock_);
-  return source()->getTotalLength() * timeScale_;
+  return scale(source()->getTotalLength());
 }
 
 int64 Stretchy::getNextReadPosition() const {
   ScopedLock l(lock_);
-  return source()->getNextReadPosition() * timeScale_;
+  return scale(source()->getNextReadPosition());
 }
 
 void Stretchy::setNextReadPosition(int64 position) {
   ScopedLock l(lock_);
-  source()->setNextReadPosition(position / timeScale_);
+  source()->setNextReadPosition(static_cast<int64>(position / timeScale_));
 }
 
 void Stretchy::setStretch(const stretch::Stretch& s) {
@@ -82,7 +82,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   DCHECK_EQ(info.buffer->getNumChannels(), channels_);
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
-    if (int processed = processOneChunk(i)) {
+    if (int64 processed = processOneChunk(i)) {
       if (zeroCount) {
         LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
       }
@@ -97,7 +97,10 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 }
 
 int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
-  int64 inSampleCount = scaler_->GetInputBufferSize(info.numSamples) / 2;
+  int inSampleCount = static_cast<int>(
+      scaler_->GetInputBufferSize(info.numSamples) / 2);
+
+  // TODO: bug Jules about this.
   buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
 
   AudioSourceChannelInfo i;
