@@ -1,0 +1,1826 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Slow">
+      <UniqueIdentifier>{b8a1d853-563a-48b0-97ea-b52ff02d7826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec">
+      <UniqueIdentifier>{39fb0fe5-b0ed-4335-ba5c-34b71a2b298b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\app">
+      <UniqueIdentifier>{c3eb36d9-61fe-4253-b2e3-a27a74d9732d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio">
+      <UniqueIdentifier>{0b1569b6-7d0d-41cd-9563-8f1f4883b549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio\ammf_scaler">
+      <UniqueIdentifier>{c63ef427-eace-4bc5-9bc7-d934176134c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio\format">
+      <UniqueIdentifier>{663c9621-17da-4a6e-9dfd-6115f4caee73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio\format\mpg123">
+      <UniqueIdentifier>{2f530ae0-a6e3-4122-a9cd-087b3f953a1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio\format\raw">
+      <UniqueIdentifier>{e934698c-f1ac-442f-a1e0-157441ec13cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio\source">
+      <UniqueIdentifier>{fa9f7e72-371b-4c2c-ad9e-32d29f268a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio\stretch">
+      <UniqueIdentifier>{1590c19e-6cf2-41c0-b970-184119864526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\audio\util">
+      <UniqueIdentifier>{3f033e1e-3b14-41da-8d2e-8555bda9d900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\base">
+      <UniqueIdentifier>{a49a8713-e68b-4855-8248-d8ef92a03100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\binary">
+      <UniqueIdentifier>{31376339-98eb-4d97-b582-719545fd011f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\command">
+      <UniqueIdentifier>{57c71ed8-472f-450c-859f-f3c84af270b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data">
+      <UniqueIdentifier>{bee87fa1-19a4-4279-9778-dc3057e8b971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data\commands">
+      <UniqueIdentifier>{9fb010b9-1939-494c-8c64-2887b9adb6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data\persist">
+      <UniqueIdentifier>{a5482b80-fdc8-41f1-b198-758b33084ee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data\proto">
+      <UniqueIdentifier>{3e1aa06a-7bb2-4892-93e3-8ff8da7016a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data\yaml">
+      <UniqueIdentifier>{75e8f687-0284-49e9-bc9c-f99214af15fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data\yaml\include">
+      <UniqueIdentifier>{a4697b50-3853-4085-b997-1eacd8e27c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data\yaml\include\yaml-cpp">
+      <UniqueIdentifier>{bea4e930-a36a-4066-b09f-0afcae88a861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\data\yaml\src">
+      <UniqueIdentifier>{363840b6-cd47-46da-abf1-af4117de74f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\gui">
+      <UniqueIdentifier>{c429b384-2a4e-4eed-83c3-c169aa317ef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\gui\audio">
+      <UniqueIdentifier>{4219f42b-9449-4722-8ae9-1f7bcd72c96a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\gui\component">
+      <UniqueIdentifier>{57445bb5-ec0f-4386-b1c5-ecd1484c1a7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\gui\icon">
+      <UniqueIdentifier>{939841ff-50dc-4e41-9e67-e43b343fe975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\gui\layout">
+      <UniqueIdentifier>{fd29c451-66bd-46f3-aab8-f0323163f4cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\music">
+      <UniqueIdentifier>{41857e99-f451-4c4c-99c2-cfc148b510d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\slow">
+      <UniqueIdentifier>{73a19810-58be-43f4-be37-4d94e12d0442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\util">
+      <UniqueIdentifier>{df8d8640-6cbb-4cd2-beb5-a1a74ab7ebc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\util\block">
+      <UniqueIdentifier>{7ab360a4-8b52-4bc8-a93e-b5f9f1b77f62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\util\cd">
+      <UniqueIdentifier>{d42f8036-61ca-46cb-a8e2-12b0549121f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\util\file">
+      <UniqueIdentifier>{6bc0e5bd-3c94-4b3a-b6ac-bb344eee384f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\util\listener">
+      <UniqueIdentifier>{38154aa7-1308-401a-89fa-78c751048c26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\util\partition">
+      <UniqueIdentifier>{c6de975b-b9e1-4771-8883-7c20db934e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\util\thread">
+      <UniqueIdentifier>{be40c7eb-74d3-4fef-ba12-d39833ca746d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\widget">
+      <UniqueIdentifier>{e819e313-446d-4e93-8c36-a709b8118cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\widget\status">
+      <UniqueIdentifier>{e428078d-0aa7-4e15-9055-cc9b7fc57764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\widget\tree">
+      <UniqueIdentifier>{6e4f3e1d-2966-447a-ae21-46dbd6de4595}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\rec\widget\waveform">
+      <UniqueIdentifier>{bd8ff373-a203-4b48-ae74-7eb4a2eab403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto">
+      <UniqueIdentifier>{41e3ce81-7563-40ff-846d-a0ecb165f3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec">
+      <UniqueIdentifier>{b67cd911-9a7c-4e07-87e3-6822b2a1fdd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\audio">
+      <UniqueIdentifier>{2b3fecae-1842-427a-87c8-c11ddc952e2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\audio\source">
+      <UniqueIdentifier>{40c9bee9-e3b9-42e5-86ed-b408aa4f81e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\audio\stretch">
+      <UniqueIdentifier>{3a30979c-778f-4eb4-be0c-78260978a158}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\audio\util">
+      <UniqueIdentifier>{30396e6e-7947-4441-ac0d-c932a2ae8142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\command">
+      <UniqueIdentifier>{fdda1e3e-ac0d-4ff5-a9e6-5a2f3b246f7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\data">
+      <UniqueIdentifier>{f073e6dd-a529-4bfa-af06-d7e5c7e620ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\data\commands">
+      <UniqueIdentifier>{30aa576b-be9f-4543-ad29-b799b8040778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\data\proto">
+      <UniqueIdentifier>{1048acb9-4c46-4b69-b17e-3b365e746d46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\gui">
+      <UniqueIdentifier>{dd66391f-4dbf-4fa8-b3c8-dcb4f1a2304d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\music">
+      <UniqueIdentifier>{f401eb64-f435-4622-95ea-b6562f7b24a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\slow">
+      <UniqueIdentifier>{70012341-7b99-4b84-b9d4-7da72c0b8fdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\util">
+      <UniqueIdentifier>{f34d5127-9432-4ad0-a8df-6413b0112d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\util\file">
+      <UniqueIdentifier>{e9c3deff-6a81-44fc-87f5-92de8634bf79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\util\thread">
+      <UniqueIdentifier>{5a040f46-5ddf-4130-b096-c459b7755ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\widget">
+      <UniqueIdentifier>{c8212c74-8dc2-46e1-a43f-b33842dc28d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\widget\status">
+      <UniqueIdentifier>{a3945a89-3f11-49ba-a16c-e4f6aa4b2435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\widget\tree">
+      <UniqueIdentifier>{3d770bf5-c0e6-478f-b44c-dc8b654b5724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slow\proto\rec\widget\waveform">
+      <UniqueIdentifier>{3a2c9422-fcaa-4109-b84b-74ad747d55b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Juce Library Code">
+      <UniqueIdentifier>{01f37646-4512-461b-9f33-aaef15e1a514}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\rec\app\Application.h">
+      <Filter>Slow\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h">
+      <Filter>Slow\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h">
+      <Filter>Slow\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.h">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.h">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.h">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.h">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h">
+      <Filter>Slow\rec\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\Device.h">
+      <Filter>Slow\rec\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Format.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Manager.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.h">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.h">
+      <Filter>Slow\rec\audio\format\raw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatReader.h">
+      <Filter>Slow\rec\audio\format\raw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h">
+      <Filter>Slow\rec\audio\format\raw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\CircularBuffer.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\FrameSource.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Level.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Player.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Seggy.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Selection.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Snoopy.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stereo.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stretchy.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Testy.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\ThreadedSource.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TestHarness.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\base.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\BaseNoJuce.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\basictypes.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\build_config.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Cast.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\CompileAssert.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\disallow.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Juce.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Leaks.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\port.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\ptr.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\SamplePosition.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Standard.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\types.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandEntryWindow.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMap.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapCategoryItem.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditButton.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditor.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditorMappingItem.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapItemComponent.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapTopLevelItem.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\GenericCommandMapEditor.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\Keyboard.xml.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMap.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\MidiName.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h">
+      <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Address.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Binary.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\commands\CommandManager.h">
+      <Filter>Slow\rec\data\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\commands\EventQueue.h">
+      <Filter>Slow\rec\data\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\App.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\AppDirectory.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\AppInstance.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\Data.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\Persist.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedData.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\GetProtoName.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\InsertSorted.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\LogFile.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\MessageField.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Proto.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedOperations.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedTyper.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\ZeroCopy.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Value.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\aliasmanager.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\anchor.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\conversion.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitfromevents.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitter.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emittermanip.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\eventhandler.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\exceptions.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\iterator.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\mark.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\node.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeimpl.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeproperties.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodereadimpl.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeutil.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\noncopyable.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\null.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\ostream.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\parser.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlemitter.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlnode.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\traits.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\yaml.h">
+      <Filter>Slow\rec\data\yaml\include\yaml-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Internal.h">
+      <Filter>Slow\rec\data\yaml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\collectionstack.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\content.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\directives.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\exp.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\indentation.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\iterpriv.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ltnode.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\map.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\parserstate.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ptr_stack.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regex.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regeximpl.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scalar.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanner.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scantag.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\sequence.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\setting.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stream.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\streamcharsource.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stringsource.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\tag.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\token.h">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h">
+      <Filter>Slow\rec\data\yaml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\ModeSelector.h">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\PlayerController.h">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\SetupPage.h">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TimeController.h">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TransportController.h">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Color.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\component\Focusable.h">
+      <Filter>Slow\rec\gui\component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DataSlider.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DetentSlider.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Dialog.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DropFiles.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Font.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.h">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h">
+      <Filter>Slow\rec\gui\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\RecentFiles.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterText.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterTextArea.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterToggle.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SimpleLabel.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\gui\TableController.h">
+      <Filter>Slow\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h">
+      <Filter>Slow\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h">
+      <Filter>Slow\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Components.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Listeners.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\LoopCommands.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Model.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\PlaybackController.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Position.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Slow.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Target.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\TargetCommands.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Window.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.h">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Eject.h">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Socket.h">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\StripLines.h">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Circular.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Compare.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\DelegateToList.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Exception.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\DataListener.h">
+      <Filter>Slow\rec\util\listener</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\Listener.h">
+      <Filter>Slow\rec\util\listener</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\ProtoListener.h">
+      <Filter>Slow\rec\util\listener</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\SetterListener.h">
+      <Filter>Slow\rec\util\listener</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Math.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\partition\Convertors.h">
+      <Filter>Slow\rec\util\partition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h">
+      <Filter>Slow\rec\util\partition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\PointerList.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Range.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\ShouldExit.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\STL.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Switcher.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\TestData.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\CallAsync.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback0.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback1.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback2.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\FunctionCallback.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeCallback.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeThread.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h">
+      <Filter>Slow\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\DialComponent.h">
+      <Filter>Slow\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\Status.h">
+      <Filter>Slow\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\TextComponent.h">
+      <Filter>Slow\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\CD.h">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Directory.h">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeComponent.h">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeItem.h">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Root.h">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Shard.h">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.h">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Cursor.h">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h">
+      <Filter>Slow\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h">
+      <Filter>Slow\proto\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h">
+      <Filter>Slow\proto\rec\audio\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h">
+      <Filter>Slow\proto\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h">
+      <Filter>Slow\proto\rec\audio\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.h">
+      <Filter>Slow\proto\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h">
+      <Filter>Slow\proto\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.h">
+      <Filter>Slow\proto\rec\data\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h">
+      <Filter>Slow\proto\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.h">
+      <Filter>Slow\proto\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.h">
+      <Filter>Slow\proto\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.h">
+      <Filter>Slow\proto\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h">
+      <Filter>Slow\proto\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h">
+      <Filter>Slow\proto\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h">
+      <Filter>Slow\proto\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h">
+      <Filter>Slow\proto\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h">
+      <Filter>Slow\proto\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h">
+      <Filter>Slow\proto\rec\util\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h">
+      <Filter>Slow\proto\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.h">
+      <Filter>Slow\proto\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.h">
+      <Filter>Slow\proto\rec\widget\status</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h">
+      <Filter>Slow\proto\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h">
+      <Filter>Slow\proto\rec\widget\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h">
+      <Filter>Slow\proto\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h">
+      <Filter>Slow\proto\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.h">
+      <Filter>Slow\proto\rec\widget\waveform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h">
+      <Filter>Slow\proto\rec\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp">
+      <Filter>Slow\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp">
+      <Filter>Slow\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.cpp">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.cpp">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.c">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.c">
+      <Filter>Slow\rec\audio\ammf_scaler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp">
+      <Filter>Slow\rec\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Format.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp">
+      <Filter>Slow\rec\audio\format\mpg123</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp">
+      <Filter>Slow\rec\audio\format\raw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\CircularBuffer.cpp">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.cpp">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stretchy.cpp">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp">
+      <Filter>Slow\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.cpp">
+      <Filter>Slow\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp">
+      <Filter>Slow\rec\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandMap.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandMapEditor.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\Keyboard.xml.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMap.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\MidiName.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp">
+      <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\commands\EventQueue.cpp">
+      <Filter>Slow\rec\data\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\AppDirectory.cpp">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\AppInstance.cpp">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\Data.cpp">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedData.cpp">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Address.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\GetProtoName.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\LogFile.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Proto.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\ReadYaml.cpp">
+      <Filter>Slow\rec\data\yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliasmanager.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\content.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\conversion.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\directives.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitfromevents.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitter.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\exp.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\iterator.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\map.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\node.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\null.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\ostream.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parser.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parserstate.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\regex.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scalar.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanner.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantag.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantoken.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\sequence.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\simplekey.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\stream.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\tag.cpp">
+      <Filter>Slow\rec\data\yaml\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp">
+      <Filter>Slow\rec\data\yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\Loops.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\ModeSelector.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\PlayerController.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\SetupPage.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TimeController.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TransportController.cpp">
+      <Filter>Slow\rec\gui\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Color.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\DataSlider.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Dialog.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Geometry.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.cpp">
+      <Filter>Slow\rec\gui\icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\gui\TableController.cpp">
+      <Filter>Slow\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp">
+      <Filter>Slow\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp">
+      <Filter>Slow\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Listeners.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\LoopCommands.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Model.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\PlaybackController.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Position.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\TargetCommands.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Window.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\Fillable.cpp">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp">
+      <Filter>Slow\rec\util\block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDReader.cpp">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Eject.cpp">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Socket.cpp">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines.cpp">
+      <Filter>Slow\rec\util\cd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\listener\ProtoListener.cpp">
+      <Filter>Slow\rec\util\listener</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp">
+      <Filter>Slow\rec\util\partition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp">
+      <Filter>Slow\rec\util\partition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\thread\MakeThread.cpp">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
+      <Filter>Slow\rec\util\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp">
+      <Filter>Slow\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\Status.cpp">
+      <Filter>Slow\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\TextComponent.cpp">
+      <Filter>Slow\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\CD.cpp">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Directory.cpp">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\NodeItem.cpp">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Root.cpp">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.cpp">
+      <Filter>Slow\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Cursor.cpp">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp">
+      <Filter>Slow\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp">
+      <Filter>Slow\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc">
+      <Filter>Slow\proto\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc">
+      <Filter>Slow\proto\rec\audio\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc">
+      <Filter>Slow\proto\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc">
+      <Filter>Slow\proto\rec\audio\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc">
+      <Filter>Slow\proto\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.cc">
+      <Filter>Slow\proto\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.cc">
+      <Filter>Slow\proto\rec\data\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc">
+      <Filter>Slow\proto\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.cc">
+      <Filter>Slow\proto\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.cc">
+      <Filter>Slow\proto\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.cc">
+      <Filter>Slow\proto\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc">
+      <Filter>Slow\proto\rec\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc">
+      <Filter>Slow\proto\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc">
+      <Filter>Slow\proto\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc">
+      <Filter>Slow\proto\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc">
+      <Filter>Slow\proto\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc">
+      <Filter>Slow\proto\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc">
+      <Filter>Slow\proto\rec\util\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc">
+      <Filter>Slow\proto\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.cc">
+      <Filter>Slow\proto\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.cc">
+      <Filter>Slow\proto\rec\widget\status</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc">
+      <Filter>Slow\proto\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc">
+      <Filter>Slow\proto\rec\widget\tree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc">
+      <Filter>Slow\proto\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc">
+      <Filter>Slow\proto\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.cc">
+      <Filter>Slow\proto\rec\widget\waveform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc">
+      <Filter>Slow\proto\rec\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Main.cpp">
+      <Filter>Slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\binary\big-logo.png">
+      <Filter>Slow\rec\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\binary\logo.png">
+      <Filter>Slow\rec\binary</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon.ico">
+      <Filter>Juce Library Code</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Juce Library Code</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
