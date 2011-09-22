@@ -7,7 +7,9 @@ namespace audio {
 template <typename Sample, int CHANNELS>
 bool Frames<Sample, CHANNELS>::setLength(SamplePosition length) {
   free(frames_);
-  void* mem = malloc(sizeof(Frame) * length);
+
+  // TODO: fix this for really large buffers.
+  void* mem = malloc(static_cast<size_t>(sizeof(Frame) * length));
   if (!mem) {
     LOG(ERROR) << "Not enough memory, sample length: " << length;
     length_ = 0;
@@ -21,8 +23,7 @@ bool Frames<Sample, CHANNELS>::setLength(SamplePosition length) {
 template <typename Sample, int CHANNELS>
 SamplePosition Frames<Sample, CHANNELS>::getAudioBlock(const Info& info,
                                                        SamplePosition offset) const {
-  SamplePosition numSamples = std::min(info.numSamples,
-                                       static_cast<int>(length_ - offset));
+  int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
   float** out = info.buffer->getArrayOfChannels();
   Frame* frame = frames_ + offset;
   for (int i = 0, s = info.startSample; i < numSamples; ++i, ++frame, ++s) {
