@@ -51,7 +51,7 @@ void doRead(const YAML::Node& n, Message* m, const FieldDescriptor* f) {
 void doReadRepeated(const YAML::Node& node, Message* m, const FieldDescriptor* f) {
   const Reflection& r = *m->GetReflection();
 
-  for (int i = 0; i < node.size(); ++i) {
+  for (uint i = 0; i < node.size(); ++i) {
     const YAML::Node& n = node[i];
     switch (f->type()) {
     case FD::TYPE_DOUBLE: r.AddDouble(m, f, double(n));  break;
@@ -74,6 +74,7 @@ void doReadRepeated(const YAML::Node& node, Message* m, const FieldDescriptor* f
     case FD::TYPE_ENUM:
       r.AddEnum(m, f, f->enum_type()->FindValueByName(str(n)));
       break;
+
     default:
       LOG(ERROR) << "Didn't understand type " << f->type(); break;
     }
