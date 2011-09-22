@@ -34,8 +34,10 @@ class InputImpl : public InputBase {
   bool read(Message* message) {
     uint64 size;
     string s;
+
+    // TODO: deal with very long strings.
     return coded_.ReadVarint64(&size) &&
-      coded_.ReadString(&s, size) &&
+      coded_.ReadString(&s, static_cast<int>(size)) &&
       message->ParseFromString(s);
   }
 };

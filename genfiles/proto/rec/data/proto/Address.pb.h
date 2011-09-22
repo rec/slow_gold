@@ -92,12 +92,12 @@ class AddressProto_Part : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional int32 index = 1;
+  // optional uint32 index = 1;
   inline bool has_index() const;
   inline void clear_index();
   static const int kIndexFieldNumber = 1;
-  inline ::google::protobuf::int32 index() const;
-  inline void set_index(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint32 index() const;
+  inline void set_index(::google::protobuf::uint32 value);
   
   // optional string name = 2;
   inline bool has_name() const;
@@ -114,7 +114,7 @@ class AddressProto_Part : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::google::protobuf::int32 index_;
+  ::google::protobuf::uint32 index_;
   ::std::string* name_;
   static const ::std::string _default_name_;
   friend void  protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto();
@@ -240,18 +240,18 @@ class AddressProto : public ::google::protobuf::Message {
 
 // AddressProto_Part
 
-// optional int32 index = 1;
+// optional uint32 index = 1;
 inline bool AddressProto_Part::has_index() const {
   return _has_bit(0);
 }
 inline void AddressProto_Part::clear_index() {
-  index_ = 0;
+  index_ = 0u;
   _clear_bit(0);
 }
-inline ::google::protobuf::int32 AddressProto_Part::index() const {
+inline ::google::protobuf::uint32 AddressProto_Part::index() const {
   return index_;
 }
-inline void AddressProto_Part::set_index(::google::protobuf::int32 value) {
+inline void AddressProto_Part::set_index(::google::protobuf::uint32 value) {
   _set_bit(0);
   index_ = value;
 }

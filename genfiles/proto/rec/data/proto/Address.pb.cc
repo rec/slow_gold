@@ -99,7 +99,7 @@ void protobuf_AddDesc_rec_2fdata_2fproto_2fAddress_2eproto() {
     "\n\034rec/data/proto/Address.proto\022\010rec.data"
     "\"^\n\014AddressProto\022)\n\004part\030\001 \003(\0132\033.rec.dat"
     "a.AddressProto.Part\032#\n\004Part\022\r\n\005index\030\001 \001"
-    "(\005\022\014\n\004name\030\002 \001(\t", 136);
+    "(\r\022\014\n\004name\030\002 \001(\t", 136);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/proto/Address.proto", &protobuf_RegisterTypes);
   AddressProto::default_instance_ = new AddressProto();
@@ -141,7 +141,7 @@ AddressProto_Part::AddressProto_Part(const AddressProto_Part& from)
 
 void AddressProto_Part::SharedCtor() {
   _cached_size_ = 0;
-  index_ = 0;
+  index_ = 0u;
   name_ = const_cast< ::std::string*>(&_default_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -180,7 +180,7 @@ AddressProto_Part* AddressProto_Part::New() const {
 
 void AddressProto_Part::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    index_ = 0;
+    index_ = 0u;
     if (_has_bit(1)) {
       if (name_ != &_default_name_) {
         name_->clear();
@@ -197,12 +197,12 @@ bool AddressProto_Part::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional int32 index = 1;
+      // optional uint32 index = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &index_)));
           _set_bit(0);
         } else {
@@ -247,9 +247,9 @@ bool AddressProto_Part::MergePartialFromCodedStream(
 
 void AddressProto_Part::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional int32 index = 1;
+  // optional uint32 index = 1;
   if (_has_bit(0)) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->index(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->index(), output);
   }
   
   // optional string name = 2;
@@ -269,9 +269,9 @@ void AddressProto_Part::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* AddressProto_Part::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional int32 index = 1;
+  // optional uint32 index = 1;
   if (_has_bit(0)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->index(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->index(), target);
   }
   
   // optional string name = 2;
@@ -295,10 +295,10 @@ int AddressProto_Part::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional int32 index = 1;
+    // optional uint32 index = 1;
     if (has_index()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->index());
     }
     

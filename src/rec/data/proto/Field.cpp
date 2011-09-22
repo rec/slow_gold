@@ -47,14 +47,14 @@ bool Field::dereference(const Address::Part& afield) {
         LOG(ERROR) << "Repeated has no index ";
         return false;
       }
-      int32 index = afield.index();
+      uint32 index = afield.index();
       if (index >= repeatCount_) {
         LOG(ERROR) << "Index " << index << " out of bounds " << repeatCount_;
         return false;
       }
 
       type_ = INDEXED;
-      index_ = index;
+      index_ = static_cast<int32>(index);
       return true;
 
     } else {

@@ -2,7 +2,7 @@ package rec.data;
 
 message AddressProto {
   message Part {
-    optional int32 index = 1;
+    optional uint32 index = 1;
     optional string name = 2;
   };
 
