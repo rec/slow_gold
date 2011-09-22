@@ -14,7 +14,7 @@ void CommandMap::operator()(const CommandMapProto& commands) {
   }
 }
 
-void CommandMap::add(const Key& key, Command command, int index) {
+void CommandMap::add(const Key& key, Command command, uint index) {
   // TODO:  check for dupes?
   if (toCommand_.find(key) != toCommand_.end()) {
     PlatformUtilities::beep();
@@ -65,7 +65,7 @@ const vector<CommandMap::Key>& CommandMap::getKeys(Command c) const {
   return (i != toKeys_.end()) ? i->second : empty;
 }
 
-void CommandMap::removeCommand(Command c, int keyIndex) {
+void CommandMap::removeCommand(Command c, uint keyIndex) {
   typedef CommandToKeys::iterator iterator;
   iterator i = toKeys_.find(c);
   if (i == toKeys_.end()) {

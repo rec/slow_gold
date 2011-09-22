@@ -25,9 +25,9 @@ class CommandMap : public Listener<const CommandMapProto&> {
 
   bool invoke(const Key&, ApplicationCommandManager*, bool async = false) const;
 
-  void removeCommand(Command command, int keyIndex);
+  void removeCommand(Command command, uint keyIndex);
   void removeKey(const Key& key);
-  void add(const Key& key, Command command, int index = -1);
+  void add(const Key& key, Command command, uint index = -1);
 
  private:
   typedef std::map<Key, Command> KeyToCommand;
