@@ -33,7 +33,9 @@ struct Copier {
   }
 
   void copy(int f, int t) const {
-    to_.buffer_->copyFrom(f, to_.time_, *from_.buffer_, t, from_.time_, count_);
+    // TODO: bug Jules
+    to_.buffer_->copyFrom(f, to_.time_.toInt(), *from_.buffer_, t,
+                          from_.time_.toInt(), count_.toInt());
   }
 
   void mix(int chanFrom, int chanTo) const {
@@ -43,14 +45,14 @@ struct Copier {
       // This probably isn't right.
       int c1 = (chanFrom * c) / chanTo;
       int c2 = (chanFrom * (c + 1) - 1) / chanTo;
-      float* fromSamp = from_.buffer_->getSampleData(c1, startFrom);
+      float* fromSamp = from_.buffer_->getSampleData(c1, startFrom.toInt());
 
       if (c1 == c2) {
-        to_.buffer_->copyFrom(c, startTo, fromSamp, count_);
+        to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt());
       } else {
-        to_.buffer_->copyFrom(c, startTo, fromSamp, count_, 0.5);
-        to_.buffer_->addFrom(c, startTo, *from_.buffer_, c2, startFrom,
-                             count_, 0.5);
+        to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt(), 0.5);
+        to_.buffer_->addFrom(c, startTo.toInt(), *from_.buffer_, c2,
+                             startFrom.toInt(), count_.toInt(), 0.5);
       }
     }
   }
@@ -58,6 +60,8 @@ struct Copier {
   const BufferTime from_;
   const BufferTime to_;
   const SamplePosition count_;
+
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(Copier);
 };
 
 SamplePosition restrictCount(const BufferTime& bt, SamplePosition count) {

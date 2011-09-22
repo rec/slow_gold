@@ -31,6 +31,9 @@ struct SamplePosition {
 
   operator int64() const { return position_; }
 
+  // TODO: we shouldn't need this, but Juce sometimes wants ints.  Bug Jules!
+  int toInt() const { return static_cast<int>(position_); }
+
  private:
   int64 position_;
 };
