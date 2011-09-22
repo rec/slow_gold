@@ -12,7 +12,7 @@ double getGain(const audio::Gain& gain) {
   if (gain.dim())
     return gain.dim_level();
 
-  return powf(10.0, gain.gain() / 20.0) * gain.level();
+  return powl(10.0, gain.gain() / 20.0) * gain.level();
 }
 
 }  // namespace audio
