@@ -44,7 +44,7 @@ Number near(Number x, Number y, Number diff) {
 
 
 
-int isinf( float arg ) {
+inline int isinf( float arg ) {
 #if !_MSC_VER
 	return std::isinf(arg);
 #else
@@ -52,7 +52,7 @@ int isinf( float arg ) {
 #endif
 }
 
-int isinf( double arg ) {
+inline int isinf( double arg ) {
 #if !_MSC_VER
 	return std::isinf(arg);
 #else
@@ -60,7 +60,7 @@ int isinf( double arg ) {
 #endif
 }
 
-int isnan( float arg ) {
+inline int isnan( float arg ) {
 #if !_MSC_VER
 	return std::isnan(arg);
 #else
@@ -68,7 +68,7 @@ int isnan( float arg ) {
 #endif
 }
 
-int isnan( double arg ) {
+inline int isnan( double arg ) {
 #if !_MSC_VER
 	return std::isinf(arg);
 #else

@@ -382,9 +382,9 @@
 	};
 	43553262AA264130AEB57E8F /* Stretchy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {787, 1638}}";
-			sepNavSelRange = "{3075, 0}";
-			sepNavVisRange = "{0, 1824}";
+			sepNavIntBoundsRect = "{{0, 0}, {762, 1625}}";
+			sepNavSelRange = "{539, 0}";
+			sepNavVisRange = "{474, 1360}";
 			sepNavWindowFrame = "{{719, 4}, {911, 1159}}";
 		};
 	};
@@ -973,6 +973,9 @@
 			E224C9071360E1FE00F115A1 = E224C9071360E1FE00F115A1 /* PBXTextBookmark */;
 			E22D57051335F95B00F9BF8F = E22D57051335F95B00F9BF8F /* PBXBookmark */;
 			E2312987137F1DB0001A5CF5 = E2312987137F1DB0001A5CF5 /* PBXTextBookmark */;
+			E2376372142BBAF100EFC2A2 /* PBXTextBookmark */ = E2376372142BBAF100EFC2A2 /* PBXTextBookmark */;
+			E2376373142BBAF100EFC2A2 /* XCBuildMessageTextBookmark */ = E2376373142BBAF100EFC2A2 /* XCBuildMessageTextBookmark */;
+			E2376374142BBAF100EFC2A2 /* PBXTextBookmark */ = E2376374142BBAF100EFC2A2 /* PBXTextBookmark */;
 			E23DABB31360F41A00A52041 = E23DABB31360F41A00A52041 /* PBXTextBookmark */;
 			E23DAEA613620A8800A52041 = E23DAEA613620A8800A52041 /* PBXTextBookmark */;
 			E23DB17B1364ED4C00A52041 = E23DB17B1364ED4C00A52041 /* PBXTextBookmark */;
@@ -1733,6 +1736,35 @@
 		rType = 0;
 		vrLen = 856;
 		vrLoc = 0;
+	};
+	E2376372142BBAF100EFC2A2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A433D0832C0312A5D246D41A /* Player.cpp */;
+		name = "Player.cpp: 104";
+		rLen = 0;
+		rLoc = 2345;
+		rType = 0;
+		vrLen = 1160;
+		vrLoc = 1036;
+	};
+	E2376373142BBAF100EFC2A2 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'scale' was not declared in this scope";
+		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 25;
+		rType = 1;
+	};
+	E2376374142BBAF100EFC2A2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
+		name = "Stretchy.cpp: 26";
+		rLen = 0;
+		rLoc = 539;
+		rType = 0;
+		vrLen = 1360;
+		vrLoc = 474;
 	};
 	E23DABB31360F41A00A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
