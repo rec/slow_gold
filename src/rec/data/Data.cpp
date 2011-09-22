@@ -75,12 +75,14 @@ void append(Data* d, const Address::Part& a, const Value& m) {
 void set(Data* d, const Value& v) { set(d, Address(), v); }
 void set(Data* d, const Message& m) { set(d, Address(), Value(m)); }
 
-void set(Data* d, const Address::Part& a, const Value& v) { 
-  set(d, Address(a), v); 
+void set(Data* d, const Address::Part& a, const Value& v) {
+  set(d, Address(a), v);
 }
+
 void set(Data* d, const Address::Part& a,
-         const Address::Part& b, const Value& v) { 
-  set(d, Address(a), v); }
+         const Address::Part& b, const Value& v) {
+  set(d, Address(a, b), v);
+}
 
 #if 0
 
