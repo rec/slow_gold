@@ -18,11 +18,11 @@ void LevelMeter::operator()(const LevelVector& levels) {
   {
     ScopedLock l(lock_);
     levels_ = levels;
-    for (int i = 0; i < levels_.size(); ++i) {
+    for (uint i = 0; i < levels_.size(); ++i) {
       // DCHECK(!std::isinf(levels_[i]));
-      if (rec::util::isinf(levels_[i]))
+      if (isinf(levels_[i]))
         levels_[i] = 1.0;
-      else if (rec::util::isnan(levels_[i]))
+      else if (isnan(levels_[i]))
         levels_[i] = 0.0;
     }
   }
@@ -37,9 +37,10 @@ void LevelMeter::paint(Graphics& g) {
   if (!size)
     return;
 
-  float travel = horizontal_ ? getWidth() : getHeight();
+  float travel = static_cast<float>(horizontal_ ? getWidth() : getHeight());
   int width = (horizontal_ ? getHeight() : getWidth()) - (size - 1) * margin_;
-  float w = width / size;
+  // TODO: I originally had int division on the next line, make sure the new code's right.
+  float w = static_cast<float>(width) / size;
 
   for (int i = 0; i < size; ++i) {
     float w1 = ((width + margin_) * i) / size;
