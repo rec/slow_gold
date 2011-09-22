@@ -15,19 +15,19 @@ namespace {
 
 // Copy using assignment.
 template <typename Type>
-bool assign(const Type& from, Type* to, bool readable) {
+bool assign(const Type& from, Type* to, bool /* readable */) {
   *to = from;
   return true;
 }
 
 // Copy using the one-argument copy() function.
-bool strcopy(const String& from, string* to, bool readable) {
+bool strcopy(const String& from, string* to, bool /* readable */) {
   *to = str(from);
   return true;
 }
 
 // Copy using the one-argument copy() function.
-bool strcopy(const string& from, String* to, bool readable) {
+bool strcopy(const string& from, String* to, bool /* readable */) {
   *to = str(from);
   return true;
 }
@@ -56,7 +56,7 @@ bool proto(const string& f, Message* t, bool readable) {
   }
 }
 
-bool proto(const Message& f, Message* t, bool readable) {
+bool proto(const Message& f, Message* t, bool /* readable */) {
   try {
     t->CopyFrom(f);
     return true;
@@ -65,16 +65,17 @@ bool proto(const Message& f, Message* t, bool readable) {
   }
 }
 
-bool file(const File &f, File *t, bool readable) {
+bool file(const File &f, File *t, bool /* readable */) {
   return f.copyFileTo(*t);
 }
 
-bool file(const File &file, string *s, bool readable) {
+bool file(const File &file, string *s, bool /* readable */) {
   try {
     ptr<FileInputStream> in(file.createInputStream());
     if (!in)
       return false;
-    int64 length = in->getTotalLength();
+    uint length = static_cast<uint>(in->getTotalLength());
+    // TODO: deal with long buffers.
     s->resize(length);
     int bytesRead = in->read((void*)s->data(), length);
     LOG_IF(ERROR, bytesRead < 0) << "negative bytes read.";
@@ -86,7 +87,7 @@ bool file(const File &file, string *s, bool readable) {
   }
 }
 
-bool file(const string &from, File *to, bool readable) {
+bool file(const string &from, File *to, bool /* readable */) {
   try {
     if (!to->getParentDirectory().createDirectory()) {
       LOG(ERROR) << "Couldn't create directory for " << to->getFullPathName();
@@ -127,14 +128,14 @@ bool file(const string &from, File *to, bool readable) {
 
 typedef MemoryBlock Memory;
 
-bool memory(const string& in, Memory* out, bool readable) {
+bool memory(const string& in, Memory* out, bool /* readable */) {
   int size = in.size();
   out->ensureSize(size);
   out->copyFrom(in.data(), 0, size);
   return true;
 }
 
-bool memory(const Memory& in, string* out, bool readable) {
+bool memory(const Memory& in, string* out, bool /* readable */) {
   int size = in.getSize();
   out->resize(size);
   in.copyTo(&((*out)[0]), 0, size);
