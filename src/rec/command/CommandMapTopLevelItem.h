@@ -48,7 +48,7 @@ public:
         }
     }
 
-    static void resetToDefaultsCallback (int result, CommandMapEditor* owner)
+    static void resetToDefaultsCallback (int /* result */, CommandMapEditor* /* owner */)
     {
         // if (result != 0 && owner != nullptr)
         //     owner->getMappings().resetToDefaultMappings();

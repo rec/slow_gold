@@ -62,7 +62,7 @@ void MidiCommandMapEditor::removeKey(CommandID command, int keyNum) {
 }
 
 template <>
-bool MidiCommandMapEditor::isValid(const MidiMessage& key) {
+bool MidiCommandMapEditor::isValid(const MidiMessage&) {
   return true;
 }
 
