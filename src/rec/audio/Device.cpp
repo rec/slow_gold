@@ -8,6 +8,11 @@ static File getDeviceFile() {
   return getApplicationDirectory().getChildFile("AudioDevice.xml");
 }
 
+Device::Device() {
+  loadState();
+  setupPage_.reset(new SetupPage(this));
+}
+
 void Device::loadState() {
   ptr<juce::XmlElement> state;
 

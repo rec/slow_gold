@@ -8,10 +8,12 @@ namespace audio {
 
 class Device {
  public:
-  Device() : setupPage_(this) { loadState();  }
+  typedef gui::audio::SetupPage SetupPage;
+
+  Device();
 
   AudioDeviceManager manager_;
-  gui::audio::SetupPage setupPage_;
+  ptr<SetupPage> setupPage_;
 
   void saveState();
 

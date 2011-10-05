@@ -133,7 +133,7 @@ void Target::addCommands() {
       "Add Loop Point", "Loops",
       "Add a loop point at the current time.");
 
-  add(Command::AUDIO_PREFERENCES, methodCallback(&device()->setupPage_,
+  add(Command::AUDIO_PREFERENCES, methodCallback(device()->setupPage_.get(),
                                                  &gui::audio::SetupPage::show,
                                                  &components()->mainPage_),
       "Audio Preferences...", "Audio",
