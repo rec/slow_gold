@@ -47,7 +47,7 @@ SamplePosition Frames<Frame>::getAudioBlock(const Info& info,
   return numSamples;
 }
 
-template class Frames< InterleavedFrame<short, 2> >;
+template class Frames<CDFrame>;
 
 }  // namespace audio
 }  // namespace rec
