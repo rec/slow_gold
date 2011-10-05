@@ -34,6 +34,15 @@ struct InterleavedFrame {
 typedef InterleavedFrame<short, 2> CDFrame;
 typedef Frames<CDFrame> CDFrames;
 
+template <typename Sample, int CHANNELS>
+struct ParallelFrame {
+  ParallelFrame() : channels_(CHANNELS), sample_(NULL) {}
+  ParallelFrame(Sample** sample) : channels_(CHANNELS), sample_(sample) {}
+
+  const int channels_;
+  Sample** sample_;
+};
+
 }  // namespace persist
 }  // namespace rec
 
