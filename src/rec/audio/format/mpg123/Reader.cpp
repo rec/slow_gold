@@ -40,12 +40,12 @@ bool Reader::readSamples(int** dest, int destChannels, int destOffset,
     if (buffer_)
       free(buffer_);
 
-    buffer_ = malloc(size_);
+    buffer_ = static_cast<uchar*>(malloc(size_));
     allocated_ = size_;
   }
 
   size_t bytesCopied;
-  Error e = mpg123_read(mh_, (uchar*) buffer_, size_, &bytesCopied);
+  Error e = mpg123_read(mh_, buffer_, size_, &bytesCopied);
   if (e != MPG123_DONE && e != MPG123_OK)
     return false;
 

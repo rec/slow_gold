@@ -15,7 +15,7 @@ void Selection::getNextAudioBlock(const juce::AudioSourceChannelInfo& audioInfo)
 
   for (BlockList::const_iterator i = blocks.begin(); i != blocks.end(); ++i) {
     setNextReadPosition(i->first);
-    info.numSamples = getSize(*i);
+    info.numSamples = static_cast<int>(getSize(*i));
     Wrappy::getNextAudioBlock(info);
     info.startSample += info.numSamples;
   }

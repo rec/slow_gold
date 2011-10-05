@@ -31,7 +31,7 @@ void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
                          float **out, int outOffset,
                          int numSamples) {
   typedef InterleavedFrame<Sample, CHANNELS> Frame;
-  Frame* frame = in + inOffset;
+  Frame* frame = in + inOffset.toInt();
   for (int i = 0, s = outOffset; i < numSamples; ++i, ++frame, ++s) {
     for (int ch = 0; ch < CHANNELS; ++ch)
       convertSample<Sample, float>(frame->sample_[ch], &(out[ch][s]));

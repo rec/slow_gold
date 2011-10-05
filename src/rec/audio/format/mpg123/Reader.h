@@ -24,16 +24,16 @@ class Reader : public juce::AudioFormatReader {
                            int numSamples);
 
  private:
-  Reader(juce::InputStream* in, const String& name, mpg123_handle* mh, Copier copier);
+  Reader(juce::InputStream* in, const String& name, mpg123_handle* mh,
+         Copier copier);
 
-  friend Error createReader(juce::InputStream*,
-                            juce::AudioFormatReader**, OutputFormat*, OutputFormat*);
+  friend Error createReader(juce::InputStream*, juce::AudioFormatReader**,
+                            OutputFormat*, OutputFormat*);
 
   mpg123_handle* mh_;
-  void* buffer_;
+  uchar* buffer_;
   int64 size_, allocated_;
   Copier copier_;
-
 
   DISALLOW_COPY_AND_ASSIGN(Reader);
 };
