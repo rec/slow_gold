@@ -42,7 +42,7 @@ using namespace rec::data;
   }                                                                     \
                                                                         \
   template <> TYPE TypedTyper<TYPE>::GetRepeated(uint32 i) const {      \
-    if (i < static_cast<int32>(ref().FieldSize(*msg_, field_)))         \
+    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))        \
       return ref().GetRepeated ## CAP(*msg_, field_, i);                \
     LOG(ERROR) << "Index " << i << " out of bounds for type " << #TYPE; \
     return TYPE();                                                      \
@@ -53,7 +53,7 @@ using namespace rec::data;
   }                                                                     \
                                                                         \
   template <> void TypedTyper<TYPE>::SetRepeated(uint32 i, TYPE t) {    \
-    if (i < ref().FieldSize(*msg_, field_))                             \
+    if (i < static_cast<uint32>(ref().FieldSize(*msg_, field_)))        \
       ref().SetRepeated ## CAP(msg_, field_, i, t);                     \
     else                                                                \
       LOG(ERROR) << "Index " << i << " out of bounds for type " << #TYPE; \
