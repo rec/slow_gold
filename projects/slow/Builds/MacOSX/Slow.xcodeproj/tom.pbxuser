@@ -791,9 +791,9 @@
 	};
 	7234162EF60CC8CA998882E9 /* NewHandle.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1405, 819}}";
-			sepNavSelRange = "{863, 60}";
-			sepNavVisRange = "{650, 519}";
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 832}}";
+			sepNavSelRange = "{883, 60}";
+			sepNavVisRange = "{539, 320}";
 		};
 	};
 	7498431A4AC7D447E24AE3A4 /* Listeners.h */ = {
@@ -1205,6 +1205,10 @@
 			E2025FB0143D0E9F0036FA27 /* PBXTextBookmark */ = E2025FB0143D0E9F0036FA27 /* PBXTextBookmark */;
 			E2025FBB143D0F350036FA27 /* PBXTextBookmark */ = E2025FBB143D0F350036FA27 /* PBXTextBookmark */;
 			E2025FBC143D0F350036FA27 /* PBXTextBookmark */ = E2025FBC143D0F350036FA27 /* PBXTextBookmark */;
+			E2025FC6143D0FCE0036FA27 /* XCBuildMessageTextBookmark */ = E2025FC6143D0FCE0036FA27 /* XCBuildMessageTextBookmark */;
+			E2025FCB143D10010036FA27 /* PBXTextBookmark */ = E2025FCB143D10010036FA27 /* PBXTextBookmark */;
+			E2025FCE143D10010036FA27 /* PBXTextBookmark */ = E2025FCE143D10010036FA27 /* PBXTextBookmark */;
+			E2025FCF143D10010036FA27 /* PBXTextBookmark */ = E2025FCF143D10010036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -3260,6 +3264,57 @@
 		vrLoc = 0;
 	};
 	E2025FBC143D0F350036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 094D996558EFAF59A1576B7C /* Reader.cpp */;
+		name = "Reader.cpp: 68";
+		rLen = 0;
+		rLoc = 1757;
+		rType = 0;
+		vrLen = 1642;
+		vrLoc = 21;
+	};
+	E2025FC5143D0FCE0036FA27 /* exceptions.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = exceptions.h;
+		path = "../../../../../rec/src/rec/data/yaml/include/yaml-cpp/exceptions.h";
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 1846}}";
+			sepNavSelRange = "{3343, 62}";
+			sepNavVisRange = "{2093, 3097}";
+		};
+	};
+	E2025FC6143D0FCE0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'YAML::ErrorMsg::KEY_NOT_FOUND' requires global destruction";
+		fRef = E2025FC5143D0FCE0036FA27 /* exceptions.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 56;
+		rType = 1;
+	};
+	E2025FCB143D10010036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CEAC70FBD5AC5BD1D686C92A /* Stereo.cpp */;
+		name = "Stereo.cpp: 72";
+		rLen = 0;
+		rLoc = 1849;
+		rType = 0;
+		vrLen = 1566;
+		vrLoc = 0;
+	};
+	E2025FCE143D10010036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2025FC5143D0FCE0036FA27 /* exceptions.h */;
+		name = "exceptions.h: 57";
+		rLen = 62;
+		rLoc = 3343;
+		rType = 0;
+		vrLen = 3097;
+		vrLoc = 2093;
+	};
+	E2025FCF143D10010036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 094D996558EFAF59A1576B7C /* Reader.cpp */;
 		name = "Reader.cpp: 68";
