@@ -202,12 +202,12 @@ class RecentFiles : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::gui::RecentFile >*
       mutable_file();
   
-  // optional uint32 max_files = 4 [default = 16];
+  // optional int32 max_files = 4 [default = 16];
   inline bool has_max_files() const;
   inline void clear_max_files();
   static const int kMaxFilesFieldNumber = 4;
-  inline ::google::protobuf::uint32 max_files() const;
-  inline void set_max_files(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 max_files() const;
+  inline void set_max_files(::google::protobuf::int32 value);
   
   // optional bool reload_most_recent = 5 [default = true];
   inline bool has_reload_most_recent() const;
@@ -222,7 +222,7 @@ class RecentFiles : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::google::protobuf::RepeatedPtrField< ::rec::gui::RecentFile > file_;
-  ::google::protobuf::uint32 max_files_;
+  ::google::protobuf::int32 max_files_;
   bool reload_most_recent_;
   friend void  protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto();
   friend void protobuf_AssignDesc_rec_2fgui_2fRecentFiles_2eproto();
@@ -313,18 +313,18 @@ RecentFiles::mutable_file() {
   return &file_;
 }
 
-// optional uint32 max_files = 4 [default = 16];
+// optional int32 max_files = 4 [default = 16];
 inline bool RecentFiles::has_max_files() const {
   return _has_bit(1);
 }
 inline void RecentFiles::clear_max_files() {
-  max_files_ = 16u;
+  max_files_ = 16;
   _clear_bit(1);
 }
-inline ::google::protobuf::uint32 RecentFiles::max_files() const {
+inline ::google::protobuf::int32 RecentFiles::max_files() const {
   return max_files_;
 }
-inline void RecentFiles::set_max_files(::google::protobuf::uint32 value) {
+inline void RecentFiles::set_max_files(::google::protobuf::int32 value) {
   _set_bit(1);
   max_files_ = value;
 }

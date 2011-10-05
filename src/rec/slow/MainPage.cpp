@@ -45,7 +45,7 @@ void MainPage::doLayout(Components* components) {
                         &components->playbackController_};
   const char* address[] = {"directory_y", "waveform_y", NULL};
 
-  static const int SIZE = arraysize(full);
+  static const uint SIZE = arraysize(full);
   DCHECK_EQ(SIZE, arraysize(comp));
   DCHECK_EQ(SIZE, arraysize(address));
   bool vertical = full[0] || full[1] || full[2];
@@ -56,7 +56,7 @@ void MainPage::doLayout(Components* components) {
   panel_.setOrientation(static_cast<Orientation>(!vertical));
 
   if (!vertical) {
-    for (int i = 0; i < SIZE; ++i) {
+    for (uint i = 0; i < SIZE; ++i) {
       panel_.addToLayout(comp[i]);
       if (address[i])
         addResizer(&resizer_[i], address[i], &panel_);
@@ -88,7 +88,7 @@ void MainPage::doLayout(Components* components) {
     panel_.addToLayout(&components->loops_);
 
   } else {
-    for (int i = 0; i < SIZE; ++i) {
+    for (uint i = 0; i < SIZE; ++i) {
       if (full[i]) {
         addToLayout(comp[i]);
       } else {

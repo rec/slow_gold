@@ -48,7 +48,7 @@ static std::pair<Colour*, Colour*> getColours() {
   return std::make_pair(COLORS, COLORS + arraysize(COLORS));
 }
 
-Colour get(unsigned int i) {
+Colour get(int i) {
   std::pair<Colour*, Colour*> colours = getColours();
   if (i < colours.second - colours.first)
     return colours.first[i];
@@ -71,7 +71,7 @@ const Colors& getDefaultColors() {
   return colors;
 }
 
-Colour get(const Colors& colors, unsigned int i) {
+Colour get(const Colors& colors, int i) {
   return i < colors.color_size() ? makeColour(colors.color(i)) : get(i);
 }
 

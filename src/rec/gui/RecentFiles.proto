@@ -9,6 +9,6 @@ message RecentFile {
 
 message RecentFiles {
   repeated RecentFile file = 3;
-  optional uint32 max_files = 4 [default = 16];
+  optional int32 max_files = 4 [default = 16];
   optional bool reload_most_recent = 5 [default = true];
 };

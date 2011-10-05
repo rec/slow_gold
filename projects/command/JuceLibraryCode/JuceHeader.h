@@ -10,8 +10,8 @@
 
 */
 
-#ifndef __APPHEADERFILE_3E89FFC4__
-#define __APPHEADERFILE_3E89FFC4__
+#ifndef __APPHEADERFILE_F6100DF__
+#define __APPHEADERFILE_F6100DF__
 
 #include "AppConfig.h"
 #include "../../juce/juce_amalgamated.h"
@@ -24,4 +24,4 @@ namespace ProjectInfo
     const int          versionNumber  = 0x10000;
 }
 
-#endif   // __APPHEADERFILE_3E89FFC4__
+#endif   // __APPHEADERFILE_F6100DF__

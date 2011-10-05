@@ -8,8 +8,8 @@ namespace rec {
 namespace gui {
 namespace color {
 
-Colour get(unsigned int i);
-Colour get(const Colors& colors, unsigned int index);
+Colour get(int i);
+Colour get(const Colors& colors, int index);
 void prepare(const Colors& colors, juce::Graphics* g);
 const Colors& getDefaultColors();
 

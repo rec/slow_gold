@@ -47,14 +47,15 @@ bool Field::dereference(const Address::Part& afield) {
         LOG(ERROR) << "Repeated has no index ";
         return false;
       }
-      uint32 index = afield.index();
+
+      int32 index = static_cast<int32>(afield.index());
       if (index >= repeatCount_) {
         LOG(ERROR) << "Index " << index << " out of bounds " << repeatCount_;
         return false;
       }
 
       type_ = INDEXED;
-      index_ = static_cast<int32>(index);
+      index_ = index;
       return true;
 
     } else {
@@ -235,7 +236,7 @@ bool Field::swapRepeated() {
     LOG(ERROR) << "Can't swap repeated on self";
     return false;
   }
-  uint32 s1 = operation_->swap1(), s2 = operation_->swap2();
+  int s1 = operation_->swap1(), s2 = operation_->swap2();
   int size = getSize();
 
   bool inRange = (s1 >= 0 && s2 >= 0 && s1 < size && s2 < size);

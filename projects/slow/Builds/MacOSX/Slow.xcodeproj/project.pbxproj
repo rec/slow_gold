@@ -336,7 +336,6 @@
 		2AA30A35048462A804B6F008 /* MediaPlaybackStart.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaPlaybackStart.svg.h; path = ../../../../src/rec/gui/icon/MediaPlaybackStart.svg.h; sourceTree = SOURCE_ROOT; };
 		2B07D02FD43FAF495097104F /* PlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayerController.h; path = ../../../../src/rec/gui/audio/PlayerController.h; sourceTree = SOURCE_ROOT; };
 		2B8B15833E2B2EB99E74F7E6 /* Socket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../../../../src/rec/util/cd/Socket.cpp; sourceTree = SOURCE_ROOT; };
-		2BE1B62BFE8CD89FA1E8535C /* InsertSorted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InsertSorted.h; path = ../../../../src/rec/data/proto/InsertSorted.h; sourceTree = SOURCE_ROOT; };
 		2C08F978939B04D301BF2363 /* LoopPoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopPoint.cpp; path = ../../../../src/rec/util/LoopPoint.cpp; sourceTree = SOURCE_ROOT; };
 		2C47467844A9E7B586180211 /* Command.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.h; path = ../../../../src/rec/command/Command.h; sourceTree = SOURCE_ROOT; };
 		2D204227EFF09D7429C25730 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Types.h; path = ../../../../src/rec/data/proto/Types.h; sourceTree = SOURCE_ROOT; };
@@ -937,6 +936,20 @@
 			name = icon;
 			sourceTree = "<group>";
 		};
+		183E877D60D9B93DB77CAC1D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		1B9CC72BC328FBF9DB71928E /* thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1167,20 +1180,6 @@
 			name = proto;
 			sourceTree = "<group>";
 		};
-		70D021790B52F204CA64958F /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		75467D3DB26B8C553F2D3FE5 /* rec */ = {
 			isa = PBXGroup;
 			children = (
@@ -1305,7 +1304,6 @@
 				4F1D9D38A72A74750D52F816 /* Field.h */,
 				1FF96469ACEE305A4F37E36B /* GetProtoName.cpp */,
 				4B0CBDD125258A26A16E0B07 /* GetProtoName.h */,
-				2BE1B62BFE8CD89FA1E8535C /* InsertSorted.h */,
 				9F08D4E271CD79A7F211E844 /* LogFile.cpp */,
 				B4BAA3AF3CCE701D8958E78B /* LogFile.h */,
 				71BF190106219F20E4492E93 /* MessageField.cpp */,
@@ -1916,7 +1914,7 @@
 				French,
 				German,
 			);
-			mainGroup = 70D021790B52F204CA64958F /* Source */;
+			mainGroup = 183E877D60D9B93DB77CAC1D /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -2237,20 +2235,16 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_GLOBAL_CONSTRUCTORS = NO;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_PROTOTYPE_CONVERSION = YES;
-				GCC_WARN_SHADOW = NO;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

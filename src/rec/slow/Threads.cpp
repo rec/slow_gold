@@ -30,7 +30,7 @@ Threads::~Threads() {
 }
 
 void Threads::stop() {
-  for (int i = 0; i < threads_.size(); ++i) {
+  for (uint i = 0; i < threads_.size(); ++i) {
     VLOG(1) << "Stopping thread " << threads_[i]->getThreadName();
     threads_[i]->stopThread(THREAD_STOP_PERIOD);
   }
@@ -38,7 +38,7 @@ void Threads::stop() {
 
 void Threads::clean() {
   ScopedLock l(lock_);
-  for (int i = 0; i < threads_.size(); ++i) {
+  for (uint i = 0; i < threads_.size(); ++i) {
     if (!threads_[i]->isThreadRunning()) {
       delete threads_[i];
       threads_[i] = threads_.back();

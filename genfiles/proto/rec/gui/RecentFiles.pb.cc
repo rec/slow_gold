@@ -104,7 +104,7 @@ void protobuf_AddDesc_rec_2fgui_2fRecentFiles_2eproto() {
     "ile\022\021\n\ttimestamp\030\001 \001(\003\022(\n\004file\030\002 \001(\0132\032.r"
     "ec.util.file.VirtualFile\"i\n\013RecentFiles\022"
     "!\n\004file\030\003 \003(\0132\023.rec.gui.RecentFile\022\025\n\tma"
-    "x_files\030\004 \001(\r:\00216\022 \n\022reload_most_recent\030"
+    "x_files\030\004 \001(\005:\00216\022 \n\022reload_most_recent\030"
     "\005 \001(\010:\004true", 251);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/gui/RecentFiles.proto", &protobuf_RegisterTypes);
@@ -399,7 +399,7 @@ RecentFiles::RecentFiles(const RecentFiles& from)
 
 void RecentFiles::SharedCtor() {
   _cached_size_ = 0;
-  max_files_ = 16u;
+  max_files_ = 16;
   reload_most_recent_ = true;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -435,7 +435,7 @@ RecentFiles* RecentFiles::New() const {
 
 void RecentFiles::Clear() {
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    max_files_ = 16u;
+    max_files_ = 16;
     reload_most_recent_ = true;
   }
   file_.Clear();
@@ -464,13 +464,13 @@ bool RecentFiles::MergePartialFromCodedStream(
         break;
       }
       
-      // optional uint32 max_files = 4 [default = 16];
+      // optional int32 max_files = 4 [default = 16];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_max_files:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &max_files_)));
           _set_bit(1);
         } else {
@@ -520,9 +520,9 @@ void RecentFiles::SerializeWithCachedSizes(
       3, this->file(i), output);
   }
   
-  // optional uint32 max_files = 4 [default = 16];
+  // optional int32 max_files = 4 [default = 16];
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->max_files(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->max_files(), output);
   }
   
   // optional bool reload_most_recent = 5 [default = true];
@@ -545,9 +545,9 @@ void RecentFiles::SerializeWithCachedSizes(
         3, this->file(i), target);
   }
   
-  // optional uint32 max_files = 4 [default = 16];
+  // optional int32 max_files = 4 [default = 16];
   if (_has_bit(1)) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->max_files(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->max_files(), target);
   }
   
   // optional bool reload_most_recent = 5 [default = true];
@@ -566,10 +566,10 @@ int RecentFiles::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[1 / 32] & (0xffu << (1 % 32))) {
-    // optional uint32 max_files = 4 [default = 16];
+    // optional int32 max_files = 4 [default = 16];
     if (has_max_files()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->max_files());
     }
     
