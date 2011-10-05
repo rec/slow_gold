@@ -27,8 +27,7 @@ class RawFormatReader : public AudioFormatReader {
                            int startOffsetInDestBuffer,  // TODO:  Why isn't this used?
                            int64 startSampleInFile,
                            int numSamples) {
-    if (numDestChannels > numChannels)
-      numDestChannels = numChannels;
+    numDestChannels = std::min(static_cast<int>(numChannels), numDestChannels);
 
     if (lengthInSamples < 0) {
       frameSize_ = (numChannels * bitsPerSample / 8);

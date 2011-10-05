@@ -109,7 +109,7 @@ void CommandMap::removeKey(const Key& key) {
     if (i == toKeys_.end()) {
       LOG(ERROR) << "Couldn't remove message";
     } else {
-      for (int j = 0; j < i->second.size(); ++j) {
+      for (int j = 0; j < static_cast<int>(i->second.size()); ++j) {
         if (i->second[j] == key) {
           i->second.erase(i->second.begin() + j);
           return;

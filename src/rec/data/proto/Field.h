@@ -49,7 +49,7 @@ class Field : public MessageField {
 
   int32 index_;
   Type type_;
-  uint32 repeatCount_;
+  int32 repeatCount_;
 
   Operation* undo_;
   const Operation* operation_;
