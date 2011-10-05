@@ -12,7 +12,7 @@ BlockList fill(const BlockSet& sel, Size pos, Size len, bool wrap) {
     BlockSet::iterator i = sel.begin();
     for (; i != sel.end() && (i->second <= pos); ++i);
 
-    for (int j = 0; len > 0 && (wrap || j < sel.size()); ++i, ++j) {
+    for (uint j = 0; len > 0 && (wrap || j < sel.size()); ++i, ++j) {
       if (i == sel.end()) {
         i = sel.begin();
         pos = i->first;

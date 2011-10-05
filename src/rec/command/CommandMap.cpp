@@ -37,7 +37,7 @@ bool addKey(KeyToCommand* toCommand,
 bool CommandMap::add(const Key& key, Command command) {
   if (!addKey(&toCommand_, key, command))
     return false;
-    
+
   toKeys_[command].push_back(key);
   return true;
 }
@@ -45,7 +45,7 @@ bool CommandMap::add(const Key& key, Command command) {
 bool CommandMap::add(const Key& key, Command command, uint index) {
   if (!addKey(&toCommand_, key, command))
     return false;
-    
+
   toKeys_[command][index] = key;
   return true;
 }
@@ -109,7 +109,7 @@ void CommandMap::removeKey(const Key& key) {
     if (i == toKeys_.end()) {
       LOG(ERROR) << "Couldn't remove message";
     } else {
-      for (int j = 0; j < static_cast<int>(i->second.size()); ++j) {
+      for (uint j = 0; j < i->second.size(); ++j) {
         if (i->second[j] == key) {
           i->second.erase(i->second.begin() + j);
           return;

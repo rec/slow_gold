@@ -31,7 +31,7 @@ void splitTracks(Album* album) {
   // Look for likely song splits.
   static const char splits[] = "/:-";
   bool splitting;
-  for (int i = 0; !splitting && i < arraysize(splits); ++i) {
+  for (uint i = 0; !splitting && i < arraysize(splits); ++i) {
     char ch = splits[i];
     splitting = true;
     for (int j = 0; splitting && j < album->track_size(); ++j)

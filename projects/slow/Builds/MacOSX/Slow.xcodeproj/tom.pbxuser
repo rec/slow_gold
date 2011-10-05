@@ -925,8 +925,8 @@
 	88FDDC0F38B4605B01BD752F /* DedupeCDDB.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1034, 832}}";
-			sepNavSelRange = "{518, 0}";
-			sepNavVisRange = "{0, 1479}";
+			sepNavSelRange = "{562, 0}";
+			sepNavVisRange = "{0, 1480}";
 			sepNavWindowFrame = "{{61, 263}, {1093, 868}}";
 		};
 	};
@@ -1271,6 +1271,9 @@
 			E2026075143D1A600036FA27 /* PBXTextBookmark */ = E2026075143D1A600036FA27 /* PBXTextBookmark */;
 			E2026078143D1A600036FA27 /* PBXTextBookmark */ = E2026078143D1A600036FA27 /* PBXTextBookmark */;
 			E2026079143D1A600036FA27 /* PBXTextBookmark */ = E2026079143D1A600036FA27 /* PBXTextBookmark */;
+			E202607D143D1ABA0036FA27 /* XCBuildMessageTextBookmark */ = E202607D143D1ABA0036FA27 /* XCBuildMessageTextBookmark */;
+			E2026083143D1AEC0036FA27 /* PBXTextBookmark */ = E2026083143D1AEC0036FA27 /* PBXTextBookmark */;
+			E2026086143D1AEC0036FA27 /* PBXTextBookmark */ = E2026086143D1AEC0036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -1783,9 +1786,10 @@
 	};
 	C2C7BDA8573F8BB43DC99514 /* WriteYaml.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1047, 1950}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1373}";
+			sepNavIntBoundsRect = "{{0, 0}, {909, 1885}}";
+			sepNavSelRange = "{3604, 0}";
+			sepNavVisRange = "{2725, 2088}";
+			sepNavWindowFrame = "{{15, 282}, {968, 891}}";
 		};
 	};
 	C3BABA804C594DF88A50B485 /* Audio.h */ = {
@@ -1897,6 +1901,14 @@
 			sepNavVisRange = "{0, 622}";
 		};
 	};
+	D3095941488411CA120D4BE7 /* Convertors.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
+			sepNavSelRange = "{402, 0}";
+			sepNavVisRange = "{0, 959}";
+			sepNavWindowFrame = "{{38, 261}, {968, 891}}";
+		};
+	};
 	D34816C7D8A0A95C38583580 /* Trash.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {656, 1170}}";
@@ -1920,9 +1932,9 @@
 	};
 	D64E4517C63D1D001A1F33E2 /* FillSeries.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {620, 932}}";
-			sepNavSelRange = "{821, 0}";
-			sepNavVisRange = "{0, 1044}";
+			sepNavIntBoundsRect = "{{0, 0}, {1005, 907}}";
+			sepNavSelRange = "{329, 0}";
+			sepNavVisRange = "{0, 1033}";
 			sepNavWindowFrame = "{{107, 69}, {1064, 1020}}";
 		};
 	};
@@ -1987,9 +1999,9 @@
 	};
 	DF49580B9742DB4F887E85DF /* MainPage.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {852, 1443}}";
-			sepNavSelRange = "{2784, 0}";
-			sepNavVisRange = "{1062, 2211}";
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 1417}}";
+			sepNavSelRange = "{1458, 37}";
+			sepNavVisRange = "{934, 601}";
 			sepNavWindowFrame = "{{687, 31}, {911, 1024}}";
 		};
 	};
@@ -3860,6 +3872,7 @@
 			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
 			sepNavSelRange = "{723, 0}";
 			sepNavVisRange = "{0, 1356}";
+			sepNavWindowFrame = "{{845, 105}, {968, 891}}";
 		};
 	};
 	E2026064143D19920036FA27 /* XCBuildMessageTextBookmark */ = {
@@ -3928,6 +3941,35 @@
 		rLoc = 723;
 		rType = 0;
 		vrLen = 1356;
+		vrLoc = 0;
+	};
+	E202607D143D1ABA0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Comparison between signed and unsigned integer expressions";
+		fRef = D64E4517C63D1D001A1F33E2 /* FillSeries.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	E2026083143D1AEC0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BE1063E506CE5C5210226389 /* AudioResampler.cpp */;
+		name = "AudioResampler.cpp: 138";
+		rLen = 58;
+		rLoc = 3757;
+		rType = 0;
+		vrLen = 2032;
+		vrLoc = 2945;
+	};
+	E2026086143D1AEC0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D64E4517C63D1D001A1F33E2 /* FillSeries.cpp */;
+		name = "FillSeries.cpp: 15";
+		rLen = 0;
+		rLoc = 329;
+		rType = 0;
+		vrLen = 1033;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {
@@ -5914,9 +5956,9 @@
 	};
 	EE1EF6A8A90E6BC80D12C1C3 /* Album.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1107, 1885}}";
-			sepNavSelRange = "{4085, 0}";
-			sepNavVisRange = "{1822, 1038}";
+			sepNavIntBoundsRect = "{{0, 0}, {1034, 1924}}";
+			sepNavSelRange = "{836, 0}";
+			sepNavVisRange = "{130, 1633}";
 			sepNavWindowFrame = "{{502, 17}, {1093, 868}}";
 		};
 	};

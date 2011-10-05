@@ -81,7 +81,7 @@ YAML::Emitter& operator<<(YAML::Emitter& out, const MessageField& mf) {
 
 typedef std::vector<const FieldDescriptor*> FieldVector;
 
-static const int MAX_FIELD_COUNT = 5;
+static const unsigned int MAX_FIELD_COUNT = 5;
 static const int MAX_ARRAY_COUNT = 8;
 
 bool isSmall(const Message& m) {

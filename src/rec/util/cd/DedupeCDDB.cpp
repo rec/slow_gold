@@ -22,7 +22,7 @@ string normalize(const string& s) {
   for (; start < length && isspace(s[length - 1]); --length);
 
   string result(s, start, length);
-  for (int i = 0; i < result.size(); ++i)
+  for (uint i = 0; i < result.size(); ++i)
     result[i] = tolower(result[i]);
 
   return result;
