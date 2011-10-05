@@ -33,10 +33,10 @@ PlayerController::PlayerController()
   fineScale_.slider()->setRange(-50.0, 50.0, 1.0);
   level_.slider()->setRange(-60.0, +18.0, 0.1);
 
-  playbackSpeed_.slider()->setDetent(100.0);
-  pitchScale_.slider()->setDetent(0.0);
-  fineScale_.slider()->setDetent(0.0);
-  level_.slider()->setDetent(0.0);
+  playbackSpeed_.slider()->setDetent(100.0f);
+  pitchScale_.slider()->setDetent(0.0f);
+  fineScale_.slider()->setDetent(0.0f);
+  level_.slider()->setDetent(0.0f);
 
   playbackSpeed_.slider()->setTextValueSuffix("%");
   pitchScale_.slider()->setTextValueSuffix(" semitones");

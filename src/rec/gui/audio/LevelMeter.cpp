@@ -21,9 +21,9 @@ void LevelMeter::operator()(const LevelVector& levels) {
     for (uint i = 0; i < levels_.size(); ++i) {
       // DCHECK(!std::isinf(levels_[i]));
       if (isinf(levels_[i]))
-        levels_[i] = 1.0;
+        levels_[i] = 1.0f;
       else if (isnan(levels_[i]))
-        levels_[i] = 0.0;
+        levels_[i] = 0.0f;
     }
   }
   thread::callAsync(this, &LevelMeter::repaint);

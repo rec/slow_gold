@@ -28,7 +28,7 @@ static const int UNITIALIZED_PT_STATE_ERR    = 1;
 //static const int OUT_OF_MEMORY_ERR      = 2;
 
 static const int MAX_CHANNELS = 10;
-static const float MF_ESTIMATOR_HISTORY = 7.0; /* seconds */
+static const float MF_ESTIMATOR_HISTORY = 7.0f; /* seconds */
 
 /* REMIND: remove this restriction */
 static const long MAX_SAMPLES = 1000000000L;

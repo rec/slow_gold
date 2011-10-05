@@ -40,8 +40,8 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 
   if (type == StereoProto::SINGLE) {
     if (side == StereoProto::LEFT_PLUS_RIGHT) {
-      b.applyGain(StereoProto::RIGHT, 0, n, 0.5);
-      b.addFrom(StereoProto::RIGHT, 0, b, StereoProto::LEFT, 0, n, 0.5);
+      b.applyGain(StereoProto::RIGHT, 0, n, 0.5f);
+      b.addFrom(StereoProto::RIGHT, 0, b, StereoProto::LEFT, 0, n, 0.5f);
       b.copyFrom(StereoProto::LEFT, 0, b, StereoProto::RIGHT, 0, n);
 
     } else {
@@ -49,16 +49,16 @@ void Stereo::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     }
 
   } else if (type == StereoProto::FLIP) {
-    b.applyGain(side, 0, n, -1.0);
+    b.applyGain(side, 0, n, -1.0f);
 
   } else {
     side = StereoProto::LEFT;
     otherSide = StereoProto::RIGHT;
-    b.addFrom(side, 0, b, otherSide, 0, n, -1.0);
-    b.applyGain(side, 0, n, 0.5);
+    b.addFrom(side, 0, b, otherSide, 0, n, -1.0f);
+    b.applyGain(side, 0, n, 0.5f);
 
     if (type == StereoProto::CENTER_ELIMINATION)
-      b.addFrom(otherSide, 0, b, side, 0, n, -1.0);
+      b.addFrom(otherSide, 0, b, side, 0, n, -1.0f);
 
     else if (type == StereoProto::CENTER_ELIMINATION_MONO)
       b.copyFrom(otherSide, 0, b, side, 0, n);

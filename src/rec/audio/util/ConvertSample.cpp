@@ -5,14 +5,15 @@ namespace audio {
 
 namespace {
 
-enum { bit8 = 0x100LL,
-       bit16 = bit8 * bit8,
-       bit24 = bit8 * bit16,
-       bit32 = bit8 * bit24,
-       bit40 = bit8 * bit32,
-       bit48 = bit8 * bit40 };
-
-static const int64 bit56 = bit8 * bit48;
+long long enum {
+  bit8 = 0x100LL,
+  bit16 = bit8 * bit8,
+  bit24 = bit8 * bit16,
+  bit32 = bit8 * bit24,
+  bit40 = bit8 * bit32,
+  bit48 = bit8 * bit40,
+  bit56 = bit8 * bit48
+};
 
 }  // namespace
 
@@ -29,7 +30,7 @@ template <> void convertSample<int8, int24>(int8 f, int24 *t) {
 }
 
 template <> void convertSample<int8, int32>(int8 f, int32 *t) {
-  *t = f * bit24;
+  *t = static_cast<int32>(f * bit24);
 }
 
 template <> void convertSample<int8, int64>(int8 f, int64 *t) {
@@ -50,7 +51,7 @@ template <> void convertSample<int16, int24>(int16 f, int24 *t) {
 }
 
 template <> void convertSample<int16, int32>(int16 f, int32 *t) {
-  *t = f * bit16;
+  *t = static_cast<int16>(f * bit16);
 }
 
 template <> void convertSample<int16, int64>(int16 f, int64 *t) {
@@ -71,7 +72,7 @@ template <> void convertSample<int24, int24>(int24 f, int24 *t) {
 }
 
 template <> void convertSample<int24, int32>(int24 f, int32 *t) {
-  *t = f * bit8;
+  *t = static_cast<int32>(f * bit8);
 }
 
 template <> void convertSample<int24, int64>(int24 f, int64 *t) {
@@ -109,7 +110,7 @@ template <> void convertSample<int64, int16>(int64 f, int16 *t) {
 }
 
 template <> void convertSample<int64, int24>(int64 f, int24 *t) {
-  *t = static_cast<int24>(f / bit40);
+  *t = f / bit40;
 }
 
 template <> void convertSample<int64, int32>(int64 f, int32 *t) {

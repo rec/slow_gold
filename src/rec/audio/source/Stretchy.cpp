@@ -82,7 +82,7 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   DCHECK_EQ(info.buffer->getNumChannels(), channels_);
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
-    if (int64 processed = processOneChunk(i)) {
+    if (int processed = static_cast<int>(processOneChunk(i))) {
       if (zeroCount) {
         LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
       }

@@ -50,9 +50,9 @@ struct Copier {
       if (c1 == c2) {
         to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt());
       } else {
-        to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt(), 0.5);
+        to_.buffer_->copyFrom(c, startTo.toInt(), fromSamp, count_.toInt(), 0.5f);
         to_.buffer_->addFrom(c, startTo.toInt(), *from_.buffer_, c2,
-                             startFrom.toInt(), count_.toInt(), 0.5);
+                             startFrom.toInt(), count_.toInt(), 0.5f);
       }
     }
   }

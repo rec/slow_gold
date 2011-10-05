@@ -19,7 +19,7 @@ class FrameSource : public PositionableAudioSource {
   virtual void getNextAudioBlock(const Info& info) {
     Info i = info;
     while (i.numSamples > 0) {
-      SamplePosition copied = buffer_.getAudioBlock(i, position_);
+      int copied = static_cast<int>(buffer_.getAudioBlock(i, position_));
       if (!copied) {
         LOG(ERROR) << "No samples copied!";
         DCHECK(copied);

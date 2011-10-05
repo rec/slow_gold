@@ -5,6 +5,10 @@
 #include "rec/audio/format/mpg123/NewHandle.h"
 #include "rec/audio/format/mpg123/Format.h"
 
+#pragma GCC diagnostic ignored "-Wshorten-64-to-32"
+// TODO: why doesn't this work?  see 
+// http://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Pragmas.html
+
 using namespace juce;
 
 namespace rec {
@@ -25,6 +29,7 @@ Reader::Reader(InputStream* in, const String& formatName, mpg123_handle* mh,
 Reader::~Reader() {
   mpg123_close(mh_);
   mpg123_delete(mh_);
+
   free(buffer_);
 }
 
@@ -40,6 +45,7 @@ bool Reader::readSamples(int** dest, int destChannels, int destOffset,
     if (buffer_)
       free(buffer_);
 
+    // buffer_ = static_cast<unsigned char*>(malloc(size_));
     buffer_ = static_cast<uchar*>(malloc(size_));
     allocated_ = size_;
   }

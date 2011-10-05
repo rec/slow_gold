@@ -20,7 +20,7 @@ class DetentSlider : public juce::Slider {
     if (!(userIsDragging && detentSet_))
       return value;
 
-    float d = fabs(getPositionOfValue(value) - getPositionOfValue(detent_));
+    float d = fabsf(getPositionOfValue(value) - getPositionOfValue(detent_));
     return (d < detentRadius_) ? detent_ : value;
   }
 
