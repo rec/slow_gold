@@ -10,7 +10,7 @@ namespace block {
 BlockSet difference(const Block& block, const BlockSet& set);
 BlockSet difference(const BlockSet& set, const BlockSet& set2);
 
-Block firstEmptyBlockAfter(const BlockSet& s, int pos, int length);
+Block firstEmptyBlockAfter(const BlockSet& s, int64 pos, int64 length);
 
 }  // namespace block
 }  // namespace util

@@ -51,7 +51,7 @@ BlockSet difference(const BlockSet& x, const BlockSet& y) {
   return result;
 }
 
-Block firstEmptyBlockAfter(const BlockSet& s, int pos, int length) {
+Block firstEmptyBlockAfter(const BlockSet& s, int64 pos, int64 length) {
   BlockSet diff = difference(Block(pos, length), s);
   if (diff.empty())
     diff = difference(Block(0, pos), s);

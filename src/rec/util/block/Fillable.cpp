@@ -54,8 +54,7 @@ int64 Fillable::fillNextBlock() {
   Block block = firstEmptyBlockAfter(filled_, position_, length_);
   {
     ScopedUnlock u(lock_);
-    int numSamples = getSize(block);
-    if (numSamples <= 0) {
+    if (getSize(block) <= 0) {
       LOG(ERROR) << "Getting an empty block";
       return 0;
     }

@@ -75,13 +75,15 @@ void DialComponent::paint(Graphics& g) {
 
   if (p.colors().color_size() > 2) {
     g.setColour(p.colour(FOREGROUND).
-                interpolatedWith(p.colour(HIGHLIGHT), timeRatio_));
+                interpolatedWith(p.colour(HIGHLIGHT),
+                                 static_cast<float>(timeRatio_)));
   }
 
   Path path;
   path.addPieSegment(bounds.getX(), bounds.getY(),
                      bounds.getWidth(), bounds.getHeight(),
-                     zeroAngle_, timeAngle_, 0);
+                     static_cast<float>(zeroAngle_),
+                     static_cast<float>(timeAngle_), 0.0f);
 
   g.fillPath(path);
 }

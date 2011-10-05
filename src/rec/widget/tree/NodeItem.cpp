@@ -44,7 +44,7 @@ void Node::paint(juce::Graphics& g) const {
   ScopedLock l(lock_);
   Painter p(desc_.widget(), &g);
   if (icon_)
-    icon_->draw(g, 1.0);
+    icon_->draw(g, 1.0f);
 
   p.setColor(getColor());
   g.drawSingleLineText(name(), desc_.widget().margin(),

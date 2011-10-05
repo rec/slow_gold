@@ -6,7 +6,7 @@
 #include "rec/audio/format/mpg123/Format.h"
 
 #pragma GCC diagnostic ignored "-Wshorten-64-to-32"
-// TODO: why doesn't this work?  see 
+// TODO: why doesn't this work?  see
 // http://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Pragmas.html
 
 using namespace juce;
@@ -40,18 +40,18 @@ bool Reader::readSamples(int** dest, int destChannels, int destOffset,
 
   int64 bytesPerSample = this->bitsPerSample / 8;
   size_ = numSamples * numChannels * bytesPerSample;
+  int intSize = static_cast<int>(size_);
 
   if (allocated_ < size_) {
     if (buffer_)
       free(buffer_);
 
-    // buffer_ = static_cast<unsigned char*>(malloc(size_));
-    buffer_ = static_cast<uchar*>(malloc(size_));
+    buffer_ = static_cast<uchar*>(malloc(intSize));
     allocated_ = size_;
   }
 
   size_t bytesCopied;
-  Error e = mpg123_read(mh_, buffer_, size_, &bytesCopied);
+  Error e = mpg123_read(mh_, buffer_, intSize, &bytesCopied);
   if (e != MPG123_DONE && e != MPG123_OK)
     return false;
 

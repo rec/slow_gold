@@ -131,7 +131,7 @@ thread::Result Model::fillOnce() {
       jumpToTime(triggerPosition_);
 
     int64 pos = buffer->position();
-    int64 filled = buffer->fillNextBlock();
+    int filled = static_cast<int>(buffer->fillNextBlock());
     DCHECK(filled);
 
     if (thumbnailBuffer_.cacheWritten())
