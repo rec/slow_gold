@@ -21,6 +21,11 @@ GROUPS = {
   }
 
 USAGE = """\
+new.py creates new C++ files from templates.
+
+You select which type of C++ files you want to create - your current choices are
+   h, class, cpp, test, svg and xml.
+
 Usage:
 
   new <type> <filename>
@@ -45,9 +50,6 @@ def convertToCCode(data):
                       replace('\n', '\\n"\n  "'))
   return ''.join(split.splitLargeLines(data.split('\n')))
 
-def readDataFile(f):
-  return convertToCCode(open(f).read())
-
 def write(name, template, **context):
   with open(name, 'w') as out:
     out.write(template.format(**context))
@@ -64,7 +66,7 @@ def makeContext(group, path, classname, file, suffix):
     package='.'.join(path),
     **context)
 
-def new(groupname, file):
+def createCppFiles(groupname, file):
   group = GROUPS.get(groupname, None)
   usageError(not group, 'No group ' + groupname)
 
@@ -81,7 +83,8 @@ def new(groupname, file):
   if group.has_key('datatype'):
     ft = group['filetype']
     datafile = '%s.%s' % (file, ft)
-    context.update(data=readDataFile(datafile), datatype=group['datatype'])
+    data = convertToCCode(open(datafile).read())
+    context.update(data=data, datatype=group['datatype'])
     headerfile = '%s.%s.h' % (classname, ft)
   else:
     headerfile = classname + '.h'
@@ -98,4 +101,4 @@ def new(groupname, file):
 if __name__ == "__main__":
   args = sys.argv[1:]
   usageError(len(args) is not 2)
-  new(*args)
+  createCppFiles(*args)

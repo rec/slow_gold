@@ -27,13 +27,8 @@ SamplePosition Frames<Sample, CHANNELS>::getAudioBlock(const Info& info,
   float** out = info.buffer->getArrayOfChannels();
   Frame* frame = frames_ + offset;
   for (int i = 0, s = info.startSample; i < numSamples; ++i, ++frame, ++s) {
-    for (int ch = 0; ch < CHANNELS; ++ch) {
-      // convertSample(frame->sample_[ch], &(out[ch][s]));
-      Sample sample = frame->sample_[ch];
-      convertSample<Sample, float>(sample, &(out[ch][s]));
-      // DLOG_EVERY_N(INFO, 3000) << frame << ", " << sample << ", " << frame - frames_;
-      // DLOG_EVERY_N(INFO, 3000) << sample << ", " << out[ch][s];
-    }
+    for (int ch = 0; ch < CHANNELS; ++ch)
+      convertSample<Sample, float>(frame->sample_[ch], &(out[ch][s]));
   }
 
   return numSamples;
