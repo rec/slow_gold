@@ -14,17 +14,40 @@ void CommandMap::operator()(const CommandMapProto& commands) {
   }
 }
 
-void CommandMap::add(const Key& key, Command command, uint index) {
-  // TODO:  check for dupes?
-  if (toCommand_.find(key) != toCommand_.end()) {
+namespace {
+
+typedef CommandMap::KeyToCommand KeyToCommand;
+typedef CommandMap::Key Key;
+typedef CommandMap::Command Command;
+
+bool addKey(KeyToCommand* toCommand,
+            const Key& key, Command command) {
+  bool exists = (toCommand->find(key) != toCommand->end());
+
+  if (exists)
     PlatformUtilities::beep();
-    return;
-  }
-  toCommand_[key] = command;
-  if (index == -1)
-    toKeys_[command].push_back(key);
   else
-    toKeys_[command][index] = key;
+    (*toCommand)[key] = command;
+
+  return !exists;
+}
+
+}  // namespace
+
+bool CommandMap::add(const Key& key, Command command) {
+  if (!addKey(&toCommand_, key, command))
+    return false;
+    
+  toKeys_[command].push_back(key);
+  return true;
+}
+
+bool CommandMap::add(const Key& key, Command command, uint index) {
+  if (!addKey(&toCommand_, key, command))
+    return false;
+    
+  toKeys_[command][index] = key;
+  return true;
 }
 
 const CommandMapProto CommandMap::getProto() const {

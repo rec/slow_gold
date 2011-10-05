@@ -27,12 +27,13 @@ class CommandMap : public Listener<const CommandMapProto&> {
 
   void removeCommand(Command command, uint keyIndex);
   void removeKey(const Key& key);
-  void add(const Key& key, Command command, uint index = -1);
+  bool add(const Key& key, Command command);
+  bool add(const Key& key, Command command, uint index);
 
- private:
   typedef std::map<Key, Command> KeyToCommand;
   typedef std::map<Command, vector<Key> > CommandToKeys;
 
+ private:
   KeyToCommand toCommand_;
   CommandToKeys toKeys_;
 

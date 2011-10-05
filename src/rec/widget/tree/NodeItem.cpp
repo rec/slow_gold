@@ -109,7 +109,7 @@ int Node::getItemWidth() const {
 }
 
 int Node::getItemHeight() const {
-  return font_.getHeight() + 2 * desc_.widget().margin();
+  return static_cast<int>(font_.getHeight() + 2 * desc_.widget().margin());
 }
 
 juce::Component* Node::createItemComponent() {

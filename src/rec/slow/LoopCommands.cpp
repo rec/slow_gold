@@ -82,18 +82,20 @@ bool jump(LoopSnapshot* snap, Position pos) {
 
 bool jumpSelected(LoopSnapshot* snap, Position pos) {
   vector<int> selected;
-  size_t s = -100;
+  size_t s;
+  bool found = false;
   for (int i = 0; i < snap->loops_.loop_point_size() - 1; ++i) {
     if (!snap->selectionCount_ || snap->loops_.loop_point(i).selected()) {
       if (i == snap->segment_) {
-        DCHECK_EQ(s, -1);
+        DCHECK(!found);
         s = selected.size();
+        found = true;
       }
       selected.push_back(i);
     }
   }
 
-  DCHECK_NE(s, -100);
+  DCHECK(found);
   setTimeFromSegment(snap, selected[positionToIndex(pos, s, selected.size())]);
   return true;
 }
