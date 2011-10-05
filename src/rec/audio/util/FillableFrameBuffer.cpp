@@ -51,7 +51,7 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
     return 0;
   }
 
-  typename Frames<Sample, CHANNELS>::Frame* frame = frames_.frames() + b.first;
+  InterleavedFrame<Sample, CHANNELS>* frame = frames_.frames() + b.first;
 
 #if 0
   int32 max = std::numeric_limits<int32>::min();

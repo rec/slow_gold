@@ -20,7 +20,10 @@ class FillableFrameBuffer : public block::Fillable {
 
   bool setReader(AudioFormatReader* reader);
   virtual block::Size doFillNextBlock(const block::Block& b);
-  const Frames<Sample, CHANNELS>& frames() const { return frames_; }
+  
+  typedef Frames<InterleavedFrame<Sample, CHANNELS> > FillableFrame; 
+  
+  const FillableFrame& frames() const { return frames_; }
 
  protected:
   virtual void onFilled() { reader_.reset(); }
@@ -29,7 +32,7 @@ class FillableFrameBuffer : public block::Fillable {
   CriticalSection lock_;
 
   const block::Size blockSize_;
-  Frames<Sample, CHANNELS> frames_;
+  FillableFrame frames_;
   ptr<AudioFormatReader> reader_;
   vector<int> buffer_[CHANNELS];
   int* bufferPointers_[CHANNELS];

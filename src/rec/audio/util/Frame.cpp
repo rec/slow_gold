@@ -4,8 +4,8 @@
 namespace rec {
 namespace audio {
 
-template <typename Sample, int CHANNELS>
-bool Frames<Sample, CHANNELS>::setLength(SamplePosition length) {
+template <typename Frame>
+bool Frames<Frame>::setLength(SamplePosition length) {
   free(frames_);
 
   // TODO: fix this for really large buffers.
@@ -20,21 +20,34 @@ bool Frames<Sample, CHANNELS>::setLength(SamplePosition length) {
   return true;
 }
 
+template <typename Frame>
+void fillArrayOfChannels(Frame* in, SamplePosition inOffset,
+                         float **out, int outOffset,
+                         int numSamples);
+
 template <typename Sample, int CHANNELS>
-SamplePosition Frames<Sample, CHANNELS>::getAudioBlock(const Info& info,
-                                                       SamplePosition offset) const {
-  int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
-  float** out = info.buffer->getArrayOfChannels();
-  Frame* frame = frames_ + offset;
-  for (int i = 0, s = info.startSample; i < numSamples; ++i, ++frame, ++s) {
+void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
+                         SamplePosition inOffset,
+                         float **out, int outOffset,
+                         int numSamples) {
+  typedef InterleavedFrame<Sample, CHANNELS> Frame;
+  Frame* frame = in + inOffset;
+  for (int i = 0, s = outOffset; i < numSamples; ++i, ++frame, ++s) {
     for (int ch = 0; ch < CHANNELS; ++ch)
       convertSample<Sample, float>(frame->sample_[ch], &(out[ch][s]));
   }
+}
 
+template <typename Frame>
+SamplePosition Frames<Frame>::getAudioBlock(const Info& info,
+                                            SamplePosition offset) const {
+  int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
+  float** out = info.buffer->getArrayOfChannels();
+  fillArrayOfChannels(frames_, offset, out, info.startSample, numSamples);
   return numSamples;
 }
 
-template class Frames<short, 2>;
+template class Frames< InterleavedFrame<short, 2> >;
 
 }  // namespace audio
 }  // namespace rec

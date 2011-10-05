@@ -10,7 +10,10 @@ namespace source {
 template <typename Sample, int CHANNELS>
 class FrameSource : public PositionableAudioSource {
  public:
-  explicit FrameSource(const Frames<Sample, CHANNELS>& b) : buffer_(b) {}
+  typedef InterleavedFrame<Sample, CHANNELS> SourceFrame;
+  typedef Frames<SourceFrame> SourceFrames;
+  
+  explicit FrameSource(const SourceFrames& b) : buffer_(b) {}
   virtual ~FrameSource() {}
 
   virtual void getNextAudioBlock(const Info& info) {
@@ -47,7 +50,7 @@ class FrameSource : public PositionableAudioSource {
  private:
   CriticalSection lock_;
 
-  const Frames<Sample, CHANNELS>& buffer_;
+  const SourceFrames& buffer_;
   int64 position_;
   bool looping_;
 

@@ -7,36 +7,9 @@
 namespace rec {
 namespace audio {
 
-
-template <typename Sample, int CHANNELS>
-struct Frame {
-  Sample sample_[CHANNELS];
-};
-
 template <typename Frame>
-class AbstractFrames {
- public:
-  AbstractFrames() : length_(0), frames_(NULL) {}
-  ~AbstractFrames() { free(frames_); }
-
-  bool setLength(SamplePosition length);
-  SamplePosition getAudioBlock(const Info& info, SamplePosition offset) const;
-
-  Frame* frames() { return frames_; }
-  SamplePosition length() const { return length_; }
-
- private:
-  SamplePosition length_;
-  Frame* frames_;
-
-  DISALLOW_COPY_AND_ASSIGN(AbstractFrames);
-};
-
-template <typename Sample, int CHANNELS>
 class Frames {
  public:
-  typedef Frame<Sample, CHANNELS> Frame;
-
   Frames() : length_(0), frames_(NULL) {}
   ~Frames() { free(frames_); }
 
@@ -52,6 +25,14 @@ class Frames {
 
   DISALLOW_COPY_AND_ASSIGN(Frames);
 };
+
+template <typename Sample, int CHANNELS>
+struct InterleavedFrame {
+  Sample sample_[CHANNELS];
+};
+
+typedef InterleavedFrame<short, 2> CDFrame;
+typedef Frames<CDFrame> CDFrames;
 
 }  // namespace persist
 }  // namespace rec
