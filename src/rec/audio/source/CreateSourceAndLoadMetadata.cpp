@@ -56,6 +56,7 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
   return reader.transfer();
 }
 
+#if 0
 PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
   if (!empty(file)) {
     ptr<AudioFormatReader> reader(createReaderAndLoadMetadata(file));
@@ -66,6 +67,7 @@ PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
 
   return NULL;
 }
+#endif
 
 }  // namespace source
 }  // namespace audio

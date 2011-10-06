@@ -1,7 +1,6 @@
 #include "rec/slow/Model.h"
 #include "rec/audio/Audio.h"
 #include "rec/audio/source/FrameSource.h"
-#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
 #include "rec/audio/source/Empty.h"
 #include "rec/audio/source/Selection.h"
 #include "rec/audio/util/Frame.h"
