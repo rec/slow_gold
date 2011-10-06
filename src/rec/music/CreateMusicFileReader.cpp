@@ -29,8 +29,10 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
 }  // namespace
 
 AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
-  if (file::empty(file))
+  if (file::empty(file) || !file.path_size()) {
+    LOG(ERROR) << "Can't create track for " << file.DebugString();
     return NULL;
+  }
 
   music::Metadata metadata;
   ptr<AudioFormatReader> reader;
@@ -38,19 +40,7 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   bool fileRead = d->fileReadSuccess();
 
   if (file.type() == VirtualFile::CD) {
-    if (!file.path_size()) {
-      LOG(ERROR) << "Can't create track for " << file.DebugString();
-      return NULL;
-    }
-
-    int track = String(file.path(0).c_str()).getIntValue();
-    String filename = str(file.name());
-    reader.reset(cd::createCDTrackReader(filename, track));
-
-    if (!fileRead) {
-      ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
-      metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
-    }
+    reader.reset(createCDReader(file, fileRead ? &metadata : NULL));
   } else {
     reader.reset(audio::createReader(file));
     if (!reader) {
