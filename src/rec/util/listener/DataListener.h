@@ -7,6 +7,7 @@
 #include "rec/data/proto/Proto.h"
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/util/thread/CallAsync.h"
 
 namespace rec {
 namespace util {
@@ -25,12 +26,14 @@ class DataListener : public Listener<const Proto&>,
   virtual void setFile(const VirtualFile& file);
   virtual void operator()(const Proto& p);
   virtual const Proto get() const;
+  static const bool UPDATE_ON_MESSAGE_THREAD = true;
 
  protected:
   virtual void setData(persist::Data<Proto>* d);
 
  protected:
   virtual void onDataChange(const Proto&) = 0;
+  void doOnDataChange(const Proto& p) { onDataChange(p); }
 
   CriticalSection lock_;
   persist::Data<Proto>* data_;
@@ -63,7 +66,10 @@ void DataListener<Proto>::operator()(const Proto& p) {
       return;
     proto_ = p;
   }
-  onDataChange(p);
+  if (UPDATE_ON_MESSAGE_THREAD)
+    thread::callAsync(this, &DataListener<Proto>::doOnDataChange, p);
+  else
+    onDataChange(p);
 }
 
 template <typename Proto>

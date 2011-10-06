@@ -134,16 +134,19 @@ thread::Result Model::fillOnce() {
     int filled = static_cast<int>(buffer->fillNextBlock());
     DCHECK(filled);
 
-    if (thumbnailBuffer_.cacheWritten())
-      LOG(ERROR) << "Cache already written?";
+    if (thumbnailBuffer_.cacheWritten()) {
+      LOG_FIRST_N(ERROR, 8) << "Cache already written";
+    }
 
     updateInfo_.numSamples = filled;
     updateBuffer_.setSize(2, filled, false, false, true);
     updateSource_.setNextReadPosition(pos);
     updateSource_.getNextAudioBlock(updateInfo_);
     thumbnailBuffer_.addBlock(pos, updateInfo_);
+#if 0
     DLOG(INFO) << (empty ? "true" : "false") << ", " << filled << ", " << pos
                << " length: " << player()->length();
+#endif
   }
 
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
