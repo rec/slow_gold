@@ -12,11 +12,6 @@ namespace music {
 namespace {
 
 AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
-  if (!file.path_size()) {
-    LOG(ERROR) << "Can't create track for " << file.DebugString();
-    return NULL;
-  }
-
   int track = String(file.path(0).c_str()).getIntValue();
   String filename = str(file.name());
   if (metadata) {
@@ -24,6 +19,14 @@ AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
     *metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
   }
   return cd::createCDTrackReader(filename, track);
+}
+
+AudioFormatReader* createFileReader(const VirtualFile& file, Metadata* metadata) {
+  ptr<AudioFormatReader> reader(audio::createReader(file));
+  if (metadata)
+    *metadata = music::getMetadata(reader->metadataValues);
+
+  return reader.transfer();
 }
 
 }  // namespace
@@ -34,26 +37,24 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
     return NULL;
   }
 
-  music::Metadata metadata;
-  ptr<AudioFormatReader> reader;
+  ptr<Metadata> metadata;
   persist::Data<Metadata>* d = persist::setter<music::Metadata>(file);
-  bool fileRead = d->fileReadSuccess();
+  if (d->fileReadSuccess())
+    metadata.reset(new Metadata);
 
-  if (file.type() == VirtualFile::CD) {
-    reader.reset(createCDReader(file, fileRead ? &metadata : NULL));
-  } else {
-    reader.reset(audio::createReader(file));
-    if (!reader) {
-      LOG(ERROR) << "Couldn't create reader for file " << file.ShortDebugString();
-      return NULL;
-    }
+  ptr<AudioFormatReader> reader;
+  if (file.type() == VirtualFile::CD)
+    reader.reset(createCDReader(file, metadata.get()));
+  else
+    reader.reset(createFileReader(file, metadata.get()));
 
-    if (!fileRead)
-      metadata = music::getMetadata(reader->metadataValues);
+  if (!reader) {
+    LOG(ERROR) << "Couldn't create reader for file " << file.ShortDebugString();
+    return NULL;
   }
 
-  if (!fileRead && (metadata != music::Metadata::default_instance()))
-    data::set(d, metadata);
+  if (metadata && (*metadata != music::Metadata::default_instance()))
+    data::set(d, *metadata);
 
   return reader.transfer();
 }

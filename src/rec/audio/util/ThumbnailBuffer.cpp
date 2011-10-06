@@ -42,7 +42,12 @@ void ThumbnailBuffer::writeThumbnail() {
 }
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f) {
-  ptr<AudioFormatReader> reader(music::createMusicFileReader(f));
+  return setReader(f, music::createMusicFileReader(f));
+}
+
+bool ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
+  ptr<AudioFormatReader> r(reader);
+
   if (reader) {
     file_ = getShadowFile(f, "thumbnail.stream");
 
@@ -61,7 +66,7 @@ bool ThumbnailBuffer::setReader(const VirtualFile& f) {
   } else if (!file::empty(f)) {
     LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
   }
-  return buffer_.setReader(reader.transfer());
+  return buffer_.setReader(r.transfer());
 }
 
 }  // namespace util
