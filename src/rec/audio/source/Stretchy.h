@@ -20,7 +20,6 @@ class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
 
-  Stretchy(PositionableAudioSource* s);
   ~Stretchy();
 
   void setStretch(const stretch::Stretch&);
@@ -30,6 +29,11 @@ class Stretchy : public Wrappy {
   virtual int64 getNextReadPosition() const;
   virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
   void initialize();
+
+  static Stretchy* create(PositionableAudioSource*);
+
+ protected:
+  Stretchy(PositionableAudioSource* s);
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);

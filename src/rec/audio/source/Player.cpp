@@ -21,7 +21,7 @@ Player::Player(Device* d)
   : device_(d),
     timer_(new Timer()),
     selection_(new Selection(timer_)),
-    stretchy_(new Stretchy(selection_)),
+    stretchy_(Stretchy::create(selection_)),
     stereo_(new Stereo(stretchy_)) {
   stretchy_->initialize();
   level_.setSource(stereo_);

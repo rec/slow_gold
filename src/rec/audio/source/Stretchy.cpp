@@ -12,6 +12,11 @@ namespace rec {
 namespace audio {
 namespace source {
 
+// static
+Stretchy* Stretchy::create(PositionableAudioSource* p) {
+  return new Stretchy(p);
+}
+
 Stretchy::Stretchy(PositionableAudioSource* s)
     : Wrappy(s),
       scaler_(new AudioTimeScaler),
