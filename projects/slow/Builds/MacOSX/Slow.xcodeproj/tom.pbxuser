@@ -357,6 +357,13 @@
 			sepNavVisRange = "{0, 1210}";
 		};
 	};
+	33301B7A93A933080C55E811 /* CreateMusicFileReader.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1069, 858}}";
+			sepNavSelRange = "{1840, 0}";
+			sepNavVisRange = "{987, 777}";
+		};
+	};
 	3453CE0D60F3F5E8E206FF32 /* LoopCommands.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1069, 1859}}";
@@ -1278,6 +1285,10 @@
 			E202610F143E1B710036FA27 /* PBXTextBookmark */ = E202610F143E1B710036FA27 /* PBXTextBookmark */;
 			E2026124143E23480036FA27 /* PBXTextBookmark */ = E2026124143E23480036FA27 /* PBXTextBookmark */;
 			E2026125143E23480036FA27 /* PBXTextBookmark */ = E2026125143E23480036FA27 /* PBXTextBookmark */;
+			E2026133143E26E30036FA27 /* PBXTextBookmark */ = E2026133143E26E30036FA27 /* PBXTextBookmark */;
+			E2026134143E26E30036FA27 /* PBXTextBookmark */ = E2026134143E26E30036FA27 /* PBXTextBookmark */;
+			E2026139143E27180036FA27 /* PBXTextBookmark */ = E2026139143E27180036FA27 /* PBXTextBookmark */;
+			E202613A143E27180036FA27 /* PBXTextBookmark */ = E202613A143E27180036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -4013,7 +4024,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 45";
 		rLen = 0;
-		rLoc = 1290;
+		rLoc = 1206;
 		rType = 0;
 		vrLen = 1961;
 		vrLoc = 0;
@@ -4033,7 +4044,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 45";
 		rLen = 0;
-		rLoc = 1311;
+		rLoc = 1227;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 0;
@@ -4053,7 +4064,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 45";
 		rLen = 21;
-		rLoc = 1290;
+		rLoc = 1206;
 		rType = 0;
 		vrLen = 1961;
 		vrLoc = 0;
@@ -4063,7 +4074,7 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 76";
 		rLen = 0;
-		rLoc = 2133;
+		rLoc = 2049;
 		rType = 0;
 		vrLen = 1691;
 		vrLoc = 0;
@@ -4073,9 +4084,49 @@
 		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
 		name = "ThumbnailBuffer.cpp: 76";
 		rLen = 0;
-		rLoc = 2133;
+		rLoc = 2049;
 		rType = 0;
 		vrLen = 1953;
+		vrLoc = 0;
+	};
+	E2026133143E26E30036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
+		name = "ThumbnailBuffer.cpp: 69";
+		rLen = 0;
+		rLoc = 1861;
+		rType = 0;
+		vrLen = 1704;
+		vrLoc = 0;
+	};
+	E2026134143E26E30036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
+		name = "ThumbnailBuffer.cpp: 69";
+		rLen = 0;
+		rLoc = 1861;
+		rType = 0;
+		vrLen = 1840;
+		vrLoc = 0;
+	};
+	E2026139143E27180036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
+		name = "ThumbnailBuffer.cpp: 69";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1656;
+		vrLoc = 0;
+	};
+	E202613A143E27180036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */;
+		name = "ThumbnailBuffer.cpp: 69";
+		rLen = 0;
+		rLoc = 1813;
+		rType = 0;
+		vrLen = 1792;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {
@@ -5043,7 +5094,7 @@
 		ignoreCount = 0;
 		lineNumber = 110;
 		location = SlowBurn;
-		modificationTime = 339616271.735033;
+		modificationTime = 339617510.107209;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -6123,9 +6174,9 @@
 	};
 	F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1326, 936}}";
-			sepNavSelRange = "{2133, 0}";
-			sepNavVisRange = "{0, 1953}";
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 897}}";
+			sepNavSelRange = "{1813, 0}";
+			sepNavVisRange = "{0, 1792}";
 			sepNavWindowFrame = "{{382, 200}, {1385, 959}}";
 		};
 	};

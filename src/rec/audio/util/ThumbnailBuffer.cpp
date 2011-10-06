@@ -1,5 +1,4 @@
 #include "rec/audio/util/ThumbnailBuffer.h"
-#include "rec/music/CreateMusicFileReader.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/util/AudioFormatManager.h"
@@ -21,10 +20,10 @@ ThumbnailBuffer::ThumbnailBuffer()
     : cache_(1), cacheWritten_(false),
       thumbnail_(COMPRESSION, *rec::audio::getAudioFormatManager(), cache_) {
 }
+
 ThumbnailBuffer::~ThumbnailBuffer() {}
 
-void ThumbnailBuffer::addBlock(SamplePosition pos,
-                               const AudioSourceChannelInfo& i) {
+void ThumbnailBuffer::addBlock(SamplePosition pos, const Info& i) {
   thumbnail_.addBlock(pos, *i.buffer, i.startSample, i.numSamples);
 }
 
@@ -41,30 +40,24 @@ void ThumbnailBuffer::writeThumbnail() {
   }
 }
 
-bool ThumbnailBuffer::setReader(const VirtualFile& f) {
-  return setReader(f, music::createMusicFileReader(f));
-}
-
 bool ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
+  if (!reader)
+    return false;
+
   ptr<AudioFormatReader> r(reader);
+  file_ = getShadowFile(f, "thumbnail.stream");
 
-  if (reader) {
-    file_ = getShadowFile(f, "thumbnail.stream");
-
-    thumbnail_.reset(2, 44100.0f, reader->lengthInSamples);  // TODO: hard-coded 44k?
-    if (file_.exists()) {
-      ptr<juce::FileInputStream> out(file_.createInputStream());
-      if (out) {
-        thumbnail_.loadFrom(*out);
-        cacheWritten_ = thumbnail_.isFullyLoaded();
-      } else {
-        LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
-      }
+  thumbnail_.reset(2, 44100.0f, reader->lengthInSamples);  // TODO: hard-coded 44k?
+  if (file_.exists()) {
+    ptr<juce::FileInputStream> out(file_.createInputStream());
+    if (out) {
+      thumbnail_.loadFrom(*out);
+      cacheWritten_ = thumbnail_.isFullyLoaded();
     } else {
-      cacheWritten_ = false;
+      LOG(ERROR) << "Couldn't load from " << file_.getFullPathName();
     }
-  } else if (!file::empty(f)) {
-    LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
+  } else {
+    cacheWritten_ = false;
   }
   return buffer_.setReader(r.transfer());
 }

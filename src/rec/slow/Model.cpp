@@ -6,6 +6,7 @@
 #include "rec/audio/util/Frame.h"
 #include "rec/data/persist/Data.h"
 #include "rec/data/persist/Persist.h"
+#include "rec/music/CreateMusicFileReader.h"
 #include "rec/util/LoopPoint.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Listeners.h"
@@ -65,35 +66,33 @@ void Model::setFile(const VirtualFile& f) {
   components()->playerController_.clearLevels();
   components()->directoryTree_.refreshNode(file_);
 
-	ScopedLock l(lock_);
-  VirtualFile oldFile = file_;
-  file_ = f;
+  bool isEmpty = file::empty(f);
+  components()->waveform_.setEmpty(isEmpty);
 
-  if (!thumbnailBuffer_.setReader(file_)) {
-    LOG(ERROR) << "Couldn't set reader for " << getFullDisplayName(f);
+  {
+    ScopedLock l(lock_);
+    file_ = f;
+  }
+  components()->directoryTree_.refreshNode(f);
+  persist::setGlobal(f);
+
+  if (isEmpty)
+    return;
+
+  if (!thumbnailBuffer_.setReader(f, music::createMusicFileReader(f))) {
+    LOG(ERROR) << "Unable to read file " << getFullDisplayName(f);
     return;
   }
 
-  bool isEmpty = empty();
-  components()->waveform_.setEmpty(isEmpty);
-
-  if (isEmpty) {
-    DLOG(INFO) << "Setting empty file";
-  } else {
-    components()->directoryTree_.refreshNode(file_);
-
-    LoopPointList loop = persist::get<LoopPointList>(f);
-    if (!loop.loop_point_size()) {
-      loop.add_loop_point()->set_selected(true);
-      RealTime time = thumbnailBuffer_.buffer()->length();
-      loop.add_loop_point()->set_time(time);
-    }
-
-    persist::set(loop, f);
-    threads()->fillThread()->notify();
+  LoopPointList loop = persist::get<LoopPointList>(f);
+  if (!loop.loop_point_size()) {
+    loop.add_loop_point()->set_selected(true);
+    RealTime time = thumbnailBuffer_.buffer()->length();
+    loop.add_loop_point()->set_time(time);
   }
 
-  persist::setGlobal(f);
+  persist::set(loop, f);
+  threads()->fillThread()->notify();
 }
 
 thread::Result Model::fillOnce() {

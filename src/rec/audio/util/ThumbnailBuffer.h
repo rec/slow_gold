@@ -17,7 +17,7 @@ class ThumbnailBuffer {
 
   FillableFrameBuffer<short, 2> *buffer() { return &buffer_; }
 
-  bool setReader(const VirtualFile& file);
+  bool setReader(const VirtualFile& file, AudioFormatReader* r);
   void setFile(const File& file, int sampleLength);
 
   void addBlock(SamplePosition pos, const AudioSourceChannelInfo& info);
@@ -27,8 +27,6 @@ class ThumbnailBuffer {
   juce::AudioThumbnail* thumbnail() { return &thumbnail_; }
 
  private:
-  bool setReader(const VirtualFile& file, AudioFormatReader* r);
-
   File file_;
   juce::AudioThumbnailCache cache_;
   bool cacheWritten_;
