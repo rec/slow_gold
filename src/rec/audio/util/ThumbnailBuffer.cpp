@@ -1,5 +1,5 @@
 #include "rec/audio/util/ThumbnailBuffer.h"
-#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
+#include "rec/music/CreateMusicFileReader.h"
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/util/AudioFormatManager.h"
@@ -42,7 +42,7 @@ void ThumbnailBuffer::writeThumbnail() {
 }
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f) {
-  ptr<AudioFormatReader> reader(source::createReaderAndLoadMetadata(f));
+  ptr<AudioFormatReader> reader(music::createMusicFileReader(f));
   if (reader) {
     file_ = getShadowFile(f, "thumbnail.stream");
 

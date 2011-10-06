@@ -173,7 +173,6 @@
 		914CFB0DDB0D4A64AB01E05F /* hfft.c in Sources */ = {isa = PBXBuildFile; fileRef = C14B2A1825EBEFA249AC712B /* hfft.c */; };
 		9170501552140154E4968517 /* MainPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92E745048C0393295B0D8953 /* MainPage.cpp */; };
 		923C6B47D7886DD79AD28D3F /* RandomSelfInverseFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4C82FF75969E1EEB2BC48 /* RandomSelfInverseFunction.cpp */; };
-		92D1CFEC55DA142548FCADFA /* CreateSourceAndLoadMetadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F8FDE43394608E1A618F81 /* CreateSourceAndLoadMetadata.cpp */; };
 		9306CAFC193AB7ADAB5E4DA0 /* MidiName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A415FD9CDD00308150B2F6F3 /* MidiName.cpp */; };
 		93C377541305CF4335207B5B /* CreateReader_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A4553676E2F9B94A59AD572 /* CreateReader_test.cpp */; };
 		940334C0E5C118BE5E1DCBBB /* TimeScaler_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEF1ECD3BB37F9B7C362F6F3 /* TimeScaler_test.cpp */; };
@@ -229,6 +228,7 @@
 		D3A5A8AFD0D1BADA746FAC82 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 942E7B2E41D48EB8180E2C24 /* tag.cpp */; };
 		D62FF085927D5276526525FC /* Compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9922D141ABED4BFCD0C2DEBB /* Compare.cpp */; };
 		DA01B6D70ACE7402AF866ACC /* Threads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40507EDFA52F1F494E68104F /* Threads.cpp */; };
+		DA53E07363B9FB8F988D45C4 /* CreateMusicFileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6DE1873786AEBF2DFE4EC95 /* CreateMusicFileReader.cpp */; };
 		DBDBF2ABA3EA2B0A22108D5C /* Root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 629515CBFD37B9281D1D1DEC /* Root.cpp */; };
 		DDF7E71E066071FDDC5F8DD7 /* PlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C54FB12147BE176B4307B9A /* PlayerController.cpp */; };
 		DE27E463096DDB61A53E84F5 /* Directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 720829C42D8CAF7201143C7D /* Directory.cpp */; };
@@ -326,7 +326,6 @@
 		18E5337FCD329EF88112F004 /* FrameSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FrameSource.h; path = ../../../../src/rec/audio/source/FrameSource.h; sourceTree = SOURCE_ROOT; };
 		1914D64C56BD4383BC8A6C44 /* Value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Value.h; path = ../../../../src/rec/data/Value.h; sourceTree = SOURCE_ROOT; };
 		19E1FE047D8303A2FAABCF26 /* Geometry.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Geometry.pb.cc; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.cc; sourceTree = SOURCE_ROOT; };
-		19F8FDE43394608E1A618F81 /* CreateSourceAndLoadMetadata.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CreateSourceAndLoadMetadata.cpp; path = ../../../../src/rec/audio/source/CreateSourceAndLoadMetadata.cpp; sourceTree = SOURCE_ROOT; };
 		1A58D3C2EA8029EF3F3DD0FB /* Cursor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Cursor.h; path = ../../../../src/rec/widget/waveform/Cursor.h; sourceTree = SOURCE_ROOT; };
 		1AB30466DC6694C9647FDD4E /* ZoomIn.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ZoomIn.svg.cpp; path = ../../../../src/rec/gui/icon/ZoomIn.svg.cpp; sourceTree = SOURCE_ROOT; };
 		1AF415F7C3FFF0AFC9DC53E7 /* CommandMapEditorMappingItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapEditorMappingItem.h; path = ../../../../src/rec/command/CommandMapEditorMappingItem.h; sourceTree = SOURCE_ROOT; };
@@ -461,7 +460,6 @@
 		595411CD92718598BF5E383D /* scanscalar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scanscalar.cpp; path = ../../../../src/rec/data/yaml/src/scanscalar.cpp; sourceTree = SOURCE_ROOT; };
 		59E1E361F570FB9D2EC06D3E /* TypedOperations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedOperations.h; path = ../../../../src/rec/data/proto/TypedOperations.h; sourceTree = SOURCE_ROOT; };
 		5A10CF7136ECC5A32FA84B12 /* mfGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = ../../../../src/rec/audio/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
-		5A7DB5BA65FCEE47CB100524 /* CreateSourceAndLoadMetadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateSourceAndLoadMetadata.h; path = ../../../../src/rec/audio/source/CreateSourceAndLoadMetadata.h; sourceTree = SOURCE_ROOT; };
 		5A91B1E4E7ACB0F61AD24E03 /* map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = map.h; path = ../../../../src/rec/data/yaml/src/map.h; sourceTree = SOURCE_ROOT; };
 		5ADB4CAE72D0BDD3F75BA7A0 /* scanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scanner.h; path = ../../../../src/rec/data/yaml/src/scanner.h; sourceTree = SOURCE_ROOT; };
 		5BCBDE3E20ED6F95AE135DBA /* Widget_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Widget_test.cpp; path = ../../../../src/rec/widget/Widget_test.cpp; sourceTree = SOURCE_ROOT; };
@@ -612,6 +610,7 @@
 		9A5F3DFB3109A7F3FA35C3C4 /* MediaRecord.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaRecord.svg.h; path = ../../../../src/rec/gui/icon/MediaRecord.svg.h; sourceTree = SOURCE_ROOT; };
 		9AEC3110ABEFC5FAEDAE4765 /* FillSeries.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FillSeries.cpp; path = ../../../../src/rec/util/block/FillSeries.cpp; sourceTree = SOURCE_ROOT; };
 		9CDF2050A8E5466019B61EC3 /* MainPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPage.h; path = ../../../../src/rec/slow/MainPage.h; sourceTree = SOURCE_ROOT; };
+		9CFF07493D3BA66C9F207D3D /* CreateMusicFileReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateMusicFileReader.h; path = ../../../../src/rec/music/CreateMusicFileReader.h; sourceTree = SOURCE_ROOT; };
 		9DA96D2341F1FE689C402162 /* stlnode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stlnode.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/stlnode.h"; sourceTree = SOURCE_ROOT; };
 		9DF47A2A41F9534AC7E2EBC9 /* Typer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typer.h; path = ../../../../src/rec/data/proto/Typer.h; sourceTree = SOURCE_ROOT; };
 		9DFD5769D25254A01A3A8F9C /* EventQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EventQueue.cpp; path = ../../../../src/rec/data/commands/EventQueue.cpp; sourceTree = SOURCE_ROOT; };
@@ -827,6 +826,7 @@
 		F5661646C08B6873D08BF8FD /* Difference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Difference.h; path = ../../../../src/rec/util/block/Difference.h; sourceTree = SOURCE_ROOT; };
 		F5BC46E2E16A39D622AD6447 /* Event.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Event.pb.h; path = ../../../../genfiles/proto/rec/data/commands/Event.pb.h; sourceTree = SOURCE_ROOT; };
 		F61F744D8D6BC3D0B42B4F46 /* MediaPlaybackStop.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaPlaybackStop.svg.cpp; path = ../../../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp; sourceTree = SOURCE_ROOT; };
+		F6DE1873786AEBF2DFE4EC95 /* CreateMusicFileReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CreateMusicFileReader.cpp; path = ../../../../src/rec/music/CreateMusicFileReader.cpp; sourceTree = SOURCE_ROOT; };
 		F774C2D5C72BC1CCD2E84499 /* parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = parser.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/parser.h"; sourceTree = SOURCE_ROOT; };
 		F779D971DC96EB484066BF30 /* RandomSelfInverseFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RandomSelfInverseFunction.h; path = ../../../../src/rec/util/RandomSelfInverseFunction.h; sourceTree = SOURCE_ROOT; };
 		F86B29C8283B90AE70A5A9B0 /* TestData.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TestData.pb.cc; path = ../../../../genfiles/proto/rec/data/proto/TestData.pb.cc; sourceTree = SOURCE_ROOT; };
@@ -915,8 +915,6 @@
 			children = (
 				B8A175AD5D831891E0D75F8A /* CircularBuffer.cpp */,
 				4DAFA7531A0D2D342F7C656A /* CircularBuffer.h */,
-				19F8FDE43394608E1A618F81 /* CreateSourceAndLoadMetadata.cpp */,
-				5A7DB5BA65FCEE47CB100524 /* CreateSourceAndLoadMetadata.h */,
 				651DAD18776D800975212313 /* Empty.h */,
 				18E5337FCD329EF88112F004 /* FrameSource.h */,
 				6E6811026F1898A91053BF14 /* Level.h */,
@@ -1387,6 +1385,8 @@
 			children = (
 				00252EEEADB4EF3E8503A3E1 /* CleanName.cpp */,
 				17836092CCBD0BEA52710632 /* CleanName.h */,
+				F6DE1873786AEBF2DFE4EC95 /* CreateMusicFileReader.cpp */,
+				9CFF07493D3BA66C9F207D3D /* CreateMusicFileReader.h */,
 				0CA4F0E02D99BFCE7239E894 /* Metadata.cpp */,
 				807F78B94417A1954A57EDCD /* Metadata.h */,
 			);
@@ -1572,6 +1572,20 @@
 			name = "yaml-cpp";
 			sourceTree = "<group>";
 		};
+		AA8CC2AC0AD020C13EFAD219 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FADAC50EE466398DF3F63 /* rec */,
+				F06E991FF8183A25C8615C5C /* proto */,
+				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
+				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
+				60A842C53113D1851943D7FF /* Resources */,
+				73570899188C747E89918240 /* Frameworks */,
+				9E5CD52576CCEFB56496D6AC /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -1619,20 +1633,6 @@
 				1B616F9D42BF5D01A142E8F0 /* Trash.h */,
 			);
 			name = thread;
-			sourceTree = "<group>";
-		};
-		C4A5D6555DB5EC8E90E8A98E /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				2F8FADAC50EE466398DF3F63 /* rec */,
-				F06E991FF8183A25C8615C5C /* proto */,
-				C31D0F94D3029871E21D6EA7 /* Main.cpp */,
-				AB3AD2E0EDA79D48493FD2DD /* Juce Library Code */,
-				60A842C53113D1851943D7FF /* Resources */,
-				73570899188C747E89918240 /* Frameworks */,
-				9E5CD52576CCEFB56496D6AC /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		C6BAF4FBD6178F89CF0B68DB /* thread */ = {
@@ -1997,7 +1997,7 @@
 				French,
 				German,
 			);
-			mainGroup = C4A5D6555DB5EC8E90E8A98E /* Source */;
+			mainGroup = AA8CC2AC0AD020C13EFAD219 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -2041,7 +2041,6 @@
 				5EE17EFB5D024B7A68216B23 /* Tags.cpp in Sources */,
 				626BF57A4D7EA3FCD14293CF /* RawFormat.cpp in Sources */,
 				A7AAB893483E931E9184C1DB /* CircularBuffer.cpp in Sources */,
-				92D1CFEC55DA142548FCADFA /* CreateSourceAndLoadMetadata.cpp in Sources */,
 				A0E733722FD2CC64BE8D9BFF /* Player.cpp in Sources */,
 				6C7B824DB56D804EFCBE7222 /* Runny_test.cpp in Sources */,
 				2372C0CE14F9CB17C488416D /* Selection.cpp in Sources */,
@@ -2161,6 +2160,7 @@
 				482983984F2DC58576AAA0A4 /* SetterResizer.cpp in Sources */,
 				03C909CBBA9D2A1498479E75 /* TableController.cpp in Sources */,
 				80F37C7610168F3C705FC5F8 /* CleanName.cpp in Sources */,
+				DA53E07363B9FB8F988D45C4 /* CreateMusicFileReader.cpp in Sources */,
 				5A996D9D911EF90016F47099 /* Metadata.cpp in Sources */,
 				5700EFC9FB23DC483986AFB5 /* Instance.cpp in Sources */,
 				7935E1D993A21E715D8DCBC7 /* Listeners.cpp in Sources */,

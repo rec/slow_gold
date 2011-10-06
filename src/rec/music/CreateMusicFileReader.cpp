@@ -1,4 +1,4 @@
-#include "rec/audio/source/CreateSourceAndLoadMetadata.h"
+#include "rec/music/CreateMusicFileReader.h"
 #include "rec/util/cd/CDReader.h"
 #include "rec/util/cd/Album.h"
 #include "rec/audio/util/AudioFormatManager.h"
@@ -7,22 +7,15 @@
 #include "rec/data/proto/Equals.h"
 
 namespace rec {
-namespace audio {
-namespace source {
+namespace music {
 
-namespace {
-
-typedef persist::Data<music::Metadata> Data;
-
-}  // namespace
-
-AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
+AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   if (file::empty(file))
     return NULL;
 
   music::Metadata metadata;
   ptr<AudioFormatReader> reader;
-  persist::Data<music::Metadata>* d = persist::setter<music::Metadata>(file);
+  persist::Data<Metadata>* d = persist::setter<music::Metadata>(file);
   bool fileRead = d->fileReadSuccess();
 
   if (file.type() == VirtualFile::CD) {
@@ -57,9 +50,10 @@ AudioFormatReader* createReaderAndLoadMetadata(const VirtualFile& file) {
 }
 
 #if 0
+
 PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
   if (!empty(file)) {
-    ptr<AudioFormatReader> reader(createReaderAndLoadMetadata(file));
+    ptr<AudioFormatReader> reader(createMusicFileReader(file));
     if (reader)
       return new AudioFormatReaderSource(reader.transfer(), true);
     LOG(ERROR) << "No reader for " << getFullDisplayName(file);
@@ -69,7 +63,6 @@ PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
 }
 #endif
 
-}  // namespace source
-}  // namespace audio
+}  // namespace music
 }  // namespace rec
 
