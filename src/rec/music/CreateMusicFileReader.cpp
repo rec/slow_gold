@@ -9,6 +9,25 @@
 namespace rec {
 namespace music {
 
+namespace {
+
+AudioFormatReader* createCDReader(const VirtualFile& file, Metadata* metadata) {
+  if (!file.path_size()) {
+    LOG(ERROR) << "Can't create track for " << file.DebugString();
+    return NULL;
+  }
+
+  int track = String(file.path(0).c_str()).getIntValue();
+  String filename = str(file.name());
+  if (metadata) {
+    ptr<AudioCDReader> cdr(cd::getAudioCDReader(filename));
+    *metadata = rec::music::getTrack(cd::getCachedAlbum(file, cdr->getTrackOffsets()), track);
+  }
+  return cd::createCDTrackReader(filename, track);
+}
+
+}  // namespace
+
 AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   if (file::empty(file))
     return NULL;
@@ -49,19 +68,6 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   return reader.transfer();
 }
 
-#if 0
-
-PositionableAudioSource* createSourceAndLoadMetadata(const VirtualFile& file) {
-  if (!empty(file)) {
-    ptr<AudioFormatReader> reader(createMusicFileReader(file));
-    if (reader)
-      return new AudioFormatReaderSource(reader.transfer(), true);
-    LOG(ERROR) << "No reader for " << getFullDisplayName(file);
-  }
-
-  return NULL;
-}
-#endif
 
 }  // namespace music
 }  // namespace rec
