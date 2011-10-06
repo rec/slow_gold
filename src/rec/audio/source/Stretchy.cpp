@@ -99,8 +99,6 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
 int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   int inSampleCount = static_cast<int>(
       scaler_->GetInputBufferSize(info.numSamples) / 2);
-
-  // TODO: bug Jules about this.
   buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
 
   AudioSourceChannelInfo i;

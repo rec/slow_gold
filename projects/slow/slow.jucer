@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="XH0tB7x1g" name="Slow">
+  <MAINGROUP id="SJ5HGS2Gy" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -116,10 +116,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="ngaS8lhNw" name="source">
-          <FILE compile="1" file="../../src/rec/audio/source/CircularBuffer.cpp"
-                id="bxNFqc0OS" name="CircularBuffer.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/CircularBuffer.h"
-                id="IB87E7du9" name="CircularBuffer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="kRizCdCRl"
                 name="Empty.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/FrameSource.h" id="TWFNYiOd3"
@@ -1215,7 +1211,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="ygKKBKXEi" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="bqejSM2RB" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
