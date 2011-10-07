@@ -10,11 +10,6 @@
 #include "rec/data/persist/AppDirectory.h"
 
 namespace rec {
-
-namespace command {
-class Manager;
-}  // namespace command
-
 namespace persist {
 
 App* getApp();
@@ -24,8 +19,6 @@ class App {
   typedef std::map<string, data::Editable*> DataMap;
 
   virtual ~App() { stl::deleteMapPointers(&data_); }
-
-  command::Manager* commandManager() { return commandManager_; }
 
   template <typename Proto> Data<Proto>* data(const VirtualFile& vf) {
     return fileData<Proto>(getShadowDirectory(vf));
@@ -49,7 +42,6 @@ class App {
   DataMap data_;
   CriticalSection lock_;
   File appDir_;
-  command::Manager* commandManager_;
 
   DISALLOW_COPY_AND_ASSIGN(App);
 };
