@@ -35,6 +35,7 @@ class Stretchy : public Wrappy {
  protected:
   Stretchy(PositionableAudioSource* s);
   virtual void initializeStretcher();
+  virtual int getInputSampleCount(int numSamples) const;
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
