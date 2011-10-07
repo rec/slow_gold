@@ -7,15 +7,6 @@ namespace rec {
 
 template <int SAMPLES_PER_SEC>
 struct SampleCount {
-  double toRealTime() const {
-    return static_cast<double>(position_) / static_cast<double>(SAMPLES_PER_SEC);
-  }
-
-  template <typename Type>
-  int64 toSampleCount(Type t) const {
-    return static_cast<int64>(SAMPLES_PER_SEC * t);
-  }
-
   SampleCount() {}
   SampleCount(int64 p) : position_(p) {}
   SampleCount(int p) : position_(p) {}
@@ -42,6 +33,15 @@ struct SampleCount {
   const SampleCount operator-(int64 p) { return position_ - p; }
 
   operator int64() const { return position_; }
+
+  double toRealTime() const {
+    return static_cast<double>(position_) / static_cast<double>(SAMPLES_PER_SEC);
+  }
+
+  template <typename Type>
+  int64 toSampleCount(Type t) const {
+    return static_cast<int64>(SAMPLES_PER_SEC * t);
+  }
 
   // TODO: we shouldn't need this, but Juce sometimes wants ints.  Bug Jules!
   int toInt() const { return static_cast<int>(position_); }
