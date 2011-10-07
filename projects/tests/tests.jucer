@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="6fhTHNDyU" name="tests">
+  <MAINGROUP id="pJewZRhfL" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -124,10 +124,6 @@
           </GROUP>
         </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
-          <FILE compile="1" file="../../src/rec/audio/source/AudioMagicStretchy.cpp"
-                id="A7TXtyq73" name="AudioMagicStretchy.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/audio/source/AudioMagicStretchy.h"
-                id="3bcbUBsqQ" name="AudioMagicStretchy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="Ok5da1Dyg"
                 name="Empty.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/source/FrameSource.h" id="DWErfIpIg"
@@ -176,6 +172,10 @@
                 name="Wrappy.h" resource="0"/>
         </GROUP>
         <GROUP id="cEgX2guQg" name="stretch">
+          <FILE compile="1" file="../../src/rec/audio/stretch/AudioMagicStretchy.cpp"
+                id="muLe7V8U7" name="AudioMagicStretchy.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagicStretchy.h"
+                id="La7LMTyer" name="AudioMagicStretchy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/Stretch.cpp" id="Iejs4pP9Y"
                 name="Stretch.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretch.h" id="UNcszMkiw"
@@ -1275,7 +1275,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="a8abV9uWk" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ynvZIfMZH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

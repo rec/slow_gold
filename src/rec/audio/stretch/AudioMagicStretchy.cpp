@@ -1,13 +1,13 @@
-#include "rec/audio/source/AudioMagicStretchy.h"
+#include "rec/audio/stretch/AudioMagicStretchy.h"
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 
 namespace rec {
 namespace audio {
-namespace source {
+namespace stretch {
 
 namespace {
 
-class AudioMagicStretchy : public Stretchy {
+class AudioMagicStretchy : public source::Stretchy {
  public:
   AudioMagicStretchy(PositionableAudioSource* s)
       : Stretchy(s), scaler_(new AudioTimeScaler) {
@@ -31,12 +31,13 @@ class AudioMagicStretchy : public Stretchy {
   ptr<AudioTimeScaler> scaler_;
 };
 
-}  // namespace AudioMagicStretchy
+}  // namespace
 
-Stretchy* createAudioMagicStretchy(PositionableAudioSource* p) {
+source::Stretchy* createAudioMagicStretchy(PositionableAudioSource* p) {
   return new AudioMagicStretchy(p);
 }
 
-}  // namespace source
+}  // namespace stretch
 }  // namespace audio
 }  // namespace rec
+

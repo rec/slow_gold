@@ -1,6 +1,5 @@
 #include "rec/audio/source/Stretchy.h"
-#include "rec/audio/ammf_scaler/AudioTimeScaler.h"
-#include "rec/audio/source/AudioMagicStretchy.h"
+#include "rec/audio/stretch/AudioMagicStretchy.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/util/Math.h"
 
@@ -22,7 +21,7 @@ Stretchy::~Stretchy() {}
 
 // static
 Stretchy* Stretchy::create(PositionableAudioSource* p) {
-  return createAudioMagicStretchy(p);
+  return stretch::createAudioMagicStretchy(p);
 }
 
 int64 Stretchy::getTotalLength() const {

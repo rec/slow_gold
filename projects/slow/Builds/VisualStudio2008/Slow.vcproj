@@ -180,8 +180,6 @@
             </Filter>
           </Filter>
           <Filter Name="source">
-            <File RelativePath="..\..\..\..\src\rec\audio\source\AudioMagicStretchy.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\audio\source\AudioMagicStretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Empty.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\FrameSource.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\source\Level.h"/>
@@ -202,6 +200,8 @@
             <File RelativePath="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
           </Filter>
           <Filter Name="stretch">
+            <File RelativePath="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.cpp"/>
+            <File RelativePath="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
             <File RelativePath="..\..\..\..\src\rec\audio\stretch\TestHarness.h"/>

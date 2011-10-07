@@ -12,6 +12,7 @@
 #include "rec/util/listener/DataListener.h"
 
 namespace rec {
+
 namespace audio { class Device; }
 namespace audio { namespace stretch { class Stretch; }}
 namespace audio { class Gain; }
