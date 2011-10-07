@@ -12,15 +12,14 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Stretchy::Stretchy(PositionableAudioSource* s, const Stretch&)
-    : Wrappy(s),
-      timeScale_(1.0) {
+Stretchy::Stretchy(Source* s, const Stretch& stretch) : Wrappy(s) {
+  setStretch(stretch);
 }
 
 Stretchy::~Stretchy() {}
 
 // static
-Stretchy* Stretchy::create(PositionableAudioSource* p, const Stretch&) {
+Stretchy* Stretchy::create(Source* p, const Stretch& s) {
   return stretch::createAudioMagicStretchy(p);
 }
 
@@ -42,10 +41,7 @@ void Stretchy::setNextReadPosition(int64 position) {
 void Stretchy::setStretch(const stretch::Stretch& s) {
   ScopedLock l(lock_);
   stretch_ = s;
-  initialize();
-}
 
-void Stretchy::initialize() {
   static const double DELTA = 0.00001;
   timeScale_ = stretch::timeScale(stretch_);
   bypass_ = stretch_.passthrough_when_disabled() &&

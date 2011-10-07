@@ -5,7 +5,8 @@
 
 namespace rec {
 
-struct SamplePosition;
+template <int SAMPLES_PER_SEC> struct SampleCount;
+typedef SampleCount<44100> SamplePosition;
 
 struct RealTime {
   RealTime() : time_(0) {}

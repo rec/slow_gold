@@ -5,29 +5,35 @@
 
 namespace rec {
 
-struct SamplePosition {
-  SamplePosition() : position_(0) {}
-  SamplePosition(int64 p) : position_(p) {}
-  SamplePosition(int p) : position_(p) {}
-  SamplePosition(RealTime time) : position_(static_cast<int64>(44100 * time)) {}
-  SamplePosition(float time) : position_(static_cast<int64>(44100 * time)) {}
-  SamplePosition(double time) : position_(static_cast<int64>(44100 * time)) {}
+template <int SAMPLES_PER_SEC>
+struct SampleCount {
+  template <typename Type>
+  int64 cast(Type t) const { return static_cast<int64>(SAMPLES_PER_SEC * t); }
 
-  SamplePosition& operator++() { ++position_; return *this; }
-  SamplePosition& operator--() { --position_; return *this; }
+  SampleCount() : position_(0) {}
+  SampleCount(int64 p) : position_(p) {}
+  SampleCount(int p) : position_(p) {}
+  SampleCount(short p) : position_(p) {}
 
-  SamplePosition operator++(int) { return position_++; }
-  SamplePosition operator--(int) { return position_--; }
+  SampleCount(RealTime time) : position_(cast(time)) {}
+  SampleCount(float time) : position_(cast(time)) {}
+  SampleCount(double time) : position_(cast(time)) {}
 
-  SamplePosition& operator-=(SamplePosition p) { position_ -= p; return *this; }
-  SamplePosition& operator+=(SamplePosition p) { position_ += p; return *this; }
+  SampleCount& operator++() { ++position_; return *this; }
+  SampleCount& operator--() { --position_; return *this; }
 
-  const SamplePosition operator+(SamplePosition p) { return position_ + p; }
-  const SamplePosition operator-(SamplePosition p) { return position_ - p; }
-  const SamplePosition operator+(int p) { return position_ + p; }
-  const SamplePosition operator-(int p) { return position_ - p; }
-  const SamplePosition operator+(int64 p) { return position_ + p; }
-  const SamplePosition operator-(int64 p) { return position_ - p; }
+  SampleCount operator++(int) { return position_++; }
+  SampleCount operator--(int) { return position_--; }
+
+  SampleCount& operator-=(SampleCount p) { position_ -= p; return *this; }
+  SampleCount& operator+=(SampleCount p) { position_ += p; return *this; }
+
+  const SampleCount operator+(SampleCount p) { return position_ + p; }
+  const SampleCount operator-(SampleCount p) { return position_ - p; }
+  const SampleCount operator+(int p) { return position_ + p; }
+  const SampleCount operator-(int p) { return position_ - p; }
+  const SampleCount operator+(int64 p) { return position_ + p; }
+  const SampleCount operator-(int64 p) { return position_ - p; }
 
   operator int64() const { return position_; }
 

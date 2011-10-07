@@ -9,8 +9,8 @@ namespace {
 
 class AudioMagicStretchy : public source::Stretchy {
  public:
-  AudioMagicStretchy(PositionableAudioSource* s)
-      : Stretchy(s), scaler_(new AudioTimeScaler) {
+  AudioMagicStretchy(PositionableAudioSource* s, const Stretch& stretch)
+      : Stretchy(s, stretch), scaler_(new AudioTimeScaler) {
   }
 
   void initializeStretcher() {
@@ -33,8 +33,9 @@ class AudioMagicStretchy : public source::Stretchy {
 
 }  // namespace
 
-source::Stretchy* createAudioMagicStretchy(PositionableAudioSource* p) {
-  return new AudioMagicStretchy(p);
+source::Stretchy* createAudioMagicStretchy(PositionableAudioSource* p,
+                                           const Stretch& s) {
+  return new AudioMagicStretchy(p, s);
 }
 
 }  // namespace stretch

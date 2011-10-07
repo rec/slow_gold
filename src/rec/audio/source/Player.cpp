@@ -23,7 +23,6 @@ Player::Player(Device* d)
     selection_(new Selection(timer_)),
     stretchy_(Stretchy::create(selection_)),
     stereo_(new Stereo(stretchy_)) {
-  stretchy_->initialize();
   level_.setSource(stereo_);
   device_->manager_.addAudioCallback(&player_);
 

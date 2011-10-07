@@ -19,25 +19,22 @@ namespace source {
 class Stretchy : public Wrappy {
  public:
   static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
-
-  ~Stretchy();
-
   typedef stretch::Stretch Stretch;
 
   void setStretch(const Stretch&);
 
-  virtual int64 getTotalLength() const;
-  virtual void setNextReadPosition(int64 position);
-  virtual int64 getNextReadPosition() const;
-  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& info);
-  void initialize();
+  ~Stretchy();
 
-  static Stretchy* create(PositionableAudioSource*,
-                          const Stretch& stretch = Stretch::default_instance());
+  virtual int64 getTotalLength() const;
+  virtual void setNextReadPosition(int64);
+  virtual int64 getNextReadPosition() const;
+  virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo&);
+
+  static
+  Stretchy* create(Source*, const Stretch& s = Stretch::default_instance());
 
  protected:
-  Stretchy(PositionableAudioSource* s,
-           const Stretch& stretch = Stretch::default_instance());
+  Stretchy(Source* s, const Stretch& stretch = Stretch::default_instance());
 
   virtual void initializeStretcher() = 0;
   virtual int getInputSampleCount(int numSamples) const = 0;

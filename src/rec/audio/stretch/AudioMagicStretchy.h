@@ -7,7 +7,8 @@ namespace rec {
 namespace audio {
 namespace stretch {
 
-source::Stretchy* createAudioMagicStretchy(PositionableAudioSource* p);
+source::Stretchy* createAudioMagicStretchy(
+    Source* p, const Stretch& s = Stretch::default_instance());
 
 }  // namespace stretch
 }  // namespace audio
