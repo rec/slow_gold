@@ -1,4 +1,5 @@
 #include "rec/util/listener/ProtoListener.h"
+
 #include "rec/data/Data.h"
 #include "rec/data/proto/Proto.h"
 

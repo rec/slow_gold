@@ -1,7 +1,6 @@
 #ifndef __REC_PERSIST_UNTYPEDDATA__
 #define __REC_PERSIST_UNTYPEDDATA__
 
-#include "rec/base/base.h"
 #include "rec/data/Data.h"
 #include "rec/util/listener/Listener.h"
 

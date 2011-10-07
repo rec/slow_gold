@@ -4,7 +4,6 @@
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
-#include "rec/data/Data.h"
 
 namespace rec {
 namespace data {
@@ -55,7 +54,7 @@ void UntypedData::readFromFile() const {
       VLOG(1) << "Opening data " << file_->getFullPathName();
     else
       VLOG(1) << "New data " << file_->getFullPathName();
-      
+
     alreadyReadFromFile_ = true;
   }
 }

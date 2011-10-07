@@ -2,6 +2,7 @@
 #define __REC_UTIL_LISTENER_SETTER__
 
 #include "rec/data/Data.h"
+#include "rec/util/listener/Listener.h"
 
 namespace rec {
 namespace util {

@@ -2,6 +2,7 @@
 #define __REC_PERSIST_DATA__
 
 #include <set>
+
 #include "rec/base/base.h"
 #include "rec/data/persist/UntypedData.h"
 #include "rec/util/file/VirtualFile.h"

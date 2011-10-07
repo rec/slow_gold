@@ -2,7 +2,6 @@
 #define __REC_DATA_PERSIST_PERSIST__
 
 #include "rec/data/persist/App.h"
-#include "rec/data/Data.h"
 
 namespace rec {
 namespace persist {

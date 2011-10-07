@@ -2,7 +2,6 @@
 #define __REC_PERSIST_APPBASE__
 
 #include "rec/base/base.h"
-#include "rec/data/Data.h"
 #include "rec/data/persist/Data.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/GetProtoName.h"
