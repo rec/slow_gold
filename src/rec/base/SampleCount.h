@@ -7,17 +7,23 @@ namespace rec {
 
 template <int SAMPLES_PER_SEC>
 struct SampleCount {
-  template <typename Type>
-  int64 cast(Type t) const { return static_cast<int64>(SAMPLES_PER_SEC * t); }
+  double toRealTime() const {
+    return static_cast<double>(position_) / static_cast<double>(SAMPLES_PER_SEC);
+  }
 
-  SampleCount() : position_(0) {}
+  template <typename Type>
+  int64 toSampleCount(Type t) const {
+    return static_cast<int64>(SAMPLES_PER_SEC * t);
+  }
+
+  SampleCount() {}
   SampleCount(int64 p) : position_(p) {}
   SampleCount(int p) : position_(p) {}
   SampleCount(short p) : position_(p) {}
 
-  SampleCount(RealTime time) : position_(cast(time)) {}
-  SampleCount(float time) : position_(cast(time)) {}
-  SampleCount(double time) : position_(cast(time)) {}
+  SampleCount(RealTime time) : position_(toSampleCount(time)) {}
+  SampleCount(float time) : position_(toSampleCount(time)) {}
+  SampleCount(double time) : position_(toSampleCount(time)) {}
 
   SampleCount& operator++() { ++position_; return *this; }
   SampleCount& operator--() { --position_; return *this; }
