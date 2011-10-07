@@ -11,7 +11,7 @@ namespace persist { class AppInstance; }
 
 namespace data {
 
-class UntypedData : public data::EditableData {
+class UntypedData : public data::Editable {
  public:
   virtual ~UntypedData();
 

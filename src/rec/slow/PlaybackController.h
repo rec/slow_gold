@@ -16,7 +16,7 @@ class PlaybackController : public gui::Layout {
   explicit PlaybackController(Components* i,
                               const Address& a = Address::default_instance());
 
-  void setSetter(data::EditableData* setter);
+  void setSetter(data::Editable* setter);
 
  private:
   gui::Layout panel_;

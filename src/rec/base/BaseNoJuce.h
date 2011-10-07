@@ -19,7 +19,7 @@ namespace util { namespace file { class VirtualFile; }}
 namespace util { namespace file { class VirtualFileList; }}
 
 namespace data { class Address; }
-namespace data { class EditableData; }
+namespace data { class Editable; }
 namespace data { class Value; }
 
 typedef std::string string;
