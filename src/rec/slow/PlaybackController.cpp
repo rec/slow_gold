@@ -25,7 +25,7 @@ PlaybackController::PlaybackController(Components* comp, const Address& address)
   panel_.addToLayout(&comp->transportController_, 24);
 }
 
-void PlaybackController::setSetter(data::Data* setter) {
+void PlaybackController::setSetter(data::EditableData* setter) {
   timeControllerResizer_.setSetter(setter);
   songDataResizer_.setSetter(setter);
   stretchyResizer_.setSetter(setter);

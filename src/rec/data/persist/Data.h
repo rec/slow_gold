@@ -3,11 +3,10 @@
 
 #include <set>
 
-#include "rec/base/base.h"
 #include "rec/data/persist/UntypedData.h"
+#include "rec/data/proto/GetProtoName.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
-#include "rec/data/proto/GetProtoName.h"
 
 namespace rec {
 namespace persist {

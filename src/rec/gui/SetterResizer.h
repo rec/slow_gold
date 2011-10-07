@@ -17,7 +17,7 @@ class SetterResizer : public StretchableLayoutResizerBar {
 
   int get() const;
   void set(int distance);
-  void setSetter(data::Data* setter);
+  void setSetter(data::EditableData* setter);
   void add(int size = 7) {
     layout_->addToLayout(this, size, size, size);
   }
@@ -30,7 +30,7 @@ class SetterResizer : public StretchableLayoutResizerBar {
   int index_;
   Address address_;
   Orientation orientation_;
-  Data* setter_;
+  data::EditableData* setter_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterResizer);
 };

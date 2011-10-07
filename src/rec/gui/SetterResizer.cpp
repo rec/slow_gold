@@ -26,7 +26,7 @@ void SetterResizer::set(int distance) {
   hasBeenMoved();
 }
 
-void SetterResizer::setSetter(data::Data* setter) {
+void SetterResizer::setSetter(data::EditableData* setter) {
   setter_ = setter;
   int size = setter_->getValue(address_).uint32_f();
   thread::callAsync(this, &SetterResizer::set, size);

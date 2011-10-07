@@ -21,7 +21,7 @@ App* getApp();
 
 class App {
  public:
-  typedef std::map<string, data::Data*> DataMap;
+  typedef std::map<string, data::EditableData*> DataMap;
 
   virtual ~App() { stl::deleteMapPointers(&data_); }
 

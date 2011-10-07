@@ -36,7 +36,7 @@ Operation* swapOp(const Address& a, int s, int t) {
   return op;
 }
 
-void setOp(Data* setter, Operation* oper) {
+void setOp(EditableData* setter, Operation* oper) {
   ptr<Operation> op(oper);
   ptr<OperationList> list(new OperationList);
   list->add_operation()->CopyFrom(*op);
@@ -46,40 +46,40 @@ void setOp(Data* setter, Operation* oper) {
 
 }  // namespace
 
-void append(Data* data, const Address& address, const Value& value) {
+void append(EditableData* data, const Address& address, const Value& value) {
   setOp(data, valueOp(Operation::APPEND, address, value));
 }
 
-void clear(Data* data, const Address& address) {
+void clear(EditableData* data, const Address& address) {
   setOp(data, newOp(Operation::CLEAR, address));
 }
 
-void remove(Data* data, const Address& address, int remove) {
+void remove(EditableData* data, const Address& address, int remove) {
   setOp(data, removeOp(address, remove));
 }
 
-void set(Data* data, const Address& address, const Value& value) {
+void set(EditableData* data, const Address& address, const Value& value) {
   setOp(data, valueOp(Operation::SET, address, value));
 }
 
-void swap(Data* data, const Address& a, int s, int t) {
+void swap(EditableData* data, const Address& a, int s, int t) {
   setOp(data, swapOp(a, s, t));
 }
 
-void append(Data* d, const Value& v) { append(d, Address(), v); }
-void append(Data* d, const Message& m) { append(d, Address(), Value(m)); }
-void append(Data* d, const Address::Part& a, const Value& m) {
+void append(EditableData* d, const Value& v) { append(d, Address(), v); }
+void append(EditableData* d, const Message& m) { append(d, Address(), Value(m)); }
+void append(EditableData* d, const Address::Part& a, const Value& m) {
   append(d, Address(a), m);
 }
 
-void set(Data* d, const Value& v) { set(d, Address(), v); }
-void set(Data* d, const Message& m) { set(d, Address(), Value(m)); }
+void set(EditableData* d, const Value& v) { set(d, Address(), v); }
+void set(EditableData* d, const Message& m) { set(d, Address(), Value(m)); }
 
-void set(Data* d, const Address::Part& a, const Value& v) {
+void set(EditableData* d, const Address::Part& a, const Value& v) {
   set(d, Address(a), v);
 }
 
-void set(Data* d, const Address::Part& a,
+void set(EditableData* d, const Address::Part& a,
          const Address::Part& b, const Value& v) {
   set(d, Address(a, b), v);
 }

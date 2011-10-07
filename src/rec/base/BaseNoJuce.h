@@ -19,7 +19,7 @@ namespace util { namespace file { class VirtualFile; }}
 namespace util { namespace file { class VirtualFileList; }}
 
 namespace data { class Address; }
-namespace data { class Data; }
+namespace data { class EditableData; }
 namespace data { class Value; }
 
 typedef std::string string;
@@ -35,7 +35,6 @@ using util::file::VirtualFileList;
 using std::vector;
 using std::pair;
 
-using data::Data;
 using data::Address;
 using data::Value;
 

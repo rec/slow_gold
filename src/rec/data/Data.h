@@ -14,34 +14,35 @@ class OperationList;
 class Value;
 class ValueProto;
 
-class Data {
+class EditableData {
  public:
   virtual void operator()(OperationList*) = 0;
+
   virtual const Value getValue(const Address&) const = 0;
   virtual bool hasValue(const Address&) const = 0;
   virtual int getSize(const Address&) const = 0;
   virtual void copyTo(Message*) const = 0;
 
-  Data() {}
-  virtual ~Data() {}
+  EditableData() {}
+  virtual ~EditableData() {}
 };
 
-void set(Data*, const Value& v);
-void set(Data*, const Message& m);
-void set(Data*, const Address&, const Value&);
-void set(Data* d, const Address::Part& a, const Value& v);
-void set(Data* d, const Address::Part& a,
+void set(EditableData*, const Value& v);
+void set(EditableData*, const Message& m);
+void set(EditableData*, const Address&, const Value&);
+void set(EditableData* d, const Address::Part& a, const Value& v);
+void set(EditableData* d, const Address::Part& a,
          const Address::Part& b, const Value& v);
 
-void append(Data*, const Value& v);
-void append(Data*, const Message& m);
-void append(Data*, const Address&, const Value& value);
-void append(Data*, const Address::Part&, const Value& value);
+void append(EditableData*, const Value& v);
+void append(EditableData*, const Message& m);
+void append(EditableData*, const Address&, const Value& value);
+void append(EditableData*, const Address::Part&, const Value& value);
 
 #if 0
-void clear(Data*, const Address&);
-void remove(Data*, const Address&, int itemsToRemove);
-void swap(Data*, const Address&, int index1, int index2);
+void clear(EditableData*, const Address&);
+void remove(EditableData*, const Address&, int itemsToRemove);
+void swap(EditableData*, const Address&, int index1, int index2);
 #endif
 
 }  // namespace data

@@ -27,7 +27,7 @@ class SetterListener : public Listener<Proto> {
 
  private:
   const data::Address address_;
-  data::Data* setter_;
+  data::EditableData* setter_;
   DISALLOW_COPY_ASSIGN_AND_EMPTY(SetterListener);
 };
 

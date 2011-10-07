@@ -39,7 +39,7 @@ class PersistentWindow : public DocumentWindow {
  private:
   void writeData();
 
-  data::Data* data_;
+  data::EditableData* data_;
   bool okToSaveLayout_;
 
   DISALLOW_COPY_AND_ASSIGN(PersistentWindow);
