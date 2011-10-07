@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_SEGGY__
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/base/SamplePosition.h"
+#include "rec/base/SampleCount.h"
 #include "rec/util/Range.h"
 #include "rec/util/Math.h"
 

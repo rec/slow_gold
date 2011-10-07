@@ -1,5 +1,5 @@
-#ifndef __REC_BASE_SAMPLEPOSITION__
-#define __REC_BASE_SAMPLEPOSITION__
+#ifndef __REC_BASE_SAMPLECOUNT__
+#define __REC_BASE_SAMPLECOUNT__
 
 #include "rec/base/RealTime.h"
 
@@ -44,6 +44,8 @@ struct SampleCount {
   int64 position_;
 };
 
+typedef SampleCount<44100> SamplePosition;
+
 }  // namespace rec
 
-#endif  // __REC_BASE_SAMPLEPOSITION__
+#endif  // __REC_BASE_SAMPLECOUNT__

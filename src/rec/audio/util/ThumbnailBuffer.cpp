@@ -2,7 +2,7 @@
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/util/AudioFormatManager.h"
-#include "rec/base/SamplePosition.h"
+#include "rec/base/SampleCount.h"
 #include "rec/util/file/VirtualFile.h"
 
 using namespace juce;

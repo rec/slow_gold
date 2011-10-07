@@ -1,5 +1,5 @@
 #include "rec/base/RealTime.h"
-#include "rec/base/SamplePosition.h"
+#include "rec/base/SampleCount.h"
 
 namespace rec {
 

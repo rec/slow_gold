@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_UTIL_FILLABLE_FRAME_BUFFER__
 #define __REC_AUDIO_UTIL_FILLABLE_FRAME_BUFFER__
 
-#include "rec/base/SamplePosition.h"
+#include "rec/base/SampleCount.h"
 #include "rec/audio/util/Frame.h"
 #include "rec/util/block/Fillable.h"
 #include "rec/util/listener/Listener.h"
@@ -20,9 +20,9 @@ class FillableFrameBuffer : public block::Fillable {
 
   bool setReader(AudioFormatReader* reader);
   virtual block::Size doFillNextBlock(const block::Block& b);
-  
-  typedef Frames<InterleavedFrame<Sample, CHANNELS> > FillableFrame; 
-  
+
+  typedef Frames<InterleavedFrame<Sample, CHANNELS> > FillableFrame;
+
   const FillableFrame& frames() const { return frames_; }
 
  protected:
