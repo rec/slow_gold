@@ -102,6 +102,11 @@ int Stretchy::getInputSampleCount(int numSamples) const {
   return scaler_->GetInputBufferSize(numSamples) / 2;
 }
 
+int64 Stretchy::process(float** ins, int inSamples,
+                        float** outs, int outSamples) {
+  return scaler_->Process(ins, outs, inSamples, outSamples);
+}
+
 int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   int inSampleCount = getInputSampleCount(info.numSamples);
   buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
@@ -115,11 +120,8 @@ int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   for (int c = 0; c < channels_; ++c)
     outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
 
-  float** ins = buffer_->getArrayOfChannels();
-  float** outs = &outOffset_.front();
-
-  int64 samples = scaler_->Process(ins, outs, inSampleCount, info.numSamples);
-  return samples;
+  return process(buffer_->getArrayOfChannels(), inSampleCount,
+                 &outOffset_.front(), info.numSamples);
 }
 
 }  // namespace source
