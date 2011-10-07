@@ -1,7 +1,7 @@
 #ifndef __REC_AUDIO_UTIL_FRAME__
 #define __REC_AUDIO_UTIL_FRAME__
 
-#include "rec/base/SampleCount.h"
+#include "rec/base/Samples.h"
 #include "rec/audio/Audio.h"
 
 namespace rec {
@@ -13,14 +13,14 @@ class Frames {
   Frames() : length_(0), frames_(NULL) {}
   ~Frames() { free(frames_); }
 
-  bool setLength(SamplePosition length);
-  SamplePosition getAudioBlock(const Info& info, SamplePosition offset) const;
+  bool setLength(Samples<44100> length);
+  Samples<44100> getAudioBlock(const Info& info, Samples<44100> offset) const;
 
   Frame* frames() { return frames_; }
-  SamplePosition length() const { return length_; }
+  Samples<44100> length() const { return length_; }
 
  private:
-  SamplePosition length_;
+  Samples<44100> length_;
   Frame* frames_;
 
   DISALLOW_COPY_AND_ASSIGN(Frames);

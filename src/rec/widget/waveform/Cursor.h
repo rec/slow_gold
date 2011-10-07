@@ -14,7 +14,7 @@ namespace rec {
 namespace widget {
 namespace waveform {
 
-class Cursor : public Component, public Listener<SamplePosition> {
+class Cursor : public Component, public Listener< Samples<44100> > {
  public:
   Cursor(const CursorProto& d, Waveform* waveform, RealTime time, int index);
   virtual ~Cursor() {}
@@ -28,7 +28,7 @@ class Cursor : public Component, public Listener<SamplePosition> {
   const CursorProto& desc() const { return desc_; }
   void setCursorBounds(double time, const juce::Rectangle<int>& waveformBounds);
 
-  virtual void operator()(SamplePosition t);
+  virtual void operator()(Samples<44100> t);
 
   void setListeningToClock(bool b) { listeningToClock_ = b; }
   int index() { return index_; }

@@ -333,7 +333,7 @@
 		0E29F626F0ECE15997BB5B96 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ptr.h; path = ../../../../src/rec/base/ptr.h; sourceTree = SOURCE_ROOT; };
 		C4DFFC3D3A435681510DEF47 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RealTime.cpp; path = ../../../../src/rec/base/RealTime.cpp; sourceTree = SOURCE_ROOT; };
 		3AA51A256F269B7A09D69ACE = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RealTime.h; path = ../../../../src/rec/base/RealTime.h; sourceTree = SOURCE_ROOT; };
-		4AB333667EF28C0D67EF2A2B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SampleCount.h; path = ../../../../src/rec/base/SampleCount.h; sourceTree = SOURCE_ROOT; };
+		FEE0694CD7C814AA99E5A847 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Samples.h; path = ../../../../src/rec/base/Samples.h; sourceTree = SOURCE_ROOT; };
 		516FBC635542DA1D02878E07 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scoped_array.h; path = ../../../../src/rec/base/scoped_array.h; sourceTree = SOURCE_ROOT; };
 		3ECCF19EB6D5ED6F381F4253 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Standard.h; path = ../../../../src/rec/base/Standard.h; sourceTree = SOURCE_ROOT; };
 		048AE624FD78AF5698EAD501 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = string_piece.h; path = ../../../../src/rec/base/string_piece.h; sourceTree = SOURCE_ROOT; };
@@ -890,7 +890,7 @@
 				0E29F626F0ECE15997BB5B96,
 				C4DFFC3D3A435681510DEF47,
 				3AA51A256F269B7A09D69ACE,
-				4AB333667EF28C0D67EF2A2B,
+				FEE0694CD7C814AA99E5A847,
 				516FBC635542DA1D02878E07,
 				3ECCF19EB6D5ED6F381F4253,
 				048AE624FD78AF5698EAD501,
@@ -1453,7 +1453,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		331A6E4BA162DBD6937A8BDE = { isa = PBXGroup; children = (
+		49CCFEF9F5DA866711672661 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1766,7 +1766,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 331A6E4BA162DBD6937A8BDE; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 49CCFEF9F5DA866711672661; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

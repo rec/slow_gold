@@ -2,7 +2,7 @@
 #define __REC_AUDIO_SOURCE_SEGGY__
 
 #include "rec/audio/source/Wrappy.h"
-#include "rec/base/SampleCount.h"
+#include "rec/base/Samples.h"
 #include "rec/util/Range.h"
 #include "rec/util/Math.h"
 
@@ -12,7 +12,7 @@ namespace source {
 
 class Seggy : public Wrappy {
  public:
-  Seggy(const Range<SamplePosition>& r, PositionableAudioSource* s)
+  Seggy(const Range<Samples<44100>>& r, PositionableAudioSource* s)
       : Wrappy(s), range_(r) {
     DCHECK(range_.size());
     position_ = -1;
@@ -31,7 +31,7 @@ class Seggy : public Wrappy {
   }
 
  private:
-  Range<SamplePosition> range_;
+  Range<Samples<44100>> range_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Seggy);
 };

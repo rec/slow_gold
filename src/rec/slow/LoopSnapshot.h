@@ -17,8 +17,8 @@ struct LoopSnapshot {
 
   Instance* instance_;
   LoopPointList loops_;
-  SamplePosition time_;
-  SamplePosition length_;
+  Samples<44100> time_;
+  Samples<44100> length_;
 
   SampleSelection selection_;
 

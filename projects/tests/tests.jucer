@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Ot2GUm0Ls" name="tests">
+  <MAINGROUP id="yVMzlhD0P" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -251,8 +251,8 @@
               name="RealTime.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/RealTime.h" id="3W5M1sbCC"
               name="RealTime.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/base/SampleCount.h" id="sQFbYoz7B"
-              name="SampleCount.h" resource="0"/>
+        <FILE compile="0" file="../../src/rec/base/Samples.h" id="HOCDltWzY"
+              name="Samples.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/scoped_array.h" id="u3e867eLQ"
               name="scoped_array.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/base/Standard.h" id="xY1be553T"
@@ -1275,7 +1275,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="2PQ2UmEBD" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="LvId4Xnbq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

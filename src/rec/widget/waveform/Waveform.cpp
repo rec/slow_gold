@@ -72,8 +72,8 @@ void Waveform::paint(Graphics& g) {
       SampleSelection::iterator i = selection_.begin();
       Range<RealTime> range = getTimeRange();
       block::Block r;
-      r.first = SamplePosition(range.begin_);
-      r.second = SamplePosition(range.end_);
+      r.first = Samples<44100>(range.begin_);
+      r.second = Samples<44100>(range.end_);
       const juce::Rectangle<int>& bounds = getLocalBounds();
       int channels = thumbnail_->getNumChannels();
 
@@ -87,12 +87,13 @@ void Waveform::paint(Graphics& g) {
         else if (i != selection_.end())
           draw.second = i->first;
 
-        int x1 = timeToX(draw.first);
-        int x2 = timeToX(draw.second);
+        int x1 = timeToX(Samples<44100>(draw.first));
+        int x2 = timeToX(Samples<44100>(draw.second));
 
         juce::Rectangle<int> b(x1, bounds.getY(), x2 - x1, bounds.getHeight());
 
-        RealTime first = draw.first, second = draw.second;
+        RealTime first = Samples<44100>(draw.first);
+        RealTime second = Samples<44100>(draw.second);
         if (desc_.layout() == WaveformProto::PARALLEL) {
           p.setColor(1 + 2 * selected);
           thumbnail_->drawChannels(g, b, first, second, 1.0f);
@@ -206,8 +207,8 @@ Range<RealTime> Waveform::getTimeRange() const {
   ScopedLock l(lock_);
   Range<RealTime> r;
   if (zoom_.zoom_to_selection() && !selection_.empty()) {
-    r.begin_ = selection_.begin()->first;
-    r.end_ = selection_.rbegin()->second;
+    r.begin_ = Samples<44100>(selection_.begin()->first);
+    r.end_ = Samples<44100>(selection_.rbegin()->second);
     if (r.end_ == 0.0)
       r.end_ = zoom_.end();
 
@@ -222,7 +223,7 @@ Range<RealTime> Waveform::getTimeRange() const {
   }
 
   if (r.size() < SMALLEST_TIME)
-    r = Range<RealTime>(0, thumbnail_ ? thumbnail_->getTotalLength() : SMALLEST_TIME);
+    r = Range<RealTime>(0.0, thumbnail_ ? thumbnail_->getTotalLength() : SMALLEST_TIME);
 
   return r;
 }

@@ -20,7 +20,7 @@ class ThumbnailBuffer {
   bool setReader(const VirtualFile& file, AudioFormatReader* r);
   void setFile(const File& file, int sampleLength);
 
-  void addBlock(SamplePosition pos, const AudioSourceChannelInfo& info);
+  void addBlock(Samples<44100> pos, const AudioSourceChannelInfo& info);
 
   void writeThumbnail();
   bool cacheWritten() const { return cacheWritten_; }

@@ -34,7 +34,7 @@ Player::~Player() {
   transportSource_.setSource(NULL);
 }
 
-SamplePosition Player::getNextReadPosition() {
+Samples<44100> Player::getNextReadPosition() {
   return selection_->getNextReadPosition();
 }
 

@@ -20,7 +20,7 @@ class Wrappy : public PositionableAudioSource {
   virtual void prepareToPlay(int s, double r);
   virtual void releaseResources() { source()->releaseResources(); }
 
-  SamplePosition mod(SamplePosition x) const;
+  Samples<44100> mod(Samples<44100> x) const;
 
   virtual int64 getNextReadPosition() const;
   virtual void setNextReadPosition(int64 p);
@@ -34,7 +34,7 @@ class Wrappy : public PositionableAudioSource {
   virtual PositionableAudioSource* getSource() const;
   CriticalSection lock_;
 
-  SamplePosition position_;
+  Samples<44100> position_;
   ptr<PositionableAudioSource> source_;
 
   bool prepared_;

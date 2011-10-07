@@ -8,17 +8,17 @@ namespace audio {
 
 struct BufferTime {
   Buffer* buffer_;
-  SamplePosition time_;
+  Samples<44100> time_;
 
-  BufferTime(Buffer* b, SamplePosition t) : buffer_(b), time_(t) {}
+  BufferTime(Buffer* b, Samples<44100> t) : buffer_(b), time_(t) {}
   BufferTime() {}
 };
 
 // Returns the number of samples actually copied.
-SamplePosition copy(const BufferTime& from, const BufferTime& to, SamplePosition count);
+Samples<44100> copy(const BufferTime& from, const BufferTime& to, Samples<44100> count);
 
 // Clear samples.
-void clear(const BufferTime& bt, SamplePosition c);
+void clear(const BufferTime& bt, Samples<44100> c);
 
 }  // namespace audio
 }  // namespace rec

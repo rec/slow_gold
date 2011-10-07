@@ -21,7 +21,7 @@ class TransportController : public Layout,
   TransportController();
   virtual void buttonClicked(juce::Button *button);
   void setTransportState(rec::audio::transport::State state);
-  void setTime(SamplePosition time) { time_ = time; recalc(); }
+  void setTime(Samples<44100> time) { time_ = time; recalc(); }
   void setLoopPoints(const LoopPointList& lp) { loopPointList_ = lp; recalc(); }
 
  private:
@@ -32,7 +32,7 @@ class TransportController : public Layout,
   DrawableButton zoomOutButton_;
 
   juce::Label filler_;
-  SamplePosition time_;
+  Samples<44100> time_;
   LoopPointList loopPointList_;
 
   DISALLOW_COPY_AND_ASSIGN(TransportController);

@@ -44,13 +44,13 @@ class Player : public Broadcaster<transport::State>,
   void broadcastState() { broadcast(state()); }
   void toggle() { setState(invert(state())); }
 
-  SamplePosition getNextReadPosition();
+  Samples<44100> getNextReadPosition();
   void setNextReadPosition(int64 t);
   RealTime getTime() { return getNextReadPosition(); }
 
   transport::State state() const;
   Device* device() { return device_; }
-  Broadcaster<SamplePosition>* timeBroadcaster() { return timer_; }
+  Broadcaster< Samples<44100> >* timeBroadcaster() { return timer_; }
   Level* level() { return &level_; }
   virtual void changeListenerCallback(ChangeBroadcaster*);
 
@@ -60,7 +60,7 @@ class Player : public Broadcaster<transport::State>,
 
   void setGain(double);
 
-  SamplePosition length() const { return timer_->getTotalLength(); }
+  Samples<44100> length() const { return timer_->getTotalLength(); }
   void clear();
   void setStretch(const stretch::Stretch&);
   void setSource(Source*);

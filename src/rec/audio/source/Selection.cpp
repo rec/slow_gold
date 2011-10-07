@@ -26,7 +26,7 @@ void Selection::setSelection(const BlockSet& s) {
   selection_ = s;
 }
 
-void Selection::moveBackward(SamplePosition dt) {
+void Selection::moveBackward(Samples<44100> dt) {
   ScopedLock l(lock_);
   BlockSet sel = selection();
   BlockSet::const_iterator i = sel.begin();
@@ -36,7 +36,7 @@ void Selection::moveBackward(SamplePosition dt) {
 
   for (; dt > 0; --i) {
     position_ = std::min<int64>(position_, i->second);
-    SamplePosition moved = std::min<int64>(position_ - i->first, dt);
+    Samples<44100> moved = std::min<int64>(position_ - i->first, dt);
     DCHECK(moved);
     dt -= moved;
     position_ -= moved;

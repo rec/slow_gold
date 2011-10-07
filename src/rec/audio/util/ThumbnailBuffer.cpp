@@ -2,7 +2,7 @@
 #include "rec/audio/source/Runny.pb.h"
 #include "rec/audio/source/Snoopy.h"
 #include "rec/audio/util/AudioFormatManager.h"
-#include "rec/base/SampleCount.h"
+#include "rec/base/Samples.h"
 #include "rec/util/file/VirtualFile.h"
 
 using namespace juce;
@@ -23,7 +23,7 @@ ThumbnailBuffer::ThumbnailBuffer()
 
 ThumbnailBuffer::~ThumbnailBuffer() {}
 
-void ThumbnailBuffer::addBlock(SamplePosition pos, const Info& i) {
+void ThumbnailBuffer::addBlock(Samples<44100> pos, const Info& i) {
   thumbnail_.addBlock(pos, *i.buffer, i.startSample, i.numSamples);
 }
 

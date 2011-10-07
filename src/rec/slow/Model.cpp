@@ -87,7 +87,7 @@ void Model::setFile(const VirtualFile& f) {
   LoopPointList loop = persist::get<LoopPointList>(f);
   if (!loop.loop_point_size()) {
     loop.add_loop_point()->set_selected(true);
-    RealTime time = thumbnailBuffer_.buffer()->length();
+    RealTime time = Samples<44100>(thumbnailBuffer_.buffer()->length());
     loop.add_loop_point()->set_time(time);
   }
 
@@ -157,7 +157,7 @@ void Model::zoom(RealTime time, double k) {
   persist::set(z, file_);
 }
 
-void Model::jumpToTime(SamplePosition pos) {
+void Model::jumpToTime(Samples<44100> pos) {
   {
     ScopedLock l(lock_);
     if (!block::contains(timeSelection_, pos)) {

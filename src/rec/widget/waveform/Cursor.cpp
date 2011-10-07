@@ -35,7 +35,7 @@ double Cursor::getTime() const {
   return time_;
 }
 
-void Cursor::operator()(SamplePosition t) {
+void Cursor::operator()(Samples<44100> t) {
   ScopedLock l(lock_);
   if (listeningToClock_)
     setTime(t);

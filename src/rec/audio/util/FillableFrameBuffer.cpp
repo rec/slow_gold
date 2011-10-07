@@ -23,7 +23,7 @@ bool FillableFrameBuffer<Sample, CHANNELS>::setReader(
     return true;
   }
 
-  SamplePosition size = reader->lengthInSamples;
+  Samples<44100> size = reader->lengthInSamples;
   if (!frames_.setLength(size))
     return false;
 
@@ -43,7 +43,7 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
     return 0;
   }
 
-  SamplePosition size = std::min(block::getSize(b), blockSize_);
+  Samples<44100> size = std::min(block::getSize(b), blockSize_);
   // TODO: bug Jules
   if (!reader_->read(bufferPointers_, CHANNELS, b.first, size.toInt(), false)) {
     LOG(ERROR) << "Reader failed to read!";

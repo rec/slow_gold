@@ -20,7 +20,7 @@ using namespace rec::widget::waveform;
 using namespace rec::util::block;
 
 MouseListener::MouseListener(Instance* i)
-    : HasInstance(i), waveformDragStart_(0) {
+    : HasInstance(i), waveformDragStart_(0.0) {
   components()->waveform_.addMouseListener(this, true);
   Broadcaster<const MouseWheelEvent&> *w = &components()->waveform_;
   w->addListener(this);

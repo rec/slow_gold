@@ -25,7 +25,7 @@ class Selection : public Wrappy {
   }
 
   // Move the clock backward, taking into account the segments.
-  void moveBackward(SamplePosition dt);
+  void moveBackward(Samples<44100> dt);
 
  private:
   CriticalSection lock_;

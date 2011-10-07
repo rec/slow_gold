@@ -13,8 +13,11 @@ def pathParts(s):
     raise ValueError(s)
   parts = ['rec'] + parts[0].split('/')
   parts[-1] = parts[-1].split('.')[0]
-  return parts
 
+  if parts[-1] == 'base':
+    parts.pop()
+
+  return parts
 
 def run(cmd):
   # print '$', cmd

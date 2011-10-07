@@ -5,7 +5,7 @@ namespace rec {
 namespace audio {
 
 template <typename Frame>
-bool Frames<Frame>::setLength(SamplePosition length) {
+bool Frames<Frame>::setLength(Samples<44100> length) {
   free(frames_);
 
   // TODO: fix this for really large buffers.
@@ -21,13 +21,13 @@ bool Frames<Frame>::setLength(SamplePosition length) {
 }
 
 template <typename Frame>
-void fillArrayOfChannels(Frame* in, SamplePosition inOffset,
+void fillArrayOfChannels(Frame* in, Samples<44100> inOffset,
                          float **out, int outOffset,
                          int numSamples);
 
 template <typename Sample, int CHANNELS>
 void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
-                         SamplePosition inOffset,
+                         Samples<44100> inOffset,
                          float **out, int outOffset,
                          int numSamples) {
   typedef InterleavedFrame<Sample, CHANNELS> Frame;
@@ -39,8 +39,8 @@ void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
 }
 
 template <typename Frame>
-SamplePosition Frames<Frame>::getAudioBlock(const Info& info,
-                                            SamplePosition offset) const {
+Samples<44100> Frames<Frame>::getAudioBlock(const Info& info,
+                                            Samples<44100> offset) const {
   int numSamples = std::min(info.numSamples, static_cast<int>(length_ - offset));
   float** out = info.buffer->getArrayOfChannels();
   fillArrayOfChannels(frames_, offset, out, info.startSample, numSamples);

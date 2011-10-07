@@ -22,7 +22,7 @@ struct Range {
                         end_(s.empty() ? Type(0) : s.rbegin()->end_) {
   }
 
-  void clear() { begin_ = end_ = 0; }
+  void clear() { begin_ = end_ = Type(0); }
   Type size() const { return end_ - begin_; }
   bool empty() const { return !size(); }
 

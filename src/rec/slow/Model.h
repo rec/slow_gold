@@ -26,7 +26,7 @@ namespace slow {
 
 class Instance;
 
-class Model : public Listener<SamplePosition>,
+class Model : public Listener< Samples<44100> >,
               public HasInstance {
  public:
   typedef audio::Gain Gain;
@@ -41,14 +41,14 @@ class Model : public Listener<SamplePosition>,
   virtual ~Model() {}
 
   virtual void setFile(const VirtualFile& vf);
-  virtual void operator()(SamplePosition t) { ScopedLock l(lock_); time_ = t; }
+  virtual void operator()(Samples<44100> t) { ScopedLock l(lock_); time_ = t; }
   virtual void operator()(const LoopPointList&);
 
   void zoom(RealTime time, double k);
   void zoom(double k);
 
   thread::Result fillOnce();
-  void jumpToTime(SamplePosition);
+  void jumpToTime(Samples<44100>);
   void setCursorTime(int index, RealTime time);
 
   const VirtualFile file() const { ScopedLock l(lock_); return file_; }
@@ -59,8 +59,8 @@ class Model : public Listener<SamplePosition>,
 
   VirtualFile file_;
 
-  SamplePosition time_;
-  SamplePosition triggerPosition_;
+  Samples<44100> time_;
+  Samples<44100> triggerPosition_;
   SampleSelection timeSelection_;
   ThumbnailBuffer thumbnailBuffer_;
 
