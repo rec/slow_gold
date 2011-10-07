@@ -12,19 +12,18 @@ namespace rec {
 namespace audio {
 namespace source {
 
+Stretchy::Stretchy(PositionableAudioSource* s)
+    : Wrappy(s),
+      scaler_(new AudioTimeScaler),
+      timeScale_(1.0) {
+}
+
+Stretchy::~Stretchy() {}
+
 // static
 Stretchy* Stretchy::create(PositionableAudioSource* p) {
   return new Stretchy(p);
 }
-
-Stretchy::Stretchy(PositionableAudioSource* s)
-    : Wrappy(s),
-      scaler_(new AudioTimeScaler),
-      timeScale_(1.0),
-      initialized_(false) {
-}
-
-Stretchy::~Stretchy() {}
 
 int64 Stretchy::getTotalLength() const {
   ScopedLock l(lock_);
@@ -44,14 +43,10 @@ void Stretchy::setNextReadPosition(int64 position) {
 void Stretchy::setStretch(const stretch::Stretch& s) {
   ScopedLock l(lock_);
   stretch_ = s;
-  initialized_ = false;
+  initialize();
 }
 
 void Stretchy::initialize() {
-  ScopedLock l(lock_);
-  if (initialized_)
-    return;
-
   static const double DELTA = 0.00001;
   timeScale_ = stretch::timeScale(stretch_);
   bypass_ = stretch_.passthrough_when_disabled() &&
@@ -67,16 +62,18 @@ void Stretchy::initialize() {
     buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_INITIAL_SIZE));
 
   outOffset_.resize(channels_);
+  initializeStretcher();
+}
+
+void Stretchy::initializeStretcher() {
   scaler_.reset(new AudioTimeScaler);
   audio::stretch::Init(stretch_, scaler_.get());
-  initialized_ = true;
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   bool bypass;
   {
     ScopedLock l(lock_);
-    initialize();
     bypass = bypass_;
   }
   if (bypass) {

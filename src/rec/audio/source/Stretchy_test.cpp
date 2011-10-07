@@ -10,7 +10,6 @@ namespace source {
 
 TEST(RecAudioSource, Stretchy) {
   ptr<Stretchy> stretchy(Stretchy::create(new Testy()));
-  stretchy->initialize();
   Testy::expectNear(stretchy.get(), 0.0086, 2);
 }
 

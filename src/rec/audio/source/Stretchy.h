@@ -34,6 +34,7 @@ class Stretchy : public Wrappy {
 
  protected:
   Stretchy(PositionableAudioSource* s);
+  virtual void initializeStretcher();
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
@@ -46,7 +47,6 @@ class Stretchy : public Wrappy {
   std::vector<float*> outOffset_;
   CriticalSection lock_;
   double timeScale_;
-  bool initialized_;
   bool bypass_;
 
   DISALLOW_COPY_AND_ASSIGN(Stretchy);
