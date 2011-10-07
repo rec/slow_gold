@@ -6,7 +6,8 @@ namespace rec {
 namespace gui {
 
 template <typename Type>
-DataSlider<Type>::DataSlider(const String& name, const Address& address,
+DataSlider<Type>::DataSlider(const String& name, 
+                             const data::Address& address,
                              const String& caption,
                              const String& tip)
     : Layout(name, HORIZONTAL, true),
@@ -24,7 +25,7 @@ DataSlider<Type>::DataSlider(const String& name, const Address& address,
 }
 
 template <typename Type>
-void DataSlider<Type>::setDisplayValue(const Value& value) {
+void DataSlider<Type>::setDisplayValue(const data::Value& value) {
   MessageManagerLock l;
   setValue(value.get<Type>());
 }

@@ -19,10 +19,10 @@ class Typer {
   virtual void copyTo(ValueProto* v) const = 0;
   virtual void copyTo(uint32 i, ValueProto* v) const = 0;
 
-  virtual void copyFrom(const Value& v) = 0;
-  virtual void copyFrom(uint32 i, const Value& v) = 0;
+  virtual void copyFrom(const data::Value& v) = 0;
+  virtual void copyFrom(uint32 i, const data::Value& v) = 0;
 
-  virtual void add(const Value& v) = 0;
+  virtual void add(const data::Value& v) = 0;
   virtual void clear() = 0;
 
   virtual bool Equals(const Message& m, const Comparer& cmp) const = 0;

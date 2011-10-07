@@ -16,6 +16,8 @@ class SongData : public component::Focusable<SetterTextArea>,
                  public Cuttable,
                  public DataListener<music::Metadata> {
  public:
+  typedef data::Address Address;
+ 
   explicit SongData(ApplicationCommandManager* manager)
       : component::Focusable<SetterTextArea>(manager) {
     setName("SongData");

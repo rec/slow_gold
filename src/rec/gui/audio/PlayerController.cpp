@@ -2,11 +2,15 @@
 
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
-using rec::audio::Gain;
+
 
 static const bool ENABLE_SHIFTS = false;
 
 namespace rec {
+
+using audio::Gain;
+using data::Address;
+
 namespace gui {
 namespace audio {
 
@@ -17,6 +21,7 @@ enum Sides {
 };
 
 }  // namespace
+
 
 PlayerController::PlayerController()
     : Layout("PlayerController", VERTICAL),

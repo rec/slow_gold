@@ -10,19 +10,19 @@ namespace gui {
 class SetterToggle : public juce::ToggleButton,
                      public ProtoListener {
  public:
-  SetterToggle(const String& name, const Address& address)
+  SetterToggle(const String& name, const data::Address& address)
       : juce::ToggleButton(name), ProtoListener(address) {}
 
   virtual void clicked() { updatePersistentData(); }
 
  protected:
-  virtual const Value getDisplayValue() const { return getToggleState(); }
+  virtual const data::Value getDisplayValue() const { return getToggleState(); }
 
   void setToggle(bool state) {
     setToggleState(state, false);
   }
 
-  virtual void setDisplayValue(const Value& v) {
+  virtual void setDisplayValue(const data::Value& v) {
     if (v.has_bool_f())
       thread::callAsync(this, &SetterToggle::setToggle, v.bool_f());
   }

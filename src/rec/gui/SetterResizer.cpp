@@ -4,7 +4,7 @@
 namespace rec {
 namespace gui {
 
-SetterResizer::SetterResizer(const Address& address,
+SetterResizer::SetterResizer(const data::Address& address,
                              Layout* layout,
                              int itemIndexInLayout)
   : StretchableLayoutResizerBar(layout->layoutManager(),

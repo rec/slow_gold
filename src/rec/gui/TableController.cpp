@@ -7,6 +7,9 @@
 namespace rec {
 namespace gui {
 
+using data::Address;
+using data::Value;
+
 TableController::TableController() : TableListBox("", this),
                                      ProtoListener(Address()) {
 }

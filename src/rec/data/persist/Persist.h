@@ -39,12 +39,12 @@ void setGlobal(const Proto& proto) {
 }
 
 template <typename Proto>
-void set(const Address& a, const Proto& p, const VirtualFile& f) {
+void set(const data::Address& a, const Proto& p, const VirtualFile& f) {
   data::set(setter<Proto>(f), a, p);
 }
 
 template <typename Proto>
-void setGlobal(const Address& a, const Proto& p) {
+void setGlobal(const data::Address& a, const Proto& p) {
   data::set(setter<Proto>(noFile()), a, p);
 }
 

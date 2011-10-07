@@ -10,6 +10,9 @@ namespace rec {
 namespace proto {
 namespace typer {
 
+using data::Address;
+using data::Value;
+
 template <typename Type>
 class TypedTyper : public Typer {
  public:

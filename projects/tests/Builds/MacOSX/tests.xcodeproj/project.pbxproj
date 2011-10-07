@@ -67,6 +67,7 @@
 		02C4FDB7F6DF1B24540D1229 = { isa = PBXBuildFile; fileRef = D84207482BF6E3DAFFC1B635; };
 		9306CAFC193AB7ADAB5E4DA0 = { isa = PBXBuildFile; fileRef = A415FD9CDD00308150B2F6F3; };
 		A71D485B066F0168FD40E827 = { isa = PBXBuildFile; fileRef = D8B011CF05AE82F95C0D38EE; };
+		2C1769081A0C558D3DEB815F = { isa = PBXBuildFile; fileRef = E19158321F260DBCC2420226; };
 		E3EBBCA5AA6A5E056DFB20F4 = { isa = PBXBuildFile; fileRef = B4461DEC69D945A52D6895B4; };
 		10BDB147197A841DD5FCDFC8 = { isa = PBXBuildFile; fileRef = 9DFD5769D25254A01A3A8F9C; };
 		2D49BDB155BE4173860D57B9 = { isa = PBXBuildFile; fileRef = 13D1D052624F6A0B246F6335; };
@@ -75,7 +76,6 @@
 		15546065C1A9AA5AA0C640B5 = { isa = PBXBuildFile; fileRef = 1748B196C7CF584702E6C34F; };
 		33A7475B72085B4444534774 = { isa = PBXBuildFile; fileRef = 8D227094C47AFB3057B75394; };
 		7918EE0D03DC97CB1DEC11A6 = { isa = PBXBuildFile; fileRef = 17636C404413A0A086166006; };
-		D0B54C94093E3E2C39782341 = { isa = PBXBuildFile; fileRef = CD325C786A3B47020036BC48; };
 		B7C20D85DC432ABBA9C5788B = { isa = PBXBuildFile; fileRef = A4DEAF714BB10D7F60D583A0; };
 		686B4CCA29B4E9F51214F284 = { isa = PBXBuildFile; fileRef = C23D5E4F801211DF9E964636; };
 		275FC2CB4F625481F9949BD4 = { isa = PBXBuildFile; fileRef = D8E3EC7207D969A2B202662D; };
@@ -405,6 +405,7 @@
 		02CC9153071650EC799FA18B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiName.h; path = ../../../../src/rec/command/MidiName.h; sourceTree = SOURCE_ROOT; };
 		D8B011CF05AE82F95C0D38EE = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TargetManager.cpp; path = ../../../../src/rec/command/TargetManager.cpp; sourceTree = SOURCE_ROOT; };
 		CB8B23C0F8C826C3E85425DC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TargetManager.h; path = ../../../../src/rec/command/TargetManager.h; sourceTree = SOURCE_ROOT; };
+		E19158321F260DBCC2420226 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Address.cpp; path = ../../../../src/rec/data/Address.cpp; sourceTree = SOURCE_ROOT; };
 		306996540D2F52FAD0685FD9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Address.h; path = ../../../../src/rec/data/Address.h; sourceTree = SOURCE_ROOT; };
 		B4461DEC69D945A52D6895B4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Binary.cpp; path = ../../../../src/rec/data/Binary.cpp; sourceTree = SOURCE_ROOT; };
 		62376A8BB839E4BF6140E7CF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Binary.h; path = ../../../../src/rec/data/Binary.h; sourceTree = SOURCE_ROOT; };
@@ -425,7 +426,6 @@
 		20385342EFBF5E13E6047990 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Persist.h; path = ../../../../src/rec/data/persist/Persist.h; sourceTree = SOURCE_ROOT; };
 		17636C404413A0A086166006 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UntypedData.cpp; path = ../../../../src/rec/data/persist/UntypedData.cpp; sourceTree = SOURCE_ROOT; };
 		9F2788E0C63C99D95F6E57FC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UntypedData.h; path = ../../../../src/rec/data/persist/UntypedData.h; sourceTree = SOURCE_ROOT; };
-		CD325C786A3B47020036BC48 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Address.cpp; path = ../../../../src/rec/data/proto/Address.cpp; sourceTree = SOURCE_ROOT; };
 		DB04452DC50DD31177FB6398 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Comparer.h; path = ../../../../src/rec/data/proto/Comparer.h; sourceTree = SOURCE_ROOT; };
 		A4DEAF714BB10D7F60D583A0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Equals.cpp; path = ../../../../src/rec/data/proto/Equals.cpp; sourceTree = SOURCE_ROOT; };
 		DB5C0EC7F3D81D1ECAC5B818 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Equals.h; path = ../../../../src/rec/data/proto/Equals.h; sourceTree = SOURCE_ROOT; };
@@ -1012,7 +1012,6 @@
 				17636C404413A0A086166006,
 				9F2788E0C63C99D95F6E57FC ); name = persist; sourceTree = "<group>"; };
 		8544BE6615D289B0A6A6EA8E = { isa = PBXGroup; children = (
-				CD325C786A3B47020036BC48,
 				DB04452DC50DD31177FB6398,
 				A4DEAF714BB10D7F60D583A0,
 				DB5C0EC7F3D81D1ECAC5B818,
@@ -1129,6 +1128,7 @@
 				8AC3E5A7FB15D9774012C40A,
 				78F73F6C8CE543B33B019CC7 ); name = yaml; sourceTree = "<group>"; };
 		048C7D5BC832EB5170569CD5 = { isa = PBXGroup; children = (
+				E19158321F260DBCC2420226,
 				306996540D2F52FAD0685FD9,
 				B4461DEC69D945A52D6895B4,
 				62376A8BB839E4BF6140E7CF,
@@ -1542,7 +1542,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		0813B81408B043D51DC2E0BA = { isa = PBXGroup; children = (
+		482F15E9332406F96F7F6ABC = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1676,6 +1676,7 @@
 				02C4FDB7F6DF1B24540D1229,
 				9306CAFC193AB7ADAB5E4DA0,
 				A71D485B066F0168FD40E827,
+				2C1769081A0C558D3DEB815F,
 				E3EBBCA5AA6A5E056DFB20F4,
 				10BDB147197A841DD5FCDFC8,
 				2D49BDB155BE4173860D57B9,
@@ -1684,7 +1685,6 @@
 				15546065C1A9AA5AA0C640B5,
 				33A7475B72085B4444534774,
 				7918EE0D03DC97CB1DEC11A6,
-				D0B54C94093E3E2C39782341,
 				B7C20D85DC432ABBA9C5788B,
 				686B4CCA29B4E9F51214F284,
 				275FC2CB4F625481F9949BD4,
@@ -1884,7 +1884,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 0813B81408B043D51DC2E0BA; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 482F15E9332406F96F7F6ABC; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

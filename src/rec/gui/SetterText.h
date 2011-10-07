@@ -14,7 +14,8 @@ class SetterText : public Layout,
                    public ProtoListener,
                    public TextEditor::Listener {
  public:
-  SetterText(const String& name, const Address& address,
+  SetterText(const String& name, 
+             const data::Address& address,
              const String& tip = String::empty,
              const String& caption = String::empty)
       : Layout(name, HORIZONTAL),
@@ -48,11 +49,11 @@ class SetterText : public Layout,
   virtual void textEditorFocusLost(TextEditor& editor) {}
 
  protected:
-  virtual const Value getDisplayValue() const {
+  virtual const data::Value getDisplayValue() const {
     return str(editor_.getText());
   }
 
-  virtual void setDisplayValue(const Value& value) {
+  virtual void setDisplayValue(const data::Value& value) {
     if (value.has_string_f()) {
       thread::callAsync(&editor_, &TextEditor::setText,
                         str(value.string_f()), false);

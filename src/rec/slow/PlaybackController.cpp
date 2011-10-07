@@ -6,12 +6,14 @@
 namespace rec {
 namespace slow {
 
-PlaybackController::PlaybackController(Components* comp, const Address& address)
+using data::Address;
+
+PlaybackController::PlaybackController(Components* comp)
     : Layout("Main controls"),
       panel_("Main panel", VERTICAL),
-      timeControllerResizer_(address + "clock_x", this, 1),
-      songDataResizer_(address + "songdata_x", this, 3),
-      stretchyResizer_(address + "stretchy_y", &panel_, 1) {
+      timeControllerResizer_(Address("clock_x"), this, 1),
+      songDataResizer_(Address("songdata_x"), this, 3),
+      stretchyResizer_(Address("stretchy_y"), &panel_, 1) {
   addToLayout(&comp->timeController_);
   timeControllerResizer_.add(5);
 

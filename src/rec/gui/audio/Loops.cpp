@@ -47,7 +47,7 @@ Loops::Loops(ApplicationCommandManager* manager,
     : component::Focusable<TableController>(manager),
       length_(0),
       dataListener_(new LoopPointDataListener(this)) {
-  initialize(dflt.get(desc), Address("loop_point"), "Loops");
+  initialize(dflt.get(desc), data::Address("loop_point"), "Loops");
   fillHeader(&getHeader());
   setMultipleSelectionEnabled(true);
   loopPoints_ = new LoopPointList;
@@ -145,7 +145,7 @@ bool Loops::canCopy() const {
 void Loops::cut() {
   ScopedLock l(lock_);
   *loopPoints_ = getSelected(*loopPoints_, false);
- 	data::set(getUntypedData(), Address(), *loopPoints_);
+ 	data::set(getUntypedData(), data::Address(), *loopPoints_);
 }
 
 Range<RealTime> Loops::selectionRange() const {
@@ -174,7 +174,7 @@ void Loops::addLoopPoints(const LoopPointList& loops) {
                                                      time < selection.end_);
   }
 
- 	data::set(getUntypedData(), Address(), *loopPoints_);
+ 	data::set(getUntypedData(), data::Address(), *loopPoints_);
   updateAndRepaint();
 }
 

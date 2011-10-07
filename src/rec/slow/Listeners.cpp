@@ -82,7 +82,8 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 
     for (int i = 0; i < files.file_size(); ++i) {
       if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        data::append(persist::setterGlobal<file::VirtualFileList>(), Address("file"), files.file(i));
+        data::append(persist::setterGlobal<file::VirtualFileList>(), 
+                     data::Address("file"), files.file(i));
     }
   }
 }

@@ -20,7 +20,8 @@ class SetterTextArea : public Layout {
 
   SetterText* text(int i) { return static_cast<SetterText*>(components_[i]); }
 
-  SetterText* add(const String& name, const Address& address,
+  SetterText* add(const String& name, 
+  								const data::Address& address,
                   const String& tip = String::empty,
                   const String& caption = String::empty) {
     SetterText* text = new SetterText(name, address, tip, caption);

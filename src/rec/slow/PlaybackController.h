@@ -13,8 +13,7 @@ class Components;
 
 class PlaybackController : public gui::Layout {
  public:
-  explicit PlaybackController(Components* i,
-                              const Address& a = Address::default_instance());
+  explicit PlaybackController(Components* i);
 
   void setSetter(data::Editable* setter);
 

@@ -27,7 +27,7 @@ MainPage::MainPage(Components* comp) : Layout("MainPage") {
 MainPage::~MainPage() {}
 
 void MainPage::addResizer(ptr<gui::SetterResizer>* r, const char* addr, Layout* lo) {
-  r->reset(new gui::SetterResizer(Address(addr), lo, lo->size()));
+  r->reset(new gui::SetterResizer(data::Address(addr), lo, lo->size()));
   (*r)->add();
 }
 

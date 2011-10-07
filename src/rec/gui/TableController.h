@@ -15,7 +15,8 @@ class TableController : public TableListBoxModel,
  public:
   TableController();
 
-  void initialize(const TableColumnList& columns, const Address& address,
+  void initialize(const TableColumnList& columns, 
+                  const data::Address& address,
                   const char* name = "TableController");
 
   virtual void fillHeader(TableHeaderComponent* headers);
@@ -25,8 +26,8 @@ class TableController : public TableListBoxModel,
 
   virtual void setUntypedData(data::UntypedData* data);
 
-  virtual const Value getDisplayValue() const;
-  virtual void setDisplayValue(const Value& v);
+  virtual const data::Value getDisplayValue() const;
+  virtual void setDisplayValue(const data::Value& v);
 
   virtual void selectedRowsChanged(int lastRowSelected) = 0;
 
@@ -35,13 +36,13 @@ class TableController : public TableListBoxModel,
  protected:
   virtual void update() { updateContent(); }
 
-  static String displayText(const TableColumn& col, const Value& value);
+  static String displayText(const TableColumn& col, const data::Value& value);
 
   ptr<Message> message_;
   TableColumnList columns_;
   CriticalSection lock_;
 
-  Address address_;
+  data::Address address_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(TableController);

@@ -297,6 +297,7 @@
           <File RelativePath="..\..\..\..\src\rec\command\TargetManager.h"/>
         </Filter>
         <Filter Name="data">
+          <File RelativePath="..\..\..\..\src\rec\data\Address.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Binary.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Binary.h"/>
@@ -322,7 +323,6 @@
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedData.h"/>
           </Filter>
           <Filter Name="proto">
-            <File RelativePath="..\..\..\..\src\rec\data\proto\Address.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Comparer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Equals.h"/>

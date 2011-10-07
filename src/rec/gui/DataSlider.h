@@ -15,7 +15,8 @@ class DataSlider : public Layout,
                    public ProtoListener,
                    public juce::Slider::Listener {
  public:
-  DataSlider(const String& name, const Address& address,
+  DataSlider(const String& name, 
+             const data::Address& address,
              const String& caption = String::empty,
              const String& tip = String::empty);
 
@@ -24,9 +25,9 @@ class DataSlider : public Layout,
   virtual void sliderValueChanged(Slider*) { updatePersistentData(); }
 
  protected:
-  virtual const Value getDisplayValue() const { return slider_.getValue(); }
+  virtual const data::Value getDisplayValue() const { return slider_.getValue(); }
   void setValue(Type value) { slider_.setValue(value, false); }
-  virtual void setDisplayValue(const Value& value);
+  virtual void setDisplayValue(const data::Value& value);
 
   DetentSlider slider_;
   SimpleLabel caption_;

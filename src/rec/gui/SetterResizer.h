@@ -11,7 +11,7 @@ namespace gui {
 
 class SetterResizer : public StretchableLayoutResizerBar {
  public:
-  SetterResizer(const Address& address,
+  SetterResizer(const data::Address& address,
                 Layout* layout,
                 int itemIndexInLayout);
 
@@ -28,7 +28,7 @@ class SetterResizer : public StretchableLayoutResizerBar {
   Layout* layout_;
   juce::StretchableLayoutManager* layoutManager_;
   int index_;
-  Address address_;
+  data::Address address_;
   Orientation orientation_;
   data::Editable* setter_;
 

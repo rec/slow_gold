@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="zqnQYqVDs" name="command">
+  <MAINGROUP id="n27fHsXCe" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -301,6 +301,8 @@
               name="TargetManager.h" resource="0"/>
       </GROUP>
       <GROUP id="9n49LaVqH" name="data">
+        <FILE compile="1" file="../../src/rec/data/Address.cpp" id="eeHen8PCg"
+              name="Address.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Address.h" id="hkI1muKFZ"
               name="Address.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Binary.cpp" id="BjfseERYz"
@@ -346,8 +348,6 @@
                 name="UntypedData.h" resource="0"/>
         </GROUP>
         <GROUP id="2PaHmfyN0" name="proto">
-          <FILE compile="1" file="../../src/rec/data/proto/Address.cpp" id="Gvd8D3GPP"
-                name="Address.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="8PlkqlMk8"
                 name="Comparer.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Equals.cpp" id="BMFo7eWEk"
@@ -1215,7 +1215,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="vIZmBlAr1" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="ElY8nJQpt" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -18,10 +18,6 @@ namespace util { namespace listener {}}
 namespace util { namespace file { class VirtualFile; }}
 namespace util { namespace file { class VirtualFileList; }}
 
-namespace data { class Address; }
-namespace data { class Editable; }
-namespace data { class Value; }
-
 typedef std::string string;
 typedef unsigned int uint;
 
@@ -32,11 +28,9 @@ using namespace util;
 
 using util::file::VirtualFile;
 using util::file::VirtualFileList;
+
 using std::vector;
 using std::pair;
-
-using data::Address;
-using data::Value;
 
 // Useful all over.
 
