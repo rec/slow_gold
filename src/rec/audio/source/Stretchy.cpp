@@ -1,5 +1,6 @@
 #include "rec/audio/source/Stretchy.h"
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
+#include "rec/audio/source/AudioMagicStretchy.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/util/Math.h"
 
@@ -14,7 +15,6 @@ namespace source {
 
 Stretchy::Stretchy(PositionableAudioSource* s)
     : Wrappy(s),
-      scaler_(new AudioTimeScaler),
       timeScale_(1.0) {
 }
 
@@ -22,7 +22,7 @@ Stretchy::~Stretchy() {}
 
 // static
 Stretchy* Stretchy::create(PositionableAudioSource* p) {
-  return new Stretchy(p);
+  return createAudioMagicStretchy(p);
 }
 
 int64 Stretchy::getTotalLength() const {
@@ -65,11 +65,6 @@ void Stretchy::initialize() {
   initializeStretcher();
 }
 
-void Stretchy::initializeStretcher() {
-  scaler_.reset(new AudioTimeScaler);
-  audio::stretch::Init(stretch_, scaler_.get());
-}
-
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   bool bypass;
   {
@@ -96,15 +91,6 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
       CHECK_LT(++zeroCount, 10);
     }
   }
-}
-
-int Stretchy::getInputSampleCount(int numSamples) const {
-  return scaler_->GetInputBufferSize(numSamples) / 2;
-}
-
-int64 Stretchy::process(float** ins, int inSamples,
-                        float** outs, int outSamples) {
-  return scaler_->Process(ins, outs, inSamples, outSamples);
 }
 
 int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {

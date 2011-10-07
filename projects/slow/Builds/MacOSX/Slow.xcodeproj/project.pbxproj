@@ -87,6 +87,7 @@
 		65190ED2519CF928A99C9072 /* nodebuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D48EB8180E2C24EAFE50DFFB /* nodebuilder.cpp */; };
 		65769E1F73B8F7362FB764DB /* Panes.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 24A0BEC00ACCEC6FABBB97FA /* Panes.pb.cc */; };
 		665E882C78FA7B5A393713A5 /* MediaPlay.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02CB509D623C2C0701854DB6 /* MediaPlay.svg.cpp */; };
+		6670469764D4B36D6B011D88 /* AudioMagicStretchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A65E8431DA9E33B4138B7FD /* AudioMagicStretchy.cpp */; };
 		6825CB6D250B13081A172422 /* Stereo.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 88B4D611F5A7FFDF737AB770 /* Stereo.pb.cc */; };
 		68BCD40D12F9CB114D6B8C09 /* NewHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7234162EF60CC8CA998882E9 /* NewHandle.cpp */; };
 		6AC79F4E2D3821CB41BBE1BD /* CommandMapEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EFBD9C1E867D030D3E94759E /* CommandMapEditor.cpp */; };
@@ -283,6 +284,7 @@
 		182478B8E788D09B2EEFA6EC /* RecentFiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecentFiles.h; path = ../../../../src/rec/gui/RecentFiles.h; sourceTree = SOURCE_ROOT; };
 		18654824E05C2B37A46C5E14 /* Comparer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Comparer.h; path = ../../../../src/rec/data/proto/Comparer.h; sourceTree = SOURCE_ROOT; };
 		18703B01168F891AFEFC6E7E /* Event.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Event.pb.cc; path = ../../../../genfiles/proto/rec/data/commands/Event.pb.cc; sourceTree = SOURCE_ROOT; };
+		1882F68F49429AC684ABA625 /* AudioMagicStretchy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioMagicStretchy.h; path = ../../../../src/rec/audio/source/AudioMagicStretchy.h; sourceTree = SOURCE_ROOT; };
 		19727BD54A818B4854AF7D90 /* NewHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NewHandle.h; path = ../../../../src/rec/audio/format/mpg123/NewHandle.h; sourceTree = SOURCE_ROOT; };
 		1979816DF949A8823A94FB0E /* Switcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Switcher.h; path = ../../../../src/rec/util/Switcher.h; sourceTree = SOURCE_ROOT; };
 		1A4B2F4C7CD6EB406EBB4E5F /* FillableFrameBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FillableFrameBuffer.cpp; path = ../../../../src/rec/audio/util/FillableFrameBuffer.cpp; sourceTree = SOURCE_ROOT; };
@@ -332,6 +334,7 @@
 		29135420595CB6C4BBD95128 /* eventhandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = eventhandler.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/eventhandler.h"; sourceTree = SOURCE_ROOT; };
 		297C915C54EBD1543FA595D5 /* indentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = indentation.h; path = ../../../../src/rec/data/yaml/src/indentation.h; sourceTree = SOURCE_ROOT; };
 		2A2AB2E5F943EE3901E2ADB2 /* streamcharsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = streamcharsource.h; path = ../../../../src/rec/data/yaml/src/streamcharsource.h; sourceTree = SOURCE_ROOT; };
+		2A65E8431DA9E33B4138B7FD /* AudioMagicStretchy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioMagicStretchy.cpp; path = ../../../../src/rec/audio/source/AudioMagicStretchy.cpp; sourceTree = SOURCE_ROOT; };
 		2AA30A35048462A804B6F008 /* MediaPlaybackStart.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaPlaybackStart.svg.h; path = ../../../../src/rec/gui/icon/MediaPlaybackStart.svg.h; sourceTree = SOURCE_ROOT; };
 		2B07D02FD43FAF495097104F /* PlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayerController.h; path = ../../../../src/rec/gui/audio/PlayerController.h; sourceTree = SOURCE_ROOT; };
 		2B8B15833E2B2EB99E74F7E6 /* Socket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../../../../src/rec/util/cd/Socket.cpp; sourceTree = SOURCE_ROOT; };
@@ -955,6 +958,20 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
+		237384C51AE788ECC4ECBD78 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		23BA494E83EED5906543C5B0 /* file */ = {
 			isa = PBXGroup;
 			children = (
@@ -1071,20 +1088,6 @@
 				42DB57A528A0E3A8480EB402 /* Widget.h */,
 			);
 			name = widget;
-			sourceTree = "<group>";
-		};
-		4ABA54BCB488E4DF8071F527 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		5080298D4E35A1BF89D85979 /* yaml-cpp */ = {
@@ -1778,6 +1781,8 @@
 		EB91E34E5BF15F8B25964492 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				2A65E8431DA9E33B4138B7FD /* AudioMagicStretchy.cpp */,
+				1882F68F49429AC684ABA625 /* AudioMagicStretchy.h */,
 				A27FB01F82BCC82F92921F90 /* Empty.h */,
 				65474677D970D61EBE83EC80 /* FrameSource.h */,
 				AACA14098A56E0CE4DC4AB90 /* Level.h */,
@@ -1909,7 +1914,7 @@
 				French,
 				German,
 			);
-			mainGroup = 4ABA54BCB488E4DF8071F527 /* Source */;
+			mainGroup = 237384C51AE788ECC4ECBD78 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1949,6 +1954,7 @@
 				FED0C3C43249C994374C2325 /* Reader.cpp in Sources */,
 				9B4381F268519380859267AF /* Tags.cpp in Sources */,
 				AFCDF97159BDEB010EB39F4B /* RawFormat.cpp in Sources */,
+				6670469764D4B36D6B011D88 /* AudioMagicStretchy.cpp in Sources */,
 				ED4946793A10147AEBFF977B /* Player.cpp in Sources */,
 				60D4C3C52F38132DF1FA4DEA /* Selection.cpp in Sources */,
 				FBE97C77A873F503C75E4D86 /* Stereo.cpp in Sources */,

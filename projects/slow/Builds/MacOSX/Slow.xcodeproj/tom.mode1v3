@@ -197,7 +197,49 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E20261CA143E81DB0036FA27</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>AudioMagicStretchy.h</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E20261CB143E81DB0036FA27</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>AudioMagicStretchy.h</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E20261DC143E82640036FA27</string>
+						<key>history</key>
+						<array>
+							<string>E20261CC143E81DB0036FA27</string>
+							<string>E20261CD143E81DB0036FA27</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {968, 794}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>84 275 968 835 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -229,6 +271,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -263,7 +307,7 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
-								<string>4ABA54BCB488E4DF8071F527</string>
+								<string>237384C51AE788ECC4ECBD78</string>
 								<string>75467D3DB26B8C553F2D3FE5</string>
 								<string>B83A607E0F3D6EDFFA33023A</string>
 								<string>3CB145F38275F0DC90995C8E</string>
@@ -314,14 +358,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Cursor.cpp</string>
+								<string>AudioMagicStretchy.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,11 +371,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Cursor.cpp</string>
+										<string>AudioMagicStretchy.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E20261B6143E7F7F0036FA27</string>
+										<string>E20261DB143E82640036FA27</string>
 										<key>history</key>
 										<array>
 											<string>E288C2BC12EB70A400AAB106</string>
@@ -447,6 +489,7 @@
 											<string>E202619C143E79A60036FA27</string>
 											<string>E202619D143E79A60036FA27</string>
 											<string>E202619E143E79A60036FA27</string>
+											<string>E20261C8143E81DB0036FA27</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -458,14 +501,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {823, 742}}</string>
+								<string>{{0, 0}, {823, 737}}</string>
 								<key>RubberWindowFrame</key>
 								<string>30 180 1217 998 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>742pt</string>
+							<string>737pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -478,14 +521,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 747}, {823, 210}}</string>
+								<string>{{0, 742}, {823, 215}}</string>
 								<key>RubberWindowFrame</key>
 								<string>30 180 1217 998 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>210pt</string>
+							<string>215pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -504,9 +547,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E202614F143E46250036FA27</string>
+				<string>E20261C2143E81930036FA27</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E2026150143E46250036FA27</string>
+				<string>E20261C3143E81930036FA27</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -644,12 +687,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E20261B7143E7F7F0036FA27</string>
-		<string>E20261A1143E79A60036FA27</string>
-		<string>E20261A2143E79A60036FA27</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>E20261CA143E81DB0036FA27</string>
 		<string>E290FED3120A432900532309</string>
 	</array>
 	<key>WindowString</key>
@@ -669,14 +708,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Stretchy.cpp</string>
+								<string>AudioMagicStretchy.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -693,6 +730,8 @@
 							<string>506pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -732,7 +771,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E290FED3120A432900532309</string>
-				<string>E2026151143E46250036FA27</string>
+				<string>E20261C4143E81930036FA27</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
