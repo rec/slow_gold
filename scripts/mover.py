@@ -20,7 +20,7 @@ def pathParts(s):
   return parts
 
 def run(cmd):
-  # print '$', cmd
+  print '$', cmd
   os.system(cmd)
 
 

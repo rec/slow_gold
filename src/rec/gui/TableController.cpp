@@ -1,6 +1,6 @@
 #include "rec/gui/TableController.h"
 #include "rec/data/proto/Proto.h"
-#include "rec/data/Data.h"
+#include "rec/data/Editable.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/FormatTime.h"
 

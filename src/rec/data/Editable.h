@@ -1,5 +1,5 @@
-#ifndef __REC_DATA_DATA__
-#define __REC_DATA_DATA__
+#ifndef __REC_DATA_EDITABLE__
+#define __REC_DATA_EDITABLE__
 
 #include "rec/base/base.h"
 #include "rec/data/Address.h"
@@ -48,4 +48,4 @@ void swap(Editable*, const Address&, int index1, int index2);
 }  // namespace data
 }  // namespace rec
 
-#endif  // __REC_DATA_DATA__
+#endif  // __REC_DATA_EDITABLE__

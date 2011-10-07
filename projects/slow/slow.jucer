@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="jKx7IVlYC" name="Slow">
+  <MAINGROUP id="PFS85BqWR" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -315,10 +315,10 @@
           <FILE compile="0" file="../../src/rec/data/commands/EventQueue.h" id="N1DG4kbLn"
                 name="EventQueue.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/data/Data.cpp" id="emRwrpc3v"
-              name="Data.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/data/Data.h" id="nYVm95Owa" name="Data.h"
-              resource="0"/>
+        <FILE compile="1" file="../../src/rec/data/Editable.cpp" id="JpMjNWYsy"
+              name="Editable.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/Editable.h" id="st7rIAFY7"
+              name="Editable.h" resource="0"/>
         <GROUP id="p9GHA3VGt" name="persist">
           <FILE compile="0" file="../../src/rec/data/persist/App.h" id="bxaLWu80g"
                 name="App.h" resource="0"/>
@@ -1215,7 +1215,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="pJngNSiz1" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="cbF0RZKQq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -1,7 +1,7 @@
 #ifndef __REC_PROTO_FIELD__
 #define __REC_PROTO_FIELD__
 
-#include "rec/data/Data.h"
+#include "rec/data/Editable.h"
 #include "rec/data/Address.h"
 #include "rec/data/proto/MessageField.h"
 

@@ -1,7 +1,7 @@
 #ifndef __REC_UTIL_LISTENER_SETTER__
 #define __REC_UTIL_LISTENER_SETTER__
 
-#include "rec/data/Data.h"
+#include "rec/data/Editable.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {

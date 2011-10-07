@@ -1,7 +1,7 @@
 #ifndef __REC_PERSIST_UNTYPEDDATA__
 #define __REC_PERSIST_UNTYPEDDATA__
 
-#include "rec/data/Data.h"
+#include "rec/data/Editable.h"
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
