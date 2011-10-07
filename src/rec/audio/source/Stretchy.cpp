@@ -12,7 +12,7 @@ namespace rec {
 namespace audio {
 namespace source {
 
-Stretchy::Stretchy(PositionableAudioSource* s)
+Stretchy::Stretchy(PositionableAudioSource* s, const Stretch&)
     : Wrappy(s),
       timeScale_(1.0) {
 }
@@ -20,7 +20,7 @@ Stretchy::Stretchy(PositionableAudioSource* s)
 Stretchy::~Stretchy() {}
 
 // static
-Stretchy* Stretchy::create(PositionableAudioSource* p) {
+Stretchy* Stretchy::create(PositionableAudioSource* p, const Stretch&) {
   return stretch::createAudioMagicStretchy(p);
 }
 
