@@ -19,7 +19,7 @@ class Editable {
   Editable() {}
   virtual ~Editable() {}
 
-  virtual void operator()(OperationList*) = 0;
+  virtual void apply(OperationList*) = 0;
 
   virtual const Value getValue(const Address&) const = 0;
   virtual bool hasValue(const Address&) const = 0;

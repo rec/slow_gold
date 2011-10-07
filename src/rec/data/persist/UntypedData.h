@@ -18,10 +18,9 @@ class UntypedData : public data::Editable {
   // Change the data with an OperationList.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
-  virtual void operator()(OperationList* op);
+  virtual void apply(OperationList* op);
 
   // Request an update to this data in a different thread.
-  void requestUpdate();
   bool fileReadSuccess() const { return fileReadSuccess_; }
 
   virtual const Value getValue(const Address& address) const;
@@ -56,7 +55,6 @@ class UntypedData : public data::Editable {
 
   UntypedData(const File& file, Message* message, persist::App* app);
   void readFromFile() const;
-
   void writeToFile() const;
 
   typedef std::vector<data::OperationList*> OperationQueue;

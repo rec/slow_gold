@@ -64,16 +64,12 @@ UntypedData::~UntypedData() {
   stl::deletePointers(&undo_);
 }
 
-void UntypedData::operator()(OperationList* op) {
+void UntypedData::apply(OperationList* op) {
   {
     ScopedLock l(lock_);
     queue_.push_back(op);
   }
   app_->needsUpdate(this);
-}
-
-void UntypedData::requestUpdate() {
-  (*this)(new OperationList);
 }
 
 void UntypedData::update() {
