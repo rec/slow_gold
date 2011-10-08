@@ -32,7 +32,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   virtual void setData(persist::Data<rec::audio::stretch::Stretch>*);
   virtual void setData(persist::Data<rec::audio::Gain>*);
 
-  void setZoom(data::UntypedData* zoom);
+  void setZoom(data::UntypedEditable* zoom);
   void enableSliders(bool enabled);
   virtual void comboBoxChanged(juce::ComboBox*);
 

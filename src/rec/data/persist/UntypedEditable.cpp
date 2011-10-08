@@ -1,4 +1,4 @@
-#include "rec/data/persist/UntypedData.h"
+#include "rec/data/persist/UntypedEditable.h"
 
 #include "rec/data/persist/App.h"
 #include "rec/data/persist/Copy.h"
@@ -8,27 +8,27 @@
 namespace rec {
 namespace data {
 
-bool UntypedData::hasValue(const Address& address) const {
+bool UntypedEditable::hasValue(const Address& address) const {
   ScopedLock l(lock_);
   return data::hasValue(address, *message_);
 }
 
-const Value UntypedData::getValue(const Address& address) const {
+const Value UntypedEditable::getValue(const Address& address) const {
   ScopedLock l(lock_);
   return data::getValue(address, *message_);
 }
 
-int UntypedData::getSize(const Address& address) const {
+int UntypedEditable::getSize(const Address& address) const {
   ScopedLock l(lock_);
   return data::getSize(address, *message_);
 }
 
-void UntypedData::copyTo(Message* message) const {
+void UntypedEditable::copyTo(Message* message) const {
   ScopedLock l(lock_);
   message->CopyFrom(*message_);
 }
 
-UntypedData::UntypedData(const File& file, Message* message, persist::App* app)
+UntypedEditable::UntypedEditable(const File& file, Message* message, persist::App* app)
     : file_(new File(file)),
       message_(message),
       app_(app),
@@ -36,7 +36,7 @@ UntypedData::UntypedData(const File& file, Message* message, persist::App* app)
       fileReadSuccess_(false) {
 }
 
-Message* UntypedData::clone() const {
+Message* UntypedEditable::clone() const {
   ScopedLock l(lock_);
   if (message_) {
     ptr<Message> m(message_->New());
@@ -46,7 +46,7 @@ Message* UntypedData::clone() const {
   return NULL;
 }
 
-void UntypedData::readFromFile() const {
+void UntypedEditable::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
     fileReadSuccess_ = persist::copy(*file_, message_);
@@ -59,12 +59,12 @@ void UntypedData::readFromFile() const {
   }
 }
 
-UntypedData::~UntypedData() {
+UntypedEditable::~UntypedEditable() {
   stl::deletePointers(&queue_);
   stl::deletePointers(&undo_);
 }
 
-void UntypedData::apply(OperationList* op) {
+void UntypedEditable::apply(OperationList* op) {
   {
     ScopedLock l(lock_);
     queue_.push_back(op);
@@ -72,7 +72,7 @@ void UntypedData::apply(OperationList* op) {
   app_->needsUpdate(this);
 }
 
-void UntypedData::update() {
+void UntypedEditable::update() {
   OperationQueue old;
   {
     ScopedLock l(lock_);
@@ -91,7 +91,7 @@ void UntypedData::update() {
   onDataChange();
 }
 
-void UntypedData::writeToFile() const {
+void UntypedEditable::writeToFile() const {
   ptr<Message> msg;
   {
     ScopedLock l(lock_);

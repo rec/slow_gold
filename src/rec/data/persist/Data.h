@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/data/persist/UntypedData.h"
+#include "rec/data/persist/UntypedEditable.h"
 #include "rec/data/proto/GetProtoName.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/listener/Listener.h"
@@ -14,13 +14,13 @@ namespace persist {
 class App;
 
 template <typename Proto>
-class Data : public data::UntypedData,
+class Data : public data::UntypedEditable,
              public Broadcaster<const Proto&>,
              public Listener<const Proto&> {
  public:
   // Get a consistent snapshot of the current value.
   const Proto get() const {
-    ScopedLock l(UntypedData::lock_);
+    ScopedLock l(UntypedEditable::lock_);
     return proto_;
   }
 
@@ -36,7 +36,7 @@ class Data : public data::UntypedData,
   virtual void onDataChange() {
     Proto p;
     {
-      ScopedLock l(UntypedData::lock_);
+      ScopedLock l(UntypedEditable::lock_);
       p.CopyFrom(proto_);
     }
     messageBroadcaster()->broadcast(p);
@@ -46,7 +46,7 @@ class Data : public data::UntypedData,
  private:
   Proto proto_;
 
-  Data(const File& file, App* app) : UntypedData(file, &proto_, app) {}
+  Data(const File& file, App* app) : UntypedEditable(file, &proto_, app) {}
 
   friend class App;
 

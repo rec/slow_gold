@@ -31,7 +31,7 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
 
   virtual void setData(persist::Data<LoopPointList>* d) {
     DataListener<LoopPointList>::setData(d);
-    loops_->setUntypedData(d);
+    loops_->setUntypedEditable(d);
   }
 
  private:
@@ -145,7 +145,7 @@ bool Loops::canCopy() const {
 void Loops::cut() {
   ScopedLock l(lock_);
   *loopPoints_ = getSelected(*loopPoints_, false);
- 	data::set(getUntypedData(), data::Address(), *loopPoints_);
+ 	data::set(getUntypedEditable(), data::Address(), *loopPoints_);
 }
 
 Range<RealTime> Loops::selectionRange() const {
@@ -174,7 +174,7 @@ void Loops::addLoopPoints(const LoopPointList& loops) {
                                                      time < selection.end_);
   }
 
- 	data::set(getUntypedData(), data::Address(), *loopPoints_);
+ 	data::set(getUntypedEditable(), data::Address(), *loopPoints_);
   updateAndRepaint();
 }
 

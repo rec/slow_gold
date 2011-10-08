@@ -2,7 +2,7 @@
 #define __REC_UTIL_LISTENER_UNTYPEDDATALISTENER__
 
 #include "rec/util/listener/Listener.h"
-#include "rec/data/persist/UntypedData.h"
+#include "rec/data/persist/UntypedEditable.h"
 #include "rec/data/Address.h"
 
 namespace rec {
@@ -12,7 +12,7 @@ namespace listener {
 // A ProtoListener has a view, a local copy of a persistent protocol buffer.
 //
 class ProtoListener : public Listener<const Message&>,
-                      public Listener<data::UntypedData*> {
+                      public Listener<data::UntypedEditable*> {
  public:
   ProtoListener(const data::Address& a) : address_(a), untypedData_(NULL) {}
 
@@ -20,9 +20,9 @@ class ProtoListener : public Listener<const Message&>,
   virtual void operator()(const Message&);
   virtual const data::Address& address() const { return address_; }
 
-  void setUntypedData(data::UntypedData* data);
-  data::UntypedData* getUntypedData() { return untypedData_; }
-  virtual void operator()(data::UntypedData* data) { setUntypedData(data); }
+  void setUntypedEditable(data::UntypedEditable* data);
+  data::UntypedEditable* getUntypedEditable() { return untypedData_; }
+  virtual void operator()(data::UntypedEditable* data) { setUntypedEditable(data); }
 
  protected:
   // updatePersistentData is called when the local view of the data is changed
@@ -38,7 +38,7 @@ class ProtoListener : public Listener<const Message&>,
 
  private:
   const data::Address address_;
-  data::UntypedData* untypedData_;
+  data::UntypedEditable* untypedData_;
 
   DISALLOW_COPY_AND_ASSIGN(ProtoListener);
 };

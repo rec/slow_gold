@@ -15,7 +15,7 @@ class TableController : public TableListBoxModel,
  public:
   TableController();
 
-  void initialize(const TableColumnList& columns, 
+  void initialize(const TableColumnList& columns,
                   const data::Address& address,
                   const char* name = "TableController");
 
@@ -24,7 +24,7 @@ class TableController : public TableListBoxModel,
   virtual void paintRowBackground(Graphics& g, int row, int w, int h, bool sel);
   virtual void paintCell(Graphics& g, int r, int c, int w, int h, bool sel);
 
-  virtual void setUntypedData(data::UntypedData* data);
+  virtual void setUntypedEditable(data::UntypedEditable* data);
 
   virtual const data::Value getDisplayValue() const;
   virtual void setDisplayValue(const data::Value& v);

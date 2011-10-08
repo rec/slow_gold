@@ -9,7 +9,7 @@ namespace listener {
 
 using namespace rec::data;
 
-void ProtoListener::setUntypedData(UntypedData* data) {
+void ProtoListener::setUntypedEditable(UntypedEditable* data) {
   if (untypedData_)
     untypedData_->messageBroadcaster()->removeListener(this);
 
@@ -26,7 +26,7 @@ void ProtoListener::operator()(const Message& m) {
 }
 
 void ProtoListener::updatePersistentData() {
-  if (data::Editable* d = getUntypedData())
+  if (data::Editable* d = getUntypedEditable())
     data::set(d, address_, getDisplayValue());
 }
 

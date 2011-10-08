@@ -6,7 +6,7 @@
 namespace rec {
 namespace persist {
 
-using data::UntypedData;
+using data::UntypedEditable;
 
 AppInstance::AppInstance() : App() {
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
@@ -26,7 +26,7 @@ AppInstance::~AppInstance() {
 }
 
 // A piece of data got new information!
-void AppInstance::needsUpdate(UntypedData* data) {
+void AppInstance::needsUpdate(UntypedEditable* data) {
   {
     ScopedLock l(lock_);
     updateData_.insert(data);

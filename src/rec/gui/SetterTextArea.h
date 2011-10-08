@@ -20,7 +20,7 @@ class SetterTextArea : public Layout {
 
   SetterText* text(int i) { return static_cast<SetterText*>(components_[i]); }
 
-  SetterText* add(const String& name, 
+  SetterText* add(const String& name,
   								const data::Address& address,
                   const String& tip = String::empty,
                   const String& caption = String::empty) {
@@ -29,11 +29,11 @@ class SetterTextArea : public Layout {
     return text;
   }
 
-  virtual void setUntypedData(data::UntypedData* data) {
+  virtual void setUntypedEditable(data::UntypedEditable* data) {
     untypedData_ = data;
     int size = static_cast<int>(components_.size());
     for (int i = 0; i < size; ++i)
-      text(i)->setUntypedData(data);
+      text(i)->setUntypedEditable(data);
   }
 
   virtual void repaint() {  // TODO: remove this?
@@ -41,7 +41,7 @@ class SetterTextArea : public Layout {
   }
 
  protected:
-  data::UntypedData* untypedData_;
+  data::UntypedEditable* untypedData_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(SetterTextArea);

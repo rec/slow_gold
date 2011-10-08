@@ -17,7 +17,7 @@ class SongData : public component::Focusable<SetterTextArea>,
                  public DataListener<music::Metadata> {
  public:
   typedef data::Address Address;
- 
+
   explicit SongData(ApplicationCommandManager* manager)
       : component::Focusable<SetterTextArea>(manager) {
     setName("SongData");
@@ -46,7 +46,7 @@ class SongData : public component::Focusable<SetterTextArea>,
   virtual void onDataChange(const music::Metadata&) {}
   virtual void setData(persist::Data< music::Metadata>* d) {
     DataListener<music::Metadata>::setData(d);
-    setUntypedData(d);
+    setUntypedEditable(d);
   }
 
  private:

@@ -11,9 +11,9 @@ namespace persist { class AppInstance; }
 
 namespace data {
 
-class UntypedData : public data::Editable {
+class UntypedEditable : public Editable {
  public:
-  virtual ~UntypedData();
+  virtual ~UntypedEditable();
 
   // Change the data with an OperationList.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
@@ -53,7 +53,7 @@ class UntypedData : public data::Editable {
   // Update the clients in this thread.
   void update();
 
-  UntypedData(const File& file, Message* message, persist::App* app);
+  UntypedEditable(const File& file, Message* message, persist::App* app);
   void readFromFile() const;
   void writeToFile() const;
 
@@ -75,7 +75,7 @@ class UntypedData : public data::Editable {
   mutable bool fileReadSuccess_;
   Broadcaster<const Message&> messageBroadcaster_;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedData);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedEditable);
 };
 
 }  // namespace data

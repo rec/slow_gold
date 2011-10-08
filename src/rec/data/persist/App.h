@@ -19,8 +19,10 @@ class App {
   App() {}
   virtual ~App() { stl::deleteMapPointers(&data_); }
 
-  template <typename Proto> Data<Proto>* data(const VirtualFile&);
-  virtual void needsUpdate(data::UntypedData* data) = 0;
+  virtual void needsUpdate(data::UntypedEditable* data) = 0;
+
+  template <typename Proto>
+  Data<Proto>* data(const VirtualFile&);
 
  private:
   typedef std::map<string, data::Editable*> DataMap;

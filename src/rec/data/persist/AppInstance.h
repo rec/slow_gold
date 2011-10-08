@@ -8,7 +8,7 @@
 
 namespace rec {
 
-namespace data { class UntypedData; }
+namespace data { class UntypedEditable; }
 
 namespace persist {
 
@@ -21,7 +21,7 @@ class AppInstance : public App {
   static const int WRITE_PERIOD = 100;
 
   // A piece of data got new information!
-  virtual void needsUpdate(data::UntypedData* data);
+  virtual void needsUpdate(data::UntypedEditable* data);
 
   bool update();
   bool write();
@@ -31,7 +31,7 @@ class AppInstance : public App {
 
   static AppInstance* getInstance() { return instance_; }
 
-  typedef std::set<data::UntypedData*> DataSet;
+  typedef std::set<data::UntypedEditable*> DataSet;
   bool running() const;
 
 private:

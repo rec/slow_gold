@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="oPVrHwB8T" name="tests">
+  <MAINGROUP id="5uj669hcd" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
@@ -364,10 +364,10 @@
                 name="Data.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Persist.h" id="TcNAHUJck"
                 name="Persist.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/persist/UntypedData.cpp"
-                id="gctfBddUa" name="UntypedData.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/UntypedData.h" id="uCKhwcc30"
-                name="UntypedData.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/UntypedEditable.cpp"
+                id="oca2qjuc8" name="UntypedEditable.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/persist/UntypedEditable.h"
+                id="aYnWt7Wl0" name="UntypedEditable.h" resource="0"/>
         </GROUP>
         <GROUP id="2PaHmfyN0" name="proto">
           <FILE compile="0" file="../../src/rec/data/proto/Comparer.h" id="8PlkqlMk8"
@@ -1275,7 +1275,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="thU3v2V0l" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="JmyXkEBhE" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
