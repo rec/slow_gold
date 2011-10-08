@@ -13,12 +13,9 @@ namespace persist {
 
 class App;
 
-#define Data TypedEditable
-
 template <typename Proto>
-class Data : public data::UntypedEditable,
-             public Broadcaster<const Proto&>,
-             public Listener<const Proto&> {
+class TypedEditable : public data::UntypedEditable,
+                      public Broadcaster<const Proto&> {
  public:
   // Get a consistent snapshot of the current value.
   const Proto get() const {
@@ -26,21 +23,13 @@ class Data : public data::UntypedEditable,
     return proto_;
   }
 
-  virtual void operator()(const Proto&) {
-    DCHECK(false);
-  }
-
   virtual string getTypeName() const { return proto_.GetTypeName(); }
 
-  virtual ~Data() {}
+  virtual ~TypedEditable() {}
 
  protected:
   virtual void onDataChange() {
-    Proto p;
-    {
-      ScopedLock l(UntypedEditable::lock_);
-      p.CopyFrom(proto_);
-    }
+    Proto p = get();
     messageBroadcaster()->broadcast(p);
     broadcast(p);
   }
@@ -48,14 +37,12 @@ class Data : public data::UntypedEditable,
  private:
   Proto proto_;
 
-  Data(const File& file, App* app) : UntypedEditable(file, &proto_, app) {}
+  TypedEditable(const File& file, App* app) : UntypedEditable(file, &proto_, app) {}
 
   friend class App;
 
-  DISALLOW_COPY_ASSIGN_AND_EMPTY(Data);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedEditable);
 };
-
-#undef Data
 
 }  // namespace persist
 }  // namespace rec

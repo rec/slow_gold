@@ -1409,6 +1409,8 @@
 			E2026423143FD3620036FA27 = E2026423143FD3620036FA27 /* PBXTextBookmark */;
 			E202643C1440969E0036FA27 = E202643C1440969E0036FA27 /* PBXTextBookmark */;
 			E202643E1440969E0036FA27 = E202643E1440969E0036FA27 /* PBXTextBookmark */;
+			E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */ = E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */;
+			E202645614410DD40036FA27 /* PBXTextBookmark */ = E202645614410DD40036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -5577,6 +5579,37 @@
 		rLoc = 1389;
 		rType = 0;
 		vrLen = 1833;
+		vrLoc = 0;
+	};
+	E202645214410DBC0036FA27 /* App.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = App.h;
+		path = ../../../../../rec/src/rec/data/persist/App.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
+			sepNavSelRange = "{538, 0}";
+			sepNavVisRange = "{0, 1369}";
+		};
+	};
+	E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Cannot allocate an object of abstract type 'rec::persist::TypedEditable<rec::util::file::VirtualFile>'";
+		fRef = E202645214410DBC0036FA27 /* App.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 45;
+		rType = 1;
+	};
+	E202645614410DD40036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E202645214410DBC0036FA27 /* App.h */;
+		name = "App.h: 24";
+		rLen = 0;
+		rLoc = 538;
+		rType = 0;
+		vrLen = 1369;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {
