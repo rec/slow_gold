@@ -319,6 +319,13 @@
 			sepNavVisRange = "{0, 1045}";
 		};
 	};
+	2B90349E577183288B38EDA8 /* TypedEditable.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {762, 779}}";
+			sepNavSelRange = "{1139, 0}";
+			sepNavVisRange = "{0, 1139}";
+		};
+	};
 	2C08F978939B04D301BF2363 /* LoopPoint.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1326, 846}}";
@@ -1411,6 +1418,11 @@
 			E202643E1440969E0036FA27 = E202643E1440969E0036FA27 /* PBXTextBookmark */;
 			E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */ = E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */;
 			E202645614410DD40036FA27 /* PBXTextBookmark */ = E202645614410DD40036FA27 /* PBXTextBookmark */;
+			E202646D144111C30036FA27 /* XCBuildMessageTextBookmark */ = E202646D144111C30036FA27 /* XCBuildMessageTextBookmark */;
+			E20264701441120D0036FA27 /* XCBuildMessageTextBookmark */ = E20264701441120D0036FA27 /* XCBuildMessageTextBookmark */;
+			E20264721441120D0036FA27 /* PBXTextBookmark */ = E20264721441120D0036FA27 /* PBXTextBookmark */;
+			E20264751441120D0036FA27 /* PBXTextBookmark */ = E20264751441120D0036FA27 /* PBXTextBookmark */;
+			E20264761441120D0036FA27 /* PBXTextBookmark */ = E20264761441120D0036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -1701,6 +1713,13 @@
 			sepNavSelRange = "{514, 0}";
 			sepNavVisRange = "{185, 1597}";
 			sepNavWindowFrame = "{{509, 267}, {1093, 868}}";
+		};
+	};
+	A9E38009810877315991E27E /* TypedEditable.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
+			sepNavSelRange = "{275, 0}";
+			sepNavVisRange = "{0, 275}";
 		};
 	};
 	AA6E5A2F8739265E6D23D462 /* ConvertSample.cpp */ = {
@@ -5612,6 +5631,60 @@
 		vrLen = 1369;
 		vrLoc = 0;
 	};
+	E202646D144111C30036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No member function 'operator()' declared in 'rec::persist::TypedEditable<rec::util::file::VirtualFile>'";
+		fRef = A9E38009810877315991E27E /* TypedEditable.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 7;
+		rType = 1;
+	};
+	E20264701441120D0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'rec::persist::TypedEditable<Type>::TypedEditable(const rec::File&, rec::persist::App*) [with Proto = rec::util::file::VirtualFile]' is private";
+		fRef = E20264711441120D0036FA27 /* TypedEditable.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 39;
+		rType = 1;
+	};
+	E20264711441120D0036FA27 /* TypedEditable.h */ = {
+		isa = PBXFileReference;
+		name = TypedEditable.h;
+		path = ../../../../../rec/src/rec/data/persist/TypedEditable.h;
+		sourceTree = "<group>";
+	};
+	E20264721441120D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2B90349E577183288B38EDA8 /* TypedEditable.h */;
+		name = "TypedEditable.h: 53";
+		rLen = 0;
+		rLoc = 1139;
+		rType = 0;
+		vrLen = 1139;
+		vrLoc = 0;
+	};
+	E20264751441120D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A9E38009810877315991E27E /* TypedEditable.cpp */;
+		name = "TypedEditable.cpp: 16";
+		rLen = 0;
+		rLoc = 275;
+		rType = 0;
+		vrLen = 275;
+		vrLoc = 0;
+	};
+	E20264761441120D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E202645214410DBC0036FA27 /* App.h */;
+		name = "App.h: 24";
+		rLen = 0;
+		rLoc = 538;
+		rType = 0;
+		vrLen = 1369;
+		vrLoc = 0;
+	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1141FF244581AEA78E7EEAC3 /* RealTime.cpp */;
@@ -5912,6 +5985,11 @@
 		name = juce_posix_SharedCode.h;
 		path = /Users/tom/Documents/development/juce/src/native/common/juce_posix_SharedCode.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {645, 11492}}";
+			sepNavSelRange = "{1878, 0}";
+			sepNavVisRange = "{0, 2074}";
+		};
 	};
 	E23DAEA613620A8800A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -6574,7 +6652,7 @@
 		ignoreCount = 0;
 		lineNumber = 110;
 		location = SlowBurn;
-		modificationTime = 339724662.408694;
+		modificationTime = 339808125.707406;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};

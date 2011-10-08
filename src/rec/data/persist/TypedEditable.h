@@ -23,6 +23,8 @@ class TypedEditable : public data::UntypedEditable,
     return proto_;
   }
 
+  // virtual void operator()(const Proto&) { DCHECK(false); }
+
   virtual string getTypeName() const { return proto_.GetTypeName(); }
 
   virtual ~TypedEditable() {}

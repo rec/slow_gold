@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="TPwCw7Zqw" name="Slow">
+  <MAINGROUP id="gIVxm7prW" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="31fzetEOk"
@@ -338,8 +338,6 @@
                 name="Copy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Persist.h" id="IedRLr3XY"
                 name="Persist.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/persist/TypedEditable.cpp"
-                id="8Oqxv6SOH" name="TypedEditable.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/TypedEditable.h"
                 id="T0xL0PuvN" name="TypedEditable.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/UntypedEditable.cpp"
@@ -1215,7 +1213,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="pdnjc5lhN" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="dhrGQNo5v" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
