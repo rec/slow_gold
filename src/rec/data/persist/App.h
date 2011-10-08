@@ -16,38 +16,24 @@ App* getApp();
 
 class App {
  public:
-  typedef std::map<string, data::Editable*> DataMap;
-
+  App() {}
   virtual ~App() { stl::deleteMapPointers(&data_); }
 
-  template <typename Proto> Data<Proto>* data(const VirtualFile& vf) {
-    return fileData<Proto>(getShadowDirectory(vf));
-  }
-
-  template <typename Proto> Data<Proto>* setter() {
-    return fileData<Proto>(getApplicationDirectory());
-  }
-
- protected:
-  App() {}
-
-  template <typename Proto>
-  persist::Data<Proto>* fileData(const File& directory);
-
+  template <typename Proto> Data<Proto>* data(const VirtualFile&);
   virtual void needsUpdate(data::UntypedData* data) = 0;
 
  private:
-  friend class data::UntypedData;
+  typedef std::map<string, data::Editable*> DataMap;
 
-  DataMap data_;
   CriticalSection lock_;
-  File appDir_;
+  DataMap data_;
 
   DISALLOW_COPY_AND_ASSIGN(App);
 };
 
 template <typename Proto>
-Data<Proto>* App::fileData(const File& directory) {
+Data<Proto>* App::data(const VirtualFile& vf) {
+  File directory = getShadowDirectory(vf);
   string fileName = data::proto::getName<Proto>();
   string fileKey = str(directory.getFullPathName()) + ("/" + fileName);
   ScopedLock l(lock_);
@@ -58,6 +44,7 @@ Data<Proto>* App::fileData(const File& directory) {
   File file = directory.getChildFile(str(fileName));
   persist::Data<Proto>* data = new Data<Proto>(file, this);
   data->readFromFile();
+
   data_[fileKey] = data;
   return data;
 }
