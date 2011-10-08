@@ -2,7 +2,7 @@
 
 #include "rec/slow/LoopCommands.h"
 #include "rec/base/Arraysize.h"
-#include "rec/data/persist/Data.h"
+#include "rec/data/persist/TypedEditable.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/LoopSnapshot.h"
 #include "rec/slow/Model.h"

@@ -2,7 +2,7 @@
 #define __REC_UTIL_LISTENER_DATALISTENER__
 
 #include "rec/util/listener/Listener.h"
-#include "rec/data/persist/Data.h"
+#include "rec/data/persist/TypedEditable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/data/persist/App.h"
@@ -29,14 +29,14 @@ class DataListener : public Listener<const Proto&>,
   static const bool UPDATE_ON_MESSAGE_THREAD = true;
 
  protected:
-  virtual void setData(persist::Data<Proto>* d);
+  virtual void setData(persist::TypedEditable<Proto>* d);
 
  protected:
   virtual void onDataChange(const Proto&) = 0;
   void doOnDataChange(const Proto& p) { onDataChange(p); }
 
   CriticalSection lock_;
-  persist::Data<Proto>* data_;
+  persist::TypedEditable<Proto>* data_;
   Proto proto_;
   const bool filterDupes_;
 
@@ -79,7 +79,7 @@ const Proto DataListener<Proto>::get() const {
 }
 
 template <typename Proto>
-void DataListener<Proto>::setData(persist::Data<Proto>* d) {
+void DataListener<Proto>::setData(persist::TypedEditable<Proto>* d) {
   if (data_ != d) {
     if (data_)
       data_->removeListener(this);

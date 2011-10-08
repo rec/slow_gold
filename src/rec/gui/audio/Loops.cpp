@@ -29,7 +29,7 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
     loops_->setLoopPoints(p);
   }
 
-  virtual void setData(persist::Data<LoopPointList>* d) {
+  virtual void setData(persist::TypedEditable<LoopPointList>* d) {
     DataListener<LoopPointList>::setData(d);
     loops_->setUntypedEditable(d);
   }

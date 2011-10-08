@@ -6,9 +6,7 @@
 
 namespace rec {
 
-namespace persist {
-template <typename Type> class Data;
-}  // namespace persist
+namespace persist { template <typename Type> class TypedEditable; }
 
 namespace util {
 namespace file {
@@ -28,7 +26,7 @@ const String getFullDisplayName(const VirtualFile& file);
 bool compare(const VirtualFile& x, const VirtualFile& y);
 bool empty(const VirtualFile& file);
 
-typedef persist::Data<VirtualFile> VirtualFileData;
+typedef persist::TypedEditable<VirtualFile> VirtualFileData;
 
 VirtualFile toVirtualFile(const File& file);
 inline VirtualFile toVirtualFile(const String& s) { return toVirtualFile(File(s)); }

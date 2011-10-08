@@ -13,6 +13,8 @@ namespace persist {
 
 class App;
 
+#define Data TypedEditable
+
 template <typename Proto>
 class Data : public data::UntypedEditable,
              public Broadcaster<const Proto&>,
@@ -53,6 +55,7 @@ class Data : public data::UntypedEditable,
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Data);
 };
 
+#undef Data
 
 }  // namespace persist
 }  // namespace rec

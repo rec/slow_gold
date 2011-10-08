@@ -9,12 +9,12 @@ namespace persist {
 inline const VirtualFile& noFile() { return VirtualFile::default_instance(); }
 
 template <typename Proto>
-Data<Proto>* setter(const VirtualFile& f) {
+TypedEditable<Proto>* setter(const VirtualFile& f) {
   return getApp()->data<Proto>(f);
 }
 
 template <typename Proto>
-Data<Proto>* setterGlobal() {
+TypedEditable<Proto>* setterGlobal() {
   return getApp()->data<Proto>(noFile());
 }
 

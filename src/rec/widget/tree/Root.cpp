@@ -37,7 +37,7 @@ Root::Root(ApplicationCommandManager* manager,
   tree_.setRootItem(&root_);
   tree_.setRootItemVisible(false);
 
-  persist::Data<VirtualFileList>* setter = persist::setterGlobal<VirtualFileList>();
+  persist::TypedEditable<VirtualFileList>* setter = persist::setterGlobal<VirtualFileList>();
   setter->addListener(this);
   volumes_ = setter->get();
 }

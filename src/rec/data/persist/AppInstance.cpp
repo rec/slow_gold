@@ -1,5 +1,5 @@
 #include "rec/data/persist/AppInstance.h"
-#include "rec/data/persist/Data.h"
+#include "rec/data/persist/TypedEditable.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/MakeThread.h"
 

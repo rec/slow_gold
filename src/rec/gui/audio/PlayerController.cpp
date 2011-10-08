@@ -103,14 +103,14 @@ void PlayerController::onDataChange(const rec::audio::Gain& gain) {
   dimButton_.setEnabled(!mute || dim);
 }
 
-void PlayerController::setData(persist::Data<Stretch>* d) {
+void PlayerController::setData(persist::TypedEditable<Stretch>* d) {
   DataListener<Stretch>::setData(d);
   playbackSpeed_.setUntypedEditable(d);
   pitchScale_.setUntypedEditable(d);
   fineScale_.setUntypedEditable(d);
 }
 
-void PlayerController::setData(persist::Data<Gain>* d) {
+void PlayerController::setData(persist::TypedEditable<Gain>* d) {
   DataListener<Gain>::setData(d);
   level_.setUntypedEditable(d);
 }

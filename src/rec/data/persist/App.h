@@ -1,8 +1,7 @@
 #ifndef __REC_PERSIST_APPBASE__
 #define __REC_PERSIST_APPBASE__
 
-#include "rec/base/base.h"
-#include "rec/data/persist/Data.h"
+#include "rec/data/persist/TypedEditable.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/GetProtoName.h"
 #include "rec/util/STL.h"
@@ -22,7 +21,7 @@ class App {
   virtual void needsUpdate(data::UntypedEditable* data) = 0;
 
   template <typename Proto>
-  Data<Proto>* data(const VirtualFile&);
+  TypedEditable<Proto>* data(const VirtualFile&);
 
  private:
   typedef std::map<string, data::Editable*> DataMap;
@@ -34,17 +33,17 @@ class App {
 };
 
 template <typename Proto>
-Data<Proto>* App::data(const VirtualFile& vf) {
+TypedEditable<Proto>* App::data(const VirtualFile& vf) {
   File directory = getShadowDirectory(vf);
   string fileName = data::proto::getName<Proto>();
   string fileKey = str(directory.getFullPathName()) + ("/" + fileName);
   ScopedLock l(lock_);
   DataMap::const_iterator i = data_.find(fileKey);
   if (i != data_.end())
-    return static_cast<persist::Data<Proto>*>(i->second);
+    return static_cast<persist::TypedEditable<Proto>*>(i->second);
 
   File file = directory.getChildFile(str(fileName));
-  persist::Data<Proto>* data = new Data<Proto>(file, this);
+  TypedEditable<Proto>* data = new TypedEditable<Proto>(file, this);
   data->readFromFile();
 
   data_[fileKey] = data;
