@@ -10,12 +10,12 @@ inline const VirtualFile& noFile() { return VirtualFile::default_instance(); }
 
 template <typename Proto>
 TypedEditable<Proto>* setter(const VirtualFile& f) {
-  return getApp()->data<Proto>(f);
+  return getApp()->getEditable<Proto>(f);
 }
 
 template <typename Proto>
 TypedEditable<Proto>* setterGlobal() {
-  return getApp()->data<Proto>(noFile());
+  return getApp()->getEditable<Proto>(noFile());
 }
 
 template <typename Proto>

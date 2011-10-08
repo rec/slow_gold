@@ -1076,8 +1076,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 339807549;
-			PBXWorkspaceStateSaveDate = 339807549;
+			PBXPerProjectTemplateStateSaveDate = 339809043;
+			PBXWorkspaceStateSaveDate = 339809043;
 		};
 		perUserProjectItems = {
 			E2025E4B143D00940036FA27 = E2025E4B143D00940036FA27 /* PBXTextBookmark */;
@@ -1416,13 +1416,15 @@
 			E2026423143FD3620036FA27 = E2026423143FD3620036FA27 /* PBXTextBookmark */;
 			E202643C1440969E0036FA27 = E202643C1440969E0036FA27 /* PBXTextBookmark */;
 			E202643E1440969E0036FA27 = E202643E1440969E0036FA27 /* PBXTextBookmark */;
-			E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */ = E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */;
-			E202645614410DD40036FA27 /* PBXTextBookmark */ = E202645614410DD40036FA27 /* PBXTextBookmark */;
-			E202646D144111C30036FA27 /* XCBuildMessageTextBookmark */ = E202646D144111C30036FA27 /* XCBuildMessageTextBookmark */;
-			E20264701441120D0036FA27 /* XCBuildMessageTextBookmark */ = E20264701441120D0036FA27 /* XCBuildMessageTextBookmark */;
-			E20264721441120D0036FA27 /* PBXTextBookmark */ = E20264721441120D0036FA27 /* PBXTextBookmark */;
-			E20264751441120D0036FA27 /* PBXTextBookmark */ = E20264751441120D0036FA27 /* PBXTextBookmark */;
-			E20264761441120D0036FA27 /* PBXTextBookmark */ = E20264761441120D0036FA27 /* PBXTextBookmark */;
+			E202645314410DBC0036FA27 = E202645314410DBC0036FA27 /* PBXTextBookmark */;
+			E202645614410DD40036FA27 = E202645614410DD40036FA27 /* PBXTextBookmark */;
+			E202646D144111C30036FA27 = E202646D144111C30036FA27 /* PBXTextBookmark */;
+			E20264701441120D0036FA27 = E20264701441120D0036FA27 /* PBXTextBookmark */;
+			E20264721441120D0036FA27 = E20264721441120D0036FA27 /* PBXTextBookmark */;
+			E20264751441120D0036FA27 = E20264751441120D0036FA27 /* PBXTextBookmark */;
+			E20264761441120D0036FA27 = E20264761441120D0036FA27 /* PBXTextBookmark */;
+			E202648A1441133C0036FA27 /* XCBuildMessageTextBookmark */ = E202648A1441133C0036FA27 /* XCBuildMessageTextBookmark */;
+			E2026491144113670036FA27 /* PBXTextBookmark */ = E2026491144113670036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -1713,13 +1715,6 @@
 			sepNavSelRange = "{514, 0}";
 			sepNavVisRange = "{185, 1597}";
 			sepNavWindowFrame = "{{509, 267}, {1093, 868}}";
-		};
-	};
-	A9E38009810877315991E27E /* TypedEditable.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
-			sepNavSelRange = "{275, 0}";
-			sepNavVisRange = "{0, 275}";
 		};
 	};
 	AA6E5A2F8739265E6D23D462 /* ConvertSample.cpp */ = {
@@ -5408,7 +5403,7 @@
 		fRef = E2026335143F9F690036FA27 /* Persist.h */;
 		name = "Persist.h: 47";
 		rLen = 0;
-		rLoc = 1055;
+		rLoc = 1069;
 		rType = 0;
 		vrLen = 1199;
 		vrLoc = 0;
@@ -5606,17 +5601,11 @@
 		name = App.h;
 		path = ../../../../../rec/src/rec/data/persist/App.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
-			sepNavSelRange = "{538, 0}";
-			sepNavVisRange = "{0, 1369}";
-		};
 	};
-	E202645314410DBC0036FA27 /* XCBuildMessageTextBookmark */ = {
+	E202645314410DBC0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Cannot allocate an object of abstract type 'rec::persist::TypedEditable<rec::util::file::VirtualFile>'";
 		fRef = E202645214410DBC0036FA27 /* App.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 45;
 		rType = 1;
@@ -5631,26 +5620,24 @@
 		vrLen = 1369;
 		vrLoc = 0;
 	};
-	E202646D144111C30036FA27 /* XCBuildMessageTextBookmark */ = {
+	E202646D144111C30036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "No member function 'operator()' declared in 'rec::persist::TypedEditable<rec::util::file::VirtualFile>'";
-		fRef = A9E38009810877315991E27E /* TypedEditable.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 7;
 		rType = 1;
 	};
-	E20264701441120D0036FA27 /* XCBuildMessageTextBookmark */ = {
+	E20264701441120D0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'rec::persist::TypedEditable<Type>::TypedEditable(const rec::File&, rec::persist::App*) [with Proto = rec::util::file::VirtualFile]' is private";
 		fRef = E20264711441120D0036FA27 /* TypedEditable.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 39;
 		rType = 1;
 	};
 	E20264711441120D0036FA27 /* TypedEditable.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = TypedEditable.h;
 		path = ../../../../../rec/src/rec/data/persist/TypedEditable.h;
 		sourceTree = "<group>";
@@ -5667,7 +5654,6 @@
 	};
 	E20264751441120D0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = A9E38009810877315991E27E /* TypedEditable.cpp */;
 		name = "TypedEditable.cpp: 16";
 		rLen = 0;
 		rLoc = 275;
@@ -5683,6 +5669,37 @@
 		rLoc = 538;
 		rType = 0;
 		vrLen = 1369;
+		vrLoc = 0;
+	};
+	E20264891441133C0036FA27 /* Persist.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Persist.h;
+		path = ../../../../../rec/src/rec/data/persist/Persist.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
+			sepNavSelRange = "{446, 0}";
+			sepNavVisRange = "{0, 1231}";
+		};
+	};
+	E202648A1441133C0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'class rec::persist::App' has no member named 'data'";
+		fRef = E20264891441133C0036FA27 /* Persist.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 12;
+		rType = 1;
+	};
+	E2026491144113670036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20264891441133C0036FA27 /* Persist.h */;
+		name = "Persist.h: 18";
+		rLen = 0;
+		rLoc = 446;
+		rType = 0;
+		vrLen = 1231;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {
@@ -5985,11 +6002,6 @@
 		name = juce_posix_SharedCode.h;
 		path = /Users/tom/Documents/development/juce/src/native/common/juce_posix_SharedCode.h;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {645, 11492}}";
-			sepNavSelRange = "{1878, 0}";
-			sepNavVisRange = "{0, 2074}";
-		};
 	};
 	E23DAEA613620A8800A52041 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

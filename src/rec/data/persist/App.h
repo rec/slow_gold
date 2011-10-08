@@ -21,7 +21,7 @@ class App {
   virtual void needsUpdate(data::UntypedEditable* data) = 0;
 
   template <typename Proto>
-  TypedEditable<Proto>* data(const VirtualFile&);
+  TypedEditable<Proto>* getEditable(const VirtualFile&);
 
  private:
   typedef std::map<string, data::Editable*> DataMap;
@@ -33,7 +33,7 @@ class App {
 };
 
 template <typename Proto>
-TypedEditable<Proto>* App::data(const VirtualFile& vf) {
+TypedEditable<Proto>* App::getEditable(const VirtualFile& vf) {
   File directory = getShadowDirectory(vf);
   string fileName = data::proto::getName<Proto>();
   string fileKey = str(directory.getFullPathName()) + ("/" + fileName);
