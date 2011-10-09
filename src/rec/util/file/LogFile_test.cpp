@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "rec/data/proto/LogFile.h"
+#include "rec/util/file/LogFile.h"
 #include "rec/data/Operation.pb.h"
 
 namespace rec {

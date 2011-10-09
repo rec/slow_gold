@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="GiVLgNyCd" name="Slow">
+  <MAINGROUP id="dYYqUaV94" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -360,10 +360,6 @@
                 id="8YJ1j1HN6" name="GetProtoName.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/GetProtoName.h" id="VlGhza2sZ"
                 name="GetProtoName.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/LogFile.cpp" id="ToOu5jwQE"
-                name="LogFile.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/LogFile.h" id="L4DIYCJQB"
-                name="LogFile.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/MessageField.cpp"
                 id="OJEk6HOoc" name="MessageField.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/MessageField.h" id="UBkh5Pfbf"
@@ -892,6 +888,10 @@
                 name="GetVolumes.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/GetVolumes.h" id="cXAt0cChI"
                 name="GetVolumes.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/util/file/LogFile.cpp" id="TAI5uP4A5"
+                name="LogFile.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/LogFile.h" id="VwHOv0otn"
+                name="LogFile.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/util/file/Util.cpp" id="einXTanQt"
                 name="Util.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/Util.h" id="9CFi0tSsV"
@@ -1213,7 +1213,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Jc5LT2MvY" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="zoXrMHJc3" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
