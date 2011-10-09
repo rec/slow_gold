@@ -30,8 +30,7 @@ void UntypedEditable::copyTo(Message* message) const {
 }
 
 UntypedEditable::UntypedEditable(const File& file, Message* message)
-    : file_(new File(file)),
-      message_(message),
+    : message_(message),
       alreadyReadFromFile_(false),
       fileReadSuccess_(false) {
 }
@@ -49,11 +48,11 @@ Message* UntypedEditable::clone() const {
 void UntypedEditable::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
-    fileReadSuccess_ = persist::copy(*file_, message_);
+    fileReadSuccess_ = persist::copy(file_, message_);
     if (fileReadSuccess_)
-      VLOG(1) << "Opening data " << file_->getFullPathName();
+      VLOG(1) << "Opening data " << str(file_);
     else
-      VLOG(1) << "New data " << file_->getFullPathName();
+      VLOG(1) << "New data " << str(file_);
 
     alreadyReadFromFile_ = true;
   }
@@ -96,12 +95,11 @@ void UntypedEditable::writeToFile() const {
     ScopedLock l(lock_);
     if (!alreadyReadFromFile_)
       return;
-
     msg.reset(message_->New());
     msg->CopyFrom(*message_);
   }
 
-  persist::copy(*msg, const_cast<File*>(file_.get()));
+  persist::copy(*msg, file_);
 }
 
 }  // namespace data

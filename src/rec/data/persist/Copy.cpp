@@ -34,6 +34,13 @@ bool strcopy(const string& from, String* to, bool /* readable */) {
 
 // Copy through an string.
 template <typename From, typename To>
+bool through(const From& from, const To& to, bool readable) {
+  string thr;
+  return copy(from, &thr, readable) && copy(thr, to, readable);
+}
+
+// Copy through an string.
+template <typename From, typename To>
 bool through(const From& from, To* to, bool readable) {
   string thr;
   return copy(from, &thr, readable) && copy(thr, to, readable);
@@ -69,6 +76,10 @@ bool file(const File &f, File *t, bool /* readable */) {
   return f.copyFileTo(*t);
 }
 
+bool file(const File &f, const File& t, bool /* readable */) {
+  return f.copyFileTo(t);
+}
+
 bool file(const File &file, string *s, bool /* readable */) {
   try {
     ptr<FileInputStream> in(file.createInputStream());
@@ -87,43 +98,38 @@ bool file(const File &file, string *s, bool /* readable */) {
   }
 }
 
-bool file(const string &from, File *to, bool /* readable */) {
+bool file(const string &from, const File &to, bool /* readable */) {
   try {
-    if (!to->getParentDirectory().createDirectory()) {
-      LOG(ERROR) << "Couldn't create directory for " << to->getFullPathName();
+    if (!to.getParentDirectory().createDirectory()) {
+      LOG(ERROR) << "Couldn't create directory for " << str(to);
       return false;
     }
 
-    bool rename = to->exists();
+    bool rename = to.exists();
     File backupFile;
     if (rename) {
-      backupFile = File(to->getFullPathName() + ".bak");
-      if (!to->moveFileTo(backupFile)) {
-        LOG(ERROR) << "Couldn't rename to backup file: "
-                   << backupFile.getFullPathName();
-      }
+      backupFile = File(to.getFullPathName() + ".bak");
+      if (!to.moveFileTo(backupFile))
+        LOG(ERROR) << "Couldn't rename to backup file: " << str(backupFile);
     }
 
-    ptr<FileOutputStream> out(to->createOutputStream());
-    if (!out) {
-      LOG(ERROR) << "Couldn't make OutputStream for " << to->getFullPathName();
-      return false;
-    }
+    ptr<FileOutputStream> out(to.createOutputStream());
+    if (!out)
+      LOG(ERROR) << "Couldn't make OutputStream for " << str(to);
 
-    if (!out->write(from.data(), from.size())) {
-      LOG(ERROR) << "Couldn't write file " << to->getFullPathName();
-      return false;
-    }
+    else if (!out->write(from.data(), from.size()))
+      LOG(ERROR) << "Couldn't write file " << str(to);
 
-    if (rename && !backupFile.deleteFile()) {
-      LOG(ERROR) << "Couldn't delete backup " << to->getFullPathName();
-      return false;
-    }
+    else if (rename && !backupFile.deleteFile())
+      LOG(ERROR) << "Couldn't delete backup " << str(to);
 
-    return true;
+    else
+      return true;
+
   } catch (...) {
-    return false;
+    // TODO: log this exception here.
   }
+  return false;
 }
 
 typedef MemoryBlock Memory;
@@ -144,35 +150,42 @@ bool memory(const Memory& in, string* out, bool /* readable */) {
 
 }  // namespace
 
-bool copy(const File &f,    File *t,    bool r) { return file(f, t, r); }
-bool copy(const File &f,    Memory *t, bool r) { return through(f, t, r); }
+bool copy(const File &f,    File *t,    bool r) { return file(f, *t, r); }
+bool copy(const File &f,    Memory *t,  bool r) { return through(f, t, r); }
 bool copy(const File &f,    Message *t, bool r) { return through(f, t, r); }
 bool copy(const File &f,    String *t,  bool r) { return through(f, t, r); }
 bool copy(const File &f,    string *t,  bool r) { return file(f, t, r); }
 
 bool copy(const Memory &f,  File *t,    bool r) { return through(f, t, r); }
-bool copy(const Memory &f,  Memory *t, bool r) { return assign(f, t, r); }
+bool copy(const Memory &f,  Memory *t,  bool r) { return assign(f, t, r); }
 bool copy(const Memory &f,  Message *t, bool r) { return through(f, t, r); }
 bool copy(const Memory &f,  String *t,  bool r) { return through(f, t, r); }
 bool copy(const Memory &f,  string *t,  bool r) { return memory(f, t, r); }
 
 bool copy(const Message &f, File *t,    bool r) { return through(f, t, r); }
-bool copy(const Message &f, Memory *t, bool r) { return through(f, t, r); }
+bool copy(const Message &f, Memory *t,  bool r) { return through(f, t, r); }
 bool copy(const Message &f, Message *t, bool r) { return proto(f, t, r); }
 bool copy(const Message &f, String *t,  bool r) { return through(f, t, r); }
 bool copy(const Message &f, string *t,  bool r) { return proto(f, t, r); }
 
 bool copy(const String &f,  File *t,    bool r) { return through(f, t, r); }
-bool copy(const String &f,  Memory *t, bool r) { return through(f, t, r); }
+bool copy(const String &f,  Memory *t,  bool r) { return through(f, t, r); }
 bool copy(const String &f,  Message *t, bool r) { return through(f, t, r); }
 bool copy(const String &f,  String *t,  bool r) { return assign(f, t, r); }
 bool copy(const String &f,  string *t,  bool r) { return strcopy(f, t, r); }
 
-bool copy(const string &f,  File *t,    bool r) { return file(f, t, r); }
-bool copy(const string &f,  Memory *t, bool r) { return memory(f, t, r); }
+bool copy(const string &f,  File *t,    bool r) { return file(f, *t, r); }
+bool copy(const string &f,  Memory *t,  bool r) { return memory(f, t, r); }
 bool copy(const string &f,  Message *t, bool r) { return proto(f, t, r); }
 bool copy(const string &f,  String *t,  bool r) { return strcopy(f, t, r); }
 bool copy(const string &f,  string *t,  bool r) { return assign(f, t, r); }
+
+bool copy(const File &f,    const File &t, bool r) { return file(f, t, r); }
+bool copy(const string &f,  const File &t, bool r) { return through(f, t, r); }
+bool copy(const String &f,  const File &t, bool r) { return through(f, t, r); }
+bool copy(const Message &f, const File &t, bool r) { return through(f, t, r); }
+bool copy(const Memory &f,  const File &t, bool r) { return through(f, t, r); }
+
 
 }  // namespace persist
 }  // namespace rec

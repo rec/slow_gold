@@ -30,10 +30,11 @@ class UntypedEditable : public Editable {
 
   virtual string getTypeName() const = 0;
 
+  typedef Listener<const Message&> Listener;
+
   Broadcaster<const Message&>* messageBroadcaster() {
     return &messageBroadcaster_;
   }
-
   template <typename Proto> bool fill(Proto* t) const;
 
   Message* clone() const;
@@ -51,22 +52,22 @@ class UntypedEditable : public Editable {
 
   typedef std::vector<data::OperationList*> OperationQueue;
 
-  OperationQueue queue_;
-
-  ptr<File> file_;
-  mutable Message* message_;
-
   CriticalSection lock_;
 
-  friend class persist::EditableFactory;
-  friend class persist::EditableUpdateQueue;
+  OperationQueue queue_;
+  Broadcaster<const Message&> messageBroadcaster_;
+  File file_;
+
+  mutable Message* message_;
 
  private:
   mutable bool alreadyReadFromFile_;
   mutable bool fileReadSuccess_;
-  Broadcaster<const Message&> messageBroadcaster_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedEditable);
+
+  friend class persist::EditableFactory;
+  friend class persist::EditableUpdateQueue;
 };
 
 template <typename Proto>

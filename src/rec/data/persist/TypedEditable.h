@@ -31,7 +31,7 @@ class TypedEditable : public data::UntypedEditable,
  protected:
   virtual void onDataChange() {
     Proto p = get();
-    messageBroadcaster()->broadcast(p);
+    messageBroadcaster_.broadcast(p);
     broadcast(p);
   }
 
