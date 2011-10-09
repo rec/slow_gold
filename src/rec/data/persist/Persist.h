@@ -12,12 +12,12 @@ EditableFactory* getEditableFactory();
 
 template <typename Proto>
 TypedEditable<Proto>* editable(const VirtualFile& f) {
-  return getEditableFactory()->getEditable<Proto>(f);
+  return getEditableFactory()->get<Proto>(f);
 }
 
 template <typename Proto>
 TypedEditable<Proto>* editableGlobal() {
-  return getEditableFactory()->getEditable<Proto>(noFile());
+  return getEditableFactory()->get<Proto>(noFile());
 }
 
 template <typename Proto>

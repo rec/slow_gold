@@ -313,6 +313,7 @@
           <Filter Name="persist">
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\EditableFactory.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\EditableUpdateQueue.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\EditableUpdateQueue.h"/>
@@ -331,6 +332,7 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\GetProtoName.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\MessageField.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\MessageField.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\proto\NameToProto.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Proto.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\TypedOperations.cpp"/>
@@ -339,7 +341,6 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\TypedTyper.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Typer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Types.h"/>
-            <File RelativePath="..\..\..\..\src\rec\data\proto\ZeroCopy.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\data\Value.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Value.h"/>
@@ -614,6 +615,7 @@
             <File RelativePath="..\..\..\..\src\rec\util\file\Util.h"/>
             <File RelativePath="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\file\VirtualFile.h"/>
+            <File RelativePath="..\..\..\..\src\rec\util\file\ZeroCopy.h"/>
           </Filter>
           <File RelativePath="..\..\..\..\src\rec\util\FormatTime.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\util\FormatTime.h"/>

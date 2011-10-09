@@ -59,6 +59,7 @@ class UntypedEditable : public Editable {
   CriticalSection lock_;
 
   friend class persist::EditableUpdateQueue;
+  friend class persist::EditableFactory;
 
  private:
   mutable bool alreadyReadFromFile_;

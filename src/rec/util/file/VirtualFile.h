@@ -14,8 +14,7 @@ namespace file {
 const File getFile(const VirtualFile& file);
 const File getShadowDirectory(const VirtualFile& file);
 
-template <typename Proto>
-const File getShadowFile(const Proto& pr, const String& child) {
+inline const File getShadowFile(const VirtualFile& pr, const String& child) {
   return getShadowDirectory(pr).getChildFile(child);
 }
 

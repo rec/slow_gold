@@ -2,8 +2,8 @@
 #define __REC_PERSIST_APPBASE__
 
 #include "rec/data/persist/TypedEditable.h"
-#include "rec/util/file/VirtualFile.h"
 #include "rec/data/proto/GetProtoName.h"
+#include "rec/util/file/VirtualFile.h"
 #include "rec/util/STL.h"
 
 #include "rec/app/Directory.h"
@@ -13,17 +13,16 @@ namespace persist {
 
 class EditableFactory {
  public:
+  typedef data::UntypedEditable UntypedEditable;
+  typedef std::map<string, UntypedEditable*> DataMap;
+
   EditableFactory() {}
   virtual ~EditableFactory() { stl::deleteMapPointers(&data_); }
 
-  virtual void needsUpdate(data::UntypedEditable* data) = 0;
-
-  template <typename Proto>
-  TypedEditable<Proto>* getEditable(const VirtualFile&);
+  virtual void needsUpdate(UntypedEditable* data) = 0;
+  template <typename Proto> TypedEditable<Proto>* get(const VirtualFile& vf);
 
  private:
-  typedef std::map<string, data::Editable*> DataMap;
-
   CriticalSection lock_;
   DataMap data_;
 
@@ -31,24 +30,23 @@ class EditableFactory {
 };
 
 template <typename Proto>
-TypedEditable<Proto>* EditableFactory::getEditable(const VirtualFile& vf) {
-  File directory = getShadowDirectory(vf);
-  string fileName = data::proto::getName<Proto>();
-  string fileKey = str(directory.getFullPathName()) + ("/" + fileName);
-  ScopedLock l(lock_);
-  DataMap::const_iterator i = data_.find(fileKey);
-  if (i != data_.end())
-    return static_cast<persist::TypedEditable<Proto>*>(i->second);
+TypedEditable<Proto>* EditableFactory::get(const VirtualFile& vf) {
+  File file = getShadowFile(vf, str(data::proto::getName<Proto>()));
+  string fileKey = str(file);
+  DataMap::iterator i = data_.find(fileKey);
+  UntypedEditable* editable;
+  if (i != data_.end()) {
+    editable = i->second;
+  } else {
+    editable = new TypedEditable<Proto>(file, this);
+    editable->readFromFile();
+    data_.insert(i, make_pair(fileKey, editable));
+  }
 
-  File file = directory.getChildFile(str(fileName));
-  TypedEditable<Proto>* data = new TypedEditable<Proto>(file, this);
-  data->readFromFile();
-
-  data_[fileKey] = data;
-  return data;
+  return static_cast<TypedEditable<Proto>*>(editable);
 }
-}  // namespace persist
 
+}  // namespace persist
 }  // namespace rec
 
 #endif  // __REC_PERSIST_APPBASE__

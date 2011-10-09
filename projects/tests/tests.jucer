@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="1kKHlLhUO" name="tests">
+  <MAINGROUP id="CKZAf3P8j" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -352,6 +352,8 @@
                 name="Copy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Copy.h" id="PNey4aH2q"
                 name="Copy.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/EditableFactory.cpp"
+                id="KckOR1tGs" name="EditableFactory.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/EditableFactory.h"
                 id="GX42RcHkb" name="EditableFactory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/EditableUpdateQueue.cpp"
@@ -388,6 +390,8 @@
                 id="aloewkcgM" name="MessageField.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/MessageField.h" id="PDSZAqEnP"
                 name="MessageField.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/proto/NameToProto.h" id="8tRvrD8HN"
+                name="NameToProto.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Proto.cpp" id="haNUZyo62"
                 name="Proto.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Proto.h" id="MR5rlmeJj"
@@ -406,8 +410,6 @@
                 name="Typer.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="1DRxgqAD5"
                 name="Types.h" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/ZeroCopy.h" id="iZDA8vmBN"
-                name="ZeroCopy.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/data/Value.cpp" id="SJ76b6rCO"
               name="Value.cpp" resource="0"/>
@@ -948,6 +950,8 @@
                 name="VirtualFile.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/file/VirtualFile.h" id="T3ZpDt5uU"
                 name="VirtualFile.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/util/file/ZeroCopy.h" id="nQqYUncn3"
+                name="ZeroCopy.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/util/FormatTime.cpp" id="2FfrfyS3c"
               name="FormatTime.cpp" resource="0"/>
@@ -1273,7 +1277,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Q9NDoWahl" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="9GL9hbRNA" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
