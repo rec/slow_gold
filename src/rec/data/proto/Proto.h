@@ -8,13 +8,12 @@
 namespace rec {
 namespace data {
 
-data::OperationList* applyOperations(const data::OperationList& operations, Message* msg);
+// Apply an operation and return an undo.
+OperationList* applyOperations(const OperationList&, Message*);
 
-data::Value getValue(const data::Address& address, const Message& msg);
-
-bool hasValue(const Address& address, const Message& msg);
-
-int getSize(const Address& address, const Message& msg);
+Value getValue(const Address&, const Message&);
+bool hasValue(const Address&, const Message&);
+int getSize(const Address&, const Message&);
 
 }  // namespace data
 }  // namespace rec

@@ -24,8 +24,9 @@ message Source {
 
 message Event {
   optional uint64 timestamp = 1;
-  repeated Source source = 2;
-  optional util.file.VirtualFile file = 3;
-  optional string type_name = 4;
-  optional OperationList operations = 5;
+  optional uint64 index = 2;
+  repeated Source source = 3;
+  optional util.file.VirtualFile file = 4;
+  optional string type_name = 5;
+  optional OperationList operations = 6;
 };

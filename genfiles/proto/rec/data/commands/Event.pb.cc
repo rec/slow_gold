@@ -52,8 +52,9 @@ void protobuf_AssignDesc_rec_2fdata_2fcommands_2fEvent_2eproto() {
       sizeof(Source));
   Source_Type_descriptor_ = Source_descriptor_->enum_type(0);
   Event_descriptor_ = file->message_type(1);
-  static const int Event_offsets_[5] = {
+  static const int Event_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, timestamp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, index_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, source_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, file_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, type_name_),
@@ -112,12 +113,12 @@ void protobuf_AddDesc_rec_2fdata_2fcommands_2fEvent_2eproto() {
     "\022,\n\004type\030\001 \001(\0162\036.rec.data.commands.Sourc"
     "e.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rmodifier_keys\030\003"
     " \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010KEYBOARD\020\001\022\013\n\007"
-    "CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\257\001\n\005Event\022\021\n\tti"
-    "mestamp\030\001 \001(\004\022)\n\006source\030\002 \003(\0132\031.rec.data"
-    ".commands.Source\022(\n\004file\030\003 \001(\0132\032.rec.uti"
-    "l.file.VirtualFile\022\021\n\ttype_name\030\004 \001(\t\022+\n"
-    "\noperations\030\005 \001(\0132\027.rec.data.OperationLi"
-    "st", 442);
+    "CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\276\001\n\005Event\022\021\n\tti"
+    "mestamp\030\001 \001(\004\022\r\n\005index\030\002 \001(\004\022)\n\006source\030\003"
+    " \003(\0132\031.rec.data.commands.Source\022(\n\004file\030"
+    "\004 \001(\0132\032.rec.util.file.VirtualFile\022\021\n\ttyp"
+    "e_name\030\005 \001(\t\022+\n\noperations\030\006 \001(\0132\027.rec.d"
+    "ata.OperationList", 457);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/commands/Event.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -466,6 +467,7 @@ void Source::Swap(Source* other) {
 const ::std::string Event::_default_type_name_;
 #ifndef _MSC_VER
 const int Event::kTimestampFieldNumber;
+const int Event::kIndexFieldNumber;
 const int Event::kSourceFieldNumber;
 const int Event::kFileFieldNumber;
 const int Event::kTypeNameFieldNumber;
@@ -491,6 +493,7 @@ Event::Event(const Event& from)
 void Event::SharedCtor() {
   _cached_size_ = 0;
   timestamp_ = GOOGLE_ULONGLONG(0);
+  index_ = GOOGLE_ULONGLONG(0);
   file_ = NULL;
   type_name_ = const_cast< ::std::string*>(&_default_type_name_);
   operations_ = NULL;
@@ -534,15 +537,16 @@ Event* Event::New() const {
 void Event::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     timestamp_ = GOOGLE_ULONGLONG(0);
-    if (_has_bit(2)) {
+    index_ = GOOGLE_ULONGLONG(0);
+    if (_has_bit(3)) {
       if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
     }
-    if (_has_bit(3)) {
+    if (_has_bit(4)) {
       if (type_name_ != &_default_type_name_) {
         type_name_->clear();
       }
     }
-    if (_has_bit(4)) {
+    if (_has_bit(5)) {
       if (operations_ != NULL) operations_->::rec::data::OperationList::Clear();
     }
   }
@@ -568,12 +572,28 @@ bool Event::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_source;
+        if (input->ExpectTag(16)) goto parse_index;
         break;
       }
       
-      // repeated .rec.data.commands.Source source = 2;
+      // optional uint64 index = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_index:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &index_)));
+          _set_bit(1);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_source;
+        break;
+      }
+      
+      // repeated .rec.data.commands.Source source = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_source:
@@ -582,13 +602,13 @@ bool Event::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_source;
-        if (input->ExpectTag(26)) goto parse_file;
+        if (input->ExpectTag(26)) goto parse_source;
+        if (input->ExpectTag(34)) goto parse_file;
         break;
       }
       
-      // optional .rec.util.file.VirtualFile file = 3;
-      case 3: {
+      // optional .rec.util.file.VirtualFile file = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_file:
@@ -597,12 +617,12 @@ bool Event::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_type_name;
+        if (input->ExpectTag(42)) goto parse_type_name;
         break;
       }
       
-      // optional string type_name = 4;
-      case 4: {
+      // optional string type_name = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_type_name:
@@ -614,12 +634,12 @@ bool Event::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_operations;
+        if (input->ExpectTag(50)) goto parse_operations;
         break;
       }
       
-      // optional .rec.data.OperationList operations = 5;
-      case 5: {
+      // optional .rec.data.OperationList operations = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_operations:
@@ -655,31 +675,36 @@ void Event::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->timestamp(), output);
   }
   
-  // repeated .rec.data.commands.Source source = 2;
+  // optional uint64 index = 2;
+  if (_has_bit(1)) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->index(), output);
+  }
+  
+  // repeated .rec.data.commands.Source source = 3;
   for (int i = 0; i < this->source_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->source(i), output);
+      3, this->source(i), output);
   }
   
-  // optional .rec.util.file.VirtualFile file = 3;
-  if (_has_bit(2)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->file(), output);
-  }
-  
-  // optional string type_name = 4;
+  // optional .rec.util.file.VirtualFile file = 4;
   if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->file(), output);
+  }
+  
+  // optional string type_name = 5;
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->type_name().data(), this->type_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->type_name(), output);
+      5, this->type_name(), output);
   }
   
-  // optional .rec.data.OperationList operations = 5;
-  if (_has_bit(4)) {
+  // optional .rec.data.OperationList operations = 6;
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->operations(), output);
+      6, this->operations(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -695,35 +720,40 @@ void Event::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->timestamp(), target);
   }
   
-  // repeated .rec.data.commands.Source source = 2;
+  // optional uint64 index = 2;
+  if (_has_bit(1)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->index(), target);
+  }
+  
+  // repeated .rec.data.commands.Source source = 3;
   for (int i = 0; i < this->source_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->source(i), target);
+        3, this->source(i), target);
   }
   
-  // optional .rec.util.file.VirtualFile file = 3;
-  if (_has_bit(2)) {
+  // optional .rec.util.file.VirtualFile file = 4;
+  if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->file(), target);
+        4, this->file(), target);
   }
   
-  // optional string type_name = 4;
-  if (_has_bit(3)) {
+  // optional string type_name = 5;
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->type_name().data(), this->type_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->type_name(), target);
+        5, this->type_name(), target);
   }
   
-  // optional .rec.data.OperationList operations = 5;
-  if (_has_bit(4)) {
+  // optional .rec.data.OperationList operations = 6;
+  if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->operations(), target);
+        6, this->operations(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -744,21 +774,28 @@ int Event::ByteSize() const {
           this->timestamp());
     }
     
-    // optional .rec.util.file.VirtualFile file = 3;
+    // optional uint64 index = 2;
+    if (has_index()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->index());
+    }
+    
+    // optional .rec.util.file.VirtualFile file = 4;
     if (has_file()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->file());
     }
     
-    // optional string type_name = 4;
+    // optional string type_name = 5;
     if (has_type_name()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->type_name());
     }
     
-    // optional .rec.data.OperationList operations = 5;
+    // optional .rec.data.OperationList operations = 6;
     if (has_operations()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -766,7 +803,7 @@ int Event::ByteSize() const {
     }
     
   }
-  // repeated .rec.data.commands.Source source = 2;
+  // repeated .rec.data.commands.Source source = 3;
   total_size += 1 * this->source_size();
   for (int i = 0; i < this->source_size(); i++) {
     total_size +=
@@ -804,13 +841,16 @@ void Event::MergeFrom(const Event& from) {
     if (from._has_bit(0)) {
       set_timestamp(from.timestamp());
     }
-    if (from._has_bit(2)) {
-      mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
+    if (from._has_bit(1)) {
+      set_index(from.index());
     }
     if (from._has_bit(3)) {
-      set_type_name(from.type_name());
+      mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
     }
     if (from._has_bit(4)) {
+      set_type_name(from.type_name());
+    }
+    if (from._has_bit(5)) {
       mutable_operations()->::rec::data::OperationList::MergeFrom(from.operations());
     }
   }
@@ -837,6 +877,7 @@ bool Event::IsInitialized() const {
 void Event::Swap(Event* other) {
   if (other != this) {
     std::swap(timestamp_, other->timestamp_);
+    std::swap(index_, other->index_);
     source_.Swap(&other->source_);
     std::swap(file_, other->file_);
     std::swap(type_name_, other->type_name_);

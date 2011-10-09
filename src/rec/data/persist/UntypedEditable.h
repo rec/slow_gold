@@ -28,6 +28,8 @@ class UntypedEditable : public Editable {
   virtual int getSize(const Address& address) const;
   virtual void copyTo(Message* message) const;
 
+  virtual string getTypeName() const = 0;
+
   Broadcaster<const Message&>* messageBroadcaster() {
     return &messageBroadcaster_;
   }
@@ -38,7 +40,6 @@ class UntypedEditable : public Editable {
 
  protected:
   virtual void onDataChange() = 0;
-  virtual string getTypeName() const = 0;
 
   // Update the clients in this thread.
   void update();

@@ -259,10 +259,17 @@ class Event : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 timestamp() const;
   inline void set_timestamp(::google::protobuf::uint64 value);
   
-  // repeated .rec.data.commands.Source source = 2;
+  // optional uint64 index = 2;
+  inline bool has_index() const;
+  inline void clear_index();
+  static const int kIndexFieldNumber = 2;
+  inline ::google::protobuf::uint64 index() const;
+  inline void set_index(::google::protobuf::uint64 value);
+  
+  // repeated .rec.data.commands.Source source = 3;
   inline int source_size() const;
   inline void clear_source();
-  static const int kSourceFieldNumber = 2;
+  static const int kSourceFieldNumber = 3;
   inline const ::rec::data::commands::Source& source(int index) const;
   inline ::rec::data::commands::Source* mutable_source(int index);
   inline ::rec::data::commands::Source* add_source();
@@ -271,27 +278,27 @@ class Event : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source >*
       mutable_source();
   
-  // optional .rec.util.file.VirtualFile file = 3;
+  // optional .rec.util.file.VirtualFile file = 4;
   inline bool has_file() const;
   inline void clear_file();
-  static const int kFileFieldNumber = 3;
+  static const int kFileFieldNumber = 4;
   inline const ::rec::util::file::VirtualFile& file() const;
   inline ::rec::util::file::VirtualFile* mutable_file();
   
-  // optional string type_name = 4;
+  // optional string type_name = 5;
   inline bool has_type_name() const;
   inline void clear_type_name();
-  static const int kTypeNameFieldNumber = 4;
+  static const int kTypeNameFieldNumber = 5;
   inline const ::std::string& type_name() const;
   inline void set_type_name(const ::std::string& value);
   inline void set_type_name(const char* value);
   inline void set_type_name(const char* value, size_t size);
   inline ::std::string* mutable_type_name();
   
-  // optional .rec.data.OperationList operations = 5;
+  // optional .rec.data.OperationList operations = 6;
   inline bool has_operations() const;
   inline void clear_operations();
-  static const int kOperationsFieldNumber = 5;
+  static const int kOperationsFieldNumber = 6;
   inline const ::rec::data::OperationList& operations() const;
   inline ::rec::data::OperationList* mutable_operations();
   
@@ -301,6 +308,7 @@ class Event : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   ::google::protobuf::uint64 timestamp_;
+  ::google::protobuf::uint64 index_;
   ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source > source_;
   ::rec::util::file::VirtualFile* file_;
   ::std::string* type_name_;
@@ -310,7 +318,7 @@ class Event : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fdata_2fcommands_2fEvent_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fcommands_2fEvent_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -411,7 +419,23 @@ inline void Event::set_timestamp(::google::protobuf::uint64 value) {
   timestamp_ = value;
 }
 
-// repeated .rec.data.commands.Source source = 2;
+// optional uint64 index = 2;
+inline bool Event::has_index() const {
+  return _has_bit(1);
+}
+inline void Event::clear_index() {
+  index_ = GOOGLE_ULONGLONG(0);
+  _clear_bit(1);
+}
+inline ::google::protobuf::uint64 Event::index() const {
+  return index_;
+}
+inline void Event::set_index(::google::protobuf::uint64 value) {
+  _set_bit(1);
+  index_ = value;
+}
+
+// repeated .rec.data.commands.Source source = 3;
 inline int Event::source_size() const {
   return source_.size();
 }
@@ -436,78 +460,78 @@ Event::mutable_source() {
   return &source_;
 }
 
-// optional .rec.util.file.VirtualFile file = 3;
+// optional .rec.util.file.VirtualFile file = 4;
 inline bool Event::has_file() const {
-  return _has_bit(2);
+  return _has_bit(3);
 }
 inline void Event::clear_file() {
   if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
-  _clear_bit(2);
+  _clear_bit(3);
 }
 inline const ::rec::util::file::VirtualFile& Event::file() const {
   return file_ != NULL ? *file_ : *default_instance_->file_;
 }
 inline ::rec::util::file::VirtualFile* Event::mutable_file() {
-  _set_bit(2);
+  _set_bit(3);
   if (file_ == NULL) file_ = new ::rec::util::file::VirtualFile;
   return file_;
 }
 
-// optional string type_name = 4;
+// optional string type_name = 5;
 inline bool Event::has_type_name() const {
-  return _has_bit(3);
+  return _has_bit(4);
 }
 inline void Event::clear_type_name() {
   if (type_name_ != &_default_type_name_) {
     type_name_->clear();
   }
-  _clear_bit(3);
+  _clear_bit(4);
 }
 inline const ::std::string& Event::type_name() const {
   return *type_name_;
 }
 inline void Event::set_type_name(const ::std::string& value) {
-  _set_bit(3);
+  _set_bit(4);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   type_name_->assign(value);
 }
 inline void Event::set_type_name(const char* value) {
-  _set_bit(3);
+  _set_bit(4);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   type_name_->assign(value);
 }
 inline void Event::set_type_name(const char* value, size_t size) {
-  _set_bit(3);
+  _set_bit(4);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   type_name_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Event::mutable_type_name() {
-  _set_bit(3);
+  _set_bit(4);
   if (type_name_ == &_default_type_name_) {
     type_name_ = new ::std::string;
   }
   return type_name_;
 }
 
-// optional .rec.data.OperationList operations = 5;
+// optional .rec.data.OperationList operations = 6;
 inline bool Event::has_operations() const {
-  return _has_bit(4);
+  return _has_bit(5);
 }
 inline void Event::clear_operations() {
   if (operations_ != NULL) operations_->::rec::data::OperationList::Clear();
-  _clear_bit(4);
+  _clear_bit(5);
 }
 inline const ::rec::data::OperationList& Event::operations() const {
   return operations_ != NULL ? *operations_ : *default_instance_->operations_;
 }
 inline ::rec::data::OperationList* Event::mutable_operations() {
-  _set_bit(4);
+  _set_bit(5);
   if (operations_ == NULL) operations_ = new ::rec::data::OperationList;
   return operations_;
 }
