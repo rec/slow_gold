@@ -1445,6 +1445,15 @@
 			E20265F41441ECAE0036FA27 /* PBXTextBookmark */ = E20265F41441ECAE0036FA27 /* PBXTextBookmark */;
 			E20265F51441ECAE0036FA27 /* PBXTextBookmark */ = E20265F51441ECAE0036FA27 /* PBXTextBookmark */;
 			E20265F61441ECAE0036FA27 /* PBXTextBookmark */ = E20265F61441ECAE0036FA27 /* PBXTextBookmark */;
+			E20265FE1441F08F0036FA27 /* XCBuildMessageTextBookmark */ = E20265FE1441F08F0036FA27 /* XCBuildMessageTextBookmark */;
+			E20265FF1441F0950036FA27 /* PBXTextBookmark */ = E20265FF1441F0950036FA27 /* PBXTextBookmark */;
+			E20266021441F0950036FA27 /* PBXTextBookmark */ = E20266021441F0950036FA27 /* PBXTextBookmark */;
+			E20266031441F0950036FA27 /* PBXTextBookmark */ = E20266031441F0950036FA27 /* PBXTextBookmark */;
+			E20266041441F0950036FA27 /* PBXTextBookmark */ = E20266041441F0950036FA27 /* PBXTextBookmark */;
+			E202660B1441F0DD0036FA27 /* PBXTextBookmark */ = E202660B1441F0DD0036FA27 /* PBXTextBookmark */;
+			E202660C1441F0DD0036FA27 /* PBXTextBookmark */ = E202660C1441F0DD0036FA27 /* PBXTextBookmark */;
+			E202660D1441F0DD0036FA27 /* PBXTextBookmark */ = E202660D1441F0DD0036FA27 /* PBXTextBookmark */;
+			E202660E1441F0DD0036FA27 /* PBXTextBookmark */ = E202660E1441F0DD0036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -6305,6 +6314,107 @@
 		vrLoc = 109;
 	};
 	E20265F61441ECAE0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A07F6E68CF4223DBB8C90C1F /* LogFile.cpp */;
+		name = "LogFile.cpp: 16";
+		rLen = 13;
+		rLoc = 358;
+		rType = 0;
+		vrLen = 1328;
+		vrLoc = 0;
+	};
+	E20265FD1441F08F0036FA27 /* NameToProto.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = NameToProto.h;
+		path = ../../../../../rec/src/rec/data/proto/NameToProto.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
+			sepNavSelRange = "{1140, 0}";
+			sepNavVisRange = "{0, 1140}";
+		};
+	};
+	E20265FE1441F08F0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Invalid use of qualified-name 'Proto::default_instance'";
+		fRef = E20265FD1441F08F0036FA27 /* NameToProto.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 27;
+		rType = 1;
+	};
+	E20265FF1441F0950036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DBCFFC0D921396EF7C62C497 /* Window.cpp */;
+		name = "Window.cpp: 20";
+		rLen = 39;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 0;
+	};
+	E20266021441F0950036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20265FD1441F08F0036FA27 /* NameToProto.h */;
+		name = "NameToProto.h: 28";
+		rLen = 0;
+		rLoc = 609;
+		rType = 0;
+		vrLen = 1145;
+		vrLoc = 0;
+	};
+	E20266031441F0950036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20265E51441EBC40036FA27 /* ZeroCopy.h */;
+		name = "ZeroCopy.h: 113";
+		rLen = 0;
+		rLoc = 2465;
+		rType = 0;
+		vrLen = 1372;
+		vrLoc = 109;
+	};
+	E20266041441F0950036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A07F6E68CF4223DBB8C90C1F /* LogFile.cpp */;
+		name = "LogFile.cpp: 16";
+		rLen = 13;
+		rLoc = 358;
+		rType = 0;
+		vrLen = 1328;
+		vrLoc = 0;
+	};
+	E202660B1441F0DD0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DBCFFC0D921396EF7C62C497 /* Window.cpp */;
+		name = "Window.cpp: 20";
+		rLen = 39;
+		rLoc = 528;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 0;
+	};
+	E202660C1441F0DD0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20265FD1441F08F0036FA27 /* NameToProto.h */;
+		name = "NameToProto.h: 54";
+		rLen = 0;
+		rLoc = 1140;
+		rType = 0;
+		vrLen = 1140;
+		vrLoc = 0;
+	};
+	E202660D1441F0DD0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20265E51441EBC40036FA27 /* ZeroCopy.h */;
+		name = "ZeroCopy.h: 113";
+		rLen = 0;
+		rLoc = 2465;
+		rType = 0;
+		vrLen = 1372;
+		vrLoc = 109;
+	};
+	E202660E1441F0DD0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = A07F6E68CF4223DBB8C90C1F /* LogFile.cpp */;
 		name = "LogFile.cpp: 16";

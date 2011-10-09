@@ -1,6 +1,7 @@
 #include "rec/data/proto/Field.h"
 #include "rec/data/Value.h"
 #include "rec/data/proto/Proto.h"
+#include "rec/data/proto/NameToProto.h"
 
 namespace rec {
 namespace data {
