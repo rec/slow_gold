@@ -18,9 +18,10 @@ class EditableFactory {
 
   EditableFactory() {}
   virtual ~EditableFactory() { stl::deleteMapPointers(&data_); }
+  template <typename Proto> TypedEditable<Proto>* get(const VirtualFile& vf);
 
   virtual void needsUpdate(UntypedEditable* data) = 0;
-  template <typename Proto> TypedEditable<Proto>* get(const VirtualFile& vf);
+
 
  private:
   CriticalSection lock_;
@@ -37,7 +38,7 @@ TypedEditable<Proto>* EditableFactory::get(const VirtualFile& vf) {
   if (i != data_.end())
     return static_cast<TypedEditable<Proto>*>(i->second);
 
-  TypedEditable<Proto>* e = new TypedEditable<Proto>(file, this);
+  TypedEditable<Proto>* e = new TypedEditable<Proto>(file);
   e->readFromFile();
   data_.insert(i, make_pair(fileKey, static_cast<UntypedEditable*>(e)));
   return e;

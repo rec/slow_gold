@@ -38,9 +38,7 @@ class TypedEditable : public data::UntypedEditable,
  private:
   Proto proto_;
 
-  TypedEditable(const File& file, EditableFactory* em)
-      : UntypedEditable(file, &proto_, em) {
-  }
+  TypedEditable(const File& file) : UntypedEditable(file, &proto_) {}
 
   friend class EditableFactory;
 
