@@ -32,17 +32,7 @@ class UntypedEditable : public Editable {
     return &messageBroadcaster_;
   }
 
-  template <typename T> bool fill(T* t) const {
-    if (t->GetTypeName() != getTypeName()) {
-      LOG(ERROR) << "Couldn't fill " << t->GetTypeName()
-                 << " from " << getTypeName();
-      return false;
-    }
-
-    ScopedLock l(lock_);
-    copyTo(t);
-    return true;
-  }
+  template <typename Proto> bool fill(Proto* t) const;
 
   Message* clone() const;
 
@@ -77,6 +67,19 @@ class UntypedEditable : public Editable {
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedEditable);
 };
+
+template <typename Proto>
+bool UntypedEditable::fill(Proto* t) const {
+  if (t->GetTypeName() != getTypeName()) {
+    LOG(ERROR) << "Couldn't fill " << t->GetTypeName()
+               << " from " << getTypeName();
+    return false;
+  }
+
+  ScopedLock l(lock_);
+  copyTo(t);
+  return true;
+}
 
 }  // namespace data
 }  // namespace rec

@@ -49,6 +49,8 @@ class Broadcaster {
   virtual void addListener(Listener<Type>* listener);
   virtual void removeListener(Listener<Type>* listener);
 
+  int listenerSize() const { return listeners_.size(); }
+
  protected:
   CriticalSection lock_;
   ListenerSet listeners_;
