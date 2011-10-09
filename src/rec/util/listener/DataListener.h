@@ -5,7 +5,6 @@
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/proto/Proto.h"
-#include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/util/thread/CallAsync.h"
 
