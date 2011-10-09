@@ -34,16 +34,13 @@ TypedEditable<Proto>* EditableFactory::get(const VirtualFile& vf) {
   File file = getShadowFile(vf, str(data::proto::getName<Proto>()));
   string fileKey = str(file);
   DataMap::iterator i = data_.find(fileKey);
-  UntypedEditable* editable;
-  if (i != data_.end()) {
-    editable = i->second;
-  } else {
-    editable = new TypedEditable<Proto>(file, this);
-    editable->readFromFile();
-    data_.insert(i, make_pair(fileKey, editable));
-  }
+  if (i != data_.end())
+    return static_cast<TypedEditable<Proto>*>(i->second);
 
-  return static_cast<TypedEditable<Proto>*>(editable);
+  TypedEditable<Proto>* e = new TypedEditable<Proto>(file, this);
+  e->readFromFile();
+  data_.insert(i, make_pair(fileKey, static_cast<UntypedEditable*>(e)));
+  return e;
 }
 
 }  // namespace persist
