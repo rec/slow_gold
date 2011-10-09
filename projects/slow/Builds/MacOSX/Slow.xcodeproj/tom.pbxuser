@@ -531,9 +531,9 @@
 	};
 	576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 671}}";
-			sepNavSelRange = "{433, 18}";
-			sepNavVisRange = "{0, 1066}";
+			sepNavIntBoundsRect = "{{0, 0}, {667, 779}}";
+			sepNavSelRange = "{177, 0}";
+			sepNavVisRange = "{0, 1113}";
 			sepNavWindowFrame = "{{61, 239}, {726, 892}}";
 		};
 	};
@@ -1503,6 +1503,9 @@
 			E202673F144246F60036FA27 = E202673F144246F60036FA27 /* PBXTextBookmark */;
 			E2026740144246F60036FA27 = E2026740144246F60036FA27 /* PBXTextBookmark */;
 			E2026741144246F60036FA27 = E2026741144246F60036FA27 /* PBXTextBookmark */;
+			E202675F144251880036FA27 /* XCBuildMessageTextBookmark */ = E202675F144251880036FA27 /* XCBuildMessageTextBookmark */;
+			E2026762144251A00036FA27 /* PBXTextBookmark */ = E2026762144251A00036FA27 /* PBXTextBookmark */;
+			E2026765144251C20036FA27 /* PBXTextBookmark */ = E2026765144251C20036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -6932,6 +6935,35 @@
 		rLoc = 1368;
 		rType = 0;
 		vrLen = 1791;
+		vrLoc = 0;
+	};
+	E202675F144251880036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'setName' was not declared in this scope";
+		fRef = 576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 20;
+		rType = 1;
+	};
+	E2026762144251A00036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */;
+		name = "GenericApplication.cpp: 7";
+		rLen = 0;
+		rLoc = 169;
+		rType = 0;
+		vrLen = 1111;
+		vrLoc = 0;
+	};
+	E2026765144251C20036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 576030227C6A7D5AFE20D0AF /* GenericApplication.cpp */;
+		name = "GenericApplication.cpp: 7";
+		rLen = 0;
+		rLoc = 177;
+		rType = 0;
+		vrLen = 1113;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {

@@ -2,8 +2,6 @@
 #define __REC_PERSIST_APPINSTANCE__
 
 #include <set>
-
-#include "rec/data/persist/EditableFactory.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -12,7 +10,9 @@ namespace data { class UntypedEditable; }
 
 namespace persist {
 
-class EditableUpdateQueue : public EditableFactory {
+class EditableFactory;
+
+class EditableUpdateQueue {
  public:
   static const int UPDATE_PRIORITY = 5;
   static const int UPDATE_PERIOD = 40;
@@ -30,6 +30,7 @@ class EditableUpdateQueue : public EditableFactory {
   static void stop();
 
   static EditableUpdateQueue* getInstance() { return instance_; }
+  static EditableFactory* getFactory() { return instance_->factory_.get(); }
 
   typedef std::set<data::UntypedEditable*> DataSet;
   bool running() const;
@@ -45,6 +46,7 @@ private:
 
   thread_ptr<Thread> updateThread_;
   thread_ptr<Thread> writeThread_;
+  ptr<EditableFactory> factory_;
 
   static EditableUpdateQueue* instance_;
 

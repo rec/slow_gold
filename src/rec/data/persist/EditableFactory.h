@@ -20,9 +20,6 @@ class EditableFactory {
   virtual ~EditableFactory() { stl::deleteMapPointers(&data_); }
   template <typename Proto> TypedEditable<Proto>* get(const VirtualFile& vf);
 
-  virtual void needsUpdate(UntypedEditable* data) = 0;
-
-
  private:
   CriticalSection lock_;
   DataMap data_;

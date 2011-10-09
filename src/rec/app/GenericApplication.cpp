@@ -4,6 +4,7 @@
 
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/app/DownloadVersion.h"
+#include "rec/app/Directory.h"
 #include "rec/gui/Dialog.h"
 
 DECLARE_bool(logtostderr);

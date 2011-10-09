@@ -1,4 +1,5 @@
 #include "rec/data/persist/EditableUpdateQueue.h"
+#include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/MakeThread.h"
@@ -8,7 +9,7 @@ namespace persist {
 
 using data::UntypedEditable;
 
-EditableUpdateQueue::EditableUpdateQueue() : EditableFactory() {
+EditableUpdateQueue::EditableUpdateQueue() : factory_(new EditableFactory()) {
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
                                        this, &EditableUpdateQueue::update));
   updateThread_->setPriority(UPDATE_PRIORITY);
@@ -96,7 +97,7 @@ void EditableUpdateQueue::stop() {
 EditableUpdateQueue* EditableUpdateQueue::instance_ = NULL;
 
 EditableFactory* getEditableFactory() {
-  return EditableUpdateQueue::getInstance();
+  return EditableUpdateQueue::getFactory();
 }
 
 }  // namespace persist
