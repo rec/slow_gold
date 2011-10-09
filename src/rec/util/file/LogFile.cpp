@@ -1,13 +1,13 @@
 #include "rec/util/file/LogFile.h"
 
 #include "google/protobuf/message.h"
-#include "rec/data/proto/ZeroCopy.h"
+#include "rec/util/file/ZeroCopy.h"
 
 using namespace juce;
 
 namespace rec {
-namespace proto {
-namespace logfile {
+namespace util {
+namespace file {
 
 typedef google::protobuf::io::CodedOutputStream CodedOutputStream;
 typedef google::protobuf::io::CodedInputStream CodedInputStream;
@@ -69,6 +69,6 @@ Output::~Output() {}
 
 void Output::write(const Message& m) { impl_->write(m); }
 
-}  // namespace logfile
-}  // namespace proto
+}  // namespace file
+}  // namespace util
 }  // namespace rec

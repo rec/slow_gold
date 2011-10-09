@@ -4,8 +4,8 @@
 #include "rec/base/base.h"
 
 namespace rec {
-namespace proto {
-namespace logfile {
+namespace util {
+namespace file {
 
 class InputImpl;
 class OutputImpl;
@@ -34,8 +34,8 @@ class Output {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Output);
 };
 
-}  // namespace logfile
-}  // namespace proto
+}  // namespace file
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_PROTO_LOGFILE__

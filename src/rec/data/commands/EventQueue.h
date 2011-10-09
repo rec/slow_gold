@@ -5,7 +5,7 @@
 
 #include "rec/base/base.h"
 
-namespace rec { namespace proto { namespace logfile { class Output; }}}
+namespace rec { namespace util { namespace file { class Output; }}}
 
 namespace rec {
 namespace data {
@@ -27,7 +27,7 @@ class EventQueue {
   typedef std::vector<Event*> EventList;
 
   EventList events_;
-  ptr<proto::logfile::Output> logfile_;
+  ptr<file::Output> logfile_;
   juce::CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(EventQueue);

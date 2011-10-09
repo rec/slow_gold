@@ -7,11 +7,11 @@
 #include "google/protobuf/io/coded_stream.h"
 #include "google/protobuf/io/zero_copy_stream.h"
 
-
 using namespace juce;
 
 namespace rec {
-namespace proto {
+namespace util {
+namespace file {
 namespace zerocopy {
 
 typedef google::protobuf::io::ZeroCopyOutputStream ZeroCopyOutputStream;
@@ -105,7 +105,8 @@ class Input : public InputBase {
 };
 
 }  // namespace zerocopy
-}  // namespace proto
+}  // namespace file
+}  // namespace util
 }  // namespace rec
 
 #endif  // __REC_PROTO_ZEROCOPY__

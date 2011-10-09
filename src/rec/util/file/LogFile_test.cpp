@@ -4,8 +4,8 @@
 #include "rec/data/Operation.pb.h"
 
 namespace rec {
-namespace proto {
-namespace logfile {
+namespace util {
+namespace file {
 namespace {
 
 using rec::data::Operation;
@@ -105,6 +105,6 @@ TEST(LogFile, TwoRecords) {
 }
 
 }  // namespace
-}  // namespace logfile
-}  // namespace proto
+}  // namespace util
+}  // namespace file
 }  // namespace rec

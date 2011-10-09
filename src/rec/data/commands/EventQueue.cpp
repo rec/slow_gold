@@ -9,7 +9,7 @@ namespace data {
 namespace commands {
 
 EventQueue::EventQueue(const File& file)
-    : logfile_(new proto::logfile::Output(file)) {
+    : logfile_(new file::Output(file)) {
 }
 
 EventQueue::~EventQueue() {
