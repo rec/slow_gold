@@ -17,7 +17,7 @@ GenericApplication::GenericApplication(const String& name, const String& v)
 
 void GenericApplication::initialise(const String&) {
   FLAGS_logtostderr = true;
-  setApplicationName(name_);
+  setName(name_);
   LOG(INFO) << name_ << ": initialise starting...";
   if (downloadNewVersionIfNeeded(version_, name_)) {
     quit();

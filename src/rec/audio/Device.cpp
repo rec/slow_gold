@@ -1,11 +1,11 @@
 #include "rec/audio/Device.h"
-#include "rec/data/persist/AppDirectory.h"
+#include "rec/app/AppDirectory.h"
 
 namespace rec {
 namespace audio {
 
 static File getDeviceFile() {
-  return getApplicationDirectory().getChildFile("AudioDevice.xml");
+  return app::getDirectory().getChildFile("AudioDevice.xml");
 }
 
 Device::Device() {

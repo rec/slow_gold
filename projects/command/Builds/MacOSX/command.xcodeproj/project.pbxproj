@@ -17,6 +17,7 @@
 		50C6578E11ADA25CB7A6EC9E = { isa = PBXBuildFile; fileRef = A8A2F3AE5531E742F044302B; };
 		18AD8CEC06FEBA89E6C206F9 = { isa = PBXBuildFile; fileRef = AC4A6ACA1273539B268343EC; };
 		A34CC06D1BD4F2A038015233 = { isa = PBXBuildFile; fileRef = 4FDFA33DF4EAF1E05335DA58; };
+		E984EB291DD9D2501F3A8ABC = { isa = PBXBuildFile; fileRef = 863822AD7180AD3BB141D77E; };
 		36A10ABED69D1DC176FC1F71 = { isa = PBXBuildFile; fileRef = B58BEDFDDB88411D0C58E555; };
 		E3C10B8E291124069B75855F = { isa = PBXBuildFile; fileRef = 0A0E2C2B612B2534C2BEE423; };
 		2285A8011E837A4D617A3D03 = { isa = PBXBuildFile; fileRef = 71BE5FEEFB8F044CE3B1770D; };
@@ -61,7 +62,6 @@
 		E3EBBCA5AA6A5E056DFB20F4 = { isa = PBXBuildFile; fileRef = B4461DEC69D945A52D6895B4; };
 		10BDB147197A841DD5FCDFC8 = { isa = PBXBuildFile; fileRef = 9DFD5769D25254A01A3A8F9C; };
 		2D49BDB155BE4173860D57B9 = { isa = PBXBuildFile; fileRef = 13D1D052624F6A0B246F6335; };
-		841B47D3BE296F09A47C0ECE = { isa = PBXBuildFile; fileRef = B373B89AA84EBE5964C74528; };
 		A48C820FA0A448415E918667 = { isa = PBXBuildFile; fileRef = BCC3E057ABD6CF5D7DC4FAD0; };
 		15546065C1A9AA5AA0C640B5 = { isa = PBXBuildFile; fileRef = 1748B196C7CF584702E6C34F; };
 		DD0C2363EE94A8DB90D75147 = { isa = PBXBuildFile; fileRef = 9886484AFA5001EA6B170DC3; };
@@ -241,6 +241,8 @@
 		AC4A6ACA1273539B268343EC = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		4FDFA33DF4EAF1E05335DA58 = { isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		87C5F902F5AF6EF45EC5B9EE = { isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Command; sourceTree = BUILT_PRODUCTS_DIR; };
+		863822AD7180AD3BB141D77E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDirectory.cpp; path = ../../../../src/rec/app/AppDirectory.cpp; sourceTree = SOURCE_ROOT; };
+		B896BC23940B5E5D33CE0C9D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDirectory.h; path = ../../../../src/rec/app/AppDirectory.h; sourceTree = SOURCE_ROOT; };
 		A68ED0DBCB3AD3B478848A6D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../../../src/rec/app/Application.h; sourceTree = SOURCE_ROOT; };
 		B58BEDFDDB88411D0C58E555 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DownloadVersion.cpp; path = ../../../../src/rec/app/DownloadVersion.cpp; sourceTree = SOURCE_ROOT; };
 		7CB830A886D5DD242A651FE0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DownloadVersion.h; path = ../../../../src/rec/app/DownloadVersion.h; sourceTree = SOURCE_ROOT; };
@@ -374,8 +376,6 @@
 		13D1D052624F6A0B246F6335 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Editable.cpp; path = ../../../../src/rec/data/Editable.cpp; sourceTree = SOURCE_ROOT; };
 		B96847524BE56BD50BD7A593 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Editable.h; path = ../../../../src/rec/data/Editable.h; sourceTree = SOURCE_ROOT; };
 		B78B14808D407C826718D94C = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = App.h; path = ../../../../src/rec/data/persist/App.h; sourceTree = SOURCE_ROOT; };
-		B373B89AA84EBE5964C74528 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDirectory.cpp; path = ../../../../src/rec/data/persist/AppDirectory.cpp; sourceTree = SOURCE_ROOT; };
-		E5C78E8660E001E1DC82411F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDirectory.h; path = ../../../../src/rec/data/persist/AppDirectory.h; sourceTree = SOURCE_ROOT; };
 		BCC3E057ABD6CF5D7DC4FAD0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppInstance.cpp; path = ../../../../src/rec/data/persist/AppInstance.cpp; sourceTree = SOURCE_ROOT; };
 		0F15C31920203698C4BB0D3D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppInstance.h; path = ../../../../src/rec/data/persist/AppInstance.h; sourceTree = SOURCE_ROOT; };
 		1748B196C7CF584702E6C34F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copy.cpp; path = ../../../../src/rec/data/persist/Copy.cpp; sourceTree = SOURCE_ROOT; };
@@ -781,6 +781,8 @@
 		2B8A2629BA71CD24EFA8CF7E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
 		93BF2BCB183C30ABB83AB74A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = JuceLibraryCode.mm; path = ../../JuceLibraryCode/JuceLibraryCode.mm; sourceTree = SOURCE_ROOT; };
 		16623F2CFCC4D5B98D710A3E = { isa = PBXGroup; children = (
+				863822AD7180AD3BB141D77E,
+				B896BC23940B5E5D33CE0C9D,
 				A68ED0DBCB3AD3B478848A6D,
 				B58BEDFDDB88411D0C58E555,
 				7CB830A886D5DD242A651FE0,
@@ -928,8 +930,6 @@
 				70CF36904FE490C80769CE5D ); name = commands; sourceTree = "<group>"; };
 		98CF4FA3667E193E9E715CA3 = { isa = PBXGroup; children = (
 				B78B14808D407C826718D94C,
-				B373B89AA84EBE5964C74528,
-				E5C78E8660E001E1DC82411F,
 				BCC3E057ABD6CF5D7DC4FAD0,
 				0F15C31920203698C4BB0D3D,
 				1748B196C7CF584702E6C34F,
@@ -1450,7 +1450,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		AA12A81C2BC31C2D631E361A = { isa = PBXGroup; children = (
+		62FB6E3006B85D835A1207AE = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1534,6 +1534,7 @@
 				ED1335A12586E43C83F4D205 ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
 		0DAF7DB5AF9756110C33DE57 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (  ); runOnlyForDeploymentPostprocessing = 0; };
 		D94679246E83607D75451204 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				E984EB291DD9D2501F3A8ABC,
 				36A10ABED69D1DC176FC1F71,
 				E3C10B8E291124069B75855F,
 				2285A8011E837A4D617A3D03,
@@ -1578,7 +1579,6 @@
 				E3EBBCA5AA6A5E056DFB20F4,
 				10BDB147197A841DD5FCDFC8,
 				2D49BDB155BE4173860D57B9,
-				841B47D3BE296F09A47C0ECE,
 				A48C820FA0A448415E918667,
 				15546065C1A9AA5AA0C640B5,
 				DD0C2363EE94A8DB90D75147,
@@ -1762,7 +1762,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = AA12A81C2BC31C2D631E361A; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 62FB6E3006B85D835A1207AE; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

@@ -2,7 +2,7 @@
 
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Color.h"
-#include "rec/data/persist/AppDirectory.h"
+#include "rec/app/AppDirectory.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Trash.h"
@@ -22,7 +22,7 @@ using namespace rec::gui;
 static const int ROOT_WAIT_TIME = 1000;
 
 static File getOpennessFile() {
-  return getApplicationDirectory().getChildFile("TreeOpenness.xml");
+  return app::getDirectory().getChildFile("TreeOpenness.xml");
 }
 
 Root::Root(ApplicationCommandManager* manager,

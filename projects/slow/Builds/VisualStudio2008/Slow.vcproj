@@ -132,6 +132,8 @@
     <Filter Name="Slow">
       <Filter Name="rec">
         <Filter Name="app">
+          <File RelativePath="..\..\..\..\src\rec\app\AppDirectory.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\app\AppDirectory.h"/>
           <File RelativePath="..\..\..\..\src\rec\app\Application.h"/>
           <File RelativePath="..\..\..\..\src\rec\app\DownloadVersion.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\app\DownloadVersion.h"/>
@@ -310,8 +312,6 @@
           <File RelativePath="..\..\..\..\src\rec\data\Editable.h"/>
           <Filter Name="persist">
             <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
-            <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\data\persist\AppDirectory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.cpp"/>

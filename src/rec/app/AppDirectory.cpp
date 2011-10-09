@@ -1,7 +1,7 @@
-#include "rec/data/persist/AppDirectory.h"
+#include "rec/app/AppDirectory.h"
 
 namespace rec {
-namespace util {
+namespace app {
 
 namespace {
 
@@ -10,18 +10,19 @@ const char COMPANY_NAME[] = "World Wide Woodshed";
 
 }  // namespace
 
-void setApplicationName(const String& name) {
+void setName(const String& name) {
   CHECK(!applicationName.length());
   applicationName = name;
 }
 
-const String& getApplicationName() { return applicationName; }
+const String& getName() { return applicationName; }
 
-File getApplicationDirectory() {
+File getDirectory() {
   return File::getSpecialLocation(File::userApplicationDataDirectory).
     getChildFile(COMPANY_NAME).
      getChildFile(applicationName);
 }
 
-}  // namespace util
+}  // namespace app
 }  // namespace rec
+

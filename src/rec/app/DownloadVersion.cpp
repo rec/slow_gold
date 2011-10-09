@@ -1,6 +1,6 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/GenericApplication.h"
-#include "rec/data/persist/AppDirectory.h"
+#include "rec/app/AppDirectory.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -24,12 +24,12 @@ const RelativeTime UPDATE(1);  // 1 second for testing.
 
 bool isReadyForUpdate() {
   bool ready = true;
-  File mustUpdateFile(getApplicationDirectory().getChildFile(MUST_UPDATE_FILE));
+  File mustUpdateFile(getDirectory().getChildFile(MUST_UPDATE_FILE));
   if (mustUpdateFile.exists()) {
     LOG(INFO) << "Must-update file exists";
 
   } else {
-    File lastUpdateFile = getApplicationDirectory().getChildFile(LAST_UPDATE_FILE);
+    File lastUpdateFile = getDirectory().getChildFile(LAST_UPDATE_FILE);
     if (lastUpdateFile.exists()) {
       Time last = lastUpdateFile.getLastModificationTime();
       Time now = juce::Time::getCurrentTime();

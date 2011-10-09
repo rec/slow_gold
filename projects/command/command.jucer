@@ -28,9 +28,13 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="W3dsr7osK" name="command">
+  <MAINGROUP id="xcx2kTBpC" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
+        <FILE compile="1" file="../../src/rec/app/AppDirectory.cpp" id="bFJDZM7yJ"
+              name="AppDirectory.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/app/AppDirectory.h" id="baJuXnK11"
+              name="AppDirectory.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
               name="Application.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/app/DownloadVersion.cpp" id="XbzVZEK91"
@@ -324,10 +328,6 @@
         <GROUP id="yRjyeuJbc" name="persist">
           <FILE compile="0" file="../../src/rec/data/persist/App.h" id="CZ4PBqgfX"
                 name="App.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/persist/AppDirectory.cpp"
-                id="WbBQuTfiA" name="AppDirectory.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/AppDirectory.h"
-                id="875CgAbE0" name="AppDirectory.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/persist/AppInstance.cpp"
                 id="dJhmI7Gzp" name="AppInstance.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/AppInstance.h" id="xkDWsVxMs"
@@ -1213,7 +1213,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="uXW0iuMZj" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="F6zCFIAtG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

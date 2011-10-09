@@ -1,6 +1,6 @@
 #include "rec/command/TargetManager.h"
 
-#include "rec/data/persist/AppDirectory.h"
+#include "rec/app/AppDirectory.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"
@@ -101,7 +101,7 @@ ApplicationCommandInfo* TargetManager::getInfo(CommandID command) {
 }
 
 static File getKeyboardFile() {
-  return getApplicationDirectory().getChildFile("Keyboard.xml");
+  return app::getDirectory().getChildFile("Keyboard.xml");
 }
 
 void TargetManager::saveKeyboardBindings() {
