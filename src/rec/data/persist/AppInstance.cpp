@@ -8,7 +8,7 @@ namespace persist {
 
 using data::UntypedEditable;
 
-AppInstance::AppInstance() : App() {
+AppInstance::AppInstance() : EditableFactory() {
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
                                        this, &AppInstance::update));
   updateThread_->setPriority(UPDATE_PRIORITY);
@@ -95,7 +95,7 @@ void AppInstance::stop() {
 
 AppInstance* AppInstance::instance_ = NULL;
 
-App* getApp() {
+EditableFactory* getEditableFactory() {
   return AppInstance::getInstance();
 }
 

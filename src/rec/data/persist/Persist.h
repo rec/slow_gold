@@ -1,23 +1,23 @@
 #ifndef __REC_DATA_PERSIST_PERSIST__
 #define __REC_DATA_PERSIST_PERSIST__
 
-#include "rec/data/persist/App.h"
+#include "rec/data/persist/EditableFactory.h"
 
 namespace rec {
 namespace persist {
 
 inline const VirtualFile& noFile() { return VirtualFile::default_instance(); }
 
-App* getApp();
- 
+EditableFactory* getEditableFactory();
+
 template <typename Proto>
 TypedEditable<Proto>* setter(const VirtualFile& f) {
-  return getApp()->getEditable<Proto>(f);
+  return getEditableFactory()->getEditable<Proto>(f);
 }
 
 template <typename Proto>
 TypedEditable<Proto>* setterGlobal() {
-  return getApp()->getEditable<Proto>(noFile());
+  return getEditableFactory()->getEditable<Proto>(noFile());
 }
 
 template <typename Proto>

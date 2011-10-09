@@ -3,7 +3,7 @@
 
 #include <set>
 
-#include "rec/data/persist/App.h"
+#include "rec/data/persist/EditableFactory.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -12,7 +12,7 @@ namespace data { class UntypedEditable; }
 
 namespace persist {
 
-class AppInstance : public App {
+class AppInstance : public EditableFactory {
  public:
   static const int UPDATE_PRIORITY = 5;
   static const int UPDATE_PERIOD = 40;

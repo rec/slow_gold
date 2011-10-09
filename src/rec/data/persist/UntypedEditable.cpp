@@ -1,6 +1,6 @@
 #include "rec/data/persist/UntypedEditable.h"
 
-#include "rec/data/persist/App.h"
+#include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
@@ -28,10 +28,11 @@ void UntypedEditable::copyTo(Message* message) const {
   message->CopyFrom(*message_);
 }
 
-UntypedEditable::UntypedEditable(const File& file, Message* message, persist::App* app)
+UntypedEditable::UntypedEditable(const File& file, Message* message,
+                                 persist::EditableFactory* em)
     : file_(new File(file)),
       message_(message),
-      app_(app),
+      editableFactory_(em),
       alreadyReadFromFile_(false),
       fileReadSuccess_(false) {
 }
@@ -69,7 +70,7 @@ void UntypedEditable::apply(OperationList* op) {
     ScopedLock l(lock_);
     queue_.push_back(op);
   }
-  app_->needsUpdate(this);
+  editableFactory_->needsUpdate(this);
 }
 
 void UntypedEditable::update() {

@@ -132,6 +132,7 @@
     <Filter Name="command">
       <Filter Name="rec">
         <Filter Name="app">
+          <File RelativePath="..\..\..\..\src\rec\app\Application.h"/>
           <File RelativePath="..\..\..\..\src\rec\app\Directory.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\app\Directory.h"/>
           <File RelativePath="..\..\..\..\src\rec\app\DownloadVersion.cpp"/>
@@ -310,11 +311,11 @@
           <File RelativePath="..\..\..\..\src\rec\data\Editable.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.h"/>
           <Filter Name="persist">
-            <File RelativePath="..\..\..\..\src\rec\data\persist\App.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\AppInstance.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Copy.h"/>
+            <File RelativePath="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\Persist.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\TypedEditable.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp"/>

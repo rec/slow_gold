@@ -11,7 +11,7 @@
 namespace rec {
 namespace persist {
 
-class App;
+class EditableFactory;
 
 template <typename Proto>
 class TypedEditable : public data::UntypedEditable,
@@ -39,9 +39,11 @@ class TypedEditable : public data::UntypedEditable,
  private:
   Proto proto_;
 
-  TypedEditable(const File& file, App* app) : UntypedEditable(file, &proto_, app) {}
+  TypedEditable(const File& file, EditableFactory* em)
+      : UntypedEditable(file, &proto_, em) {
+  }
 
-  friend class App;
+  friend class EditableFactory;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedEditable);
 };

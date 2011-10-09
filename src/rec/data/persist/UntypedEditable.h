@@ -6,7 +6,7 @@
 
 namespace rec {
 
-namespace persist { class App; }
+namespace persist { class EditableFactory; }
 namespace persist { class AppInstance; }
 
 namespace data {
@@ -53,7 +53,7 @@ class UntypedEditable : public Editable {
   // Update the clients in this thread.
   void update();
 
-  UntypedEditable(const File& file, Message* message, persist::App* app);
+  UntypedEditable(const File& file, Message* message, persist::EditableFactory*);
   void readFromFile() const;
   void writeToFile() const;
 
@@ -65,7 +65,7 @@ class UntypedEditable : public Editable {
   ptr<File> file_;
   mutable Message* message_;
 
-  persist::App* app_;
+  persist::EditableFactory* editableFactory_;
   CriticalSection lock_;
 
   friend class persist::AppInstance;

@@ -5,7 +5,7 @@
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/data/proto/Equals.h"
 #include "rec/data/proto/Proto.h"
-#include "rec/data/persist/App.h"
+#include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/util/thread/CallAsync.h"
 
@@ -43,6 +43,8 @@ class DataListener : public Listener<const Proto&>,
  private:
   DISALLOW_COPY_AND_ASSIGN(DataListener);
 };
+
+//
 
 template <typename Proto>
 DataListener<Proto>::DataListener(bool f) : data_(NULL), filterDupes_(f) {

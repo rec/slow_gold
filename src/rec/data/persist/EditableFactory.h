@@ -11,10 +11,10 @@
 namespace rec {
 namespace persist {
 
-class App {
+class EditableFactory {
  public:
-  App() {}
-  virtual ~App() { stl::deleteMapPointers(&data_); }
+  EditableFactory() {}
+  virtual ~EditableFactory() { stl::deleteMapPointers(&data_); }
 
   virtual void needsUpdate(data::UntypedEditable* data) = 0;
 
@@ -27,11 +27,11 @@ class App {
   CriticalSection lock_;
   DataMap data_;
 
-  DISALLOW_COPY_AND_ASSIGN(App);
+  DISALLOW_COPY_AND_ASSIGN(EditableFactory);
 };
 
 template <typename Proto>
-TypedEditable<Proto>* App::getEditable(const VirtualFile& vf) {
+TypedEditable<Proto>* EditableFactory::getEditable(const VirtualFile& vf) {
   File directory = getShadowDirectory(vf);
   string fileName = data::proto::getName<Proto>();
   string fileKey = str(directory.getFullPathName()) + ("/" + fileName);
