@@ -211,7 +211,6 @@
 		E02A77248DDC1EB6D9CEBBCC /* Album.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE1EF6A8A90E6BC80D12C1C3 /* Album.cpp */; };
 		E0AED36426123AC665734EBF /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C31B634103849F680A6D6D4 /* QuickTime.framework */; };
 		E47F4C5221BE498D2AB1D4A4 /* TargetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 151215C620EDDA1F897E346B /* TargetManager.cpp */; };
-		E4DE988FAF412C81FF17CA13 /* EditableFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3B397FC42C57138CF4B2A8 /* EditableFactory.cpp */; };
 		E5406149587043DD0F6E509B /* RecentFiles.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = ECCD3A82FAB4856ED329FCC2 /* RecentFiles.pb.cc */; };
 		E553DDF4F83DABF13DF4A2B9 /* CursorStates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C7AAF4A55B324F3272AF97D /* CursorStates.cpp */; };
 		E619EBC7D6406537EDB2A17A /* AudioFormatManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F993E1ABE1FFE4422FCE9A47 /* AudioFormatManager.cpp */; };
@@ -288,7 +287,6 @@
 		1AD1890D0EDC519D1C19A9A4 /* CommandMapEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMapEditor.h; path = ../../../../src/rec/command/CommandMapEditor.h; sourceTree = SOURCE_ROOT; };
 		1B080F750738F398054AB382 /* Wrappy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Wrappy.cpp; path = ../../../../src/rec/audio/source/Wrappy.cpp; sourceTree = SOURCE_ROOT; };
 		1B1F0106A9EC87AA901E1C47 /* Partition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Partition.h; path = ../../../../src/rec/util/partition/Partition.h; sourceTree = SOURCE_ROOT; };
-		1B3B397FC42C57138CF4B2A8 /* EditableFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EditableFactory.cpp; path = ../../../../src/rec/data/persist/EditableFactory.cpp; sourceTree = SOURCE_ROOT; };
 		1BF9C582AC5218EE5D68FFB2 /* stringsource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stringsource.h; path = ../../../../src/rec/data/yaml/src/stringsource.h; sourceTree = SOURCE_ROOT; };
 		1C57184B3DEADC988014F31F /* ThinFolder.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ThinFolder.svg.cpp; path = ../../../../src/rec/gui/icon/ThinFolder.svg.cpp; sourceTree = SOURCE_ROOT; };
 		1D73B801BFF1E30FF578CB41 /* Metadata.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Metadata.pb.h; path = ../../../../genfiles/proto/rec/music/Metadata.pb.h; sourceTree = SOURCE_ROOT; };
@@ -1170,20 +1168,6 @@
 			name = proto;
 			sourceTree = "<group>";
 		};
-		71143B9476033298B8F06915 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		75467D3DB26B8C553F2D3FE5 /* rec */ = {
 			isa = PBXGroup;
 			children = (
@@ -1657,7 +1641,6 @@
 			children = (
 				64A9C59DD21EA05D3F57CFCB /* Copy.cpp */,
 				BF5A2B1FFB5418D21A214EB5 /* Copy.h */,
-				1B3B397FC42C57138CF4B2A8 /* EditableFactory.cpp */,
 				23C0B8A3280DD62B26EC9F06 /* EditableFactory.h */,
 				886808D5DB53135EA3913A68 /* EditableUpdateQueue.cpp */,
 				5334E4D1BB7508F8EE9A4F39 /* EditableUpdateQueue.h */,
@@ -1880,6 +1863,20 @@
 			name = raw;
 			sourceTree = "<group>";
 		};
+		FEBF7734F9F0C6AF5E6D6C87 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1916,7 +1913,7 @@
 				French,
 				German,
 			);
-			mainGroup = 71143B9476033298B8F06915 /* Source */;
+			mainGroup = FEBF7734F9F0C6AF5E6D6C87 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1987,7 +1984,6 @@
 				5D1FB44E34B9DC33026DCB45 /* EventQueue.cpp in Sources */,
 				6AABC0A8600D9999A37E5335 /* Editable.cpp in Sources */,
 				62B6646CECE8E260CD374C31 /* Copy.cpp in Sources */,
-				E4DE988FAF412C81FF17CA13 /* EditableFactory.cpp in Sources */,
 				5D89A9378768D138AFC9AD4E /* EditableUpdateQueue.cpp in Sources */,
 				1A6E265AF9D2F0E1CD485DB3 /* UntypedEditable.cpp in Sources */,
 				F324108CE78272D1D6366407 /* Equals.cpp in Sources */,
