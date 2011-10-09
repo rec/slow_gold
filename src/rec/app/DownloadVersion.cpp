@@ -7,11 +7,10 @@
 namespace rec {
 namespace app {
 
-using persist::getApp;
-using juce::URL;
 using juce::AlertWindow;
-using juce::Time;
 using juce::RelativeTime;
+using juce::Time;
+using juce::URL;
 
 namespace {
 

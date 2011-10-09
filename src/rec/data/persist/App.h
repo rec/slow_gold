@@ -11,8 +11,6 @@
 namespace rec {
 namespace persist {
 
-App* getApp();
-
 class App {
  public:
   App() {}

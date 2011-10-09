@@ -8,6 +8,8 @@ namespace persist {
 
 inline const VirtualFile& noFile() { return VirtualFile::default_instance(); }
 
+App* getApp();
+ 
 template <typename Proto>
 TypedEditable<Proto>* setter(const VirtualFile& f) {
   return getApp()->getEditable<Proto>(f);
