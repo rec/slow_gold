@@ -1,6 +1,6 @@
 #include "rec/command/TargetManager.h"
 
-#include "rec/app/AppDirectory.h"
+#include "rec/app/Directory.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/Callback.h"
 #include "rec/command/Command.h"

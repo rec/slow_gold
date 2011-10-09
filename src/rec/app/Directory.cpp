@@ -1,4 +1,4 @@
-#include "rec/app/AppDirectory.h"
+#include "rec/app/Directory.h"
 
 namespace rec {
 namespace app {

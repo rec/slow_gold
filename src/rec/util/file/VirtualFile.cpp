@@ -2,7 +2,7 @@
 
 #include "rec/util/file/VirtualFile.h"
 
-#include "rec/app/AppDirectory.h"
+#include "rec/app/Directory.h"
 #include "rec/util/file/Util.h"
 
 using namespace juce;

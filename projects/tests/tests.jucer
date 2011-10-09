@@ -28,15 +28,13 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="t8GTPHP0c" name="tests">
+  <MAINGROUP id="R5g1IptF5" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
-        <FILE compile="1" file="../../src/rec/app/AppDirectory.cpp" id="gZ8sbkS1d"
-              name="AppDirectory.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/AppDirectory.h" id="1p60sXaHK"
-              name="AppDirectory.h" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/Application.h" id="MOHOux8nm"
-              name="Application.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/app/Directory.cpp" id="fAZhPUf5J"
+              name="Directory.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/app/Directory.h" id="7LoPPNJiR"
+              name="Directory.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/app/DownloadVersion.cpp" id="XbzVZEK91"
               name="DownloadVersion.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/DownloadVersion.h" id="0uwMgxLQ8"
@@ -1273,7 +1271,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="KiMeWuChR" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="WSKWKU8CO" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

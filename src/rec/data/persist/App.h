@@ -6,7 +6,7 @@
 #include "rec/data/proto/GetProtoName.h"
 #include "rec/util/STL.h"
 
-#include "rec/app/AppDirectory.h"
+#include "rec/app/Directory.h"
 
 namespace rec {
 namespace persist {

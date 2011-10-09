@@ -1,5 +1,5 @@
 #include "rec/audio/Device.h"
-#include "rec/app/AppDirectory.h"
+#include "rec/app/Directory.h"
 
 namespace rec {
 namespace audio {

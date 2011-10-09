@@ -1,6 +1,6 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/GenericApplication.h"
-#include "rec/app/AppDirectory.h"
+#include "rec/app/Directory.h"
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/thread/CallAsync.h"
 

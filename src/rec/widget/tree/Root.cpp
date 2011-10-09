@@ -2,7 +2,7 @@
 
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Color.h"
-#include "rec/app/AppDirectory.h"
+#include "rec/app/Directory.h"
 #include "rec/util/file/GetVolumes.h"
 #include "rec/util/thread/CallAsync.h"
 #include "rec/util/thread/Trash.h"
