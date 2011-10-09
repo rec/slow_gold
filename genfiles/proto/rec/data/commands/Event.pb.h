@@ -24,6 +24,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include "rec/data/Operation.pb.h"
+#include "rec/util/file/VirtualFile.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace rec {
@@ -270,17 +271,29 @@ class Event : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source >*
       mutable_source();
   
-  // repeated .rec.data.Operation operation = 3;
-  inline int operation_size() const;
-  inline void clear_operation();
-  static const int kOperationFieldNumber = 3;
-  inline const ::rec::data::Operation& operation(int index) const;
-  inline ::rec::data::Operation* mutable_operation(int index);
-  inline ::rec::data::Operation* add_operation();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >&
-      operation() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
-      mutable_operation();
+  // optional .rec.util.file.VirtualFile file = 3;
+  inline bool has_file() const;
+  inline void clear_file();
+  static const int kFileFieldNumber = 3;
+  inline const ::rec::util::file::VirtualFile& file() const;
+  inline ::rec::util::file::VirtualFile* mutable_file();
+  
+  // optional string type_name = 4;
+  inline bool has_type_name() const;
+  inline void clear_type_name();
+  static const int kTypeNameFieldNumber = 4;
+  inline const ::std::string& type_name() const;
+  inline void set_type_name(const ::std::string& value);
+  inline void set_type_name(const char* value);
+  inline void set_type_name(const char* value, size_t size);
+  inline ::std::string* mutable_type_name();
+  
+  // optional .rec.data.OperationList operations = 5;
+  inline bool has_operations() const;
+  inline void clear_operations();
+  static const int kOperationsFieldNumber = 5;
+  inline const ::rec::data::OperationList& operations() const;
+  inline ::rec::data::OperationList* mutable_operations();
   
   // @@protoc_insertion_point(class_scope:rec.data.commands.Event)
  private:
@@ -289,12 +302,15 @@ class Event : public ::google::protobuf::Message {
   
   ::google::protobuf::uint64 timestamp_;
   ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source > source_;
-  ::google::protobuf::RepeatedPtrField< ::rec::data::Operation > operation_;
+  ::rec::util::file::VirtualFile* file_;
+  ::std::string* type_name_;
+  static const ::std::string _default_type_name_;
+  ::rec::data::OperationList* operations_;
   friend void  protobuf_AddDesc_rec_2fdata_2fcommands_2fEvent_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fcommands_2fEvent_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fcommands_2fEvent_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -420,29 +436,80 @@ Event::mutable_source() {
   return &source_;
 }
 
-// repeated .rec.data.Operation operation = 3;
-inline int Event::operation_size() const {
-  return operation_.size();
+// optional .rec.util.file.VirtualFile file = 3;
+inline bool Event::has_file() const {
+  return _has_bit(2);
 }
-inline void Event::clear_operation() {
-  operation_.Clear();
+inline void Event::clear_file() {
+  if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
+  _clear_bit(2);
 }
-inline const ::rec::data::Operation& Event::operation(int index) const {
-  return operation_.Get(index);
+inline const ::rec::util::file::VirtualFile& Event::file() const {
+  return file_ != NULL ? *file_ : *default_instance_->file_;
 }
-inline ::rec::data::Operation* Event::mutable_operation(int index) {
-  return operation_.Mutable(index);
+inline ::rec::util::file::VirtualFile* Event::mutable_file() {
+  _set_bit(2);
+  if (file_ == NULL) file_ = new ::rec::util::file::VirtualFile;
+  return file_;
 }
-inline ::rec::data::Operation* Event::add_operation() {
-  return operation_.Add();
+
+// optional string type_name = 4;
+inline bool Event::has_type_name() const {
+  return _has_bit(3);
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >&
-Event::operation() const {
-  return operation_;
+inline void Event::clear_type_name() {
+  if (type_name_ != &_default_type_name_) {
+    type_name_->clear();
+  }
+  _clear_bit(3);
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
-Event::mutable_operation() {
-  return &operation_;
+inline const ::std::string& Event::type_name() const {
+  return *type_name_;
+}
+inline void Event::set_type_name(const ::std::string& value) {
+  _set_bit(3);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void Event::set_type_name(const char* value) {
+  _set_bit(3);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(value);
+}
+inline void Event::set_type_name(const char* value, size_t size) {
+  _set_bit(3);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  type_name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* Event::mutable_type_name() {
+  _set_bit(3);
+  if (type_name_ == &_default_type_name_) {
+    type_name_ = new ::std::string;
+  }
+  return type_name_;
+}
+
+// optional .rec.data.OperationList operations = 5;
+inline bool Event::has_operations() const {
+  return _has_bit(4);
+}
+inline void Event::clear_operations() {
+  if (operations_ != NULL) operations_->::rec::data::OperationList::Clear();
+  _clear_bit(4);
+}
+inline const ::rec::data::OperationList& Event::operations() const {
+  return operations_ != NULL ? *operations_ : *default_instance_->operations_;
+}
+inline ::rec::data::OperationList* Event::mutable_operations() {
+  _set_bit(4);
+  if (operations_ == NULL) operations_ = new ::rec::data::OperationList;
+  return operations_;
 }
 
 

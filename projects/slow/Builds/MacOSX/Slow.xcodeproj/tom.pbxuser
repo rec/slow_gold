@@ -1040,8 +1040,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 339817087;
-			PBXWorkspaceStateSaveDate = 339817087;
+			PBXPerProjectTemplateStateSaveDate = 339862174;
+			PBXWorkspaceStateSaveDate = 339862174;
 		};
 		perUserProjectItems = {
 			E2025E4B143D00940036FA27 = E2025E4B143D00940036FA27 /* PBXTextBookmark */;
@@ -1428,11 +1428,14 @@
 			E2026552144130B50036FA27 = E2026552144130B50036FA27 /* PBXTextBookmark */;
 			E2026557144130C50036FA27 = E2026557144130C50036FA27 /* PBXTextBookmark */;
 			E202655C144131780036FA27 = E202655C144131780036FA27 /* PBXTextBookmark */;
-			E2026591144135EA0036FA27 /* XCBuildMessageTextBookmark */ = E2026591144135EA0036FA27 /* XCBuildMessageTextBookmark */;
-			E2026594144135FB0036FA27 /* PBXTextBookmark */ = E2026594144135FB0036FA27 /* PBXTextBookmark */;
-			E20265971441369D0036FA27 /* PBXTextBookmark */ = E20265971441369D0036FA27 /* PBXTextBookmark */;
-			E202659C14413B000036FA27 /* XCBuildMessageTextBookmark */ = E202659C14413B000036FA27 /* XCBuildMessageTextBookmark */;
-			E202659E14413B000036FA27 /* PBXTextBookmark */ = E202659E14413B000036FA27 /* PBXTextBookmark */;
+			E2026591144135EA0036FA27 = E2026591144135EA0036FA27 /* PBXTextBookmark */;
+			E2026594144135FB0036FA27 = E2026594144135FB0036FA27 /* PBXTextBookmark */;
+			E20265971441369D0036FA27 = E20265971441369D0036FA27 /* PBXTextBookmark */;
+			E202659C14413B000036FA27 = E202659C14413B000036FA27 /* PBXTextBookmark */;
+			E202659E14413B000036FA27 = E202659E14413B000036FA27 /* PBXTextBookmark */;
+			E20265A114413B8B0036FA27 = E20265A114413B8B0036FA27 /* PBXTextBookmark */;
+			E20265A414413BAA0036FA27 = E20265A414413BAA0036FA27 /* PBXTextBookmark */;
+			E20265A71441444D0036FA27 = E20265A71441444D0036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -6112,17 +6115,11 @@
 		name = Persist.h;
 		path = ../../../../../rec/src/rec/data/persist/Persist.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {909, 755}}";
-			sepNavSelRange = "{895, 0}";
-			sepNavVisRange = "{0, 1315}";
-		};
 	};
-	E2026591144135EA0036FA27 /* XCBuildMessageTextBookmark */ = {
+	E2026591144135EA0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'set' is not a member of 'rec::data'";
 		fRef = E2026590144135EA0036FA27 /* Persist.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 34;
 		rType = 1;
@@ -6153,24 +6150,18 @@
 		name = Persist.h;
 		path = ../../../../../rec/src/rec/data/persist/Persist.h;
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {762, 741}}";
-			sepNavSelRange = "{1321, 0}";
-			sepNavVisRange = "{0, 1321}";
-			sepNavWindowFrame = "{{502, 241}, {968, 891}}";
-		};
 	};
-	E202659C14413B000036FA27 /* XCBuildMessageTextBookmark */ = {
+	E202659C14413B000036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected constructor, destructor, or type conversion before '*' token";
 		fRef = E202659D14413B000036FA27 /* Persist.h */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 10;
 		rType = 1;
 	};
 	E202659D14413B000036FA27 /* Persist.h */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
 		name = Persist.h;
 		path = ../../../../../rec/src/rec/data/persist/Persist.h;
 		sourceTree = "<group>";
@@ -6183,6 +6174,36 @@
 		rLoc = 1321;
 		rType = 0;
 		vrLen = 1321;
+		vrLoc = 0;
+	};
+	E20265A114413B8B0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E202659D14413B000036FA27 /* Persist.h */;
+		name = "Persist.h: 59";
+		rLen = 0;
+		rLoc = 1343;
+		rType = 0;
+		vrLen = 1303;
+		vrLoc = 0;
+	};
+	E20265A414413BAA0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E202659D14413B000036FA27 /* Persist.h */;
+		name = "Persist.h: 59";
+		rLen = 0;
+		rLoc = 1350;
+		rType = 0;
+		vrLen = 1310;
+		vrLoc = 0;
+	};
+	E20265A71441444D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E202659D14413B000036FA27 /* Persist.h */;
+		name = "Persist.h: 59";
+		rLen = 0;
+		rLoc = 1350;
+		rType = 0;
+		vrLen = 1350;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {

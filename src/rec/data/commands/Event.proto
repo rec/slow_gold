@@ -1,6 +1,7 @@
 package rec.data.commands;
 
 import "rec/data/Operation.proto";
+import "rec/util/file/VirtualFile.proto";
 
 message Source {
   enum Type {
@@ -24,5 +25,7 @@ message Source {
 message Event {
   optional uint64 timestamp = 1;
   repeated Source source = 2;
-  repeated Operation operation = 3;
+  optional util.file.VirtualFile file = 3;
+  optional string type_name = 4;
+  optional OperationList operations = 5;
 };

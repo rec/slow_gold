@@ -28,7 +28,7 @@ class EventQueue {
 
   EventList events_;
   ptr<proto::logfile::Output> logfile_;
-  ptr<juce::CriticalSection> lock_;
+  juce::CriticalSection lock_;
 
   DISALLOW_COPY_AND_ASSIGN(EventQueue);
 };

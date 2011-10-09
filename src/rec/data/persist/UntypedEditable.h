@@ -50,7 +50,6 @@ class UntypedEditable : public Editable {
   typedef std::vector<data::OperationList*> OperationQueue;
 
   OperationQueue queue_;
-  OperationQueue undo_;
 
   ptr<File> file_;
   mutable Message* message_;

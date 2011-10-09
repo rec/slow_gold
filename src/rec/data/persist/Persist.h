@@ -37,18 +37,20 @@ void set(const Proto& proto, const VirtualFile& f) {
 
 template <typename Proto>
 void setGlobal(const Proto& proto) {
-  set(proto, noFile());
+  data::set(editable<Proto>(noFile()), proto);
 }
 
+/*
 template <typename Proto>
-void set(const data::Address& a, const Proto& p, const VirtualFile& f) {
+void set(const Proto& p, const VirtualFile& f, const data::Address& a) {
   data::set(editable<Proto>(f), a, p);
 }
 
 template <typename Proto>
-void setGlobal(const data::Address& a, const Proto& p) {
+void setGlobal(const Proto& p, const data::Address& a) {
   data::set(editable<Proto>(noFile()), a, p);
 }
+*/
 
 }  // namespace persist
 }  // namespace rec

@@ -59,13 +59,15 @@ class OutputImpl : public OutputBase {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(OutputImpl);
 };
 
-Input::Input(const File& file) : impl_(new InputImpl(file)) {}
+Input::Input(const File& f) : impl_(new InputImpl(f)) {}
 Input::~Input() {}
-bool Input::read(Message* message) { return impl_->read(message); }
 
-Output::Output(const File& file) : impl_(new OutputImpl(file)) {}
+bool Input::read(Message* m) { return impl_->read(m); }
+
+Output::Output(const File& f) : impl_(new OutputImpl(f)) {}
 Output::~Output() {}
-void Output::write(const Message& message) { impl_->write(message); }
+
+void Output::write(const Message& m) { impl_->write(m); }
 
 }  // namespace logfile
 }  // namespace proto

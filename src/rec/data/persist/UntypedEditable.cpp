@@ -62,7 +62,6 @@ void UntypedEditable::readFromFile() const {
 
 UntypedEditable::~UntypedEditable() {
   stl::deletePointers(&queue_);
-  stl::deletePointers(&undo_);
 }
 
 void UntypedEditable::apply(OperationList* op) {
@@ -85,7 +84,7 @@ void UntypedEditable::update() {
 
   for (OperationQueue::iterator i = old.begin(); i != old.end(); ++i) {
     ScopedLock l(lock_);
-    undo_.push_back(applyOperations(**i, message_));
+    delete applyOperations(**i, message_);
   }
 
   stl::deletePointers(&old);

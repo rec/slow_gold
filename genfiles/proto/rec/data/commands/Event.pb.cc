@@ -52,10 +52,12 @@ void protobuf_AssignDesc_rec_2fdata_2fcommands_2fEvent_2eproto() {
       sizeof(Source));
   Source_Type_descriptor_ = Source_descriptor_->enum_type(0);
   Event_descriptor_ = file->message_type(1);
-  static const int Event_offsets_[3] = {
+  static const int Event_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, timestamp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, source_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, operation_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, file_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, type_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Event, operations_),
   };
   Event_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -102,16 +104,20 @@ void protobuf_AddDesc_rec_2fdata_2fcommands_2fEvent_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::rec::data::protobuf_AddDesc_rec_2fdata_2fOperation_2eproto();
+  ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\035rec/data/commands/Event.proto\022\021rec.dat"
-    "a.commands\032\030rec/data/Operation.proto\"\230\001\n"
-    "\006Source\022,\n\004type\030\001 \001(\0162\036.rec.data.command"
-    "s.Source.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rmodifier"
-    "_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010KEYBOAR"
-    "D\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"m\n\005Event"
-    "\022\021\n\ttimestamp\030\001 \001(\004\022)\n\006source\030\002 \003(\0132\031.re"
-    "c.data.commands.Source\022&\n\toperation\030\003 \003("
-    "\0132\023.rec.data.Operation", 342);
+    "a.commands\032\030rec/data/Operation.proto\032\037re"
+    "c/util/file/VirtualFile.proto\"\230\001\n\006Source"
+    "\022,\n\004type\030\001 \001(\0162\036.rec.data.commands.Sourc"
+    "e.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rmodifier_keys\030\003"
+    " \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010KEYBOARD\020\001\022\013\n\007"
+    "CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\257\001\n\005Event\022\021\n\tti"
+    "mestamp\030\001 \001(\004\022)\n\006source\030\002 \003(\0132\031.rec.data"
+    ".commands.Source\022(\n\004file\030\003 \001(\0132\032.rec.uti"
+    "l.file.VirtualFile\022\021\n\ttype_name\030\004 \001(\t\022+\n"
+    "\noperations\030\005 \001(\0132\027.rec.data.OperationLi"
+    "st", 442);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/commands/Event.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -457,10 +463,13 @@ void Source::Swap(Source* other) {
 
 // ===================================================================
 
+const ::std::string Event::_default_type_name_;
 #ifndef _MSC_VER
 const int Event::kTimestampFieldNumber;
 const int Event::kSourceFieldNumber;
-const int Event::kOperationFieldNumber;
+const int Event::kFileFieldNumber;
+const int Event::kTypeNameFieldNumber;
+const int Event::kOperationsFieldNumber;
 #endif  // !_MSC_VER
 
 Event::Event()
@@ -469,6 +478,8 @@ Event::Event()
 }
 
 void Event::InitAsDefaultInstance() {
+  file_ = const_cast< ::rec::util::file::VirtualFile*>(&::rec::util::file::VirtualFile::default_instance());
+  operations_ = const_cast< ::rec::data::OperationList*>(&::rec::data::OperationList::default_instance());
 }
 
 Event::Event(const Event& from)
@@ -480,6 +491,9 @@ Event::Event(const Event& from)
 void Event::SharedCtor() {
   _cached_size_ = 0;
   timestamp_ = GOOGLE_ULONGLONG(0);
+  file_ = NULL;
+  type_name_ = const_cast< ::std::string*>(&_default_type_name_);
+  operations_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -488,7 +502,12 @@ Event::~Event() {
 }
 
 void Event::SharedDtor() {
+  if (type_name_ != &_default_type_name_) {
+    delete type_name_;
+  }
   if (this != default_instance_) {
+    delete file_;
+    delete operations_;
   }
 }
 
@@ -515,9 +534,19 @@ Event* Event::New() const {
 void Event::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     timestamp_ = GOOGLE_ULONGLONG(0);
+    if (_has_bit(2)) {
+      if (file_ != NULL) file_->::rec::util::file::VirtualFile::Clear();
+    }
+    if (_has_bit(3)) {
+      if (type_name_ != &_default_type_name_) {
+        type_name_->clear();
+      }
+    }
+    if (_has_bit(4)) {
+      if (operations_ != NULL) operations_->::rec::data::OperationList::Clear();
+    }
   }
   source_.Clear();
-  operation_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -554,21 +583,51 @@ bool Event::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_source;
-        if (input->ExpectTag(26)) goto parse_operation;
+        if (input->ExpectTag(26)) goto parse_file;
         break;
       }
       
-      // repeated .rec.data.Operation operation = 3;
+      // optional .rec.util.file.VirtualFile file = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_operation:
+         parse_file:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_operation()));
+               input, mutable_file()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_operation;
+        if (input->ExpectTag(34)) goto parse_type_name;
+        break;
+      }
+      
+      // optional string type_name = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_type_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_type_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->type_name().data(), this->type_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_operations;
+        break;
+      }
+      
+      // optional .rec.data.OperationList operations = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_operations:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_operations()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -602,10 +661,25 @@ void Event::SerializeWithCachedSizes(
       2, this->source(i), output);
   }
   
-  // repeated .rec.data.Operation operation = 3;
-  for (int i = 0; i < this->operation_size(); i++) {
+  // optional .rec.util.file.VirtualFile file = 3;
+  if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->operation(i), output);
+      3, this->file(), output);
+  }
+  
+  // optional string type_name = 4;
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->type_name(), output);
+  }
+  
+  // optional .rec.data.OperationList operations = 5;
+  if (_has_bit(4)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->operations(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -628,11 +702,28 @@ void Event::SerializeWithCachedSizes(
         2, this->source(i), target);
   }
   
-  // repeated .rec.data.Operation operation = 3;
-  for (int i = 0; i < this->operation_size(); i++) {
+  // optional .rec.util.file.VirtualFile file = 3;
+  if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->operation(i), target);
+        3, this->file(), target);
+  }
+  
+  // optional string type_name = 4;
+  if (_has_bit(3)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->type_name().data(), this->type_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->type_name(), target);
+  }
+  
+  // optional .rec.data.OperationList operations = 5;
+  if (_has_bit(4)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, this->operations(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -653,6 +744,27 @@ int Event::ByteSize() const {
           this->timestamp());
     }
     
+    // optional .rec.util.file.VirtualFile file = 3;
+    if (has_file()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->file());
+    }
+    
+    // optional string type_name = 4;
+    if (has_type_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->type_name());
+    }
+    
+    // optional .rec.data.OperationList operations = 5;
+    if (has_operations()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->operations());
+    }
+    
   }
   // repeated .rec.data.commands.Source source = 2;
   total_size += 1 * this->source_size();
@@ -660,14 +772,6 @@ int Event::ByteSize() const {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->source(i));
-  }
-  
-  // repeated .rec.data.Operation operation = 3;
-  total_size += 1 * this->operation_size();
-  for (int i = 0; i < this->operation_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->operation(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -696,10 +800,18 @@ void Event::MergeFrom(const ::google::protobuf::Message& from) {
 void Event::MergeFrom(const Event& from) {
   GOOGLE_CHECK_NE(&from, this);
   source_.MergeFrom(from.source_);
-  operation_.MergeFrom(from.operation_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
       set_timestamp(from.timestamp());
+    }
+    if (from._has_bit(2)) {
+      mutable_file()->::rec::util::file::VirtualFile::MergeFrom(from.file());
+    }
+    if (from._has_bit(3)) {
+      set_type_name(from.type_name());
+    }
+    if (from._has_bit(4)) {
+      mutable_operations()->::rec::data::OperationList::MergeFrom(from.operations());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -726,7 +838,9 @@ void Event::Swap(Event* other) {
   if (other != this) {
     std::swap(timestamp_, other->timestamp_);
     source_.Swap(&other->source_);
-    operation_.Swap(&other->operation_);
+    std::swap(file_, other->file_);
+    std::swap(type_name_, other->type_name_);
+    std::swap(operations_, other->operations_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
