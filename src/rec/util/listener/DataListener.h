@@ -47,7 +47,7 @@ class DataListener : public Listener<const Proto&>,
 
 template <typename Proto>
 DataListener<Proto>::DataListener(bool f) : data_(NULL), filterDupes_(f) {
-  persist::setterGlobal<VirtualFile>()->addListener(this);
+  persist::editableGlobal<VirtualFile>()->addListener(this);
 }
 
 template <typename Proto>
@@ -55,8 +55,8 @@ void DataListener<Proto>::setFile(const VirtualFile& file) {
   string s = Proto::default_instance().GetTypeName();
   // LOG(INFO) << "setFile " << s;
   // if (s == "rec.util.LoopPointList")
-  //  LOG(INFO) << "LoopPointList: " << persist::setter<Proto>(file)->get().ShortDebugString();
-  setData(persist::setter<Proto>(file));
+  //  LOG(INFO) << "LoopPointList: " << persist::editable<Proto>(file)->get().ShortDebugString();
+  setData(persist::editable<Proto>(file));
 }
 
 template <typename Proto>

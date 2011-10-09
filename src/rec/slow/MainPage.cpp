@@ -36,7 +36,7 @@ void MainPage::paint(Graphics& g) {
 }
 
 void MainPage::doLayout(Components* components) {
-  persist::TypedEditable<AppLayout>* data = persist::setterGlobal<AppLayout>();
+  persist::TypedEditable<AppLayout>* data = persist::editableGlobal<AppLayout>();
   AppLayout a = data->get();
 
   bool full[] = {a.full_directory(),  a.full_waveform(), a.full_controller()};

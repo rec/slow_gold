@@ -62,8 +62,8 @@
 		E3EBBCA5AA6A5E056DFB20F4 = { isa = PBXBuildFile; fileRef = B4461DEC69D945A52D6895B4; };
 		10BDB147197A841DD5FCDFC8 = { isa = PBXBuildFile; fileRef = 9DFD5769D25254A01A3A8F9C; };
 		2D49BDB155BE4173860D57B9 = { isa = PBXBuildFile; fileRef = 13D1D052624F6A0B246F6335; };
-		A48C820FA0A448415E918667 = { isa = PBXBuildFile; fileRef = BCC3E057ABD6CF5D7DC4FAD0; };
 		15546065C1A9AA5AA0C640B5 = { isa = PBXBuildFile; fileRef = 1748B196C7CF584702E6C34F; };
+		111796407C2989227258A1C2 = { isa = PBXBuildFile; fileRef = 4B0604DDBF04CB4876204EEC; };
 		DD0C2363EE94A8DB90D75147 = { isa = PBXBuildFile; fileRef = 9886484AFA5001EA6B170DC3; };
 		B7C20D85DC432ABBA9C5788B = { isa = PBXBuildFile; fileRef = A4DEAF714BB10D7F60D583A0; };
 		275FC2CB4F625481F9949BD4 = { isa = PBXBuildFile; fileRef = D8E3EC7207D969A2B202662D; };
@@ -375,11 +375,11 @@
 		70CF36904FE490C80769CE5D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EventQueue.h; path = ../../../../src/rec/data/commands/EventQueue.h; sourceTree = SOURCE_ROOT; };
 		13D1D052624F6A0B246F6335 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Editable.cpp; path = ../../../../src/rec/data/Editable.cpp; sourceTree = SOURCE_ROOT; };
 		B96847524BE56BD50BD7A593 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Editable.h; path = ../../../../src/rec/data/Editable.h; sourceTree = SOURCE_ROOT; };
-		BCC3E057ABD6CF5D7DC4FAD0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppInstance.cpp; path = ../../../../src/rec/data/persist/AppInstance.cpp; sourceTree = SOURCE_ROOT; };
-		0F15C31920203698C4BB0D3D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppInstance.h; path = ../../../../src/rec/data/persist/AppInstance.h; sourceTree = SOURCE_ROOT; };
 		1748B196C7CF584702E6C34F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copy.cpp; path = ../../../../src/rec/data/persist/Copy.cpp; sourceTree = SOURCE_ROOT; };
 		73F81818D005D0CCFDB05239 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Copy.h; path = ../../../../src/rec/data/persist/Copy.h; sourceTree = SOURCE_ROOT; };
 		E66EB5BC1DBF9E05097AA38A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EditableFactory.h; path = ../../../../src/rec/data/persist/EditableFactory.h; sourceTree = SOURCE_ROOT; };
+		4B0604DDBF04CB4876204EEC = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EditableUpdateQueue.cpp; path = ../../../../src/rec/data/persist/EditableUpdateQueue.cpp; sourceTree = SOURCE_ROOT; };
+		07D2D0D99036C0E2B12953BC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EditableUpdateQueue.h; path = ../../../../src/rec/data/persist/EditableUpdateQueue.h; sourceTree = SOURCE_ROOT; };
 		20385342EFBF5E13E6047990 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Persist.h; path = ../../../../src/rec/data/persist/Persist.h; sourceTree = SOURCE_ROOT; };
 		EF3E20A74C224B125EC7F12B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypedEditable.h; path = ../../../../src/rec/data/persist/TypedEditable.h; sourceTree = SOURCE_ROOT; };
 		9886484AFA5001EA6B170DC3 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UntypedEditable.cpp; path = ../../../../src/rec/data/persist/UntypedEditable.cpp; sourceTree = SOURCE_ROOT; };
@@ -929,11 +929,11 @@
 				9DFD5769D25254A01A3A8F9C,
 				70CF36904FE490C80769CE5D ); name = commands; sourceTree = "<group>"; };
 		98CF4FA3667E193E9E715CA3 = { isa = PBXGroup; children = (
-				BCC3E057ABD6CF5D7DC4FAD0,
-				0F15C31920203698C4BB0D3D,
 				1748B196C7CF584702E6C34F,
 				73F81818D005D0CCFDB05239,
 				E66EB5BC1DBF9E05097AA38A,
+				4B0604DDBF04CB4876204EEC,
+				07D2D0D99036C0E2B12953BC,
 				20385342EFBF5E13E6047990,
 				EF3E20A74C224B125EC7F12B,
 				9886484AFA5001EA6B170DC3,
@@ -1450,7 +1450,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		E46C91C02DDB0796D2C48A3F = { isa = PBXGroup; children = (
+		62DA988EB243D1F7355AB15E = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1579,8 +1579,8 @@
 				E3EBBCA5AA6A5E056DFB20F4,
 				10BDB147197A841DD5FCDFC8,
 				2D49BDB155BE4173860D57B9,
-				A48C820FA0A448415E918667,
 				15546065C1A9AA5AA0C640B5,
+				111796407C2989227258A1C2,
 				DD0C2363EE94A8DB90D75147,
 				B7C20D85DC432ABBA9C5788B,
 				275FC2CB4F625481F9949BD4,
@@ -1762,7 +1762,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = E46C91C02DDB0796D2C48A3F; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 62DA988EB243D1F7355AB15E; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

@@ -11,28 +11,28 @@ inline const VirtualFile& noFile() { return VirtualFile::default_instance(); }
 EditableFactory* getEditableFactory();
 
 template <typename Proto>
-TypedEditable<Proto>* setter(const VirtualFile& f) {
+TypedEditable<Proto>* editable(const VirtualFile& f) {
   return getEditableFactory()->getEditable<Proto>(f);
 }
 
 template <typename Proto>
-TypedEditable<Proto>* setterGlobal() {
+TypedEditable<Proto>* editableGlobal() {
   return getEditableFactory()->getEditable<Proto>(noFile());
 }
 
 template <typename Proto>
 const Proto get(const VirtualFile& f) {
-  return setter<Proto>(f)->get();
+  return editable<Proto>(f)->get();
 }
 
 template <typename Proto>
 const Proto getGlobal() {
-  return setter<Proto>(noFile())->get();
+  return editable<Proto>(noFile())->get();
 }
 
 template <typename Proto>
 void set(const Proto& proto, const VirtualFile& f) {
-  data::set(setter<Proto>(f), proto);
+  data::set(editable<Proto>(f), proto);
 }
 
 template <typename Proto>
@@ -42,12 +42,12 @@ void setGlobal(const Proto& proto) {
 
 template <typename Proto>
 void set(const data::Address& a, const Proto& p, const VirtualFile& f) {
-  data::set(setter<Proto>(f), a, p);
+  data::set(editable<Proto>(f), a, p);
 }
 
 template <typename Proto>
 void setGlobal(const data::Address& a, const Proto& p) {
-  data::set(setter<Proto>(noFile()), a, p);
+  data::set(editable<Proto>(noFile()), a, p);
 }
 
 }  // namespace persist

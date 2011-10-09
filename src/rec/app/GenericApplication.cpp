@@ -25,7 +25,7 @@ void GenericApplication::initialise(const String&) {
   }
 
   audio::format::mpg123::initializeOnce();
-  persist::AppInstance::start();
+  persist::EditableUpdateQueue::start();
   window_.reset(createWindow());
   LOG(INFO) << name_ << ": initialise finished.";
 }
@@ -36,7 +36,7 @@ void GenericApplication::shutdown() {
   gui::dialog::shutdownDialog();
   window_.reset();
   util::thread::trash::waitForAllThreadsToExit(1000);
-  persist::AppInstance::stop();
+  persist::EditableUpdateQueue::stop();
 
   LOG(INFO) << name_ << ": shutdown finished.";
 }

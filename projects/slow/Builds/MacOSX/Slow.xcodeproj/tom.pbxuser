@@ -36,14 +36,6 @@
 			sepNavWindowFrame = "{{15, 305}, {1093, 868}}";
 		};
 	};
-	0925F35EC7150773AA36E65C /* AppInstance.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 1274}}";
-			sepNavSelRange = "{264, 0}";
-			sepNavVisRange = "{0, 1457}";
-			sepNavWindowFrame = "{{61, 194}, {1015, 937}}";
-		};
-	};
 	093ABF0DCF3AA992BCBCAFB1 /* DataListener.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {762, 780}}";
@@ -595,14 +587,6 @@
 			sepNavVisRange = "{0, 863}";
 		};
 	};
-	5B77D7104B7E8EAEF12CF9B9 /* AppInstance.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 754}}";
-			sepNavSelRange = "{270, 0}";
-			sepNavVisRange = "{36, 1078}";
-			sepNavWindowFrame = "{{15, 14}, {911, 1159}}";
-		};
-	};
 	5BAB9CAEA2A4EA4EDCB4A87D /* Frame.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {762, 586}}";
@@ -1056,8 +1040,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 339815885;
-			PBXWorkspaceStateSaveDate = 339815885;
+			PBXPerProjectTemplateStateSaveDate = 339817087;
+			PBXWorkspaceStateSaveDate = 339817087;
 		};
 		perUserProjectItems = {
 			E2025E4B143D00940036FA27 = E2025E4B143D00940036FA27 /* PBXTextBookmark */;
@@ -1441,6 +1425,9 @@
 			E202653514412D3B0036FA27 = E202653514412D3B0036FA27 /* PBXTextBookmark */;
 			E202653614412D3B0036FA27 = E202653614412D3B0036FA27 /* PBXTextBookmark */;
 			E202653714412D3B0036FA27 = E202653714412D3B0036FA27 /* PBXTextBookmark */;
+			E2026552144130B50036FA27 = E2026552144130B50036FA27 /* PBXTextBookmark */;
+			E2026557144130C50036FA27 = E2026557144130C50036FA27 /* PBXTextBookmark */;
+			E202655C144131780036FA27 = E202655C144131780036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -5543,7 +5530,6 @@
 	};
 	E20263EB143FC95A0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 0925F35EC7150773AA36E65C /* AppInstance.cpp */;
 		name = "AppInstance.cpp: 83";
 		rLen = 0;
 		rLoc = 2179;
@@ -5553,14 +5539,12 @@
 	};
 	E20263EC143FC95A0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 5B77D7104B7E8EAEF12CF9B9 /* AppInstance.h */;
 		rLen = 0;
 		rLoc = 1126;
 		rType = 0;
 	};
 	E20263ED143FC95A0036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 5B77D7104B7E8EAEF12CF9B9 /* AppInstance.h */;
 		name = "AppInstance.h: 16";
 		rLen = 0;
 		rLoc = 270;
@@ -5613,7 +5597,7 @@
 		fRef = E202641F143FD3430036FA27 /* DataListener.h */;
 		name = "DataListener.h: 49";
 		rLen = 59;
-		rLoc = 1389;
+		rLoc = 1391;
 		rType = 0;
 		vrLen = 1833;
 		vrLoc = 0;
@@ -6080,6 +6064,41 @@
 		rLoc = 1295;
 		rType = 0;
 		vrLen = 1295;
+		vrLoc = 0;
+	};
+	E2026551144130B50036FA27 /* DataListener.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = DataListener.h;
+		path = ../../../../../rec/src/rec/util/listener/DataListener.h;
+		sourceTree = "<group>";
+	};
+	E2026552144130B50036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'setterGlobal' is not a member of 'rec::persist'";
+		fRef = E2026551144130B50036FA27 /* DataListener.h */;
+		rLen = 1;
+		rLoc = 49;
+		rType = 1;
+	};
+	E2026557144130C50036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2026551144130B50036FA27 /* DataListener.h */;
+		name = "DataListener.h: 50";
+		rLen = 0;
+		rLoc = 1387;
+		rType = 0;
+		vrLen = 1787;
+		vrLoc = 0;
+	};
+	E202655C144131780036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2026551144130B50036FA27 /* DataListener.h */;
+		name = "DataListener.h: 103";
+		rLen = 0;
+		rLoc = 2623;
+		rType = 0;
+		vrLen = 1791;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {

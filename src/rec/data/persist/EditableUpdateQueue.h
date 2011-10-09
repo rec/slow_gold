@@ -12,7 +12,7 @@ namespace data { class UntypedEditable; }
 
 namespace persist {
 
-class AppInstance : public EditableFactory {
+class EditableUpdateQueue : public EditableFactory {
  public:
   static const int UPDATE_PRIORITY = 5;
   static const int UPDATE_PERIOD = 40;
@@ -29,14 +29,14 @@ class AppInstance : public EditableFactory {
   static void start();
   static void stop();
 
-  static AppInstance* getInstance() { return instance_; }
+  static EditableUpdateQueue* getInstance() { return instance_; }
 
   typedef std::set<data::UntypedEditable*> DataSet;
   bool running() const;
 
 private:
-  virtual ~AppInstance();
-  explicit AppInstance();
+  virtual ~EditableUpdateQueue();
+  explicit EditableUpdateQueue();
 
   CriticalSection lock_;
 
@@ -46,9 +46,9 @@ private:
   thread_ptr<Thread> updateThread_;
   thread_ptr<Thread> writeThread_;
 
-  static AppInstance* instance_;
+  static EditableUpdateQueue* instance_;
 
-  DISALLOW_COPY_AND_ASSIGN(AppInstance);
+  DISALLOW_COPY_AND_ASSIGN(EditableUpdateQueue);
 };
 
 }  // namespace persist

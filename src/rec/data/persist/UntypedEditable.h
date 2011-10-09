@@ -7,7 +7,7 @@
 namespace rec {
 
 namespace persist { class EditableFactory; }
-namespace persist { class AppInstance; }
+namespace persist { class EditableUpdateQueue; }
 
 namespace data {
 
@@ -68,7 +68,7 @@ class UntypedEditable : public Editable {
   persist::EditableFactory* editableFactory_;
   CriticalSection lock_;
 
-  friend class persist::AppInstance;
+  friend class persist::EditableUpdateQueue;
 
  private:
   mutable bool alreadyReadFromFile_;

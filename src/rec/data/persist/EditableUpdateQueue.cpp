@@ -1,4 +1,4 @@
-#include "rec/data/persist/AppInstance.h"
+#include "rec/data/persist/EditableUpdateQueue.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/STL.h"
 #include "rec/util/thread/MakeThread.h"
@@ -8,25 +8,25 @@ namespace persist {
 
 using data::UntypedEditable;
 
-AppInstance::AppInstance() : EditableFactory() {
+EditableUpdateQueue::EditableUpdateQueue() : EditableFactory() {
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
-                                       this, &AppInstance::update));
+                                       this, &EditableUpdateQueue::update));
   updateThread_->setPriority(UPDATE_PRIORITY);
 
   writeThread_.reset(thread::makeLoop(WRITE_PERIOD, "App::write",
-                                       this, &AppInstance::write));
+                                       this, &EditableUpdateQueue::write));
   writeThread_->setPriority(WRITE_PRIORITY);
   updateThread_->startThread();
   writeThread_->startThread();
 }
 
-AppInstance::~AppInstance() {
+EditableUpdateQueue::~EditableUpdateQueue() {
   writeThread_->stopThread(1000);
   updateThread_->stopThread(1000);
 }
 
 // A piece of data got new information!
-void AppInstance::needsUpdate(UntypedEditable* data) {
+void EditableUpdateQueue::needsUpdate(UntypedEditable* data) {
   {
     ScopedLock l(lock_);
     updateData_.insert(data);
@@ -34,7 +34,7 @@ void AppInstance::needsUpdate(UntypedEditable* data) {
   updateThread_->notify();
 }
 
-bool AppInstance::running() const {
+bool EditableUpdateQueue::running() const {
 	return writeThread_ && updateThread_ &&
     !(writeThread_->threadShouldExit() || writeThread_->threadShouldExit());
 }
@@ -56,7 +56,7 @@ void extendAndClear(Container *from, Container *to, CriticalSection* lock) {
   }
 }
 
-bool AppInstance::update() {
+bool EditableUpdateQueue::update() {
   if (lockedEmpty(updateData_, &lock_) || !running())
     return true;
 
@@ -71,7 +71,7 @@ bool AppInstance::update() {
   return true;
 }
 
-bool AppInstance::write() {
+bool EditableUpdateQueue::write() {
   if (lockedEmpty(writeData_, &lock_))
     return true;
 
@@ -83,20 +83,20 @@ bool AppInstance::write() {
   return true;
 }
 
-void AppInstance::start() {
+void EditableUpdateQueue::start() {
   CHECK(!instance_);
-  instance_ = new AppInstance();
+  instance_ = new EditableUpdateQueue();
 }
 
-void AppInstance::stop() {
+void EditableUpdateQueue::stop() {
   delete instance_;
   instance_ = NULL;
 }
 
-AppInstance* AppInstance::instance_ = NULL;
+EditableUpdateQueue* EditableUpdateQueue::instance_ = NULL;
 
 EditableFactory* getEditableFactory() {
-  return AppInstance::getInstance();
+  return EditableUpdateQueue::getInstance();
 }
 
 }  // namespace persist

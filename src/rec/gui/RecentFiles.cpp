@@ -59,9 +59,9 @@ void addRecentFile(const VirtualFile& f) {
   data::pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    data::append(persist::setterGlobal<RecentFiles>(), "file", msg);
+    data::append(persist::editableGlobal<RecentFiles>(), "file", msg);
   else
-    data::set(persist::setterGlobal<RecentFiles>(), "file", slot, msg);
+    data::set(persist::editableGlobal<RecentFiles>(), "file", slot, msg);
 }
 
 }  // namespace gui
