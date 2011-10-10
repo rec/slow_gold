@@ -60,7 +60,7 @@
 		A71D485B066F0168FD40E827 = { isa = PBXBuildFile; fileRef = D8B011CF05AE82F95C0D38EE; };
 		2C1769081A0C558D3DEB815F = { isa = PBXBuildFile; fileRef = E19158321F260DBCC2420226; };
 		E3EBBCA5AA6A5E056DFB20F4 = { isa = PBXBuildFile; fileRef = B4461DEC69D945A52D6895B4; };
-		10BDB147197A841DD5FCDFC8 = { isa = PBXBuildFile; fileRef = 9DFD5769D25254A01A3A8F9C; };
+		B0186FFB6A88A3E852E7176F = { isa = PBXBuildFile; fileRef = 04D865FB5F326A81EDB6D54A; };
 		2D49BDB155BE4173860D57B9 = { isa = PBXBuildFile; fileRef = 13D1D052624F6A0B246F6335; };
 		15546065C1A9AA5AA0C640B5 = { isa = PBXBuildFile; fileRef = 1748B196C7CF584702E6C34F; };
 		111796407C2989227258A1C2 = { isa = PBXBuildFile; fileRef = 4B0604DDBF04CB4876204EEC; };
@@ -371,8 +371,8 @@
 		B4461DEC69D945A52D6895B4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Binary.cpp; path = ../../../../src/rec/data/Binary.cpp; sourceTree = SOURCE_ROOT; };
 		62376A8BB839E4BF6140E7CF = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Binary.h; path = ../../../../src/rec/data/Binary.h; sourceTree = SOURCE_ROOT; };
 		82DE2F8D71A94D1D8F08712E = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandManager.h; path = ../../../../src/rec/data/commands/CommandManager.h; sourceTree = SOURCE_ROOT; };
-		9DFD5769D25254A01A3A8F9C = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EventQueue.cpp; path = ../../../../src/rec/data/commands/EventQueue.cpp; sourceTree = SOURCE_ROOT; };
-		70CF36904FE490C80769CE5D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EventQueue.h; path = ../../../../src/rec/data/commands/EventQueue.h; sourceTree = SOURCE_ROOT; };
+		04D865FB5F326A81EDB6D54A = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UndoQueue.cpp; path = ../../../../src/rec/data/commands/UndoQueue.cpp; sourceTree = SOURCE_ROOT; };
+		459E115E11C57A39FA2C6BCD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UndoQueue.h; path = ../../../../src/rec/data/commands/UndoQueue.h; sourceTree = SOURCE_ROOT; };
 		13D1D052624F6A0B246F6335 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Editable.cpp; path = ../../../../src/rec/data/Editable.cpp; sourceTree = SOURCE_ROOT; };
 		B96847524BE56BD50BD7A593 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Editable.h; path = ../../../../src/rec/data/Editable.h; sourceTree = SOURCE_ROOT; };
 		1748B196C7CF584702E6C34F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Copy.cpp; path = ../../../../src/rec/data/persist/Copy.cpp; sourceTree = SOURCE_ROOT; };
@@ -927,8 +927,8 @@
 				CB8B23C0F8C826C3E85425DC ); name = command; sourceTree = "<group>"; };
 		7C3287A13917FB065B42E2B3 = { isa = PBXGroup; children = (
 				82DE2F8D71A94D1D8F08712E,
-				9DFD5769D25254A01A3A8F9C,
-				70CF36904FE490C80769CE5D ); name = commands; sourceTree = "<group>"; };
+				04D865FB5F326A81EDB6D54A,
+				459E115E11C57A39FA2C6BCD ); name = commands; sourceTree = "<group>"; };
 		98CF4FA3667E193E9E715CA3 = { isa = PBXGroup; children = (
 				1748B196C7CF584702E6C34F,
 				73F81818D005D0CCFDB05239,
@@ -1452,7 +1452,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		7DFC9B1703B265DF871F0A0A = { isa = PBXGroup; children = (
+		986F88803304B5483B412CE9 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1579,7 +1579,7 @@
 				A71D485B066F0168FD40E827,
 				2C1769081A0C558D3DEB815F,
 				E3EBBCA5AA6A5E056DFB20F4,
-				10BDB147197A841DD5FCDFC8,
+				B0186FFB6A88A3E852E7176F,
 				2D49BDB155BE4173860D57B9,
 				15546065C1A9AA5AA0C640B5,
 				111796407C2989227258A1C2,
@@ -1764,7 +1764,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 7DFC9B1703B265DF871F0A0A; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 986F88803304B5483B412CE9; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

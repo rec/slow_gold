@@ -80,12 +80,14 @@ void UntypedEditable::update() {
     old.swap(queue_);
   }
 
+  OperationQueue undo;
   for (OperationQueue::iterator i = old.begin(); i != old.end(); ++i) {
     ScopedLock l(lock_);
-    delete applyOperations(**i, message_);
+    undo.push_back(applyOperations(**i, message_));
   }
 
   stl::deletePointers(&old);
+  stl::deletePointers(&undo);
   onDataChange();
 }
 

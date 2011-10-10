@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Ed74KG7TQ" name="tests">
+  <MAINGROUP id="Y0N4sAAaF" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -338,10 +338,10 @@
         <GROUP id="CAKZeMfhg" name="commands">
           <FILE compile="0" file="../../src/rec/data/commands/CommandManager.h"
                 id="IHssEhmLA" name="CommandManager.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/commands/EventQueue.cpp"
-                id="kP16HweKq" name="EventQueue.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/commands/EventQueue.h" id="pAzuKdeQm"
-                name="EventQueue.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/commands/UndoQueue.cpp"
+                id="nTy54xxkL" name="UndoQueue.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/commands/UndoQueue.h" id="IrbRGkT8u"
+                name="UndoQueue.h" resource="0"/>
         </GROUP>
         <FILE compile="1" file="../../src/rec/data/Editable.cpp" id="KApo1Sygl"
               name="Editable.cpp" resource="0"/>
@@ -1275,7 +1275,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="SN8QufyzG" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="c8dSEsldG" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
