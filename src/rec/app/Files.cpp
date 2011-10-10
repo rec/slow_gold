@@ -1,4 +1,4 @@
-#include "rec/app/Directory.h"
+#include "rec/app/Files.h"
 
 namespace rec {
 namespace app {
@@ -17,10 +17,14 @@ void setName(const String& name) {
 
 const String& getName() { return applicationName; }
 
-File getDirectory() {
+File getAppDirectory() {
   return File::getSpecialLocation(File::userApplicationDataDirectory).
     getChildFile(COMPANY_NAME).
      getChildFile(applicationName);
+}
+
+File getAppFile(const String& name) {
+  return getAppDirectory().getChildFile(name);
 }
 
 }  // namespace app

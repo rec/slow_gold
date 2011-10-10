@@ -31,7 +31,7 @@ class UndoQueue {
   int writtenTo_;
   int undoneTo_;
 
-  DISALLOW_COPY_AND_ASSIGN(UndoQueue);
+  DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };
 
 }  // namespace commands

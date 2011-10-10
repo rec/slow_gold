@@ -3,6 +3,7 @@
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/EditableUpdateQueue.h"
 #include "rec/data/persist/Copy.h"
+#include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
 
@@ -67,7 +68,7 @@ void UntypedEditable::apply(OperationList* op) {
     ScopedLock l(lock_);
     queue_.push_back(op);
   }
-  persist::EditableUpdateQueue::getInstance()->needsUpdate(this);
+  persist::needsUpdate(this);
 }
 
 void UntypedEditable::update() {

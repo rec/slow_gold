@@ -28,19 +28,19 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="VRaUJWseq" name="command">
+  <MAINGROUP id="Xs4ie7FJ0" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
               name="Application.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/app/Directory.cpp" id="QOFwumsdF"
-              name="Directory.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/app/Directory.h" id="occaG3Lai"
-              name="Directory.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/app/DownloadVersion.cpp" id="XbzVZEK91"
               name="DownloadVersion.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/DownloadVersion.h" id="0uwMgxLQ8"
               name="DownloadVersion.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/app/Files.cpp" id="EGm0BoyRK"
+              name="Files.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/app/Files.h" id="pqRbSXdw4" name="Files.h"
+              resource="0"/>
         <FILE compile="1" file="../../src/rec/app/GenericApplication.cpp" id="a0hrK3sRp"
               name="GenericApplication.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/GenericApplication.h" id="VBFiydWHZ"
@@ -1215,7 +1215,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="Wpox5nlSf" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="147gkPJtV" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

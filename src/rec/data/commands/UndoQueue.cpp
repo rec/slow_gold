@@ -20,6 +20,7 @@ UndoQueue::~UndoQueue() {
 void UndoQueue::add(Action* event) {
   ScopedLock l(lock_);
   events_.push_back(event);
+  ++undoneTo_;
 }
 
 void UndoQueue::write() {
@@ -27,10 +28,8 @@ void UndoQueue::write() {
   {
     ScopedLock l(lock_);
     int size = events_.size();
-    if (writtenTo_ != size) {
-      events.reset(new ActionList(events_.begin() + writtenTo_, events_.end()));
-      writtenTo_ = size;
-    }
+    events.reset(new ActionList(events_.begin() + writtenTo_, events_.end()));
+    writtenTo_ = size;
   }
 
   for (ActionList::iterator i = events->begin(); i != events->end(); ++i)

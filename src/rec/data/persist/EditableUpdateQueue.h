@@ -7,6 +7,7 @@
 namespace rec {
 
 namespace data { class UntypedEditable; }
+namespace data { namespace commands { class UndoQueue; }}
 
 namespace persist {
 
@@ -21,7 +22,7 @@ class EditableUpdateQueue {
   static const int WRITE_PERIOD = 100;
 
   // A piece of data got new information!
-  virtual void needsUpdate(data::UntypedEditable* data);
+  static void needsUpdate(data::UntypedEditable* d) { instance_->doUpdate(d); }
 
   bool update();
   bool write();
@@ -29,8 +30,8 @@ class EditableUpdateQueue {
   static void start();
   static void stop();
 
-  static EditableUpdateQueue* getInstance() { return instance_; }
   static EditableFactory* getFactory() { return instance_->factory_.get(); }
+  static data::commands::UndoQueue* getUndoQueue() { return instance_->undo_.get(); }
 
   typedef std::set<data::UntypedEditable*> DataSet;
   bool running() const;
@@ -38,6 +39,8 @@ class EditableUpdateQueue {
 private:
   virtual ~EditableUpdateQueue();
   explicit EditableUpdateQueue();
+
+  void doUpdate(data::UntypedEditable*);
 
   CriticalSection lock_;
 
@@ -47,6 +50,7 @@ private:
   thread_ptr<Thread> updateThread_;
   thread_ptr<Thread> writeThread_;
   ptr<EditableFactory> factory_;
+  ptr<data::commands::UndoQueue> undo_;
 
   static EditableUpdateQueue* instance_;
 

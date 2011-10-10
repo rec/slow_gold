@@ -11,7 +11,8 @@ void setName(const String&);
 const String& getName();
 
 // Get the root directory to store files.
-File getDirectory();
+File getAppDirectory();
+File getAppFile(const String&);
 
 }  // namespace app
 }  // namespace rec

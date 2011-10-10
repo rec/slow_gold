@@ -1,4 +1,6 @@
 #include "rec/data/persist/EditableUpdateQueue.h"
+#include "rec/app/Files.h"
+#include "rec/data/commands/UndoQueue.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/STL.h"
@@ -9,7 +11,9 @@ namespace persist {
 
 using data::UntypedEditable;
 
-EditableUpdateQueue::EditableUpdateQueue() : factory_(new EditableFactory()) {
+EditableUpdateQueue::EditableUpdateQueue()
+    : factory_(new EditableFactory()),
+      undo_(new data::commands::UndoQueue(app::getAppFile("UndoQueue.Action"))) {
   updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
                                        this, &EditableUpdateQueue::update));
   updateThread_->setPriority(UPDATE_PRIORITY);
@@ -27,7 +31,7 @@ EditableUpdateQueue::~EditableUpdateQueue() {
 }
 
 // A piece of data got new information!
-void EditableUpdateQueue::needsUpdate(UntypedEditable* data) {
+void EditableUpdateQueue::doUpdate(UntypedEditable* data) {
   {
     ScopedLock l(lock_);
     updateData_.insert(data);
@@ -98,6 +102,14 @@ EditableUpdateQueue* EditableUpdateQueue::instance_ = NULL;
 
 EditableFactory* getEditableFactory() {
   return EditableUpdateQueue::getFactory();
+}
+
+data::commands::UndoQueue* getUndoQueue() {
+  return EditableUpdateQueue::getUndoQueue();
+}
+
+void needsUpdate(UntypedEditable* editable) {
+  return EditableUpdateQueue::needsUpdate(editable);
 }
 
 }  // namespace persist

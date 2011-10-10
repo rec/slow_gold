@@ -2,7 +2,7 @@
 
 #include "rec/util/file/VirtualFile.h"
 
-#include "rec/app/Directory.h"
+#include "rec/app/Files.h"
 #include "rec/util/file/Util.h"
 
 using namespace juce;
@@ -52,12 +52,12 @@ const File getVirtual(const VirtualFile& v) {
 }
 
 const File getShadowDirectory(const VirtualFile& vf) {
-  const File appDir = app::getDirectory();
+  const File appDir = app::getAppDirectory();
   if (empty(vf))
     return appDir;
 
   String name = str(VirtualFile::Type_Name(vf.type())).toLowerCase();
-  File f = app::getDirectory().getChildFile(name);
+  File f = app::getAppFile(name);
   return getFile(getFile(f, vf.name()), vf.path());
 }
 

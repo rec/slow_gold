@@ -6,7 +6,7 @@
 #include "rec/util/file/VirtualFile.h"
 #include "rec/util/STL.h"
 
-#include "rec/app/Directory.h"
+#include "rec/app/Files.h"
 
 namespace rec {
 namespace persist {
