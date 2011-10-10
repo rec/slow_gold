@@ -136,9 +136,10 @@
 	};
 	17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1069, 572}}";
-			sepNavSelRange = "{807, 0}";
-			sepNavVisRange = "{102, 885}";
+			sepNavIntBoundsRect = "{{0, 0}, {762, 677}}";
+			sepNavSelRange = "{305, 61}";
+			sepNavVisRange = "{0, 1434}";
+			sepNavWindowFrame = "{{423, 169}, {968, 891}}";
 		};
 	};
 	17BE01CE1E276524F736B384 /* Equals.h */ = {
@@ -391,6 +392,14 @@
 			sepNavSelRange = "{123, 45}";
 			sepNavVisRange = "{0, 816}";
 			sepNavWindowFrame = "{{508, 221}, {968, 891}}";
+		};
+	};
+	3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
+			sepNavSelRange = "{599, 0}";
+			sepNavVisRange = "{0, 1148}";
+			sepNavWindowFrame = "{{15, 282}, {968, 891}}";
 		};
 	};
 	40EB1C11D08162E107F35773 /* Gain.cpp */ = {
@@ -1071,8 +1080,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 339976323;
-			PBXWorkspaceStateSaveDate = 339976323;
+			PBXPerProjectTemplateStateSaveDate = 339977226;
+			PBXWorkspaceStateSaveDate = 339977226;
 		};
 		perUserProjectItems = {
 			E2025E4B143D00940036FA27 = E2025E4B143D00940036FA27 /* PBXTextBookmark */;
@@ -1616,10 +1625,17 @@
 			E20268F714438D520036FA27 = E20268F714438D520036FA27 /* PBXTextBookmark */;
 			E202690414439B1D0036FA27 = E202690414439B1D0036FA27 /* PBXTextBookmark */;
 			E202690514439B1D0036FA27 = E202690514439B1D0036FA27 /* PBXTextBookmark */;
-			E202694A1443A0930036FA27 /* XCBuildMessageTextBookmark */ = E202694A1443A0930036FA27 /* XCBuildMessageTextBookmark */;
-			E202694D1443A0B80036FA27 /* XCBuildMessageTextBookmark */ = E202694D1443A0B80036FA27 /* XCBuildMessageTextBookmark */;
-			E202694E1443A0B80036FA27 /* PBXTextBookmark */ = E202694E1443A0B80036FA27 /* PBXTextBookmark */;
-			E20269511443A0B80036FA27 /* PBXTextBookmark */ = E20269511443A0B80036FA27 /* PBXTextBookmark */;
+			E202694A1443A0930036FA27 = E202694A1443A0930036FA27 /* PBXTextBookmark */;
+			E202694D1443A0B80036FA27 = E202694D1443A0B80036FA27 /* PBXTextBookmark */;
+			E202694E1443A0B80036FA27 = E202694E1443A0B80036FA27 /* PBXTextBookmark */;
+			E20269511443A0B80036FA27 = E20269511443A0B80036FA27 /* PBXTextBookmark */;
+			E20269711443A4360036FA27 /* XCBuildMessageTextBookmark */ = E20269711443A4360036FA27 /* XCBuildMessageTextBookmark */;
+			E20269741443A44A0036FA27 /* XCBuildMessageTextBookmark */ = E20269741443A44A0036FA27 /* XCBuildMessageTextBookmark */;
+			E20269751443A44D0036FA27 /* XCBuildMessageTextBookmark */ = E20269751443A44D0036FA27 /* XCBuildMessageTextBookmark */;
+			E20269761443A44D0036FA27 /* PBXTextBookmark */ = E20269761443A44D0036FA27 /* PBXTextBookmark */;
+			E20269791443A44D0036FA27 /* PBXTextBookmark */ = E20269791443A44D0036FA27 /* PBXTextBookmark */;
+			E202697C1443A44D0036FA27 /* PBXTextBookmark */ = E202697C1443A44D0036FA27 /* PBXTextBookmark */;
+			E20269851443A4750036FA27 /* PBXTextBookmark */ = E20269851443A4750036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -4738,7 +4754,7 @@
 		comments = "Expected `}' at end of input";
 		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
 		rLen = 1;
-		rLoc = 41;
+		rLoc = 42;
 		rType = 1;
 	};
 	E2026207143F43C70036FA27 /* PBXTextBookmark */ = {
@@ -4746,7 +4762,7 @@
 		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
 		name = "AudioMagicStretchy.cpp: 34";
 		rLen = 0;
-		rLoc = 807;
+		rLoc = 860;
 		rType = 0;
 		vrLen = 885;
 		vrLoc = 102;
@@ -7863,20 +7879,18 @@
 		vrLen = 1955;
 		vrLoc = 0;
 	};
-	E202694A1443A0930036FA27 /* XCBuildMessageTextBookmark */ = {
+	E202694A1443A0930036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected ';' before ':' token";
 		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 24;
 		rType = 1;
 	};
-	E202694D1443A0B80036FA27 /* XCBuildMessageTextBookmark */ = {
+	E202694D1443A0B80036FA27 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Expected ';' before ':' token";
 		fRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 24;
 		rType = 1;
@@ -7899,6 +7913,73 @@
 		rLoc = 737;
 		rType = 0;
 		vrLen = 2077;
+		vrLoc = 0;
+	};
+	E20269711443A4360036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'d' was not declared in this scope";
+		fRef = 3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 19;
+		rType = 1;
+	};
+	E20269741443A44A0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'stretchy_' was not declared in this scope";
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	E20269751443A44D0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Invalid use of incomplete type 'struct AudioTimeScaler'";
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 12;
+		rType = 1;
+	};
+	E20269761443A44D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		name = "AudioMagicStretchy.cpp: 13";
+		rLen = 61;
+		rLoc = 305;
+		rType = 0;
+		vrLen = 1440;
+		vrLoc = 0;
+	};
+	E20269791443A44D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		name = "AudioMagicStretchy.cpp: 19";
+		rLen = 61;
+		rLoc = 443;
+		rType = 0;
+		vrLen = 1440;
+		vrLoc = 0;
+	};
+	E202697C1443A44D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3BA311A1732B7D20572C97AD /* SoundTouchStretchy.cpp */;
+		name = "SoundTouchStretchy.cpp: 20";
+		rLen = 0;
+		rLoc = 498;
+		rType = 0;
+		vrLen = 1151;
+		vrLoc = 0;
+	};
+	E20269851443A4750036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		name = "AudioMagicStretchy.cpp: 13";
+		rLen = 61;
+		rLoc = 305;
+		rType = 0;
+		vrLen = 1434;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {

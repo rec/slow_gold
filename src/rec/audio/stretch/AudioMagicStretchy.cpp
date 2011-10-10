@@ -15,7 +15,14 @@ class AudioMagicStretchy : public source::Stretchy {
 
   void initializeStretcher() {
     scaler_.reset(new AudioTimeScaler);
-    audio::stretch::Init(stretch_, scaler_.get());
+
+    if (const char* err = scaler_->Init(timeScale(stretch_),
+                                        stretch_.sample_rate(),
+                                        stretch_.channels(),
+                                        pitchScale(stretch_),
+                                        stretch_.bands(),
+                                        stretch_.filter_overlap()))
+      LOG(ERROR) << err;
   }
 
   int getInputSampleCount(int numSamples) const {
