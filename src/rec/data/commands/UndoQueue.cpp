@@ -1,28 +1,27 @@
 #include "rec/data/commands/UndoQueue.h"
 #include "rec/util/file/LogFile.h"
 
-#include "rec/data/commands/Event.pb.h"
-
+#include "rec/data/commands/Action.pb.h"
 
 namespace rec {
 namespace data {
 namespace commands {
 
-EventQueue::EventQueue(const File& file)
+UndoQueue::UndoQueue(const File& file)
     : logfile_(new file::Output(file)) {
 }
 
-EventQueue::~EventQueue() {
+UndoQueue::~UndoQueue() {
   write();
 }
 
-void EventQueue::add(Event* event) {
+void UndoQueue::add(Action* event) {
   ScopedLock l(lock_);
   events_.push_back(event);
 }
 
-void EventQueue::write() {
-  EventList events;
+void UndoQueue::write() {
+  ActionList events;
   {
     ScopedLock l(lock_);
     if (events_.empty())
@@ -31,7 +30,7 @@ void EventQueue::write() {
     events.swap(events_);
   }
 
-  for (EventList::iterator i = events_.begin(); i != events_.end(); ++i) {
+  for (ActionList::iterator i = events_.begin(); i != events_.end(); ++i) {
     logfile_->write(**i);
     delete *i;
   }

@@ -11,26 +11,26 @@ namespace rec {
 namespace data {
 namespace commands {
 
-class Event;
+class Action;
 
-class EventQueue {
+class UndoQueue {
  public:
-  explicit EventQueue(const juce::File& file);
+  explicit UndoQueue(const juce::File& file);
 
-  ~EventQueue();
+  ~UndoQueue();
 
-  void add(Event* event);
+  void add(Action* event);
 
   void write();
 
  private:
-  typedef std::vector<Event*> EventList;
+  typedef std::vector<Action*> ActionList;
 
-  EventList events_;
+  ActionList events_;
   ptr<file::Output> logfile_;
   juce::CriticalSection lock_;
 
-  DISALLOW_COPY_AND_ASSIGN(EventQueue);
+  DISALLOW_COPY_AND_ASSIGN(UndoQueue);
 };
 
 }  // namespace commands

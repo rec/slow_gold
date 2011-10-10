@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Y2CBQX2o8" name="Slow">
+  <MAINGROUP id="0YNJJRhZI" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -1089,10 +1089,10 @@
         </GROUP>
         <GROUP id="w0cToJxUH" name="data">
           <GROUP id="XxASuQyZT" name="commands">
-            <FILE compile="1" file="../../genfiles/proto/rec/data/commands/Event.pb.cc"
-                  id="JKU3qOT68" name="Event.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/data/commands/Event.pb.h"
-                  id="4ylFdLV2f" name="Event.pb.h" resource="0"/>
+            <FILE compile="1" file="../../genfiles/proto/rec/data/commands/Action.pb.cc"
+                  id="Ek3uEw3as" name="Action.pb.cc" resource="0"/>
+            <FILE compile="0" file="../../genfiles/proto/rec/data/commands/Action.pb.h"
+                  id="I406OUylm" name="Action.pb.h" resource="0"/>
           </GROUP>
           <FILE compile="1" file="../../genfiles/proto/rec/data/Operation.pb.cc"
                 id="lCIPg60Gg" name="Operation.pb.cc" resource="0"/>
@@ -1215,7 +1215,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="4e4CiSADu" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="VMIQUmm88" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
