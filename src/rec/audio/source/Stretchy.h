@@ -41,9 +41,10 @@ class Stretchy : public Wrappy {
   virtual int64 process(float** ins, int inSamples,
                         float** outs, int outSamples) = 0;
 
-  virtual void doNextStretchedAudioBlock(const AudioSourceChannelInfo&);
+  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&);
 
   Stretch stretch_;
+  std::vector<float*> outOffset_;
 
  private:
   int64 processOneChunk(const juce::AudioSourceChannelInfo& info);
@@ -51,9 +52,7 @@ class Stretchy : public Wrappy {
 
   CriticalSection lock_;
 
-  int channels_;
   ptr<AudioSampleBuffer> buffer_;
-  std::vector<float*> outOffset_;
   double timeScale_;
   bool bypass_;
 

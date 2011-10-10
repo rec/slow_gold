@@ -52,21 +52,19 @@ void Stretchy::setStretch(const stretch::Stretch& s) {
   bypass_ = stretch_.passthrough_when_disabled() &&
     near(timeScale_, 1.0, DELTA) &&
     near(stretch::pitchScale(stretch_), 1.0, DELTA);
-  channels_ = stretch_.channels();
   if (bypass_) {
     timeScale_ = 1.0;
     return;
   }
 
-  if (!buffer_ || buffer_->getNumChannels() != channels_)
-    buffer_.reset(new Buffer(channels_, SAMPLE_BUFFER_INITIAL_SIZE));
+  if (!buffer_ || buffer_->getNumChannels() != stretch_.channels())
+    buffer_.reset(new Buffer(stretch_.channels(), SAMPLE_BUFFER_INITIAL_SIZE));
 
-  outOffset_.resize(channels_);
   initializeStretcher();
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
-  DCHECK_EQ(info.buffer->getNumChannels(), channels_);
+  DCHECK_EQ(info.buffer->getNumChannels(), stretch_.channels());
   bool bypass;
   {
     ScopedLock l(lock_);
@@ -75,10 +73,10 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
   if (bypass)
     Wrappy::getNextAudioBlock(info);
   else
-    doNextStretchedAudioBlock(info);
+    nextStretchedAudioBlock(info);
 }
 
-void Stretchy::doNextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
+void Stretchy::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = static_cast<int>(processOneChunk(i))) {
@@ -105,7 +103,7 @@ int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
   i.buffer = buffer_.get();
   source()->getNextAudioBlock(i);
 
-  for (int c = 0; c < channels_; ++c)
+  for (int c = 0; c < stretch_.channels(); ++c)
     outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
 
   return process(buffer_->getArrayOfChannels(), inSampleCount,

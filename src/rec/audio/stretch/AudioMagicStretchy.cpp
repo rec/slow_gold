@@ -14,6 +14,7 @@ class AudioMagicStretchy : public source::Stretchy {
   }
 
   void initializeStretcher() {
+    outOffset_.resize(stretch_.channels());
     scaler_.reset(new AudioTimeScaler);
 
     if (const char* err = scaler_->Init(timeScale(stretch_),

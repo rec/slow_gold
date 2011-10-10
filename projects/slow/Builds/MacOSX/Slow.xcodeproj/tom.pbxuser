@@ -136,9 +136,9 @@
 	};
 	17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {762, 677}}";
-			sepNavSelRange = "{305, 61}";
-			sepNavVisRange = "{0, 1434}";
+			sepNavIntBoundsRect = "{{0, 0}, {762, 689}}";
+			sepNavSelRange = "{1478, 0}";
+			sepNavVisRange = "{0, 1478}";
 			sepNavWindowFrame = "{{423, 169}, {968, 891}}";
 		};
 	};
@@ -1636,6 +1636,10 @@
 			E20269791443A44D0036FA27 /* PBXTextBookmark */ = E20269791443A44D0036FA27 /* PBXTextBookmark */;
 			E202697C1443A44D0036FA27 /* PBXTextBookmark */ = E202697C1443A44D0036FA27 /* PBXTextBookmark */;
 			E20269851443A4750036FA27 /* PBXTextBookmark */ = E20269851443A4750036FA27 /* PBXTextBookmark */;
+			E20269901443B45F0036FA27 /* PBXTextBookmark */ = E20269901443B45F0036FA27 /* PBXTextBookmark */;
+			E20269921443B4630036FA27 /* XCBuildMessageTextBookmark */ = E20269921443B4630036FA27 /* XCBuildMessageTextBookmark */;
+			E20269951443B46D0036FA27 /* PBXTextBookmark */ = E20269951443B46D0036FA27 /* PBXTextBookmark */;
+			E20269981443B46D0036FA27 /* PBXTextBookmark */ = E20269981443B46D0036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -4466,7 +4470,7 @@
 		isa = PBXTextBookmark;
 		fRef = AAA5BB5127ADF2A8A8116C7D /* Stretchy.h */;
 		rLen = 0;
-		rLoc = 9223372036854775808;
+		rLoc = 1689;
 		rType = 0;
 	};
 	E2026190143E79720036FA27 /* PBXTextBookmark */ = {
@@ -4474,7 +4478,7 @@
 		fRef = AAA5BB5127ADF2A8A8116C7D /* Stretchy.h */;
 		name = "Stretchy.h: 58";
 		rLen = 0;
-		rLoc = 1406;
+		rLoc = 1440;
 		rType = 0;
 		vrLen = 891;
 		vrLoc = 0;
@@ -7981,6 +7985,57 @@
 		rType = 0;
 		vrLen = 1434;
 		vrLoc = 0;
+	};
+	E20269901443B45F0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		name = "AudioMagicStretchy.cpp: 53";
+		rLen = 0;
+		rLoc = 1478;
+		rType = 0;
+		vrLen = 1478;
+		vrLoc = 0;
+	};
+	E20269911443B4630036FA27 /* Stretchy.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Stretchy.h;
+		path = ../../../../../rec/src/rec/audio/source/Stretchy.h;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {909, 871}}";
+			sepNavSelRange = "{1289, 0}";
+			sepNavVisRange = "{146, 1543}";
+		};
+	};
+	E20269921443B4630036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'std::vector<float*, std::allocator<float*> > rec::audio::source::Stretchy::outOffset_' is private";
+		fRef = E20269911443B4630036FA27 /* Stretchy.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 55;
+		rType = 1;
+	};
+	E20269951443B46D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */;
+		name = "AudioMagicStretchy.cpp: 53";
+		rLen = 0;
+		rLoc = 1478;
+		rType = 0;
+		vrLen = 1478;
+		vrLoc = 0;
+	};
+	E20269981443B46D0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E20269911443B4630036FA27 /* Stretchy.h */;
+		name = "Stretchy.h: 48";
+		rLen = 0;
+		rLoc = 1289;
+		rType = 0;
+		vrLen = 1543;
+		vrLoc = 146;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
