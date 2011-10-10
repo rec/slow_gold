@@ -19,6 +19,7 @@ namespace {
 const ::google::protobuf::Descriptor* Stretch_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Stretch_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* Stretch_Strategy_descriptor_ = NULL;
 
 }  // namespace
 
@@ -30,7 +31,8 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
       "rec/audio/stretch/Stretch.proto");
   GOOGLE_CHECK(file != NULL);
   Stretch_descriptor_ = file->message_type(0);
-  static const int Stretch_offsets_[17] = {
+  static const int Stretch_offsets_[18] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, strategy_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, time_disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, pitch_disabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Stretch, passthrough_when_disabled_),
@@ -60,6 +62,7 @@ void protobuf_AssignDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Stretch));
+  Stretch_Strategy_descriptor_ = Stretch_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -93,19 +96,22 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\037rec/audio/stretch/Stretch.proto\022\021rec.a"
     "udio.stretch\032\035rec/audio/source/Stereo.pr"
-    "oto\"\347\003\n\007Stretch\022\034\n\rtime_disabled\030\001 \001(\010:\005"
-    "false\022\035\n\016pitch_disabled\030\002 \001(\010:\005false\022\'\n\031"
-    "passthrough_when_disabled\030\003 \001(\010:\004true\022\025\n"
-    "\ntime_scale\030\004 \001(\001:\0011\022\031\n\014time_percent\030\005 \001"
-    "(\001:\003100\022\032\n\013sample_rate\030\006 \001(\001:\00544100\022\023\n\010c"
-    "hannels\030\007 \001(\r:\0012\022\026\n\013pitch_scale\030\010 \001(\001:\0011"
-    "\022\031\n\016semitone_shift\030\t \001(\001:\0010\022\027\n\014detune_ce"
-    "nts\030\n \001(\001:\0010\022\023\n\005bands\030\013 \001(\r:\0042048\022\031\n\016fil"
-    "ter_overlap\030\014 \001(\r:\0011\022\030\n\nchunk_size\030\r \001(\r"
-    ":\0041024\022\033\n\014prefill_size\030\016 \001(\r:\00515000\022$\n\025n"
-    "ext_buffer_fill_size\030\017 \001(\r:\00515000\022\036\n\022ina"
-    "ctive_wait_time\030\020 \001(\005:\002-1\022\032\n\017thread_prio"
-    "rity\030\021 \001(\r:\0014", 573);
+    "oto\"\330\004\n\007Stretch\022B\n\010strategy\030\022 \001(\0162#.rec."
+    "audio.stretch.Stretch.Strategy:\013AUDIO_MA"
+    "GIC\022\034\n\rtime_disabled\030\001 \001(\010:\005false\022\035\n\016pit"
+    "ch_disabled\030\002 \001(\010:\005false\022\'\n\031passthrough_"
+    "when_disabled\030\003 \001(\010:\004true\022\025\n\ntime_scale\030"
+    "\004 \001(\001:\0011\022\031\n\014time_percent\030\005 \001(\001:\003100\022\032\n\013s"
+    "ample_rate\030\006 \001(\001:\00544100\022\023\n\010channels\030\007 \001("
+    "\r:\0012\022\026\n\013pitch_scale\030\010 \001(\001:\0011\022\031\n\016semitone"
+    "_shift\030\t \001(\001:\0010\022\027\n\014detune_cents\030\n \001(\001:\0010"
+    "\022\023\n\005bands\030\013 \001(\r:\0042048\022\031\n\016filter_overlap\030"
+    "\014 \001(\r:\0011\022\030\n\nchunk_size\030\r \001(\r:\0041024\022\033\n\014pr"
+    "efill_size\030\016 \001(\r:\00515000\022$\n\025next_buffer_f"
+    "ill_size\030\017 \001(\r:\00515000\022\036\n\022inactive_wait_t"
+    "ime\030\020 \001(\005:\002-1\022\032\n\017thread_priority\030\021 \001(\r:\001"
+    "4\"+\n\010Strategy\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nSOUNDT"
+    "OUCH\020\002", 686);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -123,7 +129,29 @@ struct StaticDescriptorInitializer_rec_2faudio_2fstretch_2fStretch_2eproto {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* Stretch_Strategy_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Stretch_Strategy_descriptor_;
+}
+bool Stretch_Strategy_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
 #ifndef _MSC_VER
+const Stretch_Strategy Stretch::AUDIO_MAGIC;
+const Stretch_Strategy Stretch::SOUNDTOUCH;
+const Stretch_Strategy Stretch::Strategy_MIN;
+const Stretch_Strategy Stretch::Strategy_MAX;
+const int Stretch::Strategy_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int Stretch::kStrategyFieldNumber;
 const int Stretch::kTimeDisabledFieldNumber;
 const int Stretch::kPitchDisabledFieldNumber;
 const int Stretch::kPassthroughWhenDisabledFieldNumber;
@@ -159,6 +187,7 @@ Stretch::Stretch(const Stretch& from)
 
 void Stretch::SharedCtor() {
   _cached_size_ = 0;
+  strategy_ = 1;
   time_disabled_ = false;
   pitch_disabled_ = false;
   passthrough_when_disabled_ = true;
@@ -210,6 +239,7 @@ Stretch* Stretch::New() const {
 
 void Stretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    strategy_ = 1;
     time_disabled_ = false;
     pitch_disabled_ = false;
     passthrough_when_disabled_ = true;
@@ -217,9 +247,9 @@ void Stretch::Clear() {
     time_percent_ = 100;
     sample_rate_ = 44100;
     channels_ = 2u;
-    pitch_scale_ = 1;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    pitch_scale_ = 1;
     semitone_shift_ = 0;
     detune_cents_ = 0;
     bands_ = 2048u;
@@ -227,9 +257,9 @@ void Stretch::Clear() {
     chunk_size_ = 1024u;
     prefill_size_ = 15000u;
     next_buffer_fill_size_ = 15000u;
-    inactive_wait_time_ = -1;
   }
   if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    inactive_wait_time_ = -1;
     thread_priority_ = 4u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -249,7 +279,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &time_disabled_)));
-          _set_bit(0);
+          _set_bit(1);
         } else {
           goto handle_uninterpreted;
         }
@@ -265,7 +295,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &pitch_disabled_)));
-          _set_bit(1);
+          _set_bit(2);
         } else {
           goto handle_uninterpreted;
         }
@@ -281,7 +311,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &passthrough_when_disabled_)));
-          _set_bit(2);
+          _set_bit(3);
         } else {
           goto handle_uninterpreted;
         }
@@ -297,7 +327,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &time_scale_)));
-          _set_bit(3);
+          _set_bit(4);
         } else {
           goto handle_uninterpreted;
         }
@@ -313,7 +343,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &time_percent_)));
-          _set_bit(4);
+          _set_bit(5);
         } else {
           goto handle_uninterpreted;
         }
@@ -329,7 +359,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &sample_rate_)));
-          _set_bit(5);
+          _set_bit(6);
         } else {
           goto handle_uninterpreted;
         }
@@ -345,7 +375,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &channels_)));
-          _set_bit(6);
+          _set_bit(7);
         } else {
           goto handle_uninterpreted;
         }
@@ -361,7 +391,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &pitch_scale_)));
-          _set_bit(7);
+          _set_bit(8);
         } else {
           goto handle_uninterpreted;
         }
@@ -377,7 +407,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &semitone_shift_)));
-          _set_bit(8);
+          _set_bit(9);
         } else {
           goto handle_uninterpreted;
         }
@@ -393,7 +423,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
                  input, &detune_cents_)));
-          _set_bit(9);
+          _set_bit(10);
         } else {
           goto handle_uninterpreted;
         }
@@ -409,7 +439,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &bands_)));
-          _set_bit(10);
+          _set_bit(11);
         } else {
           goto handle_uninterpreted;
         }
@@ -425,7 +455,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &filter_overlap_)));
-          _set_bit(11);
+          _set_bit(12);
         } else {
           goto handle_uninterpreted;
         }
@@ -441,7 +471,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &chunk_size_)));
-          _set_bit(12);
+          _set_bit(13);
         } else {
           goto handle_uninterpreted;
         }
@@ -457,7 +487,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &prefill_size_)));
-          _set_bit(13);
+          _set_bit(14);
         } else {
           goto handle_uninterpreted;
         }
@@ -473,7 +503,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &next_buffer_fill_size_)));
-          _set_bit(14);
+          _set_bit(15);
         } else {
           goto handle_uninterpreted;
         }
@@ -489,7 +519,7 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &inactive_wait_time_)));
-          _set_bit(15);
+          _set_bit(16);
         } else {
           goto handle_uninterpreted;
         }
@@ -505,7 +535,28 @@ bool Stretch::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &thread_priority_)));
-          _set_bit(16);
+          _set_bit(17);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(144)) goto parse_strategy;
+        break;
+      }
+      
+      // optional .rec.audio.stretch.Stretch.Strategy strategy = 18 [default = AUDIO_MAGIC];
+      case 18: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_strategy:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::rec::audio::stretch::Stretch_Strategy_IsValid(value)) {
+            set_strategy(static_cast< ::rec::audio::stretch::Stretch_Strategy >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(18, value);
+          }
         } else {
           goto handle_uninterpreted;
         }
@@ -532,88 +583,94 @@ bool Stretch::MergePartialFromCodedStream(
 void Stretch::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional bool time_disabled = 1 [default = false];
-  if (_has_bit(0)) {
+  if (_has_bit(1)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->time_disabled(), output);
   }
   
   // optional bool pitch_disabled = 2 [default = false];
-  if (_has_bit(1)) {
+  if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->pitch_disabled(), output);
   }
   
   // optional bool passthrough_when_disabled = 3 [default = true];
-  if (_has_bit(2)) {
+  if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->passthrough_when_disabled(), output);
   }
   
   // optional double time_scale = 4 [default = 1];
-  if (_has_bit(3)) {
+  if (_has_bit(4)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->time_scale(), output);
   }
   
   // optional double time_percent = 5 [default = 100];
-  if (_has_bit(4)) {
+  if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->time_percent(), output);
   }
   
   // optional double sample_rate = 6 [default = 44100];
-  if (_has_bit(5)) {
+  if (_has_bit(6)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(6, this->sample_rate(), output);
   }
   
   // optional uint32 channels = 7 [default = 2];
-  if (_has_bit(6)) {
+  if (_has_bit(7)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->channels(), output);
   }
   
   // optional double pitch_scale = 8 [default = 1];
-  if (_has_bit(7)) {
+  if (_has_bit(8)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(8, this->pitch_scale(), output);
   }
   
   // optional double semitone_shift = 9 [default = 0];
-  if (_has_bit(8)) {
+  if (_has_bit(9)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(9, this->semitone_shift(), output);
   }
   
   // optional double detune_cents = 10 [default = 0];
-  if (_has_bit(9)) {
+  if (_has_bit(10)) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(10, this->detune_cents(), output);
   }
   
   // optional uint32 bands = 11 [default = 2048];
-  if (_has_bit(10)) {
+  if (_has_bit(11)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->bands(), output);
   }
   
   // optional uint32 filter_overlap = 12 [default = 1];
-  if (_has_bit(11)) {
+  if (_has_bit(12)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(12, this->filter_overlap(), output);
   }
   
   // optional uint32 chunk_size = 13 [default = 1024];
-  if (_has_bit(12)) {
+  if (_has_bit(13)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(13, this->chunk_size(), output);
   }
   
   // optional uint32 prefill_size = 14 [default = 15000];
-  if (_has_bit(13)) {
+  if (_has_bit(14)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(14, this->prefill_size(), output);
   }
   
   // optional uint32 next_buffer_fill_size = 15 [default = 15000];
-  if (_has_bit(14)) {
+  if (_has_bit(15)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(15, this->next_buffer_fill_size(), output);
   }
   
   // optional int32 inactive_wait_time = 16 [default = -1];
-  if (_has_bit(15)) {
+  if (_has_bit(16)) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(16, this->inactive_wait_time(), output);
   }
   
   // optional uint32 thread_priority = 17 [default = 4];
-  if (_has_bit(16)) {
+  if (_has_bit(17)) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(17, this->thread_priority(), output);
+  }
+  
+  // optional .rec.audio.stretch.Stretch.Strategy strategy = 18 [default = AUDIO_MAGIC];
+  if (_has_bit(0)) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      18, this->strategy(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -625,88 +682,94 @@ void Stretch::SerializeWithCachedSizes(
 ::google::protobuf::uint8* Stretch::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional bool time_disabled = 1 [default = false];
-  if (_has_bit(0)) {
+  if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->time_disabled(), target);
   }
   
   // optional bool pitch_disabled = 2 [default = false];
-  if (_has_bit(1)) {
+  if (_has_bit(2)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->pitch_disabled(), target);
   }
   
   // optional bool passthrough_when_disabled = 3 [default = true];
-  if (_has_bit(2)) {
+  if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->passthrough_when_disabled(), target);
   }
   
   // optional double time_scale = 4 [default = 1];
-  if (_has_bit(3)) {
+  if (_has_bit(4)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->time_scale(), target);
   }
   
   // optional double time_percent = 5 [default = 100];
-  if (_has_bit(4)) {
+  if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->time_percent(), target);
   }
   
   // optional double sample_rate = 6 [default = 44100];
-  if (_has_bit(5)) {
+  if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(6, this->sample_rate(), target);
   }
   
   // optional uint32 channels = 7 [default = 2];
-  if (_has_bit(6)) {
+  if (_has_bit(7)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->channels(), target);
   }
   
   // optional double pitch_scale = 8 [default = 1];
-  if (_has_bit(7)) {
+  if (_has_bit(8)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(8, this->pitch_scale(), target);
   }
   
   // optional double semitone_shift = 9 [default = 0];
-  if (_has_bit(8)) {
+  if (_has_bit(9)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(9, this->semitone_shift(), target);
   }
   
   // optional double detune_cents = 10 [default = 0];
-  if (_has_bit(9)) {
+  if (_has_bit(10)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(10, this->detune_cents(), target);
   }
   
   // optional uint32 bands = 11 [default = 2048];
-  if (_has_bit(10)) {
+  if (_has_bit(11)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->bands(), target);
   }
   
   // optional uint32 filter_overlap = 12 [default = 1];
-  if (_has_bit(11)) {
+  if (_has_bit(12)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(12, this->filter_overlap(), target);
   }
   
   // optional uint32 chunk_size = 13 [default = 1024];
-  if (_has_bit(12)) {
+  if (_has_bit(13)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(13, this->chunk_size(), target);
   }
   
   // optional uint32 prefill_size = 14 [default = 15000];
-  if (_has_bit(13)) {
+  if (_has_bit(14)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(14, this->prefill_size(), target);
   }
   
   // optional uint32 next_buffer_fill_size = 15 [default = 15000];
-  if (_has_bit(14)) {
+  if (_has_bit(15)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(15, this->next_buffer_fill_size(), target);
   }
   
   // optional int32 inactive_wait_time = 16 [default = -1];
-  if (_has_bit(15)) {
+  if (_has_bit(16)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(16, this->inactive_wait_time(), target);
   }
   
   // optional uint32 thread_priority = 17 [default = 4];
-  if (_has_bit(16)) {
+  if (_has_bit(17)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(17, this->thread_priority(), target);
+  }
+  
+  // optional .rec.audio.stretch.Stretch.Strategy strategy = 18 [default = AUDIO_MAGIC];
+  if (_has_bit(0)) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      18, this->strategy(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -720,6 +783,12 @@ int Stretch::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .rec.audio.stretch.Stretch.Strategy strategy = 18 [default = AUDIO_MAGIC];
+    if (has_strategy()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->strategy());
+    }
+    
     // optional bool time_disabled = 1 [default = false];
     if (has_time_disabled()) {
       total_size += 1 + 1;
@@ -757,13 +826,13 @@ int Stretch::ByteSize() const {
           this->channels());
     }
     
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional double pitch_scale = 8 [default = 1];
     if (has_pitch_scale()) {
       total_size += 1 + 8;
     }
     
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional double semitone_shift = 9 [default = 0];
     if (has_semitone_shift()) {
       total_size += 1 + 8;
@@ -809,6 +878,8 @@ int Stretch::ByteSize() const {
           this->next_buffer_fill_size());
     }
     
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional int32 inactive_wait_time = 16 [default = -1];
     if (has_inactive_wait_time()) {
       total_size += 2 +
@@ -816,8 +887,6 @@ int Stretch::ByteSize() const {
           this->inactive_wait_time());
     }
     
-  }
-  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     // optional uint32 thread_priority = 17 [default = 4];
     if (has_thread_priority()) {
       total_size += 2 +
@@ -853,58 +922,61 @@ void Stretch::MergeFrom(const Stretch& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      set_time_disabled(from.time_disabled());
+      set_strategy(from.strategy());
     }
     if (from._has_bit(1)) {
-      set_pitch_disabled(from.pitch_disabled());
+      set_time_disabled(from.time_disabled());
     }
     if (from._has_bit(2)) {
-      set_passthrough_when_disabled(from.passthrough_when_disabled());
+      set_pitch_disabled(from.pitch_disabled());
     }
     if (from._has_bit(3)) {
-      set_time_scale(from.time_scale());
+      set_passthrough_when_disabled(from.passthrough_when_disabled());
     }
     if (from._has_bit(4)) {
-      set_time_percent(from.time_percent());
+      set_time_scale(from.time_scale());
     }
     if (from._has_bit(5)) {
-      set_sample_rate(from.sample_rate());
+      set_time_percent(from.time_percent());
     }
     if (from._has_bit(6)) {
-      set_channels(from.channels());
+      set_sample_rate(from.sample_rate());
     }
     if (from._has_bit(7)) {
-      set_pitch_scale(from.pitch_scale());
+      set_channels(from.channels());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from._has_bit(8)) {
-      set_semitone_shift(from.semitone_shift());
+      set_pitch_scale(from.pitch_scale());
     }
     if (from._has_bit(9)) {
-      set_detune_cents(from.detune_cents());
+      set_semitone_shift(from.semitone_shift());
     }
     if (from._has_bit(10)) {
-      set_bands(from.bands());
+      set_detune_cents(from.detune_cents());
     }
     if (from._has_bit(11)) {
-      set_filter_overlap(from.filter_overlap());
+      set_bands(from.bands());
     }
     if (from._has_bit(12)) {
-      set_chunk_size(from.chunk_size());
+      set_filter_overlap(from.filter_overlap());
     }
     if (from._has_bit(13)) {
-      set_prefill_size(from.prefill_size());
+      set_chunk_size(from.chunk_size());
     }
     if (from._has_bit(14)) {
-      set_next_buffer_fill_size(from.next_buffer_fill_size());
+      set_prefill_size(from.prefill_size());
     }
     if (from._has_bit(15)) {
-      set_inactive_wait_time(from.inactive_wait_time());
+      set_next_buffer_fill_size(from.next_buffer_fill_size());
     }
   }
   if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from._has_bit(16)) {
+      set_inactive_wait_time(from.inactive_wait_time());
+    }
+    if (from._has_bit(17)) {
       set_thread_priority(from.thread_priority());
     }
   }
@@ -930,6 +1002,7 @@ bool Stretch::IsInitialized() const {
 
 void Stretch::Swap(Stretch* other) {
   if (other != this) {
+    std::swap(strategy_, other->strategy_);
     std::swap(time_disabled_, other->time_disabled_);
     std::swap(pitch_disabled_, other->pitch_disabled_);
     std::swap(passthrough_when_disabled_, other->passthrough_when_disabled_);

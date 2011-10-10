@@ -1,5 +1,6 @@
 #include "rec/audio/source/Stretchy.h"
 #include "rec/audio/stretch/AudioMagicStretchy.h"
+#include "rec/audio/stretch/SoundTouchStretchy.h"
 #include "rec/audio/stretch/Stretch.h"
 #include "rec/util/Math.h"
 
@@ -20,7 +21,11 @@ Stretchy::~Stretchy() {}
 
 // static
 Stretchy* Stretchy::create(Source* p, const Stretch& s) {
-  return stretch::createAudioMagicStretchy(p);
+  switch (s.strategy()) {
+   case Stretch::AUDIO_MAGIC: return stretch::createAudioMagicStretchy(p, s);
+   case Stretch::SOUNDTOUCH: return stretch::createSoundTouchStretchy(p, s);
+   default: return NULL;
+  }
 }
 
 int64 Stretchy::getTotalLength() const {

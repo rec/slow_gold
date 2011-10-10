@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="Xs4ie7FJ0" name="command">
+  <MAINGROUP id="oANO4iDQU" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -119,6 +119,54 @@
                   id="9vW5puA4i" name="RawFormatWriter.h" resource="0"/>
           </GROUP>
         </GROUP>
+        <GROUP id="D55B3XHeo" name="soundtouch">
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/AAFilter.cpp"
+                id="VtRL7iV4r" name="AAFilter.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/AAFilter.h"
+                id="281wwUpZh" name="AAFilter.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/BPMDetect.cpp"
+                id="F6pr4M2ND" name="BPMDetect.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/BPMDetect.h"
+                id="sydAw7VC9" name="BPMDetect.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/cpu_detect.h"
+                id="xCiXbpPtq" name="cpu_detect.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/cpu_detect_x86_gcc.cpp"
+                id="of3XZUwaI" name="cpu_detect_x86_gcc.cpp" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/cpu_detect_x86_win.cpp"
+                id="Lew7peXY8" name="cpu_detect_x86_win.cpp" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/FIFOSampleBuffer.cpp"
+                id="4QsmnpxHa" name="FIFOSampleBuffer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/FIFOSampleBuffer.h"
+                id="zYcTbRS7a" name="FIFOSampleBuffer.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/FIFOSamplePipe.h"
+                id="qwPTRWzCs" name="FIFOSamplePipe.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/FIRFilter.cpp"
+                id="pzaIy1aDA" name="FIRFilter.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/FIRFilter.h"
+                id="g8KTQg7tm" name="FIRFilter.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/PeakFinder.cpp"
+                id="p4IN9xpBy" name="PeakFinder.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/PeakFinder.h"
+                id="IpL0b81rj" name="PeakFinder.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/RateTransposer.cpp"
+                id="xJN14OCkM" name="RateTransposer.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/RateTransposer.h"
+                id="CATl50V9p" name="RateTransposer.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/SoundTouch.cpp"
+                id="gfGaLtSyg" name="SoundTouch.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/SoundTouch.h"
+                id="EIvoirVsN" name="SoundTouch.h" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/soundtouch_config.h"
+                id="w8mcIB6Fg" name="soundtouch_config.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/sse_optimized.cpp"
+                id="r5R9lXxa1" name="sse_optimized.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/STTypes.h" id="oJyV0IpVu"
+                name="STTypes.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/soundtouch/TDStretch.cpp"
+                id="XqzGg4VPr" name="TDStretch.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/soundtouch/TDStretch.h"
+                id="dZwDXSZNH" name="TDStretch.h" resource="0"/>
+        </GROUP>
         <GROUP id="1CsM6ZONT" name="source">
           <FILE compile="0" file="../../src/rec/audio/source/Empty.h" id="Ok5da1Dyg"
                 name="Empty.h" resource="0"/>
@@ -162,6 +210,10 @@
                 id="oeeyJupCE" name="AudioMagicStretchy.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/AudioMagicStretchy.h"
                 id="Yv7qP0UVk" name="AudioMagicStretchy.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/audio/stretch/SoundTouchStretchy.cpp"
+                id="tzx0s8350" name="SoundTouchStretchy.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/audio/stretch/SoundTouchStretchy.h"
+                id="n0tFvWYJT" name="SoundTouchStretchy.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/audio/stretch/Stretch.cpp" id="Iejs4pP9Y"
                 name="Stretch.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/audio/stretch/Stretch.h" id="UNcszMkiw"
@@ -1215,7 +1267,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="147gkPJtV" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="Z1jfchuRN" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
