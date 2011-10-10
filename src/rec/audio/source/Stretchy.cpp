@@ -66,6 +66,7 @@ void Stretchy::setStretch(const stretch::Stretch& s) {
 }
 
 void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
+  DCHECK_EQ(info.buffer->getNumChannels(), channels_);
   bool bypass;
   {
     ScopedLock l(lock_);
@@ -76,7 +77,9 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     return;
   }
 
-  DCHECK_EQ(info.buffer->getNumChannels(), channels_);
+}
+
+void Stretchy::doNextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
   int zeroCount = 0;
   for (AudioSourceChannelInfo i = info; i.numSamples; ) {
     if (int processed = static_cast<int>(processOneChunk(i))) {

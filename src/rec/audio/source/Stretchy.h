@@ -41,6 +41,8 @@ class Stretchy : public Wrappy {
   virtual int64 process(float** ins, int inSamples,
                         float** outs, int outSamples) = 0;
 
+  virtual void doNextStretchedAudioBlock(const AudioSourceChannelInfo&);
+
   Stretch stretch_;
 
  private:
