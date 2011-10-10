@@ -72,11 +72,10 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     ScopedLock l(lock_);
     bypass = bypass_;
   }
-  if (bypass) {
+  if (bypass)
     Wrappy::getNextAudioBlock(info);
-    return;
-  }
-
+  else
+    doNextStretchedAudioBlock(info);
 }
 
 void Stretchy::doNextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
