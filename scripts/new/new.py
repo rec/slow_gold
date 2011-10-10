@@ -34,14 +34,14 @@ where
   <type> is one of %s
   <filename> is a path to the new file name base
 
-""" % ', '.join(GROUPS.keys())
+""" % ', '.join(GROUPS)
 
 
-def usageError(fail=True, error=None):
-  if fail:
+def usageError(success=False, error=None, usage=USAGE):
+  if not success:
     if error:
       print 'ERROR: ', error
-    print USAGE
+    print usage
     raise ValueError
 
 def convertToCCode(data):
@@ -66,9 +66,9 @@ def makeContext(group, path, classname, file, suffix):
     package='.'.join(path),
     **context)
 
-def createCppFiles(groupname, file):
+def createCppFiles(file, groupname):
   group = GROUPS.get(groupname, None)
-  usageError(not group, 'No group ' + groupname)
+  usageError(group, 'No group ' + groupname)
 
   name = os.path.abspath(file)
   path = ['rec'] + name.split('/src/rec/')[1].split('/')
@@ -100,5 +100,11 @@ def createCppFiles(groupname, file):
 
 if __name__ == "__main__":
   args = sys.argv[1:]
-  usageError(len(args) is not 2)
-  createCppFiles(*args)
+
+  while args:
+    arg = args.pop(0).split('.')
+    if len(arg) > 1:
+      createCppFiles('.'.join(arg[0 : -1]), arg[-1])
+    else:
+      usageError(args)  # Need at least one more argument
+      createCppFiles(arg, args.pop(0))
