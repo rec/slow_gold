@@ -20,7 +20,6 @@ class UndoQueue {
   ~UndoQueue();
 
   void add(Action* event);
-
   void write();
 
  private:
@@ -29,6 +28,8 @@ class UndoQueue {
   ActionList events_;
   ptr<file::Output> logfile_;
   juce::CriticalSection lock_;
+  int writtenTo_;
+  int undoneTo_;
 
   DISALLOW_COPY_AND_ASSIGN(UndoQueue);
 };

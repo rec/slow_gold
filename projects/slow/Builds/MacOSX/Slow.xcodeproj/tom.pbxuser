@@ -402,9 +402,9 @@
 	};
 	413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {762, 713}}";
-			sepNavSelRange = "{725, 0}";
-			sepNavVisRange = "{0, 725}";
+			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
+			sepNavSelRange = "{59, 0}";
+			sepNavVisRange = "{0, 904}";
 			sepNavWindowFrame = "{{176, 135}, {968, 891}}";
 		};
 	};
@@ -884,6 +884,13 @@
 			sepNavIntBoundsRect = "{{0, 0}, {574, 915}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 1142}";
+		};
+	};
+	810015463C13C25F279E6749 /* UndoQueue.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1073, 546}}";
+			sepNavSelRange = "{326, 0}";
+			sepNavVisRange = "{113, 351}";
 		};
 	};
 	88C80D4AC91778AF36BD5055 /* stream.cpp */ = {
@@ -1519,6 +1526,14 @@
 			E20268261443772A0036FA27 = E20268261443772A0036FA27 /* PBXTextBookmark */;
 			E20268291443772A0036FA27 = E20268291443772A0036FA27 /* PBXTextBookmark */;
 			E202682C144377CE0036FA27 = E202682C144377CE0036FA27 /* PBXTextBookmark */;
+			E202684214437A030036FA27 /* XCBuildMessageTextBookmark */ = E202684214437A030036FA27 /* XCBuildMessageTextBookmark */;
+			E202684514437A1A0036FA27 /* XCBuildMessageTextBookmark */ = E202684514437A1A0036FA27 /* XCBuildMessageTextBookmark */;
+			E202684614437A1A0036FA27 /* PBXTextBookmark */ = E202684614437A1A0036FA27 /* PBXTextBookmark */;
+			E202684914437A1A0036FA27 /* PBXTextBookmark */ = E202684914437A1A0036FA27 /* PBXTextBookmark */;
+			E202685414437AAE0036FA27 /* PBXTextBookmark */ = E202685414437AAE0036FA27 /* PBXTextBookmark */;
+			E202685514437AAE0036FA27 /* PBXTextBookmark */ = E202685514437AAE0036FA27 /* PBXTextBookmark */;
+			E202685E14437B200036FA27 /* PBXTextBookmark */ = E202685E14437B200036FA27 /* PBXTextBookmark */;
+			E202685F14437B200036FA27 /* PBXTextBookmark */ = E202685F14437B200036FA27 /* PBXTextBookmark */;
 			E20D9D0113A12D7D0012EB86 = E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */;
 			E20D9EC013A30C560012EB86 = E20D9EC013A30C560012EB86 /* PBXTextBookmark */;
 			E21977E413957654003CC739 = E21977E413957654003CC739 /* PBXTextBookmark */;
@@ -6968,7 +6983,7 @@
 		comments = "Rec/data/commands/EventQueue.h: No such file or directory";
 		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
 		rLen = 1;
-		rLoc = 0;
+		rLoc = 1;
 		rType = 1;
 	};
 	E20268251443772A0036FA27 /* PBXTextBookmark */ = {
@@ -6976,7 +6991,7 @@
 		comments = "Rec/data/commands/EventQueue.h: No such file or directory";
 		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
 		rLen = 1;
-		rLoc = 0;
+		rLoc = 1;
 		rType = 1;
 	};
 	E20268261443772A0036FA27 /* PBXTextBookmark */ = {
@@ -7004,9 +7019,87 @@
 		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
 		name = "UndoQueue.cpp: 42";
 		rLen = 0;
-		rLoc = 725;
+		rLoc = 759;
 		rType = 0;
 		vrLen = 725;
+		vrLoc = 0;
+	};
+	E202684214437A030036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'stl' has not been declared";
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 16;
+		rType = 1;
+	};
+	E202684514437A1A0036FA27 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'stl' has not been declared";
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 16;
+		rType = 1;
+	};
+	E202684614437A1A0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		name = "UndoQueue.cpp: 17";
+		rLen = 33;
+		rLoc = 349;
+		rType = 0;
+		vrLen = 894;
+		vrLoc = 0;
+	};
+	E202684914437A1A0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		name = "UndoQueue.cpp: 2";
+		rLen = 0;
+		rLoc = 63;
+		rType = 0;
+		vrLen = 894;
+		vrLoc = 0;
+	};
+	E202685414437AAE0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		name = "UndoQueue.cpp: 17";
+		rLen = 33;
+		rLoc = 349;
+		rType = 0;
+		vrLen = 882;
+		vrLoc = 0;
+	};
+	E202685514437AAE0036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		name = "UndoQueue.cpp: 2";
+		rLen = 0;
+		rLoc = 59;
+		rType = 0;
+		vrLen = 882;
+		vrLoc = 0;
+	};
+	E202685E14437B200036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		name = "UndoQueue.cpp: 17";
+		rLen = 33;
+		rLoc = 349;
+		rType = 0;
+		vrLen = 904;
+		vrLoc = 0;
+	};
+	E202685F14437B200036FA27 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 413A68F26A81B2A71A27C0C6 /* UndoQueue.cpp */;
+		name = "UndoQueue.cpp: 2";
+		rLen = 0;
+		rLoc = 59;
+		rType = 0;
+		vrLen = 904;
 		vrLoc = 0;
 	};
 	E20D9D0113A12D7D0012EB86 /* PBXTextBookmark */ = {
