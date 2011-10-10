@@ -9,6 +9,8 @@ namespace {
 
 class AudioMagicStretchy : public source::Stretchy {
  public:
+  static const int SAMPLE_BUFFER_SIZE = 1000;
+
   AudioMagicStretchy(PositionableAudioSource* s, const Stretch& stretch)
       : Stretchy(s, stretch), scaler_(new AudioTimeScaler) {
   }
@@ -16,6 +18,9 @@ class AudioMagicStretchy : public source::Stretchy {
   void initializeStretcher() {
     outOffset_.resize(stretch_.channels());
     scaler_.reset(new AudioTimeScaler);
+
+    if (!buffer_ || buffer_->getNumChannels() != stretch_.channels())
+      buffer_.reset(new Buffer(stretch_.channels(), SAMPLE_BUFFER_SIZE));
 
     if (const char* err = scaler_->Init(timeScale(stretch_),
                                         stretch_.sample_rate(),
@@ -26,17 +31,43 @@ class AudioMagicStretchy : public source::Stretchy {
       LOG(ERROR) << err;
   }
 
-  int getInputSampleCount(int numSamples) const {
-    return scaler_->GetInputBufferSize(numSamples) / 2;
+  void nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
+    int zeroCount = 0;
+    for (AudioSourceChannelInfo i = info; i.numSamples; ) {
+      if (int processed = static_cast<int>(processOneChunk(i))) {
+        if (zeroCount) {
+          LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
+        }
+
+        i.numSamples -= processed;
+        i.startSample += processed;
+        zeroCount = 0;
+      } else {
+        CHECK_LT(++zeroCount, 10);
+      }
+    }
   }
 
-  int64 process(float** ins, int inSamples,
-                          float** outs, int outSamples) {
-    return scaler_->Process(ins, outs, inSamples, outSamples);
+  int64 processOneChunk(const AudioSourceChannelInfo& info) {
+    int inSampleCount = scaler_->GetInputBufferSize(info.numSamples) / 2;
+    buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
+
+    AudioSourceChannelInfo i;
+    i.startSample = 0;
+    i.numSamples = inSampleCount;
+    i.buffer = buffer_.get();
+    source()->getNextAudioBlock(i);
+
+    for (int c = 0; c < stretch_.channels(); ++c)
+      outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
+
+    return scaler_->Process(buffer_->getArrayOfChannels(), &outOffset_.front(),
+                            inSampleCount, info.numSamples);
   }
 
  private:
   ptr<AudioTimeScaler> scaler_;
+  ptr<AudioSampleBuffer> buffer_;
 };
 
 }  // namespace

@@ -18,7 +18,6 @@ namespace source {
 
 class Stretchy : public Wrappy {
  public:
-  static const int SAMPLE_BUFFER_INITIAL_SIZE = 1000;
   typedef stretch::Stretch Stretch;
 
   void setStretch(const Stretch&);
@@ -37,11 +36,7 @@ class Stretchy : public Wrappy {
   Stretchy(Source* s, const Stretch& stretch = Stretch::default_instance());
 
   virtual void initializeStretcher() = 0;
-  virtual int getInputSampleCount(int numSamples) const = 0;
-  virtual int64 process(float** ins, int inSamples,
-                        float** outs, int outSamples) = 0;
-
-  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&);
+  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) = 0;
 
   Stretch stretch_;
   std::vector<float*> outOffset_;
@@ -52,7 +47,6 @@ class Stretchy : public Wrappy {
 
   CriticalSection lock_;
 
-  ptr<AudioSampleBuffer> buffer_;
   double timeScale_;
   bool bypass_;
 

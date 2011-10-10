@@ -22,14 +22,7 @@ class SoundTouchStretchy : public source::Stretchy {
     soundTouch_->setPitch(pitchScale(stretch_));
   }
 
-  int getInputSampleCount(int numSamples) const {
-    return 0;
-  }
-
-  int64 process(float** ins, int inSamples,
-                float** outs, int outSamples) {
-    return 0;
-  }
+  virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo&) {}
 
  private:
   ptr<SoundTouch> soundTouch_;

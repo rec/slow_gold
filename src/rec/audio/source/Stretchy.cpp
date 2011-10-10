@@ -57,9 +57,6 @@ void Stretchy::setStretch(const stretch::Stretch& s) {
     return;
   }
 
-  if (!buffer_ || buffer_->getNumChannels() != stretch_.channels())
-    buffer_.reset(new Buffer(stretch_.channels(), SAMPLE_BUFFER_INITIAL_SIZE));
-
   initializeStretcher();
 }
 
@@ -74,40 +71,6 @@ void Stretchy::getNextAudioBlock(const AudioSourceChannelInfo& info) {
     Wrappy::getNextAudioBlock(info);
   else
     nextStretchedAudioBlock(info);
-}
-
-void Stretchy::nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
-  int zeroCount = 0;
-  for (AudioSourceChannelInfo i = info; i.numSamples; ) {
-    if (int processed = static_cast<int>(processOneChunk(i))) {
-      if (zeroCount) {
-        LOG_FIRST_N(ERROR, 20) << "Got it on try " << (zeroCount + 1);
-      }
-
-      i.numSamples -= processed;
-      i.startSample += processed;
-      zeroCount = 0;
-    } else {
-      CHECK_LT(++zeroCount, 10);
-    }
-  }
-}
-
-int64 Stretchy::processOneChunk(const AudioSourceChannelInfo& info) {
-  int inSampleCount = getInputSampleCount(info.numSamples);
-  buffer_->setSize(stretch_.channels(), inSampleCount, false, false, true);
-
-  AudioSourceChannelInfo i;
-  i.startSample = 0;
-  i.numSamples = inSampleCount;
-  i.buffer = buffer_.get();
-  source()->getNextAudioBlock(i);
-
-  for (int c = 0; c < stretch_.channels(); ++c)
-    outOffset_[c] = info.buffer->getSampleData(c) + info.startSample;
-
-  return process(buffer_->getArrayOfChannels(), inSampleCount,
-                 &outOffset_.front(), info.numSamples);
 }
 
 }  // namespace source
