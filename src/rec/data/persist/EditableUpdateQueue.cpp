@@ -102,9 +102,5 @@ EditableFactory* getEditableFactory() {
   return EditableUpdateQueue::getFactory();
 }
 
-data::commands::UndoQueue* getUndoQueue() {
-  return EditableUpdateQueue::getUndoQueue();
-}
-
 }  // namespace persist
 }  // namespace rec
