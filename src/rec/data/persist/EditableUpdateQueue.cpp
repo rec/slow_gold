@@ -50,43 +50,40 @@ bool lockedEmpty(const Container &c, CriticalSection* lock) {
   return c.empty();
 }
 
-template <typename Container>
-void extendAndClear(Container *from, Container *to, CriticalSection* lock) {
-  ScopedLock l(*lock);
-  if (to->empty()) {
-    to->swap(*from);
-  } else {
-    to->insert(from->begin(), from->end());
-    to->clear();
+template <typename DataSet, typename Method>
+bool operateOn(DataSet *from, DataSet *to, CriticalSection* lock, Method m) {
+  DataSet ds;
+  {
+    ScopedLock l(*lock);
+    if (from->empty())
+      return true;
+    stl::moveTo(from, &ds);
   }
+
+  for (typename DataSet::iterator i = ds.begin(); i != ds.end(); ++i)
+    ((*i)->*m)();
+
+  stl::moveTo(&ds, to);
+  return false;
 }
 
 bool EditableUpdateQueue::update() {
-  if (lockedEmpty(updateData_, &lock_) || !running())
-    return true;
-
-  DataSet updates;
-  extendAndClear(&updateData_, &updates, &lock_);
-  for (DataSet::iterator i = updates.begin(); i != updates.end() && running(); ++i)
-    (*i)->update();
-
-  extendAndClear(&updates, &writeData_, &lock_);
-  if (running())
+  bool res = !running() ||
+    operateOn(&updateData_, &writeData_, &lock_, &UntypedEditable::update) ||
+    !running();
+  if (res)
     writeThread_->notify();
-    
-  return true;
+  return res;
 }
 
 bool EditableUpdateQueue::write() {
-  if (lockedEmpty(writeData_, &lock_))
+  if (!running())
     return true;
 
-  DataSet writes;
-  extendAndClear(&writeData_, &writes, &lock_);
-
-  for (DataSet::iterator i = writes.begin(); i != writes.end() && running(); ++i)
-    (*i)->writeToFile();
-  return true;
+  DataSet ds;
+  bool res = operateOn(&writeData_, &ds, &lock_, &UntypedEditable::writeToFile);
+  stl::deletePointers(&ds);
+  return res;
 }
 
 void EditableUpdateQueue::start() {
