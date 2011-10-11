@@ -27,10 +27,10 @@ class Editable {
   virtual void copyTo(Message*) const = 0;
 };
 
-void set(Editable*, const Value&, const Address&);
-void set(Editable*, const Message& m);
+void set(Editable*, const Value&,
+         const Address& a = Address::default_instance());
 
-void append(Editable*, const Address&, const Value& value);
+void append(Editable*, const Value& value, const Address&);
 
 // There are more setters in archived/OldEditable.h
 

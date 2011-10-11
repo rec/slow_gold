@@ -32,16 +32,12 @@ void setOp(Editable* setter, Operation* oper) {
 
 }  // namespace
 
-void append(Editable* data, const Address& address, const Value& value) {
+void append(Editable* data, const Value& value, const Address& address) {
   setOp(data, valueOp(Operation::APPEND, address, value));
 }
 
 void set(Editable* data, const Value& value, const Address& address) {
   setOp(data, valueOp(Operation::SET, address, value));
-}
-
-void set(Editable* d, const Message& m) {
-  set(d, Value(m), Address());
 }
 
 }  // namespace data

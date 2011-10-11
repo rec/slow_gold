@@ -2,6 +2,7 @@
 #include "rec/widget/tree/NodeItem.h"
 #include "rec/gui/component/Focusable.h"
 #include "rec/data/yaml/Yaml.h"
+#include "rec/data/Value.h"
 
 namespace rec {
 namespace widget {

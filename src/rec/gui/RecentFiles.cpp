@@ -60,7 +60,7 @@ void addRecentFile(const VirtualFile& f) {
   pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    data::append(persist::editableGlobal<RecentFiles>(), Address("file"), msg);
+    data::append(persist::editableGlobal<RecentFiles>(), msg, Address("file"));
   else
     data::set(persist::editableGlobal<RecentFiles>(), msg, Address("file", slot));
 }

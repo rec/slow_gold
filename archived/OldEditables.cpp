@@ -1,5 +1,11 @@
 #if 0
 
+void set(Editable*, const Message& m);
+void set(Editable* d, const Message& m) {
+  set(d, Value(m), Address());
+}
+
+
 Operation* removeOp(const Address& a, int remove) {
   Operation* op = newOp(Operation::REMOVE, a);
   op->set_remove(remove);

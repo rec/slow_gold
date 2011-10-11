@@ -5,6 +5,7 @@
 #include "rec/music/Metadata.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/data/Value.h"
 
 namespace rec {
 namespace music {
