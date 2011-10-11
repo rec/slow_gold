@@ -34,7 +34,7 @@ void SetterResizer::setSetter(data::Editable* setter) {
 
 void SetterResizer::moved() {
   if (setter_)
-    data::set(setter_, static_cast<uint32>(get()), address_);
+    setter_->set(static_cast<uint32>(get()), address_);
 }
 
 void SetterResizer::paint(Graphics& g) {

@@ -134,7 +134,7 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
         stereo.set_type(StereoProto::SINGLE);
         stereo.set_side(static_cast<StereoProto::Side>(sides - 2));
       }
-      data::set(DataListener<StereoProto>::data_, stereo);
+      DataListener<StereoProto>::data_->set(stereo);
     }
   }
 }

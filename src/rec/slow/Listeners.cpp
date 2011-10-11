@@ -82,8 +82,7 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 
     for (int i = 0; i < files.file_size(); ++i) {
       if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        data::append(persist::editableGlobal<file::VirtualFileList>(),
-                     files.file(i), data::Address("file"));
+        persist::editableGlobal<file::VirtualFileList>()->append(files.file(i), data::Address("file"));
     }
   }
 }

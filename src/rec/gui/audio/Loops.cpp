@@ -145,7 +145,7 @@ bool Loops::canCopy() const {
 void Loops::cut() {
   ScopedLock l(lock_);
   *loopPoints_ = getSelected(*loopPoints_, false);
- 	data::set(getUntypedEditable(), *loopPoints_, data::Address());
+ 	getUntypedEditable()->set(*loopPoints_);
 }
 
 Range<RealTime> Loops::selectionRange() const {
@@ -174,7 +174,7 @@ void Loops::addLoopPoints(const LoopPointList& loops) {
                                                      time < selection.end_);
   }
 
- 	data::set(getUntypedEditable(), *loopPoints_, data::Address());
+ 	getUntypedEditable()->set(*loopPoints_, data::Address());
   updateAndRepaint();
 }
 

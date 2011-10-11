@@ -19,6 +19,9 @@ class Editable {
   Editable() {}
   virtual ~Editable() {}
 
+  void set(const Value&, const Address& a = Address::default_instance());
+  void append(const Value& value, const Address&);
+
   virtual void apply(OperationList*) = 0;
 
   virtual const Value getValue(const Address&) const = 0;
@@ -26,11 +29,6 @@ class Editable {
   virtual int getSize(const Address&) const = 0;
   virtual void copyTo(Message*) const = 0;
 };
-
-void set(Editable*, const Value&,
-         const Address& a = Address::default_instance());
-
-void append(Editable*, const Value& value, const Address&);
 
 // There are more setters in archived/OldEditable.h
 

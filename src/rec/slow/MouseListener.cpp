@@ -137,7 +137,7 @@ void MouseListener::mouseDrag(const MouseEvent& e) {
       zoom.set_end(end);
 
       zoom.set_end(zoom.begin() + size);
-      data::set(DataListener<ZoomProto>::data_, zoom);
+      DataListener<ZoomProto>::data_->set(zoom);
     }
 
   } else if (e.eventComponent->getName() == "Cursor") {

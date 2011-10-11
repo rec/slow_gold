@@ -38,17 +38,17 @@ const Proto getGlobal() {
 
 template <typename Proto>
 void set(const Proto& proto, const VirtualFile& f) {
-  data::set(editable<Proto>(f), proto);
+  editable<Proto>(f)->set(proto);
 }
 
 template <typename Proto>
 void setGlobal(const Proto& proto) {
-  data::set(editable<Proto>(noFile()), proto);
+  editable<Proto>(noFile())->set(proto);
 }
 
 template <typename Proto>
 void set(const Proto& p, const VirtualFile& f, const data::Address& a) {
-  data::set(editable<Proto>(f), a, p);
+  editable<Proto>(f)->set(a, p);
 }
 
 /*
