@@ -31,7 +31,8 @@ void UntypedEditable::copyTo(Message* message) const {
 }
 
 UntypedEditable::UntypedEditable(const File& file, Message* message)
-    : message_(message),
+    : file_(file),
+      message_(message),
       alreadyReadFromFile_(false),
       fileReadSuccess_(false) {
 }
@@ -102,6 +103,7 @@ void UntypedEditable::writeToFile() const {
     msg->CopyFrom(*message_);
   }
 
+	LOG(INFO) << "Writing " << str(file_);
   persist::copy(*msg, file_);
 }
 

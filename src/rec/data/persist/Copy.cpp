@@ -127,6 +127,7 @@ bool file(const string &from, const File &to, bool /* readable */) {
       return true;
 
   } catch (...) {
+    LOG(ERROR) << "We got an exception";
     // TODO: log this exception here.
   }
   return false;
@@ -181,7 +182,7 @@ bool copy(const string &f,  String *t,  bool r) { return strcopy(f, t, r); }
 bool copy(const string &f,  string *t,  bool r) { return assign(f, t, r); }
 
 bool copy(const File &f,    const File &t, bool r) { return file(f, t, r); }
-bool copy(const string &f,  const File &t, bool r) { return through(f, t, r); }
+bool copy(const string &f,  const File &t, bool r) { return file(f, t, r); }
 bool copy(const String &f,  const File &t, bool r) { return through(f, t, r); }
 bool copy(const Message &f, const File &t, bool r) { return through(f, t, r); }
 bool copy(const Memory &f,  const File &t, bool r) { return through(f, t, r); }

@@ -15,11 +15,6 @@ bool Frames<Frame>::setLength(Samples<44100> length, bool mustReallocate) {
   return !length_ || frames_;
 }
 
-template <typename Frame>
-void fillArrayOfChannels(Frame* in, Samples<44100> inOffset,
-                         float **out, int outOffset,
-                         int numSamples);
-
 template <typename Sample, int CHANNELS>
 void fillArrayOfChannels(InterleavedFrame<Sample, CHANNELS>* in,
                          Samples<44100> inOffset,
