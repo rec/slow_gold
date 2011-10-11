@@ -62,13 +62,13 @@ PlayerController::PlayerController()
   stereoComboBox_.addItem("Mono (Right)", RIGHT);
   stereoComboBox_.addListener(this);
 
-  stretcherComboBox_.setEditableText(false);
-  stretcherComboBox_.setJustificationType(Justification::centredLeft);
-  stretcherComboBox_.setTextWhenNothingSelected("Stretcher");
-  stretcherComboBox_.setTextWhenNoChoicesAvailable("Stretcher");
-  stretcherComboBox_.addItem("Audio Magic", Stretch::AUDIO_MAGIC);
-  stretcherComboBox_.addItem("SoundTouch", Stretch::SOUNDTOUCH);
-  //stretcherComboBox_.addListener(this);
+  strategyComboBox_.setEditableText(false);
+  strategyComboBox_.setJustificationType(Justification::centredLeft);
+  strategyComboBox_.setTextWhenNothingSelected("Strategy");
+  strategyComboBox_.setTextWhenNoChoicesAvailable("Strategy");
+  strategyComboBox_.addItem("Audio Magic", Stretch::AUDIO_MAGIC);
+  strategyComboBox_.addItem("SoundTouch", Stretch::SOUNDTOUCH);
+  //strategyComboBox_.addListener(this);
 
   addToLayout(&modeSelector_, 24);
   addToLayout(&stereoComboBox_, 18);
@@ -92,7 +92,7 @@ PlayerController::PlayerController()
 void PlayerController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
   playbackSpeed_.setEnabled(ALLOWING_TIME_CHANGES && !s.time_disabled());
-  stretcherComboBox_.setSelectedId(static_cast<int>(s.strategy()), true);
+  strategyComboBox_.setSelectedId(static_cast<int>(s.strategy()), true);
 }
 
 void PlayerController::onDataChange(const StereoProto& stereo) {

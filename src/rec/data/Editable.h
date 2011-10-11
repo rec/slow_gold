@@ -27,10 +27,12 @@ class Editable {
   virtual void copyTo(Message*) const = 0;
 };
 
-void set(Editable*, const Address&, const Value&);
+void set(Editable*, const Value&, const Address&);
 void set(Editable*, const Message& m);
 
 void append(Editable*, const Address&, const Value& value);
+
+// There are more setters in archived/OldEditable.h
 
 }  // namespace data
 }  // namespace rec
