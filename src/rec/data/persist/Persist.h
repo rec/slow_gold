@@ -12,9 +12,10 @@ namespace persist {
 
 inline const VirtualFile& noFile() { return VirtualFile::default_instance(); }
 
-
 EditableFactory* getEditableFactory();
+
 data::commands::UndoQueue* getUndoQueue();
+
 void needsUpdate(data::UntypedEditable*);
 
 template <typename P>
