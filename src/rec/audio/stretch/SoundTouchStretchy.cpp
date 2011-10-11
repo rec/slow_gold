@@ -31,9 +31,20 @@ class SoundTouchStretchy : public source::Stretchy {
 
  protected:
   virtual void nextStretchedAudioBlock(const AudioSourceChannelInfo& info) {
-    while (soundTouch_->numSamples() < info.numSamples)
-      putSamples(fetchInfo_);
+    fillInput(info.numSamples);
+    copyToOutput(info);
+  }
 
+  bool fillInput(int numSamples) {
+    int s = soundTouch_->numSamples();
+    for (; s < numSamples; s = soundTouch_->numSamples()) {
+      putSamples(fetchInfo_);
+      if (s == soundTouch_->numSamples()) {
+        LOG(ERROR) << "Made no progress in pitch shifter";
+        return false;
+      }
+    }
+    return true;
   }
 
   void putSamples(const AudioSourceChannelInfo& info) {
@@ -45,6 +56,9 @@ class SoundTouchStretchy : public source::Stretchy {
     }
 
     soundTouch_->putSamples(frames_.frames()->sample_, info.numSamples);
+  }
+
+  void copyToOutput(const AudioSourceChannelInfo& info) {
   }
 
  private:
