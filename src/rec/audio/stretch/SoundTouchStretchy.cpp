@@ -59,6 +59,17 @@ class SoundTouchStretchy : public source::Stretchy {
   }
 
   void copyToOutput(const AudioSourceChannelInfo& info) {
+    int n = info.numSamples;
+    if (frames_.length() < n)
+      frames_.setLength(n);
+    uint rec = soundTouch_->receiveSamples(frames_.frames()->sample_, n);
+    if (static_cast<int>(rec) != n)
+      LOG(ERROR) << "Expected " << n << " got " << rec;
+    FloatFrame* frame = frames_.frames();
+    for (int i = 0; i < n; ++i, ++frame) {
+      for (int c = 0; c < 2; ++c)
+        *info.buffer->getSampleData(c, i) = frame->sample_[c];
+    }
   }
 
  private:
