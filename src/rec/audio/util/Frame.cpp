@@ -48,6 +48,7 @@ Samples<44100> Frames<Frame>::getAudioBlock(const Info& info,
 }
 
 template class Frames<CDFrame>;
+template class Frames<FloatFrame>;
 
 }  // namespace audio
 }  // namespace rec

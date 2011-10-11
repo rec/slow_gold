@@ -34,6 +34,10 @@ struct InterleavedFrame {
 typedef InterleavedFrame<short, 2> CDFrame;
 typedef Frames<CDFrame> CDFrames;
 
+typedef InterleavedFrame<float, 2> FloatFrame;
+typedef Frames<FloatFrame> FloatFrames;
+
+
 template <typename Sample, int CHANNELS>
 struct ParallelFrame {
   ParallelFrame() : channels_(CHANNELS), sample_(NULL) {}

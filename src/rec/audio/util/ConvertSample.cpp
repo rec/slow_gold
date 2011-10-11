@@ -133,5 +133,23 @@ template <> void convertSample<float, short>(const float from, short* to) {
   *to = static_cast<short>(std::min(floorf(f), HALF_RANGE - 1.0f));
 }
 
+template <> void convertSample<float, float>(float f, float *t) {
+  *t = f;
+}
+
+template <> void convertSample<double, double>(double f, double *t) {
+  *t = f;
+}
+
+template <> void convertSample<double, float>(double f, float *t) {
+  *t = static_cast<float>(f);
+}
+
+template <> void convertSample<float, double>(float f, double *t) {
+  *t = f;
+}
+
+
+
 }  // namespace audio
 }  // namespace rec
