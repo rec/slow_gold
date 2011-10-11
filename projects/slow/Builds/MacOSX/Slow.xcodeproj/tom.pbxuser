@@ -918,9 +918,9 @@
 	};
 	886808D5DB53135EA3913A68 /* EditableUpdateQueue.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1121, 1521}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1111}";
+			sepNavIntBoundsRect = "{{0, 0}, {909, 1430}}";
+			sepNavSelRange = "{2199, 0}";
+			sepNavVisRange = "{1111, 1490}";
 			sepNavWindowFrame = "{{406, 204}, {968, 891}}";
 		};
 	};
@@ -1298,6 +1298,12 @@
 			E2FF8FE31444C33F00A50F6C = E2FF8FE31444C33F00A50F6C /* PBXTextBookmark */;
 			E2FF8FE41444C33F00A50F6C = E2FF8FE41444C33F00A50F6C /* PBXTextBookmark */;
 			E2FF8FE51444C33F00A50F6C = E2FF8FE51444C33F00A50F6C /* PBXTextBookmark */;
+			E2FF8FFA1444C89000A50F6C /* XCBuildMessageTextBookmark */ = E2FF8FFA1444C89000A50F6C /* XCBuildMessageTextBookmark */;
+			E2FF90031444C95B00A50F6C /* XCBuildMessageTextBookmark */ = E2FF90031444C95B00A50F6C /* XCBuildMessageTextBookmark */;
+			E2FF90041444C98600A50F6C /* XCBuildMessageTextBookmark */ = E2FF90041444C98600A50F6C /* XCBuildMessageTextBookmark */;
+			E2FF90051444C98600A50F6C /* PBXTextBookmark */ = E2FF90051444C98600A50F6C /* PBXTextBookmark */;
+			E2FF90081444C98600A50F6C /* PBXTextBookmark */ = E2FF90081444C98600A50F6C /* PBXTextBookmark */;
+			E2FF900B1444C98600A50F6C /* PBXTextBookmark */ = E2FF900B1444C98600A50F6C /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -1764,9 +1770,9 @@
 	};
 	D4E85B41169E59009888094F /* UntypedEditable.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {645, 1378}}";
-			sepNavSelRange = "{2463, 0}";
-			sepNavVisRange = "{216, 1380}";
+			sepNavIntBoundsRect = "{{0, 0}, {909, 1430}}";
+			sepNavSelRange = "{1715, 0}";
+			sepNavVisRange = "{1013, 1245}";
 			sepNavWindowFrame = "{{1013, 156}, {968, 891}}";
 		};
 	};
@@ -4056,6 +4062,63 @@
 		rType = 0;
 		vrLen = 1889;
 		vrLoc = 0;
+	};
+	E2FF8FFA1444C89000A50F6C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'EditableUpdateQueue' has not been declared";
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 71;
+		rType = 1;
+	};
+	E2FF90031444C95B00A50F6C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'update' is not a member of 'rec::persist::EditableUpdateQueue'";
+		fRef = 886808D5DB53135EA3913A68 /* EditableUpdateQueue.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 17;
+		rType = 1;
+	};
+	E2FF90041444C98600A50F6C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'EditableUpdateQueue' has not been declared";
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 71;
+		rType = 1;
+	};
+	E2FF90051444C98600A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		name = "UntypedEditable.cpp: 72";
+		rLen = 0;
+		rLoc = 1715;
+		rType = 0;
+		vrLen = 1075;
+		vrLoc = 1183;
+	};
+	E2FF90081444C98600A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 886808D5DB53135EA3913A68 /* EditableUpdateQueue.cpp */;
+		name = "EditableUpdateQueue.cpp: 76";
+		rLen = 0;
+		rLoc = 2199;
+		rType = 0;
+		vrLen = 1490;
+		vrLoc = 1111;
+	};
+	E2FF900B1444C98600A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		name = "UntypedEditable.cpp: 72";
+		rLen = 0;
+		rLoc = 1715;
+		rType = 0;
+		vrLen = 1245;
+		vrLoc = 1013;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {
 		uiCtxt = {

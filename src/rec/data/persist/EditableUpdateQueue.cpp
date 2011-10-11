@@ -73,6 +73,7 @@ bool EditableUpdateQueue::update() {
   extendAndClear(&updates, &writeData_, &lock_);
   if (running())
     writeThread_->notify();
+    
   return true;
 }
 
@@ -106,10 +107,6 @@ EditableFactory* getEditableFactory() {
 
 data::commands::UndoQueue* getUndoQueue() {
   return EditableUpdateQueue::getUndoQueue();
-}
-
-void needsUpdate(UntypedEditable* editable) {
-  return EditableUpdateQueue::needsUpdate(editable);
 }
 
 }  // namespace persist

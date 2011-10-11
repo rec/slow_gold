@@ -69,7 +69,7 @@ void UntypedEditable::apply(OperationList* op) {
     ScopedLock l(lock_);
     queue_.push_back(op);
   }
-  persist::needsUpdate(this);
+  persist::EditableUpdateQueue::needsUpdate(this);
 }
 
 void UntypedEditable::update() {

@@ -24,7 +24,6 @@ class EditableUpdateQueue {
   // A piece of data got new information!
   static void needsUpdate(data::UntypedEditable* d) { instance_->doUpdate(d); }
 
-  bool update();
   bool write();
 
   static void start();
@@ -40,6 +39,7 @@ private:
   virtual ~EditableUpdateQueue();
   explicit EditableUpdateQueue();
 
+  bool update();
   void doUpdate(data::UntypedEditable*);
 
   CriticalSection lock_;
