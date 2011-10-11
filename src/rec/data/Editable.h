@@ -27,23 +27,10 @@ class Editable {
   virtual void copyTo(Message*) const = 0;
 };
 
-void set(Editable*, const Value& v);
-void set(Editable*, const Message& m);
 void set(Editable*, const Address&, const Value&);
-void set(Editable* d, const Address::Part& a, const Value& v);
-void set(Editable* d, const Address::Part& a,
-         const Address::Part& b, const Value& v);
+void set(Editable*, const Message& m);
 
-void append(Editable*, const Value& v);
-void append(Editable*, const Message& m);
 void append(Editable*, const Address&, const Value& value);
-void append(Editable*, const Address::Part&, const Value& value);
-
-#if 0
-void clear(Editable*, const Address&);
-void remove(Editable*, const Address&, int itemsToRemove);
-void swap(Editable*, const Address&, int index1, int index2);
-#endif
 
 }  // namespace data
 }  // namespace rec

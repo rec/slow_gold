@@ -5,12 +5,12 @@ import "rec/audio/source/Stereo.proto";
 // Describe how exactly to apply the timescaler to a sample.
 message Stretch {
   enum Strategy {
-    AUDIO_MAGIC = 1;
-    SOUNDTOUCH = 2;
+    AUDIO_MAGIC = 0;
+    SOUNDTOUCH = 1;
   };
 
-  optional Strategy strategy = 18        [default = AUDIO_MAGIC];
-  optional bool time_disabled = 1      [default = false];
+  optional Strategy strategy = 18       [default = AUDIO_MAGIC];
+  optional bool time_disabled = 1       [default = false];
   optional bool pitch_disabled = 2      [default = false];
   optional bool passthrough_when_disabled = 3 [default = true];
   optional double time_scale = 4        [default = 1.0];
@@ -19,7 +19,7 @@ message Stretch {
   optional uint32 channels = 7          [default = 2];
   optional double pitch_scale = 8       [default = 1.0];
   optional double semitone_shift = 9    [default = 0.0];
-  optional double detune_cents = 10      [default = 0.0];
+  optional double detune_cents = 10     [default = 0.0];
   optional uint32 bands = 11            [default = 2048];
   optional uint32 filter_overlap = 12   [default = 1];
   optional uint32 chunk_size = 13       [default = 1024];

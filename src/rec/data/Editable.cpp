@@ -23,6 +23,29 @@ Operation* valueOp(Command c, const Address& a, const Value& value) {
   return op;
 }
 
+void setOp(Editable* setter, Operation* oper) {
+  ptr<Operation> op(oper);
+  ptr<OperationList> list(new OperationList);
+  list->add_operation()->CopyFrom(*op);
+  setter->apply(list.transfer());
+}
+
+}  // namespace
+
+void append(Editable* data, const Address& address, const Value& value) {
+  setOp(data, valueOp(Operation::APPEND, address, value));
+}
+
+void set(Editable* data, const Address& address, const Value& value) {
+  setOp(data, valueOp(Operation::SET, address, value));
+}
+
+void set(Editable* d, const Message& m) {
+  set(d, Address(), Value(m));
+}
+
+#if 0
+
 Operation* removeOp(const Address& a, int remove) {
   Operation* op = newOp(Operation::REMOVE, a);
   op->set_remove(remove);
@@ -36,19 +59,17 @@ Operation* swapOp(const Address& a, int s, int t) {
   return op;
 }
 
-void setOp(Editable* setter, Operation* oper) {
-  ptr<Operation> op(oper);
-  ptr<OperationList> list(new OperationList);
-  list->add_operation()->CopyFrom(*op);
-  setter->apply(list.transfer());
-}
+void set(Editable* d, const Address::Part& a, const Address::Part& b, const Value& v);
+void set(Editable*, const Value& v);
+void set(Editable* d, const Address::Part& a, const Value& v);
 
+void append(Editable*, const Value& v);
+void append(Editable*, const Message& m);
+void append(Editable*, const Address::Part&, const Value& value);
 
-}  // namespace
-
-void append(Editable* data, const Address& address, const Value& value) {
-  setOp(data, valueOp(Operation::APPEND, address, value));
-}
+void clear(Editable*, const Address&);
+void remove(Editable*, const Address&, int itemsToRemove);
+void swap(Editable*, const Address&, int index1, int index2);
 
 void clear(Editable* data, const Address& address) {
   setOp(data, newOp(Operation::CLEAR, address));
@@ -56,10 +77,6 @@ void clear(Editable* data, const Address& address) {
 
 void remove(Editable* data, const Address& address, int remove) {
   setOp(data, removeOp(address, remove));
-}
-
-void set(Editable* data, const Address& address, const Value& value) {
-  setOp(data, valueOp(Operation::SET, address, value));
 }
 
 void swap(Editable* data, const Address& a, int s, int t) {
@@ -73,7 +90,6 @@ void append(Editable* d, const Address::Part& a, const Value& m) {
 }
 
 void set(Editable* d, const Value& v) { set(d, Address(), v); }
-void set(Editable* d, const Message& m) { set(d, Address(), Value(m)); }
 
 void set(Editable* d, const Address::Part& a, const Value& v) {
   set(d, Address(a), v);
@@ -83,8 +99,6 @@ void set(Editable* d, const Address::Part& a,
          const Address::Part& b, const Value& v) {
   set(d, Address(a, b), v);
 }
-
-#if 0
 
 void append(const Address::Part& a, const Value& v) { append(Address(a), v); }
 void append(const Address::Part& a, const Address::Part& b, const Value& v) { append(Address(a, b), v); }

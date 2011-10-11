@@ -9,6 +9,7 @@
 
 using namespace std;
 using namespace google::protobuf;
+using namespace rec::data;
 
 namespace rec {
 namespace gui {
@@ -56,12 +57,12 @@ void addRecentFile(const VirtualFile& f) {
   r.set_timestamp(timestamp);
   r.mutable_file()->CopyFrom(f);
 
-  data::pmessage msg(r);
+  pmessage msg(r);
 
   if (!found && recent.file_size() < recent.max_files())
-    data::append(persist::editableGlobal<RecentFiles>(), "file", msg);
+    data::append(persist::editableGlobal<RecentFiles>(), Address("file"), msg);
   else
-    data::set(persist::editableGlobal<RecentFiles>(), "file", slot, msg);
+    data::set(persist::editableGlobal<RecentFiles>(), Address("file", slot), msg);
 }
 
 }  // namespace gui

@@ -3,7 +3,6 @@
 using namespace rec::audio::source;
 using namespace rec::audio::stretch;
 
-
 static const bool ENABLE_SHIFTS = false;
 
 namespace rec {
@@ -63,6 +62,14 @@ PlayerController::PlayerController()
   stereoComboBox_.addItem("Mono (Right)", RIGHT);
   stereoComboBox_.addListener(this);
 
+  stretcherComboBox_.setEditableText(false);
+  stretcherComboBox_.setJustificationType(Justification::centredLeft);
+  stretcherComboBox_.setTextWhenNothingSelected("Stretcher");
+  stretcherComboBox_.setTextWhenNoChoicesAvailable("Stretcher");
+  stretcherComboBox_.addItem("Audio Magic", Stretch::AUDIO_MAGIC);
+  stretcherComboBox_.addItem("SoundTouch", Stretch::SOUNDTOUCH);
+  //stretcherComboBox_.addListener(this);
+
   addToLayout(&modeSelector_, 24);
   addToLayout(&stereoComboBox_, 18);
 
@@ -80,9 +87,12 @@ PlayerController::PlayerController()
   addToLayout(&levelMeter_);
 }
 
+#define ALLOWING_TIME_CHANGES false
+
 void PlayerController::onDataChange(const Stretch& s) {
   MessageManagerLock l;
-  enableSliders(!s.time_disabled());
+  playbackSpeed_.setEnabled(ALLOWING_TIME_CHANGES && !s.time_disabled());
+  stretcherComboBox_.setSelectedId(static_cast<int>(s.strategy()), true);
 }
 
 void PlayerController::onDataChange(const StereoProto& stereo) {
@@ -90,8 +100,8 @@ void PlayerController::onDataChange(const StereoProto& stereo) {
   if (stereo.type())
     sides = static_cast<Sides>(2 + stereo.side());
 
-  thread::callAsync(&stereoComboBox_, &juce::ComboBox::setSelectedId,
-                    static_cast<int>(sides), true);
+  MessageManagerLock l;
+  stereoComboBox_.setSelectedId(sides, true);
 }
 
 void PlayerController::onDataChange(const rec::audio::Gain& gain) {
@@ -131,10 +141,6 @@ void PlayerController::comboBoxChanged(juce::ComboBox* box) {
 
 void PlayerController::setZoom(data::UntypedEditable* data) {
   zoomToSelectionButton_.setUntypedEditable(data);
-}
-
-void PlayerController::enableSliders(bool enabled) {
-  playbackSpeed_.setEnabled(enabled && false);
 }
 
 void PlayerController::clearLevels() {

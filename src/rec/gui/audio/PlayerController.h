@@ -33,7 +33,6 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   virtual void setData(persist::TypedEditable<rec::audio::Gain>*);
 
   void setZoom(data::UntypedEditable* zoom);
-  void enableSliders(bool enabled);
   virtual void comboBoxChanged(juce::ComboBox*);
 
   listener::Listener<const LevelVector&>* levelListener() { return &levelMeter_; }
@@ -56,6 +55,7 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   gui::SetterToggle dimButton_;
 
   juce::ComboBox stereoComboBox_;
+  juce::ComboBox stretcherComboBox_;
   ModeSelector modeSelector_;
 
   DISALLOW_COPY_AND_ASSIGN(PlayerController);
