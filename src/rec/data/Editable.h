@@ -14,6 +14,8 @@ class OperationList;
 class Value;
 class ValueProto;
 
+typedef std::vector<data::OperationList*> OperationQueue;
+
 class Editable {
  public:
   Editable() {}

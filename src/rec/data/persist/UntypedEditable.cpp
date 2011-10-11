@@ -89,7 +89,7 @@ void UntypedEditable::update() {
   }
 
   stl::deletePointers(&old);
-  stl::deletePointers(&undo);
+  persist::EditableUpdateQueue::addToUndoQueue(this, &undo);
   onDataChange();
 }
 

@@ -2,6 +2,8 @@
 #define __REC_PERSIST_APPINSTANCE__
 
 #include <set>
+
+#include "rec/data/Editable.h"
 #include "rec/util/thread/Trash.h"
 
 namespace rec {
@@ -29,8 +31,12 @@ class EditableUpdateQueue {
   static void start();
   static void stop();
 
+  typedef data::UntypedEditable UntypedEditable;
+
   static EditableFactory* getFactory() { return instance_->factory_.get(); }
-  static data::commands::UndoQueue* getUndoQueue() { return instance_->undo_.get(); }
+  static void addToUndoQueue(UntypedEditable* u, data::OperationQueue* q) {
+    instance_->doUndo(u, q);
+  }
 
   typedef std::set<data::UntypedEditable*> DataSet;
   bool running() const;
@@ -41,6 +47,7 @@ private:
 
   bool update();
   void doUpdate(data::UntypedEditable*);
+  void doUndo(UntypedEditable*, data::OperationQueue*);
 
   CriticalSection lock_;
 

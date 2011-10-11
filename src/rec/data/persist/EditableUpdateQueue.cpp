@@ -44,10 +44,7 @@ bool EditableUpdateQueue::running() const {
     !(writeThread_->threadShouldExit() || writeThread_->threadShouldExit());
 }
 
-template <typename Container>
-bool lockedEmpty(const Container &c, CriticalSection* lock) {
-  ScopedLock l(*lock);
-  return c.empty();
+void EditableUpdateQueue::doUndo(UntypedEditable* e, data::OperationQueue* q) {
 }
 
 template <typename DataSet, typename Method>
@@ -83,7 +80,7 @@ bool EditableUpdateQueue::write() {
   DataSet ds;
   bool res = operateOn(&writeData_, &ds, &lock_, &UntypedEditable::writeToFile);
   stl::deletePointers(&ds);
-  return res;
+  return res || !running();
 }
 
 void EditableUpdateQueue::start() {

@@ -50,8 +50,6 @@ class UntypedEditable : public Editable {
   void readFromFile() const;
   void writeToFile() const;
 
-  typedef std::vector<data::OperationList*> OperationQueue;
-
   CriticalSection lock_;
 
   OperationQueue queue_;
