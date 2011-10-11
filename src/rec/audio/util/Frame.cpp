@@ -5,19 +5,14 @@ namespace rec {
 namespace audio {
 
 template <typename Frame>
-bool Frames<Frame>::setLength(Samples<44100> length) {
-  free(frames_);
-
-  // TODO: fix this for really large buffers.
-  void* mem = malloc(static_cast<size_t>(sizeof(Frame) * length));
-  if (!mem) {
-    LOG(ERROR) << "Not enough memory, sample length: " << length;
-    length_ = 0;
-    return false;
+bool Frames<Frame>::setLength(Samples<44100> length, bool mustReallocate) {
+  if (length != length_ && (mustReallocate || length > allocatedLength_)) {
+    allocatedLength_ = length;
+    size_t size = static_cast<size_t>(sizeof(Frame) * length);
+    frames_ = reinterpret_cast<Frame*>(reallocf(frames_, size));
   }
-  frames_ = reinterpret_cast<Frame*>(mem);
   length_ = length;
-  return true;
+  return !length_ || frames_;
 }
 
 template <typename Frame>

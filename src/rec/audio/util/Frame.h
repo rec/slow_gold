@@ -13,14 +13,14 @@ class Frames {
   Frames() : length_(0), frames_(NULL) {}
   ~Frames() { free(frames_); }
 
-  bool setLength(Samples<44100> length);
+  bool setLength(Samples<44100> length, bool mustReallocate = false);
   Samples<44100> getAudioBlock(const Info& info, Samples<44100> offset) const;
 
   Frame* frames() { return frames_; }
   Samples<44100> length() const { return length_; }
 
  private:
-  Samples<44100> length_;
+  Samples<44100> length_, allocatedLength_;
   Frame* frames_;
 
   DISALLOW_COPY_AND_ASSIGN(Frames);

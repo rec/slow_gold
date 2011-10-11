@@ -36,12 +36,16 @@ class SoundTouchStretchy : public source::Stretchy {
   }
 
   bool fillInput(int numSamples) {
-    int s = soundTouch_->numSamples();
-    for (; s < numSamples; s = soundTouch_->numSamples()) {
+    static const int MAXIMUM_FAILURE_COUNT = 10;
+    for (int fail = 0, s; (s = soundTouch_->numSamples()) && s < numSamples; ) {
       putSamples(fetchInfo_);
       if (s == soundTouch_->numSamples()) {
-        LOG(ERROR) << "Made no progress in pitch shifter";
-        return false;
+        if (++fail > MAXIMUM_FAILURE_COUNT) {
+          LOG(ERROR) << "Made no progress in pitch shifter";
+          return false;
+        }
+      } else {
+        fail = 0;
       }
     }
     return true;
@@ -63,8 +67,10 @@ class SoundTouchStretchy : public source::Stretchy {
     if (frames_.length() < n)
       frames_.setLength(n);
     uint rec = soundTouch_->receiveSamples(frames_.frames()->sample_, n);
+
     if (static_cast<int>(rec) != n)
       LOG(ERROR) << "Expected " << n << " got " << rec;
+
     FloatFrame* frame = frames_.frames();
     for (int i = 0; i < n; ++i, ++frame) {
       for (int c = 0; c < 2; ++c)
