@@ -110,8 +110,8 @@ void protobuf_AddDesc_rec_2faudio_2fstretch_2fStretch_2eproto() {
     "efill_size\030\016 \001(\r:\00515000\022$\n\025next_buffer_f"
     "ill_size\030\017 \001(\r:\00515000\022\036\n\022inactive_wait_t"
     "ime\030\020 \001(\005:\002-1\022\032\n\017thread_priority\030\021 \001(\r:\001"
-    "4\"+\n\010Strategy\022\017\n\013AUDIO_MAGIC\020\001\022\016\n\nSOUNDT"
-    "OUCH\020\002", 686);
+    "4\"+\n\010Strategy\022\017\n\013AUDIO_MAGIC\020\000\022\016\n\nSOUNDT"
+    "OUCH\020\001", 686);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/audio/stretch/Stretch.proto", &protobuf_RegisterTypes);
   Stretch::default_instance_ = new Stretch();
@@ -135,8 +135,8 @@ const ::google::protobuf::EnumDescriptor* Stretch_Strategy_descriptor() {
 }
 bool Stretch_Strategy_IsValid(int value) {
   switch(value) {
+    case 0:
     case 1:
-    case 2:
       return true;
     default:
       return false;
@@ -187,7 +187,7 @@ Stretch::Stretch(const Stretch& from)
 
 void Stretch::SharedCtor() {
   _cached_size_ = 0;
-  strategy_ = 1;
+  strategy_ = 0;
   time_disabled_ = false;
   pitch_disabled_ = false;
   passthrough_when_disabled_ = true;
@@ -239,7 +239,7 @@ Stretch* Stretch::New() const {
 
 void Stretch::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    strategy_ = 1;
+    strategy_ = 0;
     time_disabled_ = false;
     pitch_disabled_ = false;
     passthrough_when_disabled_ = true;

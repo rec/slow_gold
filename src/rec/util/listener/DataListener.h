@@ -47,7 +47,7 @@ class DataListener : public Listener<const Proto&>,
 
 template <typename Proto>
 DataListener<Proto>::DataListener(bool f) : data_(NULL), filterDupes_(f) {
-  persist::editableGlobal<VirtualFile>()->addListener(this);
+  persist::editable<VirtualFile>()->addListener(this);
 }
 
 template <typename Proto>

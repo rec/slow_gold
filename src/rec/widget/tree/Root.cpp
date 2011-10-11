@@ -38,7 +38,7 @@ Root::Root(ApplicationCommandManager* manager,
   tree_.setRootItemVisible(false);
 
   persist::TypedEditable<VirtualFileList>* setter =
-    persist::editableGlobal<VirtualFileList>();
+    persist::editable<VirtualFileList>();
   setter->addListener(this);
   volumes_ = setter->get();
 }

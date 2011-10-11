@@ -76,13 +76,13 @@ void Listeners::operator()(const gui::DropFiles& dropFiles) {
 
     typedef std::set<string> FileSet;
     FileSet existing;
-    VirtualFileList list(persist::getGlobal<file::VirtualFileList>());
+    VirtualFileList list(persist::get<file::VirtualFileList>());
     for (int i = 0; i < list.file_size(); ++i)
       existing.insert(str(getFile(list.file(i)).getFullPathName()));
 
     for (int i = 0; i < files.file_size(); ++i) {
       if (existing.find(str(getFile(files.file(i)).getFullPathName())) == existing.end())
-        persist::editableGlobal<file::VirtualFileList>()->append(files.file(i), data::Address("file"));
+        persist::editable<file::VirtualFileList>()->append(files.file(i), data::Address("file"));
     }
   }
 }
@@ -110,7 +110,7 @@ void Listeners::operator()(audio::transport::State state) {
 void MainPage::loadRecentFile(int menuItemId) {
   gui::RecentFiles recent = gui::getSortedRecentFiles();
   const VirtualFile& file = recent.file(menuItemId).file();
-  persist::setGlobal(file);
+  persist::set(file);
 }
 
 static const int BLOCKSIZE = 1024;

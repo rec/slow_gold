@@ -74,7 +74,7 @@ void Model::setFile(const VirtualFile& f) {
     file_ = f;
   }
   components()->directoryTree_.refreshNode(f);
-  persist::setGlobal(f);
+  persist::set(f);
 
   if (isEmpty)
     return;
