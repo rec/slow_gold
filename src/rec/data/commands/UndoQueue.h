@@ -3,12 +3,15 @@
 
 #include <vector>
 
-#include "rec/base/base.h"
+#include "rec/data/Editable.h"
 
 namespace rec { namespace util { namespace file { class Output; }}}
 
 namespace rec {
 namespace data {
+
+class UntypedEditable;
+
 namespace commands {
 
 class Action;
@@ -20,7 +23,9 @@ class UndoQueue {
   ~UndoQueue();
 
   void add(Action* event);
-  void write();
+
+  void add(UntypedEditable*, OperationQueue*);
+  bool write();
 
  private:
   typedef std::vector<Action*> ActionList;

@@ -10,6 +10,19 @@
 namespace rec {
 namespace data {
 
+UntypedEditable::UntypedEditable(const File& file, const VirtualFile& vf,
+                                 Message* message)
+    : file_(file),
+      virtualFile_(vf),
+      message_(message),
+      alreadyReadFromFile_(false),
+      fileReadSuccess_(false) {
+}
+
+UntypedEditable::~UntypedEditable() {
+  stl::deletePointers(&queue_);
+}
+
 bool UntypedEditable::hasValue(const Address& address) const {
   ScopedLock l(lock_);
   return data::hasValue(address, *message_);
@@ -28,13 +41,6 @@ int UntypedEditable::getSize(const Address& address) const {
 void UntypedEditable::copyTo(Message* message) const {
   ScopedLock l(lock_);
   message->CopyFrom(*message_);
-}
-
-UntypedEditable::UntypedEditable(const File& file, Message* message)
-    : file_(file),
-      message_(message),
-      alreadyReadFromFile_(false),
-      fileReadSuccess_(false) {
 }
 
 Message* UntypedEditable::clone() const {
@@ -58,10 +64,6 @@ void UntypedEditable::readFromFile() const {
 
     alreadyReadFromFile_ = true;
   }
-}
-
-UntypedEditable::~UntypedEditable() {
-  stl::deletePointers(&queue_);
 }
 
 void UntypedEditable::apply(OperationList* op) {

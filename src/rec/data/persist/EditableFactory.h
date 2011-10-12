@@ -29,13 +29,13 @@ class EditableFactory {
 
 template <typename Proto>
 TypedEditable<Proto>* EditableFactory::get(const VirtualFile& vf) {
-  File file = getShadowFile(vf, str(data::proto::getName<Proto>()));
+  File file;
   string fileKey = str(file);
   DataMap::iterator i = data_.find(fileKey);
   if (i != data_.end())
     return static_cast<TypedEditable<Proto>*>(i->second);
 
-  TypedEditable<Proto>* e = new TypedEditable<Proto>(file);
+  TypedEditable<Proto>* e = new TypedEditable<Proto>(file, vf);
   e->readFromFile();
   data_.insert(i, make_pair(fileKey, static_cast<UntypedEditable*>(e)));
   return e;

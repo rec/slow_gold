@@ -45,6 +45,7 @@ bool EditableUpdateQueue::running() const {
 }
 
 void EditableUpdateQueue::doUndo(UntypedEditable* e, data::OperationQueue* q) {
+  undo_->add(e, q);
 }
 
 template <typename DataSet, typename Method>

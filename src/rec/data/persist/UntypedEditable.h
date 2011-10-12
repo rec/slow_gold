@@ -3,6 +3,7 @@
 
 #include "rec/data/Editable.h"
 #include "rec/util/listener/Listener.h"
+#include "rec/util/file/VirtualFile.h"
 
 namespace rec {
 
@@ -38,6 +39,7 @@ class UntypedEditable : public Editable {
   template <typename Proto> bool fill(Proto* t) const;
 
   Message* clone() const;
+  const VirtualFile& virtualFile() const { return virtualFile_; }
 
  protected:
   virtual void onDataChange() = 0;
@@ -45,7 +47,7 @@ class UntypedEditable : public Editable {
   // Update the clients in this thread.
   void update();
 
-  UntypedEditable(const File& file, Message* message);
+  UntypedEditable(const File& file, const VirtualFile& vf, Message* message);
 
   void readFromFile() const;
   void writeToFile() const;
@@ -54,7 +56,8 @@ class UntypedEditable : public Editable {
 
   OperationQueue queue_;
   Broadcaster<const Message&> messageBroadcaster_;
-  File file_;
+  const File file_;
+  const VirtualFile virtualFile_;
 
   mutable Message* message_;
 
