@@ -10,25 +10,46 @@ namespace data {
 namespace commands {
 
 UndoQueue::UndoQueue(const File& file)
-    : logfile_(new file::Output(file)), writtenTo_(0), undoneTo_(0) {
+    : logfile_(new file::Output(file)), writtenTo_(0), undoes_(0) {
 }
 
 UndoQueue::~UndoQueue() {
-  ScopedLock l(lock_);
+  Lock l(lock_);
   write();
   stl::deletePointers(&events_);
 }
 
 void UndoQueue::add(Action* event) {
-  ScopedLock l(lock_);
-  events_.push_back(event);
-  ++undoneTo_;
+  Lock l(lock_);
+  if (undoes_) {
+    if (undoes_ > 1)
+      events_.resize(events_.size() - undoes_ + 1);
+    events_.back() = event;
+    undoes_ = 0;
+  } else {
+    events_.push_back(event);
+  }
 }
+
+bool UndoQueue::undo() {
+  if (!undoable())
+    return false;
+  //
+  return true;
+}
+
+bool UndoQueue::redo() {
+  if (!undoes())
+    return false;
+  //
+  return true;
+}
+
 
 bool UndoQueue::write() {
   ptr<ActionList> events;
   {
-    ScopedLock l(lock_);
+    Lock l(lock_);
     int size = events_.size();
     if (writtenTo_ == size)
       return false;

@@ -5,6 +5,8 @@
 
 namespace rec {
 
+typedef juce::ScopedLock Lock;
+
 // I ony want to bring in some subset of the Juce namespace here...
 //
 typedef juce::ApplicationCommandInfo ApplicationCommandInfo;

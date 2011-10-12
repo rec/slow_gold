@@ -25,8 +25,11 @@ class UndoQueue {
   void add(UntypedEditable*, OperationQueue*);
   bool write();
 
-  int possibleRedoes() const { return events_.size() - undoneTo_; }
-  int possibleUndoes() const { return undoneTo_; }
+  int undoable() const { Lock l(lock_); return events_.size() - undoes_; }
+  int undoes() const { Lock l(lock_); return undoes_; }
+
+  bool undo();
+  bool redo();
 
  private:
   void add(Action* event);
@@ -38,7 +41,7 @@ class UndoQueue {
   juce::CriticalSection lock_;
 
   int writtenTo_;
-  int undoneTo_;
+  int undoes_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };
