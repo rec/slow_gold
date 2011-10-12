@@ -1405,6 +1405,16 @@
 			E2FF90D31445EF9500A50F6C /* PBXTextBookmark */ = E2FF90D31445EF9500A50F6C /* PBXTextBookmark */;
 			E2FF90D41445EF9500A50F6C /* PBXTextBookmark */ = E2FF90D41445EF9500A50F6C /* PBXTextBookmark */;
 			E2FF90D51445EF9500A50F6C /* PBXTextBookmark */ = E2FF90D51445EF9500A50F6C /* PBXTextBookmark */;
+			E2FF90D61445EFFF00A50F6C /* PBXTextBookmark */ = E2FF90D61445EFFF00A50F6C /* PBXTextBookmark */;
+			E2FF90D71445EFFF00A50F6C /* PBXTextBookmark */ = E2FF90D71445EFFF00A50F6C /* PBXTextBookmark */;
+			E2FF90D81445EFFF00A50F6C /* PBXTextBookmark */ = E2FF90D81445EFFF00A50F6C /* PBXTextBookmark */;
+			E2FF90D91445EFFF00A50F6C /* PBXTextBookmark */ = E2FF90D91445EFFF00A50F6C /* PBXTextBookmark */;
+			E2FF90DA1445EFFF00A50F6C /* PBXTextBookmark */ = E2FF90DA1445EFFF00A50F6C /* PBXTextBookmark */;
+			E2FF90DD1445F10700A50F6C /* PBXTextBookmark */ = E2FF90DD1445F10700A50F6C /* PBXTextBookmark */;
+			E2FF90DE1445F10700A50F6C /* PBXTextBookmark */ = E2FF90DE1445F10700A50F6C /* PBXTextBookmark */;
+			E2FF90DF1445F10700A50F6C /* PBXTextBookmark */ = E2FF90DF1445F10700A50F6C /* PBXTextBookmark */;
+			E2FF90E01445F10700A50F6C /* PBXTextBookmark */ = E2FF90E01445F10700A50F6C /* PBXTextBookmark */;
+			E2FF90E11445F10700A50F6C /* PBXTextBookmark */ = E2FF90E11445F10700A50F6C /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -4952,8 +4962,8 @@
 		sourceTree = "<group>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {909, 778}}";
-			sepNavSelRange = "{790, 0}";
-			sepNavVisRange = "{0, 790}";
+			sepNavSelRange = "{911, 0}";
+			sepNavVisRange = "{0, 911}";
 		};
 	};
 	E2FF909A1445E92D00A50F6C /* XCBuildMessageTextBookmark */ = {
@@ -5286,6 +5296,106 @@
 		vrLoc = 647;
 	};
 	E2FF90D51445EF9500A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2FF90341444D85E00A50F6C /* Persist.h */;
+		name = "Persist.h: 37";
+		rLen = 0;
+		rLoc = 902;
+		rType = 0;
+		vrLen = 902;
+		vrLoc = 0;
+	};
+	E2FF90D61445EFFF00A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		name = "UntypedEditable.cpp: 114";
+		rLen = 0;
+		rLoc = 2595;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 647;
+	};
+	E2FF90D71445EFFF00A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2FF90C31445EF4E00A50F6C /* UntypedEditable.h */;
+		name = "UntypedEditable.h: 91";
+		rLen = 0;
+		rLoc = 2333;
+		rType = 0;
+		vrLen = 1707;
+		vrLoc = 0;
+	};
+	E2FF90D81445EFFF00A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2FF90991445E92D00A50F6C /* UndoQueue.h */;
+		name = "UndoQueue.h: 48";
+		rLen = 0;
+		rLoc = 791;
+		rType = 0;
+		vrLen = 791;
+		vrLoc = 0;
+	};
+	E2FF90D91445EFFF00A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		name = "UntypedEditable.cpp: 114";
+		rLen = 0;
+		rLoc = 2595;
+		rType = 0;
+		vrLen = 1341;
+		vrLoc = 647;
+	};
+	E2FF90DA1445EFFF00A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2FF90341444D85E00A50F6C /* Persist.h */;
+		name = "Persist.h: 37";
+		rLen = 0;
+		rLoc = 902;
+		rType = 0;
+		vrLen = 902;
+		vrLoc = 0;
+	};
+	E2FF90DD1445F10700A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		name = "UntypedEditable.cpp: 114";
+		rLen = 0;
+		rLoc = 2595;
+		rType = 0;
+		vrLen = 1246;
+		vrLoc = 647;
+	};
+	E2FF90DE1445F10700A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2FF90C31445EF4E00A50F6C /* UntypedEditable.h */;
+		name = "UntypedEditable.h: 91";
+		rLen = 0;
+		rLoc = 2333;
+		rType = 0;
+		vrLen = 1707;
+		vrLoc = 0;
+	};
+	E2FF90DF1445F10700A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E2FF90991445E92D00A50F6C /* UndoQueue.h */;
+		name = "UndoQueue.h: 51";
+		rLen = 0;
+		rLoc = 911;
+		rType = 0;
+		vrLen = 911;
+		vrLoc = 0;
+	};
+	E2FF90E01445F10700A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
+		name = "UntypedEditable.cpp: 114";
+		rLen = 0;
+		rLoc = 2595;
+		rType = 0;
+		vrLen = 1341;
+		vrLoc = 647;
+	};
+	E2FF90E11445F10700A50F6C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = E2FF90341444D85E00A50F6C /* Persist.h */;
 		name = "Persist.h: 37";

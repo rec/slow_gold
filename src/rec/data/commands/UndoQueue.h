@@ -22,17 +22,21 @@ class UndoQueue {
 
   ~UndoQueue();
 
-  void add(Action* event);
-
   void add(UntypedEditable*, OperationQueue*);
   bool write();
 
+  int possibleRedoes() const { return events_.size() - undoneTo_; }
+  int possibleUndoes() const { return undoneTo_; }
+
  private:
+  void add(Action* event);
+
   typedef std::vector<Action*> ActionList;
 
   ActionList events_;
   ptr<file::Output> logfile_;
   juce::CriticalSection lock_;
+
   int writtenTo_;
   int undoneTo_;
 
