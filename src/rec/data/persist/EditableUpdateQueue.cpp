@@ -44,8 +44,10 @@ bool EditableUpdateQueue::running() const {
     !(writeThread_->threadShouldExit() || writeThread_->threadShouldExit());
 }
 
-void EditableUpdateQueue::doUndo(UntypedEditable* e, data::OperationQueue* q) {
-  undo_->add(e, q);
+// static
+void EditableUpdateQueue::addToUndoQueue(UntypedEditable* e,
+                                         data::OperationQueue* q) {
+  instance_->undo_->add(e, q);
 }
 
 template <typename DataSet, typename Method>

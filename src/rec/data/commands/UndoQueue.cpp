@@ -31,20 +31,15 @@ void UndoQueue::add(Action* event) {
   }
 }
 
-bool UndoQueue::undo() {
+void UndoQueue::undo() {
   if (!undoable())
-    return false;
-  //
-  return true;
+    return;
 }
 
-bool UndoQueue::redo() {
-  if (!undoes())
-    return false;
-  //
-  return true;
+void UndoQueue::redo() {
+  if (!undoes_)
+    return;
 }
-
 
 bool UndoQueue::write() {
   ptr<ActionList> events;
@@ -75,7 +70,6 @@ void UndoQueue::add(UntypedEditable* e, data::OperationQueue* q) {
 
   add(action.transfer());
 }
-
 
 }  // namespace data
 }  // namespace commands

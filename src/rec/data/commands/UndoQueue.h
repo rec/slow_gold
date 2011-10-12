@@ -28,8 +28,8 @@ class UndoQueue {
   int undoable() const { Lock l(lock_); return events_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
-  bool undo();
-  bool redo();
+  void undo();
+  void redo();
 
  private:
   void add(Action* event);

@@ -34,9 +34,7 @@ class EditableUpdateQueue {
   typedef data::UntypedEditable UntypedEditable;
 
   static EditableFactory* getFactory() { return instance_->factory_.get(); }
-  static void addToUndoQueue(UntypedEditable* u, data::OperationQueue* q) {
-    instance_->doUndo(u, q);
-  }
+  static void addToUndoQueue(UntypedEditable* u, data::OperationQueue* q);
 
   typedef std::set<data::UntypedEditable*> DataSet;
   bool running() const;
@@ -47,7 +45,6 @@ private:
 
   bool update();
   void doUpdate(data::UntypedEditable*);
-  void doUndo(UntypedEditable*, data::OperationQueue*);
 
   CriticalSection lock_;
 
