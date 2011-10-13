@@ -16,11 +16,6 @@ class UntypedEditable : public Editable {
  public:
   virtual ~UntypedEditable();
 
-  // Change the data with an OperationList.  op will eventually be deleted.  The
-  // change is performed on a different thread so it is likely that the value of
-  // get() won't immediately be updated.
-  virtual void apply(OperationList* op);
-
   // Request an update to this data in a different thread.
   bool fileReadSuccess() const { return fileReadSuccess_; }
 
@@ -42,7 +37,13 @@ class UntypedEditable : public Editable {
   const VirtualFile& virtualFile() const { return virtualFile_; }
 
  protected:
+  // Change the data with an OperationList.  op will eventually be deleted.  The
+  // change is performed on a different thread so it is likely that the value of
+  // get() won't immediately be updated.
+
   virtual void onDataChange() = 0;
+  virtual void applyLater(OperationList* op);
+  virtual OperationList* applyNow(const OperationList& op);
 
   // Update the clients in this thread.
   void update();

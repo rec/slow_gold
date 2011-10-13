@@ -16,7 +16,7 @@ OperationList* applyOperations(const OperationList& list, Message* m) {
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
       return NULL;
     }
-    ptr<Operation> undo(f->apply(op));
+    ptr<Operation> undo(f->applyToMessage(op));
     result->add_operation()->CopyFrom(*undo);
   }
   return result.transfer();

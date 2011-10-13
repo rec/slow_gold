@@ -132,7 +132,7 @@ bool Field::addFrom(const Value& value) {
 
 typedef bool (Field::*Applier)();
 
-Operation* Field::apply(const Operation& op) {
+Operation* Field::applyToMessage(const Operation& op) {
   Operation::Command command = op.command();
   Applier applier = &Field::error;
   if (field_ == NULL)

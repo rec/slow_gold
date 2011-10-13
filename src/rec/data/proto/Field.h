@@ -19,7 +19,7 @@ class Field : public MessageField {
   }
 
   bool dereference(const Address::Part& part);
-  Operation* apply(const Operation& op);
+  Operation* applyToMessage(const Operation& op);
 
   bool copyFrom(const Value& value);
   bool addFrom(const Value& value);

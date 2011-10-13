@@ -77,13 +77,18 @@ void UntypedEditable::readFromFile() const {
   }
 }
 
-void UntypedEditable::apply(OperationList* op) {
+void UntypedEditable::applyLater(OperationList* op) {
   {
     ScopedLock l(lock_);
     queue_.push_back(op);
   }
   persist::EditableUpdateQueue::needsUpdate(this);
 }
+
+OperationList* UntypedEditable::applyNow(const OperationList& op) {
+  return data::applyOperations(op, message_);
+}
+
 
 void UntypedEditable::update() {
   OperationQueue old;
@@ -98,7 +103,7 @@ void UntypedEditable::update() {
   OperationQueue undo;
   for (OperationQueue::iterator i = old.begin(); i != old.end(); ++i) {
     ScopedLock l(lock_);
-    undo.push_back(applyOperations(**i, message_));
+    undo.push_back(applyNow(**i));
   }
 
   stl::deletePointers(&old);

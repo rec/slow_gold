@@ -24,7 +24,8 @@ class Editable {
   void set(const Value&, const Address& a = Address::default_instance());
   void append(const Value& value, const Address&);
 
-  virtual void apply(OperationList*) = 0;
+  virtual void applyLater(OperationList*) = 0;
+  virtual OperationList* applyNow(const OperationList&) = 0;
 
   virtual const Value getValue(const Address&) const = 0;
   virtual bool hasValue(const Address&) const = 0;
