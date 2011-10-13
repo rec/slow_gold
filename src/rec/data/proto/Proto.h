@@ -10,8 +10,6 @@ namespace data {
 // Apply an operation and return an undo.
 OperationList* applyOperations(const OperationList&, Message*);
 
-Value getValue(const Address&, const Message&);
-
 }  // namespace data
 }  // namespace rec
 

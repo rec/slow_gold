@@ -52,7 +52,9 @@ void TableController::paintCell(Graphics& g,
   }
   const TableColumn& column = columns_.column(columnId - 1);
   Address row = (address_ + rowNumber) + column.address();
-  String t = displayText(column, data::getValue(row, *message_));
+  String t = "-";
+  if (data::UntypedEditable* data = getUntypedEditable())
+    displayText(column, data->getValue(row));
   g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
 }
 

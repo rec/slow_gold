@@ -33,8 +33,14 @@ bool UntypedEditable::hasValue(const Address& address) const {
 }
 
 const Value UntypedEditable::getValue(const Address& address) const {
+  Value value;
   ScopedLock l(lock_);
-  return data::getValue(address, *message_);
+  ptr<Field> f(Field::makeField(address, *message_));
+  if (f)
+    f->copyTo(&value);
+  else
+    LOG(ERROR) << "Couldn't read value for " << address.DebugString();
+  return value;
 }
 
 int UntypedEditable::getSize(const Address& address) const {

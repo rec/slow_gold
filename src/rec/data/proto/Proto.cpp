@@ -7,16 +7,6 @@
 namespace rec {
 namespace data {
 
-Value getValue(const Address& a, const Message& m) {
-  ptr<Field> f(Field::makeField(a, m));
-  Value value;
-  if (f)
-    f->copyTo(&value);
-  else
-    LOG(ERROR) << "Couldn't read value for " << a.DebugString();
-  return value;
-}
-
 OperationList* applyOperations(const OperationList& list, Message* m) {
   ptr<OperationList> result (new OperationList());
   for (int i = 0; i < list.operation_size(); ++i) {
