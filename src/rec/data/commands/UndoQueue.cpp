@@ -1,5 +1,7 @@
 #include "rec/data/commands/UndoQueue.h"
 #include "rec/data/persist/UntypedEditable.h"
+#include "rec/data/persist/UntypedEditable.h"
+#include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/LogFile.h"
 
@@ -31,14 +33,22 @@ void UndoQueue::add(Action* event) {
   }
 }
 
+static void doAction(Action* action, bool isUndo) {
+  Message* message; // ??
+  const OperationList& ops = isUndo ? action->undo() : action->operations();
+  ptr<OperationList> res(data::applyOperations(ops, message));
+  if (isUndo && !action->operations().operation_size() && res->operation_size())
+    action->mutable_operations()->CopyFrom(*res);
+}
+
 void UndoQueue::undo() {
-  if (!undoable())
-    return;
+  if (undoable())
+    doAction(events_[events_.size() - ++undoes_], true);
 }
 
 void UndoQueue::redo() {
-  if (!undoes_)
-    return;
+  if (undoes_)
+    doAction(events_[events_.size() - undoes_--], false);
 }
 
 bool UndoQueue::write() {
