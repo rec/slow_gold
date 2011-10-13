@@ -12,8 +12,6 @@ namespace data {
 OperationList* applyOperations(const OperationList&, Message*);
 
 Value getValue(const Address&, const Message&);
-bool hasValue(const Address&, const Message&);
-int getSize(const Address&, const Message&);
 
 }  // namespace data
 }  // namespace rec

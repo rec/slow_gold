@@ -3,9 +3,12 @@
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/EditableUpdateQueue.h"
 #include "rec/data/persist/Copy.h"
+#include "rec/data/proto/Field.h"
 #include "rec/data/persist/Persist.h"
-#include "rec/data/proto/Proto.h"
+#include "rec/data/Value.h"
 #include "rec/util/STL.h"
+
+#include "rec/data/proto/Proto.h"
 
 namespace rec {
 namespace data {
@@ -25,7 +28,8 @@ UntypedEditable::~UntypedEditable() {
 
 bool UntypedEditable::hasValue(const Address& address) const {
   ScopedLock l(lock_);
-  return data::hasValue(address, *message_);
+  ptr<Field> f(Field::makeField(address, *message_));
+  return f && f->hasValue();
 }
 
 const Value UntypedEditable::getValue(const Address& address) const {
@@ -35,7 +39,8 @@ const Value UntypedEditable::getValue(const Address& address) const {
 
 int UntypedEditable::getSize(const Address& address) const {
   ScopedLock l(lock_);
-  return data::getSize(address, *message_);
+  ptr<Field> f(Field::makeField(address, *message_));
+  return f ? f->getSize() : 0;
 }
 
 void UntypedEditable::copyTo(Message* message) const {

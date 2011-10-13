@@ -1,6 +1,7 @@
+#include "rec/data/proto/Proto.h"
+
 #include "rec/data/proto/Field.h"
 #include "rec/data/Value.h"
-#include "rec/data/proto/Proto.h"
 #include "rec/data/proto/NameToProto.h"
 
 namespace rec {
@@ -12,11 +13,6 @@ Value getValue(const Address& a, const Message& m) {
   if (f)
     f->copyTo(&value);
   return value;
-}
-
-bool hasValue(const Address& a, const Message& m) {
-  ptr<Field> f(Field::makeField(a, m));
-  return f && f->hasValue();
 }
 
 int getSize(const Address& a, const Message& m) {
