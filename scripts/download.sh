@@ -29,9 +29,17 @@ else
     echo
     echo
 
-    curl -O "$ARCHIVE_PATH"
-    tar "$TAR_ARGS" "$ARCHIVE"
-    rm "$ARCHIVE"
+    # echo "$ $DOWNLOAD $ARCHIVE_PATH"
+    # $DOWNLOAD "$ARCHIVE_PATH"
+
+    echo "HERE!"
+    echo "$EXTRACT"
+    echo "$ARCHIVE"
+    echo "done!"
+
+    "$EXTRACT $ARCHIVE"
+
+    # rm "$ARCHIVE"
     if [ -f "$PACKAGE" ]; then
       mv -f "$PACKAGE" "$PACKAGE.old"
     fi

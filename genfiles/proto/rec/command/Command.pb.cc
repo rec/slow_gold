@@ -76,31 +76,31 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\031rec/command/Command.proto\022\013rec.command"
-    "\"\300\007\n\007Command\022*\n\007command\030\001 \001(\0162\031.rec.comm"
-    "and.Command.Type\"\210\007\n\004Type\022\010\n\004NONE\020\000\022\t\n\004Q"
-    "UIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n"
-    "\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n\014DESELECT_A"
-    "LL\020\207 \022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFE"
-    "RENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR_L"
-    "OOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLO"
-    "SE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020M\022\r\n\tEJEC"
-    "T_CDS\020\007\022\031\n\025INVERT_LOOP_SELECTION\020\023\022\025\n\021KE"
-    "YBOARD_MAPPINGS\020\022\022\021\n\rMIDI_MAPPINGS\020\021\022\026\n\022"
-    "MUTE_VOLUME_TOGGLE\020N\022\024\n\020NUDGE_BEGIN_LEFT"
-    "\020\013\022\025\n\021NUDGE_BEGIN_RIGHT\020\014\022\022\n\016NUDGE_END_L"
-    "EFT\020\r\022\023\n\017NUDGE_END_RIGHT\020\016\022\025\n\021NUDGE_VOLU"
-    "ME_DOWN\020;\022\023\n\017NUDGE_VOLUME_UP\020H\022\010\n\004OPEN\020\017"
-    "\022\020\n\014RECENT_FILES\020\020\022\027\n\023RESET_GAIN_TO_UNIT"
-    "Y\020O\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020:\022\025\n\021TOGGL"
-    "E_START_STOP\0202\022\031\n\025TOGGLE_STRETCH_ENABLE\020"
-    "3\022\016\n\nTREE_CLOSE\0204\022\r\n\tTREE_DOWN\0205\022\r\n\tTREE"
-    "_LEFT\0206\022\r\n\tTREE_OPEN\0207\022\016\n\nTREE_RIGHT\0208\022\013"
-    "\n\007TREE_UP\0209\022\013\n\007ZOOM_IN\020F\022\014\n\010ZOOM_OUT\020G\022\014"
-    "\n\006SELECT\020\300\204=\022\021\n\013SELECT_ONLY\020\340\221C\022\014\n\006TOGGL"
-    "E\020\200\237I\022\016\n\010UNSELECT\020\240\254O\022\n\n\004JUMP\020\300\271U\022\023\n\rJUM"
-    "P_SELECTED\020\340\306[\022\020\n\nBANK_START\020\300\204=\022\016\n\010BANK"
-    "_END\020\200\324a\022\017\n\tBANK_SIZE\020\240\215\006\022\020\n\014LAST_COMMAN"
-    "D\020c", 1003);
+    "\"\324\007\n\007Command\022*\n\007command\030\001 \001(\0162\031.rec.comm"
+    "and.Command.Type\"\234\007\n\004Type\022\010\n\004NONE\020\000\022\022\n\016A"
+    "DD_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\023"
+    "\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR_LOOPS\020\004\022\031\n\025"
+    "CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022"
+    "\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\031\n"
+    "\025INVERT_LOOP_SELECTION\020\t\022\025\n\021KEYBOARD_MAP"
+    "PINGS\020\n\022\021\n\rMIDI_MAPPINGS\020\013\022\026\n\022MUTE_VOLUM"
+    "E_TOGGLE\020\014\022\024\n\020NUDGE_BEGIN_LEFT\020\r\022\025\n\021NUDG"
+    "E_BEGIN_RIGHT\020\016\022\022\n\016NUDGE_END_LEFT\020\017\022\023\n\017N"
+    "UDGE_END_RIGHT\020\020\022\025\n\021NUDGE_VOLUME_DOWN\020\021\022"
+    "\023\n\017NUDGE_VOLUME_UP\020\022\022\010\n\004OPEN\020\023\022\020\n\014RECENT"
+    "_FILES\020\024\022\010\n\004REDO\020\025\022\027\n\023RESET_GAIN_TO_UNIT"
+    "Y\020\026\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\027\022\025\n\021TOGGL"
+    "E_START_STOP\020\030\022\031\n\025TOGGLE_STRETCH_ENABLE\020"
+    "\031\022\016\n\nTREE_CLOSE\020\032\022\r\n\tTREE_DOWN\020\033\022\r\n\tTREE"
+    "_LEFT\020\034\022\r\n\tTREE_OPEN\020\035\022\016\n\nTREE_RIGHT\020\036\022\013"
+    "\n\007TREE_UP\020\037\022\010\n\004UNDO\020 \022\013\n\007ZOOM_IN\020!\022\014\n\010ZO"
+    "OM_OUT\020\"\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022"
+    "\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022"
+    "\021\n\014DESELECT_ALL\020\207 \022\014\n\006SELECT\020\300\204=\022\021\n\013SELE"
+    "CT_ONLY\020\340\221C\022\014\n\006TOGGLE\020\200\237I\022\016\n\010UNSELECT\020\240\254"
+    "O\022\n\n\004JUMP\020\300\271U\022\023\n\rJUMP_SELECTED\020\340\306[\022\020\n\nBA"
+    "NK_START\020\300\204=\022\016\n\010BANK_END\020\200\324a\022\017\n\tBANK_SIZ"
+    "E\020\240\215\006\022\020\n\014LAST_COMMAND\020\"", 1023);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   Command::default_instance_ = new Command();
@@ -132,6 +132,9 @@ bool Command_Type_IsValid(int value) {
     case 5:
     case 6:
     case 7:
+    case 8:
+    case 9:
+    case 10:
     case 11:
     case 12:
     case 13:
@@ -141,23 +144,21 @@ bool Command_Type_IsValid(int value) {
     case 17:
     case 18:
     case 19:
-    case 50:
-    case 51:
-    case 52:
-    case 53:
-    case 54:
-    case 55:
-    case 56:
-    case 57:
-    case 58:
-    case 59:
-    case 70:
-    case 71:
-    case 72:
-    case 77:
-    case 78:
-    case 79:
-    case 99:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+    case 26:
+    case 27:
+    case 28:
+    case 29:
+    case 30:
+    case 31:
+    case 32:
+    case 33:
+    case 34:
     case 4097:
     case 4098:
     case 4099:
@@ -181,13 +182,6 @@ bool Command_Type_IsValid(int value) {
 
 #ifndef _MSC_VER
 const Command_Type Command::NONE;
-const Command_Type Command::QUIT;
-const Command_Type Command::DEL;
-const Command_Type Command::CUT;
-const Command_Type Command::COPY;
-const Command_Type Command::PASTE;
-const Command_Type Command::SELECT_ALL;
-const Command_Type Command::DESELECT_ALL;
 const Command_Type Command::ADD_LOOP_POINT;
 const Command_Type Command::AUDIO_PREFERENCES;
 const Command_Type Command::CLEAR_NAVIGATOR;
@@ -208,6 +202,7 @@ const Command_Type Command::NUDGE_VOLUME_DOWN;
 const Command_Type Command::NUDGE_VOLUME_UP;
 const Command_Type Command::OPEN;
 const Command_Type Command::RECENT_FILES;
+const Command_Type Command::REDO;
 const Command_Type Command::RESET_GAIN_TO_UNITY;
 const Command_Type Command::TOGGLE_WHOLE_SONG_LOOP;
 const Command_Type Command::TOGGLE_START_STOP;
@@ -218,8 +213,16 @@ const Command_Type Command::TREE_LEFT;
 const Command_Type Command::TREE_OPEN;
 const Command_Type Command::TREE_RIGHT;
 const Command_Type Command::TREE_UP;
+const Command_Type Command::UNDO;
 const Command_Type Command::ZOOM_IN;
 const Command_Type Command::ZOOM_OUT;
+const Command_Type Command::QUIT;
+const Command_Type Command::DEL;
+const Command_Type Command::CUT;
+const Command_Type Command::COPY;
+const Command_Type Command::PASTE;
+const Command_Type Command::SELECT_ALL;
+const Command_Type Command::DESELECT_ALL;
 const Command_Type Command::SELECT;
 const Command_Type Command::SELECT_ONLY;
 const Command_Type Command::TOGGLE;

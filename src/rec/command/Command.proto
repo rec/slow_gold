@@ -5,6 +5,53 @@ message Command {
   enum Type {
     NONE = 0;
 
+    ADD_LOOP_POINT = 1;
+    AUDIO_PREFERENCES = 2;
+    CLEAR_NAVIGATOR = 3;
+    CLEAR_LOOPS = 4;
+    CLEAR_SAVED_FILE_DATA = 5;
+    CLOSE_FILE = 6;
+
+    DIM_VOLUME_TOGGLE = 7;
+    EJECT_CDS = 8;
+
+    INVERT_LOOP_SELECTION = 9;
+
+    KEYBOARD_MAPPINGS = 10;
+    MIDI_MAPPINGS = 11;
+
+    MUTE_VOLUME_TOGGLE = 12;
+
+    NUDGE_BEGIN_LEFT = 13;
+    NUDGE_BEGIN_RIGHT = 14;
+    NUDGE_END_LEFT = 15;
+    NUDGE_END_RIGHT = 16;
+
+    NUDGE_VOLUME_DOWN = 17;
+    NUDGE_VOLUME_UP = 18;
+
+    OPEN = 19;
+
+    RECENT_FILES = 20;
+    REDO = 21;
+    RESET_GAIN_TO_UNITY = 22;
+
+    TOGGLE_WHOLE_SONG_LOOP = 23;
+    TOGGLE_START_STOP = 24;
+    TOGGLE_STRETCH_ENABLE = 25;
+
+    TREE_CLOSE = 26;
+    TREE_DOWN = 27;
+    TREE_LEFT = 28;
+    TREE_OPEN = 29;
+    TREE_RIGHT = 30;
+    TREE_UP = 31;
+
+    UNDO = 32;
+
+    ZOOM_IN = 33;
+    ZOOM_OUT = 34;
+
     // Pre-defined by Juce.
     QUIT = 0x1001;
     DEL = 0x1002;
@@ -13,49 +60,6 @@ message Command {
     PASTE = 0x1005;
     SELECT_ALL = 0x1006;
     DESELECT_ALL = 0x1007;
-
-    ADD_LOOP_POINT = 1;
-    AUDIO_PREFERENCES = 2;
-    CLEAR_NAVIGATOR = 3;
-    CLEAR_LOOPS = 4;
-    CLEAR_SAVED_FILE_DATA = 5;
-    CLOSE_FILE = 6;
-
-    DIM_VOLUME_TOGGLE = 77;
-    EJECT_CDS = 7;
-
-    INVERT_LOOP_SELECTION = 19;
-
-    KEYBOARD_MAPPINGS = 18;
-    MIDI_MAPPINGS = 17;
-
-    MUTE_VOLUME_TOGGLE = 78;
-
-    NUDGE_BEGIN_LEFT = 11;
-    NUDGE_BEGIN_RIGHT = 12;
-    NUDGE_END_LEFT = 13;
-    NUDGE_END_RIGHT = 14;
-
-    NUDGE_VOLUME_DOWN = 59;
-    NUDGE_VOLUME_UP = 72;
-
-    OPEN = 15;
-    RECENT_FILES = 16;
-    RESET_GAIN_TO_UNITY = 79;
-
-    TOGGLE_WHOLE_SONG_LOOP = 58;
-    TOGGLE_START_STOP = 50;
-    TOGGLE_STRETCH_ENABLE = 51;
-
-    TREE_CLOSE = 52;
-    TREE_DOWN = 53;
-    TREE_LEFT = 54;
-    TREE_OPEN = 55;
-    TREE_RIGHT = 56;
-    TREE_UP = 57;
-
-    ZOOM_IN = 70;
-    ZOOM_OUT = 71;
 
     // Banks of 100,000 starting at 1,000,000 (and going back to 995).
     SELECT = 1000000;
@@ -69,7 +73,7 @@ message Command {
     BANK_END = 1600000;
     BANK_SIZE = 100000;
 
-    LAST_COMMAND = 99;  // 89 is free.
+    LAST_COMMAND = 34;
   };
 
   optional Type command = 1;

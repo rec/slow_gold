@@ -37,6 +37,40 @@ class Command;
 
 enum Command_Type {
   Command_Type_NONE = 0,
+  Command_Type_ADD_LOOP_POINT = 1,
+  Command_Type_AUDIO_PREFERENCES = 2,
+  Command_Type_CLEAR_NAVIGATOR = 3,
+  Command_Type_CLEAR_LOOPS = 4,
+  Command_Type_CLEAR_SAVED_FILE_DATA = 5,
+  Command_Type_CLOSE_FILE = 6,
+  Command_Type_DIM_VOLUME_TOGGLE = 7,
+  Command_Type_EJECT_CDS = 8,
+  Command_Type_INVERT_LOOP_SELECTION = 9,
+  Command_Type_KEYBOARD_MAPPINGS = 10,
+  Command_Type_MIDI_MAPPINGS = 11,
+  Command_Type_MUTE_VOLUME_TOGGLE = 12,
+  Command_Type_NUDGE_BEGIN_LEFT = 13,
+  Command_Type_NUDGE_BEGIN_RIGHT = 14,
+  Command_Type_NUDGE_END_LEFT = 15,
+  Command_Type_NUDGE_END_RIGHT = 16,
+  Command_Type_NUDGE_VOLUME_DOWN = 17,
+  Command_Type_NUDGE_VOLUME_UP = 18,
+  Command_Type_OPEN = 19,
+  Command_Type_RECENT_FILES = 20,
+  Command_Type_REDO = 21,
+  Command_Type_RESET_GAIN_TO_UNITY = 22,
+  Command_Type_TOGGLE_WHOLE_SONG_LOOP = 23,
+  Command_Type_TOGGLE_START_STOP = 24,
+  Command_Type_TOGGLE_STRETCH_ENABLE = 25,
+  Command_Type_TREE_CLOSE = 26,
+  Command_Type_TREE_DOWN = 27,
+  Command_Type_TREE_LEFT = 28,
+  Command_Type_TREE_OPEN = 29,
+  Command_Type_TREE_RIGHT = 30,
+  Command_Type_TREE_UP = 31,
+  Command_Type_UNDO = 32,
+  Command_Type_ZOOM_IN = 33,
+  Command_Type_ZOOM_OUT = 34,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -44,38 +78,6 @@ enum Command_Type {
   Command_Type_PASTE = 4101,
   Command_Type_SELECT_ALL = 4102,
   Command_Type_DESELECT_ALL = 4103,
-  Command_Type_ADD_LOOP_POINT = 1,
-  Command_Type_AUDIO_PREFERENCES = 2,
-  Command_Type_CLEAR_NAVIGATOR = 3,
-  Command_Type_CLEAR_LOOPS = 4,
-  Command_Type_CLEAR_SAVED_FILE_DATA = 5,
-  Command_Type_CLOSE_FILE = 6,
-  Command_Type_DIM_VOLUME_TOGGLE = 77,
-  Command_Type_EJECT_CDS = 7,
-  Command_Type_INVERT_LOOP_SELECTION = 19,
-  Command_Type_KEYBOARD_MAPPINGS = 18,
-  Command_Type_MIDI_MAPPINGS = 17,
-  Command_Type_MUTE_VOLUME_TOGGLE = 78,
-  Command_Type_NUDGE_BEGIN_LEFT = 11,
-  Command_Type_NUDGE_BEGIN_RIGHT = 12,
-  Command_Type_NUDGE_END_LEFT = 13,
-  Command_Type_NUDGE_END_RIGHT = 14,
-  Command_Type_NUDGE_VOLUME_DOWN = 59,
-  Command_Type_NUDGE_VOLUME_UP = 72,
-  Command_Type_OPEN = 15,
-  Command_Type_RECENT_FILES = 16,
-  Command_Type_RESET_GAIN_TO_UNITY = 79,
-  Command_Type_TOGGLE_WHOLE_SONG_LOOP = 58,
-  Command_Type_TOGGLE_START_STOP = 50,
-  Command_Type_TOGGLE_STRETCH_ENABLE = 51,
-  Command_Type_TREE_CLOSE = 52,
-  Command_Type_TREE_DOWN = 53,
-  Command_Type_TREE_LEFT = 54,
-  Command_Type_TREE_OPEN = 55,
-  Command_Type_TREE_RIGHT = 56,
-  Command_Type_TREE_UP = 57,
-  Command_Type_ZOOM_IN = 70,
-  Command_Type_ZOOM_OUT = 71,
   Command_Type_SELECT = 1000000,
   Command_Type_SELECT_ONLY = 1100000,
   Command_Type_TOGGLE = 1200000,
@@ -85,7 +87,7 @@ enum Command_Type {
   Command_Type_BANK_START = 1000000,
   Command_Type_BANK_END = 1600000,
   Command_Type_BANK_SIZE = 100000,
-  Command_Type_LAST_COMMAND = 99
+  Command_Type_LAST_COMMAND = 34
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
@@ -158,13 +160,6 @@ class Command : public ::google::protobuf::Message {
   
   typedef Command_Type Type;
   static const Type NONE = Command_Type_NONE;
-  static const Type QUIT = Command_Type_QUIT;
-  static const Type DEL = Command_Type_DEL;
-  static const Type CUT = Command_Type_CUT;
-  static const Type COPY = Command_Type_COPY;
-  static const Type PASTE = Command_Type_PASTE;
-  static const Type SELECT_ALL = Command_Type_SELECT_ALL;
-  static const Type DESELECT_ALL = Command_Type_DESELECT_ALL;
   static const Type ADD_LOOP_POINT = Command_Type_ADD_LOOP_POINT;
   static const Type AUDIO_PREFERENCES = Command_Type_AUDIO_PREFERENCES;
   static const Type CLEAR_NAVIGATOR = Command_Type_CLEAR_NAVIGATOR;
@@ -185,6 +180,7 @@ class Command : public ::google::protobuf::Message {
   static const Type NUDGE_VOLUME_UP = Command_Type_NUDGE_VOLUME_UP;
   static const Type OPEN = Command_Type_OPEN;
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
+  static const Type REDO = Command_Type_REDO;
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
   static const Type TOGGLE_WHOLE_SONG_LOOP = Command_Type_TOGGLE_WHOLE_SONG_LOOP;
   static const Type TOGGLE_START_STOP = Command_Type_TOGGLE_START_STOP;
@@ -195,8 +191,16 @@ class Command : public ::google::protobuf::Message {
   static const Type TREE_OPEN = Command_Type_TREE_OPEN;
   static const Type TREE_RIGHT = Command_Type_TREE_RIGHT;
   static const Type TREE_UP = Command_Type_TREE_UP;
+  static const Type UNDO = Command_Type_UNDO;
   static const Type ZOOM_IN = Command_Type_ZOOM_IN;
   static const Type ZOOM_OUT = Command_Type_ZOOM_OUT;
+  static const Type QUIT = Command_Type_QUIT;
+  static const Type DEL = Command_Type_DEL;
+  static const Type CUT = Command_Type_CUT;
+  static const Type COPY = Command_Type_COPY;
+  static const Type PASTE = Command_Type_PASTE;
+  static const Type SELECT_ALL = Command_Type_SELECT_ALL;
+  static const Type DESELECT_ALL = Command_Type_DESELECT_ALL;
   static const Type SELECT = Command_Type_SELECT;
   static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
   static const Type TOGGLE = Command_Type_TOGGLE;

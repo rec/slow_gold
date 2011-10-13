@@ -1,6 +1,6 @@
 #include "rec/data/persist/EditableUpdateQueue.h"
 #include "rec/app/Files.h"
-#include "rec/data/commands/UndoQueue.h"
+#include "rec/data/UndoQueue.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/data/persist/TypedEditable.h"
 #include "rec/util/STL.h"

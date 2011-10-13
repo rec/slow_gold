@@ -330,11 +330,6 @@
           <File RelativePath="..\..\..\..\src\rec\data\Address.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Binary.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Binary.h"/>
-          <Filter Name="commands">
-            <File RelativePath="..\..\..\..\src\rec\data\commands\CommandManager.h"/>
-            <File RelativePath="..\..\..\..\src\rec\data\commands\UndoQueue.cpp"/>
-            <File RelativePath="..\..\..\..\src\rec\data\commands\UndoQueue.h"/>
-          </Filter>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Editable.h"/>
           <Filter Name="persist">
@@ -368,6 +363,8 @@
             <File RelativePath="..\..\..\..\src\rec\data\proto\Typer.h"/>
             <File RelativePath="..\..\..\..\src\rec\data\proto\Types.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\data\UndoQueue.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\data\UndoQueue.h"/>
           <File RelativePath="..\..\..\..\src\rec\data\Value.cpp"/>
           <File RelativePath="..\..\..\..\src\rec\data\Value.h"/>
           <Filter Name="yaml">
@@ -686,6 +683,8 @@
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
             <File RelativePath="..\..\..\..\src\rec\util\thread\Trash.h"/>
           </Filter>
+          <File RelativePath="..\..\..\..\src\rec\util\Undo.cpp"/>
+          <File RelativePath="..\..\..\..\src\rec\util\Undo.h"/>
         </Filter>
         <Filter Name="widget">
           <File RelativePath="..\..\..\..\src\rec\widget\Painter.h"/>
@@ -750,10 +749,8 @@
             <File RelativePath="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h"/>
           </Filter>
           <Filter Name="data">
-            <Filter Name="commands">
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\commands\Action.pb.cc"/>
-              <File RelativePath="..\..\..\..\genfiles\proto\rec\data\commands\Action.pb.h"/>
-            </Filter>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc"/>
+            <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Action.pb.h"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc"/>
             <File RelativePath="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h"/>
             <Filter Name="proto">

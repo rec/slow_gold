@@ -1,5 +1,6 @@
 #include "rec/slow/Menus.h"
 #include "rec/base/ArraySize.h"
+#include "rec/util/Undo.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Position.h"
 #include "rec/slow/Target.h"
@@ -66,9 +67,12 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
 #endif
 
   } else if (menuName == "Edit") {
+    add(&m, Command::UNDO, canUndo());
+    add(&m, Command::REDO, canRedo());
     add(&m, Command::CUT, canCut());
     add(&m, Command::COPY, canCopy());
     add(&m, Command::PASTE, canPaste());
+    m.addSeparator();
 
   } else if (menuName == "Audio") {
     add(&m, Command::MUTE_VOLUME_TOGGLE);

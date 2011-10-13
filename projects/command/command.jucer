@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="NBmH0Xbl2" name="command">
+  <MAINGROUP id="foXQMNySy" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -365,14 +365,6 @@
               name="Binary.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Binary.h" id="HWeXmPJa5"
               name="Binary.h" resource="0"/>
-        <GROUP id="CAKZeMfhg" name="commands">
-          <FILE compile="0" file="../../src/rec/data/commands/CommandManager.h"
-                id="IHssEhmLA" name="CommandManager.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/commands/UndoQueue.cpp"
-                id="QkZOGzRgr" name="UndoQueue.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/commands/UndoQueue.h" id="cV8urn3dD"
-                name="UndoQueue.h" resource="0"/>
-        </GROUP>
         <FILE compile="1" file="../../src/rec/data/Editable.cpp" id="1asAfeouW"
               name="Editable.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Editable.h" id="KVN2zCxtw"
@@ -435,6 +427,10 @@
           <FILE compile="0" file="../../src/rec/data/proto/Types.h" id="1DRxgqAD5"
                 name="Types.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/data/UndoQueue.cpp" id="RuK378WTZ"
+              name="UndoQueue.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/data/UndoQueue.h" id="wHhffexGc"
+              name="UndoQueue.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/data/Value.cpp" id="SJ76b6rCO"
               name="Value.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/data/Value.h" id="mHtPpmQBC"
@@ -1035,6 +1031,10 @@
           <FILE compile="0" file="../../src/rec/util/thread/Trash.h" id="viZajKWxb"
                 name="Trash.h" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/util/Undo.cpp" id="DmmY5wFhP"
+              name="Undo.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Undo.h" id="3N9kvNIGh" name="Undo.h"
+              resource="0"/>
       </GROUP>
       <GROUP id="hFkrretDQ" name="widget">
         <FILE compile="0" file="../../src/rec/widget/Painter.h" id="zCSrsHYWM"
@@ -1140,12 +1140,10 @@
                 id="1P8h7xjqB" name="CommandMap.pb.h" resource="0"/>
         </GROUP>
         <GROUP id="OJ6PRjMj4" name="data">
-          <GROUP id="iUsTRyCON" name="commands">
-            <FILE compile="1" file="../../genfiles/proto/rec/data/commands/Action.pb.cc"
-                  id="TyJ3453av" name="Action.pb.cc" resource="0"/>
-            <FILE compile="0" file="../../genfiles/proto/rec/data/commands/Action.pb.h"
-                  id="3pJVid45x" name="Action.pb.h" resource="0"/>
-          </GROUP>
+          <FILE compile="1" file="../../genfiles/proto/rec/data/Action.pb.cc"
+                id="Er6qoLs3N" name="Action.pb.cc" resource="0"/>
+          <FILE compile="0" file="../../genfiles/proto/rec/data/Action.pb.h"
+                id="gyQZ8NV8w" name="Action.pb.h" resource="0"/>
           <FILE compile="1" file="../../genfiles/proto/rec/data/Operation.pb.cc"
                 id="FwZhgeZg2" name="Operation.pb.cc" resource="0"/>
           <FILE compile="0" file="../../genfiles/proto/rec/data/Operation.pb.h"
@@ -1267,7 +1265,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="aDPlOzATe" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="YedR4s0hE" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

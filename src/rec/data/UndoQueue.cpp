@@ -1,11 +1,9 @@
-#include "rec/data/commands/UndoQueue.h"
-#include "rec/data/persist/UntypedEditable.h"
+#include "rec/data/UndoQueue.h"
+#include "rec/data/Action.pb.h"
 #include "rec/data/persist/UntypedEditable.h"
 #include "rec/data/proto/Proto.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/LogFile.h"
-
-#include "rec/data/commands/Action.pb.h"
 
 namespace rec {
 namespace data {
