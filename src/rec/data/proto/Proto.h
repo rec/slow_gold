@@ -1,7 +1,6 @@
 #ifndef __REC_PROTO_PROTO
 #define __REC_PROTO_PROTO
 
-#include "rec/base/base.h"
 #include "rec/data/Address.h"
 #include "rec/data/Value.h"
 

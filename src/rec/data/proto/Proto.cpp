@@ -12,12 +12,9 @@ Value getValue(const Address& a, const Message& m) {
   Value value;
   if (f)
     f->copyTo(&value);
+  else
+    LOG(ERROR) << "Couldn't read value for " << a.DebugString();
   return value;
-}
-
-int getSize(const Address& a, const Message& m) {
-  ptr<Field> f(Field::makeField(a, m));
-  return f ? f->getSize() : 0;
 }
 
 OperationList* applyOperations(const OperationList& list, Message* m) {

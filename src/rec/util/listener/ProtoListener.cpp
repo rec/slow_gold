@@ -22,7 +22,7 @@ void ProtoListener::setUntypedEditable(UntypedEditable* data) {
 }
 
 void ProtoListener::operator()(const Message& m) {
-  setDisplayValue(getValue(address_, m));
+  setDisplayValue(untypedData_->getValue(address_));
 }
 
 void ProtoListener::updatePersistentData() {

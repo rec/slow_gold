@@ -32,7 +32,7 @@ void UndoQueue::add(Action* event) {
 }
 
 static void doAction(Action* action, bool isUndo) {
-  Message* message; // ??
+  Message* message = NULL; // ??!!!!
   const OperationList& ops = isUndo ? action->undo() : action->operations();
   ptr<OperationList> res(data::applyOperations(ops, message));
   if (isUndo && !action->operations().operation_size() && res->operation_size())
