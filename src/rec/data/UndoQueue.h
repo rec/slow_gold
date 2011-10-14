@@ -11,9 +11,6 @@ namespace rec {
 namespace data {
 
 class Editable;
-
-namespace commands {
-
 class Action;
 
 class UndoQueue {
@@ -46,7 +43,6 @@ class UndoQueue {
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UndoQueue);
 };
 
-}  // namespace commands
 }  // namespace data
 }  // namespace rec
 

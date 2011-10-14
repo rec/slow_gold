@@ -29,7 +29,6 @@
 
 namespace rec {
 namespace data {
-namespace commands {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_rec_2fdata_2fAction_2eproto();
@@ -142,12 +141,12 @@ class Source : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.data.commands.Source.Type type = 1;
+  // optional .rec.data.Source.Type type = 1;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 1;
-  inline ::rec::data::commands::Source_Type type() const;
-  inline void set_type(::rec::data::commands::Source_Type value);
+  inline ::rec::data::Source_Type type() const;
+  inline void set_type(::rec::data::Source_Type value);
   
   // repeated uint32 index = 2;
   inline int index_size() const;
@@ -168,7 +167,7 @@ class Source : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 modifier_keys() const;
   inline void set_modifier_keys(::google::protobuf::uint32 value);
   
-  // @@protoc_insertion_point(class_scope:rec.data.commands.Source)
+  // @@protoc_insertion_point(class_scope:rec.data.Source)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -266,16 +265,16 @@ class Action : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 index() const;
   inline void set_index(::google::protobuf::uint64 value);
   
-  // repeated .rec.data.commands.Source source = 3;
+  // repeated .rec.data.Source source = 3;
   inline int source_size() const;
   inline void clear_source();
   static const int kSourceFieldNumber = 3;
-  inline const ::rec::data::commands::Source& source(int index) const;
-  inline ::rec::data::commands::Source* mutable_source(int index);
-  inline ::rec::data::commands::Source* add_source();
-  inline const ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source >&
+  inline const ::rec::data::Source& source(int index) const;
+  inline ::rec::data::Source* mutable_source(int index);
+  inline ::rec::data::Source* add_source();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::data::Source >&
       source() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source >*
+  inline ::google::protobuf::RepeatedPtrField< ::rec::data::Source >*
       mutable_source();
   
   // optional .rec.util.file.VirtualFile file = 4;
@@ -309,14 +308,14 @@ class Action : public ::google::protobuf::Message {
   inline const ::rec::data::OperationList& undo() const;
   inline ::rec::data::OperationList* mutable_undo();
   
-  // @@protoc_insertion_point(class_scope:rec.data.commands.Action)
+  // @@protoc_insertion_point(class_scope:rec.data.Action)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
   ::google::protobuf::uint64 timestamp_;
   ::google::protobuf::uint64 index_;
-  ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source > source_;
+  ::google::protobuf::RepeatedPtrField< ::rec::data::Source > source_;
   ::rec::util::file::VirtualFile* file_;
   ::std::string* type_name_;
   static const ::std::string _default_type_name_;
@@ -349,7 +348,7 @@ class Action : public ::google::protobuf::Message {
 
 // Source
 
-// optional .rec.data.commands.Source.Type type = 1;
+// optional .rec.data.Source.Type type = 1;
 inline bool Source::has_type() const {
   return _has_bit(0);
 }
@@ -357,11 +356,11 @@ inline void Source::clear_type() {
   type_ = 0;
   _clear_bit(0);
 }
-inline ::rec::data::commands::Source_Type Source::type() const {
-  return static_cast< ::rec::data::commands::Source_Type >(type_);
+inline ::rec::data::Source_Type Source::type() const {
+  return static_cast< ::rec::data::Source_Type >(type_);
 }
-inline void Source::set_type(::rec::data::commands::Source_Type value) {
-  GOOGLE_DCHECK(::rec::data::commands::Source_Type_IsValid(value));
+inline void Source::set_type(::rec::data::Source_Type value) {
+  GOOGLE_DCHECK(::rec::data::Source_Type_IsValid(value));
   _set_bit(0);
   type_ = value;
 }
@@ -443,27 +442,27 @@ inline void Action::set_index(::google::protobuf::uint64 value) {
   index_ = value;
 }
 
-// repeated .rec.data.commands.Source source = 3;
+// repeated .rec.data.Source source = 3;
 inline int Action::source_size() const {
   return source_.size();
 }
 inline void Action::clear_source() {
   source_.Clear();
 }
-inline const ::rec::data::commands::Source& Action::source(int index) const {
+inline const ::rec::data::Source& Action::source(int index) const {
   return source_.Get(index);
 }
-inline ::rec::data::commands::Source* Action::mutable_source(int index) {
+inline ::rec::data::Source* Action::mutable_source(int index) {
   return source_.Mutable(index);
 }
-inline ::rec::data::commands::Source* Action::add_source() {
+inline ::rec::data::Source* Action::add_source() {
   return source_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source >&
+inline const ::google::protobuf::RepeatedPtrField< ::rec::data::Source >&
 Action::source() const {
   return source_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rec::data::commands::Source >*
+inline ::google::protobuf::RepeatedPtrField< ::rec::data::Source >*
 Action::mutable_source() {
   return &source_;
 }
@@ -564,7 +563,6 @@ inline ::rec::data::OperationList* Action::mutable_undo() {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace commands
 }  // namespace data
 }  // namespace rec
 
@@ -573,8 +571,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::rec::data::commands::Source_Type>() {
-  return ::rec::data::commands::Source_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::rec::data::Source_Type>() {
+  return ::rec::data::Source_Type_descriptor();
 }
 
 }  // namespace google

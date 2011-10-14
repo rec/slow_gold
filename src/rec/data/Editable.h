@@ -1,7 +1,9 @@
 #ifndef __REC_DATA_EDITABLE__
 #define __REC_DATA_EDITABLE__
 
-#include "rec/base/base.h"
+#include <map>
+#include <set>
+
 #include "rec/data/Address.h"
 
 namespace rec {
@@ -11,10 +13,13 @@ class Address;
 class AddressProto;
 class Operation;
 class OperationList;
+class UntypedEditable;
 class Value;
 class ValueProto;
 
 typedef std::vector<data::OperationList*> OperationQueue;
+typedef std::map<string, UntypedEditable*> EditableMap;
+typedef std::set<UntypedEditable*> EditableSet;
 
 class Editable {
  public:

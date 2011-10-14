@@ -8,7 +8,6 @@
 
 namespace rec {
 namespace data {
-namespace commands {
 
 UndoQueue::UndoQueue(const File& file)
     : logfile_(new file::Output(file)), writtenTo_(0), undoes_(0) {
@@ -80,5 +79,4 @@ void UndoQueue::add(Editable* e, const OperationQueue& q) {
 }
 
 }  // namespace data
-}  // namespace commands
 }  // namespace rec

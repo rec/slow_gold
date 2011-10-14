@@ -8,10 +8,6 @@
 namespace rec {
 namespace data {
 
-class UntypedEditable;
-
-typedef std::map<string, UntypedEditable*> EditableMap;
-
 void needsUpdate(UntypedEditable*);
 void addToUndoQueue(UntypedEditable* u, const OperationQueue& q);
 

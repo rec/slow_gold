@@ -12,7 +12,6 @@
 
 namespace rec {
 namespace data {
-namespace commands {
 
 namespace {
 
@@ -108,19 +107,18 @@ void protobuf_AddDesc_rec_2fdata_2fAction_2eproto() {
   ::rec::data::protobuf_AddDesc_rec_2fdata_2fOperation_2eproto();
   ::rec::util::file::protobuf_AddDesc_rec_2futil_2ffile_2fVirtualFile_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\025rec/data/Action.proto\022\021rec.data.comman"
-    "ds\032\030rec/data/Operation.proto\032\037rec/util/f"
-    "ile/VirtualFile.proto\"\230\001\n\006Source\022,\n\004type"
-    "\030\001 \001(\0162\036.rec.data.commands.Source.Type\022\r"
-    "\n\005index\030\002 \003(\r\022\025\n\rmodifier_keys\030\003 \001(\r\":\n\004"
-    "Type\022\010\n\004MENU\020\000\022\014\n\010KEYBOARD\020\001\022\013\n\007CONTROL\020"
-    "\002\022\r\n\tAUTOMATIC\020\003\"\346\001\n\006Action\022\021\n\ttimestamp"
-    "\030\001 \001(\004\022\r\n\005index\030\002 \001(\004\022)\n\006source\030\003 \003(\0132\031."
-    "rec.data.commands.Source\022(\n\004file\030\004 \001(\0132\032"
-    ".rec.util.file.VirtualFile\022\021\n\ttype_name\030"
-    "\005 \001(\t\022+\n\noperations\030\006 \001(\0132\027.rec.data.Ope"
-    "rationList\022%\n\004undo\030\007 \001(\0132\027.rec.data.Oper"
-    "ationList", 489);
+    "\n\025rec/data/Action.proto\022\010rec.data\032\030rec/d"
+    "ata/Operation.proto\032\037rec/util/file/Virtu"
+    "alFile.proto\"\217\001\n\006Source\022#\n\004type\030\001 \001(\0162\025."
+    "rec.data.Source.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rm"
+    "odifier_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010"
+    "KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\335"
+    "\001\n\006Action\022\021\n\ttimestamp\030\001 \001(\004\022\r\n\005index\030\002 "
+    "\001(\004\022 \n\006source\030\003 \003(\0132\020.rec.data.Source\022(\n"
+    "\004file\030\004 \001(\0132\032.rec.util.file.VirtualFile\022"
+    "\021\n\ttype_name\030\005 \001(\t\022+\n\noperations\030\006 \001(\0132\027"
+    ".rec.data.OperationList\022%\n\004undo\030\007 \001(\0132\027."
+    "rec.data.OperationList", 462);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/Action.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -237,7 +235,7 @@ bool Source::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.data.commands.Source.Type type = 1;
+      // optional .rec.data.Source.Type type = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -245,8 +243,8 @@ bool Source::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::rec::data::commands::Source_Type_IsValid(value)) {
-            set_type(static_cast< ::rec::data::commands::Source_Type >(value));
+          if (::rec::data::Source_Type_IsValid(value)) {
+            set_type(static_cast< ::rec::data::Source_Type >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -313,7 +311,7 @@ bool Source::MergePartialFromCodedStream(
 
 void Source::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.data.commands.Source.Type type = 1;
+  // optional .rec.data.Source.Type type = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->type(), output);
@@ -338,7 +336,7 @@ void Source::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Source::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.data.commands.Source.Type type = 1;
+  // optional .rec.data.Source.Type type = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
@@ -366,7 +364,7 @@ int Source::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.data.commands.Source.Type type = 1;
+    // optional .rec.data.Source.Type type = 1;
     if (has_type()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
@@ -601,7 +599,7 @@ bool Action::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated .rec.data.commands.Source source = 3;
+      // repeated .rec.data.Source source = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -703,7 +701,7 @@ void Action::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->index(), output);
   }
   
-  // repeated .rec.data.commands.Source source = 3;
+  // repeated .rec.data.Source source = 3;
   for (int i = 0; i < this->source_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->source(i), output);
@@ -754,7 +752,7 @@ void Action::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->index(), target);
   }
   
-  // repeated .rec.data.commands.Source source = 3;
+  // repeated .rec.data.Source source = 3;
   for (int i = 0; i < this->source_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -846,7 +844,7 @@ int Action::ByteSize() const {
     }
     
   }
-  // repeated .rec.data.commands.Source source = 3;
+  // repeated .rec.data.Source source = 3;
   total_size += 1 * this->source_size();
   for (int i = 0; i < this->source_size(); i++) {
     total_size +=
@@ -946,7 +944,6 @@ void Action::Swap(Action* other) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace commands
 }  // namespace data
 }  // namespace rec
 
