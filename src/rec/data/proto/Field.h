@@ -12,13 +12,6 @@ class Field : public MessageField {
  public:
   static Field* makeField(const Address& address, const Message& msg);
 
-  explicit Field(Message* message) {
-    message_ = message;
-    index_ = -1;
-    undo_ = NULL;
-    operation_ = NULL;
-  }
-
   bool dereference(const Address::Part& part);
   Operation* applyToMessage(const Operation& op);
 
@@ -27,6 +20,13 @@ class Field : public MessageField {
   bool copyTo(ValueProto* value) const;
 
  private:
+  explicit Field(Message* message) {
+    message_ = message;
+    index_ = -1;
+    undo_ = NULL;
+    operation_ = NULL;
+  }
+
   bool addRepeated();
   bool removeRepeated();
   bool swapRepeated();
