@@ -35,9 +35,6 @@ struct MessageField {
 bool hasValue(const MessageField& mf);
 int getSize(const MessageField& mf);
 
-inline bool hasValue(const MessageField* mf) { return mf && hasValue(*mf); }
-inline bool getSize(const MessageField* mf) { return mf && getSize(*mf); }
-
 }  // namespace data
 }  // namespace rec
 
