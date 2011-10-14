@@ -101,6 +101,7 @@ struct EditableUpdater  {
 
   EditableMap* map() { return &map_; }
   CriticalSection* lock() { return &lock_; }
+  UndoQueue* undoQueue() { return &undoQueue_; }
 
   CriticalSection lock_;
 
@@ -120,25 +121,18 @@ struct EditableUpdater  {
 
 EditableUpdater* EditableUpdater::instance_ = NULL;
 EditableUpdater* instance() { return EditableUpdater::instance_; }
-UndoQueue* undoQueue() { return &EditableUpdater::instance_->undoQueue_; }
+UndoQueue* undoQueue() { return EditableUpdater::instance_->undoQueue(); }
 
 }  // namespace
 
-void needsUpdate(UntypedEditable* e) {
-  return instance()->needsUpdate(e);
-}
 
 void addToUndoQueue(UntypedEditable* u, const OperationQueue& q) {
   return undoQueue()->add(u, q);
 }
 
-EditableMap* editableMap() {
-  return &instance()->map_;
-}
-
-CriticalSection* editableMapLock() {
-	return &instance()->lock_;
-}
+void needsUpdate(UntypedEditable* e) { return instance()->needsUpdate(e); }
+EditableMap* editableMap()           { return instance()->map(); }
+CriticalSection* editableMapLock()   { return instance()->lock(); }
 
 void start() { EditableUpdater::start(); }
 void stop() { EditableUpdater::stop(); }
