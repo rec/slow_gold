@@ -10,7 +10,6 @@ namespace rec { namespace util { namespace file { class Output; }}}
 namespace rec {
 namespace data {
 
-class Editable;
 class Action;
 
 class UndoQueue {
@@ -22,7 +21,7 @@ class UndoQueue {
   void add(Editable*, const OperationList&);
   bool write();
 
-  int undoable() const { Lock l(lock_); return events_.size() - undoes_; }
+  int undoable() const { Lock l(lock_); return actions_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
   void undo();
@@ -30,12 +29,14 @@ class UndoQueue {
 
  private:
   void add(Action* event);
+  void executeTop(bool isUndo);
 
   typedef std::vector<Action*> ActionList;
 
-  ActionList events_;
+  ActionList actions_;
   ptr<file::Output> logfile_;
   juce::CriticalSection lock_;
+  EditableList editables_;
 
   int writtenTo_;
   int undoes_;

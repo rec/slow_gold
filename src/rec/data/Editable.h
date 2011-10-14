@@ -11,6 +11,7 @@ namespace data {
 
 class Address;
 class AddressProto;
+class Editable;
 class Operation;
 class Operations;
 class UntypedEditable;
@@ -20,7 +21,7 @@ class ValueProto;
 typedef std::vector<Operations*> OperationList;
 typedef std::map<string, UntypedEditable*> EditableMap;
 typedef std::set<UntypedEditable*> EditableSet;
-typedef std::vector<UntypedEditable*> EditableList;
+typedef std::vector<Editable*> EditableList;
 
 class Editable {
  public:

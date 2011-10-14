@@ -14,47 +14,73 @@ UndoQueue::UndoQueue(const File& file)
 UndoQueue::~UndoQueue() {
   Lock l(lock_);
   write();
-  stl::deletePointers(&events_);
+  stl::deletePointers(&actions_);
 }
 
-void UndoQueue::add(Action* event) {
+static Action* makeAction(Editable* e, const OperationList& q) {
+  ptr<Action> action(new Action);
+  action->mutable_file()->CopyFrom(e->virtualFile());
+  action->set_type_name(e->getTypeName());
+  typedef google::protobuf::RepeatedPtrField<Operation> RepeatedOperation;
+  RepeatedOperation* op = action->mutable_undo()->mutable_operation();
+  for (int i = q.size() - 1; i >=0; --i)
+    op->MergeFrom(q[i]->operation());
+
+  return action.transfer();
+}
+
+void UndoQueue::add(Editable* editable, const OperationList& q) {
+  ptr<Action> action(makeAction(editable, q));
   Lock l(lock_);
   if (undoes_) {
-    if (undoes_ > 1)
-      events_.resize(events_.size() - undoes_ + 1);
-    events_.back() = event;
+    if (undoes_ > 1) {
+      actions_.resize(undoable() + 1);
+      editables_.resize(actions_.size());
+    }
+    actions_.back() = action.transfer();
+    editables_.back() = editable;
     undoes_ = 0;
   } else {
-    events_.push_back(event);
+    actions_.push_back(action.transfer());
+    editables_.push_back(editable);
   }
 }
 
-void doAction(Editable* editable, Action* action, bool isUndo) {
+void UndoQueue::executeTop(bool isUndo) {
+  int top = undoable();
+  Editable* editable = editables_[top];
+  Action* action = actions_[top];
   const Operations& ops = isUndo ? action->undo() : action->operations();
   ptr<Operations> res(editable->applyOperations(ops));
+#if 0
   if (isUndo && !action->operations().operation_size() && res->operation_size())
     action->mutable_operations()->CopyFrom(*res);
+#endif
 }
 
 void UndoQueue::undo() {
-  if (undoable())
-    doAction(NULL, events_[events_.size() - ++undoes_], true);
+  if (undoable()) {
+    ++undoes_;
+    executeTop(true);
+  }
 }
 
 void UndoQueue::redo() {
-  if (undoes_)
-    doAction(NULL, events_[events_.size() - undoes_--], false);
+  if (undoes_) {
+    executeTop(false);
+    --undoes_;
+  }
 }
 
 bool UndoQueue::write() {
   ptr<ActionList> events;
   {
     Lock l(lock_);
-    int size = events_.size();
+    int size = actions_.size();
     if (writtenTo_ == size)
       return false;
 
-    events.reset(new ActionList(events_.begin() + writtenTo_, events_.end()));
+    events.reset(new ActionList(actions_.begin() + writtenTo_, actions_.end()));
     writtenTo_ = size;
   }
 
@@ -64,17 +90,6 @@ bool UndoQueue::write() {
   return true;
 }
 
-void UndoQueue::add(Editable* e, const OperationList& q) {
-  ptr<Action> action(new Action);
-  action->mutable_file()->CopyFrom(e->virtualFile());
-  action->set_type_name(e->getTypeName());
-  typedef google::protobuf::RepeatedPtrField<Operation> RepeatedOperation;
-  RepeatedOperation* op = action->mutable_undo()->mutable_operation();
-  for (int i = q.size() - 1; i >=0; --i)
-    op->MergeFrom(q[i]->operation());
-
-  add(action.transfer());
-}
 
 }  // namespace data
 }  // namespace rec
