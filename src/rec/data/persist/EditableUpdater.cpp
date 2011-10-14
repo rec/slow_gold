@@ -12,6 +12,8 @@
 namespace rec {
 namespace data {
 
+using commands::UndoQueue;
+
 namespace {
 
 typedef std::set<data::UntypedEditable*> DataSet;
@@ -34,7 +36,7 @@ struct EditableUpdater  {
     return t.transfer();
   }
 
-  EditableUpdater() : undo_(app::getAppFile("UndoQueue.Action")) {
+  EditableUpdater() : undoQueue_(app::getAppFile("UndoQueue.Action")) {
     updateThread_.reset(makeLoop(updateDesc, &EditableUpdater::update));
     writeThread_.reset(makeLoop(writeDesc, &EditableUpdater::write));
   }
@@ -108,7 +110,7 @@ struct EditableUpdater  {
 
   thread_ptr<Thread> updateThread_;
   thread_ptr<Thread> writeThread_;
-  commands::UndoQueue undo_;
+  UndoQueue undoQueue_;
 
   static EditableUpdater* instance_;
 
@@ -118,6 +120,7 @@ struct EditableUpdater  {
 
 EditableUpdater* EditableUpdater::instance_ = NULL;
 EditableUpdater* instance() { return EditableUpdater::instance_; }
+UndoQueue* undoQueue() { return &EditableUpdater::instance_->undoQueue_; }
 
 }  // namespace
 
@@ -126,7 +129,7 @@ void needsUpdate(UntypedEditable* e) {
 }
 
 void addToUndoQueue(UntypedEditable* u, const OperationQueue& q) {
-  return instance()->undo_.add(u, q);
+  return undoQueue()->add(u, q);
 }
 
 EditableMap* editableMap() {
@@ -141,4 +144,24 @@ void start() { EditableUpdater::start(); }
 void stop() { EditableUpdater::stop(); }
 
 }  // namespace data
+
+namespace util {
+
+// How many commands have been undone?
+int undoes() {
+  return data::undoQueue()->undoes();
+}
+
+// How many commands can be undone?
+int undoable() {
+  return data::undoQueue()->undoable();
+}
+
+void undo() {
+}
+
+void redo() {
+}
+
+}  // namespace util
 }  // namespace rec

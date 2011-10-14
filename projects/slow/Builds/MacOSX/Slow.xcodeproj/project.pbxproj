@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		031D341649B4A296F511CA2F /* FullScreenRev.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F86E3335CEB6B79F553134EB /* FullScreenRev.svg.cpp */; };
-		066FBFA7B2040738E76F567C /* Undo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A93704276F2527D815042611 /* Undo.cpp */; };
 		08879D3DFDD1B955E8E15916 /* ThumbnailBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F270B21384F22CAD7A86E411 /* ThumbnailBuffer.cpp */; };
 		092F53680B2E5DE75587CD65 /* LogFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A07F6E68CF4223DBB8C90C1F /* LogFile.cpp */; };
 		096F0DFCE5D4AF2684975D66 /* Geometry.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5643F10B98D25BC8271DCBA3 /* Geometry.pb.cc */; };
@@ -617,7 +616,6 @@
 		A80D354590E89BEA54C67DC2 /* Cursor.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Cursor.pb.cc; path = ../../../../genfiles/proto/rec/widget/waveform/Cursor.pb.cc; sourceTree = SOURCE_ROOT; };
 		A87501D62D3CA849DFE5C75E /* RecentFiles.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RecentFiles.pb.h; path = ../../../../genfiles/proto/rec/gui/RecentFiles.pb.h; sourceTree = SOURCE_ROOT; };
 		A8F00C96C2164B1391E8BE17 /* RateTransposer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RateTransposer.h; path = ../../../../src/rec/audio/soundtouch/RateTransposer.h; sourceTree = SOURCE_ROOT; };
-		A93704276F2527D815042611 /* Undo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Undo.cpp; path = ../../../../src/rec/util/Undo.cpp; sourceTree = SOURCE_ROOT; };
 		A9BA8343576382C2BBC6AAC5 /* FormatTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FormatTime.cpp; path = ../../../../src/rec/util/FormatTime.cpp; sourceTree = SOURCE_ROOT; };
 		A9D4C013E87CDC5FBD477DFE /* Root.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Root.h; path = ../../../../src/rec/widget/tree/Root.h; sourceTree = SOURCE_ROOT; };
 		A9F060E96A74E2C732AC5530 /* ArraySize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ArraySize.h; path = ../../../../src/rec/base/ArraySize.h; sourceTree = SOURCE_ROOT; };
@@ -1234,6 +1232,20 @@
 			name = proto;
 			sourceTree = "<group>";
 		};
+		707659B96771CF5FF3BB9034 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
+				AC0A55CC5C6219AB36B5C26B /* Resources */,
+				C0B90B9133DBCC84A6028DCC /* Frameworks */,
+				DBBED81D920B27CB9107C128 /* Products */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		75467D3DB26B8C553F2D3FE5 /* rec */ = {
 			isa = PBXGroup;
 			children = (
@@ -1543,7 +1555,6 @@
 				1979816DF949A8823A94FB0E /* Switcher.h */,
 				7FD45249C8FCAA197972C812 /* TestData.h */,
 				1B9CC72BC328FBF9DB71928E /* thread */,
-				A93704276F2527D815042611 /* Undo.cpp */,
 				24CBB9DFAA3B6EE0AFF95C35 /* Undo.h */,
 			);
 			name = util;
@@ -1778,20 +1789,6 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
-		DF15435843576E76BD07089B /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
-				AC0A55CC5C6219AB36B5C26B /* Resources */,
-				C0B90B9133DBCC84A6028DCC /* Frameworks */,
-				DBBED81D920B27CB9107C128 /* Products */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -1965,7 +1962,7 @@
 				French,
 				German,
 			);
-			mainGroup = DF15435843576E76BD07089B /* Source */;
+			mainGroup = 707659B96771CF5FF3BB9034 /* Source */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -2166,7 +2163,6 @@
 				830D13AF3D404CBF2A9E05E3 /* Partition.cpp in Sources */,
 				DF9E7E4FE3D7B5EDB74379BB /* RandomSelfInverseFunction.cpp in Sources */,
 				B380D51FD7324CCF50D21514 /* Trash.cpp in Sources */,
-				066FBFA7B2040738E76F567C /* Undo.cpp in Sources */,
 				8735558EA7A879E5A368F972 /* DialComponent.cpp in Sources */,
 				1EE0FCE5ACA7E2E98A755D58 /* Status.cpp in Sources */,
 				B7C417BDE4BAB6C89A4EED91 /* TextComponent.cpp in Sources */,

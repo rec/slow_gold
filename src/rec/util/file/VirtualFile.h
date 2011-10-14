@@ -11,6 +11,8 @@ namespace data { template <typename Type> class TypedEditable; }
 namespace util {
 namespace file {
 
+inline const VirtualFile& none() { return VirtualFile::default_instance(); }
+
 const File getFile(const VirtualFile& file);
 const File getShadowDirectory(const VirtualFile& file);
 
