@@ -32,8 +32,8 @@ bool Field::dereference(const Address::Part& afield) {
     const Reflection& r = *message_->GetReflection();
     if (type_ == INDEXED) {
       if (field_->type() == FieldDescriptor::TYPE_MESSAGE) {
-        if (index_ < 0 || index_ >= getSize()) {
-          LOG(ERROR) << " Index " << index_ << " not in range " << getSize();
+        if (index_ < 0 || index_ >= getSize(*this)) {
+          LOG(ERROR) << " Index " << index_ << " not in range " << getSize(*this);
           return false;
         }
         message_ = r.MutableRepeatedMessage(message_, field_, index_);
@@ -222,7 +222,7 @@ bool Field::setSingle() {
     return false;
   }
 
-  if (field_ && type_ != INDEXED && !hasValue())
+  if (field_ && type_ != INDEXED && !hasValue(*this))
     undo_->set_command(Operation::CLEAR);
   else if (!copyTo(undo_->add_value()))
     LOG(ERROR) << "Couldn't copy undo value, continuing";
@@ -237,7 +237,7 @@ bool Field::swapRepeated() {
     return false;
   }
   int s1 = operation_->swap1(), s2 = operation_->swap2();
-  int size = getSize();
+  int size = getSize(*this);
 
   bool inRange = (s1 >= 0 && s2 >= 0 && s1 < size && s2 < size);
   if (inRange)

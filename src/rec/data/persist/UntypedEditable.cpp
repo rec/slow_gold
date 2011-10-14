@@ -25,7 +25,7 @@ UntypedEditable::~UntypedEditable() {
 bool UntypedEditable::hasValue(const Address& address) const {
   ScopedLock l(lock_);
   ptr<Field> f(Field::makeField(address, *message_));
-  return f && f->hasValue();
+  return f && data::hasValue(*f);
 }
 
 const Value UntypedEditable::getValue(const Address& address) const {
@@ -42,7 +42,7 @@ const Value UntypedEditable::getValue(const Address& address) const {
 int UntypedEditable::getSize(const Address& address) const {
   ScopedLock l(lock_);
   ptr<Field> f(Field::makeField(address, *message_));
-  return f ? f->getSize() : 0;
+  return f && data::getSize(*f);
 }
 
 void UntypedEditable::copyTo(Message* message) const {

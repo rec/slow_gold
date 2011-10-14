@@ -30,10 +30,13 @@ struct MessageField {
   int32 index_;
   Type type_;
   int32 repeatCount_;
-
-  bool hasValue() const;
-  int getSize() const;
 };
+
+bool hasValue(const MessageField& mf);
+int getSize(const MessageField& mf);
+
+inline bool hasValue(const MessageField* mf) { return mf && hasValue(*mf); }
+inline bool getSize(const MessageField* mf) { return mf && getSize(*mf); }
 
 }  // namespace data
 }  // namespace rec

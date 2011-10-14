@@ -5,12 +5,12 @@
 namespace rec {
 namespace data {
 
-bool MessageField::hasValue() const {
-  return message_->GetReflection()->HasField(*message_, field_);
+bool hasValue(const MessageField& mf) {
+  return mf.message_->GetReflection()->HasField(*mf.message_, mf.field_);
 }
 
-int MessageField::getSize() const {
-  return message_->GetReflection()->FieldSize(*message_, field_);
+int getSize(const MessageField& mf) {
+  return mf.message_->GetReflection()->FieldSize(*mf.message_, mf.field_);
 }
 
 }  // namespace data
