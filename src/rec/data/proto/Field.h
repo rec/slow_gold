@@ -12,10 +12,11 @@ class Field : public MessageField {
  public:
   static Field* makeField(const Address& address, const Message& msg);
 
-  explicit Field(Message* message) : MessageField(message),
-                                     index_(-1),
-                                     undo_(NULL),
-                                     operation_(NULL) {
+  explicit Field(Message* message) {
+    message_ = message;
+    index_ = -1;
+    undo_ = NULL;
+    operation_ = NULL;
   }
 
   bool dereference(const Address::Part& part);
@@ -26,13 +27,6 @@ class Field : public MessageField {
   bool copyTo(ValueProto* value) const;
 
  private:
-  enum Type {
-    INDEXED = 0,
-    REPEATED = 1,
-    SINGLE = 2,
-    TYPE_COUNT = 3,
-  };
-
   bool addRepeated();
   bool removeRepeated();
   bool swapRepeated();
@@ -46,10 +40,6 @@ class Field : public MessageField {
   bool error();
 
   bool doRemove(int toRemove = -1);
-
-  int32 index_;
-  Type type_;
-  int32 repeatCount_;
 
   Operation* undo_;
   const Operation* operation_;

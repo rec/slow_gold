@@ -17,16 +17,22 @@ namespace rec {
 namespace data {
 
 struct MessageField {
-  MessageField() {}
-  MessageField(Message* m, const FieldDescriptor* f = NULL)
-      : message_(m), field_(f) {
-  }
-
-  bool hasValue() const;
-  int getSize() const;
+  enum Type {
+    INDEXED = 0,
+    REPEATED = 1,
+    SINGLE = 2,
+    TYPE_COUNT = 3,
+  };
 
   Message* message_;
   const FieldDescriptor* field_;
+
+  int32 index_;
+  Type type_;
+  int32 repeatCount_;
+
+  bool hasValue() const;
+  int getSize() const;
 };
 
 }  // namespace data
