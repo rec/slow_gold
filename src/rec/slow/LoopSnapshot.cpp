@@ -39,7 +39,7 @@ int getSegment(const LoopPointList& loops, RealTime time) {
 
 LoopSnapshot::LoopSnapshot(Instance* i)
   : instance_(i),
-    loops_(persist::get<LoopPointList>(i->model_->file())),
+    loops_(data::get<LoopPointList>(i->model_->file())),
     time_(i->player_->getNextReadPosition()),
     length_(i->player_->length()),
     selection_(audio::getTimeSelection(loops_, length_)),

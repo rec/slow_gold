@@ -123,7 +123,7 @@ File Node::getVisitedFile() const {
 }
 
 bool Node::isCurrent() const {
-  return (virtualFile_ == persist::get<VirtualFile>());
+  return (virtualFile_ == data::get<VirtualFile>());
 }
 
 }  // namespace tree

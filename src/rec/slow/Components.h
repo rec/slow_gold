@@ -30,7 +30,7 @@ struct Components {
       directoryTree_(manager_),
       playbackController_(this),
       mainPage_(this) {
-    playbackController_.setSetter(persist::editable<AppLayout>());
+    playbackController_.setSetter(data::editable<AppLayout>());
     waveform_.setManager(manager_);
   }
 

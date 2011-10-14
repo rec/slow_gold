@@ -38,7 +38,7 @@ bool PersistentWindow::isFullScreenSize() const {
 
 void PersistentWindow::writeData() {
   if (okToSaveLayout_) {
-    AppLayout layout(persist::editable<AppLayout>()->get());
+    AppLayout layout(data::editable<AppLayout>()->get());
     juce::Rectangle<int> bounds = getBounds();
 
 #if 0
@@ -54,7 +54,7 @@ void PersistentWindow::writeData() {
     if (!full)
 #endif
       *layout.mutable_bounds() = gui::copy(getBounds());
-    persist::set(layout);
+    data::set(layout);
   }
 }
 

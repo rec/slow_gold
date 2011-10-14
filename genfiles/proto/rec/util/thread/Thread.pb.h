@@ -106,6 +106,16 @@ class ThreadDescription : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 period() const;
   inline void set_period(::google::protobuf::uint32 value);
   
+  // optional string name = 3;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 3;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  
   // @@protoc_insertion_point(class_scope:rec.util.thread.ThreadDescription)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -113,11 +123,13 @@ class ThreadDescription : public ::google::protobuf::Message {
   
   ::google::protobuf::uint32 priority_;
   ::google::protobuf::uint32 period_;
+  ::std::string* name_;
+  static const ::std::string _default_name_;
   friend void  protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto();
   friend void protobuf_AssignDesc_rec_2futil_2fthread_2fThread_2eproto();
   friend void protobuf_ShutdownFile_rec_2futil_2fthread_2fThread_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -170,6 +182,48 @@ inline ::google::protobuf::uint32 ThreadDescription::period() const {
 inline void ThreadDescription::set_period(::google::protobuf::uint32 value) {
   _set_bit(1);
   period_ = value;
+}
+
+// optional string name = 3;
+inline bool ThreadDescription::has_name() const {
+  return _has_bit(2);
+}
+inline void ThreadDescription::clear_name() {
+  if (name_ != &_default_name_) {
+    name_->clear();
+  }
+  _clear_bit(2);
+}
+inline const ::std::string& ThreadDescription::name() const {
+  return *name_;
+}
+inline void ThreadDescription::set_name(const ::std::string& value) {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void ThreadDescription::set_name(const char* value) {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void ThreadDescription::set_name(const char* value, size_t size) {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ThreadDescription::mutable_name() {
+  _set_bit(2);
+  if (name_ == &_default_name_) {
+    name_ = new ::std::string;
+  }
+  return name_;
 }
 
 

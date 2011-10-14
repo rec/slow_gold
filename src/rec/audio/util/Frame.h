@@ -47,7 +47,7 @@ struct ParallelFrame {
   Sample** sample_;
 };
 
-}  // namespace persist
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_AUDIO_UTIL_FRAME__

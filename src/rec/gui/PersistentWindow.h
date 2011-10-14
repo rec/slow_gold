@@ -20,7 +20,7 @@ class PersistentWindow : public DocumentWindow {
 
   template <typename Proto>
   void computeBounds() {
-    persist::TypedEditable<Proto>* data = persist::editable<Proto>();
+    data::TypedEditable<Proto>* data = data::editable<Proto>();
     data_ = data;
     setLimitedBounds(data->fileReadSuccess() ? copy(data->get().bounds()) :
                      Rect(300, 100, 800, 600));  // TODO!

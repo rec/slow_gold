@@ -25,12 +25,14 @@ class Editable {
   void append(const Value& value, const Address&);
 
   virtual void applyLater(OperationList*) = 0;
-  virtual OperationList* applyNow(const OperationList&) = 0;
+  virtual OperationList* applyOperationList(const OperationList&) = 0;
 
   virtual const Value getValue(const Address&) const = 0;
   virtual bool hasValue(const Address&) const = 0;
   virtual int getSize(const Address&) const = 0;
   virtual void copyTo(Message*) const = 0;
+  virtual const string getTypeName() const = 0;
+  virtual const VirtualFile& virtualFile() const = 0;
 };
 
 // There are more setters in archived/OldEditable.h

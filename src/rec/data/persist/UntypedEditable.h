@@ -6,10 +6,6 @@
 #include "rec/util/file/VirtualFile.h"
 
 namespace rec {
-
-namespace persist { class EditableFactory; }
-namespace persist { class EditableUpdateQueue; }
-
 namespace data {
 
 class UntypedEditable : public Editable {
@@ -24,7 +20,7 @@ class UntypedEditable : public Editable {
   virtual int getSize(const Address& address) const;
   virtual void copyTo(Message* message) const;
 
-  virtual string getTypeName() const = 0;
+  virtual const string getTypeName() const { return message_->GetTypeName(); }
 
   typedef Listener<const Message&> Listener;
 
@@ -36,22 +32,22 @@ class UntypedEditable : public Editable {
   Message* clone() const;
   const VirtualFile& virtualFile() const { return virtualFile_; }
 
+  virtual OperationList* applyOperationList(const OperationList& );
+  virtual void applyLater(OperationList* op);
+  void readFromFile() const;
+  void writeToFile() const;
+
+  // Update the clients in this thread.
+  void update();
+
  protected:
   // Change the data with an OperationList.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
 
   virtual void onDataChange() = 0;
-  virtual void applyLater(OperationList* op);
-  virtual OperationList* applyNow(const OperationList& op);
-
-  // Update the clients in this thread.
-  void update();
 
   UntypedEditable(const File& file, const VirtualFile& vf, Message* message);
-
-  void readFromFile() const;
-  void writeToFile() const;
 
   CriticalSection lock_;
 
@@ -67,9 +63,6 @@ class UntypedEditable : public Editable {
   mutable bool fileReadSuccess_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(UntypedEditable);
-
-  friend class persist::EditableFactory;
-  friend class persist::EditableUpdateQueue;
 };
 
 template <typename Proto>

@@ -66,15 +66,15 @@ string TreeViewDropAll::copy() const {
 }
 
 void TreeViewDropAll::cut() {
-  persist::set(getSelected(getRootItem(), false));
+  data::set(getSelected(getRootItem(), false));
 }
 
 bool TreeViewDropAll::paste(const string& s) {
   VirtualFileList files;
   bool read = yaml::read(s, &files);
   if (read) {
-    files.MergeFrom(persist::get<VirtualFileList>());
-    persist::set(files);
+    files.MergeFrom(data::get<VirtualFileList>());
+    data::set(files);
   }
   return read;
 }

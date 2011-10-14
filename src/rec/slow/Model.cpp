@@ -74,7 +74,7 @@ void Model::setFile(const VirtualFile& f) {
     file_ = f;
   }
   components()->directoryTree_.refreshNode(f);
-  persist::set(f);
+  data::set(f);
 
   if (isEmpty)
     return;
@@ -84,14 +84,14 @@ void Model::setFile(const VirtualFile& f) {
     return;
   }
 
-  LoopPointList loop = persist::get<LoopPointList>(f);
+  LoopPointList loop = data::get<LoopPointList>(f);
   if (!loop.loop_point_size()) {
     loop.add_loop_point()->set_selected(true);
     RealTime time = Samples<44100>(thumbnailBuffer_.buffer()->length());
     loop.add_loop_point()->set_time(time);
   }
 
-  persist::set(loop, f);
+  data::set(loop, f);
   threads()->fillThread()->notify();
 }
 
@@ -152,9 +152,9 @@ thread::Result Model::fillOnce() {
 }
 
 void Model::zoom(RealTime time, double k) {
-  ZoomProto z(widget::waveform::zoom(persist::get<ZoomProto>(file_),
+  ZoomProto z(widget::waveform::zoom(data::get<ZoomProto>(file_),
                                      player()->length(), time, k));
-  persist::set(z, file_);
+  data::set(z, file_);
 }
 
 void Model::jumpToTime(Samples<44100> pos) {
@@ -204,9 +204,9 @@ void Model::setCursorTime(int index, RealTime time) {
     jumpToTime(time);
   } else {
   	VirtualFile f = file();
-    LoopPointList loops(persist::get<LoopPointList>(f));
+    LoopPointList loops(data::get<LoopPointList>(f));
     loops.mutable_loop_point(index)->set_time(time);
-    persist::set(loops, f);
+    data::set(loops, f);
   }
 }
 

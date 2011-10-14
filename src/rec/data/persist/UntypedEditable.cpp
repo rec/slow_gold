@@ -1,14 +1,10 @@
 #include "rec/data/persist/UntypedEditable.h"
 
-#include "rec/data/persist/EditableFactory.h"
-#include "rec/data/persist/EditableUpdateQueue.h"
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Field.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/Value.h"
 #include "rec/util/STL.h"
-
-#include "rec/data/proto/Proto.h"
 
 namespace rec {
 namespace data {
@@ -67,7 +63,7 @@ Message* UntypedEditable::clone() const {
 void UntypedEditable::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
-    fileReadSuccess_ = persist::copy(file_, message_);
+    fileReadSuccess_ = data::copy(file_, message_);
     if (fileReadSuccess_)
       VLOG(1) << "Opening data " << str(file_);
     else
@@ -82,13 +78,23 @@ void UntypedEditable::applyLater(OperationList* op) {
     ScopedLock l(lock_);
     queue_.push_back(op);
   }
-  persist::EditableUpdateQueue::needsUpdate(this);
+  data::needsUpdate(this);
 }
 
-OperationList* UntypedEditable::applyNow(const OperationList& op) {
-  return data::applyOperations(op, message_);
+OperationList* UntypedEditable::applyOperationList(const OperationList& olist) {
+  ptr<OperationList> result (new OperationList());
+  for (int i = 0; i < olist.operation_size(); ++i) {
+    const Operation& op = olist.operation(i);
+    ptr<Field> f(Field::makeField(Address(op.address()), *message_));
+    if (!f) {
+      LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
+      return NULL;
+    }
+    ptr<Operation> undo(f->applyToMessage(op));
+    result->add_operation()->CopyFrom(*undo);
+  }
+  return result.transfer();
 }
-
 
 void UntypedEditable::update() {
   OperationQueue old;
@@ -103,11 +109,11 @@ void UntypedEditable::update() {
   OperationQueue undo;
   for (OperationQueue::iterator i = old.begin(); i != old.end(); ++i) {
     ScopedLock l(lock_);
-    undo.push_back(applyNow(**i));
+    undo.push_back(applyOperationList(**i));
   }
 
   stl::deletePointers(&old);
-  persist::EditableUpdateQueue::addToUndoQueue(this, &undo);
+  addToUndoQueue(this, undo);
   onDataChange();
 }
 
@@ -122,7 +128,7 @@ void UntypedEditable::writeToFile() const {
   }
 
 	LOG(INFO) << "Writing " << str(file_);
-  persist::copy(*msg, file_);
+  data::copy(*msg, file_);
 }
 
 }  // namespace data

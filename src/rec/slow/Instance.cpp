@@ -25,7 +25,7 @@ Instance::Instance(DocumentWindow* window)
   target_->addCommands();
   threads_->startAll();
 
-  model_->setFile(persist::get<VirtualFile>());
+  model_->setFile(data::get<VirtualFile>());
 }
 
 Instance::~Instance() {

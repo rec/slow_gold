@@ -47,7 +47,7 @@ bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) 
   Position pos = getPosition(c);
   bool success = select(i->second.first, &s, pos) && i->second.second(&s, pos);
   if (success)
-    persist::set(s.loops_, instance->model_->file());
+    data::set(s.loops_, instance->model_->file());
   else
     PlatformUtilities::beep();
 
@@ -135,13 +135,13 @@ bool executeLoopCommand(Instance* instance, Command::Type command) {
 }
 
 void toggleSelectionSegment(const VirtualFile& file, RealTime time) {
-  LoopPointList loops(persist::get<LoopPointList>(file));
+  LoopPointList loops(data::get<LoopPointList>(file));
 
   int i = 0, size = loops.loop_point_size();
   for (; i < size && loops.loop_point(i).time() <= time; ++i);
   LoopPoint* lp = loops.mutable_loop_point(i - 1);
   lp->set_selected(!lp->selected());
-  persist::set(loops, file);
+  data::set(loops, file);
 }
 
 }  // namespace slow

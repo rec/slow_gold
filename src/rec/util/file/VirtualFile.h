@@ -6,7 +6,7 @@
 
 namespace rec {
 
-namespace persist { template <typename Type> class TypedEditable; }
+namespace data { template <typename Type> class TypedEditable; }
 
 namespace util {
 namespace file {
@@ -25,7 +25,7 @@ const String getFullDisplayName(const VirtualFile& file);
 bool compare(const VirtualFile& x, const VirtualFile& y);
 bool empty(const VirtualFile& file);
 
-typedef persist::TypedEditable<VirtualFile> VirtualFileData;
+typedef data::TypedEditable<VirtualFile> VirtualFileData;
 
 VirtualFile toVirtualFile(const File& file);
 inline VirtualFile toVirtualFile(const String& s) { return toVirtualFile(File(s)); }

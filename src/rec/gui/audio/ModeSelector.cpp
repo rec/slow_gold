@@ -1,5 +1,6 @@
 #include "rec/gui/audio/ModeSelector.h"
 
+#include "rec/data/Value.h"
 #include "rec/gui/icon/Crosshairs.svg.h"
 #include "rec/gui/icon/DraggingHand.svg.h"
 #include "rec/gui/icon/Pencil.svg.h"

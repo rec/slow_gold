@@ -3,5 +3,6 @@ package rec.util.thread;
 message ThreadDescription {
   optional uint32 priority = 1 [default = 5];
   optional uint32 period = 2   [default = 50];
+  optional string name = 3;
 };
 

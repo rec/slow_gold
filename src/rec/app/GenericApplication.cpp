@@ -6,6 +6,8 @@
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
 #include "rec/gui/Dialog.h"
+#include "rec/data/persist/EditableFactory.h"
+#include "rec/util/thread/Trash.h"
 
 DECLARE_bool(logtostderr);
 
@@ -26,7 +28,7 @@ void GenericApplication::initialise(const String&) {
   }
 
   audio::format::mpg123::initializeOnce();
-  persist::EditableUpdateQueue::start();
+  data::start();
   window_.reset(createWindow());
   LOG(INFO) << name_ << ": initialise finished.";
 }
@@ -37,7 +39,7 @@ void GenericApplication::shutdown() {
   gui::dialog::shutdownDialog();
   window_.reset();
   util::thread::trash::waitForAllThreadsToExit(1000);
-  persist::EditableUpdateQueue::stop();
+  data::stop();
 
   LOG(INFO) << name_ << ": shutdown finished.";
 }

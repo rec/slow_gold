@@ -10,7 +10,7 @@ namespace rec { namespace util { namespace file { class Output; }}}
 namespace rec {
 namespace data {
 
-class UntypedEditable;
+class Editable;
 
 namespace commands {
 
@@ -22,14 +22,14 @@ class UndoQueue {
 
   ~UndoQueue();
 
-  void add(UntypedEditable*, OperationQueue*);
+  void add(Editable*, const OperationQueue&);
   bool write();
 
   int undoable() const { Lock l(lock_); return events_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
-  void undo();
-  void redo();
+  void undo(Editable*);
+  void redo(Editable*);
 
  private:
   void add(Action* event);

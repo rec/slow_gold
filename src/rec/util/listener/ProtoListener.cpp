@@ -1,7 +1,6 @@
 #include "rec/util/listener/ProtoListener.h"
-
 #include "rec/data/Editable.h"
-#include "rec/data/proto/Proto.h"
+#include "rec/data/Value.h"
 
 namespace rec {
 namespace util {

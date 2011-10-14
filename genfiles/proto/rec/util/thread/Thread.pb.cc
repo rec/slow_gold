@@ -30,9 +30,10 @@ void protobuf_AssignDesc_rec_2futil_2fthread_2fThread_2eproto() {
       "rec/util/thread/Thread.proto");
   GOOGLE_CHECK(file != NULL);
   ThreadDescription_descriptor_ = file->message_type(0);
-  static const int ThreadDescription_offsets_[2] = {
+  static const int ThreadDescription_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThreadDescription, priority_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThreadDescription, period_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ThreadDescription, name_),
   };
   ThreadDescription_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -76,8 +77,9 @@ void protobuf_AddDesc_rec_2futil_2fthread_2fThread_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\034rec/util/thread/Thread.proto\022\017rec.util"
-    ".thread\"<\n\021ThreadDescription\022\023\n\010priority"
-    "\030\001 \001(\r:\0015\022\022\n\006period\030\002 \001(\r:\00250", 109);
+    ".thread\"J\n\021ThreadDescription\022\023\n\010priority"
+    "\030\001 \001(\r:\0015\022\022\n\006period\030\002 \001(\r:\00250\022\014\n\004name\030\003 "
+    "\001(\t", 123);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/util/thread/Thread.proto", &protobuf_RegisterTypes);
   ThreadDescription::default_instance_ = new ThreadDescription();
@@ -95,9 +97,11 @@ struct StaticDescriptorInitializer_rec_2futil_2fthread_2fThread_2eproto {
 
 // ===================================================================
 
+const ::std::string ThreadDescription::_default_name_;
 #ifndef _MSC_VER
 const int ThreadDescription::kPriorityFieldNumber;
 const int ThreadDescription::kPeriodFieldNumber;
+const int ThreadDescription::kNameFieldNumber;
 #endif  // !_MSC_VER
 
 ThreadDescription::ThreadDescription()
@@ -118,6 +122,7 @@ void ThreadDescription::SharedCtor() {
   _cached_size_ = 0;
   priority_ = 5u;
   period_ = 50u;
+  name_ = const_cast< ::std::string*>(&_default_name_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -126,6 +131,9 @@ ThreadDescription::~ThreadDescription() {
 }
 
 void ThreadDescription::SharedDtor() {
+  if (name_ != &_default_name_) {
+    delete name_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -154,6 +162,11 @@ void ThreadDescription::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     priority_ = 5u;
     period_ = 50u;
+    if (_has_bit(2)) {
+      if (name_ != &_default_name_) {
+        name_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -192,6 +205,23 @@ bool ThreadDescription::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(26)) goto parse_name;
+        break;
+      }
+      
+      // optional string name = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_name:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -224,6 +254,15 @@ void ThreadDescription::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->period(), output);
   }
   
+  // optional string name = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->name(), output);
+  }
+  
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -240,6 +279,16 @@ void ThreadDescription::SerializeWithCachedSizes(
   // optional uint32 period = 2 [default = 50];
   if (_has_bit(1)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->period(), target);
+  }
+  
+  // optional string name = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->name(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -265,6 +314,13 @@ int ThreadDescription::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
           this->period());
+    }
+    
+    // optional string name = 3;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
     }
     
   }
@@ -300,6 +356,9 @@ void ThreadDescription::MergeFrom(const ThreadDescription& from) {
     if (from._has_bit(1)) {
       set_period(from.period());
     }
+    if (from._has_bit(2)) {
+      set_name(from.name());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -325,6 +384,7 @@ void ThreadDescription::Swap(ThreadDescription* other) {
   if (other != this) {
     std::swap(priority_, other->priority_);
     std::swap(period_, other->period_);
+    std::swap(name_, other->name_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

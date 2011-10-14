@@ -44,7 +44,7 @@ class SongData : public component::Focusable<SetterTextArea>,
   virtual void cut() {}
 
   virtual void onDataChange(const music::Metadata&) {}
-  virtual void setData(persist::TypedEditable< music::Metadata>* d) {
+  virtual void setData(data::TypedEditable< music::Metadata>* d) {
     DataListener<music::Metadata>::setData(d);
     setUntypedEditable(d);
   }

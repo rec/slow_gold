@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="r1amhy1Ot" name="Slow">
+  <MAINGROUP id="uB7G8EUJK" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -376,10 +376,8 @@
                 name="Copy.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/EditableFactory.h"
                 id="FopCixQh6" name="EditableFactory.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/persist/EditableUpdateQueue.cpp"
-                id="XZnKj0ftc" name="EditableUpdateQueue.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/persist/EditableUpdateQueue.h"
-                id="MGqrC1MSG" name="EditableUpdateQueue.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/persist/EditableUpdater.cpp"
+                id="W4w6Gosq5" name="EditableUpdater.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/Persist.h" id="IedRLr3XY"
                 name="Persist.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/persist/TypedEditable.h"
@@ -1018,8 +1016,6 @@
                 name="Looper.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeCallback.h" id="UOmTBV9ag"
                 name="MakeCallback.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/util/thread/MakeThread.cpp" id="T2CQXL0rO"
-                name="MakeThread.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/MakeThread.h" id="xhCK4bXL5"
                 name="MakeThread.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/util/thread/Pointer.h" id="YZ9PjjkpA"
@@ -1265,7 +1261,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="dm5qZ1CVf" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="HbcdMv4Fq" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -37,7 +37,7 @@ Target::Target(Instance* i)
       targetManager_(i->window_),
       midiCommandMap_(new command::MidiCommandMap(targetManager_.commandManager())) {
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
-  (*midiCommandMap_)(persist::get<command::CommandMapProto>());
+  (*midiCommandMap_)(data::get<command::CommandMapProto>());
 }
 
 Target::~Target() {

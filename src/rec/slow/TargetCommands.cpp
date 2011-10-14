@@ -19,39 +19,39 @@ namespace rec {
 namespace slow {
 
 void nudgeVolumeDown(Instance* i) {
-  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
   if (!(gain.dim() || gain.mute())) {
     gain.set_gain(gain.gain() - 1.0);
-    persist::set(gain, i->model_->file());
+    data::set(gain, i->model_->file());
   }
 }
 
 void nudgeVolumeUp(Instance* i) {
-  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
   if (!(gain.dim() || gain.mute())) {
     gain.set_gain(gain.gain() + 1.0);
-    persist::set(gain, i->model_->file());
+    data::set(gain, i->model_->file());
   }
 }
 
-void clearNavigator() { persist::set(VirtualFileList()); }
+void clearNavigator() { data::set(VirtualFileList()); }
 
 void dimVolumeToggle(Instance* i) {
-  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
   gain.set_dim(!gain.dim());
-  persist::set(gain, i->model_->file());
+  data::set(gain, i->model_->file());
 }
 
 void muteVolumeToggle(Instance* i) {
-  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
   gain.set_mute(!gain.mute());
-  persist::set(gain, i->model_->file());
+  data::set(gain, i->model_->file());
 }
 
 void resetGainToUnity(Instance* i) {
-  audio::Gain gain(persist::get<audio::Gain>(i->model_->file()));
+  audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
   gain.set_gain(0);
-  persist::set(gain, i->model_->file());
+  data::set(gain, i->model_->file());
 }
 
 void keyboardMappings(Instance* i) {
@@ -89,7 +89,7 @@ void midiMappings(Instance* i) {
   juce::DialogWindow::showModalDialog("Select MIDI mappings",
                                       &comp, NULL, juce::Colours::white,
                                       true, true, true);
-  persist::set(i->target_->midiCommandMap()->getProto());
+  data::set(i->target_->midiCommandMap()->getProto());
 }
 
 

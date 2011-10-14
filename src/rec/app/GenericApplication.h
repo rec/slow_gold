@@ -3,8 +3,7 @@
 
 #include <string>
 
-#include "rec/data/persist/EditableUpdateQueue.h"
-#include "rec/util/thread/Trash.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace app {

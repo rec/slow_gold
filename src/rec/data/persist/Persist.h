@@ -4,20 +4,7 @@
 #include "rec/data/persist/EditableFactory.h"
 
 namespace rec {
-
-namespace data { class UntypedEditable; }
-namespace data { namespace commands { class UndoQueue; }}
-
-namespace persist {
-
-inline const VirtualFile& noFile() { return VirtualFile::default_instance(); }
-
-EditableFactory* getEditableFactory();
-
-template <typename P>
-TypedEditable<P>* editable(const VirtualFile& f = noFile()) {
-  return getEditableFactory()->get<P>(f);
-}
+namespace data {
 
 template <typename Proto>
 void set(const Proto& p, const VirtualFile& f = noFile(),
@@ -30,7 +17,7 @@ const Proto get(const VirtualFile& f = noFile()) {
   return editable<Proto>(f)->get();
 }
 
-}  // namespace persist
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_DATA_PERSIST_PERSIST__

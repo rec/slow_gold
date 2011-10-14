@@ -9,7 +9,7 @@ using google::protobuf::TextFormat;
 using namespace juce;
 
 namespace rec {
-namespace persist {
+namespace data {
 
 namespace {
 
@@ -188,6 +188,6 @@ bool copy(const Message &f, const File &t, bool r) { return through(f, t, r); }
 bool copy(const Memory &f,  const File &t, bool r) { return through(f, t, r); }
 
 
-}  // namespace persist
+}  // namespace data
 }  // namespace rec
 

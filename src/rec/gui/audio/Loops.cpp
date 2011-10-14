@@ -1,9 +1,10 @@
 #include <algorithm>
 
 #include "rec/base/RealTime.h"
-#include "rec/gui/audio/Loops.h"
 #include "rec/data/yaml/Yaml.h"
 #include "rec/data/proto/Equals.h"
+#include "rec/data/Value.h"
+#include "rec/gui/audio/Loops.h"
 #include "rec/util/Defaulter.h"
 #include "rec/util/Math.h"
 #include "rec/util/Range.h"
@@ -29,7 +30,7 @@ class LoopPointDataListener : public DataListener<LoopPointList> {
     loops_->setLoopPoints(p);
   }
 
-  virtual void setData(persist::TypedEditable<LoopPointList>* d) {
+  virtual void setData(data::TypedEditable<LoopPointList>* d) {
     DataListener<LoopPointList>::setData(d);
     loops_->setUntypedEditable(d);
   }

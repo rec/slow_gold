@@ -29,8 +29,8 @@ class PlayerController : public Layout, public juce::ComboBox::Listener,
   virtual void onDataChange(const rec::audio::source::StereoProto&);
   virtual void onDataChange(const rec::audio::Gain&);
 
-  virtual void setData(persist::TypedEditable<rec::audio::stretch::Stretch>*);
-  virtual void setData(persist::TypedEditable<rec::audio::Gain>*);
+  virtual void setData(data::TypedEditable<rec::audio::stretch::Stretch>*);
+  virtual void setData(data::TypedEditable<rec::audio::Gain>*);
 
   void setZoom(data::UntypedEditable* zoom);
   virtual void comboBoxChanged(juce::ComboBox*);

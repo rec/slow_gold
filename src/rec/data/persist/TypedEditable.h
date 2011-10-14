@@ -9,23 +9,23 @@
 #include "rec/util/listener/Listener.h"
 
 namespace rec {
-namespace persist {
-
-class EditableFactory;
+namespace data {
 
 template <typename Proto>
 class TypedEditable : public data::UntypedEditable,
                       public Broadcaster<const Proto&> {
  public:
+  TypedEditable(const File& file, const VirtualFile& vf)
+      : UntypedEditable(file, vf, &proto_) {
+  }
+
   // Get a consistent snapshot of the current value.
   const Proto get() const {
     ScopedLock l(UntypedEditable::lock_);
     return proto_;
   }
 
-  // virtual void operator()(const Proto&) { DCHECK(false); }
-
-  virtual string getTypeName() const { return proto_.GetTypeName(); }
+  virtual const string getTypeName() const { return proto_.GetTypeName(); }
   virtual ~TypedEditable() {}
 
  protected:
@@ -38,16 +38,10 @@ class TypedEditable : public data::UntypedEditable,
  private:
   Proto proto_;
 
-  TypedEditable(const File& file, const VirtualFile& vf)
-      : UntypedEditable(file, vf, &proto_) {
-  }
-
-  friend class EditableFactory;
-
   DISALLOW_COPY_ASSIGN_AND_EMPTY(TypedEditable);
 };
 
-}  // namespace persist
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PERSIST_DATA__

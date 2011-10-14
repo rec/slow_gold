@@ -1,0 +1,154 @@
+#include <set>
+
+#include "rec/app/Files.h"
+#include "rec/data/Editable.h"
+#include "rec/data/UndoQueue.h"
+#include "rec/data/persist/EditableFactory.h"
+#include "rec/data/persist/TypedEditable.h"
+#include "rec/util/STL.h"
+#include "rec/util/thread/MakeThread.h"
+#include "rec/util/thread/Trash.h"
+
+namespace rec {
+namespace data {
+
+namespace {
+
+struct EditableUpdater  {
+  static const int UPDATE_PRIORITY = 5;
+  static const int UPDATE_PERIOD = 40;
+
+  static const int WRITE_PRIORITY = 5;
+  static const int WRITE_PERIOD = 100;
+
+  EditableUpdater() : undo_(app::getAppFile("UndoQueue.Action")) {
+    updateThread_.reset(thread::makeLoop(UPDATE_PERIOD, "App::update",
+                                         this, &EditableUpdater::update));
+    updateThread_->setPriority(UPDATE_PRIORITY);
+
+    writeThread_.reset(thread::makeLoop(WRITE_PERIOD, "App::write",
+                                         this, &EditableUpdater::write));
+    writeThread_->setPriority(WRITE_PRIORITY);
+    updateThread_->startThread();
+    writeThread_->startThread();
+  }
+
+  bool write();
+  bool update();
+
+  static void start();
+  static void stop();
+
+  // A piece of data got new information!
+  void needsUpdate(data::UntypedEditable* d);
+  void addToUndoQueue(UntypedEditable* u, const OperationQueue& q);
+
+  typedef std::set<data::UntypedEditable*> DataSet;
+  EditableMap* map() { return &map_; }
+  CriticalSection* lock() { return &lock_; }
+
+  static EditableUpdater* getInstance() { return instance_; }
+
+  void doUpdate(data::UntypedEditable*);
+
+  CriticalSection lock_;
+
+  DataSet updateData_;
+  DataSet writeData_;
+  EditableMap map_;
+
+  thread_ptr<Thread> updateThread_;
+  thread_ptr<Thread> writeThread_;
+  commands::UndoQueue undo_;
+
+  static EditableUpdater* instance_;
+
+  DISALLOW_COPY_AND_ASSIGN(EditableUpdater);
+};
+
+
+EditableUpdater::~EditableUpdater() {
+  writeThread_->stopThread(1000);
+  updateThread_->stopThread(1000);
+}
+
+// A piece of data got new information!
+void EditableUpdater::needsUpdate(UntypedEditable* data) {
+  {
+    ScopedLock l(lock_);
+    updateData_.insert(data);
+  }
+  updateThread_->notify();
+}
+
+void EditableUpdater::addToUndoQueue(UntypedEditable* e, const OperationQueue& q) {
+  undo_->add(e, q);
+}
+
+template <typename DataSet, typename Method>
+bool operateOn(DataSet *from, DataSet *to, CriticalSection* lock, Method m) {
+  DataSet ds;
+  {
+    ScopedLock l(*lock);
+    if (from->empty())
+      return true;
+    stl::moveTo(from, &ds);
+  }
+
+  for (typename DataSet::iterator i = ds.begin(); i != ds.end(); ++i)
+    ((*i)->*m)();
+
+  stl::moveTo(&ds, to);
+  return false;
+}
+
+bool EditableUpdater::update() {
+  bool res = !running() ||
+    operateOn(&updateData_, &writeData_, &lock_, &UntypedEditable::update) ||
+    !running();
+  if (res)
+    writeThread_->notify();
+  return res;
+}
+
+bool EditableUpdater::write() {
+  if (!running())
+    return true;
+
+  DataSet ds;
+  bool res = operateOn(&writeData_, &ds, &lock_, &UntypedEditable::writeToFile);
+  stl::deletePointers(&ds);
+  return res || !running();
+}
+
+void EditableUpdater::start() {
+  CHECK(!instance_);
+  instance_ = new EditableUpdater();
+}
+
+void EditableUpdater::stop() {
+  delete instance_;
+  instance_ = NULL;
+}
+
+EditableUpdater* EditableUpdater::instance_ = NULL;
+
+void needsUpdate(UntypedEditable*) {
+}
+
+void addToUndoQueue(UntypedEditable* u, const OperationQueue& q) {
+}
+
+EditableMap* editableMap() {
+  return ;
+}
+
+CriticalSection* editableMapLock() {
+	return NULL;
+}
+
+void start() { EditableUpdater::start(); }
+void stop() { EditableUpdater::stop(); }
+
+}  // namespace data
+}  // namespace rec

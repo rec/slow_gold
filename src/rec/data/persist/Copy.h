@@ -10,7 +10,7 @@
 //
 // Example: read a protocol message from a file.
 //   MyProto proto;
-//   if (!rec::persist::copy(File(myFileName), &proto)) {
+//   if (!rec::data::copy(File(myFileName), &proto)) {
 //     // Handle error.
 //   }
 //
@@ -24,7 +24,7 @@
 // and deserialization.
 
 namespace rec {
-namespace persist {
+namespace data {
 
 bool copy(const File& from, File* to, bool readable = true);
 bool copy(const File& from, const File& to, bool readable = true);
@@ -61,7 +61,7 @@ bool copy(const string& from, Message* to, bool readable = true);
 bool copy(const string& from, String* to, bool readable = true);
 bool copy(const string& from, string* to, bool readable = true);
 
-}  // namespace persist
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PERSIST_COPY__

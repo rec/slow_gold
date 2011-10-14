@@ -39,7 +39,7 @@ AudioFormatReader* createMusicFileReader(const VirtualFile& file) {
   }
 
   ptr<Metadata> metadata;
-  persist::TypedEditable<Metadata>* d = persist::editable<music::Metadata>(file);
+  data::TypedEditable<Metadata>* d = data::editable<music::Metadata>(file);
   if (d->fileReadSuccess())
     metadata.reset(new Metadata);
 

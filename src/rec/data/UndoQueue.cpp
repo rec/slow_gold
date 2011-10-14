@@ -1,9 +1,10 @@
 #include "rec/data/UndoQueue.h"
 #include "rec/data/Action.pb.h"
-#include "rec/data/persist/UntypedEditable.h"
-#include "rec/data/proto/Proto.h"
+#include "rec/data/Editable.h"
 #include "rec/util/STL.h"
 #include "rec/util/file/LogFile.h"
+
+#include "rec/data/proto/Proto.h"
 
 namespace rec {
 namespace data {
@@ -31,22 +32,21 @@ void UndoQueue::add(Action* event) {
   }
 }
 
-static void doAction(Action* action, bool isUndo) {
-  Message* message = NULL; // ??!!!!
+void doAction(Editable* editable, Action* action, bool isUndo) {
   const OperationList& ops = isUndo ? action->undo() : action->operations();
-  ptr<OperationList> res(data::applyOperations(ops, message));
+  ptr<OperationList> res(editable->applyOperationList(ops));
   if (isUndo && !action->operations().operation_size() && res->operation_size())
     action->mutable_operations()->CopyFrom(*res);
 }
 
-void UndoQueue::undo() {
+void UndoQueue::undo(Editable* editable) {
   if (undoable())
-    doAction(events_[events_.size() - ++undoes_], true);
+    doAction(editable, events_[events_.size() - ++undoes_], true);
 }
 
-void UndoQueue::redo() {
+void UndoQueue::redo(Editable* editable) {
   if (undoes_)
-    doAction(events_[events_.size() - undoes_--], false);
+    doAction(editable, events_[events_.size() - undoes_--], false);
 }
 
 bool UndoQueue::write() {
@@ -67,14 +67,14 @@ bool UndoQueue::write() {
   return true;
 }
 
-void UndoQueue::add(UntypedEditable* e, data::OperationQueue* q) {
+void UndoQueue::add(Editable* e, const OperationQueue& q) {
   ptr<Action> action(new Action);
   action->mutable_file()->CopyFrom(e->virtualFile());
   action->set_type_name(e->getTypeName());
   typedef google::protobuf::RepeatedPtrField<Operation> RepeatedOperation;
   RepeatedOperation* op = action->mutable_undo()->mutable_operation();
-  for (int i = q->size() - 1; i >=0; --i)
-    op->MergeFrom(*(*q)[i]->mutable_operation());
+  for (int i = q.size() - 1; i >=0; --i)
+    op->MergeFrom(q[i]->operation());
 
   add(action.transfer());
 }
