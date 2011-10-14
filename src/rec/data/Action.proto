@@ -28,6 +28,6 @@ message Action {
   repeated Source source = 3;
   optional util.file.VirtualFile file = 4;
   optional string type_name = 5;
-  optional OperationList operations = 6;
-  optional OperationList undo = 7;
+  optional Operations operations = 6;
+  optional Operations undo = 7;
 };

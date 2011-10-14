@@ -25,6 +25,6 @@ message Operation {
   optional uint32 swap2 = 6;
 };
 
-message OperationList {
+message Operations {
   repeated Operation operation = 1;
 };

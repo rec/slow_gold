@@ -112,13 +112,13 @@ void protobuf_AddDesc_rec_2fdata_2fAction_2eproto() {
     "alFile.proto\"\217\001\n\006Source\022#\n\004type\030\001 \001(\0162\025."
     "rec.data.Source.Type\022\r\n\005index\030\002 \003(\r\022\025\n\rm"
     "odifier_keys\030\003 \001(\r\":\n\004Type\022\010\n\004MENU\020\000\022\014\n\010"
-    "KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\335"
+    "KEYBOARD\020\001\022\013\n\007CONTROL\020\002\022\r\n\tAUTOMATIC\020\003\"\327"
     "\001\n\006Action\022\021\n\ttimestamp\030\001 \001(\004\022\r\n\005index\030\002 "
     "\001(\004\022 \n\006source\030\003 \003(\0132\020.rec.data.Source\022(\n"
     "\004file\030\004 \001(\0132\032.rec.util.file.VirtualFile\022"
-    "\021\n\ttype_name\030\005 \001(\t\022+\n\noperations\030\006 \001(\0132\027"
-    ".rec.data.OperationList\022%\n\004undo\030\007 \001(\0132\027."
-    "rec.data.OperationList", 462);
+    "\021\n\ttype_name\030\005 \001(\t\022(\n\noperations\030\006 \001(\0132\024"
+    ".rec.data.Operations\022\"\n\004undo\030\007 \001(\0132\024.rec"
+    ".data.Operations", 456);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/data/Action.proto", &protobuf_RegisterTypes);
   Source::default_instance_ = new Source();
@@ -482,8 +482,8 @@ Action::Action()
 
 void Action::InitAsDefaultInstance() {
   file_ = const_cast< ::rec::util::file::VirtualFile*>(&::rec::util::file::VirtualFile::default_instance());
-  operations_ = const_cast< ::rec::data::OperationList*>(&::rec::data::OperationList::default_instance());
-  undo_ = const_cast< ::rec::data::OperationList*>(&::rec::data::OperationList::default_instance());
+  operations_ = const_cast< ::rec::data::Operations*>(&::rec::data::Operations::default_instance());
+  undo_ = const_cast< ::rec::data::Operations*>(&::rec::data::Operations::default_instance());
 }
 
 Action::Action(const Action& from)
@@ -551,10 +551,10 @@ void Action::Clear() {
       }
     }
     if (_has_bit(5)) {
-      if (operations_ != NULL) operations_->::rec::data::OperationList::Clear();
+      if (operations_ != NULL) operations_->::rec::data::Operations::Clear();
     }
     if (_has_bit(6)) {
-      if (undo_ != NULL) undo_->::rec::data::OperationList::Clear();
+      if (undo_ != NULL) undo_->::rec::data::Operations::Clear();
     }
   }
   source_.Clear();
@@ -645,7 +645,7 @@ bool Action::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.data.OperationList operations = 6;
+      // optional .rec.data.Operations operations = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -659,7 +659,7 @@ bool Action::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .rec.data.OperationList undo = 7;
+      // optional .rec.data.Operations undo = 7;
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -722,13 +722,13 @@ void Action::SerializeWithCachedSizes(
       5, this->type_name(), output);
   }
   
-  // optional .rec.data.OperationList operations = 6;
+  // optional .rec.data.Operations operations = 6;
   if (_has_bit(5)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, this->operations(), output);
   }
   
-  // optional .rec.data.OperationList undo = 7;
+  // optional .rec.data.Operations undo = 7;
   if (_has_bit(6)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       7, this->undo(), output);
@@ -776,14 +776,14 @@ void Action::SerializeWithCachedSizes(
         5, this->type_name(), target);
   }
   
-  // optional .rec.data.OperationList operations = 6;
+  // optional .rec.data.Operations operations = 6;
   if (_has_bit(5)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         6, this->operations(), target);
   }
   
-  // optional .rec.data.OperationList undo = 7;
+  // optional .rec.data.Operations undo = 7;
   if (_has_bit(6)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -829,14 +829,14 @@ int Action::ByteSize() const {
           this->type_name());
     }
     
-    // optional .rec.data.OperationList operations = 6;
+    // optional .rec.data.Operations operations = 6;
     if (has_operations()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->operations());
     }
     
-    // optional .rec.data.OperationList undo = 7;
+    // optional .rec.data.Operations undo = 7;
     if (has_undo()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -892,10 +892,10 @@ void Action::MergeFrom(const Action& from) {
       set_type_name(from.type_name());
     }
     if (from._has_bit(5)) {
-      mutable_operations()->::rec::data::OperationList::MergeFrom(from.operations());
+      mutable_operations()->::rec::data::Operations::MergeFrom(from.operations());
     }
     if (from._has_bit(6)) {
-      mutable_undo()->::rec::data::OperationList::MergeFrom(from.undo());
+      mutable_undo()->::rec::data::Operations::MergeFrom(from.undo());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());

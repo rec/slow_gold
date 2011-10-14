@@ -19,14 +19,14 @@ class UndoQueue {
 
   ~UndoQueue();
 
-  void add(Editable*, const OperationQueue&);
+  void add(Editable*, const OperationList&);
   bool write();
 
   int undoable() const { Lock l(lock_); return events_.size() - undoes_; }
   int undoes() const { Lock l(lock_); return undoes_; }
 
-  void undo(Editable*);
-  void redo(Editable*);
+  void undo();
+  void redo();
 
  private:
   void add(Action* event);

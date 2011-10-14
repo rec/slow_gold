@@ -4,8 +4,6 @@
 #include "rec/util/STL.h"
 #include "rec/util/file/LogFile.h"
 
-#include "rec/data/proto/Proto.h"
-
 namespace rec {
 namespace data {
 
@@ -32,20 +30,20 @@ void UndoQueue::add(Action* event) {
 }
 
 void doAction(Editable* editable, Action* action, bool isUndo) {
-  const OperationList& ops = isUndo ? action->undo() : action->operations();
-  ptr<OperationList> res(editable->applyOperationList(ops));
+  const Operations& ops = isUndo ? action->undo() : action->operations();
+  ptr<Operations> res(editable->applyOperations(ops));
   if (isUndo && !action->operations().operation_size() && res->operation_size())
     action->mutable_operations()->CopyFrom(*res);
 }
 
-void UndoQueue::undo(Editable* editable) {
+void UndoQueue::undo() {
   if (undoable())
-    doAction(editable, events_[events_.size() - ++undoes_], true);
+    doAction(NULL, events_[events_.size() - ++undoes_], true);
 }
 
-void UndoQueue::redo(Editable* editable) {
+void UndoQueue::redo() {
   if (undoes_)
-    doAction(editable, events_[events_.size() - undoes_--], false);
+    doAction(NULL, events_[events_.size() - undoes_--], false);
 }
 
 bool UndoQueue::write() {
@@ -66,7 +64,7 @@ bool UndoQueue::write() {
   return true;
 }
 
-void UndoQueue::add(Editable* e, const OperationQueue& q) {
+void UndoQueue::add(Editable* e, const OperationList& q) {
   ptr<Action> action(new Action);
   action->mutable_file()->CopyFrom(e->virtualFile());
   action->set_type_name(e->getTypeName());

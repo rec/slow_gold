@@ -294,19 +294,19 @@ class Action : public ::google::protobuf::Message {
   inline void set_type_name(const char* value, size_t size);
   inline ::std::string* mutable_type_name();
   
-  // optional .rec.data.OperationList operations = 6;
+  // optional .rec.data.Operations operations = 6;
   inline bool has_operations() const;
   inline void clear_operations();
   static const int kOperationsFieldNumber = 6;
-  inline const ::rec::data::OperationList& operations() const;
-  inline ::rec::data::OperationList* mutable_operations();
+  inline const ::rec::data::Operations& operations() const;
+  inline ::rec::data::Operations* mutable_operations();
   
-  // optional .rec.data.OperationList undo = 7;
+  // optional .rec.data.Operations undo = 7;
   inline bool has_undo() const;
   inline void clear_undo();
   static const int kUndoFieldNumber = 7;
-  inline const ::rec::data::OperationList& undo() const;
-  inline ::rec::data::OperationList* mutable_undo();
+  inline const ::rec::data::Operations& undo() const;
+  inline ::rec::data::Operations* mutable_undo();
   
   // @@protoc_insertion_point(class_scope:rec.data.Action)
  private:
@@ -319,8 +319,8 @@ class Action : public ::google::protobuf::Message {
   ::rec::util::file::VirtualFile* file_;
   ::std::string* type_name_;
   static const ::std::string _default_type_name_;
-  ::rec::data::OperationList* operations_;
-  ::rec::data::OperationList* undo_;
+  ::rec::data::Operations* operations_;
+  ::rec::data::Operations* undo_;
   friend void  protobuf_AddDesc_rec_2fdata_2fAction_2eproto();
   friend void protobuf_AssignDesc_rec_2fdata_2fAction_2eproto();
   friend void protobuf_ShutdownFile_rec_2fdata_2fAction_2eproto();
@@ -526,37 +526,37 @@ inline ::std::string* Action::mutable_type_name() {
   return type_name_;
 }
 
-// optional .rec.data.OperationList operations = 6;
+// optional .rec.data.Operations operations = 6;
 inline bool Action::has_operations() const {
   return _has_bit(5);
 }
 inline void Action::clear_operations() {
-  if (operations_ != NULL) operations_->::rec::data::OperationList::Clear();
+  if (operations_ != NULL) operations_->::rec::data::Operations::Clear();
   _clear_bit(5);
 }
-inline const ::rec::data::OperationList& Action::operations() const {
+inline const ::rec::data::Operations& Action::operations() const {
   return operations_ != NULL ? *operations_ : *default_instance_->operations_;
 }
-inline ::rec::data::OperationList* Action::mutable_operations() {
+inline ::rec::data::Operations* Action::mutable_operations() {
   _set_bit(5);
-  if (operations_ == NULL) operations_ = new ::rec::data::OperationList;
+  if (operations_ == NULL) operations_ = new ::rec::data::Operations;
   return operations_;
 }
 
-// optional .rec.data.OperationList undo = 7;
+// optional .rec.data.Operations undo = 7;
 inline bool Action::has_undo() const {
   return _has_bit(6);
 }
 inline void Action::clear_undo() {
-  if (undo_ != NULL) undo_->::rec::data::OperationList::Clear();
+  if (undo_ != NULL) undo_->::rec::data::Operations::Clear();
   _clear_bit(6);
 }
-inline const ::rec::data::OperationList& Action::undo() const {
+inline const ::rec::data::Operations& Action::undo() const {
   return undo_ != NULL ? *undo_ : *default_instance_->undo_;
 }
-inline ::rec::data::OperationList* Action::mutable_undo() {
+inline ::rec::data::Operations* Action::mutable_undo() {
   _set_bit(6);
-  if (undo_ == NULL) undo_ = new ::rec::data::OperationList;
+  if (undo_ == NULL) undo_ = new ::rec::data::Operations;
   return undo_;
 }
 

@@ -36,7 +36,7 @@ void protobuf_AssignDesc_rec_2fdata_2fOperation_2eproto();
 void protobuf_ShutdownFile_rec_2fdata_2fOperation_2eproto();
 
 class Operation;
-class OperationList;
+class Operations;
 
 enum Operation_Command {
   Operation_Command_APPEND = 0,
@@ -225,14 +225,14 @@ class Operation : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class OperationList : public ::google::protobuf::Message {
+class Operations : public ::google::protobuf::Message {
  public:
-  OperationList();
-  virtual ~OperationList();
+  Operations();
+  virtual ~Operations();
   
-  OperationList(const OperationList& from);
+  Operations(const Operations& from);
   
-  inline OperationList& operator=(const OperationList& from) {
+  inline Operations& operator=(const Operations& from) {
     CopyFrom(from);
     return *this;
   }
@@ -246,17 +246,17 @@ class OperationList : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const OperationList& default_instance();
+  static const Operations& default_instance();
   
-  void Swap(OperationList* other);
+  void Swap(Operations* other);
   
   // implements Message ----------------------------------------------
   
-  OperationList* New() const;
+  Operations* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const OperationList& from);
-  void MergeFrom(const OperationList& from);
+  void CopyFrom(const Operations& from);
+  void MergeFrom(const Operations& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -291,7 +291,7 @@ class OperationList : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
       mutable_operation();
   
-  // @@protoc_insertion_point(class_scope:rec.data.OperationList)
+  // @@protoc_insertion_point(class_scope:rec.data.Operations)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
@@ -315,7 +315,7 @@ class OperationList : public ::google::protobuf::Message {
   }
   
   void InitAsDefaultInstance();
-  static OperationList* default_instance_;
+  static Operations* default_instance_;
 };
 // ===================================================================
 
@@ -433,30 +433,30 @@ inline void Operation::set_swap2(::google::protobuf::uint32 value) {
 
 // -------------------------------------------------------------------
 
-// OperationList
+// Operations
 
 // repeated .rec.data.Operation operation = 1;
-inline int OperationList::operation_size() const {
+inline int Operations::operation_size() const {
   return operation_.size();
 }
-inline void OperationList::clear_operation() {
+inline void Operations::clear_operation() {
   operation_.Clear();
 }
-inline const ::rec::data::Operation& OperationList::operation(int index) const {
+inline const ::rec::data::Operation& Operations::operation(int index) const {
   return operation_.Get(index);
 }
-inline ::rec::data::Operation* OperationList::mutable_operation(int index) {
+inline ::rec::data::Operation* Operations::mutable_operation(int index) {
   return operation_.Mutable(index);
 }
-inline ::rec::data::Operation* OperationList::add_operation() {
+inline ::rec::data::Operation* Operations::add_operation() {
   return operation_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >&
-OperationList::operation() const {
+Operations::operation() const {
   return operation_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::rec::data::Operation >*
-OperationList::mutable_operation() {
+Operations::mutable_operation() {
   return &operation_;
 }
 

@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="NaDk6cgww" name="tests">
+  <MAINGROUP id="D3SYNF1YZ" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -434,10 +434,6 @@
                 name="MessageField.h" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/NameToProto.h" id="8tRvrD8HN"
                 name="NameToProto.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/data/proto/Proto.cpp" id="haNUZyo62"
-                name="Proto.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/data/proto/Proto.h" id="MR5rlmeJj"
-                name="Proto.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/Proto_test.cpp" id="IqQ3U54Kh"
                 name="Proto_test.cpp" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/TypedOperations.cpp"
@@ -1323,7 +1319,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="kSIhp1p2L" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="67sYmTrhu" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

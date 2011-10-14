@@ -25,7 +25,7 @@ Operation* valueOp(Command c, const Address& a, const Value& value) {
 
 void setOp(Editable* setter, Operation* oper) {
   ptr<Operation> op(oper);
-  ptr<OperationList> list(new OperationList);
+  ptr<Operations> list(new Operations);
   list->add_operation()->CopyFrom(*op);
   setter->applyLater(list.transfer());
 }

@@ -12,14 +12,15 @@ namespace data {
 class Address;
 class AddressProto;
 class Operation;
-class OperationList;
+class Operations;
 class UntypedEditable;
 class Value;
 class ValueProto;
 
-typedef std::vector<data::OperationList*> OperationQueue;
+typedef std::vector<Operations*> OperationList;
 typedef std::map<string, UntypedEditable*> EditableMap;
 typedef std::set<UntypedEditable*> EditableSet;
+typedef std::vector<UntypedEditable*> EditableList;
 
 class Editable {
  public:
@@ -29,8 +30,8 @@ class Editable {
   void set(const Value&, const Address& a = Address::default_instance());
   void append(const Value& value, const Address&);
 
-  virtual void applyLater(OperationList*) = 0;
-  virtual OperationList* applyOperationList(const OperationList&) = 0;
+  virtual void applyLater(Operations*) = 0;
+  virtual Operations* applyOperations(const Operations&) = 0;
 
   virtual const Value getValue(const Address&) const = 0;
   virtual bool hasValue(const Address&) const = 0;

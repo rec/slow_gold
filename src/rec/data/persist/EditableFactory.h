@@ -9,7 +9,7 @@ namespace rec {
 namespace data {
 
 void needsUpdate(UntypedEditable*);
-void addToUndoQueue(UntypedEditable* u, const OperationQueue& q);
+void addToUndoQueue(UntypedEditable* u, const OperationList& q);
 
 EditableMap* editableMap();
 CriticalSection* editableMapLock();

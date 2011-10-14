@@ -32,8 +32,8 @@ class UntypedEditable : public Editable {
   Message* clone() const;
   const VirtualFile& virtualFile() const { return virtualFile_; }
 
-  virtual OperationList* applyOperationList(const OperationList& );
-  virtual void applyLater(OperationList* op);
+  virtual Operations* applyOperations(const Operations& );
+  virtual void applyLater(Operations* op);
   void readFromFile() const;
   void writeToFile() const;
 
@@ -41,7 +41,7 @@ class UntypedEditable : public Editable {
   void update();
 
  protected:
-  // Change the data with an OperationList.  op will eventually be deleted.  The
+  // Change the data with an Operations.  op will eventually be deleted.  The
   // change is performed on a different thread so it is likely that the value of
   // get() won't immediately be updated.
 
@@ -51,7 +51,7 @@ class UntypedEditable : public Editable {
 
   CriticalSection lock_;
 
-  OperationQueue queue_;
+  OperationList queue_;
   Broadcaster<const Message&> messageBroadcaster_;
   const File file_;
   const VirtualFile virtualFile_;

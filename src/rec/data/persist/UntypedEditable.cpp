@@ -73,7 +73,7 @@ void UntypedEditable::readFromFile() const {
   }
 }
 
-void UntypedEditable::applyLater(OperationList* op) {
+void UntypedEditable::applyLater(Operations* op) {
   {
     ScopedLock l(lock_);
     queue_.push_back(op);
@@ -81,8 +81,8 @@ void UntypedEditable::applyLater(OperationList* op) {
   data::needsUpdate(this);
 }
 
-OperationList* UntypedEditable::applyOperationList(const OperationList& olist) {
-  ptr<OperationList> result (new OperationList());
+Operations* UntypedEditable::applyOperations(const Operations& olist) {
+  ptr<Operations> result (new Operations());
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
     ptr<Field> f(Field::makeField(Address(op.address()), *message_));
@@ -97,7 +97,7 @@ OperationList* UntypedEditable::applyOperationList(const OperationList& olist) {
 }
 
 void UntypedEditable::update() {
-  OperationQueue old;
+  OperationList old;
   {
     ScopedLock l(lock_);
     if (queue_.empty())
@@ -106,10 +106,10 @@ void UntypedEditable::update() {
     old.swap(queue_);
   }
 
-  OperationQueue undo;
-  for (OperationQueue::iterator i = old.begin(); i != old.end(); ++i) {
+  OperationList undo;
+  for (OperationList::iterator i = old.begin(); i != old.end(); ++i) {
     ScopedLock l(lock_);
-    undo.push_back(applyOperationList(**i));
+    undo.push_back(applyOperations(**i));
   }
 
   stl::deletePointers(&old);

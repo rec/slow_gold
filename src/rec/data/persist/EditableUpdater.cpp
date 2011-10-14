@@ -106,7 +106,7 @@ UndoQueue* undoQueue() { return instance()->undoQueue(); }
 
 }  // namespace
 
-void addToUndoQueue(UntypedEditable* u, const OperationQueue& q) {
+void addToUndoQueue(UntypedEditable* u, const OperationList& q) {
   return undoQueue()->add(u, q);
 }
 
