@@ -96,13 +96,5 @@ bool Field::dereference(const Address::Part& afield) {
   return true;
 }
 
-bool Field::apply(const Operation& op) {
-  return proto::apply(this, op);
-}
-
-bool Field::undo(const Operation& op, Operation* undo) {
-  return proto::undo(this, op, undo);
-}
-
 }  // namespace data
 }  // namespace rec

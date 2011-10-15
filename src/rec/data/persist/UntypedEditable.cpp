@@ -90,7 +90,7 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
       return NULL;
     }
     Operation undo;
-    if (f->undo(op, &undo) && f->apply(op))
+    if (proto::undo(f.get(), op, &undo) && proto::apply(f.get(), op))
       result->add_operation()->CopyFrom(undo);
     else
       LOG(ERROR) << "Couldn't perform operation " << op.DebugString();

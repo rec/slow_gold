@@ -13,8 +13,6 @@ class Field : public MessageField {
   static Field* makeField(const Address& address, const Message& msg);
 
   bool dereference(const Address::Part& part);
-  bool apply(const Operation& op);
-  bool undo(const Operation& op, Operation* undo);
 };
 
 }  // namespace data

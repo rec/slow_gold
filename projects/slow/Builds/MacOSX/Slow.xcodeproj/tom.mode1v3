@@ -197,7 +197,89 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E2FF97B21449170400A50F6C</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>Field.h</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E2FF97B31449170400A50F6C</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>Field.h</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E2FF97B61449170400A50F6C</string>
+						<key>history</key>
+						<array>
+							<string>E2FF97B41449170400A50F6C</string>
+							<string>E2FF97B51449170400A50F6C</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1064, 923}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>441 186 1064 964 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>E2FF97B71449170400A50F6C</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>UntypedEditable.cpp</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>E2FF97B81449170400A50F6C</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>UntypedEditable.cpp</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>E2FF97B91449170400A50F6C</string>
+						<key>history</key>
+						<array>
+							<string>E2FF97A81449169000A50F6C</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {968, 794}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>943 83 968 835 0 0 1920 1178 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -329,7 +411,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E2FF97A51449166400A50F6C</string>
+										<string>E2FF97B11449170400A50F6C</string>
 										<key>history</key>
 										<array>
 											<string>E288C2BC12EB70A400AAB106</string>
@@ -455,7 +537,7 @@
 											<string>E2FF958D1448B2A700A50F6C</string>
 											<string>E2FF96311448C07D00A50F6C</string>
 											<string>E2FF97A31449166400A50F6C</string>
-											<string>E2FF97A41449166400A50F6C</string>
+											<string>E2FF97B01449170400A50F6C</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -653,11 +735,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E2FF9793144915E100A50F6C</string>
-		<string>E2FF97581449149900A50F6C</string>
-		<string>E2FF970E1449102C00A50F6C</string>
-		<string>E290FED3120A432900532309</string>
 		<string>/development/rec/projects/slow/Builds/MacOSX/Slow.xcodeproj</string>
+		<string>E2FF97B71449170400A50F6C</string>
+		<string>E290FED3120A432900532309</string>
+		<string>E2FF97B21449170400A50F6C</string>
 	</array>
 	<key>WindowString</key>
 	<string>544 180 1217 998 0 0 1920 1178 </string>
@@ -681,7 +762,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>FieldOps.cpp</string>
+								<string>UntypedEditable.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -752,7 +833,7 @@
 			<key>WindowToolGUID</key>
 			<string>E290FED3120A432900532309</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
