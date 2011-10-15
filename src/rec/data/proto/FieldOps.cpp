@@ -1,5 +1,5 @@
 #include "rec/data/proto/FieldOps.h"
-#include "rec/data/proto/Field.h"
+#include "rec/data/proto/MessageField.h"
 #include "rec/data/Value.h"
 #include "rec/data/proto/TypedOperations.h"
 
@@ -7,7 +7,7 @@ namespace rec {
 namespace data {
 namespace proto {
 
-bool copyTo(const Field& f, ValueProto* value) {
+bool copyTo(const MessageField& f, ValueProto* value) {
   if (!f.field_) {
     value->set_message_f(pmessage(*f.message_));
     return true;
@@ -26,7 +26,7 @@ bool copyTo(const Field& f, ValueProto* value) {
 
 namespace {
 
-bool copyFrom(Field* f, const Value& value) {
+bool copyFrom(MessageField* f, const Value& value) {
   if (!f->field_) {
     if (value.has_message_f())
       return pmessage(value.message_f()).Parse(f->message_);
@@ -40,7 +40,7 @@ bool copyFrom(Field* f, const Value& value) {
     typer::copyFrom(f->message_, f->field_, f->index_, value);
 }
 
-bool addFrom(Field* f, const Value& value) {
+bool addFrom(MessageField* f, const Value& value) {
   if (f->field_)
     return typer::add(f->message_, f->field_, value);
 
@@ -48,7 +48,7 @@ bool addFrom(Field* f, const Value& value) {
   return false;
 }
 
-bool removeLast(Field* f) {
+bool removeLast(MessageField* f) {
   if (f->field_ && f->type_ == MessageField::REPEATED) {
     f->message_->GetReflection()->RemoveLast(f->message_, f->field_);
     return true;
@@ -62,7 +62,7 @@ namespace single {
 
 namespace set {
 
-bool apply(Field* field, const Operation& op) {
+bool apply(MessageField* field, const Operation& op) {
   if (op.value_size() != 1) {
     LOG(ERROR) << "Can only set one value at a time";
     return false;
@@ -70,9 +70,9 @@ bool apply(Field* field, const Operation& op) {
   return copyFrom(field, op.value(0));
 }
 
-bool undo(Field* f, const Operation& op, Operation* undo) {
+bool undo(MessageField* f, const Operation& op, Operation* undo) {
   bool success = true;
-  if (f->field_ && f->type_ != Field::INDEXED && !hasValue(*f))
+  if (f->field_ && f->type_ != MessageField::INDEXED && !hasValue(*f))
     undo->set_command(Operation::CLEAR);
   else
     success = copyTo(*f, undo->add_value());
@@ -86,12 +86,12 @@ bool undo(Field* f, const Operation& op, Operation* undo) {
 
 namespace clear {
 
-bool apply(Field* field, const Operation&) {
+bool apply(MessageField* field, const Operation&) {
   field->message_->Clear();
   return true;
 }
 
-bool undo(Field* field, const Operation& operation, Operation* undo) {
+bool undo(MessageField* field, const Operation& operation, Operation* undo) {
   undo->set_command(Operation::SET);
   undo->clear_value();
   return copyTo(*field, undo->add_value());
@@ -105,7 +105,7 @@ namespace repeated {
 
 namespace add {
 
-bool apply(Field* field, const Operation& op) {
+bool apply(MessageField* field, const Operation& op) {
   for (int i = 0; i < op.value_size(); ++i) {
     if (!addFrom(field, op.value(i)))
       return false;
@@ -113,7 +113,7 @@ bool apply(Field* field, const Operation& op) {
   return true;
 }
 
-bool undo(Field* f, const Operation& op, Operation* undo) {
+bool undo(MessageField* f, const Operation& op, Operation* undo) {
   undo->set_command(Operation::REMOVE);
   undo->set_remove(op.value_size());
   return true;
@@ -123,7 +123,7 @@ bool undo(Field* f, const Operation& op, Operation* undo) {
 
 namespace swap {
 
-bool apply(Field* field, const Operation& op) {
+bool apply(MessageField* field, const Operation& op) {
   if (!field) {
     LOG(ERROR) << "Can't swap repeated on self";
     return false;
@@ -141,7 +141,7 @@ bool apply(Field* field, const Operation& op) {
   }
 }
 
-bool undo(Field* field, const Operation& op, Operation* undo) {
+bool undo(MessageField* field, const Operation& op, Operation* undo) {
   *undo = op;
   return true;
 }
@@ -150,11 +150,11 @@ bool undo(Field* field, const Operation& op, Operation* undo) {
 
 namespace remove {
 
-int removeCount(Field* field, const Operation& op) {
+int removeCount(MessageField* field, const Operation& op) {
   return (op.command() == Operation::CLEAR) ? field->repeatCount_ : op.remove();
 }
 
-bool apply(Field* field, const Operation& operation) {
+bool apply(MessageField* field, const Operation& operation) {
   int toRemove = removeCount(field, operation);
   Message* msg = field->message_;
   for (int i = 0; i < toRemove; ++i)
@@ -162,11 +162,11 @@ bool apply(Field* field, const Operation& operation) {
   return true;
 }
 
-bool undo(Field* field, const Operation& operation, Operation* undo) {
+bool undo(MessageField* field, const Operation& operation, Operation* undo) {
   int toRemove = removeCount(field, operation);
   undo->set_command(Operation::APPEND);
 
-  Field f = *field;
+  MessageField f = *field;
   f.index_ = f.repeatCount_ - toRemove;
   for (; f.index_ < f.repeatCount_; ++f.index_) {
     if (!copyTo(f, undo->add_value())) {
@@ -181,10 +181,10 @@ bool undo(Field* field, const Operation& operation, Operation* undo) {
 
 }  // namespace repeated
 
-typedef bool (*Applier)(Field*, const Operation&);
-typedef bool (*Undoer)(Field*, const Operation&, Operation*);
+typedef bool (*Applier)(MessageField*, const Operation&);
+typedef bool (*Undoer)(MessageField*, const Operation&, Operation*);
 
-static Applier appliers[Operation::COMMAND_COUNT][Field::TYPE_COUNT] = {
+static Applier appliers[Operation::COMMAND_COUNT][MessageField::TYPE_COUNT] = {
   {NULL,       &repeated::add::apply,     NULL},
   {NULL,       &repeated::remove::apply,   &single::clear::apply},
   {NULL,       &repeated::remove::apply,  NULL},
@@ -192,7 +192,7 @@ static Applier appliers[Operation::COMMAND_COUNT][Field::TYPE_COUNT] = {
   {NULL,       &repeated::swap::apply,    NULL},
 };
 
-static Undoer undoers[Operation::COMMAND_COUNT][Field::TYPE_COUNT] = {
+static Undoer undoers[Operation::COMMAND_COUNT][MessageField::TYPE_COUNT] = {
   {NULL,       &repeated::add::undo,     NULL},
   {NULL,       &repeated::remove::undo,   &single::clear::undo},
   {NULL,       &repeated::remove::undo,  NULL},
@@ -208,13 +208,13 @@ bool valid(const Operation::Command c, const MessageField::Type t) {
 
 }  // namespace
 
-bool apply(Field* field, const Operation& op) {
+bool apply(MessageField* field, const Operation& op) {
   const Operation::Command c = op.command();
   const MessageField::Type t = field->type_;
   return valid(c, t) && appliers[c][t](field, op);
 }
 
-bool undo(Field* field, const Operation& op, Operation* undo) {
+bool undo(MessageField* field, const Operation& op, Operation* undo) {
   const Operation::Command c = op.command();
   const MessageField::Type t = field->type_;
   return valid(c, t) && undoers[c][t](field, op, undo);

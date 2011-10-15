@@ -24,24 +24,24 @@ UntypedEditable::~UntypedEditable() {
 }
 
 bool UntypedEditable::hasValue(const Address& address) const {
+  MessageField f;
   ScopedLock l(lock_);
-  ptr<Field> f(Field::makeField(address, *message_));
-  return f && data::hasValue(*f);
+  return fillMessageField(&f, address, *message_) && data::hasValue(f);
 }
 
 const Value UntypedEditable::getValue(const Address& address) const {
   Value value;
+  MessageField f;
   ScopedLock l(lock_);
-  ptr<Field> f(Field::makeField(address, *message_));
-  if (!(f && proto::copyTo(*f, &value)))
+  if (!(fillMessageField(&f, address, *message_) && proto::copyTo(f, &value)))
     LOG(ERROR) << "Couldn't read value for " << address.DebugString();
   return value;
 }
 
 int UntypedEditable::getSize(const Address& address) const {
+  MessageField f;
   ScopedLock l(lock_);
-  ptr<Field> f(Field::makeField(address, *message_));
-  return f && data::getSize(*f);
+  return fillMessageField(&f, address, *message_) ? 0 : data::getSize(f);
 }
 
 void UntypedEditable::copyTo(Message* message) const {
@@ -84,13 +84,14 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
   ptr<Operations> result (new Operations());
   for (int i = 0; i < olist.operation_size(); ++i) {
     const Operation& op = olist.operation(i);
-    ptr<Field> f(Field::makeField(Address(op.address()), *message_));
-    if (!f) {
+    MessageField f;
+    ScopedLock l(lock_);
+    if (!fillMessageField(&f, Address(op.address()), *message_)) {
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
       return NULL;
     }
     Operation undo;
-    if (proto::undo(f.get(), op, &undo) && proto::apply(f.get(), op))
+    if (proto::undo(&f, op, &undo) && proto::apply(&f, op))
       result->add_operation()->CopyFrom(undo);
     else
       LOG(ERROR) << "Couldn't perform operation " << op.DebugString();

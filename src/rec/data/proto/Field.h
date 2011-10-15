@@ -1,19 +1,15 @@
 #ifndef __REC_PROTO_FIELD__
 #define __REC_PROTO_FIELD__
 
-#include "rec/data/Editable.h"
-#include "rec/data/Address.h"
-#include "rec/data/proto/MessageField.h"
+#include "rec/base/base.h"
 
 namespace rec {
 namespace data {
 
-class Field : public MessageField {
- public:
-  static Field* makeField(const Address& address, const Message& msg);
+class Address;
+class MessageField;
 
-  bool dereference(const Address::Part& part);
-};
+bool fillMessageField(MessageField*, const Address&, const Message&);
 
 }  // namespace data
 }  // namespace rec

@@ -7,13 +7,13 @@
 namespace rec {
 namespace data {
 
-class Field;
+class MessageField;
 
 namespace proto {
 
-bool apply(Field*, const Operation&);
-bool undo(Field*, const Operation&, Operation*);
-bool copyTo(const Field& f, ValueProto* value);
+bool apply(MessageField*, const Operation&);
+bool undo(MessageField*, const Operation&, Operation*);
+bool copyTo(const MessageField& f, ValueProto* value);
 
 }  // namespace proto
 }  // namespace data
