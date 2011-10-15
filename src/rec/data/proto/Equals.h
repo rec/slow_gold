@@ -5,14 +5,14 @@
 #include "rec/data/proto/Comparer.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 
 bool equals(const Message& x, const Message& y, const Comparer& c = Comparer());
 
-}  // namespace proto
+}  // namespace data
 
 inline bool operator==(const Message& x, const Message& y) {
-  return proto::equals(x, y);
+  return data::equals(x, y);
 }
 
 inline bool operator!=(const Message& x, const Message& y) { return !(x == y); }

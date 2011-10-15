@@ -7,7 +7,7 @@
 namespace google { namespace protobuf { class FieldDescriptor; }}
 
 namespace rec {
-namespace proto {
+namespace data {
 namespace typer {
 
 class Typer {
@@ -40,7 +40,7 @@ class Typer {
 };
 
 }  // namespace typer
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_DATA_PROTO_TYPER__

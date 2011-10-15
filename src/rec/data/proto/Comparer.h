@@ -2,7 +2,7 @@
 #define __REC_DATA_PROTO_COMPARER__
 
 namespace rec {
-namespace proto {
+namespace data {
 
 class Comparer {
  public:
@@ -16,7 +16,7 @@ class Comparer {
   bool operator()(T x, T y) const { return x == y; }
 };
 
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_DATA_PROTO_COMPARER__

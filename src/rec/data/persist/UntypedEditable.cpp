@@ -2,6 +2,7 @@
 
 #include "rec/data/persist/Copy.h"
 #include "rec/data/proto/Field.h"
+#include "rec/data/proto/FieldOps.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/data/Value.h"
 #include "rec/util/STL.h"
@@ -32,9 +33,7 @@ const Value UntypedEditable::getValue(const Address& address) const {
   Value value;
   ScopedLock l(lock_);
   ptr<Field> f(Field::makeField(address, *message_));
-  if (f)
-    f->copyTo(&value);
-  else
+  if (!(f && proto::copyTo(*f, &value)))
     LOG(ERROR) << "Couldn't read value for " << address.DebugString();
   return value;
 }
@@ -90,8 +89,11 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
       LOG(ERROR) << "Couldn't perform operation " << op.ShortDebugString();
       return NULL;
     }
-    ptr<Operation> undo(f->applyToMessage(op));
-    result->add_operation()->CopyFrom(*undo);
+    Operation undo;
+    if (f->undo(op, &undo) && f->apply(op))
+      result->add_operation()->CopyFrom(undo);
+    else
+      LOG(ERROR) << "Couldn't perform operation " << op.DebugString();
   }
   return result.transfer();
 }

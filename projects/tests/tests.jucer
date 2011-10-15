@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="D3SYNF1YZ" name="tests">
+  <MAINGROUP id="W0gpQWtXa" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -424,6 +424,10 @@
                 name="Field.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/Field.h" id="OdL6hyBoE"
                 name="Field.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/data/proto/FieldOps.cpp" id="4kMnJQcyx"
+                name="FieldOps.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/data/proto/FieldOps.h" id="6UsdS7kHC"
+                name="FieldOps.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/data/proto/GetProtoName.cpp"
                 id="4ZC2XwyCH" name="GetProtoName.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/data/proto/GetProtoName.h" id="dB9MRZaA8"
@@ -1319,7 +1323,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="67sYmTrhu" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="6Ig5gS6C4" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

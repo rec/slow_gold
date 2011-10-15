@@ -7,7 +7,7 @@
 #include "rec/data/proto/TypedTyper.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 namespace typer {
 
 using namespace rec::data;
@@ -110,5 +110,5 @@ bool equals(const Message& x, const Message& y, const Comparer& cmp) {
 
 
 }  // namespace typer
-}  // namespace proto
+}  // namespace data
 }  // namespace rec

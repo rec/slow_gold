@@ -7,7 +7,7 @@
 #include "rec/data/proto/Comparer.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 namespace typer {
 
 using data::Address;
@@ -67,7 +67,7 @@ bool TypedTyper<Type>::Equals(const Message& m, uint32 i,
 
 
 }  // namespace typer
-}  // namespace proto
+}  // namespace data
 }  // namespace rec
 
 #endif  // __REC_PROTO_TYPEDTYPER__

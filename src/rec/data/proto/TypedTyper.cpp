@@ -5,10 +5,8 @@
 #include "rec/data/proto/Equals.h"
 
 namespace rec {
-namespace proto {
+namespace data {
 namespace typer {
-
-using namespace rec::data;
 
 // TYPE is the actual type we are returning: a primitive type or one of the two
 // wrapper types pmessage and penum.  We only need one other name, the name that
@@ -175,5 +173,5 @@ void TypedTyper<penum>::Add(penum t) {
 }
 
 }  // namespace typer
-}  // namespace proto
+}  // namespace data
 }  // namespace rec

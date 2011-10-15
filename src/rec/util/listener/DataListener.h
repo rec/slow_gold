@@ -62,7 +62,7 @@ template <typename Proto>
 void DataListener<Proto>::operator()(const Proto& p) {
   {
     ScopedLock l(lock_);
-    if (filterDupes_ && proto::equals(proto_, p))
+    if (filterDupes_ && data::equals(proto_, p))
       return;
     proto_ = p;
   }

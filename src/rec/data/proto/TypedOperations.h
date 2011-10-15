@@ -11,7 +11,7 @@ namespace rec {
 namespace data { class Address; }
 namespace data { class Value; }
 
-namespace proto {
+namespace data {
 namespace typer {
 
 typedef google::protobuf::FieldDescriptor FieldDescriptor;
@@ -33,8 +33,8 @@ bool equals(const Message& m1, const Message& m2, const FieldDescriptor* f, int 
 
 bool equals(const Message& x, const Message& y, const Comparer& cmp);
 
+}  // namespace data
 }  // namespace typer
-}  // namespace proto
 }  // namespace rec
 
 #endif  // __REC_PROTO_TYPED_OPERATIONS__
