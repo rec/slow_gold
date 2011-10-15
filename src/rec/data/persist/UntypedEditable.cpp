@@ -100,23 +100,24 @@ Operations* UntypedEditable::applyOperations(const Operations& olist) {
 }
 
 void UntypedEditable::update() {
-  OperationList old;
+  OperationList command;
   {
     ScopedLock l(lock_);
     if (queue_.empty())
       return;
 
-    old.swap(queue_);
+    command.swap(queue_);
   }
 
   OperationList undo;
-  for (OperationList::iterator i = old.begin(); i != old.end(); ++i) {
+  for (OperationList::iterator i = command.begin(); i != command.end(); ++i) {
     ScopedLock l(lock_);
     undo.push_back(applyOperations(**i));
   }
 
-  stl::deletePointers(&old);
-  addToUndoQueue(this, undo);
+  addToUndoQueue(this, command, undo);
+  stl::deletePointers(&command);
+  stl::deletePointers(&undo);
   onDataChange();
 }
 

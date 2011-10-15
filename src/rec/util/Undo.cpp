@@ -20,9 +20,11 @@ int undoable() {
 }
 
 void undo() {
+  uqueue()->undo();
 }
 
 void redo() {
+  uqueue()->redo();
 }
 
 }  // namespace util

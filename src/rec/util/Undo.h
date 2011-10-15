@@ -18,8 +18,6 @@ inline bool canUndo() { return undoable(); }
 void undo();
 void redo();
 
-// Implementations are in data/EditableUpdater.cpp
-
 }  // namespace util
 }  // namespace rec
 

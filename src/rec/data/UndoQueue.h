@@ -18,7 +18,7 @@ class UndoQueue {
 
   ~UndoQueue();
 
-  void add(Editable*, const OperationList&);
+  void add(Editable*, const OperationList& command, const OperationList& undo);
   bool write();
 
   int undoable() const { Lock l(lock_); return actions_.size() - undoes_; }

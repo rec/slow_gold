@@ -17,20 +17,26 @@ UndoQueue::~UndoQueue() {
   stl::deletePointers(&actions_);
 }
 
-static Action* makeAction(Editable* e, const OperationList& q) {
+static Action* makeAction(Editable* e, const OperationList& command,
+                          const OperationList& undo) {
   ptr<Action> action(new Action);
   action->mutable_file()->CopyFrom(e->virtualFile());
   action->set_type_name(e->getTypeName());
   typedef google::protobuf::RepeatedPtrField<Operation> RepeatedOperation;
   RepeatedOperation* op = action->mutable_undo()->mutable_operation();
-  for (int i = q.size() - 1; i >=0; --i)
-    op->MergeFrom(q[i]->operation());
+  for (int i = undo.size() - 1; i >= 0; --i)
+    op->MergeFrom(undo[i]->operation());
+
+  op = action->mutable_operations()->mutable_operation();
+  for (int i = command.size() - 1; i >= 0; --i)
+    op->MergeFrom(command[i]->operation());
 
   return action.transfer();
 }
 
-void UndoQueue::add(Editable* editable, const OperationList& q) {
-  ptr<Action> action(makeAction(editable, q));
+void UndoQueue::add(Editable* editable, const OperationList& command,
+                    const OperationList& undo) {
+  ptr<Action> action(makeAction(editable, command, undo));
   Lock l(lock_);
   if (undoes_) {
     if (undoes_ > 1) {
@@ -51,11 +57,7 @@ void UndoQueue::executeTop(bool isUndo) {
   Editable* editable = editables_[top];
   Action* action = actions_[top];
   const Operations& ops = isUndo ? action->undo() : action->operations();
-  ptr<Operations> res(editable->applyOperations(ops));
-#if 0
-  if (isUndo && !action->operations().operation_size() && res->operation_size())
-    action->mutable_operations()->CopyFrom(*res);
-#endif
+  ptr<Operations>(editable->applyOperations(ops));
 }
 
 void UndoQueue::undo() {
