@@ -69,10 +69,12 @@ const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {
   } else if (menuName == "Edit") {
     add(&m, Command::UNDO, canUndo());
     add(&m, Command::REDO, canRedo());
+
+    m.addSeparator();
+
     add(&m, Command::CUT, canCut());
     add(&m, Command::COPY, canCopy());
     add(&m, Command::PASTE, canPaste());
-    m.addSeparator();
 
   } else if (menuName == "Audio") {
     add(&m, Command::MUTE_VOLUME_TOGGLE);

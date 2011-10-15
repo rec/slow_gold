@@ -519,7 +519,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {762, 1261}}";
 			sepNavSelRange = "{2550, 0}";
-			sepNavVisRange = "{966, 1927}";
+			sepNavVisRange = "{966, 2002}";
 			sepNavWindowFrame = "{{556, 144}, {1064, 1020}}";
 		};
 	};
@@ -687,9 +687,9 @@
 	};
 	65474677D970D61EBE83EC80 /* FrameSource.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {620, 907}}";
-			sepNavSelRange = "{481, 0}";
-			sepNavVisRange = "{0, 1545}";
+			sepNavIntBoundsRect = "{{0, 0}, {645, 845}}";
+			sepNavSelRange = "{574, 0}";
+			sepNavVisRange = "{0, 1546}";
 		};
 	};
 	659A2DBA247FCE7F3898B878 /* directives.cpp */ = {
@@ -724,8 +724,8 @@
 	};
 	66EBF774BAB81D01CD7BFC69 /* Frame.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {762, 671}}";
-			sepNavSelRange = "{1545, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {645, 771}}";
+			sepNavSelRange = "{1355, 0}";
 			sepNavVisRange = "{0, 1545}";
 			sepNavWindowFrame = "{{105, 195}, {1119, 946}}";
 		};
@@ -1010,7 +1010,6 @@
 			9ED9F777074117C95C13794F /* Slow */,
 		);
 		breakpoints = (
-			E2FF99161449F50D00A50F6C /* TableController.cpp:62 */,
 		);
 		codeSenseManager = E2758BC212E2968E00E37D3F /* Code sense */;
 		executables = (
@@ -2069,6 +2068,10 @@
 			E2FF99291449F63200A50F6C /* PBXTextBookmark */ = E2FF99291449F63200A50F6C /* PBXTextBookmark */;
 			E2FF992A1449F63200A50F6C /* XCBuildMessageTextBookmark */ = E2FF992A1449F63200A50F6C /* XCBuildMessageTextBookmark */;
 			E2FF992B1449F63200A50F6C /* PBXTextBookmark */ = E2FF992B1449F63200A50F6C /* PBXTextBookmark */;
+			E2FF993D144A051000A50F6C /* XCBuildMessageTextBookmark */ = E2FF993D144A051000A50F6C /* XCBuildMessageTextBookmark */;
+			E2FF993E144A051000A50F6C /* PBXTextBookmark */ = E2FF993E144A051000A50F6C /* PBXTextBookmark */;
+			E2FF9941144A051100A50F6C /* PBXTextBookmark */ = E2FF9941144A051100A50F6C /* PBXTextBookmark */;
+			E2FF9942144A051300A50F6C /* PBXTextBookmark */ = E2FF9942144A051300A50F6C /* PBXTextBookmark */;
 		};
 		sourceControlManager = E2758BC112E2968E00E37D3F /* Source Control */;
 		userBuildSettings = {
@@ -3608,6 +3611,11 @@
 		name = juce_amalgamated.h;
 		path = /development/juce.tip/juce_amalgamated.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {645, 911430}}";
+			sepNavSelRange = "{188379, 0}";
+			sepNavVisRange = "{187391, 1563}";
+		};
 	};
 	E28A3A5113B2CFBF00E69D5C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -4003,7 +4011,7 @@
 		rLen = 76;
 		rLoc = 138;
 		rType = 0;
-		vrLen = 1728;
+		vrLen = 1545;
 		vrLoc = 0;
 	};
 	E2FF8EC2144496EE00A50F6C /* PBXTextBookmark */ = {
@@ -4013,7 +4021,7 @@
 		rLen = 0;
 		rLoc = 111;
 		rType = 0;
-		vrLen = 1728;
+		vrLen = 1545;
 		vrLoc = 0;
 	};
 	E2FF8EC71444A20D00A50F6C /* PBXTextBookmark */ = {
@@ -12654,24 +12662,6 @@
 		vrLen = 1163;
 		vrLoc = 0;
 	};
-	E2FF99161449F50D00A50F6C /* TableController.cpp:62 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
-		functionName = "TableController::displayText(const TableColumn& col, const Value& value)";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 62;
-		location = SlowBurn;
-		modificationTime = 340391472.431302;
-		originalNumberOfMultipleMatches = 1;
-		state = 2;
-	};
 	E2FF991A1449F51500A50F6C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = D4E85B41169E59009888094F /* UntypedEditable.cpp */;
@@ -12766,6 +12756,45 @@
 		rLoc = 2550;
 		rType = 0;
 		vrLen = 1927;
+		vrLoc = 966;
+	};
+	E2FF993D144A051000A50F6C /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No 'const rec::data::Value rec::gui::TableController::getDisplaVyalue() const' member function declared in class 'rec::gui::TableController'";
+		fRef = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 71;
+		rType = 1;
+	};
+	E2FF993E144A051000A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
+		name = "TableController.cpp: 72";
+		rLen = 0;
+		rLoc = 2552;
+		rType = 0;
+		vrLen = 2059;
+		vrLoc = 912;
+	};
+	E2FF9941144A051100A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
+		name = "TableController.cpp: 72";
+		rLen = 0;
+		rLoc = 2552;
+		rType = 0;
+		vrLen = 2059;
+		vrLoc = 912;
+	};
+	E2FF9942144A051300A50F6C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5138BD32CC0E495AFDB1A128 /* TableController.cpp */;
+		name = "TableController.cpp: 72";
+		rLen = 0;
+		rLoc = 2550;
+		rType = 0;
+		vrLen = 2002;
 		vrLoc = 966;
 	};
 	E3682300FFF148F25D8468EC /* DropTarget.h */ = {

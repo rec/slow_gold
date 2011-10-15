@@ -14,6 +14,7 @@
 #include "rec/slow/SlowWindow.h"
 #include "rec/slow/TargetCommands.h"
 #include "rec/util/Math.h"
+#include "rec/util/Undo.h"
 #include "rec/util/cd/Eject.h"
 #include "rec/util/thread/FunctionCallback.h"
 
@@ -127,6 +128,7 @@ void Target::addCommands() {
       "Select None", "Selection",
       "Select none of the file");
 
+
   //
   // REC commands!
   //
@@ -226,6 +228,10 @@ void Target::addCommands() {
       "NAME", "(None)",
       "Documentation");
 
+  add(Command::REDO,
+      functionCallback(&redo),
+      "Redo", "Edit",
+      "Redo a previously undone command.");
 
   add(Command::TOGGLE_WHOLE_SONG_LOOP,
       "Toggle Whole Segment Selection", "Selection",
@@ -270,6 +276,11 @@ void Target::addCommands() {
       functionCallback(&treeUp, instance_),
       "NAME", "(None)",
       "Documentation");
+
+  add(Command::UNDO,
+      functionCallback(&undo),
+      "Undo", "Edit",
+      "Undoes a previous command.");
 
   add(Command::ZOOM_IN,
       functionCallback(&zoomIn, instance_),
