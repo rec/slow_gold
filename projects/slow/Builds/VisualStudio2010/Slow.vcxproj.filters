@@ -184,6 +184,9 @@
     <Filter Include="Juce Library Code">
       <UniqueIdentifier>{01f37646-4512-461b-9f33-aaef15e1a514}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Slow\rec\audio\soundtouch">
+      <UniqueIdentifier>{d96df88a-f078-4012-9d53-901f1d828226}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h">
@@ -251,12 +254,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h">
       <Filter>Slow\rec\audio\format\raw</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\CircularBuffer.h">
-      <Filter>Slow\rec\audio\source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.h">
-      <Filter>Slow\rec\audio\source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h">
       <Filter>Slow\rec\audio\source</Filter>
@@ -369,9 +366,6 @@
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h">
       <Filter>Slow\rec\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\base\SamplePosition.h">
-      <Filter>Slow\rec\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h">
       <Filter>Slow\rec\base</Filter>
     </ClInclude>
@@ -438,34 +432,10 @@
     <ClInclude Include="..\..\..\..\src\rec\data\Binary.h">
       <Filter>Slow\rec\data</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\commands\CommandManager.h">
-      <Filter>Slow\rec\data\commands</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\commands\EventQueue.h">
-      <Filter>Slow\rec\data\commands</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\Data.h">
-      <Filter>Slow\rec\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\App.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\AppDirectory.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\AppInstance.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h">
       <Filter>Slow\rec\data\persist</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Data.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\persist\Persist.h">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedData.h">
       <Filter>Slow\rec\data\persist</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h">
@@ -483,13 +453,7 @@
     <ClInclude Include="..\..\..\..\src\rec\data\proto\InsertSorted.h">
       <Filter>Slow\rec\data\proto</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\LogFile.h">
-      <Filter>Slow\rec\data\proto</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\MessageField.h">
-      <Filter>Slow\rec\data\proto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\Proto.h">
       <Filter>Slow\rec\data\proto</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedOperations.h">
@@ -861,9 +825,6 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h">
       <Filter>Slow\rec\slow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\slow\Window.h">
-      <Filter>Slow\rec\slow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h">
       <Filter>Slow\rec\util\block</Filter>
     </ClInclude>
@@ -1164,6 +1125,99 @@
     <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h">
+      <Filter>Slow\rec\slow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Undo.h">
+      <Filter>Slow\rec\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h">
+      <Filter>Slow\rec\music</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\FieldOps.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\NameToProto.h">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedEditable.h">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\Editable.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h">
+      <Filter>Slow\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\base\Samples.h">
+      <Filter>Slow\rec\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSamplePipe.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\soundtouch_config.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\STTypes.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.h">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.h">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.h">
+      <Filter>Slow\proto\rec\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\Files.h">
+      <Filter>Slow\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\app\Window.h">
+      <Filter>Slow\rec\app</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp">
@@ -1210,12 +1264,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp">
       <Filter>Slow\rec\audio\format\raw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\CircularBuffer.cpp">
-      <Filter>Slow\rec\audio\source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.cpp">
-      <Filter>Slow\rec\audio\source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp">
       <Filter>Slow\rec\audio\source</Filter>
@@ -1292,29 +1340,8 @@
     <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp">
       <Filter>Slow\rec\data</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\commands\EventQueue.cpp">
-      <Filter>Slow\rec\data\commands</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp">
-      <Filter>Slow\rec\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\AppDirectory.cpp">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\AppInstance.cpp">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp">
       <Filter>Slow\rec\data\persist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\Data.cpp">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedData.cpp">
-      <Filter>Slow\rec\data\persist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\Address.cpp">
-      <Filter>Slow\rec\data\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp">
       <Filter>Slow\rec\data\proto</Filter>
@@ -1325,13 +1352,7 @@
     <ClCompile Include="..\..\..\..\src\rec\data\proto\GetProtoName.cpp">
       <Filter>Slow\rec\data\proto</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\LogFile.cpp">
-      <Filter>Slow\rec\data\proto</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp">
-      <Filter>Slow\rec\data\proto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\Proto.cpp">
       <Filter>Slow\rec\data\proto</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp">
@@ -1586,9 +1607,6 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp">
       <Filter>Slow\rec\slow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\slow\Window.cpp">
-      <Filter>Slow\rec\slow</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp">
       <Filter>Slow\rec\util\block</Filter>
     </ClCompile>
@@ -1811,12 +1829,115 @@
     <ClCompile Include="..\..\..\..\src\rec\binary\logo.png">
       <Filter>Slow\rec\binary</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp">
+      <Filter>Slow\rec\slow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp">
+      <Filter>Slow\rec\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp">
+      <Filter>Slow\rec\music</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp">
+      <Filter>Slow\rec\data\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp">
+      <Filter>Slow\rec\data\persist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\data\UndoQueue.cpp">
+      <Filter>Slow\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_gcc.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_win.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\sse_optimized.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.cpp">
+      <Filter>Slow\rec\audio\soundtouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.cpp">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.cpp">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler_test.cpp">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes_test.cpp">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile_test.cpp">
+      <Filter>Slow\rec\util\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc">
+      <Filter>Slow\proto\rec\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp">
+      <Filter>Slow\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp">
+      <Filter>Slow\rec\app</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.ico">
       <Filter>Juce Library Code</Filter>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="changes.txt" />
+    <None Include="..\..\..\..\src\rec\data\Action.proto">
+      <Filter>Slow\rec\data</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\data\Operation.proto">
+      <Filter>Slow\rec\data</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\audio\stretch\README">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\audio\stretch\Stretch.proto">
+      <Filter>Slow\rec\audio\stretch</Filter>
+    </None>
+    <None Include="..\..\..\..\src\rec\util\file\VirtualFile.proto">
+      <Filter>Slow\rec\util\file</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources.rc">
