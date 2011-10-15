@@ -41,6 +41,7 @@ void GenericApplication::shutdown() {
   gui::dialog::shutdownDialog();
   window_->shutdown();
   util::thread::trash::waitForAllThreadsToExit(1000);
+  window_.reset();
   data::stop();
 
   LOG(INFO) << name_ << ": shutdown finished.";

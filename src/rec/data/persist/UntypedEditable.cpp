@@ -131,7 +131,7 @@ void UntypedEditable::writeToFile() const {
     msg->CopyFrom(*message_);
   }
 
-	LOG(INFO) << "Writing " << str(file_);
+	VLOG(1) << "Writing " << str(file_);
   data::copy(*msg, file_);
 }
 

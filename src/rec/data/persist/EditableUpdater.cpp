@@ -42,6 +42,7 @@ EditableUpdater::EditableUpdater()
 EditableUpdater::~EditableUpdater() {
   writeThread_->stopThread(1000);
   updateThread_->stopThread(1000);
+  stl::deleteMapPointers(&map_);
 }
 
 // A piece of data got new information!
@@ -79,15 +80,14 @@ bool EditableUpdater::write() {
   EditableSet ds;
   bool hasData = lockedCopy(&writeData_, &ds, &lock_);
   if (hasData) {
-    for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i) {
+    for (EditableSet::iterator i = ds.begin(); i != ds.end(); ++i)
       (*i)->writeToFile();
-      delete *i;
-    }
   }
   return !hasData;
 }
 
 void EditableUpdater::start() {
+  DLOG(INFO) << "Starting data queues";
   CHECK(!instance_);
   instance_ = new EditableUpdater();
 }
@@ -95,6 +95,7 @@ void EditableUpdater::start() {
 void EditableUpdater::stop() {
   delete instance_;
   instance_ = NULL;
+  DLOG(INFO) << "data queues stopped";
 }
 
 EditableUpdater* EditableUpdater::instance_ = NULL;

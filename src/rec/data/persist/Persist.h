@@ -20,7 +20,6 @@ TypedEditable<Proto>* editable(const VirtualFile& vf = file::none()) {
   if (i != editableMap()->end()) {
     e = i->second;
   } else {
-    DLOG(INFO) << "Creating new file " << key;
     e = new TypedEditable<Proto>(file, vf);
     e->readFromFile();
     (*editableMap())[key] = e;
