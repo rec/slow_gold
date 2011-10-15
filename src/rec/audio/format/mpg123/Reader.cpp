@@ -27,6 +27,7 @@ Reader::Reader(InputStream* in, const String& formatName, mpg123_handle* mh,
 }
 
 Reader::~Reader() {
+  DLOG(INFO) << "Deleting mpg123 AudioFormatReader ";
   mpg123_close(mh_);
   mpg123_delete(mh_);
 

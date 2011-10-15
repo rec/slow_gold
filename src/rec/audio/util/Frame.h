@@ -10,7 +10,9 @@ namespace audio {
 template <typename Frame>
 class Frames {
  public:
-  Frames() : length_(0), frames_(NULL) {}
+  Frames(Samples<44100> length = 0) : frames_(NULL), length_(-1) {
+    setLength(length);
+  }
   ~Frames() { free(frames_); }
 
   bool setLength(Samples<44100> length, bool mustReallocate = false);

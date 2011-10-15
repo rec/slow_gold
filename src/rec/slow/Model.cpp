@@ -110,11 +110,6 @@ thread::Result Model::fillOnce() {
       BlockSet fill = difference(timeSelection_, buffer->filled());
       if (!fill.empty()) {
         BlockList fillList = fillSeries(fill, time_, player()->length());
-#if 0
-        DLOG(INFO) << "fill: " << fill  << " time: " << time_
-                   << " length: " << player()->length()
-                   << ", fillList: " << fillList;
-#endif
         if (!fillList.empty())
           buffer->setNextFillPosition(fillList.begin()->first);
         else
@@ -132,19 +127,11 @@ thread::Result Model::fillOnce() {
     int filled = static_cast<int>(buffer->fillNextBlock());
     DCHECK(filled);
 
-    if (thumbnailBuffer_.cacheWritten()) {
-      LOG_FIRST_N(ERROR, 8) << "Cache already written";
-    }
-
     updateInfo_.numSamples = filled;
     updateBuffer_.setSize(2, filled, false, false, true);
     updateSource_.setNextReadPosition(pos);
     updateSource_.getNextAudioBlock(updateInfo_);
     thumbnailBuffer_.addBlock(pos, updateInfo_);
-#if 0
-    DLOG(INFO) << (empty ? "true" : "false") << ", " << filled << ", " << pos
-               << " length: " << player()->length();
-#endif
   }
 
   thread::callAsync(&components()->waveform_, &Waveform::repaint);
@@ -182,10 +169,9 @@ void Model::operator()(const LoopPointList& loops) {
   if (empty())
     return;
 
-  // DLOG(INFO) << loops.ShortDebugString();
   timeSelection_ = audio::getTimeSelection(loops);
   if (timeSelection_.empty()) {
-    DLOG(ERROR) << "Empty selection";
+    DLOG(ERROR) << "Empty selection for loops: "  << loops.ShortDebugString();
   } else {
     BlockSet::const_iterator i = timeSelection_.begin();
     for (; i != timeSelection_.end(); ++i) {

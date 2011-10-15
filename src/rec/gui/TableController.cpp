@@ -54,7 +54,7 @@ void TableController::paintCell(Graphics& g,
   Address row = (address_ + rowNumber) + column.address();
   String t = "-";
   if (data::UntypedEditable* data = getUntypedEditable())
-    displayText(column, data->getValue(row));
+    t = displayText(column, data->getValue(row));
   g.drawText(t, 2, 2, width - 4, height - 4, Justification::centred, true);
 }
 
