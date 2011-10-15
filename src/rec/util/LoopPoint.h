@@ -6,15 +6,9 @@
 #include "rec/util/block/Block.h"
 
 namespace rec {
-namespace util {
-
-typedef block::BlockSet SampleSelection;
-
-}
-
 namespace audio {
 
-const SampleSelection getTimeSelection(const LoopPointList&,
+const block::BlockSet getTimeSelection(const LoopPointList&,
                                        double scale = 1.0,
                                        bool emptyMeansAll = true);
 

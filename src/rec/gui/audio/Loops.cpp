@@ -151,6 +151,7 @@ void Loops::cut() {
 
 Range<RealTime> Loops::selectionRange() const {
   int b = 0, size = loopPoints_->loop_point_size() - 1, e;
+  DCHECK_GT(size, 0);
   for (; b < size && !loopPoints_->loop_point(b).selected(); ++b);
   for (e = b; e < size && loopPoints_->loop_point(e).selected(); ++e);
   return Range<RealTime>(loopPoints_->loop_point(b).time(),

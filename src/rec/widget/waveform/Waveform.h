@@ -73,7 +73,7 @@ class Waveform : public gui::component::Focusable<Component>,
   WaveformProto desc_;
   juce::AudioThumbnail* thumbnail_;
   Cursor* timeCursor_;
-  SampleSelection selection_;
+  block::BlockSet selection_;
 
   ZoomProto zoom_;
   bool empty_;

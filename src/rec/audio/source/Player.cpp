@@ -82,6 +82,8 @@ void Player::onDataChange(const LoopPointList& lpl) {
   // TODO: set the selection anyway.
   if (lpl.loop_point_size() >= 2)
     setSelection(audio::getTimeSelection(lpl));
+  else
+    DLOG(INFO) << "empty LoopPointList " << lpl.loop_point_size();
 }
 
 void Player::clear() {

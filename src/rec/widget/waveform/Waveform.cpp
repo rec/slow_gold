@@ -69,7 +69,7 @@ void Waveform::paint(Graphics& g) {
       g.drawFittedText("Drop a file here or double-click to open a new file",
                        0, 0, getWidth(), getHeight(), juce::Justification::centred, 0);
     } else {
-      SampleSelection::iterator i = selection_.begin();
+      block::BlockSet::iterator i = selection_.begin();
       Range<RealTime> range = getTimeRange();
       block::Block r;
       r.first = Samples<44100>(range.begin_);
@@ -124,7 +124,7 @@ double Waveform::pixelsPerSecond() const {
 }
 
 void Waveform::onDataChange(const LoopPointList& loopPoints) {
-  SampleSelection selection = audio::getTimeSelection(loopPoints);
+  block::BlockSet selection = audio::getTimeSelection(loopPoints);
   {
     ScopedLock l(lock_);
     selection_ = selection;

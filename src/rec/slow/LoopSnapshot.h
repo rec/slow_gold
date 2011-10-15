@@ -20,7 +20,7 @@ struct LoopSnapshot {
   Samples<44100> time_;
   Samples<44100> length_;
 
-  SampleSelection selection_;
+  block::BlockSet selection_;
 
   int selectionCount_;
 
