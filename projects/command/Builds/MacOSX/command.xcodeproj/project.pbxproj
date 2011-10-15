@@ -20,6 +20,7 @@
 		36A10ABED69D1DC176FC1F71 = { isa = PBXBuildFile; fileRef = B58BEDFDDB88411D0C58E555; };
 		0391DDE08232337B0A9C875C = { isa = PBXBuildFile; fileRef = C1CB713D5EEB24E1D00C4FDC; };
 		E3C10B8E291124069B75855F = { isa = PBXBuildFile; fileRef = 0A0E2C2B612B2534C2BEE423; };
+		EEBBD9314DDF866F29AFB1CD = { isa = PBXBuildFile; fileRef = BC73A1E61196156891167845; };
 		2285A8011E837A4D617A3D03 = { isa = PBXBuildFile; fileRef = 71BE5FEEFB8F044CE3B1770D; };
 		C0A48939E84474B6FF1E4BCE = { isa = PBXBuildFile; fileRef = FB55F8A7B6EC36124C25D655; };
 		914CFB0DDB0D4A64AB01E05F = { isa = PBXBuildFile; fileRef = C14B2A1825EBEFA249AC712B; };
@@ -164,10 +165,10 @@
 		70FAA02F75C4740227D3D083 = { isa = PBXBuildFile; fileRef = 17D5E740289D4E8B3BA4B93F; };
 		39BA8698CEE21F2CD6AAD2D3 = { isa = PBXBuildFile; fileRef = D6081B32F779D971DC96EB48; };
 		E2186D616D7CC77FB7E66F86 = { isa = PBXBuildFile; fileRef = 6F9CC0E4BB615C248F06B6A0; };
+		CF8A50B6E02503B8941A6E58 = { isa = PBXBuildFile; fileRef = 72656D5B09209BA0732F92AD; };
 		8F646B69B227AEF1414021F5 = { isa = PBXBuildFile; fileRef = 7BCF567F5AF4325C8088E562; };
 		753CB65E475A91D79678B52D = { isa = PBXBuildFile; fileRef = 9EC78DBAB7580AB78D4F8490; };
 		DA01B6D70ACE7402AF866ACC = { isa = PBXBuildFile; fileRef = 40507EDFA52F1F494E68104F; };
-		399FB70201B787EA385D446B = { isa = PBXBuildFile; fileRef = 9E6DF81687C54EC94FF1D82B; };
 		1C4832A30345C44DA2616B8D = { isa = PBXBuildFile; fileRef = CDF609B583C610783E84556E; };
 		98F67ADDE8C4DD3C93F2CD77 = { isa = PBXBuildFile; fileRef = 290886DCF7D28633B643AB97; };
 		4AFFC0CDF78A902566558696 = { isa = PBXBuildFile; fileRef = 9AEC3110ABEFC5FAEDAE4765; };
@@ -260,6 +261,8 @@
 		6FFCEF6ABB100D8328D3A013 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Files.h; path = ../../../../src/rec/app/Files.h; sourceTree = SOURCE_ROOT; };
 		0A0E2C2B612B2534C2BEE423 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GenericApplication.cpp; path = ../../../../src/rec/app/GenericApplication.cpp; sourceTree = SOURCE_ROOT; };
 		5D744A176F5C5B81D324E92D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GenericApplication.h; path = ../../../../src/rec/app/GenericApplication.h; sourceTree = SOURCE_ROOT; };
+		BC73A1E61196156891167845 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = ../../../../src/rec/app/Window.cpp; sourceTree = SOURCE_ROOT; };
+		F520104C40BE73CDAB2E9015 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Window.h; path = ../../../../src/rec/app/Window.h; sourceTree = SOURCE_ROOT; };
 		71BE5FEEFB8F044CE3B1770D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioResampler.cpp; path = ../../../../src/rec/audio/ammf_scaler/AudioResampler.cpp; sourceTree = SOURCE_ROOT; };
 		582E99445497DE01E4282B4B = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioResampler.h; path = ../../../../src/rec/audio/ammf_scaler/AudioResampler.h; sourceTree = SOURCE_ROOT; };
 		FB55F8A7B6EC36124C25D655 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioTimeScaler.cpp; path = ../../../../src/rec/audio/ammf_scaler/AudioTimeScaler.cpp; sourceTree = SOURCE_ROOT; };
@@ -634,14 +637,14 @@
 		6F9CC0E4BB615C248F06B6A0 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Position.cpp; path = ../../../../src/rec/slow/Position.cpp; sourceTree = SOURCE_ROOT; };
 		0D056429BFE8BFF4132F1C0D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Position.h; path = ../../../../src/rec/slow/Position.h; sourceTree = SOURCE_ROOT; };
 		16B9A87BAEB573AAFC588C19 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Slow.h; path = ../../../../src/rec/slow/Slow.h; sourceTree = SOURCE_ROOT; };
+		72656D5B09209BA0732F92AD = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SlowWindow.cpp; path = ../../../../src/rec/slow/SlowWindow.cpp; sourceTree = SOURCE_ROOT; };
+		C9BDA80C5CF721F10863962F = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SlowWindow.h; path = ../../../../src/rec/slow/SlowWindow.h; sourceTree = SOURCE_ROOT; };
 		7BCF567F5AF4325C8088E562 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Target.cpp; path = ../../../../src/rec/slow/Target.cpp; sourceTree = SOURCE_ROOT; };
 		D428B36B4FFDFAB710B1B296 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Target.h; path = ../../../../src/rec/slow/Target.h; sourceTree = SOURCE_ROOT; };
 		9EC78DBAB7580AB78D4F8490 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TargetCommands.cpp; path = ../../../../src/rec/slow/TargetCommands.cpp; sourceTree = SOURCE_ROOT; };
 		8F0041C9982AF738970A3440 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TargetCommands.h; path = ../../../../src/rec/slow/TargetCommands.h; sourceTree = SOURCE_ROOT; };
 		40507EDFA52F1F494E68104F = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Threads.cpp; path = ../../../../src/rec/slow/Threads.cpp; sourceTree = SOURCE_ROOT; };
 		080ABFB146B5C8A04B623E4D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Threads.h; path = ../../../../src/rec/slow/Threads.h; sourceTree = SOURCE_ROOT; };
-		9E6DF81687C54EC94FF1D82B = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = ../../../../src/rec/slow/Window.cpp; sourceTree = SOURCE_ROOT; };
-		7C95D9444E105BB1AA124F94 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Window.h; path = ../../../../src/rec/slow/Window.h; sourceTree = SOURCE_ROOT; };
 		7CB9DFFCFBBA2C80E95079E8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../../../src/rec/util/block/Block.h; sourceTree = SOURCE_ROOT; };
 		CDF609B583C610783E84556E = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Difference.cpp; path = ../../../../src/rec/util/block/Difference.cpp; sourceTree = SOURCE_ROOT; };
 		F5661646C08B6873D08BF8FD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Difference.h; path = ../../../../src/rec/util/block/Difference.h; sourceTree = SOURCE_ROOT; };
@@ -825,7 +828,9 @@
 				C1CB713D5EEB24E1D00C4FDC,
 				6FFCEF6ABB100D8328D3A013,
 				0A0E2C2B612B2534C2BEE423,
-				5D744A176F5C5B81D324E92D ); name = app; sourceTree = "<group>"; };
+				5D744A176F5C5B81D324E92D,
+				BC73A1E61196156891167845,
+				F520104C40BE73CDAB2E9015 ); name = app; sourceTree = "<group>"; };
 		52F38132DF1FA4DEAF714BB1 = { isa = PBXGroup; children = (
 				71BE5FEEFB8F044CE3B1770D,
 				582E99445497DE01E4282B4B,
@@ -1244,14 +1249,14 @@
 				6F9CC0E4BB615C248F06B6A0,
 				0D056429BFE8BFF4132F1C0D,
 				16B9A87BAEB573AAFC588C19,
+				72656D5B09209BA0732F92AD,
+				C9BDA80C5CF721F10863962F,
 				7BCF567F5AF4325C8088E562,
 				D428B36B4FFDFAB710B1B296,
 				9EC78DBAB7580AB78D4F8490,
 				8F0041C9982AF738970A3440,
 				40507EDFA52F1F494E68104F,
-				080ABFB146B5C8A04B623E4D,
-				9E6DF81687C54EC94FF1D82B,
-				7C95D9444E105BB1AA124F94 ); name = slow; sourceTree = "<group>"; };
+				080ABFB146B5C8A04B623E4D ); name = slow; sourceTree = "<group>"; };
 		8808B15786F96517E16315AA = { isa = PBXGroup; children = (
 				7CB9DFFCFBBA2C80E95079E8,
 				CDF609B583C610783E84556E,
@@ -1512,7 +1517,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		39FF10783C183C4DD4761889 = { isa = PBXGroup; children = (
+		AC60B64E1FFDC24759496F61 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1599,6 +1604,7 @@
 				36A10ABED69D1DC176FC1F71,
 				0391DDE08232337B0A9C875C,
 				E3C10B8E291124069B75855F,
+				EEBBD9314DDF866F29AFB1CD,
 				2285A8011E837A4D617A3D03,
 				C0A48939E84474B6FF1E4BCE,
 				914CFB0DDB0D4A64AB01E05F,
@@ -1743,10 +1749,10 @@
 				70FAA02F75C4740227D3D083,
 				39BA8698CEE21F2CD6AAD2D3,
 				E2186D616D7CC77FB7E66F86,
+				CF8A50B6E02503B8941A6E58,
 				8F646B69B227AEF1414021F5,
 				753CB65E475A91D79678B52D,
 				DA01B6D70ACE7402AF866ACC,
-				399FB70201B787EA385D446B,
 				1C4832A30345C44DA2616B8D,
 				98F67ADDE8C4DD3C93F2CD77,
 				4AFFC0CDF78A902566558696,
@@ -1836,7 +1842,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = command; productName = command; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 39FF10783C183C4DD4761889; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = AC60B64E1FFDC24759496F61; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

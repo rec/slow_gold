@@ -13,6 +13,7 @@ class Window : public gui::PersistentWindow {
          const Colour& bg,
          int requiredButtons,
          bool addToDesktop = true);
+
   virtual void initialise();
   virtual void shutdown();
 
@@ -21,6 +22,8 @@ class Window : public gui::PersistentWindow {
  protected:
   virtual void initialiseInstance() = 0;
   virtual Component* getMainComponent() = 0;
+  virtual MenuBarModel* getMenuBarModel() = 0;
+  virtual void doComputeBounds() = 0;
 
  private:
   bool running_;

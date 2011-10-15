@@ -11,6 +11,7 @@
 #include "rec/slow/LoopCommands.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Position.h"
+#include "rec/slow/SlowWindow.h"
 #include "rec/slow/TargetCommands.h"
 #include "rec/util/Math.h"
 #include "rec/util/cd/Eject.h"

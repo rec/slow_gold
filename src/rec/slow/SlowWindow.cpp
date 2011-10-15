@@ -1,0 +1,37 @@
+#include "rec/slow/SlowWindow.h"
+#include "rec/slow/AppLayout.pb.h"
+#include "rec/slow/Components.h"
+#include "rec/slow/Instance.h"
+#include "rec/slow/Menus.h"
+#include "rec/slow/Slow.h"
+
+namespace rec {
+namespace slow {
+
+#define OLD_JUCE
+
+SlowWindow::SlowWindow() : app::Window("SlowGold", juce::Colours::azure,
+                                       DocumentWindow::allButtons, true) {
+}
+
+SlowWindow::~SlowWindow() {}
+
+void SlowWindow::initialiseInstance() {
+  instance_.reset(new slow::Instance(this));
+}
+
+Component* SlowWindow::getMainComponent() {
+  return &instance_->components_->mainPage_;
+}
+
+MenuBarModel* SlowWindow::getMenuBarModel() {
+  return instance_->menus_.get();
+}
+
+void SlowWindow::doComputeBounds() {
+  computeBounds<AppLayout>();
+}
+
+}  // namespace slow
+}  // namespace rec
+

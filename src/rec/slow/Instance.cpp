@@ -6,13 +6,14 @@
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Menus.h"
 #include "rec/slow/Model.h"
+#include "rec/slow/SlowWindow.h"
 #include "rec/slow/Target.h"
 #include "rec/slow/Threads.h"
 
 namespace rec {
 namespace slow {
 
-Instance::Instance(DocumentWindow* window)
+Instance::Instance(SlowWindow* window)
     : window_(window),
       components_(new Components(this)),
       device_(new audio::Device),

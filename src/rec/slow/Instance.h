@@ -11,16 +11,17 @@ class Menus;
 class Model;
 class Target;
 class Threads;
+class SlowWindow;
 class Listeners;
 
 // A single instance of Slow.  Right now there's only one per application but in
 // future there might be more than one.  This is where all the Broadcasters live
 // and all the file and stretch setting persistent data, too.
 struct Instance {
-  explicit Instance(app::Window* window);
+  explicit Instance(SlowWindow* window);
   ~Instance();
 
-  app::Window* window_;
+  SlowWindow* window_;
 
   ptr<Components> components_;
   ptr<Device> device_;

@@ -1,9 +1,4 @@
 #include "rec/app/Window.h"
-#include "rec/slow/AppLayout.pb.h"
-#include "rec/slow/Components.h"
-#include "rec/slow/Instance.h"
-#include "rec/slow/Menus.h"
-#include "rec/slow/Slow.h"
 
 namespace rec {
 namespace app {
@@ -32,14 +27,14 @@ void Window::initialise() {
   setContentOwned(mp, true);
 #endif
 
-  computeBounds<AppLayout>();
-  setMenuBar(instance_->menus_.get());
+  doComputeBounds();
+  setMenuBar(getMenuBarModel());
   setUsingNativeTitleBar(true);
   setVisible(true);
 
 #if JUCE_MAC
   // TODO: make sure this is in the right place.
-  juce::MenuBarModel::setMacMainMenu(instance_->menus_.get());
+  juce::MenuBarModel::setMacMainMenu(getMenuBarModel());
   setMenuBar(NULL);
 #endif
 

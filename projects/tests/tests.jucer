@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="W0gpQWtXa" name="tests">
+  <MAINGROUP id="74Kqo5ijE" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -45,6 +45,10 @@
               name="GenericApplication.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/app/GenericApplication.h" id="VBFiydWHZ"
               name="GenericApplication.h" resource="0"/>
+        <FILE compile="1" file="../../src/rec/app/Window.cpp" id="dQ1RjKTzL"
+              name="Window.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/app/Window.h" id="cN1yIP31T"
+              name="Window.h" resource="0"/>
       </GROUP>
       <GROUP id="GKbTArUaD" name="audio">
         <GROUP id="UWeCsPaqW" name="ammf_scaler">
@@ -873,6 +877,10 @@
               name="Position.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Slow.h" id="BbsTdmCSv" name="Slow.h"
               resource="0"/>
+        <FILE compile="1" file="../../src/rec/slow/SlowWindow.cpp" id="tNqofdKZ3"
+              name="SlowWindow.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/slow/SlowWindow.h" id="IqE2toosO"
+              name="SlowWindow.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/slow/Target.cpp" id="SsyocmwFt"
               name="Target.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Target.h" id="p6tN9hJHF"
@@ -885,10 +893,6 @@
               name="Threads.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/slow/Threads.h" id="KHQ83TvQo"
               name="Threads.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/slow/Window.cpp" id="vSXgUEk0W"
-              name="Window.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/slow/Window.h" id="62klwVoPj"
-              name="Window.h" resource="0"/>
       </GROUP>
       <GROUP id="7tu1XPqEp" name="util">
         <GROUP id="IN3ao8UNh" name="block">
@@ -1323,7 +1327,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="6Ig5gS6C4" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="luJrkmrZc" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

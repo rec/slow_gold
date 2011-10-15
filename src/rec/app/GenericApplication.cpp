@@ -4,7 +4,7 @@
 
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
-#include "rec/slow/Window.h"  // Should be in rec/app
+#include "rec/app/Window.h"
 #include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/data/persist/EditableFactory.h"
 #include "rec/gui/Dialog.h"
