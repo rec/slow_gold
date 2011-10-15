@@ -20,8 +20,6 @@ class UntypedEditable : public Editable {
   virtual int getSize(const Address& address) const;
   virtual void copyTo(Message* message) const;
 
-  virtual const string getTypeName() const { return message_->GetTypeName(); }
-
   typedef Listener<const Message&> Listener;
 
   Broadcaster<const Message&>* messageBroadcaster() {

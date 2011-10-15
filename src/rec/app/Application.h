@@ -6,13 +6,13 @@
 namespace rec {
 namespace app {
 
-template <typename Window>
+template <typename WindowImpl>
 class Application : public GenericApplication {
  public:
   Application(const String& n, const String& v) : GenericApplication(n, v) {
     google::InitGoogleLogging(str(n).c_str());
   }
-  virtual DocumentWindow* createWindow() const { return new Window; }
+  virtual Window* createWindow() const { return new WindowImpl; }
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Application);

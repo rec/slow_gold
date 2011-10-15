@@ -1,4 +1,4 @@
-#include "rec/slow/Window.h"
+#include "rec/app/Window.h"
 #include "rec/slow/AppLayout.pb.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
@@ -6,14 +6,24 @@
 #include "rec/slow/Slow.h"
 
 namespace rec {
-namespace slow {
+namespace app {
 
+// TODO: fix this bug!
 #define OLD_JUCE
 
-Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
-                                    DocumentWindow::allButtons, true),
-                   instance_(new Instance(this)) {
-  Component* mp = &instance_->components_->mainPage_;
+Window::Window(const String& name,
+               const Colour& bg,
+               int requiredButtons,
+               bool addToDesktop)
+    : PersistentWindow(name, bg, requiredButtons, addToDesktop) {
+}
+
+void Window::initialise() {
+  if (running_)
+    return;
+
+  initialiseInstance();
+  Component* mp = getMainComponent();
   mp->setBounds(0, 0, 1, 1);
 
 #ifdef OLD_JUCE
@@ -32,9 +42,19 @@ Window::Window() : PersistentWindow("SlowGold", juce::Colours::azure,
   juce::MenuBarModel::setMacMainMenu(instance_->menus_.get());
   setMenuBar(NULL);
 #endif
+
+  running_ = true;
 }
 
 Window::~Window() {
+  shutdown();
+}
+
+void Window::shutdown() {
+  if (!running_)
+    return;
+
+  running_ = false;
 #if JUCE_MAC  // ..and also the main bar if we're using that on a Mac...
   // Why isn't this in GenericApplication?
   MenuBarModel::setMacMainMenu(NULL);
@@ -46,8 +66,9 @@ Window::~Window() {
 #else
   setContentOwned(NULL, false);
 #endif
-
 }
 
-}  // namespace slow
+
+}  // namespace app
 }  // namespace rec
+

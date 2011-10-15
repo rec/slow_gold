@@ -5,8 +5,8 @@ import "rec/audio/source/Stereo.proto";
 // Describe how exactly to apply the timescaler to a sample.
 message Stretch {
   enum Strategy {
-    AUDIO_MAGIC = 0;
-    SOUNDTOUCH = 1;
+    AUDIO_MAGIC = 1;
+    SOUNDTOUCH = 2;
   };
 
   optional Strategy strategy = 18       [default = AUDIO_MAGIC];

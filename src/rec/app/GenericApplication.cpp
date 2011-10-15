@@ -2,11 +2,12 @@
 
 #include "rec/app/GenericApplication.h"
 
-#include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/app/DownloadVersion.h"
 #include "rec/app/Files.h"
-#include "rec/gui/Dialog.h"
+#include "rec/slow/Window.h"  // Should be in rec/app
+#include "rec/audio/format/mpg123/Mpg123.h"
 #include "rec/data/persist/EditableFactory.h"
+#include "rec/gui/Dialog.h"
 #include "rec/util/thread/Trash.h"
 
 DECLARE_bool(logtostderr);
@@ -30,6 +31,7 @@ void GenericApplication::initialise(const String&) {
   audio::format::mpg123::initializeOnce();
   data::start();
   window_.reset(createWindow());
+  window_->initialise();
   LOG(INFO) << name_ << ": initialise finished.";
 }
 
@@ -37,7 +39,7 @@ void GenericApplication::shutdown() {
   LOG(INFO) << name_ << ": shutdown starting...";
 
   gui::dialog::shutdownDialog();
-  window_.reset();
+  window_->shutdown();
   util::thread::trash::waitForAllThreadsToExit(1000);
   data::stop();
 

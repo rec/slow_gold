@@ -17,10 +17,10 @@ class Listeners;
 // future there might be more than one.  This is where all the Broadcasters live
 // and all the file and stretch setting persistent data, too.
 struct Instance {
-  explicit Instance(DocumentWindow* window);
+  explicit Instance(app::Window* window);
   ~Instance();
 
-  DocumentWindow* window_;
+  app::Window* window_;
 
   ptr<Components> components_;
   ptr<Device> device_;

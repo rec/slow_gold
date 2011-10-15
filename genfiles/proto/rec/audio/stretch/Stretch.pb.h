@@ -38,8 +38,8 @@ void protobuf_ShutdownFile_rec_2faudio_2fstretch_2fStretch_2eproto();
 class Stretch;
 
 enum Stretch_Strategy {
-  Stretch_Strategy_AUDIO_MAGIC = 0,
-  Stretch_Strategy_SOUNDTOUCH = 1
+  Stretch_Strategy_AUDIO_MAGIC = 1,
+  Stretch_Strategy_SOUNDTOUCH = 2
 };
 bool Stretch_Strategy_IsValid(int value);
 const Stretch_Strategy Stretch_Strategy_Strategy_MIN = Stretch_Strategy_AUDIO_MAGIC;
@@ -317,7 +317,7 @@ inline bool Stretch::has_strategy() const {
   return _has_bit(0);
 }
 inline void Stretch::clear_strategy() {
-  strategy_ = 0;
+  strategy_ = 1;
   _clear_bit(0);
 }
 inline ::rec::audio::stretch::Stretch_Strategy Stretch::strategy() const {

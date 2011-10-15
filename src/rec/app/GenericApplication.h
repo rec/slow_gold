@@ -8,6 +8,8 @@
 namespace rec {
 namespace app {
 
+class Window;
+
 class GenericApplication : public juce::JUCEApplication {
  public:
   static const int SAVE_PERIOD = 25;
@@ -19,7 +21,7 @@ class GenericApplication : public juce::JUCEApplication {
 
   virtual void initialise(const String& commandLine);
   virtual void shutdown();
-  virtual DocumentWindow* createWindow() const = 0;
+  virtual Window* createWindow() const = 0;
 
   virtual const String getApplicationName()    { return name_; }
   virtual const String getApplicationVersion() { return version_; }
@@ -29,7 +31,7 @@ class GenericApplication : public juce::JUCEApplication {
  protected:
   const String name_;
   const String version_;
-  ptr<DocumentWindow> window_;
+  ptr<Window> window_;
 
  private:
   DISALLOW_COPY_ASSIGN_AND_EMPTY(GenericApplication);
