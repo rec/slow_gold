@@ -103,3 +103,12 @@ message Command {
 message Commands {
   repeated Command command = 1;
 };
+
+message KeyValue {
+  optional string key = 1;
+  optional string value = 2;
+};
+
+message Mapping {
+  repeated KeyValue key_value = 1;
+};
