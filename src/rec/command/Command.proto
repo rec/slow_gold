@@ -1,5 +1,22 @@
 package rec.command;
 
+message KeyMeta {
+  optional bool shift = 1;
+  optional bool command = 2;
+  optional bool alt = 3;
+};
+
+message KeyPress {
+  optional KeyMeta meta = 1;
+  optional string key = 2;
+};
+
+message Description {
+  optional string menu = 1;  // Shortest description, for menus.
+  optional string full = 2;  // Longer description, when editing.
+  optional string help = 3;  // Full help text for the command.
+};
+
 // A list of commands that the user can issue.
 message Command {
   enum Type {
@@ -77,4 +94,12 @@ message Command {
   };
 
   optional Type command = 1;
+  optional string name = 2;  // English language name.
+  optional string category = 3;  // English language category.
+  optional Description description = 4;
+  optional KeyPress key_press = 5;
+};
+
+message Commands {
+  repeated Command command = 1;
 };

@@ -20,7 +20,7 @@ def buildOne(name):
   base = name.split('.')[0]
   doc = '%s/rec/projects/%s/%s.jucer' % (root, base, name)
 
-  results = jucer.Jucer(doc, 'test' in name, root).toxml()
+  results = jucer.JucerDomFile(doc, 'test' in name, root).toxml()
   f = open(doc, 'w')
   for line in results.split('\n'):
     if line.strip():
@@ -29,8 +29,7 @@ def buildOne(name):
   print 'Written', doc
 
 def build(names):
-  for name_group in (names or DEFAULT_PROJECTS):
-    for name in name_group.split(' '):
-      buildOne(name)
+  for name in (names or DEFAULT_PROJECTS):
+    buildOne(name)
 
 build(sys.argv[1:])
