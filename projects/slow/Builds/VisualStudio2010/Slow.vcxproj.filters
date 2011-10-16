@@ -145,9 +145,6 @@
     <Filter Include="Slow\proto\rec\data">
       <UniqueIdentifier>{f073e6dd-a529-4bfa-af06-d7e5c7e620ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Slow\proto\rec\data\commands">
-      <UniqueIdentifier>{30aa576b-be9f-4543-ad29-b799b8040778}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Slow\proto\rec\data\proto">
       <UniqueIdentifier>{1048acb9-4c46-4b69-b17e-3b365e746d46}</UniqueIdentifier>
     </Filter>
@@ -1041,9 +1038,6 @@
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h">
       <Filter>Slow\proto\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.h">
-      <Filter>Slow\proto\rec\data\commands</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h">
       <Filter>Slow\proto\rec\data</Filter>
     </ClInclude>
@@ -1217,6 +1211,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\app\Window.h">
       <Filter>Slow\rec\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\util\Platform.h">
+      <Filter>Slow\rec\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1676,9 +1673,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp">
       <Filter>Slow\rec\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\thread\MakeThread.cpp">
-      <Filter>Slow\rec\util\thread</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp">
       <Filter>Slow\rec\util\thread</Filter>
     </ClCompile>
@@ -1738,9 +1732,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.cc">
       <Filter>Slow\proto\rec\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\commands\Event.pb.cc">
-      <Filter>Slow\proto\rec\data\commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc">
       <Filter>Slow\proto\rec\data</Filter>
@@ -1915,6 +1906,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp">
       <Filter>Slow\rec\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\util\Platform.cpp">
+      <Filter>Slow\rec\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
