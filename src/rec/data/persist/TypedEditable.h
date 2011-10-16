@@ -15,8 +15,11 @@ template <typename Proto>
 class TypedEditable : public data::UntypedEditable,
                       public Broadcaster<const Proto&> {
  public:
-  TypedEditable(const File& file, const VirtualFile& vf)
+  TypedEditable(const File& file, const VirtualFile& vf,
+                const Proto& dflt = Proto::default_instance())
       : UntypedEditable(file, vf, &proto_) {
+    if (!readFromFile())
+      proto_ = dflt;
   }
 
   // Get a consistent snapshot of the current value.

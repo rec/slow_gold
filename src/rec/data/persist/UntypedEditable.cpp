@@ -59,7 +59,7 @@ Message* UntypedEditable::clone() const {
   return NULL;
 }
 
-void UntypedEditable::readFromFile() const {
+bool UntypedEditable::readFromFile() const {
   ScopedLock l(lock_);
   if (!alreadyReadFromFile_) {
     fileReadSuccess_ = data::copy(file_, message_);
@@ -70,6 +70,7 @@ void UntypedEditable::readFromFile() const {
 
     alreadyReadFromFile_ = true;
   }
+  return fileReadSuccess_;
 }
 
 void UntypedEditable::applyLater(Operations* op) {
@@ -121,18 +122,20 @@ void UntypedEditable::update() {
   onDataChange();
 }
 
-void UntypedEditable::writeToFile() const {
+bool UntypedEditable::writeToFile() const {
   ptr<Message> msg;
   {
     ScopedLock l(lock_);
     if (!alreadyReadFromFile_)
-      return;
+      return false;
+
     msg.reset(message_->New());
     msg->CopyFrom(*message_);
   }
 
 	VLOG(1) << "Writing " << str(file_);
   data::copy(*msg, file_);
+  return true;
 }
 
 }  // namespace data

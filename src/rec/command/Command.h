@@ -7,15 +7,13 @@
 namespace rec {
 namespace command {
 
-inline ModifierKeys getDefaultMods() {
-  return ModifierKeys(juce::ModifierKeys::commandModifier);
-}
+typedef std::map<Command::Type, Command*> CommandTable;
 
-ApplicationCommandInfo makeInfo(
-    CommandID id, const String& name,
-    const String& category, const String& desc,
-    int flags = 0, int keyCode = 0,
-    const ModifierKeys& mod = ModifierKeys());
+const Command getCommand(Command::Type type);
+const CommandTable getCommands();
+
+// Call to recalculate commands if Access changes for the user.
+void recalculate();
 
 }  // namespace command
 }  // namespace rec

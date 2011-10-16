@@ -5,7 +5,11 @@ namespace audio {
 
 namespace {
 
+#ifdef JUCE_MAC
 long long enum {
+#else
+enum : long long {
+#endif
   bit8 = 0x100LL,
   bit16 = bit8 * bit8,
   bit24 = bit8 * bit16,
