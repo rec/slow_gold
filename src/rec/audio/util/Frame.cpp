@@ -1,5 +1,6 @@
 #include "rec/audio/util/Frame.h"
 #include "rec/audio/util/ConvertSample.h"
+#include "rec/util/Platform.h"
 
 namespace rec {
 namespace audio {
