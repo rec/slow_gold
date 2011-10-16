@@ -13,9 +13,9 @@ int stripLines(String* data, StringArray* lines) {
 }
 
 bool stripLine(String* data, StringArray* lines) {
-  const juce_wchar* begin = data->toWideCharPointer();
-  for (const juce_wchar* i = begin; *i; ++i) {
-    const juce_wchar* end = NULL;
+  const wchar_t* begin = data->toWideCharPointer();
+  for (const wchar_t* i = begin; *i; ++i) {
+    const wchar_t* end = NULL;
     if (*i == '\n')
       end = i;
 

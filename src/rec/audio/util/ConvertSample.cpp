@@ -5,7 +5,7 @@ namespace audio {
 
 namespace {
 
-long long enum {
+enum : long long  {
   bit8 = 0x100LL,
   bit16 = bit8 * bit8,
   bit24 = bit8 * bit16,

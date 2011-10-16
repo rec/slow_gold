@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
 #include "rec/audio/ammf_scaler/AudioTimeScaler.h"
 #include "rec/audio/stretch/TestHarness.h"
@@ -73,8 +73,8 @@ TEST(RecAudio, AudioTimeScaler) {
   for (int j = 0; j < 3; ++j) {
     unsigned int samplesToRead = scaler.GetInputBufferSize(SAMPLES_PER_CHUNK);
     unsigned int samplesToProcess = samplesToRead / 2;  // Why divide by 2?!?!?
-    float inputSamples1[samplesToProcess];
-    float inputSamples2[samplesToProcess];
+    float* inputSamples1 = new float[samplesToProcess];
+    float* inputSamples2 = new float[samplesToProcess];
     float *inputSamples[] = { inputSamples1, inputSamples2 };
     for (int i = 0; i < samplesToProcess; ++i)
       inputSamples[0][i] = inputSamples[1][i] =rampWave(samplesOut + i, 100);
@@ -82,13 +82,16 @@ TEST(RecAudio, AudioTimeScaler) {
                                           samplesToProcess, SAMPLES_PER_CHUNK);
     EXPECT_EQ(samplesProcessed, 128);
 
+	delete inputSamples1;
+	delete inputSamples2;
+
     // Make sure output is within 0.082 of the input.
     // Observed maxDiff is 0.0813631.
     for (int i = 0; i < samplesProcessed; ++i) {
       float inputSample = rampWave(samplesIn + i, 100);
       for (int j = 0; j < 2; ++j) {
         EXPECT_NEAR(inputSample, outputSamples[j][i], 0.085);
-        maxDiff = std::max(double(maxDiff), fabs(inputSample - outputSamples[j][i]));
+        maxDiff = std::max<float>(double(maxDiff), fabs(inputSample - outputSamples[j][i]));
       }
     }
     samplesIn += samplesProcessed;
