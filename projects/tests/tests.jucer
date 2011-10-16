@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="4rpEPdy9A" name="tests">
+  <MAINGROUP id="za4PRlE7I" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -1041,6 +1041,10 @@
           <FILE compile="1" file="../../src/rec/util/partition/Partition_test.cpp"
                 id="rXvhr55dq" name="Partition_test.cpp" resource="0"/>
         </GROUP>
+        <FILE compile="1" file="../../src/rec/util/Platform.cpp" id="TqLAPgLvt"
+              name="Platform.cpp" resource="0"/>
+        <FILE compile="0" file="../../src/rec/util/Platform.h" id="A78Zgmk4m"
+              name="Platform.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="mAw0zFgKm"
               name="PointerList.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/util/RandomSelfInverseFunction.cpp"
@@ -1331,7 +1335,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="9pbxE8L7m" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="VuhMx2isS" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"
