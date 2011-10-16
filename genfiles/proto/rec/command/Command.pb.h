@@ -563,12 +563,12 @@ class Command : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.command.Command.Type command = 1;
-  inline bool has_command() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 1;
-  inline ::rec::command::Command_Type command() const;
-  inline void set_command(::rec::command::Command_Type value);
+  // optional .rec.command.Command.Type type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::rec::command::Command_Type type() const;
+  inline void set_type(::rec::command::Command_Type value);
   
   // optional string name = 2;
   inline bool has_name() const;
@@ -609,7 +609,7 @@ class Command : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  int command_;
+  int type_;
   ::std::string* name_;
   static const ::std::string _default_name_;
   ::std::string* category_;
@@ -1181,21 +1181,21 @@ inline ::std::string* Description::mutable_help() {
 
 // Command
 
-// optional .rec.command.Command.Type command = 1;
-inline bool Command::has_command() const {
+// optional .rec.command.Command.Type type = 1;
+inline bool Command::has_type() const {
   return _has_bit(0);
 }
-inline void Command::clear_command() {
-  command_ = 0;
+inline void Command::clear_type() {
+  type_ = 0;
   _clear_bit(0);
 }
-inline ::rec::command::Command_Type Command::command() const {
-  return static_cast< ::rec::command::Command_Type >(command_);
+inline ::rec::command::Command_Type Command::type() const {
+  return static_cast< ::rec::command::Command_Type >(type_);
 }
-inline void Command::set_command(::rec::command::Command_Type value) {
+inline void Command::set_type(::rec::command::Command_Type value) {
   GOOGLE_DCHECK(::rec::command::Command_Type_IsValid(value));
   _set_bit(0);
-  command_ = value;
+  type_ = value;
 }
 
 // optional string name = 2;

@@ -32,8 +32,9 @@ class UntypedEditable : public Editable {
 
   virtual Operations* applyOperations(const Operations& );
   virtual void applyLater(Operations* op);
-  void readFromFile() const;
-  void writeToFile() const;
+
+  virtual bool readFromFile() const;
+  virtual bool writeToFile() const;
 
   // Update the clients in this thread.
   void update();

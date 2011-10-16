@@ -93,7 +93,7 @@ message Command {
     LAST_COMMAND = 34;
   };
 
-  optional Type command = 1;
+  optional Type type = 1;
   optional string name = 2;  // English language name.
   optional string category = 3;  // English language category.
   optional Description description = 4;

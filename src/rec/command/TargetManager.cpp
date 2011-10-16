@@ -9,6 +9,30 @@
 namespace rec {
 namespace command {
 
+namespace {
+
+ApplicationCommandInfo makeInfo(
+    CommandID id, const String& name,
+    const String& category, const String& desc,
+    int flags = 0, int keyCode = 0,
+    const ModifierKeys& mod = ModifierKeys());
+
+juce::ApplicationCommandInfo makeInfo(CommandID id, const String& name,
+                                      const String& category, const String& desc,
+                                      int flags, int key, const ModifierKeys& mod) {
+  ApplicationCommandInfo i(id);
+  i.setInfo(name, desc, category, flags);
+  if (key)
+    i.addDefaultKeypress(key, mod);
+
+  if (category == "(None)")
+    i.flags |= ApplicationCommandInfo::hiddenFromKeyEditor;
+
+  return i;
+}
+
+}  // namespace
+
 struct CommandCallback {
   CommandCallback(const ApplicationCommandInfo& info, Callback* cb)
       : info_(info), callback_(cb) {

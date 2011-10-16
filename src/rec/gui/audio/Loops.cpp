@@ -14,7 +14,7 @@ namespace rec {
 namespace gui {
 namespace audio {
 
-static Defaulter<TableColumnList> dflt(
+static Def<TableColumnList> dflt(
 "column { type: TIME name: \"Time\" address { part { name: \"time\" } } } "
 #if 0
 "column { type: STRING name: \"Name\" address { part { name: \"name\" } } } "

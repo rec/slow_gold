@@ -3,6 +3,7 @@
 
 #include <map>
 
+#include "rec/command/Command.h"
 #include "rec/command/CommandMap.pb.h"
 #include "rec/util/listener/Listener.h"
 

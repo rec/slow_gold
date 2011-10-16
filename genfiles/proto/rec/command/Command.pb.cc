@@ -99,7 +99,7 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       sizeof(Description));
   Command_descriptor_ = file->message_type(3);
   static const int Command_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, command_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, category_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, description_),
@@ -222,38 +222,38 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\001(\010\022\013\n\003alt\030\003 \001(\010\";\n\010KeyPress\022\"\n\004meta\030\001 \001"
     "(\0132\024.rec.command.KeyMeta\022\013\n\003key\030\002 \001(\t\"7\n"
     "\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004full\030\002 \001(\t"
-    "\022\014\n\004help\030\003 \001(\t\"\315\010\n\007Command\022*\n\007command\030\001 "
-    "\001(\0162\031.rec.command.Command.Type\022\014\n\004name\030\002"
-    " \001(\t\022\020\n\010category\030\003 \001(\t\022-\n\013description\030\004 "
-    "\001(\0132\030.rec.command.Description\022(\n\tkey_pre"
-    "ss\030\005 \001(\0132\025.rec.command.KeyPress\"\234\007\n\004Type"
-    "\022\010\n\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_"
-    "PREFERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CL"
-    "EAR_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016"
-    "\n\nCLOSE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n"
-    "\tEJECT_CDS\020\010\022\031\n\025INVERT_LOOP_SELECTION\020\t\022"
-    "\025\n\021KEYBOARD_MAPPINGS\020\n\022\021\n\rMIDI_MAPPINGS\020"
-    "\013\022\026\n\022MUTE_VOLUME_TOGGLE\020\014\022\024\n\020NUDGE_BEGIN"
-    "_LEFT\020\r\022\025\n\021NUDGE_BEGIN_RIGHT\020\016\022\022\n\016NUDGE_"
-    "END_LEFT\020\017\022\023\n\017NUDGE_END_RIGHT\020\020\022\025\n\021NUDGE"
-    "_VOLUME_DOWN\020\021\022\023\n\017NUDGE_VOLUME_UP\020\022\022\010\n\004O"
-    "PEN\020\023\022\020\n\014RECENT_FILES\020\024\022\010\n\004REDO\020\025\022\027\n\023RES"
-    "ET_GAIN_TO_UNITY\020\026\022\032\n\026TOGGLE_WHOLE_SONG_"
-    "LOOP\020\027\022\025\n\021TOGGLE_START_STOP\020\030\022\031\n\025TOGGLE_"
-    "STRETCH_ENABLE\020\031\022\016\n\nTREE_CLOSE\020\032\022\r\n\tTREE"
-    "_DOWN\020\033\022\r\n\tTREE_LEFT\020\034\022\r\n\tTREE_OPEN\020\035\022\016\n"
-    "\nTREE_RIGHT\020\036\022\013\n\007TREE_UP\020\037\022\010\n\004UNDO\020 \022\013\n\007"
-    "ZOOM_IN\020!\022\014\n\010ZOOM_OUT\020\"\022\t\n\004QUIT\020\201 \022\010\n\003DE"
-    "L\020\202 \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n"
-    "\nSELECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\014\n\006SEL"
-    "ECT\020\300\204=\022\021\n\013SELECT_ONLY\020\340\221C\022\014\n\006TOGGLE\020\200\237I"
-    "\022\016\n\010UNSELECT\020\240\254O\022\n\n\004JUMP\020\300\271U\022\023\n\rJUMP_SEL"
-    "ECTED\020\340\306[\022\020\n\nBANK_START\020\300\204=\022\016\n\010BANK_END\020"
-    "\200\324a\022\017\n\tBANK_SIZE\020\240\215\006\022\020\n\014LAST_COMMAND\020\"\"1"
-    "\n\010Commands\022%\n\007command\030\001 \003(\0132\024.rec.comman"
-    "d.Command\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005va"
-    "lue\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132"
-    "\025.rec.command.KeyValue", 1462);
+    "\022\014\n\004help\030\003 \001(\t\"\312\010\n\007Command\022\'\n\004type\030\001 \001(\016"
+    "2\031.rec.command.Command.Type\022\014\n\004name\030\002 \001("
+    "\t\022\020\n\010category\030\003 \001(\t\022-\n\013description\030\004 \001(\013"
+    "2\030.rec.command.Description\022(\n\tkey_press\030"
+    "\005 \001(\0132\025.rec.command.KeyPress\"\234\007\n\004Type\022\010\n"
+    "\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PRE"
+    "FERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR"
+    "_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nC"
+    "LOSE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJ"
+    "ECT_CDS\020\010\022\031\n\025INVERT_LOOP_SELECTION\020\t\022\025\n\021"
+    "KEYBOARD_MAPPINGS\020\n\022\021\n\rMIDI_MAPPINGS\020\013\022\026"
+    "\n\022MUTE_VOLUME_TOGGLE\020\014\022\024\n\020NUDGE_BEGIN_LE"
+    "FT\020\r\022\025\n\021NUDGE_BEGIN_RIGHT\020\016\022\022\n\016NUDGE_END"
+    "_LEFT\020\017\022\023\n\017NUDGE_END_RIGHT\020\020\022\025\n\021NUDGE_VO"
+    "LUME_DOWN\020\021\022\023\n\017NUDGE_VOLUME_UP\020\022\022\010\n\004OPEN"
+    "\020\023\022\020\n\014RECENT_FILES\020\024\022\010\n\004REDO\020\025\022\027\n\023RESET_"
+    "GAIN_TO_UNITY\020\026\022\032\n\026TOGGLE_WHOLE_SONG_LOO"
+    "P\020\027\022\025\n\021TOGGLE_START_STOP\020\030\022\031\n\025TOGGLE_STR"
+    "ETCH_ENABLE\020\031\022\016\n\nTREE_CLOSE\020\032\022\r\n\tTREE_DO"
+    "WN\020\033\022\r\n\tTREE_LEFT\020\034\022\r\n\tTREE_OPEN\020\035\022\016\n\nTR"
+    "EE_RIGHT\020\036\022\013\n\007TREE_UP\020\037\022\010\n\004UNDO\020 \022\013\n\007ZOO"
+    "M_IN\020!\022\014\n\010ZOOM_OUT\020\"\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202"
+    " \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSE"
+    "LECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\014\n\006SELECT"
+    "\020\300\204=\022\021\n\013SELECT_ONLY\020\340\221C\022\014\n\006TOGGLE\020\200\237I\022\016\n"
+    "\010UNSELECT\020\240\254O\022\n\n\004JUMP\020\300\271U\022\023\n\rJUMP_SELECT"
+    "ED\020\340\306[\022\020\n\nBANK_START\020\300\204=\022\016\n\010BANK_END\020\200\324a"
+    "\022\017\n\tBANK_SIZE\020\240\215\006\022\020\n\014LAST_COMMAND\020\"\"1\n\010C"
+    "ommands\022%\n\007command\030\001 \003(\0132\024.rec.command.C"
+    "ommand\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
+    "\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.r"
+    "ec.command.KeyValue", 1459);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   KeyMeta::default_instance_ = new KeyMeta();
@@ -1297,7 +1297,7 @@ const int Command::Type_ARRAYSIZE;
 const ::std::string Command::_default_name_;
 const ::std::string Command::_default_category_;
 #ifndef _MSC_VER
-const int Command::kCommandFieldNumber;
+const int Command::kTypeFieldNumber;
 const int Command::kNameFieldNumber;
 const int Command::kCategoryFieldNumber;
 const int Command::kDescriptionFieldNumber;
@@ -1322,7 +1322,7 @@ Command::Command(const Command& from)
 
 void Command::SharedCtor() {
   _cached_size_ = 0;
-  command_ = 0;
+  type_ = 0;
   name_ = const_cast< ::std::string*>(&_default_name_);
   category_ = const_cast< ::std::string*>(&_default_category_);
   description_ = NULL;
@@ -1369,7 +1369,7 @@ Command* Command::New() const {
 
 void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    command_ = 0;
+    type_ = 0;
     if (_has_bit(1)) {
       if (name_ != &_default_name_) {
         name_->clear();
@@ -1397,7 +1397,7 @@ bool Command::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .rec.command.Command.Type command = 1;
+      // optional .rec.command.Command.Type type = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -1406,7 +1406,7 @@ bool Command::MergePartialFromCodedStream(
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
           if (::rec::command::Command_Type_IsValid(value)) {
-            set_command(static_cast< ::rec::command::Command_Type >(value));
+            set_type(static_cast< ::rec::command::Command_Type >(value));
           } else {
             mutable_unknown_fields()->AddVarint(1, value);
           }
@@ -1497,10 +1497,10 @@ bool Command::MergePartialFromCodedStream(
 
 void Command::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .rec.command.Command.Type command = 1;
+  // optional .rec.command.Command.Type type = 1;
   if (_has_bit(0)) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->command(), output);
+      1, this->type(), output);
   }
   
   // optional string name = 2;
@@ -1541,10 +1541,10 @@ void Command::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* Command::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional .rec.command.Command.Type command = 1;
+  // optional .rec.command.Command.Type type = 1;
   if (_has_bit(0)) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->command(), target);
+      1, this->type(), target);
   }
   
   // optional string name = 2;
@@ -1592,10 +1592,10 @@ int Command::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .rec.command.Command.Type command = 1;
-    if (has_command()) {
+    // optional .rec.command.Command.Type type = 1;
+    if (has_type()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->command());
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
     // optional string name = 2;
@@ -1654,7 +1654,7 @@ void Command::MergeFrom(const Command& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from._has_bit(0)) {
-      set_command(from.command());
+      set_type(from.type());
     }
     if (from._has_bit(1)) {
       set_name(from.name());
@@ -1691,7 +1691,7 @@ bool Command::IsInitialized() const {
 
 void Command::Swap(Command* other) {
   if (other != this) {
-    std::swap(command_, other->command_);
+    std::swap(type_, other->type_);
     std::swap(name_, other->name_);
     std::swap(category_, other->category_);
     std::swap(description_, other->description_);

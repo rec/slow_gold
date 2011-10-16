@@ -11,7 +11,7 @@ namespace status {
 namespace {
 
 const StatusDesc& getOrDefault(const StatusDesc* desc) {
-  static util::Defaulter<StatusDesc> d("");
+  static util::Def<StatusDesc> d("");
   return d.get(desc);
 }
 
