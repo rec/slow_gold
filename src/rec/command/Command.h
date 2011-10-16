@@ -8,11 +8,7 @@ namespace rec {
 namespace command {
 
 inline ModifierKeys getDefaultMods() {
-#if JUCE_MAC
   return ModifierKeys(juce::ModifierKeys::commandModifier);
-#else
-  return ModifierKeys(juce::ModifierKeys::ctrlModifier);
-#endif
 }
 
 ApplicationCommandInfo makeInfo(

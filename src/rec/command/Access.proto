@@ -1,15 +1,15 @@
-package rec.access;
+package rec.command;
 
 // Everything regarding "globalization" - see
 // http://en.wikipedia.org/wiki/Internationalization_and_localization
-message International {
+message Global {
   optional string language = 1 [default = "en"];
   optional string locale = 2;
 };
 
 // Everything involving the user's interactions with the system, and includes
 // accessibility, and the selection of different input methods or character
-// sets, is an Input or an Output.
+// set for display, is an Input or an Output.
 message Input {
   optional string name = 1;
 };
@@ -19,7 +19,7 @@ message Output {
 };
 
 message Access {
-  optional International international = 1;
-  repeated access.Input input = 2;
-  repeated access.Output output = 3;
+  optional Global global = 1;
+  repeated command.Input input = 2;
+  repeated command.Output output = 3;
 };

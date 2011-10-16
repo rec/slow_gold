@@ -18,7 +18,6 @@ class ModalKiller : public juce::DeletedAtShutdown {
     if (modal) {
       modal->exitModalState(0);
       Thread::sleep(1000);
-      DLOG(INFO) << "here";
       delete modal;
       modal = NULL;
     }

@@ -85,7 +85,6 @@ void TargetManager::addCallback(Callback* cb,
     delete i->second;
   }
 
-	// DLOG(INFO) << "adding command " << id;
   map_[id] = new CommandCallback(info, cb);
 }
 

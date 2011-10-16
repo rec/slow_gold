@@ -33,6 +33,7 @@ void ThumbnailBuffer::writeThumbnail() {
 
   cacheWritten_ = true;
   if (!thumbnail_.getTotalLength()) {
+    // TODO: fix this.
     DLOG(ERROR) << "writing empty cache";
   } else {
     ptr<juce::FileOutputStream> out(file_.createOutputStream());
@@ -41,8 +42,10 @@ void ThumbnailBuffer::writeThumbnail() {
 }
 
 bool ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader) {
-  if (!reader)
+  if (!reader) {
+    LOG(ERROR) << "Thumbnail buffer had not reader";
     return false;
+  }
 
   ptr<AudioFormatReader> r(reader);
   file_ = getShadowFile(f, "thumbnail.stream");
@@ -59,6 +62,7 @@ bool ThumbnailBuffer::setReader(const VirtualFile& f, AudioFormatReader* reader)
   } else {
     cacheWritten_ = false;
   }
+
   return buffer_.setReader(r.transfer());
 }
 

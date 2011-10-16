@@ -87,7 +87,7 @@ bool EditableUpdater::write() {
 }
 
 void EditableUpdater::start() {
-  DLOG(INFO) << "Starting data queues";
+  DLOG(INFO) << "Starting EditableUpdater";
   CHECK(!instance_);
   instance_ = new EditableUpdater();
 }
@@ -95,7 +95,7 @@ void EditableUpdater::start() {
 void EditableUpdater::stop() {
   delete instance_;
   instance_ = NULL;
-  DLOG(INFO) << "data queues stopped";
+  DLOG(INFO) << "Stopping EditableUpdater";
 }
 
 EditableUpdater* EditableUpdater::instance_ = NULL;

@@ -12,7 +12,7 @@
 import dom_file
 import filetree
 
-class Jucer(dom_file.DomFile):
+class JucerDomFile(dom_file.DomFile):
   def __init__(self, filename, is_test, root):
     dom_file.DomFile.__init__(self, filename)
     self.is_test = is_test

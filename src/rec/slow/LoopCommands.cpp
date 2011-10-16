@@ -51,7 +51,6 @@ bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) 
   else
     PlatformUtilities::beep();
 
-  DLOG(INFO) << "success: " << success;
   return success;
 }
 

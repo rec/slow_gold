@@ -16,7 +16,7 @@ namespace waveform {
 namespace {
 
 Def<CursorProto> timeDesc(
-"widget {colors {color: {name: \"pink\"}}}\n"
+"widget {colors {color: {name: \"red\"}}}\n"
 "line {thickness: 2.0}"
 );
 
@@ -142,7 +142,7 @@ void Waveform::adjustCursors(const LoopPointList& loopPoints) {
     bool needsNew = (i >= getNumChildComponents() - 1);
     Cursor* c;
     if (needsNew) {
-      c = newCursor(CursorProto::default_instance(), time, i);
+      c = newCursor(*defaultDesc, time, i);
     } else {
       Component* comp = getChildComponent(i + 1);
       c = dynamic_cast<Cursor*>(comp);

@@ -12,8 +12,12 @@ bool Frames<Frame>::setLength(Samples<44100> length, bool mustReallocate) {
     size_t size = static_cast<size_t>(sizeof(Frame) * length);
     frames_ = reinterpret_cast<Frame*>(reallocf(frames_, size));
   }
+  bool success = !length || frames_;
+  if (!success)
+    LOG(ERROR) << "Couldn't setLength: " << length << ", " << frames_;
   length_ = length;
-  return !length_ || frames_;
+
+  return success;
 }
 
 template <typename Sample, int CHANNELS>

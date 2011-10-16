@@ -79,11 +79,8 @@ void Player::setSelection(const block::BlockSet& s) {
 
 void Player::onDataChange(const LoopPointList& lpl) {
   // TODO:  why do we get updates with no loops in them?
-  // TODO: set the selection anyway.
   if (lpl.loop_point_size() >= 2)
     setSelection(audio::getTimeSelection(lpl));
-  else
-    DLOG(INFO) << "empty LoopPointList " << lpl.loop_point_size();
 }
 
 void Player::clear() {
