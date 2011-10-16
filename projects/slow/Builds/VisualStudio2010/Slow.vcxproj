@@ -96,7 +96,7 @@
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
     <ResourceCompile>
@@ -252,9 +252,12 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.h" />
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h" />
     <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h" />
+    <ClInclude Include="..\..\..\..\src\rec\app\Files.h" />
     <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h" />
+    <ClInclude Include="..\..\..\..\src\rec\app\Window.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.h" />
@@ -274,8 +277,18 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatReader.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\CircularBuffer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSamplePipe.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\soundtouch_config.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\STTypes.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\source\FrameSource.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Level.h" />
@@ -289,6 +302,8 @@
     <ClInclude Include="..\..\..\..\src\rec\audio\source\ThreadedSource.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.h" />
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TestHarness.h" />
     <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.h" />
@@ -313,7 +328,7 @@
     <ClInclude Include="..\..\..\..\src\rec\base\port.h" />
     <ClInclude Include="..\..\..\..\src\rec\base\ptr.h" />
     <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\SamplePosition.h" />
+    <ClInclude Include="..\..\..\..\src\rec\base\Samples.h" />
     <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h" />
     <ClInclude Include="..\..\..\..\src\rec\base\Standard.h" />
     <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h" />
@@ -336,29 +351,27 @@
     <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\Address.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\Binary.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\commands\CommandManager.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\commands\EventQueue.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\Data.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\App.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\AppDirectory.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\AppInstance.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\Editable.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Data.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\persist\Persist.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedData.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedEditable.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\FieldOps.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\GetProtoName.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\InsertSorted.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\LogFile.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\MessageField.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\Proto.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\NameToProto.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedOperations.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedTyper.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\proto\ZeroCopy.h" />
+    <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\Value.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\aliasmanager.h" />
     <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\anchor.h" />
@@ -460,6 +473,7 @@
     <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h" />
     <ClInclude Include="..\..\..\..\src\rec\gui\TableController.h" />
     <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h" />
+    <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h" />
     <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h" />
     <ClInclude Include="..\..\..\..\src\rec\slow\Components.h" />
     <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h" />
@@ -474,10 +488,10 @@
     <ClInclude Include="..\..\..\..\src\rec\slow\PlaybackController.h" />
     <ClInclude Include="..\..\..\..\src\rec\slow\Position.h" />
     <ClInclude Include="..\..\..\..\src\rec\slow\Slow.h" />
+    <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h" />
     <ClInclude Include="..\..\..\..\src\rec\slow\Target.h" />
     <ClInclude Include="..\..\..\..\src\rec\slow\TargetCommands.h" />
     <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Window.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h" />
@@ -497,8 +511,10 @@
     <ClInclude Include="..\..\..\..\src\rec\util\DelegateToList.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\Exception.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h" />
+    <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h" />
+    <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\listener\DataListener.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\listener\Listener.h" />
@@ -528,6 +544,7 @@
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h" />
     <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h" />
+    <ClInclude Include="..\..\..\..\src\rec\util\Undo.h" />
     <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h" />
     <ClInclude Include="..\..\..\..\src\rec\widget\status\DialComponent.h" />
     <ClInclude Include="..\..\..\..\src\rec\widget\status\Status.h" />
@@ -580,8 +597,11 @@
     <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc" />
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.c" />
@@ -595,15 +615,27 @@
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\CircularBuffer.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\CreateSourceAndLoadMetadata.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_gcc.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_win.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\sse_optimized.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Stretchy.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler_test.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp" />
@@ -621,23 +653,20 @@
     <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\command\MidiName.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\commands\EventQueue.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\Data.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\AppDirectory.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\AppInstance.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\Data.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedData.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\Address.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\proto\GetProtoName.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\LogFile.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\Proto.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\data\UndoQueue.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\ReadYaml.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.cpp" />
@@ -706,6 +735,7 @@
     <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\gui\TableController.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\slow\Listeners.cpp" />
@@ -717,10 +747,10 @@
     <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\slow\PlaybackController.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\slow\Position.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\slow\TargetCommands.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Window.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\block\Fillable.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp" />
@@ -736,6 +766,9 @@
     <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes_test.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile_test.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp" />
@@ -746,6 +779,7 @@
     <ClCompile Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\thread\MakeThread.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp" />
+    <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\widget\status\Status.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\widget\status\TextComponent.cpp" />
@@ -809,6 +843,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <None Include="..\..\..\..\src\rec\audio\stretch\README" />
+    <None Include="..\..\..\..\src\rec\audio\stretch\Stretch.proto" />
+    <None Include="..\..\..\..\src\rec\data\Action.proto" />
+    <None Include="..\..\..\..\src\rec\data\Operation.proto" />
+    <None Include="..\..\..\..\src\rec\util\file\VirtualFile.proto" />
+    <None Include="changes.txt" />
     <None Include="ClassDiagram1.cd" />
     <None Include="icon.ico" />
   </ItemGroup>
