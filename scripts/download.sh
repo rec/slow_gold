@@ -3,7 +3,7 @@
 CONFIG=debug
 
 cd "$ROOT"
-source "$ROOT/rec/scripts/base.sh"
+source "$ROOT/rec/scripts/environmentVariables.sh"
 
 if [ ! "$1" ]
 then

@@ -1,4 +1,4 @@
-("$ROOT/rec/scripts/jucer/build_jucer_files.py" &&\
+("$ROOT/rec/scripts/jucer"/build_jucer_files.py $PROJECTS &&\
 \
  ICON_SOURCE="$ROOT/rec/art/icons" &&\
  ICON_MAC="$ROOT/rec/projects/slow/Builds/MacOSX" &&\

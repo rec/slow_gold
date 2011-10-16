@@ -1,6 +1,6 @@
 cd $ROOT
 
-source "$ROOT/rec/scripts/base.sh"
+source "$ROOT/rec/scripts/environmentVariables.sh"
 
 CONFIG=$1
 shift

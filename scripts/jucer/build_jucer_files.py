@@ -9,22 +9,28 @@
 # Essentially, you can do as you please with it.  Have fun!
 
 import os
+import sys
 
 import jucer
 
-def build(*names):
-  for name in names:
-    root = os.getenv('ROOT')
-    base = name.split('.')[0]
-    doc = '%s/rec/projects/%s/%s.jucer' % (root, base, name)
+DEFAULT_PROJECTS = 'command', 'slow', 'tests'
 
-    results = jucer.Jucer(doc, 'test' in name, root).toxml()
-    f = open(doc, 'w')
-    for line in results.split('\n'):
-      if line.strip():
-        f.write(line)
-        f.write('\n')
-    print 'Written', doc
+def buildOne(name):
+  root = os.getenv('ROOT')
+  base = name.split('.')[0]
+  doc = '%s/rec/projects/%s/%s.jucer' % (root, base, name)
 
+  results = jucer.Jucer(doc, 'test' in name, root).toxml()
+  f = open(doc, 'w')
+  for line in results.split('\n'):
+    if line.strip():
+      f.write(line)
+      f.write('\n')
+  print 'Written', doc
 
-build('slow', 'tests', 'command')
+def build(names):
+  for name_group in (names or DEFAULT_PROJECTS):
+    for name in name_group.split(' '):
+      buildOne(name)
+
+build(sys.argv[1:])
