@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="FDsISriJH" name="Slow">
+  <MAINGROUP id="iAe6dQ1nz" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -987,8 +987,6 @@
           <FILE compile="0" file="../../src/rec/util/partition/Partition.h" id="t6z3IICf2"
                 name="Partition.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/util/Platform.cpp" id="GHSz1JaY9"
-              name="Platform.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Platform.h" id="umChgFIaH"
               name="Platform.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="qSpbRp5vh"
@@ -1275,7 +1273,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="wTtznXRcw" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="xOoCPZYJH" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

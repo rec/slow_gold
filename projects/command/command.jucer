@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="NGFHL4v84" name="command">
+  <MAINGROUP id="9lXiehmbh" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -987,8 +987,6 @@
           <FILE compile="0" file="../../src/rec/util/partition/Partition.h" id="BrTzh3AJ2"
                 name="Partition.h" resource="0"/>
         </GROUP>
-        <FILE compile="1" file="../../src/rec/util/Platform.cpp" id="TTvdToAer"
-              name="Platform.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/Platform.h" id="YDCTiK6QO"
               name="Platform.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/util/PointerList.h" id="mAw0zFgKm"
@@ -1275,7 +1273,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="GQpbKlcGz" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="9fmRvf3sx" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

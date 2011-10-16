@@ -3,12 +3,15 @@
 
 #include <stdlib.h>
 
-#if _MSC_VER
-void * reallocf(void *ptr, size_t size);
+#ifndef JUCE_MAC
 
-#endif //_MSC_VER
+inline void* reallocf(void *ptr, size_t size) {
+  void* result = realloc(ptr, size);
+  if (!result)
+    free(ptr);
+	return NULL;
+}
 
-
-
+#endif // JUCE_MAC
 
 #endif  // __REC_UTIL_PLATFORM
