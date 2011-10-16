@@ -39,7 +39,6 @@ double zoomFunction(double increment) {
 }
 
 void zoom(Model* model, const MouseEvent& e, RealTime time, double increment) {
-  DLOG(INFO) << "here!";
   const juce::ModifierKeys& k = e.mods;
   double s = k.isAltDown() ? SMALL_RATIO : k.isCommandDown() ? BIG_RATIO : 1.0;
   model->zoom(time, zoomFunction(s * increment));
@@ -84,7 +83,6 @@ void MouseListener::mouseDown(const MouseEvent& e) {
   if (e.eventComponent == waveform) {
     RealTime time = waveform->xToTime(e.x);
     Mode::Action action = getClickAction(e);
-    // DLOG(INFO) << "Action: " << Mode::Action_Name(action);
     if (action == Mode::DRAG)
       waveformDragStart_ = DataListener<ZoomProto>::data_->get().begin();
 

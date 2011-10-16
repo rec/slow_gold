@@ -61,7 +61,6 @@ Model::Model(Instance* i) : HasInstance(i),
 }
 
 void Model::setFile(const VirtualFile& f) {
-  // DLOG(INFO) << "setFile: " << f.ShortDebugString();
   player()->clear();
   components()->playerController_.clearLevels();
   components()->directoryTree_.refreshNode(file_);
@@ -148,7 +147,8 @@ void Model::jumpToTime(Samples<44100> pos) {
   {
     ScopedLock l(lock_);
     if (!block::contains(timeSelection_, pos)) {
-      DLOG(INFO) << "Tried to jump to position outside selection " << pos;
+      // TODO: fix this.
+      LOG(ERROR) << "Tried to jump to position outside selection " << pos;
       return;
     }
 
@@ -171,7 +171,8 @@ void Model::operator()(const LoopPointList& loops) {
 
   timeSelection_ = audio::getTimeSelection(loops);
   if (timeSelection_.empty()) {
-    DLOG(ERROR) << "Empty selection for loops: "  << loops.ShortDebugString();
+    // TODO: fix this.
+    LOG(ERROR) << "Empty selection for loops: "  << loops.ShortDebugString();
   } else {
     BlockSet::const_iterator i = timeSelection_.begin();
     for (; i != timeSelection_.end(); ++i) {

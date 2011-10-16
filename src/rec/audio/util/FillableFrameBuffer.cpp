@@ -24,8 +24,10 @@ bool FillableFrameBuffer<Sample, CHANNELS>::setReader(
   }
 
   Samples<44100> size = reader->lengthInSamples;
-  if (!frames_.setLength(size))
+  if (!frames_.setLength(size)) {
+    LOG(ERROR) << "Unable to set frame length";
     return false;
+  }
 
   setLength(size);
   reader_.reset(reader);
@@ -44,7 +46,6 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
   }
 
   Samples<44100> size = std::min(block::getSize(b), blockSize_);
-  // TODO: bug Jules
   if (!reader_->read(bufferPointers_, CHANNELS, b.first, size.toInt(), false)) {
     LOG(ERROR) << "Reader failed to read!";
     return 0;
@@ -52,29 +53,12 @@ block::Size FillableFrameBuffer<Sample, CHANNELS>::doFillNextBlock(
 
   InterleavedFrame<Sample, CHANNELS>* frame = frames_.frames() + b.first;
 
-#if 0
-  int32 max = std::numeric_limits<int32>::min();
-  int32 min = std::numeric_limits<int32>::max();
-  DLOG(INFO) << "? min: " << min << ", max: " << max;
-#endif
-
   for (int i = 0; i < size; ++i, ++frame) {
     for (int c = 0; c < CHANNELS; ++c) {
       int32 sample = bufferPointers_[c][i];
       convertSample<int32, Sample>(sample, &frame->sample_[c]);
-#if 0
-      max = std::max(sample, max);
-      min = std::min(sample, min);
-      DLOG_EVERY_N(INFO, 3000) << double(sample) / std::numeric_limits<int32>::max() << ", " << frame->sample_[c];
-#endif
     }
   }
-
-#if 0
-  DLOG(INFO) << "min: " << min << ", max: " << max;
-  double m = std::numeric_limits<int32>::max();
-  DLOG(INFO) << "min: " << min / m << ", max: " << max / m;
-#endif
 
   return size;
 }
