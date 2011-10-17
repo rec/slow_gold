@@ -1215,6 +1215,9 @@
     <ClInclude Include="..\..\..\..\src\rec\util\Platform.h">
       <Filter>Slow\rec\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.h">
+      <Filter>Slow\proto\rec\command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp">
@@ -1907,8 +1910,8 @@
     <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp">
       <Filter>Slow\rec\app</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\util\Platform.cpp">
-      <Filter>Slow\rec\util</Filter>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.cc">
+      <Filter>Slow\proto\rec\command</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

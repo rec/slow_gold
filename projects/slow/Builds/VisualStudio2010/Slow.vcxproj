@@ -96,7 +96,7 @@
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
     <ResourceCompile>
@@ -110,7 +110,7 @@
       <ProgramDatabaseFile>.\Debug\SlowBurn.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog_static.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\msvc\\gtest\\Debug gtestd.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -252,6 +252,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.h" />
     <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.h" />
     <ClInclude Include="..\..\..\..\src\rec\app\Application.h" />
     <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h" />
@@ -597,6 +598,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.cc" />
     <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc" />
     <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp" />
@@ -776,7 +778,6 @@
     <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\Platform.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp" />
     <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp" />
