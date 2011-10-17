@@ -57,7 +57,7 @@ void resetGainToUnity(Instance* i) {
 void keyboardMappings(Instance* i) {
   gui::DialogLocker l;
   if (!l.isLocked()) {
-    PlatformUtilities::beep();
+    beep();
     return;
   }
 
@@ -76,7 +76,7 @@ void keyboardMappings(Instance* i) {
 void midiMappings(Instance* i) {
   gui::DialogLocker l;
   if (!l.isLocked()) {
-    PlatformUtilities::beep();
+    beep();
     return;
   }
 

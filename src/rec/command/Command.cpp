@@ -1,4 +1,5 @@
 #include "rec/command/Command.h"
+#include "rec/command/CommandData.h"
 #include "rec/command/Access.pb.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/util/Defaulter.h"
@@ -8,8 +9,6 @@ namespace rec {
 namespace command {
 
 namespace {
-
-//Def<
 
 class CommandDatabase {
  public:
@@ -24,7 +23,7 @@ class CommandDatabase {
     return (i == map_.end()) ? Command::default_instance() : *(i->second);
   }
 
-  const CommandTable commands() {
+  const CommandTable commandTable() {
     Lock l(lock_);
     return map_;
   }
@@ -33,21 +32,13 @@ class CommandDatabase {
     Lock l(lock_);
     Access access = data::get<Access>();
     clear();
-    readCommands();
-    mergeDescriptions(access);
-    mergeKeyPresses(access);
+
+    merge(&map_, commands(), NEW);
+    merge(&map_, descriptions(access));
+    merge(&map_, keyPresses(access));
   }
 
  private:
-  void readCommands() {
-  }
-
-  void mergeDescriptions(const Access& access) {
-  }
-
-  void mergeKeyPresses(const Access& access) {
-  }
-
   CriticalSection lock_;
   CommandTable map_;
 
@@ -63,7 +54,7 @@ CommandDatabase* commandDatabase() {
 
 
 const Command getCommand(Command::Type t) { return commandDatabase()->command(t); }
-const CommandTable getCommands() { return commandDatabase()->commands(); }
+const CommandTable getCommands() { return commandDatabase()->commandTable(); }
 void recalculate() { commandDatabase()->recalculate(); }
 
 }  // namespace command

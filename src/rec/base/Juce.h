@@ -62,7 +62,6 @@ typedef juce::OutputStream OutputStream;
 
 typedef juce::PopupMenu PopupMenu;
 typedef juce::PositionableAudioSource PositionableAudioSource;
-typedef juce::PlatformUtilities PlatformUtilities;
 
 typedef juce::String String;
 typedef juce::ScopedLock ScopedLock;
@@ -110,6 +109,10 @@ inline const string operator+(const string& s, const String& t) {
 inline const string str(const MidiMessage& msg) {
   return string(reinterpret_cast<const char*>(msg.getRawData()),
                 msg.getRawDataSize());
+}
+
+inline void beep( ) {
+  juce::LookAndFeel::getDefaultLookAndFeel().playAlertSound();
 }
 
 }  // namespace rec

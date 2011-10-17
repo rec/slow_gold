@@ -32,7 +32,7 @@ Cuttable* current() {
 bool cutToClipboard() {
   Cuttable* c = current();
   if (!c->canCut()) {
-    juce::PlatformUtilities::beep();
+    beep();
     return false;
   }
 
@@ -44,7 +44,7 @@ bool cutToClipboard() {
 bool copyToClipboard() {
   Cuttable* c = current();
   if (!c->canCopy()) {
-    juce::PlatformUtilities::beep();
+    beep();
     return false;
   }
   SystemClipboard::copyTextToClipboard(str(c->copy()));
@@ -54,13 +54,13 @@ bool copyToClipboard() {
 bool pasteFromClipboard() {
   Cuttable* c = current();
   if (!c->canPaste()) {
-    juce::PlatformUtilities::beep();
+    beep();
     return false;
   }
 
   string s(str(SystemClipboard::getTextFromClipboard()));
   if (s.empty()) {
-    juce::PlatformUtilities::beep();
+    beep();
     return false;
   }
 
@@ -75,12 +75,12 @@ bool cutNoClipboard() {
     return true;
   }
 
-  juce::PlatformUtilities::beep();
+  beep();
   return false;
 }
 
-bool canCopy() { 
-  return current()->canCopy(); 
+bool canCopy() {
+  return current()->canCopy();
 }
 bool canCut() { return current()->canCut(); }
 bool canPaste() { return current()->canPaste(); }

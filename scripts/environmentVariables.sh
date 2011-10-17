@@ -11,5 +11,6 @@ PREFIX_FLAG="--prefix"
 SUFFIX="tar.bz2"
 EXTRACT="tar xjf"
 PROJECTS="slow tests command"
+JUCER="Jucer"
 #
 CONFIG_PACKAGES="$PACKAGES"

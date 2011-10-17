@@ -49,7 +49,7 @@ bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) 
   if (success)
     data::set(s.loops_, instance->model_->file());
   else
-    PlatformUtilities::beep();
+    beep();
 
   return success;
 }

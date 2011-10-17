@@ -15,7 +15,7 @@ class GenericApplication : public juce::JUCEApplication {
   static const int SAVE_PERIOD = 25;
   static const int PRIORITY = 4;
 
-  virtual ~GenericApplication() {}
+  virtual ~GenericApplication();
 
   GenericApplication(const String& name, const String& version);
 

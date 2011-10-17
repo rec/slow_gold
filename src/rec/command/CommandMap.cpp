@@ -25,7 +25,7 @@ bool addKey(KeyToCommand* toCommand,
   bool exists = (toCommand->find(key) != toCommand->end());
 
   if (exists)
-    PlatformUtilities::beep();
+    beep();
   else
     (*toCommand)[key] = command;
 

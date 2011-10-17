@@ -19,6 +19,8 @@ GenericApplication::GenericApplication(const String& name, const String& v)
     : name_(name), version_(v) {
 }
 
+GenericApplication::~GenericApplication() {}
+
 void GenericApplication::initialise(const String&) {
   FLAGS_logtostderr = true;
   setName(name_);

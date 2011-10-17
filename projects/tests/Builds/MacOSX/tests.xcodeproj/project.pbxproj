@@ -72,6 +72,7 @@
 		CB259A46E182713FBB706D99 = { isa = PBXBuildFile; fileRef = B61EAE1B79B3D4974D15F8A5; };
 		8A1F66E4A5CF1B4F78B542C7 = { isa = PBXBuildFile; fileRef = C4DFFC3D3A435681510DEF47; };
 		838F57D3C1DA4AACDAA36AEC = { isa = PBXBuildFile; fileRef = 6011F232AEB57506156913E1; };
+		61183643664FA0292533DB37 = { isa = PBXBuildFile; fileRef = CB5FC04E7B0346EAAE69A6C9; };
 		F9F071E7041BE250A5DA6EB1 = { isa = PBXBuildFile; fileRef = B2903DED871B1C7458B15DE7; };
 		515C9405E5C546599F307826 = { isa = PBXBuildFile; fileRef = 8DB1000B1EDD124002EFD886; };
 		1D658B4612F9D9B5244AE531 = { isa = PBXBuildFile; fileRef = A25B99177B2FBBF801238912; };
@@ -423,6 +424,8 @@
 		AAB32EA297812F1C88B42099 = { isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../src/rec/binary/logo.png; sourceTree = SOURCE_ROOT; };
 		6011F232AEB57506156913E1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Command.cpp; path = ../../../../src/rec/command/Command.cpp; sourceTree = SOURCE_ROOT; };
 		E0E53271295BAF9F59A71694 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Command.h; path = ../../../../src/rec/command/Command.h; sourceTree = SOURCE_ROOT; };
+		CB5FC04E7B0346EAAE69A6C9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandData.cpp; path = ../../../../src/rec/command/CommandData.cpp; sourceTree = SOURCE_ROOT; };
+		214F1B164100C66058A5248A = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandData.h; path = ../../../../src/rec/command/CommandData.h; sourceTree = SOURCE_ROOT; };
 		D28A4026108A3C2DFD6EF4B1 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandEntryWindow.h; path = ../../../../src/rec/command/CommandEntryWindow.h; sourceTree = SOURCE_ROOT; };
 		B2903DED871B1C7458B15DE7 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CommandMap.cpp; path = ../../../../src/rec/command/CommandMap.cpp; sourceTree = SOURCE_ROOT; };
 		1536FCA839A4D61D2B0DFC68 = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommandMap.h; path = ../../../../src/rec/command/CommandMap.h; sourceTree = SOURCE_ROOT; };
@@ -1044,6 +1047,8 @@
 		543C5B0340FB0EC80BA50D65 = { isa = PBXGroup; children = (
 				6011F232AEB57506156913E1,
 				E0E53271295BAF9F59A71694,
+				CB5FC04E7B0346EAAE69A6C9,
+				214F1B164100C66058A5248A,
 				D28A4026108A3C2DFD6EF4B1,
 				B2903DED871B1C7458B15DE7,
 				1536FCA839A4D61D2B0DFC68,
@@ -1613,7 +1618,7 @@
 				4FDFA33DF4EAF1E05335DA58 ); name = Frameworks; sourceTree = "<group>"; };
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
-		550E637A3EF9F760BD32DBA2 = { isa = PBXGroup; children = (
+		A440682B04E024BB702C1929 = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7,
@@ -1752,6 +1757,7 @@
 				CB259A46E182713FBB706D99,
 				8A1F66E4A5CF1B4F78B542C7,
 				838F57D3C1DA4AACDAA36AEC,
+				61183643664FA0292533DB37,
 				F9F071E7041BE250A5DA6EB1,
 				515C9405E5C546599F307826,
 				1D658B4612F9D9B5244AE531,
@@ -1968,7 +1974,7 @@
 				0DAF7DB5AF9756110C33DE57,
 				D94679246E83607D75451204,
 				8D6B9A6D477EAB96FF270105 ); buildRules = ( ); dependencies = ( ); name = tests; productName = tests; productReference = 87C5F902F5AF6EF45EC5B9EE; productInstallPath = /usr/bin; productType = "com.apple.product-type.tool"; };
-		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = 550E637A3EF9F760BD32DBA2; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
+		4C2186C9ED18EDA59BA7A21A = { isa = PBXProject; buildConfigurationList = 893E5F8246FC8A270EE244AF; compatibilityVersion = "Xcode 3.0"; hasScannedForEncodings = 0; mainGroup = A440682B04E024BB702C1929; projectDirPath = ""; projectRoot = ""; targets = ( 5177F370FCF2CFB42FA17DC3 ); };
 	};
 	rootObject = 4C2186C9ED18EDA59BA7A21A;
 }

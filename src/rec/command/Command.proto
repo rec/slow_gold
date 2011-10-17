@@ -94,10 +94,9 @@ message Command {
   };
 
   optional Type type = 1;
-  optional string name = 2;  // English language name.
-  optional string category = 3;  // English language category.
-  optional Description description = 4;
-  optional KeyPress key_press = 5;
+  optional string category = 2;  // English language category.
+  optional Description description = 3;
+  optional KeyPress key_press = 4;
 };
 
 message Commands {

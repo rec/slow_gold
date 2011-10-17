@@ -1,8 +1,10 @@
-("$ROOT/rec/scripts/jucer"/build_jucer_files.py $PROJECTS &&\
+("$ROOT/rec/scripts/jucer/build_jucer_files.py" $PROJECTS &&\
 \
  ICON_SOURCE="$ROOT/rec/art/icons" &&\
  ICON_MAC="$ROOT/rec/projects/slow/Builds/MacOSX" &&\
  ICON_WINDOWS="$ROOT/rec/projects/slow/Builds/VisualStudio2008" &&\
+\
+ mkdir -p "$ICON_MAC" "$ICON_WINDOWS" &&\
 \
  cp -p "$ICON_SOURCE/SampleIconMac.icns" "$ICON_MAC/Icon.icns" &&\
  cp -p "$ICON_SOURCE/SampleIconWindows.ico" "$ICON_WINDOWS/icon.ico" &&\

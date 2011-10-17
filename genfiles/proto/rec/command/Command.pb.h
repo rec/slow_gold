@@ -570,37 +570,27 @@ class Command : public ::google::protobuf::Message {
   inline ::rec::command::Command_Type type() const;
   inline void set_type(::rec::command::Command_Type value);
   
-  // optional string name = 2;
-  inline bool has_name() const;
-  inline void clear_name();
-  static const int kNameFieldNumber = 2;
-  inline const ::std::string& name() const;
-  inline void set_name(const ::std::string& value);
-  inline void set_name(const char* value);
-  inline void set_name(const char* value, size_t size);
-  inline ::std::string* mutable_name();
-  
-  // optional string category = 3;
+  // optional string category = 2;
   inline bool has_category() const;
   inline void clear_category();
-  static const int kCategoryFieldNumber = 3;
+  static const int kCategoryFieldNumber = 2;
   inline const ::std::string& category() const;
   inline void set_category(const ::std::string& value);
   inline void set_category(const char* value);
   inline void set_category(const char* value, size_t size);
   inline ::std::string* mutable_category();
   
-  // optional .rec.command.Description description = 4;
+  // optional .rec.command.Description description = 3;
   inline bool has_description() const;
   inline void clear_description();
-  static const int kDescriptionFieldNumber = 4;
+  static const int kDescriptionFieldNumber = 3;
   inline const ::rec::command::Description& description() const;
   inline ::rec::command::Description* mutable_description();
   
-  // optional .rec.command.KeyPress key_press = 5;
+  // optional .rec.command.KeyPress key_press = 4;
   inline bool has_key_press() const;
   inline void clear_key_press();
-  static const int kKeyPressFieldNumber = 5;
+  static const int kKeyPressFieldNumber = 4;
   inline const ::rec::command::KeyPress& key_press() const;
   inline ::rec::command::KeyPress* mutable_key_press();
   
@@ -610,8 +600,6 @@ class Command : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int type_;
-  ::std::string* name_;
-  static const ::std::string _default_name_;
   ::std::string* category_;
   static const ::std::string _default_category_;
   ::rec::command::Description* description_;
@@ -620,7 +608,7 @@ class Command : public ::google::protobuf::Message {
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -1198,120 +1186,78 @@ inline void Command::set_type(::rec::command::Command_Type value) {
   type_ = value;
 }
 
-// optional string name = 2;
-inline bool Command::has_name() const {
-  return _has_bit(1);
-}
-inline void Command::clear_name() {
-  if (name_ != &_default_name_) {
-    name_->clear();
-  }
-  _clear_bit(1);
-}
-inline const ::std::string& Command::name() const {
-  return *name_;
-}
-inline void Command::set_name(const ::std::string& value) {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void Command::set_name(const char* value) {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(value);
-}
-inline void Command::set_name(const char* value, size_t size) {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  name_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* Command::mutable_name() {
-  _set_bit(1);
-  if (name_ == &_default_name_) {
-    name_ = new ::std::string;
-  }
-  return name_;
-}
-
-// optional string category = 3;
+// optional string category = 2;
 inline bool Command::has_category() const {
-  return _has_bit(2);
+  return _has_bit(1);
 }
 inline void Command::clear_category() {
   if (category_ != &_default_category_) {
     category_->clear();
   }
-  _clear_bit(2);
+  _clear_bit(1);
 }
 inline const ::std::string& Command::category() const {
   return *category_;
 }
 inline void Command::set_category(const ::std::string& value) {
-  _set_bit(2);
+  _set_bit(1);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(value);
 }
 inline void Command::set_category(const char* value) {
-  _set_bit(2);
+  _set_bit(1);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(value);
 }
 inline void Command::set_category(const char* value, size_t size) {
-  _set_bit(2);
+  _set_bit(1);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Command::mutable_category() {
-  _set_bit(2);
+  _set_bit(1);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   return category_;
 }
 
-// optional .rec.command.Description description = 4;
+// optional .rec.command.Description description = 3;
 inline bool Command::has_description() const {
-  return _has_bit(3);
+  return _has_bit(2);
 }
 inline void Command::clear_description() {
   if (description_ != NULL) description_->::rec::command::Description::Clear();
-  _clear_bit(3);
+  _clear_bit(2);
 }
 inline const ::rec::command::Description& Command::description() const {
   return description_ != NULL ? *description_ : *default_instance_->description_;
 }
 inline ::rec::command::Description* Command::mutable_description() {
-  _set_bit(3);
+  _set_bit(2);
   if (description_ == NULL) description_ = new ::rec::command::Description;
   return description_;
 }
 
-// optional .rec.command.KeyPress key_press = 5;
+// optional .rec.command.KeyPress key_press = 4;
 inline bool Command::has_key_press() const {
-  return _has_bit(4);
+  return _has_bit(3);
 }
 inline void Command::clear_key_press() {
   if (key_press_ != NULL) key_press_->::rec::command::KeyPress::Clear();
-  _clear_bit(4);
+  _clear_bit(3);
 }
 inline const ::rec::command::KeyPress& Command::key_press() const {
   return key_press_ != NULL ? *key_press_ : *default_instance_->key_press_;
 }
 inline ::rec::command::KeyPress* Command::mutable_key_press() {
-  _set_bit(4);
+  _set_bit(3);
   if (key_press_ == NULL) key_press_ = new ::rec::command::KeyPress;
   return key_press_;
 }

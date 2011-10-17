@@ -98,9 +98,8 @@ void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Description));
   Command_descriptor_ = file->message_type(3);
-  static const int Command_offsets_[5] = {
+  static const int Command_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, category_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, description_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Command, key_press_),
@@ -222,38 +221,38 @@ void protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto() {
     "\001(\010\022\013\n\003alt\030\003 \001(\010\";\n\010KeyPress\022\"\n\004meta\030\001 \001"
     "(\0132\024.rec.command.KeyMeta\022\013\n\003key\030\002 \001(\t\"7\n"
     "\013Description\022\014\n\004menu\030\001 \001(\t\022\014\n\004full\030\002 \001(\t"
-    "\022\014\n\004help\030\003 \001(\t\"\312\010\n\007Command\022\'\n\004type\030\001 \001(\016"
-    "2\031.rec.command.Command.Type\022\014\n\004name\030\002 \001("
-    "\t\022\020\n\010category\030\003 \001(\t\022-\n\013description\030\004 \001(\013"
-    "2\030.rec.command.Description\022(\n\tkey_press\030"
-    "\005 \001(\0132\025.rec.command.KeyPress\"\234\007\n\004Type\022\010\n"
-    "\004NONE\020\000\022\022\n\016ADD_LOOP_POINT\020\001\022\025\n\021AUDIO_PRE"
-    "FERENCES\020\002\022\023\n\017CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR"
-    "_LOOPS\020\004\022\031\n\025CLEAR_SAVED_FILE_DATA\020\005\022\016\n\nC"
-    "LOSE_FILE\020\006\022\025\n\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJ"
-    "ECT_CDS\020\010\022\031\n\025INVERT_LOOP_SELECTION\020\t\022\025\n\021"
-    "KEYBOARD_MAPPINGS\020\n\022\021\n\rMIDI_MAPPINGS\020\013\022\026"
-    "\n\022MUTE_VOLUME_TOGGLE\020\014\022\024\n\020NUDGE_BEGIN_LE"
-    "FT\020\r\022\025\n\021NUDGE_BEGIN_RIGHT\020\016\022\022\n\016NUDGE_END"
-    "_LEFT\020\017\022\023\n\017NUDGE_END_RIGHT\020\020\022\025\n\021NUDGE_VO"
-    "LUME_DOWN\020\021\022\023\n\017NUDGE_VOLUME_UP\020\022\022\010\n\004OPEN"
-    "\020\023\022\020\n\014RECENT_FILES\020\024\022\010\n\004REDO\020\025\022\027\n\023RESET_"
-    "GAIN_TO_UNITY\020\026\022\032\n\026TOGGLE_WHOLE_SONG_LOO"
-    "P\020\027\022\025\n\021TOGGLE_START_STOP\020\030\022\031\n\025TOGGLE_STR"
-    "ETCH_ENABLE\020\031\022\016\n\nTREE_CLOSE\020\032\022\r\n\tTREE_DO"
-    "WN\020\033\022\r\n\tTREE_LEFT\020\034\022\r\n\tTREE_OPEN\020\035\022\016\n\nTR"
-    "EE_RIGHT\020\036\022\013\n\007TREE_UP\020\037\022\010\n\004UNDO\020 \022\013\n\007ZOO"
-    "M_IN\020!\022\014\n\010ZOOM_OUT\020\"\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202"
-    " \022\010\n\003CUT\020\203 \022\t\n\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSE"
-    "LECT_ALL\020\206 \022\021\n\014DESELECT_ALL\020\207 \022\014\n\006SELECT"
-    "\020\300\204=\022\021\n\013SELECT_ONLY\020\340\221C\022\014\n\006TOGGLE\020\200\237I\022\016\n"
-    "\010UNSELECT\020\240\254O\022\n\n\004JUMP\020\300\271U\022\023\n\rJUMP_SELECT"
-    "ED\020\340\306[\022\020\n\nBANK_START\020\300\204=\022\016\n\010BANK_END\020\200\324a"
-    "\022\017\n\tBANK_SIZE\020\240\215\006\022\020\n\014LAST_COMMAND\020\"\"1\n\010C"
-    "ommands\022%\n\007command\030\001 \003(\0132\024.rec.command.C"
-    "ommand\"&\n\010KeyValue\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
-    "\030\002 \001(\t\"3\n\007Mapping\022(\n\tkey_value\030\001 \003(\0132\025.r"
-    "ec.command.KeyValue", 1459);
+    "\022\014\n\004help\030\003 \001(\t\"\274\010\n\007Command\022\'\n\004type\030\001 \001(\016"
+    "2\031.rec.command.Command.Type\022\020\n\010category\030"
+    "\002 \001(\t\022-\n\013description\030\003 \001(\0132\030.rec.command"
+    ".Description\022(\n\tkey_press\030\004 \001(\0132\025.rec.co"
+    "mmand.KeyPress\"\234\007\n\004Type\022\010\n\004NONE\020\000\022\022\n\016ADD"
+    "_LOOP_POINT\020\001\022\025\n\021AUDIO_PREFERENCES\020\002\022\023\n\017"
+    "CLEAR_NAVIGATOR\020\003\022\017\n\013CLEAR_LOOPS\020\004\022\031\n\025CL"
+    "EAR_SAVED_FILE_DATA\020\005\022\016\n\nCLOSE_FILE\020\006\022\025\n"
+    "\021DIM_VOLUME_TOGGLE\020\007\022\r\n\tEJECT_CDS\020\010\022\031\n\025I"
+    "NVERT_LOOP_SELECTION\020\t\022\025\n\021KEYBOARD_MAPPI"
+    "NGS\020\n\022\021\n\rMIDI_MAPPINGS\020\013\022\026\n\022MUTE_VOLUME_"
+    "TOGGLE\020\014\022\024\n\020NUDGE_BEGIN_LEFT\020\r\022\025\n\021NUDGE_"
+    "BEGIN_RIGHT\020\016\022\022\n\016NUDGE_END_LEFT\020\017\022\023\n\017NUD"
+    "GE_END_RIGHT\020\020\022\025\n\021NUDGE_VOLUME_DOWN\020\021\022\023\n"
+    "\017NUDGE_VOLUME_UP\020\022\022\010\n\004OPEN\020\023\022\020\n\014RECENT_F"
+    "ILES\020\024\022\010\n\004REDO\020\025\022\027\n\023RESET_GAIN_TO_UNITY\020"
+    "\026\022\032\n\026TOGGLE_WHOLE_SONG_LOOP\020\027\022\025\n\021TOGGLE_"
+    "START_STOP\020\030\022\031\n\025TOGGLE_STRETCH_ENABLE\020\031\022"
+    "\016\n\nTREE_CLOSE\020\032\022\r\n\tTREE_DOWN\020\033\022\r\n\tTREE_L"
+    "EFT\020\034\022\r\n\tTREE_OPEN\020\035\022\016\n\nTREE_RIGHT\020\036\022\013\n\007"
+    "TREE_UP\020\037\022\010\n\004UNDO\020 \022\013\n\007ZOOM_IN\020!\022\014\n\010ZOOM"
+    "_OUT\020\"\022\t\n\004QUIT\020\201 \022\010\n\003DEL\020\202 \022\010\n\003CUT\020\203 \022\t\n"
+    "\004COPY\020\204 \022\n\n\005PASTE\020\205 \022\017\n\nSELECT_ALL\020\206 \022\021\n"
+    "\014DESELECT_ALL\020\207 \022\014\n\006SELECT\020\300\204=\022\021\n\013SELECT"
+    "_ONLY\020\340\221C\022\014\n\006TOGGLE\020\200\237I\022\016\n\010UNSELECT\020\240\254O\022"
+    "\n\n\004JUMP\020\300\271U\022\023\n\rJUMP_SELECTED\020\340\306[\022\020\n\nBANK"
+    "_START\020\300\204=\022\016\n\010BANK_END\020\200\324a\022\017\n\tBANK_SIZE\020"
+    "\240\215\006\022\020\n\014LAST_COMMAND\020\"\"1\n\010Commands\022%\n\007com"
+    "mand\030\001 \003(\0132\024.rec.command.Command\"&\n\010KeyV"
+    "alue\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"3\n\007Mapp"
+    "ing\022(\n\tkey_value\030\001 \003(\0132\025.rec.command.Key"
+    "Value", 1445);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "rec/command/Command.proto", &protobuf_RegisterTypes);
   KeyMeta::default_instance_ = new KeyMeta();
@@ -1294,11 +1293,9 @@ const Command_Type Command::Type_MIN;
 const Command_Type Command::Type_MAX;
 const int Command::Type_ARRAYSIZE;
 #endif  // _MSC_VER
-const ::std::string Command::_default_name_;
 const ::std::string Command::_default_category_;
 #ifndef _MSC_VER
 const int Command::kTypeFieldNumber;
-const int Command::kNameFieldNumber;
 const int Command::kCategoryFieldNumber;
 const int Command::kDescriptionFieldNumber;
 const int Command::kKeyPressFieldNumber;
@@ -1323,7 +1320,6 @@ Command::Command(const Command& from)
 void Command::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
-  name_ = const_cast< ::std::string*>(&_default_name_);
   category_ = const_cast< ::std::string*>(&_default_category_);
   description_ = NULL;
   key_press_ = NULL;
@@ -1335,9 +1331,6 @@ Command::~Command() {
 }
 
 void Command::SharedDtor() {
-  if (name_ != &_default_name_) {
-    delete name_;
-  }
   if (category_ != &_default_category_) {
     delete category_;
   }
@@ -1371,19 +1364,14 @@ void Command::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
     if (_has_bit(1)) {
-      if (name_ != &_default_name_) {
-        name_->clear();
-      }
-    }
-    if (_has_bit(2)) {
       if (category_ != &_default_category_) {
         category_->clear();
       }
     }
-    if (_has_bit(3)) {
+    if (_has_bit(2)) {
       if (description_ != NULL) description_->::rec::command::Description::Clear();
     }
-    if (_has_bit(4)) {
+    if (_has_bit(3)) {
       if (key_press_ != NULL) key_press_->::rec::command::KeyPress::Clear();
     }
   }
@@ -1413,29 +1401,12 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_name;
+        if (input->ExpectTag(18)) goto parse_category;
         break;
       }
       
-      // optional string name = 2;
+      // optional string category = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_name:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->name().data(), this->name().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_category;
-        break;
-      }
-      
-      // optional string category = 3;
-      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_category:
@@ -1447,12 +1418,12 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_description;
+        if (input->ExpectTag(26)) goto parse_description;
         break;
       }
       
-      // optional .rec.command.Description description = 4;
-      case 4: {
+      // optional .rec.command.Description description = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_description:
@@ -1461,12 +1432,12 @@ bool Command::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_key_press;
+        if (input->ExpectTag(34)) goto parse_key_press;
         break;
       }
       
-      // optional .rec.command.KeyPress key_press = 5;
-      case 5: {
+      // optional .rec.command.KeyPress key_press = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_key_press:
@@ -1503,34 +1474,25 @@ void Command::SerializeWithCachedSizes(
       1, this->type(), output);
   }
   
-  // optional string name = 2;
+  // optional string category = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->name(), output);
-  }
-  
-  // optional string category = 3;
-  if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->category().data(), this->category().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->category(), output);
+      2, this->category(), output);
   }
   
-  // optional .rec.command.Description description = 4;
+  // optional .rec.command.Description description = 3;
+  if (_has_bit(2)) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->description(), output);
+  }
+  
+  // optional .rec.command.KeyPress key_press = 4;
   if (_has_bit(3)) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->description(), output);
-  }
-  
-  // optional .rec.command.KeyPress key_press = 5;
-  if (_has_bit(4)) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->key_press(), output);
+      4, this->key_press(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1547,38 +1509,28 @@ void Command::SerializeWithCachedSizes(
       1, this->type(), target);
   }
   
-  // optional string name = 2;
+  // optional string category = 2;
   if (_has_bit(1)) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->name().data(), this->name().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
-  }
-  
-  // optional string category = 3;
-  if (_has_bit(2)) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->category().data(), this->category().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->category(), target);
+        2, this->category(), target);
   }
   
-  // optional .rec.command.Description description = 4;
+  // optional .rec.command.Description description = 3;
+  if (_has_bit(2)) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->description(), target);
+  }
+  
+  // optional .rec.command.KeyPress key_press = 4;
   if (_has_bit(3)) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->description(), target);
-  }
-  
-  // optional .rec.command.KeyPress key_press = 5;
-  if (_has_bit(4)) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        5, this->key_press(), target);
+        4, this->key_press(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1598,28 +1550,21 @@ int Command::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
-    // optional string name = 2;
-    if (has_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->name());
-    }
-    
-    // optional string category = 3;
+    // optional string category = 2;
     if (has_category()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->category());
     }
     
-    // optional .rec.command.Description description = 4;
+    // optional .rec.command.Description description = 3;
     if (has_description()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->description());
     }
     
-    // optional .rec.command.KeyPress key_press = 5;
+    // optional .rec.command.KeyPress key_press = 4;
     if (has_key_press()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1657,15 +1602,12 @@ void Command::MergeFrom(const Command& from) {
       set_type(from.type());
     }
     if (from._has_bit(1)) {
-      set_name(from.name());
-    }
-    if (from._has_bit(2)) {
       set_category(from.category());
     }
-    if (from._has_bit(3)) {
+    if (from._has_bit(2)) {
       mutable_description()->::rec::command::Description::MergeFrom(from.description());
     }
-    if (from._has_bit(4)) {
+    if (from._has_bit(3)) {
       mutable_key_press()->::rec::command::KeyPress::MergeFrom(from.key_press());
     }
   }
@@ -1692,7 +1634,6 @@ bool Command::IsInitialized() const {
 void Command::Swap(Command* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    std::swap(name_, other->name_);
     std::swap(category_, other->category_);
     std::swap(description_, other->description_);
     std::swap(key_press_, other->key_press_);
