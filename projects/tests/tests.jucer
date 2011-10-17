@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="gx4AWJL9z" name="tests">
+  <MAINGROUP id="cG3P8fw4k" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -752,10 +752,6 @@
                 name="MediaPlay.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlay.svg.h" id="RXzReI0Bm"
                 name="MediaPlay.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.cpp"
-                id="cHkBi2uhQ" name="MediaPlaybackStart.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.h"
-                id="Gbe6TBX6E" name="MediaPlaybackStart.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp"
                 id="Jqqb08Oql" name="MediaPlaybackStop.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.h"
@@ -764,6 +760,10 @@
                 id="Kfn6rJFtP" name="MediaRecord.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaRecord.svg.h" id="QZHcK48Lr"
                 name="MediaRecord.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MPStart.svg.cpp" id="QsjvBptga"
+                name="MPStart.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MPStart.svg.h" id="SspYcrGPT"
+                name="MPStart.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/OpenFolder.svg.cpp"
                 id="4motCqz4o" name="OpenFolder.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/OpenFolder.svg.h" id="LNPCGbipx"
@@ -1337,7 +1337,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="vuJvXdOTk" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="jQoyV8nG3" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

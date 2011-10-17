@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="p3LnLpCIu" name="Slow">
+  <MAINGROUP id="dRNFjes7l" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -724,10 +724,6 @@
                 name="MediaPlay.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlay.svg.h" id="tfDV48fnd"
                 name="MediaPlay.svg.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.cpp"
-                id="hyj3PjF7b" name="MediaPlaybackStart.svg.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.h"
-                id="wdQ3wxw3m" name="MediaPlaybackStart.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp"
                 id="4PJcnJuTq" name="MediaPlaybackStop.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.h"
@@ -736,6 +732,10 @@
                 id="zGCRfHEBc" name="MediaRecord.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaRecord.svg.h" id="PEK6W9M0C"
                 name="MediaRecord.svg.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/gui/icon/MPStart.svg.cpp" id="s39PJGhE5"
+                name="MPStart.svg.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/gui/icon/MPStart.svg.h" id="8c3k1douI"
+                name="MPStart.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/OpenFolder.svg.cpp"
                 id="R33NUwFtT" name="OpenFolder.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/OpenFolder.svg.h" id="klLdIkBa6"
@@ -1277,7 +1277,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="IaVtoHn6X" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="yt6GbsczD" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

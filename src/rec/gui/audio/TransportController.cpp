@@ -1,6 +1,6 @@
 #include "rec/gui/audio/TransportController.h"
 
-#include "rec/gui/icon/MediaPlaybackStart.svg.h"
+#include "rec/gui/icon/MPStart.svg.h"
 #include "rec/gui/icon/MediaPlaybackStop.svg.h"
 #include "rec/gui/icon/MediaPlay.svg.h"
 #include "rec/gui/icon/MediaRecord.svg.h"

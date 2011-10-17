@@ -1,4 +1,4 @@
-#include "rec/gui/icon/MediaPlaybackStart.svg.h"
+#include "rec/gui/icon/MPStart.svg.h"
 
 #include "rec/base/ArraySize.h"
 #include "rec/data/Binary.h"
