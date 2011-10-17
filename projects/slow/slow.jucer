@@ -15,19 +15,20 @@
             juceFolder="../juce" libraryType="1" rtasFolder="c:\SDKs\PT_80_SDK"
             targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
     <XCODE_MAC extraDefs="" extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf"
-               juceFolder="../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX"
-               vstFolder="~/SDKs/vstsdk2.4" objCExtraSuffix="s5d1u"/>
-    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="/Users/tom/Documents/development/juce"/>
+               juceFolder="../juce" objCExtraSuffix="s5d1u" rtasFolder="~/SDKs/PT_80_SDK"
+               targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
+    <VS2010 juceFolder="/Users/tom/Documents/development/juce" libraryType="1"
+            targetFolder="Builds/VisualStudio2010"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../.."
-                   isDebug="1" name="Debug" optimisation="0" osxCompatibility="10.5 SDK"
-                   osxSDK="10.5 SDK" targetName="SlowBurn" osxArchitecture="32BitUniversal"/>
+                   isDebug="1" name="Debug" optimisation="0" osxArchitecture="32BitUniversal"
+                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
     <CONFIGURATION defines="__JUCE_CONFIG=Release" headerPath="${__JUCE_INCLUDES_RELEASE}"
-                   isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
-                   osxSDK="10.5 SDK" targetName="SlowBurn" osxArchitecture="32BitUniversal"/>
+                   isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
+                   osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="frIhLWFAv" name="Slow">
+  <MAINGROUP id="p3LnLpCIu" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -724,9 +725,9 @@
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlay.svg.h" id="tfDV48fnd"
                 name="MediaPlay.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.cpp"
-                id="2M23J7RCB" name="MediaPlaybackStart.svg.cpp" resource="0"/>
+                id="hyj3PjF7b" name="MediaPlaybackStart.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStart.svg.h"
-                id="wdQ4wxw3m" name="MediaPlaybackStart.svg.h" resource="0"/>
+                id="wdQ3wxw3m" name="MediaPlaybackStart.svg.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.cpp"
                 id="4PJcnJuTq" name="MediaPlaybackStop.svg.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/gui/icon/MediaPlaybackStop.svg.h"
@@ -1276,7 +1277,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="vMT38GRd3" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="IaVtoHn6X" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

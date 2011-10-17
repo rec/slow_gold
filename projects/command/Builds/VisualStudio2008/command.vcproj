@@ -33,7 +33,7 @@
             BufferSecurityCheck=""
             DebugInformationFormat="4"
             AdditionalIncludeDirectories="${__JUCE_INCLUDES}"
-            PreprocessorDefinitions="WIN32;_WINDOWS;DEBUG;_DEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
+            PreprocessorDefinitions="_CONSOLE;WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;__JUCE_CONFIG=Debug;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="1"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -90,7 +90,7 @@
             InlineFunctionExpansion="1"
             StringPooling="true"
             AdditionalIncludeDirectories="${__JUCE_INCLUDES}"
-            PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CONSOLE;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
+            PreprocessorDefinitions="_CONSOLE;WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;__JUCE_CONFIG=Release;GOOGLE_GLOG_DLL_DECL=__JUCE_INCLUDES=../../../../../rec/src\ ../../../../../rec/genfiles/proto\ ../../../../../juce\ ../../../../../rec/src/rec/data/yaml/include\ ../../../../../build/Debug/gflags/include\ ../../../../../glog/src/windows\ ../../../../../build/Debug/gtest/include\ ../../../../../mpg123/ports/MSVC++\ ../../../../../protobuf/src\ ../..;JUCER_VS2008_78A5006=1"
             RuntimeLibrary="0"
             RuntimeTypeInfo="true"
             UsePrecompiledHeader="0"
@@ -834,9 +834,9 @@
     </Filter>
     <Filter Name="Juce Library Code">
       <File RelativePath="..\..\JuceLibraryCode\AppConfig.h"/>
-      <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.cpp"/>
       <File RelativePath="..\..\JuceLibraryCode\BinaryData.h"/>
+      <File RelativePath="..\..\JuceLibraryCode\JuceHeader.h"/>
       <File RelativePath="..\..\JuceLibraryCode\JuceLibraryCode.cpp"/>
     </Filter>
   </Files>

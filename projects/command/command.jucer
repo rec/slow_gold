@@ -3,7 +3,7 @@
 <JUCERPROJECT buildAU="1" buildRTAS="0" buildVST="1" bundleIdentifier="to.ax.command"
               defines="DONT_SET_USING_JUCE_NAMESPACE JUCE_DONT_DEFINE_MACRO"
               id="TVOT2ObQ" juceFolder="../../../../juce" juceLinkage="amalg_big"
-              jucerVersion="23.0.0" name="command" pluginAUExportPrefix="CommandAU"
+              jucerVersion="3.0.0" name="command" pluginAUExportPrefix="CommandAU"
               pluginAUViewClass="CommandAU_V1" pluginChannelConfigs="{1, 1}, {2, 2}"
               pluginCode="Abcd" pluginDesc="Command" pluginEditorRequiresKeys="0"
               pluginIsSynth="0" pluginManufacturer="yourcompany" pluginManufacturerCode="abcd"
@@ -17,8 +17,8 @@
             targetFolder="Builds/VisualStudio2008" vstFolder="c:\SDKs\vstsdk2.4"/>
     <XCODE_MAC extraDefs="__JUCE_INCLUDES=../../../../../rec/src\\ ../../../../../rec/genfiles/proto\\ ../../../../../juce\\ ../../../../../rec/src/rec/data/yaml/include\\ ../../../../../build/Debug/gflags/include\\ ../../../../../build/Debug/glog/include\\ ../../../../../build/Debug/gtest/include\\ ../../../../../build/Debug/mpg123\\ ../../../../../build/Debug/protobuf/include\\ ../.."
                extraLinkerFlags="-L../../../../../build/${__JUCE_CONFIG}/gflags/lib -lgflags -L../../../../../build/${__JUCE_CONFIG}/glog/lib -lglog -L../../../../../build/${__JUCE_CONFIG}/gtest/lib -lgtest -lgtest_main -liconv -L../../../../../build/${__JUCE_CONFIG}/mpg123/lib -lmpg123 -L../../../../../build/${__JUCE_CONFIG}/protobuf/lib -lprotobuf"
-               juceFolder="../juce" rtasFolder="~/SDKs/PT_80_SDK" targetFolder="Builds/MacOSX"
-               vstFolder="~/SDKs/vstsdk2.4"/>
+               juceFolder="../juce" objCExtraSuffix="Q8YxaH" rtasFolder="~/SDKs/PT_80_SDK"
+               targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4"/>
   </EXPORTFORMATS>
   <CONFIGURATIONS>
     <CONFIGURATION defines="__JUCE_CONFIG=Debug" headerPath="${__JUCE_INCLUDES}"
@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="9klp6z5c5" name="command">
+  <MAINGROUP id="o87xpe82M" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -1277,7 +1277,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="jP3N7lQKi" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="3S1Qzx583" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

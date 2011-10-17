@@ -2,11 +2,11 @@
 {
 	998399C0F86735CBC8189E96 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeExecutable = E24E01C9144C8A1400A1039E /* Slow */;
+		activeExecutable = E24E031C144CD19000A1039E /* Slow */;
 		activeTarget = 9ED9F777074117C95C13794F /* Slow */;
-		codeSenseManager = E24E01D9144C8A1900A1039E /* Code sense */;
+		codeSenseManager = E24E0326144CD19500A1039E /* Code sense */;
 		executables = (
-			E24E01C9144C8A1400A1039E /* Slow */,
+			E24E031C144CD19000A1039E /* Slow */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
@@ -31,20 +31,20 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 340576038;
-			PBXWorkspaceStateSaveDate = 340576038;
+			PBXPerProjectTemplateStateSaveDate = 340578899;
+			PBXWorkspaceStateSaveDate = 340578899;
 		};
-		sourceControlManager = E24E01D8144C8A1900A1039E /* Source Control */;
+		sourceControlManager = E24E0325144CD19500A1039E /* Source Control */;
 		userBuildSettings = {
 		};
 	};
 	9ED9F777074117C95C13794F /* Slow */ = {
 		activeExec = 0;
 		executables = (
-			E24E01C9144C8A1400A1039E /* Slow */,
+			E24E031C144CD19000A1039E /* Slow */,
 		);
 	};
-	E24E01C9144C8A1400A1039E /* Slow */ = {
+	E24E031C144CD19000A1039E /* Slow */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
 		);
@@ -71,7 +71,7 @@
 		sourceDirectories = (
 		);
 	};
-	E24E01D8144C8A1900A1039E /* Source Control */ = {
+	E24E0325144CD19500A1039E /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
@@ -81,23 +81,8 @@
 			};
 		};
 	};
-	E24E01D9144C8A1900A1039E /* Code sense */ = {
+	E24E0326144CD19500A1039E /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
-	};
-	F2ECE0E4F6D7892339BAD1D1 /* DownloadVersion.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 1716}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1532}";
-			sepNavWindowFrame = "{{107, 235}, {856, 854}}";
-		};
-	};
-	FFF230D4A35A649A85225963 /* CommandMap.cpp */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {797, 1703}}";
-			sepNavSelRange = "{3291, 0}";
-			sepNavVisRange = "{0, 1339}";
-		};
 	};
 }
