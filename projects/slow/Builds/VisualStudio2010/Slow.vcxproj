@@ -1,77 +1,46 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4BB1A662-63F1-891A-0B25-1C4C92EDD9B0}</ProjectGuid>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>MultiByte</CharacterSet>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <ImportGroup Label="ExtensionSettings"/>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"
+            Label="LocalAppDataPlatform"/>
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros"/>
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SlowBurn</TargetName>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</IntDir>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateManifest>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</GenerateManifest>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SlowBurn</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -79,20 +48,16 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\Debug\SlowBurn.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
+      <HeaderFileName/>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../gflags/src/windows;../../../../../glog/src/windows;../../../../../gtest/include;../../../../../mpg123/tmp-mpg123-1.12.5-static-x86;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../..;../../../../../rubberband/rubberband;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/;JUCER_VS2008_78A5006=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../build/Debug/glog/include;../../../../../build/Debug/gtest/include;../../../../../build/Debug/mpg123;../../../../../build/Debug/protobuf/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;__JUCE_CONFIG=Debug;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <PrecompiledHeaderOutputFile>.\Debug\SlowBurn.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader/>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
@@ -105,54 +70,11 @@
     <Link>
       <OutputFile>.\Debug\SlowBurn.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib; msvcrt.lib;;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug\SlowBurn.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\gtest\\msvc\\gtest\\Debug gtestd.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
-    </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Debug\SlowBurn.bsc</OutputFile>
-    </Bscmake>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Midl>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MkTypLibCompatible>true</MkTypLibCompatible>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <TypeLibraryName>.\Debug\SlowBurn.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
-    </Midl>
-    <ClCompile>
-      <Optimization>Disabled</Optimization>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../gflags/src/windows;../../../../../glog/src/windows;../../../../../gtest/src/windows;../../../../../mpg123/tmp-mpg123-1.12.5-static-x86;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG;_DEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/;JUCER_VS2008_78A5006=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <PrecompiledHeaderOutputFile>.\Debug\SlowBurn.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
-      <ObjectFileName>.\Debug\</ObjectFileName>
-      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
-      <WarningLevel>Level4</WarningLevel>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-    </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ResourceCompile>
-    <Link>
-      <OutputFile>.\Debug\SlowBurn.exe</OutputFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\Debug\SlowBurn.pdb</ProgramDatabaseFile>
-      <SubSystem>Windows</SubSystem>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog_static.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -165,21 +87,15 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\Release\SlowBurn.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
+      <HeaderFileName/>
     </Midl>
     <ClCompile>
-      <Optimization>Full</Optimization>
-      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <StringPooling>true</StringPooling>
-      <AdditionalIncludeDirectories>../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/;JUCER_VS2008_78A5006=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>${__JUCE_INCLUDES_RELEASE};%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;__JUCE_CONFIG=Release;JUCER_VS2010_78A501D=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <PrecompiledHeaderOutputFile>.\Release\SlowBurn.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader/>
       <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
       <ObjectFileName>.\Release\</ObjectFileName>
       <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
@@ -196,55 +112,9 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Release\SlowBurn.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <OptimizeReferences>true</OptimizeReferences>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
-    </Link>
-    <Bscmake>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>.\Release\SlowBurn.bsc</OutputFile>
-    </Bscmake>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Midl>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MkTypLibCompatible>true</MkTypLibCompatible>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <TypeLibraryName>.\Release\SlowBurn.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
-    </Midl>
-    <ClCompile>
-      <Optimization>Full</Optimization>
-      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <StringPooling>true</StringPooling>
-      <AdditionalIncludeDirectories>../../../../../rec/src;../../../../../rec/genfiles/proto;../../../../../juce;../../../../../rec/src/rec/data/yaml/include;../../../../../build/Debug/gflags/include;../../../../../glog/src/windows;../../../../../build/Debug/gtest/include;../../../../../mpg123/ports/MSVC++;../../../../../protobuf/src;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;DONT_SET_USING_JUCE_NAMESPACE;JUCE_DONT_DEFINE_MACRO;GOOGLE_GLOG_DLL_DECL=/*GOOGLE_GLOG_DLL_DECL*/;JUCER_VS2008_78A5006=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <PrecompiledHeaderOutputFile>.\Release\SlowBurn.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
-      <ObjectFileName>.\Release\</ObjectFileName>
-      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
-      <WarningLevel>Level4</WarningLevel>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-    </ClCompile>
-    <ResourceCompile>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ResourceCompile>
-    <Link>
-      <OutputFile>.\Release\SlowBurn.exe</OutputFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\Release\SlowBurn.pdb</ProgramDatabaseFile>
-      <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalOptions>/LIBPATH:..\\..\\..\\..\\..\\gflags\\Debug libgflags-debug.lib /LIBPATH:..\\..\\..\\..\\..\\glog\\Debug libglog.lib /LIBPATH:..\\..\\..\\..\\..\\mpg123\\ports\\MSVC++\\2008\\Debug libmpg123.lib /LIBPATH:..\\..\\..\\..\\..\\protobuf\\vsprojects\\Debug libprotobuf.lib /NODEFAULTLIB:MSVCRTD /NODEFAULTLIB:msvcprtd %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -252,610 +122,585 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.h" />
-    <ClInclude Include="..\..\..\..\src\rec\app\Application.h" />
-    <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h" />
-    <ClInclude Include="..\..\..\..\src\rec\app\Files.h" />
-    <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h" />
-    <ClInclude Include="..\..\..\..\src\rec\app\Window.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\Device.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Format.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Manager.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatReader.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSamplePipe.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\soundtouch_config.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\STTypes.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\FrameSource.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Level.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Player.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Seggy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Selection.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Snoopy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stereo.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stretchy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Testy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\ThreadedSource.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TestHarness.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h" />
-    <ClInclude Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\base.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\BaseNoJuce.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\basictypes.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\build_config.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\Cast.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\CompileAssert.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\disallow.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\Juce.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\Leaks.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\port.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\ptr.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\Samples.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\Standard.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h" />
-    <ClInclude Include="..\..\..\..\src\rec\base\types.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\Command.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandEntryWindow.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMap.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapCategoryItem.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditButton.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditor.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditorMappingItem.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapItemComponent.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapTopLevelItem.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\GenericCommandMapEditor.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\Keyboard.xml.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMap.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\MidiName.h" />
-    <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\Address.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\Binary.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\Editable.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\Persist.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedEditable.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\FieldOps.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\GetProtoName.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\InsertSorted.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\MessageField.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\NameToProto.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedOperations.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedTyper.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\proto\ZeroCopy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\Value.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\aliasmanager.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\anchor.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\conversion.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitfromevents.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emittermanip.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\eventhandler.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\exceptions.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\iterator.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\mark.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\node.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeimpl.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeproperties.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodereadimpl.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeutil.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\noncopyable.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\null.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\ostream.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\parser.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlemitter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlnode.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\traits.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\yaml.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Internal.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\collectionstack.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\content.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\directives.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\exp.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\indentation.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\iterpriv.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ltnode.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\map.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\parserstate.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ptr_stack.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regex.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regeximpl.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scalar.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanner.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scantag.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\sequence.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\setting.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stream.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\streamcharsource.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stringsource.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\tag.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\token.h" />
-    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\ModeSelector.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\PlayerController.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\SetupPage.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TimeController.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TransportController.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\Color.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\component\Focusable.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\DataSlider.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\DetentSlider.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\Dialog.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\DropFiles.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\Font.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\RecentFiles.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\SetterText.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\SetterTextArea.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\SetterToggle.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\SimpleLabel.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h" />
-    <ClInclude Include="..\..\..\..\src\rec\gui\TableController.h" />
-    <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h" />
-    <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h" />
-    <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Components.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Listeners.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\LoopCommands.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Model.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\PlaybackController.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Position.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Slow.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Target.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\TargetCommands.h" />
-    <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\cd\Eject.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\cd\Socket.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\cd\StripLines.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Circular.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Compare.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\DelegateToList.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Exception.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\DataListener.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\Listener.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\ProtoListener.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\listener\SetterListener.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Math.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\partition\Convertors.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Platform.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\PointerList.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Range.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\ShouldExit.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\STL.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Switcher.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\TestData.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\CallAsync.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback0.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback1.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback2.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\FunctionCallback.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeCallback.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeThread.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h" />
-    <ClInclude Include="..\..\..\..\src\rec\util\Undo.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\status\DialComponent.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\status\Status.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\status\TextComponent.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\tree\CD.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Directory.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeComponent.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeItem.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Root.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Shard.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Cursor.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h" />
-    <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.h" />
-    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h" />
-    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h" />
-    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
-    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h" />
+    <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.c"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.c"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Format.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_gcc.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_win.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\sse_optimized.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stretchy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandData.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandMap.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\CommandMapEditor.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\Keyboard.xml.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMap.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\MidiName.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\GetProtoName.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\UndoQueue.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\ReadYaml.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliasmanager.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\content.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\conversion.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\directives.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitfromevents.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\exp.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\iterator.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\map.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\node.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\null.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\ostream.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parser.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parserstate.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\regex.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scalar.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanner.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantag.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantoken.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\sequence.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\simplekey.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\stream.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\tag.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\Loops.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\ModeSelector.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\PlayerController.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\SetupPage.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TimeController.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TransportController.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Color.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\DataSlider.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Dialog.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\Geometry.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\gui\TableController.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Listeners.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\LoopCommands.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Model.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\PlaybackController.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Position.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\TargetCommands.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\Fillable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDReader.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Eject.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\Socket.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\listener\ProtoListener.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\Status.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\status\TextComponent.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\CD.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Directory.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\NodeItem.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Root.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Cursor.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp"/>
+    <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.cc"/>
+    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc"/>
+    <ClCompile Include="..\..\Main.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.cc" />
-    <ClCompile Include="..\..\..\..\src\rec\app\DownloadVersion.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\app\Files.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\app\GenericApplication.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\app\Window.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.c" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.c" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\Device.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Format.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_gcc.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect_x86_win.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\sse_optimized.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\Player.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\Selection.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stereo.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\Stretchy.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\source\Wrappy.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\Stretch.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\stretch\TimeScaler_test.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\ConvertSample.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\CopySamples.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\Frame.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\Gain.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\base\RealTime.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandMap.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandMapEditor.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\Keyboard.xml.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMap.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\MidiName.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\command\TargetManager.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\Address.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\Binary.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\Editable.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\Copy.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\EditableUpdater.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\persist\UntypedEditable.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\Equals.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\Field.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\FieldOps.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\GetProtoName.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\MessageField.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedOperations.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\proto\TypedTyper.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\UndoQueue.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\Value.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\ReadYaml.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\aliasmanager.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\content.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\conversion.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\directives.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitfromevents.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitter.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\exp.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\iterator.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\map.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\node.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\null.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\ostream.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parser.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\parserstate.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\regex.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scalar.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanner.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantag.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\scantoken.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\sequence.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\simplekey.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\stream.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\src\tag.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\data\yaml\WriteYaml.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\LevelMeter.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\Loops.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\ModeSelector.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\PlayerController.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\SetupPage.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TimeController.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\audio\TransportController.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\Color.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\DataSlider.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\Dialog.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\Geometry.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\PersistentWindow.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\RecentFiles.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\SetterResizer.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\gui\TableController.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\music\CleanName.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\music\CreateMusicFileReader.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\music\Metadata.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Instance.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Listeners.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\LoopCommands.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\LoopSnapshot.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\MainPage.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Menus.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Model.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\MouseListener.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\PlaybackController.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Position.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\SlowWindow.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Target.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\TargetCommands.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\slow\Threads.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\block\Difference.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\block\Fillable.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\block\FillSeries.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\block\MergeBlockSet.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\cd\Album.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDDBResponse.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\cd\CDReader.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\cd\Eject.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\cd\Socket.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\cd\StripLines.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\Compare.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\Cuttable.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\Defaulter.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\file\GetVolumes_test.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\file\LogFile_test.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\file\Util.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\file\VirtualFile.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\FormatTime.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\listener\ProtoListener.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\LoopPoint.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\partition\Convertors.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\partition\Partition.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\thread\Trash.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\util\Undo.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\status\DialComponent.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\status\Status.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\status\TextComponent.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\tree\CD.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Directory.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\tree\NodeItem.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\tree\Root.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Cursor.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\CursorStates.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Waveform.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\waveform\Zoom.cpp" />
-    <ClCompile Include="..\..\..\..\src\rec\widget\Widget.cpp" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.cc" />
-    <ClCompile Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.cc" />
-    <ClCompile Include="..\..\Main.cpp" />
-    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp" />
-    <ClCompile Include="..\..\JuceLibraryCode\JuceLibraryCode.cpp" />
+    <ClInclude Include="..\..\..\..\src\rec\app\Application.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\app\DownloadVersion.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\app\Files.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\app\GenericApplication.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\app\Window.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioResampler.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\AudioTimeScaler.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\hfft.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfAlloc.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfGlobals.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\ammf_scaler\mfMacros.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\Audio.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\Device.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Copier.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\CreateReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Format.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Manager.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Mpg123.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\NewHandle.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Reader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\mpg123\Tags.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormat.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\format\raw\RawFormatWriter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\AAFilter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\BPMDetect.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\cpu_detect.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSampleBuffer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIFOSamplePipe.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\FIRFilter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\PeakFinder.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\RateTransposer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\SoundTouch.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\soundtouch_config.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\STTypes.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\soundtouch\TDStretch.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Empty.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\FrameSource.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Level.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Player.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Seggy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Selection.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Snoopy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stereo.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Stretchy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Testy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\ThreadedSource.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Timer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\source\Wrappy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\AudioMagicStretchy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\SoundTouchStretchy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\Stretch.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TestHarness.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\stretch\TimeScaler.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\AudioFormatManager.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Clear.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\ConvertSample.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\CopySamples.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\FillableFrameBuffer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Frame.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\Gain.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\audio\util\ThumbnailBuffer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\ArraySize.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\base.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\BaseNoJuce.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\basictypes.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\build_config.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\Cast.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\CompileAssert.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\disallow.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\Juce.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\Leaks.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\port.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\ptr.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\RealTime.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\Samples.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\scoped_array.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\Standard.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\string_piece.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\base\types.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\Command.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandEntryWindow.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMap.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapCategoryItem.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditButton.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditor.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapEditorMappingItem.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapItemComponent.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\CommandMapTopLevelItem.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\GenericCommandMapEditor.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\Keyboard.xml.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\KeyCommandMapEditor.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMap.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\MidiCommandMapEditor.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\MidiName.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\command\TargetManager.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Address.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Binary.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Editable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\Copy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableFactory.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\EditableUpdater.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\Persist.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\TypedEditable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\persist\UntypedEditable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Comparer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Equals.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Field.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\FieldOps.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\GetProtoName.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\MessageField.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\NameToProto.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedOperations.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\TypedTyper.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Typer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\proto\Types.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\UndoQueue.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\Value.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\aliasmanager.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\anchor.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\conversion.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitfromevents.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emitter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\emittermanip.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\eventhandler.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\exceptions.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\iterator.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\mark.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\node.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeimpl.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeproperties.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodereadimpl.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\nodeutil.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\noncopyable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\null.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\ostream.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\parser.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlemitter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\stlnode.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\traits.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\include\yaml-cpp\yaml.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Internal.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\aliascontent.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\collectionstack.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\content.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\directives.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterstate.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\emitterutils.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\exp.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\indentation.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\iterpriv.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ltnode.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\map.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\nodebuilder.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\parserstate.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\ptr_stack.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regex.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\regeximpl.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scalar.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanner.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scanscalar.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\scantag.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\sequence.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\setting.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\singledocparser.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stream.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\streamcharsource.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\stringsource.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\tag.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\src\token.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\data\yaml\Yaml.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\LevelMeter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\Loops.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\ModeSelector.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\PlayerController.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\SetupPage.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TimeController.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\audio\TransportController.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Color.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\component\Focusable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DataSlider.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DetentSlider.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Dialog.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DropFiles.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\DropTarget.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Font.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\Geometry.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioCard.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioInputMicrophone.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\AudioXGeneric.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\Crosshairs.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DraggingHand.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DriveHardDisk.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\DriveOptical.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreen.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\FullScreenRev.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaOptical.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlay.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStart.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaPlaybackStop.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\MediaRecord.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\OpenFolder.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\Pencil.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\PointingHand.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ThickFolder.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ThinFolder.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\icon\ZoomIn.svg.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\layout\Layout.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\PersistentWindow.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\RecentFiles.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterResizer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterText.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterTextArea.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SetterToggle.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SimpleLabel.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\SongData.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\gui\TableController.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\music\CleanName.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\music\CreateMusicFileReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\music\Metadata.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Components.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\HasInstance.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Instance.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Listeners.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\LoopCommands.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\LoopSnapshot.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\MainPage.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Menus.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Model.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\MouseListener.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\PlaybackController.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Position.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Slow.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\SlowWindow.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Target.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\TargetCommands.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\slow\Threads.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Block.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Difference.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\Fillable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\FillSeries.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\block\MergeBlockSet.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Album.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDDBResponse.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\CDReader.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\DedupeCDDB.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Eject.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\Socket.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\cd\StripLines.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Circular.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Compare.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Cuttable.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Defaulter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\DelegateToList.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Exception.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\GetVolumes.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\LogFile.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\Util.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\VirtualFile.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\file\ZeroCopy.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\FormatTime.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\DataListener.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\Listener.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\ProtoListener.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\listener\SetterListener.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\LoopPoint.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Math.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\partition\Convertors.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\partition\Partition.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Platform.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\PointerList.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\RandomSelfInverseFunction.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Range.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\ShouldExit.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\STL.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Switcher.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\TestData.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\CallAsync.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback0.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback1.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Callback2.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\FileWriter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\FunctionCallback.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Looper.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeCallback.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\MakeThread.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Pointer.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Result.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\thread\Trash.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\util\Undo.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\Painter.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\DialComponent.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\Status.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\status\TextComponent.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\CD.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Directory.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeComponent.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\NodeItem.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Root.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\Shard.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\tree\TreeViewDropAll.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Cursor.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\MouseWheelEvent.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Waveform.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\waveform\Zoom.h"/>
+    <ClInclude Include="..\..\..\..\src\rec\widget\Widget.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Runny.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\source\Stereo.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\stretch\Stretch.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\audio\util\Gain.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Access.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\Command.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\command\CommandMap.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Action.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\Operation.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Address.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\TestData.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\data\proto\Value.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Color.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Font.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\Geometry.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\RecentFiles.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\gui\TableColumn.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\music\Metadata.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\slow\AppLayout.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\file\VirtualFile.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\LoopPoint.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\Mode.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\util\thread\Thread.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Panes.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Status.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\status\Time.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Node.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\tree\Path.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Cursor.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Waveform.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\waveform\Zoom.pb.h"/>
+    <ClInclude Include="..\..\..\..\genfiles\proto\rec\widget\Widget.pb.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\rec\binary\big-logo.png">
-      <FileType>Document</FileType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\binary\logo.png">
-      <FileType>Document</FileType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <None Include="..\..\..\..\src\rec\audio\stretch\README" />
-    <None Include="..\..\..\..\src\rec\audio\stretch\Stretch.proto" />
-    <None Include="..\..\..\..\src\rec\data\Action.proto" />
-    <None Include="..\..\..\..\src\rec\data\Operation.proto" />
-    <None Include="..\..\..\..\src\rec\util\file\VirtualFile.proto" />
-    <None Include="changes.txt" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="icon.ico" />
+    <None Include=".\icon.ico"/>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="resources.rc" />
+    <ResourceCompile Include=".\resources.rc"/>
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <ImportGroup Label="ExtensionTargets"/>
 </Project>
