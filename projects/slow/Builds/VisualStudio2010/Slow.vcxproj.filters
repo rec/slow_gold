@@ -47,6 +47,9 @@
     <Filter Include="Slow\rec\command">
       <UniqueIdentifier>{B1DFC891-96A1-A554-614F-1F1890ED2774}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Slow\rec\command\data">
+      <UniqueIdentifier>{0BEE5513-4D54-55D6-9DA7-B9C3C769E00E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Slow\rec\data">
       <UniqueIdentifier>{30C6430A-9A1D-9F00-5E1C-045919BF6A3C}</UniqueIdentifier>
     </Filter>
@@ -328,14 +331,23 @@
     <ClCompile Include="..\..\..\..\src\rec\command\Command.cpp">
       <Filter>Slow\rec\command</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\rec\command\CommandData.cpp">
-      <Filter>Slow\rec\command</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandMap.cpp">
       <Filter>Slow\rec\command</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\CommandMapEditor.cpp">
       <Filter>Slow\rec\command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\CommandData.cpp">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\Commands.def.cpp">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\Descriptions.def.cpp">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\rec\command\data\KeyPresses.def.cpp">
+      <Filter>Slow\rec\command\data</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\rec\command\Keyboard.xml.cpp">
       <Filter>Slow\rec\command</Filter>
@@ -1116,9 +1128,6 @@
     <ClInclude Include="..\..\..\..\src\rec\command\Command.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\src\rec\command\CommandData.h">
-      <Filter>Slow\rec\command</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandEntryWindow.h">
       <Filter>Slow\rec\command</Filter>
     </ClInclude>
@@ -1142,6 +1151,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\CommandMapTopLevelItem.h">
       <Filter>Slow\rec\command</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\CommandData.h">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\Commands.def.h">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\Descriptions.def.h">
+      <Filter>Slow\rec\command\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\src\rec\command\data\KeyPresses.def.h">
+      <Filter>Slow\rec\command\data</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\src\rec\command\GenericCommandMapEditor.h">
       <Filter>Slow\rec\command</Filter>

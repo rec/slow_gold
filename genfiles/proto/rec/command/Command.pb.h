@@ -33,7 +33,6 @@ void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
 void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
 void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
 
-class KeyMeta;
 class KeyPress;
 class Description;
 class Command;
@@ -52,31 +51,37 @@ enum Command_Type {
   Command_Type_DIM_VOLUME_TOGGLE = 7,
   Command_Type_EJECT_CDS = 8,
   Command_Type_INVERT_LOOP_SELECTION = 9,
-  Command_Type_KEYBOARD_MAPPINGS = 10,
-  Command_Type_MIDI_MAPPINGS = 11,
-  Command_Type_MUTE_VOLUME_TOGGLE = 12,
-  Command_Type_NUDGE_BEGIN_LEFT = 13,
-  Command_Type_NUDGE_BEGIN_RIGHT = 14,
-  Command_Type_NUDGE_END_LEFT = 15,
-  Command_Type_NUDGE_END_RIGHT = 16,
-  Command_Type_NUDGE_VOLUME_DOWN = 17,
-  Command_Type_NUDGE_VOLUME_UP = 18,
-  Command_Type_OPEN = 19,
-  Command_Type_RECENT_FILES = 20,
-  Command_Type_REDO = 21,
-  Command_Type_RESET_GAIN_TO_UNITY = 22,
-  Command_Type_TOGGLE_WHOLE_SONG_LOOP = 23,
-  Command_Type_TOGGLE_START_STOP = 24,
-  Command_Type_TOGGLE_STRETCH_ENABLE = 25,
-  Command_Type_TREE_CLOSE = 26,
-  Command_Type_TREE_DOWN = 27,
-  Command_Type_TREE_LEFT = 28,
-  Command_Type_TREE_OPEN = 29,
-  Command_Type_TREE_RIGHT = 30,
-  Command_Type_TREE_UP = 31,
-  Command_Type_UNDO = 32,
-  Command_Type_ZOOM_IN = 33,
-  Command_Type_ZOOM_OUT = 34,
+  Command_Type_JUMP = 10,
+  Command_Type_JUMP_SELECTED = 11,
+  Command_Type_KEYBOARD_MAPPINGS = 12,
+  Command_Type_MIDI_MAPPINGS = 13,
+  Command_Type_MUTE_VOLUME_TOGGLE = 14,
+  Command_Type_NUDGE_BEGIN_LEFT = 15,
+  Command_Type_NUDGE_BEGIN_RIGHT = 16,
+  Command_Type_NUDGE_END_LEFT = 17,
+  Command_Type_NUDGE_END_RIGHT = 18,
+  Command_Type_NUDGE_VOLUME_DOWN = 19,
+  Command_Type_NUDGE_VOLUME_UP = 20,
+  Command_Type_OPEN = 21,
+  Command_Type_RECENT_FILES = 222,
+  Command_Type_REDO = 23,
+  Command_Type_RESET_GAIN_TO_UNITY = 24,
+  Command_Type_SELECT = 25,
+  Command_Type_SELECT_ONLY = 26,
+  Command_Type_TOGGLE = 27,
+  Command_Type_TOGGLE_START_STOP = 28,
+  Command_Type_TOGGLE_STRETCH_ENABLE = 29,
+  Command_Type_TOGGLE_WHOLE_SONG_LOOP = 30,
+  Command_Type_TREE_CLOSE = 31,
+  Command_Type_TREE_DOWN = 32,
+  Command_Type_TREE_LEFT = 33,
+  Command_Type_TREE_OPEN = 34,
+  Command_Type_TREE_RIGHT = 35,
+  Command_Type_TREE_UP = 36,
+  Command_Type_UNDO = 37,
+  Command_Type_UNSELECT = 38,
+  Command_Type_ZOOM_IN = 39,
+  Command_Type_ZOOM_OUT = 40,
   Command_Type_QUIT = 4097,
   Command_Type_DEL = 4098,
   Command_Type_CUT = 4099,
@@ -84,20 +89,11 @@ enum Command_Type {
   Command_Type_PASTE = 4101,
   Command_Type_SELECT_ALL = 4102,
   Command_Type_DESELECT_ALL = 4103,
-  Command_Type_SELECT = 1000000,
-  Command_Type_SELECT_ONLY = 1100000,
-  Command_Type_TOGGLE = 1200000,
-  Command_Type_UNSELECT = 1300000,
-  Command_Type_JUMP = 1400000,
-  Command_Type_JUMP_SELECTED = 1500000,
-  Command_Type_BANK_START = 1000000,
-  Command_Type_BANK_END = 1600000,
-  Command_Type_BANK_SIZE = 100000,
-  Command_Type_LAST_COMMAND = 34
+  Command_Type_BANK_SIZE = 65536
 };
 bool Command_Type_IsValid(int value);
 const Command_Type Command_Type_Type_MIN = Command_Type_NONE;
-const Command_Type Command_Type_Type_MAX = Command_Type_BANK_END;
+const Command_Type Command_Type_Type_MAX = Command_Type_BANK_SIZE;
 const int Command_Type_Type_ARRAYSIZE = Command_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Command_Type_descriptor();
@@ -111,111 +107,6 @@ inline bool Command_Type_Parse(
     Command_Type_descriptor(), name, value);
 }
 // ===================================================================
-
-class KeyMeta : public ::google::protobuf::Message {
- public:
-  KeyMeta();
-  virtual ~KeyMeta();
-  
-  KeyMeta(const KeyMeta& from);
-  
-  inline KeyMeta& operator=(const KeyMeta& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const KeyMeta& default_instance();
-  
-  void Swap(KeyMeta* other);
-  
-  // implements Message ----------------------------------------------
-  
-  KeyMeta* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const KeyMeta& from);
-  void MergeFrom(const KeyMeta& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // optional bool shift = 1;
-  inline bool has_shift() const;
-  inline void clear_shift();
-  static const int kShiftFieldNumber = 1;
-  inline bool shift() const;
-  inline void set_shift(bool value);
-  
-  // optional bool command = 2;
-  inline bool has_command() const;
-  inline void clear_command();
-  static const int kCommandFieldNumber = 2;
-  inline bool command() const;
-  inline void set_command(bool value);
-  
-  // optional bool alt = 3;
-  inline bool has_alt() const;
-  inline void clear_alt();
-  static const int kAltFieldNumber = 3;
-  inline bool alt() const;
-  inline void set_alt(bool value);
-  
-  // @@protoc_insertion_point(class_scope:rec.command.KeyMeta)
- private:
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  mutable int _cached_size_;
-  
-  bool shift_;
-  bool command_;
-  bool alt_;
-  friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
-  friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
-  
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-  
-  // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
-  inline bool _has_bit(int index) const {
-    return (_has_bits_[index / 32] & (1u << (index % 32))) != 0;
-  }
-  inline void _set_bit(int index) {
-    _has_bits_[index / 32] |= (1u << (index % 32));
-  }
-  inline void _clear_bit(int index) {
-    _has_bits_[index / 32] &= ~(1u << (index % 32));
-  }
-  
-  void InitAsDefaultInstance();
-  static KeyMeta* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class KeyPress : public ::google::protobuf::Message {
  public:
@@ -271,36 +162,70 @@ class KeyPress : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // optional .rec.command.KeyMeta meta = 1;
-  inline bool has_meta() const;
-  inline void clear_meta();
-  static const int kMetaFieldNumber = 1;
-  inline const ::rec::command::KeyMeta& meta() const;
-  inline ::rec::command::KeyMeta* mutable_meta();
-  
-  // optional string key = 2;
-  inline bool has_key() const;
+  // repeated string key = 1;
+  inline int key_size() const;
   inline void clear_key();
-  static const int kKeyFieldNumber = 2;
-  inline const ::std::string& key() const;
-  inline void set_key(const ::std::string& value);
-  inline void set_key(const char* value);
-  inline void set_key(const char* value, size_t size);
-  inline ::std::string* mutable_key();
+  static const int kKeyFieldNumber = 1;
+  inline const ::std::string& key(int index) const;
+  inline ::std::string* mutable_key(int index);
+  inline void set_key(int index, const ::std::string& value);
+  inline void set_key(int index, const char* value);
+  inline void set_key(int index, const char* value, size_t size);
+  inline ::std::string* add_key();
+  inline void add_key(const ::std::string& value);
+  inline void add_key(const char* value);
+  inline void add_key(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& key() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_key();
+  
+  // repeated uint32 keycode = 2;
+  inline int keycode_size() const;
+  inline void clear_keycode();
+  static const int kKeycodeFieldNumber = 2;
+  inline ::google::protobuf::uint32 keycode(int index) const;
+  inline void set_keycode(int index, ::google::protobuf::uint32 value);
+  inline void add_keycode(::google::protobuf::uint32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+      keycode() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+      mutable_keycode();
+  
+  // optional bool shift = 3;
+  inline bool has_shift() const;
+  inline void clear_shift();
+  static const int kShiftFieldNumber = 3;
+  inline bool shift() const;
+  inline void set_shift(bool value);
+  
+  // optional bool command = 4;
+  inline bool has_command() const;
+  inline void clear_command();
+  static const int kCommandFieldNumber = 4;
+  inline bool command() const;
+  inline void set_command(bool value);
+  
+  // optional bool alt = 5;
+  inline bool has_alt() const;
+  inline void clear_alt();
+  static const int kAltFieldNumber = 5;
+  inline bool alt() const;
+  inline void set_alt(bool value);
   
   // @@protoc_insertion_point(class_scope:rec.command.KeyPress)
  private:
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   mutable int _cached_size_;
   
-  ::rec::command::KeyMeta* meta_;
-  ::std::string* key_;
-  static const ::std::string _default_key_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> key_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > keycode_;
+  bool shift_;
+  bool command_;
+  bool alt_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -498,6 +423,8 @@ class Command : public ::google::protobuf::Message {
   static const Type DIM_VOLUME_TOGGLE = Command_Type_DIM_VOLUME_TOGGLE;
   static const Type EJECT_CDS = Command_Type_EJECT_CDS;
   static const Type INVERT_LOOP_SELECTION = Command_Type_INVERT_LOOP_SELECTION;
+  static const Type JUMP = Command_Type_JUMP;
+  static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;
   static const Type KEYBOARD_MAPPINGS = Command_Type_KEYBOARD_MAPPINGS;
   static const Type MIDI_MAPPINGS = Command_Type_MIDI_MAPPINGS;
   static const Type MUTE_VOLUME_TOGGLE = Command_Type_MUTE_VOLUME_TOGGLE;
@@ -511,9 +438,12 @@ class Command : public ::google::protobuf::Message {
   static const Type RECENT_FILES = Command_Type_RECENT_FILES;
   static const Type REDO = Command_Type_REDO;
   static const Type RESET_GAIN_TO_UNITY = Command_Type_RESET_GAIN_TO_UNITY;
-  static const Type TOGGLE_WHOLE_SONG_LOOP = Command_Type_TOGGLE_WHOLE_SONG_LOOP;
+  static const Type SELECT = Command_Type_SELECT;
+  static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
+  static const Type TOGGLE = Command_Type_TOGGLE;
   static const Type TOGGLE_START_STOP = Command_Type_TOGGLE_START_STOP;
   static const Type TOGGLE_STRETCH_ENABLE = Command_Type_TOGGLE_STRETCH_ENABLE;
+  static const Type TOGGLE_WHOLE_SONG_LOOP = Command_Type_TOGGLE_WHOLE_SONG_LOOP;
   static const Type TREE_CLOSE = Command_Type_TREE_CLOSE;
   static const Type TREE_DOWN = Command_Type_TREE_DOWN;
   static const Type TREE_LEFT = Command_Type_TREE_LEFT;
@@ -521,6 +451,7 @@ class Command : public ::google::protobuf::Message {
   static const Type TREE_RIGHT = Command_Type_TREE_RIGHT;
   static const Type TREE_UP = Command_Type_TREE_UP;
   static const Type UNDO = Command_Type_UNDO;
+  static const Type UNSELECT = Command_Type_UNSELECT;
   static const Type ZOOM_IN = Command_Type_ZOOM_IN;
   static const Type ZOOM_OUT = Command_Type_ZOOM_OUT;
   static const Type QUIT = Command_Type_QUIT;
@@ -530,16 +461,7 @@ class Command : public ::google::protobuf::Message {
   static const Type PASTE = Command_Type_PASTE;
   static const Type SELECT_ALL = Command_Type_SELECT_ALL;
   static const Type DESELECT_ALL = Command_Type_DESELECT_ALL;
-  static const Type SELECT = Command_Type_SELECT;
-  static const Type SELECT_ONLY = Command_Type_SELECT_ONLY;
-  static const Type TOGGLE = Command_Type_TOGGLE;
-  static const Type UNSELECT = Command_Type_UNSELECT;
-  static const Type JUMP = Command_Type_JUMP;
-  static const Type JUMP_SELECTED = Command_Type_JUMP_SELECTED;
-  static const Type BANK_START = Command_Type_BANK_START;
-  static const Type BANK_END = Command_Type_BANK_END;
   static const Type BANK_SIZE = Command_Type_BANK_SIZE;
-  static const Type LAST_COMMAND = Command_Type_LAST_COMMAND;
   static inline bool Type_IsValid(int value) {
     return Command_Type_IsValid(value);
   }
@@ -570,29 +492,41 @@ class Command : public ::google::protobuf::Message {
   inline ::rec::command::Command_Type type() const;
   inline void set_type(::rec::command::Command_Type value);
   
-  // optional string category = 2;
+  // optional uint32 repeat_count = 2;
+  inline bool has_repeat_count() const;
+  inline void clear_repeat_count();
+  static const int kRepeatCountFieldNumber = 2;
+  inline ::google::protobuf::uint32 repeat_count() const;
+  inline void set_repeat_count(::google::protobuf::uint32 value);
+  
+  // optional string category = 3;
   inline bool has_category() const;
   inline void clear_category();
-  static const int kCategoryFieldNumber = 2;
+  static const int kCategoryFieldNumber = 3;
   inline const ::std::string& category() const;
   inline void set_category(const ::std::string& value);
   inline void set_category(const char* value);
   inline void set_category(const char* value, size_t size);
   inline ::std::string* mutable_category();
   
-  // optional .rec.command.Description description = 3;
-  inline bool has_description() const;
-  inline void clear_description();
-  static const int kDescriptionFieldNumber = 3;
-  inline const ::rec::command::Description& description() const;
-  inline ::rec::command::Description* mutable_description();
+  // optional .rec.command.Description desc = 4;
+  inline bool has_desc() const;
+  inline void clear_desc();
+  static const int kDescFieldNumber = 4;
+  inline const ::rec::command::Description& desc() const;
+  inline ::rec::command::Description* mutable_desc();
   
-  // optional .rec.command.KeyPress key_press = 4;
-  inline bool has_key_press() const;
-  inline void clear_key_press();
-  static const int kKeyPressFieldNumber = 4;
-  inline const ::rec::command::KeyPress& key_press() const;
-  inline ::rec::command::KeyPress* mutable_key_press();
+  // repeated .rec.command.KeyPress keypress = 5;
+  inline int keypress_size() const;
+  inline void clear_keypress();
+  static const int kKeypressFieldNumber = 5;
+  inline const ::rec::command::KeyPress& keypress(int index) const;
+  inline ::rec::command::KeyPress* mutable_keypress(int index);
+  inline ::rec::command::KeyPress* add_keypress();
+  inline const ::google::protobuf::RepeatedPtrField< ::rec::command::KeyPress >&
+      keypress() const;
+  inline ::google::protobuf::RepeatedPtrField< ::rec::command::KeyPress >*
+      mutable_keypress();
   
   // @@protoc_insertion_point(class_scope:rec.command.Command)
  private:
@@ -600,15 +534,16 @@ class Command : public ::google::protobuf::Message {
   mutable int _cached_size_;
   
   int type_;
+  ::google::protobuf::uint32 repeat_count_;
   ::std::string* category_;
   static const ::std::string _default_category_;
-  ::rec::command::Description* description_;
-  ::rec::command::KeyPress* key_press_;
+  ::rec::command::Description* desc_;
+  ::google::protobuf::RepeatedPtrField< ::rec::command::KeyPress > keypress_;
   friend void  protobuf_AddDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_AssignDesc_rec_2fcommand_2fCommand_2eproto();
   friend void protobuf_ShutdownFile_rec_2fcommand_2fCommand_2eproto();
   
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   // WHY DOES & HAVE LOWER PRECEDENCE THAN != !?
   inline bool _has_bit(int index) const {
@@ -922,117 +857,123 @@ class Mapping : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// KeyMeta
+// KeyPress
 
-// optional bool shift = 1;
-inline bool KeyMeta::has_shift() const {
-  return _has_bit(0);
+// repeated string key = 1;
+inline int KeyPress::key_size() const {
+  return key_.size();
 }
-inline void KeyMeta::clear_shift() {
+inline void KeyPress::clear_key() {
+  key_.Clear();
+}
+inline const ::std::string& KeyPress::key(int index) const {
+  return key_.Get(index);
+}
+inline ::std::string* KeyPress::mutable_key(int index) {
+  return key_.Mutable(index);
+}
+inline void KeyPress::set_key(int index, const ::std::string& value) {
+  key_.Mutable(index)->assign(value);
+}
+inline void KeyPress::set_key(int index, const char* value) {
+  key_.Mutable(index)->assign(value);
+}
+inline void KeyPress::set_key(int index, const char* value, size_t size) {
+  key_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* KeyPress::add_key() {
+  return key_.Add();
+}
+inline void KeyPress::add_key(const ::std::string& value) {
+  key_.Add()->assign(value);
+}
+inline void KeyPress::add_key(const char* value) {
+  key_.Add()->assign(value);
+}
+inline void KeyPress::add_key(const char* value, size_t size) {
+  key_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+KeyPress::key() const {
+  return key_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+KeyPress::mutable_key() {
+  return &key_;
+}
+
+// repeated uint32 keycode = 2;
+inline int KeyPress::keycode_size() const {
+  return keycode_.size();
+}
+inline void KeyPress::clear_keycode() {
+  keycode_.Clear();
+}
+inline ::google::protobuf::uint32 KeyPress::keycode(int index) const {
+  return keycode_.Get(index);
+}
+inline void KeyPress::set_keycode(int index, ::google::protobuf::uint32 value) {
+  keycode_.Set(index, value);
+}
+inline void KeyPress::add_keycode(::google::protobuf::uint32 value) {
+  keycode_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
+KeyPress::keycode() const {
+  return keycode_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
+KeyPress::mutable_keycode() {
+  return &keycode_;
+}
+
+// optional bool shift = 3;
+inline bool KeyPress::has_shift() const {
+  return _has_bit(2);
+}
+inline void KeyPress::clear_shift() {
   shift_ = false;
-  _clear_bit(0);
+  _clear_bit(2);
 }
-inline bool KeyMeta::shift() const {
+inline bool KeyPress::shift() const {
   return shift_;
 }
-inline void KeyMeta::set_shift(bool value) {
-  _set_bit(0);
+inline void KeyPress::set_shift(bool value) {
+  _set_bit(2);
   shift_ = value;
 }
 
-// optional bool command = 2;
-inline bool KeyMeta::has_command() const {
-  return _has_bit(1);
+// optional bool command = 4;
+inline bool KeyPress::has_command() const {
+  return _has_bit(3);
 }
-inline void KeyMeta::clear_command() {
+inline void KeyPress::clear_command() {
   command_ = false;
-  _clear_bit(1);
+  _clear_bit(3);
 }
-inline bool KeyMeta::command() const {
+inline bool KeyPress::command() const {
   return command_;
 }
-inline void KeyMeta::set_command(bool value) {
-  _set_bit(1);
+inline void KeyPress::set_command(bool value) {
+  _set_bit(3);
   command_ = value;
 }
 
-// optional bool alt = 3;
-inline bool KeyMeta::has_alt() const {
-  return _has_bit(2);
+// optional bool alt = 5;
+inline bool KeyPress::has_alt() const {
+  return _has_bit(4);
 }
-inline void KeyMeta::clear_alt() {
+inline void KeyPress::clear_alt() {
   alt_ = false;
-  _clear_bit(2);
+  _clear_bit(4);
 }
-inline bool KeyMeta::alt() const {
+inline bool KeyPress::alt() const {
   return alt_;
 }
-inline void KeyMeta::set_alt(bool value) {
-  _set_bit(2);
+inline void KeyPress::set_alt(bool value) {
+  _set_bit(4);
   alt_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// KeyPress
-
-// optional .rec.command.KeyMeta meta = 1;
-inline bool KeyPress::has_meta() const {
-  return _has_bit(0);
-}
-inline void KeyPress::clear_meta() {
-  if (meta_ != NULL) meta_->::rec::command::KeyMeta::Clear();
-  _clear_bit(0);
-}
-inline const ::rec::command::KeyMeta& KeyPress::meta() const {
-  return meta_ != NULL ? *meta_ : *default_instance_->meta_;
-}
-inline ::rec::command::KeyMeta* KeyPress::mutable_meta() {
-  _set_bit(0);
-  if (meta_ == NULL) meta_ = new ::rec::command::KeyMeta;
-  return meta_;
-}
-
-// optional string key = 2;
-inline bool KeyPress::has_key() const {
-  return _has_bit(1);
-}
-inline void KeyPress::clear_key() {
-  if (key_ != &_default_key_) {
-    key_->clear();
-  }
-  _clear_bit(1);
-}
-inline const ::std::string& KeyPress::key() const {
-  return *key_;
-}
-inline void KeyPress::set_key(const ::std::string& value) {
-  _set_bit(1);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  key_->assign(value);
-}
-inline void KeyPress::set_key(const char* value) {
-  _set_bit(1);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  key_->assign(value);
-}
-inline void KeyPress::set_key(const char* value, size_t size) {
-  _set_bit(1);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  key_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* KeyPress::mutable_key() {
-  _set_bit(1);
-  if (key_ == &_default_key_) {
-    key_ = new ::std::string;
-  }
-  return key_;
 }
 
 // -------------------------------------------------------------------
@@ -1186,80 +1127,104 @@ inline void Command::set_type(::rec::command::Command_Type value) {
   type_ = value;
 }
 
-// optional string category = 2;
-inline bool Command::has_category() const {
+// optional uint32 repeat_count = 2;
+inline bool Command::has_repeat_count() const {
   return _has_bit(1);
+}
+inline void Command::clear_repeat_count() {
+  repeat_count_ = 0u;
+  _clear_bit(1);
+}
+inline ::google::protobuf::uint32 Command::repeat_count() const {
+  return repeat_count_;
+}
+inline void Command::set_repeat_count(::google::protobuf::uint32 value) {
+  _set_bit(1);
+  repeat_count_ = value;
+}
+
+// optional string category = 3;
+inline bool Command::has_category() const {
+  return _has_bit(2);
 }
 inline void Command::clear_category() {
   if (category_ != &_default_category_) {
     category_->clear();
   }
-  _clear_bit(1);
+  _clear_bit(2);
 }
 inline const ::std::string& Command::category() const {
   return *category_;
 }
 inline void Command::set_category(const ::std::string& value) {
-  _set_bit(1);
+  _set_bit(2);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(value);
 }
 inline void Command::set_category(const char* value) {
-  _set_bit(1);
+  _set_bit(2);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(value);
 }
 inline void Command::set_category(const char* value, size_t size) {
-  _set_bit(1);
+  _set_bit(2);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   category_->assign(reinterpret_cast<const char*>(value), size);
 }
 inline ::std::string* Command::mutable_category() {
-  _set_bit(1);
+  _set_bit(2);
   if (category_ == &_default_category_) {
     category_ = new ::std::string;
   }
   return category_;
 }
 
-// optional .rec.command.Description description = 3;
-inline bool Command::has_description() const {
-  return _has_bit(2);
-}
-inline void Command::clear_description() {
-  if (description_ != NULL) description_->::rec::command::Description::Clear();
-  _clear_bit(2);
-}
-inline const ::rec::command::Description& Command::description() const {
-  return description_ != NULL ? *description_ : *default_instance_->description_;
-}
-inline ::rec::command::Description* Command::mutable_description() {
-  _set_bit(2);
-  if (description_ == NULL) description_ = new ::rec::command::Description;
-  return description_;
-}
-
-// optional .rec.command.KeyPress key_press = 4;
-inline bool Command::has_key_press() const {
+// optional .rec.command.Description desc = 4;
+inline bool Command::has_desc() const {
   return _has_bit(3);
 }
-inline void Command::clear_key_press() {
-  if (key_press_ != NULL) key_press_->::rec::command::KeyPress::Clear();
+inline void Command::clear_desc() {
+  if (desc_ != NULL) desc_->::rec::command::Description::Clear();
   _clear_bit(3);
 }
-inline const ::rec::command::KeyPress& Command::key_press() const {
-  return key_press_ != NULL ? *key_press_ : *default_instance_->key_press_;
+inline const ::rec::command::Description& Command::desc() const {
+  return desc_ != NULL ? *desc_ : *default_instance_->desc_;
 }
-inline ::rec::command::KeyPress* Command::mutable_key_press() {
+inline ::rec::command::Description* Command::mutable_desc() {
   _set_bit(3);
-  if (key_press_ == NULL) key_press_ = new ::rec::command::KeyPress;
-  return key_press_;
+  if (desc_ == NULL) desc_ = new ::rec::command::Description;
+  return desc_;
+}
+
+// repeated .rec.command.KeyPress keypress = 5;
+inline int Command::keypress_size() const {
+  return keypress_.size();
+}
+inline void Command::clear_keypress() {
+  keypress_.Clear();
+}
+inline const ::rec::command::KeyPress& Command::keypress(int index) const {
+  return keypress_.Get(index);
+}
+inline ::rec::command::KeyPress* Command::mutable_keypress(int index) {
+  return keypress_.Mutable(index);
+}
+inline ::rec::command::KeyPress* Command::add_keypress() {
+  return keypress_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::rec::command::KeyPress >&
+Command::keypress() const {
+  return keypress_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::rec::command::KeyPress >*
+Command::mutable_keypress() {
+  return &keypress_;
 }
 
 // -------------------------------------------------------------------

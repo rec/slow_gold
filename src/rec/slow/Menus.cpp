@@ -25,6 +25,7 @@ void Menus::add(PopupMenu* menu, Command::Type command, bool enable,
 
 static void addBank(Menus* menus, PopupMenu* menu,
                     Command::Type command, const String& name) {
+#ifdef NEW_ORDER                    
   PopupMenu sub;
   for (int i = 0; i <= LAST - FIRST; ++i)
     menus->add(&sub, static_cast<Command::Type>(command + i));
@@ -35,6 +36,7 @@ static void addBank(Menus* menus, PopupMenu* menu,
     menus->add(&sub, static_cast<Command::Type>(command + LAST - FIRST + i + 1));
 
   menu->addSubMenu(name, sub);
+#endif
 }
 
 const PopupMenu Menus::getMenuForIndex(int menuIndex, const String& menuName) {

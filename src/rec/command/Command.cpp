@@ -1,5 +1,5 @@
 #include "rec/command/Command.h"
-#include "rec/command/CommandData.h"
+#include "rec/command/data/CommandData.h"
 #include "rec/command/Access.pb.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/util/Defaulter.h"

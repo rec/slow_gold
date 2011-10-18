@@ -18,12 +18,12 @@ namespace slow {
 namespace applier {
 
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
-typedef bool (*LoopFunction)(LoopSnapshot*, Position);
+typedef bool (*LoopFunction)(LoopSnapshot*, const Position&);
 typedef std::pair<SelectorFunction, LoopFunction> CommandFunction;
 
 typedef std::map<Command::Type, CommandFunction> CommandMap;
 
-bool select(SelectorFunction f, LoopSnapshot* snap, Position pos) {
+bool select(SelectorFunction f, LoopSnapshot* snap, const Position& pos) {
   LoopPointList* loops = &snap->loops_;
   int size = loops->loop_point_size() - 1;
   int p = positionToIndex(pos, snap->segment_, size);
@@ -44,7 +44,7 @@ bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) 
     return false;
 
   LoopSnapshot s(instance);
-  Position pos = getPosition(c);
+  const Position& pos = getPosition(c);
   bool success = select(i->second.first, &s, pos) && i->second.second(&s, pos);
   if (success)
     data::set(s.loops_, instance->model_->file());
@@ -65,21 +65,21 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-bool noFunction(LoopSnapshot*, Position) { return true; }
+bool noFunction(LoopSnapshot*, const Position&) { return true; }
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   RealTime time = snapshot->loops_.loop_point(segment).time();
   snapshot->instance_->model_->jumpToTime(time);
 }
 
-bool jump(LoopSnapshot* snap, Position pos) {
+bool jump(LoopSnapshot* snap, const Position& pos) {
   int size = snap->loops_.loop_point_size() - 1;
   int p = positionToIndex(pos, snap->segment_, size);
   setTimeFromSegment(snap, p);
   return true;
 }
 
-bool jumpSelected(LoopSnapshot* snap, Position pos) {
+bool jumpSelected(LoopSnapshot* snap, const Position& pos) {
   vector<int> selected;
   size_t s;
   bool found = false;
@@ -99,7 +99,7 @@ bool jumpSelected(LoopSnapshot* snap, Position pos) {
   return true;
 }
 
-bool clearLoops(LoopSnapshot* s, Position pos) {
+bool clearLoops(LoopSnapshot* s, const Position& pos) {
   s->loops_.Clear();
   s->loops_.add_loop_point();
   return true;

@@ -1,14 +1,12 @@
 package rec.command;
 
-message KeyMeta {
-  optional bool shift = 1;
-  optional bool command = 2;
-  optional bool alt = 3;
-};
-
 message KeyPress {
-  optional KeyMeta meta = 1;
-  optional string key = 2;
+  repeated string key = 1;
+  repeated uint32 keycode = 2;
+
+  optional bool shift = 3;
+  optional bool command = 4;
+  optional bool alt = 5;
 };
 
 message Description {
@@ -24,50 +22,55 @@ message Command {
 
     ADD_LOOP_POINT = 1;
     AUDIO_PREFERENCES = 2;
+
     CLEAR_NAVIGATOR = 3;
     CLEAR_LOOPS = 4;
     CLEAR_SAVED_FILE_DATA = 5;
     CLOSE_FILE = 6;
 
     DIM_VOLUME_TOGGLE = 7;
+
     EJECT_CDS = 8;
 
     INVERT_LOOP_SELECTION = 9;
 
-    KEYBOARD_MAPPINGS = 10;
-    MIDI_MAPPINGS = 11;
+    JUMP = 10;
+    JUMP_SELECTED  = 11;
 
-    MUTE_VOLUME_TOGGLE = 12;
+    KEYBOARD_MAPPINGS = 12;
 
-    NUDGE_BEGIN_LEFT = 13;
-    NUDGE_BEGIN_RIGHT = 14;
-    NUDGE_END_LEFT = 15;
-    NUDGE_END_RIGHT = 16;
+    MIDI_MAPPINGS = 13;
+    MUTE_VOLUME_TOGGLE = 14;
 
-    NUDGE_VOLUME_DOWN = 17;
-    NUDGE_VOLUME_UP = 18;
+    NUDGE_BEGIN_LEFT = 15;
+    NUDGE_BEGIN_RIGHT = 16;
+    NUDGE_END_LEFT = 17;
+    NUDGE_END_RIGHT = 18;
+    NUDGE_VOLUME_DOWN = 19;
+    NUDGE_VOLUME_UP = 20;
 
-    OPEN = 19;
+    OPEN = 21;
 
-    RECENT_FILES = 20;
-    REDO = 21;
-    RESET_GAIN_TO_UNITY = 22;
+    RECENT_FILES = 222;
+    REDO = 23;
+    RESET_GAIN_TO_UNITY = 24;
 
-    TOGGLE_WHOLE_SONG_LOOP = 23;
-    TOGGLE_START_STOP = 24;
-    TOGGLE_STRETCH_ENABLE = 25;
-
-    TREE_CLOSE = 26;
-    TREE_DOWN = 27;
-    TREE_LEFT = 28;
-    TREE_OPEN = 29;
-    TREE_RIGHT = 30;
-    TREE_UP = 31;
-
-    UNDO = 32;
-
-    ZOOM_IN = 33;
-    ZOOM_OUT = 34;
+    SELECT = 25;
+    SELECT_ONLY = 26;
+    TOGGLE = 27;
+    TOGGLE_START_STOP = 28;
+    TOGGLE_STRETCH_ENABLE = 29;
+    TOGGLE_WHOLE_SONG_LOOP = 30;
+    TREE_CLOSE = 31;
+    TREE_DOWN = 32;
+    TREE_LEFT = 33;
+    TREE_OPEN = 34;
+    TREE_RIGHT = 35;
+    TREE_UP = 36;
+    UNDO = 37;
+    UNSELECT = 38;
+    ZOOM_IN = 39;
+    ZOOM_OUT = 40;
 
     // Pre-defined by Juce.
     QUIT = 0x1001;
@@ -78,25 +81,15 @@ message Command {
     SELECT_ALL = 0x1006;
     DESELECT_ALL = 0x1007;
 
-    // Banks of 100,000 starting at 1,000,000 (and going back to 995).
-    SELECT = 1000000;
-    SELECT_ONLY = 1100000;
-    TOGGLE = 1200000;
-    UNSELECT = 1300000;
-    JUMP = 1400000;
-    JUMP_SELECTED  = 1500000;
-
-    BANK_START = 1000000;
-    BANK_END = 1600000;
-    BANK_SIZE = 100000;
-
-    LAST_COMMAND = 34;
+    BANK_SIZE = 0x10000;
   };
 
   optional Type type = 1;
-  optional string category = 2;  // English language category.
-  optional Description description = 3;
-  optional KeyPress key_press = 4;
+  optional uint32 repeat_count = 2;  // For repeating commands.
+
+  optional string category = 3;  // English language category.
+  optional Description desc = 4;  // Localized descriptions.
+  repeated KeyPress keypress = 5;
 };
 
 message Commands {

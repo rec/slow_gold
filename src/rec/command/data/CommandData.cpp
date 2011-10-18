@@ -1,20 +1,10 @@
-#include "rec/command/CommandData.h"
-#include "rec/util/Defaulter.h"
+#include "rec/command/data/CommandData.h"
+#include "rec/command/data/Commands.def.h"
+#include "rec/command/data/Descriptions.def.h"
+#include "rec/command/data/KeyPresses.def.h"
 
 namespace rec {
 namespace command {
-
-namespace {
-
-Def<Commands> COMMANDS(
-"command { type: ADD_LOOP_POINT, category: \"Loops\"}"
-"");
-
-Def<Commands> DESCRIPTIONS("");
-Def<Commands> KEY_PRESSES("");
-
-}  // namespace
-
 
 void merge(CommandTable* map, const Commands& commands, MergeType mergeType) {
   for (int i = 0; i < commands.command_size(); ++i) {
@@ -35,9 +25,11 @@ void merge(CommandTable* map, const Commands& commands, MergeType mergeType) {
   }
 }
 
-const Commands& commands() { return *COMMANDS; }
-const Commands& descriptions(const Access&) { return *DESCRIPTIONS; }
-const Commands& keyPresses(const Access&) { return *KEY_PRESSES; }
+const Commands& commands() { return *data::commands; }
+const Commands& descriptions(const Access&) { return *data::descriptions; }
+const Commands& keyPresses(const Access&) { return *data::keyPresses; }
+
+// Internationalization goes here!
 
 }  // namespace command
 }  // namespace rec

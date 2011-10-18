@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="Command"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="vF9YeIjvp" name="command">
+  <MAINGROUP id="68JSxaPIp" name="command">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6JLhqDNKF"
@@ -313,10 +313,6 @@
               name="Command.cpp" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/Command.h" id="gHdH724jT"
               name="Command.h" resource="0"/>
-        <FILE compile="1" file="../../src/rec/command/CommandData.cpp" id="OfI1bQ7CX"
-              name="CommandData.cpp" resource="0"/>
-        <FILE compile="0" file="../../src/rec/command/CommandData.h" id="nAgd4VE6L"
-              name="CommandData.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandEntryWindow.h"
               id="SweLQVMyP" name="CommandEntryWindow.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/CommandMap.cpp" id="3lZIz5DwD"
@@ -337,6 +333,24 @@
               id="1aF0Ih85m" name="CommandMapItemComponent.h" resource="0"/>
         <FILE compile="0" file="../../src/rec/command/CommandMapTopLevelItem.h"
               id="qiIiDK5AJ" name="CommandMapTopLevelItem.h" resource="0"/>
+        <GROUP id="HwfgkJ0Qr" name="data">
+          <FILE compile="1" file="../../src/rec/command/data/CommandData.cpp"
+                id="nCnPClKqY" name="CommandData.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/data/CommandData.h" id="ZaBDVlnFq"
+                name="CommandData.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/data/Commands.def.cpp"
+                id="4N5jjftLG" name="Commands.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/data/Commands.def.h"
+                id="sL8Fcq4t9" name="Commands.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/data/Descriptions.def.cpp"
+                id="eVEOOfeWx" name="Descriptions.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/data/Descriptions.def.h"
+                id="rsUSBGUwn" name="Descriptions.def.h" resource="0"/>
+          <FILE compile="1" file="../../src/rec/command/data/KeyPresses.def.cpp"
+                id="v3aQmoUyg" name="KeyPresses.def.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/command/data/KeyPresses.def.h"
+                id="QDBp8f8Eq" name="KeyPresses.def.h" resource="0"/>
+        </GROUP>
         <FILE compile="0" file="../../src/rec/command/GenericCommandMapEditor.h"
               id="Bof63mUvT" name="GenericCommandMapEditor.h" resource="0"/>
         <FILE compile="1" file="../../src/rec/command/Keyboard.xml.cpp" id="PQ0tbhhFh"
@@ -1277,7 +1291,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="5pDpsCCpK" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="0iAWWwyy7" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

@@ -9,7 +9,7 @@ namespace slow {
 
 class Instance;
 
-bool executeLoopCommand(Instance*, command::Command::Type);
+bool executeLoopCommand(Instance*, const command::Command&);
 void toggleSelectionSegment(const VirtualFile&, RealTime);
 
 }  // namespace slow

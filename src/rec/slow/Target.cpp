@@ -49,9 +49,14 @@ Target::~Target() {
 void Target::add(CommandID c, const String& name,
                  const String& category, const String& desc) {
   add(c,
-      functionCallback(&executeLoopCommand, instance_, static_cast<Command::Type>(c)),
+      functionCallback(&executeLoopCommand, instance_, c),
       name, category, desc);
 }
+
+
+void Target::addBank(Command::Type command, const String& menu,
+                     const String& desc, const String& cat) {
+#if 0
 
 namespace {
 
@@ -61,8 +66,6 @@ const char* CAP[] = {" First", " Previous", " Current", " Next", " Last"};
 
 }  // namespace
 
-void Target::addBank(Command::Type command, const String& menu,
-                     const String& desc, const String& cat) {
   CommandID c = command;
   for (int i = 0; i <= LAST - FIRST; ++i, ++c) {
     add(c, String::formatted(menu, CAP[i], ""), cat,
@@ -75,6 +78,7 @@ void Target::addBank(Command::Type command, const String& menu,
     add(c, String::formatted(menu, "", ns), cat,
     	  String::formatted(desc, "", ns));
   }
+#endif
 }
 
 void Target::addBankCommands() {
