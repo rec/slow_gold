@@ -8,12 +8,14 @@
 #include "rec/command/MidiCommandMapEditor.h"
 #include "rec/data/persist/Persist.h"
 #include "rec/gui/Dialog.h"
+#include "rec/gui/audio/SetupPage.h"
 #include "rec/slow/Components.h"
 #include "rec/slow/Instance.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
 #include "rec/util/Math.h"
+#include "rec/util/Undo.h"
 #include "rec/util/cd/Eject.h"
 #include "rec/util/thread/FunctionCallback.h"
 
@@ -145,24 +147,30 @@ void zoomOut(Instance* i) {
 
 }  // namespace
 
+
 using namespace rec::command;
-using thread::functionCallback;
 
 void addToCommandTable(CallbackTable* t, Instance* i) {
+  using namespace rec::gui;
+  using thread::functionCallback;
+  using thread::methodCallback;
+  using rec::gui::audio::SetupPage;
+  using rec::audio::source::Player;
+
   (*t)[Command::ADD_LOOP_POINT] = functionCallback(addLoopPoint, i);
-  (*t)[Command::NUDGE_VOLUME_DOWN] = functionCallback(nudgeVolumeDown, i);
-  (*t)[Command::NUDGE_VOLUME_UP] = functionCallback(nudgeVolumeUp, i);
   (*t)[Command::CLEAR_NAVIGATOR] = functionCallback(clearNavigator, i);
   (*t)[Command::DIM_VOLUME_TOGGLE] = functionCallback(dimVolumeToggle, i);
-  (*t)[Command::MUTE_VOLUME_TOGGLE] = functionCallback(muteVolumeToggle, i);
-  (*t)[Command::RESET_GAIN_TO_UNITY] = functionCallback(resetGainToUnity, i);
   (*t)[Command::KEYBOARD_MAPPINGS] = functionCallback(keyboardMappings, i);
   (*t)[Command::MIDI_MAPPINGS] = functionCallback(midiMappings, i);
+  (*t)[Command::MUTE_VOLUME_TOGGLE] = functionCallback(muteVolumeToggle, i);
   (*t)[Command::NUDGE_BEGIN_LEFT] = functionCallback(nudgeBeginLeft, i);
   (*t)[Command::NUDGE_BEGIN_RIGHT] = functionCallback(nudgeBeginRight, i);
   (*t)[Command::NUDGE_END_LEFT] = functionCallback(nudgeEndLeft, i);
   (*t)[Command::NUDGE_END_RIGHT] = functionCallback(nudgeEndRight, i);
+  (*t)[Command::NUDGE_VOLUME_DOWN] = functionCallback(nudgeVolumeDown, i);
+  (*t)[Command::NUDGE_VOLUME_UP] = functionCallback(nudgeVolumeUp, i);
   (*t)[Command::RECENT_FILES] = functionCallback(recentFiles, i);
+  (*t)[Command::RESET_GAIN_TO_UNITY] = functionCallback(resetGainToUnity, i);
   (*t)[Command::TOGGLE_STRETCH_ENABLE] = functionCallback(toggleStretchEnable, i);
   (*t)[Command::TREE_CLOSE] = functionCallback(treeClose, i);
   (*t)[Command::TREE_DOWN] = functionCallback(treeDown, i);
@@ -172,6 +180,23 @@ void addToCommandTable(CallbackTable* t, Instance* i) {
   (*t)[Command::TREE_UP] = functionCallback(treeUp, i);
   (*t)[Command::ZOOM_IN] = functionCallback(zoomIn, i);
   (*t)[Command::ZOOM_OUT] = functionCallback(zoomOut, i);
+
+  (*t)[Command::DEL] = functionCallback(cutNoClipboard);
+  (*t)[Command::CUT] = functionCallback(cutToClipboard);
+  (*t)[Command::COPY] = functionCallback(copyToClipboard);
+  (*t)[Command::PASTE] = functionCallback(pasteFromClipboard);
+  (*t)[Command::AUDIO_PREFERENCES] = methodCallback(
+      i->device_->setupPage_.get(), &SetupPage::show,
+      &i->components_->mainPage_);
+  (*t)[Command::CLOSE_FILE] = methodCallback(i->model_.get(), &Model::setFile,
+                                             VirtualFile());
+  (*t)[Command::EJECT_CDS] = functionCallback(&cd::ejectAll);
+  (*t)[Command::OPEN] = functionCallback(&dialog::openOneFile,
+                                         i->listeners_.get());
+  (*t)[Command::REDO] = functionCallback(&redo);
+  (*t)[Command::TOGGLE_START_STOP] = methodCallback(i->player_.get(),
+                                                    &Player::toggle);
+  (*t)[Command::UNDO] = functionCallback(&undo);
 }
 
 }  // namespace slow
