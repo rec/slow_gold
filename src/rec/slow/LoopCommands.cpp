@@ -15,15 +15,16 @@ using namespace rec::command;
 namespace rec {
 namespace slow {
 
-namespace applier {
-
 typedef bool (*SelectorFunction)(int index, int pos, bool selected, bool all);
-typedef bool (*LoopFunction)(LoopSnapshot*, const Position&);
+typedef ::rec::slow::LoopSnapshot* FOOOO;
+typedef bool (*LoopFunction)(LoopSnapshot*, Position);
 typedef std::pair<SelectorFunction, LoopFunction> CommandFunction;
 
-typedef std::map<Command::Type, CommandFunction> CommandMap;
+typedef std::map<int, CommandFunction> CommandMap;
 
-bool select(SelectorFunction f, LoopSnapshot* snap, const Position& pos) {
+namespace applier {
+
+bool select(SelectorFunction f, LoopSnapshot* snap, Position pos) {
   LoopPointList* loops = &snap->loops_;
   int size = loops->loop_point_size() - 1;
   int p = positionToIndex(pos, snap->segment_, size);
@@ -37,14 +38,14 @@ bool select(SelectorFunction f, LoopSnapshot* snap, const Position& pos) {
   return true;
 }
 
-bool executeCommand(Instance* instance, Command::Type c, const CommandMap& map) {
-  Command::Type command = getCommandBase(c);
+bool executeCommand(Instance* instance, const Command& c, const CommandMap& map) {
+  int command = getCommandBase(c);
   CommandMap::const_iterator i = map.find(command);
   if (i == map.end())
     return false;
 
   LoopSnapshot s(instance);
-  const Position& pos = getPosition(c);
+  Position pos = getPosition(command);
   bool success = select(i->second.first, &s, pos) && i->second.second(&s, pos);
   if (success)
     data::set(s.loops_, instance->model_->file());
@@ -65,21 +66,21 @@ bool selectOnly(int index, int pos, bool, bool) { return index == pos; }
 bool toggle(int index, int pos, bool sel, bool) { return sel != (index == pos); }
 bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; }
 
-bool noFunction(LoopSnapshot*, const Position&) { return true; }
+bool noFunction(LoopSnapshot*, Position) { return true; }
 
 void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   RealTime time = snapshot->loops_.loop_point(segment).time();
   snapshot->instance_->model_->jumpToTime(time);
 }
 
-bool jump(LoopSnapshot* snap, const Position& pos) {
+bool jump(LoopSnapshot* snap, Position pos) {
   int size = snap->loops_.loop_point_size() - 1;
   int p = positionToIndex(pos, snap->segment_, size);
   setTimeFromSegment(snap, p);
   return true;
 }
 
-bool jumpSelected(LoopSnapshot* snap, const Position& pos) {
+bool jumpSelected(LoopSnapshot* snap, Position pos) {
   vector<int> selected;
   size_t s;
   bool found = false;
@@ -99,7 +100,7 @@ bool jumpSelected(LoopSnapshot* snap, const Position& pos) {
   return true;
 }
 
-bool clearLoops(LoopSnapshot* s, const Position& pos) {
+bool clearLoops(LoopSnapshot* s, Position pos) {
   s->loops_.Clear();
   s->loops_.add_loop_point();
   return true;
@@ -125,11 +126,10 @@ CommandMap makeMap() {
   return m;
 }
 
-
 }  // namespace applier
 
-bool executeLoopCommand(Instance* instance, Command::Type command) {
-  static applier::CommandMap map = applier::makeMap();
+bool executeLoopCommand(Instance* instance, const Command& command) {
+  static CommandMap map = applier::makeMap();
   return applier::executeCommand(instance, command, map);
 }
 

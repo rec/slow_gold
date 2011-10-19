@@ -16,11 +16,19 @@ int positionToIndex(Position pos, int segment, int size) {
              size);
 }
 
-int commandToIndex(const Command& cmd, int index) {
+int getCommandBase(const Command& cmd) {
   Command::Type t = cmd.type();
-  return cmd.repeat_count() ? Command::BANK_SIZE * t + index: t;
+  uint32 repeat = cmd.repeat_count();
+  return repeat ? Command::BANK_SIZE * t + repeat : t;
 }
 
+Position getPosition(int c) {
+  static const int SIZE = Command::BANK_SIZE;
+  if (c < SIZE)
+    return CURRENT;
+  int base = SIZE * (c / SIZE);
+  return static_cast<Position>(c - base + FIRST);
+}
 
 #if 0
 
@@ -31,7 +39,6 @@ const int START = Command::BANK_START;
 const int END = Command::BANK_END;
 
 bool isBank(Command::Type c) { return (c >= START && c < END); }
-
 
 Command::Type base(Command::Type c) {
   return static_cast<Command::Type>(SIZE * (c / SIZE));

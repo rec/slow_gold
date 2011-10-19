@@ -18,28 +18,13 @@ class Target : public HasInstance {
   explicit Target(Instance* instance);
   virtual ~Target();
 
-  void addCommands();
+  void addCommands(const command::CommandTable&, const command::CallbackTable&);
+
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
-
-  void add(CommandID id, const String& name,
-           const String& category, const String& desc);
-
-  void add(CommandID id, Callback* cb,
-           const String& name,
-           const String& category, const String& desc) {
-    targetManager_.addCallback(id, cb, name, category, desc);
-  }
-
-
-  void addBank(command::Command::Type cmd, const String& menu,
-               const String& desc, const String& cat);
-
-  void addBankCommands();
-
-  command::TargetManager* targetManager() { return &targetManager_; }
+  command::TargetManager* targetManager() { return &manager_; }
 
  private:
-  command::TargetManager targetManager_;
+  command::TargetManager manager_;
   ptr<command::MidiCommandMap> midiCommandMap_;
 
   DISALLOW_COPY_ASSIGN_AND_EMPTY(Target);

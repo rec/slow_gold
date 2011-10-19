@@ -1,43 +1,19 @@
 #include "rec/slow/Target.h"
 
-#include "rec/audio/Audio.h"
-#include "rec/audio/source/Player.h"
+#include "rec/audio/Device.h"
 #include "rec/command/MidiCommandMapEditor.h"
-#include "rec/data/persist/Persist.h"
-#include "rec/gui/Dialog.h"
-#include "rec/slow/Components.h"
-#include "rec/slow/Instance.h"
-#include "rec/slow/Listeners.h"
-#include "rec/slow/LoopCommands.h"
-#include "rec/slow/Model.h"
-#include "rec/slow/Position.h"
 #include "rec/slow/SlowWindow.h"
-#include "rec/slow/TargetCommands.h"
-#include "rec/util/Math.h"
-#include "rec/util/Undo.h"
-#include "rec/util/cd/Eject.h"
-#include "rec/util/thread/FunctionCallback.h"
+#include "rec/slow/Position.h"
 
-using rec::thread::methodCallback;
-using rec::thread::functionCallback;
-using rec::command::Command;
+using namespace rec::command;
 
 namespace rec {
 namespace slow {
 
-namespace {
-
-// TODO: move out of here.
-void addLoopPoint(Instance* i) {
-  i->components_->loops_.addLoopPoint(i->player_->getTime());
-}
-
-}
-
 Target::Target(Instance* i)
     : HasInstance(i),
-      targetManager_(i->window_),
-      midiCommandMap_(new command::MidiCommandMap(targetManager_.commandManager())) {
+      manager_(i->window_),
+      midiCommandMap_(new command::MidiCommandMap(manager_.commandManager())) {
   device()->manager_.addMidiInputCallback("", midiCommandMap_.get());
   (*midiCommandMap_)(data::get<command::CommandMapProto>());
 }
@@ -46,40 +22,74 @@ Target::~Target() {
   device()->manager_.removeMidiInputCallback("", midiCommandMap_.get());
 }
 
-void Target::add(CommandID c, const String& name,
-                 const String& category, const String& desc) {
-  add(c,
-      functionCallback(&executeLoopCommand, instance_, c),
-      name, category, desc);
-}
-
-
-void Target::addBank(Command::Type command, const String& menu,
-                     const String& desc, const String& cat) {
-#if 0
-
 namespace {
 
 const char* LOWER[] = {" the first", " the previous", " the current",
                        " the next", " the last"};
 const char* CAP[] = {" First", " Previous", " Current", " Next", " Last"};
 
-}  // namespace
-
-  CommandID c = command;
-  for (int i = 0; i <= LAST - FIRST; ++i, ++c) {
-    add(c, String::formatted(menu, CAP[i], ""), cat,
-        String::formatted(desc, LOWER[i], ""));
+void addCommand(TargetManager* manager, Callback* cb, const Command& c) {
+  CommandID t = c.type();
+  const String& menu = str(c.desc().menu());
+  const String& desc = str(c.desc().full());
+  const String& category = str(c.category());
+  uint32 repeat = c.repeat_count();
+  if (!repeat) {
+    manager->addCallback(t, cb, menu, category, desc);
+    return;
+  }
+  int b = t * Command::BANK_SIZE;
+  for (int i = 0; i <= LAST - FIRST; ++i) {
+    String m2 = String::formatted(menu, CAP[i]);
+    String d2 = String::formatted(desc, LOWER[i]);
+    manager->addCallback(b + i, cb, m2, category, d2);
   }
 
-  for (int i = 0; i < SLOT_COUNT; ++i, ++c) {
+  for (int i = 0; i < repeat; ++i) {
     String n = " " + String(i + 1);
     const char* ns = n.toUTF8();
-    add(c, String::formatted(menu, "", ns), cat,
-    	  String::formatted(desc, "", ns));
+    String menu = String::formatted(menu, ns);
+    String desc = String::formatted(desc, ns);
+    manager->addCallback(b + i - FIRST, cb, menu, category, desc);
   }
-#endif
 }
+
+}  // namespace
+
+void Target::addCommands(const CommandTable& cmds,
+                         const CallbackTable& callbacks) {
+  for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
+    const Command& c = *i->second;
+    CallbackTable::const_iterator j = callbacks.find(c.type());
+    if (j != callbacks.end())
+      addCommand(&manager_, j->second, c);
+    else
+      LOG(ERROR) << "Couldn't add " << c.DebugString();
+  }
+}
+
+#if 0
+#include "rec/util/thread/FunctionCallback.h"
+
+using rec::thread::functionCallback;
+
+#include "rec/audio/source/Player.h"
+#include "rec/command/Command.h"
+#include "rec/data/persist/Persist.h"
+#include "rec/gui/Dialog.h"
+#include "rec/slow/Components.h"
+#include "rec/slow/Instance.h"
+#include "rec/slow/Listeners.h"
+#include "rec/slow/LoopCommands.h"
+#include "rec/slow/Model.h"
+#include "rec/slow/TargetCommands.h"
+#include "rec/util/Math.h"
+#include "rec/util/Undo.h"
+#include "rec/util/cd/Eject.h"
+using rec::thread::methodCallback;
+
+//functionCallback(&executeLoopCommand, instance_, c),
+
 
 void Target::addBankCommands() {
   addBank(Command::JUMP_SELECTED, "Jump To%s Selected Segment%s",
@@ -298,6 +308,7 @@ void Target::addCommands() {
 
   targetManager()->registerAllCommandsForTarget();
 }
+#endif
 
 }  // namespace slow
 }  // namespace rec

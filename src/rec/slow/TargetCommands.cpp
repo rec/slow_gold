@@ -1,6 +1,9 @@
 #include "rec/slow/TargetCommands.h"
+
 #include "rec/audio/Audio.h"
+#include "rec/audio/source/Player.h"
 #include "rec/audio/util/Gain.h"
+#include "rec/command/Command.h"
 #include "rec/command/KeyCommandMapEditor.h"
 #include "rec/command/MidiCommandMapEditor.h"
 #include "rec/data/persist/Persist.h"
@@ -10,13 +13,18 @@
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
-#include "rec/audio/source/Player.h"
-#include "rec/util/cd/Eject.h"
 #include "rec/util/Math.h"
+#include "rec/util/cd/Eject.h"
 #include "rec/util/thread/FunctionCallback.h"
 
 namespace rec {
 namespace slow {
+
+namespace {
+
+void addLoopPoint(Instance* i) {
+  i->components_->loops_.addLoopPoint(i->player_->getTime());
+}
 
 void nudgeVolumeDown(Instance* i) {
   audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
@@ -34,7 +42,7 @@ void nudgeVolumeUp(Instance* i) {
   }
 }
 
-void clearNavigator() { data::set(VirtualFileList()); }
+void clearNavigator(Instance *) { data::set(VirtualFileList()); }
 
 void dimVolumeToggle(Instance* i) {
   audio::Gain gain(data::get<audio::Gain>(i->model_->file()));
@@ -133,6 +141,37 @@ void zoomIn(Instance* i) {
 }
 
 void zoomOut(Instance* i) {
+}
+
+}  // namespace
+
+using namespace rec::command;
+using thread::functionCallback;
+
+void addToCommandTable(CallbackTable* t, Instance* i) {
+  (*t)[Command::ADD_LOOP_POINT] = functionCallback(addLoopPoint, i);
+  (*t)[Command::NUDGE_VOLUME_DOWN] = functionCallback(nudgeVolumeDown, i);
+  (*t)[Command::NUDGE_VOLUME_UP] = functionCallback(nudgeVolumeUp, i);
+  (*t)[Command::CLEAR_NAVIGATOR] = functionCallback(clearNavigator, i);
+  (*t)[Command::DIM_VOLUME_TOGGLE] = functionCallback(dimVolumeToggle, i);
+  (*t)[Command::MUTE_VOLUME_TOGGLE] = functionCallback(muteVolumeToggle, i);
+  (*t)[Command::RESET_GAIN_TO_UNITY] = functionCallback(resetGainToUnity, i);
+  (*t)[Command::KEYBOARD_MAPPINGS] = functionCallback(keyboardMappings, i);
+  (*t)[Command::MIDI_MAPPINGS] = functionCallback(midiMappings, i);
+  (*t)[Command::NUDGE_BEGIN_LEFT] = functionCallback(nudgeBeginLeft, i);
+  (*t)[Command::NUDGE_BEGIN_RIGHT] = functionCallback(nudgeBeginRight, i);
+  (*t)[Command::NUDGE_END_LEFT] = functionCallback(nudgeEndLeft, i);
+  (*t)[Command::NUDGE_END_RIGHT] = functionCallback(nudgeEndRight, i);
+  (*t)[Command::RECENT_FILES] = functionCallback(recentFiles, i);
+  (*t)[Command::TOGGLE_STRETCH_ENABLE] = functionCallback(toggleStretchEnable, i);
+  (*t)[Command::TREE_CLOSE] = functionCallback(treeClose, i);
+  (*t)[Command::TREE_DOWN] = functionCallback(treeDown, i);
+  (*t)[Command::TREE_LEFT] = functionCallback(treeLeft, i);
+  (*t)[Command::TREE_OPEN] = functionCallback(treeOpen, i);
+  (*t)[Command::TREE_RIGHT] = functionCallback(treeRight, i);
+  (*t)[Command::TREE_UP] = functionCallback(treeUp, i);
+  (*t)[Command::ZOOM_IN] = functionCallback(zoomIn, i);
+  (*t)[Command::ZOOM_OUT] = functionCallback(zoomOut, i);
 }
 
 }  // namespace slow

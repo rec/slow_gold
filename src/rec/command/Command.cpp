@@ -14,6 +14,7 @@ class CommandDatabase {
  public:
   CommandDatabase() { recalculate(); }
   ~CommandDatabase() { clear(); }
+
   void clear() { stl::deleteMapPointers(&map_); map_.clear(); }
 
   const Command command(Command::Type t) const {

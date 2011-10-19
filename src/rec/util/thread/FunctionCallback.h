@@ -1,7 +1,9 @@
 #ifndef __REC_UTIL_THREAD_FUNCTIONCALLBACK__
 #define __REC_UTIL_THREAD_FUNCTIONCALLBACK__
 
-#include "rec/util/thread/FunctionCallback.h"
+#include "rec/util/thread/Callback.h"
+#include "rec/util/thread/Callback1.h"
+#include "rec/util/thread/Callback2.h"
 
 namespace rec {
 namespace util {
