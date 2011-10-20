@@ -4,7 +4,6 @@
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 #include "rec/util/cd/Eject.h"
-#include "rec/util/thread/FunctionCallback.h"
 
 namespace rec {
 namespace slow {

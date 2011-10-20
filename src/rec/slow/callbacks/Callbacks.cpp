@@ -13,18 +13,18 @@ void loop(LoopSnapshotFunction lsf, Instance* instance, Position pos) {
 }
 
 void select(SelectorFunction selector, Instance* instance, Position pos) {
-  LoopSnapshot s(instance);
-  LoopPointList* loops = &snap->loops_;
+  LoopSnapshot snap(instance);
+  LoopPointList* loops = &snap.loops_;
   int size = loops->loop_point_size() - 1;
-  int p = positionToIndex(pos, snap->segment_, size);
+  int p = positionToIndex(pos, snap.segment_, size);
 
-  bool allSelected = (snap->selectionCount_ == size);
+  bool allSelected = (snap.selectionCount_ == size);
 
   for (int i = 0; i < size; ++i) {
     LoopPoint* lp = loops->mutable_loop_point(i);
     lp->set_selected(selector(i, p, lp->selected(), allSelected));
   }
-  data::set(s.loops_, instance->model_->file());
+  data::set(snap.loops_, instance->model_->file());
 }
 
 }  // namespace slow

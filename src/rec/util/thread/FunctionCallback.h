@@ -6,6 +6,7 @@
 #include "rec/util/thread/Callback2.h"
 #include "rec/util/thread/Callback3.h"
 #include "rec/util/thread/Callback4.h"
+#include "rec/util/thread/MakeCallback.h"
 
 namespace rec {
 namespace util {

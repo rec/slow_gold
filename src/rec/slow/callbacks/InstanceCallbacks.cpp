@@ -9,6 +9,7 @@
 #include "rec/gui/Dialog.h"
 #include "rec/gui/audio/SetupPage.h"
 #include "rec/slow/Components.h"
+#include "rec/slow/callbacks/Callbacks.h"
 #include "rec/slow/Listeners.h"
 #include "rec/slow/Model.h"
 #include "rec/slow/Target.h"
@@ -155,7 +156,7 @@ void closeFile(Instance* i) {
 }
 
 void open(Instance* i) {
-  dialog::openOneFile(i->listeners_.get());
+  gui::dialog::openOneFile(i->listeners_.get());
 }
 
 void toggleStartStop(Instance* i) {
