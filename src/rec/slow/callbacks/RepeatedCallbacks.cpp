@@ -1,5 +1,6 @@
 #include "rec/slow/callbacks/RepeatedCallbacks.h"
 #include "rec/slow/callbacks/Callbacks.h"
+#include "rec/slow/Model.h"
 
 using namespace std;
 using namespace rec::command;
@@ -14,15 +15,14 @@ void setTimeFromSegment(LoopSnapshot* snapshot, int segment) {
   snapshot->instance_->model_->jumpToTime(time);
 }
 
-bool jump(LoopSnapshot* snap, Position pos) {
+void jump(LoopSnapshot* snap, Position pos) {
   int size = snap->loops_.loop_point_size() - 1;
   int p = positionToIndex(pos, snap->segment_, size);
-  snap_->loops_.mutable_loop_point(p)->set_selected(true);
+  snap->loops_.mutable_loop_point(p)->set_selected(true);
   setTimeFromSegment(snap, p);
-  return true;
 }
 
-bool jumpSelected(LoopSnapshot* snap, Position pos) {
+void jumpSelected(LoopSnapshot* snap, Position pos) {
   vector<int> selected;
   size_t s;
   bool found = false;
@@ -39,7 +39,6 @@ bool jumpSelected(LoopSnapshot* snap, Position pos) {
 
   DCHECK(found);
   setTimeFromSegment(snap, selected[positionToIndex(pos, s, selected.size())]);
-  return true;
 }
 
 bool selectAdd(int index, int pos, bool sel, bool) { return sel || index == pos; }
@@ -49,25 +48,26 @@ bool unselect(int index, int pos, bool sel, bool) { return sel && index != pos; 
 
 }  // namespace
 
-void add(CallbackTable* c, int32 type, int32 position,
-         SelectorFunction f, Instance* i) {
-  add(c, type * Command::BANK_SIZE + position, select, i, f);
+void add(CallbackTable* c, int32 type, Position position,
+            SelectorFunction f, Instance* i) {
+  add(c, type * Command::BANK_SIZE + position - FIRST, select, i, f, position);
 }
 
-void add(CallbackTable* c, int32 type, int32 position,
-         LoopFunction f, Instance* i) {
-  add(c, type * Command::BANK_SIZE + position, loop, i, f);
+void add(CallbackTable* c, int32 type, Position position,
+             LoopSnapshotFunction f, Instance* i) {
+  add(c, type * Command::BANK_SIZE + position - FIRST, loop, i, f, position);
 }
 
 void addRepeatedCallbacks(CallbackTable* t, Instance* i, int repeat) {
   for (int j = FIRST; j < repeat; ++j) {
-    add(t, Command::JUMP_SELECTED, j, jumpSelected, i);
-    add(t, Command::SELECT, j, selectAdd, i);
-    add(t, Command::SELECT_ALL, j, selectAll, i);
-    add(t, Command::SELECT_ONLY, j, selectOnly, i);
-    add(t, Command::TOGGLE, j, toggle, i);
-    add(t, Command::UNSELECT, j, unselect, i);
-    add(t, Command::JUMP, j, jump, i);
+  	Position pos = static_cast<Position>(j);
+    add(t, Command::SELECT, pos, selectAdd, i);
+    add(t, Command::SELECT_ONLY, pos, selectOnly, i);
+    add(t, Command::TOGGLE, pos, toggle, i);
+    add(t, Command::UNSELECT, pos, unselect, i);
+
+    add(t, Command::JUMP_SELECTED, pos, jumpSelected, i);
+    add(t, Command::JUMP, pos, jump, i);
   }
 }
 
