@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxArchitecture="32BitUniversal"
                    osxCompatibility="10.5 SDK" osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="7oelnPOG6" name="Slow">
+  <MAINGROUP id="RVBxgfbZx" name="Slow">
     <GROUP id="LWgKBWHLp" name="rec">
       <GROUP id="6edirCa3Y" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="6izljHxVC"
@@ -832,6 +832,10 @@
       </GROUP>
       <GROUP id="6pOQtRKmS" name="slow">
         <GROUP id="5L1x2kENa" name="callbacks">
+          <FILE compile="1" file="../../src/rec/slow/callbacks/Callbacks.cpp"
+                id="fwa57k8Hv" name="Callbacks.cpp" resource="0"/>
+          <FILE compile="0" file="../../src/rec/slow/callbacks/Callbacks.h" id="WzvVXPX7K"
+                name="Callbacks.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/callbacks/CallbackUtils.cpp"
                 id="hcdCE2OoB" name="CallbackUtils.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/CallbackUtils.h"
@@ -1321,7 +1325,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="zSTAQAwhL" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="oJ8RLTJ8T" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

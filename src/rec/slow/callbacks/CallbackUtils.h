@@ -1,5 +1,5 @@
-#ifndef __REC_COMMAND_CALLBACKS__
-#define __REC_COMMAND_CALLBACKS__
+#ifndef __REC_COMMAND_CALLBACK_UTILS__
+#define __REC_COMMAND_CALLBACK_UTILS__
 
 #include "rec/command/Command.h"
 #include "rec/util/thread/FunctionCallback.h"
@@ -42,4 +42,4 @@ void select(Instance*, SelectorFunction, Position);
 }  // namespace slow
 }  // namespace rec
 
-#endif  // __REC_COMMAND_CALLBACKS__
+#endif  // __REC_COMMAND_CALLBACK_UTILS__

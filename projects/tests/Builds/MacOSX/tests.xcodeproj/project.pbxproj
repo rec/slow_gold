@@ -175,6 +175,7 @@
 		80F37C7610168F3C705FC5F8 = { isa = PBXBuildFile; fileRef = 00252EEEADB4EF3E8503A3E1; };
 		DA53E07363B9FB8F988D45C4 = { isa = PBXBuildFile; fileRef = F6DE1873786AEBF2DFE4EC95; };
 		5A996D9D911EF90016F47099 = { isa = PBXBuildFile; fileRef = 0CA4F0E02D99BFCE7239E894; };
+		9E267CC0C6BE1790750A3287 = { isa = PBXBuildFile; fileRef = 0D375B01AFE048B28EA9153D; };
 		F56AF2E32BC30E988C2FDDE2 = { isa = PBXBuildFile; fileRef = 4CA092F0C4588CC5CE8510C6; };
 		1AD3B3A5F99C8020AEA37A36 = { isa = PBXBuildFile; fileRef = 6C08A0C5ACFE42058DADB221; };
 		876A317DC51333E1352B0BFA = { isa = PBXBuildFile; fileRef = A0A3506F08BC9AB8E942E2A6; };
@@ -681,6 +682,8 @@
 		9CFF07493D3BA66C9F207D3D = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateMusicFileReader.h; path = ../../../../src/rec/music/CreateMusicFileReader.h; sourceTree = "SOURCE_ROOT"; };
 		0CA4F0E02D99BFCE7239E894 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Metadata.cpp; path = ../../../../src/rec/music/Metadata.cpp; sourceTree = "SOURCE_ROOT"; };
 		807F78B94417A1954A57EDCD = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Metadata.h; path = ../../../../src/rec/music/Metadata.h; sourceTree = "SOURCE_ROOT"; };
+		0D375B01AFE048B28EA9153D = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Callbacks.cpp; path = ../../../../src/rec/slow/callbacks/Callbacks.cpp; sourceTree = "SOURCE_ROOT"; };
+		A8D70323000ACFEECF880CAB = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callbacks.h; path = ../../../../src/rec/slow/callbacks/Callbacks.h; sourceTree = "SOURCE_ROOT"; };
 		4CA092F0C4588CC5CE8510C6 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CallbackUtils.cpp; path = ../../../../src/rec/slow/callbacks/CallbackUtils.cpp; sourceTree = "SOURCE_ROOT"; };
 		2F31CB7ADDE3A8D878D5F4DC = { isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CallbackUtils.h; path = ../../../../src/rec/slow/callbacks/CallbackUtils.h; sourceTree = "SOURCE_ROOT"; };
 		6C08A0C5ACFE42058DADB221 = { isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalCallbacks.cpp; path = ../../../../src/rec/slow/callbacks/GlobalCallbacks.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -1350,6 +1353,8 @@
 				0CA4F0E02D99BFCE7239E894,
 				807F78B94417A1954A57EDCD ); name = music; sourceTree = "<group>"; };
 		9C30403703553F605B49E02D = { isa = PBXGroup; children = (
+				0D375B01AFE048B28EA9153D,
+				A8D70323000ACFEECF880CAB,
 				4CA092F0C4588CC5CE8510C6,
 				2F31CB7ADDE3A8D878D5F4DC,
 				6C08A0C5ACFE42058DADB221,
@@ -1651,7 +1656,7 @@
 				865617D983052FBE0ADDDEDF ); name = rec; sourceTree = "<group>"; };
 		F06E991FF8183A25C8615C5C = { isa = PBXGroup; children = (
 				AD25A6A38CA02ADE6C4C6838 ); name = proto; sourceTree = "<group>"; };
-		A7C5EEACD2BF79B9847D191B = { isa = PBXGroup; children = (
+		3A3E658BF0FF7776A425577A = { isa = PBXGroup; children = (
 				2F8FADAC50EE466398DF3F63,
 				F06E991FF8183A25C8615C5C,
 				C31D0F94D3029871E21D6EA7 ); name = tests; sourceTree = "<group>"; };
@@ -1678,7 +1683,7 @@
 		9E5CD52576CCEFB56496D6AC = { isa = PBXGroup; children = (
 				87C5F902F5AF6EF45EC5B9EE ); name = Products; sourceTree = "<group>"; };
 		75152A8FCEF7850F7FCFC504 = { isa = PBXGroup; children = (
-				A7C5EEACD2BF79B9847D191B,
+				3A3E658BF0FF7776A425577A,
 				AB3AD2E0EDA79D48493FD2DD,
 				60A842C53113D1851943D7FF,
 				73570899188C747E89918240,
@@ -1922,6 +1927,7 @@
 				80F37C7610168F3C705FC5F8,
 				DA53E07363B9FB8F988D45C4,
 				5A996D9D911EF90016F47099,
+				9E267CC0C6BE1790750A3287,
 				F56AF2E32BC30E988C2FDDE2,
 				1AD3B3A5F99C8020AEA37A36,
 				876A317DC51333E1352B0BFA,

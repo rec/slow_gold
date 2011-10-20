@@ -45,84 +45,12 @@ void addCommands(TargetManager* manager,
   }
 }
 
-void Target::addCommands() {
-
-}
-
 }  // namespace
 
 
-#if 0
-
-using rec::thread::functionCallback;
-
-#include "rec/audio/source/Player.h"
-#include "rec/command/Command.h"
-#include "rec/data/persist/Persist.h"
-#include "rec/gui/Dialog.h"
-#include "rec/slow/Components.h"
-#include "rec/slow/Instance.h"
-#include "rec/slow/Listeners.h"
-#include "rec/slow/Model.h"
-#include "rec/slow/TargetCommands.h"
-#include "rec/util/Math.h"
-#include "rec/util/Undo.h"
-#include "rec/util/cd/Eject.h"
-using rec::thread::methodCallback;
-
-//functionCallback(&executeLoopCommand, instance_, c),
-
-
-void Target::addBankCommands() {
-  addBank(Command::JUMP_SELECTED, "Jump To%s Selected Segment%s",
-          "Jump to the start of%s selected segment%s", "Transport");
-
-  addBank(Command::JUMP, "Jump To%s Segment%s",
-          "Jump to the start of%s segment%s", "Transport");
-
-  addBank(Command::SELECT_ONLY, "Select%s Segment%s Only",
-          "Select%s segment%s only", "Transport");
-
-  addBank(Command::SELECT, "Select%s Segment%s",
-          "Select%s segment%s", "Transport");
-
-  addBank(Command::TOGGLE, "Toggle%s Segment%s Selection",
-          "Toggle%s segment%s between selected and unselected", "Transport");
-
-  addBank(Command::UNSELECT, "Unselect%s Segment%s",
-          "Unselect%s segment%s", "Transport");
-}
-
 void Target::addCommands() {
-  using gui::audio::Loops;
-  using rec::command::Command;
 
-	addBankCommands();
-
-  add(Command::SELECT_ALL,
-      "Select All", "Selection",
-      "Select all of the file");
-
-  add(Command::DESELECT_ALL,
-      "Select None", "Selection",
-      "Select none of the file");
-
-  add(Command::CLEAR_LOOPS,
-      "Clear Loops", "Loops",
-      "Delete all loop points");
-
-  add(Command::INVERT_LOOP_SELECTION,
-      "Invert Selection", "Selection",
-      "Unselect everything selected and vice-versa.");
-
-  add(Command::TOGGLE_WHOLE_SONG_LOOP,
-      "Toggle Whole Segment Selection", "Selection",
-      "Toggle selection between the current segment and the whole song.");
-
-
-  targetManager()->registerAllCommandsForTarget();
 }
-#endif
 
 }  // namespace slow
 }  // namespace rec

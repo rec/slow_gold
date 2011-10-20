@@ -60,6 +60,13 @@
 			sepNavWindowFrame = "{{822, 134}, {856, 854}}";
 		};
 	};
+	5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {666, 312}}";
+			sepNavSelRange = "{485, 52}";
+			sepNavVisRange = "{276, 309}";
+		};
+	};
 	8DB281D6B07E576E7AD90BBB /* Threads.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1372, 1196}}";
@@ -99,8 +106,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 340835002;
-			PBXWorkspaceStateSaveDate = 340835002;
+			PBXPerProjectTemplateStateSaveDate = 340836874;
+			PBXWorkspaceStateSaveDate = 340836874;
 		};
 		perUserProjectItems = {
 			E2109582144F593300FD2AB6 = E2109582144F593300FD2AB6 /* PBXTextBookmark */;
@@ -232,6 +239,8 @@
 			E28CCFE11450B9590052581A = E28CCFE11450B9590052581A /* PBXTextBookmark */;
 			E28CCFE61450B9830052581A = E28CCFE61450B9830052581A /* PBXTextBookmark */;
 			E28CCFE71450B9830052581A = E28CCFE71450B9830052581A /* PBXTextBookmark */;
+			E28CD0081450C3280052581A /* XCBuildMessageTextBookmark */ = E28CD0081450C3280052581A /* XCBuildMessageTextBookmark */;
+			E28CD0091450C3280052581A /* PBXTextBookmark */ = E28CD0091450C3280052581A /* PBXTextBookmark */;
 		};
 		sourceControlManager = E24E0325144CD19500A1039E /* Source Control */;
 		userBuildSettings = {
@@ -656,8 +665,8 @@
 		isa = PBXTextBookmark;
 		comments = "Variable or field 'add' declared void";
 		fRef = E28CCEB01450757D0052581A /* Callbacks.h */;
-		rLen = 1;
-		rLoc = 15;
+		rLen = 0;
+		rLoc = 13;
 		rType = 1;
 	};
 	E28CCEB2145075880052581A /* PBXTextBookmark */ = {
@@ -675,9 +684,9 @@
 		fRef = E28CCEB01450757D0052581A /* Callbacks.h */;
 		name = "Callbacks.h: 17";
 		rLen = 0;
-		rLoc = 414;
+		rLoc = 200;
 		rType = 0;
-		vrLen = 1230;
+		vrLen = 201;
 		vrLoc = 0;
 	};
 	E28CCEB8145075880052581A /* PBXTextBookmark */ = {
@@ -1626,6 +1635,25 @@
 		rType = 0;
 		vrLen = 1455;
 		vrLoc = 423;
+	};
+	E28CD0081450C3280052581A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'REPEATED_COUNT' was not declared in this scope";
+		fRef = 5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 16;
+		rType = 1;
+	};
+	E28CD0091450C3280052581A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */;
+		name = "Callbacks.cpp: 17";
+		rLen = 52;
+		rLoc = 485;
+		rType = 0;
+		vrLen = 309;
+		vrLoc = 276;
 	};
 	EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */ = {
 		uiCtxt = {
