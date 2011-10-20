@@ -218,7 +218,6 @@
 		D4E81B2C18D947D6A8A83BDF /* ThinFolder.svg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C57184B3DEADC988014F31F /* ThinFolder.svg.cpp */; };
 		D5588DD503032541C064C9F3 /* Fillable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 666A9AD30210CE49D3B59703 /* Fillable.cpp */; };
 		D62B26EC9F06F41ED502815A /* LoopPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C08F978939B04D301BF2363 /* LoopPoint.cpp */; };
-		D9BAF153699933BE666CF50C /* LoopCallbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8A129498A43308D10A845ED /* LoopCallbacks.cpp */; };
 		DC557F7E3B65D752ADC0B174 /* CleanName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D8721E5B8F23744B274AF6D /* CleanName.cpp */; };
 		DD6985CA056B15D42BDB7DAD /* TransportController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA72AD4FBEC619DC6F63742F /* TransportController.cpp */; };
 		DE21954E89A302C554C403B3 /* CommandMapEditor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2B550FA014DE206D4635080 /* CommandMapEditor.cpp */; };
@@ -769,7 +768,6 @@
 		D684E449C62B83120D33CA37 /* Compare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Compare.cpp; path = ../../../../src/rec/util/Compare.cpp; sourceTree = SOURCE_ROOT; };
 		D68751B79A54FB06EBCC03A4 /* FormatTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FormatTime.h; path = ../../../../src/rec/util/FormatTime.h; sourceTree = SOURCE_ROOT; };
 		D6C9F895B3279A5EF5B3B808 /* Defaulter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Defaulter.h; path = ../../../../src/rec/util/Defaulter.h; sourceTree = SOURCE_ROOT; };
-		D70887925901858654D91594 /* LoopCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoopCallbacks.h; path = ../../../../src/rec/slow/callbacks/LoopCallbacks.h; sourceTree = SOURCE_ROOT; };
 		D756D1E22E6C41227C245AE7 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		D9313457B3248E7646270A4F /* MainPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainPage.h; path = ../../../../src/rec/slow/MainPage.h; sourceTree = SOURCE_ROOT; };
 		D9511B40588AEE72CC9179B9 /* CreateMusicFileReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreateMusicFileReader.h; path = ../../../../src/rec/music/CreateMusicFileReader.h; sourceTree = SOURCE_ROOT; };
@@ -805,7 +803,6 @@
 		E822BB6718E8D1C99BC52149 /* noncopyable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = noncopyable.h; path = "../../../../src/rec/data/yaml/include/yaml-cpp/noncopyable.h"; sourceTree = SOURCE_ROOT; };
 		E85297B24CD73E1B5ECF9C39 /* ThinFolder.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThinFolder.svg.h; path = ../../../../src/rec/gui/icon/ThinFolder.svg.h; sourceTree = SOURCE_ROOT; };
 		E886CEFA88CA84316F7B7BCB /* FullScreen.svg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FullScreen.svg.cpp; path = ../../../../src/rec/gui/icon/FullScreen.svg.cpp; sourceTree = SOURCE_ROOT; };
-		E8A129498A43308D10A845ED /* LoopCallbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LoopCallbacks.cpp; path = ../../../../src/rec/slow/callbacks/LoopCallbacks.cpp; sourceTree = SOURCE_ROOT; };
 		E94D2AE4C40A1390FDD5C304 /* Repeated.def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Repeated.def.h; path = ../../../../src/rec/command/data/Repeated.def.h; sourceTree = SOURCE_ROOT; };
 		E97C78039C069A9FE363170B /* TableColumn.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TableColumn.pb.cc; path = ../../../../genfiles/proto/rec/gui/TableColumn.pb.cc; sourceTree = SOURCE_ROOT; };
 		E9AC7EC13DB29BA143F43E68 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
@@ -1197,6 +1194,16 @@
 			name = "yaml-cpp";
 			sourceTree = "<group>";
 		};
+		512171B967D687A94526C893 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		5132960490EF8D86B5A75B32 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1270,16 +1277,6 @@
 				62DA0813916276A7D65CDB59 /* MidiName.h */,
 			);
 			name = map;
-			sourceTree = "<group>";
-		};
-		68489501CFD31E6B22A40BB4 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
 			sourceTree = "<group>";
 		};
 		6C6D775F12CEA14261B879BE /* proto */ = {
@@ -1668,7 +1665,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				68489501CFD31E6B22A40BB4 /* Slow */,
+				512171B967D687A94526C893 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -2026,8 +2023,6 @@
 				B6449379AB0909975E1E8638 /* GlobalCallbacks.h */,
 				EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */,
 				A56BBAF2332E25EEA5C3AFE6 /* InstanceCallbacks.h */,
-				E8A129498A43308D10A845ED /* LoopCallbacks.cpp */,
-				D70887925901858654D91594 /* LoopCallbacks.h */,
 				57DD20E48EA52017153ECE04 /* RepeatedCallbacks.cpp */,
 				5A92B86B147015CDAF3C19BF /* RepeatedCallbacks.h */,
 				26B6C82F1A35A8C92D9CD564 /* SelectionCallbacks.cpp */,
@@ -2243,7 +2238,6 @@
 				EB888FC7E10D5FB6A27B2E03 /* Callbacks.cpp in Sources */,
 				5735C6AC14EBD846DB1576B3 /* GlobalCallbacks.cpp in Sources */,
 				D4CC4574D0628B07629DF777 /* InstanceCallbacks.cpp in Sources */,
-				D9BAF153699933BE666CF50C /* LoopCallbacks.cpp in Sources */,
 				603632F81582A94A1681F2D8 /* RepeatedCallbacks.cpp in Sources */,
 				EF713644487F65F5A368B34F /* SelectionCallbacks.cpp in Sources */,
 				9362E2C00662145E66F79A31 /* Instance.cpp in Sources */,

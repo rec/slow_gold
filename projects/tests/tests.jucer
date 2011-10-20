@@ -28,7 +28,7 @@
                    isDebug="0" name="Release" optimisation="3" osxCompatibility="10.5 SDK"
                    osxSDK="10.5 SDK" targetName="SlowBurn"/>
   </CONFIGURATIONS>
-  <MAINGROUP id="XEIGKQRAm" name="tests">
+  <MAINGROUP id="9aDQAM6my" name="tests">
     <GROUP id="fVWXRtaTT" name="rec">
       <GROUP id="yVpY2ZiFB" name="app">
         <FILE compile="0" file="../../src/rec/app/Application.h" id="sgnuGy10P"
@@ -868,10 +868,6 @@
                 id="Ye3QMQ0A4" name="InstanceCallbacks.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/InstanceCallbacks.h"
                 id="ttryVx9fi" name="InstanceCallbacks.h" resource="0"/>
-          <FILE compile="1" file="../../src/rec/slow/callbacks/LoopCallbacks.cpp"
-                id="xf508sWAL" name="LoopCallbacks.cpp" resource="0"/>
-          <FILE compile="0" file="../../src/rec/slow/callbacks/LoopCallbacks.h"
-                id="HKWCiAGrm" name="LoopCallbacks.h" resource="0"/>
           <FILE compile="1" file="../../src/rec/slow/callbacks/RepeatedCallbacks.cpp"
                 id="ATCIfPNO3" name="RepeatedCallbacks.cpp" resource="0"/>
           <FILE compile="0" file="../../src/rec/slow/callbacks/RepeatedCallbacks.h"
@@ -1381,7 +1377,7 @@
         </GROUP>
       </GROUP>
     </GROUP>
-    <FILE compile="1" file="Main.cpp" id="dBdtaRF0X" name="Main.cpp" resource="0"/>
+    <FILE compile="1" file="Main.cpp" id="2DZ5LBMjT" name="Main.cpp" resource="0"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ALSA="default" JUCE_ASIO="default" JUCE_CATCH_UNHANDLED_EXCEPTIONS="default"
                JUCE_CHECK_MEMORY_LEAKS="default" JUCE_DIRECT2D="default" JUCE_DIRECTSHOW="default"

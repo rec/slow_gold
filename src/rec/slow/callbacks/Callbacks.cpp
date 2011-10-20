@@ -6,13 +6,13 @@ namespace slow {
 
 typedef void (*LoopSnapshotFunction)(LoopSnapshot*, Position);
 
-void loop(LoopSnapshotFunction lsf, Instance* instance, Position pos) {
+void loop(Instance* instance, LoopSnapshotFunction lsf, Position pos) {
   LoopSnapshot snapshot(instance);
   lsf(&snapshot, pos);
   data::set(snapshot.loops_, instance->model_->file());
 }
 
-void select(SelectorFunction selector, Instance* instance, Position pos) {
+void select(Instance* instance, SelectorFunction selector, Position pos) {
   LoopSnapshot snap(instance);
   LoopPointList* loops = &snap.loops_;
   int size = loops->loop_point_size() - 1;
