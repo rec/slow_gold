@@ -22,6 +22,10 @@ class Position {
   int32 toIndex(int32 segment, int32 size);
   CommandID toCommandID(int32 type);
 
+  static CommandID toCommandID(int32 position, int32 type) {
+    return Position(position).toCommandID(type);
+  }
+
   static Position fromCommandID(CommandID id);
   operator int32() const { return position_; }
 

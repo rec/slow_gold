@@ -32,19 +32,25 @@ void addCommand(TargetManager* manager, Callback* cb, const Command& c) {
   manager->addCallback(t, cb, menu, category, desc);
 }
 
-}  // namespace
-
-void Target::addCommands(const CommandTable& cmds,
-                         const CallbackTable& callbacks) {
+void addCommands(TargetManager* manager,
+                 const CommandTable& cmds,
+                 const CallbackTable& callbacks) {
   for (CommandTable::const_iterator i = cmds.begin(); i != cmds.end(); ++i) {
     const Command& c = *i->second;
     CallbackTable::const_iterator j = callbacks.find(c.type());
     if (j != callbacks.end())
-      addCommand(&manager_, j->second, c);
+      addCommand(manager, j->second, c);
     else
       LOG(ERROR) << "Couldn't add " << c.DebugString();
   }
 }
+
+void Target::addCommands() {
+
+}
+
+}  // namespace
+
 
 #if 0
 

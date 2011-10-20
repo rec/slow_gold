@@ -67,6 +67,7 @@
 		414662868A7CD10A2CE6AF43 /* Stretchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43553262AA264130AEB57E8F /* Stretchy.cpp */; };
 		415FFE14380CDEB6B862E01F /* DedupeCDDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 88FDDC0F38B4605B01BD752F /* DedupeCDDB.cpp */; };
 		42190C094E7147AEC5AB08CB /* Value.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = D48DDECB9F35916340C9E1FE /* Value.pb.cc */; };
+		42CC05EA361156AEB990C86E /* CallbackUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9802A5F7EFA7D4DAFBF71C42 /* CallbackUtils.cpp */; };
 		42CD50D28AB5C2ABAE5CE629 /* directives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 659A2DBA247FCE7F3898B878 /* directives.cpp */; };
 		454A720C13F65FB2AEB02991 /* scantoken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C3B1D3C8D7B4A179CC63E /* scantoken.cpp */; };
 		46CFA0BFEBD851A9AA33EE35 /* WriteYaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2C7BDA8573F8BB43DC99514 /* WriteYaml.cpp */; };
@@ -238,7 +239,6 @@
 		E926F7A73FFBF86C9D0EF3FC /* Eject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00003876AC0D7A0878AA7C14 /* Eject.cpp */; };
 		E931D10A82E3BB277CF8CE02 /* AudioMagicStretchy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17499D90C988D947ED5A2944 /* AudioMagicStretchy.cpp */; };
 		EAC9BB7CF839266A96D1B234 /* emitfromevents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0C25ECDCA094453BE8092FD /* emitfromevents.cpp */; };
-		EB888FC7E10D5FB6A27B2E03 /* Callbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */; };
 		EC63385FE827AE096FFA4C0A /* KeyPresses.def.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A68A7DA4A509C3C441DE9083 /* KeyPresses.def.cpp */; };
 		ED4946793A10147AEBFF977B /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A433D0832C0312A5D246D41A /* Player.cpp */; };
 		EE780D22138418DE3F84F36D /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EA4E4C39879BB30FB4DDDC /* DiscRecording.framework */; };
@@ -480,7 +480,6 @@
 		59AE2C2C6427F46A8B31F173 /* Fillable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Fillable.h; path = ../../../../src/rec/util/block/Fillable.h; sourceTree = SOURCE_ROOT; };
 		5A92B86B147015CDAF3C19BF /* RepeatedCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RepeatedCallbacks.h; path = ../../../../src/rec/slow/callbacks/RepeatedCallbacks.h; sourceTree = SOURCE_ROOT; };
 		5A94CB517D27D8D7FF6ED83E /* scantag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scantag.cpp; path = ../../../../src/rec/data/yaml/src/scantag.cpp; sourceTree = SOURCE_ROOT; };
-		5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Callbacks.cpp; path = ../../../../src/rec/slow/callbacks/Callbacks.cpp; sourceTree = SOURCE_ROOT; };
 		5AE63502C4D9709ED74572A6 /* Convertors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Convertors.h; path = ../../../../src/rec/util/partition/Convertors.h; sourceTree = SOURCE_ROOT; };
 		5B336F1C1C2090670B7DA2C4 /* conversion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = conversion.cpp; path = ../../../../src/rec/data/yaml/src/conversion.cpp; sourceTree = SOURCE_ROOT; };
 		5BAB9CAEA2A4EA4EDCB4A87D /* Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = ../../../../src/rec/audio/util/Frame.h; sourceTree = SOURCE_ROOT; };
@@ -553,6 +552,7 @@
 		7BD93D3C80AA0E1600B3C057 /* Geometry.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.pb.h; path = ../../../../genfiles/proto/rec/gui/Geometry.pb.h; sourceTree = SOURCE_ROOT; };
 		7C120FFF487B65BF8567EFE7 /* DialComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DialComponent.cpp; path = ../../../../src/rec/widget/status/DialComponent.cpp; sourceTree = SOURCE_ROOT; };
 		7C1C3B1D3C8D7B4A179CC63E /* scantoken.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = scantoken.cpp; path = ../../../../src/rec/data/yaml/src/scantoken.cpp; sourceTree = SOURCE_ROOT; };
+		7C93CE71F832F0FEA546EF59 /* CallbackUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CallbackUtils.h; path = ../../../../src/rec/slow/callbacks/CallbackUtils.h; sourceTree = SOURCE_ROOT; };
 		7C9A57490A0E96391366751C /* Persist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Persist.h; path = ../../../../src/rec/data/persist/Persist.h; sourceTree = SOURCE_ROOT; };
 		7D108DC8B2379D556C4B2F96 /* SimpleLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SimpleLabel.h; path = ../../../../src/rec/gui/SimpleLabel.h; sourceTree = SOURCE_ROOT; };
 		7D743EA14D6C6656F9DD3949 /* Crosshairs.svg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Crosshairs.svg.h; path = ../../../../src/rec/gui/icon/Crosshairs.svg.h; sourceTree = SOURCE_ROOT; };
@@ -609,6 +609,7 @@
 		9703C4EB02FB080C47434A8F /* map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = map.h; path = ../../../../src/rec/data/yaml/src/map.h; sourceTree = SOURCE_ROOT; };
 		973D5FA58D1FF5E924CC931C /* scanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = scanner.h; path = ../../../../src/rec/data/yaml/src/scanner.h; sourceTree = SOURCE_ROOT; };
 		9771D268413B1DB94C19379F /* mfGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mfGlobals.h; path = ../../../../src/rec/audio/ammf_scaler/mfGlobals.h; sourceTree = SOURCE_ROOT; };
+		9802A5F7EFA7D4DAFBF71C42 /* CallbackUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CallbackUtils.cpp; path = ../../../../src/rec/slow/callbacks/CallbackUtils.cpp; sourceTree = SOURCE_ROOT; };
 		992DF046E12170379B33D654 /* emitterutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = emitterutils.h; path = ../../../../src/rec/data/yaml/src/emitterutils.h; sourceTree = SOURCE_ROOT; };
 		99DA1DED30250E347A9C6D00 /* Instance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Instance.h; path = ../../../../src/rec/slow/Instance.h; sourceTree = SOURCE_ROOT; };
 		9A875A96341E65BD199381D9 /* DetentSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DetentSlider.h; path = ../../../../src/rec/gui/DetentSlider.h; sourceTree = SOURCE_ROOT; };
@@ -794,7 +795,6 @@
 		E3E0E3D2E6892BDAA5F575EA /* Application.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../../../../src/rec/app/Application.h; sourceTree = SOURCE_ROOT; };
 		E4FEA117EAFF93F0B8254514 /* Callback1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callback1.h; path = ../../../../src/rec/util/thread/Callback1.h; sourceTree = SOURCE_ROOT; };
 		E504F6A5707F3F672DB52BA8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E549172B2B5917F4ECF90827 /* Callbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Callbacks.h; path = ../../../../src/rec/slow/callbacks/Callbacks.h; sourceTree = SOURCE_ROOT; };
 		E585B8FE6268F83666D15E6B /* Node.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Node.pb.cc; path = ../../../../genfiles/proto/rec/widget/tree/Node.pb.cc; sourceTree = SOURCE_ROOT; };
 		E5B719E9D5CCE228BF21B8A8 /* CDReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDReader.h; path = ../../../../src/rec/util/cd/CDReader.h; sourceTree = SOURCE_ROOT; };
 		E5DF2E80ED07DBB8E37F8CC3 /* PlaybackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaybackController.h; path = ../../../../src/rec/slow/PlaybackController.h; sourceTree = SOURCE_ROOT; };
@@ -1274,6 +1274,16 @@
 			name = map;
 			sourceTree = "<group>";
 		};
+		692E89BD0DCF332275F857C9 /* Slow */ = {
+			isa = PBXGroup;
+			children = (
+				75467D3DB26B8C553F2D3FE5 /* rec */,
+				F5495BB1B8B716831989C22D /* proto */,
+				107F029BEE50E0870F8E5A13 /* Main.cpp */,
+			);
+			name = Slow;
+			sourceTree = "<group>";
+		};
 		6C6D775F12CEA14261B879BE /* proto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1660,7 +1670,7 @@
 		B2772D76DA45DD25AC30B180 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DFC9CF151215C620EDDA1F89 /* Slow */,
+				692E89BD0DCF332275F857C9 /* Slow */,
 				E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */,
 				AC0A55CC5C6219AB36B5C26B /* Resources */,
 				C0B90B9133DBCC84A6028DCC /* Frameworks */,
@@ -1870,16 +1880,6 @@
 			name = thread;
 			sourceTree = "<group>";
 		};
-		DFC9CF151215C620EDDA1F89 /* Slow */ = {
-			isa = PBXGroup;
-			children = (
-				75467D3DB26B8C553F2D3FE5 /* rec */,
-				F5495BB1B8B716831989C22D /* proto */,
-				107F029BEE50E0870F8E5A13 /* Main.cpp */,
-			);
-			name = Slow;
-			sourceTree = "<group>";
-		};
 		E89CD5E8F8F5E56D76A0DE49 /* Juce Library Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -2022,8 +2022,8 @@
 		FD1BA25BD7D140D325596CED /* callbacks */ = {
 			isa = PBXGroup;
 			children = (
-				5A996F08CA2F90D8BB1A11B9 /* Callbacks.cpp */,
-				E549172B2B5917F4ECF90827 /* Callbacks.h */,
+				9802A5F7EFA7D4DAFBF71C42 /* CallbackUtils.cpp */,
+				7C93CE71F832F0FEA546EF59 /* CallbackUtils.h */,
 				A96AA3CCB74D9A1BBA1FBEAD /* GlobalCallbacks.cpp */,
 				B6449379AB0909975E1E8638 /* GlobalCallbacks.h */,
 				EC056366140AD2CE16B3EE22 /* InstanceCallbacks.cpp */,
@@ -2241,7 +2241,7 @@
 				DC557F7E3B65D752ADC0B174 /* CleanName.cpp in Sources */,
 				17B5F47A7EF843A5B4FF4130 /* CreateMusicFileReader.cpp in Sources */,
 				97FB7094BC6C411643657C15 /* Metadata.cpp in Sources */,
-				EB888FC7E10D5FB6A27B2E03 /* Callbacks.cpp in Sources */,
+				42CC05EA361156AEB990C86E /* CallbackUtils.cpp in Sources */,
 				5735C6AC14EBD846DB1576B3 /* GlobalCallbacks.cpp in Sources */,
 				D4CC4574D0628B07629DF777 /* InstanceCallbacks.cpp in Sources */,
 				603632F81582A94A1681F2D8 /* RepeatedCallbacks.cpp in Sources */,

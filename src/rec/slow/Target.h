@@ -18,7 +18,7 @@ class Target : public HasInstance {
   explicit Target(Instance* instance);
   virtual ~Target();
 
-  void addCommands(const command::CommandTable&, const command::CallbackTable&);
+  void addCommands();
 
   command::MidiCommandMap* midiCommandMap() { return midiCommandMap_.get(); }
   command::TargetManager* targetManager() { return &manager_; }

@@ -1,6 +1,6 @@
 #include "rec/slow/callbacks/GlobalCallbacks.h"
 
-#include "rec/slow/callbacks/Callbacks.h"
+#include "rec/slow/callbacks/CallbackUtils.h"
 #include "rec/util/Cuttable.h"
 #include "rec/util/Undo.h"
 #include "rec/util/cd/Eject.h"
